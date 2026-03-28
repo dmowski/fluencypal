@@ -7,6 +7,76 @@ import type {
 } from './types';
 
 const NATIVE_PARTIAL_ID = 'native-partial';
+const RECOVERABLE_NATIVE_ERRORS = new Set(['aborted', 'no-speech']);
+
+const clearNativePartialTranscript = (
+  setPartialTranscriptMap: TranscriptStateHandlers['setPartialTranscriptMap'],
+) => {
+  setPartialTranscriptMap((prev) => {
+    if (!prev[NATIVE_PARTIAL_ID]) return prev;
+
+    const next = { ...prev };
+    delete next[NATIVE_PARTIAL_ID];
+    return next;
+  });
+};
+
+const syncNativeTranscriptState = ({
+  event,
+  persistedCompletedTranscripts,
+  state,
+}: {
+  event: Parameters<
+    NonNullable<TranscriptStateHandlers['setCompletedTranscripts']>
+  >[0] extends never
+    ? never
+    : Parameters<NonNullable<TranscriptStateHandlers['setPartialTranscriptMap']>>[0] extends never
+      ? never
+      : {
+          results: {
+            [index: number]: {
+              isFinal: boolean;
+              0: {
+                transcript: string;
+              };
+            };
+            length: number;
+          };
+        };
+  persistedCompletedTranscripts: string[];
+  state: TranscriptStateHandlers;
+}): string[] => {
+  const nextRecognitionCompleted: string[] = [];
+  const nextPartial: string[] = [];
+
+  for (let index = 0; index < event.results.length; index += 1) {
+    const result = event.results[index];
+    const transcript = result?.[0]?.transcript?.trim() || '';
+
+    if (!transcript) continue;
+
+    if (result.isFinal) {
+      nextRecognitionCompleted.push(transcript);
+    } else {
+      nextPartial.push(transcript);
+    }
+  }
+
+  const nextCompletedTranscripts = [...persistedCompletedTranscripts, ...nextRecognitionCompleted];
+
+  state.setCompletedTranscripts(nextCompletedTranscripts);
+
+  if (nextPartial.length === 0) {
+    clearNativePartialTranscript(state.setPartialTranscriptMap);
+  } else {
+    state.setPartialTranscriptMap((prev) => ({
+      ...prev,
+      [NATIVE_PARTIAL_ID]: nextPartial.join(' '),
+    }));
+  }
+
+  return nextCompletedTranscripts;
+};
 
 const getSpeechRecognitionConstructor = (): BrowserSpeechRecognitionConstructor | null => {
   if (typeof window === 'undefined') return null;
@@ -35,13 +105,7 @@ export const cleanupNativeRealtimeTranscript = ({
     }
   }
 
-  setPartialTranscriptMap((prev) => {
-    if (!prev[NATIVE_PARTIAL_ID]) return prev;
-
-    const next = { ...prev };
-    delete next[NATIVE_PARTIAL_ID];
-    return next;
-  });
+  clearNativePartialTranscript(setPartialTranscriptMap);
 };
 
 export const startNativeRealtimeTranscript = async ({
@@ -69,12 +133,9 @@ export const startNativeRealtimeTranscript = async ({
 
   await new Promise<void>((resolve, reject) => {
     let isSettled = false;
-
-    const recognition = new SpeechRecognition();
-    refs.recognitionRef.current = recognition;
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = browserLanguage;
+    let persistedCompletedTranscripts: string[] = [];
+    let restartTimeoutId: number | null = null;
+    let isRestarting = false;
 
     const resolveOnce = () => {
       if (isSettled) return;
@@ -88,108 +149,145 @@ export const startNativeRealtimeTranscript = async ({
       reject(error);
     };
 
-    recognition.onstart = () => {
-      state.setActiveMode('native');
-      state.setIsActive(true);
-      state.setIsActivating(false);
-      resolveOnce();
+    const clearRestartTimeout = () => {
+      if (restartTimeoutId === null) return;
+
+      window.clearTimeout(restartTimeoutId);
+      restartTimeoutId = null;
     };
 
-    recognition.onresult = (event) => {
-      const nextCompleted: string[] = [];
-      let nextPartial = '';
-
-      for (let index = event.resultIndex; index < event.results.length; index += 1) {
-        const result = event.results[index];
-        const transcript = result?.[0]?.transcript?.trim() || '';
-
-        if (!transcript) continue;
-
-        if (result.isFinal) {
-          nextCompleted.push(transcript);
-        } else {
-          nextPartial += `${nextPartial ? ' ' : ''}${transcript}`;
-        }
-      }
-
-      if (nextCompleted.length > 0) {
-        state.setCompletedTranscripts((prev) => [...prev, ...nextCompleted]);
-      }
-
-      state.setPartialTranscriptMap((prev) => {
-        if (!nextPartial) {
-          if (!prev[NATIVE_PARTIAL_ID]) return prev;
-
-          const next = { ...prev };
-          delete next[NATIVE_PARTIAL_ID];
-          return next;
-        }
-
-        return { ...prev, [NATIVE_PARTIAL_ID]: nextPartial };
+    const stopNativeTranscript = () => {
+      clearRestartTimeout();
+      state.setIsActive(false);
+      state.setIsActivating(false);
+      state.setActiveMode(null);
+      cleanupNativeRealtimeTranscript({
+        recognitionRef: refs.recognitionRef,
+        setPartialTranscriptMap: state.setPartialTranscriptMap,
       });
     };
 
-    recognition.onerror = (event) => {
-      if (event.error === 'aborted' && refs.stopRequestedRef.current) {
-        return;
-      }
+    const startRecognition = () => {
+      const recognition = new SpeechRecognition();
+      let latestCompletedTranscripts = persistedCompletedTranscripts;
 
-      if (event.error === 'language-not-supported') {
-        cleanupNativeRealtimeTranscript({
-          recognitionRef: refs.recognitionRef,
-          setPartialTranscriptMap: state.setPartialTranscriptMap,
+      refs.recognitionRef.current = recognition;
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = browserLanguage;
+
+      recognition.onstart = () => {
+        isRestarting = false;
+        state.setActiveMode('native');
+        state.setIsActive(true);
+        state.setIsActivating(false);
+        resolveOnce();
+      };
+
+      recognition.onresult = (event) => {
+        latestCompletedTranscripts = syncNativeTranscriptState({
+          event,
+          persistedCompletedTranscripts,
+          state,
         });
+      };
 
-        if (!isSettled) {
-          rejectOnce(new Error('language-not-supported'));
+      recognition.onerror = (event) => {
+        if (RECOVERABLE_NATIVE_ERRORS.has(event.error)) {
+          clearNativePartialTranscript(state.setPartialTranscriptMap);
           return;
         }
 
-        state.setIsActive(false);
-        state.setIsActivating(true);
-        state.setActiveMode(null);
-        void startAiFallback().catch((error) => {
+        if (event.error === 'language-not-supported') {
+          cleanupNativeRealtimeTranscript({
+            recognitionRef: refs.recognitionRef,
+            setPartialTranscriptMap: state.setPartialTranscriptMap,
+          });
+
+          if (!isSettled) {
+            rejectOnce(new Error('language-not-supported'));
+            return;
+          }
+
+          state.setIsActive(false);
+          state.setIsActivating(true);
+          state.setActiveMode(null);
+          void startAiFallback().catch((error) => {
+            state.setIsActive(false);
+            state.setIsActivating(false);
+            state.setActiveMode(null);
+            console.error('Failed to fallback to AI transcript', error);
+          });
+          return;
+        }
+
+        stopNativeTranscript();
+        rejectOnce(new Error(`Native transcript failed: ${event.error}`));
+      };
+
+      recognition.onend = () => {
+        if (refs.recognitionRef.current === recognition) {
+          refs.recognitionRef.current = null;
+        }
+
+        persistedCompletedTranscripts = latestCompletedTranscripts;
+        clearNativePartialTranscript(state.setPartialTranscriptMap);
+
+        if (refs.stopRequestedRef.current) {
+          clearRestartTimeout();
           state.setIsActive(false);
           state.setIsActivating(false);
           state.setActiveMode(null);
-          console.error('Failed to fallback to AI transcript', error);
-        });
-        return;
-      }
+          return;
+        }
 
-      state.setIsActive(false);
-      state.setIsActivating(false);
-      state.setActiveMode(null);
-      cleanupNativeRealtimeTranscript({
-        recognitionRef: refs.recognitionRef,
-        setPartialTranscriptMap: state.setPartialTranscriptMap,
-      });
-      rejectOnce(new Error(`Native transcript failed: ${event.error}`));
+        if (!isSettled) {
+          stopNativeTranscript();
+          rejectOnce(new Error('Native transcript ended before it became active'));
+          return;
+        }
+
+        if (isRestarting) {
+          return;
+        }
+
+        isRestarting = true;
+        state.setIsActive(false);
+        state.setIsActivating(true);
+
+        restartTimeoutId = window.setTimeout(() => {
+          restartTimeoutId = null;
+
+          if (refs.stopRequestedRef.current || refs.recognitionRef.current) {
+            isRestarting = false;
+            return;
+          }
+
+          startRecognition();
+        }, 150);
+      };
+
+      try {
+        recognition.start();
+      } catch (error) {
+        if (refs.recognitionRef.current === recognition) {
+          refs.recognitionRef.current = null;
+        }
+
+        clearNativePartialTranscript(state.setPartialTranscriptMap);
+
+        if (!isSettled) {
+          rejectOnce(
+            error instanceof Error ? error : new Error('Failed to start native transcript'),
+          );
+          return;
+        }
+
+        stopNativeTranscript();
+      }
     };
 
-    recognition.onend = () => {
-      state.setIsActive(false);
-      state.setIsActivating(false);
-      state.setActiveMode(null);
-      cleanupNativeRealtimeTranscript({
-        recognitionRef: refs.recognitionRef,
-        setPartialTranscriptMap: state.setPartialTranscriptMap,
-      });
-
-      if (!isSettled && !refs.stopRequestedRef.current) {
-        rejectOnce(new Error('Native transcript ended before it became active'));
-      }
-    };
-
-    try {
-      recognition.start();
-    } catch (error) {
-      cleanupNativeRealtimeTranscript({
-        recognitionRef: refs.recognitionRef,
-        setPartialTranscriptMap: state.setPartialTranscriptMap,
-      });
-      rejectOnce(error instanceof Error ? error : new Error('Failed to start native transcript'));
-    }
+    startRecognition();
   }).catch(async (error) => {
     if (error instanceof Error && error.message === 'language-not-supported') {
       await startAiFallback();
