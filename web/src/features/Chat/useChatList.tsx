@@ -6,6 +6,7 @@ import { deleteDoc, query, where } from 'firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from './type';
 import { useSettings } from '../Settings/useSettings';
+import { getDailyQuestionPrefix } from '../DailyQuestion/DailyQuestionFullCard';
 
 // I send a message, and someone send a new message
 interface MyDailyQuestionNotification {
@@ -46,8 +47,7 @@ function useProvideChatList(): ChatListContextType {
     return query(chatListRef, where('type', '==', 'dailyQuestion'));
   }, [chatListRef]);
 
-  const [dailyQuestionsChats, dailyQuestionsChatsLoading, dailyQuestionsChatsError] =
-    useCollectionData(dailyQuestionsChatsQuery);
+  const [dailyQuestionsChats] = useCollectionData(dailyQuestionsChatsQuery);
 
   const [myChats, myChatsLoading, myChatsError] = useCollectionData(myChatsQuery);
   const [globalChat] = useDocumentData(db.documents.chat(auth.uid, 'global'));
@@ -92,7 +92,12 @@ function useProvideChatList(): ChatListContextType {
 
     let totalDailyQuestionsUnreadMessagesCount = 0;
 
-    dailyQuestionsChats?.forEach((dailyChat) => {
+    const dailyQuestionPrefix = getDailyQuestionPrefix(settings.languageCode || 'en');
+    const cleanDailyQuestionsChats = dailyQuestionsChats?.filter((chat) =>
+      chat.spaceId.startsWith(dailyQuestionPrefix),
+    );
+
+    cleanDailyQuestionsChats?.forEach((dailyChat) => {
       const spaceId = dailyChat.spaceId;
       // id: iso data
       const allMessagesObject = dailyChat.allMessagesIds || {};
@@ -141,7 +146,14 @@ function useProvideChatList(): ChatListContextType {
       dailyQuestionsNotifications,
       totalDailyQuestionsUnreadMessagesCount,
     };
-  }, [myChats, myReadStatsData, globalChat, userCreatedAt, dailyQuestionsChats]);
+  }, [
+    myChats,
+    myReadStatsData,
+    globalChat,
+    userCreatedAt,
+    dailyQuestionsChats,
+    settings.languageCode,
+  ]);
 
   const deleteChat = async (spaceId: string) => {
     const chatRef = db.documents.chat(auth.uid, spaceId);
