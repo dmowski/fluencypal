@@ -1,35 +1,27 @@
 # Live document with short/long term ideas
 
-## Add replies to global chat into notifications panel
-
 ## Learning plan: AI call
 
 Sometime it doesn't follow Language.
 Can we use realtime-1.5 for it and skip lesson plan?
 
-## Add feature for Assess user's english level
+## Add feature for assess user's english level
 
 And allow to do several check. But second attempt allowed only for paid users and after a progress (100 messages)
+
+- UI for "Before/After" cards
+- Find components that were used for Interview App
+- Create Prototype on Dashboard, only for me
+- Allow everyone to use it
+- Integrate into Quiz? Maybe keep only on dashboard
 
 ## Landing Page
 
 Update first video landscape video
 
-## Quiz: Ask user to record using only Learning language
-
-## Quiz: Analyze user's language level
-
-## Quiz: Provide strategy of learning
-
 ## Emails
 
-After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel
-
-## Add Dashboard card: Follow my on social network
-
-## Check how user records work.
-
-Does it works fine?
+After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
 
 # Price
 
