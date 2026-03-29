@@ -1300,7 +1300,7 @@ msgstr ""
 msgid "After the greeting, you'll usually hear:"
 msgstr "Efter hälsningen hör du vanligtvis:"
 
-#: src/features/Community/SupportPage.tsx:55
+#: src/features/Community/SupportPage.tsx:56
 #. js-lingui-explicit-id
 msgid ""
 "After the payment is completed, it may take a few minutes for the system to "
@@ -1957,14 +1957,14 @@ msgstr ""
 #: src/features/Alias/components/LanguageLevel.tsx:96
 #: src/features/Alias/components/PlayersSetup.tsx:308
 #: src/features/Alias/components/RoundSettings.tsx:221
-#: src/features/Chat/ChatPage.tsx:160
+#: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Tillbaka"
 
-#: src/features/Chat/ChatPage.tsx:192
+#: src/features/Chat/ChatPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Back to chat list"
 msgstr "Tillbaka till chattlistan"
@@ -2442,8 +2442,8 @@ msgstr "Karriärfördel:"
 
 #: src/features/Chat/ChatHeaderFull.tsx:94
 #: src/features/Chat/ChatHeaderFull.tsx:96
-#: src/features/Chat/ChatPage.tsx:343
-#: src/features/Chat/ChatPage.tsx:345
+#: src/features/Chat/ChatPage.tsx:380
+#: src/features/Chat/ChatPage.tsx:382
 #: src/features/Game/UserProfileModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Chat"
@@ -2459,7 +2459,7 @@ msgstr "Chat raderad framgångsrikt."
 msgid "Chat history"
 msgstr "Chatt-historik"
 
-#: src/features/Chat/ChatPage.tsx:189
+#: src/features/Chat/ChatPage.tsx:193
 #. js-lingui-explicit-id
 msgid "Chat not found or you don't have access to it."
 msgstr "Chatten hittades inte eller så har du inte åtkomst till den."
@@ -2871,6 +2871,11 @@ msgstr ""
 msgid "Constructor"
 msgstr "Konstruktör"
 
+#: src/features/Chat/ChatPage.tsx:239
+#. js-lingui-explicit-id
+msgid "Contact support"
+msgstr "Kontakta supporten"
+
 #: src/features/Case/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
 msgid "Contact us"
@@ -2885,7 +2890,7 @@ msgstr "Kontakta oss"
 msgid "Contacts"
 msgstr "Kontakter"
 
-#: src/features/Community/SupportPage.tsx:99
+#: src/features/Community/SupportPage.tsx:100
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Kontakter:"
@@ -3269,7 +3274,7 @@ msgid "Daily Question"
 msgstr "Daglig fråga"
 
 #: src/features/Chat/ChatHeaderFull.tsx:92
-#: src/features/Chat/ChatPage.tsx:341
+#: src/features/Chat/ChatPage.tsx:378
 #. js-lingui-explicit-id
 msgid "Daily Question Chat"
 msgstr "Daglig Frågechatt"
@@ -3369,7 +3374,7 @@ msgid "Debate"
 msgstr "Debatt"
 
 #: src/features/Chat/ChatHeaderFull.tsx:91
-#: src/features/Chat/ChatPage.tsx:340
+#: src/features/Chat/ChatPage.tsx:377
 #. js-lingui-explicit-id
 msgid "Debate Chat"
 msgstr "Debattchatt"
@@ -5109,7 +5114,7 @@ msgstr ""
 "realistiska och engagerande, samtidigt som du får feedback på din "
 "talprestation."
 
-#: src/features/Community/SupportPage.tsx:73
+#: src/features/Community/SupportPage.tsx:74
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is still relatively new, and your feedback is very important to "
@@ -5328,7 +5333,7 @@ msgstr "Fri för alla"
 msgid "French Learning Plan"
 msgstr "Franska Lärplan"
 
-#: src/features/Community/SupportPage.tsx:50
+#: src/features/Community/SupportPage.tsx:51
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:11
 #: src/features/Usage/Subscription/FaqSubscription.tsx:10
 #. js-lingui-explicit-id
@@ -5763,7 +5768,7 @@ msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Ge det några veckor. Det är då verklig självsäkerhet byggs upp."
 
 #: src/features/Chat/ChatHeaderFull.tsx:93
-#: src/features/Chat/ChatPage.tsx:342
+#: src/features/Chat/ChatPage.tsx:379
 #. js-lingui-explicit-id
 msgid "Global Chat"
 msgstr "Global chatt"
@@ -6653,12 +6658,12 @@ msgstr ""
 "Jag samtycker till behandlingen av barnets data (röst och transkriptioner) "
 "för att tillhandahålla tjänsten."
 
-#: src/features/Community/SupportPage.tsx:63
+#: src/features/Community/SupportPage.tsx:64
 #. js-lingui-explicit-id
 msgid "I don't like the service. Can I get a refund?"
 msgstr "Jag gillar inte tjänsten. Kan jag få en återbetalning?"
 
-#: src/features/Community/SupportPage.tsx:72
+#: src/features/Community/SupportPage.tsx:73
 #. js-lingui-explicit-id
 msgid "I don't like the service. I expected a different feature."
 msgstr "Jag gillar inte tjänsten. Jag förväntade mig en annan funktion."
@@ -6678,7 +6683,7 @@ msgstr ""
 msgid "I know these"
 msgstr "Jag kan dessa"
 
-#: src/features/Community/SupportPage.tsx:54
+#: src/features/Community/SupportPage.tsx:55
 #. js-lingui-explicit-id
 msgid "I paid, but I still don’t have access."
 msgstr "Jag har betalat, men jag har fortfarande inte tillgång."
@@ -6900,11 +6905,11 @@ msgstr "Om du inte förstår en fråga, bli inte panik - fråga artigt:"
 #: src/features/Community/SupportPage.tsx:37
 #. js-lingui-explicit-id
 msgid ""
-"If you have any questions regarding your payment history, you can write "
-"message here. We will answer you as soon as possible."
+"If you have any questions, you can write message here. I will answer you as "
+"soon as possible."
 msgstr ""
-"Om du har några frågor angående din betalningshistorik, kan du skriva ett "
-"meddelande här. Vi kommer att svara dig så snart som möjligt."
+"Om du har några frågor kan du skriva ett meddelande här. Jag kommer att "
+"svara dig så snart som möjligt."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:226
 #. js-lingui-explicit-id
@@ -8157,7 +8162,7 @@ msgstr "Inlärningsplan"
 msgid "Leave your message"
 msgstr "Lämna ditt meddelande"
 
-#: src/features/Community/SupportPage.tsx:115
+#: src/features/Community/SupportPage.tsx:116
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "Rättsliga:"
@@ -8516,7 +8521,7 @@ msgstr "Ange din tekniska stack (React/JS/HTML/CSS)"
 msgid "Message hidden due to policy violation."
 msgstr "Meddelandet är dolt på grund av policyöverträdelse."
 
-#: src/features/Navigation/AppNotificationsButton.tsx:78
+#: src/features/Navigation/AppNotificationsButton.tsx:88
 #. js-lingui-explicit-id
 msgid "Messages"
 msgstr "Meddelanden"
@@ -8939,7 +8944,7 @@ msgstr "Inga bloggar hittades"
 msgid "No charge will be made"
 msgstr "Ingen avgift kommer att debiteras"
 
-#: src/features/Chat/ChatPage.tsx:205
+#: src/features/Chat/ChatPage.tsx:211
 #. js-lingui-explicit-id
 msgid "No chats yet"
 msgstr "Inga chattar ännu"
@@ -9201,7 +9206,7 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Meddelandet skickades till utvecklingsteamet. Ledsen för det..."
 
 #: src/features/Header/NotificationsModal.tsx:33
-#: src/features/Navigation/AppNotificationsButton.tsx:61
+#: src/features/Navigation/AppNotificationsButton.tsx:60
 #: src/features/Settings/MyProfile.tsx:114
 #. js-lingui-explicit-id
 msgid "Notifications"
@@ -10368,7 +10373,7 @@ msgstr "Prioriterad support"
 #: src/features/Auth/AuthWallBasic.tsx:226
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
-#: src/features/Community/SupportPage.tsx:141
+#: src/features/Community/SupportPage.tsx:142
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
@@ -10496,7 +10501,7 @@ msgstr "Köp 5 timmar"
 msgid "Question"
 msgstr "Fråga"
 
-#: src/features/Navigation/AppNotificationsButton.tsx:84
+#: src/features/Navigation/AppNotificationsButton.tsx:79
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "Frågor"
@@ -12496,7 +12501,7 @@ msgstr "Användarvillkor"
 #: src/features/Auth/AuthWallBasic.tsx:231
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
-#: src/features/Community/SupportPage.tsx:128
+#: src/features/Community/SupportPage.tsx:129
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
@@ -14433,7 +14438,7 @@ msgstr ""
 "Ja. FluencyPal stöder flera språk och anpassar konversationer till ditt "
 "valda språk och kunskapsnivå. Tillgängliga språk inkluderar:"
 
-#: src/features/Community/SupportPage.tsx:64
+#: src/features/Community/SupportPage.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you are not satisfied with our service, you can request a refund. "
@@ -14742,7 +14747,7 @@ msgstr "Du har besvarat alla frågor. Skicka in dina svar nu och vänta på resu
 msgid "You have full access"
 msgstr "Du har fullständig åtkomst"
 
-#: src/features/Chat/ChatPage.tsx:213
+#: src/features/Chat/ChatPage.tsx:219
 #. js-lingui-explicit-id
 msgid "You have no chats yet."
 msgstr "Du har inga chattar ännu."
