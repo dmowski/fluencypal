@@ -6,6 +6,7 @@ import { getDailyQuestionImage } from './data';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { useLingui } from '@lingui/react';
 import { dailyQuestions } from './dailyQuestions';
+import { useSettings } from '../Settings/useSettings';
 
 export const DailyQuestionFullCard = ({
   question,
@@ -17,9 +18,16 @@ export const DailyQuestionFullCard = ({
   onClick?: () => void;
 }) => {
   const previewImageUrl = getDailyQuestionImage(question);
-  const spaceId = 'daily-question-' + question.id;
+  const settings = useSettings();
+  const languageToLearn = settings.languageCode || 'en';
+  const spaceIdPrefix = languageToLearn === 'en' ? '' : languageToLearn + '-';
+  const spaceId = `${spaceIdPrefix}daily-question-${question.id}`;
   const { i18n } = useLingui();
   const questionIndex = Object.values(dailyQuestions).findIndex((q) => q.id === question.id);
+
+  if (settings.loading) {
+    return <></>;
+  }
 
   return (
     <ChatProvider

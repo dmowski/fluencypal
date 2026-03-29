@@ -1,12 +1,12 @@
 # Live document with short/long term ideas
 
-## Hide "Debates"
-
-## Hide "Spaces" feature
-
 ## Daily Question - Community badge
 
 Add info that these questions are community. Everyone will see the answers
+
+## Hide "Debates"
+
+## Hide "Spaces" feature
 
 ## Start posting updates in Twitter, Thread
 
