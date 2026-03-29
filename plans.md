@@ -2,13 +2,6 @@
 
 ## Check notification badge for daily questions
 
-## Start posting updates in Twitter, Thread
-
-Restore "Screen Studio".
-
-- Record a video with reading and add 2 lines of text. Second post is Link to try
-- Record video about Grammar Improvement. Second post is Link to try
-
 ## Learning plan: AI call
 
 Sometime it doesn't follow Language.
