@@ -2,7 +2,7 @@
 
 ## Start posting updates in Twitter, Thread
 
-Create a took that scan github commits comments and creates summary and write in md file.
+Create a tool (Prompt) that scan github commits comments and creates summary and write in md file.
 Changes summaries since last summary and create change log and twitter posts
 
 ## Add Dashboard card: Follow my on social network
