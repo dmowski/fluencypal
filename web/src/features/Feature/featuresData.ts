@@ -285,6 +285,7 @@ This makes daily practice simple, consistent, and useful for real spoken English
     },
     {
       id: 'debates',
+      removed: true,
       title: i18n._('English Debate Practice with Other Learners'),
       subTitle: i18n._('Practice structured speaking with real opponents.'),
       metaTitle: i18n._('English Debate Practice with Other Learners | FluencyPal'),

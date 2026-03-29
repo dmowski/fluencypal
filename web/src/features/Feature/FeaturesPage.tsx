@@ -51,7 +51,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
             }}
           >
             {i18n._(
-              'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories, debates, and community learning.',
+              'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories, and community learning.',
             )}
           </Typography>
         </Stack>
@@ -66,56 +66,58 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
             padding: { xs: '24px 0 60px', md: '30px 0 76px' },
           }}
         >
-          {features.map((feature) => (
-            <Stack
-              key={feature.id}
-              sx={{
-                height: '100%',
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: '14px',
-                backgroundColor: 'rgba(255,255,255, 0.02)',
-                padding: { xs: '20px 20px', md: '30px' },
-                gap: '12px',
-                justifyContent: 'space-between',
-                boxShadow: 0,
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-              }}
-            >
-              <Typography
-                variant="h5"
-                component={'h2'}
+          {features
+            .filter((feature) => !feature.removed)
+            .map((feature) => (
+              <Stack
+                key={feature.id}
                 sx={{
-                  color: 'text.primary',
-                  lineHeight: 1.35,
-                  fontWeight: 800,
+                  height: '100%',
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  borderRadius: '14px',
+                  backgroundColor: 'rgba(255,255,255, 0.02)',
+                  padding: { xs: '20px 20px', md: '30px' },
+                  gap: '12px',
+                  justifyContent: 'space-between',
+                  boxShadow: 0,
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
                 }}
               >
-                {feature.title}
-              </Typography>
-              <Typography
-                sx={{
-                  color: 'text.secondary',
-                  lineHeight: 1.5,
-                  flexGrow: 1,
-                }}
-              >
-                {feature.subTitle}
-              </Typography>
-              <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
-                <Link
-                  href={`${urlStart}features/${feature.id}`}
+                <Typography
+                  variant="h5"
+                  component={'h2'}
                   sx={{
-                    textTransform: 'none',
-                    borderRadius: '10px',
-                    fontWeight: 600,
+                    color: 'text.primary',
+                    lineHeight: 1.35,
+                    fontWeight: 800,
                   }}
                 >
-                  {`${i18n._('Read more about')} ${feature.title}`}
-                </Link>
+                  {feature.title}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                    lineHeight: 1.5,
+                    flexGrow: 1,
+                  }}
+                >
+                  {feature.subTitle}
+                </Typography>
+                <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
+                  <Link
+                    href={`${urlStart}features/${feature.id}`}
+                    sx={{
+                      textTransform: 'none',
+                      borderRadius: '10px',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {`${i18n._('Read more about')} ${feature.title}`}
+                  </Link>
+                </Stack>
               </Stack>
-            </Stack>
-          ))}
+            ))}
         </Stack>
       </Stack>
 

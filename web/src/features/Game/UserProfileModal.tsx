@@ -243,35 +243,6 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
               </Stack>
             </Stack>
 
-            {!isMe && access.canUseCommunity && (
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: '10px',
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="info"
-                  size="large"
-                  disabled={isAlreadyAskedForBattle}
-                  startIcon={<Swords />}
-                  onClick={() => {
-                    if (access.isFullAppAccess) {
-                      setIsAskForDebates(true);
-                    } else {
-                      access.showPaymentModal();
-                    }
-                  }}
-                >
-                  {i18n._('Invite to a debate')}
-                </Button>
-
-                <UserMenu userId={stat.userId} />
-              </Stack>
-            )}
-
             <Stack
               sx={{
                 flexDirection: 'row',
@@ -401,24 +372,6 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 })}
               </Stack>
             </Stack>
-            {access.canUseCommunity && (
-              <Stack
-                sx={{
-                  width: '100%',
-                  gap: '6px',
-                }}
-              >
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {i18n._('Chat between you and {userName}', { userName })}
-                </Typography>
-                <UsersPrivateChat userIds={[stat.userId, userId]} />
-              </Stack>
-            )}
           </Stack>
         </CustomModal>
       )}

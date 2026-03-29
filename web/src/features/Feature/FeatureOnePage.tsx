@@ -4,7 +4,7 @@ import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
-import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeatureById } from './featuresData';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Button, Link, Stack, Typography } from '@mui/material';
@@ -23,6 +23,9 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
   }
 
   const urlStart = getUrlStart(lang);
+  const contactLink = `${urlStart}contacts`;
+
+  const isRemoved = feature.removed;
 
   return (
     <>
@@ -51,6 +54,41 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
             <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
               {feature.title}
             </Typography>
+
+            {isRemoved && (
+              <Stack
+                sx={{
+                  backgroundColor: 'rgba(211, 47, 47, 0.06)',
+                  padding: '12px 16px',
+                  borderRadius: '8px',
+                  border: '1px solid #d32f2f',
+                  alignItems: 'flex-start',
+                  gap: '12px',
+                }}
+              >
+                <Stack>
+                  <Typography
+                    sx={{
+                      color: '#d32f2f',
+                      fontWeight: 600,
+                    }}
+                    variant="h5"
+                  >
+                    {i18n._('This feature has been removed.')}
+                  </Typography>
+                  <Typography sx={{ color: '#d32f2f' }}>
+                    {i18n._(
+                      `I've removed this feature to focus on improving other aspects of FluencyPal. We appreciate your understanding and support. If you'd like to use this feature, please contact me.`,
+                    )}
+                  </Typography>
+                </Stack>
+
+                <Button variant="outlined" color="error" href={contactLink}>
+                  {i18n._('Contacts')}
+                </Button>
+              </Stack>
+            )}
+
             <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
               {feature.subTitle}
             </Typography>
