@@ -1,10 +1,6 @@
 # Live document with short/long term ideas
 
-## Do I need to handle "Community at all"
-
-Does it add value to the service? Not so
-
-## Start posting updates in Twitter
+## Start posting updates in Twitter, Thread
 
 ## Hide "Spaces" feature
 
@@ -12,7 +8,7 @@ Does it add value to the service? Not so
 
 ## Hide "Global Chat"
 
-## Instead of Chats Section, Just share my Twitter/Thread card as source of updates and discussion
+Instead of Chats Section, just share my Twitter/Thread card as source of updates and discussion
 
 ## Hide DM feature
 
