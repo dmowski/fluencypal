@@ -1,31 +1,22 @@
 # Live document with short/long term ideas
 
-## Add notifications about mentions in global chat
+## Do I need to handle "Community at all"
 
-Maybe combine all notification into one flow?
+Does it add value to the service? Not so
 
-## Community
+## Start posting updates in Twitter
 
-Validate messages with AI
+## Hide "Spaces" feature
 
-- On message submit, run client side AI checker
-  - If this message offensive, can be read for child
-    - If no, add flag: warning: 'Might be offensive'
-    - On UI show notification for user
+## Hide "Debates"
 
-- Add Legal Pages
-  - Community Guidelines
-  - AI Disclaimer
+## Hide "Global Chat"
 
-- Define Minimum Age
-  - 16+ recommended
-  - 13 minimum with consent
+## Instead of Chats Section, Just share my Twitter/Thread card as source of updates and discussion
 
-- Legal document: clarify Data Flows
-  - Firebase
-  - Stripe
-  - OpenAI
-  - Analytics
+## Hide DM feature
+
+How to handle support communication?
 
 ## Landing Page
 
