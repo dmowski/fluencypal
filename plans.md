@@ -7,6 +7,10 @@
 Sometime it doesn't follow Language.
 Can we use realtime-1.5 for it and skip lesson plan?
 
+## Add feature for Assess user's english level
+
+And allow to do several check. But second attempt allowed only for paid users and after a progress (100 messages)
+
 ## Landing Page
 
 Update first video landscape video
