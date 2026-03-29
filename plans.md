@@ -1,10 +1,14 @@
 # Live document with short/long term ideas
 
-## Start posting updates in Twitter, Thread
+## Hide "Debates"
 
 ## Hide "Spaces" feature
 
-## Hide "Debates"
+## Daily Question - Community badge
+
+Add info that these questions are community. Everyone will see the answers
+
+## Start posting updates in Twitter, Thread
 
 ## Hide "Global Chat"
 
@@ -13,6 +17,11 @@ Instead of Chats Section, just share my Twitter/Thread card as source of updates
 ## Hide DM feature
 
 How to handle support communication?
+
+## Learning plan: AI call
+
+Sometime it doesn't follow Language.
+Can we use realtime-1.5 for it and skip lesson plan?
 
 ## Landing Page
 
