@@ -2689,6 +2689,7 @@ msgstr "การสื่อสารและภาวะผู้นำ"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:118
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:25
 #: src/features/Goal/Quiz/QuizPage2.tsx:533
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:89
@@ -2704,7 +2705,6 @@ msgstr "การเข้าถึงชุมชน"
 
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -4770,26 +4770,24 @@ msgstr "อธิบายขั้นตอนของคุณ (ทำซ้�
 msgid "Explore All Features"
 msgstr "สำรวจคุณสมบัติทั้งหมด"
 
-#: src/features/Feature/FeaturesPage.tsx:53
-#. js-lingui-explicit-id
-msgid ""
-"Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, and community learning."
-msgstr ""
-"สำรวจคุณสมบัติของ FluencyPal สำหรับการฝึกพูดภาษาอังกฤษด้วย AI, "
-"บทเรียนไวยากรณ์แบบเฉพาะบุคคล, คำศัพท์, การเล่นบทบาทสมมติ, เรื่องราว "
-"และการเรียนรู้ร่วมกับชุมชน"
-
 #: src/features/SEO/metadata.ts:290
 #. js-lingui-explicit-id
 msgid ""
 "Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, debates, and community "
-"learning."
+"grammar, vocabulary lessons, role plays and stories."
 msgstr ""
-"สำรวจคุณสมบัติของ FluencyPal สำหรับการฝึกพูดภาษาอังกฤษโดยใช้ AI "
-"ปรับแต่งบทเรียนไวยากรณ์ คำศัพท์ การเล่นบทบาท เรื่องราว การอภิปราย "
-"และการเรียนรู้ร่วมกับชุมชน"
+"สำรวจคุณสมบัติของ FluencyPal สำหรับการฝึกพูดภาษาอังกฤษด้วย AI, "
+"บทเรียนไวยากรณ์และคำศัพท์ที่ปรับให้เป็นส่วนตัว, การเล่นบทบาทสมมติ "
+"และเรื่องราวต่างๆ"
+
+#: src/features/Feature/FeaturesPage.tsx:53
+#. js-lingui-explicit-id
+msgid ""
+"Explore FluencyPal features for AI English speaking practice, personalized "
+"grammar, vocabulary lessons, role plays, stories"
+msgstr ""
+"สำรวจคุณสมบัติของ FluencyPal สำหรับการฝึกพูดภาษาอังกฤษด้วย AI, "
+"บทเรียนไวยากรณ์ที่ปรับให้เหมาะกับคุณ, คำศัพท์, บทบาทสมมติ, เรื่องราว"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
@@ -4816,6 +4814,11 @@ msgstr "สำรวจเทคนิคในการสนทนาเกี
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "สำรวจชุมชน, เข้าร่วมการสนทนา, และเชื่อมต่อกับสมาชิกคนอื่นๆ"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:26
+#. js-lingui-explicit-id
+msgid "Explore the community, join discussions, and share your feedback!"
+msgstr "สำรวจชุมชน เข้าร่วมการสนทนา และแบ่งปันความคิดเห็นของคุณ!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -7870,11 +7873,6 @@ msgstr "เข้าร่วมกับผู้สมัครที่ได
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "เข้าร่วมห้องเพื่อพูดคุยเกี่ยวกับหัวข้อเฉพาะกับสมาชิกคนอื่น ๆ"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Join the community chat and connect with other members!"
-msgstr "เข้าร่วมการแชทของชุมชนและเชื่อมต่อกับสมาชิกคนอื่นๆ!"
-
 #: src/features/Feature/featuresData.ts:355
 #. js-lingui-explicit-id
 msgid ""
@@ -9688,6 +9686,11 @@ msgstr "เลือกหนึ่งหมวดหมู่หรือมา
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "เลือกคำเพื่อสร้างประโยค"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:40
+#. js-lingui-explicit-id
+msgid "Place to share your thoughts"
+msgstr "สถานที่ที่จะแบ่งปันความคิดของคุณ"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
@@ -15068,13 +15071,3 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
-
-#: src/features/Game/UserProfileModal.tsx:417
-#. js-lingui-explicit-id
-#~ msgid "Chat between you and {userName}"
-#~ msgstr "การสนทนาระหว่างคุณกับ {userName}"
-
-#: src/features/Game/UserProfileModal.tsx:268
-#. js-lingui-explicit-id
-#~ msgid "Invite to a debate"
-#~ msgstr "เชิญเข้าร่วมการอภิปราย"

@@ -2551,6 +2551,7 @@ msgstr "コミュニケーション & リーダーシップ"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:118
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:25
 #: src/features/Goal/Quiz/QuizPage2.tsx:533
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:89
@@ -2568,7 +2569,6 @@ msgstr "コミュニティアクセス"
 
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -4490,24 +4490,19 @@ msgstr "手順を説明する（再現、特定、修正、検証）"
 msgid "Explore All Features"
 msgstr "すべての機能を探索"
 
-#: src/features/Feature/FeaturesPage.tsx:53
-#. js-lingui-explicit-id
-msgid ""
-"Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, and community learning."
-msgstr ""
-"流暢さを向上させるためのAI英会話練習、個別化された文法、語彙レッスン、ロールプレイ、ストーリー、そしてコミュニティ学習のためのFluencyPalの機"
-"能を探検してください。"
-
 #: src/features/SEO/metadata.ts:290
 #. js-lingui-explicit-id
 msgid ""
 "Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, debates, and community "
-"learning."
-msgstr ""
-"AIによる英語スピーキング練習のためのFluencyPal機能を探る： "
-"パーソナライズされた文法、語彙のレッスン、ロールプレイ、ストーリー、ディベート、そしてコミュニティ学習。"
+"grammar, vocabulary lessons, role plays and stories."
+msgstr "AI英語スピーキング練習、パーソナライズされた文法、語彙レッスン、ロールプレイやストーリーのためのFluencyPal機能を探索する。"
+
+#: src/features/Feature/FeaturesPage.tsx:53
+#. js-lingui-explicit-id
+msgid ""
+"Explore FluencyPal features for AI English speaking practice, personalized "
+"grammar, vocabulary lessons, role plays, stories"
+msgstr "FluencyPalの機能を探る AI英語スピーキング練習、個別の文法、語彙レッスン、ロールプレイ、ストーリー"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
@@ -4534,6 +4529,11 @@ msgstr "ウェルネスとメンタルヘルスについて話すための技術
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "コミュニティを探索し、ディスカッションに参加し、他のメンバーとつながりましょう"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:26
+#. js-lingui-explicit-id
+msgid "Explore the community, join discussions, and share your feedback!"
+msgstr "コミュニティを探索し、ディスカッションに参加し、フィードバックを共有しましょう！"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -7327,11 +7327,6 @@ msgstr "面接のパフォーマンスを向上させた候補者に参加しま
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "特定のトピックについて他のメンバーと話し合うためにルームに参加してください"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Join the community chat and connect with other members!"
-msgstr "コミュニティチャットに参加して、他のメンバーとつながりましょう！"
-
 #: src/features/Feature/featuresData.ts:355
 #. js-lingui-explicit-id
 msgid ""
@@ -9057,6 +9052,11 @@ msgstr "一つ以上のカテゴリーを選んで、単語リストを作成し
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "文を組み立てるための単語を選ぶ"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:40
+#. js-lingui-explicit-id
+msgid "Place to share your thoughts"
+msgstr "あなたの考えを共有する場所"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
@@ -14180,13 +14180,3 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
-
-#: src/features/Game/UserProfileModal.tsx:417
-#. js-lingui-explicit-id
-#~ msgid "Chat between you and {userName}"
-#~ msgstr "{userName}とのチャット"
-
-#: src/features/Game/UserProfileModal.tsx:268
-#. js-lingui-explicit-id
-#~ msgid "Invite to a debate"
-#~ msgstr "討論に招待"

@@ -2714,6 +2714,7 @@ msgstr "Comunicazione e Leadership"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:118
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:25
 #: src/features/Goal/Quiz/QuizPage2.tsx:533
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:89
@@ -2729,7 +2730,6 @@ msgstr "Accesso alla comunità"
 
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:38
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
 #: src/features/Game/GameOnboarding.tsx:107
 #. js-lingui-explicit-id
@@ -4814,26 +4814,25 @@ msgstr "Spiega i tuoi passaggi (riproduci, isola, risolvi, verifica)"
 msgid "Explore All Features"
 msgstr "Esplora Tutte le Funzionalità"
 
-#: src/features/Feature/FeaturesPage.tsx:53
-#. js-lingui-explicit-id
-msgid ""
-"Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, and community learning."
-msgstr ""
-"Esplora le funzionalità di FluencyPal per la pratica dell'inglese con AI, "
-"lezioni personalizzate di grammatica, vocabolario, giochi di ruolo, storie "
-"e apprendimento comunitario."
-
 #: src/features/SEO/metadata.ts:290
 #. js-lingui-explicit-id
 msgid ""
 "Explore FluencyPal features for AI English speaking practice, personalized "
-"grammar, vocabulary lessons, role plays, stories, debates, and community "
-"learning."
+"grammar, vocabulary lessons, role plays and stories."
 msgstr ""
-"Esplora le funzionalità di FluencyPal per la pratica orale in inglese con "
-"intelligenza artificiale, lezioni personalizzate di grammatica, "
-"vocabolario, giochi di ruolo, storie, dibattiti e apprendimento comunitario."
+"Esplora le funzionalità di FluencyPal per la pratica di conversazione in "
+"inglese con IA, lezioni di grammatica personalizzate, vocabolario, giochi "
+"di ruolo e storie."
+
+#: src/features/Feature/FeaturesPage.tsx:53
+#. js-lingui-explicit-id
+msgid ""
+"Explore FluencyPal features for AI English speaking practice, personalized "
+"grammar, vocabulary lessons, role plays, stories"
+msgstr ""
+"Esplora le funzionalità di FluencyPal per la pratica di conversazione in "
+"inglese con AI, lezioni personalizzate di grammatica, vocabolario, giochi "
+"di ruolo, storie"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
@@ -4862,6 +4861,13 @@ msgid "Explore the community, join discussions, and connect with other members"
 msgstr ""
 "Esplora la comunità, partecipa alle discussioni e connettiti con altri "
 "membri"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:26
+#. js-lingui-explicit-id
+msgid "Explore the community, join discussions, and share your feedback!"
+msgstr ""
+"Esplora la community, partecipa alle discussioni e condividi il tuo "
+"feedback!"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
 #. js-lingui-explicit-id
@@ -7954,11 +7960,6 @@ msgstr "Unisciti ai candidati che hanno trasformato la loro performance nei coll
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Unisciti alle stanze per discutere di argomenti specifici con altri membri"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Join the community chat and connect with other members!"
-msgstr "Unisciti alla chat della comunità e connettiti con altri membri!"
-
 #: src/features/Feature/featuresData.ts:355
 #. js-lingui-explicit-id
 msgid ""
@@ -9794,6 +9795,11 @@ msgstr "Scegli una o più categorie per creare la tua lista di parole."
 #. js-lingui-explicit-id
 msgid "Pick words to build the sentence"
 msgstr "Scegli le parole per costruire la frase"
+
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:40
+#. js-lingui-explicit-id
+msgid "Place to share your thoughts"
+msgstr "Luogo per condividere i tuoi pensieri"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
@@ -15266,13 +15272,3 @@ msgstr ""
 "— è importante impegnarsi in questa breve conversazione prima di tuffarsi "
 "nei temi professionali. Ecco alcune frasi inglesi utili per iniziare "
 "l'intervista:"
-
-#: src/features/Game/UserProfileModal.tsx:417
-#. js-lingui-explicit-id
-#~ msgid "Chat between you and {userName}"
-#~ msgstr "Chat tra te e {userName}"
-
-#: src/features/Game/UserProfileModal.tsx:268
-#. js-lingui-explicit-id
-#~ msgid "Invite to a debate"
-#~ msgstr "Invita a un dibattito"

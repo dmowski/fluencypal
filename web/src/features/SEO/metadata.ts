@@ -288,7 +288,7 @@ export const generateMetadataInfo = ({
   if (currentPath === 'features' && !featureId) {
     title = i18n._('FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays');
     description = i18n._(
-      'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories, debates, and community learning.',
+      'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays and stories.',
     );
     keywords = [
       i18n._('FluencyPal features'),

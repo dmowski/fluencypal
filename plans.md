@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Hide "Spaces" feature
-
 ## Start posting updates in Twitter, Thread
 
 ## Hide "Global Chat"
