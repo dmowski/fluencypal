@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Check notification badge for daily questions
+
 ## Start posting updates in Twitter, Thread
 
 Restore "Screen Studio".
