@@ -2,13 +2,7 @@
 
 ## Start posting updates in Twitter, Thread
 
-## Hide "Global Chat"
-
-Instead of Chats Section, just share my Twitter/Thread card as source of updates and discussion
-
-## Hide DM feature
-
-How to handle support communication?
+## Add Dashboard card: Follow my on social network
 
 ## Learning plan: AI call
 

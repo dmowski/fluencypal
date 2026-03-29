@@ -2,7 +2,7 @@ import { Alert, Badge, Button, Stack, Typography } from '@mui/material';
 import { ChatSection } from './ChatSection';
 import { ChatProvider } from './useChat';
 import { useLingui } from '@lingui/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Headset } from 'lucide-react';
 import { useChatList } from './useChatList';
 import { useUrlState } from '../Url/useUrlState';
 import { useAuth } from '../Auth/useAuth';
@@ -17,6 +17,8 @@ import { ChatHeaderFull } from './ChatHeaderFull';
 import { useAccess } from '../Usage/useAccess';
 import { PageContainer } from '../Community/PageContainer';
 import { UsersPrivateChat } from './UsersPrivateChat';
+import { SupportPage } from '../Community/SupportPage';
+import { useState } from 'react';
 
 export const ChatPage = ({
   type,
@@ -28,6 +30,8 @@ export const ChatPage = ({
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
+
+  const [isShowSupportPage, setIsShowSupportPage] = useState(false);
 
   const [activeChatId, setActiveChatId] = useUrlState<string>('activeChatId', '', false);
   const [activePost, setActivePost] = useUrlState<string>('post', '', true);
@@ -202,17 +206,50 @@ export const ChatPage = ({
                 <>
                   {chatList.myChats.length === 0 ? (
                     <PageContainer>
-                      <Typography variant="h6">{i18n._('No chats yet')}</Typography>
-                      <Stack gap="20px">
-                        <Typography
-                          variant="body2"
+                      {!isShowSupportPage && (
+                        <>
+                          <Typography variant="h6">{i18n._('No chats yet')}</Typography>
+                          <Stack gap="20px">
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                opacity: 0.7,
+                              }}
+                            >
+                              {i18n._('You have no chats yet.')}
+                            </Typography>
+                          </Stack>
+                        </>
+                      )}
+
+                      {!isShowSupportPage && (
+                        <Stack
                           sx={{
-                            opacity: 0.7,
+                            alignItems: 'flex-start',
                           }}
                         >
-                          {i18n._('You have no chats yet.')}
-                        </Typography>
-                      </Stack>
+                          <Button
+                            variant="outlined"
+                            startIcon={<Headset />}
+                            onClick={() => setIsShowSupportPage(true)}
+                            sx={{
+                              marginTop: '20px',
+                            }}
+                          >
+                            {i18n._('Contact support')}
+                          </Button>
+                        </Stack>
+                      )}
+
+                      {isShowSupportPage && (
+                        <Stack
+                          sx={{
+                            padding: '10px 0 30px 0',
+                          }}
+                        >
+                          <SupportPage />
+                        </Stack>
+                      )}
                     </PageContainer>
                   ) : (
                     <Stack

@@ -3,7 +3,6 @@ import { useUrlState } from '../Url/useUrlState';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
-import { BattleSection } from '../Game/Battle/BattleSection';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -18,9 +17,9 @@ export const AppNotificationsButton: React.FC = () => {
   const newMessagesCount = chatList.myUnreadCount;
   const router = useRouter();
   const battles = useBattle();
-  const [mode, setMode] = useUrlState<'messages' | 'debates' | 'dailyQuestions'>(
+  const [mode, setMode] = useUrlState<'messages' | 'dailyQuestions'>(
     'inboxType',
-    'messages',
+    'dailyQuestions',
     false,
   );
 
@@ -75,10 +74,6 @@ export const AppNotificationsButton: React.FC = () => {
                 }}
               >
                 <Tab
-                  label={<TabLabel label={i18n._('Messages')} badgeNumber={newMessagesCount} />}
-                  value={'messages'}
-                />
-                <Tab
                   label={
                     <TabLabel
                       label={i18n._('Questions')}
@@ -88,6 +83,11 @@ export const AppNotificationsButton: React.FC = () => {
                   }
                   value={'dailyQuestions'}
                 />
+
+                <Tab
+                  label={<TabLabel label={i18n._('Messages')} badgeNumber={newMessagesCount} />}
+                  value={'messages'}
+                />
               </Tabs>
               <Stack
                 sx={{
@@ -95,7 +95,6 @@ export const AppNotificationsButton: React.FC = () => {
                 }}
               >
                 {mode === 'messages' && <ChatPage type={'private'} />}
-                {mode === 'debates' && <BattleSection />}
                 {mode === 'dailyQuestions' && <DailyQuestionNotificationsList />}
               </Stack>
             </Stack>

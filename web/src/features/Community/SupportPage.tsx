@@ -33,9 +33,9 @@ export const SupportPage = () => {
         >
           {i18n._(`Need help?`)}
         </Typography>
-        <Typography variant="caption">
+        <Typography>
           {i18n._(
-            `If you have any questions regarding your payment history, you can write message here. We will answer you as soon as possible.`,
+            `If you have any questions, you can write message here. I will answer you as soon as possible.`,
           )}
         </Typography>
       </Stack>
@@ -45,6 +45,7 @@ export const SupportPage = () => {
       <Stack
         sx={{
           gap: '10px',
+          display: 'none',
         }}
       >
         <Typography variant="h6">{i18n._('Frequently Asked Questions')}</Typography>
