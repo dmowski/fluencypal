@@ -8,6 +8,11 @@ import { useLingui } from '@lingui/react';
 import { dailyQuestions } from './dailyQuestions';
 import { useSettings } from '../Settings/useSettings';
 
+export const getDailyQuestionPrefix = (languageCode: string) => {
+  if (languageCode === 'en') return '';
+  return languageCode + '-';
+};
+
 export const DailyQuestionFullCard = ({
   question,
   badge,
@@ -20,7 +25,7 @@ export const DailyQuestionFullCard = ({
   const previewImageUrl = getDailyQuestionImage(question);
   const settings = useSettings();
   const languageToLearn = settings.languageCode || 'en';
-  const spaceIdPrefix = languageToLearn === 'en' ? '' : languageToLearn + '-';
+  const spaceIdPrefix = getDailyQuestionPrefix(languageToLearn);
   const spaceId = `${spaceIdPrefix}daily-question-${question.id}`;
   const { i18n } = useLingui();
   const questionIndex = Object.values(dailyQuestions).findIndex((q) => q.id === question.id);
