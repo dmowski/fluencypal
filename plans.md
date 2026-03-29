@@ -5,8 +5,6 @@
 Create a tool (Prompt) that scan github commits comments and creates summary and write in md file.
 Changes summaries since last summary and create change log and twitter posts
 
-## Add Dashboard card: Follow my on social network
-
 ## Learning plan: AI call
 
 Sometime it doesn't follow Language.
@@ -16,9 +14,21 @@ Can we use realtime-1.5 for it and skip lesson plan?
 
 Update first video landscape video
 
+## Quiz: Ask user to record using only Learning language
+
+## Quiz: Analyze user's language level
+
+## Quiz: Provide strategy of learning
+
 ## Emails
 
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel
+
+## Add Dashboard card: Follow my on social network
+
+## Check how user records work.
+
+Does it works fine?
 
 # Price
 
@@ -30,8 +40,3 @@ Re-think idea for price per hour
 
 - During buying hour, keep record in bd about price per hour
 - (Validate) Ensure that if we buy hours with negative balance, we use zero as baseline
-
-# Brainstorm ides
-
-- Keep transcripts in localStorage?
-- Keep userInfo in localStorage?
