@@ -125,10 +125,11 @@ function useProvideChatList(): ChatListContextType {
       const latestNotMineChanges =
         allMessagesObject[notMineMessages[notMineMessages.length - 1]] || null;
 
-      const unreadDailyRepliesCount = notMineMessages.filter((id) => {
+      const unreadDailyReplies = notMineMessages.filter((id) => {
         const isRead = myReadStatsData?.[spaceId]?.[id];
         return !isRead;
-      }).length;
+      });
+      const unreadDailyRepliesCount = unreadDailyReplies.length;
 
       if (latestNotMineChanges) {
         dailyQuestionsNotifications.push({

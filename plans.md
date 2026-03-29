@@ -1,6 +1,6 @@
 # Live document with short/long term ideas
 
-## Check notification badge for daily questions
+## Add replies to global chat into notifications panel
 
 ## Learning plan: AI call
 

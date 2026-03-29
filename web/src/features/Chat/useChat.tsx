@@ -228,9 +228,11 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
       allMessagesIdsAuthorsMap: allMessagesIdsAuthorsMap,
     };
 
-    console.log('Update metadata', propsChatMetadata.spaceId, partialMetadata);
-
-    setDoc(metaRef, partialMetadata, { merge: true });
+    const fullMetadata: UserChatMetadata = {
+      ...recentMetadata,
+      ...partialMetadata,
+    };
+    setDoc(metaRef, fullMetadata);
   };
 
   const likesRef = isCanRead
@@ -357,7 +359,8 @@ function useProvideChat(propsChatMetadata: UserChatMetadataStatic): ChatContextT
     } else {
       const messageDoc = doc(messagesRef, messageId);
       await deleteDoc(messageDoc);
-      await syncChatStats(messages.filter((msg) => msg.id !== messageId));
+      const resultedMessages = messages.filter((msg) => msg.id !== messageId);
+      await syncChatStats(resultedMessages);
     }
   };
 
