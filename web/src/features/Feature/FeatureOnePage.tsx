@@ -54,6 +54,9 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
             <Typography component={'h1'} variant="h2" sx={{ ...titleFontStyle, color: '#111' }}>
               {feature.title}
             </Typography>
+            <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
+              {feature.subTitle}
+            </Typography>
 
             {isRemoved && (
               <Stack
@@ -88,10 +91,6 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
                 </Button>
               </Stack>
             )}
-
-            <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
-              {feature.subTitle}
-            </Typography>
           </Stack>
           <Stack
             sx={{
