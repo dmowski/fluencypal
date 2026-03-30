@@ -1,11 +1,10 @@
 # Live document with short/long term ideas
 
-## Learning plan: AI call
+# Price
 
-Sometime it doesn't follow Language.
-Can we use realtime-1.5 for it and skip lesson plan?
+Add FAQ, that there is an option to buy "Hours", you need to write via email
 
-## Add feature for assess user's english level
+## Add feature for assess user's english level: Before/After
 
 And allow to do several check. But second attempt allowed only for paid users and after a progress (100 messages)
 
@@ -15,21 +14,20 @@ And allow to do several check. But second attempt allowed only for paid users an
 - Allow everyone to use it
 - Integrate into Quiz? Maybe keep only on dashboard
 
-## Landing Page
-
-Update first video landscape video
-
 ## Emails
 
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
 
-# Price
+Structure: About me, Goal of the project, Strategies of work with the project, how to contribute to the idea of the project
 
-Re-think idea for price per hour
+Plan:
 
-- (Validate) Keep collecting usage logs. Do not collect usage only if user is winner
-- Payment modal: add more info for how long 1 hour is enough
-  - Rename "Menu options"
+- Create email in .md file
+- Update Admin page with generate links of recent users. and generate links for create emails with placeholders.
+- When I clicked on email, mark link as clicked
 
-- During buying hour, keep record in bd about price per hour
-- (Validate) Ensure that if we buy hours with negative balance, we use zero as baseline
+## Learning plan: AI call
+
+- Tune prompt for language consistence (so it uses Polish along the way)
+- Improve transcript timeout (make it less pressing)
+- Validate costs of full goal conversation
