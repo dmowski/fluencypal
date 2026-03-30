@@ -48,20 +48,20 @@ export const ProgressChart = ({ data, metric, height = 260 }: ProgressChartProps
               <stop offset="100%" stopColor={metricColorMap[metric]} stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 5" stroke="rgba(255,255,255,0.18)" vertical={false} />
+          <CartesianGrid stroke="rgba(255,255,255,0.1)" vertical={false} />
           <XAxis
             dataKey="createdAt"
             tickFormatter={(value: number) => dayjs(value).format('MMM D')}
             minTickGap={24}
             tick={{ fill: 'rgba(233,238,252,0.72)', fontSize: 12 }}
-            axisLine={{ stroke: 'rgba(255,255,255,0.22)' }}
-            tickLine={{ stroke: 'rgba(255,255,255,0.22)' }}
+            axisLine={false}
+            tickLine={false}
           />
           <YAxis
             domain={[0, 100]}
             tick={{ fill: 'rgba(233,238,252,0.72)', fontSize: 12 }}
-            axisLine={{ stroke: 'rgba(255,255,255,0.22)' }}
-            tickLine={{ stroke: 'rgba(255,255,255,0.22)' }}
+            axisLine={false}
+            tickLine={false}
           />
           <Tooltip
             formatter={(value: number) => `${value.toFixed(0)}`}
