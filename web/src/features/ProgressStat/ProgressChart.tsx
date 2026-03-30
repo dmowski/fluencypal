@@ -18,6 +18,14 @@ interface ProgressChartProps {
   height?: number;
 }
 
+interface XAxisTickProps {
+  x?: number;
+  y?: number;
+  payload?: {
+    value: number;
+  };
+}
+
 const metricColorMap: Record<ProgressMetric, string> = {
   grammar: '#4da3ff',
   vocabulary: '#43e67b',
@@ -25,10 +33,34 @@ const metricColorMap: Record<ProgressMetric, string> = {
   confidence: '#8f7cff',
 };
 
-export const ProgressChart = ({ data, metric, height = 260 }: ProgressChartProps) => {
+export const ProgressChart = ({ data, metric, height = 400 }: ProgressChartProps) => {
   if (!data.length) {
     return <div style={{ color: '#c4c9d4' }}>No data yet.</div>;
   }
+
+  const firstCreatedAt = data[0]?.createdAt;
+  const lastCreatedAt = data[data.length - 1]?.createdAt;
+
+  const renderXAxisTick = ({ x = 0, y = 0, payload }: XAxisTickProps) => {
+    const value = payload?.value ?? 0;
+    const label = dayjs(value).format('MMM D');
+    const isFirst = value === firstCreatedAt;
+    const isLast = value === lastCreatedAt;
+    const textAnchor = isFirst ? 'start' : isLast ? 'end' : 'middle';
+    const adjustedX = isLast ? x + 20 : x;
+
+    return (
+      <text
+        x={adjustedX}
+        y={y + 12}
+        fill="rgba(233,238,252,0.72)"
+        fontSize="12"
+        textAnchor={textAnchor}
+      >
+        {label}
+      </text>
+    );
+  };
 
   return (
     <div style={{ width: '100%', height }}>
@@ -37,29 +69,33 @@ export const ProgressChart = ({ data, metric, height = 260 }: ProgressChartProps
           data={data}
           margin={{
             top: 8,
-            right: 14,
-            left: 0,
-            bottom: 6,
+            right: 2,
+            left: 10,
+            bottom: 18,
           }}
         >
           <defs>
             <linearGradient id="progressFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={metricColorMap[metric]} stopOpacity={0.18} />
-              <stop offset="100%" stopColor={metricColorMap[metric]} stopOpacity={0.02} />
+              <stop offset="0%" stopColor={metricColorMap[metric]} stopOpacity={0.44} />
+              <stop offset="58%" stopColor={metricColorMap[metric]} stopOpacity={0.24} />
+              <stop offset="100%" stopColor={metricColorMap[metric]} stopOpacity={0.1} />
             </linearGradient>
           </defs>
           <CartesianGrid stroke="rgba(255,255,255,0.1)" vertical={false} />
           <XAxis
             dataKey="createdAt"
-            tickFormatter={(value: number) => dayjs(value).format('MMM D')}
             minTickGap={24}
-            tick={{ fill: 'rgba(233,238,252,0.72)', fontSize: 12 }}
+            tick={renderXAxisTick}
+            tickMargin={12}
             axisLine={false}
             tickLine={false}
+            interval="preserveStartEnd"
           />
           <YAxis
             domain={[0, 100]}
             tick={{ fill: 'rgba(233,238,252,0.72)', fontSize: 12 }}
+            tickMargin={10}
+            width={42}
             axisLine={false}
             tickLine={false}
           />
