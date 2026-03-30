@@ -1,8 +1,8 @@
 # Live document with short/long term ideas
 
-## Add feature for assess user's english level: Before/After
+## Add feature for assess english level: Before/After
 
-And allow to do several check. But second attempt allowed only for paid users and after a progress (100 messages)
+And allow to do several check. But second attempt allowed only for "full access" level and after a progress (100 messages)
 
 - UI for "Before/After" cards
 - Find components that were used for Interview App
@@ -19,7 +19,7 @@ Structure: About me, Goal of the project, Strategies of work with the project, h
 Plan:
 
 - Create email in .md file
-- Update Admin page with generate links of recent users. and generate links for create emails with placeholders.
+- Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
 - When I clicked on email, mark link as clicked
 
 ## Learning plan: AI call
