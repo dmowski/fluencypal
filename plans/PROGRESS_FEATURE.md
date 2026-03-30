@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B partially complete
+Status: Phase A complete, Phase B complete
 
 ## Current Status
 
@@ -13,13 +13,11 @@ Completed:
 - `ProgressStat` base types and mock datasets exist.
 - Test UI includes a dedicated `progress` tab.
 - Minimal chart component is implemented and visually tuned.
-
-Partially completed:
-
-- Phase B chart playground work has started.
+- Phase B chart playground is implemented.
 - Metric switching is implemented.
-- Example datasets for normal, volatile, and empty states are implemented.
-- Chart visual direction is being tuned in the test page.
+- Raw vs smoothed display switching is implemented in the playground.
+- Example datasets for normal, volatile, sparse, and empty states are implemented.
+- Sample loading, processing, and locked states are implemented and reusable.
 
 Not started yet:
 
@@ -189,12 +187,12 @@ Deliverable: visual chart running in test UI with no AI dependency.
 
 ## Phase B - Playground controls and UI states
 
-Status: in progress
+Status: complete
 
 1. Add metric switcher (grammar/vocabulary/fluency/confidence). - done
-2. Add raw vs smoothed toggle. - not started
-3. Add examples for: normal, empty, sparse, loading, processing, locked. - partially done
-4. Keep this page intentionally flexible for PM/design tuning. - in progress
+2. Add raw vs smoothed toggle. - done
+3. Add examples for: normal, empty, sparse, loading, processing, locked. - done
+4. Keep this page intentionally flexible for PM/design tuning. - done
 
 Deliverable: complete visual playground for behavior and UX tuning.
 

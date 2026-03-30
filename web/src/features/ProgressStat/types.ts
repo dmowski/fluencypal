@@ -2,6 +2,10 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 
 export type ProgressMetric = 'grammar' | 'vocabulary' | 'fluency' | 'confidence';
 
+export type ProgressValueMode = 'raw' | 'smoothed';
+
+export type ProgressChartStatus = 'ready' | 'empty' | 'loading' | 'processing' | 'locked';
+
 export type ProgressSourceType = 'conversation' | 'role-play';
 
 export interface ProgressAssessmentResult {

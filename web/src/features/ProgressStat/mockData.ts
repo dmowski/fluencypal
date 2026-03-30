@@ -266,3 +266,33 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
     confidence: 69,
   },
 ];
+
+export const mockSparseProgressChartPoints: ProgressChartPoint[] = [
+  {
+    id: 'sp1',
+    createdAt: 1711000000000,
+    createdAtIso: '2024-03-21T11:06:40.000Z',
+    grammar: 34,
+    vocabulary: 41,
+    fluency: 31,
+    confidence: 38,
+  },
+  {
+    id: 'sp2',
+    createdAt: 1712800000000,
+    createdAtIso: '2024-04-11T07:06:40.000Z',
+    grammar: 56,
+    vocabulary: 53,
+    fluency: 48,
+    confidence: 50,
+  },
+  {
+    id: 'sp3',
+    createdAt: 1716400000000,
+    createdAtIso: '2024-05-22T23:06:40.000Z',
+    grammar: 72,
+    vocabulary: 70,
+    fluency: 67,
+    confidence: 69,
+  },
+];
