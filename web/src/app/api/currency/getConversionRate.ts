@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { getDB } from '../config/firebase';
+import { getSupportedCurrency } from './supportedCurrencies';
 
 const getToday = () => {
   return dayjs().format('YYYY-MM-DD');
@@ -77,7 +78,20 @@ export async function getConversionRate(props: {
     throw new Error('Both currencyFrom and currencyTo must be provided');
   }
 
-  const res = await fetch(`https://api.frankfurter.dev/v2/rate/${currencyFrom}/${currencyTo}`);
+  const supportedCurrencyFrom = getSupportedCurrency(currencyFrom);
+  const supportedCurrencyTo = getSupportedCurrency(currencyTo);
+
+  if (supportedCurrencyFrom !== currencyFrom) {
+    throw new Error(`Unsupported currency: ${currencyFrom}`);
+  }
+
+  if (supportedCurrencyTo !== currencyTo) {
+    throw new Error(`Unsupported currency: ${currencyTo}`);
+  }
+
+  const res = await fetch(
+    `https://api.frankfurter.dev/v2/rate/${supportedCurrencyFrom}/${supportedCurrencyTo}`,
+  );
 
   if (!res.ok) {
     console.error(res);
