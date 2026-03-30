@@ -29,6 +29,7 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 import { CONTACTS } from '@/features/Landing/Contact/data';
 import { FeatureItem } from './FeatureItem';
 import { useAccess } from '../useAccess';
+import { ContactList } from '@/features/Landing/Contact/ContactList';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -371,6 +372,17 @@ export const SubscriptionPaymentModal = () => {
             </Stack>
 
             <FaqSubscription />
+
+            <Stack>
+              <Typography
+                variant="h6"
+                component="h3"
+                sx={{ marginBottom: '10px', fontWeight: 400 }}
+              >
+                {i18n._('Need help or have questions?')}
+              </Typography>
+              <ContactList />
+            </Stack>
           </Stack>
         )}
         {!isShowConfirmPayments && (

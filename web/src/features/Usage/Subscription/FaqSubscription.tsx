@@ -1,3 +1,4 @@
+import { ContactList } from '@/features/Landing/Contact/ContactList';
 import { FaqItem } from '@/features/Landing/FAQ/FaqItem';
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
