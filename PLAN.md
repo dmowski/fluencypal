@@ -1,14 +1,20 @@
 # Live document with short/long term ideas
 
-## Add feature for assess english level: Before/After
+## Add feature for assess language level
 
-And allow to do several check. But second attempt allowed only for "full access" level and after a progress (100 messages)
+After each conversation - start ai analyzer that check:
 
-- UI for "Before/After" cards
-- Find components that were used for Interview App
-- Create Prototype on Dashboard, only for me
-- Allow everyone to use it
-- Integrate into Quiz? Maybe keep only on dashboard
+- Grammar Accuracy (% of sentences without errors)
+- Vocabulary Diversity (0–100) - Unique words / total words (Type-Token Ratio)
+- Fluency Score (0–100)
+- Confidence Score (0–100)
+
+Plan:
+
+- Add UI component with fake data (https://recharts.github.io/en-US/examples/)
+- Create UI for Empty state
+- Create UI for Locked state, and it's important to show how it will look at the end
+- Think about on how to inform user what it is
 
 ## Emails
 
