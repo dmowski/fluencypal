@@ -2,19 +2,20 @@
 
 ## Add feature for assess language level
 
-After each conversation - start ai analyzer that check:
+### Feature Summary:
 
-- Grammar Accuracy (% of sentences without errors)
-- Vocabulary Diversity (0–100) - Unique words / total words (Type-Token Ratio)
-- Fluency Score (0–100)
-- Confidence Score (0–100)
+The feature provides users with a clear, visual way to understand how their {Learning Language} skills evolve over time based on their actual conversations. By analyzing transcripts from practice sessions and other activities, the system generates a chart where progress is tracked across key abilities such as grammar accuracy, vocabulary diversity, fluency, and confidence. Instead of abstract feedback, users see measurable improvement tied directly to their effort, helping them recognize patterns like steady growth, plateaus, or sudden improvements after consistent practice.
 
-Plan:
+The primary goal is to increase motivation and trust by making progress visible and understandable. Users need to feel that their time spent speaking leads to real results, and this feature addresses that by translating conversations into meaningful performance indicators. It also helps users identify weaknesses without overwhelming them, guiding their focus toward areas that need improvement while reinforcing a sense of achievement as scores increase over time.
 
-- Add UI component with fake data (https://recharts.github.io/en-US/examples/)
-- Create UI for Empty state
-- Create UI for Locked state, and it's important to show how it will look at the end
-- Think about on how to inform user what it is
+### Metrics to track:
+
+-. Grammar Accuracy (% of sentences without errors)
+-. Vocabulary Diversity (0–100) - Unique words / total words (Type-Token Ratio)
+-. Fluency Score (0–100)
+-. Confidence Score (0–100)
+
+---
 
 ## Emails
 
