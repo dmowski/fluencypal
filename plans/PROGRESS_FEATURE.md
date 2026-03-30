@@ -2,7 +2,33 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Planning complete, implementation pending
+Status: Phase A complete, Phase B partially complete
+
+## Current Status
+
+Completed:
+
+- Phase A foundation scaffold is implemented.
+- Recharts is installed and in use.
+- `ProgressStat` base types and mock datasets exist.
+- Test UI includes a dedicated `progress` tab.
+- Minimal chart component is implemented and visually tuned.
+
+Partially completed:
+
+- Phase B chart playground work has started.
+- Metric switching is implemented.
+- Example datasets for normal, volatile, and empty states are implemented.
+- Chart visual direction is being tuned in the test page.
+
+Not started yet:
+
+- AI evaluator
+- Zod validation
+- Firestore persistence
+- Aggregation hook
+- Dashboard card
+- Production session integration
 
 ## 1) Goal and Product Outcome
 
@@ -129,16 +155,17 @@ Shape:
 
 Planned new files:
 
-- `web/src/features/ProgressStat/types.ts`
-- `web/src/features/ProgressStat/mockData.ts`
-- `web/src/features/ProgressStat/ProgressChart.tsx`
+- `web/src/features/ProgressStat/types.ts` - done
+- `web/src/features/ProgressStat/mockData.ts` - done
+- `web/src/features/ProgressStat/ProgressChart.tsx` - done
 - `web/src/features/ProgressStat/ProgressCard.tsx`
 - `web/src/features/ProgressStat/useProgressEvaluation.ts`
 - `web/src/features/ProgressStat/useProgressAggregation.ts`
 
 Planned updates:
 
-- `web/src/app/testUi/testComponents/TestPage.tsx`
+- `web/src/app/testUi/testComponents/TestPage.tsx` - done
+- `web/src/app/testUi/testComponents/ProgressStatTest.tsx` - added, done
 - `web/src/features/Firebase/firebaseDb.ts`
 - `web/firestore.rules`
 - `web/src/features/Dashboard/Dashboard.tsx` (insert card in controlled location)
@@ -151,19 +178,23 @@ Optional helper file if parser complexity grows:
 
 ## Phase A - Foundation and playground scaffold
 
-1. Create `ProgressStat` module with strict types.
-2. Add mock dataset with realistic variability across sessions.
-3. Install `recharts`; build minimal `ProgressChart` component.
-4. Add a `progress` tab to `TestPage` and render chart with mock data.
+Status: done
+
+1. Create `ProgressStat` module with strict types. - done
+2. Add mock dataset with realistic variability across sessions. - done
+3. Install `recharts`; build minimal `ProgressChart` component. - done
+4. Add a `progress` tab to `TestPage` and render chart with mock data. - done
 
 Deliverable: visual chart running in test UI with no AI dependency.
 
 ## Phase B - Playground controls and UI states
 
-1. Add metric switcher (grammar/vocabulary/fluency/confidence).
-2. Add raw vs smoothed toggle.
-3. Add examples for: normal, empty, sparse, loading, processing, locked.
-4. Keep this page intentionally flexible for PM/design tuning.
+Status: in progress
+
+1. Add metric switcher (grammar/vocabulary/fluency/confidence). - done
+2. Add raw vs smoothed toggle. - not started
+3. Add examples for: normal, empty, sparse, loading, processing, locked. - partially done
+4. Keep this page intentionally flexible for PM/design tuning. - in progress
 
 Deliverable: complete visual playground for behavior and UX tuning.
 
