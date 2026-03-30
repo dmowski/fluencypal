@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import { TestForm } from './TestForm';
 import { UiCards } from './UiCards';
 import { TranscriptTest } from '@/features/Transcript/TranscriptTest';
+import { ProgressStatTest } from './ProgressStatTest';
 
 export const TestPage = () => {
   const testPages: Record<string, React.ReactNode> = {
@@ -14,6 +15,7 @@ export const TestPage = () => {
     form: <TestForm />,
     uiCard: <UiCards />,
     transcript: <TranscriptTest />,
+    progress: <ProgressStatTest />,
   };
 
   const [page, setPage] = useUrlState<string>('testPage', 'upload', true);
