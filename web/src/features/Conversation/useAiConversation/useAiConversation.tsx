@@ -460,6 +460,8 @@ ${voiceInstructions}
       isMutedInternal = true;
     }
 
+    toggleVolume(true);
+
     const isVolumeOnInternal = true;
 
     console.log('START', {
