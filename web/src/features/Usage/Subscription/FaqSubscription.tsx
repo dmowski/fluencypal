@@ -17,6 +17,25 @@ export const FaqSubscription = () => {
       >
         <FaqItem
           info={{
+            question: i18n._('Is it possible to purchase access without expiration date?'),
+            answer: (
+              <Stack
+                sx={{
+                  gap: '10px',
+                }}
+              >
+                <Typography>
+                  {i18n._(
+                    'Yes, I can provide you with a custom offer for full access based on usage. Please contact me through the support chat to discuss your needs and receive a personalized offer.',
+                  )}
+                </Typography>
+              </Stack>
+            ),
+          }}
+        />
+
+        <FaqItem
+          info={{
             question: i18n._('Call duration limits?'),
             answer: (
               <Stack

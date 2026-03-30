@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-# Price
-
-Add FAQ, that there is an option to buy "Hours", you need to write via email
-
 ## Add feature for assess user's english level: Before/After
 
 And allow to do several check. But second attempt allowed only for paid users and after a progress (100 messages)
