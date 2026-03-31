@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete
+Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete, Phase F complete
 
 ## Current Status
 
@@ -229,6 +229,8 @@ Status: complete
 Deliverable: persisted raw per-session stats for conversation and role-play.
 
 ## Phase F - Aggregation utility
+
+Status: complete
 
 1. Implement `useProgressAggregation`:
    - sort by time asc,

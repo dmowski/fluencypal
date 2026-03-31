@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { ProgressChart } from '@/features/ProgressStat/ProgressChart';
 import {
-  mockProgressChartPoints,
+  mockProgressStats,
   mockSparseProgressChartPoints,
   mockProgressWaveChartPoints,
 } from '@/features/ProgressStat/mockData';
@@ -24,6 +24,8 @@ import {
   ProgressValueMode,
 } from '@/features/ProgressStat/types';
 import { SupportedLanguage, supportedLanguagesToLearn } from '@/features/Lang/lang';
+import { useProgressAggregation } from '@/features/ProgressStat/useProgressAggregation';
+import { useProgressStats } from '@/features/ProgressStat/useProgressStats';
 
 type DemoMode = 'steady' | 'wave' | 'sparse' | 'empty' | 'loading' | 'processing' | 'locked';
 
@@ -141,19 +143,18 @@ export const ProgressStatTest = () => {
   const [evalError, setEvalError] = useState<string>('');
 
   const progressEvaluation = useProgressEvaluation();
+  const { progressStats, loadingProgressStats } = useProgressStats();
   const chartHeight = 400;
 
-  const baseData = useMemo(() => {
-    if (mode === 'wave') return mockProgressWaveChartPoints;
-    if (mode === 'sparse') return mockSparseProgressChartPoints;
-    if (mode === 'empty') return [];
-    if (mode === 'processing' || mode === 'locked' || mode === 'loading') {
-      return mockProgressChartPoints;
-    }
-    return mockProgressChartPoints;
-  }, [mode]);
+  const steadyData = useProgressAggregation(mockProgressStats);
+  const firestoreData = useProgressAggregation(progressStats);
 
-  const data = useMemo(() => buildSmoothedChartPoints(baseData, 5), [baseData]);
+  const data = useMemo(() => {
+    if (mode === 'wave') return buildSmoothedChartPoints(mockProgressWaveChartPoints, 5);
+    if (mode === 'sparse') return buildSmoothedChartPoints(mockSparseProgressChartPoints, 5);
+    if (mode === 'empty') return [];
+    return steadyData;
+  }, [mode, steadyData]);
 
   const chartStatus: ProgressChartStatus =
     mode === 'loading' || mode === 'processing' || mode === 'locked' || mode === 'empty'
@@ -168,7 +169,7 @@ export const ProgressStatTest = () => {
         valueMode={valueMode}
         height={chartHeight}
         status={chartStatus}
-        emptyPreviewData={buildSmoothedChartPoints(mockProgressChartPoints, 5)}
+        emptyPreviewData={steadyData}
       />
     );
   };
@@ -387,6 +388,46 @@ export const ProgressStatTest = () => {
           fullWidth
           InputProps={{ readOnly: true }}
         />
+      </Stack>
+
+      <Stack
+        sx={{
+          borderRadius: '16px',
+          border: '1px solid rgba(255,255,255,0.12)',
+          background: 'linear-gradient(180deg, rgba(10,18,30,0.88) 0%, rgba(7,13,24,0.94) 100%)',
+          padding: '20px',
+          gap: '12px',
+        }}
+      >
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '12px' }}>
+          <Typography variant="h6" sx={{ color: '#f0f4ff' }}>
+            Firestore live data (aggregated)
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.45)' }}>
+            {loadingProgressStats
+              ? 'Loading...'
+              : `${progressStats.length} record${progressStats.length !== 1 ? 's' : ''}`}
+          </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            borderRadius: '12px',
+            border: '1px solid rgba(255,255,255,0.08)',
+            padding: '40px 45px 30px 20px',
+          }}
+        >
+          <ProgressChart
+            data={firestoreData}
+            metric={metric}
+            valueMode={valueMode}
+            height={chartHeight}
+            status={
+              loadingProgressStats ? 'loading' : firestoreData.length === 0 ? 'empty' : 'ready'
+            }
+            emptyPreviewData={steadyData}
+          />
+        </Stack>
       </Stack>
     </Stack>
   );
