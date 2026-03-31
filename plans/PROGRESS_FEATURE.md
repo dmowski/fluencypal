@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete
+Status: Phase A complete, Phase B complete, Phase C complete
 
 ## Current Status
 
@@ -21,7 +21,6 @@ Completed:
 
 Not started yet:
 
-- AI evaluator
 - Zod validation
 - Firestore persistence
 - Aggregation hook
@@ -198,10 +197,12 @@ Deliverable: complete visual playground for behavior and UX tuning.
 
 ## Phase C - AI evaluator contract
 
-1. Implement `useProgressEvaluation` using `useTextAi`.
-2. Build strict prompt with hard JSON-only response requirements.
-3. Return structure with 4 metrics + `assessmentConfidence`.
-4. Add evaluator controls to test UI (textarea, language, source fields, run button, debug panel).
+Status: complete
+
+1. Implement `useProgressEvaluation` using `useTextAi`. - done
+2. Build strict prompt with hard JSON-only response requirements. - done
+3. Return structure with 4 metrics + `assessmentConfidence`. - done
+4. Add evaluator controls to test UI (textarea, language, source fields, run button, debug panel). - done
 
 Deliverable: paste transcript -> run AI -> inspect raw and parsed output in test UI.
 
