@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete, Phase F complete
+Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete, Phase F complete, Phase G complete
 
 ## Current Status
 
@@ -243,6 +243,8 @@ Status: complete
 Deliverable: stable chart series from raw session records.
 
 ## Phase G - End-to-end manual verification loop
+
+Status: complete
 
 1. Test page flow:
    - paste transcript,
