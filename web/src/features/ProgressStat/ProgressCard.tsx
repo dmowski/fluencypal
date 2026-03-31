@@ -1,7 +1,7 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { MenuItem, Select, Stack, Typography } from '@mui/material';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { ProgressChart } from './ProgressChart';
 import { mockProgressStats } from './mockData';
@@ -10,43 +10,85 @@ import { useProgressStats } from './useProgressStats';
 import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
-import { ChevronDown, Dot } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 
 const imageUrl =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774984465436-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
 
+const metricColorMap: Record<ProgressMetric, string> = {
+  grammar: '#4da3ff',
+  vocabulary: '#43e67b',
+  fluency: '#ff9a3d',
+  confidence: '#8f7cff',
+};
+
 export const ProgressCard = () => {
   const { i18n } = useLingui();
-  const [metric, setMetric] = useState<ProgressMetric>('grammar');
+  const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
 
   const { progressStats, loadingProgressStats } = useProgressStats();
   const firestoreChartData = useProgressAggregation(progressStats);
   const mockChartData = useProgressAggregation(mockProgressStats);
 
-  const isMocked = true;
+  const useMockDataSource = true;
   const isLocked = false;
-  const chartData = isMocked ? mockChartData : firestoreChartData;
+  const chartData = useMockDataSource ? mockChartData : firestoreChartData;
 
   const status = useMemo<ProgressChartStatus>(() => {
     if (isLocked) {
       return 'locked';
     }
 
-    if (!isMocked && loadingProgressStats) {
+    if (!useMockDataSource && loadingProgressStats) {
       return 'loading';
     }
 
     return chartData.length === 0 ? 'empty' : 'ready';
-  }, [chartData.length, loadingProgressStats, isLocked, isMocked]);
+  }, [chartData.length, loadingProgressStats, isLocked, useMockDataSource]);
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const metricLabelMap: Record<ProgressMetric, string> = {
+    grammar: i18n._('Grammar'),
+    vocabulary: i18n._('Vocabulary'),
+    fluency: i18n._('Fluency'),
+    confidence: i18n._('Confidence'),
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const metricOptions: Array<{ metric: ProgressMetric; label: string }> = [
+    { metric: 'grammar', label: metricLabelMap.grammar },
+    { metric: 'vocabulary', label: metricLabelMap.vocabulary },
+    { metric: 'fluency', label: metricLabelMap.fluency },
+    { metric: 'confidence', label: metricLabelMap.confidence },
+  ];
+
+  const averageLevel = useMemo(() => {
+    if (!chartData.length) {
+      return 0;
+    }
+
+    const metricKey =
+      valueMode === 'smoothed'
+        ? (`${selectedMetric}Smoothed` as
+            | 'grammarSmoothed'
+            | 'vocabularySmoothed'
+            | 'fluencySmoothed'
+            | 'confidenceSmoothed')
+        : selectedMetric;
+
+    const values = chartData
+      .map((point) => point[metricKey])
+      .filter((value): value is number => typeof value === 'number');
+
+    if (!values.length) {
+      return 0;
+    }
+
+    const score = values.reduce((sum, value) => sum + value, 0) / values.length;
+    return Math.round(score);
+  }, [chartData, selectedMetric, valueMode]);
+
+  const onSelectedMetricChange = (metric: ProgressMetric) => {
+    setSelectedMetric(metric);
   };
 
   return (
@@ -100,7 +142,7 @@ export const ProgressCard = () => {
                   fontWeight: 600,
                 }}
               >
-                60%
+                {averageLevel}%
               </Typography>
               <Typography
                 variant="body2"
@@ -109,43 +151,78 @@ export const ProgressCard = () => {
                   paddingBottom: '4px',
                 }}
               >
-                Average Level
+                {i18n._('Average Level')}
               </Typography>
             </Stack>
 
             <Stack>
-              <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                color="info"
-                variant="outlined"
-                endIcon={<ChevronDown size={'18px'} />}
-              >
-                Fluency
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                slotProps={{
-                  list: {
-                    'aria-labelledby': 'basic-button',
+              <Select
+                value={selectedMetric}
+                onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
+                displayEmpty
+                size="small"
+                IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
+                sx={{
+                  minWidth: '170px',
+                  color: '#f7f9ff',
+                  borderRadius: '10px',
+                  '.MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'rgba(255,255,255,0.24)',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'rgba(255,255,255,0.3)',
+                  },
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'rgba(77, 163, 255, 0.3)',
                   },
                 }}
+                renderValue={(value) => (
+                  <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
+                    <Stack
+                      sx={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: metricColorMap[value],
+                      }}
+                    />
+                    <Typography variant="body2">{metricLabelMap[value]}</Typography>
+                  </Stack>
+                )}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu>
+                {metricOptions.map((option) => (
+                  <MenuItem key={option.metric} value={option.metric}>
+                    <Stack
+                      sx={{
+                        width: '100%',
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        gap: '12px',
+                        padding: '6px 5px',
+                      }}
+                    >
+                      <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
+                        <Stack
+                          sx={{
+                            width: '8px',
+                            height: '8px',
+                            borderRadius: '50%',
+                            backgroundColor: metricColorMap[option.metric],
+                          }}
+                        />
+                        <Typography variant="body1">{option.label}</Typography>
+                      </Stack>
+                      {selectedMetric === option.metric && <Check size={16} />}
+                    </Stack>
+                  </MenuItem>
+                ))}
+              </Select>
             </Stack>
           </Stack>
           <ProgressChart
             data={chartData}
-            metric={metric}
+            metric={selectedMetric}
             valueMode={valueMode}
             status={status}
             height={320}
