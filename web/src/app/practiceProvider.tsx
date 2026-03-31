@@ -32,6 +32,7 @@ import { Old_Standard_TT } from 'next/font/google';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import { DailyTasksProvider } from '@/features/Tasks/useDailyTasks';
 import { GrammarImprovementProvider } from '@/features/Dashboard/Grammar/useGrammarImprovement';
+import { ProgressStatsProvider } from '@/features/ProgressStat/useProgressStats';
 
 const oldStandardTT = Old_Standard_TT({
   subsets: ['latin'],
@@ -62,30 +63,32 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                       <AudioCacheProvider>
                                         <AiUserInfoProvider>
                                           <GrammarImprovementProvider>
-                                            <WordsProvider>
-                                              <CorrectionsProvider>
-                                                <ChatHistoryProvider>
-                                                  <RulesProvider>
-                                                    <TasksProvider>
-                                                      <PlanProvider>
-                                                        <AiConversationProvider>
-                                                          <BattleProvider>
-                                                            <LessonPlanProvider>
-                                                              <StoriesProvider>
-                                                                <CommunitySpaceProvider>
-                                                                  {children}
-                                                                  <GlobalModals />
-                                                                </CommunitySpaceProvider>
-                                                              </StoriesProvider>
-                                                            </LessonPlanProvider>
-                                                          </BattleProvider>
-                                                        </AiConversationProvider>
-                                                      </PlanProvider>
-                                                    </TasksProvider>
-                                                  </RulesProvider>
-                                                </ChatHistoryProvider>
-                                              </CorrectionsProvider>
-                                            </WordsProvider>
+                                            <ProgressStatsProvider>
+                                              <WordsProvider>
+                                                <CorrectionsProvider>
+                                                  <ChatHistoryProvider>
+                                                    <RulesProvider>
+                                                      <TasksProvider>
+                                                        <PlanProvider>
+                                                          <AiConversationProvider>
+                                                            <BattleProvider>
+                                                              <LessonPlanProvider>
+                                                                <StoriesProvider>
+                                                                  <CommunitySpaceProvider>
+                                                                    {children}
+                                                                    <GlobalModals />
+                                                                  </CommunitySpaceProvider>
+                                                                </StoriesProvider>
+                                                              </LessonPlanProvider>
+                                                            </BattleProvider>
+                                                          </AiConversationProvider>
+                                                        </PlanProvider>
+                                                      </TasksProvider>
+                                                    </RulesProvider>
+                                                  </ChatHistoryProvider>
+                                                </CorrectionsProvider>
+                                              </WordsProvider>
+                                            </ProgressStatsProvider>
                                           </GrammarImprovementProvider>
                                         </AiUserInfoProvider>
                                       </AudioCacheProvider>

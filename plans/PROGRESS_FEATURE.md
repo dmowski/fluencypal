@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete
+Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete
 
 ## Current Status
 
@@ -21,7 +21,6 @@ Completed:
 
 Not started yet:
 
-- Firestore persistence
 - Aggregation hook
 - Dashboard card
 - Production session integration
@@ -220,10 +219,12 @@ Deliverable: resilient parser with debuggable strict validation path.
 
 ## Phase E - Firestore integration (raw session stats only)
 
-1. Extend `firebaseDb.ts` with typed collection/doc helpers for progress stats.
-2. Implement create/upsert and language-filtered read query helpers.
-3. Use deterministic doc ID to avoid duplicate writes for same source/version.
-4. Update Firestore rules for `users/{userId}/progressStats/{statId}` with owner-only read/write.
+Status: complete
+
+1. Extend `firebaseDb.ts` with typed collection/doc helpers for progress stats. - done
+2. Implement create/upsert and language-filtered read query helpers. - done
+3. Use deterministic doc ID to avoid duplicate writes for same source/version. - done
+4. Update Firestore rules for `users/{userId}/progressStats/{statId}` with owner-only read/write. - done
 
 Deliverable: persisted raw per-session stats for conversation and role-play.
 

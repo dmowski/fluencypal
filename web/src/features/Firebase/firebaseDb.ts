@@ -24,7 +24,6 @@ import {
   GameUsersPoints,
 } from '@/features/Game/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
-import { DailyQuestionAnswer, DailyQuestionLike } from '@/features/DailyQuestion/types';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import {
   ChatLike,
@@ -37,6 +36,7 @@ import { Story, StoryStat, StoryState } from '@/features/Sentence/types';
 import { AudioCache } from '@/features/Audio/types';
 import { CommunitySpace, CommunitySpaceSettings } from '@/features/Community/types';
 import { Homework } from '@/features/Homework/homework';
+import { ProgressStat } from '@/features/ProgressStat/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -114,6 +114,9 @@ export const db = {
 
     dailyTaskProgress: (userId?: string) =>
       userId ? dataPointCollection<DailyTaskProgress>(`users/${userId}/dailyTasks`) : null,
+
+    progressStats: (userId?: string) =>
+      userId ? dataPointCollection<ProgressStat>(`users/${userId}/progressStats`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -190,6 +193,11 @@ export const db = {
     interviewQuizSurvey: (userId?: string, interviewId?: string) =>
       userId && interviewId
         ? dataPointDoc<InterviewQuizSurvey>(`users/${userId}/interview/${interviewId}`)
+        : null,
+
+    progressStat: (userId?: string, statId?: string) =>
+      userId && statId
+        ? dataPointDoc<ProgressStat>(`users/${userId}/progressStats/${statId}`)
         : null,
   },
 };
