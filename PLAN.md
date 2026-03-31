@@ -2,18 +2,26 @@
 
 ## Add feature for assess language level
 
-### Feature Summary:
+- Prof analysis: Keep original content
+- Prof analysis: Add AI description to prof their rate
 
-The feature provides users with a clear, visual way to understand how their {Learning Language} skills evolve over time based on their actual conversations. By analyzing transcripts from practice sessions and other activities, the system generates a chart where progress is tracked across key abilities such as grammar accuracy, vocabulary diversity, fluency, and confidence. Instead of abstract feedback, users see measurable improvement tied directly to their effort, helping them recognize patterns like steady growth, plateaus, or sudden improvements after consistent practice.
+- Validate if content is in target language
 
-The primary goal is to increase motivation and trust by making progress visible and understandable. Users need to feel that their time spent speaking leads to real results, and this feature addresses that by translating conversations into meaningful performance indicators. It also helps users identify weaknesses without overwhelming them, guiding their focus toward areas that need improvement while reinforcing a sense of achievement as scores increase over time.
+- Add hook to trigger analyzing user's content
+  - Find places where to trigger. add comments // TODO: TriggerProgressAnalysis
+    - web/src/features/Conversation/useAiConversation/useConversationStat.ts: on each talk mode
+    - web/src/features/Chat/useChat.tsx: addMessage
 
-### Metrics to track:
+- How to process historical data
+  - Chats with AI
+    - Create bg script (hook) that periodically check what's needed to process. Like 3 chats per session
+  - Community activities: Daily questions, Private messages, global chats
+    - Create bg script (hook) that periodically check what's needed to process. Like 3 chats per session
 
--. Grammar Accuracy (% of sentences without errors)
--. Vocabulary Diversity (0–100) - Unique words / total words (Type-Token Ratio)
--. Fluency Score (0–100)
--. Confidence Score (0–100)
+- Full size report
+  - On Dashboard card show full data
+  - Show Summary
+  - Use ai to generate proposal on how to correct practice
 
 ---
 
