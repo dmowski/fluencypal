@@ -23,13 +23,11 @@ export interface ProgressStat extends ProgressAssessmentResult {
   sourceId: string;
   textLength: number;
   algorithmVersion: string;
-  createdAt: number;
   createdAtIso: string;
 }
 
 export interface ProgressChartPoint {
   id: string;
-  createdAt: number;
   createdAtIso: string;
   grammar: number;
   vocabulary: number;

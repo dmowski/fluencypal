@@ -15,7 +15,6 @@ export interface ProgressAggregationOptions {
 interface DailyAggregate {
   dayKey: string;
   count: number;
-  createdAt: number;
   createdAtIso: string;
   grammar: number;
   vocabulary: number;
@@ -38,7 +37,6 @@ const aggregateByDay = (stats: ProgressStat[]): ProgressChartPoint[] => {
       dayAggregates.set(dayKey, {
         dayKey,
         count: 1,
-        createdAt: stat.createdAt,
         createdAtIso: stat.createdAtIso,
         grammar: stat.grammar,
         vocabulary: stat.vocabulary,
@@ -54,15 +52,13 @@ const aggregateByDay = (stats: ProgressStat[]): ProgressChartPoint[] => {
     current.fluency += stat.fluency;
     current.confidence += stat.confidence;
 
-    if (stat.createdAt > current.createdAt) {
-      current.createdAt = stat.createdAt;
+    if (stat.createdAtIso > current.createdAtIso) {
       current.createdAtIso = stat.createdAtIso;
     }
   });
 
   return Array.from(dayAggregates.values()).map((daily) => ({
     id: `day_${daily.dayKey}`,
-    createdAt: daily.createdAt,
     createdAtIso: daily.createdAtIso,
     grammar: daily.grammar / daily.count,
     vocabulary: daily.vocabulary / daily.count,
@@ -76,7 +72,7 @@ function aggregateStats(
   minConfidence: number | undefined,
   windowSize: number,
 ): ProgressChartPoint[] {
-  const sorted = [...stats].sort((a, b) => a.createdAt - b.createdAt);
+  const sorted = [...stats].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso));
   const filtered =
     minConfidence !== undefined
       ? sorted.filter((s) => s.assessmentConfidence >= minConfidence)

@@ -81,14 +81,14 @@ export const ProgressChart = ({
   const hasPreferredData = data.some((point) => typeof point[preferredDataKey] === 'number');
   const chartDataKey = hasPreferredData ? preferredDataKey : rawMetricMap[metric];
 
-  const firstCreatedAt = previewData[0]?.createdAt;
-  const lastCreatedAt = previewData[previewData.length - 1]?.createdAt;
+  const firstCreatedAtIso = previewData[0]?.createdAtIso;
+  const lastCreatedAtIso = previewData[previewData.length - 1]?.createdAtIso;
 
   const renderXAxisTick = ({ x = 0, y = 0, payload }: XAxisTickProps) => {
-    const value = payload?.value ?? 0;
+    const value = String(payload?.value ?? '');
     const label = dayjs(value).format('MMM D');
-    const isFirst = value === firstCreatedAt;
-    const isLast = value === lastCreatedAt;
+    const isFirst = value === firstCreatedAtIso;
+    const isLast = value === lastCreatedAtIso;
     const textAnchor = isFirst ? 'start' : isLast ? 'end' : 'middle';
     const adjustedX = isLast ? x + 20 : x;
 
@@ -133,7 +133,7 @@ export const ProgressChart = ({
               </defs>
               <CartesianGrid stroke="rgba(255,255,255,0.1)" vertical={false} />
               <XAxis
-                dataKey="createdAt"
+                dataKey="createdAtIso"
                 minTickGap={24}
                 tick={renderXAxisTick}
                 tickMargin={12}
@@ -151,7 +151,7 @@ export const ProgressChart = ({
               />
               <Tooltip
                 formatter={(value: number) => `${value.toFixed(0)}`}
-                labelFormatter={(value) => dayjs(Number(value)).format('MMM D, YYYY')}
+                labelFormatter={(value) => dayjs(String(value)).format('MMM D, YYYY')}
                 contentStyle={{
                   backgroundColor: '#2b2f37',
                   border: '1px solid #3a404c',

@@ -13,7 +13,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 74,
     textLength: 210,
     algorithmVersion: 'score_v1',
-    createdAt: 1711000000000,
     createdAtIso: '2024-03-21T11:06:40.000Z',
   },
   {
@@ -28,7 +27,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 78,
     textLength: 260,
     algorithmVersion: 'score_v1',
-    createdAt: 1711600000000,
     createdAtIso: '2024-03-28T09:46:40.000Z',
   },
   {
@@ -43,7 +41,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 82,
     textLength: 310,
     algorithmVersion: 'score_v1',
-    createdAt: 1712200000000,
     createdAtIso: '2024-04-04T08:26:40.000Z',
   },
   {
@@ -58,7 +55,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 84,
     textLength: 420,
     algorithmVersion: 'score_v1',
-    createdAt: 1712800000000,
     createdAtIso: '2024-04-11T07:06:40.000Z',
   },
   {
@@ -73,7 +69,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 85,
     textLength: 430,
     algorithmVersion: 'score_v1',
-    createdAt: 1712831800000,
     createdAtIso: '2024-04-11T10:36:40.000Z',
   },
   {
@@ -88,7 +83,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 86,
     textLength: 445,
     algorithmVersion: 'score_v1',
-    createdAt: 1712844400000,
     createdAtIso: '2024-04-11T14:06:40.000Z',
   },
   {
@@ -103,7 +97,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 86,
     textLength: 460,
     algorithmVersion: 'score_v1',
-    createdAt: 1712863600000,
     createdAtIso: '2024-04-11T19:26:40.000Z',
   },
   {
@@ -118,7 +111,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 88,
     textLength: 520,
     algorithmVersion: 'score_v1',
-    createdAt: 1713400000000,
     createdAtIso: '2024-04-18T05:46:40.000Z',
   },
   {
@@ -133,7 +125,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 90,
     textLength: 610,
     algorithmVersion: 'score_v1',
-    createdAt: 1714000000000,
     createdAtIso: '2024-04-25T04:26:40.000Z',
   },
   {
@@ -148,7 +139,6 @@ export const mockProgressStats: ProgressStat[] = [
     assessmentConfidence: 92,
     textLength: 690,
     algorithmVersion: 'score_v1',
-    createdAt: 1714600000000,
     createdAtIso: '2024-05-02T03:06:40.000Z',
   },
 ];
@@ -156,7 +146,6 @@ export const mockProgressStats: ProgressStat[] = [
 export const mockProgressChartPoints: ProgressChartPoint[] = [
   {
     id: 's1',
-    createdAt: 1711000000000,
     createdAtIso: '2024-03-21T11:06:40.000Z',
     grammar: 38,
     vocabulary: 42,
@@ -165,7 +154,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's2',
-    createdAt: 1711600000000,
     createdAtIso: '2024-03-28T09:46:40.000Z',
     grammar: 44,
     vocabulary: 47,
@@ -174,7 +162,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's3',
-    createdAt: 1712200000000,
     createdAtIso: '2024-04-04T08:26:40.000Z',
     grammar: 51,
     vocabulary: 50,
@@ -183,7 +170,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's4',
-    createdAt: 1712800000000,
     createdAtIso: '2024-04-11T07:06:40.000Z',
     grammar: 58,
     vocabulary: 56,
@@ -192,7 +178,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's4a',
-    createdAt: 1712831800000,
     createdAtIso: '2024-04-11T10:36:40.000Z',
     grammar: 59,
     vocabulary: 57,
@@ -201,7 +186,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's4b',
-    createdAt: 1712844400000,
     createdAtIso: '2024-04-11T14:06:40.000Z',
     grammar: 60,
     vocabulary: 58,
@@ -210,7 +194,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's4c',
-    createdAt: 1712863600000,
     createdAtIso: '2024-04-11T19:26:40.000Z',
     grammar: 61,
     vocabulary: 59,
@@ -219,7 +202,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's5',
-    createdAt: 1713400000000,
     createdAtIso: '2024-04-18T05:46:40.000Z',
     grammar: 64,
     vocabulary: 61,
@@ -228,7 +210,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's6',
-    createdAt: 1714000000000,
     createdAtIso: '2024-04-25T04:26:40.000Z',
     grammar: 69,
     vocabulary: 66,
@@ -237,7 +218,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 's7',
-    createdAt: 1714600000000,
     createdAtIso: '2024-05-02T03:06:40.000Z',
     grammar: 73,
     vocabulary: 71,
@@ -249,7 +229,6 @@ export const mockProgressChartPoints: ProgressChartPoint[] = [
 export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   {
     id: 'w1',
-    createdAt: 1711000000000,
     createdAtIso: '2024-03-21T11:06:40.000Z',
     grammar: 28,
     vocabulary: 35,
@@ -258,7 +237,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w2',
-    createdAt: 1711600000000,
     createdAtIso: '2024-03-28T09:46:40.000Z',
     grammar: 43,
     vocabulary: 48,
@@ -267,7 +245,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w3',
-    createdAt: 1712200000000,
     createdAtIso: '2024-04-04T08:26:40.000Z',
     grammar: 62,
     vocabulary: 58,
@@ -276,7 +253,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w4',
-    createdAt: 1712800000000,
     createdAtIso: '2024-04-11T07:06:40.000Z',
     grammar: 70,
     vocabulary: 61,
@@ -285,7 +261,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w5',
-    createdAt: 1713400000000,
     createdAtIso: '2024-04-18T05:46:40.000Z',
     grammar: 67,
     vocabulary: 57,
@@ -294,7 +269,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w6',
-    createdAt: 1714000000000,
     createdAtIso: '2024-04-25T04:26:40.000Z',
     grammar: 59,
     vocabulary: 55,
@@ -303,7 +277,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w7',
-    createdAt: 1714600000000,
     createdAtIso: '2024-05-02T03:06:40.000Z',
     grammar: 65,
     vocabulary: 62,
@@ -312,7 +285,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w8',
-    createdAt: 1715200000000,
     createdAtIso: '2024-05-09T01:46:40.000Z',
     grammar: 74,
     vocabulary: 69,
@@ -321,7 +293,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w9',
-    createdAt: 1715800000000,
     createdAtIso: '2024-05-16T00:26:40.000Z',
     grammar: 71,
     vocabulary: 68,
@@ -330,7 +301,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'w10',
-    createdAt: 1716400000000,
     createdAtIso: '2024-05-22T23:06:40.000Z',
     grammar: 77,
     vocabulary: 73,
@@ -342,7 +312,6 @@ export const mockProgressWaveChartPoints: ProgressChartPoint[] = [
 export const mockSparseProgressChartPoints: ProgressChartPoint[] = [
   {
     id: 'sp1',
-    createdAt: 1711000000000,
     createdAtIso: '2024-03-21T11:06:40.000Z',
     grammar: 34,
     vocabulary: 41,
@@ -351,7 +320,6 @@ export const mockSparseProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'sp2',
-    createdAt: 1712800000000,
     createdAtIso: '2024-04-11T07:06:40.000Z',
     grammar: 56,
     vocabulary: 53,
@@ -360,7 +328,6 @@ export const mockSparseProgressChartPoints: ProgressChartPoint[] = [
   },
   {
     id: 'sp3',
-    createdAt: 1716400000000,
     createdAtIso: '2024-05-22T23:06:40.000Z',
     grammar: 72,
     vocabulary: 70,

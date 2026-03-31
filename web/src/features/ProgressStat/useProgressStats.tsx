@@ -21,7 +21,7 @@ export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
   sourceId: string;
   textLength: number;
   algorithmVersion?: string;
-  createdAt?: number;
+  createdAtIso?: string;
 }
 
 export const buildProgressStatId = ({
@@ -80,7 +80,7 @@ function useProvideProgressStats(): ProgressStatsContextType {
       throw new Error('Invalid progress stat document reference');
     }
 
-    const createdAt = input.createdAt ?? Date.now();
+    const createdAtIso = input.createdAtIso ?? new Date().toISOString();
     const progressStat: ProgressStat = {
       userId,
       language: input.language,
@@ -93,8 +93,7 @@ function useProvideProgressStats(): ProgressStatsContextType {
       assessmentConfidence: input.assessmentConfidence,
       textLength: input.textLength,
       algorithmVersion,
-      createdAt,
-      createdAtIso: new Date(createdAt).toISOString(),
+      createdAtIso,
     };
 
     await setDoc(documentRef, progressStat);
