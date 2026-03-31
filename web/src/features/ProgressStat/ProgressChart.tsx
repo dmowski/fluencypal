@@ -44,6 +44,13 @@ const metricColorMap: Record<ProgressMetric, string> = {
   confidence: '#8f7cff',
 };
 
+const metricLabelMap: Record<ProgressMetric, string> = {
+  grammar: 'Grammar',
+  vocabulary: 'Vocabulary',
+  fluency: 'Fluency',
+  confidence: 'Confidence',
+};
+
 export const ProgressChart = ({
   data,
   metric,
@@ -150,8 +157,9 @@ export const ProgressChart = ({
                 tickLine={false}
               />
               <Tooltip
-                formatter={(value: number) => `${value.toFixed(0)}`}
+                formatter={(value: number) => [`${value.toFixed(0)}`, metricLabelMap[metric]]}
                 labelFormatter={(value) => dayjs(String(value)).format('MMM D, YYYY')}
+                separator=": "
                 contentStyle={{
                   backgroundColor: '#2b2f37',
                   border: '1px solid #3a404c',
