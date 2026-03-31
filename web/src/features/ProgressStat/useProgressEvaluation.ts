@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useTextAi } from '@/features/Ai/useTextAi';
+import { TextAiJsonError, useTextAi } from '@/features/Ai/useTextAi';
 import { ProgressAssessmentResult, ProgressSourceType } from './types';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { jsonrepair } from 'jsonrepair';
+import { progressAssessmentSchema } from './progressSchemas';
+
+const MAX_EVALUATION_ATTEMPTS = 3;
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
@@ -14,16 +16,6 @@ const toScore = (value: unknown, field: string): number => {
     throw new Error(`Invalid numeric field: ${field}`);
   }
   return clamp(num, 0, 100);
-};
-
-const parseModelJson = (rawOutput: string): unknown => {
-  const trimmed = rawOutput.trim();
-  const withoutFence =
-    trimmed.startsWith('```json') && trimmed.endsWith('```')
-      ? trimmed.slice(7, -3).trim()
-      : trimmed;
-  const repaired = jsonrepair(withoutFence);
-  return JSON.parse(repaired);
 };
 
 const normalizeAssessment = (data: unknown): ProgressAssessmentResult => {
@@ -50,6 +42,23 @@ export interface ProgressEvaluationOutput {
   parsed: ProgressAssessmentResult;
 }
 
+export class ProgressEvaluationError extends Error {
+  rawOutput?: string;
+  parseError?: string;
+  attempts?: number;
+
+  constructor(
+    message: string,
+    options?: { rawOutput?: string; parseError?: string; attempts?: number; cause?: unknown },
+  ) {
+    super(message, { cause: options?.cause });
+    this.name = 'ProgressEvaluationError';
+    this.rawOutput = options?.rawOutput;
+    this.parseError = options?.parseError;
+    this.attempts = options?.attempts;
+  }
+}
+
 export const useProgressEvaluation = () => {
   const textAi = useTextAi();
   const [isEvaluating, setIsEvaluating] = useState(false);
@@ -58,6 +67,7 @@ export const useProgressEvaluation = () => {
     input: ProgressEvaluationInput,
   ): Promise<ProgressEvaluationOutput> => {
     const transcriptText = input.transcriptText.trim();
+
     if (!transcriptText) {
       throw new Error('Transcript is empty');
     }
@@ -93,21 +103,40 @@ export const useProgressEvaluation = () => {
         transcriptText,
       ].join('\n');
 
-      const rawOutput = await textAi.generate({
-        systemMessage,
-        userMessage,
-        model: 'gpt-5.4',
-        cache: false,
-        languageCode: input.language,
-      });
+      try {
+        const result = await textAi.generateStrictJson({
+          systemMessage,
+          userMessage,
+          model: 'gpt-4o-mini',
+          cache: false,
+          languageCode: input.language,
+          attempts: MAX_EVALUATION_ATTEMPTS,
+          schema: progressAssessmentSchema,
+        });
 
-      const parsedLoose = parseModelJson(rawOutput);
-      const parsed = normalizeAssessment(parsedLoose);
+        return {
+          rawOutput: result.rawOutput,
+          parsed: normalizeAssessment(result.parsed),
+        };
+      } catch (error) {
+        if (error instanceof TextAiJsonError) {
+          throw new ProgressEvaluationError(
+            `Failed to evaluate progress after ${error.attempts || MAX_EVALUATION_ATTEMPTS} attempts`,
+            {
+              rawOutput: error.rawOutput,
+              parseError: error.cause instanceof Error ? error.cause.message : error.message,
+              attempts: error.attempts || MAX_EVALUATION_ATTEMPTS,
+              cause: error,
+            },
+          );
+        }
 
-      return {
-        rawOutput,
-        parsed,
-      };
+        throw new ProgressEvaluationError('Failed to evaluate progress', {
+          parseError: error instanceof Error ? error.message : 'Unknown evaluation error',
+          attempts: MAX_EVALUATION_ATTEMPTS,
+          cause: error,
+        });
+      }
     } finally {
       setIsEvaluating(false);
     }

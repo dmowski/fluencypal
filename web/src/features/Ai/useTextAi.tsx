@@ -9,6 +9,7 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '../Settings/useSettings';
 import { sleep } from '@/libs/sleep';
 import { jsonrepair } from 'jsonrepair';
+import { z } from 'zod';
 
 const cacheKey = `DL_text-ai-cache`;
 
@@ -24,9 +25,38 @@ export interface JsonAiRequest extends TextAiRequest {
   attempts?: number;
 }
 
+export interface StrictJsonAiRequest<T> extends JsonAiRequest {
+  schema: z.ZodType<T>;
+}
+
+export interface StrictJsonAiResponse<T> {
+  parsed: T;
+  rawOutput: string;
+}
+
+export interface GenerateStrictJsonFunction {
+  <T>(conversationDate: StrictJsonAiRequest<T>): Promise<StrictJsonAiResponse<T>>;
+}
+
+export class TextAiJsonError extends Error {
+  rawOutput?: string;
+  attempts?: number;
+
+  constructor(
+    message: string,
+    options?: { rawOutput?: string; attempts?: number; cause?: unknown },
+  ) {
+    super(message, { cause: options?.cause });
+    this.name = 'TextAiJsonError';
+    this.rawOutput = options?.rawOutput;
+    this.attempts = options?.attempts;
+  }
+}
+
 interface TextAiContextType {
   generate: (conversationDate: TextAiRequest) => Promise<string>;
   generateJson: <T>(conversationDate: JsonAiRequest) => Promise<T>;
+  generateStrictJson: GenerateStrictJsonFunction;
 }
 
 const TextAiContext = createContext<TextAiContextType | null>(null);
@@ -79,7 +109,6 @@ function useProvideTextAi(): TextAiContextType {
       }
 
       const repairedJson = jsonrepair(trimmedJson);
-
       return JSON.parse(repairedJson);
     } catch (error) {
       console.error('Error parsing JSON. error:', error + '');
@@ -93,12 +122,17 @@ function useProvideTextAi(): TextAiContextType {
         },
       });
 
-      const fixedJson = await fixJson(json, error + '');
+      const fixedJson = await fixJson<T>(json, error + '');
       return fixedJson;
     }
   };
 
-  const fixJson = async (badJson: string, error: string) => {
+  const parseStrictJson = async <T,>(json: string, schema: z.ZodType<T>): Promise<T> => {
+    const parsed = await parseJson<unknown>(json);
+    return schema.parse(parsed);
+  };
+
+  const fixJson = async <T,>(badJson: string, error: string): Promise<T> => {
     const systemMessage = [
       'Given JSON with some json mistakes.',
       'Please fix json and return the fixed JSON.',
@@ -133,18 +167,33 @@ function useProvideTextAi(): TextAiContextType {
   interface AttemptInfo {
     attempt: number;
     error?: Error;
+    rawOutput?: string;
   }
 
-  const generateJson = async <T,>(conversationDate: JsonAiRequest, attemptInfo?: AttemptInfo) => {
+  const generateJsonResult = async <T,>(
+    conversationDate: JsonAiRequest,
+    parseResponse: (response: string) => Promise<T>,
+    attemptInfo?: AttemptInfo,
+  ): Promise<StrictJsonAiResponse<T>> => {
     const isAttemptExceeded =
       attemptInfo && attemptInfo.attempt >= (conversationDate.attempts || 3);
     if (isAttemptExceeded) {
-      throw attemptInfo.error || new Error('AI JSON generation: Max attempts exceeded');
+      throw new TextAiJsonError('AI JSON generation: Max attempts exceeded', {
+        rawOutput: attemptInfo.rawOutput,
+        attempts: attemptInfo.attempt,
+        cause: attemptInfo.error,
+      });
     }
 
+    let response = '';
     try {
-      const response = await generate(conversationDate);
-      return parseJson<T>(response);
+      response = await generate(conversationDate);
+      const parsed = await parseResponse(response);
+
+      return {
+        parsed,
+        rawOutput: response,
+      };
     } catch (error) {
       console.error('Error generating JSON. error', error);
       Sentry.captureException(error, {
@@ -154,19 +203,31 @@ function useProvideTextAi(): TextAiContextType {
       });
       await sleep(500);
       console.log('Retrying AI JSON generation, attempt:', (attemptInfo?.attempt || 0) + 1);
-      return generateJson<T>(
-        { ...conversationDate, cache: false },
-        {
-          attempt: (attemptInfo?.attempt || 0) + 1,
-          error: error as Error,
-        },
-      );
+      return generateJsonResult({ ...conversationDate, cache: false }, parseResponse, {
+        attempt: (attemptInfo?.attempt || 0) + 1,
+        error: error instanceof Error ? error : undefined,
+        rawOutput: response || attemptInfo?.rawOutput,
+      });
     }
+  };
+
+  const generateJson = async <T,>(conversationDate: JsonAiRequest): Promise<T> => {
+    const result = await generateJsonResult(conversationDate, (response) => parseJson<T>(response));
+    return result.parsed;
+  };
+
+  const generateStrictJson: GenerateStrictJsonFunction = async <T,>(
+    conversationDate: StrictJsonAiRequest<T>,
+  ): Promise<StrictJsonAiResponse<T>> => {
+    return generateJsonResult(conversationDate, (response) =>
+      parseStrictJson(response, conversationDate.schema),
+    );
   };
 
   return {
     generate,
     generateJson,
+    generateStrictJson,
   };
 }
 

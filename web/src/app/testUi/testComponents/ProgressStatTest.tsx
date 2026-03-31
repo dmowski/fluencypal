@@ -12,7 +12,10 @@ import {
   mockSparseProgressChartPoints,
   mockProgressWaveChartPoints,
 } from '@/features/ProgressStat/mockData';
-import { useProgressEvaluation } from '@/features/ProgressStat/useProgressEvaluation';
+import {
+  ProgressEvaluationError,
+  useProgressEvaluation,
+} from '@/features/ProgressStat/useProgressEvaluation';
 import {
   ProgressChartPoint,
   ProgressChartStatus,
@@ -186,6 +189,12 @@ export const ProgressStatTest = () => {
       setEvalRawOutput(result.rawOutput);
       setEvalParsedOutput(JSON.stringify(result.parsed, null, 2));
     } catch (error) {
+      if (error instanceof ProgressEvaluationError) {
+        setEvalRawOutput(error.rawOutput ?? '');
+        setEvalError(error.parseError ?? error.message);
+        return;
+      }
+
       setEvalError(error instanceof Error ? error.message : 'Unknown evaluation error');
     }
   };

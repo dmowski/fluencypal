@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete, Phase C complete
+Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete
 
 ## Current Status
 
@@ -21,7 +21,6 @@ Completed:
 
 Not started yet:
 
-- Zod validation
 - Firestore persistence
 - Aggregation hook
 - Dashboard card
@@ -208,12 +207,14 @@ Deliverable: paste transcript -> run AI -> inspect raw and parsed output in test
 
 ## Phase D - Parser hardening and validation
 
-1. Add `zod` schema(s) for AI output contract.
-2. Implement optional strict mode:
+Status: complete
+
+1. Add `zod` schema(s) for AI output contract. - done
+2. Implement optional strict mode: - done
    - strict off: best-effort parse + normalization
    - strict on: schema-required parse, fail fast
-3. Expose raw model output + parse errors in test UI for debugging.
-4. Normalize/clamp metrics to [0, 100] before output.
+3. Expose raw model output + parse errors in test UI for debugging. - done
+4. Normalize/clamp metrics to [0, 100] before output. - done
 
 Deliverable: resilient parser with debuggable strict validation path.
 
