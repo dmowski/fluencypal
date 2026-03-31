@@ -12,6 +12,65 @@ export interface ProgressAggregationOptions {
   windowSize?: number;
 }
 
+interface DailyAggregate {
+  dayKey: string;
+  count: number;
+  createdAt: number;
+  createdAtIso: string;
+  grammar: number;
+  vocabulary: number;
+  fluency: number;
+  confidence: number;
+}
+
+const getDayKey = (stat: ProgressStat): string => {
+  return stat.createdAtIso.split('T')[0];
+};
+
+const aggregateByDay = (stats: ProgressStat[]): ProgressChartPoint[] => {
+  const dayAggregates = new Map<string, DailyAggregate>();
+
+  stats.forEach((stat) => {
+    const dayKey = getDayKey(stat);
+    const current = dayAggregates.get(dayKey);
+
+    if (!current) {
+      dayAggregates.set(dayKey, {
+        dayKey,
+        count: 1,
+        createdAt: stat.createdAt,
+        createdAtIso: stat.createdAtIso,
+        grammar: stat.grammar,
+        vocabulary: stat.vocabulary,
+        fluency: stat.fluency,
+        confidence: stat.confidence,
+      });
+      return;
+    }
+
+    current.count += 1;
+    current.grammar += stat.grammar;
+    current.vocabulary += stat.vocabulary;
+    current.fluency += stat.fluency;
+    current.confidence += stat.confidence;
+
+    if (stat.createdAt > current.createdAt) {
+      current.createdAt = stat.createdAt;
+      current.createdAtIso = stat.createdAtIso;
+    }
+  });
+
+  return Array.from(dayAggregates.values()).map((daily) => ({
+    id: `day_${daily.dayKey}`,
+    createdAt: daily.createdAt,
+    createdAtIso: daily.createdAtIso,
+    grammar: daily.grammar / daily.count,
+    vocabulary: daily.vocabulary / daily.count,
+    fluency: daily.fluency / daily.count,
+    confidence: daily.confidence / daily.count,
+  }));
+};
+
 function aggregateStats(
   stats: ProgressStat[],
   minConfidence: number | undefined,
@@ -23,21 +82,17 @@ function aggregateStats(
       ? sorted.filter((s) => s.assessmentConfidence >= minConfidence)
       : sorted;
 
-  return filtered.map((stat, index) => {
+  const dailyPoints = aggregateByDay(filtered);
+
+  return dailyPoints.map((point, index) => {
     const start = Math.max(0, index - windowSize + 1);
-    const window = filtered.slice(start, index + 1);
+    const window = dailyPoints.slice(start, index + 1);
 
     const avg = (metric: ProgressMetric) =>
-      window.reduce((sum, s) => sum + s[metric], 0) / window.length;
+      window.reduce((sum, item) => sum + item[metric], 0) / window.length;
 
     return {
-      id: `${stat.sourceType}_${stat.sourceId}`,
-      createdAt: stat.createdAt,
-      createdAtIso: stat.createdAtIso,
-      grammar: stat.grammar,
-      vocabulary: stat.vocabulary,
-      fluency: stat.fluency,
-      confidence: stat.confidence,
+      ...point,
       grammarSmoothed: avg('grammar'),
       vocabularySmoothed: avg('vocabulary'),
       fluencySmoothed: avg('fluency'),
