@@ -25,6 +25,7 @@ import { GameDashboardCard } from './GameDashboardCard';
 import { StoriesDashboardCard } from './StoriesDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
+import { ProgressCard } from '../ProgressStat/ProgressCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -80,6 +81,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <DailyTasksDashboardCard />
+                <ProgressCard />
                 <ExperimentalDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />

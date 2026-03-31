@@ -2,7 +2,7 @@
 
 Date: 2026-03-31
 Owner: FluencyPal web
-Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete, Phase F complete, Phase G complete
+Status: Phase A complete, Phase B complete, Phase C complete, Phase D complete, Phase E complete, Phase F complete, Phase G complete, Phase H complete
 
 ## Current Status
 
@@ -21,8 +21,6 @@ Completed:
 
 Not started yet:
 
-- Aggregation hook
-- Dashboard card
 - Production session integration
 
 ## 1) Goal and Product Outcome
@@ -263,6 +261,8 @@ Status: complete
 Deliverable: full manual QA loop without production coupling risk.
 
 ## Phase H - Product card and dashboard insertion
+
+Status: complete
 
 1. Build `ProgressCard` with:
    - title,
