@@ -10,6 +10,7 @@ import { useProgressStats } from './useProgressStats';
 import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
+import { ChevronDown, Dot } from 'lucide-react';
 
 const imageUrl =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774984465436-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
@@ -119,8 +120,11 @@ export const ProgressCard = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                color="info"
+                variant="outlined"
+                endIcon={<ChevronDown size={'18px'} />}
               >
-                Dashboard
+                Fluency
               </Button>
               <Menu
                 id="basic-menu"
