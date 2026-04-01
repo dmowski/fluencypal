@@ -2,10 +2,7 @@
 
 ## Add feature for assess language level
 
-- Prof analysis: Keep original content
-- Prof analysis: Add AI description to prof their rate
-
-- Validate if content is in target language
+- Validate if content is in target language, on useProgressEvaluation
 
 - Add hook to trigger analyzing user's content
   - Find places where to trigger. add comments // TODO: TriggerProgressAnalysis
