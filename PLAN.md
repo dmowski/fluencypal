@@ -2,18 +2,7 @@
 
 ## Add feature for assess language level
 
-- Validate if content is in target language, on useProgressEvaluation
-
-- Add hook to trigger analyzing user's content
-  - Find places where to trigger. add comments // TODO: TriggerProgressAnalysis
-    - web/src/features/Conversation/useAiConversation/useConversationStat.ts: on each talk mode
-    - web/src/features/Chat/useChat.tsx: addMessage
-
-- How to process historical data
-  - Chats with AI
-    - Create bg script (hook) that periodically check what's needed to process. Like 3 chats per session
-  - Community activities: Daily questions, Private messages, global chats
-    - Create bg script (hook) that periodically check what's needed to process. Like 3 chats per session
+- Update useBackgroundProgressEvaluation.ts to support chat conversations: Daily Questions
 
 - Full size report
   - On Dashboard card show full data
