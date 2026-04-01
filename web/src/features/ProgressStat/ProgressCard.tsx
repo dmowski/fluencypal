@@ -25,13 +25,13 @@ const metricColorMap: Record<ProgressMetric, string> = {
 export const ProgressCard = () => {
   const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
-  const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
+  const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
 
   const { progressStats, loadingProgressStats } = useProgressStats();
   const firestoreChartData = useProgressAggregation(progressStats);
   const mockChartData = useProgressAggregation(mockProgressStats);
 
-  const useMockDataSource = true;
+  const useMockDataSource = false;
   const isLocked = false;
   const chartData = useMockDataSource ? mockChartData : firestoreChartData;
 
@@ -91,6 +91,8 @@ export const ProgressCard = () => {
     setSelectedMetric(metric);
   };
 
+  const isEmpty = status === 'empty';
+
   return (
     <Stack
       sx={{
@@ -134,6 +136,7 @@ export const ProgressCard = () => {
                 flexDirection: 'row',
                 gap: '8px',
                 alignItems: 'flex-end',
+                opacity: isEmpty ? 0.3 : 1,
               }}
             >
               <Typography
@@ -148,7 +151,7 @@ export const ProgressCard = () => {
                 variant="body2"
                 sx={{
                   color: 'rgba(243,246,255,0.72)',
-                  paddingBottom: '4px',
+                  paddingBottom: '2px',
                 }}
               >
                 {i18n._('Average Level')}

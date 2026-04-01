@@ -19,6 +19,7 @@ import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 import { ProgressChartLoadingState } from './ProgressChartLoadingState';
 import { ProgressChartStateOverlay } from './ProgressChartStateOverlay';
+import { useLingui } from '@lingui/react';
 
 interface ProgressChartProps {
   data: ProgressChartPoint[];
@@ -59,6 +60,7 @@ export const ProgressChart = ({
   status = 'ready',
   emptyPreviewData,
 }: ProgressChartProps) => {
+  const { i18n } = useLingui();
   const previewData = status === 'empty' ? (emptyPreviewData ?? data) : data;
 
   if (status === 'loading') {
@@ -195,22 +197,26 @@ export const ProgressChart = ({
 
         {status === 'empty' && (
           <ProgressChartStateOverlay
-            title="No progress data yet"
-            description="Complete a few sessions to start building your language progress chart."
+            title={i18n._('No progress data yet')}
+            description={i18n._(
+              'Complete a few sessions to start building your language progress chart.',
+            )}
           />
         )}
 
         {status === 'processing' && (
           <ProgressChartStateOverlay
-            title="Processing latest session"
-            description="Simulating AI assessment before the chart updates."
+            title={i18n._('Processing latest session')}
+            description={i18n._('Simulating AI assessment before the chart updates.')}
           />
         )}
 
         {status === 'locked' && (
           <ProgressChartStateOverlay
-            title="Progress insights are locked"
-            description="Preview state for gated access once production placement is added."
+            title={i18n._('Progress insights are locked')}
+            description={i18n._(
+              'Preview state for gated access once production placement is added.',
+            )}
           />
         )}
       </Stack>
