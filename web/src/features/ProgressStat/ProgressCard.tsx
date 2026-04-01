@@ -1,16 +1,25 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { MenuItem, Select, Stack, Typography } from '@mui/material';
+import {
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Popover,
+  Select,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { ProgressChart } from './ProgressChart';
 import { mockProgressStats } from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { useProgressStats } from './useProgressStats';
-import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types';
+import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
-import { Check, ChevronDown } from 'lucide-react';
+import { Check, ChevronDown, Settings } from 'lucide-react';
 import { useBackgroundProgressEvaluation } from './useBackgroundProgressEvaluation';
 
 const imageUrl =
@@ -23,10 +32,14 @@ const metricColorMap: Record<ProgressMetric, string> = {
   confidence: '#8f7cff',
 };
 
+type ProgressPeriod = 'last-30-days' | 'last-3-month' | 'last-6-month' | 'all-time';
+
 export const ProgressCard = () => {
   const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
+  const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
+  const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
   useBackgroundProgressEvaluation();
 
   const { progressStats, loadingProgressStats } = useProgressStats();
@@ -35,7 +48,31 @@ export const ProgressCard = () => {
 
   const useMockDataSource = false;
   const isLocked = false;
-  const chartData = useMockDataSource ? mockChartData : firestoreChartData;
+  const sourceChartData = useMockDataSource ? mockChartData : firestoreChartData;
+
+  const chartData = useMemo(() => {
+    if (selectedPeriod === 'all-time' || sourceChartData.length === 0) {
+      return sourceChartData;
+    }
+
+    const latestTimestamp = Math.max(
+      ...sourceChartData.map((point) => new Date(point.createdAtIso).getTime()),
+    );
+
+    const dayMs = 24 * 60 * 60 * 1000;
+    const periodMsMap: Record<Exclude<ProgressPeriod, 'all-time'>, number> = {
+      'last-30-days': 30 * dayMs,
+      'last-3-month': 90 * dayMs,
+      'last-6-month': 180 * dayMs,
+    };
+
+    const periodMs = periodMsMap[selectedPeriod];
+    const thresholdTimestamp = latestTimestamp - periodMs;
+
+    return sourceChartData.filter(
+      (point) => new Date(point.createdAtIso).getTime() >= thresholdTimestamp,
+    );
+  }, [selectedPeriod, sourceChartData]);
 
   const status = useMemo<ProgressChartStatus>(() => {
     if (isLocked) {
@@ -93,7 +130,22 @@ export const ProgressCard = () => {
     setSelectedMetric(metric);
   };
 
+  const onSettingsOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setSettingsAnchorEl(event.currentTarget);
+  };
+
+  const onSettingsClose = () => {
+    setSettingsAnchorEl(null);
+  };
+
+  const settingsOpen = Boolean(settingsAnchorEl);
+
   const isEmpty = status === 'empty';
+
+  const isShowCard = false;
+  if (!isShowCard) {
+    return null;
+  }
 
   return (
     <Stack
@@ -229,8 +281,59 @@ export const ProgressCard = () => {
                   </MenuItem>
                 ))}
               </Select>
+
+              <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
+                <Settings size={'18px'} />
+              </IconButton>
             </Stack>
           </Stack>
+
+          <Popover
+            open={settingsOpen}
+            anchorEl={settingsAnchorEl}
+            onClose={onSettingsClose}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            slotProps={{
+              paper: {
+                sx: {
+                  minWidth: '240px',
+                  backgroundColor: '#121212',
+                  padding: '20px 20px 20px 20px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0px 0px 22px rgba(0, 0, 0, 0.5)',
+                },
+              },
+            }}
+          >
+            <Stack sx={{ gap: '24px' }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 500,
+                }}
+              >
+                {i18n._('Progress Settings')}
+              </Typography>
+
+              <FormControl size="small" fullWidth>
+                <InputLabel id="progress-period-select-label">{i18n._('Period')}</InputLabel>
+                <Select
+                  labelId="progress-period-select-label"
+                  value={selectedPeriod}
+                  label={i18n._('Period')}
+                  onChange={(event) => setSelectedPeriod(event.target.value as ProgressPeriod)}
+                >
+                  <MenuItem value="last-30-days">{i18n._('Last 30 days')}</MenuItem>
+                  <MenuItem value="last-3-month">{i18n._('Last 3 month')}</MenuItem>
+                  <MenuItem value="last-6-month">{i18n._('Last 6 month')}</MenuItem>
+                  <MenuItem value="all-time">{i18n._('All time')}</MenuItem>
+                </Select>
+              </FormControl>
+            </Stack>
+          </Popover>
+
           <ProgressChart
             data={chartData}
             metric={selectedMetric}

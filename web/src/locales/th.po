@@ -1619,6 +1619,11 @@ msgstr ""
 "โค้ดต้นฉบับทั้งหมดเปิดและสามารถเข้าถึงได้โดยสาธารณะ "
 "หากคุณรู้วิธีการเขียนโค้ด คุณยินดีที่จะปรับปรุงมัน"
 
+#: src/features/ProgressStat/ProgressCard.tsx:331
+#. js-lingui-explicit-id
+msgid "All time"
+msgstr "ทุกเวลา"
+
 #: src/features/Plan/LessonStartModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
@@ -1957,7 +1962,7 @@ msgstr "มีภาษาให้เลือก:"
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/features/ProgressStat/ProgressCard.tsx:154
+#: src/features/ProgressStat/ProgressCard.tsx:211
 #. js-lingui-explicit-id
 msgid "Average Level"
 msgstr "ระดับปานกลาง"
@@ -2810,7 +2815,7 @@ msgstr "ความพร้อมกันและความยืดหย
 msgid "Concurrency and resiliency assessment"
 msgstr "การประเมินความพร้อมใช้งานพร้อมกันและความยืดหยุ่น"
 
-#: src/features/ProgressStat/ProgressCard.tsx:54
+#: src/features/ProgressStat/ProgressCard.tsx:93
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "ความมั่นใจ"
@@ -5018,7 +5023,7 @@ msgstr ""
 msgid "Fixed words"
 msgstr "คำคงที่"
 
-#: src/features/ProgressStat/ProgressCard.tsx:53
+#: src/features/ProgressStat/ProgressCard.tsx:92
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "ความคล่องแคล่ว"
@@ -5908,7 +5913,7 @@ msgstr "Google Calls emulator"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressCard.tsx:51
+#: src/features/ProgressStat/ProgressCard.tsx:90
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "ไวยากรณ์"
@@ -6026,6 +6031,13 @@ msgstr "สุขสันต์วันที่ 1 เมษายน!"
 #. js-lingui-explicit-id
 msgid "Hate speech"
 msgstr "คำพูดแสดงความเกลียดชัง"
+
+#: src/features/ProgressStat/ProgressChart.tsx:201
+#. js-lingui-explicit-id
+msgid ""
+"Have a few conversations to start charting your progress in learning the "
+"language."
+msgstr "มีการสนทนาสองสามครั้งเพื่อเริ่มวัดความก้าวหน้าในการเรียนรู้ภาษา"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
@@ -8062,6 +8074,21 @@ msgstr "ภาษา"
 msgid "Languages installed in your brain:"
 msgstr "ภาษาที่ติดตั้งในสมองของคุณ:"
 
+#: src/features/ProgressStat/ProgressCard.tsx:329
+#. js-lingui-explicit-id
+msgid "Last 3 month"
+msgstr "3 เดือนล่าสุด"
+
+#: src/features/ProgressStat/ProgressCard.tsx:328
+#. js-lingui-explicit-id
+msgid "Last 30 days"
+msgstr "ช่วง 30 วันที่ผ่านมา"
+
+#: src/features/ProgressStat/ProgressCard.tsx:330
+#. js-lingui-explicit-id
+msgid "Last 6 month"
+msgstr "ช่วง 6 เดือนที่ผ่านมา"
+
 #: src/features/Game/GameStats.tsx:62
 #: src/features/Game/GameStats.tsx:113
 #. js-lingui-explicit-id
@@ -9057,6 +9084,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:200
+#. js-lingui-explicit-id
+msgid "No progress data yet"
+msgstr "ยังไม่มีข้อมูลความคืบหน้า"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9377,6 +9409,11 @@ msgstr "เปิดใน Telegram"
 msgid "Open personal plan"
 msgstr "เปิดแผนส่วนบุคคล"
 
+#: src/features/ProgressStat/ProgressCard.tsx:285
+#. js-lingui-explicit-id
+msgid "Open progress settings"
+msgstr "เปิดการตั้งค่าความคืบหน้า"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:411
 #: src/features/Conversation/ConversationCanvas.tsx:673
 #: src/features/Game/Battle/BattleCard.tsx:305
@@ -9613,6 +9650,12 @@ msgstr "ตัวชี้วัดประสิทธิภาพ"
 #. js-lingui-explicit-id
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "ประสิทธิภาพ, ความยืดหยุ่น, และรูปแบบสถาปัตยกรรม"
+
+#: src/features/ProgressStat/ProgressCard.tsx:321
+#: src/features/ProgressStat/ProgressCard.tsx:325
+#. js-lingui-explicit-id
+msgid "Period"
+msgstr "ระยะเวลา"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:518
 #. js-lingui-explicit-id
@@ -9973,6 +10016,20 @@ msgstr "ฝึกฝน"
 msgid "PRACTICE AND HARD WORK"
 msgstr "การฝึกฝนและการทำงานหนัก"
 
+#: src/features/ProgressStat/ProgressCard.tsx:166
+#. js-lingui-explicit-id
+msgid ""
+"Practice and watch your skills grow. Your progress is automatically tracked "
+"and visualized. 100% is a native-like proficiency level, while 0% is the "
+"beginner level of most language learners. The more you practice, the closer "
+"you get to 100%!"
+msgstr ""
+"ฝึกฝนและเฝ้าดูทักษะของคุณเติบโต "
+"ความก้าวหน้าของคุณจะถูกติดตามและแสดงผลโดยอัตโนมัติ 100% "
+"แสดงถึงระดับความเชี่ยวชาญที่คล้ายเจ้าของภาษา ขณะที่ 0% "
+"แสดงถึงระดับเริ่มต้นเหมือนกับผู้เรียนภาษาส่วนมาก ยิ่งคุณฝึกฝนมากเท่าไหร่ "
+"คุณยิ่งเข้าใกล้ 100% มากขึ้นเท่านั้น!"
+
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
 msgid ""
@@ -10037,15 +10094,6 @@ msgstr "ฝึกการอธิบายปัญหาของผลิต
 #. js-lingui-explicit-id
 msgid "Practice in real interview conditions — no tutors needed."
 msgstr "ฝึกฝนในเงื่อนไขการสัมภาษณ์จริง — ไม่ต้องใช้ติวเตอร์"
-
-#: src/features/ProgressStat/ProgressCard.tsx:110
-#. js-lingui-explicit-id
-msgid ""
-"Practice in the app and watch your skills grow. Your progress is "
-"automatically tracked and visualized in easy-to-understand charts."
-msgstr ""
-"ฝึกฝนในแอปพลิเคชันและชมทักษะของคุณเติบโต "
-"ความก้าวหน้าของคุณจะถูกติดตามโดยอัตโนมัติและแสดงในแผนภูมิที่เข้าใจง่าย"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:10
 #. js-lingui-explicit-id
@@ -10392,6 +10440,13 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:217
+#. js-lingui-explicit-id
+msgid "Preview state for gated access once production placement is added."
+msgstr ""
+"แสดงตัวอย่างสถานะสำหรับการเข้าถึงที่ถูกจำกัดเมื่อการวางในระบบการผลิตถูกเพิ่ม"
+"เข้าไปแล้ว"
+
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -10459,6 +10514,11 @@ msgstr "กำลังประมวลผลคำตอบ..."
 msgid "Processing existing knowledge in that brain..."
 msgstr "กำลังประมวลผลความรู้ที่มีอยู่ในสมองนั้น..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:209
+#. js-lingui-explicit-id
+msgid "Processing latest session"
+msgstr "กำลังประมวลผลเซสชันล่าสุด"
+
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10493,7 +10553,7 @@ msgstr "ผู้เชี่ยวชาญที่เปลี่ยนจา
 msgid "Profile"
 msgstr "โปรไฟล์"
 
-#: src/features/ProgressStat/ProgressCard.tsx:101
+#: src/features/ProgressStat/ProgressCard.tsx:157
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "ความก้าวหน้า"
@@ -10502,6 +10562,16 @@ msgstr "ความก้าวหน้า"
 #. js-lingui-explicit-id
 msgid "Progress Calendar"
 msgstr "ปฏิทินความก้าวหน้า"
+
+#: src/features/ProgressStat/ProgressChart.tsx:216
+#. js-lingui-explicit-id
+msgid "Progress insights are locked"
+msgstr "ข้อมูลเชิงลึกเกี่ยวกับความก้าวหน้าถูกล็อคไว้"
+
+#: src/features/ProgressStat/ProgressCard.tsx:317
+#. js-lingui-explicit-id
+msgid "Progress Settings"
+msgstr "การตั้งค่าความก้าวหน้า"
 
 #: src/features/Landing/LandingPage.tsx:415
 #: src/features/Landing/Price/FeatureList.tsx:44
@@ -11329,7 +11399,7 @@ msgstr "ดูทั้งหมด"
 msgid "See All"
 msgstr "ดูทั้งหมด"
 
-#: src/features/ProgressStat/ProgressCard.tsx:109
+#: src/features/ProgressStat/ProgressCard.tsx:165
 #. js-lingui-explicit-id
 msgid "See how you improve over time."
 msgstr "ดูว่าคุณพัฒนาขึ้นอย่างไรเมื่อเวลาผ่านไป."
@@ -11695,6 +11765,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "จำลองการทำงานพูดจากสอบ TOEFL."
+
+#: src/features/ProgressStat/ProgressChart.tsx:210
+#. js-lingui-explicit-id
+msgid "Simulating AI assessment before the chart updates."
+msgstr "จำลองการประเมิน AI ก่อนที่แผนภูมิจะอัปเดต"
 
 #: src/features/Auth/SignInForm.tsx:28
 #: src/features/Auth/SignInForm.tsx:29
@@ -13288,7 +13363,7 @@ msgstr ""
 "plaintext\n"
 "จำนวนรอบทั้งหมด\n"
 
-#: src/features/ProgressStat/ProgressCard.tsx:102
+#: src/features/ProgressStat/ProgressCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Track how your grammar, vocabulary, fluency, and confidence improve."
 msgstr "ติดตามการพัฒนาทักษะไวยากรณ์ คำศัพท์ ความคล่องแคล่ว และความมั่นใจของคุณ"
@@ -13730,7 +13805,7 @@ msgstr ""
 "รักษาแรงบันดาลใจโดยการมองเห็นการพัฒนาของคุณอย่างชัดเจน"
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressCard.tsx:52
+#: src/features/ProgressStat/ProgressCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "คำศัพท์"
@@ -15136,3 +15211,12 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/ProgressStat/ProgressCard.tsx:110
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice in the app and watch your skills grow. Your progress is "
+#~ "automatically tracked and visualized in easy-to-understand charts."
+#~ msgstr ""
+#~ "ฝึกฝนในแอปพลิเคชันและชมทักษะของคุณเติบโต "
+#~ "ความก้าวหน้าของคุณจะถูกติดตามโดยอัตโนมัติและแสดงในแผนภูมิที่เข้าใจง่าย"

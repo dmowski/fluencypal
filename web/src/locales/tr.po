@@ -1614,6 +1614,11 @@ msgstr ""
 "Tüm kaynak kodu açık ve herkese açıktır. Kod yazmayı biliyorsanız, "
 "geliştirme yapmaktan çekinmeyin."
 
+#: src/features/ProgressStat/ProgressCard.tsx:331
+#. js-lingui-explicit-id
+msgid "All time"
+msgstr "Tüm zamanlar"
+
 #: src/features/Plan/LessonStartModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
@@ -1948,7 +1953,7 @@ msgstr "Mevcut diller:"
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/features/ProgressStat/ProgressCard.tsx:154
+#: src/features/ProgressStat/ProgressCard.tsx:211
 #. js-lingui-explicit-id
 msgid "Average Level"
 msgstr "Ortalama Seviye"
@@ -2805,7 +2810,7 @@ msgstr "Eşzamanlılık & Dayanıklılık"
 msgid "Concurrency and resiliency assessment"
 msgstr "Eşzamanlılık ve dayanıklılık değerlendirmesi"
 
-#: src/features/ProgressStat/ProgressCard.tsx:54
+#: src/features/ProgressStat/ProgressCard.tsx:93
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Güven"
@@ -5022,7 +5027,7 @@ msgstr ""
 msgid "Fixed words"
 msgstr "Sabit kelimeler"
 
-#: src/features/ProgressStat/ProgressCard.tsx:53
+#: src/features/ProgressStat/ProgressCard.tsx:92
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Akıcılık"
@@ -5911,7 +5916,7 @@ msgstr ""
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressCard.tsx:51
+#: src/features/ProgressStat/ProgressCard.tsx:90
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Dilbilgisi"
@@ -6030,6 +6035,13 @@ msgstr "1 Nisan Kutlu Olsun!"
 #. js-lingui-explicit-id
 msgid "Hate speech"
 msgstr "Nefret söylemi"
+
+#: src/features/ProgressStat/ProgressChart.tsx:201
+#. js-lingui-explicit-id
+msgid ""
+"Have a few conversations to start charting your progress in learning the "
+"language."
+msgstr "Dil öğrenmenizdeki ilerlemenizi izlemeye başlamak için birkaç konuşma yapın."
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
@@ -8070,6 +8082,21 @@ msgstr "Diller"
 msgid "Languages installed in your brain:"
 msgstr "Beyninizde yüklü olan diller:"
 
+#: src/features/ProgressStat/ProgressCard.tsx:329
+#. js-lingui-explicit-id
+msgid "Last 3 month"
+msgstr "Son 3 ay"
+
+#: src/features/ProgressStat/ProgressCard.tsx:328
+#. js-lingui-explicit-id
+msgid "Last 30 days"
+msgstr "Son 30 gün"
+
+#: src/features/ProgressStat/ProgressCard.tsx:330
+#. js-lingui-explicit-id
+msgid "Last 6 month"
+msgstr "Son 6 ay"
+
 #: src/features/Game/GameStats.tsx:62
 #: src/features/Game/GameStats.tsx:113
 #. js-lingui-explicit-id
@@ -9066,6 +9093,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "Ödemeler yok..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:200
+#. js-lingui-explicit-id
+msgid "No progress data yet"
+msgstr "Henüz ilerleme verisi yok"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9384,6 +9416,11 @@ msgstr "Telegram'da Aç"
 msgid "Open personal plan"
 msgstr "Kişisel planı aç"
 
+#: src/features/ProgressStat/ProgressCard.tsx:285
+#. js-lingui-explicit-id
+msgid "Open progress settings"
+msgstr "Açık ilerleme ayarları"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:411
 #: src/features/Conversation/ConversationCanvas.tsx:673
 #: src/features/Game/Battle/BattleCard.tsx:305
@@ -9623,6 +9660,12 @@ msgstr "Performans Metrikleri"
 #. js-lingui-explicit-id
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Performans, dayanıklılık ve mimari desenler"
+
+#: src/features/ProgressStat/ProgressCard.tsx:321
+#: src/features/ProgressStat/ProgressCard.tsx:325
+#. js-lingui-explicit-id
+msgid "Period"
+msgstr "Periyot"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:518
 #. js-lingui-explicit-id
@@ -9989,6 +10032,19 @@ msgstr "Pratik"
 msgid "PRACTICE AND HARD WORK"
 msgstr "PRAKTİK VE SIKI ÇALIŞMA"
 
+#: src/features/ProgressStat/ProgressCard.tsx:166
+#. js-lingui-explicit-id
+msgid ""
+"Practice and watch your skills grow. Your progress is automatically tracked "
+"and visualized. 100% is a native-like proficiency level, while 0% is the "
+"beginner level of most language learners. The more you practice, the closer "
+"you get to 100%!"
+msgstr ""
+"Pratik yapın ve becerilerinizin gelişimini izleyin. İlerlemeniz otomatik "
+"olarak izlenir ve görselleştirilir. %100, anadili gibi bir yeterlilik "
+"seviyesidir, %0 ise çoğu dil öğrenicisinin başlangıç seviyesidir. Ne kadar "
+"çok pratik yaparsanız, %100'e o kadar yaklaşırsınız!"
+
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
 msgid ""
@@ -10054,16 +10110,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Practice in real interview conditions — no tutors needed."
 msgstr "Gerçek mülakat koşullarında pratik yapın — eğitmen gerekmez."
-
-#: src/features/ProgressStat/ProgressCard.tsx:110
-#. js-lingui-explicit-id
-msgid ""
-"Practice in the app and watch your skills grow. Your progress is "
-"automatically tracked and visualized in easy-to-understand charts."
-msgstr ""
-"Uygulamada pratik yapın ve becerilerinizin gelişimini izleyin. İlerlemeniz "
-"otomatik olarak takip edilir ve kolay anlaşılır grafiklerde "
-"görselleştirilir."
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:10
 #. js-lingui-explicit-id
@@ -10417,6 +10463,11 @@ msgstr "Beyni hazırlama"
 msgid "Preparing your game..."
 msgstr "Oyunuz hazırlanıyor..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:217
+#. js-lingui-explicit-id
+msgid "Preview state for gated access once production placement is added."
+msgstr "Üretim yerleştirmesi eklendikten sonra erişim için önizleme durumu."
+
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
 msgid "Previous"
@@ -10484,6 +10535,11 @@ msgstr "Cevaplar işleniyor..."
 msgid "Processing existing knowledge in that brain..."
 msgstr "O beyindeki mevcut bilgiyi işliyor..."
 
+#: src/features/ProgressStat/ProgressChart.tsx:209
+#. js-lingui-explicit-id
+msgid "Processing latest session"
+msgstr "En son oturum işleniyor"
+
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10518,7 +10574,7 @@ msgstr "Diğer alanlardan ön uç mühendisliğine geçiş yapan profesyoneller"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/ProgressStat/ProgressCard.tsx:101
+#: src/features/ProgressStat/ProgressCard.tsx:157
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "İlerleme"
@@ -10527,6 +10583,16 @@ msgstr "İlerleme"
 #. js-lingui-explicit-id
 msgid "Progress Calendar"
 msgstr "İlerleme Takvimi"
+
+#: src/features/ProgressStat/ProgressChart.tsx:216
+#. js-lingui-explicit-id
+msgid "Progress insights are locked"
+msgstr "İlerleme içgörüleri kilitlendi"
+
+#: src/features/ProgressStat/ProgressCard.tsx:317
+#. js-lingui-explicit-id
+msgid "Progress Settings"
+msgstr "İlerleme Ayarları"
 
 #: src/features/Landing/LandingPage.tsx:415
 #: src/features/Landing/Price/FeatureList.tsx:44
@@ -11358,7 +11424,7 @@ msgstr "Tümünü gör"
 msgid "See All"
 msgstr "Tümünü Gör"
 
-#: src/features/ProgressStat/ProgressCard.tsx:109
+#: src/features/ProgressStat/ProgressCard.tsx:165
 #. js-lingui-explicit-id
 msgid "See how you improve over time."
 msgstr "Zamanla nasıl geliştiğinizi görün."
@@ -11726,6 +11792,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "TOEFL sınavından konuşma görevlerini simüle edin."
+
+#: src/features/ProgressStat/ProgressChart.tsx:210
+#. js-lingui-explicit-id
+msgid "Simulating AI assessment before the chart updates."
+msgstr "Grafik güncellemelerinden önce AI değerlendirmesini simüle etme."
 
 #: src/features/Auth/SignInForm.tsx:28
 #: src/features/Auth/SignInForm.tsx:29
@@ -13331,7 +13402,7 @@ msgstr "Toplam Puanlar"
 msgid "Total Turns"
 msgstr "Toplam Turlar"
 
-#: src/features/ProgressStat/ProgressCard.tsx:102
+#: src/features/ProgressStat/ProgressCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Track how your grammar, vocabulary, fluency, and confidence improve."
 msgstr ""
@@ -13775,7 +13846,7 @@ msgstr ""
 "net bir şekilde görerek motive olun."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressCard.tsx:52
+#: src/features/ProgressStat/ProgressCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Kelime Dağarcığı"
@@ -15178,3 +15249,13 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/ProgressStat/ProgressCard.tsx:110
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice in the app and watch your skills grow. Your progress is "
+#~ "automatically tracked and visualized in easy-to-understand charts."
+#~ msgstr ""
+#~ "Uygulamada pratik yapın ve becerilerinizin gelişimini izleyin. İlerlemeniz "
+#~ "otomatik olarak takip edilir ve kolay anlaşılır grafiklerde "
+#~ "görselleştirilir."
