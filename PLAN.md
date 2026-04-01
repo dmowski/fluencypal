@@ -2,7 +2,9 @@
 
 ## Add feature for assess language level
 
-- Update useBackgroundProgressEvaluation.ts to support chat conversations: Daily Questions
+- Update useBackgroundProgressEvaluation.ts to support daily questions
+
+- How to improve performance of processing all conversations. I don't want to load all conversations at once at each page load
 
 - How to show progress: Before/after. Maybe this arrow up, down
 
