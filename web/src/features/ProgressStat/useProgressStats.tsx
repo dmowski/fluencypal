@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useMemo, ReactNode, JSX } from 'react';
-import { query, setDoc, where } from 'firebase/firestore';
+import { getDoc, query, setDoc, where } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
@@ -42,6 +42,7 @@ interface ProgressStatsContextType {
   loadingProgressStats: boolean;
   errorProgressStats: Error | undefined;
   upsertProgressStat: (input: ProgressStatUpsertInput) => Promise<string>;
+  isAlreadyEvaluated: (progressStatId: string) => Promise<boolean>;
 }
 
 const ProgressStatsContext = createContext<ProgressStatsContextType | null>(null);
@@ -107,11 +108,21 @@ function useProvideProgressStats(): ProgressStatsContextType {
     return docId;
   };
 
+  const isAlreadyEvaluated = async (progressStatId: string): Promise<boolean> => {
+    const documentRef = db.documents.progressStat(userId, progressStatId);
+    if (!documentRef) {
+      throw new Error('Invalid progress stat document reference');
+    }
+    const doc = await getDoc(documentRef);
+    return doc.exists();
+  };
+
   return {
     progressStats,
     loadingProgressStats,
     errorProgressStats,
     upsertProgressStat,
+    isAlreadyEvaluated,
   };
 }
 

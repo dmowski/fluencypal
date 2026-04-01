@@ -160,7 +160,7 @@ export const ProgressChart = ({
               />
               <Tooltip
                 formatter={(value: number) => [`${value.toFixed(0)}`, metricLabelMap[metric]]}
-                labelFormatter={(value) => dayjs(String(value)).format('MMM D, YYYY')}
+                labelFormatter={(value) => dayjs(String(value)).format('MMM D, YYYY (ddd)')}
                 separator=": "
                 contentStyle={{
                   backgroundColor: '#2b2f37',

@@ -11,6 +11,7 @@ import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types'
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import { Check, ChevronDown } from 'lucide-react';
+import { useBackgroundProgressEvaluation } from './useBackgroundProgressEvaluation';
 
 const imageUrl =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774984465436-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
@@ -25,7 +26,8 @@ const metricColorMap: Record<ProgressMetric, string> = {
 export const ProgressCard = () => {
   const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
-  const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
+  const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
+  useBackgroundProgressEvaluation();
 
   const { progressStats, loadingProgressStats } = useProgressStats();
   const firestoreChartData = useProgressAggregation(progressStats);
@@ -110,7 +112,7 @@ export const ProgressCard = () => {
         previewImageUrl={imageUrl}
         title={i18n._('See how you improve over time.')}
         subTitle={i18n._(
-          'Practice in the app and watch your skills grow. Your progress is automatically tracked and visualized in easy-to-understand charts.',
+          'Practice and watch your skills grow. Your progress is automatically tracked and visualized. 100% is a native-like proficiency level, while 0% is the beginner level of most language learners. The more you practice, the closer you get to 100%!',
         )}
         items={[]}
         itemsBackgroundColor={'rgb(150, 137, 137)'}
@@ -158,7 +160,13 @@ export const ProgressCard = () => {
               </Typography>
             </Stack>
 
-            <Stack>
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '12px',
+              }}
+            >
               <Select
                 value={selectedMetric}
                 onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
