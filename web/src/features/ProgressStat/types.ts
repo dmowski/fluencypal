@@ -28,6 +28,7 @@ export interface ProgressStat extends ProgressAssessmentResult {
   userId: string;
   language: SupportedLanguage;
   sourceType: ProgressSourceType;
+  sourceText: string;
   sourceId: string;
   textLength: number;
   algorithmVersion: string;

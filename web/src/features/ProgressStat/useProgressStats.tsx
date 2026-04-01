@@ -18,6 +18,7 @@ export const PROGRESS_ALGORITHM_VERSION = 'score_v1';
 export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
   language: SupportedLanguage;
   sourceType: ProgressSourceType;
+  sourceText: string;
   sourceId: string;
   textLength: number;
   algorithmVersion?: string;
@@ -85,6 +86,7 @@ function useProvideProgressStats(): ProgressStatsContextType {
       userId,
       language: input.language,
       sourceType: input.sourceType,
+      sourceText: input.sourceText,
       sourceId: input.sourceId,
       grammar: input.grammar,
       grammarSummary: input.grammarSummary,
