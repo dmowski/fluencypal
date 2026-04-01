@@ -10,9 +10,17 @@ export type ProgressSourceType = 'conversation' | 'role-play';
 
 export interface ProgressAssessmentResult {
   grammar: number;
+  grammarSummary: string;
+
   vocabulary: number;
+  vocabularySummary: string;
+
   fluency: number;
+  fluencySummary: string;
+
   confidence: number;
+  confidenceSummary: string;
+
   assessmentConfidence: number;
 }
 

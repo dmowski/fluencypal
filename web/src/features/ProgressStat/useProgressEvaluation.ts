@@ -23,9 +23,16 @@ const normalizeAssessment = (data: unknown): ProgressAssessmentResult => {
 
   return {
     grammar: toScore(objectData?.grammar, 'grammar'),
+    grammarSummary: typeof objectData?.grammarSummary === 'string' ? objectData.grammarSummary : '',
     vocabulary: toScore(objectData?.vocabulary, 'vocabulary'),
+    vocabularySummary:
+      typeof objectData?.vocabularySummary === 'string' ? objectData.vocabularySummary : '',
     fluency: toScore(objectData?.fluency, 'fluency'),
+    fluencySummary: typeof objectData?.fluencySummary === 'string' ? objectData.fluencySummary : '',
     confidence: toScore(objectData?.confidence, 'confidence'),
+    confidenceSummary:
+      typeof objectData?.confidenceSummary === 'string' ? objectData.confidenceSummary : '',
+
     assessmentConfidence: toScore(objectData?.assessmentConfidence, 'assessmentConfidence'),
   };
 };
@@ -91,9 +98,13 @@ export const useProgressEvaluation = () => {
         'Use this exact schema with numeric scores in [0,100]:',
         '{',
         '  "grammar": number,',
+        '  "grammarSummary": string,',
         '  "vocabulary": number,',
+        '  "vocabularySummary": string,',
         '  "fluency": number,',
+        '  "fluencySummary": string,',
         '  "confidence": number,',
+        '  "confidenceSummary": string,',
         '  "assessmentConfidence": number',
         '}',
       ].join('\n');
