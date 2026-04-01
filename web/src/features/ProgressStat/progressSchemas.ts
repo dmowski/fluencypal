@@ -16,6 +16,7 @@ export const progressAssessmentSchema = z.object({
   confidence: finiteNumber,
   confidenceSummary: string,
   assessmentConfidence: finiteNumber,
+  assessmentConfidenceSummary: string,
 });
 
 export type ProgressAssessmentSchema = z.infer<typeof progressAssessmentSchema>;
