@@ -21,6 +21,7 @@ import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import { Check, ChevronDown, Settings } from 'lucide-react';
 import { useBackgroundProgressEvaluation } from './useBackgroundProgressEvaluation';
+import { useAuth } from '../Auth/useAuth';
 
 const imageUrl =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774984465436-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
@@ -36,6 +37,7 @@ type ProgressPeriod = 'last-30-days' | 'last-3-month' | 'last-6-month' | 'all-ti
 
 export const ProgressCard = () => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
@@ -142,7 +144,7 @@ export const ProgressCard = () => {
 
   const isEmpty = status === 'empty';
 
-  const isShowCard = false;
+  const isShowCard = auth.isFounder;
   if (!isShowCard) {
     return null;
   }
