@@ -5,8 +5,10 @@ import { TextAiJsonError, useTextAi } from '@/features/Ai/useTextAi';
 import { ProgressAssessmentResult, ProgressSourceType } from './types';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { progressAssessmentSchema } from './progressSchemas';
+import { TextAiModel } from '../Ai/ai';
 
 const MAX_EVALUATION_ATTEMPTS = 3;
+const MODEL: TextAiModel = 'gpt-4o';
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
@@ -34,6 +36,10 @@ const normalizeAssessment = (data: unknown): ProgressAssessmentResult => {
       typeof objectData?.confidenceSummary === 'string' ? objectData.confidenceSummary : '',
 
     assessmentConfidence: toScore(objectData?.assessmentConfidence, 'assessmentConfidence'),
+    assessmentConfidenceSummary:
+      typeof objectData?.assessmentConfidenceSummary === 'string'
+        ? objectData.assessmentConfidenceSummary
+        : '',
   };
 };
 
@@ -124,7 +130,7 @@ export const useProgressEvaluation = () => {
         const result = await textAi.generateStrictJson({
           systemMessage,
           userMessage,
-          model: 'gpt-4o-mini',
+          model: MODEL,
           cache: false,
           languageCode: input.language,
           attempts: MAX_EVALUATION_ATTEMPTS,

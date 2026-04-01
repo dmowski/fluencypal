@@ -22,6 +22,7 @@ export interface ProgressAssessmentResult {
   confidenceSummary: string;
 
   assessmentConfidence: number;
+  assessmentConfidenceSummary: string;
 }
 
 export interface ProgressStat extends ProgressAssessmentResult {

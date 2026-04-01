@@ -97,6 +97,7 @@ function useProvideProgressStats(): ProgressStatsContextType {
       confidence: input.confidence,
       confidenceSummary: input.confidenceSummary,
       assessmentConfidence: input.assessmentConfidence,
+      assessmentConfidenceSummary: input.assessmentConfidenceSummary,
       textLength: input.textLength,
       algorithmVersion,
       createdAtIso,

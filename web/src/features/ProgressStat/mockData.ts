@@ -19,6 +19,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 210,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-03-21T11:06:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -38,6 +39,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 260,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-03-28T09:46:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -57,6 +59,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 310,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-04T08:26:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -76,6 +79,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 420,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-11T07:06:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -95,6 +99,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 430,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-11T10:36:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -114,6 +119,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 445,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-11T14:06:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -133,6 +139,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 460,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-11T19:26:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -152,6 +159,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 520,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-18T05:46:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -171,6 +179,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 610,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-04-25T04:26:40.000Z',
+    assessmentConfidenceSummary: '',
   },
   {
     userId: 'demo-user',
@@ -190,6 +199,7 @@ export const mockProgressStats: ProgressStat[] = [
     textLength: 690,
     algorithmVersion: 'score_v1',
     createdAtIso: '2024-05-02T03:06:40.000Z',
+    assessmentConfidenceSummary: '',
   },
 ];
 
