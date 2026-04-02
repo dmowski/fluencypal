@@ -312,7 +312,7 @@ export const ProgressViewChart = ({
                     color: 'rgba(243,246,255,0.72)',
                   }}
                 >
-                  {i18n._('vs. prev period')}
+                  {'vs. prev period'}
                 </Typography>
               </Stack>
             )}

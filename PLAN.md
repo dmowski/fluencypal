@@ -2,10 +2,6 @@
 
 ## Add feature for assess language level
 
-- add options to see: "Smooth", "Raw" chart
-
-- How to show progress: Before/after. Maybe this arrow up, down, and show progress for last 3 month
-
 - Full size report
   - On Dashboard card show full data
   - Show Summary
