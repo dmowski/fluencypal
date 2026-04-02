@@ -19,20 +19,11 @@ import {
   MODEL_FOR_ASSESSMENT,
   progressEvaluationSystemMessage,
 } from '../aiPrompts';
-import {
-  AiTextGenerator,
-  GenerateStrictJsonFunction,
-  StrictJsonAiRequest,
-  StrictJsonAiResponse,
-  TextAiJsonError,
-  TextAiRequest,
-} from '@/features/Ai/types';
-import { generateJsonResult } from '@/features/Ai/generateJson';
-import { parseStrictJson } from '@/features/Ai/jsonParser';
-import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
+import { TextAiJsonError } from '@/features/Ai/types';
 import { progressAssessmentSchema } from '../progressSchemas';
 import { normalizeAssessment } from '../normalizeAssessment';
 import { evaluateUserData } from '../evaluateUserData';
+import { generateStrictJson } from '../../../app/api/ai/generateJson';
 
 export const processAssessment = async () => {
   const allUsers = await getAllUsersWithIds({
@@ -95,34 +86,6 @@ export const getAllProgressStatsForUser = async (userId: string): Promise<Progre
     stats.push(data);
   });
   return stats;
-};
-
-const generate: AiTextGenerator = async (conversationDate: TextAiRequest) => {
-  const { output } = await generateTextWithAi({
-    systemMessage: conversationDate.systemMessage,
-    userMessage: conversationDate.userMessage,
-    model: conversationDate.model,
-  });
-
-  const responseString = output || '';
-
-  return responseString;
-};
-
-const generateStrictJson: GenerateStrictJsonFunction = async <T>(
-  conversationDate: StrictJsonAiRequest<T>,
-): Promise<StrictJsonAiResponse<T>> => {
-  return generateJsonResult({
-    conversationDate,
-    parseResponse: (response) =>
-      parseStrictJson({
-        json: response,
-        schema: conversationDate.schema,
-        generate,
-        languageCode: 'en',
-      }),
-    generate,
-  });
 };
 
 const evaluateProgress = async (

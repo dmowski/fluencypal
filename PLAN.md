@@ -2,10 +2,6 @@
 
 ## Add feature for assess language level
 
-- Refactor backend
-
-- Refactor frontend UI
-
 - Update evaluation.ts to support daily questions
 
 - How to show progress: Before/after. Maybe this arrow up, down
