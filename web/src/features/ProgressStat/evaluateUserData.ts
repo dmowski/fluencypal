@@ -81,20 +81,28 @@ export const evaluateUserData = async ({
   }
 
   const maxCountToProcess = 200;
+  const chunkSize = 10;
   const goodConversations = shuffleArray(
     conversations.filter((conversation) => {
       return conversation.messages && conversation.messages.length >= minMessagesForEvaluation;
     }),
   );
 
-  for (let i = 0; i < Math.min(goodConversations.length, maxCountToProcess); i++) {
-    const conversation = goodConversations[i];
-    await processConversation({
-      conversation,
-      isAlreadyEvaluated: isAlreadyEvaluated,
-      evaluateProgress: evaluateProgress,
-      upsertProgressStat: upsertProgressStat,
-    });
+  const totalToProcess = Math.min(goodConversations.length, maxCountToProcess);
+
+  for (let i = 0; i < totalToProcess; i += chunkSize) {
+    const conversationChunk = goodConversations.slice(i, i + chunkSize);
+
+    await Promise.all(
+      conversationChunk.map((conversation) =>
+        processConversation({
+          conversation,
+          isAlreadyEvaluated: isAlreadyEvaluated,
+          evaluateProgress: evaluateProgress,
+          upsertProgressStat: upsertProgressStat,
+        }),
+      ),
+    );
   }
   console.log('DONE with processing conversations');
   //setProcessStarted(false);

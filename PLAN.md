@@ -2,13 +2,10 @@
 
 ## Add feature for assess language level
 
+- Update evaluation.ts to support daily questions
+
 - Move assessment to backend
-  - Update LoadAdmins to return progress stats and show it on admin panel
-  - Run assessment on users that logged int today
-
-- Update useBackgroundProgressEvaluation.ts to support daily questions
-
-- How to improve performance of processing all conversations. I don't want to load all conversations at once at each page load
+  - Run assessment on users that logged in today
 
 - How to show progress: Before/after. Maybe this arrow up, down
 
