@@ -24,6 +24,44 @@ const getDayKey = (stat: ProgressStat): string => {
   return stat.createdAtIso.split('T')[0];
 };
 
+export const fillDailyGaps = (points: ProgressChartPoint[]): ProgressChartPoint[] => {
+  if (points.length <= 1) return points;
+
+  const result: ProgressChartPoint[] = [];
+
+  for (let i = 0; i < points.length; i++) {
+    result.push(points[i]);
+
+    if (i < points.length - 1) {
+      const currentDayKey = points[i].createdAtIso.split('T')[0];
+      const nextDayKey = points[i + 1].createdAtIso.split('T')[0];
+
+      const currentDate = new Date(currentDayKey);
+      const nextDate = new Date(nextDayKey);
+      const diffDays = Math.round(
+        (nextDate.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24),
+      );
+
+      for (let gap = 1; gap < diffDays; gap++) {
+        const gapDate = new Date(currentDate);
+        gapDate.setUTCDate(gapDate.getUTCDate() + gap);
+        const gapDayKey = gapDate.toISOString().split('T')[0];
+
+        result.push({
+          id: `day_${gapDayKey}`,
+          createdAtIso: `${gapDayKey}T00:00:00.000Z`,
+          grammar: 0,
+          vocabulary: 0,
+          fluency: 0,
+          confidence: 0,
+        });
+      }
+    }
+  }
+
+  return result;
+};
+
 const aggregateByDay = (stats: ProgressStat[]): ProgressChartPoint[] => {
   const dayAggregates = new Map<string, DailyAggregate>();
 
@@ -77,10 +115,11 @@ export function aggregateStats(
       : sorted;
 
   const dailyPoints = aggregateByDay(filtered);
+  const filledPoints = fillDailyGaps(dailyPoints);
 
-  return dailyPoints.map((point, index) => {
+  return filledPoints.map((point, index) => {
     const start = Math.max(0, index - windowSize + 1);
-    const window = dailyPoints.slice(start, index + 1);
+    const window = filledPoints.slice(start, index + 1);
 
     const avg = (metric: ProgressMetric) =>
       window.reduce((sum, item) => sum + item[metric], 0) / window.length;
