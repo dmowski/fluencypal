@@ -21,6 +21,7 @@ import { ConversationItem } from './ConversationItem';
 import { GoalQuizSection } from './GoalQuizSection';
 import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
+import { ProgressViewChart } from '@/features/ProgressStat/ProgressDashboardCard';
 
 interface UserCardProps {
   userStat: UserStat;
@@ -167,6 +168,8 @@ export function UserCard({ userStat }: UserCardProps) {
   const todayProgress = userStat.dailyProgress
     ? userStat.dailyProgress.find((d) => d.dayIso === today)
     : null;
+
+  const progressStats = userStat.progressStats || [];
 
   return (
     <Stack
@@ -411,6 +414,7 @@ export function UserCard({ userStat }: UserCardProps) {
           gap: '10px',
         }}
       >
+        <ProgressViewChart progressStats={progressStats} loadingProgressStats={false} />
         {conversations.length === 0 && (
           <Typography
             sx={{

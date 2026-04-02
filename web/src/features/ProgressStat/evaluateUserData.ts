@@ -10,6 +10,8 @@ import {
   ProgressStatUpsertInput,
 } from './types';
 
+const minMessagesForEvaluation = 9;
+
 const processConversation = async ({
   conversation,
   isAlreadyEvaluated,
@@ -21,10 +23,6 @@ const processConversation = async ({
   evaluateProgress: (input: ProgressEvaluationInput) => Promise<ProgressEvaluationOutput>;
   upsertProgressStat: (input: ProgressStatUpsertInput) => Promise<string>;
 }) => {
-  if (conversation.messages.length < 10) {
-    return;
-  }
-
   const statId = buildProgressStatId({
     sourceType: 'conversation',
     sourceId: conversation.id,
@@ -85,9 +83,7 @@ export const evaluateUserData = async ({
   const maxCountToProcess = 200;
   const goodConversations = shuffleArray(
     conversations.filter((conversation) => {
-      return (
-        conversation.messageOrder && conversation.messages && conversation.messages.length >= 10
-      );
+      return conversation.messages && conversation.messages.length >= minMessagesForEvaluation;
     }),
   );
 

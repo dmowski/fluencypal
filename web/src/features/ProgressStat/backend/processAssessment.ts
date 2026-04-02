@@ -35,7 +35,11 @@ import { normalizeAssessment } from '../normalizeAssessment';
 import { evaluateUserData } from '../evaluateUserData';
 
 export const processAssessment = async () => {
-  const userIdsToProcess = ['mAqf0cibi2Wdp923LiPRsUyrDZi1', 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
+  const userIdsToProcess = [
+    'K1S4bliZw4hYbpftEC6sG5s9WYj2',
+    'mAqf0cibi2Wdp923LiPRsUyrDZi1',
+    'Mq2HfU3KrXTjNyOpPXqHSPg5izV2',
+  ];
 
   for (const userId of userIdsToProcess) {
     const conversationsMeta = await getUserConversationsMeta(userId);
