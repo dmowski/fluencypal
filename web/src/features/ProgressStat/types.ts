@@ -1,4 +1,6 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { DailyQuestion } from '../DailyQuestion/types';
+import { ThreadsMessage } from '../Chat/type';
 
 export type ProgressMetric = 'grammar' | 'vocabulary' | 'fluency' | 'confidence';
 
@@ -6,7 +8,7 @@ export type ProgressValueMode = 'raw' | 'smoothed';
 
 export type ProgressChartStatus = 'ready' | 'empty' | 'loading' | 'processing' | 'locked';
 
-export type ProgressSourceType = 'conversation' | 'role-play';
+export type ProgressSourceType = 'conversation' | 'role-play' | 'daily-question-answer';
 
 export interface ProgressAssessmentResult {
   grammar: number;
@@ -86,4 +88,11 @@ export class ProgressEvaluationError extends Error {
     this.parseError = options?.parseError;
     this.attempts = options?.attempts;
   }
+}
+
+export interface DailyQuestionData {
+  question: DailyQuestion;
+  languageCode: SupportedLanguage;
+  questionSpaceId: string;
+  messages: ThreadsMessage[];
 }

@@ -23,6 +23,7 @@ export const useBackgroundProgressEvaluation = () => {
       setProcessStarted(true);
       evaluateUserData({
         conversations,
+        userDailyQuestions: [],
         isAlreadyEvaluated: progressStats.isAlreadyEvaluated,
         evaluateProgress: progressEvaluation.evaluateProgress,
         upsertProgressStat: progressStats.upsertProgressStat,

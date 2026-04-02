@@ -6,7 +6,7 @@ import { deleteDoc, query, where } from 'firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { ChatSpaceUserReadMetadata, UserChatMetadata } from './type';
 import { useSettings } from '../Settings/useSettings';
-import { getDailyQuestionPrefix } from '../DailyQuestion/DailyQuestionFullCard';
+import { getDailyQuestionPrefix } from '../DailyQuestion/getDailyQuestionSpaceId';
 
 // I send a message, and someone send a new message
 interface MyDailyQuestionNotification {

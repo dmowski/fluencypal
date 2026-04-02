@@ -2,9 +2,9 @@
 
 ## Add feature for assess language level
 
-- Update evaluation.ts to support daily questions
+- Backend: cron job for evaluating or run on my PC
 
-- How to show progress: Before/after. Maybe this arrow up, down
+- How to show progress: Before/after. Maybe this arrow up, down, and show progress for last 3 month
 
 - Full size report
   - On Dashboard card show full data
