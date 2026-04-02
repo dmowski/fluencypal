@@ -21,6 +21,8 @@ import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import { Check, ChevronDown, Settings } from 'lucide-react';
 import { useAuth } from '../Auth/useAuth';
+import dayjs from 'dayjs';
+import { uniq } from '@/libs/uniq';
 
 const imageUrl =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774984465436-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
@@ -97,6 +99,14 @@ export const ProgressViewChart = ({
   const sourceChartData = useMockDataSource ? mockChartData : firestoreChartData;
 
   const chartData = useMemo(() => {
+    const isOnlyOneDay =
+      uniq(sourceChartData.map((point) => dayjs(point.createdAtIso).format('YYYY-MM-DD')))
+        .length === 1;
+
+    if (isOnlyOneDay) {
+      return [];
+    }
+
     if (selectedPeriod === 'all-time' || sourceChartData.length === 0) {
       return sourceChartData;
     }
@@ -115,9 +125,11 @@ export const ProgressViewChart = ({
     const periodMs = periodMsMap[selectedPeriod];
     const thresholdTimestamp = latestTimestamp - periodMs;
 
-    return sourceChartData.filter(
+    const dataFiltered = sourceChartData.filter(
       (point) => new Date(point.createdAtIso).getTime() >= thresholdTimestamp,
     );
+
+    return dataFiltered;
   }, [selectedPeriod, sourceChartData]);
 
   const status = useMemo<ProgressChartStatus>(() => {

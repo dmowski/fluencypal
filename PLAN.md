@@ -4,9 +4,6 @@
 
 - Update evaluation.ts to support daily questions
 
-- Move assessment to backend
-  - Run assessment on users that logged in today
-
 - How to show progress: Before/after. Maybe this arrow up, down
 
 - Full size report
