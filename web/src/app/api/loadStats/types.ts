@@ -4,6 +4,7 @@ import { AiUserInfo } from '@/features/User/userInfo';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { DailyTaskProgress } from '@/features/Tasks/types';
+import { ProgressStat } from '@/features/ProgressStat/types';
 
 export interface UserStat {
   userData: UserSettingsWithId;
@@ -14,6 +15,7 @@ export interface UserStat {
   isGameWinner: boolean;
   aiUserInfo: AiUserInfo | null;
   dailyProgress: DailyTaskProgress[];
+  progressStats: ProgressStat[];
 }
 
 export interface AdminStatsRequest {

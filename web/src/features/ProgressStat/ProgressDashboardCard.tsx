@@ -16,7 +16,7 @@ import { ProgressChart } from './ProgressChart';
 import { mockProgressStats } from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { useProgressStats } from './useProgressStats';
-import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types';
+import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import { Check, ChevronDown, Settings } from 'lucide-react';
@@ -37,12 +37,58 @@ type ProgressPeriod = 'last-30-days' | 'last-3-month' | 'last-6-month' | 'all-ti
 export const ProgressDashboardCard = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const { progressStats, loadingProgressStats } = useProgressStats();
+
+  const isShowCard = auth.isFounder;
+  if (!isShowCard) {
+    return null;
+  }
+
+  return (
+    <Stack
+      sx={{
+        gap: '20px',
+      }}
+    >
+      <SectionHeader
+        title={i18n._('Progress')}
+        subTitle={i18n._('Track how your grammar, vocabulary, fluency, and confidence improve.')}
+      />
+
+      <StoreCard
+        textColor={'#fff'}
+        backgroundColor={'rgba(25, 25, 25, 0.92)'}
+        previewImageUrl={imageUrl}
+        title={i18n._('See how you improve over time.')}
+        subTitle={i18n._(
+          'Practice and watch your skills grow. Your progress is automatically tracked and visualized. 100% is a native-like proficiency level, while 0% is the beginner level of most language learners. The more you practice, the closer you get to 100%!',
+        )}
+        items={[]}
+        itemsBackgroundColor={'rgb(150, 137, 137)'}
+        itemsViewMode={'list'}
+      >
+        <ProgressViewChart
+          progressStats={progressStats}
+          loadingProgressStats={loadingProgressStats}
+        />
+      </StoreCard>
+    </Stack>
+  );
+};
+
+export const ProgressViewChart = ({
+  progressStats,
+  loadingProgressStats,
+}: {
+  progressStats: ProgressStat[];
+  loadingProgressStats: boolean;
+}) => {
+  const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
-  const { progressStats, loadingProgressStats } = useProgressStats();
   const firestoreChartData = useProgressAggregation(progressStats);
   const mockChartData = useProgressAggregation(mockProgressStats);
 
@@ -142,208 +188,179 @@ export const ProgressDashboardCard = () => {
 
   const isEmpty = status === 'empty';
 
-  const isShowCard = auth.isFounder;
-  if (!isShowCard) {
-    return null;
-  }
-
   return (
     <Stack
       sx={{
-        gap: '20px',
+        padding: '30px 30px 20px 0px',
       }}
     >
-      <SectionHeader
-        title={i18n._('Progress')}
-        subTitle={i18n._('Track how your grammar, vocabulary, fluency, and confidence improve.')}
-      />
-
-      <StoreCard
-        textColor={'#fff'}
-        backgroundColor={'rgba(25, 25, 25, 0.92)'}
-        previewImageUrl={imageUrl}
-        title={i18n._('See how you improve over time.')}
-        subTitle={i18n._(
-          'Practice and watch your skills grow. Your progress is automatically tracked and visualized. 100% is a native-like proficiency level, while 0% is the beginner level of most language learners. The more you practice, the closer you get to 100%!',
-        )}
-        items={[]}
-        itemsBackgroundColor={'rgb(150, 137, 137)'}
-        itemsViewMode={'list'}
+      <Stack
+        sx={{
+          width: '100%',
+          padding: '0 0 45px 25px',
+          flexDirection: 'row',
+          gap: '10px',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+        }}
       >
         <Stack
           sx={{
-            padding: '30px 30px 20px 0px',
+            flexDirection: 'row',
+            gap: '8px',
+            alignItems: 'flex-end',
+            opacity: isEmpty ? 0.3 : 1,
           }}
         >
-          <Stack
+          <Typography
+            variant="h5"
             sx={{
-              width: '100%',
-              padding: '0 0 45px 25px',
-              flexDirection: 'row',
-              gap: '10px',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
+              fontWeight: 600,
             }}
           >
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                gap: '8px',
-                alignItems: 'flex-end',
-                opacity: isEmpty ? 0.3 : 1,
-              }}
-            >
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 600,
-                }}
-              >
-                {averageLevel}%
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: 'rgba(243,246,255,0.72)',
-                  paddingBottom: '2px',
-                }}
-              >
-                {i18n._('Average Level')}
-              </Typography>
-            </Stack>
+            {averageLevel}%
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'rgba(243,246,255,0.72)',
+              paddingBottom: '2px',
+            }}
+          >
+            {i18n._('Average Level')}
+          </Typography>
+        </Stack>
 
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '12px',
-              }}
-            >
-              <Select
-                value={selectedMetric}
-                onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
-                displayEmpty
-                size="small"
-                IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
-                sx={{
-                  minWidth: '170px',
-                  color: '#f7f9ff',
-                  borderRadius: '10px',
-                  '.MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'rgba(255,255,255,0.24)',
-                  },
-                  '&:hover .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'rgba(255,255,255,0.3)',
-                  },
-                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'rgba(77, 163, 255, 0.3)',
-                  },
-                }}
-                renderValue={(value) => (
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '12px',
+          }}
+        >
+          <Select
+            value={selectedMetric}
+            onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
+            displayEmpty
+            size="small"
+            IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
+            sx={{
+              minWidth: '170px',
+              color: '#f7f9ff',
+              borderRadius: '10px',
+              '.MuiOutlinedInput-notchedOutline': {
+                borderColor: 'rgba(255,255,255,0.24)',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'rgba(255,255,255,0.3)',
+              },
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'rgba(77, 163, 255, 0.3)',
+              },
+            }}
+            renderValue={(value) => (
+              <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
+                <Stack
+                  sx={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: metricColorMap[value],
+                  }}
+                />
+                <Typography variant="body2">{metricLabelMap[value]}</Typography>
+              </Stack>
+            )}
+          >
+            {metricOptions.map((option) => (
+              <MenuItem key={option.metric} value={option.metric}>
+                <Stack
+                  sx={{
+                    width: '100%',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    gap: '12px',
+                    padding: '6px 5px',
+                  }}
+                >
                   <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
                     <Stack
                       sx={{
                         width: '8px',
                         height: '8px',
                         borderRadius: '50%',
-                        backgroundColor: metricColorMap[value],
+                        backgroundColor: metricColorMap[option.metric],
                       }}
                     />
-                    <Typography variant="body2">{metricLabelMap[value]}</Typography>
+                    <Typography variant="body1">{option.label}</Typography>
                   </Stack>
-                )}
-              >
-                {metricOptions.map((option) => (
-                  <MenuItem key={option.metric} value={option.metric}>
-                    <Stack
-                      sx={{
-                        width: '100%',
-                        alignItems: 'center',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        gap: '12px',
-                        padding: '6px 5px',
-                      }}
-                    >
-                      <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
-                        <Stack
-                          sx={{
-                            width: '8px',
-                            height: '8px',
-                            borderRadius: '50%',
-                            backgroundColor: metricColorMap[option.metric],
-                          }}
-                        />
-                        <Typography variant="body1">{option.label}</Typography>
-                      </Stack>
-                      {selectedMetric === option.metric && <Check size={16} />}
-                    </Stack>
-                  </MenuItem>
-                ))}
-              </Select>
+                  {selectedMetric === option.metric && <Check size={16} />}
+                </Stack>
+              </MenuItem>
+            ))}
+          </Select>
 
-              <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
-                <Settings size={'18px'} />
-              </IconButton>
-            </Stack>
-          </Stack>
+          <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
+            <Settings size={'18px'} />
+          </IconButton>
+        </Stack>
+      </Stack>
 
-          <Popover
-            open={settingsOpen}
-            anchorEl={settingsAnchorEl}
-            onClose={onSettingsClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            slotProps={{
-              paper: {
-                sx: {
-                  minWidth: '240px',
-                  backgroundColor: '#121212',
-                  padding: '20px 20px 20px 20px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: '0px 0px 22px rgba(0, 0, 0, 0.5)',
-                },
-              },
+      <Popover
+        open={settingsOpen}
+        anchorEl={settingsAnchorEl}
+        onClose={onSettingsClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        slotProps={{
+          paper: {
+            sx: {
+              minWidth: '240px',
+              backgroundColor: '#121212',
+              padding: '20px 20px 20px 20px',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0px 0px 22px rgba(0, 0, 0, 0.5)',
+            },
+          },
+        }}
+      >
+        <Stack sx={{ gap: '24px' }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontWeight: 500,
             }}
           >
-            <Stack sx={{ gap: '24px' }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  fontWeight: 500,
-                }}
-              >
-                {i18n._('Progress Settings')}
-              </Typography>
+            {i18n._('Progress Settings')}
+          </Typography>
 
-              <FormControl size="small" fullWidth>
-                <InputLabel id="progress-period-select-label">{i18n._('Period')}</InputLabel>
-                <Select
-                  labelId="progress-period-select-label"
-                  value={selectedPeriod}
-                  label={i18n._('Period')}
-                  onChange={(event) => setSelectedPeriod(event.target.value as ProgressPeriod)}
-                >
-                  <MenuItem value="last-30-days">{i18n._('Last 30 days')}</MenuItem>
-                  <MenuItem value="last-3-month">{i18n._('Last 3 month')}</MenuItem>
-                  <MenuItem value="last-6-month">{i18n._('Last 6 month')}</MenuItem>
-                  <MenuItem value="all-time">{i18n._('All time')}</MenuItem>
-                </Select>
-              </FormControl>
-            </Stack>
-          </Popover>
-
-          <ProgressChart
-            data={chartData}
-            metric={selectedMetric}
-            valueMode={valueMode}
-            status={status}
-            height={320}
-            emptyPreviewData={mockChartData}
-          />
+          <FormControl size="small" fullWidth>
+            <InputLabel id="progress-period-select-label">{i18n._('Period')}</InputLabel>
+            <Select
+              labelId="progress-period-select-label"
+              value={selectedPeriod}
+              label={i18n._('Period')}
+              onChange={(event) => setSelectedPeriod(event.target.value as ProgressPeriod)}
+            >
+              <MenuItem value="last-30-days">{i18n._('Last 30 days')}</MenuItem>
+              <MenuItem value="last-3-month">{i18n._('Last 3 month')}</MenuItem>
+              <MenuItem value="last-6-month">{i18n._('Last 6 month')}</MenuItem>
+              <MenuItem value="all-time">{i18n._('All time')}</MenuItem>
+            </Select>
+          </FormControl>
         </Stack>
-      </StoreCard>
+      </Popover>
+
+      <ProgressChart
+        data={chartData}
+        metric={selectedMetric}
+        valueMode={valueMode}
+        status={status}
+        height={320}
+        emptyPreviewData={mockChartData}
+      />
     </Stack>
   );
 };

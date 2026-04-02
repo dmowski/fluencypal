@@ -10,6 +10,7 @@ import {
   getUsersQuizSurvey,
 } from '../user/getUserInfo';
 import { getUserBalance } from '../payment/getUserBalance';
+import { getAllProgressStatsForUser } from '@/features/ProgressStat/backend/processAssessment';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -29,15 +30,23 @@ export async function POST(request: Request) {
 
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationMeta, goalQuiz2, interviewStats, balance, aiUserInfo, dailyProgress] =
-        await Promise.all([
-          getUserConversationsMeta(user.id),
-          getUsersQuizSurvey(user.id),
-          getUsersInterviewSurvey(user.id),
-          getUserBalance(user.id),
-          getUserAiInfo(user.id),
-          getUserDailyTasksProgress(user.id),
-        ]);
+      const [
+        conversationMeta,
+        goalQuiz2,
+        interviewStats,
+        balance,
+        aiUserInfo,
+        dailyProgress,
+        progressStats,
+      ] = await Promise.all([
+        getUserConversationsMeta(user.id),
+        getUsersQuizSurvey(user.id),
+        getUsersInterviewSurvey(user.id),
+        getUserBalance(user.id),
+        getUserAiInfo(user.id),
+        getUserDailyTasksProgress(user.id),
+        getAllProgressStatsForUser(user.id),
+      ]);
 
       const userStat: UserStat = {
         userData: user,
@@ -48,6 +57,7 @@ export async function POST(request: Request) {
         isGameWinner: balance.isGameWinner,
         aiUserInfo,
         dailyProgress,
+        progressStats,
       };
       return userStat;
     }),

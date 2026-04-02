@@ -9,6 +9,7 @@ import {
   ProgressEvaluationError,
   ProgressEvaluationInput,
   ProgressEvaluationOutput,
+  ProgressStat,
   ProgressStatUpsertInput,
 } from '../types';
 import { createProgressStatData } from '../createProgressStatData';
@@ -34,7 +35,7 @@ import { normalizeAssessment } from '../normalizeAssessment';
 import { evaluateUserData } from '../evaluateUserData';
 
 export const processAssessment = async () => {
-  const userIdsToProcess = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
+  const userIdsToProcess = ['mAqf0cibi2Wdp923LiPRsUyrDZi1', 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2'];
 
   for (const userId of userIdsToProcess) {
     const conversationsMeta = await getUserConversationsMeta(userId);
@@ -78,6 +79,18 @@ const upsertProgressStat = async (
 
   statDocRef.set(progressStat.stat);
   return progressStat.documentId;
+};
+
+export const getAllProgressStatsForUser = async (userId: string): Promise<ProgressStat[]> => {
+  const db = getDB();
+  const statsCollectionRef = db.collection('users').doc(userId).collection('progressStats');
+  const snapshot = await statsCollectionRef.get();
+  const stats: ProgressStat[] = [];
+  snapshot.forEach((doc) => {
+    const data = doc.data() as ProgressStat;
+    stats.push(data);
+  });
+  return stats;
 };
 
 const generate: AiTextGenerator = async (conversationDate: TextAiRequest) => {
