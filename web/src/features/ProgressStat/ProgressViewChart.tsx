@@ -145,8 +145,55 @@ export const ProgressViewChart = ({
 
   const isEmpty = status === 'empty';
 
-  const isPositiveChange = true;
-  const changeComparedToPreviousPeriod = 10;
+  const { isPositiveChange, changeComparedToPreviousPeriod } = useMemo(() => {
+    if (!sourceChartData.length || !chartData.length || selectedPeriod === 'all-time') {
+      return { isPositiveChange: true, changeComparedToPreviousPeriod: 0 };
+    }
+
+    const metricKey =
+      valueMode === 'smoothed'
+        ? (`${selectedMetric}Smoothed` as
+            | 'grammarSmoothed'
+            | 'vocabularySmoothed'
+            | 'fluencySmoothed'
+            | 'confidenceSmoothed')
+        : selectedMetric;
+
+    const getAverage = (data: typeof sourceChartData) => {
+      const values = data
+        .map((point) => point[metricKey])
+        .filter((value): value is number => typeof value === 'number' && value > 0);
+      if (!values.length) return 0;
+      return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
+    };
+
+    const latestTimestamp = Math.max(
+      ...sourceChartData.map((point) => new Date(point.createdAtIso).getTime()),
+    );
+
+    const dayMs = 24 * 60 * 60 * 1000;
+    const periodMsMap: Record<Exclude<ProgressPeriod, 'all-time'>, number> = {
+      'last-30-days': 30 * dayMs,
+      'last-3-month': 90 * dayMs,
+      'last-6-month': 180 * dayMs,
+    };
+
+    const periodMs = periodMsMap[selectedPeriod];
+    const currentPeriodStart = latestTimestamp - periodMs;
+    const previousPeriodStart = latestTimestamp - 2 * periodMs;
+
+    const previousPeriodData = sourceChartData.filter((point) => {
+      const timestamp = new Date(point.createdAtIso).getTime();
+      return timestamp >= previousPeriodStart && timestamp < currentPeriodStart;
+    });
+
+    const previousAverage = getAverage(previousPeriodData);
+    const diff = averageLevel - previousAverage;
+    return {
+      isPositiveChange: diff >= 0,
+      changeComparedToPreviousPeriod: Math.abs(diff),
+    };
+  }, [sourceChartData, chartData, selectedMetric, valueMode, selectedPeriod, averageLevel]);
 
   return (
     <Stack
@@ -180,43 +227,47 @@ export const ProgressViewChart = ({
           >
             {averageLevel}%
           </Typography>
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '14px',
-              paddingBottom: '2px',
-            }}
-          >
+          {selectedPeriod !== 'all-time' && (
             <Stack
               sx={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: '4px',
-                color: isPositiveChange ? 'oklch(76.5% .177 163.223)' : 'oklch(63.7% .237 25.331)',
+                gap: '14px',
+                paddingBottom: '2px',
               }}
             >
-              {isPositiveChange ? (
-                <ArrowUp size="18px" strokeWidth="3px" />
-              ) : (
-                <ArrowDown size="18px" strokeWidth="3px" />
-              )}
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: '4px',
+                  color: isPositiveChange
+                    ? 'oklch(76.5% .177 163.223)'
+                    : 'oklch(70.4% .191 22.216)',
+                }}
+              >
+                {isPositiveChange ? (
+                  <ArrowUp size="18px" strokeWidth="3px" />
+                ) : (
+                  <ArrowDown size="18px" strokeWidth="3px" />
+                )}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: 700,
+                  }}
+                >{`${changeComparedToPreviousPeriod}%`}</Typography>
+              </Stack>
               <Typography
                 variant="body2"
                 sx={{
-                  fontWeight: 700,
+                  color: 'rgba(243,246,255,0.72)',
                 }}
-              >{`${changeComparedToPreviousPeriod}%`}</Typography>
+              >
+                {i18n._('vs. prev period')}
+              </Typography>
             </Stack>
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'rgba(243,246,255,0.72)',
-              }}
-            >
-              {i18n._('vs. prev period')}
-            </Typography>
-          </Stack>
+          )}
         </Stack>
 
         <Stack
