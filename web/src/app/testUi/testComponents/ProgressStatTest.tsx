@@ -12,13 +12,11 @@ import {
   mockSparseProgressChartPoints,
   mockProgressWaveChartPoints,
 } from '@/features/ProgressStat/mockData';
-import {
-  ProgressEvaluationError,
-  useProgressEvaluation,
-} from '@/features/ProgressStat/useProgressEvaluation';
+import { useProgressEvaluation } from '@/features/ProgressStat/useProgressEvaluation';
 import {
   ProgressChartPoint,
   ProgressChartStatus,
+  ProgressEvaluationError,
   ProgressMetric,
   ProgressSourceType,
   ProgressValueMode,

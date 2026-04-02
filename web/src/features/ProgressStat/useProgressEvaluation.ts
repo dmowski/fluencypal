@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { TextAiJsonError, useTextAi } from '@/features/Ai/useTextAi';
+import { useTextAi } from '@/features/Ai/useTextAi';
 import {
   ProgressEvaluationError,
   ProgressEvaluationInput,
@@ -15,6 +15,7 @@ import {
   progressEvaluationSystemMessage,
 } from './aiPrompts';
 import { normalizeAssessment } from './normalizeAssessment';
+import { TextAiJsonError } from '../Ai/types';
 
 export const useProgressEvaluation = () => {
   const textAi = useTextAi();
