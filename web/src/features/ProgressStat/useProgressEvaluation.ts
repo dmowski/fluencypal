@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 import { TextAiJsonError, useTextAi } from '@/features/Ai/useTextAi';
-import { ProgressEvaluationInput, ProgressEvaluationOutput } from './types';
+import {
+  ProgressEvaluationError,
+  ProgressEvaluationInput,
+  ProgressEvaluationOutput,
+} from './types';
 import { progressAssessmentSchema } from './progressSchemas';
 import {
   getUserMessage,
@@ -11,23 +15,6 @@ import {
   progressEvaluationSystemMessage,
 } from './aiPrompts';
 import { normalizeAssessment } from './normalizeAssessment';
-
-export class ProgressEvaluationError extends Error {
-  rawOutput?: string;
-  parseError?: string;
-  attempts?: number;
-
-  constructor(
-    message: string,
-    options?: { rawOutput?: string; parseError?: string; attempts?: number; cause?: unknown },
-  ) {
-    super(message, { cause: options?.cause });
-    this.name = 'ProgressEvaluationError';
-    this.rawOutput = options?.rawOutput;
-    this.parseError = options?.parseError;
-    this.attempts = options?.attempts;
-  }
-}
 
 export const useProgressEvaluation = () => {
   const textAi = useTextAi();

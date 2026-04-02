@@ -70,3 +70,20 @@ export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
   algorithmVersion?: string;
   createdAtIso?: string;
 }
+
+export class ProgressEvaluationError extends Error {
+  rawOutput?: string;
+  parseError?: string;
+  attempts?: number;
+
+  constructor(
+    message: string,
+    options?: { rawOutput?: string; parseError?: string; attempts?: number; cause?: unknown },
+  ) {
+    super(message, { cause: options?.cause });
+    this.name = 'ProgressEvaluationError';
+    this.rawOutput = options?.rawOutput;
+    this.parseError = options?.parseError;
+    this.attempts = options?.attempts;
+  }
+}
