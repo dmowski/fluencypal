@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useEffect } from 'react';
 import { useAuth } from '../Auth/useAuth';
-import { getDoc, setDoc } from 'firebase/firestore';
+import { getDocFromServer, setDoc } from 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import {
   fullEnglishLanguageName,
@@ -160,7 +160,7 @@ function useProvideSettings(): SettingsContextType {
 
     await sleep(500);
 
-    const dataDoc = await getDoc(userSettingsDoc);
+    const dataDoc = await getDocFromServer(userSettingsDoc);
     const isExists = dataDoc.exists();
     const data = dataDoc.data();
     const isNoCreatedAt = !data?.createdAt;
