@@ -5,39 +5,12 @@ import { getDoc, query, setDoc, where } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
-import { SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
-import {
-  ProgressAssessmentResult,
-  ProgressSourceType,
-  ProgressStat,
-} from '@/features/ProgressStat/types';
+import { ProgressStat, ProgressStatUpsertInput } from '@/features/ProgressStat/types';
+import { buildProgressStatId } from './buildProgressStatId';
+import { PROGRESS_ALGORITHM_VERSION } from './data';
 
-export const PROGRESS_ALGORITHM_VERSION = 'score_v1';
-
-export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
-  language: SupportedLanguage;
-  sourceType: ProgressSourceType;
-  sourceText: string;
-  sourceId: string;
-  textLength: number;
-  algorithmVersion?: string;
-  createdAtIso?: string;
-}
-
-export const buildProgressStatId = ({
-  sourceType,
-  sourceId,
-  algorithmVersion,
-}: {
-  sourceType: ProgressSourceType;
-  sourceId: string;
-  algorithmVersion: string;
-}) => {
-  return [sourceType, encodeURIComponent(sourceId), algorithmVersion].join('_');
-};
-
-interface ProgressStatsContextType {
+export interface ProgressStatsContextType {
   progressStats: ProgressStat[];
   loadingProgressStats: boolean;
   errorProgressStats: Error | undefined;

@@ -60,3 +60,13 @@ export interface ProgressEvaluationOutput {
   rawOutput: string;
   parsed: ProgressAssessmentResult;
 }
+
+export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
+  language: SupportedLanguage;
+  sourceType: ProgressSourceType;
+  sourceText: string;
+  sourceId: string;
+  textLength: number;
+  algorithmVersion?: string;
+  createdAtIso?: string;
+}
