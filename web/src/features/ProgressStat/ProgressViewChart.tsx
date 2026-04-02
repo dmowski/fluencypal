@@ -21,7 +21,7 @@ import {
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
-import { Check, ChevronDown, Settings } from 'lucide-react';
+import { ArrowDown, ArrowUp, Check, ChevronDown, Settings } from 'lucide-react';
 import dayjs from 'dayjs';
 import { uniq } from '@/libs/uniq';
 
@@ -44,7 +44,7 @@ export const ProgressViewChart = ({
   const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
-  const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
+  const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('last-30-days');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
   const firestoreChartData = useProgressAggregation(progressStats);
@@ -119,7 +119,7 @@ export const ProgressViewChart = ({
 
     const values = chartData
       .map((point) => point[metricKey])
-      .filter((value): value is number => typeof value === 'number');
+      .filter((value): value is number => typeof value === 'number' && value > 0);
 
     if (!values.length) {
       return 0;
@@ -145,6 +145,9 @@ export const ProgressViewChart = ({
 
   const isEmpty = status === 'empty';
 
+  const isPositiveChange = true;
+  const changeComparedToPreviousPeriod = 10;
+
   return (
     <Stack
       sx={{
@@ -164,7 +167,7 @@ export const ProgressViewChart = ({
         <Stack
           sx={{
             flexDirection: 'row',
-            gap: '8px',
+            gap: '15px',
             alignItems: 'flex-end',
             opacity: isEmpty ? 0.3 : 1,
           }}
@@ -177,15 +180,43 @@ export const ProgressViewChart = ({
           >
             {averageLevel}%
           </Typography>
-          <Typography
-            variant="body2"
+          <Stack
             sx={{
-              color: 'rgba(243,246,255,0.72)',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '14px',
               paddingBottom: '2px',
             }}
           >
-            {i18n._('Average Level')}
-          </Typography>
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '4px',
+                color: isPositiveChange ? 'oklch(76.5% .177 163.223)' : 'oklch(63.7% .237 25.331)',
+              }}
+            >
+              {isPositiveChange ? (
+                <ArrowUp size="18px" strokeWidth="3px" />
+              ) : (
+                <ArrowDown size="18px" strokeWidth="3px" />
+              )}
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 700,
+                }}
+              >{`${changeComparedToPreviousPeriod}%`}</Typography>
+            </Stack>
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'rgba(243,246,255,0.72)',
+              }}
+            >
+              {i18n._('vs. prev period')}
+            </Typography>
+          </Stack>
         </Stack>
 
         <Stack
@@ -305,6 +336,19 @@ export const ProgressViewChart = ({
               <MenuItem value="last-3-month">{i18n._('Last 3 month')}</MenuItem>
               <MenuItem value="last-6-month">{i18n._('Last 6 month')}</MenuItem>
               <MenuItem value="all-time">{i18n._('All time')}</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl size="small" fullWidth>
+            <InputLabel id="progress-value-mode-select-label">{i18n._('Value Mode')}</InputLabel>
+            <Select
+              labelId="progress-value-mode-select-label"
+              value={valueMode}
+              label={i18n._('Value Mode')}
+              onChange={(event) => setValueMode(event.target.value as ProgressValueMode)}
+            >
+              <MenuItem value="raw">{i18n._('Raw')}</MenuItem>
+              <MenuItem value="smoothed">{i18n._('Smoothed')}</MenuItem>
             </Select>
           </FormControl>
         </Stack>
