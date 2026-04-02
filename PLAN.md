@@ -3,6 +3,13 @@
 ## Add feature for assess language level
 
 - Move assessment to backend
+  - Create endpoint to process all users, for now only my
+  - Read user's conversation
+  - Check if assessment is done
+  - Generate assessment if not
+  - Save assessment
+  - Process all my conversations
+  - Run assessment on users that logged int today
 
 - Update useBackgroundProgressEvaluation.ts to support daily questions
 
