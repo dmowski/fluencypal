@@ -48,7 +48,6 @@ export const ProgressViewChart = ({
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
   const firestoreChartData = useProgressAggregation(progressStats);
-  const mockChartData = mockSparseProgressChartPoints;
 
   const sourceChartData = firestoreChartData;
 
