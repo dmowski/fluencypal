@@ -21,7 +21,7 @@ import { ConversationItem } from './ConversationItem';
 import { GoalQuizSection } from './GoalQuizSection';
 import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
-import { ProgressViewChart } from '@/features/ProgressStat/ProgressDashboardCard';
+import { ProgressViewChart } from '@/features/ProgressStat/ProgressViewChart';
 
 interface UserCardProps {
   userStat: UserStat;
