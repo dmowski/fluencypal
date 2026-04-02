@@ -4,7 +4,7 @@
  */
 
 import { getDB } from '@/app/api/config/firebase';
-import { getUserConversationsMeta } from '@/app/api/user/getUserInfo';
+import { getAllUsersWithIds, getUserConversationsMeta } from '@/app/api/user/getUserInfo';
 import {
   ProgressEvaluationError,
   ProgressEvaluationInput,
@@ -35,11 +35,11 @@ import { normalizeAssessment } from '../normalizeAssessment';
 import { evaluateUserData } from '../evaluateUserData';
 
 export const processAssessment = async () => {
-  const userIdsToProcess = [
-    'K1S4bliZw4hYbpftEC6sG5s9WYj2',
-    'mAqf0cibi2Wdp923LiPRsUyrDZi1',
-    'Mq2HfU3KrXTjNyOpPXqHSPg5izV2',
-  ];
+  const allUsers = await getAllUsersWithIds({
+    limits: 30,
+  });
+
+  const userIdsToProcess = allUsers.map((user) => user.id);
 
   for (const userId of userIdsToProcess) {
     const conversationsMeta = await getUserConversationsMeta(userId);

@@ -80,7 +80,7 @@ export const evaluateUserData = async ({
     return;
   }
 
-  const maxCountToProcess = 200;
+  const maxCountToProcess = 300;
   const chunkSize = 10;
   const goodConversations = shuffleArray(
     conversations.filter((conversation) => {
