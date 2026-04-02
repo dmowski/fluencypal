@@ -199,7 +199,7 @@ export const ProgressChart = ({
           <ProgressChartStateOverlay
             title={i18n._('No progress data yet')}
             description={i18n._(
-              'Have a few conversations to start charting your progress in learning the language.',
+              'Have a few days of practice and check back here for insights on your learning progress.',
             )}
           />
         )}
