@@ -33,6 +33,7 @@ const processConversation = async ({
 
   const isAlreadyDone = await isAlreadyEvaluated(statId);
   if (isAlreadyDone) {
+    console.log('Already done,', statId);
     return;
   }
 
@@ -81,7 +82,7 @@ export const evaluateUserData = async ({
     return;
   }
 
-  const maxCountToProcess = 100;
+  const maxCountToProcess = 200;
   const goodConversations = shuffleArray(
     conversations.filter((conversation) => {
       return (

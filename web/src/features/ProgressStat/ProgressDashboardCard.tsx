@@ -34,7 +34,7 @@ const metricColorMap: Record<ProgressMetric, string> = {
 
 type ProgressPeriod = 'last-30-days' | 'last-3-month' | 'last-6-month' | 'all-time';
 
-export const ProgressCard = () => {
+export const ProgressDashboardCard = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');

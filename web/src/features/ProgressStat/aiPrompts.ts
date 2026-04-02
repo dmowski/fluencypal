@@ -33,7 +33,7 @@ export const progressEvaluationSystemMessage = [
   '}',
 ].join('\n');
 
-export const getUserMessage = (input: ProgressEvaluationInput, transcriptText: string) => {
+export const getAiUserMessage = (input: ProgressEvaluationInput, transcriptText: string) => {
   return [
     `Target language: ${input.language}`,
     `Source type: ${input.sourceType}`,

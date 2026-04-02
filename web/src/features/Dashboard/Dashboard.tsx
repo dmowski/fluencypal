@@ -16,7 +16,6 @@ import { LessonStartModal } from '../Plan/LessonStartModal';
 import { JustTalkCard } from './JustTalkCard';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
 import { RolePlayDashboardCard } from './RolePlayDashboardCard';
-import { CommunityDashboardCard } from './CommunityDashboardCard';
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
 import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
@@ -25,7 +24,7 @@ import { GameDashboardCard } from './GameDashboardCard';
 import { StoriesDashboardCard } from './StoriesDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
-import { ProgressCard } from '../ProgressStat/ProgressCard';
+import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -81,7 +80,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <DailyTasksDashboardCard />
-                <ProgressCard />
+                <ProgressDashboardCard />
                 <ExperimentalDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />

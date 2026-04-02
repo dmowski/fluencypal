@@ -9,7 +9,7 @@ import {
 } from './types';
 import { progressAssessmentSchema } from './progressSchemas';
 import {
-  getUserMessage,
+  getAiUserMessage,
   MAX_EVALUATION_ATTEMPTS,
   MODEL_FOR_ASSESSMENT,
   progressEvaluationSystemMessage,
@@ -32,7 +32,7 @@ export const useProgressEvaluation = () => {
 
     setIsEvaluating(true);
     try {
-      const userMessage = getUserMessage(input, transcriptText);
+      const userMessage = getAiUserMessage(input, transcriptText);
 
       try {
         const result = await textAi.generateStrictJson({
