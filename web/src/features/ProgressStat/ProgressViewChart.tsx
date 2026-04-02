@@ -2,6 +2,8 @@
 
 import { useLingui } from '@lingui/react';
 import {
+  Button,
+  ButtonGroup,
   FormControl,
   IconButton,
   InputLabel,
@@ -42,6 +44,7 @@ export const ProgressViewChart = ({
   loadingProgressStats: boolean;
 }) => {
   const { i18n } = useLingui();
+  const isShowSettings = false;
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('last-30-days');
@@ -206,68 +209,109 @@ export const ProgressViewChart = ({
           width: '100%',
           padding: '0 0 45px 25px',
           flexDirection: 'row',
-          gap: '10px',
+          gap: '20px 10px',
           justifyContent: 'space-between',
+          alignItems: 'flex-end',
           flexWrap: 'wrap',
         }}
       >
         <Stack
           sx={{
-            flexDirection: 'row',
-            gap: '15px',
-            alignItems: 'flex-end',
-            opacity: isEmpty ? 0.3 : 1,
+            gap: '20px',
           }}
         >
-          <Typography
-            variant="h5"
+          <Stack
             sx={{
-              fontWeight: 600,
+              flexDirection: 'row',
+              gap: '3px',
             }}
           >
-            {averageLevel}%
-          </Typography>
-          {selectedPeriod !== 'all-time' && (
-            <Stack
+            <ButtonGroup>
+              <Button
+                variant={selectedPeriod === 'last-30-days' ? 'contained' : 'outlined'}
+                onClick={() => setSelectedPeriod('last-30-days')}
+              >
+                30D
+              </Button>
+              <Button
+                variant={selectedPeriod === 'last-3-month' ? 'contained' : 'outlined'}
+                onClick={() => setSelectedPeriod('last-3-month')}
+              >
+                3M
+              </Button>
+              <Button
+                variant={selectedPeriod === 'last-6-month' ? 'contained' : 'outlined'}
+                onClick={() => setSelectedPeriod('last-6-month')}
+              >
+                6M
+              </Button>
+              <Button
+                variant={selectedPeriod === 'all-time' ? 'contained' : 'outlined'}
+                onClick={() => setSelectedPeriod('all-time')}
+              >
+                ALL
+              </Button>
+            </ButtonGroup>
+          </Stack>
+
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: '15px',
+              alignItems: 'flex-end',
+              opacity: isEmpty ? 0.3 : 1,
+            }}
+          >
+            <Typography
+              variant="h5"
               sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '14px',
-                paddingBottom: '2px',
+                fontWeight: 600,
               }}
             >
+              {averageLevel}%
+            </Typography>
+            {selectedPeriod !== 'all-time' && (
               <Stack
                 sx={{
                   flexDirection: 'row',
                   alignItems: 'center',
-                  gap: '4px',
-                  color: isPositiveChange
-                    ? 'oklch(76.5% .177 163.223)'
-                    : 'oklch(70.4% .191 22.216)',
+                  gap: '14px',
+                  paddingBottom: '2px',
                 }}
               >
-                {isPositiveChange ? (
-                  <ArrowUp size="18px" strokeWidth="3px" />
-                ) : (
-                  <ArrowDown size="18px" strokeWidth="3px" />
-                )}
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '4px',
+                    color: isPositiveChange
+                      ? 'oklch(76.5% .177 163.223)'
+                      : 'oklch(70.4% .191 22.216)',
+                  }}
+                >
+                  {isPositiveChange ? (
+                    <ArrowUp size="18px" strokeWidth="3px" />
+                  ) : (
+                    <ArrowDown size="18px" strokeWidth="3px" />
+                  )}
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 700,
+                    }}
+                  >{`${changeComparedToPreviousPeriod}%`}</Typography>
+                </Stack>
                 <Typography
                   variant="body2"
                   sx={{
-                    fontWeight: 700,
+                    color: 'rgba(243,246,255,0.72)',
                   }}
-                >{`${changeComparedToPreviousPeriod}%`}</Typography>
+                >
+                  {i18n._('vs. prev period')}
+                </Typography>
               </Stack>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: 'rgba(243,246,255,0.72)',
-                }}
-              >
-                {i18n._('vs. prev period')}
-              </Typography>
-            </Stack>
-          )}
+            )}
+          </Stack>
         </Stack>
 
         <Stack
@@ -340,9 +384,11 @@ export const ProgressViewChart = ({
             ))}
           </Select>
 
-          <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
-            <Settings size={'18px'} />
-          </IconButton>
+          {isShowSettings && (
+            <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
+              <Settings size={'18px'} />
+            </IconButton>
+          )}
         </Stack>
       </Stack>
 
