@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
 import { ProgressChartPoint, ProgressMetric, ProgressStat } from './types';
 
-const METRICS: ProgressMetric[] = ['grammar', 'vocabulary', 'fluency', 'confidence'];
-
 const DEFAULT_WINDOW_SIZE = 5;
 
 export interface ProgressAggregationOptions {
