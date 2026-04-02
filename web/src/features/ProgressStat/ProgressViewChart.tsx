@@ -148,9 +148,9 @@ export const ProgressViewChart = ({
 
   const isEmpty = status === 'empty';
 
-  const { isPositiveChange, changeComparedToPreviousPeriod } = useMemo(() => {
+  const { isChangeExists, isPositiveChange, changeComparedToPreviousPeriod } = useMemo(() => {
     if (!sourceChartData.length || !chartData.length || selectedPeriod === 'all-time') {
-      return { isPositiveChange: true, changeComparedToPreviousPeriod: 0 };
+      return { isChangeExists: false, isPositiveChange: true, changeComparedToPreviousPeriod: 0 };
     }
 
     const metricKey =
@@ -190,9 +190,14 @@ export const ProgressViewChart = ({
       return timestamp >= previousPeriodStart && timestamp < currentPeriodStart;
     });
 
+    if (!previousPeriodData.length) {
+      return { isChangeExists: false, isPositiveChange: true, changeComparedToPreviousPeriod: 0 };
+    }
+
     const previousAverage = getAverage(previousPeriodData);
     const diff = averageLevel - previousAverage;
     return {
+      isChangeExists: true,
       isPositiveChange: diff >= 0,
       changeComparedToPreviousPeriod: Math.abs(diff),
     };
@@ -270,7 +275,7 @@ export const ProgressViewChart = ({
             >
               {averageLevel}%
             </Typography>
-            {selectedPeriod !== 'all-time' && (
+            {selectedPeriod !== 'all-time' && isChangeExists && (
               <Stack
                 sx={{
                   flexDirection: 'row',
