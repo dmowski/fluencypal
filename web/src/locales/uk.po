@@ -1613,7 +1613,7 @@ msgstr ""
 "Весь вихідний код є відкритим та загальнодоступним. Якщо ви вмієте "
 "програмувати, ви можете його вдосконалити."
 
-#: src/features/ProgressStat/ProgressCard.tsx:331
+#: src/features/ProgressStat/ProgressViewChart.tsx:440
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "Увесь час"
@@ -1953,11 +1953,6 @@ msgstr "Доступні мови:"
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Аватар"
-
-#: src/features/ProgressStat/ProgressCard.tsx:211
-#. js-lingui-explicit-id
-msgid "Average Level"
-msgstr "Середній рівень"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2813,7 +2808,7 @@ msgstr "Конкурентність і Стійкість"
 msgid "Concurrency and resiliency assessment"
 msgstr "Оцінка багатозадачності та стійкості"
 
-#: src/features/ProgressStat/ProgressCard.tsx:93
+#: src/features/ProgressStat/ProgressViewChart.tsx:99
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Впевненість"
@@ -5034,7 +5029,7 @@ msgstr ""
 msgid "Fixed words"
 msgstr "Фіксовані слова"
 
-#: src/features/ProgressStat/ProgressCard.tsx:92
+#: src/features/ProgressStat/ProgressViewChart.tsx:98
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Вільне володіння мовою"
@@ -5948,7 +5943,7 @@ msgstr "Емулятор викликів Google"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressCard.tsx:90
+#: src/features/ProgressStat/ProgressViewChart.tsx:96
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Граматика"
@@ -6071,11 +6066,11 @@ msgstr "Мова ненависті"
 #: src/features/ProgressStat/ProgressChart.tsx:201
 #. js-lingui-explicit-id
 msgid ""
-"Have a few conversations to start charting your progress in learning the "
-"language."
+"Have a few days of practice and check back here for insights on your "
+"learning progress."
 msgstr ""
-"Майте кілька розмов, щоб розпочати відстежувати свій прогрес у вивченні "
-"мови."
+"Майте кілька днів практики і повертайтесь сюди, щоб отримати уявлення про "
+"ваші успіхи у навчанні."
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
@@ -8126,17 +8121,17 @@ msgstr "Мови"
 msgid "Languages installed in your brain:"
 msgstr "Мови, встановлені у вашому мозку:"
 
-#: src/features/ProgressStat/ProgressCard.tsx:329
+#: src/features/ProgressStat/ProgressViewChart.tsx:438
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "Останні 3 місяці"
 
-#: src/features/ProgressStat/ProgressCard.tsx:328
+#: src/features/ProgressStat/ProgressViewChart.tsx:437
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "Останні 30 днів"
 
-#: src/features/ProgressStat/ProgressCard.tsx:330
+#: src/features/ProgressStat/ProgressViewChart.tsx:439
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Останні 6 місяців"
@@ -9474,7 +9469,7 @@ msgstr "Відкрити в Telegram"
 msgid "Open personal plan"
 msgstr "Відкрити персональний план"
 
-#: src/features/ProgressStat/ProgressCard.tsx:285
+#: src/features/ProgressStat/ProgressViewChart.tsx:393
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Відкрити налаштування прогресу"
@@ -9719,8 +9714,8 @@ msgstr "Метрики продуктивності"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Продуктивність, стійкість та архітектурні шаблони"
 
-#: src/features/ProgressStat/ProgressCard.tsx:321
-#: src/features/ProgressStat/ProgressCard.tsx:325
+#: src/features/ProgressStat/ProgressViewChart.tsx:430
+#: src/features/ProgressStat/ProgressViewChart.tsx:434
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "Період"
@@ -10092,7 +10087,7 @@ msgstr "Практика"
 msgid "PRACTICE AND HARD WORK"
 msgstr "ПРАКТИКА І ВАЖКА РОБОТА"
 
-#: src/features/ProgressStat/ProgressCard.tsx:166
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid ""
 "Practice and watch your skills grow. Your progress is automatically tracked "
@@ -10640,7 +10635,7 @@ msgstr "Фахівці, які переходять з інших галузей
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/features/ProgressStat/ProgressCard.tsx:157
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Прогрес"
@@ -10655,7 +10650,7 @@ msgstr "Календар прогресу"
 msgid "Progress insights are locked"
 msgstr "Інформація про прогрес заблокована"
 
-#: src/features/ProgressStat/ProgressCard.tsx:317
+#: src/features/ProgressStat/ProgressViewChart.tsx:426
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "Налаштування Прогресу"
@@ -10711,7 +10706,7 @@ msgid "Purchase 5 hours"
 msgstr "Придбати 5 годин"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:50
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:45
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "Питання"
@@ -10768,6 +10763,11 @@ msgstr "Займіть перше місце в топ-5 на лідерборд
 #. js-lingui-explicit-id
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Досягніть топ-5, щоб отримати повний доступ до всіх функцій!"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:452
+#. js-lingui-explicit-id
+msgid "Raw"
+msgstr "Сирий"
 
 #: src/features/Chat/SubmitForm.tsx:329
 #: src/features/Conversation/ConversationCanvas.tsx:684
@@ -11494,7 +11494,7 @@ msgstr "Переглянути все"
 msgid "See All"
 msgstr "Переглянути все"
 
-#: src/features/ProgressStat/ProgressCard.tsx:165
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
 #. js-lingui-explicit-id
 msgid "See how you improve over time."
 msgstr "Перегляньте, як ви покращуєтесь з часом."
@@ -11950,6 +11950,11 @@ msgstr ""
 "Усміхніться, потисніть руку (якщо це культурно прийнятно) і говоріть "
 "дружнім тоном. Якщо інтерв'юер запитає: \"Чи виникли у Вас будь-які "
 "проблеми з тим, щоб знайти нас?\" ви можете відповісти:"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:453
+#. js-lingui-explicit-id
+msgid "Smoothed"
+msgstr "Усередньований"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:154
 #. js-lingui-explicit-id
@@ -13468,7 +13473,7 @@ msgstr "Загальні Бали"
 msgid "Total Turns"
 msgstr "Загальна кількість ходів"
 
-#: src/features/ProgressStat/ProgressCard.tsx:158
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:26
 #. js-lingui-explicit-id
 msgid "Track how your grammar, vocabulary, fluency, and confidence improve."
 msgstr ""
@@ -13842,6 +13847,12 @@ msgstr "UX і Доступність"
 msgid "Vacancy description"
 msgstr "Опис вакансії"
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:445
+#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#. js-lingui-explicit-id
+msgid "Value Mode"
+msgstr "Режим Цінності"
+
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
 msgid "var is function scoped and let and const are block scoped."
@@ -13919,7 +13930,7 @@ msgstr ""
 "мотивованими, чітко бачачи свої покращення."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressCard.tsx:91
+#: src/features/ProgressStat/ProgressViewChart.tsx:97
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Словниковий запас"
@@ -13943,6 +13954,11 @@ msgstr "Голосові записи"
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "Швидкість голосу"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:315
+#. js-lingui-explicit-id
+msgid "vs. prev period"
+msgstr "vs. попередній період"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -15334,6 +15350,20 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/ProgressStat/ProgressCard.tsx:211
+#. js-lingui-explicit-id
+#~ msgid "Average Level"
+#~ msgstr "Середній рівень"
+
+#: src/features/ProgressStat/ProgressChart.tsx:201
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Have a few conversations to start charting your progress in learning the "
+#~ "language."
+#~ msgstr ""
+#~ "Майте кілька розмов, щоб розпочати відстежувати свій прогрес у вивченні "
+#~ "мови."
 
 #: src/features/ProgressStat/ProgressCard.tsx:110
 #. js-lingui-explicit-id

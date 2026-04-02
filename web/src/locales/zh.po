@@ -1519,7 +1519,7 @@ msgid ""
 "code, you're welcome to improve it."
 msgstr "所有源代码都是开放和公开可用的。如果你会编程，欢迎你来改进它。"
 
-#: src/features/ProgressStat/ProgressCard.tsx:331
+#: src/features/ProgressStat/ProgressViewChart.tsx:440
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "所有时间"
@@ -1842,11 +1842,6 @@ msgstr "可用语言："
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "阿凡达"
-
-#: src/features/ProgressStat/ProgressCard.tsx:211
-#. js-lingui-explicit-id
-msgid "Average Level"
-msgstr "平均水平"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2659,7 +2654,7 @@ msgstr "并发性与弹性"
 msgid "Concurrency and resiliency assessment"
 msgstr "并发性和弹性评估"
 
-#: src/features/ProgressStat/ProgressCard.tsx:93
+#: src/features/ProgressStat/ProgressViewChart.tsx:99
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "信心"
@@ -4692,7 +4687,7 @@ msgstr "修正重复的错误，并提供清晰的解释、测验和有针对性
 msgid "Fixed words"
 msgstr "固定词汇"
 
-#: src/features/ProgressStat/ProgressCard.tsx:92
+#: src/features/ProgressStat/ProgressViewChart.tsx:98
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "流利度"
@@ -5487,7 +5482,7 @@ msgstr "Google Calls 模拟器"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressCard.tsx:90
+#: src/features/ProgressStat/ProgressViewChart.tsx:96
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "语法"
@@ -5603,9 +5598,9 @@ msgstr "仇恨言论"
 #: src/features/ProgressStat/ProgressChart.tsx:201
 #. js-lingui-explicit-id
 msgid ""
-"Have a few conversations to start charting your progress in learning the "
-"language."
-msgstr "开始进行几次对话，以开始绘制您在语言学习中的进步。"
+"Have a few days of practice and check back here for insights on your "
+"learning progress."
+msgstr "进行几天的练习，然后回到这里查看关于您的学习进度的见解。"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
@@ -7404,17 +7399,17 @@ msgstr "语言"
 msgid "Languages installed in your brain:"
 msgstr "安装在您大脑中的语言："
 
-#: src/features/ProgressStat/ProgressCard.tsx:329
+#: src/features/ProgressStat/ProgressViewChart.tsx:438
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "最近三个月"
 
-#: src/features/ProgressStat/ProgressCard.tsx:328
+#: src/features/ProgressStat/ProgressViewChart.tsx:437
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "过去30天"
 
-#: src/features/ProgressStat/ProgressCard.tsx:330
+#: src/features/ProgressStat/ProgressViewChart.tsx:439
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "过去 6 个月"
@@ -8662,7 +8657,7 @@ msgstr "在 Telegram 中打开"
 msgid "Open personal plan"
 msgstr "打开个人计划"
 
-#: src/features/ProgressStat/ProgressCard.tsx:285
+#: src/features/ProgressStat/ProgressViewChart.tsx:393
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "打开进度设置"
@@ -8885,8 +8880,8 @@ msgstr "性能指标"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "性能、弹性和架构模式"
 
-#: src/features/ProgressStat/ProgressCard.tsx:321
-#: src/features/ProgressStat/ProgressCard.tsx:325
+#: src/features/ProgressStat/ProgressViewChart.tsx:430
+#: src/features/ProgressStat/ProgressViewChart.tsx:434
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "期间"
@@ -9244,7 +9239,7 @@ msgstr "练习"
 msgid "PRACTICE AND HARD WORK"
 msgstr "练习和努力工作"
 
-#: src/features/ProgressStat/ProgressCard.tsx:166
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid ""
 "Practice and watch your skills grow. Your progress is automatically tracked "
@@ -9728,7 +9723,7 @@ msgstr "正在从其他领域转向前端工程的专业人士"
 msgid "Profile"
 msgstr "个人资料"
 
-#: src/features/ProgressStat/ProgressCard.tsx:157
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "进度"
@@ -9743,7 +9738,7 @@ msgstr "进度日历"
 msgid "Progress insights are locked"
 msgstr "进度洞察已锁定"
 
-#: src/features/ProgressStat/ProgressCard.tsx:317
+#: src/features/ProgressStat/ProgressViewChart.tsx:426
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "进度设置"
@@ -9799,7 +9794,7 @@ msgid "Purchase 5 hours"
 msgstr "购买5小时"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:50
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:45
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "问题"
@@ -9856,6 +9851,11 @@ msgstr "在排行榜上排名前五，免费获得应用！"
 #. js-lingui-explicit-id
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "排名前5以获得所有功能的完全访问权限！"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:452
+#. js-lingui-explicit-id
+msgid "Raw"
+msgstr "生动"
 
 #: src/features/Chat/SubmitForm.tsx:329
 #: src/features/Conversation/ConversationCanvas.tsx:684
@@ -10543,7 +10543,7 @@ msgstr "查看全部"
 msgid "See All"
 msgstr "查看全部"
 
-#: src/features/ProgressStat/ProgressCard.tsx:165
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
 #. js-lingui-explicit-id
 msgid "See how you improve over time."
 msgstr "看看你随着时间的推移如何进步。"
@@ -10973,6 +10973,11 @@ msgid ""
 "tone. If the interviewer asks, “Did you have any trouble finding us?” you "
 "might say:"
 msgstr "微笑，握手(如果文化上适宜)，并以友好的语气说话。如果面试官问：“你找我们有什么困难吗？”你可能会说："
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:453
+#. js-lingui-explicit-id
+msgid "Smoothed"
+msgstr "平滑的"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:154
 #. js-lingui-explicit-id
@@ -12374,7 +12379,7 @@ msgstr "总分"
 msgid "Total Turns"
 msgstr "总回合数"
 
-#: src/features/ProgressStat/ProgressCard.tsx:158
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:26
 #. js-lingui-explicit-id
 msgid "Track how your grammar, vocabulary, fluency, and confidence improve."
 msgstr "跟踪您的语法、词汇、流利度和自信心的提高。"
@@ -12733,6 +12738,12 @@ msgstr "UX和可访问性"
 msgid "Vacancy description"
 msgstr "职位描述"
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:445
+#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#. js-lingui-explicit-id
+msgid "Value Mode"
+msgstr "价值模式"
+
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
 msgid "var is function scoped and let and const are block scoped."
@@ -12808,7 +12819,7 @@ msgid ""
 msgstr "可视化您的每日进展，使用直观的跟踪功能。通过清晰地看到您的改善，保持动力。"
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressCard.tsx:91
+#: src/features/ProgressStat/ProgressViewChart.tsx:97
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "词汇"
@@ -12832,6 +12843,11 @@ msgstr "语音记录"
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "语速"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:315
+#. js-lingui-explicit-id
+msgid "vs. prev period"
+msgstr "相较于之前期间"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -14085,6 +14101,18 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/ProgressStat/ProgressCard.tsx:211
+#. js-lingui-explicit-id
+#~ msgid "Average Level"
+#~ msgstr "平均水平"
+
+#: src/features/ProgressStat/ProgressChart.tsx:201
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Have a few conversations to start charting your progress in learning the "
+#~ "language."
+#~ msgstr "开始进行几次对话，以开始绘制您在语言学习中的进步。"
 
 #: src/features/ProgressStat/ProgressCard.tsx:110
 #. js-lingui-explicit-id

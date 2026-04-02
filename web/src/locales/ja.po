@@ -1526,7 +1526,7 @@ msgid ""
 "code, you're welcome to improve it."
 msgstr "すべてのソースコードはオープンで公開されています。もしコーディングができるなら、ぜひ改良してください。"
 
-#: src/features/ProgressStat/ProgressCard.tsx:331
+#: src/features/ProgressStat/ProgressViewChart.tsx:440
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "すべての時間"
@@ -1852,11 +1852,6 @@ msgstr "利用可能な言語："
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "アバター"
-
-#: src/features/ProgressStat/ProgressCard.tsx:211
-#. js-lingui-explicit-id
-msgid "Average Level"
-msgstr "平均レベル"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2677,7 +2672,7 @@ msgstr "コンカレンシー & レジリエンシー"
 msgid "Concurrency and resiliency assessment"
 msgstr "並行性と回復力の評価"
 
-#: src/features/ProgressStat/ProgressCard.tsx:93
+#: src/features/ProgressStat/ProgressViewChart.tsx:99
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "自信"
@@ -4727,7 +4722,7 @@ msgstr "間違いを繰り返さないよう、明確な説明、クイズ、重
 msgid "Fixed words"
 msgstr "固定された単語"
 
-#: src/features/ProgressStat/ProgressCard.tsx:92
+#: src/features/ProgressStat/ProgressViewChart.tsx:98
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "流暢さ"
@@ -5542,7 +5537,7 @@ msgstr "Google Calls エミュレーター"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressCard.tsx:90
+#: src/features/ProgressStat/ProgressViewChart.tsx:96
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "文法"
@@ -5660,9 +5655,9 @@ msgstr "ヘイトスピーチ"
 #: src/features/ProgressStat/ProgressChart.tsx:201
 #. js-lingui-explicit-id
 msgid ""
-"Have a few conversations to start charting your progress in learning the "
-"language."
-msgstr "いくつかの会話をして、言語学習の進捗を記録し始めましょう。"
+"Have a few days of practice and check back here for insights on your "
+"learning progress."
+msgstr "数日間の練習を行い、ここに戻って学習の進捗に関する洞察を確認してください。"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
@@ -7519,17 +7514,17 @@ msgstr "言語"
 msgid "Languages installed in your brain:"
 msgstr "あなたの脳にインストールされた言語:"
 
-#: src/features/ProgressStat/ProgressCard.tsx:329
+#: src/features/ProgressStat/ProgressViewChart.tsx:438
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "過去3か月"
 
-#: src/features/ProgressStat/ProgressCard.tsx:328
+#: src/features/ProgressStat/ProgressViewChart.tsx:437
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "過去30日間"
 
-#: src/features/ProgressStat/ProgressCard.tsx:330
+#: src/features/ProgressStat/ProgressViewChart.tsx:439
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "過去6か月"
@@ -8794,7 +8789,7 @@ msgstr "テレグラムで開く"
 msgid "Open personal plan"
 msgstr "パーソナルプランを開く"
 
-#: src/features/ProgressStat/ProgressCard.tsx:285
+#: src/features/ProgressStat/ProgressViewChart.tsx:393
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "進捗設定を開く"
@@ -9023,8 +9018,8 @@ msgstr "パフォーマンス指標"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "パフォーマンス、回復力、アーキテクチャパターン"
 
-#: src/features/ProgressStat/ProgressCard.tsx:321
-#: src/features/ProgressStat/ProgressCard.tsx:325
+#: src/features/ProgressStat/ProgressViewChart.tsx:430
+#: src/features/ProgressStat/ProgressViewChart.tsx:434
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "期間"
@@ -9382,7 +9377,7 @@ msgstr "練習"
 msgid "PRACTICE AND HARD WORK"
 msgstr "練習と努力"
 
-#: src/features/ProgressStat/ProgressCard.tsx:166
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:34
 #. js-lingui-explicit-id
 msgid ""
 "Practice and watch your skills grow. Your progress is automatically tracked "
@@ -9876,7 +9871,7 @@ msgstr "他の分野からフロントエンドエンジニアリングに転職
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/features/ProgressStat/ProgressCard.tsx:157
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:25
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr ""
@@ -9893,7 +9888,7 @@ msgstr "進行カレンダー"
 msgid "Progress insights are locked"
 msgstr "進捗の洞察はロックされています"
 
-#: src/features/ProgressStat/ProgressCard.tsx:317
+#: src/features/ProgressStat/ProgressViewChart.tsx:426
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "進捗設定"
@@ -9949,7 +9944,7 @@ msgid "Purchase 5 hours"
 msgstr "5時間 購入"
 
 #: src/features/Case/Landing/components/DemoSnippetSection.tsx:109
-#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:50
+#: src/features/DailyQuestion/DailyQuestionFullCard.tsx:45
 #. js-lingui-explicit-id
 msgid "Question"
 msgstr "質問"
@@ -10008,6 +10003,11 @@ msgstr "リーダーボードでトップ5にランクインして、アプリ�
 #. js-lingui-explicit-id
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "トップ5にランクインして、全ての機能にフルアクセスしましょう！"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:452
+#. js-lingui-explicit-id
+msgid "Raw"
+msgstr "生"
 
 #: src/features/Chat/SubmitForm.tsx:329
 #: src/features/Conversation/ConversationCanvas.tsx:684
@@ -10701,7 +10701,7 @@ msgstr "すべて表示"
 msgid "See All"
 msgstr "すべてを見る"
 
-#: src/features/ProgressStat/ProgressCard.tsx:165
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
 #. js-lingui-explicit-id
 msgid "See how you improve over time."
 msgstr "時間の経過とともにどのように改善するかを確認してください。"
@@ -11137,6 +11137,11 @@ msgid ""
 msgstr ""
 "微笑んで、（文化的に適切な場合には）握手をし、友好的な口調で話しましょう。面接官が「ここを見つけるのに何か問題ありましたか？」と聞いてきたら、次のように"
 "答えることもできます："
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:453
+#. js-lingui-explicit-id
+msgid "Smoothed"
+msgstr "スムーズにしました"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:154
 #. js-lingui-explicit-id
@@ -12573,7 +12578,7 @@ msgstr ""
 "\n"
 "総ターン数\n"
 
-#: src/features/ProgressStat/ProgressCard.tsx:158
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:26
 #. js-lingui-explicit-id
 msgid "Track how your grammar, vocabulary, fluency, and confidence improve."
 msgstr "文法、語彙力、流暢さ、自信がどのように向上するかを追跡しましょう。"
@@ -12936,6 +12941,12 @@ msgstr "UX およびアクセシビリティ"
 msgid "Vacancy description"
 msgstr " vacancy description"
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:445
+#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#. js-lingui-explicit-id
+msgid "Value Mode"
+msgstr "バリューモード"
+
 #: src/features/Case/data/frontend-junior/demoSnippetSection.ts:15
 #. js-lingui-explicit-id
 msgid "var is function scoped and let and const are block scoped."
@@ -13011,7 +13022,7 @@ msgid ""
 msgstr "あなたの毎日の進捗を直感的なトラッキングで可視化します。自分の改善を明確に見ることで、モチベーションを維持しましょう。"
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressCard.tsx:91
+#: src/features/ProgressStat/ProgressViewChart.tsx:97
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "語彙"
@@ -13035,6 +13046,11 @@ msgstr "ボイスレコード"
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "音声速度"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:315
+#. js-lingui-explicit-id
+msgid "vs. prev period"
+msgstr "前期間対比"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
@@ -14318,6 +14334,18 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/ProgressStat/ProgressCard.tsx:211
+#. js-lingui-explicit-id
+#~ msgid "Average Level"
+#~ msgstr "平均レベル"
+
+#: src/features/ProgressStat/ProgressChart.tsx:201
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Have a few conversations to start charting your progress in learning the "
+#~ "language."
+#~ msgstr "いくつかの会話をして、言語学習の進捗を記録し始めましょう。"
 
 #: src/features/ProgressStat/ProgressCard.tsx:110
 #. js-lingui-explicit-id
