@@ -67,7 +67,7 @@ const aggregateByDay = (stats: ProgressStat[]): ProgressChartPoint[] => {
   }));
 };
 
-function aggregateStats(
+export function aggregateStats(
   stats: ProgressStat[],
   minConfidence: number | undefined,
   windowSize: number,
