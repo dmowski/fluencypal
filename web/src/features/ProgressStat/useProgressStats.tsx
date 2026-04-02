@@ -7,8 +7,7 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
 import { useSettings } from '@/features/Settings/useSettings';
 import { ProgressStat, ProgressStatUpsertInput } from '@/features/ProgressStat/types';
-import { buildProgressStatId } from './buildProgressStatId';
-import { PROGRESS_ALGORITHM_VERSION } from './data';
+import { createProgressStatData } from './createProgressStatData';
 
 export interface ProgressStatsContextType {
   progressStats: ProgressStat[];
@@ -39,46 +38,16 @@ function useProvideProgressStats(): ProgressStatsContextType {
     useCollectionData(progressStatsQuery);
 
   const upsertProgressStat = async (input: ProgressStatUpsertInput): Promise<string> => {
-    if (!userId) {
-      throw new Error('Invalid user id for progress stat save');
-    }
+    const progressStat = createProgressStatData({ input, userId: userId });
 
-    const algorithmVersion = input.algorithmVersion || PROGRESS_ALGORITHM_VERSION;
-    const docId = buildProgressStatId({
-      sourceType: input.sourceType,
-      sourceId: input.sourceId,
-      algorithmVersion,
-    });
-    const documentRef = db.documents.progressStat(userId, docId);
+    const documentRef = db.documents.progressStat(progressStat.documentId);
 
     if (!documentRef) {
       throw new Error('Invalid progress stat document reference');
     }
 
-    const createdAtIso = input.createdAtIso ?? new Date().toISOString();
-    const progressStat: ProgressStat = {
-      userId,
-      language: input.language,
-      sourceType: input.sourceType,
-      sourceText: input.sourceText,
-      sourceId: input.sourceId,
-      grammar: input.grammar,
-      grammarSummary: input.grammarSummary,
-      vocabulary: input.vocabulary,
-      vocabularySummary: input.vocabularySummary,
-      fluency: input.fluency,
-      fluencySummary: input.fluencySummary,
-      confidence: input.confidence,
-      confidenceSummary: input.confidenceSummary,
-      assessmentConfidence: input.assessmentConfidence,
-      assessmentConfidenceSummary: input.assessmentConfidenceSummary,
-      textLength: input.textLength,
-      algorithmVersion,
-      createdAtIso,
-    };
-
-    await setDoc(documentRef, progressStat);
-    return docId;
+    await setDoc(documentRef, progressStat.stat);
+    return progressStat.documentId;
   };
 
   const isAlreadyEvaluated = async (progressStatId: string): Promise<boolean> => {

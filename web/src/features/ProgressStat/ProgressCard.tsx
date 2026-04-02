@@ -16,11 +16,10 @@ import { ProgressChart } from './ProgressChart';
 import { mockProgressStats } from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { useProgressStats } from './useProgressStats';
-import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
+import { ProgressChartStatus, ProgressMetric, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import { Check, ChevronDown, Settings } from 'lucide-react';
-import { useBackgroundProgressEvaluation } from './useBackgroundProgressEvaluation';
 import { useAuth } from '../Auth/useAuth';
 
 const imageUrl =
@@ -42,7 +41,6 @@ export const ProgressCard = () => {
   const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
-  useBackgroundProgressEvaluation();
 
   const { progressStats, loadingProgressStats } = useProgressStats();
   const firestoreChartData = useProgressAggregation(progressStats);
