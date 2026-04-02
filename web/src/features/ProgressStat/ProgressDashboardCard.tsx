@@ -13,13 +13,7 @@ const imageUrl =
 
 export const ProgressDashboardCard = () => {
   const { i18n } = useLingui();
-  const auth = useAuth();
   const { progressStats, loadingProgressStats } = useProgressStats();
-
-  const isShowCard = auth.isFounder;
-  if (!isShowCard) {
-    return null;
-  }
 
   return (
     <Stack

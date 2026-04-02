@@ -1,4 +1,4 @@
-import { ProgressChartPoint, ProgressStat } from './types';
+import { ProgressChartPoint, ProgressMetric, ProgressStat } from './types';
 
 export const mockProgressStats: ProgressStat[] = [
   {
@@ -395,3 +395,28 @@ export const mockSparseProgressChartPoints: ProgressChartPoint[] = [
     confidence: 69,
   },
 ];
+
+export const buildSmoothedChartPoints = (
+  points: ProgressChartPoint[],
+  windowSize: number,
+): ProgressChartPoint[] => {
+  const metrics: ProgressMetric[] = ['grammar', 'vocabulary', 'fluency', 'confidence'];
+
+  return points.map((point, index) => {
+    const startIndex = Math.max(0, index - windowSize + 1);
+    const windowPoints = points.slice(startIndex, index + 1);
+    const nextPoint: ProgressChartPoint = { ...point };
+
+    metrics.forEach((metric) => {
+      const total = windowPoints.reduce((sum, item) => sum + item[metric], 0);
+      const average = total / windowPoints.length;
+
+      if (metric === 'grammar') nextPoint.grammarSmoothed = average;
+      if (metric === 'vocabulary') nextPoint.vocabularySmoothed = average;
+      if (metric === 'fluency') nextPoint.fluencySmoothed = average;
+      if (metric === 'confidence') nextPoint.confidenceSmoothed = average;
+    });
+
+    return nextPoint;
+  });
+};

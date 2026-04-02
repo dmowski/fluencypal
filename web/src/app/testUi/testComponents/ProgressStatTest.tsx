@@ -11,6 +11,7 @@ import {
   mockProgressStats,
   mockSparseProgressChartPoints,
   mockProgressWaveChartPoints,
+  buildSmoothedChartPoints,
 } from '@/features/ProgressStat/mockData';
 import { useProgressEvaluation } from '@/features/ProgressStat/useProgressEvaluation';
 import {
@@ -26,31 +27,6 @@ import { useProgressAggregation } from '@/features/ProgressStat/useProgressAggre
 import { useProgressStats } from '@/features/ProgressStat/useProgressStats';
 
 type DemoMode = 'steady' | 'wave' | 'sparse' | 'empty' | 'loading' | 'processing' | 'locked';
-
-const buildSmoothedChartPoints = (
-  points: ProgressChartPoint[],
-  windowSize: number,
-): ProgressChartPoint[] => {
-  const metrics: ProgressMetric[] = ['grammar', 'vocabulary', 'fluency', 'confidence'];
-
-  return points.map((point, index) => {
-    const startIndex = Math.max(0, index - windowSize + 1);
-    const windowPoints = points.slice(startIndex, index + 1);
-    const nextPoint: ProgressChartPoint = { ...point };
-
-    metrics.forEach((metric) => {
-      const total = windowPoints.reduce((sum, item) => sum + item[metric], 0);
-      const average = total / windowPoints.length;
-
-      if (metric === 'grammar') nextPoint.grammarSmoothed = average;
-      if (metric === 'vocabulary') nextPoint.vocabularySmoothed = average;
-      if (metric === 'fluency') nextPoint.fluencySmoothed = average;
-      if (metric === 'confidence') nextPoint.confidenceSmoothed = average;
-    });
-
-    return nextPoint;
-  });
-};
 
 const stateLabelMap: Record<DemoMode, string> = {
   steady: 'Steady data',

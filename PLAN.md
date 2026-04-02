@@ -2,8 +2,6 @@
 
 ## Add feature for assess language level
 
-- Backend: cron job for evaluating or run on my PC
-
 - How to show progress: Before/after. Maybe this arrow up, down, and show progress for last 3 month
 
 - Full size report

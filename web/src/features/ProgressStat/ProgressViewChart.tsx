@@ -12,7 +12,12 @@ import {
   Typography,
 } from '@mui/material';
 import { ProgressChart } from './ProgressChart';
-import { mockProgressStats } from './mockData';
+import {
+  buildSmoothedChartPoints,
+  mockProgressStats,
+  mockProgressWaveChartPoints,
+  mockSparseProgressChartPoints,
+} from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
@@ -38,16 +43,14 @@ export const ProgressViewChart = ({
 }) => {
   const { i18n } = useLingui();
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
-  const [valueMode, setValueMode] = useState<ProgressValueMode>('smoothed');
+  const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('all-time');
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
   const firestoreChartData = useProgressAggregation(progressStats);
-  const mockChartData = useProgressAggregation(mockProgressStats);
+  const mockChartData = mockSparseProgressChartPoints;
 
-  const useMockDataSource = false;
-  const isLocked = false;
-  const sourceChartData = useMockDataSource ? mockChartData : firestoreChartData;
+  const sourceChartData = firestoreChartData;
 
   const chartData = useMemo(() => {
     const isOnlyOneDay =
@@ -84,16 +87,8 @@ export const ProgressViewChart = ({
   }, [selectedPeriod, sourceChartData]);
 
   const status = useMemo<ProgressChartStatus>(() => {
-    if (isLocked) {
-      return 'locked';
-    }
-
-    if (!useMockDataSource && loadingProgressStats) {
-      return 'loading';
-    }
-
     return chartData.length === 0 ? 'empty' : 'ready';
-  }, [chartData.length, loadingProgressStats, isLocked, useMockDataSource]);
+  }, [chartData.length, loadingProgressStats]);
 
   const metricLabelMap: Record<ProgressMetric, string> = {
     grammar: i18n._('Grammar'),
@@ -322,7 +317,7 @@ export const ProgressViewChart = ({
         valueMode={valueMode}
         status={status}
         height={320}
-        emptyPreviewData={mockChartData}
+        emptyPreviewData={mockProgressWaveChartPoints}
       />
     </Stack>
   );
