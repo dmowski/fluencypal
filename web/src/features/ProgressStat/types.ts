@@ -48,3 +48,15 @@ export interface ProgressChartPoint {
   fluencySmoothed?: number;
   confidenceSmoothed?: number;
 }
+
+export interface ProgressEvaluationInput {
+  transcriptText: string;
+  language: SupportedLanguage;
+  sourceType: ProgressSourceType;
+  sourceId: string;
+}
+
+export interface ProgressEvaluationOutput {
+  rawOutput: string;
+  parsed: ProgressAssessmentResult;
+}
