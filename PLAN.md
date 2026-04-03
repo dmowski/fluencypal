@@ -7,7 +7,9 @@
   - Show Summary
   - Use ai to generate proposal on how to correct practice
 
----
+## Notification from Global Chat
+
+## Essay writing helper
 
 ## Emails
 
