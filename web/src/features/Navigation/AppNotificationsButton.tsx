@@ -10,6 +10,8 @@ import { useBattle } from '../Game/Battle/useBattle';
 import { TabLabel } from '../Game/TabLabel';
 import { DailyQuestionNotificationsList } from '../DailyQuestion/DailyQuestionNotificationsList';
 
+type ModeType = 'messages' | 'dailyQuestions' | 'chat';
+
 export const AppNotificationsButton: React.FC = () => {
   const [isShow, setIsShow] = useUrlState('inbox', false, false);
   const { i18n } = useLingui();
@@ -17,11 +19,8 @@ export const AppNotificationsButton: React.FC = () => {
   const newMessagesCount = chatList.myUnreadCount;
   const router = useRouter();
   const battles = useBattle();
-  const [mode, setMode] = useUrlState<'messages' | 'dailyQuestions'>(
-    'inboxType',
-    'dailyQuestions',
-    false,
-  );
+
+  const [mode, setMode] = useUrlState<ModeType>('inboxType', 'dailyQuestions', false);
 
   const onClose = async () => {
     const searchParams = new URLSearchParams();
@@ -32,7 +31,8 @@ export const AppNotificationsButton: React.FC = () => {
   const notificationsCount =
     newMessagesCount +
     battles.countOfBattlesNeedToAttention +
-    chatList.totalDailyQuestionsUnreadMessagesCount;
+    chatList.totalDailyQuestionsUnreadMessagesCount +
+    chatList.unreadGlobalChatCount;
 
   return (
     <>
@@ -88,6 +88,13 @@ export const AppNotificationsButton: React.FC = () => {
                   label={<TabLabel label={i18n._('Messages')} badgeNumber={newMessagesCount} />}
                   value={'messages'}
                 />
+
+                <Tab
+                  label={
+                    <TabLabel label={i18n._('Chat')} badgeNumber={chatList.unreadGlobalChatCount} />
+                  }
+                  value={'chat'}
+                />
               </Tabs>
               <Stack
                 sx={{
@@ -96,6 +103,7 @@ export const AppNotificationsButton: React.FC = () => {
               >
                 {mode === 'messages' && <ChatPage type={'private'} />}
                 {mode === 'dailyQuestions' && <DailyQuestionNotificationsList />}
+                {mode === 'chat' && <ChatPage type={'public'} />}
               </Stack>
             </Stack>
           </Stack>

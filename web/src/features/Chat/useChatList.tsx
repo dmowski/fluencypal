@@ -21,6 +21,7 @@ interface ChatListContextType {
   myReadStats: ChatSpaceUserReadMetadata;
   unreadSpaces: Record<string, number>;
   myUnreadCount: number;
+  unreadGlobalChatCount: number;
   deleteChat: (spaceId: string) => Promise<void>;
   totalDailyQuestionsUnreadMessagesCount: number;
   dailyQuestionsNotifications: MyDailyQuestionNotification[];
@@ -61,6 +62,7 @@ function useProvideChatList(): ChatListContextType {
     myUnreadCount,
     dailyQuestionsNotifications,
     totalDailyQuestionsUnreadMessagesCount,
+    unreadGlobalChatCount,
   } = useMemo(() => {
     const unreadLocalData: Record<string, number> = {};
     myChats
@@ -146,6 +148,7 @@ function useProvideChatList(): ChatListContextType {
       myUnreadCount: myUnreadCount,
       dailyQuestionsNotifications,
       totalDailyQuestionsUnreadMessagesCount,
+      unreadGlobalChatCount: 0,
     };
   }, [
     myChats,
@@ -178,6 +181,7 @@ function useProvideChatList(): ChatListContextType {
     totalDailyQuestionsUnreadMessagesCount,
     unreadSpaces,
     myUnreadCount,
+    unreadGlobalChatCount,
     dailyQuestionsNotifications,
     deleteChat,
   };
