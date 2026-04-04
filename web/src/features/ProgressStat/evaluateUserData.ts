@@ -193,7 +193,4 @@ export const evaluateUserData = async ({
       upsertProgressStat: upsertProgressStat,
     });
   }
-
-  console.log('DONE with processing conversations');
-  //setProcessStarted(false);
 };
