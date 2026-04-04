@@ -119,7 +119,7 @@ export const ProgressChart = ({
               data={previewData}
               margin={{
                 top: 8,
-                right: 2,
+                right: 12,
                 left: 10,
                 bottom: 18,
               }}
@@ -144,8 +144,8 @@ export const ProgressChart = ({
               <YAxis
                 domain={[0, 100]}
                 tick={{ fill: 'rgba(233,238,252,0.72)', fontSize: 12 }}
-                tickMargin={10}
-                width={42}
+                tickMargin={5}
+                width={35}
                 axisLine={false}
                 tickLine={false}
               />

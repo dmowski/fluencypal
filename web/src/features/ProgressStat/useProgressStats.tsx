@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, ReactNode, JSX } from 'react';
 import { getDoc, query, setDoc, where } from 'firebase/firestore';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useCollectionDataOnce } from 'react-firebase-hooks/firestore';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -35,7 +35,7 @@ function useProvideProgressStats(): ProgressStatsContextType {
   }, [language, userId]);
 
   const [progressStats = [], loadingProgressStats, errorProgressStats] =
-    useCollectionData(progressStatsQuery);
+    useCollectionDataOnce(progressStatsQuery);
 
   const upsertProgressStat = async (input: ProgressStatUpsertInput): Promise<string> => {
     const progressStat = createProgressStatData({ input, userId: userId });

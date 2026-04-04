@@ -14,7 +14,6 @@ export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
     <CustomModal isOpen={true} onClose={onClose}>
       <Stack
         sx={{
-          maxWidth: '800px',
           width: '100%',
           gap: '40px',
           padding: '20px 0 40px 0',

@@ -346,6 +346,11 @@ export const ProgressViewChart = ({
                 ? 'transparent'
                 : 'rgba(243, 246, 255, 0.4)',
               textUnderlineOffset: '5px',
+              textWrap: 'balance',
+
+              '@media (max-width: 400px)': {
+                fontSize: '11px',
+              },
             }}
           >
             {'vs. prev period'} ({periodLabelMap[selectedPeriod]})
@@ -449,12 +454,15 @@ export const ProgressViewChart = ({
       <Stack
         sx={{
           width: '100%',
-          padding: '20px 15px 45px 20px',
+          padding: '25px 20px 25px 20px',
           flexDirection: 'row',
           gap: '20px 10px',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
+          '@media (max-width: 350px)': {
+            paddingRight: '0',
+          },
         }}
       >
         {keyMetric}
