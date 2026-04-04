@@ -208,7 +208,7 @@ export const ChatPage = ({
                     <PageContainer>
                       {!isShowSupportPage && (
                         <>
-                          <Typography variant="h6">{i18n._('No chats yet')}</Typography>
+                          <Typography variant="h6">{i18n._('No private chats yet')}</Typography>
                           <Stack gap="20px">
                             <Typography
                               variant="body2"
@@ -216,7 +216,7 @@ export const ChatPage = ({
                                 opacity: 0.7,
                               }}
                             >
-                              {i18n._('You have no chats yet.')}
+                              {i18n._('You have no private chats yet.')}
                             </Typography>
                           </Stack>
                         </>

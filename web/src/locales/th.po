@@ -1587,7 +1587,7 @@ msgstr "alias เรียนภาษาอังกฤษออนไลน์
 msgid "Alias Word Guessing Game"
 msgstr "เกมเดาอักษรแฝง"
 
-#: src/features/Chat/GlobalChatTabs.tsx:73
+#: src/features/Chat/GlobalChatTabs.tsx:43
 #. js-lingui-explicit-id
 msgid "All"
 msgstr "ทั้งหมด"
@@ -2471,6 +2471,7 @@ msgstr "ผลประโยชน์ทางอาชีพ:"
 #: src/features/Chat/ChatPage.tsx:380
 #: src/features/Chat/ChatPage.tsx:382
 #: src/features/Game/UserProfileModal.tsx:99
+#: src/features/Navigation/AppNotificationsButton.tsx:90
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "แชท"
@@ -8604,7 +8605,7 @@ msgstr "ระบุเทคโนโลยีที่คุณใช้ (Reac
 msgid "Message hidden due to policy violation."
 msgstr "ข้อความถูกซ่อนเนื่องจากละเมิดนโยบาย"
 
-#: src/features/Navigation/AppNotificationsButton.tsx:88
+#: src/features/Navigation/AppNotificationsButton.tsx:99
 #. js-lingui-explicit-id
 msgid "Messages"
 msgstr "ข้อความ"
@@ -9027,11 +9028,6 @@ msgstr "ไม่พบบล็อก"
 msgid "No charge will be made"
 msgstr "ไม่ได้คิดค่าใช้จ่าย"
 
-#: src/features/Chat/ChatPage.tsx:211
-#. js-lingui-explicit-id
-msgid "No chats yet"
-msgstr "ยังไม่มีการสนทนา"
-
 #: src/features/Usage/UsageStatsCards.tsx:225
 #. js-lingui-explicit-id
 msgid "No conversations yet"
@@ -9105,6 +9101,11 @@ msgstr "ไม่มีการชำระเงิน..."
 #. js-lingui-explicit-id
 msgid "No previous data to compare"
 msgstr "ไม่มีข้อมูลก่อนหน้าให้เปรียบเทียบ"
+
+#: src/features/Chat/ChatPage.tsx:211
+#. js-lingui-explicit-id
+msgid "No private chats yet"
+msgstr "ยังไม่มีการสนทนาส่วนตัว"
 
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
@@ -11110,7 +11111,7 @@ msgstr "ประสิทธิภาพการแสดงผล"
 msgid "Replay"
 msgstr "เล่นซ้ำ"
 
-#: src/features/Chat/GlobalChatTabs.tsx:80
+#: src/features/Chat/GlobalChatTabs.tsx:56
 #. js-lingui-explicit-id
 msgid "Replies"
 msgstr "การตอบกลับ"
@@ -14938,8 +14939,8 @@ msgstr "คุณมีสิทธิ์เข้าถึงทั้งหม
 
 #: src/features/Chat/ChatPage.tsx:219
 #. js-lingui-explicit-id
-msgid "You have no chats yet."
-msgstr "คุณยังไม่มีการแชท"
+msgid "You have no private chats yet."
+msgstr "คุณยังไม่มีการแชทส่วนตัว"
 
 #: src/features/Game/Battle/BattleCard.tsx:312
 #. js-lingui-explicit-id
@@ -15245,6 +15246,16 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Chat/ChatPage.tsx:211
+#. js-lingui-explicit-id
+#~ msgid "No chats yet"
+#~ msgstr "ยังไม่มีการสนทนา"
+
+#: src/features/Chat/ChatPage.tsx:219
+#. js-lingui-explicit-id
+#~ msgid "You have no chats yet."
+#~ msgstr "คุณยังไม่มีการแชท"
 
 #: src/features/RolePlay/rolePlayData.tsx:19
 #. js-lingui-explicit-id
