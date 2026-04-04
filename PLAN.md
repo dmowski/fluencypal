@@ -12,10 +12,12 @@ Plan:
 - Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
 - When I clicked on email, mark link as clicked
 
-## Essay writing helper
+## Tune first quiz
 
 ## Learning plan: AI call
 
 - Tune prompt for VAD call, to use Polish constantly
 - Improve transcript timeout (make it less pressing)
 - Validate costs of full goal conversation
+
+## Essay writing helper
