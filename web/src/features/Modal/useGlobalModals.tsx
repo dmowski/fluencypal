@@ -4,6 +4,11 @@ import { sleep } from '@/libs/sleep';
 
 export const useGlobalModals = () => {
   const [isShowPublicChat, setIsShowPublicChat] = useUrlState('publicChat', false, false);
+  const [openProgressStatModal, setOpenProgressStatModal] = useUrlState(
+    'progressStatModal',
+    false,
+    false,
+  );
   const [isShowDailyQuestions, setIsShowDailyQuestions] = useUrlState(
     'dailyQuestions',
     false,
@@ -30,6 +35,9 @@ export const useGlobalModals = () => {
 
     openDailyQuestions: () => setIsShowDailyQuestions(true),
     isShowDailyQuestions,
+
+    openProgressStatModal: () => setOpenProgressStatModal(true),
+    isShowProgressStatModal: openProgressStatModal,
 
     closeAllModels,
   };

@@ -49,15 +49,19 @@ type ProgressPeriod = 'last-30-days' | 'last-3-month' | 'last-6-month' | 'all-ti
 export const ProgressViewChart = ({
   progressStats,
   loadingProgressStats,
+  defaultPeriod = 'last-30-days',
+  hideDurationSelector = false,
 }: {
   progressStats: ProgressStat[];
   loadingProgressStats: boolean;
+  defaultPeriod?: ProgressPeriod;
+  hideDurationSelector?: boolean;
 }) => {
   const { i18n } = useLingui();
   const isShowSettings = false;
   const [selectedMetric, setSelectedMetric] = useState<ProgressMetric>('fluency');
   const [valueMode, setValueMode] = useState<ProgressValueMode>('raw');
-  const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>('last-30-days');
+  const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>(defaultPeriod);
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
   const firestoreChartData = useProgressAggregation(progressStats);
@@ -302,6 +306,15 @@ export const ProgressViewChart = ({
         </Stack>
 
         <Stack
+          component={hideDurationSelector ? 'div' : 'button'}
+          onClick={
+            hideDurationSelector
+              ? undefined
+              : (e: React.MouseEvent) => {
+                  e.preventDefault();
+                  toggleSelectedPeriod();
+                }
+          }
           sx={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -310,19 +323,16 @@ export const ProgressViewChart = ({
             padding: '10px',
             textAlign: 'left',
             border: 'none',
-            cursor: 'pointer',
+            cursor: hideDurationSelector ? 'default' : 'pointer',
             color: 'rgba(243,246,255,0.72)',
             ':hover': {
-              color: 'rgba(243,246,255,1)',
+              color: hideDurationSelector ? 'rgba(243,246,255,0.72)' : 'rgba(243,246,255,1)',
             },
             ':hover .text': {
-              textDecorationColor: 'rgba(243, 246, 255, 0.72)',
+              textDecorationColor: hideDurationSelector
+                ? 'rgba(243, 246, 255, 0.4)'
+                : 'rgba(243, 246, 255, 0.72)',
             },
-          }}
-          component={'button'}
-          onClick={(e) => {
-            e.preventDefault();
-            toggleSelectedPeriod();
           }}
         >
           <Typography
@@ -330,15 +340,17 @@ export const ProgressViewChart = ({
             className="text"
             sx={{
               color: 'rgba(243,246,255,0.72)',
-              textDecorationStyle: 'dashed',
+              textDecorationStyle: hideDurationSelector ? 'none' : 'dashed',
               textDecorationLine: 'underline',
-              textDecorationColor: 'rgba(243, 246, 255, 0.4)',
+              textDecorationColor: hideDurationSelector
+                ? 'transparent'
+                : 'rgba(243, 246, 255, 0.4)',
               textUnderlineOffset: '5px',
             }}
           >
             {'vs. prev period'} ({periodLabelMap[selectedPeriod]})
           </Typography>
-          <ChevronsUpDown size={'14px'} />
+          {!hideDurationSelector && <ChevronsUpDown size={'14px'} />}
         </Stack>
       </Stack>
     </Stack>
