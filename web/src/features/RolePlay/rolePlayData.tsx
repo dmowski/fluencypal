@@ -16,7 +16,7 @@ export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenarios
     {
       id: 'alias-game',
       title: i18n._('Alias Word Guessing Game'),
-      shortTitle: i18n._('Alias'),
+      shortTitle: 'Alias',
       category: { categoryTitle: i18n._('Game'), categoryId: 'game' },
       input: [
         {

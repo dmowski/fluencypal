@@ -1,10 +1,6 @@
 # Live document with short/long term ideas
 
-## When finish call, close media streams (Mic/camera)
-
 ## Before asking native audio permission, show my custom modal
-
-## Check why Alias game disappeared from main page
 
 ## Notification from Global Chat
 
