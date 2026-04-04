@@ -40,16 +40,12 @@ export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
           </Typography>
         </Stack>
 
-        <Stack sx={{ gap: '72px' }}>
+        <Stack sx={{ gap: '172px', paddingTop: '80px' }}>
           <Stack>
             <Typography
-              variant="body2"
+              variant="h3"
               sx={{
-                fontWeight: 600,
-                padding: '0 20px 8px 0px',
-                opacity: 0.7,
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
+                fontWeight: 900,
               }}
             >
               {i18n._('Last 30 days')}
@@ -64,13 +60,9 @@ export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
 
           <Stack>
             <Typography
-              variant="body2"
+              variant="h3"
               sx={{
-                fontWeight: 600,
-                padding: '0 20px 8px 20px',
-                opacity: 0.7,
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
+                fontWeight: 900,
               }}
             >
               {i18n._('Last 3 months')}
