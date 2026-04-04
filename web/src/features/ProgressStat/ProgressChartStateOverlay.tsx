@@ -28,17 +28,24 @@ export const ProgressChartStateOverlay = ({
       <Stack
         sx={{
           padding: '16px 20px',
-          borderRadius: '14px',
-          border: '1px solid rgba(255,255,255,0.12)',
+          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
           background: 'rgba(17, 23, 35, 0.86)',
           color: '#f3f6ff',
-          gap: '6px',
+          gap: '8px',
           maxWidth: '360px',
           textAlign: 'center',
         }}
       >
-        <Typography variant="h6">{title}</Typography>
-        <Typography variant="body2" sx={{ color: 'rgba(243,246,255,0.68)' }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 700,
+          }}
+        >
+          {title}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'rgba(243, 246, 255, 0.9)' }}>
           {description}
         </Typography>
       </Stack>

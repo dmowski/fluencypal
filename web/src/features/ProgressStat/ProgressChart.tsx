@@ -185,7 +185,7 @@ export const ProgressChart = ({
 
         {status === 'empty' && (
           <ProgressChartStateOverlay
-            title={i18n._('No progress data yet')}
+            title={i18n._('No data yet')}
             description={i18n._(
               'Have a few days of practice and check back here for insights on your learning progress.',
             )}
