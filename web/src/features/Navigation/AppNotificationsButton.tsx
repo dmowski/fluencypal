@@ -91,7 +91,11 @@ export const AppNotificationsButton: React.FC = () => {
 
                 <Tab
                   label={
-                    <TabLabel label={i18n._('Chat')} badgeNumber={chatList.unreadGlobalChatCount} />
+                    <TabLabel
+                      label={i18n._('Chat')}
+                      badgeNumber={chatList.unreadGlobalChatCount}
+                      badgeHighlight
+                    />
                   }
                   value={'chat'}
                 />
@@ -103,7 +107,17 @@ export const AppNotificationsButton: React.FC = () => {
               >
                 {mode === 'messages' && <ChatPage type={'private'} />}
                 {mode === 'dailyQuestions' && <DailyQuestionNotificationsList />}
-                {mode === 'chat' && <ChatPage type={'public'} />}
+                {mode === 'chat' && (
+                  <Stack
+                    sx={{
+                      borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '8px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.01)',
+                    }}
+                  >
+                    <ChatPage type={'public'} />
+                  </Stack>
+                )}
               </Stack>
             </Stack>
           </Stack>
