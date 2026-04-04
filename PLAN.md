@@ -12,6 +12,10 @@ Plan:
 - Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
 - When I clicked on email, mark link as clicked
 
+## Generate progress: cron
+
+- Check only finished conversations
+
 ## Tune first quiz
 
 ## Learning plan: AI call
