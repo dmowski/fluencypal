@@ -1,14 +1,8 @@
 # Live document with short/long term ideas
 
-## Add feature for assess language level
-
-- Full size report
-  - Show Summary
-  - Use ai to generate proposal on how to correct practice
+## When finish call, close media streams (Mic/camera)
 
 ## Before asking native audio permission, show my custom modal
-
-## When finish call, class media streams
 
 ## Check why Alias game disappeared from main page
 

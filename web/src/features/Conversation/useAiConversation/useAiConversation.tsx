@@ -577,9 +577,10 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
     messages.setConversationId(null);
     messages.setConversation([]);
+    audio.setVolume(1);
+
     closeVideoMediaStream();
     closeAudioMediaStream();
-    audio.setVolume(1);
   };
 
   const addUserMessage = async (message: string) => {
