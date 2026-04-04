@@ -7,6 +7,8 @@
   - Show Summary
   - Use ai to generate proposal on how to correct practice
 
+## When finish call, class media streams
+
 ## Check why Alias game disappeared from main page
 
 ## Notification from Global Chat

@@ -12,6 +12,7 @@ import {
   Popover,
   Select,
   Stack,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { ProgressChart } from './ProgressChart';
@@ -24,7 +25,15 @@ import {
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
-import { ArrowDown, ArrowUp, Check, ChevronDown, ChevronsUpDown, Settings } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  Check,
+  ChevronDown,
+  ChevronsUpDown,
+  Settings,
+  TriangleAlert,
+} from 'lucide-react';
 import dayjs from 'dayjs';
 import { uniq } from '@/libs/uniq';
 
@@ -222,19 +231,22 @@ export const ProgressViewChart = ({
     <Stack
       sx={{
         flexDirection: 'row',
-        gap: '15px',
+        gap: '0',
         alignItems: 'center',
         opacity: isEmpty ? 0.3 : 1,
       }}
     >
-      <Typography
-        variant="h5"
-        sx={{
-          fontWeight: 600,
-        }}
-      >
-        {averageLevel}%
-      </Typography>
+      <Tooltip title={i18n._('Average level during the selected period')} placement="top">
+        <Typography
+          variant="h5"
+          sx={{
+            fontWeight: 600,
+            minWidth: '65px',
+          }}
+        >
+          {averageLevel}%
+        </Typography>
+      </Tooltip>
 
       <Stack
         sx={{
@@ -248,6 +260,8 @@ export const ProgressViewChart = ({
           sx={{
             flexDirection: 'row',
             alignItems: 'center',
+            minWidth: '55px',
+            justifyContent: 'flex-end',
             gap: '4px',
             color: isChangeExists
               ? isPositiveChange
@@ -256,7 +270,7 @@ export const ProgressViewChart = ({
               : 'rgba(243,246,255,0.72)',
           }}
         >
-          {isChangeExists && (
+          {isChangeExists ? (
             <>
               {isPositiveChange ? (
                 <ArrowUp size="18px" strokeWidth="3px" />
@@ -264,14 +278,29 @@ export const ProgressViewChart = ({
                 <ArrowDown size="18px" strokeWidth="3px" />
               )}
             </>
+          ) : (
+            <ArrowUp
+              size="18px"
+              strokeWidth="3px"
+              style={{
+                opacity: 0.5,
+              }}
+            />
           )}
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: 700,
-            }}
-          >{`${isChangeExists ? changeComparedToPreviousPeriod : 0}%`}</Typography>
+          <Tooltip
+            title={!isChangeExists ? i18n._('No previous data to compare') : ''}
+            placement="top"
+          >
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: isChangeExists ? 700 : 400,
+                opacity: isChangeExists ? 1 : 0.5,
+              }}
+            >{`${isChangeExists ? changeComparedToPreviousPeriod + '%' : '- %'}`}</Typography>
+          </Tooltip>
         </Stack>
+
         <Stack
           sx={{
             flexDirection: 'row',
