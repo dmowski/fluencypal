@@ -123,7 +123,7 @@ export const ProgressChart = ({
             >
               <defs>
                 <linearGradient id="progressFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={metricColorMap[metric]} stopOpacity={0.44} />
+                  <stop offset="0%" stopColor={metricColorMap[metric]} stopOpacity={1} />
                   <stop offset="58%" stopColor={metricColorMap[metric]} stopOpacity={0.24} />
                   <stop offset="100%" stopColor={metricColorMap[metric]} stopOpacity={0.1} />
                 </linearGradient>
