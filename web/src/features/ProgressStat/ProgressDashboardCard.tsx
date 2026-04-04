@@ -5,7 +5,6 @@ import { Stack } from '@mui/material';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { useProgressStats } from './useProgressStats';
 import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
-import { useAuth } from '../Auth/useAuth';
 import { ProgressViewChart } from './ProgressViewChart';
 
 const imageUrl =

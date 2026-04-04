@@ -90,25 +90,13 @@ export const ProgressChart = ({
   const hasPreferredData = data.some((point) => typeof point[preferredDataKey] === 'number');
   const chartDataKey = hasPreferredData ? preferredDataKey : rawMetricMap[metric];
 
-  const firstCreatedAtIso = previewData[0]?.createdAtIso;
-  const lastCreatedAtIso = previewData[previewData.length - 1]?.createdAtIso;
-
   const renderXAxisTick = ({ x = 0, y = 0, payload }: XAxisTickProps) => {
     const value = String(payload?.value ?? '');
     const label = dayjs(value).format('MMM D');
-    const isFirst = value === firstCreatedAtIso;
-    const isLast = value === lastCreatedAtIso;
-    const textAnchor = isFirst ? 'start' : isLast ? 'end' : 'middle';
-    const adjustedX = isLast ? x + 20 : x;
+    const adjustedX = x;
 
     return (
-      <text
-        x={adjustedX}
-        y={y + 12}
-        fill="rgba(233,238,252,0.72)"
-        fontSize="12"
-        textAnchor={textAnchor}
-      >
+      <text x={adjustedX} y={y} fill="rgba(233,238,252,0.72)" fontSize="12" textAnchor={'middle'}>
         {label}
       </text>
     );
@@ -143,9 +131,9 @@ export const ProgressChart = ({
               <CartesianGrid stroke="rgba(255,255,255,0.1)" vertical={false} />
               <XAxis
                 dataKey="createdAtIso"
-                minTickGap={24}
+                minTickGap={10}
                 tick={renderXAxisTick}
-                tickMargin={12}
+                tickMargin={20}
                 axisLine={false}
                 tickLine={false}
                 interval="preserveStartEnd"

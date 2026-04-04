@@ -203,16 +203,195 @@ export const ProgressViewChart = ({
     };
   }, [sourceChartData, chartData, selectedMetric, valueMode, selectedPeriod, averageLevel]);
 
-  return (
+  const dateSelector = (
     <Stack
       sx={{
-        padding: '30px 30px 20px 0px',
+        flexDirection: 'row',
+        gap: '3px',
       }}
     >
+      <ButtonGroup>
+        <Button
+          variant={selectedPeriod === 'last-30-days' ? 'contained' : 'outlined'}
+          onClick={() => setSelectedPeriod('last-30-days')}
+        >
+          30D
+        </Button>
+        <Button
+          variant={selectedPeriod === 'last-3-month' ? 'contained' : 'outlined'}
+          onClick={() => setSelectedPeriod('last-3-month')}
+        >
+          3M
+        </Button>
+        <Button
+          variant={selectedPeriod === 'last-6-month' ? 'contained' : 'outlined'}
+          onClick={() => setSelectedPeriod('last-6-month')}
+        >
+          6M
+        </Button>
+        <Button
+          variant={selectedPeriod === 'all-time' ? 'contained' : 'outlined'}
+          onClick={() => setSelectedPeriod('all-time')}
+        >
+          ALL
+        </Button>
+      </ButtonGroup>
+    </Stack>
+  );
+
+  const keyMetric = (
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        gap: '15px',
+        alignItems: 'flex-end',
+        opacity: isEmpty ? 0.3 : 1,
+      }}
+    >
+      <Typography
+        variant="h5"
+        sx={{
+          fontWeight: 600,
+        }}
+      >
+        {averageLevel}%
+      </Typography>
+      {selectedPeriod !== 'all-time' && isChangeExists && (
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '14px',
+            paddingBottom: '2px',
+          }}
+        >
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '4px',
+              color: isPositiveChange ? 'oklch(76.5% .177 163.223)' : 'oklch(70.4% .191 22.216)',
+            }}
+          >
+            {isPositiveChange ? (
+              <ArrowUp size="18px" strokeWidth="3px" />
+            ) : (
+              <ArrowDown size="18px" strokeWidth="3px" />
+            )}
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 700,
+              }}
+            >{`${changeComparedToPreviousPeriod}%`}</Typography>
+          </Stack>
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'rgba(243,246,255,0.72)',
+            }}
+          >
+            {'vs. prev period'}
+          </Typography>
+        </Stack>
+      )}
+    </Stack>
+  );
+
+  const metricSelector = (
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: '12px',
+      }}
+    >
+      <Select
+        value={selectedMetric}
+        onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
+        displayEmpty
+        size="small"
+        IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
+        sx={{
+          minWidth: '170px',
+          color: '#f7f9ff',
+          borderRadius: '10px',
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255,255,255,0.24)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255,255,255,0.3)',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(77, 163, 255, 0.3)',
+          },
+        }}
+        renderValue={(value) => (
+          <Stack
+            sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px', paddingTop: '1px' }}
+          >
+            <Stack
+              sx={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: metricColorMap[value],
+              }}
+            />
+            <Typography
+              variant="body2"
+              sx={{
+                paddingBottom: '0',
+              }}
+            >
+              {metricLabelMap[value]}
+            </Typography>
+          </Stack>
+        )}
+      >
+        {metricOptions.map((option) => (
+          <MenuItem key={option.metric} value={option.metric}>
+            <Stack
+              sx={{
+                width: '100%',
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                gap: '12px',
+                padding: '6px 5px',
+              }}
+            >
+              <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
+                <Stack
+                  sx={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: metricColorMap[option.metric],
+                  }}
+                />
+                <Typography variant="body1">{option.label}</Typography>
+              </Stack>
+              {selectedMetric === option.metric && <Check size={16} />}
+            </Stack>
+          </MenuItem>
+        ))}
+      </Select>
+
+      {isShowSettings && (
+        <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
+          <Settings size={'18px'} />
+        </IconButton>
+      )}
+    </Stack>
+  );
+
+  return (
+    <Stack sx={{}}>
       <Stack
         sx={{
           width: '100%',
-          padding: '0 0 45px 25px',
+          padding: '20px 15px 45px 20px',
           flexDirection: 'row',
           gap: '20px 10px',
           justifyContent: 'space-between',
@@ -222,179 +401,17 @@ export const ProgressViewChart = ({
       >
         <Stack
           sx={{
-            gap: '20px',
-          }}
-        >
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              gap: '3px',
-            }}
-          >
-            <ButtonGroup>
-              <Button
-                variant={selectedPeriod === 'last-30-days' ? 'contained' : 'outlined'}
-                onClick={() => setSelectedPeriod('last-30-days')}
-              >
-                30D
-              </Button>
-              <Button
-                variant={selectedPeriod === 'last-3-month' ? 'contained' : 'outlined'}
-                onClick={() => setSelectedPeriod('last-3-month')}
-              >
-                3M
-              </Button>
-              <Button
-                variant={selectedPeriod === 'last-6-month' ? 'contained' : 'outlined'}
-                onClick={() => setSelectedPeriod('last-6-month')}
-              >
-                6M
-              </Button>
-              <Button
-                variant={selectedPeriod === 'all-time' ? 'contained' : 'outlined'}
-                onClick={() => setSelectedPeriod('all-time')}
-              >
-                ALL
-              </Button>
-            </ButtonGroup>
-          </Stack>
-
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              gap: '15px',
-              alignItems: 'flex-end',
-              opacity: isEmpty ? 0.3 : 1,
-            }}
-          >
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 600,
-              }}
-            >
-              {averageLevel}%
-            </Typography>
-            {selectedPeriod !== 'all-time' && isChangeExists && (
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: '14px',
-                  paddingBottom: '2px',
-                }}
-              >
-                <Stack
-                  sx={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: '4px',
-                    color: isPositiveChange
-                      ? 'oklch(76.5% .177 163.223)'
-                      : 'oklch(70.4% .191 22.216)',
-                  }}
-                >
-                  {isPositiveChange ? (
-                    <ArrowUp size="18px" strokeWidth="3px" />
-                  ) : (
-                    <ArrowDown size="18px" strokeWidth="3px" />
-                  )}
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontWeight: 700,
-                    }}
-                  >{`${changeComparedToPreviousPeriod}%`}</Typography>
-                </Stack>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: 'rgba(243,246,255,0.72)',
-                  }}
-                >
-                  {'vs. prev period'}
-                </Typography>
-              </Stack>
-            )}
-          </Stack>
-        </Stack>
-
-        <Stack
-          sx={{
             flexDirection: 'row',
-            alignItems: 'center',
-            gap: '12px',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            width: '100%',
+            gap: '20px 10px',
           }}
         >
-          <Select
-            value={selectedMetric}
-            onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
-            displayEmpty
-            size="small"
-            IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
-            sx={{
-              minWidth: '170px',
-              color: '#f7f9ff',
-              borderRadius: '10px',
-              '.MuiOutlinedInput-notchedOutline': {
-                borderColor: 'rgba(255,255,255,0.24)',
-              },
-              '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'rgba(255,255,255,0.3)',
-              },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'rgba(77, 163, 255, 0.3)',
-              },
-            }}
-            renderValue={(value) => (
-              <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
-                <Stack
-                  sx={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: metricColorMap[value],
-                  }}
-                />
-                <Typography variant="body2">{metricLabelMap[value]}</Typography>
-              </Stack>
-            )}
-          >
-            {metricOptions.map((option) => (
-              <MenuItem key={option.metric} value={option.metric}>
-                <Stack
-                  sx={{
-                    width: '100%',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    gap: '12px',
-                    padding: '6px 5px',
-                  }}
-                >
-                  <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
-                    <Stack
-                      sx={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
-                        backgroundColor: metricColorMap[option.metric],
-                      }}
-                    />
-                    <Typography variant="body1">{option.label}</Typography>
-                  </Stack>
-                  {selectedMetric === option.metric && <Check size={16} />}
-                </Stack>
-              </MenuItem>
-            ))}
-          </Select>
-
-          {isShowSettings && (
-            <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>
-              <Settings size={'18px'} />
-            </IconButton>
-          )}
+          {metricSelector}
+          {dateSelector}
         </Stack>
+        {keyMetric}
       </Stack>
 
       <Popover
