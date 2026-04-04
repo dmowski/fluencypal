@@ -96,7 +96,9 @@ export const ProgressBoard = () => {
       </Stack>
 
       <ProgressGrid
-        startDateTimeStamp={settings.userCreatedAt || Date.now()}
+        startDateTimeStamp={
+          settings.userCreatedAt ? new Date(settings.userCreatedAt).getTime() : Date.now()
+        }
         currentDateTimeStamp={Date.now()}
         getDateStat={(date) => {
           const dayStat = tasks.daysTasks?.[date];

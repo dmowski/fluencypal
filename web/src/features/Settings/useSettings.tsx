@@ -29,7 +29,7 @@ import * as Sentry from '@sentry/nextjs';
 import { sleep } from '@/libs/sleep';
 
 interface SettingsContextType {
-  userCreatedAt: number | null;
+  userCreatedAt: string | null;
 
   languageCode: SupportedLanguage | null;
 
@@ -247,7 +247,7 @@ function useProvideSettings(): SettingsContextType {
     return () => clearInterval(interval);
   }, [userId, userSettingsDoc]);
 
-  const userCreatedAt = userSettings?.createdAt || null;
+  const userCreatedAt = userSettings?.createdAtIso || null;
 
   const setPageLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;

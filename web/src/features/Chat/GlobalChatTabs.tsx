@@ -2,14 +2,8 @@ import { Stack, Tabs, Tab } from '@mui/material';
 import { TabLabel } from '../Game/TabLabel';
 import { ChartSortMode } from './type';
 import { useLingui } from '@lingui/react';
-import { useChat } from './useChat';
-import { useAuth } from '../Auth/useAuth';
-import { db } from '../Firebase/firebaseDb';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
-import { getAllChildrenMessages } from './getAllChildrenMessages';
-import { uniq } from '@/libs/uniq';
-import { useMemo } from 'react';
 import { useUrlState } from '../Url/useUrlState';
+import { useChatList } from './useChatList';
 
 export const GlobalChatTabs = ({
   sortMode,
@@ -19,34 +13,8 @@ export const GlobalChatTabs = ({
   setSortMode: (mode: ChartSortMode) => void;
 }) => {
   const { i18n } = useLingui();
-  const chat = useChat();
-  const auth = useAuth();
-  const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || '');
-  const [myReadStatsData] = useDocumentData(myReadStatsRef);
   const [activeChatPost] = useUrlState<string | null>('post', null, true);
-
-  const unreadRepliesCount = useMemo(() => {
-    const messages = chat.messages || [];
-    const myMessages = messages.filter((msg) => msg.senderId === auth.uid);
-
-    const childrenOfMyMessages = messages
-      .map((msg) => getAllChildrenMessages(msg, messages))
-      .flat();
-
-    const allMyMessagesIds = uniq([
-      ...myMessages.map((msg) => msg.id),
-      ...childrenOfMyMessages.map((msg) => msg.id),
-    ]);
-
-    const myGlobalStatsReadMessagesIds = Object.keys(myReadStatsData?.['global'] || {});
-    const unreadReplies = allMyMessagesIds.filter(
-      (id) => !myGlobalStatsReadMessagesIds.includes(id),
-    );
-
-    //return unreadReplies.length;
-    return 0;
-  }, [chat.messages, auth.uid, myReadStatsData]);
-
+  const chatList = useChatList();
   const isShowTabs = !activeChatPost;
 
   return (
@@ -70,7 +38,15 @@ export const GlobalChatTabs = ({
                 padding: '0 10px 0 10px',
                 minWidth: 'unset',
               }}
-              label={<TabLabel label={i18n._(`All`)} badgeNumber={undefined} badgeHighlight />}
+              label={
+                <TabLabel
+                  label={i18n._(`All`)}
+                  badgeNumber={
+                    chatList.unreadGlobalChatCount > 0 ? chatList.unreadGlobalChatCount : undefined
+                  }
+                  badgeHighlight
+                />
+              }
               value={'all'}
             />
 
@@ -78,7 +54,11 @@ export const GlobalChatTabs = ({
               label={
                 <TabLabel
                   label={i18n._(`Replies`)}
-                  badgeNumber={unreadRepliesCount > 0 ? unreadRepliesCount : undefined}
+                  badgeNumber={
+                    chatList.globalChatRepliesUnreadCount > 0
+                      ? chatList.globalChatRepliesUnreadCount
+                      : undefined
+                  }
                   badgeHighlight
                 />
               }

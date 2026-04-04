@@ -9,6 +9,7 @@ import { useSettings } from '../Settings/useSettings';
 import { getDailyQuestionPrefix } from '../DailyQuestion/getDailyQuestionSpaceId';
 import {
   calculateDailyQuestionsNotifications,
+  calculateGlobalChatUnreadCount,
   MyDailyQuestionNotification,
   calculateUnreadPersonalMessages,
 } from './chatListUtils';
@@ -17,8 +18,11 @@ interface ChatListContextType {
   loading: boolean;
   myChats: UserChatMetadata[];
   myReadStats: ChatSpaceUserReadMetadata;
+  unreadSpaces: Record<string, number>;
   myUnreadCount: number;
   unreadGlobalChatCount: number;
+  globalChatTopLevelUnreadCount: number;
+  globalChatRepliesUnreadCount: number;
   deleteChat: (spaceId: string) => Promise<void>;
   totalDailyQuestionsUnreadMessagesCount: number;
   dailyQuestionsNotifications: MyDailyQuestionNotification[];
@@ -29,6 +33,7 @@ const ChatListContext = createContext<ChatListContextType | null>(null);
 function useProvideChatList(): ChatListContextType {
   const auth = useAuth();
   const settings = useSettings();
+  const userCreatedAt = settings.userCreatedAt;
   const chatListRef = db.collections.userChatList(auth.uid || '');
 
   const myReadStatsRef = db.documents.chatSpaceUserReadMetadata(auth.uid || '');
@@ -48,11 +53,17 @@ function useProvideChatList(): ChatListContextType {
 
   const [myChats, myChatsLoading, myChatsError] = useCollectionData(myChatsQuery);
 
+  const globalMessagesRef = useMemo(
+    () => db.collections.usersChatMessages('global', auth.uid || ''),
+    [auth.uid],
+  );
+  const [globalMessages] = useCollectionData(globalMessagesRef);
+
   if (myChatsError) {
     console.error('Error fetching my chats:', myChatsError);
   }
 
-  const { myUnreadCount } = useMemo(
+  const { unreadSpaces, myUnreadCount } = useMemo(
     () => calculateUnreadPersonalMessages(myChats, myReadStatsData),
     [myChats, myReadStatsData],
   );
@@ -66,6 +77,21 @@ function useProvideChatList(): ChatListContextType {
       dailyQuestionPrefix,
     );
   }, [dailyQuestionsChats, myReadStatsData, auth.uid, settings.languageCode]);
+
+  const {
+    topLevelUnreadCount: globalChatTopLevelUnreadCount,
+    repliesUnreadCount: globalChatRepliesUnreadCount,
+  } = useMemo(
+    () =>
+      calculateGlobalChatUnreadCount(
+        globalMessages || [],
+        myReadStatsData?.['global'],
+        auth.uid,
+        userCreatedAt,
+      ),
+    [globalMessages, myReadStatsData, auth.uid, userCreatedAt],
+  );
+  const unreadGlobalChatCount = globalChatTopLevelUnreadCount + globalChatRepliesUnreadCount;
 
   const deleteChat = async (spaceId: string) => {
     const chatRef = db.documents.chat(auth.uid, spaceId);
@@ -87,8 +113,11 @@ function useProvideChatList(): ChatListContextType {
     myChats: myChats || [],
     myReadStats: myReadStatsData || {},
     totalDailyQuestionsUnreadMessagesCount,
+    unreadSpaces,
     myUnreadCount,
-    unreadGlobalChatCount: 0,
+    unreadGlobalChatCount,
+    globalChatTopLevelUnreadCount,
+    globalChatRepliesUnreadCount,
     dailyQuestionsNotifications,
     deleteChat,
   };
