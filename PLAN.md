@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Before asking native audio permission, show my custom modal
-
 ## Notification from Global Chat
 
 ## Essay writing helper
