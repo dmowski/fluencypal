@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Notification from Global Chat
-
 ## Essay writing helper
 
 ## Emails
@@ -18,6 +16,6 @@ Plan:
 
 ## Learning plan: AI call
 
-- Tune prompt for language consistence (so it uses Polish along the way)
+- Tune prompt for VAD call, to use Polish constantly
 - Improve transcript timeout (make it less pressing)
 - Validate costs of full goal conversation
