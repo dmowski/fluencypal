@@ -971,6 +971,15 @@ msgstr "1 yıl"
 msgid "1. Confirm your credit card details"
 msgstr "1. Kredi kartı bilgilerinizi onaylayın"
 
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"100% is a native-like proficiency level, while 0% is the beginner level of "
+"most language learners."
+msgstr ""
+"%100, ana diline benzer bir yeterlilik seviyesidir; %0 ise çoğu dil "
+"öğrenicisi için başlangıç seviyesidir."
+
 #: src/features/Blog/blogData.tsx:259
 #. js-lingui-explicit-id
 msgid "15 Must-Know Business English Phrases to Ace Your Next Job Interview"
@@ -1614,7 +1623,7 @@ msgstr ""
 "Tüm kaynak kodu açık ve herkese açıktır. Kod yazmayı biliyorsanız, "
 "geliştirme yapmaktan çekinmeyin."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:463
+#: src/features/ProgressStat/ProgressViewChart.tsx:492
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "Tüm zamanlar"
@@ -1952,6 +1961,11 @@ msgstr "Mevcut diller:"
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:239
+#. js-lingui-explicit-id
+msgid "Average level during the selected period"
+msgstr "Seçilen dönem boyunca ortalama seviye"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2805,7 +2819,7 @@ msgstr "Eşzamanlılık & Dayanıklılık"
 msgid "Concurrency and resiliency assessment"
 msgstr "Eşzamanlılık ve dayanıklılık değerlendirmesi"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:100
+#: src/features/ProgressStat/ProgressViewChart.tsx:109
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Güven"
@@ -5022,7 +5036,7 @@ msgstr ""
 msgid "Fixed words"
 msgstr "Sabit kelimeler"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:99
+#: src/features/ProgressStat/ProgressViewChart.tsx:108
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Akıcılık"
@@ -5911,7 +5925,7 @@ msgstr ""
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:97
+#: src/features/ProgressStat/ProgressViewChart.tsx:106
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Dilbilgisi"
@@ -8079,17 +8093,17 @@ msgstr "Diller"
 msgid "Languages installed in your brain:"
 msgstr "Beyninizde yüklü olan diller:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:461
+#: src/features/ProgressStat/ProgressViewChart.tsx:490
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "Son 3 ay"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:460
+#: src/features/ProgressStat/ProgressViewChart.tsx:489
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "Son 30 gün"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:462
+#: src/features/ProgressStat/ProgressViewChart.tsx:491
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Son 6 ay"
@@ -9095,6 +9109,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "Ödemeler yok..."
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:291
+#. js-lingui-explicit-id
+msgid "No previous data to compare"
+msgstr "Karşılaştırılacak önceki veri yok"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9413,7 +9432,7 @@ msgstr "Telegram'da Aç"
 msgid "Open personal plan"
 msgstr "Kişisel planı aç"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:399
+#: src/features/ProgressStat/ProgressViewChart.tsx:428
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Açık ilerleme ayarları"
@@ -9658,8 +9677,8 @@ msgstr "Performans Metrikleri"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Performans, dayanıklılık ve mimari desenler"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:453
-#: src/features/ProgressStat/ProgressViewChart.tsx:457
+#: src/features/ProgressStat/ProgressViewChart.tsx:482
+#: src/features/ProgressStat/ProgressViewChart.tsx:486
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "Periyot"
@@ -10028,17 +10047,6 @@ msgstr "Pratik"
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "PRAKTİK VE SIKI ÇALIŞMA"
-
-#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
-#. js-lingui-explicit-id
-msgid ""
-"Practice and watch your skills grow. Your progress is automatically tracked "
-"and visualized. 100% is a native-like proficiency level, while 0% is the "
-"beginner level of most language learners."
-msgstr ""
-"Pratik yapın ve becerilerinizin geliştiğini izleyin. İlerlemeniz otomatik "
-"olarak izlenir ve görselleştirilir. %100, ana dil seviyesinde bir "
-"yeterlilik seviyesidir, %0 ise çoğu dil öğrencisinin başlangıç seviyesidir."
 
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
@@ -10584,7 +10592,7 @@ msgstr "İlerleme Takvimi"
 msgid "Progress insights are locked"
 msgstr "İlerleme içgörüleri kilitlendi"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#: src/features/ProgressStat/ProgressViewChart.tsx:478
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "İlerleme Ayarları"
@@ -10698,7 +10706,7 @@ msgstr "Liderlik tablosunda ilk 5'e girin ve uygulamayı ücretsiz alın!"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "İlk 5'te yer alarak tüm özelliklere tam erişim sağlayın!"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:475
+#: src/features/ProgressStat/ProgressViewChart.tsx:504
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Ham"
@@ -11880,7 +11888,7 @@ msgstr ""
 "konuşun. Eğer mülakatçı, “Bize ulaşmakta herhangi bir zorluk yaşadınız mı?” "
 "diye sorarsa, şöyle diyebilirsiniz:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:476
+#: src/features/ProgressStat/ProgressViewChart.tsx:505
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "Yumuşatıldı"
@@ -13776,8 +13784,8 @@ msgstr "UX & Erişilebilirlik"
 msgid "Vacancy description"
 msgstr "İş ilanı açıklaması"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:468
-#: src/features/ProgressStat/ProgressViewChart.tsx:472
+#: src/features/ProgressStat/ProgressViewChart.tsx:497
+#: src/features/ProgressStat/ProgressViewChart.tsx:501
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "Değer Modu"
@@ -13857,7 +13865,7 @@ msgstr ""
 "net bir şekilde görerek motive olun."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressViewChart.tsx:98
+#: src/features/ProgressStat/ProgressViewChart.tsx:107
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Kelime Dağarcığı"
@@ -15260,6 +15268,17 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice and watch your skills grow. Your progress is automatically tracked "
+#~ "and visualized. 100% is a native-like proficiency level, while 0% is the "
+#~ "beginner level of most language learners."
+#~ msgstr ""
+#~ "Pratik yapın ve becerilerinizin geliştiğini izleyin. İlerlemeniz otomatik "
+#~ "olarak izlenir ve görselleştirilir. %100, ana dil seviyesinde bir "
+#~ "yeterlilik seviyesidir, %0 ise çoğu dil öğrencisinin başlangıç seviyesidir."
 
 #: src/features/ProgressStat/ProgressChart.tsx:200
 #. js-lingui-explicit-id

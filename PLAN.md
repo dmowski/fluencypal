@@ -3,7 +3,7 @@
 ## Add feature for assess language level
 
 - Full size report
-  - On Dashboard card show full data
+  - On Dashboard card show full data Modal
   - Show Summary
   - Use ai to generate proposal on how to correct practice
 

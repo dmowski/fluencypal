@@ -964,6 +964,15 @@ msgstr "1 år"
 msgid "1. Confirm your credit card details"
 msgstr "1. Bekreft kredittkortdetaljene dine"
 
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"100% is a native-like proficiency level, while 0% is the beginner level of "
+"most language learners."
+msgstr ""
+"100 % er et nivå med ferdigheter som tilsvarer en morsmålsbruker, mens 0 % "
+"er nybegynnernivået til de fleste språklærere."
+
 #: src/features/Blog/blogData.tsx:259
 #. js-lingui-explicit-id
 msgid "15 Must-Know Business English Phrases to Ace Your Next Job Interview"
@@ -1601,7 +1610,7 @@ msgstr ""
 "All kildekoden er åpen og offentlig tilgjengelig. Hvis du kan kode, er du "
 "velkommen til å forbedre den."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:463
+#: src/features/ProgressStat/ProgressViewChart.tsx:492
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "All tid"
@@ -1942,6 +1951,11 @@ msgstr "Tilgjengelige språk:"
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:239
+#. js-lingui-explicit-id
+msgid "Average level during the selected period"
+msgstr "Gjennomsnittlig nivå i løpet av den valgte perioden"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2791,7 +2805,7 @@ msgstr "Samtidighet & Motstandskraft"
 msgid "Concurrency and resiliency assessment"
 msgstr "Konkurranse- og robusthetsvurdering"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:100
+#: src/features/ProgressStat/ProgressViewChart.tsx:109
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Selvtillit"
@@ -4985,7 +4999,7 @@ msgstr "Fiks gjentatte feil med klare forklaringer, quizer og fokusert praksis."
 msgid "Fixed words"
 msgstr "Faste ord"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:99
+#: src/features/ProgressStat/ProgressViewChart.tsx:108
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Flyt"
@@ -5861,7 +5875,7 @@ msgstr "Google Calls emulator"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:97
+#: src/features/ProgressStat/ProgressViewChart.tsx:106
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Grammatikk"
@@ -8033,17 +8047,17 @@ msgstr "Språk"
 msgid "Languages installed in your brain:"
 msgstr "Språk installert i hjernen din:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:461
+#: src/features/ProgressStat/ProgressViewChart.tsx:490
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "Siste 3 måneder"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:460
+#: src/features/ProgressStat/ProgressViewChart.tsx:489
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "Siste 30 dager"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:462
+#: src/features/ProgressStat/ProgressViewChart.tsx:491
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Siste 6 måneder"
@@ -9042,6 +9056,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "Ingen betalinger..."
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:291
+#. js-lingui-explicit-id
+msgid "No previous data to compare"
+msgstr "Ingen tidligere data å sammenligne med"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9361,7 +9380,7 @@ msgstr "Åpne i Telegram"
 msgid "Open personal plan"
 msgstr "Åpne personlig plan"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:399
+#: src/features/ProgressStat/ProgressViewChart.tsx:428
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Åpne innstillingsfremgang"
@@ -9602,8 +9621,8 @@ msgstr "Ytelsesmetrikker"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Ytelse, motstandskraft og arkitekturmønstre"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:453
-#: src/features/ProgressStat/ProgressViewChart.tsx:457
+#: src/features/ProgressStat/ProgressViewChart.tsx:482
+#: src/features/ProgressStat/ProgressViewChart.tsx:486
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "Periode"
@@ -9968,17 +9987,6 @@ msgstr "Øv"
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "ØVELSE OG HARDT ARBEID"
-
-#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
-#. js-lingui-explicit-id
-msgid ""
-"Practice and watch your skills grow. Your progress is automatically tracked "
-"and visualized. 100% is a native-like proficiency level, while 0% is the "
-"beginner level of most language learners."
-msgstr ""
-"Øv deg og se ferdighetene dine vokse. Fremgangen din blir automatisk sporet "
-"og visualisert. 100% er et nivå med native-lignende ferdighet, mens 0% er "
-"begynnernivået for de fleste språkstudenter."
 
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
@@ -10515,7 +10523,7 @@ msgstr "Fremdriftskalender"
 msgid "Progress insights are locked"
 msgstr "Progresjonsinnsikt er låst"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#: src/features/ProgressStat/ProgressViewChart.tsx:478
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "Innstillinger for Fremdrift"
@@ -10629,7 +10637,7 @@ msgstr "Ranger blant de 5 beste på ledertavlen og få appen gratis!"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Ranger blant de 5 beste for å få full tilgang til alle funksjoner!"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:475
+#: src/features/ProgressStat/ProgressViewChart.tsx:504
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Rå"
@@ -11807,7 +11815,7 @@ msgstr ""
 "intervjueren spør, \"Hadde du noen problemer med å finne oss?\" kan du "
 "kanskje svare:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:476
+#: src/features/ProgressStat/ProgressViewChart.tsx:505
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "Glattet"
@@ -13709,8 +13717,8 @@ msgstr "UX og tilgjengelighet"
 msgid "Vacancy description"
 msgstr "Ledighetsbeskrivelse"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:468
-#: src/features/ProgressStat/ProgressViewChart.tsx:472
+#: src/features/ProgressStat/ProgressViewChart.tsx:497
+#: src/features/ProgressStat/ProgressViewChart.tsx:501
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "Verdimodus"
@@ -13790,7 +13798,7 @@ msgstr ""
 "å tydelig se forbedringene dine."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressViewChart.tsx:98
+#: src/features/ProgressStat/ProgressViewChart.tsx:107
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Ordforråd"
@@ -15204,6 +15212,17 @@ msgstr ""
 "— det er viktig å delta i denne korte samtalen før du hopper inn i "
 "profesjonelle emner. Her er noen nyttige engelske uttrykk for å starte "
 "intervjuet:"
+
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice and watch your skills grow. Your progress is automatically tracked "
+#~ "and visualized. 100% is a native-like proficiency level, while 0% is the "
+#~ "beginner level of most language learners."
+#~ msgstr ""
+#~ "Øv deg og se ferdighetene dine vokse. Fremgangen din blir automatisk sporet "
+#~ "og visualisert. 100% er et nivå med native-lignende ferdighet, mens 0% er "
+#~ "begynnernivået for de fleste språkstudenter."
 
 #: src/features/ProgressStat/ProgressChart.tsx:200
 #. js-lingui-explicit-id

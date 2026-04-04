@@ -952,6 +952,15 @@ msgstr "1 سنة"
 msgid "1. Confirm your credit card details"
 msgstr "1. أكد تفاصيل بطاقة الائتمان الخاصة بك"
 
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"100% is a native-like proficiency level, while 0% is the beginner level of "
+"most language learners."
+msgstr ""
+"%100 هو مستوى إتقان شبيه بمستوى المتحدثين الأصليين، بينما %0 هو مستوى "
+"المبتدئين لمعظم متعلمي اللغات."
+
 #: src/features/Blog/blogData.tsx:259
 #. js-lingui-explicit-id
 msgid "15 Must-Know Business English Phrases to Ace Your Next Job Interview"
@@ -1591,7 +1600,7 @@ msgstr ""
 "كل الشيفرة المصدرية مفتوحة ومتاحة بشكل عام. إذا كنت تعرف كيفية البرمجة، "
 "فمرحبًا بك لتحسينها."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:463
+#: src/features/ProgressStat/ProgressViewChart.tsx:492
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "طوال الوقت"
@@ -1925,6 +1934,11 @@ msgstr "اللغات المتاحة:"
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "أفاتار"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:239
+#. js-lingui-explicit-id
+msgid "Average level during the selected period"
+msgstr "متوسط المستوى خلال الفترة المحددة"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2768,7 +2782,7 @@ msgstr "التزامن والمرونة"
 msgid "Concurrency and resiliency assessment"
 msgstr "تقييم القابلية للتزامن والقدرة على الصمود"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:100
+#: src/features/ProgressStat/ProgressViewChart.tsx:109
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "الثقة"
@@ -4928,7 +4942,7 @@ msgstr "إصلاح الأخطاء المتكررة بتوضيحات واضحة،
 msgid "Fixed words"
 msgstr "كلمات ثابتة"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:99
+#: src/features/ProgressStat/ProgressViewChart.tsx:108
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "الطلاقة"
@@ -5810,7 +5824,7 @@ msgstr "مُحاكي المكالمات من جوجل"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:97
+#: src/features/ProgressStat/ProgressViewChart.tsx:106
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "القواعد"
@@ -7915,19 +7929,19 @@ msgstr "اللغات"
 msgid "Languages installed in your brain:"
 msgstr "اللغات المثبتة في عقلك:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:461
+#: src/features/ProgressStat/ProgressViewChart.tsx:490
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "آخر 3 أشهر"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:460
+#: src/features/ProgressStat/ProgressViewChart.tsx:489
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr ""
 "\n"
 "آخر 30 يومًا\n"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:462
+#: src/features/ProgressStat/ProgressViewChart.tsx:491
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "آخر 6 أشهر"
@@ -8932,6 +8946,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "لا يوجد مدفوعات..."
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:291
+#. js-lingui-explicit-id
+msgid "No previous data to compare"
+msgstr "لا توجد بيانات سابقة للمقارنة"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9254,7 +9273,7 @@ msgstr "افتح في تيليجرام"
 msgid "Open personal plan"
 msgstr "افتح الخطة الشخصية"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:399
+#: src/features/ProgressStat/ProgressViewChart.tsx:428
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "افتح إعدادات التقدم"
@@ -9489,8 +9508,8 @@ msgstr "معايير الأداء"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "الأداء والمرونة والأنماط المعمارية"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:453
-#: src/features/ProgressStat/ProgressViewChart.tsx:457
+#: src/features/ProgressStat/ProgressViewChart.tsx:482
+#: src/features/ProgressStat/ProgressViewChart.tsx:486
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "فترة"
@@ -9865,17 +9884,6 @@ msgstr "ممارسة"
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "التمرين والعمل الشاق"
-
-#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
-#. js-lingui-explicit-id
-msgid ""
-"Practice and watch your skills grow. Your progress is automatically tracked "
-"and visualized. 100% is a native-like proficiency level, while 0% is the "
-"beginner level of most language learners."
-msgstr ""
-"تمرن وشاهد مهاراتك تتطور. يتم تتبع وتحليل تقدمك تلقائيًا. 100٪ تمثل مستوى "
-"إتقان يشبه المتحدث الأصلي، في حين أن 0٪ تمثل مستوى المبتدئين لمعظم متعلمي "
-"اللغة."
 
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
@@ -10409,7 +10417,7 @@ msgstr "تقويم التقدم"
 msgid "Progress insights are locked"
 msgstr "التقدم التحليلي مقفل"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#: src/features/ProgressStat/ProgressViewChart.tsx:478
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "إعدادات التقدم"
@@ -10527,7 +10535,7 @@ msgstr ""
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "رتب في المراكز الخمسة الأولى للحصول على وصول كامل إلى جميع الميزات!"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:475
+#: src/features/ProgressStat/ProgressViewChart.tsx:504
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "خام"
@@ -11696,7 +11704,7 @@ msgstr ""
 "ابتسم، وصافح الأشخاص (إذا كان ذلك مناسبًا ثقافيًا)، وتحدث بنبرة ودية. إذا "
 "سألك المقابل، \"هل واجهت أي صعوبة في العثور علينا؟\" قد تقول:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:476
+#: src/features/ProgressStat/ProgressViewChart.tsx:505
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "مصقول"
@@ -13555,8 +13563,8 @@ msgstr ""
 msgid "Vacancy description"
 msgstr "وصف فرصة العمل"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:468
-#: src/features/ProgressStat/ProgressViewChart.tsx:472
+#: src/features/ProgressStat/ProgressViewChart.tsx:497
+#: src/features/ProgressStat/ProgressViewChart.tsx:501
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "وضع القيمة"
@@ -13638,7 +13646,7 @@ msgstr ""
 "رؤية تحسيناتك بوضوح."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressViewChart.tsx:98
+#: src/features/ProgressStat/ProgressViewChart.tsx:107
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "المفردات"
@@ -15025,6 +15033,17 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice and watch your skills grow. Your progress is automatically tracked "
+#~ "and visualized. 100% is a native-like proficiency level, while 0% is the "
+#~ "beginner level of most language learners."
+#~ msgstr ""
+#~ "تمرن وشاهد مهاراتك تتطور. يتم تتبع وتحليل تقدمك تلقائيًا. 100٪ تمثل مستوى "
+#~ "إتقان يشبه المتحدث الأصلي، في حين أن 0٪ تمثل مستوى المبتدئين لمعظم متعلمي "
+#~ "اللغة."
 
 #: src/features/ProgressStat/ProgressChart.tsx:200
 #. js-lingui-explicit-id

@@ -908,6 +908,13 @@ msgstr "1年"
 msgid "1. Confirm your credit card details"
 msgstr "1. クレジットカードの詳細を確認する"
 
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"100% is a native-like proficiency level, while 0% is the beginner level of "
+"most language learners."
+msgstr "100% はネイティブに近い熟達度を表し、0% はほとんどの言語学習者が持つ初心者レベルを示します。"
+
 #: src/features/Blog/blogData.tsx:259
 #. js-lingui-explicit-id
 msgid "15 Must-Know Business English Phrases to Ace Your Next Job Interview"
@@ -1526,7 +1533,7 @@ msgid ""
 "code, you're welcome to improve it."
 msgstr "すべてのソースコードはオープンで公開されています。もしコーディングができるなら、ぜひ改良してください。"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:463
+#: src/features/ProgressStat/ProgressViewChart.tsx:492
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "すべての時間"
@@ -1852,6 +1859,11 @@ msgstr "利用可能な言語："
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "アバター"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:239
+#. js-lingui-explicit-id
+msgid "Average level during the selected period"
+msgstr "選択された期間中の平均レベル"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2672,7 +2684,7 @@ msgstr "コンカレンシー & レジリエンシー"
 msgid "Concurrency and resiliency assessment"
 msgstr "並行性と回復力の評価"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:100
+#: src/features/ProgressStat/ProgressViewChart.tsx:109
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "自信"
@@ -4722,7 +4734,7 @@ msgstr "間違いを繰り返さないよう、明確な説明、クイズ、重
 msgid "Fixed words"
 msgstr "固定された単語"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:99
+#: src/features/ProgressStat/ProgressViewChart.tsx:108
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "流暢さ"
@@ -5537,7 +5549,7 @@ msgstr "Google Calls エミュレーター"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:97
+#: src/features/ProgressStat/ProgressViewChart.tsx:106
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "文法"
@@ -7514,17 +7526,17 @@ msgstr "言語"
 msgid "Languages installed in your brain:"
 msgstr "あなたの脳にインストールされた言語:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:461
+#: src/features/ProgressStat/ProgressViewChart.tsx:490
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "過去3か月"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:460
+#: src/features/ProgressStat/ProgressViewChart.tsx:489
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "過去30日間"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:462
+#: src/features/ProgressStat/ProgressViewChart.tsx:491
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "過去6か月"
@@ -8493,6 +8505,11 @@ msgstr "お支払いは発生いたしません。このステップの一環と
 msgid "No payments..."
 msgstr "支払いなし..."
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:291
+#. js-lingui-explicit-id
+msgid "No previous data to compare"
+msgstr "比較する以前のデータがありません"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -8789,7 +8806,7 @@ msgstr "テレグラムで開く"
 msgid "Open personal plan"
 msgstr "パーソナルプランを開く"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:399
+#: src/features/ProgressStat/ProgressViewChart.tsx:428
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "進捗設定を開く"
@@ -9018,8 +9035,8 @@ msgstr "パフォーマンス指標"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "パフォーマンス、回復力、アーキテクチャパターン"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:453
-#: src/features/ProgressStat/ProgressViewChart.tsx:457
+#: src/features/ProgressStat/ProgressViewChart.tsx:482
+#: src/features/ProgressStat/ProgressViewChart.tsx:486
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "期間"
@@ -9376,16 +9393,6 @@ msgstr "練習"
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "練習と努力"
-
-#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
-#. js-lingui-explicit-id
-msgid ""
-"Practice and watch your skills grow. Your progress is automatically tracked "
-"and visualized. 100% is a native-like proficiency level, while 0% is the "
-"beginner level of most language learners."
-msgstr ""
-"練習してスキルを向上させましょう。あなたの進歩は自動的に追跡され、視覚化されます。100%はネイティブに近い熟達度であり、0%"
-"はほとんどの語学学習者の初心者レベルです。"
 
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
@@ -9887,7 +9894,7 @@ msgstr "進行カレンダー"
 msgid "Progress insights are locked"
 msgstr "進捗の洞察はロックされています"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#: src/features/ProgressStat/ProgressViewChart.tsx:478
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "進捗設定"
@@ -10003,7 +10010,7 @@ msgstr "リーダーボードでトップ5にランクインして、アプリ�
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "トップ5にランクインして、全ての機能にフルアクセスしましょう！"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:475
+#: src/features/ProgressStat/ProgressViewChart.tsx:504
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "生"
@@ -11137,7 +11144,7 @@ msgstr ""
 "微笑んで、（文化的に適切な場合には）握手をし、友好的な口調で話しましょう。面接官が「ここを見つけるのに何か問題ありましたか？」と聞いてきたら、次のように"
 "答えることもできます："
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:476
+#: src/features/ProgressStat/ProgressViewChart.tsx:505
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "スムーズにしました"
@@ -12940,8 +12947,8 @@ msgstr "UX およびアクセシビリティ"
 msgid "Vacancy description"
 msgstr " vacancy description"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:468
-#: src/features/ProgressStat/ProgressViewChart.tsx:472
+#: src/features/ProgressStat/ProgressViewChart.tsx:497
+#: src/features/ProgressStat/ProgressViewChart.tsx:501
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "バリューモード"
@@ -13021,7 +13028,7 @@ msgid ""
 msgstr "あなたの毎日の進捗を直感的なトラッキングで可視化します。自分の改善を明確に見ることで、モチベーションを維持しましょう。"
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressViewChart.tsx:98
+#: src/features/ProgressStat/ProgressViewChart.tsx:107
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "語彙"
@@ -14328,6 +14335,16 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice and watch your skills grow. Your progress is automatically tracked "
+#~ "and visualized. 100% is a native-like proficiency level, while 0% is the "
+#~ "beginner level of most language learners."
+#~ msgstr ""
+#~ "練習してスキルを向上させましょう。あなたの進歩は自動的に追跡され、視覚化されます。100%はネイティブに近い熟達度であり、0%"
+#~ "はほとんどの語学学習者の初心者レベルです。"
 
 #: src/features/ProgressStat/ProgressChart.tsx:200
 #. js-lingui-explicit-id

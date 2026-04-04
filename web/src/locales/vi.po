@@ -979,6 +979,15 @@ msgstr "1 năm"
 msgid "1. Confirm your credit card details"
 msgstr "1. Xác nhận thông tin thẻ tín dụng của bạn"
 
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"100% is a native-like proficiency level, while 0% is the beginner level of "
+"most language learners."
+msgstr ""
+"100% là mức độ thông thạo giống như người bản ngữ, trong khi 0% là trình độ "
+"sơ cấp của hầu hết những người học ngôn ngữ."
+
 #: src/features/Blog/blogData.tsx:259
 #. js-lingui-explicit-id
 msgid "15 Must-Know Business English Phrases to Ace Your Next Job Interview"
@@ -1622,7 +1631,7 @@ msgstr ""
 "Tất cả mã nguồn đều mở và có sẵn công khai. Nếu bạn biết lập trình, hoan "
 "nghênh bạn cải thiện nó."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:463
+#: src/features/ProgressStat/ProgressViewChart.tsx:492
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "Mọi lúc"
@@ -1968,6 +1977,11 @@ msgstr "Ngôn ngữ có sẵn:"
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Ảnh đại diện"
+
+#: src/features/ProgressStat/ProgressViewChart.tsx:239
+#. js-lingui-explicit-id
+msgid "Average level during the selected period"
+msgstr "Trung bình cấp độ trong khoảng thời gian đã chọn"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
 #. js-lingui-explicit-id
@@ -2823,7 +2837,7 @@ msgstr "Concurrency & Resiliency"
 msgid "Concurrency and resiliency assessment"
 msgstr "Đánh giá tính đồng thời và khả năng phục hồi"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:100
+#: src/features/ProgressStat/ProgressViewChart.tsx:109
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Sự Tự Tin"
@@ -5049,7 +5063,7 @@ msgstr ""
 msgid "Fixed words"
 msgstr "Từ ngữ cố định"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:99
+#: src/features/ProgressStat/ProgressViewChart.tsx:108
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Độ trôi chảy"
@@ -5940,7 +5954,7 @@ msgstr "Google Calls emulator"
 
 #: src/features/Landing/LandingPage.tsx:395
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:97
+#: src/features/ProgressStat/ProgressViewChart.tsx:106
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Ngữ pháp"
@@ -8122,17 +8136,17 @@ msgstr "Ngôn ngữ"
 msgid "Languages installed in your brain:"
 msgstr "Ngôn ngữ được cài đặt trong não của bạn:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:461
+#: src/features/ProgressStat/ProgressViewChart.tsx:490
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "3 tháng gần đây"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:460
+#: src/features/ProgressStat/ProgressViewChart.tsx:489
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "30 ngày qua"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:462
+#: src/features/ProgressStat/ProgressViewChart.tsx:491
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "6 tháng qua"
@@ -9143,6 +9157,11 @@ msgstr ""
 msgid "No payments..."
 msgstr "Không thanh toán..."
 
+#: src/features/ProgressStat/ProgressViewChart.tsx:291
+#. js-lingui-explicit-id
+msgid "No previous data to compare"
+msgstr "Không có dữ liệu trước đó để so sánh"
+
 #: src/features/Blog/blogData.tsx:112
 #. js-lingui-explicit-id
 msgid "No Projections Available"
@@ -9466,7 +9485,7 @@ msgstr "Mở trong Telegram"
 msgid "Open personal plan"
 msgstr "Mở kế hoạch cá nhân"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:399
+#: src/features/ProgressStat/ProgressViewChart.tsx:428
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Mở cài đặt tiến trình"
@@ -9711,8 +9730,8 @@ msgstr "Hiệu Suất Hoạt Động"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Hiệu suất, khả năng phục hồi, và mô hình kiến trúc"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:453
-#: src/features/ProgressStat/ProgressViewChart.tsx:457
+#: src/features/ProgressStat/ProgressViewChart.tsx:482
+#: src/features/ProgressStat/ProgressViewChart.tsx:486
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "Kỳ"
@@ -10079,17 +10098,6 @@ msgstr "Thực hành"
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "THỰC HÀNH VÀ LÀM VIỆC CHĂM CHỈ"
-
-#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
-#. js-lingui-explicit-id
-msgid ""
-"Practice and watch your skills grow. Your progress is automatically tracked "
-"and visualized. 100% is a native-like proficiency level, while 0% is the "
-"beginner level of most language learners."
-msgstr ""
-"Thực hành và xem kỹ năng của bạn phát triển. Tiến trình của bạn được theo "
-"dõi tự động và hiển thị. 100% là trình độ thành thạo như người bản ngữ, "
-"trong khi 0% là trình độ người mới bắt đầu của hầu hết người học ngôn ngữ."
 
 #: src/features/Feature/featuresData.ts:262
 #. js-lingui-explicit-id
@@ -10646,7 +10654,7 @@ msgstr "Lịch Trình Tiến Trình"
 msgid "Progress insights are locked"
 msgstr "Thông tin tiến trình bị khóa"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:449
+#: src/features/ProgressStat/ProgressViewChart.tsx:478
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "Cài đặt Tiến độ"
@@ -10762,7 +10770,7 @@ msgstr "Xếp hạng trong top 5 trên bảng xếp hạng và nhận ứng dụ
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Xếp hạng trong top 5 để có quyền truy cập đầy đủ vào tất cả các tính năng!"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:475
+#: src/features/ProgressStat/ProgressViewChart.tsx:504
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Thô"
@@ -11955,7 +11963,7 @@ msgstr ""
 "thiện. Nếu người phỏng vấn hỏi, \"Bạn có gặp khó khăn gì khi tìm chúng tôi "
 "không?\" bạn có thể phản hồi như sau:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:476
+#: src/features/ProgressStat/ProgressViewChart.tsx:505
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "Đã làm mượt"
@@ -13852,8 +13860,8 @@ msgstr "UX & Khả năng tiếp cận"
 msgid "Vacancy description"
 msgstr "Mô tả vị trí tuyển dụng"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:468
-#: src/features/ProgressStat/ProgressViewChart.tsx:472
+#: src/features/ProgressStat/ProgressViewChart.tsx:497
+#: src/features/ProgressStat/ProgressViewChart.tsx:501
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "Chế độ Giá trị"
@@ -13939,7 +13947,7 @@ msgstr ""
 "động lực bằng cách thấy rõ những cải thiện của bạn."
 
 #: src/features/Landing/LandingPage.tsx:405
-#: src/features/ProgressStat/ProgressViewChart.tsx:98
+#: src/features/ProgressStat/ProgressViewChart.tsx:107
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Từ vựng"
@@ -15359,6 +15367,17 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/ProgressStat/ProgressDashboardCard.tsx:33
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice and watch your skills grow. Your progress is automatically tracked "
+#~ "and visualized. 100% is a native-like proficiency level, while 0% is the "
+#~ "beginner level of most language learners."
+#~ msgstr ""
+#~ "Thực hành và xem kỹ năng của bạn phát triển. Tiến trình của bạn được theo "
+#~ "dõi tự động và hiển thị. 100% là trình độ thành thạo như người bản ngữ, "
+#~ "trong khi 0% là trình độ người mới bắt đầu của hầu hết người học ngôn ngữ."
 
 #: src/features/ProgressStat/ProgressChart.tsx:200
 #. js-lingui-explicit-id

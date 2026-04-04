@@ -31,7 +31,7 @@ export const ProgressDashboardCard = () => {
         previewImageUrl={imageUrl}
         title={i18n._('See how you improve over time.')}
         subTitle={i18n._(
-          'Practice and watch your skills grow. Your progress is automatically tracked and visualized. 100% is a native-like proficiency level, while 0% is the beginner level of most language learners.',
+          '100% is a native-like proficiency level, while 0% is the beginner level of most language learners.',
         )}
         items={[]}
         itemsBackgroundColor={'rgb(150, 137, 137)'}
