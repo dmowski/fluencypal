@@ -19,6 +19,7 @@ import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 import { ProgressChartLoadingState } from './ProgressChartLoadingState';
 import { ProgressChartStateOverlay } from './ProgressChartStateOverlay';
+import { useId } from 'react';
 import { useLingui } from '@lingui/react';
 
 interface ProgressChartProps {
@@ -61,6 +62,8 @@ export const ProgressChart = ({
   emptyPreviewData,
 }: ProgressChartProps) => {
   const { i18n } = useLingui();
+  const uid = useId().replace(/:/g, '');
+  const gradientId = `progressFill-${uid}`;
   const previewData = status === 'empty' ? (emptyPreviewData ?? data) : data;
 
   if (status === 'loading') {
@@ -122,7 +125,7 @@ export const ProgressChart = ({
               }}
             >
               <defs>
-                <linearGradient id="progressFill" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor={metricColorMap[metric]} stopOpacity={1} />
                   <stop offset="58%" stopColor={metricColorMap[metric]} stopOpacity={0.24} />
                   <stop offset="100%" stopColor={metricColorMap[metric]} stopOpacity={0.1} />
@@ -167,7 +170,7 @@ export const ProgressChart = ({
                 stroke={metricColorMap[metric]}
                 strokeWidth={2}
                 strokeOpacity={1}
-                fill="url(#progressFill)"
+                fill={`url(#${gradientId})`}
                 activeDot={{
                   r: 5,
                   fill: '#d9e3ff',
