@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Check why Alias game disappeared from main page
+
 ## Add feature for assess language level
 
 - Full size report

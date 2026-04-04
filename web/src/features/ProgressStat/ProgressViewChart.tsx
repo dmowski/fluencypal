@@ -7,6 +7,7 @@ import {
   FormControl,
   IconButton,
   InputLabel,
+  Link,
   MenuItem,
   Popover,
   Select,
@@ -23,7 +24,7 @@ import {
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
-import { ArrowDown, ArrowUp, Check, ChevronDown, Settings } from 'lucide-react';
+import { ArrowDown, ArrowUp, Check, ChevronDown, ChevronsUpDown, Settings } from 'lucide-react';
 import dayjs from 'dayjs';
 import { uniq } from '@/libs/uniq';
 
@@ -203,48 +204,26 @@ export const ProgressViewChart = ({
     };
   }, [sourceChartData, chartData, selectedMetric, valueMode, selectedPeriod, averageLevel]);
 
-  const dateSelector = (
-    <Stack
-      sx={{
-        flexDirection: 'row',
-        gap: '3px',
-      }}
-    >
-      <ButtonGroup>
-        <Button
-          variant={selectedPeriod === 'last-30-days' ? 'contained' : 'outlined'}
-          onClick={() => setSelectedPeriod('last-30-days')}
-        >
-          30D
-        </Button>
-        <Button
-          variant={selectedPeriod === 'last-3-month' ? 'contained' : 'outlined'}
-          onClick={() => setSelectedPeriod('last-3-month')}
-        >
-          3M
-        </Button>
-        <Button
-          variant={selectedPeriod === 'last-6-month' ? 'contained' : 'outlined'}
-          onClick={() => setSelectedPeriod('last-6-month')}
-        >
-          6M
-        </Button>
-        <Button
-          variant={selectedPeriod === 'all-time' ? 'contained' : 'outlined'}
-          onClick={() => setSelectedPeriod('all-time')}
-        >
-          ALL
-        </Button>
-      </ButtonGroup>
-    </Stack>
-  );
+  const toggleSelectedPeriod = () => {
+    const periods: ProgressPeriod[] = ['last-30-days', 'last-3-month', 'last-6-month'];
+    const nextIndex = (periods.indexOf(selectedPeriod) + 1) % periods.length;
+    const nextPeriod = periods[nextIndex];
+    setSelectedPeriod(nextPeriod);
+  };
+
+  const periodLabelMap: Record<ProgressPeriod, string> = {
+    'last-30-days': '30 days',
+    'last-3-month': '3 months',
+    'last-6-month': '6 month',
+    'all-time': 'All time',
+  };
 
   const keyMetric = (
     <Stack
       sx={{
         flexDirection: 'row',
         gap: '15px',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         opacity: isEmpty ? 0.3 : 1,
       }}
     >
@@ -256,45 +235,83 @@ export const ProgressViewChart = ({
       >
         {averageLevel}%
       </Typography>
-      {selectedPeriod !== 'all-time' && isChangeExists && (
+
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '3px',
+          paddingTop: '4px',
+        }}
+      >
         <Stack
           sx={{
             flexDirection: 'row',
             alignItems: 'center',
-            gap: '14px',
-            paddingBottom: '2px',
+            gap: '4px',
+            color: isChangeExists
+              ? isPositiveChange
+                ? 'oklch(76.5% .177 163.223)'
+                : 'oklch(70.4% .191 22.216)'
+              : 'rgba(243,246,255,0.72)',
           }}
         >
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '4px',
-              color: isPositiveChange ? 'oklch(76.5% .177 163.223)' : 'oklch(70.4% .191 22.216)',
-            }}
-          >
-            {isPositiveChange ? (
-              <ArrowUp size="18px" strokeWidth="3px" />
-            ) : (
-              <ArrowDown size="18px" strokeWidth="3px" />
-            )}
-            <Typography
-              variant="body2"
-              sx={{
-                fontWeight: 700,
-              }}
-            >{`${changeComparedToPreviousPeriod}%`}</Typography>
-          </Stack>
+          {isChangeExists && (
+            <>
+              {isPositiveChange ? (
+                <ArrowUp size="18px" strokeWidth="3px" />
+              ) : (
+                <ArrowDown size="18px" strokeWidth="3px" />
+              )}
+            </>
+          )}
           <Typography
             variant="body2"
             sx={{
+              fontWeight: 700,
+            }}
+          >{`${isChangeExists ? changeComparedToPreviousPeriod : 0}%`}</Typography>
+        </Stack>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '2px',
+            backgroundColor: 'transparent',
+            padding: '10px',
+            textAlign: 'left',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'rgba(243,246,255,0.72)',
+            ':hover': {
+              color: 'rgba(243,246,255,1)',
+            },
+            ':hover .text': {
+              textDecorationColor: 'rgba(243, 246, 255, 0.72)',
+            },
+          }}
+          component={'button'}
+          onClick={(e) => {
+            e.preventDefault();
+            toggleSelectedPeriod();
+          }}
+        >
+          <Typography
+            variant="body2"
+            className="text"
+            sx={{
               color: 'rgba(243,246,255,0.72)',
+              textDecorationStyle: 'dashed',
+              textDecorationLine: 'underline',
+              textDecorationColor: 'rgba(243, 246, 255, 0.4)',
+              textUnderlineOffset: '5px',
             }}
           >
-            {'vs. prev period'}
+            {'vs. prev period'} ({periodLabelMap[selectedPeriod]})
           </Typography>
+          <ChevronsUpDown size={'14px'} />
         </Stack>
-      )}
+      </Stack>
     </Stack>
   );
 
@@ -395,23 +412,12 @@ export const ProgressViewChart = ({
           flexDirection: 'row',
           gap: '20px 10px',
           justifyContent: 'space-between',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           flexWrap: 'wrap',
         }}
       >
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            width: '100%',
-            gap: '20px 10px',
-          }}
-        >
-          {metricSelector}
-          {dateSelector}
-        </Stack>
         {keyMetric}
+        {metricSelector}
       </Stack>
 
       <Popover
