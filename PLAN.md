@@ -7,6 +7,8 @@
   - Show Summary
   - Use ai to generate proposal on how to correct practice
 
+## Before asking native audio permission, show my custom modal
+
 ## When finish call, class media streams
 
 ## Check why Alias game disappeared from main page
