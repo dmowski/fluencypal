@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Essay writing helper
-
 ## Emails
 
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
@@ -13,6 +11,8 @@ Plan:
 - Create email in .md file
 - Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
 - When I clicked on email, mark link as clicked
+
+## Essay writing helper
 
 ## Learning plan: AI call
 
