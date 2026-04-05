@@ -1,13 +1,8 @@
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
-
-export interface RecentAuthUser {
-  uid: string;
-  email: string | null;
-  createdAtIso: string | null;
-}
+import { UserSettingsWithId } from '@/features/Settings/userSettings';
 
 export interface RecentUserWithSurvey {
-  user: RecentAuthUser;
+  user: UserSettingsWithId;
   quizSurvey: QuizSurvey2[];
 }
 

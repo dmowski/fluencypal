@@ -3,9 +3,10 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { loadRecentUsersRequest } from '@/app/api/loadRecentUsers/loadRecentUsersRequest';
 import { RecentUserWithSurvey } from '@/app/api/loadRecentUsers/types';
 import { getWelcomeEmailText } from '@/features/Email/welcomeEmail';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Link, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import { getFirebaseLink } from '@/features/Firebase/getFirebaseLink';
 
 const EMAILED_USERS_KEY = 'emailedUsers';
 
@@ -26,7 +27,7 @@ function markUserEmailed(uid: string): void {
 }
 
 function buildGmailUrl(email: string): string {
-  const subject = 'About the app';
+  const subject = 'About FluencyPal';
   const body = getWelcomeEmailText({});
   const params = new URLSearchParams({ view: 'cm', fs: '1', to: email, su: subject, body });
   return `https://mail.google.com/mail/?${params.toString()}`;
@@ -37,17 +38,18 @@ function UserEmailRow({ entry }: { entry: RecentUserWithSurvey }) {
   const [emailed, setEmailed] = useState(false);
 
   useEffect(() => {
-    setEmailed(getEmailedUsers().has(user.uid));
-  }, [user.uid]);
+    setEmailed(getEmailedUsers().has(user.id));
+  }, [user.id]);
 
   const handleSendEmail = () => {
     if (!user.email) return;
-    markUserEmailed(user.uid);
+    markUserEmailed(user.id);
     setEmailed(true);
     window.open(buildGmailUrl(user.email), '_blank');
   };
 
   const latestQuiz = quizSurvey[quizSurvey.length - 1];
+  const firebaseLink = getFirebaseLink(user.id);
 
   return (
     <Stack
@@ -61,10 +63,13 @@ function UserEmailRow({ entry }: { entry: RecentUserWithSurvey }) {
         flexWrap: 'wrap',
       }}
     >
-      <Stack sx={{ minWidth: '200px', gap: '4px', alignItems: 'flex-start' }}>
-        <Typography variant="h6" sx={{ fontWeight: 600, paddingBottom: '10px' }}>
+      <Stack sx={{ minWidth: '200px', gap: '12px', alignItems: 'flex-start' }}>
+        <Link href={firebaseLink} variant="h5" target="_blank" rel="noopener noreferrer">
           {user.email ?? '(no email)'} <b>({dayjs(user.createdAtIso).fromNow()})</b>
-        </Typography>
+        </Link>
+
+        <Typography>{user.displayName}</Typography>
+
         {user.email && (
           <Button
             variant={emailed ? 'text' : 'contained'}
@@ -83,9 +88,9 @@ function UserEmailRow({ entry }: { entry: RecentUserWithSurvey }) {
             paddingTop: '10px',
           }}
         >
-          {user.uid}
+          {user.id}
         </Typography>
-        <Typography>{user.createdAtIso ?? '—'} |</Typography>
+        <Typography>{user.createdAtIso ?? '—'}</Typography>
 
         {latestQuiz?.aboutUserTranscription && (
           <Typography
@@ -136,7 +141,7 @@ export function EmailsAdmin() {
         {!isLoading && users.length === 0 && <Typography>No users found.</Typography>}
 
         {users.map((entry) => (
-          <UserEmailRow key={entry.user.uid} entry={entry} />
+          <UserEmailRow key={entry.user.id} entry={entry} />
         ))}
       </Stack>
     </Stack>

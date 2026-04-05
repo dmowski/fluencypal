@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     recentUsers.map(async (user) => {
       const quizSurvey = await getUsersQuizSurvey(user.id);
       return {
-        user: { uid: user.id, email: user.email ?? null, createdAtIso: user.createdAtIso ?? null },
+        user: user,
         quizSurvey,
       };
     }),
