@@ -65,7 +65,8 @@ function UserEmailRow({ entry }: { entry: RecentUserWithSurvey }) {
     >
       <Stack sx={{ minWidth: '200px', gap: '12px', alignItems: 'flex-start' }}>
         <Link href={firebaseLink} variant="h5" target="_blank" rel="noopener noreferrer">
-          {user.email ?? '(no email)'} <b>({dayjs(user.createdAtIso).fromNow()})</b>
+          {user.email ?? '(no email)'} (<b>{dayjs(user.createdAtIso).fromNow()}</b>{' '}
+          <span> - {dayjs(user.lastLoginAtDateTime).fromNow()}</span>)
         </Link>
 
         <Typography>{user.displayName}</Typography>

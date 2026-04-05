@@ -9,3 +9,7 @@
 - Validate costs of full goal conversation
 
 ## Essay writing helper
+
+## Grammar Progress
+
+Add more details about how it was collected
