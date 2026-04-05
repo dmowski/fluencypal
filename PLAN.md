@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Generate progress: cron
-
 ## Emails
 
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
