@@ -69,6 +69,9 @@ function UserEmailRow({ entry }: { entry: RecentUserWithSurvey }) {
         </Link>
 
         <Typography>{user.displayName}</Typography>
+        <Typography>
+          {user.countryName} - {user.nativeLanguageCode}
+        </Typography>
 
         {user.email && (
           <Button
