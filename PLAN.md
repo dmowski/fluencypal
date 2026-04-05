@@ -5,6 +5,10 @@
 - Write my message here
   web/src/features/Email/welcomeEmail.ts
 
+- Create admin panel section that helps with sending emails
+
+- Send first 10 messages
+
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
 
 Structure: About me, Goal of the project, Strategies of work with the project, how to contribute to the idea of the project
