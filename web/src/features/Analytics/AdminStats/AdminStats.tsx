@@ -11,6 +11,7 @@ import { UserCard } from './UserCard';
 import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
 import { StoryCreator } from './StoryCreator/StoryAdmin';
+import { EmailsAdmin } from './Emails/EmailsAdmin';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useSettings } from '@/features/Settings/useSettings';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
@@ -167,6 +168,7 @@ export function AdminStats() {
   const usersToShow = usersToShowMap[usersToShowMode];
 
   const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
+  const [isEmails, setIsEmails] = useUrlState('emails', false, false);
   const settings = useSettings();
   const pageLanguage = settings.pageLanguageCode || 'en';
 
@@ -206,9 +208,24 @@ export function AdminStats() {
         >
           Open Story Creator
         </Button>
+
+        <Button
+          onClick={() => setIsEmails(!isEmails)}
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant={isEmails ? 'contained' : 'outlined'}
+        >
+          Emails
+        </Button>
       </Stack>
 
-      {isStoryCreator ? (
+      {isEmails ? (
+        <EmailsAdmin />
+      ) : isStoryCreator ? (
         <StoryCreator />
       ) : (
         <>

@@ -185,6 +185,26 @@ const deleteAuthUser = async (uid: string): Promise<void> => {
   await getAuth().deleteUser(uid);
 };
 
+const listRecentAuthUsers = async (
+  limit: number,
+): Promise<{ uid: string; email: string | null; createdAtIso: string | null }[]> => {
+  const result = await getAuth().listUsers(1000);
+  const sorted = result.users
+    .slice()
+    .sort((a, b) => {
+      const aTime = a.metadata.creationTime ? new Date(a.metadata.creationTime).getTime() : 0;
+      const bTime = b.metadata.creationTime ? new Date(b.metadata.creationTime).getTime() : 0;
+      return bTime - aTime;
+    })
+    .slice(0, limit);
+
+  return sorted.map((u) => ({
+    uid: u.uid,
+    email: u.email ?? null,
+    createdAtIso: u.metadata.creationTime ?? null,
+  }));
+};
+
 export {
   getBucket,
   firebaseConfig,
@@ -195,4 +215,5 @@ export {
   updateAuthUser,
   createAuthCustomToken,
   createAuthUser,
+  listRecentAuthUsers,
 };
