@@ -30,6 +30,23 @@ const processConversation = async ({
     algorithmVersion: PROGRESS_ALGORITHM_VERSION,
   });
 
+  const conversationDate =
+    conversation.updatedAtIso ||
+    conversation.createdAtIso ||
+    dayjs(conversation.createdAt).toISOString() ||
+    dayjs(conversation.updatedAt).toISOString();
+
+  const now = dayjs();
+  const timeoutToSkipMinutes = 15;
+  const isConversationsIsActive = dayjs(conversationDate).isAfter(
+    now.subtract(timeoutToSkipMinutes, 'minute'),
+  );
+
+  if (isConversationsIsActive) {
+    console.log('skipping active conversation', conversation.id);
+    return;
+  }
+
   const isAlreadyDone = await isAlreadyEvaluated(statId);
   if (isAlreadyDone) {
     console.log('Already done,', statId);
@@ -37,11 +54,6 @@ const processConversation = async ({
   }
 
   const transcriptText = convertMessagesToTranscript(conversation);
-  const conversationDate =
-    conversation.updatedAtIso ||
-    conversation.createdAtIso ||
-    dayjs(conversation.createdAt).toISOString() ||
-    dayjs(conversation.updatedAt).toISOString();
 
   if (!conversationDate) {
     return;

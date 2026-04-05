@@ -1,12 +1,6 @@
 # Live document with short/long term ideas
 
-## Progress chart
-
-Fill with zero until now
-
-Check only finished conversations
-
-Please skip conversations from processing, if their updatedAtIso is near now. So it would mean that user is still talking. we don't need to analyze it yet. Use 20 min gap for that.
+## Generate progress: cron
 
 ## Emails
 
@@ -19,10 +13,6 @@ Plan:
 - Create email in .md file
 - Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
 - When I clicked on email, mark link as clicked
-
-## Generate progress: cron
-
-- Check only finished conversations
 
 ## Tune first quiz
 
