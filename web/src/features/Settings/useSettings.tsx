@@ -157,12 +157,11 @@ function useProvideSettings(): SettingsContextType {
     if (!userId || !userSettingsDoc) {
       return;
     }
-
-    await sleep(500);
-
+    console.log('Checking init settings');
     const dataDoc = await getDocFromServer(userSettingsDoc);
     const isExists = dataDoc.exists();
     const data = dataDoc.data();
+    console.log('data', data);
     const isNoCreatedAt = !data?.createdAt;
     const isNew = !isExists || isNoCreatedAt;
     if (!isNew) {
@@ -176,7 +175,7 @@ function useProvideSettings(): SettingsContextType {
 
     if (auth.userInfo?.email === 'dmowski.alex@gmail.com') {
       alert('Creating settings for user ' + auth.userInfo.email);
-      Sentry.captureException('Create settings AGAIN for ' + auth.userInfo.email, {
+      Sentry.captureException('Create settings AGAIN (2) for ' + auth.userInfo.email, {
         extra: {
           email: auth.userInfo.email,
           isExists,
@@ -199,10 +198,6 @@ function useProvideSettings(): SettingsContextType {
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });
   };
-
-  useEffect(() => {
-    initUserSettings();
-  }, [userId, userSettingsDoc]);
 
   const saveLastLoginTime = async () => {
     if (!userId || !userSettingsDoc || !isActiveBrowserTab()) return;
@@ -234,17 +229,22 @@ function useProvideSettings(): SettingsContextType {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      saveLoginTime();
-    }, 1500);
-  }, [userId, userSettingsDoc]);
-
-  useEffect(() => {
     if (!userId || !userSettingsDoc) return;
+
+    initUserSettings();
+
+    const timeout = setTimeout(() => {
+      saveLoginTime();
+    }, 3000);
+
     const interval = setInterval(() => {
       saveLastLoginTime();
     }, 60_000);
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, [userId, userSettingsDoc]);
 
   const userCreatedAt = userSettings?.createdAtIso || null;
