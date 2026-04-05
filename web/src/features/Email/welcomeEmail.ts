@@ -1,4 +1,6 @@
 export const getWelcomeEmailText = ({}: {}) => {
-  return `
+  return `Hi. I am the creator of FluencyPal. My goal 
+
+
 `;
 };
