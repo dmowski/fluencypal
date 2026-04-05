@@ -84,6 +84,20 @@ export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
   return users;
 };
 
+export const getRecentCreatedUsers = async (limit: number): Promise<UserSettingsWithId[]> => {
+  const db = getDB();
+  const usersCollection = await db
+    .collection('users')
+    .orderBy('createdAtIso', 'desc')
+    .limit(limit)
+    .get();
+
+  return usersCollection.docs.map((doc) => {
+    const data = doc.data() as UserSettings;
+    return { id: doc.id, ...data };
+  });
+};
+
 export const getUserDailyTasksProgress = async (userId: string): Promise<DailyTaskProgress[]> => {
   const db = getDB();
   const progressCollection = await db

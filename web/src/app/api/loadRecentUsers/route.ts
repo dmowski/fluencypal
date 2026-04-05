@@ -1,6 +1,6 @@
-import { validateAuthToken, listRecentAuthUsers } from '../config/firebase';
+import { validateAuthToken } from '../config/firebase';
 import { DEV_EMAILS } from '@/features/DevTools/dev';
-import { getUsersQuizSurvey } from '../user/getUserInfo';
+import { getRecentCreatedUsers, getUsersQuizSurvey } from '../user/getUserInfo';
 import { LoadRecentUsersResponse, RecentUserWithSurvey } from './types';
 
 export async function POST(request: Request) {
@@ -13,12 +13,15 @@ export async function POST(request: Request) {
     throw new Error('User is not authorized');
   }
 
-  const recentAuthUsers = await listRecentAuthUsers(20);
+  const recentUsers = await getRecentCreatedUsers(20);
 
   const users: RecentUserWithSurvey[] = await Promise.all(
-    recentAuthUsers.map(async (authUser) => {
-      const quizSurvey = await getUsersQuizSurvey(authUser.uid);
-      return { user: authUser, quizSurvey };
+    recentUsers.map(async (user) => {
+      const quizSurvey = await getUsersQuizSurvey(user.id);
+      return {
+        user: { uid: user.id, email: user.email ?? null, createdAtIso: user.createdAtIso ?? null },
+        quizSurvey,
+      };
     }),
   );
 
