@@ -1,5 +1,13 @@
 # Live document with short/long term ideas
 
+## Progress chart
+
+Fill with zero until now
+
+Check only finished conversations
+
+Please skip conversations from processing, if their updatedAtIso is near now. So it would mean that user is still talking. we don't need to analyze it yet. Use 20 min gap for that.
+
 ## Emails
 
 After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.

@@ -8,6 +8,8 @@ export interface ProgressAggregationOptions {
   minConfidence?: number;
   /** Rolling average window size. Default: 5. */
   windowSize?: number;
+  /** Fill zero-value points from the last data point up to and including this date (ISO date string, e.g. '2026-04-05'). */
+  today?: string;
 }
 
 interface DailyAggregate {
@@ -24,8 +26,11 @@ const getDayKey = (stat: ProgressStat): string => {
   return stat.createdAtIso.split('T')[0];
 };
 
-export const fillDailyGaps = (points: ProgressChartPoint[]): ProgressChartPoint[] => {
-  if (points.length <= 1) return points;
+export const fillDailyGaps = (
+  points: ProgressChartPoint[],
+  today?: string,
+): ProgressChartPoint[] => {
+  if (points.length === 0) return points;
 
   const result: ProgressChartPoint[] = [];
 
@@ -56,6 +61,28 @@ export const fillDailyGaps = (points: ProgressChartPoint[]): ProgressChartPoint[
           confidence: 0,
         });
       }
+    }
+  }
+
+  if (today) {
+    const lastDayKey = result[result.length - 1].createdAtIso.split('T')[0];
+    const lastDate = new Date(lastDayKey);
+    const todayDate = new Date(today);
+    const diffDays = Math.round((todayDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60 * 24));
+
+    for (let gap = 1; gap <= diffDays; gap++) {
+      const gapDate = new Date(lastDate);
+      gapDate.setUTCDate(gapDate.getUTCDate() + gap);
+      const gapDayKey = gapDate.toISOString().split('T')[0];
+
+      result.push({
+        id: `day_${gapDayKey}`,
+        createdAtIso: `${gapDayKey}T00:00:00.000Z`,
+        grammar: 0,
+        vocabulary: 0,
+        fluency: 0,
+        confidence: 0,
+      });
     }
   }
 
@@ -107,6 +134,7 @@ export function aggregateStats(
   stats: ProgressStat[],
   minConfidence: number | undefined,
   windowSize: number,
+  today?: string,
 ): ProgressChartPoint[] {
   const sorted = [...stats].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso));
   const filtered =
@@ -115,7 +143,7 @@ export function aggregateStats(
       : sorted;
 
   const dailyPoints = aggregateByDay(filtered);
-  const filledPoints = fillDailyGaps(dailyPoints);
+  const filledPoints = fillDailyGaps(dailyPoints, today);
 
   return filledPoints.map((point, index) => {
     const start = Math.max(0, index - windowSize + 1);
@@ -140,9 +168,10 @@ export const useProgressAggregation = (
 ): ProgressChartPoint[] => {
   const minConfidence = options?.minConfidence;
   const windowSize = options?.windowSize ?? DEFAULT_WINDOW_SIZE;
+  const today = options?.today;
 
   return useMemo(
-    () => aggregateStats(stats, minConfidence, windowSize),
-    [stats, minConfidence, windowSize],
+    () => aggregateStats(stats, minConfidence, windowSize, today),
+    [stats, minConfidence, windowSize, today],
   );
 };

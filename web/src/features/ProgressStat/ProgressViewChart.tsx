@@ -64,7 +64,9 @@ export const ProgressViewChart = ({
   const [selectedPeriod, setSelectedPeriod] = useState<ProgressPeriod>(defaultPeriod);
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<HTMLElement | null>(null);
 
-  const firestoreChartData = useProgressAggregation(progressStats);
+  const today = useMemo(() => dayjs().format('YYYY-MM-DD'), []);
+
+  const firestoreChartData = useProgressAggregation(progressStats, { today });
 
   const sourceChartData = firestoreChartData;
 
