@@ -2,22 +2,24 @@
 
 ## Emails
 
-- Write my message here
-  web/src/features/Email/welcomeEmail.ts
+We are creating helper tool that speedup process of sending personal "Founder->User" emails
 
-- Create admin panel section that helps with sending emails
+- Create admin panel section that helps with sending emails, call it "Emails"
+  web/src/features/Analytics/AdminStats/AdminStats.tsx
+  Like we did for "Open Story Creator"
 
-- Send first 10 messages
+- On this page, show last 20 sign-ups users (use firebase auth on backend).
+  -- Create endpoint to return these users. Only found can get this data. Check web/src/app/api/loadStats/route.ts on how to limit access to
+  -- create helper function and types like web/src/app/api/loadStats/loadStatsRequest.ts
+  -- Along with email/id, add getUsersQuizSurvey(user.id)
 
-After Sign Up: send welcome email. With idea behind project. Not "beautiful" templates. Just write as you feel. Provide strategy of learning.
+- Near each user, show button "Send email"
+  This button should redirect to gmail with filled title and content.
 
-Structure: About me, Goal of the project, Strategies of work with the project, how to contribute to the idea of the project
+  Title: About the app
+  Content: web/src/features/Email/welcomeEmail.ts
 
-Plan:
-
-- Create email in .md file
-- Update Admin page with generate links of recent sign up. and generate links for create emails with placeholders.
-- When I clicked on email, mark link as clicked
+- When the admin, clicked on "Send email", save in localstorage that this user is "clicked" and show this button with type "text", so that I (admin), can understand that I already send the message
 
 ## Tune first quiz
 
