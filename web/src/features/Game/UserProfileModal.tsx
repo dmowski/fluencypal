@@ -372,6 +372,24 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 })}
               </Stack>
             </Stack>
+            {auth.isFounder && (
+              <Stack
+                sx={{
+                  width: '100%',
+                  gap: '6px',
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._('Chat between you and {userName}', { userName })}
+                </Typography>
+                <UsersPrivateChat userIds={[stat.userId, userId]} />
+              </Stack>
+            )}
           </Stack>
         </CustomModal>
       )}
