@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Button, IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
 import { SpeakOptions, useConversationAudio } from './useConversationAudio';
@@ -8,6 +8,7 @@ import { useSettings } from '../Settings/useSettings';
 import { getVoiceOverSpeakOptions } from './getVoiceOverSpeakOptions';
 import { clearWordForAudio } from './clearWord';
 import { useLingui } from '@lingui/react';
+import { sleep } from '@/libs/sleep';
 
 export interface AudioPlayIconProps {
   text: string;
@@ -46,15 +47,28 @@ export const AudioPlayIcon = ({
 
   const [isPlaying, setIsPlaying] = useState(false);
 
+  useEffect(() => {
+    if (!audio.isPlaying && isPlaying) {
+      setIsPlaying(false);
+      onChangeState?.(false);
+    }
+  }, [audio.isPlaying]);
+
   const togglePlay = async () => {
     if (audio.isUnlocked() === false) {
       await audio.initAudio();
     }
-    if (isPlaying && audio.isPlaying) {
+
+    if (audio.isPlaying) {
       audio.interrupt();
-      setIsPlaying(false);
-      onChangeState?.(false);
-      return;
+
+      if (isPlaying) {
+        setIsPlaying(false);
+        onChangeState?.(false);
+        return;
+      } else {
+        await sleep(100);
+      }
     }
 
     setCountOfClick(countOfClick + 1);
