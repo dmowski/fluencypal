@@ -166,7 +166,7 @@ export const TelegramSubscriptionPaymentModal = () => {
           ? PRICE_PER_YEAR_USD
           : PRICE_PER_WEEK_USD;
 
-  const priceInCurrency = Math.round(currency.rate * durationPriceUsd * 10) / 10;
+  const priceInCurrency = currency.convertPrice(durationPriceUsd);
 
   const analytics = useAnalytics();
 

@@ -9,7 +9,7 @@ interface PriceDisplayProps {
 
 export const PriceDisplay: React.FC<PriceDisplayProps> = ({ amountInUsd }) => {
   const currency = useCurrency();
-  const number = (currency.rate * amountInUsd).toFixed(2);
+  const number = currency.convertPrice(amountInUsd);
 
   return <span>{number}</span>;
 };

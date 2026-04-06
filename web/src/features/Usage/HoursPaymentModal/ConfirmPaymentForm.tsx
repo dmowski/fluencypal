@@ -21,7 +21,6 @@ export const ConfirmPaymentForm = ({
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const settings = useSettings();
   const pageLang = settings.userSettings?.pageLanguageCode || 'en';
-  const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const currency = useCurrency();
 
   return (

@@ -104,7 +104,7 @@ export const useCurrency = () => {
   }, []);
 
   const convertUsdToCurrency = (amountInUsd: number) => {
-    const convertedAmount = amountInUsd * rate;
+    const convertedAmount = Math.round(amountInUsd * rate);
 
     const formattedAmount = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -115,9 +115,15 @@ export const useCurrency = () => {
     return formattedAmount;
   };
 
+  const convertPrice = (priceInUsd: number) => {
+    const convertedAmount = Math.round(priceInUsd * rate);
+
+    return convertedAmount;
+  };
+
   return {
-    rate,
     currency: `${currency || 'USD'}`.toUpperCase(),
     convertUsdToCurrency,
+    convertPrice,
   };
 };

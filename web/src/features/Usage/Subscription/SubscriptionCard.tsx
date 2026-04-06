@@ -24,7 +24,7 @@ export const SubscriptionCard = ({
   const { i18n } = useLingui();
 
   const currency = useCurrency();
-  const priceInCurrency = Math.round(currency.rate * priceInUsd * 100) / 100;
+  const priceInCurrency = currency.convertPrice(priceInUsd);
 
   const pricePerDayUsd =
     duration === 'day'
@@ -34,7 +34,7 @@ export const SubscriptionCard = ({
         : duration === 'month'
           ? priceInUsd / 30
           : priceInUsd / 365;
-  const pricePerDayCurrency = Math.round(currency.rate * pricePerDayUsd * 10) / 10;
+  const pricePerDayCurrency = currency.convertPrice(pricePerDayUsd);
 
   const buttonLabels: Record<SubscriptionDuration, string> = {
     day: i18n._('Unlock for 1 day'),
@@ -93,7 +93,7 @@ export const SubscriptionCard = ({
               variant="body2"
               sx={{
                 opacity: 0.7,
-                paddingBottom: '4px',
+                paddingBottom: '5px',
               }}
             >
               {currency.currency}
