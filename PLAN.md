@@ -2,8 +2,6 @@
 
 ## Tune first quiz
 
-- Teacher selection: cache audio
-
 - Steps overview
 
 - Simplify selecting native language
