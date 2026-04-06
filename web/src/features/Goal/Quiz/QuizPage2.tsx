@@ -33,6 +33,7 @@ import {
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { WelcomeChatMessage } from './WelcomeChatMessage';
 import { useSettings } from '@/features/Settings/useSettings';
+import { VoiceSpeedSelector } from '@/features/Settings/VoiceSpeedSelector';
 import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
 import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
@@ -181,23 +182,7 @@ const QuizQuestions = () => {
                       alignItems: 'flex-start',
                     }}
                   >
-                    <Stack>
-                      <Typography variant="caption">{i18n._('Conversation speed')}:</Typography>
-                      <FormControl fullWidth>
-                        <Select
-                          value={settings.aiVoiceSpeed}
-                          onChange={(e) => settings.setAiVoiceSpeed(e.target.value as any)}
-                          sx={{
-                            minWidth: '200px',
-                          }}
-                        >
-                          <MenuItem value="extremely-slow">{i18n._('Extra Slow')}</MenuItem>
-                          <MenuItem value="slow">{i18n._('Slow')}</MenuItem>
-                          <MenuItem value="normal">{i18n._('Normal')}</MenuItem>
-                          <MenuItem value="fast">{i18n._('Fast')}</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Stack>
+                    <VoiceSpeedSelector />
 
                     <SelectTeacher
                       selectedVoice={settings.userSettings?.teacherVoice}

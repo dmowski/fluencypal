@@ -1,10 +1,11 @@
 'use client';
 
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { Button, Stack, Typography, Select, MenuItem, FormControl } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SelectTeacher } from '../Conversation/CallMode/SelectTeacher';
 import { useSettings } from '../Settings/useSettings';
+import { VoiceSpeedSelector } from '../Settings/VoiceSpeedSelector';
 import { Check } from 'lucide-react';
 
 export const TeacherVoiceModal: React.FC = () => {
@@ -43,23 +44,7 @@ export const TeacherVoiceModal: React.FC = () => {
                 {i18n._('Select the voice your AI teacher will use during conversations.')}
               </Typography>
             </Stack>
-            <Stack>
-              <Typography variant="caption">{i18n._('Voice speed')}</Typography>
-              <FormControl fullWidth>
-                <Select
-                  value={voiceSpeed}
-                  onChange={(e) => settings.setAiVoiceSpeed(e.target.value)}
-                  sx={{
-                    minWidth: '200px',
-                  }}
-                >
-                  <MenuItem value="extremely-slow">{i18n._('Extra Slow')}</MenuItem>
-                  <MenuItem value="slow">{i18n._('Slow')}</MenuItem>
-                  <MenuItem value="normal">{i18n._('Normal')}</MenuItem>
-                  <MenuItem value="fast">{i18n._('Fast')}</MenuItem>
-                </Select>
-              </FormControl>
-            </Stack>
+            <VoiceSpeedSelector />
             <SelectTeacher
               selectedVoice={settings.userSettings?.teacherVoice}
               onSelectVoice={settings.setVoice}
