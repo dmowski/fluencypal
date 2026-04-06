@@ -47,7 +47,7 @@ function useProvideUsage(): UsageContextType {
     setIsShowPaymentModal(isOpen);
 
     if (!isOpen && isSuccessPayment) {
-      await sleep(500);
+      await sleep(2000);
       setIsSuccessPayment(false);
     }
   };
