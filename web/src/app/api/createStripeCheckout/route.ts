@@ -134,7 +134,9 @@ export async function POST(request: Request) {
       const totalYear = PRICE_PER_YEAR_USD * rate;
       const totalDay = PRICE_PER_DAY_USD * rate * days;
 
-      const totalUsd = isYear ? totalYear : isWeek ? totalWeek : days ? totalDay : totalMonth;
+      const totalPrice = Math.round(
+        isYear ? totalYear : isWeek ? totalWeek : days ? totalDay : totalMonth,
+      );
 
       const title = isYear
         ? 'Full Access for a Year'
@@ -150,7 +152,7 @@ export async function POST(request: Request) {
           ? `Add ${days} day${days > 1 ? 's' : ''} to your account balance`
           : `Add ${months} month${months > 1 ? 's' : ''} to your account balance`;
 
-      const stripeMoney = Number(toStripeUnit(totalUsd, stripeCurrency.toUpperCase()));
+      const stripeMoney = Number(toStripeUnit(totalPrice, stripeCurrency.toUpperCase()));
 
       const session = await stripe.checkout.sessions.create({
         line_items: [

@@ -1,8 +1,6 @@
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
 import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
-import { FounderMessage } from '../HoursPaymentModal/FounderMessage';
-import { SubscriptionDuration } from './types';
 
 export const ConfirmPayment = ({
   subTitle,
