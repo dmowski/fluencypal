@@ -2,9 +2,26 @@
 import { Stack, Typography } from '@mui/material';
 import { supportedLanguagesToLearn } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
-import { LangSelectorFullScreen } from '@/features/Lang/LangSelector';
+import { LangSelector, LangSelectorFullScreen } from '@/features/Lang/LangSelector';
 import { useQuiz } from './useQuiz';
 import { NextStepButton } from './NextStepButton';
+
+export const LanguageToLearnShortSelector = () => {
+  const { languageToLearn, setLanguageToLearn } = useQuiz();
+  return (
+    <Stack
+      sx={{
+        paddingTop: '12px',
+      }}
+    >
+      <LangSelector
+        value={languageToLearn}
+        availableList={supportedLanguagesToLearn}
+        onChange={(lang) => setLanguageToLearn(lang)}
+      />
+    </Stack>
+  );
+};
 
 export const LanguageToLearnSelector = () => {
   const { i18n } = useLingui();

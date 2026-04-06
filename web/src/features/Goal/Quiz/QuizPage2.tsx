@@ -9,7 +9,7 @@ import { Trans } from '@lingui/react/macro';
 import { WebViewWall } from '@/features/Auth/WebViewWall';
 import { AuthWall } from '@/features/Auth/AuthWall';
 import { ProgressBar } from './ProgressBar';
-import { LanguageToLearnSelector } from './LanguageToLearnSelector';
+import { LanguageToLearnSelector, LanguageToLearnShortSelector } from './LanguageToLearnSelector';
 import { InfoStep } from '../../Survey/InfoStep';
 import { NativeLanguageSelector } from './NativeLanguageSelector';
 import { PageLanguageSelector } from './PageLanguageSelector';
@@ -145,7 +145,16 @@ const QuizQuestions = () => {
             width: '100%',
           }}
         >
-          {currentStep === 'learnLanguage' && <LanguageToLearnSelector />}
+          {currentStep === 'learnLanguage' && (
+            <InfoStep
+              title={i18n._(`I want to learn:`)}
+              subComponent={<LanguageToLearnShortSelector />}
+              actionButtonTitle={i18n._(`Next`)}
+              onClick={next}
+              disabled={isStepLoading}
+              isStepLoading={isStepLoading}
+            />
+          )}
 
           {currentStep === 'before_nativeLanguage' && (
             <InfoStep
