@@ -36,7 +36,12 @@ export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop:
         }
         const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
 
-        router.push(`${newUrl}`, { scroll: false });
+        const currentUrl = window.location.pathname + window.location.search;
+
+        if (currentUrl !== newUrl) {
+          router.push(`${newUrl}`, { scroll: false });
+        }
+
         scrollToTop && scrollTopFast();
 
         setTimeout(() => {

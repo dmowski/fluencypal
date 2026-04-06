@@ -46,7 +46,7 @@ function useProvideUsage(): UsageContextType {
   const togglePaymentModal = async (isOpen: boolean) => {
     setIsShowPaymentModal(isOpen);
 
-    if (!isOpen) {
+    if (!isOpen && isSuccessPayment) {
       await sleep(500);
       setIsSuccessPayment(false);
     }
