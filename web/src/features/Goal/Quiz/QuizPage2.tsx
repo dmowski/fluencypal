@@ -172,7 +172,7 @@ const QuizQuestions = () => {
             <AuthWall>
               <InfoStep
                 title={i18n._(`Choose your interlocutor`)}
-                subTitle={i18n._(`A voice and style that suits you.`)}
+                subTitle={i18n._(`A voice and style that suits you`)}
                 actionButtonTitle={i18n._(`Continue`)}
                 subComponent={
                   <Stack
@@ -182,13 +182,13 @@ const QuizQuestions = () => {
                       alignItems: 'flex-start',
                     }}
                   >
-                    <VoiceSpeedSelector />
-
                     <SelectTeacher
                       selectedVoice={settings.userSettings?.teacherVoice}
                       onSelectVoice={settings.setVoice}
                       voiceSpeed={settings.aiVoiceSpeed}
                     />
+
+                    <VoiceSpeedSelector />
                   </Stack>
                 }
                 onClick={next}

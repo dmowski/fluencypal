@@ -118,11 +118,12 @@ export const AvatarCard = ({
       <Stack
         sx={{
           position: 'absolute',
-          top: '12px',
-          left: '12px',
+          top: '18px',
+          left: '18px',
           backgroundColor: 'rgba(0,0,0,0.8)',
           borderRadius: '50%',
           padding: '4px',
+          transform: 'scale(1.3)',
         }}
       >
         <AudioPlayIcon
