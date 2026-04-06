@@ -128,6 +128,7 @@ export const AvatarCard = ({
         <AudioPlayIcon
           text={aiAvatar.helloPhrases[0]}
           customVoice={voice}
+          cache
           customInstructions={voiceInstructionWithSpeed}
           onChangeState={setIsPlayingThisVoice}
         />

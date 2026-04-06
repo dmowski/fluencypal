@@ -17,6 +17,7 @@ export interface AudioPlayIconProps {
   onChangeState?: (isPlaying: boolean) => void;
   type?: 'icon' | 'button';
   buttonLabel?: string;
+  cache?: boolean;
 }
 
 export const AudioPlayIcon = ({
@@ -27,6 +28,7 @@ export const AudioPlayIcon = ({
   onChangeState,
   type = 'icon',
   buttonLabel,
+  cache,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -70,6 +72,7 @@ export const AudioPlayIcon = ({
       await audio.speak(processedText, {
         voice: customVoice,
         instructions: customInstructions,
+        cache: cache ?? false,
       });
     } else {
       const isSingleWord = !processedText.includes(' ');
