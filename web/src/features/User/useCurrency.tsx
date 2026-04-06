@@ -109,7 +109,7 @@ export const useCurrency = () => {
     const formattedAmount = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
-      maximumFractionDigits: 2,
+      maximumFractionDigits: 0,
     }).format(convertedAmount);
 
     return formattedAmount;
