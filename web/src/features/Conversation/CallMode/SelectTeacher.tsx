@@ -131,7 +131,12 @@ export const AvatarCard = ({
           customVoice={voice}
           cache
           customInstructions={voiceInstructionWithSpeed}
-          onChangeState={setIsPlayingThisVoice}
+          onChangeState={(isPlaying) => {
+            setIsPlayingThisVoice(isPlaying);
+            if (isPlaying && !isSelected) {
+              onToggle();
+            }
+          }}
         />
       </Stack>
     </Stack>
