@@ -5,3 +5,5 @@
 ## Grammar Progress
 
 Add more details about how it was collected
+
+## Grammar Progress: Add to landing and FAQ
