@@ -158,7 +158,6 @@ const QuizQuestions = () => {
 
           {currentStep === 'before_nativeLanguage' && (
             <InfoStep
-              //imageUrl="/avatar/book.webp"
               title={i18n._(`What language do you speak`)}
               subTitle={i18n._(`So I can translate words for you`)}
               actionButtonTitle={i18n._(`Set My Language`)}
@@ -247,30 +246,10 @@ const QuizQuestions = () => {
           {currentStep === 'before_recordAbout' && (
             <AuthWall>
               <InfoStep
-                title={i18n._(`Conversation preparation`)}
+                title={i18n._(`Practice plan`)}
                 subTitle={i18n._(
-                  `I'll ask you a few questions to get to know you. Then, based on your answers, I'll create a personalized practice plan for you.`,
+                  `I'll ask you a few questions to get to know you. Based on your answers, I'll create a personalized practice plan for you.`,
                 )}
-                listItems={[
-                  {
-                    title: i18n._('Main goal in learning'),
-                    iconName: 'graduation-cap',
-                  },
-                  {
-                    title: i18n._('The biggest challenge in learning'),
-                    iconName: 'alert-triangle',
-                  },
-
-                  {
-                    title: i18n._('Hobbies or interests'),
-                    iconName: 'guitar',
-                  },
-
-                  {
-                    title: i18n._('Movies, books, or music'),
-                    iconName: 'music',
-                  },
-                ]}
                 onClick={next}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -282,28 +261,7 @@ const QuizQuestions = () => {
             <AuthWall>
               <RecordUserAudio
                 title={i18n._('Tell me about yourself')}
-                subTitle={`${i18n._(`Record 2-3 minutes story. This will help me to create a personalized practice plan.`)}`}
-                listItems={[
-                  {
-                    title: i18n._('Hobbies or interests'),
-                    iconName: 'music',
-                  },
-                  {
-                    title: i18n._('What challenges you face'),
-                    iconName: 'alert-triangle',
-                  },
-                  {
-                    title: i18n._('What you want to achieve'),
-                    iconName: 'flag',
-                  },
-                  /*
-                  {
-                    title: i18n._('Use {LEARNING_LANGUAGE} for your answer', {
-                      LEARNING_LANGUAGE: learningLanguageName,
-                    }),
-                    iconName: 'flag',
-                  },*/
-                ]}
+                subTitle={`${i18n._(`Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`)}`}
                 transcript={survey?.aboutUserTranscription || ''}
                 minWords={MIN_WORDS_FOR_ANSWER}
                 nextStep={next}

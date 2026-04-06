@@ -70,10 +70,10 @@ const stepsViews: QuizStep[] = [
 
   'before_pageLanguage',
   'pageLanguage',
+  'teacherSelection',
 
   'before_recordAbout',
   'recordAbout',
-  'teacherSelection',
 
   'before_recordAboutFollowUp',
   'recordAboutFollowUp',

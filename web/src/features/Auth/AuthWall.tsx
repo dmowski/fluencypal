@@ -24,19 +24,19 @@ export const AuthWall = ({
   return (
     <AuthWallBasic
       width={width}
-      featuresTitle={featuresTitle || i18n._('What you get with FluencyPal')}
+      featuresTitle={featuresTitle || 'FluencyPal'}
       featuresSubTitle={featuresSubTitle || i18n._('Your AI speaking partner')}
       featuresList={[
         {
-          title: i18n._('Daily conversations without fear of judgment'),
+          title: i18n._('Conversations with Artificial Intelligence'),
           iconName: 'speech',
         },
         {
-          title: i18n._('Corrections when you get stuck'),
-          iconName: 'sparkles',
+          title: i18n._('Progress tracking to see your improvement'),
+          iconName: 'bar-chart',
         },
         {
-          title: i18n._('Grammar corrections to boost your confidence'),
+          title: i18n._('Grammar rules based on your level'),
           iconName: 'graduation-cap',
         },
         {
