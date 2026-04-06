@@ -55,76 +55,49 @@ export const SubscriptionCard = ({
   return (
     <Stack
       sx={{
-        borderRadius: '18px',
-        border: '1px solid rgba(255, 255, 255, 0.2)',
-        backgroundColor: '#212121',
         width: '100%',
       }}
     >
       <Stack
         sx={{
-          padding: '20px',
           height: '100%',
           gap: '5px',
         }}
       >
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingBottom: '15px',
-          }}
-        >
-          <Typography variant="h6">{title}</Typography>
-        </Stack>
-
-        <Stack sx={{ gap: '20px' }}>
+        <Stack sx={{ gap: '5px' }}>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.8,
+            }}
+          >
+            {i18n._('Price')}
+          </Typography>
           <Stack
             sx={{
               flexDirection: 'row',
-              alignItems: 'center',
+              alignItems: 'flex-end',
               gap: '8px',
             }}
           >
             <Typography
               variant="h2"
               sx={{
-                fontWeight: 500,
-                fontSize: '3.6rem',
+                fontWeight: 700,
+                fontSize: '2.7rem',
               }}
             >
               {priceInCurrency}
             </Typography>
-            <Stack
+            <Typography
+              variant="body2"
               sx={{
-                paddingTop: '18px',
-                height: '100%',
+                opacity: 0.7,
+                paddingBottom: '4px',
               }}
             >
-              <Typography
-                variant="caption"
-                sx={{
-                  textTransform: 'uppercase',
-                }}
-              >
-                {currency.currency} /
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  textTransform: 'lowercase',
-                }}
-              >
-                {duration === 'month'
-                  ? i18n._('Month')
-                  : duration === 'week'
-                    ? i18n._('Week')
-                    : duration === 'year'
-                      ? i18n._('Year')
-                      : i18n._('Day')}
-              </Typography>
-            </Stack>
+              {currency.currency}
+            </Typography>
           </Stack>
         </Stack>
 
@@ -172,10 +145,10 @@ export const SubscriptionCard = ({
 
         <Stack
           sx={{
-            paddingTop: '10px',
+            paddingTop: '20px',
           }}
         >
-          <Typography>{i18n._('Unlimited access to all features')}</Typography>
+          <FeatureList />
         </Stack>
         <Stack
           sx={{

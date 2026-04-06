@@ -92,8 +92,6 @@ export const FeatureList: React.FC<FeatureListProps> = ({ appMode }) => {
     <Stack
       sx={{
         gap: '18px',
-        paddingTop: '10px',
-        paddingBottom: '40px',
         width: '100%',
       }}
     >

@@ -301,12 +301,7 @@ export const SubscriptionPaymentModal = () => {
                       </ButtonGroup>
                     </Stack>
                     {usageType === 'subscription' ? (
-                      <Stack
-                        sx={{
-                          gap: '10px',
-                          width: '100%',
-                        }}
-                      >
+                      <Stack sx={{}}>
                         <ActivePlanSelector onSelectDuration={onSelectDuration} />
                       </Stack>
                     ) : usageType === 'hours' ? (

@@ -372,6 +372,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   <Stack
                     sx={{
                       width: '100%',
+                      paddingTop: '30px',
                     }}
                   >
                     <Stack

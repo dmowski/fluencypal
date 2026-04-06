@@ -33,7 +33,7 @@ export const BalanceStatus = () => {
         paddingBottom: '0px',
       }}
     >
-      <Typography variant="h3" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
+      <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 700 }}>
         {i18n._('Full Access')}
       </Typography>
 

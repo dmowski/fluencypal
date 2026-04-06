@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Button, ButtonGroup, Stack } from '@mui/material';
+import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { SubscriptionCard } from './SubscriptionCard';
 import { SubscriptionDuration } from './types';
 import { usePrices } from './usePrices';
@@ -18,45 +18,56 @@ export const ActivePlanSelector = ({
   return (
     <Stack
       sx={{
-        width: '100%',
-        gap: '20px',
+        gap: '25px',
+        width: '350px',
+        maxWidth: '100%',
+        borderRadius: '18px',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        backgroundColor: '#212121',
+        padding: '20px 20px 25px 20px',
       }}
     >
-      <ButtonGroup>
-        {/*<Button
-          onClick={() => {
-            setSelectedDuration('day');
+      <Stack
+        sx={{
+          gap: '5px',
+          width: '100%',
+        }}
+      >
+        <Typography variant="caption" sx={{ opacity: 0.8 }}>
+          {i18n._('Duration')}
+        </Typography>
+        <ButtonGroup
+          sx={{
+            width: '100%',
           }}
-          variant={selectedDuration === 'day' ? 'contained' : 'outlined'}
         >
-          {i18n._('1 day')}
-        </Button>*/}
-        <Button
-          onClick={() => {
-            setSelectedDuration('week');
-          }}
-          variant={selectedDuration === 'week' ? 'contained' : 'outlined'}
-        >
-          {i18n._('1 week')}
-        </Button>
-        <Button
-          onClick={() => {
-            setSelectedDuration('month');
-          }}
-          variant={selectedDuration === 'month' ? 'contained' : 'outlined'}
-        >
-          {i18n._('1 month')}
-        </Button>
+          <Button
+            fullWidth
+            color="info"
+            onClick={() => setSelectedDuration('week')}
+            variant={selectedDuration === 'week' ? 'contained' : 'outlined'}
+          >
+            {i18n._('1 week')}
+          </Button>
+          <Button
+            fullWidth
+            color="info"
+            onClick={() => setSelectedDuration('month')}
+            variant={selectedDuration === 'month' ? 'contained' : 'outlined'}
+          >
+            {i18n._('1 month')}
+          </Button>
 
-        <Button
-          onClick={() => {
-            setSelectedDuration('year');
-          }}
-          variant={selectedDuration === 'year' ? 'contained' : 'outlined'}
-        >
-          {i18n._('1 year')}
-        </Button>
-      </ButtonGroup>
+          <Button
+            fullWidth
+            color="info"
+            onClick={() => setSelectedDuration('year')}
+            variant={selectedDuration === 'year' ? 'contained' : 'outlined'}
+          >
+            {i18n._('1 year')}
+          </Button>
+        </ButtonGroup>
+      </Stack>
       <Stack
         sx={{
           width: '100%',
