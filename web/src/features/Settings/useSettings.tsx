@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, ReactNode, JSX, useEffect } from 'react';
 import { useAuth } from '../Auth/useAuth';
-import { getDocFromServer, setDoc } from 'firebase/firestore';
+import { setDoc } from 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import {
   fullEnglishLanguageName,
@@ -16,10 +16,10 @@ import {
   AiVoiceSpeed,
   AppMode,
   ConversationMode,
-  InitUserSettings,
   ParentConsent,
   UserSettings,
 } from '@/features/Settings/userSettings';
+import { initUserSettingsRequest } from '@/app/api/initUserSettings/initUserSettingsRequest';
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
@@ -154,49 +154,31 @@ function useProvideSettings(): SettingsContextType {
   };
 
   const initUserSettings = async () => {
-    if (!userId || !userSettingsDoc) {
-      return;
-    }
-    console.log('Checking init settings');
-    const dataDoc = await getDocFromServer(userSettingsDoc);
-    const isExists = dataDoc.exists();
-    const data = dataDoc.data();
-    console.log('data', data);
-    const isNoCreatedAt = !data?.createdAt;
-    const isNew = !isExists || isNoCreatedAt;
-    if (!isNew) {
-      return;
-    }
+    if (!userId) return;
 
     const country = await getCountryByIP();
     const countryName = country
       ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
       : null;
 
-    if (auth.userInfo?.email === 'dmowski.alex@gmail.com') {
+    const token = await auth.getToken();
+    const result = await initUserSettingsRequest(
+      {
+        currency: currency.currency || null,
+        country: country || null,
+        countryName: countryName || null,
+        userSource: userSource.userSource,
+        photoUrl: auth.userInfo?.photoURL || '',
+        displayName: auth.userInfo?.displayName || '',
+      },
+      token,
+    );
+    if (result.status === 'initialized' && auth.userInfo?.email === 'dmowski.alex@gmail.com') {
       alert('Creating settings for user ' + auth.userInfo.email);
       Sentry.captureException('Create settings AGAIN (2) for ' + auth.userInfo.email, {
-        extra: {
-          email: auth.userInfo.email,
-          isExists,
-          isNoCreatedAt,
-          data,
-        },
+        extra: { email: auth.userInfo.email },
       });
     }
-
-    const settingsData: InitUserSettings = {
-      createdAt: Date.now(),
-      createdAtIso: new Date().toISOString(),
-      currency: currency.currency || null,
-      email: auth.userInfo?.email || null,
-      country: country || null,
-      countryName: countryName || null,
-      userSource: userSource.userSource,
-    };
-    console.log('Init user settings', settingsData);
-
-    await setDoc(userSettingsDoc, settingsData, { merge: true });
   };
 
   const saveLastLoginTime = async () => {
@@ -213,29 +195,14 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, partialData, { merge: true });
   };
 
-  const saveLoginTime = async () => {
-    if (!userId || !userSettingsDoc) return;
-
-    await saveLastLoginTime();
-
-    const country = await getCountryByIP();
-    const countryName = country
-      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || 'Unknown'
-      : '-';
-
-    const photoUrl = auth.userInfo?.photoURL || '';
-    const displayName = auth.userInfo?.displayName || '';
-    await setDoc(userSettingsDoc, { country, countryName, photoUrl, displayName }, { merge: true });
-  };
-
   useEffect(() => {
     if (!userId || !userSettingsDoc) return;
 
     initUserSettings();
 
     const timeout = setTimeout(() => {
-      saveLoginTime();
-    }, 3000);
+      saveLastLoginTime();
+    }, 10_000);
 
     const interval = setInterval(() => {
       saveLastLoginTime();
