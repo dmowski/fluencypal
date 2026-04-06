@@ -2,6 +2,12 @@
 
 ## Tune first quiz
 
+- Steps overview
+
+- Simplify selecting native language
+
+- Inform about grammar progress on Auth Wall
+
 - On quiz show first page (Choose a Path):
   - Go directly to the talk. Ensure user grant permission to mic
   - Prepare learning plan
