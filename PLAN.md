@@ -1,15 +1,15 @@
 # Live document with short/long term ideas
 
-## Tune first quiz
-
-- Simplify selecting native language
-
 ## Conversation Blocker/PayWall
 
 - Show it as full size message. Ensure voice of ai stopped
 - Redirect to the stipe into new window
 - Record my video and place it into the chat conversation
 - And show "Buy tokens to continue", "How to use for free?"
+
+## Tune first quiz
+
+- Simplify selecting native language
 
 ## Realtime grammar feedback
 
