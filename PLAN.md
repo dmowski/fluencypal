@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## Improve welcome email. Send it automatically with cron
+
+- Setup environment. How to send mass email and be able to respond
+- Create endpoint that send emails to new users
+- Create cron
+
 ## Conversation Blocker/PayWall
 
 - Show it as full size message. Ensure voice of ai stopped
