@@ -3,11 +3,12 @@ import { sendEmail } from './sendEmail';
 import { getConfirmEmailTemplate } from '../webhooks/stripe/getConfirmEmailTemplate';
 import { getWelcomeEmailTemplate } from './getWelcomeEmailTemplate';
 
+const IS_SEND_REAL_EMAIL = false;
+
 export async function GET(request: Request) {
   const query = new URL(request.url).searchParams;
-  const isSendTest = query.get('isSendTest') === 'true';
+  const isSendEmailFromUrl = query.get('isSendTest') === 'true';
   const type = query.get('type');
-  const confirmSend = true;
 
   const confirmEmailUi = getConfirmEmailTemplate({
     receiptUrl: 'https://example.com/receipt.pdf',
@@ -16,7 +17,7 @@ export async function GET(request: Request) {
 
   const emailUi = type === 'welcome' ? getWelcomeEmailTemplate() : confirmEmailUi;
 
-  if (isSendTest && confirmSend) {
+  if (isSendEmailFromUrl && IS_SEND_REAL_EMAIL) {
     const randomId = Math.floor(Math.random() * 10000);
     console.log('SEND REAL EMAIL');
     await sendEmail({

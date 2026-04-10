@@ -23,7 +23,7 @@ export const sendEmail = async ({
   try {
     const sendResult = await resend.emails.send({
       to: emailTo,
-      from: 'no-reply@fluencypal.com',
+      from: 'contact@fluencypal.com',
       subject: title,
       text: messageText,
       html: messageHtml,
