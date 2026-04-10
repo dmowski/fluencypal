@@ -7,15 +7,15 @@
 - Record my video and place it into the chat conversation
 - And show "Buy tokens to continue", "How to use for free?"
 
+## How to set expectation about long term process
+
+- Welcome email?
+
 ## For the first day: show only one feature
 
-## Improve welcome email. Send it automatically with cron
+## Welcome email: Setup separate "notification" domain for emails
 
-- Setup separate "notification" domain for emails
-
-## Tune first quiz
-
-- Simplify selecting native language
+## Tune first quiz: Simplify selecting native language
 
 ## Realtime grammar feedback
 
