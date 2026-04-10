@@ -98,6 +98,47 @@ export const getRecentCreatedUsers = async (limit: number): Promise<UserSettings
   });
 };
 
+export const isEmailNotificationsEnabled = async (userId: string): Promise<boolean> => {
+  const db = getDB();
+  const userDoc = await db.collection('users').doc(userId).get();
+  if (!userDoc.exists) {
+    throw new Error('User not found');
+  }
+  const data = userDoc.data() as UserSettings;
+  return data.isSendEmailNotifications !== false;
+};
+
+interface UserEmailLogs {
+  isWelcomeMessageSent?: boolean;
+}
+
+export const getEmailLogs = async (userId: string): Promise<UserEmailLogs | null> => {
+  const db = getDB();
+  const userDoc = await db
+    .collection('users')
+    .doc(userId)
+    .collection('stats')
+    .doc('emailsNotifications')
+    .get();
+
+  if (!userDoc.exists) {
+    return null;
+  }
+
+  const data = userDoc.data() as UserEmailLogs;
+  return data;
+};
+
+export const setEmailLogs = async (userId: string, info: Partial<UserEmailLogs>): Promise<void> => {
+  const db = getDB();
+  await db
+    .collection('users')
+    .doc(userId)
+    .collection('stats')
+    .doc('emailsNotifications')
+    .set(info, { merge: true });
+};
+
 export const getUserDailyTasksProgress = async (userId: string): Promise<DailyTaskProgress[]> => {
   const db = getDB();
   const progressCollection = await db

@@ -367,10 +367,6 @@ ${messageContent}
 
 ${callToAction}
 ${callbackUrl}
-
-
------
-Do not reply to this email. If you have any questions, please contact us at ${templateConfig.instagramUrl}.
 `;
 
   return {
