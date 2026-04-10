@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## For the first day: show only one feature
+
 ## Improve welcome email. Send it automatically with cron
 
 - Setup environment. How to send mass email and be able to respond
