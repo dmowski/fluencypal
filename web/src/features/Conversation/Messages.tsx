@@ -21,11 +21,13 @@ export const Messages = ({
   messageOrder,
   isAiSpeaking,
   voice,
+  isLocked,
 }: {
   conversation: ConversationMessage[];
   messageOrder: MessagesOrderMap;
   isAiSpeaking?: boolean;
   voice: AiVoice;
+  isLocked?: boolean;
 }) => {
   const translator = useTranslate();
 

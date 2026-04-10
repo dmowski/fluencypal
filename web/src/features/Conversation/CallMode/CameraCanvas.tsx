@@ -44,6 +44,7 @@ export const CameraCanvas = ({
   completeUserMessageDelta,
   recordingVoiceMode,
   isSendMessagesBlocked,
+  fullExit,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -71,6 +72,7 @@ export const CameraCanvas = ({
 
   recordingVoiceMode: RecordingUserMessageMode;
   isSendMessagesBlocked: boolean;
+  fullExit: () => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -252,6 +254,7 @@ export const CameraCanvas = ({
               messageOrder={messageOrder}
               isAiSpeaking={isAiSpeaking}
               voice={voice}
+              isLocked={isLimitedVoice || isSendMessagesBlocked}
             />
           </Stack>
         </Stack>
@@ -292,6 +295,7 @@ export const CameraCanvas = ({
             lessonPlanAnalysis={lessonPlanAnalysis}
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
+            fullExit={fullExit}
           />
         </Stack>
       </Stack>

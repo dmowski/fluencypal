@@ -19,8 +19,7 @@ export const ActivePlanSelector = ({
     <Stack
       sx={{
         gap: '25px',
-        width: '350px',
-        maxWidth: '100%',
+        width: '100%',
         borderRadius: '18px',
         border: '1px solid rgba(255, 255, 255, 0.2)',
         backgroundColor: '#212121',
@@ -73,7 +72,6 @@ export const ActivePlanSelector = ({
           width: '100%',
           display: 'grid',
           gridTemplateColumns: '1fr',
-          maxWidth: '380px',
         }}
       >
         {selectedDuration === 'day' && (

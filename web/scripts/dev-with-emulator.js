@@ -162,11 +162,11 @@ async function main() {
     clearPorts();
 
     // Start emulator
-    emulatorProcess = await startEmulator();
+    //emulatorProcess = await startEmulator();
 
     // Wait for emulator to be ready
-    console.log('⏳ Waiting for Firebase Emulator to be ready...\n');
-    await waitForEmulator();
+    //console.log('⏳ Waiting for Firebase Emulator to be ready...\n');
+    //await waitForEmulator();
 
     // Start dev server
     devProcess = startDevServer();

@@ -23,7 +23,6 @@ import { ActivePlanSelector } from './ActivePlanSelector';
 import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
 import { pricePerHourUsd } from '@/features/Ai/ai';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
-import { X } from 'lucide-react';
 import dayjs from 'dayjs';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { CONTACTS } from '@/features/Landing/Contact/data';
@@ -244,6 +243,7 @@ export const SubscriptionPaymentModal = () => {
           width: '100%',
           maxWidth: '700px',
           paddingTop: '30px',
+          alignItems: 'center',
         }}
         ref={containerRef}
       >
@@ -259,12 +259,15 @@ export const SubscriptionPaymentModal = () => {
             sx={{
               width: '100%',
               boxSizing: 'border-box',
-              gap: '80px',
+              gap: '40px',
+              maxWidth: '380px',
+              alignItems: 'center',
             }}
           >
             <Stack
               sx={{
                 gap: '20px',
+                width: '100%',
               }}
             >
               <BalanceStatus />
@@ -366,41 +369,17 @@ export const SubscriptionPaymentModal = () => {
               )}
             </Stack>
 
-            <FaqSubscription />
-
-            <Stack>
-              <Typography
-                variant="h6"
-                component="h3"
-                sx={{ marginBottom: '10px', fontWeight: 400 }}
-              >
-                {i18n._('Need help or have questions?')}
+            <Stack
+              sx={{
+                width: '100%',
+                paddingBottom: '30px',
+              }}
+            >
+              <Typography sx={{ marginBottom: '10px', fontWeight: 400 }}>
+                {i18n._('Contacts:')}
               </Typography>
               <ContactList />
             </Stack>
-          </Stack>
-        )}
-        {!isShowConfirmPayments && (
-          <Stack
-            sx={{
-              paddingTop: '30px',
-              width: '100%',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Button
-              variant="outlined"
-              endIcon={<X />}
-              onClick={() => {
-                if (isShowConfirmPayments) {
-                  openMainSubscriptionPage();
-                  return;
-                }
-                usage.togglePaymentModal(false);
-              }}
-            >
-              {i18n._('Close')}
-            </Button>
           </Stack>
         )}
       </Stack>

@@ -287,6 +287,9 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           addTranscriptDelta={addTranscriptDelta}
           completeUserMessageDelta={completeUserMessageDelta}
           isSendMessagesBlocked={isSendMessagesBlocked}
+          fullExit={() => {
+            closeConversation();
+          }}
         />
       </Modal>
     );
@@ -345,6 +348,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 messageOrder={messageOrder}
                 isAiSpeaking={isAiSpeaking}
                 voice={voice}
+                isLocked={isLimitedVoice || isSendMessagesBlocked}
               />
               <Stack
                 sx={{

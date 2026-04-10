@@ -7,7 +7,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/ma
 import { useLingui } from '@lingui/react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { Trophy, Undo2 } from 'lucide-react';
+import { ChevronRight, LockKeyholeOpen, Star, Trophy, Undo2, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -52,6 +52,7 @@ export const CallButtons = ({
   recordingVoiceMode,
   messages,
   isSendMessagesBlocked,
+  fullExit,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -78,6 +79,7 @@ export const CallButtons = ({
   recordingVoiceMode: RecordingUserMessageMode;
   messages: ConversationMessage[];
   isSendMessagesBlocked: boolean;
+  fullExit: () => void;
 }) => {
   const { i18n } = useLingui();
 
@@ -351,6 +353,105 @@ Return ONLY the number.
       }, 200);
     }
   }, [isSendMessagesBlocked]);
+
+  const isLimited = isLimitedVoice || isSendMessagesBlocked;
+
+  if (isLimited) {
+    return (
+      <Stack
+        sx={{
+          backgroundColor: 'rgba(15, 24, 37, 1)',
+          padding: '30px 20px 40px 20px',
+          position: 'fixed',
+          bottom: '0px',
+          left: '0px',
+          width: '100%',
+          alignItems: 'center',
+          boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 90px 60px rgba(0, 0, 0, 1)',
+          justifyContent: 'center',
+        }}
+      >
+        <Stack
+          sx={{
+            width: '100%',
+            maxWidth: '970px',
+            gap: '25px',
+          }}
+        >
+          <Stack
+            sx={{
+              gap: '5px',
+            }}
+          >
+            <Typography
+              sx={{
+                fontWeight: 800,
+                fontSize: '2.5rem',
+                lineHeight: '120%',
+                '@media (max-width: 400px)': {
+                  fontSize: '2rem',
+                },
+              }}
+            >
+              {i18n._('Limits reached')}
+            </Typography>
+            <Typography
+              sx={{
+                textWrap: 'balance',
+              }}
+            >
+              {i18n._(
+                `With the free plan, you can only send 14 messages per conversation. You can either end the conversation or unlock full, unlimited access.`,
+              )}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              width: '100%',
+              flexDirection: 'row',
+              gap: '10px 25px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <Button
+              size="large"
+              color="success"
+              variant="contained"
+              endIcon={<ChevronRight />}
+              sx={{
+                //textAlign: 'left',
+                backgroundColor: 'rgba(28, 212, 108, 0.78)',
+                color: '#ddfff8',
+                fontWeight: 600,
+                borderRadius: '30px',
+                height: '48px',
+                lineHeight: '16px',
+              }}
+              onClick={() => access.showPaymentModal()}
+            >
+              {i18n._('Upgrade')}
+            </Button>
+
+            <IconButton
+              size="large"
+              onClick={() => {
+                vadAudioRecorder.stop();
+                fullExit();
+              }}
+              sx={{
+                width: '70px',
+                borderRadius: '30px',
+                backgroundColor: '#dc362e',
+                ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
+              }}
+            >
+              <CallEndIcon />
+            </IconButton>
+          </Stack>
+        </Stack>
+      </Stack>
+    );
+  }
 
   return (
     <Stack

@@ -145,9 +145,9 @@ export const SimpleNavigationBar: React.FC = () => {
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: 'rgba(218, 68, 248, 0.2)',
-                    color: '#F8BCFF',
-                    fontWeight: 'bold',
+                    backgroundColor: 'rgba(135, 31, 156, 0.53)',
+                    color: '#fad2fe',
+                    fontWeight: 600,
                     borderRadius: '20px',
                   }}
                   startIcon={<Star size={20} color="#F8BCFF" />}
