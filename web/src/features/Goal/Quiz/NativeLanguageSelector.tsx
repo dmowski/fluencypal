@@ -31,6 +31,7 @@ export const NativeLanguageSelector = () => {
     if (nativeLanguage && !isScrolledRef.current) {
       isScrolledRef.current = true;
       (async () => {
+        await sleep(1000);
         scrollToLangButton(nativeLanguage);
         await sleep(100);
         scrollToLangButton(nativeLanguage);
@@ -67,6 +68,13 @@ export const NativeLanguageSelector = () => {
     .sort((a, b) => a.englishName.localeCompare(b.englishName));
 
   const { topOffset } = useWindowSizes();
+
+  const systemLanguageInFiltered = filteredLanguageGroup.filter(
+    (option) => option.isSystemLanguage,
+  );
+  const otherLanguageInFiltered = filteredLanguageGroup.filter(
+    (option) => !option.isSystemLanguage,
+  );
   return (
     <Stack
       sx={{
@@ -138,22 +146,55 @@ export const NativeLanguageSelector = () => {
             {i18n._(`No results found`)}
           </Typography>
         )}
-        {filteredLanguageGroup.map((option) => {
-          const isSelected = option.languageCode === nativeLanguage;
-          return (
-            <LanguageButton
-              onClick={() => setNativeLanguage(option.languageCode)}
-              key={option.languageCode}
-              label={option.englishName}
-              langCode={option.languageCode}
-              englishFullName={option.englishName}
-              isSystemLang={option.isSystemLanguage}
-              fullName={option.nativeName}
-              isShowFullName
-              isSelected={isSelected}
-            />
-          );
-        })}
+
+        <Stack
+          sx={{
+            gap: '70px',
+          }}
+        >
+          {!!systemLanguageInFiltered.length && (
+            <Stack gap="10px">
+              {systemLanguageInFiltered.map((option) => {
+                const isSelected = option.languageCode === nativeLanguage;
+                return (
+                  <LanguageButton
+                    onClick={() => setNativeLanguage(option.languageCode)}
+                    key={option.languageCode}
+                    label={option.englishName}
+                    langCode={option.languageCode}
+                    englishFullName={option.englishName}
+                    isSystemLang={option.isSystemLanguage}
+                    fullName={option.nativeName}
+                    isShowFullName
+                    isSelected={isSelected}
+                  />
+                );
+              })}
+            </Stack>
+          )}
+
+          <Stack gap="10px">
+            {!!systemLanguageInFiltered.length && (
+              <Typography variant="caption">{i18n._(`Other languages`)}</Typography>
+            )}
+            {otherLanguageInFiltered.map((option) => {
+              const isSelected = option.languageCode === nativeLanguage;
+              return (
+                <LanguageButton
+                  onClick={() => setNativeLanguage(option.languageCode)}
+                  key={option.languageCode}
+                  label={option.englishName}
+                  langCode={option.languageCode}
+                  englishFullName={option.englishName}
+                  isSystemLang={option.isSystemLanguage}
+                  fullName={option.nativeName}
+                  isShowFullName
+                  isSelected={isSelected}
+                />
+              );
+            })}
+          </Stack>
+        </Stack>
       </Stack>
       <NextStepButton disabled={!isCorrectNativeLanguageSelected} />
     </Stack>

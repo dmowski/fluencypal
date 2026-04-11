@@ -139,7 +139,7 @@ export const LanguageButton = ({
         outline: 'none',
         cursor: 'pointer',
         backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.01)',
-        border: isSelected ? '2px solid #1f74be' : '2px solid rgba(255, 255, 255, 0.03)',
+        border: isSelected ? '3px solid #3f9ff3' : '2px solid rgba(255, 255, 255, 0.03)',
 
         '@media (min-width: 550px)': {
           // hover only on larger screens
