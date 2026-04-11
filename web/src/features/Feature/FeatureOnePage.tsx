@@ -44,7 +44,7 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
             <Stack sx={{ alignItems: 'flex-start', paddingTop: '8px' }}>
               <Link
                 sx={{
-                  color: '#007eeb',
+                  color: '#0b6abd',
                 }}
                 href={`${urlStart}features`}
               >
