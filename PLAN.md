@@ -1,11 +1,5 @@
 # Live document with short/long term ideas
 
-## Welcome email: Setup separate "notification" domain for emails
-
-- Buy resend.com access
-- Setup sub domains
-- Setup email Client to be able to respond replies
-
 ## Tune first quiz: Simplify selecting native language
 
 - Show system languages as preferred and button "Other"
