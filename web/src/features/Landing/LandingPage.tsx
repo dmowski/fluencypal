@@ -271,12 +271,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
             />
 
             <HowItWorks
-              label={i18n._(`Simple & Effective`)}
+              label={i18n._(`Practice & Progress`)}
               title={i18n._(`How It Works`)}
               allFeaturesTitle={i18n._(`Explore All Features`)}
               allFeaturesHref={`${getUrlStart(lang)}features`}
               subTitle={i18n._(
-                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in weeks, regardless of their current level.",
+                'Improving your English speaking skills takes time and consistent practice. FluencyPal is designed for learners who can already communicate at least a little and want to become more fluent, confident, and accurate through regular speaking practice. Progress is usually gradual, and many users improve by around 5% over a month of steady practice.',
               )}
               cards={[
                 {
