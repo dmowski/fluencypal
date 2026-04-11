@@ -1,19 +1,21 @@
 import { Card, CardContent, Stack, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { maxLandingWidth, subTitleFontStyle, titleFontStyle } from './landingSettings';
+import Image from 'next/image';
 
-interface ProposalInfo {
+export interface ProposalInfo {
   category: string;
   title: string;
   description: string;
   img: string;
+  imgAlt: string;
   actionButtonTitle: string;
   href: string;
 }
 const InfoProposalCard: React.FC<{
   info: ProposalInfo;
 }> = ({ info }) => {
-  const { category, title, description, img, actionButtonTitle, href } = info;
+  const { category, title, description, img, imgAlt, actionButtonTitle, href } = info;
 
   return (
     <Card
@@ -87,20 +89,20 @@ const InfoProposalCard: React.FC<{
           </Typography>
         </Stack>
 
-        {img && (
-          <img
-            src={img}
-            alt=""
-            style={{
-              width: '100%',
-              height: 'auto',
-              aspectRatio: '421/269',
-              backgroundColor: 'rgba(10, 18, 30, 1)',
-              marginTop: '20px',
-              borderRadius: '10px',
-            }}
-          />
-        )}
+        <Image
+          src={img}
+          alt={imgAlt}
+          width={421}
+          height={269}
+          style={{
+            width: '100%',
+            height: 'auto',
+            aspectRatio: '421/269',
+            backgroundColor: 'rgba(10, 18, 30, 1)',
+            marginTop: '20px',
+            borderRadius: '10px',
+          }}
+        />
         <Stack
           sx={{
             alignItems: 'center',
