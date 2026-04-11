@@ -132,7 +132,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`How can I track my progress?`),
       answer: i18n._(
-        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy.`,
+        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex, and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy. FluencyPal also assesses your grammar, confidence, vocabulary, and fluency, then creates a progress chart so you can see how your skills grow over time. Usually, people who practice daily improve by 5% over a month.`,
       ),
     },
 
