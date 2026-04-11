@@ -16,7 +16,6 @@ export const useLanguageGroup = ({
       if (!isWindow) {
         return;
       }
-
       const userLang = [...navigator.languages].map((lang) => lang.toLowerCase());
       setUserLanguages(userLang);
     }, 20);
