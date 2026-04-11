@@ -1,12 +1,12 @@
 # Live document with short/long term ideas
 
+## Create posts about fluencyPal at reddit
+
 ## Progress Stats
 
 - Add more details about how it was collected and analyzed
 - Add info on landing page
 - Add FAQ points
-
-## Create posts about fluencyPal at reddit
 
 ## For the first day: show only one feature
 
