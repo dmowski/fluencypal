@@ -1,10 +1,18 @@
 # Live document with short/long term ideas
 
-## For the first day: show only one feature
-
 ## Welcome email: Setup separate "notification" domain for emails
 
+- Buy resend.com access
+- Setup sub domains
+- Setup email Client to be able to respond replies
+
 ## Tune first quiz: Simplify selecting native language
+
+- Show system languages as preferred and button "Other"
+
+## Prepare Product hunt post and images
+
+## For the first day: show only one feature
 
 ## Realtime grammar feedback
 
