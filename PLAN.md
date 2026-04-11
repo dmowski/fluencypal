@@ -12,6 +12,8 @@
 
 ## Prepare Product hunt post and images
 
+## Create posts about fluencyPal at reddit
+
 ## For the first day: show only one feature
 
 ## Realtime grammar feedback
