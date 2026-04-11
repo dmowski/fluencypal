@@ -49,6 +49,17 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
       <Stack
         sx={{
           position: 'absolute',
+          top: 0,
+          left: '0px',
+          width: '100%',
+          height: '100%',
+          background: `radial-gradient(circle at top, rgba(9,105,218,0.1), transparent 40%), linear-gradient(180deg, #0d1117 0%, #161b22 100%)`,
+          zIndex: 0,
+        }}
+      />
+      <Stack
+        sx={{
+          position: 'absolute',
           bottom: 0,
           width: '100vw',
           left: 0,
