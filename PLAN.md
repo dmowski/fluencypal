@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## How to set expectation about long term process
-
-- Welcome email?
-
 ## For the first day: show only one feature
 
 ## Welcome email: Setup separate "notification" domain for emails
