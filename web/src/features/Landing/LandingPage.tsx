@@ -420,7 +420,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`,
                 ),
-                img: '/landing/progressChart.png',
+                img: '/landing/progressChart2.png',
                 imgAlt: i18n._(
                   'Illustration of progress tracking chart showing improvement over time',
                 ),

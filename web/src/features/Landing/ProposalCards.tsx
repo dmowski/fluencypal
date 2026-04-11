@@ -49,7 +49,9 @@ const InfoProposalCard: React.FC<{
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'space-between',
           gap: '20px',
+          height: '100%',
         }}
       >
         <Stack
@@ -89,48 +91,50 @@ const InfoProposalCard: React.FC<{
           </Typography>
         </Stack>
 
-        <Image
-          src={img}
-          alt={imgAlt}
-          width={421}
-          height={269}
-          style={{
-            width: '100%',
-            height: 'auto',
-            aspectRatio: '421/269',
-            backgroundColor: 'rgba(10, 18, 30, 1)',
-            marginTop: '20px',
-            borderRadius: '10px',
-          }}
-        />
-        <Stack
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            flexDirection: 'row',
-            gap: '10px',
-            paddingTop: '20px',
-          }}
-        >
-          <Typography
-            sx={{
-              textDecoration: 'underline',
-              textUnderlineOffset: '8px',
-              fontWeight: 550,
-            }}
-            className="link-text"
-          >
-            {actionButtonTitle}
-          </Typography>
-          <ArrowForwardIcon
-            className="link-icon"
-            sx={{
-              position: 'relative',
-              left: '0px',
-              fontSize: '20px',
-              transition: 'left 0.3s',
+        <Stack>
+          <Image
+            src={img}
+            alt={imgAlt}
+            width={421}
+            height={269}
+            style={{
+              width: '100%',
+              height: 'auto',
+              aspectRatio: '421/269',
+              backgroundColor: 'rgba(10, 18, 30, 1)',
+              marginTop: '20px',
+              borderRadius: '10px',
             }}
           />
+          <Stack
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              flexDirection: 'row',
+              gap: '10px',
+              paddingTop: '20px',
+            }}
+          >
+            <Typography
+              sx={{
+                textDecoration: 'underline',
+                textUnderlineOffset: '8px',
+                fontWeight: 550,
+              }}
+              className="link-text"
+            >
+              {actionButtonTitle}
+            </Typography>
+            <ArrowForwardIcon
+              className="link-icon"
+              sx={{
+                position: 'relative',
+                left: '0px',
+                fontSize: '20px',
+                transition: 'left 0.3s',
+              }}
+            />
+          </Stack>
         </Stack>
       </CardContent>
     </Card>
