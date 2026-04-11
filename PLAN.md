@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## Tune first quiz: Simplify selecting native language
-
-- Show system languages as preferred and button "Other"
-
 ## Prepare Product hunt post and images
 
 ## Create posts about fluencyPal at reddit
