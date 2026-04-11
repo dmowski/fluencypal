@@ -1,12 +1,5 @@
 # Live document with short/long term ideas
 
-## Tune payment confirmation email
-
-- Check that stripe does not send email
-- Check that receipt attached correctly
-- Add "refund" link
-- Hide legal nots under separate section
-
 ## Progress Stats
 
 - Add more details about how it was collected and analyzed
