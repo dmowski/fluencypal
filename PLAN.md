@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Split app and content pages (Landings)
+
 ## Seo - but for AI
 
 - Research how it works
