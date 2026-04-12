@@ -4,7 +4,7 @@
 
 ## Seo - but for AI
 
-- Research how it works
+- Create pages (./plans/CONTENT_PAGES.md)
 
 ## Progress Stats
 
