@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Seo - but for AI
+
+- Research how it works
+
 ## Progress Stats
 
 - Add more details about how it was collected and analyzed
