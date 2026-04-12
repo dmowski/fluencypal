@@ -104,15 +104,17 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
             },
           }}
         >
-          <img
-            src="/logo.svg"
-            alt="Online English Learning"
-            width="200px"
-            height="37px"
-            style={{
-              opacity: 0.92,
-            }}
-          />
+          <a href={`${getUrlStartWithoutLastSlash(lang)}`}>
+            <img
+              src="/logo.svg"
+              alt="Online English Learning"
+              width="200px"
+              height="37px"
+              style={{
+                opacity: 0.92,
+              }}
+            />
+          </a>
 
           <Stack
             sx={{
