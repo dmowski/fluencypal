@@ -79,7 +79,7 @@ The inability to save/read cookies may result in incomplete and incorrect operat
 
 If you have questions regarding the processing of personal data or wish to exercise your rights, you can contact us at the addresses specified in point "**Data Controller**"
 
-More information about us and your rights is available at the following address: [https://www.fluencypal.com/contacts](https://www.fluencypal.com/contacts)
+More information about us and your rights is available at the following address: [https://app.fluencypal.com/contacts](https://app.fluencypal.com/contacts)
 
 In case of infringement of regulations on personal data protection, you can lodge a complaint to the Chairman of the Personal Data Protection Office at: [https://uodo.gov.pl](https://uodo.gov.pl/)
 

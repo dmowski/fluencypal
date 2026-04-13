@@ -554,7 +554,7 @@ Pursuant to Regulation (EU) No. 524/2013 of the European Parliament and of the C
 Atlas Tower, Al. Jerozolimskie 123a, 18 piętro,  
 02-017 Warsaw  
 Address for service  
-[www.fluencypal.com](https://www.fluencypal.com)
+[www.fluencypal.com](https://app.fluencypal.com)
 
 **WITHDRAWAL FROM A CONTRACT**
 
@@ -593,7 +593,7 @@ Fundacja Rozwoju Przedsiębiorczości
 Atlas Tower, Al. Jerozolimskie 123a, 18 piętro,  
 02-017 Warsaw  
 **Address for service**  
-[www.fluencypal.com](https://www.fluencypal.com)
+[www.fluencypal.com](https://app.fluencypal.com)
 
 **COMPLAINT**
 

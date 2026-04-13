@@ -7,7 +7,7 @@ export const getWelcomeEmailTemplate = () => {
     subtitle: '',
     messageContent: getWelcomeEmailText({}).split('\n').join('<br/>') + '<br/><br/>',
     callToAction: 'Start Practice',
-    callbackUrl: 'https://www.fluencypal.com/practice',
+    callbackUrl: 'https://app.fluencypal.com/practice',
     afterButtonContent: ``,
   });
 };

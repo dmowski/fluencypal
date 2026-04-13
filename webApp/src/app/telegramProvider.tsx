@@ -17,7 +17,7 @@ export function useDidMount(): boolean {
 
 function TelegramProviderInner({ children }: PropsWithChildren) {
   return (
-    <TonConnectUIProvider manifestUrl="https://www.fluencypal.com/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://app.fluencypal.com/tonconnect-manifest.json">
       {children}
     </TonConnectUIProvider>
   );

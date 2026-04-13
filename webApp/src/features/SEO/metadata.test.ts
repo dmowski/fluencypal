@@ -26,9 +26,9 @@ describe('getMetadataUrls', () => {
 
     expect(res.pathWithQueries).toBe('case/123/quiz');
     expect(res.ogUrl).toBe(res.alternates.languages['fr']);
-    expect(res.alternates.canonical).toBe('https://www.fluencypal.com/fr/case/123/quiz');
-    expect(res.alternates.languages.fr).toBe('https://www.fluencypal.com/fr/case/123/quiz');
-    expect(res.alternates.languages.en).toBe('https://www.fluencypal.com/case/123/quiz');
+    expect(res.alternates.canonical).toBe('https://app.fluencypal.com/fr/case/123/quiz');
+    expect(res.alternates.languages.fr).toBe('https://app.fluencypal.com/fr/case/123/quiz');
+    expect(res.alternates.languages.en).toBe('https://app.fluencypal.com/case/123/quiz');
   });
 });
 
@@ -99,11 +99,11 @@ describe('SEO Metadata', () => {
 
       expect(res.pathWithQueries).toBe('blog/123?category=tech');
       expect(res.ogUrl).toBe(res.alternates.languages['fr']);
-      expect(res.alternates.canonical).toBe('https://www.fluencypal.com/fr/blog/123?category=tech');
+      expect(res.alternates.canonical).toBe('https://app.fluencypal.com/fr/blog/123?category=tech');
       expect(res.alternates.languages.fr).toBe(
-        'https://www.fluencypal.com/fr/blog/123?category=tech',
+        'https://app.fluencypal.com/fr/blog/123?category=tech',
       );
-      expect(res.alternates.languages.en).toBe('https://www.fluencypal.com/blog/123?category=tech');
+      expect(res.alternates.languages.en).toBe('https://app.fluencypal.com/blog/123?category=tech');
     });
   });
 
@@ -141,7 +141,7 @@ describe('SEO Metadata', () => {
         'Practice vocabulary by creatively describing and guessing words',
       );
       expect(meta.openGraph.images[0].url).toBe(
-        `https://www.fluencypal.com//role/f0de782c-6f1a-4005-924d-02459308a4fa.webp`,
+        `https://app.fluencypal.com//role/f0de782c-6f1a-4005-924d-02459308a4fa.webp`,
       );
     });
 
@@ -149,7 +149,7 @@ describe('SEO Metadata', () => {
       const meta = generateMetadataInfo({ lang: 'ru', currentPath: '' });
 
       expect(meta.title).toBe(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
-      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru`);
+      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/ru`);
     });
 
     test('generates metadata for scenarios with scenarioId for ru', () => {
@@ -164,7 +164,7 @@ describe('SEO Metadata', () => {
       expect(meta.description).toBe(
         'Practice vocabulary by creatively describing and guessing words',
       );
-      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru/scenarios/alias-game`);
+      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/ru/scenarios/alias-game`);
     });
 
     test('generates metadata for features index', () => {
@@ -177,7 +177,7 @@ describe('SEO Metadata', () => {
         'FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays',
       );
       expect(meta.description).toContain('Explore FluencyPal features');
-      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features`);
+      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/features`);
     });
 
     test('generates metadata for one feature page', () => {
@@ -189,7 +189,7 @@ describe('SEO Metadata', () => {
 
       expect(meta.title).toBe('Personalized Learning Plan for English Practice | FluencyPal');
       expect(meta.description).toContain('Build a personalized English learning plan with AI.');
-      expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features/learning-plan`);
+      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/features/learning-plan`);
     });
   });
 });

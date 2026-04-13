@@ -103,7 +103,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     },
   }));
 
-  const pageUrl = 'https://www.fluencypal.com' + getUrlStart(lang) + 'pricing';
+  const pageUrl = 'https://app.fluencypal.com' + getUrlStart(lang) + 'pricing';
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -115,10 +115,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
     publisher: {
       '@type': 'Organization',
       name: 'FluencyPal',
-      url: 'https://www.fluencypal.com',
+      url: 'https://app.fluencypal.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.fluencypal.com/logo.png',
+        url: 'https://app.fluencypal.com/logo.png',
       },
     },
   };

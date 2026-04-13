@@ -5,7 +5,7 @@ export const templateConfig = {
   logoWhiteBgImgUrl: siteUrl + 'logo_white.jpg',
   logoGrayBlueBgImgUrl: siteUrl + 'logo_gray_blue_bg.jpg',
 
-  instagramImageUrl: 'https://www.fluencypal.com/email/instagram.jpg',
+  instagramImageUrl: 'https://app.fluencypal.com/email/instagram.jpg',
   instagramUrl: 'https://www.instagram.com/dmowskii',
 };
 

@@ -157,7 +157,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       ),
     },
   ];
-  const pageUrl = 'https://www.fluencypal.com' + getUrlStart(lang);
+  const pageUrl = 'https://app.fluencypal.com' + getUrlStart(lang);
 
   const seoFaqItems = faqItems.map((item) => ({
     '@type': 'Question',
@@ -178,10 +178,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'FluencyPal',
-      url: 'https://www.fluencypal.com',
+      url: 'https://app.fluencypal.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.fluencypal.com/logo.png',
+        url: 'https://app.fluencypal.com/logo.png',
       },
     },
   };

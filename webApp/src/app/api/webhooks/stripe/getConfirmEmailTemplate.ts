@@ -17,7 +17,7 @@ We are pleased to confirm that your payment has been successfully processed. You
 
 `,
     callToAction: 'Start Learning',
-    callbackUrl: 'https://www.fluencypal.com/practice',
+    callbackUrl: 'https://app.fluencypal.com/practice',
 
     afterButtonContent: `<p style="margin: 0; padding-bottom: 12px; color: #111111; font-size: 13px; line-height: 16px;">
 Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" within 14 days of contract conclusion, you do not have the right to terminate the contract.
@@ -31,7 +31,7 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
 
 <a href="https://www.fluencypal.com/terms" style="font-size: 15px; line-height: 12px;">Termination form</a><br/>
 
-<a href="https://www.fluencypal.com/practice?page=profile&paymentHistory=true" style="font-size: 15px; line-height: 12px;">Request Refund</a><br/>
+<a href="https://app.fluencypal.com/practice?page=profile&paymentHistory=true" style="font-size: 15px; line-height: 12px;">Request Refund</a><br/>
 
 `,
   });

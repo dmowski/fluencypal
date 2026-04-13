@@ -21,7 +21,7 @@ interface UrlDefinition {
     | '0.1000';
 }
 
-const baseUrl = 'https://www.fluencypal.com';
+const baseUrl = 'https://app.fluencypal.com';
 
 const generateUrl = (url: UrlDefinition) => {
   const isLangLanding = supportedLanguages.includes(url.path as unknown as SupportedLanguage);
