@@ -1,44 +1,42 @@
 import { supportedLanguages } from '@/features/Lang/lang';
-import LandingPage from '@/features/Landing/LandingPage';
+import { PracticePage } from '@/features/Router/PracticePage';
+import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { Metadata } from 'next';
-import linguiConfig from '../../../lingui.config';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { PracticeProvider } from '@/app/practiceProvider';
+import { TopOffset } from '@/features/Layout/TopOffset';
 
-const notFoundMetadata: Metadata = {
-  title: 'Not Found',
-  description: 'Not Found',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+export async function generateStaticParams() {
+  return supportedLanguages.map((lang: string) => ({ lang }));
+}
 
 interface PageProps {
   params: Promise<{ lang: string }>;
-}
-
-export async function generateStaticParams() {
-  return linguiConfig.locales.map((lang: string) => ({ lang }));
+  searchParams: Promise<{
+    rolePlayId?: string;
+  }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params;
-  const lang = params.lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang);
-  if (!supportedLang) {
-    return notFoundMetadata;
-  }
-
+  const rolePlayId = (await props.searchParams).rolePlayId;
   return generateMetadataInfo({
-    lang: supportedLanguages.find((l) => l === lang) || 'en',
-    currentPath: '',
+    lang: (await props.params).lang,
+    currentPath: 'practice',
+    rolePlayId,
   });
 }
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
-  const params = await props.params;
-  const lang = params.lang;
+  const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
+  const rolePlayInfo = getRolePlayScenarios(supportedLang);
 
-  return <LandingPage lang={supportedLang} />;
+  return (
+    <PracticeProvider>
+      <TopOffset />
+      <main>
+        <PracticePage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
+      </main>
+    </PracticeProvider>
+  );
 }
