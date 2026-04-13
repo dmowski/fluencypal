@@ -1,5 +1,5 @@
 'use client';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getLandingUrlStart } from '@/features/Lang/getUrlStart';
 import { fullLanguageName, SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { SetUrlStateOptions, useUrlMapState } from '@/features/Url/useUrlParam';
 
@@ -872,7 +872,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   }, [currentStepIndex, path, setState]);
 
   const navigateToMainPage = () => {
-    const newPath = `${getUrlStart(pageLanguage)}`;
+    const newPath = `${getLandingUrlStart(pageLanguage)}`;
     router.push(newPath);
   };
 

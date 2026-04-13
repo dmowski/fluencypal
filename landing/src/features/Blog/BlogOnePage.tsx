@@ -12,7 +12,7 @@ import {
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { getBlogs } from './blogData';
 import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
 import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
@@ -311,7 +311,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
         <CtaBlock
           title={i18n._(`Start a Conversation with AI`)}
           actionButtonTitle={i18n._(`Try for free`)}
-          actionButtonLink={`${getUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

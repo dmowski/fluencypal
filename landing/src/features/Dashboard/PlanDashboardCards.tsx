@@ -18,7 +18,7 @@ import { cardColors, modeCardProps } from '../Plan/data';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useMemo, useState } from 'react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart } from '../Lang/getUrlStart';
 import { useUrlParam } from '../Url/useUrlParam';
 import { useSettings } from '../Settings/useSettings';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
@@ -183,7 +183,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
           <MenuItem
             onClick={() => {
-              window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
+              window.location.href = `${getAppUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
             }}
           >
             <ListItemIcon>
@@ -258,7 +258,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       {(!isGoalSet || !plan.activeGoal) && (
         <Button
           startIcon={<LandPlot size={'21px'} />}
-          href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
+          href={`${getAppUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
           sx={{
             padding: '10px 20px',
           }}

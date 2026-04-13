@@ -18,7 +18,7 @@ import { RecordAboutFollowUp } from './RecordAboutFollowUp';
 import { GoalReview } from './GoalReview';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart } from '@/features/Lang/getUrlStart';
 import { sleep } from '@/libs/sleep';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import {
@@ -79,7 +79,7 @@ const QuizQuestions = () => {
 
   const redirectToPractice = async () => {
     setRedirecting(true);
-    const url = `${getUrlStart(pageLanguage)}practice`;
+    const url = `${getAppUrlStart(pageLanguage)}practice`;
     router.push(url);
     await sleep(9000);
     setRedirecting(false);
@@ -99,11 +99,10 @@ const QuizQuestions = () => {
         (el) => el.mode === 'conversation',
       );
       if (goalTalkModeElement) {
-        //const url = `${getUrlStart(pageLanguage)}practice?plan-id=${goalTalkModeElement.id}`;
-        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
+        const url = `${getAppUrlStart(pageLanguage)}practice${queryParams}`;
         router.push(url);
       } else {
-        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
+        const url = `${getAppUrlStart(pageLanguage)}practice${queryParams}`;
         console.log('url', url);
         router.push(url);
       }

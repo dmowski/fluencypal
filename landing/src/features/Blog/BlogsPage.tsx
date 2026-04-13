@@ -5,7 +5,7 @@ import { ListBlogIntro } from './ListBlogIntro';
 import { ListBlog } from './ListBlog';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart } from '@/features/Lang/getUrlStart';
 import { HeaderStatic } from '../Header/HeaderStatic';
 
 interface BlogsPageProps {
@@ -37,7 +37,7 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started`)}
-          actionButtonLink={`${getUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

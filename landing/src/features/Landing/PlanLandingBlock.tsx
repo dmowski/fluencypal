@@ -4,7 +4,7 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
 import { cardColors, modeCardProps } from '../Plan/data';
 import { PlanElement, PlanElementMode } from '../Plan/types';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart } from '../Lang/getUrlStart';
 import { PlanLandingCard } from '../Plan/PlanLandingCard';
 import { H2, SubTitle } from '../Case/Landing/components/Typography';
 
@@ -395,7 +395,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             )}
             actionButtonPostfixLabel={i18n._(`16 languages to practice`)}
             actionButtonLabel={i18n._(`Start Test`)}
-            actionButtonHref={`${getUrlStart(lang)}quiz`}
+            actionButtonHref={`${getAppUrlStart(lang)}quiz`}
           />
         </Stack>
 
@@ -432,7 +432,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             )}
             actionButtonPostfixLabel={''}
             actionButtonLabel={i18n._(`Create a plan`)}
-            actionButtonHref={`${getUrlStart(lang)}quiz`}
+            actionButtonHref={`${getAppUrlStart(lang)}quiz`}
             hideVideoOnMobile={true}
           />
 
@@ -587,7 +587,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             )}
             actionButtonPostfixLabel={''}
             actionButtonLabel={i18n._(`Start Practicing`)}
-            actionButtonHref={`${getUrlStart(lang)}quiz`}
+            actionButtonHref={`${getAppUrlStart(lang)}quiz`}
           />
         </Stack>
       </Stack>
@@ -623,7 +623,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           }}
           variant="contained"
           size="large"
-          href={`${getUrlStart(lang)}quiz`}
+          href={`${getAppUrlStart(lang)}quiz`}
         >
           {i18n._(`Start Learning`)}
         </Button>

@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useSettings } from '../Settings/useSettings';
 import { getPageLangCode } from '../Lang/lang';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart } from '../Lang/getUrlStart';
 
 export const usePageLangRedirect = () => {
   const settings = useSettings();
@@ -18,7 +18,7 @@ export const usePageLangRedirect = () => {
     const isDifferent = actualPageLang !== settingsPageLang;
     if (!isDifferent) return;
     const searchParams = new URLSearchParams(window.location.search);
-    const url = `${getUrlStart(settingsPageLang)}practice${
+    const url = `${getAppUrlStart(settingsPageLang)}practice${
       searchParams.toString() ? `?${searchParams.toString()}` : ''
     }`;
     router.push(url, {

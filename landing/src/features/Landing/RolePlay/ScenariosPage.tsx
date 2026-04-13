@@ -7,7 +7,7 @@ import { ListRolePlayIntro } from './ListRolePlayIntro';
 import { ListRolePlay } from './ListRolePlay';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart } from '@/features/Lang/getUrlStart';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 
 interface ScenariosPageProps {
@@ -39,7 +39,7 @@ export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) =>
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started Free`)}
-          actionButtonLink={`${getUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

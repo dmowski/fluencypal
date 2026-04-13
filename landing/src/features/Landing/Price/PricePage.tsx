@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { CurrencyToDisplay, PriceDisplay } from './PriceDisplay';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import {
@@ -195,7 +195,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
 
             <FirstEnterButton
               getStartedTitle={i18n._(`Get Started`)}
-              practiceLink={`${getUrlStart(lang)}quiz`}
+              practiceLink={`${getAppUrlStart(lang)}quiz`}
               openMyPracticeLinkTitle={i18n._(`Open`)}
             />
           </Stack>
@@ -292,7 +292,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}quiz`}
               />
 
               
@@ -382,7 +382,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}quiz`}
               />
               */}
 
@@ -466,7 +466,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}quiz`}
               />
 
               <PriceCard
@@ -549,7 +549,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}quiz`}
               />
 
               <PriceCard
@@ -632,7 +632,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}quiz`}
               />
             </Stack>
           </Stack>
@@ -662,7 +662,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started`)}
-          actionButtonLink={`${getUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

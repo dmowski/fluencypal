@@ -1,5 +1,5 @@
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { Button, Stack, Typography } from '@mui/material';
 import { AudioLines, ChevronRight, Heart, Speech, User, Users, Zap } from 'lucide-react';
@@ -59,7 +59,7 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
           }}
         >
           <Button
-            href={getUrlStart(lang) + 'practice?rolePlayId=alias-game'}
+            href={getAppUrlStart(lang) + 'practice?rolePlayId=alias-game'}
             startIcon={<User size={'22px'} />}
             endIcon={<ChevronRight size={'22px'} />}
             variant="outlined"

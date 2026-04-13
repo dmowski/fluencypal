@@ -3,7 +3,7 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeatureById } from './featuresData';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
@@ -120,7 +120,7 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
       <CtaBlock
         title={i18n._('Practice This Skill with FluencyPal')}
         actionButtonTitle={i18n._('Start Practice')}
-        actionButtonLink={`${urlStart}quiz`}
+        actionButtonLink={`${getAppUrlStart(lang)}quiz`}
       />
       <Footer lang={lang} />
     </>

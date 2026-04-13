@@ -3,10 +3,10 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeaturesData } from './featuresData';
-import { Button, Link, Stack, Typography } from '@mui/material';
+import { Link, Stack, Typography } from '@mui/material';
 
 interface FeaturesPageProps {
   lang: SupportedLanguage;
@@ -15,7 +15,6 @@ interface FeaturesPageProps {
 export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
   const i18n = getI18nInstance(lang);
   const { features } = getFeaturesData(lang);
-  const urlStart = getUrlStart(lang);
 
   return (
     <>
@@ -106,7 +105,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
                 </Typography>
                 <Stack sx={{ alignItems: 'flex-start', paddingTop: '6px' }}>
                   <Link
-                    href={`${urlStart}features/${feature.id}`}
+                    href={`${getUrlStart(lang)}features/${feature.id}`}
                     sx={{
                       textTransform: 'none',
                       borderRadius: '10px',
@@ -124,7 +123,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
       <CtaBlock
         title={i18n._('Start Your Journey to Fluent Conversations Now')}
         actionButtonTitle={i18n._('Get Started')}
-        actionButtonLink={`${urlStart}quiz`}
+        actionButtonLink={`${getAppUrlStart(lang)}quiz`}
       />
       <Footer lang={lang} />
     </>

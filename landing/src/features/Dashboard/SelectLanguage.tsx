@@ -11,7 +11,7 @@ import {
   supportedLanguagesToLearn,
 } from '@/features/Lang/lang';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart } from '../Lang/getUrlStart';
 import LanguageAutocomplete from '../Lang/LanguageAutocomplete';
 import { useLanguageGroup } from '../Goal/useLanguageGroup';
 
@@ -55,9 +55,12 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     const query = new URLSearchParams(window.location.search);
     query.delete('learn');
     const queryString = query.toString();
-    router.push(`${getUrlStart(myLang || 'en')}practice${queryString ? `?${queryString}` : ``}`, {
-      scroll: false,
-    });
+    router.push(
+      `${getAppUrlStart(myLang || 'en')}practice${queryString ? `?${queryString}` : ``}`,
+      {
+        scroll: false,
+      },
+    );
   }
 
   async function handleChangeLearnLang(newLang: SupportedLanguage) {
@@ -70,9 +73,12 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     }
     const queryString = query.toString();
 
-    router.push(`${getUrlStart(myLang || 'en')}practice${queryString ? `?${queryString}` : ``}`, {
-      scroll: false,
-    });
+    router.push(
+      `${getAppUrlStart(myLang || 'en')}practice${queryString ? `?${queryString}` : ``}`,
+      {
+        scroll: false,
+      },
+    );
   }
 
   async function handleChangeMyLang(newLang: SupportedLanguage) {
@@ -83,7 +89,7 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
       .filter(Boolean);
 
     const query = new URLSearchParams(window.location.search).toString();
-    const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join('/')}${
+    const newPath = `${getAppUrlStart(newLang)}${pathNameWithoutLocale.join('/')}${
       query ? `?${query}` : ''
     }`;
     router.push(newPath);

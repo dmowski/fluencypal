@@ -18,7 +18,7 @@ import {
   supportedLanguages,
 } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { FeatureList } from '../Price/FeatureList';
 import Image from 'next/image';
@@ -149,7 +149,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   {i18n._(`View all`)}
                 </Button>
                 <Button
-                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                  href={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
                   sx={{
                     ...buttonStyle,
                     height: '3rem',
@@ -314,7 +314,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                           ...buttonStyle,
                           minWidth: '300px',
                         }}
-                        href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                        href={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
                       >
                         {i18n._(`Start`)} "{item.shortTitle}"
                       </Button>
@@ -451,7 +451,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
         <CtaBlock
           title={i18n._(`Ready to Become Fluent in English?`)}
           actionButtonTitle={i18n._(`Start Learning Now`)}
-          actionButtonLink={`${getUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

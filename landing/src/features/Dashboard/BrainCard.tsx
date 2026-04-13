@@ -20,7 +20,7 @@ import { fullEnglishLanguageName, supportedLanguages } from '@/features/Lang/lan
 import React from 'react';
 import { sleep } from '@/libs/sleep';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '../Lang/getUrlStart';
 
 interface GradingProgressBarProps {
   value: number; // from 0 to 100
@@ -88,7 +88,7 @@ export const BrainCard = () => {
 
   const setIsShowPreparingModal = (value: boolean) => {
     if (value) {
-      router.push(`${getUrlStart(supportedLang)}practice?brain=true`, {
+      router.push(`${getAppUrlStart(supportedLang)}practice?brain=true`, {
         scroll: false,
       });
     } else {
@@ -99,7 +99,7 @@ export const BrainCard = () => {
       setImageDescription('');
       setLanguagesToLearn([]);
       setIsError(false);
-      router.push(`${getUrlStart(supportedLang)}practice`, { scroll: false });
+      router.push(`${getAppUrlStart(supportedLang)}practice`, { scroll: false });
     }
   };
 
