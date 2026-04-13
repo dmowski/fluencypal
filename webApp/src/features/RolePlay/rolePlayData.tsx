@@ -1,8 +1,8 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayInstruction } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
-import { ResourceCategory } from '@/features/Blog/category';
 import { AliasRolePlay } from './fullArticles/AliasRolePlay';
+import { ResourceCategory } from './resourceCategory';
 
 export interface RolePlayScenariosInfo {
   rolePlayScenarios: RolePlayInstruction[];

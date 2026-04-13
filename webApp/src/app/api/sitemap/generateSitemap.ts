@@ -1,8 +1,6 @@
 import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
-import { getBlogs } from '@/features/Blog/blogData';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
-import { getFeaturesData } from '@/features/Feature/featuresData';
 
 const updateTime = '2026-04-11T13:01:02+00:00';
 
@@ -86,26 +84,6 @@ export async function generateSitemap(): Promise<string> {
       priority: '0.5000',
     }));
 
-  const blogs = getBlogs('en');
-  const blogsItems = blogs.blogs;
-  const blogsCategories = blogs.categoriesList;
-  const blogsUrls: UrlDefinition[] = blogsItems.map((item) => ({
-    path: `blog/${item.id}`,
-    priority: '0.6000',
-  }));
-  const blogsCategoriesUrls: UrlDefinition[] = blogsCategories
-    .filter((item) => item.categoryId !== blogs.allCategory.categoryId)
-    .map((item) => ({
-      path: `blog?category=${item.categoryId}`,
-      priority: '0.5000',
-    }));
-
-  const { features } = getFeaturesData('en');
-  const featureUrls: UrlDefinition[] = features.map((item) => ({
-    path: `features/${item.id}`,
-    priority: '0.7000',
-  }));
-
   const quizUrls: UrlDefinition[] = supportedLanguages
     .filter((lang) => lang !== 'en')
     .map((lang) => ({
@@ -126,42 +104,10 @@ export async function generateSitemap(): Promise<string> {
       path: 'quiz',
       priority: '0.9000',
     },
-    {
-      path: 'scenarios',
-      priority: '0.8000',
-    },
 
     {
       path: 'case',
       priority: '0.8000',
-    },
-
-    {
-      path: 'blog',
-      priority: '0.8000',
-    },
-
-    {
-      path: 'features',
-      priority: '0.8000',
-    },
-
-    {
-      path: 'contacts',
-      priority: '0.6000',
-    },
-    {
-      path: 'terms',
-      priority: '0.6000',
-    },
-    {
-      path: 'privacy',
-      priority: '0.6000',
-    },
-
-    {
-      path: 'cookies',
-      priority: '0.6000',
     },
 
     {
@@ -174,9 +120,6 @@ export async function generateSitemap(): Promise<string> {
     ...casesCategoriesUrls,
     ...scenariosUrls,
     ...scenariosCategoriesUrls,
-    ...blogsUrls,
-    ...blogsCategoriesUrls,
-    ...featureUrls,
     ...quizUrls,
   ];
 

@@ -6,28 +6,10 @@ import { siteUrl } from '@/features/SEO/appInfo';
 import { APP_NAME } from '@/features/Landing/landingSettings';
 import { initLingui } from '@/initLingui';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
-import { getBlogs } from '@/features/Blog/blogData';
 import { getLangLearnPlanLabels } from '@/features/Lang/getLabels';
 import { getAllInterviews } from '../Case/data/data';
-import { getFeatureById } from '../Feature/featuresData';
 
-type Page =
-  | 'contacts'
-  | 'quiz'
-  | 'quiz2'
-  | 'tg-app'
-  | 'practice'
-  | 'pricing'
-  | 'privacy'
-  | 'cookies'
-  | 'terms'
-  | 'scenarios'
-  | 'blog'
-  | 'features'
-  | 'case'
-  | 'alias'
-  | 'iwant'
-  | '';
+type Page = 'quiz' | 'quiz2' | 'tg-app' | 'practice' | 'case' | 'alias' | 'iwant' | '';
 
 type AfterIdPage = 'quiz';
 
@@ -66,13 +48,6 @@ export const generateMetadataInfo = ({
   let openGraphImageUrl = `${siteUrl}openGraph.webp`;
   let title = '';
   let description = '';
-  if (currentPath === 'contacts') {
-    title = i18n._(`Contacts`) + ' | ' + APP_NAME;
-    description = i18n._(
-      `Get in touch with the FluencyPal for any inquiries, support, or feedback.`,
-    );
-    keywords = [];
-  }
 
   if (currentPath === 'iwant') {
     title = i18n._(`I Want`) + ' | ' + APP_NAME;
@@ -158,19 +133,6 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  if (currentPath === 'pricing') {
-    title = i18n._(`Affordable AI Language Learning`) + ' | ' + APP_NAME;
-    description = i18n._(
-      `Get flexible pricing with FluencyPal. Enjoy AI-powered language practice at your pace. Start improving your English fluency today!`,
-    );
-    keywords = [
-      i18n._(`AI language tutor pricing`),
-      i18n._(`subscription plans`),
-      i18n._(`online English pricing`),
-      i18n._(`AI tutor cost`),
-    ];
-  }
-
   if (currentPath === 'alias') {
     title = i18n._(`Alias Game`) + ' | ' + APP_NAME;
     description = i18n._(`Practice vocabulary by creatively describing and guessing words`);
@@ -185,155 +147,6 @@ export const generateMetadataInfo = ({
       i18n._(`alias in english online`),
       i18n._(`alias online english`),
     ];
-  }
-
-  if (currentPath === 'privacy') {
-    title = i18n._(`Privacy Policy`) + ' | ' + APP_NAME;
-    description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
-    );
-    keywords = [];
-  }
-
-  if (currentPath === 'cookies') {
-    title = i18n._(`Cookies Policy`) + ' | ' + APP_NAME;
-    description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
-    );
-    keywords = [];
-  }
-
-  if (currentPath === 'terms') {
-    title = i18n._(`Terms of Use`) + ' | ' + APP_NAME;
-    description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
-    );
-    keywords = [];
-  }
-
-  if (currentPath === 'scenarios' && !scenarioId) {
-    let categoryTitle = '';
-
-    if (category) {
-      const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-      const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
-      if (!categoryInfo) {
-        needIndex = false;
-      }
-
-      categoryTitle = categoryInfo ? categoryInfo.categoryTitle : i18n._(`Unknown category`);
-    }
-    title =
-      i18n._(`Real-Life English Role-Play Scenarios`) +
-      (categoryTitle ? ' - ' + categoryTitle : '') +
-      ' | ' +
-      APP_NAME;
-    description = i18n._(
-      `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`,
-    );
-    keywords = [
-      i18n._(`English Role-Play`),
-      i18n._(`English Speaking Practice`),
-      i18n._(`AI English Tutor`),
-      i18n._(`Advanced English Conversation`),
-      i18n._(`Practice English Online`),
-      i18n._(`Real-Life English Scenarios`),
-      i18n._(`Language Immersion`),
-      i18n._(`Fluency Improvement`),
-    ];
-  }
-
-  if (currentPath === 'blog' && !blogId) {
-    let categoryTitle = '';
-
-    if (category) {
-      const items = getBlogs(supportedLang);
-      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
-      if (!categoryInfo) {
-        needIndex = false;
-      }
-      categoryTitle = categoryInfo ? categoryInfo.categoryTitle : i18n._(`Unknown category`);
-    }
-
-    title =
-      i18n._(`Learning Blog`) + (categoryTitle ? ' - ' + categoryTitle : '') + ' | ' + APP_NAME;
-    description = i18n._(
-      `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`,
-    );
-    keywords = [
-      i18n._(`Language Learning Blog`),
-      i18n._(`English Practice Tips`),
-      i18n._(`AI Tutor Updates`),
-      i18n._(`Fluency Goals`),
-      i18n._(`Language Learning Resources`),
-      i18n._(`English Learning Articles`),
-      i18n._(`Language Learning Tips`),
-    ];
-  }
-
-  if (currentPath === 'blog' && blogId) {
-    const { blogs } = getBlogs(supportedLang);
-    const blog = blogs.find((b) => b.id === blogId);
-    if (!blog) {
-      needIndex = false;
-    }
-
-    title =
-      `${blog?.title || 'Blog'} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
-    description = blog?.subTitle || '';
-    keywords = blog?.keywords || [];
-    openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;
-  }
-
-  if (currentPath === 'features' && !featureId) {
-    title = i18n._('FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays');
-    description = i18n._(
-      'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays and stories.',
-    );
-    keywords = [
-      i18n._('FluencyPal features'),
-      i18n._('AI English practice'),
-      i18n._('English role play'),
-      i18n._('English speaking app'),
-    ];
-  }
-
-  if (currentPath === 'features' && featureId) {
-    const feature = getFeatureById(supportedLang, featureId);
-    if (!feature) {
-      needIndex = false;
-    }
-
-    title = feature?.metaTitle || 'Features | FluencyPal';
-    description = feature?.metaDescription || '';
-    keywords = feature?.keywords || [];
-  }
-
-  if (currentPath === 'scenarios' && scenarioId) {
-    const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-    const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
-
-    if (!scenario) {
-      needIndex = false;
-    }
-
-    title =
-      `${scenario?.title || 'Scenario'} - ` +
-      i18n._(`Practice English Conversation with AI | FluencyPal`);
-    description = scenario?.subTitle || '';
-    keywords = [
-      i18n._(`AI English Tutor`),
-      i18n._(`English Role-Play`),
-      i18n._(`Conversational English Practice`),
-      i18n._(`English Fluency`),
-      i18n._(`Advanced English Conversation`),
-      i18n._(`Online Language Practice`),
-      i18n._(`Language Immersion`),
-      i18n._(`Real-Life English Scenarios`),
-      i18n._(`English Speaking Exercises`),
-    ];
-
-    openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
   if (currentPath === 'case' && !interviewId) {
