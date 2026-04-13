@@ -3,16 +3,13 @@
 ## Split app and content pages (Landings)
 
 - Setup correct redirection from old to new
-  -- Check stripe redirection
   -- Landing: set links to "app subdomain"
 
 - Turn off sentry from landing
 
-- Check TG
-
 - Cleanup features from App/Landing
 
-- webApp - Enable search parsing
+- webApp - Enable search parsing?
 
 ## Seo - but for AI
 

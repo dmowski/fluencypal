@@ -3,7 +3,7 @@
 import { Button, Stack } from '@mui/material';
 import { buttonStyle } from './landingSettings';
 import { useEffect, useState } from 'react';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getAppUrlStart } from '../Lang/getUrlStart';
 
 interface FirstEnterButtonProps {
   getStartedTitle: string;
@@ -21,7 +21,9 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   startIcon,
 }) => {
   const [isSignInToLanguage, setIsSignInToLanguage] = useState('');
-  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + 'practice' : '';
+  const openMyPracticeLink = isSignInToLanguage
+    ? getAppUrlStart(isSignInToLanguage) + 'practice'
+    : '';
 
   useEffect(() => {
     const isWindow = typeof window !== 'undefined';
@@ -70,7 +72,9 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
   startIcon,
 }) => {
   const [isSignInToLanguage, setIsSignInToLanguage] = useState('');
-  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + 'practice' : '';
+  const openMyPracticeLink = isSignInToLanguage
+    ? getAppUrlStart(isSignInToLanguage) + 'practice'
+    : '';
 
   useEffect(() => {
     const isWindow = typeof window !== 'undefined';

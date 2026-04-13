@@ -2,7 +2,7 @@
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from 'lucide-react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderUI } from './HeaderUI';
-import { getUrlStart, getUrlStartWithoutLastSlash } from '../Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart, getUrlStartWithoutLastSlash } from '../Lang/getUrlStart';
 
 export interface HeaderStaticProps {
   lang: SupportedLanguage;
@@ -56,7 +56,7 @@ export function HeaderComponentStatic({
       buttons={[
         {
           title: signInTitle,
-          href: getUrlStart(lang) + 'practice',
+          href: getAppUrlStart(lang) + 'practice',
           isSolid: true,
         },
       ]}
