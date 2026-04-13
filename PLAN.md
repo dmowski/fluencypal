@@ -4,6 +4,8 @@
 
 - Create pages (./plans/CONTENT_PAGES.md)
 
+## Review video about "Fluently", fix problem that I have
+
 ## Progress Stats
 
 - Add more details about how it was collected and analyzed
