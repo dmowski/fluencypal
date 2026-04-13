@@ -2,13 +2,8 @@
 
 ## Split app and content pages (Landings)
 
-- landing: clean up
-
-- Cleanup features from App
-
-- webApp - Enable search parsing? Setup Site Map
-
-- webApp - what to show of first page: Practice page?
+- webApp - Enable search engine? Setup Site Map?
+  How to properly handle old link. Make it as part of quiz. "Start" button. With message
 
 ## Seo - but for AI
 
