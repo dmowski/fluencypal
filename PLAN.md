@@ -8,14 +8,18 @@
 
 Plan:
 
-- Deploy landing to ensure it's safe
-- Turn off sentry from landing
-- webApp - prevent search parsing
-- Check auth
-- Check stripe payments and redirection
 - Deploy webApp to a separate project and setup url
+
+- Check auth
+
+- Turn off sentry from landing
+
+- Check stripe payments and redirection
+
 - Setup correct redirection from old to new
 - Check TG
+
+- webApp - Enable search parsing
 
 ## Seo - but for AI
 
