@@ -1,11 +1,9 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
-import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { initLingui } from '@/initLingui';
 import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
 import { allMessages } from '@/appRouterI18n';
-import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
 
@@ -24,20 +22,16 @@ export default async function RootLayout({
         precedence="default"
         dangerouslySetInnerHTML={{ __html: globalInlineCss }}
       />
-      <UserSourceProvider>
-        <ThemeProvider theme={darkTheme}>
-          <WindowSizesProvider>
-            <AppRouterCacheProvider options={{ key: 'css' }}>
-              <LinguiClientProvider
-                initialLocale={supportedLang}
-                initialMessages={allMessages[supportedLang]!}
-              >
-                <UrlStateProvider>{children}</UrlStateProvider>
-              </LinguiClientProvider>
-            </AppRouterCacheProvider>
-          </WindowSizesProvider>
-        </ThemeProvider>
-      </UserSourceProvider>
+      <ThemeProvider theme={darkTheme}>
+        <AppRouterCacheProvider options={{ key: 'css' }}>
+          <LinguiClientProvider
+            initialLocale={supportedLang}
+            initialMessages={allMessages[supportedLang]!}
+          >
+            <UrlStateProvider>{children}</UrlStateProvider>
+          </LinguiClientProvider>
+        </AppRouterCacheProvider>
+      </ThemeProvider>
     </>
   );
 }

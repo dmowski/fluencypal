@@ -1,2 +1,0 @@
-// 350 - $6.99
-export const TELEGRAM_MONTHLY_PRICE_START = 3;

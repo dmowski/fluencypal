@@ -1,5 +1,3 @@
-import { StripeElementLocale } from '@stripe/stripe-js';
-
 export type SupportedLanguage =
   | 'en' // English
   | 'fr' // French
@@ -31,31 +29,6 @@ export const getLabelFromCode = (lang: SupportedLanguage) => {
     return name;
   }
   return `${englishName} (${name})`;
-};
-
-export const stripeLocaleMap: Record<SupportedLanguage, StripeElementLocale> = {
-  en: 'en',
-  ru: 'ru',
-  de: 'de',
-  pl: 'pl',
-  uk: 'ru',
-  fr: 'fr',
-  es: 'es',
-  ar: 'ar',
-  id: 'id',
-  it: 'it',
-  ja: 'ja',
-  ko: 'ko',
-  ms: 'ms',
-  pt: 'pt',
-  th: 'th',
-  tr: 'tr',
-  vi: 'vi',
-  zh: 'zh',
-  da: 'da',
-  no: 'no',
-  sv: 'sv',
-  be: 'ru', // Belarusian - fallback to Russian
 };
 
 export const supportedLanguages: SupportedLanguage[] = [

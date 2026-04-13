@@ -1,8 +1,5 @@
 'use client';
 
-import { auth, firestore } from '@/features/Firebase/init';
-import { clearIndexedDbPersistence, terminate } from 'firebase/firestore';
-import { signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 type Step = { label: string; status: 'pending' | 'ok' | 'error'; error?: string };
@@ -22,29 +19,12 @@ export default function ResetPage() {
 
   useEffect(() => {
     (async () => {
-      // 1. Sign out
-      try {
-        await signOut(auth);
-        setStep(0, 'ok');
-      } catch (e: any) {
-        setStep(0, 'error', e?.message);
-      }
-
       // 2. Clear localStorage
       try {
         localStorage.clear();
         setStep(1, 'ok');
       } catch (e: any) {
         setStep(1, 'error', e?.message);
-      }
-
-      // 3. Terminate Firestore then clear IndexedDB persistence
-      try {
-        await terminate(firestore);
-        await clearIndexedDbPersistence(firestore);
-        setStep(2, 'ok');
-      } catch (e: any) {
-        setStep(2, 'error', e?.message);
       }
 
       // 4. Clear Cache Storage (service worker caches)

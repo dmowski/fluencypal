@@ -1,5 +1,4 @@
 'use client';
-import { AppMode } from '@/features/Settings/userSettings';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
@@ -19,6 +18,8 @@ interface ListItem {
   title: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
 }
+
+export type AppMode = 'interview' | 'learning';
 
 interface FeatureListProps {
   lang?: SupportedLanguage;

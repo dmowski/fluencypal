@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/features/Auth/useAuth';
 import { InterviewQuizContextType, InterviewQuizProps, QuizStep } from './types';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { useQuizCore } from '../useQuizCore';
 import { db } from '@/features/Firebase/firebaseDb';
 import {
@@ -25,7 +25,6 @@ import { ScorePreview } from '@/features/Case/Landing/components/ScorePreviewSec
 import { GoalPlan } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
-import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useRouter } from 'next/navigation';
 import { sleep } from '@/libs/sleep';
@@ -37,7 +36,7 @@ export function useProvideInterviewQuizContext({
   interviewId,
 }: InterviewQuizProps): InterviewQuizContextType {
   const auth = useAuth();
-  const mainPageUrl = getUrlStart(lang) + `case/${interviewId}`;
+  const mainPageUrl = getAppUrlStart(lang) + `case/${interviewId}`;
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
   const ai = useTextAi();
   const plan = usePlan();

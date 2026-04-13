@@ -1,7 +1,6 @@
 import { supportedLanguages } from '@/features/Lang/lang';
 import { Metadata } from 'next';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
-import { PracticeProvider } from '../practiceProvider';
 import { AliasPage } from '@/features/Alias/AliasPage';
 
 export async function generateStaticParams() {

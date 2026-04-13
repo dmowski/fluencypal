@@ -1,19 +1,8 @@
 'use client';
-
 import { CONTACTS } from '@/features/Landing/Contact/data';
-import * as Sentry from '@sentry/nextjs';
 import NextError from 'next/error';
-import { useEffect } from 'react';
 
 export default function GlobalError({ error }: { error: Error & { digest?: string } }) {
-  useEffect(() => {
-    Sentry.captureException(error, {
-      extra: {
-        title: 'NEXT APP GLOBAL ERROR',
-      },
-    });
-  }, [error]);
-
   return (
     <html>
       <body>

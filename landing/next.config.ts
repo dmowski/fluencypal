@@ -1,23 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
-
-const isProductionBuild = process.env.NODE_ENV === 'production';
-const sentryOrg = process.env.SENTRY_ORG;
-const sentryProject = process.env.SENTRY_PROJECT;
-
-if (isProductionBuild && !process.env.SENTRY_AUTH_TOKEN) {
-  throw new Error(
-    'SENTRY_AUTH_TOKEN is required for production builds to upload sourcemaps to Sentry.',
-  );
-}
-
-if (isProductionBuild && (!sentryOrg || !sentryProject)) {
-  throw new Error(
-    'SENTRY_ORG and SENTRY_PROJECT are required for production builds to upload sourcemaps to Sentry.',
-  );
-}
-
-const sentryRelease = process.env.SENTRY_RELEASE ?? process.env.VERCEL_GIT_COMMIT_SHA;
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
@@ -94,34 +75,5 @@ const nextConfig: NextConfig = {
     return config;
   },
 };
-export default withSentryConfig(nextConfig, {
-  // For all available options, see:
-  // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: sentryOrg,
-  project: sentryProject,
-
-  // Auth token for uploading source maps (required for production builds)
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-
-  release: sentryRelease
-    ? {
-        name: sentryRelease,
-      }
-    : undefined,
-
-  // Keep upload logs visible so local production builds don't fail silently.
-  silent: false,
-
-  sourcemaps: {
-    disable: false,
-  },
-
-  errorHandler(error) {
-    throw error;
-  },
-
-  telemetry: false,
-
-  widenClientFileUpload: true,
-});
+export default nextConfig;

@@ -2,9 +2,9 @@
 
 ## Split app and content pages (Landings)
 
-- Logout redirect on Landing
+- Case quiz: correct redirect to main page
 
-- Cleanup features from App/Landing
+- Cleanup features from App
 
 - webApp - Enable search parsing?
 

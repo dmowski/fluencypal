@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import {
   InterviewPageProps,
-  generateInterviewStaticParams,
   generateInterviewMetadata,
   InterviewLandingPageNext,
 } from '@/features/Case/Landing/InterviewLandingPageNext';

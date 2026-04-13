@@ -11,7 +11,7 @@ import { PriceCards } from './components/PriceCards';
 import { GeneralFaqBlock } from '@/features/Landing/FAQ/GeneralFaqBlock';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { Footer } from './components/Footer';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { ExampleQuestionsSection } from './components/ExampleQuestionsSection';
 import { TechStackSection } from './components/TechStackSection';
 import { TextListSection } from './components/TextListSection';
@@ -30,7 +30,7 @@ export async function InterviewLanding({
   interviewData: InterviewData;
 }) {
   const pageUrl = getUrlStart(lang) + `case/${id}`;
-  const quizLink = `${pageUrl}/quiz`;
+  const quizLink = getAppUrlStart(lang) + `case/${id}/quiz`;
 
   return (
     <Stack sx={{ width: '100%' }}>
