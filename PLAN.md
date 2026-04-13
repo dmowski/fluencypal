@@ -2,6 +2,20 @@
 
 ## Split app and content pages (Landings)
 
+- landing page: /web (https://www.fluencypal.com/)
+- App page: /webApp (https://app.fluencypal.com/)
+- Quiz page: /webApp (https://app.fluencypal.com/quiz)
+
+Plan:
+
+- Copy web to webApp
+- webApp - prevent search parsing
+- Check auth
+- Check stripe payments and redirection
+- Deploy webApp to a separate project and setup url
+- Setup correct redirection from old to new
+- Check TG
+
 ## Seo - but for AI
 
 - Create pages (./plans/CONTENT_PAGES.md)
