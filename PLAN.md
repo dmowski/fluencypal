@@ -2,15 +2,15 @@
 
 ## Split app and content pages (Landings)
 
-- Case quiz: correct redirect to main page
+- Remove firebase from lading page
+
+- Remove ENV keys from landing page
 
 - Cleanup features from App
 
-- webApp - Enable search parsing?
+- webApp - Enable search parsing? Setup Site Map
 
-- Turn off sentry from landing
-
-- Create placeholders for old quiz/practice page
+- webApp - what to show of first page: Practice page?
 
 ## Seo - but for AI
 
