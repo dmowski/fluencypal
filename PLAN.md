@@ -8,16 +8,15 @@
 
 Plan:
 
-- Deploy webApp to a separate project and setup url
-
-- Check auth
+- Setup correct redirection from old to new
 
 - Turn off sentry from landing
 
-- Check stripe payments and redirection
+- Stripe - redirection
 
-- Setup correct redirection from old to new
 - Check TG
+
+- Cleanup features from App
 
 - webApp - Enable search parsing
 
