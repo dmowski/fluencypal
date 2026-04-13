@@ -2,9 +2,6 @@
 
 ## Split app and content pages (Landings)
 
-- Setup correct redirection from old to new
-  -- Landing: set links to "app subdomain"
-
 - Turn off sentry from landing
 
 - Cleanup features from App/Landing
