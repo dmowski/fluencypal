@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useLingui } from '@lingui/react';
 import { AuthWallBasic } from './AuthWallBasic';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 
 export const InterviewAuthWall = ({ children, width }: { children: ReactNode; width?: string }) => {
   const { i18n } = useLingui();
@@ -42,12 +42,12 @@ export const InterviewAuthWall = ({ children, width }: { children: ReactNode; wi
         {
           title: i18n._('Privacy Policy'),
           iconName: 'scroll-text',
-          href: `${getUrlStart('en')}privacy`,
+          href: `${getLandingUrlStart('en')}privacy`,
         },
         {
           title: i18n._('Terms of Use'),
           iconName: 'pencil-ruler',
-          href: `${getUrlStart('en')}terms`,
+          href: `${getLandingUrlStart('en')}terms`,
         },
       ]}
     >

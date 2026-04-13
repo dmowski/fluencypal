@@ -2,6 +2,8 @@
 
 ## Split app and content pages (Landings)
 
+- Logout redirect on Landing
+
 - Cleanup features from App/Landing
 
 - webApp - Enable search parsing?

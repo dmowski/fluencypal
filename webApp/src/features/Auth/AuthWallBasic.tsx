@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, Check, Loader, Mail } from 'lucide-react';
 import { scrollTopFast } from '@/libs/scroll';
 import { InfoStep } from '../Survey/InfoStep';
 import { ListItem } from '../Survey/IconTextList';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
 
 const isValidEmail = (email: string) => {
@@ -225,12 +225,12 @@ export const AuthWallBasic = ({
               {
                 title: i18n._('Privacy Policy'),
                 iconName: 'scroll-text',
-                href: `${getUrlStart('en')}privacy`,
+                href: `${getLandingUrlStart('en')}privacy`,
               },
               {
                 title: i18n._('Terms of Use'),
                 iconName: 'pencil-ruler',
-                href: `${getUrlStart('en')}terms`,
+                href: `${getLandingUrlStart('en')}terms`,
               },
             ]}
             onClick={nextStep}
