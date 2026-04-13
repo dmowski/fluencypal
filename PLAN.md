@@ -1,10 +1,5 @@
 # Live document with short/long term ideas
 
-## Split app and content pages (Landings)
-
-- webApp - Enable search engine? Setup Site Map?
-  How to properly handle old link. Make it as part of quiz. "Start" button. With message
-
 ## SEO - but for AI
 
 - Create pages (./plans/CONTENT_PAGES.md)
