@@ -1,0 +1,114 @@
+import { IconButton, Modal, Stack } from '@mui/material';
+import { Trash, X } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import { CustomModal } from '../../uiKit/Modal/CustomModal';
+
+export const AttachmentImage = ({
+  url,
+  onDelete,
+  canDelete,
+  size = '80px',
+  objectFit = 'cover',
+}: {
+  url: string;
+  onDelete: () => void;
+  canDelete: boolean;
+  size?: string;
+  objectFit?: 'cover' | 'contain';
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <Stack
+        sx={{
+          position: 'relative',
+        }}
+        component={'span'}
+      >
+        <Stack
+          component={'span'}
+          sx={{
+            width: size,
+            height: size,
+            cursor: 'pointer',
+          }}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
+        >
+          <Image
+            src={url}
+            alt=""
+            fill
+            sizes={size}
+            style={{
+              objectFit: objectFit,
+              zIndex: 1,
+              borderRadius: '8px',
+            }}
+          />
+        </Stack>
+
+        {canDelete && (
+          <IconButton
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: '-10px',
+              zIndex: 2,
+
+              right: '-10px',
+              backgroundColor: 'rgba(0,0,0,1)',
+              boxShadow: '0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete();
+            }}
+          >
+            <Trash size={'14px'} color="rgba(222, 222, 222, 1)" />
+          </IconButton>
+        )}
+      </Stack>
+
+      {isModalOpen && (
+        <CustomModal onClose={() => setIsModalOpen(false)} isOpen={true}>
+          <Stack
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '100vw',
+              height: '100vh',
+              outline: 'none',
+            }}
+            onClick={() => setIsModalOpen(false)}
+          >
+            <Stack
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <Image
+                src={url}
+                alt="Full size image"
+                fill
+                sizes="1100px"
+                quality={100}
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </Stack>
+          </Stack>
+        </CustomModal>
+      )}
+    </>
+  );
+};

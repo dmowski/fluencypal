@@ -1,0 +1,222 @@
+'use client';
+import { Divider, Stack, Typography } from '@mui/material';
+import { useWindowSizes } from '../../Layout/useWindowSizes';
+import { useLingui } from '@lingui/react';
+import { ArrowRight } from 'lucide-react';
+import { PlanCard } from '@/features/Plan/PlanCard';
+import { GoalPlan, PlanElementMode } from '@/features/Plan/types';
+import { cardColors, modeCardProps } from '@/features/Plan/data';
+import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
+import { FooterButton } from '../../Survey/FooterButton';
+import { useAuth } from '@/features/Auth/useAuth';
+import { Avatar } from '@/features/User/Avatar';
+import { scrollTopFast } from '@/libs/scroll';
+
+export const GoalReview = ({
+  onClick,
+  isLoading,
+  goalData,
+  actionButtonLabel,
+  actionButtonIcon,
+}: {
+  onClick: () => void;
+  isLoading: boolean;
+  goalData?: GoalPlan | null;
+  actionButtonLabel?: string;
+  actionButtonIcon?: React.ReactNode;
+}) => {
+  const { i18n } = useLingui();
+  const sizes = useWindowSizes();
+  const auth = useAuth();
+
+  const onClickHandler = () => {
+    scrollTopFast();
+    onClick();
+  };
+
+  const activeImageUrl = auth.userInfo?.photoURL || '/avatar/map.webp';
+
+  const modeLabels: Record<PlanElementMode, string> = {
+    conversation: i18n._(`Conversation`),
+    play: i18n._(`Role Play`),
+    words: i18n._(`Words`),
+    rule: i18n._(`Rule`),
+  };
+
+  const username = auth.userInfo?.displayName;
+
+  return (
+    <Stack
+      sx={{
+        gap: '0px',
+      }}
+    >
+      <Stack
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+          //justifyContent: "center",
+          gap: '10px',
+          padding: '0 10px',
+          minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 190px)`,
+          //backgroundColor: "rgba(240, 0, 0, 0.1)",
+          paddingTop: '20px',
+        }}
+      >
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            width: '100%',
+            alignItems: 'center',
+            gap: '25px',
+            marginBottom: '20px',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Stack>
+            <Typography
+              variant="body1"
+              sx={{
+                opacity: 0.8,
+                fontSize: '15px',
+                textTransform: 'uppercase',
+              }}
+            >
+              {username ? i18n._(`Plan for`) + ' ' + username : i18n._(`Your practice plan`)}
+            </Typography>
+
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 820,
+                fontSize: '38px',
+                lineHeight: '1.2',
+              }}
+              className={isLoading ? 'loading-shimmer' : ''}
+            >
+              {isLoading ? i18n._('Loading..') : goalData?.title}
+            </Typography>
+          </Stack>
+          <Avatar url={activeImageUrl} avatarSize="60px" />
+        </Stack>
+
+        <Stack
+          sx={{
+            alignItems: 'center',
+            width: '100%',
+            gap: '20px',
+          }}
+        >
+          <Stack
+            sx={{
+              width: '100%',
+            }}
+          >
+            {isLoading ? (
+              <LoadingShapes sizes={['100px', '100px', '100px', '100px', '100px', '100px']} />
+            ) : (
+              <Stack
+                sx={{
+                  gap: '15px',
+                }}
+              >
+                {goalData?.elements.map((planElement, index, sortedElements) => {
+                  const cardInfo = modeCardProps[planElement.mode];
+                  const colorIndex = index % cardColors.length;
+                  const cardColor = cardColors[colorIndex];
+                  const elementsWithSameMode =
+                    sortedElements.filter((element) => element.mode === planElement.mode) || [];
+                  const currentElementIndex = elementsWithSameMode.findIndex(
+                    (element) => element.id === planElement.id,
+                  );
+
+                  const imageVariants = cardInfo.imgUrl;
+                  const imageIndex = currentElementIndex % imageVariants.length;
+                  const imageUrl = imageVariants[imageIndex];
+                  const isActive = index === 0;
+                  const onClickCard = () => {
+                    if (!isActive) return;
+                    onClickHandler();
+                  };
+                  return (
+                    <Stack key={index} sx={{}}>
+                      <PlanCard
+                        key={planElement.id}
+                        delayToShow={index * 180}
+                        title={planElement.title}
+                        subTitle={modeLabels[planElement.mode]}
+                        details={planElement.details}
+                        isDone={false}
+                        isActive={isActive}
+                        isContinueLabel={false}
+                        startColor={cardColor.startColor}
+                        endColor={cardColor.endColor}
+                        bgColor={cardColor.bgColor}
+                        index={index}
+                        isLast={index === sortedElements.length - 1}
+                        onClick={onClickCard}
+                        viewOnly={!isActive}
+                        icon={
+                          <Stack>
+                            <Stack className="avatar">
+                              <img src={imageUrl} alt="" className="avatarContent" />
+                            </Stack>
+                          </Stack>
+                        }
+                      />
+                    </Stack>
+                  );
+                })}
+
+                {goalData?.elements && (
+                  <Stack
+                    sx={{
+                      padding: '30px 0',
+                      gap: '15px',
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: 800,
+                        fontSize: '32px',
+                        //letterSpacing: '1.3px',
+                      }}
+                    >
+                      {i18n._('Results Assessment')}
+                    </Typography>
+                    <PlanCard
+                      delayToShow={goalData.elements.length * 180}
+                      subTitle={i18n._('Next plan')}
+                      title={i18n._('Assessing your progress')}
+                      details={i18n._(
+                        'AI will analyze your progress and, based on the results, create a plan for further action.',
+                      )}
+                      isDone={false}
+                      isActive={false}
+                      isContinueLabel={false}
+                      viewOnly
+                      index={goalData?.elements.length}
+                      startColor={cardColors[0].startColor}
+                      endColor={cardColors[0].endColor}
+                      bgColor={cardColors[0].bgColor}
+                      isLast={true}
+                      icon={<Stack></Stack>}
+                    />
+                  </Stack>
+                )}
+              </Stack>
+            )}
+          </Stack>
+        </Stack>
+      </Stack>
+
+      <FooterButton
+        disabled={isLoading}
+        onClick={onClickHandler}
+        title={actionButtonLabel || i18n._('Start')}
+        endIcon={actionButtonIcon || <ArrowRight />}
+      />
+    </Stack>
+  );
+};

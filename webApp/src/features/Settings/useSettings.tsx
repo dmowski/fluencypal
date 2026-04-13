@@ -1,0 +1,332 @@
+'use client';
+import { createContext, useContext, ReactNode, JSX, useEffect } from 'react';
+import { useAuth } from '../Auth/useAuth';
+import { setDoc } from 'firebase/firestore';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from '@/features/Lang/lang';
+import { db } from '../Firebase/firebaseDb';
+import { useCurrency } from '../User/useCurrency';
+import { getCountryByIP } from '../User/getCountry';
+import { countries } from '@/libs/countries';
+import {
+  AiVoiceSpeed,
+  AppMode,
+  ConversationMode,
+  ParentConsent,
+  UserSettings,
+} from '@/features/Settings/userSettings';
+import { initUserSettingsRequest } from '@/app/api/initUserSettings/initUserSettingsRequest';
+import { NativeLangCode } from '@/libs/language/type';
+import { useUserSource } from '../Analytics/useUserSource';
+import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
+import { AiVoice } from '@/features/Ai/ai';
+import { useUrlState } from '../Url/useUrlState';
+import * as Sentry from '@sentry/nextjs';
+import { sleep } from '@/libs/sleep';
+
+interface SettingsContextType {
+  userCreatedAt: string | null;
+
+  languageCode: SupportedLanguage | null;
+
+  fullLanguageName: string | null;
+
+  loading: boolean;
+  setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
+  setPageLanguage: (language: SupportedLanguage) => Promise<void>;
+  setNativeLanguage: (language: NativeLangCode) => Promise<void>;
+
+  userSettings: UserSettings | null;
+  onDoneGameOnboarding: () => void;
+  setAppMode: (mode: AppMode) => Promise<void>;
+  appMode: AppMode;
+
+  conversationMode: ConversationMode;
+  setConversationMode: (mode: ConversationMode) => Promise<void>;
+
+  setVoice: (voice: AiVoice) => Promise<void>;
+
+  aiVoiceSpeed: AiVoiceSpeed;
+  setAiVoiceSpeed: (speed: AiVoiceSpeed) => Promise<void>;
+  pageLanguageCode: SupportedLanguage;
+  setParentalConsent: (consent: ParentConsent) => Promise<void>;
+
+  confirmAge18Plus: () => Promise<void>;
+
+  setIsSendEmailNotifications: (isEnabled: boolean) => Promise<void>;
+  isSendEmailNotifications: boolean;
+  teacherSettings: {
+    isSettingsModalOpen: boolean;
+    openSettingsModal: () => void;
+    closeSettingsModal: () => void;
+  };
+}
+
+export const settingsContext = createContext<SettingsContextType>({
+  languageCode: null,
+  fullLanguageName: null,
+  loading: true,
+
+  userCreatedAt: null,
+  setLanguage: async () => 'en',
+  setPageLanguage: async () => {},
+  setNativeLanguage: async () => {},
+  userSettings: null,
+  onDoneGameOnboarding: () => {
+    throw new Error('onDoneGameOnboarding function is not implemented');
+  },
+  setAppMode: async () => {},
+  appMode: 'learning',
+
+  conversationMode: 'record',
+  setConversationMode: async () => {},
+  setVoice: async () => {},
+
+  aiVoiceSpeed: 'slow',
+  setAiVoiceSpeed: async () => {},
+  pageLanguageCode: 'en',
+  setParentalConsent: async () => {},
+  confirmAge18Plus: async () => {},
+  setIsSendEmailNotifications: async () => {},
+  isSendEmailNotifications: false,
+  teacherSettings: {
+    isSettingsModalOpen: false,
+    openSettingsModal: () => {},
+    closeSettingsModal: () => {},
+  },
+});
+
+function useProvideSettings(): SettingsContextType {
+  const auth = useAuth();
+  const userId = auth.uid;
+
+  const userSettingsDoc = db.documents.userSettings(userId);
+  const currency = useCurrency();
+  const userSource = useUserSource();
+
+  const [userSettings, loading] = useDocumentData(userSettingsDoc);
+
+  const isSendEmailNotifications = userSettings?.isSendEmailNotifications === false ? false : true;
+
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useUrlState(
+    'teacherSettings',
+    false,
+    false,
+  );
+
+  const openSettingsModal = () => {
+    setIsSettingsModalOpen(true);
+  };
+
+  const closeSettingsModal = () => {
+    setIsSettingsModalOpen(false);
+  };
+
+  const setIsSendEmailNotifications = async (isEnabled: boolean) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { isSendEmailNotifications: isEnabled }, { merge: true });
+  };
+
+  const setLanguage = async (languageCode: SupportedLanguage) => {
+    if (!userSettingsDoc) return 'en';
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || 'en';
+    await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
+    return langCodeValidated;
+  };
+
+  const setAppMode = async (mode: AppMode) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { appMode: mode }, { merge: true });
+  };
+
+  const setConversationMode = async (mode: ConversationMode) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { conversationMode: mode }, { merge: true });
+  };
+
+  const setParentalConsent = async (consent: ParentConsent) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { parentalConsent: consent }, { merge: true });
+  };
+
+  const initUserSettings = async () => {
+    if (!userId) return;
+
+    const country = await getCountryByIP();
+    const countryName = country
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
+      : null;
+
+    const token = await auth.getToken();
+    const result = await initUserSettingsRequest(
+      {
+        currency: currency.currency || null,
+        country: country || null,
+        countryName: countryName || null,
+        userSource: userSource.userSource,
+        photoUrl: auth.userInfo?.photoURL || '',
+        displayName: auth.userInfo?.displayName || '',
+      },
+      token,
+    );
+    if (result.status === 'initialized' && auth.userInfo?.email === 'dmowski.alex@gmail.com') {
+      alert('Creating settings for user ' + auth.userInfo.email);
+      Sentry.captureException('Create settings AGAIN (2) for ' + auth.userInfo.email, {
+        extra: { email: auth.userInfo.email },
+      });
+    }
+  };
+
+  const saveLastLoginTime = async () => {
+    if (!userId || !userSettingsDoc || !isActiveBrowserTab()) return;
+    const formattedLastLoginIso = new Date().toISOString();
+
+    const browserInfo = getBrowserInfo();
+
+    const partialData: Partial<UserSettings> = {
+      lastLoginAtDateTime: formattedLastLoginIso,
+      browserInfo,
+    };
+
+    await setDoc(userSettingsDoc, partialData, { merge: true });
+  };
+
+  useEffect(() => {
+    if (!userId || !userSettingsDoc) return;
+
+    initUserSettings();
+
+    const timeout = setTimeout(() => {
+      saveLastLoginTime();
+    }, 10_000);
+
+    const interval = setInterval(() => {
+      saveLastLoginTime();
+    }, 60_000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [userId, userSettingsDoc]);
+
+  const userCreatedAt = userSettings?.createdAtIso || null;
+
+  const setPageLanguage = async (languageCode: SupportedLanguage) => {
+    if (!userSettingsDoc) return;
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || 'en';
+    await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
+  };
+
+  const setNativeLanguage = async (languageCode: NativeLangCode) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
+  };
+
+  const onDoneGameOnboarding = () => {
+    if (!userSettingsDoc) return;
+    setDoc(userSettingsDoc, { isGameOnboardingCompleted: true }, { merge: true });
+  };
+
+  const pageLanguageCode = userSettings?.pageLanguageCode || '';
+
+  useEffect(() => {
+    const isWindow = typeof window !== 'undefined';
+    if (!isWindow || !pageLanguageCode) return;
+
+    localStorage.setItem('pageLanguageCode', pageLanguageCode);
+  }, [pageLanguageCode]);
+
+  const setVoice = async (voice: AiVoice) => {
+    if (!voice) {
+      throw new Error('Voice is required');
+    }
+
+    if (voice === userSettings?.teacherVoice) {
+      return;
+    }
+    console.log('setVoice', voice);
+
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true });
+  };
+
+  const confirmAge18Plus = async () => {
+    if (!userSettingsDoc) return;
+    const nowIso = new Date().toISOString();
+    await setDoc(userSettingsDoc, { age18PlusConfirmedAtIso: nowIso }, { merge: true });
+  };
+
+  return {
+    userCreatedAt,
+    confirmAge18Plus,
+    pageLanguageCode: userSettings?.pageLanguageCode || 'en',
+
+    setNativeLanguage,
+    languageCode: userSettings?.languageCode || null,
+    fullLanguageName: userSettings?.languageCode
+      ? fullEnglishLanguageName[userSettings.languageCode]
+      : null,
+    loading: loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
+    setLanguage,
+    setPageLanguage,
+    userSettings: userSettings || null,
+    onDoneGameOnboarding,
+    setAppMode,
+    appMode: clearAppMode(userSettings?.appMode || ''),
+
+    conversationMode: userSettings?.conversationMode || 'record',
+    setConversationMode,
+    setVoice,
+
+    aiVoiceSpeed: userSettings?.teacherVoiceSpeed || 'normal',
+    setAiVoiceSpeed: async (speed: AiVoiceSpeed) => {
+      if (!userSettingsDoc) return;
+      await setDoc(userSettingsDoc, { teacherVoiceSpeed: speed }, { merge: true });
+    },
+    setParentalConsent,
+    isSendEmailNotifications,
+    setIsSendEmailNotifications,
+
+    teacherSettings: {
+      isSettingsModalOpen,
+      openSettingsModal,
+      closeSettingsModal,
+    },
+  };
+}
+
+const clearAppMode = (mode: string): AppMode => {
+  if (mode === 'interview' || mode === 'learning') {
+    return mode;
+  }
+  return 'learning';
+};
+
+export function SettingsProvider({ children }: { children: ReactNode }): JSX.Element {
+  const settings = useProvideSettings();
+
+  return <settingsContext.Provider value={settings}>{children}</settingsContext.Provider>;
+}
+
+export const useSettings = (): SettingsContextType => {
+  const context = useContext(settingsContext);
+  if (!context) {
+    throw new Error('useSettings must be used within a SettingsProvider');
+  }
+  return context;
+};
+
+const getBrowserInfo = (): string => {
+  try {
+    const navigatorInfo = typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown';
+    return navigatorInfo;
+  } catch (error) {
+    console.error('Error getting browser info:', error);
+    return 'unknown';
+  }
+};

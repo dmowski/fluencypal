@@ -1,0 +1,60 @@
+import { NativeLangCode } from '@/libs/language/type';
+import { SupportedLanguage } from '../Lang/lang';
+import { UserSource } from '../Analytics/analytics';
+import { AiVoice } from '../Ai/ai';
+
+export interface InitUserSettings {
+  createdAt: number | null;
+  createdAtIso: string | null;
+  currency: string | null;
+  email: string | null;
+  country: string | null;
+  countryName: string | null;
+  userSource: UserSource | null;
+}
+
+export type AppMode = 'interview' | 'learning';
+
+export type ConversationMode = 'record' | 'call' | 'chat';
+
+export type AiVoiceSpeed = 'extremely-slow' | 'slow' | 'normal' | 'fast';
+
+export interface ParentConsent {
+  parentName: string;
+  parentEmail: string;
+  consentGivenAtIso: string;
+}
+
+export interface UserSettings extends InitUserSettings {
+  languageCode: SupportedLanguage | null;
+  pageLanguageCode: SupportedLanguage | null;
+  nativeLanguageCode: NativeLangCode | null;
+  lastLoginAtDateTime: string | null;
+
+  isGameOnboardingCompleted: boolean;
+
+  photoUrl: string | null;
+  displayName: string | null;
+
+  isCreditCardConfirmed: boolean | null;
+
+  appMode: AppMode | null;
+
+  conversationMode: ConversationMode | null;
+
+  browserInfo: string | null;
+
+  teacherVoiceSpeed?: AiVoiceSpeed;
+
+  isParentalConsentNeeded: boolean | null;
+  parentalConsent?: ParentConsent | null;
+
+  age18PlusConfirmedAtIso?: string | null;
+
+  isSendEmailNotifications?: boolean | null;
+  teacherVoice: AiVoice | null;
+}
+
+export interface UserSettingsWithId extends UserSettings {
+  id: string;
+}

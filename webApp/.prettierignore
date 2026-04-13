@@ -1,0 +1,26 @@
+# Build and coverage artifacts
+build
+coverage
+.next
+out
+dist
+playwright-report
+
+# Dependencies
+node_modules
+
+# VCS folders
+.git
+.svn
+.hg
+
+# Public assets
+public
+
+# Optionally ignore generated locales
+src/locales
+
+# Ignore all HTML files (if not meant for Prettier)
+**/*.html
+
+.vercel

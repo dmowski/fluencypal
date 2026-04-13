@@ -1,0 +1,198 @@
+'use client';
+import { Button, Stack, Typography } from '@mui/material';
+
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { maxContentWidth } from '../Landing/landingSettings';
+import { useEffect, useRef, useState } from 'react';
+import { sendTelegramTokenRequest } from '@/app/api/telegram/token/sendTelegramTokenRequest';
+import {
+  initDataRaw as _initDataRaw,
+  initDataState as _initDataState,
+  useSignal,
+  isTMA,
+} from '@telegram-apps/sdk-react';
+import { useAuth } from '../Auth/useAuth';
+import { usePlan } from '../Plan/usePlan';
+import { useSettings } from '../Settings/useSettings';
+import { useRouter } from 'next/navigation';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useLingui } from '@lingui/react';
+import { useIsTgInitialized } from '@/app/telegramProvider';
+
+interface TgAppPageProps {
+  lang: SupportedLanguage;
+}
+
+export const TgAppPage = ({ lang }: TgAppPageProps) => {
+  const { i18n } = useLingui();
+  const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const auth = useAuth();
+  const isSdkInitialized = useIsTgInitialized();
+
+  const plan = usePlan();
+  const settings = useSettings();
+  const isPlanLoading = plan.loading;
+  const router = useRouter();
+  const isAuth = auth.isAuthorized;
+
+  const isAnyPlanForLearnLanguage = plan.activeGoal;
+  const isNeedToRedirectToApp =
+    !isPlanLoading && isAuth && isAnyPlanForLearnLanguage && !settings.loading;
+  useEffect(() => {
+    if (!isNeedToRedirectToApp) {
+      return;
+    }
+    const pageLang = settings.userSettings?.pageLanguageCode || lang;
+
+    // Redirect to APP if plan is present
+    const newPath = `${getUrlStart(pageLang)}practice`;
+    router.push(newPath);
+  }, [isNeedToRedirectToApp]);
+
+  const isNeedToRedirectToQuiz =
+    !isPlanLoading && isAuth && !isAnyPlanForLearnLanguage && !settings.loading;
+
+  useEffect(() => {
+    if (!isNeedToRedirectToQuiz) {
+      return;
+    }
+    const pageLang = settings.userSettings?.pageLanguageCode || lang;
+
+    // Redirect to QUIZ if no plan is present
+    const newPath = `${getUrlStart(pageLang)}quiz`;
+    router.push(newPath);
+  }, [isNeedToRedirectToQuiz]);
+
+  const raw = useSignal(_initDataRaw);
+  const isInitializing = useRef(false);
+
+  const initToken = async (initData: string) => {
+    try {
+      setIsTelegramAuthLoading(true);
+      setError(null);
+      const res = await sendTelegramTokenRequest({ initData });
+      if (res.error) {
+        setError(
+          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ''}`,
+        );
+      } else {
+        const token = res.token;
+        const result = await auth.signInWithCustomToken(token);
+        if (result.error) {
+          console.log('rrrr');
+          setError(result.error || i18n._('Unknown error during sign-in'));
+        }
+      }
+    } catch (err: any) {
+      console.log('catch error', err);
+      setError(err?.message || i18n._('Unknown error'));
+      setIsTelegramAuthLoading(false);
+      throw err;
+    } finally {
+      setIsTelegramAuthLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) {
+      setError(i18n._('Wrong Link'));
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isInitializing.current || auth.isAuthorized || auth.loading || !isSdkInitialized) {
+      return;
+    }
+
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    if (raw) {
+      isInitializing.current = true;
+      sleep(8_000).then(() => {
+        void initToken(raw);
+      });
+    } else {
+      setError(i18n._('Not running inside Telegram App'));
+    }
+  }, [raw, auth.isAuthorized, auth.loading, isSdkInitialized]);
+
+  return (
+    <Stack sx={{}}>
+      <div
+        style={{
+          width: '100%',
+          margin: 0,
+        }}
+      >
+        <Stack
+          component={'main'}
+          sx={{
+            alignItems: 'center',
+            width: '100%',
+            color: '#fff',
+            height: 'max-content',
+            minHeight: '100dvh',
+            maxHeight: '2000px',
+            position: 'relative',
+            paddingTop: '200px',
+          }}
+        >
+          <Stack
+            sx={{
+              width: '100%',
+              maxWidth: maxContentWidth,
+
+              padding: '30px 20px 250px 20px',
+              gap: '40px',
+              alignItems: 'center',
+              boxSizing: 'border-box',
+              opacity: 1,
+            }}
+          >
+            <Stack
+              gap={'30px'}
+              sx={{
+                width: '100%',
+              }}
+            >
+              <Typography
+                sx={{
+                  opacity: 0.6,
+                }}
+                align="center"
+              >
+                {auth.loading
+                  ? i18n._('Loading.')
+                  : isTelegramAuthLoading
+                    ? i18n._('Loading..')
+                    : i18n._('Loading...')}
+              </Typography>
+
+              {error && <Typography color="error">❌ {error}</Typography>}
+
+              {error && (
+                <Button
+                  variant="text"
+                  onClick={async () => {
+                    await auth.logout();
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 300);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                  }}
+                >
+                  {i18n._('Refresh')}
+                </Button>
+              )}
+            </Stack>
+          </Stack>
+        </Stack>
+      </div>
+    </Stack>
+  );
+};

@@ -1,0 +1,98 @@
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { DailyQuestion } from '../DailyQuestion/types';
+import { ThreadsMessage } from '../Chat/type';
+
+export type ProgressMetric = 'grammar' | 'vocabulary' | 'fluency' | 'confidence';
+
+export type ProgressValueMode = 'raw' | 'smoothed';
+
+export type ProgressChartStatus = 'ready' | 'empty' | 'loading' | 'processing' | 'locked';
+
+export type ProgressSourceType = 'conversation' | 'role-play' | 'daily-question-answer';
+
+export interface ProgressAssessmentResult {
+  grammar: number;
+  grammarSummary: string;
+
+  vocabulary: number;
+  vocabularySummary: string;
+
+  fluency: number;
+  fluencySummary: string;
+
+  confidence: number;
+  confidenceSummary: string;
+
+  assessmentConfidence: number;
+  assessmentConfidenceSummary: string;
+}
+
+export interface ProgressStat extends ProgressAssessmentResult {
+  userId: string;
+  language: SupportedLanguage;
+  sourceType: ProgressSourceType;
+  sourceText: string;
+  sourceId: string;
+  textLength: number;
+  algorithmVersion: string;
+  createdAtIso: string;
+}
+
+export interface ProgressChartPoint {
+  id: string;
+  createdAtIso: string;
+  grammar: number;
+  vocabulary: number;
+  fluency: number;
+  confidence: number;
+  grammarSmoothed?: number;
+  vocabularySmoothed?: number;
+  fluencySmoothed?: number;
+  confidenceSmoothed?: number;
+}
+
+export interface ProgressEvaluationInput {
+  transcriptText: string;
+  language: SupportedLanguage;
+  sourceType: ProgressSourceType;
+  sourceId: string;
+}
+
+export interface ProgressEvaluationOutput {
+  rawOutput: string;
+  parsed: ProgressAssessmentResult;
+}
+
+export interface ProgressStatUpsertInput extends ProgressAssessmentResult {
+  language: SupportedLanguage;
+  sourceType: ProgressSourceType;
+  sourceText: string;
+  sourceId: string;
+  textLength: number;
+  algorithmVersion?: string;
+  createdAtIso?: string;
+}
+
+export class ProgressEvaluationError extends Error {
+  rawOutput?: string;
+  parseError?: string;
+  attempts?: number;
+
+  constructor(
+    message: string,
+    options?: { rawOutput?: string; parseError?: string; attempts?: number; cause?: unknown },
+  ) {
+    super(message, { cause: options?.cause });
+    this.name = 'ProgressEvaluationError';
+    this.rawOutput = options?.rawOutput;
+    this.parseError = options?.parseError;
+    this.attempts = options?.attempts;
+  }
+}
+
+export interface DailyQuestionData {
+  question: DailyQuestion;
+  languageCode: SupportedLanguage;
+  questionSpaceId: string;
+  messages: ThreadsMessage[];
+}

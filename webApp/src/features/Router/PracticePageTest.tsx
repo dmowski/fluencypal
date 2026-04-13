@@ -1,0 +1,247 @@
+'use client';
+import { Divider, Stack } from '@mui/material';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
+import { ConversationCanvas } from '../Conversation/ConversationCanvas';
+import { ConversationMessage } from '@/features/Conversation/conversation';
+import { GuessGameStat } from '../Conversation/types';
+import { useEffect, useState } from 'react';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
+import { useAiUserInfo } from '../User/useAiUserInfo';
+import { ConversationMode } from '@/features/Settings/userSettings';
+
+interface PracticePageTestProps {
+  rolePlayInfo: RolePlayScenariosInfo;
+  lang: SupportedLanguage;
+}
+
+let startTestMessages: ConversationMessage[] = [];
+
+for (let i = 0; i < 7; i++) {
+  startTestMessages.push({
+    isBot: i % 2 === 0,
+    text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
+    id: `${i}`,
+  });
+}
+
+export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
+  const aiUserInfo = useAiUserInfo();
+  const [testMessage, setTestMessage] = useState<ConversationMessage[]>(startTestMessages);
+
+  const showGame = false;
+  const gameStat: GuessGameStat | null = showGame
+    ? {
+        wordsUserToDescribe: [
+          'Dog',
+          'Cat',
+          'Elephant',
+          'Metal',
+          'Wood',
+          'Plastic',
+          'Paper',
+          'Rock',
+        ],
+        wordsAiToDescribe: ['Dog', 'polite'],
+      }
+    : null;
+
+  const aiConversation = useAiConversation();
+  useEffect(() => {
+    const isWindows = typeof window !== 'undefined';
+    if (!isWindows) {
+      return;
+    }
+    setTimeout(() => {
+      aiConversation.setIsStarted(true);
+    }, 300);
+  }, []);
+
+  const recordVisualizerComponent = (
+    <Stack
+      sx={{
+        width: '200px',
+        height: '40px',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Divider
+        sx={{
+          width: '100%',
+        }}
+      />
+    </Stack>
+  );
+
+  const generateFirstMessage = async () => {
+    setTestMessage([
+      {
+        isBot: true,
+        text: `Loading...\n`,
+        id: `${Date.now()}`,
+      },
+    ]);
+    const responseString = await aiUserInfo.generateFirstMessageText('');
+
+    if (responseString) {
+      setTestMessage([
+        {
+          isBot: true,
+          text: responseString.firstMessage,
+          id: `${Date.now()}`,
+        },
+        {
+          isBot: true,
+          text: responseString.potentialTopics,
+          id: `${Date.now() + 2}`,
+        },
+      ]);
+    } else {
+      setTestMessage([
+        {
+          isBot: true,
+          text: `Sorry, I couldn't generate a message. Please try again.`,
+          id: `${Date.now()}`,
+        },
+      ]);
+    }
+  };
+
+  const a = {
+    id: '',
+    title: 'Improve Spontaneous Speaking',
+    elements: [
+      {
+        id: '1',
+        title: 'Public speaking',
+        subTitle: '',
+        mode: 'conversation',
+        description: '',
+        startCount: 0,
+        details: '',
+      },
+
+      {
+        id: '1',
+        title: 'Software Development',
+        subTitle: '',
+        mode: 'conversation',
+        description: '',
+        startCount: 0,
+        details: '',
+      },
+    ],
+    createdAt: 0,
+    languageCode: 'en',
+  };
+
+  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
+  const [conversationMode, setConversationMode] = useState<ConversationMode>('call');
+
+  const addMessage = async (message: string) => {
+    setTestMessage((prevMessages) => [
+      ...prevMessages,
+      {
+        isBot: false,
+        text: message,
+        id: `${Date.now()}`,
+      },
+    ]);
+  };
+
+  const addTranscriptDelta = (delta: string) => {
+    setTestMessage((prevMessages) => {
+      const lastMessage = prevMessages[prevMessages.length - 1];
+      if (lastMessage && !lastMessage.isBot) {
+        const updatedMessage = {
+          ...lastMessage,
+          text: `${lastMessage.text} ${delta}`.trim(),
+        };
+        return [...prevMessages.slice(0, -1), updatedMessage];
+      } else {
+        return [...prevMessages, { isBot: false, text: delta, id: `${Date.now()}` }];
+      }
+    });
+  };
+
+  const triggerResponse = async () => {
+    setTestMessage((prevMessages) => [
+      ...prevMessages,
+      {
+        isBot: true,
+        text: `Response generated by AI...\n`,
+        id: `${Date.now()}`,
+      },
+    ]);
+  };
+
+  const completeUserMessageDelta = async ({ removeMessage }: { removeMessage?: boolean }) => {
+    if (removeMessage) {
+      setTestMessage((prevMessages) => {
+        const lastMessage = prevMessages[prevMessages.length - 1];
+        if (lastMessage && !lastMessage.isBot) {
+          return prevMessages.slice(0, -1);
+        }
+        return prevMessages;
+      });
+      return;
+    }
+    triggerResponse();
+  };
+
+  return (
+    <Stack>
+      <ConversationCanvas
+        addTranscriptDelta={addTranscriptDelta}
+        completeUserMessageDelta={completeUserMessageDelta}
+        openCommunityPage={() => {}}
+        pointsEarned={12}
+        messageOrder={{}}
+        isMuted
+        conversation={testMessage}
+        gameWords={gameStat}
+        isClosed={false}
+        isClosing={false}
+        addUserMessage={addMessage}
+        balanceHours={0.2}
+        togglePaymentModal={() => alert('Payment modal toggled')}
+        isLimitedVoice={false}
+        onLimitedClick={() => {}}
+        isRecording={false}
+        startRecording={async () => {}}
+        stopRecording={async () => {}}
+        cancelRecording={async () => {}}
+        isTranscribing={false}
+        transcriptMessage=""
+        recordingMilliSeconds={0}
+        recordVisualizerComponent={recordVisualizerComponent}
+        recordingError={''}
+        isShowMessageProgress={true}
+        lessonPlanAnalysis={{
+          progress: 99,
+        }}
+        conversationAnalysisResult={{
+          whatToFocusOnNextTime: 'Try to use more complex sentences.',
+          whatUserDidWell: 'You spoke clearly and confidently.',
+          shortSummaryOfLesson:
+            'In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.',
+          whatUserCanImprove: 'Work on expanding your vocabulary and using idiomatic expressions.',
+        }}
+        closeConversation={async () => alert('Close conversation')}
+        analyzeConversation={async () => {}}
+        onWebCamDescription={() => {}}
+        setIsMuted={() => setIsAiSpeaking(!isAiSpeaking)}
+        isVolumeOn={true}
+        setIsVolumeOn={() => {}}
+        isAiSpeaking={isAiSpeaking}
+        conversationMode={conversationMode}
+        voice="shimmer"
+        toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
+        openNextLesson={() => {}}
+        recordingVoiceMode="VAD"
+        isSendMessagesBlocked
+      />
+    </Stack>
+  );
+}

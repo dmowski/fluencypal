@@ -1,0 +1,110 @@
+import { useGame } from '@/features/Game/useGame';
+import { useLingui } from '@lingui/react';
+import { Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
+import { useAccess } from '../useAccess';
+import { useUsage } from '../useUsage';
+import { AccessStatusIcon } from './AccessStatusIcon';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
+
+export const BalanceStatus = () => {
+  const usage = useUsage();
+  const game = useGame();
+  const access = useAccess();
+  const dailyTasks = useDailyTasks();
+
+  const { i18n } = useLingui();
+
+  const activeTill = usage.activeSubscriptionTill
+    ? `${dayjs(usage.activeSubscriptionTill).format('DD MMMM (YYYY)')}`
+    : null;
+
+  const isGameWinner = game.isGameWinner;
+  const isAllDailyTasksCompleted = dailyTasks.isAllTasksCompleted;
+  const balanceHours = usage.balanceHours;
+
+  const isHaveAccess = access.isFullAppAccess;
+
+  return (
+    <Stack
+      sx={{
+        gap: '10px',
+        width: '100%',
+        paddingBottom: '0px',
+      }}
+    >
+      <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 700 }}>
+        {i18n._('Full Access')}
+      </Typography>
+
+      <Stack
+        sx={{
+          gap: '20px',
+        }}
+      >
+        <Stack
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr',
+            gap: '15px',
+            alignItems: 'center',
+          }}
+        >
+          {(isHaveAccess || usage.loading) && (
+            <AccessStatusIcon
+              state={usage.loading ? 'loading' : isHaveAccess ? 'full-access' : 'no-access'}
+            />
+          )}
+          <Stack>
+            <Typography variant="h6" sx={{}}>
+              {usage.loading
+                ? i18n._('Loading...')
+                : isHaveAccess
+                  ? i18n._('You have full access')
+                  : i18n._('Unlock unlimited AI conversations and all practice modes')}
+            </Typography>
+
+            <Typography variant="body2" sx={{}}>
+              {usage.loading
+                ? i18n._('...')
+                : isHaveAccess
+                  ? i18n._('Unlimited conversations and all practice modes!')
+                  : ''}
+            </Typography>
+          </Stack>
+        </Stack>
+        <Stack
+          sx={{
+            maxWidth: '700px',
+          }}
+        >
+          {isAllDailyTasksCompleted && !activeTill ? (
+            <Typography variant="body1">
+              {i18n._(
+                'You have completed all daily tasks! Full access is valid until the next day.',
+              )}
+            </Typography>
+          ) : isGameWinner ? (
+            <Typography variant="body1">
+              {i18n._(
+                'You are a leader in leaderboard! Full access is active until you are on the top-5',
+              )}
+            </Typography>
+          ) : activeTill ? (
+            <Typography variant="body1">
+              {i18n._('Your full access is active until {date}', { date: activeTill })}
+            </Typography>
+          ) : balanceHours > 0 ? (
+            <Typography variant="body1">
+              {i18n._('You have {hours} AI hours on your balance', {
+                hours: balanceHours.toFixed(1),
+              })}
+            </Typography>
+          ) : (
+            <></>
+          )}
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};

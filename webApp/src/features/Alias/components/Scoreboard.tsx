@@ -1,0 +1,187 @@
+'use client';
+
+import React, { useMemo } from 'react';
+import { useLingui } from '@lingui/react';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Container,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
+import { useGameState } from '../hooks/useGameState';
+
+export const Scoreboard: React.FC = () => {
+  const { i18n } = useLingui();
+  const { state, getCurrentPlayer, getCurrentTeam, setScreen, getScores, getTeamScores } =
+    useGameState();
+
+  const currentPlayer = getCurrentPlayer();
+  const currentTeam = getCurrentTeam();
+  const isTeamsMode = state.settings?.mode === 'teams';
+
+  const scoresData = useMemo(() => {
+    if (!state.settings) return [];
+
+    if (isTeamsMode && state.settings.teams) {
+      const teamScores = getTeamScores();
+      const scoreMap = new Map(teamScores.map((ts) => [ts.teamId, ts.score]));
+
+      return state.settings.teams
+        .map((team) => ({
+          id: team.id,
+          name: team.name,
+          score: scoreMap.get(team.id) || 0,
+          isCurrent: currentTeam?.id === team.id,
+          type: 'team' as const,
+        }))
+        .sort((a, b) => b.score - a.score);
+    } else if (state.settings.players) {
+      const playerScores = getScores();
+      const scoreMap = new Map(playerScores.map((ps) => [ps.playerId, ps.score]));
+
+      return state.settings.players
+        .map((player) => ({
+          id: player.id,
+          name: player.name,
+          score: scoreMap.get(player.id) || 0,
+          isCurrent: currentPlayer?.id === player.id,
+          type: 'player' as const,
+        }))
+        .sort((a, b) => b.score - a.score);
+    }
+
+    return [];
+  }, [
+    state.settings,
+    state.rounds,
+    currentPlayer,
+    currentTeam,
+    isTeamsMode,
+    getScores,
+    getTeamScores,
+  ]);
+
+  const handleContinue = () => {
+    setScreen('turn-start');
+  };
+
+  return (
+    <Container maxWidth="md" data-testid="scoreboard">
+      <Card>
+        <CardContent>
+          <Stack spacing={3} sx={{ py: 2 }}>
+            <Stack spacing={1} alignItems="center">
+              <Typography variant="h5" fontWeight="bold">
+                {i18n._('Scoreboard')}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {i18n._(`Round {current} / {total}`, {
+                  current: state.currentRound,
+                  total: state.settings?.numberOfRounds,
+                })}
+              </Typography>
+            </Stack>
+
+            <TableContainer component={Paper} variant="outlined">
+              <Table data-testid="scoreboard-table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: 'bold' }} align="left">
+                      {i18n._('Rank')}
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} align="left">
+                      {isTeamsMode ? i18n._('Team') : i18n._('Player')}
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }} align="right">
+                      {i18n._('Score')}
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {scoresData.map((entry, index) => {
+                    const isHighlight = entry.isCurrent;
+
+                    return (
+                      <TableRow
+                        key={entry.id}
+                        data-testid={`scoreboard-row-${entry.name}`}
+                        sx={{
+                          '&:hover': {
+                            backgroundColor: isHighlight ? 'rgb(33, 33, 33)' : 'rgb(33, 33, 33)',
+                          },
+                          transition: 'background-color 0.2s',
+                        }}
+                      >
+                        <TableCell
+                          sx={{
+                            fontWeight: isHighlight ? 'bold' : 'normal',
+                            color: isHighlight ? '#1976d2' : '#fff',
+                            width: '60px',
+                          }}
+                        >
+                          #{index + 1}
+                        </TableCell>
+                        <TableCell
+                          sx={{
+                            fontWeight: isHighlight ? 'bold' : 'normal',
+                            color: isHighlight ? '#1976d2' : '#fff',
+                          }}
+                        >
+                          <Stack direction="row" spacing={1} alignItems="center">
+                            <Typography variant="body2" color={isHighlight ? '#1976d2' : '#fff'}>
+                              {entry.name}
+                            </Typography>
+                            {isHighlight && (
+                              <Chip
+                                label={i18n._('Now')}
+                                size="small"
+                                color="primary"
+                                variant="outlined"
+                              />
+                            )}
+                          </Stack>
+                        </TableCell>
+                        <TableCell
+                          align="right"
+                          sx={{
+                            fontWeight: isHighlight ? 'bold' : 'normal',
+                            fontSize: isHighlight ? '1.1rem' : '1rem',
+                            color: isHighlight ? '#1976d2' : '#fff',
+                          }}
+                          data-testid={`scoreboard-score-${entry.name}`}
+                        >
+                          {entry.score}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            <Button
+              variant="contained"
+              size="large"
+              onClick={handleContinue}
+              data-testid="scoreboard-continue"
+              fullWidth
+            >
+              {i18n._('Continue to Next Turn')}
+            </Button>
+          </Stack>
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};

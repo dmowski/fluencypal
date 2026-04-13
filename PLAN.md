@@ -9,6 +9,9 @@
 Plan:
 
 - Copy web to webApp
+- Rename web to landing
+- Deploy landing to ensure it's safe
+- Turn off sentry from landing
 - webApp - prevent search parsing
 - Check auth
 - Check stripe payments and redirection
