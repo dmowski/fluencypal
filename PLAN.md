@@ -2,21 +2,15 @@
 
 ## Split app and content pages (Landings)
 
-- landing page: /web (https://www.fluencypal.com/)
-- App page: /webApp (https://app.fluencypal.com/)
-- Quiz page: /webApp (https://app.fluencypal.com/quiz)
-
-Plan:
-
 - Setup correct redirection from old to new
+  -- Check stripe redirection
+  -- Landing: set links to "app subdomain"
 
 - Turn off sentry from landing
 
-- Stripe - redirection
-
 - Check TG
 
-- Cleanup features from App
+- Cleanup features from App/Landing
 
 - webApp - Enable search parsing
 
