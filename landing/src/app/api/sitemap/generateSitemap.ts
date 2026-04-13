@@ -106,13 +106,6 @@ export async function generateSitemap(): Promise<string> {
     priority: '0.7000',
   }));
 
-  const quizUrls: UrlDefinition[] = supportedLanguages
-    .filter((lang) => lang !== 'en')
-    .map((lang) => ({
-      path: `quiz?learn=${lang}`,
-      priority: '0.8000',
-    }));
-
   const urls: UrlDefinition[] = [
     {
       path: '',
@@ -164,11 +157,6 @@ export async function generateSitemap(): Promise<string> {
       priority: '0.6000',
     },
 
-    {
-      path: 'practice',
-      priority: '0.6000',
-    },
-
     ...localeLinks,
     ...casesUrls,
     ...casesCategoriesUrls,
@@ -177,7 +165,6 @@ export async function generateSitemap(): Promise<string> {
     ...blogsUrls,
     ...blogsCategoriesUrls,
     ...featureUrls,
-    ...quizUrls,
   ];
 
   const textResponse = `<?xml version="1.0" encoding="UTF-8"?>

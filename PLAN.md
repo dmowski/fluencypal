@@ -2,11 +2,13 @@
 
 ## Split app and content pages (Landings)
 
-- Turn off sentry from landing
-
 - Cleanup features from App/Landing
 
 - webApp - Enable search parsing?
+
+- Turn off sentry from landing
+
+- Create placeholders for old quiz/practice page
 
 ## Seo - but for AI
 
