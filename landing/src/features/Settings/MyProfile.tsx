@@ -28,7 +28,7 @@ import { NeedHelpModal } from '../Header/NeedHelpModal';
 import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
 import { useRouter } from 'next/navigation';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
 import { AiKnowledgeModal } from '../User/AiKnowledgeModal';
@@ -130,7 +130,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       subTitle: i18n._(`Log out of your account`),
       icon: LogOut,
       onClick: async () => {
-        router.push(getUrlStart(lang));
+        router.push(getLandingUrlStart(lang));
         setTimeout(async () => {
           await auth.logout();
         }, 300);
