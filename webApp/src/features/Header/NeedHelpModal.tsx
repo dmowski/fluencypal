@@ -3,7 +3,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { Trash } from 'lucide-react';
 import { useState } from 'react';
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import { useLingui } from '@lingui/react';
 import { useDeleteAccount } from '../Auth/useDeleteAccount';
 import { isTMA } from '@telegram-apps/sdk-react';
@@ -16,7 +16,7 @@ interface NeedHelpModalProps {
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const isTelegramApp = isTMA();
-  const urlPathToRedirect = isTelegramApp ? getUrlStart(lang) + 'tg' : getUrlStart(lang);
+  const urlPathToRedirect = isTelegramApp ? getUrlStart(lang) + 'tg' : getLandingUrlStart(lang);
 
   const deleteAccount = useDeleteAccount({
     onClose,
