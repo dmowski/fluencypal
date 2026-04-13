@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { PageMoved } from '@/features/Landing/PageMoved';
+import { QuizStart } from '@/features/Landing/QuizStart';
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -32,7 +33,7 @@ export default async function Page(props: PageProps) {
   return (
     <html lang={supportedLang}>
       <body>
-        <PageMoved lang={supportedLang} page="quiz" />
+        <QuizStart lang={supportedLang} />
       </body>
     </html>
   );

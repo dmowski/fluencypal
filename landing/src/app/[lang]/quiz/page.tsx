@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
-import { PageMoved } from '@/features/Landing/PageMoved';
+import { QuizStart } from '@/features/Landing/QuizStart';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -30,5 +30,5 @@ export default async function Page(props: PageProps) {
 
   const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
 
-  return <PageMoved lang={supportedLang} page="quiz" />;
+  return <QuizStart lang={supportedLang} />;
 }

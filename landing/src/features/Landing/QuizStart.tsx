@@ -2,17 +2,12 @@ import { Stack, Typography, Button } from '@mui/material';
 import { getAppUrlStart } from '../Lang/getUrlStart';
 import { SupportedLanguage } from '../Lang/lang';
 import { ChevronRight } from 'lucide-react';
+import { getI18nInstance } from '@/appRouterI18n';
 
-export const PageMoved = ({
-  lang,
-  page,
-  title,
-}: {
-  lang: SupportedLanguage;
-  page: string;
-  title?: string;
-}) => {
-  const url = getAppUrlStart(lang) + page;
+export const QuizStart = ({ lang }: { lang: SupportedLanguage }) => {
+  const url = getAppUrlStart(lang) + 'quiz';
+  const i18n = getI18nInstance(lang);
+
   return (
     <Stack
       sx={{
@@ -25,11 +20,26 @@ export const PageMoved = ({
         sx={{
           maxWidth: '600px',
           alignItems: 'flex-start',
+          width: '100%',
+          gap: '30px',
+          padding: '20px',
         }}
       >
-        <Typography variant="h3" component={'h1'} sx={{ mb: 3 }}>
-          {title || 'The application has been moved to a new address'}
-        </Typography>
+        <Stack>
+          <Typography
+            variant="h3"
+            component={'h1'}
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
+            {i18n._('Learning Plan')}
+          </Typography>
+          <Typography>
+            {i18n._('Create a personalized language learning plan with FluencyPal.')}
+          </Typography>
+        </Stack>
+
         <Stack
           sx={{
             gap: '5px',
@@ -42,11 +52,8 @@ export const PageMoved = ({
             href={url}
             variant="contained"
           >
-            Go to new URL
+            Go to Quiz
           </Button>
-          <Typography variant="caption" color="textSecondary">
-            {url}
-          </Typography>
         </Stack>
       </Stack>
     </Stack>
