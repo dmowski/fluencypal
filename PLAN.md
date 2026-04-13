@@ -2,9 +2,7 @@
 
 ## Split app and content pages (Landings)
 
-- Remove firebase from lading page
-
-- Remove ENV keys from landing page
+- landing: clean up
 
 - Cleanup features from App
 
