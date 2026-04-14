@@ -117,7 +117,7 @@ function useProvideDailyTasks(): DailyTaskApi {
 
   const dailyPlans: DayTasksMeta[] = [
     {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'daily-question'],
       title: i18n._('Build a steady learning habit'),
       subTitle: i18n._('Start with today’s tasks and keep a gentle pace.'),
       imageUrl: previewImageUrl,
@@ -125,7 +125,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'daily-question'],
+      tasks: ['just-talk', 'grammar-improvement', 'daily-question'],
       title: i18n._('Day two: keep going'),
       subTitle: i18n._('Continue with today’s tasks and stay consistent.'),
       imageUrl: previewImageUrl,
