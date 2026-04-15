@@ -2,15 +2,7 @@
 
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ResponsiveContainer,
-  Legend,
-} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend } from 'recharts';
 import type { ProgressStat } from './types';
 import {
   getRadarChartData,
@@ -48,39 +40,37 @@ function ComparisonRadarChart({ data }: { data: RadarComparisonPoint[] }) {
   const chartData = formatComparisonForChart(data);
 
   return (
-    <ResponsiveContainer width={500} height={400}>
-      <RadarChart data={chartData}>
-        <PolarGrid stroke="rgba(255,255,255,0.15)" />
-        <PolarAngleAxis
-          dataKey="metric"
-          tickSize={20}
-          tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
-        />
-        <PolarRadiusAxis
-          angle={90}
-          domain={[0, 100]}
-          tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }}
-          tickCount={4}
-        />
-        <Radar
-          name="Last 30 days"
-          dataKey="lastMonth"
-          stroke={LAST_MONTH_COLOR}
-          fill={LAST_MONTH_COLOR}
-          fillOpacity={0.25}
-          strokeWidth={2}
-        />
-        <Radar
-          name="Previous 30 days"
-          dataKey="previousMonth"
-          stroke={PREV_MONTH_COLOR}
-          fill={PREV_MONTH_COLOR}
-          fillOpacity={0.25}
-          strokeWidth={2}
-        />
-        <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', paddingTop: 8 }} />
-      </RadarChart>
-    </ResponsiveContainer>
+    <RadarChart data={chartData} width={500} height={400}>
+      <PolarGrid stroke="rgba(255,255,255,0.15)" />
+      <PolarAngleAxis
+        dataKey="metric"
+        tickSize={20}
+        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
+      />
+      <PolarRadiusAxis
+        angle={90}
+        domain={[0, 100]}
+        tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }}
+        tickCount={4}
+      />
+      <Radar
+        name="Last 30 days"
+        dataKey="lastMonth"
+        stroke={LAST_MONTH_COLOR}
+        fill={LAST_MONTH_COLOR}
+        fillOpacity={0.25}
+        strokeWidth={2}
+      />
+      <Radar
+        name="Previous 30 days"
+        dataKey="previousMonth"
+        stroke={PREV_MONTH_COLOR}
+        fill={PREV_MONTH_COLOR}
+        fillOpacity={0.25}
+        strokeWidth={2}
+      />
+      <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', paddingTop: 8 }} />
+    </RadarChart>
   );
 }
 
@@ -88,23 +78,21 @@ function SingleRadarChart({ data, color }: { data: RadarDataPoint[]; color: stri
   const chartData = formatDataForChart(data);
 
   return (
-    <ResponsiveContainer width={500} height={400}>
-      <RadarChart data={chartData}>
-        <PolarGrid stroke="rgba(255,255,255,0.15)" />
-        <PolarAngleAxis
-          dataKey="metric"
-          tickSize={20}
-          tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
-        />
-        <PolarRadiusAxis
-          angle={90}
-          domain={[0, 100]}
-          tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }}
-          tickCount={4}
-        />
-        <Radar dataKey="value" stroke={color} fill={color} fillOpacity={0.3} strokeWidth={2} />
-      </RadarChart>
-    </ResponsiveContainer>
+    <RadarChart data={chartData} width={500} height={400}>
+      <PolarGrid stroke="rgba(255,255,255,0.15)" />
+      <PolarAngleAxis
+        dataKey="metric"
+        tickSize={20}
+        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
+      />
+      <PolarRadiusAxis
+        angle={90}
+        domain={[0, 100]}
+        tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }}
+        tickCount={4}
+      />
+      <Radar dataKey="value" stroke={color} fill={color} fillOpacity={0.3} strokeWidth={2} />
+    </RadarChart>
   );
 }
 
