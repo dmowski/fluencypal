@@ -1,10 +1,56 @@
 'use client';
 
-import { Box, Chip, Divider, Stack, Tooltip, Typography } from '@mui/material';
+import { Box, Chip, Divider, Stack, Tooltip, Typography, Button } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 import type { ProgressStat, ProgressSourceType, ProgressMetric } from './types';
 import { METRIC_COLOR } from './data';
+
+const PREVIEW_LENGTH = 100;
+
+const SourceTextPreview = ({ text }: { text: string }) => {
+  const { i18n } = useLingui();
+  const [expanded, setExpanded] = useState(false);
+
+  const isLong = text.length > PREVIEW_LENGTH;
+  const displayed = isLong && !expanded ? text.slice(0, PREVIEW_LENGTH) + '…' : text;
+
+  return (
+    <Stack sx={{ gap: '4px' }}>
+      <Typography
+        variant="caption"
+        sx={{
+          color: '#dfdfdf',
+          whiteSpace: 'pre-wrap',
+          lineHeight: 1.5,
+        }}
+      >
+        {i18n._('Source text:')}
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#dfdfdf',
+          whiteSpace: 'pre-wrap',
+          lineHeight: 1.5,
+        }}
+      >
+        {displayed}
+      </Typography>
+      {isLong && (
+        <Button
+          size="small"
+          variant="text"
+          onClick={() => setExpanded((prev) => !prev)}
+          sx={{ alignSelf: 'flex-start', padding: 0, minWidth: 0, textTransform: 'none' }}
+        >
+          {expanded ? i18n._('Show less') : i18n._('Show more')}
+        </Button>
+      )}
+    </Stack>
+  );
+};
 
 const MetricBadge = ({ label, value }: { label: ProgressMetric; value: number }) => (
   <Stack sx={{ alignItems: 'center', gap: '2px', minWidth: '124px' }}>
@@ -121,16 +167,7 @@ export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
             backgroundColor: 'rgba(255, 255, 255, 0.04)',
           }}
         >
-          <Typography
-            variant="body1"
-            sx={{
-              color: '#dfdfdf',
-              whiteSpace: 'pre-wrap',
-              lineHeight: 1.5,
-            }}
-          >
-            {stat.sourceText}
-          </Typography>
+          <SourceTextPreview text={stat.sourceText} />
         </Box>
       )}
 
