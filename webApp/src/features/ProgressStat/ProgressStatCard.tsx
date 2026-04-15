@@ -52,26 +52,6 @@ const SourceTextPreview = ({ text }: { text: string }) => {
   );
 };
 
-const MetricBadge = ({ label, value }: { label: ProgressMetric; value: number }) => (
-  <Stack sx={{ alignItems: 'center', gap: '2px', minWidth: '124px' }}>
-    <Typography variant="h3" component={'span'} sx={{ fontWeight: 500 }}>
-      {value}
-    </Typography>
-
-    <Typography
-      variant="h6"
-      component={'span'}
-      sx={{
-        color: METRIC_COLOR[label] ?? 'text.secondary',
-        fontWeight: 400,
-        textTransform: 'capitalize',
-      }}
-    >
-      {label}
-    </Typography>
-  </Stack>
-);
-
 export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
   const { i18n } = useLingui();
 
@@ -93,40 +73,35 @@ export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
       }}
     >
       <Stack
-        direction="row"
         sx={{
-          justifyContent: 'space-between',
           alignItems: 'flex-start',
-          gap: '8px',
+          flexDirection: 'row',
+          gap: '5px',
           flexWrap: 'wrap',
         }}
       >
-        <Stack sx={{ gap: '4px' }}>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {dayjs(stat.createdAtIso).format('D MMM YYYY, HH:mm')}
-            {' | '}
-            {sourceTypeLabel[stat.sourceType] ?? stat.sourceType}
-          </Typography>
-        </Stack>
+        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+          {dayjs(stat.createdAtIso).format('D MMM YYYY, HH:mm')}
+          {' | '}
+          {sourceTypeLabel[stat.sourceType] ?? stat.sourceType} {' | '}
+        </Typography>
+
         <Tooltip
           title={`${i18n._('Assessment confidence')}: ${stat.assessmentConfidence}/100 — ${stat.assessmentConfidenceSummary}`}
           arrow
         >
-          <Stack sx={{ alignItems: 'flex-end', gap: '2px', cursor: 'help' }}>
-            <Typography
-              variant="caption"
-              sx={{
-                color: 'text.secondary',
-                b: {
-                  fontWeight: 700,
-                  color: '#fff',
-                },
-              }}
-            >
-              {i18n._('AI confidence')}
-              {' | '} <b>{stat.assessmentConfidence}</b>/100
-            </Typography>
-          </Stack>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+              b: {
+                fontWeight: 700,
+                color: '#fff',
+              },
+            }}
+          >
+            {i18n._('AI confidence')}: <b>{stat.assessmentConfidence}%</b>
+          </Typography>
         </Tooltip>
       </Stack>
 
@@ -150,7 +125,7 @@ export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
                 minWidth: '72px',
               }}
             >
-              {key} ({value}):{' '}
+              {value}% - {key}:{' '}
               <Typography component={'span'} sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
                 {summary}
               </Typography>

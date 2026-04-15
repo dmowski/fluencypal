@@ -1,14 +1,20 @@
 'use client';
 
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { useState } from 'react';
 import type { ProgressStat } from './types';
 import { ProgressStatCard } from './ProgressStatCard';
 
+const PAGE_SIZE = 10;
+
 export const ProgressDetailsList = ({ stats }: { stats: ProgressStat[] }) => {
   const { i18n } = useLingui();
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const sorted = [...stats].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso));
+  const visible = sorted.slice(0, visibleCount);
+  const hasMore = visibleCount < sorted.length;
 
   return (
     <Stack sx={{ gap: '56px', paddingTop: '80px' }}>
@@ -27,11 +33,21 @@ export const ProgressDetailsList = ({ stats }: { stats: ProgressStat[] }) => {
         </Typography>
       ) : (
         <Stack sx={{ gap: '12px' }}>
-          {sorted.map((stat) => (
+          {visible.map((stat) => (
             <ProgressStatCard key={`${stat.sourceId}-${stat.algorithmVersion}`} stat={stat} />
           ))}
+          {hasMore && (
+            <Button
+              variant="outlined"
+              onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
+              sx={{ alignSelf: 'center' }}
+            >
+              {i18n._('Show more')}
+            </Button>
+          )}
         </Stack>
       )}
     </Stack>
   );
 };
+
