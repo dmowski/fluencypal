@@ -3,12 +3,15 @@
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend } from 'recharts';
+import { ArrowUp, ArrowDown } from 'lucide-react';
 import type { ProgressStat } from './types';
 import {
   getRadarChartData,
   type RadarDataPoint,
   type RadarComparisonPoint,
+  type MetricDiff,
 } from './getRadarChartData';
+import { METRIC_COLOR } from './data';
 
 function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -24,6 +27,49 @@ function formatComparisonForChart(data: RadarComparisonPoint[]) {
 
 const LAST_MONTH_COLOR = '#8f7cff';
 const PREV_MONTH_COLOR = '#4da3ff';
+
+function MetricDiffSummary({ diffs }: { diffs: MetricDiff[] }) {
+  const { i18n } = useLingui();
+  return (
+    <Stack sx={{ gap: '8px' }}>
+      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        {i18n._('Changes vs previous 30 days')}
+      </Typography>
+      <Stack sx={{ flexWrap: 'wrap', gap: '10px' }}>
+        {diffs.map(({ metric, diff }) => {
+          const isPositive = diff >= 0;
+          const changeColor = isPositive ? 'oklch(76.5% .177 163.223)' : 'oklch(70.4% .191 22.216)';
+          return (
+            <Stack key={metric} sx={{ flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+              <Stack
+                sx={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: METRIC_COLOR[metric],
+                  flexShrink: 0,
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {metric.charAt(0).toUpperCase() + metric.slice(1)}
+              </Typography>
+              <Stack sx={{ flexDirection: 'row', alignItems: 'center', color: changeColor }}>
+                {isPositive ? (
+                  <ArrowUp size={14} strokeWidth={2.5} />
+                ) : (
+                  <ArrowDown size={14} strokeWidth={2.5} />
+                )}
+                <Typography variant="body2" sx={{ fontWeight: 700, color: changeColor }}>
+                  {Math.abs(diff)}%
+                </Typography>
+              </Stack>
+            </Stack>
+          );
+        })}
+      </Stack>
+    </Stack>
+  );
+}
 
 function NoData() {
   const { i18n } = useLingui();
@@ -98,7 +144,7 @@ function SingleRadarChart({ data, color }: { data: RadarDataPoint[]; color: stri
 
 export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
   const { i18n } = useLingui();
-  const { lastMonth, lastMonthRange, previousMonth, previousMonthRange, comparison } =
+  const { lastMonth, lastMonthRange, previousMonth, previousMonthRange, comparison, diffs } =
     getRadarChartData(stats);
 
   if (!lastMonth && !previousMonth) {
@@ -163,14 +209,17 @@ export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
 
         {/* Comparison overlay chart */}
         {comparison && (
-          <Stack sx={{ gap: '4px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              {i18n._('Comparison')}
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {i18n._('Last 30 days vs previous 30 days — see how your metrics shifted.')}
-            </Typography>
+          <Stack sx={{ gap: '16px' }}>
+            <Stack sx={{ gap: '4px' }}>
+              <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                {i18n._('Comparison')}
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {i18n._('Last 30 days vs previous 30 days — see how your metrics shifted.')}
+              </Typography>
+            </Stack>
             <ComparisonRadarChart data={comparison} />
+            {diffs && <MetricDiffSummary diffs={diffs} />}
           </Stack>
         )}
       </Stack>

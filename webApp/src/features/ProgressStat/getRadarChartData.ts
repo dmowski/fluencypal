@@ -13,6 +13,13 @@ export interface RadarComparisonPoint {
   previousMonth: number;
 }
 
+export interface MetricDiff {
+  metric: ProgressMetric;
+  diff: number;
+  lastMonth: number;
+  previousMonth: number;
+}
+
 export interface PeriodRange {
   start: string;
   end: string;
@@ -24,6 +31,7 @@ export interface RadarChartData {
   previousMonth: RadarDataPoint[] | null;
   previousMonthRange: PeriodRange;
   comparison: RadarComparisonPoint[] | null;
+  diffs: MetricDiff[] | null;
 }
 
 export function getRadarChartData(stats: ProgressStat[]): RadarChartData {
@@ -67,6 +75,15 @@ export function getRadarChartData(stats: ProgressStat[]): RadarChartData {
       }))
     : null;
 
+  const diffs: MetricDiff[] | null =
+    lastMonth !== null && previousMonth !== null
+      ? PROGRESS_METRICS.map((metric) => {
+          const last = lastMonth.find((p) => p.metric === metric)?.value ?? 0;
+          const prev = previousMonth.find((p) => p.metric === metric)?.value ?? 0;
+          return { metric, diff: last - prev, lastMonth: last, previousMonth: prev };
+        })
+      : null;
+
   return {
     lastMonth,
     lastMonthRange: {
@@ -79,5 +96,6 @@ export function getRadarChartData(stats: ProgressStat[]): RadarChartData {
       end: prevMonthEnd.format(DATE_FORMAT),
     },
     comparison,
+    diffs,
   };
 }
