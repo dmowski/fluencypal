@@ -36,7 +36,7 @@ const PREV_MONTH_COLOR = '#4da3ff';
 function NoData() {
   const { i18n } = useLingui();
   return (
-    <Stack sx={{ height: 260, alignItems: 'center', justifyContent: 'center' }}>
+    <Stack sx={{ height: 400, alignItems: 'center', justifyContent: 'center' }}>
       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
         {i18n._('No data to show.')}
       </Typography>
@@ -48,7 +48,7 @@ function ComparisonRadarChart({ data }: { data: RadarComparisonPoint[] }) {
   const chartData = formatComparisonForChart(data);
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
         <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }} />
@@ -84,7 +84,7 @@ function SingleRadarChart({ data, color }: { data: RadarDataPoint[]; color: stri
   const chartData = formatDataForChart(data);
 
   return (
-    <ResponsiveContainer width="100%" height={260}>
+    <ResponsiveContainer width="100%" height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
         <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }} />
