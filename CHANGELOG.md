@@ -4,6 +4,113 @@ All notable changes to this project are documented here.
 
 ---
 
+## [Unreleased] — 2026-03-30 to 2026-04-15
+
+**Commits:** [`c6ccac3e...37a223a8`](../../compare/c6ccac3e49f06730b525e1b989c07fba97719892...37a223a8568a7303941f5faf04294589936b30b7)
+
+---
+
+### Added
+
+#### Progress Tracking & AI Language Assessment
+
+- Implement AI-powered progress evaluation: analyze conversations and score fluency, vocabulary, grammar, and confidence (`f8553979`)
+- Add `ProgressCard` component for tracking language level on the dashboard (`ece184b0`)
+- Add `ProgressStatsProvider` and Firestore schema for storing progress statistics (`8cf01d12`)
+- Add `ProgressStatModal` and integrate with `GlobalModals` and `ProgressDashboardCard` (`97b74704`)
+- Implement `ProgressChart` with loading state, tooltips, metric labels, and gradient fill (`cedbdf30`, `86c243dc`)
+- Implement `ProgressViewChart` with period selection, metric toggle, positive change indicators, and daily gap filling (`825a0478`, `757e7a85`, `ea063365`, `300cd462`)
+- Add `assessmentConfidenceSummary`, `sourceText`, and per-skill summary fields to `ProgressStat` (`7b45522e`, `a8bef1cb`, `7b1c29da`)
+- Move progress evaluation to backend with chunked conversation processing (`5306e6a8`, `f7397299`, `a4d062f9`)
+- Implement `ProgressEvaluationError` class for structured error handling (`48b419ef`)
+- Add read/write Firestore security rules for `progressStats` collection (`f98bdb24`)
+- Implement `fillDailyGaps` and progress aggregation utilities with unit tests (`825a0478`, `851588d1`)
+- Add daily aggregation and smoothing calculations for progress stats (`730ea197`)
+- Enable volume toggle in AI conversation context (`0fe29027`)
+- Skip active conversations in progress evaluation for accuracy (`01ef8450`)
+
+#### Quiz / Onboarding
+
+- Add `VoiceSpeedSelector` component and integrate into `QuizQuestions` and `TeacherVoiceModal` (`5256dae4`)
+- Add `LanguageToLearnShortSelector` component and integrate into `QuizQuestions` (`0c2d174e`)
+- Add skip button to `QuizQuestions` for redirecting to practice (`e30476c3`)
+- Enhance `NativeLanguageSelector` to separate system and other languages for clearer UI (`d267c670`)
+
+#### Welcome Email System
+
+- Implement welcome email for new user sign-ups with cron job trigger (`08b465c0`, `3d5ad130`)
+- Add personalized welcome email content describing app purpose and expectations (`a05246c8`, `46d632b0`)
+- Refactor payment confirmation email template to improve attachment section styling (`aa8ea5e3`)
+
+#### Admin Panel
+
+- Implement recent users loading and email functionality in admin panel (`593588c0`)
+- Add `getRecentCreatedUsers` function for admin user lookup (`4456686e`)
+- Display user country, native language, and last login time in `EmailsAdmin` (`79bdfdf5`, `b258f860`)
+
+#### Global Chat Notifications
+
+- Implement global chat unread count calculation and integrate into `ChatListContext` (`6a76d0a2`)
+- Add utility functions for calculating unread messages across all chats (`cc23f632`)
+- Enhance `AppNotificationsButton` with chat tab badge, global notification mode, and styling (`78fe6bab`)
+
+#### User Settings & Auth
+
+- Implement user settings initialization API and related types (`e668ffaf`)
+- Add `ResetPage` component for user session reset functionality (`cbfaa2cc`)
+
+#### Infrastructure / Project Structure
+
+- Split app into `webApp/` and `landing/` packages; rename projects to `fluency-app` and `fluency-landing` (`78e0b503`, `c29d402c`, `6af6d30f`)
+- Remove Firebase from landing app (`bf27ac77`)
+- Remove scheduled cron jobs from `vercel.json` in landing (`cdf54fa7`)
+- Update `robots.txt` in landing to disallow all web crawlers (`5f7c466a`)
+- Add assessment API `maxDuration` and cron schedule in Vercel configuration (`34ff81ef`, `3847ebc2`)
+
+---
+
+### Changed
+
+#### Progress Dashboard
+
+- Refactor `ProgressViewChart` layout for improved metric selection UI and responsiveness (`b84bad35`, `f8510529`)
+- Add tooltip with average level and comparison data to `ProgressViewChart` (`2c52f947`)
+- Update `ProgressChart` gradient visibility, grid lines, and state overlay styles (`500def8c`, `e78c2286`)
+- Add background gradient to `WelcomeScreen2` for improved visual appeal (`1ca225ce`)
+
+#### URL / Navigation (App/Landing Split)
+
+- Update all inter-app links to use `getAppUrlStart` and `getLandingUrlStart` for subdomain consistency (`1a5b9cf8`, `80f4da86`, `51c85aa8`, `90776c08`)
+- Replace `LandingPage` with `PracticePage` in RolePlay module and update SEO metadata handling (`7e7bfe8c`, `17e353fa`)
+
+#### Currency / Pricing
+
+- Replace manual currency conversion with `convertPrice` utility across components (`15c62de2`)
+- Fix total price calculation and currency formatting to display without decimal places (`c1b94201`, `abbf0fa2`)
+- Add currency support validation in `getConversionRate` function (`45d0eb9c`)
+
+#### Payments
+
+- Prevent resetting payment success state when closing modal if no payment occurred (`51939617`)
+- Increase delay before resetting payment success state on modal close (`14c92d9f`)
+
+#### FAQ / Landing
+
+- Enhance FAQ answer on progress tracking in `LandingPage` component (`717f96a6`)
+- Update FAQ section text and label for clarity (`4bf4c131`)
+
+---
+
+### Fixed
+
+- Fix play state management in `AudioPlayIcon` to handle audio interruptions correctly (`b51f1852`)
+- Fix `AvatarCard` voice toggle: deselect correctly when playing voice (`cc3d28b3`)
+- Fix `AudioPlayIcon` positioning in `AvatarCard` (`6c760497`)
+- Fix Chinese translation references in `SubscriptionPaymentModal` (`c7baa89c`)
+- Fix Instagram image URL in email template configuration (`01e484a0`)
+
+---
+
 ## [Unreleased] — 2026-03-22 to 2026-03-29
 
 **Commits:** [`d6c63dbc...e1f74bb0`](../../compare/d6c63dbcc537386df0db51139e58f199d884d23d...e1f74bb0eae519c29b99355d47dc0d2770f807f0)

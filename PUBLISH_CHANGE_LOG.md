@@ -1,3 +1,26 @@
+# Social Media Change Log — March 30 – April 15, 2026
+
+> **Commits:** `c6ccac3e` → `37a223a8`
+> **Period:** 2026-03-30 to 2026-04-15
+
+---
+
+### Post 1 — The app now tracks how your English is improving
+
+Your progress is no longer invisible. After your conversations, the AI evaluates your fluency, vocabulary, grammar, and confidence — and shows you a chart of how you're trending over time.
+
+You can pick any metric, compare week-over-week, and see whether you're actually getting better. It's the first time you can open the app and see your own improvement moving on a graph.
+
+---
+
+### Post 2 — Onboarding got smarter, and new users get a welcome
+
+The quiz setup now lets you pick your speaking speed and confirm the language you're learning — right during onboarding. If you already know your setup, there's a skip button to jump straight into practice.
+
+New users also get a personalized welcome email explaining what the app is about and what to expect — so fewer people show up confused about where to start.
+
+---
+
 # Social Media Change Log — Week of March 22–29, 2026
 
 > **Commits:** `d6c63dbc` → `e1f74bb0`
