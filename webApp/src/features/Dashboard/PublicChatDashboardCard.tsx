@@ -2,7 +2,6 @@ import { useLingui } from '@lingui/react';
 import { useAccess } from '../Usage/useAccess';
 import { Stack } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
-import { PreviewCard } from '../Chat/Message/PreviewCard';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { SectionHeader } from './CartsHeader';
 
@@ -43,8 +42,6 @@ export const PublicChatDashboardCard = () => {
           itemsBackgroundColor={'rgba(32, 32, 32, 1)'}
           itemsViewMode={'list'}
         />
-
-        <PreviewCard />
       </Stack>
     </Stack>
   );
