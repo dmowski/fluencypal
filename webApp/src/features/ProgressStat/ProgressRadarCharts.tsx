@@ -129,45 +129,55 @@ export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
         </Typography>
       </Stack>
 
-      {/* Individual period charts */}
-      <Stack sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: '32px' }}>
-        <Stack sx={{ flex: 1, gap: '4px' }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, textAlign: 'center' }}>
-            {i18n._('Last 30 days')}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
-            {lastMonthRange.start} – {lastMonthRange.end}
-          </Typography>
-          {lastMonth ? <SingleRadarChart data={lastMonth} color={LAST_MONTH_COLOR} /> : <NoData />}
+      <Stack
+        sx={{
+          gap: '150px',
+        }}
+      >
+        {/* Individual period charts */}
+        <Stack sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: '32px' }}>
+          <Stack sx={{ flex: 1, gap: '4px' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+              {i18n._('Last 30 days')}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+              {lastMonthRange.start} – {lastMonthRange.end}
+            </Typography>
+            {lastMonth ? (
+              <SingleRadarChart data={lastMonth} color={LAST_MONTH_COLOR} />
+            ) : (
+              <NoData />
+            )}
+          </Stack>
+
+          <Stack sx={{ flex: 1, gap: '4px' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+              {i18n._('Previous 30 days')}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+              {previousMonthRange.start} – {previousMonthRange.end}
+            </Typography>
+            {previousMonth ? (
+              <SingleRadarChart data={previousMonth} color={PREV_MONTH_COLOR} />
+            ) : (
+              <NoData />
+            )}
+          </Stack>
         </Stack>
 
-        <Stack sx={{ flex: 1, gap: '4px' }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, textAlign: 'center' }}>
-            {i18n._('Previous 30 days')}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
-            {previousMonthRange.start} – {previousMonthRange.end}
-          </Typography>
-          {previousMonth ? (
-            <SingleRadarChart data={previousMonth} color={PREV_MONTH_COLOR} />
-          ) : (
-            <NoData />
-          )}
-        </Stack>
+        {/* Comparison overlay chart */}
+        {comparison && (
+          <Stack sx={{ gap: '4px' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+              {i18n._('Comparison')}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+              {i18n._('Last 30 days vs previous 30 days — see how your metrics shifted.')}
+            </Typography>
+            <ComparisonRadarChart data={comparison} />
+          </Stack>
+        )}
       </Stack>
-
-      {/* Comparison overlay chart */}
-      {comparison && (
-        <Stack sx={{ gap: '4px' }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, textAlign: 'center' }}>
-            {i18n._('Comparison')}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
-            {i18n._('Last 30 days vs previous 30 days — see how your metrics shifted.')}
-          </Typography>
-          <ComparisonRadarChart data={comparison} />
-        </Stack>
-      )}
     </Stack>
   );
 };
