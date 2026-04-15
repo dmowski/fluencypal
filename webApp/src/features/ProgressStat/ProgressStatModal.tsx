@@ -5,6 +5,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { ProgressViewChart } from './ProgressViewChart';
 import { useProgressStats } from './useProgressStats';
+import { ProgressDetailsList } from './ProgressDetailsList';
 
 export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();
@@ -75,6 +76,8 @@ export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
             />
           </Stack>
         </Stack>
+
+        <ProgressDetailsList stats={progressStats ?? []} />
       </Stack>
     </CustomModal>
   );
