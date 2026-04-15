@@ -74,17 +74,22 @@ function useProvideChatHistory(): ChatHistoryContextType {
   ) => {
     const conversationDoc = getConversationDoc(conversationId);
 
-    await setDoc(
-      conversationDoc,
-      {
-        messages: messages || [],
-        messagesCount: messages.length || 0,
-        updatedAt: Date.now(),
-        updatedAtIso: new Date().toISOString(),
-        messageOrder: messageOrder || {},
-      },
-      { merge: true },
-    );
+    try {
+      await setDoc(
+        conversationDoc,
+        {
+          messages: messages || [],
+          messagesCount: messages.length || 0,
+          updatedAt: Date.now(),
+          updatedAtIso: new Date().toISOString(),
+          messageOrder: messageOrder || {},
+        },
+        { merge: true },
+      );
+    } catch (error) {
+      console.error('Error saving conversation:', { conversationId, messages, messageOrder });
+      throw error;
+    }
   };
 
   const createConversation = async ({
