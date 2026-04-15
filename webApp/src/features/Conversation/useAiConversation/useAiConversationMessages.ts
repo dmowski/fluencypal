@@ -124,7 +124,10 @@ export const useAiConversationMessages = () => {
         ...prev,
         {
           ...message,
-          text: isEmptyChat && isEmptyNewMessage ? firstPotentialBotMessage || '...' : message.text,
+          text:
+            isEmptyChat && isEmptyNewMessage
+              ? firstPotentialBotMessage || '...'
+              : message.text || '',
         },
       ];
     });
