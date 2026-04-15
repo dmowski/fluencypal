@@ -7,11 +7,30 @@ import { ProgressViewChart } from './ProgressViewChart';
 import { useProgressStats } from './useProgressStats';
 import { ProgressDetailsList } from './ProgressDetailsList';
 import { ProgressRadarCharts } from './ProgressRadarCharts';
+import { ProgressStat } from './types';
 
 export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
-  const { i18n } = useLingui();
   const { progressStats, loadingProgressStats } = useProgressStats();
 
+  return (
+    <ProgressStatModalUI
+      onClose={onClose}
+      progressStats={progressStats}
+      loadingProgressStats={loadingProgressStats}
+    />
+  );
+};
+
+export const ProgressStatModalUI = ({
+  onClose,
+  progressStats,
+  loadingProgressStats,
+}: {
+  onClose: () => void;
+  progressStats: ProgressStat[];
+  loadingProgressStats: boolean;
+}) => {
+  const { i18n } = useLingui();
   return (
     <CustomModal isOpen={true} onClose={onClose}>
       <Stack
