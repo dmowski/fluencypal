@@ -107,7 +107,7 @@ export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
 
       <Divider />
 
-      <Stack sx={{ gap: '6px' }}>
+      <Stack sx={{ gap: '16px' }}>
         {(
           [
             ['grammar', stat.grammarSummary, stat.grammar],
@@ -116,19 +116,32 @@ export const ProgressStatCard = ({ stat }: { stat: ProgressStat }) => {
             ['confidence', stat.confidenceSummary, stat.confidence],
           ] as const
         ).map(([key, summary, value]) => (
-          <Stack key={key} sx={{ gap: '6px', alignItems: 'flex-start' }}>
-            <Typography
-              component={'span'}
-              sx={{
-                color: METRIC_COLOR[key],
-                textTransform: 'capitalize',
-                minWidth: '72px',
-              }}
-            >
-              {value}% - {key}:{' '}
-              <Typography component={'span'} sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
-                {summary}
+          <Stack key={key} sx={{ gap: '4px' }}>
+            <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '6px' }}>
+              <Stack
+                sx={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: METRIC_COLOR[key],
+                  flexShrink: 0,
+                }}
+              />
+              <Typography
+                component="span"
+                variant="body2"
+                sx={{
+                  textTransform: 'capitalize',
+                }}
+              >
+                {key}
               </Typography>
+              <Typography component="span" variant="body2" sx={{ fontWeight: 700 }}>
+                {value}%
+              </Typography>
+            </Stack>
+            <Typography sx={{ color: 'text.secondary', lineHeight: 1.5, paddingLeft: '14px' }}>
+              {summary}
             </Typography>
           </Stack>
         ))}
