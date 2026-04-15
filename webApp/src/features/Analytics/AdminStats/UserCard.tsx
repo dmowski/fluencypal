@@ -22,6 +22,7 @@ import { GoalQuizSection } from './GoalQuizSection';
 import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
 import { ProgressViewChart } from '@/features/ProgressStat/ProgressViewChart';
+import { ProgressStatModalUI } from '@/features/ProgressStat/ProgressStatModal';
 
 interface UserCardProps {
   userStat: UserStat;
@@ -171,6 +172,8 @@ export function UserCard({ userStat }: UserCardProps) {
 
   const progressStats = userStat.progressStats || [];
 
+  const [isShowFullStatChart, setIsShowFullStatChart] = useState(false);
+
   return (
     <Stack
       sx={{
@@ -183,6 +186,13 @@ export function UserCard({ userStat }: UserCardProps) {
         height: '500px',
       }}
     >
+      {isShowFullStatChart && (
+        <ProgressStatModalUI
+          onClose={() => setIsShowFullStatChart(false)}
+          progressStats={progressStats}
+          loadingProgressStats={false}
+        />
+      )}
       {showGoalPlan && (
         <CustomModal onClose={() => setShowGoalPlan(null)} isOpen={true}>
           <GoalReview
@@ -415,6 +425,9 @@ export function UserCard({ userStat }: UserCardProps) {
         }}
       >
         <ProgressViewChart progressStats={progressStats} loadingProgressStats={false} />
+        <Button variant="outlined" onClick={() => setIsShowFullStatChart(true)}>
+          Show full stats
+        </Button>
         {conversations.length === 0 && (
           <Typography
             sx={{
