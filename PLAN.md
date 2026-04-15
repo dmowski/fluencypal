@@ -9,10 +9,5 @@ They build what scalable. So, I need to build what is none-scalable at core. Mee
 They build what profitable. So, I need to build what is none-profitable at core. Meet each user in person.
 Create community "Community". Community about what? Practice speaking. i don't know
 
-ok. I think I need to
-
-## Progress Stats
-
-- Add more details about how it was collected and analyzed
-- Add info on landing page
-- Add FAQ points
+ok. I think I need to recall why I am doing it. First things that came to my mind: fun, money, freedom.
+yeah, rock'n'roll. So, yeah let's do rock'n'roll.
