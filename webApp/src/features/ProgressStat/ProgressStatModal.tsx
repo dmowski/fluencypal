@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react';
 import { ProgressViewChart } from './ProgressViewChart';
 import { useProgressStats } from './useProgressStats';
 import { ProgressDetailsList } from './ProgressDetailsList';
+import { ProgressRadarCharts } from './ProgressRadarCharts';
 
 export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();
@@ -76,6 +77,8 @@ export const ProgressStatModal = ({ onClose }: { onClose: () => void }) => {
             />
           </Stack>
         </Stack>
+
+        <ProgressRadarCharts stats={progressStats ?? []} />
 
         <ProgressDetailsList stats={progressStats ?? []} />
       </Stack>
