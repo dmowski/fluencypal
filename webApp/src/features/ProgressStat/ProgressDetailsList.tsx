@@ -50,4 +50,3 @@ export const ProgressDetailsList = ({ stats }: { stats: ProgressStat[] }) => {
     </Stack>
   );
 };
-
