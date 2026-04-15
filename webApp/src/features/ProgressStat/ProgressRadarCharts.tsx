@@ -51,7 +51,11 @@ function ComparisonRadarChart({ data }: { data: RadarComparisonPoint[] }) {
     <ResponsiveContainer width="100%" height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
-        <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }} />
+        <PolarAngleAxis
+          dataKey="metric"
+          tickSize={20}
+          tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
+        />
         <PolarRadiusAxis
           angle={90}
           domain={[0, 100]}
@@ -87,7 +91,11 @@ function SingleRadarChart({ data, color }: { data: RadarDataPoint[]; color: stri
     <ResponsiveContainer width="100%" height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
-        <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }} />
+        <PolarAngleAxis
+          dataKey="metric"
+          tickSize={20}
+          tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 12 }}
+        />
         <PolarRadiusAxis
           angle={90}
           domain={[0, 100]}
