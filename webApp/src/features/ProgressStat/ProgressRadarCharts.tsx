@@ -48,7 +48,7 @@ function ComparisonRadarChart({ data }: { data: RadarComparisonPoint[] }) {
   const chartData = formatComparisonForChart(data);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width={500} height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
         <PolarAngleAxis
@@ -88,7 +88,7 @@ function SingleRadarChart({ data, color }: { data: RadarDataPoint[]; color: stri
   const chartData = formatDataForChart(data);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width={500} height={400}>
       <RadarChart data={chartData}>
         <PolarGrid stroke="rgba(255,255,255,0.15)" />
         <PolarAngleAxis
@@ -143,12 +143,12 @@ export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
         }}
       >
         {/* Individual period charts */}
-        <Stack sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: '32px' }}>
+        <Stack sx={{ flexDirection: 'column', gap: '32px' }}>
           <Stack sx={{ flex: 1, gap: '4px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
               {i18n._('Last 30 days')}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {lastMonthRange.start} – {lastMonthRange.end}
             </Typography>
             {lastMonth ? (
@@ -159,10 +159,10 @@ export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
           </Stack>
 
           <Stack sx={{ flex: 1, gap: '4px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
               {i18n._('Previous 30 days')}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {previousMonthRange.start} – {previousMonthRange.end}
             </Typography>
             {previousMonth ? (
@@ -176,10 +176,10 @@ export const ProgressRadarCharts = ({ stats }: { stats: ProgressStat[] }) => {
         {/* Comparison overlay chart */}
         {comparison && (
           <Stack sx={{ gap: '4px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 700, textAlign: 'center' }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
               {i18n._('Comparison')}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {i18n._('Last 30 days vs previous 30 days — see how your metrics shifted.')}
             </Typography>
             <ComparisonRadarChart data={comparison} />
