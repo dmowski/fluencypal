@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## Remove 5% improvement mentions from landing page
+
+## Make focus only on speaking: hide stories, game, daily questions, community
+
+For the first visitors
+
 ## Review video about "Fluently", fix problem that I have
 
 What makes my app different and uniq. How to compete others like "Fluency".
