@@ -6,6 +6,8 @@
 
 For the first visitors
 
+## Improve landing: focus only on speaking practice
+
 ## Review video about "Fluently", fix problem that I have
 
 What makes my app different and uniq. How to compete others like "Fluency".
