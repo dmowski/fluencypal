@@ -6,6 +6,7 @@ import { useRolePlay } from '../RolePlay/useRolePlay';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
 import { useUrlState } from '../Url/useUrlState';
+import { useMemo } from 'react';
 
 export const RolePlayDashboardCard = () => {
   const { i18n } = useLingui();
@@ -93,5 +94,31 @@ export const RolePlayDashboardCard = () => {
         />
       </Stack>
     </>
+  );
+};
+
+export const PracticeCustomConversationsDashboardCard = () => {
+  const { i18n } = useLingui();
+  const { visibleScenarios, selectScenario } = useRolePlay();
+
+  const customScenario = useMemo(
+    () => visibleScenarios.find((s) => s.id === 'custom-conversation'),
+    [visibleScenarios],
+  );
+
+  if (!customScenario) return <></>;
+
+  return (
+    <StoreCard
+      textColor={'#fff'}
+      backgroundColor={'rgba(63, 62, 61, 0.1)'}
+      previewImageUrl={customScenario.imageSrc}
+      label={i18n._(`This is the signal you've been waiting for.`)}
+      title={customScenario.title}
+      items={[]}
+      itemsBackgroundColor={'rgba(32, 32, 32, 0.88)'}
+      onClick={() => selectScenario(customScenario)}
+      itemsViewMode={'list'}
+    />
   );
 };

@@ -15,7 +15,10 @@ import { usePlan } from '../Plan/usePlan';
 import { LessonStartModal } from '../Plan/LessonStartModal';
 import { JustTalkCard } from './JustTalkCard';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
-import { RolePlayDashboardCard } from './RolePlayDashboardCard';
+import {
+  PracticeCustomConversationsDashboardCard,
+  RolePlayDashboardCard,
+} from './RolePlayDashboardCard';
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
 import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
@@ -80,6 +83,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <DailyTasksDashboardCard />
+                <PracticeCustomConversationsDashboardCard />
                 <ProgressDashboardCard />
                 <ExperimentalDashboardCard />
                 <JustTalkCard />

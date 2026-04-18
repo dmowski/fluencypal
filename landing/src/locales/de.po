@@ -1356,7 +1356,7 @@ msgstr "Alle Blogs"
 msgid "All Interviews"
 msgstr "Alle Interviews"
 
-#: src/features/RolePlay/rolePlayData.tsx:1155
+#: src/features/RolePlay/rolePlayData.tsx:1308
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Alle Szenarien"
@@ -1478,6 +1478,11 @@ msgstr "Antworten auf typische Bewerbungsfragen"
 #. js-lingui-explicit-id
 msgid "Anything else?"
 msgstr "Noch etwas?"
+
+#: src/features/RolePlay/rolePlayData.tsx:1242
+#. js-lingui-explicit-id
+msgid "Anything the AI must include?"
+msgstr "Irgendetwas, das die KI enthalten muss?"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:15
 #. js-lingui-explicit-id
@@ -1760,11 +1765,6 @@ msgstr ""
 "Gewinnen Sie Selbstvertrauen, um über Gerechtigkeit, Vorteile und "
 "Gehaltspakete zu sprechen, die Ihrer Erfahrung entsprechen."
 
-#: src/features/Landing/LandingPage.tsx:204
-#. js-lingui-explicit-id
-msgid "Build fluency and confidence with daily speaking practice."
-msgstr "Entwickeln Sie Flüssigkeit und Selbstvertrauen durch tägliche Sprechübungen."
-
 #: src/features/Feature/featuresData.ts:202
 #. js-lingui-explicit-id
 msgid ""
@@ -1774,6 +1774,11 @@ msgstr ""
 "Erstellen Sie Ihr eigenes englisches Rollenspiel-Szenario mit KI. Üben Sie "
 "das Sprechen in Situationen, die zu Ihren persönlichen oder beruflichen "
 "Bedürfnissen passen."
+
+#: src/features/RolePlay/rolePlayData.tsx:1148
+#. js-lingui-explicit-id
+msgid "Build your own role-play with more guidance"
+msgstr "Erstellen Sie Ihr eigenes Rollenspiel mit mehr Anleitung"
 
 #: src/features/Feature/featuresData.ts:200
 #. js-lingui-explicit-id
@@ -1928,6 +1933,12 @@ msgstr "Beruflicher Aufstieg"
 #. js-lingui-explicit-id
 msgid "Career benefit:"
 msgstr "Karrierevorteil:"
+
+#: src/features/RolePlay/rolePlayData.tsx:1209
+#: src/features/RolePlay/rolePlayData.tsx:1217
+#. js-lingui-explicit-id
+msgid "Challenging"
+msgstr "Herausfordernd"
 
 #: src/features/RolePlay/rolePlayData.tsx:817
 #. js-lingui-explicit-id
@@ -2212,6 +2223,11 @@ msgstr "Vertragstests"
 msgid "Conversation practice"
 msgstr "Gesprächsübung"
 
+#: src/features/Landing/LandingPage.tsx:201
+#. js-lingui-explicit-id
+msgid "Conversation with AI"
+msgstr "Unterhaltung mit KI"
+
 #: src/features/SEO/metadata.ts:327
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
@@ -2257,7 +2273,7 @@ msgstr "Korrigierte Antworten zum Merken"
 msgid "Could not find page"
 msgstr "Konnte Seite nicht finden"
 
-#: src/features/Landing/QuizStart.tsx:32
+#: src/features/Landing/QuizStart.tsx:39
 #. js-lingui-explicit-id
 msgid "Create a personalized language learning plan with FluencyPal."
 msgstr "Erstellen Sie einen personalisierten Sprachlernplan mit FluencyPal."
@@ -2337,6 +2353,47 @@ msgstr ""
 "Format hilft Ihnen, die genauen Kommunikationsfähigkeiten zu meistern, die "
 "Sie benötigen."
 
+#: src/features/RolePlay/rolePlayData.tsx:1253
+#. js-lingui-explicit-id
+msgid ""
+"Create a unique, personalized setting that fits your specific interests or "
+"challenges. This scenario lets you define the context, roles, tone, and "
+"goals of the conversation you want to practice.\n"
+"\n"
+"## Why You Should Play *Your Custom Scenario*\n"
+"1. Practice situations that match your real life, work, travel, or personal "
+"goals.  \n"
+"2. Control who the AI is and how the conversation feels.  \n"
+"3. Focus on the outcome you want, not just general speaking practice.  \n"
+"4. Adjust the difficulty and tone to match your confidence level.  \n"
+"5. Prepare for conversations that standard role-plays may never cover.\n"
+"\n"
+"## How the Scenario Works\n"
+"You describe the situation, choose roles, set the goal, and optionally add "
+"extra details. The AI will then create a conversation that follows your "
+"setup and behaves according to the tone and difficulty you selected.\n"
+msgstr ""
+"Erstellen Sie ein einzigartiges, personalisiertes Szenario, das Ihren "
+"spezifischen Interessen oder Herausforderungen entspricht. Dieses Szenario "
+"ermöglicht es Ihnen, den Kontext, die Rollen, den Tonfall und die Ziele des "
+"Gesprächs festzulegen, das Sie üben möchten.\n"
+"\n"
+"## Warum Sie *Ihr benutzerdefiniertes Szenario* spielen sollten\n"
+"1. Üben Sie Situationen, die Ihrem wirklichen Leben, Ihrer Arbeit, Ihren "
+"Reisen oder persönlichen Zielen entsprechen.  \n"
+"2. Bestimmen Sie, wer die KI ist und wie sich das Gespräch anfühlt.  \n"
+"3. Konzentrieren Sie sich auf das gewünschte Ergebnis, nicht nur auf "
+"allgemeines Sprachtraining.  \n"
+"4. Passen Sie die Schwierigkeit und den Ton an Ihr Vertrauensniveau an.  \n"
+"5. Bereiten Sie sich auf Gespräche vor, die standardmäßige Rollenspiele "
+"möglicherweise nie abdecken.\n"
+"\n"
+"## So funktioniert das Szenario\n"
+"Sie beschreiben die Situation, wählen die Rollen aus, legen das Ziel fest "
+"und fügen optional zusätzliche Details hinzu. Die KI erstellt dann ein "
+"Gespräch, das Ihrer Einrichtung folgt und sich gemäß dem von Ihnen "
+"ausgewählten Ton und Schwierigkeitsgrad verhält."
+
 #: src/features/Feature/featuresData.ts:199
 #. js-lingui-explicit-id
 msgid "Create Custom English Role Plays with AI"
@@ -2374,9 +2431,15 @@ msgstr "Aktuelle Punktzahlen"
 
 #: src/features/RolePlay/rolePlayData.tsx:1107
 #: src/features/RolePlay/rolePlayData.tsx:1134
+#: src/features/RolePlay/rolePlayData.tsx:1266
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "Benutzerdefiniert"
+
+#: src/features/RolePlay/rolePlayData.tsx:1147
+#. js-lingui-explicit-id
+msgid "Custom Conversation"
+msgstr "Benutzerdefinierte Unterhaltung"
 
 #: src/features/Case/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
@@ -2820,6 +2883,12 @@ msgid ""
 msgstr ""
 "Verdiene Punkte für das Üben und erklimme die Rangliste von FluencyPal. Die "
 "besten Nutzer schalten Belohnungen durch aktives Englischlernen frei."
+
+#: src/features/RolePlay/rolePlayData.tsx:1229
+#: src/features/RolePlay/rolePlayData.tsx:1231
+#. js-lingui-explicit-id
+msgid "Easy"
+msgstr "Einfach"
 
 #: src/features/Case/data/backendCSharp/techData.ts:18
 #. js-lingui-explicit-id
@@ -3761,18 +3830,15 @@ msgid ""
 "to your level, helping you notice improvements in fluency, confidence, and "
 "accuracy. FluencyPal also assesses your grammar, confidence, vocabulary, "
 "and fluency, then creates a progress chart so you can see how your skills "
-"grow over time. Usually, people who practice daily improve by 5% over a "
-"month."
+"grow over time."
 msgstr ""
 "FluencyPal verfolgt Ihre Aktivitäten und erledigten Aufgaben im Laufe der "
-"Zeit. Mit regelmäßiger Übung werden die Gespräche komplexer, und das "
-"Feedback passt sich Ihrem Niveau an, sodass Sie Verbesserungen in "
+"Zeit. Während Sie regelmäßig üben, werden die Gespräche komplexer und das "
+"Feedback passt sich Ihrem Niveau an, sodass Sie Verbesserungen in Bezug auf "
 "Flüssigkeit, Selbstvertrauen und Genauigkeit bemerken. FluencyPal bewertet "
 "auch Ihre Grammatik, Ihr Selbstvertrauen, Ihren Wortschatz und Ihre "
 "Flüssigkeit und erstellt dann ein Fortschrittsdiagramm, damit Sie sehen "
-"können, wie sich Ihre Fähigkeiten im Laufe der Zeit entwickeln. In der "
-"Regel verbessern sich Menschen, die täglich üben, innerhalb eines Monats um "
-"5%."
+"können, wie sich Ihre Fähigkeiten im Laufe der Zeit entwickeln."
 
 #: src/features/SEO/metadata.ts:383
 #. js-lingui-explicit-id
@@ -3817,6 +3883,36 @@ msgstr ""
 msgid "For example:"
 msgstr "Zum Beispiel:"
 
+#: src/features/RolePlay/rolePlayData.tsx:1191
+#. js-lingui-explicit-id
+msgid ""
+"For example: get a refund, make a good impression, solve a problem, ask for "
+"clarification"
+msgstr ""
+"Zum Beispiel: eine Rückerstattung erhalten, einen guten Eindruck machen, "
+"ein Problem lösen, um Klarstellung bitten"
+
+#: src/features/RolePlay/rolePlayData.tsx:1182
+#. js-lingui-explicit-id
+msgid "For example: job candidate, customer, patient, traveler"
+msgstr "Zum Beispiel: Bewerber, Kunde, Patient, Reisender"
+
+#: src/features/RolePlay/rolePlayData.tsx:1171
+#. js-lingui-explicit-id
+msgid "For example: recruiter, customer support agent, doctor, hotel receptionist"
+msgstr ""
+"Zum Beispiel: Personalvermittler, Kundendienstmitarbeiter, Arzt, "
+"Hotelrezeptionist"
+
+#: src/features/RolePlay/rolePlayData.tsx:1154
+#. js-lingui-explicit-id
+msgid ""
+"For example: returning a damaged laptop, asking for a refund, explaining a "
+"delay in a work meeting"
+msgstr ""
+"Zum Beispiel: Rückgabe eines defekten Laptops, Rückerstattung verlangen, "
+"eine Verzögerung in einem Arbeitsmeeting erklären"
+
 #: src/features/Landing/Price/PricePage.tsx:557
 #. js-lingui-explicit-id
 msgid "For learners committed to fluency"
@@ -3847,6 +3943,12 @@ msgid ""
 msgstr ""
 "Für Menschen, die langfristiges Karrierewachstum und umfassende "
 "Vorbereitung auf Vorstellungsgespräche suchen."
+
+#: src/features/RolePlay/rolePlayData.tsx:1207
+#: src/features/RolePlay/rolePlayData.tsx:1214
+#. js-lingui-explicit-id
+msgid "Formal"
+msgstr "Formal"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -3879,6 +3981,12 @@ msgstr "Freie Wahl"
 #. js-lingui-explicit-id
 msgid "French Learning Plan"
 msgstr "Französischer Lernplan"
+
+#: src/features/RolePlay/rolePlayData.tsx:1205
+#: src/features/RolePlay/rolePlayData.tsx:1212
+#. js-lingui-explicit-id
+msgid "Friendly"
+msgstr "Freundlich"
 
 #: src/features/Landing/Price/PricePage.tsx:192
 #. js-lingui-explicit-id
@@ -4314,6 +4422,12 @@ msgstr ""
 msgid "Handle concurrency confidently"
 msgstr "Gehe sicher mit Nebenläufigkeit um"
 
+#: src/features/RolePlay/rolePlayData.tsx:1229
+#: src/features/RolePlay/rolePlayData.tsx:1234
+#. js-lingui-explicit-id
+msgid "Hard"
+msgstr "Schwer"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:254
 #. js-lingui-explicit-id
 msgid "Have fun!"
@@ -4388,6 +4502,11 @@ msgstr "Hotel Check-In Gespräch"
 #. js-lingui-explicit-id
 msgid "How can I track my progress?"
 msgstr "Wie kann ich meinen Fortschritt verfolgen?"
+
+#: src/features/RolePlay/rolePlayData.tsx:1225
+#. js-lingui-explicit-id
+msgid "How difficult should it be?"
+msgstr "Wie schwierig soll es sein?"
 
 #: src/features/Landing/LandingPage.tsx:105
 #. js-lingui-explicit-id
@@ -5333,15 +5452,12 @@ msgid ""
 "Improving your English speaking skills takes time and consistent practice. "
 "FluencyPal is designed for learners who can already communicate at least a "
 "little and want to become more fluent, confident, and accurate through "
-"regular speaking practice. Progress is usually gradual, and many users "
-"improve by around 5% over a month of steady practice."
+"regular speaking practice."
 msgstr ""
-"Das Verbessern Ihrer Englischsprechfähigkeiten erfordert Zeit und "
-"konsequente Übung. FluencyPal ist für Lernende konzipiert, die sich bereits "
-"zumindest ein wenig verständigen können und durch regelmäßige Sprechübungen "
-"flüssiger, selbstbewusster und genauer werden möchten. Der Fortschritt "
-"erfolgt in der Regel schrittweise, und viele Nutzer verbessern sich um etwa "
-"5% über einen Monat stetiger Übung."
+"Das Verbessern Ihrer englischen Sprachfähigkeiten erfordert Zeit und "
+"konsequente Übung. FluencyPal ist für Lernende konzipiert, die bereits ein "
+"wenig kommunizieren können und fließender, sicherer und präziser durch "
+"regelmäßige Sprachpraxis werden möchten."
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:12
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:12
@@ -6155,7 +6271,7 @@ msgstr ""
 msgid "Learning Blog"
 msgstr "Lernblog"
 
-#: src/features/Landing/QuizStart.tsx:29
+#: src/features/Landing/QuizStart.tsx:36
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Lernplan"
@@ -6269,6 +6385,13 @@ msgstr ""
 "Schritt-für-Schritt-Leitfaden! Lernen Sie Schlüsselstrategien für "
 "Business-Englisch-Lernende kennen, um Selbstvertrauen, Wortschatz und "
 "Leistung zu steigern."
+
+#: src/features/RolePlay/rolePlayData.tsx:1229
+#: src/features/RolePlay/rolePlayData.tsx:1233
+#: src/features/RolePlay/rolePlayData.tsx:1237
+#. js-lingui-explicit-id
+msgid "Medium"
+msgstr "Mittel"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:165
 #. js-lingui-explicit-id
@@ -6687,6 +6810,15 @@ msgstr "Öffnen"
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "Dashboard öffnen"
+
+#: src/features/RolePlay/rolePlayData.tsx:1244
+#. js-lingui-explicit-id
+msgid ""
+"Optional: specific vocabulary, background details, objections, questions, "
+"or behavior"
+msgstr ""
+"Optional: spezifisches Vokabular, Hintergrunddetails, Einwände, Fragen oder "
+"Verhalten"
 
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
@@ -7271,6 +7403,16 @@ msgstr ""
 msgid "Practice structured speaking with real opponents."
 msgstr "Üben Sie strukturiertes Sprechen mit echten Gegnern."
 
+#: src/features/RolePlay/rolePlayData.tsx:1146
+#. js-lingui-explicit-id
+msgid "Practice the exact conversation you're afraid of"
+msgstr "Üben Sie das genaue Gespräch, vor dem Sie Angst haben"
+
+#: src/features/Landing/LandingPage.tsx:204
+#. js-lingui-explicit-id
+msgid "Practice the exact conversation you're afraid of."
+msgstr "Üben Sie genau das Gespräch, vor dem Sie Angst haben."
+
 #: src/features/Feature/FeatureOnePage.tsx:121
 #. js-lingui-explicit-id
 msgid "Practice This Skill with FluencyPal"
@@ -7414,6 +7556,9 @@ msgstr "Produkt"
 #: src/features/RolePlay/rolePlayData.tsx:451
 #: src/features/RolePlay/rolePlayData.tsx:694
 #: src/features/RolePlay/rolePlayData.tsx:947
+#: src/features/RolePlay/rolePlayData.tsx:1206
+#: src/features/RolePlay/rolePlayData.tsx:1213
+#: src/features/RolePlay/rolePlayData.tsx:1220
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Professionell"
@@ -7615,11 +7760,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Real senior-level frontend questions"
 msgstr "Echte Frontend-Fragen auf Senioren-Niveau"
-
-#: src/features/Landing/LandingPage.tsx:201
-#. js-lingui-explicit-id
-msgid "Real time conversation with AI"
-msgstr "Echtzeit-Gespräch mit KI"
 
 #: src/features/SEO/metadata.ts:227
 #. js-lingui-explicit-id
@@ -8424,6 +8564,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Strengths:"
 msgstr "Stärken:"
+
+#: src/features/RolePlay/rolePlayData.tsx:1208
+#: src/features/RolePlay/rolePlayData.tsx:1215
+#. js-lingui-explicit-id
+msgid "Stressful"
+msgstr "Stressig"
 
 #: src/features/RolePlay/rolePlayData.tsx:820
 #. js-lingui-explicit-id
@@ -9681,6 +9827,11 @@ msgstr "Was bekomme ich mit dem kostenpflichtigen Plan?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Was benötige ich, um FluencyPal zu verwenden?"
 
+#: src/features/RolePlay/rolePlayData.tsx:1189
+#. js-lingui-explicit-id
+msgid "What do you want to achieve?"
+msgstr "Was möchten Sie erreichen?"
+
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -9728,6 +9879,16 @@ msgstr "Welche Lernmodi sind verfügbar?"
 msgid "What level of speaking should I have?"
 msgstr "Welches Sprachniveau sollte ich haben?"
 
+#: src/features/RolePlay/rolePlayData.tsx:1152
+#. js-lingui-explicit-id
+msgid "What situation do you want to practice?"
+msgstr "Welche Situation möchten Sie üben?"
+
+#: src/features/RolePlay/rolePlayData.tsx:1200
+#. js-lingui-explicit-id
+msgid "What tone should the conversation have?"
+msgstr "Welchen Ton sollte das Gespräch haben?"
+
 #: src/features/Case/data/frontend-junior/faqSection.ts:14
 #: src/features/Case/data/frontend-senior/faqSection.ts:14
 #. js-lingui-explicit-id
@@ -9774,6 +9935,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Where can I use FluencyPal?"
 msgstr "Wo kann ich FluencyPal verwenden?"
+
+#: src/features/RolePlay/rolePlayData.tsx:1180
+#. js-lingui-explicit-id
+msgid "Who are you in this scenario?"
+msgstr "Wer sind Sie in diesem Szenario?"
+
+#: src/features/RolePlay/rolePlayData.tsx:1169
+#. js-lingui-explicit-id
+msgid "Who should the AI be?"
+msgstr "Wer sollte die KI sein?"
 
 #: src/features/Case/data/backendCSharp/whoIsThisForSection.ts:10
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:10
@@ -10243,3 +10414,50 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Landing/LandingPage.tsx:204
+#. js-lingui-explicit-id
+#~ msgid "Build fluency and confidence with daily speaking practice."
+#~ msgstr "Entwickeln Sie Flüssigkeit und Selbstvertrauen durch tägliche Sprechübungen."
+
+#: src/features/Landing/LandingPage.tsx:134
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal tracks your activity and completed tasks over time. As you "
+#~ "practice regularly, conversations become more complex, and feedback adapts "
+#~ "to your level, helping you notice improvements in fluency, confidence, and "
+#~ "accuracy. FluencyPal also assesses your grammar, confidence, vocabulary, "
+#~ "and fluency, then creates a progress chart so you can see how your skills "
+#~ "grow over time. Usually, people who practice daily improve by 5% over a "
+#~ "month."
+#~ msgstr ""
+#~ "FluencyPal verfolgt Ihre Aktivitäten und erledigten Aufgaben im Laufe der "
+#~ "Zeit. Mit regelmäßiger Übung werden die Gespräche komplexer, und das "
+#~ "Feedback passt sich Ihrem Niveau an, sodass Sie Verbesserungen in "
+#~ "Flüssigkeit, Selbstvertrauen und Genauigkeit bemerken. FluencyPal bewertet "
+#~ "auch Ihre Grammatik, Ihr Selbstvertrauen, Ihren Wortschatz und Ihre "
+#~ "Flüssigkeit und erstellt dann ein Fortschrittsdiagramm, damit Sie sehen "
+#~ "können, wie sich Ihre Fähigkeiten im Laufe der Zeit entwickeln. In der "
+#~ "Regel verbessern sich Menschen, die täglich üben, innerhalb eines Monats um "
+#~ "5%."
+
+#: src/features/Landing/LandingPage.tsx:279
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Improving your English speaking skills takes time and consistent practice. "
+#~ "FluencyPal is designed for learners who can already communicate at least a "
+#~ "little and want to become more fluent, confident, and accurate through "
+#~ "regular speaking practice. Progress is usually gradual, and many users "
+#~ "improve by around 5% over a month of steady practice."
+#~ msgstr ""
+#~ "Das Verbessern Ihrer Englischsprechfähigkeiten erfordert Zeit und "
+#~ "konsequente Übung. FluencyPal ist für Lernende konzipiert, die sich bereits "
+#~ "zumindest ein wenig verständigen können und durch regelmäßige Sprechübungen "
+#~ "flüssiger, selbstbewusster und genauer werden möchten. Der Fortschritt "
+#~ "erfolgt in der Regel schrittweise, und viele Nutzer verbessern sich um etwa "
+#~ "5% über einen Monat stetiger Übung."
+
+#: src/features/Landing/LandingPage.tsx:201
+#. js-lingui-explicit-id
+#~ msgid "Real time conversation with AI"
+#~ msgstr "Echtzeit-Gespräch mit KI"
