@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, ReactNode, JSX, useEffect } from 'react';
+import { createContext, useContext, ReactNode, JSX, useEffect, useMemo } from 'react';
 import { useAuth } from '../Auth/useAuth';
 import { setDoc } from 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
@@ -26,7 +26,7 @@ import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { AiVoice } from '@/features/Ai/ai';
 import { useUrlState } from '../Url/useUrlState';
 import * as Sentry from '@sentry/nextjs';
-import { sleep } from '@/libs/sleep';
+import dayjs from 'dayjs';
 
 interface SettingsContextType {
   userCreatedAt: string | null;
@@ -64,6 +64,8 @@ interface SettingsContextType {
     openSettingsModal: () => void;
     closeSettingsModal: () => void;
   };
+
+  isFirstDay: boolean;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -98,6 +100,7 @@ export const settingsContext = createContext<SettingsContextType>({
     openSettingsModal: () => {},
     closeSettingsModal: () => {},
   },
+  isFirstDay: false,
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -261,7 +264,14 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { age18PlusConfirmedAtIso: nowIso }, { merge: true });
   };
 
+  const isFirstDay = useMemo(() => {
+    if (!userCreatedAt) return false;
+    const diffHours = dayjs().diff(dayjs(userCreatedAt), 'hour');
+    return diffHours < 24;
+  }, [userCreatedAt]);
+
   return {
+    isFirstDay,
     userCreatedAt,
     confirmAge18Plus,
     pageLanguageCode: userSettings?.pageLanguageCode || 'en',

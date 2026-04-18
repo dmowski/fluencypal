@@ -27,6 +27,10 @@ export const GameDashboardCard = () => {
     game.playGame();
   };
 
+  if (settings.isFirstDay) {
+    return <></>;
+  }
+
   return (
     <Stack
       sx={{

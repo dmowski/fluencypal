@@ -4,10 +4,12 @@ import { Stack } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { SectionHeader } from './CartsHeader';
+import { useSettings } from '../Settings/useSettings';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
   const access = useAccess();
+  const settings = useSettings();
   const { openPublicChat } = useGlobalModals();
 
   const isLimited = !access.isFullAppAccess;
@@ -20,7 +22,7 @@ export const PublicChatDashboardCard = () => {
     openPublicChat();
   };
 
-  if (!access.canUseCommunity) {
+  if (!access.canUseCommunity || settings.isFirstDay) {
     return <></>;
   }
 

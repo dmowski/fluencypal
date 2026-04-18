@@ -5,6 +5,7 @@ import { SectionHeader } from './CartsHeader';
 import { useGlobalModals } from '@/features//Modal/useGlobalModals';
 import { DailyQuestionFullCard } from '../DailyQuestion/DailyQuestionFullCard';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
+import { useSettings } from '../Settings/useSettings';
 
 export const DailyQuestionDashboardCard = () => {
   const question = useDailyQuestion();
@@ -12,7 +13,8 @@ export const DailyQuestionDashboardCard = () => {
   const globalModals = useGlobalModals();
 
   const access = useAccess();
-  if (!access.canUseCommunity) {
+  const settings = useSettings();
+  if (!access.canUseCommunity || settings.isFirstDay) {
     return <></>;
   }
 
