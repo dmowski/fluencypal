@@ -1,10 +1,14 @@
 # Live document with short/long term ideas
 
-## How to improve VAD. instant grammar correction
-
 ## How to record user's voice
 
+## How to improve VAD. instant grammar correction
+
 ## scenario/realtime improvements
+
+## On landing page: add block: Practice scenario you afraid of
+
+Redirect directly to role-play practice page
 
 ## Hide "cases" pages
 
