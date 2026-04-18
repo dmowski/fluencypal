@@ -146,12 +146,13 @@ export const EssayText = ({
             </Button>
           </Stack>
           <IconButton
-            size="small"
-            color="error"
+            sx={{
+              opacity: 0.6,
+            }}
             onClick={onDelete}
             disabled={isRecording || isAnalyzing}
           >
-            <Delete fontSize="small" />
+            <Trash size={'18px'} />
           </IconButton>
         </Stack>
       )}
