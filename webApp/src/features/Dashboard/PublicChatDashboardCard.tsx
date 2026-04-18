@@ -7,9 +7,19 @@ import { SectionHeader } from './CartsHeader';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
+  const access = useAccess();
   const { openPublicChat } = useGlobalModals();
 
-  const access = useAccess();
+  const isLimited = !access.isFullAppAccess;
+
+  const openPublicChatWrapper = () => {
+    if (isLimited) {
+      access.showPaymentModal();
+      return;
+    }
+    openPublicChat();
+  };
+
   if (!access.canUseCommunity) {
     return <></>;
   }
@@ -32,13 +42,15 @@ export const PublicChatDashboardCard = () => {
       >
         <StoreCard
           textColor={'#fff'}
-          backgroundColor={'#00000065'}
+          backgroundColor={isLimited ? '#d86530be' : 'rgba(32, 32, 32, 0)'}
+          badge={isLimited ? i18n._('Full Access is required') : undefined}
           previewImageUrl={
             'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773964951620-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg'
           }
           title={i18n._('Place to share your thoughts')}
           items={[]}
-          onClick={openPublicChat}
+          borderSize={isLimited ? '2px' : undefined}
+          onClick={openPublicChatWrapper}
           itemsBackgroundColor={'rgba(32, 32, 32, 1)'}
           itemsViewMode={'list'}
         />

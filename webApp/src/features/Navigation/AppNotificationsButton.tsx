@@ -1,4 +1,4 @@
-import { IconButton, Stack, Tabs, Tab, Typography, Badge } from '@mui/material';
+import { IconButton, Stack, Tabs, Tab, Typography, Badge, Button } from '@mui/material';
 import { useUrlState } from '../Url/useUrlState';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
@@ -9,6 +9,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useBattle } from '../Game/Battle/useBattle';
 import { TabLabel } from '../Game/TabLabel';
 import { DailyQuestionNotificationsList } from '../DailyQuestion/DailyQuestionNotificationsList';
+import { useAccess } from '../Usage/useAccess';
 
 type ModeType = 'messages' | 'dailyQuestions' | 'chat';
 
@@ -19,6 +20,7 @@ export const AppNotificationsButton: React.FC = () => {
   const newMessagesCount = chatList.myUnreadCount;
   const router = useRouter();
   const battles = useBattle();
+  const access = useAccess();
 
   const [mode, setMode] = useUrlState<ModeType>('inboxType', 'dailyQuestions', false);
 
@@ -115,7 +117,24 @@ export const AppNotificationsButton: React.FC = () => {
                       backgroundColor: 'rgba(255, 255, 255, 0.01)',
                     }}
                   >
-                    <ChatPage type={'public'} />
+                    {access.isFullAppAccess ? (
+                      <ChatPage type={'public'} />
+                    ) : (
+                      <Stack
+                        sx={{
+                          alignItems: 'flex-start',
+                          padding: '20px',
+                          gap: '20px',
+                        }}
+                      >
+                        <Typography variant="h5" sx={{}}>
+                          {i18n._('Full Access is required to see global chat')}
+                        </Typography>
+                        <Button variant="contained" color="info" onClick={access.showPaymentModal}>
+                          {i18n._('Upgrade to Full Access')}
+                        </Button>
+                      </Stack>
+                    )}
                   </Stack>
                 )}
               </Stack>

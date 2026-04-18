@@ -85,7 +85,6 @@ export function Dashboard({ lang }: DashboardProps) {
                 <JustTalkCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
-                <StoriesDashboardCard />
                 <RolePlayDashboardCard />
                 <PublicChatDashboardCard />
                 <DailyQuestionDashboardCard />
