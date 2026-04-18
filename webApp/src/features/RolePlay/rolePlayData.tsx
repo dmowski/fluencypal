@@ -1276,8 +1276,7 @@ Rules:
 - If important details are provided, naturally incorporate them.
 - Start the conversation naturally without explaining the setup.
 `,
-      exampleOfFirstMessageFromAi:
-        'Hello, I understand you wanted to discuss an issue with your recent order. Could you tell me what happened?',
+      exampleOfFirstMessageFromAi: '',
       illustrationDescription:
         'Two people in a custom conversation setting, such as a customer and service agent or candidate and recruiter, speaking in a realistic situation tailored to the user’s goal.',
       imageSrc:
