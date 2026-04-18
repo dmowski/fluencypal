@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Remove 5% improvement mentions from landing page
-
 ## Make focus only on speaking: hide stories, game, daily questions, community
 
 For the first day visitors
@@ -14,6 +12,8 @@ For the first day visitors
 
 - More inputs
 - Ability to save scenarios
+- How to improve VAD scenario/Realtime improvements
+- How to record user's voice
 
 ## Hide "cases" pages
 
