@@ -1,6 +1,5 @@
 'use client';
 import { sendTranscriptRequest } from '@/app/api/transcript/sendTranscriptRequest';
-import { useIsWebView } from '../Auth/useIsWebView';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { useVadRecorder } from './useVadRecorder';
@@ -11,7 +10,6 @@ export const useVadAudioRecorder = ({
   onTranscriptionStart,
 }: {
   onTranscriptionStart: () => void;
-
   silenceMs?: number;
 }) => {
   const auth = useAuth();
