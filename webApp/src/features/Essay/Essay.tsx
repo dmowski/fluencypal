@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
+import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
 import { useLingui } from '@lingui/react';
 import { useEssay } from './useEssay';
 import { EssayText } from './EssayText';
@@ -23,57 +23,45 @@ export const Essay = () => {
 
   const [activeEssayId, setActiveEssayId] = useState<string | null>(null);
 
-  const onTranscriptionStart = () => {};
+  const recorder = useRealtimeTranscript();
+  const isRecording = recorder.isActive || recorder.isActivating;
 
-  const recorder = useVadAudioRecorder({
-    onTranscriptionStart,
-    silenceMs: 3500,
-  });
-
-  const prevTranscript = useRef<string | null>(null);
-
-  useEffect(() => {
-    if (
-      recorder.lastTranscript &&
-      recorder.lastTranscript !== prevTranscript.current &&
-      activeEssayId
-    ) {
-      prevTranscript.current = recorder.lastTranscript;
-      appendToEssay(activeEssayId, recorder.lastTranscript);
-    }
-  }, [recorder.lastTranscript, activeEssayId, appendToEssay]);
+  const startForEssay = (essayId: string) => {
+    setActiveEssayId(essayId);
+    recorder.start({ mode: 'ai' });
+  };
 
   const handleStartRecording = () => {
     if (essays.length === 0) {
       const newEssay = createEssay();
-      setActiveEssayId(newEssay.id);
+      startForEssay(newEssay.id);
     } else {
-      setActiveEssayId(lastEssay!.id);
+      startForEssay(lastEssay!.id);
     }
-
-    recorder.start();
   };
 
   const handleStopRecording = () => {
+    const text = recorder.transcript.trim();
+    if (text && activeEssayId) {
+      appendToEssay(activeEssayId, text);
+    }
     recorder.stop();
+    setActiveEssayId(null);
   };
 
   const handleContinueLastEssay = () => {
     if (lastEssay) {
-      setActiveEssayId(lastEssay.id);
+      startForEssay(lastEssay.id);
     }
-    recorder.start();
   };
 
   const handleRecordNewEssay = () => {
     const newEssay = createEssay();
-    setActiveEssayId(newEssay.id);
-    recorder.start();
+    startForEssay(newEssay.id);
   };
 
   const handleContinueRecording = (essayId: string) => {
-    setActiveEssayId(essayId);
-    recorder.start();
+    startForEssay(essayId);
   };
 
   return (
@@ -85,19 +73,19 @@ export const Essay = () => {
       }}
     >
       <Stack direction="row" spacing={2} alignItems="center">
-        {recorder.isRecording && (
+        {isRecording && (
           <Button variant="contained" color="error" onClick={handleStopRecording}>
             {i18n._('Stop Recording')}
           </Button>
         )}
 
-        {!recorder.isRecording && essays.length === 0 && (
+        {!isRecording && essays.length === 0 && (
           <Button variant="contained" color="primary" onClick={handleStartRecording}>
             {i18n._('Start Recording')}
           </Button>
         )}
 
-        {!recorder.isRecording && essays.length > 0 && (
+        {!isRecording && essays.length > 0 && (
           <>
             <Button variant="outlined" onClick={handleContinueLastEssay}>
               {i18n._('Continue recording last essay')}
@@ -109,20 +97,16 @@ export const Essay = () => {
         )}
       </Stack>
 
-      <Stack
-        sx={{
-          minHeight: '40px',
-        }}
-      >
-        {recorder.isTranscribing && (
+      <Stack sx={{ minHeight: '40px' }}>
+        {recorder.isActivating && (
           <Typography variant="body2" color="text.secondary">
-            {i18n._('Transcribing...')}
+            {i18n._('Starting...')}
           </Typography>
         )}
 
-        {recorder.error && (
-          <Typography variant="body2" color="error">
-            {recorder.error}
+        {isRecording && recorder.transcript && (
+          <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', fontStyle: 'italic' }}>
+            {recorder.transcript}
           </Typography>
         )}
       </Stack>
@@ -139,8 +123,8 @@ export const Essay = () => {
             <Stack key={essay.id}>
               <EssayText
                 text={essay.text}
-                isRecording={recorder.isRecording}
-                analysis={essay.analysis}
+                isRecording={isRecording}
+                analysis={essay.analysis ?? undefined}
                 isAnalyzing={analyzingEssayId === essay.id}
                 onDelete={() => deleteEssay(essay.id)}
                 onContinueRecording={() => handleContinueRecording(essay.id)}
