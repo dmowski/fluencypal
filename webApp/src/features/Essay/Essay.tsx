@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { useLingui } from '@lingui/react';
 import { useEssay } from './useEssay';
@@ -11,7 +10,16 @@ import { EssayText } from './EssayText';
 
 export const Essay = () => {
   const { i18n } = useLingui();
-  const { essays, lastEssay, createEssay, updateEssay, appendToEssay, deleteEssay } = useEssay();
+  const {
+    essays,
+    lastEssay,
+    createEssay,
+    updateEssay,
+    appendToEssay,
+    deleteEssay,
+    analyzeEssay,
+    analyzingEssayId,
+  } = useEssay();
 
   const [activeEssayId, setActiveEssayId] = useState<string | null>(null);
 
@@ -132,9 +140,12 @@ export const Essay = () => {
               <EssayText
                 text={essay.text}
                 isRecording={recorder.isRecording}
+                analysis={essay.analysis}
+                isAnalyzing={analyzingEssayId === essay.id}
                 onDelete={() => deleteEssay(essay.id)}
                 onContinueRecording={() => handleContinueRecording(essay.id)}
                 onUpdate={(newText) => updateEssay(essay.id, newText)}
+                onAnalyze={() => analyzeEssay(essay.id)}
               />
             </Stack>
           ))}

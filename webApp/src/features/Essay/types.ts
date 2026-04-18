@@ -3,4 +3,5 @@ export interface Essay {
   text: string;
   createdAtIso: string;
   updatedAtIso: string;
+  analysis: string | null;
 }

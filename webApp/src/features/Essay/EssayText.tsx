@@ -4,22 +4,30 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useLingui } from '@lingui/react';
+import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 
 interface EssayTextProps {
   text: string;
   isRecording: boolean;
+  analysis?: string;
+  isAnalyzing?: boolean;
   onDelete: () => void;
   onContinueRecording: () => void;
   onUpdate: (newText: string) => void;
+  onAnalyze: () => void;
 }
 
 export const EssayText = ({
   text,
   isRecording,
+  analysis,
+  isAnalyzing,
   onDelete,
   onContinueRecording,
   onUpdate,
+  onAnalyze,
 }: EssayTextProps) => {
   const { i18n } = useLingui();
   const [isEditing, setIsEditing] = useState(false);
@@ -75,7 +83,7 @@ export const EssayText = ({
       )}
 
       {!isEditing && (
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={1} flexWrap="wrap">
           <Button
             variant="outlined"
             size="small"
@@ -87,9 +95,24 @@ export const EssayText = ({
           <Button variant="outlined" size="small" onClick={handleEditClick}>
             {i18n._('Edit')}
           </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={onAnalyze}
+            disabled={isAnalyzing || !text.trim()}
+            startIcon={isAnalyzing ? <CircularProgress size={14} /> : undefined}
+          >
+            {i18n._('Analyze')}
+          </Button>
           <Button variant="outlined" size="small" color="error" onClick={onDelete}>
             {i18n._('Delete')}
           </Button>
+        </Stack>
+      )}
+
+      {analysis && !isEditing && (
+        <Stack sx={{}}>
+          <Markdown>{analysis}</Markdown>
         </Stack>
       )}
     </Stack>

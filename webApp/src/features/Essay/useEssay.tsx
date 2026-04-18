@@ -1,5 +1,6 @@
 'use client';
-import { useState, useCallback, createContext, useContext, ReactNode, JSX } from 'react';
+import { useState, createContext, useContext, ReactNode, JSX } from 'react';
+import { useTextAi } from '@/features/Ai/useTextAi';
 import { Essay } from './types';
 
 const STORAGE_KEY = 'essays';
@@ -25,19 +26,24 @@ interface EssayContextType {
   updateEssay: (id: string, text: string) => void;
   appendToEssay: (id: string, transcript: string) => void;
   deleteEssay: (id: string) => void;
+  analyzeEssay: (id: string) => Promise<void>;
+  analyzingEssayId: string | null;
 }
 
 const EssayContext = createContext<EssayContextType | null>(null);
 
 function useProvideEssay(): EssayContextType {
   const [essays, setEssays] = useState<Essay[]>(() => loadEssays());
+  const [analyzingEssayId, setAnalyzingEssayId] = useState<string | null>(null);
+  const textAi = useTextAi();
 
-  const createEssay = useCallback((): Essay => {
+  const createEssay = (): Essay => {
     const newEssay: Essay = {
       id: crypto.randomUUID(),
       text: '',
       createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
+      analysis: null,
     };
     setEssays((prev) => {
       const updated = [...prev, newEssay];
@@ -45,9 +51,9 @@ function useProvideEssay(): EssayContextType {
       return updated;
     });
     return newEssay;
-  }, []);
+  };
 
-  const updateEssay = useCallback((id: string, text: string) => {
+  const updateEssay = (id: string, text: string) => {
     setEssays((prev) => {
       const updated = prev.map((e) =>
         e.id === id ? { ...e, text, updatedAtIso: new Date().toISOString() } : e,
@@ -55,9 +61,9 @@ function useProvideEssay(): EssayContextType {
       saveEssays(updated);
       return updated;
     });
-  }, []);
+  };
 
-  const appendToEssay = useCallback((id: string, transcript: string) => {
+  const appendToEssay = (id: string, transcript: string) => {
     setEssays((prev) => {
       const updated = prev.map((e) => {
         if (e.id !== id) return e;
@@ -68,15 +74,44 @@ function useProvideEssay(): EssayContextType {
       saveEssays(updated);
       return updated;
     });
-  }, []);
+  };
 
-  const deleteEssay = useCallback((id: string) => {
+  const deleteEssay = (id: string) => {
     setEssays((prev) => {
       const updated = prev.filter((e) => e.id !== id);
       saveEssays(updated);
       return updated;
     });
-  }, []);
+  };
+
+  const analyzeEssay = async (id: string) => {
+    const essay = essays.find((e) => e.id === id);
+    if (!essay || !essay.text.trim()) return;
+
+    setAnalyzingEssayId(id);
+    try {
+      const analysis = await textAi.generate({
+        systemMessage: `You are an expert writing coach. Analyze the provided essay and return a markdown-formatted analysis covering:
+
+## Style
+Evaluate how well the essay is written: clarity, structure, tone, flow, and overall quality.
+
+## Grammar Mistakes
+List grammar mistakes found and explain how to fix each one. If there are no mistakes, say so.`,
+        userMessage: essay.text,
+        model: 'gpt-4o',
+      });
+      setEssays((prev) => {
+        const updated = prev.map((e) =>
+          e.id === id ? { ...e, analysis, updatedAtIso: new Date().toISOString() } : e,
+        );
+        saveEssays(updated);
+        return updated;
+      });
+    } finally {
+      setAnalyzingEssayId(null);
+    }
+  };
 
   const lastEssay = essays.length > 0 ? essays[essays.length - 1] : null;
 
@@ -87,6 +122,8 @@ function useProvideEssay(): EssayContextType {
     updateEssay,
     appendToEssay,
     deleteEssay,
+    analyzeEssay,
+    analyzingEssayId,
   };
 }
 
