@@ -72,7 +72,7 @@ export const EssayText = ({
           sx={{
             fontSize: '1.7rem',
             fontFamily: 'serif',
-            whiteSpace: 'pre-wrap',
+            //whiteSpace: 'pre-wrap',
             minHeight: '2em',
             fontWeight: 400,
             color: 'rgba(255, 255, 255, 0.85)',

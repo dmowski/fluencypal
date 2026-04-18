@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -26,6 +26,11 @@ export const Essay = () => {
   const recorder = useRealtimeTranscript();
   const isRecording = recorder.isActive || recorder.isActivating;
 
+  useEffect(() => {
+    if (!recorder.transcript || !activeEssayId) return;
+    updateEssay(activeEssayId, recorder.transcript);
+  }, [recorder.transcript, activeEssayId]);
+
   const startForEssay = (essayId: string) => {
     setActiveEssayId(essayId);
     recorder.start({ mode: 'ai' });
@@ -41,10 +46,6 @@ export const Essay = () => {
   };
 
   const handleStopRecording = () => {
-    const text = recorder.transcript.trim();
-    if (text && activeEssayId) {
-      appendToEssay(activeEssayId, text);
-    }
     recorder.stop();
     setActiveEssayId(null);
   };
@@ -101,12 +102,6 @@ export const Essay = () => {
         {recorder.isActivating && (
           <Typography variant="body2" color="text.secondary">
             {i18n._('Starting...')}
-          </Typography>
-        )}
-
-        {isRecording && recorder.transcript && (
-          <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', fontStyle: 'italic' }}>
-            {recorder.transcript}
           </Typography>
         )}
       </Stack>
