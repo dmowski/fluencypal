@@ -4,13 +4,20 @@
 
 ## Make focus only on speaking: hide stories, game, daily questions, community
 
-For the first visitors
+For the first day visitors
 
 ## Improve landing: focus only on speaking practice
 
-## Improve custom "Mode", add more user friendly
+"Practice the exact conversation you’re afraid of."
+
+## Create a separate custom scenario
+
+- More inputs
+- Ability to save scenarios
 
 ## Hide "cases" pages
+
+## Add more role plays
 
 ## Review video about "Fluently", fix problem that I have
 

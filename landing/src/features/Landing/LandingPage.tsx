@@ -132,7 +132,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`How can I track my progress?`),
       answer: i18n._(
-        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex, and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy. FluencyPal also assesses your grammar, confidence, vocabulary, and fluency, then creates a progress chart so you can see how your skills grow over time. Usually, people who practice daily improve by 5% over a month.`,
+        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex, and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy. FluencyPal also assesses your grammar, confidence, vocabulary, and fluency, then creates a progress chart so you can see how your skills grow over time.`,
       ),
     },
 
@@ -201,7 +201,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             label={i18n._(`Real time conversation with AI`)}
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
-            subTitle2={i18n._(`Build fluency and confidence with daily speaking practice.`)}
+            subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={quizLink}
@@ -277,7 +277,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               allFeaturesTitle={i18n._(`Explore All Features`)}
               allFeaturesHref={`${getUrlStart(lang)}features`}
               subTitle={i18n._(
-                'Improving your English speaking skills takes time and consistent practice. FluencyPal is designed for learners who can already communicate at least a little and want to become more fluent, confident, and accurate through regular speaking practice. Progress is usually gradual, and many users improve by around 5% over a month of steady practice.',
+                'Improving your English speaking skills takes time and consistent practice. FluencyPal is designed for learners who can already communicate at least a little and want to become more fluent, confident, and accurate through regular speaking practice.',
               )}
               cards={[
                 {
