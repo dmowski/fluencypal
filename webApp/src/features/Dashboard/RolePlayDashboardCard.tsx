@@ -101,10 +101,10 @@ export const PracticeCustomConversationsDashboardCard = () => {
   const { i18n } = useLingui();
   const { visibleScenarios, selectScenario } = useRolePlay();
 
-  const customScenario = useMemo(
-    () => visibleScenarios.find((s) => s.id === 'custom-conversation'),
-    [visibleScenarios],
-  );
+  const customScenario = useMemo(() => {
+    console.log('Call memo');
+    return visibleScenarios.find((s) => s.id === 'custom-conversation');
+  }, [visibleScenarios]);
 
   if (!customScenario) return <></>;
 
@@ -112,7 +112,9 @@ export const PracticeCustomConversationsDashboardCard = () => {
     <StoreCard
       textColor={'#fff'}
       backgroundColor={'rgba(63, 62, 61, 0.1)'}
-      previewImageUrl={customScenario.imageSrc}
+      previewImageUrl={
+        'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1776513009167-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+      }
       label={i18n._(`This is the signal you've been waiting for.`)}
       title={customScenario.title}
       items={[]}
