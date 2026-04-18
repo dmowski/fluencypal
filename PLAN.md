@@ -2,8 +2,9 @@
 
 ## Essay helper
 
-- Add field context
-- Add field title
+- Add field title, context
+
+- After transcript is updated, generate next text to continue essay. Like copilot
 
 ## How to record user's voice
 

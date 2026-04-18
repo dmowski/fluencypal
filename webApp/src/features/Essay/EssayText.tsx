@@ -21,6 +21,8 @@ interface EssayTextProps {
   onDelete: () => void;
   onContinueRecording: () => void;
   onUpdate: (newText: string) => void;
+  onUpdateTitle: (newTitle: string) => void;
+  onUpdateContext: (newContext: string) => void;
   onAnalyze: () => void;
 }
 
@@ -33,11 +35,17 @@ export const EssayText = ({
   onDelete,
   onContinueRecording,
   onUpdate,
+  onUpdateTitle,
+  onUpdateContext,
   onAnalyze,
 }: EssayTextProps) => {
   const { i18n } = useLingui();
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(essay.text);
+  const [titleValue, setTitleValue] = useState(essay.title);
+  const [contextValue, setContextValue] = useState(essay.context);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [isEditingContext, setIsEditingContext] = useState(false);
 
   const handleEditClick = () => {
     setEditValue(essay.text);
@@ -47,6 +55,16 @@ export const EssayText = ({
   const handleSave = () => {
     onUpdate(editValue);
     setIsEditing(false);
+  };
+
+  const handleTitleSave = () => {
+    onUpdateTitle(titleValue);
+    setIsEditingTitle(false);
+  };
+
+  const handleContextSave = () => {
+    onUpdateContext(contextValue);
+    setIsEditingContext(false);
   };
 
   return (
@@ -62,6 +80,73 @@ export const EssayText = ({
       <Typography variant="caption" sx={{ fontWeight: 500 }}>
         {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
       </Typography>
+
+      {isEditingTitle ? (
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
+        >
+          <TextField
+            value={titleValue}
+            onChange={(e) => setTitleValue(e.target.value)}
+            fullWidth
+            size="small"
+            placeholder={i18n._('Title')}
+            autoFocus
+          />
+          <Button variant="contained" onClick={handleTitleSave} size="small">
+            {i18n._('Save')}
+          </Button>
+        </Stack>
+      ) : (
+        <Typography
+          variant="h6"
+          sx={{ cursor: 'pointer', opacity: essay.title ? 1 : 0.4 }}
+          onClick={() => {
+            setTitleValue(essay.title);
+            setIsEditingTitle(true);
+          }}
+        >
+          {essay.title || i18n._('Add title...')}
+        </Typography>
+      )}
+
+      {isEditingContext ? (
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
+        >
+          <TextField
+            multiline
+            minRows={2}
+            value={contextValue}
+            onChange={(e) => setContextValue(e.target.value)}
+            fullWidth
+            size="small"
+            placeholder={i18n._('Context (topic, audience, goal...)')}
+            autoFocus
+          />
+          <Button variant="contained" onClick={handleContextSave} size="small">
+            {i18n._('Save')}
+          </Button>
+        </Stack>
+      ) : (
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
+          onClick={() => {
+            setContextValue(essay.context);
+            setIsEditingContext(true);
+          }}
+        >
+          {essay.context || i18n._('Add context...')}
+        </Typography>
+      )}
       {isEditing ? (
         <Stack spacing={1}>
           <TextField

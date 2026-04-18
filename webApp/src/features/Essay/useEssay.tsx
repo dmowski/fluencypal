@@ -24,6 +24,8 @@ interface EssayContextType {
   lastEssay: Essay | null;
   createEssay: () => Essay;
   updateEssay: (id: string, text: string) => void;
+  updateEssayTitle: (id: string, title: string) => void;
+  updateEssayContext: (id: string, context: string) => void;
   appendToEssay: (id: string, transcript: string) => void;
   deleteEssay: (id: string) => void;
   analyzeEssay: (id: string) => Promise<void>;
@@ -40,6 +42,8 @@ function useProvideEssay(): EssayContextType {
   const createEssay = (): Essay => {
     const newEssay: Essay = {
       id: crypto.randomUUID(),
+      title: '',
+      context: '',
       text: '',
       createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
@@ -57,6 +61,26 @@ function useProvideEssay(): EssayContextType {
     setEssays((prev) => {
       const updated = prev.map((e) =>
         e.id === id ? { ...e, text, updatedAtIso: new Date().toISOString() } : e,
+      );
+      saveEssays(updated);
+      return updated;
+    });
+  };
+
+  const updateEssayTitle = (id: string, title: string) => {
+    setEssays((prev) => {
+      const updated = prev.map((e) =>
+        e.id === id ? { ...e, title, updatedAtIso: new Date().toISOString() } : e,
+      );
+      saveEssays(updated);
+      return updated;
+    });
+  };
+
+  const updateEssayContext = (id: string, context: string) => {
+    setEssays((prev) => {
+      const updated = prev.map((e) =>
+        e.id === id ? { ...e, context, updatedAtIso: new Date().toISOString() } : e,
       );
       saveEssays(updated);
       return updated;
@@ -125,6 +149,8 @@ List grammar mistakes found and explain how to fix each one. If there are no mis
     lastEssay,
     createEssay,
     updateEssay,
+    updateEssayTitle,
+    updateEssayContext,
     appendToEssay,
     deleteEssay,
     analyzeEssay,

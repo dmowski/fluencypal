@@ -17,6 +17,8 @@ export const Essay = () => {
     lastEssay,
     createEssay,
     updateEssay,
+    updateEssayTitle,
+    updateEssayContext,
     appendToEssay,
     deleteEssay,
     analyzeEssay,
@@ -138,6 +140,8 @@ export const Essay = () => {
                 onDelete={() => deleteEssay(essay.id)}
                 onContinueRecording={() => handleContinueRecording(essay.id)}
                 onUpdate={(newText) => updateEssay(essay.id, newText)}
+                onUpdateTitle={(newTitle) => updateEssayTitle(essay.id, newTitle)}
+                onUpdateContext={(newContext) => updateEssayContext(essay.id, newContext)}
                 onAnalyze={() => analyzeEssay(essay.id)}
               />
             </Stack>
