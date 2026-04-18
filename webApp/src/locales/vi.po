@@ -189,7 +189,7 @@ msgstr "5 giờ AI"
 msgid "5. Winners get full access for free "
 msgstr "5. Người chiến thắng sẽ được truy cập đầy đủ miễn phí "
 
-#: src/features/Tasks/useDailyTasks.tsx:202
+#: src/features/Tasks/useDailyTasks.tsx:188
 #. js-lingui-explicit-id
 msgid "A calm routine makes steady progress."
 msgstr "Một thói quen bình tĩnh tạo ra tiến bộ ổn định."
@@ -633,7 +633,7 @@ msgstr "Tất cả cuộc phỏng vấn"
 msgid "All Scenarios"
 msgstr "Tất cả các kịch bản"
 
-#: src/features/Tasks/useDailyTasks.tsx:268
+#: src/features/Tasks/useDailyTasks.tsx:254
 #. js-lingui-explicit-id
 msgid "All tasks completed"
 msgstr "Tất cả các nhiệm vụ đã hoàn thành"
@@ -716,7 +716,7 @@ msgid "Angular & RxJS"
 msgstr "Angular & RxJS"
 
 #: src/features/DailyQuestion/DailyQuestionModal.tsx:38
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:27
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:29
 #. js-lingui-explicit-id
 msgid "Answer a new question every day and see how your style improves!"
 msgstr ""
@@ -736,7 +736,7 @@ msgstr ""
 "mới."
 
 #: src/features/Community/GamePage.tsx:107
-#: src/features/Dashboard/GameDashboardCard.tsx:130
+#: src/features/Dashboard/GameDashboardCard.tsx:134
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "Trả lời câu hỏi đúng để leo lên bảng xếp hạng!"
@@ -1346,7 +1346,7 @@ msgstr "chars"
 #: src/features/Chat/ChatPage.tsx:380
 #: src/features/Chat/ChatPage.tsx:382
 #: src/features/Game/UserProfileModal.tsx:99
-#: src/features/Navigation/AppNotificationsButton.tsx:90
+#: src/features/Navigation/AppNotificationsButton.tsx:92
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Trò chuyện"
@@ -1577,7 +1577,7 @@ msgstr ""
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:118
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:24
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:36
 #: src/features/Goal/Quiz/QuizPage2.tsx:488
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:89
@@ -1765,6 +1765,15 @@ msgstr ""
 "(chọn chỉ những trường cần thiết) và AsNoTracking cho EF Core. Đối với việc "
 "tuần tự hóa nặng, tối ưu hóa DTO và xem xét nén đối với các tải lớn."
 
+#: src/features/Tasks/useDailyTasks.tsx:146
+#. js-lingui-explicit-id
+msgid ""
+"Consistency is key to language learning. Complete today’s tasks to keep the "
+"habit alive."
+msgstr ""
+"Sự nhất quán là chìa khóa để học ngôn ngữ. Hoàn thành các nhiệm vụ hôm nay "
+"để duy trì thói quen."
+
 #: src/features/Case/data/reusable/priceSection.ts:20
 #. js-lingui-explicit-id
 msgid ""
@@ -1868,7 +1877,7 @@ msgstr "Cuộc trò chuyện"
 msgid "Conversation practice"
 msgstr "Thực hành hội thoại"
 
-#: src/features/Dashboard/JustTalkCard.tsx:36
+#: src/features/Dashboard/JustTalkCard.tsx:40
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Cuộc trò chuyện với AI"
@@ -2133,7 +2142,7 @@ msgstr "Hỏi & Đáp Hàng Ngày"
 msgid "Daily question"
 msgstr "Câu hỏi hàng ngày"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:26
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:28
 #. js-lingui-explicit-id
 msgid "Daily Question"
 msgstr "Câu Hỏi Hàng Ngày"
@@ -2199,7 +2208,7 @@ msgstr "Cơ sở dữ liệu & Giao dịch"
 msgid "Day"
 msgstr "Ngày"
 
-#: src/features/Tasks/useDailyTasks.tsx:193
+#: src/features/Tasks/useDailyTasks.tsx:179
 #. js-lingui-explicit-id
 msgid "Day eight: keep moving forward"
 msgstr "Ngày thứ tám: tiếp tục tiến lên phía trước"
@@ -2211,10 +2220,10 @@ msgstr "Ngày thứ năm: giữ nhịp điệu"
 
 #: src/features/Tasks/useDailyTasks.tsx:145
 #. js-lingui-explicit-id
-msgid "Day four: story time"
-msgstr "Ngày bốn: thời gian kể chuyện"
+msgid "Day four: keep the habit alive"
+msgstr "Ngày thứ tư: duy trì thói quen"
 
-#: src/features/Tasks/useDailyTasks.tsx:178
+#: src/features/Tasks/useDailyTasks.tsx:171
 #. js-lingui-explicit-id
 msgid "Day seven: one full week"
 msgstr "Ngày thứ bảy: tròn một tuần"
@@ -2694,7 +2703,7 @@ msgstr "Đừng quên thử chế độ gọi trong phần thực hành!"
 #: src/features/Landing/LandingPage.tsx:264
 #: src/features/Modal/TeacherVoiceModal.tsx:60
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
-#: src/features/Tasks/useDailyTasks.tsx:272
+#: src/features/Tasks/useDailyTasks.tsx:258
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -2978,13 +2987,6 @@ msgstr "Nâng cao từ vựng của bạn bằng cách mô tả từ theo các c
 #. js-lingui-explicit-id
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "Tận hưởng trò chơi và xem AI đoán mô tả của bạn!"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-msgstr ""
-"Thưởng thức câu chuyện hôm nay và mở khóa truy cập đầy đủ. Cảm ơn bạn đã "
-"học cùng chúng tôi."
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:85
 #. js-lingui-explicit-id
@@ -3319,7 +3321,7 @@ msgstr "Khám phá các kỹ thuật để nói về sức khỏe và tâm lý."
 msgid "Explore the community, join discussions, and connect with other members"
 msgstr "Khám phá cộng đồng, tham gia thảo luận và kết nối với các thành viên khác"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:25
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Explore the community, join discussions, and share your feedback!"
 msgstr ""
@@ -3907,6 +3909,16 @@ msgstr "Truy cập Đầy đủ trong Một tuần"
 msgid "Full Access for a Year"
 msgstr "Toàn quyền truy cập trong một năm"
 
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
+#. js-lingui-explicit-id
+msgid "Full Access is required"
+msgstr "Cần có quyền truy cập đầy đủ"
+
+#: src/features/Navigation/AppNotificationsButton.tsx:131
+#. js-lingui-explicit-id
+msgid "Full Access is required to see global chat"
+msgstr "Cần có quyền Truy cập Đầy đủ để xem trò chuyện toàn cầu"
+
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -3949,7 +3961,7 @@ msgstr "Thông tin thú vị về bản thân bạn"
 
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
-#: src/features/Dashboard/GameDashboardCard.tsx:37
+#: src/features/Dashboard/GameDashboardCard.tsx:41
 #: src/features/RolePlay/rolePlayData.tsx:20
 #. js-lingui-explicit-id
 msgid "Game"
@@ -4352,7 +4364,7 @@ msgstr "Quy tắc Ngữ pháp"
 msgid "Grammar rules based on your level"
 msgstr "Quy tắc ngữ pháp dựa trên trình độ của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:270
+#: src/features/Tasks/useDailyTasks.tsx:256
 #. js-lingui-explicit-id
 msgid "Great job! Come back tomorrow for new tasks."
 msgstr "Làm tốt lắm! Hãy quay lại vào ngày mai để nhận nhiệm vụ mới."
@@ -5812,9 +5824,9 @@ msgstr "Đang tải.."
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:107
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/GameDashboardCard.tsx:120
+#: src/features/Dashboard/GameDashboardCard.tsx:124
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
-#: src/features/Dashboard/JustTalkCard.tsx:45
+#: src/features/Dashboard/JustTalkCard.tsx:49
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:83
@@ -5897,7 +5909,7 @@ msgstr "Quản lý cài đặt thông báo của bạn"
 msgid "Manage your profile settings and check your progress"
 msgstr "Quản lý cài đặt hồ sơ của bạn và kiểm tra tiến trình của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:194
+#: src/features/Tasks/useDailyTasks.tsx:180
 #. js-lingui-explicit-id
 msgid "Many people stop early, but you are still here. Be proud of that."
 msgstr "Nhiều người dừng lại sớm, nhưng bạn vẫn còn ở đây. Hãy tự hào về điều đó."
@@ -5999,7 +6011,7 @@ msgstr "Đề cập đến công nghệ bạn sử dụng (React/JS/HTML/CSS)"
 msgid "Message hidden due to policy violation."
 msgstr "Thông điệp bị ẩn do vi phạm chính sách."
 
-#: src/features/Navigation/AppNotificationsButton.tsx:99
+#: src/features/Navigation/AppNotificationsButton.tsx:101
 #. js-lingui-explicit-id
 msgid "Messages"
 msgstr "Tin nhắn"
@@ -6257,7 +6269,7 @@ msgstr "Câu chuyện tiếp theo"
 msgid "Next Turn"
 msgstr "Lượt Tiếp Theo"
 
-#: src/features/Tasks/useDailyTasks.tsx:179
+#: src/features/Tasks/useDailyTasks.tsx:172
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
@@ -6573,7 +6585,7 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Thông báo đã được gửi đến nhóm phát triển. Xin lỗi vì điều này..."
 
 #: src/features/Header/NotificationsModal.tsx:33
-#: src/features/Navigation/AppNotificationsButton.tsx:60
+#: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:114
 #. js-lingui-explicit-id
 msgid "Notifications"
@@ -6647,7 +6659,7 @@ msgstr "Rất tiếc! Đã xảy ra lỗi"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
-#: src/features/Dashboard/JustTalkCard.tsx:45
+#: src/features/Dashboard/JustTalkCard.tsx:49
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:23
 #: src/features/Landing/Price/PricePage.tsx:199
@@ -6980,7 +6992,7 @@ msgstr "Chọn một hoặc nhiều danh mục để xây dựng danh sách từ
 msgid "Pick words to build the sentence"
 msgstr "Chọn từ để xây dựng câu"
 
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:39
+#: src/features/Dashboard/PublicChatDashboardCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Place to share your thoughts"
 msgstr "Nơi để chia sẻ suy nghĩ của bạn"
@@ -6992,7 +7004,7 @@ msgstr "Kế hoạch cho"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Dashboard/GameDashboardCard.tsx:120
+#: src/features/Dashboard/GameDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Chơi"
@@ -7757,7 +7769,7 @@ msgstr "Mua 5 giờ"
 msgid "Question"
 msgstr "Câu hỏi"
 
-#: src/features/Navigation/AppNotificationsButton.tsx:79
+#: src/features/Navigation/AppNotificationsButton.tsx:81
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "Câu hỏi"
@@ -7797,7 +7809,7 @@ msgstr "Xếp hạng"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Đứng trong top 5 để nhận ứng dụng miễn phí"
 
-#: src/features/Dashboard/GameDashboardCard.tsx:89
+#: src/features/Dashboard/GameDashboardCard.tsx:93
 #. js-lingui-explicit-id
 msgid "Rank in top 5 on the leaderboard and get the app for free!"
 msgstr "Xếp hạng trong top 5 trên bảng xếp hạng và nhận ứng dụng miễn phí!"
@@ -7912,7 +7924,7 @@ msgstr "Sẵn sàng cho việc thực hành thực tế chưa?"
 msgid "Ready to test your knowledge and climb the leaderboard?"
 msgstr "Sẵn sàng kiểm tra kiến thức và leo lên bảng xếp hạng chưa?"
 
-#: src/features/Dashboard/GameDashboardCard.tsx:90
+#: src/features/Dashboard/GameDashboardCard.tsx:94
 #. js-lingui-explicit-id
 msgid "Ready to test your knowledge?"
 msgstr "Sẵn sàng để kiểm tra kiến thức của bạn chưa?"
@@ -8472,7 +8484,7 @@ msgstr "Phỏng vấn sơ tuyển với nhà tuyển dụng AI"
 msgid "Second Place"
 msgstr "Vị Trí Thứ Hai"
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:28
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:30
 #: src/features/ProgressStat/ProgressDashboardCard.tsx:28
 #. js-lingui-explicit-id
 msgid "See All"
@@ -8956,7 +8968,7 @@ msgstr "Kế Hoạch Học Tiếng Tây Ban Nha"
 msgid "Speak naturally, without overthinking"
 msgstr "Nói một cách tự nhiên, đừng suy nghĩ quá nhiều"
 
-#: src/features/Dashboard/JustTalkCard.tsx:30
+#: src/features/Dashboard/JustTalkCard.tsx:34
 #: src/features/Landing/LandingPage.tsx:385
 #: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
@@ -9008,7 +9020,7 @@ msgstr "Ngôi sao"
 msgid "Start"
 msgstr "Bắt đầu"
 
-#: src/features/Dashboard/JustTalkCard.tsx:37
+#: src/features/Dashboard/JustTalkCard.tsx:41
 #. js-lingui-explicit-id
 msgid ""
 "Start a casual call to practice your communication skills. This is a "
@@ -9324,7 +9336,7 @@ msgstr ""
 "lời một cách tự nhiên, giữ cho cuộc trò chuyện tiếp diễn, và thưởng thức "
 "một cuộc trao đổi thú vị về những người bạn bốn chân của bạn."
 
-#: src/features/Tasks/useDailyTasks.tsx:170
+#: src/features/Tasks/useDailyTasks.tsx:163
 #. js-lingui-explicit-id
 msgid "Strong consistency"
 msgstr "Độ nhất quán mạnh mẽ"
@@ -9665,7 +9677,7 @@ msgstr ""
 "bởi AI của FluencyPal. Luyện tập trả lời các câu hỏi thường gặp, nhận phản "
 "hồi tức thì và gia tăng sự tự tin của bạn cho các cuộc phỏng vấn thực tế."
 
-#: src/features/Dashboard/GameDashboardCard.tsx:38
+#: src/features/Dashboard/GameDashboardCard.tsx:42
 #. js-lingui-explicit-id
 msgid ""
 "Test your knowledge, participate in challenges, and compete with others on "
@@ -10259,7 +10271,7 @@ msgstr ""
 "micro. Webcam là tùy chọn và chỉ được sử dụng nếu bạn kích hoạt phản hồi "
 "webcam. Không cần cài đặt."
 
-#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
+#: src/features/Dashboard/DailyQuestionDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Hôm nay"
@@ -10274,7 +10286,7 @@ msgstr "Câu hỏi hôm nay"
 msgid "Today's Tasks"
 msgstr "Nhiệm Vụ Hôm Nay"
 
-#: src/features/Tasks/useDailyTasks.tsx:201
+#: src/features/Tasks/useDailyTasks.tsx:187
 #. js-lingui-explicit-id
 msgid "Today’s tasks"
 msgstr "Các nhiệm vụ hôm nay"
@@ -10570,6 +10582,11 @@ msgstr "Cập nhật"
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "Nâng cấp"
+
+#: src/features/Navigation/AppNotificationsButton.tsx:134
+#. js-lingui-explicit-id
+msgid "Upgrade to Full Access"
+msgstr "Nâng cấp để có Toàn quyền Truy cập"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -11744,7 +11761,7 @@ msgstr "Thành tích của bạn"
 msgid "Your AI speaking partner"
 msgstr "Đối tác nói chuyện AI của bạn"
 
-#: src/features/Dashboard/JustTalkCard.tsx:43
+#: src/features/Dashboard/JustTalkCard.tsx:47
 #. js-lingui-explicit-id
 msgid "Your AI Speech Partner"
 msgstr "Đối Tác Nói Chuyện AI của Bạn"
@@ -11779,7 +11796,7 @@ msgstr ""
 "Thẻ của bạn chỉ được sử dụng để kích hoạt truy cập an toàn và sẽ không bị "
 "tính phí trừ khi bạn quyết định tiếp tục."
 
-#: src/features/Tasks/useDailyTasks.tsx:171
+#: src/features/Tasks/useDailyTasks.tsx:164
 #. js-lingui-explicit-id
 msgid "Your consistency is paying off. Here are today’s tasks."
 msgstr "Sự kiên trì của bạn đang được đền đáp. Dưới đây là các nhiệm vụ của hôm nay."
@@ -11956,3 +11973,15 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Tasks/useDailyTasks.tsx:145
+#. js-lingui-explicit-id
+#~ msgid "Day four: story time"
+#~ msgstr "Ngày bốn: thời gian kể chuyện"
+
+#: src/features/Tasks/useDailyTasks.tsx:146
+#. js-lingui-explicit-id
+#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
+#~ msgstr ""
+#~ "Thưởng thức câu chuyện hôm nay và mở khóa truy cập đầy đủ. Cảm ơn bạn đã "
+#~ "học cùng chúng tôi."
