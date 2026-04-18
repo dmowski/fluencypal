@@ -198,7 +198,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       <main style={{ width: '100%', margin: 0 }}>
         <Stack sx={{ alignItems: 'center' }}>
           <WelcomeScreen2
-            label={i18n._(`Real time conversation with AI`)}
+            label={i18n._(`Conversation with AI`)}
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
