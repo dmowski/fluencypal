@@ -1,19 +1,8 @@
 # Live document with short/long term ideas
 
-## Make focus only on speaking: hide stories, game, daily questions, community
+## How to improve VAD scenario/Realtime improvements
 
-For the first day visitors
-
-## Improve landing: focus only on speaking practice
-
-"Practice the exact conversation you’re afraid of."
-
-## Create a separate custom scenario
-
-- More inputs
-- Ability to save scenarios
-- How to improve VAD scenario/Realtime improvements
-- How to record user's voice
+## How to record user's voice
 
 ## Hide "cases" pages
 
