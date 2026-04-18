@@ -44,6 +44,20 @@ Run "pnpm lint" to ensure it pass
 
 place Essay/Essay.tsx into webApp/src/app/testUi/testComponents/TestPage.tsx
 
+---
+
+Implement "Analyze" button feature.
+On Essay/EssayText.tsx create button "Analyze",
+that will use useTextAi generate to analyze current essay and return markdown analysis of it.
+
+Criteria to analyze:
+
+- Style: how well essay is written
+- Grammar mistakes and how to fix them
+
+Render markdown using webApp/src/features/uiKit/Markdown/Markdown.tsx
+Keep analysis in useEssay
+
 ## How to record user's voice
 
 ## How to improve VAD. instant grammar correction

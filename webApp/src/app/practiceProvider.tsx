@@ -33,6 +33,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import { DailyTasksProvider } from '@/features/Tasks/useDailyTasks';
 import { GrammarImprovementProvider } from '@/features/Dashboard/Grammar/useGrammarImprovement';
 import { ProgressStatsProvider } from '@/features/ProgressStat/useProgressStats';
+import { EssayProvider } from '@/features/Essay/useEssay';
 
 const oldStandardTT = Old_Standard_TT({
   subsets: ['latin'],
@@ -75,8 +76,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                               <LessonPlanProvider>
                                                                 <StoriesProvider>
                                                                   <CommunitySpaceProvider>
-                                                                    {children}
-                                                                    <GlobalModals />
+                                                                    <EssayProvider>
+                                                                      {children}
+                                                                      <GlobalModals />
+                                                                    </EssayProvider>
                                                                   </CommunitySpaceProvider>
                                                                 </StoriesProvider>
                                                               </LessonPlanProvider>
