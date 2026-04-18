@@ -58,6 +58,10 @@ Criteria to analyze:
 Render markdown using webApp/src/features/uiKit/Markdown/Markdown.tsx
 Keep analysis in useEssay
 
+---
+
+Todo: fix continue narrating issues
+
 ## How to record user's voice
 
 ## How to improve VAD. instant grammar correction

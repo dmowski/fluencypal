@@ -7,6 +7,8 @@ import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscri
 import { useLingui } from '@lingui/react';
 import { useEssay } from './useEssay';
 import { EssayText } from './EssayText';
+import { CirclePlus, Loader, Mic, Pause } from 'lucide-react';
+import { Add, AddCircle } from '@mui/icons-material';
 
 export const Essay = () => {
   const { i18n } = useLingui();
@@ -26,11 +28,6 @@ export const Essay = () => {
   const recorder = useRealtimeTranscript();
   const isRecording = recorder.isActive || recorder.isActivating;
 
-  useEffect(() => {
-    if (!recorder.transcript || !activeEssayId) return;
-    updateEssay(activeEssayId, recorder.transcript);
-  }, [recorder.transcript, activeEssayId]);
-
   const startForEssay = (essayId: string) => {
     setActiveEssayId(essayId);
     recorder.start({ mode: 'ai' });
@@ -46,6 +43,9 @@ export const Essay = () => {
   };
 
   const handleStopRecording = () => {
+    if (activeEssayId && recorder.transcript) {
+      appendToEssay(activeEssayId, recorder.transcript);
+    }
     recorder.stop();
     setActiveEssayId(null);
   };
@@ -75,34 +75,47 @@ export const Essay = () => {
     >
       <Stack direction="row" spacing={2} alignItems="center">
         {isRecording && (
-          <Button variant="contained" color="error" onClick={handleStopRecording}>
+          <Button
+            variant="contained"
+            disabled={recorder.isActivating}
+            color="error"
+            startIcon={recorder.isActivating ? <Loader size={16} /> : <Pause size={16} />}
+            onClick={handleStopRecording}
+          >
             {i18n._('Stop Recording')}
           </Button>
         )}
 
         {!isRecording && essays.length === 0 && (
-          <Button variant="contained" color="primary" onClick={handleStartRecording}>
+          <Button
+            startIcon={<Mic size={'18px'} />}
+            variant="contained"
+            color="info"
+            onClick={handleStartRecording}
+          >
             {i18n._('Start Recording')}
           </Button>
         )}
 
         {!isRecording && essays.length > 0 && (
           <>
-            <Button variant="outlined" onClick={handleContinueLastEssay}>
+            <Button
+              startIcon={<Mic size={'18px'} />}
+              variant="contained"
+              color="info"
+              onClick={handleContinueLastEssay}
+            >
               {i18n._('Continue recording last essay')}
             </Button>
-            <Button variant="outlined" onClick={handleRecordNewEssay}>
+            <Button
+              variant="outlined"
+              color="info"
+              onClick={handleRecordNewEssay}
+              startIcon={<CirclePlus size={'18px'} />}
+            >
               {i18n._('Record new essay')}
             </Button>
           </>
-        )}
-      </Stack>
-
-      <Stack sx={{ minHeight: '40px' }}>
-        {recorder.isActivating && (
-          <Typography variant="body2" color="text.secondary">
-            {i18n._('Starting...')}
-          </Typography>
         )}
       </Stack>
 
@@ -118,6 +131,7 @@ export const Essay = () => {
             <Stack key={essay.id}>
               <EssayText
                 text={essay.text}
+                activeTranscript={activeEssayId === essay.id ? recorder.transcript : undefined}
                 isRecording={isRecording}
                 analysis={essay.analysis ?? undefined}
                 isAnalyzing={analyzingEssayId === essay.id}

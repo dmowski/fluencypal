@@ -77,6 +77,11 @@ function useProvideEssay(): EssayContextType {
   };
 
   const deleteEssay = (id: string) => {
+    const consent = window.confirm(
+      'Are you sure you want to delete this essay? This action cannot be undone.',
+    );
+    if (!consent) return;
+
     setEssays((prev) => {
       const updated = prev.filter((e) => e.id !== id);
       saveEssays(updated);
