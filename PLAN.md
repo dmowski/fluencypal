@@ -1,8 +1,10 @@
 # Live document with short/long term ideas
 
-## How to improve VAD scenario/Realtime improvements
+## How to improve VAD. instant grammar correction
 
 ## How to record user's voice
+
+## scenario/realtime improvements
 
 ## Hide "cases" pages
 
