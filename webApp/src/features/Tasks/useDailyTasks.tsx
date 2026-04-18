@@ -167,7 +167,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'daily-question'],
+      tasks: ['just-talk'],
       title: i18n._('Day seven: one full week'),
       subTitle: i18n._('Nice work reaching a full week. Let’s continue with today’s tasks.'),
       imageUrl: previewImageUrl,
