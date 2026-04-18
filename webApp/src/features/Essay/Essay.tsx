@@ -72,7 +72,7 @@ export const Essay = () => {
     <Stack
       sx={{
         width: '100%',
-        maxWidth: '700px',
+        maxWidth: '800px',
         gap: '20px',
       }}
     >
@@ -119,19 +119,16 @@ export const Essay = () => {
         )}
       </Stack>
 
+      {essays.length === 0 && (
+        <Typography variant="body1" color="text.secondary">
+          {i18n._('No essays yet. Start recording to create your first essay.')}
+        </Typography>
+      )}
+
       {essays.length > 0 && (
         <Stack spacing={2}>
-          <Divider />
           {[...essays].reverse().map((essay) => (
-            <Stack
-              key={essay.id}
-              sx={{
-                p: 2,
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 1,
-              }}
-            >
+            <Stack key={essay.id}>
               <EssayText
                 text={essay.text}
                 isRecording={recorder.isRecording}

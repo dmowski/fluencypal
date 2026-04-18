@@ -36,7 +36,15 @@ export const EssayText = ({
   };
 
   return (
-    <Stack spacing={1}>
+    <Stack
+      sx={{
+        width: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        padding: '20px',
+        gap: '30px',
+        borderRadius: '13px',
+      }}
+    >
       {isEditing ? (
         <Stack spacing={1}>
           <TextField
@@ -51,7 +59,17 @@ export const EssayText = ({
           </Button>
         </Stack>
       ) : (
-        <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', minHeight: '2em' }}>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: '1.7rem',
+            fontFamily: 'serif',
+            whiteSpace: 'pre-wrap',
+            minHeight: '2em',
+            fontWeight: 400,
+            color: 'rgba(255, 255, 255, 0.85)',
+          }}
+        >
           {text}
         </Typography>
       )}
