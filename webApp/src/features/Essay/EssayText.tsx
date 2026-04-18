@@ -15,6 +15,7 @@ import { Essay } from './types';
 interface EssayTextProps {
   essay: Essay;
   activeTranscript?: string;
+  suggestion?: string;
   isRecording: boolean;
   analysis?: string;
   isAnalyzing?: boolean;
@@ -29,6 +30,7 @@ interface EssayTextProps {
 export const EssayText = ({
   essay,
   activeTranscript,
+  suggestion,
   isRecording,
   analysis,
   isAnalyzing,
@@ -148,7 +150,12 @@ export const EssayText = ({
         </Typography>
       )}
       {isEditing ? (
-        <Stack spacing={1}>
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
+        >
           <TextField
             multiline
             minRows={4}
@@ -172,11 +179,16 @@ export const EssayText = ({
             i: {
               fontFamily: 'serif',
             },
+            span: {
+              opacity: 0.7,
+            },
           }}
         >
           {!essay.text.trim() && !activeTranscript && '-'}
           {essay.text}
           {activeTranscript && <i>{activeTranscript}</i>}
+
+          {suggestion && !isEditing && <span>{suggestion}</span>}
         </Typography>
       )}
 

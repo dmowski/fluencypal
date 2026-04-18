@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useRealtimeTranscript } from '@/features/Transcript/useRealtimeTranscript';
+import { useTextAi } from '@/features/Ai/useTextAi';
 import { useLingui } from '@lingui/react';
 import { useEssay } from './useEssay';
 import { EssayText } from './EssayText';
@@ -26,12 +27,16 @@ export const Essay = () => {
   } = useEssay();
 
   const [activeEssayId, setActiveEssayId] = useState<string | null>(null);
+  const [suggestion, setSuggestion] = useState<string>('');
+  const suggestionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const textAi = useTextAi();
   const recorder = useRealtimeTranscript();
   const isRecording = recorder.isActive || recorder.isActivating;
 
   const startForEssay = (essayId: string) => {
     setActiveEssayId(essayId);
+    setSuggestion('');
     recorder.start({ mode: 'ai' });
   };
 
@@ -50,7 +55,37 @@ export const Essay = () => {
     }
     recorder.stop();
     setActiveEssayId(null);
+    setSuggestion('');
+    if (suggestionTimerRef.current) clearTimeout(suggestionTimerRef.current);
   };
+
+  useEffect(() => {
+    if (!recorder.transcript || !activeEssayId) return;
+
+    if (suggestionTimerRef.current) clearTimeout(suggestionTimerRef.current);
+
+    suggestionTimerRef.current = setTimeout(async () => {
+      const activeEssay = essays.find((e) => e.id === activeEssayId);
+      if (!activeEssay) return;
+
+      const parts = [
+        activeEssay.title && `Title: ${activeEssay.title}`,
+        activeEssay.context && `Context: ${activeEssay.context}`,
+        activeEssay.text && `Essay so far:\n${activeEssay.text}${recorder.transcript}`,
+      ]
+        .filter(Boolean)
+        .join('\n\n');
+
+      const result = await textAi.generate({
+        systemMessage:
+          'You are a writing assistant. Based on the essay details provided, suggest one concise next paragraph that naturally continues the essay. Return only the paragraph text, no explanations or labels.',
+        userMessage: parts,
+        model: 'gpt-4o',
+      });
+
+      setSuggestion(result.trim());
+    }, 1500);
+  }, [recorder.transcript, activeEssayId]);
 
   const handleContinueLastEssay = () => {
     if (lastEssay) {
@@ -134,6 +169,7 @@ export const Essay = () => {
               <EssayText
                 essay={essay}
                 activeTranscript={activeEssayId === essay.id ? recorder.transcript : undefined}
+                suggestion={activeEssayId === essay.id ? suggestion : undefined}
                 isRecording={isRecording}
                 analysis={essay.analysis ?? undefined}
                 isAnalyzing={analyzingEssayId === essay.id}
