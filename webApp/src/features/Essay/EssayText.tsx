@@ -9,15 +9,12 @@ import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Mic, Pencil, Sparkle, Trash } from 'lucide-react';
 import { IconButton } from '@mui/material';
-import { Delete } from '@mui/icons-material';
 import dayjs from 'dayjs';
 import { Essay } from './types';
 
 interface EssayTextProps {
-  text: string;
   essay: Essay;
   activeTranscript?: string;
-  createdAtIso: string;
   isRecording: boolean;
   analysis?: string;
   isAnalyzing?: boolean;
@@ -28,10 +25,8 @@ interface EssayTextProps {
 }
 
 export const EssayText = ({
-  text,
   essay,
   activeTranscript,
-  createdAtIso,
   isRecording,
   analysis,
   isAnalyzing,
@@ -42,10 +37,10 @@ export const EssayText = ({
 }: EssayTextProps) => {
   const { i18n } = useLingui();
   const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(text);
+  const [editValue, setEditValue] = useState(essay.text);
 
   const handleEditClick = () => {
-    setEditValue(text);
+    setEditValue(essay.text);
     setIsEditing(true);
   };
 
@@ -94,8 +89,8 @@ export const EssayText = ({
             },
           }}
         >
-          {!text.trim() && !activeTranscript && '-'}
-          {text}
+          {!essay.text.trim() && !activeTranscript && '-'}
+          {essay.text}
           {activeTranscript && <i>{activeTranscript}</i>}
         </Typography>
       )}
@@ -139,7 +134,7 @@ export const EssayText = ({
               variant="outlined"
               size="small"
               onClick={onAnalyze}
-              disabled={isAnalyzing || !text.trim() || isRecording}
+              disabled={isAnalyzing || !essay.text.trim() || isRecording}
               startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
             >
               {i18n._('Analyze')}

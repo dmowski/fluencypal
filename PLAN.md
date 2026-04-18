@@ -2,6 +2,9 @@
 
 ## Essay helper
 
+- Add field context
+- Add field title
+
 ## How to record user's voice
 
 ## How to improve VAD. instant grammar correction
