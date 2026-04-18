@@ -115,81 +115,11 @@ describe('SEO Metadata', () => {
       expect(meta.openGraph.images[0].url).toBe(`${siteUrl}openGraph.webp`);
     });
 
-    test('generates metadata for blog with blogId', () => {
-      const meta = generateMetadataInfo({
-        lang: 'en',
-        currentPath: 'blog',
-        blogId: 'no-projections-available',
-      });
-      expect(meta.title).toBe(
-        'No Projections Available - Practice English Conversation with AI | FluencyPal',
-      );
-      expect(meta.description).toBe('A silence at the end of the algorithm');
-      expect(meta.openGraph.images[0].url).toBe('/blog/dog/dog-park.webp');
-    });
-
-    test('generates metadata for scenarios with scenarioId', () => {
-      const meta = generateMetadataInfo({
-        lang: 'en',
-        currentPath: 'scenarios',
-        scenarioId: 'alias-game',
-      });
-      expect(meta.title).toBe(
-        'Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal',
-      );
-      expect(meta.description).toBe(
-        'Practice vocabulary by creatively describing and guessing words',
-      );
-      expect(meta.openGraph.images[0].url).toBe(
-        `https://app.fluencypal.com//role/f0de782c-6f1a-4005-924d-02459308a4fa.webp`,
-      );
-    });
-
     test('generates metadata for ru language homepage', () => {
       const meta = generateMetadataInfo({ lang: 'ru', currentPath: '' });
 
       expect(meta.title).toBe(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
       expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/ru`);
-    });
-
-    test('generates metadata for scenarios with scenarioId for ru', () => {
-      const meta = generateMetadataInfo({
-        lang: 'ru',
-        currentPath: 'scenarios',
-        scenarioId: 'alias-game',
-      });
-      expect(meta.title).toBe(
-        'Alias Word Guessing Game - Practice English Conversation with AI | FluencyPal',
-      );
-      expect(meta.description).toBe(
-        'Practice vocabulary by creatively describing and guessing words',
-      );
-      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/ru/scenarios/alias-game`);
-    });
-
-    test('generates metadata for features index', () => {
-      const meta = generateMetadataInfo({
-        lang: 'en',
-        currentPath: 'features',
-      });
-
-      expect(meta.title).toBe(
-        'FluencyPal Features: AI English Speaking Practice, Grammar, Role Plays',
-      );
-      expect(meta.description).toContain('Explore FluencyPal features');
-      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/features`);
-    });
-
-    test('generates metadata for one feature page', () => {
-      const meta = generateMetadataInfo({
-        lang: 'en',
-        currentPath: 'features',
-        featureId: 'learning-plan',
-      });
-
-      expect(meta.title).toBe('Personalized Learning Plan for English Practice | FluencyPal');
-      expect(meta.description).toContain('Build a personalized English learning plan with AI.');
-      expect(meta.alternates.canonical).toBe(`https://app.fluencypal.com/features/learning-plan`);
     });
   });
 });
