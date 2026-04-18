@@ -131,7 +131,9 @@ export const Essay = () => {
             <Stack key={essay.id}>
               <EssayText
                 text={essay.text}
+                essay={essay}
                 activeTranscript={activeEssayId === essay.id ? recorder.transcript : undefined}
+                createdAtIso={essay.createdAtIso}
                 isRecording={isRecording}
                 analysis={essay.analysis ?? undefined}
                 isAnalyzing={analyzingEssayId === essay.id}

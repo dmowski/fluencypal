@@ -10,10 +10,14 @@ import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Mic, Pencil, Sparkle, Trash } from 'lucide-react';
 import { IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
+import dayjs from 'dayjs';
+import { Essay } from './types';
 
 interface EssayTextProps {
   text: string;
+  essay: Essay;
   activeTranscript?: string;
+  createdAtIso: string;
   isRecording: boolean;
   analysis?: string;
   isAnalyzing?: boolean;
@@ -25,7 +29,9 @@ interface EssayTextProps {
 
 export const EssayText = ({
   text,
+  essay,
   activeTranscript,
+  createdAtIso,
   isRecording,
   analysis,
   isAnalyzing,
@@ -58,6 +64,9 @@ export const EssayText = ({
         borderRadius: '13px',
       }}
     >
+      <Typography variant="caption" sx={{ fontWeight: 500 }}>
+        {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
+      </Typography>
       {isEditing ? (
         <Stack spacing={1}>
           <TextField
@@ -77,10 +86,12 @@ export const EssayText = ({
           sx={{
             fontSize: '1.7rem',
             fontFamily: 'serif',
-            //whiteSpace: 'pre-wrap',
             minHeight: '2em',
             fontWeight: 400,
             color: 'rgba(255, 255, 255, 0.85)',
+            i: {
+              fontFamily: 'serif',
+            },
           }}
         >
           {!text.trim() && !activeTranscript && '-'}
@@ -128,7 +139,7 @@ export const EssayText = ({
               variant="outlined"
               size="small"
               onClick={onAnalyze}
-              disabled={isAnalyzing || !text.trim()}
+              disabled={isAnalyzing || !text.trim() || isRecording}
               startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
             >
               {i18n._('Analyze')}
