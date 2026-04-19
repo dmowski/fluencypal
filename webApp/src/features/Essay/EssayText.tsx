@@ -86,7 +86,7 @@ export const EssayText = ({
 
   const practiceWithAi = async () => {
     setIsAiCallStarting(true);
-    await settings.setConversationMode('call');
+    await settings.setConversationMode('record');
     const userPrompt = window.prompt(
       i18n._('What you want to practice with AI?'),
       essay.userPromptForPracticeWithAi || '',
@@ -102,7 +102,7 @@ export const EssayText = ({
     User's prompt for practice with you: ${essay.userPromptForPracticeWithAi || 'N/A'}
     Start a conversation with user based on these details. Follow user's lead and try to be as helpful as possible.`;
     await conversation.startConversation({
-      conversationMode: 'call',
+      conversationMode: 'record',
       mode: 'talk',
       voice: voiceName,
       customInstruction: instruction,
