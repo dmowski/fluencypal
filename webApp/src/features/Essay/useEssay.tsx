@@ -24,6 +24,7 @@ interface EssayContextType {
   lastEssay: Essay | null;
   createEssay: () => Essay;
   updateEssay: (id: string, text: string) => void;
+  updateEssayData: (id: string, data: Partial<Essay>) => void;
   updateEssayTitle: (id: string, title: string) => void;
   updateEssayContext: (id: string, context: string) => void;
   appendToEssay: (id: string, transcript: string) => void;
@@ -49,6 +50,7 @@ function useProvideEssay(): EssayContextType {
       createdAtIso: new Date().toISOString(),
       updatedAtIso: new Date().toISOString(),
       analysis: null,
+      userPromptForPracticeWithAi: null,
     };
     setEssays((prev) => {
       const updated = [...prev, newEssay];
@@ -153,6 +155,16 @@ List grammar mistakes found and explain how to fix each one. If there are no mis
     }
   };
 
+  const updateEssayData = (id: string, data: Partial<Essay>) => {
+    setEssays((prev) => {
+      const updated = prev.map((e) =>
+        e.id === id ? { ...e, ...data, updatedAtIso: new Date().toISOString() } : e,
+      );
+      saveEssays(updated);
+      return updated;
+    });
+  };
+
   const lastEssay = essays.length > 0 ? essays[essays.length - 1] : null;
 
   return {
@@ -167,6 +179,7 @@ List grammar mistakes found and explain how to fix each one. If there are no mis
     analyzeEssay,
     analyzingEssayId,
     deleteAnalysis,
+    updateEssayData,
   };
 }
 

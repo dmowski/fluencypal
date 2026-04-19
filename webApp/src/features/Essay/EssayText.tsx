@@ -7,12 +7,15 @@ import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { Mic, Pencil, Sparkle, Trash } from 'lucide-react';
+import { Loader, Mic, Pencil, Sparkle, Trash } from 'lucide-react';
 import { IconButton, ThemeProvider } from '@mui/material';
 import dayjs from 'dayjs';
 import { Essay } from './types';
 import { lightTheme } from '../uiKit/theme';
 import { useEssay } from './useEssay';
+import { useSettings } from '../Settings/useSettings';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
+import { MODELS } from '../Ai/ai';
 
 interface EssayTextProps {
   essay: Essay;
@@ -51,7 +54,7 @@ export const EssayText = ({
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingContext, setIsEditingContext] = useState(false);
 
-  const { deleteAnalysis } = useEssay();
+  const essayHook = useEssay();
 
   const handleEditClick = () => {
     setEditValue(essay.text);
@@ -71,6 +74,39 @@ export const EssayText = ({
   const handleContextSave = () => {
     onUpdateContext(contextValue);
     setIsEditingContext(false);
+  };
+
+  const [isAiCallStarting, setIsAiCallStarting] = useState(false);
+
+  const settings = useSettings();
+  const conversation = useAiConversation();
+  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+
+  const practiceWithAi = async () => {
+    setIsAiCallStarting(true);
+    await settings.setConversationMode('call');
+    const userPrompt = window.prompt(
+      i18n._('What you want to practice with AI?'),
+      essay.userPromptForPracticeWithAi || '',
+    );
+    if (userPrompt) {
+      essayHook.updateEssayData(essay.id, { userPromptForPracticeWithAi: userPrompt });
+    }
+
+    const instruction = `You need to discuss with user his writing.
+    Context: ${essay.context}
+    User's essay: ${essay.text}
+    User's prompt for practice with you: ${essay.userPromptForPracticeWithAi || 'N/A'}
+    Start a conversation with user based on these details. Follow user's lead and try to be as helpful as possible.`;
+    console.log('instruction', instruction);
+    await conversation.startConversation({
+      conversationMode: 'call',
+      mode: 'talk',
+      voice: voiceName,
+      customInstruction: instruction,
+      model: MODELS.REALTIME_CONVERSATION,
+    });
+    setIsAiCallStarting(false);
   };
 
   return (
@@ -224,20 +260,18 @@ export const EssayText = ({
               flexDirection: 'row',
               justifyContent: 'space-between',
               gap: '10px',
-              alignItems: 'center',
+              alignItems: 'flex-start',
             }}
           >
             <Stack
               sx={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 gap: '10px',
                 flexWrap: 'wrap',
               }}
             >
               <Button
-                variant="outlined"
+                variant="text"
                 size="small"
                 onClick={onContinueRecording}
                 disabled={isRecording}
@@ -248,20 +282,31 @@ export const EssayText = ({
               <Button
                 startIcon={<Pencil size={'14px'} />}
                 disabled={isRecording}
-                variant="outlined"
+                variant="text"
                 size="small"
                 onClick={handleEditClick}
               >
                 {i18n._('Edit')}
               </Button>
               <Button
-                variant="outlined"
+                variant="text"
                 size="small"
                 onClick={onAnalyze}
                 disabled={isAnalyzing || !essay.text.trim() || isRecording}
                 startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
               >
                 {i18n._('Analyze')}
+              </Button>
+
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={practiceWithAi}
+                disabled={isRecording || isAiCallStarting}
+                startIcon={isAiCallStarting ? <Loader size={14} /> : <Mic size={'14px'} />}
+              >
+                {i18n._('Practice with AI')}
               </Button>
             </Stack>
             <IconButton
@@ -287,7 +332,7 @@ export const EssayText = ({
             <Button
               variant="text"
               size="small"
-              onClick={() => deleteAnalysis(essay.id)}
+              onClick={() => essayHook.deleteAnalysis(essay.id)}
               startIcon={<Trash size={'14px'} />}
             >
               {i18n._('Delete Analysis')}

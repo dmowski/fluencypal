@@ -6,4 +6,6 @@ export interface Essay {
   createdAtIso: string;
   updatedAtIso: string;
   analysis: string | null;
+
+  userPromptForPracticeWithAi: string | null;
 }
