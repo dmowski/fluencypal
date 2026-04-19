@@ -140,16 +140,26 @@ export const EssayText = ({
             </Button>
           </Stack>
         ) : (
-          <Typography
-            variant="body2"
-            sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
-            onClick={() => {
-              setContextValue(essay.context);
-              setIsEditingContext(true);
-            }}
-          >
-            {essay.context || i18n._('Add context...')}
-          </Typography>
+          <Stack>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              {i18n._('Context')}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
+              onClick={() => {
+                setContextValue(essay.context);
+                setIsEditingContext(true);
+              }}
+            >
+              {essay.context || i18n._('Add context...')}
+            </Typography>
+          </Stack>
         )}
         {isEditing ? (
           <Stack
@@ -170,29 +180,39 @@ export const EssayText = ({
             </Button>
           </Stack>
         ) : (
-          <Typography
-            variant="body1"
-            sx={{
-              fontSize: '1.7rem',
-              fontFamily: 'serif',
-              minHeight: '2em',
-              fontWeight: 400,
-              color: '#232323',
-              i: {
+          <Stack>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              {i18n._('Transcript')}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.7rem',
                 fontFamily: 'serif',
-              },
-              span: {
-                opacity: 0.5,
-                fontFamily: 'serif',
-              },
-            }}
-          >
-            {!essay.text.trim() && !activeTranscript && '-'}
-            {essay.text}
-            {activeTranscript && <i> {activeTranscript}</i>}
+                minHeight: '2em',
+                fontWeight: 400,
+                color: '#232323',
+                i: {
+                  fontFamily: 'serif',
+                },
+                span: {
+                  opacity: 0.5,
+                  fontFamily: 'serif',
+                },
+              }}
+            >
+              {!essay.text.trim() && !activeTranscript && '-'}
+              {essay.text}
+              {activeTranscript && <i> {activeTranscript}</i>}
 
-            {suggestion && !isEditing && <span> {suggestion}</span>}
-          </Typography>
+              {suggestion && !isEditing && <span> {suggestion}</span>}
+            </Typography>
+          </Stack>
         )}
 
         {!isEditing && (
