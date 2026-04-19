@@ -12,6 +12,7 @@ import { IconButton, ThemeProvider } from '@mui/material';
 import dayjs from 'dayjs';
 import { Essay } from './types';
 import { lightTheme } from '../uiKit/theme';
+import { useEssay } from './useEssay';
 
 interface EssayTextProps {
   essay: Essay;
@@ -49,6 +50,8 @@ export const EssayText = ({
   const [contextValue, setContextValue] = useState(essay.context);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingContext, setIsEditingContext] = useState(false);
+
+  const { deleteAnalysis } = useEssay();
 
   const handleEditClick = () => {
     setEditValue(essay.text);
@@ -274,8 +277,21 @@ export const EssayText = ({
         )}
 
         {analysis && !isEditing && (
-          <Stack sx={{}}>
+          <Stack
+            sx={{
+              alignItems: 'flex-start',
+              gap: '10px',
+            }}
+          >
             <Markdown>{analysis}</Markdown>
+            <Button
+              variant="text"
+              size="small"
+              onClick={() => deleteAnalysis(essay.id)}
+              startIcon={<Trash size={'14px'} />}
+            >
+              {i18n._('Delete Analysis')}
+            </Button>
           </Stack>
         )}
       </Stack>

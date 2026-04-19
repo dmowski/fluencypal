@@ -30,6 +30,7 @@ interface EssayContextType {
   deleteEssay: (id: string) => void;
   analyzeEssay: (id: string) => Promise<void>;
   analyzingEssayId: string | null;
+  deleteAnalysis: (id: string) => void;
 }
 
 const EssayContext = createContext<EssayContextType | null>(null);
@@ -71,6 +72,16 @@ function useProvideEssay(): EssayContextType {
     setEssays((prev) => {
       const updated = prev.map((e) =>
         e.id === id ? { ...e, title, updatedAtIso: new Date().toISOString() } : e,
+      );
+      saveEssays(updated);
+      return updated;
+    });
+  };
+
+  const deleteAnalysis = (id: string) => {
+    setEssays((prev) => {
+      const updated = prev.map((e) =>
+        e.id === id ? { ...e, analysis: null, updatedAtIso: new Date().toISOString() } : e,
       );
       saveEssays(updated);
       return updated;
@@ -155,6 +166,7 @@ List grammar mistakes found and explain how to fix each one. If there are no mis
     deleteEssay,
     analyzeEssay,
     analyzingEssayId,
+    deleteAnalysis,
   };
 }
 

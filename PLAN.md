@@ -2,7 +2,6 @@
 
 ## Essay helper
 
-- How to remove analysis
 - Add feature practice with AI
 
 ## How to record user's voice
