@@ -20,10 +20,12 @@ interface Result {
 export const ProcessUserInput = ({
   isTranscribing,
   userMessage,
+  transcriptionBlob,
   previousBotMessage,
 }: {
   isTranscribing: boolean;
   userMessage: string;
+  transcriptionBlob: Blob | null;
   previousBotMessage: string;
   isRecording: boolean;
 }) => {
@@ -105,8 +107,6 @@ export const ProcessUserInput = ({
     setIsTranslatingCorrectedMessage(false);
   };
 
-  const yourMessageLabel = i18n._('Your Message');
-  const correctedLabel = i18n._('Corrected');
   const transcribingLabel = i18n._('Transcribing...');
   const analyzingLabel = i18n._('Analyzing...');
   const showMoreLabel = i18n._('Show more');
@@ -154,16 +154,17 @@ export const ProcessUserInput = ({
           }}
         >
           <UserMessageSection
-            label={yourMessageLabel}
+            label={i18n._('Your Message')}
             message={userMessage}
             isTranscribing={isTranscribing}
             fontSize={messagesFontSize}
             transcribingLabel={transcribingLabel}
+            transcriptionBlob={transcriptionBlob}
           />
 
           {(actualResult?.isNeedCorrection || !actualResult) && (
             <CorrectedMessageSection
-              label={correctedLabel}
+              label={i18n._('Corrected')}
               isTranscribing={isTranscribing}
               isAnalyzing={!actualResult}
               translatedCorrectedMessage={translatedCorrectedMessage}

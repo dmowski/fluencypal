@@ -107,6 +107,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
             removeMessage,
           });
         }}
+        transcriptionBlob={recorder.transcriptionBlob}
         recordingVoiceMode={aiConversation.recordingVoiceMode}
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}

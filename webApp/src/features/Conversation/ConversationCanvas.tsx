@@ -25,7 +25,6 @@ import {
   Trophy,
 } from 'lucide-react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-
 import { AliasGamePanel } from './AliasGamePanel';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { GuessGameStat, RecordingUserMessageMode } from './types';
@@ -56,6 +55,7 @@ interface ConversationCanvasProps {
   togglePaymentModal: (isOpen: boolean) => void;
   closeConversation: () => void;
   transcriptMessage?: string;
+  transcriptionBlob: Blob | null;
   startRecording: () => Promise<void>;
   stopRecording: () => Promise<void>;
   cancelRecording: () => Promise<void>;
@@ -141,6 +141,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 
   recordingVoiceMode,
   isSendMessagesBlocked,
+  transcriptionBlob,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -461,6 +462,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 {(confirmedUserInput || isTranscribing || isAnalyzingResponse) && (
                   <ProcessUserInput
                     isTranscribing={isTranscribing}
+                    transcriptionBlob={transcriptionBlob}
                     userMessage={confirmedUserInput}
                     previousBotMessage={lastBotMessage}
                     isRecording={isRecording}

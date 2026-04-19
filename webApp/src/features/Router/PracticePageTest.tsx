@@ -197,6 +197,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         completeUserMessageDelta={completeUserMessageDelta}
         openCommunityPage={() => {}}
         pointsEarned={12}
+        transcriptionBlob={null}
         messageOrder={{}}
         isMuted
         conversation={testMessage}

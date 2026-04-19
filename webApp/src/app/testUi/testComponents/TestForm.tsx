@@ -24,17 +24,14 @@ export const TestForm = () => {
           sx={{
             width: '100%',
             height: '200px',
+            backgroundColor: 'rgba(255, 12, 12, 0.05)',
             borderRadius: '8px',
             padding: '10px',
             gap: '10px',
           }}
         >
           <Typography variant="caption">Test Form</Typography>
-          <Stack
-            sx={{
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-          >
+          <Stack>
             <Markdown variant="chat">{message}</Markdown>
           </Stack>
         </Stack>

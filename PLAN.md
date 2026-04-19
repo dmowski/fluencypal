@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## How to record user's voice
-
 ## How to improve VAD. instant grammar correction
 
 ## scenario/realtime improvements

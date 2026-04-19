@@ -165,6 +165,7 @@ Provide only the message user can send, without any additional explanation or co
             userMessage={(isTextMode ? preSubmitTextMessage : recorder.transcription || '') || ''}
             previousBotMessage={previousBotMessage}
             isRecording={recorder.isRecording}
+            transcriptionBlob={recorder.transcriptionBlob}
           />
         </Stack>
       )}

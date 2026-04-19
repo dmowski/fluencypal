@@ -12,6 +12,7 @@ export const useAudioRecorder = () => {
   const learnLanguageCode = settings.languageCode || 'en';
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
+  const [transcriptionBlob, setTranscriptionBlob] = useState<Blob | null>(null);
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
   const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
@@ -42,6 +43,7 @@ export const useAudioRecorder = () => {
     setTranscriptionError(null);
     if (!recordedAudioBlog) {
       setTranscription(null);
+      setTranscriptionBlob(null);
       setIsTranscribing(false);
       recorderControls.clearCanvas();
       return;
@@ -57,6 +59,7 @@ export const useAudioRecorder = () => {
         format,
       });
       setTranscription(transcriptResponse.transcript);
+      setTranscriptionBlob(recordedAudioBlog);
       if (transcriptResponse.error) {
         setTranscriptionError(transcriptResponse.error);
       }
@@ -103,6 +106,7 @@ export const useAudioRecorder = () => {
       recorderControls.stopRecording();
     }
     setTranscription(null);
+    setTranscriptionBlob(null);
     setIsTranscribing(false);
   };
   return {
@@ -112,6 +116,7 @@ export const useAudioRecorder = () => {
     isRecording,
     isTranscribing,
     transcription,
+    transcriptionBlob,
     error: recorderControls.error?.message || transcriptionError || '',
     recordingMilliSeconds: recordingSeconds * 1000,
     removeTranscript,
