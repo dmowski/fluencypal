@@ -2,6 +2,9 @@
 
 ## Essay helper
 
+- Add as experiment on the app
+- Add feature practice with AI
+
 ## How to record user's voice
 
 ## How to improve VAD. instant grammar correction

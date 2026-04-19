@@ -78,7 +78,7 @@ export const Essay = () => {
 
       const result = await textAi.generate({
         systemMessage:
-          'You are a writing assistant. Based on the essay details provided, suggest one concise next paragraph that naturally continues the essay. Return only the paragraph text, no explanations or labels.',
+          'You are a writing assistant. Based on the essay details provided, suggest one small next text that naturally continues the essay. Return only text, no explanations or labels. Add one or two sentences at most.',
         userMessage: parts,
         model: 'gpt-4o',
       });

@@ -8,9 +8,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Mic, Pencil, Sparkle, Trash } from 'lucide-react';
-import { IconButton } from '@mui/material';
+import { IconButton, ThemeProvider } from '@mui/material';
 import dayjs from 'dayjs';
 import { Essay } from './types';
+import { lightTheme } from '../uiKit/theme';
 
 interface EssayTextProps {
   essay: Essay;
@@ -70,190 +71,193 @@ export const EssayText = ({
   };
 
   return (
-    <Stack
-      sx={{
-        width: '100%',
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        padding: '20px',
-        gap: '30px',
-        borderRadius: '13px',
-      }}
-    >
-      <Typography variant="caption" sx={{ fontWeight: 500 }}>
-        {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
-      </Typography>
-
-      {isEditingTitle ? (
-        <Stack
-          sx={{
-            alignItems: 'flex-start',
-            gap: '10px',
-          }}
-        >
-          <TextField
-            value={titleValue}
-            onChange={(e) => setTitleValue(e.target.value)}
-            fullWidth
-            size="small"
-            placeholder={i18n._('Title')}
-            autoFocus
-          />
-          <Button variant="contained" onClick={handleTitleSave} size="small">
-            {i18n._('Save')}
-          </Button>
-        </Stack>
-      ) : (
-        <Typography
-          variant="h6"
-          sx={{ cursor: 'pointer', opacity: essay.title ? 1 : 0.4 }}
-          onClick={() => {
-            setTitleValue(essay.title);
-            setIsEditingTitle(true);
-          }}
-        >
-          {essay.title || i18n._('Add title...')}
+    <ThemeProvider theme={lightTheme}>
+      <Stack
+        sx={{
+          width: '100%',
+          backgroundColor: '#F1E1C9',
+          color: '#232323',
+          padding: '20px',
+          gap: '30px',
+          borderRadius: '13px',
+        }}
+      >
+        <Typography variant="caption" sx={{ fontWeight: 500 }}>
+          {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
         </Typography>
-      )}
 
-      {isEditingContext ? (
-        <Stack
-          sx={{
-            alignItems: 'flex-start',
-            gap: '10px',
-          }}
-        >
-          <TextField
-            multiline
-            minRows={2}
-            value={contextValue}
-            onChange={(e) => setContextValue(e.target.value)}
-            fullWidth
-            size="small"
-            placeholder={i18n._('Context (topic, audience, goal...)')}
-            autoFocus
-          />
-          <Button variant="contained" onClick={handleContextSave} size="small">
-            {i18n._('Save')}
-          </Button>
-        </Stack>
-      ) : (
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
-          onClick={() => {
-            setContextValue(essay.context);
-            setIsEditingContext(true);
-          }}
-        >
-          {essay.context || i18n._('Add context...')}
-        </Typography>
-      )}
-      {isEditing ? (
-        <Stack
-          sx={{
-            alignItems: 'flex-start',
-            gap: '10px',
-          }}
-        >
-          <TextField
-            multiline
-            minRows={4}
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            fullWidth
-          />
-          <Button variant="contained" onClick={handleSave} size="small">
-            {i18n._('Save')}
-          </Button>
-        </Stack>
-      ) : (
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: '1.7rem',
-            fontFamily: 'serif',
-            minHeight: '2em',
-            fontWeight: 400,
-            color: 'rgba(255, 255, 255, 0.85)',
-            i: {
+        {isEditingTitle ? (
+          <Stack
+            sx={{
+              alignItems: 'flex-start',
+              gap: '10px',
+            }}
+          >
+            <TextField
+              value={titleValue}
+              onChange={(e) => setTitleValue(e.target.value)}
+              fullWidth
+              size="small"
+              placeholder={i18n._('Title')}
+              autoFocus
+            />
+            <Button variant="contained" onClick={handleTitleSave} size="small">
+              {i18n._('Save')}
+            </Button>
+          </Stack>
+        ) : (
+          <Typography
+            variant="h6"
+            sx={{ cursor: 'pointer', opacity: essay.title ? 1 : 0.4 }}
+            onClick={() => {
+              setTitleValue(essay.title);
+              setIsEditingTitle(true);
+            }}
+          >
+            {essay.title || i18n._('Add title...')}
+          </Typography>
+        )}
+
+        {isEditingContext ? (
+          <Stack
+            sx={{
+              alignItems: 'flex-start',
+              gap: '10px',
+            }}
+          >
+            <TextField
+              multiline
+              minRows={2}
+              value={contextValue}
+              onChange={(e) => setContextValue(e.target.value)}
+              fullWidth
+              size="small"
+              placeholder={i18n._('Context (topic, audience, goal...)')}
+              autoFocus
+            />
+            <Button variant="contained" onClick={handleContextSave} size="small">
+              {i18n._('Save')}
+            </Button>
+          </Stack>
+        ) : (
+          <Typography
+            variant="body2"
+            sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
+            onClick={() => {
+              setContextValue(essay.context);
+              setIsEditingContext(true);
+            }}
+          >
+            {essay.context || i18n._('Add context...')}
+          </Typography>
+        )}
+        {isEditing ? (
+          <Stack
+            sx={{
+              alignItems: 'flex-start',
+              gap: '10px',
+            }}
+          >
+            <TextField
+              multiline
+              minRows={4}
+              value={editValue}
+              onChange={(e) => setEditValue(e.target.value)}
+              fullWidth
+            />
+            <Button variant="contained" onClick={handleSave} size="small">
+              {i18n._('Save')}
+            </Button>
+          </Stack>
+        ) : (
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: '1.7rem',
               fontFamily: 'serif',
-            },
-            span: {
-              opacity: 0.7,
-            },
-          }}
-        >
-          {!essay.text.trim() && !activeTranscript && '-'}
-          {essay.text}
-          {activeTranscript && <i>{activeTranscript}</i>}
+              minHeight: '2em',
+              fontWeight: 400,
+              color: '#232323',
+              i: {
+                fontFamily: 'serif',
+              },
+              span: {
+                opacity: 0.5,
+                fontFamily: 'serif',
+              },
+            }}
+          >
+            {!essay.text.trim() && !activeTranscript && '-'}
+            {essay.text}
+            {activeTranscript && <i> {activeTranscript}</i>}
 
-          {suggestion && !isEditing && <span>{suggestion}</span>}
-        </Typography>
-      )}
+            {suggestion && !isEditing && <span> {suggestion}</span>}
+          </Typography>
+        )}
 
-      {!isEditing && (
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            gap: '10px',
-            alignItems: 'center',
-          }}
-        >
+        {!isEditing && (
           <Stack
             sx={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'center',
               gap: '10px',
+              alignItems: 'center',
             }}
           >
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={onContinueRecording}
-              disabled={isRecording}
-              startIcon={<Mic size={'14px'} />}
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '10px',
+              }}
             >
-              {i18n._('Record More')}
-            </Button>
-            <Button
-              startIcon={<Pencil size={'14px'} />}
-              disabled={isRecording}
-              variant="outlined"
-              size="small"
-              onClick={handleEditClick}
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={onContinueRecording}
+                disabled={isRecording}
+                startIcon={<Mic size={'14px'} />}
+              >
+                {i18n._('Record More')}
+              </Button>
+              <Button
+                startIcon={<Pencil size={'14px'} />}
+                disabled={isRecording}
+                variant="outlined"
+                size="small"
+                onClick={handleEditClick}
+              >
+                {i18n._('Edit')}
+              </Button>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={onAnalyze}
+                disabled={isAnalyzing || !essay.text.trim() || isRecording}
+                startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
+              >
+                {i18n._('Analyze')}
+              </Button>
+            </Stack>
+            <IconButton
+              sx={{
+                opacity: 0.6,
+              }}
+              onClick={onDelete}
+              disabled={isRecording || isAnalyzing}
             >
-              {i18n._('Edit')}
-            </Button>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={onAnalyze}
-              disabled={isAnalyzing || !essay.text.trim() || isRecording}
-              startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
-            >
-              {i18n._('Analyze')}
-            </Button>
+              <Trash size={'18px'} color="#222" />
+            </IconButton>
           </Stack>
-          <IconButton
-            sx={{
-              opacity: 0.6,
-            }}
-            onClick={onDelete}
-            disabled={isRecording || isAnalyzing}
-          >
-            <Trash size={'18px'} />
-          </IconButton>
-        </Stack>
-      )}
+        )}
 
-      {analysis && !isEditing && (
-        <Stack sx={{}}>
-          <Markdown>{analysis}</Markdown>
-        </Stack>
-      )}
-    </Stack>
+        {analysis && !isEditing && (
+          <Stack sx={{}}>
+            <Markdown>{analysis}</Markdown>
+          </Stack>
+        )}
+      </Stack>
+    </ThemeProvider>
   );
 };
