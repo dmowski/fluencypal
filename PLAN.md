@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## Essay helper
-
-- Add feature practice with AI
-
 ## How to record user's voice
 
 ## How to improve VAD. instant grammar correction
