@@ -9,6 +9,7 @@ export const EssayModal = ({ onClose }: { onClose: () => void }) => {
         sx={{
           padding: '10px 0px',
           width: '100%',
+          alignItems: 'center',
         }}
       >
         <Essay />
