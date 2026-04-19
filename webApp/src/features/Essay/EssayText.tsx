@@ -93,12 +93,12 @@ export const EssayText = ({
       essayHook.updateEssayData(essay.id, { userPromptForPracticeWithAi: userPrompt });
     }
 
-    const instruction = `You need to discuss with user his writing.
+    const instruction = `You need to discuss with user his writing. Use short messages, provoke user to speak.
+
     Context: ${essay.context}
     User's essay: ${essay.text}
     User's prompt for practice with you: ${essay.userPromptForPracticeWithAi || 'N/A'}
     Start a conversation with user based on these details. Follow user's lead and try to be as helpful as possible.`;
-    console.log('instruction', instruction);
     await conversation.startConversation({
       conversationMode: 'call',
       mode: 'talk',
