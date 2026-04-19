@@ -119,8 +119,22 @@ export const EssayText = ({
           padding: '20px',
           gap: '30px',
           borderRadius: '13px',
+          position: 'relative',
         }}
       >
+        <IconButton
+          sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            opacity: isRecording || isAnalyzing ? 0.2 : 0.5,
+          }}
+          onClick={onDelete}
+          disabled={isRecording || isAnalyzing}
+        >
+          <Trash size={'14px'} color="#222" />
+        </IconButton>
+
         <Typography variant="caption" sx={{ fontWeight: 500 }}>
           {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
         </Typography>
@@ -309,15 +323,6 @@ export const EssayText = ({
                 {i18n._('Practice with AI')}
               </Button>
             </Stack>
-            <IconButton
-              sx={{
-                opacity: 0.6,
-              }}
-              onClick={onDelete}
-              disabled={isRecording || isAnalyzing}
-            >
-              <Trash size={'18px'} color="#222" />
-            </IconButton>
           </Stack>
         )}
 

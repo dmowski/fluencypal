@@ -7,7 +7,7 @@ export const EssayModal = ({ onClose }: { onClose: () => void }) => {
     <CustomModal onClose={onClose} isOpen={true}>
       <Stack
         sx={{
-          padding: '20px 0px',
+          padding: '10px 0px',
         }}
       >
         <Essay />

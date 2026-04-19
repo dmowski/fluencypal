@@ -114,6 +114,12 @@ export const Essay = () => {
         sx={{
           gap: '10px',
           flexWrap: 'wrap',
+          position: 'sticky',
+          top: '0px',
+          zIndex: 1,
+          backdropFilter: 'blur(10px)',
+          backgroundColor: 'rgba(24, 24, 24, 0.7)',
+          padding: '10px 20px 15px 20px',
         }}
       >
         {isRecording && (
@@ -168,7 +174,11 @@ export const Essay = () => {
       )}
 
       {essays.length > 0 && (
-        <Stack spacing={2}>
+        <Stack
+          sx={{
+            gap: '30px',
+          }}
+        >
           {[...essays].reverse().map((essay) => (
             <Stack key={essay.id}>
               <EssayText
