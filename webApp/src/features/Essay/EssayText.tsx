@@ -16,6 +16,7 @@ import { useEssay } from './useEssay';
 import { useSettings } from '../Settings/useSettings';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { MODELS } from '../Ai/ai';
+import { useGlobalModals } from '../Modal/useGlobalModals';
 
 interface EssayTextProps {
   essay: Essay;
@@ -81,6 +82,7 @@ export const EssayText = ({
   const settings = useSettings();
   const conversation = useAiConversation();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const globalModal = useGlobalModals();
 
   const practiceWithAi = async () => {
     setIsAiCallStarting(true);
@@ -107,6 +109,7 @@ export const EssayText = ({
       model: MODELS.REALTIME_CONVERSATION,
     });
     setIsAiCallStarting(false);
+    globalModal.closeAllModels();
   };
 
   return (
