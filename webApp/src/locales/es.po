@@ -318,7 +318,7 @@ msgstr "Añade entre 2 y 20 jugadores. Toca un nombre para editarlo."
 msgid "Add Comment"
 msgstr "Agregar comentario"
 
-#: src/features/Essay/EssayText.tsx:160
+#: src/features/Essay/EssayText.tsx:216
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "Agrega contexto..."
@@ -363,7 +363,7 @@ msgstr "Agregue información sobre por qué desea un reembolso y lo haremos."
 msgid "Add Text Answer"
 msgstr "Añadir respuesta de texto"
 
-#: src/features/Essay/EssayText.tsx:117
+#: src/features/Essay/EssayText.tsx:173
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "Agregar título..."
@@ -698,7 +698,7 @@ msgstr "Se produjo un error al analizar el mensaje. Por favor, inténtalo de nue
 msgid "Analysis points"
 msgstr "Puntos de análisis"
 
-#: src/features/Essay/EssayText.tsx:261
+#: src/features/Essay/EssayText.tsx:315
 #. js-lingui-explicit-id
 msgid "Analyze"
 msgstr "Analizar"
@@ -1850,12 +1850,12 @@ msgstr "Contacts"
 msgid "Contacts:"
 msgstr "Contactos:"
 
-#: src/features/Essay/EssayText.tsx:150
+#: src/features/Essay/EssayText.tsx:206
 #. js-lingui-explicit-id
 msgid "Context"
 msgstr "Context"
 
-#: src/features/Essay/EssayText.tsx:135
+#: src/features/Essay/EssayText.tsx:191
 #. js-lingui-explicit-id
 msgid "Context (topic, audience, goal...)"
 msgstr "Contexto (tema, audiencia, objetivo...)"
@@ -1888,7 +1888,7 @@ msgstr "Continuar"
 msgid "Continue practicing to improve your skills."
 msgstr "Continúa practicando para mejorar tus habilidades."
 
-#: src/features/Essay/Essay.tsx:150
+#: src/features/Essay/Essay.tsx:156
 #. js-lingui-explicit-id
 msgid "Continue recording last essay"
 msgstr "Continuar grabando el último ensayo"
@@ -2404,6 +2404,11 @@ msgstr "Eliminar cuenta"
 msgid "Delete account (Total)"
 msgstr "Eliminar cuenta (Total)"
 
+#: src/features/Essay/EssayText.tsx:346
+#. js-lingui-explicit-id
+msgid "Delete Analysis"
+msgstr "Eliminar Análisis"
+
 #: src/features/Chat/ChatHeaderFull.tsx:160
 #. js-lingui-explicit-id
 msgid "Delete chat"
@@ -2891,7 +2896,7 @@ msgid "Easy"
 msgstr "Fácil"
 
 #: src/features/Chat/Message/Message.tsx:404
-#: src/features/Essay/EssayText.tsx:252
+#: src/features/Essay/EssayText.tsx:306
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -6536,7 +6541,7 @@ msgstr "Aún no hay datos"
 msgid "No debates yet"
 msgstr "Sin debates todavía"
 
-#: src/features/Essay/Essay.tsx:166
+#: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
 msgstr "Todavía no hay ensayos. Empieza a grabar para crear tu primer ensayo."
@@ -7689,6 +7694,11 @@ msgstr "Practica la resolución de problemas técnicos por teléfono"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Practica vocabulario describiendo y adivinando palabras de manera creativa"
 
+#: src/features/Essay/EssayText.tsx:326
+#. js-lingui-explicit-id
+msgid "Practice with AI"
+msgstr "Practica con IA"
+
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
 msgid ""
@@ -8315,17 +8325,17 @@ msgstr "Grabar mensaje"
 msgid "Record message"
 msgstr "Grabar mensaje"
 
-#: src/features/Essay/EssayText.tsx:243
-#. js-lingui-explicit-id
-msgid "Record More"
-msgstr "Grabar más"
-
 #: src/features/Survey/RecordUserAudioAnswer.tsx:162
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Grabar más"
 
-#: src/features/Essay/Essay.tsx:158
+#: src/features/Essay/EssayText.tsx:297
+#. js-lingui-explicit-id
+msgid "Record More"
+msgstr "Grabar más"
+
+#: src/features/Essay/Essay.tsx:164
 #. js-lingui-explicit-id
 msgid "Record new essay"
 msgstr "Grabar nuevo ensayo"
@@ -8657,9 +8667,9 @@ msgid "Salary negotiation preparation"
 msgstr "Preparación para la negociación salarial"
 
 #: src/features/Chat/Message/Message.tsx:280
-#: src/features/Essay/EssayText.tsx:105
-#: src/features/Essay/EssayText.tsx:139
-#: src/features/Essay/EssayText.tsx:179
+#: src/features/Essay/EssayText.tsx:161
+#: src/features/Essay/EssayText.tsx:195
+#: src/features/Essay/EssayText.tsx:235
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -9304,7 +9314,7 @@ msgstr "Comenzar Plan Mensual"
 msgid "Start Practicing"
 msgstr "Comienza a Practicar"
 
-#: src/features/Essay/Essay.tsx:138
+#: src/features/Essay/Essay.tsx:144
 #. js-lingui-explicit-id
 msgid "Start Recording"
 msgstr "Iniciar grabación"
@@ -9498,7 +9508,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Detener"
 
-#: src/features/Essay/Essay.tsx:127
+#: src/features/Essay/Essay.tsx:133
 #. js-lingui-explicit-id
 msgid "Stop Recording"
 msgstr "Detener grabación"
@@ -10494,7 +10504,7 @@ msgstr ""
 "eliminación de datos contactando con soporte."
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
-#: src/features/Essay/EssayText.tsx:101
+#: src/features/Essay/EssayText.tsx:157
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Título"
@@ -10608,7 +10618,7 @@ msgstr "Haga un seguimiento de su progreso de fluidez"
 msgid "Transcribing..."
 msgstr "Transcribiendo..."
 
-#: src/features/Essay/EssayText.tsx:190
+#: src/features/Essay/EssayText.tsx:246
 #. js-lingui-explicit-id
 msgid "Transcript"
 msgstr "Transcripción"
@@ -11335,6 +11345,11 @@ msgstr "Lo que hiciste bien"
 #. js-lingui-explicit-id
 msgid "What you get with FluencyPal"
 msgstr "Lo que obtienes con FluencyPal"
+
+#: src/features/Essay/EssayText.tsx:91
+#. js-lingui-explicit-id
+msgid "What you want to practice with AI?"
+msgstr "¿Qué quieres practicar con IA?"
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:10
 #: src/features/Case/data/frontend-junior/infoCardsSection.ts:10
