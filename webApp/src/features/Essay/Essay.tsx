@@ -9,7 +9,6 @@ import { useLingui } from '@lingui/react';
 import { useEssay } from './useEssay';
 import { EssayText } from './EssayText';
 import { CirclePlus, Loader, Mic, Pause } from 'lucide-react';
-import { Add, AddCircle } from '@mui/icons-material';
 
 export const Essay = () => {
   const { i18n } = useLingui();
@@ -110,7 +109,13 @@ export const Essay = () => {
         gap: '20px',
       }}
     >
-      <Stack direction="row" spacing={2} alignItems="center">
+      <Stack
+        direction="row"
+        sx={{
+          gap: '10px',
+          flexWrap: 'wrap',
+        }}
+      >
         {isRecording && (
           <Button
             variant="contained"

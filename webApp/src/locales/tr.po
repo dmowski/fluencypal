@@ -315,6 +315,11 @@ msgstr "2 ile 20 oyuncu ekleyin. Düzenlemek için bir isme dokunun."
 msgid "Add Comment"
 msgstr "Yorum Ekle"
 
+#: src/features/Essay/EssayText.tsx:160
+#. js-lingui-explicit-id
+msgid "Add context..."
+msgstr "Bağlam ekleyin..."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -356,6 +361,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "Metin Yanıtı Ekle"
+
+#: src/features/Essay/EssayText.tsx:117
+#. js-lingui-explicit-id
+msgid "Add title..."
+msgstr "Başlık ekle..."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -626,7 +636,7 @@ msgstr "Hepsi"
 msgid "All Interviews"
 msgstr "Tüm Görüşmeler"
 
-#: src/features/RolePlay/rolePlayData.tsx:1299
+#: src/features/RolePlay/rolePlayData.tsx:1298
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
@@ -685,6 +695,11 @@ msgstr "Mesajı analiz ederken bir hata oluştu. Lütfen tekrar deneyin."
 #. js-lingui-explicit-id
 msgid "Analysis points"
 msgstr "Analiz noktaları"
+
+#: src/features/Essay/EssayText.tsx:261
+#. js-lingui-explicit-id
+msgid "Analyze"
+msgstr "Analiz et"
 
 #: src/features/Conversation/ConversationCanvas.tsx:507
 #. js-lingui-explicit-id
@@ -1820,6 +1835,16 @@ msgstr "İletişim"
 msgid "Contacts:"
 msgstr "İletişim:"
 
+#: src/features/Essay/EssayText.tsx:150
+#. js-lingui-explicit-id
+msgid "Context"
+msgstr "Bağlam"
+
+#: src/features/Essay/EssayText.tsx:135
+#. js-lingui-explicit-id
+msgid "Context (topic, audience, goal...)"
+msgstr "Kapsam (konu, hedef kitle, hedef...)"
+
 #: src/features/Alias/components/CategorySelection.tsx:104
 #: src/features/Alias/components/LanguageLevel.tsx:104
 #: src/features/Alias/components/PlayersSetup.tsx:317
@@ -1847,6 +1872,11 @@ msgstr "Devam et"
 #. js-lingui-explicit-id
 msgid "Continue practicing to improve your skills."
 msgstr "Becerilerinizi geliştirmek için pratik yapmaya devam edin."
+
+#: src/features/Essay/Essay.tsx:150
+#. js-lingui-explicit-id
+msgid "Continue recording last essay"
+msgstr "Son denemeyi kaydetmeye devam et"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
@@ -2824,7 +2854,7 @@ msgstr ""
 "etmemizi sağlar. Buna \"AI saatleri\" diyorum çünkü AI'yi sürekli "
 "kullanırsanız ne kadar zaman tüketeceğinizin yaklaşık bir göstergesidir."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:32
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Erken erişim özellikleri. Bu özellikler hızlı bir şekilde değişebilir."
@@ -2841,6 +2871,7 @@ msgid "Easy"
 msgstr "Kolay"
 
 #: src/features/Chat/Message/Message.tsx:404
+#: src/features/Essay/EssayText.tsx:252
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -3270,12 +3301,12 @@ msgstr ""
 "dost canlısı AI öğretmeniniz. İster acemi ister ileri düzey bir öğrenci "
 "olun, Bruno hızınıza uyum sağlar, hataları düzeltir ve sizi motive tutar."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:49
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Deneysel özellikler"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Deneysel Laboratuvar"
@@ -5560,7 +5591,7 @@ msgstr "Sadece konuş"
 msgid "Just Talk"
 msgstr "Sadece Konuş"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Just Talk mode with better AI behind it."
 msgstr "Gelişmiş bir yapay zeka ile Just Talk modu."
@@ -5919,7 +5950,7 @@ msgstr "Yükleniyor.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:107
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
 #: src/features/Dashboard/GameDashboardCard.tsx:124
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/Dashboard/JustTalkCard.tsx:49
@@ -6258,6 +6289,11 @@ msgstr "Puanlarım:"
 msgid "My Position:"
 msgstr "Benim Pozisyonum:"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:61
+#. js-lingui-explicit-id
+msgid "Narrate your text and check style."
+msgstr "Metninizi anlatın ve stilinizi kontrol edin."
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:259
 #. js-lingui-explicit-id
@@ -6446,6 +6482,11 @@ msgstr "Henüz veri yok"
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "Henüz tartışma yok"
+
+#: src/features/Essay/Essay.tsx:166
+#. js-lingui-explicit-id
+msgid "No essays yet. Start recording to create your first essay."
+msgstr "Henüz kompozisyon yok. İlk kompozisyonunuzu oluşturmak için kayda başlayın."
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:87
 #. js-lingui-explicit-id
@@ -8200,10 +8241,20 @@ msgstr "Mesaj Kaydet"
 msgid "Record message"
 msgstr "Mesaj kaydet"
 
+#: src/features/Essay/EssayText.tsx:243
+#. js-lingui-explicit-id
+msgid "Record More"
+msgstr "Daha Fazla Kaydet"
+
 #: src/features/Survey/RecordUserAudioAnswer.tsx:162
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Daha fazla kaydet"
+
+#: src/features/Essay/Essay.tsx:158
+#. js-lingui-explicit-id
+msgid "Record new essay"
+msgstr "Yeni deneme kaydet"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:228
 #. js-lingui-explicit-id
@@ -8532,6 +8583,9 @@ msgid "Salary negotiation preparation"
 msgstr "Maaş pazarlığına hazırlık"
 
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/Essay/EssayText.tsx:105
+#: src/features/Essay/EssayText.tsx:139
+#: src/features/Essay/EssayText.tsx:179
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -9100,7 +9154,8 @@ msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:110
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:64
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -9170,6 +9225,11 @@ msgstr "Aylık Planı Başlat"
 #. js-lingui-explicit-id
 msgid "Start Practicing"
 msgstr "Alıştırmaya Başla"
+
+#: src/features/Essay/Essay.tsx:138
+#. js-lingui-explicit-id
+msgid "Start Recording"
+msgstr "Kaydı Başlat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:458
 #. js-lingui-explicit-id
@@ -9361,6 +9421,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
+
+#: src/features/Essay/Essay.tsx:127
+#. js-lingui-explicit-id
+msgid "Stop Recording"
+msgstr "Kaydı Durdur"
 
 #: src/features/Tasks/useDailyTasks.tsx:93
 #. js-lingui-explicit-id
@@ -10348,6 +10413,7 @@ msgstr ""
 "veri silinmesini talep edebilirsiniz."
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
+#: src/features/Essay/EssayText.tsx:101
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Başlık"
@@ -10462,6 +10528,11 @@ msgstr "Akıcılık Gelişiminizi Takip Edin"
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Çevriliyor..."
+
+#: src/features/Essay/EssayText.tsx:190
+#. js-lingui-explicit-id
+msgid "Transcript"
+msgstr "Transkript"
 
 #: src/features/Router/BlockedAccess.tsx:156
 #. js-lingui-explicit-id
@@ -10881,6 +10952,11 @@ msgstr "Ses kayıtları"
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "Ses hızı"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#. js-lingui-explicit-id
+msgid "Voice to Text"
+msgstr "Sesten Metne"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14

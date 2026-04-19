@@ -17,6 +17,7 @@ import { useGlobalModals } from './useGlobalModals';
 import { DailyQuestionModal } from '@/features/DailyQuestion/DailyQuestionModal';
 import { GrammarImprovementModal } from '@/features/Dashboard/Grammar/GrammarImprovementModal';
 import { ProgressStatModal } from '@/features/ProgressStat/ProgressStatModal';
+import { EssayModal } from '../Essay/EssayModal';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -59,6 +60,9 @@ export const GlobalModals: React.FC = () => {
       {globalModals.isShowProgressStatModal && (
         <ProgressStatModal onClose={globalModals.closeAllModels} />
       )}
+
+      {globalModals.isShowEssay && <EssayModal onClose={globalModals.closeAllModels} />}
+
       <ReportModal />
       <TeacherVoiceModal />
 

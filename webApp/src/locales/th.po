@@ -315,6 +315,11 @@ msgstr "เพิ่มผู้เล่นตั้งแต่ 2 ถึง 20
 msgid "Add Comment"
 msgstr "เพิ่มความคิดเห็น"
 
+#: src/features/Essay/EssayText.tsx:160
+#. js-lingui-explicit-id
+msgid "Add context..."
+msgstr "เพิ่มบริบท..."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
 msgid "Add new goal"
@@ -354,6 +359,11 @@ msgstr "เพิ่มข้อมูลเกี่ยวกับสาเห
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
 msgstr "เพิ่มคำตอบเป็นข้อความ"
+
+#: src/features/Essay/EssayText.tsx:117
+#. js-lingui-explicit-id
+msgid "Add title..."
+msgstr "เพิ่มชื่อเรื่อง..."
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -628,7 +638,7 @@ msgstr "ทั้งหมด"
 msgid "All Interviews"
 msgstr "การสัมภาษณ์ทั้งหมด"
 
-#: src/features/RolePlay/rolePlayData.tsx:1299
+#: src/features/RolePlay/rolePlayData.tsx:1298
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "ทุกสถานการณ์"
@@ -689,6 +699,11 @@ msgstr "เกิดข้อผิดพลาดระหว่างการ
 #. js-lingui-explicit-id
 msgid "Analysis points"
 msgstr "จุดวิเคราะห์"
+
+#: src/features/Essay/EssayText.tsx:261
+#. js-lingui-explicit-id
+msgid "Analyze"
+msgstr "วิเคราะห์"
 
 #: src/features/Conversation/ConversationCanvas.tsx:507
 #. js-lingui-explicit-id
@@ -1822,6 +1837,16 @@ msgstr "ติดต่อเรา"
 msgid "Contacts:"
 msgstr "ติดต่อ:"
 
+#: src/features/Essay/EssayText.tsx:150
+#. js-lingui-explicit-id
+msgid "Context"
+msgstr "บริบท"
+
+#: src/features/Essay/EssayText.tsx:135
+#. js-lingui-explicit-id
+msgid "Context (topic, audience, goal...)"
+msgstr "บริบท (หัวข้อ, ผู้ชม, เป้าหมาย...)"
+
 #: src/features/Alias/components/CategorySelection.tsx:104
 #: src/features/Alias/components/LanguageLevel.tsx:104
 #: src/features/Alias/components/PlayersSetup.tsx:317
@@ -1849,6 +1874,11 @@ msgstr "ต่อไป"
 #. js-lingui-explicit-id
 msgid "Continue practicing to improve your skills."
 msgstr "ฝึกฝนต่อไปเพื่อพัฒนาทักษะของคุณ"
+
+#: src/features/Essay/Essay.tsx:150
+#. js-lingui-explicit-id
+msgid "Continue recording last essay"
+msgstr "ดำเนินการบันทึกเรียงความล่าสุดต่อ"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
@@ -2830,7 +2860,7 @@ msgstr ""
 "ฉันเรียกมันว่า \"ชั่วโมง AI\" เพราะเป็นเวลาประมาณคร่าวๆ ที่คุณจะใช้ AI "
 "หากคุณใช้อย่างต่อเนื่อง"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:32
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "คุณสมบัติการเข้าถึงล่วงหน้า คุณสมบัติเหล่านี้อาจมีการเปลี่ยนแปลงอย่างรวดเร็ว"
@@ -2847,6 +2877,7 @@ msgid "Easy"
 msgstr "ง่าย"
 
 #: src/features/Chat/Message/Message.tsx:404
+#: src/features/Essay/EssayText.tsx:252
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -3271,12 +3302,12 @@ msgstr ""
 "บรูโน่จะปรับให้เข้ากับจังหวะของคุณ แก้ไขข้อผิดพลาด "
 "และทำให้คุณมีแรงจูงใจต่อไป"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:49
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "คุณลักษณะทดลอง"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "ห้องปฏิบัติการทดลอง"
@@ -5557,7 +5588,7 @@ msgstr "แค่พูดคุย"
 msgid "Just Talk"
 msgstr "แค่พูดคุย"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Just Talk mode with better AI behind it."
 msgstr "โหมด Just Talk พร้อมด้วย AI ที่ดียิ่งขึ้นอยู่เบื้องหลัง"
@@ -5926,7 +5957,7 @@ msgstr "กำลังโหลด.."
 #: src/features/Conversation/ConversationReviewModal.tsx:131
 #: src/features/Conversation/ConversationReviewModal.tsx:146
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:107
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
 #: src/features/Dashboard/GameDashboardCard.tsx:124
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/Dashboard/JustTalkCard.tsx:49
@@ -6266,6 +6297,11 @@ msgstr "คะแนนของฉัน:"
 msgid "My Position:"
 msgstr "ตำแหน่งของฉัน:"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:61
+#. js-lingui-explicit-id
+msgid "Narrate your text and check style."
+msgstr "บรรยายข้อความของคุณและตรวจสอบรูปแบบ."
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:259
 #. js-lingui-explicit-id
@@ -6452,6 +6488,11 @@ msgstr "ยังไม่มีข้อมูล"
 #. js-lingui-explicit-id
 msgid "No debates yet"
 msgstr "ยังไม่มีการอภิปราย"
+
+#: src/features/Essay/Essay.tsx:166
+#. js-lingui-explicit-id
+msgid "No essays yet. Start recording to create your first essay."
+msgstr "ไม่มีเรียงความในขณะนี้ เริ่มบันทึกเพื่อสร้างเรียงความแรกของคุณ"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:87
 #. js-lingui-explicit-id
@@ -8192,10 +8233,20 @@ msgstr "บันทึกข้อความ"
 msgid "Record message"
 msgstr "บันทึกข้อความ"
 
+#: src/features/Essay/EssayText.tsx:243
+#. js-lingui-explicit-id
+msgid "Record More"
+msgstr "บันทึกเพิ่มเติม"
+
 #: src/features/Survey/RecordUserAudioAnswer.tsx:162
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "บันทึกเพิ่มเติม"
+
+#: src/features/Essay/Essay.tsx:158
+#. js-lingui-explicit-id
+msgid "Record new essay"
+msgstr "บันทึกเรียงความใหม่"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:228
 #. js-lingui-explicit-id
@@ -8522,6 +8573,9 @@ msgid "Salary negotiation preparation"
 msgstr "การเตรียมการเจรจาเรื่องเงินเดือน"
 
 #: src/features/Chat/Message/Message.tsx:280
+#: src/features/Essay/EssayText.tsx:105
+#: src/features/Essay/EssayText.tsx:139
+#: src/features/Essay/EssayText.tsx:179
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -9089,7 +9143,8 @@ msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:110
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:64
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -9158,6 +9213,11 @@ msgstr "เริ่มแผนรายเดือน"
 #. js-lingui-explicit-id
 msgid "Start Practicing"
 msgstr "เริ่มฝึกฝน"
+
+#: src/features/Essay/Essay.tsx:138
+#. js-lingui-explicit-id
+msgid "Start Recording"
+msgstr "เริ่มบันทึก"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:458
 #. js-lingui-explicit-id
@@ -9345,6 +9405,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "หยุด"
+
+#: src/features/Essay/Essay.tsx:127
+#. js-lingui-explicit-id
+msgid "Stop Recording"
+msgstr "หยุดการบันทึก"
 
 #: src/features/Tasks/useDailyTasks.tsx:93
 #. js-lingui-explicit-id
@@ -10328,6 +10393,7 @@ msgstr ""
 "คุณสามารถถอนความยินยอมในภายหลังและขอให้ลบข้อมูลโดยติดต่อฝ่ายสนับสนุน"
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
+#: src/features/Essay/EssayText.tsx:101
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "ชื่อเรื่อง"
@@ -10441,6 +10507,11 @@ msgstr "ติดตามความก้าวหน้าในการพ
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "กำลังถอดความ..."
+
+#: src/features/Essay/EssayText.tsx:190
+#. js-lingui-explicit-id
+msgid "Transcript"
+msgstr "ถอดเสียง"
 
 #: src/features/Router/BlockedAccess.tsx:156
 #. js-lingui-explicit-id
@@ -10862,6 +10933,11 @@ msgstr "บันทึกเสียง"
 #. js-lingui-explicit-id
 msgid "Voice speed"
 msgstr "ความเร็วเสียง"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#. js-lingui-explicit-id
+msgid "Voice to Text"
+msgstr "เสียงเป็นข้อความ"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14

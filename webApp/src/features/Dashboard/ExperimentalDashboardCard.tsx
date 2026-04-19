@@ -59,9 +59,9 @@ export const ExperimentalDashboardCard = () => {
             {
               title: i18n._('Voice to Text'),
               subTitle: i18n._('Narrate your text and check style.'),
-              iconName: 'star',
+              iconName: 'mic',
               iconBgColor: 'rgba(11, 8, 0, 0.8)',
-              actionButtonTitle: i18n._('Open'),
+              actionButtonTitle: i18n._('Start'),
               onClick: () => globalModals.openEssay(),
             },
           ]}
