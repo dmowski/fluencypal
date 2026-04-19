@@ -14,6 +14,9 @@ export const useGlobalModals = () => {
     false,
     false,
   );
+
+  const [isShowEssay, setIsShowEssay] = useUrlState('essay', false, false);
+
   const router = useRouter();
 
   const closeAllModels = async () => {
@@ -40,5 +43,8 @@ export const useGlobalModals = () => {
     isShowProgressStatModal: openProgressStatModal,
 
     closeAllModels,
+
+    openEssay: () => setIsShowEssay(true),
+    isShowEssay,
   };
 };

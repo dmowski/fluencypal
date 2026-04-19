@@ -8,12 +8,14 @@ import { ChatProvider } from '../Chat/useChat';
 import { FlatChat } from '../Chat/FlatChat';
 import { useGame } from '../Game/useGame';
 import { hasExperimentalDashboardAccess } from './experimentalDashboardAccess';
+import { useGlobalModals } from '../Modal/useGlobalModals';
 
 const REALTIME_15_MODEL = 'gpt-realtime-1.5';
 
 export const ExperimentalDashboardCard = () => {
   const { i18n } = useLingui();
   const { startJustTalk, isCallStarting } = useJustTalk();
+  const globalModals = useGlobalModals();
 
   const game = useGame();
   const isShowExperimentalDashboard = hasExperimentalDashboardAccess(game.myUserName);
@@ -53,6 +55,14 @@ export const ExperimentalDashboardCard = () => {
               iconBgColor: 'rgba(11, 8, 0, 0.8)',
               actionButtonTitle: isCallStarting ? i18n._('Loading...') : i18n._('Start'),
               onClick: () => startJustTalk(REALTIME_15_MODEL),
+            },
+            {
+              title: i18n._('Voice to Text'),
+              subTitle: i18n._('Narrate your text and check style.'),
+              iconName: 'star',
+              iconBgColor: 'rgba(11, 8, 0, 0.8)',
+              actionButtonTitle: i18n._('Open'),
+              onClick: () => globalModals.openEssay(),
             },
           ]}
           itemsBackgroundColor={'rgba(100, 100, 100, 0)'}
