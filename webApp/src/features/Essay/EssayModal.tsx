@@ -8,6 +8,7 @@ export const EssayModal = ({ onClose }: { onClose: () => void }) => {
       <Stack
         sx={{
           padding: '10px 0px',
+          width: '100%',
         }}
       >
         <Essay />

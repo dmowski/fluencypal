@@ -1,16 +1,32 @@
 # Live document with short/long term ideas
 
+## Update Quiz. How to show user profit, wow moment, aha moment
+
+- Create component "Create Learning Plan"; to create it in the app
+- Mic access, and button "Start first call"
+- Redirect to practice and start "Just talk mode"
+- How to show user's mistakes/improvements?
+- How user feel improvements?
+
+## Create Mobile app
+
+- How to easy integrate it
+
+## Community is hidden under full access
+
+Update landing or allow to all users
+
 ## How to improve VAD. instant grammar correction
 
-## scenario/realtime improvements
+## Scenario/realtime improvements
 
-## On landing page: add block: Practice scenario you afraid of
+## On landing page add block: "Practice scenario you afraid of"
 
 Redirect directly to role-play practice page
 
-## Hide "cases" pages
+## Hide "Cases" pages?
 
-## Add more role plays
+## Add more role plays?
 
 ## Review video about "Fluently", fix problem that I have
 
