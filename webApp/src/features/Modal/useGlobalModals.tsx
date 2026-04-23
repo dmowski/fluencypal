@@ -25,8 +25,7 @@ export const useGlobalModals = () => {
 
     await sleep(400);
 
-    const searchParams = new URLSearchParams();
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    const newUrl = `${window.location.pathname}`;
     router.push(newUrl, {
       scroll: false,
     });
