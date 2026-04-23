@@ -236,9 +236,6 @@ const QuizQuestions = () => {
                   `I'll ask you a few questions to get to know you. Based on your answers, I'll create a personalized practice plan for you.`,
                 )}
                 onClick={next}
-                secondButtonTitle={i18n._('Skip')}
-                secondButtonEndIcon={<ChevronsRight />}
-                onSecondButtonClick={redirectToPractice}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
               />

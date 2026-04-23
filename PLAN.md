@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Move auth wall to front. Improve zIndex
-
 ## Create component "Create Learning Plan"; to create it in the app
 
 ## Problem with quiz
