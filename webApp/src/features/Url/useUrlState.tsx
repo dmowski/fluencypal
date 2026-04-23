@@ -34,7 +34,9 @@ export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop:
         } else {
           newSearchParams.delete(paramName);
         }
-        const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
+
+        const urlSearchParams = newSearchParams.toString() ? '?' + newSearchParams.toString() : '';
+        const newUrl = `${window.location.pathname}${urlSearchParams}`;
 
         const currentUrl = window.location.pathname + window.location.search;
 
