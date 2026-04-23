@@ -31,6 +31,10 @@ export const GlobalModals: React.FC = () => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
   }, [game.modalUserId, auth.uid, game.isLoading]);
 
+  if (!auth.uid) {
+    return <></>;
+  }
+
   return (
     <>
       {stories.selectedStory && (
