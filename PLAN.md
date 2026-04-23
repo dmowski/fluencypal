@@ -1,10 +1,16 @@
 # Live document with short/long term ideas
 
+## Move auth wall to front. Improve zIndex
+
+## Create component "Create Learning Plan"; to create it in the app
+
+## Problem with quiz
+
+- In just ask, and I don't see that I will get results
+
 ## Update Quiz. How to show user profit, wow moment, aha moment
 
-- Create component "Create Learning Plan"; to create it in the app
 - Mic access, and button "Start first call"
-- Redirect to practice and start "Just talk mode"
 - How to show user's mistakes/improvements?
 - How user feel improvements?
 

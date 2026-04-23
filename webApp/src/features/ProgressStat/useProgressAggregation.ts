@@ -74,15 +74,18 @@ export const fillDailyGaps = (
       const gapDate = new Date(lastDate);
       gapDate.setUTCDate(gapDate.getUTCDate() + gap);
       const gapDayKey = gapDate.toISOString().split('T')[0];
+      const isToday = gapDayKey === today;
 
-      result.push({
-        id: `day_${gapDayKey}`,
-        createdAtIso: `${gapDayKey}T00:00:00.000Z`,
-        grammar: 0,
-        vocabulary: 0,
-        fluency: 0,
-        confidence: 0,
-      });
+      if (!isToday) {
+        result.push({
+          id: `day_${gapDayKey}`,
+          createdAtIso: `${gapDayKey}T00:00:00.000Z`,
+          grammar: 0,
+          vocabulary: 0,
+          fluency: 0,
+          confidence: 0,
+        });
+      }
     }
   }
 
