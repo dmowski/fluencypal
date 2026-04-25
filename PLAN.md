@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Community is hidden under full access
+
+Allow to all users
+
 ## Create component "Create Learning Plan"; to create it in the app
 
 ## Problem with quiz
@@ -16,13 +20,7 @@
 
 - How to easy integrate it
 
-## Community is hidden under full access
-
-Update landing or allow to all users
-
-## How to improve VAD. instant grammar correction
-
-## Scenario/realtime improvements
+## How to improve VAD
 
 ## On landing page add block: "Practice scenario you afraid of"
 
