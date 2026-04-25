@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## What about more strict Role-plays
+
+To force user to pronounce only prepared sentences
+
+## Idea with Human as leader
+
 ## Community is hidden under full access
 
 Allow to all users
