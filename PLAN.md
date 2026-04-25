@@ -6,6 +6,8 @@ To force user to pronounce only prepared sentences
 
 ## Idea with Human as leader
 
+The platforms could be provided as "Human teacher (leader) with AI assistant (helper)", where the human supervise and setup education environment
+
 ## Community is hidden under full access
 
 Allow to all users
