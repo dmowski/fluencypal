@@ -17,6 +17,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { MODELS } from '../Ai/ai';
 import { useGlobalModals } from '../Modal/useGlobalModals';
+import { useTranslate } from '../Translation/useTranslate';
 
 interface EssayTextProps {
   essay: Essay;
@@ -54,6 +55,7 @@ export const EssayText = ({
   const [contextValue, setContextValue] = useState(essay.context);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingContext, setIsEditingContext] = useState(false);
+  const translator = useTranslate();
 
   const essayHook = useEssay();
 
@@ -113,267 +115,277 @@ export const EssayText = ({
   };
 
   return (
-    <ThemeProvider theme={lightTheme}>
-      <Stack
-        sx={{
-          width: '100%',
-          backgroundColor: '#F1E1C9',
-          color: '#232323',
-          padding: '20px',
-          gap: '30px',
-          borderRadius: '13px',
-          position: 'relative',
-        }}
-      >
-        <IconButton
+    <>
+      {translator.translateModal}
+      <ThemeProvider theme={lightTheme}>
+        <Stack
           sx={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            opacity: isRecording || isAnalyzing ? 0.2 : 0.5,
+            width: '100%',
+            backgroundColor: '#F1E1C9',
+            color: '#232323',
+            padding: '20px',
+            gap: '30px',
+            borderRadius: '13px',
+            position: 'relative',
           }}
-          onClick={onDelete}
-          disabled={isRecording || isAnalyzing}
         >
-          <Trash size={'14px'} color="#222" />
-        </IconButton>
-
-        <Typography variant="caption" sx={{ fontWeight: 500 }}>
-          {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
-        </Typography>
-
-        {isEditingTitle ? (
-          <Stack
+          <IconButton
             sx={{
-              alignItems: 'flex-start',
-              gap: '10px',
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              opacity: isRecording || isAnalyzing ? 0.2 : 0.5,
             }}
+            onClick={onDelete}
+            disabled={isRecording || isAnalyzing}
           >
-            <TextField
-              value={titleValue}
-              onChange={(e) => setTitleValue(e.target.value)}
-              fullWidth
-              size="small"
-              placeholder={i18n._('Title')}
-              autoFocus
-            />
-            <Button variant="contained" onClick={handleTitleSave} size="small">
-              {i18n._('Save')}
-            </Button>
-          </Stack>
-        ) : (
-          <Typography
-            variant="h6"
-            sx={{ cursor: 'pointer', opacity: essay.title ? 1 : 0.4 }}
-            onClick={() => {
-              setTitleValue(essay.title);
-              setIsEditingTitle(true);
-            }}
-          >
-            {essay.title || i18n._('Add title...')}
+            <Trash size={'14px'} color="#222" />
+          </IconButton>
+
+          <Typography variant="caption" sx={{ fontWeight: 500 }}>
+            {dayjs(essay.updatedAtIso).format('DD MMM YYYY, HH:mm')}
           </Typography>
-        )}
 
-        {isEditingContext ? (
-          <Stack
-            sx={{
-              alignItems: 'flex-start',
-              gap: '10px',
-            }}
-          >
-            <TextField
-              multiline
-              minRows={2}
-              value={contextValue}
-              onChange={(e) => setContextValue(e.target.value)}
-              fullWidth
-              size="small"
-              placeholder={i18n._('Context (topic, audience, goal...)')}
-              autoFocus
-            />
-            <Button variant="contained" onClick={handleContextSave} size="small">
-              {i18n._('Save')}
-            </Button>
-          </Stack>
-        ) : (
-          <Stack>
-            <Typography
-              variant="caption"
-              sx={{
-                fontWeight: 700,
-              }}
-            >
-              {i18n._('Context')}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
-              onClick={() => {
-                setContextValue(essay.context);
-                setIsEditingContext(true);
-              }}
-            >
-              {essay.context || i18n._('Add context...')}
-            </Typography>
-          </Stack>
-        )}
-        {isEditing ? (
-          <Stack
-            sx={{
-              alignItems: 'flex-start',
-              gap: '10px',
-            }}
-          >
-            <TextField
-              multiline
-              minRows={4}
-              value={editValue}
-              onChange={(e) => setEditValue(e.target.value)}
-              fullWidth
-            />
-            <Button variant="contained" onClick={handleSave} size="small">
-              {i18n._('Save')}
-            </Button>
-          </Stack>
-        ) : (
-          <Stack>
-            <Typography
-              variant="caption"
-              sx={{
-                fontWeight: 700,
-              }}
-            >
-              {i18n._('Transcript')}
-            </Typography>
-            <Stack
-              sx={{
-                fontSize: '1.7rem',
-                fontFamily: 'serif',
-                minHeight: '2em',
-                fontWeight: 400,
-                color: '#232323',
-              }}
-            >
-              <Typography>{!essay.text.trim() && !activeTranscript && '-'}</Typography>
-              <Stack
-                sx={{
-                  '* span': {
-                    color: '#232323',
-                    fontSize: '1.7rem',
-                    fontFamily: 'serif',
-                    fontWeight: 400,
-                  },
-
-                  '* p': {
-                    paddingBottom: '10px',
-                  },
-
-                  '* .conversation-word:hover': {
-                    borderBottomColor: '#232323',
-                  },
-                }}
-              >
-                <Markdown
-                  onWordClick={(word, element) => {
-                    console.log('word');
-                  }}
-                  variant="conversation"
-                >
-                  {'\n' + essay.text.trim()}
-                </Markdown>
-              </Stack>
-              {activeTranscript && <Typography> {activeTranscript}</Typography>}
-              {suggestion && !isEditing && (
-                <Typography
-                  sx={{
-                    opacity: 0.4,
-                  }}
-                >
-                  {' '}
-                  {suggestion}
-                </Typography>
-              )}
-            </Stack>
-          </Stack>
-        )}
-
-        {!isEditing && (
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              gap: '10px',
-              alignItems: 'flex-start',
-            }}
-          >
+          {isEditingTitle ? (
             <Stack
               sx={{
                 alignItems: 'flex-start',
                 gap: '10px',
-                flexWrap: 'wrap',
               }}
             >
-              <Button
-                variant="text"
+              <TextField
+                value={titleValue}
+                onChange={(e) => setTitleValue(e.target.value)}
+                fullWidth
                 size="small"
-                onClick={onContinueRecording}
-                disabled={isRecording}
-                startIcon={<Mic size={'14px'} />}
-              >
-                {i18n._('Record More')}
-              </Button>
-              <Button
-                startIcon={<Pencil size={'14px'} />}
-                disabled={isRecording}
-                variant="text"
-                size="small"
-                onClick={handleEditClick}
-              >
-                {i18n._('Edit')}
-              </Button>
-              <Button
-                variant="text"
-                size="small"
-                onClick={onAnalyze}
-                disabled={isAnalyzing || !essay.text.trim() || isRecording}
-                startIcon={isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />}
-              >
-                {i18n._('Analyze')}
-              </Button>
-
-              <Button
-                variant="contained"
-                color="secondary"
-                size="small"
-                onClick={practiceWithAi}
-                disabled={isRecording || isAiCallStarting}
-                startIcon={isAiCallStarting ? <Loader size={14} /> : <Mic size={'14px'} />}
-              >
-                {i18n._('Practice with AI')}
+                placeholder={i18n._('Title')}
+                autoFocus
+              />
+              <Button variant="contained" onClick={handleTitleSave} size="small">
+                {i18n._('Save')}
               </Button>
             </Stack>
-          </Stack>
-        )}
-
-        {analysis && !isEditing && (
-          <Stack
-            sx={{
-              alignItems: 'flex-start',
-              gap: '10px',
-            }}
-          >
-            <Markdown>{analysis}</Markdown>
-            <Button
-              variant="text"
-              size="small"
-              onClick={() => essayHook.deleteAnalysis(essay.id)}
-              startIcon={<Trash size={'14px'} />}
+          ) : (
+            <Typography
+              variant="h6"
+              sx={{ cursor: 'pointer', opacity: essay.title ? 1 : 0.4 }}
+              onClick={() => {
+                setTitleValue(essay.title);
+                setIsEditingTitle(true);
+              }}
             >
-              {i18n._('Delete Analysis')}
-            </Button>
-          </Stack>
-        )}
-      </Stack>
-    </ThemeProvider>
+              {essay.title || i18n._('Add title...')}
+            </Typography>
+          )}
+
+          {isEditingContext ? (
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+                gap: '10px',
+              }}
+            >
+              <TextField
+                multiline
+                minRows={2}
+                value={contextValue}
+                onChange={(e) => setContextValue(e.target.value)}
+                fullWidth
+                size="small"
+                placeholder={i18n._('Context (topic, audience, goal...)')}
+                autoFocus
+              />
+              <Button variant="contained" onClick={handleContextSave} size="small">
+                {i18n._('Save')}
+              </Button>
+            </Stack>
+          ) : (
+            <Stack>
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 700,
+                }}
+              >
+                {i18n._('Context')}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ cursor: 'pointer', opacity: essay.context ? 1 : 0.4 }}
+                onClick={() => {
+                  setContextValue(essay.context);
+                  setIsEditingContext(true);
+                }}
+              >
+                {essay.context || i18n._('Add context...')}
+              </Typography>
+            </Stack>
+          )}
+          {isEditing ? (
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+                gap: '10px',
+              }}
+            >
+              <TextField
+                multiline
+                minRows={4}
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                fullWidth
+              />
+              <Button variant="contained" onClick={handleSave} size="small">
+                {i18n._('Save')}
+              </Button>
+            </Stack>
+          ) : (
+            <Stack>
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 700,
+                }}
+              >
+                {i18n._('Transcript')}
+              </Typography>
+
+              <Stack
+                sx={{
+                  fontSize: '1.7rem',
+                  fontFamily: 'serif',
+                  minHeight: '2em',
+                  fontWeight: 400,
+                  color: '#232323',
+                }}
+              >
+                <Typography>{!essay.text.trim() && !activeTranscript && '-'}</Typography>
+                <Stack
+                  sx={{
+                    '* span': {
+                      color: '#232323',
+                      fontSize: '1.7rem',
+                      fontFamily: 'serif',
+                      fontWeight: 400,
+                    },
+
+                    '* p': {
+                      paddingBottom: '10px',
+                    },
+
+                    '* .conversation-word:hover': {
+                      borderBottomColor: '#232323',
+                    },
+                  }}
+                >
+                  <Markdown
+                    onWordClick={
+                      translator.isTranslateAvailable
+                        ? (word, element) => {
+                            translator.translateWithModal(word, element);
+                          }
+                        : undefined
+                    }
+                    variant="conversation"
+                  >
+                    {'\n' + essay.text.trim()}
+                  </Markdown>
+                </Stack>
+                {activeTranscript && <Typography> {activeTranscript}</Typography>}
+                {suggestion && !isEditing && (
+                  <Typography
+                    sx={{
+                      opacity: 0.4,
+                    }}
+                  >
+                    {' '}
+                    {suggestion}
+                  </Typography>
+                )}
+              </Stack>
+            </Stack>
+          )}
+
+          {!isEditing && (
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                gap: '10px',
+                alignItems: 'flex-start',
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: 'flex-start',
+                  gap: '10px',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Button
+                  variant="text"
+                  size="small"
+                  onClick={onContinueRecording}
+                  disabled={isRecording}
+                  startIcon={<Mic size={'14px'} />}
+                >
+                  {i18n._('Record More')}
+                </Button>
+                <Button
+                  startIcon={<Pencil size={'14px'} />}
+                  disabled={isRecording}
+                  variant="text"
+                  size="small"
+                  onClick={handleEditClick}
+                >
+                  {i18n._('Edit')}
+                </Button>
+                <Button
+                  variant="text"
+                  size="small"
+                  onClick={onAnalyze}
+                  disabled={isAnalyzing || !essay.text.trim() || isRecording}
+                  startIcon={
+                    isAnalyzing ? <CircularProgress size={14} /> : <Sparkle size={'14px'} />
+                  }
+                >
+                  {i18n._('Analyze')}
+                </Button>
+
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="small"
+                  onClick={practiceWithAi}
+                  disabled={isRecording || isAiCallStarting}
+                  startIcon={isAiCallStarting ? <Loader size={14} /> : <Mic size={'14px'} />}
+                >
+                  {i18n._('Practice with AI')}
+                </Button>
+              </Stack>
+            </Stack>
+          )}
+
+          {analysis && !isEditing && (
+            <Stack
+              sx={{
+                alignItems: 'flex-start',
+                gap: '10px',
+              }}
+            >
+              <Markdown>{analysis}</Markdown>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => essayHook.deleteAnalysis(essay.id)}
+                startIcon={<Trash size={'14px'} />}
+              >
+                {i18n._('Delete Analysis')}
+              </Button>
+            </Stack>
+          )}
+        </Stack>
+      </ThemeProvider>
+    </>
   );
 };
