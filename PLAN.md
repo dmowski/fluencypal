@@ -6,6 +6,13 @@
 - Integrate assistant supporter to answer some questions
 - Place some texts to it
 
+### EXTREME MVP:
+
+1. Find a good book in Polish
+2. Start reading it in MacOS native book reader
+3. In parallel start conversation with FluencyPal
+4. Read book aloud and time to time asks FluencyPal
+
 ## What about more strict Role-plays
 
 To force user to pronounce only prepared sentences
