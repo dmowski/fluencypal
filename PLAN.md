@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## Reader helper?
+
+- Integrate epub reader, or maybe markdown reader (as simplest solution)
+- Integrate assistant supporter to answer some questions
+- Place some texts to it
+
 ## What about more strict Role-plays
 
 To force user to pronounce only prepared sentences
