@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -18,6 +18,9 @@ import { useAiConversation } from '../Conversation/useAiConversation/useAiConver
 import { MODELS } from '../Ai/ai';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { useTranslate } from '../Translation/useTranslate';
+import { SpeakOptions, useConversationAudio } from '../Audio/useConversationAudio';
+import { clearWordForAudio } from '../Audio/clearWord';
+import { getVoiceOverSpeakOptions } from '../Audio/getVoiceOverSpeakOptions';
 
 interface EssayTextProps {
   essay: Essay;
@@ -80,11 +83,26 @@ export const EssayText = ({
   };
 
   const [isAiCallStarting, setIsAiCallStarting] = useState(false);
-
+  const audio = useConversationAudio();
   const settings = useSettings();
+
   const conversation = useAiConversation();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const globalModal = useGlobalModals();
+
+  const targetLanguage = settings.userSettings?.languageCode || 'en';
+
+  const speakOptionsMain: SpeakOptions = useMemo(
+    () => ({ ...getVoiceOverSpeakOptions(targetLanguage), cache: false }),
+    [targetLanguage],
+  );
+
+  const playWordAudio = async (text: string) => {
+    await audio.initAudio();
+    const cleanWord = clearWordForAudio(text);
+    if (!cleanWord) return;
+    await audio.speak(cleanWord, speakOptionsMain);
+  };
 
   const practiceWithAi = async () => {
     setIsAiCallStarting(true);
@@ -282,6 +300,9 @@ export const EssayText = ({
                     onWordClick={
                       translator.isTranslateAvailable
                         ? (word, element) => {
+                            const isEmptyOption = !word.trim();
+                            if (isEmptyOption) return;
+                            playWordAudio(word);
                             translator.translateWithModal(word, element);
                           }
                         : undefined
