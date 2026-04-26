@@ -245,29 +245,55 @@ export const EssayText = ({
             >
               {i18n._('Transcript')}
             </Typography>
-            <Typography
-              variant="body1"
+            <Stack
               sx={{
                 fontSize: '1.7rem',
                 fontFamily: 'serif',
                 minHeight: '2em',
                 fontWeight: 400,
                 color: '#232323',
-                i: {
-                  fontFamily: 'serif',
-                },
-                span: {
-                  opacity: 0.5,
-                  fontFamily: 'serif',
-                },
               }}
             >
-              {!essay.text.trim() && !activeTranscript && '-'}
-              {essay.text}
-              {activeTranscript && <i> {activeTranscript}</i>}
+              <Typography>{!essay.text.trim() && !activeTranscript && '-'}</Typography>
+              <Stack
+                sx={{
+                  '* span': {
+                    color: '#232323',
+                    fontSize: '1.7rem',
+                    fontFamily: 'serif',
+                    fontWeight: 400,
+                  },
 
-              {suggestion && !isEditing && <span> {suggestion}</span>}
-            </Typography>
+                  '* p': {
+                    paddingBottom: '10px',
+                  },
+
+                  '* .conversation-word:hover': {
+                    borderBottomColor: '#232323',
+                  },
+                }}
+              >
+                <Markdown
+                  onWordClick={(word, element) => {
+                    console.log('word');
+                  }}
+                  variant="conversation"
+                >
+                  {'\n' + essay.text.trim()}
+                </Markdown>
+              </Stack>
+              {activeTranscript && <Typography> {activeTranscript}</Typography>}
+              {suggestion && !isEditing && (
+                <Typography
+                  sx={{
+                    opacity: 0.4,
+                  }}
+                >
+                  {' '}
+                  {suggestion}
+                </Typography>
+              )}
+            </Stack>
           </Stack>
         )}
 
