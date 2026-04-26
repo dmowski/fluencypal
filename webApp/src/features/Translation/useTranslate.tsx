@@ -2,7 +2,7 @@ import { translateBatchRequest, translateRequest } from '@/app/api/translate/tra
 import { useSettings } from '../Settings/useSettings';
 import { getPageLangCode } from '../Lang/lang';
 import { usePlan } from '../Plan/usePlan';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { IconButton, Popover, Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '../uiKit/Markdown/Markdown';
@@ -157,6 +157,23 @@ export const useTranslate = () => {
     setIsShowModal(false);
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    if (!isShowModal) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onCloseTranslate();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isShowModal]);
+
   const { i18n } = useLingui();
 
   return {
