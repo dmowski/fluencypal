@@ -104,6 +104,15 @@ export const EssayText = ({
     await audio.speak(cleanWord, speakOptionsMain);
   };
 
+  const [isAudioSentencePlaying, setIsAudioSentencePlaying] = useState(false);
+  const playSentenceAudio = async (text: string) => {
+    if (isAudioSentencePlaying) return;
+    setIsAudioSentencePlaying(true);
+    await audio.initAudio();
+    await audio.speak(text, speakOptionsMain);
+    setIsAudioSentencePlaying(false);
+  };
+
   const practiceWithAi = async () => {
     setIsAiCallStarting(true);
     await settings.setConversationMode('record');
@@ -292,7 +301,7 @@ export const EssayText = ({
                     },
 
                     '* .conversation-word:hover': {
-                      borderBottomColor: '#232323',
+                      borderBottomColor: '#232323 !important',
                     },
                   }}
                 >
@@ -307,6 +316,22 @@ export const EssayText = ({
                           }
                         : undefined
                     }
+                    onSentenceClick={
+                      translator.isTranslateAvailable
+                        ? (sentence, element) => {
+                            if (isAudioSentencePlaying) {
+                              audio.interrupt();
+                              setIsAudioSentencePlaying(false);
+                              return;
+                            }
+
+                            const isEmptyOption = !sentence.trim();
+                            if (isEmptyOption) return;
+                            playSentenceAudio(sentence);
+                          }
+                        : undefined
+                    }
+                    sentenceIcon={isAudioSentencePlaying ? 'pause' : 'play'}
                     variant="conversation"
                   >
                     {'\n' + essay.text.trim()}

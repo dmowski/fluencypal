@@ -4,30 +4,101 @@ import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 import { AttachmentImage } from '@/features/Chat/Message/AttachmentImage';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat' | 'rule';
 export interface MarkdownProps {
   children: string;
   variant?: MdVariantVariant;
   onWordClick?: (word: string, element: HTMLElement) => void;
+  onSentenceClick?: (sentence: string, element: HTMLElement) => void;
+  sentenceIcon?: IconName;
 }
 
-const processStringChild = (child: string, index: number) => {
-  const words = child.split(' ');
-  return words.map((word, wordIndex) => (
-    <span key={`${index}-${wordIndex}`}>
-      <span className="conversation-word">{word}</span>
-      {wordIndex < words.length - 1 ? ' ' : ''}
-    </span>
-  ));
+interface WrapOptions {
+  onSentenceClick?: MarkdownProps['onSentenceClick'];
+  sentenceIcon?: IconName;
+}
+
+const MarkdownWrapOptionsContext = React.createContext<WrapOptions>({});
+
+const processSentenceWords = (sentencePart: string, keyPrefix: string) => {
+  const tokens = sentencePart.match(/\S+|\s+/g) || [sentencePart];
+
+  return tokens.map((token, tokenIndex) => {
+    const isWhitespace = /^\s+$/.test(token);
+    if (isWhitespace) {
+      return <React.Fragment key={`${keyPrefix}-space-${tokenIndex}`}>{token}</React.Fragment>;
+    }
+
+    return (
+      <span key={`${keyPrefix}-word-${tokenIndex}`}>
+        <span className="conversation-word">{token}</span>
+      </span>
+    );
+  });
 };
 
-const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
+const processStringChild = (child: string, index: number, options: WrapOptions) => {
+  const { onSentenceClick, sentenceIcon = 'play' } = options;
+
+  // Keep trailing spaces attached to each sentence so icon placement feels natural.
+  const sentenceParts = child.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)\s*/g) || [child];
+
+  return sentenceParts.map((sentencePart, sentenceIndex) => {
+    const coreSentence = sentencePart.replace(/\s+$/, '');
+    const trailingWhitespace = sentencePart.slice(coreSentence.length);
+    const sentenceText = coreSentence.trim();
+
+    if (!sentenceText) {
+      return (
+        <React.Fragment key={`${index}-${sentenceIndex}-empty`}>{sentencePart}</React.Fragment>
+      );
+    }
+
+    return (
+      <React.Fragment key={`${index}-${sentenceIndex}`}>
+        {onSentenceClick ? (
+          <Stack
+            component={'span'}
+            className="conversation-sentence-icon-trigger"
+            data-sentence={sentenceText}
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              marginLeft: '0px',
+              marginRight: '0px',
+              verticalAlign: 'middle',
+              position: 'relative',
+              top: '-3px',
+              padding: '7px',
+              borderRadius: '14px',
+              ':hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+              },
+            }}
+          >
+            <DynamicIcon
+              className="conversation-sentence-icon"
+              name={sentenceIcon}
+              size={15}
+              strokeWidth={2.2}
+            />
+          </Stack>
+        ) : null}
+        {processSentenceWords(coreSentence, `${index}-${sentenceIndex}`)}
+        {trailingWhitespace}
+      </React.Fragment>
+    );
+  });
+};
+
+const wrapChildrenWithTranslateWrapper = (children: React.ReactNode, options: WrapOptions = {}) => {
   const isChildrenIsArray = Array.isArray(children);
   if (!isChildrenIsArray) {
     const isString = typeof children === 'string';
     if (isString) {
-      return processStringChild(children, 0);
+      return processStringChild(children, 0, options);
     }
 
     return children;
@@ -35,12 +106,17 @@ const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
 
   const processedChildren = children.map((child, index) => {
     if (typeof child === 'string') {
-      return processStringChild(child, index);
+      return processStringChild(child, index, options);
     }
     return child;
   });
 
   return processedChildren;
+};
+
+const WrappedChildren = ({ children }: { children: React.ReactNode }) => {
+  const options = React.useContext(MarkdownWrapOptionsContext);
+  return <>{wrapChildrenWithTranslateWrapper(children, options)}</>;
 };
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -205,7 +281,9 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
 
   h1: ({ children }) => (
-    <Typography variant="h1">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h1">
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
   ),
   h2: ({ children }) => (
     <Typography
@@ -214,7 +292,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         paddingTop: '20px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h3: ({ children }) => (
@@ -225,7 +303,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         paddingTop: '20px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h4: ({ children }) => (
@@ -236,14 +314,18 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         paddingTop: '20px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h5: ({ children }) => (
-    <Typography variant="h5">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h5">
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
   ),
   h6: ({ children }) => (
-    <Typography variant="h6">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h6">
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
   ),
 
   a: ({ href, children }) => (
@@ -258,7 +340,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         margin: '5px 0',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </ul>
   ),
   ol: ({ children }) => (
@@ -268,7 +350,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         margin: '14px 0',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </ol>
   ),
   li: ({ children }) => (
@@ -279,7 +361,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
         paddingBottom: '8px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   input: ({ checked }) => (
@@ -291,11 +373,25 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
       }}
     />
   ),
-  small: ({ children }) => <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>,
-  em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
-  strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
+  small: ({ children }) => (
+    <Typography>
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
+  ),
+  em: ({ children }) => (
+    <em>
+      <WrappedChildren>{children}</WrappedChildren>
+    </em>
+  ),
+  strong: ({ children }) => (
+    <strong>
+      <WrappedChildren>{children}</WrappedChildren>
+    </strong>
+  ),
   blockquote: ({ children }) => (
-    <blockquote>{wrapChildrenWithTranslateWrapper(children)}</blockquote>
+    <blockquote>
+      <WrappedChildren>{children}</WrappedChildren>
+    </blockquote>
   ),
   pre: ({ children }) => <pre>{children}</pre>,
   code: ({ children }) => <code>{children}</code>,
@@ -313,7 +409,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
           fontWeight: 350,
         }}
       >
-        {wrapChildrenWithTranslateWrapper(children)}
+        <WrappedChildren>{children}</WrappedChildren>
       </Typography>
     );
   },
@@ -325,7 +421,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
           fontSize: '21px',
         }}
       >
-        {wrapChildrenWithTranslateWrapper(children)}
+        <WrappedChildren>{children}</WrappedChildren>
       </Typography>
     );
   },
@@ -477,7 +573,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         },
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h2: ({ children }) => (
@@ -490,7 +586,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         fontWeight: 700,
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h3: ({ children }) => (
@@ -503,7 +599,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         fontWeight: 500,
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h4: ({ children }) => (
@@ -515,14 +611,18 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         fontWeight: 700,
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   h5: ({ children }) => (
-    <Typography variant="h5">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h5">
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
   ),
   h6: ({ children }) => (
-    <Typography variant="h6">{wrapChildrenWithTranslateWrapper(children)}</Typography>
+    <Typography variant="h6">
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
   ),
 
   a: ({ href, children }) => (
@@ -537,7 +637,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         margin: '5px 0',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </ul>
   ),
   ol: ({ children }) => (
@@ -547,7 +647,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         margin: '14px 0',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </ol>
   ),
   li: ({ children }) => (
@@ -558,7 +658,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         paddingBottom: '8px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   input: ({ checked }) => (
@@ -570,9 +670,21 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
       }}
     />
   ),
-  small: ({ children }) => <Typography>{wrapChildrenWithTranslateWrapper(children)}</Typography>,
-  em: ({ children }) => <em>{wrapChildrenWithTranslateWrapper(children)}</em>,
-  strong: ({ children }) => <strong>{wrapChildrenWithTranslateWrapper(children)}</strong>,
+  small: ({ children }) => (
+    <Typography>
+      <WrappedChildren>{children}</WrappedChildren>
+    </Typography>
+  ),
+  em: ({ children }) => (
+    <em>
+      <WrappedChildren>{children}</WrappedChildren>
+    </em>
+  ),
+  strong: ({ children }) => (
+    <strong>
+      <WrappedChildren>{children}</WrappedChildren>
+    </strong>
+  ),
   blockquote: ({ children }) => (
     <Stack
       component={'blockquote'}
@@ -583,7 +695,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         padding: '10px 0 10px 19px',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Stack>
   ),
   pre: ({ children }) => <pre>{children}</pre>,
@@ -598,7 +710,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
         width: 'fit-content',
       }}
     >
-      {wrapChildrenWithTranslateWrapper(children)}
+      <WrappedChildren>{children}</WrappedChildren>
     </Typography>
   ),
   thead: ({ children }) => <thead>{children}</thead>,
@@ -615,7 +727,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
           fontWeight: 350,
         }}
       >
-        {wrapChildrenWithTranslateWrapper(children)}
+        <WrappedChildren>{children}</WrappedChildren>
       </Typography>
     );
   },
@@ -627,7 +739,7 @@ const markdownComponentsRule: MarkdownToJSX.Overrides = {
           fontSize: '21px',
         }}
       >
-        {wrapChildrenWithTranslateWrapper(children)}
+        <WrappedChildren>{children}</WrappedChildren>
       </Typography>
     );
   },
@@ -642,7 +754,13 @@ const styleVariationMap: Record<MdVariantVariant, MarkdownToJSX.Overrides> = {
   rule: markdownComponentsRule,
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
+export const Markdown: React.FC<MarkdownProps> = ({
+  children,
+  onWordClick,
+  onSentenceClick,
+  sentenceIcon,
+  variant,
+}) => {
   const variantToUse = variant || 'normal';
   const styleComponents = styleVariationMap[variantToUse];
 
@@ -657,12 +775,32 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
               },
             }
           : {},
+        '.conversation-sentence-icon-trigger': onSentenceClick
+          ? {
+              cursor: 'pointer',
+              opacity: 0.65,
+              transition: 'opacity 0.2s ease',
+              ':hover': {
+                opacity: 1,
+              },
+            }
+          : {},
       }}
       onMouseDown={
-        onWordClick
+        onWordClick || onSentenceClick
           ? (e) => {
               const target = e.target as HTMLElement;
-              if (target.classList.contains('conversation-word')) {
+
+              const sentenceIconTrigger = target.closest(
+                '.conversation-sentence-icon-trigger',
+              ) as HTMLElement | null;
+              if (sentenceIconTrigger && onSentenceClick) {
+                const sentence = sentenceIconTrigger.getAttribute('data-sentence') || '';
+                onSentenceClick(sentence.trim(), sentenceIconTrigger);
+                return;
+              }
+
+              if (target.classList.contains('conversation-word') && onWordClick) {
                 const word = target.textContent || '';
                 const element = target;
                 onWordClick(word.trim(), element);
@@ -671,7 +809,9 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
           : undefined
       }
     >
-      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+      <MarkdownWrapOptionsContext.Provider value={{ onSentenceClick, sentenceIcon }}>
+        <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+      </MarkdownWrapOptionsContext.Provider>
     </Stack>
   );
 };

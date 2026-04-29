@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+- Essay: Play sentence
+
 ## Reader helper?
 
 - Integrate epub reader, or maybe markdown reader (as simplest solution)
