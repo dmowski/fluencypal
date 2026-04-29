@@ -105,13 +105,24 @@ export const EssayText = ({
   };
 
   const [isAudioSentencePlaying, setIsAudioSentencePlaying] = useState(false);
+  const [activeSentencePlaying, setActiveSentencePlaying] = useState<string | null>(null);
+  const stopSentenceAudio = () => {
+    audio.interrupt();
+    setIsAudioSentencePlaying(false);
+    setActiveSentencePlaying(null);
+  };
   const playSentenceAudio = async (text: string) => {
     if (isAudioSentencePlaying) return;
     setIsAudioSentencePlaying(true);
+    setActiveSentencePlaying(text);
     await audio.initAudio();
     await audio.speak(text, speakOptionsMain);
     setIsAudioSentencePlaying(false);
+    setActiveSentencePlaying(null);
   };
+
+  const essayMarkdown = '\n' + essay.text.trim();
+  const essayTextToShow = essayMarkdown;
 
   const practiceWithAi = async () => {
     setIsAiCallStarting(true);
@@ -227,7 +238,11 @@ export const EssayText = ({
               </Button>
             </Stack>
           ) : (
-            <Stack>
+            <Stack
+              sx={{
+                display: 'none',
+              }}
+            >
               <Typography
                 variant="caption"
                 sx={{
@@ -296,6 +311,10 @@ export const EssayText = ({
                       fontWeight: 400,
                     },
 
+                    '* strong span': {
+                      color: '#000',
+                    },
+
                     '* p': {
                       paddingBottom: '10px',
                     },
@@ -320,8 +339,7 @@ export const EssayText = ({
                       translator.isTranslateAvailable
                         ? (sentence, element) => {
                             if (isAudioSentencePlaying) {
-                              audio.interrupt();
-                              setIsAudioSentencePlaying(false);
+                              stopSentenceAudio();
                               return;
                             }
 
@@ -334,7 +352,7 @@ export const EssayText = ({
                     sentenceIcon={isAudioSentencePlaying ? 'pause' : 'play'}
                     variant="conversation"
                   >
-                    {'\n' + essay.text.trim()}
+                    {essayTextToShow}
                   </Markdown>
                 </Stack>
                 {activeTranscript && <Typography> {activeTranscript}</Typography>}
