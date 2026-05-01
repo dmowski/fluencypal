@@ -1,6 +1,41 @@
 import { Stack } from '@mui/material';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+export const PaginationPanel = ({
+  onPrevious,
+  onNext,
+  isFirstPage,
+  isLastPage,
+}: {
+  onPrevious: () => void;
+  onNext: () => void;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+}) => {
+  return (
+    <Stack
+      sx={{
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '10px 0',
+        zIndex: 0,
+      }}
+    >
+      <PaginationButtons
+        onPrevious={onPrevious}
+        onNext={onNext}
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+      />
+    </Stack>
+  );
+};
+
 export const PaginationButtons = ({
   onPrevious,
   onNext,

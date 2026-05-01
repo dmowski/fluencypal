@@ -4,7 +4,7 @@ import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
 import { useState } from 'react';
 import { useLingui } from '@lingui/react';
-import { PaginationButtons } from './PaginationButtons';
+import { PaginationButtons, PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
 import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 
@@ -124,26 +124,12 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         </Stack>
       </Stack>
 
-      <Stack
-        sx={{
-          width: '100%',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          height: '100%',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          padding: '10px 0',
-          zIndex: 0,
-        }}
-      >
-        <PaginationButtons
-          onPrevious={() => setActivePage((prev) => Math.max(prev - 1, 1))}
-          onNext={() => setActivePage((prev) => Math.min(prev + 1, pageCount))}
-          isFirstPage={activePage === 1}
-          isLastPage={activePage === pageCount}
-        />
-      </Stack>
+      <PaginationPanel
+        onPrevious={() => setActivePage((prev) => Math.max(prev - 1, 1))}
+        onNext={() => setActivePage((prev) => Math.min(prev + 1, pageCount))}
+        isFirstPage={activePage === 1}
+        isLastPage={activePage === pageCount}
+      />
     </Stack>
   );
 };
