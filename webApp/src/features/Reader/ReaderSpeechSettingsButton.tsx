@@ -12,6 +12,7 @@ import {
 import { Settings } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { useBrowserSpeech } from './useBrowserSpeech';
 
 type ReaderSpeechSettingsButtonProps = {
@@ -58,6 +59,12 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
 
     return isSelectedVoiceVisible ? speech.selectedVoiceURI || '' : '';
   }, [speech.selectedVoiceURI, voicesForLanguage]);
+
+  const handleVoiceChange = (event: SelectChangeEvent<string>) => {
+    const nextVoiceURI = event.target.value;
+    speech.setSelectedVoiceURI(nextVoiceURI || null);
+    speech.play(PREVIEW_TEXT, nextVoiceURI || null);
+  };
 
   return (
     <>
@@ -125,7 +132,7 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               labelId="speech-voice-select-label"
               label={i18n._('Voice')}
               value={selectedVoiceValue}
-              onChange={(event) => speech.setSelectedVoiceURI(event.target.value)}
+              onChange={handleVoiceChange}
             >
               {voicesForLanguage.map((voice) => (
                 <MenuItem key={voice.voiceURI} value={voice.voiceURI}>

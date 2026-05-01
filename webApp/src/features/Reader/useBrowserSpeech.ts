@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useReaderSettings } from './useReaderSettings';
 
 type BrowserSpeechApi = {
   isSupported: boolean;
@@ -8,52 +9,12 @@ type BrowserSpeechApi = {
   voices: SpeechSynthesisVoice[];
   language: string;
   selectedVoiceURI: string | null;
-  play: (text: string) => void;
+  play: (text: string, voiceURIOverride?: string | null) => void;
   stop: () => void;
   pause: () => void;
   resume: () => void;
   setLanguage: (nextLanguage: string) => void;
-  setSelectedVoiceURI: (voiceURI: string) => void;
-};
-
-type BrowserSpeechSettings = {
-  language: string;
-  selectedVoiceURI: string | null;
-};
-
-const BROWSER_SPEECH_SETTINGS_KEY = 'reader-browser-speech-settings';
-const DEFAULT_LANGUAGE = 'en-US';
-
-const getDefaultSettings = (): BrowserSpeechSettings => ({
-  language: DEFAULT_LANGUAGE,
-  selectedVoiceURI: null,
-});
-
-const getInitialSettings = (): BrowserSpeechSettings => {
-  if (typeof window === 'undefined') {
-    return getDefaultSettings();
-  }
-
-  try {
-    const rawSettings = window.localStorage.getItem(BROWSER_SPEECH_SETTINGS_KEY);
-    if (!rawSettings) {
-      return {
-        language: window.navigator.language || DEFAULT_LANGUAGE,
-        selectedVoiceURI: null,
-      };
-    }
-
-    const parsedSettings = JSON.parse(rawSettings) as Partial<BrowserSpeechSettings>;
-    return {
-      language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
-      selectedVoiceURI: parsedSettings.selectedVoiceURI || null,
-    };
-  } catch {
-    return {
-      language: window.navigator.language || DEFAULT_LANGUAGE,
-      selectedVoiceURI: null,
-    };
-  }
+  setSelectedVoiceURI: (voiceURI: string | null) => void;
 };
 
 const findMatchingVoice = (language: string, voices: SpeechSynthesisVoice[]) => {
@@ -68,13 +29,14 @@ const findMatchingVoice = (language: string, voices: SpeechSynthesisVoice[]) => 
 };
 
 export const useBrowserSpeech = (): BrowserSpeechApi => {
+  const { language, selectedVoiceURI, setLanguage, setSelectedVoiceURI } = useReaderSettings();
+
   const isSupported = useMemo(() => {
     if (typeof window === 'undefined') return false;
     return 'speechSynthesis' in window;
   }, []);
 
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [settings, setSettings] = useState<BrowserSpeechSettings>(() => getInitialSettings());
 
   useEffect(() => {
     if (!isSupported) return;
@@ -92,12 +54,6 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
     };
   }, [isSupported]);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    window.localStorage.setItem(BROWSER_SPEECH_SETTINGS_KEY, JSON.stringify(settings));
-  }, [settings]);
-
   const stop = useCallback(() => {
     if (!isSupported) return;
 
@@ -112,26 +68,6 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const setLanguage = useCallback((nextLanguage: string) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      language: nextLanguage,
-      selectedVoiceURI: null,
-    }));
-  }, []);
-
-  const setSelectedVoiceURI = useCallback(
-    (voiceURI: string) => {
-      setSettings((previousSettings) => ({
-        ...previousSettings,
-        selectedVoiceURI: voiceURI,
-        language:
-          voices.find((voice) => voice.voiceURI === voiceURI)?.lang || previousSettings.language,
-      }));
-    },
-    [voices],
-  );
-
   const resume = useCallback(() => {
     if (!isSupported) return;
 
@@ -139,20 +75,21 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
   }, [isSupported]);
 
   const play = useCallback(
-    (text: string) => {
+    (text: string, voiceURIOverride?: string | null) => {
       if (!isSupported) return;
 
       const trimmedText = text.trim();
       if (!trimmedText) return;
 
       const utterance = new SpeechSynthesisUtterance(trimmedText);
-      utterance.lang = settings.language;
+      utterance.lang = language;
 
-      const selectedVoice = voices.find((voice) => voice.voiceURI === settings.selectedVoiceURI);
+      const activeVoiceURI = voiceURIOverride ?? selectedVoiceURI;
+      const selectedVoice = voices.find((voice) => voice.voiceURI === activeVoiceURI);
       if (selectedVoice) {
         utterance.voice = selectedVoice;
       } else {
-        const matchingVoice = findMatchingVoice(settings.language, voices);
+        const matchingVoice = findMatchingVoice(language, voices);
         if (matchingVoice) {
           utterance.voice = matchingVoice;
         }
@@ -165,15 +102,15 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
         setIsPlaying(false);
       };
     },
-    [isSupported, settings.language, settings.selectedVoiceURI, voices],
+    [isSupported, language, selectedVoiceURI, voices],
   );
 
   return {
     isSupported,
     isPlaying,
     voices,
-    language: settings.language,
-    selectedVoiceURI: settings.selectedVoiceURI,
+    language,
+    selectedVoiceURI,
     play,
     stop,
     pause,
