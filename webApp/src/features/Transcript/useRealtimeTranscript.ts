@@ -77,8 +77,6 @@ export const useRealtimeTranscript = () => {
     await startNativeRealtimeTranscript({
       language,
       refs: {
-        pcRef,
-        dcRef,
         recognitionRef,
         stopRequestedRef,
       },

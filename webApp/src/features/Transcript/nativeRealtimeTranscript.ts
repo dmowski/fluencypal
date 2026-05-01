@@ -3,6 +3,7 @@ import type { SupportedLanguage } from '../Lang/lang';
 import type {
   BrowserSpeechRecognitionEvent,
   BrowserSpeechRecognitionConstructor,
+  NativeTranscriptRefs,
   TranscriptRefs,
   TranscriptStateHandlers,
 } from './types';
@@ -145,6 +146,14 @@ export const cleanupNativeRealtimeTranscript = ({
   }
 };
 
+const startAiFallbackIfAvailable = async (startAiFallback?: () => Promise<void>) => {
+  if (!startAiFallback) {
+    throw new Error('Native speech recognition is unavailable');
+  }
+
+  await startAiFallback();
+};
+
 export const startNativeRealtimeTranscript = async ({
   language,
   refs,
@@ -152,15 +161,15 @@ export const startNativeRealtimeTranscript = async ({
   startAiFallback,
 }: {
   language: SupportedLanguage;
-  refs: TranscriptRefs;
+  refs: NativeTranscriptRefs;
   state: TranscriptStateHandlers;
-  startAiFallback: () => Promise<void>;
+  startAiFallback?: () => Promise<void>;
 }) => {
   const SpeechRecognition = getSpeechRecognitionConstructor();
   const browserLanguage = speechRecognitionLanguages[language];
 
   if (!SpeechRecognition || !browserLanguage) {
-    await startAiFallback();
+    await startAiFallbackIfAvailable(startAiFallback);
     return;
   }
 
@@ -246,7 +255,12 @@ export const startNativeRealtimeTranscript = async ({
           });
 
           if (!isSettled) {
-            rejectOnce(new Error('language-not-supported'));
+            rejectOnce(new Error('Native speech recognition does not support this language'));
+            return;
+          }
+
+          if (!startAiFallback) {
+            stopNativeTranscript();
             return;
           }
 
@@ -329,12 +343,5 @@ export const startNativeRealtimeTranscript = async ({
     };
 
     startRecognition();
-  }).catch(async (error) => {
-    if (error instanceof Error && error.message === 'language-not-supported') {
-      await startAiFallback();
-      return;
-    }
-
-    throw error;
   });
 };

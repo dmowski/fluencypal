@@ -8,6 +8,10 @@ export type StartRealtimeTranscriptParams = {
   language?: SupportedLanguage;
 };
 
+export type StartNativeRealtimeTranscriptParams = {
+  language?: SupportedLanguage;
+};
+
 export type TranscriptSdpResponse = {
   sdpResponse: string;
 };
@@ -67,6 +71,8 @@ export type TranscriptRefs = {
   recognitionRef: MutableRefObject<BrowserSpeechRecognition | null>;
   stopRequestedRef: MutableRefObject<boolean>;
 };
+
+export type NativeTranscriptRefs = Pick<TranscriptRefs, 'recognitionRef' | 'stopRequestedRef'>;
 
 declare global {
   interface Window {
