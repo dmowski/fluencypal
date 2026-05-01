@@ -62,6 +62,11 @@ This, then, is a book that explores how we communicate and connect. Because the 
         backgroundColor: '#F4E1C6',
       }}
     >
+      <style>{`
+        body {
+          background-color: #F4E1C6;
+        },
+      `}</style>
       <Stack
         sx={{
           minHeight: '500px',
