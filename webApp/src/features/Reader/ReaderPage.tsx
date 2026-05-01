@@ -3,7 +3,7 @@
 import { Stack } from '@mui/material';
 import { Reader } from './Reader';
 import { ReaderPageStyle } from './style';
-import { useBooks } from './useBooks';
+import { BooksProvider, useBooks } from './useBooks';
 import { BooksList } from './BooksList';
 
 const ReaderComponent = () => {
@@ -38,5 +38,9 @@ const ReaderComponent = () => {
 };
 
 export const ReaderPage = () => {
-  return <ReaderComponent />;
+  return (
+    <BooksProvider>
+      <ReaderComponent />
+    </BooksProvider>
+  );
 };
