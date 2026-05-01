@@ -19,6 +19,7 @@ Arin noticed it first. The golden sun slipped below the horizon as usual, but th
     <Stack
       sx={{
         padding: '40px',
+        alignItems: 'center',
       }}
     >
       <Stack
@@ -27,6 +28,8 @@ Arin noticed it first. The golden sun slipped below the horizon as usual, but th
           overflow: 'hidden',
           minHeight: '900px',
           flex: '1 1 0',
+          maxWidth: '1700px',
+          width: '100%',
         }}
       >
         <Reader data={data} />

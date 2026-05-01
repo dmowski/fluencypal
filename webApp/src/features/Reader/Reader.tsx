@@ -19,6 +19,8 @@ export const Reader = ({ data }: { data: ReaderData }) => {
       <Stack
         sx={{
           maxWidth: '1200px',
+          width: '100%',
+          minWidth: 0,
           gap: '60px',
         }}
       >
