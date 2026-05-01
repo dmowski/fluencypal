@@ -92,20 +92,33 @@ export const ReaderHeader = ({
       sx={{
         width: '100%',
         minWidth: 0,
-        gap: '20px',
+        gap: '10px',
       }}
     >
       <Stack
         sx={{
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddingRight: '3px',
+          paddingRight: '5px',
         }}
       >
-        <Typography variant="body2" sx={{ fontFamily: 'serif' }}>
+        <Typography
+          sx={{
+            fontSize: '11px',
+            fontFamily: 'serif',
+            textTransform: 'uppercase',
+          }}
+        >
           {`${activePage} of ${pageCount}`}
         </Typography>
-        <Typography variant="body2" sx={{ fontFamily: 'serif', textAlign: 'right' }}>
+        <Typography
+          sx={{
+            fontSize: '11px',
+            fontFamily: 'serif',
+            textAlign: 'right',
+            textTransform: 'uppercase',
+          }}
+        >
           {category}
         </Typography>
       </Stack>
