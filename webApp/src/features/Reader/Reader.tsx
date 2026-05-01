@@ -24,12 +24,8 @@ export const Reader = ({ data, language }: { data: ReaderData; language: string 
 
   const speech = useBrowserSpeech(language);
 
-  const onWordClick = (word: string) => {
-    if (speech.isPlaying) {
-      speech.stop();
-    } else {
-      speech.play(word);
-    }
+  const playText = (text: string) => {
+    speech.play(text.trim());
   };
 
   return (
@@ -122,7 +118,12 @@ export const Reader = ({ data, language }: { data: ReaderData; language: string 
                 )}
               </Stack>
               <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
-                <ReaderParagraph key={index} text={paragraph} onWordClick={onWordClick} />
+                <ReaderParagraph
+                  key={index}
+                  text={paragraph}
+                  onWordClick={playText}
+                  onTextSelected={playText}
+                />
               </Stack>
               <Stack
                 sx={{

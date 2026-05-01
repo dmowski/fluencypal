@@ -4,8 +4,8 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Click to word play
-- Click on paragraph
+- When select phrase,
+
 - Select words and show menu with "Highlights"
 
 ### EXTREME MVP:
