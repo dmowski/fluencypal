@@ -3,11 +3,18 @@ import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../Translation/translationHelpers';
 import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from './FlyingTooltip';
 import {
+  createSelectionFromRange,
+  createSelectionFromWord,
+  getPointerPosition,
+  getPopoverPositionFromRect,
+} from './readerParagraphInteractionHelpers';
+import {
   getAbsoluteCharOffset,
   getCharHighlightColor,
   getHighlightAtCharRange,
   getWordCharOffsets,
 } from './readerParagraphHelpers';
+import { canTranslateReaderText, normalizeSelectedText } from './readerParagraphTranslationHelpers';
 import { TextPopover } from './TextPopover';
 import { HighlightedText } from './types';
 import { NativeLangCode } from '@/libs/language/type';
@@ -63,7 +70,7 @@ export const ReaderParagraph = ({
   };
 
   useEffect(() => {
-    const text = selectionText?.trim() ?? '';
+    const text = normalizeSelectedText(selectionText);
 
     if (!selection || !text) {
       selectionRequestIdRef.current += 1;
@@ -72,7 +79,13 @@ export const ReaderParagraph = ({
       return;
     }
 
-    if (!targetLanguage || normalizedSourceLanguage === targetLanguage) {
+    if (
+      !canTranslateReaderText({
+        text,
+        sourceLanguage: normalizedSourceLanguage,
+        targetLanguage,
+      })
+    ) {
       selectionRequestIdRef.current += 1;
       setIsSelectionTranslating(false);
       setSelectionTranslation(null);
@@ -116,13 +129,16 @@ export const ReaderParagraph = ({
   };
 
   const handleWordMouseEnter = async (e: MouseEvent<HTMLSpanElement>, word: string) => {
-    setHoverPointer({
-      x: e.clientX + FLYING_TOOLTIP_OFFSET_X,
-      y: e.clientY + FLYING_TOOLTIP_OFFSET_Y,
-    });
+    setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
 
-    const text = word.trim();
-    if (!text || !targetLanguage || normalizedSourceLanguage === targetLanguage) {
+    const text = normalizeSelectedText(word);
+    if (
+      !canTranslateReaderText({
+        text,
+        sourceLanguage: normalizedSourceLanguage,
+        targetLanguage,
+      })
+    ) {
       clearHoverTranslation();
       return;
     }
@@ -151,17 +167,14 @@ export const ReaderParagraph = ({
   };
 
   const handleWordMouseMove = (e: MouseEvent<HTMLSpanElement>) => {
-    setHoverPointer({
-      x: e.clientX + FLYING_TOOLTIP_OFFSET_X,
-      y: e.clientY + FLYING_TOOLTIP_OFFSET_Y,
-    });
+    setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
   };
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     const sel = window.getSelection();
-    const selectedText = sel?.toString().trim() ?? '';
+    const selectedText = normalizeSelectedText(sel?.toString());
 
     if (selectedText) {
       setSelectionText(selectedText);
@@ -169,10 +182,7 @@ export const ReaderParagraph = ({
       const rect = range?.getBoundingClientRect();
 
       if (rect) {
-        setPopoverPosition({
-          top: rect.bottom + window.scrollY + 8,
-          left: rect.left + window.scrollX + rect.width / 2,
-        });
+        setPopoverPosition(getPopoverPositionFromRect(rect));
       }
 
       if (range) {
@@ -185,12 +195,7 @@ export const ReaderParagraph = ({
         const rawEnd = getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
 
         if (rawStart !== null && rawEnd !== null) {
-          setSelection({
-            paragraphIndex,
-            startIndex: Math.min(rawStart, rawEnd - 1),
-            endIndex: Math.max(rawStart, rawEnd - 1),
-            color: '',
-          });
+          setSelection(createSelectionFromRange({ paragraphIndex, rawStart, rawEnd }));
         }
       }
 
@@ -200,20 +205,15 @@ export const ReaderParagraph = ({
 
   const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    setSelectionText(word);
+    const normalizedWord = normalizeSelectedText(word);
+    setSelectionText(normalizedWord);
 
-    setPopoverPosition({
-      top: rect.bottom + window.scrollY + 8,
-      left: rect.left + window.scrollX + rect.width / 2,
-    });
+    setPopoverPosition(getPopoverPositionFromRect(rect));
 
     const charStart = wordCharOffsets[wordIndex];
-    setSelection({
-      paragraphIndex,
-      startIndex: charStart,
-      endIndex: charStart + word.length - 1,
-      color: '',
-    });
+    setSelection(
+      createSelectionFromWord({ paragraphIndex, charStart, word: normalizedWord || word }),
+    );
 
     onWordClick(word);
     onTextSelected(word);
