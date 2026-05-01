@@ -1,11 +1,3 @@
-export interface ReaderData {
-  title: string;
-  subtitle: string;
-  category: string; // ex: Story
-
-  content: string;
-}
-
 export type BookWord = string;
 export type BookParagraph = BookWord[];
 

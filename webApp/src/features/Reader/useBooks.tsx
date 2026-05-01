@@ -1,14 +1,14 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { testData } from './testData';
-import { ReaderData } from './types';
+import { Book } from './types';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 
 const BooksContext = createContext<BooksContextType | null>(null);
 
 const useBooksState = () => {
-  const [active, setActive] = useState<ReaderData | null>(null);
-  const usersBooks: ReaderData[] = [];
+  const [active, setActive] = useState<Book | null>(null);
+  const usersBooks: Book[] = [];
   const testBooks = [testData];
 
   return {

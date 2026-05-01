@@ -1,39 +1,27 @@
-import { Button, Stack } from '@mui/material';
-import { ReaderData } from './types';
+import { Stack } from '@mui/material';
+import { Book } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
-import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 import { useBrowserSpeech } from './useBrowserSpeech';
 import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { ReaderButton } from './ReaderButton';
 import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTranscript';
-import { getReadingProgress } from '../Dashboard/Grammar/getReadingProgress';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 
-export const Reader = ({ data }: { data: ReaderData }) => {
+export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
 
-  const allParagraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
-
-  const pages = splitParagraphsIntoPages(allParagraphs, 1000);
-  const paragraphs = pages[activePage - 1] || [];
-  const pageCount = pages.length;
+  const pageCount = 1;
 
   const activeParagraphIndex = 0;
 
   const speech = useBrowserSpeech();
   const recorder = useNativeRealtimeTranscript();
-
-  const readingProgressRuntime = useMemo(() => {
-    return getReadingProgress(paragraphs[0], recorder.transcript);
-  }, [paragraphs[0], recorder.transcript]);
-
-  console.log('recorder.transcript', { transcript: recorder.transcript, readingProgressRuntime });
 
   const isRecording = recorder.isActive || recorder.isActivating;
 
@@ -113,11 +101,11 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                 },
               }}
             >
-              <Markdown variant="rule">{readingProgressRuntime.activeMarkdown}</Markdown>
+              <Markdown variant="rule">{'hello'}</Markdown>
             </Stack>
           </Stack>
 
-          {paragraphs.map((paragraph, index) => (
+          {data.paragraphs.map((paragraph, index) => (
             <Stack
               key={index}
               sx={{
@@ -159,7 +147,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
               <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
                 <ReaderParagraph
                   key={index}
-                  text={paragraph}
+                  words={paragraph}
                   onWordClick={playText}
                   onTextSelected={playText}
                 />

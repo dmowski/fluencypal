@@ -1,17 +1,14 @@
 import { Stack, Typography } from '@mui/material';
-import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
 
 export const ReaderParagraph = ({
-  text,
+  words,
   onWordClick,
   onTextSelected,
 }: {
-  text: string;
+  words: string[];
   onWordClick: (word: string) => void;
   onTextSelected: (selectedText: string) => void;
 }) => {
-  const words = splitWords(text);
-
   const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();

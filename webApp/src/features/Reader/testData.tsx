@@ -1,10 +1,17 @@
-import { ReaderData } from './types';
+import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
+import { Book } from './types';
 
-export const testData: ReaderData = {
+const splitTextIntoParagraphs = (text: string): string[][] => {
+  const paragraphs = text.split('\n').filter((p) => p.trim() !== '');
+  return paragraphs.map((paragraph) => splitWords(paragraph));
+};
+
+export const testData: Book = {
   title: 'Supercommunicators',
   subtitle: 'How to Unlock the Secret Language of Connection',
   category: 'Charles Duhigg',
-  content: `Who would you call if you were having a bad day? If you had screwed up a deal at work, or had gotten into an argument with your spouse, or were feeling frustrated and sick of it all: Who would you want to talk to? There’s likely someone that you know who will make you feel better, who can help you think through a thorny question or share a moment of heartbreak or joy.
+  paragraphs:
+    splitTextIntoParagraphs(`Who would you call if you were having a bad day? If you had screwed up a deal at work, or had gotten into an argument with your spouse, or were feeling frustrated and sick of it all: Who would you want to talk to? There’s likely someone that you know who will make you feel better, who can help you think through a thorny question or share a moment of heartbreak or joy.
 Now, ask yourself: Are they the funniest person in your life? (Probably not, but if you paid close attention, you’d notice they laugh more than most people.) Are they the most interesting or smartest person you know? (What’s more likely is that, even if they don’t say anything particularly wise, you anticipate that you will feel smarter after talking to them.) Are they your most entertaining or confident friend? Do they give the best advice? (Most likely: Nope, nope, and nope—but when you hang up the phone, you’ll feel calmer and more centered and closer to the right choice.)
 So what are they doing that makes you feel so good?
 
@@ -44,5 +51,5 @@ And that’s important, because learning to have meaningful conversations is, in
 Every meaningful conversation is made up of countless small choices. There are fleeting moments when the right question, or a vulnerable admission, or an empathetic word can completely change a dialogue. A silent laugh, a barely audible sigh, a friendly smile during a tense moment: Some people have learned to spot these opportunities, to detect what kind of discussion is occurring, to understand what others really want. They have learned how to hear what’s unsaid and speak so others want to listen.
 
 This, then, is a book that explores how we communicate and connect. Because the right conversation, at the right moment, can change everything.
-`,
+`),
 };

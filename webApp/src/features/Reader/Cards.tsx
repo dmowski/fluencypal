@@ -1,17 +1,11 @@
 'use client';
 
 import { Stack, Typography } from '@mui/material';
-import { ReaderData } from './types';
+import { Book } from './types';
 import { useLingui } from '@lingui/react';
 import { CirclePlus } from 'lucide-react';
 
-export const BookCard = ({
-  data,
-  onClick,
-}: {
-  data: ReaderData;
-  onClick: (data: ReaderData) => void;
-}) => {
+export const BookCard = ({ data, onClick }: { data: Book; onClick: (data: Book) => void }) => {
   return (
     <Stack
       onClick={() => onClick(data)}
@@ -21,9 +15,6 @@ export const BookCard = ({
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         cursor: 'pointer',
         color: '#fff',
-        '&:hover': {
-          //backgroundColor: '#f0f0f0',
-        },
       }}
     >
       <Typography variant="h4">{data.title}</Typography>
@@ -47,9 +38,6 @@ export const AddNewBookCard = ({ onClick }: { onClick: () => void }) => {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '10px',
-        '&:hover': {
-          //backgroundColor: '#f0f0f0',
-        },
       }}
     >
       <CirclePlus size={'30px'} />
