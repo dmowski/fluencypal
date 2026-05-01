@@ -115,69 +115,72 @@ export const Reader = ({ data }: { data: Book }) => {
             </Stack>
           </Stack>
 
-          {activePageContent.map((paragraph, index) => (
-            <Stack
-              key={index}
-              sx={{
-                width: '100%',
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                gap: '20px',
-              }}
-            >
+          {activePageContent.map((paragraph, rawIndex) => {
+            const index = rawIndex + (activePage - 1) * pageCount;
+            return (
               <Stack
-                className="buttonContainer"
+                key={rawIndex}
                 sx={{
-                  width: '100px',
-                  paddingTop: '15px',
+                  width: '100%',
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                  gap: '20px',
                 }}
               >
-                {isShowRecorder && isRecording && activeParagraphIndex === index && (
-                  <ReaderButton
-                    startIcon={<Pause size={16} />}
-                    type="error"
-                    disabled={recorder.isActivating}
-                    onClick={pauseRecording}
-                  >
-                    {i18n._('Pause')}
-                  </ReaderButton>
-                )}
-
-                {isShowRecorder && !isRecording && activeParagraphIndex === index && (
-                  <ReaderButton
-                    startIcon={<Mic size={16} />}
-                    onClick={startRecording}
-                    disabled={recorder.isActivating}
-                  >
-                    {i18n._('Read')}
-                  </ReaderButton>
-                )}
-              </Stack>
-              <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
-                <ReaderParagraph
-                  key={index}
-                  paragraphIndex={index}
-                  words={paragraph}
-                  sourceLanguage={readerSettings.language}
-                  targetLanguage={readerSettings.translateToLanguage}
-                  onWordClick={playText}
-                  onTextSelected={playText}
-                  highlights={(data.highlights ?? []).filter(
-                    (highlight) => (highlight.paragraphIndex ?? 0) === index,
+                <Stack
+                  className="buttonContainer"
+                  sx={{
+                    width: '100px',
+                    paddingTop: '15px',
+                  }}
+                >
+                  {isShowRecorder && isRecording && activeParagraphIndex === index && (
+                    <ReaderButton
+                      startIcon={<Pause size={16} />}
+                      type="error"
+                      disabled={recorder.isActivating}
+                      onClick={pauseRecording}
+                    >
+                      {i18n._('Pause')}
+                    </ReaderButton>
                   )}
-                  onHighlightColorSelect={books.applySelectedHighlight}
-                  onRemoveHighlight={books.removeHighlight}
-                />
+
+                  {isShowRecorder && !isRecording && activeParagraphIndex === index && (
+                    <ReaderButton
+                      startIcon={<Mic size={16} />}
+                      onClick={startRecording}
+                      disabled={recorder.isActivating}
+                    >
+                      {i18n._('Read')}
+                    </ReaderButton>
+                  )}
+                </Stack>
+                <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
+                  <ReaderParagraph
+                    key={index}
+                    paragraphIndex={index}
+                    words={paragraph}
+                    sourceLanguage={readerSettings.language}
+                    targetLanguage={readerSettings.translateToLanguage}
+                    onWordClick={playText}
+                    onTextSelected={playText}
+                    highlights={(data.highlights ?? []).filter(
+                      (highlight) => (highlight.paragraphIndex ?? 0) === index,
+                    )}
+                    onHighlightColorSelect={books.applySelectedHighlight}
+                    onRemoveHighlight={books.removeHighlight}
+                  />
+                </Stack>
+                <Stack
+                  sx={{
+                    width: '100px',
+                  }}
+                  className="annotation"
+                ></Stack>
               </Stack>
-              <Stack
-                sx={{
-                  width: '100px',
-                }}
-                className="annotation"
-              ></Stack>
-            </Stack>
-          ))}
+            );
+          })}
         </Stack>
       </Stack>
 

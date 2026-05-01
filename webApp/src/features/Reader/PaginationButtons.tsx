@@ -16,12 +16,12 @@ export const PaginationPanel = ({
     <Stack
       sx={{
         width: '100%',
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         height: '100%',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         padding: '5px',
         zIndex: 0,
       }}
