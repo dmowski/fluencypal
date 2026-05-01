@@ -6,6 +6,8 @@ export interface Book {
   title: string;
   subtitle: string;
   category: string;
+  highlights?: HighlightedText[];
+  readProgress?: ReadingProgress;
 }
 
 export interface HighlightedText {
@@ -18,9 +20,4 @@ export interface HighlightedText {
 export interface ReadingProgress {
   startIndex: number;
   endIndex: number;
-}
-
-export interface BookState {
-  highlights: HighlightedText[];
-  readProgress: ReadingProgress;
 }

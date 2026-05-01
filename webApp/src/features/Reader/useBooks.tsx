@@ -9,7 +9,7 @@ const BooksContext = createContext<BooksContextType | null>(null);
 
 const useBooksState = () => {
   const [active, setActive] = useState<Book | null>(null);
-  const usersBooks: Book[] = [];
+  const [usersBooks, setUsersBooks] = useState<Book[]>([]);
   const testBooks = [testData];
 
   const addBook = ({
@@ -29,14 +29,20 @@ const useBooksState = () => {
       category: category,
       paragraphs: splitTextIntoParagraphs(text),
     };
-    usersBooks.push(newBook);
+    setUsersBooks((prev) => [...prev, newBook]);
     setActive(newBook);
+  };
+
+  const deleteBook = (bookToDelete: Book) => {
+    setUsersBooks((prev) => prev.filter((book) => book !== bookToDelete));
+    setActive((prev) => (prev === bookToDelete ? null : prev));
   };
 
   return {
     active,
     setActive,
     addBook,
+    deleteBook,
     usersBooks,
     testBooks,
   };
