@@ -14,7 +14,10 @@ When the user hover over word, we need to show translation of the word.
 1. You need to refactor translate by extracting clean function to get translation
    webApp/src/features/Translation/useTranslate.tsx
 
-2. In books settings
+2. In books settings add a new field, "Translate to" field
+   webApp/src/features/Reader/ReaderSpeechSettingsButton.tsx
+
+3. when user hover over a word, show flying tooltip near cursor with translation. When translation is loading, do not show tooltip
 
 - Translate on hover
 
