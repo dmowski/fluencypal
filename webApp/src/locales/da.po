@@ -300,6 +300,11 @@ msgstr "Handlingsplan for at forbedre kritiske backend-færdigheder"
 msgid "Active"
 msgstr "Aktiv"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "Tilføj"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -319,6 +324,12 @@ msgstr "Tilføj Kommentar"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "Tilføj kontekst..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "Tilføj Ny Bog"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1066,10 +1077,20 @@ msgstr "Bedste værdi for konsekvent forbedring."
 msgid "Blog"
 msgstr "Blog"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "Bog gemt."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Booking a Doctor's Appointment"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "Bøger"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1298,6 +1319,7 @@ msgstr "Kan jeg bruge den på smartphone?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1352,6 +1374,11 @@ msgstr "Kort bekræftet. Indlæser..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Karrierefremme"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "Kategori"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1939,6 +1966,11 @@ msgstr "Samtaler med kunstig intelligens"
 msgid "Converted file size must be less than 250MB"
 msgstr "Den konverterede filstørrelse skal være mindre end 250 MB"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "Konvertering af EPUB til markdown..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2405,11 +2437,21 @@ msgstr "Slet nuværende mål"
 msgid "Delete Space"
 msgstr "Slet plads"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "Slette denne bog?"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Sletter..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "Demo bøger"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2786,6 +2828,11 @@ msgstr "Færdig"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Færdig med optagelse"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "Færdig. Tekst importeret."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3396,10 +3443,21 @@ msgstr "Udforsk fællesskabet, deltag i diskussioner, og del din feedback!"
 msgid "Extra Slow"
 msgstr "Ekstra Langsom"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "Uddrag af almindelig tekst..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Kunne ikke analysere billedet. Prøv venligst igen."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "Kunne ikke konvertere EPUB."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3412,6 +3470,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "Fejlede i at slette din konto. Prøv igen senere, eller kontakt udviklerne."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "Mislykkedes at gemme bog."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3500,6 +3563,7 @@ msgstr "Filstørrelsen skal være mindre end 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Filstørrelsen skal være mindre end 50 MB"
@@ -5084,6 +5148,16 @@ msgstr "Illustration af lydoptagelse"
 msgid "Images"
 msgstr "Billeder"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "Importér tekst fra EPUB"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "Importer tekst fra EPUB-fil"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5587,8 +5661,8 @@ msgstr "Koreansk Læringsplan"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "At lande dit første udvikler-job er sværere end det burde være"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5931,7 +6005,7 @@ msgstr "Indlæser.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6528,7 +6602,7 @@ msgstr "Ingen resultater fundet"
 msgid "No scenarios found"
 msgstr "Ingen scenarier fundet"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "Ingen tekst til oversættelse"
@@ -6538,7 +6612,7 @@ msgstr "Ingen tekst til oversættelse"
 msgid "No time to speak?"
 msgstr "Ingen tid til at tale?"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Ingen oversættelse tilgængelig"
@@ -6681,7 +6755,7 @@ msgstr "Ikke fundet"
 msgid "Not running inside Telegram App"
 msgstr "Ikke kørende inde i Telegram Appen"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Ikke understøttet"
@@ -6723,6 +6797,11 @@ msgstr ""
 "af hjemmesiden, der drives af Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
 "                                  StartUp\" med sit registrerede kontor i "
 "Warszawa."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "Fra"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6961,7 +7040,7 @@ msgid ""
 "experience."
 msgstr "Indsæt din CV-tekst her. Du kan også skrive et kort resumé af din erfaring."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "Pause"
@@ -7267,6 +7346,11 @@ msgstr "Opdater venligst siden og prøv en gang til"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vælg venligst en gyldig lydfil (MP3, WAV, OGG eller M4A)"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "Vælg venligst en gyldig EPUB-fil."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7690,6 +7774,11 @@ msgstr ""
 "Forbered dig på at fremvise din portefølje, diskutere din læringsrejse og "
 "sikre din første professionelle rolle."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "Forbereder bog..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7986,7 +8075,7 @@ msgstr ""
 "systemdesignrunder"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Læs"
@@ -8575,6 +8664,11 @@ msgstr "Gem"
 msgid "Save Changes"
 msgstr "Gem ændringer"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "Gemmer bog..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8803,7 +8897,7 @@ msgstr "Indstil Mit Sprog"
 msgid "Set the goal of your learning"
 msgstr "Indstil målet for din læring"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Indstillinger"
@@ -9121,7 +9215,7 @@ msgstr "Taleøvelse"
 msgid "Speaking with a Psychologist"
 msgstr "At tale med en psykolog"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Taleunderstøttelse"
@@ -9554,6 +9648,11 @@ msgstr "Sender..."
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 måned)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "Undertekst"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9574,7 +9673,7 @@ msgstr "Oversigt"
 msgid "Summary:"
 msgstr "Sammendrag:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Understøttet"
@@ -9842,6 +9941,11 @@ msgstr "Test din viden, deltag i udfordringer og konkurrer med andre på ranglis
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Testning & Kvalitet"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "Tekst"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10400,6 +10504,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Titel"
@@ -10533,6 +10638,14 @@ msgstr "Translate"
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Oversæt ordet"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr ""
+"I am ready to assist you with translating text into the Danish language. "
+"Please provide the specific text that you would like to be translated."
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10771,6 +10884,11 @@ msgstr "Upload sprogfærdigheder direkte til din hjerne"
 msgid "Upload video"
 msgstr "Upload video"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "Uploader EPUB..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10914,8 +11032,8 @@ msgstr "Ordforråd"
 msgid "Vocabulary Practice"
 msgstr "Ordforrådsøvelse"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Stemmen"
@@ -11958,6 +12076,11 @@ msgstr "Dine svar vil være synlige for din modstander, efter du har indsendt de
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Dit Avatar:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "Dine bøger"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

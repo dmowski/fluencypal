@@ -289,6 +289,11 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "추가"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -308,6 +313,12 @@ msgstr "주석 추가"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "맥락 추가..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "새 책 추가"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1032,10 +1043,20 @@ msgstr "일관된 향상에 대한 최고의 가치."
 msgid "Blog"
 msgstr "블로그"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "책이 저장되었습니다."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "의사 예약하기"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "책"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1259,6 +1280,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1309,6 +1331,11 @@ msgstr "카드가 확인되었습니다. 불러오는 중..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "커리어 향상"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "카테고리"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1876,6 +1903,11 @@ msgstr "인공지능과의 대화"
 msgid "Converted file size must be less than 250MB"
 msgstr "변환된 파일 크기는 250MB 미만이어야 합니다"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "EPUB을 마크다운으로 변환 중..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2330,11 +2362,21 @@ msgstr "현재 목표 삭제"
 msgid "Delete Space"
 msgstr "스페이스 삭제"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "이 책을 삭제하시겠습니까?"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "삭제 중..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "데모 책"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2678,6 +2720,11 @@ msgstr "완료"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "녹음 완료"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "완료. 텍스트가 가져와졌습니다."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3263,10 +3310,21 @@ msgstr "커뮤니티를 탐험하고, 토론에 참여하며, 여러분의 피�
 msgid "Extra Slow"
 msgstr "극도로 느림"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "단순 텍스트 추출 중..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "이미지 분석 실패. 다시 시도해 주세요."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "EPUB 변환 실패."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3279,6 +3337,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나 개발자에게 연락해 주세요."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "책 저장에 실패했습니다."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3363,6 +3426,7 @@ msgstr "파일 크기는 250MB 미만이어야 합니다"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "파일 크기는 50MB 미만이어야 합니다."
@@ -4829,6 +4893,16 @@ msgstr "음성 녹음 일러스트레이션"
 msgid "Images"
 msgstr "이미지"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "EPUB에서 텍스트 가져오기"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "EPUB 파일에서 텍스트 가져오기"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5306,8 +5380,8 @@ msgstr "한국어 학습 계획"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "첫 개발자 직업을 얻는 것은 생각보다 어렵다"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5644,7 +5718,7 @@ msgstr "로딩 중.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6223,7 +6297,7 @@ msgstr "결과를 찾을 수 없습니다"
 msgid "No scenarios found"
 msgstr "시나리오를 찾을 수 없습니다"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "번역할 텍스트가 없습니다."
@@ -6233,7 +6307,7 @@ msgstr "번역할 텍스트가 없습니다."
 msgid "No time to speak?"
 msgstr "말할 시간이 없으신가요?"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "번역할 수 없습니다"
@@ -6361,7 +6435,7 @@ msgstr "찾을 수 없음"
 msgid "Not running inside Telegram App"
 msgstr "텔레그램 앱 내에서 실행되지 않음"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "지원되지 않음"
@@ -6402,6 +6476,11 @@ msgid ""
 msgstr ""
 "웹사이트는 바르샤바에 본사를 둔 \"Twój StartUp\" 창업 발전 재단(Fundacja Rozwoju "
 "Przedsiębiorczości)에 의해 운영됩니다."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "끄기"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6624,7 +6703,7 @@ msgid ""
 "experience."
 msgstr "이력서 텍스트를 여기에 붙여넣으십시오. 경력에 대한 간단한 요약을 작성할 수도 있습니다."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "일시정지"
@@ -6926,6 +7005,11 @@ msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "유효한 오디오 파일을 선택하세요 (MP3, WAV, OGG, 또는 M4A)"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "유효한 EPUB 파일을 선택하세요."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7313,6 +7397,11 @@ msgid ""
 "secure your first professional role."
 msgstr "포트폴리오를 준비하고, 학습 여정을 논의하며 첫 전문 역할을 확보하세요."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "책 준비 중..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7607,7 +7696,7 @@ msgid ""
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "읽기"
@@ -8182,6 +8271,11 @@ msgstr "저장"
 msgid "Save Changes"
 msgstr "변경 사항 저장"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "책 저장 중..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8402,7 +8496,7 @@ msgstr "내 언어 설정"
 msgid "Set the goal of your learning"
 msgstr "학습의 목표를 설정하십시오"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "설정"
@@ -8708,7 +8802,7 @@ msgstr "스피킹 연습"
 msgid "Speaking with a Psychologist"
 msgstr "심리학자와의 대화"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "음성 지원"
@@ -9116,6 +9210,11 @@ msgstr "제출 중..."
 msgid "Subscription (1 month)"
 msgstr "구독 (1 개월)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "부제목"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9136,7 +9235,7 @@ msgstr "요약"
 msgid "Summary:"
 msgstr "요약:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "지원됨"
@@ -9392,6 +9491,11 @@ msgstr "당신의 지식을 테스트하고, 도전에 참여하며, 리더보�
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "테스트 및 품질"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "텍스트"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -9920,6 +10024,7 @@ msgstr "팁: 나중에 지원팀에 연락하여 동의를 철회하고 데이�
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "타이틀"
@@ -10042,6 +10147,14 @@ msgstr "번역하기"
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr ""
+"I'm sorry, it looks like your request is incomplete. Can you please provide "
+"the text you'd like to translate into Korean?"
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10280,6 +10393,11 @@ msgstr "당신의 두뇌에 직접 언어 능력을 업로드하세요"
 msgid "Upload video"
 msgstr "비디오 업로드"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "EPUB 업로드 중..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10419,8 +10537,8 @@ msgstr "어휘"
 msgid "Vocabulary Practice"
 msgstr "어휘 연습"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "음성"
@@ -11387,6 +11505,11 @@ msgstr "당신의 답변은 제출 후 상대방에게 보이게 됩니다."
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "당신의 아바타:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "당신의 책들"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

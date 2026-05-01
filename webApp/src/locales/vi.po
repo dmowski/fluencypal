@@ -304,6 +304,11 @@ msgstr "Kế hoạch hành động để cải thiện kỹ năng backend quan t
 msgid "Active"
 msgstr "Đang hoạt động"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "Thêm"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -323,6 +328,12 @@ msgstr "Thêm bình luận"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "Thêm ngữ cảnh..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "Thêm Sách Mới"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1069,10 +1080,20 @@ msgstr "Giá trị tốt nhất cho sự cải thiện liên tục."
 msgid "Blog"
 msgstr "Blog"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "Sách đã được lưu."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Đặt Lịch Hẹn Với Bác Sĩ"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "Sách"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1303,6 +1324,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1355,6 +1377,11 @@ msgstr "Thẻ đã được xác minh. Đang tải..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Sự Thăng Tiến Trong Sự Nghiệp"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "Danh mục"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1943,6 +1970,11 @@ msgstr "Cuộc trò chuyện với Trí tuệ Nhân tạo"
 msgid "Converted file size must be less than 250MB"
 msgstr "Kích thước tệp chuyển đổi phải nhỏ hơn 250MB"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "Đang chuyển đổi EPUB sang markdown..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2415,11 +2447,21 @@ msgstr "Xóa mục tiêu hiện tại"
 msgid "Delete Space"
 msgstr "Xóa Khoảng Trống"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "Xóa cuốn sách này?"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Đang xóa..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "Sách mẫu"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2810,6 +2852,11 @@ msgstr "Hoàn thành"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Hoàn tất ghi âm"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "Hoàn thành. Văn bản đã được nhập."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3437,10 +3484,21 @@ msgstr ""
 msgid "Extra Slow"
 msgstr "Rất chậm"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "Trích xuất văn bản thuần túy..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Không thể phân tích hình ảnh. Vui lòng thử lại."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "Không thể chuyển đổi EPUB."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3455,6 +3513,11 @@ msgid ""
 msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "Không thể lưu sách."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3543,6 +3606,7 @@ msgstr "Kích thước tệp phải nhỏ hơn 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Kích thước tệp phải nhỏ hơn 50MB"
@@ -5134,6 +5198,16 @@ msgstr "Minh họa ghi âm giọng nói"
 msgid "Images"
 msgstr "Hình ảnh"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "Nhập văn bản từ EPUB"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "Nhập văn bản từ tệp EPUB"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5639,8 +5713,8 @@ msgstr ""
 "Đạt Được Công Việc Lập Trình Đầu Tiên Khó Khăn Hơn So Với Điều Đáng Lẽ Ra "
 "Phải Có"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5983,7 +6057,7 @@ msgstr "Đang tải.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6582,7 +6656,7 @@ msgstr "Không tìm thấy kết quả"
 msgid "No scenarios found"
 msgstr "Không tìm thấy kịch bản"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "Không có văn bản để dịch"
@@ -6592,7 +6666,7 @@ msgstr "Không có văn bản để dịch"
 msgid "No time to speak?"
 msgstr "Không có thời gian để nói chuyện?"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Không có bản dịch nào có sẵn"
@@ -6739,7 +6813,7 @@ msgstr "Không tìm thấy"
 msgid "Not running inside Telegram App"
 msgstr "Không chạy bên trong ứng dụng Telegram"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Không được hỗ trợ"
@@ -6781,6 +6855,11 @@ msgstr ""
 "của trang web được điều hành bởi Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "\n"
 "                                  StartUp\" với trụ sở đăng ký tại Warsaw."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "Tắt"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -7022,7 +7101,7 @@ msgstr ""
 "Dán văn bản CV của bạn vào đây. Bạn cũng có thể viết một tóm tắt ngắn gọn "
 "về kinh nghiệm của mình."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "Tạm dừng"
@@ -7328,6 +7407,11 @@ msgstr "Vui lòng làm mới trang và thử một lần nữa"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vui lòng chọn tệp âm thanh hợp lệ (MP3, WAV, OGG, hoặc M4A)"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "Vui lòng chọn tệp EPUB hợp lệ."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7759,6 +7843,11 @@ msgstr ""
 "Chuẩn bị để trình bày danh mục đầu tư của bạn, thảo luận về hành trình học "
 "tập của bạn và đảm bảo vai trò chuyên nghiệp đầu tiên của bạn."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "Đang chuẩn bị sách..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8059,7 +8148,7 @@ msgstr ""
 "kế hệ thống"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Đọc"
@@ -8658,6 +8747,11 @@ msgstr "Lưu"
 msgid "Save Changes"
 msgstr "Lưu Thay Đổi"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "Đang lưu sách..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8884,7 +8978,7 @@ msgstr "Đặt Ngôn Ngữ Của Tôi"
 msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Cài đặt"
@@ -9203,7 +9297,7 @@ msgstr "Luyện nói"
 msgid "Speaking with a Psychologist"
 msgstr "Nói chuyện với một Nhà tâm lý học"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Hỗ trợ phát âm"
@@ -9640,6 +9734,11 @@ msgstr "Đang gửi..."
 msgid "Subscription (1 month)"
 msgstr "Đăng ký (1 tháng)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "Phụ đề"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9660,7 +9759,7 @@ msgstr "Tóm tắt"
 msgid "Summary:"
 msgstr "Tóm tắt:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Hỗ trợ"
@@ -9932,6 +10031,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Kiểm tra & Chất lượng"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "Văn bản"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10493,6 +10597,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Tiêu đề"
@@ -10628,6 +10733,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Dịch từ"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr ""
+"Sorry, I can only assist with translating content related to AI English "
+"teacher interface UI text into Vietnamese. Please provide such content if "
+"available, and I will gladly help translate it for you."
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10866,6 +10980,11 @@ msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
 msgid "Upload video"
 msgstr "Tải video lên"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "Đang tải lên EPUB..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11019,8 +11138,8 @@ msgstr "Từ vựng"
 msgid "Vocabulary Practice"
 msgstr "Thực hành Từ vựng"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Giọng nói"
@@ -12073,6 +12192,11 @@ msgstr "Câu trả lời của bạn sẽ hiển thị cho đối thủ sau khi 
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Avatar của bạn:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "Sách của bạn"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

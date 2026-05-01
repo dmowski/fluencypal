@@ -303,6 +303,11 @@ msgstr "خطة عمل لتحسين المهارات الأساسية في الب
 msgid "Active"
 msgstr "نشط"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "أضف"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -322,6 +327,12 @@ msgstr "إضافة تعليق"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "أضف السياق..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "إضافة كتاب جديد"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1065,10 +1076,20 @@ msgstr "أفضل قيمة للتحسن المستمر."
 msgid "Blog"
 msgstr "بلوق"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "تم حفظ الكتاب."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "حجز موعد مع طبيب"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "كتب"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1298,6 +1319,7 @@ msgstr "هل يمكنني استخدامه على الهاتف الذكي؟"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1350,6 +1372,11 @@ msgstr "تم التحقق من البطاقة. جارٍ التحميل..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "تقدم المسار الوظيفي"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "التصنيف"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1928,6 +1955,11 @@ msgstr "محادثات مع الذكاء الاصطناعي"
 msgid "Converted file size must be less than 250MB"
 msgstr "يجب أن يكون حجم الملف المحول أقل من 250 ميجابايت"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "جارٍ تحويل EPUB إلى Markdown..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2393,11 +2425,23 @@ msgstr ""
 "\n"
 "حذف المسافة\n"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr ""
+"plaintext\n"
+"حذف هذا الكتاب؟\n"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "جاري الحذف..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "كتب تجريبية"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2766,6 +2810,11 @@ msgstr "تم"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "تم الانتهاء من التسجيل"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "تم. تم استيراد النص."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3370,10 +3419,21 @@ msgstr "استكشف المجتمع، انضم إلى النقاشات وشار�
 msgid "Extra Slow"
 msgstr "بطيء جدًا"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "جارٍ استخراج النص العادي..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "فشل في تحليل الصورة. يرجى المحاولة مرة أخرى."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "فشل تحويل EPUB."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3386,6 +3446,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "فشل في حذف حسابك. يرجى المحاولة مرة أخرى لاحقًا، أو الاتصال بالمطورين."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "فشل في حفظ الكتاب."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3474,6 +3539,7 @@ msgstr "حجم الملف يجب أن يكون أقل من 250 ميجابايت"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "حجم الملف يجب أن يكون أقل من 50 ميجابايت"
@@ -5035,6 +5101,16 @@ msgstr "توضيح لتسجيل الصوت"
 msgid "Images"
 msgstr "صور"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "استيراد النص من EPUB"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "استيراد نص من ملف EPUB"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5533,8 +5609,8 @@ msgstr "خطة تعلم الكورية"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "النجاح في الحصول على أول وظيفة تطوير أصعب مما ينبغي"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5879,7 +5955,7 @@ msgstr "جارٍ التحميل.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6490,7 +6566,7 @@ msgstr ""
 msgid "No scenarios found"
 msgstr "لم يتم العثور على أي سيناريوهات"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "ليس هناك نص للترجمة"
@@ -6502,7 +6578,7 @@ msgstr ""
 "plaintext\n"
 "لا يوجد وقت للتحدث؟\n"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "لا يتوفر ترجمة"
@@ -6644,7 +6720,7 @@ msgstr ""
 "plaintext\n"
 "لا يعمل داخل تطبيق تليجرام\n"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "غير مدعوم"
@@ -6685,6 +6761,11 @@ msgid ""
 msgstr ""
 "من الموقع الإلكتروني الذي تديره مؤسسة تنمية ريادة الأعمال \"Twój StartUp\" "
 "ومقرها المسجل في وارسو."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "إيقاف تشغيل"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6917,7 +6998,7 @@ msgid ""
 "experience."
 msgstr "ألصق نص سيرتك الذاتية هنا. يمكنك أيضًا كتابة ملخص موجز عن تجربتك."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "توقف"
@@ -7233,6 +7314,11 @@ msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr ""
 "يرجى اختيار ملف صوتي صالح (MP3، WAV، OGG، أو M4A)\n"
 "\n"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "يرجى اختيار ملف EPUB صالح."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7646,6 +7732,11 @@ msgid ""
 "secure your first professional role."
 msgstr "استعد لعرض حقيبتك، ومناقشة رحلتك التعليمية، وتأمين دورك المهني الأول."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "جارٍ تجهيز الكتاب..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7946,7 +8037,7 @@ msgid ""
 msgstr "متخصصو React، Vue، أو Angular يواجهون جولات تصميم النظام والعمارة"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "اقرأ"
@@ -8537,6 +8628,11 @@ msgstr "حفظ"
 msgid "Save Changes"
 msgstr "احفظ التغييرات"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "جارٍ حفظ الكتاب..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8767,7 +8863,7 @@ msgstr "اضبط لغتي"
 msgid "Set the goal of your learning"
 msgstr "حدد هدف تعلمك"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "الإعدادات"
@@ -9085,7 +9181,7 @@ msgstr "ممارسة التحدث"
 msgid "Speaking with a Psychologist"
 msgstr "التحدث مع طبيب نفسي"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "دعم الكلام"
@@ -9510,6 +9606,11 @@ msgstr "جارٍ الإرسال..."
 msgid "Subscription (1 month)"
 msgstr "الاشتراك (1 شهر)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "العنوان الفرعي"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9532,7 +9633,7 @@ msgstr "ملخص"
 msgid "Summary:"
 msgstr "الملخص:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "مدعوم"
@@ -9797,6 +9898,11 @@ msgstr "اختبر معرفتك، وشارك في التحديات، وتناف�
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "الاختبار والجودة"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "نص"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10341,6 +10447,7 @@ msgstr "نصيحة: يمكنك سحب الموافقة لاحقًا وطلب ح�
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "العنوان"
@@ -10473,6 +10580,14 @@ msgstr "ترجم"
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "ترجم الكلمة"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr ""
+"I'm sorry, it seems like the rest of the input is missing. Please provide "
+"the text you want translated into Arabic, and I'll be happy to help!"
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10715,6 +10830,11 @@ msgstr "تحميل مهارات اللغة مباشرة إلى عقلك"
 msgid "Upload video"
 msgstr "تحميل الفيديو"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "جارٍ تحميل EPUB..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10862,8 +10982,8 @@ msgstr "المفردات"
 msgid "Vocabulary Practice"
 msgstr "ممارسة المفردات"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "صوت"
@@ -11902,6 +12022,11 @@ msgstr "إجاباتك ستكون مرئية لمنافسك بعد إرساله�
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "صورتك الرمزية:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "كتبك"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

@@ -300,6 +300,11 @@ msgstr "Kritik arka uç becerilerini geliştirmek için eylem planı"
 msgid "Active"
 msgstr "Aktif"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "Ekle"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -319,6 +324,12 @@ msgstr "Yorum Ekle"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "Bağlam ekleyin..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "Yeni Kitap Ekle"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1063,10 +1074,20 @@ msgstr "Tutarlı gelişim için en iyi değer."
 msgid "Blog"
 msgstr "Blog"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "Kitap kaydedildi."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Doktor Randevusu Alma"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "Kitaplar"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1297,6 +1318,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1349,6 +1371,11 @@ msgstr "Kart doğrulandı. Yükleniyor..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Kariyer İlerlemesi"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "Kategori"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1936,6 +1963,11 @@ msgstr "Yapay Zeka ile Konuşmalar"
 msgid "Converted file size must be less than 250MB"
 msgstr "Dönüştürülen dosya boyutu 250MB'den küçük olmalıdır."
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "EPUB'u markdown'a dönüştürülüyor..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2406,11 +2438,21 @@ msgstr "Mevcut hedefi sil"
 msgid "Delete Space"
 msgstr "Boşluğu Sil"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "Bu kitabı silinsin mi?"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Siliniyor..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "Demo kitaplar"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2796,6 +2838,11 @@ msgstr "Tamamlandı"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Kaydı bitir"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "Tamam. Metin içeri aktarıldı."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3416,10 +3463,21 @@ msgstr "Topluluğu keşfedin, tartışmalara katılın ve geri bildirimlerinizi 
 msgid "Extra Slow"
 msgstr "Extra Yavaş"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "Düz metin çıkarılıyor..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Görüntü analiz edilemedi. Lütfen tekrar deneyin."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "EPUB dönüştürülemedi."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3434,6 +3492,11 @@ msgid ""
 msgstr ""
 "Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "geliştiricilerle iletişime geçin."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "Kitap kaydedilemedi."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3522,6 +3585,7 @@ msgstr "Dosya boyutu 250MB'den küçük olmalıdır."
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Dosya boyutu 50MB'den küçük olmalıdır."
@@ -5111,6 +5175,16 @@ msgstr "Ses kaydı illüstrasyonu"
 msgid "Images"
 msgstr "Görseller"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "EPUB'dan metin içe aktar"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "EPUB dosyasından metin içe aktar"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5616,8 +5690,8 @@ msgstr "Korece Öğrenme Planı"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "İlk Geliştirici İşinizi Bulmak Gerektiğinden Daha Zor"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5960,7 +6034,7 @@ msgstr "Yükleniyor.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6554,7 +6628,7 @@ msgstr "Sonuç bulunamadı"
 msgid "No scenarios found"
 msgstr "Hiç senaryo bulunamadı"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "Çevrilecek metin yok"
@@ -6564,7 +6638,7 @@ msgstr "Çevrilecek metin yok"
 msgid "No time to speak?"
 msgstr "Konuşacak zaman yok mu?"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Çeviri mevcut değil"
@@ -6707,7 +6781,7 @@ msgstr "Bulunamadı"
 msgid "Not running inside Telegram App"
 msgstr "Telegram Uygulaması içinde çalışmıyor"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Desteklenmiyor"
@@ -6749,6 +6823,11 @@ msgstr ""
 "Fundacja Rozwoju Przedsiębiorczości \"Twój StartUp\" tarafından İşletilen "
 "Web Sitesinin\n"
 "                                  kayıtlı ofisi Varşova'da bulunmaktadır."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "Kapalı"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6989,7 +7068,7 @@ msgstr ""
 "CV metninizi buraya yapıştırın. Ayrıca deneyiminizle ilgili kısa bir özet "
 "yazabilirsiniz."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "Duraklat"
@@ -7299,6 +7378,11 @@ msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Lütfen geçerli bir ses dosyası seçin (MP3, WAV, OGG veya M4A)"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "Lütfen geçerli bir EPUB dosyası seçin."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7722,6 +7806,11 @@ msgstr ""
 "Portföyünüzü sergilemeye, öğrenme yolculuğunuzu tartışmaya ve ilk "
 "profesyonel rolünüzü güvence altına almaya hazırlanın."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "Kitap hazırlanıyor..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8016,7 +8105,7 @@ msgid ""
 msgstr "React, Vue veya Angular uzmanları için mimari ve sistem tasarımı turları"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Oku"
@@ -8610,6 +8699,11 @@ msgstr "Kaydet"
 msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "Kitap kaydediliyor..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8836,7 +8930,7 @@ msgstr "Dilimi Ayarla"
 msgid "Set the goal of your learning"
 msgstr "Öğrenme hedefinizi belirleyin"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Ayarlar"
@@ -9155,7 +9249,7 @@ msgstr "Konuşma pratiği"
 msgid "Speaking with a Psychologist"
 msgstr "Bir Psikolog ile Konuşma"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Konuşma desteği"
@@ -9590,6 +9684,11 @@ msgstr "Gönderiliyor..."
 msgid "Subscription (1 month)"
 msgstr "Abonelik (1 ay)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "Altyazı"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9610,7 +9709,7 @@ msgstr "Özet"
 msgid "Summary:"
 msgstr "Özet:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Desteklenen"
@@ -9882,6 +9981,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Test Etme & Kalite"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "Metin"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10442,6 +10546,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Başlık"
@@ -10578,6 +10683,12 @@ msgstr "I'm ready to help! Please provide the text you'd like translated."
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Kelimeyi çevir"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr "Translate et"
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10816,6 +10927,11 @@ msgstr "Dil becerilerini doğrudan beynine yükle"
 msgid "Upload video"
 msgstr "Videoyu yükle"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "EPUB Yükleniyor..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10961,8 +11077,8 @@ msgstr "Kelime Dağarcığı"
 msgid "Vocabulary Practice"
 msgstr "Kelime Pratikleri"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Ses"
@@ -12005,6 +12121,11 @@ msgstr "Cevaplarınız gönderdikten sonra rakibiniz tarafından görülecektir.
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Senin Avatarın:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "Kitaplarınız"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

@@ -287,6 +287,11 @@ msgstr "改进关键后端技能的行动计划"
 msgid "Active"
 msgstr "活跃"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "添加"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -306,6 +311,12 @@ msgstr "添加评论"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "添加上下文..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "添加新书"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1026,10 +1037,20 @@ msgstr "最佳价值，持续提升。"
 msgid "Blog"
 msgstr "博客"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "书籍已保存。"
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "预约看医生"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "书籍"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1253,6 +1274,7 @@ msgstr "我可以在智能手机上使用吗？"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1303,6 +1325,11 @@ msgstr "卡已验证。加载中..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "职业晋升"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "类别"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1865,6 +1892,11 @@ msgstr "与人工智能对话"
 msgid "Converted file size must be less than 250MB"
 msgstr "转换后的文件大小必须小于250MB"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "将EPUB转换为markdown..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2307,11 +2339,21 @@ msgstr "删除当前目标"
 msgid "Delete Space"
 msgstr "删除空间"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "删除这本书？"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "正在删除..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "演示书籍"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2651,6 +2693,11 @@ msgstr "完成"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "完成录音"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "完成。文本已导入。"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3223,10 +3270,21 @@ msgstr "探索社区，参与讨论并分享您的反馈！"
 msgid "Extra Slow"
 msgstr "特慢"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "提取纯文本..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "无法分析图像。请重试。"
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "无法转换EPUB。"
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3239,6 +3297,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "无法保存书本。"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3323,6 +3386,7 @@ msgstr "文件大小必须小于250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "文件大小必须小于50MB"
@@ -4759,6 +4823,16 @@ msgstr "语音记录插图"
 msgid "Images"
 msgstr "图像"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "从EPUB导入文本"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "从 EPUB 文件导入文本"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5229,8 +5303,8 @@ msgstr "韩语学习计划"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "找到您的第一份开发工作比预期更难"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5569,7 +5643,7 @@ msgstr "加载中.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6150,7 +6224,7 @@ msgstr "找不到结果"
 msgid "No scenarios found"
 msgstr "未找到任何场景"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "无文本可翻译"
@@ -6160,7 +6234,7 @@ msgstr "无文本可翻译"
 msgid "No time to speak?"
 msgstr "没有时间说话？"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "无翻译可用"
@@ -6282,7 +6356,7 @@ msgstr "未找到"
 msgid "Not running inside Telegram App"
 msgstr "未在 Telegram 应用程序内运行"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "不支持"
@@ -6321,6 +6395,11 @@ msgid ""
 "                                  StartUp\" with its registered office in "
 "Warsaw."
 msgstr "由 \"Twój StartUp\" 企业发展基金会经营的网站，其注册办事处位于华沙。"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "关"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6537,7 +6616,7 @@ msgid ""
 "experience."
 msgstr "将您的简历文本粘贴在这里。您还可以写一个简要的经验总结。"
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "暂停"
@@ -6839,6 +6918,11 @@ msgstr "请刷新页面并再试一次"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "请选择一个有效的音频文件（MP3、WAV、OGG或M4A）"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "请选择一个有效的EPUB文件。"
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7223,6 +7307,11 @@ msgid ""
 "secure your first professional role."
 msgstr "准备展示你的作品集，讨论你的学习历程，并获得你的第一个专业角色。"
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "正在准备书籍..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7517,7 +7606,7 @@ msgid ""
 msgstr "React、Vue 或 Angular 专家面临架构和系统设计环节"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "阅读"
@@ -8088,6 +8177,11 @@ msgstr "保存"
 msgid "Save Changes"
 msgstr "保存更改"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "保存图书..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8308,7 +8402,7 @@ msgstr "设置我的语言"
 msgid "Set the goal of your learning"
 msgstr "设置你的学习目标"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "设置"
@@ -8614,7 +8708,7 @@ msgstr "练习口语"
 msgid "Speaking with a Psychologist"
 msgstr "与心理学家交谈"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "语音支持"
@@ -9014,6 +9108,11 @@ msgstr "正在提交..."
 msgid "Subscription (1 month)"
 msgstr "订阅（1个月）"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "字幕"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9034,7 +9133,7 @@ msgstr "总结"
 msgid "Summary:"
 msgstr "摘要："
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "支持"
@@ -9288,6 +9387,11 @@ msgstr "测试你的知识，参加挑战，与排行榜上的其他人竞争。
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "测试与质量"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "文字"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -9802,6 +9906,7 @@ msgstr "提示：您可以在之后撤回同意并通过联系支持要求删除
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "标题"
@@ -9924,6 +10029,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "翻译单词"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr "Translate to 翻译为"
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10162,6 +10273,11 @@ msgstr "将语言技能直接上传到你的大脑"
 msgid "Upload video"
 msgstr "上传视频"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "正在上传EPUB..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10303,8 +10419,8 @@ msgstr "词汇"
 msgid "Vocabulary Practice"
 msgstr "词汇练习"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "语音"
@@ -11251,6 +11367,11 @@ msgstr "您的答案在提交后将对您的对手可见。"
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "你的头像："
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "你的书"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id

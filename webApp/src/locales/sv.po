@@ -300,6 +300,11 @@ msgstr "Handlingsplan för att förbättra kritiska backend-färdigheter"
 msgid "Active"
 msgstr "Aktiv"
 
+#: src/features/Reader/AddBookModal.tsx:232
+#. js-lingui-explicit-id
+msgid "Add"
+msgstr "Lägg till"
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
@@ -319,6 +324,12 @@ msgstr "Lägg till kommentar"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "Lägg till kontext..."
+
+#: src/features/Reader/AddBookModal.tsx:147
+#: src/features/Reader/Cards.tsx:73
+#. js-lingui-explicit-id
+msgid "Add New Book"
+msgstr "Lägg till ny bok"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -1062,10 +1073,20 @@ msgstr "Bästa värde för konsekvent förbättring."
 msgid "Blog"
 msgstr "Blogg"
 
+#: src/features/Reader/AddBookModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Book saved."
+msgstr "Bok sparad."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Boka en läkartid"
+
+#: src/features/Reader/BooksList.tsx:39
+#. js-lingui-explicit-id
+msgid "Books"
+msgstr "Böcker"
 
 #: src/features/Landing/PlanLandingBlock.tsx:225
 #. js-lingui-explicit-id
@@ -1294,6 +1315,7 @@ msgstr "Kan jag använda den på en smartphone?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Reader/AddBookModal.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1348,6 +1370,11 @@ msgstr "Kort verifierat. Laddar..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Karriärutveckling"
+
+#: src/features/Reader/AddBookModal.tsx:164
+#. js-lingui-explicit-id
+msgid "Category"
+msgstr "Kategori"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1934,6 +1961,11 @@ msgstr "Konversationer med artificiell intelligens"
 msgid "Converted file size must be less than 250MB"
 msgstr "Den konverterade filstorleken måste vara mindre än 250MB"
 
+#: src/features/Reader/AddBookModal.tsx:77
+#. js-lingui-explicit-id
+msgid "Converting EPUB to markdown..."
+msgstr "Konverterar EPUB till markdown..."
+
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2402,11 +2434,21 @@ msgstr "Radera nuvarande mål"
 msgid "Delete Space"
 msgstr "Radera utrymme"
 
+#: src/features/Reader/BooksList.tsx:17
+#. js-lingui-explicit-id
+msgid "Delete this book?"
+msgstr "Radera den här boken?"
+
 #: src/features/Header/NeedHelpModal.tsx:78
 #: src/features/Header/NeedHelpModal.tsx:112
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Raderar..."
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+msgid "Demo books"
+msgstr "Demo böcker"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2787,6 +2829,11 @@ msgstr "Klar"
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Klar med inspelning"
+
+#: src/features/Reader/AddBookModal.tsx:89
+#. js-lingui-explicit-id
+msgid "Done. Text imported."
+msgstr "Klart. Texten importerad."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
 #. js-lingui-explicit-id
@@ -3407,10 +3454,21 @@ msgstr "Utforska gemenskapen, delta i diskussioner och dela med dig av din feedb
 msgid "Extra Slow"
 msgstr "Extra långsam"
 
+#: src/features/Reader/AddBookModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Extracting plain text..."
+msgstr "Extraherar oformaterad text..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Misslyckades med att analysera bilden. Försök igen."
+
+#: src/features/Reader/AddBookModal.tsx:84
+#: src/features/Reader/AddBookModal.tsx:92
+#. js-lingui-explicit-id
+msgid "Failed to convert EPUB."
+msgstr "Misslyckades med att konvertera EPUB."
 
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
@@ -3425,6 +3483,11 @@ msgid ""
 msgstr ""
 "Misslyckades med att radera ditt konto. Försök igen senare, eller kontakta "
 "utvecklarna."
+
+#: src/features/Reader/AddBookModal.tsx:135
+#. js-lingui-explicit-id
+msgid "Failed to save book."
+msgstr "Misslyckades med att spara boken."
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3513,6 +3576,7 @@ msgstr "Filstorleken måste vara mindre än 250 MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
+#: src/features/Reader/AddBookModal.tsx:65
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Filstorleken måste vara mindre än 50 MB"
@@ -5093,6 +5157,16 @@ msgstr "Illustration av röstinspelning"
 msgid "Images"
 msgstr "Bilder"
 
+#: src/features/Reader/AddBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Import text from EPUB"
+msgstr "Importera text från EPUB"
+
+#: src/features/Reader/AddBookModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Import text from EPUB file"
+msgstr "Importera text från EPUB-fil"
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:23
 #. js-lingui-explicit-id
 msgid "Improve architecture, data, and resiliency answers."
@@ -5598,8 +5672,8 @@ msgstr "Koreansk Inlärningsplan"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Att få ditt första utvecklarjobb är svårare än det borde vara"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:119
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:122
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5944,7 +6018,7 @@ msgstr "Laddar.."
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
 #: src/features/Telegram/TgAppPage.tsx:171
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -6539,7 +6613,7 @@ msgstr "Inga resultat funna"
 msgid "No scenarios found"
 msgstr "Inga scenarier hittades"
 
-#: src/features/Translation/useTranslate.tsx:232
+#: src/features/Translation/useTranslate.tsx:179
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "Ingen text att översätta"
@@ -6549,7 +6623,7 @@ msgstr "Ingen text att översätta"
 msgid "No time to speak?"
 msgstr "Ingen tid att prata?"
 
-#: src/features/Translation/useTranslate.tsx:243
+#: src/features/Translation/useTranslate.tsx:190
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Ingen översättning tillgänglig"
@@ -6693,7 +6767,7 @@ msgstr "Hittades inte"
 msgid "Not running inside Telegram App"
 msgstr "Körs inte i Telegram-appen"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Inte stöds"
@@ -6735,6 +6809,11 @@ msgstr ""
 "av webbplatsen som drivs av Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
 "                                  StartUp\" med sitt registrerade kontor i "
 "Warszawa."
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#. js-lingui-explicit-id
+msgid "Off"
+msgstr "Av"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:45
 #. js-lingui-explicit-id
@@ -6975,7 +7054,7 @@ msgstr ""
 "Klistra in din CV-text här. Du kan också skriva en kort sammanställning av "
 "din erfarenhet."
 
-#: src/features/Reader/Reader.tsx:93
+#: src/features/Reader/Reader.tsx:145
 #. js-lingui-explicit-id
 msgid "Pause"
 msgstr "Paus"
@@ -7281,6 +7360,11 @@ msgstr "Vänligen uppdatera sidan och försök en gång till"
 #. js-lingui-explicit-id
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vänligen välj en giltig ljudfil (MP3, WAV, OGG eller M4A)"
+
+#: src/features/Reader/AddBookModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Please select a valid EPUB file."
+msgstr "Vänligen välj en giltig EPUB-fil."
 
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
@@ -7696,6 +7780,11 @@ msgstr ""
 "Förbered dig på att visa upp din portfolio, diskutera din läranderesa och "
 "säkra din första professionella roll."
 
+#: src/features/Reader/AddBookModal.tsx:109
+#. js-lingui-explicit-id
+msgid "Preparing book..."
+msgstr "Förbereder bok..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7994,7 +8083,7 @@ msgstr ""
 "systemdesignomgångar"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:99
+#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Läs"
@@ -8581,6 +8670,11 @@ msgstr "Spara"
 msgid "Save Changes"
 msgstr "Spara ändringar"
 
+#: src/features/Reader/AddBookModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Saving book..."
+msgstr "Sparar bok..."
+
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -8805,7 +8899,7 @@ msgstr "Ställ in mitt språk"
 msgid "Set the goal of your learning"
 msgstr "Ange målet med ditt lärande"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:100
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Inställningar"
@@ -9125,7 +9219,7 @@ msgstr "Talövning"
 msgid "Speaking with a Psychologist"
 msgstr "Prata med en psykolog"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Talstöd"
@@ -9563,6 +9657,11 @@ msgstr "Skickar in..."
 msgid "Subscription (1 month)"
 msgstr "Prenumeration (1 månad)"
 
+#: src/features/Reader/AddBookModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Subtitle"
+msgstr "Undertext"
+
 #: src/features/Sentence/StoriesModal.tsx:774
 #. js-lingui-explicit-id
 msgid "Success rate:"
@@ -9583,7 +9682,7 @@ msgstr "Sammanfattning"
 msgid "Summary:"
 msgstr "Sammanfattning:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:105
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Stödd"
@@ -9851,6 +9950,11 @@ msgstr "Testa dina kunskaper, delta i utmaningar och tävla med andra på toppli
 #. js-lingui-explicit-id
 msgid "Testing & Quality"
 msgstr "Testning & Kvalitet"
+
+#: src/features/Reader/AddBookModal.tsx:170
+#. js-lingui-explicit-id
+msgid "Text"
+msgstr "Text"
 
 #: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
@@ -10412,6 +10516,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
+#: src/features/Reader/AddBookModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Titel"
@@ -10545,6 +10650,14 @@ msgstr "Översätt"
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Översätt ordet"
+
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#. js-lingui-explicit-id
+msgid "Translate to"
+msgstr ""
+"I'm here to help translate text into Swedish. Please provide the text you'd "
+"like translated, and I'll assist you."
 
 #: src/features/Game/UserProfileModal.tsx:94
 #. js-lingui-explicit-id
@@ -10783,6 +10896,11 @@ msgstr "Ladda upp språkkunskaper direkt till din hjärna"
 msgid "Upload video"
 msgstr "Ladda upp video"
 
+#: src/features/Reader/AddBookModal.tsx:74
+#. js-lingui-explicit-id
+msgid "Uploading EPUB..."
+msgstr "Laddar upp EPUB..."
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10927,8 +11045,8 @@ msgstr "Ordförråd"
 msgid "Vocabulary Practice"
 msgstr "Ordförrådsövning"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:139
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Röst"
@@ -11973,6 +12091,11 @@ msgstr "Dina svar kommer att synas för din motståndare efter att du skickat in
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Din Avatar:"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+msgid "Your books"
+msgstr "Dina böcker"
 
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
