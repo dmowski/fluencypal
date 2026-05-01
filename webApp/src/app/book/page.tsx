@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { PracticeProvider } from '../practiceProvider';
-import { ReaderTest } from '@/features/Reader/ReaderTest';
+import { ReaderPage } from '@/features/Reader/ReaderPage';
 import { supportedLanguages } from '@/features/Lang/lang';
 
 interface PageProps {
@@ -20,7 +20,7 @@ export default async function UploadTestPage(props: PageProps) {
       <body>
         <PracticeProvider>
           <Suspense fallback={<div>Loading...</div>}>
-            <ReaderTest />
+            <ReaderPage />
           </Suspense>
         </PracticeProvider>
       </body>

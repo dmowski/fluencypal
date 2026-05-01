@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { ReaderTest } from '@/features/Reader/ReaderTest';
+import { ReaderPage } from '@/features/Reader/ReaderPage';
 import { PracticeProvider } from '@/app/practiceProvider';
 
 interface PageProps {
@@ -10,7 +10,7 @@ export default async function UploadTestPage(props: PageProps) {
   return (
     <PracticeProvider>
       <Suspense fallback={<div>Loading...</div>}>
-        <ReaderTest />
+        <ReaderPage />
       </Suspense>
     </PracticeProvider>
   );

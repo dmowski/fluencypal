@@ -9,7 +9,6 @@ import { UiCards } from './UiCards';
 import { TranscriptTest } from '@/features/Transcript/TranscriptTest';
 import { ProgressStatTest } from './ProgressStatTest';
 import { EssayTest } from './EssayTest';
-import { ReaderTest } from '@/features/Reader/ReaderTest';
 
 export const TestPage = () => {
   const testPages: Record<string, React.ReactNode> = {
@@ -19,7 +18,6 @@ export const TestPage = () => {
     transcript: <TranscriptTest />,
     progress: <ProgressStatTest />,
     essay: <EssayTest />,
-    reader: <ReaderTest />,
   };
 
   const [page, setPage] = useUrlState<string>('testPage', 'upload', true);

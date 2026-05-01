@@ -1,15 +1,10 @@
-'use client';
-
-import { Stack } from '@mui/material';
-import { Reader } from './Reader';
 import { ReaderData } from './types';
 
-export const ReaderTest = () => {
-  const data: ReaderData = {
-    title: 'Supercommunicators',
-    subtitle: 'How to Unlock the Secret Language of Connection',
-    category: 'Charles Duhigg',
-    content: `Who would you call if you were having a bad day? If you had screwed up a deal at work, or had gotten into an argument with your spouse, or were feeling frustrated and sick of it all: Who would you want to talk to? There’s likely someone that you know who will make you feel better, who can help you think through a thorny question or share a moment of heartbreak or joy.
+export const testData: ReaderData = {
+  title: 'Supercommunicators',
+  subtitle: 'How to Unlock the Secret Language of Connection',
+  category: 'Charles Duhigg',
+  content: `Who would you call if you were having a bad day? If you had screwed up a deal at work, or had gotten into an argument with your spouse, or were feeling frustrated and sick of it all: Who would you want to talk to? There’s likely someone that you know who will make you feel better, who can help you think through a thorny question or share a moment of heartbreak or joy.
 Now, ask yourself: Are they the funniest person in your life? (Probably not, but if you paid close attention, you’d notice they laugh more than most people.) Are they the most interesting or smartest person you know? (What’s more likely is that, even if they don’t say anything particularly wise, you anticipate that you will feel smarter after talking to them.) Are they your most entertaining or confident friend? Do they give the best advice? (Most likely: Nope, nope, and nope—but when you hang up the phone, you’ll feel calmer and more centered and closer to the right choice.)
 So what are they doing that makes you feel so good?
 
@@ -50,32 +45,4 @@ Every meaningful conversation is made up of countless small choices. There are 
 
 This, then, is a book that explores how we communicate and connect. Because the right conversation, at the right moment, can change everything.
 `,
-  };
-
-  return (
-    <Stack
-      sx={{
-        padding: '0',
-        alignItems: 'center',
-        height: '100%',
-        flex: '1 1 1',
-        backgroundColor: '#F4E1C6',
-      }}
-    >
-      <style>{`
-        body {
-          background-color: #F4E1C6;
-        },
-      `}</style>
-      <Stack
-        sx={{
-          minHeight: '500px',
-          flex: '1 1 1',
-          width: '100%',
-        }}
-      >
-        <Reader data={data} />
-      </Stack>
-    </Stack>
-  );
 };
