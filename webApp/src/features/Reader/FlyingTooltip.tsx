@@ -1,8 +1,8 @@
 import { Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-export const FLYING_TOOLTIP_OFFSET_X = 10;
-export const FLYING_TOOLTIP_OFFSET_Y = 26;
+export const FLYING_TOOLTIP_OFFSET_X = 4;
+export const FLYING_TOOLTIP_OFFSET_Y = 19;
 
 type FlyingTooltipProps = {
   text: string;
