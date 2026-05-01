@@ -2,7 +2,7 @@ import { Button, Stack } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
@@ -10,6 +10,9 @@ import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 import { useBrowserSpeech } from './useBrowserSpeech';
 import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { ReaderButton } from './ReaderButton';
+import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTranscript';
+import { getReadingProgress } from '../Dashboard/Grammar/getReadingProgress';
+import { Markdown } from '../uiKit/Markdown/Markdown';
 
 export const Reader = ({ data }: { data: ReaderData }) => {
   const [activePage, setActivePage] = useState(1);
@@ -21,13 +24,29 @@ export const Reader = ({ data }: { data: ReaderData }) => {
   const paragraphs = pages[activePage - 1] || [];
   const pageCount = pages.length;
 
-  const isRecording = false;
   const activeParagraphIndex = 0;
 
   const speech = useBrowserSpeech();
+  const recorder = useNativeRealtimeTranscript();
+
+  const readingProgressRuntime = useMemo(() => {
+    return getReadingProgress(paragraphs[0], recorder.transcript);
+  }, [paragraphs[0], recorder.transcript]);
+
+  console.log('recorder.transcript', { transcript: recorder.transcript, readingProgressRuntime });
+
+  const isRecording = recorder.isActive || recorder.isActivating;
 
   const playText = (text: string) => {
     speech.play(text.trim());
+  };
+
+  const startRecording = () => {
+    recorder.start();
+  };
+
+  const pauseRecording = () => {
+    recorder.stop();
   };
 
   return (
@@ -70,6 +89,34 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         }}
       >
         <Stack sx={{ gap: '20px', width: '100%' }}>
+          <Stack
+            sx={{
+              alignItems: 'center',
+              display: 'none',
+            }}
+          >
+            <Stack
+              sx={{
+                maxWidth: '900px',
+                width: '100%',
+                fontFamily: 'serif',
+                fontSize: '36px',
+                lineHeight: '1.5',
+                '*': {
+                  fontFamily: 'serif',
+                },
+                '* em': {
+                  color: 'rgb(12, 12, 12)',
+                  fontStyle: 'normal',
+                  backgroundColor: 'rgba(253, 178, 178, 0.93)',
+                  borderRadius: '3px',
+                },
+              }}
+            >
+              <Markdown variant="rule">{readingProgressRuntime.activeMarkdown}</Markdown>
+            </Stack>
+          </Stack>
+
           {paragraphs.map((paragraph, index) => (
             <Stack
               key={index}
@@ -89,13 +136,22 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                 }}
               >
                 {isRecording && activeParagraphIndex === index && (
-                  <ReaderButton startIcon={<Pause size={16} />} type="error" onClick={() => {}}>
+                  <ReaderButton
+                    startIcon={<Pause size={16} />}
+                    type="error"
+                    disabled={recorder.isActivating}
+                    onClick={pauseRecording}
+                  >
                     {i18n._('Pause')}
                   </ReaderButton>
                 )}
 
                 {!isRecording && activeParagraphIndex === index && (
-                  <ReaderButton startIcon={<Mic size={16} />} onClick={() => {}}>
+                  <ReaderButton
+                    startIcon={<Mic size={16} />}
+                    onClick={startRecording}
+                    disabled={recorder.isActivating}
+                  >
                     {i18n._('Read')}
                   </ReaderButton>
                 )}
