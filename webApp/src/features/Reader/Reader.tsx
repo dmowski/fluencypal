@@ -88,7 +88,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                       borderRadius: '50px',
                       color: '#fff',
                       boxShadow: 'none',
-                      padding: '5px 0',
+                      padding: '5px 2px 5px 0',
                     }}
                     variant="contained"
                   >
@@ -104,7 +104,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                       borderRadius: '50px',
                       color: '#fff',
                       boxShadow: 'none',
-                      padding: '5px 0',
+                      padding: '5px 2px 5px 0',
                     }}
                     variant="contained"
                   >
