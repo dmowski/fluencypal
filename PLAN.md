@@ -1,12 +1,13 @@
 # Live document with short/long term ideas
 
-- Essay: Play sentence
+## Add more daily questions
 
 ## Reader helper?
 
-- Integrate epub reader, or maybe markdown reader (as simplest solution)
-- Integrate assistant supporter to answer some questions
-- Place some texts to it
+https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
+
+- Click on sentence to translate
+- What to show on the right menu
 
 ### EXTREME MVP:
 

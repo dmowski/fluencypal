@@ -117,24 +117,7 @@ export const AppNotificationsButton: React.FC = () => {
                       backgroundColor: 'rgba(255, 255, 255, 0.01)',
                     }}
                   >
-                    {access.isFullAppAccess ? (
-                      <ChatPage type={'public'} />
-                    ) : (
-                      <Stack
-                        sx={{
-                          alignItems: 'flex-start',
-                          padding: '20px',
-                          gap: '20px',
-                        }}
-                      >
-                        <Typography variant="h5" sx={{}}>
-                          {i18n._('Full Access is required to see global chat')}
-                        </Typography>
-                        <Button variant="contained" color="info" onClick={access.showPaymentModal}>
-                          {i18n._('Upgrade to Full Access')}
-                        </Button>
-                      </Stack>
-                    )}
+                    <ChatPage type={'public'} />
                   </Stack>
                 )}
               </Stack>

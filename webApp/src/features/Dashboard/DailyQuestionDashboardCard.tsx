@@ -13,8 +13,7 @@ export const DailyQuestionDashboardCard = () => {
   const globalModals = useGlobalModals();
 
   const access = useAccess();
-  const settings = useSettings();
-  if (!access.canUseCommunity || settings.isFirstDay) {
+  if (!access.canUseCommunity) {
     return <></>;
   }
 

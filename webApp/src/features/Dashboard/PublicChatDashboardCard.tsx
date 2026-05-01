@@ -4,25 +4,17 @@ import { Stack } from '@mui/material';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { SectionHeader } from './CartsHeader';
-import { useSettings } from '../Settings/useSettings';
 
 export const PublicChatDashboardCard = () => {
   const { i18n } = useLingui();
   const access = useAccess();
-  const settings = useSettings();
   const { openPublicChat } = useGlobalModals();
 
-  const isLimited = !access.isFullAppAccess;
-
   const openPublicChatWrapper = () => {
-    if (isLimited) {
-      access.showPaymentModal();
-      return;
-    }
     openPublicChat();
   };
 
-  if (!access.canUseCommunity || settings.isFirstDay) {
+  if (!access.canUseCommunity) {
     return <></>;
   }
 
@@ -44,14 +36,12 @@ export const PublicChatDashboardCard = () => {
       >
         <StoreCard
           textColor={'#fff'}
-          backgroundColor={isLimited ? '#d86530be' : 'rgba(32, 32, 32, 0)'}
-          badge={isLimited ? i18n._('Full Access is required') : undefined}
+          backgroundColor={'rgba(32, 32, 32, 0)'}
           previewImageUrl={
             'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773964951620-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.jpg'
           }
           title={i18n._('Place to share your thoughts')}
           items={[]}
-          borderSize={isLimited ? '2px' : undefined}
           onClick={openPublicChatWrapper}
           itemsBackgroundColor={'rgba(32, 32, 32, 1)'}
           itemsViewMode={'list'}

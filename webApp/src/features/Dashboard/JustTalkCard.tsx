@@ -21,10 +21,6 @@ export const JustTalkCard = () => {
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
 
-  if (settings.isFirstDay) {
-    return <></>;
-  }
-
   return (
     <Stack
       sx={{
