@@ -1,6 +1,7 @@
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
+import { Mic, Pause } from 'lucide-react';
 
 export const ReaderParagraph = ({ text }: { text: string }) => (
   <Typography
@@ -22,6 +23,9 @@ export const Reader = ({ data }: { data: ReaderData }) => {
 
   const paragraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
 
+  const isPlaying = false;
+  const activeParagraphIndex = 0;
+
   return (
     <Stack
       sx={{
@@ -29,9 +33,10 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         backgroundColor: '#F4E1C6',
         color: '#000',
         alignItems: 'center',
-        padding: '80px 20px',
+        padding: '80px 0px',
         height: 'auto',
         borderRadius: '16px',
+        gap: '90px',
       }}
     >
       <Stack
@@ -39,7 +44,6 @@ export const Reader = ({ data }: { data: ReaderData }) => {
           maxWidth: '900px',
           width: '100%',
           minWidth: 0,
-          gap: '90px',
         }}
       >
         <ReaderHeader
@@ -49,9 +53,75 @@ export const Reader = ({ data }: { data: ReaderData }) => {
           pageCount={pageCount}
           category={data.category}
         />
-        <Stack sx={{ gap: '20px' }}>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+        }}
+      >
+        <Stack sx={{ gap: '20px', width: '100%' }}>
           {paragraphs.map((paragraph, index) => (
-            <ReaderParagraph key={index} text={paragraph} />
+            <Stack
+              key={index}
+              sx={{
+                width: '100%',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                gap: '20px',
+              }}
+            >
+              <Stack
+                className="buttonContainer"
+                sx={{
+                  width: '100px',
+                  paddingTop: '10px',
+                }}
+              >
+                {isPlaying && activeParagraphIndex === index && (
+                  <Button
+                    startIcon={<Pause size={16} />}
+                    sx={{
+                      backgroundColor: '#EB5452',
+                      borderRadius: '50px',
+                      color: '#fff',
+                      boxShadow: 'none',
+                      padding: '5px 0',
+                    }}
+                    variant="contained"
+                  >
+                    Pause
+                  </Button>
+                )}
+
+                {!isPlaying && activeParagraphIndex === index && (
+                  <Button
+                    startIcon={<Mic size={16} />}
+                    sx={{
+                      backgroundColor: '#5285eb',
+                      borderRadius: '50px',
+                      color: '#fff',
+                      boxShadow: 'none',
+                      padding: '5px 0',
+                    }}
+                    variant="contained"
+                  >
+                    Read
+                  </Button>
+                )}
+              </Stack>
+              <Stack key={index} sx={{ width: '900px' }}>
+                <ReaderParagraph key={index} text={paragraph} />
+              </Stack>
+              <Stack
+                sx={{
+                  width: '100px',
+                }}
+                className="annotation"
+              ></Stack>
+            </Stack>
           ))}
         </Stack>
       </Stack>

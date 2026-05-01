@@ -104,7 +104,7 @@ export const ReaderHeader = ({
       >
         <Typography
           sx={{
-            fontSize: '11px',
+            fontSize: '12px',
             fontFamily: 'serif',
             textTransform: 'uppercase',
           }}
@@ -113,10 +113,9 @@ export const ReaderHeader = ({
         </Typography>
         <Typography
           sx={{
-            fontSize: '11px',
+            fontSize: '12px',
             fontFamily: 'serif',
             textAlign: 'right',
-            textTransform: 'uppercase',
           }}
         >
           {category}
