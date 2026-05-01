@@ -4,7 +4,13 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Select words and show menu with "Highlights"
+- Move Reader to a separate page
+- Select words and show menu with "highlights"
+- Reading: How to handle transcripts
+- 2 columns view
+- Add notes on spans (right side)
+- Adaptive view: Content should be 100dvh
+- How to upload my book and convert to text?
 
 ### EXTREME MVP:
 
