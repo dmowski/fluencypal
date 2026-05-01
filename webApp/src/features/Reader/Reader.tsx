@@ -1,7 +1,10 @@
 import { Stack, Typography } from '@mui/material';
 import { ReaderData } from './types';
+import { ReaderHeader } from './ReaderHeader';
 
 export const Reader = ({ data }: { data: ReaderData }) => {
+  const activePage = 1;
+  const pageCount = 3;
   return (
     <Stack
       sx={{
@@ -9,28 +12,26 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         backgroundColor: '#F4E1C6',
         color: '#000',
         alignItems: 'center',
-        padding: '40px 20px',
+        padding: '80px 20px',
         height: '100%',
       }}
     >
       <Stack
         sx={{
           maxWidth: '1200px',
+          gap: '60px',
         }}
       >
-        <Typography variant="h2" sx={{ fontWeight: 'bold', padding: '20px', fontFamily: 'serif' }}>
-          {data.title}
-        </Typography>
-        <Typography
-          variant="h4"
-          sx={{ fontStyle: 'italic', padding: '0px 20px 20px 20px', fontFamily: 'serif' }}
-        >
-          {data.subtitle}
-        </Typography>
+        <ReaderHeader
+          title={data.title}
+          subtitle={data.subtitle}
+          activePage={activePage}
+          pageCount={pageCount}
+          category={data.category}
+        />
         <Typography
           variant="body1"
           sx={{
-            padding: '0px 20px 20px 20px',
             fontFamily: 'serif',
             fontSize: '28px',
             lineHeight: '1.8',

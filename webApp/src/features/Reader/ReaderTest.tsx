@@ -4,8 +4,8 @@ import { ReaderData } from './types';
 
 export const ReaderTest = () => {
   const data: ReaderData = {
-    title: 'The Great Gatsby',
-    subtitle: 'A novel by F. Scott Fitzgerald',
+    title: 'The Day the Second Sun Fell',
+    subtitle: 'A quiet village, two suns in the sky, and the moment everything changed',
     category: 'Story',
     content: `The desert had always belonged to the twin suns.
 Every morning, they rose together — one golden and bright, the other pale and silver. The villagers believed the two suns kept balance in the world. If one ever disappeared, the elders said, the desert would wake up.
