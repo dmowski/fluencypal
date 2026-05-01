@@ -3,6 +3,7 @@ import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { ChevronLeft, ChevronRight, Mic, Pause } from 'lucide-react';
 import { useState } from 'react';
+import { useLingui } from '@lingui/react';
 
 export const ReaderParagraph = ({ text }: { text: string }) => (
   <Typography
@@ -94,6 +95,7 @@ const splitParagraphsIntoPages = (paragraphs: string[], pageSizeChars: number): 
 
 export const Reader = ({ data }: { data: ReaderData }) => {
   const [activePage, setActivePage] = useState(1);
+  const { i18n } = useLingui();
 
   const allParagraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
 
@@ -173,7 +175,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                     }}
                     variant="contained"
                   >
-                    Pause
+                    {i18n._('Pause')}
                   </Button>
                 )}
 
@@ -189,7 +191,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                     }}
                     variant="contained"
                   >
-                    Read
+                    {i18n._('Read')}
                   </Button>
                 )}
               </Stack>
