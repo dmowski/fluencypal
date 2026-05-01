@@ -13,6 +13,7 @@ import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTran
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useReaderSettings } from './useReaderSettings';
 import { useBooks } from './useBooks';
+import { BackButton } from './BackButton';
 
 export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
@@ -56,6 +57,7 @@ export const Reader = ({ data }: { data: Book }) => {
         position: 'relative',
       }}
     >
+      <BackButton onClick={() => books.setActive(null)} />
       <ReaderSpeechSettingsButton speech={speech} />
 
       <Stack

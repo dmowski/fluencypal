@@ -89,7 +89,7 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         sx={{
           position: 'absolute',
           top: '5px',
-          right: '5px',
+          left: '5px',
           zIndex: 3,
           height: '54px',
           width: '54px',
