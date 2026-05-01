@@ -2,9 +2,26 @@ import { Stack, Typography } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
 
+export const ReaderParagraph = ({ text }: { text: string }) => (
+  <Typography
+    variant="body1"
+    sx={{
+      fontFamily: 'serif',
+      fontSize: '36px',
+      lineHeight: '1.5',
+      textAlign: 'justify',
+    }}
+  >
+    {text}
+  </Typography>
+);
+
 export const Reader = ({ data }: { data: ReaderData }) => {
   const activePage = 1;
   const pageCount = 3;
+
+  const paragraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
+
   return (
     <Stack
       sx={{
@@ -13,7 +30,8 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         color: '#000',
         alignItems: 'center',
         padding: '80px 20px',
-        height: '100%',
+        height: 'auto',
+        borderRadius: '16px',
       }}
     >
       <Stack
@@ -31,16 +49,11 @@ export const Reader = ({ data }: { data: ReaderData }) => {
           pageCount={pageCount}
           category={data.category}
         />
-        <Typography
-          variant="body1"
-          sx={{
-            fontFamily: 'serif',
-            fontSize: '28px',
-            lineHeight: '1.8',
-          }}
-        >
-          {data.content}
-        </Typography>
+        <Stack sx={{ gap: '20px' }}>
+          {paragraphs.map((paragraph, index) => (
+            <ReaderParagraph key={index} text={paragraph} />
+          ))}
+        </Stack>
       </Stack>
     </Stack>
   );
