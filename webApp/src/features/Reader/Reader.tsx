@@ -8,8 +8,9 @@ import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
 import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 import { useBrowserSpeech } from './useBrowserSpeech';
+import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 
-export const Reader = ({ data, language }: { data: ReaderData; language: string }) => {
+export const Reader = ({ data }: { data: ReaderData }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
 
@@ -22,7 +23,7 @@ export const Reader = ({ data, language }: { data: ReaderData; language: string 
   const isRecording = false;
   const activeParagraphIndex = 0;
 
-  const speech = useBrowserSpeech(language);
+  const speech = useBrowserSpeech();
 
   const playText = (text: string) => {
     speech.play(text.trim());
@@ -42,6 +43,8 @@ export const Reader = ({ data, language }: { data: ReaderData; language: string 
         position: 'relative',
       }}
     >
+      <ReaderSpeechSettingsButton speech={speech} />
+
       <Stack
         sx={{
           maxWidth: '900px',

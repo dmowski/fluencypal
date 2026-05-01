@@ -68,7 +68,7 @@ This, then, is a book that explores how we communicate and connect. Because the 
           width: '100%',
         }}
       >
-        <Reader data={data} language="en-US" />
+        <Reader data={data} />
       </Stack>
     </Stack>
   );
