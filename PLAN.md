@@ -4,8 +4,7 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Create a model to insert book
-  -- How to handle storage? IndexDb
+- Translate on hover
 
 - Reading: How to handle transcripts
 - Convert text into words
