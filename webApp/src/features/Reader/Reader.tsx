@@ -27,6 +27,8 @@ export const Reader = ({ data }: { data: Book }) => {
   const readerSettings = useReaderSettings();
   const recorder = useNativeRealtimeTranscript();
 
+  const isShowRecorder = false;
+
   const isRecording = recorder.isActive || recorder.isActivating;
 
   const playText = (text: string) => {
@@ -127,7 +129,7 @@ export const Reader = ({ data }: { data: Book }) => {
                   paddingTop: '15px',
                 }}
               >
-                {isRecording && activeParagraphIndex === index && (
+                {isShowRecorder && isRecording && activeParagraphIndex === index && (
                   <ReaderButton
                     startIcon={<Pause size={16} />}
                     type="error"
@@ -138,7 +140,7 @@ export const Reader = ({ data }: { data: Book }) => {
                   </ReaderButton>
                 )}
 
-                {!isRecording && activeParagraphIndex === index && (
+                {isShowRecorder && !isRecording && activeParagraphIndex === index && (
                   <ReaderButton
                     startIcon={<Mic size={16} />}
                     onClick={startRecording}
