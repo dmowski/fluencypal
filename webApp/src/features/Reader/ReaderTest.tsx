@@ -55,16 +55,17 @@ This, then, is a book that explores how we communicate and connect. Because the 
       sx={{
         padding: '40px',
         alignItems: 'center',
+        height: '100%',
+        flex: '1 1 1',
       }}
     >
       <Stack
         sx={{
           borderRadius: '10px',
-          minHeight: '1200px',
-          flex: '1 1 0',
+          minHeight: '500px',
+          flex: '1 1 1',
           maxWidth: '1400px',
           width: '100%',
-          height: 'max-content',
         }}
       >
         <Reader data={data} />

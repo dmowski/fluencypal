@@ -2,6 +2,7 @@ import { Button, Stack, Typography } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { ChevronLeft, ChevronRight, Mic, Pause } from 'lucide-react';
+import { useState } from 'react';
 
 export const ReaderParagraph = ({ text }: { text: string }) => (
   <Typography
@@ -68,16 +69,37 @@ const PaginationButtons = ({
 };
 
 const splitParagraphsIntoPages = (paragraphs: string[], pageSizeChars: number): string[][] => {
-  return [];
+  const [firstParagraph, ...restParagraphs] = paragraphs;
+
+  const pages: string[][] = [firstParagraph ? [firstParagraph] : []];
+  let currentPage: string[] = pages[0];
+  let currentPageCharCount = firstParagraph ? firstParagraph.length : 0;
+
+  restParagraphs.forEach((paragraph) => {
+    if (currentPageCharCount + paragraph.length > pageSizeChars) {
+      pages.push(currentPage);
+      currentPage = [];
+      currentPageCharCount = 0;
+    }
+    currentPage.push(paragraph);
+    currentPageCharCount += paragraph.length;
+  });
+
+  if (currentPage.length > 0) {
+    pages.push(currentPage);
+  }
+
+  return pages;
 };
 
 export const Reader = ({ data }: { data: ReaderData }) => {
-  const activePage = 1;
-  const pageCount = 3;
+  const [activePage, setActivePage] = useState(1);
 
-  const paragraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
+  const allParagraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
 
-  const pages = splitParagraphsIntoPages(paragraphs, 300);
+  const pages = splitParagraphsIntoPages(allParagraphs, 1000);
+  const paragraphs = pages[activePage - 1] || [];
+  const pageCount = pages.length;
 
   const isPlaying = false;
   const activeParagraphIndex = 0;
@@ -89,10 +111,11 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         backgroundColor: '#F4E1C6',
         color: '#000',
         alignItems: 'center',
-        padding: '80px 0px',
-        height: 'auto',
+        padding: '80px 0px 120px 0px',
+        flex: '1 0 0',
         borderRadius: '16px',
         gap: '90px',
+        position: 'relative',
       }}
     >
       <Stack
@@ -100,6 +123,8 @@ export const Reader = ({ data }: { data: ReaderData }) => {
           maxWidth: '900px',
           width: '100%',
           minWidth: 0,
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <ReaderHeader
@@ -168,7 +193,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                   </Button>
                 )}
               </Stack>
-              <Stack key={index} sx={{ width: '900px' }}>
+              <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
                 <ReaderParagraph key={index} text={paragraph} />
               </Stack>
               <Stack
@@ -180,6 +205,27 @@ export const Reader = ({ data }: { data: ReaderData }) => {
             </Stack>
           ))}
         </Stack>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          height: '100%',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          padding: '10px 0',
+          zIndex: 0,
+        }}
+      >
+        <PaginationButtons
+          onPrevious={() => setActivePage((prev) => Math.max(prev - 1, 1))}
+          onNext={() => setActivePage((prev) => Math.min(prev + 1, pageCount))}
+          isFirstPage={activePage === 1}
+          isLastPage={activePage === pageCount}
+        />
       </Stack>
     </Stack>
   );

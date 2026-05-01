@@ -25,10 +25,16 @@ export const TestPage = () => {
   const [page, setPage] = useUrlState<string>('testPage', 'upload', true);
 
   return (
-    <Stack>
+    <Stack
+      sx={{
+        height: '100%',
+        flex: '1 1 1',
+      }}
+    >
       <Stack
         sx={{
           borderBottom: '1px solid #333',
+          height: '100%',
         }}
       >
         <Tabs value={page} onChange={(e, value) => setPage(value)}>
@@ -41,6 +47,7 @@ export const TestPage = () => {
       <Stack
         sx={{
           width: '100%',
+          height: '100%',
         }}
       >
         {testPages[page]}
