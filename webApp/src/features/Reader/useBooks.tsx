@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { testData } from './testData';
 import { Book } from './types';
 import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
+import { loadUsersBooksFromIndexedDb, saveUsersBooksToIndexedDb } from './booksIndexedDb';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 
@@ -10,7 +11,35 @@ const BooksContext = createContext<BooksContextType | null>(null);
 const useBooksState = () => {
   const [active, setActive] = useState<Book | null>(null);
   const [usersBooks, setUsersBooks] = useState<Book[]>([]);
+  const [isUsersBooksLoaded, setIsUsersBooksLoaded] = useState(false);
   const testBooks = [testData];
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const loadBooks = async () => {
+      const booksFromDb = await loadUsersBooksFromIndexedDb();
+      if (!isCancelled) {
+        setUsersBooks(booksFromDb);
+        setIsUsersBooksLoaded(true);
+      }
+    };
+
+    loadBooks().catch(() => {
+      if (!isCancelled) {
+        setIsUsersBooksLoaded(true);
+      }
+    });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isUsersBooksLoaded) return;
+    saveUsersBooksToIndexedDb(usersBooks).catch(() => {});
+  }, [isUsersBooksLoaded, usersBooks]);
 
   const addBook = ({
     title,
