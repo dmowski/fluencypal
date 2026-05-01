@@ -109,7 +109,7 @@ export const ReaderHeader = ({
             textTransform: 'uppercase',
           }}
         >
-          {`${activePage} of ${pageCount}`}
+          {`${activePage} / ${pageCount}`}
         </Typography>
         <Typography
           sx={{

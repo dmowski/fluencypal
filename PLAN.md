@@ -4,7 +4,6 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Wrap with i18n
 - Split paragraphs into pages, and implement pagination
 - Click to word play
 - Click on paragraph
