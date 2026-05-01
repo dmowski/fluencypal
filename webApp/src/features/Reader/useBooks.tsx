@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { testData } from './testData';
 import { Book } from './types';
+import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 
@@ -11,9 +12,31 @@ const useBooksState = () => {
   const usersBooks: Book[] = [];
   const testBooks = [testData];
 
+  const addBook = ({
+    title,
+    subTitle,
+    text,
+    category,
+  }: {
+    title: string;
+    subTitle: string;
+    text: string;
+    category: string;
+  }) => {
+    const newBook: Book = {
+      title,
+      subtitle: subTitle,
+      category: category,
+      paragraphs: splitTextIntoParagraphs(text),
+    };
+    usersBooks.push(newBook);
+    setActive(newBook);
+  };
+
   return {
     active,
     setActive,
+    addBook,
     usersBooks,
     testBooks,
   };

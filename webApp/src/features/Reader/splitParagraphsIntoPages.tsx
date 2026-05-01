@@ -1,3 +1,5 @@
+import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
+
 export const splitParagraphsIntoPages = (
   paragraphs: string[],
   pageSizeChars: number,
@@ -23,4 +25,9 @@ export const splitParagraphsIntoPages = (
   }
 
   return pages;
+};
+
+export const splitTextIntoParagraphs = (text: string): string[][] => {
+  const paragraphs = text.split('\n').filter((p) => p.trim() !== '');
+  return paragraphs.map((paragraph) => splitWords(paragraph));
 };

@@ -1,10 +1,5 @@
-import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
+import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 import { Book } from './types';
-
-const splitTextIntoParagraphs = (text: string): string[][] => {
-  const paragraphs = text.split('\n').filter((p) => p.trim() !== '');
-  return paragraphs.map((paragraph) => splitWords(paragraph));
-};
 
 export const testData: Book = {
   title: 'Supercommunicators',
