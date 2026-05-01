@@ -1,9 +1,10 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-type BrowserSpeachApi = {
+type BrowserSpeechApi = {
   isSupported: boolean;
+  isPlaying: boolean;
   play: (text: string) => void;
   stop: () => void;
   pause: () => void;
@@ -21,7 +22,7 @@ const findMatchingVoice = (language: string, voices: SpeechSynthesisVoice[]) => 
   });
 };
 
-export const useBrowserSpeach = (language: string): BrowserSpeachApi => {
+export const useBrowserSpeech = (language: string): BrowserSpeechApi => {
   const isSupported = useMemo(() => {
     if (typeof window === 'undefined') return false;
     return 'speechSynthesis' in window;
@@ -38,6 +39,8 @@ export const useBrowserSpeach = (language: string): BrowserSpeachApi => {
 
     window.speechSynthesis.pause();
   }, [isSupported]);
+
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const resume = useCallback(() => {
     if (!isSupported) return;
@@ -62,13 +65,18 @@ export const useBrowserSpeach = (language: string): BrowserSpeachApi => {
       }
 
       window.speechSynthesis.cancel();
+      setIsPlaying(true);
       window.speechSynthesis.speak(utterance);
+      utterance.onend = () => {
+        setIsPlaying(false);
+      };
     },
     [isSupported, language],
   );
 
   return {
     isSupported,
+    isPlaying,
     play,
     stop,
     pause,

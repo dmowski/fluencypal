@@ -4,11 +4,12 @@ import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
 import { useState } from 'react';
 import { useLingui } from '@lingui/react';
-import { PaginationButtons, PaginationPanel } from './PaginationButtons';
+import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
 import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
+import { useBrowserSpeech } from './useBrowserSpeech';
 
-export const Reader = ({ data }: { data: ReaderData }) => {
+export const Reader = ({ data, language }: { data: ReaderData; language: string }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
 
@@ -18,8 +19,18 @@ export const Reader = ({ data }: { data: ReaderData }) => {
   const paragraphs = pages[activePage - 1] || [];
   const pageCount = pages.length;
 
-  const isPlaying = false;
+  const isRecording = false;
   const activeParagraphIndex = 0;
+
+  const speech = useBrowserSpeech(language);
+
+  const onWordClick = (word: string) => {
+    if (speech.isPlaying) {
+      speech.stop();
+    } else {
+      speech.play(word);
+    }
+  };
 
   return (
     <Stack
@@ -78,7 +89,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                   paddingTop: '10px',
                 }}
               >
-                {isPlaying && activeParagraphIndex === index && (
+                {isRecording && activeParagraphIndex === index && (
                   <Button
                     startIcon={<Pause size={16} />}
                     sx={{
@@ -94,7 +105,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                   </Button>
                 )}
 
-                {!isPlaying && activeParagraphIndex === index && (
+                {!isRecording && activeParagraphIndex === index && (
                   <Button
                     startIcon={<Mic size={16} />}
                     sx={{
@@ -111,7 +122,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                 )}
               </Stack>
               <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
-                <ReaderParagraph key={index} text={paragraph} />
+                <ReaderParagraph key={index} text={paragraph} onWordClick={onWordClick} />
               </Stack>
               <Stack
                 sx={{
