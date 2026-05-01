@@ -24,10 +24,6 @@ To force user to pronounce only prepared sentences
 
 The platforms could be provided as "Human teacher (leader) with AI assistant (helper)", where the human supervise and setup education environment
 
-## Community is hidden under full access
-
-Allow to all users
-
 ## Create component "Create Learning Plan"; to create it in the app
 
 ## Problem with quiz
