@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 export const useDailyQuestion = () => {
   const daysSinceStart = useMemo(() => dayjs().diff(dayjs('2025-01-01'), 'day'), []);
-  const questionsKeys = useMemo(() => Object.keys(dailyQuestions), []);
+  const questionsKeys = useMemo(() => Object.keys(dailyQuestions).reverse(), []);
 
   const questionIndex = daysSinceStart % questionsKeys.length;
   const todaysQuestion = dailyQuestions[questionsKeys[questionIndex]];
