@@ -1,17 +1,27 @@
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAccess } from '@/features/Usage/useAccess';
 import { DailyQuestionFullCard } from './DailyQuestionFullCard';
 import { useDailyQuestion } from './useDailyQuestion';
+import { useMemo, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 export const DailyQuestionFullList = () => {
   const { i18n } = useLingui();
   const questions = useDailyQuestion();
+  const [limit, setLimit] = useState(5);
 
   const access = useAccess();
   if (!access.canUseCommunity) {
     return <></>;
   }
+
+  const questionsToShow = useMemo(() => {
+    if (!questions.otherQuestions) {
+      return [];
+    }
+    return questions.otherQuestions.slice(0, limit);
+  }, [questions.otherQuestions, limit]);
 
   return (
     <Stack
@@ -48,9 +58,15 @@ export const DailyQuestionFullList = () => {
             gap: '50px',
           }}
         >
-          {questions.otherQuestions.map((question) => {
+          {questionsToShow.map((question) => {
             return <DailyQuestionFullCard key={question.id} question={question} />;
           })}
+
+          {questions.otherQuestions && questions.otherQuestions.length > limit && (
+            <Button endIcon={<ChevronDown />} onClick={() => setLimit((prev) => prev + 5)}>
+              {i18n._('Load More')}
+            </Button>
+          )}
         </Stack>
       </Stack>
     </Stack>
