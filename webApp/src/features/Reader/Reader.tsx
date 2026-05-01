@@ -20,7 +20,7 @@ export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
   const books = useBooks();
-  const pages = useMemo(() => splitIntoPages(data, 500), [data]);
+  const pages = useMemo(() => splitIntoPages(data, 100), [data]);
   const pageCount = pages.length;
   const activePageContent = pages[activePage - 1] || [];
 
