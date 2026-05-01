@@ -1,4 +1,27 @@
 import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
+import { Book, BookParagraph } from './types';
+
+export const splitIntoPages = (book: Book, wordsPerPage: number): BookParagraph[][] => {
+  const pages: BookParagraph[][] = [];
+  let currentPage: BookParagraph[] = [];
+  let currentPageCharCount = 0;
+
+  book.paragraphs.forEach((paragraph) => {
+    if (currentPageCharCount + paragraph.length > wordsPerPage) {
+      pages.push(currentPage);
+      currentPage = [];
+      currentPageCharCount = 0;
+    }
+    currentPage.push(paragraph);
+    currentPageCharCount += paragraph.length;
+  });
+
+  if (currentPage.length > 0) {
+    pages.push(currentPage);
+  }
+
+  return pages;
+};
 
 export const splitParagraphsIntoPages = (
   paragraphs: string[],

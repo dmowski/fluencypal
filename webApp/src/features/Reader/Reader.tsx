@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import { Book } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
@@ -14,13 +14,15 @@ import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useReaderSettings } from './useReaderSettings';
 import { useBooks } from './useBooks';
 import { BackButton } from './BackButton';
+import { splitIntoPages, splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 
 export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
   const books = useBooks();
-
-  const pageCount = 1;
+  const pages = useMemo(() => splitIntoPages(data, 500), [data]);
+  const pageCount = pages.length;
+  const activePageContent = pages[activePage - 1] || [];
 
   const activeParagraphIndex = 0;
 
@@ -113,7 +115,7 @@ export const Reader = ({ data }: { data: Book }) => {
             </Stack>
           </Stack>
 
-          {data.paragraphs.map((paragraph, index) => (
+          {activePageContent.map((paragraph, index) => (
             <Stack
               key={index}
               sx={{
