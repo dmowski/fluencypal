@@ -4,14 +4,17 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Move Reader to a separate page
-- Select words and show menu with "highlights"
 - Reading: How to handle transcripts
+
+- Select words and show menu with "highlights"
+- Settings: highlight when click
+
 - 2 columns view
 - Add notes on spans (right side)
 - Adaptive view: Content should be 100dvh
 - How to upload my book and convert to text?
 - Test on mobile devices
+
 - How to integrate it to app: read stories?
 - What to do next?
 - Create a separate landing with the product?
