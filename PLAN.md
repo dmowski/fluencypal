@@ -7,8 +7,14 @@ https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f
 - Highlights: Functionality
 
 - Translate on hover
-  -- Create a separate function to translate and use cache (localstorage)
-  -- Update popup
+  Create a separate function to translate and use cache (localstorage)
+
+When the user hover over word, we need to show translation of the word.
+
+1. You need to refactor translate by extracting clean function to get translation
+   webApp/src/features/Translation/useTranslate.tsx
+
+2. In books settings
 
 - Translate on hover
 
