@@ -28,9 +28,18 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const [conversionProgress, setConversionProgress] = useState(0);
   const [conversionMessage, setConversionMessage] = useState('');
   const [conversionError, setConversionError] = useState('');
+  const [isSavingBook, setIsSavingBook] = useState(false);
+  const [saveProgress, setSaveProgress] = useState(0);
+  const [saveMessage, setSaveMessage] = useState('');
+  const [saveError, setSaveError] = useState('');
 
   const isDisabled =
-    !title.trim() || !subtitle.trim() || !category.trim() || !text.trim() || isConvertingFile;
+    !title.trim() ||
+    !subtitle.trim() ||
+    !category.trim() ||
+    !text.trim() ||
+    isConvertingFile ||
+    isSavingBook;
 
   const handleEpubUploadClick = () => {
     fileInputRef.current?.click();
@@ -90,24 +99,46 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (isDisabled) return;
 
-    books.addBook({
-      title: title.trim(),
-      subTitle: subtitle.trim(),
-      category: category.trim(),
-      text: text.trim(),
-    });
+    try {
+      setIsSavingBook(true);
+      setSaveError('');
+      setSaveProgress(20);
+      setSaveMessage(i18n._('Preparing book...'));
 
-    setTitle('');
-    setSubtitle('');
-    setCategory('');
-    setText('');
-    setConversionProgress(0);
-    setConversionMessage('');
-    setConversionError('');
-    onClose();
+      setSaveProgress(60);
+      setSaveMessage(i18n._('Saving book...'));
+
+      await books.addBook({
+        title: title.trim(),
+        subTitle: subtitle.trim(),
+        category: category.trim(),
+        text: text.trim(),
+      });
+
+      setSaveProgress(100);
+      setSaveMessage(i18n._('Book saved.'));
+
+      setTitle('');
+      setSubtitle('');
+      setCategory('');
+      setText('');
+      setConversionProgress(0);
+      setConversionMessage('');
+      setConversionError('');
+      setSaveError('');
+      onClose();
+    } catch (error) {
+      console.error('Book save error:', error);
+      const message = error instanceof Error ? error.message : i18n._('Failed to save book.');
+      setSaveError(message);
+      setSaveProgress(0);
+      setSaveMessage('');
+    } finally {
+      setIsSavingBook(false);
+    }
   };
 
   return (
@@ -179,8 +210,22 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           ) : null}
         </Stack>
 
+        {isSavingBook || saveProgress > 0 ? (
+          <Stack sx={{ gap: '6px' }}>
+            <LinearProgress variant="determinate" value={saveProgress} />
+            <Typography variant="caption" sx={{ opacity: 0.75 }}>
+              {saveMessage}
+            </Typography>
+          </Stack>
+        ) : null}
+        {saveError ? (
+          <Typography variant="caption" color="error">
+            {saveError}
+          </Typography>
+        ) : null}
+
         <Stack sx={{ flexDirection: 'row', justifyContent: 'flex-end', gap: '12px' }}>
-          <Button variant="outlined" onClick={onClose}>
+          <Button variant="outlined" onClick={onClose} disabled={isSavingBook}>
             {i18n._('Cancel')}
           </Button>
           <Button variant="contained" onClick={handleSubmit} disabled={isDisabled}>

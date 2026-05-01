@@ -36,12 +36,12 @@ const useBooksState = () => {
     };
   }, []);
 
-  useEffect(() => {
+  const persistUsersBooks = async (nextBooks: Book[]) => {
     if (!isUsersBooksLoaded) return;
-    saveUsersBooksToIndexedDb(usersBooks).catch(() => {});
-  }, [isUsersBooksLoaded, usersBooks]);
+    await saveUsersBooksToIndexedDb(nextBooks);
+  };
 
-  const addBook = ({
+  const addBook = async ({
     title,
     subTitle,
     text,
@@ -58,12 +58,18 @@ const useBooksState = () => {
       category: category,
       paragraphs: splitTextIntoParagraphs(text),
     };
-    setUsersBooks((prev) => [...prev, newBook]);
+    const nextBooks = [...usersBooks, newBook];
+    setUsersBooks(nextBooks);
     setActive(newBook);
+    await persistUsersBooks(nextBooks);
   };
 
   const deleteBook = (bookToDelete: Book) => {
-    setUsersBooks((prev) => prev.filter((book) => book !== bookToDelete));
+    setUsersBooks((prev) => {
+      const nextBooks = prev.filter((book) => book !== bookToDelete);
+      void persistUsersBooks(nextBooks);
+      return nextBooks;
+    });
     setActive((prev) => (prev === bookToDelete ? null : prev));
   };
 
@@ -72,9 +78,11 @@ const useBooksState = () => {
       if (!prevActive) return prevActive;
 
       const nextActive = updater(prevActive);
-      setUsersBooks((prevBooks) =>
-        prevBooks.map((book) => (book === prevActive ? nextActive : book)),
-      );
+      setUsersBooks((prevBooks) => {
+        const nextBooks = prevBooks.map((book) => (book === prevActive ? nextActive : book));
+        void persistUsersBooks(nextBooks);
+        return nextBooks;
+      });
 
       return nextActive;
     });
