@@ -1,4 +1,6 @@
 import { Stack, Typography } from '@mui/material';
+import { MouseEvent, useState } from 'react';
+import { TextPopover } from './TextPopover';
 
 export const ReaderParagraph = ({
   words,
@@ -9,14 +11,49 @@ export const ReaderParagraph = ({
   onWordClick: (word: string) => void;
   onTextSelected: (selectedText: string) => void;
 }) => {
-  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+  const [popoverPosition, setPopoverPosition] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+
+  const handleClosePopover = () => {
+    setPopoverPosition(null);
+  };
+
+  const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     const selection = window.getSelection();
     const selectedText = selection?.toString().trim() ?? '';
+
     if (selectedText) {
+      const range = selection?.rangeCount ? selection.getRangeAt(0) : null;
+      const rect = range?.getBoundingClientRect();
+
+      if (rect) {
+        setPopoverPosition({
+          top: rect.bottom + window.scrollY + 8,
+          left: rect.left + window.scrollX + rect.width / 2,
+        });
+      }
+
       onTextSelected(selectedText);
+      return;
     }
+
+    handleClosePopover();
+  };
+
+  const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    setPopoverPosition({
+      top: rect.bottom + window.scrollY + 8,
+      left: rect.left + window.scrollX + rect.width / 2,
+    });
+
+    onWordClick(word);
+    onTextSelected(word);
   };
 
   return (
@@ -56,12 +93,14 @@ export const ReaderParagraph = ({
                 },
               },
             }}
-            onClick={() => onWordClick(word)}
+            onClick={(e) => handleWordClick(e, word)}
           >
             {word}
           </Stack>{' '}
         </span>
       ))}
+
+      <TextPopover anchorPosition={popoverPosition} onClose={handleClosePopover} />
     </Typography>
   );
 };

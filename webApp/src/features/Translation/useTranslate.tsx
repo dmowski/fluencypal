@@ -1,7 +1,6 @@
 import { translateBatchRequest, translateRequest } from '@/app/api/translate/translateRequest';
 import { useSettings } from '../Settings/useSettings';
 import { getPageLangCode } from '../Lang/lang';
-import { usePlan } from '../Plan/usePlan';
 import { useEffect, useMemo, useState } from 'react';
 import { IconButton, Popover, Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -48,7 +47,6 @@ const setTranslatorCache = (
 
 export const useTranslate = () => {
   const settings = useSettings();
-  const plan = usePlan();
 
   const [isShowModal, setIsShowModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

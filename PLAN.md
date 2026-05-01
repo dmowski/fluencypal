@@ -5,13 +5,14 @@
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
 - Translate on hover
+  -- Create a separate function to translate and use cache (localstorage)
+  -- Update popup
+
+- Translate on hover
 
 - Reading: How to handle transcripts
 - Convert text into words
 - convert transcript into words
-
-- Select words and show menu with "highlights"
-- Settings: highlight when click
 
 - 2 columns view
 - Add notes on spans (right side)
