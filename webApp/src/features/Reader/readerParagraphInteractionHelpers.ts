@@ -19,21 +19,6 @@ export const getPopoverPositionFromRect = (rect: DOMRect): { top: number; left: 
   left: rect.left + window.scrollX + rect.width / 2,
 });
 
-export const createSelectionFromWord = ({
-  paragraphIndex,
-  charStart,
-  word,
-}: {
-  paragraphIndex: number;
-  charStart: number;
-  word: string;
-}): HighlightedText => ({
-  paragraphIndex,
-  startIndex: charStart,
-  endIndex: charStart + word.length - 1,
-  color: '',
-});
-
 export const createSelectionFromRange = ({
   paragraphIndex,
   rawStart,

@@ -4,7 +4,6 @@ import { getTranslation, normalizeToNativeLangCode } from '../Translation/transl
 import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from './FlyingTooltip';
 import {
   createSelectionFromRange,
-  createSelectionFromWord,
   getPointerPosition,
   getPopoverPositionFromRect,
 } from './readerParagraphInteractionHelpers';
@@ -203,20 +202,8 @@ export const ReaderParagraph = ({
     }
   };
 
-  const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const normalizedWord = normalizeSelectedText(word);
-    setSelectionText(normalizedWord);
-
-    setPopoverPosition(getPopoverPositionFromRect(rect));
-
-    const charStart = wordCharOffsets[wordIndex];
-    setSelection(
-      createSelectionFromWord({ paragraphIndex, charStart, word: normalizedWord || word }),
-    );
-
+  const handleWordClick = (_e: MouseEvent<HTMLSpanElement>, word: string, _wordIndex: number) => {
     onWordClick(word);
-    onTextSelected(word);
   };
 
   return (
