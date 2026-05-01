@@ -4,8 +4,6 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Translate on hover
-
 - Reading: How to handle transcripts
 - Convert text into words
 - convert transcript into words
