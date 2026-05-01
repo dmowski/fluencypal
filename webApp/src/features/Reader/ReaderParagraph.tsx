@@ -12,7 +12,9 @@ export const ReaderParagraph = ({
 }) => {
   const words = splitWords(text);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     const selection = window.getSelection();
     const selectedText = selection?.toString().trim() ?? '';
     if (selectedText) {
@@ -41,8 +43,20 @@ export const ReaderParagraph = ({
               lineHeight: '1.5',
               display: 'inline',
               borderBottom: '1px dotted transparent',
+              position: 'relative',
               ':hover': {
-                borderBottom: '2px dotted #333',
+                cursor: 'pointer',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: 'calc(100% + 13px)',
+                  height: 'calc(100% + 0px)',
+                  top: '1px',
+                  left: '-6px',
+                  borderRadius: '8px',
+                  backgroundColor: '#d3d3d3ab',
+                  zIndex: -1,
+                },
               },
             }}
             onClick={() => onWordClick(word)}

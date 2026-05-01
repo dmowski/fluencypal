@@ -72,9 +72,11 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         onClick={(event) => setAnchorEl(event.currentTarget)}
         sx={{
           position: 'absolute',
-          top: 16,
-          right: 16,
+          top: '5px',
+          right: '5px',
           zIndex: 3,
+          height: '54px',
+          width: '54px',
           backgroundColor: 'transparent',
           color: '#333',
           '&:hover': {

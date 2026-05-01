@@ -22,7 +22,7 @@ export const PaginationPanel = ({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '10px 0',
+        padding: '5px',
         zIndex: 0,
       }}
     >
@@ -32,6 +32,38 @@ export const PaginationPanel = ({
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
       />
+    </Stack>
+  );
+};
+
+const PaginationButton = ({
+  onClick,
+  disabled,
+  children,
+}: {
+  onClick: () => void;
+  disabled: boolean;
+  children: React.ReactNode;
+}) => {
+  return (
+    <Stack
+      component={'button'}
+      sx={{
+        border: 'none',
+        color: '#333',
+        opacity: disabled ? 0.4 : 1,
+        borderRadius: '50px',
+        padding: '15px',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        ':hover': {
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
+          cursor: disabled ? 'default' : 'pointer',
+        },
+      }}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
     </Stack>
   );
 };
@@ -55,33 +87,13 @@ export const PaginationButtons = ({
         justifyContent: 'space-between',
       }}
     >
-      <Stack
-        component={'button'}
-        sx={{
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: '#333',
-          opacity: isFirstPage ? 0.4 : 1,
-        }}
-        disabled={isFirstPage}
-        onClick={onPrevious}
-      >
+      <PaginationButton disabled={isFirstPage} onClick={onPrevious}>
         <ChevronLeft />
-      </Stack>
+      </PaginationButton>
 
-      <Stack
-        component={'button'}
-        sx={{
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: '#333',
-          opacity: isLastPage ? 0.4 : 1,
-        }}
-        disabled={isLastPage}
-        onClick={onNext}
-      >
+      <PaginationButton disabled={isLastPage} onClick={onNext}>
         <ChevronRight />
-      </Stack>
+      </PaginationButton>
     </Stack>
   );
 };

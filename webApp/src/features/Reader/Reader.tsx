@@ -38,7 +38,7 @@ export const Reader = ({ data }: { data: ReaderData }) => {
         alignItems: 'center',
         padding: '80px 0px 120px 0px',
         flex: '1 0 0',
-        borderRadius: '16px',
+        borderRadius: '30px',
         gap: '90px',
         position: 'relative',
       }}
