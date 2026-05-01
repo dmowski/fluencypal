@@ -1,97 +1,12 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
-import { ChevronLeft, ChevronRight, Mic, Pause } from 'lucide-react';
+import { Mic, Pause } from 'lucide-react';
 import { useState } from 'react';
 import { useLingui } from '@lingui/react';
-
-export const ReaderParagraph = ({ text }: { text: string }) => (
-  <Typography
-    variant="body1"
-    sx={{
-      fontFamily: 'serif',
-      fontSize: '36px',
-      lineHeight: '1.5',
-      textAlign: 'justify',
-    }}
-  >
-    {text}
-  </Typography>
-);
-
-const PaginationButtons = ({
-  onPrevious,
-  onNext,
-  isFirstPage,
-  isLastPage,
-}: {
-  onPrevious: () => void;
-  onNext: () => void;
-  isFirstPage: boolean;
-  isLastPage: boolean;
-}) => {
-  return (
-    <Stack
-      sx={{
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      }}
-    >
-      <Stack
-        component={'button'}
-        sx={{
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: '#333',
-          opacity: isFirstPage ? 0.4 : 1,
-        }}
-        disabled={isFirstPage}
-        onClick={onPrevious}
-      >
-        <ChevronLeft />
-      </Stack>
-
-      <Stack
-        component={'button'}
-        sx={{
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: '#333',
-          opacity: isLastPage ? 0.4 : 1,
-        }}
-        disabled={isLastPage}
-        onClick={onNext}
-      >
-        <ChevronRight />
-      </Stack>
-    </Stack>
-  );
-};
-
-const splitParagraphsIntoPages = (paragraphs: string[], pageSizeChars: number): string[][] => {
-  const [firstParagraph, ...restParagraphs] = paragraphs;
-
-  const pages: string[][] = [firstParagraph ? [firstParagraph] : []];
-  let currentPage: string[] = pages[0];
-  let currentPageCharCount = firstParagraph ? firstParagraph.length : 0;
-
-  restParagraphs.forEach((paragraph) => {
-    if (currentPageCharCount + paragraph.length > pageSizeChars) {
-      pages.push(currentPage);
-      currentPage = [];
-      currentPageCharCount = 0;
-    }
-    currentPage.push(paragraph);
-    currentPageCharCount += paragraph.length;
-  });
-
-  if (currentPage.length > 0) {
-    pages.push(currentPage);
-  }
-
-  return pages;
-};
+import { PaginationButtons } from './PaginationButtons';
+import { ReaderParagraph } from './ReaderParagraph';
+import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 
 export const Reader = ({ data }: { data: ReaderData }) => {
   const [activePage, setActivePage] = useState(1);
