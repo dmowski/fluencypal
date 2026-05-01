@@ -4,21 +4,6 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
-- Highlights: Functionality
-
-- Translate on hover
-  Create a separate function to translate and use cache (localstorage)
-
-When the user hover over word, we need to show translation of the word.
-
-1. You need to refactor translate by extracting clean function to get translation
-   webApp/src/features/Translation/useTranslate.tsx
-
-2. In books settings add a new field, "Translate to" field
-   webApp/src/features/Reader/ReaderSpeechSettingsButton.tsx
-
-3. when user hover over a word, show flying tooltip near cursor with translation. When translation is loading, do not show tooltip
-
 - Translate on hover
 
 - Reading: How to handle transcripts

@@ -11,6 +11,7 @@ import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { ReaderButton } from './ReaderButton';
 import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTranscript';
 import { Markdown } from '../uiKit/Markdown/Markdown';
+import { useReaderSettings } from './useReaderSettings';
 import { useBooks } from './useBooks';
 
 export const Reader = ({ data }: { data: Book }) => {
@@ -23,6 +24,7 @@ export const Reader = ({ data }: { data: Book }) => {
   const activeParagraphIndex = 0;
 
   const speech = useBrowserSpeech();
+  const readerSettings = useReaderSettings();
   const recorder = useNativeRealtimeTranscript();
 
   const isRecording = recorder.isActive || recorder.isActivating;
@@ -151,6 +153,8 @@ export const Reader = ({ data }: { data: Book }) => {
                   key={index}
                   paragraphIndex={index}
                   words={paragraph}
+                  sourceLanguage={readerSettings.language}
+                  targetLanguage={readerSettings.translateToLanguage}
                   onWordClick={playText}
                   onTextSelected={playText}
                   highlights={(data.highlights ?? []).filter(

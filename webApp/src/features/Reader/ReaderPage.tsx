@@ -5,6 +5,7 @@ import { Reader } from './Reader';
 import { ReaderPageStyle } from './style';
 import { BooksProvider, useBooks } from './useBooks';
 import { BooksList } from './BooksList';
+import { ReaderSettingsProvider } from './useReaderSettings';
 
 const ReaderComponent = () => {
   const books = useBooks();
@@ -40,7 +41,9 @@ const ReaderComponent = () => {
 export const ReaderPage = () => {
   return (
     <BooksProvider>
-      <ReaderComponent />
+      <ReaderSettingsProvider>
+        <ReaderComponent />
+      </ReaderSettingsProvider>
     </BooksProvider>
   );
 };

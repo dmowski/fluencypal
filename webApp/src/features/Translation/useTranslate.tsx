@@ -1,4 +1,3 @@
-import { translateBatchRequest, translateRequest } from '@/app/api/translate/translateRequest';
 import { useSettings } from '../Settings/useSettings';
 import { getPageLangCode } from '../Lang/lang';
 import { useEffect, useMemo, useState } from 'react';
@@ -7,43 +6,13 @@ import { useLingui } from '@lingui/react';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { ArrowDown, X } from 'lucide-react';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
-import { fullLanguagesMap } from '@/libs/language/languages';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { NativeLangCode } from '@/libs/language/type';
-
-const localStoragePrefix = 'translate_';
-const isUseCache = false;
-
-const getTranslatorCache = (
-  sourceLanguage: string | null,
-  targetLanguage: string | null,
-): Record<string, string> => {
-  const localStorageKey = `${localStoragePrefix}${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
-  const cacheString = localStorage.getItem(localStorageKey);
-  if (cacheString) {
-    try {
-      const cache = JSON.parse(cacheString);
-      return cache;
-    } catch (e) {
-      console.log('Error parsing translation cache from localStorage', e);
-      return {};
-    }
-  }
-  return {};
-};
-
-const setTranslatorCache = (
-  sourceLanguage: string | null,
-  targetLanguage: string | null,
-  cache: Record<string, string>,
-) => {
-  const localStorageKey = `${localStoragePrefix}${sourceLanguage || 'auto'}-${targetLanguage || 'auto'}`;
-  try {
-    localStorage.setItem(localStorageKey, JSON.stringify(cache));
-  } catch (e) {
-    console.log('Error saving translation cache to localStorage', e);
-  }
-};
+import {
+  getBatchTranslation,
+  getTranslation,
+  resolveTranslateTargetLanguage,
+} from './translationHelpers';
 
 export const useTranslate = () => {
   const settings = useSettings();
@@ -55,18 +24,15 @@ export const useTranslate = () => {
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const learningLanguage = settings.languageCode || 'en';
 
-  const targetLanguage = useMemo(() => {
-    const targetCandidates = [nativeLanguageCode, pageLangCode].filter(Boolean);
-
-    const candidate =
-      targetCandidates.find(
-        (lang) => lang && lang !== learningLanguage && fullLanguagesMap[lang],
-      ) || null;
-
-    const candidateLangCode = candidate ? fullLanguagesMap[candidate] || null : null;
-
-    return candidateLangCode?.languageCode || null;
-  }, [nativeLanguageCode, pageLangCode]);
+  const targetLanguage = useMemo(
+    () =>
+      resolveTranslateTargetLanguage({
+        nativeLanguageCode,
+        pageLangCode,
+        learningLanguage,
+      }),
+    [learningLanguage, nativeLanguageCode, pageLangCode],
+  );
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
 
@@ -80,26 +46,11 @@ export const useTranslate = () => {
       return '';
     }
 
-    let cache = isUseCache
-      ? getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage)
-      : {};
-    if (cache[props.text]) {
-      return cache[props.text];
-    }
-
-    const response = await translateRequest({
+    return getTranslation({
       text: props.text,
       sourceLanguage: props.sourceLanguage || null,
-      targetLanguage: finalTargetLanguage,
+      targetLanguage: finalTargetLanguage || null,
     });
-
-    if (isUseCache) {
-      cache = getTranslatorCache(props.sourceLanguage || null, finalTargetLanguage);
-      cache[props.text] = response.translatedText;
-      setTranslatorCache(props.sourceLanguage || null, finalTargetLanguage, cache);
-    }
-
-    return response.translatedText;
   };
 
   const translateBatchText = async (props: {
@@ -112,13 +63,11 @@ export const useTranslate = () => {
       return [];
     }
 
-    const response = await translateBatchRequest({
+    return getBatchTranslation({
       texts: props.texts,
       sourceLanguage: props.sourceLanguage || null,
-      targetLanguage: finalTargetLanguage,
+      targetLanguage: finalTargetLanguage || null,
     });
-
-    return response.translatedTexts;
   };
 
   const [isTranslating, setIsTranslating] = useState(false);

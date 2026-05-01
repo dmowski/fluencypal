@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   IconButton,
   InputLabel,
@@ -13,7 +12,10 @@ import { Settings } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
+import { fullLanguagesMap } from '@/libs/language/languages';
+import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from './useBrowserSpeech';
+import { useReaderSettings } from './useReaderSettings';
 
 type ReaderSpeechSettingsButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
@@ -23,6 +25,7 @@ const PREVIEW_TEXT = 'This is a preview of the selected voice.';
 
 export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButtonProps) => {
   const { i18n } = useLingui();
+  const readerSettings = useReaderSettings();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const open = Boolean(anchorEl);
@@ -64,6 +67,19 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
     const nextVoiceURI = event.target.value;
     speech.setSelectedVoiceURI(nextVoiceURI || null);
     speech.play(PREVIEW_TEXT, nextVoiceURI || null);
+  };
+
+  const translationLanguages = useMemo(
+    () =>
+      Object.values(fullLanguagesMap).sort((left, right) =>
+        left.englishName.localeCompare(right.englishName),
+      ),
+    [],
+  );
+
+  const handleTranslateToChange = (event: SelectChangeEvent<string>) => {
+    const nextLanguage = event.target.value;
+    readerSettings.setTranslateToLanguage((nextLanguage || null) as NativeLangCode | null);
   };
 
   return (
@@ -146,6 +162,25 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 {voicesForLanguage.map((voice) => (
                   <MenuItem key={voice.voiceURI} value={voice.voiceURI}>
                     {voice.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl size="small" fullWidth>
+              <InputLabel id="reader-translate-to-select-label">
+                {i18n._('Translate to')}
+              </InputLabel>
+              <Select
+                labelId="reader-translate-to-select-label"
+                label={i18n._('Translate to')}
+                value={readerSettings.translateToLanguage || ''}
+                onChange={handleTranslateToChange}
+              >
+                <MenuItem value="">{i18n._('Off')}</MenuItem>
+                {translationLanguages.map((language) => (
+                  <MenuItem key={language.languageCode} value={language.languageCode}>
+                    {language.englishName}
                   </MenuItem>
                 ))}
               </Select>
