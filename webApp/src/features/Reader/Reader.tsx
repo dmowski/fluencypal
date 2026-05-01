@@ -9,6 +9,7 @@ import { ReaderParagraph } from './ReaderParagraph';
 import { splitParagraphsIntoPages } from './splitParagraphsIntoPages';
 import { useBrowserSpeech } from './useBrowserSpeech';
 import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
+import { ReaderButton } from './ReaderButton';
 
 export const Reader = ({ data }: { data: ReaderData }) => {
   const [activePage, setActivePage] = useState(1);
@@ -33,12 +34,11 @@ export const Reader = ({ data }: { data: ReaderData }) => {
     <Stack
       sx={{
         width: '100%',
-        backgroundColor: '#F4E1C6',
+
         color: '#000',
         alignItems: 'center',
         padding: '80px 0px 120px 0px',
         flex: '1 0 0',
-        borderRadius: '30px',
         gap: '90px',
         position: 'relative',
       }}
@@ -85,39 +85,19 @@ export const Reader = ({ data }: { data: ReaderData }) => {
                 className="buttonContainer"
                 sx={{
                   width: '100px',
-                  paddingTop: '10px',
+                  paddingTop: '15px',
                 }}
               >
                 {isRecording && activeParagraphIndex === index && (
-                  <Button
-                    startIcon={<Pause size={16} />}
-                    sx={{
-                      backgroundColor: '#EB5452',
-                      borderRadius: '50px',
-                      color: '#fff',
-                      boxShadow: 'none',
-                      padding: '5px 2px 5px 0',
-                    }}
-                    variant="contained"
-                  >
+                  <ReaderButton startIcon={<Pause size={16} />} type="error" onClick={() => {}}>
                     {i18n._('Pause')}
-                  </Button>
+                  </ReaderButton>
                 )}
 
                 {!isRecording && activeParagraphIndex === index && (
-                  <Button
-                    startIcon={<Mic size={16} />}
-                    sx={{
-                      backgroundColor: '#5285eb',
-                      borderRadius: '50px',
-                      color: '#fff',
-                      boxShadow: 'none',
-                      padding: '5px 2px 5px 0',
-                    }}
-                    variant="contained"
-                  >
+                  <ReaderButton startIcon={<Mic size={16} />} onClick={() => {}}>
                     {i18n._('Read')}
-                  </Button>
+                  </ReaderButton>
                 )}
               </Stack>
               <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>

@@ -1,3 +1,5 @@
+'use client';
+
 import { Stack } from '@mui/material';
 import { Reader } from './Reader';
 import { ReaderData } from './types';
@@ -53,18 +55,17 @@ This, then, is a book that explores how we communicate and connect. Because the 
   return (
     <Stack
       sx={{
-        padding: '40px',
+        padding: '0',
         alignItems: 'center',
         height: '100%',
         flex: '1 1 1',
+        backgroundColor: '#F4E1C6',
       }}
     >
       <Stack
         sx={{
-          borderRadius: '10px',
           minHeight: '500px',
           flex: '1 1 1',
-          maxWidth: '1400px',
           width: '100%',
         }}
       >

@@ -94,73 +94,62 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <Stack sx={{ p: 2, width: 340, gap: 2 }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-            {i18n._('Speech settings')}
-          </Typography>
+        <Stack sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px' }}>
+          <Stack>
+            <Typography variant="h5" sx={{ fontWeight: 600 }}>
+              {i18n._('Settings')}
+            </Typography>
 
-          <Typography variant="body2">
-            {i18n._('Browser speech support')}:{' '}
-            {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
-          </Typography>
+            <Typography variant="body2">
+              {i18n._('Speech support')}:{' '}
+              {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
+            </Typography>
+          </Stack>
 
-          <FormControl
-            size="small"
-            fullWidth
-            disabled={!speech.isSupported || availableLanguages.length === 0}
+          <Stack
+            sx={{
+              gap: '20px',
+            }}
           >
-            <InputLabel id="speech-language-select-label">{i18n._('Language')}</InputLabel>
-            <Select
-              labelId="speech-language-select-label"
-              label={i18n._('Language')}
-              value={speech.language}
-              onChange={(event) => speech.setLanguage(event.target.value)}
+            <FormControl
+              size="small"
+              fullWidth
+              disabled={!speech.isSupported || availableLanguages.length === 0}
             >
-              {availableLanguages.map((language) => (
-                <MenuItem key={language} value={language}>
-                  {language}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+              <InputLabel id="speech-language-select-label">{i18n._('Language')}</InputLabel>
+              <Select
+                labelId="speech-language-select-label"
+                label={i18n._('Language')}
+                value={speech.language}
+                onChange={(event) => speech.setLanguage(event.target.value)}
+              >
+                {availableLanguages.map((language) => (
+                  <MenuItem key={language} value={language}>
+                    {language}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-          <FormControl
-            size="small"
-            fullWidth
-            disabled={!speech.isSupported || voicesForLanguage.length === 0}
-          >
-            <InputLabel id="speech-voice-select-label">{i18n._('Voice')}</InputLabel>
-            <Select
-              labelId="speech-voice-select-label"
-              label={i18n._('Voice')}
-              value={selectedVoiceValue}
-              onChange={handleVoiceChange}
+            <FormControl
+              size="small"
+              fullWidth
+              disabled={!speech.isSupported || voicesForLanguage.length === 0}
             >
-              {voicesForLanguage.map((voice) => (
-                <MenuItem key={voice.voiceURI} value={voice.voiceURI}>
-                  {voice.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <Stack direction="row" spacing={1}>
-            <Button
-              variant="contained"
-              disabled={!speech.isSupported}
-              onClick={() => speech.play(PREVIEW_TEXT)}
-              sx={{ textTransform: 'none' }}
-            >
-              {i18n._('Preview voice')}
-            </Button>
-            <Button
-              variant="outlined"
-              disabled={!speech.isSupported || !speech.isPlaying}
-              onClick={speech.stop}
-              sx={{ textTransform: 'none' }}
-            >
-              {i18n._('Stop')}
-            </Button>
+              <InputLabel id="speech-voice-select-label">{i18n._('Voice')}</InputLabel>
+              <Select
+                labelId="speech-voice-select-label"
+                label={i18n._('Voice')}
+                value={selectedVoiceValue}
+                onChange={handleVoiceChange}
+              >
+                {voicesForLanguage.map((voice) => (
+                  <MenuItem key={voice.voiceURI} value={voice.voiceURI}>
+                    {voice.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Stack>
         </Stack>
       </Popover>
