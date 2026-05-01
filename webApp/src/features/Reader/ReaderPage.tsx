@@ -2,9 +2,13 @@
 
 import { Stack } from '@mui/material';
 import { Reader } from './Reader';
-import { testData } from './testData';
+import { ReaderPageStyle } from './style';
+import { useBooks } from './useBooks';
+import { BooksList } from './BooksList';
 
-export const ReaderPage = () => {
+const ReaderComponent = () => {
+  const books = useBooks();
+
   return (
     <Stack
       sx={{
@@ -13,22 +17,26 @@ export const ReaderPage = () => {
         height: '100%',
         flex: '1 1 1',
         backgroundColor: '#F4E1C6',
+        color: '#000',
       }}
     >
-      <style>{`
-        body {
-          background-color: #F4E1C6;
-        },
-      `}</style>
-      <Stack
-        sx={{
-          minHeight: '500px',
-          flex: '1 1 1',
-          width: '100%',
-        }}
-      >
-        <Reader data={testData} />
-      </Stack>
+      {!books.active && <BooksList />}
+      {books.active && (
+        <Stack
+          sx={{
+            minHeight: '500px',
+            flex: '1 1 1',
+            width: '100%',
+          }}
+        >
+          <Reader data={books.active} />
+        </Stack>
+      )}
+      <ReaderPageStyle />
     </Stack>
   );
+};
+
+export const ReaderPage = () => {
+  return <ReaderComponent />;
 };
