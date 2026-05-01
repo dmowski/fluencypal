@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { testData } from './testData';
-import { Book } from './types';
+import { Book, HighlightedText } from './types';
 import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 import { loadUsersBooksFromIndexedDb, saveUsersBooksToIndexedDb } from './booksIndexedDb';
 
@@ -67,11 +67,48 @@ const useBooksState = () => {
     setActive((prev) => (prev === bookToDelete ? null : prev));
   };
 
+  const updateActiveBook = (updater: (book: Book) => Book) => {
+    setActive((prevActive) => {
+      if (!prevActive) return prevActive;
+
+      const nextActive = updater(prevActive);
+      setUsersBooks((prevBooks) =>
+        prevBooks.map((book) => (book === prevActive ? nextActive : book)),
+      );
+
+      return nextActive;
+    });
+  };
+
+  const applySelectedHighlight = (highlight: HighlightedText) => {
+    updateActiveBook((book) => ({
+      ...book,
+      highlights: [...(book.highlights ?? []), { ...highlight, note: highlight.note ?? '' }],
+    }));
+  };
+
+  const removeHighlight = (highlight: HighlightedText) => {
+    updateActiveBook((book) => ({
+      ...book,
+      highlights: (book.highlights ?? []).filter(
+        (h) =>
+          !(
+            h.paragraphIndex === highlight.paragraphIndex &&
+            h.startIndex === highlight.startIndex &&
+            h.endIndex === highlight.endIndex &&
+            h.color === highlight.color
+          ),
+      ),
+    }));
+  };
+
   return {
     active,
     setActive,
     addBook,
     deleteBook,
+    applySelectedHighlight,
+    removeHighlight,
     usersBooks,
     testBooks,
   };

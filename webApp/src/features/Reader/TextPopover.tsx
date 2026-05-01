@@ -8,9 +8,16 @@ type TextPopoverProps = {
     left: number;
   } | null;
   onClose: () => void;
+  onColorSelect: (color: string) => void;
+  activeColor?: string;
 };
 
-export const TextPopover = ({ anchorPosition, onClose }: TextPopoverProps) => {
+export const TextPopover = ({
+  anchorPosition,
+  onClose,
+  onColorSelect,
+  activeColor,
+}: TextPopoverProps) => {
   return (
     <Popover
       open={Boolean(anchorPosition)}
@@ -25,14 +32,16 @@ export const TextPopover = ({ anchorPosition, onClose }: TextPopoverProps) => {
             key={color}
             component="button"
             type="button"
-            onClick={onClose}
+            onClick={() => onColorSelect(color)}
             sx={{
               width: 28,
               height: 28,
               borderRadius: '3px',
-              border: '1px solid #C7C7C7',
+              border: activeColor === color ? '5px solid #333' : '1px solid #C7C7C7',
               backgroundColor: color,
               cursor: 'pointer',
+              outline: activeColor === color ? '2px solid #fff' : 'none',
+              outlineOffset: '-3px',
             }}
           />
         ))}

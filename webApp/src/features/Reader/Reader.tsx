@@ -11,10 +11,12 @@ import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { ReaderButton } from './ReaderButton';
 import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTranscript';
 import { Markdown } from '../uiKit/Markdown/Markdown';
+import { useBooks } from './useBooks';
 
 export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
+  const books = useBooks();
 
   const pageCount = 1;
 
@@ -147,9 +149,15 @@ export const Reader = ({ data }: { data: Book }) => {
               <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
                 <ReaderParagraph
                   key={index}
+                  paragraphIndex={index}
                   words={paragraph}
                   onWordClick={playText}
                   onTextSelected={playText}
+                  highlights={(data.highlights ?? []).filter(
+                    (highlight) => (highlight.paragraphIndex ?? 0) === index,
+                  )}
+                  onHighlightColorSelect={books.applySelectedHighlight}
+                  onRemoveHighlight={books.removeHighlight}
                 />
               </Stack>
               <Stack

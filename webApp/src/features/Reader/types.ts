@@ -11,10 +11,11 @@ export interface Book {
 }
 
 export interface HighlightedText {
+  paragraphIndex: number;
   startIndex: number;
   endIndex: number;
   color: string;
-  note: string;
+  note?: string;
 }
 
 export interface ReadingProgress {
