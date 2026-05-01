@@ -15,8 +15,9 @@ export const getPointerPosition = (
 });
 
 export const getPopoverPositionFromRect = (rect: DOMRect): { top: number; left: number } => ({
-  top: rect.bottom + window.scrollY + 8,
-  left: rect.left + window.scrollX + rect.width / 2,
+  // MUI Popover anchorPosition expects viewport (client) coordinates.
+  top: rect.bottom + 8,
+  left: rect.left + rect.width / 2,
 });
 
 export const createSelectionFromRange = ({

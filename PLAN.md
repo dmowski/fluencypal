@@ -4,17 +4,17 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
+- Convert EPUB to my formatted doc
+
 - Reading: How to handle transcripts
-- Convert text into words
-- convert transcript into words
+  -- Convert text into words
+  -- Convert transcript into words
 
 - 2 columns view
 - Add notes on spans (right side)
 
 - How to upload my book and convert to text?
-- Test on mobile devices
 - How to integrate it to app: read stories?
-- What to do next?
 - Create a separate landing with the product?
 
 ### EXTREME MVP:
