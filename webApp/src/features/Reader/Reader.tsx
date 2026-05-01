@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { ReaderData } from './types';
 import { ReaderHeader } from './ReaderHeader';
-import { Mic, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Mic, Pause } from 'lucide-react';
 
 export const ReaderParagraph = ({ text }: { text: string }) => (
   <Typography
@@ -17,11 +17,67 @@ export const ReaderParagraph = ({ text }: { text: string }) => (
   </Typography>
 );
 
+const PaginationButtons = ({
+  onPrevious,
+  onNext,
+  isFirstPage,
+  isLastPage,
+}: {
+  onPrevious: () => void;
+  onNext: () => void;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+}) => {
+  return (
+    <Stack
+      sx={{
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Stack
+        component={'button'}
+        sx={{
+          border: 'none',
+          backgroundColor: 'transparent',
+          color: '#333',
+          opacity: isFirstPage ? 0.4 : 1,
+        }}
+        disabled={isFirstPage}
+        onClick={onPrevious}
+      >
+        <ChevronLeft />
+      </Stack>
+
+      <Stack
+        component={'button'}
+        sx={{
+          border: 'none',
+          backgroundColor: 'transparent',
+          color: '#333',
+          opacity: isLastPage ? 0.4 : 1,
+        }}
+        disabled={isLastPage}
+        onClick={onNext}
+      >
+        <ChevronRight />
+      </Stack>
+    </Stack>
+  );
+};
+
+const splitParagraphsIntoPages = (paragraphs: string[], pageSizeChars: number): string[][] => {
+  return [];
+};
+
 export const Reader = ({ data }: { data: ReaderData }) => {
   const activePage = 1;
   const pageCount = 3;
 
   const paragraphs = data.content.split('\n').filter((paragraph) => paragraph.trim() !== '');
+
+  const pages = splitParagraphsIntoPages(paragraphs, 300);
 
   const isPlaying = false;
   const activeParagraphIndex = 0;
