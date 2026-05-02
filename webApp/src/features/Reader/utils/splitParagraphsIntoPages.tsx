@@ -1,13 +1,23 @@
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
-import { Book, BookParagraph } from '../model/types';
+import { BookParagraph } from '../model/types';
 
-export const splitIntoPages = (book: Book, wordsPerPage: number): BookParagraph[][] => {
+export type SplitIntoPagesData = {
+  fontSize: number;
+  lineHeight: number;
+  contentWidth: number;
+  contentHeight: number;
+  bookParagraphs: BookParagraph[];
+};
+
+export const splitIntoPages = ({ bookParagraphs }: SplitIntoPagesData): BookParagraph[][] => {
   const pages: BookParagraph[][] = [];
   let currentPage: BookParagraph[] = [];
   let currentPageCharCount = 0;
 
-  book.paragraphs.forEach((paragraph) => {
-    if (currentPageCharCount + paragraph.length > wordsPerPage) {
+  console.log('calculate');
+
+  bookParagraphs.forEach((paragraph) => {
+    if (currentPageCharCount + paragraph.length > 400) {
       pages.push(currentPage);
       currentPage = [];
       currentPageCharCount = 0;

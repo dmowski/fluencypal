@@ -20,8 +20,24 @@ import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 export const Reader = ({ data }: { data: Book }) => {
   const { i18n } = useLingui();
   const books = useBooks();
+  const readerSettings = useReaderSettings();
   const { activePage: storedActivePage, setActivePage } = books;
-  const pages = useMemo(() => splitIntoPages(data, 100), [data]);
+
+  const pages = useMemo(() => {
+    return splitIntoPages({
+      bookParagraphs: data.paragraphs,
+      fontSize: readerSettings.fontSize,
+      lineHeight: readerSettings.lineHeight,
+      contentWidth: readerSettings.contentWidth,
+      contentHeight: readerSettings.contentHeight,
+    });
+  }, [
+    data.paragraphs,
+    readerSettings.fontSize,
+    readerSettings.lineHeight,
+    readerSettings.contentWidth,
+    readerSettings.contentHeight,
+  ]);
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);
   const activePage = Math.min(Math.max(storedActivePage, 1), maxPage);
@@ -30,7 +46,6 @@ export const Reader = ({ data }: { data: Book }) => {
   const activeParagraphIndex = 0;
 
   const speech = useBrowserSpeech();
-  const readerSettings = useReaderSettings();
   const recorder = useNativeRealtimeTranscript();
 
   const isShowRecorder = false;
@@ -146,7 +161,11 @@ export const Reader = ({ data }: { data: Book }) => {
                 </Stack>
                 <Stack
                   key={index}
-                  sx={{ width: `${readerSettings.contentWidth}px`, position: 'relative', zIndex: 1 }}
+                  sx={{
+                    width: `${readerSettings.contentWidth}px`,
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
                 >
                   <ReaderParagraph
                     key={index}
