@@ -100,6 +100,11 @@ msgstr "1 AI гадзіна"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI гадзіна ≈ 1 гадзіна актыўнай размовы з AI."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#. js-lingui-explicit-id
+msgid "1 column"
+msgstr "1 калонка"
+
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #. js-lingui-explicit-id
@@ -150,6 +155,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "16 languages to practice"
 msgstr "16 моў для практыкі"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
+#. js-lingui-explicit-id
+msgid "2 columns"
+msgstr "2 калонкі"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id
@@ -262,6 +272,18 @@ msgstr "Акадэмічны спіс слоў"
 msgid "Accept"
 msgstr "Прыняць"
 
+#: src/features/SEO/metadata.ts:61
+#. js-lingui-explicit-id
+msgid ""
+"Access and manage your personal library of books with FluencyPal's Reader "
+"feature. Upload your own books, track your reading progress, and enjoy a "
+"personalized reading experience that helps you improve your English skills."
+msgstr ""
+"Доступ і кіраванне вашай персанальнай бібліятэкай кніг з дапамогай функцыі "
+"Чытача ад FluencyPal. Загружайце вашыя ўласныя кнігі, адсочвайце ваш "
+"прагрэс у чытанні і атрымлівайце асалоду ад персаналізаванага вопыту "
+"чытання, які дапамагае палепшыць вашы веды англійскай мовы."
+
 #: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
@@ -302,7 +324,7 @@ msgstr "План дзеянняў для паляпшэння крытычных
 msgid "Active"
 msgstr "Актыўны"
 
-#: src/features/Reader/AddBookModal.tsx:232
+#: src/features/Reader/components/AddBookModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Дадаць"
@@ -327,8 +349,8 @@ msgstr "Дадаць каментарый"
 msgid "Add context..."
 msgstr "Дадаць кантэкст..."
 
-#: src/features/Reader/AddBookModal.tsx:147
-#: src/features/Reader/Cards.tsx:73
+#: src/features/Reader/components/AddBookModal.tsx:153
+#: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
 msgstr "Дадаць новую кнігу"
@@ -395,7 +417,7 @@ msgstr "Пашыраны"
 msgid "Advanced Academic Usage"
 msgstr "Пашыранае акадэмічнае выкарыстанне"
 
-#: src/features/SEO/metadata.ts:204
+#: src/features/SEO/metadata.ts:213
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
 msgstr "пашыранае англійскае размаўлянне"
@@ -465,7 +487,7 @@ msgstr "Упэўненасць AI"
 msgid "AI Decision"
 msgstr "Рашэнне AI"
 
-#: src/features/SEO/metadata.ts:201
+#: src/features/SEO/metadata.ts:210
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "AI англійскі рэпетытар"
@@ -500,12 +522,12 @@ msgstr "Зваротная сувязь AI, якая мае значэнне"
 msgid "AI hours left in your balance."
 msgstr "У вашым балансе засталося AI гадзін."
 
-#: src/features/SEO/metadata.ts:177
+#: src/features/SEO/metadata.ts:186
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
 msgstr "AI Interview Coach"
 
-#: src/features/SEO/metadata.ts:81
+#: src/features/SEO/metadata.ts:90
 #. js-lingui-explicit-id
 msgid "AI Interview Practice"
 msgstr "AI Інтэрв'ю Практыка"
@@ -516,12 +538,12 @@ msgstr "AI Інтэрв'ю Практыка"
 msgid "AI knowledge about you"
 msgstr "Веданне AI пра вас"
 
-#: src/features/SEO/metadata.ts:129
+#: src/features/SEO/metadata.ts:138
 #. js-lingui-explicit-id
 msgid "AI Language Tutor"
 msgstr "Інтэрактыўны настаўнік па мове AI"
 
-#: src/features/SEO/metadata.ts:126
+#: src/features/SEO/metadata.ts:135
 #. js-lingui-explicit-id
 msgid "AI language tutor pricing"
 msgstr "Цэны на штучны інтэлект як рэпетытар з мовы"
@@ -536,7 +558,7 @@ msgstr "Адказы штучнага інтэлекту ў выглядзе т�
 msgid "AI speaking partner"
 msgstr "Партнёр для размоў на штучным інтэлекту"
 
-#: src/features/SEO/metadata.ts:237
+#: src/features/SEO/metadata.ts:246
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "Практыка маўлення з AI"
@@ -598,8 +620,8 @@ msgid "Algorithm"
 msgstr "Алгарытм"
 
 #: src/features/Alias/components/ModeSelection.tsx:32
-#: src/features/SEO/metadata.ts:137
-#: src/features/SEO/metadata.ts:140
+#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:149
 #. js-lingui-explicit-id
 msgid "Alias Game"
 msgstr "Гульня \"Аліяс\""
@@ -609,7 +631,7 @@ msgstr "Гульня \"Аліяс\""
 msgid "Alias Game Levels"
 msgstr "Узроўні гульні \"Аліяс\""
 
-#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:155
 #. js-lingui-explicit-id
 msgid "alias game online"
 msgstr "alias гульня онлайн"
@@ -624,12 +646,12 @@ msgstr "Опцыі гульні Alias"
 msgid "Alias Game Recording"
 msgstr "Запіс Гульні Alias"
 
-#: src/features/SEO/metadata.ts:147
+#: src/features/SEO/metadata.ts:156
 #. js-lingui-explicit-id
 msgid "alias in english online"
 msgstr "псеўданім па-англійску онлайн"
 
-#: src/features/SEO/metadata.ts:148
+#: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "alias online english"
 msgstr "alias online english"
@@ -1080,7 +1102,7 @@ msgstr "Лепшае значэнне для паслядоўнага паляп
 msgid "Blog"
 msgstr "Блог"
 
-#: src/features/Reader/AddBookModal.tsx:122
+#: src/features/Reader/components/AddBookModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Кніга захаваная."
@@ -1090,7 +1112,8 @@ msgstr "Кніга захаваная."
 msgid "Booking a Doctor's Appointment"
 msgstr "Запіс на прыём да лекара"
 
-#: src/features/Reader/BooksList.tsx:39
+#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
 msgstr "Кнігі"
@@ -1327,7 +1350,7 @@ msgstr "Ці магу я выкарыстоўваць гэта на смартф
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/AddBookModal.tsx:229
+#: src/features/Reader/components/AddBookModal.tsx:260
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1375,13 +1398,13 @@ msgstr "Карта праверана"
 msgid "Card verified. Loading..."
 msgstr "Карта праверана. Загрузка..."
 
-#: src/features/SEO/metadata.ts:85
-#: src/features/SEO/metadata.ts:181
+#: src/features/SEO/metadata.ts:94
+#: src/features/SEO/metadata.ts:190
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Прасоўванне па Кар'еры"
 
-#: src/features/Reader/AddBookModal.tsx:164
+#: src/features/Reader/components/AddBookModal.tsx:172
 #. js-lingui-explicit-id
 msgid "Category"
 msgstr "Катэгорыя"
@@ -1607,6 +1630,17 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "Навыкі кадавання"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
+#. js-lingui-explicit-id
+msgid "Column gap"
+msgstr "Зазор паміж калонкамі"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
+#. js-lingui-explicit-id
+msgid "Columns"
+msgstr "Слупкі"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -1960,7 +1994,7 @@ msgstr "Практыка размовы"
 msgid "Conversation with AI"
 msgstr "Размова з ШІ"
 
-#: src/features/SEO/metadata.ts:206
+#: src/features/SEO/metadata.ts:215
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "практыка размоўнага англійскага"
@@ -1975,7 +2009,7 @@ msgstr "Размовы з штучным інтэлектам"
 msgid "Converted file size must be less than 250MB"
 msgstr "Памер пераўтворанага файла павінен быць менш за 250 МБ"
 
-#: src/features/Reader/AddBookModal.tsx:77
+#: src/features/Reader/components/AddBookModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Converting EPUB to markdown..."
 msgstr "Канвертаванне EPUB у markdown..."
@@ -2040,7 +2074,7 @@ msgstr "Выпраўленні, калі вы затрымаліся"
 msgid "Could not find page"
 msgstr "Не ўдалося знайсці старонку"
 
-#: src/features/SEO/metadata.ts:93
+#: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Create your "
@@ -2049,8 +2083,8 @@ msgstr ""
 "Стварыце персаналізаваны план вывучэння мовы з FluencyPal. Вызначце сваю "
 "мэту, засяродзьцеся на канкрэтных навыках, такіх як гаварэнне або слуханне."
 
-#: src/features/SEO/metadata.ts:63
-#: src/features/SEO/metadata.ts:103
+#: src/features/SEO/metadata.ts:72
+#: src/features/SEO/metadata.ts:112
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Set your "
@@ -2182,7 +2216,7 @@ msgstr "Стварыце свой уласны сцэнарый"
 msgid "Creating your improvement..."
 msgstr "Ствараем вашу паляпшэнне..."
 
-#: src/features/SEO/metadata.ts:145
+#: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
 msgid "Creative Description"
 msgstr "Крэатыўнае апісанне"
@@ -2454,7 +2488,7 @@ msgstr "Выдаліць цяперашнюю мэту"
 msgid "Delete Space"
 msgstr "Выдаліць прабел"
 
-#: src/features/Reader/BooksList.tsx:17
+#: src/features/Reader/components/BooksList.tsx:18
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Выдаліць гэту кнігу?"
@@ -2464,11 +2498,6 @@ msgstr "Выдаліць гэту кнігу?"
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Выдаляецца..."
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-msgid "Demo books"
-msgstr "Дэма кнігі"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2853,7 +2882,7 @@ msgstr "Выканана"
 msgid "Done recording"
 msgstr "Гатова запісваць"
 
-#: src/features/Reader/AddBookModal.tsx:89
+#: src/features/Reader/components/AddBookModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Гатова. Тэкст імпартаваны."
@@ -3103,27 +3132,27 @@ msgstr ""
 msgid "English Learning Plan"
 msgstr "План вучэння англійскай мовы"
 
-#: src/features/SEO/metadata.ts:130
+#: src/features/SEO/metadata.ts:139
 #. js-lingui-explicit-id
 msgid "English Practice"
 msgstr "Практыка англійскай"
 
-#: src/features/SEO/metadata.ts:205
+#: src/features/SEO/metadata.ts:214
 #. js-lingui-explicit-id
 msgid "English speaking coach"
 msgstr "Трэнер па размаўленні на англійскай мове"
 
-#: src/features/SEO/metadata.ts:208
+#: src/features/SEO/metadata.ts:217
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "Партнер па размове на англійскай мове"
 
-#: src/features/SEO/metadata.ts:202
+#: src/features/SEO/metadata.ts:211
 #. js-lingui-explicit-id
 msgid "English speaking practice app"
 msgstr "Праграма для практыкі размаўляння на англійскай мове"
 
-#: src/features/SEO/metadata.ts:144
+#: src/features/SEO/metadata.ts:153
 #. js-lingui-explicit-id
 msgid "English Vocabulary"
 msgstr "Англійская лексіка"
@@ -3360,7 +3389,7 @@ msgstr ""
 "Вопыту аднаго недастаткова, калі інтэрв’ю сфакусаваны на мысленні, "
 "кампрамісах і камунікацыі."
 
-#: src/features/SEO/metadata.ts:122
+#: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id
 msgid ""
 "Experience next-level language practice with Bruno, your friendly AI tutor. "
@@ -3485,7 +3514,7 @@ msgstr ""
 msgid "Extra Slow"
 msgstr "Экстра павольна"
 
-#: src/features/Reader/AddBookModal.tsx:80
+#: src/features/Reader/components/AddBookModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Extracting plain text..."
 msgstr "Выцягванне звычайнага тэксту..."
@@ -3495,8 +3524,8 @@ msgstr "Выцягванне звычайнага тэксту..."
 msgid "Failed to analyze image. Please try again."
 msgstr "Не ўдалося прааналізаваць выяву. Калі ласка, паспрабуйце зноў."
 
-#: src/features/Reader/AddBookModal.tsx:84
-#: src/features/Reader/AddBookModal.tsx:92
+#: src/features/Reader/components/AddBookModal.tsx:83
+#: src/features/Reader/components/AddBookModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Не ўдалося пераўтварыць EPUB."
@@ -3515,7 +3544,7 @@ msgstr ""
 "Не атрымалася выдаліць ваш рахунак. Паспрабуйце яшчэ раз пазней або "
 "звяжыцеся з распрацоўшчыкамі."
 
-#: src/features/Reader/AddBookModal.tsx:135
+#: src/features/Reader/components/AddBookModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Не ўдалося захаваць кнігу."
@@ -3608,7 +3637,7 @@ msgstr "Памер файла павінен быць менш за 250 МБ"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/AddBookModal.tsx:65
+#: src/features/Reader/components/AddBookModal.tsx:64
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Памер файла павінен быць менш за 50 МБ"
@@ -3844,7 +3873,7 @@ msgstr ""
 "прагрэсу, каб вы маглі бачыць, як растуць вашы навыкі з часам. Звычайна, "
 "людзі, якія практыкуюцца штодня, паляпшаюць на 5% за месяц."
 
-#: src/features/SEO/metadata.ts:196
+#: src/features/SEO/metadata.ts:205
 #. js-lingui-explicit-id
 msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal - Практыка англійскай мовы з ШІ для ведання і самаўпэўненасці"
@@ -3859,6 +3888,11 @@ msgstr "FluencyPal – Ваш партнёр па ангельскай мове 
 #. js-lingui-explicit-id
 msgid "Focus on shipping reliable services"
 msgstr "Скарыстайцеся дастаўкай надзейных паслуг"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#. js-lingui-explicit-id
+msgid "Font size"
+msgstr "Памер шрыфта"
 
 #: src/features/Case/data/frontend-senior/demoSnippetSection.ts:29
 #. js-lingui-explicit-id
@@ -5208,12 +5242,12 @@ msgstr "Ілюстрацыя запісу голасу"
 msgid "Images"
 msgstr "Выявы"
 
-#: src/features/Reader/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:200
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Імпарт тэксту з EPUB"
 
-#: src/features/Reader/AddBookModal.tsx:196
+#: src/features/Reader/components/AddBookModal.tsx:203
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Імпартаваць тэкст з файла EPUB"
@@ -5223,7 +5257,7 @@ msgstr "Імпартаваць тэкст з файла EPUB"
 msgid "Improve architecture, data, and resiliency answers."
 msgstr "Паляпшайце адказы пра архітэктуру, дадзеныя і ўстойлівасць."
 
-#: src/features/SEO/metadata.ts:203
+#: src/features/SEO/metadata.ts:212
 #. js-lingui-explicit-id
 msgid "improve English fluency"
 msgstr "павысіць валодаўладанне англійскай"
@@ -5459,7 +5493,7 @@ msgstr "Тэсты інтэграцыі"
 msgid "Interactive examples:"
 msgstr "Інтэрактыўныя прыклады:"
 
-#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:185
 #. js-lingui-explicit-id
 msgid "Interview Practice"
 msgstr "Практыка Субяседы\t\t\t\t\t\t "
@@ -5469,7 +5503,7 @@ msgstr "Практыка Субяседы\t\t\t\t\t\t "
 msgid "Interview practice partner"
 msgstr "Партнёр для практыкі інтэрв'ю"
 
-#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:92
 #. js-lingui-explicit-id
 msgid "Interview Preparation"
 msgstr "Падрыхтоўка да інтэрв'ю"
@@ -5485,7 +5519,7 @@ msgstr "Пытанні для інтэрв'ю"
 msgid "Interview questions matched to your exact tech stack"
 msgstr "Пытанні на інтэрв'ю, якія адпавядаюць вашай дакладнай тэхналагічнай стэку"
 
-#: src/features/SEO/metadata.ts:80
+#: src/features/SEO/metadata.ts:89
 #. js-lingui-explicit-id
 msgid "Interview Quiz"
 msgstr "Інтэрв'ю Квіз"
@@ -5496,7 +5530,7 @@ msgstr "Інтэрв'ю Квіз"
 msgid "Interview Readiness Score"
 msgstr "Ацэнка гатоўнасці да інтэрв'ю"
 
-#: src/features/SEO/metadata.ts:180
+#: src/features/SEO/metadata.ts:189
 #. js-lingui-explicit-id
 msgid "Interview Tips"
 msgstr "Парады на інтэрвію"
@@ -5616,12 +5650,12 @@ msgstr "Jest & React Testing Library"
 msgid "Job Interview"
 msgstr "Спаборніцтва на работу"
 
-#: src/features/SEO/metadata.ts:178
+#: src/features/SEO/metadata.ts:187
 #. js-lingui-explicit-id
 msgid "Job Interview Preparation"
 msgstr "Падрыхтоўка да Сумоўя на Працу"
 
-#: src/features/SEO/metadata.ts:84
+#: src/features/SEO/metadata.ts:93
 #. js-lingui-explicit-id
 msgid "Job Interview Skills"
 msgstr "Навыкі Співбесіды на Працу"
@@ -5701,6 +5735,11 @@ msgstr "Проста Гаварыць"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Рэжым \"Проста Гаварыць\" з лепшым штучным інтэлектам за ім."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:216
+#. js-lingui-explicit-id
+msgid "Justify Text"
+msgstr "Выраўнаваць Тэкст"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -5726,24 +5765,24 @@ msgstr "План вучэбы карэйскай мовы"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Атрымаць першую працу распрацоўшчыка цяжэй, чым яна павінна быць"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Мова"
 
-#: src/features/SEO/metadata.ts:207
+#: src/features/SEO/metadata.ts:216
 #. js-lingui-explicit-id
 msgid "language immersion app"
 msgstr "дадатак для пагружэння ў мову"
 
-#: src/features/SEO/metadata.ts:132
+#: src/features/SEO/metadata.ts:141
 #. js-lingui-explicit-id
 msgid "Language Learning"
 msgstr "Вучэнне моваў"
 
-#: src/features/SEO/metadata.ts:143
+#: src/features/SEO/metadata.ts:152
 #. js-lingui-explicit-id
 msgid "Language Learning Game"
 msgstr "Гульня для вывучэння мовы"
@@ -5850,7 +5889,7 @@ msgstr "Вучыцеся дзе-небудзь, калі-небудзь"
 msgid "Learn at full speed with full access"
 msgstr "Вывучайце на поўнай хуткасці з поўным доступам"
 
-#: src/features/SEO/metadata.ts:128
+#: src/features/SEO/metadata.ts:137
 #. js-lingui-explicit-id
 msgid "Learn English"
 msgstr "Вывучайце англійскую"
@@ -5988,6 +6027,11 @@ msgstr "Абмежаваныя галасавыя функцыі"
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "Дасягнуты межы"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:290
+#. js-lingui-explicit-id
+msgid "Line height"
+msgstr "Вышыня радка"
 
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
@@ -6335,12 +6379,12 @@ msgstr ""
 msgid "Mock Frontend Interviews with AI to Land Your First Dev Job"
 msgstr "Мадэльныя інтэрв'ю з ІІ для атрымання першай працы распрацоўніка"
 
-#: src/features/SEO/metadata.ts:82
+#: src/features/SEO/metadata.ts:91
 #. js-lingui-explicit-id
 msgid "Mock Interview Questions"
 msgstr "Пытанні для імітацыі інтэрв'ю"
 
-#: src/features/SEO/metadata.ts:179
+#: src/features/SEO/metadata.ts:188
 #. js-lingui-explicit-id
 msgid "Mock Interviews"
 msgstr "Інтэрв’ю па мадэлі "
@@ -6825,7 +6869,7 @@ msgstr "Не знойдзена"
 msgid "Not running inside Telegram App"
 msgstr "Не запушчана ў дадатку Telegram"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Не падтрымліваецца"
@@ -6868,7 +6912,7 @@ msgstr ""
 "                                  StartUp\" з зарэгістраваным офісам у "
 "Варшаве."
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Выкл."
@@ -6907,7 +6951,7 @@ msgstr "Яшчэ адна рэч."
 msgid "One thing left to do"
 msgstr "Застаецца адно, што трэба зрабіць"
 
-#: src/features/SEO/metadata.ts:127
+#: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Анлайн англійская"
@@ -6934,6 +6978,11 @@ msgstr "Адкрыць"
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "Адкрыць панэль кіравання"
+
+#: src/features/Reader/components/DevPanel.tsx:36
+#. js-lingui-explicit-id
+msgid "Open Dev Panel"
+msgstr "Адкрыць панэль распрацоўніка"
 
 #: src/features/Usage/UsageStatsCards.tsx:593
 #. js-lingui-explicit-id
@@ -7057,6 +7106,11 @@ msgstr "Мова старонкі"
 msgid "Paid plan:"
 msgstr "Платны план:"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:271
+#. js-lingui-explicit-id
+msgid "Paragraph gap"
+msgstr "Розрыў паміж абзацамі"
+
 #: src/features/Router/BlockedAccess.tsx:191
 #. js-lingui-explicit-id
 msgid "Parent / Guardian Details"
@@ -7110,11 +7164,6 @@ msgid ""
 msgstr ""
 "Устаўце тэкст сваёй працоўнай біяграфіі тут. Вы таксама можаце напісаць "
 "кароткае агляднае апісанне свайго досведу."
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-msgid "Pause"
-msgstr "Паўза"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
 #. js-lingui-explicit-id
@@ -7422,7 +7471,7 @@ msgstr "Калі ласка, абнавіце старонку і паспраб
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Калі ласка, выберыце сапраўдны аўдыёфайл (MP3, WAV, OGG або M4A)"
 
-#: src/features/Reader/AddBookModal.tsx:58
+#: src/features/Reader/components/AddBookModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Please select a valid EPUB file."
 msgstr "Калі ласка, абярыце сапраўдны файл EPUB."
@@ -7522,8 +7571,8 @@ msgstr "Практычныя парады, якія вы можаце прымя
 #: src/features/Header/HeaderStatic.tsx:16
 #: src/features/Landing/LandingPage.tsx:360
 #: src/features/Landing/PlanLandingBlock.tsx:584
-#: src/features/SEO/metadata.ts:115
-#: src/features/SEO/metadata.ts:119
+#: src/features/SEO/metadata.ts:124
+#: src/features/SEO/metadata.ts:128
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Практыка"
@@ -7558,7 +7607,7 @@ msgstr "Практыкуйцеся у запытах рэкамендацый п
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "Практыкуйцеся ў браніраванні пакоя, запыце ў годнасцях, і ў рэгістрацыі"
 
-#: src/features/SEO/metadata.ts:197
+#: src/features/SEO/metadata.ts:206
 #. js-lingui-explicit-id
 msgid ""
 "Practice conversational English with FluencyPal, your 24/7 AI tutor. "
@@ -7771,7 +7820,7 @@ msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Практыкуйцеся ў усуненні тэхнічных праблем па тэлефоне"
 
 #: src/features/RolePlay/rolePlayData.tsx:46
-#: src/features/SEO/metadata.ts:138
+#: src/features/SEO/metadata.ts:147
 #. js-lingui-explicit-id
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Практыкуйце слоўнік, творча апісваючы і адгадваючы словы"
@@ -7831,13 +7880,13 @@ msgstr ""
 msgid "Prepare for interviews, daily situations, and real-life conversations."
 msgstr "Падрыхтуйцеся да інтэрв'ю, штодзённых сітуацый і размоў у рэальным жыцці."
 
-#: src/features/SEO/metadata.ts:167
-#: src/features/SEO/metadata.ts:175
+#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:184
 #. js-lingui-explicit-id
 msgid "Prepare for the Interview"
 msgstr "Падрыхтуйцеся да інтэрв'ю"
 
-#: src/features/SEO/metadata.ts:171
+#: src/features/SEO/metadata.ts:180
 #. js-lingui-explicit-id
 msgid ""
 "Prepare for your interviews with AI-powered tools that help you practice "
@@ -7855,7 +7904,7 @@ msgstr ""
 "Падрыхтуйцеся прадэманстраваць сваё партфоліо, абмеркаваць ваш шлях у "
 "навучанні і заваяваць вашу першую прафесійную ролю."
 
-#: src/features/Reader/AddBookModal.tsx:109
+#: src/features/Reader/components/AddBookModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Падрыхтоўка кнігі..."
@@ -8160,7 +8209,6 @@ msgstr ""
 "і дызайну сістэм"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Чытаць"
@@ -8754,7 +8802,7 @@ msgstr "Захаваць"
 msgid "Save Changes"
 msgstr "Захаваць змены"
 
-#: src/features/Reader/AddBookModal.tsx:112
+#: src/features/Reader/components/AddBookModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Захаванне кнігі..."
@@ -8986,7 +9034,7 @@ msgstr "Усталяваць маю мову"
 msgid "Set the goal of your learning"
 msgstr "Выстаўце мэту вашага навучання"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:123
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Налады"
@@ -9306,7 +9354,7 @@ msgstr "Практыка маўлення"
 msgid "Speaking with a Psychologist"
 msgstr "Гаворка з псіхалогам"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:127
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Падтрымка маўлення"
@@ -9741,7 +9789,7 @@ msgstr "Прыладаецца..."
 msgid "Subscription (1 month)"
 msgstr "Падпіска (1 месяц)"
 
-#: src/features/Reader/AddBookModal.tsx:158
+#: src/features/Reader/components/AddBookModal.tsx:165
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Падзагаловак"
@@ -9766,7 +9814,7 @@ msgstr "Рэзюмэ"
 msgid "Summary:"
 msgstr "Рэзюмэ:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Падтрымліваецца"
@@ -10014,7 +10062,7 @@ msgstr "Умовы абслугоўвання"
 msgid "Terms of Use"
 msgstr "Умовы карыстання"
 
-#: src/features/SEO/metadata.ts:75
+#: src/features/SEO/metadata.ts:84
 #. js-lingui-explicit-id
 msgid ""
 "Test your interview skills with FluencyPal's AI-powered interview quiz. "
@@ -10041,7 +10089,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Тэставанне і якасць"
 
-#: src/features/Reader/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Тэкст"
@@ -10606,7 +10654,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/AddBookModal.tsx:152
+#: src/features/Reader/components/AddBookModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Назва"
@@ -10737,13 +10785,18 @@ msgstr ""
 msgid "Translate"
 msgstr "Перакладзiць"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#. js-lingui-explicit-id
+msgid "Translate on Hover"
+msgstr "Пераклад пры навядзенні курсора"
+
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Перакладзіце слова"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:183
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Перакласці на"
@@ -10868,7 +10921,7 @@ msgstr "Тэсты Юнітаў"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:20
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:19
-#: src/features/SEO/metadata.ts:163
+#: src/features/SEO/metadata.ts:172
 #. js-lingui-explicit-id
 msgid "Unknown category"
 msgstr "Невядомая катэгорыя"
@@ -10985,7 +11038,7 @@ msgstr "Загрузіце веданні мовы напрыцямую ў св�
 msgid "Upload video"
 msgstr "Загрузіць відэа"
 
-#: src/features/Reader/AddBookModal.tsx:74
+#: src/features/Reader/components/AddBookModal.tsx:73
 #. js-lingui-explicit-id
 msgid "Uploading EPUB..."
 msgstr "Загрузка EPUB..."
@@ -11133,13 +11186,13 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Слоўнік"
 
-#: src/features/SEO/metadata.ts:141
+#: src/features/SEO/metadata.ts:150
 #. js-lingui-explicit-id
 msgid "Vocabulary Practice"
 msgstr "Практыка Слоўнікавага запасу"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Голас"
@@ -11597,7 +11650,7 @@ msgstr ""
 "На працягу 2 тыдняў я перайшоў ад нервовасці да ўпэўненасці ў абмеркаванні "
 "архітэктурных рашэнняў. Атрымаў працу, якую хацеў."
 
-#: src/features/SEO/metadata.ts:142
+#: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
 msgid "Word Guessing Game"
 msgstr "Гульня ў Адгадванне Слоў"
@@ -12189,11 +12242,6 @@ msgstr "Вашы адказы будуць бачныя вашаму супер�
 msgid "Your Avatar:"
 msgstr "Ваш Аватар:"
 
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-msgid "Your books"
-msgstr "Вашы кнігі"
-
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
@@ -12371,11 +12419,26 @@ msgstr "{userName} кідае вам выклік на дэбаты!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} перамагае!"
 
-#: src/features/SEO/metadata.ts:74
-#: src/features/SEO/metadata.ts:189
+#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:198
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+#~ msgid "Demo books"
+#~ msgstr "Дэма кнігі"
+
+#: src/features/Reader/Reader.tsx:145
+#. js-lingui-explicit-id
+#~ msgid "Pause"
+#~ msgstr "Паўза"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "Your books"
+#~ msgstr "Вашы кнігі"
 
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:48
 #. js-lingui-explicit-id

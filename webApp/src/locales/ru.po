@@ -100,6 +100,11 @@ msgstr "1 час ИИ"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI-час ≈ 1 час активного разговора с ИИ."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#. js-lingui-explicit-id
+msgid "1 column"
+msgstr "1 столбец"
+
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #. js-lingui-explicit-id
@@ -150,6 +155,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "16 languages to practice"
 msgstr "16 языков для практики"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
+#. js-lingui-explicit-id
+msgid "2 columns"
+msgstr "2 колонки"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id
@@ -262,6 +272,18 @@ msgstr "Академический Список Слов"
 msgid "Accept"
 msgstr "Принять"
 
+#: src/features/SEO/metadata.ts:61
+#. js-lingui-explicit-id
+msgid ""
+"Access and manage your personal library of books with FluencyPal's Reader "
+"feature. Upload your own books, track your reading progress, and enjoy a "
+"personalized reading experience that helps you improve your English skills."
+msgstr ""
+"Доступ и управление вашей личной библиотекой книг с функцией Чтения от "
+"FluencyPal. Загружайте собственные книги, отслеживайте ваш прогресс в "
+"чтении и наслаждайтесь персонализированным опытом чтения, который поможет "
+"вам улучшить ваши навыки английского языка."
+
 #: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
@@ -302,7 +324,7 @@ msgstr "План действий для улучшения критически
 msgid "Active"
 msgstr "Активный"
 
-#: src/features/Reader/AddBookModal.tsx:232
+#: src/features/Reader/components/AddBookModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Добавить"
@@ -327,8 +349,8 @@ msgstr "Добавить комментарий"
 msgid "Add context..."
 msgstr "Добавить контекст..."
 
-#: src/features/Reader/AddBookModal.tsx:147
-#: src/features/Reader/Cards.tsx:73
+#: src/features/Reader/components/AddBookModal.tsx:153
+#: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
 msgstr "Добавить новую книгу"
@@ -395,7 +417,7 @@ msgstr "Расширенный"
 msgid "Advanced Academic Usage"
 msgstr "Продвинутое академическое использование"
 
-#: src/features/SEO/metadata.ts:204
+#: src/features/SEO/metadata.ts:213
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
 msgstr "расширенный английский разговор"
@@ -466,7 +488,7 @@ msgstr "Уверенность AI"
 msgid "AI Decision"
 msgstr "Решение ИИ"
 
-#: src/features/SEO/metadata.ts:201
+#: src/features/SEO/metadata.ts:210
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "ai English tutor"
@@ -501,14 +523,14 @@ msgstr "Обратная связь ИИ, которая имеет значен
 msgid "AI hours left in your balance."
 msgstr "Оставшиеся часы AI в вашем балансе."
 
-#: src/features/SEO/metadata.ts:177
+#: src/features/SEO/metadata.ts:186
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
 msgstr ""
 "AI Interview Coach  \n"
 "Искусственный интеллект - тренер по собеседованиям"
 
-#: src/features/SEO/metadata.ts:81
+#: src/features/SEO/metadata.ts:90
 #. js-lingui-explicit-id
 msgid "AI Interview Practice"
 msgstr "Практика интервью с ИИ"
@@ -519,12 +541,12 @@ msgstr "Практика интервью с ИИ"
 msgid "AI knowledge about you"
 msgstr "Знания AI о вас"
 
-#: src/features/SEO/metadata.ts:129
+#: src/features/SEO/metadata.ts:138
 #. js-lingui-explicit-id
 msgid "AI Language Tutor"
 msgstr "ИИ языковой репетитор"
 
-#: src/features/SEO/metadata.ts:126
+#: src/features/SEO/metadata.ts:135
 #. js-lingui-explicit-id
 msgid "AI language tutor pricing"
 msgstr "Цены на AI языкового наставника"
@@ -539,7 +561,7 @@ msgstr "Ответы ИИ предоставляются только в тек�
 msgid "AI speaking partner"
 msgstr "Партнёр для разговоров с ИИ"
 
-#: src/features/SEO/metadata.ts:237
+#: src/features/SEO/metadata.ts:246
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "Практика говорения с ИИ"
@@ -601,8 +623,8 @@ msgid "Algorithm"
 msgstr "Алгоритм"
 
 #: src/features/Alias/components/ModeSelection.tsx:32
-#: src/features/SEO/metadata.ts:137
-#: src/features/SEO/metadata.ts:140
+#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:149
 #. js-lingui-explicit-id
 msgid "Alias Game"
 msgstr "Игра \"Алиас\""
@@ -612,7 +634,7 @@ msgstr "Игра \"Алиас\""
 msgid "Alias Game Levels"
 msgstr "Уровни игры \"Alias\""
 
-#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:155
 #. js-lingui-explicit-id
 msgid "alias game online"
 msgstr "псевдоним игра онлайн"
@@ -627,12 +649,12 @@ msgstr "Опции игры Alias"
 msgid "Alias Game Recording"
 msgstr "Запись игры \"Alias\""
 
-#: src/features/SEO/metadata.ts:147
+#: src/features/SEO/metadata.ts:156
 #. js-lingui-explicit-id
 msgid "alias in english online"
 msgstr "псевдоним на английском онлайн"
 
-#: src/features/SEO/metadata.ts:148
+#: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "alias online english"
 msgstr "алиас онлайн английский"
@@ -1087,7 +1109,7 @@ msgstr "Лучшее соотношение цены и качества для 
 msgid "Blog"
 msgstr "Блог"
 
-#: src/features/Reader/AddBookModal.tsx:122
+#: src/features/Reader/components/AddBookModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Книга сохранена."
@@ -1097,7 +1119,8 @@ msgstr "Книга сохранена."
 msgid "Booking a Doctor's Appointment"
 msgstr "Запись на прием к врачу"
 
-#: src/features/Reader/BooksList.tsx:39
+#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
 msgstr "Книги"
@@ -1331,7 +1354,7 @@ msgstr "Могу ли я использовать его на смартфоне
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/AddBookModal.tsx:229
+#: src/features/Reader/components/AddBookModal.tsx:260
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1379,13 +1402,13 @@ msgstr "Карта проверена"
 msgid "Card verified. Loading..."
 msgstr "Карта подтверждена. Загрузка..."
 
-#: src/features/SEO/metadata.ts:85
-#: src/features/SEO/metadata.ts:181
+#: src/features/SEO/metadata.ts:94
+#: src/features/SEO/metadata.ts:190
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Карьерный рост"
 
-#: src/features/Reader/AddBookModal.tsx:164
+#: src/features/Reader/components/AddBookModal.tsx:172
 #. js-lingui-explicit-id
 msgid "Category"
 msgstr "Категория"
@@ -1612,6 +1635,17 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "Навыки программирования"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
+#. js-lingui-explicit-id
+msgid "Column gap"
+msgstr "Просвет между колонками"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
+#. js-lingui-explicit-id
+msgid "Columns"
+msgstr "Столбцы"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -1962,7 +1996,7 @@ msgstr "Практика разговора"
 msgid "Conversation with AI"
 msgstr "Разговор с ИИ"
 
-#: src/features/SEO/metadata.ts:206
+#: src/features/SEO/metadata.ts:215
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "практика разговорного английского"
@@ -1977,7 +2011,7 @@ msgstr "Разговоры с Искусственным Интеллектом"
 msgid "Converted file size must be less than 250MB"
 msgstr "Размер преобразованного файла должен быть меньше 250 МБ"
 
-#: src/features/Reader/AddBookModal.tsx:77
+#: src/features/Reader/components/AddBookModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Converting EPUB to markdown..."
 msgstr "Преобразование EPUB в markdown..."
@@ -2040,7 +2074,7 @@ msgstr "Исправления, когда вы застряли"
 msgid "Could not find page"
 msgstr "Не удалось найти страницу"
 
-#: src/features/SEO/metadata.ts:93
+#: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Create your "
@@ -2050,8 +2084,8 @@ msgstr ""
 "Определите свою цель, сосредоточьтесь на конкретных навыках, таких как "
 "говорение или слушание."
 
-#: src/features/SEO/metadata.ts:63
-#: src/features/SEO/metadata.ts:103
+#: src/features/SEO/metadata.ts:72
+#: src/features/SEO/metadata.ts:112
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Set your "
@@ -2185,7 +2219,7 @@ msgstr "Создайте свой собственный сценарий"
 msgid "Creating your improvement..."
 msgstr "Создание вашего улучшения..."
 
-#: src/features/SEO/metadata.ts:145
+#: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
 msgid "Creative Description"
 msgstr "Креативное описание"
@@ -2455,7 +2489,7 @@ msgstr "Удалить текущую цель"
 msgid "Delete Space"
 msgstr "Удалить пространство"
 
-#: src/features/Reader/BooksList.tsx:17
+#: src/features/Reader/components/BooksList.tsx:18
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Удалить эту книгу?"
@@ -2465,11 +2499,6 @@ msgstr "Удалить эту книгу?"
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Удаление..."
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-msgid "Demo books"
-msgstr "Демонстрационные книги"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2856,7 +2885,7 @@ msgstr "Выполнено"
 msgid "Done recording"
 msgstr "Готово, запись завершена"
 
-#: src/features/Reader/AddBookModal.tsx:89
+#: src/features/Reader/components/AddBookModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Готово. Текст импортирован."
@@ -3100,27 +3129,27 @@ msgstr ""
 msgid "English Learning Plan"
 msgstr "План Изучения Английского"
 
-#: src/features/SEO/metadata.ts:130
+#: src/features/SEO/metadata.ts:139
 #. js-lingui-explicit-id
 msgid "English Practice"
 msgstr "Практика английского"
 
-#: src/features/SEO/metadata.ts:205
+#: src/features/SEO/metadata.ts:214
 #. js-lingui-explicit-id
 msgid "English speaking coach"
 msgstr "Коуч по разговорному английскому"
 
-#: src/features/SEO/metadata.ts:208
+#: src/features/SEO/metadata.ts:217
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "Партнёр для общения на английском языке"
 
-#: src/features/SEO/metadata.ts:202
+#: src/features/SEO/metadata.ts:211
 #. js-lingui-explicit-id
 msgid "English speaking practice app"
 msgstr "Приложение для практики английского разговорного языка"
 
-#: src/features/SEO/metadata.ts:144
+#: src/features/SEO/metadata.ts:153
 #. js-lingui-explicit-id
 msgid "English Vocabulary"
 msgstr "Английский словарный запас"
@@ -3357,7 +3386,7 @@ msgstr ""
 "Опыт сам по себе недостаточен, когда в интервью акцентируется внимание на "
 "логике, компромиссах и общении."
 
-#: src/features/SEO/metadata.ts:122
+#: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id
 msgid ""
 "Experience next-level language practice with Bruno, your friendly AI tutor. "
@@ -3483,7 +3512,7 @@ msgstr ""
 msgid "Extra Slow"
 msgstr "Очень медленно"
 
-#: src/features/Reader/AddBookModal.tsx:80
+#: src/features/Reader/components/AddBookModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Extracting plain text..."
 msgstr "Извлечение обычного текста..."
@@ -3493,8 +3522,8 @@ msgstr "Извлечение обычного текста..."
 msgid "Failed to analyze image. Please try again."
 msgstr "Не удалось проанализировать изображение. Пожалуйста, попробуйте снова."
 
-#: src/features/Reader/AddBookModal.tsx:84
-#: src/features/Reader/AddBookModal.tsx:92
+#: src/features/Reader/components/AddBookModal.tsx:83
+#: src/features/Reader/components/AddBookModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Не удалось преобразовать EPUB."
@@ -3513,7 +3542,7 @@ msgstr ""
 "Не удалось удалить вашу учетную запись. Попробуйте снова позже или "
 "свяжитесь с разработчиками."
 
-#: src/features/Reader/AddBookModal.tsx:135
+#: src/features/Reader/components/AddBookModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Не удалось сохранить книгу."
@@ -3606,7 +3635,7 @@ msgstr "Размер файла должен быть меньше 250 МБ"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/AddBookModal.tsx:65
+#: src/features/Reader/components/AddBookModal.tsx:64
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Размер файла должен быть меньше 50 МБ"
@@ -3843,7 +3872,7 @@ msgstr ""
 "диаграмму прогресса, чтобы вы могли видеть, как ваши навыки улучшаются со "
 "временем. Обычно люди, занимающиеся ежедневно, улучшаются на 5% за месяц."
 
-#: src/features/SEO/metadata.ts:196
+#: src/features/SEO/metadata.ts:205
 #. js-lingui-explicit-id
 msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr ""
@@ -3860,6 +3889,11 @@ msgstr "FluencyPal – Ваш AI партнер для общения на ан�
 #. js-lingui-explicit-id
 msgid "Focus on shipping reliable services"
 msgstr "Сосредоточьтесь на предоставлении надежных услуг"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#. js-lingui-explicit-id
+msgid "Font size"
+msgstr "Размер шрифта"
 
 #: src/features/Case/data/frontend-senior/demoSnippetSection.ts:29
 #. js-lingui-explicit-id
@@ -5209,12 +5243,12 @@ msgstr "Иллюстрация голосовой записи"
 msgid "Images"
 msgstr "Изображения"
 
-#: src/features/Reader/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:200
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Импортировать текст из EPUB"
 
-#: src/features/Reader/AddBookModal.tsx:196
+#: src/features/Reader/components/AddBookModal.tsx:203
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Импортировать текст из файла EPUB"
@@ -5224,7 +5258,7 @@ msgstr "Импортировать текст из файла EPUB"
 msgid "Improve architecture, data, and resiliency answers."
 msgstr "Улучшите архитектуру, данные и ответы на вопросы устойчивости."
 
-#: src/features/SEO/metadata.ts:203
+#: src/features/SEO/metadata.ts:212
 #. js-lingui-explicit-id
 msgid "improve English fluency"
 msgstr "улучшить разговорную речь на английском"
@@ -5455,7 +5489,7 @@ msgstr "Интеграционные тесты"
 msgid "Interactive examples:"
 msgstr "Интерактивные примеры:"
 
-#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:185
 #. js-lingui-explicit-id
 msgid "Interview Practice"
 msgstr "Практика собеседований"
@@ -5465,7 +5499,7 @@ msgstr "Практика собеседований"
 msgid "Interview practice partner"
 msgstr "Партнёр для практики интервью"
 
-#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:92
 #. js-lingui-explicit-id
 msgid "Interview Preparation"
 msgstr "Подготовка к собеседованию"
@@ -5481,7 +5515,7 @@ msgstr "Вопросы для интервью"
 msgid "Interview questions matched to your exact tech stack"
 msgstr "Вопросы для интервью, соответствующие вашей точной технологической базе"
 
-#: src/features/SEO/metadata.ts:80
+#: src/features/SEO/metadata.ts:89
 #. js-lingui-explicit-id
 msgid "Interview Quiz"
 msgstr "Интервью Викторина"
@@ -5492,7 +5526,7 @@ msgstr "Интервью Викторина"
 msgid "Interview Readiness Score"
 msgstr "Оценка Готовности к Собеседованию"
 
-#: src/features/SEO/metadata.ts:180
+#: src/features/SEO/metadata.ts:189
 #. js-lingui-explicit-id
 msgid "Interview Tips"
 msgstr "Советы по прохождению интервью"
@@ -5612,12 +5646,12 @@ msgstr "Jest & React Testing Library"
 msgid "Job Interview"
 msgstr "Собеседование на работу"
 
-#: src/features/SEO/metadata.ts:178
+#: src/features/SEO/metadata.ts:187
 #. js-lingui-explicit-id
 msgid "Job Interview Preparation"
 msgstr "Подготовка к собеседованию на работу"
 
-#: src/features/SEO/metadata.ts:84
+#: src/features/SEO/metadata.ts:93
 #. js-lingui-explicit-id
 msgid "Job Interview Skills"
 msgstr "Навыки для собеседования на работу"
@@ -5702,6 +5736,11 @@ msgstr "Просто говорите"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Режим \"Просто поговорить\" с улучшенным ИИ за ним."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:216
+#. js-lingui-explicit-id
+msgid "Justify Text"
+msgstr "Выровнять текст по ширине"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -5727,24 +5766,24 @@ msgstr "План обучения корейскому языку"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Посадка на вашу первую должность разработчика труднее, чем должна быть"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Язык"
 
-#: src/features/SEO/metadata.ts:207
+#: src/features/SEO/metadata.ts:216
 #. js-lingui-explicit-id
 msgid "language immersion app"
 msgstr "приложение для языкового погружения"
 
-#: src/features/SEO/metadata.ts:132
+#: src/features/SEO/metadata.ts:141
 #. js-lingui-explicit-id
 msgid "Language Learning"
 msgstr "Изучение языка"
 
-#: src/features/SEO/metadata.ts:143
+#: src/features/SEO/metadata.ts:152
 #. js-lingui-explicit-id
 msgid "Language Learning Game"
 msgstr "Игра для изучения языка"
@@ -5853,7 +5892,7 @@ msgstr "Учись где угодно, когда угодно"
 msgid "Learn at full speed with full access"
 msgstr "Учиться на полную катушку с полным доступом"
 
-#: src/features/SEO/metadata.ts:128
+#: src/features/SEO/metadata.ts:137
 #. js-lingui-explicit-id
 msgid "Learn English"
 msgstr "Изучайте английский"
@@ -5991,6 +6030,11 @@ msgstr "Ограниченные голосовые функции"
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "Достигнуты пределы"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:290
+#. js-lingui-explicit-id
+msgid "Line height"
+msgstr "Высота строки"
 
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
@@ -6340,12 +6384,12 @@ msgstr ""
 "Моделируйте фронтенд-интервью с AI, чтобы получить свою первую работу "
 "разработчика"
 
-#: src/features/SEO/metadata.ts:82
+#: src/features/SEO/metadata.ts:91
 #. js-lingui-explicit-id
 msgid "Mock Interview Questions"
 msgstr "Вопросы для пробного интервью"
 
-#: src/features/SEO/metadata.ts:179
+#: src/features/SEO/metadata.ts:188
 #. js-lingui-explicit-id
 msgid "Mock Interviews"
 msgstr "Мок-интервью"
@@ -6834,7 +6878,7 @@ msgstr "Не найдено"
 msgid "Not running inside Telegram App"
 msgstr "Не работает в приложении Telegram"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Не поддерживается"
@@ -6876,7 +6920,7 @@ msgstr ""
 "веб-сайта, управляемого Фондом развития предпринимательства \"Twój "
 "StartUp\" с главным офисом в Варшаве."
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Выключить"
@@ -6915,7 +6959,7 @@ msgstr "Еще кое-что."
 msgid "One thing left to do"
 msgstr "Осталось сделать одну вещь"
 
-#: src/features/SEO/metadata.ts:127
+#: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Онлайн английский"
@@ -6942,6 +6986,11 @@ msgstr "Открыть"
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "Открыть Панель управления"
+
+#: src/features/Reader/components/DevPanel.tsx:36
+#. js-lingui-explicit-id
+msgid "Open Dev Panel"
+msgstr "Открыть панель разработчика"
 
 #: src/features/Usage/UsageStatsCards.tsx:593
 #. js-lingui-explicit-id
@@ -7067,6 +7116,11 @@ msgstr "Язык страницы"
 msgid "Paid plan:"
 msgstr "Платный план:"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:271
+#. js-lingui-explicit-id
+msgid "Paragraph gap"
+msgstr "Пробел между абзацами"
+
 #: src/features/Router/BlockedAccess.tsx:191
 #. js-lingui-explicit-id
 msgid "Parent / Guardian Details"
@@ -7120,11 +7174,6 @@ msgid ""
 msgstr ""
 "Вставьте текст вашего резюме здесь. Вы также можете написать краткое резюме "
 "вашего опыта."
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-msgid "Pause"
-msgstr "Пауза"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
 #. js-lingui-explicit-id
@@ -7432,7 +7481,7 @@ msgstr "Пожалуйста, обновите страницу и попроб�
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Пожалуйста, выберите допустимый аудиофайл (MP3, WAV, OGG или M4A)"
 
-#: src/features/Reader/AddBookModal.tsx:58
+#: src/features/Reader/components/AddBookModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Please select a valid EPUB file."
 msgstr "Пожалуйста, выберите действительный файл EPUB."
@@ -7532,8 +7581,8 @@ msgstr "Практические советы, которые вы можете 
 #: src/features/Header/HeaderStatic.tsx:16
 #: src/features/Landing/LandingPage.tsx:360
 #: src/features/Landing/PlanLandingBlock.tsx:584
-#: src/features/SEO/metadata.ts:115
-#: src/features/SEO/metadata.ts:119
+#: src/features/SEO/metadata.ts:124
+#: src/features/SEO/metadata.ts:128
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Практика"
@@ -7568,7 +7617,7 @@ msgstr "Практикуйте просьбы о рекомендациях пр
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "Практика бронирования номера, запроса удобств и регистрации в отеле"
 
-#: src/features/SEO/metadata.ts:197
+#: src/features/SEO/metadata.ts:206
 #. js-lingui-explicit-id
 msgid ""
 "Practice conversational English with FluencyPal, your 24/7 AI tutor. "
@@ -7776,7 +7825,7 @@ msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Практика устранения технической проблемы по телефону"
 
 #: src/features/RolePlay/rolePlayData.tsx:46
-#: src/features/SEO/metadata.ts:138
+#: src/features/SEO/metadata.ts:147
 #. js-lingui-explicit-id
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Практикуйте словарный запас, творчески описывая и угадывая слова"
@@ -7836,13 +7885,13 @@ msgstr ""
 msgid "Prepare for interviews, daily situations, and real-life conversations."
 msgstr "Готовьтесь к собеседованиям, повседневным ситуациям и реальным разговорам."
 
-#: src/features/SEO/metadata.ts:167
-#: src/features/SEO/metadata.ts:175
+#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:184
 #. js-lingui-explicit-id
 msgid "Prepare for the Interview"
 msgstr "Подготовьтесь к интервью"
 
-#: src/features/SEO/metadata.ts:171
+#: src/features/SEO/metadata.ts:180
 #. js-lingui-explicit-id
 msgid ""
 "Prepare for your interviews with AI-powered tools that help you practice "
@@ -7861,7 +7910,7 @@ msgstr ""
 "Подготовьтесь продемонстрировать свое портфолио, обсудить ваш путь обучения "
 "и получить вашу первую профессиональную роль."
 
-#: src/features/Reader/AddBookModal.tsx:109
+#: src/features/Reader/components/AddBookModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Подготовка книги..."
@@ -8166,7 +8215,6 @@ msgstr ""
 "проектирования архитектуры и системного дизайна"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Читать"
@@ -8767,7 +8815,7 @@ msgstr "Сохранить"
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: src/features/Reader/AddBookModal.tsx:112
+#: src/features/Reader/components/AddBookModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Сохранение книги..."
@@ -8998,7 +9046,7 @@ msgstr "Установить мой язык"
 msgid "Set the goal of your learning"
 msgstr "Установите цель вашего обучения"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:123
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Настройки"
@@ -9318,7 +9366,7 @@ msgstr "Практика устной речи"
 msgid "Speaking with a Psychologist"
 msgstr "Общение с психологом"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:127
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Поддержка речи"
@@ -9755,7 +9803,7 @@ msgstr "Отправка..."
 msgid "Subscription (1 month)"
 msgstr "Подписка (1 месяц)"
 
-#: src/features/Reader/AddBookModal.tsx:158
+#: src/features/Reader/components/AddBookModal.tsx:165
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Субтитры"
@@ -9780,7 +9828,7 @@ msgstr "Резюме"
 msgid "Summary:"
 msgstr "Резюме:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Поддерживается"
@@ -10026,7 +10074,7 @@ msgstr "Условия использования"
 msgid "Terms of Use"
 msgstr "Условия использования"
 
-#: src/features/SEO/metadata.ts:75
+#: src/features/SEO/metadata.ts:84
 #. js-lingui-explicit-id
 msgid ""
 "Test your interview skills with FluencyPal's AI-powered interview quiz. "
@@ -10054,7 +10102,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Тестирование и качество"
 
-#: src/features/Reader/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Текст"
@@ -10620,7 +10668,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/AddBookModal.tsx:152
+#: src/features/Reader/components/AddBookModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Заголовок"
@@ -10751,13 +10799,18 @@ msgstr ""
 msgid "Translate"
 msgstr "Перевести"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#. js-lingui-explicit-id
+msgid "Translate on Hover"
+msgstr "Навести для перевода"
+
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Переведите слово"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:183
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "# Перевести на"
@@ -10882,7 +10935,7 @@ msgstr "Юнит-тесты"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:20
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:19
-#: src/features/SEO/metadata.ts:163
+#: src/features/SEO/metadata.ts:172
 #. js-lingui-explicit-id
 msgid "Unknown category"
 msgstr "Неизвестная категория"
@@ -11001,7 +11054,7 @@ msgstr "Загрузите знания языка прямо в ваш мозг
 msgid "Upload video"
 msgstr "Загрузить видео"
 
-#: src/features/Reader/AddBookModal.tsx:74
+#: src/features/Reader/components/AddBookModal.tsx:73
 #. js-lingui-explicit-id
 msgid "Uploading EPUB..."
 msgstr "Загрузка EPUB..."
@@ -11149,13 +11202,13 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "Словарь"
 
-#: src/features/SEO/metadata.ts:141
+#: src/features/SEO/metadata.ts:150
 #. js-lingui-explicit-id
 msgid "Vocabulary Practice"
 msgstr "Практика словарного запаса"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Голос"
@@ -11614,7 +11667,7 @@ msgstr ""
 "В течение 2 недель я прошел путь от нервозности до уверенного обсуждения "
 "архитектурных решений. Получил желаемую работу."
 
-#: src/features/SEO/metadata.ts:142
+#: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
 msgid "Word Guessing Game"
 msgstr "Игра в угадывание слов"
@@ -12212,11 +12265,6 @@ msgstr "Ваши ответы будут видны вашему оппонен�
 msgid "Your Avatar:"
 msgstr "Ваш Аватар:"
 
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-msgid "Your books"
-msgstr "Ваши книги"
-
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
@@ -12394,11 +12442,26 @@ msgstr "{userName} бросает вам вызов на дебаты!"
 msgid "{winnerName} wins!"
 msgstr "{winnerName} победил!"
 
-#: src/features/SEO/metadata.ts:74
-#: src/features/SEO/metadata.ts:189
+#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:198
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+#~ msgid "Demo books"
+#~ msgstr "Демонстрационные книги"
+
+#: src/features/Reader/Reader.tsx:145
+#. js-lingui-explicit-id
+#~ msgid "Pause"
+#~ msgstr "Пауза"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "Your books"
+#~ msgstr "Ваши книги"
 
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:48
 #. js-lingui-explicit-id

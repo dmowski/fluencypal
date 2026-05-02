@@ -98,6 +98,11 @@ msgstr "1 ชั่วโมง AI"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 ชั่วโมง AI ≈ 1 ชั่วโมงของการสนทนาเชิงรุกกับ AI."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#. js-lingui-explicit-id
+msgid "1 column"
+msgstr "1 คอลัมน์"
+
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #. js-lingui-explicit-id
@@ -148,6 +153,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "16 languages to practice"
 msgstr "16 ภาษาให้ฝึกฝน"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
+#. js-lingui-explicit-id
+msgid "2 columns"
+msgstr "2 คอลัมน์"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id
@@ -258,6 +268,18 @@ msgstr "รายชื่อคำศัพท์วิชาการ"
 msgid "Accept"
 msgstr "ยอมรับ"
 
+#: src/features/SEO/metadata.ts:61
+#. js-lingui-explicit-id
+msgid ""
+"Access and manage your personal library of books with FluencyPal's Reader "
+"feature. Upload your own books, track your reading progress, and enjoy a "
+"personalized reading experience that helps you improve your English skills."
+msgstr ""
+"เข้าถึงและจัดการห้องสมุดส่วนตัวของคุณด้วยฟีเจอร์ Reader ของ FluencyPal "
+"อัปโหลดหนังสือของคุณเอง ติดตามความคืบหน้าการอ่านของคุณ "
+"และเพลิดเพลินกับประสบการณ์การอ่านที่ปรับให้เหมาะกับแต่ละบุคคลซึ่งช่วยให้คุณพ"
+"ัฒนาทักษะภาษาอังกฤษของคุณ"
+
 #: src/features/Router/BlockedAccess.tsx:117
 #. js-lingui-explicit-id
 msgid "Access Blocked"
@@ -300,7 +322,7 @@ msgstr "แผนปฏิบัติการเพื่อพัฒนาท
 msgid "Active"
 msgstr "ทำงาน"
 
-#: src/features/Reader/AddBookModal.tsx:232
+#: src/features/Reader/components/AddBookModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "เพิ่ม"
@@ -325,8 +347,8 @@ msgstr "เพิ่มความคิดเห็น"
 msgid "Add context..."
 msgstr "เพิ่มบริบท..."
 
-#: src/features/Reader/AddBookModal.tsx:147
-#: src/features/Reader/Cards.tsx:73
+#: src/features/Reader/components/AddBookModal.tsx:153
+#: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
 msgstr "เพิ่มหนังสือใหม่"
@@ -391,7 +413,7 @@ msgstr "ขั้นสูง"
 msgid "Advanced Academic Usage"
 msgstr "การใช้งานทางวิชาการขั้นสูง"
 
-#: src/features/SEO/metadata.ts:204
+#: src/features/SEO/metadata.ts:213
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
 msgstr "บทสนทนาภาษาอังกฤษขั้นสูง"
@@ -463,7 +485,7 @@ msgstr "ความมั่นใจของ AI"
 msgid "AI Decision"
 msgstr "AI Decision"
 
-#: src/features/SEO/metadata.ts:201
+#: src/features/SEO/metadata.ts:210
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "ai ผู้สอนภาษาอังกฤษ"
@@ -498,12 +520,12 @@ msgstr "ข้อเสนอแนะของ AI ที่สำคัญ"
 msgid "AI hours left in your balance."
 msgstr "ชั่วโมง AI ที่เหลือในยอดคงเหลือของคุณ"
 
-#: src/features/SEO/metadata.ts:177
+#: src/features/SEO/metadata.ts:186
 #. js-lingui-explicit-id
 msgid "AI Interview Coach"
 msgstr "โค้ชสัมภาษณ์งาน AI"
 
-#: src/features/SEO/metadata.ts:81
+#: src/features/SEO/metadata.ts:90
 #. js-lingui-explicit-id
 msgid "AI Interview Practice"
 msgstr "ฝึกสัมภาษณ์ด้วย AI"
@@ -514,12 +536,12 @@ msgstr "ฝึกสัมภาษณ์ด้วย AI"
 msgid "AI knowledge about you"
 msgstr "ความรู้เกี่ยวกับ AI ของคุณ"
 
-#: src/features/SEO/metadata.ts:129
+#: src/features/SEO/metadata.ts:138
 #. js-lingui-explicit-id
 msgid "AI Language Tutor"
 msgstr "ครูสอนภาษา AI"
 
-#: src/features/SEO/metadata.ts:126
+#: src/features/SEO/metadata.ts:135
 #. js-lingui-explicit-id
 msgid "AI language tutor pricing"
 msgstr "ราคาเรียนภาษา AI"
@@ -537,7 +559,7 @@ msgstr ""
 msgid "AI speaking partner"
 msgstr "พาร์ทเนอร์พูดคุย AI"
 
-#: src/features/SEO/metadata.ts:237
+#: src/features/SEO/metadata.ts:246
 #. js-lingui-explicit-id
 msgid "AI Speaking Practice"
 msgstr "การฝึกพูดด้วย AI"
@@ -598,8 +620,8 @@ msgid "Algorithm"
 msgstr "อัลกอริทึม"
 
 #: src/features/Alias/components/ModeSelection.tsx:32
-#: src/features/SEO/metadata.ts:137
-#: src/features/SEO/metadata.ts:140
+#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:149
 #. js-lingui-explicit-id
 msgid "Alias Game"
 msgstr "เกมนามแฝง"
@@ -609,7 +631,7 @@ msgstr "เกมนามแฝง"
 msgid "Alias Game Levels"
 msgstr "ระดับเกม Alias"
 
-#: src/features/SEO/metadata.ts:146
+#: src/features/SEO/metadata.ts:155
 #. js-lingui-explicit-id
 msgid "alias game online"
 msgstr "เกมชื่อเล่นออนไลน์"
@@ -624,12 +646,12 @@ msgstr "ตัวเลือกเกม Alias"
 msgid "Alias Game Recording"
 msgstr "บันทึกเกม Alias"
 
-#: src/features/SEO/metadata.ts:147
+#: src/features/SEO/metadata.ts:156
 #. js-lingui-explicit-id
 msgid "alias in english online"
 msgstr "โค้ดเริ่มต้นในภาษาอังกฤษออนไลน์"
 
-#: src/features/SEO/metadata.ts:148
+#: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "alias online english"
 msgstr "alias เรียนภาษาอังกฤษออนไลน์"
@@ -1080,7 +1102,7 @@ msgstr "คุ้มค่าที่สุดสำหรับการพั
 msgid "Blog"
 msgstr "บล็อก"
 
-#: src/features/Reader/AddBookModal.tsx:122
+#: src/features/Reader/components/AddBookModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "บันทึกหนังสือแล้ว"
@@ -1090,7 +1112,8 @@ msgstr "บันทึกหนังสือแล้ว"
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/Reader/BooksList.tsx:39
+#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
 msgstr "หนังสือ"
@@ -1322,7 +1345,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/AddBookModal.tsx:229
+#: src/features/Reader/components/AddBookModal.tsx:260
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1370,13 +1393,13 @@ msgstr "บัตรได้รับการยืนยันแล้ว"
 msgid "Card verified. Loading..."
 msgstr "บัตรได้รับการยืนยันแล้ว กำลังโหลด..."
 
-#: src/features/SEO/metadata.ts:85
-#: src/features/SEO/metadata.ts:181
+#: src/features/SEO/metadata.ts:94
+#: src/features/SEO/metadata.ts:190
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "ความก้าวหน้าในอาชีพ"
 
-#: src/features/Reader/AddBookModal.tsx:164
+#: src/features/Reader/components/AddBookModal.tsx:172
 #. js-lingui-explicit-id
 msgid "Category"
 msgstr "หมวดหมู่"
@@ -1599,6 +1622,17 @@ msgstr "โจทย์การเขียนโค้ดรู้สึกแ
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "ทักษะการเขียนโค้ด"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
+#. js-lingui-explicit-id
+msgid "Column gap"
+msgstr "ช่องว่างระหว่างคอลัมน์"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
+#. js-lingui-explicit-id
+msgid "Columns"
+msgstr "คอลัมน์"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -1950,7 +1984,7 @@ msgstr "การฝึกสนทนา"
 msgid "Conversation with AI"
 msgstr "การสนทนากับ AI"
 
-#: src/features/SEO/metadata.ts:206
+#: src/features/SEO/metadata.ts:215
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "การฝึกพูดภาษาอังกฤษสนทนา"
@@ -1965,7 +1999,7 @@ msgstr "การสนทนากับปัญญาประดิษฐ์
 msgid "Converted file size must be less than 250MB"
 msgstr "ขนาดไฟล์ที่แปลงต้องน้อยกว่า 250MB"
 
-#: src/features/Reader/AddBookModal.tsx:77
+#: src/features/Reader/components/AddBookModal.tsx:76
 #. js-lingui-explicit-id
 msgid "Converting EPUB to markdown..."
 msgstr "แปลง EPUB เป็น markdown..."
@@ -2030,7 +2064,7 @@ msgstr "การแก้ไขเมื่อคุณติดขัด"
 msgid "Could not find page"
 msgstr "ไม่พบหน้าที่ต้องการ"
 
-#: src/features/SEO/metadata.ts:93
+#: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Create your "
@@ -2039,8 +2073,8 @@ msgstr ""
 "สร้างแผนการเรียนรู้ภาษาส่วนบุคคลกับ FluencyPal กำหนดเป้าหมายของคุณ "
 "มุ่งเน้นไปที่ทักษะเฉพาะ เช่น การพูดหรือการฟัง"
 
-#: src/features/SEO/metadata.ts:63
-#: src/features/SEO/metadata.ts:103
+#: src/features/SEO/metadata.ts:72
+#: src/features/SEO/metadata.ts:112
 #. js-lingui-explicit-id
 msgid ""
 "Create a personalized language learning plan with FluencyPal. Set your "
@@ -2171,7 +2205,7 @@ msgstr "สร้างสถานการณ์ของคุณเอง"
 msgid "Creating your improvement..."
 msgstr "กำลังสร้างการพัฒนาของคุณ..."
 
-#: src/features/SEO/metadata.ts:145
+#: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
 msgid "Creative Description"
 msgstr "คำอธิบายเชิงสร้างสรรค์"
@@ -2449,7 +2483,7 @@ msgstr "ลบเป้าหมายปัจจุบัน"
 msgid "Delete Space"
 msgstr "ลบช่องว่าง"
 
-#: src/features/Reader/BooksList.tsx:17
+#: src/features/Reader/components/BooksList.tsx:18
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "ลบหนังสือเล่มนี้หรือไม่?"
@@ -2459,11 +2493,6 @@ msgstr "ลบหนังสือเล่มนี้หรือไม่?"
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "กำลังลบ..."
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-msgid "Demo books"
-msgstr "หนังสือตัวอย่าง"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:17
 #. js-lingui-explicit-id
@@ -2846,7 +2875,7 @@ msgstr "เสร็จแล้ว"
 msgid "Done recording"
 msgstr "บันทึกเสร็จสิ้น"
 
-#: src/features/Reader/AddBookModal.tsx:89
+#: src/features/Reader/components/AddBookModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "เสร็จสิ้น. ข้อความถูกนำเข้าแล้ว."
@@ -3085,27 +3114,27 @@ msgstr ""
 msgid "English Learning Plan"
 msgstr "แผนการเรียนภาษาอังกฤษ"
 
-#: src/features/SEO/metadata.ts:130
+#: src/features/SEO/metadata.ts:139
 #. js-lingui-explicit-id
 msgid "English Practice"
 msgstr "การฝึกภาษาอังกฤษ"
 
-#: src/features/SEO/metadata.ts:205
+#: src/features/SEO/metadata.ts:214
 #. js-lingui-explicit-id
 msgid "English speaking coach"
 msgstr "โค้ชพูดภาษาอังกฤษ"
 
-#: src/features/SEO/metadata.ts:208
+#: src/features/SEO/metadata.ts:217
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "คู่สนทนาภาษาอังกฤษ"
 
-#: src/features/SEO/metadata.ts:202
+#: src/features/SEO/metadata.ts:211
 #. js-lingui-explicit-id
 msgid "English speaking practice app"
 msgstr "แอปฝึกพูดภาษาอังกฤษ"
 
-#: src/features/SEO/metadata.ts:144
+#: src/features/SEO/metadata.ts:153
 #. js-lingui-explicit-id
 msgid "English Vocabulary"
 msgstr ""
@@ -3342,7 +3371,7 @@ msgstr ""
 "ประสบการณ์เพียงอย่างเดียวไม่เพียงพอ "
 "เมื่อการสัมภาษณ์มุ่งเน้นไปที่การใช้เหตุผล ข้อแลกเปลี่ยน และการสื่อสาร"
 
-#: src/features/SEO/metadata.ts:122
+#: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id
 msgid ""
 "Experience next-level language practice with Bruno, your friendly AI tutor. "
@@ -3462,7 +3491,7 @@ msgstr "สำรวจชุมชน เข้าร่วมการสน�
 msgid "Extra Slow"
 msgstr "ช้ามากเป็นพิเศษ"
 
-#: src/features/Reader/AddBookModal.tsx:80
+#: src/features/Reader/components/AddBookModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Extracting plain text..."
 msgstr "กำลังดึงข้อความธรรมดา..."
@@ -3472,8 +3501,8 @@ msgstr "กำลังดึงข้อความธรรมดา..."
 msgid "Failed to analyze image. Please try again."
 msgstr "การวิเคราะห์ภาพล้มเหลว กรุณาลองใหม่อีกครั้ง "
 
-#: src/features/Reader/AddBookModal.tsx:84
-#: src/features/Reader/AddBookModal.tsx:92
+#: src/features/Reader/components/AddBookModal.tsx:83
+#: src/features/Reader/components/AddBookModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "ไม่สามารถแปลง EPUB ได้"
@@ -3490,7 +3519,7 @@ msgid ""
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
 
-#: src/features/Reader/AddBookModal.tsx:135
+#: src/features/Reader/components/AddBookModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "ไม่สามารถบันทึกหนังสือได้"
@@ -3583,7 +3612,7 @@ msgstr "ขนาดไฟล์ต้องน้อยกว่า 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/AddBookModal.tsx:65
+#: src/features/Reader/components/AddBookModal.tsx:64
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "ขนาดไฟล์ต้องน้อยกว่า 50MB"
@@ -3816,7 +3845,7 @@ msgstr ""
 "แล้วสร้างแผนภูมิความก้าวหน้าเพื่อให้คุณเห็นว่าทักษะของคุณเติบโตขึ้นอย่างไรใน"
 "ช่วงเวลา โดยปกติ คนที่ฝึกฝนทุกวันจะมีการพัฒนาเพิ่มขึ้น 5% ในเวลาเดือนหนึ่ง"
 
-#: src/features/SEO/metadata.ts:196
+#: src/features/SEO/metadata.ts:205
 #. js-lingui-explicit-id
 msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – การฝึกพูดภาษาอังกฤษด้วย AI เพื่อความคล่องแคล่วและความมั่นใจ"
@@ -3831,6 +3860,11 @@ msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI
 #. js-lingui-explicit-id
 msgid "Focus on shipping reliable services"
 msgstr "มุ่งเน้นการส่งมอบบริการที่เชื่อถือได้"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#. js-lingui-explicit-id
+msgid "Font size"
+msgstr "ขนาดตัวอักษร"
 
 #: src/features/Case/data/frontend-senior/demoSnippetSection.ts:29
 #. js-lingui-explicit-id
@@ -5170,12 +5204,12 @@ msgstr "ภาพประกอบการบันทึกเสียง"
 msgid "Images"
 msgstr "รูปภาพ"
 
-#: src/features/Reader/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:200
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "นำเข้าข้อความจาก EPUB"
 
-#: src/features/Reader/AddBookModal.tsx:196
+#: src/features/Reader/components/AddBookModal.tsx:203
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "นำเข้าข้อความจากไฟล์ EPUB"
@@ -5185,7 +5219,7 @@ msgstr "นำเข้าข้อความจากไฟล์ EPUB"
 msgid "Improve architecture, data, and resiliency answers."
 msgstr "ปรับปรุงสถาปัตยกรรม, ข้อมูล, และคำตอบที่มีความยืดหยุ่นสูง."
 
-#: src/features/SEO/metadata.ts:203
+#: src/features/SEO/metadata.ts:212
 #. js-lingui-explicit-id
 msgid "improve English fluency"
 msgstr "ปรับปรุงความคล่องแคล่วในการใช้ภาษาอังกฤษ"
@@ -5423,7 +5457,7 @@ msgstr "การทดสอบการรวมระบบ"
 msgid "Interactive examples:"
 msgstr "Interactive examples: โต้ตอบตัวอย่าง:"
 
-#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:185
 #. js-lingui-explicit-id
 msgid "Interview Practice"
 msgstr "ฝึกสัมภาษณ์"
@@ -5433,7 +5467,7 @@ msgstr "ฝึกสัมภาษณ์"
 msgid "Interview practice partner"
 msgstr "พันธมิตรสำหรับฝึกการสัมภาษณ์"
 
-#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:92
 #. js-lingui-explicit-id
 msgid "Interview Preparation"
 msgstr "การเตรียมตัวสัมภาษณ์"
@@ -5449,7 +5483,7 @@ msgstr "คำถามในการสัมภาษณ์"
 msgid "Interview questions matched to your exact tech stack"
 msgstr "คำถามสัมภาษณ์ที่ตรงกับชุดเทคโนโลยีของคุณอย่างแม่นยำ"
 
-#: src/features/SEO/metadata.ts:80
+#: src/features/SEO/metadata.ts:89
 #. js-lingui-explicit-id
 msgid "Interview Quiz"
 msgstr "แบบทดสอบสัมภาษณ์"
@@ -5460,7 +5494,7 @@ msgstr "แบบทดสอบสัมภาษณ์"
 msgid "Interview Readiness Score"
 msgstr "คะแนนความพร้อมสัมภาษณ์"
 
-#: src/features/SEO/metadata.ts:180
+#: src/features/SEO/metadata.ts:189
 #. js-lingui-explicit-id
 msgid "Interview Tips"
 msgstr "เคล็ดลับการสัมภาษณ์"
@@ -5578,12 +5612,12 @@ msgstr "Jest & React Testing Library"
 msgid "Job Interview"
 msgstr "สัมภาษณ์งาน"
 
-#: src/features/SEO/metadata.ts:178
+#: src/features/SEO/metadata.ts:187
 #. js-lingui-explicit-id
 msgid "Job Interview Preparation"
 msgstr "การเตรียมตัวเพื่อสัมภาษณ์งาน"
 
-#: src/features/SEO/metadata.ts:84
+#: src/features/SEO/metadata.ts:93
 #. js-lingui-explicit-id
 msgid "Job Interview Skills"
 msgstr "ทักษะการสัมภาษณ์งาน"
@@ -5662,6 +5696,11 @@ msgstr "แค่พูดคุย"
 msgid "Just Talk mode with better AI behind it."
 msgstr "โหมด Just Talk พร้อมด้วย AI ที่ดียิ่งขึ้นอยู่เบื้องหลัง"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:216
+#. js-lingui-explicit-id
+msgid "Justify Text"
+msgstr "จัดข้อความให้ชิดขอบ"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -5687,24 +5726,24 @@ msgstr "แผนการเรียนรู้ภาษาเกาหลี
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "การได้งานนักพัฒนาแรกของคุณนั้นยากกว่าที่ควรจะเป็น"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:135
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:138
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "ภาษา"
 
-#: src/features/SEO/metadata.ts:207
+#: src/features/SEO/metadata.ts:216
 #. js-lingui-explicit-id
 msgid "language immersion app"
 msgstr "แอพการดื่มด่ำภาษา"
 
-#: src/features/SEO/metadata.ts:132
+#: src/features/SEO/metadata.ts:141
 #. js-lingui-explicit-id
 msgid "Language Learning"
 msgstr "การเรียนรู้ภาษา"
 
-#: src/features/SEO/metadata.ts:143
+#: src/features/SEO/metadata.ts:152
 #. js-lingui-explicit-id
 msgid "Language Learning Game"
 msgstr "เกมเรียนรู้ภาษา"
@@ -5813,7 +5852,7 @@ msgstr "เรียนได้ทุกที่ ทุกเวลา"
 msgid "Learn at full speed with full access"
 msgstr "เรียนรู้ด้วยความเร็วสูงสุดด้วยการเข้าถึงทั้งหมด"
 
-#: src/features/SEO/metadata.ts:128
+#: src/features/SEO/metadata.ts:137
 #. js-lingui-explicit-id
 msgid "Learn English"
 msgstr "เรียนรู้ภาษาอังกฤษ"
@@ -5955,6 +5994,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "ถึงขีดจำกัดแล้ว"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:290
+#. js-lingui-explicit-id
+msgid "Line height"
+msgstr "ความสูงของบรรทัด"
 
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
@@ -6300,12 +6344,12 @@ msgstr "สัมภาษณ์หน้าฟรอนต์เอนด์จ
 msgid "Mock Frontend Interviews with AI to Land Your First Dev Job"
 msgstr "สัมภาษณ์จำลองแนวหน้า กับ AI เพื่อเข้าสู่ตำแหน่งนักพัฒนางานแรกของคุณ"
 
-#: src/features/SEO/metadata.ts:82
+#: src/features/SEO/metadata.ts:91
 #. js-lingui-explicit-id
 msgid "Mock Interview Questions"
 msgstr "คำถามสัมภาษณ์จำลอง"
 
-#: src/features/SEO/metadata.ts:179
+#: src/features/SEO/metadata.ts:188
 #. js-lingui-explicit-id
 msgid "Mock Interviews"
 msgstr "การสัมภาษณ์ตัวอย่าง"
@@ -6783,7 +6827,7 @@ msgstr "ไม่พบ"
 msgid "Not running inside Telegram App"
 msgstr "ไม่ได้ทำงานภายในแอป Telegram"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "ไม่รองรับ"
@@ -6825,7 +6869,7 @@ msgstr ""
 "ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
 "ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "ปิด"
@@ -6865,7 +6909,7 @@ msgstr "อีกอย่างหนึ่ง."
 msgid "One thing left to do"
 msgstr "อีกสิ่งเดียวที่ต้องทำ"
 
-#: src/features/SEO/metadata.ts:127
+#: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "ออนไลน์ภาษาอังกฤษ"
@@ -6892,6 +6936,11 @@ msgstr "เปิด"
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "เปิดแผงควบคุม"
+
+#: src/features/Reader/components/DevPanel.tsx:36
+#. js-lingui-explicit-id
+msgid "Open Dev Panel"
+msgstr "เปิดแผง Dev"
 
 #: src/features/Usage/UsageStatsCards.tsx:593
 #. js-lingui-explicit-id
@@ -7012,6 +7061,11 @@ msgstr "ภาษาของหน้าเว็บ"
 msgid "Paid plan:"
 msgstr "แผนชำระเงิน:"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:271
+#. js-lingui-explicit-id
+msgid "Paragraph gap"
+msgstr "ช่องว่างย่อหน้า"
+
 #: src/features/Router/BlockedAccess.tsx:191
 #. js-lingui-explicit-id
 msgid "Parent / Guardian Details"
@@ -7066,11 +7120,6 @@ msgid ""
 msgstr ""
 "วางข้อความประวัติย่อของคุณที่นี่ "
 "คุณยังสามารถเขียนสรุปประสบการณ์ของคุณได้สั้น ๆ"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-msgid "Pause"
-msgstr "หยุดชั่วคราว"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:517
 #. js-lingui-explicit-id
@@ -7374,7 +7423,7 @@ msgstr "กรุณารีเฟรชหน้าเว็บแล้วล
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "กรุณาเลือกไฟล์เสียงที่สามารถใช้งานได้ (MP3, WAV, OGG, หรือ M4A)"
 
-#: src/features/Reader/AddBookModal.tsx:58
+#: src/features/Reader/components/AddBookModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Please select a valid EPUB file."
 msgstr "โปรดเลือกไฟล์ EPUB ที่ถูกต้อง"
@@ -7472,8 +7521,8 @@ msgstr "เคล็ดลับที่สามารถนำไปใช้
 #: src/features/Header/HeaderStatic.tsx:16
 #: src/features/Landing/LandingPage.tsx:360
 #: src/features/Landing/PlanLandingBlock.tsx:584
-#: src/features/SEO/metadata.ts:115
-#: src/features/SEO/metadata.ts:119
+#: src/features/SEO/metadata.ts:124
+#: src/features/SEO/metadata.ts:128
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "ฝึกฝน"
@@ -7508,7 +7557,7 @@ msgstr "ฝึกขอคำแนะนำเกี่ยวกับผลิ
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "ฝึกการจองห้อง การขอสิ่งอำนวยความสะดวก และการเช็คอิน"
 
-#: src/features/SEO/metadata.ts:197
+#: src/features/SEO/metadata.ts:206
 #. js-lingui-explicit-id
 msgid ""
 "Practice conversational English with FluencyPal, your 24/7 AI tutor. "
@@ -7712,7 +7761,7 @@ msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "ฝึกแก้ไขปัญหาทางเทคนิคทางโทรศัพท์"
 
 #: src/features/RolePlay/rolePlayData.tsx:46
-#: src/features/SEO/metadata.ts:138
+#: src/features/SEO/metadata.ts:147
 #. js-lingui-explicit-id
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "ฝึกฝนคำศัพท์โดยการอธิบายและทายคำอย่างสร้างสรรค์"
@@ -7772,13 +7821,13 @@ msgstr ""
 msgid "Prepare for interviews, daily situations, and real-life conversations."
 msgstr "เตรียมพร้อมสำหรับการสัมภาษณ์ สถานการณ์ในชีวิตประจำวัน และการสนทนาในชีวิตจริง"
 
-#: src/features/SEO/metadata.ts:167
-#: src/features/SEO/metadata.ts:175
+#: src/features/SEO/metadata.ts:176
+#: src/features/SEO/metadata.ts:184
 #. js-lingui-explicit-id
 msgid "Prepare for the Interview"
 msgstr "เตรียมตัวสำหรับการสัมภาษณ์"
 
-#: src/features/SEO/metadata.ts:171
+#: src/features/SEO/metadata.ts:180
 #. js-lingui-explicit-id
 msgid ""
 "Prepare for your interviews with AI-powered tools that help you practice "
@@ -7796,7 +7845,7 @@ msgstr ""
 "เตรียมแสดงผลงานของคุณ พูดคุยเกี่ยวกับเส้นทางการเรียนรู้ของคุณ "
 "และคว้าบทบาทงานมืออาชีพครั้งแรกของคุณ"
 
-#: src/features/Reader/AddBookModal.tsx:109
+#: src/features/Reader/components/AddBookModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "กำลังเตรียมหนังสือ..."
@@ -8101,7 +8150,6 @@ msgstr ""
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/Reader.tsx:155
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr ""
@@ -8689,7 +8737,7 @@ msgstr "บันทึก"
 msgid "Save Changes"
 msgstr "บันทึกการเปลี่ยนแปลง"
 
-#: src/features/Reader/AddBookModal.tsx:112
+#: src/features/Reader/components/AddBookModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "กำลังบันทึกหนังสือ..."
@@ -8920,7 +8968,7 @@ msgstr "ตั้งค่าภาษาของฉัน"
 msgid "Set the goal of your learning"
 msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:116
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:123
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "การตั้งค่า"
@@ -9238,7 +9286,7 @@ msgstr "การฝึกพูด"
 msgid "Speaking with a Psychologist"
 msgstr "การพูดคุยกับนักจิตวิทยา"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:120
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:127
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "การรองรับการพูด"
@@ -9671,7 +9719,7 @@ msgstr "กำลังส่ง..."
 msgid "Subscription (1 month)"
 msgstr "สมัครสมาชิก (1 เดือน)"
 
-#: src/features/Reader/AddBookModal.tsx:158
+#: src/features/Reader/components/AddBookModal.tsx:165
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr ""
@@ -9702,7 +9750,7 @@ msgstr "สรุป"
 msgid "Summary:"
 msgstr "สรุป:"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:121
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "รองรับ"
@@ -9944,7 +9992,7 @@ msgstr "ข้อกำหนดในการให้บริการ"
 msgid "Terms of Use"
 msgstr "ข้อกำหนดการใช้งาน"
 
-#: src/features/SEO/metadata.ts:75
+#: src/features/SEO/metadata.ts:84
 #. js-lingui-explicit-id
 msgid ""
 "Test your interview skills with FluencyPal's AI-powered interview quiz. "
@@ -9969,7 +10017,7 @@ msgstr "ทดสอบความรู้ของคุณ มีส่ว�
 msgid "Testing & Quality"
 msgstr "การทดสอบ & คุณภาพ"
 
-#: src/features/Reader/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:179
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "ข้อความ"
@@ -10528,7 +10576,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/AddBookModal.tsx:152
+#: src/features/Reader/components/AddBookModal.tsx:158
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "ชื่อเรื่อง"
@@ -10658,13 +10706,18 @@ msgstr "Transcripts อาจถูกจัดเก็บในบัญชี
 msgid "Translate"
 msgstr "แปล"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#. js-lingui-explicit-id
+msgid "Translate on Hover"
+msgstr "แปลเมื่อเลื่อนเมาส์ไปวาง"
+
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:70
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "แปลคำว่า"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:172
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:176
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:183
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -10791,7 +10844,7 @@ msgstr "การทดสอบหน่วย"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:20
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:19
-#: src/features/SEO/metadata.ts:163
+#: src/features/SEO/metadata.ts:172
 #. js-lingui-explicit-id
 msgid "Unknown category"
 msgstr "หมวดหมู่ที่ไม่รู้จัก"
@@ -10908,7 +10961,7 @@ msgstr "อัปโหลดทักษะการใช้ภาษาลง
 msgid "Upload video"
 msgstr "อัปโหลดวิดีโอ"
 
-#: src/features/Reader/AddBookModal.tsx:74
+#: src/features/Reader/components/AddBookModal.tsx:73
 #. js-lingui-explicit-id
 msgid "Uploading EPUB..."
 msgstr "กำลังอัปโหลด EPUB..."
@@ -11057,13 +11110,13 @@ msgstr ""
 msgid "Vocabulary"
 msgstr "คำศัพท์"
 
-#: src/features/SEO/metadata.ts:141
+#: src/features/SEO/metadata.ts:150
 #. js-lingui-explicit-id
 msgid "Vocabulary Practice"
 msgstr "การฝึกศัพท์"
 
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:155
-#: src/features/Reader/ReaderSpeechSettingsButton.tsx:158
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "เสียง"
@@ -11518,7 +11571,7 @@ msgstr ""
 "สัปดาห์ฉันเปลี่ยนจากความกังวลเป็นความมั่นใจในการพูดคุยเรื่องการตัดสินใจด้านส"
 "ถาปัตยกรรม ได้งานที่ฉันต้องการ"
 
-#: src/features/SEO/metadata.ts:142
+#: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
 msgid "Word Guessing Game"
 msgstr "เกมทายคำศัพท์"
@@ -12111,11 +12164,6 @@ msgstr "คำตอบของคุณจะถูกมองเห็นโ
 msgid "Your Avatar:"
 msgstr "อวตารของคุณ:"
 
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-msgid "Your books"
-msgstr "หนังสือของคุณ"
-
 #: src/features/PayWall/CardValidator.tsx:88
 #. js-lingui-explicit-id
 msgid ""
@@ -12293,11 +12341,26 @@ msgstr "{userName} ท้าให้คุณเข้าร่วมการ�
 msgid "{winnerName} wins!"
 msgstr "{winnerName} ชนะ!"
 
-#: src/features/SEO/metadata.ts:74
-#: src/features/SEO/metadata.ts:189
+#: src/features/SEO/metadata.ts:83
+#: src/features/SEO/metadata.ts:198
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/BooksList.tsx:73
+#. js-lingui-explicit-id
+#~ msgid "Demo books"
+#~ msgstr "หนังสือตัวอย่าง"
+
+#: src/features/Reader/Reader.tsx:145
+#. js-lingui-explicit-id
+#~ msgid "Pause"
+#~ msgstr "หยุดชั่วคราว"
+
+#: src/features/Reader/BooksList.tsx:47
+#. js-lingui-explicit-id
+#~ msgid "Your books"
+#~ msgstr "หนังสือของคุณ"
 
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:48
 #. js-lingui-explicit-id
