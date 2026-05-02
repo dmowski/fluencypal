@@ -2,12 +2,17 @@
 
 ## Reader helper?
 
-- Fix text selection
+- Fix text selection.
 
 - Test on mobile
-  -- add more gap padding to bottom
 
 - How to handle images?
+
+- highlights popup should not block UI
+
+- highlights became lost when resize
+
+- How to handle italic font?
 
 ### EXTREME MVP:
 

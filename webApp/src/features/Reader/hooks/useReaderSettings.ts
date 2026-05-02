@@ -60,7 +60,7 @@ const getAutoColumnsLayout = (
 const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
   const sidePaddingHorizontal = viewportWidth < 400 ? 20 : 80;
-  const sidePaddingVertical = viewportWidth < 400 ? 20 : 30;
+  const sidePaddingVertical = viewportWidth < 400 ? 50 : 30;
 
   const rawViewportHeight =
     typeof window !== 'undefined'
