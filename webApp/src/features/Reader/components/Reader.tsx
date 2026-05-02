@@ -87,7 +87,7 @@ export const Reader = ({ data }: { data: Book }) => {
       <Stack
         sx={{
           maxWidth: '900px',
-          width: '100%',
+          width: 'calc(100% - 40px)',
           minWidth: 0,
           position: 'relative',
           zIndex: 1,
