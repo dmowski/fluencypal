@@ -24,3 +24,10 @@ export interface ReadingProgress {
   startIndex: number;
   endIndex: number;
 }
+
+export interface ReaderUiSettings {
+  fontSize: number;
+  lineHeight: number;
+  contentWidth: number;
+  contentHeight: number;
+}

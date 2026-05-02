@@ -1,17 +1,8 @@
 import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
-import { BookParagraph } from '../model/types';
+import { BookParagraph, ReaderUiSettings } from '../model/types';
 
-const textAlign = 'justify';
-
-interface UiSettings {
-  fontSize: number;
-  lineHeight: number;
-  contentWidth: number;
-  contentHeight: number;
-}
-
-export interface SplitIntoPagesData extends UiSettings {
+export interface SplitIntoPagesData extends ReaderUiSettings {
   bookParagraphs: BookParagraph[];
 }
 
