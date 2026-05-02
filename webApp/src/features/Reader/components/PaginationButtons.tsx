@@ -65,6 +65,8 @@ const PaginationButton = ({
         '@media (max-width: 600px)': {
           padding: '10px',
         },
+        position: 'relative',
+        zIndex: 3,
       }}
       disabled={disabled}
       onClick={onClick}

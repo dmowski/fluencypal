@@ -51,7 +51,9 @@ export const READER_SETTINGS_RANGES = {
 
 const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
-  const sidePadding = viewportWidth < 400 ? 20 : 80;
+  const sidePaddingHorizontal = viewportWidth < 400 ? 20 : 80;
+  const sidePaddingVertical = viewportWidth < 400 ? 20 : 30;
+
   const rawViewportHeight =
     typeof window !== 'undefined'
       ? (window.document.documentElement?.clientHeight ?? window.innerHeight)
@@ -81,8 +83,11 @@ const getViewportDimensions = (): { contentWidth: number; contentHeight: number 
   }
 
   return {
-    contentWidth: Math.max(0, viewportWidth - sidePadding * 2),
-    contentHeight: Math.max(0, stableMobileViewportHeight ?? rawViewportHeight),
+    contentWidth: Math.max(0, viewportWidth - sidePaddingHorizontal * 2),
+    contentHeight: Math.max(
+      0,
+      (stableMobileViewportHeight ?? rawViewportHeight) - sidePaddingVertical * 2,
+    ),
   };
 };
 
