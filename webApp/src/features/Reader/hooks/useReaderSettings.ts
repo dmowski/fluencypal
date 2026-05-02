@@ -34,6 +34,11 @@ const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_TRANSLATE_ON_HOVER = false;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
 const DEFAULT_COLUMN_GAP = 40;
+const MOBILE_LAYOUT_WIDTH_THRESHOLD = 1024;
+const MOBILE_ORIENTATION_WIDTH_DELTA = 120;
+
+let stableMobileViewportHeight: number | null = null;
+let stableMobileViewportWidth: number | null = null;
 
 export const READER_SETTINGS_RANGES = {
   fontSize: { min: 20, max: 64, step: 1 },
@@ -45,10 +50,37 @@ export const READER_SETTINGS_RANGES = {
 const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
   const sidePadding = viewportWidth < 400 ? 20 : 80;
+  const rawViewportHeight =
+    typeof window !== 'undefined'
+      ? (window.document.documentElement?.clientHeight ?? window.innerHeight)
+      : 600;
+
+  if (typeof window !== 'undefined') {
+    const isMobileLikeViewport =
+      viewportWidth <= MOBILE_LAYOUT_WIDTH_THRESHOLD && window.navigator.maxTouchPoints > 0;
+
+    if (!isMobileLikeViewport) {
+      stableMobileViewportHeight = null;
+      stableMobileViewportWidth = null;
+    } else if (stableMobileViewportHeight === null || stableMobileViewportWidth === null) {
+      stableMobileViewportHeight = rawViewportHeight;
+      stableMobileViewportWidth = viewportWidth;
+    } else {
+      const widthDelta = Math.abs(viewportWidth - stableMobileViewportWidth);
+
+      if (widthDelta >= MOBILE_ORIENTATION_WIDTH_DELTA) {
+        stableMobileViewportHeight = rawViewportHeight;
+      } else {
+        stableMobileViewportHeight = Math.max(stableMobileViewportHeight, rawViewportHeight);
+      }
+
+      stableMobileViewportWidth = viewportWidth;
+    }
+  }
 
   return {
     contentWidth: Math.max(0, viewportWidth - sidePadding * 2),
-    contentHeight: typeof window !== 'undefined' ? window.innerHeight : 600,
+    contentHeight: Math.max(0, stableMobileViewportHeight ?? rawViewportHeight),
   };
 };
 
