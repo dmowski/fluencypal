@@ -107,18 +107,18 @@ const useBooksState = () => {
     title,
     subTitle,
     text,
-    category,
+    author,
   }: {
     title: string;
     subTitle: string;
     text: string;
-    category: string;
+    author: string;
   }) => {
     const newBook: Book = {
       id: createBookId(),
       title,
       subtitle: subTitle,
-      category: category,
+      author,
       paragraphs: splitTextIntoParagraphs(text),
       activePageIndex: 1,
     };

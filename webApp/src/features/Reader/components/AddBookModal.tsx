@@ -20,7 +20,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const books = useBooks();
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isConvertingFile, setIsConvertingFile] = useState(false);
@@ -35,7 +35,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const isDisabled =
     !title.trim() ||
     !subtitle.trim() ||
-    !category.trim() ||
+    !author.trim() ||
     !text.trim() ||
     isConvertingFile ||
     isSavingBook;
@@ -113,7 +113,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
       await books.addBook({
         title: title.trim(),
         subTitle: subtitle.trim(),
-        category: category.trim(),
+        author: author.trim(),
         text: text.trim(),
       });
 
@@ -122,7 +122,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
       setTitle('');
       setSubtitle('');
-      setCategory('');
+      setAuthor('');
       setText('');
       setConversionProgress(0);
       setConversionMessage('');
@@ -167,9 +167,9 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           required
         />
         <TextField
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
-          label={i18n._('Category')}
+          value={author}
+          onChange={(event) => setAuthor(event.target.value)}
+          label={i18n._('Author')}
           fullWidth
           required
         />

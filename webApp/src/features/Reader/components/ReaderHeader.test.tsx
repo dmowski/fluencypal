@@ -185,7 +185,7 @@ describe('ReaderHeader', () => {
         subtitle={SUBTITLE_TEXT}
         pageLabel="1"
         pageCount={3}
-        category="Story"
+        author="Story"
       />,
     );
 
@@ -209,7 +209,7 @@ describe('ReaderHeader', () => {
         subtitle={SUBTITLE_TEXT}
         pageLabel="1"
         pageCount={3}
-        category="Story"
+        author="Story"
       />,
     );
 

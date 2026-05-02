@@ -5,7 +5,7 @@ export const testData: Book = {
   id: 'the-great-gatsby',
   title: 'The Great Gatsby',
   subtitle: 'Then wear the gold hat, if that will move her',
-  category: 'F. Scott Fitzgerald',
+  author: 'F. Scott Fitzgerald',
   paragraphs:
     splitTextIntoParagraphs(`In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.
 

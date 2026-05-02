@@ -9,13 +9,13 @@ export const ReaderHeader = ({
   subtitle,
   pageLabel,
   pageCount,
-  category,
+  author,
 }: {
   title: string;
   subtitle: string;
   pageLabel: string;
   pageCount: number;
-  category: string;
+  author: string;
 }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const textBlockRef = useRef<HTMLDivElement | null>(null);
@@ -118,7 +118,7 @@ export const ReaderHeader = ({
             textAlign: 'right',
           }}
         >
-          {category}
+          {author}
         </Typography>
       </Stack>
 

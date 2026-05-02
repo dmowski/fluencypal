@@ -98,7 +98,7 @@ export const Reader = ({ data }: { data: Book }) => {
           subtitle={data.subtitle}
           pageLabel={pageLabel}
           pageCount={pageCount}
-          category={data.category}
+          author={data.author}
         />
       </Stack>
 

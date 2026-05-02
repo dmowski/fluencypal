@@ -9,7 +9,7 @@ export interface Book {
   paragraphs: BookParagraph[];
   title: string;
   subtitle: string;
-  category: string;
+  author: string;
   highlights?: HighlightedText[];
   readProgress?: ReadingProgress;
   activePageIndex?: number;

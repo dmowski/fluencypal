@@ -2,8 +2,6 @@
 
 ## Reader helper?
 
-- Change "category" to "author"
-
 - Test on mobile
 
 - Fix text selection

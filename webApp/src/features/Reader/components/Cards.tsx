@@ -64,7 +64,7 @@ export const BookCard = ({
           opacity: 0.8,
         }}
       >
-        {data.category}
+        {data.author}
       </Typography>
     </Stack>
   );

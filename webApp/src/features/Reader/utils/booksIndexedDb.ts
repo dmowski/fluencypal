@@ -22,19 +22,25 @@ const isBookRecord = (value: unknown): value is Book => {
     return false;
   }
 
-  const maybeBook = value as Partial<Book>;
+  const maybeBook = value as Partial<Book> & { category?: unknown };
+
+  const hasAuthor =
+    typeof maybeBook.author === 'string' || typeof maybeBook.category === 'string';
 
   return (
     typeof maybeBook.id === 'string' &&
     typeof maybeBook.title === 'string' &&
     typeof maybeBook.subtitle === 'string' &&
-    typeof maybeBook.category === 'string' &&
+    hasAuthor &&
     Array.isArray(maybeBook.paragraphs)
   );
 };
 
-const normalizeStoredBook = (book: Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>): Book => ({
+const normalizeStoredBook = (
+  book: (Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>) & { category?: string },
+): Book => ({
   ...book,
+  author: book.author || book.category || '',
   id: book.id || createBookId(),
 });
 
@@ -93,7 +99,7 @@ export const loadUsersBooksFromIndexedDb = async (): Promise<Book[]> => {
 
     const result = await promisifyRequest(store.getAll() as IDBRequest<unknown[]>);
     await waitForTransaction(transaction);
-    return result.filter(isBookRecord);
+    return result.filter(isBookRecord).map((book) => normalizeStoredBook(book));
   } finally {
     db.close();
   }
