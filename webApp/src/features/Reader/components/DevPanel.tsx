@@ -175,9 +175,8 @@ const DevPanelContent = () => {
                   sourceLanguage={readerSettings.language}
                   targetLanguage={null}
                   playText={() => undefined}
+                  onSelection={() => undefined}
                   highlights={[]}
-                  onHighlightColorSelect={() => undefined}
-                  onRemoveHighlight={() => undefined}
                 />
               ))}
             </Stack>

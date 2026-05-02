@@ -2,17 +2,12 @@
 
 ## Reader helper?
 
-- Fix text selection.
+Highlighted words lost when resize. Because of how we store this data and render it. Fix it
+
+- Fix text selection: weird when we start selecting outside of paragraph, it appears that we select something else
 
 - Test on mobile
-
-- How to handle images?
-
-- highlights popup should not block UI
-
-- highlights became lost when resize
-
-- How to handle italic font?
+- How to handle images, italic font?
 
 ### EXTREME MVP:
 

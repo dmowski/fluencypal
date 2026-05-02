@@ -1,4 +1,5 @@
 import { Popover, Stack, Typography } from '@mui/material';
+import { RefObject } from 'react';
 import { useEffect } from 'react';
 
 const HIGHLIGHT_COLORS = ['#FFE066', '#FFB3C6', '#BDE0FE', '#CDEAC0', '#E9D5FF'];
@@ -17,6 +18,7 @@ type TextPopoverProps = {
     top: number;
     left: number;
   } | null;
+  paperRef?: RefObject<HTMLDivElement | null>;
   onClose: () => void;
   onColorSelect: (color: string) => void;
   activeColor?: string;
@@ -26,6 +28,7 @@ type TextPopoverProps = {
 
 export const TextPopover = ({
   anchorPosition,
+  paperRef,
   onClose,
   onColorSelect,
   activeColor,
@@ -73,6 +76,7 @@ export const TextPopover = ({
       sx={{ pointerEvents: 'none' }}
       slotProps={{
         paper: {
+          ref: paperRef,
           sx: {
             pointerEvents: 'auto',
           },

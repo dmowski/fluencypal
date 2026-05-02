@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { MouseEvent, useMemo, useRef, useState } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
 import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from './FlyingTooltip';
 import {
@@ -10,16 +10,24 @@ import {
 import {
   getAbsoluteCharOffset,
   getCharHighlightColor,
-  getHighlightAtCharRange,
   getWordCharOffsets,
 } from '../utils/readerParagraphHelpers';
 import {
   canTranslateReaderText,
   normalizeSelectedText,
 } from '../utils/readerParagraphTranslationHelpers';
-import { TextPopover } from './TextPopover';
 import { HighlightedText } from '../model/types';
 import { NativeLangCode } from '@/libs/language/type';
+
+export interface ReaderParagraphSelectionPayload {
+  paragraphIndex: number;
+  selection: HighlightedText;
+  selectionText: string;
+  anchorPosition: {
+    top: number;
+    left: number;
+  };
+}
 
 export const ReaderParagraph = ({
   paragraphIndex,
@@ -31,9 +39,8 @@ export const ReaderParagraph = ({
   sourceLanguage,
   targetLanguage,
   playText,
+  onSelection,
   highlights,
-  onHighlightColorSelect,
-  onRemoveHighlight,
 }: {
   paragraphIndex: number;
   words: string[];
@@ -44,21 +51,11 @@ export const ReaderParagraph = ({
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
   playText: (word: string) => void;
+  onSelection: (payload: ReaderParagraphSelectionPayload) => void;
   highlights: HighlightedText[];
-  onHighlightColorSelect: (highlight: HighlightedText) => void;
-  onRemoveHighlight: (highlight: HighlightedText) => void;
 }) => {
-  const [popoverPosition, setPopoverPosition] = useState<{
-    top: number;
-    left: number;
-  } | null>(null);
-  const [selection, setSelection] = useState<HighlightedText | null>(null);
-  const [selectionText, setSelectionText] = useState<string | null>(null);
-  const [selectionTranslation, setSelectionTranslation] = useState<string | null>(null);
-  const [isSelectionTranslating, setIsSelectionTranslating] = useState(false);
   const [hoverTranslation, setHoverTranslation] = useState<string | null>(null);
   const [hoverPointer, setHoverPointer] = useState<{ x: number; y: number } | null>(null);
-  const selectionRequestIdRef = useRef(0);
   const hoverRequestIdRef = useRef(0);
 
   // Absolute character start offset of each word within words.join(' ').
@@ -67,68 +64,6 @@ export const ReaderParagraph = ({
     () => normalizeToNativeLangCode(sourceLanguage),
     [sourceLanguage],
   );
-
-  const handleClosePopover = () => {
-    setPopoverPosition(null);
-    setSelection(null);
-    setSelectionText(null);
-    selectionRequestIdRef.current += 1;
-    setIsSelectionTranslating(false);
-    setSelectionTranslation(null);
-  };
-
-  useEffect(() => {
-    const text = normalizeSelectedText(selectionText);
-
-    if (!selection || !text) {
-      selectionRequestIdRef.current += 1;
-      setIsSelectionTranslating(false);
-      setSelectionTranslation(null);
-      return;
-    }
-
-    if (
-      !canTranslateReaderText({
-        text,
-        sourceLanguage: normalizedSourceLanguage,
-        targetLanguage,
-      })
-    ) {
-      selectionRequestIdRef.current += 1;
-      setIsSelectionTranslating(false);
-      setSelectionTranslation(null);
-      return;
-    }
-
-    const requestId = selectionRequestIdRef.current + 1;
-    selectionRequestIdRef.current = requestId;
-    setIsSelectionTranslating(true);
-    setSelectionTranslation(null);
-
-    getTranslation({
-      text,
-      sourceLanguage: normalizedSourceLanguage,
-      targetLanguage,
-    })
-      .then((translated) => {
-        if (selectionRequestIdRef.current !== requestId) {
-          return;
-        }
-        setSelectionTranslation(translated.trim() || null);
-      })
-      .catch(() => {
-        if (selectionRequestIdRef.current !== requestId) {
-          return;
-        }
-        setSelectionTranslation(null);
-      })
-      .finally(() => {
-        if (selectionRequestIdRef.current !== requestId) {
-          return;
-        }
-        setIsSelectionTranslating(false);
-      });
-  }, [normalizedSourceLanguage, selection, selectionText, targetLanguage]);
 
   const clearHoverTranslation = () => {
     hoverRequestIdRef.current += 1;
@@ -186,13 +121,8 @@ export const ReaderParagraph = ({
     const selectedText = normalizeSelectedText(sel?.toString());
 
     if (selectedText) {
-      setSelectionText(selectedText);
       const range = sel?.rangeCount ? sel.getRangeAt(0) : null;
       const rect = range?.getBoundingClientRect();
-
-      if (rect) {
-        setPopoverPosition(getPopoverPositionFromRect(rect));
-      }
 
       if (range) {
         const rawStart = getAbsoluteCharOffset(
@@ -204,7 +134,15 @@ export const ReaderParagraph = ({
         const rawEnd = getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
 
         if (rawStart !== null && rawEnd !== null) {
-          setSelection(createSelectionFromRange({ paragraphIndex, rawStart, rawEnd }));
+          const selection = createSelectionFromRange({ paragraphIndex, rawStart, rawEnd });
+          if (rect) {
+            onSelection({
+              paragraphIndex,
+              selection,
+              selectionText: selectedText,
+              anchorPosition: getPopoverPositionFromRect(rect),
+            });
+          }
         }
       }
 
@@ -222,22 +160,23 @@ export const ReaderParagraph = ({
     const wordStart = wordCharOffsets[wordIndex];
     const wordEnd = wordStart + word.length;
 
-    setSelection(
-      createSelectionFromRange({
-        paragraphIndex,
-        rawStart: wordStart,
-        rawEnd: wordEnd,
-      }),
-    );
+    const selection = createSelectionFromRange({
+      paragraphIndex,
+      rawStart: wordStart,
+      rawEnd: wordEnd,
+    });
     // emulate select
     window.getSelection()?.setBaseAndExtent(e.currentTarget, 0, e.currentTarget, word.length);
-
-    setSelectionText(word);
 
     // Get the element's bounding rect for popover positioning
     const element = e.currentTarget as HTMLElement;
     const rect = element.getBoundingClientRect();
-    setPopoverPosition(getPopoverPositionFromRect(rect));
+    onSelection({
+      paragraphIndex,
+      selection,
+      selectionText: word,
+      anchorPosition: getPopoverPositionFromRect(rect),
+    });
   };
 
   return (
@@ -335,53 +274,7 @@ export const ReaderParagraph = ({
           );
         })}
       </Typography>
-
-      <TextPopover
-        anchorPosition={popoverPosition}
-        onClose={handleClosePopover}
-        translatedText={selectionTranslation}
-        isTranslationLoading={isSelectionTranslating}
-        activeColor={
-          selection
-            ? getHighlightAtCharRange(selection.startIndex, selection.endIndex, highlights)?.color
-            : undefined
-        }
-        onColorSelect={(color) => {
-          if (!selection) return;
-
-          // Check if the selection already has this exact color
-          const existingHighlight = getHighlightAtCharRange(
-            selection.startIndex,
-            selection.endIndex,
-            highlights,
-          );
-
-          if (existingHighlight?.color === color) {
-            // Same color selected again - just remove it (toggle off)
-            onRemoveHighlight(existingHighlight);
-          } else {
-            // Different color or no highlight - remove all overlapping and apply new
-            const overlappingHighlights = highlights.filter(
-              (h) => h.startIndex < selection.endIndex && h.endIndex > selection.startIndex,
-            );
-            overlappingHighlights.forEach((h) => onRemoveHighlight(h));
-
-            // Apply the new highlight
-            onHighlightColorSelect({ ...selection, color });
-          }
-
-          // Clear the browser's text selection
-          window.getSelection()?.removeAllRanges();
-
-          setSelection(null);
-          setPopoverPosition(null);
-          setSelectionText(null);
-          selectionRequestIdRef.current += 1;
-          setIsSelectionTranslating(false);
-          setSelectionTranslation(null);
-        }}
-      />
-      {hoverTranslation && !popoverPosition ? (
+      {hoverTranslation ? (
         <FlyingTooltip text={hoverTranslation} initialPosition={hoverPointer} />
       ) : null}
     </>

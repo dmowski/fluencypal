@@ -11,6 +11,8 @@ import { useBooks } from '../hooks/useBooks';
 import { BackButton } from './BackButton';
 import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
 import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
+import { TextPopover } from './TextPopover';
+import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
@@ -51,6 +53,20 @@ export const Reader = ({ data }: { data: Book }) => {
       : String(visiblePages[0] ?? 1);
 
   const speech = useBrowserSpeech();
+  const {
+    activePopover,
+    activeColor,
+    popoverPaperRef,
+    closeActivePopover,
+    handleParagraphSelection,
+    handleActiveColorSelect,
+  } = useReaderHighlightPopover({
+    sourceLanguage: readerSettings.language,
+    targetLanguage: readerSettings.translateToLanguage,
+    highlights: data.highlights ?? [],
+    onApplyHighlight: books.applySelectedHighlight,
+    onRemoveHighlight: books.removeHighlight,
+  });
 
   const closeReader = () => books.setActive(null);
   const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
@@ -151,11 +167,10 @@ export const Reader = ({ data }: { data: Book }) => {
                       sourceLanguage={readerSettings.language}
                       targetLanguage={readerSettings.translateToLanguage}
                       playText={playText}
+                      onSelection={handleParagraphSelection}
                       highlights={(data.highlights ?? []).filter(
                         (highlight) => (highlight.paragraphIndex ?? 0) === index,
                       )}
-                      onHighlightColorSelect={books.applySelectedHighlight}
-                      onRemoveHighlight={books.removeHighlight}
                     />
                   </Stack>
                 );
@@ -164,6 +179,16 @@ export const Reader = ({ data }: { data: Book }) => {
           );
         })}
       </Stack>
+
+      <TextPopover
+        anchorPosition={activePopover?.anchorPosition ?? null}
+        paperRef={popoverPaperRef}
+        onClose={closeActivePopover}
+        translatedText={activePopover?.translatedText ?? null}
+        isTranslationLoading={activePopover?.isTranslationLoading ?? false}
+        activeColor={activeColor}
+        onColorSelect={handleActiveColorSelect}
+      />
 
       <PaginationPanel
         onPrevious={goToPreviousPage}
