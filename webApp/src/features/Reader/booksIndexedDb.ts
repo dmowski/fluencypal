@@ -76,7 +76,9 @@ export const loadUsersBooksFromIndexedDb = async (): Promise<Book[]> => {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
     const legacyBooks = await promisifyRequest(
-      store.get(USERS_BOOKS_LEGACY_KEY) as IDBRequest<Array<Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>> | undefined>,
+      store.get(USERS_BOOKS_LEGACY_KEY) as IDBRequest<
+        Array<Omit<Book, 'id'> & Partial<Pick<Book, 'id'>>> | undefined
+      >,
     );
 
     if (Array.isArray(legacyBooks)) {
