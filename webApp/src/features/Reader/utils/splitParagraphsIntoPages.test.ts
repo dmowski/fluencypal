@@ -42,7 +42,10 @@ describe('splitIntoPages', () => {
     mockedIsFitInPage.mockImplementation(({ paragraphs }) => countWords(paragraphs) <= 3);
 
     const result = splitIntoPages({
-      bookParagraphs: [['one', 'two'], ['three', 'four', 'five']],
+      bookParagraphs: [
+        ['one', 'two'],
+        ['three', 'four', 'five'],
+      ],
       settings: { ...settings, contentHeight: 502 },
     });
 

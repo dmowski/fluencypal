@@ -43,7 +43,6 @@ export const Reader = ({ data }: { data: Book }) => {
     readerSettings.paragraphGap,
   ]);
 
-  console.log('pages', pages);
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);
   const activePage = Math.min(Math.max(storedActivePage, 1), maxPage);
@@ -119,7 +118,6 @@ export const Reader = ({ data }: { data: Book }) => {
         sx={{
           width: '100%',
           alignItems: 'center',
-          border: '1px solid rgba(255, 0, 0, 1)',
           height: `${readerSettings.contentHeight}px`,
         }}
       >
