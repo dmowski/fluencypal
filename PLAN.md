@@ -5,6 +5,7 @@
 - Fix text selection
 
 - Test on mobile
+  -- add more gap padding to bottom
 
 - How to handle images?
 

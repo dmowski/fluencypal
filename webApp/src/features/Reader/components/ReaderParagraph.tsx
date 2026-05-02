@@ -30,8 +30,7 @@ export const ReaderParagraph = ({
   translateOnHover,
   sourceLanguage,
   targetLanguage,
-  onWordClick,
-  onTextSelected,
+  playText,
   highlights,
   onHighlightColorSelect,
   onRemoveHighlight,
@@ -44,8 +43,7 @@ export const ReaderParagraph = ({
   translateOnHover: boolean;
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
-  onWordClick: (word: string) => void;
-  onTextSelected: (selectedText: string) => void;
+  playText: (word: string) => void;
   highlights: HighlightedText[];
   onHighlightColorSelect: (highlight: HighlightedText) => void;
   onRemoveHighlight: (highlight: HighlightedText) => void;
@@ -210,13 +208,12 @@ export const ReaderParagraph = ({
         }
       }
 
-      onTextSelected(selectedText);
+      playText(selectedText);
     }
   };
 
   const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
-    // Play the word audio
-    onWordClick(word);
+    playText(word);
 
     // Show highlight popover by creating a selection for this word
     e.preventDefault();
@@ -238,8 +235,6 @@ export const ReaderParagraph = ({
     const element = e.currentTarget as HTMLElement;
     const rect = element.getBoundingClientRect();
     setPopoverPosition(getPopoverPositionFromRect(rect));
-
-    onTextSelected(word);
   };
 
   return (

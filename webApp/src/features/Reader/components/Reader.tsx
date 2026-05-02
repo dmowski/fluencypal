@@ -79,6 +79,9 @@ export const Reader = ({ data }: { data: Book }) => {
         flex: '1 0 0',
         gap: '90px',
         position: 'relative',
+        '@media (max-width: 700px)': {
+          paddingBottom: '50px',
+        },
       }}
     >
       <ReaderSpeechSettingsButton speech={speech} />
@@ -147,8 +150,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       translateOnHover={readerSettings.translateOnHover}
                       sourceLanguage={readerSettings.language}
                       targetLanguage={readerSettings.translateToLanguage}
-                      onWordClick={playText}
-                      onTextSelected={playText}
+                      playText={playText}
                       highlights={(data.highlights ?? []).filter(
                         (highlight) => (highlight.paragraphIndex ?? 0) === index,
                       )}

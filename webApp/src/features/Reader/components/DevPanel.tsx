@@ -174,8 +174,7 @@ const DevPanelContent = () => {
                   translateOnHover={readerSettings.translateOnHover}
                   sourceLanguage={readerSettings.language}
                   targetLanguage={null}
-                  onWordClick={() => undefined}
-                  onTextSelected={() => undefined}
+                  playText={() => undefined}
                   highlights={[]}
                   onHighlightColorSelect={() => undefined}
                   onRemoveHighlight={() => undefined}
