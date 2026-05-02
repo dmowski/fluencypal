@@ -42,6 +42,8 @@ export const Reader = ({ data }: { data: Book }) => {
     readerSettings.contentHeight,
     readerSettings.paragraphGap,
   ]);
+
+  console.log('pages', pages);
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);
   const activePage = Math.min(Math.max(storedActivePage, 1), maxPage);
