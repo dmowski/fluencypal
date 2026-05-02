@@ -11,6 +11,7 @@ const mockedIsFitInPage = isFitInPage as jest.MockedFunction<typeof isFitInPage>
 const settings: ReaderUiSettings = {
   fontSize: 36,
   lineHeight: 1.5,
+  justifyText: true,
   contentWidth: 1200,
   contentHeight: 500,
   paragraphGap: 20,

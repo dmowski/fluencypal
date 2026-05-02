@@ -29,6 +29,7 @@ export const Reader = ({ data }: { data: Book }) => {
       settings: {
         fontSize: readerSettings.fontSize,
         lineHeight: readerSettings.lineHeight,
+        justifyText: readerSettings.justifyText,
         contentWidth: columnWidth,
         contentHeight: readerSettings.contentHeight,
         paragraphGap: readerSettings.paragraphGap,
@@ -41,6 +42,7 @@ export const Reader = ({ data }: { data: Book }) => {
     data.paragraphs,
     readerSettings.fontSize,
     readerSettings.lineHeight,
+    readerSettings.justifyText,
     readerSettings.contentHeight,
     readerSettings.paragraphGap,
     readerSettings.columns,
@@ -157,6 +159,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       words={paragraph}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
+                      justifyText={readerSettings.justifyText}
                       sourceLanguage={readerSettings.language}
                       targetLanguage={readerSettings.translateToLanguage}
                       onWordClick={playText}

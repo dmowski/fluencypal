@@ -26,6 +26,7 @@ export const ReaderParagraph = ({
   words,
   fontSize,
   lineHeight,
+  justifyText,
   sourceLanguage,
   targetLanguage,
   onWordClick,
@@ -38,6 +39,7 @@ export const ReaderParagraph = ({
   words: string[];
   fontSize: number;
   lineHeight: number;
+  justifyText: boolean;
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
   onWordClick: (word: string) => void;
@@ -223,7 +225,7 @@ export const ReaderParagraph = ({
           fontFamily: 'serif',
           fontSize: `${fontSize}px`,
           lineHeight,
-          textAlign: 'justify',
+          textAlign: justifyText ? 'justify' : 'left',
           '*': {
             fontFamily: 'serif',
           },

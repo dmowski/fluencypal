@@ -1,6 +1,5 @@
 import { ReaderUiSettings } from '../model/types';
 
-const textAlign = 'justify';
 const fontFamily = 'serif';
 
 export function isFitInPage({
@@ -40,7 +39,7 @@ export function isFitInPage({
     paragraphElement.style.padding = '0';
     paragraphElement.style.fontSize = `${settings.fontSize}px`;
     paragraphElement.style.lineHeight = `${settings.lineHeight}`;
-    paragraphElement.style.textAlign = textAlign;
+    paragraphElement.style.textAlign = settings.justifyText ? 'justify' : 'left';
     paragraphElement.style.fontFamily = fontFamily;
     paragraphElement.style.wordBreak = 'break-word';
 

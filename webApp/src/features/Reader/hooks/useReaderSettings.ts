@@ -23,24 +23,16 @@ export interface ReaderSettings extends ReaderUiSettings {
   setFontSize: (nextFontSize: number) => void;
   setParagraphGap: (nextParagraphGap: number) => void;
   setLineHeight: (nextLineHeight: number) => void;
+  setJustifyText: (nextJustifyText: boolean) => void;
   setContentWidth: (nextContentWidth: number) => void;
   setContentHeight: (nextContentHeight: number) => void;
   setColumns: (nextColumns: 1 | 2) => void;
   setColumnGap: (nextColumnGap: number) => void;
 }
 
-type PersistedReaderSettings = Omit<
+type PersistedReaderSettings = Pick<
   ReaderSettings,
-  | 'setLanguage'
-  | 'setSelectedVoiceURI'
-  | 'setTranslateToLanguage'
-  | 'setFontSize'
-  | 'setParagraphGap'
-  | 'setLineHeight'
-  | 'setContentWidth'
-  | 'setContentHeight'
-  | 'setColumns'
-  | 'setColumnGap'
+  keyof ReaderUiSettings | 'language' | 'selectedVoiceURI' | 'translateToLanguage'
 >;
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
@@ -48,6 +40,7 @@ const DEFAULT_LANGUAGE = 'en-US';
 const DEFAULT_FONT_SIZE = 36;
 const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
+const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_CONTENT_WIDTH = 1200;
 const DEFAULT_CONTENT_HEIGHT = 500;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
@@ -72,6 +65,7 @@ const getInitialSettings = (): PersistedReaderSettings => {
       fontSize: DEFAULT_FONT_SIZE,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
+      justifyText: DEFAULT_JUSTIFY_TEXT,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
@@ -89,6 +83,7 @@ const getInitialSettings = (): PersistedReaderSettings => {
         fontSize: DEFAULT_FONT_SIZE,
         paragraphGap: DEFAULT_PARAGRAPH_GAP,
         lineHeight: DEFAULT_LINE_HEIGHT,
+        justifyText: DEFAULT_JUSTIFY_TEXT,
         contentWidth: DEFAULT_CONTENT_WIDTH,
         contentHeight: DEFAULT_CONTENT_HEIGHT,
         columns: DEFAULT_COLUMNS,
@@ -107,6 +102,10 @@ const getInitialSettings = (): PersistedReaderSettings => {
       typeof parsedSettings.lineHeight === 'number'
         ? parsedSettings.lineHeight
         : DEFAULT_LINE_HEIGHT;
+    const parsedJustifyText =
+      typeof parsedSettings.justifyText === 'boolean'
+        ? parsedSettings.justifyText
+        : DEFAULT_JUSTIFY_TEXT;
     const parsedContentWidth =
       typeof parsedSettings.contentWidth === 'number'
         ? parsedSettings.contentWidth
@@ -135,6 +134,7 @@ const getInitialSettings = (): PersistedReaderSettings => {
         READER_SETTINGS_RANGES.lineHeight.min,
         Math.min(READER_SETTINGS_RANGES.lineHeight.max, parsedLineHeight),
       ),
+      justifyText: parsedJustifyText,
       contentWidth: Math.max(
         READER_SETTINGS_RANGES.contentWidth.min,
         Math.min(READER_SETTINGS_RANGES.contentWidth.max, parsedContentWidth),
@@ -157,6 +157,7 @@ const getInitialSettings = (): PersistedReaderSettings => {
       fontSize: DEFAULT_FONT_SIZE,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
+      justifyText: DEFAULT_JUSTIFY_TEXT,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
@@ -226,6 +227,13 @@ const useReaderSettingsState = (): ReaderSettings => {
     }));
   }, []);
 
+  const setJustifyText = useCallback((nextJustifyText: boolean) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      justifyText: nextJustifyText,
+    }));
+  }, []);
+
   const setContentWidth = useCallback((nextContentWidth: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
@@ -271,6 +279,7 @@ const useReaderSettingsState = (): ReaderSettings => {
       fontSize: settings.fontSize,
       paragraphGap: settings.paragraphGap,
       lineHeight: settings.lineHeight,
+      justifyText: settings.justifyText,
       contentWidth: settings.contentWidth,
       contentHeight: settings.contentHeight,
       columns: settings.columns,
@@ -281,6 +290,7 @@ const useReaderSettingsState = (): ReaderSettings => {
       setFontSize,
       setParagraphGap,
       setLineHeight,
+      setJustifyText,
       setContentWidth,
       setContentHeight,
       setColumns,
@@ -293,6 +303,7 @@ const useReaderSettingsState = (): ReaderSettings => {
       settings.fontSize,
       settings.paragraphGap,
       settings.lineHeight,
+      settings.justifyText,
       settings.contentWidth,
       settings.contentHeight,
       settings.columns,
@@ -303,6 +314,7 @@ const useReaderSettingsState = (): ReaderSettings => {
       setFontSize,
       setParagraphGap,
       setLineHeight,
+      setJustifyText,
       setContentWidth,
       setContentHeight,
       setColumns,

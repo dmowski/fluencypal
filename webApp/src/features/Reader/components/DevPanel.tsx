@@ -73,6 +73,7 @@ const DevPanelContent = () => {
       settings: {
         fontSize: readerSettings.fontSize,
         lineHeight: readerSettings.lineHeight,
+        justifyText: readerSettings.justifyText,
         contentWidth: readerSettings.contentWidth,
         contentHeight: readerSettings.contentHeight,
         paragraphGap: readerSettings.paragraphGap,
@@ -84,6 +85,7 @@ const DevPanelContent = () => {
     paragraphs,
     readerSettings.fontSize,
     readerSettings.lineHeight,
+    readerSettings.justifyText,
     readerSettings.contentWidth,
     readerSettings.contentHeight,
     readerSettings.paragraphGap,
@@ -207,6 +209,7 @@ const DevPanelContent = () => {
                   words={words}
                   fontSize={readerSettings.fontSize}
                   lineHeight={readerSettings.lineHeight}
+                  justifyText={readerSettings.justifyText}
                   sourceLanguage={readerSettings.language}
                   targetLanguage={null}
                   onWordClick={() => undefined}

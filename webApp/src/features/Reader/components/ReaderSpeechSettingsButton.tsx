@@ -1,5 +1,7 @@
 import {
+  Checkbox,
   FormControl,
+  FormControlLabel,
   IconButton,
   InputLabel,
   MenuItem,
@@ -203,6 +205,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 <MenuItem value="2">{i18n._('2 columns')}</MenuItem>
               </Select>
             </FormControl>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={readerSettings.justifyText}
+                  onChange={(_event, checked) => readerSettings.setJustifyText(checked)}
+                />
+              }
+              label={i18n._('Justify Text')}
+            />
 
             {readerSettings.columns === 2 && (
               <Stack sx={{ gap: '8px' }}>
