@@ -39,7 +39,7 @@ export const splitIntoPages = ({
   let currentPageCharCount = 0;
 
   bookParagraphs.forEach((paragraph) => {
-    if (currentPageCharCount + paragraph.length > 400) {
+    if (currentPageCharCount + paragraph.length > 100) {
       pages.push(currentPage);
       currentPage = [];
       currentPageCharCount = 0;
