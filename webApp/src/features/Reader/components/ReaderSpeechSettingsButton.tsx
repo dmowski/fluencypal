@@ -163,7 +163,9 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <Stack sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}>
+        <Stack
+          sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
+        >
           <IconButton
             onClick={() => setAnchorEl(null)}
             sx={{
