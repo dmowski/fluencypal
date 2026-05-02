@@ -42,11 +42,15 @@ export const READER_SETTINGS_RANGES = {
   columnGap: { min: 0, max: 200, step: 1 },
 } as const;
 
-const HORIZONTAL_PADDING = 90 * 2;
-const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => ({
-  contentWidth: typeof window !== 'undefined' ? window.innerWidth - HORIZONTAL_PADDING : 800,
-  contentHeight: typeof window !== 'undefined' ? window.innerHeight : 600,
-});
+const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => {
+  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+  const sidePadding = viewportWidth < 400 ? 20 : 80;
+
+  return {
+    contentWidth: Math.max(0, viewportWidth - sidePadding * 2),
+    contentHeight: typeof window !== 'undefined' ? window.innerHeight : 600,
+  };
+};
 
 const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 

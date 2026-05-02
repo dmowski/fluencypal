@@ -24,6 +24,9 @@ export const PaginationPanel = ({
         justifyContent: 'center',
         padding: '5px',
         zIndex: 0,
+        '@media (max-width: 600px)': {
+          justifyContent: 'flex-end',
+        },
       }}
     >
       <PaginationButtons
@@ -58,6 +61,9 @@ const PaginationButton = ({
         ':hover': {
           backgroundColor: 'rgba(0, 0, 0, 0.1)',
           cursor: disabled ? 'default' : 'pointer',
+        },
+        '@media (max-width: 600px)': {
+          padding: '10px',
         },
       }}
       disabled={disabled}
