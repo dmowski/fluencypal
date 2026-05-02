@@ -134,26 +134,6 @@ const DevPanelContent = () => {
               sliderValue={readerSettings.paragraphGap}
               onChange={(value) => readerSettings.setParagraphGap(value)}
             />
-
-            <SettingSlider
-              label="Content width"
-              value={`${readerSettings.contentWidth}px`}
-              min={200}
-              max={1600}
-              step={10}
-              sliderValue={readerSettings.contentWidth}
-              onChange={(value) => readerSettings.setContentWidth(value)}
-            />
-
-            <SettingSlider
-              label="Content height"
-              value={`${readerSettings.contentHeight}px`}
-              min={100}
-              max={1200}
-              step={10}
-              sliderValue={readerSettings.contentHeight}
-              onChange={(value) => readerSettings.setContentHeight(value)}
-            />
           </Stack>
 
           <Typography variant="h6" sx={{ color: fits ? '#86efac' : '#fca5a5' }}>

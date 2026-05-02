@@ -21,8 +21,6 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setLineHeight: (nextLineHeight: number) => void;
   setJustifyText: (nextJustifyText: boolean) => void;
   setTranslateOnHover: (nextTranslateOnHover: boolean) => void;
-  setContentWidth: (nextContentWidth: number) => void;
-  setContentHeight: (nextContentHeight: number) => void;
   setColumns: (nextColumns: 1 | 2) => void;
   setColumnGap: (nextColumnGap: number) => void;
 }
@@ -34,8 +32,6 @@ const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
 const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_TRANSLATE_ON_HOVER = false;
-const DEFAULT_CONTENT_WIDTH = 1200;
-const DEFAULT_CONTENT_HEIGHT = 500;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
 const DEFAULT_COLUMN_GAP = 40;
 
@@ -43,25 +39,32 @@ export const READER_SETTINGS_RANGES = {
   fontSize: { min: 20, max: 64, step: 1 },
   paragraphGap: { min: 0, max: 80, step: 1 },
   lineHeight: { min: 1, max: 2.5, step: 0.05 },
-  contentWidth: { min: 600, max: 3000, step: 10 },
-  contentHeight: { min: 300, max: 2000, step: 10 },
   columnGap: { min: 0, max: 200, step: 1 },
 } as const;
+
+const HORIZONTAL_PADDING = 90 * 2;
+const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => ({
+  contentWidth: typeof window !== 'undefined' ? window.innerWidth - HORIZONTAL_PADDING : 800,
+  contentHeight: typeof window !== 'undefined' ? window.innerHeight : 600,
+});
+
 const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 
 const getInitialSettings = (): ReaderSettings => {
+  const viewportDimensions = getViewportDimensions();
+
   if (typeof window === 'undefined') {
     return {
       language: DEFAULT_LANGUAGE,
       selectedVoiceURI: null,
       translateToLanguage: null,
       fontSize: DEFAULT_FONT_SIZE,
+      contentWidth: viewportDimensions.contentWidth,
+      contentHeight: viewportDimensions.contentHeight,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
       justifyText: DEFAULT_JUSTIFY_TEXT,
       translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-      contentWidth: DEFAULT_CONTENT_WIDTH,
-      contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
       columnGap: DEFAULT_COLUMN_GAP,
     };
@@ -75,12 +78,12 @@ const getInitialSettings = (): ReaderSettings => {
         selectedVoiceURI: null,
         translateToLanguage: null,
         fontSize: DEFAULT_FONT_SIZE,
+        contentWidth: viewportDimensions.contentWidth,
+        contentHeight: viewportDimensions.contentHeight,
         paragraphGap: DEFAULT_PARAGRAPH_GAP,
         lineHeight: DEFAULT_LINE_HEIGHT,
         justifyText: DEFAULT_JUSTIFY_TEXT,
         translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-        contentWidth: DEFAULT_CONTENT_WIDTH,
-        contentHeight: DEFAULT_CONTENT_HEIGHT,
         columns: DEFAULT_COLUMNS,
         columnGap: DEFAULT_COLUMN_GAP,
       };
@@ -89,6 +92,14 @@ const getInitialSettings = (): ReaderSettings => {
     const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
     const parsedFontSize =
       typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : DEFAULT_FONT_SIZE;
+    const parsedContentWidth =
+      typeof parsedSettings.contentWidth === 'number'
+        ? parsedSettings.contentWidth
+        : viewportDimensions.contentWidth;
+    const parsedContentHeight =
+      typeof parsedSettings.contentHeight === 'number'
+        ? parsedSettings.contentHeight
+        : viewportDimensions.contentHeight;
     const parsedParagraphGap =
       typeof parsedSettings.paragraphGap === 'number'
         ? parsedSettings.paragraphGap
@@ -105,14 +116,6 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.translateOnHover === 'boolean'
         ? parsedSettings.translateOnHover
         : DEFAULT_TRANSLATE_ON_HOVER;
-    const parsedContentWidth =
-      typeof parsedSettings.contentWidth === 'number'
-        ? parsedSettings.contentWidth
-        : DEFAULT_CONTENT_WIDTH;
-    const parsedContentHeight =
-      typeof parsedSettings.contentHeight === 'number'
-        ? parsedSettings.contentHeight
-        : DEFAULT_CONTENT_HEIGHT;
     const parsedColumns = parsedSettings.columns === 2 ? 2 : DEFAULT_COLUMNS;
     const parsedColumnGap =
       typeof parsedSettings.columnGap === 'number' ? parsedSettings.columnGap : DEFAULT_COLUMN_GAP;
@@ -125,6 +128,8 @@ const getInitialSettings = (): ReaderSettings => {
         READER_SETTINGS_RANGES.fontSize.min,
         Math.min(READER_SETTINGS_RANGES.fontSize.max, parsedFontSize),
       ),
+      contentWidth: Math.max(0, parsedContentWidth),
+      contentHeight: Math.max(0, parsedContentHeight),
       paragraphGap: Math.max(
         READER_SETTINGS_RANGES.paragraphGap.min,
         Math.min(READER_SETTINGS_RANGES.paragraphGap.max, parsedParagraphGap),
@@ -135,14 +140,6 @@ const getInitialSettings = (): ReaderSettings => {
       ),
       justifyText: parsedJustifyText,
       translateOnHover: parsedTranslateOnHover,
-      contentWidth: Math.max(
-        READER_SETTINGS_RANGES.contentWidth.min,
-        Math.min(READER_SETTINGS_RANGES.contentWidth.max, parsedContentWidth),
-      ),
-      contentHeight: Math.max(
-        READER_SETTINGS_RANGES.contentHeight.min,
-        Math.min(READER_SETTINGS_RANGES.contentHeight.max, parsedContentHeight),
-      ),
       columns: parsedColumns,
       columnGap: Math.max(
         READER_SETTINGS_RANGES.columnGap.min,
@@ -155,12 +152,12 @@ const getInitialSettings = (): ReaderSettings => {
       selectedVoiceURI: null,
       translateToLanguage: null,
       fontSize: DEFAULT_FONT_SIZE,
+      contentWidth: viewportDimensions.contentWidth,
+      contentHeight: viewportDimensions.contentHeight,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
       justifyText: DEFAULT_JUSTIFY_TEXT,
       translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-      contentWidth: DEFAULT_CONTENT_WIDTH,
-      contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
       columnGap: DEFAULT_COLUMN_GAP,
     };
@@ -172,9 +169,29 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     window.localStorage.setItem(READER_SETTINGS_KEY, JSON.stringify(settings));
   }, [settings]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const nextViewportDimensions = getViewportDimensions();
+        setSettings((previousSettings) => ({
+          ...previousSettings,
+          contentWidth: nextViewportDimensions.contentWidth,
+          contentHeight: nextViewportDimensions.contentHeight,
+        }));
+      }, 1000);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const setLanguage = useCallback((nextLanguage: string) => {
     setSettings((previousSettings) => ({
@@ -242,26 +259,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
-  const setContentWidth = useCallback((nextContentWidth: number) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      contentWidth: Math.max(
-        READER_SETTINGS_RANGES.contentWidth.min,
-        Math.min(READER_SETTINGS_RANGES.contentWidth.max, nextContentWidth),
-      ),
-    }));
-  }, []);
-
-  const setContentHeight = useCallback((nextContentHeight: number) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      contentHeight: Math.max(
-        READER_SETTINGS_RANGES.contentHeight.min,
-        Math.min(READER_SETTINGS_RANGES.contentHeight.max, nextContentHeight),
-      ),
-    }));
-  }, []);
-
   const setColumns = useCallback((nextColumns: 1 | 2) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
@@ -281,18 +278,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
 
   return useMemo(
     () => ({
-      language: settings.language,
-      selectedVoiceURI: settings.selectedVoiceURI,
-      translateToLanguage: settings.translateToLanguage,
-      fontSize: settings.fontSize,
-      paragraphGap: settings.paragraphGap,
-      lineHeight: settings.lineHeight,
-      justifyText: settings.justifyText,
-      translateOnHover: settings.translateOnHover,
-      contentWidth: settings.contentWidth,
-      contentHeight: settings.contentHeight,
-      columns: settings.columns,
-      columnGap: settings.columnGap,
+      ...settings,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
@@ -301,24 +287,11 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
-      setContentWidth,
-      setContentHeight,
       setColumns,
       setColumnGap,
     }),
     [
-      settings.language,
-      settings.selectedVoiceURI,
-      settings.translateToLanguage,
-      settings.fontSize,
-      settings.paragraphGap,
-      settings.lineHeight,
-      settings.justifyText,
-      settings.translateOnHover,
-      settings.contentWidth,
-      settings.contentHeight,
-      settings.columns,
-      settings.columnGap,
+      settings,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
@@ -327,8 +300,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
-      setContentWidth,
-      setContentHeight,
       setColumns,
       setColumnGap,
     ],

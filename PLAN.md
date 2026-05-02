@@ -2,22 +2,13 @@
 
 ## Reader helper?
 
-- 2 columns view
-  -- Inset option to show 2 columns
+- Test on mobile
 
-- How to remove scrolls?
-  What info I need to know: Available space, how much symbols (lines) will fit.
+- Change "category" to "author"
 
-- Do not show full page title on the second page
+- How to handle images?
 
-- Reading: How to handle transcripts
-  -- Convert text into words
-  -- Convert transcript into words
-
-- Add notes on spans (right side)
-
-- How to integrate it to app: read stories?
-- Create a separate landing with the product?
+- Use ai to parse book: title/subtitle/category
 
 ### EXTREME MVP:
 

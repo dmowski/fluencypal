@@ -18,7 +18,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { useReaderSettings, READER_SETTINGS_RANGES } from '../hooks/useReaderSettings';
+import { useReaderSettings } from '../hooks/useReaderSettings';
 
 type ReaderSpeechSettingsButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
@@ -299,44 +299,6 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 value={readerSettings.lineHeight}
                 onChange={(_event, value) =>
                   readerSettings.setLineHeight(Array.isArray(value) ? value[0] : value)
-                }
-                valueLabelDisplay="auto"
-              />
-            </Stack>
-
-            <Stack sx={{ gap: '8px' }}>
-              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Typography variant="body2">{i18n._('Content width')}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {readerSettings.contentWidth}px
-                </Typography>
-              </Stack>
-              <Slider
-                min={READER_SETTINGS_RANGES.contentWidth.min}
-                max={READER_SETTINGS_RANGES.contentWidth.max}
-                step={READER_SETTINGS_RANGES.contentWidth.step}
-                value={readerSettings.contentWidth}
-                onChange={(_event, value) =>
-                  readerSettings.setContentWidth(Array.isArray(value) ? value[0] : value)
-                }
-                valueLabelDisplay="auto"
-              />
-            </Stack>
-
-            <Stack sx={{ gap: '8px' }}>
-              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Typography variant="body2">{i18n._('Content height')}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {readerSettings.contentHeight}px
-                </Typography>
-              </Stack>
-              <Slider
-                min={READER_SETTINGS_RANGES.contentHeight.min}
-                max={READER_SETTINGS_RANGES.contentHeight.max}
-                step={READER_SETTINGS_RANGES.contentHeight.step}
-                value={readerSettings.contentHeight}
-                onChange={(_event, value) =>
-                  readerSettings.setContentHeight(Array.isArray(value) ? value[0] : value)
                 }
                 valueLabelDisplay="auto"
               />
