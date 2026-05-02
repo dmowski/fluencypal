@@ -99,11 +99,6 @@ msgstr "1 KI-Stunde"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI-Stunde ≈ 1 Stunde aktives Gespräch mit der KI."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-msgid "1 column"
-msgstr "1 Spalte"
-
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #. js-lingui-explicit-id
@@ -154,11 +149,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "16 languages to practice"
 msgstr "16 Sprachen zum Üben"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-msgid "2 columns"
-msgstr "2 Spalten"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id
@@ -323,7 +313,7 @@ msgstr "Aktionsplan zur Verbesserung kritischer Backend-Fähigkeiten"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Reader/components/AddBookModal.tsx:250
+#: src/features/Reader/components/AddBookModal.tsx:259
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Hinzufügen"
@@ -350,7 +340,7 @@ msgstr "Kommentar hinzufügen"
 msgid "Add context..."
 msgstr "Kontext hinzufügen..."
 
-#: src/features/Reader/components/AddBookModal.tsx:153
+#: src/features/Reader/components/AddBookModal.tsx:162
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -940,6 +930,11 @@ msgstr "Assistent"
 msgid "Auth"
 msgstr "Authentifizierung"
 
+#: src/features/Reader/components/AddBookModal.tsx:181
+#. js-lingui-explicit-id
+msgid "Author"
+msgstr "Autor"
+
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
 msgid "Auto play"
@@ -1117,7 +1112,7 @@ msgstr "Bester Wert für konsistente Verbesserung."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:121
+#: src/features/Reader/components/AddBookModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Buch gespeichert."
@@ -1364,7 +1359,7 @@ msgstr "Kann ich es auf dem Smartphone verwenden?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:260
+#: src/features/Reader/components/AddBookModal.tsx:269
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1417,11 +1412,6 @@ msgstr "Karte verifiziert. Wird geladen..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "Beruflicher Aufstieg"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-msgid "Category"
-msgstr "Kategorie"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1649,17 +1639,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "Codierungsfähigkeiten"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-msgid "Column gap"
-msgstr "Spaltenabstand"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-msgid "Columns"
-msgstr "Spalten"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -2911,7 +2890,7 @@ msgstr "Erledigt"
 msgid "Done recording"
 msgstr "Fertig mit der Aufnahme"
 
-#: src/features/Reader/components/AddBookModal.tsx:88
+#: src/features/Reader/components/AddBookModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Fertig. Text importiert."
@@ -3562,13 +3541,18 @@ msgstr "Extra Langsam"
 msgid "Extracting plain text..."
 msgstr "Extrahiere unformatierten Text..."
 
+#: src/features/Reader/components/AddBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Extracting title, subtitle and author..."
+msgstr "Extrahieren von Titel, Untertitel und Autor..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Analyse des Bildes fehlgeschlagen. Bitte versuchen Sie es erneut."
 
 #: src/features/Reader/components/AddBookModal.tsx:83
-#: src/features/Reader/components/AddBookModal.tsx:91
+#: src/features/Reader/components/AddBookModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Konvertierung von EPUB fehlgeschlagen."
@@ -3587,7 +3571,7 @@ msgstr ""
 "Fehler beim Löschen Ihres Kontos. Bitte versuchen Sie es später erneut oder "
 "kontaktieren Sie die Entwickler."
 
-#: src/features/Reader/components/AddBookModal.tsx:134
+#: src/features/Reader/components/AddBookModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Buch konnte nicht gespeichert werden."
@@ -3938,7 +3922,7 @@ msgstr "FluencyPal – Ihr KI Englisch sprechender Partner"
 msgid "Focus on shipping reliable services"
 msgstr "Fokus auf die Bereitstellung zuverlässiger Dienstleistungen"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:257
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Schriftgröße"
@@ -5310,12 +5294,12 @@ msgstr "Illustration der Sprachaufnahme"
 msgid "Images"
 msgstr "Bilder"
 
-#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/components/AddBookModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Text aus EPUB importieren"
 
-#: src/features/Reader/components/AddBookModal.tsx:203
+#: src/features/Reader/components/AddBookModal.tsx:212
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Text aus EPUB-Datei importieren"
@@ -5818,7 +5802,7 @@ msgstr "Nur Reden"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Just-Talk-Modus mit besserer KI dahinter."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:216
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:242
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Text ausrichten"
@@ -5851,8 +5835,8 @@ msgstr ""
 "\n"
 "Der Erhalt Ihres ersten Entwicklerjobs ist schwieriger, als es sein sollte."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:181
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:184
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6118,7 +6102,7 @@ msgstr "Begrenzte Sprachfunktionen"
 msgid "Limits reached"
 msgstr "Grenzen erreicht"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:290
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:295
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Zeilenhöhe"
@@ -6964,7 +6948,7 @@ msgstr "Nicht gefunden"
 msgid "Not running inside Telegram App"
 msgstr "Nicht in der Telegram-App ausgeführt"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Nicht unterstützt"
@@ -7007,7 +6991,7 @@ msgstr ""
 "                                  StartUp\" mit Sitz in Warschau "
 "betriebenen Website."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Aus"
@@ -7204,7 +7188,7 @@ msgstr "Seitensprache"
 msgid "Paid plan:"
 msgstr "Bezahlter Plan:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:271
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:276
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Absatzlücke"
@@ -8007,7 +7991,7 @@ msgstr ""
 "Bereiten Sie sich darauf vor, Ihr Portfolio zu präsentieren, Ihren Lernweg "
 "zu besprechen und Ihre erste professionelle Rolle zu sichern."
 
-#: src/features/Reader/components/AddBookModal.tsx:108
+#: src/features/Reader/components/AddBookModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Buch wird vorbereitet..."
@@ -8701,6 +8685,11 @@ msgstr "Anfrage fehlgeschlagen. Bitte versuchen Sie es erneut."
 msgid "Request Refund"
 msgstr "Rückerstattung beantragen"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:318
+#. js-lingui-explicit-id
+msgid "Reset to default"
+msgstr "Auf Standard zurücksetzen"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
 msgid "Resiliency & Observability"
@@ -8910,7 +8899,7 @@ msgstr "Speichern"
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: src/features/Reader/components/AddBookModal.tsx:111
+#: src/features/Reader/components/AddBookModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Buch wird gespeichert..."
@@ -9145,7 +9134,7 @@ msgstr "Meine Sprache festlegen"
 msgid "Set the goal of your learning"
 msgstr "Legen Sie das Ziel Ihres Lernens fest"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:123
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Einstellungen"
@@ -9467,7 +9456,7 @@ msgstr "Sprechübung"
 msgid "Speaking with a Psychologist"
 msgstr "Sprechen mit einem Psychologen"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Sprachunterstützung"
@@ -9907,7 +9896,7 @@ msgstr "Absenden..."
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 Monat)"
 
-#: src/features/Reader/components/AddBookModal.tsx:165
+#: src/features/Reader/components/AddBookModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Untertitel"
@@ -9932,7 +9921,7 @@ msgstr "Zusammenfassung"
 msgid "Summary:"
 msgstr "Zusammenfassung:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Unterstützt"
@@ -10207,7 +10196,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Testen & Qualität"
 
-#: src/features/Reader/components/AddBookModal.tsx:179
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Text"
@@ -10779,7 +10768,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:158
+#: src/features/Reader/components/AddBookModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Titel"
@@ -10914,7 +10903,7 @@ msgstr ""
 "Brauchst du Hilfe? Frage einfach los!\n"
 "Wusstest du, dass du die Freiheit hast, deinen Lernpfad selbst zu gestalten?"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Beim Hovern übersetzen"
@@ -10924,8 +10913,8 @@ msgstr "Beim Hovern übersetzen"
 msgid "Translate the word"
 msgstr "Übersetze das Wort"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:183
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:218
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Bitte eingeben, was Sie übersetzen möchten."
@@ -11322,8 +11311,8 @@ msgstr "Wortschatz"
 msgid "Vocabulary Practice"
 msgstr "Wortschatzübungen"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:201
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Stimme"
@@ -12572,6 +12561,32 @@ msgstr "{winnerName} gewinnt!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#. js-lingui-explicit-id
+#~ msgid "1 column"
+#~ msgstr "1 Spalte"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "2 columns"
+#~ msgstr "2 Spalten"
+
+#: src/features/Reader/components/AddBookModal.tsx:172
+#. js-lingui-explicit-id
+#~ msgid "Category"
+#~ msgstr "Kategorie"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
+#. js-lingui-explicit-id
+#~ msgid "Column gap"
+#~ msgstr "Spaltenabstand"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
+#. js-lingui-explicit-id
+#~ msgid "Columns"
+#~ msgstr "Spalten"
 
 #: src/features/Reader/BooksList.tsx:73
 #. js-lingui-explicit-id

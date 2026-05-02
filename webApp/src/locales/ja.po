@@ -97,11 +97,6 @@ msgstr "1 AI時間"
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 AI時間 ≈ AIとのアクティブな会話の1時間。"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-msgid "1 column"
-msgstr "1 列"
-
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:79
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:203
 #. js-lingui-explicit-id
@@ -150,11 +145,6 @@ msgstr "100% はネイティブに近い熟達度を表し、0% はほとんど�
 #. js-lingui-explicit-id
 msgid "16 languages to practice"
 msgstr "練習するための16の言語"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-msgid "2 columns"
-msgstr "2 カラム"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id
@@ -309,7 +299,7 @@ msgstr "クリティカルなバックエンドスキルを向上させるため
 msgid "Active"
 msgstr "アクティブ"
 
-#: src/features/Reader/components/AddBookModal.tsx:250
+#: src/features/Reader/components/AddBookModal.tsx:259
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "追加"
@@ -334,7 +324,7 @@ msgstr "コメントを追加"
 msgid "Add context..."
 msgstr "コンテキストを追加..."
 
-#: src/features/Reader/components/AddBookModal.tsx:153
+#: src/features/Reader/components/AddBookModal.tsx:162
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -895,6 +885,11 @@ msgstr "アシスタント"
 msgid "Auth"
 msgstr "認証"
 
+#: src/features/Reader/components/AddBookModal.tsx:181
+#. js-lingui-explicit-id
+msgid "Author"
+msgstr "著者"
+
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
 msgid "Auto play"
@@ -1064,7 +1059,7 @@ msgstr "一貫した改善に最適な価値。"
 msgid "Blog"
 msgstr "ブログ"
 
-#: src/features/Reader/components/AddBookModal.tsx:121
+#: src/features/Reader/components/AddBookModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "ブックが保存されました。"
@@ -1302,7 +1297,7 @@ msgstr "スマートフォンで使用できますか？"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:260
+#: src/features/Reader/components/AddBookModal.tsx:269
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1353,11 +1348,6 @@ msgstr "カードが確認されました。読み込み中..."
 #. js-lingui-explicit-id
 msgid "Career Advancement"
 msgstr "キャリアの向上"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-msgid "Category"
-msgstr "カテゴリ"
 
 #: src/features/RolePlay/rolePlayData.tsx:1209
 #: src/features/RolePlay/rolePlayData.tsx:1217
@@ -1568,17 +1558,6 @@ msgstr "実際の開発作業で練習したものとは異なると感じるコ
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "コーディングスキル"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-msgid "Column gap"
-msgstr "列間隔"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-msgid "Columns"
-msgstr "列"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -2744,7 +2723,7 @@ msgstr ""
 "\n"
 "録音完了\n"
 
-#: src/features/Reader/components/AddBookModal.tsx:88
+#: src/features/Reader/components/AddBookModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "完了しました。テキストがインポートされました。"
@@ -3326,13 +3305,18 @@ msgstr "エクストラスロー"
 msgid "Extracting plain text..."
 msgstr "プレーンテキストを抽出しています..."
 
+#: src/features/Reader/components/AddBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Extracting title, subtitle and author..."
+msgstr "タイトル、サブタイトル、著者を抽出中..."
+
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "画像の解析に失敗しました。もう一度お試しください。"
 
 #: src/features/Reader/components/AddBookModal.tsx:83
-#: src/features/Reader/components/AddBookModal.tsx:91
+#: src/features/Reader/components/AddBookModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "EPUBの変換に失敗しました。"
@@ -3349,7 +3333,7 @@ msgid ""
 "developers."
 msgstr "アカウントの削除に失敗しました。後で再試行するか、開発者に連絡してください。"
 
-#: src/features/Reader/components/AddBookModal.tsx:134
+#: src/features/Reader/components/AddBookModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "ブックの保存に失敗しました。"
@@ -3655,7 +3639,7 @@ msgstr "FluencyPal – あなたのAI英会話パートナー"
 msgid "Focus on shipping reliable services"
 msgstr "信頼性の高いサービスの提供に注力する"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:257
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "フォントサイズ"
@@ -4911,12 +4895,12 @@ msgstr "音声録音のイラストレーション"
 msgid "Images"
 msgstr "画像"
 
-#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/components/AddBookModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "EPUBからテキストをインポート"
 
-#: src/features/Reader/components/AddBookModal.tsx:203
+#: src/features/Reader/components/AddBookModal.tsx:212
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "EPUBファイルからテキストをインポート"
@@ -5371,7 +5355,7 @@ msgstr "ただ話す"
 msgid "Just Talk mode with better AI behind it."
 msgstr "より優れたAIを背景に持つ「ジャストトーク」モード。"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:216
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:242
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "テキストを両端揃え"
@@ -5401,8 +5385,8 @@ msgstr "韓国語学習プラン"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "初めての開発職を獲得するのは思ったよりも難しい"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:181
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:184
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5660,7 +5644,7 @@ msgstr "制限された音声機能"
 msgid "Limits reached"
 msgstr "制限に達しました"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:290
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:295
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "行の高さ"
@@ -6470,7 +6454,7 @@ msgstr "見つかりません"
 msgid "Not running inside Telegram App"
 msgstr "Telegramアプリ内で実行されていません"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "サポートされていません"
@@ -6512,7 +6496,7 @@ msgstr ""
 "Fundacja Rozwoju Przedsiębiorczości「Twój "
 "StartUp」によって運営されているウェブサイトの本社はワルシャワにあります。"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "オフ"
@@ -6694,7 +6678,7 @@ msgstr "ページ言語"
 msgid "Paid plan:"
 msgstr "有料プラン:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:271
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:276
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "段落の間隔"
@@ -7436,7 +7420,7 @@ msgid ""
 "secure your first professional role."
 msgstr "ポートフォリオを披露する準備をし、学習の旅を話し合い、最初のプロの役割を確保しましょう。"
 
-#: src/features/Reader/components/AddBookModal.tsx:108
+#: src/features/Reader/components/AddBookModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "ブックを準備中..."
@@ -8116,6 +8100,11 @@ msgstr "リクエストに失敗しました。再試行してください。"
 msgid "Request Refund"
 msgstr "払い戻しをリクエスト"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:318
+#. js-lingui-explicit-id
+msgid "Reset to default"
+msgstr "デフォルトにリセット"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
 msgid "Resiliency & Observability"
@@ -8317,7 +8306,7 @@ msgstr "保存"
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: src/features/Reader/components/AddBookModal.tsx:111
+#: src/features/Reader/components/AddBookModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "ブックを保存中..."
@@ -8542,7 +8531,7 @@ msgstr "私の言語を設定する"
 msgid "Set the goal of your learning"
 msgstr "あなたの学習の目標を設定します"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:123
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr ""
@@ -8854,7 +8843,7 @@ msgstr "スピーキング練習"
 msgid "Speaking with a Psychologist"
 msgstr "心理学者との対話"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "スピーチサポート"
@@ -9271,7 +9260,7 @@ msgstr ""
 msgid "Subscription (1 month)"
 msgstr "サブスクリプション（1ヶ月）"
 
-#: src/features/Reader/components/AddBookModal.tsx:165
+#: src/features/Reader/components/AddBookModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "字幕"
@@ -9296,7 +9285,7 @@ msgstr "要約"
 msgid "Summary:"
 msgstr "サマリー:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:128
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "サポート済み"
@@ -9553,7 +9542,7 @@ msgstr "知識を試し、チャレンジに参加し、リーダーボードで
 msgid "Testing & Quality"
 msgstr "テストと品質"
 
-#: src/features/Reader/components/AddBookModal.tsx:179
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "テキスト"
@@ -10077,7 +10066,7 @@ msgstr "ヒント：後で同意を撤回し、サポートに連絡すること
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:158
+#: src/features/Reader/components/AddBookModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "タイトル"
@@ -10202,7 +10191,7 @@ msgstr ""
 "I'm ready for your text to translate. Please provide the content that you "
 "would like to be translated into Japanese."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "ホバーで翻訳"
@@ -10212,8 +10201,8 @@ msgstr "ホバーで翻訳"
 msgid "Translate the word"
 msgstr "単語を翻訳する"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:183
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:218
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Translate to 翻訳する"
@@ -10603,8 +10592,8 @@ msgstr "語彙"
 msgid "Vocabulary Practice"
 msgstr "ボキャブラリー練習"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:201
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "声"
@@ -11752,6 +11741,32 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#. js-lingui-explicit-id
+#~ msgid "1 column"
+#~ msgstr "1 列"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "2 columns"
+#~ msgstr "2 カラム"
+
+#: src/features/Reader/components/AddBookModal.tsx:172
+#. js-lingui-explicit-id
+#~ msgid "Category"
+#~ msgstr "カテゴリ"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
+#. js-lingui-explicit-id
+#~ msgid "Column gap"
+#~ msgstr "列間隔"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
+#. js-lingui-explicit-id
+#~ msgid "Columns"
+#~ msgstr "列"
 
 #: src/features/Reader/BooksList.tsx:73
 #. js-lingui-explicit-id

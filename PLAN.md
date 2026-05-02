@@ -2,8 +2,6 @@
 
 ## Reader helper?
 
-- Fix text selection: weird when we start selecting outside of paragraph, it appears that we select something else. problem with navigation buttons. render them without container
-
 - Test on mobile
 - How to handle images, italic font?
 
