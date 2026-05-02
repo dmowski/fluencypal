@@ -214,8 +214,32 @@ export const ReaderParagraph = ({
     }
   };
 
-  const handleWordClick = (_e: MouseEvent<HTMLSpanElement>, word: string, _wordIndex: number) => {
+  const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
+    // Play the word audio
     onWordClick(word);
+
+    // Show highlight popover by creating a selection for this word
+    e.preventDefault();
+    e.stopPropagation();
+
+    const wordStart = wordCharOffsets[wordIndex];
+    const wordEnd = wordStart + word.length;
+
+    setSelection(
+      createSelectionFromRange({
+        paragraphIndex,
+        rawStart: wordStart,
+        rawEnd: wordEnd,
+      }),
+    );
+    setSelectionText(word);
+
+    // Get the element's bounding rect for popover positioning
+    const element = e.currentTarget as HTMLElement;
+    const rect = element.getBoundingClientRect();
+    setPopoverPosition(getPopoverPositionFromRect(rect));
+
+    onTextSelected(word);
   };
 
   return (
