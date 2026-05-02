@@ -95,20 +95,31 @@ export const splitIntoPages = ({
         break;
       }
 
+      const fittingPrefixLength = findFittingPrefixLength(remainingWords, currentPageText);
+      if (fittingPrefixLength > 0) {
+        const fittedWords = remainingWords.slice(0, fittingPrefixLength);
+
+        currentPage.push(fittedWords);
+        currentPageText.push(fittedWords.join(' '));
+        pushCurrentPage();
+
+        remainingWords = remainingWords.slice(fittingPrefixLength);
+        continue;
+      }
+
       if (currentPage.length > 0) {
         pushCurrentPage();
         continue;
       }
 
-      const fittingPrefixLength = findFittingPrefixLength(remainingWords, currentPageText);
-      const safePrefixLength = Math.max(1, fittingPrefixLength);
-      const fittedWords = remainingWords.slice(0, safePrefixLength);
+      const fallbackWords = remainingWords.slice(0, 1);
+      const fittedWords = fallbackWords;
 
       currentPage.push(fittedWords);
       currentPageText.push(fittedWords.join(' '));
       pushCurrentPage();
 
-      remainingWords = remainingWords.slice(safePrefixLength);
+      remainingWords = remainingWords.slice(1);
     }
   });
 
