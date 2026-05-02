@@ -1,3 +1,4 @@
+import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
 import { BookParagraph } from '../model/types';
 
@@ -9,12 +10,33 @@ export type SplitIntoPagesData = {
   bookParagraphs: BookParagraph[];
 };
 
-export const splitIntoPages = ({ bookParagraphs }: SplitIntoPagesData): BookParagraph[][] => {
+const splitIntoPagesCache = new Map<string, BookParagraph[][]>();
+
+export const splitIntoPages = ({
+  bookParagraphs,
+  fontSize,
+  lineHeight,
+  contentWidth,
+  contentHeight,
+}: SplitIntoPagesData): BookParagraph[][] => {
+  const hash = getHash(
+    JSON.stringify({
+      bookParagraphs,
+      fontSize,
+      lineHeight,
+      contentWidth,
+      contentHeight,
+    }),
+  );
+  const cachedPages = splitIntoPagesCache.get(hash);
+
+  if (cachedPages) {
+    return cachedPages;
+  }
+
   const pages: BookParagraph[][] = [];
   let currentPage: BookParagraph[] = [];
   let currentPageCharCount = 0;
-
-  console.log('calculate');
 
   bookParagraphs.forEach((paragraph) => {
     if (currentPageCharCount + paragraph.length > 400) {
@@ -29,6 +51,8 @@ export const splitIntoPages = ({ bookParagraphs }: SplitIntoPagesData): BookPara
   if (currentPage.length > 0) {
     pages.push(currentPage);
   }
+
+  splitIntoPagesCache.set(hash, pages);
 
   return pages;
 };
