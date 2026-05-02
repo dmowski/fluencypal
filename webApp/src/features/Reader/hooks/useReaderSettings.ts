@@ -102,7 +102,10 @@ const getDefaultSettingsFromViewport = (): ReaderSettings => {
   const viewportDimensions = getViewportDimensions();
 
   return {
-    language: typeof window !== 'undefined' ? window.navigator.language || DEFAULT_LANGUAGE : DEFAULT_LANGUAGE,
+    language:
+      typeof window !== 'undefined'
+        ? window.navigator.language || DEFAULT_LANGUAGE
+        : DEFAULT_LANGUAGE,
     selectedVoiceURI: null,
     translateToLanguage: null,
     fontSize: getInitialFontSizeByViewportWidth(viewportWidth),
@@ -132,7 +135,9 @@ const getInitialSettings = (): ReaderSettings => {
 
     const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
     const parsedFontSize =
-      typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : defaultSettings.fontSize;
+      typeof parsedSettings.fontSize === 'number'
+        ? parsedSettings.fontSize
+        : defaultSettings.fontSize;
     const parsedContentWidth =
       typeof parsedSettings.contentWidth === 'number'
         ? parsedSettings.contentWidth
