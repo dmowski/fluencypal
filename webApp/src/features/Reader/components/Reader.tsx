@@ -89,14 +89,14 @@ export const Reader = ({ data }: { data: Book }) => {
 
         color: '#000',
         alignItems: 'center',
-        padding: '80px 0px 120px 0px',
+        padding: '80px 0px 20px 0px',
         flex: '1 0 0',
         gap: '90px',
         position: 'relative',
       }}
     >
-      <BackButton onClick={closeReader} />
       <ReaderSpeechSettingsButton speech={speech} />
+      <BackButton onClick={closeReader} />
 
       <Stack
         sx={{

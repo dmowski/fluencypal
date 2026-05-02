@@ -6,7 +6,7 @@ export const BackButton = ({ onClick }: { onClick: () => void }) => {
     <IconButton
       onClick={onClick}
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         top: '5px',
         right: '5px',
         zIndex: 3,

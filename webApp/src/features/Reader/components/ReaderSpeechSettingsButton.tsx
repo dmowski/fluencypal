@@ -92,7 +92,7 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
       <IconButton
         onClick={(event) => setAnchorEl(event.currentTarget)}
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           top: '5px',
           left: '5px',
           zIndex: 3,
