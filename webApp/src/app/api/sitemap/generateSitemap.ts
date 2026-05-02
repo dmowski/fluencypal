@@ -2,7 +2,7 @@ import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
 
-const updateTime = '2026-04-11T13:01:02+00:00';
+const updateTime = '2026-05-02T13:01:02+00:00';
 
 interface UrlDefinition {
   path: string;
@@ -68,22 +68,6 @@ export async function generateSitemap(): Promise<string> {
       priority: '0.5000',
     }));
 
-  const scenariosData = getRolePlayScenarios('en');
-  const rolePlayScenarios = scenariosData.rolePlayScenarios;
-  const rolePlayCategories = scenariosData.categoriesList;
-
-  const scenariosUrls: UrlDefinition[] = rolePlayScenarios.map((item) => ({
-    path: `scenarios/${item.id}`,
-    priority: '0.7000',
-  }));
-
-  const scenariosCategoriesUrls: UrlDefinition[] = rolePlayCategories
-    .filter((item) => item.categoryId !== scenariosData.allCategory.categoryId)
-    .map((item) => ({
-      path: `scenarios?category=${item.categoryId}`,
-      priority: '0.5000',
-    }));
-
   const quizUrls: UrlDefinition[] = supportedLanguages
     .filter((lang) => lang !== 'en')
     .map((lang) => ({
@@ -96,10 +80,7 @@ export async function generateSitemap(): Promise<string> {
       path: '',
       priority: '1.0000',
     },
-    {
-      path: 'pricing',
-      priority: '0.9000',
-    },
+
     {
       path: 'quiz',
       priority: '0.9000',
@@ -118,8 +99,6 @@ export async function generateSitemap(): Promise<string> {
     ...localeLinks,
     ...casesUrls,
     ...casesCategoriesUrls,
-    ...scenariosUrls,
-    ...scenariosCategoriesUrls,
     ...quizUrls,
   ];
 
