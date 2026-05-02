@@ -65,6 +65,19 @@ export const TextPopover = ({
       anchorReference="anchorPosition"
       anchorPosition={anchorPosition ?? { top: 0, left: 0 }}
       transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      hideBackdrop
+      disableScrollLock
+      disableAutoFocus
+      disableEnforceFocus
+      disableRestoreFocus
+      sx={{ pointerEvents: 'none' }}
+      slotProps={{
+        paper: {
+          sx: {
+            pointerEvents: 'auto',
+          },
+        },
+      }}
     >
       <Stack sx={{ gap: '5px', padding: '6px', minWidth: '150px' }}>
         <Stack direction="row" sx={{ gap: '4px' }}>
