@@ -22,8 +22,6 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setLineHeight: (nextLineHeight: number) => void;
   setJustifyText: (nextJustifyText: boolean) => void;
   setTranslateOnHover: (nextTranslateOnHover: boolean) => void;
-  setColumns: (nextColumns: 1 | 2) => void;
-  setColumnGap: (nextColumnGap: number) => void;
 }
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
@@ -33,8 +31,8 @@ const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
 const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_TRANSLATE_ON_HOVER = false;
-const DEFAULT_COLUMNS: 1 | 2 = 1;
-const DEFAULT_COLUMN_GAP = 40;
+const AUTO_TWO_COLUMNS_MIN_WIDTH = 1200;
+const AUTO_TWO_COLUMNS_GAP = 50;
 const MOBILE_INIT_FONT_SIZE = 18;
 const MOBILE_INIT_FONT_SIZE_WIDTH_THRESHOLD = 600;
 const MOBILE_LAYOUT_WIDTH_THRESHOLD = 1024;
@@ -47,8 +45,17 @@ export const READER_SETTINGS_RANGES = {
   fontSize: { min: 20, max: 64, step: 1 },
   paragraphGap: { min: 0, max: 80, step: 1 },
   lineHeight: { min: 1, max: 2.5, step: 0.05 },
-  columnGap: { min: 0, max: 200, step: 1 },
 } as const;
+
+const getAutoColumnsLayout = (
+  contentWidth: number,
+): Pick<ReaderSettings, 'columns' | 'columnGap'> => {
+  if (contentWidth > AUTO_TWO_COLUMNS_MIN_WIDTH) {
+    return { columns: 2, columnGap: AUTO_TWO_COLUMNS_GAP };
+  }
+
+  return { columns: 1, columnGap: 0 };
+};
 
 const getViewportDimensions = (): { contentWidth: number; contentHeight: number } => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
@@ -100,6 +107,7 @@ const getInitialFontSizeByViewportWidth = (viewportWidth: number): number =>
 const getDefaultSettingsFromViewport = (): ReaderSettings => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
   const viewportDimensions = getViewportDimensions();
+  const autoColumnsLayout = getAutoColumnsLayout(viewportDimensions.contentWidth);
 
   return {
     language:
@@ -115,8 +123,8 @@ const getDefaultSettingsFromViewport = (): ReaderSettings => {
     lineHeight: DEFAULT_LINE_HEIGHT,
     justifyText: DEFAULT_JUSTIFY_TEXT,
     translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-    columns: DEFAULT_COLUMNS,
-    columnGap: DEFAULT_COLUMN_GAP,
+    columns: autoColumnsLayout.columns,
+    columnGap: autoColumnsLayout.columnGap,
   };
 };
 
@@ -138,14 +146,6 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.fontSize === 'number'
         ? parsedSettings.fontSize
         : defaultSettings.fontSize;
-    const parsedContentWidth =
-      typeof parsedSettings.contentWidth === 'number'
-        ? parsedSettings.contentWidth
-        : defaultSettings.contentWidth;
-    const parsedContentHeight =
-      typeof parsedSettings.contentHeight === 'number'
-        ? parsedSettings.contentHeight
-        : defaultSettings.contentHeight;
     const parsedParagraphGap =
       typeof parsedSettings.paragraphGap === 'number'
         ? parsedSettings.paragraphGap
@@ -162,9 +162,7 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.translateOnHover === 'boolean'
         ? parsedSettings.translateOnHover
         : DEFAULT_TRANSLATE_ON_HOVER;
-    const parsedColumns = parsedSettings.columns === 2 ? 2 : DEFAULT_COLUMNS;
-    const parsedColumnGap =
-      typeof parsedSettings.columnGap === 'number' ? parsedSettings.columnGap : DEFAULT_COLUMN_GAP;
+    const autoColumnsLayout = getAutoColumnsLayout(defaultSettings.contentWidth);
 
     return {
       language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
@@ -174,8 +172,8 @@ const getInitialSettings = (): ReaderSettings => {
         READER_SETTINGS_RANGES.fontSize.min,
         Math.min(READER_SETTINGS_RANGES.fontSize.max, parsedFontSize),
       ),
-      contentWidth: Math.max(0, parsedContentWidth),
-      contentHeight: Math.max(0, parsedContentHeight),
+      contentWidth: defaultSettings.contentWidth,
+      contentHeight: defaultSettings.contentHeight,
       paragraphGap: Math.max(
         READER_SETTINGS_RANGES.paragraphGap.min,
         Math.min(READER_SETTINGS_RANGES.paragraphGap.max, parsedParagraphGap),
@@ -186,11 +184,8 @@ const getInitialSettings = (): ReaderSettings => {
       ),
       justifyText: parsedJustifyText,
       translateOnHover: parsedTranslateOnHover,
-      columns: parsedColumns,
-      columnGap: Math.max(
-        READER_SETTINGS_RANGES.columnGap.min,
-        Math.min(READER_SETTINGS_RANGES.columnGap.max, parsedColumnGap),
-      ),
+      columns: autoColumnsLayout.columns,
+      columnGap: autoColumnsLayout.columnGap,
     };
   } catch {
     return defaultSettings;
@@ -212,10 +207,13 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         const nextViewportDimensions = getViewportDimensions();
+        const nextAutoColumnsLayout = getAutoColumnsLayout(nextViewportDimensions.contentWidth);
         setSettings((previousSettings) => ({
           ...previousSettings,
           contentWidth: nextViewportDimensions.contentWidth,
           contentHeight: nextViewportDimensions.contentHeight,
+          columns: nextAutoColumnsLayout.columns,
+          columnGap: nextAutoColumnsLayout.columnGap,
         }));
       }, 1000);
     };
@@ -296,23 +294,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
-  const setColumns = useCallback((nextColumns: 1 | 2) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      columns: nextColumns,
-    }));
-  }, []);
-
-  const setColumnGap = useCallback((nextColumnGap: number) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      columnGap: Math.max(
-        READER_SETTINGS_RANGES.columnGap.min,
-        Math.min(READER_SETTINGS_RANGES.columnGap.max, nextColumnGap),
-      ),
-    }));
-  }, []);
-
   return useMemo(
     () => ({
       ...settings,
@@ -325,8 +306,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
-      setColumns,
-      setColumnGap,
     }),
     [
       settings,
@@ -339,8 +318,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
-      setColumns,
-      setColumnGap,
     ],
   );
 };

@@ -86,10 +86,6 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
     readerSettings.setTranslateToLanguage((nextLanguage || null) as NativeLangCode | null);
   };
 
-  const handleColumnsChange = (event: SelectChangeEvent<string>) => {
-    readerSettings.setColumns(event.target.value === '2' ? 2 : 1);
-  };
-
   return (
     <>
       <IconButton
@@ -194,19 +190,6 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               </Select>
             </FormControl>
 
-            <FormControl size="small" fullWidth>
-              <InputLabel id="reader-columns-select-label">{i18n._('Columns')}</InputLabel>
-              <Select
-                labelId="reader-columns-select-label"
-                label={i18n._('Columns')}
-                value={String(readerSettings.columns)}
-                onChange={handleColumnsChange}
-              >
-                <MenuItem value="1">{i18n._('1 column')}</MenuItem>
-                <MenuItem value="2">{i18n._('2 columns')}</MenuItem>
-              </Select>
-            </FormControl>
-
             <FormControlLabel
               control={
                 <Checkbox
@@ -226,27 +209,6 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               }
               label={i18n._('Translate on Hover')}
             />
-
-            {readerSettings.columns === 2 && (
-              <Stack sx={{ gap: '8px' }}>
-                <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Typography variant="body2">{i18n._('Column gap')}</Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {readerSettings.columnGap}px
-                  </Typography>
-                </Stack>
-                <Slider
-                  min={0}
-                  max={200}
-                  step={1}
-                  value={readerSettings.columnGap}
-                  onChange={(_event, value) =>
-                    readerSettings.setColumnGap(Array.isArray(value) ? value[0] : value)
-                  }
-                  valueLabelDisplay="auto"
-                />
-              </Stack>
-            )}
 
             <Stack sx={{ gap: '8px' }}>
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
