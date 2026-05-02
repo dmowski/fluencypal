@@ -93,7 +93,11 @@ export async function POST(request: Request) {
               systemMessage: [
                 'You extract book metadata from text snippets.',
                 'Return strict JSON with keys: title, subtitle, author.',
-                'If subtitle is missing, return an empty string for subtitle.',
+                'If subtitle is explicitly present in the text, use it.',
+                'If subtitle is not explicitly present, generate one subtitle line based on the text.',
+                'Generated subtitle must be 6 to 10 words.',
+                'Subtitle language must match the book text language.',
+                'Subtitle must be plain text in one line without quotes or punctuation at the ends.',
                 'If author is missing, return an empty string for author.',
                 'Return only JSON.',
               ].join('\n'),
