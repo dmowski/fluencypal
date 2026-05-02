@@ -3,7 +3,6 @@
 import {
   Button,
   CircularProgress,
-  IconButton,
   LinearProgress,
   Stack,
   TextField,
@@ -13,7 +12,7 @@ import { useLingui } from '@lingui/react';
 import { useRef, useState } from 'react';
 import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
-import { File } from 'lucide-react';
+import { CirclePlus, File } from 'lucide-react';
 import { useBooks } from './useBooks';
 
 export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
@@ -143,7 +142,14 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
-      <Stack sx={{ width: '100%', maxWidth: '700px', gap: '16px' }}>
+      <Stack
+        sx={{ width: '100%', maxWidth: '700px', gap: '16px' }}
+        component={'form'}
+        onSubmit={(e) => {
+          e.preventDefault();
+          void handleSubmit();
+        }}
+      >
         <Typography variant="h4">{i18n._('Add New Book')}</Typography>
 
         <TextField
@@ -151,18 +157,21 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           onChange={(event) => setTitle(event.target.value)}
           label={i18n._('Title')}
           fullWidth
+          required
         />
         <TextField
           value={subtitle}
           onChange={(event) => setSubtitle(event.target.value)}
           label={i18n._('Subtitle')}
           fullWidth
+          required
         />
         <TextField
           value={category}
           onChange={(event) => setCategory(event.target.value)}
           label={i18n._('Category')}
           fullWidth
+          required
         />
         <TextField
           value={text}
@@ -172,6 +181,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           minRows={8}
           maxRows={40}
           fullWidth
+          required
         />
         <input
           ref={fileInputRef}
@@ -182,18 +192,16 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         />
         <Stack sx={{ gap: '8px' }}>
           <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '8px' }}>
-            <IconButton
+            <Button
               onClick={handleEpubUploadClick}
               disabled={isConvertingFile}
+              variant="outlined"
+              color="info"
               aria-label={i18n._('Import text from EPUB')}
+              startIcon={isConvertingFile ? <CircularProgress size={18} /> : <File size={18} />}
             >
-              {isConvertingFile ? (
-                <CircularProgress size={18} />
-              ) : (
-                <File size={18} color="rgba(200, 200, 200, 1)" />
-              )}
-            </IconButton>
-            <Typography variant="body2">{i18n._('Import text from EPUB file')}</Typography>
+              {i18n._('Import text from EPUB file')}
+            </Button>
           </Stack>
           {isConvertingFile || conversionProgress > 0 ? (
             <>
@@ -224,12 +232,32 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           </Typography>
         ) : null}
 
-        <Stack sx={{ flexDirection: 'row', justifyContent: 'flex-end', gap: '12px' }}>
-          <Button variant="outlined" onClick={onClose} disabled={isSavingBook}>
-            {i18n._('Cancel')}
-          </Button>
-          <Button variant="contained" onClick={handleSubmit} disabled={isDisabled}>
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: '12px',
+            paddingTop: '20px',
+          }}
+        >
+          <Button
+            size="large"
+            variant="contained"
+            color="info"
+            type="submit"
+            startIcon={<CirclePlus />}
+          >
             {i18n._('Add')}
+          </Button>
+          <Button
+            size="large"
+            variant="outlined"
+            color="info"
+            type="button"
+            onClick={onClose}
+            disabled={isSavingBook}
+          >
+            {i18n._('Cancel')}
           </Button>
         </Stack>
       </Stack>
