@@ -73,14 +73,9 @@ describe('fillDailyGaps', () => {
     const points = [makePoint('2026-01-01', 50)];
     const result = fillDailyGaps(points, '2026-01-02');
 
-    expect(result).toHaveLength(2);
+    // today itself is not inserted as a gap point
+    expect(result).toHaveLength(1);
     expect(result[0]).toEqual(makePoint('2026-01-01', 50));
-    expect(result[1].id).toBe('day_2026-01-02');
-    expect(result[1].grammar).toBe(0);
-    expect(result[1].vocabulary).toBe(0);
-    expect(result[1].fluency).toBe(0);
-    expect(result[1].confidence).toBe(0);
-    expect(result[1].createdAtIso).toBe('2026-01-02T00:00:00.000Z');
   });
 
   it('inserts multiple zero-value points for a multi-day gap', () => {
