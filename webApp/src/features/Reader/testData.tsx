@@ -2,6 +2,7 @@ import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 import { Book } from './types';
 
 export const testData: Book = {
+  id: 'demo-supercommunicators',
   title: 'Supercommunicators',
   subtitle: 'How to Unlock the Secret Language of Connection',
   category: 'Charles Duhigg',

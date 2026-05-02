@@ -52,9 +52,9 @@ export const BooksList = () => {
               flexWrap: 'wrap',
             }}
           >
-            {books.usersBooks.map((book, index) => (
+            {books.usersBooks.map((book) => (
               <BookCard
-                key={`${book.title}-${index}`}
+                key={book.id}
                 data={book}
                 onClick={books.setActive}
                 onDelete={handleDelete}

@@ -2,6 +2,7 @@ export type BookWord = string;
 export type BookParagraph = BookWord[];
 
 export interface Book {
+  id: string;
   paragraphs: BookParagraph[];
   title: string;
   subtitle: string;
