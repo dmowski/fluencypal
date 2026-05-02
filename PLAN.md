@@ -3,7 +3,7 @@
 ## Reader helper?
 
 - 2 columns view
-  -- calculate pages accurately
+  -- Inset option to show 2 columns
 
 - How to remove scrolls?
   What info I need to know: Available space, how much symbols (lines) will fit.
