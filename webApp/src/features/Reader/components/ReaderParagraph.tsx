@@ -229,6 +229,9 @@ export const ReaderParagraph = ({
         rawEnd: wordEnd,
       }),
     );
+    // emulate select
+    window.getSelection()?.setBaseAndExtent(e.currentTarget, 0, e.currentTarget, word.length);
+
     setSelectionText(word);
 
     // Get the element's bounding rect for popover positioning
