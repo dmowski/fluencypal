@@ -98,6 +98,8 @@ export const Reader = ({ data }: { data: Book }) => {
         sx={{
           width: '100%',
           alignItems: 'center',
+          border: '1px solid rgba(255, 0, 0, 1)',
+          height: '50vh',
         }}
       >
         <Stack sx={{ gap: '20px', width: '100%' }}>
