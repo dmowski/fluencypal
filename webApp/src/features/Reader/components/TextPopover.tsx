@@ -1,6 +1,6 @@
 import { Popover, Stack, Typography } from '@mui/material';
 import { RefObject } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const HIGHLIGHT_COLORS = ['#FFE066', '#FFB3C6', '#BDE0FE', '#CDEAC0', '#E9D5FF'];
 
@@ -35,6 +35,13 @@ export const TextPopover = ({
   translatedText,
   isTranslationLoading,
 }: TextPopoverProps) => {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
+
   useEffect(() => {
     if (!anchorPosition) return;
 
@@ -68,13 +75,19 @@ export const TextPopover = ({
       anchorReference="anchorPosition"
       anchorPosition={anchorPosition ?? { top: 0, left: 0 }}
       transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-      hideBackdrop
+      hideBackdrop={!isTouchDevice}
       disableScrollLock
       disableAutoFocus
       disableEnforceFocus
       disableRestoreFocus
-      sx={{ pointerEvents: 'none' }}
+      sx={{ pointerEvents: isTouchDevice ? 'auto' : 'none' }}
       slotProps={{
+        backdrop: {
+          invisible: true,
+          sx: {
+            backgroundColor: 'transparent',
+          },
+        },
         paper: {
           ref: paperRef,
           sx: {
