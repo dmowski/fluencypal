@@ -13,40 +13,21 @@ export const PaginationPanel = ({
   isLastPage: boolean;
 }) => {
   return (
-    <Stack
-      sx={{
-        width: '100%',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '5px',
-        zIndex: 0,
-        '@media (max-width: 600px)': {
-          justifyContent: 'flex-end',
-        },
-      }}
-    >
-      <PaginationButtons
-        onPrevious={onPrevious}
-        onNext={onNext}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-      />
-    </Stack>
+    <>
+      <PaginationButton type="previous" disabled={isFirstPage} onClick={onPrevious} />
+      <PaginationButton type="next" disabled={isLastPage} onClick={onNext} />
+    </>
   );
 };
 
 const PaginationButton = ({
   onClick,
   disabled,
-  children,
+  type,
 }: {
   onClick: () => void;
   disabled: boolean;
-  children: React.ReactNode;
+  type: 'previous' | 'next';
 }) => {
   return (
     <Stack
@@ -58,50 +39,27 @@ const PaginationButton = ({
         borderRadius: '50px',
         padding: '15px',
         backgroundColor: 'rgba(0, 0, 0, 0)',
+        position: 'fixed',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        left: type === 'previous' ? '0px' : 'auto',
+        right: type === 'next' ? '0px' : 'auto',
+
         ':hover': {
           backgroundColor: 'rgba(0, 0, 0, 0.1)',
           cursor: disabled ? 'default' : 'pointer',
         },
         '@media (max-width: 600px)': {
-          padding: '10px',
+          transform: 'none',
+          top: 'auto',
+          bottom: '0px',
         },
-        position: 'relative',
         zIndex: 3,
       }}
       disabled={disabled}
       onClick={onClick}
     >
-      {children}
-    </Stack>
-  );
-};
-
-export const PaginationButtons = ({
-  onPrevious,
-  onNext,
-  isFirstPage,
-  isLastPage,
-}: {
-  onPrevious: () => void;
-  onNext: () => void;
-  isFirstPage: boolean;
-  isLastPage: boolean;
-}) => {
-  return (
-    <Stack
-      sx={{
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      }}
-    >
-      <PaginationButton disabled={isFirstPage} onClick={onPrevious}>
-        <ChevronLeft />
-      </PaginationButton>
-
-      <PaginationButton disabled={isLastPage} onClick={onNext}>
-        <ChevronRight />
-      </PaginationButton>
+      {type === 'previous' ? <ChevronLeft /> : <ChevronRight />}
     </Stack>
   );
 };

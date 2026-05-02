@@ -242,9 +242,7 @@ export const ReaderParagraph = ({
                   const sourceOffset = absOffset + paragraphStartCharOffset;
                   const color = getCharHighlightColor(sourceOffset, highlights);
                   const prevColor =
-                    charIdx > 0
-                      ? getCharHighlightColor(sourceOffset - 1, highlights)
-                      : null;
+                    charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
                   const nextColor =
                     charIdx < word.length - 1
                       ? getCharHighlightColor(sourceOffset + 1, highlights)
