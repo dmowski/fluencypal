@@ -9,7 +9,7 @@ import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getLangLearnPlanLabels } from '@/features/Lang/getLabels';
 import { getAllInterviews } from '../Case/data/data';
 
-type Page = 'quiz' | 'quiz2' | 'tg-app' | 'practice' | 'case' | 'alias' | 'iwant' | '';
+type Page = 'quiz' | 'quiz2' | 'tg-app' | 'practice' | 'case' | 'alias' | 'iwant' | '' | 'book';
 
 type AfterIdPage = 'quiz';
 
@@ -52,6 +52,15 @@ export const generateMetadataInfo = ({
   if (currentPath === 'iwant') {
     title = i18n._(`I Want`) + ' | ' + APP_NAME;
     description = i18n._(`Discover the "I Want" feature in FluencyPal,`);
+    keywords = [];
+    needIndex = false;
+  }
+
+  if (currentPath === 'book') {
+    title = i18n._(`Books`);
+    description = i18n._(
+      `Access and manage your personal library of books with FluencyPal's Reader feature. Upload your own books, track your reading progress, and enjoy a personalized reading experience that helps you improve your English skills.`,
+    );
     keywords = [];
     needIndex = false;
   }
