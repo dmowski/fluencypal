@@ -1,5 +1,5 @@
-import { splitWords } from '../Sentence/TextConstructor/textConstructor.utils';
-import { Book, BookParagraph } from './types';
+import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
+import { Book, BookParagraph } from '../model/types';
 
 export const splitIntoPages = (book: Book, wordsPerPage: number): BookParagraph[][] => {
   const pages: BookParagraph[][] = [];

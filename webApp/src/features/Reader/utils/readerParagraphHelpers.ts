@@ -1,4 +1,4 @@
-import { HighlightedText } from './types';
+import { HighlightedText } from '../model/types';
 
 /** Returns the absolute character start offset of each word within `words.join(' ')`. */
 export const getWordCharOffsets = (words: string[]): number[] => {

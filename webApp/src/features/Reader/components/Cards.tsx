@@ -1,7 +1,7 @@
 'use client';
 
 import { IconButton, Stack, Typography } from '@mui/material';
-import { Book } from './types';
+import { Book } from '../model/types';
 import { useLingui } from '@lingui/react';
 import { CirclePlus, Trash2 } from 'lucide-react';
 

@@ -1,11 +1,11 @@
 'use client';
 
 import { Stack } from '@mui/material';
-import { Reader } from './Reader';
-import { ReaderPageStyle } from './style';
-import { BooksProvider, useBooks } from './useBooks';
-import { BooksList } from './BooksList';
-import { ReaderSettingsProvider } from './useReaderSettings';
+import { Reader } from './components/Reader';
+import { ReaderPageStyle } from './components/style';
+import { BooksProvider, useBooks } from './hooks/useBooks';
+import { BooksList } from './components/BooksList';
+import { ReaderSettingsProvider } from './hooks/useReaderSettings';
 
 const ReaderComponent = () => {
   const books = useBooks();

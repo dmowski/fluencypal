@@ -15,8 +15,8 @@ import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
-import { useBrowserSpeech } from './useBrowserSpeech';
-import { useReaderSettings } from './useReaderSettings';
+import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
+import { useReaderSettings } from '../hooks/useReaderSettings';
 
 type ReaderSpeechSettingsButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;

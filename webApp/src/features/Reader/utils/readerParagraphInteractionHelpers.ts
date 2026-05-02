@@ -1,4 +1,4 @@
-import { HighlightedText } from './types';
+import { HighlightedText } from '../model/types';
 
 type MousePositionLike = {
   clientX: number;

@@ -1,21 +1,24 @@
 import { Stack, Typography } from '@mui/material';
 import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
-import { getTranslation, normalizeToNativeLangCode } from '../Translation/translationHelpers';
+import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
 import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from './FlyingTooltip';
 import {
   createSelectionFromRange,
   getPointerPosition,
   getPopoverPositionFromRect,
-} from './readerParagraphInteractionHelpers';
+} from '../utils/readerParagraphInteractionHelpers';
 import {
   getAbsoluteCharOffset,
   getCharHighlightColor,
   getHighlightAtCharRange,
   getWordCharOffsets,
-} from './readerParagraphHelpers';
-import { canTranslateReaderText, normalizeSelectedText } from './readerParagraphTranslationHelpers';
+} from '../utils/readerParagraphHelpers';
+import {
+  canTranslateReaderText,
+  normalizeSelectedText,
+} from '../utils/readerParagraphTranslationHelpers';
 import { TextPopover } from './TextPopover';
-import { HighlightedText } from './types';
+import { HighlightedText } from '../model/types';
 import { NativeLangCode } from '@/libs/language/type';
 
 export const ReaderParagraph = ({

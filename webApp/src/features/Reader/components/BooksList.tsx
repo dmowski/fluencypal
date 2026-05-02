@@ -5,8 +5,8 @@ import { useLingui } from '@lingui/react';
 import { useState } from 'react';
 import { AddBookModal } from './AddBookModal';
 import { BookCard, AddNewBookCard } from './Cards';
-import { Book } from './types';
-import { useBooks } from './useBooks';
+import { useBooks } from '../hooks/useBooks';
+import { Book } from '../model/types';
 
 export const BooksList = () => {
   const i18n = useLingui();

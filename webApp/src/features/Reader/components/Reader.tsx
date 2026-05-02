@@ -1,21 +1,21 @@
 import { Stack } from '@mui/material';
-import { Book } from './types';
+import { Book } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
 import { useMemo } from 'react';
 import { useLingui } from '@lingui/react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
-import { useBrowserSpeech } from './useBrowserSpeech';
+import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
 import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { ReaderButton } from './ReaderButton';
-import { useNativeRealtimeTranscript } from '../Transcript/useNativeRealtimeTranscript';
-import { Markdown } from '../uiKit/Markdown/Markdown';
-import { useReaderSettings } from './useReaderSettings';
-import { useBooks } from './useBooks';
+import { useNativeRealtimeTranscript } from '../../Transcript/useNativeRealtimeTranscript';
+import { Markdown } from '../../uiKit/Markdown/Markdown';
+import { useReaderSettings } from '../hooks/useReaderSettings';
+import { useBooks } from '../hooks/useBooks';
 import { BackButton } from './BackButton';
-import { splitIntoPages } from './splitParagraphsIntoPages';
-import { useReaderShortcuts } from './useReaderShortcuts';
+import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
+import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 
 export const Reader = ({ data }: { data: Book }) => {
   const { i18n } = useLingui();

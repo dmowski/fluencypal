@@ -1,13 +1,13 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
-import { testData } from './testData';
-import { Book, HighlightedText } from './types';
-import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
+import { testData } from '../model/testData';
+import { Book, HighlightedText } from '../model/types';
+import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import {
   deleteUserBookFromIndexedDb,
   loadUsersBooksFromIndexedDb,
   saveUserBookToIndexedDb,
-} from './booksIndexedDb';
-import { useUrlState } from '../Url/useUrlState';
+} from '../utils/booksIndexedDb';
+import { useUrlState } from '../../Url/useUrlState';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 

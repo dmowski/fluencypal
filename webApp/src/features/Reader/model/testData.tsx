@@ -1,4 +1,4 @@
-import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
+import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import { Book } from './types';
 
 export const testData: Book = {

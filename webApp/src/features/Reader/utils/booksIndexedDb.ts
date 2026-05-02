@@ -1,4 +1,4 @@
-import { Book } from './types';
+import { Book } from '../model/types';
 
 const DB_NAME = 'readerBooksDb';
 const DB_VERSION = 1;

@@ -13,7 +13,7 @@ import { useRef, useState } from 'react';
 import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { CirclePlus, File } from 'lucide-react';
-import { useBooks } from './useBooks';
+import { useBooks } from '../hooks/useBooks';
 
 export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const i18n = useLingui();
