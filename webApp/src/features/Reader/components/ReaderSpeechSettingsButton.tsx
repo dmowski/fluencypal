@@ -16,7 +16,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { useReaderSettings } from '../hooks/useReaderSettings';
+import { useReaderSettings, READER_SETTINGS_RANGES } from '../hooks/useReaderSettings';
 
 type ReaderSpeechSettingsButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
@@ -290,9 +290,9 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 </Typography>
               </Stack>
               <Slider
-                min={600}
-                max={1600}
-                step={10}
+                min={READER_SETTINGS_RANGES.contentWidth.min}
+                max={READER_SETTINGS_RANGES.contentWidth.max}
+                step={READER_SETTINGS_RANGES.contentWidth.step}
                 value={readerSettings.contentWidth}
                 onChange={(_event, value) =>
                   readerSettings.setContentWidth(Array.isArray(value) ? value[0] : value)
@@ -309,9 +309,9 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 </Typography>
               </Stack>
               <Slider
-                min={300}
-                max={1200}
-                step={10}
+                min={READER_SETTINGS_RANGES.contentHeight.min}
+                max={READER_SETTINGS_RANGES.contentHeight.max}
+                step={READER_SETTINGS_RANGES.contentHeight.step}
                 value={readerSettings.contentHeight}
                 onChange={(_event, value) =>
                   readerSettings.setContentHeight(Array.isArray(value) ? value[0] : value)

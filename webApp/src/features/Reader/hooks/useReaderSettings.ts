@@ -52,6 +52,15 @@ const DEFAULT_CONTENT_WIDTH = 1200;
 const DEFAULT_CONTENT_HEIGHT = 500;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
 const DEFAULT_COLUMN_GAP = 40;
+
+export const READER_SETTINGS_RANGES = {
+  fontSize: { min: 20, max: 64, step: 1 },
+  paragraphGap: { min: 0, max: 80, step: 1 },
+  lineHeight: { min: 1, max: 2.5, step: 0.05 },
+  contentWidth: { min: 600, max: 3000, step: 10 },
+  contentHeight: { min: 300, max: 2000, step: 10 },
+  columnGap: { min: 0, max: 200, step: 1 },
+} as const;
 const ReaderSettingsContext = createContext<ReaderSettings | null>(null);
 
 const getInitialSettings = (): PersistedReaderSettings => {
@@ -114,13 +123,13 @@ const getInitialSettings = (): PersistedReaderSettings => {
       language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
       selectedVoiceURI: parsedSettings.selectedVoiceURI || null,
       translateToLanguage: parsedSettings.translateToLanguage || null,
-      fontSize: Math.max(20, Math.min(64, parsedFontSize)),
-      paragraphGap: Math.max(0, Math.min(80, parsedParagraphGap)),
-      lineHeight: Math.max(1, Math.min(2.5, parsedLineHeight)),
-      contentWidth: Math.max(600, Math.min(1600, parsedContentWidth)),
-      contentHeight: Math.max(300, Math.min(1200, parsedContentHeight)),
+      fontSize: Math.max(READER_SETTINGS_RANGES.fontSize.min, Math.min(READER_SETTINGS_RANGES.fontSize.max, parsedFontSize)),
+      paragraphGap: Math.max(READER_SETTINGS_RANGES.paragraphGap.min, Math.min(READER_SETTINGS_RANGES.paragraphGap.max, parsedParagraphGap)),
+      lineHeight: Math.max(READER_SETTINGS_RANGES.lineHeight.min, Math.min(READER_SETTINGS_RANGES.lineHeight.max, parsedLineHeight)),
+      contentWidth: Math.max(READER_SETTINGS_RANGES.contentWidth.min, Math.min(READER_SETTINGS_RANGES.contentWidth.max, parsedContentWidth)),
+      contentHeight: Math.max(READER_SETTINGS_RANGES.contentHeight.min, Math.min(READER_SETTINGS_RANGES.contentHeight.max, parsedContentHeight)),
       columns: parsedColumns,
-      columnGap: Math.max(0, Math.min(200, parsedColumnGap)),
+      columnGap: Math.max(READER_SETTINGS_RANGES.columnGap.min, Math.min(READER_SETTINGS_RANGES.columnGap.max, parsedColumnGap)),
     };
   } catch {
     return {
@@ -172,35 +181,35 @@ const useReaderSettingsState = (): ReaderSettings => {
   const setFontSize = useCallback((nextFontSize: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      fontSize: Math.max(20, Math.min(64, nextFontSize)),
+      fontSize: Math.max(READER_SETTINGS_RANGES.fontSize.min, Math.min(READER_SETTINGS_RANGES.fontSize.max, nextFontSize)),
     }));
   }, []);
 
   const setParagraphGap = useCallback((nextParagraphGap: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      paragraphGap: Math.max(0, Math.min(80, nextParagraphGap)),
+      paragraphGap: Math.max(READER_SETTINGS_RANGES.paragraphGap.min, Math.min(READER_SETTINGS_RANGES.paragraphGap.max, nextParagraphGap)),
     }));
   }, []);
 
   const setLineHeight = useCallback((nextLineHeight: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      lineHeight: Math.max(1, Math.min(2.5, nextLineHeight)),
+      lineHeight: Math.max(READER_SETTINGS_RANGES.lineHeight.min, Math.min(READER_SETTINGS_RANGES.lineHeight.max, nextLineHeight)),
     }));
   }, []);
 
   const setContentWidth = useCallback((nextContentWidth: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      contentWidth: Math.max(600, Math.min(1600, nextContentWidth)),
+      contentWidth: Math.max(READER_SETTINGS_RANGES.contentWidth.min, Math.min(READER_SETTINGS_RANGES.contentWidth.max, nextContentWidth)),
     }));
   }, []);
 
   const setContentHeight = useCallback((nextContentHeight: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      contentHeight: Math.max(300, Math.min(1200, nextContentHeight)),
+      contentHeight: Math.max(READER_SETTINGS_RANGES.contentHeight.min, Math.min(READER_SETTINGS_RANGES.contentHeight.max, nextContentHeight)),
     }));
   }, []);
 
@@ -214,7 +223,7 @@ const useReaderSettingsState = (): ReaderSettings => {
   const setColumnGap = useCallback((nextColumnGap: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
-      columnGap: Math.max(0, Math.min(200, nextColumnGap)),
+      columnGap: Math.max(READER_SETTINGS_RANGES.columnGap.min, Math.min(READER_SETTINGS_RANGES.columnGap.max, nextColumnGap)),
     }));
   }, []);
 
