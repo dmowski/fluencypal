@@ -24,8 +24,7 @@ const isBookRecord = (value: unknown): value is Book => {
 
   const maybeBook = value as Partial<Book> & { category?: unknown };
 
-  const hasAuthor =
-    typeof maybeBook.author === 'string' || typeof maybeBook.category === 'string';
+  const hasAuthor = typeof maybeBook.author === 'string' || typeof maybeBook.category === 'string';
 
   return (
     typeof maybeBook.id === 'string' &&
