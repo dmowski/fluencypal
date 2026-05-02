@@ -14,7 +14,7 @@ import { Markdown } from '../uiKit/Markdown/Markdown';
 import { useReaderSettings } from './useReaderSettings';
 import { useBooks } from './useBooks';
 import { BackButton } from './BackButton';
-import { splitIntoPages, splitParagraphsIntoPages } from './splitParagraphsIntoPages';
+import { splitIntoPages } from './splitParagraphsIntoPages';
 
 export const Reader = ({ data }: { data: Book }) => {
   const [activePage, setActivePage] = useState(1);
