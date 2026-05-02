@@ -3,17 +3,23 @@ import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils
 import { BookParagraph, ReaderSettings } from '../model/types';
 import { isFitInPage } from './isFitInPage';
 
+export interface PagedParagraph {
+  words: BookParagraph;
+  sourceParagraphIndex: number;
+  sourceStartCharOffset: number;
+}
+
 export interface SplitIntoPagesData {
   bookParagraphs: BookParagraph[];
   settings: ReaderSettings;
 }
 
-const splitIntoPagesCache = new Map<string, BookParagraph[][]>();
+const splitIntoPagesCache = new Map<string, PagedParagraph[][]>();
 
 export const splitIntoPages = ({
   bookParagraphs,
   settings,
-}: SplitIntoPagesData): BookParagraph[][] => {
+}: SplitIntoPagesData): PagedParagraph[][] => {
   const hash = getHash(
     JSON.stringify({
       bookParagraphs,
@@ -25,8 +31,8 @@ export const splitIntoPages = ({
   if (cachedPages) {
     return cachedPages;
   }
-  const pages: BookParagraph[][] = [];
-  let currentPage: BookParagraph[] = [];
+  const pages: PagedParagraph[][] = [];
+  let currentPage: PagedParagraph[] = [];
   let currentPageText: string[] = [];
   const fitCache = new Map<string, boolean>();
 
@@ -81,15 +87,20 @@ export const splitIntoPages = ({
     return best;
   };
 
-  bookParagraphs.forEach((paragraph) => {
+  bookParagraphs.forEach((paragraph, sourceParagraphIndex) => {
     let remainingWords = paragraph;
+    let remainingStartCharOffset = 0;
 
     while (remainingWords.length > 0) {
       const fullParagraphText = remainingWords.join(' ');
       const fitsAsWhole = checkFits([...currentPageText, fullParagraphText]);
 
       if (fitsAsWhole) {
-        currentPage.push(remainingWords);
+        currentPage.push({
+          words: remainingWords,
+          sourceParagraphIndex,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
         currentPageText.push(fullParagraphText);
         break;
       }
@@ -97,12 +108,21 @@ export const splitIntoPages = ({
       const fittingPrefixLength = findFittingPrefixLength(remainingWords, currentPageText);
       if (fittingPrefixLength > 0) {
         const fittedWords = remainingWords.slice(0, fittingPrefixLength);
+        const fittedParagraphText = fittedWords.join(' ');
 
-        currentPage.push(fittedWords);
-        currentPageText.push(fittedWords.join(' '));
+        currentPage.push({
+          words: fittedWords,
+          sourceParagraphIndex,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
+        currentPageText.push(fittedParagraphText);
         pushCurrentPage();
 
         remainingWords = remainingWords.slice(fittingPrefixLength);
+        remainingStartCharOffset += fittedParagraphText.length;
+        if (remainingWords.length > 0) {
+          remainingStartCharOffset += 1;
+        }
         continue;
       }
 
@@ -113,12 +133,21 @@ export const splitIntoPages = ({
 
       const fallbackWords = remainingWords.slice(0, 1);
       const fittedWords = fallbackWords;
+      const fittedParagraphText = fittedWords.join(' ');
 
-      currentPage.push(fittedWords);
-      currentPageText.push(fittedWords.join(' '));
+      currentPage.push({
+        words: fittedWords,
+        sourceParagraphIndex,
+        sourceStartCharOffset: remainingStartCharOffset,
+      });
+      currentPageText.push(fittedParagraphText);
       pushCurrentPage();
 
       remainingWords = remainingWords.slice(1);
+      remainingStartCharOffset += fittedParagraphText.length;
+      if (remainingWords.length > 0) {
+        remainingStartCharOffset += 1;
+      }
     }
   });
 

@@ -167,6 +167,7 @@ const DevPanelContent = () => {
                 <ReaderParagraph
                   key={index}
                   paragraphIndex={index}
+                  paragraphStartCharOffset={0}
                   words={words}
                   fontSize={readerSettings.fontSize}
                   lineHeight={readerSettings.lineHeight}

@@ -145,12 +145,12 @@ export const Reader = ({ data }: { data: Book }) => {
                 gap: `${readerSettings.paragraphGap}px`,
               }}
             >
-              {pageContent.map((paragraph, rawIndex) => {
-                const index = rawIndex + (pageNumber - 1) * pageCount;
+              {pageContent.map((paragraph) => {
+                const index = paragraph.sourceParagraphIndex;
 
                 return (
                   <Stack
-                    key={index}
+                    key={`${index}-${paragraph.sourceStartCharOffset}`}
                     sx={{
                       width: '100%',
                       position: 'relative',
@@ -159,7 +159,8 @@ export const Reader = ({ data }: { data: Book }) => {
                   >
                     <ReaderParagraph
                       paragraphIndex={index}
-                      words={paragraph}
+                      paragraphStartCharOffset={paragraph.sourceStartCharOffset}
+                      words={paragraph.words}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}

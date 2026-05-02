@@ -42,7 +42,22 @@ describe('splitIntoPages', () => {
       settings: { ...settings, contentHeight: 501 },
     });
 
-    expect(result).toEqual([[['a', 'b']], [['c', 'd']]]);
+    expect(result).toEqual([
+      [
+        {
+          words: ['a', 'b'],
+          sourceParagraphIndex: 0,
+          sourceStartCharOffset: 0,
+        },
+      ],
+      [
+        {
+          words: ['c', 'd'],
+          sourceParagraphIndex: 0,
+          sourceStartCharOffset: 4,
+        },
+      ],
+    ]);
   });
 
   it('fills current page with a prefix of overflowing paragraph before moving remainder', () => {
@@ -56,6 +71,26 @@ describe('splitIntoPages', () => {
       settings: { ...settings, contentHeight: 502 },
     });
 
-    expect(result).toEqual([[['one', 'two'], ['three']], [['four', 'five']]]);
+    expect(result).toEqual([
+      [
+        {
+          words: ['one', 'two'],
+          sourceParagraphIndex: 0,
+          sourceStartCharOffset: 0,
+        },
+        {
+          words: ['three'],
+          sourceParagraphIndex: 1,
+          sourceStartCharOffset: 0,
+        },
+      ],
+      [
+        {
+          words: ['four', 'five'],
+          sourceParagraphIndex: 1,
+          sourceStartCharOffset: 6,
+        },
+      ],
+    ]);
   });
 });

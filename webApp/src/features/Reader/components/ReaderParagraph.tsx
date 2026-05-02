@@ -31,6 +31,7 @@ export interface ReaderParagraphSelectionPayload {
 
 export const ReaderParagraph = ({
   paragraphIndex,
+  paragraphStartCharOffset,
   words,
   fontSize,
   lineHeight,
@@ -43,6 +44,7 @@ export const ReaderParagraph = ({
   highlights,
 }: {
   paragraphIndex: number;
+  paragraphStartCharOffset: number;
   words: string[];
   fontSize: number;
   lineHeight: number;
@@ -138,7 +140,11 @@ export const ReaderParagraph = ({
           if (rect) {
             onSelection({
               paragraphIndex,
-              selection,
+              selection: {
+                ...selection,
+                startIndex: selection.startIndex + paragraphStartCharOffset,
+                endIndex: selection.endIndex + paragraphStartCharOffset,
+              },
               selectionText: selectedText,
               anchorPosition: getPopoverPositionFromRect(rect),
             });
@@ -173,7 +179,11 @@ export const ReaderParagraph = ({
     const rect = element.getBoundingClientRect();
     onSelection({
       paragraphIndex,
-      selection,
+      selection: {
+        ...selection,
+        startIndex: selection.startIndex + paragraphStartCharOffset,
+        endIndex: selection.endIndex + paragraphStartCharOffset,
+      },
       selectionText: word,
       anchorPosition: getPopoverPositionFromRect(rect),
     });
@@ -229,12 +239,15 @@ export const ReaderParagraph = ({
               >
                 {word.split('').map((char, charIdx) => {
                   const absOffset = wordStart + charIdx;
-                  const color = getCharHighlightColor(absOffset, highlights);
+                  const sourceOffset = absOffset + paragraphStartCharOffset;
+                  const color = getCharHighlightColor(sourceOffset, highlights);
                   const prevColor =
-                    charIdx > 0 ? getCharHighlightColor(absOffset - 1, highlights) : null;
+                    charIdx > 0
+                      ? getCharHighlightColor(sourceOffset - 1, highlights)
+                      : null;
                   const nextColor =
                     charIdx < word.length - 1
-                      ? getCharHighlightColor(absOffset + 1, highlights)
+                      ? getCharHighlightColor(sourceOffset + 1, highlights)
                       : null;
                   const isStart = color !== null && color !== prevColor;
                   const isEnd = color !== null && color !== nextColor;
@@ -264,7 +277,10 @@ export const ReaderParagraph = ({
                   data-char-offset={wordStart + word.length}
                   style={{
                     backgroundColor:
-                      getCharHighlightColor(wordStart + word.length, highlights) ?? 'transparent',
+                      getCharHighlightColor(
+                        wordStart + word.length + paragraphStartCharOffset,
+                        highlights,
+                      ) ?? 'transparent',
                   }}
                 >
                   {' '}
