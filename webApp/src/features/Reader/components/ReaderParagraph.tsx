@@ -372,6 +372,9 @@ export const ReaderParagraph = ({
             onHighlightColorSelect({ ...selection, color });
           }
 
+          // Clear the browser's text selection
+          window.getSelection()?.removeAllRanges();
+
           setSelection(null);
           setPopoverPosition(null);
           setSelectionText(null);
