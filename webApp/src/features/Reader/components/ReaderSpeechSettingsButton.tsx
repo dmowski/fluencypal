@@ -12,7 +12,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { Settings } from 'lucide-react';
+import { Settings, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
@@ -35,8 +35,15 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
   const [localFontSize, setLocalFontSize] = useState(readerSettings.fontSize);
   const [localParagraphGap, setLocalParagraphGap] = useState(readerSettings.paragraphGap);
   const [localLineHeight, setLocalLineHeight] = useState(readerSettings.lineHeight);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const open = Boolean(anchorEl);
+
+  // Detect touch device
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -156,7 +163,21 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <Stack sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px' }}>
+        <Stack sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}>
+          <IconButton
+            onClick={() => setAnchorEl(null)}
+            sx={{
+              position: 'absolute',
+              top: '8px',
+              right: '8px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
+            }}
+          >
+            <X size={18} />
+          </IconButton>
+
           <Stack>
             <Typography variant="h5" sx={{ fontWeight: 600 }}>
               {i18n._('Settings')}
@@ -242,15 +263,17 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               label={i18n._('Justify Text')}
             />
 
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={readerSettings.translateOnHover}
-                  onChange={(_event, checked) => readerSettings.setTranslateOnHover(checked)}
-                />
-              }
-              label={i18n._('Translate on Hover')}
-            />
+            {!isTouchDevice && (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={readerSettings.translateOnHover}
+                    onChange={(_event, checked) => readerSettings.setTranslateOnHover(checked)}
+                  />
+                }
+                label={i18n._('Translate on Hover')}
+              />
+            )}
 
             <Stack sx={{ gap: '8px' }}>
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>

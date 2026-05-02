@@ -2,8 +2,8 @@
 
 ## Reader helper?
 
-- Test on mobile
 - How to handle images, italic font?
+- Share books, but not settings
 
 ### EXTREME MVP:
 

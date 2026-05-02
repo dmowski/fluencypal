@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { MouseEvent, useMemo, useRef, useState } from 'react';
+import { MouseEvent, useMemo, useRef, useState, useEffect } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
 import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from './FlyingTooltip';
 import {
@@ -58,7 +58,14 @@ export const ReaderParagraph = ({
 }) => {
   const [hoverTranslation, setHoverTranslation] = useState<string | null>(null);
   const [hoverPointer, setHoverPointer] = useState<{ x: number; y: number } | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const hoverRequestIdRef = useRef(0);
+
+  // Detect touch device
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
 
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
@@ -74,7 +81,8 @@ export const ReaderParagraph = ({
   };
 
   const handleWordMouseEnter = async (e: MouseEvent<HTMLSpanElement>, word: string) => {
-    if (!translateOnHover) return;
+    // Disable hover translation on mobile/touch devices
+    if (!translateOnHover || isTouchDevice) return;
     setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
 
     const text = normalizeSelectedText(word);
@@ -230,6 +238,9 @@ export const ReaderParagraph = ({
                       borderRadius: '8px',
                       backgroundColor: '#d3d3d3ab',
                       zIndex: -1,
+                      '@media (max-width: 500px)': {
+                        display: 'none',
+                      },
                     },
                   },
                 }}
