@@ -99,51 +99,39 @@ export const Reader = ({ data }: { data: Book }) => {
           width: '100%',
           alignItems: 'center',
           height: `${readerSettings.contentHeight}px`,
+          gap: `${readerSettings.paragraphGap}px`,
         }}
       >
-        <Stack sx={{ gap: `${readerSettings.paragraphGap}px`, width: '100%' }}>
-          {activePageContent.map((paragraph, rawIndex) => {
-            const index = rawIndex + (activePage - 1) * pageCount;
-            return (
-              <Stack
-                key={rawIndex}
-                sx={{
-                  width: '100%',
-                  flexDirection: 'row',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  gap: '20px',
-                }}
-              >
-                <Stack
-                  key={index}
-                  sx={{
-                    width: `${readerSettings.contentWidth}px`,
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  <ReaderParagraph
-                    key={index}
-                    paragraphIndex={index}
-                    words={paragraph}
-                    fontSize={readerSettings.fontSize}
-                    lineHeight={readerSettings.lineHeight}
-                    sourceLanguage={readerSettings.language}
-                    targetLanguage={readerSettings.translateToLanguage}
-                    onWordClick={playText}
-                    onTextSelected={playText}
-                    highlights={(data.highlights ?? []).filter(
-                      (highlight) => (highlight.paragraphIndex ?? 0) === index,
-                    )}
-                    onHighlightColorSelect={books.applySelectedHighlight}
-                    onRemoveHighlight={books.removeHighlight}
-                  />
-                </Stack>
-              </Stack>
-            );
-          })}
-        </Stack>
+        {activePageContent.map((paragraph, rawIndex) => {
+          const index = rawIndex + (activePage - 1) * pageCount;
+          return (
+            <Stack
+              key={index}
+              sx={{
+                width: `${readerSettings.contentWidth}px`,
+                position: 'relative',
+                zIndex: 1,
+              }}
+            >
+              <ReaderParagraph
+                key={index}
+                paragraphIndex={index}
+                words={paragraph}
+                fontSize={readerSettings.fontSize}
+                lineHeight={readerSettings.lineHeight}
+                sourceLanguage={readerSettings.language}
+                targetLanguage={readerSettings.translateToLanguage}
+                onWordClick={playText}
+                onTextSelected={playText}
+                highlights={(data.highlights ?? []).filter(
+                  (highlight) => (highlight.paragraphIndex ?? 0) === index,
+                )}
+                onHighlightColorSelect={books.applySelectedHighlight}
+                onRemoveHighlight={books.removeHighlight}
+              />
+            </Stack>
+          );
+        })}
       </Stack>
 
       <PaginationPanel
