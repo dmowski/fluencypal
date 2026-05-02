@@ -4,10 +4,11 @@
 
 https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
 
+- 2 columns view
+
 - How to remove scrolls?
   What info I need to know: Available space, how much symbols (lines) will fit.
 
-- 2 columns view
 - Do not show full page title on the second page
 
 - Reading: How to handle transcripts
