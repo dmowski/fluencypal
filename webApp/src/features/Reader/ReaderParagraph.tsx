@@ -21,6 +21,8 @@ import { NativeLangCode } from '@/libs/language/type';
 export const ReaderParagraph = ({
   paragraphIndex,
   words,
+  fontSize,
+  lineHeight,
   sourceLanguage,
   targetLanguage,
   onWordClick,
@@ -31,6 +33,8 @@ export const ReaderParagraph = ({
 }: {
   paragraphIndex: number;
   words: string[];
+  fontSize: number;
+  lineHeight: number;
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
   onWordClick: (word: string) => void;
@@ -214,8 +218,8 @@ export const ReaderParagraph = ({
         onMouseLeave={clearHoverTranslation}
         sx={{
           fontFamily: 'serif',
-          fontSize: '36px',
-          lineHeight: '1.5',
+          fontSize: `${fontSize}px`,
+          lineHeight,
           textAlign: 'justify',
           '*': {
             fontFamily: 'serif',
@@ -230,8 +234,8 @@ export const ReaderParagraph = ({
                 component="span"
                 data-word-index={wordIndex}
                 sx={{
-                  fontSize: '36px',
-                  lineHeight: '1.5',
+                  fontSize: `${fontSize}px`,
+                  lineHeight,
                   display: 'inline',
                   borderBottom: '1px dotted transparent',
                   position: 'relative',

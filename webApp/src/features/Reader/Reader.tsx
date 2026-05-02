@@ -102,7 +102,7 @@ export const Reader = ({ data }: { data: Book }) => {
           height: '50vh',
         }}
       >
-        <Stack sx={{ gap: '20px', width: '100%' }}>
+        <Stack sx={{ gap: `${readerSettings.paragraphGap}px`, width: '100%' }}>
           <Stack
             sx={{
               alignItems: 'center',
@@ -177,6 +177,8 @@ export const Reader = ({ data }: { data: Book }) => {
                     key={index}
                     paragraphIndex={index}
                     words={paragraph}
+                    fontSize={readerSettings.fontSize}
+                    lineHeight={readerSettings.lineHeight}
                     sourceLanguage={readerSettings.language}
                     targetLanguage={readerSettings.translateToLanguage}
                     onWordClick={playText}

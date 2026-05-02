@@ -2,7 +2,11 @@
 
 ## Reader helper?
 
-https://www.figma.com/design/PNyNNT3ONglB89iS0K4wh6/FluencyPal?node-id=133-4&p=f&t=DMtdCChhws4gykX5-0
+Refactor webApp/src/features/Reader
+by moving files into sub folder. Combine relative files into folders
+
+Then, create a local AGENTS.md about reader Feature.
+Check file structure and create a show but useful info about the feature and files in it.
 
 - 2 columns view
 

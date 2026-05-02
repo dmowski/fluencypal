@@ -5,6 +5,7 @@ import {
   MenuItem,
   Popover,
   Select,
+  Slider,
   Stack,
   Typography,
 } from '@mui/material';
@@ -185,6 +186,63 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 ))}
               </Select>
             </FormControl>
+
+            <Stack sx={{ gap: '8px' }}>
+              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Typography variant="body2">{i18n._('Font size')}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {readerSettings.fontSize}px
+                </Typography>
+              </Stack>
+              <Slider
+                min={20}
+                max={64}
+                step={1}
+                value={readerSettings.fontSize}
+                onChange={(_event, value) =>
+                  readerSettings.setFontSize(Array.isArray(value) ? value[0] : value)
+                }
+                valueLabelDisplay="auto"
+              />
+            </Stack>
+
+            <Stack sx={{ gap: '8px' }}>
+              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Typography variant="body2">{i18n._('Paragraph gap')}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {readerSettings.paragraphGap}px
+                </Typography>
+              </Stack>
+              <Slider
+                min={0}
+                max={80}
+                step={1}
+                value={readerSettings.paragraphGap}
+                onChange={(_event, value) =>
+                  readerSettings.setParagraphGap(Array.isArray(value) ? value[0] : value)
+                }
+                valueLabelDisplay="auto"
+              />
+            </Stack>
+
+            <Stack sx={{ gap: '8px' }}>
+              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Typography variant="body2">{i18n._('Line height')}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {readerSettings.lineHeight.toFixed(2)}
+                </Typography>
+              </Stack>
+              <Slider
+                min={1}
+                max={2.5}
+                step={0.05}
+                value={readerSettings.lineHeight}
+                onChange={(_event, value) =>
+                  readerSettings.setLineHeight(Array.isArray(value) ? value[0] : value)
+                }
+                valueLabelDisplay="auto"
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Popover>
