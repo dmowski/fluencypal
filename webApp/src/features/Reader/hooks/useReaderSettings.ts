@@ -19,6 +19,8 @@ type ReaderSettings = {
   fontSize: number;
   paragraphGap: number;
   lineHeight: number;
+  contentWidth: number;
+  contentHeight: number;
 };
 
 type ReaderSettingsApi = {
@@ -28,12 +30,16 @@ type ReaderSettingsApi = {
   fontSize: number;
   paragraphGap: number;
   lineHeight: number;
+  contentWidth: number;
+  contentHeight: number;
   setLanguage: (nextLanguage: string) => void;
   setSelectedVoiceURI: (nextVoiceURI: string | null) => void;
   setTranslateToLanguage: (nextLanguage: NativeLangCode | null) => void;
   setFontSize: (nextFontSize: number) => void;
   setParagraphGap: (nextParagraphGap: number) => void;
   setLineHeight: (nextLineHeight: number) => void;
+  setContentWidth: (nextContentWidth: number) => void;
+  setContentHeight: (nextContentHeight: number) => void;
 };
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
@@ -41,6 +47,8 @@ const DEFAULT_LANGUAGE = 'en-US';
 const DEFAULT_FONT_SIZE = 36;
 const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
+const DEFAULT_CONTENT_WIDTH = 1200;
+const DEFAULT_CONTENT_HEIGHT = 500;
 const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 
 const getInitialSettings = (): ReaderSettings => {
@@ -52,6 +60,8 @@ const getInitialSettings = (): ReaderSettings => {
       fontSize: DEFAULT_FONT_SIZE,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
+      contentWidth: DEFAULT_CONTENT_WIDTH,
+      contentHeight: DEFAULT_CONTENT_HEIGHT,
     };
   }
 
@@ -65,6 +75,8 @@ const getInitialSettings = (): ReaderSettings => {
         fontSize: DEFAULT_FONT_SIZE,
         paragraphGap: DEFAULT_PARAGRAPH_GAP,
         lineHeight: DEFAULT_LINE_HEIGHT,
+        contentWidth: DEFAULT_CONTENT_WIDTH,
+        contentHeight: DEFAULT_CONTENT_HEIGHT,
       };
     }
 
@@ -79,6 +91,14 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.lineHeight === 'number'
         ? parsedSettings.lineHeight
         : DEFAULT_LINE_HEIGHT;
+    const parsedContentWidth =
+      typeof parsedSettings.contentWidth === 'number'
+        ? parsedSettings.contentWidth
+        : DEFAULT_CONTENT_WIDTH;
+    const parsedContentHeight =
+      typeof parsedSettings.contentHeight === 'number'
+        ? parsedSettings.contentHeight
+        : DEFAULT_CONTENT_HEIGHT;
 
     return {
       language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
@@ -87,6 +107,8 @@ const getInitialSettings = (): ReaderSettings => {
       fontSize: Math.max(20, Math.min(64, parsedFontSize)),
       paragraphGap: Math.max(0, Math.min(80, parsedParagraphGap)),
       lineHeight: Math.max(1, Math.min(2.5, parsedLineHeight)),
+      contentWidth: Math.max(600, Math.min(1600, parsedContentWidth)),
+      contentHeight: Math.max(300, Math.min(1200, parsedContentHeight)),
     };
   } catch {
     return {
@@ -96,6 +118,8 @@ const getInitialSettings = (): ReaderSettings => {
       fontSize: DEFAULT_FONT_SIZE,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
+      contentWidth: DEFAULT_CONTENT_WIDTH,
+      contentHeight: DEFAULT_CONTENT_HEIGHT,
     };
   }
 };
@@ -152,6 +176,20 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
+  const setContentWidth = useCallback((nextContentWidth: number) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      contentWidth: Math.max(600, Math.min(1600, nextContentWidth)),
+    }));
+  }, []);
+
+  const setContentHeight = useCallback((nextContentHeight: number) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      contentHeight: Math.max(300, Math.min(1200, nextContentHeight)),
+    }));
+  }, []);
+
   return useMemo(
     () => ({
       language: settings.language,
@@ -160,12 +198,16 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       fontSize: settings.fontSize,
       paragraphGap: settings.paragraphGap,
       lineHeight: settings.lineHeight,
+      contentWidth: settings.contentWidth,
+      contentHeight: settings.contentHeight,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
       setFontSize,
       setParagraphGap,
       setLineHeight,
+      setContentWidth,
+      setContentHeight,
     }),
     [
       settings.language,
@@ -174,12 +216,16 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       settings.fontSize,
       settings.paragraphGap,
       settings.lineHeight,
+      settings.contentWidth,
+      settings.contentHeight,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
       setFontSize,
       setParagraphGap,
       setLineHeight,
+      setContentWidth,
+      setContentHeight,
     ],
   );
 };

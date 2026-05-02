@@ -243,6 +243,44 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 valueLabelDisplay="auto"
               />
             </Stack>
+
+            <Stack sx={{ gap: '8px' }}>
+              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Typography variant="body2">{i18n._('Content width')}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {readerSettings.contentWidth}px
+                </Typography>
+              </Stack>
+              <Slider
+                min={600}
+                max={1600}
+                step={10}
+                value={readerSettings.contentWidth}
+                onChange={(_event, value) =>
+                  readerSettings.setContentWidth(Array.isArray(value) ? value[0] : value)
+                }
+                valueLabelDisplay="auto"
+              />
+            </Stack>
+
+            <Stack sx={{ gap: '8px' }}>
+              <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Typography variant="body2">{i18n._('Content height')}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {readerSettings.contentHeight}px
+                </Typography>
+              </Stack>
+              <Slider
+                min={300}
+                max={1200}
+                step={10}
+                value={readerSettings.contentHeight}
+                onChange={(_event, value) =>
+                  readerSettings.setContentHeight(Array.isArray(value) ? value[0] : value)
+                }
+                valueLabelDisplay="auto"
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Popover>

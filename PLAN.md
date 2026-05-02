@@ -2,13 +2,10 @@
 
 ## Reader helper?
 
-Refactor webApp/src/features/Reader
-by moving files into sub folder. Combine relative files into folders
-
-Then, create a local AGENTS.md about reader Feature.
-Check file structure and create a show but useful info about the feature and files in it.
-
 - 2 columns view
+  -- Add settings into splitIntoPages
+  -- calculate pages accurately
+  --- Create function isFit(text, settings)
 
 - How to remove scrolls?
   What info I need to know: Available space, how much symbols (lines) will fit.

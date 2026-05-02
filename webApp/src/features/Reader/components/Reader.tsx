@@ -99,38 +99,10 @@ export const Reader = ({ data }: { data: Book }) => {
           width: '100%',
           alignItems: 'center',
           border: '1px solid rgba(255, 0, 0, 1)',
-          height: '50vh',
+          height: `${readerSettings.contentHeight}px`,
         }}
       >
         <Stack sx={{ gap: `${readerSettings.paragraphGap}px`, width: '100%' }}>
-          <Stack
-            sx={{
-              alignItems: 'center',
-              display: 'none',
-            }}
-          >
-            <Stack
-              sx={{
-                maxWidth: '900px',
-                width: '100%',
-                fontFamily: 'serif',
-                fontSize: '36px',
-                lineHeight: '1.5',
-                '*': {
-                  fontFamily: 'serif',
-                },
-                '* em': {
-                  color: 'rgb(12, 12, 12)',
-                  fontStyle: 'normal',
-                  backgroundColor: 'rgba(253, 178, 178, 0.93)',
-                  borderRadius: '3px',
-                },
-              }}
-            >
-              <Markdown variant="rule">{'hello'}</Markdown>
-            </Stack>
-          </Stack>
-
           {activePageContent.map((paragraph, rawIndex) => {
             const index = rawIndex + (activePage - 1) * pageCount;
             return (
@@ -172,7 +144,10 @@ export const Reader = ({ data }: { data: Book }) => {
                     </ReaderButton>
                   )}
                 </Stack>
-                <Stack key={index} sx={{ width: '900px', position: 'relative', zIndex: 1 }}>
+                <Stack
+                  key={index}
+                  sx={{ width: `${readerSettings.contentWidth}px`, position: 'relative', zIndex: 1 }}
+                >
                   <ReaderParagraph
                     key={index}
                     paragraphIndex={index}
