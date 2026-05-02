@@ -13,26 +13,68 @@ import {
   Typography,
 } from '@mui/material';
 import { Settings } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { useReaderSettings } from '../hooks/useReaderSettings';
+import { READER_SETTINGS_RANGES, useReaderSettings } from '../hooks/useReaderSettings';
 
 type ReaderSpeechSettingsButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
 };
 
 const PREVIEW_TEXT = 'This is a preview of the selected voice.';
+const SETTINGS_UPDATE_DELAY_MS = 350;
 
 export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButtonProps) => {
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [localFontSize, setLocalFontSize] = useState(readerSettings.fontSize);
+  const [localParagraphGap, setLocalParagraphGap] = useState(readerSettings.paragraphGap);
+  const [localLineHeight, setLocalLineHeight] = useState(readerSettings.lineHeight);
 
   const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    if (!open) return;
+
+    setLocalFontSize(readerSettings.fontSize);
+    setLocalParagraphGap(readerSettings.paragraphGap);
+    setLocalLineHeight(readerSettings.lineHeight);
+  }, [open, readerSettings.fontSize, readerSettings.lineHeight, readerSettings.paragraphGap]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (localFontSize === readerSettings.fontSize) return;
+    const timeoutId = setTimeout(() => {
+      readerSettings.setFontSize(localFontSize);
+    }, SETTINGS_UPDATE_DELAY_MS);
+
+    return () => clearTimeout(timeoutId);
+  }, [localFontSize, open, readerSettings.fontSize, readerSettings.setFontSize]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (localParagraphGap === readerSettings.paragraphGap) return;
+    const timeoutId = setTimeout(() => {
+      readerSettings.setParagraphGap(localParagraphGap);
+    }, SETTINGS_UPDATE_DELAY_MS);
+
+    return () => clearTimeout(timeoutId);
+  }, [localParagraphGap, open, readerSettings.paragraphGap, readerSettings.setParagraphGap]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (localLineHeight === readerSettings.lineHeight) return;
+    const timeoutId = setTimeout(() => {
+      readerSettings.setLineHeight(localLineHeight);
+    }, SETTINGS_UPDATE_DELAY_MS);
+
+    return () => clearTimeout(timeoutId);
+  }, [localLineHeight, open, readerSettings.lineHeight, readerSettings.setLineHeight]);
 
   const availableLanguages = useMemo(() => {
     const uniqueLanguages = new Set<string>();
@@ -214,16 +256,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Typography variant="body2">{i18n._('Font size')}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {readerSettings.fontSize}px
+                  {localFontSize}px
                 </Typography>
               </Stack>
               <Slider
-                min={20}
-                max={64}
-                step={1}
-                value={readerSettings.fontSize}
+                min={READER_SETTINGS_RANGES.fontSize.min}
+                max={READER_SETTINGS_RANGES.fontSize.max}
+                step={READER_SETTINGS_RANGES.fontSize.step}
+                value={localFontSize}
                 onChange={(_event, value) =>
-                  readerSettings.setFontSize(Array.isArray(value) ? value[0] : value)
+                  setLocalFontSize(Array.isArray(value) ? value[0] : value)
                 }
                 valueLabelDisplay="auto"
               />
@@ -233,16 +275,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Typography variant="body2">{i18n._('Paragraph gap')}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {readerSettings.paragraphGap}px
+                  {localParagraphGap}px
                 </Typography>
               </Stack>
               <Slider
-                min={0}
-                max={80}
-                step={1}
-                value={readerSettings.paragraphGap}
+                min={READER_SETTINGS_RANGES.paragraphGap.min}
+                max={READER_SETTINGS_RANGES.paragraphGap.max}
+                step={READER_SETTINGS_RANGES.paragraphGap.step}
+                value={localParagraphGap}
                 onChange={(_event, value) =>
-                  readerSettings.setParagraphGap(Array.isArray(value) ? value[0] : value)
+                  setLocalParagraphGap(Array.isArray(value) ? value[0] : value)
                 }
                 valueLabelDisplay="auto"
               />
@@ -252,16 +294,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Typography variant="body2">{i18n._('Line height')}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {readerSettings.lineHeight.toFixed(2)}
+                  {localLineHeight.toFixed(2)}
                 </Typography>
               </Stack>
               <Slider
-                min={1}
-                max={2.5}
-                step={0.05}
-                value={readerSettings.lineHeight}
+                min={READER_SETTINGS_RANGES.lineHeight.min}
+                max={READER_SETTINGS_RANGES.lineHeight.max}
+                step={READER_SETTINGS_RANGES.lineHeight.step}
+                value={localLineHeight}
                 onChange={(_event, value) =>
-                  readerSettings.setLineHeight(Array.isArray(value) ? value[0] : value)
+                  setLocalLineHeight(Array.isArray(value) ? value[0] : value)
                 }
                 valueLabelDisplay="auto"
               />
