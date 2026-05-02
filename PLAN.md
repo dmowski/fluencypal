@@ -4,7 +4,6 @@
 
 - 2 columns view
   -- calculate pages accurately
-  --- Create function isFit(text, settings)
 
 - How to remove scrolls?
   What info I need to know: Available space, how much symbols (lines) will fit.

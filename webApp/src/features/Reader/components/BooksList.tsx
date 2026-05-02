@@ -7,6 +7,7 @@ import { AddBookModal } from './AddBookModal';
 import { BookCard, AddNewBookCard } from './Cards';
 import { useBooks } from '../hooks/useBooks';
 import { Book } from '../model/types';
+import { DevPanel } from './DevPanel';
 
 export const BooksList = () => {
   const i18n = useLingui();
@@ -66,6 +67,7 @@ export const BooksList = () => {
       </Stack>
 
       <AddBookModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
+      <DevPanel />
     </Stack>
   );
 };
