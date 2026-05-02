@@ -1,6 +1,17 @@
 import { parseEpub } from 'epub2md';
 import markdownToTxt from 'markdown-to-txt';
 import { ConvertDocToTextResponse } from './types';
+import { parseStrictJson } from '@/features/Ai/jsonParser';
+import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
+import { z } from 'zod';
+
+const bookMetadataSchema = z.object({
+  title: z.string(),
+  subtitle: z.string(),
+  author: z.string(),
+});
+
+const METADATA_PREVIEW_CHARS = 700;
 
 export const maxDuration = 60;
 
@@ -67,8 +78,54 @@ export async function POST(request: Request) {
       return Response.json(response, { status: 422 });
     }
 
+    let metadata = {
+      title: '',
+      subtitle: '',
+      author: '',
+    };
+
+    const previewText = text.slice(0, METADATA_PREVIEW_CHARS).trim();
+    if (previewText) {
+      try {
+        const parsedMetadata = await parseStrictJson({
+          json: (
+            await generateTextWithAi({
+              systemMessage: [
+                'You extract book metadata from text snippets.',
+                'Return strict JSON with keys: title, subtitle, author.',
+                'If subtitle is missing, return an empty string for subtitle.',
+                'If author is missing, return an empty string for author.',
+                'Return only JSON.',
+              ].join('\n'),
+              userMessage: previewText,
+              model: 'gpt-4o',
+            })
+          ).output,
+          schema: bookMetadataSchema,
+          generate: async ({ systemMessage, userMessage, model }) => {
+            const { output } = await generateTextWithAi({
+              systemMessage,
+              userMessage,
+              model,
+            });
+            return output || '';
+          },
+          languageCode: 'en',
+        });
+
+        metadata = {
+          title: parsedMetadata.title.trim(),
+          subtitle: parsedMetadata.subtitle.trim(),
+          author: parsedMetadata.author.trim(),
+        };
+      } catch (metadataError) {
+        console.error('Book metadata extraction error', metadataError);
+      }
+    }
+
     const response: ConvertDocToTextResponse = {
       text,
+      metadata,
     };
 
     return Response.json(response);

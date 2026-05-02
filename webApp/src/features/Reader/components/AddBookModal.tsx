@@ -83,7 +83,16 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         throw new Error(result.error || i18n._('Failed to convert EPUB.'));
       }
 
-      setText(result.text || '');
+      const parsedText = result.text || '';
+      setText(parsedText);
+      if (result.metadata) {
+        setConversionProgress(90);
+        setConversionMessage(i18n._('Extracting title, subtitle and author...'));
+        setTitle(result.metadata.title.trim());
+        setSubtitle(result.metadata.subtitle.trim());
+        setAuthor(result.metadata.author.trim());
+      }
+
       setConversionProgress(100);
       setConversionMessage(i18n._('Done. Text imported.'));
     } catch (error) {

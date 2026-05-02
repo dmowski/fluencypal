@@ -2,13 +2,11 @@
 
 ## Reader helper?
 
-- Test on mobile
-
 - Fix text selection
 
-- How to handle images?
+- Test on mobile
 
-- Use ai to parse book: title/subtitle/category
+- How to handle images?
 
 ### EXTREME MVP:
 
