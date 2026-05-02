@@ -2,9 +2,11 @@
 
 ## Reader helper?
 
+- Change "category" to "author"
+
 - Test on mobile
 
-- Change "category" to "author"
+- Fix text selection
 
 - How to handle images?
 

@@ -1,4 +1,5 @@
 import {
+  Button,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -303,6 +304,15 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 valueLabelDisplay="auto"
               />
             </Stack>
+
+            <Button
+              variant="outlined"
+              color="inherit"
+              onClick={readerSettings.resetToDefault}
+              sx={{ alignSelf: 'flex-start' }}
+            >
+              {i18n._('Reset to default')}
+            </Button>
           </Stack>
         </Stack>
       </Popover>

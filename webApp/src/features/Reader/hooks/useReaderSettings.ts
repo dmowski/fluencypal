@@ -16,6 +16,7 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setLanguage: (nextLanguage: string) => void;
   setSelectedVoiceURI: (nextVoiceURI: string | null) => void;
   setTranslateToLanguage: (nextLanguage: NativeLangCode | null) => void;
+  resetToDefault: () => void;
   setFontSize: (nextFontSize: number) => void;
   setParagraphGap: (nextParagraphGap: number) => void;
   setLineHeight: (nextLineHeight: number) => void;
@@ -96,58 +97,50 @@ const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 const getInitialFontSizeByViewportWidth = (viewportWidth: number): number =>
   viewportWidth < MOBILE_INIT_FONT_SIZE_WIDTH_THRESHOLD ? MOBILE_INIT_FONT_SIZE : DEFAULT_FONT_SIZE;
 
-const getInitialSettings = (): ReaderSettings => {
+const getDefaultSettingsFromViewport = (): ReaderSettings => {
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
   const viewportDimensions = getViewportDimensions();
-  const initialFontSize = getInitialFontSizeByViewportWidth(viewportWidth);
+
+  return {
+    language: typeof window !== 'undefined' ? window.navigator.language || DEFAULT_LANGUAGE : DEFAULT_LANGUAGE,
+    selectedVoiceURI: null,
+    translateToLanguage: null,
+    fontSize: getInitialFontSizeByViewportWidth(viewportWidth),
+    contentWidth: viewportDimensions.contentWidth,
+    contentHeight: viewportDimensions.contentHeight,
+    paragraphGap: DEFAULT_PARAGRAPH_GAP,
+    lineHeight: DEFAULT_LINE_HEIGHT,
+    justifyText: DEFAULT_JUSTIFY_TEXT,
+    translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
+    columns: DEFAULT_COLUMNS,
+    columnGap: DEFAULT_COLUMN_GAP,
+  };
+};
+
+const getInitialSettings = (): ReaderSettings => {
+  const defaultSettings = getDefaultSettingsFromViewport();
 
   if (typeof window === 'undefined') {
-    return {
-      language: DEFAULT_LANGUAGE,
-      selectedVoiceURI: null,
-      translateToLanguage: null,
-      fontSize: initialFontSize,
-      contentWidth: viewportDimensions.contentWidth,
-      contentHeight: viewportDimensions.contentHeight,
-      paragraphGap: DEFAULT_PARAGRAPH_GAP,
-      lineHeight: DEFAULT_LINE_HEIGHT,
-      justifyText: DEFAULT_JUSTIFY_TEXT,
-      translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-      columns: DEFAULT_COLUMNS,
-      columnGap: DEFAULT_COLUMN_GAP,
-    };
+    return defaultSettings;
   }
 
   try {
     const rawSettings = window.localStorage.getItem(READER_SETTINGS_KEY);
     if (!rawSettings) {
-      return {
-        language: window.navigator.language || DEFAULT_LANGUAGE,
-        selectedVoiceURI: null,
-        translateToLanguage: null,
-        fontSize: initialFontSize,
-        contentWidth: viewportDimensions.contentWidth,
-        contentHeight: viewportDimensions.contentHeight,
-        paragraphGap: DEFAULT_PARAGRAPH_GAP,
-        lineHeight: DEFAULT_LINE_HEIGHT,
-        justifyText: DEFAULT_JUSTIFY_TEXT,
-        translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-        columns: DEFAULT_COLUMNS,
-        columnGap: DEFAULT_COLUMN_GAP,
-      };
+      return defaultSettings;
     }
 
     const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
     const parsedFontSize =
-      typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : initialFontSize;
+      typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : defaultSettings.fontSize;
     const parsedContentWidth =
       typeof parsedSettings.contentWidth === 'number'
         ? parsedSettings.contentWidth
-        : viewportDimensions.contentWidth;
+        : defaultSettings.contentWidth;
     const parsedContentHeight =
       typeof parsedSettings.contentHeight === 'number'
         ? parsedSettings.contentHeight
-        : viewportDimensions.contentHeight;
+        : defaultSettings.contentHeight;
     const parsedParagraphGap =
       typeof parsedSettings.paragraphGap === 'number'
         ? parsedSettings.paragraphGap
@@ -195,20 +188,7 @@ const getInitialSettings = (): ReaderSettings => {
       ),
     };
   } catch {
-    return {
-      language: window.navigator.language || DEFAULT_LANGUAGE,
-      selectedVoiceURI: null,
-      translateToLanguage: null,
-      fontSize: initialFontSize,
-      contentWidth: viewportDimensions.contentWidth,
-      contentHeight: viewportDimensions.contentHeight,
-      paragraphGap: DEFAULT_PARAGRAPH_GAP,
-      lineHeight: DEFAULT_LINE_HEIGHT,
-      justifyText: DEFAULT_JUSTIFY_TEXT,
-      translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
-      columns: DEFAULT_COLUMNS,
-      columnGap: DEFAULT_COLUMN_GAP,
-    };
+    return defaultSettings;
   }
 };
 
@@ -261,6 +241,10 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       ...previousSettings,
       translateToLanguage: nextLanguage,
     }));
+  }, []);
+
+  const resetToDefault = useCallback(() => {
+    setSettings(getDefaultSettingsFromViewport());
   }, []);
 
   const setFontSize = useCallback((nextFontSize: number) => {
@@ -330,6 +314,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
+      resetToDefault,
       setFontSize,
       setParagraphGap,
       setLineHeight,
@@ -343,6 +328,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
+      resetToDefault,
       setFontSize,
       setParagraphGap,
       setLineHeight,
