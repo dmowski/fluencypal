@@ -3,7 +3,6 @@
 ## Reader helper?
 
 - 2 columns view
-  -- Add UI settings into splitIntoPages
   -- calculate pages accurately
   --- Create function isFit(text, settings)
 

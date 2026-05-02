@@ -2,13 +2,16 @@ import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
 import { BookParagraph } from '../model/types';
 
-export type SplitIntoPagesData = {
+interface UiSettings {
   fontSize: number;
   lineHeight: number;
   contentWidth: number;
   contentHeight: number;
+}
+
+export interface SplitIntoPagesData extends UiSettings {
   bookParagraphs: BookParagraph[];
-};
+}
 
 const splitIntoPagesCache = new Map<string, BookParagraph[][]>();
 
