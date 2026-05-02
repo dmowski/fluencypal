@@ -8,6 +8,7 @@ export interface Book {
   category: string;
   highlights?: HighlightedText[];
   readProgress?: ReadingProgress;
+  activePageIndex?: number;
 }
 
 export interface HighlightedText {

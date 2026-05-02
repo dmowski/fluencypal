@@ -57,6 +57,7 @@ const useBooksState = () => {
       subtitle: subTitle,
       category: category,
       paragraphs: splitTextIntoParagraphs(text),
+      activePageIndex: 1,
     };
     const nextBooks = [...usersBooks, newBook];
     setUsersBooks(nextBooks);
@@ -110,9 +111,18 @@ const useBooksState = () => {
     }));
   };
 
+  const setActivePage = (activePageIndex: number) => {
+    updateActiveBook((book) => ({
+      ...book,
+      activePageIndex,
+    }));
+  };
+
   return {
     active,
+    activePage: active?.activePageIndex ?? 1,
     setActive,
+    setActivePage,
     addBook,
     deleteBook,
     applySelectedHighlight,

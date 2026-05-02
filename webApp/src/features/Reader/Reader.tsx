@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import { Book } from './types';
 import { ReaderHeader } from './ReaderHeader';
 import { Mic, Pause } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useLingui } from '@lingui/react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './ReaderParagraph';
@@ -17,11 +17,13 @@ import { BackButton } from './BackButton';
 import { splitIntoPages } from './splitParagraphsIntoPages';
 
 export const Reader = ({ data }: { data: Book }) => {
-  const [activePage, setActivePage] = useState(1);
   const { i18n } = useLingui();
   const books = useBooks();
+  const { activePage: storedActivePage, setActivePage } = books;
   const pages = useMemo(() => splitIntoPages(data, 100), [data]);
   const pageCount = pages.length;
+  const maxPage = Math.max(pageCount, 1);
+  const activePage = Math.min(Math.max(storedActivePage, 1), maxPage);
   const activePageContent = pages[activePage - 1] || [];
 
   const activeParagraphIndex = 0;
@@ -185,10 +187,10 @@ export const Reader = ({ data }: { data: Book }) => {
       </Stack>
 
       <PaginationPanel
-        onPrevious={() => setActivePage((prev) => Math.max(prev - 1, 1))}
-        onNext={() => setActivePage((prev) => Math.min(prev + 1, pageCount))}
+        onPrevious={() => setActivePage(Math.max(activePage - 1, 1))}
+        onNext={() => setActivePage(Math.min(activePage + 1, maxPage))}
         isFirstPage={activePage === 1}
-        isLastPage={activePage === pageCount}
+        isLastPage={activePage === maxPage}
       />
     </Stack>
   );
