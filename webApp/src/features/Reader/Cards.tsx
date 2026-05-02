@@ -18,37 +18,54 @@ export const BookCard = ({
     <Stack
       onClick={() => onClick(data)}
       sx={{
-        padding: '16px',
+        padding: '36px 45px 36px 36px',
         borderRadius: '8px',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         cursor: 'pointer',
         color: '#fff',
         gap: '4px',
+        position: 'relative',
       }}
     >
       {onDelete && (
-        <Stack sx={{ width: '100%', alignItems: 'flex-end' }}>
-          <IconButton
-            size="small"
-            onClick={(event) => {
-              event.stopPropagation();
-              onDelete(data);
-            }}
-            sx={{
-              color: '#fff',
-              backgroundColor: 'rgba(255, 255, 255, 0.12)',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.22)',
-              },
-            }}
-          >
-            <Trash2 size={'16px'} />
-          </IconButton>
-        </Stack>
+        <IconButton
+          size="small"
+          onClick={(event) => {
+            event.stopPropagation();
+            onDelete(data);
+          }}
+          sx={{
+            position: 'absolute',
+            top: '8px',
+            right: '8px',
+            color: '#fff',
+            //backgroundColor: 'rgba(255, 255, 255, 0.12)',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.22)',
+            },
+          }}
+        >
+          <Trash2 size={'16px'} />
+        </IconButton>
       )}
-      <Typography variant="h4">{data.title}</Typography>
-      <Typography variant="subtitle1">{data.subtitle}</Typography>
-      <Typography variant="body2">{data.category}</Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          fontWeight: 'bold',
+        }}
+      >
+        {data.title}
+      </Typography>
+      <Typography variant="caption">{data.subtitle}</Typography>
+      <Typography
+        variant="caption"
+        sx={{
+          fontStyle: 'italic',
+          opacity: 0.8,
+        }}
+      >
+        {data.category}
+      </Typography>
     </Stack>
   );
 };
@@ -59,17 +76,17 @@ export const AddNewBookCard = ({ onClick }: { onClick: () => void }) => {
     <Stack
       onClick={() => onClick()}
       sx={{
-        padding: '16px',
+        padding: '16px 20px',
         borderRadius: '8px',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
-        color: '#fff',
+        color: '#333',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '10px',
       }}
     >
-      <CirclePlus size={'30px'} />
+      <CirclePlus size={'40px'} strokeWidth={'1px'} />
       <Typography>{i18n._('Add New Book')}</Typography>
     </Stack>
   );
