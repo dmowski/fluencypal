@@ -144,6 +144,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}
+                      translateOnHover={readerSettings.translateOnHover}
                       sourceLanguage={readerSettings.language}
                       targetLanguage={readerSettings.translateToLanguage}
                       onWordClick={playText}

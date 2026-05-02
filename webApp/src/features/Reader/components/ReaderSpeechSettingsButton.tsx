@@ -216,6 +216,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               label={i18n._('Justify Text')}
             />
 
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={readerSettings.translateOnHover}
+                  onChange={(_event, checked) => readerSettings.setTranslateOnHover(checked)}
+                />
+              }
+              label={i18n._('Translate on Hover')}
+            />
+
             {readerSettings.columns === 2 && (
               <Stack sx={{ gap: '8px' }}>
                 <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>

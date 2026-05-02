@@ -27,6 +27,7 @@ export const ReaderParagraph = ({
   fontSize,
   lineHeight,
   justifyText,
+  translateOnHover,
   sourceLanguage,
   targetLanguage,
   onWordClick,
@@ -40,6 +41,7 @@ export const ReaderParagraph = ({
   fontSize: number;
   lineHeight: number;
   justifyText: boolean;
+  translateOnHover: boolean;
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
   onWordClick: (word: string) => void;
@@ -137,6 +139,7 @@ export const ReaderParagraph = ({
   };
 
   const handleWordMouseEnter = async (e: MouseEvent<HTMLSpanElement>, word: string) => {
+    if (!translateOnHover) return;
     setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
 
     const text = normalizeSelectedText(word);

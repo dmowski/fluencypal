@@ -20,6 +20,7 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setParagraphGap: (nextParagraphGap: number) => void;
   setLineHeight: (nextLineHeight: number) => void;
   setJustifyText: (nextJustifyText: boolean) => void;
+  setTranslateOnHover: (nextTranslateOnHover: boolean) => void;
   setContentWidth: (nextContentWidth: number) => void;
   setContentHeight: (nextContentHeight: number) => void;
   setColumns: (nextColumns: 1 | 2) => void;
@@ -32,6 +33,7 @@ const DEFAULT_FONT_SIZE = 36;
 const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
 const DEFAULT_JUSTIFY_TEXT = true;
+const DEFAULT_TRANSLATE_ON_HOVER = false;
 const DEFAULT_CONTENT_WIDTH = 1200;
 const DEFAULT_CONTENT_HEIGHT = 500;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
@@ -57,6 +59,7 @@ const getInitialSettings = (): ReaderSettings => {
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
       justifyText: DEFAULT_JUSTIFY_TEXT,
+      translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
@@ -75,6 +78,7 @@ const getInitialSettings = (): ReaderSettings => {
         paragraphGap: DEFAULT_PARAGRAPH_GAP,
         lineHeight: DEFAULT_LINE_HEIGHT,
         justifyText: DEFAULT_JUSTIFY_TEXT,
+        translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
         contentWidth: DEFAULT_CONTENT_WIDTH,
         contentHeight: DEFAULT_CONTENT_HEIGHT,
         columns: DEFAULT_COLUMNS,
@@ -97,6 +101,10 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.justifyText === 'boolean'
         ? parsedSettings.justifyText
         : DEFAULT_JUSTIFY_TEXT;
+    const parsedTranslateOnHover =
+      typeof parsedSettings.translateOnHover === 'boolean'
+        ? parsedSettings.translateOnHover
+        : DEFAULT_TRANSLATE_ON_HOVER;
     const parsedContentWidth =
       typeof parsedSettings.contentWidth === 'number'
         ? parsedSettings.contentWidth
@@ -126,6 +134,7 @@ const getInitialSettings = (): ReaderSettings => {
         Math.min(READER_SETTINGS_RANGES.lineHeight.max, parsedLineHeight),
       ),
       justifyText: parsedJustifyText,
+      translateOnHover: parsedTranslateOnHover,
       contentWidth: Math.max(
         READER_SETTINGS_RANGES.contentWidth.min,
         Math.min(READER_SETTINGS_RANGES.contentWidth.max, parsedContentWidth),
@@ -149,6 +158,7 @@ const getInitialSettings = (): ReaderSettings => {
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
       lineHeight: DEFAULT_LINE_HEIGHT,
       justifyText: DEFAULT_JUSTIFY_TEXT,
+      translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
       columns: DEFAULT_COLUMNS,
@@ -225,6 +235,13 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
+  const setTranslateOnHover = useCallback((nextTranslateOnHover: boolean) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      translateOnHover: nextTranslateOnHover,
+    }));
+  }, []);
+
   const setContentWidth = useCallback((nextContentWidth: number) => {
     setSettings((previousSettings) => ({
       ...previousSettings,
@@ -271,6 +288,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       paragraphGap: settings.paragraphGap,
       lineHeight: settings.lineHeight,
       justifyText: settings.justifyText,
+      translateOnHover: settings.translateOnHover,
       contentWidth: settings.contentWidth,
       contentHeight: settings.contentHeight,
       columns: settings.columns,
@@ -282,6 +300,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setParagraphGap,
       setLineHeight,
       setJustifyText,
+      setTranslateOnHover,
       setContentWidth,
       setContentHeight,
       setColumns,
@@ -295,6 +314,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       settings.paragraphGap,
       settings.lineHeight,
       settings.justifyText,
+      settings.translateOnHover,
       settings.contentWidth,
       settings.contentHeight,
       settings.columns,
@@ -306,6 +326,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setParagraphGap,
       setLineHeight,
       setJustifyText,
+      setTranslateOnHover,
       setContentWidth,
       setContentHeight,
       setColumns,

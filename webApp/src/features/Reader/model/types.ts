@@ -38,6 +38,7 @@ export interface ReaderSettings {
   contentHeight: number;
   paragraphGap: number;
   justifyText: boolean;
+  translateOnHover: boolean;
   columns: 1 | 2;
   columnGap: number;
 }
