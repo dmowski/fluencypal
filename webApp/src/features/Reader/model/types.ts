@@ -31,4 +31,6 @@ export interface ReaderUiSettings {
   contentWidth: number;
   contentHeight: number;
   paragraphGap: number;
+  columns: 1 | 2;
+  columnGap: number;
 }

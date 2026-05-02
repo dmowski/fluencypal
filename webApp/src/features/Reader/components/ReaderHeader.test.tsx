@@ -183,7 +183,7 @@ describe('ReaderHeader', () => {
       <ReaderHeader
         title={TITLE_TEXT}
         subtitle={SUBTITLE_TEXT}
-        activePage={1}
+        pageLabel="1"
         pageCount={3}
         category="Story"
       />,
@@ -207,7 +207,7 @@ describe('ReaderHeader', () => {
       <ReaderHeader
         title={TITLE_TEXT}
         subtitle={SUBTITLE_TEXT}
-        activePage={1}
+        pageLabel="1"
         pageCount={3}
         category="Story"
       />,

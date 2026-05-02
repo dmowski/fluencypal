@@ -11,27 +11,12 @@ import {
   useState,
 } from 'react';
 import { NativeLangCode } from '@/libs/language/type';
+import { ReaderUiSettings } from '../model/types';
 
-type ReaderSettings = {
+export interface ReaderSettings extends ReaderUiSettings {
   language: string;
   selectedVoiceURI: string | null;
   translateToLanguage: NativeLangCode | null;
-  fontSize: number;
-  paragraphGap: number;
-  lineHeight: number;
-  contentWidth: number;
-  contentHeight: number;
-};
-
-type ReaderSettingsApi = {
-  language: string;
-  selectedVoiceURI: string | null;
-  translateToLanguage: NativeLangCode | null;
-  fontSize: number;
-  paragraphGap: number;
-  lineHeight: number;
-  contentWidth: number;
-  contentHeight: number;
   setLanguage: (nextLanguage: string) => void;
   setSelectedVoiceURI: (nextVoiceURI: string | null) => void;
   setTranslateToLanguage: (nextLanguage: NativeLangCode | null) => void;
@@ -40,7 +25,23 @@ type ReaderSettingsApi = {
   setLineHeight: (nextLineHeight: number) => void;
   setContentWidth: (nextContentWidth: number) => void;
   setContentHeight: (nextContentHeight: number) => void;
-};
+  setColumns: (nextColumns: 1 | 2) => void;
+  setColumnGap: (nextColumnGap: number) => void;
+}
+
+type PersistedReaderSettings = Omit<
+  ReaderSettings,
+  | 'setLanguage'
+  | 'setSelectedVoiceURI'
+  | 'setTranslateToLanguage'
+  | 'setFontSize'
+  | 'setParagraphGap'
+  | 'setLineHeight'
+  | 'setContentWidth'
+  | 'setContentHeight'
+  | 'setColumns'
+  | 'setColumnGap'
+>;
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
 const DEFAULT_LANGUAGE = 'en-US';
@@ -49,9 +50,11 @@ const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
 const DEFAULT_CONTENT_WIDTH = 1200;
 const DEFAULT_CONTENT_HEIGHT = 500;
-const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
+const DEFAULT_COLUMNS: 1 | 2 = 1;
+const DEFAULT_COLUMN_GAP = 40;
+const ReaderSettingsContext = createContext<ReaderSettings | null>(null);
 
-const getInitialSettings = (): ReaderSettings => {
+const getInitialSettings = (): PersistedReaderSettings => {
   if (typeof window === 'undefined') {
     return {
       language: DEFAULT_LANGUAGE,
@@ -62,6 +65,8 @@ const getInitialSettings = (): ReaderSettings => {
       lineHeight: DEFAULT_LINE_HEIGHT,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
+      columns: DEFAULT_COLUMNS,
+      columnGap: DEFAULT_COLUMN_GAP,
     };
   }
 
@@ -77,10 +82,12 @@ const getInitialSettings = (): ReaderSettings => {
         lineHeight: DEFAULT_LINE_HEIGHT,
         contentWidth: DEFAULT_CONTENT_WIDTH,
         contentHeight: DEFAULT_CONTENT_HEIGHT,
+        columns: DEFAULT_COLUMNS,
+        columnGap: DEFAULT_COLUMN_GAP,
       };
     }
 
-    const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
+    const parsedSettings = JSON.parse(rawSettings) as Partial<PersistedReaderSettings>;
     const parsedFontSize =
       typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : DEFAULT_FONT_SIZE;
     const parsedParagraphGap =
@@ -99,6 +106,9 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.contentHeight === 'number'
         ? parsedSettings.contentHeight
         : DEFAULT_CONTENT_HEIGHT;
+    const parsedColumns = parsedSettings.columns === 2 ? 2 : DEFAULT_COLUMNS;
+    const parsedColumnGap =
+      typeof parsedSettings.columnGap === 'number' ? parsedSettings.columnGap : DEFAULT_COLUMN_GAP;
 
     return {
       language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
@@ -109,6 +119,8 @@ const getInitialSettings = (): ReaderSettings => {
       lineHeight: Math.max(1, Math.min(2.5, parsedLineHeight)),
       contentWidth: Math.max(600, Math.min(1600, parsedContentWidth)),
       contentHeight: Math.max(300, Math.min(1200, parsedContentHeight)),
+      columns: parsedColumns,
+      columnGap: Math.max(0, Math.min(200, parsedColumnGap)),
     };
   } catch {
     return {
@@ -120,12 +132,14 @@ const getInitialSettings = (): ReaderSettings => {
       lineHeight: DEFAULT_LINE_HEIGHT,
       contentWidth: DEFAULT_CONTENT_WIDTH,
       contentHeight: DEFAULT_CONTENT_HEIGHT,
+      columns: DEFAULT_COLUMNS,
+      columnGap: DEFAULT_COLUMN_GAP,
     };
   }
 };
 
-const useReaderSettingsState = (): ReaderSettingsApi => {
-  const [settings, setSettings] = useState<ReaderSettings>(() => getInitialSettings());
+const useReaderSettingsState = (): ReaderSettings => {
+  const [settings, setSettings] = useState<PersistedReaderSettings>(() => getInitialSettings());
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -190,6 +204,20 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
+  const setColumns = useCallback((nextColumns: 1 | 2) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      columns: nextColumns,
+    }));
+  }, []);
+
+  const setColumnGap = useCallback((nextColumnGap: number) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      columnGap: Math.max(0, Math.min(200, nextColumnGap)),
+    }));
+  }, []);
+
   return useMemo(
     () => ({
       language: settings.language,
@@ -200,6 +228,8 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       lineHeight: settings.lineHeight,
       contentWidth: settings.contentWidth,
       contentHeight: settings.contentHeight,
+      columns: settings.columns,
+      columnGap: settings.columnGap,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
@@ -208,6 +238,8 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setContentWidth,
       setContentHeight,
+      setColumns,
+      setColumnGap,
     }),
     [
       settings.language,
@@ -218,6 +250,8 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       settings.lineHeight,
       settings.contentWidth,
       settings.contentHeight,
+      settings.columns,
+      settings.columnGap,
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
@@ -226,6 +260,8 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setContentWidth,
       setContentHeight,
+      setColumns,
+      setColumnGap,
     ],
   );
 };
@@ -236,7 +272,7 @@ export const ReaderSettingsProvider = ({ children }: { children: ReactNode }) =>
   return createElement(ReaderSettingsContext.Provider, { value }, children);
 };
 
-export const useReaderSettings = (): ReaderSettingsApi => {
+export const useReaderSettings = (): ReaderSettings => {
   const context = useContext(ReaderSettingsContext);
 
   if (!context) {

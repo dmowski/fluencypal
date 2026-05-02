@@ -76,6 +76,8 @@ const DevPanelContent = () => {
         contentWidth: readerSettings.contentWidth,
         contentHeight: readerSettings.contentHeight,
         paragraphGap: readerSettings.paragraphGap,
+        columns: readerSettings.columns,
+        columnGap: readerSettings.columnGap,
       },
     });
   }, [
@@ -85,6 +87,8 @@ const DevPanelContent = () => {
     readerSettings.contentWidth,
     readerSettings.contentHeight,
     readerSettings.paragraphGap,
+    readerSettings.columns,
+    readerSettings.columnGap,
   ]);
 
   return (

@@ -16,6 +16,12 @@ export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
   const readerSettings = useReaderSettings();
   const { activePage: storedActivePage, setActivePage } = books;
+  const pageStep = readerSettings.columns;
+  const isTwoColumnLayout = readerSettings.columns === 2;
+  const columnWidth =
+    readerSettings.columns === 2
+      ? Math.max(0, (readerSettings.contentWidth - readerSettings.columnGap) / 2)
+      : readerSettings.contentWidth;
 
   const pages = useMemo(() => {
     return splitIntoPages({
@@ -23,34 +29,50 @@ export const Reader = ({ data }: { data: Book }) => {
       settings: {
         fontSize: readerSettings.fontSize,
         lineHeight: readerSettings.lineHeight,
-        contentWidth: readerSettings.contentWidth,
+        contentWidth: columnWidth,
         contentHeight: readerSettings.contentHeight,
         paragraphGap: readerSettings.paragraphGap,
+        columns: readerSettings.columns,
+        columnGap: readerSettings.columnGap,
       },
     });
   }, [
+    columnWidth,
     data.paragraphs,
     readerSettings.fontSize,
     readerSettings.lineHeight,
-    readerSettings.contentWidth,
     readerSettings.contentHeight,
     readerSettings.paragraphGap,
+    readerSettings.columns,
+    readerSettings.columnGap,
   ]);
 
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);
-  const activePage = Math.min(Math.max(storedActivePage, 1), maxPage);
-  const activePageContent = pages[activePage - 1] || [];
+  const maxSpreadStartPage =
+    isTwoColumnLayout && pageCount % 2 === 0 ? Math.max(pageCount - 1, 1) : maxPage;
+  const normalizedStoredPage =
+    isTwoColumnLayout && storedActivePage > 1 && storedActivePage % 2 === 0
+      ? storedActivePage - 1
+      : storedActivePage;
+  const activePage = Math.min(Math.max(normalizedStoredPage, 1), maxSpreadStartPage);
+  const visiblePages = isTwoColumnLayout
+    ? [activePage, activePage + 1].filter((page) => page <= pageCount)
+    : [activePage];
+  const pageLabel =
+    visiblePages.length > 1
+      ? `${visiblePages[0]}-${visiblePages[visiblePages.length - 1]}`
+      : String(visiblePages[0] ?? 1);
 
   const speech = useBrowserSpeech();
 
   const closeReader = () => books.setActive(null);
-  const goToPreviousPage = () => setActivePage(Math.max(activePage - 1, 1));
-  const goToNextPage = () => setActivePage(Math.min(activePage + 1, maxPage));
+  const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
+  const goToNextPage = () => setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
 
   useReaderShortcuts({
     activePage,
-    maxPage,
+    maxPage: maxSpreadStartPage,
     onClose: closeReader,
     onNext: goToNextPage,
     onPrevious: goToPreviousPage,
@@ -88,7 +110,7 @@ export const Reader = ({ data }: { data: Book }) => {
         <ReaderHeader
           title={data.title}
           subtitle={data.subtitle}
-          activePage={activePage}
+          pageLabel={pageLabel}
           pageCount={pageCount}
           category={data.category}
         />
@@ -99,36 +121,55 @@ export const Reader = ({ data }: { data: Book }) => {
           width: '100%',
           alignItems: 'center',
           height: `${readerSettings.contentHeight}px`,
-          gap: `${readerSettings.paragraphGap}px`,
+          flexDirection: 'row',
+          justifyContent: 'center',
+          gap: `${isTwoColumnLayout ? readerSettings.columnGap : 0}px`,
         }}
       >
-        {activePageContent.map((paragraph, rawIndex) => {
-          const index = rawIndex + (activePage - 1) * pageCount;
+        {visiblePages.map((pageNumber) => {
+          const pageContent = pages[pageNumber - 1] || [];
+
           return (
             <Stack
-              key={index}
+              key={pageNumber}
               sx={{
-                width: `${readerSettings.contentWidth}px`,
+                width: `${columnWidth}px`,
+                height: '100%',
                 position: 'relative',
                 zIndex: 1,
+                gap: `${readerSettings.paragraphGap}px`,
               }}
             >
-              <ReaderParagraph
-                key={index}
-                paragraphIndex={index}
-                words={paragraph}
-                fontSize={readerSettings.fontSize}
-                lineHeight={readerSettings.lineHeight}
-                sourceLanguage={readerSettings.language}
-                targetLanguage={readerSettings.translateToLanguage}
-                onWordClick={playText}
-                onTextSelected={playText}
-                highlights={(data.highlights ?? []).filter(
-                  (highlight) => (highlight.paragraphIndex ?? 0) === index,
-                )}
-                onHighlightColorSelect={books.applySelectedHighlight}
-                onRemoveHighlight={books.removeHighlight}
-              />
+              {pageContent.map((paragraph, rawIndex) => {
+                const index = rawIndex + (pageNumber - 1) * pageCount;
+
+                return (
+                  <Stack
+                    key={index}
+                    sx={{
+                      width: '100%',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                  >
+                    <ReaderParagraph
+                      paragraphIndex={index}
+                      words={paragraph}
+                      fontSize={readerSettings.fontSize}
+                      lineHeight={readerSettings.lineHeight}
+                      sourceLanguage={readerSettings.language}
+                      targetLanguage={readerSettings.translateToLanguage}
+                      onWordClick={playText}
+                      onTextSelected={playText}
+                      highlights={(data.highlights ?? []).filter(
+                        (highlight) => (highlight.paragraphIndex ?? 0) === index,
+                      )}
+                      onHighlightColorSelect={books.applySelectedHighlight}
+                      onRemoveHighlight={books.removeHighlight}
+                    />
+                  </Stack>
+                );
+              })}
             </Stack>
           );
         })}
@@ -138,7 +179,7 @@ export const Reader = ({ data }: { data: Book }) => {
         onPrevious={goToPreviousPage}
         onNext={goToNextPage}
         isFirstPage={activePage === 1}
-        isLastPage={activePage === maxPage}
+        isLastPage={activePage >= maxSpreadStartPage}
       />
     </Stack>
   );

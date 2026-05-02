@@ -14,6 +14,8 @@ const settings: ReaderUiSettings = {
   contentWidth: 1200,
   contentHeight: 500,
   paragraphGap: 20,
+  columns: 1,
+  columnGap: 40,
 };
 
 const countWords = (paragraphs: string[]) =>

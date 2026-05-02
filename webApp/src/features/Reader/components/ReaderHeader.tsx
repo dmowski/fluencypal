@@ -7,13 +7,13 @@ import { fitElementFontSizeToWidth } from '@/libs/typography/fitElementFontSizeT
 export const ReaderHeader = ({
   title,
   subtitle,
-  activePage,
+  pageLabel,
   pageCount,
   category,
 }: {
   title: string;
   subtitle: string;
-  activePage: number;
+  pageLabel: string;
   pageCount: number;
   category: string;
 }) => {
@@ -109,7 +109,7 @@ export const ReaderHeader = ({
             textTransform: 'uppercase',
           }}
         >
-          {`${activePage} / ${pageCount}`}
+          {`${pageLabel} / ${pageCount}`}
         </Typography>
         <Typography
           sx={{
