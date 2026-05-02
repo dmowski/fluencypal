@@ -35,6 +35,15 @@ export const useReaderShortcuts = ({
 
       if (event.key === 'Escape') {
         event.preventDefault();
+
+        const selection = window.getSelection();
+        if (selection && selection.toString().length > 0) {
+          // Text is selected, clear the selection and don't close
+          selection.removeAllRanges();
+          return;
+        }
+
+        // No selection, close the book
         onClose();
         return;
       }
