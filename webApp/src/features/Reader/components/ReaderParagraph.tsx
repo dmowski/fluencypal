@@ -350,16 +350,28 @@ export const ReaderParagraph = ({
         }
         onColorSelect={(color) => {
           if (!selection) return;
-          const existing = getHighlightAtCharRange(
+
+          // Check if the selection already has this exact color
+          const existingHighlight = getHighlightAtCharRange(
             selection.startIndex,
             selection.endIndex,
             highlights,
           );
-          if (existing?.color === color) {
-            onRemoveHighlight(existing);
+
+          if (existingHighlight?.color === color) {
+            // Same color selected again - just remove it (toggle off)
+            onRemoveHighlight(existingHighlight);
           } else {
+            // Different color or no highlight - remove all overlapping and apply new
+            const overlappingHighlights = highlights.filter(
+              (h) => h.startIndex < selection.endIndex && h.endIndex > selection.startIndex,
+            );
+            overlappingHighlights.forEach((h) => onRemoveHighlight(h));
+
+            // Apply the new highlight
             onHighlightColorSelect({ ...selection, color });
           }
+
           setSelection(null);
           setPopoverPosition(null);
           setSelectionText(null);
