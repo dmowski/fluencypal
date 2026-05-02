@@ -34,6 +34,8 @@ const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_TRANSLATE_ON_HOVER = false;
 const DEFAULT_COLUMNS: 1 | 2 = 1;
 const DEFAULT_COLUMN_GAP = 40;
+const MOBILE_INIT_FONT_SIZE = 15;
+const MOBILE_INIT_FONT_SIZE_WIDTH_THRESHOLD = 600;
 const MOBILE_LAYOUT_WIDTH_THRESHOLD = 1024;
 const MOBILE_ORIENTATION_WIDTH_DELTA = 120;
 
@@ -86,15 +88,20 @@ const getViewportDimensions = (): { contentWidth: number; contentHeight: number 
 
 const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 
+const getInitialFontSizeByViewportWidth = (viewportWidth: number): number =>
+  viewportWidth < MOBILE_INIT_FONT_SIZE_WIDTH_THRESHOLD ? MOBILE_INIT_FONT_SIZE : DEFAULT_FONT_SIZE;
+
 const getInitialSettings = (): ReaderSettings => {
+  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
   const viewportDimensions = getViewportDimensions();
+  const initialFontSize = getInitialFontSizeByViewportWidth(viewportWidth);
 
   if (typeof window === 'undefined') {
     return {
       language: DEFAULT_LANGUAGE,
       selectedVoiceURI: null,
       translateToLanguage: null,
-      fontSize: DEFAULT_FONT_SIZE,
+      fontSize: initialFontSize,
       contentWidth: viewportDimensions.contentWidth,
       contentHeight: viewportDimensions.contentHeight,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
@@ -113,7 +120,7 @@ const getInitialSettings = (): ReaderSettings => {
         language: window.navigator.language || DEFAULT_LANGUAGE,
         selectedVoiceURI: null,
         translateToLanguage: null,
-        fontSize: DEFAULT_FONT_SIZE,
+        fontSize: initialFontSize,
         contentWidth: viewportDimensions.contentWidth,
         contentHeight: viewportDimensions.contentHeight,
         paragraphGap: DEFAULT_PARAGRAPH_GAP,
@@ -127,7 +134,7 @@ const getInitialSettings = (): ReaderSettings => {
 
     const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
     const parsedFontSize =
-      typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : DEFAULT_FONT_SIZE;
+      typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : initialFontSize;
     const parsedContentWidth =
       typeof parsedSettings.contentWidth === 'number'
         ? parsedSettings.contentWidth
@@ -187,7 +194,7 @@ const getInitialSettings = (): ReaderSettings => {
       language: window.navigator.language || DEFAULT_LANGUAGE,
       selectedVoiceURI: null,
       translateToLanguage: null,
-      fontSize: DEFAULT_FONT_SIZE,
+      fontSize: initialFontSize,
       contentWidth: viewportDimensions.contentWidth,
       contentHeight: viewportDimensions.contentHeight,
       paragraphGap: DEFAULT_PARAGRAPH_GAP,
