@@ -56,7 +56,7 @@ export const BooksList = () => {
               <BookCard
                 key={book.id}
                 data={book}
-                onClick={books.setActive}
+                onClick={() => books.setActive(book.id)}
                 onDelete={handleDelete}
               />
             ))}
@@ -79,7 +79,7 @@ export const BooksList = () => {
             }}
           >
             {books.testBooks.map((book) => (
-              <BookCard key={book.title} data={book} onClick={books.setActive} />
+              <BookCard key={book.title} data={book} onClick={() => books.setActive(book.id)} />
             ))}
           </Stack>
         </Stack>

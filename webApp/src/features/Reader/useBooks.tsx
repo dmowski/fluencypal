@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { testData } from './testData';
 import { Book, HighlightedText } from './types';
 import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
@@ -7,6 +7,7 @@ import {
   loadUsersBooksFromIndexedDb,
   saveUserBookToIndexedDb,
 } from './booksIndexedDb';
+import { useUrlState } from '../Url/useUrlState';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 
@@ -28,11 +29,21 @@ const resolveBookUpdate = (
   ...(typeof updates === 'function' ? updates(book) : updates),
 });
 
+const testBooks = [testData];
+
 const useBooksState = () => {
-  const [active, setActive] = useState<Book | null>(null);
+  const [activeBookId, setActiveBookId] = useUrlState<string | null>('activeBookId', null, true);
+
   const [usersBooks, setUsersBooks] = useState<Book[]>([]);
+
+  const active = useMemo(
+    () =>
+      usersBooks.find((book) => book.id === activeBookId) ||
+      testBooks.find((book) => book.id === activeBookId) ||
+      null,
+    [activeBookId, usersBooks],
+  );
   const [isUsersBooksLoaded, setIsUsersBooksLoaded] = useState(false);
-  const testBooks = [testData];
 
   useEffect(() => {
     let isCancelled = false;
@@ -86,10 +97,7 @@ const useBooksState = () => {
       return nextBooks;
     });
 
-    setActive((prevActive) => {
-      if (!prevActive || prevActive.id !== bookId) return prevActive;
-      return resolveBookUpdate(prevActive, updates);
-    });
+    setActiveBookId(bookId);
   };
 
   const addBook = async ({
@@ -112,7 +120,7 @@ const useBooksState = () => {
       activePageIndex: 1,
     };
     setUsersBooks((prev) => [...prev, newBook]);
-    setActive(newBook);
+    setActiveBookId(newBook.id);
     await persistUserBook(newBook);
   };
 
@@ -122,7 +130,7 @@ const useBooksState = () => {
       void removePersistedBook(bookToDelete.id);
       return nextBooks;
     });
-    setActive((prev) => (prev?.id === bookToDelete.id ? null : prev));
+    setActiveBookId(null);
   };
 
   const updateActiveBook = (updates: Partial<Book> | ((currentBook: Book) => Partial<Book>)) => {
@@ -157,7 +165,7 @@ const useBooksState = () => {
   return {
     active,
     activePage: active?.activePageIndex ?? 1,
-    setActive,
+    setActive: setActiveBookId,
     setActivePage,
     addBook,
     deleteBook,
