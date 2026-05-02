@@ -10,13 +10,9 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { NativeLangCode } from '@/libs/language/type';
-import { ReaderUiSettings } from '../model/types';
+import { NativeLangCode, ReaderSettings } from '../model/types';
 
-export interface ReaderSettings extends ReaderUiSettings {
-  language: string;
-  selectedVoiceURI: string | null;
-  translateToLanguage: NativeLangCode | null;
+export interface ReaderSettingsApi extends ReaderSettings {
   setLanguage: (nextLanguage: string) => void;
   setSelectedVoiceURI: (nextVoiceURI: string | null) => void;
   setTranslateToLanguage: (nextLanguage: NativeLangCode | null) => void;
@@ -29,11 +25,6 @@ export interface ReaderSettings extends ReaderUiSettings {
   setColumns: (nextColumns: 1 | 2) => void;
   setColumnGap: (nextColumnGap: number) => void;
 }
-
-type PersistedReaderSettings = Pick<
-  ReaderSettings,
-  keyof ReaderUiSettings | 'language' | 'selectedVoiceURI' | 'translateToLanguage'
->;
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
 const DEFAULT_LANGUAGE = 'en-US';
@@ -54,9 +45,9 @@ export const READER_SETTINGS_RANGES = {
   contentHeight: { min: 300, max: 2000, step: 10 },
   columnGap: { min: 0, max: 200, step: 1 },
 } as const;
-const ReaderSettingsContext = createContext<ReaderSettings | null>(null);
+const ReaderSettingsContext = createContext<ReaderSettingsApi | null>(null);
 
-const getInitialSettings = (): PersistedReaderSettings => {
+const getInitialSettings = (): ReaderSettings => {
   if (typeof window === 'undefined') {
     return {
       language: DEFAULT_LANGUAGE,
@@ -91,7 +82,7 @@ const getInitialSettings = (): PersistedReaderSettings => {
       };
     }
 
-    const parsedSettings = JSON.parse(rawSettings) as Partial<PersistedReaderSettings>;
+    const parsedSettings = JSON.parse(rawSettings) as Partial<ReaderSettings>;
     const parsedFontSize =
       typeof parsedSettings.fontSize === 'number' ? parsedSettings.fontSize : DEFAULT_FONT_SIZE;
     const parsedParagraphGap =
@@ -166,8 +157,8 @@ const getInitialSettings = (): PersistedReaderSettings => {
   }
 };
 
-const useReaderSettingsState = (): ReaderSettings => {
-  const [settings, setSettings] = useState<PersistedReaderSettings>(() => getInitialSettings());
+const useReaderSettingsState = (): ReaderSettingsApi => {
+  const [settings, setSettings] = useState<ReaderSettings>(() => getInitialSettings());
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -329,7 +320,7 @@ export const ReaderSettingsProvider = ({ children }: { children: ReactNode }) =>
   return createElement(ReaderSettingsContext.Provider, { value }, children);
 };
 
-export const useReaderSettings = (): ReaderSettings => {
+export const useReaderSettings = (): ReaderSettingsApi => {
   const context = useContext(ReaderSettingsContext);
 
   if (!context) {

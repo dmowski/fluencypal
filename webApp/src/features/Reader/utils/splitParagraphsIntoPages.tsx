@@ -1,11 +1,11 @@
 import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
-import { BookParagraph, ReaderUiSettings } from '../model/types';
+import { BookParagraph, ReaderSettings } from '../model/types';
 import { isFitInPage } from './isFitInPage';
 
 export interface SplitIntoPagesData {
   bookParagraphs: BookParagraph[];
-  settings: ReaderUiSettings;
+  settings: ReaderSettings;
 }
 
 const splitIntoPagesCache = new Map<string, BookParagraph[][]>();
@@ -25,7 +25,6 @@ export const splitIntoPages = ({
   if (cachedPages) {
     return cachedPages;
   }
-
   const pages: BookParagraph[][] = [];
   let currentPage: BookParagraph[] = [];
   let currentPageText: string[] = [];

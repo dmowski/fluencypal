@@ -70,28 +70,9 @@ const DevPanelContent = () => {
   const fits = useMemo(() => {
     return isFitInPage({
       paragraphs,
-      settings: {
-        fontSize: readerSettings.fontSize,
-        lineHeight: readerSettings.lineHeight,
-        justifyText: readerSettings.justifyText,
-        contentWidth: readerSettings.contentWidth,
-        contentHeight: readerSettings.contentHeight,
-        paragraphGap: readerSettings.paragraphGap,
-        columns: readerSettings.columns,
-        columnGap: readerSettings.columnGap,
-      },
+      settings: readerSettings,
     });
-  }, [
-    paragraphs,
-    readerSettings.fontSize,
-    readerSettings.lineHeight,
-    readerSettings.justifyText,
-    readerSettings.contentWidth,
-    readerSettings.contentHeight,
-    readerSettings.paragraphGap,
-    readerSettings.columns,
-    readerSettings.columnGap,
-  ]);
+  }, [paragraphs, readerSettings]);
 
   return (
     <Stack sx={{ width: '100%', maxWidth: '1400px', gap: '16px' }}>

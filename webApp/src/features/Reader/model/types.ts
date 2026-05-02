@@ -1,3 +1,6 @@
+import { NativeLangCode } from '@/libs/language/type';
+export type { NativeLangCode };
+
 export type BookWord = string;
 export type BookParagraph = BookWord[];
 
@@ -25,7 +28,10 @@ export interface ReadingProgress {
   endIndex: number;
 }
 
-export interface ReaderUiSettings {
+export interface ReaderSettings {
+  language: string;
+  selectedVoiceURI: string | null;
+  translateToLanguage: NativeLangCode | null;
   fontSize: number;
   lineHeight: number;
   contentWidth: number;

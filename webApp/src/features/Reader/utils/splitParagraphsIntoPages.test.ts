@@ -1,6 +1,6 @@
 import { splitIntoPages } from './splitParagraphsIntoPages';
 import { isFitInPage } from './isFitInPage';
-import { ReaderUiSettings } from '../model/types';
+import { ReaderSettings } from '../model/types';
 
 jest.mock('./isFitInPage', () => ({
   isFitInPage: jest.fn(),
@@ -8,7 +8,10 @@ jest.mock('./isFitInPage', () => ({
 
 const mockedIsFitInPage = isFitInPage as jest.MockedFunction<typeof isFitInPage>;
 
-const settings: ReaderUiSettings = {
+const settings: ReaderSettings = {
+  language: 'en-US',
+  selectedVoiceURI: null,
+  translateToLanguage: null,
   fontSize: 36,
   lineHeight: 1.5,
   justifyText: true,

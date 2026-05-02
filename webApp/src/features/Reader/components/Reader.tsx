@@ -27,27 +27,11 @@ export const Reader = ({ data }: { data: Book }) => {
     return splitIntoPages({
       bookParagraphs: data.paragraphs,
       settings: {
-        fontSize: readerSettings.fontSize,
-        lineHeight: readerSettings.lineHeight,
-        justifyText: readerSettings.justifyText,
+        ...readerSettings,
         contentWidth: columnWidth,
-        contentHeight: readerSettings.contentHeight,
-        paragraphGap: readerSettings.paragraphGap,
-        columns: readerSettings.columns,
-        columnGap: readerSettings.columnGap,
       },
     });
-  }, [
-    columnWidth,
-    data.paragraphs,
-    readerSettings.fontSize,
-    readerSettings.lineHeight,
-    readerSettings.justifyText,
-    readerSettings.contentHeight,
-    readerSettings.paragraphGap,
-    readerSettings.columns,
-    readerSettings.columnGap,
-  ]);
+  }, [columnWidth, data.paragraphs, readerSettings]);
 
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);

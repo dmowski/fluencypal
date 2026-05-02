@@ -1,4 +1,4 @@
-import { ReaderUiSettings } from '../model/types';
+import { ReaderSettings } from '../model/types';
 
 const fontFamily = 'serif';
 
@@ -7,7 +7,7 @@ export function isFitInPage({
   settings,
 }: {
   paragraphs: string[];
-  settings: ReaderUiSettings;
+  settings: ReaderSettings;
 }): boolean {
   if (typeof document === 'undefined') {
     return false;
