@@ -44,7 +44,6 @@ export const BooksList = () => {
             gap: '5px',
           }}
         >
-          <Typography sx={{}}>{i18n._('Your books')}:</Typography>
           <Stack
             sx={{
               flexDirection: 'row',
@@ -62,25 +61,6 @@ export const BooksList = () => {
             ))}
 
             <AddNewBookCard onClick={() => setIsAddModalOpen(true)} />
-          </Stack>
-        </Stack>
-
-        <Stack
-          sx={{
-            gap: '5px',
-          }}
-        >
-          <Typography sx={{}}>{i18n._('Demo books')}:</Typography>
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              gap: '16px',
-              flexWrap: 'wrap',
-            }}
-          >
-            {books.testBooks.map((book) => (
-              <BookCard key={book.title} data={book} onClick={() => books.setActive(book.id)} />
-            ))}
           </Stack>
         </Stack>
       </Stack>

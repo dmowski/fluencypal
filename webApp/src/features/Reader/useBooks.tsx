@@ -37,10 +37,7 @@ const useBooksState = () => {
   const [usersBooks, setUsersBooks] = useState<Book[]>([]);
 
   const active = useMemo(
-    () =>
-      usersBooks.find((book) => book.id === activeBookId) ||
-      testBooks.find((book) => book.id === activeBookId) ||
-      null,
+    () => usersBooks.find((book) => book.id === activeBookId) || null,
     [activeBookId, usersBooks],
   );
   const [isUsersBooksLoaded, setIsUsersBooksLoaded] = useState(false);
@@ -50,8 +47,14 @@ const useBooksState = () => {
 
     const loadBooks = async () => {
       const booksFromDb = await loadUsersBooksFromIndexedDb();
+      const initialBooks = booksFromDb.length > 0 ? booksFromDb : testBooks;
+
+      if (booksFromDb.length === 0) {
+        await Promise.all(initialBooks.map((book) => saveUserBookToIndexedDb(book)));
+      }
+
       if (!isCancelled) {
-        setUsersBooks(booksFromDb);
+        setUsersBooks(initialBooks);
         setIsUsersBooksLoaded(true);
       }
     };
@@ -172,7 +175,6 @@ const useBooksState = () => {
     applySelectedHighlight,
     removeHighlight,
     usersBooks,
-    testBooks,
   };
 };
 
