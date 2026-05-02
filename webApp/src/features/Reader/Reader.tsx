@@ -15,6 +15,7 @@ import { useReaderSettings } from './useReaderSettings';
 import { useBooks } from './useBooks';
 import { BackButton } from './BackButton';
 import { splitIntoPages } from './splitParagraphsIntoPages';
+import { useReaderShortcuts } from './useReaderShortcuts';
 
 export const Reader = ({ data }: { data: Book }) => {
   const { i18n } = useLingui();
@@ -35,6 +36,17 @@ export const Reader = ({ data }: { data: Book }) => {
   const isShowRecorder = false;
 
   const isRecording = recorder.isActive || recorder.isActivating;
+  const closeReader = () => books.setActive(null);
+  const goToPreviousPage = () => setActivePage(Math.max(activePage - 1, 1));
+  const goToNextPage = () => setActivePage(Math.min(activePage + 1, maxPage));
+
+  useReaderShortcuts({
+    activePage,
+    maxPage,
+    onClose: closeReader,
+    onNext: goToNextPage,
+    onPrevious: goToPreviousPage,
+  });
 
   const playText = (text: string) => {
     speech.play(text.trim());
@@ -61,7 +73,7 @@ export const Reader = ({ data }: { data: Book }) => {
         position: 'relative',
       }}
     >
-      <BackButton onClick={() => books.setActive(null)} />
+      <BackButton onClick={closeReader} />
       <ReaderSpeechSettingsButton speech={speech} />
 
       <Stack
@@ -187,8 +199,8 @@ export const Reader = ({ data }: { data: Book }) => {
       </Stack>
 
       <PaginationPanel
-        onPrevious={() => setActivePage(Math.max(activePage - 1, 1))}
-        onNext={() => setActivePage(Math.min(activePage + 1, maxPage))}
+        onPrevious={goToPreviousPage}
+        onNext={goToNextPage}
         isFirstPage={activePage === 1}
         isLastPage={activePage === maxPage}
       />
