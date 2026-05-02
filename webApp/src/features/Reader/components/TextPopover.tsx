@@ -36,6 +36,11 @@ export const TextPopover = ({
     if (!anchorPosition) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Don't intercept copy/paste or other modifier key combinations
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+        return;
+      }
+
       const key = event.key.toUpperCase();
 
       // Find color by shortcut key
