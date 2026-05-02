@@ -26,10 +26,13 @@ export const Reader = ({ data }: { data: Book }) => {
   const pages = useMemo(() => {
     return splitIntoPages({
       bookParagraphs: data.paragraphs,
-      fontSize: readerSettings.fontSize,
-      lineHeight: readerSettings.lineHeight,
-      contentWidth: readerSettings.contentWidth,
-      contentHeight: readerSettings.contentHeight,
+      settings: {
+        fontSize: readerSettings.fontSize,
+        lineHeight: readerSettings.lineHeight,
+        contentWidth: readerSettings.contentWidth,
+        contentHeight: readerSettings.contentHeight,
+        paragraphGap: readerSettings.paragraphGap,
+      },
     });
   }, [
     data.paragraphs,
@@ -37,6 +40,7 @@ export const Reader = ({ data }: { data: Book }) => {
     readerSettings.lineHeight,
     readerSettings.contentWidth,
     readerSettings.contentHeight,
+    readerSettings.paragraphGap,
   ]);
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);

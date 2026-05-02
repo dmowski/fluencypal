@@ -2,26 +2,21 @@ import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
 import { BookParagraph, ReaderUiSettings } from '../model/types';
 
-export interface SplitIntoPagesData extends ReaderUiSettings {
+export interface SplitIntoPagesData {
   bookParagraphs: BookParagraph[];
+  settings: ReaderUiSettings;
 }
 
 const splitIntoPagesCache = new Map<string, BookParagraph[][]>();
 
 export const splitIntoPages = ({
   bookParagraphs,
-  fontSize,
-  lineHeight,
-  contentWidth,
-  contentHeight,
+  settings,
 }: SplitIntoPagesData): BookParagraph[][] => {
   const hash = getHash(
     JSON.stringify({
       bookParagraphs,
-      fontSize,
-      lineHeight,
-      contentWidth,
-      contentHeight,
+      settings,
     }),
   );
   const cachedPages = splitIntoPagesCache.get(hash);

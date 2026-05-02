@@ -4,12 +4,11 @@ const textAlign = 'justify';
 const fontFamily = 'serif';
 
 export function isFitInPage({
-  text,
+  paragraphs,
   settings,
 }: {
-  text: string;
+  paragraphs: string[];
   settings: ReaderUiSettings;
 }): boolean {
-  console.log(text, settings);
   return false;
 }
