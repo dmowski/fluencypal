@@ -126,14 +126,14 @@ export async function POST(request: Request) {
       return Response.json(response, { status: 400 });
     }
 
-    const maxAllowedFileBytes = 50 * 1024 * 1024;
+    const maxAllowedFileBytes = 4 * 1024 * 1024;
     if (file.size > maxAllowedFileBytes) {
       console.warn('[convertDocToText] validation failed: file too large', {
         fileSizeBytes: file.size,
         maxAllowedFileBytes,
       });
       const response: ConvertDocToTextResponse = {
-        error: 'EPUB file is too large. Please use a file up to 50MB.',
+        error: 'EPUB file is too large. Please use a file up to 4MB.',
       };
       return Response.json(response, { status: 400 });
     }

@@ -1,6 +1,6 @@
 import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
 
-export const MAX_EPUB_FILE_SIZE = 50 * 1024 * 1024;
+export const MAX_EPUB_FILE_SIZE = 4 * 1024 * 1024;
 
 const isEpubFile = (file: File): boolean => {
   const fileName = file.name.toLowerCase();
@@ -20,7 +20,7 @@ export const validateEpubFile = (
   }
 
   if (file.size > MAX_EPUB_FILE_SIZE) {
-    return translate('File size must be less than 50MB');
+    return translate('File size must be less than 4MB');
   }
 
   return null;
