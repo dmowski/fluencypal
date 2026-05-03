@@ -7,16 +7,17 @@ import { fitElementFontSizeToWidth } from '@/libs/typography/fitElementFontSizeT
 export const ReaderHeader = ({
   title,
   subtitle,
-  pageLabel,
-  pageCount,
+  currentPage,
+  totalPages,
   author,
 }: {
   title: string;
   subtitle: string;
-  pageLabel: string;
-  pageCount: number;
+  currentPage: number;
+  totalPages: number;
   author: string;
 }) => {
+  const percentage = totalPages > 0 ? Math.round((currentPage / totalPages) * 100) : 0;
   const headerRef = useRef<HTMLDivElement | null>(null);
   const textBlockRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -95,33 +96,6 @@ export const ReaderHeader = ({
         gap: '10px',
       }}
     >
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingRight: '5px',
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: '12px',
-            fontFamily: 'serif',
-            textTransform: 'uppercase',
-          }}
-        >
-          {`${pageLabel} / ${pageCount}`}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: '12px',
-            fontFamily: 'serif',
-            textAlign: 'right',
-          }}
-        >
-          {author}
-        </Typography>
-      </Stack>
-
       <Stack ref={textBlockRef} sx={{ width: '100%', minWidth: 0 }}>
         <Typography
           ref={titleRef}
@@ -152,6 +126,47 @@ export const ReaderHeader = ({
           }}
         >
           {subtitle}
+        </Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          paddingRight: '5px',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: '14px',
+            fontFamily: 'serif',
+            textAlign: 'left',
+          }}
+        >
+          {author}
+        </Typography>
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            fontFamily: 'serif',
+            textTransform: 'uppercase',
+            textAlign: 'center',
+          }}
+        >
+          {`${percentage}%`}
+        </Typography>
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            fontFamily: 'serif',
+            textTransform: 'uppercase',
+
+            textAlign: 'right',
+          }}
+        >
+          {`${currentPage} / ${totalPages}`}
         </Typography>
       </Stack>
     </Stack>

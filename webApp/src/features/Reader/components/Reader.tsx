@@ -10,6 +10,7 @@ import { useReaderSettings } from '../hooks/useReaderSettings';
 import { useBooks } from '../hooks/useBooks';
 import { BackButton } from './BackButton';
 import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
+import { getReaderProgress } from '../utils/getReaderProgress';
 import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
@@ -66,10 +67,11 @@ export const Reader = ({ data }: { data: Book }) => {
   const visiblePages = isTwoColumnLayout
     ? [activePage, activePage + 1].filter((page) => page <= pageCount)
     : [activePage];
-  const pageLabel =
-    visiblePages.length > 1
-      ? `${visiblePages[0]}-${visiblePages[visiblePages.length - 1]}`
-      : String(visiblePages[0] ?? 1);
+  const { currentPage, totalPages } = getReaderProgress({
+    activePage,
+    pageCount,
+    isTwoColumnLayout,
+  });
 
   const speech = useBrowserSpeech();
   const {
@@ -156,8 +158,8 @@ export const Reader = ({ data }: { data: Book }) => {
         <ReaderHeader
           title={data.title}
           subtitle={data.subtitle}
-          pageLabel={pageLabel}
-          pageCount={pageCount}
+          currentPage={currentPage}
+          totalPages={totalPages}
           author={data.author}
         />
       </Stack>
