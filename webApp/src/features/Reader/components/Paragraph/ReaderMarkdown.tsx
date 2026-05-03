@@ -159,41 +159,36 @@ const createMarkdownComponents = (
   imageDataUrlByHref?: Record<string, string>,
   imageAspectRatioByHref?: Record<string, number>,
 ): MarkdownToJSX.Overrides => ({
-  h1: ({ children }) => <Typography variant="h1">{children}</Typography>,
+  h1: ({ children }) => (
+    <Typography component="h1" sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}>
+      {children}
+    </Typography>
+  ),
   h2: ({ children }) => (
-    <Typography
-      variant="h2"
-      sx={{
-        paddingTop: '20px',
-      }}
-    >
+    <Typography component="h2" sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}>
       {children}
     </Typography>
   ),
   h3: ({ children }) => (
-    <Typography
-      variant="h4"
-      component={'h3'}
-      sx={{
-        paddingTop: '20px',
-      }}
-    >
+    <Typography component="h3" sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}>
       {children}
     </Typography>
   ),
   h4: ({ children }) => (
-    <Typography
-      variant="h5"
-      component={'h4'}
-      sx={{
-        paddingTop: '20px',
-      }}
-    >
+    <Typography component="h4" sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}>
       {children}
     </Typography>
   ),
-  h5: ({ children }) => <Typography variant="h5">{children}</Typography>,
-  h6: ({ children }) => <Typography variant="h6">{children}</Typography>,
+  h5: ({ children }) => (
+    <Typography component="h5" sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}>
+      {children}
+    </Typography>
+  ),
+  h6: ({ children }) => (
+    <Typography component="h6" sx={{ fontSize: 'inherit', fontWeight: 500, m: 0, p: 0 }}>
+      {children}
+    </Typography>
+  ),
 
   p: ({ children }) => <span>{children}</span>,
   span: ({ children }) => <span>{children}</span>,
