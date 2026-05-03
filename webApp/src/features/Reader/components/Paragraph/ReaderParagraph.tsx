@@ -18,6 +18,8 @@ import {
 } from '../../utils/readerParagraphTranslationHelpers';
 import { HighlightedText } from '../../model/types';
 import { NativeLangCode } from '@/libs/language/type';
+import { ReaderMarkdown } from './ReaderMarkdown';
+import { isUseMarkdown } from './readerRenderFlags';
 
 export interface ReaderParagraphSelectionPayload {
   paragraphIndex: number;
@@ -73,6 +75,18 @@ export const ReaderParagraph = ({
     () => normalizeToNativeLangCode(sourceLanguage),
     [sourceLanguage],
   );
+
+  const getSafeWordMeta = (wordIndex: number, fallbackWord: string) => {
+    const lastSafeIndex = Math.max(words.length - 1, 0);
+    const safeIndex = Math.min(Math.max(wordIndex, 0), lastSafeIndex);
+    const sourceWord = words[safeIndex] ?? fallbackWord;
+    const sourceStart = wordCharOffsets[safeIndex] ?? 0;
+
+    return {
+      sourceWord,
+      sourceStart,
+    };
+  };
 
   const clearHoverTranslation = () => {
     hoverRequestIdRef.current += 1;
@@ -171,7 +185,8 @@ export const ReaderParagraph = ({
     e.preventDefault();
     e.stopPropagation();
 
-    const wordStart = wordCharOffsets[wordIndex];
+    const { sourceStart } = getSafeWordMeta(wordIndex, word);
+    const wordStart = sourceStart;
     const wordEnd = wordStart + word.length;
 
     const selection = createSelectionFromRange({
@@ -213,91 +228,192 @@ export const ReaderParagraph = ({
           },
         }}
       >
-        {words.map((word, wordIndex) => {
-          const wordStart = wordCharOffsets[wordIndex];
-          return (
-            <span key={wordIndex}>
-              <Stack
-                component="span"
-                data-word-index={wordIndex}
-                sx={{
-                  fontSize: `${fontSize}px`,
-                  lineHeight,
-                  display: 'inline',
-                  borderBottom: '1px dotted transparent',
-                  position: 'relative',
-                  ':hover': {
-                    cursor: 'pointer',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      width: 'calc(100% + 13px)',
-                      height: 'calc(100% + 0px)',
-                      top: '1px',
-                      left: '-6px',
-                      borderRadius: '8px',
-                      backgroundColor: '#d3d3d3ab',
-                      zIndex: -1,
-                      '@media (max-width: 500px)': {
-                        display: 'none',
+        {isUseMarkdown ? (
+          <ReaderMarkdown
+            renderWord={({ word, wordIndex }) => {
+              const { sourceStart } = getSafeWordMeta(wordIndex, word);
+              const wordStart = sourceStart;
+
+              return (
+                <Stack
+                  component="span"
+                  className="conversation-word"
+                  data-word-index={wordIndex}
+                  sx={{
+                    fontSize: `${fontSize}px`,
+                    lineHeight,
+                    display: 'inline',
+                    borderBottom: '1px dotted transparent',
+                    position: 'relative',
+                    ':hover': {
+                      cursor: 'pointer',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        width: 'calc(100% + 13px)',
+                        height: 'calc(100% + 0px)',
+                        top: '1px',
+                        left: '-6px',
+                        borderRadius: '8px',
+                        backgroundColor: '#d3d3d3ab',
+                        zIndex: -1,
+                        '@media (max-width: 500px)': {
+                          display: 'none',
+                        },
                       },
                     },
-                  },
-                }}
-                onClick={(e) => handleWordClick(e, word, wordIndex)}
-                onMouseEnter={(e) => void handleWordMouseEnter(e, word)}
-                onMouseMove={handleWordMouseMove}
-              >
-                {word.split('').map((char, charIdx) => {
-                  const absOffset = wordStart + charIdx;
-                  const sourceOffset = absOffset + paragraphStartCharOffset;
-                  const color = getCharHighlightColor(sourceOffset, highlights);
-                  const prevColor =
-                    charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
-                  const nextColor =
-                    charIdx < word.length - 1
-                      ? getCharHighlightColor(sourceOffset + 1, highlights)
-                      : null;
-                  const isStart = color !== null && color !== prevColor;
-                  const isEnd = color !== null && color !== nextColor;
-                  return (
-                    <span
-                      key={charIdx}
-                      data-char-offset={absOffset}
-                      style={{
-                        backgroundColor: color ?? 'transparent',
-                        borderRadius:
-                          isStart && isEnd
-                            ? '3px'
-                            : isStart
-                              ? '3px 0 0 3px'
-                              : isEnd
-                                ? '0 3px 3px 0'
-                                : '0',
-                      }}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
-              </Stack>
-              {wordIndex < words.length - 1 && (
+                  }}
+                  onClick={(e) => handleWordClick(e, word, wordIndex)}
+                  onMouseEnter={(e) => void handleWordMouseEnter(e, word)}
+                  onMouseMove={handleWordMouseMove}
+                >
+                  {word.split('').map((char, charIdx) => {
+                    const absOffset = wordStart + charIdx;
+                    const sourceOffset = absOffset + paragraphStartCharOffset;
+                    const color = getCharHighlightColor(sourceOffset, highlights);
+                    const prevColor =
+                      charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
+                    const nextColor =
+                      charIdx < word.length - 1
+                        ? getCharHighlightColor(sourceOffset + 1, highlights)
+                        : null;
+                    const isStart = color !== null && color !== prevColor;
+                    const isEnd = color !== null && color !== nextColor;
+
+                    return (
+                      <span
+                        key={charIdx}
+                        data-char-offset={absOffset}
+                        style={{
+                          backgroundColor: color ?? 'transparent',
+                          borderRadius:
+                            isStart && isEnd
+                              ? '3px'
+                              : isStart
+                                ? '3px 0 0 3px'
+                                : isEnd
+                                  ? '0 3px 3px 0'
+                                  : '0',
+                        }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </Stack>
+              );
+            }}
+            renderSpace={(wordIndex) => {
+              const { sourceWord, sourceStart } = getSafeWordMeta(wordIndex, '');
+              const wordStart = sourceStart;
+              const wordLength = sourceWord.length;
+
+              return (
                 <span
-                  data-char-offset={wordStart + word.length}
+                  data-char-offset={wordStart + wordLength}
                   style={{
                     backgroundColor:
                       getCharHighlightColor(
-                        wordStart + word.length + paragraphStartCharOffset,
+                        wordStart + wordLength + paragraphStartCharOffset,
                         highlights,
                       ) ?? 'transparent',
                   }}
                 >
                   {' '}
                 </span>
-              )}
-            </span>
-          );
-        })}
+              );
+            }}
+          >
+            {words.join(' ')}
+          </ReaderMarkdown>
+        ) : (
+          words.map((word, wordIndex) => {
+            const { sourceStart } = getSafeWordMeta(wordIndex, word);
+            const wordStart = sourceStart;
+            return (
+              <span key={wordIndex}>
+                <Stack
+                  component="span"
+                  data-word-index={wordIndex}
+                  sx={{
+                    fontSize: `${fontSize}px`,
+                    lineHeight,
+                    display: 'inline',
+                    borderBottom: '1px dotted transparent',
+                    position: 'relative',
+                    ':hover': {
+                      cursor: 'pointer',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        width: 'calc(100% + 13px)',
+                        height: 'calc(100% + 0px)',
+                        top: '1px',
+                        left: '-6px',
+                        borderRadius: '8px',
+                        backgroundColor: '#d3d3d3ab',
+                        zIndex: -1,
+                        '@media (max-width: 500px)': {
+                          display: 'none',
+                        },
+                      },
+                    },
+                  }}
+                  onClick={(e) => handleWordClick(e, word, wordIndex)}
+                  onMouseEnter={(e) => void handleWordMouseEnter(e, word)}
+                  onMouseMove={handleWordMouseMove}
+                >
+                  {word.split('').map((char, charIdx) => {
+                    const absOffset = wordStart + charIdx;
+                    const sourceOffset = absOffset + paragraphStartCharOffset;
+                    const color = getCharHighlightColor(sourceOffset, highlights);
+                    const prevColor =
+                      charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
+                    const nextColor =
+                      charIdx < word.length - 1
+                        ? getCharHighlightColor(sourceOffset + 1, highlights)
+                        : null;
+                    const isStart = color !== null && color !== prevColor;
+                    const isEnd = color !== null && color !== nextColor;
+                    return (
+                      <span
+                        key={charIdx}
+                        data-char-offset={absOffset}
+                        style={{
+                          backgroundColor: color ?? 'transparent',
+                          borderRadius:
+                            isStart && isEnd
+                              ? '3px'
+                              : isStart
+                                ? '3px 0 0 3px'
+                                : isEnd
+                                  ? '0 3px 3px 0'
+                                  : '0',
+                        }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                </Stack>
+                {wordIndex < words.length - 1 && (
+                  <span
+                    data-char-offset={wordStart + word.length}
+                    style={{
+                      backgroundColor:
+                        getCharHighlightColor(
+                          wordStart + word.length + paragraphStartCharOffset,
+                          highlights,
+                        ) ?? 'transparent',
+                    }}
+                  >
+                    {' '}
+                  </span>
+                )}
+              </span>
+            );
+          })
+        )}
       </Typography>
       {hoverTranslation ? (
         <FlyingTooltip text={hoverTranslation} initialPosition={hoverPointer} />

@@ -1,4 +1,5 @@
 import { expect, Page } from '@playwright/test';
+import { isUseMarkdown } from '../src/features/Reader/components/Paragraph/readerRenderFlags';
 
 export const BOOK_TITLE = 'The Great Gatsby';
 export const BOOK_SUBTITLE = 'Then wear the gold hat, if that will move her';
@@ -21,37 +22,26 @@ export const openSeededGatsbyBook = async (page: Page) => {
 };
 
 export const getCriticizingWordLocator = async (page: Page) => {
-  const wasMarked = await page.evaluate(() => {
-    const previous = document.getElementById('e2e-criticizing-word');
-    if (previous) {
-      previous.removeAttribute('id');
+  const orderedSelectors = isUseMarkdown
+    ? ['.conversation-word', '[data-word-index]', 'p span', 'div span']
+    : ['[data-word-index]', '.conversation-word', 'p span', 'div span'];
+
+  for (const selector of orderedSelectors) {
+    const candidate = page
+      .locator(selector)
+      .filter({ hasText: /\bcriticizing\b/i })
+      .first();
+    const exists = (await candidate.count()) > 0;
+    if (!exists) {
+      continue;
     }
 
-    const orderedSelectors = ['[data-word-index]', '.conversation-word', 'p span', 'div span'];
-    const candidates = orderedSelectors.flatMap((selector) =>
-      Array.from(document.querySelectorAll(selector)),
-    );
+    if (await candidate.isVisible()) {
+      return candidate;
+    }
+  }
 
-    const rawTarget = candidates.find((node) => {
-      const text = (node.textContent || '').toLowerCase();
-      if (!text.includes('criticizing')) return false;
-
-      const rect = (node as HTMLElement).getBoundingClientRect();
-      return rect.width > 0 && rect.height > 0;
-    }) as HTMLElement | undefined;
-
-    const target = rawTarget?.closest('[data-word-index], .conversation-word') ?? rawTarget;
-
-    if (!target) return false;
-    target.id = 'e2e-criticizing-word';
-    return true;
-  });
-
-  expect(wasMarked).toBeTruthy();
-
-  const word = page.locator('#e2e-criticizing-word');
-  await expect(word).toBeVisible();
-  return word;
+  throw new Error('Could not find visible criticizing word in reader content.');
 };
 
 export const assertWordHoverHasEffect = async (page: Page) => {
@@ -220,7 +210,7 @@ export const assertCriticizingWordWasSpoken = async (page: Page) => {
 };
 
 export const assertHighlightPopoverVisible = async (page: Page) => {
-  await expect(page.getByRole('button', { name: 'Y' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Y', exact: true })).toBeVisible();
 };
 
 export const enableTranslateOnHover = async (page: Page) => {
