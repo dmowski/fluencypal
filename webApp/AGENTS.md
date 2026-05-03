@@ -36,6 +36,13 @@ Before introducing new top-level folders under `src/`, match existing feature-fi
 - Keep changes consistent with `prettier.config.cjs`.
 - `pnpm lint` is typecheck only (`tsc --noEmit`), so do not assume ESLint auto-enforcement.
 
+## Reader Markdown Flag
+
+- Reader paragraph rendering is controlled by `isUseMarkdown` in `src/features/Reader/components/Paragraph/readerRenderFlags.ts`.
+- `true` enables markdown-aware rendering (`ReaderMarkdown` path); `false` uses regular word-by-word rendering.
+- For Reader behavior changes (hover translate, spacing, highlights, popovers), validate E2E in both modes by toggling the flag and running the relevant Playwright spec(s).
+- After dual-mode validation, restore the default repository value unless the task explicitly changes it.
+
 ## i18n And Content
 
 - Lingui is used for localization.
