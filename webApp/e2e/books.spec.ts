@@ -154,7 +154,7 @@ for (const renderMode of renderModes) {
       await setRenderMarkdown(page, renderMode.isUseMarkdown);
       await closeSettingsPopover(page);
 
-      await clickWheneverWord(page);
+      await selectWheneverWordText(page);
       await assertHighlightPopoverVisible(page);
       await applyYellowHighlight(page);
       await assertWheneverHighlightedYellow(page);

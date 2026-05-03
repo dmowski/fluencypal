@@ -4,10 +4,6 @@ import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 
-type WordRenderContext = {
-  nextWordIndex: number;
-};
-
 export interface ReaderMarkdownWordProps {
   word: string;
   wordIndex: number;
@@ -41,7 +37,7 @@ export interface MarkdownProps {
 const processStringChild = (
   child: string,
   index: number,
-  context: WordRenderContext,
+  startWordIndex: number,
   renderWord?: MarkdownProps['renderWord'],
   renderSpace?: MarkdownProps['renderSpace'],
 ) => {
@@ -52,10 +48,11 @@ const processStringChild = (
   const hasTrailingSpace = /\s$/.test(child);
 
   const rendered: React.ReactNode[] = [];
+  let nextWordIndex = startWordIndex;
 
   // Preserve a leading space (e.g. " criticizing" after an inline element ends)
   if (hasLeadingSpace && words.length > 0) {
-    const spaceIndex = context.nextWordIndex > 0 ? context.nextWordIndex - 1 : 0;
+    const spaceIndex = nextWordIndex > 0 ? nextWordIndex - 1 : 0;
     rendered.push(
       <React.Fragment key={`${index}-leading`}>
         {renderSpace ? renderSpace(spaceIndex) : ' '}
@@ -64,8 +61,8 @@ const processStringChild = (
   }
 
   words.forEach((word, localWordIndex) => {
-    const wordIndex = context.nextWordIndex;
-    context.nextWordIndex += 1;
+    const wordIndex = nextWordIndex;
+    nextWordIndex += 1;
     const isLast = localWordIndex === words.length - 1;
 
     rendered.push(
@@ -83,52 +80,71 @@ const processStringChild = (
     );
   });
 
-  return rendered;
+  return {
+    node: rendered,
+    nextWordIndex,
+  };
 };
 
 const wrapChildrenWithTranslateWrapper = (
   children: React.ReactNode,
-  context: WordRenderContext,
+  startWordIndex: number,
   renderWord?: MarkdownProps['renderWord'],
   renderSpace?: MarkdownProps['renderSpace'],
-): React.ReactNode => {
+): { node: React.ReactNode; nextWordIndex: number } => {
   if (typeof children === 'string') {
-    return processStringChild(children, 0, context, renderWord, renderSpace);
+    return processStringChild(children, 0, startWordIndex, renderWord, renderSpace);
   }
 
   if (Array.isArray(children)) {
-    return children.map((child, index) => {
+    let nextWordIndex = startWordIndex;
+
+    const mappedChildren = children.map((child, index) => {
       if (typeof child === 'string') {
-        return processStringChild(child, index, context, renderWord, renderSpace);
+        const result = processStringChild(child, index, nextWordIndex, renderWord, renderSpace);
+        nextWordIndex = result.nextWordIndex;
+        return result.node;
       }
 
       if (React.isValidElement<{ children?: React.ReactNode }>(child)) {
-        const wrappedChildren = wrapChildrenWithTranslateWrapper(
+        const wrappedResult = wrapChildrenWithTranslateWrapper(
           child.props.children,
-          context,
+          nextWordIndex,
           renderWord,
           renderSpace,
         );
+        nextWordIndex = wrappedResult.nextWordIndex;
 
-        return React.cloneElement(child, undefined, wrappedChildren);
+        return React.cloneElement(child, undefined, wrappedResult.node);
       }
 
       return child;
     });
+
+    return {
+      node: mappedChildren,
+      nextWordIndex,
+    };
   }
 
   if (React.isValidElement<{ children?: React.ReactNode }>(children)) {
-    const wrappedChildren = wrapChildrenWithTranslateWrapper(
+    const wrappedResult = wrapChildrenWithTranslateWrapper(
       children.props.children,
-      context,
+      startWordIndex,
       renderWord,
       renderSpace,
     );
 
-    return React.cloneElement(children, undefined, wrappedChildren);
+    return {
+      node: React.cloneElement(children, undefined, wrappedResult.node),
+      nextWordIndex: wrappedResult.nextWordIndex,
+    };
   }
 
-  return children;
+  return {
+    node: children,
+    nextWordIndex: startWordIndex,
+  };
 };
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -241,15 +257,11 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   renderWord,
   renderSpace,
 }) => {
-  const wordRenderContext: WordRenderContext = {
-    nextWordIndex: 0,
-  };
-
   const styleComponents = markdownComponents;
 
   const renderWordsDirectly = words && words.length > 0;
   const wrapNodeChildren = (nodeChildren: React.ReactNode) =>
-    wrapChildrenWithTranslateWrapper(nodeChildren, wordRenderContext, renderWord, renderSpace);
+    wrapChildrenWithTranslateWrapper(nodeChildren, 0, renderWord, renderSpace).node;
 
   return (
     <Stack
@@ -330,7 +342,6 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
             overrides: {
               ...styleComponents,
               p: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
-              span: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
             },
           }}
         >

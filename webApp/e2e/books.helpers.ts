@@ -375,27 +375,40 @@ export const assertOnlyWheneverHighlightedYellow = async (page: Page) => {
         const candidates = Array.from(
           document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
         );
-
         const wheneverHost = candidates.find((entry) =>
           (entry.textContent ?? '').toLowerCase().includes('whenever'),
         );
         if (!wheneverHost) return false;
 
-        const charSpans = Array.from(
+        const paragraphRoot = wheneverHost.closest('.MuiTypography-root') as HTMLElement | null;
+        if (!paragraphRoot) return false;
+
+        const wheneverChars = Array.from(
           wheneverHost.querySelectorAll<HTMLElement>('[data-char-offset]'),
         );
-        if (!charSpans.length) return false;
-
-        const rendered = charSpans.map((entry) => entry.textContent ?? '').join('');
+        const rendered = wheneverChars.map((entry) => entry.textContent ?? '').join('');
         const start = rendered.toLowerCase().indexOf('whenever');
         if (start < 0) return false;
 
-        return charSpans.every((entry, idx) => {
-          const color = window.getComputedStyle(entry).backgroundColor;
-          const isYellow = color.includes('255, 224, 102');
-          const isInsideWhenever = idx >= start && idx < start + 'whenever'.length;
-          return isInsideWhenever ? isYellow : !isYellow;
-        });
+        const expectedOffsets = wheneverChars
+          .slice(start, start + 'whenever'.length)
+          .map((entry) => Number(entry.getAttribute('data-char-offset') ?? '-1'));
+
+        const yellowOffsets = Array.from(
+          paragraphRoot.querySelectorAll<HTMLElement>('[data-char-offset]'),
+        )
+          .filter((entry) => window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102'))
+          .map((entry) => Number(entry.getAttribute('data-char-offset') ?? '-1'))
+          .filter((offset) => !Number.isNaN(offset));
+
+        if (yellowOffsets.length !== expectedOffsets.length) {
+          return false;
+        }
+
+        const actualSorted = [...yellowOffsets].sort((a, b) => a - b);
+        const expectedSorted = [...expectedOffsets].sort((a, b) => a - b);
+
+        return actualSorted.every((offset, idx) => offset === expectedSorted[idx]);
       }),
     )
     .toBeTruthy();

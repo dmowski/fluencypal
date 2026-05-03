@@ -91,6 +91,40 @@ const ReaderParagraphBase = ({
     };
   };
 
+  const getClickedElementCoreCharRange = (element: HTMLElement, rawWord: string) => {
+    const charSpans = Array.from(element.querySelectorAll<HTMLElement>('[data-char-offset]'));
+    if (!charSpans.length) {
+      return null;
+    }
+
+    const renderedText = charSpans.map((entry) => entry.textContent ?? '').join('');
+    const { normalizedWord } = getCoreWordSelectionMeta(rawWord);
+    const startInRendered = renderedText.toLowerCase().indexOf(normalizedWord.toLowerCase());
+
+    if (startInRendered < 0) {
+      return null;
+    }
+
+    const endInRenderedExclusive = startInRendered + normalizedWord.length;
+    const startElement = charSpans[startInRendered];
+    const endElement = charSpans[endInRenderedExclusive - 1];
+    if (!startElement || !endElement) {
+      return null;
+    }
+
+    const startOffset = Number(startElement.getAttribute('data-char-offset'));
+    const endOffset = Number(endElement.getAttribute('data-char-offset')) + 1;
+    if (Number.isNaN(startOffset) || Number.isNaN(endOffset)) {
+      return null;
+    }
+
+    return {
+      normalizedWord,
+      startOffset,
+      endOffset,
+    };
+  };
+
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     const sel = window.getSelection();
@@ -194,8 +228,10 @@ const ReaderParagraphBase = ({
       return;
     }
 
+    const element = e.currentTarget as HTMLElement;
+    const clickedCharRange = getClickedElementCoreCharRange(element, word);
     const coreSelectionMeta = getCoreWordSelectionMeta(word);
-    const clickedWordText = coreSelectionMeta.normalizedWord;
+    const clickedWordText = clickedCharRange?.normalizedWord ?? coreSelectionMeta.normalizedWord;
 
     playText(clickedWordText);
 
@@ -203,14 +239,16 @@ const ReaderParagraphBase = ({
     e.preventDefault();
     e.stopPropagation();
 
-    const { sourceStart } = getSafeWordMeta({
+    const fallbackWordMeta = getSafeWordMeta({
       wordIndex,
       fallbackWord: word,
       words,
       wordCharOffsets,
     });
-    const wordStart = sourceStart + coreSelectionMeta.startOffset;
-    const wordEnd = sourceStart + coreSelectionMeta.endOffsetExclusive;
+    const fallbackWordStart = fallbackWordMeta.sourceStart + coreSelectionMeta.startOffset;
+    const fallbackWordEnd = fallbackWordMeta.sourceStart + coreSelectionMeta.endOffsetExclusive;
+    const wordStart = clickedCharRange?.startOffset ?? fallbackWordStart;
+    const wordEnd = clickedCharRange?.endOffset ?? fallbackWordEnd;
 
     const selection = createSelectionFromRange({
       paragraphIndex,
@@ -229,7 +267,6 @@ const ReaderParagraphBase = ({
     }
 
     // Get the element's bounding rect for popover positioning
-    const element = e.currentTarget as HTMLElement;
     const rect = element.getBoundingClientRect();
     onSelection({
       paragraphIndex,
