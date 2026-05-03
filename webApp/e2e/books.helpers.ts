@@ -278,7 +278,7 @@ const selectTextPhraseAndTriggerMouseUp = async (page: Page, phrase: string) => 
         const start = concatenated.length;
         concatenated += content;
         textNodes.push({ node: current, start, end: concatenated.length });
-      };
+      }
 
       const phraseIndex = concatenated.toLowerCase().indexOf(targetPhrase.toLowerCase());
       if (phraseIndex < 0) {
@@ -286,7 +286,9 @@ const selectTextPhraseAndTriggerMouseUp = async (page: Page, phrase: string) => 
       }
 
       const phraseEndExclusive = phraseIndex + targetPhrase.length;
-      const startSegment = textNodes.find((segment) => segment.start <= phraseIndex && phraseIndex < segment.end);
+      const startSegment = textNodes.find(
+        (segment) => segment.start <= phraseIndex && phraseIndex < segment.end,
+      );
       const endSegment = textNodes.find(
         (segment) => segment.start < phraseEndExclusive && phraseEndExclusive <= segment.end,
       );
