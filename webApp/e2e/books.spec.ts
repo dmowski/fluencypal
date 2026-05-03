@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import {
   assertCriticizingWordWasSpoken,
   assertHighlightPopoverVisible,
+  assertSpaceBetweenLikeAndCriticizing,
   assertTranslatedTextVisible,
   assertVoicePreviewWasPlayed,
   assertWordHoverHasEffect,
@@ -59,4 +60,9 @@ test('translate on hover sends one request and shows tooltip; click shows popove
   await clickCriticizingWord(page);
   await assertHighlightPopoverVisible(page);
   await assertTranslatedTextVisible(page, 'критиковать');
+});
+
+test('reader renders a space between "like" and "criticizing"', async ({ page }) => {
+  await openSeededGatsbyBook(page);
+  await assertSpaceBetweenLikeAndCriticizing(page);
 });

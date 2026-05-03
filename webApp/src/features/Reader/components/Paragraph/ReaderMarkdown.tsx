@@ -48,26 +48,46 @@ const processStringChild = (
   // markdown-to-jsx children can include leading/trailing/multiple spaces;
   // keep indexing stable by only creating tokens for non-whitespace words.
   const words = child.match(/\S+/g) ?? [];
-  return words.map((word, localWordIndex) => {
+  const hasLeadingSpace = /^\s/.test(child);
+  const hasTrailingSpace = /\s$/.test(child);
+
+  const rendered: React.ReactNode[] = [];
+
+  // Preserve a leading space (e.g. " criticizing" after an inline element ends)
+  if (hasLeadingSpace && words.length > 0) {
+    const spaceIndex = context.nextWordIndex > 0 ? context.nextWordIndex - 1 : 0;
+    rendered.push(
+      <React.Fragment key={`${index}-leading`}>
+        {renderSpace ? renderSpace(spaceIndex) : ' '}
+      </React.Fragment>,
+    );
+  }
+
+  words.forEach((word, localWordIndex) => {
     const wordIndex = context.nextWordIndex;
     context.nextWordIndex += 1;
+    const isLast = localWordIndex === words.length - 1;
 
-    return (
+    rendered.push(
       <span key={`${index}-${localWordIndex}`}>
         {renderWord ? (
-          renderWord({
-            word,
-            wordIndex,
-          })
+          renderWord({ word, wordIndex })
         ) : (
           <span className="conversation-word" data-word-index={wordIndex}>
             {word}
           </span>
         )}
-        {localWordIndex < words.length - 1 ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
-      </span>
+        {/* Space between words within this chunk, or trailing space when the original string ended with whitespace */}
+        {!isLast || hasTrailingSpace
+          ? renderSpace
+            ? renderSpace(wordIndex)
+            : ' '
+          : null}
+      </span>,
     );
   });
+
+  return rendered;
 };
 
 const wrapChildrenWithTranslateWrapper = (

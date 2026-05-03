@@ -2,6 +2,8 @@
 
 ## Reader helper?
 
+Make flying tooltip single on the app. Reuse approach of highlights popover. Render only once on Reader
+
 - How to handle images, italic font?
 
 - Share books, but not settings

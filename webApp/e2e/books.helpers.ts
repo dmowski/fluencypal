@@ -241,3 +241,15 @@ export const mockSingleTranslation = async (page: Page, translatedText: string) 
 export const assertTranslatedTextVisible = async (page: Page, text: string) => {
   await expect(page.getByText(text, { exact: true }).first()).toBeVisible();
 };
+
+export const assertSpaceBetweenLikeAndCriticizing = async (page: Page) => {
+  // Find the paragraph containing both words and assert a space exists between them
+  const paragraph = page.locator('p').filter({ hasText: /feel like/i }).filter({ hasText: /criticizing/i }).first();
+  await expect(paragraph).toBeVisible();
+
+  const paragraphText = await paragraph.evaluate((el) => el.textContent ?? '');
+  // Strip markdown symbols (they appear literally in plain-text render mode), then normalize whitespace
+  const stripped = paragraphText.replace(/[*_~`]/g, '');
+  const normalized = stripped.replace(/\s+/g, ' ');
+  expect(normalized).toMatch(/like criticizing/);
+};
