@@ -27,7 +27,10 @@ const extractMarkdownImageHrefs = (paragraph: string): string[] => {
 
 const stripMarkdownImages = (paragraph: string): string => {
   MARKDOWN_IMAGE_REGEX.lastIndex = 0;
-  return paragraph.replace(MARKDOWN_IMAGE_REGEX, ' ').replace(/\s{2,}/g, ' ').trim();
+  return paragraph
+    .replace(MARKDOWN_IMAGE_REGEX, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 };
 
 export function isFitInPage({

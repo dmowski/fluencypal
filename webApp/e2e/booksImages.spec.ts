@@ -126,10 +126,12 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
     const savedBook = books.find((book) => {
       if (!book || typeof book !== 'object') return false;
       return (book as { title?: string }).title === 'Supercommunicators';
-    }) as {
-      imagesByHref?: Record<string, string>;
-      imageAspectRatioByHref?: Record<string, number>;
-    } | undefined;
+    }) as
+      | {
+          imagesByHref?: Record<string, string>;
+          imageAspectRatioByHref?: Record<string, number>;
+        }
+      | undefined;
 
     const imagesByHref = savedBook?.imagesByHref ?? {};
     const imageAspectRatioByHref = savedBook?.imageAspectRatioByHref ?? {};

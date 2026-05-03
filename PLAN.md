@@ -2,6 +2,8 @@
 
 ## Reader helper?
 
+- Markdown: Make h1-6 the same size as content, just different font weight
+
 - Handle images.
 
 We are going to implement supports of images from the book.

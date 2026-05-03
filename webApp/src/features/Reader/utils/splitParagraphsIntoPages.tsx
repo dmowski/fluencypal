@@ -94,12 +94,15 @@ export const splitIntoPages = ({
     return best;
   };
 
+  const markdownImagePattern = /!\[.*?\]\(.*?\)/;
+
   bookParagraphs.forEach((paragraph, sourceParagraphIndex) => {
     let remainingWords = paragraph;
     let remainingStartCharOffset = 0;
 
     while (remainingWords.length > 0) {
       const fullParagraphText = remainingWords.join(' ');
+      const containsImage = markdownImagePattern.test(fullParagraphText);
       const fitsAsWhole = checkFits([...currentPageText, fullParagraphText]);
 
       if (fitsAsWhole) {
@@ -109,6 +112,23 @@ export const splitIntoPages = ({
           sourceStartCharOffset: remainingStartCharOffset,
         });
         currentPageText.push(fullParagraphText);
+        break;
+      }
+
+      // Image paragraphs must not be split — flush current page and place whole on next.
+      if (containsImage) {
+        if (currentPage.length > 0) {
+          pushCurrentPage();
+          continue;
+        }
+        // Already on empty page — force the whole image paragraph as-is.
+        currentPage.push({
+          words: remainingWords,
+          sourceParagraphIndex,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
+        currentPageText.push(fullParagraphText);
+        pushCurrentPage();
         break;
       }
 
