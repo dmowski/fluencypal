@@ -3,7 +3,7 @@ import { Book } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
 import { useMemo } from 'react';
 import { PaginationPanel } from './PaginationButtons';
-import { ReaderParagraph } from './ReaderParagraph';
+import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
 import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
 import { useReaderSettings } from '../hooks/useReaderSettings';

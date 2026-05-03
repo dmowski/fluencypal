@@ -6,7 +6,7 @@ import {
 } from '../utils/readerParagraphTranslationHelpers';
 import { getHighlightAtCharRange } from '../utils/readerParagraphHelpers';
 import { HighlightedText } from '../model/types';
-import { ReaderParagraphSelectionPayload } from '../components/ReaderParagraph';
+import { ReaderParagraphSelectionPayload } from '../components/Paragraph/ReaderParagraph';
 import { NativeLangCode } from '@/libs/language/type';
 
 interface ActivePopoverState {

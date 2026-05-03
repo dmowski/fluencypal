@@ -13,7 +13,7 @@ This file applies to `webApp/src/features/Reader/**`.
 ## Key Files
 
 - `components/Reader.tsx`: main reading UI, paging, and paragraph rendering.
-- `components/ReaderParagraph.tsx`: text selection, hover translation, and highlight interactions.
+- `components/Paragraph/ReaderParagraph.tsx`: text selection, hover translation, and highlight interactions.
 - `components/ReaderSpeechSettingsButton.tsx`: speech + reader visual settings panel.
 - `hooks/useBooks.tsx`: books source of truth, persistence sync, and highlight mutations.
 - `hooks/useReaderSettings.ts`: persisted reader/speech preferences.

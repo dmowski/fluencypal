@@ -5,7 +5,7 @@ import { useLingui } from '@lingui/react';
 import { Wrench } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useReaderSettings } from '../hooks/useReaderSettings';
-import { ReaderParagraph } from './ReaderParagraph';
+import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import { isFitInPage } from '../utils/isFitInPage';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
