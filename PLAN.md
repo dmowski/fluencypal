@@ -3,6 +3,9 @@
 ## Reader helper?
 
 - How to handle images, italic font?
+
+Refactor E2E test by extracting helper functions to a separate modules. and make end test file shorter
+
 - Share books, but not settings
 
 ### EXTREME MVP:

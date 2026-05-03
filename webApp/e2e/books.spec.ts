@@ -1,19 +1,62 @@
 import { expect, test } from '@playwright/test';
+import {
+  assertCriticizingWordWasSpoken,
+  assertHighlightPopoverVisible,
+  assertTranslatedTextVisible,
+  assertVoicePreviewWasPlayed,
+  assertWordHoverHasEffect,
+  clickCriticizingWord,
+  closeSettingsPopover,
+  enableTranslateOnHover,
+  hoverCriticizingWord,
+  installSpeechMock,
+  mockSingleTranslation,
+  openSeededGatsbyBook,
+  openSettingsPopover,
+  selectRussianTranslateTarget,
+} from './books.helpers';
 
-test('opens seeded Gatsby book and shows subtitle and first line', async ({ page }) => {
-  await page.goto('/book');
+test('reader shows criticizing word and hover effect', async ({ page }) => {
+  await openSeededGatsbyBook(page);
+  await assertWordHoverHasEffect(page);
+});
 
-  const title = 'The Great Gatsby';
-  const subtitle = 'Then wear the gold hat, if that will move her';
-  const firstLinePattern =
-    /In my younger and more vulnerable years my father gave me some advice that I['’]ve been turning over in my mind ever since\./;
+test('reader settings voice plays preview and clicking word plays and opens highlight popover', async ({
+  page,
+}) => {
+  await installSpeechMock(page);
+  await openSeededGatsbyBook(page);
 
-  const gatsbyCardTitle = page.getByRole('heading', { name: title, level: 4 });
-  await expect(gatsbyCardTitle).toBeVisible();
+  await openSettingsPopover(page);
+  await page.getByLabel('Voice').click();
+  await page.getByRole('option', { name: 'Mock English Voice' }).click();
+  await closeSettingsPopover(page);
 
-  await gatsbyCardTitle.click();
+  await assertVoicePreviewWasPlayed(page);
+  await clickCriticizingWord(page);
+  await assertCriticizingWordWasSpoken(page);
+  await assertHighlightPopoverVisible(page);
+});
 
-  await expect(page.getByText(subtitle, { exact: true })).toBeVisible();
+test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({
+  page,
+}) => {
+  await installSpeechMock(page);
 
-  await expect(page.locator('p').filter({ hasText: firstLinePattern }).first()).toBeVisible();
+  const translationSpy = await mockSingleTranslation(page, 'критиковать');
+
+  await openSeededGatsbyBook(page);
+  await openSettingsPopover(page);
+  await enableTranslateOnHover(page);
+  await selectRussianTranslateTarget(page);
+  await closeSettingsPopover(page);
+
+  await hoverCriticizingWord(page);
+
+  await assertTranslatedTextVisible(page, 'критиковать');
+  await expect.poll(() => translationSpy.getCount()).toBe(1);
+
+  await clickCriticizingWord(page);
+  await assertHighlightPopoverVisible(page);
+  await assertTranslatedTextVisible(page, 'критиковать');
 });
