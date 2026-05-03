@@ -1,10 +1,10 @@
 # Live document with short/long term ideas
 
-## Reader helper?
+## Reader
 
 - Handle images: I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width to fit the page? (It's visible when screen is 1400px / 700px. The first cover image is not fit into view port.)
 
-### Navigation
+### Reader: Navigation
 
 On top of page, show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page. Update all necessary part to allow it. For now we don't have info about navigation.
 
@@ -12,7 +12,7 @@ For popup bg use this color #FFF3DD with #222 text color. Navigation can be nest
 
 (Write e2e to check it with existing test book).
 
-### Sharing
+### Reader: Sharing
 
 - Share books, but not settings
 
