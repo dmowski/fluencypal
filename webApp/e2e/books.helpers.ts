@@ -397,7 +397,9 @@ export const assertOnlyWheneverHighlightedYellow = async (page: Page) => {
         const yellowOffsets = Array.from(
           paragraphRoot.querySelectorAll<HTMLElement>('[data-char-offset]'),
         )
-          .filter((entry) => window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102'))
+          .filter((entry) =>
+            window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102'),
+          )
           .map((entry) => Number(entry.getAttribute('data-char-offset') ?? '-1'))
           .filter((offset) => !Number.isNaN(offset));
 
