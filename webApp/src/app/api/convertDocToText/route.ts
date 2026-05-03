@@ -82,16 +82,32 @@ const extractImageDataUrlByHref = async (parsed: unknown): Promise<Record<string
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
+  const requestStart = Date.now();
+
   try {
+    console.info('[convertDocToText] request started', {
+      method: request.method,
+      contentType: request.headers.get('content-type') || null,
+      contentLength: request.headers.get('content-length') || null,
+    });
+
+    console.info('[convertDocToText] parsing multipart form-data');
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
 
     if (!file) {
+      console.warn('[convertDocToText] validation failed: missing file field');
       const response: ConvertDocToTextResponse = {
         error: 'File not found',
       };
       return Response.json(response, { status: 400 });
     }
+
+    console.info('[convertDocToText] file received', {
+      fileName: file.name,
+      fileType: file.type,
+      fileSizeBytes: file.size,
+    });
 
     const fileName = file.name.toLowerCase();
     const isEpubType =
@@ -100,6 +116,10 @@ export async function POST(request: Request) {
       file.type === 'application/octet-stream';
 
     if (!isEpubType) {
+      console.warn('[convertDocToText] validation failed: unsupported file type', {
+        fileName: file.name,
+        fileType: file.type,
+      });
       const response: ConvertDocToTextResponse = {
         error: 'Only EPUB files are supported',
       };
@@ -108,18 +128,30 @@ export async function POST(request: Request) {
 
     const maxAllowedFileBytes = 50 * 1024 * 1024;
     if (file.size > maxAllowedFileBytes) {
+      console.warn('[convertDocToText] validation failed: file too large', {
+        fileSizeBytes: file.size,
+        maxAllowedFileBytes,
+      });
       const response: ConvertDocToTextResponse = {
         error: 'EPUB file is too large. Please use a file up to 50MB.',
       };
       return Response.json(response, { status: 400 });
     }
 
+    console.info('[convertDocToText] reading file into buffer');
     const arrayBuffer = await file.arrayBuffer();
+
+    console.info('[convertDocToText] parsing epub');
     const parsed = await parseEpub(Buffer.from(arrayBuffer), {
       type: 'buffer',
       expand: true,
     });
 
+    console.info('[convertDocToText] epub parsed', {
+      sectionCount: parsed.sections.length,
+    });
+
+    console.info('[convertDocToText] converting sections to markdown');
     const markdownSections = parsed.sections
       .map((section) => section.toMarkdown())
       .map((value) => value.trim())
@@ -128,9 +160,18 @@ export async function POST(request: Request) {
       .join('\n\n')
       .split(`<?xml version='1.0' encoding='utf-8'?>`)
       .join('\n');
+
+    console.info('[convertDocToText] extracting embedded images');
     const imageDataUrlByHref = await extractImageDataUrlByHref(parsed);
 
+    console.info('[convertDocToText] extraction results', {
+      markdownChars: markdown.length,
+      markdownSectionsCount: markdownSections.length,
+      embeddedImagesCount: Object.keys(imageDataUrlByHref).length,
+    });
+
     if (!markdown) {
+      console.warn('[convertDocToText] extraction failed: markdown is empty');
       const response: ConvertDocToTextResponse = {
         error: 'Could not extract text from this EPUB.',
       };
@@ -146,6 +187,9 @@ export async function POST(request: Request) {
     const previewText = markdown.slice(0, METADATA_PREVIEW_CHARS).trim();
     if (previewText) {
       try {
+        console.info('[convertDocToText] extracting metadata with AI', {
+          previewChars: previewText.length,
+        });
         const parsedMetadata = await parseStrictJson({
           json: (
             await generateTextWithAi({
@@ -181,9 +225,16 @@ export async function POST(request: Request) {
           subtitle: parsedMetadata.subtitle.trim(),
           author: parsedMetadata.author.trim(),
         };
+        console.info('[convertDocToText] metadata extracted', {
+          hasTitle: Boolean(metadata.title),
+          hasSubtitle: Boolean(metadata.subtitle),
+          hasAuthor: Boolean(metadata.author),
+        });
       } catch (metadataError) {
-        console.error('Book metadata extraction error', metadataError);
+        console.error('[convertDocToText] book metadata extraction error', metadataError);
       }
+    } else {
+      console.info('[convertDocToText] metadata extraction skipped: empty preview text');
     }
 
     const response: ConvertDocToTextResponse = {
@@ -192,9 +243,17 @@ export async function POST(request: Request) {
       imageDataUrlByHref,
     };
 
+    console.info('[convertDocToText] request succeeded', {
+      durationMs: Date.now() - requestStart,
+      markdownChars: markdown.length,
+    });
+
     return Response.json(response);
   } catch (error) {
-    console.error('convertDocToText route error', error);
+    console.error('[convertDocToText] route error', {
+      durationMs: Date.now() - requestStart,
+      error,
+    });
     const response: ConvertDocToTextResponse = {
       error: 'Failed to convert EPUB to text. Please try another file.',
     };
