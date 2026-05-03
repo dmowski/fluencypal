@@ -4,40 +4,115 @@ import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 
-export interface MarkdownProps {
-  children: string;
-  onWordClick?: (word: string, element: HTMLElement) => void;
-}
-
-const processStringChild = (child: string, index: number) => {
-  const words = child.split(' ');
-  return words.map((word, wordIndex) => (
-    <span key={`${index}-${wordIndex}`}>
-      <span className="conversation-word">{word}</span>
-      {wordIndex < words.length - 1 ? ' ' : ''}
-    </span>
-  ));
+type WordRenderContext = {
+  nextWordIndex: number;
 };
 
-const wrapChildrenWithTranslateWrapper = (children: React.ReactNode): React.ReactNode => {
-  const isChildrenIsArray = Array.isArray(children);
-  if (!isChildrenIsArray) {
-    const isString = typeof children === 'string';
-    if (isString) {
-      return processStringChild(children, 0);
-    }
+export interface ReaderMarkdownWordProps {
+  word: string;
+  wordIndex: number;
+}
 
-    return children;
+export interface MarkdownProps {
+  children: string;
+  words?: string[];
+  onWordClick?: (
+    word: string,
+    element: HTMLElement,
+    wordIndex: number,
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  onWordMouseEnter?: (
+    word: string,
+    element: HTMLElement,
+    wordIndex: number,
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  onWordMouseMove?: (
+    word: string,
+    element: HTMLElement,
+    wordIndex: number,
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  renderWord?: (props: ReaderMarkdownWordProps) => React.ReactNode;
+  renderSpace?: (wordIndex: number) => React.ReactNode;
+}
+
+const processStringChild = (
+  child: string,
+  index: number,
+  context: WordRenderContext,
+  renderWord?: MarkdownProps['renderWord'],
+  renderSpace?: MarkdownProps['renderSpace'],
+) => {
+  // markdown-to-jsx children can include leading/trailing/multiple spaces;
+  // keep indexing stable by only creating tokens for non-whitespace words.
+  const words = child.match(/\S+/g) ?? [];
+  return words.map((word, localWordIndex) => {
+    const wordIndex = context.nextWordIndex;
+    context.nextWordIndex += 1;
+
+    return (
+      <span key={`${index}-${localWordIndex}`}>
+        {renderWord ? (
+          renderWord({
+            word,
+            wordIndex,
+          })
+        ) : (
+          <span className="conversation-word" data-word-index={wordIndex}>
+            {word}
+          </span>
+        )}
+        {localWordIndex < words.length - 1 ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
+      </span>
+    );
+  });
+};
+
+const wrapChildrenWithTranslateWrapper = (
+  children: React.ReactNode,
+  context: WordRenderContext,
+  renderWord?: MarkdownProps['renderWord'],
+  renderSpace?: MarkdownProps['renderSpace'],
+): React.ReactNode => {
+  if (typeof children === 'string') {
+    return processStringChild(children, 0, context, renderWord, renderSpace);
   }
 
-  const processedChildren = children.map((child, index) => {
-    if (typeof child === 'string') {
-      return processStringChild(child, index);
-    }
-    return child;
-  });
+  if (Array.isArray(children)) {
+    return children.map((child, index) => {
+      if (typeof child === 'string') {
+        return processStringChild(child, index, context, renderWord, renderSpace);
+      }
 
-  return processedChildren;
+      if (React.isValidElement<{ children?: React.ReactNode }>(child)) {
+        const wrappedChildren = wrapChildrenWithTranslateWrapper(
+          child.props.children,
+          context,
+          renderWord,
+          renderSpace,
+        );
+
+        return React.cloneElement(child, undefined, wrappedChildren);
+      }
+
+      return child;
+    });
+  }
+
+  if (React.isValidElement<{ children?: React.ReactNode }>(children)) {
+    const wrappedChildren = wrapChildrenWithTranslateWrapper(
+      children.props.children,
+      context,
+      renderWord,
+      renderSpace,
+    );
+
+    return React.cloneElement(children, undefined, wrappedChildren);
+  }
+
+  return children;
 };
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -77,8 +152,8 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   h5: ({ children }) => <Typography variant="h5">{children}</Typography>,
   h6: ({ children }) => <Typography variant="h6">{children}</Typography>,
 
-  p: ({ children }) => <span>{wrapChildrenWithTranslateWrapper(children)}</span>,
-  span: ({ children }) => <span>{wrapChildrenWithTranslateWrapper(children)}</span>,
+  p: ({ children }) => <span>{children}</span>,
+  span: ({ children }) => <span>{children}</span>,
 
   a: ({ href, children }) => (
     <Link href={href} target="_blank">
@@ -141,19 +216,38 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   img: (props) => <img {...props} style={{ maxWidth: '90%' }} />,
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick }) => {
+export const ReaderMarkdown: React.FC<MarkdownProps> = ({
+  children,
+  words,
+  onWordClick,
+  onWordMouseEnter,
+  onWordMouseMove,
+  renderWord,
+  renderSpace,
+}) => {
+  const wordRenderContext: WordRenderContext = {
+    nextWordIndex: 0,
+  };
+
   const styleComponents = markdownComponents;
+
+  const renderWordsDirectly = words && words.length > 0;
+  const wrapNodeChildren = (nodeChildren: React.ReactNode) =>
+    wrapChildrenWithTranslateWrapper(nodeChildren, wordRenderContext, renderWord, renderSpace);
 
   return (
     <Stack
+      component="div"
       sx={{
-        '.conversation-word': onWordClick
-          ? {
-              ':hover': {
-                //
-              },
-            }
-          : {},
+        display: 'inline',
+        '.conversation-word':
+          onWordClick || onWordMouseEnter
+            ? {
+                ':hover': {
+                  //
+                },
+              }
+            : {},
       }}
       onMouseDown={
         onWordClick
@@ -162,13 +256,73 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick }) => 
               if (target.classList.contains('conversation-word')) {
                 const word = target.textContent || '';
                 const element = target;
-                onWordClick(word.trim(), element);
+                const wordIndex = Number(element.dataset.wordIndex);
+                onWordClick(word.trim(), element, Number.isNaN(wordIndex) ? 0 : wordIndex, e);
               }
             }
           : undefined
       }
+      onMouseOver={
+        onWordMouseEnter
+          ? (e) => {
+              const target = e.target as HTMLElement;
+              const element = target.closest('.conversation-word') as HTMLElement | null;
+              if (!element) return;
+
+              const relatedTarget = e.relatedTarget as Node | null;
+              if (relatedTarget && element.contains(relatedTarget)) {
+                return;
+              }
+
+              const word = element.textContent || '';
+              const wordIndex = Number(element.dataset.wordIndex);
+              onWordMouseEnter(word.trim(), element, Number.isNaN(wordIndex) ? 0 : wordIndex, e);
+            }
+          : undefined
+      }
+      onMouseMove={
+        onWordMouseMove
+          ? (e) => {
+              const target = e.target as HTMLElement;
+              const element = target.closest('.conversation-word') as HTMLElement | null;
+              if (!element) return;
+
+              const word = element.textContent || '';
+              const wordIndex = Number(element.dataset.wordIndex);
+              onWordMouseMove(word.trim(), element, Number.isNaN(wordIndex) ? 0 : wordIndex, e);
+            }
+          : undefined
+      }
     >
-      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+      {renderWordsDirectly ? (
+        words.map((word, wordIndex) => (
+          <span key={wordIndex}>
+            {renderWord ? (
+              renderWord({ word, wordIndex })
+            ) : (
+              <span className="conversation-word" data-word-index={wordIndex}>
+                {word}
+              </span>
+            )}
+            {wordIndex < words.length - 1 ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
+          </span>
+        ))
+      ) : (
+        <MarkdownTool
+          options={{
+            forceBlock: true,
+            overrides: {
+              ...styleComponents,
+              p: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
+              span: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
+            },
+          }}
+        >
+          {children}
+        </MarkdownTool>
+      )}
     </Stack>
   );
 };
+
+export const Markdown = ReaderMarkdown;

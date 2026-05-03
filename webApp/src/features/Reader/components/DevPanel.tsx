@@ -59,6 +59,8 @@ export const DevPanel = () => {
 
 const DevPanelContent = () => {
   const readerSettings = useReaderSettings();
+  const width = 400;
+  const height = 600;
   const [tab, setTab] = useState<'isFit'>('isFit');
   const [text, setText] = useState(DEFAULT_DEV_TEXT);
 
@@ -71,7 +73,7 @@ const DevPanelContent = () => {
   const fits = useMemo(() => {
     return isFitInPage({
       paragraphs,
-      settings: readerSettings,
+      settings: { ...readerSettings, contentHeight: height, contentWidth: width },
     });
   }, [paragraphs, readerSettings]);
 
@@ -153,9 +155,9 @@ const DevPanelContent = () => {
           >
             <Stack
               sx={{
-                width: `${readerSettings.contentWidth}px`,
+                width: `${width}px`,
                 boxShadow: fits ? '0 0 10px 5px #86efac' : '0 0 10px 5px #fca5a5',
-                height: `${readerSettings.contentHeight}px`,
+                height: `${height}px`,
                 overflow: 'hidden',
                 backgroundColor: '#F4E1C6',
                 color: '#000',
