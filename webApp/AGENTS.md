@@ -8,7 +8,9 @@ Run the smallest relevant checks before finishing:
 
 - Always after TypeScript changes: `pnpm lint`
 - For unit-level logic/components: `pnpm test:unit`
-- For end-to-end behavior changes: `pnpm test:e2e` (or targeted Playwright spec)
+- For end-to-end behavior changes: run targeted Playwright specs and do not skip e2e.
+  - Reader behavior changes: `pnpm test:e2e e2e/books.spec.ts`
+  - Other feature behavior changes: run the nearest targeted spec(s)
 
 Prefer targeted tests first. Run full `pnpm test` only when cross-cutting behavior changed.
 

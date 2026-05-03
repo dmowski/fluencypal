@@ -18,6 +18,8 @@ When e2e is written, we can start implementing image supports. I will describe m
 
 For this create a separate e2e tests called "booksImages.spec.ts",
 
+Update agents.md (Reader folder)
+
 - Add book UX: drag and drop
 
 - Share books, but not settings
