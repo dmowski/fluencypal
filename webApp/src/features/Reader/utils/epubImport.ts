@@ -1,9 +1,7 @@
-import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
 import JSZip from 'jszip';
 import TurndownService from 'turndown';
 
 export const MAX_EPUB_FILE_SIZE = 50 * 1024 * 1024;
-const METADATA_PREVIEW_CHARS = 1_200;
 
 const IMAGE_EXT_TO_MIME: Record<string, string> = {
   '.png': 'image/png',
@@ -102,9 +100,95 @@ const getElementsByTag = (root: Document | Element, tag: string): Element[] => {
   return Array.from(root.getElementsByTagName(tag));
 };
 
+const normalizeText = (value: string | null | undefined): string =>
+  (value || '').replace(/\s+/g, ' ').trim();
+
+const splitTitleAndSubtitle = (title: string): { title: string; subtitle: string } => {
+  const delimiters = [' - ', ': ', ' | '];
+
+  for (const delimiter of delimiters) {
+    if (!title.includes(delimiter)) continue;
+    const [mainTitle, ...rest] = title.split(delimiter);
+    const subtitle = rest.join(delimiter).trim();
+    if (mainTitle.trim() && subtitle) {
+      return {
+        title: mainTitle.trim(),
+        subtitle,
+      };
+    }
+  }
+
+  return {
+    title,
+    subtitle: '',
+  };
+};
+
+const extractMetadataFromOpf = (
+  opfDoc: Document,
+): { title: string; subtitle: string; author: string } => {
+  const metadataNode = getFirstElementByTag(opfDoc, 'metadata');
+  const sourceNode = metadataNode || opfDoc;
+
+  const titleElements = getElementsByTag(sourceNode, 'title');
+  const creatorElements = getElementsByTag(sourceNode, 'creator');
+  const subtitleElements = getElementsByTag(sourceNode, 'subtitle');
+  const metaElements = getElementsByTag(sourceNode, 'meta');
+
+  const mainTitleFromTitleTag = normalizeText(titleElements[0]?.textContent);
+  const author = normalizeText(creatorElements[0]?.textContent);
+
+  const subtitleByRefine = (() => {
+    for (const meta of metaElements) {
+      const property = normalizeText(meta.getAttribute('property'));
+      const refines = normalizeText(meta.getAttribute('refines'));
+      const value = normalizeText(meta.getAttribute('content') || meta.textContent);
+      if (property !== 'title-type' || value.toLowerCase() !== 'subtitle' || !refines) continue;
+
+      const titleId = refines.replace(/^#/, '');
+      const refinedTitle = titleElements.find((element) => element.getAttribute('id') === titleId);
+      const refinedValue = normalizeText(refinedTitle?.textContent);
+      if (refinedValue) return refinedValue;
+    }
+
+    return '';
+  })();
+
+  const subtitleFromTag = normalizeText(subtitleElements[0]?.textContent);
+  const subtitleFromMeta = (() => {
+    const matchingMeta = metaElements.find((meta) => {
+      const property = normalizeText(meta.getAttribute('property')).toLowerCase();
+      const name = normalizeText(meta.getAttribute('name')).toLowerCase();
+      return property === 'subtitle' || name === 'subtitle';
+    });
+
+    return normalizeText(matchingMeta?.getAttribute('content') || matchingMeta?.textContent);
+  })();
+
+  const explicitSubtitle = subtitleByRefine || subtitleFromTag || subtitleFromMeta;
+  if (explicitSubtitle) {
+    return {
+      title: mainTitleFromTitleTag,
+      subtitle: explicitSubtitle,
+      author,
+    };
+  }
+
+  const split = splitTitleAndSubtitle(mainTitleFromTitleTag);
+  return {
+    title: split.title,
+    subtitle: split.subtitle,
+    author,
+  };
+};
+
 const parseEpubOnClient = async (
   file: File,
-): Promise<{ markdown: string; imageDataUrlByHref: Record<string, string> }> => {
+): Promise<{
+  markdown: string;
+  metadata: { title: string; subtitle: string; author: string };
+  imageDataUrlByHref: Record<string, string>;
+}> => {
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
 
   const containerXml = await zip.file('META-INF/container.xml')?.async('string');
@@ -125,6 +209,7 @@ const parseEpubOnClient = async (
   }
 
   const opfDoc = parseXml(opfXml);
+  const metadata = extractMetadataFromOpf(opfDoc);
   const opfDir = opfPath.includes('/') ? opfPath.slice(0, opfPath.lastIndexOf('/')) : '';
 
   const manifestItems = getElementsByTag(opfDoc, 'item').map((item) => {
@@ -207,6 +292,7 @@ const parseEpubOnClient = async (
 
   return {
     markdown: markdownSections.join('\n\n'),
+    metadata,
     imageDataUrlByHref,
   };
 };
@@ -284,16 +370,9 @@ export const convertEpubFile = async ({
     throw new Error(translate('Could not extract text from this EPUB.'));
   }
 
+  const metadata = parsed.metadata;
+
   onProgress?.({ progress: 75, message: translate('Extracting title, subtitle and author...') });
-
-  const metadataResult = await sendConvertDocToTextRequest({
-    textPreview: markdown.slice(0, METADATA_PREVIEW_CHARS),
-  });
-
-  const metadata = metadataResult.metadata;
-  if (metadataResult.error) {
-    console.warn('Book metadata extraction failed:', metadataResult.error);
-  }
 
   const imageDataUrlByHref = parsed.imageDataUrlByHref;
 
@@ -306,9 +385,9 @@ export const convertEpubFile = async ({
 
   return {
     text: markdown,
-    title: metadata?.title?.trim() ?? '',
-    subtitle: metadata?.subtitle?.trim() ?? '',
-    author: metadata?.author?.trim() ?? '',
+    title: metadata.title,
+    subtitle: metadata.subtitle,
+    author: metadata.author,
     imageDataUrlByHref,
     imageAspectRatioByHref,
   };
