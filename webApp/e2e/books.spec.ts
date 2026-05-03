@@ -48,7 +48,7 @@ test.describe('markdown rendering', () => {
     await openSeededGatsbyBook(page);
 
     await openSettingsPopover(page);
-    await page.getByLabel('Voice').click();
+    await page.getByRole('combobox', { name: 'Voice' }).click();
     await page.getByRole('option', { name: 'Mock English Voice' }).click();
     await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
     await enableVoiceOverSelectedText(page);
