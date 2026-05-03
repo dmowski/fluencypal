@@ -144,6 +144,7 @@ export const ReaderParagraph = ({
     <>
       <Typography
         variant="body1"
+        component="div"
         onMouseUp={handleMouseUp}
         onMouseLeave={onHoverClear}
         sx={{

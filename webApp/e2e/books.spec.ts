@@ -66,3 +66,27 @@ test('reader renders a space between "like" and "criticizing"', async ({ page })
   await openSeededGatsbyBook(page);
   await assertSpaceBetweenLikeAndCriticizing(page);
 });
+
+test('reader does not produce hydration errors on open', async ({ page }) => {
+  const hydrationErrors: string[] = [];
+
+  page.on('console', (msg) => {
+    if (msg.type() === 'error') {
+      const text = msg.text();
+      if (
+        text.includes('Hydration') ||
+        text.includes('hydration') ||
+        text.includes('cannot be a descendant') ||
+        text.includes('did not match')
+      ) {
+        hydrationErrors.push(text);
+      }
+    }
+  });
+
+  await openSeededGatsbyBook(page);
+
+  expect(hydrationErrors, `Hydration errors found:\n${hydrationErrors.join('\n')}`).toHaveLength(
+    0,
+  );
+});
