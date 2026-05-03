@@ -318,6 +318,18 @@ export const selectWheneverWordText = async (page: Page) => {
   }
 };
 
+export const clickWheneverWord = async (page: Page) => {
+  await ensureReaderTextVisible(page, 'Whenever you feel like');
+
+  const wheneverWord = page
+    .locator('[data-word-index], .conversation-word')
+    .filter({ hasText: /whenever/i })
+    .first();
+
+  await expect(wheneverWord).toBeVisible();
+  await wheneverWord.click();
+};
+
 export const applyYellowHighlight = async (page: Page) => {
   await page.getByRole('button', { name: 'Y', exact: true }).click();
 };
@@ -350,6 +362,39 @@ export const assertWheneverHighlightedYellow = async (page: Page) => {
         return targetChars.every((entry) => {
           const color = window.getComputedStyle(entry).backgroundColor;
           return color.includes('255, 224, 102');
+        });
+      }),
+    )
+    .toBeTruthy();
+};
+
+export const assertOnlyWheneverHighlightedYellow = async (page: Page) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(() => {
+        const candidates = Array.from(
+          document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+        );
+
+        const wheneverHost = candidates.find((entry) =>
+          (entry.textContent ?? '').toLowerCase().includes('whenever'),
+        );
+        if (!wheneverHost) return false;
+
+        const charSpans = Array.from(
+          wheneverHost.querySelectorAll<HTMLElement>('[data-char-offset]'),
+        );
+        if (!charSpans.length) return false;
+
+        const rendered = charSpans.map((entry) => entry.textContent ?? '').join('');
+        const start = rendered.toLowerCase().indexOf('whenever');
+        if (start < 0) return false;
+
+        return charSpans.every((entry, idx) => {
+          const color = window.getComputedStyle(entry).backgroundColor;
+          const isYellow = color.includes('255, 224, 102');
+          const isInsideWhenever = idx >= start && idx < start + 'whenever'.length;
+          return isInsideWhenever ? isYellow : !isYellow;
         });
       }),
     )

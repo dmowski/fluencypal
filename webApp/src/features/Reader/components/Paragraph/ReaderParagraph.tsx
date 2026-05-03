@@ -61,6 +61,36 @@ const ReaderParagraphBase = ({
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
   const paragraphRef = useRef<HTMLDivElement | null>(null);
 
+  const getCoreWordSelectionMeta = (rawWord: string) => {
+    let startOffset = 0;
+    let endOffsetExclusive = rawWord.length;
+
+    while (startOffset < endOffsetExclusive && !/[\p{L}\p{N}]/u.test(rawWord[startOffset])) {
+      startOffset += 1;
+    }
+
+    while (
+      endOffsetExclusive > startOffset &&
+      !/[\p{L}\p{N}]/u.test(rawWord[endOffsetExclusive - 1])
+    ) {
+      endOffsetExclusive -= 1;
+    }
+
+    if (startOffset === endOffsetExclusive) {
+      return {
+        normalizedWord: rawWord,
+        startOffset: 0,
+        endOffsetExclusive: rawWord.length,
+      };
+    }
+
+    return {
+      normalizedWord: rawWord.slice(startOffset, endOffsetExclusive),
+      startOffset,
+      endOffsetExclusive,
+    };
+  };
+
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     const sel = window.getSelection();
@@ -164,7 +194,10 @@ const ReaderParagraphBase = ({
       return;
     }
 
-    playText(word);
+    const coreSelectionMeta = getCoreWordSelectionMeta(word);
+    const clickedWordText = coreSelectionMeta.normalizedWord;
+
+    playText(clickedWordText);
 
     // Show highlight popover by creating a selection for this word
     e.preventDefault();
@@ -176,8 +209,8 @@ const ReaderParagraphBase = ({
       words,
       wordCharOffsets,
     });
-    const wordStart = sourceStart;
-    const wordEnd = wordStart + word.length;
+    const wordStart = sourceStart + coreSelectionMeta.startOffset;
+    const wordEnd = sourceStart + coreSelectionMeta.endOffsetExclusive;
 
     const selection = createSelectionFromRange({
       paragraphIndex,
@@ -185,8 +218,15 @@ const ReaderParagraphBase = ({
       rawEnd: wordEnd,
     });
 
-    // Keep a visible native selection by selecting concrete text-node boundaries.
-    applyNativeSelectionForWordElement(e.currentTarget);
+    // Keep a visible native selection by selecting concrete char offsets.
+    const wasAppliedByOffsets = applyNativeSelectionByOffsets({
+      paragraphElement: paragraphRef.current,
+      startInclusive: wordStart,
+      endExclusive: wordEnd,
+    });
+    if (!wasAppliedByOffsets) {
+      applyNativeSelectionForWordElement(e.currentTarget);
+    }
 
     // Get the element's bounding rect for popover positioning
     const element = e.currentTarget as HTMLElement;
@@ -198,18 +238,25 @@ const ReaderParagraphBase = ({
         startIndex: selection.startIndex + paragraphStartCharOffset,
         endIndex: selection.endIndex + paragraphStartCharOffset,
       },
-      selectionText: word,
+      selectionText: clickedWordText,
       anchorPosition: getPopoverPositionFromRect(rect),
     });
 
     requestAnimationFrame(() => {
-      const paragraphElement = paragraphRef.current;
-      if (!paragraphElement) return;
+      const restored = applyNativeSelectionByOffsets({
+        paragraphElement: paragraphRef.current,
+        startInclusive: wordStart,
+        endExclusive: wordEnd,
+      });
 
-      const currentWordElement = paragraphElement.querySelector<HTMLElement>(
-        `[data-word-index="${wordIndex}"]`,
-      );
-      applyNativeSelectionForWordElement(currentWordElement);
+      if (!restored) {
+        const paragraphElement = paragraphRef.current;
+        if (!paragraphElement) return;
+        const currentWordElement = paragraphElement.querySelector<HTMLElement>(
+          `[data-word-index="${wordIndex}"]`,
+        );
+        applyNativeSelectionForWordElement(currentWordElement);
+      }
     });
   };
 

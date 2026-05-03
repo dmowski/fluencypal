@@ -10,6 +10,7 @@ import {
   assertVoicePreviewWasPlayed,
   assertWordHoverHasEffect,
   clickCriticizingWord,
+  clickWheneverWord,
   closeSettingsPopover,
   ensureReaderTextVisible,
   enableTranslateOnHover,
@@ -27,6 +28,7 @@ import {
   selectRussianTranslateTarget,
   setRenderMarkdown,
   applyYellowHighlight,
+  assertOnlyWheneverHighlightedYellow,
   assertWheneverHighlightedYellow,
 } from './books.helpers';
 
@@ -152,10 +154,11 @@ for (const renderMode of renderModes) {
       await setRenderMarkdown(page, renderMode.isUseMarkdown);
       await closeSettingsPopover(page);
 
-      await selectWheneverWordText(page);
+      await clickWheneverWord(page);
       await assertHighlightPopoverVisible(page);
       await applyYellowHighlight(page);
       await assertWheneverHighlightedYellow(page);
+      await assertOnlyWheneverHighlightedYellow(page);
     });
 
     test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({
