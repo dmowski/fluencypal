@@ -32,6 +32,7 @@ export interface ReaderSettings {
   language: string;
   selectedVoiceURI: string | null;
   translateToLanguage: NativeLangCode | null;
+  isUseMarkdown: boolean;
   fontSize: number;
   lineHeight: number;
   contentWidth: number;

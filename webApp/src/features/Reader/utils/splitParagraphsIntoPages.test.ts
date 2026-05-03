@@ -12,6 +12,7 @@ const settings: ReaderSettings = {
   language: 'en-US',
   selectedVoiceURI: null,
   translateToLanguage: null,
+  isUseMarkdown: true,
   fontSize: 36,
   lineHeight: 1.5,
   justifyText: true,

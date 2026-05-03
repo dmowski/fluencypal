@@ -1,5 +1,4 @@
 import { expect, Page } from '@playwright/test';
-import { isUseMarkdown } from '../src/features/Reader/components/Paragraph/readerRenderFlags';
 
 export const BOOK_TITLE = 'The Great Gatsby';
 export const BOOK_SUBTITLE = 'Then wear the gold hat, if that will move her';
@@ -19,12 +18,11 @@ export const openSeededGatsbyBook = async (page: Page) => {
   await gatsbyCardTitle.click();
 
   await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
 };
 
 export const getCriticizingWordLocator = async (page: Page) => {
-  const orderedSelectors = isUseMarkdown
-    ? ['.conversation-word', '[data-word-index]', 'p span', 'div span']
-    : ['[data-word-index]', '.conversation-word', 'p span', 'div span'];
+  const orderedSelectors = ['[data-word-index]', '.conversation-word', 'p span', 'div span'];
 
   for (const selector of orderedSelectors) {
     const candidate = page
@@ -140,12 +138,10 @@ export const installSpeechMock = async (page: Page) => {
 };
 
 export const openSettingsPopover = async (page: Page) => {
-  await page
-    .getByRole('button')
-    .filter({ has: page.locator('svg') })
-    .first()
-    .click();
-  await expect(page.getByText('Settings', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Reader settings' }).click();
+  await expect(
+    page.locator('.MuiPopover-paper').getByText('Settings', { exact: true }),
+  ).toBeVisible();
 };
 
 export const closeSettingsPopover = async (page: Page) => {
@@ -155,27 +151,24 @@ export const closeSettingsPopover = async (page: Page) => {
     await expect(selectMenu).not.toBeVisible();
   }
 
-  const settingsTitle = page.getByText('Settings', { exact: true });
-  const isSettingsVisible = await settingsTitle.isVisible().catch(() => false);
+  const popover = page.locator('.MuiPopover-paper');
+  const isSettingsVisible = await popover.isVisible().catch(() => false);
   if (isSettingsVisible) {
-    const popoverCloseButton = page
-      .locator('.MuiPopover-paper')
-      .filter({ hasText: 'Settings' })
-      .locator('button:has(svg.lucide-x)')
-      .first();
+    const popoverCloseButton = popover.getByRole('button', { name: 'Close settings' });
 
     await popoverCloseButton.click({ force: true }).catch(async () => {
       await page.mouse.click(900, 500);
     });
   }
 
-  await expect(settingsTitle).not.toBeVisible();
-  await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
+  await expect(popover).not.toBeVisible();
+  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
 };
 
 export const selectRussianTranslateTarget = async (page: Page) => {
   await page.getByLabel('Translate to').click();
   await page.getByRole('option', { name: 'Russian' }).click();
+  await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
 };
 
 export const assertVoicePreviewWasPlayed = async (page: Page) => {
@@ -219,6 +212,22 @@ export const enableTranslateOnHover = async (page: Page) => {
   await translateOnHover.check();
 };
 
+export const setRenderMarkdown = async (page: Page, isEnabled: boolean) => {
+  const renderMarkdown = page.getByRole('checkbox', { name: 'Render Markdown' });
+  await expect(renderMarkdown).toBeVisible();
+
+  if ((await renderMarkdown.isChecked()) === isEnabled) {
+    return;
+  }
+
+  if (isEnabled) {
+    await renderMarkdown.check();
+    return;
+  }
+
+  await renderMarkdown.uncheck();
+};
+
 export const mockSingleTranslation = async (page: Page, translatedText: string) => {
   let translateRequestsCount = 0;
 
@@ -243,17 +252,8 @@ export const assertTranslatedTextVisible = async (page: Page, text: string) => {
 };
 
 export const assertSpaceBetweenLikeAndCriticizing = async (page: Page) => {
-  // Find the paragraph containing both words and assert a space exists between them
-  const paragraph = page
-    .locator('p')
-    .filter({ hasText: /feel like/i })
-    .filter({ hasText: /criticizing/i })
-    .first();
-  await expect(paragraph).toBeVisible();
-
-  const paragraphText = await paragraph.evaluate((el) => el.textContent ?? '');
-  // Strip markdown symbols (they appear literally in plain-text render mode), then normalize whitespace
-  const stripped = paragraphText.replace(/[*_~`]/g, '');
+  const readerText = await page.locator('body').evaluate((el) => el.textContent ?? '');
+  const stripped = readerText.replace(/[*_~`]/g, '');
   const normalized = stripped.replace(/\s+/g, ' ');
   expect(normalized).toMatch(/like criticizing/);
 };

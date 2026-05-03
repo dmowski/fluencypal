@@ -12,7 +12,6 @@ import {
 import { normalizeSelectedText } from '../../utils/readerParagraphTranslationHelpers';
 import { HighlightedText } from '../../model/types';
 import { ReaderMarkdown } from './ReaderMarkdown';
-import { isUseMarkdown } from './readerRenderFlags';
 
 export interface ReaderParagraphSelectionPayload {
   paragraphIndex: number;
@@ -28,6 +27,7 @@ export const ReaderParagraph = ({
   paragraphIndex,
   paragraphStartCharOffset,
   words,
+  isUseMarkdown,
   fontSize,
   lineHeight,
   justifyText,
@@ -41,6 +41,7 @@ export const ReaderParagraph = ({
   paragraphIndex: number;
   paragraphStartCharOffset: number;
   words: string[];
+  isUseMarkdown: boolean;
   fontSize: number;
   lineHeight: number;
   justifyText: boolean;

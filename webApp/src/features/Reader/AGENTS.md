@@ -42,3 +42,10 @@ After changing files in this feature:
 
 - Primary Reader regression coverage lives in `webApp/e2e/books.spec.ts`.
 - Prefer running that spec first for changes in book list, opening/reading books, pagination, or settings interactions.
+
+## Reader Markdown Flag
+
+- Reader paragraph rendering is controlled by `isUseMarkdown` in `hooks/useReaderSettings.ts` and exposed in the reader settings popover.
+- `true` enables markdown-aware rendering (`ReaderMarkdown` path); `false` uses regular word-by-word rendering.
+- For Reader behavior changes (hover translate, spacing, highlights, popovers), validate `webApp/e2e/books.spec.ts` in both modes by toggling the UI setting.
+- Default reader settings should stay aligned with the intended product default; tests must not depend on editing source constants.

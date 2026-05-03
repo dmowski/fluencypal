@@ -139,6 +139,7 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
     <>
       <IconButton
         onClick={(event) => setAnchorEl(event.currentTarget)}
+        aria-label={i18n._('Reader settings')}
         sx={{
           position: 'fixed',
           top: '5px',
@@ -168,6 +169,7 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
         >
           <IconButton
             onClick={() => setAnchorEl(null)}
+            aria-label={i18n._('Close settings')}
             sx={{
               position: 'absolute',
               top: '8px',
@@ -263,6 +265,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
                 />
               }
               label={i18n._('Justify Text')}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={readerSettings.isUseMarkdown}
+                  onChange={(_event, checked) => readerSettings.setIsUseMarkdown(checked)}
+                />
+              }
+              label={i18n._('Render Markdown')}
             />
 
             {!isTouchDevice && (

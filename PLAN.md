@@ -2,7 +2,19 @@
 
 ## Reader helper?
 
-Make flying tooltip single on the app. Reuse approach of highlights popover. Render only once on Reader
+Move isUseMarkdown to reader settings. Update Agents.md and update e2e to check both options. (All tests, idk should runs 2 time, for normal formatting and for md formatting).
+Make this toggler available on UI settings.
+
+when isUseMarkdown is false.
+And when I click on word. the word became selected.
+
+When i use markdown format - there's no such behaviour.
+
+Create e2e that test it on nonMardkown format, ensure it pass.
+
+Check that it's fails on md format. and fix MD format.
+
+Then i see a weid behavior, when I select some text, and see highlighs popover. My previous selection dissapears. Do the same approach. Write tests form normal formating. then change to md format and check again.
 
 - How to handle images, italic font?
 
