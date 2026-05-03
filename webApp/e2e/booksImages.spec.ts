@@ -215,8 +215,10 @@ test('imports book by dropping EPUB on books page', async ({ page }) => {
     contents: epubBytes,
   });
 
-  await page.dispatchEvent('body', 'dragenter', { dataTransfer });
-  await page.dispatchEvent('body', 'drop', { dataTransfer });
+  const dropTarget = page.getByTestId('books-list-drop-target');
+  await dropTarget.dispatchEvent('dragenter', { dataTransfer });
+  await dropTarget.dispatchEvent('dragover', { dataTransfer });
+  await dropTarget.dispatchEvent('drop', { dataTransfer });
 
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
     timeout: 60_000,

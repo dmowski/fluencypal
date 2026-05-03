@@ -30,6 +30,7 @@ export const BooksList = () => {
 
   return (
     <Stack
+      data-testid="books-list-drop-target"
       sx={{
         width: '100%',
         padding: '32px',
