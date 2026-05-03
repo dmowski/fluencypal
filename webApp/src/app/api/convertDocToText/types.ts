@@ -5,8 +5,6 @@ export interface BookMetadata {
 }
 
 export interface ConvertDocToTextResponse {
-  markdown?: string;
   metadata?: BookMetadata;
-  imageDataUrlByHref?: Record<string, string>;
   error?: string;
 }

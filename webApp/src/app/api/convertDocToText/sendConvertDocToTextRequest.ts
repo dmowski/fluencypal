@@ -1,51 +1,35 @@
 import { ConvertDocToTextResponse } from './types';
 
 export interface ConvertDocToTextRequest {
-  file: File;
+  textPreview: string;
 }
 
 export const sendConvertDocToTextRequest = async (
   data: ConvertDocToTextRequest,
 ): Promise<ConvertDocToTextResponse> => {
   try {
-    const formData = new FormData();
-    formData.append('file', data.file);
-
     const response = await fetch('/api/convertDocToText', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ textPreview: data.textPreview }),
     });
 
     let result: ConvertDocToTextResponse | null = null;
-    let rawResponseText = '';
 
     try {
       const contentType = response.headers.get('content-type') || '';
       if (contentType.includes('application/json')) {
         result = (await response.json()) as ConvertDocToTextResponse;
-      } else {
-        rawResponseText = await response.text();
       }
     } catch {
-      // Some platform errors return non-JSON payloads.
+      // Non-JSON response fallback is handled below.
     }
 
     if (!response.ok) {
-      const isPayloadTooLarge =
-        response.status === 413 ||
-        /FUNCTION_PAYLOAD_TOO_LARGE|Request Entity Too Large/i.test(rawResponseText);
-
-      if (isPayloadTooLarge) {
-        return {
-          markdown: result?.markdown,
-          error:
-            'EPUB file is too large for this deployment limit. Please use a file smaller than 4MB.',
-        };
-      }
-
       return {
-        markdown: result?.markdown,
-        error: result?.error || 'Failed to convert EPUB.',
+        error: result?.error || 'Failed to extract book metadata.',
       };
     }
 
@@ -54,11 +38,11 @@ export const sendConvertDocToTextRequest = async (
     }
 
     return {
-      error: 'Received unexpected response from convert service.',
+      error: 'Received unexpected response from metadata service.',
     };
   } catch {
     return {
-      error: 'Failed to convert EPUB.',
+      error: 'Failed to extract book metadata.',
     };
   }
 };
