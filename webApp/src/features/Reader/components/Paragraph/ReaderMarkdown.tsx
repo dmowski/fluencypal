@@ -78,11 +78,7 @@ const processStringChild = (
           </span>
         )}
         {/* Space between words within this chunk, or trailing space when the original string ended with whitespace */}
-        {!isLast || hasTrailingSpace
-          ? renderSpace
-            ? renderSpace(wordIndex)
-            : ' '
-          : null}
+        {!isLast || hasTrailingSpace ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
       </span>,
     );
   });

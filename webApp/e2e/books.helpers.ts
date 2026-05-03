@@ -244,7 +244,11 @@ export const assertTranslatedTextVisible = async (page: Page, text: string) => {
 
 export const assertSpaceBetweenLikeAndCriticizing = async (page: Page) => {
   // Find the paragraph containing both words and assert a space exists between them
-  const paragraph = page.locator('p').filter({ hasText: /feel like/i }).filter({ hasText: /criticizing/i }).first();
+  const paragraph = page
+    .locator('p')
+    .filter({ hasText: /feel like/i })
+    .filter({ hasText: /criticizing/i })
+    .first();
   await expect(paragraph).toBeVisible();
 
   const paragraphText = await paragraph.evaluate((el) => el.textContent ?? '');
