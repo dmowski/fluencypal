@@ -191,6 +191,51 @@ export const hoverCriticizingWord = async (page: Page) => {
   await criticizingWord.hover();
 };
 
+export const selectCriticizingWordText = async (page: Page) => {
+  const criticizingWord = await getCriticizingWordLocator(page);
+
+  await criticizingWord.evaluate((node) => {
+    const findFirstTextNode = (entry: Node): Text | null => {
+      if (entry.nodeType === Node.TEXT_NODE) return entry as Text;
+
+      for (const child of Array.from(entry.childNodes)) {
+        const found = findFirstTextNode(child);
+        if (found) return found;
+      }
+
+      return null;
+    };
+
+    const findLastTextNode = (entry: Node): Text | null => {
+      if (entry.nodeType === Node.TEXT_NODE) return entry as Text;
+
+      const children = Array.from(entry.childNodes);
+      for (let i = children.length - 1; i >= 0; i -= 1) {
+        const found = findLastTextNode(children[i]);
+        if (found) return found;
+      }
+
+      return null;
+    };
+
+    const host = node as HTMLElement;
+    const first = findFirstTextNode(host);
+    const last = findLastTextNode(host);
+    if (!first || !last) return;
+
+    const range = document.createRange();
+    range.setStart(first, 0);
+    range.setEnd(last, last.textContent?.length ?? 0);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
+    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+  });
+};
+
 export const assertCriticizingWordWasSpoken = async (page: Page) => {
   await expect
     .poll(async () =>
@@ -204,6 +249,47 @@ export const assertCriticizingWordWasSpoken = async (page: Page) => {
 
 export const assertHighlightPopoverVisible = async (page: Page) => {
   await expect(page.getByRole('button', { name: 'Y', exact: true })).toBeVisible();
+};
+
+export const assertCurrentSelectionText = async (page: Page, expectedRegex: RegExp) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(() => {
+        return window.getSelection()?.toString().trim() ?? '';
+      }),
+    )
+    .toMatch(expectedRegex);
+};
+
+export const assertSelectionTextPersists = async (
+  page: Page,
+  expectedRegex: RegExp,
+  options?: { checks?: number; intervalMs?: number },
+) => {
+  const checks = options?.checks ?? 6;
+  const intervalMs = options?.intervalMs ?? 120;
+
+  for (let i = 0; i < checks; i += 1) {
+    await assertCurrentSelectionText(page, expectedRegex);
+    if (i < checks - 1) {
+      await page.waitForTimeout(intervalMs);
+    }
+  }
+};
+
+export const assertCriticizingWordCursorIsPointer = async (page: Page) => {
+  const criticizingWord = await getCriticizingWordLocator(page);
+
+  const cursors = await criticizingWord.evaluate((node) => {
+    const element = node as HTMLElement;
+    const descendants = Array.from(element.querySelectorAll<HTMLElement>('*'));
+    const nodes = [element, ...descendants];
+
+    return nodes.map((entry) => window.getComputedStyle(entry).cursor);
+  });
+
+  expect(cursors.length).toBeGreaterThan(0);
+  expect(cursors.every((cursor) => cursor === 'pointer')).toBeTruthy();
 };
 
 export const enableTranslateOnHover = async (page: Page) => {

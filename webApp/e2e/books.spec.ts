@@ -1,7 +1,10 @@
 import { expect, test } from '@playwright/test';
 import {
+  assertCriticizingWordCursorIsPointer,
   assertCriticizingWordWasSpoken,
+  assertCurrentSelectionText,
   assertHighlightPopoverVisible,
+  assertSelectionTextPersists,
   assertSpaceBetweenLikeAndCriticizing,
   assertTranslatedTextVisible,
   assertVoicePreviewWasPlayed,
@@ -14,6 +17,7 @@ import {
   mockSingleTranslation,
   openSeededGatsbyBook,
   openSettingsPopover,
+  selectCriticizingWordText,
   selectRussianTranslateTarget,
   setRenderMarkdown,
 } from './books.helpers';
@@ -51,6 +55,32 @@ for (const renderMode of renderModes) {
       await clickCriticizingWord(page);
       await assertCriticizingWordWasSpoken(page);
       await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /criticizing/i);
+      await assertSelectionTextPersists(page, /criticizing/i);
+    });
+
+    test('selected text keeps selection visible when highlight popover opens', async ({
+      page,
+    }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await selectCriticizingWordText(page);
+
+      await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /criticizing/i);
+      await assertSelectionTextPersists(page, /criticizing/i);
+    });
+
+    test('reader uses pointer cursor consistently for interactive words', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await assertCriticizingWordCursorIsPointer(page);
     });
 
     test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({

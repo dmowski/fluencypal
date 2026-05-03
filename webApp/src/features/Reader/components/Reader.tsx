@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
-import { Book } from '../model/types';
+import { Book, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -14,6 +14,8 @@ import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
+
+const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
@@ -35,6 +37,20 @@ export const Reader = ({ data }: { data: Book }) => {
       },
     });
   }, [columnWidth, data.paragraphs, readerSettings]);
+
+  const highlightsByParagraph = useMemo(() => {
+    const grouped = new Map<number, HighlightedText[]>();
+    (data.highlights ?? []).forEach((highlight) => {
+      const paragraph = highlight.paragraphIndex ?? 0;
+      const existing = grouped.get(paragraph);
+      if (existing) {
+        existing.push(highlight);
+      } else {
+        grouped.set(paragraph, [highlight]);
+      }
+    });
+    return grouped;
+  }, [data.highlights]);
 
   const pageCount = pages.length;
   const maxPage = Math.max(pageCount, 1);
@@ -88,9 +104,12 @@ export const Reader = ({ data }: { data: Book }) => {
     onPrevious: goToPreviousPage,
   });
 
-  const playText = (text: string) => {
-    speech.play(text.trim());
-  };
+  const playText = useCallback(
+    (text: string) => {
+      speech.play(text.trim());
+    },
+    [speech.play],
+  );
 
   return (
     <Stack
@@ -175,9 +194,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       justifyText={readerSettings.justifyText}
                       playText={playText}
                       onSelection={handleParagraphSelection}
-                      highlights={(data.highlights ?? []).filter(
-                        (highlight) => (highlight.paragraphIndex ?? 0) === index,
-                      )}
+                      highlights={highlightsByParagraph.get(index) ?? EMPTY_HIGHLIGHTS}
                       onWordHover={onWordHover}
                       onWordMouseMove={onWordMouseMove}
                       onHoverClear={clearHoverTranslation}

@@ -69,7 +69,7 @@ const processStringChild = (
     const isLast = localWordIndex === words.length - 1;
 
     rendered.push(
-      <span key={`${index}-${localWordIndex}`}>
+      <span key={`${index}-${localWordIndex}`} style={{ cursor: 'pointer' }}>
         {renderWord ? (
           renderWord({ word, wordIndex })
         ) : (
@@ -312,7 +312,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
     >
       {renderWordsDirectly ? (
         words.map((word, wordIndex) => (
-          <span key={wordIndex}>
+          <span key={wordIndex} style={{ cursor: 'pointer' }}>
             {renderWord ? (
               renderWord({ word, wordIndex })
             ) : (

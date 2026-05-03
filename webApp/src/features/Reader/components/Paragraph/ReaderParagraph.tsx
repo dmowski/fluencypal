@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { MouseEvent, useMemo } from 'react';
+import { memo, MouseEvent, useMemo, useRef } from 'react';
 import {
   createSelectionFromRange,
   getPopoverPositionFromRect,
@@ -23,21 +23,7 @@ export interface ReaderParagraphSelectionPayload {
   };
 }
 
-export const ReaderParagraph = ({
-  paragraphIndex,
-  paragraphStartCharOffset,
-  words,
-  isUseMarkdown,
-  fontSize,
-  lineHeight,
-  justifyText,
-  playText,
-  onSelection,
-  highlights,
-  onWordHover,
-  onWordMouseMove,
-  onHoverClear,
-}: {
+interface ReaderParagraphProps {
   paragraphIndex: number;
   paragraphStartCharOffset: number;
   words: string[];
@@ -51,9 +37,93 @@ export const ReaderParagraph = ({
   onWordHover?: (word: string, e: MouseEvent<HTMLElement>) => void | Promise<void>;
   onWordMouseMove?: (e: MouseEvent<HTMLElement>) => void;
   onHoverClear?: () => void;
-}) => {
+}
+
+const ReaderParagraphBase = ({
+  paragraphIndex,
+  paragraphStartCharOffset,
+  words,
+  isUseMarkdown,
+  fontSize,
+  lineHeight,
+  justifyText,
+  playText,
+  onSelection,
+  highlights,
+  onWordHover,
+  onWordMouseMove,
+  onHoverClear,
+}: ReaderParagraphProps) => {
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
+  const paragraphRef = useRef<HTMLDivElement | null>(null);
+
+  const findFirstTextNode = (node: Node): Text | null => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      return node as Text;
+    }
+
+    for (const child of Array.from(node.childNodes)) {
+      const found = findFirstTextNode(child);
+      if (found) return found;
+    }
+
+    return null;
+  };
+
+  const findLastTextNode = (node: Node): Text | null => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      return node as Text;
+    }
+
+    const children = Array.from(node.childNodes);
+    for (let i = children.length - 1; i >= 0; i -= 1) {
+      const found = findLastTextNode(children[i]);
+      if (found) return found;
+    }
+
+    return null;
+  };
+
+  const applyNativeSelectionForWordElement = (element: HTMLElement | null) => {
+    if (!element) return;
+
+    const textStart = findFirstTextNode(element);
+    const textEnd = findLastTextNode(element);
+    if (!textStart || !textEnd) return;
+
+    const range = document.createRange();
+    range.setStart(textStart, 0);
+    range.setEnd(textEnd, textEnd.textContent?.length ?? 0);
+    const domSelection = window.getSelection();
+    domSelection?.removeAllRanges();
+    domSelection?.addRange(range);
+  };
+
+  const applyNativeSelectionByOffsets = (startInclusive: number, endExclusive: number) => {
+    const paragraphElement = paragraphRef.current;
+    if (!paragraphElement) return;
+
+    const startElement = paragraphElement.querySelector<HTMLElement>(
+      `[data-char-offset="${startInclusive}"]`,
+    );
+    const endElement = paragraphElement.querySelector<HTMLElement>(
+      `[data-char-offset="${Math.max(endExclusive - 1, startInclusive)}"]`,
+    );
+    if (!startElement || !endElement) return;
+
+    const textStart = findFirstTextNode(startElement);
+    const textEnd = findLastTextNode(endElement);
+    if (!textStart || !textEnd) return;
+
+    const range = document.createRange();
+    range.setStart(textStart, 0);
+    range.setEnd(textEnd, textEnd.textContent?.length ?? 0);
+
+    const domSelection = window.getSelection();
+    domSelection?.removeAllRanges();
+    domSelection?.addRange(range);
+  };
 
   const getSafeWordMeta = (wordIndex: number, fallbackWord: string) => {
     const lastSafeIndex = Math.max(words.length - 1, 0);
@@ -68,7 +138,6 @@ export const ReaderParagraph = ({
   };
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
     e.stopPropagation();
     const sel = window.getSelection();
     const selectedText = normalizeSelectedText(sel?.toString());
@@ -86,8 +155,24 @@ export const ReaderParagraph = ({
         // endOffset is exclusive in the Selection API — subtract 1 to store inclusive end.
         const rawEnd = getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
 
-        if (rawStart !== null && rawEnd !== null) {
-          const selection = createSelectionFromRange({ paragraphIndex, rawStart, rawEnd });
+        let resolvedRawStart = rawStart;
+        let resolvedRawEnd = rawEnd;
+
+        if (resolvedRawStart === null || resolvedRawEnd === null) {
+          const paragraphText = words.join(' ');
+          const fallbackStart = paragraphText.indexOf(selectedText);
+          if (fallbackStart >= 0) {
+            resolvedRawStart = fallbackStart;
+            resolvedRawEnd = fallbackStart + selectedText.length;
+          }
+        }
+
+        if (resolvedRawStart !== null && resolvedRawEnd !== null) {
+          const selection = createSelectionFromRange({
+            paragraphIndex,
+            rawStart: resolvedRawStart,
+            rawEnd: resolvedRawEnd,
+          });
           if (rect) {
             onSelection({
               paragraphIndex,
@@ -98,6 +183,10 @@ export const ReaderParagraph = ({
               },
               selectionText: selectedText,
               anchorPosition: getPopoverPositionFromRect(rect),
+            });
+
+            requestAnimationFrame(() => {
+              applyNativeSelectionByOffsets(resolvedRawStart, resolvedRawEnd);
             });
           }
         }
@@ -123,8 +212,9 @@ export const ReaderParagraph = ({
       rawStart: wordStart,
       rawEnd: wordEnd,
     });
-    // emulate select
-    window.getSelection()?.setBaseAndExtent(e.currentTarget, 0, e.currentTarget, word.length);
+
+    // Keep a visible native selection by selecting concrete text-node boundaries.
+    applyNativeSelectionForWordElement(e.currentTarget);
 
     // Get the element's bounding rect for popover positioning
     const element = e.currentTarget as HTMLElement;
@@ -139,6 +229,16 @@ export const ReaderParagraph = ({
       selectionText: word,
       anchorPosition: getPopoverPositionFromRect(rect),
     });
+
+    requestAnimationFrame(() => {
+      const paragraphElement = paragraphRef.current;
+      if (!paragraphElement) return;
+
+      const currentWordElement = paragraphElement.querySelector<HTMLElement>(
+        `[data-word-index="${wordIndex}"]`,
+      );
+      applyNativeSelectionForWordElement(currentWordElement);
+    });
   };
 
   return (
@@ -146,6 +246,7 @@ export const ReaderParagraph = ({
       <Typography
         variant="body1"
         component="div"
+        ref={paragraphRef}
         onMouseUp={handleMouseUp}
         onMouseLeave={onHoverClear}
         sx={{
@@ -173,10 +274,10 @@ export const ReaderParagraph = ({
                     fontSize: `${fontSize}px`,
                     lineHeight,
                     display: 'inline',
+                    cursor: 'pointer',
                     borderBottom: '1px dotted transparent',
                     position: 'relative',
                     ':hover': {
-                      cursor: 'pointer',
                       '&::after': {
                         content: '""',
                         position: 'absolute',
@@ -216,6 +317,7 @@ export const ReaderParagraph = ({
                         data-char-offset={absOffset}
                         style={{
                           backgroundColor: color ?? 'transparent',
+                          cursor: 'pointer',
                           borderRadius:
                             isStart && isEnd
                               ? '3px'
@@ -247,6 +349,7 @@ export const ReaderParagraph = ({
                         wordStart + wordLength + paragraphStartCharOffset,
                         highlights,
                       ) ?? 'transparent',
+                    cursor: 'pointer',
                   }}
                 >
                   {' '}
@@ -269,10 +372,10 @@ export const ReaderParagraph = ({
                     fontSize: `${fontSize}px`,
                     lineHeight,
                     display: 'inline',
+                    cursor: 'pointer',
                     borderBottom: '1px dotted transparent',
                     position: 'relative',
                     ':hover': {
-                      cursor: 'pointer',
                       '&::after': {
                         content: '""',
                         position: 'absolute',
@@ -311,6 +414,7 @@ export const ReaderParagraph = ({
                         data-char-offset={absOffset}
                         style={{
                           backgroundColor: color ?? 'transparent',
+                          cursor: 'pointer',
                           borderRadius:
                             isStart && isEnd
                               ? '3px'
@@ -335,6 +439,7 @@ export const ReaderParagraph = ({
                           wordStart + word.length + paragraphStartCharOffset,
                           highlights,
                         ) ?? 'transparent',
+                      cursor: 'pointer',
                     }}
                   >
                     {' '}
@@ -348,3 +453,6 @@ export const ReaderParagraph = ({
     </>
   );
 };
+
+export const ReaderParagraph = memo(ReaderParagraphBase);
+ReaderParagraph.displayName = 'ReaderParagraph';
