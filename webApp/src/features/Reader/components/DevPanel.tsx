@@ -9,6 +9,7 @@ import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import { isFitInPage } from '../utils/isFitInPage';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 const DEFAULT_DEV_TEXT = `This is a sample paragraph for validating page fitting. Change settings and compare visual fit with calculated result.
 Add another paragraph to test paragraph gap and content height constraints.
@@ -16,7 +17,7 @@ In my younger and more vulnerable years my father gave me some advice that I’v
 
 export const DevPanel = () => {
   const i18n = useLingui();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useUrlState('devPanel', false, false);
   const [isLocalhost, setIsLocalhost] = useState(false);
 
   useEffect(() => {
