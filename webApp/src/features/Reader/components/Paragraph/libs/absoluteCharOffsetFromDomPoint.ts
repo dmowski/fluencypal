@@ -98,13 +98,7 @@ export const getRangeCharOffsets = (
     }
 
     try {
-      const charRange = document.createRange();
-      charRange.selectNodeContents(entry);
-
-      const endsBeforeOrAtStart = range.compareBoundaryPoints(Range.END_TO_START, charRange) <= 0;
-      const startsAfterOrAtEnd = range.compareBoundaryPoints(Range.START_TO_END, charRange) >= 0;
-
-      if (!endsBeforeOrAtStart && !startsAfterOrAtEnd) {
+      if (range.intersectsNode(entry)) {
         selectedOffsets.push(rawOffset);
       }
     } catch {

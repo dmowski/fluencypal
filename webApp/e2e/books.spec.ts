@@ -19,12 +19,15 @@ import {
   openSeededGatsbyBook,
   openSettingsPopover,
   selectEverInsideNeverFoundPhrase,
+  selectWheneverWordText,
   selectFirstParagraphRangeByWordBoundaries,
   selectCriticizingWordText,
   selectStoodInsideUnderstood,
   selectWheneverYouFeelPartialText,
   selectRussianTranslateTarget,
   setRenderMarkdown,
+  applyYellowHighlight,
+  assertWheneverHighlightedYellow,
 } from './books.helpers';
 
 const renderModes = [
@@ -141,6 +144,18 @@ for (const renderMode of renderModes) {
       await closeSettingsPopover(page);
 
       await assertCriticizingWordCursorIsPointer(page);
+    });
+
+    test('applying Yellow highlight on Whenever is visible in UI', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await selectWheneverWordText(page);
+      await assertHighlightPopoverVisible(page);
+      await applyYellowHighlight(page);
+      await assertWheneverHighlightedYellow(page);
     });
 
     test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({

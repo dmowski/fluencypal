@@ -75,20 +75,28 @@ const ReaderParagraphBase = ({
         const directRangeOffsets = paragraphRef.current
           ? getRangeCharOffsets(range, paragraphRef.current)
           : null;
-        const startFromDom =
-          directRangeOffsets?.startInclusive ??
-          getAbsoluteCharOffset(range.startContainer, range.startOffset, wordCharOffsets);
-        // endOffset is exclusive in the Selection API.
-        const endFromDom =
-          directRangeOffsets?.endExclusive ??
-          getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
+        const resolvedOffsets = directRangeOffsets
+          ? directRangeOffsets
+          : (() => {
+              const startFromDom = getAbsoluteCharOffset(
+                range.startContainer,
+                range.startOffset,
+                wordCharOffsets,
+              );
+              // endOffset is exclusive in the Selection API.
+              const endFromDom = getAbsoluteCharOffset(
+                range.endContainer,
+                range.endOffset,
+                wordCharOffsets,
+              );
 
-        const resolvedOffsets = reconcileSelectionOffsets({
-          paragraphText,
-          selectedText,
-          rawStart: startFromDom,
-          rawEnd: endFromDom,
-        });
+              return reconcileSelectionOffsets({
+                paragraphText,
+                selectedText,
+                rawStart: startFromDom,
+                rawEnd: endFromDom,
+              });
+            })();
 
         if (resolvedOffsets) {
           const selection = createSelectionFromRange({

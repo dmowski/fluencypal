@@ -9,6 +9,9 @@ export const openSeededGatsbyBook = async (page: Page) => {
   await page.addInitScript(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
+    if (typeof indexedDB !== 'undefined') {
+      indexedDB.deleteDatabase('readerBooksDb');
+    }
   });
 
   await page.goto('/book');
@@ -272,6 +275,85 @@ export const selectFirstParagraphRangeByWordBoundaries = async (
 
 export const selectWheneverYouFeelPartialText = async (page: Page) => {
   await selectTextPhraseAndTriggerMouseUp(page, 'henever you fee');
+};
+
+export const selectWheneverWordText = async (page: Page) => {
+  await ensureReaderTextVisible(page, 'Whenever you feel like');
+
+  const wheneverWord = page
+    .locator('[data-word-index], .conversation-word')
+    .filter({ hasText: /whenever/i })
+    .first();
+  await expect(wheneverWord).toBeVisible();
+
+  const didSelect = await wheneverWord.evaluate((node) => {
+    const host = node as HTMLElement;
+    const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
+    if (!charSpans.length) return false;
+
+    const renderedText = charSpans.map((entry) => entry.textContent ?? '').join('');
+    const startInWord = renderedText.toLowerCase().indexOf('whenever');
+    if (startInWord < 0) return false;
+
+    const startText = charSpans[startInWord]?.firstChild;
+    const endText = charSpans[startInWord + 'whenever'.length - 1]?.firstChild;
+    if (!(startText instanceof Text) || !(endText instanceof Text)) return false;
+
+    const range = document.createRange();
+    range.setStart(startText, 0);
+    range.setEnd(endText, endText.textContent?.length ?? 0);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
+    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+    return true;
+  });
+
+  if (!didSelect) {
+    throw new Error('Could not select "Whenever" text.');
+  }
+};
+
+export const applyYellowHighlight = async (page: Page) => {
+  await page.getByRole('button', { name: 'Y', exact: true }).click();
+};
+
+export const assertWheneverHighlightedYellow = async (page: Page) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(() => {
+        const candidates = Array.from(
+          document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+        );
+
+        const wheneverHost = candidates.find((entry) =>
+          (entry.textContent ?? '').toLowerCase().includes('whenever'),
+        );
+        if (!wheneverHost) return false;
+
+        const charSpans = Array.from(
+          wheneverHost.querySelectorAll<HTMLElement>('[data-char-offset]'),
+        );
+        if (!charSpans.length) return false;
+
+        const rendered = charSpans.map((entry) => entry.textContent ?? '').join('');
+        const start = rendered.toLowerCase().indexOf('whenever');
+        if (start < 0) return false;
+
+        const targetChars = charSpans.slice(start, start + 'whenever'.length);
+        if (targetChars.length !== 'whenever'.length) return false;
+
+        return targetChars.every((entry) => {
+          const color = window.getComputedStyle(entry).backgroundColor;
+          return color.includes('255, 224, 102');
+        });
+      }),
+    )
+    .toBeTruthy();
 };
 
 export const selectEverInsideNeverFoundPhrase = async (page: Page) => {
