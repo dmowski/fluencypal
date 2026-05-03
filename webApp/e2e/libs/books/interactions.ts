@@ -12,6 +12,19 @@ export const hoverCriticizingWord = async (page: Page) => {
   await criticizingWord.hover();
 };
 
+export const hoverWordAndPressColorKey = async (
+  page: Page,
+  wordText: RegExp | string,
+  colorKey: string,
+) => {
+  const wordLocator = page
+    .locator('[data-word-index], .conversation-word')
+    .filter({ hasText: typeof wordText === 'string' ? new RegExp(wordText, 'i') : wordText })
+    .first();
+  await wordLocator.hover();
+  await page.keyboard.press(colorKey);
+};
+
 export const selectCriticizingWordText = async (page: Page) => {
   const criticizingWord = await getCriticizingWordLocator(page);
 

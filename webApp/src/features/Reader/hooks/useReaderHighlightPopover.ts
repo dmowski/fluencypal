@@ -6,6 +6,7 @@ import { getHighlightAtCharRange } from '../components/Paragraph/libs/highlightC
 import { HighlightedText } from '../model/types';
 import { ReaderParagraphSelectionPayload } from '../components/Paragraph/ReaderParagraph';
 import { NativeLangCode } from '@/libs/language/type';
+import { applyHighlightColor } from '../utils/applyHighlightColor';
 
 interface ActivePopoverState {
   paragraphIndex: number;
@@ -158,24 +159,15 @@ export const useReaderHighlightPopover = ({
     (color: string) => {
       if (!activePopover) return;
 
-      const existingHighlight = getHighlightAtCharRange(
-        activePopover.selection.startIndex,
-        activePopover.selection.endIndex,
-        activeParagraphHighlights,
-      );
-
-      if (existingHighlight?.color === color) {
-        onRemoveHighlight(existingHighlight);
-      } else {
-        const overlappingHighlights = activeParagraphHighlights.filter(
-          (highlight) =>
-            highlight.startIndex < activePopover.selection.endIndex &&
-            highlight.endIndex > activePopover.selection.startIndex,
-        );
-        overlappingHighlights.forEach((highlight) => onRemoveHighlight(highlight));
-
-        onApplyHighlight({ ...activePopover.selection, color });
-      }
+      applyHighlightColor({
+        paragraphIndex: activePopover.paragraphIndex,
+        startIndex: activePopover.selection.startIndex,
+        endIndex: activePopover.selection.endIndex,
+        color,
+        paragraphHighlights: activeParagraphHighlights,
+        onApplyHighlight,
+        onRemoveHighlight,
+      });
 
       window.getSelection()?.removeAllRanges();
       closeActivePopover();

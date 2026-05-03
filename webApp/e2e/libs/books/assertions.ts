@@ -81,6 +81,41 @@ export const assertSpaceBetweenLikeAndCriticizing = async (page: Page) => {
   expect(normalized).toMatch(/like criticizing/);
 };
 
+export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp | string) => {
+  const pattern = typeof wordText === 'string' ? new RegExp(wordText, 'i') : wordText;
+
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        ({ patternSource, patternFlags }) => {
+          const regex = new RegExp(patternSource, patternFlags);
+          const candidates = Array.from(
+            document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+          );
+          const host = candidates.find((entry) => regex.test(entry.textContent ?? ''));
+          if (!host) return false;
+
+          const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
+          if (!charSpans.length) return false;
+
+          const rendered = charSpans.map((entry) => entry.textContent ?? '').join('');
+          const match = rendered.match(regex);
+          if (!match || match.index === undefined) return false;
+
+          const targetChars = charSpans.slice(match.index, match.index + match[0].length);
+          if (!targetChars.length) return false;
+
+          return targetChars.every((entry) => {
+            const color = window.getComputedStyle(entry).backgroundColor;
+            return color.includes('255, 224, 102');
+          });
+        },
+        { patternSource: pattern.source, patternFlags: pattern.flags },
+      ),
+    )
+    .toBeTruthy();
+};
+
 export const assertWheneverHighlightedYellow = async (page: Page) => {
   await expect
     .poll(async () =>

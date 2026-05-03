@@ -26,6 +26,12 @@ export interface ReaderParagraphSelectionPayload {
   };
 }
 
+export interface ReaderParagraphHoverPayload {
+  paragraphIndex: number;
+  startIndex: number;
+  endIndex: number;
+}
+
 interface ReaderParagraphProps {
   paragraphIndex: number;
   paragraphStartCharOffset: number;
@@ -40,6 +46,7 @@ interface ReaderParagraphProps {
   onSelection: (payload: ReaderParagraphSelectionPayload) => void;
   highlights: HighlightedText[];
   onWordHover?: (word: string, e: MouseEvent<HTMLElement>) => void | Promise<void>;
+  onWordHoverInfo?: (payload: ReaderParagraphHoverPayload) => void;
   onWordMouseMove?: (e: MouseEvent<HTMLElement>) => void;
   onHoverClear?: () => void;
 }
@@ -58,6 +65,7 @@ const ReaderParagraphBase = ({
   onSelection,
   highlights,
   onWordHover,
+  onWordHoverInfo,
   onWordMouseMove,
   onHoverClear,
 }: ReaderParagraphProps) => {
@@ -362,7 +370,17 @@ const ReaderParagraphBase = ({
                     },
                   }}
                   onClick={(e) => handleWordClick(e, word, wordIndex)}
-                  onMouseEnter={(e) => void onWordHover?.(word, e)}
+                  onMouseEnter={(e) => {
+                    void onWordHover?.(word, e);
+                    const coreSelectionMeta = getCoreWordSelectionMeta(word);
+                    onWordHoverInfo?.({
+                      paragraphIndex,
+                      startIndex:
+                        wordStart + coreSelectionMeta.startOffset + paragraphStartCharOffset,
+                      endIndex:
+                        wordStart + coreSelectionMeta.endOffsetExclusive + paragraphStartCharOffset,
+                    });
+                  }}
                   onMouseMove={(e) => onWordMouseMove?.(e)}
                 >
                   {word.split('').map((char, charIdx) => {
@@ -470,7 +488,17 @@ const ReaderParagraphBase = ({
                     },
                   }}
                   onClick={(e) => handleWordClick(e, word, wordIndex)}
-                  onMouseEnter={(e) => void onWordHover?.(word, e)}
+                  onMouseEnter={(e) => {
+                    void onWordHover?.(word, e);
+                    const coreSelectionMeta = getCoreWordSelectionMeta(word);
+                    onWordHoverInfo?.({
+                      paragraphIndex,
+                      startIndex:
+                        wordStart + coreSelectionMeta.startOffset + paragraphStartCharOffset,
+                      endIndex:
+                        wordStart + coreSelectionMeta.endOffsetExclusive + paragraphStartCharOffset,
+                    });
+                  }}
                   onMouseMove={(e) => onWordMouseMove?.(e)}
                 >
                   {word.split('').map((char, charIdx) => {

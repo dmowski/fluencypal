@@ -14,6 +14,7 @@ import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
+import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -93,6 +94,13 @@ export const Reader = ({ data }: { data: Book }) => {
       targetLanguage: readerSettings.translateToLanguage,
     });
 
+  const { onWordHoverInfo, clearHoveredWord } = useReaderHoverHighlight({
+    highlights: data.highlights ?? [],
+    onApplyHighlight: books.applySelectedHighlight,
+    onRemoveHighlight: books.removeHighlight,
+    isPopoverOpen: !!activePopover,
+  });
+
   const closeReader = () => books.setActive(null);
   const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
   const goToNextPage = () => setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
@@ -111,6 +119,11 @@ export const Reader = ({ data }: { data: Book }) => {
     },
     [speech.play],
   );
+
+  const handleWordHoverClear = useCallback(() => {
+    clearHoverTranslation();
+    clearHoveredWord();
+  }, [clearHoverTranslation, clearHoveredWord]);
 
   return (
     <Stack
@@ -200,8 +213,9 @@ export const Reader = ({ data }: { data: Book }) => {
                       onSelection={handleParagraphSelection}
                       highlights={highlightsByParagraph.get(index) ?? EMPTY_HIGHLIGHTS}
                       onWordHover={onWordHover}
+                      onWordHoverInfo={onWordHoverInfo}
                       onWordMouseMove={onWordMouseMove}
-                      onHoverClear={clearHoverTranslation}
+                      onHoverClear={handleWordHoverClear}
                     />
                   </Stack>
                 );

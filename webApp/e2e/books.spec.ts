@@ -30,6 +30,8 @@ import {
   applyYellowHighlight,
   assertOnlyWheneverHighlightedYellow,
   assertWheneverHighlightedYellow,
+  hoverWordAndPressColorKey,
+  assertWordHighlightedYellow,
 } from './books.helpers';
 
 const renderModes = [
@@ -183,6 +185,16 @@ for (const renderMode of renderModes) {
       await clickCriticizingWord(page);
       await assertHighlightPopoverVisible(page);
       await assertTranslatedTextVisible(page, 'критиковать');
+    });
+
+    test('hovering a word and pressing color key highlights it', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await hoverWordAndPressColorKey(page, /^criticizing$/i, 'y');
+      await assertWordHighlightedYellow(page, /^criticizing$/i);
     });
 
     test('reader renders a space between "like" and "criticizing"', async ({ page }) => {

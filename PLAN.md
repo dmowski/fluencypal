@@ -2,12 +2,32 @@
 
 ## Reader helper?
 
-- Handle images:
-  I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width?
+- When press: ctrl+A, select only content in pages, do not select other text. do not trigger show highlight popup or voiceover. (cover with e2e)
 
-- "Add book" UX:
-  -- Drag and Drop on main page
-  -- Show input fields only for local dev, on prod just show drag and drop and file input
+- When hover over word, and press Colors shortcut keys, like "Y", make the word yellow. (e2e coverage)
+
+- On header, show percentage progress, like "{current_page} / {total_pages} / {percentage}%"
+  current_page should be one active page. in case of too columns, show the one number and total count of pages/2 (there's a space for logic) (unit tests)
+
+- Move "Voice Over Selected Sext" (boolean) into settings, true by default. When false, do not play text (playText)
+
+- Handle images: I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width to fit the page? (It's visible when screen is 1400px / 700px. The first cover image is not fit into view port.)
+
+### Drag and drop
+
+- Add drag and drop support on main page (book list), so when i put epub file, it will be added to my books. We need to show progress bar.
+
+- On Add Modal, show large section drag-and-drop (but handle drop area at whole page), add info that only epub is supported. If not supported file dropped, show error. Show inputs only for localhost url. Along with drag-and-drop show button to upload file. Update e2e test by covering drag-and-drop and update existing tests.
+
+### Navigation
+
+On top of page, show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page. Update all necessary part to allow it. For now we don't have info about navigation.
+
+For popup bg use this color #FFF3DD with #222 text color. Navigation can be nested
+
+(Write e2e to check it with existing test book).
+
+### Sharing
 
 - Share books, but not settings
 

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const HIGHLIGHT_COLORS = ['#FFE066', '#FFB3C6', '#BDE0FE', '#CDEAC0', '#E9D5FF'];
 
 // Map colors to keyboard shortcuts
-const COLOR_SHORTCUTS: Record<string, string> = {
+export const COLOR_SHORTCUTS: Record<string, string> = {
   '#FFE066': 'Y', // Yellow
   '#FFB3C6': 'P', // Pink
   '#BDE0FE': 'B', // Blue
