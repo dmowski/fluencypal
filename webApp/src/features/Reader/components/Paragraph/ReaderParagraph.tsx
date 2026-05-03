@@ -148,6 +148,14 @@ const ReaderParagraphBase = ({
   };
 
   const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
+    const currentSelection = window.getSelection();
+    const hasExpandedSelection = Boolean(
+      currentSelection?.rangeCount && !currentSelection.getRangeAt(0).collapsed,
+    );
+    if (hasExpandedSelection) {
+      return;
+    }
+
     playText(word);
 
     // Show highlight popover by creating a selection for this word

@@ -2,11 +2,10 @@
 
 ## Reader helper?
 
-And I still see that issue:
+We have an issue with applying highlights.
+When I select "Whenever" text, add apply Yellow highlight, I don't see it applied on UI.
 
-When I select "stood" in the word "understood", is see that the whole word is selected.
-
-Update e2e to catch the issue and fix it. Rune unit/e2e after
+Reproduce with e2e and fix it.
 
 - Handle font style: Markdown
 

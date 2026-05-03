@@ -282,10 +282,43 @@ export const selectEverInsideNeverFoundPhrase = async (page: Page) => {
 };
 
 export const selectStoodInsideUnderstood = async (page: Page) => {
-  await selectSubstringWithinContext(page, {
-    contextPhrase: 'I understood that he meant',
-    selectedSubstring: 'stood',
+  await ensureReaderTextVisible(page, 'I understood that he meant');
+
+  const understoodWord = page
+    .locator('[data-word-index], .conversation-word')
+    .filter({ hasText: /^understood$/i })
+    .first();
+  await expect(understoodWord).toBeVisible();
+
+  const didSelect = await understoodWord.evaluate((node) => {
+    const host = node as HTMLElement;
+    const charSpans = host.querySelectorAll<HTMLElement>('[data-char-offset]');
+    if (charSpans.length < 10) return false;
+
+    const startText = charSpans[5].firstChild;
+    const endText = charSpans[9].firstChild;
+    if (!(startText instanceof Text) || !(endText instanceof Text)) return false;
+
+    const range = document.createRange();
+    range.setStart(startText, 0);
+    range.setEnd(endText, endText.textContent?.length ?? 0);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
+    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+    // Simulate the post-mouseup click event that previously overrode partial selection.
+    host.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    return true;
   });
+
+  if (!didSelect) {
+    throw new Error('Could not select partial text "stood" inside "understood".');
+  }
 };
 
 const selectSubstringWithinContext = async (
