@@ -83,7 +83,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         throw new Error(result.error || i18n._('Failed to convert EPUB.'));
       }
 
-      const parsedText = result.text || '';
+      const parsedText = result.markdown || '';
       setText(parsedText);
       if (result.metadata) {
         setConversionProgress(90);

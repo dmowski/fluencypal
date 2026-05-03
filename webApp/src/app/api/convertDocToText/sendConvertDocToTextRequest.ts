@@ -19,7 +19,7 @@ export const sendConvertDocToTextRequest = async (
     const result = (await response.json()) as ConvertDocToTextResponse;
     if (!response.ok) {
       return {
-        text: result.text,
+        markdown: result.markdown,
         error: result.error || 'Failed to convert EPUB.',
       };
     }

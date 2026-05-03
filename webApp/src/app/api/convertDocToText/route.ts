@@ -1,5 +1,4 @@
 import { parseEpub } from 'epub2md';
-import markdownToTxt from 'markdown-to-txt';
 import { ConvertDocToTextResponse } from './types';
 import { parseStrictJson } from '@/features/Ai/jsonParser';
 import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
@@ -58,20 +57,12 @@ export async function POST(request: Request) {
       .map((section) => section.toMarkdown())
       .map((value) => value.trim())
       .filter(Boolean);
-    const markdown = markdownSections.join('\n\n');
+    const markdown = markdownSections
+      .join('\n\n')
+      .split(`<?xml version='1.0' encoding='utf-8'?>`)
+      .join('\n');
 
-    let text = markdownToTxt(markdown).trim();
-
-    if (!text) {
-      const rawHtml = parsed.sections
-        .map((section) => section.htmlString || '')
-        .map((value) => value.trim())
-        .filter(Boolean)
-        .join('\n\n');
-      text = markdownToTxt(rawHtml.replace(/<[^>]*>/g, ' ')).trim();
-    }
-
-    if (!text) {
+    if (!markdown) {
       const response: ConvertDocToTextResponse = {
         error: 'Could not extract text from this EPUB.',
       };
@@ -84,7 +75,7 @@ export async function POST(request: Request) {
       author: '',
     };
 
-    const previewText = text.slice(0, METADATA_PREVIEW_CHARS).trim();
+    const previewText = markdown.slice(0, METADATA_PREVIEW_CHARS).trim();
     if (previewText) {
       try {
         const parsedMetadata = await parseStrictJson({
@@ -128,7 +119,7 @@ export async function POST(request: Request) {
     }
 
     const response: ConvertDocToTextResponse = {
-      text,
+      markdown,
       metadata,
     };
 
