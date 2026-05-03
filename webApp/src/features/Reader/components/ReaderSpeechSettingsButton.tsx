@@ -279,6 +279,16 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               />
             )}
 
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={readerSettings.voiceOverSelectedText}
+                  onChange={(_event, checked) => readerSettings.setVoiceOverSelectedText(checked)}
+                />
+              }
+              label={i18n._('Voice Over Selected Text')}
+            />
+
             <Stack sx={{ gap: '8px' }}>
               <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Typography variant="body2">{i18n._('Font size')}</Typography>

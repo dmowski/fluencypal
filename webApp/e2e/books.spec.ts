@@ -16,6 +16,7 @@ import {
   clickCriticizingWord,
   closeSettingsPopover,
   enableTranslateOnHover,
+  enableVoiceOverSelectedText,
   ensureReaderTextVisible,
   hoverCriticizingWord,
   hoverWordAndPressColorKey,
@@ -49,6 +50,7 @@ test.describe('markdown rendering', () => {
     await page.getByLabel('Voice').click();
     await page.getByRole('option', { name: 'Mock English Voice' }).click();
     await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
+    await enableVoiceOverSelectedText(page);
     await closeSettingsPopover(page);
 
     await assertVoicePreviewWasPlayed(page);

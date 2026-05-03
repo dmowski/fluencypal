@@ -41,6 +41,7 @@ export interface ReaderSettings {
   paragraphGap: number;
   justifyText: boolean;
   translateOnHover: boolean;
+  voiceOverSelectedText: boolean;
   columns: 1 | 2;
   columnGap: number;
 }

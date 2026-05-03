@@ -22,6 +22,7 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setLineHeight: (nextLineHeight: number) => void;
   setJustifyText: (nextJustifyText: boolean) => void;
   setTranslateOnHover: (nextTranslateOnHover: boolean) => void;
+  setVoiceOverSelectedText: (next: boolean) => void;
 }
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
@@ -31,6 +32,7 @@ const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
 const DEFAULT_JUSTIFY_TEXT = true;
 const DEFAULT_TRANSLATE_ON_HOVER = false;
+const DEFAULT_VOICE_OVER_SELECTED_TEXT = false;
 const AUTO_TWO_COLUMNS_MIN_WIDTH = 1200;
 const AUTO_TWO_COLUMNS_GAP = 50;
 const MOBILE_INIT_FONT_SIZE = 18;
@@ -123,6 +125,7 @@ const getDefaultSettingsFromViewport = (): ReaderSettings => {
     lineHeight: DEFAULT_LINE_HEIGHT,
     justifyText: DEFAULT_JUSTIFY_TEXT,
     translateOnHover: DEFAULT_TRANSLATE_ON_HOVER,
+    voiceOverSelectedText: DEFAULT_VOICE_OVER_SELECTED_TEXT,
     columns: autoColumnsLayout.columns,
     columnGap: autoColumnsLayout.columnGap,
   };
@@ -162,6 +165,10 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.translateOnHover === 'boolean'
         ? parsedSettings.translateOnHover
         : DEFAULT_TRANSLATE_ON_HOVER;
+    const parsedVoiceOverSelectedText =
+      typeof parsedSettings.voiceOverSelectedText === 'boolean'
+        ? parsedSettings.voiceOverSelectedText
+        : DEFAULT_VOICE_OVER_SELECTED_TEXT;
     const autoColumnsLayout = getAutoColumnsLayout(defaultSettings.contentWidth);
 
     return {
@@ -184,6 +191,7 @@ const getInitialSettings = (): ReaderSettings => {
       ),
       justifyText: parsedJustifyText,
       translateOnHover: parsedTranslateOnHover,
+      voiceOverSelectedText: parsedVoiceOverSelectedText,
       columns: autoColumnsLayout.columns,
       columnGap: autoColumnsLayout.columnGap,
     };
@@ -294,6 +302,13 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
+  const setVoiceOverSelectedText = useCallback((next: boolean) => {
+    setSettings((previousSettings) => ({
+      ...previousSettings,
+      voiceOverSelectedText: next,
+    }));
+  }, []);
+
   return useMemo(
     () => ({
       ...settings,
@@ -306,6 +321,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
+      setVoiceOverSelectedText,
     }),
     [
       settings,
@@ -318,6 +334,7 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLineHeight,
       setJustifyText,
       setTranslateOnHover,
+      setVoiceOverSelectedText,
     ],
   );
 };

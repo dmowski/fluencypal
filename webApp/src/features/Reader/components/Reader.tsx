@@ -117,9 +117,10 @@ export const Reader = ({ data }: { data: Book }) => {
 
   const playText = useCallback(
     (text: string) => {
+      if (!readerSettings.voiceOverSelectedText) return;
       speech.play(text.trim());
     },
-    [speech.play],
+    [speech.play, readerSettings.voiceOverSelectedText],
   );
 
   const handleWordHoverClear = useCallback(() => {

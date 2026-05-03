@@ -39,3 +39,9 @@ export const enableTranslateOnHover = async (page: Page) => {
   await expect(translateOnHover).toBeVisible();
   await translateOnHover.check();
 };
+
+export const enableVoiceOverSelectedText = async (page: Page) => {
+  const voiceOver = page.getByRole('checkbox', { name: 'Voice Over Selected Text' });
+  await expect(voiceOver).toBeVisible();
+  await voiceOver.check();
+};

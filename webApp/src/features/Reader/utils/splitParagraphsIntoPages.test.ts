@@ -16,6 +16,7 @@ const settings: ReaderSettings = {
   lineHeight: 1.5,
   justifyText: true,
   translateOnHover: false,
+  voiceOverSelectedText: false,
   contentWidth: 1200,
   contentHeight: 500,
   paragraphGap: 20,
