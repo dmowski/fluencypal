@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { ReaderPage } from '@/features/Reader/ReaderPage';
-import { PracticeProvider } from '@/app/practiceProvider';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 import { Metadata } from 'next';
 
@@ -17,10 +16,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function BookPage(props: PageProps) {
   return (
-    <PracticeProvider>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ReaderPage />
-      </Suspense>
-    </PracticeProvider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReaderPage />
+    </Suspense>
   );
 }

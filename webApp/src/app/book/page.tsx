@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { PracticeProvider } from '../practiceProvider';
 import { ReaderPage } from '@/features/Reader/ReaderPage';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { Metadata } from 'next';
@@ -27,11 +26,9 @@ export default async function BookPage(props: PageProps) {
         <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
-        <PracticeProvider>
-          <Suspense fallback={<div>Loading...</div>}>
-            <ReaderPage />
-          </Suspense>
-        </PracticeProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ReaderPage />
+        </Suspense>
       </body>
     </html>
   );
