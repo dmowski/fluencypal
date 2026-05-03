@@ -165,6 +165,30 @@ export const closeSettingsPopover = async (page: Page) => {
   await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
 };
 
+export const ensureReaderTextVisible = async (
+  page: Page,
+  targetText: string,
+  options?: { maxSteps?: number },
+) => {
+  const maxSteps = options?.maxSteps ?? 12;
+
+  for (let step = 0; step <= maxSteps; step += 1) {
+    const isVisible = await page.evaluate((text) => {
+      const bodyText = document.body.textContent ?? '';
+      return bodyText.toLowerCase().includes(text.toLowerCase());
+    }, targetText);
+
+    if (isVisible) {
+      return;
+    }
+
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(120);
+  }
+
+  throw new Error(`Could not find reader text after ${maxSteps} page steps: ${targetText}`);
+};
+
 export const selectRussianTranslateTarget = async (page: Page) => {
   await page.getByLabel('Translate to').click();
   await page.getByRole('option', { name: 'Russian' }).click();
@@ -248,6 +272,99 @@ export const selectFirstParagraphRangeByWordBoundaries = async (
 
 export const selectWheneverYouFeelPartialText = async (page: Page) => {
   await selectTextPhraseAndTriggerMouseUp(page, 'henever you fee');
+};
+
+export const selectEverInsideNeverFoundPhrase = async (page: Page) => {
+  await selectSubstringWithinContext(page, {
+    contextPhrase: 'I have never found in any other person',
+    selectedSubstring: 'ever',
+  });
+};
+
+export const selectStoodInsideUnderstood = async (page: Page) => {
+  await selectSubstringWithinContext(page, {
+    contextPhrase: 'I understood that he meant',
+    selectedSubstring: 'stood',
+  });
+};
+
+const selectSubstringWithinContext = async (
+  page: Page,
+  {
+    contextPhrase,
+    selectedSubstring,
+  }: {
+    contextPhrase: string;
+    selectedSubstring: string;
+  },
+) => {
+  const didSelect = await page.evaluate(
+    ({ context, selected }) => {
+      const isVisibleTextNode = (entry: Node) => {
+        const element = entry.parentElement;
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      };
+
+      const textNodes: Array<{ node: Text; start: number; end: number }> = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let concatenated = '';
+
+      while (walker.nextNode()) {
+        const current = walker.currentNode as Text;
+        const content = current.textContent ?? '';
+        if (!content.length) continue;
+        if (!isVisibleTextNode(current)) continue;
+
+        const start = concatenated.length;
+        concatenated += content;
+        textNodes.push({ node: current, start, end: concatenated.length });
+      }
+
+      const lower = concatenated.toLowerCase();
+      const contextIndex = lower.indexOf(context.toLowerCase());
+      if (contextIndex < 0) return false;
+
+      const contextSlice = lower.slice(contextIndex, contextIndex + context.length);
+      const selectedIndexInContext = contextSlice.indexOf(selected.toLowerCase());
+      if (selectedIndexInContext < 0) return false;
+
+      const selectionStart = contextIndex + selectedIndexInContext;
+      const selectionEndExclusive = selectionStart + selected.length;
+
+      const startSegment = textNodes.find(
+        (segment) => segment.start <= selectionStart && selectionStart < segment.end,
+      );
+      const endSegment = textNodes.find(
+        (segment) => segment.start < selectionEndExclusive && selectionEndExclusive <= segment.end,
+      );
+      if (!startSegment || !endSegment) return false;
+
+      const range = document.createRange();
+      range.setStart(startSegment.node, selectionStart - startSegment.start);
+      range.setEnd(endSegment.node, selectionEndExclusive - endSegment.start);
+
+      const selection = window.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+
+      const eventTarget =
+        (range.commonAncestorContainer instanceof HTMLElement
+          ? range.commonAncestorContainer
+          : range.commonAncestorContainer.parentElement) ?? document.body;
+      eventTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+      return true;
+    },
+    { context: contextPhrase, selected: selectedSubstring },
+  );
+
+  if (!didSelect) {
+    throw new Error(
+      `Could not select substring "${selectedSubstring}" inside context "${contextPhrase}".`,
+    );
+  }
 };
 
 const selectTextPhraseAndTriggerMouseUp = async (page: Page, phrase: string) => {

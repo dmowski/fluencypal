@@ -11,14 +11,17 @@ import {
   assertWordHoverHasEffect,
   clickCriticizingWord,
   closeSettingsPopover,
+  ensureReaderTextVisible,
   enableTranslateOnHover,
   hoverCriticizingWord,
   installSpeechMock,
   mockSingleTranslation,
   openSeededGatsbyBook,
   openSettingsPopover,
+  selectEverInsideNeverFoundPhrase,
   selectFirstParagraphRangeByWordBoundaries,
   selectCriticizingWordText,
+  selectStoodInsideUnderstood,
   selectWheneverYouFeelPartialText,
   selectRussianTranslateTarget,
   setRenderMarkdown,
@@ -101,6 +104,34 @@ for (const renderMode of renderModes) {
       await assertHighlightPopoverVisible(page);
       await assertCurrentSelectionText(page, /^henever you fee$/i);
       await assertSelectionTextPersists(page, /^henever you fee$/i);
+    });
+
+    test('selecting ever in "I have never found" stays on intended ever', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await ensureReaderTextVisible(page, 'I have never found in any other person');
+
+      await selectEverInsideNeverFoundPhrase(page);
+
+      await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /^ever$/i);
+      await assertSelectionTextPersists(page, /^ever$/i);
+    });
+
+    test('selecting stood in understood keeps partial selection only', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await selectStoodInsideUnderstood(page);
+
+      await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /^stood$/i);
+      await assertSelectionTextPersists(page, /^stood$/i);
     });
 
     test('reader uses pointer cursor consistently for interactive words', async ({ page }) => {

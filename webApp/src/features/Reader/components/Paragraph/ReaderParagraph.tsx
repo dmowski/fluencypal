@@ -271,9 +271,33 @@ const ReaderParagraphBase = ({
             return;
           }
 
-          const nearbyStart = Math.max(0, resolvedRawStart - selectedLength);
-          const locatedAt = paragraphText.indexOf(selectedText, nearbyStart);
-          if (locatedAt >= 0) {
+          const selectedInsideAdjusted = adjustedExtracted.indexOf(selectedText);
+          if (selectedInsideAdjusted >= 0) {
+            resolvedRawStart += selectedInsideAdjusted;
+            resolvedRawEnd = Math.min(resolvedRawStart + selectedLength, paragraphText.length);
+            return;
+          }
+
+          const occurrences: number[] = [];
+          let cursor = 0;
+          while (cursor <= paragraphText.length) {
+            const foundAt = paragraphText.indexOf(selectedText, cursor);
+            if (foundAt < 0) {
+              break;
+            }
+            occurrences.push(foundAt);
+            cursor = foundAt + 1;
+          }
+
+          if (occurrences.length > 0) {
+            const anchorStart = resolvedRawStart;
+            if (anchorStart === null) {
+              return;
+            }
+
+            const locatedAt = occurrences.reduce((best, current) =>
+              Math.abs(current - anchorStart) < Math.abs(best - anchorStart) ? current : best,
+            );
             resolvedRawStart = locatedAt;
             resolvedRawEnd = Math.min(locatedAt + selectedLength, paragraphText.length);
           }
@@ -311,8 +335,18 @@ const ReaderParagraphBase = ({
             });
 
             requestAnimationFrame(() => {
-              const restoredByText = applyNativeSelectionByText(selectedText, startForRestore);
-              if (!restoredByText) {
+              applyNativeSelectionByOffsets(startForRestore, endForRestore);
+
+              const restoredByOffsets = normalizeSelectedText(window.getSelection()?.toString());
+              if (restoredByOffsets !== selectedText) {
+                const restoredByText = applyNativeSelectionByText(selectedText, startForRestore);
+                if (!restoredByText) {
+                  return;
+                }
+              }
+
+              const restoredFinal = normalizeSelectedText(window.getSelection()?.toString());
+              if (restoredFinal !== selectedText) {
                 applyNativeSelectionByOffsets(startForRestore, endForRestore);
               }
             });

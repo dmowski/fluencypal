@@ -2,12 +2,25 @@
 
 ## Reader helper?
 
+refactor webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
+
+extract calculations related to this component into
+webApp/src/features/Reader/components/Paragraph/libs/functionName.ts files
+
+and cover with unit tests
+
+and place to that folders files like
+readerParagraphTranslationHelpers,
+readerParagraphHelpers
+readerParagraphInteractionHelpers
+
+and make files name more explicit, not just "helper", make these libs files granular.
+
+Update reader agents.md
+
 - Handle font style: Markdown
 
-Let's move user selection to state.
-And keep it in
-
-- Handle images
+- Handle images.
 
 - handle navigation
 
