@@ -46,13 +46,14 @@ After changing files in this feature:
 
 1. Run `cd webApp && pnpm lint`.
 2. Run targeted unit tests when changing parsing or text/selection logic.
-3. For Reader and book flow behavior changes, always run the targeted e2e spec at `webApp/e2e/books.spec.ts` before finishing.
+3. For Reader and book flow behavior changes, always run the targeted e2e specs at `webApp/e2e/books.spec.ts` and `webApp/e2e/booksImages.spec.ts` before finishing.
 4. Avoid running full e2e unless navigation or route behavior changed.
 
 ## E2E Coverage
 
 - Primary Reader regression coverage lives in `webApp/e2e/books.spec.ts`.
-- Prefer running that spec first for changes in book list, opening/reading books, pagination, or settings interactions.
+- Image import and EPUB image rendering setup coverage lives in `webApp/e2e/booksImages.spec.ts`.
+- Prefer running these specs first for changes in book list, EPUB import/parsing, opening/reading books, pagination, or settings interactions.
 
 ## Reader Markdown Flag
 
