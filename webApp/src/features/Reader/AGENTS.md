@@ -6,14 +6,18 @@ This file applies to `webApp/src/features/Reader/**`.
 
 - `ReaderPage.tsx`: feature entry used by app routes; wires providers and selects list vs reader view.
 - `components/`: UI and interactive view components.
+- `components/Paragraph/libs/`: paragraph-specific, granular utility modules (offset mapping, selection reconciliation, DOM range restore, translation eligibility).
 - `hooks/`: feature state and browser integrations.
-- `utils/`: pure helpers for pagination, selection/highlights, translation guards, and IndexedDB.
+- `utils/`: shared feature-level helpers (pagination and IndexedDB).
 - `model/`: feature types and local sample data.
 
 ## Key Files
 
 - `components/Reader.tsx`: main reading UI, paging, and paragraph rendering.
 - `components/Paragraph/ReaderParagraph.tsx`: text selection, hover translation, and highlight interactions.
+- `components/Paragraph/libs/selectionOffsetReconciliation.ts`: reconciles DOM offsets with selected text and duplicate substring anchors.
+- `components/Paragraph/libs/absoluteCharOffsetFromDomPoint.ts`: resolves range endpoints to absolute paragraph offsets.
+- `components/Paragraph/libs/selectionDomRestore.ts`: reapplies native browser selection after rerenders.
 - `components/ReaderSpeechSettingsButton.tsx`: speech + reader visual settings panel.
 - `hooks/useBooks.tsx`: books source of truth, persistence sync, and highlight mutations.
 - `hooks/useReaderSettings.ts`: persisted reader/speech preferences.
@@ -24,10 +28,17 @@ This file applies to `webApp/src/features/Reader/**`.
 
 - Keep feature-local imports grouped by role:
   - UI imports from `components/*`
+  - paragraph-local pure logic from `components/Paragraph/libs/*`
   - state from `hooks/*`
-  - pure logic from `utils/*`
+  - shared feature utilities from `utils/*`
   - shared types from `model/types`
 - Keep route-facing import stable through `ReaderPage.tsx`.
+
+## Paragraph Lib Naming
+
+- Avoid generic `*helpers` names for paragraph logic.
+- Use explicit, single-purpose module names (examples: `selectionOffsetReconciliation`, `pointerPositionFromMouseEvent`, `readerTextTranslationEligibility`).
+- Keep each module focused on one concept and make exported names match behavior precisely.
 
 ## Validation
 

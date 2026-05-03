@@ -1,18 +1,20 @@
 import { Stack, Typography } from '@mui/material';
 import { memo, MouseEvent, useMemo, useRef } from 'react';
-import {
-  createSelectionFromRange,
-  getPopoverPositionFromRect,
-} from '../../utils/readerParagraphInteractionHelpers';
-import {
-  getAbsoluteCharOffset,
-  getCharHighlightColor,
-  getRangeCharOffsets,
-  getWordCharOffsets,
-} from '../../utils/readerParagraphHelpers';
-import { normalizeSelectedText } from '../../utils/readerParagraphTranslationHelpers';
+import { createSelectionFromRange } from './libs/selectionHighlightRange';
+import { getAbsoluteCharOffset, getRangeCharOffsets } from './libs/absoluteCharOffsetFromDomPoint';
+import { getWordCharOffsets } from './libs/selectionOffsetFromWordList';
+import { normalizeSelectedText } from './libs/normalizeReaderSelectedText';
 import { HighlightedText } from '../../model/types';
 import { ReaderMarkdown } from './ReaderMarkdown';
+import { getPopoverPositionFromRect } from './libs/popoverAnchorPosition';
+import { getSafeWordMeta } from './libs/wordIndexSafeMeta';
+import { reconcileSelectionOffsets } from './libs/selectionOffsetReconciliation';
+import {
+  applyNativeSelectionByOffsets,
+  applyNativeSelectionByText,
+  applyNativeSelectionForWordElement,
+} from './libs/selectionDomRestore';
+import { getCharHighlightColor as getCharColorAtOffset } from './libs/highlightColorAtCharOffset';
 
 export interface ReaderParagraphSelectionPayload {
   paragraphIndex: number;
@@ -59,160 +61,6 @@ const ReaderParagraphBase = ({
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
   const paragraphRef = useRef<HTMLDivElement | null>(null);
 
-  const findFirstTextNode = (node: Node): Text | null => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      return node as Text;
-    }
-
-    for (const child of Array.from(node.childNodes)) {
-      const found = findFirstTextNode(child);
-      if (found) return found;
-    }
-
-    return null;
-  };
-
-  const findLastTextNode = (node: Node): Text | null => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      return node as Text;
-    }
-
-    const children = Array.from(node.childNodes);
-    for (let i = children.length - 1; i >= 0; i -= 1) {
-      const found = findLastTextNode(children[i]);
-      if (found) return found;
-    }
-
-    return null;
-  };
-
-  const applyNativeSelectionForWordElement = (element: HTMLElement | null) => {
-    if (!element) return;
-
-    const textStart = findFirstTextNode(element);
-    const textEnd = findLastTextNode(element);
-    if (!textStart || !textEnd) return;
-
-    const range = document.createRange();
-    range.setStart(textStart, 0);
-    range.setEnd(textEnd, textEnd.textContent?.length ?? 0);
-    const domSelection = window.getSelection();
-    domSelection?.removeAllRanges();
-    domSelection?.addRange(range);
-  };
-
-  const applyNativeSelectionByOffsets = (startInclusive: number, endExclusive: number) => {
-    const paragraphElement = paragraphRef.current;
-    if (!paragraphElement) return;
-
-    const startElement = paragraphElement.querySelector<HTMLElement>(
-      `[data-char-offset="${startInclusive}"]`,
-    );
-    const endElement = paragraphElement.querySelector<HTMLElement>(
-      `[data-char-offset="${Math.max(endExclusive - 1, startInclusive)}"]`,
-    );
-    if (!startElement || !endElement) return;
-
-    const textStart = findFirstTextNode(startElement);
-    const textEnd = findLastTextNode(endElement);
-    if (!textStart || !textEnd) return;
-
-    const range = document.createRange();
-    range.setStart(textStart, 0);
-    range.setEnd(textEnd, textEnd.textContent?.length ?? 0);
-
-    const domSelection = window.getSelection();
-    domSelection?.removeAllRanges();
-    domSelection?.addRange(range);
-  };
-
-  const applyNativeSelectionByText = (selectedValue: string, startHint?: number) => {
-    if (!selectedValue) {
-      return false;
-    }
-
-    const paragraphElement = paragraphRef.current;
-    if (!paragraphElement) {
-      return false;
-    }
-
-    const fullText = paragraphElement.textContent ?? '';
-    if (!fullText.length) {
-      return false;
-    }
-
-    const occurrences: number[] = [];
-    let searchFrom = 0;
-    while (searchFrom <= fullText.length) {
-      const index = fullText.indexOf(selectedValue, searchFrom);
-      if (index < 0) break;
-      occurrences.push(index);
-      searchFrom = index + 1;
-    }
-
-    if (occurrences.length === 0) {
-      return false;
-    }
-
-    const targetStart =
-      typeof startHint === 'number'
-        ? occurrences.reduce((best, current) =>
-            Math.abs(current - startHint) < Math.abs(best - startHint) ? current : best,
-          )
-        : occurrences[0];
-    const targetEndExclusive = targetStart + selectedValue.length;
-
-    const walker = document.createTreeWalker(paragraphElement, NodeFilter.SHOW_TEXT);
-    const segments: Array<{ node: Text; start: number; end: number }> = [];
-    let cursor = 0;
-
-    while (walker.nextNode()) {
-      const node = walker.currentNode as Text;
-      const content = node.textContent ?? '';
-      if (!content.length) {
-        continue;
-      }
-
-      const start = cursor;
-      const end = cursor + content.length;
-      segments.push({ node, start, end });
-      cursor = end;
-    }
-
-    const startSegment = segments.find(
-      (segment) => segment.start <= targetStart && targetStart < segment.end,
-    );
-    const endSegment = segments.find(
-      (segment) => segment.start < targetEndExclusive && targetEndExclusive <= segment.end,
-    );
-
-    if (!startSegment || !endSegment) {
-      return false;
-    }
-
-    const range = document.createRange();
-    range.setStart(startSegment.node, targetStart - startSegment.start);
-    range.setEnd(endSegment.node, targetEndExclusive - endSegment.start);
-
-    const selection = window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-
-    return true;
-  };
-
-  const getSafeWordMeta = (wordIndex: number, fallbackWord: string) => {
-    const lastSafeIndex = Math.max(words.length - 1, 0);
-    const safeIndex = Math.min(Math.max(wordIndex, 0), lastSafeIndex);
-    const sourceWord = words[safeIndex] ?? fallbackWord;
-    const sourceStart = wordCharOffsets[safeIndex] ?? 0;
-
-    return {
-      sourceWord,
-      sourceStart,
-    };
-  };
-
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     const sel = window.getSelection();
@@ -227,101 +75,30 @@ const ReaderParagraphBase = ({
         const directRangeOffsets = paragraphRef.current
           ? getRangeCharOffsets(range, paragraphRef.current)
           : null;
-        const rawStart =
+        const startFromDom =
           directRangeOffsets?.startInclusive ??
           getAbsoluteCharOffset(range.startContainer, range.startOffset, wordCharOffsets);
         // endOffset is exclusive in the Selection API.
-        const rawEnd =
+        const endFromDom =
           directRangeOffsets?.endExclusive ??
           getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
 
-        let resolvedRawStart = rawStart;
-        let resolvedRawEnd = rawEnd;
+        const resolvedOffsets = reconcileSelectionOffsets({
+          paragraphText,
+          selectedText,
+          rawStart: startFromDom,
+          rawEnd: endFromDom,
+        });
 
-        const reconcileOffsetsWithSelectedText = () => {
-          if (resolvedRawStart === null || resolvedRawEnd === null) {
-            return;
-          }
-
-          const boundedStart = Math.max(0, Math.min(resolvedRawStart, paragraphText.length));
-          const boundedEnd = Math.max(
-            boundedStart + 1,
-            Math.min(resolvedRawEnd, paragraphText.length),
-          );
-
-          resolvedRawStart = boundedStart;
-          resolvedRawEnd = boundedEnd;
-
-          const selectedLength = selectedText.length;
-          if (selectedLength === 0) {
-            return;
-          }
-
-          const extracted = paragraphText.slice(resolvedRawStart, resolvedRawEnd);
-          if (extracted === selectedText) {
-            return;
-          }
-
-          if (resolvedRawEnd < resolvedRawStart + selectedLength) {
-            resolvedRawEnd = Math.min(resolvedRawStart + selectedLength, paragraphText.length);
-          }
-
-          const adjustedExtracted = paragraphText.slice(resolvedRawStart, resolvedRawEnd);
-          if (adjustedExtracted === selectedText) {
-            return;
-          }
-
-          const selectedInsideAdjusted = adjustedExtracted.indexOf(selectedText);
-          if (selectedInsideAdjusted >= 0) {
-            resolvedRawStart += selectedInsideAdjusted;
-            resolvedRawEnd = Math.min(resolvedRawStart + selectedLength, paragraphText.length);
-            return;
-          }
-
-          const occurrences: number[] = [];
-          let cursor = 0;
-          while (cursor <= paragraphText.length) {
-            const foundAt = paragraphText.indexOf(selectedText, cursor);
-            if (foundAt < 0) {
-              break;
-            }
-            occurrences.push(foundAt);
-            cursor = foundAt + 1;
-          }
-
-          if (occurrences.length > 0) {
-            const anchorStart = resolvedRawStart;
-            if (anchorStart === null) {
-              return;
-            }
-
-            const locatedAt = occurrences.reduce((best, current) =>
-              Math.abs(current - anchorStart) < Math.abs(best - anchorStart) ? current : best,
-            );
-            resolvedRawStart = locatedAt;
-            resolvedRawEnd = Math.min(locatedAt + selectedLength, paragraphText.length);
-          }
-        };
-
-        if (resolvedRawStart === null || resolvedRawEnd === null) {
-          const fallbackStart = paragraphText.indexOf(selectedText);
-          if (fallbackStart >= 0) {
-            resolvedRawStart = fallbackStart;
-            resolvedRawEnd = fallbackStart + selectedText.length;
-          }
-        }
-
-        reconcileOffsetsWithSelectedText();
-
-        if (resolvedRawStart !== null && resolvedRawEnd !== null) {
+        if (resolvedOffsets) {
           const selection = createSelectionFromRange({
             paragraphIndex,
-            rawStart: resolvedRawStart,
-            rawEnd: resolvedRawEnd,
+            rawStart: resolvedOffsets.startInclusive,
+            rawEnd: resolvedOffsets.endExclusive,
           });
           if (rect) {
-            const startForRestore = resolvedRawStart;
-            const endForRestore = resolvedRawEnd;
+            const startForRestore = resolvedOffsets.startInclusive;
+            const endForRestore = resolvedOffsets.endExclusive;
 
             onSelection({
               paragraphIndex,
@@ -335,11 +112,19 @@ const ReaderParagraphBase = ({
             });
 
             requestAnimationFrame(() => {
-              applyNativeSelectionByOffsets(startForRestore, endForRestore);
+              applyNativeSelectionByOffsets({
+                paragraphElement: paragraphRef.current,
+                startInclusive: startForRestore,
+                endExclusive: endForRestore,
+              });
 
               const restoredByOffsets = normalizeSelectedText(window.getSelection()?.toString());
               if (restoredByOffsets !== selectedText) {
-                const restoredByText = applyNativeSelectionByText(selectedText, startForRestore);
+                const restoredByText = applyNativeSelectionByText({
+                  paragraphElement: paragraphRef.current,
+                  selectedValue: selectedText,
+                  startHint: startForRestore,
+                });
                 if (!restoredByText) {
                   return;
                 }
@@ -347,7 +132,11 @@ const ReaderParagraphBase = ({
 
               const restoredFinal = normalizeSelectedText(window.getSelection()?.toString());
               if (restoredFinal !== selectedText) {
-                applyNativeSelectionByOffsets(startForRestore, endForRestore);
+                applyNativeSelectionByOffsets({
+                  paragraphElement: paragraphRef.current,
+                  startInclusive: startForRestore,
+                  endExclusive: endForRestore,
+                });
               }
             });
           }
@@ -365,7 +154,12 @@ const ReaderParagraphBase = ({
     e.preventDefault();
     e.stopPropagation();
 
-    const { sourceStart } = getSafeWordMeta(wordIndex, word);
+    const { sourceStart } = getSafeWordMeta({
+      wordIndex,
+      fallbackWord: word,
+      words,
+      wordCharOffsets,
+    });
     const wordStart = sourceStart;
     const wordEnd = wordStart + word.length;
 
@@ -424,7 +218,12 @@ const ReaderParagraphBase = ({
         {isUseMarkdown ? (
           <ReaderMarkdown
             renderWord={({ word, wordIndex }) => {
-              const { sourceStart } = getSafeWordMeta(wordIndex, word);
+              const { sourceStart } = getSafeWordMeta({
+                wordIndex,
+                fallbackWord: word,
+                words,
+                wordCharOffsets,
+              });
               const wordStart = sourceStart;
 
               return (
@@ -463,12 +262,12 @@ const ReaderParagraphBase = ({
                   {word.split('').map((char, charIdx) => {
                     const absOffset = wordStart + charIdx;
                     const sourceOffset = absOffset + paragraphStartCharOffset;
-                    const color = getCharHighlightColor(sourceOffset, highlights);
+                    const color = getCharColorAtOffset(sourceOffset, highlights);
                     const prevColor =
-                      charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
+                      charIdx > 0 ? getCharColorAtOffset(sourceOffset - 1, highlights) : null;
                     const nextColor =
                       charIdx < word.length - 1
-                        ? getCharHighlightColor(sourceOffset + 1, highlights)
+                        ? getCharColorAtOffset(sourceOffset + 1, highlights)
                         : null;
                     const isStart = color !== null && color !== prevColor;
                     const isEnd = color !== null && color !== nextColor;
@@ -498,7 +297,12 @@ const ReaderParagraphBase = ({
               );
             }}
             renderSpace={(wordIndex) => {
-              const { sourceWord, sourceStart } = getSafeWordMeta(wordIndex, '');
+              const { sourceWord, sourceStart } = getSafeWordMeta({
+                wordIndex,
+                fallbackWord: '',
+                words,
+                wordCharOffsets,
+              });
               const wordStart = sourceStart;
               const wordLength = sourceWord.length;
 
@@ -507,7 +311,7 @@ const ReaderParagraphBase = ({
                   data-char-offset={wordStart + wordLength}
                   style={{
                     backgroundColor:
-                      getCharHighlightColor(
+                      getCharColorAtOffset(
                         wordStart + wordLength + paragraphStartCharOffset,
                         highlights,
                       ) ?? 'transparent',
@@ -523,7 +327,12 @@ const ReaderParagraphBase = ({
           </ReaderMarkdown>
         ) : (
           words.map((word, wordIndex) => {
-            const { sourceStart } = getSafeWordMeta(wordIndex, word);
+            const { sourceStart } = getSafeWordMeta({
+              wordIndex,
+              fallbackWord: word,
+              words,
+              wordCharOffsets,
+            });
             const wordStart = sourceStart;
             return (
               <span key={wordIndex}>
@@ -561,12 +370,12 @@ const ReaderParagraphBase = ({
                   {word.split('').map((char, charIdx) => {
                     const absOffset = wordStart + charIdx;
                     const sourceOffset = absOffset + paragraphStartCharOffset;
-                    const color = getCharHighlightColor(sourceOffset, highlights);
+                    const color = getCharColorAtOffset(sourceOffset, highlights);
                     const prevColor =
-                      charIdx > 0 ? getCharHighlightColor(sourceOffset - 1, highlights) : null;
+                      charIdx > 0 ? getCharColorAtOffset(sourceOffset - 1, highlights) : null;
                     const nextColor =
                       charIdx < word.length - 1
-                        ? getCharHighlightColor(sourceOffset + 1, highlights)
+                        ? getCharColorAtOffset(sourceOffset + 1, highlights)
                         : null;
                     const isStart = color !== null && color !== prevColor;
                     const isEnd = color !== null && color !== nextColor;
@@ -597,7 +406,7 @@ const ReaderParagraphBase = ({
                     data-char-offset={wordStart + word.length}
                     style={{
                       backgroundColor:
-                        getCharHighlightColor(
+                        getCharColorAtOffset(
                           wordStart + word.length + paragraphStartCharOffset,
                           highlights,
                         ) ?? 'transparent',

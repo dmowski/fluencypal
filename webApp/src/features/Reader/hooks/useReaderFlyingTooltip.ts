@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { MouseEvent } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
-import {
-  canTranslateReaderText,
-  normalizeSelectedText,
-} from '../utils/readerParagraphTranslationHelpers';
-import { getPointerPosition } from '../utils/readerParagraphInteractionHelpers';
+import { normalizeSelectedText } from '../components/Paragraph/libs/normalizeReaderSelectedText';
+import { canTranslateReaderText } from '../components/Paragraph/libs/readerTextTranslationEligibility';
+import { getPointerPosition } from '../components/Paragraph/libs/pointerPositionFromMouseEvent';
 import { NativeLangCode } from '@/libs/language/type';
 import {
   FLYING_TOOLTIP_OFFSET_X,

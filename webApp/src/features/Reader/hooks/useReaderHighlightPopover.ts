@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
-import {
-  canTranslateReaderText,
-  normalizeSelectedText,
-} from '../utils/readerParagraphTranslationHelpers';
-import { getHighlightAtCharRange } from '../utils/readerParagraphHelpers';
+import { normalizeSelectedText } from '../components/Paragraph/libs/normalizeReaderSelectedText';
+import { canTranslateReaderText } from '../components/Paragraph/libs/readerTextTranslationEligibility';
+import { getHighlightAtCharRange } from '../components/Paragraph/libs/highlightColorAtCharOffset';
 import { HighlightedText } from '../model/types';
 import { ReaderParagraphSelectionPayload } from '../components/Paragraph/ReaderParagraph';
 import { NativeLangCode } from '@/libs/language/type';

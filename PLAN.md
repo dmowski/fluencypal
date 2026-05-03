@@ -2,21 +2,11 @@
 
 ## Reader helper?
 
-refactor webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
+And I still see that issue:
 
-extract calculations related to this component into
-webApp/src/features/Reader/components/Paragraph/libs/functionName.ts files
+When I select "stood" in the word "understood", is see that the whole word is selected.
 
-and cover with unit tests
-
-and place to that folders files like
-readerParagraphTranslationHelpers,
-readerParagraphHelpers
-readerParagraphInteractionHelpers
-
-and make files name more explicit, not just "helper", make these libs files granular.
-
-Update reader agents.md
+Update e2e to catch the issue and fix it. Rune unit/e2e after
 
 - Handle font style: Markdown
 

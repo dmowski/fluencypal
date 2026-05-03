@@ -1,8 +1,5 @@
 import { NativeLangCode } from '@/libs/language/type';
 
-export const normalizeSelectedText = (text: string | null | undefined): string =>
-  text?.trim() ?? '';
-
 export const canTranslateReaderText = ({
   text,
   sourceLanguage,
