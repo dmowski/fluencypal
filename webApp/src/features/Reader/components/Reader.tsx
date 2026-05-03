@@ -13,6 +13,7 @@ import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
 import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
 import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
+import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
@@ -67,6 +68,13 @@ export const Reader = ({ data }: { data: Book }) => {
     onApplyHighlight: books.applySelectedHighlight,
     onRemoveHighlight: books.removeHighlight,
   });
+
+  const { flyingTooltipNode, onWordHover, onWordMouseMove, clearHoverTranslation } =
+    useReaderFlyingTooltip({
+      translateOnHover: readerSettings.translateOnHover,
+      sourceLanguage: readerSettings.language,
+      targetLanguage: readerSettings.translateToLanguage,
+    });
 
   const closeReader = () => books.setActive(null);
   const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
@@ -164,14 +172,14 @@ export const Reader = ({ data }: { data: Book }) => {
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}
-                      translateOnHover={readerSettings.translateOnHover}
-                      sourceLanguage={readerSettings.language}
-                      targetLanguage={readerSettings.translateToLanguage}
                       playText={playText}
                       onSelection={handleParagraphSelection}
                       highlights={(data.highlights ?? []).filter(
                         (highlight) => (highlight.paragraphIndex ?? 0) === index,
                       )}
+                      onWordHover={onWordHover}
+                      onWordMouseMove={onWordMouseMove}
+                      onHoverClear={clearHoverTranslation}
                     />
                   </Stack>
                 );
@@ -190,6 +198,8 @@ export const Reader = ({ data }: { data: Book }) => {
         activeColor={activeColor}
         onColorSelect={handleActiveColorSelect}
       />
+
+      {flyingTooltipNode}
 
       <PaginationPanel
         onPrevious={goToPreviousPage}

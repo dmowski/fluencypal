@@ -1,10 +1,7 @@
 import { Stack, Typography } from '@mui/material';
-import { MouseEvent, useMemo, useRef, useState, useEffect } from 'react';
-import { getTranslation, normalizeToNativeLangCode } from '../../../Translation/translationHelpers';
-import { FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y, FlyingTooltip } from '../FlyingTooltip';
+import { MouseEvent, useMemo } from 'react';
 import {
   createSelectionFromRange,
-  getPointerPosition,
   getPopoverPositionFromRect,
 } from '../../utils/readerParagraphInteractionHelpers';
 import {
@@ -12,12 +9,8 @@ import {
   getCharHighlightColor,
   getWordCharOffsets,
 } from '../../utils/readerParagraphHelpers';
-import {
-  canTranslateReaderText,
-  normalizeSelectedText,
-} from '../../utils/readerParagraphTranslationHelpers';
+import { normalizeSelectedText } from '../../utils/readerParagraphTranslationHelpers';
 import { HighlightedText } from '../../model/types';
-import { NativeLangCode } from '@/libs/language/type';
 import { ReaderMarkdown } from './ReaderMarkdown';
 import { isUseMarkdown } from './readerRenderFlags';
 
@@ -38,12 +31,12 @@ export const ReaderParagraph = ({
   fontSize,
   lineHeight,
   justifyText,
-  translateOnHover,
-  sourceLanguage,
-  targetLanguage,
   playText,
   onSelection,
   highlights,
+  onWordHover,
+  onWordMouseMove,
+  onHoverClear,
 }: {
   paragraphIndex: number;
   paragraphStartCharOffset: number;
@@ -51,30 +44,15 @@ export const ReaderParagraph = ({
   fontSize: number;
   lineHeight: number;
   justifyText: boolean;
-  translateOnHover: boolean;
-  sourceLanguage: string;
-  targetLanguage: NativeLangCode | null;
   playText: (word: string) => void;
   onSelection: (payload: ReaderParagraphSelectionPayload) => void;
   highlights: HighlightedText[];
+  onWordHover?: (word: string, e: MouseEvent<HTMLElement>) => void | Promise<void>;
+  onWordMouseMove?: (e: MouseEvent<HTMLElement>) => void;
+  onHoverClear?: () => void;
 }) => {
-  const [hoverTranslation, setHoverTranslation] = useState<string | null>(null);
-  const [hoverPointer, setHoverPointer] = useState<{ x: number; y: number } | null>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const hoverRequestIdRef = useRef(0);
-
-  // Detect touch device
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
-  }, []);
-
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
-  const normalizedSourceLanguage = useMemo(
-    () => normalizeToNativeLangCode(sourceLanguage),
-    [sourceLanguage],
-  );
 
   const getSafeWordMeta = (wordIndex: number, fallbackWord: string) => {
     const lastSafeIndex = Math.max(words.length - 1, 0);
@@ -86,56 +64,6 @@ export const ReaderParagraph = ({
       sourceWord,
       sourceStart,
     };
-  };
-
-  const clearHoverTranslation = () => {
-    hoverRequestIdRef.current += 1;
-    setHoverTranslation(null);
-    setHoverPointer(null);
-  };
-
-  const handleWordMouseEnter = async (e: MouseEvent<HTMLSpanElement>, word: string) => {
-    // Disable hover translation on mobile/touch devices
-    if (!translateOnHover || isTouchDevice) return;
-    setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
-
-    const text = normalizeSelectedText(word);
-    if (
-      !canTranslateReaderText({
-        text,
-        sourceLanguage: normalizedSourceLanguage,
-        targetLanguage,
-      })
-    ) {
-      clearHoverTranslation();
-      return;
-    }
-
-    const requestId = hoverRequestIdRef.current + 1;
-    hoverRequestIdRef.current = requestId;
-    setHoverTranslation(null);
-
-    try {
-      const translated = await getTranslation({
-        text,
-        sourceLanguage: normalizedSourceLanguage,
-        targetLanguage,
-      });
-
-      if (hoverRequestIdRef.current !== requestId || !translated.trim()) {
-        return;
-      }
-
-      setHoverTranslation(translated);
-    } catch {
-      if (hoverRequestIdRef.current === requestId) {
-        setHoverTranslation(null);
-      }
-    }
-  };
-
-  const handleWordMouseMove = (e: MouseEvent<HTMLSpanElement>) => {
-    setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
   };
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
@@ -217,7 +145,7 @@ export const ReaderParagraph = ({
       <Typography
         variant="body1"
         onMouseUp={handleMouseUp}
-        onMouseLeave={clearHoverTranslation}
+        onMouseLeave={onHoverClear}
         sx={{
           fontFamily: 'serif',
           fontSize: `${fontSize}px`,
@@ -264,8 +192,8 @@ export const ReaderParagraph = ({
                     },
                   }}
                   onClick={(e) => handleWordClick(e, word, wordIndex)}
-                  onMouseEnter={(e) => void handleWordMouseEnter(e, word)}
-                  onMouseMove={handleWordMouseMove}
+                  onMouseEnter={(e) => void onWordHover?.(word, e)}
+                  onMouseMove={(e) => onWordMouseMove?.(e)}
                 >
                   {word.split('').map((char, charIdx) => {
                     const absOffset = wordStart + charIdx;
@@ -360,8 +288,8 @@ export const ReaderParagraph = ({
                     },
                   }}
                   onClick={(e) => handleWordClick(e, word, wordIndex)}
-                  onMouseEnter={(e) => void handleWordMouseEnter(e, word)}
-                  onMouseMove={handleWordMouseMove}
+                  onMouseEnter={(e) => void onWordHover?.(word, e)}
+                  onMouseMove={(e) => onWordMouseMove?.(e)}
                 >
                   {word.split('').map((char, charIdx) => {
                     const absOffset = wordStart + charIdx;
@@ -415,9 +343,6 @@ export const ReaderParagraph = ({
           })
         )}
       </Typography>
-      {hoverTranslation ? (
-        <FlyingTooltip text={hoverTranslation} initialPosition={hoverPointer} />
-      ) : null}
     </>
   );
 };

@@ -175,9 +175,6 @@ const DevPanelContent = () => {
                   fontSize={readerSettings.fontSize}
                   lineHeight={readerSettings.lineHeight}
                   justifyText={readerSettings.justifyText}
-                  translateOnHover={readerSettings.translateOnHover}
-                  sourceLanguage={readerSettings.language}
-                  targetLanguage={null}
                   playText={() => undefined}
                   onSelection={() => undefined}
                   highlights={[]}
