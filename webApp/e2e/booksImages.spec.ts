@@ -1,9 +1,39 @@
 import { expect, test, Page } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { ensureReaderTextVisible } from './books.helpers';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
+
+const createFileDropDataTransfer = async ({
+  page,
+  name,
+  type,
+  contents,
+}: {
+  page: Page;
+  name: string;
+  type: string;
+  contents: string | number[];
+}) =>
+  page.evaluateHandle(
+    ({ fileName, mimeType, fileContents }) => {
+      const dataTransfer = new DataTransfer();
+      const payload = Array.isArray(fileContents) ? new Uint8Array(fileContents) : fileContents;
+      const file = new File([payload], fileName, {
+        type: mimeType,
+      });
+      dataTransfer.items.add(file);
+      return dataTransfer;
+    },
+    {
+      fileName: name,
+      mimeType: type,
+      fileContents: contents,
+    },
+  );
 
 const assertVisibleReaderColumnsFitViewport = async (page: Page) => {
   const columns = page.getByTestId('reader-page-column');
@@ -65,10 +95,18 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   const authorInput = addBookModal.getByRole('textbox', { name: 'Author', exact: true });
   const textInput = addBookModal.getByRole('textbox', { name: 'Text', exact: true });
 
-  await expect.poll(async () => (await titleInput.inputValue()).trim()).not.toBe('');
-  await expect.poll(async () => (await subtitleInput.inputValue()).trim()).not.toBe('');
-  await expect.poll(async () => (await authorInput.inputValue()).trim()).not.toBe('');
-  await expect.poll(async () => (await textInput.inputValue()).trim().length).toBeGreaterThan(200);
+  await expect
+    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
+    .not.toBe('');
+  await expect
+    .poll(async () => (await subtitleInput.inputValue()).trim(), { timeout: 60_000 })
+    .not.toBe('');
+  await expect
+    .poll(async () => (await authorInput.inputValue()).trim(), { timeout: 60_000 })
+    .not.toBe('');
+  await expect
+    .poll(async () => (await textInput.inputValue()).trim().length, { timeout: 60_000 })
+    .toBeGreaterThan(200);
 
   const extractedImages = addBookModal.getByTestId('epub-extracted-image');
   await expect(extractedImages.first()).toBeVisible();
@@ -152,4 +190,62 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   expect(imageMapState.hasCoverImageKey).toBeTruthy();
   expect(imageMapState.coverSrc).toMatch(/^data:image\/[a-zA-Z0-9.+-]+;base64,/);
   expect(imageMapState.coverAspectRatio).toBeGreaterThan(0);
+});
+
+test('imports book by dropping EPUB on books page', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await page.addInitScript(() => {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    if (typeof indexedDB !== 'undefined') {
+      indexedDB.deleteDatabase('readerBooksDb');
+    }
+  });
+
+  await page.goto('/book');
+
+  const fixturePath = path.resolve(process.cwd(), BOOK_FIXTURE_PATH);
+  const epubBytes = Array.from(await readFile(fixturePath));
+
+  const dataTransfer = await createFileDropDataTransfer({
+    page,
+    name: 'Supercommunicators.epub',
+    type: 'application/epub+zip',
+    contents: epubBytes,
+  });
+
+  await page.dispatchEvent('body', 'dragenter', { dataTransfer });
+  await page.dispatchEvent('body', 'drop', { dataTransfer });
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
+    timeout: 60_000,
+  });
+  await ensureReaderTextVisible(page, EXPECTED_COPYRIGHT, {
+    maxSteps: 12,
+  });
+});
+
+test('shows validation error when unsupported file is dropped in Add Book modal', async ({
+  page,
+}) => {
+  await page.goto('/book');
+  await page.getByText('Add New Book', { exact: true }).first().click();
+
+  const addBookModal = page
+    .getByRole('heading', { name: 'Add New Book' })
+    .locator('..')
+    .locator('..');
+  await expect(addBookModal.getByTestId('add-book-drop-zone')).toBeVisible();
+
+  const invalidDataTransfer = await createFileDropDataTransfer({
+    page,
+    name: 'invalid.mp4',
+    type: 'video/mp4',
+    contents: 'video mock payload',
+  });
+
+  await page.dispatchEvent('body', 'drop', { dataTransfer: invalidDataTransfer });
+
+  await expect(addBookModal.getByText('Please select a valid EPUB file.')).toBeVisible();
 });

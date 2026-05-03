@@ -37,6 +37,8 @@ Before introducing new top-level folders under `src/`, match existing feature-fi
 - Use alias imports where appropriate: `@/` maps to `src/`.
 - Keep changes consistent with `prettier.config.cjs`.
 - `pnpm lint` is typecheck only (`tsc --noEmit`), so do not assume ESLint auto-enforcement.
+- Prefer avoiding `useEffect` in feature/component code; choose event-driven handlers, derived state, or explicit hook APIs first.
+- Introduce `useEffect` only when required for external synchronization, and keep effect scope small to reduce test flakiness.
 
 ## i18n And Content
 

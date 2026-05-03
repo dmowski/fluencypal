@@ -9,53 +9,21 @@ import {
   Typography,
 } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useRef, useState } from 'react';
-import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { CirclePlus, File } from 'lucide-react';
 import { useBooks } from '../hooks/useBooks';
+import { convertEpubFile, validateEpubFile } from '../utils/epubImport';
 
-const getImageAspectRatio = (src: string): Promise<number | null> =>
-  new Promise((resolve) => {
-    const image = new Image();
-
-    image.onload = () => {
-      if (!image.naturalWidth || !image.naturalHeight) {
-        resolve(null);
-        return;
-      }
-
-      resolve(image.naturalWidth / image.naturalHeight);
-    };
-
-    image.onerror = () => resolve(null);
-    image.src = src;
-  });
-
-const buildImageAspectRatioMap = async (
-  imageDataUrlByHref: Record<string, string>,
-): Promise<Record<string, number>> => {
-  const entries = Object.entries(imageDataUrlByHref);
-  if (!entries.length) return {};
-
-  const ratios = await Promise.all(
-    entries.map(async ([href, src]) => {
-      const ratio = await getImageAspectRatio(src);
-      return [href, ratio] as const;
-    }),
-  );
-
-  return ratios.reduce<Record<string, number>>((acc, [href, ratio]) => {
-    if (!ratio || !Number.isFinite(ratio) || ratio <= 0) {
-      return acc;
-    }
-
-    acc[href] = ratio;
-    return acc;
-  }, {});
-};
-
-export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+export const AddBookModal = ({
+  isOpen,
+  onClose,
+  isGlobalDropActive,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  isGlobalDropActive?: boolean;
+}) => {
   const i18n = useLingui();
   const books = useBooks();
   const [title, setTitle] = useState('');
@@ -73,6 +41,16 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const [saveProgress, setSaveProgress] = useState(0);
   const [saveMessage, setSaveMessage] = useState('');
   const [saveError, setSaveError] = useState('');
+  const [isDropActive, setIsDropActive] = useState(false);
+  const [isLocalhost, setIsLocalhost] = useState(false);
+  const dragDepthRef = useRef(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isLocalHostName =
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    setIsLocalhost(isLocalHostName);
+  }, []);
 
   const isDisabled =
     !title.trim() ||
@@ -86,76 +64,116 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     fileInputRef.current?.click();
   };
 
+  const handleEpubImport = useCallback(
+    async (file: File) => {
+      const validationError = validateEpubFile(file, (message) => i18n._(message));
+      if (validationError) {
+        setConversionError(validationError);
+        return;
+      }
+
+      try {
+        setIsConvertingFile(true);
+        setConversionError('');
+
+        const parsedBook = await convertEpubFile({
+          file,
+          translate: (message) => i18n._(message),
+          onProgress: ({ progress, message }) => {
+            setConversionProgress(progress);
+            setConversionMessage(message);
+          },
+        });
+
+        setText(parsedBook.text);
+        setImageDataUrlByHref(parsedBook.imageDataUrlByHref);
+        setImageAspectRatioByHref(parsedBook.imageAspectRatioByHref);
+        setTitle(parsedBook.title);
+        setSubtitle(parsedBook.subtitle);
+        setAuthor(parsedBook.author);
+
+        setConversionProgress(100);
+        setConversionMessage(i18n._('Done. Text imported.'));
+      } catch (error) {
+        console.error('EPUB conversion error:', error);
+        const message = error instanceof Error ? error.message : i18n._('Failed to convert EPUB.');
+        setConversionError(message);
+        setConversionProgress(0);
+        setConversionMessage('');
+      } finally {
+        setIsConvertingFile(false);
+      }
+    },
+    [i18n],
+  );
+
   const handleEpubSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const isEpub =
-      file.type === 'application/epub+zip' ||
-      file.name.toLowerCase().endsWith('.epub') ||
-      file.type === 'application/octet-stream';
-
-    if (!isEpub) {
-      setConversionError(i18n._('Please select a valid EPUB file.'));
-      if (fileInputRef.current) fileInputRef.current.value = '';
-      return;
-    }
-
-    const maxSize = 50 * 1024 * 1024;
-    if (file.size > maxSize) {
-      setConversionError(i18n._('File size must be less than 50MB'));
-      if (fileInputRef.current) fileInputRef.current.value = '';
-      return;
-    }
-
-    try {
-      setIsConvertingFile(true);
-      setConversionError('');
-      setConversionProgress(10);
-      setConversionMessage(i18n._('Uploading EPUB...'));
-
-      setConversionProgress(35);
-      setConversionMessage(i18n._('Converting EPUB to markdown...'));
-
-      setConversionProgress(80);
-      setConversionMessage(i18n._('Extracting plain text...'));
-
-      const result = await sendConvertDocToTextRequest({ file });
-      if (result.error) {
-        throw new Error(result.error || i18n._('Failed to convert EPUB.'));
-      }
-
-      const parsedText = result.markdown || '';
-      setText(parsedText);
-      const extractedImages = result.imageDataUrlByHref ?? {};
-      setImageDataUrlByHref(extractedImages);
-      if (result.metadata) {
-        setConversionProgress(90);
-        setConversionMessage(i18n._('Extracting title, subtitle and author...'));
-        setTitle(result.metadata.title.trim());
-        setSubtitle(result.metadata.subtitle.trim());
-        setAuthor(result.metadata.author.trim());
-      }
-
-      setConversionProgress(95);
-      setConversionMessage(i18n._('Extracting embedded images...'));
-
-      const aspectRatioMap = await buildImageAspectRatioMap(extractedImages);
-      setImageAspectRatioByHref(aspectRatioMap);
-
-      setConversionProgress(100);
-      setConversionMessage(i18n._('Done. Text imported.'));
-    } catch (error) {
-      console.error('EPUB conversion error:', error);
-      const message = error instanceof Error ? error.message : i18n._('Failed to convert EPUB.');
-      setConversionError(message);
-      setConversionProgress(0);
-      setConversionMessage('');
-    } finally {
-      setIsConvertingFile(false);
-      if (fileInputRef.current) fileInputRef.current.value = '';
-    }
+    await handleEpubImport(file);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const hasFiles = (event: DragEvent): boolean =>
+      Array.from(event.dataTransfer?.types ?? []).includes('Files');
+
+    const handleDragEnter = (event: DragEvent) => {
+      if (!hasFiles(event)) return;
+
+      event.preventDefault();
+      dragDepthRef.current += 1;
+      setIsDropActive(true);
+    };
+
+    const handleDragOver = (event: DragEvent) => {
+      if (!hasFiles(event)) return;
+
+      event.preventDefault();
+      if (event.dataTransfer) {
+        event.dataTransfer.dropEffect = 'copy';
+      }
+      setIsDropActive(true);
+    };
+
+    const handleDragLeave = (event: DragEvent) => {
+      if (!hasFiles(event)) return;
+
+      event.preventDefault();
+      dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+      if (dragDepthRef.current === 0) {
+        setIsDropActive(false);
+      }
+    };
+
+    const handleDrop = (event: DragEvent) => {
+      if (!hasFiles(event)) return;
+
+      event.preventDefault();
+      dragDepthRef.current = 0;
+      setIsDropActive(false);
+
+      const file = event.dataTransfer?.files?.[0];
+      if (!file) return;
+
+      void handleEpubImport(file);
+    };
+
+    window.addEventListener('dragenter', handleDragEnter);
+    window.addEventListener('dragover', handleDragOver);
+    window.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('drop', handleDrop);
+
+    return () => {
+      window.removeEventListener('dragenter', handleDragEnter);
+      window.removeEventListener('dragover', handleDragOver);
+      window.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('drop', handleDrop);
+    };
+  }, [handleEpubImport, isOpen]);
 
   const handleSubmit = async () => {
     if (isDisabled) return;
@@ -214,38 +232,6 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         }}
       >
         <Typography variant="h4">{i18n._('Add New Book')}</Typography>
-
-        <TextField
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          label={i18n._('Title')}
-          fullWidth
-          required
-        />
-        <TextField
-          value={subtitle}
-          onChange={(event) => setSubtitle(event.target.value)}
-          label={i18n._('Subtitle')}
-          fullWidth
-          required
-        />
-        <TextField
-          value={author}
-          onChange={(event) => setAuthor(event.target.value)}
-          label={i18n._('Author')}
-          fullWidth
-          required
-        />
-        <TextField
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-          label={i18n._('Text')}
-          multiline
-          minRows={8}
-          maxRows={40}
-          fullWidth
-          required
-        />
         <input
           ref={fileInputRef}
           type="file"
@@ -254,6 +240,28 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           onChange={handleEpubSelect}
         />
         <Stack sx={{ gap: '8px' }}>
+          <Stack
+            data-testid="add-book-drop-zone"
+            sx={{
+              gap: '10px',
+              borderRadius: '12px',
+              border: '2px dashed rgba(255, 255, 255, 0.6)',
+              backgroundColor: isDropActive ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.08)',
+              padding: '24px',
+              alignItems: 'center',
+              textAlign: 'center',
+              transition: 'background-color 150ms ease',
+            }}
+          >
+            <Typography variant="h5">{i18n._('Drop EPUB file here')}</Typography>
+            <Typography variant="caption" sx={{ opacity: 0.85 }}>
+              {i18n._('Only .epub files are supported')}
+            </Typography>
+            <Typography variant="caption" sx={{ opacity: 0.6 }}>
+              {i18n._('You can drop EPUB anywhere on this page while this dialog is open.')}
+            </Typography>
+          </Stack>
+
           <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '8px' }}>
             <Button
               onClick={handleEpubUploadClick}
@@ -279,6 +287,46 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
               {conversionError}
             </Typography>
           ) : null}
+
+          {isLocalhost ? (
+            <>
+              <TextField
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                label={i18n._('Title')}
+                fullWidth
+                required
+              />
+              <TextField
+                value={subtitle}
+                onChange={(event) => setSubtitle(event.target.value)}
+                label={i18n._('Subtitle')}
+                fullWidth
+                required
+              />
+              <TextField
+                value={author}
+                onChange={(event) => setAuthor(event.target.value)}
+                label={i18n._('Author')}
+                fullWidth
+                required
+              />
+              <TextField
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+                label={i18n._('Text')}
+                multiline
+                minRows={8}
+                maxRows={40}
+                fullWidth
+                required
+              />
+            </>
+          ) : (
+            <Typography variant="caption" sx={{ opacity: 0.75 }}>
+              {i18n._('Book fields are auto-filled from EPUB metadata in production mode.')}
+            </Typography>
+          )}
 
           {Object.keys(imageDataUrlByHref).length > 0 ? (
             <Stack sx={{ gap: '8px' }}>
@@ -314,6 +362,19 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             </Stack>
           ) : null}
         </Stack>
+
+        {isOpen && (isDropActive || isGlobalDropActive) ? (
+          <Stack
+            sx={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1000,
+              border: '3px dashed rgba(255, 255, 255, 0.9)',
+              backgroundColor: 'rgba(0, 0, 0, 0.22)',
+              pointerEvents: 'none',
+            }}
+          />
+        ) : null}
 
         {isSavingBook || saveProgress > 0 ? (
           <Stack sx={{ gap: '6px' }}>

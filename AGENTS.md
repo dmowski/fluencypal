@@ -40,6 +40,8 @@ When changing one area, run checks for that area first. Avoid running full Playw
 - In `webApp/`, `pnpm lint` means `tsc --noEmit` (no ESLint assumption).
 - Respect path alias usage in `webApp/` (`@/*` -> `src/*`) and local module style in `trimAudios`.
 - Follow existing formatting config in `webApp/prettier.config.cjs`.
+- Prefer avoiding `useEffect` in UI code by default; favor explicit event handlers, derived state, and data flow that is easier to test.
+- Use `useEffect` only when synchronizing with external systems (timers, subscriptions, imperative browser APIs) and keep those effects minimal and isolated.
 
 ## Environment And Pitfalls
 
