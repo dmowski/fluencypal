@@ -39,19 +39,3 @@ export const enableTranslateOnHover = async (page: Page) => {
   await expect(translateOnHover).toBeVisible();
   await translateOnHover.check();
 };
-
-export const setRenderMarkdown = async (page: Page, isEnabled: boolean) => {
-  const renderMarkdown = page.getByRole('checkbox', { name: 'Render Markdown' });
-  await expect(renderMarkdown).toBeVisible();
-
-  if ((await renderMarkdown.isChecked()) === isEnabled) {
-    return;
-  }
-
-  if (isEnabled) {
-    await renderMarkdown.check();
-    return;
-  }
-
-  await renderMarkdown.uncheck();
-};

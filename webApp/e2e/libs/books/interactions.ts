@@ -17,9 +17,19 @@ export const hoverWordAndPressColorKey = async (
   wordText: RegExp | string,
   colorKey: string,
 ) => {
+  const textStr = typeof wordText === 'string' ? wordText : wordText.source.replace(/[^a-z]/gi, '');
+  await ensureReaderTextVisible(page, textStr);
+
+  // Use word-boundary matching so the element is found even if Playwright
+  // normalises surrounding whitespace differently across rendering modes.
+  const pattern =
+    typeof wordText === 'string'
+      ? new RegExp(`\\b${wordText}\\b`, 'i')
+      : new RegExp(wordText.source.replace(/^\^|\$$/g, ''), wordText.flags);
+
   const wordLocator = page
     .locator('[data-word-index], .conversation-word')
-    .filter({ hasText: typeof wordText === 'string' ? new RegExp(wordText, 'i') : wordText })
+    .filter({ hasText: pattern })
     .first();
   await wordLocator.hover();
   await page.keyboard.press(colorKey);

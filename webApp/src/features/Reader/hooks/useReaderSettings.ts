@@ -16,7 +16,6 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setLanguage: (nextLanguage: string) => void;
   setSelectedVoiceURI: (nextVoiceURI: string | null) => void;
   setTranslateToLanguage: (nextLanguage: NativeLangCode | null) => void;
-  setIsUseMarkdown: (nextIsUseMarkdown: boolean) => void;
   resetToDefault: () => void;
   setFontSize: (nextFontSize: number) => void;
   setParagraphGap: (nextParagraphGap: number) => void;
@@ -27,7 +26,6 @@ export interface ReaderSettingsApi extends ReaderSettings {
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
 const DEFAULT_LANGUAGE = 'en-US';
-const DEFAULT_IS_USE_MARKDOWN = true;
 const DEFAULT_FONT_SIZE = 36;
 const DEFAULT_PARAGRAPH_GAP = 20;
 const DEFAULT_LINE_HEIGHT = 1.5;
@@ -118,7 +116,6 @@ const getDefaultSettingsFromViewport = (): ReaderSettings => {
         : DEFAULT_LANGUAGE,
     selectedVoiceURI: null,
     translateToLanguage: null,
-    isUseMarkdown: DEFAULT_IS_USE_MARKDOWN,
     fontSize: getInitialFontSizeByViewportWidth(viewportWidth),
     contentWidth: viewportDimensions.contentWidth,
     contentHeight: viewportDimensions.contentHeight,
@@ -161,10 +158,6 @@ const getInitialSettings = (): ReaderSettings => {
       typeof parsedSettings.justifyText === 'boolean'
         ? parsedSettings.justifyText
         : DEFAULT_JUSTIFY_TEXT;
-    const parsedIsUseMarkdown =
-      typeof parsedSettings.isUseMarkdown === 'boolean'
-        ? parsedSettings.isUseMarkdown
-        : DEFAULT_IS_USE_MARKDOWN;
     const parsedTranslateOnHover =
       typeof parsedSettings.translateOnHover === 'boolean'
         ? parsedSettings.translateOnHover
@@ -175,7 +168,6 @@ const getInitialSettings = (): ReaderSettings => {
       language: parsedSettings.language || window.navigator.language || DEFAULT_LANGUAGE,
       selectedVoiceURI: parsedSettings.selectedVoiceURI || null,
       translateToLanguage: parsedSettings.translateToLanguage || null,
-      isUseMarkdown: parsedIsUseMarkdown,
       fontSize: Math.max(
         READER_SETTINGS_RANGES.fontSize.min,
         Math.min(READER_SETTINGS_RANGES.fontSize.max, parsedFontSize),
@@ -254,13 +246,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
-  const setIsUseMarkdown = useCallback((nextIsUseMarkdown: boolean) => {
-    setSettings((previousSettings) => ({
-      ...previousSettings,
-      isUseMarkdown: nextIsUseMarkdown,
-    }));
-  }, []);
-
   const resetToDefault = useCallback(() => {
     setSettings(getDefaultSettingsFromViewport());
   }, []);
@@ -315,7 +300,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
-      setIsUseMarkdown,
       resetToDefault,
       setFontSize,
       setParagraphGap,
@@ -328,7 +312,6 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setLanguage,
       setSelectedVoiceURI,
       setTranslateToLanguage,
-      setIsUseMarkdown,
       resetToDefault,
       setFontSize,
       setParagraphGap,

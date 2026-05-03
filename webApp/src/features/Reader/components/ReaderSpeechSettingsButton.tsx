@@ -267,16 +267,6 @@ export const ReaderSpeechSettingsButton = ({ speech }: ReaderSpeechSettingsButto
               label={i18n._('Justify Text')}
             />
 
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={readerSettings.isUseMarkdown}
-                  onChange={(_event, checked) => readerSettings.setIsUseMarkdown(checked)}
-                />
-              }
-              label={i18n._('Render Markdown')}
-            />
-
             {!isTouchDevice && (
               <FormControlLabel
                 control={

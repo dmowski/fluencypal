@@ -172,7 +172,6 @@ const DevPanelContent = () => {
                   paragraphIndex={index}
                   paragraphStartCharOffset={0}
                   words={words}
-                  isUseMarkdown={readerSettings.isUseMarkdown}
                   fontSize={readerSettings.fontSize}
                   lineHeight={readerSettings.lineHeight}
                   justifyText={readerSettings.justifyText}

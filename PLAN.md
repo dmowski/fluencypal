@@ -2,14 +2,12 @@
 
 ## Reader helper?
 
-- When press: ctrl+A, select only content in pages, do not select other text. do not trigger show highlight popup or voiceover. (cover with e2e)
-
-- When hover over word, and press Colors shortcut keys, like "Y", make the word yellow. (e2e coverage)
-
 - On header, show percentage progress, like "{current_page} / {total_pages} / {percentage}%"
   current_page should be one active page. in case of too columns, show the one number and total count of pages/2 (there's a space for logic) (unit tests)
 
 - Move "Voice Over Selected Sext" (boolean) into settings, true by default. When false, do not play text (playText)
+
+- When press: ctrl+A, select only content in pages, do not select other text. do not trigger show highlight popup or voiceover. (cover with e2e)
 
 - Handle images: I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width to fit the page? (It's visible when screen is 1400px / 700px. The first cover image is not fit into view port.)
 

@@ -55,9 +55,6 @@ After changing files in this feature:
 - Image import and EPUB image rendering setup coverage lives in `webApp/e2e/booksImages.spec.ts`.
 - Prefer running these specs first for changes in book list, EPUB import/parsing, opening/reading books, pagination, or settings interactions.
 
-## Reader Markdown Flag
+## Reader Rendering Mode
 
-- Reader paragraph rendering is controlled by `isUseMarkdown` in `hooks/useReaderSettings.ts` and exposed in the reader settings popover.
-- `true` enables markdown-aware rendering (`ReaderMarkdown` path); `false` uses regular word-by-word rendering.
-- For Reader behavior changes (hover translate, spacing, highlights, popovers), validate `webApp/e2e/books.spec.ts` in both modes by toggling the UI setting.
-- Default reader settings should stay aligned with the intended product default; tests must not depend on editing source constants.
+- For Reader behavior changes (hover translate, spacing, highlights, popovers), validate `webApp/e2e/books.spec.ts`
