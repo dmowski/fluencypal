@@ -71,7 +71,9 @@ test.describe('markdown rendering', () => {
     await assertSelectionTextPersists(page, /criticizing/i);
   });
 
-  test('partial selection does not shift text around younger/vulnerable phrase', async ({ page }) => {
+  test('partial selection does not shift text around younger/vulnerable phrase', async ({
+    page,
+  }) => {
     await openSeededGatsbyBook(page);
 
     // Select from "o" in "younger" (offset 1 in word) to after "b" in "vulnerable" (offset 8).
@@ -185,9 +187,8 @@ test.describe('markdown rendering', () => {
 
     await openSeededGatsbyBook(page);
 
-    expect(
-      hydrationErrors,
-      `Hydration errors found:\n${hydrationErrors.join('\n')}`,
-    ).toHaveLength(0);
+    expect(hydrationErrors, `Hydration errors found:\n${hydrationErrors.join('\n')}`).toHaveLength(
+      0,
+    );
   });
 });
