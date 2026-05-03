@@ -316,7 +316,7 @@ msgstr "Kế hoạch hành động để cải thiện kỹ năng backend quan t
 msgid "Active"
 msgstr "Đang hoạt động"
 
-#: src/features/Reader/components/AddBookModal.tsx:347
+#: src/features/Reader/components/AddBookModal.tsx:408
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Thêm"
@@ -341,7 +341,7 @@ msgstr "Thêm bình luận"
 msgid "Add context..."
 msgstr "Thêm ngữ cảnh..."
 
-#: src/features/Reader/components/AddBookModal.tsx:216
+#: src/features/Reader/components/AddBookModal.tsx:234
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -919,7 +919,7 @@ msgstr "Trợ lý"
 msgid "Auth"
 msgstr "Xác thực"
 
-#: src/features/Reader/components/AddBookModal.tsx:235
+#: src/features/Reader/components/AddBookModal.tsx:310
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Tác giả"
@@ -1097,7 +1097,15 @@ msgstr "Giá trị tốt nhất cho sự cải thiện liên tục."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:182
+#: src/features/Reader/components/AddBookModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Book fields are auto-filled from EPUB metadata in production mode."
+msgstr ""
+"Các trường sách được tự động điền từ siêu dữ liệu EPUB trong chế độ sản "
+"xuất."
+
+#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Sách đã được lưu."
@@ -1107,7 +1115,7 @@ msgstr "Sách đã được lưu."
 msgid "Booking a Doctor's Appointment"
 msgstr "Đặt Lịch Hẹn Với Bác Sĩ"
 
-#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/Reader/components/BooksList.tsx:55
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1342,7 +1350,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:357
+#: src/features/Reader/components/AddBookModal.tsx:418
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1988,11 +1996,6 @@ msgstr "Cuộc trò chuyện với Trí tuệ Nhân tạo"
 msgid "Converted file size must be less than 250MB"
 msgstr "Kích thước tệp chuyển đổi phải nhỏ hơn 250MB"
 
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-msgid "Converting EPUB to markdown..."
-msgstr "Đang chuyển đổi EPUB sang markdown..."
-
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2465,7 +2468,7 @@ msgstr "Xóa mục tiêu hiện tại"
 msgid "Delete Space"
 msgstr "Xóa Khoảng Trống"
 
-#: src/features/Reader/components/BooksList.tsx:18
+#: src/features/Reader/components/BooksList.tsx:27
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Xóa cuốn sách này?"
@@ -2866,7 +2869,7 @@ msgstr "Hoàn thành"
 msgid "Done recording"
 msgstr "Hoàn tất ghi âm"
 
-#: src/features/Reader/components/AddBookModal.tsx:147
+#: src/features/Reader/components/AddBookModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Hoàn thành. Văn bản đã được nhập."
@@ -2885,6 +2888,16 @@ msgstr "Đừng để những sai lầm ngăn cản bạn."
 #. js-lingui-explicit-id
 msgid "Doxxing"
 msgstr "Doxxing"
+
+#: src/features/Reader/components/AddBookModal.tsx:256
+#. js-lingui-explicit-id
+msgid "Drop EPUB file here"
+msgstr "Thả tệp EPUB vào đây"
+
+#: src/features/Reader/components/BooksList.tsx:120
+#. js-lingui-explicit-id
+msgid "Drop EPUB file to import book"
+msgstr "Thả tệp EPUB để nhập sách"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3497,33 +3510,18 @@ msgstr ""
 msgid "Extra Slow"
 msgstr "Rất chậm"
 
-#: src/features/Reader/components/AddBookModal.tsx:286
+#: src/features/Reader/components/AddBookModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Hình ảnh đã trích xuất"
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-msgid "Extracting embedded images..."
-msgstr "Đang trích xuất hình ảnh nhúng..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-msgid "Extracting plain text..."
-msgstr "Trích xuất văn bản thuần túy..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-msgid "Extracting title, subtitle and author..."
-msgstr "Trích xuất tiêu đề, phụ đề và tác giả..."
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Không thể phân tích hình ảnh. Vui lòng thử lại."
 
-#: src/features/Reader/components/AddBookModal.tsx:125
-#: src/features/Reader/components/AddBookModal.tsx:150
+#: src/features/Reader/components/AddBookModal.tsx:99
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Không thể chuyển đổi EPUB."
@@ -3542,7 +3540,7 @@ msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
 
-#: src/features/Reader/components/AddBookModal.tsx:197
+#: src/features/Reader/components/AddBookModal.tsx:215
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Không thể lưu sách."
@@ -3634,7 +3632,6 @@ msgstr "Kích thước tệp phải nhỏ hơn 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Kích thước tệp phải nhỏ hơn 50MB"
@@ -5231,12 +5228,12 @@ msgstr "Minh họa ghi âm giọng nói"
 msgid "Images"
 msgstr "Hình ảnh"
 
-#: src/features/Reader/components/AddBookModal.tsx:263
+#: src/features/Reader/components/AddBookModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Nhập văn bản từ EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:266
+#: src/features/Reader/components/AddBookModal.tsx:274
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Nhập văn bản từ tệp EPUB"
@@ -6944,6 +6941,11 @@ msgstr "Chỉ còn một việc cần làm"
 msgid "Online English"
 msgstr "Online tiếng Anh"
 
+#: src/features/Reader/components/AddBookModal.tsx:258
+#. js-lingui-explicit-id
+msgid "Only .epub files are supported"
+msgstr "Chỉ hỗ trợ các tệp .epub"
+
 #: src/features/Conversation/ConversationError.tsx:40
 #. js-lingui-explicit-id
 msgid "Oops! Something went wrong"
@@ -7456,11 +7458,6 @@ msgstr "Vui lòng làm mới trang và thử một lần nữa"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vui lòng chọn tệp âm thanh hợp lệ (MP3, WAV, OGG, hoặc M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Please select a valid EPUB file."
-msgstr "Vui lòng chọn tệp EPUB hợp lệ."
-
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
@@ -7891,7 +7888,7 @@ msgstr ""
 "Chuẩn bị để trình bày danh mục đầu tư của bạn, thảo luận về hành trình học "
 "tập của bạn và đảm bảo vai trò chuyên nghiệp đầu tiên của bạn."
 
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:185
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Đang chuẩn bị sách..."
@@ -8530,11 +8527,6 @@ msgstr "Xóa dữ liệu của tôi (xóa tài khoản)"
 msgid "Removing your data..."
 msgstr "Đang xóa dữ liệu của bạn..."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-msgid "Render Markdown"
-msgstr "Hiển thị Markdown"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8809,7 +8801,8 @@ msgstr "Lưu"
 msgid "Save Changes"
 msgstr "Lưu Thay Đổi"
 
-#: src/features/Reader/components/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Đang lưu sách..."
@@ -9796,7 +9789,7 @@ msgstr "Đang gửi..."
 msgid "Subscription (1 month)"
 msgstr "Đăng ký (1 tháng)"
 
-#: src/features/Reader/components/AddBookModal.tsx:228
+#: src/features/Reader/components/AddBookModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Phụ đề"
@@ -10094,7 +10087,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Kiểm tra & Chất lượng"
 
-#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/AddBookModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Văn bản"
@@ -10659,7 +10652,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:221
+#: src/features/Reader/components/AddBookModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Tiêu đề"
@@ -10791,7 +10784,7 @@ msgstr ""
 "didn't provide the text for translation. Kindly provide the text you wish "
 "to have translated into Vietnamese, and I'll be happy to assist you."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Dịch khi di chuột"
@@ -11047,11 +11040,6 @@ msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
 msgid "Upload video"
 msgstr "Tải video lên"
 
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-msgid "Uploading EPUB..."
-msgstr "Đang tải lên EPUB..."
-
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11215,6 +11203,11 @@ msgstr "Giọng nói"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Cuộc hội thoại bằng giọng nói"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#. js-lingui-explicit-id
+msgid "Voice Over Selected Text"
+msgstr "Chuyển Văn Bản Đã Chọn Thành Giọng Nói"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:133
 #. js-lingui-explicit-id
@@ -12010,6 +12003,11 @@ msgstr "Bạn có thể xóa dữ liệu cá nhân của mình bất kỳ lúc n
 msgid "You can discuss the battle here."
 msgstr "Bạn có thể thảo luận về trận chiến ở đây."
 
+#: src/features/Reader/components/AddBookModal.tsx:261
+#. js-lingui-explicit-id
+msgid "You can drop EPUB anywhere on this page while this dialog is open."
+msgstr "Bạn có thể thả EPUB vào bất kỳ đâu trên trang này khi hộp thoại này đang mở."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -12446,6 +12444,41 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/AddBookModal.tsx:118
+#. js-lingui-explicit-id
+#~ msgid "Converting EPUB to markdown..."
+#~ msgstr "Đang chuyển đổi EPUB sang markdown..."
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Extracting embedded images..."
+#~ msgstr "Đang trích xuất hình ảnh nhúng..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Extracting plain text..."
+#~ msgstr "Trích xuất văn bản thuần túy..."
+
+#: src/features/Reader/components/AddBookModal.tsx:134
+#. js-lingui-explicit-id
+#~ msgid "Extracting title, subtitle and author..."
+#~ msgstr "Trích xuất tiêu đề, phụ đề và tác giả..."
+
+#: src/features/Reader/components/AddBookModal.tsx:99
+#. js-lingui-explicit-id
+#~ msgid "Please select a valid EPUB file."
+#~ msgstr "Vui lòng chọn tệp EPUB hợp lệ."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+#~ msgid "Render Markdown"
+#~ msgstr "Hiển thị Markdown"
+
+#: src/features/Reader/components/AddBookModal.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Uploading EPUB..."
+#~ msgstr "Đang tải lên EPUB..."
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id

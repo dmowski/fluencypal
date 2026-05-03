@@ -312,7 +312,7 @@ msgstr "Kritik arka uç becerilerini geliştirmek için eylem planı"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Reader/components/AddBookModal.tsx:347
+#: src/features/Reader/components/AddBookModal.tsx:408
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Ekle"
@@ -337,7 +337,7 @@ msgstr "Yorum Ekle"
 msgid "Add context..."
 msgstr "Bağlam ekleyin..."
 
-#: src/features/Reader/components/AddBookModal.tsx:216
+#: src/features/Reader/components/AddBookModal.tsx:234
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -913,7 +913,7 @@ msgstr "Asistan"
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Reader/components/AddBookModal.tsx:235
+#: src/features/Reader/components/AddBookModal.tsx:310
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Yazar"
@@ -1091,7 +1091,13 @@ msgstr "Tutarlı gelişim için en iyi değer."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:182
+#: src/features/Reader/components/AddBookModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Book fields are auto-filled from EPUB metadata in production mode."
+msgstr "Kitap alanları, üretim modunda EPUB meta verilerinden otomatik doldurulur."
+
+#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Kitap kaydedildi."
@@ -1101,7 +1107,7 @@ msgstr "Kitap kaydedildi."
 msgid "Booking a Doctor's Appointment"
 msgstr "Doktor Randevusu Alma"
 
-#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/Reader/components/BooksList.tsx:55
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1336,7 +1342,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:357
+#: src/features/Reader/components/AddBookModal.tsx:418
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1981,11 +1987,6 @@ msgstr "Yapay Zeka ile Konuşmalar"
 msgid "Converted file size must be less than 250MB"
 msgstr "Dönüştürülen dosya boyutu 250MB'den küçük olmalıdır."
 
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-msgid "Converting EPUB to markdown..."
-msgstr "EPUB'u markdown'a dönüştürülüyor..."
-
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2456,7 +2457,7 @@ msgstr "Mevcut hedefi sil"
 msgid "Delete Space"
 msgstr "Boşluğu Sil"
 
-#: src/features/Reader/components/BooksList.tsx:18
+#: src/features/Reader/components/BooksList.tsx:27
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Bu kitabı silinsin mi?"
@@ -2852,7 +2853,7 @@ msgstr "Tamamlandı"
 msgid "Done recording"
 msgstr "Kaydı bitir"
 
-#: src/features/Reader/components/AddBookModal.tsx:147
+#: src/features/Reader/components/AddBookModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Tamam. Metin içeri aktarıldı."
@@ -2871,6 +2872,16 @@ msgstr "Hataların seni durdurmasına izin verme."
 #. js-lingui-explicit-id
 msgid "Doxxing"
 msgstr "Doxxing"
+
+#: src/features/Reader/components/AddBookModal.tsx:256
+#. js-lingui-explicit-id
+msgid "Drop EPUB file here"
+msgstr "EPUB dosyasını buraya bırakın"
+
+#: src/features/Reader/components/BooksList.tsx:120
+#. js-lingui-explicit-id
+msgid "Drop EPUB file to import book"
+msgstr "EPUB dosyasını kitabı içe aktarmak için bırakın"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3476,33 +3487,18 @@ msgstr "Topluluğu keşfedin, tartışmalara katılın ve geri bildirimlerinizi 
 msgid "Extra Slow"
 msgstr "Extra Yavaş"
 
-#: src/features/Reader/components/AddBookModal.tsx:286
+#: src/features/Reader/components/AddBookModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Çıkarılan görüntüler"
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-msgid "Extracting embedded images..."
-msgstr "Gömülü görüntüler çıkarılıyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-msgid "Extracting plain text..."
-msgstr "Düz metin çıkarılıyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-msgid "Extracting title, subtitle and author..."
-msgstr "Başlık, alt başlık ve yazarı çıkarılıyor..."
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Görüntü analiz edilemedi. Lütfen tekrar deneyin."
 
-#: src/features/Reader/components/AddBookModal.tsx:125
-#: src/features/Reader/components/AddBookModal.tsx:150
+#: src/features/Reader/components/AddBookModal.tsx:99
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "EPUB dönüştürülemedi."
@@ -3521,7 +3517,7 @@ msgstr ""
 "Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "geliştiricilerle iletişime geçin."
 
-#: src/features/Reader/components/AddBookModal.tsx:197
+#: src/features/Reader/components/AddBookModal.tsx:215
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Kitap kaydedilemedi."
@@ -3613,7 +3609,6 @@ msgstr "Dosya boyutu 250MB'den küçük olmalıdır."
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Dosya boyutu 50MB'den küçük olmalıdır."
@@ -5208,12 +5203,12 @@ msgstr "Ses kaydı illüstrasyonu"
 msgid "Images"
 msgstr "Görseller"
 
-#: src/features/Reader/components/AddBookModal.tsx:263
+#: src/features/Reader/components/AddBookModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "EPUB'dan metin içe aktar"
 
-#: src/features/Reader/components/AddBookModal.tsx:266
+#: src/features/Reader/components/AddBookModal.tsx:274
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "EPUB dosyasından metin içe aktar"
@@ -6911,6 +6906,11 @@ msgstr "Yapılacak bir şey kaldı"
 msgid "Online English"
 msgstr "Çevrimiçi İngilizce"
 
+#: src/features/Reader/components/AddBookModal.tsx:258
+#. js-lingui-explicit-id
+msgid "Only .epub files are supported"
+msgstr "Sadece .epub dosyaları desteklenmektedir"
+
 #: src/features/Conversation/ConversationError.tsx:40
 #. js-lingui-explicit-id
 msgid "Oops! Something went wrong"
@@ -7427,11 +7427,6 @@ msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Lütfen geçerli bir ses dosyası seçin (MP3, WAV, OGG veya M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Please select a valid EPUB file."
-msgstr "Lütfen geçerli bir EPUB dosyası seçin."
-
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
@@ -7854,7 +7849,7 @@ msgstr ""
 "Portföyünüzü sergilemeye, öğrenme yolculuğunuzu tartışmaya ve ilk "
 "profesyonel rolünüzü güvence altına almaya hazırlanın."
 
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:185
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Kitap hazırlanıyor..."
@@ -8483,11 +8478,6 @@ msgstr "Verilerimi kaldır (hesabı sil)"
 msgid "Removing your data..."
 msgstr "Verileriniz kaldırılıyor..."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-msgid "Render Markdown"
-msgstr "Markdown Oluştur"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8761,7 +8751,8 @@ msgstr "Kaydet"
 msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
-#: src/features/Reader/components/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Kitap kaydediliyor..."
@@ -9746,7 +9737,7 @@ msgstr "Gönderiliyor..."
 msgid "Subscription (1 month)"
 msgstr "Abonelik (1 ay)"
 
-#: src/features/Reader/components/AddBookModal.tsx:228
+#: src/features/Reader/components/AddBookModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Altyazı"
@@ -10044,7 +10035,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Test Etme & Kalite"
 
-#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/AddBookModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Metin"
@@ -10608,7 +10599,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:221
+#: src/features/Reader/components/AddBookModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Başlık"
@@ -10741,7 +10732,7 @@ msgstr ""
 msgid "Translate"
 msgstr "I'm ready to help! Please provide the text you'd like translated."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Üzerine Gelince Çevir"
@@ -10994,11 +10985,6 @@ msgstr "Dil becerilerini doğrudan beynine yükle"
 msgid "Upload video"
 msgstr "Videoyu yükle"
 
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-msgid "Uploading EPUB..."
-msgstr "EPUB Yükleniyor..."
-
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11154,6 +11140,11 @@ msgstr "Ses"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Sesli konuşmalar"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#. js-lingui-explicit-id
+msgid "Voice Over Selected Text"
+msgstr "Seçili Metni Seslendir"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:133
 #. js-lingui-explicit-id
@@ -11939,6 +11930,13 @@ msgstr "Kişisel verilerinizi istediğiniz zaman silebilirsiniz"
 msgid "You can discuss the battle here."
 msgstr "Savaşı burada tartışabilirsiniz."
 
+#: src/features/Reader/components/AddBookModal.tsx:261
+#. js-lingui-explicit-id
+msgid "You can drop EPUB anywhere on this page while this dialog is open."
+msgstr ""
+"Bu diyalog açıkken EPUB dosyasını bu sayfanın herhangi bir yerine "
+"bırakabilirsiniz."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -12369,6 +12367,41 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
+
+#: src/features/Reader/components/AddBookModal.tsx:118
+#. js-lingui-explicit-id
+#~ msgid "Converting EPUB to markdown..."
+#~ msgstr "EPUB'u markdown'a dönüştürülüyor..."
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Extracting embedded images..."
+#~ msgstr "Gömülü görüntüler çıkarılıyor..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Extracting plain text..."
+#~ msgstr "Düz metin çıkarılıyor..."
+
+#: src/features/Reader/components/AddBookModal.tsx:134
+#. js-lingui-explicit-id
+#~ msgid "Extracting title, subtitle and author..."
+#~ msgstr "Başlık, alt başlık ve yazarı çıkarılıyor..."
+
+#: src/features/Reader/components/AddBookModal.tsx:99
+#. js-lingui-explicit-id
+#~ msgid "Please select a valid EPUB file."
+#~ msgstr "Lütfen geçerli bir EPUB dosyası seçin."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+#~ msgid "Render Markdown"
+#~ msgstr "Markdown Oluştur"
+
+#: src/features/Reader/components/AddBookModal.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Uploading EPUB..."
+#~ msgstr "EPUB Yükleniyor..."
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id

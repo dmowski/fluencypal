@@ -312,7 +312,7 @@ msgstr "Handlingsplan for at forbedre kritiske backend-færdigheder"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/features/Reader/components/AddBookModal.tsx:347
+#: src/features/Reader/components/AddBookModal.tsx:408
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Tilføj"
@@ -337,7 +337,7 @@ msgstr "Tilføj Kommentar"
 msgid "Add context..."
 msgstr "Tilføj kontekst..."
 
-#: src/features/Reader/components/AddBookModal.tsx:216
+#: src/features/Reader/components/AddBookModal.tsx:234
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -914,7 +914,7 @@ msgstr "Assistent"
 msgid "Auth"
 msgstr "Godkendelse"
 
-#: src/features/Reader/components/AddBookModal.tsx:235
+#: src/features/Reader/components/AddBookModal.tsx:310
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Forfatter"
@@ -1094,7 +1094,13 @@ msgstr "Bedste værdi for konsekvent forbedring."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:182
+#: src/features/Reader/components/AddBookModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Book fields are auto-filled from EPUB metadata in production mode."
+msgstr "Bogfelter udfyldes automatisk fra EPUB-metadata i produktions tilstand."
+
+#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Bog gemt."
@@ -1104,7 +1110,7 @@ msgstr "Bog gemt."
 msgid "Booking a Doctor's Appointment"
 msgstr "Booking a Doctor's Appointment"
 
-#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/Reader/components/BooksList.tsx:55
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1337,7 +1343,7 @@ msgstr "Kan jeg bruge den på smartphone?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:357
+#: src/features/Reader/components/AddBookModal.tsx:418
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1984,11 +1990,6 @@ msgstr "Samtaler med kunstig intelligens"
 msgid "Converted file size must be less than 250MB"
 msgstr "Den konverterede filstørrelse skal være mindre end 250 MB"
 
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-msgid "Converting EPUB to markdown..."
-msgstr "Konvertering af EPUB til markdown..."
-
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2455,7 +2456,7 @@ msgstr "Slet nuværende mål"
 msgid "Delete Space"
 msgstr "Slet plads"
 
-#: src/features/Reader/components/BooksList.tsx:18
+#: src/features/Reader/components/BooksList.tsx:27
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Slette denne bog?"
@@ -2842,7 +2843,7 @@ msgstr "Færdig"
 msgid "Done recording"
 msgstr "Færdig med optagelse"
 
-#: src/features/Reader/components/AddBookModal.tsx:147
+#: src/features/Reader/components/AddBookModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Færdig. Tekst importeret."
@@ -2861,6 +2862,16 @@ msgstr "Lad ikke fejl stoppe dig."
 #. js-lingui-explicit-id
 msgid "Doxxing"
 msgstr "Doxxing"
+
+#: src/features/Reader/components/AddBookModal.tsx:256
+#. js-lingui-explicit-id
+msgid "Drop EPUB file here"
+msgstr "Slip EPUB-fil her"
+
+#: src/features/Reader/components/BooksList.tsx:120
+#. js-lingui-explicit-id
+msgid "Drop EPUB file to import book"
+msgstr "Slip EPUB-fil for at importere bog"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3456,33 +3467,18 @@ msgstr "Udforsk fællesskabet, deltag i diskussioner, og del din feedback!"
 msgid "Extra Slow"
 msgstr "Ekstra Langsom"
 
-#: src/features/Reader/components/AddBookModal.tsx:286
+#: src/features/Reader/components/AddBookModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Uddragne billeder"
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-msgid "Extracting embedded images..."
-msgstr "Uddrager indlejrede billeder..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-msgid "Extracting plain text..."
-msgstr "Uddrag af almindelig tekst..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-msgid "Extracting title, subtitle and author..."
-msgstr "Ekstraktion af titel, undertekst og forfatter..."
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "Kunne ikke analysere billedet. Prøv venligst igen."
 
-#: src/features/Reader/components/AddBookModal.tsx:125
-#: src/features/Reader/components/AddBookModal.tsx:150
+#: src/features/Reader/components/AddBookModal.tsx:99
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Kunne ikke konvertere EPUB."
@@ -3499,7 +3495,7 @@ msgid ""
 "developers."
 msgstr "Fejlede i at slette din konto. Prøv igen senere, eller kontakt udviklerne."
 
-#: src/features/Reader/components/AddBookModal.tsx:197
+#: src/features/Reader/components/AddBookModal.tsx:215
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Mislykkedes at gemme bog."
@@ -3591,7 +3587,6 @@ msgstr "Filstørrelsen skal være mindre end 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Filstørrelsen skal være mindre end 50 MB"
@@ -5181,12 +5176,12 @@ msgstr "Illustration af lydoptagelse"
 msgid "Images"
 msgstr "Billeder"
 
-#: src/features/Reader/components/AddBookModal.tsx:263
+#: src/features/Reader/components/AddBookModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Importér tekst fra EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:266
+#: src/features/Reader/components/AddBookModal.tsx:274
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Importer tekst fra EPUB-fil"
@@ -6885,6 +6880,11 @@ msgstr "En ting tilbage at gøre"
 msgid "Online English"
 msgstr "Online engelsk"
 
+#: src/features/Reader/components/AddBookModal.tsx:258
+#. js-lingui-explicit-id
+msgid "Only .epub files are supported"
+msgstr "Kun .epub-filer understøttes"
+
 #: src/features/Conversation/ConversationError.tsx:40
 #. js-lingui-explicit-id
 msgid "Oops! Something went wrong"
@@ -7395,11 +7395,6 @@ msgstr "Opdater venligst siden og prøv en gang til"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Vælg venligst en gyldig lydfil (MP3, WAV, OGG eller M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Please select a valid EPUB file."
-msgstr "Vælg venligst en gyldig EPUB-fil."
-
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
@@ -7822,7 +7817,7 @@ msgstr ""
 "Forbered dig på at fremvise din portefølje, diskutere din læringsrejse og "
 "sikre din første professionelle rolle."
 
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:185
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Forbereder bog..."
@@ -8452,11 +8447,6 @@ msgstr "Fjern mine data (slet konto)"
 msgid "Removing your data..."
 msgstr "Fjerner dine data..."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-msgid "Render Markdown"
-msgstr "Gengiv Markdown"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8726,7 +8716,8 @@ msgstr "Gem"
 msgid "Save Changes"
 msgstr "Gem ændringer"
 
-#: src/features/Reader/components/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Gemmer bog..."
@@ -9710,7 +9701,7 @@ msgstr "Sender..."
 msgid "Subscription (1 month)"
 msgstr "Abonnement (1 måned)"
 
-#: src/features/Reader/components/AddBookModal.tsx:228
+#: src/features/Reader/components/AddBookModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Undertekst"
@@ -10004,7 +9995,7 @@ msgstr "Test din viden, deltag i udfordringer og konkurrer med andre på ranglis
 msgid "Testing & Quality"
 msgstr "Testning & Kvalitet"
 
-#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/AddBookModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Tekst"
@@ -10566,7 +10557,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:221
+#: src/features/Reader/components/AddBookModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Titel"
@@ -10696,7 +10687,7 @@ msgstr ""
 msgid "Translate"
 msgstr "Translate"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Oversæt ved Hover"
@@ -10951,11 +10942,6 @@ msgstr "Upload sprogfærdigheder direkte til din hjerne"
 msgid "Upload video"
 msgstr "Upload video"
 
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-msgid "Uploading EPUB..."
-msgstr "Uploader EPUB..."
-
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11109,6 +11095,11 @@ msgstr "Stemmen"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Stemmesamtaler"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#. js-lingui-explicit-id
+msgid "Voice Over Selected Text"
+msgstr "Stem over udvalgt tekst"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:133
 #. js-lingui-explicit-id
@@ -11895,6 +11886,11 @@ msgstr "Du kan slette dine personlige data når som helst"
 msgid "You can discuss the battle here."
 msgstr "Du kan diskutere slaget her."
 
+#: src/features/Reader/components/AddBookModal.tsx:261
+#. js-lingui-explicit-id
+msgid "You can drop EPUB anywhere on this page while this dialog is open."
+msgstr "Du kan slippe EPUB hvor som helst på denne side, mens denne dialog er åben."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -12324,6 +12320,41 @@ msgstr "{winnerName} vinder!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlydendighedsPal"
+
+#: src/features/Reader/components/AddBookModal.tsx:118
+#. js-lingui-explicit-id
+#~ msgid "Converting EPUB to markdown..."
+#~ msgstr "Konvertering af EPUB til markdown..."
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Extracting embedded images..."
+#~ msgstr "Uddrager indlejrede billeder..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Extracting plain text..."
+#~ msgstr "Uddrag af almindelig tekst..."
+
+#: src/features/Reader/components/AddBookModal.tsx:134
+#. js-lingui-explicit-id
+#~ msgid "Extracting title, subtitle and author..."
+#~ msgstr "Ekstraktion af titel, undertekst og forfatter..."
+
+#: src/features/Reader/components/AddBookModal.tsx:99
+#. js-lingui-explicit-id
+#~ msgid "Please select a valid EPUB file."
+#~ msgstr "Vælg venligst en gyldig EPUB-fil."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+#~ msgid "Render Markdown"
+#~ msgstr "Gengiv Markdown"
+
+#: src/features/Reader/components/AddBookModal.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Uploading EPUB..."
+#~ msgstr "Uploader EPUB..."
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id

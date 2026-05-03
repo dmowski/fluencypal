@@ -299,7 +299,7 @@ msgstr "백엔드 필수 기술 향상을 위한 실행 계획"
 msgid "Active"
 msgstr "활성화됨"
 
-#: src/features/Reader/components/AddBookModal.tsx:347
+#: src/features/Reader/components/AddBookModal.tsx:408
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "추가"
@@ -324,7 +324,7 @@ msgstr "주석 추가"
 msgid "Add context..."
 msgstr "맥락 추가..."
 
-#: src/features/Reader/components/AddBookModal.tsx:216
+#: src/features/Reader/components/AddBookModal.tsx:234
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -882,7 +882,7 @@ msgstr "어시스턴트"
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Reader/components/AddBookModal.tsx:235
+#: src/features/Reader/components/AddBookModal.tsx:310
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "저자"
@@ -1058,7 +1058,13 @@ msgstr "일관된 향상에 대한 최고의 가치."
 msgid "Blog"
 msgstr "블로그"
 
-#: src/features/Reader/components/AddBookModal.tsx:182
+#: src/features/Reader/components/AddBookModal.tsx:327
+#. js-lingui-explicit-id
+msgid "Book fields are auto-filled from EPUB metadata in production mode."
+msgstr "북 필드는 프로덕션 모드에서 EPUB 메타데이터로 자동 채워집니다."
+
+#: src/features/Reader/components/AddBookModal.tsx:200
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "책이 저장되었습니다."
@@ -1068,7 +1074,7 @@ msgstr "책이 저장되었습니다."
 msgid "Booking a Doctor's Appointment"
 msgstr "의사 예약하기"
 
-#: src/features/Reader/components/BooksList.tsx:40
+#: src/features/Reader/components/BooksList.tsx:55
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1296,7 +1302,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:357
+#: src/features/Reader/components/AddBookModal.tsx:418
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1919,11 +1925,6 @@ msgstr "인공지능과의 대화"
 msgid "Converted file size must be less than 250MB"
 msgstr "변환된 파일 크기는 250MB 미만이어야 합니다"
 
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-msgid "Converting EPUB to markdown..."
-msgstr "EPUB을 마크다운으로 변환 중..."
-
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
 msgid "Copied"
@@ -2378,7 +2379,7 @@ msgstr "현재 목표 삭제"
 msgid "Delete Space"
 msgstr "스페이스 삭제"
 
-#: src/features/Reader/components/BooksList.tsx:18
+#: src/features/Reader/components/BooksList.tsx:27
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "이 책을 삭제하시겠습니까?"
@@ -2732,7 +2733,7 @@ msgstr "완료"
 msgid "Done recording"
 msgstr "녹음 완료"
 
-#: src/features/Reader/components/AddBookModal.tsx:147
+#: src/features/Reader/components/AddBookModal.tsx:96
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "완료. 텍스트가 가져와졌습니다."
@@ -2751,6 +2752,16 @@ msgstr "실수를 두려워하지 마세요."
 #. js-lingui-explicit-id
 msgid "Doxxing"
 msgstr "도싱"
+
+#: src/features/Reader/components/AddBookModal.tsx:256
+#. js-lingui-explicit-id
+msgid "Drop EPUB file here"
+msgstr "EPUB 파일을 여기에 드롭하세요"
+
+#: src/features/Reader/components/BooksList.tsx:120
+#. js-lingui-explicit-id
+msgid "Drop EPUB file to import book"
+msgstr "EPUB 파일을 드롭하여 책을 가져오기"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3321,33 +3332,18 @@ msgstr "커뮤니티를 탐험하고, 토론에 참여하며, 여러분의 피�
 msgid "Extra Slow"
 msgstr "극도로 느림"
 
-#: src/features/Reader/components/AddBookModal.tsx:286
+#: src/features/Reader/components/AddBookModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "추출된 이미지"
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-msgid "Extracting embedded images..."
-msgstr "내장된 이미지 추출 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-msgid "Extracting plain text..."
-msgstr "단순 텍스트 추출 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-msgid "Extracting title, subtitle and author..."
-msgstr "제목, 부제 및 저자 추출 중..."
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
 msgid "Failed to analyze image. Please try again."
 msgstr "이미지 분석 실패. 다시 시도해 주세요."
 
-#: src/features/Reader/components/AddBookModal.tsx:125
-#: src/features/Reader/components/AddBookModal.tsx:150
+#: src/features/Reader/components/AddBookModal.tsx:99
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "EPUB 변환 실패."
@@ -3364,7 +3360,7 @@ msgid ""
 "developers."
 msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나 개발자에게 연락해 주세요."
 
-#: src/features/Reader/components/AddBookModal.tsx:197
+#: src/features/Reader/components/AddBookModal.tsx:215
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "책 저장에 실패했습니다."
@@ -3452,7 +3448,6 @@ msgstr "파일 크기는 250MB 미만이어야 합니다"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "파일 크기는 50MB 미만이어야 합니다."
@@ -4924,12 +4919,12 @@ msgstr "음성 녹음 일러스트레이션"
 msgid "Images"
 msgstr "이미지"
 
-#: src/features/Reader/components/AddBookModal.tsx:263
+#: src/features/Reader/components/AddBookModal.tsx:271
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "EPUB에서 텍스트 가져오기"
 
-#: src/features/Reader/components/AddBookModal.tsx:266
+#: src/features/Reader/components/AddBookModal.tsx:274
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "EPUB 파일에서 텍스트 가져오기"
@@ -6560,6 +6555,11 @@ msgstr "해야 할 일이 하나 남았습니다"
 msgid "Online English"
 msgstr "온라인 영어"
 
+#: src/features/Reader/components/AddBookModal.tsx:258
+#. js-lingui-explicit-id
+msgid "Only .epub files are supported"
+msgstr ".epub 파일만 지원됩니다"
+
 #: src/features/Conversation/ConversationError.tsx:40
 #. js-lingui-explicit-id
 msgid "Oops! Something went wrong"
@@ -7052,11 +7052,6 @@ msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "유효한 오디오 파일을 선택하세요 (MP3, WAV, OGG, 또는 M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Please select a valid EPUB file."
-msgstr "유효한 EPUB 파일을 선택하세요."
-
 #: src/features/Chat/RichTextEditor.tsx:34
 #: src/features/Game/UploadImageButton.tsx:30
 #. js-lingui-explicit-id
@@ -7443,7 +7438,7 @@ msgid ""
 "secure your first professional role."
 msgstr "포트폴리오를 준비하고, 학습 여정을 논의하며 첫 전문 역할을 확보하세요."
 
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:185
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "책 준비 중..."
@@ -8063,11 +8058,6 @@ msgstr "내 데이터 삭제하기 (계정 삭제)"
 msgid "Removing your data..."
 msgstr "데이터를 제거 중..."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-msgid "Render Markdown"
-msgstr "마크다운 렌더"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8331,7 +8321,8 @@ msgstr "저장"
 msgid "Save Changes"
 msgstr "변경 사항 저장"
 
-#: src/features/Reader/components/AddBookModal.tsx:170
+#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "책 저장 중..."
@@ -9270,7 +9261,7 @@ msgstr "제출 중..."
 msgid "Subscription (1 month)"
 msgstr "구독 (1 개월)"
 
-#: src/features/Reader/components/AddBookModal.tsx:228
+#: src/features/Reader/components/AddBookModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "부제목"
@@ -9552,7 +9543,7 @@ msgstr "당신의 지식을 테스트하고, 도전에 참여하며, 리더보�
 msgid "Testing & Quality"
 msgstr "테스트 및 품질"
 
-#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/AddBookModal.tsx:317
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "텍스트"
@@ -10084,7 +10075,7 @@ msgstr "팁: 나중에 지원팀에 연락하여 동의를 철회하고 데이�
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:221
+#: src/features/Reader/components/AddBookModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "타이틀"
@@ -10203,7 +10194,7 @@ msgstr "로그는 시간이 지남에 따라 학습 진척도를 추적하는 �
 msgid "Translate"
 msgstr "번역하기"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "호버 시 번역"
@@ -10458,11 +10449,6 @@ msgstr "당신의 두뇌에 직접 언어 능력을 업로드하세요"
 msgid "Upload video"
 msgstr "비디오 업로드"
 
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-msgid "Uploading EPUB..."
-msgstr "EPUB 업로드 중..."
-
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -10612,6 +10598,11 @@ msgstr "음성"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "음성 대화"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#. js-lingui-explicit-id
+msgid "Voice Over Selected Text"
+msgstr "선택한 텍스트 음성 변환"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:133
 #. js-lingui-explicit-id
@@ -11350,6 +11341,11 @@ msgstr "언제든지 개인정보를 삭제할 수 있습니다"
 msgid "You can discuss the battle here."
 msgstr "당신은 여기에서 전투에 대해 논의할 수 있습니다."
 
+#: src/features/Reader/components/AddBookModal.tsx:261
+#. js-lingui-explicit-id
+msgid "You can drop EPUB anywhere on this page while this dialog is open."
+msgstr "이 대화 상자가 열려 있는 동안 이 페이지 어디든지 EPUB을 드롭할 수 있습니다."
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -11745,6 +11741,41 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
+
+#: src/features/Reader/components/AddBookModal.tsx:118
+#. js-lingui-explicit-id
+#~ msgid "Converting EPUB to markdown..."
+#~ msgstr "EPUB을 마크다운으로 변환 중..."
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+#~ msgid "Extracting embedded images..."
+#~ msgstr "내장된 이미지 추출 중..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "Extracting plain text..."
+#~ msgstr "단순 텍스트 추출 중..."
+
+#: src/features/Reader/components/AddBookModal.tsx:134
+#. js-lingui-explicit-id
+#~ msgid "Extracting title, subtitle and author..."
+#~ msgstr "제목, 부제 및 저자 추출 중..."
+
+#: src/features/Reader/components/AddBookModal.tsx:99
+#. js-lingui-explicit-id
+#~ msgid "Please select a valid EPUB file."
+#~ msgstr "유효한 EPUB 파일을 선택하세요."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+#~ msgid "Render Markdown"
+#~ msgstr "마크다운 렌더"
+
+#: src/features/Reader/components/AddBookModal.tsx:115
+#. js-lingui-explicit-id
+#~ msgid "Uploading EPUB..."
+#~ msgstr "EPUB 업로드 중..."
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
 #. js-lingui-explicit-id
