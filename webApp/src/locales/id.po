@@ -313,7 +313,7 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Reader/components/AddBookModal.tsx:259
+#: src/features/Reader/components/AddBookModal.tsx:347
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Tambahkan"
@@ -338,7 +338,7 @@ msgstr "Tambahkan Komentar"
 msgid "Add context..."
 msgstr "Tambahkan konteks..."
 
-#: src/features/Reader/components/AddBookModal.tsx:162
+#: src/features/Reader/components/AddBookModal.tsx:216
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -921,7 +921,7 @@ msgstr "Asisten"
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Reader/components/AddBookModal.tsx:181
+#: src/features/Reader/components/AddBookModal.tsx:235
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Penulis"
@@ -1099,7 +1099,7 @@ msgstr "Nilai terbaik untuk peningkatan yang konsisten."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:130
+#: src/features/Reader/components/AddBookModal.tsx:182
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Buku disimpan."
@@ -1344,7 +1344,7 @@ msgstr "Bisakah saya menggunakannya di smartphone?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:269
+#: src/features/Reader/components/AddBookModal.tsx:357
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1605,6 +1605,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Tutup"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:172
+#. js-lingui-explicit-id
+msgid "Close settings"
+msgstr "Tutup pengaturan"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -1984,7 +1989,7 @@ msgstr "Percakapan dengan Kecerdasan Buatan"
 msgid "Converted file size must be less than 250MB"
 msgstr "Ukuran file yang dikonversi harus kurang dari 250MB"
 
-#: src/features/Reader/components/AddBookModal.tsx:76
+#: src/features/Reader/components/AddBookModal.tsx:118
 #. js-lingui-explicit-id
 msgid "Converting EPUB to markdown..."
 msgstr "Mengonversi EPUB ke markdown..."
@@ -2857,7 +2862,7 @@ msgstr "Selesai"
 msgid "Done recording"
 msgstr "Selesai merekam"
 
-#: src/features/Reader/components/AddBookModal.tsx:97
+#: src/features/Reader/components/AddBookModal.tsx:147
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Selesai. Teks diimpor."
@@ -3495,12 +3500,22 @@ msgstr "Jelajahi komunitas, bergabunglah dalam diskusi, dan bagikan tanggapan An
 msgid "Extra Slow"
 msgstr "Ekstra Lambat"
 
-#: src/features/Reader/components/AddBookModal.tsx:79
+#: src/features/Reader/components/AddBookModal.tsx:286
+#. js-lingui-explicit-id
+msgid "Extracted images"
+msgstr "Gambar yang diekstraksi"
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+msgid "Extracting embedded images..."
+msgstr "Mengekstraksi gambar yang tersemat..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Extracting plain text..."
 msgstr "Mengekstraksi teks biasa..."
 
-#: src/features/Reader/components/AddBookModal.tsx:90
+#: src/features/Reader/components/AddBookModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Extracting title, subtitle and author..."
 msgstr "Mengekstraksi judul, subjudul, dan penulis..."
@@ -3510,8 +3525,8 @@ msgstr "Mengekstraksi judul, subjudul, dan penulis..."
 msgid "Failed to analyze image. Please try again."
 msgstr "Gagal menganalisis gambar. Silakan coba lagi."
 
-#: src/features/Reader/components/AddBookModal.tsx:83
-#: src/features/Reader/components/AddBookModal.tsx:100
+#: src/features/Reader/components/AddBookModal.tsx:125
+#: src/features/Reader/components/AddBookModal.tsx:150
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Gagal mengonversi EPUB."
@@ -3528,7 +3543,7 @@ msgid ""
 "developers."
 msgstr "Gagal menghapus akun Anda. Silakan coba lagi nanti, atau hubungi pengembang."
 
-#: src/features/Reader/components/AddBookModal.tsx:143
+#: src/features/Reader/components/AddBookModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Gagal menyimpan buku."
@@ -3620,7 +3635,7 @@ msgstr "Ukuran file harus kurang dari 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:64
+#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Ukuran file harus kurang dari 50MB"
@@ -3876,7 +3891,7 @@ msgstr "FluencyPal – Mitra Berbicara Bahasa Inggris AI Anda"
 msgid "Focus on shipping reliable services"
 msgstr "Fokus pada pengiriman layanan yang andal"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:257
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:294
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Ukuran font"
@@ -5238,12 +5253,12 @@ msgstr "Ilustrasi perekaman suara"
 msgid "Images"
 msgstr "Gambar-gambar"
 
-#: src/features/Reader/components/AddBookModal.tsx:209
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Impor teks dari EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:212
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Impor teks dari file EPUB"
@@ -5740,7 +5755,7 @@ msgstr "Hanya Bicara"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Mode Just Talk dengan AI yang lebih baik di belakangnya."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:242
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:267
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Rata Kanan dan Kiri Teks"
@@ -5770,8 +5785,8 @@ msgstr "Rencana Belajar Bahasa Korea"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Mendapatkan Pekerjaan Dev Pertama Anda Lebih Sulit Daripada Seharusnya"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:181
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:184
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:206
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:209
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6035,7 +6050,7 @@ msgstr "Fitur suara terbatas"
 msgid "Limits reached"
 msgstr "Batas tercapai"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:295
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:332
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Jarak antar garis"
@@ -6883,7 +6898,7 @@ msgstr "Tidak Ditemukan"
 msgid "Not running inside Telegram App"
 msgstr "Tidak berjalan di dalam Aplikasi Telegram"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Tidak didukung"
@@ -6927,7 +6942,7 @@ msgstr ""
 "                                  StartUp\" dengan kantor terdaftar di "
 "Warsawa."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:251
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Mati"
@@ -6994,7 +7009,7 @@ msgstr "Buka"
 msgid "Open Dashboard"
 msgstr "Buka Dasbor"
 
-#: src/features/Reader/components/DevPanel.tsx:36
+#: src/features/Reader/components/DevPanel.tsx:37
 #. js-lingui-explicit-id
 msgid "Open Dev Panel"
 msgstr "Buka Panel Pengembang"
@@ -7122,7 +7137,7 @@ msgstr "Bahasa Halaman"
 msgid "Paid plan:"
 msgstr "Paket berbayar:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:276
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:313
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Jarak paragraf"
@@ -7488,7 +7503,7 @@ msgstr "Silakan segarkan halaman dan coba sekali lagi"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Silakan pilih file audio yang valid (MP3, WAV, OGG, atau M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:57
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Please select a valid EPUB file."
 msgstr "Harap pilih file EPUB yang valid."
@@ -7926,7 +7941,7 @@ msgstr ""
 "Persiapkan untuk memamerkan portofolio Anda, membahas perjalanan belajar "
 "Anda, dan mengamankan peran profesional pertama Anda."
 
-#: src/features/Reader/components/AddBookModal.tsx:117
+#: src/features/Reader/components/AddBookModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Mempersiapkan buku..."
@@ -8258,6 +8273,11 @@ msgstr "Baca teksnya"
 msgid "Reader"
 msgstr "Pembaca"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#. js-lingui-explicit-id
+msgid "Reader settings"
+msgstr "Pengaturan pembaca"
+
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
 msgid "Ready to ace your backend interview?"
@@ -8563,6 +8583,11 @@ msgstr "Hapus data saya (hapus akun)"
 msgid "Removing your data..."
 msgstr "Menghapus data Anda..."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+msgid "Render Markdown"
+msgstr "Render Markdown"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8620,7 +8645,7 @@ msgstr "Permintaan gagal. Silakan coba lagi."
 msgid "Request Refund"
 msgstr "Permintaan Pengembalian Dana"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:318
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:355
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Setel ulang ke default"
@@ -8834,7 +8859,7 @@ msgstr "Simpan"
 msgid "Save Changes"
 msgstr "Simpan Perubahan"
 
-#: src/features/Reader/components/AddBookModal.tsx:120
+#: src/features/Reader/components/AddBookModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Menyimpan buku..."
@@ -9067,7 +9092,7 @@ msgstr "Atur Bahasa Saya"
 msgid "Set the goal of your learning"
 msgstr "Tetapkan tujuan pembelajaran Anda"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Pengaturan"
@@ -9391,7 +9416,7 @@ msgstr "Latihan berbicara"
 msgid "Speaking with a Psychologist"
 msgstr "Berbicara dengan Seorang Psikolog"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:191
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Dukungan ucapan"
@@ -9828,7 +9853,7 @@ msgstr "Mengirim..."
 msgid "Subscription (1 month)"
 msgstr "Berlangganan (1 bulan)"
 
-#: src/features/Reader/components/AddBookModal.tsx:174
+#: src/features/Reader/components/AddBookModal.tsx:228
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Subjudul"
@@ -9855,7 +9880,7 @@ msgstr "Ringkasan"
 msgid "Summary:"
 msgstr "Ringkasan:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Didukung"
@@ -10129,7 +10154,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Pengujian & Kualitas"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:242
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Teks"
@@ -10697,7 +10722,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:221
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Judul"
@@ -10830,7 +10855,7 @@ msgstr ""
 msgid "Translate"
 msgstr "Menerjemahkan"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Terjemahkan saat Dihampiri"
@@ -10840,8 +10865,8 @@ msgstr "Terjemahkan saat Dihampiri"
 msgid "Translate the word"
 msgstr "Terjemahkan kata"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:218
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:243
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:247
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11089,7 +11114,7 @@ msgstr "Unggah keterampilan bahasa langsung ke otak Anda"
 msgid "Upload video"
 msgstr "Unggah video"
 
-#: src/features/Reader/components/AddBookModal.tsx:73
+#: src/features/Reader/components/AddBookModal.tsx:115
 #. js-lingui-explicit-id
 msgid "Uploading EPUB..."
 msgstr "Mengunggah EPUB..."
@@ -11246,8 +11271,8 @@ msgstr "Kosa Kata"
 msgid "Vocabulary Practice"
 msgstr "Latihan Kosa Kata"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:201
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:229
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Suara"

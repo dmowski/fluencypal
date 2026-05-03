@@ -312,7 +312,7 @@ msgstr "Plan działań na poprawę kluczowych umiejętności backendowych"
 msgid "Active"
 msgstr "Aktywne"
 
-#: src/features/Reader/components/AddBookModal.tsx:259
+#: src/features/Reader/components/AddBookModal.tsx:347
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Dodaj"
@@ -337,7 +337,7 @@ msgstr "Dodaj komentarz"
 msgid "Add context..."
 msgstr "Dodaj kontekst..."
 
-#: src/features/Reader/components/AddBookModal.tsx:162
+#: src/features/Reader/components/AddBookModal.tsx:216
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -911,7 +911,7 @@ msgstr "Asystent"
 msgid "Auth"
 msgstr "Autoryzacja"
 
-#: src/features/Reader/components/AddBookModal.tsx:181
+#: src/features/Reader/components/AddBookModal.tsx:235
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Autor"
@@ -1091,7 +1091,7 @@ msgstr "Najlepsza wartość dla konsekwentnego postępu."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:130
+#: src/features/Reader/components/AddBookModal.tsx:182
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Książka zapisana."
@@ -1341,7 +1341,7 @@ msgstr "Czy mogę tego używać na smartfonie?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:269
+#: src/features/Reader/components/AddBookModal.tsx:357
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1603,6 +1603,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Zamknij"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:172
+#. js-lingui-explicit-id
+msgid "Close settings"
+msgstr "Zamknij ustawienia"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -1982,7 +1987,7 @@ msgstr "Rozmowy ze Sztuczną Inteligencją"
 msgid "Converted file size must be less than 250MB"
 msgstr "Rozmiar przekonwertowanego pliku musi być mniejszy niż 250 MB"
 
-#: src/features/Reader/components/AddBookModal.tsx:76
+#: src/features/Reader/components/AddBookModal.tsx:118
 #. js-lingui-explicit-id
 msgid "Converting EPUB to markdown..."
 msgstr "Konwertowanie EPUB do markdown..."
@@ -2855,7 +2860,7 @@ msgstr "Zrobione"
 msgid "Done recording"
 msgstr "Zakończono nagrywanie"
 
-#: src/features/Reader/components/AddBookModal.tsx:97
+#: src/features/Reader/components/AddBookModal.tsx:147
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Gotowe. Tekst zaimportowany."
@@ -3482,12 +3487,22 @@ msgstr "Eksploruj społeczność, dołącz do dyskusji i podziel się swoimi uwa
 msgid "Extra Slow"
 msgstr "Extra wolno"
 
-#: src/features/Reader/components/AddBookModal.tsx:79
+#: src/features/Reader/components/AddBookModal.tsx:286
+#. js-lingui-explicit-id
+msgid "Extracted images"
+msgstr "Wyodrębnione obrazy"
+
+#: src/features/Reader/components/AddBookModal.tsx:141
+#. js-lingui-explicit-id
+msgid "Extracting embedded images..."
+msgstr "Wyodrębnianie osadzonych obrazów..."
+
+#: src/features/Reader/components/AddBookModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Extracting plain text..."
 msgstr "Wyodrębnianie zwykłego tekstu..."
 
-#: src/features/Reader/components/AddBookModal.tsx:90
+#: src/features/Reader/components/AddBookModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Extracting title, subtitle and author..."
 msgstr "Wyodrębnianie tytułu, podtytułu i autora..."
@@ -3497,8 +3512,8 @@ msgstr "Wyodrębnianie tytułu, podtytułu i autora..."
 msgid "Failed to analyze image. Please try again."
 msgstr "Nie udało się przeanalizować obrazu. Proszę spróbować ponownie."
 
-#: src/features/Reader/components/AddBookModal.tsx:83
-#: src/features/Reader/components/AddBookModal.tsx:100
+#: src/features/Reader/components/AddBookModal.tsx:125
+#: src/features/Reader/components/AddBookModal.tsx:150
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Nie udało się przekonwertować EPUB."
@@ -3517,7 +3532,7 @@ msgstr ""
 "Nie udało się usunąć twojego konta. Spróbuj ponownie później lub skontaktuj "
 "się z programistami."
 
-#: src/features/Reader/components/AddBookModal.tsx:143
+#: src/features/Reader/components/AddBookModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Nie udało się zapisać książki."
@@ -3609,7 +3624,7 @@ msgstr "Rozmiar pliku musi być mniejszy niż 250MB"
 #: src/features/Audio/UploadAudioFileButton.tsx:46
 #: src/features/Chat/RichTextEditor.tsx:39
 #: src/features/Game/UploadImageButton.tsx:37
-#: src/features/Reader/components/AddBookModal.tsx:64
+#: src/features/Reader/components/AddBookModal.tsx:106
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Rozmiar pliku musi być mniejszy niż 50 MB"
@@ -3866,7 +3881,7 @@ msgstr "FluencyPal – Twój AI partner do mówienia po angielsku"
 msgid "Focus on shipping reliable services"
 msgstr "Skup się na dostarczaniu niezawodnych usług"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:257
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:294
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Rozmiar czcionki"
@@ -5203,12 +5218,12 @@ msgstr "Ilustracja nagrywania głosu"
 msgid "Images"
 msgstr "Obrazy"
 
-#: src/features/Reader/components/AddBookModal.tsx:209
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Importuj tekst z EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:212
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Importuj tekst z pliku EPUB"
@@ -5704,7 +5719,7 @@ msgstr "Po prostu porozmawiaj"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Tryb „Just Talk” z lepszą AI w tle."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:242
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:267
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Wyrównaj tekst do lewej/prawej"
@@ -5736,8 +5751,8 @@ msgstr ""
 "Znalezienie Pierwszej Pracy Jako Programista Jest Trudniejsze, Niż Powinno "
 "Być"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:181
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:184
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:206
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:209
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5999,7 +6014,7 @@ msgstr "Ograniczone funkcje głosowe"
 msgid "Limits reached"
 msgstr "Osiągnięto limit"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:295
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:332
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Wysokość linii"
@@ -6847,7 +6862,7 @@ msgstr "Nie znaleziono"
 msgid "Not running inside Telegram App"
 msgstr "Nie uruchomiono w aplikacji Telegram"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Nieobsługiwane"
@@ -6892,7 +6907,7 @@ msgstr ""
 "Przedsiębiorczości \"Twój\n"
 "                                  StartUp\" z siedzibą w Warszawie."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:251
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Wyłącz"
@@ -6959,7 +6974,7 @@ msgstr "Otwórz"
 msgid "Open Dashboard"
 msgstr "Otwórz Pulpit"
 
-#: src/features/Reader/components/DevPanel.tsx:36
+#: src/features/Reader/components/DevPanel.tsx:37
 #. js-lingui-explicit-id
 msgid "Open Dev Panel"
 msgstr "Otwórz Panel Dewelopera"
@@ -7087,7 +7102,7 @@ msgstr "Język strony"
 msgid "Paid plan:"
 msgstr "Plan płatny:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:276
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:313
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Odstęp akapitu"
@@ -7453,7 +7468,7 @@ msgstr "Proszę odświeżyć stronę i spróbować jeszcze raz"
 msgid "Please select a valid audio file (MP3, WAV, OGG, or M4A)"
 msgstr "Proszę wybrać prawidłowy plik audio (MP3, WAV, OGG lub M4A)"
 
-#: src/features/Reader/components/AddBookModal.tsx:57
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Please select a valid EPUB file."
 msgstr "Proszę wybrać prawidłowy plik EPUB."
@@ -7890,7 +7905,7 @@ msgstr ""
 "Przygotuj się, aby zaprezentować swoje portfolio, omówić swoją ścieżkę "
 "nauki i zdobyć swoją pierwszą profesjonalną rolę."
 
-#: src/features/Reader/components/AddBookModal.tsx:117
+#: src/features/Reader/components/AddBookModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Przygotowywanie książki..."
@@ -8219,6 +8234,11 @@ msgstr "Przeczytaj tekst"
 msgid "Reader"
 msgstr "Czytnik"
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#. js-lingui-explicit-id
+msgid "Reader settings"
+msgstr "Ustawienia czytnika"
+
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
 msgid "Ready to ace your backend interview?"
@@ -8526,6 +8546,11 @@ msgstr "Usuń moje dane (usuń konto)"
 msgid "Removing your data..."
 msgstr "Usuwanie Twoich danych..."
 
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
+#. js-lingui-explicit-id
+msgid "Render Markdown"
+msgstr "Renderuj Markdown"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:49
 #: src/features/Case/data/frontend-senior/techData.tsx:49
 #. js-lingui-explicit-id
@@ -8583,7 +8608,7 @@ msgstr "Żądanie nie powiodło się. Proszę spróbować ponownie."
 msgid "Request Refund"
 msgstr "Zgłoś Zwrot"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:318
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:355
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Zresetuj do ustawień domyślnych"
@@ -8799,7 +8824,7 @@ msgstr "Zapisz"
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: src/features/Reader/components/AddBookModal.tsx:120
+#: src/features/Reader/components/AddBookModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Zapisywanie książki..."
@@ -9028,7 +9053,7 @@ msgstr "Ustaw Mój Język"
 msgid "Set the goal of your learning"
 msgstr "Ustal cel swojej nauki"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Ustawienia"
@@ -9349,7 +9374,7 @@ msgstr "Ćwiczenie mówienia"
 msgid "Speaking with a Psychologist"
 msgstr "Rozmowa z psychologiem"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:191
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Wsparcie mowy"
@@ -9788,7 +9813,7 @@ msgstr "Przesyłanie..."
 msgid "Subscription (1 month)"
 msgstr "Subskrypcja (1 miesiąc)"
 
-#: src/features/Reader/components/AddBookModal.tsx:174
+#: src/features/Reader/components/AddBookModal.tsx:228
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Podtytuł"
@@ -9813,7 +9838,7 @@ msgstr "Podsumowanie"
 msgid "Summary:"
 msgstr "Podsumowanie:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:167
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Obsługiwane"
@@ -10089,7 +10114,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Testowanie i Jakość"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:242
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Tekst"
@@ -10653,7 +10678,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:167
+#: src/features/Reader/components/AddBookModal.tsx:221
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Tytuł"
@@ -10784,7 +10809,7 @@ msgstr ""
 msgid "Translate"
 msgstr "Przetłumacz"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:252
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:288
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Przetłumacz po najechaniu kursorem"
@@ -10794,8 +10819,8 @@ msgstr "Przetłumacz po najechaniu kursorem"
 msgid "Translate the word"
 msgstr "Przetłumacz słowo"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:218
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:243
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:247
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Przetłumacz na"
@@ -11037,7 +11062,7 @@ msgstr "Prześlij umiejętności językowe bezpośrednio do swojego mózgu"
 msgid "Upload video"
 msgstr "Prześlij wideo"
 
-#: src/features/Reader/components/AddBookModal.tsx:73
+#: src/features/Reader/components/AddBookModal.tsx:115
 #. js-lingui-explicit-id
 msgid "Uploading EPUB..."
 msgstr "Przesyłanie EPUB..."
@@ -11188,8 +11213,8 @@ msgstr "Słownictwo"
 msgid "Vocabulary Practice"
 msgstr "Ćwiczenie Słownictwa"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:201
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:229
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Głos"
