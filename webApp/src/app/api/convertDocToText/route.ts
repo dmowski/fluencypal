@@ -12,6 +12,73 @@ const bookMetadataSchema = z.object({
 
 const METADATA_PREVIEW_CHARS = 700;
 
+const IMAGE_EXT_TO_MIME: Record<string, string> = {
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml',
+};
+
+const normalizeImageHref = (href: string): string => {
+  const [pathOnly] = href.split(/[?#]/, 1);
+  const trimmed = decodeURI(pathOnly.trim());
+  return trimmed.replace(/^([./]+)+/, '').replace(/\\/g, '/');
+};
+
+const getImageMimeType = (href: string): string | null => {
+  const lowerHref = href.toLowerCase();
+  const matchedExtension = Object.keys(IMAGE_EXT_TO_MIME).find((ext) => lowerHref.endsWith(ext));
+  if (!matchedExtension) return null;
+  return IMAGE_EXT_TO_MIME[matchedExtension];
+};
+
+const extractImageDataUrlByHref = async (parsed: unknown): Promise<Record<string, string>> => {
+  const imageDataUrlByHref: Record<string, string> = {};
+  const parsedRecord = parsed as {
+    structure?: {
+      opf?: {
+        manifest?: {
+          manifest?: Array<{ href?: string }>;
+        };
+      };
+    };
+    sections?: Array<{
+      _getFile?: (href: string) => Promise<{ asNodeBuffer?: () => Buffer }>;
+    }>;
+  };
+
+  const getFile = parsedRecord.sections?.[0]?._getFile;
+  const manifestItems = parsedRecord.structure?.opf?.manifest?.manifest ?? [];
+
+  if (!getFile || !manifestItems.length) {
+    return imageDataUrlByHref;
+  }
+
+  for (const item of manifestItems) {
+    const href = item.href?.trim();
+    if (!href) continue;
+
+    const mimeType = getImageMimeType(href);
+    if (!mimeType) continue;
+
+    const normalizedHref = normalizeImageHref(href);
+    if (!normalizedHref || imageDataUrlByHref[normalizedHref]) continue;
+
+    try {
+      const file = await getFile(href);
+      const buffer = file?.asNodeBuffer?.();
+      if (!buffer || buffer.length === 0) continue;
+      imageDataUrlByHref[normalizedHref] = `data:${mimeType};base64,${buffer.toString('base64')}`;
+    } catch (fileError) {
+      console.error('EPUB image extraction error', { href, fileError });
+    }
+  }
+
+  return imageDataUrlByHref;
+};
+
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
@@ -61,6 +128,7 @@ export async function POST(request: Request) {
       .join('\n\n')
       .split(`<?xml version='1.0' encoding='utf-8'?>`)
       .join('\n');
+    const imageDataUrlByHref = await extractImageDataUrlByHref(parsed);
 
     if (!markdown) {
       const response: ConvertDocToTextResponse = {
@@ -121,6 +189,7 @@ export async function POST(request: Request) {
     const response: ConvertDocToTextResponse = {
       markdown,
       metadata,
+      imageDataUrlByHref,
     };
 
     return Response.json(response);

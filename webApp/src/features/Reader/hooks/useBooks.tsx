@@ -108,17 +108,20 @@ const useBooksState = () => {
     subTitle,
     text,
     author,
+    imagesByHref,
   }: {
     title: string;
     subTitle: string;
     text: string;
     author: string;
+    imagesByHref?: Record<string, string>;
   }) => {
     const newBook: Book = {
       id: createBookId(),
       title,
       subtitle: subTitle,
       author,
+      imagesByHref,
       paragraphs: splitTextIntoParagraphs(text),
       activePageIndex: 1,
     };

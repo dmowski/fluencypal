@@ -12,6 +12,7 @@ export interface ReaderMarkdownWordProps {
 export interface MarkdownProps {
   children: string;
   words?: string[];
+  imageDataUrlByHref?: Record<string, string>;
   onWordClick?: (
     word: string,
     element: HTMLElement,
@@ -33,6 +34,12 @@ export interface MarkdownProps {
   renderWord?: (props: ReaderMarkdownWordProps) => React.ReactNode;
   renderSpace?: (wordIndex: number) => React.ReactNode;
 }
+
+const normalizeImageHref = (href: string): string => {
+  const [pathOnly] = href.split(/[?#]/, 1);
+  const trimmed = decodeURI(pathOnly.trim());
+  return trimmed.replace(/^([./]+)+/, '').replace(/\\/g, '/');
+};
 
 const processStringChild = (
   child: string,
@@ -147,7 +154,9 @@ const wrapChildrenWithTranslateWrapper = (
   };
 };
 
-const markdownComponents: MarkdownToJSX.Overrides = {
+const createMarkdownComponents = (
+  imageDataUrlByHref?: Record<string, string>,
+): MarkdownToJSX.Overrides => ({
   h1: ({ children }) => <Typography variant="h1">{children}</Typography>,
   h2: ({ children }) => (
     <Typography
@@ -245,19 +254,27 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   th: ({ children }) => <th>{children}</th>,
   td: ({ children }) => <td>{children}</td>,
   table: ({ children }) => <table>{children}</table>,
-  img: (props) => <img {...props} style={{ maxWidth: '90%' }} />,
-};
+  img: (props) => {
+    const rawSrc = typeof props.src === 'string' ? props.src : '';
+    const normalizedSrc = normalizeImageHref(rawSrc);
+    const resolvedSrc =
+      imageDataUrlByHref?.[normalizedSrc] || imageDataUrlByHref?.[rawSrc] || props.src;
+
+    return <img {...props} src={resolvedSrc} style={{ maxWidth: '90%' }} />;
+  },
+});
 
 export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   children,
   words,
+  imageDataUrlByHref,
   onWordClick,
   onWordMouseEnter,
   onWordMouseMove,
   renderWord,
   renderSpace,
 }) => {
-  const styleComponents = markdownComponents;
+  const styleComponents = createMarkdownComponents(imageDataUrlByHref);
 
   const renderWordsDirectly = words && words.length > 0;
   const wrapNodeChildren = (nodeChildren: React.ReactNode) =>

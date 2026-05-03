@@ -189,6 +189,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       paragraphStartCharOffset={paragraph.sourceStartCharOffset}
                       words={paragraph.words}
                       isUseMarkdown={readerSettings.isUseMarkdown}
+                      imagesByHref={data.imagesByHref}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}

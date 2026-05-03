@@ -3,7 +3,7 @@ import { ensureReaderTextVisible } from './books.helpers';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
-const EXPECTED_COVER_SRC = '../images/9780385697750_cover.jpg';
+const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
 
 test('imports EPUB with images and opens reader with parsed content', async ({ page }) => {
   test.setTimeout(180_000);
@@ -38,6 +38,14 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   await expect.poll(async () => (await authorInput.inputValue()).trim()).not.toBe('');
   await expect.poll(async () => (await textInput.inputValue()).trim().length).toBeGreaterThan(200);
 
+  const extractedImages = addBookModal.getByTestId('epub-extracted-image');
+  await expect(extractedImages.first()).toBeVisible();
+  await expect.poll(async () => extractedImages.count()).toBeGreaterThan(0);
+  await expect(extractedImages.first()).toHaveAttribute(
+    'src',
+    /^data:image\/[a-zA-Z0-9.+-]+;base64,/,
+  );
+
   await page.getByRole('button', { name: 'Add', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
 
@@ -50,5 +58,45 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
 
   const coverImage = page.locator('img[alt*="Cover"]').first();
   await expect(coverImage).toBeVisible();
-  await expect(coverImage).toHaveAttribute('src', EXPECTED_COVER_SRC);
+  await expect(coverImage).toHaveAttribute('src', /^data:image\/[a-zA-Z0-9.+-]+;base64,/);
+
+  const imageMapState = await page.evaluate(async (expectedImageKey) => {
+    const openDb = (): Promise<IDBDatabase> =>
+      new Promise((resolve, reject) => {
+        const request = window.indexedDB.open('readerBooksDb', 1);
+        request.onerror = () => reject(request.error ?? new Error('Failed to open IndexedDB'));
+        request.onsuccess = () => resolve(request.result);
+      });
+
+    const db = await openDb();
+
+    const books: unknown[] = await new Promise((resolve, reject) => {
+      const transaction = db.transaction('readerMeta', 'readonly');
+      const store = transaction.objectStore('readerMeta');
+      const request = store.getAll();
+
+      request.onerror = () => reject(request.error ?? new Error('Failed to read books from DB'));
+      request.onsuccess = () => resolve(Array.isArray(request.result) ? request.result : []);
+    });
+
+    db.close();
+
+    const savedBook = books.find((book) => {
+      if (!book || typeof book !== 'object') return false;
+      return (book as { title?: string }).title === 'Supercommunicators';
+    }) as { imagesByHref?: Record<string, string> } | undefined;
+
+    const imagesByHref = savedBook?.imagesByHref ?? {};
+    const coverSrc = imagesByHref[expectedImageKey] ?? '';
+
+    return {
+      imageCount: Object.keys(imagesByHref).length,
+      hasCoverImageKey: Boolean(imagesByHref[expectedImageKey]),
+      coverSrc,
+    };
+  }, EXPECTED_COVER_IMAGE_KEY);
+
+  expect(imageMapState.imageCount).toBeGreaterThan(0);
+  expect(imageMapState.hasCoverImageKey).toBeTruthy();
+  expect(imageMapState.coverSrc).toMatch(/^data:image\/[a-zA-Z0-9.+-]+;base64,/);
 });

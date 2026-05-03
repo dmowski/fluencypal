@@ -22,6 +22,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const [subtitle, setSubtitle] = useState('');
   const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
+  const [imageDataUrlByHref, setImageDataUrlByHref] = useState<Record<string, string>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isConvertingFile, setIsConvertingFile] = useState(false);
   const [conversionProgress, setConversionProgress] = useState(0);
@@ -85,6 +86,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
       const parsedText = result.markdown || '';
       setText(parsedText);
+      setImageDataUrlByHref(result.imageDataUrlByHref ?? {});
       if (result.metadata) {
         setConversionProgress(90);
         setConversionMessage(i18n._('Extracting title, subtitle and author...'));
@@ -92,6 +94,9 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         setSubtitle(result.metadata.subtitle.trim());
         setAuthor(result.metadata.author.trim());
       }
+
+      setConversionProgress(95);
+      setConversionMessage(i18n._('Extracting embedded images...'));
 
       setConversionProgress(100);
       setConversionMessage(i18n._('Done. Text imported.'));
@@ -124,6 +129,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         subTitle: subtitle.trim(),
         author: author.trim(),
         text: text.trim(),
+        imagesByHref: imageDataUrlByHref,
       });
 
       setSaveProgress(100);
@@ -133,6 +139,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
       setSubtitle('');
       setAuthor('');
       setText('');
+      setImageDataUrlByHref({});
       setConversionProgress(0);
       setConversionMessage('');
       setConversionError('');
@@ -224,6 +231,40 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             <Typography variant="caption" color="error">
               {conversionError}
             </Typography>
+          ) : null}
+
+          {Object.keys(imageDataUrlByHref).length > 0 ? (
+            <Stack sx={{ gap: '8px' }}>
+              <Typography variant="caption" sx={{ opacity: 0.75 }}>
+                {i18n._('Extracted images')}: {Object.keys(imageDataUrlByHref).length}
+              </Typography>
+              <Stack
+                sx={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                }}
+              >
+                {Object.values(imageDataUrlByHref)
+                  .slice(0, 12)
+                  .map((src, idx) => (
+                    <Stack
+                      key={idx}
+                      component="img"
+                      data-testid="epub-extracted-image"
+                      src={src}
+                      alt={`Extracted EPUB image ${idx + 1}`}
+                      sx={{
+                        width: '64px',
+                        height: '64px',
+                        objectFit: 'cover',
+                        borderRadius: '6px',
+                        border: '1px solid rgba(0,0,0,0.1)',
+                      }}
+                    />
+                  ))}
+              </Stack>
+            </Stack>
           ) : null}
         </Stack>
 

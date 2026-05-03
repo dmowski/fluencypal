@@ -10,6 +10,7 @@ export interface Book {
   title: string;
   subtitle: string;
   author: string;
+  imagesByHref?: Record<string, string>;
   highlights?: HighlightedText[];
   readProgress?: ReadingProgress;
   activePageIndex?: number;

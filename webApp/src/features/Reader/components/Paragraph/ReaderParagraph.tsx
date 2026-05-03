@@ -31,6 +31,7 @@ interface ReaderParagraphProps {
   paragraphStartCharOffset: number;
   words: string[];
   isUseMarkdown: boolean;
+  imagesByHref?: Record<string, string>;
   fontSize: number;
   lineHeight: number;
   justifyText: boolean;
@@ -47,6 +48,7 @@ const ReaderParagraphBase = ({
   paragraphStartCharOffset,
   words,
   isUseMarkdown,
+  imagesByHref,
   fontSize,
   lineHeight,
   justifyText,
@@ -317,6 +319,7 @@ const ReaderParagraphBase = ({
       >
         {isUseMarkdown ? (
           <ReaderMarkdown
+            imageDataUrlByHref={imagesByHref}
             renderWord={({ word, wordIndex }) => {
               const { sourceStart } = getSafeWordMeta({
                 wordIndex,
