@@ -10,6 +10,44 @@ const isEditableTarget = (target: EventTarget | null) => {
   );
 };
 
+const selectAllPageContent = () => {
+  const pageColumns = document.querySelectorAll<HTMLElement>('[data-testid="reader-page-column"]');
+  if (pageColumns.length === 0) return;
+
+  const findFirstTextNode = (node: Node): Text | null => {
+    if (node.nodeType === Node.TEXT_NODE && (node.textContent ?? '').length > 0)
+      return node as Text;
+    for (const child of Array.from(node.childNodes)) {
+      const found = findFirstTextNode(child);
+      if (found) return found;
+    }
+    return null;
+  };
+
+  const findLastTextNode = (node: Node): Text | null => {
+    if (node.nodeType === Node.TEXT_NODE && (node.textContent ?? '').length > 0)
+      return node as Text;
+    const children = Array.from(node.childNodes);
+    for (let i = children.length - 1; i >= 0; i -= 1) {
+      const found = findLastTextNode(children[i]);
+      if (found) return found;
+    }
+    return null;
+  };
+
+  const firstText = findFirstTextNode(pageColumns[0]);
+  const lastText = findLastTextNode(pageColumns[pageColumns.length - 1]);
+  if (!firstText || !lastText) return;
+
+  const range = document.createRange();
+  range.setStart(firstText, 0);
+  range.setEnd(lastText, lastText.textContent?.length ?? 0);
+
+  const selection = window.getSelection();
+  selection?.removeAllRanges();
+  selection?.addRange(range);
+};
+
 export const useReaderShortcuts = ({
   activePage,
   maxPage,
@@ -25,6 +63,12 @@ export const useReaderShortcuts = ({
 }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'a') {
+        event.preventDefault();
+        selectAllPageContent();
+        return;
+      }
+
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) {
         return;
       }

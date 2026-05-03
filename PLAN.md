@@ -2,8 +2,6 @@
 
 ## Reader helper?
 
-- When press: ctrl+A, select only content in pages, do not select other text. do not trigger show highlight popup or voiceover. (cover with e2e)
-
 - Handle images: I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width to fit the page? (It's visible when screen is 1400px / 700px. The first cover image is not fit into view port.)
 
 ### Drag and drop

@@ -31,6 +31,7 @@ import {
   selectStoodInsideUnderstood,
   selectWheneverWordText,
   selectWheneverYouFeelPartialText,
+  BOOK_SUBTITLE,
 } from './books.helpers';
 
 test.describe('markdown rendering', () => {
@@ -190,5 +191,30 @@ test.describe('markdown rendering', () => {
     expect(hydrationErrors, `Hydration errors found:\n${hydrationErrors.join('\n')}`).toHaveLength(
       0,
     );
+  });
+
+  test('Ctrl+A selects only page content without triggering highlight popover or voiceover', async ({
+    page,
+  }) => {
+    await installSpeechMock(page);
+    await openSeededGatsbyBook(page);
+
+    await page.keyboard.press('Control+a');
+
+    // Selection must be non-empty
+    const selectedText = await page.evaluate(() => window.getSelection()?.toString().trim() ?? '');
+    expect(selectedText.length).toBeGreaterThan(0);
+
+    // Selected text must not include the header subtitle (which lives outside page columns)
+    expect(selectedText).not.toContain(BOOK_SUBTITLE);
+
+    // Highlight popover must not appear
+    await expect(page.getByRole('button', { name: 'Y', exact: true })).not.toBeVisible();
+
+    // Voiceover must not have fired
+    const spokenTexts = await page.evaluate(() => {
+      return (window as typeof window & { __spokenTexts?: string[] }).__spokenTexts ?? [];
+    });
+    expect(spokenTexts).toHaveLength(0);
   });
 });
