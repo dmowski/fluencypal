@@ -94,6 +94,48 @@ export const getAbsoluteCharOffset = (
   return null;
 };
 
+/**
+ * Resolves [startInclusive, endExclusive] from a DOM Range by inspecting selected
+ * character spans tagged with data-char-offset within the paragraph root.
+ */
+export const getRangeCharOffsets = (
+  range: Range,
+  paragraphRoot: HTMLElement,
+): { startInclusive: number; endExclusive: number } | null => {
+  const selectedOffsets: number[] = [];
+  const charSpans = paragraphRoot.querySelectorAll<HTMLElement>('[data-char-offset]');
+
+  charSpans.forEach((entry) => {
+    const rawOffset = Number(entry.getAttribute('data-char-offset'));
+    if (Number.isNaN(rawOffset)) {
+      return;
+    }
+
+    try {
+      const charRange = document.createRange();
+      charRange.selectNodeContents(entry);
+
+      const endsBeforeOrAtStart = range.compareBoundaryPoints(Range.END_TO_START, charRange) <= 0;
+      const startsAfterOrAtEnd = range.compareBoundaryPoints(Range.START_TO_END, charRange) >= 0;
+
+      if (!endsBeforeOrAtStart && !startsAfterOrAtEnd) {
+        selectedOffsets.push(rawOffset);
+      }
+    } catch {
+      // Skip detached/invalid nodes defensively.
+    }
+  });
+
+  if (selectedOffsets.length === 0) {
+    return null;
+  }
+
+  const startInclusive = Math.min(...selectedOffsets);
+  const endExclusive = Math.max(...selectedOffsets) + 1;
+
+  return { startInclusive, endExclusive };
+};
+
 /** Returns the topmost highlight overlapping [charStart, charEnd] (inclusive). */
 export const getHighlightAtCharRange = (
   charStart: number,

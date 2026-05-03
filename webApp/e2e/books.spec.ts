@@ -17,7 +17,9 @@ import {
   mockSingleTranslation,
   openSeededGatsbyBook,
   openSettingsPopover,
+  selectFirstParagraphRangeByWordBoundaries,
   selectCriticizingWordText,
+  selectWheneverYouFeelPartialText,
   selectRussianTranslateTarget,
   setRenderMarkdown,
 } from './books.helpers';
@@ -59,9 +61,7 @@ for (const renderMode of renderModes) {
       await assertSelectionTextPersists(page, /criticizing/i);
     });
 
-    test('selected text keeps selection visible when highlight popover opens', async ({
-      page,
-    }) => {
+    test('selected text keeps selection visible when highlight popover opens', async ({ page }) => {
       await openSeededGatsbyBook(page);
       await openSettingsPopover(page);
       await setRenderMarkdown(page, renderMode.isUseMarkdown);
@@ -72,6 +72,35 @@ for (const renderMode of renderModes) {
       await assertHighlightPopoverVisible(page);
       await assertCurrentSelectionText(page, /criticizing/i);
       await assertSelectionTextPersists(page, /criticizing/i);
+    });
+
+    test('partial selection does not shift text around younger/vulnerable phrase', async ({
+      page,
+    }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      // Select from "o" in "younger" (offset 1 in word) to after "b" in "vulnerable" (offset 8).
+      await selectFirstParagraphRangeByWordBoundaries(page, 2, 1, 5, 8);
+
+      await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /^ounger and more vulnerab$/i);
+      await assertSelectionTextPersists(page, /^ounger and more vulnerab$/i);
+    });
+
+    test('partial selection does not collapse for whenever/feel phrase', async ({ page }) => {
+      await openSeededGatsbyBook(page);
+      await openSettingsPopover(page);
+      await setRenderMarkdown(page, renderMode.isUseMarkdown);
+      await closeSettingsPopover(page);
+
+      await selectWheneverYouFeelPartialText(page);
+
+      await assertHighlightPopoverVisible(page);
+      await assertCurrentSelectionText(page, /^henever you fee$/i);
+      await assertSelectionTextPersists(page, /^henever you fee$/i);
     });
 
     test('reader uses pointer cursor consistently for interactive words', async ({ page }) => {

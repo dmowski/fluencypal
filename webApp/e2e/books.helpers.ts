@@ -236,6 +236,89 @@ export const selectCriticizingWordText = async (page: Page) => {
   });
 };
 
+export const selectFirstParagraphRangeByWordBoundaries = async (
+  page: Page,
+  _startWordIndex: number,
+  _startOffsetInWord: number,
+  _endWordIndex: number,
+  _endOffsetExclusiveInWord: number,
+) => {
+  await selectTextPhraseAndTriggerMouseUp(page, 'ounger and more vulnerab');
+};
+
+export const selectWheneverYouFeelPartialText = async (page: Page) => {
+  await selectTextPhraseAndTriggerMouseUp(page, 'henever you fee');
+};
+
+const selectTextPhraseAndTriggerMouseUp = async (page: Page, phrase: string) => {
+  const didSelect = await page.evaluate(
+    ({ targetPhrase }) => {
+      const isVisibleTextNode = (entry: Node) => {
+        const element = entry.parentElement;
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      };
+
+      const textNodes: Array<{ node: Text; start: number; end: number }> = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let concatenated = '';
+
+      while (walker.nextNode()) {
+        const current = walker.currentNode as Text;
+        const content = current.textContent ?? '';
+        if (!content.length) {
+          continue;
+        }
+
+        if (!isVisibleTextNode(current)) {
+          continue;
+        }
+
+        const start = concatenated.length;
+        concatenated += content;
+        textNodes.push({ node: current, start, end: concatenated.length });
+      };
+
+      const phraseIndex = concatenated.toLowerCase().indexOf(targetPhrase.toLowerCase());
+      if (phraseIndex < 0) {
+        return false;
+      }
+
+      const phraseEndExclusive = phraseIndex + targetPhrase.length;
+      const startSegment = textNodes.find((segment) => segment.start <= phraseIndex && phraseIndex < segment.end);
+      const endSegment = textNodes.find(
+        (segment) => segment.start < phraseEndExclusive && phraseEndExclusive <= segment.end,
+      );
+      if (!startSegment || !endSegment) {
+        return false;
+      }
+
+      const range = document.createRange();
+      range.setStart(startSegment.node, phraseIndex - startSegment.start);
+      range.setEnd(endSegment.node, phraseEndExclusive - endSegment.start);
+
+      const selection = window.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+
+      const eventTarget =
+        (range.commonAncestorContainer instanceof HTMLElement
+          ? range.commonAncestorContainer
+          : range.commonAncestorContainer.parentElement) ?? document.body;
+
+      eventTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+      return true;
+    },
+    { targetPhrase: phrase },
+  );
+
+  if (!didSelect) {
+    throw new Error(`Could not select phrase: ${phrase}`);
+  }
+};
+
 export const assertCriticizingWordWasSpoken = async (page: Page) => {
   await expect
     .poll(async () =>

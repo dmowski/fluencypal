@@ -4,6 +4,9 @@
 
 - Handle font style: Markdown
 
+Let's move user selection to state.
+And keep it in
+
 - Handle images
 
 - handle navigation

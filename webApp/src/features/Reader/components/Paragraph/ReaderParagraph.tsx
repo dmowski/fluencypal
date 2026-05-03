@@ -7,6 +7,7 @@ import {
 import {
   getAbsoluteCharOffset,
   getCharHighlightColor,
+  getRangeCharOffsets,
   getWordCharOffsets,
 } from '../../utils/readerParagraphHelpers';
 import { normalizeSelectedText } from '../../utils/readerParagraphTranslationHelpers';
@@ -125,6 +126,81 @@ const ReaderParagraphBase = ({
     domSelection?.addRange(range);
   };
 
+  const applyNativeSelectionByText = (selectedValue: string, startHint?: number) => {
+    if (!selectedValue) {
+      return false;
+    }
+
+    const paragraphElement = paragraphRef.current;
+    if (!paragraphElement) {
+      return false;
+    }
+
+    const fullText = paragraphElement.textContent ?? '';
+    if (!fullText.length) {
+      return false;
+    }
+
+    const occurrences: number[] = [];
+    let searchFrom = 0;
+    while (searchFrom <= fullText.length) {
+      const index = fullText.indexOf(selectedValue, searchFrom);
+      if (index < 0) break;
+      occurrences.push(index);
+      searchFrom = index + 1;
+    }
+
+    if (occurrences.length === 0) {
+      return false;
+    }
+
+    const targetStart =
+      typeof startHint === 'number'
+        ? occurrences.reduce((best, current) =>
+            Math.abs(current - startHint) < Math.abs(best - startHint) ? current : best,
+          )
+        : occurrences[0];
+    const targetEndExclusive = targetStart + selectedValue.length;
+
+    const walker = document.createTreeWalker(paragraphElement, NodeFilter.SHOW_TEXT);
+    const segments: Array<{ node: Text; start: number; end: number }> = [];
+    let cursor = 0;
+
+    while (walker.nextNode()) {
+      const node = walker.currentNode as Text;
+      const content = node.textContent ?? '';
+      if (!content.length) {
+        continue;
+      }
+
+      const start = cursor;
+      const end = cursor + content.length;
+      segments.push({ node, start, end });
+      cursor = end;
+    }
+
+    const startSegment = segments.find(
+      (segment) => segment.start <= targetStart && targetStart < segment.end,
+    );
+    const endSegment = segments.find(
+      (segment) => segment.start < targetEndExclusive && targetEndExclusive <= segment.end,
+    );
+
+    if (!startSegment || !endSegment) {
+      return false;
+    }
+
+    const range = document.createRange();
+    range.setStart(startSegment.node, targetStart - startSegment.start);
+    range.setEnd(endSegment.node, targetEndExclusive - endSegment.start);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    return true;
+  };
+
   const getSafeWordMeta = (wordIndex: number, fallbackWord: string) => {
     const lastSafeIndex = Math.max(words.length - 1, 0);
     const safeIndex = Math.min(Math.max(wordIndex, 0), lastSafeIndex);
@@ -147,25 +223,71 @@ const ReaderParagraphBase = ({
       const rect = range?.getBoundingClientRect();
 
       if (range) {
-        const rawStart = getAbsoluteCharOffset(
-          range.startContainer,
-          range.startOffset,
-          wordCharOffsets,
-        );
-        // endOffset is exclusive in the Selection API — subtract 1 to store inclusive end.
-        const rawEnd = getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
+        const paragraphText = words.join(' ');
+        const directRangeOffsets = paragraphRef.current
+          ? getRangeCharOffsets(range, paragraphRef.current)
+          : null;
+        const rawStart =
+          directRangeOffsets?.startInclusive ??
+          getAbsoluteCharOffset(range.startContainer, range.startOffset, wordCharOffsets);
+        // endOffset is exclusive in the Selection API.
+        const rawEnd =
+          directRangeOffsets?.endExclusive ??
+          getAbsoluteCharOffset(range.endContainer, range.endOffset, wordCharOffsets);
 
         let resolvedRawStart = rawStart;
         let resolvedRawEnd = rawEnd;
 
+        const reconcileOffsetsWithSelectedText = () => {
+          if (resolvedRawStart === null || resolvedRawEnd === null) {
+            return;
+          }
+
+          const boundedStart = Math.max(0, Math.min(resolvedRawStart, paragraphText.length));
+          const boundedEnd = Math.max(
+            boundedStart + 1,
+            Math.min(resolvedRawEnd, paragraphText.length),
+          );
+
+          resolvedRawStart = boundedStart;
+          resolvedRawEnd = boundedEnd;
+
+          const selectedLength = selectedText.length;
+          if (selectedLength === 0) {
+            return;
+          }
+
+          const extracted = paragraphText.slice(resolvedRawStart, resolvedRawEnd);
+          if (extracted === selectedText) {
+            return;
+          }
+
+          if (resolvedRawEnd < resolvedRawStart + selectedLength) {
+            resolvedRawEnd = Math.min(resolvedRawStart + selectedLength, paragraphText.length);
+          }
+
+          const adjustedExtracted = paragraphText.slice(resolvedRawStart, resolvedRawEnd);
+          if (adjustedExtracted === selectedText) {
+            return;
+          }
+
+          const nearbyStart = Math.max(0, resolvedRawStart - selectedLength);
+          const locatedAt = paragraphText.indexOf(selectedText, nearbyStart);
+          if (locatedAt >= 0) {
+            resolvedRawStart = locatedAt;
+            resolvedRawEnd = Math.min(locatedAt + selectedLength, paragraphText.length);
+          }
+        };
+
         if (resolvedRawStart === null || resolvedRawEnd === null) {
-          const paragraphText = words.join(' ');
           const fallbackStart = paragraphText.indexOf(selectedText);
           if (fallbackStart >= 0) {
             resolvedRawStart = fallbackStart;
             resolvedRawEnd = fallbackStart + selectedText.length;
           }
         }
+
+        reconcileOffsetsWithSelectedText();
 
         if (resolvedRawStart !== null && resolvedRawEnd !== null) {
           const selection = createSelectionFromRange({
@@ -174,6 +296,9 @@ const ReaderParagraphBase = ({
             rawEnd: resolvedRawEnd,
           });
           if (rect) {
+            const startForRestore = resolvedRawStart;
+            const endForRestore = resolvedRawEnd;
+
             onSelection({
               paragraphIndex,
               selection: {
@@ -186,7 +311,10 @@ const ReaderParagraphBase = ({
             });
 
             requestAnimationFrame(() => {
-              applyNativeSelectionByOffsets(resolvedRawStart, resolvedRawEnd);
+              const restoredByText = applyNativeSelectionByText(selectedText, startForRestore);
+              if (!restoredByText) {
+                applyNativeSelectionByOffsets(startForRestore, endForRestore);
+              }
             });
           }
         }
