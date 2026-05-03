@@ -2,27 +2,12 @@
 
 ## Reader helper?
 
-- Markdown: Make h1-6 the same size as content, just different font weight
+- Handle images:
+  I see the case when image is too high for single page, it goes outside the page. Do we need to shrink width?
 
-- Handle images.
-
-We are going to implement supports of images from the book.
-
-Before we start implementing, let's write e2e
-
-I have test book: webApp/e2e/fixtures/Supercommunicators.epub
-
-Write e2e:
-You need to add this book, by clicking on "Add New Book", and upload this file, and ensure it added and after successfully parsing the fields are populated.
-Then we need to press on "Add" button, wait for book to opens, and check that the text "Copyright © 2024 by Charles Duhigg" is rendered. add check that image (Cover ) src="../images/9780385697750_cover.jpg" is present. for now it's not rendered properly. and it's fine. We do just doing setup for the future development.
-
-When e2e is written, we can start implementing image supports. I will describe my ideas about how to do it latter. But you can provide some your ideas on how to implement it for my case.
-
-For this create a separate e2e tests called "booksImages.spec.ts",
-
-Update agents.md (Reader folder)
-
-- Add book UX: drag and drop
+- "Add book" UX:
+  -- Drag and Drop on main page
+  -- Show input fields only for local dev, on prod just show drag and drop and file input
 
 - Share books, but not settings
 
