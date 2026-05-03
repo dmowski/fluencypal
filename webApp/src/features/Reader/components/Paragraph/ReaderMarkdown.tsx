@@ -13,6 +13,7 @@ export interface MarkdownProps {
   children: string;
   words?: string[];
   imageDataUrlByHref?: Record<string, string>;
+  imageAspectRatioByHref?: Record<string, number>;
   onWordClick?: (
     word: string,
     element: HTMLElement,
@@ -156,6 +157,7 @@ const wrapChildrenWithTranslateWrapper = (
 
 const createMarkdownComponents = (
   imageDataUrlByHref?: Record<string, string>,
+  imageAspectRatioByHref?: Record<string, number>,
 ): MarkdownToJSX.Overrides => ({
   h1: ({ children }) => <Typography variant="h1">{children}</Typography>,
   h2: ({ children }) => (
@@ -259,8 +261,26 @@ const createMarkdownComponents = (
     const normalizedSrc = normalizeImageHref(rawSrc);
     const resolvedSrc =
       imageDataUrlByHref?.[normalizedSrc] || imageDataUrlByHref?.[rawSrc] || props.src;
+    const resolvedAspectRatio =
+      imageAspectRatioByHref?.[normalizedSrc] || imageAspectRatioByHref?.[rawSrc];
+    const safeAspectRatio =
+      typeof resolvedAspectRatio === 'number' && Number.isFinite(resolvedAspectRatio)
+        ? resolvedAspectRatio
+        : undefined;
 
-    return <img {...props} src={resolvedSrc} style={{ maxWidth: '90%' }} />;
+    return (
+      <img
+        {...props}
+        src={resolvedSrc}
+        style={{
+          maxWidth: '90%',
+          width: '90%',
+          height: 'auto',
+          display: 'block',
+          ...(safeAspectRatio ? { aspectRatio: `${safeAspectRatio}` } : {}),
+        }}
+      />
+    );
   },
 });
 
@@ -268,13 +288,14 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   children,
   words,
   imageDataUrlByHref,
+  imageAspectRatioByHref,
   onWordClick,
   onWordMouseEnter,
   onWordMouseMove,
   renderWord,
   renderSpace,
 }) => {
-  const styleComponents = createMarkdownComponents(imageDataUrlByHref);
+  const styleComponents = createMarkdownComponents(imageDataUrlByHref, imageAspectRatioByHref);
 
   const renderWordsDirectly = words && words.length > 0;
   const wrapNodeChildren = (nodeChildren: React.ReactNode) =>

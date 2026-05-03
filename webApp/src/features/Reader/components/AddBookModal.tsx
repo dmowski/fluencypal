@@ -15,6 +15,46 @@ import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { CirclePlus, File } from 'lucide-react';
 import { useBooks } from '../hooks/useBooks';
 
+const getImageAspectRatio = (src: string): Promise<number | null> =>
+  new Promise((resolve) => {
+    const image = new Image();
+
+    image.onload = () => {
+      if (!image.naturalWidth || !image.naturalHeight) {
+        resolve(null);
+        return;
+      }
+
+      resolve(image.naturalWidth / image.naturalHeight);
+    };
+
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
+
+const buildImageAspectRatioMap = async (
+  imageDataUrlByHref: Record<string, string>,
+): Promise<Record<string, number>> => {
+  const entries = Object.entries(imageDataUrlByHref);
+  if (!entries.length) return {};
+
+  const ratios = await Promise.all(
+    entries.map(async ([href, src]) => {
+      const ratio = await getImageAspectRatio(src);
+      return [href, ratio] as const;
+    }),
+  );
+
+  return ratios.reduce<Record<string, number>>((acc, [href, ratio]) => {
+    if (!ratio || !Number.isFinite(ratio) || ratio <= 0) {
+      return acc;
+    }
+
+    acc[href] = ratio;
+    return acc;
+  }, {});
+};
+
 export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const i18n = useLingui();
   const books = useBooks();
@@ -23,6 +63,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
   const [imageDataUrlByHref, setImageDataUrlByHref] = useState<Record<string, string>>({});
+  const [imageAspectRatioByHref, setImageAspectRatioByHref] = useState<Record<string, number>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isConvertingFile, setIsConvertingFile] = useState(false);
   const [conversionProgress, setConversionProgress] = useState(0);
@@ -86,7 +127,8 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
       const parsedText = result.markdown || '';
       setText(parsedText);
-      setImageDataUrlByHref(result.imageDataUrlByHref ?? {});
+      const extractedImages = result.imageDataUrlByHref ?? {};
+      setImageDataUrlByHref(extractedImages);
       if (result.metadata) {
         setConversionProgress(90);
         setConversionMessage(i18n._('Extracting title, subtitle and author...'));
@@ -97,6 +139,9 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
       setConversionProgress(95);
       setConversionMessage(i18n._('Extracting embedded images...'));
+
+      const aspectRatioMap = await buildImageAspectRatioMap(extractedImages);
+      setImageAspectRatioByHref(aspectRatioMap);
 
       setConversionProgress(100);
       setConversionMessage(i18n._('Done. Text imported.'));
@@ -130,6 +175,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         author: author.trim(),
         text: text.trim(),
         imagesByHref: imageDataUrlByHref,
+        imageAspectRatioByHref,
       });
 
       setSaveProgress(100);
@@ -140,6 +186,7 @@ export const AddBookModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: ()
       setAuthor('');
       setText('');
       setImageDataUrlByHref({});
+      setImageAspectRatioByHref({});
       setConversionProgress(0);
       setConversionMessage('');
       setConversionError('');

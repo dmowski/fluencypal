@@ -32,6 +32,7 @@ interface ReaderParagraphProps {
   words: string[];
   isUseMarkdown: boolean;
   imagesByHref?: Record<string, string>;
+  imageAspectRatioByHref?: Record<string, number>;
   fontSize: number;
   lineHeight: number;
   justifyText: boolean;
@@ -49,6 +50,7 @@ const ReaderParagraphBase = ({
   words,
   isUseMarkdown,
   imagesByHref,
+  imageAspectRatioByHref,
   fontSize,
   lineHeight,
   justifyText,
@@ -320,6 +322,7 @@ const ReaderParagraphBase = ({
         {isUseMarkdown ? (
           <ReaderMarkdown
             imageDataUrlByHref={imagesByHref}
+            imageAspectRatioByHref={imageAspectRatioByHref}
             renderWord={({ word, wordIndex }) => {
               const { sourceStart } = getSafeWordMeta({
                 wordIndex,

@@ -11,6 +11,7 @@ export interface Book {
   subtitle: string;
   author: string;
   imagesByHref?: Record<string, string>;
+  imageAspectRatioByHref?: Record<string, number>;
   highlights?: HighlightedText[];
   readProgress?: ReadingProgress;
   activePageIndex?: number;

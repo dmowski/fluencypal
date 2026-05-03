@@ -35,8 +35,9 @@ export const Reader = ({ data }: { data: Book }) => {
         ...readerSettings,
         contentWidth: columnWidth,
       },
+      imageAspectRatioByHref: data.imageAspectRatioByHref,
     });
-  }, [columnWidth, data.paragraphs, readerSettings]);
+  }, [columnWidth, data.imageAspectRatioByHref, data.paragraphs, readerSettings]);
 
   const highlightsByParagraph = useMemo(() => {
     const grouped = new Map<number, HighlightedText[]>();
@@ -164,6 +165,7 @@ export const Reader = ({ data }: { data: Book }) => {
           return (
             <Stack
               key={pageNumber}
+              data-testid="reader-page-column"
               sx={{
                 width: `${columnWidth}px`,
                 height: '100%',
@@ -190,6 +192,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       words={paragraph.words}
                       isUseMarkdown={readerSettings.isUseMarkdown}
                       imagesByHref={data.imagesByHref}
+                      imageAspectRatioByHref={data.imageAspectRatioByHref}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}

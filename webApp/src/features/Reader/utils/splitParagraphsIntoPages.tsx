@@ -12,6 +12,7 @@ export interface PagedParagraph {
 export interface SplitIntoPagesData {
   bookParagraphs: BookParagraph[];
   settings: ReaderSettings;
+  imageAspectRatioByHref?: Record<string, number>;
 }
 
 const splitIntoPagesCache = new Map<string, PagedParagraph[][]>();
@@ -19,11 +20,13 @@ const splitIntoPagesCache = new Map<string, PagedParagraph[][]>();
 export const splitIntoPages = ({
   bookParagraphs,
   settings,
+  imageAspectRatioByHref,
 }: SplitIntoPagesData): PagedParagraph[][] => {
   const hash = getHash(
     JSON.stringify({
       bookParagraphs,
       settings,
+      imageAspectRatioByHref,
     }),
   );
   const cachedPages = splitIntoPagesCache.get(hash);
@@ -57,7 +60,11 @@ export const splitIntoPages = ({
       return cachedFit;
     }
 
-    const result = isFitInPage({ paragraphs, settings });
+    const result = isFitInPage({
+      paragraphs,
+      settings,
+      imageAspectRatioByHref,
+    });
     fitCache.set(fitKey, result);
     return result;
   };
