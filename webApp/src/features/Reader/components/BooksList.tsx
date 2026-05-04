@@ -42,9 +42,7 @@ export const BooksList = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
     useDroppedEpubImport();
-  const [isDownloadingLibraryBookId, setIsDownloadingLibraryBookId] = useState<string | null>(
-    null,
-  );
+  const [isDownloadingLibraryBookId, setIsDownloadingLibraryBookId] = useState<string | null>(null);
   const [libraryImportError, setLibraryImportError] = useState('');
   const { isDropActive, handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useBooksListDropZone({
@@ -178,7 +176,11 @@ export const BooksList = () => {
           </Stack>
         ) : null}
         {isDownloadingLibraryBookId ? (
-          <Typography variant="caption" sx={{ opacity: 0.75 }} data-testid="library-download-status">
+          <Typography
+            variant="caption"
+            sx={{ opacity: 0.75 }}
+            data-testid="library-download-status"
+          >
             {i18n._('Downloading book from Project Gutenberg...')}
           </Typography>
         ) : null}

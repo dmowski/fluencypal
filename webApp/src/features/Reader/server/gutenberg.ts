@@ -13,8 +13,7 @@ const CATEGORY_CONFIG = [
 
 const BOOK_LINK_PATTERN =
   /<li class="booklink">[\s\S]*?<a[^>]+href="([^"]+)"[^>]*>[\s\S]*?(?:<img class="cover-thumb" src="([^"]*)"[^>]*>)?[\s\S]*?<span class="title">([\s\S]*?)<\/span>(?:[\s\S]*?<span class="subtitle">([\s\S]*?)<\/span>)?[\s\S]*?<span class="extra">([\d,]+) downloads<\/span>[\s\S]*?<\/li>/g;
-const EPUB_LINK_PATTERN =
-  /<a href="([^"]+)"[^>]*type="application\/epub\+zip"[^>]*>([^<]+)<\/a>/g;
+const EPUB_LINK_PATTERN = /<a href="([^"]+)"[^>]*type="application\/epub\+zip"[^>]*>([^<]+)<\/a>/g;
 
 const HTML_ENTITY_MAP: Record<string, string> = {
   amp: '&',
@@ -81,12 +80,15 @@ const parseBooksFromBookshelfHtml = (html: string): ReaderLibraryBook[] => {
 export const getReaderLibraryCategories = async (): Promise<ReaderLibraryCategory[]> => {
   const categories = await Promise.all(
     CATEGORY_CONFIG.map(async (category) => {
-      const response = await fetch(`${GUTENBERG_BASE_URL}/ebooks/bookshelf/${category.bookshelfId}`, {
-        headers: {
-          Accept: 'text/html,application/xhtml+xml',
+      const response = await fetch(
+        `${GUTENBERG_BASE_URL}/ebooks/bookshelf/${category.bookshelfId}`,
+        {
+          headers: {
+            Accept: 'text/html,application/xhtml+xml',
+          },
+          next: { revalidate: 60 * 60 * 12 },
         },
-        next: { revalidate: 60 * 60 * 12 },
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`Failed to load Gutenberg category ${category.id}`);
