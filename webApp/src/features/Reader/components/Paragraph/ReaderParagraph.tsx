@@ -49,6 +49,8 @@ interface ReaderParagraphProps {
   onWordHoverInfo?: (payload: ReaderParagraphHoverPayload) => void;
   onWordMouseMove?: (e: MouseEvent<HTMLElement>) => void;
   onHoverClear?: () => void;
+  getInternalChapterTargetPage?: (href: string) => number | null;
+  onInternalChapterLinkSelect?: (targetPage: number) => void;
   resizeAnchorWordStartCharOffset?: number | null;
   isResizeAnchorHighlightVisible?: boolean;
 }
@@ -70,6 +72,8 @@ const ReaderParagraphBase = ({
   onWordHoverInfo,
   onWordMouseMove,
   onHoverClear,
+  getInternalChapterTargetPage,
+  onInternalChapterLinkSelect,
   resizeAnchorWordStartCharOffset,
   isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
@@ -335,6 +339,8 @@ const ReaderParagraphBase = ({
           imageDataUrlByHref={imagesByHref}
           imageAspectRatioByHref={imageAspectRatioByHref}
           maxImageHeight={maxImageHeight}
+          getInternalChapterTargetPage={getInternalChapterTargetPage}
+          onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={({ word, wordIndex }) => {
             const { sourceStart } = getSafeWordMeta({
               wordIndex,

@@ -264,6 +264,7 @@ const mapRawNavigationToBookChapters = (
       return {
         id: chapterId,
         label: item.label || 'Untitled chapter',
+        ...(item.href ? { href: item.href } : {}),
         targetParagraphIndex,
         children,
       };

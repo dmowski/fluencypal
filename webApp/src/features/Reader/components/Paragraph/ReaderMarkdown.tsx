@@ -15,6 +15,8 @@ export interface MarkdownProps {
   imageDataUrlByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;
   maxImageHeight?: number;
+  getInternalChapterTargetPage?: (href: string) => number | null;
+  onInternalChapterLinkSelect?: (targetPage: number) => void;
   onWordClick?: (
     word: string,
     element: HTMLElement,
@@ -41,6 +43,13 @@ const normalizeImageHref = (href: string): string => {
   const [pathOnly] = href.split(/[?#]/, 1);
   const trimmed = decodeURI(pathOnly.trim());
   return trimmed.replace(/^([./]+)+/, '').replace(/\\/g, '/');
+};
+
+const EXTERNAL_LINK_SCHEME = /^[a-z][a-z0-9+.-]*:/i;
+
+const isExternalHref = (href: string): boolean => {
+  const trimmedHref = href.trim();
+  return EXTERNAL_LINK_SCHEME.test(trimmedHref) || trimmedHref.startsWith('//');
 };
 
 const processStringChild = (
@@ -160,6 +169,8 @@ const createMarkdownComponents = (
   imageDataUrlByHref?: Record<string, string>,
   imageAspectRatioByHref?: Record<string, number>,
   maxImageHeight?: number,
+  getInternalChapterTargetPage?: (href: string) => number | null,
+  onInternalChapterLinkSelect?: (targetPage: number) => void,
 ): MarkdownToJSX.Overrides => ({
   h1: ({ children }) => (
     <Typography component="h1" sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}>
@@ -195,11 +206,36 @@ const createMarkdownComponents = (
   p: ({ children }) => <span>{children}</span>,
   span: ({ children }) => <span>{children}</span>,
 
-  a: ({ href, children }) => (
-    <Link href={href} target="_blank">
-      {children}
-    </Link>
-  ),
+  a: ({ href, children }) => {
+    if (!href) {
+      return <span>{children}</span>;
+    }
+
+    if (isExternalHref(href)) {
+      return (
+        <Link href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </Link>
+      );
+    }
+
+    const targetPage = getInternalChapterTargetPage?.(href) ?? null;
+    if (targetPage == null || !onInternalChapterLinkSelect) {
+      return <span>{children}</span>;
+    }
+
+    return (
+      <Link
+        href={href}
+        onClick={(event) => {
+          event.preventDefault();
+          onInternalChapterLinkSelect(targetPage);
+        }}
+      >
+        {children}
+      </Link>
+    );
+  },
   ul: ({ children }) => (
     <ul
       style={{
@@ -291,6 +327,8 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   imageDataUrlByHref,
   imageAspectRatioByHref,
   maxImageHeight,
+  getInternalChapterTargetPage,
+  onInternalChapterLinkSelect,
   onWordClick,
   onWordMouseEnter,
   onWordMouseMove,
@@ -301,6 +339,8 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
     imageDataUrlByHref,
     imageAspectRatioByHref,
     maxImageHeight,
+    getInternalChapterTargetPage,
+    onInternalChapterLinkSelect,
   );
 
   const renderWordsDirectly = words && words.length > 0;

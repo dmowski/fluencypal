@@ -7,6 +7,7 @@ export type BookParagraph = BookWord[];
 export interface BookChapterNavigationItem {
   id: string;
   label: string;
+  href?: string;
   targetParagraphIndex: number | null;
   children: BookChapterNavigationItem[];
 }
