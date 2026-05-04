@@ -295,7 +295,7 @@ msgstr "改进关键后端技能的行动计划"
 msgid "Active"
 msgstr "活跃"
 
-#: src/features/Reader/components/AddBookModal.tsx:408
+#: src/features/Reader/components/AddBookModal.tsx:413
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "添加"
@@ -320,7 +320,7 @@ msgstr "添加评论"
 msgid "Add context..."
 msgstr "添加上下文..."
 
-#: src/features/Reader/components/AddBookModal.tsx:234
+#: src/features/Reader/components/AddBookModal.tsx:239
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -878,7 +878,7 @@ msgstr "助手"
 msgid "Auth"
 msgstr "认证"
 
-#: src/features/Reader/components/AddBookModal.tsx:310
+#: src/features/Reader/components/AddBookModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "作者"
@@ -1050,13 +1050,13 @@ msgstr "最佳价值，持续提升。"
 msgid "Blog"
 msgstr "博客"
 
-#: src/features/Reader/components/AddBookModal.tsx:327
+#: src/features/Reader/components/AddBookModal.tsx:332
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "书籍字段在生产模式下会从EPUB元数据中自动填充。"
 
-#: src/features/Reader/components/AddBookModal.tsx:200
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:204
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "书籍已保存。"
@@ -1294,7 +1294,7 @@ msgstr "我可以在智能手机上使用吗？"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:418
+#: src/features/Reader/components/AddBookModal.tsx:423
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1356,6 +1356,11 @@ msgstr "具有挑战性"
 #. js-lingui-explicit-id
 msgid "Changes vs previous 30 days"
 msgstr "与前30天的变化"
+
+#: src/features/Reader/components/ReaderHeader.tsx:131
+#. js-lingui-explicit-id
+msgid "Chapters"
+msgstr "章节"
 
 #: src/features/ProgressStat/ProgressStatCard.tsx:164
 #. js-lingui-explicit-id
@@ -2704,7 +2709,7 @@ msgstr "完成"
 msgid "Done recording"
 msgstr "完成录音"
 
-#: src/features/Reader/components/AddBookModal.tsx:96
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "完成。文本已导入。"
@@ -2724,7 +2729,7 @@ msgstr "不要让错误阻碍你。"
 msgid "Doxxing"
 msgstr "人肉搜索"
 
-#: src/features/Reader/components/AddBookModal.tsx:256
+#: src/features/Reader/components/AddBookModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "在此处拖放EPUB文件"
@@ -3290,7 +3295,7 @@ msgstr "探索社区，参与讨论并分享您的反馈！"
 msgid "Extra Slow"
 msgstr "特慢"
 
-#: src/features/Reader/components/AddBookModal.tsx:334
+#: src/features/Reader/components/AddBookModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "提取的图像"
@@ -3300,8 +3305,8 @@ msgstr "提取的图像"
 msgid "Failed to analyze image. Please try again."
 msgstr "无法分析图像。请重试。"
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/components/AddBookModal.tsx:102
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "无法转换EPUB。"
@@ -3318,7 +3323,7 @@ msgid ""
 "developers."
 msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
 
-#: src/features/Reader/components/AddBookModal.tsx:215
+#: src/features/Reader/components/AddBookModal.tsx:220
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "无法保存书本。"
@@ -4847,12 +4852,12 @@ msgstr "语音记录插图"
 msgid "Images"
 msgstr "图像"
 
-#: src/features/Reader/components/AddBookModal.tsx:271
+#: src/features/Reader/components/AddBookModal.tsx:276
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "从EPUB导入文本"
 
-#: src/features/Reader/components/AddBookModal.tsx:274
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "从 EPUB 文件导入文本"
@@ -6150,6 +6155,11 @@ msgstr "没有自动付款"
 msgid "No automatic payment after the trial"
 msgstr "试用期后无自动付款"
 
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#. js-lingui-explicit-id
+msgid "No chapters available"
+msgstr "没有章节可用"
+
 #: src/features/PayWall/CardValidatorWall.tsx:159
 #. js-lingui-explicit-id
 msgid "No charge will be made"
@@ -6470,7 +6480,7 @@ msgstr "还剩一件事要做"
 msgid "Online English"
 msgstr "在线英语"
 
-#: src/features/Reader/components/AddBookModal.tsx:258
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "仅支持 .epub 文件"
@@ -7346,7 +7356,7 @@ msgid ""
 "secure your first professional role."
 msgstr "准备展示你的作品集，讨论你的学习历程，并获得你的第一个专业角色。"
 
-#: src/features/Reader/components/AddBookModal.tsx:185
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "正在准备书籍..."
@@ -8225,7 +8235,7 @@ msgstr "保存"
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:191
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9157,7 +9167,7 @@ msgstr "正在提交..."
 msgid "Subscription (1 month)"
 msgstr "订阅（1个月）"
 
-#: src/features/Reader/components/AddBookModal.tsx:303
+#: src/features/Reader/components/AddBookModal.tsx:308
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "字幕"
@@ -9437,7 +9447,7 @@ msgstr "测试你的知识，参加挑战，与排行榜上的其他人竞争。
 msgid "Testing & Quality"
 msgstr "测试与质量"
 
-#: src/features/Reader/components/AddBookModal.tsx:317
+#: src/features/Reader/components/AddBookModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "文字"
@@ -9955,7 +9965,7 @@ msgstr "提示：您可以在之后撤回同意并通过联系支持要求删除
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:296
+#: src/features/Reader/components/AddBookModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "标题"
@@ -11201,7 +11211,7 @@ msgstr "您可以随时删除您的个人数据"
 msgid "You can discuss the battle here."
 msgstr "您可以在这里讨论战斗。"
 
-#: src/features/Reader/components/AddBookModal.tsx:261
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr "您可以在此对话框打开时将EPUB拖放到此页面上的任意位置。"

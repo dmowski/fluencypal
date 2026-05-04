@@ -312,7 +312,7 @@ msgstr "Kritik arka uç becerilerini geliştirmek için eylem planı"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Reader/components/AddBookModal.tsx:408
+#: src/features/Reader/components/AddBookModal.tsx:413
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Ekle"
@@ -337,7 +337,7 @@ msgstr "Yorum Ekle"
 msgid "Add context..."
 msgstr "Bağlam ekleyin..."
 
-#: src/features/Reader/components/AddBookModal.tsx:234
+#: src/features/Reader/components/AddBookModal.tsx:239
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -913,7 +913,7 @@ msgstr "Asistan"
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Reader/components/AddBookModal.tsx:310
+#: src/features/Reader/components/AddBookModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Yazar"
@@ -1091,13 +1091,13 @@ msgstr "Tutarlı gelişim için en iyi değer."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:327
+#: src/features/Reader/components/AddBookModal.tsx:332
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Kitap alanları, üretim modunda EPUB meta verilerinden otomatik doldurulur."
 
-#: src/features/Reader/components/AddBookModal.tsx:200
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:204
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Kitap kaydedildi."
@@ -1342,7 +1342,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:418
+#: src/features/Reader/components/AddBookModal.tsx:423
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1406,6 +1406,11 @@ msgstr "Zorlayıcı"
 #. js-lingui-explicit-id
 msgid "Changes vs previous 30 days"
 msgstr "Önceki 30 güne göre değişiklikler"
+
+#: src/features/Reader/components/ReaderHeader.tsx:131
+#. js-lingui-explicit-id
+msgid "Chapters"
+msgstr "Bölümler"
 
 #: src/features/ProgressStat/ProgressStatCard.tsx:164
 #. js-lingui-explicit-id
@@ -2853,7 +2858,7 @@ msgstr "Tamamlandı"
 msgid "Done recording"
 msgstr "Kaydı bitir"
 
-#: src/features/Reader/components/AddBookModal.tsx:96
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Tamam. Metin içeri aktarıldı."
@@ -2873,7 +2878,7 @@ msgstr "Hataların seni durdurmasına izin verme."
 msgid "Doxxing"
 msgstr "Doxxing"
 
-#: src/features/Reader/components/AddBookModal.tsx:256
+#: src/features/Reader/components/AddBookModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "EPUB dosyasını buraya bırakın"
@@ -3487,7 +3492,7 @@ msgstr "Topluluğu keşfedin, tartışmalara katılın ve geri bildirimlerinizi 
 msgid "Extra Slow"
 msgstr "Extra Yavaş"
 
-#: src/features/Reader/components/AddBookModal.tsx:334
+#: src/features/Reader/components/AddBookModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Çıkarılan görüntüler"
@@ -3497,8 +3502,8 @@ msgstr "Çıkarılan görüntüler"
 msgid "Failed to analyze image. Please try again."
 msgstr "Görüntü analiz edilemedi. Lütfen tekrar deneyin."
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/components/AddBookModal.tsx:102
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "EPUB dönüştürülemedi."
@@ -3517,7 +3522,7 @@ msgstr ""
 "Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "geliştiricilerle iletişime geçin."
 
-#: src/features/Reader/components/AddBookModal.tsx:215
+#: src/features/Reader/components/AddBookModal.tsx:220
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Kitap kaydedilemedi."
@@ -5203,12 +5208,12 @@ msgstr "Ses kaydı illüstrasyonu"
 msgid "Images"
 msgstr "Görseller"
 
-#: src/features/Reader/components/AddBookModal.tsx:271
+#: src/features/Reader/components/AddBookModal.tsx:276
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "EPUB'dan metin içe aktar"
 
-#: src/features/Reader/components/AddBookModal.tsx:274
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "EPUB dosyasından metin içe aktar"
@@ -6552,6 +6557,11 @@ msgstr "Otomatik ödeme yok"
 msgid "No automatic payment after the trial"
 msgstr "Denemeden sonra otomatik ödeme yok"
 
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#. js-lingui-explicit-id
+msgid "No chapters available"
+msgstr "Bölüm mevcut değil"
+
 #: src/features/PayWall/CardValidatorWall.tsx:159
 #. js-lingui-explicit-id
 msgid "No charge will be made"
@@ -6906,7 +6916,7 @@ msgstr "Yapılacak bir şey kaldı"
 msgid "Online English"
 msgstr "Çevrimiçi İngilizce"
 
-#: src/features/Reader/components/AddBookModal.tsx:258
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "Sadece .epub dosyaları desteklenmektedir"
@@ -7849,7 +7859,7 @@ msgstr ""
 "Portföyünüzü sergilemeye, öğrenme yolculuğunuzu tartışmaya ve ilk "
 "profesyonel rolünüzü güvence altına almaya hazırlanın."
 
-#: src/features/Reader/components/AddBookModal.tsx:185
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Kitap hazırlanıyor..."
@@ -8751,7 +8761,7 @@ msgstr "Kaydet"
 msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:191
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9737,7 +9747,7 @@ msgstr "Gönderiliyor..."
 msgid "Subscription (1 month)"
 msgstr "Abonelik (1 ay)"
 
-#: src/features/Reader/components/AddBookModal.tsx:303
+#: src/features/Reader/components/AddBookModal.tsx:308
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Altyazı"
@@ -10035,7 +10045,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Test Etme & Kalite"
 
-#: src/features/Reader/components/AddBookModal.tsx:317
+#: src/features/Reader/components/AddBookModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Metin"
@@ -10599,7 +10609,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:296
+#: src/features/Reader/components/AddBookModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Başlık"
@@ -11930,7 +11940,7 @@ msgstr "Kişisel verilerinizi istediğiniz zaman silebilirsiniz"
 msgid "You can discuss the battle here."
 msgstr "Savaşı burada tartışabilirsiniz."
 
-#: src/features/Reader/components/AddBookModal.tsx:261
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr ""

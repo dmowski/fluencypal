@@ -313,7 +313,7 @@ msgstr "Rencana aksi untuk meningkatkan keterampilan backend yang kritis"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Reader/components/AddBookModal.tsx:408
+#: src/features/Reader/components/AddBookModal.tsx:413
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Tambahkan"
@@ -338,7 +338,7 @@ msgstr "Tambahkan Komentar"
 msgid "Add context..."
 msgstr "Tambahkan konteks..."
 
-#: src/features/Reader/components/AddBookModal.tsx:234
+#: src/features/Reader/components/AddBookModal.tsx:239
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -921,7 +921,7 @@ msgstr "Asisten"
 msgid "Auth"
 msgstr "Auth"
 
-#: src/features/Reader/components/AddBookModal.tsx:310
+#: src/features/Reader/components/AddBookModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Penulis"
@@ -1099,13 +1099,13 @@ msgstr "Nilai terbaik untuk peningkatan yang konsisten."
 msgid "Blog"
 msgstr "Blog"
 
-#: src/features/Reader/components/AddBookModal.tsx:327
+#: src/features/Reader/components/AddBookModal.tsx:332
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Bidang buku otomatis diisi dari metadata EPUB dalam mode produksi."
 
-#: src/features/Reader/components/AddBookModal.tsx:200
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:204
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Buku disimpan."
@@ -1350,7 +1350,7 @@ msgstr "Bisakah saya menggunakannya di smartphone?"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:418
+#: src/features/Reader/components/AddBookModal.tsx:423
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1414,6 +1414,13 @@ msgstr "Menantang"
 #. js-lingui-explicit-id
 msgid "Changes vs previous 30 days"
 msgstr "Perubahan dibandingkan 30 hari sebelumnya"
+
+#: src/features/Reader/components/ReaderHeader.tsx:131
+#. js-lingui-explicit-id
+msgid "Chapters"
+msgstr ""
+"plaintext\n"
+"Bab\n"
 
 #: src/features/ProgressStat/ProgressStatCard.tsx:164
 #. js-lingui-explicit-id
@@ -2863,7 +2870,7 @@ msgstr "Selesai"
 msgid "Done recording"
 msgstr "Selesai merekam"
 
-#: src/features/Reader/components/AddBookModal.tsx:96
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Selesai. Teks diimpor."
@@ -2883,7 +2890,7 @@ msgstr "Jangan biarkan kesalahan menghentikanmu."
 msgid "Doxxing"
 msgstr "Doxxing"
 
-#: src/features/Reader/components/AddBookModal.tsx:256
+#: src/features/Reader/components/AddBookModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "Letakkan file EPUB di sini"
@@ -3511,7 +3518,7 @@ msgstr "Jelajahi komunitas, bergabunglah dalam diskusi, dan bagikan tanggapan An
 msgid "Extra Slow"
 msgstr "Ekstra Lambat"
 
-#: src/features/Reader/components/AddBookModal.tsx:334
+#: src/features/Reader/components/AddBookModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Gambar yang diekstraksi"
@@ -3521,8 +3528,8 @@ msgstr "Gambar yang diekstraksi"
 msgid "Failed to analyze image. Please try again."
 msgstr "Gagal menganalisis gambar. Silakan coba lagi."
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/components/AddBookModal.tsx:102
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Gagal mengonversi EPUB."
@@ -3539,7 +3546,7 @@ msgid ""
 "developers."
 msgstr "Gagal menghapus akun Anda. Silakan coba lagi nanti, atau hubungi pengembang."
 
-#: src/features/Reader/components/AddBookModal.tsx:215
+#: src/features/Reader/components/AddBookModal.tsx:220
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Gagal menyimpan buku."
@@ -5248,12 +5255,12 @@ msgstr "Ilustrasi perekaman suara"
 msgid "Images"
 msgstr "Gambar-gambar"
 
-#: src/features/Reader/components/AddBookModal.tsx:271
+#: src/features/Reader/components/AddBookModal.tsx:276
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Impor teks dari EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:274
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Impor teks dari file EPUB"
@@ -6620,6 +6627,11 @@ msgstr "Tidak ada pembayaran otomatis"
 msgid "No automatic payment after the trial"
 msgstr "Tidak ada pembayaran otomatis setelah masa percobaan"
 
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#. js-lingui-explicit-id
+msgid "No chapters available"
+msgstr "Tidak ada bab yang tersedia"
+
 #: src/features/PayWall/CardValidatorWall.tsx:159
 #. js-lingui-explicit-id
 msgid "No charge will be made"
@@ -6981,7 +6993,7 @@ msgstr "Satu hal lagi yang harus dilakukan"
 msgid "Online English"
 msgstr "Online Inggris"
 
-#: src/features/Reader/components/AddBookModal.tsx:258
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "Hanya file .epub yang didukung"
@@ -7936,7 +7948,7 @@ msgstr ""
 "Persiapkan untuk memamerkan portofolio Anda, membahas perjalanan belajar "
 "Anda, dan mengamankan peran profesional pertama Anda."
 
-#: src/features/Reader/components/AddBookModal.tsx:185
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Mempersiapkan buku..."
@@ -8849,7 +8861,7 @@ msgstr "Simpan"
 msgid "Save Changes"
 msgstr "Simpan Perubahan"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:191
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9844,7 +9856,7 @@ msgstr "Mengirim..."
 msgid "Subscription (1 month)"
 msgstr "Berlangganan (1 bulan)"
 
-#: src/features/Reader/components/AddBookModal.tsx:303
+#: src/features/Reader/components/AddBookModal.tsx:308
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Subjudul"
@@ -10145,7 +10157,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Pengujian & Kualitas"
 
-#: src/features/Reader/components/AddBookModal.tsx:317
+#: src/features/Reader/components/AddBookModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Teks"
@@ -10713,7 +10725,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:296
+#: src/features/Reader/components/AddBookModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Judul"
@@ -12084,7 +12096,7 @@ msgstr "Anda dapat menghapus data pribadi Anda kapan saja"
 msgid "You can discuss the battle here."
 msgstr "Anda dapat mendiskusikan pertempuran di sini."
 
-#: src/features/Reader/components/AddBookModal.tsx:261
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr ""

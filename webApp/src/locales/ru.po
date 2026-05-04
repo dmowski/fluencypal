@@ -314,7 +314,7 @@ msgstr "План действий для улучшения критически
 msgid "Active"
 msgstr "Активный"
 
-#: src/features/Reader/components/AddBookModal.tsx:408
+#: src/features/Reader/components/AddBookModal.tsx:413
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "Добавить"
@@ -339,7 +339,7 @@ msgstr "Добавить комментарий"
 msgid "Add context..."
 msgstr "Добавить контекст..."
 
-#: src/features/Reader/components/AddBookModal.tsx:234
+#: src/features/Reader/components/AddBookModal.tsx:239
 #: src/features/Reader/components/Cards.tsx:90
 #. js-lingui-explicit-id
 msgid "Add New Book"
@@ -920,7 +920,7 @@ msgstr "Ассистент"
 msgid "Auth"
 msgstr "Аутентификация"
 
-#: src/features/Reader/components/AddBookModal.tsx:310
+#: src/features/Reader/components/AddBookModal.tsx:315
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Автор"
@@ -1104,13 +1104,13 @@ msgstr "Лучшее соотношение цены и качества для 
 msgid "Blog"
 msgstr "Блог"
 
-#: src/features/Reader/components/AddBookModal.tsx:327
+#: src/features/Reader/components/AddBookModal.tsx:332
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Поля книги автоматически заполняются из метаданных EPUB в рабочем режиме."
 
-#: src/features/Reader/components/AddBookModal.tsx:200
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:204
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Книга сохранена."
@@ -1355,7 +1355,7 @@ msgstr "Могу ли я использовать его на смартфоне
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:418
+#: src/features/Reader/components/AddBookModal.tsx:423
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1419,6 +1419,11 @@ msgstr "Сложный"
 #. js-lingui-explicit-id
 msgid "Changes vs previous 30 days"
 msgstr "Изменения по сравнению с предыдущими 30 днями"
+
+#: src/features/Reader/components/ReaderHeader.tsx:131
+#. js-lingui-explicit-id
+msgid "Chapters"
+msgstr "Главы"
 
 #: src/features/ProgressStat/ProgressStatCard.tsx:164
 #. js-lingui-explicit-id
@@ -2870,7 +2875,7 @@ msgstr "Выполнено"
 msgid "Done recording"
 msgstr "Готово, запись завершена"
 
-#: src/features/Reader/components/AddBookModal.tsx:96
+#: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Done. Text imported."
 msgstr "Готово. Текст импортирован."
@@ -2890,7 +2895,7 @@ msgstr "Не позволяйте ошибкам останавливать ва
 msgid "Doxxing"
 msgstr "Доксинг"
 
-#: src/features/Reader/components/AddBookModal.tsx:256
+#: src/features/Reader/components/AddBookModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "Перетащите файл EPUB сюда"
@@ -3507,7 +3512,7 @@ msgstr ""
 msgid "Extra Slow"
 msgstr "Очень медленно"
 
-#: src/features/Reader/components/AddBookModal.tsx:334
+#: src/features/Reader/components/AddBookModal.tsx:339
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Извлеченные изображения"
@@ -3517,8 +3522,8 @@ msgstr "Извлеченные изображения"
 msgid "Failed to analyze image. Please try again."
 msgstr "Не удалось проанализировать изображение. Пожалуйста, попробуйте снова."
 
-#: src/features/Reader/components/AddBookModal.tsx:99
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/components/AddBookModal.tsx:102
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "Не удалось преобразовать EPUB."
@@ -3537,7 +3542,7 @@ msgstr ""
 "Не удалось удалить вашу учетную запись. Попробуйте снова позже или "
 "свяжитесь с разработчиками."
 
-#: src/features/Reader/components/AddBookModal.tsx:215
+#: src/features/Reader/components/AddBookModal.tsx:220
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "Не удалось сохранить книгу."
@@ -5237,12 +5242,12 @@ msgstr "Иллюстрация голосовой записи"
 msgid "Images"
 msgstr "Изображения"
 
-#: src/features/Reader/components/AddBookModal.tsx:271
+#: src/features/Reader/components/AddBookModal.tsx:276
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "Импортировать текст из EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:274
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "Импортировать текст из файла EPUB"
@@ -6600,6 +6605,11 @@ msgstr "Нет автоматического списания"
 msgid "No automatic payment after the trial"
 msgstr "Нет автоматического платежа после пробного периода"
 
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#. js-lingui-explicit-id
+msgid "No chapters available"
+msgstr "Нет доступных глав"
+
 #: src/features/PayWall/CardValidatorWall.tsx:159
 #. js-lingui-explicit-id
 msgid "No charge will be made"
@@ -6958,7 +6968,7 @@ msgstr "Осталось сделать одну вещь"
 msgid "Online English"
 msgstr "Онлайн английский"
 
-#: src/features/Reader/components/AddBookModal.tsx:258
+#: src/features/Reader/components/AddBookModal.tsx:263
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "Поддерживаются только файлы .epub"
@@ -7904,7 +7914,7 @@ msgstr ""
 "Подготовьтесь продемонстрировать свое портфолио, обсудить ваш путь обучения "
 "и получить вашу первую профессиональную роль."
 
-#: src/features/Reader/components/AddBookModal.tsx:185
+#: src/features/Reader/components/AddBookModal.tsx:188
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "Подготовка книги..."
@@ -8819,7 +8829,7 @@ msgstr "Сохранить"
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: src/features/Reader/components/AddBookModal.tsx:188
+#: src/features/Reader/components/AddBookModal.tsx:191
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:38
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9808,7 +9818,7 @@ msgstr "Отправка..."
 msgid "Subscription (1 month)"
 msgstr "Подписка (1 месяц)"
 
-#: src/features/Reader/components/AddBookModal.tsx:303
+#: src/features/Reader/components/AddBookModal.tsx:308
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "Субтитры"
@@ -10107,7 +10117,7 @@ msgstr ""
 msgid "Testing & Quality"
 msgstr "Тестирование и качество"
 
-#: src/features/Reader/components/AddBookModal.tsx:317
+#: src/features/Reader/components/AddBookModal.tsx:322
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Текст"
@@ -10673,7 +10683,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:296
+#: src/features/Reader/components/AddBookModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "Заголовок"
@@ -12024,7 +12034,7 @@ msgstr "Вы можете удалить свои личные данные в �
 msgid "You can discuss the battle here."
 msgstr "Вы можете обсудить сражение здесь."
 
-#: src/features/Reader/components/AddBookModal.tsx:261
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr ""
