@@ -1,5 +1,6 @@
 import JSZip from 'jszip';
 import TurndownService from 'turndown';
+import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConvertDocToTextRequest';
 import { BookChapterNavigationItem } from '../model/types';
 import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 
@@ -25,14 +26,13 @@ const isEpubFile = (file: File): boolean => {
 
 export const validateEpubFile = (
   file: File,
-  translate: (message: string) => string,
 ): string | null => {
   if (!isEpubFile(file)) {
-    return translate('Please select a valid EPUB file.');
+    return 'Please select a valid EPUB file.';
   }
 
   if (file.size > MAX_EPUB_FILE_SIZE) {
-    return translate('File size must be less than 50MB');
+    return 'File size must be less than 50MB';
   }
 
   return null;
@@ -579,41 +579,61 @@ export interface EpubImportProgressUpdate {
 
 export const convertEpubFile = async ({
   file,
-  translate,
   onProgress,
 }: {
   file: File;
-  translate: (message: string) => string;
   onProgress?: (update: EpubImportProgressUpdate) => void;
 }): Promise<EpubImportPayload> => {
-  onProgress?.({ progress: 10, message: translate('Reading EPUB...') });
-  onProgress?.({ progress: 35, message: translate('Converting EPUB to markdown...') });
+  onProgress?.({ progress: 10, message: 'Reading EPUB...' });
+  onProgress?.({ progress: 35, message: 'Converting EPUB to markdown...' });
 
   const parsed = await parseEpubOnClient(file);
   const markdown = parsed.markdown.trim();
 
   if (!markdown) {
-    throw new Error(translate('Could not extract text from this EPUB.'));
+    throw new Error('Could not extract text from this EPUB.');
   }
 
   const metadata = parsed.metadata;
 
-  onProgress?.({ progress: 75, message: translate('Extracting title, subtitle and author...') });
+  onProgress?.({ progress: 75, message: 'Extracting title, subtitle and author...' });
+
+  const needsAiMetadata = !metadata.subtitle.trim();
+  let finalMetadata = metadata;
+
+  if (needsAiMetadata) {
+    onProgress?.({
+      progress: 82,
+      message: 'No subtitle found. Parsing metadata with AI...',
+    });
+
+    const aiResponse = await sendConvertDocToTextRequest({
+      textPreview: markdown.slice(0, 12000),
+    });
+
+    if (aiResponse.metadata) {
+      finalMetadata = {
+        title: aiResponse.metadata.title.trim() || metadata.title,
+        subtitle: aiResponse.metadata.subtitle.trim() || metadata.subtitle,
+        author: aiResponse.metadata.author.trim() || metadata.author,
+      };
+    }
+  }
 
   const imageDataUrlByHref = parsed.imageDataUrlByHref;
 
   onProgress?.({
     progress: 92,
-    message: translate('Extracting embedded images...'),
+    message: 'Extracting embedded images...',
   });
 
   const imageAspectRatioByHref = await buildImageAspectRatioMap(imageDataUrlByHref);
 
   return {
     text: markdown,
-    title: metadata.title,
-    subtitle: metadata.subtitle,
-    author: metadata.author,
+    title: finalMetadata.title,
+    subtitle: finalMetadata.subtitle,
+    author: finalMetadata.author,
     chapters: parsed.chapters,
     imageDataUrlByHref,
     imageAspectRatioByHref,

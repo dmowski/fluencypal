@@ -13,7 +13,7 @@ export const useDroppedEpubImport = () => {
   const [importError, setImportError] = useState('');
 
   const importDroppedFile = async (file: File) => {
-    const validationError = validateEpubFile(file, (message) => i18n._(message));
+    const validationError = validateEpubFile(file);
     if (validationError) {
       setImportError(validationError);
       setImportProgress(0);
@@ -27,7 +27,6 @@ export const useDroppedEpubImport = () => {
 
       const parsedBook = await convertEpubFile({
         file,
-        translate: (message) => i18n._(message),
         onProgress: ({ progress, message }) => {
           setImportProgress(progress);
           setImportMessage(message);

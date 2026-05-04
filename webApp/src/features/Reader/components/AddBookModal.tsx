@@ -68,7 +68,7 @@ export const AddBookModal = ({
 
   const handleEpubImport = useCallback(
     async (file: File) => {
-      const validationError = validateEpubFile(file, (message) => i18n._(message));
+      const validationError = validateEpubFile(file);
       if (validationError) {
         setConversionError(validationError);
         return;
@@ -80,7 +80,6 @@ export const AddBookModal = ({
 
         const parsedBook = await convertEpubFile({
           file,
-          translate: (message) => i18n._(message),
           onProgress: ({ progress, message }) => {
             setConversionProgress(progress);
             setConversionMessage(message);
@@ -96,10 +95,10 @@ export const AddBookModal = ({
         setAuthor(parsedBook.author);
 
         setConversionProgress(100);
-        setConversionMessage(i18n._('Done. Text imported.'));
+        setConversionMessage('Done. Text imported.');
       } catch (error) {
         console.error('EPUB conversion error:', error);
-        const message = error instanceof Error ? error.message : i18n._('Failed to convert EPUB.');
+        const message = error instanceof Error ? error.message : 'Failed to convert EPUB.';
         setConversionError(message);
         setConversionProgress(0);
         setConversionMessage('');
