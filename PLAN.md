@@ -1,18 +1,5 @@
 # Live document with short/long term ideas
 
-## Reader
-
-Handle images:
-I see the case when image is too high for single page, it goes outside the page.
-Do we need to shrink width to fit the page or another approach how handle that?
-(It's visible when screen is 1400px / 700px. The first cover image is not fit into view port.)
-
-I created a test checker to use on E2E.
-webApp/src/features/Reader/components/ContentFitChecker.tsx
-
-Check how it works. Our goal is to make content fit the content.
-For now, we show book with image, the first pages (with large image) are not fit the page. Fix it
-
 ### Reader: Navigation
 
 On top of page, show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page. Update all necessary part to allow it. For now we don't have info about navigation.
