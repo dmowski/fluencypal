@@ -1,7 +1,7 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { Book, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -16,6 +16,8 @@ import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
+import { useIsLocalhost } from '../hooks/useIsLocalhost';
+import { ContentFitChecker } from './ContentFitChecker';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -128,6 +130,8 @@ export const Reader = ({ data }: { data: Book }) => {
     clearHoveredWord();
   }, [clearHoverTranslation, clearHoveredWord]);
 
+  const contentRef = useRef<HTMLDivElement>(null);
+
   return (
     <Stack
       sx={{
@@ -166,6 +170,7 @@ export const Reader = ({ data }: { data: Book }) => {
       </Stack>
 
       <Stack
+        ref={contentRef}
         sx={{
           width: '100%',
           alignItems: 'center',
@@ -226,6 +231,12 @@ export const Reader = ({ data }: { data: Book }) => {
           );
         })}
       </Stack>
+
+      <ContentFitChecker
+        contentRef={contentRef}
+        readerSettings={readerSettings}
+        activePage={activePage}
+      />
 
       <TextPopover
         anchorPosition={activePopover?.anchorPosition ?? null}
