@@ -89,7 +89,9 @@ test.describe('markdown rendering', () => {
     await expect(highlightedAnchor).toBeVisible({ timeout: 4000 });
 
     const isAnchorVisibleWithinReader = await highlightedAnchor.first().evaluate((element) => {
-      const contentElement = element.closest('[data-testid="reader-content"]') as HTMLElement | null;
+      const contentElement = element.closest(
+        '[data-testid="reader-content"]',
+      ) as HTMLElement | null;
       if (!contentElement) {
         return false;
       }

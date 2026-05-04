@@ -1,10 +1,5 @@
 # Live document with short/long term ideas
 
-Links handling:
-webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
-Improve links of the content. Inside markdown render. If it's external link, keep it as is.
-If it's internal link, and link to the chapter - redirect to the specific chapter. Otherwise render as a plain text.
-
 ### Reader: Sharing
 
 - Share books, but not settings
