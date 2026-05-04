@@ -51,6 +51,51 @@ const READER_WORD_ANCHOR_SELECTOR = '[data-reader-word-anchor="true"]';
 let stableMobileViewportHeight: number | null = null;
 let stableMobileViewportWidth: number | null = null;
 
+type MobileViewportState = {
+  stableHeight: number | null;
+  stableWidth: number | null;
+};
+
+const getStableMobileViewportState = ({
+  viewportWidth,
+  rawViewportHeight,
+  maxTouchPoints,
+  previousState,
+}: {
+  viewportWidth: number;
+  rawViewportHeight: number;
+  maxTouchPoints: number;
+  previousState: MobileViewportState;
+}): MobileViewportState => {
+  const isMobileLikeViewport = viewportWidth <= MOBILE_LAYOUT_WIDTH_THRESHOLD && maxTouchPoints > 0;
+
+  if (!isMobileLikeViewport) {
+    return {
+      stableHeight: null,
+      stableWidth: null,
+    };
+  }
+
+  if (previousState.stableHeight === null || previousState.stableWidth === null) {
+    return {
+      stableHeight: rawViewportHeight,
+      stableWidth: viewportWidth,
+    };
+  }
+
+  const widthDelta = Math.abs(viewportWidth - previousState.stableWidth);
+
+  if (widthDelta >= MOBILE_ORIENTATION_WIDTH_DELTA) {
+    return {
+      stableHeight: rawViewportHeight,
+      stableWidth: viewportWidth,
+    };
+  }
+
+  // Keep dimensions stable while mobile browser chrome expands/collapses.
+  return previousState;
+};
+
 export const READER_SETTINGS_RANGES = {
   fontSize: { min: 9, max: 64, step: 1 },
   paragraphGap: { min: 0, max: 80, step: 1 },
@@ -77,35 +122,32 @@ const getViewportDimensions = (): { contentWidth: number; contentHeight: number 
       ? (window.document.documentElement?.clientHeight ?? window.innerHeight)
       : 600;
 
+  let effectiveViewportWidth = viewportWidth;
+  let effectiveViewportHeight = rawViewportHeight;
+
   if (typeof window !== 'undefined') {
-    const isMobileLikeViewport =
-      viewportWidth <= MOBILE_LAYOUT_WIDTH_THRESHOLD && window.navigator.maxTouchPoints > 0;
+    const nextState = getStableMobileViewportState({
+      viewportWidth,
+      rawViewportHeight,
+      maxTouchPoints: window.navigator.maxTouchPoints,
+      previousState: {
+        stableHeight: stableMobileViewportHeight,
+        stableWidth: stableMobileViewportWidth,
+      },
+    });
 
-    if (!isMobileLikeViewport) {
-      stableMobileViewportHeight = null;
-      stableMobileViewportWidth = null;
-    } else if (stableMobileViewportHeight === null || stableMobileViewportWidth === null) {
-      stableMobileViewportHeight = rawViewportHeight;
-      stableMobileViewportWidth = viewportWidth;
-    } else {
-      const widthDelta = Math.abs(viewportWidth - stableMobileViewportWidth);
+    stableMobileViewportHeight = nextState.stableHeight;
+    stableMobileViewportWidth = nextState.stableWidth;
 
-      if (widthDelta >= MOBILE_ORIENTATION_WIDTH_DELTA) {
-        stableMobileViewportHeight = rawViewportHeight;
-      } else {
-        stableMobileViewportHeight = Math.max(stableMobileViewportHeight, rawViewportHeight);
-      }
-
-      stableMobileViewportWidth = viewportWidth;
+    if (nextState.stableHeight !== null && nextState.stableWidth !== null) {
+      effectiveViewportHeight = nextState.stableHeight;
+      effectiveViewportWidth = nextState.stableWidth;
     }
   }
 
   return {
-    contentWidth: Math.max(0, viewportWidth - sidePaddingHorizontal * 2),
-    contentHeight: Math.max(
-      0,
-      (stableMobileViewportHeight ?? rawViewportHeight) - sidePaddingVertical * 2,
-    ),
+    contentWidth: Math.max(0, effectiveViewportWidth - sidePaddingHorizontal * 2),
+    contentHeight: Math.max(0, effectiveViewportHeight - sidePaddingVertical * 2),
   };
 };
 
@@ -282,13 +324,24 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       timeoutId = setTimeout(() => {
         const nextViewportDimensions = getViewportDimensions();
         const nextAutoColumnsLayout = getAutoColumnsLayout(nextViewportDimensions.contentWidth);
-        setSettings((previousSettings) => ({
-          ...previousSettings,
-          contentWidth: nextViewportDimensions.contentWidth,
-          contentHeight: nextViewportDimensions.contentHeight,
-          columns: nextAutoColumnsLayout.columns,
-          columnGap: nextAutoColumnsLayout.columnGap,
-        }));
+        setSettings((previousSettings) => {
+          if (
+            previousSettings.contentWidth === nextViewportDimensions.contentWidth &&
+            previousSettings.contentHeight === nextViewportDimensions.contentHeight &&
+            previousSettings.columns === nextAutoColumnsLayout.columns &&
+            previousSettings.columnGap === nextAutoColumnsLayout.columnGap
+          ) {
+            return previousSettings;
+          }
+
+          return {
+            ...previousSettings,
+            contentWidth: nextViewportDimensions.contentWidth,
+            contentHeight: nextViewportDimensions.contentHeight,
+            columns: nextAutoColumnsLayout.columns,
+            columnGap: nextAutoColumnsLayout.columnGap,
+          };
+        });
 
         isResizeSessionActiveRef.current = false;
         highlightTimeoutId = setTimeout(() => {
