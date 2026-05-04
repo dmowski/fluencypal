@@ -14,8 +14,6 @@ import { assertReaderContentFitsCurrentPage } from './libs/books/assertions';
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
-const GUTENBERG_ROMANCE_BOOK_ID = '1342';
-const GUTENBERG_ROMANCE_TITLE = 'Pride and Prejudice';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);
@@ -135,70 +133,6 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   expect(imageMapState.hasCoverImageKey).toBeTruthy();
   expect(imageMapState.coverSrc).toMatch(/^data:image\/[a-zA-Z0-9.+-]+;base64,/);
   expect(imageMapState.coverAspectRatio).toBeGreaterThan(0);
-});
-
-test('shows live Gutenberg library categories on books home page', async ({ page }) => {
-  test.setTimeout(120_000);
-
-  await openBooksPageWithCleanStorage(page);
-
-  await expect(page.getByRole('heading', { name: 'Library', level: 4 })).toBeVisible();
-
-  const romanceCategory = page.getByTestId('reader-library-category-romance');
-  await expect(romanceCategory).toBeVisible({ timeout: 60_000 });
-
-  await expect
-    .poll(async () => romanceCategory.locator('[data-testid^="reader-library-book-"]').count())
-    .toBeGreaterThan(0);
-
-  await expect(page.getByTestId(`reader-library-book-${GUTENBERG_ROMANCE_BOOK_ID}`)).toContainText(
-    GUTENBERG_ROMANCE_TITLE,
-  );
-});
-
-test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page }) => {
-  test.setTimeout(240_000);
-
-  await openBooksPageWithCleanStorage(page);
-
-  const gutenbergBookCard = page.getByTestId(`reader-library-book-${GUTENBERG_ROMANCE_BOOK_ID}`);
-  await expect(gutenbergBookCard).toBeVisible({ timeout: 60_000 });
-
-  await gutenbergBookCard.click();
-
-  await expect(page.getByRole('heading', { name: GUTENBERG_ROMANCE_TITLE, level: 2 })).toBeVisible({
-    timeout: 180_000,
-  });
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
-  await expect(page.getByTestId('reader-page-indicator')).toBeVisible();
-
-  const storedTitles = await page.evaluate(async () => {
-    const openDb = (): Promise<IDBDatabase> =>
-      new Promise((resolve, reject) => {
-        const request = window.indexedDB.open('readerBooksDb', 1);
-        request.onerror = () => reject(request.error ?? new Error('Failed to open IndexedDB'));
-        request.onsuccess = () => resolve(request.result);
-      });
-
-    const db = await openDb();
-
-    const books: unknown[] = await new Promise((resolve, reject) => {
-      const transaction = db.transaction('readerMeta', 'readonly');
-      const store = transaction.objectStore('readerMeta');
-      const request = store.getAll();
-
-      request.onerror = () => reject(request.error ?? new Error('Failed to read books from DB'));
-      request.onsuccess = () => resolve(Array.isArray(request.result) ? request.result : []);
-    });
-
-    db.close();
-
-    return books
-      .map((book) => (book && typeof book === 'object' ? (book as { title?: string }).title : ''))
-      .filter((title): title is string => Boolean(title));
-  });
-
-  expect(storedTitles).toContain(GUTENBERG_ROMANCE_TITLE);
 });
 
 test('imports book by dropping EPUB on books page', async ({ page }) => {

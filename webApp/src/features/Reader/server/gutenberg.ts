@@ -11,8 +11,12 @@ const CATEGORY_CONFIG = [
   { id: 'philosophy', title: 'Philosophy & Ethics', bookshelfId: '691' },
 ] as const;
 
-const BOOK_LINK_PATTERN =
-  /<li class="booklink">[\s\S]*?<a[^>]+href="([^"]+)"[^>]*>[\s\S]*?(?:<img class="cover-thumb" src="([^"]*)"[^>]*>)?[\s\S]*?<span class="title">([\s\S]*?)<\/span>(?:[\s\S]*?<span class="subtitle">([\s\S]*?)<\/span>)?[\s\S]*?<span class="extra">([\d,]+) downloads<\/span>[\s\S]*?<\/li>/g;
+const BOOK_LINK_PATTERN = /<li class="booklink">([\s\S]*?)<\/li>/g;
+const BOOK_HREF_PATTERN = /<a[^>]+href="([^"]+)"[^>]*>/;
+const BOOK_COVER_PATTERN = /<img[^>]*class="[^"]*cover-thumb[^"]*"[^>]*src="([^"]+)"[^>]*>/;
+const BOOK_TITLE_PATTERN = /<span class="title">([\s\S]*?)<\/span>/;
+const BOOK_SUBTITLE_PATTERN = /<span class="subtitle">([\s\S]*?)<\/span>/;
+const BOOK_DOWNLOADS_PATTERN = /<span class="extra">([\d,]+) downloads<\/span>/;
 const EPUB_LINK_PATTERN = /<a href="([^"]+)"[^>]*type="application\/epub\+zip"[^>]*>([^<]+)<\/a>/g;
 
 const HTML_ENTITY_MAP: Record<string, string> = {
@@ -62,19 +66,32 @@ const getPreferredEpubRank = (href: string) => {
 const parseBooksFromBookshelfHtml = (html: string): ReaderLibraryBook[] => {
   const matches = Array.from(html.matchAll(BOOK_LINK_PATTERN));
 
-  return matches.slice(0, BOOKS_PER_CATEGORY).map((match) => {
-    const [, href, coverSrc = '', rawTitle, rawAuthor = '', rawDownloads] = match;
-    const ebookId = href.match(/\/ebooks\/(\d+)/)?.[1] ?? href;
+  return matches
+    .map((match) => {
+      const block = match[1];
+      const href = block.match(BOOK_HREF_PATTERN)?.[1] ?? '';
+      const rawTitle = block.match(BOOK_TITLE_PATTERN)?.[1] ?? '';
+      const rawDownloads = block.match(BOOK_DOWNLOADS_PATTERN)?.[1] ?? '';
 
-    return {
-      ebookId,
-      title: decodeHtml(rawTitle),
-      author: decodeHtml(rawAuthor) || 'Unknown author',
-      downloads: Number(rawDownloads.replace(/,/g, '')),
-      coverUrl: coverSrc ? toAbsoluteUrl(coverSrc) : null,
-      bookUrl: toAbsoluteUrl(href),
-    };
-  });
+      if (!href || !rawTitle || !rawDownloads) {
+        return null;
+      }
+
+      const coverSrc = block.match(BOOK_COVER_PATTERN)?.[1] ?? '';
+      const rawAuthor = block.match(BOOK_SUBTITLE_PATTERN)?.[1] ?? '';
+      const ebookId = href.match(/\/ebooks\/(\d+)/)?.[1] ?? href;
+
+      return {
+        ebookId,
+        title: decodeHtml(rawTitle),
+        author: decodeHtml(rawAuthor) || 'Unknown author',
+        downloads: Number(rawDownloads.replace(/,/g, '')),
+        coverUrl: coverSrc ? toAbsoluteUrl(coverSrc) : null,
+        bookUrl: toAbsoluteUrl(href),
+      } satisfies ReaderLibraryBook;
+    })
+    .filter((book): book is ReaderLibraryBook => Boolean(book))
+    .slice(0, BOOKS_PER_CATEGORY);
 };
 
 export const getReaderLibraryCategories = async (): Promise<ReaderLibraryCategory[]> => {

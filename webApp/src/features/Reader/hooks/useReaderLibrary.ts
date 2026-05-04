@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ReaderLibraryCategory } from '../model/library';
+import { fetchReaderLibraryCategories } from '../api/libraryRequests';
 
 export const useReaderLibrary = () => {
   const [categories, setCategories] = useState<ReaderLibraryCategory[]>([]);
@@ -14,19 +15,8 @@ export const useReaderLibrary = () => {
         setIsLoading(true);
         setError('');
 
-        const response = await fetch('/api/reader/library', {
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to load library.');
-        }
-
-        const data = (await response.json()) as {
-          categories?: ReaderLibraryCategory[];
-        };
-
-        setCategories(Array.isArray(data.categories) ? data.categories : []);
+        const categoriesResponse = await fetchReaderLibraryCategories({ signal: controller.signal });
+        setCategories(categoriesResponse);
       } catch (error) {
         if (controller.signal.aborted) {
           return;

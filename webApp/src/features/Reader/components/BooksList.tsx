@@ -11,29 +11,12 @@ import { DevPanel } from './DevPanel';
 import { useDroppedEpubImport } from '../hooks/useDroppedEpubImport';
 import { useBooksListDropZone } from '../hooks/useBooksListDropZone';
 import { useReaderLibrary } from '../hooks/useReaderLibrary';
+import {
+  downloadReaderLibraryBookFile,
+  formatLibraryBookDownloadCaption,
+} from '../api/libraryRequests';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
-
-const sanitizeFileName = (title: string, ebookId: string) => {
-  const normalized = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-
-  return `${normalized || `gutenberg-${ebookId}`}.epub`;
-};
-
-const getFileNameFromDisposition = (contentDisposition: string | null, fallback: string) => {
-  if (!contentDisposition) return fallback;
-
-  const utf8Match = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
-  if (utf8Match?.[1]) {
-    return decodeURIComponent(utf8Match[1]);
-  }
-
-  const fileNameMatch = contentDisposition.match(/filename="?([^";]+)"?/i);
-  return fileNameMatch?.[1] || fallback;
-};
 
 export const BooksList = () => {
   const i18n = useLingui();
@@ -43,6 +26,8 @@ export const BooksList = () => {
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
     useDroppedEpubImport();
   const [isDownloadingLibraryBookId, setIsDownloadingLibraryBookId] = useState<string | null>(null);
+  const [libraryDownloadProgress, setLibraryDownloadProgress] = useState(0);
+  const [libraryDownloadLabel, setLibraryDownloadLabel] = useState('');
   const [libraryImportError, setLibraryImportError] = useState('');
   const { isDropActive, handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useBooksListDropZone({
@@ -76,21 +61,17 @@ export const BooksList = () => {
 
     try {
       setIsDownloadingLibraryBookId(book.ebookId);
+      setLibraryDownloadProgress(0);
+      setLibraryDownloadLabel(formatLibraryBookDownloadCaption(book, 0));
       setLibraryImportError('');
 
-      const response = await fetch(`/api/reader/library/download?ebookId=${book.ebookId}`);
-      if (!response.ok) {
-        throw new Error((await response.text()) || FALLBACK_LIBRARY_ERROR);
-      }
-
-      const blob = await response.blob();
-      const fileName = getFileNameFromDisposition(
-        response.headers.get('content-disposition'),
-        sanitizeFileName(book.title, book.ebookId),
-      );
-
-      const epubFile = new File([blob], fileName, {
-        type: blob.type || 'application/epub+zip',
+      const epubFile = await downloadReaderLibraryBookFile({
+        ebookId: book.ebookId,
+        title: book.title,
+        onProgress: ({ progress }) => {
+          setLibraryDownloadProgress(progress);
+          setLibraryDownloadLabel(formatLibraryBookDownloadCaption(book, progress));
+        },
       });
 
       setIsDownloadingLibraryBookId(null);
@@ -101,6 +82,8 @@ export const BooksList = () => {
       );
     } finally {
       setIsDownloadingLibraryBookId(null);
+      setLibraryDownloadProgress(0);
+      setLibraryDownloadLabel('');
     }
   };
 
@@ -175,15 +158,6 @@ export const BooksList = () => {
             </Typography>
           </Stack>
         ) : null}
-        {isDownloadingLibraryBookId ? (
-          <Typography
-            variant="caption"
-            sx={{ opacity: 0.75 }}
-            data-testid="library-download-status"
-          >
-            {i18n._('Downloading book from Project Gutenberg...')}
-          </Typography>
-        ) : null}
         {importError ? (
           <Typography variant="caption" color="error" data-testid="books-drop-import-error">
             {importError}
@@ -238,6 +212,52 @@ export const BooksList = () => {
         </Stack>
       </Stack>
       <DevPanel />
+
+      {isDownloadingLibraryBookId ? (
+        <Stack
+          data-testid="library-download-fixed-panel"
+          sx={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            width: '100vw',
+            height: '30px',
+            zIndex: 1100,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.22)',
+            justifyContent: 'center',
+          }}
+        >
+          <LinearProgress
+            variant="determinate"
+            value={libraryDownloadProgress}
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              height: '100%',
+              '& .MuiLinearProgress-bar': {
+                backgroundColor: '#ffb300',
+              },
+            }}
+          />
+          <Typography
+            variant="caption"
+            data-testid="library-download-status"
+            sx={{
+              position: 'relative',
+              zIndex: 1,
+              color: '#fff',
+              lineHeight: '30px',
+              textAlign: 'center',
+              px: '8px',
+              fontWeight: 600,
+              textShadow: '0 1px 1px rgba(0,0,0,0.8)',
+            }}
+          >
+            {libraryDownloadLabel || i18n._('Downloading book from Project Gutenberg...')}
+          </Typography>
+        </Stack>
+      ) : null}
 
       {isDropActive ? (
         <Stack
