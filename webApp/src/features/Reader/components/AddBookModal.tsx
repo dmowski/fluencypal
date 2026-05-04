@@ -239,7 +239,7 @@ export const AddBookModal = ({
           void handleSubmit();
         }}
       >
-        <Typography variant="h4">{i18n._('Add New Book')}</Typography>
+        <Typography variant="h4">{i18n._('Add a book')}</Typography>
         <input
           ref={fileInputRef}
           type="file"

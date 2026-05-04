@@ -124,7 +124,7 @@ export const AddNewBookCard = ({
       }}
     >
       <CirclePlus size={'40px'} strokeWidth={'1px'} />
-      <Typography>{i18n._('Add New Book')}</Typography>
+      <Typography>{i18n._('Add a book')}</Typography>
     </Stack>
   );
 };
