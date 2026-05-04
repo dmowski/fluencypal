@@ -2,9 +2,12 @@
 
 ## Reader
 
-- On mobile: when scroll down it's jumps
+- Default books: Show as a library, download and parse.
 
-- Default books: Show as a library, download and parse
+For library, use
+https://gutenberg.org/
+
+Create enpoint that provide a way to get list of popular books split by categories
 
 - Stats with highlights
 
