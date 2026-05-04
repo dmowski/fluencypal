@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
+import { Book, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
 import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 import { PaginationPanel } from './PaginationButtons';
@@ -18,90 +18,14 @@ import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
 import { ContentFitChecker } from './ContentFitChecker';
 import { ReaderChapterItem, ReaderChaptersPopover } from './ReaderChaptersPopover';
+import {
+  findActiveChapterId,
+  findTargetPageForInternalChapterHref,
+  mapChaptersToPages,
+} from '../utils/readerChapterNavigation';
+import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
-
-const findTargetPageForChapter = ({
-  pages,
-  targetParagraphIndex,
-}: {
-  pages: ReturnType<typeof splitIntoPages>;
-  targetParagraphIndex: number | null;
-}): number | null => {
-  if (!Number.isFinite(targetParagraphIndex) || targetParagraphIndex == null) {
-    return null;
-  }
-
-  const pageIndex = pages.findIndex((page) =>
-    page.some((pagedParagraph) => pagedParagraph.sourceParagraphIndex === targetParagraphIndex),
-  );
-
-  return pageIndex >= 0 ? pageIndex + 1 : null;
-};
-
-const findActiveChapterId = (items: ReaderChapterItem[], activePage: number): string | null => {
-  let bestId: string | null = null;
-  let bestPage = 0;
-
-  const walk = (list: ReaderChapterItem[]) => {
-    for (const item of list) {
-      const target = item.targetPage;
-      if (target !== null && target > 0 && target <= activePage && target >= bestPage) {
-        bestPage = target;
-        bestId = item.id;
-      }
-      walk(item.children);
-    }
-  };
-
-  walk(items);
-  return bestId;
-};
-
-const mapChaptersToPages = ({
-  chapters,
-  pages,
-}: {
-  chapters: BookChapterNavigationItem[];
-  pages: ReturnType<typeof splitIntoPages>;
-}): ReaderChapterItem[] =>
-  chapters.map((chapter) => ({
-    id: chapter.id,
-    label: chapter.label,
-    targetPage: findTargetPageForChapter({
-      pages,
-      targetParagraphIndex: chapter.targetParagraphIndex,
-    }),
-    children: mapChaptersToPages({ chapters: chapter.children, pages }),
-  }));
-
-const findTargetPageForWordAnchor = ({
-  pages,
-  anchor,
-}: {
-  pages: ReturnType<typeof splitIntoPages>;
-  anchor: {
-    paragraphIndex: number;
-    wordStartCharOffset: number;
-  };
-}): number | null => {
-  const pageIndex = pages.findIndex((page) =>
-    page.some((pagedParagraph) => {
-      if (pagedParagraph.sourceParagraphIndex !== anchor.paragraphIndex) {
-        return false;
-      }
-
-      const chunkStart = pagedParagraph.sourceStartCharOffset;
-      const chunkEndExclusive = chunkStart + pagedParagraph.words.join(' ').length;
-
-      return (
-        anchor.wordStartCharOffset >= chunkStart && anchor.wordStartCharOffset < chunkEndExclusive
-      );
-    }),
-  );
-
-  return pageIndex >= 0 ? pageIndex + 1 : null;
-};
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
@@ -169,7 +93,7 @@ export const Reader = ({ data }: { data: Book }) => {
   });
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const chapterItems = useMemo(
+  const chapterItems: ReaderChapterItem[] = useMemo(
     () => mapChaptersToPages({ chapters: data.chapters ?? [], pages }),
     [data.chapters, pages],
   );
@@ -230,6 +154,24 @@ export const Reader = ({ data }: { data: Book }) => {
     setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
     closeChapters();
   };
+
+  const getInternalChapterTargetPage = useCallback(
+    (href: string): number | null =>
+      findTargetPageForInternalChapterHref({
+        chapters: data.chapters ?? [],
+        pages,
+        href,
+      }),
+    [data.chapters, pages],
+  );
+
+  const handleInternalChapterLinkSelect = useCallback(
+    (targetPage: number) => {
+      readerSettings.clearResizeAnchorWord();
+      setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+    },
+    [maxSpreadStartPage, readerSettings, setActivePage],
+  );
 
   useReaderShortcuts({
     activePage,
@@ -337,6 +279,8 @@ export const Reader = ({ data }: { data: Book }) => {
                       imagesByHref={data.imagesByHref}
                       imageAspectRatioByHref={data.imageAspectRatioByHref}
                       maxImageHeight={Math.max(0, Math.floor(readerSettings.contentHeight * 0.9))}
+                      getInternalChapterTargetPage={getInternalChapterTargetPage}
+                      onInternalChapterLinkSelect={handleInternalChapterLinkSelect}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}
