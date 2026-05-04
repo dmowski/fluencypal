@@ -597,6 +597,7 @@ export const convertEpubFile = async ({
   onProgress?.({ progress: 75, message: 'Extracting title, subtitle and author...' });
 
   const needsAiMetadata = !metadata.subtitle.trim();
+  console.log('metadata.subtitle', metadata.subtitle);
   let finalMetadata = metadata;
 
   if (needsAiMetadata) {
@@ -606,7 +607,7 @@ export const convertEpubFile = async ({
     });
 
     const aiResponse = await sendConvertDocToTextRequest({
-      textPreview: markdown.slice(0, 12000),
+      textPreview: markdown.slice(0, 600),
     });
 
     if (aiResponse.metadata) {
