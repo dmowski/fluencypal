@@ -1,9 +1,8 @@
 # Live document with short/long term ideas
 
-### Reader: Stats with highlights
+## Reader
 
-### Reader: Sharing
-
+- Stats with highlights
 - Share books, highlights, but not book settings
 
 ## What about more strict Role-plays
