@@ -3,7 +3,7 @@
 import { IconButton, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { useLingui } from '@lingui/react';
-import { CirclePlus, Trash2 } from 'lucide-react';
+import { CirclePlus, Download, Trash2 } from 'lucide-react';
 
 export const BookCard = ({
   data,
@@ -46,6 +46,32 @@ export const BookCard = ({
           }}
         >
           <Trash2 size={'16px'} />
+        </IconButton>
+      )}
+      {data.originalFile && (
+        <IconButton
+          size="small"
+          aria-label="Download original file"
+          onClick={(event) => {
+            event.stopPropagation();
+            const url = URL.createObjectURL(data.originalFile!);
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = data.originalFile!.name;
+            anchor.click();
+            URL.revokeObjectURL(url);
+          }}
+          sx={{
+            position: 'absolute',
+            top: '8px',
+            right: onDelete ? '36px' : '8px',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.22)',
+            },
+          }}
+        >
+          <Download size={'16px'} />
         </IconButton>
       )}
       <Typography

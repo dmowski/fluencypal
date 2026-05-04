@@ -3,9 +3,6 @@
 ## Reader
 
 - On mobile: when scroll down it's jumps
-- On mobile: not clean progress of adding book
-
-- On book data, keep origin file
 
 - Default books: Show as a library, download and parse
 
