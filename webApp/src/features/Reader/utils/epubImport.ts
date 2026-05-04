@@ -24,9 +24,7 @@ const isEpubFile = (file: File): boolean => {
   );
 };
 
-export const validateEpubFile = (
-  file: File,
-): string | null => {
+export const validateEpubFile = (file: File): string | null => {
   if (!isEpubFile(file)) {
     return 'Please select a valid EPUB file.';
   }
