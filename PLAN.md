@@ -1,12 +1,10 @@
 # Live document with short/long term ideas
 
-### Reader: Read book using my reader
-
 ### Reader: Stats with highlighted notes
 
 ### Reader: Sharing
 
-- Share books, but not settings
+- Share books, highlights, but not book settings
 
 ## What about more strict Role-plays
 
