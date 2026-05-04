@@ -14,6 +14,7 @@ export interface MarkdownProps {
   words?: string[];
   imageDataUrlByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;
+  maxImageHeight?: number;
   onWordClick?: (
     word: string,
     element: HTMLElement,
@@ -158,6 +159,7 @@ const wrapChildrenWithTranslateWrapper = (
 const createMarkdownComponents = (
   imageDataUrlByHref?: Record<string, string>,
   imageAspectRatioByHref?: Record<string, number>,
+  maxImageHeight?: number,
 ): MarkdownToJSX.Overrides => ({
   h1: ({ children }) => (
     <Typography component="h1" sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}>
@@ -235,9 +237,8 @@ const createMarkdownComponents = (
     <Stack
       component={'blockquote'}
       sx={{
-        margin: '10px 10px 10px 0',
-        padding: '5px 10px 5px 15px',
-        borderLeft: '4px solid rgba(0, 0, 0, 0.1)',
+        margin: '0px 0px 0px 0',
+        padding: '0px 0px 0px 0px',
       }}
     >
       {children}
@@ -262,6 +263,10 @@ const createMarkdownComponents = (
       typeof resolvedAspectRatio === 'number' && Number.isFinite(resolvedAspectRatio)
         ? resolvedAspectRatio
         : undefined;
+    const safeMaxImageHeight =
+      typeof maxImageHeight === 'number' && Number.isFinite(maxImageHeight) && maxImageHeight > 0
+        ? maxImageHeight
+        : undefined;
 
     return (
       <img
@@ -269,7 +274,8 @@ const createMarkdownComponents = (
         src={resolvedSrc}
         style={{
           maxWidth: '90%',
-          width: '90%',
+          width: 'auto',
+          maxHeight: safeMaxImageHeight ? `${safeMaxImageHeight}px` : undefined,
           height: 'auto',
           display: 'block',
           ...(safeAspectRatio ? { aspectRatio: `${safeAspectRatio}` } : {}),
@@ -284,13 +290,18 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   words,
   imageDataUrlByHref,
   imageAspectRatioByHref,
+  maxImageHeight,
   onWordClick,
   onWordMouseEnter,
   onWordMouseMove,
   renderWord,
   renderSpace,
 }) => {
-  const styleComponents = createMarkdownComponents(imageDataUrlByHref, imageAspectRatioByHref);
+  const styleComponents = createMarkdownComponents(
+    imageDataUrlByHref,
+    imageAspectRatioByHref,
+    maxImageHeight,
+  );
 
   const renderWordsDirectly = words && words.length > 0;
   const wrapNodeChildren = (nodeChildren: React.ReactNode) =>

@@ -213,6 +213,7 @@ export const Reader = ({ data }: { data: Book }) => {
                       words={paragraph.words}
                       imagesByHref={data.imagesByHref}
                       imageAspectRatioByHref={data.imageAspectRatioByHref}
+                      maxImageHeight={Math.max(0, Math.floor(readerSettings.contentHeight * 0.9))}
                       fontSize={readerSettings.fontSize}
                       lineHeight={readerSettings.lineHeight}
                       justifyText={readerSettings.justifyText}

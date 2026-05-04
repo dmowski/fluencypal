@@ -2,6 +2,7 @@ import { expect, test, Page } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ensureReaderTextVisible } from './books.helpers';
+import { assertReaderContentFitsCurrentPage } from './libs/books/assertions';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
@@ -250,4 +251,43 @@ test('shows validation error when unsupported file is dropped in Add Book modal'
   await page.dispatchEvent('body', 'drop', { dataTransfer: invalidDataTransfer });
 
   await expect(addBookModal.getByText('Please select a valid EPUB file.')).toBeVisible();
+});
+
+test('first page content fits viewport at 1400x700 (cover image)', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 700 });
+
+  await page.addInitScript(() => {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    if (typeof indexedDB !== 'undefined') {
+      indexedDB.deleteDatabase('readerBooksDb');
+    }
+  });
+
+  await page.goto('/book');
+
+  await page.getByText('Add New Book', { exact: true }).first().click();
+  const addBookModal = page
+    .getByRole('heading', { name: 'Add New Book' })
+    .locator('..')
+    .locator('..');
+  await expect(page.getByRole('heading', { name: 'Add New Book' })).toBeVisible();
+
+  const epubInput = addBookModal.locator('input[type="file"][accept*=".epub"]');
+  await epubInput.setInputFiles(BOOK_FIXTURE_PATH);
+
+  const titleInput = addBookModal.getByRole('textbox', { name: 'Title', exact: true });
+  await expect
+    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
+    .toBe('Supercommunicators');
+
+  await page.getByRole('button', { name: 'Add', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
+  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+
+  await assertReaderContentFitsCurrentPage(page);
 });

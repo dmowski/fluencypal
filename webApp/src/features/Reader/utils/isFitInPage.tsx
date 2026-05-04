@@ -3,6 +3,7 @@ import { ReaderSettings } from '../model/types';
 const fontFamily = 'serif';
 const MARKDOWN_IMAGE_REGEX = /!\[[^\]]*\]\(([^)]+)\)/g;
 const IMAGE_WIDTH_RATIO = 0.9;
+const IMAGE_MAX_HEIGHT_RATIO = 0.9;
 const DEFAULT_IMAGE_ASPECT_RATIO = 1.5;
 
 const normalizeImageHref = (href: string): string => {
@@ -65,6 +66,7 @@ export function isFitInPage({
 
   const paragraphGap = Math.max(0, settings.paragraphGap);
   const renderedImageWidth = Math.max(0, settings.contentWidth * IMAGE_WIDTH_RATIO);
+  const renderedImageMaxHeight = Math.max(0, settings.contentHeight * IMAGE_MAX_HEIGHT_RATIO);
 
   paragraphs.forEach((paragraph, index) => {
     const paragraphWrapper = document.createElement('div');
@@ -102,9 +104,13 @@ export function isFitInPage({
           : DEFAULT_IMAGE_ASPECT_RATIO;
 
       const imageElement = document.createElement('div');
+      const measuredImageHeight = renderedImageWidth / safeAspectRatio;
       imageElement.style.display = 'block';
-      imageElement.style.width = `${renderedImageWidth}px`;
-      imageElement.style.height = `${renderedImageWidth / safeAspectRatio}px`;
+      imageElement.style.width = `${Math.min(
+        renderedImageWidth,
+        renderedImageMaxHeight * safeAspectRatio,
+      )}px`;
+      imageElement.style.height = `${Math.min(measuredImageHeight, renderedImageMaxHeight)}px`;
       imageElement.style.marginTop = imageIndex === 0 && paragraphText ? '8px' : '0';
       imageElement.style.marginBottom = imageIndex < imageHrefs.length - 1 ? '8px' : '0';
 
