@@ -108,6 +108,7 @@ const useBooksState = () => {
     subTitle,
     text,
     author,
+    originalFile,
     chapters,
     imagesByHref,
     imageAspectRatioByHref,
@@ -116,6 +117,7 @@ const useBooksState = () => {
     subTitle: string;
     text: string;
     author: string;
+    originalFile?: File;
     chapters?: BookChapterNavigationItem[];
     imagesByHref?: Record<string, string>;
     imageAspectRatioByHref?: Record<string, number>;
@@ -125,6 +127,7 @@ const useBooksState = () => {
       title,
       subtitle: subTitle,
       author,
+      originalFile,
       chapters,
       imagesByHref,
       imageAspectRatioByHref,

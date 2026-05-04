@@ -39,6 +39,7 @@ export const AddBookModal = ({
   const [conversionProgress, setConversionProgress] = useState(0);
   const [conversionMessage, setConversionMessage] = useState('');
   const [conversionError, setConversionError] = useState('');
+  const [originalEpubFile, setOriginalEpubFile] = useState<File | null>(null);
   const [isSavingBook, setIsSavingBook] = useState(false);
   const [saveProgress, setSaveProgress] = useState(0);
   const [saveMessage, setSaveMessage] = useState('');
@@ -93,6 +94,7 @@ export const AddBookModal = ({
         setTitle(parsedBook.title);
         setSubtitle(parsedBook.subtitle);
         setAuthor(parsedBook.author);
+        setOriginalEpubFile(file);
 
         setConversionProgress(100);
         setConversionMessage('Done. Text imported.');
@@ -194,6 +196,7 @@ export const AddBookModal = ({
         subTitle: subtitle.trim(),
         author: author.trim(),
         text: text.trim(),
+        originalFile: originalEpubFile ?? undefined,
         chapters,
         imagesByHref: imageDataUrlByHref,
         imageAspectRatioByHref,
@@ -212,6 +215,7 @@ export const AddBookModal = ({
       setConversionProgress(0);
       setConversionMessage('');
       setConversionError('');
+      setOriginalEpubFile(null);
       setSaveError('');
       onClose();
     } catch (error) {

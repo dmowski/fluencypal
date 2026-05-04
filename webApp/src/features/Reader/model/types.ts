@@ -18,6 +18,7 @@ export interface Book {
   title: string;
   subtitle: string;
   author: string;
+  originalFile?: File;
   chapters?: BookChapterNavigationItem[];
   imagesByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;

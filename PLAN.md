@@ -2,7 +2,15 @@
 
 ## Reader
 
+- On mobile: when scroll down it's jumps
+- On mobile: not clean progress of adding book
+
+- On book data, keep origin file
+
+- Default books: Show as a library, download and parse
+
 - Stats with highlights
+
 - Share books, highlights, but not book settings
 
 ## What about more strict Role-plays
