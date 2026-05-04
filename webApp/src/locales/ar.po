@@ -314,10 +314,16 @@ msgstr "خطة عمل لتحسين المهارات الأساسية في الب
 msgid "Active"
 msgstr "نشط"
 
-#: src/features/Reader/components/AddBookModal.tsx:412
+#: src/features/Reader/components/AddBookModal.tsx:416
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "أضف"
+
+#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/Cards.tsx:127
+#. js-lingui-explicit-id
+msgid "Add a book"
+msgstr "أضف كتاباً"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
@@ -338,12 +344,6 @@ msgstr "إضافة تعليق"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "أضف السياق..."
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-msgid "Add New Book"
-msgstr "إضافة كتاب جديد"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -912,7 +912,7 @@ msgstr "مساعد"
 msgid "Auth"
 msgstr "تفويض"
 
-#: src/features/Reader/components/AddBookModal.tsx:314
+#: src/features/Reader/components/AddBookModal.tsx:318
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "المؤلف"
@@ -1092,13 +1092,13 @@ msgstr "أفضل قيمة للتحسن المستمر."
 msgid "Blog"
 msgstr "بلوق"
 
-#: src/features/Reader/components/AddBookModal.tsx:331
+#: src/features/Reader/components/AddBookModal.tsx:335
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "يتم ملء حقول الكتاب تلقائيًا من بيانات EPUB الوصفية في وضع الإنتاج."
 
-#: src/features/Reader/components/AddBookModal.tsx:203
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:206
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "تم حفظ الكتاب."
@@ -1108,7 +1108,7 @@ msgstr "تم حفظ الكتاب."
 msgid "Booking a Doctor's Appointment"
 msgstr "حجز موعد مع طبيب"
 
-#: src/features/Reader/components/BooksList.tsx:55
+#: src/features/Reader/components/BooksList.tsx:79
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1342,7 +1342,7 @@ msgstr "هل يمكنني استخدامه على الهاتف الذكي؟"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:422
+#: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -2448,7 +2448,7 @@ msgstr ""
 "\n"
 "حذف المسافة\n"
 
-#: src/features/Reader/components/BooksList.tsx:27
+#: src/features/Reader/components/BooksList.tsx:41
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr ""
@@ -2844,12 +2844,12 @@ msgstr "لا تدع الأخطاء توقفك."
 msgid "Doxxing"
 msgstr "التنشير"
 
-#: src/features/Reader/components/AddBookModal.tsx:260
+#: src/features/Reader/components/AddBookModal.tsx:264
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "ضع ملف EPUB هنا"
 
-#: src/features/Reader/components/BooksList.tsx:120
+#: src/features/Reader/components/BooksList.tsx:138
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "أسقط ملف EPUB لاستيراد الكتاب"
@@ -3442,7 +3442,7 @@ msgstr "استكشف المجتمع، انضم إلى النقاشات وشار�
 msgid "Extra Slow"
 msgstr "بطيء جدًا"
 
-#: src/features/Reader/components/AddBookModal.tsx:338
+#: src/features/Reader/components/AddBookModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "الصور المستخرجة"
@@ -3452,7 +3452,7 @@ msgstr "الصور المستخرجة"
 msgid "Failed to analyze image. Please try again."
 msgstr "فشل في تحليل الصورة. يرجى المحاولة مرة أخرى."
 
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "فشل تحويل EPUB."
@@ -3469,7 +3469,7 @@ msgid ""
 "developers."
 msgstr "فشل في حذف حسابك. يرجى المحاولة مرة أخرى لاحقًا، أو الاتصال بالمطورين."
 
-#: src/features/Reader/components/AddBookModal.tsx:219
+#: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "فشل في حفظ الكتاب."
@@ -5127,12 +5127,12 @@ msgstr "توضيح لتسجيل الصوت"
 msgid "Images"
 msgstr "صور"
 
-#: src/features/Reader/components/AddBookModal.tsx:275
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "استيراد النص من EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:278
+#: src/features/Reader/components/AddBookModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "استيراد نص من ملف EPUB"
@@ -6847,7 +6847,7 @@ msgstr "بقي شيء واحد للقيام به"
 msgid "Online English"
 msgstr "&nbsp;تعليم الإنجليزية عبر الإنترنت"
 
-#: src/features/Reader/components/AddBookModal.tsx:262
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "فقط ملفات .epub مدعومة"
@@ -7778,7 +7778,7 @@ msgid ""
 "secure your first professional role."
 msgstr "استعد لعرض حقيبتك، ومناقشة رحلتك التعليمية، وتأمين دورك المهني الأول."
 
-#: src/features/Reader/components/AddBookModal.tsx:187
+#: src/features/Reader/components/AddBookModal.tsx:189
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "جارٍ تجهيز الكتاب..."
@@ -8683,7 +8683,7 @@ msgstr "حفظ"
 msgid "Save Changes"
 msgstr "احفظ التغييرات"
 
-#: src/features/Reader/components/AddBookModal.tsx:190
+#: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9662,7 +9662,7 @@ msgstr "جارٍ الإرسال..."
 msgid "Subscription (1 month)"
 msgstr "الاشتراك (1 شهر)"
 
-#: src/features/Reader/components/AddBookModal.tsx:307
+#: src/features/Reader/components/AddBookModal.tsx:311
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "العنوان الفرعي"
@@ -9955,7 +9955,7 @@ msgstr "اختبر معرفتك، وشارك في التحديات، وتناف�
 msgid "Testing & Quality"
 msgstr "الاختبار والجودة"
 
-#: src/features/Reader/components/AddBookModal.tsx:321
+#: src/features/Reader/components/AddBookModal.tsx:325
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "نص"
@@ -10503,7 +10503,7 @@ msgstr "نصيحة: يمكنك سحب الموافقة لاحقًا وطلب ح�
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:300
+#: src/features/Reader/components/AddBookModal.tsx:304
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "العنوان"
@@ -11833,7 +11833,7 @@ msgstr "يمكنك حذف بياناتك الشخصية في أي وقت"
 msgid "You can discuss the battle here."
 msgstr "يمكنك مناقشة المعركة هنا."
 
-#: src/features/Reader/components/AddBookModal.tsx:265
+#: src/features/Reader/components/AddBookModal.tsx:269
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr "يمكنك إسقاط ملف EPUB في أي مكان على هذه الصفحة أثناء فتح هذا الحوار."
@@ -12269,6 +12269,12 @@ msgstr "{winnerName} فاز!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| فلوينسي بال"
+
+#: src/features/Reader/components/AddBookModal.tsx:238
+#: src/features/Reader/components/Cards.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Add New Book"
+#~ msgstr "إضافة كتاب جديد"
 
 #: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id

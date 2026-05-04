@@ -299,10 +299,16 @@ msgstr "クリティカルなバックエンドスキルを向上させるため
 msgid "Active"
 msgstr "アクティブ"
 
-#: src/features/Reader/components/AddBookModal.tsx:412
+#: src/features/Reader/components/AddBookModal.tsx:416
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "追加"
+
+#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/Cards.tsx:127
+#. js-lingui-explicit-id
+msgid "Add a book"
+msgstr "本を追加"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
@@ -323,12 +329,6 @@ msgstr "コメントを追加"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "コンテキストを追加..."
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-msgid "Add New Book"
-msgstr "新しい本を追加"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -885,7 +885,7 @@ msgstr "アシスタント"
 msgid "Auth"
 msgstr "認証"
 
-#: src/features/Reader/components/AddBookModal.tsx:314
+#: src/features/Reader/components/AddBookModal.tsx:318
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "著者"
@@ -1059,13 +1059,13 @@ msgstr "一貫した改善に最適な価値。"
 msgid "Blog"
 msgstr "ブログ"
 
-#: src/features/Reader/components/AddBookModal.tsx:331
+#: src/features/Reader/components/AddBookModal.tsx:335
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "EPUBのメタデータから書籍フィールドが本番モードで自動入力されます。"
 
-#: src/features/Reader/components/AddBookModal.tsx:203
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:206
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "ブックが保存されました。"
@@ -1075,7 +1075,7 @@ msgstr "ブックが保存されました。"
 msgid "Booking a Doctor's Appointment"
 msgstr "医師の予約をする"
 
-#: src/features/Reader/components/BooksList.tsx:55
+#: src/features/Reader/components/BooksList.tsx:79
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1303,7 +1303,7 @@ msgstr "スマートフォンで使用できますか？"
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:422
+#: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -2379,7 +2379,7 @@ msgstr "現在の目標を削除"
 msgid "Delete Space"
 msgstr "スペースを削除"
 
-#: src/features/Reader/components/BooksList.tsx:27
+#: src/features/Reader/components/BooksList.tsx:41
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "この本を削除しますか？"
@@ -2749,12 +2749,12 @@ msgstr "ミスがあなたを止めることを許さないでください。"
 msgid "Doxxing"
 msgstr "ドキシング"
 
-#: src/features/Reader/components/AddBookModal.tsx:260
+#: src/features/Reader/components/AddBookModal.tsx:264
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "ここにEPUBファイルをドロップしてください"
 
-#: src/features/Reader/components/BooksList.tsx:120
+#: src/features/Reader/components/BooksList.tsx:138
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "EPUBファイルをドロップして本をインポート"
@@ -3316,7 +3316,7 @@ msgstr "コミュニティを探索し、ディスカッションに参加し、
 msgid "Extra Slow"
 msgstr "エクストラスロー"
 
-#: src/features/Reader/components/AddBookModal.tsx:338
+#: src/features/Reader/components/AddBookModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "抽出された画像"
@@ -3326,7 +3326,7 @@ msgstr "抽出された画像"
 msgid "Failed to analyze image. Please try again."
 msgstr "画像の解析に失敗しました。もう一度お試しください。"
 
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "EPUBの変換に失敗しました。"
@@ -3343,7 +3343,7 @@ msgid ""
 "developers."
 msgstr "アカウントの削除に失敗しました。後で再試行するか、開発者に連絡してください。"
 
-#: src/features/Reader/components/AddBookModal.tsx:219
+#: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "ブックの保存に失敗しました。"
@@ -4904,12 +4904,12 @@ msgstr "音声録音のイラストレーション"
 msgid "Images"
 msgstr "画像"
 
-#: src/features/Reader/components/AddBookModal.tsx:275
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "EPUBからテキストをインポート"
 
-#: src/features/Reader/components/AddBookModal.tsx:278
+#: src/features/Reader/components/AddBookModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "EPUBファイルからテキストをインポート"
@@ -6550,7 +6550,7 @@ msgstr "後に残された一つのこと"
 msgid "Online English"
 msgstr "オンライン英語"
 
-#: src/features/Reader/components/AddBookModal.tsx:262
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr ".epub ファイルのみサポートされています"
@@ -7434,7 +7434,7 @@ msgid ""
 "secure your first professional role."
 msgstr "ポートフォリオを披露する準備をし、学習の旅を話し合い、最初のプロの役割を確保しましょう。"
 
-#: src/features/Reader/components/AddBookModal.tsx:187
+#: src/features/Reader/components/AddBookModal.tsx:189
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "ブックを準備中..."
@@ -8325,7 +8325,7 @@ msgstr "保存"
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: src/features/Reader/components/AddBookModal.tsx:190
+#: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9280,7 +9280,7 @@ msgstr ""
 msgid "Subscription (1 month)"
 msgstr "サブスクリプション（1ヶ月）"
 
-#: src/features/Reader/components/AddBookModal.tsx:307
+#: src/features/Reader/components/AddBookModal.tsx:311
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr "字幕"
@@ -9562,7 +9562,7 @@ msgstr "知識を試し、チャレンジに参加し、リーダーボードで
 msgid "Testing & Quality"
 msgstr "テストと品質"
 
-#: src/features/Reader/components/AddBookModal.tsx:321
+#: src/features/Reader/components/AddBookModal.tsx:325
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "テキスト"
@@ -10086,7 +10086,7 @@ msgstr "ヒント：後で同意を撤回し、サポートに連絡すること
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:300
+#: src/features/Reader/components/AddBookModal.tsx:304
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "タイトル"
@@ -11364,7 +11364,7 @@ msgstr "個人データはいつでも削除できます"
 msgid "You can discuss the battle here."
 msgstr "ここで戦いについて話し合うことができます。"
 
-#: src/features/Reader/components/AddBookModal.tsx:265
+#: src/features/Reader/components/AddBookModal.tsx:269
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr "このダイアログが開いている間、このページのどこにでもEPUBをドロップできます。"
@@ -11766,6 +11766,12 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/Reader/components/AddBookModal.tsx:238
+#: src/features/Reader/components/Cards.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Add New Book"
+#~ msgstr "新しい本を追加"
 
 #: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id

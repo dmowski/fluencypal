@@ -312,10 +312,16 @@ msgstr "แผนปฏิบัติการเพื่อพัฒนาท
 msgid "Active"
 msgstr "ทำงาน"
 
-#: src/features/Reader/components/AddBookModal.tsx:412
+#: src/features/Reader/components/AddBookModal.tsx:416
 #. js-lingui-explicit-id
 msgid "Add"
 msgstr "เพิ่ม"
+
+#: src/features/Reader/components/AddBookModal.tsx:242
+#: src/features/Reader/components/Cards.tsx:127
+#. js-lingui-explicit-id
+msgid "Add a book"
+msgstr "เพิ่มหนังสือ"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
@@ -336,12 +342,6 @@ msgstr "เพิ่มความคิดเห็น"
 #. js-lingui-explicit-id
 msgid "Add context..."
 msgstr "เพิ่มบริบท..."
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-msgid "Add New Book"
-msgstr "เพิ่มหนังสือใหม่"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:193
 #. js-lingui-explicit-id
@@ -919,7 +919,7 @@ msgstr ""
 "\n"
 "Auth\n"
 
-#: src/features/Reader/components/AddBookModal.tsx:314
+#: src/features/Reader/components/AddBookModal.tsx:318
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "ผู้เขียน"
@@ -1097,13 +1097,13 @@ msgstr "คุ้มค่าที่สุดสำหรับการพั
 msgid "Blog"
 msgstr "บล็อก"
 
-#: src/features/Reader/components/AddBookModal.tsx:331
+#: src/features/Reader/components/AddBookModal.tsx:335
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "เขตข้อมูลหนังสือจะถูกเติมอัตโนมัติจากเมตาดาต้าของ EPUB ในโหมดการผลิต"
 
-#: src/features/Reader/components/AddBookModal.tsx:203
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:50
+#: src/features/Reader/components/AddBookModal.tsx:206
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "บันทึกหนังสือแล้ว"
@@ -1113,7 +1113,7 @@ msgstr "บันทึกหนังสือแล้ว"
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/Reader/components/BooksList.tsx:55
+#: src/features/Reader/components/BooksList.tsx:79
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1346,7 +1346,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
-#: src/features/Reader/components/AddBookModal.tsx:422
+#: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -2473,7 +2473,7 @@ msgstr "ลบเป้าหมายปัจจุบัน"
 msgid "Delete Space"
 msgstr "ลบช่องว่าง"
 
-#: src/features/Reader/components/BooksList.tsx:27
+#: src/features/Reader/components/BooksList.tsx:41
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "ลบหนังสือเล่มนี้หรือไม่?"
@@ -2880,12 +2880,12 @@ msgstr "อย่าให้ความผิดพลาดหยุดยั
 msgid "Doxxing"
 msgstr "การเปิดเผยข้อมูลส่วนบุคคลออนไลน์"
 
-#: src/features/Reader/components/AddBookModal.tsx:260
+#: src/features/Reader/components/AddBookModal.tsx:264
 #. js-lingui-explicit-id
 msgid "Drop EPUB file here"
 msgstr "วางไฟล์ EPUB ที่นี่"
 
-#: src/features/Reader/components/BooksList.tsx:120
+#: src/features/Reader/components/BooksList.tsx:138
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "วางไฟล์ EPUB เพื่อเพิ่มหนังสือ"
@@ -3486,7 +3486,7 @@ msgstr "สำรวจชุมชน เข้าร่วมการสน�
 msgid "Extra Slow"
 msgstr "ช้ามากเป็นพิเศษ"
 
-#: src/features/Reader/components/AddBookModal.tsx:338
+#: src/features/Reader/components/AddBookModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "รูปภาพที่แยกออกมา"
@@ -3496,7 +3496,7 @@ msgstr "รูปภาพที่แยกออกมา"
 msgid "Failed to analyze image. Please try again."
 msgstr "การวิเคราะห์ภาพล้มเหลว กรุณาลองใหม่อีกครั้ง "
 
-#: src/features/Reader/hooks/useDroppedEpubImport.ts:52
+#: src/features/Reader/hooks/useDroppedEpubImport.ts:53
 #. js-lingui-explicit-id
 msgid "Failed to convert EPUB."
 msgstr "ไม่สามารถแปลง EPUB ได้"
@@ -3513,7 +3513,7 @@ msgid ""
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
 
-#: src/features/Reader/components/AddBookModal.tsx:219
+#: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Failed to save book."
 msgstr "ไม่สามารถบันทึกหนังสือได้"
@@ -5197,12 +5197,12 @@ msgstr "ภาพประกอบการบันทึกเสียง"
 msgid "Images"
 msgstr "รูปภาพ"
 
-#: src/features/Reader/components/AddBookModal.tsx:275
+#: src/features/Reader/components/AddBookModal.tsx:279
 #. js-lingui-explicit-id
 msgid "Import text from EPUB"
 msgstr "นำเข้าข้อความจาก EPUB"
 
-#: src/features/Reader/components/AddBookModal.tsx:278
+#: src/features/Reader/components/AddBookModal.tsx:282
 #. js-lingui-explicit-id
 msgid "Import text from EPUB file"
 msgstr "นำเข้าข้อความจากไฟล์ EPUB"
@@ -6912,7 +6912,7 @@ msgstr "อีกสิ่งเดียวที่ต้องทำ"
 msgid "Online English"
 msgstr "ออนไลน์ภาษาอังกฤษ"
 
-#: src/features/Reader/components/AddBookModal.tsx:262
+#: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
 msgid "Only .epub files are supported"
 msgstr "รองรับเฉพาะไฟล์ .epub เท่านั้น"
@@ -7843,7 +7843,7 @@ msgstr ""
 "เตรียมแสดงผลงานของคุณ พูดคุยเกี่ยวกับเส้นทางการเรียนรู้ของคุณ "
 "และคว้าบทบาทงานมืออาชีพครั้งแรกของคุณ"
 
-#: src/features/Reader/components/AddBookModal.tsx:187
+#: src/features/Reader/components/AddBookModal.tsx:189
 #. js-lingui-explicit-id
 msgid "Preparing book..."
 msgstr "กำลังเตรียมหนังสือ..."
@@ -8745,7 +8745,7 @@ msgstr "บันทึก"
 msgid "Save Changes"
 msgstr "บันทึกการเปลี่ยนแปลง"
 
-#: src/features/Reader/components/AddBookModal.tsx:190
+#: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
 #. js-lingui-explicit-id
 msgid "Saving book..."
@@ -9728,7 +9728,7 @@ msgstr "กำลังส่ง..."
 msgid "Subscription (1 month)"
 msgstr "สมัครสมาชิก (1 เดือน)"
 
-#: src/features/Reader/components/AddBookModal.tsx:307
+#: src/features/Reader/components/AddBookModal.tsx:311
 #. js-lingui-explicit-id
 msgid "Subtitle"
 msgstr ""
@@ -10026,7 +10026,7 @@ msgstr "ทดสอบความรู้ของคุณ มีส่ว�
 msgid "Testing & Quality"
 msgstr "การทดสอบ & คุณภาพ"
 
-#: src/features/Reader/components/AddBookModal.tsx:321
+#: src/features/Reader/components/AddBookModal.tsx:325
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "ข้อความ"
@@ -10585,7 +10585,7 @@ msgstr ""
 
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:111
 #: src/features/Essay/EssayText.tsx:199
-#: src/features/Reader/components/AddBookModal.tsx:300
+#: src/features/Reader/components/AddBookModal.tsx:304
 #. js-lingui-explicit-id
 msgid "Title"
 msgstr "ชื่อเรื่อง"
@@ -11928,7 +11928,7 @@ msgstr "คุณสามารถลบข้อมูลส่วนตัว
 msgid "You can discuss the battle here."
 msgstr "คุณสามารถพูดคุยเกี่ยวกับการรบที่นี่"
 
-#: src/features/Reader/components/AddBookModal.tsx:265
+#: src/features/Reader/components/AddBookModal.tsx:269
 #. js-lingui-explicit-id
 msgid "You can drop EPUB anywhere on this page while this dialog is open."
 msgstr "คุณสามารถวางไฟล์ EPUB ได้ทุกที่บนหน้านี้ขณะที่กรอบสนทนานี้เปิดอยู่"
@@ -12360,6 +12360,12 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/AddBookModal.tsx:238
+#: src/features/Reader/components/Cards.tsx:90
+#. js-lingui-explicit-id
+#~ msgid "Add New Book"
+#~ msgstr "เพิ่มหนังสือใหม่"
 
 #: src/features/Reader/components/AddBookModal.tsx:99
 #. js-lingui-explicit-id
