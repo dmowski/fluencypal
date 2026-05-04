@@ -25,6 +25,9 @@ export const BookCard = ({
         color: '#fff',
         gap: '4px',
         position: 'relative',
+        '@media (max-width: 600px)': {
+          padding: '42px 30px 52px 20px',
+        },
       }}
     >
       {onDelete && (

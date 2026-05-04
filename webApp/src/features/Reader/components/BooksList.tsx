@@ -49,6 +49,9 @@ export const BooksList = () => {
         width: '100%',
         padding: '32px',
         minHeight: '100dvh',
+        '@media (max-width: 600px)': {
+          padding: '16px',
+        },
       }}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
