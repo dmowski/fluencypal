@@ -1,6 +1,7 @@
 'use client';
 
-import { LinearProgress, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import { ImportProgressPanel } from './ImportProgressPanel';
 import { useLingui } from '@lingui/react';
 import { ChangeEvent, useRef, useState } from 'react';
 import { BookCard, AddNewBookCard, LibraryBookCard } from './Cards';
@@ -150,14 +151,6 @@ export const BooksList = () => {
           </Stack>
         </Stack>
 
-        {isImportingDroppedFile || importProgress > 0 ? (
-          <Stack sx={{ gap: '6px', maxWidth: '420px' }} data-testid="books-drop-import-progress">
-            <LinearProgress variant="determinate" value={importProgress} />
-            <Typography variant="caption" sx={{ opacity: 0.75 }}>
-              {importMessage}
-            </Typography>
-          </Stack>
-        ) : null}
         {importError ? (
           <Typography variant="caption" color="error" data-testid="books-drop-import-error">
             {importError}
@@ -213,51 +206,14 @@ export const BooksList = () => {
       </Stack>
       <DevPanel />
 
-      {isDownloadingLibraryBookId ? (
-        <Stack
-          data-testid="library-download-fixed-panel"
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100vw',
-            height: '30px',
-            zIndex: 1100,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            borderTop: '1px solid rgba(255, 255, 255, 0.22)',
-            justifyContent: 'center',
-          }}
-        >
-          <LinearProgress
-            variant="determinate"
-            value={libraryDownloadProgress}
-            sx={{
-              position: 'absolute',
-              inset: 0,
-              height: '100%',
-              '& .MuiLinearProgress-bar': {
-                backgroundColor: '#ffb300',
-              },
-            }}
-          />
-          <Typography
-            variant="caption"
-            data-testid="library-download-status"
-            sx={{
-              position: 'relative',
-              zIndex: 1,
-              color: '#fff',
-              lineHeight: '30px',
-              textAlign: 'center',
-              px: '8px',
-              fontWeight: 600,
-              textShadow: '0 1px 1px rgba(0,0,0,0.8)',
-            }}
-          >
-            {libraryDownloadLabel || i18n._('Downloading book from Project Gutenberg...')}
-          </Typography>
-        </Stack>
-      ) : null}
+      <ImportProgressPanel
+        isDownloading={isDownloadingLibraryBookId !== null}
+        downloadProgress={libraryDownloadProgress}
+        downloadLabel={libraryDownloadLabel}
+        isImporting={isImportingDroppedFile}
+        importProgress={importProgress}
+        importMessage={importMessage}
+      />
 
       {isDropActive ? (
         <Stack
