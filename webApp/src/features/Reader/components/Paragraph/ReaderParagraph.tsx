@@ -49,6 +49,8 @@ interface ReaderParagraphProps {
   onWordHoverInfo?: (payload: ReaderParagraphHoverPayload) => void;
   onWordMouseMove?: (e: MouseEvent<HTMLElement>) => void;
   onHoverClear?: () => void;
+  resizeAnchorWordStartCharOffset?: number | null;
+  isResizeAnchorHighlightVisible?: boolean;
 }
 
 const ReaderParagraphBase = ({
@@ -68,6 +70,8 @@ const ReaderParagraphBase = ({
   onWordHoverInfo,
   onWordMouseMove,
   onHoverClear,
+  resizeAnchorWordStartCharOffset,
+  isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
@@ -339,12 +343,22 @@ const ReaderParagraphBase = ({
               wordCharOffsets,
             });
             const wordStart = sourceStart;
+            const sourceWordStartCharOffset = paragraphStartCharOffset + wordStart;
+            const isResizeAnchorWord =
+              isResizeAnchorHighlightVisible &&
+              resizeAnchorWordStartCharOffset != null &&
+              sourceWordStartCharOffset === resizeAnchorWordStartCharOffset;
 
             return (
               <Stack
                 component="span"
                 className="conversation-word"
                 data-word-index={wordIndex}
+                data-reader-word-anchor="true"
+                data-reader-anchor-key={`${paragraphIndex}-${sourceWordStartCharOffset}`}
+                data-reader-anchor-paragraph-index={paragraphIndex}
+                data-reader-anchor-word-start-char-offset={sourceWordStartCharOffset}
+                data-resize-anchor-highlighted={isResizeAnchorWord ? 'true' : undefined}
                 sx={{
                   fontSize: `${fontSize}px`,
                   lineHeight,
@@ -352,6 +366,9 @@ const ReaderParagraphBase = ({
                   cursor: 'pointer',
                   borderBottom: '1px dotted transparent',
                   position: 'relative',
+                  backgroundColor: isResizeAnchorWord ? 'rgba(255, 153, 0, 0.35)' : 'transparent',
+                  borderRadius: isResizeAnchorWord ? '4px' : 0,
+                  transition: 'background-color 200ms ease-out',
                   ':hover': {
                     '&::after': {
                       content: '""',

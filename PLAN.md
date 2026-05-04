@@ -1,12 +1,9 @@
 # Live document with short/long term ideas
 
-### Reader: Resize handler
-
-When user do resize, we need to carefully update active page. So the user don't loose content on screen.
-The problem that during resize we recalculate what pages are.
-
-My UX requirements.
-When the user star doing resize, get first paragraph the they see. Make temporary highlight of it. Some kind of #f90 color. So it will be anchor for user eye. When when we finish resize, that highlighted paragraph should be visible on the screen for 1 second, and then we remove that highlight.
+Links handling:
+webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
+Improve links of the content. Inside markdown render. If it's external link, keep it as is.
+If it's internal link, and link to the chapter - redirect to the specific chapter. Otherwise render as a plain text.
 
 ### Reader: Sharing
 

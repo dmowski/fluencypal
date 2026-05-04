@@ -16,7 +16,6 @@ import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
-import { useIsLocalhost } from '../hooks/useIsLocalhost';
 import { ContentFitChecker } from './ContentFitChecker';
 import { ReaderChapterItem, ReaderChaptersPopover } from './ReaderChaptersPopover';
 
@@ -76,6 +75,34 @@ const mapChaptersToPages = ({
     children: mapChaptersToPages({ chapters: chapter.children, pages }),
   }));
 
+const findTargetPageForWordAnchor = ({
+  pages,
+  anchor,
+}: {
+  pages: ReturnType<typeof splitIntoPages>;
+  anchor: {
+    paragraphIndex: number;
+    wordStartCharOffset: number;
+  };
+}): number | null => {
+  const pageIndex = pages.findIndex((page) =>
+    page.some((pagedParagraph) => {
+      if (pagedParagraph.sourceParagraphIndex !== anchor.paragraphIndex) {
+        return false;
+      }
+
+      const chunkStart = pagedParagraph.sourceStartCharOffset;
+      const chunkEndExclusive = chunkStart + pagedParagraph.words.join(' ').length;
+
+      return (
+        anchor.wordStartCharOffset >= chunkStart && anchor.wordStartCharOffset < chunkEndExclusive
+      );
+    }),
+  );
+
+  return pageIndex >= 0 ? pageIndex + 1 : null;
+};
+
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
   const readerSettings = useReaderSettings();
@@ -121,7 +148,17 @@ export const Reader = ({ data }: { data: Book }) => {
     isTwoColumnLayout && storedActivePage > 1 && storedActivePage % 2 === 0
       ? storedActivePage - 1
       : storedActivePage;
-  const activePage = Math.min(Math.max(normalizedStoredPage, 1), maxSpreadStartPage);
+  const normalizeSpreadStartPage = (page: number) => {
+    const normalizedPage = isTwoColumnLayout && page > 1 && page % 2 === 0 ? page - 1 : page;
+    return Math.min(Math.max(normalizedPage, 1), maxSpreadStartPage);
+  };
+  const anchoredPage = readerSettings.resizeAnchorWord
+    ? findTargetPageForWordAnchor({ pages, anchor: readerSettings.resizeAnchorWord })
+    : null;
+  const activePage =
+    anchoredPage == null
+      ? Math.min(Math.max(normalizedStoredPage, 1), maxSpreadStartPage)
+      : normalizeSpreadStartPage(anchoredPage);
   const visiblePages = isTwoColumnLayout
     ? [activePage, activePage + 1].filter((page) => page <= pageCount)
     : [activePage];
@@ -130,6 +167,7 @@ export const Reader = ({ data }: { data: Book }) => {
     pageCount,
     isTwoColumnLayout,
   });
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const chapterItems = useMemo(
     () => mapChaptersToPages({ chapters: data.chapters ?? [], pages }),
@@ -172,8 +210,14 @@ export const Reader = ({ data }: { data: Book }) => {
   });
 
   const closeReader = () => books.setActive(null);
-  const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
-  const goToNextPage = () => setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
+  const goToPreviousPage = () => {
+    readerSettings.clearResizeAnchorWord();
+    setActivePage(Math.max(activePage - pageStep, 1));
+  };
+  const goToNextPage = () => {
+    readerSettings.clearResizeAnchorWord();
+    setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
+  };
   const openChapters = (event: MouseEvent<HTMLElement>) => {
     if (chapterItems.length === 0) {
       return;
@@ -182,6 +226,7 @@ export const Reader = ({ data }: { data: Book }) => {
   };
   const closeChapters = () => setChaptersAnchorEl(null);
   const handleChapterSelect = (targetPage: number) => {
+    readerSettings.clearResizeAnchorWord();
     setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
     closeChapters();
   };
@@ -206,8 +251,6 @@ export const Reader = ({ data }: { data: Book }) => {
     clearHoverTranslation();
     clearHoveredWord();
   }, [clearHoverTranslation, clearHoveredWord]);
-
-  const contentRef = useRef<HTMLDivElement>(null);
 
   return (
     <Stack
@@ -250,6 +293,7 @@ export const Reader = ({ data }: { data: Book }) => {
 
       <Stack
         ref={contentRef}
+        data-testid="reader-content"
         sx={{
           width: '100%',
           alignItems: 'center',
@@ -303,6 +347,15 @@ export const Reader = ({ data }: { data: Book }) => {
                       onWordHoverInfo={onWordHoverInfo}
                       onWordMouseMove={onWordMouseMove}
                       onHoverClear={handleWordHoverClear}
+                      resizeAnchorWordStartCharOffset={
+                        readerSettings.resizeAnchorWord?.paragraphIndex === index
+                          ? readerSettings.resizeAnchorWord.wordStartCharOffset
+                          : null
+                      }
+                      isResizeAnchorHighlightVisible={
+                        readerSettings.resizeAnchorHighlightKey ===
+                        readerSettings.resizeAnchorWord?.key
+                      }
                     />
                   </Stack>
                 );

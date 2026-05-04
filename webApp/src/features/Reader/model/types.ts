@@ -53,3 +53,9 @@ export interface ReaderSettings {
   columns: 1 | 2;
   columnGap: number;
 }
+
+export interface ReaderResizeWordAnchor {
+  paragraphIndex: number;
+  wordStartCharOffset: number;
+  key: string;
+}

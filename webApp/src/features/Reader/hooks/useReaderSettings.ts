@@ -8,9 +8,10 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
-import { NativeLangCode, ReaderSettings } from '../model/types';
+import { NativeLangCode, ReaderResizeWordAnchor, ReaderSettings } from '../model/types';
 
 export interface ReaderSettingsApi extends ReaderSettings {
   setLanguage: (nextLanguage: string) => void;
@@ -23,6 +24,9 @@ export interface ReaderSettingsApi extends ReaderSettings {
   setJustifyText: (nextJustifyText: boolean) => void;
   setTranslateOnHover: (nextTranslateOnHover: boolean) => void;
   setVoiceOverSelectedText: (next: boolean) => void;
+  resizeAnchorWord: ReaderResizeWordAnchor | null;
+  resizeAnchorHighlightKey: string | null;
+  clearResizeAnchorWord: () => void;
 }
 
 const READER_SETTINGS_KEY = 'reader-browser-speech-settings';
@@ -39,6 +43,10 @@ const MOBILE_INIT_FONT_SIZE = 18;
 const MOBILE_INIT_FONT_SIZE_WIDTH_THRESHOLD = 600;
 const MOBILE_LAYOUT_WIDTH_THRESHOLD = 1024;
 const MOBILE_ORIENTATION_WIDTH_DELTA = 120;
+const RESIZE_RECALC_DEBOUNCE_MS = 1000;
+const RESIZE_HIGHLIGHT_HOLD_MS = 1000;
+const READER_CONTENT_SELECTOR = '[data-testid="reader-content"]';
+const READER_WORD_ANCHOR_SELECTOR = '[data-reader-word-anchor="true"]';
 
 let stableMobileViewportHeight: number | null = null;
 let stableMobileViewportWidth: number | null = null;
@@ -200,8 +208,55 @@ const getInitialSettings = (): ReaderSettings => {
   }
 };
 
+const captureFirstVisibleWordAnchor = (): ReaderResizeWordAnchor | null => {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  const contentElement = document.querySelector<HTMLElement>(READER_CONTENT_SELECTOR);
+  if (!contentElement) {
+    return null;
+  }
+
+  const contentRect = contentElement.getBoundingClientRect();
+  const candidates = Array.from(
+    contentElement.querySelectorAll<HTMLElement>(READER_WORD_ANCHOR_SELECTOR),
+  );
+
+  for (const element of candidates) {
+    const rect = element.getBoundingClientRect();
+    const isVisible =
+      rect.height > 0 &&
+      rect.width > 0 &&
+      rect.bottom > contentRect.top + 1 &&
+      rect.top < contentRect.bottom - 1;
+
+    if (!isVisible) {
+      continue;
+    }
+
+    const paragraphIndex = Number(element.dataset.readerAnchorParagraphIndex);
+    const wordStartCharOffset = Number(element.dataset.readerAnchorWordStartCharOffset);
+
+    if (!Number.isFinite(paragraphIndex) || !Number.isFinite(wordStartCharOffset)) {
+      continue;
+    }
+
+    return {
+      paragraphIndex,
+      wordStartCharOffset,
+      key: `${paragraphIndex}-${wordStartCharOffset}`,
+    };
+  }
+
+  return null;
+};
+
 const useReaderSettingsState = (): ReaderSettingsApi => {
   const [settings, setSettings] = useState<ReaderSettings>(() => getInitialSettings());
+  const [resizeAnchorWord, setResizeAnchorWord] = useState<ReaderResizeWordAnchor | null>(null);
+  const [resizeAnchorHighlightKey, setResizeAnchorHighlightKey] = useState<string | null>(null);
+  const isResizeSessionActiveRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -211,8 +266,19 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     let timeoutId: ReturnType<typeof setTimeout>;
+    let highlightTimeoutId: ReturnType<typeof setTimeout>;
+
     const handleResize = () => {
+      if (!isResizeSessionActiveRef.current) {
+        const anchor = captureFirstVisibleWordAnchor();
+        setResizeAnchorWord(anchor);
+        setResizeAnchorHighlightKey(anchor?.key ?? null);
+        isResizeSessionActiveRef.current = true;
+      }
+
       clearTimeout(timeoutId);
+      clearTimeout(highlightTimeoutId);
+
       timeoutId = setTimeout(() => {
         const nextViewportDimensions = getViewportDimensions();
         const nextAutoColumnsLayout = getAutoColumnsLayout(nextViewportDimensions.contentWidth);
@@ -223,12 +289,19 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
           columns: nextAutoColumnsLayout.columns,
           columnGap: nextAutoColumnsLayout.columnGap,
         }));
-      }, 1000);
+
+        isResizeSessionActiveRef.current = false;
+        highlightTimeoutId = setTimeout(() => {
+          setResizeAnchorHighlightKey(null);
+        }, RESIZE_HIGHLIGHT_HOLD_MS);
+      }, RESIZE_RECALC_DEBOUNCE_MS);
     };
+
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
       clearTimeout(timeoutId);
+      clearTimeout(highlightTimeoutId);
     };
   }, []);
 
@@ -309,6 +382,11 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
     }));
   }, []);
 
+  const clearResizeAnchorWord = useCallback(() => {
+    setResizeAnchorWord(null);
+    setResizeAnchorHighlightKey(null);
+  }, []);
+
   return useMemo(
     () => ({
       ...settings,
@@ -322,6 +400,9 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setJustifyText,
       setTranslateOnHover,
       setVoiceOverSelectedText,
+      resizeAnchorWord,
+      resizeAnchorHighlightKey,
+      clearResizeAnchorWord,
     }),
     [
       settings,
@@ -335,6 +416,9 @@ const useReaderSettingsState = (): ReaderSettingsApi => {
       setJustifyText,
       setTranslateOnHover,
       setVoiceOverSelectedText,
+      resizeAnchorWord,
+      resizeAnchorHighlightKey,
+      clearResizeAnchorWord,
     ],
   );
 };
