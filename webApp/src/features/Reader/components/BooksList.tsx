@@ -105,7 +105,7 @@ export const BooksList = () => {
     >
       <Stack
         sx={{
-          gap: '32px',
+          gap: '72px',
         }}
       >
         <input
@@ -169,7 +169,7 @@ export const BooksList = () => {
           </Typography>
         ) : null}
 
-        <Stack data-testid="reader-library-section" sx={{ gap: '20px' }}>
+        <Stack data-testid="reader-library-section" sx={{ gap: '50px' }}>
           <Typography variant="h4">{i18n._('Library')}</Typography>
 
           {library.isLoading ? (

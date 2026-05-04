@@ -165,8 +165,8 @@ export const LibraryBookCard = ({
         opacity: isDisabled ? 0.6 : 1,
         gap: '12px',
         flexDirection: 'row',
-        alignItems: 'stretch',
         position: 'relative',
+        alignItems: 'flex-start',
         '@media (max-width: 600px)': {
           width: '100%',
         },
@@ -174,9 +174,9 @@ export const LibraryBookCard = ({
     >
       <Box
         sx={{
-          width: '100px',
-          minWidth: '100px',
-          height: '112px',
+          width: '90px',
+          minWidth: '90px',
+          aspectRatio: '2 / 3',
           borderRadius: '8px',
           overflow: 'hidden',
           backgroundColor: 'rgba(0, 0, 0, 0.08)',
@@ -184,6 +184,15 @@ export const LibraryBookCard = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+
+          ':after': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            zIndex: 2,
+            borderRadius: '8px',
+            boxShadow: 'inset 0px 0px 0px 1px rgba(0, 0, 0, .1)',
+          },
         }}
       >
         {data.coverUrl ? (
@@ -196,9 +205,6 @@ export const LibraryBookCard = ({
       </Box>
 
       <Stack sx={{ gap: '4px', flex: '1 1 auto', minWidth: 0 }}>
-        <Typography variant="overline" sx={{ letterSpacing: '0.08em', opacity: 0.7 }}>
-          {i18n._('Library')}
-        </Typography>
         <Typography
           variant="subtitle1"
           sx={{ fontWeight: 700, lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis' }}
@@ -209,13 +215,21 @@ export const LibraryBookCard = ({
           {data.author}
         </Typography>
         <Typography variant="caption" sx={{ opacity: 0.7 }}>
-          {i18n._('{{count}} downloads', { count: data.downloads.toLocaleString('en-US') })}
+          {i18n._('{count} downloads', { count: data.downloads.toLocaleString('en-US') })}
         </Typography>
         <Box sx={{ pt: '4px' }}>
           <Button
             size="small"
             variant="outlined"
             disabled={isDisabled}
+            sx={{
+              borderColor: 'rgba(0, 0, 0, 0.4)',
+              color: 'rgba(0, 0, 0, 0.87)',
+              '&:hover': {
+                borderColor: 'rgba(0, 0, 0, 0.22)',
+                backgroundColor: 'rgba(0, 0, 0, 0.04)',
+              },
+            }}
             startIcon={<Download size={'14px'} />}
             onClick={(event) => {
               event.stopPropagation();
