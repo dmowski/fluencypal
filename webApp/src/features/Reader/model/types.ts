@@ -4,12 +4,20 @@ export type { NativeLangCode };
 export type BookWord = string;
 export type BookParagraph = BookWord[];
 
+export interface BookChapterNavigationItem {
+  id: string;
+  label: string;
+  targetParagraphIndex: number | null;
+  children: BookChapterNavigationItem[];
+}
+
 export interface Book {
   id: string;
   paragraphs: BookParagraph[];
   title: string;
   subtitle: string;
   author: string;
+  chapters?: BookChapterNavigationItem[];
   imagesByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;
   highlights?: HighlightedText[];

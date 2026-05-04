@@ -15,6 +15,15 @@ const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
 
+const parseCurrentPageFromIndicator = (value: string): number => {
+  const match = value.match(/(\d+)\s*\/\s*(\d+)/);
+  if (!match) {
+    return 1;
+  }
+
+  return Number(match[1]);
+};
+
 const assertVisibleReaderColumnsFitViewport = async (page: Page) => {
   const columns = page.getByTestId('reader-page-column');
   const count = await columns.count();
@@ -223,4 +232,67 @@ test('first page content fits viewport at 1400x700 (cover image)', async ({ page
   await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
 
   await assertReaderContentFitsCurrentPage(page);
+});
+
+test('opens chapters popover and jumps to selected chapter page', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+
+  const addBookModal = await openAddBookModal(page);
+  await setAddBookEpubFile(addBookModal, BOOK_FIXTURE_PATH);
+
+  const titleInput = addBookModal.getByRole('textbox', { name: 'Title', exact: true });
+  await expect
+    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
+    .toBe('Supercommunicators');
+
+  await page.getByRole('button', { name: 'Add', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
+
+  await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
+  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+
+  const chaptersTrigger = page.getByTestId('reader-chapters-trigger');
+  await expect(chaptersTrigger).toBeVisible();
+  await chaptersTrigger.click();
+
+  const chaptersPopover = page.getByTestId('reader-chapters-popover');
+  await expect(chaptersPopover).toBeVisible();
+
+  const chapterItems = page.getByTestId('reader-chapter-item');
+  await expect.poll(async () => chapterItems.count()).toBeGreaterThan(0);
+
+  const pageIndicator = page.getByTestId('reader-page-indicator');
+
+  const candidateIndex = await chapterItems.evaluateAll((elements) => {
+    return elements.findIndex((element) => {
+      const targetValue = element.getAttribute('data-target-page') || '';
+      const targetPage = Number(targetValue);
+      return Number.isFinite(targetPage) && targetPage > 0;
+    });
+  });
+
+  const chapterItemToClick =
+    candidateIndex >= 0 ? chapterItems.nth(candidateIndex) : chapterItems.first();
+  const clickedTargetPage = Number(
+    (await chapterItemToClick.getAttribute('data-target-page')) || '0',
+  );
+  const normalizedClickedTargetPage =
+    clickedTargetPage > 1 && clickedTargetPage % 2 === 0
+      ? clickedTargetPage - 1
+      : clickedTargetPage;
+
+  await chapterItemToClick.click();
+
+  await expect(chaptersPopover).not.toBeVisible();
+
+  const finalIndicatorValue = await pageIndicator.innerText();
+  const finalPage = parseCurrentPageFromIndicator(finalIndicatorValue);
+
+  if (normalizedClickedTargetPage > 0) {
+    expect(finalPage).toBe(normalizedClickedTargetPage);
+  } else {
+    expect(finalPage).toBeGreaterThan(0);
+  }
 });

@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { CirclePlus, File } from 'lucide-react';
 import { useBooks } from '../hooks/useBooks';
+import { BookChapterNavigationItem } from '../model/types';
 import { convertEpubFile, validateEpubFile } from '../utils/epubImport';
 
 export const AddBookModal = ({
@@ -30,6 +31,7 @@ export const AddBookModal = ({
   const [subtitle, setSubtitle] = useState('');
   const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
+  const [chapters, setChapters] = useState<BookChapterNavigationItem[]>([]);
   const [imageDataUrlByHref, setImageDataUrlByHref] = useState<Record<string, string>>({});
   const [imageAspectRatioByHref, setImageAspectRatioByHref] = useState<Record<string, number>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -86,6 +88,7 @@ export const AddBookModal = ({
         });
 
         setText(parsedBook.text);
+        setChapters(parsedBook.chapters);
         setImageDataUrlByHref(parsedBook.imageDataUrlByHref);
         setImageAspectRatioByHref(parsedBook.imageAspectRatioByHref);
         setTitle(parsedBook.title);
@@ -192,6 +195,7 @@ export const AddBookModal = ({
         subTitle: subtitle.trim(),
         author: author.trim(),
         text: text.trim(),
+        chapters,
         imagesByHref: imageDataUrlByHref,
         imageAspectRatioByHref,
       });
@@ -203,6 +207,7 @@ export const AddBookModal = ({
       setSubtitle('');
       setAuthor('');
       setText('');
+      setChapters([]);
       setImageDataUrlByHref({});
       setImageAspectRatioByHref({});
       setConversionProgress(0);

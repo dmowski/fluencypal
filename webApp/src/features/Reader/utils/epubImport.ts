@@ -1,5 +1,7 @@
 import JSZip from 'jszip';
 import TurndownService from 'turndown';
+import { BookChapterNavigationItem } from '../model/types';
+import { splitTextIntoParagraphs } from './splitParagraphsIntoPages';
 
 export const MAX_EPUB_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -103,6 +105,171 @@ const getElementsByTag = (root: Document | Element, tag: string): Element[] => {
 const normalizeText = (value: string | null | undefined): string =>
   (value || '').replace(/\s+/g, ' ').trim();
 
+interface RawNavigationItem {
+  label: string;
+  href: string;
+  children: RawNavigationItem[];
+}
+
+const getDirectChildrenByTag = (element: Element, tag: string): Element[] =>
+  Array.from(element.children).filter((child) => child.tagName.toLowerCase() === tag.toLowerCase());
+
+const getOpsTypeAttribute = (element: Element): string =>
+  normalizeText(
+    element.getAttribute('epub:type') ||
+      element.getAttribute('type') ||
+      element.getAttributeNS('http://www.idpf.org/2007/ops', 'type') ||
+      '',
+  ).toLowerCase();
+
+const resolveNavigationHref = (baseDocumentPath: string, href: string): string => {
+  const trimmedHref = href.trim();
+  if (!trimmedHref) return '';
+
+  const [pathOnly, fragment] = trimmedHref.split('#', 2);
+  const baseDir = baseDocumentPath.includes('/')
+    ? baseDocumentPath.slice(0, baseDocumentPath.lastIndexOf('/'))
+    : '';
+
+  const resolvedPath = pathOnly
+    ? resolveRelativePath(baseDir, pathOnly)
+    : normalizeImageHref(baseDocumentPath);
+  const normalizedPath = normalizeImageHref(resolvedPath);
+
+  if (!normalizedPath) {
+    return '';
+  }
+
+  return fragment ? `${normalizedPath}#${fragment}` : normalizedPath;
+};
+
+const extractNavigationFromHtmlList = (
+  listElement: Element,
+  baseDocumentPath: string,
+): RawNavigationItem[] => {
+  const listItems = getDirectChildrenByTag(listElement, 'li');
+
+  return listItems
+    .map((listItem) => {
+      const directChildren = Array.from(listItem.children);
+      const linkElement =
+        directChildren.find((child) => child.tagName.toLowerCase() === 'a') || null;
+      const labelElement =
+        linkElement ||
+        directChildren.find((child) => child.tagName.toLowerCase() === 'span') ||
+        null;
+      const nestedList =
+        directChildren.find((child) => {
+          const tagName = child.tagName.toLowerCase();
+          return tagName === 'ol' || tagName === 'ul';
+        }) || null;
+
+      const label = normalizeText(labelElement?.textContent || listItem.textContent);
+      const href = resolveNavigationHref(baseDocumentPath, linkElement?.getAttribute('href') || '');
+      const children = nestedList
+        ? extractNavigationFromHtmlList(nestedList, baseDocumentPath)
+        : [];
+
+      if (!label && children.length === 0) {
+        return null;
+      }
+
+      return {
+        label,
+        href,
+        children,
+      };
+    })
+    .filter((item): item is RawNavigationItem => Boolean(item));
+};
+
+const extractNavigationFromNavDocument = (
+  navDoc: Document,
+  navDocumentPath: string,
+): RawNavigationItem[] => {
+  const navElements = getElementsByTag(navDoc, 'nav');
+  if (navElements.length === 0) return [];
+
+  const tocNavElement =
+    navElements.find((element) => getOpsTypeAttribute(element).split(/\s+/).includes('toc')) ||
+    navElements[0];
+
+  const firstListElement =
+    getDirectChildrenByTag(tocNavElement, 'ol')[0] ||
+    getDirectChildrenByTag(tocNavElement, 'ul')[0] ||
+    null;
+
+  if (!firstListElement) return [];
+
+  return extractNavigationFromHtmlList(firstListElement, navDocumentPath);
+};
+
+const extractNavigationFromNcxNavPoint = (
+  navPointElement: Element,
+  ncxPath: string,
+): RawNavigationItem => {
+  const navLabelElement = getDirectChildrenByTag(navPointElement, 'navLabel')[0] || null;
+  const textElement = navLabelElement
+    ? getDirectChildrenByTag(navLabelElement, 'text')[0] || null
+    : null;
+  const contentElement = getDirectChildrenByTag(navPointElement, 'content')[0] || null;
+  const childNavPoints = getDirectChildrenByTag(navPointElement, 'navPoint');
+
+  return {
+    label: normalizeText(textElement?.textContent || navLabelElement?.textContent || ''),
+    href: resolveNavigationHref(ncxPath, contentElement?.getAttribute('src') || ''),
+    children: childNavPoints.map((childNavPoint) =>
+      extractNavigationFromNcxNavPoint(childNavPoint, ncxPath),
+    ),
+  };
+};
+
+const extractNavigationFromNcxDocument = (
+  ncxDoc: Document,
+  ncxPath: string,
+): RawNavigationItem[] => {
+  const navMapElement = getFirstElementByTag(ncxDoc, 'navMap');
+  if (!navMapElement) return [];
+
+  return getDirectChildrenByTag(navMapElement, 'navPoint').map((navPointElement) =>
+    extractNavigationFromNcxNavPoint(navPointElement, ncxPath),
+  );
+};
+
+const mapRawNavigationToBookChapters = (
+  rawItems: RawNavigationItem[],
+  paragraphStartBySectionPath: Record<string, number>,
+  parentId: string,
+): BookChapterNavigationItem[] =>
+  rawItems
+    .map((item, index) => {
+      const chapterId = `${parentId}-${index + 1}`;
+      const [pathOnly] = item.href.split('#', 1);
+      const normalizedPath = normalizeImageHref(pathOnly || '');
+      const targetParagraphIndex =
+        normalizedPath && Number.isFinite(paragraphStartBySectionPath[normalizedPath])
+          ? paragraphStartBySectionPath[normalizedPath]
+          : null;
+
+      const children = mapRawNavigationToBookChapters(
+        item.children,
+        paragraphStartBySectionPath,
+        chapterId,
+      );
+
+      if (!item.label && children.length === 0) {
+        return null;
+      }
+
+      return {
+        id: chapterId,
+        label: item.label || 'Untitled chapter',
+        targetParagraphIndex,
+        children,
+      };
+    })
+    .filter((item): item is BookChapterNavigationItem => Boolean(item));
+
 const splitTitleAndSubtitle = (title: string): { title: string; subtitle: string } => {
   const delimiters = [' - ', ': ', ' | '];
 
@@ -187,6 +354,7 @@ const parseEpubOnClient = async (
 ): Promise<{
   markdown: string;
   metadata: { title: string; subtitle: string; author: string };
+  chapters: BookChapterNavigationItem[];
   imageDataUrlByHref: Record<string, string>;
 }> => {
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
@@ -216,11 +384,13 @@ const parseEpubOnClient = async (
     const id = item.getAttribute('id')?.trim() || '';
     const href = item.getAttribute('href')?.trim() || '';
     const mediaType = item.getAttribute('media-type')?.trim() || '';
+    const properties = item.getAttribute('properties')?.trim() || '';
 
     return {
       id,
       href,
       mediaType,
+      properties,
       resolvedPath: resolveRelativePath(opfDir, href),
     };
   });
@@ -239,8 +409,47 @@ const parseEpubOnClient = async (
     .map((itemRef) => itemRef.getAttribute('idref')?.trim() || '')
     .filter(Boolean);
 
+  const spineElement = getFirstElementByTag(opfDoc, 'spine');
+  const ncxIdFromSpine = spineElement?.getAttribute('toc')?.trim() || '';
+
+  let rawNavigationItems: RawNavigationItem[] = [];
+
+  const navManifestItem = manifestItems.find((item) =>
+    item.properties.split(/\s+/).filter(Boolean).includes('nav'),
+  );
+
+  if (navManifestItem) {
+    const navXml = await zip.file(navManifestItem.resolvedPath)?.async('string');
+    if (navXml) {
+      rawNavigationItems = extractNavigationFromNavDocument(
+        parseXml(navXml),
+        navManifestItem.resolvedPath,
+      );
+    }
+  }
+
+  if (rawNavigationItems.length === 0) {
+    const ncxManifestItem =
+      (ncxIdFromSpine ? manifestById[ncxIdFromSpine] : undefined) ||
+      manifestItems.find(
+        (item) => item.mediaType === 'application/x-dtbncx+xml' || /\.ncx$/i.test(item.href),
+      );
+
+    if (ncxManifestItem) {
+      const ncxXml = await zip.file(ncxManifestItem.resolvedPath)?.async('string');
+      if (ncxXml) {
+        rawNavigationItems = extractNavigationFromNcxDocument(
+          parseXml(ncxXml),
+          ncxManifestItem.resolvedPath,
+        );
+      }
+    }
+  }
+
   const turndown = new TurndownService();
   const markdownSections: string[] = [];
+  const paragraphStartBySectionPath: Record<string, number> = {};
+  let paragraphOffset = 0;
 
   for (const spineId of spineIds) {
     const item = manifestById[spineId];
@@ -263,9 +472,23 @@ const parseEpubOnClient = async (
       .join('\n');
 
     if (markdown) {
+      const normalizedSectionPath = normalizeImageHref(item.resolvedPath);
+      if (
+        normalizedSectionPath &&
+        !Number.isFinite(paragraphStartBySectionPath[normalizedSectionPath])
+      ) {
+        paragraphStartBySectionPath[normalizedSectionPath] = paragraphOffset;
+      }
       markdownSections.push(markdown);
+      paragraphOffset += splitTextIntoParagraphs(markdown).length;
     }
   }
+
+  const chapters = mapRawNavigationToBookChapters(
+    rawNavigationItems,
+    paragraphStartBySectionPath,
+    'chapter',
+  );
 
   const imageDataUrlByHref: Record<string, string> = {};
 
@@ -293,6 +516,7 @@ const parseEpubOnClient = async (
   return {
     markdown: markdownSections.join('\n\n'),
     metadata,
+    chapters,
     imageDataUrlByHref,
   };
 };
@@ -342,6 +566,7 @@ export interface EpubImportPayload {
   title: string;
   subtitle: string;
   author: string;
+  chapters: BookChapterNavigationItem[];
   imageDataUrlByHref: Record<string, string>;
   imageAspectRatioByHref: Record<string, number>;
 }
@@ -388,6 +613,7 @@ export const convertEpubFile = async ({
     title: metadata.title,
     subtitle: metadata.subtitle,
     author: metadata.author,
+    chapters: parsed.chapters,
     imageDataUrlByHref,
     imageAspectRatioByHref,
   };

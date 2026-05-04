@@ -2,11 +2,13 @@
 
 ### Reader: Navigation
 
-On top of page, show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page. Update all necessary part to allow it. For now we don't have info about navigation.
+On top of book page (in the center), show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page.
+
+Update all necessary part to allow it. For now we don't have info about navigation. Check how we parse epub, can we extract navigation info from here?
 
 For popup bg use this color #FFF3DD with #222 text color. Navigation can be nested
 
-(Write e2e to check it with existing test book).
+(Write e2e to check it with existing test book (Supercommunicators.epub) webApp/e2e/booksImages.spec.ts).
 
 ### Reader: Sharing
 

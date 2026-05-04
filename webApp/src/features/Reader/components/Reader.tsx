@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material';
-import { Book, HighlightedText } from '../model/types';
+import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
-import { useCallback, useMemo, useRef } from 'react';
+import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -18,13 +18,50 @@ import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
 import { useIsLocalhost } from '../hooks/useIsLocalhost';
 import { ContentFitChecker } from './ContentFitChecker';
+import { ReaderChapterItem, ReaderChaptersPopover } from './ReaderChaptersPopover';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
+
+const findTargetPageForChapter = ({
+  pages,
+  targetParagraphIndex,
+}: {
+  pages: ReturnType<typeof splitIntoPages>;
+  targetParagraphIndex: number | null;
+}): number | null => {
+  if (!Number.isFinite(targetParagraphIndex) || targetParagraphIndex == null) {
+    return null;
+  }
+
+  const pageIndex = pages.findIndex((page) =>
+    page.some((pagedParagraph) => pagedParagraph.sourceParagraphIndex === targetParagraphIndex),
+  );
+
+  return pageIndex >= 0 ? pageIndex + 1 : null;
+};
+
+const mapChaptersToPages = ({
+  chapters,
+  pages,
+}: {
+  chapters: BookChapterNavigationItem[];
+  pages: ReturnType<typeof splitIntoPages>;
+}): ReaderChapterItem[] =>
+  chapters.map((chapter) => ({
+    id: chapter.id,
+    label: chapter.label,
+    targetPage: findTargetPageForChapter({
+      pages,
+      targetParagraphIndex: chapter.targetParagraphIndex,
+    }),
+    children: mapChaptersToPages({ chapters: chapter.children, pages }),
+  }));
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
   const readerSettings = useReaderSettings();
   const { activePage: storedActivePage, setActivePage } = books;
+  const [chaptersAnchorEl, setChaptersAnchorEl] = useState<HTMLElement | null>(null);
   const pageStep = readerSettings.columns;
   const isTwoColumnLayout = readerSettings.columns === 2;
   const columnWidth =
@@ -75,6 +112,11 @@ export const Reader = ({ data }: { data: Book }) => {
     isTwoColumnLayout,
   });
 
+  const chapterItems = useMemo(
+    () => mapChaptersToPages({ chapters: data.chapters ?? [], pages }),
+    [data.chapters, pages],
+  );
+
   const speech = useBrowserSpeech();
   const {
     activePopover,
@@ -108,6 +150,17 @@ export const Reader = ({ data }: { data: Book }) => {
   const closeReader = () => books.setActive(null);
   const goToPreviousPage = () => setActivePage(Math.max(activePage - pageStep, 1));
   const goToNextPage = () => setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
+  const openChapters = (event: MouseEvent<HTMLElement>) => {
+    if (chapterItems.length === 0) {
+      return;
+    }
+    setChaptersAnchorEl(event.currentTarget);
+  };
+  const closeChapters = () => setChaptersAnchorEl(null);
+  const handleChapterSelect = (targetPage: number) => {
+    setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+    closeChapters();
+  };
 
   useReaderShortcuts({
     activePage,
@@ -166,6 +219,8 @@ export const Reader = ({ data }: { data: Book }) => {
           currentPage={currentPage}
           totalPages={totalPages}
           author={data.author}
+          hasChapters={chapterItems.length > 0}
+          onOpenChapters={openChapters}
         />
       </Stack>
 
@@ -247,6 +302,13 @@ export const Reader = ({ data }: { data: Book }) => {
         isTranslationLoading={activePopover?.isTranslationLoading ?? false}
         activeColor={activeColor}
         onColorSelect={handleActiveColorSelect}
+      />
+
+      <ReaderChaptersPopover
+        anchorEl={chaptersAnchorEl}
+        chapters={chapterItems}
+        onClose={closeChapters}
+        onSelect={handleChapterSelect}
       />
 
       {flyingTooltipNode}

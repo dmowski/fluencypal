@@ -186,6 +186,8 @@ describe('ReaderHeader', () => {
         currentPage={1}
         totalPages={3}
         author="Story"
+        hasChapters={false}
+        onOpenChapters={() => {}}
       />,
     );
 
@@ -210,6 +212,8 @@ describe('ReaderHeader', () => {
         currentPage={1}
         totalPages={3}
         author="Story"
+        hasChapters={false}
+        onOpenChapters={() => {}}
       />,
     );
 

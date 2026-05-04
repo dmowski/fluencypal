@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { testData } from '../model/testData';
-import { Book, HighlightedText } from '../model/types';
+import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import {
   deleteUserBookFromIndexedDb,
@@ -108,6 +108,7 @@ const useBooksState = () => {
     subTitle,
     text,
     author,
+    chapters,
     imagesByHref,
     imageAspectRatioByHref,
   }: {
@@ -115,6 +116,7 @@ const useBooksState = () => {
     subTitle: string;
     text: string;
     author: string;
+    chapters?: BookChapterNavigationItem[];
     imagesByHref?: Record<string, string>;
     imageAspectRatioByHref?: Record<string, number>;
   }) => {
@@ -123,6 +125,7 @@ const useBooksState = () => {
       title,
       subtitle: subTitle,
       author,
+      chapters,
       imagesByHref,
       imageAspectRatioByHref,
       paragraphs: splitTextIntoParagraphs(text),
