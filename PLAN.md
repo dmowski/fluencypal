@@ -1,6 +1,6 @@
 # Live document with short/long term ideas
 
-### Reader: Stats with highlighted notes
+### Reader: Stats with highlights
 
 ### Reader: Sharing
 
