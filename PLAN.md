@@ -1,14 +1,12 @@
 # Live document with short/long term ideas
 
-### Reader: Navigation
+### Reader: Resize handler
 
-On top of book page (in the center), show text "Chapters", when user press this link, we show popover with list of chapters, when user clicks on chapter, we need to redirect to that page.
+When user do resize, we need to carefully update active page. So the user don't loose content on screen.
+The problem that during resize we recalculate what pages are.
 
-Update all necessary part to allow it. For now we don't have info about navigation. Check how we parse epub, can we extract navigation info from here?
-
-For popup bg use this color #FFF3DD with #222 text color. Navigation can be nested
-
-(Write e2e to check it with existing test book (Supercommunicators.epub) webApp/e2e/booksImages.spec.ts).
+My UX requirements.
+When the user star doing resize, get first paragraph the they see. Make temporary highlight of it. Some kind of #f90 color. So it will be anchor for user eye. When when we finish resize, that highlighted paragraph should be visible on the screen for 1 second, and then we remove that highlight.
 
 ### Reader: Sharing
 

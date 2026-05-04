@@ -12,14 +12,17 @@ export interface ReaderChapterItem {
 const renderChapterTree = ({
   items,
   level,
+  activeChapterId,
   onSelect,
 }: {
   items: ReaderChapterItem[];
   level: number;
+  activeChapterId: string | null;
   onSelect: (targetPage: number) => void;
 }): ReactNode =>
   items.map((item) => {
     const isClickable = Number.isFinite(item.targetPage) && (item.targetPage as number) > 0;
+    const isActive = item.id === activeChapterId;
 
     return (
       <Stack key={item.id} sx={{ width: '100%' }}>
@@ -39,6 +42,7 @@ const renderChapterTree = ({
             color: '#222',
             cursor: isClickable ? 'pointer' : 'default',
             opacity: isClickable ? 1 : 0.55,
+            fontWeight: isActive ? 700 : 400,
             fontSize: '15px',
             padding: '6px 4px 6px 10px',
             marginLeft: `${level * 14}px`,
@@ -57,6 +61,7 @@ const renderChapterTree = ({
           ? renderChapterTree({
               items: item.children,
               level: level + 1,
+              activeChapterId,
               onSelect,
             })
           : null}
@@ -67,11 +72,13 @@ const renderChapterTree = ({
 export const ReaderChaptersPopover = ({
   anchorEl,
   chapters,
+  activeChapterId,
   onClose,
   onSelect,
 }: {
   anchorEl: HTMLElement | null;
   chapters: ReaderChapterItem[];
+  activeChapterId: string | null;
   onClose: () => void;
   onSelect: (targetPage: number) => void;
 }) => {
@@ -99,7 +106,7 @@ export const ReaderChaptersPopover = ({
     >
       <Stack data-testid="reader-chapters-popover" sx={{ padding: '10px 8px', overflowY: 'auto' }}>
         {chapters.length > 0 ? (
-          renderChapterTree({ items: chapters, level: 0, onSelect })
+          renderChapterTree({ items: chapters, level: 0, activeChapterId, onSelect })
         ) : (
           <Typography sx={{ fontFamily: 'serif', fontSize: '14px', padding: '8px' }}>
             {i18n._('No chapters available')}

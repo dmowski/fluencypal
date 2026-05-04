@@ -40,6 +40,25 @@ const findTargetPageForChapter = ({
   return pageIndex >= 0 ? pageIndex + 1 : null;
 };
 
+const findActiveChapterId = (items: ReaderChapterItem[], activePage: number): string | null => {
+  let bestId: string | null = null;
+  let bestPage = 0;
+
+  const walk = (list: ReaderChapterItem[]) => {
+    for (const item of list) {
+      const target = item.targetPage;
+      if (target !== null && target > 0 && target <= activePage && target >= bestPage) {
+        bestPage = target;
+        bestId = item.id;
+      }
+      walk(item.children);
+    }
+  };
+
+  walk(items);
+  return bestId;
+};
+
 const mapChaptersToPages = ({
   chapters,
   pages,
@@ -115,6 +134,11 @@ export const Reader = ({ data }: { data: Book }) => {
   const chapterItems = useMemo(
     () => mapChaptersToPages({ chapters: data.chapters ?? [], pages }),
     [data.chapters, pages],
+  );
+
+  const activeChapterId = useMemo(
+    () => findActiveChapterId(chapterItems, activePage),
+    [chapterItems, activePage],
   );
 
   const speech = useBrowserSpeech();
@@ -307,6 +331,7 @@ export const Reader = ({ data }: { data: Book }) => {
       <ReaderChaptersPopover
         anchorEl={chaptersAnchorEl}
         chapters={chapterItems}
+        activeChapterId={activeChapterId}
         onClose={closeChapters}
         onSelect={handleChapterSelect}
       />
