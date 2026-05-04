@@ -2,8 +2,7 @@
 
 import { LinearProgress, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useState } from 'react';
-import { AddBookModal } from './AddBookModal';
+import { ChangeEvent, useRef } from 'react';
 import { BookCard, AddNewBookCard } from './Cards';
 import { useBooks } from '../hooks/useBooks';
 import { Book } from '../model/types';
@@ -14,14 +13,29 @@ import { useBooksListDropZone } from '../hooks/useBooksListDropZone';
 export const BooksList = () => {
   const i18n = useLingui();
   const books = useBooks();
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const { isImportingDroppedFile, importProgress, importMessage, importError, importDroppedFile } =
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
     useDroppedEpubImport();
   const { isDropActive, handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useBooksListDropZone({
-      isDisabled: isAddModalOpen,
-      onDropFile: importDroppedFile,
+      isDisabled: isImportingDroppedFile,
+      onDropFile: importEpubFile,
     });
+
+  const handleAddBookClick = () => {
+    if (isImportingDroppedFile) return;
+    fileInputRef.current?.click();
+  };
+
+  const handleEpubSelect = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    await importEpubFile(file);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleDelete = (book: Book) => {
     if (!window.confirm(i18n._('Delete this book?'))) return;
@@ -46,6 +60,16 @@ export const BooksList = () => {
           gap: '32px',
         }}
       >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".epub,application/epub+zip"
+          style={{ display: 'none' }}
+          onChange={(event) => {
+            void handleEpubSelect(event);
+          }}
+          data-testid="add-book-file-input"
+        />
         <Typography
           variant="h2"
           sx={{
@@ -90,16 +114,10 @@ export const BooksList = () => {
               />
             ))}
 
-            <AddNewBookCard onClick={() => setIsAddModalOpen(true)} />
+            <AddNewBookCard onClick={handleAddBookClick} isDisabled={isImportingDroppedFile} />
           </Stack>
         </Stack>
       </Stack>
-
-      <AddBookModal
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        isGlobalDropActive={isDropActive}
-      />
       <DevPanel />
 
       {isDropActive ? (

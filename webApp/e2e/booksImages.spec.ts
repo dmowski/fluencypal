@@ -5,9 +5,9 @@ import {
   createFileDropDataTransfer,
   dropDataTransferOnBooksList,
   ensureReaderTextVisible,
-  openAddBookModal,
+  importBookFromPicker,
+  openAddBookFileChooser,
   openBooksPageWithCleanStorage,
-  setAddBookEpubFile,
 } from './books.helpers';
 import { assertReaderContentFitsCurrentPage } from './libs/books/assertions';
 
@@ -60,38 +60,7 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   test.setTimeout(180_000);
 
   await openBooksPageWithCleanStorage(page);
-
-  const addBookModal = await openAddBookModal(page);
-  await setAddBookEpubFile(addBookModal, BOOK_FIXTURE_PATH);
-
-  const titleInput = addBookModal.getByRole('textbox', { name: 'Title', exact: true });
-  const subtitleInput = addBookModal.getByRole('textbox', { name: 'Subtitle', exact: true });
-  const authorInput = addBookModal.getByRole('textbox', { name: 'Author', exact: true });
-  const textInput = addBookModal.getByRole('textbox', { name: 'Text', exact: true });
-
-  await expect
-    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
-    .not.toBe('');
-  await expect
-    .poll(async () => (await subtitleInput.inputValue()).trim(), { timeout: 60_000 })
-    .not.toBe('');
-  await expect
-    .poll(async () => (await authorInput.inputValue()).trim(), { timeout: 60_000 })
-    .not.toBe('');
-  await expect
-    .poll(async () => (await textInput.inputValue()).trim().length, { timeout: 60_000 })
-    .toBeGreaterThan(200);
-
-  const extractedImages = addBookModal.getByTestId('epub-extracted-image');
-  await expect(extractedImages.first()).toBeVisible();
-  await expect.poll(async () => extractedImages.count()).toBeGreaterThan(0);
-  await expect(extractedImages.first()).toHaveAttribute(
-    'src',
-    /^data:image\/[a-zA-Z0-9.+-]+;base64,/,
-  );
-
-  await page.getByRole('button', { name: 'Add', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
 
@@ -191,40 +160,28 @@ test('imports book by dropping EPUB on books page', async ({ page }) => {
   });
 });
 
-test('shows validation error when unsupported file is dropped in Add Book modal', async ({
+test('shows validation error when unsupported file is selected in Add Book picker', async ({
   page,
 }) => {
-  await page.goto('/book');
-  const addBookModal = await openAddBookModal(page);
-  await expect(addBookModal.getByTestId('add-book-drop-zone')).toBeVisible();
+  await openBooksPageWithCleanStorage(page);
 
-  const invalidDataTransfer = await createFileDropDataTransfer({
-    page,
+  const fileChooser = await openAddBookFileChooser(page);
+  await fileChooser.setFiles({
     name: 'invalid.mp4',
-    type: 'video/mp4',
-    contents: 'video mock payload',
+    mimeType: 'video/mp4',
+    buffer: Buffer.from('video mock payload', 'utf8'),
   });
 
-  await page.dispatchEvent('body', 'drop', { dataTransfer: invalidDataTransfer });
-
-  await expect(addBookModal.getByText('Please select a valid EPUB file.')).toBeVisible();
+  await expect(page.getByTestId('books-drop-import-error')).toHaveText(
+    'Please select a valid EPUB file.',
+  );
 });
 
 test('first page content fits viewport at 1400x700 (cover image)', async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 700 });
 
   await openBooksPageWithCleanStorage(page);
-
-  const addBookModal = await openAddBookModal(page);
-  await setAddBookEpubFile(addBookModal, BOOK_FIXTURE_PATH);
-
-  const titleInput = addBookModal.getByRole('textbox', { name: 'Title', exact: true });
-  await expect
-    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
-    .toBe('Supercommunicators');
-
-  await page.getByRole('button', { name: 'Add', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
 
@@ -238,17 +195,7 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
   test.setTimeout(180_000);
 
   await openBooksPageWithCleanStorage(page);
-
-  const addBookModal = await openAddBookModal(page);
-  await setAddBookEpubFile(addBookModal, BOOK_FIXTURE_PATH);
-
-  const titleInput = addBookModal.getByRole('textbox', { name: 'Title', exact: true });
-  await expect
-    .poll(async () => (await titleInput.inputValue()).trim(), { timeout: 60_000 })
-    .toBe('Supercommunicators');
-
-  await page.getByRole('button', { name: 'Add', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Add New Book' })).not.toBeVisible();
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
   await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();

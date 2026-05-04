@@ -12,7 +12,7 @@ export const useDroppedEpubImport = () => {
   const [importMessage, setImportMessage] = useState('');
   const [importError, setImportError] = useState('');
 
-  const importDroppedFile = async (file: File) => {
+  const importEpubFile = async (file: File) => {
     const validationError = validateEpubFile(file);
     if (validationError) {
       setImportError(validationError);
@@ -64,6 +64,6 @@ export const useDroppedEpubImport = () => {
     importProgress,
     importMessage,
     importError,
-    importDroppedFile,
+    importEpubFile,
   };
 };

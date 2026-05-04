@@ -70,16 +70,27 @@ export const BookCard = ({
   );
 };
 
-export const AddNewBookCard = ({ onClick }: { onClick: () => void }) => {
+export const AddNewBookCard = ({
+  onClick,
+  isDisabled = false,
+}: {
+  onClick: () => void;
+  isDisabled?: boolean;
+}) => {
   const i18n = useLingui();
   return (
     <Stack
-      onClick={() => onClick()}
+      onClick={() => {
+        if (isDisabled) return;
+        onClick();
+      }}
+      data-testid="add-new-book-card"
       sx={{
         padding: '16px 20px',
         borderRadius: '8px',
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
-        cursor: 'pointer',
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        opacity: isDisabled ? 0.65 : 1,
         color: '#333',
         alignItems: 'center',
         justifyContent: 'center',

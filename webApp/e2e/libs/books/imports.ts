@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export const openBooksPageWithCleanStorage = async (page: Page) => {
   await page.addInitScript(() => {
@@ -12,22 +12,15 @@ export const openBooksPageWithCleanStorage = async (page: Page) => {
   await page.goto('/book');
 };
 
-export const openAddBookModal = async (page: Page): Promise<Locator> => {
-  await page.getByText('Add New Book', { exact: true }).first().click();
-
-  const addBookModal = page
-    .getByRole('heading', { name: 'Add New Book' })
-    .locator('..')
-    .locator('..');
-
-  await expect(page.getByRole('heading', { name: 'Add New Book' })).toBeVisible();
-
-  return addBookModal;
+export const openAddBookFileChooser = async (page: Page) => {
+  const fileChooserPromise = page.waitForEvent('filechooser');
+  await page.getByTestId('add-new-book-card').click();
+  return fileChooserPromise;
 };
 
-export const setAddBookEpubFile = async (addBookModal: Locator, fixturePath: string) => {
-  const epubInput = addBookModal.locator('input[type="file"][accept*=".epub"]');
-  await epubInput.setInputFiles(fixturePath);
+export const importBookFromPicker = async (page: Page, fixturePath: string) => {
+  const fileChooser = await openAddBookFileChooser(page);
+  await fileChooser.setFiles(fixturePath);
 };
 
 export const createFileDropDataTransfer = async ({
