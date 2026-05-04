@@ -2,23 +2,6 @@
 
 ## Reader
 
--
-
-Update webApp/src/features/Reader/components/BooksList.tsx
-
-Under my books, show "Library"
-
-For library, use
-https://gutenberg.org/
-
-Create endpoint that provide a list of popular books split by categories.
-
-Phase:
-
-1. Endpoints with list of books. Show on home page. Cover with e2e. Do not mock backend.
-
-2. When click on book, download the epub, add file to our flow of processing epub. Cover with e2e
-
 - Stats with highlights
 
 - Share books, highlights, but not book settings

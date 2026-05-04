@@ -1,7 +1,8 @@
 'use client';
 
-import { IconButton, Stack, Typography } from '@mui/material';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
+import { ReaderLibraryBook } from '../model/library';
 import { useLingui } from '@lingui/react';
 import { CirclePlus, Download, Trash2 } from 'lucide-react';
 
@@ -128,6 +129,93 @@ export const AddNewBookCard = ({
     >
       <CirclePlus size={'40px'} strokeWidth={'1px'} />
       <Typography>{i18n._('Add a book')}</Typography>
+    </Stack>
+  );
+};
+
+export const LibraryBookCard = ({
+  data,
+  onClick,
+  isDisabled = false,
+  isLoading = false,
+}: {
+  data: ReaderLibraryBook;
+  onClick: (data: ReaderLibraryBook) => void;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+}) => {
+  const i18n = useLingui();
+
+  return (
+    <Stack
+      onClick={() => {
+        if (isDisabled) return;
+        onClick(data);
+      }}
+      data-testid={`reader-library-book-${data.ebookId}`}
+      sx={{
+        width: '220px',
+        minHeight: '320px',
+        padding: '16px',
+        borderRadius: '12px',
+        backgroundColor: 'rgba(255, 255, 255, 0.55)',
+        border: '1px solid rgba(0, 0, 0, 0.08)',
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        opacity: isDisabled ? 0.6 : 1,
+        gap: '10px',
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          height: '170px',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          backgroundColor: 'rgba(0, 0, 0, 0.08)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {data.coverUrl ? (
+          <Box
+            component="img"
+            src={data.coverUrl}
+            alt=""
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        ) : (
+          <Typography variant="caption" sx={{ opacity: 0.65 }}>
+            {i18n._('Project Gutenberg')}
+          </Typography>
+        )}
+      </Box>
+
+      <Stack sx={{ gap: '4px', flex: '1 1 auto' }}>
+        <Typography variant="overline" sx={{ letterSpacing: '0.08em', opacity: 0.7 }}>
+          {i18n._('Library')}
+        </Typography>
+        <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+          {data.title}
+        </Typography>
+        <Typography variant="caption" sx={{ fontStyle: 'italic', opacity: 0.8 }}>
+          {data.author}
+        </Typography>
+        <Typography variant="caption" sx={{ opacity: 0.7 }}>
+          {i18n._('{{count}} downloads', { count: data.downloads.toLocaleString('en-US') })}
+        </Typography>
+      </Stack>
+
+      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '8px', opacity: 0.8 }}>
+        <Download size={'16px'} />
+        <Typography variant="caption">
+          {isLoading ? i18n._('Downloading...') : i18n._('Download and import')}
+        </Typography>
+      </Stack>
     </Stack>
   );
 };
