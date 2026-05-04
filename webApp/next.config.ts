@@ -50,6 +50,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'flagcdn.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.gutenberg.org',
+      },
     ],
     qualities: [40, 90, 100],
   },

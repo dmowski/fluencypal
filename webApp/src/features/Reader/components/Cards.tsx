@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, IconButton, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
+import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { useLingui } from '@lingui/react';
@@ -154,40 +155,39 @@ export const LibraryBookCard = ({
       }}
       data-testid={`reader-library-book-${data.ebookId}`}
       sx={{
-        width: '220px',
-        minHeight: '320px',
-        padding: '16px',
+        width: '360px',
+        minHeight: '136px',
+        padding: '12px',
         borderRadius: '12px',
         backgroundColor: 'rgba(255, 255, 255, 0.55)',
         border: '1px solid rgba(0, 0, 0, 0.08)',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         opacity: isDisabled ? 0.6 : 1,
-        gap: '10px',
+        gap: '12px',
+        flexDirection: 'row',
+        alignItems: 'stretch',
         position: 'relative',
+        '@media (max-width: 600px)': {
+          width: '100%',
+        },
       }}
     >
       <Box
         sx={{
-          height: '170px',
+          width: '100px',
+          minWidth: '100px',
+          height: '112px',
           borderRadius: '8px',
           overflow: 'hidden',
           backgroundColor: 'rgba(0, 0, 0, 0.08)',
+          position: 'relative',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         {data.coverUrl ? (
-          <Box
-            component="img"
-            src={data.coverUrl}
-            alt=""
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
+          <Image src={data.coverUrl} alt="" fill sizes="100px" style={{ objectFit: 'cover' }} />
         ) : (
           <Typography variant="caption" sx={{ opacity: 0.65 }}>
             {i18n._('Project Gutenberg')}
@@ -195,26 +195,37 @@ export const LibraryBookCard = ({
         )}
       </Box>
 
-      <Stack sx={{ gap: '4px', flex: '1 1 auto' }}>
+      <Stack sx={{ gap: '4px', flex: '1 1 auto', minWidth: 0 }}>
         <Typography variant="overline" sx={{ letterSpacing: '0.08em', opacity: 0.7 }}>
           {i18n._('Library')}
         </Typography>
-        <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontWeight: 700, lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis' }}
+        >
           {data.title}
         </Typography>
-        <Typography variant="caption" sx={{ fontStyle: 'italic', opacity: 0.8 }}>
+        <Typography variant="caption" sx={{ fontStyle: 'italic', opacity: 0.8 }} noWrap>
           {data.author}
         </Typography>
         <Typography variant="caption" sx={{ opacity: 0.7 }}>
           {i18n._('{{count}} downloads', { count: data.downloads.toLocaleString('en-US') })}
         </Typography>
-      </Stack>
-
-      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '8px', opacity: 0.8 }}>
-        <Download size={'16px'} />
-        <Typography variant="caption">
-          {isLoading ? i18n._('Downloading...') : i18n._('Download and import')}
-        </Typography>
+        <Box sx={{ pt: '4px' }}>
+          <Button
+            size="small"
+            variant="outlined"
+            disabled={isDisabled}
+            startIcon={<Download size={'14px'} />}
+            onClick={(event) => {
+              event.stopPropagation();
+              if (isDisabled) return;
+              onClick(data);
+            }}
+          >
+            {isLoading ? i18n._('Downloading...') : i18n._('Download')}
+          </Button>
+        </Box>
       </Stack>
     </Stack>
   );
