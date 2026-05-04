@@ -87,7 +87,8 @@ export const downloadReaderLibraryBookFile = async ({
 
   const totalBytesHeader = response.headers.get('content-length');
   const parsedTotalBytes = totalBytesHeader ? Number(totalBytesHeader) : Number.NaN;
-  const totalBytes = Number.isFinite(parsedTotalBytes) && parsedTotalBytes > 0 ? parsedTotalBytes : null;
+  const totalBytes =
+    Number.isFinite(parsedTotalBytes) && parsedTotalBytes > 0 ? parsedTotalBytes : null;
 
   const reader = response.body.getReader();
   const chunks: ArrayBuffer[] = [];

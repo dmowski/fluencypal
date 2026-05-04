@@ -15,7 +15,9 @@ export const useReaderLibrary = () => {
         setIsLoading(true);
         setError('');
 
-        const categoriesResponse = await fetchReaderLibraryCategories({ signal: controller.signal });
+        const categoriesResponse = await fetchReaderLibraryCategories({
+          signal: controller.signal,
+        });
         setCategories(categoriesResponse);
       } catch (error) {
         if (controller.signal.aborted) {
