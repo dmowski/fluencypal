@@ -102,7 +102,7 @@ export const BookInfoButton = ({
         ? i18n._('Chapters')
         : activeView === 'highlights'
           ? i18n._('Highlights')
-        : i18n._('Book info');
+          : i18n._('Book info');
 
   return (
     <>

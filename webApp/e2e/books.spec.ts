@@ -215,7 +215,9 @@ test.describe('markdown rendering', () => {
     await assertOnlyWheneverHighlightedYellow(page);
   });
 
-  test('book info highlights list shows context and jumps to selected highlight', async ({ page }) => {
+  test('book info highlights list shows context and jumps to selected highlight', async ({
+    page,
+  }) => {
     await openSeededGatsbyBook(page);
 
     await selectWheneverWordText(page);

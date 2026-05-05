@@ -50,7 +50,11 @@ const renderHighlightList = ({
               : undefined,
           }}
         >
-          <Typography component="span" data-testid="reader-highlight-before-text" sx={{ color: '#444' }}>
+          <Typography
+            component="span"
+            data-testid="reader-highlight-before-text"
+            sx={{ color: '#444' }}
+          >
             {item.beforeText}
           </Typography>
           <Typography
@@ -65,7 +69,11 @@ const renderHighlightList = ({
           >
             {item.highlightedText}
           </Typography>
-          <Typography component="span" data-testid="reader-highlight-after-text" sx={{ color: '#444' }}>
+          <Typography
+            component="span"
+            data-testid="reader-highlight-after-text"
+            sx={{ color: '#444' }}
+          >
             {item.afterText}
           </Typography>
         </Stack>
