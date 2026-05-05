@@ -244,7 +244,7 @@ export const Reader = ({ data }: { data: Book }) => {
 
         color: '#000',
         alignItems: 'center',
-        padding: '60px 0px 35px 0px',
+        padding: '20px 0px 30px 0px',
         flex: '1 0 0',
         gap: '40px',
         position: 'relative',
