@@ -11,6 +11,10 @@ Run the smallest relevant checks before finishing:
 - For end-to-end behavior changes: run e2e tests and do not skip e2e.
   - Reader behavior changes: `cd webApp && pnpm test:e2e`
 
+Before final handoff for webApp changes, run full e2e once:
+
+- `cd webApp && pnpm test:e2e`
+
 Prefer targeted tests first. Run full `pnpm test` only when cross-cutting behavior changed.
 
 ## Build And Runtime
