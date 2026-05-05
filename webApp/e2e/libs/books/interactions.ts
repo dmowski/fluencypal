@@ -36,8 +36,39 @@ export const hoverWordAndPressColorKey = async (
 };
 
 export const selectCriticizingWordText = async (page: Page) => {
+  await ensureReaderTextVisible(page, 'criticizing');
   const criticizingWord = await getCriticizingWordLocator(page);
-  await criticizingWord.click();
+
+  const didSelect = await criticizingWord.evaluate((node) => {
+    const host = node as HTMLElement;
+    const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
+    if (!charSpans.length) return false;
+
+    const renderedText = charSpans.map((entry) => entry.textContent ?? '').join('');
+    const startInWord = renderedText.toLowerCase().indexOf('criticizing');
+    if (startInWord < 0) return false;
+
+    const startText = charSpans[startInWord]?.firstChild;
+    const endText = charSpans[startInWord + 'criticizing'.length - 1]?.firstChild;
+    if (!(startText instanceof Text) || !(endText instanceof Text)) return false;
+
+    const range = document.createRange();
+    range.setStart(startText, 0);
+    range.setEnd(endText, endText.textContent?.length ?? 0);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
+    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+    return true;
+  });
+
+  if (!didSelect) {
+    throw new Error('Could not select "criticizing" text.');
+  }
 };
 
 export const selectFirstParagraphRangeByWordBoundaries = async (
