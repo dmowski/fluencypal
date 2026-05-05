@@ -3,7 +3,10 @@
 import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
-import { resolveReaderImageWidthRatio, sanitizeReaderImageTitle } from '../../utils/readerImageSizing';
+import {
+  resolveReaderImageWidthRatio,
+  sanitizeReaderImageTitle,
+} from '../../utils/readerImageSizing';
 
 export interface ReaderMarkdownWordProps {
   word: string;

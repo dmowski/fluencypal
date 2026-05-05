@@ -211,7 +211,10 @@ test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading
 
   await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
   await expect(
-    page.getByTestId('reader-content').getByText('THE MATCHING PRINCIPLE', { exact: false }).first(),
+    page
+      .getByTestId('reader-content')
+      .getByText('THE MATCHING PRINCIPLE', { exact: false })
+      .first(),
   ).toBeVisible();
 
   const sizeState = await page.evaluate(() => {
