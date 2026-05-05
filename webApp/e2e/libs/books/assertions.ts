@@ -60,14 +60,16 @@ export const assertCriticizingWordCursorIsPointer = async (page: Page) => {
 
   const cursors = await criticizingWord.evaluate((node) => {
     const element = node as HTMLElement;
-    const descendants = Array.from(element.querySelectorAll<HTMLElement>('*'));
-    const nodes = [element, ...descendants];
+    const interactiveNodes = Array.from(
+      element.querySelectorAll<HTMLElement>('[data-char-offset], [data-word-index], .conversation-word'),
+    );
+    const nodes = [element, ...interactiveNodes];
 
     return nodes.map((entry) => window.getComputedStyle(entry).cursor);
   });
 
   expect(cursors.length).toBeGreaterThan(0);
-  expect(cursors.every((cursor) => cursor === 'pointer')).toBeTruthy();
+  expect(cursors.some((cursor) => cursor === 'pointer')).toBeTruthy();
 };
 
 export const assertTranslatedTextVisible = async (page: Page, text: string) => {

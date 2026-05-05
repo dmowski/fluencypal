@@ -5,6 +5,8 @@ import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
 
 const HIGHLIGHT_CONTEXT_CHARS = 36;
 
+const stripMarkdownDecorators = (value: string) => value.replace(/[*_`~]/g, '');
+
 const findTargetPageForHighlight = ({
   pages,
   highlight,
@@ -71,9 +73,15 @@ export const useReaderHighlightItems = ({
 
       const beforePrefix = contextStart > 0 ? '... ' : '';
       const afterSuffix = contextEnd < paragraphLength ? ' ...' : '';
-      const beforeText = beforePrefix + paragraphText.slice(contextStart, safeStart);
-      const highlightedText = paragraphText.slice(safeStart, safeEndExclusive);
-      const afterText = paragraphText.slice(safeEndExclusive, contextEnd) + afterSuffix;
+      const beforeText = stripMarkdownDecorators(
+        beforePrefix + paragraphText.slice(contextStart, safeStart),
+      );
+      const highlightedText = stripMarkdownDecorators(
+        paragraphText.slice(safeStart, safeEndExclusive),
+      );
+      const afterText = stripMarkdownDecorators(
+        paragraphText.slice(safeEndExclusive, contextEnd) + afterSuffix,
+      );
 
       return {
         id: `${highlight.paragraphIndex}-${highlight.startIndex}-${highlight.endIndex}-${index}`,

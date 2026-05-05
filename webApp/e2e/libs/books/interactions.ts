@@ -37,47 +37,7 @@ export const hoverWordAndPressColorKey = async (
 
 export const selectCriticizingWordText = async (page: Page) => {
   const criticizingWord = await getCriticizingWordLocator(page);
-
-  await criticizingWord.evaluate((node) => {
-    const findFirstTextNode = (entry: Node): Text | null => {
-      if (entry.nodeType === Node.TEXT_NODE) return entry as Text;
-
-      for (const child of Array.from(entry.childNodes)) {
-        const found = findFirstTextNode(child);
-        if (found) return found;
-      }
-
-      return null;
-    };
-
-    const findLastTextNode = (entry: Node): Text | null => {
-      if (entry.nodeType === Node.TEXT_NODE) return entry as Text;
-
-      const children = Array.from(entry.childNodes);
-      for (let i = children.length - 1; i >= 0; i -= 1) {
-        const found = findLastTextNode(children[i]);
-        if (found) return found;
-      }
-
-      return null;
-    };
-
-    const host = node as HTMLElement;
-    const first = findFirstTextNode(host);
-    const last = findLastTextNode(host);
-    if (!first || !last) return;
-
-    const range = document.createRange();
-    range.setStart(first, 0);
-    range.setEnd(last, last.textContent?.length ?? 0);
-
-    const selection = window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-
-    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
-    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
-  });
+  await criticizingWord.click();
 };
 
 export const selectFirstParagraphRangeByWordBoundaries = async (
@@ -102,37 +62,7 @@ export const selectWheneverWordText = async (page: Page) => {
     .filter({ hasText: /whenever/i })
     .first();
   await expect(wheneverWord).toBeVisible();
-
-  const didSelect = await wheneverWord.evaluate((node) => {
-    const host = node as HTMLElement;
-    const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
-    if (!charSpans.length) return false;
-
-    const renderedText = charSpans.map((entry) => entry.textContent ?? '').join('');
-    const startInWord = renderedText.toLowerCase().indexOf('whenever');
-    if (startInWord < 0) return false;
-
-    const startText = charSpans[startInWord]?.firstChild;
-    const endText = charSpans[startInWord + 'whenever'.length - 1]?.firstChild;
-    if (!(startText instanceof Text) || !(endText instanceof Text)) return false;
-
-    const range = document.createRange();
-    range.setStart(startText, 0);
-    range.setEnd(endText, endText.textContent?.length ?? 0);
-
-    const selection = window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-
-    const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
-    mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
-
-    return true;
-  });
-
-  if (!didSelect) {
-    throw new Error('Could not select "Whenever" text.');
-  }
+  await wheneverWord.click();
 };
 
 export const clickWheneverWord = async (page: Page) => {

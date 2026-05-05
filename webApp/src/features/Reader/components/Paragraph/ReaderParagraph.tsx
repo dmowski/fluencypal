@@ -187,6 +187,14 @@ const ReaderParagraphBase = ({
                 wordCharOffsets,
               );
 
+              if (startFromDom != null && endFromDom != null) {
+                const startInclusive = Math.min(startFromDom, endFromDom);
+                const endExclusive = Math.max(startFromDom, endFromDom);
+                if (endExclusive > startInclusive) {
+                  return { startInclusive, endExclusive };
+                }
+              }
+
               return reconcileSelectionOffsets({
                 paragraphText,
                 selectedText,
@@ -216,7 +224,7 @@ const ReaderParagraphBase = ({
               anchorPosition: getPopoverPositionFromRect(rect),
             });
 
-            requestAnimationFrame(() => {
+            const restoreSelection = () => {
               applyNativeSelectionByOffsets({
                 paragraphElement: paragraphRef.current,
                 startInclusive: startForRestore,
@@ -243,6 +251,12 @@ const ReaderParagraphBase = ({
                   endExclusive: endForRestore,
                 });
               }
+            };
+
+            requestAnimationFrame(() => {
+              restoreSelection();
+              setTimeout(restoreSelection, 60);
+              setTimeout(restoreSelection, 180);
             });
           }
         }
@@ -355,122 +369,120 @@ const ReaderParagraphBase = ({
           maxImageHeight={maxImageHeight}
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
-          renderWord={
-            shouldRenderMarkdown
-              ? undefined
-              : ({ word, wordIndex }) => {
-                  const { sourceStart } = getSafeWordMeta({
-                    wordIndex,
-                    fallbackWord: word,
-                    words,
-                    wordCharOffsets,
+          renderWord={({ word, wordIndex }) => {
+            const { sourceWord, sourceStart } = getSafeWordMeta({
+              wordIndex,
+              fallbackWord: word,
+              words,
+              wordCharOffsets,
+            });
+            // In markdown mode, source tokens can contain decorators (e.g. **word**).
+            // Map rendered word chars to the visible substring inside the source token.
+            const renderedWordStartInSource = sourceWord.toLowerCase().indexOf(word.toLowerCase());
+            const wordStart =
+              renderedWordStartInSource >= 0
+                ? sourceStart + renderedWordStartInSource
+                : sourceStart;
+            const sourceWordStartCharOffset = paragraphStartCharOffset + sourceStart;
+            const isResizeAnchorWord =
+              isResizeAnchorHighlightVisible &&
+              resizeAnchorWordStartCharOffset != null &&
+              sourceWordStartCharOffset === resizeAnchorWordStartCharOffset;
+
+            return (
+              <Stack
+                component="span"
+                className="conversation-word"
+                data-word-index={wordIndex}
+                data-reader-word-anchor="true"
+                data-reader-anchor-key={`${paragraphIndex}-${sourceWordStartCharOffset}`}
+                data-reader-anchor-paragraph-index={paragraphIndex}
+                data-reader-anchor-word-start-char-offset={sourceWordStartCharOffset}
+                data-resize-anchor-highlighted={isResizeAnchorWord ? 'true' : undefined}
+                sx={{
+                  fontSize: `${fontSize}px`,
+                  lineHeight,
+                  display: 'inline',
+                  cursor: 'pointer',
+                  borderBottom: '1px dotted transparent',
+                  position: 'relative',
+                  backgroundColor: isResizeAnchorWord ? 'rgba(255, 153, 0, 0.35)' : 'transparent',
+                  borderRadius: isResizeAnchorWord ? '4px' : 0,
+                  transition: 'background-color 200ms ease-out',
+                  ':hover': {
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      width: 'calc(100% + 13px)',
+                      height: 'calc(100% + 0px)',
+                      top: '1px',
+                      left: '-6px',
+                      borderRadius: '8px',
+                      backgroundColor: '#d3d3d3ab',
+                      zIndex: -1,
+                      '@media (max-width: 500px)': {
+                        display: 'none',
+                      },
+                    },
+                  },
+                }}
+                onClick={(e) => {
+                  const element = e.currentTarget as HTMLElement;
+                  if (element.closest('a')) {
+                    return;
+                  }
+                  handleWordClick(e, word, wordIndex);
+                }}
+                onMouseEnter={(e) => {
+                  void onWordHover?.(word, e);
+                  const coreSelectionMeta = getCoreWordSelectionMeta(word);
+                  onWordHoverInfo?.({
+                    paragraphIndex,
+                    startIndex:
+                      wordStart + coreSelectionMeta.startOffset + paragraphStartCharOffset,
+                    endIndex:
+                      wordStart + coreSelectionMeta.endOffsetExclusive + paragraphStartCharOffset,
                   });
-                  const wordStart = sourceStart;
-                  const sourceWordStartCharOffset = paragraphStartCharOffset + wordStart;
-                  const isResizeAnchorWord =
-                    isResizeAnchorHighlightVisible &&
-                    resizeAnchorWordStartCharOffset != null &&
-                    sourceWordStartCharOffset === resizeAnchorWordStartCharOffset;
+                }}
+                onMouseMove={(e) => onWordMouseMove?.(e)}
+              >
+                {word.split('').map((char, charIdx) => {
+                  const absOffset = wordStart + charIdx;
+                  const sourceOffset = absOffset + paragraphStartCharOffset;
+                  const color = getCharColorAtOffset(sourceOffset, highlights);
+                  const prevColor =
+                    charIdx > 0 ? getCharColorAtOffset(sourceOffset - 1, highlights) : null;
+                  const nextColor =
+                    charIdx < word.length - 1
+                      ? getCharColorAtOffset(sourceOffset + 1, highlights)
+                      : null;
+                  const isStart = color !== null && color !== prevColor;
+                  const isEnd = color !== null && color !== nextColor;
 
                   return (
-                    <Stack
-                      component="span"
-                      className="conversation-word"
-                      data-word-index={wordIndex}
-                      data-reader-word-anchor="true"
-                      data-reader-anchor-key={`${paragraphIndex}-${sourceWordStartCharOffset}`}
-                      data-reader-anchor-paragraph-index={paragraphIndex}
-                      data-reader-anchor-word-start-char-offset={sourceWordStartCharOffset}
-                      data-resize-anchor-highlighted={isResizeAnchorWord ? 'true' : undefined}
-                      sx={{
-                        fontSize: `${fontSize}px`,
-                        lineHeight,
-                        display: 'inline',
+                    <span
+                      key={charIdx}
+                      data-char-offset={absOffset}
+                      style={{
+                        backgroundColor: color ?? 'transparent',
                         cursor: 'pointer',
-                        borderBottom: '1px dotted transparent',
-                        position: 'relative',
-                        backgroundColor: isResizeAnchorWord
-                          ? 'rgba(255, 153, 0, 0.35)'
-                          : 'transparent',
-                        borderRadius: isResizeAnchorWord ? '4px' : 0,
-                        transition: 'background-color 200ms ease-out',
-                        ':hover': {
-                          '&::after': {
-                            content: '""',
-                            position: 'absolute',
-                            width: 'calc(100% + 13px)',
-                            height: 'calc(100% + 0px)',
-                            top: '1px',
-                            left: '-6px',
-                            borderRadius: '8px',
-                            backgroundColor: '#d3d3d3ab',
-                            zIndex: -1,
-                            '@media (max-width: 500px)': {
-                              display: 'none',
-                            },
-                          },
-                        },
+                        borderRadius:
+                          isStart && isEnd
+                            ? '3px'
+                            : isStart
+                              ? '3px 0 0 3px'
+                              : isEnd
+                                ? '0 3px 3px 0'
+                                : '0',
                       }}
-                      onClick={(e) => {
-                        const element = e.currentTarget as HTMLElement;
-                        if (element.closest('a')) {
-                          return;
-                        }
-                        handleWordClick(e, word, wordIndex);
-                      }}
-                      onMouseEnter={(e) => {
-                        void onWordHover?.(word, e);
-                        const coreSelectionMeta = getCoreWordSelectionMeta(word);
-                        onWordHoverInfo?.({
-                          paragraphIndex,
-                          startIndex:
-                            wordStart + coreSelectionMeta.startOffset + paragraphStartCharOffset,
-                          endIndex:
-                            wordStart +
-                            coreSelectionMeta.endOffsetExclusive +
-                            paragraphStartCharOffset,
-                        });
-                      }}
-                      onMouseMove={(e) => onWordMouseMove?.(e)}
                     >
-                      {word.split('').map((char, charIdx) => {
-                        const absOffset = wordStart + charIdx;
-                        const sourceOffset = absOffset + paragraphStartCharOffset;
-                        const color = getCharColorAtOffset(sourceOffset, highlights);
-                        const prevColor =
-                          charIdx > 0 ? getCharColorAtOffset(sourceOffset - 1, highlights) : null;
-                        const nextColor =
-                          charIdx < word.length - 1
-                            ? getCharColorAtOffset(sourceOffset + 1, highlights)
-                            : null;
-                        const isStart = color !== null && color !== prevColor;
-                        const isEnd = color !== null && color !== nextColor;
-
-                        return (
-                          <span
-                            key={charIdx}
-                            data-char-offset={absOffset}
-                            style={{
-                              backgroundColor: color ?? 'transparent',
-                              cursor: 'pointer',
-                              borderRadius:
-                                isStart && isEnd
-                                  ? '3px'
-                                  : isStart
-                                    ? '3px 0 0 3px'
-                                    : isEnd
-                                      ? '0 3px 3px 0'
-                                      : '0',
-                            }}
-                          >
-                            {char}
-                          </span>
-                        );
-                      })}
-                    </Stack>
+                      {char}
+                    </span>
                   );
-                }
-          }
+                })}
+              </Stack>
+            );
+          }}
           renderSpace={
             shouldRenderMarkdown
               ? undefined

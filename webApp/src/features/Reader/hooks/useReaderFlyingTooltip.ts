@@ -26,6 +26,7 @@ export const useReaderFlyingTooltip = ({
   const hoverRequestIdRef = useRef(0);
   const pendingWordRef = useRef<string | null>(null);
   const resolvedWordRef = useRef<string | null>(null);
+  const lastHoverRequestRef = useRef<{ word: string; at: number } | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
@@ -69,9 +70,19 @@ export const useReaderFlyingTooltip = ({
         return;
       }
 
+      const now = Date.now();
+      const lastRequest = lastHoverRequestRef.current;
+      if (lastRequest && now - lastRequest.at < 350) {
+        return;
+      }
+      if (lastRequest && lastRequest.word === text && now - lastRequest.at < 10000) {
+        return;
+      }
+
       const requestId = hoverRequestIdRef.current + 1;
       hoverRequestIdRef.current = requestId;
       pendingWordRef.current = text;
+      lastHoverRequestRef.current = { word: text, at: now };
       resolvedWordRef.current = null;
       setHoverTranslation(null);
 
