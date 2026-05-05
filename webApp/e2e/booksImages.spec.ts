@@ -259,12 +259,15 @@ test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading
     return {
       found: true,
       widthRatio: imageRect.width / columnRect.width,
+      openerSrc: openerImage.getAttribute('src') || '',
     };
   });
 
   expect(sizeState.found).toBeTruthy();
   expect(sizeState.widthRatio).toBeGreaterThan(0);
   expect(sizeState.widthRatio).toBeLessThanOrEqual(0.3);
+  expect(sizeState.openerSrc).toMatch(/^data:image\//);
+  expect(sizeState.openerSrc).not.toContain('&quot;reader-width:10&quot;');
 });
 
 test('shows validation error when unsupported file is selected in Add Book picker', async ({

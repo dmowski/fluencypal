@@ -162,12 +162,48 @@ const appendImageWidthHintToTitle = (title: string, widthHint: number): string =
 };
 
 const normalizeMarkdownInlineLinks = (markdown: string): string => {
+  const normalizeImageTitleToken = (rawTitle: string | undefined): string => {
+    if (!rawTitle) return '';
+
+    const decoded = rawTitle.replace(/&quot;/g, '"').trim();
+    const titleMatch = decoded.match(/^(["'])([\s\S]*)\1$/);
+    const titleValue = titleMatch ? titleMatch[2].trim() : decoded;
+    if (!titleValue) return '';
+
+    return `"${titleValue.replace(/"/g, '&quot;')}"`;
+  };
+
+  const splitEmbeddedEncodedTitleFromHref = (
+    href: string,
+  ): { normalizedHref: string; encodedTitle: string } => {
+    const embeddedTitleMatch = href.match(/^(.*?)(?:&quot;)([^&]+)(?:&quot;)$/i);
+    if (!embeddedTitleMatch) {
+      return {
+        normalizedHref: href,
+        encodedTitle: '',
+      };
+    }
+
+    return {
+      normalizedHref: embeddedTitleMatch[1].trim(),
+      encodedTitle: `"${embeddedTitleMatch[2].trim()}"`,
+    };
+  };
+
   const normalizedImageLinks = markdown.replace(
-    /!\[([^\]]*)\]\s*\((\S+)(?:\s+("[^"]*"|'[^']*'))?\)/g,
+    /!\[([^\]]*)\]\s*\((\S+)(?:\s+("[^"]*"|'[^']*'|&quot;[^&]+&quot;))?\)/g,
     (_, alt: string, href: string, title: string | undefined) => {
       const normalizedAlt = alt.replace(/\s+/g, ' ').trim();
-      const normalizedHref = href.replace(/\s+/g, '');
-      const normalizedTitle = normalizeText(title);
+      const compactHref = href.replace(/\s+/g, '');
+      const split = splitEmbeddedEncodedTitleFromHref(compactHref);
+      const normalizedHref = split.normalizedHref;
+      const normalizedTitle =
+        normalizeImageTitleToken(title) || normalizeImageTitleToken(split.encodedTitle);
+
+      if (!normalizedHref) {
+        return `![${normalizedAlt}]()`;
+      }
+
       return normalizedTitle
         ? `![${normalizedAlt}](${normalizedHref} ${normalizedTitle})`
         : `![${normalizedAlt}](${normalizedHref})`;
@@ -175,11 +211,11 @@ const normalizeMarkdownInlineLinks = (markdown: string): string => {
   );
 
   return normalizedImageLinks.replace(
-    /\[([^\]]+)\]\s*\(([^)]+)\)/g,
-    (_, label: string, href: string) => {
+    /(^|[^!])\[([^\]]+)\]\s*\(([^)]+)\)/g,
+    (_, prefix: string, label: string, href: string) => {
       const normalizedLabel = label.replace(/\s+/g, ' ').trim();
       const normalizedHref = href.replace(/\s+/g, '');
-      return `[${normalizedLabel}](${normalizedHref})`;
+      return `${prefix}[${normalizedLabel}](${normalizedHref})`;
     },
   );
 };

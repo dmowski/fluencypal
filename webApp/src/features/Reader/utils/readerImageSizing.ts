@@ -2,7 +2,7 @@ const DEFAULT_IMAGE_MAX_WIDTH_RATIO = 0.9;
 const LANDSCAPE_IMAGE_MAX_WIDTH_RATIO = 0.6;
 const CHAPTER_MARKER_IMAGE_MAX_WIDTH_RATIO = 0.18;
 const LANDSCAPE_ASPECT_RATIO_THRESHOLD = 1.35;
-const WIDTH_HINT_TITLE_REGEX = /(?:^|\s|\|)reader-width:(\d{1,3})(?=$|\s|\|)/i;
+const WIDTH_HINT_TITLE_REGEX = /\breader-width:(\d{1,3})\b/i;
 
 const clamp = (value: number, min: number, max: number): number =>
   Math.min(Math.max(value, min), max);
