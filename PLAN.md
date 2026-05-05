@@ -5,13 +5,6 @@
 - Tune render of some words/cases. color
 
 On the book "Supercommunicators", I see rendering
-Participant 2: How do you think this movie will end?
-
-> Participant 6: I don’t think it’s a happy ending.
-
-But it should be just:
-Participant 2: How do you think this movie will end?
-Participant 6: I don’t think it’s a happy ending.
 
 Fix it.
 
