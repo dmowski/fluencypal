@@ -107,8 +107,10 @@ export const ReaderHeader = ({
         <Typography
           data-testid="reader-page-indicator"
           sx={{
-            fontSize: '14px',
+            fontSize: '19px',
+            textTransform: 'uppercase',
             fontFamily: 'serif',
+            opacity: 0.8,
           }}
         >
           {author}

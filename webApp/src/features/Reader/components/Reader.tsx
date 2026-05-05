@@ -215,7 +215,7 @@ export const Reader = ({ data }: { data: Book }) => {
         }}
       >
         <BackButton onClick={closeReader} />
-        <Stack sx={{ maxWidth: '900px', width: 'calc(100% - 40px)', minWidth: 0 }}>
+        <Stack sx={{ maxWidth: '1200px', width: 'calc(100% - 40px)', minWidth: 0 }}>
           <ReaderHeader
             title={data.title}
             subtitle={data.subtitle}
