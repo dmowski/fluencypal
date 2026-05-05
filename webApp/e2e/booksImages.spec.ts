@@ -188,7 +188,9 @@ test('renders punctuation-adjacent markdown emphasis as italic text', async ({ p
   await expect(readerContent.getByText('_Who,_', { exact: false })).toHaveCount(0);
 });
 
-test('hides system token and renders chapter markdown heading as semantic heading', async ({ page }) => {
+test('hides system token and renders chapter markdown heading as semantic heading', async ({
+  page,
+}) => {
   test.setTimeout(180_000);
 
   await openBooksPageWithCleanStorage(page);
@@ -201,10 +203,15 @@ test('hides system token and renders chapter markdown heading as semantic headin
   });
 
   const readerContent = page.getByTestId('reader-content');
-  const chapterHeading = readerContent.locator('h3').filter({ hasText: EXPECTED_CHAPTER_HEADING }).first();
+  const chapterHeading = readerContent
+    .locator('h3')
+    .filter({ hasText: EXPECTED_CHAPTER_HEADING })
+    .first();
 
   await expect(chapterHeading).toBeVisible();
-  await expect(readerContent.getByText(`### ${EXPECTED_CHAPTER_HEADING}`, { exact: false })).toHaveCount(0);
+  await expect(
+    readerContent.getByText(`### ${EXPECTED_CHAPTER_HEADING}`, { exact: false }),
+  ).toHaveCount(0);
   await expect(page.getByText(EXPECTED_HIDDEN_SYSTEM_TOKEN, { exact: false })).toHaveCount(0);
 });
 
