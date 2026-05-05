@@ -1,7 +1,8 @@
 import { expect, Page } from '@playwright/test';
 
 export const openSettingsPopover = async (page: Page) => {
-  await page.getByRole('button', { name: 'Reader settings' }).click();
+  await page.getByRole('button', { name: 'Book info' }).click();
+  await page.getByTestId('book-info-menu-settings').click();
   await expect(
     page.locator('.MuiPopover-paper').getByText('Settings', { exact: true }),
   ).toBeVisible();
@@ -25,7 +26,7 @@ export const closeSettingsPopover = async (page: Page) => {
   }
 
   await expect(popover).not.toBeVisible();
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 };
 
 export const selectRussianTranslateTarget = async (page: Page) => {

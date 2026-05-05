@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react';
-import { Popover, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 
 export interface ReaderChapterItem {
@@ -69,50 +69,32 @@ const renderChapterTree = ({
     );
   });
 
-export const ReaderChaptersPopover = ({
-  anchorEl,
+export const ReaderChaptersList = ({
   chapters,
   activeChapterId,
-  onClose,
   onSelect,
 }: {
-  anchorEl: HTMLElement | null;
   chapters: ReaderChapterItem[];
   activeChapterId: string | null;
-  onClose: () => void;
   onSelect: (targetPage: number) => void;
 }) => {
   const { i18n } = useLingui();
   return (
-    <Popover
-      open={Boolean(anchorEl)}
-      anchorEl={anchorEl}
-      onClose={onClose}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-      slotProps={{
-        paper: {
-          sx: {
-            backgroundColor: '#FFF3DD',
-            color: '#222',
-            marginTop: '8px',
-            minWidth: '280px',
-            maxWidth: '300px',
-            maxHeight: '70vh',
-            border: '1px solid rgba(34, 34, 34, 0.18)',
-          },
-        },
+    <Stack
+      data-testid="reader-chapters-popover"
+      sx={{
+        padding: '10px 8px',
+        overflowY: 'auto',
+        maxHeight: '55vh',
       }}
     >
-      <Stack data-testid="reader-chapters-popover" sx={{ padding: '10px 8px', overflowY: 'auto' }}>
-        {chapters.length > 0 ? (
-          renderChapterTree({ items: chapters, level: 0, activeChapterId, onSelect })
-        ) : (
-          <Typography sx={{ fontFamily: 'serif', fontSize: '14px', padding: '8px' }}>
-            {i18n._('No chapters available')}
-          </Typography>
-        )}
-      </Stack>
-    </Popover>
+      {chapters.length > 0 ? (
+        renderChapterTree({ items: chapters, level: 0, activeChapterId, onSelect })
+      ) : (
+        <Typography sx={{ fontFamily: 'serif', fontSize: '14px', padding: '8px' }}>
+          {i18n._('No chapters available')}
+        </Typography>
+      )}
+    </Stack>
   );
 };

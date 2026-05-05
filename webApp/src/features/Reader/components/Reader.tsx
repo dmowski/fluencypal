@@ -1,11 +1,11 @@
 import { Stack, Typography } from '@mui/material';
 import { Book, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
-import { MouseEvent, useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { ReaderSpeechSettingsButton } from './ReaderSpeechSettingsButton';
+import { BookInfoButton } from './ReaderSpeechSettingsButton';
 import { useReaderSettings } from '../hooks/useReaderSettings';
 import { useBooks } from '../hooks/useBooks';
 import { BackButton } from './BackButton';
@@ -17,7 +17,7 @@ import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
 import { ContentFitChecker } from './ContentFitChecker';
-import { ReaderChapterItem, ReaderChaptersPopover } from './ReaderChaptersPopover';
+import { ReaderChapterItem } from './ReaderChaptersPopover';
 import {
   findActiveChapterId,
   findTargetPageForInternalChapterHref,
@@ -31,7 +31,6 @@ export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
   const readerSettings = useReaderSettings();
   const { activePage: storedActivePage, setActivePage } = books;
-  const [chaptersAnchorEl, setChaptersAnchorEl] = useState<HTMLElement | null>(null);
   const pageStep = readerSettings.columns;
   const isTwoColumnLayout = readerSettings.columns === 2;
   const columnWidth =
@@ -142,17 +141,9 @@ export const Reader = ({ data }: { data: Book }) => {
     readerSettings.clearResizeAnchorWord();
     setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
   };
-  const openChapters = (event: MouseEvent<HTMLElement>) => {
-    if (chapterItems.length === 0) {
-      return;
-    }
-    setChaptersAnchorEl(event.currentTarget);
-  };
-  const closeChapters = () => setChaptersAnchorEl(null);
   const handleChapterSelect = (targetPage: number) => {
     readerSettings.clearResizeAnchorWord();
     setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
-    closeChapters();
   };
 
   const getInternalChapterTargetPage = useCallback(
@@ -210,7 +201,12 @@ export const Reader = ({ data }: { data: Book }) => {
         },
       }}
     >
-      <ReaderSpeechSettingsButton speech={speech} />
+      <BookInfoButton
+        speech={speech}
+        chapters={chapterItems}
+        activeChapterId={activeChapterId}
+        onSelectChapter={handleChapterSelect}
+      />
       <BackButton onClick={closeReader} />
 
       <Stack
@@ -228,8 +224,6 @@ export const Reader = ({ data }: { data: Book }) => {
           currentPage={currentPage}
           totalPages={totalPages}
           author={data.author}
-          hasChapters={chapterItems.length > 0}
-          onOpenChapters={openChapters}
         />
       </Stack>
 
@@ -323,14 +317,6 @@ export const Reader = ({ data }: { data: Book }) => {
         isTranslationLoading={activePopover?.isTranslationLoading ?? false}
         activeColor={activeColor}
         onColorSelect={handleActiveColorSelect}
-      />
-
-      <ReaderChaptersPopover
-        anchorEl={chaptersAnchorEl}
-        chapters={chapterItems}
-        activeChapterId={activeChapterId}
-        onClose={closeChapters}
-        onSelect={handleChapterSelect}
       />
 
       {flyingTooltipNode}

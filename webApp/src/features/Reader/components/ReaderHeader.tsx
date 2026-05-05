@@ -1,9 +1,8 @@
 'use client';
 
 import { Stack, Typography } from '@mui/material';
-import { MouseEvent, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { fitElementFontSizeToWidth } from '@/libs/typography/fitElementFontSizeToWidth';
-import { useLingui } from '@lingui/react';
 
 export const ReaderHeader = ({
   title,
@@ -11,18 +10,13 @@ export const ReaderHeader = ({
   currentPage,
   totalPages,
   author,
-  hasChapters,
-  onOpenChapters,
 }: {
   title: string;
   subtitle: string;
   currentPage: number;
   totalPages: number;
   author: string;
-  hasChapters: boolean;
-  onOpenChapters: (event: MouseEvent<HTMLElement>) => void;
 }) => {
-  const { i18n } = useLingui();
   const percentage = totalPages > 0 ? Math.round((currentPage / totalPages) * 100) : 0;
   const headerRef = useRef<HTMLDivElement | null>(null);
   const textBlockRef = useRef<HTMLDivElement | null>(null);
@@ -105,32 +99,10 @@ export const ReaderHeader = ({
       <Stack
         sx={{
           paddingRight: '5px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          display: 'flex',
+          justifyContent: 'flex-end',
         }}
       >
-        <Typography
-          component="button"
-          type="button"
-          data-testid="reader-chapters-trigger"
-          onClick={onOpenChapters}
-          sx={{
-            border: 'none',
-            background: 'transparent',
-            fontSize: '14px',
-            fontFamily: 'serif',
-            textTransform: 'uppercase',
-            textAlign: 'left',
-            width: '100%',
-            margin: '0 0 8px',
-            color: '#222',
-            cursor: hasChapters ? 'pointer' : 'default',
-            visibility: hasChapters ? 'visible' : 'hidden',
-          }}
-        >
-          {i18n._('Chapters')}
-        </Typography>
-
         <Typography
           data-testid="reader-page-indicator"
           sx={{

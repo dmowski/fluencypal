@@ -38,7 +38,7 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
   await expect(page.getByRole('heading', { name: GUTENBERG_ROMANCE_TITLE, level: 2 })).toBeVisible({
     timeout: 180_000,
   });
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await expect(page.getByTestId('reader-page-indicator')).toBeVisible();
 
   const storedTitles = await page.evaluate(async () => {

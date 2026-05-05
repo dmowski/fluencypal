@@ -212,7 +212,7 @@ test('first page content fits viewport at 1400x700 (cover image)', async ({ page
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 
   await assertReaderContentFitsCurrentPage(page);
 });
@@ -224,11 +224,9 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
-
-  const chaptersTrigger = page.getByTestId('reader-chapters-trigger');
-  await expect(chaptersTrigger).toBeVisible();
-  await chaptersTrigger.click();
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
+  await page.getByRole('button', { name: 'Book info' }).click();
+  await page.getByTestId('book-info-menu-chapters').click();
 
   const chaptersPopover = page.getByTestId('reader-chapters-popover');
   await expect(chaptersPopover).toBeVisible();
@@ -258,7 +256,7 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
 
   await chapterItemToClick.click();
 
-  await expect(chaptersPopover).not.toBeVisible();
+  await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
 
   const finalIndicatorValue = await pageIndicator.innerText();
   const finalPage = parseCurrentPageFromIndicator(finalIndicatorValue);
@@ -290,7 +288,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
   await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible({
     timeout: 60_000,
   });
-  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 
   // Navigate through pages to find a rendered image (data URI from parsed EPUB)
   let hasRenderedDataImage = await findVisibleRenderedImage(page);
@@ -302,8 +300,8 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
 
   expect(hasRenderedDataImage).toBeTruthy();
 
-  const chaptersTrigger = page.getByTestId('reader-chapters-trigger');
-  await chaptersTrigger.click();
+  await page.getByRole('button', { name: 'Book info' }).click();
+  await page.getByTestId('book-info-menu-chapters').click();
 
   const chaptersPopover = page.getByTestId('reader-chapters-popover');
   await expect(chaptersPopover).toBeVisible();
@@ -319,7 +317,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
     await chaptersPopover.getByTestId('reader-chapter-item').first().click();
   }
 
-  await expect(chaptersPopover).not.toBeVisible();
+  await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
 
   let chapterLinkFound = false;
   for (let step = 0; step < 6 && !chapterLinkFound; step += 1) {
