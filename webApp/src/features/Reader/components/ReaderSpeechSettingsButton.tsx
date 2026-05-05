@@ -1,5 +1,5 @@
 import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
-import { ChevronLeft, Info, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Info, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
@@ -10,6 +10,7 @@ import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPop
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 
 type BookInfoButtonProps = {
+  bookTitle: string;
   speech: ReturnType<typeof useBrowserSpeech>;
   chapters: ReaderChapterItem[];
   highlights: ReaderHighlightItem[];
@@ -23,6 +24,7 @@ type ModalView = 'menu' | 'settings' | 'chapters' | 'highlights';
 const SETTINGS_UPDATE_DELAY_MS = 350;
 
 export const BookInfoButton = ({
+  bookTitle,
   speech,
   chapters,
   highlights,
@@ -102,7 +104,7 @@ export const BookInfoButton = ({
         ? i18n._('Chapters')
         : activeView === 'highlights'
           ? i18n._('Highlights')
-          : i18n._('Book info');
+          : bookTitle;
 
   return (
     <>
@@ -146,47 +148,45 @@ export const BookInfoButton = ({
             data-testid="book-info-modal"
             sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
           >
-            {activeView !== 'menu' ? (
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              {activeView !== 'menu' ? (
+                <IconButton
+                  data-testid="book-info-back-button"
+                  onClick={() => setActiveView('menu')}
+                  aria-label={i18n._('Back')}
+                  sx={{
+                    width: '32px',
+                    height: '32px',
+                    padding: 0,
+                    flexShrink: 0,
+                  }}
+                >
+                  <ChevronLeft size={18} />
+                </IconButton>
+              ) : null}
+
+              <Typography variant="h5" sx={{ fontWeight: 600, flex: 1, minWidth: 0 }}>
+                {title}
+              </Typography>
+
               <IconButton
-                data-testid="book-info-back-button"
-                onClick={() => setActiveView('menu')}
-                aria-label={i18n._('Back')}
+                onClick={closeModal}
+                aria-label={i18n._('Close settings')}
                 sx={{
-                  position: 'absolute',
-                  top: '8px',
-                  left: '8px',
                   width: '32px',
                   height: '32px',
                   padding: 0,
+                  flexShrink: 0,
                 }}
               >
-                <ChevronLeft size={18} />
+                <X size={18} />
               </IconButton>
-            ) : null}
-
-            <IconButton
-              onClick={closeModal}
-              aria-label={i18n._('Close settings')}
-              sx={{
-                position: 'absolute',
-                top: '8px',
-                right: '8px',
-                width: '32px',
-                height: '32px',
-                padding: 0,
-              }}
-            >
-              <X size={18} />
-            </IconButton>
-
-            <Stack
-              sx={{
-                paddingTop: activeView !== 'menu' ? '14px' : 0,
-              }}
-            >
-              <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                {title}
-              </Typography>
             </Stack>
 
             {activeView === 'menu' ? (
@@ -196,7 +196,8 @@ export const BookInfoButton = ({
                   variant="outlined"
                   color="inherit"
                   onClick={() => setActiveView('settings')}
-                  sx={{ justifyContent: 'flex-start' }}
+                  endIcon={<ChevronRight size={14} />}
+                  sx={{ justifyContent: 'space-between' }}
                 >
                   {i18n._('Settings')}
                 </Button>
@@ -205,7 +206,8 @@ export const BookInfoButton = ({
                   variant="outlined"
                   color="inherit"
                   onClick={() => setActiveView('chapters')}
-                  sx={{ justifyContent: 'flex-start' }}
+                  endIcon={<ChevronRight size={14} />}
+                  sx={{ justifyContent: 'space-between' }}
                 >
                   {i18n._('Chapters')}
                 </Button>
@@ -214,7 +216,8 @@ export const BookInfoButton = ({
                   variant="outlined"
                   color="inherit"
                   onClick={() => setActiveView('highlights')}
-                  sx={{ justifyContent: 'flex-start' }}
+                  endIcon={<ChevronRight size={14} />}
+                  sx={{ justifyContent: 'space-between' }}
                 >
                   {i18n._('Highlights')}
                 </Button>

@@ -1,7 +1,7 @@
-import { Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { Book, HighlightedText } from '../model/types';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
-import { useCallback, useMemo, useRef } from 'react';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -25,6 +25,7 @@ import {
   mapChaptersToPages,
 } from '../utils/readerChapterNavigation';
 import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
+import { useLingui } from '@lingui/react';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -196,6 +197,46 @@ export const Reader = ({ data }: { data: Book }) => {
     clearHoveredWord();
   }, [clearHoverTranslation, clearHoveredWord]);
 
+  const [isReading, setIsReading] = useState(false);
+  const { i18n } = useLingui();
+
+  if (!isReading) {
+    return (
+      <Stack
+        sx={{
+          width: '100%',
+          height: '100dvh',
+          color: '#000',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          padding: '80px 40px 40px',
+          gap: '40px',
+        }}
+      >
+        <BackButton onClick={closeReader} />
+        <Stack sx={{ maxWidth: '900px', width: 'calc(100% - 40px)', minWidth: 0 }}>
+          <ReaderHeader
+            title={data.title}
+            subtitle={data.subtitle}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            author={data.author}
+          />
+        </Stack>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => setIsReading(true)}
+          color="info"
+          sx={{ minWidth: '140px', fontSize: '16px' }}
+        >
+          {i18n._('Read')}
+        </Button>
+      </Stack>
+    );
+  }
+
   return (
     <Stack
       sx={{
@@ -203,9 +244,9 @@ export const Reader = ({ data }: { data: Book }) => {
 
         color: '#000',
         alignItems: 'center',
-        padding: '80px 0px 35px 0px',
+        padding: '60px 0px 35px 0px',
         flex: '1 0 0',
-        gap: '90px',
+        gap: '40px',
         position: 'relative',
         '@media (max-width: 700px)': {
           paddingBottom: '50px',
@@ -213,6 +254,7 @@ export const Reader = ({ data }: { data: Book }) => {
       }}
     >
       <BookInfoButton
+        bookTitle={data.title}
         speech={speech}
         chapters={chapterItems}
         highlights={highlightItems}
@@ -221,24 +263,6 @@ export const Reader = ({ data }: { data: Book }) => {
         onSelectHighlight={handleHighlightSelect}
       />
       <BackButton onClick={closeReader} />
-
-      <Stack
-        sx={{
-          maxWidth: '900px',
-          width: 'calc(100% - 40px)',
-          minWidth: 0,
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <ReaderHeader
-          title={data.title}
-          subtitle={data.subtitle}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          author={data.author}
-        />
-      </Stack>
 
       <Stack
         ref={contentRef}
@@ -333,6 +357,24 @@ export const Reader = ({ data }: { data: Book }) => {
       />
 
       {flyingTooltipNode}
+
+      <Typography
+        data-testid="reader-page-indicator"
+        sx={{
+          position: 'fixed',
+          bottom: '10px',
+          left: 0,
+          width: '100%',
+          fontSize: '14px',
+          fontFamily: 'serif',
+          color: '#555',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+          pointerEvents: 'none',
+        }}
+      >
+        {`${currentPage} / ${totalPages}`}
+      </Typography>
 
       <PaginationPanel
         onPrevious={goToPreviousPage}

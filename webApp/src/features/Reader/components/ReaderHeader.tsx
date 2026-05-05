@@ -100,7 +100,8 @@ export const ReaderHeader = ({
         sx={{
           paddingRight: '5px',
           display: 'flex',
-          justifyContent: 'flex-end',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
         <Typography
@@ -108,8 +109,6 @@ export const ReaderHeader = ({
           sx={{
             fontSize: '14px',
             fontFamily: 'serif',
-
-            textAlign: 'right',
           }}
         >
           {author}

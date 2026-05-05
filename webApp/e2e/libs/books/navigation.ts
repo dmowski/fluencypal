@@ -17,6 +17,7 @@ export const openSeededGatsbyBook = async (page: Page) => {
   await gatsbyCardTitle.click();
 
   await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 };
 
@@ -26,6 +27,12 @@ export const ensureReaderTextVisible = async (
   options?: { maxSteps?: number },
 ) => {
   const maxSteps = options?.maxSteps ?? 12;
+
+  const readButton = page.getByRole('button', { name: 'Read' });
+  if (await readButton.isVisible()) {
+    await readButton.click();
+    await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
+  }
 
   for (let step = 0; step <= maxSteps; step += 1) {
     const isVisible = await page.evaluate((text) => {

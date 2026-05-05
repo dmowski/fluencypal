@@ -4,22 +4,24 @@
 
 - Tune render of some words/cases. color
 
-- Tune ui of settings
-  webApp/src/features/Reader/components/ReaderSpeechSettingsButton.tsx
-  On menu items, shows Right arrows on menu items or right side
-  when info content is open show top section like row:
-  [left icon | Title]
+On the book "Supercommunicators", I see rendering of "\_146236082", before "PROLOGUE", what this is?
+Most probably some system info. Research what it is and fix.
 
-- Make reading page stable.
-  webApp/src/features/Reader/components/Reader.tsx
-  Show firstly title, subtitle and button "Read" (center it),
-  when user press "Read" button, open last active page, without ReaderHeader (So we won't show title all the time when user reads the page)
+e2e tests:
+webApp/e2e/booksImages.spec.ts
 
-  Update e2e test to pass with a new behavior.
+Reader:
+webApp/src/features/Reader/components/Reader.tsx
 
-  When user read the content, on bottom show active page and total pages. (remove this info from ReaderHeader)
+---
 
-  on ReaderSpeechSettingsButton.tsx instead of "Book info" render book title
+I want to render each chapter on a new page, for now there's not space between chapters. I want to a new chapter start from an new page.
+
+Books e2e tests (Rune, update them while working on the tasks):
+webApp/e2e/\*.spec.ts
+
+Reader:
+webApp/src/features/Reader/components/Reader.tsx
 
 - Share books, highlights, but not book settings.
   auth, storage

@@ -196,6 +196,7 @@ test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading
 
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
 
+  await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();
   await page.getByTestId('book-info-menu-chapters').click();
 
@@ -296,6 +297,7 @@ test('first page content fits viewport at 1400x700 (cover image)', async ({ page
   await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
+  await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 
   await assertReaderContentFitsCurrentPage(page);
@@ -308,6 +310,7 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
+  await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await page.getByRole('button', { name: 'Book info' }).click();
   await page.getByTestId('book-info-menu-chapters').click();
@@ -372,6 +375,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
   await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible({
     timeout: 60_000,
   });
+  await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 
   // Navigate through pages to find a rendered image (data URI from parsed EPUB)
