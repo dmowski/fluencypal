@@ -13,6 +13,7 @@ export interface SplitIntoPagesData {
   bookParagraphs: BookParagraph[];
   settings: ReaderSettings;
   imageAspectRatioByHref?: Record<string, number>;
+  chapterStartParagraphIndices?: number[];
 }
 
 const splitIntoPagesCache = new Map<string, PagedParagraph[][]>();
@@ -21,6 +22,7 @@ export const splitIntoPages = ({
   bookParagraphs,
   settings,
   imageAspectRatioByHref,
+  chapterStartParagraphIndices,
 }: SplitIntoPagesData): PagedParagraph[][] => {
   const hash = getHash(
     JSON.stringify({
@@ -38,6 +40,7 @@ export const splitIntoPages = ({
   let currentPage: PagedParagraph[] = [];
   let currentPageText: string[] = [];
   const fitCache = new Map<string, boolean>();
+  const chapterStartParagraphSet = new Set(chapterStartParagraphIndices ?? []);
 
   const resetCurrentPage = () => {
     currentPage = [];
@@ -97,6 +100,10 @@ export const splitIntoPages = ({
   const markdownImagePattern = /!\[.*?\]\(.*?\)/;
 
   bookParagraphs.forEach((paragraph, sourceParagraphIndex) => {
+    if (sourceParagraphIndex > 0 && chapterStartParagraphSet.has(sourceParagraphIndex)) {
+      pushCurrentPage();
+    }
+
     let remainingWords = paragraph;
     let remainingStartCharOffset = 0;
 
@@ -192,7 +199,10 @@ export const splitTextIntoParagraphs = (text: string): string[][] => {
     // Repair links where wrapped EPUB markdown inserts a newline inside link label.
     .replace(/(\[[^\]\n]*)\n([^\]\n]*\]\([^\)\n]*\))/g, '$1 $2')
     // Repair links where ] and ( are split across lines.
-    .replace(/\]\s*\n\s*\(/g, '](');
+    .replace(/\]\s*\n\s*\(/g, '](')
+    // Strip hidden/system identifiers that can leak from EPUB conversion.
+    .replace(/^\s*_\d{6,}_\s*$/gm, '')
+    .replace(/^\s*ep_prh_[\w.-]+\s*$/gim, '');
 
   const paragraphs = normalizedText.split('\n').filter((p) => p.trim() !== '');
 

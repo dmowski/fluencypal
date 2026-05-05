@@ -94,4 +94,40 @@ describe('splitIntoPages', () => {
       ],
     ]);
   });
+
+  it('starts a new page when paragraph is marked as chapter start', () => {
+    mockedIsFitInPage.mockImplementation(({ paragraphs }) => countWords(paragraphs) <= 6);
+
+    const result = splitIntoPages({
+      bookParagraphs: [
+        ['one', 'two'],
+        ['three', 'four'],
+        ['chapter', 'heading'],
+      ],
+      settings: { ...settings, contentHeight: 503 },
+      chapterStartParagraphIndices: [2],
+    });
+
+    expect(result).toEqual([
+      [
+        {
+          words: ['one', 'two'],
+          sourceParagraphIndex: 0,
+          sourceStartCharOffset: 0,
+        },
+        {
+          words: ['three', 'four'],
+          sourceParagraphIndex: 1,
+          sourceStartCharOffset: 0,
+        },
+      ],
+      [
+        {
+          words: ['chapter', 'heading'],
+          sourceParagraphIndex: 2,
+          sourceStartCharOffset: 0,
+        },
+      ],
+    ]);
+  });
 });

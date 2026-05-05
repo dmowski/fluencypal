@@ -16,6 +16,8 @@ const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
 const EXPECTED_ITALIC_SENTENCE_FRAGMENT = 'memorizes rugby world champions from the 1960s?';
 const EXPECTED_ITALIC_WORD = 'Who,';
+const EXPECTED_HIDDEN_SYSTEM_TOKEN = '_146236082';
+const EXPECTED_CHAPTER_HEADING = 'WHEN BRAINS CONNECT';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);
@@ -184,6 +186,53 @@ test('renders punctuation-adjacent markdown emphasis as italic text', async ({ p
   await expect(italicWho).toBeVisible();
   await expect(italicSentenceFragment).toBeVisible();
   await expect(readerContent.getByText('_Who,_', { exact: false })).toHaveCount(0);
+});
+
+test('hides system token and renders chapter markdown heading as semantic heading', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await ensureReaderTextVisible(page, EXPECTED_CHAPTER_HEADING, {
+    maxSteps: 60,
+  });
+
+  const readerContent = page.getByTestId('reader-content');
+  const chapterHeading = readerContent.locator('h3').filter({ hasText: EXPECTED_CHAPTER_HEADING }).first();
+
+  await expect(chapterHeading).toBeVisible();
+  await expect(readerContent.getByText(`### ${EXPECTED_CHAPTER_HEADING}`, { exact: false })).toHaveCount(0);
+  await expect(page.getByText(EXPECTED_HIDDEN_SYSTEM_TOKEN, { exact: false })).toHaveCount(0);
+});
+
+test('chapter list maps each chapter to a unique target page', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await page.getByRole('button', { name: 'Read' }).click();
+  await page.getByRole('button', { name: 'Book info' }).click();
+  await page.getByTestId('book-info-menu-chapters').click();
+
+  const chapterPopover = page.getByTestId('reader-chapters-popover');
+  await expect(chapterPopover).toBeVisible();
+
+  const chapterTargetPages = await chapterPopover
+    .getByTestId('reader-chapter-item')
+    .evaluateAll((elements) => {
+      return elements
+        .map((element) => Number(element.getAttribute('data-target-page') || '0'))
+        .filter((value) => Number.isFinite(value) && value > 0);
+    });
+
+  expect(chapterTargetPages.length).toBeGreaterThan(1);
+  expect(new Set(chapterTargetPages).size).toBe(chapterTargetPages.length);
 });
 
 test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading', async ({

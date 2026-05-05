@@ -237,6 +237,27 @@ const prepareHtmlForTurndown = (html: string): string => {
     return html;
   }
 
+  // Remove hidden/system metadata nodes that should not be read as book content.
+  const allElements = Array.from(body.getElementsByTagName('*'));
+  allElements.forEach((element) => {
+    const ariaHidden = normalizeText(element.getAttribute('aria-hidden')).toLowerCase();
+    const hasHiddenAttribute = element.hasAttribute('hidden');
+    const style = normalizeText(element.getAttribute('style')).toLowerCase();
+    const isHiddenByStyle =
+      style.includes('display:none') ||
+      style.includes('display: none') ||
+      style.includes('visibility:hidden') ||
+      style.includes('visibility: hidden') ||
+      style.includes('opacity:0') ||
+      style.includes('opacity: 0');
+    const isReleaseIdentifierLine =
+      normalizeText(element.getAttribute('id')).toLowerCase() === 'release_identifier_line';
+
+    if (ariaHidden === 'true' || hasHiddenAttribute || isHiddenByStyle || isReleaseIdentifierLine) {
+      element.remove();
+    }
+  });
+
   // Gutenberg and some EPUBs wrap cover images in SVG <image xlink:href="...">.
   // Convert those wrappers to plain <img> so Turndown emits valid markdown images.
   const svgElements = getElementsByTag(body, 'svg');

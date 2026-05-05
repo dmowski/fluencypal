@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { Book, HighlightedText } from '../model/types';
+import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
 import { PaginationPanel } from './PaginationButtons';
@@ -40,6 +40,25 @@ export const Reader = ({ data }: { data: Book }) => {
       ? Math.max(0, (readerSettings.contentWidth - readerSettings.columnGap) / 2)
       : readerSettings.contentWidth;
 
+  const chapterStartParagraphIndices = useMemo(() => {
+    const paragraphIndices = new Set<number>();
+
+    const collectChapterStarts = (chapters: BookChapterNavigationItem[]) => {
+      chapters.forEach((chapter) => {
+        if (chapter.targetParagraphIndex != null && chapter.targetParagraphIndex >= 0) {
+          paragraphIndices.add(chapter.targetParagraphIndex);
+        }
+        if (chapter.children.length > 0) {
+          collectChapterStarts(chapter.children);
+        }
+      });
+    };
+
+    collectChapterStarts(data.chapters ?? []);
+
+    return Array.from(paragraphIndices).sort((a, b) => a - b);
+  }, [data.chapters]);
+
   const pages = useMemo(() => {
     return splitIntoPages({
       bookParagraphs: data.paragraphs,
@@ -48,8 +67,15 @@ export const Reader = ({ data }: { data: Book }) => {
         contentWidth: columnWidth,
       },
       imageAspectRatioByHref: data.imageAspectRatioByHref,
+      chapterStartParagraphIndices,
     });
-  }, [columnWidth, data.imageAspectRatioByHref, data.paragraphs, readerSettings]);
+  }, [
+    chapterStartParagraphIndices,
+    columnWidth,
+    data.imageAspectRatioByHref,
+    data.paragraphs,
+    readerSettings,
+  ]);
 
   const highlightsByParagraph = useMemo(() => {
     const grouped = new Map<number, HighlightedText[]>();
@@ -215,7 +241,7 @@ export const Reader = ({ data }: { data: Book }) => {
         }}
       >
         <BackButton onClick={closeReader} />
-        <Stack sx={{ maxWidth: '1200px', width: 'calc(100% - 40px)', minWidth: 0 }}>
+        <Stack sx={{ maxWidth: '1200px', width: 'calc(100% - 0px)', minWidth: 0 }}>
           <ReaderHeader
             title={data.title}
             subtitle={data.subtitle}

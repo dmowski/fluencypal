@@ -4,24 +4,22 @@
 
 - Tune render of some words/cases. color
 
-On the book "Supercommunicators", I see rendering of "\_146236082", before "PROLOGUE", what this is?
-Most probably some system info. Research what it is and fix.
+On the book "Supercommunicators", I see rendering
+Participant 2: How do you think this movie will end?
 
-e2e tests:
-webApp/e2e/booksImages.spec.ts
+> Participant 6: I don’t think it’s a happy ending.
+
+But it should be just:
+Participant 2: How do you think this movie will end?
+Participant 6: I don’t think it’s a happy ending.
+
+Fix it.
 
 Reader:
 webApp/src/features/Reader/components/Reader.tsx
 
----
-
-I want to render each chapter on a new page, for now there's not space between chapters. I want to a new chapter start from an new page.
-
-Books e2e tests (Rune, update them while working on the tasks):
+Books e2e tests (Run, update them while working on the tasks):
 webApp/e2e/\*.spec.ts
-
-Reader:
-webApp/src/features/Reader/components/Reader.tsx
 
 - Share books, highlights, but not book settings.
   auth, storage

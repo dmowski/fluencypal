@@ -84,6 +84,12 @@ const ReaderParagraphBase = ({
   const hasMarkdownEmphasis =
     /(^|[^\p{L}\p{N}_*])(\*[^*\n]+\*|_[^_\n]+_)(?=$|[^\p{L}\p{N}_*])/u.test(paragraphText);
   const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
+  const hasBlockMarkdownFormatting =
+    /^#{1,6}\s+\S/u.test(paragraphText) ||
+    /^>\s+\S/u.test(paragraphText) ||
+    /^[-*+]\s+\S/u.test(paragraphText) ||
+    /^\d+\.\s+\S/u.test(paragraphText);
+  const shouldRenderMarkdown = hasInlineMarkdownFormatting || hasBlockMarkdownFormatting;
 
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
@@ -343,14 +349,14 @@ const ReaderParagraphBase = ({
         }}
       >
         <ReaderMarkdown
-          words={hasInlineMarkdownFormatting ? undefined : words}
+          words={shouldRenderMarkdown ? undefined : words}
           imageDataUrlByHref={imagesByHref}
           imageAspectRatioByHref={imageAspectRatioByHref}
           maxImageHeight={maxImageHeight}
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={
-            hasInlineMarkdownFormatting
+            shouldRenderMarkdown
               ? undefined
               : ({ word, wordIndex }) => {
                   const { sourceStart } = getSafeWordMeta({
@@ -466,7 +472,7 @@ const ReaderParagraphBase = ({
                 }
           }
           renderSpace={
-            hasInlineMarkdownFormatting
+            shouldRenderMarkdown
               ? undefined
               : (wordIndex) => {
                   const { sourceWord, sourceStart } = getSafeWordMeta({
