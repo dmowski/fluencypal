@@ -227,6 +227,7 @@ const createMarkdownComponents = (
     return (
       <Link
         href={href}
+        data-reader-target-page={targetPage}
         onClick={(event) => {
           event.preventDefault();
           onInternalChapterLinkSelect(targetPage);

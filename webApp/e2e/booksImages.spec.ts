@@ -275,4 +275,69 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
   }
 
   expect(hasRenderedDataImage).toBeTruthy();
+
+  const chaptersTrigger = page.getByTestId('reader-chapters-trigger');
+  await chaptersTrigger.click();
+
+  const chaptersPopover = page.getByTestId('reader-chapters-popover');
+  await expect(chaptersPopover).toBeVisible();
+
+  const contentsChapterItem = chaptersPopover
+    .getByTestId('reader-chapter-item')
+    .filter({ hasText: /contents/i })
+    .first();
+
+  if ((await contentsChapterItem.count()) > 0) {
+    await contentsChapterItem.click();
+  } else {
+    await chaptersPopover.getByTestId('reader-chapter-item').first().click();
+  }
+
+  await expect(chaptersPopover).not.toBeVisible();
+
+  let chapterLinkFound = false;
+  for (let step = 0; step < 6 && !chapterLinkFound; step += 1) {
+    chapterLinkFound =
+      (await page.locator('[data-testid="reader-content"] a[data-reader-target-page]').count()) > 0;
+    if (!chapterLinkFound) {
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(150);
+    }
+  }
+
+  expect(chapterLinkFound).toBeTruthy();
+
+  await expect(page.getByText(/\[[^\]]+\]\([^)]*\)/)).toHaveCount(0);
+
+  const pageIndicator = page.getByTestId('reader-page-indicator');
+  const pageBeforeLinkClick = parseCurrentPageFromIndicator(await pageIndicator.innerText());
+
+  const chapterLinksWithTarget = page.locator(
+    '[data-testid="reader-content"] a[data-reader-target-page]',
+  );
+  const chapterLinkIndex = await chapterLinksWithTarget.evaluateAll((elements, currentPage) => {
+    return elements.findIndex((element) => {
+      const targetPage = Number(element.getAttribute('data-reader-target-page') || '0');
+      if (!Number.isFinite(targetPage) || targetPage <= 0) {
+        return false;
+      }
+
+      const normalizedTargetPage =
+        targetPage > 1 && targetPage % 2 === 0 ? targetPage - 1 : targetPage;
+
+      return normalizedTargetPage !== currentPage;
+    });
+  }, pageBeforeLinkClick);
+
+  expect(chapterLinkIndex).toBeGreaterThanOrEqual(0);
+
+  const chapterLink = chapterLinksWithTarget.nth(chapterLinkIndex);
+  const chapterLinkTarget = Number(
+    (await chapterLink.getAttribute('data-reader-target-page')) || '0',
+  );
+  expect(chapterLinkTarget).toBeGreaterThan(0);
+
+  await chapterLink.evaluate((element) => {
+    (element as HTMLElement).click();
+  });
 });

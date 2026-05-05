@@ -2,18 +2,48 @@
 
 ## Reader
 
+---
+
+webApp/src/features/Reader/hooks/useBooks.tsx
+By default we add test book if by books are empty. Let's do it only for localhost. After changes, check e2e. they should pass.
+
+---
+
+Update
+webApp/src/features/Reader/components/ReaderSpeechSettingsButton.tsx
+
+For now, it will take more responsibilities.
+
+It will be single point for settings, chapter, and later bookmarks, etc.
+
+Call this component BookInfoButton. place it as before: top,left corner
+
+Create a standalone component for settings.
+
+On BookInfoButtonModal show list of menus: "Settings" and "Chapters".
+
+When user click on Settings, show settings with left arrow button (<ChevronLeft />)
+When user click on Chapters, show chapters with left arrow button (<ChevronLeft />)
+left arrow button should be placed on top left corner of InfoModal.
+
+Chapters component: webApp/src/features/Reader/components/ReaderChaptersPopover.tsx
+you can refactor it as you want.
+
+And remove Chapters from here
+webApp/src/features/Reader/components/ReaderHeader.tsx and here
+webApp/src/features/Reader/components/Reader.tsx
+
+Ensure e2e pass, update them if needed (most probably we need to update them)
+
+---
+
+On book Info Modal, add menu item "Highlights", and when user click on it, show list of highlights. Each of the show it as text around highlight, highlighted text with that color. and when user click on them, the page should be redirected to that place.
+
+Write e2e to check that feature, run and ensure other e2e pass too
+
+---
+
 - Tune render of some words/cases. color
-
-There's an issue with parsing images from epub.
-Create e2e:
-
-1. Open the book "The Secret of Chimneys" from the Library. (press on download) (Extend timeout to 1min)
-2. Wait until content is visible
-3. Check the image is present (any). Which will not.
-   instead currently only text "658821104108880693_cover jpg" is visible. We need to properly parse the book and extract image.
-
-- Stats with highlights, and ability to navigate to them. How to organize UI
-
 - Share books, highlights, but not book settings.
   auth, storage
 

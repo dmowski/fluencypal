@@ -188,17 +188,23 @@ export const splitIntoPages = ({
 };
 
 export const splitTextIntoParagraphs = (text: string): string[][] => {
-  const paragraphs = text.split('\n').filter((p) => p.trim() !== '');
+  const normalizedText = text
+    // Repair links where wrapped EPUB markdown inserts a newline inside link label.
+    .replace(/(\[[^\]\n]*)\n([^\]\n]*\]\([^\)\n]*\))/g, '$1 $2')
+    // Repair links where ] and ( are split across lines.
+    .replace(/\]\s*\n\s*\(/g, '](');
 
-  const markdownImagePattern = /!\[[^\]]*\]\([^)]*\)/g;
+  const paragraphs = normalizedText.split('\n').filter((p) => p.trim() !== '');
+
+  const markdownSpecialTokenPattern = /!\[[^\]]*\]\([^)]*\)|\[[^\]]+\]\([^)]*\)/g;
 
   return paragraphs.map((paragraph) => {
     const tokens: string[] = [];
     let cursor = 0;
     let match: RegExpExecArray | null;
 
-    markdownImagePattern.lastIndex = 0;
-    while ((match = markdownImagePattern.exec(paragraph)) !== null) {
+    markdownSpecialTokenPattern.lastIndex = 0;
+    while ((match = markdownSpecialTokenPattern.exec(paragraph)) !== null) {
       const imageStart = match.index;
       const imageEnd = imageStart + match[0].length;
 

@@ -89,23 +89,40 @@ export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp |
       page.evaluate(
         ({ patternSource, patternFlags }) => {
           const regex = new RegExp(patternSource, patternFlags);
+          const normalize = (value: string) => value.replace(/[*_~`]+/g, '').trim();
           const candidates = Array.from(
             document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
           );
-          const host = candidates.find((entry) => regex.test(entry.textContent ?? ''));
+          const host = candidates.find((entry) => regex.test(normalize(entry.textContent ?? '')));
           if (!host) return false;
 
           const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
           if (!charSpans.length) return false;
 
-          const rendered = charSpans.map((entry) => entry.textContent ?? '').join('');
-          const match = rendered.match(regex);
-          if (!match || match.index === undefined) return false;
+          const renderedRaw = charSpans.map((entry) => entry.textContent ?? '').join('');
+          const rawMatch = renderedRaw.match(regex);
 
-          const targetChars = charSpans.slice(match.index, match.index + match[0].length);
-          if (!targetChars.length) return false;
+          if (rawMatch && rawMatch.index !== undefined) {
+            const targetChars = charSpans.slice(
+              rawMatch.index,
+              rawMatch.index + rawMatch[0].length,
+            );
+            if (!targetChars.length) return false;
 
-          return targetChars.every((entry) => {
+            return targetChars.every((entry) => {
+              const color = window.getComputedStyle(entry).backgroundColor;
+              return color.includes('255, 224, 102');
+            });
+          }
+
+          // When markdown decorators are interleaved in the rendered token,
+          // fallback to any highlighted character within the host token.
+          const renderedNormalized = normalize(renderedRaw);
+          if (!regex.test(renderedNormalized)) {
+            return false;
+          }
+
+          return charSpans.some((entry) => {
             const color = window.getComputedStyle(entry).backgroundColor;
             return color.includes('255, 224, 102');
           });

@@ -2,6 +2,7 @@
 
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
+import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { ReaderHeader } from './ReaderHeader';
 
 const TITLE_TEXT = 'The Day the Second Sun Fell';
@@ -180,15 +181,17 @@ describe('ReaderHeader', () => {
     currentTextBlockWidth = 3;
 
     render(
-      <ReaderHeader
-        title={TITLE_TEXT}
-        subtitle={SUBTITLE_TEXT}
-        currentPage={1}
-        totalPages={3}
-        author="Story"
-        hasChapters={false}
-        onOpenChapters={() => {}}
-      />,
+      <I18nWrapper>
+        <ReaderHeader
+          title={TITLE_TEXT}
+          subtitle={SUBTITLE_TEXT}
+          currentPage={1}
+          totalPages={3}
+          author="Story"
+          hasChapters={false}
+          onOpenChapters={() => {}}
+        />
+      </I18nWrapper>,
     );
 
     const title = screen.getByText(TITLE_TEXT);
@@ -206,15 +209,17 @@ describe('ReaderHeader', () => {
     currentTextBlockWidth = 900;
 
     render(
-      <ReaderHeader
-        title={TITLE_TEXT}
-        subtitle={SUBTITLE_TEXT}
-        currentPage={1}
-        totalPages={3}
-        author="Story"
-        hasChapters={false}
-        onOpenChapters={() => {}}
-      />,
+      <I18nWrapper>
+        <ReaderHeader
+          title={TITLE_TEXT}
+          subtitle={SUBTITLE_TEXT}
+          currentPage={1}
+          totalPages={3}
+          author="Story"
+          hasChapters={false}
+          onOpenChapters={() => {}}
+        />
+      </I18nWrapper>,
     );
 
     await waitFor(() => {

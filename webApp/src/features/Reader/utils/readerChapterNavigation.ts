@@ -10,6 +10,29 @@ export interface ReaderChapterNavigationItem {
 
 const EXTERNAL_LINK_SCHEME = /^[a-z][a-z0-9+.-]*:/i;
 
+const getPathVariants = (path: string): string[] => {
+  const variants = new Set<string>([path]);
+
+  if (path.endsWith('.htm.html')) {
+    variants.add(path.slice(0, -'.htm.html'.length) + '.htm.xhtml');
+  }
+
+  if (path.endsWith('.html')) {
+    variants.add(path.slice(0, -'.html'.length) + '.xhtml');
+  }
+
+  if (path.endsWith('.xhtml')) {
+    variants.add(path.slice(0, -'.xhtml'.length) + '.html');
+  }
+
+  return Array.from(variants);
+};
+
+const getPathBasename = (path: string): string => {
+  const segments = path.split('/').filter(Boolean);
+  return segments[segments.length - 1] || '';
+};
+
 const normalizeInternalHref = (
   href: string,
 ): {
@@ -119,6 +142,8 @@ export const findTargetPageForInternalChapterHref = ({
     return null;
   }
 
+  const normalizedHrefPathVariants = new Set(getPathVariants(normalizedHref.path));
+
   let pathFallback: number | null = null;
   let fragmentFallback: number | null = null;
 
@@ -131,14 +156,37 @@ export const findTargetPageForInternalChapterHref = ({
       const normalizedChapterHref = item.href ? normalizeInternalHref(item.href) : null;
 
       if (targetPage !== null && normalizedChapterHref) {
+        const chapterPathVariants = new Set(getPathVariants(normalizedChapterHref.path));
+        const hasPathVariantMatch =
+          normalizedHrefPathVariants.size > 0 &&
+          Array.from(chapterPathVariants).some((pathVariant) =>
+            normalizedHrefPathVariants.has(pathVariant),
+          );
+        const hasPathBasenameMatch =
+          normalizedHref.path.length > 0 &&
+          normalizedChapterHref.path.length > 0 &&
+          Array.from(chapterPathVariants).some((pathVariant) => {
+            const chapterBasename = getPathBasename(pathVariant);
+            const hrefBasename = getPathBasename(normalizedHref.path);
+            return chapterBasename.length > 0 && chapterBasename === hrefBasename;
+          });
+
+        const hasFragmentMatch =
+          normalizedChapterHref.fragment === normalizedHref.fragment ||
+          (!normalizedChapterHref.fragment && !normalizedHref.fragment);
+
         if (normalizedChapterHref.full === normalizedHref.full) {
+          return targetPage;
+        }
+
+        if ((hasPathVariantMatch || hasPathBasenameMatch) && hasFragmentMatch) {
           return targetPage;
         }
 
         if (
           pathFallback == null &&
           normalizedHref.path &&
-          normalizedChapterHref.path === normalizedHref.path
+          (hasPathVariantMatch || hasPathBasenameMatch)
         ) {
           pathFallback = targetPage;
         }

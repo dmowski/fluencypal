@@ -115,6 +115,26 @@ const getHrefAttribute = (element: Element): string => {
 const normalizeText = (value: string | null | undefined): string =>
   (value || '').replace(/\s+/g, ' ').trim();
 
+const normalizeMarkdownInlineLinks = (markdown: string): string => {
+  const normalizedImageLinks = markdown.replace(
+    /!\[([^\]]*)\]\s*\(([^)]+)\)/g,
+    (_, alt: string, href: string) => {
+      const normalizedAlt = alt.replace(/\s+/g, ' ').trim();
+      const normalizedHref = href.replace(/\s+/g, '');
+      return `![${normalizedAlt}](${normalizedHref})`;
+    },
+  );
+
+  return normalizedImageLinks.replace(
+    /\[([^\]]+)\]\s*\(([^)]+)\)/g,
+    (_, label: string, href: string) => {
+      const normalizedLabel = label.replace(/\s+/g, ' ').trim();
+      const normalizedHref = href.replace(/\s+/g, '');
+      return `[${normalizedLabel}](${normalizedHref})`;
+    },
+  );
+};
+
 const prepareHtmlForTurndown = (html: string): string => {
   const doc = parseXml(html);
   const body = getFirstElementByTag(doc, 'body');
@@ -517,11 +537,13 @@ const parseEpubOnClient = async (
     const html = await zip.file(item.resolvedPath)?.async('string');
     if (!html) continue;
 
-    const markdown = turndown
-      .turndown(prepareHtmlForTurndown(html))
-      .trim()
-      .split(`<?xml version='1.0' encoding='utf-8'?>`)
-      .join('\n');
+    const markdown = normalizeMarkdownInlineLinks(
+      turndown
+        .turndown(prepareHtmlForTurndown(html))
+        .trim()
+        .split(`<?xml version='1.0' encoding='utf-8'?>`)
+        .join('\n'),
+    );
 
     if (markdown) {
       const normalizedSectionPath = normalizeImageHref(item.resolvedPath);
