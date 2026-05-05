@@ -139,95 +139,96 @@ export const BookInfoButton = ({
             data-testid="book-info-modal"
             sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
           >
-          {activeView !== 'menu' ? (
+            {activeView !== 'menu' ? (
+              <IconButton
+                data-testid="book-info-back-button"
+                onClick={() => setActiveView('menu')}
+                aria-label={i18n._('Back')}
+                sx={{
+                  position: 'absolute',
+                  top: '8px',
+                  left: '8px',
+                  width: '32px',
+                  height: '32px',
+                  padding: 0,
+                }}
+              >
+                <ChevronLeft size={18} />
+              </IconButton>
+            ) : null}
+
             <IconButton
-              data-testid="book-info-back-button"
-              onClick={() => setActiveView('menu')}
-              aria-label={i18n._('Back')}
+              onClick={closeModal}
+              aria-label={i18n._('Close settings')}
               sx={{
                 position: 'absolute',
                 top: '8px',
-                left: '8px',
+                right: '8px',
                 width: '32px',
                 height: '32px',
                 padding: 0,
               }}
             >
-              <ChevronLeft size={18} />
+              <X size={18} />
             </IconButton>
-          ) : null}
 
-          <IconButton
-            onClick={closeModal}
-            aria-label={i18n._('Close settings')}
-            sx={{
-              position: 'absolute',
-              top: '8px',
-              right: '8px',
-              width: '32px',
-              height: '32px',
-              padding: 0,
-            }}
-          >
-            <X size={18} />
-          </IconButton>
+            <Stack>
+              <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                {title}
+              </Typography>
 
-          <Stack>
-            <Typography variant="h5" sx={{ fontWeight: 600 }}>
-              {title}
-            </Typography>
-
-            <Typography variant="body2">
-              {i18n._('Speech support')}: {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
-            </Typography>
-          </Stack>
-
-          {activeView === 'menu' ? (
-            <Stack sx={{ gap: '10px' }}>
-              <Button
-                data-testid="book-info-menu-settings"
-                variant="outlined"
-                color="inherit"
-                onClick={() => setActiveView('settings')}
-                sx={{ justifyContent: 'flex-start' }}
-              >
-                {i18n._('Settings')}
-              </Button>
-              <Button
-                data-testid="book-info-menu-chapters"
-                variant="outlined"
-                color="inherit"
-                onClick={() => setActiveView('chapters')}
-                sx={{ justifyContent: 'flex-start' }}
-              >
-                {i18n._('Chapters')}
-              </Button>
+              <Typography variant="body2">
+                {i18n._('Speech support')}:{' '}
+                {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
+              </Typography>
             </Stack>
-          ) : null}
 
-          {activeView === 'settings' ? (
-            <ReaderSettingsPanel
-              speech={speech}
-              isTouchDevice={isTouchDevice}
-              localFontSize={localFontSize}
-              localParagraphGap={localParagraphGap}
-              localLineHeight={localLineHeight}
-              setLocalFontSize={setLocalFontSize}
-              setLocalParagraphGap={setLocalParagraphGap}
-              setLocalLineHeight={setLocalLineHeight}
-            />
-          ) : null}
+            {activeView === 'menu' ? (
+              <Stack sx={{ gap: '10px' }}>
+                <Button
+                  data-testid="book-info-menu-settings"
+                  variant="outlined"
+                  color="inherit"
+                  onClick={() => setActiveView('settings')}
+                  sx={{ justifyContent: 'flex-start' }}
+                >
+                  {i18n._('Settings')}
+                </Button>
+                <Button
+                  data-testid="book-info-menu-chapters"
+                  variant="outlined"
+                  color="inherit"
+                  onClick={() => setActiveView('chapters')}
+                  sx={{ justifyContent: 'flex-start' }}
+                >
+                  {i18n._('Chapters')}
+                </Button>
+              </Stack>
+            ) : null}
 
-          {activeView === 'chapters' ? (
-            <ReaderChaptersList
-              chapters={chapters}
-              activeChapterId={activeChapterId}
-              onSelect={(targetPage) => {
-                onSelectChapter(targetPage);
-                closeModal();
-              }}
-            />
-          ) : null}
+            {activeView === 'settings' ? (
+              <ReaderSettingsPanel
+                speech={speech}
+                isTouchDevice={isTouchDevice}
+                localFontSize={localFontSize}
+                localParagraphGap={localParagraphGap}
+                localLineHeight={localLineHeight}
+                setLocalFontSize={setLocalFontSize}
+                setLocalParagraphGap={setLocalParagraphGap}
+                setLocalLineHeight={setLocalLineHeight}
+              />
+            ) : null}
+
+            {activeView === 'chapters' ? (
+              <ReaderChaptersList
+                chapters={chapters}
+                activeChapterId={activeChapterId}
+                onSelect={(targetPage) => {
+                  onSelectChapter(targetPage);
+                  closeModal();
+                }}
+              />
+            ) : null}
           </Stack>
         </Popover>
       </ThemeProvider>

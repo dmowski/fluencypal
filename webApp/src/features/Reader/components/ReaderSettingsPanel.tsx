@@ -98,7 +98,11 @@ export const ReaderSettingsPanel = ({
 
   return (
     <Stack sx={{ gap: '20px' }}>
-      <FormControl size="small" fullWidth disabled={!speech.isSupported || availableLanguages.length === 0}>
+      <FormControl
+        size="small"
+        fullWidth
+        disabled={!speech.isSupported || availableLanguages.length === 0}
+      >
         <InputLabel id="speech-language-select-label">{i18n._('Language')}</InputLabel>
         <Select
           labelId="speech-language-select-label"
@@ -114,7 +118,11 @@ export const ReaderSettingsPanel = ({
         </Select>
       </FormControl>
 
-      <FormControl size="small" fullWidth disabled={!speech.isSupported || voicesForLanguage.length === 0}>
+      <FormControl
+        size="small"
+        fullWidth
+        disabled={!speech.isSupported || voicesForLanguage.length === 0}
+      >
         <InputLabel id="speech-voice-select-label">{i18n._('Voice')}</InputLabel>
         <Select
           labelId="speech-voice-select-label"
@@ -232,7 +240,12 @@ export const ReaderSettingsPanel = ({
         />
       </Stack>
 
-      <Button variant="outlined" color="inherit" onClick={readerSettings.resetToDefault} sx={{ alignSelf: 'flex-start' }}>
+      <Button
+        variant="outlined"
+        color="inherit"
+        onClick={readerSettings.resetToDefault}
+        sx={{ alignSelf: 'flex-start' }}
+      >
         {i18n._('Reset to default')}
       </Button>
     </Stack>
