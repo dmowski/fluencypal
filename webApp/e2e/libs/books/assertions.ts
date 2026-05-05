@@ -80,7 +80,10 @@ export const assertCriticizingWordCursorIsPointer = async (page: Page) => {
 
     if (charSpans.length > 0) {
       return charSpans.every((element) => {
-        return element.style.cursor === 'pointer' || window.getComputedStyle(element).cursor === 'pointer';
+        return (
+          element.style.cursor === 'pointer' ||
+          window.getComputedStyle(element).cursor === 'pointer'
+        );
       });
     }
 
