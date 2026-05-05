@@ -56,20 +56,41 @@ export const assertSelectionTextPersists = async (
 };
 
 export const assertCriticizingWordCursorIsPointer = async (page: Page) => {
-  const criticizingWord = await getCriticizingWordLocator(page);
+  const hasPointerCursor = await page.evaluate(() => {
+    const isVisible = (element: HTMLElement) => {
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    };
 
-  const cursors = await criticizingWord.evaluate((node) => {
-    const element = node as HTMLElement;
-    const interactiveNodes = Array.from(
-      element.querySelectorAll<HTMLElement>('[data-char-offset], [data-word-index], .conversation-word'),
+    const candidates = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
     );
-    const nodes = [element, ...interactiveNodes];
+    const criticizingWord = candidates.find((element) => {
+      const text = (element.textContent ?? '').trim();
+      return /\bcriticizing\b/i.test(text) && isVisible(element);
+    });
 
-    return nodes.map((entry) => window.getComputedStyle(entry).cursor);
+    if (!criticizingWord) {
+      return false;
+    }
+
+    const charSpans = Array.from(
+      criticizingWord.querySelectorAll<HTMLElement>('[data-char-offset]'),
+    );
+
+    if (charSpans.length > 0) {
+      return charSpans.every((element) => {
+        return element.style.cursor === 'pointer' || window.getComputedStyle(element).cursor === 'pointer';
+      });
+    }
+
+    return (
+      criticizingWord.style.cursor === 'pointer' ||
+      window.getComputedStyle(criticizingWord).cursor === 'pointer'
+    );
   });
 
-  expect(cursors.length).toBeGreaterThan(0);
-  expect(cursors.some((cursor) => cursor === 'pointer')).toBeTruthy();
+  expect(hasPointerCursor).toBeTruthy();
 };
 
 export const assertTranslatedTextVisible = async (page: Page, text: string) => {
