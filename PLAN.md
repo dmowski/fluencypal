@@ -2,13 +2,8 @@
 
 ## Reader
 
-On book Info Modal, add menu item "Highlights", and when user click on it, show list of highlights. Each of the show it as text around highlight, highlighted text with that color. and when user click on them, the page should be redirected to that place.
-
-Write e2e to check that feature, run and ensure other e2e pass too
-
----
-
 - Tune render of some words/cases. color
+
 - Share books, highlights, but not book settings.
   auth, storage
 
