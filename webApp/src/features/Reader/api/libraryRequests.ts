@@ -1,4 +1,5 @@
 import { ReaderLibraryBook, ReaderLibraryCategory } from '../model/library';
+import { normalizeEpubFileName } from '../utils/epubFileName';
 
 interface ReaderLibraryCategoriesResponse {
   categories?: ReaderLibraryCategory[];
@@ -68,10 +69,11 @@ export const downloadReaderLibraryBookFile = async ({
   }
 
   const fallbackFileName = sanitizeFileName(title, ebookId);
-  const fileName = getFileNameFromDisposition(
+  const dispositionFileName = getFileNameFromDisposition(
     response.headers.get('content-disposition'),
     fallbackFileName,
   );
+  const fileName = normalizeEpubFileName(dispositionFileName, fallbackFileName);
 
   if (!response.body) {
     const blobWithoutStream = await response.blob();

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
+import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
 import { CirclePlus, Download, Trash2 } from 'lucide-react';
 
@@ -62,7 +63,7 @@ export const BookCard = ({
             const url = URL.createObjectURL(data.originalFile!);
             const anchor = document.createElement('a');
             anchor.href = url;
-            anchor.download = data.originalFile!.name;
+            anchor.download = getDownloadFileName(data.originalFile!.name);
             anchor.click();
             URL.revokeObjectURL(url);
           }}

@@ -2,9 +2,14 @@
 
 ## Reader
 
-- Stats with highlights
+- Tune render of some words/cases. color
 
-- Share books, highlights, but not book settings
+Find more better quality cover images for library preview images
+
+- Stats with highlights, and ability to navigate to them. How to organize UI
+
+- Share books, highlights, but not book settings.
+  auth, storage
 
 ## What about more strict Role-plays
 
