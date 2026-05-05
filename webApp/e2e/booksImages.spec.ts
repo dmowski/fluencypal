@@ -243,3 +243,36 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
     expect(finalPage).toBeGreaterThan(0);
   }
 });
+
+const CHIMNEYS_EBOOK_ID = '65238';
+const CHIMNEYS_TITLE = 'The Secret of Chimneys';
+
+test('downloads library EPUB with images and renders image in reader', async ({ page }) => {
+  test.setTimeout(300_000);
+
+  await openBooksPageWithCleanStorage(page);
+
+  const romanceCategory = page.getByTestId('reader-library-category-romance');
+  await expect(romanceCategory).toBeVisible({ timeout: 60_000 });
+
+  const bookCard = page.getByTestId(`reader-library-book-${CHIMNEYS_EBOOK_ID}`);
+  await expect(bookCard).toBeVisible({ timeout: 60_000 });
+  await bookCard.click();
+
+  await expect(page.getByTestId('library-download-fixed-panel')).toBeVisible();
+
+  await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible({
+    timeout: 60_000,
+  });
+  await expect(page.getByRole('button', { name: 'Reader settings' })).toBeVisible();
+
+  // Navigate through pages to find a rendered image (data URI from parsed EPUB)
+  let hasRenderedDataImage = await findVisibleRenderedImage(page);
+  for (let step = 0; step < 20 && !hasRenderedDataImage; step += 1) {
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(150);
+    hasRenderedDataImage = await findVisibleRenderedImage(page);
+  }
+
+  expect(hasRenderedDataImage).toBeTruthy();
+});
