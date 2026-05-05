@@ -2,10 +2,7 @@
 
 ## Reader
 
-Revalidate AGENTS.md, update what's needed to be updated and actualized
-/webApp/src/features/Reader/AGENTS.md
-
-- Tune render of some words/cases. color
+- Test on mobile
 
 =================================
 
@@ -21,6 +18,12 @@ Focus on testing. Cover
 
 - epub to markdown
 - markdown to paragraph
+
+=================================
+
+- Tune render of some words/cases. color
+
+=================================
 
 - Share books, highlights, but not book settings.
   auth, storage
