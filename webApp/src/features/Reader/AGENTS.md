@@ -4,51 +4,64 @@ This file applies to `webApp/src/features/Reader/**`.
 
 ## Structure
 
-- `ReaderPage.tsx`: feature entry used by app routes; wires providers and selects list vs reader view.
-- `components/`: UI and interactive view components.
-- `components/Paragraph/libs/`: paragraph-specific, granular utility modules (offset mapping, selection reconciliation, DOM range restore, translation eligibility).
-- `hooks/`: feature state and browser integrations.
-- `utils/`: shared feature-level helpers (pagination and IndexedDB).
-- `model/`: feature types and local sample data.
+- `ReaderPage.tsx`: route-facing entry for Reader feature; switches list vs reader flow.
+- `components/`: Reader UI and interaction surface.
+- `components/Paragraph/`: markdown paragraph rendering and selection/highlight interactions.
+- `components/Paragraph/libs/`: paragraph-specific pure utilities (offset mapping, DOM restore, pointer and popover math).
+- `hooks/`: stateful feature orchestration (books, imports, settings, highlights, shortcuts).
+- `utils/`: shared Reader helpers (EPUB conversion pipeline, pagination, image sizing, progress math, IndexedDB).
+- `api/`: Reader-focused request clients.
+- `server/`: Reader server-side data integrations.
+- `model/`: Reader types and local sample/test data.
 
 ## Key Files
 
-- `components/Reader.tsx`: main reading UI, paging, and paragraph rendering.
+- `components/Reader.tsx`: main reading UI and pagination render loop.
+- `components/Paragraph/ReaderMarkdown.tsx`: markdown-to-word rendering, internal chapter links, image handling.
 - `components/Paragraph/ReaderParagraph.tsx`: text selection, hover translation, and highlight interactions.
-- `components/Paragraph/libs/selectionOffsetReconciliation.ts`: reconciles DOM offsets with selected text and duplicate substring anchors.
-- `components/Paragraph/libs/absoluteCharOffsetFromDomPoint.ts`: resolves range endpoints to absolute paragraph offsets.
-- `components/Paragraph/libs/selectionDomRestore.ts`: reapplies native browser selection after rerenders.
-- `components/ReaderSpeechSettingsButton.tsx`: speech + reader visual settings panel.
-- `hooks/useBooks.tsx`: books source of truth, persistence sync, and highlight mutations.
-- `hooks/useReaderSettings.ts`: persisted reader/speech preferences.
-- `hooks/useBrowserSpeech.ts`: browser speech synthesis integration.
-- `utils/booksIndexedDb.ts`: IndexedDB storage layer for books.
+- `components/Paragraph/libs/selectionOffsetReconciliation.ts`: reconciles browser selection offsets against source text.
+- `components/Paragraph/libs/absoluteCharOffsetFromDomPoint.ts`: maps DOM points to paragraph absolute offsets.
+- `components/Paragraph/libs/selectionDomRestore.ts`: restores native selection after rerenders.
+- `hooks/useDroppedEpubImport.ts`: drop/import orchestration and progress state.
+- `hooks/useBooks.tsx`: Reader books source of truth, persistence sync, and highlight mutation API.
+- `hooks/useReaderSettings.ts`: persisted Reader/speech settings.
+- `utils/epubImport.ts`: EPUB to markdown/plain text conversion and chapter/image extraction.
+- `utils/splitParagraphsIntoPages.tsx`: markdown/text to Reader paragraph/page segmentation.
+- `utils/booksIndexedDb.ts`: IndexedDB persistence layer.
 
-## Import Rules
+## Import And Boundary Rules
 
 - Keep feature-local imports grouped by role:
-  - UI imports from `components/*`
+  - UI from `components/*`
   - paragraph-local pure logic from `components/Paragraph/libs/*`
-  - state from `hooks/*`
-  - shared feature utilities from `utils/*`
-  - shared types from `model/types`
-- Keep route-facing import stable through `ReaderPage.tsx`.
+  - state orchestration from `hooks/*`
+  - shared Reader utilities from `utils/*`
+  - shared Reader types from `model/types`
+- Keep route-facing integration stable through `ReaderPage.tsx`.
+- Do not import from app-route code into Reader internals; keep Reader self-contained under `src/features/Reader`.
 
 ## Paragraph Lib Naming
 
-- Avoid generic `*helpers` names for paragraph logic.
-- Use explicit, single-purpose module names (examples: `selectionOffsetReconciliation`, `pointerPositionFromMouseEvent`, `readerTextTranslationEligibility`).
-- Keep each module focused on one concept and make exported names match behavior precisely.
+- Avoid generic `*helpers` module names for paragraph logic.
+- Prefer explicit, single-purpose names such as `selectionOffsetReconciliation`, `pointerPositionFromMouseEvent`, and `readerTextTranslationEligibility`.
+- Keep each module focused on one concept and align export names with behavior.
+
+## Behavioral Guardrails
+
+- Preserve selection stability and offset correctness when changing paragraph tokenization or DOM wrappers.
+- Treat EPUB conversion and paragraph splitting as one pipeline; validate both when touching either side.
+- Reader visual/speech settings are local preferences (`useReaderSettings` + localStorage). If you add share/export behavior, include book content and highlights, but exclude local Reader settings payload.
 
 ## Validation
 
-After changing files in this feature:
+After changing files in this feature, run the smallest relevant checks first:
 
-1. Run `cd webApp && pnpm lint`.
-2. Run targeted unit tests when changing parsing or text/selection logic.
-3. For Reader and book flow behavior changes, always run the targeted e2e specs at `webApp/e2e/books.spec.ts` and `webApp/e2e/booksImages.spec.ts` before finishing.
-4. Avoid running full e2e unless navigation or route behavior changed.
+1. `cd webApp && pnpm lint`
+2. `cd webApp && pnpm test:unit` when changing Reader parsing, pagination, highlight logic, or selection math.
+3. For Reader/book behavior changes, run targeted e2e early while iterating:
+   - `cd webApp && pnpm test:e2e e2e/books.spec.ts`
+   - `cd webApp && pnpm test:e2e e2e/booksImages.spec.ts`
+   - `cd webApp && pnpm test:e2e e2e/booksLibrary.spec.ts` when library/list/import behavior changes
+4. Before finishing any Reader change, always run the full e2e suite:
 
-## E2E Coverage
-
-- After your changes, run e2e test "pnpm test"
+- `cd webApp && pnpm test:e2e`
