@@ -322,7 +322,7 @@ msgid "Add"
 msgstr "Thêm"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:133
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Thêm một cuốn sách"
@@ -961,6 +961,7 @@ msgstr "Điểm trung bình về ngữ pháp, từ vựng, lưu loát và sự t
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Quay lại"
@@ -1103,6 +1104,11 @@ msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr ""
 "Các trường sách được tự động điền từ siêu dữ liệu EPUB trong chế độ sản "
 "xuất."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#. js-lingui-explicit-id
+msgid "Book info"
+msgstr "Thông tin sách"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
@@ -1415,7 +1421,8 @@ msgstr "Thách thức"
 msgid "Changes vs previous 30 days"
 msgstr "Thay đổi so với 30 ngày trước"
 
-#: src/features/Reader/components/ReaderHeader.tsx:131
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Chương"
@@ -1615,7 +1622,7 @@ msgstr ""
 msgid "Close"
 msgstr "Đóng"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Đóng cài đặt"
@@ -2884,7 +2891,7 @@ msgstr "Hoàn thành:"
 msgid "Don’t let mistakes stop you."
 msgstr "Đừng để những sai lầm ngăn cản bạn."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Tải về"
@@ -2894,7 +2901,7 @@ msgstr "Tải về"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Đang tải về sách từ Dự án Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Đang tải xuống..."
@@ -3894,7 +3901,7 @@ msgstr "FluencyPal – Đối tác Nói tiếng Anh AI của bạn"
 msgid "Focus on shipping reliable services"
 msgstr "Tập trung vào việc cung cấp dịch vụ đáng tin cậy"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:294
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Kích thước phông chữ"
@@ -4797,6 +4804,12 @@ msgstr "Làm nổi bật kinh nghiệm frontend của bạn"
 #. js-lingui-explicit-id
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Làm nổi bật kỹ năng lãnh đạo và giải quyết vấn đề của bạn"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#. js-lingui-explicit-id
+msgid "Highlights"
+msgstr "Điểm nổi bật"
 
 #: src/features/Goal/Quiz/WelcomeChatMessage.tsx:50
 #. js-lingui-explicit-id
@@ -5730,7 +5743,7 @@ msgstr "Chỉ Cần Nói"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Chế độ Just Talk với AI tốt hơn đứng sau."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:267
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Căn Justify Văn Bản"
@@ -5762,8 +5775,8 @@ msgstr ""
 "Đạt Được Công Việc Lập Trình Đầu Tiên Khó Khăn Hơn So Với Điều Đáng Lẽ Ra "
 "Phải Có"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:206
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:209
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6028,7 +6041,7 @@ msgstr "Tính năng giọng nói hạn chế"
 msgid "Limits reached"
 msgstr "Đã đạt đến giới hạn"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:332
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Chiều cao dòng"
@@ -6611,7 +6624,7 @@ msgstr "Không thanh toán tự động"
 msgid "No automatic payment after the trial"
 msgstr "Không có thanh toán tự động sau khi dùng thử"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "Không có chương nào có sẵn"
@@ -6668,6 +6681,13 @@ msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr ""
 "Không tìm thấy lỗi ngữ pháp nào. Hãy tiếp tục luyện tập để thấy sự tiến bộ "
 "ở đây!"
+
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#. js-lingui-explicit-id
+msgid "No highlights available"
+msgstr ""
+"plaintext\n"
+"Không có điểm nổi bật nào khả dụng\n"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -6887,7 +6907,7 @@ msgstr "Không tìm thấy"
 msgid "Not running inside Telegram App"
 msgstr "Không chạy bên trong ứng dụng Telegram"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Không được hỗ trợ"
@@ -6930,7 +6950,7 @@ msgstr ""
 "\n"
 "                                  StartUp\" với trụ sở đăng ký tại Warsaw."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:251
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Tắt"
@@ -7130,7 +7150,7 @@ msgstr "Ngôn ngữ Trang"
 msgid "Paid plan:"
 msgstr "Gói trả phí:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:313
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Khoảng cách đoạn văn"
@@ -8091,7 +8111,7 @@ msgstr "Theo dõi tiến trình"
 msgid "Progress tracking to see your improvement"
 msgstr "Theo dõi tiến trình để thấy sự cải thiện của bạn"
 
-#: src/features/Reader/components/Cards.tsx:202
+#: src/features/Reader/components/Cards.tsx:203
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Dự án Gutenberg"
@@ -8232,6 +8252,7 @@ msgstr ""
 "kế hệ thống"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
+#: src/features/Reader/components/Reader.tsx:267
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Đọc"
@@ -8255,11 +8276,6 @@ msgstr "Đọc văn bản"
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Trình đọc"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-msgid "Reader settings"
-msgstr "Cài đặt trình đọc"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
@@ -8623,7 +8639,7 @@ msgstr "Yêu cầu không thành công. Vui lòng thử lại."
 msgid "Request Refund"
 msgstr "Yêu cầu hoàn tiền"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:355
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Đặt lại về mặc định"
@@ -9072,7 +9088,8 @@ msgstr "Đặt Ngôn Ngữ Của Tôi"
 msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Cài đặt"
@@ -9391,7 +9408,7 @@ msgstr "Luyện nói"
 msgid "Speaking with a Psychologist"
 msgstr "Nói chuyện với một Nhà tâm lý học"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:191
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Hỗ trợ phát âm"
@@ -9853,7 +9870,7 @@ msgstr "Tóm tắt"
 msgid "Summary:"
 msgstr "Tóm tắt:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Hỗ trợ"
@@ -10823,7 +10840,7 @@ msgstr ""
 "didn't provide the text for translation. Kindly provide the text you wish "
 "to have translated into Vietnamese, and I'll be happy to assist you."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Dịch khi di chuột"
@@ -10833,8 +10850,8 @@ msgstr "Dịch khi di chuột"
 msgid "Translate the word"
 msgstr "Dịch từ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:243
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:247
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11232,8 +11249,8 @@ msgstr "Từ vựng"
 msgid "Vocabulary Practice"
 msgstr "Thực hành Từ vựng"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:229
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Giọng nói"
@@ -11243,7 +11260,7 @@ msgstr "Giọng nói"
 msgid "Voice conversations"
 msgstr "Cuộc hội thoại bằng giọng nói"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "Chuyển Văn Bản Đã Chọn Thành Giọng Nói"
@@ -12443,7 +12460,7 @@ msgstr ""
 "Bạn đang ở trong một luồng công việc tốt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:219
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"
@@ -12488,6 +12505,11 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#. js-lingui-explicit-id
+#~ msgid "Reader settings"
+#~ msgstr "Cài đặt trình đọc"
 
 #: src/features/Reader/components/AddBookModal.tsx:238
 #: src/features/Reader/components/Cards.tsx:90

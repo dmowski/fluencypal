@@ -318,7 +318,7 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:133
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Adicionar um livro"
@@ -962,6 +962,7 @@ msgstr "Pontuações médias em gramática, vocabulário, fluência e confiança
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Voltar"
@@ -1104,6 +1105,11 @@ msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr ""
 "Os campos do livro são preenchidos automaticamente a partir dos metadados "
 "EPUB no modo de produção."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#. js-lingui-explicit-id
+msgid "Book info"
+msgstr "Informações do livro"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
@@ -1414,7 +1420,8 @@ msgstr "Desafiador"
 msgid "Changes vs previous 30 days"
 msgstr "Alterações em comparação aos últimos 30 dias"
 
-#: src/features/Reader/components/ReaderHeader.tsx:131
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Capítulos"
@@ -1615,7 +1622,7 @@ msgstr ""
 msgid "Close"
 msgstr "Fechar"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Fechar configurações"
@@ -2877,7 +2884,7 @@ msgstr "Concluído:"
 msgid "Don’t let mistakes stop you."
 msgstr "Não deixe que erros te parem."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Baixar"
@@ -2887,7 +2894,7 @@ msgstr "Baixar"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Baixando livro do Projeto Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Baixando..."
@@ -3883,7 +3890,7 @@ msgstr "FluencyPal – Seu Parceiro de Conversação em Inglês com IA"
 msgid "Focus on shipping reliable services"
 msgstr "Concentre-se em fornecer serviços confiáveis"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:294
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Tamanho da fonte"
@@ -4784,6 +4791,12 @@ msgstr "Destaque sua experiência em frontend"
 #. js-lingui-explicit-id
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Destaque suas habilidades de liderança e resolução de problemas"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#. js-lingui-explicit-id
+msgid "Highlights"
+msgstr "Destaques"
 
 #: src/features/Goal/Quiz/WelcomeChatMessage.tsx:50
 #. js-lingui-explicit-id
@@ -5721,7 +5734,7 @@ msgstr "Apenas Fale"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Modo Just Talk com uma IA melhor por trás dele."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:267
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Justificar Texto"
@@ -5753,8 +5766,8 @@ msgstr ""
 "Conseguir Seu Primeiro Emprego de Desenvolvedor É Mais Difícil do Que "
 "Deveria Ser"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:206
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:209
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6019,7 +6032,7 @@ msgstr "Recursos de voz limitados"
 msgid "Limits reached"
 msgstr "Limites alcançados"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:332
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Altura da linha"
@@ -6609,7 +6622,7 @@ msgstr "Sem pagamento automático"
 msgid "No automatic payment after the trial"
 msgstr "Sem pagamento automático após o teste"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "Nenhum capítulo disponível"
@@ -6666,6 +6679,11 @@ msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr ""
 "Nenhum erro gramatical encontrado. Continue praticando para ver melhorias "
 "aqui!"
+
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#. js-lingui-explicit-id
+msgid "No highlights available"
+msgstr "Sem destaques disponíveis"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -6882,7 +6900,7 @@ msgstr "Não Encontrado"
 msgid "Not running inside Telegram App"
 msgstr "Não está sendo executado dentro do aplicativo Telegram"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Não suportado"
@@ -6926,7 +6944,7 @@ msgstr ""
 "do Website operado pela Fundacja Rozwoju Przedsiębiorczości \"Twój "
 "StartUp\" com sede em Varsóvia."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:251
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Desligado"
@@ -7126,7 +7144,7 @@ msgstr "Idioma da Página"
 msgid "Paid plan:"
 msgstr "Plano pago:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:313
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Parágrafo em branco"
@@ -8083,7 +8101,7 @@ msgstr "Acompanhamento de progresso"
 msgid "Progress tracking to see your improvement"
 msgstr "Rastreamento de progresso para ver sua melhoria"
 
-#: src/features/Reader/components/Cards.tsx:202
+#: src/features/Reader/components/Cards.tsx:203
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projeto Gutenberg"
@@ -8222,6 +8240,7 @@ msgstr ""
 "design de sistema"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
+#: src/features/Reader/components/Reader.tsx:267
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Leia"
@@ -8245,11 +8264,6 @@ msgstr "Leia o texto"
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Leitor"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-msgid "Reader settings"
-msgstr "Configurações do leitor"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
@@ -8613,7 +8627,7 @@ msgstr "Solicitação falhou. Por favor, tente novamente."
 msgid "Request Refund"
 msgstr "Solicitar Reembolso"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:355
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Redefinir para o padrão"
@@ -9055,7 +9069,8 @@ msgstr "Definir Meu Idioma"
 msgid "Set the goal of your learning"
 msgstr "Defina o objetivo do seu aprendizado"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Configurações"
@@ -9374,7 +9389,7 @@ msgstr "Prática de fala"
 msgid "Speaking with a Psychologist"
 msgstr "Conversando com um Psicólogo"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:191
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Suporte de fala"
@@ -9838,7 +9853,7 @@ msgstr "Resumo"
 msgid "Summary:"
 msgstr "Resumo:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Suportado"
@@ -10805,7 +10820,7 @@ msgstr ""
 msgid "Translate"
 msgstr "I'm sorry, I can't assist with that."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Traduzir ao Passar o Mouse"
@@ -10815,8 +10830,8 @@ msgstr "Traduzir ao Passar o Mouse"
 msgid "Translate the word"
 msgstr "Traduza a palavra"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:243
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:247
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11210,8 +11225,8 @@ msgstr "Vocabulário"
 msgid "Vocabulary Practice"
 msgstr "Prática de Vocabulário"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:229
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Voz"
@@ -11221,7 +11236,7 @@ msgstr "Voz"
 msgid "Voice conversations"
 msgstr "Conversas por voz"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "Voz sobre Texto Selecionado"
@@ -12422,7 +12437,7 @@ msgstr "Você está indo bem. Dê uma olhada nas tarefas de hoje."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Você está em um bom ritmo. Continue com as tarefas de hoje."
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:219
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} downloads"
@@ -12467,6 +12482,11 @@ msgstr "{winnerName} vence!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#. js-lingui-explicit-id
+#~ msgid "Reader settings"
+#~ msgstr "Configurações do leitor"
 
 #: src/features/Reader/components/AddBookModal.tsx:238
 #: src/features/Reader/components/Cards.tsx:90

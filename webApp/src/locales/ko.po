@@ -305,7 +305,7 @@ msgid "Add"
 msgstr "추가"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:133
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "책 추가"
@@ -924,6 +924,7 @@ msgstr "문법, 어휘, 유창성, 자신감에 대한 평균 점수."
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr ""
@@ -1062,6 +1063,11 @@ msgstr "블로그"
 #. js-lingui-explicit-id
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "북 필드는 프로덕션 모드에서 EPUB 메타데이터로 자동 채워집니다."
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#. js-lingui-explicit-id
+msgid "Book info"
+msgstr "책 정보"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
@@ -1365,7 +1371,8 @@ msgstr "도전적인"
 msgid "Changes vs previous 30 days"
 msgstr "이전 30일 대비 변화"
 
-#: src/features/Reader/components/ReaderHeader.tsx:131
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "챕터"
@@ -1556,7 +1563,7 @@ msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 �
 msgid "Close"
 msgstr "닫기"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:172
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "설정 닫기"
@@ -2748,7 +2755,7 @@ msgstr "완료:"
 msgid "Don’t let mistakes stop you."
 msgstr "실수를 두려워하지 마세요."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "다운로드"
@@ -2758,7 +2765,7 @@ msgstr "다운로드"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "프로젝트 구텐베르크에서 책 다운로드 중..."
 
-#: src/features/Reader/components/Cards.tsx:240
+#: src/features/Reader/components/Cards.tsx:241
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "다운로드 중..."
@@ -3679,7 +3686,7 @@ msgstr "FluencyPal – 당신의 AI 영어 말하기 파트너"
 msgid "Focus on shipping reliable services"
 msgstr "신뢰할 수 있는 서비스 제공에 중점을 두십시오"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:294
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "글꼴 크기"
@@ -4524,6 +4531,12 @@ msgstr "귀하의 프론트엔드 경험을 강조하십시오"
 #. js-lingui-explicit-id
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "리더십과 문제 해결 능력을 강조하십시오"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#. js-lingui-explicit-id
+msgid "Highlights"
+msgstr "하이라이트"
 
 #: src/features/Goal/Quiz/WelcomeChatMessage.tsx:50
 #. js-lingui-explicit-id
@@ -5395,7 +5408,7 @@ msgstr "그냥 말하세요"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Just Talk 모드가 더 발전된 AI로 강화되었습니다."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:267
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "텍스트 양쪽 맞춤"
@@ -5425,8 +5438,8 @@ msgstr "한국어 학습 계획"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "첫 개발자 직업을 얻는 것은 생각보다 어렵다"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:206
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:209
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5685,7 +5698,7 @@ msgstr "제한된 음성 기능"
 msgid "Limits reached"
 msgstr "한도에 도달했습니다"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:332
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "줄 높이"
@@ -6254,7 +6267,7 @@ msgstr "자동 결제 없음"
 msgid "No automatic payment after the trial"
 msgstr "시험 기간 후 자동 결제 없음"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:112
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "이용 가능한 챕터가 없습니다"
@@ -6309,6 +6322,11 @@ msgstr "에세이가 아직 없습니다. 첫 번째 에세이를 만들기 위�
 #. js-lingui-explicit-id
 msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr "문법 오류가 발견되지 않았습니다. 계속해서 연습하여 여기서 향상을 확인하세요!"
+
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#. js-lingui-explicit-id
+msgid "No highlights available"
+msgstr "하이라이트 없음"
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -6505,7 +6523,7 @@ msgstr "찾을 수 없음"
 msgid "Not running inside Telegram App"
 msgstr "텔레그램 앱 내에서 실행되지 않음"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "지원되지 않음"
@@ -6547,7 +6565,7 @@ msgstr ""
 "웹사이트는 바르샤바에 본사를 둔 \"Twój StartUp\" 창업 발전 재단(Fundacja Rozwoju "
 "Przedsiębiorczości)에 의해 운영됩니다."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:251
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "끄기"
@@ -6734,7 +6752,7 @@ msgstr "페이지 언어"
 msgid "Paid plan:"
 msgstr "유료 플랜:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:313
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "단락 간격"
@@ -7639,7 +7657,7 @@ msgstr "진행 상황 추적"
 msgid "Progress tracking to see your improvement"
 msgstr "당신의 발전을 확인하기 위한 진행 추적"
 
-#: src/features/Reader/components/Cards.tsx:202
+#: src/features/Reader/components/Cards.tsx:203
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "프로젝트 구텐베르크"
@@ -7776,6 +7794,7 @@ msgid ""
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
+#: src/features/Reader/components/Reader.tsx:267
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "읽기"
@@ -7799,11 +7818,6 @@ msgstr "텍스트를 읽어보세요"
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "리더"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-msgid "Reader settings"
-msgstr "독자 설정"
 
 #: src/features/Case/data/backendCSharp/callToActionSection.ts:10
 #. js-lingui-explicit-id
@@ -8154,7 +8168,7 @@ msgstr "요청이 실패했습니다. 다시 시도해 주세요."
 msgid "Request Refund"
 msgstr "환불 요청"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:355
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "기본값으로 재설정"
@@ -8586,7 +8600,8 @@ msgstr "내 언어 설정"
 msgid "Set the goal of your learning"
 msgstr "학습의 목표를 설정하십시오"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:187
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "설정"
@@ -8892,7 +8907,7 @@ msgstr "스피킹 연습"
 msgid "Speaking with a Psychologist"
 msgstr "심리학자와의 대화"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:191
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "음성 지원"
@@ -9325,7 +9340,7 @@ msgstr "요약"
 msgid "Summary:"
 msgstr "요약:"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "지원됨"
@@ -10233,7 +10248,7 @@ msgstr "로그는 시간이 지남에 따라 학습 진척도를 추적하는 �
 msgid "Translate"
 msgstr "번역하기"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:278
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "호버 시 번역"
@@ -10243,8 +10258,8 @@ msgstr "호버 시 번역"
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:243
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:247
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -10627,8 +10642,8 @@ msgstr "어휘"
 msgid "Vocabulary Practice"
 msgstr "어휘 연습"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:226
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:229
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "음성"
@@ -10638,7 +10653,7 @@ msgstr "음성"
 msgid "Voice conversations"
 msgstr "음성 대화"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:289
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "선택한 텍스트 음성 변환"
@@ -11740,7 +11755,7 @@ msgstr "잘하고 있어요. 오늘의 과제를 확인해 보세요."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "잘 진행되고 있습니다. 오늘의 작업을 계속하세요."
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:219
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 다운로드 "
@@ -11785,6 +11800,11 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
+#. js-lingui-explicit-id
+#~ msgid "Reader settings"
+#~ msgstr "독자 설정"
 
 #: src/features/Reader/components/AddBookModal.tsx:238
 #: src/features/Reader/components/Cards.tsx:90
