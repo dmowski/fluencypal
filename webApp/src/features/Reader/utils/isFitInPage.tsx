@@ -1,8 +1,7 @@
 import { ReaderSettings } from '../model/types';
+import { resolveReaderImageWidthRatio } from './readerImageSizing';
 
 const fontFamily = 'serif';
-const MARKDOWN_IMAGE_REGEX = /!\[[^\]]*\]\(([^)]+)\)/g;
-const IMAGE_WIDTH_RATIO = 0.9;
 const IMAGE_MAX_HEIGHT_RATIO = 0.9;
 const DEFAULT_IMAGE_ASPECT_RATIO = 1.5;
 
@@ -12,18 +11,32 @@ const normalizeImageHref = (href: string): string => {
   return trimmed.replace(/^([./]+)+/, '').replace(/\\/g, '/');
 };
 
-const extractMarkdownImageHrefs = (paragraph: string): string[] => {
-  const hrefs: string[] = [];
+const MARKDOWN_IMAGE_REGEX = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']*)["'])?\)/g;
+
+interface MarkdownImageToken {
+  alt: string;
+  href: string;
+  title?: string;
+}
+
+const extractMarkdownImageTokens = (paragraph: string): MarkdownImageToken[] => {
+  const tokens: MarkdownImageToken[] = [];
   let match: RegExpExecArray | null;
 
   MARKDOWN_IMAGE_REGEX.lastIndex = 0;
   while ((match = MARKDOWN_IMAGE_REGEX.exec(paragraph)) !== null) {
-    const rawHref = (match[1] ?? '').trim();
+    const rawAlt = (match[1] ?? '').trim();
+    const rawHref = (match[2] ?? '').trim();
+    const rawTitle = (match[3] ?? '').trim();
     if (!rawHref) continue;
-    hrefs.push(rawHref);
+    tokens.push({
+      alt: rawAlt,
+      href: rawHref,
+      title: rawTitle || undefined,
+    });
   }
 
-  return hrefs;
+  return tokens;
 };
 
 const stripMarkdownImages = (paragraph: string): string => {
@@ -65,7 +78,6 @@ export function isFitInPage({
   measureContainer.style.width = `${settings.contentWidth}px`;
 
   const paragraphGap = Math.max(0, settings.paragraphGap);
-  const renderedImageWidth = Math.max(0, settings.contentWidth * IMAGE_WIDTH_RATIO);
   const renderedImageMaxHeight = Math.max(0, settings.contentHeight * IMAGE_MAX_HEIGHT_RATIO);
 
   paragraphs.forEach((paragraph, index) => {
@@ -91,8 +103,9 @@ export function isFitInPage({
       paragraphWrapper.appendChild(paragraphElement);
     }
 
-    const imageHrefs = extractMarkdownImageHrefs(paragraph);
-    imageHrefs.forEach((href, imageIndex) => {
+    const imageTokens = extractMarkdownImageTokens(paragraph);
+    imageTokens.forEach((token, imageIndex) => {
+      const href = token.href;
       const normalizedHref = normalizeImageHref(href);
       const resolvedAspectRatio =
         imageAspectRatioByHref?.[normalizedHref] ??
@@ -103,6 +116,15 @@ export function isFitInPage({
           ? resolvedAspectRatio
           : DEFAULT_IMAGE_ASPECT_RATIO;
 
+      const renderedImageWidth = Math.max(
+        0,
+        settings.contentWidth *
+          resolveReaderImageWidthRatio({
+            alt: token.alt,
+            title: token.title,
+            aspectRatio: safeAspectRatio,
+          }),
+      );
       const imageElement = document.createElement('div');
       const measuredImageHeight = renderedImageWidth / safeAspectRatio;
       imageElement.style.display = 'block';
@@ -112,7 +134,7 @@ export function isFitInPage({
       )}px`;
       imageElement.style.height = `${Math.min(measuredImageHeight, renderedImageMaxHeight)}px`;
       imageElement.style.marginTop = imageIndex === 0 && paragraphText ? '8px' : '0';
-      imageElement.style.marginBottom = imageIndex < imageHrefs.length - 1 ? '8px' : '0';
+      imageElement.style.marginBottom = imageIndex < imageTokens.length - 1 ? '8px' : '0';
 
       paragraphWrapper.appendChild(imageElement);
     });

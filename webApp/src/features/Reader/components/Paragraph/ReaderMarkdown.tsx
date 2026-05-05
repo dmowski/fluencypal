@@ -3,6 +3,7 @@
 import { Checkbox, Link, Stack, Typography } from '@mui/material';
 import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
+import { resolveReaderImageWidthRatio, sanitizeReaderImageTitle } from '../../utils/readerImageSizing';
 
 export interface ReaderMarkdownWordProps {
   word: string;
@@ -304,13 +305,22 @@ const createMarkdownComponents = (
       typeof maxImageHeight === 'number' && Number.isFinite(maxImageHeight) && maxImageHeight > 0
         ? maxImageHeight
         : undefined;
+    const imageWidthRatio = resolveReaderImageWidthRatio({
+      alt: typeof props.alt === 'string' ? props.alt : undefined,
+      title: typeof props.title === 'string' ? props.title : undefined,
+      aspectRatio: safeAspectRatio,
+    });
+    const sanitizedTitle = sanitizeReaderImageTitle(
+      typeof props.title === 'string' ? props.title : undefined,
+    );
 
     return (
       <img
         {...props}
         src={resolvedSrc}
+        title={sanitizedTitle}
         style={{
-          maxWidth: '90%',
+          maxWidth: `${Math.round(imageWidthRatio * 100)}%`,
           width: 'auto',
           maxHeight: safeMaxImageHeight ? `${safeMaxImageHeight}px` : undefined,
           height: 'auto',

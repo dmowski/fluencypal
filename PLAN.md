@@ -4,6 +4,23 @@
 
 - Tune render of some words/cases. color
 
+- Tune ui of settings
+  webApp/src/features/Reader/components/ReaderSpeechSettingsButton.tsx
+  On menu items, shows Right arrows on menu items or right side
+  when info content is open show top section like row:
+  [left icon | Title]
+
+- Make reading page stable.
+  webApp/src/features/Reader/components/Reader.tsx
+  Show firstly title, subtitle and button "Read" (center it),
+  when user press "Read" button, open last active page, without ReaderHeader (So we won't show title all the time when user reads the page)
+
+  Update e2e test to pass with a new behavior.
+
+  When user read the content, on bottom show active page and total pages. (remove this info from ReaderHeader)
+
+  on ReaderSpeechSettingsButton.tsx instead of "Book info" render book title
+
 - Share books, highlights, but not book settings.
   auth, storage
 

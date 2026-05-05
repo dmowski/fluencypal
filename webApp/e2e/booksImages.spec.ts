@@ -186,6 +186,84 @@ test('renders punctuation-adjacent markdown emphasis as italic text', async ({ p
   await expect(readerContent.getByText('_Who,_', { exact: false })).toHaveCount(0);
 });
 
+test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading', async ({
+  page,
+}) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await page.getByRole('button', { name: 'Book info' }).click();
+  await page.getByTestId('book-info-menu-chapters').click();
+
+  const chapterPopover = page.getByTestId('reader-chapters-popover');
+  await expect(chapterPopover).toBeVisible();
+
+  const chapterOneEntry = chapterPopover
+    .getByTestId('reader-chapter-item')
+    .filter({ hasText: /chapter one|the matching principle/i })
+    .first();
+  await expect(chapterOneEntry).toBeVisible();
+  await chapterOneEntry.click();
+
+  await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
+  await expect(
+    page.getByTestId('reader-content').getByText('THE MATCHING PRINCIPLE', { exact: false }).first(),
+  ).toBeVisible();
+
+  const sizeState = await page.evaluate(() => {
+    const readerRoot = document.querySelector<HTMLElement>('[data-testid="reader-content"]');
+    if (!readerRoot) {
+      return { found: false, widthRatio: 0 };
+    }
+
+    const headingCandidates = Array.from(readerRoot.querySelectorAll<HTMLElement>('*'));
+    const targetHeading = headingCandidates.find((entry) => {
+      const text = (entry.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
+      return text === 'THE MATCHING PRINCIPLE';
+    });
+
+    if (!targetHeading) {
+      return { found: false, widthRatio: 0 };
+    }
+
+    const images = Array.from(readerRoot.querySelectorAll<HTMLImageElement>('img'));
+    const precedingImages = images.filter(
+      (image) =>
+        Boolean(image.getClientRects().length) &&
+        Boolean(image.compareDocumentPosition(targetHeading) & Node.DOCUMENT_POSITION_FOLLOWING),
+    );
+
+    const openerImage = precedingImages.at(-1);
+    if (!openerImage) {
+      return { found: false, widthRatio: 0 };
+    }
+
+    const column = openerImage.closest<HTMLElement>('[data-testid="reader-page-column"]');
+    if (!column) {
+      return { found: false, widthRatio: 0 };
+    }
+
+    const imageRect = openerImage.getBoundingClientRect();
+    const columnRect = column.getBoundingClientRect();
+    if (!imageRect.width || !columnRect.width) {
+      return { found: false, widthRatio: 0 };
+    }
+
+    return {
+      found: true,
+      widthRatio: imageRect.width / columnRect.width,
+    };
+  });
+
+  expect(sizeState.found).toBeTruthy();
+  expect(sizeState.widthRatio).toBeGreaterThan(0);
+  expect(sizeState.widthRatio).toBeLessThanOrEqual(0.3);
+});
+
 test('shows validation error when unsupported file is selected in Add Book picker', async ({
   page,
 }) => {

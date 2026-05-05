@@ -115,13 +115,62 @@ const getHrefAttribute = (element: Element): string => {
 const normalizeText = (value: string | null | undefined): string =>
   (value || '').replace(/\s+/g, ' ').trim();
 
+const IMAGE_WIDTH_CLASS_REGEX = /(?:^|\s)width_(\d{1,3})(?=$|\s)/i;
+const IMAGE_WIDTH_HINT_TITLE_PREFIX = 'reader-width:';
+
+const getImageWidthHintFromClassName = (className: string): number | null => {
+  const match = className.match(IMAGE_WIDTH_CLASS_REGEX);
+  if (!match) return null;
+
+  const value = Number(match[1]);
+  if (!Number.isFinite(value) || value <= 0) {
+    return null;
+  }
+
+  return Math.min(Math.max(value, 5), 100);
+};
+
+const getNearestImageWidthHint = (element: Element, boundary: Element): number | null => {
+  let current: Element | null = element;
+
+  while (current && current !== boundary) {
+    const className = current.getAttribute('class') || '';
+    const widthHint = getImageWidthHintFromClassName(className);
+    if (widthHint != null) {
+      return widthHint;
+    }
+
+    current = current.parentElement;
+  }
+
+  return null;
+};
+
+const appendImageWidthHintToTitle = (title: string, widthHint: number): string => {
+  const normalizedTitle = normalizeText(title);
+  const marker = `${IMAGE_WIDTH_HINT_TITLE_PREFIX}${widthHint}`;
+
+  if (normalizedTitle.toLowerCase().includes(marker.toLowerCase())) {
+    return normalizedTitle;
+  }
+
+  if (!normalizedTitle) {
+    return marker;
+  }
+
+  return `${normalizedTitle} | ${marker}`;
+};
+
 const normalizeMarkdownInlineLinks = (markdown: string): string => {
   const normalizedImageLinks = markdown.replace(
-    /!\[([^\]]*)\]\s*\(([^)]+)\)/g,
-    (_, alt: string, href: string) => {
+    /!\[([^\]]*)\]\s*\((\S+)(?:\s+("[^"]*"|'[^']*'))?\)/g,
+    (_, alt: string, href: string, title: string | undefined) => {
       const normalizedAlt = alt.replace(/\s+/g, ' ').trim();
       const normalizedHref = href.replace(/\s+/g, '');
-      return `![${normalizedAlt}](${normalizedHref})`;
+      const normalizedTitle = normalizeText(title);
+      return normalizedTitle
+        ? `![${normalizedAlt}](${normalizedHref} ${normalizedTitle})`
+        : `![${normalizedAlt}](${normalizedHref})`;
     },
   );
 
@@ -178,6 +227,18 @@ const prepareHtmlForTurndown = (html: string): string => {
     }
 
     svgElement.replaceWith(imgElement);
+  });
+
+  const imageElements = getElementsByTag(body, 'img');
+  imageElements.forEach((imgElement) => {
+    const widthHint = getNearestImageWidthHint(imgElement, body);
+    if (widthHint == null) {
+      return;
+    }
+
+    const existingTitle = imgElement.getAttribute('title') || '';
+    const titleWithWidthHint = appendImageWidthHintToTitle(existingTitle, widthHint);
+    imgElement.setAttribute('title', titleWithWidthHint);
   });
 
   return Array.from(body.childNodes)
