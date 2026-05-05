@@ -1,5 +1,5 @@
 import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
-import { ChevronLeft, ChevronRight, Info, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleEllipsis, Info, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
@@ -125,7 +125,7 @@ export const BookInfoButton = ({
           },
         }}
       >
-        <Info size={18} />
+        <CircleEllipsis size={18} />
       </IconButton>
 
       <ThemeProvider theme={lightTheme}>

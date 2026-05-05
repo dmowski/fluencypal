@@ -26,6 +26,7 @@ import {
 } from '../utils/readerChapterNavigation';
 import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
 import { useLingui } from '@lingui/react';
+import { ChevronRight } from 'lucide-react';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -255,7 +256,15 @@ export const Reader = ({ data }: { data: Book }) => {
           size="large"
           onClick={() => setIsReading(true)}
           color="info"
-          sx={{ minWidth: '140px', fontSize: '16px' }}
+          sx={{
+            fontSize: '16px',
+            boxShadow: 'none',
+            borderRadius: '40px',
+            padding: '9px 36px',
+            textTransform: 'uppercase',
+            fontWeight: 'bold',
+            color: '#fff',
+          }}
         >
           {i18n._('Read')}
         </Button>
