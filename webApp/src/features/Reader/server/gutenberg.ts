@@ -4,6 +4,9 @@ const GUTENBERG_BASE_URL = 'https://www.gutenberg.org';
 const BOOKS_PER_CATEGORY = 8;
 const EBOOK_ID_PATTERN = /^\d+$/;
 
+const getMediumCoverUrl = (ebookId: string): string =>
+  `${GUTENBERG_BASE_URL}/cache/epub/${ebookId}/pg${ebookId}.cover.medium.jpg`;
+
 const CATEGORY_CONFIG = [
   { id: 'romance', title: 'Romance', bookshelfId: '639' },
   { id: 'science-fiction-fantasy', title: 'Science Fiction & Fantasy', bookshelfId: '638' },
@@ -13,7 +16,6 @@ const CATEGORY_CONFIG = [
 
 const BOOK_LINK_PATTERN = /<li class="booklink">([\s\S]*?)<\/li>/g;
 const BOOK_HREF_PATTERN = /<a[^>]+href="([^"]+)"[^>]*>/;
-const BOOK_COVER_PATTERN = /<img[^>]*class="[^"]*cover-thumb[^"]*"[^>]*src="([^"]+)"[^>]*>/;
 const BOOK_TITLE_PATTERN = /<span class="title">([\s\S]*?)<\/span>/;
 const BOOK_SUBTITLE_PATTERN = /<span class="subtitle">([\s\S]*?)<\/span>/;
 const BOOK_DOWNLOADS_PATTERN = /<span class="extra">([\d,]+) downloads<\/span>/;
@@ -77,7 +79,6 @@ const parseBooksFromBookshelfHtml = (html: string): ReaderLibraryBook[] => {
         return null;
       }
 
-      const coverSrc = block.match(BOOK_COVER_PATTERN)?.[1] ?? '';
       const rawAuthor = block.match(BOOK_SUBTITLE_PATTERN)?.[1] ?? '';
       const ebookId = href.match(/\/ebooks\/(\d+)/)?.[1] ?? href;
 
@@ -86,7 +87,7 @@ const parseBooksFromBookshelfHtml = (html: string): ReaderLibraryBook[] => {
         title: decodeHtml(rawTitle),
         author: decodeHtml(rawAuthor) || 'Unknown author',
         downloads: Number(rawDownloads.replace(/,/g, '')),
-        coverUrl: coverSrc ? toAbsoluteUrl(coverSrc) : null,
+        coverUrl: EBOOK_ID_PATTERN.test(ebookId) ? getMediumCoverUrl(ebookId) : null,
         bookUrl: toAbsoluteUrl(href),
       } satisfies ReaderLibraryBook;
     })

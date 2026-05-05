@@ -4,7 +4,13 @@
 
 - Tune render of some words/cases. color
 
-Find more better quality cover images for library preview images
+There's an issue with parsing images from epub.
+Create e2e:
+
+1. Open the book "The Secret of Chimneys" from the Library. (press on download) (Extend timeout to 1min)
+2. Wait until content is visible
+3. Check the image is present (any). Which will not.
+   instead currently only text "658821104108880693_cover jpg" is visible. We need to properly parse the book and extract image.
 
 - Stats with highlights, and ability to navigate to them. How to organize UI
 
