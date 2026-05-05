@@ -268,7 +268,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
 
   // Navigate through pages to find a rendered image (data URI from parsed EPUB)
   let hasRenderedDataImage = await findVisibleRenderedImage(page);
-  for (let step = 0; step < 20 && !hasRenderedDataImage; step += 1) {
+  for (let step = 0; step < 3 && !hasRenderedDataImage; step += 1) {
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(150);
     hasRenderedDataImage = await findVisibleRenderedImage(page);

@@ -189,5 +189,33 @@ export const splitIntoPages = ({
 
 export const splitTextIntoParagraphs = (text: string): string[][] => {
   const paragraphs = text.split('\n').filter((p) => p.trim() !== '');
-  return paragraphs.map((paragraph) => splitWords(paragraph));
+
+  const markdownImagePattern = /!\[[^\]]*\]\([^)]*\)/g;
+
+  return paragraphs.map((paragraph) => {
+    const tokens: string[] = [];
+    let cursor = 0;
+    let match: RegExpExecArray | null;
+
+    markdownImagePattern.lastIndex = 0;
+    while ((match = markdownImagePattern.exec(paragraph)) !== null) {
+      const imageStart = match.index;
+      const imageEnd = imageStart + match[0].length;
+
+      const beforeImage = paragraph.slice(cursor, imageStart);
+      if (beforeImage.trim()) {
+        tokens.push(...splitWords(beforeImage));
+      }
+
+      tokens.push(match[0]);
+      cursor = imageEnd;
+    }
+
+    const tail = paragraph.slice(cursor);
+    if (tail.trim()) {
+      tokens.push(...splitWords(tail));
+    }
+
+    return tokens;
+  });
 };

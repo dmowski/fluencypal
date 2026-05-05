@@ -88,6 +88,8 @@ const parseXml = (xml: string): Document => {
   return parser.parseFromString(xml, 'application/xml');
 };
 
+const serializeNode = (node: Node): string => new XMLSerializer().serializeToString(node);
+
 const getFirstElementByTag = (root: Document | Element, tag: string): Element | null => {
   const withNs = root.getElementsByTagNameNS('*', tag)[0] || null;
   if (withNs) return withNs;
@@ -100,8 +102,59 @@ const getElementsByTag = (root: Document | Element, tag: string): Element[] => {
   return Array.from(root.getElementsByTagName(tag));
 };
 
+const getHrefAttribute = (element: Element): string => {
+  const href = element.getAttribute('href') || element.getAttribute('xlink:href') || '';
+  if (href.trim()) {
+    return href.trim();
+  }
+
+  const hrefNs = element.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || '';
+  return hrefNs.trim();
+};
+
 const normalizeText = (value: string | null | undefined): string =>
   (value || '').replace(/\s+/g, ' ').trim();
+
+const prepareHtmlForTurndown = (html: string): string => {
+  const doc = parseXml(html);
+  const body = getFirstElementByTag(doc, 'body');
+
+  if (!body) {
+    return html;
+  }
+
+  // Gutenberg and some EPUBs wrap cover images in SVG <image xlink:href="...">.
+  // Convert those wrappers to plain <img> so Turndown emits valid markdown images.
+  const svgElements = getElementsByTag(body, 'svg');
+  svgElements.forEach((svgElement) => {
+    const firstImage = getElementsByTag(svgElement, 'image')[0] || null;
+    const href = firstImage ? getHrefAttribute(firstImage) : '';
+
+    if (!href) {
+      svgElement.remove();
+      return;
+    }
+
+    const imgElement = doc.createElement('img');
+    imgElement.setAttribute('src', href);
+
+    const alt = normalizeText(
+      firstImage?.getAttribute('alt') ||
+        svgElement.getAttribute('aria-label') ||
+        svgElement.getAttribute('title') ||
+        '',
+    );
+    if (alt) {
+      imgElement.setAttribute('alt', alt);
+    }
+
+    svgElement.replaceWith(imgElement);
+  });
+
+  return Array.from(body.childNodes)
+    .map((node) => serializeNode(node))
+    .join('\n');
+};
 
 interface RawNavigationItem {
   label: string;
@@ -465,7 +518,7 @@ const parseEpubOnClient = async (
     if (!html) continue;
 
     const markdown = turndown
-      .turndown(html)
+      .turndown(prepareHtmlForTurndown(html))
       .trim()
       .split(`<?xml version='1.0' encoding='utf-8'?>`)
       .join('\n');
