@@ -78,7 +78,9 @@ const ReaderParagraphBase = ({
   isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
-  const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(paragraphText);
+  const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(
+    paragraphText,
+  );
   const hasMarkdownEmphasis =
     /(^|[^\p{L}\p{N}_*])(\*[^*\n]+\*|_[^_\n]+_)(?=$|[^\p{L}\p{N}_*])/u.test(paragraphText);
   const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
