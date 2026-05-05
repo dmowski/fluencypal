@@ -51,10 +51,4 @@ After changing files in this feature:
 
 ## E2E Coverage
 
-- Primary Reader regression coverage lives in `webApp/e2e/books.spec.ts`.
-- Image import and EPUB image rendering setup coverage lives in `webApp/e2e/booksImages.spec.ts`.
-- Prefer running these specs first for changes in book list, EPUB import/parsing, opening/reading books, pagination, or settings interactions.
-
-## Reader Rendering Mode
-
-- For Reader behavior changes (hover translate, spacing, highlights, popovers), validate `webApp/e2e/books.spec.ts`
+- After your changes, run e2e test "pnpm test"
