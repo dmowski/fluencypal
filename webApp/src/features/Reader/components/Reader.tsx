@@ -225,8 +225,7 @@ export const Reader = ({ data }: { data: Book }) => {
 
   const [isReading, setIsReading] = useState(false);
   const { i18n } = useLingui();
-
-  if (!isReading && activePage === 0) {
+  if (!isReading && activePage === 1) {
     return (
       <Stack
         sx={{

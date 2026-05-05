@@ -153,7 +153,8 @@ export const ReaderHeader = ({
       <Stack
         sx={{
           paddingRight: '5px',
-          display: 'grid',
+          //display: 'grid',
+          display: 'none',
           gridTemplateColumns: '1fr 1fr',
         }}
       >
