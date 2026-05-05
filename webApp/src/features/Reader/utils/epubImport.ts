@@ -135,6 +135,15 @@ const normalizeMarkdownInlineLinks = (markdown: string): string => {
   );
 };
 
+const normalizeBrokenUnderscoreEmphasis = (markdown: string): string => {
+  // Some EPUB conversions emit comma-separated italics as `_part1,_ part2_, part3_`.
+  // Collapse those into one valid markdown emphasis span.
+  return markdown.replace(
+    /_([^_\n]+),_\s+([^_\n]+)_,\s+([^_\n]+)_/g,
+    (_, part1: string, part2: string, part3: string) => `_${part1}, ${part2}, ${part3}_`,
+  );
+};
+
 const prepareHtmlForTurndown = (html: string): string => {
   const doc = parseXml(html);
   const body = getFirstElementByTag(doc, 'body');
@@ -537,12 +546,14 @@ const parseEpubOnClient = async (
     const html = await zip.file(item.resolvedPath)?.async('string');
     if (!html) continue;
 
-    const markdown = normalizeMarkdownInlineLinks(
-      turndown
-        .turndown(prepareHtmlForTurndown(html))
-        .trim()
-        .split(`<?xml version='1.0' encoding='utf-8'?>`)
-        .join('\n'),
+    const markdown = normalizeBrokenUnderscoreEmphasis(
+      normalizeMarkdownInlineLinks(
+        turndown
+          .turndown(prepareHtmlForTurndown(html))
+          .trim()
+          .split(`<?xml version='1.0' encoding='utf-8'?>`)
+          .join('\n'),
+      ),
     );
 
     if (markdown) {

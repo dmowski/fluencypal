@@ -78,9 +78,10 @@ const ReaderParagraphBase = ({
   isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
-  const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(
-    paragraphText,
-  );
+  const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(paragraphText);
+  const hasMarkdownEmphasis =
+    /(^|[^\p{L}\p{N}_*])(\*[^*\n]+\*|_[^_\n]+_)(?=$|[^\p{L}\p{N}_*])/u.test(paragraphText);
+  const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
 
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
@@ -340,14 +341,14 @@ const ReaderParagraphBase = ({
         }}
       >
         <ReaderMarkdown
-          words={hasMarkdownLinkOrImage ? undefined : words}
+          words={hasInlineMarkdownFormatting ? undefined : words}
           imageDataUrlByHref={imagesByHref}
           imageAspectRatioByHref={imageAspectRatioByHref}
           maxImageHeight={maxImageHeight}
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={
-            hasMarkdownLinkOrImage
+            hasInlineMarkdownFormatting
               ? undefined
               : ({ word, wordIndex }) => {
                   const { sourceStart } = getSafeWordMeta({
@@ -463,7 +464,7 @@ const ReaderParagraphBase = ({
                 }
           }
           renderSpace={
-            hasMarkdownLinkOrImage
+            hasInlineMarkdownFormatting
               ? undefined
               : (wordIndex) => {
                   const { sourceWord, sourceStart } = getSafeWordMeta({

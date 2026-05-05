@@ -14,6 +14,8 @@ import { assertReaderContentFitsCurrentPage } from './libs/books/assertions';
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
+const EXPECTED_ITALIC_SENTENCE_FRAGMENT = 'memorizes rugby world champions from the 1960s?';
+const EXPECTED_ITALIC_WORD = 'Who,';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);
@@ -158,6 +160,30 @@ test('imports book by dropping EPUB on books page', async ({ page }) => {
   await ensureReaderTextVisible(page, EXPECTED_COPYRIGHT, {
     maxSteps: 12,
   });
+});
+
+test('renders punctuation-adjacent markdown emphasis as italic text', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await ensureReaderTextVisible(page, EXPECTED_ITALIC_SENTENCE_FRAGMENT, {
+    maxSteps: 40,
+  });
+
+  const readerContent = page.getByTestId('reader-content');
+  const italicWho = readerContent.locator('em').filter({ hasText: EXPECTED_ITALIC_WORD }).first();
+  const italicSentenceFragment = readerContent
+    .locator('em')
+    .filter({ hasText: EXPECTED_ITALIC_SENTENCE_FRAGMENT })
+    .first();
+
+  await expect(italicWho).toBeVisible();
+  await expect(italicSentenceFragment).toBeVisible();
+  await expect(readerContent.getByText('_Who,_', { exact: false })).toHaveCount(0);
 });
 
 test('shows validation error when unsupported file is selected in Add Book picker', async ({
