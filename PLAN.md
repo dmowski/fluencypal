@@ -2,34 +2,25 @@
 
 ## Reader
 
-webApp/e2e/booksLibrary.spec.ts
-
-On the book
-const GUTENBERG_ROMANCE_TITLE = 'Pride and Prejudice';
-
-On first pages, there's a text:
-**Title**: Pride and Prejudice
-
-But "Title" should be rendered as bold text, not like markdown.
-
-Books e2e tests (Run, update them while working on the tasks):
-webApp/e2e/\*.spec.ts All e2e tests are book related
-
-=================================
+Revalidate AGENTS.md, update what's needed to be updated and actualized
+/webApp/src/features/Reader/AGENTS.md
 
 - Tune render of some words/cases. color
 
-On the book "Supercommunicators", I see rendering
+=================================
 
-Fix it.
-
-Reader:
-webApp/src/features/Reader/components/Reader.tsx
+Reader info:
+/webApp/src/features/Reader/AGENTS.md
 
 Books e2e tests (Run, update them while working on the tasks):
 webApp/e2e/\*.spec.ts All e2e tests are book related
 
 =================================
+
+Focus on testing. Cover
+
+- epub to markdown
+- markdown to paragraph
 
 - Share books, highlights, but not book settings.
   auth, storage

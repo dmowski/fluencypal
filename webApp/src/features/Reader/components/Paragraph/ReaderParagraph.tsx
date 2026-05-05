@@ -82,7 +82,9 @@ const ReaderParagraphBase = ({
     paragraphText,
   );
   const hasMarkdownEmphasis =
-    /(^|[^\p{L}\p{N}_*])(\*[^*\n]+\*|_[^_\n]+_)(?=$|[^\p{L}\p{N}_*])/u.test(paragraphText);
+    /(^|[^\p{L}\p{N}_*])((\*\*[^*\n](?:[^*\n]*[^*\n])?\*\*)|(\*[^*\n]+\*)|(__[^_\n](?:[^_\n]*[^_\n])?__)|(_[^_\n]+_))(?=$|[^\p{L}\p{N}_*])/u.test(
+      paragraphText,
+    );
   const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
   const hasBlockMarkdownFormatting =
     /^#{1,6}\s+\S/u.test(paragraphText) ||

@@ -42,6 +42,22 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await expect(page.getByTestId('reader-page-indicator')).toBeVisible();
 
+  const readerContent = page.getByTestId('reader-content');
+  const titleLabel = readerContent.locator('strong').filter({ hasText: 'Title' }).first();
+
+  for (let step = 0; step < 8; step += 1) {
+    if (await titleLabel.count()) {
+      break;
+    }
+
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(120);
+  }
+
+  await expect(titleLabel).toBeVisible();
+  await expect(readerContent).toContainText('Pride and Prejudice');
+  await expect(readerContent.getByText('**Title**', { exact: false })).toHaveCount(0);
+
   const storedTitles = await page.evaluate(async () => {
     const openDb = (): Promise<IDBDatabase> =>
       new Promise((resolve, reject) => {
