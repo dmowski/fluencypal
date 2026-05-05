@@ -14,6 +14,8 @@ webApp/e2e/\*.spec.ts All e2e tests are book related
 
 =================================
 
+UI adaptation: Rely on container size, that on window size
+
 Focus on testing. Cover
 
 - epub to markdown
