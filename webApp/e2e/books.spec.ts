@@ -34,6 +34,15 @@ import {
   BOOK_SUBTITLE,
 } from './books.helpers';
 
+const parseCurrentPageFromIndicator = (value: string): number => {
+  const match = value.match(/(\d+)\s*\/\s*(\d+)/);
+  if (!match) {
+    return 1;
+  }
+
+  return Number(match[1]);
+};
+
 test.describe('markdown rendering', () => {
   test('resize keeps first visible word anchored and temporary highlight is removed after 1 second', async ({
     page,
@@ -204,6 +213,62 @@ test.describe('markdown rendering', () => {
     await applyYellowHighlight(page);
     await assertWheneverHighlightedYellow(page);
     await assertOnlyWheneverHighlightedYellow(page);
+  });
+
+  test('book info highlights list shows context and jumps to selected highlight', async ({ page }) => {
+    await openSeededGatsbyBook(page);
+
+    await selectWheneverWordText(page);
+    await assertHighlightPopoverVisible(page);
+    await applyYellowHighlight(page);
+    await assertWheneverHighlightedYellow(page);
+
+    const pageIndicator = page.getByTestId('reader-page-indicator');
+
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(120);
+
+    const pageBeforeSelect = parseCurrentPageFromIndicator(await pageIndicator.innerText());
+
+    await page.getByRole('button', { name: 'Book info' }).click();
+    await page.getByTestId('book-info-menu-highlights').click();
+
+    const highlightsPopover = page.getByTestId('reader-highlights-popover');
+    await expect(highlightsPopover).toBeVisible();
+
+    const highlightItems = highlightsPopover.getByTestId('reader-highlight-item');
+    await expect(highlightItems).toHaveCount(1);
+
+    const highlightItem = highlightItems.first();
+    const highlightBeforeText = highlightItem.getByTestId('reader-highlight-before-text');
+    const highlightSelectedText = highlightItem.getByTestId('reader-highlight-selected-text');
+    const highlightAfterText = highlightItem.getByTestId('reader-highlight-after-text');
+
+    await expect(highlightSelectedText).toHaveText(/whenever/i);
+    await expect(highlightAfterText).toContainText(/you feel like criticizing/i);
+    await expect(highlightBeforeText).toBeVisible();
+
+    const selectedHighlightBackground = await highlightSelectedText.evaluate(
+      (element) => window.getComputedStyle(element).backgroundColor,
+    );
+    expect(selectedHighlightBackground).toContain('255, 224, 102');
+
+    const targetPage = Number((await highlightItem.getAttribute('data-target-page')) || '0');
+    const normalizedTargetPage =
+      targetPage > 1 && targetPage % 2 === 0 ? targetPage - 1 : targetPage;
+
+    await highlightItem.click();
+
+    await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
+
+    const pageAfterSelect = parseCurrentPageFromIndicator(await pageIndicator.innerText());
+
+    expect(pageBeforeSelect).toBeGreaterThan(0);
+    if (normalizedTargetPage > 0) {
+      expect(pageAfterSelect).toBe(normalizedTargetPage);
+    } else {
+      expect(pageAfterSelect).toBeGreaterThan(0);
+    }
   });
 
   test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({

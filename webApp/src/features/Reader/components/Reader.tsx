@@ -16,6 +16,7 @@ import { TextPopover } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
+import { useReaderHighlightItems } from '../hooks/useReaderHighlightItems';
 import { ContentFitChecker } from './ContentFitChecker';
 import { ReaderChapterItem } from './ReaderChaptersPopover';
 import {
@@ -97,6 +98,12 @@ export const Reader = ({ data }: { data: Book }) => {
     [data.chapters, pages],
   );
 
+  const highlightItems = useReaderHighlightItems({
+    highlights: data.highlights ?? [],
+    paragraphs: data.paragraphs,
+    pages,
+  });
+
   const activeChapterId = useMemo(
     () => findActiveChapterId(chapterItems, activePage),
     [chapterItems, activePage],
@@ -142,6 +149,10 @@ export const Reader = ({ data }: { data: Book }) => {
     setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
   };
   const handleChapterSelect = (targetPage: number) => {
+    readerSettings.clearResizeAnchorWord();
+    setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+  };
+  const handleHighlightSelect = (targetPage: number) => {
     readerSettings.clearResizeAnchorWord();
     setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
   };
@@ -204,8 +215,10 @@ export const Reader = ({ data }: { data: Book }) => {
       <BookInfoButton
         speech={speech}
         chapters={chapterItems}
+        highlights={highlightItems}
         activeChapterId={activeChapterId}
         onSelectChapter={handleChapterSelect}
+        onSelectHighlight={handleHighlightSelect}
       />
       <BackButton onClick={closeReader} />
 

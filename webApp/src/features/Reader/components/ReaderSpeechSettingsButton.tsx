@@ -6,24 +6,29 @@ import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
 import { READER_SETTINGS_RANGES, useReaderSettings } from '../hooks/useReaderSettings';
 import { ReaderChapterItem, ReaderChaptersList } from './ReaderChaptersPopover';
+import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPopover';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 
 type BookInfoButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
   chapters: ReaderChapterItem[];
+  highlights: ReaderHighlightItem[];
   activeChapterId: string | null;
   onSelectChapter: (targetPage: number) => void;
+  onSelectHighlight: (targetPage: number) => void;
 };
 
-type ModalView = 'menu' | 'settings' | 'chapters';
+type ModalView = 'menu' | 'settings' | 'chapters' | 'highlights';
 
 const SETTINGS_UPDATE_DELAY_MS = 350;
 
 export const BookInfoButton = ({
   speech,
   chapters,
+  highlights,
   activeChapterId,
   onSelectChapter,
+  onSelectHighlight,
 }: BookInfoButtonProps) => {
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
@@ -95,6 +100,8 @@ export const BookInfoButton = ({
       ? i18n._('Settings')
       : activeView === 'chapters'
         ? i18n._('Chapters')
+        : activeView === 'highlights'
+          ? i18n._('Highlights')
         : i18n._('Book info');
 
   return (
@@ -202,6 +209,15 @@ export const BookInfoButton = ({
                 >
                   {i18n._('Chapters')}
                 </Button>
+                <Button
+                  data-testid="book-info-menu-highlights"
+                  variant="outlined"
+                  color="inherit"
+                  onClick={() => setActiveView('highlights')}
+                  sx={{ justifyContent: 'flex-start' }}
+                >
+                  {i18n._('Highlights')}
+                </Button>
               </Stack>
             ) : null}
 
@@ -224,6 +240,16 @@ export const BookInfoButton = ({
                 activeChapterId={activeChapterId}
                 onSelect={(targetPage) => {
                   onSelectChapter(targetPage);
+                  closeModal();
+                }}
+              />
+            ) : null}
+
+            {activeView === 'highlights' ? (
+              <ReaderHighlightsList
+                highlights={highlights}
+                onSelect={(targetPage) => {
+                  onSelectHighlight(targetPage);
                   closeModal();
                 }}
               />
