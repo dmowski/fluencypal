@@ -98,6 +98,10 @@ export const ReaderSettingsPanel = ({
 
   return (
     <Stack sx={{ gap: '20px' }}>
+      <Typography variant="body2">
+        {i18n._('Speech support')}: {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
+      </Typography>
+
       <FormControl
         size="small"
         fullWidth

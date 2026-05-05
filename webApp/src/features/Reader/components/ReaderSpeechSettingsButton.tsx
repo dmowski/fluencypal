@@ -172,14 +172,13 @@ export const BookInfoButton = ({
               <X size={18} />
             </IconButton>
 
-            <Stack>
+            <Stack
+              sx={{
+                paddingTop: activeView !== 'menu' ? '14px' : 0,
+              }}
+            >
               <Typography variant="h5" sx={{ fontWeight: 600 }}>
                 {title}
-              </Typography>
-
-              <Typography variant="body2">
-                {i18n._('Speech support')}:{' '}
-                {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}
               </Typography>
             </Stack>
 
