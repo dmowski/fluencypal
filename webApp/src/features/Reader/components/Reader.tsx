@@ -26,7 +26,6 @@ import {
 } from '../utils/readerChapterNavigation';
 import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
 import { useLingui } from '@lingui/react';
-import { ChevronRight } from 'lucide-react';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -227,7 +226,7 @@ export const Reader = ({ data }: { data: Book }) => {
   const [isReading, setIsReading] = useState(false);
   const { i18n } = useLingui();
 
-  if (!isReading) {
+  if (!isReading && activePage === 0) {
     return (
       <Stack
         sx={{
