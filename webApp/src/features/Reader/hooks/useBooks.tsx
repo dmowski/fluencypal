@@ -31,6 +31,9 @@ const resolveBookUpdate = (
 
 const testBooks = [testData];
 
+const shouldSeedTestBooks = () =>
+  typeof window !== 'undefined' && window.location.hostname === 'localhost';
+
 const useBooksState = () => {
   const [activeBookId, setActiveBookId] = useUrlState<string | null>('activeBookId', null, true);
 
@@ -47,9 +50,10 @@ const useBooksState = () => {
 
     const loadBooks = async () => {
       const booksFromDb = await loadUsersBooksFromIndexedDb();
-      const initialBooks = booksFromDb.length > 0 ? booksFromDb : testBooks;
+      const initialBooks =
+        booksFromDb.length > 0 ? booksFromDb : shouldSeedTestBooks() ? testBooks : [];
 
-      if (booksFromDb.length === 0) {
+      if (booksFromDb.length === 0 && initialBooks.length > 0) {
         await Promise.all(initialBooks.map((book) => saveUserBookToIndexedDb(book)));
       }
 

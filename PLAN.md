@@ -4,11 +4,6 @@
 
 ---
 
-webApp/src/features/Reader/hooks/useBooks.tsx
-By default we add test book if by books are empty. Let's do it only for localhost. After changes, check e2e. they should pass.
-
----
-
 Update
 webApp/src/features/Reader/components/ReaderSpeechSettingsButton.tsx
 
