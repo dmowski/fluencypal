@@ -62,6 +62,8 @@ export const selectCriticizingWordText = async (page: Page) => {
 
     const mouseUpTarget = host.closest('.MuiTypography-root') ?? host;
     mouseUpTarget.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+    document.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+    host.dispatchEvent(new MouseEvent('click', { bubbles: true }));
 
     return true;
   });
