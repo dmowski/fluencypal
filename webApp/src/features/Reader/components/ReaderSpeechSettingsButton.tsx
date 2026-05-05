@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { READER_SETTINGS_RANGES, useReaderSettings } from '../hooks/useReaderSettings';
+import { useReaderSettings } from '../hooks/useReaderSettings';
 import { ReaderChapterItem, ReaderChaptersList } from './ReaderChaptersPopover';
 import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPopover';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';

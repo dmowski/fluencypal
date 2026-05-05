@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Book, HighlightedText } from '../model/types';
 import { ReaderHeader } from './ReaderHeader';
 import { useCallback, useMemo, useRef } from 'react';
