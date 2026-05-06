@@ -38,7 +38,9 @@ const parseAndReadOutput = async (bookId: string, page: Page) => {
 
 test.describe('books epub to markdown', () => {
   for (const book of BOOKS) {
-    test(`parses ${book.id} and matches first ${EXPECTED_PREFIX_LENGTH} symbols`, async ({ page }) => {
+    test(`parses ${book.id} and matches first ${EXPECTED_PREFIX_LENGTH} symbols`, async ({
+      page,
+    }) => {
       test.setTimeout(240_000);
 
       await page.goto('/book/test/epubImport');
