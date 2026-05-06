@@ -3,6 +3,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { ReaderParagraph } from './ReaderParagraph';
+import { PARAGRAPH_TEXT_INDENT } from '../../utils/readerParagraphFormatting';
 
 const renderReaderParagraph = ({
   words,
@@ -47,7 +48,9 @@ describe('ReaderParagraph', () => {
     const paragraphRoot = container.querySelector('.MuiTypography-root');
 
     expect(paragraphRoot).toBeInTheDocument();
-    expect(window.getComputedStyle(paragraphRoot as Element).textIndent).toBe('1rem');
+    expect(window.getComputedStyle(paragraphRoot as Element).textIndent).toBe(
+      PARAGRAPH_TEXT_INDENT,
+    );
   });
 
   it('does not indent paragraph fragments continued on a new page', () => {
