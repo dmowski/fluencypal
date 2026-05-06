@@ -209,15 +209,26 @@ const createMarkdownComponents = (
 
   p: ({ children }) => <span>{children}</span>,
   span: ({ children }) => <span>{children}</span>,
+  hr: () => <hr style={{ border: 'none', borderTop: '1px solid #c2c2c2' }} />,
 
   a: ({ href, children }) => {
     if (!href) {
       return <span>{children}</span>;
     }
 
+    const linkColor = '#B68325';
+
     if (isExternalHref(href)) {
       return (
-        <Link href={href} target="_blank" rel="noopener noreferrer">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            color: linkColor,
+            textDecoration: 'none',
+          }}
+        >
           {children}
         </Link>
       );
@@ -232,6 +243,10 @@ const createMarkdownComponents = (
       <Link
         href={href}
         data-reader-target-page={targetPage}
+        sx={{
+          color: linkColor,
+          textDecoration: 'none',
+        }}
         onClick={(event) => {
           event.preventDefault();
           onInternalChapterLinkSelect(targetPage);

@@ -2,8 +2,7 @@
 
 ## Reader
 
-- Fix md link colors
-- Fix colors of progress bar bottom
+- Fix colors on book list loading button
 
 =================================
 
