@@ -2,13 +2,7 @@
 
 ## Reader
 
-Focus on testing. Cover:
-
-### Phase 1: stabilizing e2e.
-
-Manually debug hot e2e works, improve if needed.
-
-### Phase 1: Split converted of epub to markdown.
+### Testing
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 

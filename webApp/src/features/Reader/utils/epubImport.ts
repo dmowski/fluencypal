@@ -229,6 +229,48 @@ const normalizeBrokenUnderscoreEmphasis = (markdown: string): string => {
   );
 };
 
+const normalizeSetextHeadings = (markdown: string): string => {
+  // Convert setext-style headings (`Title\n-----`) to ATX headings so downstream
+  // markdown renderers that do not support setext still display semantic headings.
+  const lines = markdown.split('\n');
+  const normalized: string[] = [];
+
+  const isHeadingUnderline = (line: string): 1 | 2 | null => {
+    const trimmed = line.trim();
+    if (!trimmed || !/^[=-]{3,}$/.test(trimmed)) {
+      return null;
+    }
+
+    return trimmed[0] === '=' ? 1 : 2;
+  };
+
+  const canPromoteToHeading = (line: string): boolean => {
+    const trimmed = line.trim();
+    if (!trimmed) return false;
+    if (/^#{1,6}\s/.test(trimmed)) return false;
+    if (/^(?:[-*+]\s|\d+\.\s)/.test(trimmed)) return false;
+    if (/^>\s/.test(trimmed)) return false;
+    if (/^```/.test(trimmed)) return false;
+    return true;
+  };
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const current = lines[i];
+    const next = lines[i + 1];
+    const headingLevel = next ? isHeadingUnderline(next) : null;
+
+    if (headingLevel && canPromoteToHeading(current)) {
+      normalized.push(`${'#'.repeat(headingLevel)} ${current.trim()}`);
+      i += 1;
+      continue;
+    }
+
+    normalized.push(current);
+  }
+
+  return normalized.join('\n');
+};
+
 const prepareHtmlForTurndown = (html: string): string => {
   const doc = parseXml(html);
   const body = getFirstElementByTag(doc, 'body');
@@ -664,13 +706,15 @@ const parseEpubOnClient = async (
     const html = await zip.file(item.resolvedPath)?.async('string');
     if (!html) continue;
 
-    const markdown = normalizeBrokenUnderscoreEmphasis(
-      normalizeMarkdownInlineLinks(
-        turndown
-          .turndown(prepareHtmlForTurndown(html))
-          .trim()
-          .split(`<?xml version='1.0' encoding='utf-8'?>`)
-          .join('\n'),
+    const markdown = normalizeSetextHeadings(
+      normalizeBrokenUnderscoreEmphasis(
+        normalizeMarkdownInlineLinks(
+          turndown
+            .turndown(prepareHtmlForTurndown(html))
+            .trim()
+            .split(`<?xml version='1.0' encoding='utf-8'?>`)
+            .join('\n'),
+        ),
       ),
     );
 
