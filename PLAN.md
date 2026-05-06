@@ -33,14 +33,20 @@ Reader info:
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
-= epub to markdown
-= markdown to paragraph
+#### FEATURES
+
+- Tests: Markdown to paragraph
 
 - PWA
 
 - Tune render of some words/cases. color
 
 - Share books, highlights, but not book settings. (auth, storage)
+
+=================================
+
+We have e2e that check epub to markdown import;
+webApp/e2e/booksEpubToMarkdown.spec.ts
 
 =================================
 
