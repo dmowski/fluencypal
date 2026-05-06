@@ -49,7 +49,7 @@ describe('ReaderParagraph', () => {
 
     expect(paragraphRoot).toBeInTheDocument();
     expect(window.getComputedStyle(paragraphRoot as Element).textIndent).toBe(
-      PARAGRAPH_TEXT_INDENT,
+      `${PARAGRAPH_TEXT_INDENT}rem`,
     );
   });
 

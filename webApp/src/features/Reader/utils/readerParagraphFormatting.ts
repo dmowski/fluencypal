@@ -7,7 +7,7 @@ export const hasBlockMarkdownFormatting = (paragraphText: string): boolean =>
   BLOCK_MARKDOWN_PATTERNS.some((pattern) => pattern.test(paragraphText)) ||
   BLOCK_MARKDOWN_DIVIDER_PATTERN.test(paragraphText.trim());
 
-export const PARAGRAPH_TEXT_INDENT = '1.5rem';
+export const PARAGRAPH_TEXT_INDENT = 1.5;
 
 export const getReaderParagraphTextIndent = ({
   paragraphText,
@@ -20,5 +20,5 @@ export const getReaderParagraphTextIndent = ({
     return 0;
   }
 
-  return PARAGRAPH_TEXT_INDENT;
+  return `${PARAGRAPH_TEXT_INDENT}rem`;
 };

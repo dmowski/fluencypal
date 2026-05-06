@@ -34,6 +34,7 @@ import {
   selectWheneverYouFeelPartialText,
   BOOK_SUBTITLE,
 } from './books.helpers';
+import { PARAGRAPH_TEXT_INDENT } from '@/features/Reader/utils/readerParagraphFormatting';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);
@@ -160,7 +161,7 @@ test.describe('markdown rendering', () => {
     const rootFontSize = Number.parseFloat(paragraphIndentMetrics.rootFontSize);
 
     expect(computedIndent).toBeGreaterThan(0);
-    expect(computedIndent).toBeCloseTo(rootFontSize, 1);
+    expect(computedIndent).toBeCloseTo(rootFontSize * PARAGRAPH_TEXT_INDENT, 1);
   });
 
   test('reader does not indent paragraph fragments continued on the next page', async ({
