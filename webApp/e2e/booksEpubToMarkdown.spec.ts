@@ -7,7 +7,7 @@ const BOOKS = [
   { id: 'secret-of-chimneys' },
 ] as const;
 
-const EXPECTED_PREFIX_LENGTH = 4000;
+const EXPECTED_PREFIX_LENGTH = 10000;
 
 const getMarkdownBody = (output: string): string => {
   const firstBlankLine = output.indexOf('\n\n');
