@@ -10,13 +10,7 @@ We have e2e that check epub to markdown import;
 webApp/e2e/booksEpubToMarkdown.spec.ts
 
 For now let's fix this behavior of converter:
-
-On the book I see this as none markdown style. The book is "The Secret of Chimneys"
-
-```
-The Project Gutenberg eBook of The Secret of Chimneys
------------------------------------------------------
-```
+XXX
 
 Update import to handle to more correctly. Try to create more general solution that fixing exactly this book case.
 

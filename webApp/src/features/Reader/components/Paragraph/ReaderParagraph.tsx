@@ -90,7 +90,10 @@ const ReaderParagraphBase = ({
     /^#{1,6}\s+\S/u.test(paragraphText) ||
     /^>\s+\S/u.test(paragraphText) ||
     /^[-*+]\s+\S/u.test(paragraphText) ||
-    /^\d+\.\s+\S/u.test(paragraphText);
+    /^\d+\.\s+\S/u.test(paragraphText) ||
+    /^(?:-{3,}|_{3,}|\*{3,}|(?:-\s+){2,}-?|(?:_\s+){2,}_?|(?:\*\s+){2,}\*?)$/u.test(
+      paragraphText.trim(),
+    );
   const shouldRenderMarkdown = hasInlineMarkdownFormatting || hasBlockMarkdownFormatting;
 
   // Absolute character start offset of each word within words.join(' ').
