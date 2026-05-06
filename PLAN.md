@@ -2,15 +2,14 @@
 
 ## Reader
 
-### Testing
+- Fix case with XXXVI
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
 We have e2e that check epub to markdown import;
 webApp/e2e/booksEpubToMarkdown.spec.ts
 
-For now let's fix this behavior of converter:
-XXX
+We have strange rendering on this case:
 
 Update import to handle to more correctly. Try to create more general solution that fixing exactly this book case.
 

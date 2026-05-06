@@ -1,7 +1,7 @@
 import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
 import { BookParagraph, ReaderSettings } from '../model/types';
-import { isFitInPage } from './isFitInPage';
+import { isFitInPage, MeasuredParagraph } from './isFitInPage';
 
 export interface PagedParagraph {
   words: BookParagraph;
@@ -38,7 +38,7 @@ export const splitIntoPages = ({
   }
   const pages: PagedParagraph[][] = [];
   let currentPage: PagedParagraph[] = [];
-  let currentPageText: string[] = [];
+  let currentPageText: MeasuredParagraph[] = [];
   const fitCache = new Map<string, boolean>();
   const chapterStartParagraphSet = new Set(chapterStartParagraphIndices ?? []);
 
@@ -56,7 +56,7 @@ export const splitIntoPages = ({
     resetCurrentPage();
   };
 
-  const checkFits = (paragraphs: string[]): boolean => {
+  const checkFits = (paragraphs: MeasuredParagraph[]): boolean => {
     const fitKey = `${hash}-${getHash(JSON.stringify(paragraphs))}`;
     const cachedFit = fitCache.get(fitKey);
     if (typeof cachedFit === 'boolean') {
@@ -72,7 +72,11 @@ export const splitIntoPages = ({
     return result;
   };
 
-  const findFittingPrefixLength = (words: string[], pageText: string[]): number => {
+  const findFittingPrefixLength = (
+    words: string[],
+    pageText: MeasuredParagraph[],
+    sourceStartCharOffset: number,
+  ): number => {
     if (words.length === 0) {
       return 0;
     }
@@ -83,7 +87,10 @@ export const splitIntoPages = ({
 
     while (left <= right) {
       const middle = Math.floor((left + right) / 2);
-      const candidateParagraph = words.slice(0, middle).join(' ');
+      const candidateParagraph = {
+        text: words.slice(0, middle).join(' '),
+        sourceStartCharOffset,
+      };
       const fits = checkFits([...pageText, candidateParagraph]);
 
       if (fits) {
@@ -110,7 +117,13 @@ export const splitIntoPages = ({
     while (remainingWords.length > 0) {
       const fullParagraphText = remainingWords.join(' ');
       const containsImage = markdownImagePattern.test(fullParagraphText);
-      const fitsAsWhole = checkFits([...currentPageText, fullParagraphText]);
+      const fitsAsWhole = checkFits([
+        ...currentPageText,
+        {
+          text: fullParagraphText,
+          sourceStartCharOffset: remainingStartCharOffset,
+        },
+      ]);
 
       if (fitsAsWhole) {
         currentPage.push({
@@ -118,7 +131,10 @@ export const splitIntoPages = ({
           sourceParagraphIndex,
           sourceStartCharOffset: remainingStartCharOffset,
         });
-        currentPageText.push(fullParagraphText);
+        currentPageText.push({
+          text: fullParagraphText,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
         break;
       }
 
@@ -134,12 +150,19 @@ export const splitIntoPages = ({
           sourceParagraphIndex,
           sourceStartCharOffset: remainingStartCharOffset,
         });
-        currentPageText.push(fullParagraphText);
+        currentPageText.push({
+          text: fullParagraphText,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
         pushCurrentPage();
         break;
       }
 
-      const fittingPrefixLength = findFittingPrefixLength(remainingWords, currentPageText);
+      const fittingPrefixLength = findFittingPrefixLength(
+        remainingWords,
+        currentPageText,
+        remainingStartCharOffset,
+      );
       if (fittingPrefixLength > 0) {
         const fittedWords = remainingWords.slice(0, fittingPrefixLength);
         const fittedParagraphText = fittedWords.join(' ');
@@ -149,7 +172,10 @@ export const splitIntoPages = ({
           sourceParagraphIndex,
           sourceStartCharOffset: remainingStartCharOffset,
         });
-        currentPageText.push(fittedParagraphText);
+        currentPageText.push({
+          text: fittedParagraphText,
+          sourceStartCharOffset: remainingStartCharOffset,
+        });
         pushCurrentPage();
 
         remainingWords = remainingWords.slice(fittingPrefixLength);
@@ -174,7 +200,10 @@ export const splitIntoPages = ({
         sourceParagraphIndex,
         sourceStartCharOffset: remainingStartCharOffset,
       });
-      currentPageText.push(fittedParagraphText);
+      currentPageText.push({
+        text: fittedParagraphText,
+        sourceStartCharOffset: remainingStartCharOffset,
+      });
       pushCurrentPage();
 
       remainingWords = remainingWords.slice(1);

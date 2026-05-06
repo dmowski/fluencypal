@@ -1,5 +1,11 @@
 import { ReaderSettings } from '../model/types';
+import { getReaderParagraphTextIndent } from './readerParagraphFormatting';
 import { resolveReaderImageWidthRatio } from './readerImageSizing';
+
+export interface MeasuredParagraph {
+  text: string;
+  sourceStartCharOffset: number;
+}
 
 const fontFamily = 'serif';
 const IMAGE_MAX_HEIGHT_RATIO = 0.9;
@@ -52,7 +58,7 @@ export function isFitInPage({
   settings,
   imageAspectRatioByHref,
 }: {
-  paragraphs: string[];
+  paragraphs: MeasuredParagraph[];
   settings: ReaderSettings;
   imageAspectRatioByHref?: Record<string, number>;
 }): boolean {
@@ -89,7 +95,7 @@ export function isFitInPage({
       paragraphWrapper.style.marginBottom = `${paragraphGap}px`;
     }
 
-    const paragraphText = stripMarkdownImages(paragraph);
+    const paragraphText = stripMarkdownImages(paragraph.text);
     if (paragraphText) {
       const paragraphElement = document.createElement('p');
       paragraphElement.textContent = paragraphText;
@@ -98,12 +104,18 @@ export function isFitInPage({
       paragraphElement.style.fontSize = `${settings.fontSize}px`;
       paragraphElement.style.lineHeight = `${settings.lineHeight}`;
       paragraphElement.style.textAlign = settings.justifyText ? 'justify' : 'left';
+      paragraphElement.style.textIndent = String(
+        getReaderParagraphTextIndent({
+          paragraphText,
+          isParagraphStart: paragraph.sourceStartCharOffset === 0,
+        }),
+      );
       paragraphElement.style.fontFamily = fontFamily;
       paragraphElement.style.wordBreak = 'break-word';
       paragraphWrapper.appendChild(paragraphElement);
     }
 
-    const imageTokens = extractMarkdownImageTokens(paragraph);
+    const imageTokens = extractMarkdownImageTokens(paragraph.text);
     imageTokens.forEach((token, imageIndex) => {
       const href = token.href;
       const normalizedHref = normalizeImageHref(href);

@@ -10,6 +10,10 @@ import { getPopoverPositionFromRect } from './libs/popoverAnchorPosition';
 import { getSafeWordMeta } from './libs/wordIndexSafeMeta';
 import { reconcileSelectionOffsets } from './libs/selectionOffsetReconciliation';
 import {
+  getReaderParagraphTextIndent,
+  hasBlockMarkdownFormatting,
+} from '../../utils/readerParagraphFormatting';
+import {
   applyNativeSelectionByOffsets,
   applyNativeSelectionByText,
   applyNativeSelectionForWordElement,
@@ -78,6 +82,7 @@ const ReaderParagraphBase = ({
   isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
+  const isParagraphStart = paragraphStartCharOffset === 0;
   const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(
     paragraphText,
   );
@@ -86,15 +91,12 @@ const ReaderParagraphBase = ({
       paragraphText,
     );
   const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
-  const hasBlockMarkdownFormatting =
-    /^#{1,6}\s+\S/u.test(paragraphText) ||
-    /^>\s+\S/u.test(paragraphText) ||
-    /^[-*+]\s+\S/u.test(paragraphText) ||
-    /^\d+\.\s+\S/u.test(paragraphText) ||
-    /^(?:-{3,}|_{3,}|\*{3,}|(?:-\s+){2,}-?|(?:_\s+){2,}_?|(?:\*\s+){2,}\*?)$/u.test(
-      paragraphText.trim(),
-    );
-  const shouldRenderMarkdown = hasInlineMarkdownFormatting || hasBlockMarkdownFormatting;
+  const hasBlockMarkdown = hasBlockMarkdownFormatting(paragraphText);
+  const shouldRenderMarkdown = hasInlineMarkdownFormatting || hasBlockMarkdown;
+  const paragraphTextIndent = getReaderParagraphTextIndent({
+    paragraphText,
+    isParagraphStart,
+  });
 
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
@@ -355,6 +357,8 @@ const ReaderParagraphBase = ({
         variant="body1"
         component="div"
         ref={paragraphRef}
+        data-reader-paragraph-start-offset={paragraphStartCharOffset}
+        data-reader-paragraph-is-continuation={isParagraphStart ? undefined : 'true'}
         onMouseUp={handleMouseUp}
         onMouseLeave={onHoverClear}
         sx={{
@@ -362,6 +366,7 @@ const ReaderParagraphBase = ({
           fontSize: `${fontSize}px`,
           lineHeight,
           textAlign: justifyText ? 'justify' : 'left',
+          textIndent: paragraphTextIndent,
           '*': {
             fontFamily: 'serif',
           },

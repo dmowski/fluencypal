@@ -124,6 +124,79 @@ test.describe('markdown rendering', () => {
     await assertWordHoverHasEffect(page);
   });
 
+  test('reader applies first-line indent for regular paragraphs', async ({ page }) => {
+    await openSeededGatsbyBook(page);
+
+    const paragraphIndentMetrics = await page.evaluate(() => {
+      const candidates = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+      );
+      const wheneverHost = candidates.find((entry) =>
+        (entry.textContent ?? '').toLowerCase().includes('whenever'),
+      );
+      if (!wheneverHost) {
+        return null;
+      }
+
+      const paragraphRoot = wheneverHost.closest('.MuiTypography-root') as HTMLElement | null;
+      if (!paragraphRoot) {
+        return null;
+      }
+
+      const computedStyle = window.getComputedStyle(paragraphRoot);
+
+      return {
+        textIndent: computedStyle.textIndent,
+        rootFontSize: window.getComputedStyle(document.documentElement).fontSize,
+      };
+    });
+
+    expect(paragraphIndentMetrics).not.toBeNull();
+    if (!paragraphIndentMetrics) {
+      return;
+    }
+
+    const computedIndent = Number.parseFloat(paragraphIndentMetrics.textIndent);
+    const rootFontSize = Number.parseFloat(paragraphIndentMetrics.rootFontSize);
+
+    expect(computedIndent).toBeGreaterThan(0);
+    expect(computedIndent).toBeCloseTo(rootFontSize, 1);
+  });
+
+  test('reader does not indent paragraph fragments continued on the next page', async ({ page }) => {
+    await page.setViewportSize({ width: 720, height: 540 });
+    await openSeededGatsbyBook(page);
+
+    const maxSteps = 12;
+
+    for (let step = 0; step <= maxSteps; step += 1) {
+      const continuationIndent = await page.evaluate(() => {
+        const continuationParagraph = Array.from(
+          document.querySelectorAll<HTMLElement>('[data-reader-paragraph-is-continuation="true"]'),
+        ).find((element) => {
+          const rect = element.getBoundingClientRect();
+          return rect.width > 0 && rect.height > 0;
+        });
+
+        if (!continuationParagraph) {
+          return null;
+        }
+
+        return window.getComputedStyle(continuationParagraph).textIndent;
+      });
+
+      if (continuationIndent != null) {
+        expect(Number.parseFloat(continuationIndent)).toBe(0);
+        return;
+      }
+
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(120);
+    }
+
+    throw new Error('Could not find a visible continued paragraph fragment to verify indent');
+  });
+
   test('reader settings voice plays preview and clicking word plays and opens highlight popover', async ({
     page,
   }) => {

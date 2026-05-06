@@ -72,7 +72,7 @@ const DevPanelContent = () => {
 
   const fits = useMemo(() => {
     return isFitInPage({
-      paragraphs,
+      paragraphs: paragraphs.map((paragraph) => ({ text: paragraph, sourceStartCharOffset: 0 })),
       settings: { ...readerSettings, contentHeight: height, contentWidth: width },
     });
   }, [paragraphs, readerSettings]);

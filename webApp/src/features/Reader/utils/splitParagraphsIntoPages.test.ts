@@ -24,9 +24,9 @@ const settings: ReaderSettings = {
   columnGap: 40,
 };
 
-const countWords = (paragraphs: string[]) =>
+const countWords = (paragraphs: Array<{ text: string }>) =>
   paragraphs.reduce((total, paragraph) => {
-    const words = paragraph.trim().length === 0 ? [] : paragraph.trim().split(/\s+/);
+    const words = paragraph.text.trim().length === 0 ? [] : paragraph.text.trim().split(/\s+/);
     return total + words.length;
   }, 0);
 
@@ -59,6 +59,14 @@ describe('splitIntoPages', () => {
         },
       ],
     ]);
+
+    expect(mockedIsFitInPage).toHaveBeenCalledWith(
+      expect.objectContaining({
+        paragraphs: expect.arrayContaining([
+          expect.objectContaining({ text: 'c d', sourceStartCharOffset: 4 }),
+        ]),
+      }),
+    );
   });
 
   it('fills current page with a prefix of overflowing paragraph before moving remainder', () => {
