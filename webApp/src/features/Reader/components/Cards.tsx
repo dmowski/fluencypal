@@ -230,6 +230,10 @@ export const LibraryBookCard = ({
                 borderColor: 'rgba(0, 0, 0, 0.22)',
                 backgroundColor: 'rgba(0, 0, 0, 0.04)',
               },
+              '&[disabled]': {
+                borderColor: 'rgba(0, 0, 0, 0.12)',
+                color: 'rgba(0, 0, 0, 0.4)',
+              },
             }}
             startIcon={<Download size={'14px'} />}
             onClick={(event) => {
