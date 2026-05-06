@@ -60,8 +60,11 @@ After changing files in this feature, run the smallest relevant checks first:
 2. `cd webApp && pnpm test:unit` when changing Reader parsing, pagination, highlight logic, or selection math.
 3. For Reader/book behavior changes, run targeted e2e early while iterating:
    - `cd webApp && pnpm test:e2e e2e/books.spec.ts`
-   - `cd webApp && pnpm test:e2e e2e/booksImages.spec.ts`
-   - `cd webApp && pnpm test:e2e e2e/booksLibrary.spec.ts` when library/list/import behavior changes
+
+- `cd webApp && pnpm test:e2e e2e/booksEpubToMarkdown.spec.ts` for EPUB import to markdown stability checks
+- `cd webApp && pnpm test:e2e e2e/booksImages.spec.ts`
+- `cd webApp && pnpm test:e2e e2e/booksLibrary.spec.ts` when library/list/import behavior changes
+
 4. Before finishing any Reader change, always run the full e2e suite:
 
 - `cd webApp && pnpm test:e2e`
