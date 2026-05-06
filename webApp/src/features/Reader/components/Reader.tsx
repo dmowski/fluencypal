@@ -282,7 +282,7 @@ export const Reader = ({ data }: { data: Book }) => {
         gap: '40px',
         position: 'relative',
         '@media (max-width: 700px)': {
-          paddingBottom: '50px',
+          padding: '50px 0px 50px 0px',
         },
       }}
     >

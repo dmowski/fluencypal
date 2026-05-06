@@ -2,8 +2,6 @@
 
 ## Reader
 
-- Test on mobile
-
 =================================
 
 Reader info:
@@ -14,14 +12,13 @@ webApp/e2e/\*.spec.ts All e2e tests are book related
 
 =================================
 
-UI adaptation: Rely on container size, that on window size
+UI adaptation: Rely on container size, than on window size
 
-Focus on testing. Cover
+Focus on testing. Cover:
+= epub to markdown
+= markdown to paragraph
 
-- epub to markdown
-- markdown to paragraph
-
-=================================
+- PWA
 
 - Tune render of some words/cases. color
 
