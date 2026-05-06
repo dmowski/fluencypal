@@ -38,9 +38,8 @@ export const ImportProgressPanel = ({
         bottom: 0,
         left: 0,
         width: '100vw',
-        height: '30px',
+        height: '45px',
         zIndex: 1100,
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
         borderTop: '1px solid rgba(255, 255, 255, 0.22)',
         justifyContent: 'center',
       }}
@@ -54,22 +53,20 @@ export const ImportProgressPanel = ({
           inset: 0,
           height: '100%',
           '& .MuiLinearProgress-bar': {
-            backgroundColor: '#ffb300',
+            backgroundColor: '#0ab5f3',
           },
         }}
       />
       <Typography
-        variant="caption"
         data-testid="library-download-status"
         sx={{
           position: 'relative',
           zIndex: 1,
           color: '#fff',
-          lineHeight: '30px',
           textAlign: 'center',
           px: '8px',
-          fontWeight: 600,
-          textShadow: '0 1px 1px rgba(0,0,0,0.8)',
+          fontWeight: 500,
+          letterSpacing: '0.02em',
         }}
       >
         {label}

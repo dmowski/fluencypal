@@ -2,6 +2,9 @@
 
 ## Reader
 
+- Fix md link colors
+- Fix colors of progress bar bottom
+
 =================================
 
 Reader info:
@@ -11,8 +14,6 @@ Books e2e tests (Run, update them while working on the tasks):
 webApp/e2e/\*.spec.ts All e2e tests are book related
 
 =================================
-
-UI adaptation: Rely on container size, than on window size
 
 Focus on testing. Cover:
 = epub to markdown
