@@ -31,9 +31,20 @@ webApp/src/features/Reader/AGENTS.md
 Place that TestImportModule inside
 webApp/src/features/Reader/test
 
-After you finish creating that page, wait for my approve. Then we will write e2e.
+After you finish creating that page run all e2e to ensure everything is still working, then wait for my approve. Then we will write e2e.
 
----
+±±±±±±±±±±±±±±±
+
+Create a new e2e file, called "booksEpubToMarkdown".
+
+Write e2e test for each of the book.
+
+Each test should be simple.
+Press on "Convert", wait unit it finished, check resulted markdown with expected. Check only the first 700 symbols (because the books is huge). It's enough for now to check only the first part.
+
+Update webApp/src/features/Reader/AGENTS.md if needed
+
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
 = epub to markdown
 = markdown to paragraph
