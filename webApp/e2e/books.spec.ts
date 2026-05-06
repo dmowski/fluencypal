@@ -163,7 +163,9 @@ test.describe('markdown rendering', () => {
     expect(computedIndent).toBeCloseTo(rootFontSize, 1);
   });
 
-  test('reader does not indent paragraph fragments continued on the next page', async ({ page }) => {
+  test('reader does not indent paragraph fragments continued on the next page', async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 720, height: 540 });
     await openSeededGatsbyBook(page);
 
