@@ -271,6 +271,31 @@ const normalizeSetextHeadings = (markdown: string): string => {
   return normalized.join('\n');
 };
 
+const normalizeStandaloneEqualsSeparators = (markdown: string): string => {
+  const lines = markdown.split('\n');
+  const normalized: string[] = [];
+  let isInFencedCodeBlock = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (/^```/.test(trimmed)) {
+      isInFencedCodeBlock = !isInFencedCodeBlock;
+      normalized.push(line);
+      continue;
+    }
+
+    if (!isInFencedCodeBlock && /^={3,}$/.test(trimmed)) {
+      normalized.push('---');
+      continue;
+    }
+
+    normalized.push(line);
+  }
+
+  return normalized.join('\n');
+};
+
 const prepareHtmlForTurndown = (html: string): string => {
   const doc = parseXml(html);
   const body = getFirstElementByTag(doc, 'body');
@@ -706,14 +731,16 @@ const parseEpubOnClient = async (
     const html = await zip.file(item.resolvedPath)?.async('string');
     if (!html) continue;
 
-    const markdown = normalizeSetextHeadings(
-      normalizeBrokenUnderscoreEmphasis(
-        normalizeMarkdownInlineLinks(
-          turndown
-            .turndown(prepareHtmlForTurndown(html))
-            .trim()
-            .split(`<?xml version='1.0' encoding='utf-8'?>`)
-            .join('\n'),
+    const markdown = normalizeStandaloneEqualsSeparators(
+      normalizeSetextHeadings(
+        normalizeBrokenUnderscoreEmphasis(
+          normalizeMarkdownInlineLinks(
+            turndown
+              .turndown(prepareHtmlForTurndown(html))
+              .trim()
+              .split(`<?xml version='1.0' encoding='utf-8'?>`)
+              .join('\n'),
+          ),
         ),
       ),
     );
