@@ -1,5 +1,9 @@
 import { expect, Page } from '@playwright/test';
-import { getCriticizingWordLocator } from './locators';
+import {
+  getCriticizingWordLocator,
+  getReaderHighlightPopoverLocator,
+  getYellowHighlightButtonLocator,
+} from './locators';
 
 export const assertWordHoverHasEffect = async (page: Page) => {
   const criticizingWord = await getCriticizingWordLocator(page);
@@ -26,7 +30,12 @@ export const assertWordHoverHasEffect = async (page: Page) => {
 };
 
 export const assertHighlightPopoverVisible = async (page: Page) => {
-  await expect(page.getByRole('button', { name: 'Y', exact: true })).toBeVisible();
+  await expect(getReaderHighlightPopoverLocator(page)).toBeVisible({ timeout: 10000 });
+  await expect(getYellowHighlightButtonLocator(page)).toBeVisible({ timeout: 10000 });
+};
+
+export const assertHighlightPopoverHidden = async (page: Page) => {
+  await expect(getReaderHighlightPopoverLocator(page)).not.toBeVisible();
 };
 
 export const assertCurrentSelectionText = async (page: Page, expectedRegex: RegExp) => {

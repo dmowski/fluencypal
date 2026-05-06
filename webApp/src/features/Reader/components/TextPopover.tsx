@@ -70,6 +70,7 @@ export const TextPopover = ({
 
   return (
     <Popover
+      data-testid="reader-text-popover"
       open={Boolean(anchorPosition)}
       onClose={onClose}
       anchorReference="anchorPosition"
@@ -105,6 +106,7 @@ export const TextPopover = ({
                 key={color}
                 component="button"
                 type="button"
+                data-testid={`reader-highlight-color-${shortcut}`}
                 onClick={() => onColorSelect(color)}
                 sx={{
                   width: 28,

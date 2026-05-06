@@ -20,3 +20,9 @@ export const getCriticizingWordLocator = async (page: Page) => {
 
   throw new Error('Could not find visible criticizing word in reader content.');
 };
+
+export const getReaderHighlightPopoverLocator = (page: Page) =>
+  page.getByTestId('reader-text-popover');
+
+export const getYellowHighlightButtonLocator = (page: Page) =>
+  page.getByTestId('reader-highlight-color-Y');

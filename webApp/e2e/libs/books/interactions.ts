@@ -1,6 +1,10 @@
 import { expect, Page } from '@playwright/test';
 import { ensureReaderTextVisible } from './navigation';
-import { getCriticizingWordLocator } from './locators';
+import {
+  getCriticizingWordLocator,
+  getReaderHighlightPopoverLocator,
+  getYellowHighlightButtonLocator,
+} from './locators';
 
 export const clickCriticizingWord = async (page: Page) => {
   const criticizingWord = await getCriticizingWordLocator(page);
@@ -71,6 +75,32 @@ export const selectCriticizingWordText = async (page: Page) => {
   if (!didSelect) {
     throw new Error('Could not select "criticizing" text.');
   }
+
+  const hasPopover = await getReaderHighlightPopoverLocator(page).isVisible();
+  if (hasPopover) {
+    return;
+  }
+
+  const box = await criticizingWord.boundingBox();
+  if (!box) {
+    return;
+  }
+
+  const y = box.y + box.height / 2;
+  const startX = box.x + 2;
+  const endX = box.x + Math.max(3, box.width - 2);
+
+  await page.mouse.move(startX, y);
+  await page.mouse.down();
+  await page.mouse.move(endX, y);
+  await page.mouse.up();
+
+  if (await getReaderHighlightPopoverLocator(page).isVisible()) {
+    return;
+  }
+
+  // Final fallback: use the app's native word-click selection flow.
+  await criticizingWord.click();
 };
 
 export const selectFirstParagraphRangeByWordBoundaries = async (
@@ -111,7 +141,7 @@ export const clickWheneverWord = async (page: Page) => {
 };
 
 export const applyYellowHighlight = async (page: Page) => {
-  await page.getByRole('button', { name: 'Y', exact: true }).click();
+  await getYellowHighlightButtonLocator(page).click();
 };
 
 export const selectEverInsideNeverFoundPhrase = async (page: Page) => {

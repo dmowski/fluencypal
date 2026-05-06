@@ -2,19 +2,39 @@
 
 ## Reader
 
-- Fix colors on book list loading button
-
-=================================
-
-Reader info:
-/webApp/src/features/Reader/AGENTS.md
-
-Books e2e tests (Run, update them while working on the tasks):
-webApp/e2e/\*.spec.ts All e2e tests are book related
-
-=================================
-
 Focus on testing. Cover:
+
+### Phase 1: stabilizing e2e.
+
+Manually debug hot e2e works, improve if needed.
+
+### Phase 1: Split converted of epub to markdown.
+
+We are going to write proper e2e test for this module.
+webApp/src/features/Reader/utils/epubImport.ts
+
+The goal of our testing is to stabilize epub to markdown converter
+
+Your goal for now, it to create a separate page, "/book/test/epubImport"
+On this page, will be show a list of test books with button "Parse",
+and text areas with results of convertEpubFile.
+
+Where to get tests book:
+We already have some tests books that places here:
+webApp/public/Reader/pride_and_prejudice.epub
+
+Render them on /book/test/epubImport
+
+For context about Reader, you can check this info about related modules.
+webApp/src/features/Reader/AGENTS.md
+
+Place that TestImportModule inside
+webApp/src/features/Reader/test
+
+After you finish creating that page, wait for my approve. Then we will write e2e.
+
+---
+
 = epub to markdown
 = markdown to paragraph
 
@@ -22,10 +42,19 @@ Focus on testing. Cover:
 
 - Tune render of some words/cases. color
 
+- Share books, highlights, but not book settings. (auth, storage)
+
 =================================
 
-- Share books, highlights, but not book settings.
-  auth, storage
+Reader info:
+/webApp/src/features/Reader/AGENTS.md
+
+=================================
+
+Books e2e tests (Run, update them while working on the tasks):
+webApp/e2e/\*.spec.ts All e2e tests are book related
+
+=================================
 
 ## What about more strict Role-plays
 

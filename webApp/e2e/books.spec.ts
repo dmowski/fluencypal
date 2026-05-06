@@ -3,6 +3,7 @@ import {
   assertCriticizingWordCursorIsPointer,
   assertCriticizingWordWasSpoken,
   assertCurrentSelectionText,
+  assertHighlightPopoverHidden,
   assertHighlightPopoverVisible,
   assertOnlyWheneverHighlightedYellow,
   assertSelectionTextPersists,
@@ -348,7 +349,7 @@ test.describe('markdown rendering', () => {
     expect(selectedText).not.toContain(BOOK_SUBTITLE);
 
     // Highlight popover must not appear
-    await expect(page.getByRole('button', { name: 'Y', exact: true })).not.toBeVisible();
+    await assertHighlightPopoverHidden(page);
 
     // Voiceover must not have fired
     const spokenTexts = await page.evaluate(() => {
