@@ -107,7 +107,10 @@ export const TestImportModule = () => {
   };
 
   return (
-    <main style={{ padding: 24, display: 'grid', gap: 20, color: '#222', background: '#f9f9f9' }}>
+    <main
+      data-testid="epub-import-test-page"
+      style={{ padding: 24, display: 'grid', gap: 20, color: '#222', background: '#f9f9f9' }}
+    >
       <Typography variant="h1">EPUB Import Test Page</Typography>
       <Typography variant="body1">
         Use this page to manually verify EPUB to markdown conversion output.
@@ -119,6 +122,7 @@ export const TestImportModule = () => {
         return (
           <section
             key={book.id}
+            data-testid={`epub-import-book-${book.id}`}
             style={{
               display: 'grid',
               gap: 10,
@@ -134,14 +138,24 @@ export const TestImportModule = () => {
                 <div>{book.publicPath}</div>
               </div>
 
-              <button type="button" onClick={() => parseBook(book)} disabled={state.isParsing}>
+              <button
+                type="button"
+                data-testid={`epub-import-parse-${book.id}`}
+                onClick={() => parseBook(book)}
+                disabled={state.isParsing}
+              >
                 {state.isParsing ? 'Parsing...' : 'Parse'}
               </button>
             </div>
 
-            {state.error ? <div style={{ color: '#b00020' }}>{state.error}</div> : null}
+            {state.error ? (
+              <div data-testid={`epub-import-error-${book.id}`} style={{ color: '#b00020' }}>
+                {state.error}
+              </div>
+            ) : null}
 
             <textarea
+              data-testid={`epub-import-output-${book.id}`}
               readOnly
               value={state.output}
               placeholder="Parsed markdown output will appear here"
