@@ -10,39 +10,26 @@ Manually debug hot e2e works, improve if needed.
 
 ### Phase 1: Split converted of epub to markdown.
 
-We are going to write proper e2e test for this module.
-webApp/src/features/Reader/utils/epubImport.ts
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
-The goal of our testing is to stabilize epub to markdown converter
+We have e2e that check epub to markdown import;
+webApp/e2e/booksEpubToMarkdown.spec.ts
 
-Your goal for now, it to create a separate page, "/book/test/epubImport"
-On this page, will be show a list of test books with button "Parse",
-and text areas with results of convertEpubFile.
+For now let's fix this behavior of converter:
 
-Where to get tests book:
-We already have some tests books that places here:
-webApp/public/Reader/pride_and_prejudice.epub
+On the book I see this as none markdown style. The book is "The Secret of Chimneys"
 
-Render them on /book/test/epubImport
+```
+The Project Gutenberg eBook of The Secret of Chimneys
+-----------------------------------------------------
+```
 
-For context about Reader, you can check this info about related modules.
-webApp/src/features/Reader/AGENTS.md
+Update import to handle to more correctly. Try to create more general solution that fixing exactly this book case.
 
-Place that TestImportModule inside
-webApp/src/features/Reader/test
+After our changes update e2e, and run all e2e (important) to check if it does not broke other parts of the app.
 
-After you finish creating that page run all e2e to ensure everything is still working, then wait for my approve. Then we will write e2e.
-
-±±±±±±±±±±±±±±±
-
-Create a new e2e file, called "booksEpubToMarkdown".
-
-Write e2e test for each of the book.
-
-Each test should be simple.
-Press on "Convert", wait unit it finished, check resulted markdown with expected. Check only the first 700 symbols (because the books is huge). It's enough for now to check only the first part.
-
-Update webApp/src/features/Reader/AGENTS.md if needed
+Reader info:
+/webApp/src/features/Reader/AGENTS.md
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
