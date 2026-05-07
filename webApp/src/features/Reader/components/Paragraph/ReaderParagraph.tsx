@@ -19,6 +19,7 @@ import {
   reconcileSelection,
   type RawSelectionRange,
 } from './libs/selectionPipeline';
+import { scheduleSelectionRestore } from './libs/selectionRestoreObserver';
 import { getCharHighlightColor as getCharColorAtOffset } from './libs/highlightColorAtCharOffset';
 
 export interface ReaderParagraphSelectionPayload {
@@ -102,6 +103,7 @@ const ReaderParagraphBase = ({
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
   const paragraphRef = useRef<HTMLDivElement | null>(null);
+  const cancelSelectionRestoreRef = useRef<(() => void) | null>(null);
 
   // Phase 1 (read-only): build the per-paragraph rendered token map and expose it
   // via debug data attributes. The renderer does not consume it yet.
@@ -297,16 +299,10 @@ const ReaderParagraphBase = ({
       anchorPosition: getPopoverPositionFromRect(captured.rect),
     });
 
-    const restoreSelection = () => {
-      applySelection({ paragraphElement: paragraphRef.current, range: reconciled });
-    };
-    // TODO(Phase 4): replace this timer chain with a MutationObserver-based
-    // single-shot re-apply after the popover transition settles.
-    requestAnimationFrame(() => {
-      restoreSelection();
-      setTimeout(restoreSelection, 60);
-      setTimeout(restoreSelection, 180);
-      setTimeout(restoreSelection, 350);
+    cancelSelectionRestoreRef.current?.();
+    cancelSelectionRestoreRef.current = scheduleSelectionRestore({
+      paragraphElement: paragraphRef.current,
+      range: reconciled,
     });
 
     playText(reconciled.text);
@@ -381,23 +377,14 @@ const ReaderParagraphBase = ({
       anchorPosition: getPopoverPositionFromRect(rect),
     });
 
-    const restoreSelection = () => {
-      const currentWordElement = paragraphRef.current?.querySelector<HTMLElement>(
-        `[data-word-index="${wordIndex}"]`,
-      );
-      applySelection({
-        paragraphElement: paragraphRef.current,
-        range: reconciled,
-        fallbackElement: currentWordElement ?? null,
-      });
-    };
-    // TODO(Phase 4): replace this timer chain with a MutationObserver-based
-    // single-shot re-apply after the popover transition settles.
-    requestAnimationFrame(() => {
-      restoreSelection();
-      setTimeout(restoreSelection, 60);
-      setTimeout(restoreSelection, 180);
-      setTimeout(restoreSelection, 350);
+    const wordElementForFallback =
+      paragraphRef.current?.querySelector<HTMLElement>(`[data-word-index="${wordIndex}"]`) ??
+      e.currentTarget;
+    cancelSelectionRestoreRef.current?.();
+    cancelSelectionRestoreRef.current = scheduleSelectionRestore({
+      paragraphElement: paragraphRef.current,
+      range: reconciled,
+      fallbackElement: wordElementForFallback,
     });
   };
 

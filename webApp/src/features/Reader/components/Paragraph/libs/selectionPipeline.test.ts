@@ -62,14 +62,16 @@ describe('reconcileSelection', () => {
 
 describe('rangeToHighlightOffsets', () => {
   it('converts exclusive end to inclusive endIndex and adds paragraph offset', () => {
-    expect(
-      rangeToHighlightOffsets({ startInclusive: 3, endExclusive: 8 }, 100),
-    ).toEqual({ startIndex: 103, endIndex: 107 });
+    expect(rangeToHighlightOffsets({ startInclusive: 3, endExclusive: 8 }, 100)).toEqual({
+      startIndex: 103,
+      endIndex: 107,
+    });
   });
 
   it('handles a single-character range', () => {
-    expect(
-      rangeToHighlightOffsets({ startInclusive: 0, endExclusive: 1 }, 0),
-    ).toEqual({ startIndex: 0, endIndex: 0 });
+    expect(rangeToHighlightOffsets({ startInclusive: 0, endExclusive: 1 }, 0)).toEqual({
+      startIndex: 0,
+      endIndex: 0,
+    });
   });
 });
