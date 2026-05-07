@@ -168,10 +168,7 @@ export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp |
     .toBeTruthy();
 };
 
-export const assertPhraseHighlightedYellowWithSpaces = async (
-  page: Page,
-  phrase: string,
-) => {
+export const assertPhraseHighlightedYellowWithSpaces = async (page: Page, phrase: string) => {
   await expect
     .poll(async () =>
       page.evaluate((targetPhrase) => {
@@ -182,7 +179,9 @@ export const assertPhraseHighlightedYellowWithSpaces = async (
           document.querySelectorAll<HTMLElement>('[data-reader-paragraph-start-offset]'),
         );
         const paragraph = paragraphCandidates.find((entry) =>
-          normalizeWhitespace(entry.textContent ?? '').toLowerCase().includes(normalizedTarget),
+          normalizeWhitespace(entry.textContent ?? '')
+            .toLowerCase()
+            .includes(normalizedTarget),
         );
         if (!paragraph) return false;
 
@@ -199,8 +198,8 @@ export const assertPhraseHighlightedYellowWithSpaces = async (
               yellow: window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102'),
             };
           })
-          .filter((entry): entry is { offset: number; char: string; yellow: boolean } =>
-            entry !== null,
+          .filter(
+            (entry): entry is { offset: number; char: string; yellow: boolean } => entry !== null,
           )
           .sort((a, b) => a.offset - b.offset);
 
@@ -219,7 +218,10 @@ export const assertPhraseHighlightedYellowWithSpaces = async (
           (entry) => entry.char === ' ' && entry.yellow,
         ).length;
 
-        return phraseEntries.every((entry) => entry.yellow) && highlightedSpaceCount === expectedSpaceCount;
+        return (
+          phraseEntries.every((entry) => entry.yellow) &&
+          highlightedSpaceCount === expectedSpaceCount
+        );
       }, phrase),
     )
     .toBeTruthy();
