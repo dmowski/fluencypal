@@ -64,3 +64,8 @@ i18n._('Speaking');
 
 - `../README.md`
 - `FIREBASE_EMULATOR_SETUP.md`
+- `src/features/Reader/ReaderHighlightRefactoring.md` — source of truth for any
+  change touching Reader paragraph rendering, highlighting, hover, or selection.
+  Read it before modifying `src/features/Reader/components/Paragraph/`,
+  `useReaderHighlightPopover`, or related e2e helpers under
+  `e2e/libs/books/`.
