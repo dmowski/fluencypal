@@ -47,7 +47,9 @@ const parseCurrentPageFromIndicator = (value: string): number => {
 };
 
 test.describe('markdown rendering', () => {
-  test('updates browser tab title for active book and restores it after close', async ({ page }) => {
+  test('updates browser tab title for active book and restores it after close', async ({
+    page,
+  }) => {
     await page.addInitScript(() => {
       window.localStorage.clear();
       window.sessionStorage.clear();
