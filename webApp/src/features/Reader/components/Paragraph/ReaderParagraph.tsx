@@ -111,6 +111,15 @@ const ReaderParagraphBase = ({
       process.env.NODE_ENV === 'production' ? null : validateParagraphTokenMap(paragraphTokenMap),
     [paragraphTokenMap],
   );
+  // Phase 2: ordered list of tokens that the markdown renderer emits as visible words.
+  // The wordIndex passed to renderWord/renderSpace indexes into this array.
+  const renderableTokens = useMemo(
+    () =>
+      paragraphTokenMap.tokens.filter(
+        (token) => token.kind === 'word' || token.kind === 'link' || token.kind === 'image',
+      ),
+    [paragraphTokenMap],
+  );
 
   const getCoreWordSelectionMeta = (rawWord: string) => {
     let startOffset = 0;
@@ -503,19 +512,21 @@ const ReaderParagraphBase = ({
   };
 
   const renderSpace = (word: string, wordIndex: number) => {
-    const { sourceWord, sourceStart } = resolveSourceWordMeta({
-      renderedWord: word,
-      wordIndex,
-    });
-    const wordStart = sourceStart;
-    const wordLength = sourceWord.length;
+    const renderableToken = renderableTokens[wordIndex];
+    const fallback = resolveSourceWordMeta({ renderedWord: word, wordIndex });
+    const spaceCharOffset = renderableToken
+      ? renderableToken.sourceEndExclusive
+      : fallback.sourceStart + fallback.sourceWord.length;
 
     return (
       <span
-        data-char-offset={wordStart + wordLength}
+        data-char-offset={spaceCharOffset}
+        data-reader-token-kind="space"
+        data-reader-token-source-start={spaceCharOffset}
+        data-reader-token-source-end-exclusive={spaceCharOffset + 1}
         style={{
           backgroundColor:
-            getCharColorAtOffset(wordStart + wordLength + paragraphStartCharOffset, highlights) ??
+            getCharColorAtOffset(spaceCharOffset + paragraphStartCharOffset, highlights) ??
             'transparent',
           cursor: 'pointer',
         }}
@@ -557,18 +568,40 @@ const ReaderParagraphBase = ({
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={({ word, wordIndex }) => {
-            const { sourceWord, sourceStart } = resolveSourceWordMeta({
-              renderedWord: word,
-              wordIndex,
-            });
-            // In markdown mode, source tokens can contain decorators (e.g. **word**).
-            // Map rendered word chars to the visible substring inside the source token.
-            const renderedWordStartInSource = sourceWord.toLowerCase().indexOf(word.toLowerCase());
-            const wordStart =
-              renderedWordStartInSource >= 0
-                ? sourceStart + renderedWordStartInSource
-                : sourceStart;
-            const sourceWordStartCharOffset = paragraphStartCharOffset + sourceStart;
+            // Phase 2: prefer the token-map mapping; fall back to the legacy
+            // heuristic only when the token-map lookup is unavailable.
+            const renderableToken = renderableTokens[wordIndex];
+            const tokenSourceStart = renderableToken?.sourceStart ?? null;
+            const tokenSourceEndExclusive = renderableToken?.sourceEndExclusive ?? null;
+            const tokenSourceWordIndex =
+              renderableToken &&
+              (renderableToken.kind === 'word' ||
+                renderableToken.kind === 'link' ||
+                renderableToken.kind === 'image')
+                ? renderableToken.wordIndex
+                : null;
+
+            let wordStart: number;
+            if (tokenSourceStart !== null && tokenSourceEndExclusive !== null) {
+              // For 'word' tokens the span text exactly matches the source slice;
+              // for 'link'/'image' tokens the span text is the visible label,
+              // which always starts at sourceStart in the rendered chunk.
+              wordStart = tokenSourceStart;
+            } else {
+              const { sourceWord, sourceStart } = resolveSourceWordMeta({
+                renderedWord: word,
+                wordIndex,
+              });
+              const renderedWordStartInSource = sourceWord
+                .toLowerCase()
+                .indexOf(word.toLowerCase());
+              wordStart =
+                renderedWordStartInSource >= 0
+                  ? sourceStart + renderedWordStartInSource
+                  : sourceStart;
+            }
+
+            const sourceWordStartCharOffset = paragraphStartCharOffset + wordStart;
             const isResizeAnchorWord =
               isResizeAnchorHighlightVisible &&
               resizeAnchorWordStartCharOffset != null &&
@@ -579,6 +612,12 @@ const ReaderParagraphBase = ({
                 component="span"
                 className="conversation-word"
                 data-word-index={wordIndex}
+                data-reader-token-kind={renderableToken?.kind ?? 'word'}
+                data-reader-token-source-start={tokenSourceStart ?? wordStart}
+                data-reader-token-source-end-exclusive={
+                  tokenSourceEndExclusive ?? wordStart + word.length
+                }
+                data-reader-word-source-index={tokenSourceWordIndex ?? undefined}
                 data-reader-word-anchor="true"
                 data-reader-anchor-key={`${paragraphIndex}-${sourceWordStartCharOffset}`}
                 data-reader-anchor-paragraph-index={paragraphIndex}

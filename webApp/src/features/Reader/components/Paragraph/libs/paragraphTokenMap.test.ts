@@ -116,6 +116,25 @@ describe('buildParagraphTokenMap', () => {
       expect(map.tokens[map.tokens.length - 1].kind).not.toBe('space');
     });
 
+    it('strips a leading-only decorator when the closing decorator lives on a later source word', () => {
+      // markdown-to-jsx pairs `**` across word boundaries: `**criticizing anyone**,”`
+      // renders as bold "criticizing anyone" then `,”`. The leading `**` on the
+      // first source word and the trailing `**` on the second must be stripped.
+      const map = buildParagraphTokenMap(['**criticizing', 'anyone**,”']);
+      const wordTokens = map.tokens.filter((t) => t.kind === 'word');
+      expect(wordTokens.map((t) => (t.kind === 'word' ? t.text : ''))).toEqual([
+        'criticizing',
+        'anyone',
+        ',”',
+      ]);
+      const [criticizing] = wordTokens;
+      if (criticizing.kind === 'word') {
+        // 'criticizing' starts at offset 2 (after the leading **) in the source word.
+        expect(criticizing.sourceStart).toBe(2);
+        expect(criticizing.sourceEndExclusive).toBe(2 + 'criticizing'.length);
+      }
+    });
+
     it('preserves words[] index across decorator-stripped words', () => {
       const map = buildParagraphTokenMap(['plain', '_italic_', 'after']);
       const wordTokens = map.tokens.filter((t) => t.kind === 'word');

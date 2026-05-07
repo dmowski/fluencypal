@@ -146,6 +146,22 @@ const tokenizeWord = (
     trailingPunctuationLength,
   );
 
+  // Markdown emphasis decorators are stripped by the renderer. The split into
+  // multiple rendered tokens happens whenever ANY decorator is present on the
+  // source word (open and/or close, possibly spanning multiple source words).
+  // A bare word with no decorators (e.g. `anyone,`) renders as a single token.
+  if (leadingDecoratorLength === 0 && trailingDecoratorLength === 0) {
+    return [
+      {
+        kind: 'word',
+        text: rawWord,
+        sourceStart: wordSourceStart,
+        sourceEndExclusive: wordSourceStart + rawWord.length,
+        wordIndex,
+      },
+    ];
+  }
+
   const innerWordStart = leadingDecoratorLength;
   const innerWordEnd = rawWord.length - trailingPunctuationLength - trailingDecoratorLength;
 
