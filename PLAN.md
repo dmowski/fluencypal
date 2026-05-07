@@ -2,9 +2,8 @@
 
 ## Reader
 
-TODO: Change colors of highlights
-
-START: READY TO SUBMIT PROMPT=======
+Expand highlights function to a separate page:
+Understand how highlights works. How it calculated and how it renders
 
 END: READY TO SUBMIT PROMPT=========
 

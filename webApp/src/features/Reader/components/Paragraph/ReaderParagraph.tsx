@@ -132,6 +132,87 @@ const ReaderParagraphBase = ({
     };
   };
 
+  const resolveSourceWordMeta = ({
+    renderedWord,
+    wordIndex,
+  }: {
+    renderedWord: string;
+    wordIndex: number;
+  }) => {
+    const fallback = getSafeWordMeta({
+      wordIndex,
+      fallbackWord: renderedWord,
+      words,
+      wordCharOffsets,
+    });
+
+    if (!shouldRenderMarkdown) {
+      return fallback;
+    }
+
+    const normalizedRendered = getCoreWordSelectionMeta(renderedWord).normalizedWord.toLowerCase();
+    if (!normalizedRendered) {
+      return fallback;
+    }
+
+    const matchQuality = (sourceWord: string): 0 | 1 | 2 => {
+      const normalizedSource = getCoreWordSelectionMeta(sourceWord).normalizedWord.toLowerCase();
+      if (!normalizedSource) {
+        return 0;
+      }
+      if (normalizedSource === normalizedRendered) {
+        return 2; // exact core match
+      }
+      if (normalizedRendered.includes(normalizedSource)) {
+        return 1; // rendered contains source (rendered word is a superset of source core)
+      }
+      return 0;
+    };
+
+    // Find the closest word with the highest match quality.
+    let bestIndex = -1;
+    let bestQuality = 0;
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    for (let i = 0; i < words.length; i += 1) {
+      const quality = matchQuality(words[i] ?? '');
+      if (quality === 0) continue;
+      const dist = Math.abs(i - wordIndex);
+      if (quality > bestQuality || (quality === bestQuality && dist < bestDistance)) {
+        bestIndex = i;
+        bestQuality = quality;
+        bestDistance = dist;
+      }
+    }
+
+    if (bestIndex < 0) {
+      // Secondary: pure-punctuation fallback — find the nearest source word whose full
+      // text contains the rendered token (handles stripped markdown decorators like "me*,"
+      // which renders as "me" + standalone ",").
+      let bestPunDist = Number.POSITIVE_INFINITY;
+      for (let i = 0; i < words.length; i += 1) {
+        if ((words[i] ?? '').includes(renderedWord)) {
+          const dist = Math.abs(i - wordIndex);
+          if (dist < bestPunDist) {
+            bestPunDist = dist;
+            bestIndex = i;
+          }
+        }
+      }
+    }
+
+    if (bestIndex < 0) {
+      return fallback;
+    }
+
+    return getSafeWordMeta({
+      wordIndex: bestIndex,
+      fallbackWord: renderedWord,
+      words,
+      wordCharOffsets,
+    });
+  };
+
   const getClickedElementCoreCharRange = (element: HTMLElement, rawWord: string) => {
     const charSpans = Array.from(element.querySelectorAll<HTMLElement>('[data-char-offset]'));
     if (!charSpans.length) {
@@ -179,36 +260,40 @@ const ReaderParagraphBase = ({
         const directRangeOffsets = paragraphRef.current
           ? getRangeCharOffsets(range, paragraphRef.current)
           : null;
-        const resolvedOffsets = directRangeOffsets
-          ? directRangeOffsets
-          : (() => {
-              const startFromDom = getAbsoluteCharOffset(
-                range.startContainer,
-                range.startOffset,
-                wordCharOffsets,
-              );
-              // endOffset is exclusive in the Selection API.
-              const endFromDom = getAbsoluteCharOffset(
-                range.endContainer,
-                range.endOffset,
-                wordCharOffsets,
-              );
+        const startFromDom = getAbsoluteCharOffset(
+          range.startContainer,
+          range.startOffset,
+          wordCharOffsets,
+        );
+        // endOffset is exclusive in the Selection API.
+        const endFromDom = getAbsoluteCharOffset(
+          range.endContainer,
+          range.endOffset,
+          wordCharOffsets,
+        );
 
-              if (startFromDom != null && endFromDom != null) {
-                const startInclusive = Math.min(startFromDom, endFromDom);
-                const endExclusive = Math.max(startFromDom, endFromDom);
-                if (endExclusive > startInclusive) {
-                  return { startInclusive, endExclusive };
-                }
-              }
+        const fallbackOffsets = (() => {
+          if (startFromDom == null || endFromDom == null) {
+            return null;
+          }
 
-              return reconcileSelectionOffsets({
-                paragraphText,
-                selectedText,
-                rawStart: startFromDom,
-                rawEnd: endFromDom,
-              });
-            })();
+          const startInclusive = Math.min(startFromDom, endFromDom);
+          const endExclusive = Math.max(startFromDom, endFromDom);
+          if (endExclusive <= startInclusive) {
+            return null;
+          }
+
+          return { startInclusive, endExclusive };
+        })();
+
+        const rawOffsets = directRangeOffsets ?? fallbackOffsets;
+        const resolvedOffsets =
+          reconcileSelectionOffsets({
+            paragraphText,
+            selectedText,
+            rawStart: rawOffsets?.startInclusive ?? startFromDom,
+            rawEnd: rawOffsets?.endExclusive ?? endFromDom,
+          }) ?? rawOffsets;
 
         if (resolvedOffsets) {
           const selection = createSelectionFromRange({
@@ -283,8 +368,12 @@ const ReaderParagraphBase = ({
     }
 
     const element = e.currentTarget as HTMLElement;
-    const clickedCharRange = getClickedElementCoreCharRange(element, word);
-    const coreSelectionMeta = getCoreWordSelectionMeta(word);
+    const elementText = normalizeSelectedText(element.textContent);
+    const fallbackWordFromElement = elementText.split(/\s+/u).at(-1) ?? word;
+    const rawWordForSelection = /\s/u.test(word) ? fallbackWordFromElement : word;
+
+    const clickedCharRange = getClickedElementCoreCharRange(element, rawWordForSelection);
+    const coreSelectionMeta = getCoreWordSelectionMeta(rawWordForSelection);
     const clickedWordText = clickedCharRange?.normalizedWord ?? coreSelectionMeta.normalizedWord;
 
     playText(clickedWordText);
@@ -293,16 +382,24 @@ const ReaderParagraphBase = ({
     e.preventDefault();
     e.stopPropagation();
 
-    const fallbackWordMeta = getSafeWordMeta({
+    const fallbackWordMeta = resolveSourceWordMeta({
+      renderedWord: rawWordForSelection,
       wordIndex,
-      fallbackWord: word,
-      words,
-      wordCharOffsets,
     });
     const fallbackWordStart = fallbackWordMeta.sourceStart + coreSelectionMeta.startOffset;
     const fallbackWordEnd = fallbackWordMeta.sourceStart + coreSelectionMeta.endOffsetExclusive;
-    const wordStart = clickedCharRange?.startOffset ?? fallbackWordStart;
-    const wordEnd = clickedCharRange?.endOffset ?? fallbackWordEnd;
+    const rawWordStart = clickedCharRange?.startOffset ?? fallbackWordStart;
+    const rawWordEnd = clickedCharRange?.endOffset ?? fallbackWordEnd;
+
+    const reconciledWordOffsets = reconcileSelectionOffsets({
+      paragraphText,
+      selectedText: clickedWordText,
+      rawStart: rawWordStart,
+      rawEnd: rawWordEnd,
+    });
+
+    const wordStart = reconciledWordOffsets?.startInclusive ?? rawWordStart;
+    const wordEnd = reconciledWordOffsets?.endExclusive ?? rawWordEnd;
 
     const selection = createSelectionFromRange({
       paragraphIndex,
@@ -334,29 +431,45 @@ const ReaderParagraphBase = ({
     });
 
     requestAnimationFrame(() => {
-      const restored = applyNativeSelectionByOffsets({
-        paragraphElement: paragraphRef.current,
-        startInclusive: wordStart,
-        endExclusive: wordEnd,
-      });
+      const restoreSelection = () => {
+        const restoredByOffsets = applyNativeSelectionByOffsets({
+          paragraphElement: paragraphRef.current,
+          startInclusive: wordStart,
+          endExclusive: wordEnd,
+        });
 
-      if (!restored) {
+        const restoredText = normalizeSelectedText(window.getSelection()?.toString());
+        if (restoredByOffsets && restoredText === clickedWordText) {
+          return;
+        }
+
+        const restoredByText = applyNativeSelectionByText({
+          paragraphElement: paragraphRef.current,
+          selectedValue: clickedWordText,
+          startHint: wordStart,
+        });
+        if (restoredByText) {
+          return;
+        }
+
         const paragraphElement = paragraphRef.current;
         if (!paragraphElement) return;
         const currentWordElement = paragraphElement.querySelector<HTMLElement>(
           `[data-word-index="${wordIndex}"]`,
         );
         applyNativeSelectionForWordElement(currentWordElement);
-      }
+      };
+
+      restoreSelection();
+      setTimeout(restoreSelection, 60);
+      setTimeout(restoreSelection, 180);
     });
   };
 
-  const renderSpace = (wordIndex: number) => {
-    const { sourceWord, sourceStart } = getSafeWordMeta({
+  const renderSpace = (word: string, wordIndex: number) => {
+    const { sourceWord, sourceStart } = resolveSourceWordMeta({
+      renderedWord: word,
       wordIndex,
-      fallbackWord: '',
-      words,
-      wordCharOffsets,
     });
     const wordStart = sourceStart;
     const wordLength = sourceWord.length;
@@ -405,11 +518,9 @@ const ReaderParagraphBase = ({
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={({ word, wordIndex }) => {
-            const { sourceWord, sourceStart } = getSafeWordMeta({
+            const { sourceWord, sourceStart } = resolveSourceWordMeta({
+              renderedWord: word,
               wordIndex,
-              fallbackWord: word,
-              words,
-              wordCharOffsets,
             });
             // In markdown mode, source tokens can contain decorators (e.g. **word**).
             // Map rendered word chars to the visible substring inside the source token.
@@ -471,12 +582,22 @@ const ReaderParagraphBase = ({
                 onMouseEnter={(e) => {
                   void onWordHover?.(word, e);
                   const coreSelectionMeta = getCoreWordSelectionMeta(word);
+                  const rawHoverStart = wordStart + coreSelectionMeta.startOffset;
+                  const rawHoverEndExclusive = wordStart + coreSelectionMeta.endOffsetExclusive;
+                  const reconciledHoverOffsets = reconcileSelectionOffsets({
+                    paragraphText,
+                    selectedText: coreSelectionMeta.normalizedWord,
+                    rawStart: rawHoverStart,
+                    rawEnd: rawHoverEndExclusive,
+                  });
+                  const hoverStart = reconciledHoverOffsets?.startInclusive ?? rawHoverStart;
+                  const hoverEndExclusive =
+                    reconciledHoverOffsets?.endExclusive ?? rawHoverEndExclusive;
+
                   onWordHoverInfo?.({
                     paragraphIndex,
-                    startIndex:
-                      wordStart + coreSelectionMeta.startOffset + paragraphStartCharOffset,
-                    endIndex:
-                      wordStart + coreSelectionMeta.endOffsetExclusive + paragraphStartCharOffset,
+                    startIndex: hoverStart + paragraphStartCharOffset,
+                    endIndex: hoverEndExclusive - 1 + paragraphStartCharOffset,
                   });
                 }}
                 onMouseMove={(e) => onWordMouseMove?.(e)}

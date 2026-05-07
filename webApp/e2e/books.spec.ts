@@ -15,6 +15,7 @@ import {
   assertWordHighlightedYellow,
   assertWordHoverHasEffect,
   applyYellowHighlight,
+  assertOnlyWordHighlightedYellow,
   clickCriticizingWord,
   closeSettingsPopover,
   enableTranslateOnHover,
@@ -30,6 +31,7 @@ import {
   selectEverInsideNeverFoundPhrase,
   selectFirstParagraphRangeByWordBoundaries,
   selectRussianTranslateTarget,
+  selectRememberWordInsideQuote,
   selectStoodInsideUnderstood,
   selectWheneverYouFeelLikeText,
   selectWheneverWordText,
@@ -419,6 +421,50 @@ test.describe('markdown rendering', () => {
 
     await hoverWordAndPressColorKey(page, /^criticizing$/i, 'y');
     await assertWordHighlightedYellow(page, /^criticizing$/i);
+  });
+
+  test('hovering remember and pressing Y highlights only remember without trailing space', async ({
+    page,
+  }) => {
+    await openSeededGatsbyBook(page);
+
+    await ensureReaderTextVisible(page, 'remember that a');
+    await hoverWordAndPressColorKey(page, /^remember$/i, 'y');
+    await assertOnlyWordHighlightedYellow(page, /^remember$/i);
+  });
+
+  test('click-selecting remember and applying Yellow highlights only remember', async ({
+    page,
+  }) => {
+    await openSeededGatsbyBook(page);
+
+    await ensureReaderTextVisible(page, 'remember that a');
+
+    const rememberWord = page
+      .locator('[data-word-index], .conversation-word')
+      .filter({ hasText: /^remember$/i })
+      .first();
+    await expect(rememberWord).toBeVisible();
+    await rememberWord.click();
+
+    await assertHighlightPopoverVisible(page);
+    await assertCurrentSelectionText(page, /^remember$/i);
+    await applyYellowHighlight(page);
+    await assertOnlyWordHighlightedYellow(page, /^remember$/i);
+  });
+
+  test('manual selection of remember and applying Yellow highlights only remember', async ({
+    page,
+  }) => {
+    await openSeededGatsbyBook(page);
+
+    await ensureReaderTextVisible(page, 'remember that all the people');
+    await selectRememberWordInsideQuote(page);
+
+    await assertHighlightPopoverVisible(page);
+    await assertCurrentSelectionText(page, /^remember$/i);
+    await applyYellowHighlight(page);
+    await assertOnlyWordHighlightedYellow(page, /^remember$/i);
   });
 
   test('reader renders a space between "like" and "criticizing"', async ({ page }) => {

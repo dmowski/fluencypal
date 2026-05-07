@@ -40,7 +40,7 @@ export interface MarkdownProps {
     event: React.MouseEvent<HTMLElement>,
   ) => void;
   renderWord?: (props: ReaderMarkdownWordProps) => React.ReactNode;
-  renderSpace?: (wordIndex: number) => React.ReactNode;
+  renderSpace?: (word: string, wordIndex: number) => React.ReactNode;
 }
 
 const normalizeImageHref = (href: string): string => {
@@ -77,7 +77,7 @@ const processStringChild = (
     const spaceIndex = nextWordIndex > 0 ? nextWordIndex - 1 : 0;
     rendered.push(
       <React.Fragment key={`${index}-leading`}>
-        {renderSpace ? renderSpace(spaceIndex) : ' '}
+        {renderSpace ? renderSpace('', spaceIndex) : ' '}
       </React.Fragment>,
     );
   }
@@ -97,7 +97,7 @@ const processStringChild = (
           </span>
         )}
         {/* Space between words within this chunk, or trailing space when the original string ended with whitespace */}
-        {!isLast || hasTrailingSpace ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
+        {!isLast || hasTrailingSpace ? (renderSpace ? renderSpace(word, wordIndex) : ' ') : null}
       </span>,
     );
   });
@@ -445,7 +445,11 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
                 {word}
               </span>
             )}
-            {wordIndex < words.length - 1 ? (renderSpace ? renderSpace(wordIndex) : ' ') : null}
+            {wordIndex < words.length - 1
+              ? renderSpace
+                ? renderSpace(word, wordIndex)
+                : ' '
+              : null}
           </span>
         ))
       ) : (

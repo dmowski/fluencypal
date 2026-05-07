@@ -194,6 +194,10 @@ export const selectStoodInsideUnderstood = async (page: Page) => {
   }
 };
 
+export const selectRememberWordInsideQuote = async (page: Page) => {
+  await selectTextPhraseAndTriggerMouseUp(page, 'remember');
+};
+
 const selectSubstringWithinContext = async (
   page: Page,
   {

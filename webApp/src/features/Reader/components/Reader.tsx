@@ -147,6 +147,7 @@ export const Reader = ({ data }: { data: Book }) => {
   } = useReaderHighlightPopover({
     sourceLanguage: readerSettings.language,
     targetLanguage: readerSettings.translateToLanguage,
+    paragraphs: data.paragraphs,
     highlights: data.highlights ?? [],
     onApplyHighlight: books.applySelectedHighlight,
     onRemoveHighlight: books.removeHighlight,

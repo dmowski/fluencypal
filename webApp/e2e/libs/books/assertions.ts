@@ -168,6 +168,128 @@ export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp |
     .toBeTruthy();
 };
 
+export const assertOnlyWordHighlightedYellow = async (page: Page, wordText: RegExp | string) => {
+  const pattern = typeof wordText === 'string' ? new RegExp(`^${wordText}$`, 'i') : wordText;
+
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        ({ patternSource, patternFlags }) => {
+          const regex = new RegExp(patternSource, patternFlags);
+          const normalize = (value: string) => value.replace(/[*_~`]+/g, '').trim();
+          const isYellow = (entry: HTMLElement) =>
+            window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102');
+
+          const candidates = Array.from(
+            document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+          );
+          const host = candidates.find((entry) => regex.test(normalize(entry.textContent ?? '')));
+          if (!host) return { ok: false, reason: 'host-not-found' };
+
+          const paragraphRoot = host.closest('.MuiTypography-root') as HTMLElement | null;
+          if (!paragraphRoot) return { ok: false, reason: 'paragraph-root-not-found' };
+
+          const hostChars = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
+          if (!hostChars.length) return { ok: false, reason: 'host-chars-not-found' };
+
+          const rendered = hostChars.map((entry) => entry.textContent ?? '').join('');
+          const match = rendered.match(regex);
+          if (!match || match.index === undefined) {
+            return { ok: false, reason: 'word-match-not-found', rendered };
+          }
+
+          const matchedChars = hostChars.slice(match.index, match.index + match[0].length);
+          if (!matchedChars.length) return { ok: false, reason: 'matched-chars-empty' };
+
+          const matchedOffsets = matchedChars
+            .map((entry) => Number(entry.getAttribute('data-char-offset') ?? '-1'))
+            .filter((offset) => !Number.isNaN(offset));
+          if (!matchedOffsets.length) return { ok: false, reason: 'matched-offsets-empty' };
+
+          const allWordCharsHighlighted = matchedChars.every((entry) => isYellow(entry));
+          if (!allWordCharsHighlighted) {
+            const yellowChars = Array.from(
+              paragraphRoot.querySelectorAll<HTMLElement>('[data-char-offset]'),
+            )
+              .filter((entry) => isYellow(entry))
+              .map((entry) => ({
+                char: entry.textContent ?? '',
+                offset: Number(entry.getAttribute('data-char-offset') ?? '-1'),
+              }))
+              .filter((entry) => !Number.isNaN(entry.offset))
+              .sort((a, b) => a.offset - b.offset)
+              .slice(0, 24);
+
+            return {
+              ok: false,
+              reason: 'word-not-fully-yellow',
+              matchedChars: matchedChars.map((entry) => ({
+                char: entry.textContent ?? '',
+                offset: Number(entry.getAttribute('data-char-offset') ?? '-1'),
+                yellow: isYellow(entry),
+              })),
+              yellowChars,
+            };
+          }
+
+          const endOffset = Math.max(...matchedOffsets);
+
+          const trailingSpace = paragraphRoot.querySelector<HTMLElement>(
+            `[data-char-offset="${endOffset + 1}"]`,
+          );
+          if (
+            trailingSpace &&
+            (trailingSpace.textContent ?? '') === ' ' &&
+            isYellow(trailingSpace)
+          ) {
+            return { ok: false, reason: 'trailing-space-yellow', endOffset };
+          }
+
+          const paragraphChars = Array.from(
+            paragraphRoot.querySelectorAll<HTMLElement>('[data-char-offset]'),
+          )
+            .map((entry) => {
+              const offset = Number(entry.getAttribute('data-char-offset') ?? '-1');
+              return Number.isNaN(offset)
+                ? null
+                : {
+                    entry,
+                    offset,
+                    char: entry.textContent ?? '',
+                  };
+            })
+            .filter(
+              (
+                entry,
+              ): entry is {
+                entry: HTMLElement;
+                offset: number;
+                char: string;
+              } => entry !== null,
+            )
+            .sort((a, b) => a.offset - b.offset);
+
+          const nextVisibleChar = paragraphChars.find(
+            (entry) => entry.offset > endOffset && entry.char.trim().length > 0,
+          );
+
+          if (nextVisibleChar && isYellow(nextVisibleChar.entry)) {
+            return {
+              ok: false,
+              reason: 'next-visible-char-yellow',
+              nextChar: nextVisibleChar.char,
+              nextOffset: nextVisibleChar.offset,
+            };
+          }
+
+          return { ok: true };
+        },
+        { patternSource: pattern.source, patternFlags: pattern.flags },
+      ),
+    )
+    .toEqual({ ok: true });
+};
+
 export const assertPhraseHighlightedYellowWithSpaces = async (page: Page, phrase: string) => {
   await expect
     .poll(async () =>

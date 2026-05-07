@@ -5,6 +5,7 @@ import { canTranslateReaderText } from '../components/Paragraph/libs/readerTextT
 import { getHighlightAtCharRange } from '../components/Paragraph/libs/highlightColorAtCharOffset';
 import { HighlightedText } from '../model/types';
 import { ReaderParagraphSelectionPayload } from '../components/Paragraph/ReaderParagraph';
+import { reconcileSelectionOffsets } from '../components/Paragraph/libs/selectionOffsetReconciliation';
 import { NativeLangCode } from '@/libs/language/type';
 import { applyHighlightColor } from '../utils/applyHighlightColor';
 
@@ -23,12 +24,14 @@ interface ActivePopoverState {
 export const useReaderHighlightPopover = ({
   sourceLanguage,
   targetLanguage,
+  paragraphs,
   highlights,
   onApplyHighlight,
   onRemoveHighlight,
 }: {
   sourceLanguage: string;
   targetLanguage: NativeLangCode | null;
+  paragraphs: string[][];
   highlights: HighlightedText[];
   onApplyHighlight: (highlight: HighlightedText) => void;
   onRemoveHighlight: (highlight: HighlightedText) => void;
@@ -159,10 +162,78 @@ export const useReaderHighlightPopover = ({
     (color: string) => {
       if (!activePopover) return;
 
+      const normalizedSelectionText = normalizeSelectedText(activePopover.selectionText);
+      const paragraphText = (paragraphs[activePopover.paragraphIndex] ?? []).join(' ');
+      const reconciledSelection =
+        paragraphText && normalizedSelectionText
+          ? reconcileSelectionOffsets({
+              paragraphText,
+              selectedText: normalizedSelectionText,
+              rawStart: activePopover.selection.startIndex,
+              rawEnd: activePopover.selection.endIndex + 1,
+            })
+          : null;
+
+      const isSingleWordSelection = !/\s/u.test(normalizedSelectionText);
+      const singleWordClampedSelection = (() => {
+        if (!isSingleWordSelection || !normalizedSelectionText.length) {
+          return null;
+        }
+
+        if (paragraphText.length > 0) {
+          const occurrences: number[] = [];
+          const lowerParagraph = paragraphText.toLowerCase();
+          const lowerSelection = normalizedSelectionText.toLowerCase();
+          let cursor = 0;
+
+          while (cursor <= lowerParagraph.length) {
+            const foundAt = lowerParagraph.indexOf(lowerSelection, cursor);
+            if (foundAt < 0) {
+              break;
+            }
+            occurrences.push(foundAt);
+            cursor = foundAt + 1;
+          }
+
+          if (occurrences.length > 0) {
+            const nearestStart = occurrences.reduce((best, current) =>
+              Math.abs(current - activePopover.selection.startIndex) <
+              Math.abs(best - activePopover.selection.startIndex)
+                ? current
+                : best,
+            );
+
+            return {
+              startInclusive: nearestStart,
+              endExclusive: Math.min(
+                nearestStart + normalizedSelectionText.length,
+                paragraphText.length,
+              ),
+            };
+          }
+        }
+
+        const fallbackStart = activePopover.selection.startIndex;
+        return {
+          startInclusive: fallbackStart,
+          endExclusive: fallbackStart + normalizedSelectionText.length,
+        };
+      })();
+
+      const correctedSelection = singleWordClampedSelection ?? reconciledSelection;
+
+      const selectionForApply = correctedSelection
+        ? {
+            ...activePopover.selection,
+            startIndex: correctedSelection.startInclusive,
+            endIndex: correctedSelection.endExclusive - 1,
+          }
+        : activePopover.selection;
+
       applyHighlightColor({
         paragraphIndex: activePopover.paragraphIndex,
-        startIndex: activePopover.selection.startIndex,
-        endIndex: activePopover.selection.endIndex,
+        startIndex: selectionForApply.startIndex,
+        endIndex: selectionForApply.endIndex,
         color,
         paragraphHighlights: activeParagraphHighlights,
         onApplyHighlight,
@@ -178,6 +249,7 @@ export const useReaderHighlightPopover = ({
       closeActivePopover,
       onApplyHighlight,
       onRemoveHighlight,
+      paragraphs,
     ],
   );
 
