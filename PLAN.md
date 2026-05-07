@@ -2,7 +2,10 @@
 
 ## Reader
 
+TODO: Change colors of highlights
+
 START: READY TO SUBMIT PROMPT=======
+
 END: READY TO SUBMIT PROMPT=========
 
 - How to safely split markdown into chunks?

@@ -351,6 +351,31 @@ const ReaderParagraphBase = ({
     });
   };
 
+  const renderSpace = (wordIndex: number) => {
+    const { sourceWord, sourceStart } = getSafeWordMeta({
+      wordIndex,
+      fallbackWord: '',
+      words,
+      wordCharOffsets,
+    });
+    const wordStart = sourceStart;
+    const wordLength = sourceWord.length;
+
+    return (
+      <span
+        data-char-offset={wordStart + wordLength}
+        style={{
+          backgroundColor:
+            getCharColorAtOffset(wordStart + wordLength + paragraphStartCharOffset, highlights) ??
+            'transparent',
+          cursor: 'pointer',
+        }}
+      >
+        {' '}
+      </span>
+    );
+  };
+
   return (
     <>
       <Typography
@@ -493,36 +518,7 @@ const ReaderParagraphBase = ({
               </Stack>
             );
           }}
-          renderSpace={
-            shouldRenderMarkdown
-              ? undefined
-              : (wordIndex) => {
-                  const { sourceWord, sourceStart } = getSafeWordMeta({
-                    wordIndex,
-                    fallbackWord: '',
-                    words,
-                    wordCharOffsets,
-                  });
-                  const wordStart = sourceStart;
-                  const wordLength = sourceWord.length;
-
-                  return (
-                    <span
-                      data-char-offset={wordStart + wordLength}
-                      style={{
-                        backgroundColor:
-                          getCharColorAtOffset(
-                            wordStart + wordLength + paragraphStartCharOffset,
-                            highlights,
-                          ) ?? 'transparent',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {' '}
-                    </span>
-                  );
-                }
-          }
+          renderSpace={renderSpace}
         >
           {paragraphText}
         </ReaderMarkdown>

@@ -117,6 +117,10 @@ export const selectWheneverYouFeelPartialText = async (page: Page) => {
   await selectTextPhraseAndTriggerMouseUp(page, 'henever you fee');
 };
 
+export const selectWheneverYouFeelLikeText = async (page: Page) => {
+  await selectTextPhraseAndTriggerMouseUp(page, 'Whenever you feel like');
+};
+
 export const selectWheneverWordText = async (page: Page) => {
   await ensureReaderTextVisible(page, 'Whenever you feel like');
 

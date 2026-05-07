@@ -168,6 +168,63 @@ export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp |
     .toBeTruthy();
 };
 
+export const assertPhraseHighlightedYellowWithSpaces = async (
+  page: Page,
+  phrase: string,
+) => {
+  await expect
+    .poll(async () =>
+      page.evaluate((targetPhrase) => {
+        const normalizeWhitespace = (value: string) => value.replace(/\s+/g, ' ').trim();
+        const normalizedTarget = normalizeWhitespace(targetPhrase).toLowerCase();
+
+        const paragraphCandidates = Array.from(
+          document.querySelectorAll<HTMLElement>('[data-reader-paragraph-start-offset]'),
+        );
+        const paragraph = paragraphCandidates.find((entry) =>
+          normalizeWhitespace(entry.textContent ?? '').toLowerCase().includes(normalizedTarget),
+        );
+        if (!paragraph) return false;
+
+        const chars = Array.from(paragraph.querySelectorAll<HTMLElement>('[data-char-offset]'))
+          .map((entry) => {
+            const offset = Number(entry.getAttribute('data-char-offset') ?? '-1');
+            if (Number.isNaN(offset)) {
+              return null;
+            }
+
+            return {
+              offset,
+              char: entry.textContent ?? '',
+              yellow: window.getComputedStyle(entry).backgroundColor.includes('255, 224, 102'),
+            };
+          })
+          .filter((entry): entry is { offset: number; char: string; yellow: boolean } =>
+            entry !== null,
+          )
+          .sort((a, b) => a.offset - b.offset);
+
+        if (!chars.length) return false;
+
+        const renderedText = chars.map((entry) => entry.char).join('');
+        const normalizedRendered = normalizeWhitespace(renderedText).toLowerCase();
+        const phraseStart = normalizedRendered.indexOf(normalizedTarget);
+        if (phraseStart < 0) return false;
+
+        const phraseEntries = chars.slice(phraseStart, phraseStart + normalizedTarget.length);
+        if (phraseEntries.length !== normalizedTarget.length) return false;
+
+        const expectedSpaceCount = (normalizedTarget.match(/ /g) ?? []).length;
+        const highlightedSpaceCount = phraseEntries.filter(
+          (entry) => entry.char === ' ' && entry.yellow,
+        ).length;
+
+        return phraseEntries.every((entry) => entry.yellow) && highlightedSpaceCount === expectedSpaceCount;
+      }, phrase),
+    )
+    .toBeTruthy();
+};
+
 export const assertWheneverHighlightedYellow = async (page: Page) => {
   await expect
     .poll(async () =>

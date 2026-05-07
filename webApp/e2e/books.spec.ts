@@ -3,6 +3,7 @@ import {
   assertCriticizingWordCursorIsPointer,
   assertCriticizingWordWasSpoken,
   assertCurrentSelectionText,
+  assertPhraseHighlightedYellowWithSpaces,
   assertHighlightPopoverHidden,
   assertHighlightPopoverVisible,
   assertOnlyWheneverHighlightedYellow,
@@ -30,6 +31,7 @@ import {
   selectFirstParagraphRangeByWordBoundaries,
   selectRussianTranslateTarget,
   selectStoodInsideUnderstood,
+  selectWheneverYouFeelLikeText,
   selectWheneverWordText,
   selectWheneverYouFeelPartialText,
   BOOK_SUBTITLE,
@@ -317,6 +319,18 @@ test.describe('markdown rendering', () => {
     await applyYellowHighlight(page);
     await assertWheneverHighlightedYellow(page);
     await assertOnlyWheneverHighlightedYellow(page);
+  });
+
+  test('applying Yellow highlight on "Whenever you feel like" also highlights spaces', async ({
+    page,
+  }) => {
+    await openSeededGatsbyBook(page);
+
+    await selectWheneverYouFeelLikeText(page);
+    await assertHighlightPopoverVisible(page);
+    await applyYellowHighlight(page);
+
+    await assertPhraseHighlightedYellowWithSpaces(page, 'Whenever you feel like');
   });
 
   test('book info highlights list shows context and jumps to selected highlight', async ({
