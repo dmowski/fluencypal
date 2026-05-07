@@ -9,6 +9,7 @@ import { ReaderMarkdown } from './ReaderMarkdown';
 import { getPopoverPositionFromRect } from './libs/popoverAnchorPosition';
 import { getSafeWordMeta } from './libs/wordIndexSafeMeta';
 import { reconcileSelectionOffsets } from './libs/selectionOffsetReconciliation';
+import { buildParagraphTokenMap, validateParagraphTokenMap } from './libs/paragraphTokenMap';
 import {
   getReaderParagraphTextIndent,
   hasBlockMarkdownFormatting,
@@ -101,6 +102,15 @@ const ReaderParagraphBase = ({
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);
   const paragraphRef = useRef<HTMLDivElement | null>(null);
+
+  // Phase 1 (read-only): build the per-paragraph rendered token map and expose it
+  // via debug data attributes. The renderer does not consume it yet.
+  const paragraphTokenMap = useMemo(() => buildParagraphTokenMap(words), [words]);
+  const paragraphTokenMapViolation = useMemo(
+    () =>
+      process.env.NODE_ENV === 'production' ? null : validateParagraphTokenMap(paragraphTokenMap),
+    [paragraphTokenMap],
+  );
 
   const getCoreWordSelectionMeta = (rawWord: string) => {
     let startOffset = 0;
@@ -523,6 +533,9 @@ const ReaderParagraphBase = ({
         ref={paragraphRef}
         data-reader-paragraph-start-offset={paragraphStartCharOffset}
         data-reader-paragraph-is-continuation={isParagraphStart ? undefined : 'true'}
+        data-reader-paragraph-token-count={paragraphTokenMap.tokens.length}
+        data-reader-paragraph-source-text-length={paragraphText.length}
+        data-reader-invariant-violation={paragraphTokenMapViolation ?? undefined}
         onMouseUp={handleMouseUp}
         onMouseLeave={onHoverClear}
         sx={{

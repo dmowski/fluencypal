@@ -82,6 +82,19 @@ describe('ReaderParagraph data-char-offset invariants', () => {
           expect(offset).toBeLessThanOrEqual(paragraphText.length);
         });
       });
+
+      it('exposes paragraph-token-count and source-text-length data attributes without violations', () => {
+        const { container } = renderParagraph(words, paragraphStartCharOffset);
+        const root = container.querySelector<HTMLElement>('[data-reader-paragraph-start-offset]');
+
+        expect(root).not.toBeNull();
+        expect(root?.getAttribute('data-reader-paragraph-source-text-length')).toBe(
+          String(words.join(' ').length),
+        );
+        const tokenCount = Number(root?.getAttribute('data-reader-paragraph-token-count'));
+        expect(tokenCount).toBeGreaterThan(0);
+        expect(root?.hasAttribute('data-reader-invariant-violation')).toBe(false);
+      });
     });
   });
 });

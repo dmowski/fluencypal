@@ -14,6 +14,9 @@ interface ParagraphInvariantReport {
   offsetCount: number;
   duplicates: number[];
   firstNonMonotonicAt: number | null;
+  tokenCount: number | null;
+  sourceTextLength: number | null;
+  tokenMapViolation: string | null;
 }
 
 const collectInvariantReports = async (page: import('@playwright/test').Page) =>
@@ -45,11 +48,18 @@ const collectInvariantReports = async (page: import('@playwright/test').Page) =>
         }
       }
 
+      const tokenCountAttr = root.getAttribute('data-reader-paragraph-token-count');
+      const sourceTextLengthAttr = root.getAttribute('data-reader-paragraph-source-text-length');
+      const tokenMapViolation = root.getAttribute('data-reader-invariant-violation');
+
       return {
         paragraphIndex,
         offsetCount: offsets.length,
         duplicates: duplicates.sort((a, b) => a - b),
         firstNonMonotonicAt,
+        tokenCount: tokenCountAttr === null ? null : Number(tokenCountAttr),
+        sourceTextLength: sourceTextLengthAttr === null ? null : Number(sourceTextLengthAttr),
+        tokenMapViolation,
       };
     });
   });
@@ -57,7 +67,13 @@ const collectInvariantReports = async (page: import('@playwright/test').Page) =>
 const expectAllParagraphsClean = (reports: ParagraphInvariantReport[]) => {
   expect(reports.length).toBeGreaterThan(0);
   const violations = reports.filter(
-    (report) => report.duplicates.length > 0 || report.firstNonMonotonicAt !== null,
+    (report) =>
+      report.duplicates.length > 0 ||
+      report.firstNonMonotonicAt !== null ||
+      report.tokenMapViolation !== null ||
+      report.tokenCount === null ||
+      report.sourceTextLength === null ||
+      (report.tokenCount !== null && report.tokenCount <= 0),
   );
   expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
 };
