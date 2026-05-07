@@ -1,4 +1,8 @@
-import { IMAGE_EXT_TO_MIME, IMAGE_WIDTH_CLASS_REGEX, IMAGE_WIDTH_HINT_TITLE_PREFIX } from './constants';
+import {
+  IMAGE_EXT_TO_MIME,
+  IMAGE_WIDTH_CLASS_REGEX,
+  IMAGE_WIDTH_HINT_TITLE_PREFIX,
+} from './constants';
 import { normalizeText } from './xmlUtils';
 
 export const getImageMimeType = (href: string): string | null => {
