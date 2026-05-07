@@ -2,7 +2,7 @@
 
 ## Reader
 
-- Fix case with XXXVI
+- Fix case "Participant 2:"
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
@@ -25,8 +25,6 @@ Reader info:
 - Tests: Markdown to paragraph
 
 - PWA
-
-- Tune render of some words/cases. color
 
 - Share books, highlights, but not book settings. (auth, storage)
 
