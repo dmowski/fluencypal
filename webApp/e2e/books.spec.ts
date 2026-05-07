@@ -33,6 +33,7 @@ import {
   selectWheneverWordText,
   selectWheneverYouFeelPartialText,
   BOOK_SUBTITLE,
+  BOOK_TITLE,
 } from './books.helpers';
 import { PARAGRAPH_TEXT_INDENT } from '@/features/Reader/utils/readerParagraphFormatting';
 
@@ -46,6 +47,31 @@ const parseCurrentPageFromIndicator = (value: string): number => {
 };
 
 test.describe('markdown rendering', () => {
+  test('updates browser tab title for active book and restores it after close', async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.clear();
+      window.sessionStorage.clear();
+      if (typeof indexedDB !== 'undefined') {
+        indexedDB.deleteDatabase('readerBooksDb');
+      }
+    });
+
+    await page.goto('/book');
+
+    const initialTitle = await page.title();
+
+    const gatsbyCardTitle = page.getByRole('heading', { name: BOOK_TITLE, level: 4 });
+    await expect(gatsbyCardTitle).toBeVisible();
+    await gatsbyCardTitle.click();
+
+    await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
+    await expect(page).toHaveTitle(BOOK_TITLE);
+
+    await page.keyboard.press('Escape');
+    await expect(gatsbyCardTitle).toBeVisible();
+    await expect(page).toHaveTitle(initialTitle);
+  });
+
   test('resize keeps first visible word anchored and temporary highlight is removed after 1 second', async ({
     page,
   }) => {

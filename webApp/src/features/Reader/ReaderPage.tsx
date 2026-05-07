@@ -6,9 +6,11 @@ import { ReaderPageStyle } from './components/style';
 import { BooksProvider, useBooks } from './hooks/useBooks';
 import { BooksList } from './components/BooksList';
 import { ReaderSettingsProvider } from './hooks/useReaderSettings';
+import { useDocumentTitle } from '@/libs/useDocumentTitle';
 
 const ReaderComponent = () => {
   const books = useBooks();
+  useDocumentTitle(books.active?.title);
 
   return (
     <Stack

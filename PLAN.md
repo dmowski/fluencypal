@@ -3,11 +3,6 @@
 ## Reader
 
 START: READY TO SUBMIT PROMPT=======
-When open book, show book title (Browser tab title)
-and when close, restore previous title
-Book reader info
-/webApp/src/features/Reader/AGENTS.md
-Use some general approach of browser page titles.
 END: READY TO SUBMIT PROMPT=========
 
 - PWA
@@ -19,17 +14,11 @@ END: READY TO SUBMIT PROMPT=========
 We have e2e that check epub to markdown import;
 webApp/e2e/booksEpubToMarkdown.spec.ts
 
-=================================
-
 Reader info:
 /webApp/src/features/Reader/AGENTS.md
 
-=================================
-
 Books e2e tests (Run, update them while working on the tasks):
 webApp/e2e/\*.spec.ts All e2e tests are book related
-
-=================================
 
 ## What about more strict Role-plays
 
