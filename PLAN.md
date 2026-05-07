@@ -2,40 +2,13 @@
 
 ## Reader
 
-Refactor webApp/src/features/Reader/utils/epubImport.ts
-
-Split into separate modules into webApp/src/features/Reader/utils/epubImport/ folder.
-
-After refactoring run all test to ensure everything is working.
-
-±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
-
-We have e2e that check epub to markdown import;
-webApp/e2e/booksEpubToMarkdown.spec.ts
-
-We have strange rendering on this case:
-
-Update import to handle to more correctly. Try to create more general solution that fixing exactly this book case.
-
-After our changes update e2e, and run all e2e (important) to check if it does not broke other parts of the app.
-
-Reader info:
-/webApp/src/features/Reader/AGENTS.md
-
-±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
-
-#### FEATURES
-
---- START: READY TO SUBMIT PROMPT
-
+START: READY TO SUBMIT PROMPT=======
 When open book, show book title (Browser tab title)
 and when close, restore previous title
 Book reader info
 /webApp/src/features/Reader/AGENTS.md
-
 Use some general approach of browser page titles.
-
---- END: READY TO SUBMIT PROMPT
+END: READY TO SUBMIT PROMPT=========
 
 - PWA
 
