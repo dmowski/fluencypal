@@ -27,7 +27,7 @@ Recent bugs all share the same root cause:
 
 1. **No single source of truth for the `rendered token → source character range`
    mapping.** `ReaderMarkdown` walks markdown-to-jsx children and assigns sequential
-   `wordIndex` values. `ReaderParagraph` then *guesses* the matching source word
+   `wordIndex` values. `ReaderParagraph` then _guesses_ the matching source word
    via `resolveSourceWordMeta` heuristics. Every guess is a future bug.
 2. **`data-char-offset` is not guaranteed unique or monotonic.** When the heuristic
    maps two distinct rendered tokens to the same source range, multiple DOM nodes
@@ -109,7 +109,7 @@ export const buildParagraphTokenMap = (words: string[]): ParagraphTokenMap => { 
 ```
 
 Key idea: build the token list **by parsing the same markdown source we render**,
-keeping a *consuming cursor* over `paragraphText`. Each rendered token carries the
+keeping a _consuming cursor_ over `paragraphText`. Each rendered token carries the
 exact `sourceStart`/`sourceEndExclusive` it covers. No heuristic matching at
 render time.
 
@@ -173,19 +173,19 @@ between them is a single helper.
 
 ### 3.1 Data attributes (always on)
 
-| Attribute                                       | Where                       | Purpose                                                                                  |
-| ----------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------- |
-| `data-reader-token-kind`                        | every token span            | Quick filtering: `[data-reader-token-kind="space"]`                                      |
-| `data-reader-token-source-start`                | every token span            | Source offset of token start                                                             |
-| `data-reader-token-source-end-exclusive`        | every token span            | Source offset of token end                                                               |
-| `data-reader-word-source-index`                 | word spans only             | The verified source `words[]` index this token covers                                    |
-| `data-reader-paragraph-token-count`             | paragraph root              | Token count for sanity assertions                                                        |
-| `data-reader-paragraph-source-text-length`      | paragraph root              | `paragraphText.length` for invariant checks                                              |
+| Attribute                                  | Where            | Purpose                                               |
+| ------------------------------------------ | ---------------- | ----------------------------------------------------- |
+| `data-reader-token-kind`                   | every token span | Quick filtering: `[data-reader-token-kind="space"]`   |
+| `data-reader-token-source-start`           | every token span | Source offset of token start                          |
+| `data-reader-token-source-end-exclusive`   | every token span | Source offset of token end                            |
+| `data-reader-word-source-index`            | word spans only  | The verified source `words[]` index this token covers |
+| `data-reader-paragraph-token-count`        | paragraph root   | Token count for sanity assertions                     |
+| `data-reader-paragraph-source-text-length` | paragraph root   | `paragraphText.length` for invariant checks           |
 
 ### 3.2 Dev/test invariants
 
 `libs/invariants.ts` exposes `assertParagraphInvariants(rootEl)` that, when
-`process.env.NODE_ENV !== 'production'` *or* `localStorage.getItem('readerDebug') === '1'`:
+`process.env.NODE_ENV !== 'production'` _or_ `localStorage.getItem('readerDebug') === '1'`:
 
 - Walks all `[data-char-offset]` and asserts uniqueness + monotonic order.
 - Asserts the rendered text length equals
@@ -268,6 +268,7 @@ e2e fixture.
 - Add the new `data-reader-token-*` debug attributes.
 
 Exit criteria:
+
 - `pnpm lint` clean, all unit tests green.
 - All current e2e green.
 - No `data-char-offset` collisions (asserted by Phase-0 spec).
@@ -321,14 +322,14 @@ Exit criteria: e2e flake disappears under N=5 reruns of full suite.
 
 ## 5. Risk register
 
-| Risk                                                                                 | Mitigation                                                                                            |
-| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `markdown-to-jsx` AST changes between versions                                       | Build the token map from the **markdown string** + a dedicated mini-parser, not from the JSX output   |
-| EPUB-imported markdown contains exotic constructs (tables, code, nested emphasis)    | Phase 1 unit fixtures must include real EPUB-derived paragraphs from `webApp/e2e/fixtures`            |
-| MutationObserver fires too aggressively on popover                                   | Scope observer to `paragraphRef.current`, ignore attribute mutations, debounce within one rAF         |
-| Token map memo invalidates on every render                                           | Key on `(paragraphText, paragraphIndex)`; freeze tokens; never mutate                                 |
-| Phase-2 char-offset format change breaks saved highlights                            | Highlight storage already uses `paragraphStartCharOffset + sourceOffset`; format unchanged            |
-| Bigger PRs → review pain                                                             | Each phase ships separately with green e2e                                                            |
+| Risk                                                                              | Mitigation                                                                                          |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `markdown-to-jsx` AST changes between versions                                    | Build the token map from the **markdown string** + a dedicated mini-parser, not from the JSX output |
+| EPUB-imported markdown contains exotic constructs (tables, code, nested emphasis) | Phase 1 unit fixtures must include real EPUB-derived paragraphs from `webApp/e2e/fixtures`          |
+| MutationObserver fires too aggressively on popover                                | Scope observer to `paragraphRef.current`, ignore attribute mutations, debounce within one rAF       |
+| Token map memo invalidates on every render                                        | Key on `(paragraphText, paragraphIndex)`; freeze tokens; never mutate                               |
+| Phase-2 char-offset format change breaks saved highlights                         | Highlight storage already uses `paragraphStartCharOffset + sourceOffset`; format unchanged          |
+| Bigger PRs → review pain                                                          | Each phase ships separately with green e2e                                                          |
 
 ---
 
