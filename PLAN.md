@@ -5,6 +5,10 @@
 START: READY TO SUBMIT PROMPT=======
 END: READY TO SUBMIT PROMPT=========
 
+- How to safely split markdown into chunks?
+
+For example case: _this is long italic test that we need to break in the middle_
+
 - PWA
 
 - Share books, highlights, but not book settings. (auth, storage)
