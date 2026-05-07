@@ -296,6 +296,32 @@ const normalizeStandaloneEqualsSeparators = (markdown: string): string => {
   return normalized.join('\n');
 };
 
+const normalizeBlockquoteSpacerLines = (markdown: string): string => {
+  const lines = markdown.split('\n');
+  const normalized: string[] = [];
+  let isInFencedCodeBlock = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (/^```/.test(trimmed)) {
+      isInFencedCodeBlock = !isInFencedCodeBlock;
+      normalized.push(line);
+      continue;
+    }
+
+    // EPUB conversions sometimes emit quote-only spacer lines (`>`),
+    // which later surface as visible `>` artifacts after pagination splitting.
+    if (!isInFencedCodeBlock && /^>\s*$/.test(trimmed)) {
+      continue;
+    }
+
+    normalized.push(line);
+  }
+
+  return normalized.join('\n');
+};
+
 const normalizeThematicBreaks = (markdown: string): string => {
   const lines = markdown.split('\n');
   const normalized: string[] = [];
@@ -763,12 +789,14 @@ const parseEpubOnClient = async (
       normalizeStandaloneEqualsSeparators(
         normalizeSetextHeadings(
           normalizeBrokenUnderscoreEmphasis(
-            normalizeMarkdownInlineLinks(
-              turndown
-                .turndown(prepareHtmlForTurndown(html))
-                .trim()
-                .split(`<?xml version='1.0' encoding='utf-8'?>`)
-                .join('\n'),
+            normalizeBlockquoteSpacerLines(
+              normalizeMarkdownInlineLinks(
+                turndown
+                  .turndown(prepareHtmlForTurndown(html))
+                  .trim()
+                  .split(`<?xml version='1.0' encoding='utf-8'?>`)
+                  .join('\n'),
+              ),
             ),
           ),
         ),

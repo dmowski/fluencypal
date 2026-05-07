@@ -2,7 +2,11 @@
 
 ## Reader
 
-- Fix case "Participant 2:"
+Refactor webApp/src/features/Reader/utils/epubImport.ts
+
+Split into separate modules into webApp/src/features/Reader/utils/epubImport/ folder.
+
+After refactoring run all test to ensure everything is working.
 
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 
@@ -22,7 +26,16 @@ Reader info:
 
 #### FEATURES
 
-- Tests: Markdown to paragraph
+--- START: READY TO SUBMIT PROMPT
+
+When open book, show book title (Browser tab title)
+and when close, restore previous title
+Book reader info
+/webApp/src/features/Reader/AGENTS.md
+
+Use some general approach of browser page titles.
+
+--- END: READY TO SUBMIT PROMPT
 
 - PWA
 

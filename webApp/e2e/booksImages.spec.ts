@@ -18,6 +18,7 @@ const EXPECTED_ITALIC_SENTENCE_FRAGMENT = 'memorizes rugby world champions from 
 const EXPECTED_ITALIC_WORD = 'Who,';
 const EXPECTED_HIDDEN_SYSTEM_TOKEN = '_146236082';
 const EXPECTED_CHAPTER_HEADING = 'WHEN BRAINS CONNECT';
+const EXPECTED_CONVERSATION_FRAGMENT = 'High Centrality Participant 1';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);
@@ -213,6 +214,28 @@ test('hides system token and renders chapter markdown heading as semantic headin
     readerContent.getByText(`### ${EXPECTED_CHAPTER_HEADING}`, { exact: false }),
   ).toHaveCount(0);
   await expect(page.getByText(EXPECTED_HIDDEN_SYSTEM_TOKEN, { exact: false })).toHaveCount(0);
+});
+
+test('renders conversation block without standalone blockquote marker lines', async ({ page }) => {
+  test.setTimeout(180_000);
+
+  await openBooksPageWithCleanStorage(page);
+  await importBookFromPicker(page, BOOK_FIXTURE_PATH);
+
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+
+  await ensureReaderTextVisible(page, EXPECTED_CONVERSATION_FRAGMENT, {
+    maxSteps: 80,
+  });
+
+  const readerContent = page.getByTestId('reader-content');
+  const readerText = await readerContent.innerText();
+  const standaloneBlockquoteLines = readerText
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line === '>');
+
+  expect(standaloneBlockquoteLines).toHaveLength(0);
 });
 
 test('chapter list maps each chapter to a unique target page', async ({ page }) => {
