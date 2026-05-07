@@ -64,6 +64,17 @@ export const ExperimentalDashboardCard = () => {
               actionButtonTitle: i18n._('Start'),
               onClick: () => globalModals.openEssay(),
             },
+
+            {
+              title: i18n._('Book Reader'),
+              subTitle: i18n._('Reader with some feature list translate words on the fly.'),
+              iconName: 'book',
+              iconBgColor: 'rgba(11, 8, 0, 0.8)',
+              actionButtonTitle: i18n._('Start'),
+              onClick: () => {
+                window.open('https://app.fluencypal.com/book', '_blank');
+              },
+            },
           ]}
           itemsBackgroundColor={'rgba(100, 100, 100, 0)'}
           onClick={() => startJustTalk(REALTIME_15_MODEL)}
