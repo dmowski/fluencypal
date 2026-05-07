@@ -6,8 +6,8 @@ import { normalizeSelectedText } from './libs/normalizeReaderSelectedText';
 import { HighlightedText } from '../../model/types';
 import { ReaderMarkdown } from './ReaderMarkdown';
 import { getPopoverPositionFromRect } from './libs/popoverAnchorPosition';
-import { getSafeWordMeta } from './libs/wordIndexSafeMeta';
 import { buildParagraphTokenMap, validateParagraphTokenMap } from './libs/paragraphTokenMap';
+import { getCoreWordSelectionMeta } from './libs/coreWordSelectionMeta';
 import {
   getReaderParagraphTextIndent,
   hasBlockMarkdownFormatting,
@@ -123,149 +123,26 @@ const ReaderParagraphBase = ({
     [paragraphTokenMap],
   );
 
-  const getCoreWordSelectionMeta = (rawWord: string) => {
-    let startOffset = 0;
-    let endOffsetExclusive = rawWord.length;
-
-    while (startOffset < endOffsetExclusive && !/[\p{L}\p{N}]/u.test(rawWord[startOffset])) {
-      startOffset += 1;
-    }
-
-    while (
-      endOffsetExclusive > startOffset &&
-      !/[\p{L}\p{N}]/u.test(rawWord[endOffsetExclusive - 1])
-    ) {
-      endOffsetExclusive -= 1;
-    }
-
-    if (startOffset === endOffsetExclusive) {
-      return {
-        normalizedWord: rawWord,
-        startOffset: 0,
-        endOffsetExclusive: rawWord.length,
-      };
-    }
-
-    return {
-      normalizedWord: rawWord.slice(startOffset, endOffsetExclusive),
-      startOffset,
-      endOffsetExclusive,
-    };
+  /**
+   * Source-text start offset of the rendered token at `wordIndex`. The token
+   * map is the single source of truth; the `wordCharOffsets` fallback only
+   * covers the unreachable case where the renderer emits more tokens than the
+   * map lists (would indicate a bug in `paragraphTokenMap`).
+   */
+  const getRenderedTokenSourceStart = (wordIndex: number): number => {
+    const token = renderableTokens[wordIndex];
+    if (token) return token.sourceStart;
+    return wordCharOffsets[wordIndex] ?? 0;
   };
 
-  const resolveSourceWordMeta = ({
-    renderedWord,
-    wordIndex,
-  }: {
-    renderedWord: string;
-    wordIndex: number;
-  }) => {
-    const fallback = getSafeWordMeta({
-      wordIndex,
-      fallbackWord: renderedWord,
-      words,
-      wordCharOffsets,
-    });
-
-    if (!shouldRenderMarkdown) {
-      return fallback;
-    }
-
-    const normalizedRendered = getCoreWordSelectionMeta(renderedWord).normalizedWord.toLowerCase();
-    if (!normalizedRendered) {
-      return fallback;
-    }
-
-    const matchQuality = (sourceWord: string): 0 | 1 | 2 => {
-      const normalizedSource = getCoreWordSelectionMeta(sourceWord).normalizedWord.toLowerCase();
-      if (!normalizedSource) {
-        return 0;
-      }
-      if (normalizedSource === normalizedRendered) {
-        return 2; // exact core match
-      }
-      if (normalizedRendered.includes(normalizedSource)) {
-        return 1; // rendered contains source (rendered word is a superset of source core)
-      }
-      return 0;
-    };
-
-    // Find the closest word with the highest match quality.
-    let bestIndex = -1;
-    let bestQuality = 0;
-    let bestDistance = Number.POSITIVE_INFINITY;
-
-    for (let i = 0; i < words.length; i += 1) {
-      const quality = matchQuality(words[i] ?? '');
-      if (quality === 0) continue;
-      const dist = Math.abs(i - wordIndex);
-      if (quality > bestQuality || (quality === bestQuality && dist < bestDistance)) {
-        bestIndex = i;
-        bestQuality = quality;
-        bestDistance = dist;
-      }
-    }
-
-    if (bestIndex < 0) {
-      // Secondary: pure-punctuation fallback — find the nearest source word whose full
-      // text contains the rendered token (handles stripped markdown decorators like "me*,"
-      // which renders as "me" + standalone ",").
-      let bestPunDist = Number.POSITIVE_INFINITY;
-      for (let i = 0; i < words.length; i += 1) {
-        if ((words[i] ?? '').includes(renderedWord)) {
-          const dist = Math.abs(i - wordIndex);
-          if (dist < bestPunDist) {
-            bestPunDist = dist;
-            bestIndex = i;
-          }
-        }
-      }
-    }
-
-    if (bestIndex < 0) {
-      return fallback;
-    }
-
-    return getSafeWordMeta({
-      wordIndex: bestIndex,
-      fallbackWord: renderedWord,
-      words,
-      wordCharOffsets,
-    });
-  };
-
-  const getClickedElementCoreCharRange = (element: HTMLElement, rawWord: string) => {
-    const charSpans = Array.from(element.querySelectorAll<HTMLElement>('[data-char-offset]'));
-    if (!charSpans.length) {
-      return null;
-    }
-
-    const renderedText = charSpans.map((entry) => entry.textContent ?? '').join('');
-    const { normalizedWord } = getCoreWordSelectionMeta(rawWord);
-    const startInRendered = renderedText.toLowerCase().indexOf(normalizedWord.toLowerCase());
-
-    if (startInRendered < 0) {
-      return null;
-    }
-
-    const endInRenderedExclusive = startInRendered + normalizedWord.length;
-    const startElement = charSpans[startInRendered];
-    const endElement = charSpans[endInRenderedExclusive - 1];
-    if (!startElement || !endElement) {
-      return null;
-    }
-
-    const startOffset = Number(startElement.getAttribute('data-char-offset'));
-    const endOffset = Number(endElement.getAttribute('data-char-offset')) + 1;
-    if (Number.isNaN(startOffset) || Number.isNaN(endOffset)) {
-      return null;
-    }
-
-    return {
-      normalizedWord,
-      startOffset,
-      endOffset,
-    };
+  /**
+   * Source-text end-exclusive offset of the rendered token at `wordIndex`,
+   * used to place the trailing space's `data-char-offset`.
+   */
+  const getRenderedTokenSourceEndExclusive = (wordIndex: number, fallbackWord: string): number => {
+    const token = renderableTokens[wordIndex];
+    if (token) return token.sourceEndExclusive;
+    return (wordCharOffsets[wordIndex] ?? 0) + fallbackWord.length;
   };
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
@@ -322,24 +199,20 @@ const ReaderParagraphBase = ({
     const fallbackWordFromElement = elementText.split(/\s+/u).at(-1) ?? word;
     const rawWordForSelection = /\s/u.test(word) ? fallbackWordFromElement : word;
 
-    const clickedCharRange = getClickedElementCoreCharRange(element, rawWordForSelection);
+    // Token-map gives us the source range of the clicked rendered token; the
+    // core selection meta trims trailing punctuation that may live inside a
+    // single plain-text token (e.g. `criticizing,` -> `criticizing`).
+    const tokenSourceStart = getRenderedTokenSourceStart(wordIndex);
     const coreSelectionMeta = getCoreWordSelectionMeta(rawWordForSelection);
-    const clickedWordText = clickedCharRange?.normalizedWord ?? coreSelectionMeta.normalizedWord;
+    const clickedWordText = coreSelectionMeta.normalizedWord;
+    const rawWordStart = tokenSourceStart + coreSelectionMeta.startOffset;
+    const rawWordEnd = tokenSourceStart + coreSelectionMeta.endOffsetExclusive;
 
     playText(clickedWordText);
 
     // Show highlight popover by creating a selection for this word
     e.preventDefault();
     e.stopPropagation();
-
-    const fallbackWordMeta = resolveSourceWordMeta({
-      renderedWord: rawWordForSelection,
-      wordIndex,
-    });
-    const fallbackWordStart = fallbackWordMeta.sourceStart + coreSelectionMeta.startOffset;
-    const fallbackWordEnd = fallbackWordMeta.sourceStart + coreSelectionMeta.endOffsetExclusive;
-    const rawWordStart = clickedCharRange?.startOffset ?? fallbackWordStart;
-    const rawWordEnd = clickedCharRange?.endOffset ?? fallbackWordEnd;
 
     const rawRange: RawSelectionRange = {
       startInclusive: rawWordStart,
@@ -389,11 +262,7 @@ const ReaderParagraphBase = ({
   };
 
   const renderSpace = (word: string, wordIndex: number) => {
-    const renderableToken = renderableTokens[wordIndex];
-    const fallback = resolveSourceWordMeta({ renderedWord: word, wordIndex });
-    const spaceCharOffset = renderableToken
-      ? renderableToken.sourceEndExclusive
-      : fallback.sourceStart + fallback.sourceWord.length;
+    const spaceCharOffset = getRenderedTokenSourceEndExclusive(wordIndex, word);
 
     return (
       <span
@@ -445,8 +314,6 @@ const ReaderParagraphBase = ({
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={({ word, wordIndex }) => {
-            // Phase 2: prefer the token-map mapping; fall back to the legacy
-            // heuristic only when the token-map lookup is unavailable.
             const renderableToken = renderableTokens[wordIndex];
             const tokenSourceStart = renderableToken?.sourceStart ?? null;
             const tokenSourceEndExclusive = renderableToken?.sourceEndExclusive ?? null;
@@ -458,25 +325,12 @@ const ReaderParagraphBase = ({
                 ? renderableToken.wordIndex
                 : null;
 
-            let wordStart: number;
-            if (tokenSourceStart !== null && tokenSourceEndExclusive !== null) {
-              // For 'word' tokens the span text exactly matches the source slice;
-              // for 'link'/'image' tokens the span text is the visible label,
-              // which always starts at sourceStart in the rendered chunk.
-              wordStart = tokenSourceStart;
-            } else {
-              const { sourceWord, sourceStart } = resolveSourceWordMeta({
-                renderedWord: word,
-                wordIndex,
-              });
-              const renderedWordStartInSource = sourceWord
-                .toLowerCase()
-                .indexOf(word.toLowerCase());
-              wordStart =
-                renderedWordStartInSource >= 0
-                  ? sourceStart + renderedWordStartInSource
-                  : sourceStart;
-            }
+            // Token map is the single source of truth: the rendered word's
+            // first character corresponds to `tokenSourceStart` in paragraphText.
+            // For 'word' tokens the rendered text matches the source slice; for
+            // 'link'/'image' tokens the rendered text is the visible label,
+            // which still anchors at sourceStart in the rendered chunk.
+            const wordStart = tokenSourceStart ?? getRenderedTokenSourceStart(wordIndex);
 
             const sourceWordStartCharOffset = paragraphStartCharOffset + wordStart;
             const isResizeAnchorWord =
