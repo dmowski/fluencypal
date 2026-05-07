@@ -1,24 +1,24 @@
 import { Stack, Typography } from '@mui/material';
 import { memo, MouseEvent, useMemo, useRef } from 'react';
 import { createSelectionFromRange } from './libs/selectionHighlightRange';
-import { getAbsoluteCharOffset, getRangeCharOffsets } from './libs/absoluteCharOffsetFromDomPoint';
 import { getWordCharOffsets } from './libs/selectionOffsetFromWordList';
 import { normalizeSelectedText } from './libs/normalizeReaderSelectedText';
 import { HighlightedText } from '../../model/types';
 import { ReaderMarkdown } from './ReaderMarkdown';
 import { getPopoverPositionFromRect } from './libs/popoverAnchorPosition';
 import { getSafeWordMeta } from './libs/wordIndexSafeMeta';
-import { reconcileSelectionOffsets } from './libs/selectionOffsetReconciliation';
 import { buildParagraphTokenMap, validateParagraphTokenMap } from './libs/paragraphTokenMap';
 import {
   getReaderParagraphTextIndent,
   hasBlockMarkdownFormatting,
 } from '../../utils/readerParagraphFormatting';
 import {
-  applyNativeSelectionByOffsets,
-  applyNativeSelectionByText,
-  applyNativeSelectionForWordElement,
-} from './libs/selectionDomRestore';
+  applySelection,
+  captureCurrentSelection,
+  rangeToHighlightOffsets,
+  reconcileSelection,
+  type RawSelectionRange,
+} from './libs/selectionPipeline';
 import { getCharHighlightColor as getCharColorAtOffset } from './libs/highlightColorAtCharOffset';
 
 export interface ReaderParagraphSelectionPayload {
@@ -268,127 +268,48 @@ const ReaderParagraphBase = ({
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    const sel = window.getSelection();
-    const selectedText = normalizeSelectedText(sel?.toString());
 
-    if (selectedText) {
-      const range = sel?.rangeCount ? sel.getRangeAt(0) : null;
-      const rect = range?.getBoundingClientRect();
+    const captured = captureCurrentSelection({
+      paragraphElement: paragraphRef.current,
+      words,
+    });
+    if (!captured) return;
 
-      if (range) {
-        const directRangeOffsets = paragraphRef.current
-          ? getRangeCharOffsets(range, paragraphRef.current)
-          : null;
-        const startFromDom = getAbsoluteCharOffset(
-          range.startContainer,
-          range.startOffset,
-          wordCharOffsets,
-        );
-        // endOffset is exclusive in the Selection API.
-        const endFromDom = getAbsoluteCharOffset(
-          range.endContainer,
-          range.endOffset,
-          wordCharOffsets,
-        );
+    const reconciled = reconcileSelection(captured.range, paragraphTokenMap) ?? captured.range;
+    const selection = createSelectionFromRange({
+      paragraphIndex,
+      rawStart: reconciled.startInclusive,
+      rawEnd: reconciled.endExclusive,
+    });
+    const highlightOffsets = rangeToHighlightOffsets(
+      { startInclusive: selection.startIndex, endExclusive: selection.endIndex + 1 },
+      paragraphStartCharOffset,
+    );
 
-        const fallbackOffsets = (() => {
-          if (startFromDom == null || endFromDom == null) {
-            return null;
-          }
+    onSelection({
+      paragraphIndex,
+      selection: {
+        ...selection,
+        startIndex: highlightOffsets.startIndex,
+        endIndex: highlightOffsets.endIndex,
+      },
+      selectionText: reconciled.text,
+      anchorPosition: getPopoverPositionFromRect(captured.rect),
+    });
 
-          const startInclusive = Math.min(startFromDom, endFromDom);
-          const endExclusive = Math.max(startFromDom, endFromDom);
-          if (endExclusive <= startInclusive) {
-            return null;
-          }
+    const restoreSelection = () => {
+      applySelection({ paragraphElement: paragraphRef.current, range: reconciled });
+    };
+    // TODO(Phase 4): replace this timer chain with a MutationObserver-based
+    // single-shot re-apply after the popover transition settles.
+    requestAnimationFrame(() => {
+      restoreSelection();
+      setTimeout(restoreSelection, 60);
+      setTimeout(restoreSelection, 180);
+      setTimeout(restoreSelection, 350);
+    });
 
-          return { startInclusive, endExclusive };
-        })();
-
-        const rawOffsets = directRangeOffsets ?? fallbackOffsets;
-        const resolvedOffsets =
-          reconcileSelectionOffsets({
-            paragraphText,
-            selectedText,
-            rawStart: rawOffsets?.startInclusive ?? startFromDom,
-            rawEnd: rawOffsets?.endExclusive ?? endFromDom,
-          }) ?? rawOffsets;
-
-        if (resolvedOffsets) {
-          const selection = createSelectionFromRange({
-            paragraphIndex,
-            rawStart: resolvedOffsets.startInclusive,
-            rawEnd: resolvedOffsets.endExclusive,
-          });
-          if (rect) {
-            const startForRestore = resolvedOffsets.startInclusive;
-            const endForRestore = resolvedOffsets.endExclusive;
-
-            onSelection({
-              paragraphIndex,
-              selection: {
-                ...selection,
-                startIndex: selection.startIndex + paragraphStartCharOffset,
-                endIndex: selection.endIndex + paragraphStartCharOffset,
-              },
-              selectionText: selectedText,
-              anchorPosition: getPopoverPositionFromRect(rect),
-            });
-
-            const restoreSelection = () => {
-              // Idempotent guard: if the current native selection already matches the
-              // intended selectedText, skip all mutation. removeAllRanges()+addRange()
-              // briefly leaves the selection empty between calls, and the e2e persist
-              // polling can catch that gap. Skipping when correct also avoids drifting
-              // to a different occurrence via applyNativeSelectionByText.
-              const currentSelection = normalizeSelectedText(window.getSelection()?.toString());
-              if (currentSelection === selectedText) {
-                return;
-              }
-
-              applyNativeSelectionByOffsets({
-                paragraphElement: paragraphRef.current,
-                startInclusive: startForRestore,
-                endExclusive: endForRestore,
-              });
-
-              const restoredByOffsets = normalizeSelectedText(window.getSelection()?.toString());
-              if (restoredByOffsets !== selectedText) {
-                const restoredByText = applyNativeSelectionByText({
-                  paragraphElement: paragraphRef.current,
-                  selectedValue: selectedText,
-                  startHint: startForRestore,
-                });
-                if (!restoredByText) {
-                  return;
-                }
-              }
-
-              const restoredFinal = normalizeSelectedText(window.getSelection()?.toString());
-              if (restoredFinal !== selectedText) {
-                applyNativeSelectionByOffsets({
-                  paragraphElement: paragraphRef.current,
-                  startInclusive: startForRestore,
-                  endExclusive: endForRestore,
-                });
-              }
-            };
-
-            requestAnimationFrame(() => {
-              restoreSelection();
-              setTimeout(restoreSelection, 60);
-              setTimeout(restoreSelection, 180);
-              // MUI Popover's Grow transition (~225-300ms) finishes after the
-              // earlier restores; the Modal then briefly collapses the selection
-              // onto its Paper root. Re-apply once the transition has settled.
-              setTimeout(restoreSelection, 350);
-            });
-          }
-        }
-      }
-
-      playText(selectedText);
-    }
+    playText(reconciled.text);
   };
 
   const handleWordClick = (e: MouseEvent<HTMLSpanElement>, word: string, wordIndex: number) => {
@@ -424,89 +345,58 @@ const ReaderParagraphBase = ({
     const rawWordStart = clickedCharRange?.startOffset ?? fallbackWordStart;
     const rawWordEnd = clickedCharRange?.endOffset ?? fallbackWordEnd;
 
-    const reconciledWordOffsets = reconcileSelectionOffsets({
-      paragraphText,
-      selectedText: clickedWordText,
-      rawStart: rawWordStart,
-      rawEnd: rawWordEnd,
-    });
-
-    const wordStart = reconciledWordOffsets?.startInclusive ?? rawWordStart;
-    const wordEnd = reconciledWordOffsets?.endExclusive ?? rawWordEnd;
+    const rawRange: RawSelectionRange = {
+      startInclusive: rawWordStart,
+      endExclusive: rawWordEnd,
+      text: clickedWordText,
+    };
+    const reconciled = reconcileSelection(rawRange, paragraphTokenMap) ?? rawRange;
 
     const selection = createSelectionFromRange({
       paragraphIndex,
-      rawStart: wordStart,
-      rawEnd: wordEnd,
+      rawStart: reconciled.startInclusive,
+      rawEnd: reconciled.endExclusive,
     });
+    const highlightOffsets = rangeToHighlightOffsets(
+      { startInclusive: selection.startIndex, endExclusive: selection.endIndex + 1 },
+      paragraphStartCharOffset,
+    );
 
-    // Keep a visible native selection by selecting concrete char offsets.
-    const wasAppliedByOffsets = applyNativeSelectionByOffsets({
+    // Keep a visible native selection while the popover opens.
+    applySelection({
       paragraphElement: paragraphRef.current,
-      startInclusive: wordStart,
-      endExclusive: wordEnd,
+      range: reconciled,
+      fallbackElement: e.currentTarget,
     });
-    if (!wasAppliedByOffsets) {
-      applyNativeSelectionForWordElement(e.currentTarget);
-    }
 
-    // Get the element's bounding rect for popover positioning
     const rect = element.getBoundingClientRect();
     onSelection({
       paragraphIndex,
       selection: {
         ...selection,
-        startIndex: selection.startIndex + paragraphStartCharOffset,
-        endIndex: selection.endIndex + paragraphStartCharOffset,
+        startIndex: highlightOffsets.startIndex,
+        endIndex: highlightOffsets.endIndex,
       },
-      selectionText: clickedWordText,
+      selectionText: reconciled.text,
       anchorPosition: getPopoverPositionFromRect(rect),
     });
 
+    const restoreSelection = () => {
+      const currentWordElement = paragraphRef.current?.querySelector<HTMLElement>(
+        `[data-word-index="${wordIndex}"]`,
+      );
+      applySelection({
+        paragraphElement: paragraphRef.current,
+        range: reconciled,
+        fallbackElement: currentWordElement ?? null,
+      });
+    };
+    // TODO(Phase 4): replace this timer chain with a MutationObserver-based
+    // single-shot re-apply after the popover transition settles.
     requestAnimationFrame(() => {
-      const restoreSelection = () => {
-        // Idempotent guard: skip mutation if the current native selection already
-        // matches the intended clickedWordText. Avoids the brief empty-selection
-        // gap caused by removeAllRanges()+addRange().
-        const currentSelection = normalizeSelectedText(window.getSelection()?.toString());
-        if (currentSelection === clickedWordText) {
-          return;
-        }
-
-        const restoredByOffsets = applyNativeSelectionByOffsets({
-          paragraphElement: paragraphRef.current,
-          startInclusive: wordStart,
-          endExclusive: wordEnd,
-        });
-
-        const restoredText = normalizeSelectedText(window.getSelection()?.toString());
-        if (restoredByOffsets && restoredText === clickedWordText) {
-          return;
-        }
-
-        const restoredByText = applyNativeSelectionByText({
-          paragraphElement: paragraphRef.current,
-          selectedValue: clickedWordText,
-          startHint: wordStart,
-        });
-        if (restoredByText) {
-          return;
-        }
-
-        const paragraphElement = paragraphRef.current;
-        if (!paragraphElement) return;
-        const currentWordElement = paragraphElement.querySelector<HTMLElement>(
-          `[data-word-index="${wordIndex}"]`,
-        );
-        applyNativeSelectionForWordElement(currentWordElement);
-      };
-
       restoreSelection();
       setTimeout(restoreSelection, 60);
       setTimeout(restoreSelection, 180);
-      // MUI Popover's Grow transition (~225-300ms) finishes after the earlier
-      // restores; the Modal then briefly collapses the selection onto its Paper
-      // root. Re-apply once the transition has settled.
       setTimeout(restoreSelection, 350);
     });
   };
@@ -660,22 +550,15 @@ const ReaderParagraphBase = ({
                 onMouseEnter={(e) => {
                   void onWordHover?.(word, e);
                   const coreSelectionMeta = getCoreWordSelectionMeta(word);
-                  const rawHoverStart = wordStart + coreSelectionMeta.startOffset;
-                  const rawHoverEndExclusive = wordStart + coreSelectionMeta.endOffsetExclusive;
-                  const reconciledHoverOffsets = reconcileSelectionOffsets({
-                    paragraphText,
-                    selectedText: coreSelectionMeta.normalizedWord,
-                    rawStart: rawHoverStart,
-                    rawEnd: rawHoverEndExclusive,
-                  });
-                  const hoverStart = reconciledHoverOffsets?.startInclusive ?? rawHoverStart;
-                  const hoverEndExclusive =
-                    reconciledHoverOffsets?.endExclusive ?? rawHoverEndExclusive;
-
+                  const rawHover: RawSelectionRange = {
+                    startInclusive: wordStart + coreSelectionMeta.startOffset,
+                    endExclusive: wordStart + coreSelectionMeta.endOffsetExclusive,
+                    text: coreSelectionMeta.normalizedWord,
+                  };
+                  const hover = reconcileSelection(rawHover, paragraphTokenMap) ?? rawHover;
                   onWordHoverInfo?.({
                     paragraphIndex,
-                    startIndex: hoverStart + paragraphStartCharOffset,
-                    endIndex: hoverEndExclusive - 1 + paragraphStartCharOffset,
+                    ...rangeToHighlightOffsets(hover, paragraphStartCharOffset),
                   });
                 }}
                 onMouseMove={(e) => onWordMouseMove?.(e)}
