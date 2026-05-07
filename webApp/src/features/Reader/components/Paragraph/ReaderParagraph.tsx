@@ -317,6 +317,16 @@ const ReaderParagraphBase = ({
             });
 
             const restoreSelection = () => {
+              // Idempotent guard: if the current native selection already matches the
+              // intended selectedText, skip all mutation. removeAllRanges()+addRange()
+              // briefly leaves the selection empty between calls, and the e2e persist
+              // polling can catch that gap. Skipping when correct also avoids drifting
+              // to a different occurrence via applyNativeSelectionByText.
+              const currentSelection = normalizeSelectedText(window.getSelection()?.toString());
+              if (currentSelection === selectedText) {
+                return;
+              }
+
               applyNativeSelectionByOffsets({
                 paragraphElement: paragraphRef.current,
                 startInclusive: startForRestore,
@@ -349,6 +359,10 @@ const ReaderParagraphBase = ({
               restoreSelection();
               setTimeout(restoreSelection, 60);
               setTimeout(restoreSelection, 180);
+              // MUI Popover's Grow transition (~225-300ms) finishes after the
+              // earlier restores; the Modal then briefly collapses the selection
+              // onto its Paper root. Re-apply once the transition has settled.
+              setTimeout(restoreSelection, 350);
             });
           }
         }
@@ -432,6 +446,14 @@ const ReaderParagraphBase = ({
 
     requestAnimationFrame(() => {
       const restoreSelection = () => {
+        // Idempotent guard: skip mutation if the current native selection already
+        // matches the intended clickedWordText. Avoids the brief empty-selection
+        // gap caused by removeAllRanges()+addRange().
+        const currentSelection = normalizeSelectedText(window.getSelection()?.toString());
+        if (currentSelection === clickedWordText) {
+          return;
+        }
+
         const restoredByOffsets = applyNativeSelectionByOffsets({
           paragraphElement: paragraphRef.current,
           startInclusive: wordStart,
@@ -463,6 +485,10 @@ const ReaderParagraphBase = ({
       restoreSelection();
       setTimeout(restoreSelection, 60);
       setTimeout(restoreSelection, 180);
+      // MUI Popover's Grow transition (~225-300ms) finishes after the earlier
+      // restores; the Modal then briefly collapses the selection onto its Paper
+      // root. Re-apply once the transition has settled.
+      setTimeout(restoreSelection, 350);
     });
   };
 
