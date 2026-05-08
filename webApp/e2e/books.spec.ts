@@ -263,6 +263,21 @@ test.describe('markdown rendering', () => {
     await assertCurrentSelectionText(page, /criticizing/i);
   });
 
+  test('re-clicking selected word clears both popup and browser selection', async ({ page }) => {
+    await openSeededGatsbyBook(page);
+
+    await clickCriticizingWord(page);
+    await assertHighlightPopoverVisible(page);
+    await assertCurrentSelectionText(page, /criticizing/i);
+
+    // Second click on the same word — popup should close and selection should be cleared.
+    await clickCriticizingWord(page);
+    await assertHighlightPopoverHidden(page);
+
+    const selectionAfter = await page.evaluate(() => window.getSelection()?.toString().trim() ?? '');
+    expect(selectionAfter).toBe('');
+  });
+
   test('drag-selected text is spoken when voice over is enabled', async ({ page }) => {
     await installSpeechMock(page);
     await openSeededGatsbyBook(page);

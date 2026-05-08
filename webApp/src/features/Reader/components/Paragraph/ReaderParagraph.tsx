@@ -153,6 +153,9 @@ const ReaderParagraphBase = ({
   const handleMouseDown = () => {
     cancelSelectionRestoreRef.current?.();
     cancelSelectionRestoreRef.current = null;
+    // Clear any existing selection so handleMouseUp won't mistake a stale
+    // word-click selection for a fresh drag and incorrectly call onSelection.
+    window.getSelection()?.removeAllRanges();
   };
 
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
@@ -185,6 +188,15 @@ const ReaderParagraphBase = ({
       selectionText: reconciled.text,
       anchorPosition: getPopoverPositionFromRect(captured.rect),
     });
+
+    // If the handler dismissed the popup without reopening (same-word re-click
+    // on a drag selection), it cleared the selection — don't re-apply it.
+    const postMouseUpSel = window.getSelection();
+    if (!postMouseUpSel?.rangeCount || postMouseUpSel.isCollapsed) {
+      cancelSelectionRestoreRef.current?.();
+      cancelSelectionRestoreRef.current = null;
+      return;
+    }
 
     cancelSelectionRestoreRef.current?.();
     cancelSelectionRestoreRef.current = scheduleSelectionRestore({
@@ -264,6 +276,12 @@ const ReaderParagraphBase = ({
       paragraphRef.current?.querySelector<HTMLElement>(`[data-word-index="${wordIndex}"]`) ??
       e.currentTarget;
     cancelSelectionRestoreRef.current?.();
+
+    // If the handler dismissed the popup without reopening (same-word re-click),
+    // it cleared the selection — don't re-apply it.
+    const postClickSel = window.getSelection();
+    if (!postClickSel?.rangeCount || postClickSel.isCollapsed) return;
+
     cancelSelectionRestoreRef.current = scheduleSelectionRestore({
       paragraphElement: paragraphRef.current,
       range: reconciled,
