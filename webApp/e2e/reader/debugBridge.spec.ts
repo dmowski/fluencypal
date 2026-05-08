@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { openSeededGatsbyBook } from './libs/books/navigation';
+import { openSeededGatsbyBook } from '../libs/books/navigation';
 
 /**
- * Phase 5: verifies the `window.__reader__` debug bridge is installed and
- * exposes the documented snapshot/invariant API to Playwright. Acts as a
- * lightweight smoke test alongside the DOM-level invariants spec.
+ * Verifies the `window.__reader__` debug bridge is installed and exposes the
+ * documented snapshot/invariant API to Playwright. Acts as a lightweight smoke
+ * test alongside the DOM-level invariants spec.
  */
 test.describe('reader debug bridge (__reader__)', () => {
   test('exposes paragraph snapshots and invariant reports via window.__reader__', async ({

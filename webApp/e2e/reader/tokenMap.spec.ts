@@ -1,13 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { openSeededGatsbyBook } from './libs/books/navigation';
-
-/**
- * Reader token-map invariants (Phase 0 lock-down).
- *
- * Asserts that every visible paragraph in the seeded Gatsby book renders
- * data-char-offset values that are unique and monotonically non-decreasing
- * within the paragraph. Catches regressions before any token-map refactor.
- */
+import { openSeededGatsbyBook } from '../libs/books/navigation';
 
 interface ParagraphInvariantReport {
   paragraphIndex: number;

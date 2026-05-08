@@ -21,6 +21,7 @@ Use pnpm for all package operations.
 - Web app typecheck (named lint): `cd webApp && pnpm lint`
 - Web unit tests: `cd webApp && pnpm test:unit`
 - Web e2e tests: `cd webApp && pnpm test:e2e`
+  - All reader e2e tests live under `webApp/e2e/reader/` (12 spec files by concern)
 
 - Trim audios install: `cd helperProjects/trimAudios && pnpm install`
 - Trim audios typecheck: `cd helperProjects/trimAudios && pnpm typecheck`

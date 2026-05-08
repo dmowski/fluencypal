@@ -60,11 +60,32 @@ i18n._('Speaking');
 - Emulator usage requires Java 11+.
 - Production Sentry upload paths require Sentry env vars; do not treat missing vars as code regressions in local-only tasks.
 
+## E2E Test Structure
+
+All reader e2e tests live under `e2e/reader/`:
+
+| File | What it covers |
+|---|---|
+| `import.spec.ts` | EPUB import via picker, drag-and-drop, validation errors |
+| `library.spec.ts` | Gutenberg live library browse and download |
+| `epubToMarkdown.spec.ts` | EPUB → markdown snapshot tests (slow, 4 books) |
+| `rendering.spec.ts` | Tab title, paragraph indent, markdown/italic/heading rendering |
+| `resize.spec.ts` | Resize anchor + temporary highlight |
+| `chapters.spec.ts` | Chapter list uniqueness, chapter jump navigation |
+| `selection.spec.ts` | Text selection, partial selection, Ctrl+A |
+| `highlights.spec.ts` | Yellow highlight apply, hover-key highlight, highlight list |
+| `voice.spec.ts` | Voice preview, word click speech, selection speech |
+| `translation.spec.ts` | Translate-on-hover tooltip and popover |
+| `tokenMap.spec.ts` | data-char-offset uniqueness/monotonicity invariants |
+| `debugBridge.spec.ts` | window.__reader__ API smoke test |
+
+Shared helpers live in `e2e/books.helpers.ts` (barrel) and `e2e/libs/books/`.
+
 ## Reader Highlight / Selection
 
 When modifying `src/features/Reader/components/Paragraph/`, `useReaderHighlightPopover`, or related e2e helpers under `e2e/libs/books/`:
 
-- `paragraphTokenMap.ts` is the single source of truth for token offsets; invariants are enforced by `readerTokenMapInvariants.spec.ts` and `readerDebugBridge.spec.ts`.
+- `paragraphTokenMap.ts` is the single source of truth for token offsets; invariants are enforced by `e2e/reader/tokenMap.spec.ts` and `e2e/reader/debugBridge.spec.ts`.
 - All selection capture/restore flows through `selectionPipeline.ts` + `selectionRestoreObserver.ts` (MutationObserver-based). Do not add ad-hoc setTimeout-based restore calls.
 - Debug surface: `window.__reader__` exposes `dumpParagraphTokenMap`, `dumpAllParagraphs`, `getCurrentSelection`, `assertInvariants` (read-only DOM scrape, safe in any environment).
 - No heuristic word matching: `resolveSourceWordMeta` / `getSafeWordMeta` were removed; use `getCoreWordSelectionMeta` instead.
