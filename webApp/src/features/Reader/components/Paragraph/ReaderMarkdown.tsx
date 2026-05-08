@@ -8,6 +8,8 @@ import {
   sanitizeReaderImageTitle,
 } from '../../utils/readerImageSizing';
 
+const headerFontWeights = 600;
+
 export interface ReaderMarkdownWordProps {
   word: string;
   wordIndex: number;
@@ -177,32 +179,50 @@ const createMarkdownComponents = (
   onInternalChapterLinkSelect?: (targetPage: number) => void,
 ): MarkdownToJSX.Overrides => ({
   h1: ({ children }) => (
-    <Typography component="h1" sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}>
+    <Typography
+      component="h1"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
   h2: ({ children }) => (
-    <Typography component="h2" sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}>
+    <Typography
+      component="h2"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
   h3: ({ children }) => (
-    <Typography component="h3" sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}>
+    <Typography
+      component="h3"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
   h4: ({ children }) => (
-    <Typography component="h4" sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}>
+    <Typography
+      component="h4"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
   h5: ({ children }) => (
-    <Typography component="h5" sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}>
+    <Typography
+      component="h5"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
   h6: ({ children }) => (
-    <Typography component="h6" sx={{ fontSize: 'inherit', fontWeight: 500, m: 0, p: 0 }}>
+    <Typography
+      component="h6"
+      sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
+    >
       {children}
     </Typography>
   ),
@@ -463,7 +483,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
               h1: ({ children: nodeChildren }) => (
                 <Typography
                   component="h1"
-                  sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}
+                  sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
                 >
                   {wrapNodeChildrenFrom(nodeChildren, 1)}
                 </Typography>
@@ -471,7 +491,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
               h2: ({ children: nodeChildren }) => (
                 <Typography
                   component="h2"
-                  sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}
+                  sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
                 >
                   {wrapNodeChildrenFrom(nodeChildren, 1)}
                 </Typography>
@@ -479,7 +499,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
               h3: ({ children: nodeChildren }) => (
                 <Typography
                   component="h3"
-                  sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}
+                  sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
                 >
                   {wrapNodeChildrenFrom(nodeChildren, 1)}
                 </Typography>
@@ -487,7 +507,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
               h4: ({ children: nodeChildren }) => (
                 <Typography
                   component="h4"
-                  sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}
+                  sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
                 >
                   {wrapNodeChildrenFrom(nodeChildren, 1)}
                 </Typography>
@@ -495,7 +515,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
               h5: ({ children: nodeChildren }) => (
                 <Typography
                   component="h5"
-                  sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}
+                  sx={{ fontSize: 'inherit', fontWeight: headerFontWeights, m: 0, p: 0 }}
                 >
                   {wrapNodeChildrenFrom(nodeChildren, 1)}
                 </Typography>
