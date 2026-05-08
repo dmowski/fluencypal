@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test';
-import {
-  importBookFromPicker,
-  openBooksPageWithCleanStorage,
-} from '../books.helpers';
+import { importBookFromPicker, openBooksPageWithCleanStorage } from '../books.helpers';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 
@@ -76,7 +73,9 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
     (await chapterItemToClick.getAttribute('data-target-page')) || '0',
   );
   const normalizedClickedTargetPage =
-    clickedTargetPage > 1 && clickedTargetPage % 2 === 0 ? clickedTargetPage - 1 : clickedTargetPage;
+    clickedTargetPage > 1 && clickedTargetPage % 2 === 0
+      ? clickedTargetPage - 1
+      : clickedTargetPage;
 
   await chapterItemToClick.click();
 

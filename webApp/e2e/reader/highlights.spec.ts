@@ -48,7 +48,9 @@ test('applying Yellow highlight on "Whenever you feel like" also highlights spac
   await assertPhraseHighlightedYellowWithSpaces(page, 'Whenever you feel like');
 });
 
-test('book info highlights list shows context and jumps to selected highlight', async ({ page }) => {
+test('book info highlights list shows context and jumps to selected highlight', async ({
+  page,
+}) => {
   await openSeededGatsbyBook(page);
 
   await selectWheneverWordText(page);
@@ -87,8 +89,7 @@ test('book info highlights list shows context and jumps to selected highlight', 
   expect(selectedHighlightBackground).toContain('255, 224, 102');
 
   const targetPage = Number((await highlightItem.getAttribute('data-target-page')) || '0');
-  const normalizedTargetPage =
-    targetPage > 1 && targetPage % 2 === 0 ? targetPage - 1 : targetPage;
+  const normalizedTargetPage = targetPage > 1 && targetPage % 2 === 0 ? targetPage - 1 : targetPage;
 
   await highlightItem.click();
 

@@ -149,9 +149,7 @@ test('reader does not produce hydration errors on open', async ({ page }) => {
 
   await openSeededGatsbyBook(page);
 
-  expect(hydrationErrors, `Hydration errors found:\n${hydrationErrors.join('\n')}`).toHaveLength(
-    0,
-  );
+  expect(hydrationErrors, `Hydration errors found:\n${hydrationErrors.join('\n')}`).toHaveLength(0);
 });
 
 test('first page content fits viewport at 1400x700 (cover image)', async ({ page }) => {

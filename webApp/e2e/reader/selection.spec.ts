@@ -36,9 +36,7 @@ test('re-clicking selected word clears both popup and browser selection', async 
   await clickCriticizingWord(page);
   await assertHighlightPopoverHidden(page);
 
-  const selectionAfter = await page.evaluate(
-    () => window.getSelection()?.toString().trim() ?? '',
-  );
+  const selectionAfter = await page.evaluate(() => window.getSelection()?.toString().trim() ?? '');
   expect(selectionAfter).toBe('');
 });
 

@@ -89,8 +89,7 @@ test('voice over speaks new word when clicked right after previous word selectio
   await expect
     .poll(async () =>
       page.evaluate(() => {
-        const spoken =
-          (window as typeof window & { __spokenTexts?: string[] }).__spokenTexts ?? [];
+        const spoken = (window as typeof window & { __spokenTexts?: string[] }).__spokenTexts ?? [];
         return spoken.some((text) => /\bremember\b/i.test(text));
       }),
     )

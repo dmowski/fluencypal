@@ -55,9 +55,7 @@ test('resize keeps first visible word anchored and temporary highlight is remove
   await expect(highlightedAnchor).toBeVisible({ timeout: 4000 });
 
   const isAnchorVisibleWithinReader = await highlightedAnchor.first().evaluate((element) => {
-    const contentElement = element.closest(
-      '[data-testid="reader-content"]',
-    ) as HTMLElement | null;
+    const contentElement = element.closest('[data-testid="reader-content"]') as HTMLElement | null;
     if (!contentElement) {
       return false;
     }
