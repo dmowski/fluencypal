@@ -2,9 +2,12 @@
 
 ## Reader
 
-I have a problem with a specific voice "Google US English"
+- Short keys does not work on RU keyboard.
+  We need to use create better approach of detecting key.
+  webApp/src/features/Reader/components/TextPopover.tsx
 
-- Short keys does not work on RU keyboard. We need to use create better approach of detecting key letter.
+So for example when I press Н using russian keyboard, it should be considered as
+'#FFE066': 'Y', // Yellow
 
 - When the book is open, and the user press esc, show confirmation for closing (maybe native confirm dialog). Update existing e2e to handle that. Pay attention that there are cases when we need to do some actions and now showing this confirmation dialog.
 

@@ -95,12 +95,21 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
         }
       }
 
-      window.speechSynthesis.cancel();
-      setIsPlaying(true);
-      window.speechSynthesis.speak(utterance);
+      // Attach handlers before speak() so they are never missed.
       utterance.onend = () => {
         setIsPlaying(false);
       };
+      utterance.onerror = () => {
+        setIsPlaying(false);
+      };
+
+      window.speechSynthesis.cancel();
+      // Chrome silently pauses remote voices (e.g. "Google US English") after
+      // ~15 s of idle. resume() un-stalls the synthesis queue before enqueueing
+      // the new utterance so the voice actually plays.
+      window.speechSynthesis.resume();
+      setIsPlaying(true);
+      window.speechSynthesis.speak(utterance);
     },
     [isSupported, language, selectedVoiceURI, voices],
   );
