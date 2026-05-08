@@ -174,7 +174,7 @@ export const BooksList = () => {
             </Typography>
           ) : null}
 
-          {library.categories.map((category) => (
+          {library.categories.map((category, categoryIndex) => (
             <Stack
               key={category.id}
               data-testid={`reader-library-category-${category.id}`}
@@ -188,7 +188,7 @@ export const BooksList = () => {
                   flexWrap: 'wrap',
                 }}
               >
-                {category.books.map((book) => (
+                {category.books.map((book, bookIndex) => (
                   <LibraryBookCard
                     key={`${category.id}-${book.ebookId}`}
                     data={book}
@@ -197,6 +197,7 @@ export const BooksList = () => {
                     }}
                     isDisabled={isBusy}
                     isLoading={isDownloadingLibraryBookId === book.ebookId}
+                    priority={categoryIndex === 0 && bookIndex === 0}
                   />
                 ))}
               </Stack>
