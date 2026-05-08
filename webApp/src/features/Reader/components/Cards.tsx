@@ -199,7 +199,14 @@ export const LibraryBookCard = ({
         }}
       >
         {data.coverUrl ? (
-          <Image src={data.coverUrl} alt="" fill sizes="100px" style={{ objectFit: 'cover' }} priority={priority} />
+          <Image
+            src={data.coverUrl}
+            alt=""
+            fill
+            sizes="100px"
+            style={{ objectFit: 'cover' }}
+            priority={priority}
+          />
         ) : (
           <Typography variant="caption" sx={{ opacity: 0.65 }}>
             {i18n._('Project Gutenberg')}
