@@ -137,8 +137,14 @@ function startEmulator() {
 function startDevServer() {
   console.log('\n🚀 Starting Next.js dev server...\n');
 
+  const cwd = path.join(__dirname, '..');
+  const cacheDir = path.join(cwd, '.next', 'dev', 'cache');
+
+  console.log('🧹 Clearing Turbopack dev cache...');
+  spawnSync('rm', ['-rf', cacheDir], { stdio: 'inherit' });
+
   const dev = spawn('next', ['dev', '--turbopack'], {
-    cwd: path.join(__dirname, '..'),
+    cwd,
     stdio: 'inherit',
   });
 
