@@ -140,11 +140,13 @@ export const LibraryBookCard = ({
   onClick,
   isDisabled = false,
   isLoading = false,
+  priority = false,
 }: {
   data: ReaderLibraryBook;
   onClick: (data: ReaderLibraryBook) => void;
   isDisabled?: boolean;
   isLoading?: boolean;
+  priority?: boolean;
 }) => {
   const i18n = useLingui();
 
@@ -197,7 +199,7 @@ export const LibraryBookCard = ({
         }}
       >
         {data.coverUrl ? (
-          <Image src={data.coverUrl} alt="" fill sizes="100px" style={{ objectFit: 'cover' }} />
+          <Image src={data.coverUrl} alt="" fill sizes="100px" style={{ objectFit: 'cover' }} priority={priority} />
         ) : (
           <Typography variant="caption" sx={{ opacity: 0.65 }}>
             {i18n._('Project Gutenberg')}
