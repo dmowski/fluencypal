@@ -20,7 +20,12 @@ import {
   type RawSelectionRange,
 } from './libs/selectionPipeline';
 import { scheduleSelectionRestore } from './libs/selectionRestoreObserver';
+import { installReaderDebugBridge } from './libs/readerDebugBridge';
 import { getCharHighlightColor as getCharColorAtOffset } from './libs/highlightColorAtCharOffset';
+
+// Phase 5 debug surface: idempotent install of `window.__reader__` for DevTools
+// + Playwright. Read-only DOM dump; safe in every environment.
+installReaderDebugBridge();
 
 export interface ReaderParagraphSelectionPayload {
   paragraphIndex: number;
