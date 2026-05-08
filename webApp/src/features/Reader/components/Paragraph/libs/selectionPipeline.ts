@@ -10,12 +10,11 @@ import {
 import { getWordCharOffsets } from './selectionOffsetFromWordList';
 
 /**
- * Phase 3 unified selection pipeline.
+ * Unified selection pipeline.
  *
  * All selection-touching call sites in the Reader (drag select, word click,
  * hover, popover color apply) consume this module so that reconciliation lives
- * in exactly one place. Consult `ReaderHighlightRefactoring.md` Phase 3 for the
- * design rationale.
+ * in exactly one place.
  *
  * Conventions:
  * - `RawSelectionRange.endExclusive` is exclusive (matches DOM `Range.endOffset`).

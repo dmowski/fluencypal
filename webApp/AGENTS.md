@@ -60,12 +60,16 @@ i18n._('Speaking');
 - Emulator usage requires Java 11+.
 - Production Sentry upload paths require Sentry env vars; do not treat missing vars as code regressions in local-only tasks.
 
+## Reader Highlight / Selection
+
+When modifying `src/features/Reader/components/Paragraph/`, `useReaderHighlightPopover`, or related e2e helpers under `e2e/libs/books/`:
+
+- `paragraphTokenMap.ts` is the single source of truth for token offsets; invariants are enforced by `readerTokenMapInvariants.spec.ts` and `readerDebugBridge.spec.ts`.
+- All selection capture/restore flows through `selectionPipeline.ts` + `selectionRestoreObserver.ts` (MutationObserver-based). Do not add ad-hoc setTimeout-based restore calls.
+- Debug surface: `window.__reader__` exposes `dumpParagraphTokenMap`, `dumpAllParagraphs`, `getCurrentSelection`, `assertInvariants` (read-only DOM scrape, safe in any environment).
+- No heuristic word matching: `resolveSourceWordMeta` / `getSafeWordMeta` were removed; use `getCoreWordSelectionMeta` instead.
+
 ## Additional References
 
 - `../README.md`
 - `FIREBASE_EMULATOR_SETUP.md`
-- `src/features/Reader/ReaderHighlightRefactoring.md` — source of truth for any
-  change touching Reader paragraph rendering, highlighting, hover, or selection.
-  Read it before modifying `src/features/Reader/components/Paragraph/`,
-  `useReaderHighlightPopover`, or related e2e helpers under
-  `e2e/libs/books/`.
