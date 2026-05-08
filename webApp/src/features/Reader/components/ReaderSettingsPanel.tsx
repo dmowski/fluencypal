@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -21,28 +21,104 @@ import { READER_SETTINGS_RANGES, useReaderSettings } from '../hooks/useReaderSet
 type ReaderSettingsPanelProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
   isTouchDevice: boolean;
-  localFontSize: number;
-  localParagraphGap: number;
-  localLineHeight: number;
-  setLocalFontSize: (value: number) => void;
-  setLocalParagraphGap: (value: number) => void;
-  setLocalLineHeight: (value: number) => void;
+  onReset: () => void;
 };
 
 const PREVIEW_TEXT = 'This is a preview of the selected voice.';
+const SETTINGS_UPDATE_DELAY_MS = 350;
 
 export const ReaderSettingsPanel = ({
   speech,
   isTouchDevice,
-  localFontSize,
-  localParagraphGap,
-  localLineHeight,
-  setLocalFontSize,
-  setLocalParagraphGap,
-  setLocalLineHeight,
+  onReset,
 }: ReaderSettingsPanelProps) => {
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
+
+  const [localFontSize, setLocalFontSize] = useState(readerSettings.fontSize);
+  const [localParagraphGap, setLocalParagraphGap] = useState(readerSettings.paragraphGap);
+  const [localLineHeight, setLocalLineHeight] = useState(readerSettings.lineHeight);
+  const [localJustifyText, setLocalJustifyText] = useState(readerSettings.justifyText);
+  const [localTranslateOnHover, setLocalTranslateOnHover] = useState(
+    readerSettings.translateOnHover,
+  );
+  const [localVoiceOverSelectedText, setLocalVoiceOverSelectedText] = useState(
+    readerSettings.voiceOverSelectedText,
+  );
+  const [localTranslateToLanguage, setLocalTranslateToLanguage] = useState(
+    readerSettings.translateToLanguage,
+  );
+
+  useEffect(() => {
+    if (localFontSize === readerSettings.fontSize) return;
+    const id = setTimeout(
+      () => readerSettings.setFontSize(localFontSize),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [localFontSize, readerSettings.fontSize, readerSettings.setFontSize]);
+
+  useEffect(() => {
+    if (localParagraphGap === readerSettings.paragraphGap) return;
+    const id = setTimeout(
+      () => readerSettings.setParagraphGap(localParagraphGap),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [localParagraphGap, readerSettings.paragraphGap, readerSettings.setParagraphGap]);
+
+  useEffect(() => {
+    if (localLineHeight === readerSettings.lineHeight) return;
+    const id = setTimeout(
+      () => readerSettings.setLineHeight(localLineHeight),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [localLineHeight, readerSettings.lineHeight, readerSettings.setLineHeight]);
+
+  useEffect(() => {
+    if (localJustifyText === readerSettings.justifyText) return;
+    const id = setTimeout(
+      () => readerSettings.setJustifyText(localJustifyText),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [localJustifyText, readerSettings.justifyText, readerSettings.setJustifyText]);
+
+  useEffect(() => {
+    if (localTranslateOnHover === readerSettings.translateOnHover) return;
+    const id = setTimeout(
+      () => readerSettings.setTranslateOnHover(localTranslateOnHover),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [localTranslateOnHover, readerSettings.translateOnHover, readerSettings.setTranslateOnHover]);
+
+  useEffect(() => {
+    if (localVoiceOverSelectedText === readerSettings.voiceOverSelectedText) return;
+    const id = setTimeout(
+      () => readerSettings.setVoiceOverSelectedText(localVoiceOverSelectedText),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [
+    localVoiceOverSelectedText,
+    readerSettings.voiceOverSelectedText,
+    readerSettings.setVoiceOverSelectedText,
+  ]);
+
+  useEffect(() => {
+    if (localTranslateToLanguage === readerSettings.translateToLanguage) return;
+    const id = setTimeout(
+      () => readerSettings.setTranslateToLanguage(localTranslateToLanguage),
+      SETTINGS_UPDATE_DELAY_MS,
+    );
+    return () => clearTimeout(id);
+  }, [
+    localTranslateToLanguage,
+    readerSettings.translateToLanguage,
+    readerSettings.setTranslateToLanguage,
+  ]);
 
   const availableLanguages = useMemo(() => {
     const uniqueLanguages = new Set<string>();
@@ -92,8 +168,7 @@ export const ReaderSettingsPanel = ({
   );
 
   const handleTranslateToChange = (event: SelectChangeEvent<string>) => {
-    const nextLanguage = event.target.value;
-    readerSettings.setTranslateToLanguage((nextLanguage || null) as NativeLangCode | null);
+    setLocalTranslateToLanguage((event.target.value || null) as NativeLangCode | null);
   };
 
   return (
@@ -148,7 +223,7 @@ export const ReaderSettingsPanel = ({
         <Select
           labelId="reader-translate-to-select-label"
           label={i18n._('Translate to')}
-          value={readerSettings.translateToLanguage || ''}
+          value={localTranslateToLanguage || ''}
           onChange={handleTranslateToChange}
         >
           <MenuItem value="">{i18n._('Off')}</MenuItem>
@@ -163,8 +238,8 @@ export const ReaderSettingsPanel = ({
       <FormControlLabel
         control={
           <Checkbox
-            checked={readerSettings.justifyText}
-            onChange={(_event, checked) => readerSettings.setJustifyText(checked)}
+            checked={localJustifyText}
+            onChange={(_event, checked) => setLocalJustifyText(checked)}
           />
         }
         label={i18n._('Justify Text')}
@@ -174,8 +249,8 @@ export const ReaderSettingsPanel = ({
         <FormControlLabel
           control={
             <Checkbox
-              checked={readerSettings.translateOnHover}
-              onChange={(_event, checked) => readerSettings.setTranslateOnHover(checked)}
+              checked={localTranslateOnHover}
+              onChange={(_event, checked) => setLocalTranslateOnHover(checked)}
             />
           }
           label={i18n._('Translate on Hover')}
@@ -185,8 +260,8 @@ export const ReaderSettingsPanel = ({
       <FormControlLabel
         control={
           <Checkbox
-            checked={readerSettings.voiceOverSelectedText}
-            onChange={(_event, checked) => readerSettings.setVoiceOverSelectedText(checked)}
+            checked={localVoiceOverSelectedText}
+            onChange={(_event, checked) => setLocalVoiceOverSelectedText(checked)}
           />
         }
         label={i18n._('Voice Over Selected Text')}
@@ -245,12 +320,7 @@ export const ReaderSettingsPanel = ({
         />
       </Stack>
 
-      <Button
-        variant="outlined"
-        color="inherit"
-        onClick={readerSettings.resetToDefault}
-        sx={{ alignSelf: 'flex-start' }}
-      >
+      <Button variant="outlined" color="inherit" onClick={onReset} sx={{ alignSelf: 'flex-start' }}>
         {i18n._('Reset to default')}
       </Button>
     </Stack>
