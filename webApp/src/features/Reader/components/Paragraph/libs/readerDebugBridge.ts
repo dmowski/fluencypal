@@ -148,8 +148,7 @@ export const installReaderDebugBridge = () => {
 
       const offsetFromContainer = (container: Node | null | undefined): number | null => {
         if (!container) return null;
-        const parent =
-          container instanceof Element ? container : (container.parentElement ?? null);
+        const parent = container instanceof Element ? container : (container.parentElement ?? null);
         const charEl = parent?.closest<HTMLElement>('[data-char-offset]') ?? null;
         return charEl ? numAttr(charEl, 'data-char-offset') : null;
       };
