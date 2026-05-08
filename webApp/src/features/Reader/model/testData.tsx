@@ -6,8 +6,9 @@ export const testData: Book = {
   title: 'The Great Gatsby',
   subtitle: 'Then wear the gold hat, if that will move her',
   author: 'F. Scott Fitzgerald',
-  paragraphs:
-    splitTextIntoParagraphs(`In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.
+  paragraphs: splitTextIntoParagraphs(`# HeadingWordAlpha HeadingWordBeta HeadingWordGamma
+
+In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.
 
 “Whenever you feel like **criticizing anyone**,” he _told me_, “just remember that all the people in this world haven’t had the advantages that you’ve had.”
 

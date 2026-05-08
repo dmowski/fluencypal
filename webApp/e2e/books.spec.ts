@@ -515,6 +515,48 @@ test.describe('markdown rendering', () => {
     await assertOnlyWordHighlightedYellow(page, /^remember$/i);
   });
 
+  test('h1 heading word click highlights correct word without source offset shift', async ({
+    page,
+  }) => {
+    await openSeededGatsbyBook(page);
+
+    // HeadingWordAlpha HeadingWordBeta HeadingWordGamma are in the first paragraph (# heading).
+    // The # marker occupies renderableTokens[0]; without the startWordIndex=1 fix all heading
+    // words are off by one, so clicking HeadingWordBeta would store offsets pointing at
+    // HeadingWordAlpha and partially highlight it as well.
+    await ensureReaderTextVisible(page, 'HeadingWordBeta');
+
+    const headingWord = page
+      .locator('[data-word-index], .conversation-word')
+      .filter({ hasText: /^HeadingWordBeta$/i })
+      .first();
+    await expect(headingWord).toBeVisible();
+    await headingWord.click();
+
+    await assertHighlightPopoverVisible(page);
+    await applyYellowHighlight(page);
+
+    await assertWordHighlightedYellow(page, /^HeadingWordBeta$/i);
+
+    // With a wrong offset HeadingWordAlpha chars would overlap HeadingWordBeta's offsets,
+    // causing some of HeadingWordAlpha's characters to be highlighted too.
+    const alphaHasYellowChars = await page.evaluate(() => {
+      const normalize = (v: string) => v.replace(/[*_~`]+/g, '').trim();
+      const candidates = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-word-index], .conversation-word'),
+      );
+      const host = candidates.find((el) =>
+        /^HeadingWordAlpha$/i.test(normalize(el.textContent ?? '')),
+      );
+      if (!host) return false;
+      const charSpans = Array.from(host.querySelectorAll<HTMLElement>('[data-char-offset]'));
+      return charSpans.some((el) =>
+        window.getComputedStyle(el).backgroundColor.includes('255, 224, 102'),
+      );
+    });
+    expect(alphaHasYellowChars).toBe(false);
+  });
+
   test('manual selection of remember and applying Yellow highlights only remember', async ({
     page,
   }) => {

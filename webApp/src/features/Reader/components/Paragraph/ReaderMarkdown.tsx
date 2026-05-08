@@ -373,8 +373,9 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
   );
 
   const renderWordsDirectly = words && words.length > 0;
-  const wrapNodeChildren = (nodeChildren: React.ReactNode) =>
-    wrapChildrenWithTranslateWrapper(nodeChildren, 0, renderWord, renderSpace).node;
+  const wrapNodeChildrenFrom = (nodeChildren: React.ReactNode, startWordIndex: number) =>
+    wrapChildrenWithTranslateWrapper(nodeChildren, startWordIndex, renderWord, renderSpace).node;
+  const wrapNodeChildren = (nodeChildren: React.ReactNode) => wrapNodeChildrenFrom(nodeChildren, 0);
 
   return (
     <Stack
@@ -459,6 +460,54 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
             overrides: {
               ...styleComponents,
               p: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
+              h1: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h1"
+                  sx={{ fontSize: 'inherit', fontWeight: 800, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
+              h2: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h2"
+                  sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
+              h3: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h3"
+                  sx={{ fontSize: 'inherit', fontWeight: 700, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
+              h4: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h4"
+                  sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
+              h5: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h5"
+                  sx={{ fontSize: 'inherit', fontWeight: 600, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
+              h6: ({ children: nodeChildren }) => (
+                <Typography
+                  component="h6"
+                  sx={{ fontSize: 'inherit', fontWeight: 500, m: 0, p: 0 }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
             },
           }}
         >

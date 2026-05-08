@@ -2,22 +2,14 @@
 
 ## Reader
 
-Fix this warning, it's on reader booksList.tsx
-[browser] Image with src "https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+I have a list of improvements for book reader. do it step by step, and after each fix, run full set of e2e and tests.
 
-- How to safely split markdown into chunks? In case when this text shows at the end ot the page, it might be broken on other page.
-  For example case: _this is long italic test that we need to break in the middle_
-  Page 1: _this is long
-  Page 2: italic test that we need to break in the middle_
+When click on word, we see browser selection and popup. When we again click on that word, popup disappears (that's fine), but selection remains. I want to clean selection too.
 
-As a result Markdown render doesn't works properly.
-Create a separate module for save md breaks. And integrate with our logic of rendering pages.
+---
 
-Reader info:
-/webApp/src/features/Reader/AGENTS.md
-
-- Click on title (markdown): show highlight popup
+Reader info (you can update it if needed):
+webApp/src/features/Reader/AGENTS.md
 
 - PWA
 
@@ -29,7 +21,7 @@ We have e2e that check epub to markdown import;
 webApp/e2e/booksEpubToMarkdown.spec.ts
 
 Reader info:
-/webApp/src/features/Reader/AGENTS.md
+webApp/src/features/Reader/AGENTS.md
 
 Books e2e tests (Run, update them while working on the tasks):
 webApp/e2e/\*.spec.ts All e2e tests are book related
