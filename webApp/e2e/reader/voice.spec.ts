@@ -13,7 +13,7 @@ import {
   openSeededGatsbyBook,
   openSettingsPopover,
   selectCriticizingWordText,
-} from '../books.helpers';
+} from '../libs/reader';
 
 test('reader settings voice plays preview and clicking word plays and opens highlight popover', async ({
   page,

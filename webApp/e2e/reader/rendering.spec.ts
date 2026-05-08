@@ -8,8 +8,8 @@ import {
   ensureReaderTextVisible,
   BOOK_TITLE,
   BOOK_SUBTITLE,
-} from '../books.helpers';
-import { assertReaderContentFitsCurrentPage } from '../libs/books/assertions';
+} from '../libs/reader';
+import { assertReaderContentFitsCurrentPage } from '../libs/books/renderingAssertions';
 import { PARAGRAPH_TEXT_INDENT } from '@/features/Reader/utils/readerParagraphFormatting';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';

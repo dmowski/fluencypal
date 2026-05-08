@@ -14,7 +14,7 @@ import {
   selectStoodInsideUnderstood,
   selectWheneverYouFeelPartialText,
   BOOK_SUBTITLE,
-} from '../books.helpers';
+} from '../libs/reader';
 
 test('selected text keeps selection visible when highlight popover opens', async ({ page }) => {
   await openSeededGatsbyBook(page);

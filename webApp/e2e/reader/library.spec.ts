@@ -1,5 +1,5 @@
 import { expect, test, Page } from '@playwright/test';
-import { openBooksPageWithCleanStorage } from '../books.helpers';
+import { openBooksPageWithCleanStorage } from '../libs/reader';
 
 const GUTENBERG_ROMANCE_BOOK_ID = '1342';
 const GUTENBERG_ROMANCE_TITLE = 'Pride and Prejudice';

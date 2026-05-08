@@ -11,7 +11,7 @@ import {
   openSeededGatsbyBook,
   openSettingsPopover,
   selectRussianTranslateTarget,
-} from '../books.helpers';
+} from '../libs/reader';
 
 test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({
   page,

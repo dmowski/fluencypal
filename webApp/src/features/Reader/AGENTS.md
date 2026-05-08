@@ -58,13 +58,36 @@ After changing files in this feature, run the smallest relevant checks first:
 
 1. `cd webApp && pnpm lint`
 2. `cd webApp && pnpm test:unit` when changing Reader parsing, pagination, highlight logic, or selection math.
-3. For Reader/book behavior changes, run targeted e2e early while iterating:
-   - `cd webApp && pnpm test:e2e e2e/books.spec.ts`
-
-- `cd webApp && pnpm test:e2e e2e/booksEpubToMarkdown.spec.ts` for EPUB import to markdown stability checks
-- `cd webApp && pnpm test:e2e e2e/booksImages.spec.ts`
-- `cd webApp && pnpm test:e2e e2e/booksLibrary.spec.ts` when library/list/import behavior changes
+3. For Reader/book behavior changes, run targeted e2e early while iterating — all specs live under `e2e/reader/`:
+   - Selection/highlight behavior: `pnpm test:e2e -- e2e/reader/selection.spec.ts e2e/reader/highlights.spec.ts`
+   - Speech/voice: `pnpm test:e2e -- e2e/reader/voice.spec.ts`
+   - Translation: `pnpm test:e2e -- e2e/reader/translation.spec.ts`
+   - Rendering/pagination: `pnpm test:e2e -- e2e/reader/rendering.spec.ts e2e/reader/resize.spec.ts`
+   - EPUB import: `pnpm test:e2e -- e2e/reader/import.spec.ts`
+   - EPUB → markdown regression: `pnpm test:e2e -- e2e/reader/epubToMarkdown.spec.ts`
+   - Gutenberg library: `pnpm test:e2e -- e2e/reader/library.spec.ts`
+   - Chapter navigation: `pnpm test:e2e -- e2e/reader/chapters.spec.ts`
+   - Token map invariants: `pnpm test:e2e -- e2e/reader/tokenMap.spec.ts`
+   - Debug bridge: `pnpm test:e2e -- e2e/reader/debugBridge.spec.ts`
 
 4. Before finishing any Reader change, always run the full e2e suite:
 
-- `cd webApp && pnpm test:e2e`
+   `cd webApp && pnpm test:e2e`
+
+## E2E Helper Structure
+
+All e2e helpers for the Reader are under `e2e/libs/books/` and re-exported via `e2e/libs/reader.ts`. Import from `../libs/reader` in spec files.
+
+| Module                   | Responsibility                                        |
+| ------------------------ | ----------------------------------------------------- |
+| `shared.ts`              | Constants (`BOOK_TITLE`, `BOOK_SUBTITLE`) and types   |
+| `navigation.ts`          | Open/navigate book page helpers                       |
+| `locators.ts`            | Element locators (criticizing word, popover, buttons) |
+| `uiSettings.ts`          | Settings popover open/close and toggle controls       |
+| `speech.ts`              | Speech synthesis mock, voice spoken assertions        |
+| `interactions.ts`        | Word click/hover/select/highlight interactions        |
+| `selectionAssertions.ts` | Selection text, persistence, cursor assertions        |
+| `highlightAssertions.ts` | Highlight popover and yellow-highlight assertions     |
+| `renderingAssertions.ts` | Pagination fit and text rendering assertions          |
+| `translation.ts`         | Translation mock and translated text assertion        |
+| `imports.ts`             | EPUB import helpers (file picker, drag-and-drop)      |

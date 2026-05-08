@@ -1,4 +1,8 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
+
+export const assertTranslatedTextVisible = async (page: Page, text: string) => {
+  await expect(page.getByText(text, { exact: true }).first()).toBeVisible();
+};
 
 export const mockSingleTranslation = async (page: Page, translatedText: string) => {
   let translateRequestsCount = 0;

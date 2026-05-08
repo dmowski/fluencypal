@@ -62,24 +62,7 @@ i18n._('Speaking');
 
 ## E2E Test Structure
 
-All reader e2e tests live under `e2e/reader/`:
-
-| File                     | What it covers                                                 |
-| ------------------------ | -------------------------------------------------------------- |
-| `import.spec.ts`         | EPUB import via picker, drag-and-drop, validation errors       |
-| `library.spec.ts`        | Gutenberg live library browse and download                     |
-| `epubToMarkdown.spec.ts` | EPUB → markdown snapshot tests (slow, 4 books)                 |
-| `rendering.spec.ts`      | Tab title, paragraph indent, markdown/italic/heading rendering |
-| `resize.spec.ts`         | Resize anchor + temporary highlight                            |
-| `chapters.spec.ts`       | Chapter list uniqueness, chapter jump navigation               |
-| `selection.spec.ts`      | Text selection, partial selection, Ctrl+A                      |
-| `highlights.spec.ts`     | Yellow highlight apply, hover-key highlight, highlight list    |
-| `voice.spec.ts`          | Voice preview, word click speech, selection speech             |
-| `translation.spec.ts`    | Translate-on-hover tooltip and popover                         |
-| `tokenMap.spec.ts`       | data-char-offset uniqueness/monotonicity invariants            |
-| `debugBridge.spec.ts`    | window.**reader** API smoke test                               |
-
-Shared helpers live in `e2e/books.helpers.ts` (barrel) and `e2e/libs/books/`.
+All reader e2e specs live under `e2e/reader/` (one file per concern). Shared helpers are exported from `e2e/libs/reader.ts`; the individual modules live under `e2e/libs/books/`.
 
 ## Reader Highlight / Selection
 
@@ -94,3 +77,4 @@ When modifying `src/features/Reader/components/Paragraph/`, `useReaderHighlightP
 
 - `../README.md`
 - `FIREBASE_EMULATOR_SETUP.md`
+- `src/features/Reader/AGENTS.md` — Reader-specific coding rules, e2e helper structure, and targeted test commands

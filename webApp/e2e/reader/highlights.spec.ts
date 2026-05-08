@@ -15,7 +15,7 @@ import {
   selectRememberWordInsideQuote,
   selectWheneverWordText,
   selectWheneverYouFeelLikeText,
-} from '../books.helpers';
+} from '../libs/reader';
 
 const parseCurrentPageFromIndicator = (value: string): number => {
   const match = value.match(/(\d+)\s*\/\s*(\d+)/);

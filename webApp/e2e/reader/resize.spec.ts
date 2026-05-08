@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { openSeededGatsbyBook } from '../books.helpers';
+import { openSeededGatsbyBook } from '../libs/reader';
 
 test('resize keeps first visible word anchored and temporary highlight is removed after 1 second', async ({
   page,
@@ -54,19 +54,27 @@ test('resize keeps first visible word anchored and temporary highlight is remove
   );
   await expect(highlightedAnchor).toBeVisible({ timeout: 4000 });
 
-  const isAnchorVisibleWithinReader = await highlightedAnchor.first().evaluate((element) => {
-    const contentElement = element.closest('[data-testid="reader-content"]') as HTMLElement | null;
-    if (!contentElement) {
-      return false;
-    }
+  await expect
+    .poll(
+      async () =>
+        highlightedAnchor.first().evaluate((element) => {
+          const contentElement = element.closest(
+            '[data-testid="reader-content"]',
+          ) as HTMLElement | null;
+          if (!contentElement) {
+            return false;
+          }
 
-    const elementRect = element.getBoundingClientRect();
-    const contentRect = contentElement.getBoundingClientRect();
+          const elementRect = element.getBoundingClientRect();
+          const contentRect = contentElement.getBoundingClientRect();
 
-    return elementRect.bottom > contentRect.top + 1 && elementRect.top < contentRect.bottom - 1;
-  });
-
-  expect(isAnchorVisibleWithinReader).toBe(true);
+          return (
+            elementRect.bottom > contentRect.top + 1 && elementRect.top < contentRect.bottom - 1
+          );
+        }),
+      { timeout: 5000 },
+    )
+    .toBe(true);
 
   await page.waitForTimeout(1200);
   await expect(page.locator('[data-resize-anchor-highlighted="true"]')).toHaveCount(0);

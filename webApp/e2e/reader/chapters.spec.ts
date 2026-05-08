@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { importBookFromPicker, openBooksPageWithCleanStorage } from '../books.helpers';
+import { importBookFromPicker, openBooksPageWithCleanStorage } from '../libs/reader';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 

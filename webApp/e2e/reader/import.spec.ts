@@ -8,7 +8,7 @@ import {
   importBookFromPicker,
   openAddBookFileChooser,
   openBooksPageWithCleanStorage,
-} from '../books.helpers';
+} from '../libs/reader';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
