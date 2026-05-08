@@ -40,6 +40,7 @@ export const useReaderHighlightPopover = ({
   const [activePopover, setActivePopover] = useState<ActivePopoverState | null>(null);
   const translationRequestIdRef = useRef(0);
   const popoverPaperRef = useRef<HTMLDivElement | null>(null);
+  const activePopoverAtPointerDownRef = useRef<ActivePopoverState | null>(null);
 
   const closeActivePopover = useCallback(() => {
     translationRequestIdRef.current += 1;
@@ -57,6 +58,7 @@ export const useReaderHighlightPopover = ({
         return;
       }
 
+      activePopoverAtPointerDownRef.current = activePopover;
       closeActivePopover();
     };
 
@@ -77,6 +79,19 @@ export const useReaderHighlightPopover = ({
 
   const handleParagraphSelection = useCallback(
     async (payload: ReaderParagraphSelectionPayload) => {
+      const closedPopover = activePopoverAtPointerDownRef.current;
+      activePopoverAtPointerDownRef.current = null;
+      if (
+        closedPopover &&
+        closedPopover.paragraphIndex === payload.paragraphIndex &&
+        closedPopover.selection.startIndex === payload.selection.startIndex &&
+        closedPopover.selection.endIndex === payload.selection.endIndex
+      ) {
+        // User clicked the already-selected word — unselect by not reopening
+        window.getSelection()?.removeAllRanges();
+        return;
+      }
+
       const normalizedText = normalizeSelectedText(payload.selectionText);
       const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguage);
 

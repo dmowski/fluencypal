@@ -2,21 +2,18 @@
 
 ## Reader
 
-- Short keys does not work on RU keyboard.
-  We need to use create better approach of detecting key.
-  webApp/src/features/Reader/components/TextPopover.tsx
+- How to safely split markdown into chunks? In case when this text shows at the end ot the page, it might be broken on other page.
+  For example case: _this is long italic test that we need to break in the middle_
+  Page 1: _this is long
+  Page 2: italic test that we need to break in the middle_
 
-So for example when I press Н using russian keyboard, it should be considered as
-'#FFE066': 'Y', // Yellow
+As a result Markdown render doesn't works properly.
+Create a separate module for save md breaks. And integrate with our logic of rendering pages.
 
-- When the book is open, and the user press esc, show confirmation for closing (maybe native confirm dialog). Update existing e2e to handle that. Pay attention that there are cases when we need to do some actions and now showing this confirmation dialog.
-
-- When the word is selected, next click on the word should unselect the word.
+Reader info:
+/webApp/src/features/Reader/AGENTS.md
 
 - Click on title (markdown): show highlight popup
-
-- How to safely split markdown into chunks?
-  For example case: _this is long italic test that we need to break in the middle_
 
 - PWA
 
