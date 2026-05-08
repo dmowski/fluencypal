@@ -73,6 +73,7 @@ test.describe('markdown rendering', () => {
     await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
     await expect(page).toHaveTitle(BOOK_TITLE);
 
+    page.once('dialog', (dialog) => dialog.accept());
     await page.keyboard.press('Escape');
     await expect(gatsbyCardTitle).toBeVisible();
     await expect(page).toHaveTitle(initialTitle);
