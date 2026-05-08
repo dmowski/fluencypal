@@ -2,9 +2,7 @@
 
 ## Reader
 
-- separate app, url? Vision of the app
-
-- PWA
+- Separate app/url/PWA/Vision of the app
 
 - Share books, highlights, but not book settings. (auth, storage)
 
