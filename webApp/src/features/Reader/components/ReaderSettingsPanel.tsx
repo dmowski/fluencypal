@@ -78,14 +78,34 @@ export const ReaderSettingsPanel = ({
   const [localTranslateToLanguage, setLocalTranslateToLanguage] = useState(
     readerSettings.translateToLanguage,
   );
+  const [localLanguage, setLocalLanguage] = useState(speech.language);
+  const [localSelectedVoiceURI, setLocalSelectedVoiceURI] = useState(speech.selectedVoiceURI);
 
   useDebouncedSetting(localFontSize, readerSettings.fontSize, readerSettings.setFontSize);
-  useDebouncedSetting(localParagraphGap, readerSettings.paragraphGap, readerSettings.setParagraphGap);
+  useDebouncedSetting(
+    localParagraphGap,
+    readerSettings.paragraphGap,
+    readerSettings.setParagraphGap,
+  );
   useDebouncedSetting(localLineHeight, readerSettings.lineHeight, readerSettings.setLineHeight);
   useDebouncedSetting(localJustifyText, readerSettings.justifyText, readerSettings.setJustifyText);
-  useDebouncedSetting(localTranslateOnHover, readerSettings.translateOnHover, readerSettings.setTranslateOnHover);
-  useDebouncedSetting(localVoiceOverSelectedText, readerSettings.voiceOverSelectedText, readerSettings.setVoiceOverSelectedText);
-  useDebouncedSetting(localTranslateToLanguage, readerSettings.translateToLanguage, readerSettings.setTranslateToLanguage);
+  useDebouncedSetting(
+    localTranslateOnHover,
+    readerSettings.translateOnHover,
+    readerSettings.setTranslateOnHover,
+  );
+  useDebouncedSetting(
+    localVoiceOverSelectedText,
+    readerSettings.voiceOverSelectedText,
+    readerSettings.setVoiceOverSelectedText,
+  );
+  useDebouncedSetting(
+    localTranslateToLanguage,
+    readerSettings.translateToLanguage,
+    readerSettings.setTranslateToLanguage,
+  );
+  useDebouncedSetting(localLanguage, speech.language, speech.setLanguage);
+  useDebouncedSetting(localSelectedVoiceURI, speech.selectedVoiceURI, speech.setSelectedVoiceURI);
 
   const availableLanguages = useMemo(() => {
     const uniqueLanguages = new Set<string>();
@@ -96,34 +116,37 @@ export const ReaderSettingsPanel = ({
       }
     });
 
-    if (speech.language) {
-      uniqueLanguages.add(speech.language);
+    // Always include the local language so it stays in the list before debounce persists it.
+    if (localLanguage) {
+      uniqueLanguages.add(localLanguage);
     }
 
     return Array.from(uniqueLanguages).sort();
-  }, [speech.language, speech.voices]);
+  }, [localLanguage, speech.voices]);
 
   const voicesForLanguage = useMemo(() => {
     return speech.voices.filter((voice) => {
       const voiceLanguage = voice.lang.toLowerCase();
-      const selectedLanguage = speech.language.toLowerCase();
+      const selectedLanguage = localLanguage.toLowerCase();
 
       return voiceLanguage === selectedLanguage || voiceLanguage.startsWith(`${selectedLanguage}-`);
     });
-  }, [speech.language, speech.voices]);
+  }, [localLanguage, speech.voices]);
 
   const selectedVoiceValue = useMemo(() => {
     const isSelectedVoiceVisible = voicesForLanguage.some(
-      (voice) => voice.voiceURI === speech.selectedVoiceURI,
+      (voice) => voice.voiceURI === localSelectedVoiceURI,
     );
 
-    return isSelectedVoiceVisible ? speech.selectedVoiceURI || '' : '';
-  }, [speech.selectedVoiceURI, voicesForLanguage]);
+    return isSelectedVoiceVisible ? localSelectedVoiceURI || '' : '';
+  }, [localSelectedVoiceURI, voicesForLanguage]);
 
   const handleVoiceChange = (event: SelectChangeEvent<string>) => {
-    const nextVoiceURI = event.target.value;
-    speech.setSelectedVoiceURI(nextVoiceURI || null);
-    speech.play(PREVIEW_TEXT, nextVoiceURI || null);
+    const nextVoiceURI = event.target.value || null;
+    setLocalSelectedVoiceURI(nextVoiceURI);
+    // Play preview immediately for instant auditory feedback; the URI is
+    // persisted after the debounce via useDebouncedSetting above.
+    speech.play(PREVIEW_TEXT, nextVoiceURI);
   };
 
   const translationLanguages = useMemo(
@@ -154,8 +177,8 @@ export const ReaderSettingsPanel = ({
         <Select
           labelId="speech-language-select-label"
           label={i18n._('Language')}
-          value={speech.language}
-          onChange={(event) => speech.setLanguage(event.target.value)}
+          value={localLanguage}
+          onChange={(event) => setLocalLanguage(event.target.value)}
         >
           {availableLanguages.map((language) => (
             <MenuItem key={language} value={language}>
