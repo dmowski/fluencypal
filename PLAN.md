@@ -2,14 +2,18 @@
 
 ## Reader
 
-Expand highlights function to a separate page:
-Understand how highlights works. How it calculated and how it renders
+I have a problem with a specific voice "Google US English"
 
-END: READY TO SUBMIT PROMPT=========
+- Short keys does not work on RU keyboard. We need to use create better approach of detecting key letter.
+
+- When the book is open, and the user press esc, show confirmation for closing (maybe native confirm dialog). Update existing e2e to handle that. Pay attention that there are cases when we need to do some actions and now showing this confirmation dialog.
+
+- When the word is selected, next click on the word should unselect the word.
+
+- Click on title (markdown): show highlight popup
 
 - How to safely split markdown into chunks?
-
-For example case: _this is long italic test that we need to break in the middle_
+  For example case: _this is long italic test that we need to break in the middle_
 
 - PWA
 

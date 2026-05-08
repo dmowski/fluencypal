@@ -150,6 +150,11 @@ const ReaderParagraphBase = ({
     return (wordCharOffsets[wordIndex] ?? 0) + fallbackWord.length;
   };
 
+  const handleMouseDown = () => {
+    cancelSelectionRestoreRef.current?.();
+    cancelSelectionRestoreRef.current = null;
+  };
+
   const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
@@ -298,6 +303,7 @@ const ReaderParagraphBase = ({
         data-reader-paragraph-token-count={paragraphTokenMap.tokens.length}
         data-reader-paragraph-source-text-length={paragraphText.length}
         data-reader-invariant-violation={paragraphTokenMapViolation ?? undefined}
+        onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={onHoverClear}
         sx={{
