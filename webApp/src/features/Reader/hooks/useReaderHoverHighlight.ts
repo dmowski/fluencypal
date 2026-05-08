@@ -25,8 +25,9 @@ export const useReaderHoverHighlight = ({
       if (isPopoverOpen) return;
       if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
 
-      const key = event.key.toUpperCase();
-      const color = Object.entries(COLOR_SHORTCUTS).find(([, shortcut]) => shortcut === key)?.[0];
+      const color = Object.entries(COLOR_SHORTCUTS).find(
+        ([, shortcut]) => `Key${shortcut}` === event.code,
+      )?.[0];
       if (!color) return;
 
       event.preventDefault();

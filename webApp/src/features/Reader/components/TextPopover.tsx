@@ -51,10 +51,11 @@ export const TextPopover = ({
         return;
       }
 
-      const key = event.key.toUpperCase();
-
-      // Find color by shortcut key
-      const color = Object.entries(COLOR_SHORTCUTS).find(([, shortcut]) => shortcut === key)?.[0];
+      // Use event.code (physical key position) so shortcuts work regardless of keyboard layout.
+      // e.g. 'KeyY' matches shortcut 'Y' whether the user has EN or RU layout active.
+      const color = Object.entries(COLOR_SHORTCUTS).find(
+        ([, shortcut]) => `Key${shortcut}` === event.code,
+      )?.[0];
 
       if (color) {
         event.preventDefault();
