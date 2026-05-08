@@ -2,15 +2,6 @@
 
 ## Reader
 
-I have a list of improvements for book reader. do it step by step, and after each fix, run full set of e2e and tests.
-
-When click on word, we see browser selection and popup. When we again click on that word, popup disappears (that's fine), but selection remains. I want to clean selection too.
-
----
-
-Reader info (you can update it if needed):
-webApp/src/features/Reader/AGENTS.md
-
 - PWA
 
 - Share books, highlights, but not book settings. (auth, storage)

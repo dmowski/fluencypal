@@ -274,7 +274,9 @@ test.describe('markdown rendering', () => {
     await clickCriticizingWord(page);
     await assertHighlightPopoverHidden(page);
 
-    const selectionAfter = await page.evaluate(() => window.getSelection()?.toString().trim() ?? '');
+    const selectionAfter = await page.evaluate(
+      () => window.getSelection()?.toString().trim() ?? '',
+    );
     expect(selectionAfter).toBe('');
   });
 
