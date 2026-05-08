@@ -25,7 +25,37 @@ type ReaderSettingsPanelProps = {
 };
 
 const PREVIEW_TEXT = 'This is a preview of the selected voice.';
+/**
+ * The intentional debounce delay for all settings writes.
+ *
+ * Sliders fire tens of onChange events per drag; without this delay every
+ * event would trigger localStorage writes and context re-renders across every
+ * paragraph component, causing visible jank. The same delay is applied to
+ * checkboxes for consistency.
+ *
+ * DO NOT remove or reduce this without profiling the render cost first.
+ * NOTE: e2e tests that close the settings popover immediately after toggling
+ * a checkbox must wait ≥ SETTINGS_UPDATE_DELAY_MS before closing — see
+ * enableVoiceOverSelectedText in e2e/libs/books/uiSettings.ts.
+ */
 const SETTINGS_UPDATE_DELAY_MS = 350;
+
+/**
+ * Writes `localValue` to persistent storage after SETTINGS_UPDATE_DELAY_MS
+ * whenever it diverges from `persistedValue`. The timer is cancelled on
+ * unmount, so callers must not close the panel before it fires.
+ */
+function useDebouncedSetting<T>(
+  localValue: T,
+  persistedValue: T,
+  applyFn: (value: T) => void,
+): void {
+  useEffect(() => {
+    if (localValue === persistedValue) return;
+    const id = setTimeout(() => applyFn(localValue), SETTINGS_UPDATE_DELAY_MS);
+    return () => clearTimeout(id);
+  }, [localValue, persistedValue, applyFn]);
+}
 
 export const ReaderSettingsPanel = ({
   speech,
@@ -49,76 +79,13 @@ export const ReaderSettingsPanel = ({
     readerSettings.translateToLanguage,
   );
 
-  useEffect(() => {
-    if (localFontSize === readerSettings.fontSize) return;
-    const id = setTimeout(
-      () => readerSettings.setFontSize(localFontSize),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [localFontSize, readerSettings.fontSize, readerSettings.setFontSize]);
-
-  useEffect(() => {
-    if (localParagraphGap === readerSettings.paragraphGap) return;
-    const id = setTimeout(
-      () => readerSettings.setParagraphGap(localParagraphGap),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [localParagraphGap, readerSettings.paragraphGap, readerSettings.setParagraphGap]);
-
-  useEffect(() => {
-    if (localLineHeight === readerSettings.lineHeight) return;
-    const id = setTimeout(
-      () => readerSettings.setLineHeight(localLineHeight),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [localLineHeight, readerSettings.lineHeight, readerSettings.setLineHeight]);
-
-  useEffect(() => {
-    if (localJustifyText === readerSettings.justifyText) return;
-    const id = setTimeout(
-      () => readerSettings.setJustifyText(localJustifyText),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [localJustifyText, readerSettings.justifyText, readerSettings.setJustifyText]);
-
-  useEffect(() => {
-    if (localTranslateOnHover === readerSettings.translateOnHover) return;
-    const id = setTimeout(
-      () => readerSettings.setTranslateOnHover(localTranslateOnHover),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [localTranslateOnHover, readerSettings.translateOnHover, readerSettings.setTranslateOnHover]);
-
-  useEffect(() => {
-    if (localVoiceOverSelectedText === readerSettings.voiceOverSelectedText) return;
-    const id = setTimeout(
-      () => readerSettings.setVoiceOverSelectedText(localVoiceOverSelectedText),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [
-    localVoiceOverSelectedText,
-    readerSettings.voiceOverSelectedText,
-    readerSettings.setVoiceOverSelectedText,
-  ]);
-
-  useEffect(() => {
-    if (localTranslateToLanguage === readerSettings.translateToLanguage) return;
-    const id = setTimeout(
-      () => readerSettings.setTranslateToLanguage(localTranslateToLanguage),
-      SETTINGS_UPDATE_DELAY_MS,
-    );
-    return () => clearTimeout(id);
-  }, [
-    localTranslateToLanguage,
-    readerSettings.translateToLanguage,
-    readerSettings.setTranslateToLanguage,
-  ]);
+  useDebouncedSetting(localFontSize, readerSettings.fontSize, readerSettings.setFontSize);
+  useDebouncedSetting(localParagraphGap, readerSettings.paragraphGap, readerSettings.setParagraphGap);
+  useDebouncedSetting(localLineHeight, readerSettings.lineHeight, readerSettings.setLineHeight);
+  useDebouncedSetting(localJustifyText, readerSettings.justifyText, readerSettings.setJustifyText);
+  useDebouncedSetting(localTranslateOnHover, readerSettings.translateOnHover, readerSettings.setTranslateOnHover);
+  useDebouncedSetting(localVoiceOverSelectedText, readerSettings.voiceOverSelectedText, readerSettings.setVoiceOverSelectedText);
+  useDebouncedSetting(localTranslateToLanguage, readerSettings.translateToLanguage, readerSettings.setTranslateToLanguage);
 
   const availableLanguages = useMemo(() => {
     const uniqueLanguages = new Set<string>();

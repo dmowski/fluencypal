@@ -45,4 +45,8 @@ export const enableVoiceOverSelectedText = async (page: Page) => {
   const voiceOver = page.getByRole('checkbox', { name: 'Voice Over Selected Text' });
   await expect(voiceOver).toBeVisible();
   await voiceOver.check();
+  // Wait for the settings panel debounce (350 ms) to persist the setting before
+  // the caller closes the popover and unmounts the panel — otherwise the debounce
+  // timer is cancelled mid-flight and the setting is never saved.
+  await page.waitForTimeout(400);
 };

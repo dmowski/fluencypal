@@ -21,8 +21,6 @@ type BookInfoButtonProps = {
 
 type ModalView = 'menu' | 'settings' | 'chapters' | 'highlights';
 
-const SETTINGS_UPDATE_DELAY_MS = 350;
-
 export const BookInfoButton = ({
   bookTitle,
   speech,
@@ -36,9 +34,6 @@ export const BookInfoButton = ({
   const readerSettings = useReaderSettings();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [activeView, setActiveView] = useState<ModalView>('menu');
-  const [localFontSize, setLocalFontSize] = useState(readerSettings.fontSize);
-  const [localParagraphGap, setLocalParagraphGap] = useState(readerSettings.paragraphGap);
-  const [localLineHeight, setLocalLineHeight] = useState(readerSettings.lineHeight);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const open = Boolean(anchorEl);
@@ -51,49 +46,8 @@ export const BookInfoButton = ({
   useEffect(() => {
     if (!open) {
       setActiveView('menu');
-      return;
     }
-
-    setLocalFontSize(readerSettings.fontSize);
-    setLocalParagraphGap(readerSettings.paragraphGap);
-    setLocalLineHeight(readerSettings.lineHeight);
-  }, [open, readerSettings.fontSize, readerSettings.lineHeight, readerSettings.paragraphGap]);
-
-  useEffect(() => {
-    if (!open || activeView !== 'settings') return;
-    if (localFontSize === readerSettings.fontSize) return;
-    const timeoutId = setTimeout(() => {
-      readerSettings.setFontSize(localFontSize);
-    }, SETTINGS_UPDATE_DELAY_MS);
-
-    return () => clearTimeout(timeoutId);
-  }, [activeView, localFontSize, open, readerSettings.fontSize, readerSettings.setFontSize]);
-
-  useEffect(() => {
-    if (!open || activeView !== 'settings') return;
-    if (localParagraphGap === readerSettings.paragraphGap) return;
-    const timeoutId = setTimeout(() => {
-      readerSettings.setParagraphGap(localParagraphGap);
-    }, SETTINGS_UPDATE_DELAY_MS);
-
-    return () => clearTimeout(timeoutId);
-  }, [
-    activeView,
-    localParagraphGap,
-    open,
-    readerSettings.paragraphGap,
-    readerSettings.setParagraphGap,
-  ]);
-
-  useEffect(() => {
-    if (!open || activeView !== 'settings') return;
-    if (localLineHeight === readerSettings.lineHeight) return;
-    const timeoutId = setTimeout(() => {
-      readerSettings.setLineHeight(localLineHeight);
-    }, SETTINGS_UPDATE_DELAY_MS);
-
-    return () => clearTimeout(timeoutId);
-  }, [activeView, localLineHeight, open, readerSettings.lineHeight, readerSettings.setLineHeight]);
+  }, [open]);
 
   const closeModal = () => setAnchorEl(null);
 
@@ -228,12 +182,7 @@ export const BookInfoButton = ({
               <ReaderSettingsPanel
                 speech={speech}
                 isTouchDevice={isTouchDevice}
-                localFontSize={localFontSize}
-                localParagraphGap={localParagraphGap}
-                localLineHeight={localLineHeight}
-                setLocalFontSize={setLocalFontSize}
-                setLocalParagraphGap={setLocalParagraphGap}
-                setLocalLineHeight={setLocalLineHeight}
+                onReset={readerSettings.resetToDefault}
               />
             ) : null}
 

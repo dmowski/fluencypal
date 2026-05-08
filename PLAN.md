@@ -2,6 +2,10 @@
 
 ## Reader
 
+Fix this warning, it's on reader booksList.tsx
+[browser] Image with src "https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+
 - How to safely split markdown into chunks? In case when this text shows at the end ot the page, it might be broken on other page.
   For example case: _this is long italic test that we need to break in the middle_
   Page 1: _this is long
