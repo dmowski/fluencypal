@@ -21,6 +21,12 @@ const sentryRelease = process.env.SENTRY_RELEASE ?? process.env.VERCEL_GIT_COMMI
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
+  serverExternalPackages: [
+    '@google-cloud/translate',
+    '@google-cloud/firestore',
+    '@grpc/grpc-js',
+    'google-gax',
+  ],
   images: {
     remotePatterns: [
       {

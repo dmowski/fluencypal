@@ -43,10 +43,6 @@ export const translateText = async ({
     sourceLanguageCode: sourceLanguage,
     targetLanguageCode: targetLanguage,
   });
-  console.log('translatedTextResponse');
-  console.log(translatedTextResponse);
-  console.log('translateRequest');
-  console.log(translateRequest);
 
   const translatedText =
     translatedTextResponse.translations
