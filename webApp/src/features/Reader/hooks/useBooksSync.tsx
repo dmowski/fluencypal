@@ -23,6 +23,7 @@ import {
 } from './booksSyncMerge';
 import {
   deleteBookBlob,
+  downloadOriginalFileBlob,
   downloadParagraphsBlob,
   uploadOriginalFileBlob,
   uploadParagraphsBlob,
@@ -82,15 +83,24 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   const pushTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const inFlightUploadsRef = useRef<Set<string>>(new Set());
   const createdAtCacheRef = useRef<Map<string, string>>(new Map());
+  // Tracks which books we already kicked off an original-file hydration for,
+  // so the eager-download effect doesn't repeatedly fetch the same blob if
+  // the underlying state churns while the download is in flight.
+  const originalFileHydrationsRef = useRef<Set<string>>(new Set());
   // Always points at the latest snapshot of `usersBooks` so debounced async
-  // pushes can read fresh state instead of the closure they captured at
-  // schedule time. Without this the post-push merge below could overwrite
-  // newer activePageIndex/highlights with stale data, producing a brief
-  // flicker on page navigation and "disappearing" highlights.
+  // pushes and the long-lived snapshot subscription can read fresh state
+  // instead of the closure they captured at schedule/subscribe time. Without
+  // this the snapshot handler would treat freshly-uploaded local books as
+  // "unknown" and overwrite them with empty-paragraph stubs (causing the
+  // page to briefly blank on every Firestore echo).
   const usersBooksRef = useRef<Book[]>(books.usersBooks);
+  const applyRemoteBookMergeRef = useRef(books.applyRemoteBookMerge);
+  const removeBookLocallyRef = useRef(books.removeBookLocally);
 
   const usersBooks = books.usersBooks;
   usersBooksRef.current = usersBooks;
+  applyRemoteBookMergeRef.current = books.applyRemoteBookMerge;
+  removeBookLocallyRef.current = books.removeBookLocally;
 
   // ---- Subscribe to remote collection ---------------------------------------------------------
   useEffect(() => {
@@ -102,6 +112,11 @@ const useBooksSyncState = (): BooksSyncContextValue => {
       createdAtCacheRef.current = new Map();
       return;
     }
+    // Wait until local IndexedDB books have hydrated before subscribing —
+    // otherwise the first snapshot races the local load, sees no `local`
+    // match, and persists a stub WITHOUT `imagesByHref` / `originalFile`,
+    // permanently overwriting the local copy in IndexedDB.
+    if (!books.isUsersBooksLoaded) return;
 
     const collectionRef = db.collections.readerBooks(userId);
     if (!collectionRef) return;
@@ -120,25 +135,25 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             knownOriginalPathsRef.current.set(remote.id, remote.originalFileBlobPath);
           }
 
-          const local = books.usersBooks.find((book) => book.id === remote.id);
+          const local = usersBooksRef.current.find((book) => book.id === remote.id);
           if (!local) {
             const stub = buildStubBookFromRemote(remote);
             suppressedSignaturesRef.current.set(stub.id, buildLocalSignature(stub));
-            books.applyRemoteBookMerge(stub.id, stub);
+            applyRemoteBookMergeRef.current(stub.id, stub);
             return;
           }
 
           const merged = mergeRemoteBookIntoLocal(local, remote);
           if (merged) {
             suppressedSignaturesRef.current.set(merged.id, buildLocalSignature(merged));
-            books.applyRemoteBookMerge(merged.id, merged);
+            applyRemoteBookMergeRef.current(merged.id, merged);
           }
         });
 
         // Remote deletions: ids we knew about but didn't receive this snapshot.
         knownRemoteIdsRef.current.forEach((id) => {
           if (!seenIds.has(id)) {
-            books.removeBookLocally(id);
+            removeBookLocallyRef.current(id);
           }
         });
 
@@ -169,7 +184,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
     // stable context object and snapshot handler reads `books.usersBooks`
     // directly via the latest closure on each event.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [userId, books.isUsersBooksLoaded]);
 
   // ---- Push local mutations to Firestore (debounced per book) ---------------------------------
   const pushBook = useCallback(
@@ -370,6 +385,59 @@ const useBooksSyncState = (): BooksSyncContextValue => {
     // Re-run when the active book id changes or its paragraphsBlobPath shows up.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, books.active?.id, books.active?.paragraphsBlobPath, books.active?.paragraphs.length]);
+
+  // ---- Eager hydration of the original EPUB file on every device ------------------------------
+  // Whenever we know about a remote `originalFileBlobPath` for a book that
+  // doesn't yet have a local `originalFile`, download it once and persist it
+  // into IndexedDB so the Download button works without a network round-trip
+  // on subsequent visits (and on devices that never imported the file
+  // themselves).
+  useEffect(() => {
+    if (!userId) return;
+    if (!books.isUsersBooksLoaded) return;
+
+    const cancellations: Array<() => void> = [];
+
+    usersBooks.forEach((book) => {
+      if (book.originalFile) return;
+      if (!book.originalFileBlobPath) return;
+      if (originalFileHydrationsRef.current.has(book.id)) return;
+
+      originalFileHydrationsRef.current.add(book.id);
+      let isCancelled = false;
+      cancellations.push(() => {
+        isCancelled = true;
+      });
+
+      (async () => {
+        try {
+          const result = await downloadOriginalFileBlob(book.originalFileBlobPath!);
+          if (isCancelled || !result) return;
+          const file = new File([result.blob], result.fileName, {
+            type: result.blob.type || 'application/epub+zip',
+          });
+          const latest = usersBooksRef.current.find((entry) => entry.id === book.id);
+          if (!latest) return;
+          const next = { ...latest, originalFile: file };
+          suppressedSignaturesRef.current.set(book.id, buildLocalSignature(next));
+          applyRemoteBookMergeRef.current(book.id, next);
+        } catch (downloadError: any) {
+          Sentry.addBreadcrumb({
+            category: 'reader-sync',
+            level: 'warning',
+            message: 'original file hydration failed',
+            data: { bookId: book.id, code: downloadError?.code ?? null },
+          });
+          // Allow a retry on next mount; don't keep the id in the in-flight set.
+          originalFileHydrationsRef.current.delete(book.id);
+        }
+      })();
+    });
+
+    return () => {
+      cancellations.forEach((cancel) => cancel());
+    };
+  }, [usersBooks, userId, books.isUsersBooksLoaded]);
 
   return useMemo(() => {
     const isInitialSyncing = Boolean(userId) && lastSyncIso === null && status !== 'error';
