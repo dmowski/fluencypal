@@ -227,6 +227,12 @@ service cloud.firestore {
         allow read, write: if isUser(userId);
       }
 
+      // Allow read-write for Reader books metadata (paragraphs/originalFile
+      // are stored in Firebase Storage, not here).
+      match /readerBooks/{bookId} {
+        allow read, write: if isUser(userId);
+      }
+
       // Deny all other unspecified documents under userId by default
       match /{document=**} {
         allow read, write: if false;
