@@ -283,6 +283,11 @@ msgstr "Akses Diblokir"
 msgid "Access to the community"
 msgstr "Akses ke komunitas"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "Akun"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -963,7 +968,8 @@ msgstr "Skor rata-rata untuk tata bahasa, kosakata, kefasihan, dan kepercayaan d
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Kembali"
@@ -1105,7 +1111,7 @@ msgstr "Blog"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Bidang buku otomatis diisi dari metadata EPUB dalam mode produksi."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "Informasi buku"
@@ -1126,7 +1132,7 @@ msgstr "Buku disimpan."
 msgid "Booking a Doctor's Appointment"
 msgstr "Membuat Janji dengan Dokter"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1426,8 +1432,8 @@ msgstr "Menantang"
 msgid "Changes vs previous 30 days"
 msgstr "Perubahan dibandingkan 30 hari sebelumnya"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr ""
@@ -1534,6 +1540,7 @@ msgid "Check proposed words"
 msgstr "Periksa kata-kata yang diusulkan"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "Periksa email Anda"
@@ -1544,6 +1551,7 @@ msgid "Check Your Progress"
 msgstr "Periksa Kemajuan Anda"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "Periksa folder spam Anda jika Anda tidak melihat email tersebut."
@@ -1631,7 +1639,7 @@ msgstr ""
 msgid "Close"
 msgstr "Tutup"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Tutup pengaturan"
@@ -2485,7 +2493,7 @@ msgstr "Hapus tujuan saat ini"
 msgid "Delete Space"
 msgstr "Hapus Ruang"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Hapus buku ini?"
@@ -2892,7 +2900,7 @@ msgstr "Selesai:"
 msgid "Don’t let mistakes stop you."
 msgstr "Jangan biarkan kesalahan menghentikanmu."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr ""
@@ -2904,7 +2912,7 @@ msgstr ""
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Mengunduh buku dari Proyek Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Mengunduh..."
@@ -2919,7 +2927,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Letakkan file EPUB di sini"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Letakkan file EPUB untuk mengimpor buku"
@@ -3026,6 +3034,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core dilacak vs. tanpa pelacakan"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr ""
@@ -3916,7 +3925,7 @@ msgstr "FluencyPal – Mitra Berbicara Bahasa Inggris AI Anda"
 msgid "Focus on shipping reliable services"
 msgstr "Fokus pada pengiriman layanan yang andal"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Ukuran font"
@@ -4825,8 +4834,8 @@ msgstr "Soroti pengalaman frontend Anda"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Soroti kemampuan kepemimpinan dan pemecahan masalah Anda"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Sorotan"
@@ -5786,7 +5795,7 @@ msgstr "Hanya Bicara"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Mode Just Talk dengan AI yang lebih baik di belakangnya."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Rata Kanan dan Kiri Teks"
@@ -5816,8 +5825,8 @@ msgstr "Rencana Belajar Bahasa Korea"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "Mendapatkan Pekerjaan Dev Pertama Anda Lebih Sulit Daripada Seharusnya"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6051,7 +6060,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Mari pastikan Anda siap"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Perpustakaan"
@@ -6086,7 +6095,7 @@ msgstr "Fitur suara terbatas"
 msgid "Limits reached"
 msgstr "Batas tercapai"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Jarak antar garis"
@@ -6143,7 +6152,7 @@ msgstr "Memuat"
 msgid "Loading a word..."
 msgstr "Memuat sebuah kata..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
@@ -6206,6 +6215,11 @@ msgstr "Log keluar dari akun Anda"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "Logging/Tracing"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "Keluar"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6496,7 +6510,7 @@ msgstr "Pelajaran yang lebih unik"
 msgid "More..."
 msgstr "Lebih..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Buku-buku saya"
@@ -6954,7 +6968,7 @@ msgstr "Tidak Ditemukan"
 msgid "Not running inside Telegram App"
 msgstr "Tidak berjalan di dalam Aplikasi Telegram"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Tidak didukung"
@@ -6998,7 +7012,7 @@ msgstr ""
 "                                  StartUp\" dengan kantor terdaftar di "
 "Warsawa."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Mati"
@@ -7198,7 +7212,7 @@ msgstr "Bahasa Halaman"
 msgid "Paid plan:"
 msgstr "Paket berbayar:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Jarak paragraf"
@@ -8166,7 +8180,7 @@ msgstr "Pelacakan kemajuan"
 msgid "Progress tracking to see your improvement"
 msgstr "Pelacakan kemajuan untuk melihat peningkatan Anda"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proyek Gutenberg"
@@ -8310,7 +8324,7 @@ msgstr ""
 "sistem"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Baca"
@@ -8704,7 +8718,7 @@ msgstr "Permintaan gagal. Silakan coba lagi."
 msgid "Request Refund"
 msgstr "Permintaan Pengembalian Dana"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Setel ulang ke default"
@@ -9093,6 +9107,11 @@ msgstr "Kirim satu pesan di ruang komunitas"
 msgid "Send Request"
 msgstr "Kirim Permintaan"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "Kirim tautan masuk"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -9101,6 +9120,7 @@ msgstr "Kirim {messagesNeeded} pesan untuk membuka akses penuh"
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Mengirim..."
@@ -9152,8 +9172,8 @@ msgstr "Atur Bahasa Saya"
 msgid "Set the goal of your learning"
 msgstr "Tetapkan tujuan pembelajaran Anda"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Pengaturan"
@@ -9250,17 +9270,22 @@ msgid "Showcase system design thinking"
 msgstr "Memamerkan pemikiran desain sistem"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Masuk"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Masuk dengan email"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Masuk dengan Google"
@@ -9420,6 +9445,11 @@ msgstr ""
 "Terjadi kesalahan saat menghasilkan lebih banyak pelajaran. Silakan coba "
 "lagi nanti."
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "Ada yang salah. Silakan coba lagi."
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -9477,7 +9507,7 @@ msgstr "Latihan berbicara"
 msgid "Speaking with a Psychologist"
 msgstr "Berbicara dengan Seorang Psikolog"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Dukungan ucapan"
@@ -9942,7 +9972,7 @@ msgstr "Ringkasan"
 msgid "Summary:"
 msgstr "Ringkasan:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Didukung"
@@ -10917,7 +10947,7 @@ msgstr ""
 msgid "Translate"
 msgstr "Menerjemahkan"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Terjemahkan saat Dihampiri"
@@ -10927,8 +10957,8 @@ msgstr "Terjemahkan saat Dihampiri"
 msgid "Translate the word"
 msgstr "Terjemahkan kata"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11328,8 +11358,8 @@ msgstr "Kosa Kata"
 msgid "Vocabulary Practice"
 msgstr "Latihan Kosa Kata"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Suara"
@@ -11339,7 +11369,7 @@ msgstr "Suara"
 msgid "Voice conversations"
 msgstr "Percakapan suara"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "Teks Pilihan Suara"
@@ -11428,6 +11458,11 @@ msgstr "Kami dapat mengirimkan email pemasaran kepada Anda"
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Kami memproses suara Anda menggunakan AI"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "Kami mengirimkan tautan masuk ke"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -12565,7 +12600,7 @@ msgstr "Anda melakukannya dengan baik. Lihatlah tugas-tugas hari ini."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Anda berada dalam aliran yang baik. Lanjutkan dengan tugas hari ini."
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} unduhan"
@@ -12610,132 +12645,3 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "Pengaturan pembaca"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "Tambahkan Buku Baru"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "Selesai. Teks diimpor."
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "Mengonversi EPUB ke markdown..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "Mengekstraksi gambar yang tersemat..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "Mengekstraksi teks biasa..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "Mengekstraksi judul, subjudul, dan penulis..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "Harap pilih file EPUB yang valid."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "Render Markdown"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "Mengunggah EPUB..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 kolom"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2 kolom"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "Kategori"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "Jarak kolom"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "Kolom"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "Buku demo"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "Pause"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "Buku Anda"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "Akses Penuh diperlukan"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "Akses Penuh diperlukan untuk melihat obrolan global"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "Tingkatkan ke Akses Penuh"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "Ini adalah sinyal yang telah Anda tunggu-tunggu."
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr "Hari keempat: waktu bercerita"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr ""
-#~ "Nikmati cerita hari ini dan buka akses penuh. Terima kasih telah belajar "
-#~ "bersama kami."

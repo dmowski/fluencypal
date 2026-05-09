@@ -265,6 +265,11 @@ msgstr "访问被阻止"
 msgid "Access to the community"
 msgstr "访问社区"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "账户"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -920,7 +925,8 @@ msgstr "语法、词汇、流利度和自信心的平均得分。"
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "返回"
@@ -1056,7 +1062,7 @@ msgstr "博客"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "书籍字段在生产模式下会从EPUB元数据中自动填充。"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "书籍信息"
@@ -1077,7 +1083,7 @@ msgstr "书籍已保存。"
 msgid "Booking a Doctor's Appointment"
 msgstr "预约看医生"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1368,8 +1374,8 @@ msgstr "具有挑战性"
 msgid "Changes vs previous 30 days"
 msgstr "与前30天的变化"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "章节"
@@ -1463,6 +1469,7 @@ msgid "Check proposed words"
 msgstr "检查建议的单词"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "检查你的电子邮件"
@@ -1473,6 +1480,7 @@ msgid "Check Your Progress"
 msgstr "检查您的进展"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "请检查您的垃圾邮件文件夹，如果您没有看到电子邮件。"
@@ -1556,7 +1564,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 msgid "Close"
 msgstr "关闭"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "关闭设置"
@@ -2371,7 +2379,7 @@ msgstr "删除当前目标"
 msgid "Delete Space"
 msgstr "删除空间"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "删除这本书？"
@@ -2731,7 +2739,7 @@ msgstr "完成:"
 msgid "Don’t let mistakes stop you."
 msgstr "不要让错误阻碍你。"
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "下载"
@@ -2741,7 +2749,7 @@ msgstr "下载"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "正在从古腾堡计划下载书籍..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "正在下载..."
@@ -2756,7 +2764,7 @@ msgstr "人肉搜索"
 msgid "Drop EPUB file here"
 msgstr "在此处拖放EPUB文件"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "拖放 EPUB 文件以导入书籍"
@@ -2849,6 +2857,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core 跟踪 vs. 无跟踪"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "电子邮件"
@@ -3640,7 +3649,7 @@ msgstr "FluencyPal – 您的AI英语口语伙伴"
 msgid "Focus on shipping reliable services"
 msgstr "专注于提供可靠的服务"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "字体大小"
@@ -4470,8 +4479,8 @@ msgstr "突出您的前端开发经验"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "突出您的领导和解决问题的能力"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "亮点"
@@ -5334,7 +5343,7 @@ msgstr "只需说"
 msgid "Just Talk mode with better AI behind it."
 msgstr "只需对话模式，背后有更强大的AI支持。"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "两端对齐文本"
@@ -5364,8 +5373,8 @@ msgstr "韩语学习计划"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "找到您的第一份开发工作比预期更难"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5589,7 +5598,7 @@ msgstr "让我们聊聊关于你的事情。这将有助于我制定一个练习
 msgid "Let’s make sure you’re ready"
 msgstr "让我们确保你已做好准备"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "图书馆"
@@ -5624,7 +5633,7 @@ msgstr "有限的语音功能"
 msgid "Limits reached"
 msgstr "已达限额"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "行高"
@@ -5683,7 +5692,7 @@ msgstr "加载中"
 msgid "Loading a word..."
 msgstr "加载单词..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "正在加载库..."
@@ -5746,6 +5755,11 @@ msgstr "退出您的账户"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "记录/跟踪"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "注销"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6025,7 +6039,7 @@ msgstr "更多独特的课程"
 msgid "More..."
 msgstr "更多..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "我的书"
@@ -6447,7 +6461,7 @@ msgstr "未找到"
 msgid "Not running inside Telegram App"
 msgstr "未在 Telegram 应用程序内运行"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "不支持"
@@ -6487,7 +6501,7 @@ msgid ""
 "Warsaw."
 msgstr "由 \"Twój StartUp\" 企业发展基金会经营的网站，其注册办事处位于华沙。"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "关"
@@ -6670,7 +6684,7 @@ msgstr "页面语言"
 msgid "Paid plan:"
 msgstr "付费计划："
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "段落间距"
@@ -7570,7 +7584,7 @@ msgstr "进度跟踪"
 msgid "Progress tracking to see your improvement"
 msgstr "进度跟踪以查看您的进步"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "古腾堡计划"
@@ -7707,7 +7721,7 @@ msgid ""
 msgstr "React、Vue 或 Angular 专家面临架构和系统设计环节"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "阅读"
@@ -8084,7 +8098,7 @@ msgstr "请求失败。请再试一次。"
 msgid "Request Refund"
 msgstr "请求退款"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "重置为默认设置"
@@ -8459,6 +8473,11 @@ msgstr "发送一条消息到社区空间"
 msgid "Send Request"
 msgstr "发送请求"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "发送登录链接"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -8467,6 +8486,7 @@ msgstr "发送 {messagesNeeded} 条消息以解锁完整访问权限"
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "正在发送..."
@@ -8514,8 +8534,8 @@ msgstr "设置我的语言"
 msgid "Set the goal of your learning"
 msgstr "设置你的学习目标"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "设置"
@@ -8608,17 +8628,22 @@ msgid "Showcase system design thinking"
 msgstr "展示系统设计思维"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "登录"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "使用邮箱登录"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "使用 Google 登录"
@@ -8767,6 +8792,11 @@ msgstr "对 ASP.NET Core 和 EF Core 有扎实的知识。在韧性模式和可�
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "在生成更多课程时出现了问题。请稍后再试。"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "出了点问题。请再试一次。"
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -8821,7 +8851,7 @@ msgstr "练习口语"
 msgid "Speaking with a Psychologist"
 msgstr "与心理学家交谈"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "语音支持"
@@ -9247,7 +9277,7 @@ msgstr "总结"
 msgid "Summary:"
 msgstr "摘要："
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "支持"
@@ -10139,7 +10169,7 @@ msgstr ""
 "Translate\n"
 "翻译"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "鼠标悬停翻译"
@@ -10149,8 +10179,8 @@ msgstr "鼠标悬停翻译"
 msgid "Translate the word"
 msgstr "翻译单词"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Translate to 翻译为"
@@ -10533,8 +10563,8 @@ msgstr "词汇"
 msgid "Vocabulary Practice"
 msgstr "词汇练习"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "语音"
@@ -10544,7 +10574,7 @@ msgstr "语音"
 msgid "Voice conversations"
 msgstr "语音对话"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "选定文本语音播报"
@@ -10629,6 +10659,11 @@ msgstr "我们可以向您发送营销电子邮件"
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "我们使用人工智能处理您的语音"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "我们发送了一个登录链接到"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -11626,7 +11661,7 @@ msgstr "你做得很好。看看今天的任务。"
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "你正处于良好状态。继续完成今天的任务。"
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 下载"
@@ -11671,130 +11706,3 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "阅读器设置"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "添加新书"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "完成。文本已导入。"
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "将EPUB转换为markdown..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "提取嵌入的图像..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "提取纯文本..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "提取标题、副标题和作者..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "请选择一个有效的EPUB文件。"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "渲染 Markdown"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "正在上传EPUB..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 栏"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2 列"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "类别"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "列间距"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "列"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "演示书籍"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "暂停"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "你的书"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "需要完整访问权限"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "必须获得完整访问权限才能查看全球聊天"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "升级至完全访问"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "这是你一直等待的信号。"
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr "第四天：故事时间"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr "享受今天的故事并解锁完整的访问权限。感谢您与我们一起学习。"

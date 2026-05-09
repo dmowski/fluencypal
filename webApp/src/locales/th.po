@@ -280,6 +280,11 @@ msgstr "การเข้าถูกบล็อก"
 msgid "Access to the community"
 msgstr "การเข้าถึงชุมชน"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "บัญชี"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -961,7 +966,8 @@ msgstr "คะแนนเฉลี่ยในด้านไวยากรณ
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "กลับ"
@@ -1103,7 +1109,7 @@ msgstr "บล็อก"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "เขตข้อมูลหนังสือจะถูกเติมอัตโนมัติจากเมตาดาต้าของ EPUB ในโหมดการผลิต"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "ข้อมูลหนังสือ"
@@ -1124,7 +1130,7 @@ msgstr "บันทึกหนังสือแล้ว"
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1422,8 +1428,8 @@ msgstr "ท้าทาย"
 msgid "Changes vs previous 30 days"
 msgstr "การเปลี่ยนแปลงเมื่อเทียบกับ 30 วันที่ผ่านมา"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "บทต่างๆ"
@@ -1525,6 +1531,7 @@ msgid "Check proposed words"
 msgstr "ตรวจสอบคำที่เสนอ"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "ตรวจสอบอีเมลของคุณ"
@@ -1535,6 +1542,7 @@ msgid "Check Your Progress"
 msgstr "ตรวจสอบความก้าวหน้าของคุณ"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "ตรวจสอบโฟลเดอร์สแปมหากคุณไม่เห็นอีเมล"
@@ -1623,7 +1631,7 @@ msgstr ""
 msgid "Close"
 msgstr "ปิด"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "ปิดการตั้งค่า"
@@ -2485,7 +2493,7 @@ msgstr "ลบเป้าหมายปัจจุบัน"
 msgid "Delete Space"
 msgstr "ลบช่องว่าง"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "ลบหนังสือเล่มนี้หรือไม่?"
@@ -2887,7 +2895,7 @@ msgstr "เสร็จสิ้น:"
 msgid "Don’t let mistakes stop you."
 msgstr "อย่าให้ความผิดพลาดหยุดยั้งคุณ"
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "ดาวน์โหลด"
@@ -2897,7 +2905,7 @@ msgstr "ดาวน์โหลด"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "กำลังดาวน์โหลดหนังสือจาก Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "กำลังดาวน์โหลด..."
@@ -2912,7 +2920,7 @@ msgstr "การเปิดเผยข้อมูลส่วนบุคค
 msgid "Drop EPUB file here"
 msgstr "วางไฟล์ EPUB ที่นี่"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "วางไฟล์ EPUB เพื่อเพิ่มหนังสือ"
@@ -3014,6 +3022,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core ติดตาม vs. ไม่ติดตาม"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "อีเมล"
@@ -3881,7 +3890,7 @@ msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI
 msgid "Focus on shipping reliable services"
 msgstr "มุ่งเน้นการส่งมอบบริการที่เชื่อถือได้"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "ขนาดตัวอักษร"
@@ -4790,8 +4799,8 @@ msgstr "เน้นประสบการณ์ด้านส่วนติ
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "เน้นทักษะการเป็นผู้นำและการแก้ปัญหาของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "ไฮไลท์"
@@ -5722,7 +5731,7 @@ msgstr "แค่พูดคุย"
 msgid "Just Talk mode with better AI behind it."
 msgstr "โหมด Just Talk พร้อมด้วย AI ที่ดียิ่งขึ้นอยู่เบื้องหลัง"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "จัดข้อความให้ชิดขอบ"
@@ -5752,8 +5761,8 @@ msgstr "แผนการเรียนรู้ภาษาเกาหลี
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "การได้งานนักพัฒนาแรกของคุณนั้นยากกว่าที่ควรจะเป็น"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5989,7 +5998,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "ห้องสมุด"
@@ -6026,7 +6035,7 @@ msgstr ""
 msgid "Limits reached"
 msgstr "ถึงขีดจำกัดแล้ว"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "ความสูงของบรรทัด"
@@ -6085,7 +6094,7 @@ msgstr "กำลังโหลด"
 msgid "Loading a word..."
 msgstr "กำลังโหลดคำ..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
@@ -6148,6 +6157,11 @@ msgstr "ออกจากบัญชีของคุณ"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "การบันทึก/การตรวจสอบ"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "ออกจากระบบ"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6434,7 +6448,7 @@ msgstr "บทเรียนที่ไม่ซ้ำซาก"
 msgid "More..."
 msgstr "เพิ่มเติม..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "หนังสือของฉัน"
@@ -6878,7 +6892,7 @@ msgstr "ไม่พบ"
 msgid "Not running inside Telegram App"
 msgstr "ไม่ได้ทำงานภายในแอป Telegram"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "ไม่รองรับ"
@@ -6920,7 +6934,7 @@ msgstr ""
 "ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
 "ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "ปิด"
@@ -7117,7 +7131,7 @@ msgstr "ภาษาของหน้าเว็บ"
 msgid "Paid plan:"
 msgstr "แผนชำระเงิน:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "ช่องว่างย่อหน้า"
@@ -8065,7 +8079,7 @@ msgstr "การติดตามความคืบหน้า"
 msgid "Progress tracking to see your improvement"
 msgstr "การติดตามความก้าวหน้าเพื่อดูพัฒนาการของคุณ"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "โปรเจกต์ กูเตนเบิร์ก"
@@ -8206,7 +8220,7 @@ msgstr ""
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr ""
@@ -8595,7 +8609,7 @@ msgstr ""
 msgid "Request Refund"
 msgstr "ขอคืนเงิน"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
@@ -8979,6 +8993,11 @@ msgstr "ส่งข้อความหนึ่งในพื้นที่
 msgid "Send Request"
 msgstr "ส่งคำขอ"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "ส่งลิงค์ลงชื่อเข้าใช้"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -8987,6 +9006,7 @@ msgstr "ส่ง {messagesNeeded} ข้อความเพื่อปลด
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "กำลังส่ง..."
@@ -9038,8 +9058,8 @@ msgstr "ตั้งค่าภาษาของฉัน"
 msgid "Set the goal of your learning"
 msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "การตั้งค่า"
@@ -9134,17 +9154,22 @@ msgid "Showcase system design thinking"
 msgstr "แสดงระบบการออกแบบความคิด"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "เข้าสู่ระบบ"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "ลงชื่อเข้าใช้งานด้วยอีเมล"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "ลงชื่อเข้าใช้ด้วย Google"
@@ -9300,6 +9325,11 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "มีบางอย่างผิดพลาด โปรดลองอีกครั้ง"
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -9357,7 +9387,7 @@ msgstr "การฝึกพูด"
 msgid "Speaking with a Psychologist"
 msgstr "การพูดคุยกับนักจิตวิทยา"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "การรองรับการพูด"
@@ -9822,7 +9852,7 @@ msgstr "สรุป"
 msgid "Summary:"
 msgstr "สรุป:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "รองรับ"
@@ -10778,7 +10808,7 @@ msgstr "Transcripts อาจถูกจัดเก็บในบัญชี
 msgid "Translate"
 msgstr "แปล"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "แปลเมื่อเลื่อนเมาส์ไปวาง"
@@ -10788,8 +10818,8 @@ msgstr "แปลเมื่อเลื่อนเมาส์ไปวาง
 msgid "Translate the word"
 msgstr "แปลคำว่า"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11182,8 +11212,8 @@ msgstr "คำศัพท์"
 msgid "Vocabulary Practice"
 msgstr "การฝึกศัพท์"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "เสียง"
@@ -11193,7 +11223,7 @@ msgstr "เสียง"
 msgid "Voice conversations"
 msgstr "การสนทนาด้วยเสียง"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "เสียงบรรยายข้อความที่เลือก"
@@ -11282,6 +11312,11 @@ msgstr "เราสามารถส่งอีเมลการตลาด
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "เราประมวลผลเสียงของคุณโดยใช้ AI"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "เราส่งลิงก์เข้าสู่ระบบไปยัง"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -12383,7 +12418,7 @@ msgstr "คุณกำลังทำได้ดี ดูงานของ�
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "คุณกำลังทำงานได้ดีอย่างต่อเนื่อง ทำภารกิจของวันนี้ต่อไป"
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} ดาวน์โหลด"
@@ -12428,132 +12463,3 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "การตั้งค่าผู้อ่าน"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "เพิ่มหนังสือใหม่"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "เสร็จสิ้น. ข้อความถูกนำเข้าแล้ว."
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "แปลง EPUB เป็น markdown..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "กำลังดึงภาพที่ฝังอยู่..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "กำลังดึงข้อความธรรมดา..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "กำลังดึงชื่อเรื่อง, คำบรรยายภาพ และผู้เขียน..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "โปรดเลือกไฟล์ EPUB ที่ถูกต้อง"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "แสดงผลการมาร์กดาวน์"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "กำลังอัปโหลด EPUB..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 คอลัมน์"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2 คอลัมน์"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "หมวดหมู่"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "ช่องว่างระหว่างคอลัมน์"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "คอลัมน์"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "หนังสือตัวอย่าง"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "หยุดชั่วคราว"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "หนังสือของคุณ"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "จำเป็นต้องมีการเข้าถึงแบบเต็มรูปแบบ"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "ต้องมีการเข้าถึงแบบเต็มรูปแบบเพื่อดูการแชททั่วโลก"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "อัปเกรดเพื่อการเข้าถึงเต็มรูปแบบ"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "นี่คือสัญญาณที่คุณรอคอย"
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr "วันที่สี่: เวลานิทาน"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr ""
-#~ "เพลิดเพลินกับเรื่องราววันนี้และปลดล็อกการเข้าถึงแบบสมบูรณ์ "
-#~ "ขอบคุณที่เรียนรู้กับเรา"

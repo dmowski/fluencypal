@@ -282,6 +282,11 @@ msgstr "Adgang Blokeret"
 msgid "Access to the community"
 msgstr "Adgang til fællesskabet"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "Konto"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -958,7 +963,8 @@ msgstr ""
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Tilbage"
@@ -1100,7 +1106,7 @@ msgstr "Blog"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Bogfelter udfyldes automatisk fra EPUB-metadata i produktions tilstand."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "Bogoplysninger"
@@ -1121,7 +1127,7 @@ msgstr "Bog gemt."
 msgid "Booking a Doctor's Appointment"
 msgstr "Booking a Doctor's Appointment"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1421,8 +1427,8 @@ msgstr "Udfordrende"
 msgid "Changes vs previous 30 days"
 msgstr "Ændringer i forhold til de foregående 30 dage"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Kapitaler"
@@ -1527,6 +1533,7 @@ msgid "Check proposed words"
 msgstr "Tjek foreslåede ord"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "Tjek din email"
@@ -1537,6 +1544,7 @@ msgid "Check Your Progress"
 msgstr "Tjek din fremgang"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "Tjek din spam-mappe, hvis du ikke kan se e-mailen."
@@ -1624,7 +1632,7 @@ msgstr ""
 msgid "Close"
 msgstr "Luk"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Luk indstillinger"
@@ -2473,7 +2481,7 @@ msgstr "Slet nuværende mål"
 msgid "Delete Space"
 msgstr "Slet plads"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Slette denne bog?"
@@ -2870,7 +2878,7 @@ msgstr "Færdig:"
 msgid "Don’t let mistakes stop you."
 msgstr "Lad ikke fejl stoppe dig."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Hent"
@@ -2880,7 +2888,7 @@ msgstr "Hent"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Downloader bog fra Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Downloader..."
@@ -2895,7 +2903,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Slip EPUB-fil her"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Slip EPUB-fil for at importere bog"
@@ -2995,6 +3003,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core sporet vs. ikke-sporet"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "E-mail"
@@ -3857,7 +3866,7 @@ msgstr "FluencyPal – Din AI Engelsk Talende Partner"
 msgid "Focus on shipping reliable services"
 msgstr "Fokuser på at levere pålidelige tjenester"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Skriftstørrelse"
@@ -4753,8 +4762,8 @@ msgstr "Fremhæv din frontend-erfaring"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Fremhæv dine ledelses- og problemløsningsfærdigheder"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Højdepunkter"
@@ -5696,7 +5705,7 @@ msgstr "Bare Tal"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Just Talk-tilstand med bedre AI bag det."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Juster tekst"
@@ -5726,8 +5735,8 @@ msgstr "Koreansk Læringsplan"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "At lande dit første udvikler-job er sværere end det burde være"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5957,7 +5966,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Lad os sikre os, at du er klar"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliotek"
@@ -5992,7 +6001,7 @@ msgstr "Begrænsede stemmefunktioner"
 msgid "Limits reached"
 msgstr "Grænser nået"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Linjehøjde"
@@ -6049,7 +6058,7 @@ msgstr "Indlæser"
 msgid "Loading a word..."
 msgstr "Indlæser et ord..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Indlæser bibliotek..."
@@ -6112,6 +6121,11 @@ msgstr "Log ud af din konto"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "Logføring/Sporing"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "Logout"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6402,7 +6416,7 @@ msgstr "Flere unikke lektioner"
 msgid "More..."
 msgstr "Mere..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Mine bøger"
@@ -6850,7 +6864,7 @@ msgstr "Ikke fundet"
 msgid "Not running inside Telegram App"
 msgstr "Ikke kørende inde i Telegram Appen"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Ikke understøttet"
@@ -6893,7 +6907,7 @@ msgstr ""
 "                                  StartUp\" med sit registrerede kontor i "
 "Warszawa."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Fra"
@@ -7093,7 +7107,7 @@ msgstr "Sprog på side"
 msgid "Paid plan:"
 msgstr "Betalt plan:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Afsnit mellemrum"
@@ -8041,7 +8055,7 @@ msgstr "Fremdriftssporing"
 msgid "Progress tracking to see your improvement"
 msgstr "Sporing af fremskridt for at se din forbedring"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projekt Gutenberg"
@@ -8180,7 +8194,7 @@ msgstr ""
 "systemdesignrunder"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Læs"
@@ -8567,7 +8581,7 @@ msgstr "Anmodning mislykkedes. Prøv venligst igen."
 msgid "Request Refund"
 msgstr "Anmod om refundering"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Nulstil til standard"
@@ -8954,6 +8968,11 @@ msgstr "Send en besked i fællesskabsområdet"
 msgid "Send Request"
 msgstr "Send anmodning"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "Send loginlink"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -8962,6 +8981,7 @@ msgstr "Send {messagesNeeded} beskeder for at låse op for fuld adgang"
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Afsender..."
@@ -9013,8 +9033,8 @@ msgstr "Indstil Mit Sprog"
 msgid "Set the goal of your learning"
 msgstr "Indstil målet for din læring"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Indstillinger"
@@ -9109,17 +9129,22 @@ msgid "Showcase system design thinking"
 msgstr "Fokus på systemets designfilosofi"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Log Ind"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Log ind med e-mail"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Log ind med Google"
@@ -9276,6 +9301,11 @@ msgstr ""
 "Noget gik galt under genereringen af flere lektioner. Prøv venligst igen "
 "senere."
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "Noget gik galt. Prøv venligst igen."
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -9332,7 +9362,7 @@ msgstr "Taleøvelse"
 msgid "Speaking with a Psychologist"
 msgstr "At tale med en psykolog"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Taleunderstøttelse"
@@ -9791,7 +9821,7 @@ msgstr "Oversigt"
 msgid "Summary:"
 msgstr "Sammendrag:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Understøttet"
@@ -10752,7 +10782,7 @@ msgstr ""
 msgid "Translate"
 msgstr "Translate"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Oversæt ved Hover"
@@ -10762,8 +10792,8 @@ msgstr "Oversæt ved Hover"
 msgid "Translate the word"
 msgstr "Oversæt ordet"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11150,8 +11180,8 @@ msgstr "Ordforråd"
 msgid "Vocabulary Practice"
 msgstr "Ordforrådsøvelse"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Stemmen"
@@ -11161,7 +11191,7 @@ msgstr "Stemmen"
 msgid "Voice conversations"
 msgstr "Stemmesamtaler"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "Stem over udvalgt tekst"
@@ -11250,6 +11280,11 @@ msgstr "Vi kan sende dig markedsførings-e-mails"
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Vi behandler din stemme ved hjælp af AI"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "Vi har sendt et logind-link til"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -12345,7 +12380,7 @@ msgstr "Du klarer det godt. Tag et kig på dagens opgaver."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du er i god flow. Fortsæt med dagens opgaver."
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} downloads"
@@ -12390,130 +12425,3 @@ msgstr "{winnerName} vinder!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlydendighedsPal"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "Læserindstillinger"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "Tilføj Ny Bog"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "Færdig. Tekst importeret."
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "Konvertering af EPUB til markdown..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "Uddrager indlejrede billeder..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "Uddrag af almindelig tekst..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "Ekstraktion af titel, undertekst og forfatter..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "Vælg venligst en gyldig EPUB-fil."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "Gengiv Markdown"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "Uploader EPUB..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 kolonne"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2 kolonner"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "Kategori"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "Kolonneafstand"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "Kolonner"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "Demo bøger"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "Pause"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "Dine bøger"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "Fuld adgang er påkrævet"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "Fuld adgang er påkrævet for at se global chat"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "Opgrader til fuld adgang"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "Dette er signalet, du har ventet på."
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr "Dag fire: historietid"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr "Nyd dagens historie og få fuld adgang. Tak for at lære sammen med os."

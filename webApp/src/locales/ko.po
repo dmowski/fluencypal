@@ -269,6 +269,11 @@ msgstr "액세스 차단됨"
 msgid "Access to the community"
 msgstr "커뮤니티에 대한 액세스"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "계정"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -924,7 +929,8 @@ msgstr "문법, 어휘, 유창성, 자신감에 대한 평균 점수."
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr ""
@@ -1064,7 +1070,7 @@ msgstr "블로그"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "북 필드는 프로덕션 모드에서 EPUB 메타데이터로 자동 채워집니다."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "책 정보"
@@ -1085,7 +1091,7 @@ msgstr "책이 저장되었습니다."
 msgid "Booking a Doctor's Appointment"
 msgstr "의사 예약하기"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1376,8 +1382,8 @@ msgstr "도전적인"
 msgid "Changes vs previous 30 days"
 msgstr "이전 30일 대비 변화"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "챕터"
@@ -1475,6 +1481,7 @@ msgid "Check proposed words"
 msgstr "제안된 단어 확인"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "이메일을 확인하세요"
@@ -1485,6 +1492,7 @@ msgid "Check Your Progress"
 msgstr "진행 상황 확인하기"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "이메일이 보이지 않으면 스팸 폴더를 확인하세요."
@@ -1568,7 +1576,7 @@ msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 �
 msgid "Close"
 msgstr "닫기"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "설정 닫기"
@@ -2396,7 +2404,7 @@ msgstr "현재 목표 삭제"
 msgid "Delete Space"
 msgstr "스페이스 삭제"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "이 책을 삭제하시겠습니까?"
@@ -2760,7 +2768,7 @@ msgstr "완료:"
 msgid "Don’t let mistakes stop you."
 msgstr "실수를 두려워하지 마세요."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "다운로드"
@@ -2770,7 +2778,7 @@ msgstr "다운로드"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "프로젝트 구텐베르크에서 책 다운로드 중..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "다운로드 중..."
@@ -2785,7 +2793,7 @@ msgstr "도싱"
 msgid "Drop EPUB file here"
 msgstr "EPUB 파일을 여기에 드롭하세요"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "EPUB 파일을 드롭하여 책을 가져오기"
@@ -2880,6 +2888,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core 추적 vs. 비추적"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "이메일"
@@ -3691,7 +3700,7 @@ msgstr "FluencyPal – 당신의 AI 영어 말하기 파트너"
 msgid "Focus on shipping reliable services"
 msgstr "신뢰할 수 있는 서비스 제공에 중점을 두십시오"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "글꼴 크기"
@@ -4537,8 +4546,8 @@ msgstr "귀하의 프론트엔드 경험을 강조하십시오"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "리더십과 문제 해결 능력을 강조하십시오"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "하이라이트"
@@ -5413,7 +5422,7 @@ msgstr "그냥 말하세요"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Just Talk 모드가 더 발전된 AI로 강화되었습니다."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "텍스트 양쪽 맞춤"
@@ -5443,8 +5452,8 @@ msgstr "한국어 학습 계획"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "첫 개발자 직업을 얻는 것은 생각보다 어렵다"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5668,7 +5677,7 @@ msgstr "당신에 대해 조금 이야기해보죠. 이는 제가 연습 계획�
 msgid "Let’s make sure you’re ready"
 msgstr "준비가 되었는지 확인해봅시다"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "도서관"
@@ -5703,7 +5712,7 @@ msgstr "제한된 음성 기능"
 msgid "Limits reached"
 msgstr "한도에 도달했습니다"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "줄 높이"
@@ -5760,7 +5769,7 @@ msgstr "로딩 중"
 msgid "Loading a word..."
 msgstr "단어 불러오는 중..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
@@ -5823,6 +5832,11 @@ msgstr "계정에서 로그아웃하십시오"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "로그/추적"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "로그아웃"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6103,7 +6117,7 @@ msgstr "더욱 독특한 수업들"
 msgid "More..."
 msgstr "더 보기..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "내 책"
@@ -6528,7 +6542,7 @@ msgstr "찾을 수 없음"
 msgid "Not running inside Telegram App"
 msgstr "텔레그램 앱 내에서 실행되지 않음"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "지원되지 않음"
@@ -6570,7 +6584,7 @@ msgstr ""
 "웹사이트는 바르샤바에 본사를 둔 \"Twój StartUp\" 창업 발전 재단(Fundacja Rozwoju "
 "Przedsiębiorczości)에 의해 운영됩니다."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "끄기"
@@ -6757,7 +6771,7 @@ msgstr "페이지 언어"
 msgid "Paid plan:"
 msgstr "유료 플랜:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "단락 간격"
@@ -7662,7 +7676,7 @@ msgstr "진행 상황 추적"
 msgid "Progress tracking to see your improvement"
 msgstr "당신의 발전을 확인하기 위한 진행 추적"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "프로젝트 구텐베르크"
@@ -7799,7 +7813,7 @@ msgid ""
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "읽기"
@@ -8178,7 +8192,7 @@ msgstr "요청이 실패했습니다. 다시 시도해 주세요."
 msgid "Request Refund"
 msgstr "환불 요청"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "기본값으로 재설정"
@@ -8555,6 +8569,11 @@ msgstr "커뮤니티 공간에 메시지 하나 보내기"
 msgid "Send Request"
 msgstr "요청 보내기"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "로그인 링크 보내기"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -8563,6 +8582,7 @@ msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "보내는 중..."
@@ -8610,8 +8630,8 @@ msgstr "내 언어 설정"
 msgid "Set the goal of your learning"
 msgstr "학습의 목표를 설정하십시오"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "설정"
@@ -8704,17 +8724,22 @@ msgid "Showcase system design thinking"
 msgstr "시스템 설계 사고 보여주기"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "로그인"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "이메일로 로그인"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Google로 로그인하기"
@@ -8861,6 +8886,11 @@ msgstr "ASP.NET Core 및 EF Core에 대한 확고한 지식. 복원력 패턴과
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "더 많은 수업을 생성하는 동안 문제가 발생했습니다. 나중에 다시 시도해주세요."
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "문제가 발생했습니다. 다시 시도해 주세요."
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -8917,7 +8947,7 @@ msgstr "스피킹 연습"
 msgid "Speaking with a Psychologist"
 msgstr "심리학자와의 대화"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "음성 지원"
@@ -9351,7 +9381,7 @@ msgstr "요약"
 msgid "Summary:"
 msgstr "요약:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "지원됨"
@@ -10259,7 +10289,7 @@ msgstr "로그는 시간이 지남에 따라 학습 진척도를 추적하는 �
 msgid "Translate"
 msgstr "번역하기"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "호버 시 번역"
@@ -10269,8 +10299,8 @@ msgstr "호버 시 번역"
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -10653,8 +10683,8 @@ msgstr "어휘"
 msgid "Vocabulary Practice"
 msgstr "어휘 연습"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "음성"
@@ -10664,7 +10694,7 @@ msgstr "음성"
 msgid "Voice conversations"
 msgstr "음성 대화"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "선택한 텍스트 음성 변환"
@@ -10749,6 +10779,11 @@ msgstr "마케팅 이메일을 보낼 수 있습니다."
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "우리는 AI를 사용하여 당신의 음성을 처리합니다"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "우리는 다음에 로그인 링크를 보냈습니다"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -11766,7 +11801,7 @@ msgstr "잘하고 있어요. 오늘의 과제를 확인해 보세요."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "잘 진행되고 있습니다. 오늘의 작업을 계속하세요."
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 다운로드 "
@@ -11811,133 +11846,3 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "독자 설정"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "새 책 추가"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "완료. 텍스트가 가져와졌습니다."
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "EPUB을 마크다운으로 변환 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "내장된 이미지 추출 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "단순 텍스트 추출 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "제목, 부제 및 저자 추출 중..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "유효한 EPUB 파일을 선택하세요."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "마크다운 렌더"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "EPUB 업로드 중..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 열"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2열"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "카테고리"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "열 간격"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "열"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "데모 책"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "일시정지"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "당신의 책들"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "전체 액세스가 필요합니다"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "글로벌 채팅을 보려면 전체 액세스가 필요합니다."
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "전체 액세스로 업그레이드"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "이것이 당신이 기다려온 신호입니다."
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr ""
-#~ "Day four: story time\n"
-#~ "\n"
-#~ "네 번째 날: 이야기 시간"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr "오늘의 이야기를 즐기고 전체 액세스를 해제하세요. 저희와 함께 공부해 주셔서 감사합니다."

@@ -282,6 +282,11 @@ msgstr "Erişim Engellendi"
 msgid "Access to the community"
 msgstr "Topluluğa erişim"
 
+#: src/features/Reader/components/ReaderAuthButton.tsx:29
+#. js-lingui-explicit-id
+msgid "Account"
+msgstr "Hesap"
+
 #: src/features/Alias/components/GameEnd.tsx:196
 #. js-lingui-explicit-id
 msgid "Accuracy"
@@ -955,7 +960,8 @@ msgstr "Dilbilgisi, kelime bilgisi, akıcılık ve özgüven genel puanları."
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:162
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:115
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Geri"
@@ -1097,7 +1103,7 @@ msgstr "Blog"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "Kitap alanları, üretim modunda EPUB meta verilerinden otomatik doldurulur."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:113
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "Kitap bilgisi"
@@ -1118,7 +1124,7 @@ msgstr "Kitap kaydedildi."
 msgid "Booking a Doctor's Appointment"
 msgstr "Doktor Randevusu Alma"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:139
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1418,8 +1424,8 @@ msgstr "Zorlayıcı"
 msgid "Changes vs previous 30 days"
 msgstr "Önceki 30 güne göre değişiklikler"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:104
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:212
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Bölümler"
@@ -1524,6 +1530,7 @@ msgid "Check proposed words"
 msgstr "Önerilen kelimeleri kontrol edin"
 
 #: src/features/Auth/AuthWallBasic.tsx:118
+#: src/features/Reader/components/ReaderSignInModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "E-postanızı kontrol edin"
@@ -1534,6 +1541,7 @@ msgid "Check Your Progress"
 msgstr "İlerlemenizi Kontrol Edin"
 
 #: src/features/Auth/AuthWallBasic.tsx:133
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "E-postayı göremezseniz, spam klasörünüzü kontrol edin."
@@ -1621,7 +1629,7 @@ msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan aç�
 msgid "Close"
 msgstr "Kapat"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Ayarları kapat"
@@ -2474,7 +2482,7 @@ msgstr "Mevcut hedefi sil"
 msgid "Delete Space"
 msgstr "Boşluğu Sil"
 
-#: src/features/Reader/components/BooksList.tsx:56
+#: src/features/Reader/components/BooksList.tsx:60
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Bu kitabı silinsin mi?"
@@ -2880,7 +2888,7 @@ msgstr "Tamam:"
 msgid "Don’t let mistakes stop you."
 msgstr "Hataların seni durdurmasına izin verme."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "İndir"
@@ -2890,7 +2898,7 @@ msgstr "İndir"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Project Gutenberg'den kitap indiriliyor..."
 
-#: src/features/Reader/components/Cards.tsx:245
+#: src/features/Reader/components/Cards.tsx:254
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "İndiriliyor..."
@@ -2905,7 +2913,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "EPUB dosyasını buraya bırakın"
 
-#: src/features/Reader/components/BooksList.tsx:233
+#: src/features/Reader/components/BooksList.tsx:250
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "EPUB dosyasını kitabı içe aktarmak için bırakın"
@@ -3008,6 +3016,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core izlenen vs. izlenmeyen"
 
 #: src/features/Auth/AuthWallBasic.tsx:161
+#: src/features/Reader/components/ReaderSignInModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "E-posta"
@@ -3888,7 +3897,7 @@ msgstr "FluencyPal – Yapay Zeka İngilizce Konuşma Ortağın"
 msgid "Focus on shipping reliable services"
 msgstr "Güvenilir hizmetlerin teslimatına odaklanın"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:197
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Yazı tipi boyutu"
@@ -4789,8 +4798,8 @@ msgstr "Frontend deneyiminizi öne çıkarın"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Liderlik ve problem çözme becerilerinizi vurgulayın"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:106
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:222
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Öne Çıkanlar"
@@ -5725,7 +5734,7 @@ msgstr "Sadece Konuş"
 msgid "Just Talk mode with better AI behind it."
 msgstr "Gelişmiş bir yapay zeka ile Just Talk modu."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:170
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "Metni Hizala"
@@ -5755,8 +5764,8 @@ msgstr "Korece Öğrenme Planı"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "İlk Geliştirici İşinizi Bulmak Gerektiğinden Daha Zor"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:111
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:114
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -5986,7 +5995,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hadi, hazır olduğundan emin olalım"
 
-#: src/features/Reader/components/BooksList.tsx:166
+#: src/features/Reader/components/BooksList.tsx:182
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Kütüphane"
@@ -6021,7 +6030,7 @@ msgstr "Sınırlı ses özellikleri"
 msgid "Limits reached"
 msgstr "Limitlere ulaşıldı"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:233
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Satır yüksekliği"
@@ -6078,7 +6087,7 @@ msgstr "Yükleniyor"
 msgid "Loading a word..."
 msgstr "Bir kelime yükleniyor..."
 
-#: src/features/Reader/components/BooksList.tsx:169
+#: src/features/Reader/components/BooksList.tsx:185
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
@@ -6141,6 +6150,11 @@ msgstr "Hesabınızdan çıkış yapın"
 #. js-lingui-explicit-id
 msgid "Logging/Tracing"
 msgstr "Günlükleme/İzleme"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Logout"
+msgstr "Çıkış Yap"
 
 #: src/features/Alias/components/LanguageLevel.tsx:88
 #. js-lingui-explicit-id
@@ -6426,7 +6440,7 @@ msgstr "Daha benzersiz dersler"
 msgid "More..."
 msgstr "Daha fazla..."
 
-#: src/features/Reader/components/BooksList.tsx:132
+#: src/features/Reader/components/BooksList.tsx:148
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Kitaplarım"
@@ -6876,7 +6890,7 @@ msgstr "Bulunamadı"
 msgid "Not running inside Telegram App"
 msgstr "Telegram Uygulaması içinde çalışmıyor"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "Desteklenmiyor"
@@ -6919,7 +6933,7 @@ msgstr ""
 "Web Sitesinin\n"
 "                                  kayıtlı ofisi Varşova'da bulunmaktadır."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:154
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "Kapalı"
@@ -7119,7 +7133,7 @@ msgstr "Sayfa Dili"
 msgid "Paid plan:"
 msgstr "Ücretli plan:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:214
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Paragraf boşluğu"
@@ -8073,7 +8087,7 @@ msgstr "İlerleme takibi"
 msgid "Progress tracking to see your improvement"
 msgstr "Gelişiminizi görmek için ilerleme takibi"
 
-#: src/features/Reader/components/Cards.tsx:203
+#: src/features/Reader/components/Cards.tsx:212
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proje Gutenberg"
@@ -8210,7 +8224,7 @@ msgid ""
 msgstr "React, Vue veya Angular uzmanları için mimari ve sistem tasarımı turları"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:267
+#: src/features/Reader/components/Reader.tsx:268
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Oku"
@@ -8598,7 +8612,7 @@ msgstr "İstek başarısız oldu. Lütfen tekrar deneyin."
 msgid "Request Refund"
 msgstr "İade Talebi"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:254
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Varsayılan ayarlara sıfırla"
@@ -8989,6 +9003,11 @@ msgstr "Topluluk alanında bir mesaj gönder"
 msgid "Send Request"
 msgstr "İsteği Gönder"
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#. js-lingui-explicit-id
+msgid "Send sign-in link"
+msgstr "Oturum açma bağlantısını gönder"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -8997,6 +9016,7 @@ msgstr "Tam erişimin kilidini açmak için {messagesNeeded} mesaj gönderin"
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Gönderiliyor..."
@@ -9046,8 +9066,8 @@ msgstr "Dilimi Ayarla"
 msgid "Set the goal of your learning"
 msgstr "Öğrenme hedefinizi belirleyin"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:102
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:202
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Ayarlar"
@@ -9142,17 +9162,22 @@ msgid "Showcase system design thinking"
 msgstr "Sistem tasarım düşüncesini sergileyin"
 
 #: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Reader/components/ReaderAuthButton.tsx:36
+#: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Oturum Aç"
 
 #: src/features/Auth/AuthWallBasic.tsx:149
 #: src/features/Auth/AuthWallBasic.tsx:250
+#: src/features/Reader/components/ReaderSignInModal.tsx:108
+#: src/features/Reader/components/ReaderSignInModal.tsx:148
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "E-posta ile giriş yap"
 
 #: src/features/Auth/AuthWallBasic.tsx:246
+#: src/features/Reader/components/ReaderSignInModal.tsx:141
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Google ile giriş yap"
@@ -9309,6 +9334,11 @@ msgstr ""
 "Daha fazla ders oluşturulurken bir şeyler yanlış gitti. Lütfen daha sonra "
 "tekrar deneyin."
 
+#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again."
+msgstr "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+
 #: src/features/Usage/FeatureBlocker.tsx:60
 #. js-lingui-explicit-id
 msgid ""
@@ -9366,7 +9396,7 @@ msgstr "Konuşma pratiği"
 msgid "Speaking with a Psychologist"
 msgstr "Bir Psikolog ile Konuşma"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:102
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "Konuşma desteği"
@@ -9827,7 +9857,7 @@ msgstr "Özet"
 msgid "Summary:"
 msgstr "Özet:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:103
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "Desteklenen"
@@ -10797,7 +10827,7 @@ msgstr ""
 msgid "Translate"
 msgstr "I'm ready to help! Please provide the text you'd like translated."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:181
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "Üzerine Gelince Çevir"
@@ -10807,8 +10837,8 @@ msgstr "Üzerine Gelince Çevir"
 msgid "Translate the word"
 msgstr "Kelimeyi çevir"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:147
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:150
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr "Translate et"
@@ -11195,8 +11225,8 @@ msgstr "Kelime Dağarcığı"
 msgid "Vocabulary Practice"
 msgstr "Kelime Pratikleri"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:131
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:134
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "Ses"
@@ -11206,7 +11236,7 @@ msgstr "Ses"
 msgid "Voice conversations"
 msgstr "Sesli konuşmalar"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:192
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "Seçili Metni Seslendir"
@@ -11295,6 +11325,11 @@ msgstr "Size pazarlama e-postaları gönderebiliriz"
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Sesinizi AI kullanarak işliyoruz"
+
+#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#. js-lingui-explicit-id
+msgid "We sent a sign-in link to"
+msgstr "Bir oturum açma bağlantısı gönderdik"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
 #. js-lingui-explicit-id
@@ -12392,7 +12427,7 @@ msgstr "İyi gidiyorsun. Bugünün görevlerine bir göz at."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "İyi bir akıştasın. Bugünkü görevlerle devam et."
 
-#: src/features/Reader/components/Cards.tsx:219
+#: src/features/Reader/components/Cards.tsx:228
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} indirme"
@@ -12437,132 +12472,3 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:70
-#. js-lingui-explicit-id
-#~ msgid "Just book reader with some feature list translate words on the fly."
-#~ msgstr ""
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:142
-#. js-lingui-explicit-id
-#~ msgid "Reader settings"
-#~ msgstr "Okuyucu ayarları"
-
-#: src/features/Reader/components/AddBookModal.tsx:238
-#: src/features/Reader/components/Cards.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Add New Book"
-#~ msgstr "Yeni Kitap Ekle"
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Done. Text imported."
-#~ msgstr "Tamam. Metin içeri aktarıldı."
-
-#: src/features/Reader/components/AddBookModal.tsx:118
-#. js-lingui-explicit-id
-#~ msgid "Converting EPUB to markdown..."
-#~ msgstr "EPUB'u markdown'a dönüştürülüyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:141
-#. js-lingui-explicit-id
-#~ msgid "Extracting embedded images..."
-#~ msgstr "Gömülü görüntüler çıkarılıyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:121
-#. js-lingui-explicit-id
-#~ msgid "Extracting plain text..."
-#~ msgstr "Düz metin çıkarılıyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Extracting title, subtitle and author..."
-#~ msgstr "Başlık, alt başlık ve yazarı çıkarılıyor..."
-
-#: src/features/Reader/components/AddBookModal.tsx:99
-#. js-lingui-explicit-id
-#~ msgid "Please select a valid EPUB file."
-#~ msgstr "Lütfen geçerli bir EPUB dosyası seçin."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:277
-#. js-lingui-explicit-id
-#~ msgid "Render Markdown"
-#~ msgstr "Markdown Oluştur"
-
-#: src/features/Reader/components/AddBookModal.tsx:115
-#. js-lingui-explicit-id
-#~ msgid "Uploading EPUB..."
-#~ msgstr "EPUB Yükleniyor..."
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:204
-#. js-lingui-explicit-id
-#~ msgid "1 column"
-#~ msgstr "1 sütun"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:205
-#. js-lingui-explicit-id
-#~ msgid "2 columns"
-#~ msgstr "2 sütunlar"
-
-#: src/features/Reader/components/AddBookModal.tsx:172
-#. js-lingui-explicit-id
-#~ msgid "Category"
-#~ msgstr "Kategori"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:232
-#. js-lingui-explicit-id
-#~ msgid "Column gap"
-#~ msgstr "Sütun aralığı"
-
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:197
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:200
-#. js-lingui-explicit-id
-#~ msgid "Columns"
-#~ msgstr "Sütunlar"
-
-#: src/features/Reader/BooksList.tsx:73
-#. js-lingui-explicit-id
-#~ msgid "Demo books"
-#~ msgstr "Demo kitaplar"
-
-#: src/features/Reader/Reader.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Pause"
-#~ msgstr "Duraklat"
-
-#: src/features/Reader/BooksList.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Your books"
-#~ msgstr "Kitaplarınız"
-
-#: src/features/Dashboard/PublicChatDashboardCard.tsx:48
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required"
-#~ msgstr "Tam Erişim Gereklidir"
-
-#: src/features/Navigation/AppNotificationsButton.tsx:131
-#. js-lingui-explicit-id
-#~ msgid "Full Access is required to see global chat"
-#~ msgstr "Küresel sohbeti görmek için Tam Erişim gereklidir."
-
-#: src/features/Navigation/AppNotificationsButton.tsx:134
-#. js-lingui-explicit-id
-#~ msgid "Upgrade to Full Access"
-#~ msgstr "Tam Erişime Yükseltin"
-
-#: src/features/Dashboard/RolePlayDashboardCard.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "This is the signal you've been waiting for."
-#~ msgstr "Bu, beklediğiniz sinyal."
-
-#: src/features/Tasks/useDailyTasks.tsx:145
-#. js-lingui-explicit-id
-#~ msgid "Day four: story time"
-#~ msgstr "Dördüncü gün: hikaye zamanı"
-
-#: src/features/Tasks/useDailyTasks.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Enjoy today’s story and unlock full access. Thank you for learning with us."
-#~ msgstr ""
-#~ "Bugünün hikayesinin tadını çıkarın ve tam erişimin kilidini açın. Bizimle "
-#~ "birlikte öğrenmeye başladığınız için teşekkür ederiz."

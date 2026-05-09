@@ -132,7 +132,7 @@ export const ReaderSignInModal = ({ open, onClose }: Props) => {
 
     return (
       <Stack gap="16px" padding="8px">
-        <Typography variant="h6">{i18n._('Sign in')}</Typography>
+        <Typography variant="h6">{i18n._('Sign In')}</Typography>
         <Button
           variant="contained"
           startIcon={<Google />}
