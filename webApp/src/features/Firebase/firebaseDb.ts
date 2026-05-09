@@ -37,6 +37,7 @@ import { AudioCache } from '@/features/Audio/types';
 import { CommunitySpace, CommunitySpaceSettings } from '@/features/Community/types';
 import { Homework } from '@/features/Homework/homework';
 import { ProgressStat } from '@/features/ProgressStat/types';
+import { ReaderBookDoc } from '@/features/Reader/server/readerBookDoc';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -117,6 +118,9 @@ export const db = {
 
     progressStats: (userId?: string) =>
       userId ? dataPointCollection<ProgressStat>(`users/${userId}/progressStats`) : null,
+
+    readerBooks: (userId?: string) =>
+      userId ? dataPointCollection<ReaderBookDoc>(`users/${userId}/readerBooks`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -198,6 +202,11 @@ export const db = {
     progressStat: (userId?: string, statId?: string) =>
       userId && statId
         ? dataPointDoc<ProgressStat>(`users/${userId}/progressStats/${statId}`)
+        : null,
+
+    readerBook: (userId?: string, bookId?: string) =>
+      userId && bookId
+        ? dataPointDoc<ReaderBookDoc>(`users/${userId}/readerBooks/${bookId}`)
         : null,
   },
 };
