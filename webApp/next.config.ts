@@ -27,6 +27,18 @@ const nextConfig: NextConfig = {
     '@grpc/grpc-js',
     'google-gax',
   ],
+  rewrites: async () => [
+    {
+      source: '/:path*',
+      has: [
+        {
+          type: 'host',
+          value: 'books.fluencypal.com',
+        },
+      ],
+      destination: '/book/:path*',
+    },
+  ],
   images: {
     remotePatterns: [
       {

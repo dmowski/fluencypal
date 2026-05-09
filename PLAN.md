@@ -2,6 +2,8 @@
 
 ## Reader
 
+- Do automatic re-import, create parser version
+
 =================================
 
 - Separate app/url/PWA/Vision of the app
