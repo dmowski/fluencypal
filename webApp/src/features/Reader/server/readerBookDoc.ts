@@ -1,8 +1,4 @@
-import {
-  BookChapterNavigationItem,
-  HighlightedText,
-  ReadingPosition,
-} from '../model/types';
+import { BookChapterNavigationItem, HighlightedText, ReadingPosition } from '../model/types';
 
 /**
  * Firestore document shape stored at `users/{uid}/readerBooks/{bookId}`.
