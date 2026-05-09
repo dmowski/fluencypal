@@ -38,16 +38,6 @@ const nextConfig: NextConfig = {
       ],
       destination: '/en/book',
     },
-    {
-      source: '/:path*',
-      has: [
-        {
-          type: 'host',
-          value: 'books.fluencypal.com',
-        },
-      ],
-      destination: '/book/:path*',
-    },
   ],
   images: {
     remotePatterns: [
