@@ -4,8 +4,6 @@
 
 - How to run e2e in isolated env?
 
-### Synchronization of books
-
 =================================
 
 - Separate app/url/PWA/Vision of the app
