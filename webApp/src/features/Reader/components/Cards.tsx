@@ -1,29 +1,43 @@
 'use client';
 
 import Image from 'next/image';
-import { MouseEvent } from 'react';
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Box, Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
-import { CirclePlus, Download, Trash2 } from 'lucide-react';
+import { CirclePlus, Download, MoreVertical, RefreshCw, Trash2 } from 'lucide-react';
 
 export const BookCard = ({
   data,
   onClick,
   onDelete,
   onDownloadFromBlob,
+  onReimport,
 }: {
   data: Book;
   onClick: (data: Book) => void;
   onDelete?: (data: Book) => void;
   onDownloadFromBlob?: (data: Book) => Promise<void> | void;
+  onReimport?: (data: Book) => void;
 }) => {
+  const i18n = useLingui();
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const canDownload = Boolean(data.originalFile || data.originalFileBlobPath);
+  const hasMenuItems = Boolean(onDelete || canDownload || onReimport);
 
-  const handleDownloadClick = async (event: MouseEvent) => {
+  const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
+  };
+
+  const handleDownload = async () => {
+    handleMenuClose();
     if (data.originalFile) {
       const url = URL.createObjectURL(data.originalFile);
       const anchor = document.createElement('a');
@@ -55,47 +69,69 @@ export const BookCard = ({
         },
       }}
     >
-      {onDelete && (
-        <IconButton
-          size="small"
-          onClick={(event) => {
-            event.stopPropagation();
-            onDelete(data);
-          }}
-          sx={{
-            position: 'absolute',
-            top: '8px',
-            right: '8px',
-            color: '#fff',
-            //backgroundColor: 'rgba(255, 255, 255, 0.12)',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.22)',
-            },
-          }}
-        >
-          <Trash2 size={'16px'} />
-        </IconButton>
-      )}
-      {canDownload && (
-        <IconButton
-          size="small"
-          aria-label="Download original file"
-          data-testid={`book-download-${data.id}`}
-          onClick={(event) => {
-            void handleDownloadClick(event);
-          }}
-          sx={{
-            position: 'absolute',
-            top: '8px',
-            right: onDelete ? '36px' : '8px',
-            color: '#fff',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.22)',
-            },
-          }}
-        >
-          <Download size={'16px'} />
-        </IconButton>
+      {hasMenuItems && (
+        <>
+          <IconButton
+            size="small"
+            aria-label="Book options"
+            data-testid={`book-menu-${data.id}`}
+            onClick={handleMenuOpen}
+            sx={{
+              position: 'absolute',
+              top: '8px',
+              right: '8px',
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.22)',
+              },
+            }}
+          >
+            <MoreVertical size={'16px'} />
+          </IconButton>
+          <Menu
+            anchorEl={menuAnchor}
+            open={Boolean(menuAnchor)}
+            onClose={handleMenuClose}
+            onClick={(e) => e.stopPropagation()}
+            slotProps={{ paper: { sx: { minWidth: '160px' } } }}
+          >
+            {onReimport && (
+              <MenuItem
+                data-testid={`book-reimport-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onReimport(data);
+                }}
+              >
+                <RefreshCw size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Re-import')}
+              </MenuItem>
+            )}
+            {canDownload && (
+              <MenuItem
+                data-testid={`book-download-${data.id}`}
+                onClick={() => {
+                  void handleDownload();
+                }}
+              >
+                <Download size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Download')}
+              </MenuItem>
+            )}
+            {onDelete && (
+              <MenuItem
+                data-testid={`book-delete-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onDelete(data);
+                }}
+              >
+                <Trash2 size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Delete')}
+              </MenuItem>
+            )}
+          </Menu>
+        </>
       )}
       <Typography
         variant="h4"

@@ -107,6 +107,41 @@ const useBooksState = () => {
     setActiveBookId(bookId);
   };
 
+  const reimportBook = (
+    bookId: string,
+    {
+      title,
+      subTitle,
+      author,
+      text,
+      chapters,
+      imagesByHref,
+      imageAspectRatioByHref,
+      originalFile,
+    }: {
+      title: string;
+      subTitle: string;
+      author: string;
+      text: string;
+      chapters?: BookChapterNavigationItem[];
+      imagesByHref?: Record<string, string>;
+      imageAspectRatioByHref?: Record<string, number>;
+      originalFile?: File;
+    },
+  ) => {
+    updateBook(bookId, (current) => ({
+      title,
+      subtitle: subTitle,
+      author,
+      paragraphs: splitTextIntoParagraphs(text),
+      chapters,
+      imagesByHref,
+      imageAspectRatioByHref,
+      originalFile: originalFile ?? current.originalFile,
+      dataUpdatedAtIso: new Date().toISOString(),
+    }));
+  };
+
   const addBook = async ({
     title,
     subTitle,
@@ -228,6 +263,7 @@ const useBooksState = () => {
     setActive: setActiveBookId,
     setActivePage,
     addBook,
+    reimportBook,
     deleteBook,
     applySelectedHighlight,
     removeHighlight,

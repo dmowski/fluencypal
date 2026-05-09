@@ -10,6 +10,7 @@ import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { DevPanel } from './DevPanel';
 import { useDroppedEpubImport } from '../hooks/useDroppedEpubImport';
+import { useReimportEpub } from '../hooks/useReimportEpub';
 import { useBooksListDropZone } from '../hooks/useBooksListDropZone';
 import { useReaderLibrary } from '../hooks/useReaderLibrary';
 import { useBooksSync } from '../hooks/useBooksSync';
@@ -34,8 +35,19 @@ export const BooksList = () => {
   const auth = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const reimportFileInputRef = useRef<HTMLInputElement>(null);
+  const [reimportTargetBookId, setReimportTargetBookId] = useState<string | null>(null);
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
     useDroppedEpubImport();
+  const {
+    isReimporting,
+    reimportProgress,
+    reimportMessage,
+    reimportError,
+    canReimportAutomatically,
+    reimportBook,
+    reimportEpubFile,
+  } = useReimportEpub();
   const [isDownloadingLibraryBookId, setIsDownloadingLibraryBookId] = useState<string | null>(null);
   const [libraryDownloadProgress, setLibraryDownloadProgress] = useState(0);
   const [libraryDownloadLabel, setLibraryDownloadLabel] = useState('');
@@ -45,7 +57,7 @@ export const BooksList = () => {
       isDisabled: isImportingDroppedFile,
       onDropFile: importEpubFile,
     });
-  const isBusy = isImportingDroppedFile || isDownloadingLibraryBookId !== null;
+  const isBusy = isImportingDroppedFile || isReimporting || isDownloadingLibraryBookId !== null;
 
   const handleAddBookClick = () => {
     if (isBusy) return;
@@ -59,6 +71,28 @@ export const BooksList = () => {
     await importEpubFile(file);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
+    }
+  };
+
+  const handleReimportClick = (book: Book) => {
+    if (isBusy) return;
+    if (canReimportAutomatically(book)) {
+      void reimportBook(book);
+      return;
+    }
+    // No stored file — ask user to pick the EPUB manually
+    setReimportTargetBookId(book.id);
+    reimportFileInputRef.current?.click();
+  };
+
+  const handleReimportEpubSelect = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !reimportTargetBookId) return;
+
+    await reimportEpubFile(reimportTargetBookId, file);
+    setReimportTargetBookId(null);
+    if (reimportFileInputRef.current) {
+      reimportFileInputRef.current.value = '';
     }
   };
 
@@ -146,6 +180,16 @@ export const BooksList = () => {
           }}
           data-testid="add-book-file-input"
         />
+        <input
+          ref={reimportFileInputRef}
+          type="file"
+          accept=".epub,application/epub+zip"
+          style={{ display: 'none' }}
+          onChange={(event) => {
+            void handleReimportEpubSelect(event);
+          }}
+          data-testid="reimport-book-file-input"
+        />
         <Stack
           sx={{
             flexDirection: 'row',
@@ -194,6 +238,7 @@ export const BooksList = () => {
                 onClick={() => books.setActive(book.id)}
                 onDelete={handleDelete}
                 onDownloadFromBlob={handleDownloadFromBlob}
+                onReimport={handleReimportClick}
               />
             ))}
 
@@ -204,6 +249,11 @@ export const BooksList = () => {
         {importError ? (
           <Typography variant="caption" color="error" data-testid="books-drop-import-error">
             {importError}
+          </Typography>
+        ) : null}
+        {reimportError ? (
+          <Typography variant="caption" color="error" data-testid="books-reimport-error">
+            {reimportError}
           </Typography>
         ) : null}
         {libraryImportError ? (
@@ -261,9 +311,9 @@ export const BooksList = () => {
         isDownloading={isDownloadingLibraryBookId !== null}
         downloadProgress={libraryDownloadProgress}
         downloadLabel={libraryDownloadLabel}
-        isImporting={isImportingDroppedFile}
-        importProgress={importProgress}
-        importMessage={importMessage}
+        isImporting={isImportingDroppedFile || isReimporting}
+        importProgress={isReimporting ? reimportProgress : importProgress}
+        importMessage={isReimporting ? reimportMessage : importMessage}
       />
 
       {isDropActive ? (

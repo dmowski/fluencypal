@@ -2,10 +2,6 @@
 
 ## Reader
 
-- How to run e2e in isolated env?
-
-- Create Re-import button
-
 =================================
 
 - Separate app/url/PWA/Vision of the app
