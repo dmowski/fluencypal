@@ -50,6 +50,10 @@ const fixtures: Array<{ name: string; words: string[]; paragraphStartCharOffset?
     name: 'paragraph with em-dash and punctuation',
     words: ['Stop—', 'wait,', 'listen', 'carefully', 'now.'],
   },
+  {
+    name: 'em-dash adjacent to quote characters',
+    words: ['you“—', 'he', 'points', 'stack—', '”these'],
+  },
 ];
 
 describe('ReaderParagraph data-char-offset invariants', () => {

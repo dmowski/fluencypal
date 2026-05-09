@@ -21,6 +21,12 @@ describe('splitWords', () => {
     expect(splitWords('She whispered—')).toEqual(['She', 'whispered—']);
   });
 
+  it('handles em-dash adjacent to quote characters', () => {
+    expect(
+      splitWords('you“—he points to another stack—”these'),
+    ).toEqual(['you“—', 'he', 'points', 'to', 'another', 'stack—', '”these']);
+  });
+
   it('handles multiple em-dash splits within a sentence', () => {
     expect(splitWords('she said one—two—three things')).toEqual([
       'she',

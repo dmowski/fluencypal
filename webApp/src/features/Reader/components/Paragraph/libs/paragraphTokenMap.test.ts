@@ -26,6 +26,7 @@ describe('buildParagraphTokenMap', () => {
       { name: 'inline image single-word', words: ['![alt](pic.png)'] },
       { name: 'smart quotes & em-dash', words: ['She', 'whispered—', '“just', 'remember,”'] },
       { name: 'em-dash split word (for—)', words: ['hoping', 'for—', 'and', 'what'] },
+      { name: 'em-dash adjacent to quotes', words: ['you“—', 'he', 'points', 'to', 'another', 'stack—', '”these'] },
       { name: 'mixed emphasis run', words: ['**Bold**', 'and', '_italic_', 'mix.'] },
       { name: 'word with leading punctuation', words: ['"Quoted', 'text"', 'ends.'] },
       {
