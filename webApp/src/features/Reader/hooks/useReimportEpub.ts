@@ -81,8 +81,7 @@ export const useReimportEpub = () => {
       setReimportProgress(100);
       setReimportMessage(i18n._('Book updated.'));
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : i18n._('Failed to re-import EPUB.');
+      const message = error instanceof Error ? error.message : i18n._('Failed to re-import EPUB.');
       setReimportError(message);
       setReimportProgress(0);
       setReimportMessage('');
@@ -130,8 +129,7 @@ export const useReimportEpub = () => {
       setReimportProgress(100);
       setReimportMessage(i18n._('Book updated.'));
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : i18n._('Failed to re-import EPUB.');
+      const message = error instanceof Error ? error.message : i18n._('Failed to re-import EPUB.');
       setReimportError(message);
       setReimportProgress(0);
       setReimportMessage('');
