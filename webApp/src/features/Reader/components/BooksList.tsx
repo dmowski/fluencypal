@@ -142,10 +142,7 @@ export const BooksList = () => {
           <ReaderAuthButton onClick={() => void setIsProfileOpen(true)} />
         </Stack>
 
-        <ReaderSignInModal
-          open={isProfileOpen}
-          onClose={() => void setIsProfileOpen(false)}
-        />
+        <ReaderSignInModal open={isProfileOpen} onClose={() => void setIsProfileOpen(false)} />
 
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h4">{i18n._('My books')}</Typography>

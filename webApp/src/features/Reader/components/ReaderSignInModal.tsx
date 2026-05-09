@@ -80,9 +80,7 @@ export const ReaderSignInModal = ({ open, onClose }: Props) => {
               sx={{ width: 64, height: 64 }}
             />
           )}
-          <Typography variant="h6">
-            {auth.userInfo?.displayName || auth.userInfo?.email}
-          </Typography>
+          <Typography variant="h6">{auth.userInfo?.displayName || auth.userInfo?.email}</Typography>
           <Button variant="outlined" onClick={() => void handleLogout()}>
             {i18n._('Logout')}
           </Button>
