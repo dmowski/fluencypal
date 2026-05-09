@@ -487,18 +487,12 @@ const useBooksSyncState = (): BooksSyncContextValue => {
     if (!userId) return;
     if (!books.isUsersBooksLoaded) return;
 
-    const cancellations: Array<() => void> = [];
-
     usersBooks.forEach((book) => {
       if (book.originalFile) return;
       if (!book.originalFileBlobPath) return;
       if (originalFileHydrationsRef.current.has(book.id)) return;
 
       originalFileHydrationsRef.current.add(book.id);
-      let isCancelled = false;
-      cancellations.push(() => {
-        isCancelled = true;
-      });
 
       (async () => {
         console.log('[reader-sync] hydrating original EPUB from Storage', {
@@ -507,10 +501,6 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         });
         try {
           const result = await downloadOriginalFileBlob(book.originalFileBlobPath!);
-          if (isCancelled) {
-            console.log('[reader-sync] EPUB hydration cancelled', { bookId: book.id });
-            return;
-          }
           if (!result) {
             console.warn('[reader-sync] EPUB blob not found in Storage', {
               bookId: book.id,
@@ -535,7 +525,6 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           let imageAspectRatioByHref: Record<string, number> | undefined;
           try {
             const parsed = await parseEpubOnClient(file);
-            if (isCancelled) return;
             const imageHrefCount = Object.keys(parsed.imageDataUrlByHref).length;
             console.log('[reader-sync] parsed EPUB images', {
               bookId: book.id,
@@ -554,7 +543,6 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             });
             console.warn('[reader-sync] image re-extract failed', { bookId: book.id }, parseError);
           }
-          if (isCancelled) return;
 
           const latest = usersBooksRef.current.find((entry) => entry.id === book.id);
           if (!latest) {
@@ -605,10 +593,6 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         }
       })();
     });
-
-    return () => {
-      cancellations.forEach((cancel) => cancel());
-    };
   }, [usersBooks, userId, books.isUsersBooksLoaded]);
 
   return useMemo(() => {
