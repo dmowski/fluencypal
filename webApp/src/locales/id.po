@@ -324,7 +324,7 @@ msgid "Add"
 msgstr "Tambahkan"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Tambahkan buku"
@@ -1127,12 +1127,18 @@ msgstr "Pembaca Buku"
 msgid "Book saved."
 msgstr "Buku disimpan."
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "Buku diperbarui."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Membuat Janji dengan Dokter"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2458,6 +2464,7 @@ msgid "Debates"
 msgstr "Debat"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2493,7 +2500,7 @@ msgstr "Hapus tujuan saat ini"
 msgid "Delete Space"
 msgstr "Hapus Ruang"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Hapus buku ini?"
@@ -2900,7 +2907,8 @@ msgstr "Selesai:"
 msgid "Don’t let mistakes stop you."
 msgstr "Jangan biarkan kesalahan menghentikanmu."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr ""
@@ -2912,7 +2920,7 @@ msgstr ""
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Mengunduh buku dari Proyek Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Mengunduh..."
@@ -2927,7 +2935,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Letakkan file EPUB di sini"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Letakkan file EPUB untuk mengimpor buku"
@@ -3577,6 +3585,12 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "Gagal menghapus akun Anda. Silakan coba lagi nanti, atau hubungi pengembang."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "Gagal mengimpor ulang EPUB."
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -6060,7 +6074,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Mari pastikan Anda siap"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Perpustakaan"
@@ -6152,7 +6166,7 @@ msgstr "Memuat"
 msgid "Loading a word..."
 msgstr "Memuat sebuah kata..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
@@ -6510,7 +6524,7 @@ msgstr "Pelajaran yang lebih unik"
 msgid "More..."
 msgstr "Lebih..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Buku-buku saya"
@@ -6771,6 +6785,11 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Belum ada catatan. Tambahkan beberapa detail agar guru AI Anda lebih "
 "mengenal Anda."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "Tidak ada file asli yang ditemukan untuk buku ini."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -8180,7 +8199,7 @@ msgstr "Pelacakan kemajuan"
 msgid "Progress tracking to see your improvement"
 msgstr "Pelacakan kemajuan untuk melihat peningkatan Anda"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proyek Gutenberg"
@@ -8283,6 +8302,11 @@ msgstr "Masuk dalam peringkat 5 besar untuk mendapatkan akses penuh ke semua fit
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Mentah"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "Impor-ulang"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8728,6 +8752,11 @@ msgstr "Setel ulang ke default"
 msgid "Resiliency & Observability"
 msgstr "Ketahanan & Keteramatan"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "Menyelesaikan file..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8934,6 +8963,8 @@ msgstr "Simpan Perubahan"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Menyimpan buku..."
@@ -9987,7 +10018,7 @@ msgstr "Teman Penyemangat"
 msgid "Swedish Learning Plan"
 msgstr "Rencana Belajar Swedia"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Sinkronisasi perpustakaan Anda..."
@@ -12605,7 +12636,7 @@ msgstr "Anda melakukannya dengan baik. Lihatlah tugas-tugas hari ini."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Anda berada dalam aliran yang baik. Lanjutkan dengan tugas hari ini."
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} unduhan"

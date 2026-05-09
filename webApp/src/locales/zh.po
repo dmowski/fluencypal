@@ -306,7 +306,7 @@ msgid "Add"
 msgstr "添加"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "添加书籍"
@@ -1078,12 +1078,18 @@ msgstr "书籍阅读器"
 msgid "Book saved."
 msgstr "书籍已保存。"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "书籍已更新。"
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "预约看医生"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2344,6 +2350,7 @@ msgid "Debates"
 msgstr "辩论"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2379,7 +2386,7 @@ msgstr "删除当前目标"
 msgid "Delete Space"
 msgstr "删除空间"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "删除这本书？"
@@ -2739,7 +2746,8 @@ msgstr "完成:"
 msgid "Don’t let mistakes stop you."
 msgstr "不要让错误阻碍你。"
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "下载"
@@ -2749,7 +2757,7 @@ msgstr "下载"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "正在从古腾堡计划下载书籍..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "正在下载..."
@@ -2764,7 +2772,7 @@ msgstr "人肉搜索"
 msgid "Drop EPUB file here"
 msgstr "在此处拖放EPUB文件"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "拖放 EPUB 文件以导入书籍"
@@ -3352,6 +3360,12 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "无法重新导入EPUB。"
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -5598,7 +5612,7 @@ msgstr "让我们聊聊关于你的事情。这将有助于我制定一个练习
 msgid "Let’s make sure you’re ready"
 msgstr "让我们确保你已做好准备"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "图书馆"
@@ -5692,7 +5706,7 @@ msgstr "加载中"
 msgid "Loading a word..."
 msgstr "加载单词..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "正在加载库..."
@@ -6039,7 +6053,7 @@ msgstr "更多独特的课程"
 msgid "More..."
 msgstr "更多..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "我的书"
@@ -6291,6 +6305,11 @@ msgstr "暂无消息。快来分享你的想法吧！"
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "还没有备注。添加一些细节，让您的AI老师更了解您。"
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "未找到该书的原始文件。"
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -7584,7 +7603,7 @@ msgstr "进度跟踪"
 msgid "Progress tracking to see your improvement"
 msgstr "进度跟踪以查看您的进步"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "古腾堡计划"
@@ -7682,6 +7701,11 @@ msgstr "排名前5以获得所有功能的完全访问权限！"
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "生动"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "重新导入"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8108,6 +8132,11 @@ msgstr "重置为默认设置"
 msgid "Resiliency & Observability"
 msgstr "弹性 & 可观察性"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "正在解析文件..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8304,6 +8333,8 @@ msgstr "保存更改"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "保存图书..."
@@ -9292,7 +9323,7 @@ msgstr "支持的朋友"
 msgid "Swedish Learning Plan"
 msgstr "瑞典语学习计划"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "正在同步您的资料库…"
@@ -11666,7 +11697,7 @@ msgstr "你做得很好。看看今天的任务。"
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "你正处于良好状态。继续完成今天的任务。"
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 下载"

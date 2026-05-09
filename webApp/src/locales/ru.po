@@ -325,7 +325,7 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Добавить книгу"
@@ -1132,12 +1132,18 @@ msgstr "Читатель книг"
 msgid "Book saved."
 msgstr "Книга сохранена."
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "Книга обновлена."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Запись на прием к врачу"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2464,6 +2470,7 @@ msgid "Debates"
 msgstr "Дебаты"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2499,7 +2506,7 @@ msgstr "Удалить текущую цель"
 msgid "Delete Space"
 msgstr "Удалить пространство"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Удалить эту книгу?"
@@ -2905,7 +2912,8 @@ msgstr "Готово:"
 msgid "Don’t let mistakes stop you."
 msgstr "Не позволяйте ошибкам останавливать вас."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Скачать"
@@ -2915,7 +2923,7 @@ msgstr "Скачать"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Загрузка книги с Проекта Гутенберг..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Загрузка..."
@@ -2930,7 +2938,7 @@ msgstr "Доксинг"
 msgid "Drop EPUB file here"
 msgstr "Перетащите файл EPUB сюда"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Перетащите файл EPUB для импорта книги"
@@ -3571,6 +3579,12 @@ msgid ""
 msgstr ""
 "Не удалось удалить вашу учетную запись. Попробуйте снова позже или "
 "свяжитесь с разработчиками."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "Не удалось повторно импортировать EPUB."
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -6036,7 +6050,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Давайте убедимся, что вы готовы"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Библиотека"
@@ -6128,7 +6142,7 @@ msgstr "Загрузка"
 msgid "Loading a word..."
 msgstr "Загрузка слова..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Загрузка библиотеки..."
@@ -6488,7 +6502,7 @@ msgstr "Больше уникальных уроков"
 msgid "More..."
 msgstr "Больше..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Мои книги"
@@ -6747,6 +6761,11 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Пока нет заметок. Добавьте несколько деталей, чтобы ваш AI учитель узнал "
 "вас лучше."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "Оригинальный файл для этой книги не найден."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -8146,7 +8165,7 @@ msgstr "Отслеживание прогресса"
 msgid "Progress tracking to see your improvement"
 msgstr "Отслеживание прогресса, чтобы увидеть ваше улучшение"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Проект Гутенберг"
@@ -8244,6 +8263,11 @@ msgstr "Займите место в топ-5, чтобы получить по�
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Сырой"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "Повторный импорт"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8690,6 +8714,11 @@ msgstr "Сбросить до настроек по умолчанию"
 msgid "Resiliency & Observability"
 msgstr "Устойчивость и Наблюдаемость"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "Решение файла..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8898,6 +8927,8 @@ msgstr "Сохранить изменения"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Сохранение книги..."
@@ -9943,7 +9974,7 @@ msgstr "Поддерживающий друг"
 msgid "Swedish Learning Plan"
 msgstr "План обучения шведскому"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Синхронизация вашей библиотеки…"
@@ -12524,7 +12555,7 @@ msgstr "Вы хорошо справляетесь. Взгляните на за
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Вы в хорошем ритме. Продолжайте с сегодняшними задачами."
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} загрузок"

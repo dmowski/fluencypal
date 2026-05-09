@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Legg til"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Legg til en bok"
@@ -1119,12 +1119,18 @@ msgstr "Bokleser"
 msgid "Book saved."
 msgstr "Bok lagret."
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "Bok oppdatert."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Bestille legetime"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2444,6 +2450,7 @@ msgid "Debates"
 msgstr "Debatter"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2479,7 +2486,7 @@ msgstr "Slett nåværende mål"
 msgid "Delete Space"
 msgstr "Slett mellomrom"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Slette denne boken?"
@@ -2878,7 +2885,8 @@ msgstr "Ferdig:"
 msgid "Don’t let mistakes stop you."
 msgstr "Ikke la feil stoppe deg."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Last ned"
@@ -2888,7 +2896,7 @@ msgstr "Last ned"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Laster ned bok fra Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Laster ned..."
@@ -2903,7 +2911,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Slipp EPUB-fil her"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Slipp EPUB-fil for å importere bok"
@@ -3535,6 +3543,12 @@ msgid ""
 msgstr ""
 "Kunne ikke slette kontoen din. Vennligst prøv igjen senere, eller kontakt "
 "utviklerne."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "Kunne ikke importere EPUB på nytt."
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -5969,7 +5983,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "La oss sørge for at du er klar"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliotek"
@@ -6061,7 +6075,7 @@ msgstr "Laster"
 msgid "Loading a word..."
 msgstr "Laster inn et ord..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Laster bibliotek..."
@@ -6414,7 +6428,7 @@ msgstr "Flere unike leksjoner"
 msgid "More..."
 msgstr "Mer..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Mine bøker"
@@ -6667,6 +6681,11 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Ingen notater ennå. Legg til noen detaljer slik at din AI-lærer blir bedre "
 "kjent med deg."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "Ingen originalfil funnet for denne boken."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -8048,7 +8067,7 @@ msgstr "Fremdriftssporing"
 msgid "Progress tracking to see your improvement"
 msgstr "Fremdriftssporing for å se din forbedring"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Prosjekt Gutenberg"
@@ -8146,6 +8165,11 @@ msgstr "Ranger blant de 5 beste for å få full tilgang til alle funksjoner!"
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Rå"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "Re-importere"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8584,6 +8608,11 @@ msgstr "Tilbakestill til standard"
 msgid "Resiliency & Observability"
 msgstr "Motstandsdyktighet og observabilitet"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "Løser fil..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8787,6 +8816,8 @@ msgstr "Lagre endringer"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Lagrer bok..."
@@ -9843,7 +9874,7 @@ msgstr "Støttende venn"
 msgid "Swedish Learning Plan"
 msgstr "Svensk Læringsplan"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Synkroniserer biblioteket ditt…"
@@ -12409,7 +12440,7 @@ msgstr "Du gjør det bra. Ta en titt på dagens oppgaver."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du er i en god flyt. Fortsett med dagens oppgaver."
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} nedlastinger"

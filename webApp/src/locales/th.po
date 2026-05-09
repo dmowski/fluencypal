@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "เพิ่ม"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "เพิ่มหนังสือ"
@@ -1125,12 +1125,18 @@ msgstr "เครื่องอ่านหนังสือ"
 msgid "Book saved."
 msgstr "บันทึกหนังสือแล้ว"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "อัปเดตหนังสือแล้ว"
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2458,6 +2464,7 @@ msgid "Debates"
 msgstr "การโต้วาที"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2493,7 +2500,7 @@ msgstr "ลบเป้าหมายปัจจุบัน"
 msgid "Delete Space"
 msgstr "ลบช่องว่าง"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "ลบหนังสือเล่มนี้หรือไม่?"
@@ -2895,7 +2902,8 @@ msgstr "เสร็จสิ้น:"
 msgid "Don’t let mistakes stop you."
 msgstr "อย่าให้ความผิดพลาดหยุดยั้งคุณ"
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "ดาวน์โหลด"
@@ -2905,7 +2913,7 @@ msgstr "ดาวน์โหลด"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "กำลังดาวน์โหลดหนังสือจาก Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "กำลังดาวน์โหลด..."
@@ -2920,7 +2928,7 @@ msgstr "การเปิดเผยข้อมูลส่วนบุคค
 msgid "Drop EPUB file here"
 msgstr "วางไฟล์ EPUB ที่นี่"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "วางไฟล์ EPUB เพื่อเพิ่มหนังสือ"
@@ -3548,6 +3556,12 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "ไม่สามารถนำเข้า EPUB ใหม่ได้"
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -5998,7 +6012,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "ห้องสมุด"
@@ -6094,7 +6108,7 @@ msgstr "กำลังโหลด"
 msgid "Loading a word..."
 msgstr "กำลังโหลดคำ..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
@@ -6448,7 +6462,7 @@ msgstr "บทเรียนที่ไม่ซ้ำซาก"
 msgid "More..."
 msgstr "เพิ่มเติม..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "หนังสือของฉัน"
@@ -6699,6 +6713,11 @@ msgstr "ยังไม่มีข้อความใดๆ เป็นค�
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "ยังไม่มีบันทึก เพิ่มรายละเอียดเล็กน้อยเพื่อให้ครู AI ของคุณรู้จักคุณดีขึ้น"
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "ไม่มีไฟล์ต้นฉบับสำหรับหนังสือเล่มนี้พบ."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -8079,7 +8098,7 @@ msgstr "การติดตามความคืบหน้า"
 msgid "Progress tracking to see your improvement"
 msgstr "การติดตามความก้าวหน้าเพื่อดูพัฒนาการของคุณ"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "โปรเจกต์ กูเตนเบิร์ก"
@@ -8179,6 +8198,11 @@ msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "ดิบ"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "นำเข้ามาใหม่"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8619,6 +8643,11 @@ msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
 msgid "Resiliency & Observability"
 msgstr "ความยืดหยุ่น & การมองเห็น"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "กำลังแก้ไขไฟล์..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8822,6 +8851,8 @@ msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "กำลังบันทึกหนังสือ..."
@@ -9867,7 +9898,7 @@ msgstr "เพื่อนที่สนับสนุน"
 msgid "Swedish Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาสวีเดน"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "กำลังซิงค์ไลบรารีของคุณ…"
@@ -12423,7 +12454,7 @@ msgstr "คุณกำลังทำได้ดี ดูงานของ�
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "คุณกำลังทำงานได้ดีอย่างต่อเนื่อง ทำภารกิจของวันนี้ต่อไป"
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} ดาวน์โหลด"

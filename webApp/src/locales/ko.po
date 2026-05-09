@@ -310,7 +310,7 @@ msgid "Add"
 msgstr "추가"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "책 추가"
@@ -1086,12 +1086,18 @@ msgstr "책 읽기"
 msgid "Book saved."
 msgstr "책이 저장되었습니다."
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "책이 업데이트되었습니다."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "의사 예약하기"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2369,6 +2375,7 @@ msgid "Debates"
 msgstr "토론"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2404,7 +2411,7 @@ msgstr "현재 목표 삭제"
 msgid "Delete Space"
 msgstr "스페이스 삭제"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "이 책을 삭제하시겠습니까?"
@@ -2768,7 +2775,8 @@ msgstr "완료:"
 msgid "Don’t let mistakes stop you."
 msgstr "실수를 두려워하지 마세요."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "다운로드"
@@ -2778,7 +2786,7 @@ msgstr "다운로드"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "프로젝트 구텐베르크에서 책 다운로드 중..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "다운로드 중..."
@@ -2793,7 +2801,7 @@ msgstr "도싱"
 msgid "Drop EPUB file here"
 msgstr "EPUB 파일을 여기에 드롭하세요"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "EPUB 파일을 드롭하여 책을 가져오기"
@@ -3394,6 +3402,12 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나 개발자에게 연락해 주세요."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "EPUB을 다시 가져오지 못했습니다."
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -5677,7 +5691,7 @@ msgstr "당신에 대해 조금 이야기해보죠. 이는 제가 연습 계획�
 msgid "Let’s make sure you’re ready"
 msgstr "준비가 되었는지 확인해봅시다"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "도서관"
@@ -5769,7 +5783,7 @@ msgstr "로딩 중"
 msgid "Loading a word..."
 msgstr "단어 불러오는 중..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
@@ -6117,7 +6131,7 @@ msgstr "더욱 독특한 수업들"
 msgid "More..."
 msgstr "더 보기..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "내 책"
@@ -6366,6 +6380,11 @@ msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공�
 #. js-lingui-explicit-id
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "아직 메모가 없습니다. AI 선생님이 당신을 더 잘 알 수 있도록 몇 가지 세부 정보를 추가하세요."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "이 책에 대한 원본 파일을 찾을 수 없습니다."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -7676,7 +7695,7 @@ msgstr "진행 상황 추적"
 msgid "Progress tracking to see your improvement"
 msgstr "당신의 발전을 확인하기 위한 진행 추적"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "프로젝트 구텐베르크"
@@ -7774,6 +7793,11 @@ msgstr "상위 5위에 랭크하여 모든 기능에 대한 전체 액세스 권
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "생으로"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "재수입"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8202,6 +8226,11 @@ msgstr "기본값으로 재설정"
 msgid "Resiliency & Observability"
 msgstr "복원력 및 가시성"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "파일 해상 중..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8400,6 +8429,8 @@ msgstr "변경 사항 저장"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "책 저장 중..."
@@ -9396,7 +9427,7 @@ msgstr "지원하는 친구"
 msgid "Swedish Learning Plan"
 msgstr "스웨덴어 학습 계획"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "당신의 라이브러리를 동기화 중…"
@@ -11806,7 +11837,7 @@ msgstr "잘하고 있어요. 오늘의 과제를 확인해 보세요."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "잘 진행되고 있습니다. 오늘의 작업을 계속하세요."
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 다운로드 "

@@ -327,7 +327,7 @@ msgid "Add"
 msgstr "Thêm"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:133
+#: src/features/Reader/components/Cards.tsx:199
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Thêm một cuốn sách"
@@ -1127,12 +1127,18 @@ msgstr "Trình Đọc Sách"
 msgid "Book saved."
 msgstr "Sách đã được lưu."
 
+#: src/features/Reader/hooks/useReimportEpub.ts:82
+#: src/features/Reader/hooks/useReimportEpub.ts:130
+#. js-lingui-explicit-id
+msgid "Book updated."
+msgstr "Sách đã được cập nhật."
+
 #: src/features/RolePlay/rolePlayData.tsx:965
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Đặt Lịch Hẹn Với Bác Sĩ"
 
-#: src/features/Reader/components/BooksList.tsx:141
+#: src/features/Reader/components/BooksList.tsx:206
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -2458,6 +2464,7 @@ msgid "Debates"
 msgstr "Tranh luận"
 
 #: src/features/Chat/Message/Message.tsx:425
+#: src/features/Reader/components/Cards.tsx:130
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2493,7 +2500,7 @@ msgstr "Xóa mục tiêu hiện tại"
 msgid "Delete Space"
 msgstr "Xóa Khoảng Trống"
 
-#: src/features/Reader/components/BooksList.tsx:62
+#: src/features/Reader/components/BooksList.tsx:100
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Xóa cuốn sách này?"
@@ -2904,7 +2911,8 @@ msgstr "Hoàn thành:"
 msgid "Don’t let mistakes stop you."
 msgstr "Đừng để những sai lầm ngăn cản bạn."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:118
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Tải về"
@@ -2914,7 +2922,7 @@ msgstr "Tải về"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Đang tải về sách từ Dự án Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:254
+#: src/features/Reader/components/Cards.tsx:320
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Đang tải xuống..."
@@ -2929,7 +2937,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Thả tệp EPUB vào đây"
 
-#: src/features/Reader/components/BooksList.tsx:262
+#: src/features/Reader/components/BooksList.tsx:334
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Thả tệp EPUB để nhập sách"
@@ -3574,6 +3582,12 @@ msgid ""
 msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:84
+#: src/features/Reader/hooks/useReimportEpub.ts:132
+#. js-lingui-explicit-id
+msgid "Failed to re-import EPUB."
+msgstr "Không thể nhập lại EPUB."
 
 #: src/features/Reader/components/AddBookModal.tsx:223
 #. js-lingui-explicit-id
@@ -6020,7 +6034,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
 
-#: src/features/Reader/components/BooksList.tsx:194
+#: src/features/Reader/components/BooksList.tsx:266
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Thư viện"
@@ -6112,7 +6126,7 @@ msgstr "Đang tải"
 msgid "Loading a word..."
 msgstr "Đang tải một từ..."
 
-#: src/features/Reader/components/BooksList.tsx:197
+#: src/features/Reader/components/BooksList.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
@@ -6470,7 +6484,7 @@ msgstr "Thêm nhiều bài học độc đáo"
 msgid "More..."
 msgstr "Thêm..."
 
-#: src/features/Reader/components/BooksList.tsx:150
+#: src/features/Reader/components/BooksList.tsx:215
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Sách của tôi"
@@ -6729,6 +6743,11 @@ msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr ""
 "Chưa có ghi chú nào. Thêm một vài chi tiết để giáo viên AI của bạn hiểu bạn "
 "rõ hơn."
+
+#: src/features/Reader/hooks/useReimportEpub.ts:45
+#. js-lingui-explicit-id
+msgid "No original file found for this book."
+msgstr "Không tìm thấy tệp gốc cho cuốn sách này."
 
 #: src/features/Router/BlockedAccess.tsx:366
 #. js-lingui-explicit-id
@@ -8130,7 +8149,7 @@ msgstr "Theo dõi tiến trình"
 msgid "Progress tracking to see your improvement"
 msgstr "Theo dõi tiến trình để thấy sự cải thiện của bạn"
 
-#: src/features/Reader/components/Cards.tsx:212
+#: src/features/Reader/components/Cards.tsx:278
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Dự án Gutenberg"
@@ -8230,6 +8249,11 @@ msgstr "Xếp hạng trong top 5 để có quyền truy cập đầy đủ vào 
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Thô"
+
+#: src/features/Reader/components/Cards.tsx:107
+#. js-lingui-explicit-id
+msgid "Re-import"
+msgstr "Tái nhập"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8673,6 +8697,11 @@ msgstr "Đặt lại về mặc định"
 msgid "Resiliency & Observability"
 msgstr "Độ bền bỉ & Khả năng quan sát"
 
+#: src/features/Reader/hooks/useReimportEpub.ts:41
+#. js-lingui-explicit-id
+msgid "Resolving file..."
+msgstr "Đang giải quyết tập tin..."
+
 #: src/features/RolePlay/rolePlayData.tsx:601
 #. js-lingui-explicit-id
 msgid "Restaurant"
@@ -8882,6 +8911,8 @@ msgstr "Lưu Thay Đổi"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
+#: src/features/Reader/hooks/useReimportEpub.ts:68
+#: src/features/Reader/hooks/useReimportEpub.ts:116
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Đang lưu sách..."
@@ -9926,7 +9957,7 @@ msgstr "Người Bạn Hỗ Trợ"
 msgid "Swedish Learning Plan"
 msgstr "Kế hoạch Học tiếng Thụy Điển"
 
-#: src/features/Reader/components/BooksList.tsx:158
+#: src/features/Reader/components/BooksList.tsx:223
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Đang đồng bộ thư viện của bạn…"
@@ -12513,7 +12544,7 @@ msgstr ""
 "Bạn đang ở trong một luồng công việc tốt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Reader/components/Cards.tsx:228
+#: src/features/Reader/components/Cards.tsx:294
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"
