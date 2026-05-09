@@ -97,9 +97,7 @@ test.describe('reader token-map invariants', () => {
 
     for (let step = 0; step < 30; step += 1) {
       const result = await page.evaluate(() => {
-        const wordSpans = Array.from(
-          document.querySelectorAll<HTMLElement>('[data-word-index]'),
-        );
+        const wordSpans = Array.from(document.querySelectorAll<HTMLElement>('[data-word-index]'));
         const texts = wordSpans.map((el) => el.textContent ?? '');
         // A word is bad if it has an em-dash followed by a non-whitespace character
         // in the middle (e.g. "reaction—Gatsby"). Trailing em-dashes like "reaction—" are fine.

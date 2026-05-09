@@ -17,7 +17,10 @@ export const splitWords = (text: string): string[] => {
   if (/\s/u.test(trimmedText)) {
     // Insert a space after an em-dash that is immediately followed by a non-space
     // character so that "for—and" tokenizes as ["for—", "and"] rather than as one word.
-    return trimmedText.replace(/—(?=[^\s])/g, '— ').split(/\s+/).filter(Boolean);
+    return trimmedText
+      .replace(/—(?=[^\s])/g, '— ')
+      .split(/\s+/)
+      .filter(Boolean);
   }
 
   if (typeof Intl !== 'undefined' && typeof Intl.Segmenter !== 'undefined') {
