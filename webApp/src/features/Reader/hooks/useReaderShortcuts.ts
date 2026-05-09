@@ -89,7 +89,9 @@ export const useReaderShortcuts = ({
 
         // No selection, ask for confirmation before closing
         if (window.confirm('Close the book?')) {
-          onClose();
+          setTimeout(() => {
+            onClose();
+          }, 100);
         }
         return;
       }
