@@ -161,6 +161,7 @@ const useBooksState = () => {
   const applySelectedHighlight = (highlight: HighlightedText) => {
     updateActiveBook((book) => ({
       highlights: [...(book.highlights ?? []), { ...highlight, note: highlight.note ?? '' }],
+      highlightsUpdatedAtIso: new Date().toISOString(),
     }));
   };
 
@@ -175,6 +176,7 @@ const useBooksState = () => {
             h.color === highlight.color
           ),
       ),
+      highlightsUpdatedAtIso: new Date().toISOString(),
     }));
   };
 
