@@ -49,6 +49,22 @@ test('shows live Gutenberg library categories on books home page', async ({ page
 test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page }) => {
   test.setTimeout(240_000);
 
+  // Route the EPUB download to the local fixture so the test is network-independent.
+  await page.route('**/api/reader/library/download*', async (route) => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('ebookId') === GUTENBERG_ROMANCE_BOOK_ID) {
+      await route.fulfill({
+        path: 'public/Reader/pride_and_prejudice.epub',
+        contentType: 'application/epub+zip',
+        headers: {
+          'content-disposition': `attachment; filename="pg${GUTENBERG_ROMANCE_BOOK_ID}.epub.noimages"`,
+        },
+      });
+    } else {
+      await route.continue();
+    }
+  });
+
   await openBooksPageWithCleanStorage(page);
 
   const gutenbergBookCard = page.getByTestId(`reader-library-book-${GUTENBERG_ROMANCE_BOOK_ID}`);

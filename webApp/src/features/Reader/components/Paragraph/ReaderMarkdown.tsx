@@ -67,7 +67,10 @@ const processStringChild = (
 ) => {
   // markdown-to-jsx children can include leading/trailing/multiple spaces;
   // keep indexing stable by only creating tokens for non-whitespace words.
-  const words = child.match(/\S+/g) ?? [];
+  // Insert a space after an em-dash immediately followed by a non-space character
+  // so that "for—and" tokenizes as ["for—", "and"] (consistent with splitWords).
+  const normalizedChild = child.replace(/—(?=[^\s])/g, '— ');
+  const words = normalizedChild.match(/\S+/g) ?? [];
   const hasLeadingSpace = /^\s/.test(child);
   const hasTrailingSpace = /\s$/.test(child);
 

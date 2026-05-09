@@ -13,6 +13,25 @@ describe('splitWords', () => {
     expect(result).toEqual(['私', 'は', '学校', 'に', '行き', 'ます']);
   });
 
+  it('splits em-dash-joined words into separate tokens', () => {
+    expect(splitWords('hoping for—and what')).toEqual(['hoping', 'for—', 'and', 'what']);
+  });
+
+  it('keeps a trailing em-dash attached to the preceding word', () => {
+    expect(splitWords('She whispered—')).toEqual(['She', 'whispered—']);
+  });
+
+  it('handles multiple em-dash splits within a sentence', () => {
+    expect(splitWords('she said one—two—three things')).toEqual([
+      'she',
+      'said',
+      'one—',
+      'two—',
+      'three',
+      'things',
+    ]);
+  });
+
   it('splits Chinese text without spaces into words', () => {
     const result = splitWords('我每天去学校');
 

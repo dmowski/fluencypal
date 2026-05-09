@@ -24,8 +24,7 @@ describe('buildParagraphTokenMap', () => {
       { name: 'bold with trailing punctuation', words: ['**Title**:', 'Pride'] },
       { name: 'inline link single-word', words: ['Visit', '[here](https://x.io)', 'today'] },
       { name: 'inline image single-word', words: ['![alt](pic.png)'] },
-      { name: 'smart quotes & em-dash', words: ['She', 'whispered—', '“just', 'remember,”'] },
-      { name: 'mixed emphasis run', words: ['**Bold**', 'and', '_italic_', 'mix.'] },
+      { name: 'smart quotes & em-dash', words: ['She', 'whispered—', '“just', 'remember,”'] },      { name: 'em-dash split word (for—)', words: ['hoping', 'for—', 'and', 'what'] },      { name: 'mixed emphasis run', words: ['**Bold**', 'and', '_italic_', 'mix.'] },
       { name: 'word with leading punctuation', words: ['"Quoted', 'text"', 'ends.'] },
       {
         name: 'gatsby-like opening paragraph',
