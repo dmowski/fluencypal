@@ -13,6 +13,9 @@ import { useDroppedEpubImport } from '../hooks/useDroppedEpubImport';
 import { useBooksListDropZone } from '../hooks/useBooksListDropZone';
 import { useReaderLibrary } from '../hooks/useReaderLibrary';
 import { useBooksSync } from '../hooks/useBooksSync';
+import { useAuth } from '@/features/Auth/useAuth';
+import { downloadOriginalFileBlob } from '../server/readerStorage';
+import { getDownloadFileName } from '../utils/epubFileName';
 import {
   downloadReaderLibraryBookFile,
   formatLibraryBookDownloadCaption,
@@ -28,6 +31,7 @@ export const BooksList = () => {
   const books = useBooks();
   const library = useReaderLibrary();
   const sync = useBooksSync();
+  const auth = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
@@ -61,6 +65,23 @@ export const BooksList = () => {
   const handleDelete = (book: Book) => {
     if (!window.confirm(i18n._('Delete this book?'))) return;
     books.deleteBook(book);
+  };
+
+  const handleDownloadFromBlob = async (book: Book) => {
+    if (!book.originalFileBlobPath) return;
+    if (!auth.uid) return;
+    try {
+      const result = await downloadOriginalFileBlob(book.originalFileBlobPath);
+      if (!result) return;
+      const url = URL.createObjectURL(result.blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = getDownloadFileName(result.fileName);
+      anchor.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('[BooksList] download original file failed', error);
+    }
   };
 
   const handleLibraryBookClick = async (book: ReaderLibraryBook) => {
@@ -172,6 +193,7 @@ export const BooksList = () => {
                 data={book}
                 onClick={() => books.setActive(book.id)}
                 onDelete={handleDelete}
+                onDownloadFromBlob={handleDownloadFromBlob}
               />
             ))}
 

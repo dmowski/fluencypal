@@ -82,8 +82,15 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   const pushTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const inFlightUploadsRef = useRef<Set<string>>(new Set());
   const createdAtCacheRef = useRef<Map<string, string>>(new Map());
+  // Always points at the latest snapshot of `usersBooks` so debounced async
+  // pushes can read fresh state instead of the closure they captured at
+  // schedule time. Without this the post-push merge below could overwrite
+  // newer activePageIndex/highlights with stale data, producing a brief
+  // flicker on page navigation and "disappearing" highlights.
+  const usersBooksRef = useRef<Book[]>(books.usersBooks);
 
   const usersBooks = books.usersBooks;
+  usersBooksRef.current = usersBooks;
 
   // ---- Subscribe to remote collection ---------------------------------------------------------
   useEffect(() => {
@@ -219,13 +226,17 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           buildLocalSignature({ ...book, paragraphsBlobPath, originalFileBlobPath }),
         );
 
-        // Persist the storage pointers locally so we don't re-upload on every push.
+        // Persist the storage pointers locally so we don't re-upload on every
+        // push. Use the freshest local copy (not the closure-captured `book`)
+        // so we don't clobber newer activePageIndex / highlight edits that
+        // happened during the in-flight upload.
+        const latestLocal = usersBooksRef.current.find((entry) => entry.id === book.id) ?? book;
         if (
-          paragraphsBlobPath !== book.paragraphsBlobPath ||
-          originalFileBlobPath !== book.originalFileBlobPath
+          paragraphsBlobPath !== latestLocal.paragraphsBlobPath ||
+          originalFileBlobPath !== latestLocal.originalFileBlobPath
         ) {
           books.applyRemoteBookMerge(book.id, {
-            ...book,
+            ...latestLocal,
             paragraphsBlobPath,
             originalFileBlobPath,
           });

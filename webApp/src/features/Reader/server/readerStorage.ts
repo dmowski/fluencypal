@@ -67,6 +67,26 @@ export const uploadOriginalFileBlob = async ({
   return path;
 };
 
+export const downloadOriginalFileBlob = async (
+  blobPath: string,
+): Promise<{ blob: Blob; fileName: string } | null> => {
+  const ref = storageRef(storage, blobPath);
+  try {
+    const blob = await getBlob(ref);
+    const lastSegment = blobPath.split('/').pop() ?? 'book.epub';
+    let fileName = lastSegment;
+    try {
+      fileName = decodeURIComponent(lastSegment);
+    } catch {
+      fileName = lastSegment;
+    }
+    return { blob, fileName };
+  } catch (error: any) {
+    if (error?.code === 'storage/object-not-found') return null;
+    throw error;
+  }
+};
+
 export const deleteBookBlob = async (path: string): Promise<void> => {
   try {
     await deleteObject(storageRef(storage, path));

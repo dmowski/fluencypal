@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { MouseEvent } from 'react';
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
@@ -12,11 +13,31 @@ export const BookCard = ({
   data,
   onClick,
   onDelete,
+  onDownloadFromBlob,
 }: {
   data: Book;
   onClick: (data: Book) => void;
   onDelete?: (data: Book) => void;
+  onDownloadFromBlob?: (data: Book) => Promise<void> | void;
 }) => {
+  const canDownload = Boolean(data.originalFile || data.originalFileBlobPath);
+
+  const handleDownloadClick = async (event: MouseEvent) => {
+    event.stopPropagation();
+    if (data.originalFile) {
+      const url = URL.createObjectURL(data.originalFile);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = getDownloadFileName(data.originalFile.name);
+      anchor.click();
+      URL.revokeObjectURL(url);
+      return;
+    }
+    if (onDownloadFromBlob) {
+      await onDownloadFromBlob(data);
+    }
+  };
+
   return (
     <Stack
       onClick={() => onClick(data)}
@@ -54,18 +75,13 @@ export const BookCard = ({
           <Trash2 size={'16px'} />
         </IconButton>
       )}
-      {data.originalFile && (
+      {canDownload && (
         <IconButton
           size="small"
           aria-label="Download original file"
+          data-testid={`book-download-${data.id}`}
           onClick={(event) => {
-            event.stopPropagation();
-            const url = URL.createObjectURL(data.originalFile!);
-            const anchor = document.createElement('a');
-            anchor.href = url;
-            anchor.download = getDownloadFileName(data.originalFile!.name);
-            anchor.click();
-            URL.revokeObjectURL(url);
+            void handleDownloadClick(event);
           }}
           sx={{
             position: 'absolute',
