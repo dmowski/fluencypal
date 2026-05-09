@@ -83,6 +83,10 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   const pushTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   const inFlightUploadsRef = useRef<Set<string>>(new Set());
   const createdAtCacheRef = useRef<Map<string, string>>(new Map());
+  // Last-pushed highlights timestamp per book — used to detect highlight
+  // edits and bypass the debounce so cross-device highlight sync feels
+  // realtime.
+  const lastPushedHighlightsIsoRef = useRef<Map<string, string | null>>(new Map());
   // Tracks which books we already kicked off an original-file hydration for,
   // so the eager-download effect doesn't repeatedly fetch the same blob if
   // the underlying state churns while the download is in flight.
@@ -240,6 +244,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           book.id,
           buildLocalSignature({ ...book, paragraphsBlobPath, originalFileBlobPath }),
         );
+        lastPushedHighlightsIsoRef.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
 
         // Persist the storage pointers locally so we don't re-upload on every
         // push. Use the freshest local copy (not the closure-captured `book`)
@@ -277,10 +282,15 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   );
 
   const schedulePush = useCallback(
-    (book: Book) => {
+    (book: Book, options?: { immediate?: boolean }) => {
       const timers = pushTimersRef.current;
       const existing = timers.get(book.id);
       if (existing) clearTimeout(existing);
+      if (options?.immediate) {
+        timers.delete(book.id);
+        void pushBook(book);
+        return;
+      }
       const handle = setTimeout(() => {
         timers.delete(book.id);
         void pushBook(book);
@@ -300,11 +310,17 @@ const useBooksSyncState = (): BooksSyncContextValue => {
       if (suppressed === signature) {
         suppressedSignaturesRef.current.delete(book.id);
         lastPushedSignaturesRef.current.set(book.id, signature);
+        lastPushedHighlightsIsoRef.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
         return;
       }
       const lastPushed = lastPushedSignaturesRef.current.get(book.id);
       if (lastPushed === signature) return;
-      schedulePush(book);
+      // Highlights: push immediately so multi-device sync feels realtime.
+      // Other field edits (title/position/etc.) keep the small debounce.
+      const lastHighlightsIso = lastPushedHighlightsIsoRef.current.get(book.id) ?? null;
+      const currentHighlightsIso = book.highlightsUpdatedAtIso ?? null;
+      const highlightsChanged = currentHighlightsIso !== lastHighlightsIso;
+      schedulePush(book, { immediate: highlightsChanged });
     });
 
     // Detect locally-deleted books and remove the corresponding remote doc.
