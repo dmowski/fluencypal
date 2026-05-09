@@ -44,6 +44,7 @@ export const BookCard = ({
       sx={{
         padding: '36px 45px 36px 36px',
         borderRadius: '8px',
+        maxWidth: '100%',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         cursor: 'pointer',
         color: '#fff',
@@ -100,6 +101,9 @@ export const BookCard = ({
         variant="h4"
         sx={{
           fontWeight: 'bold',
+          '@media (max-width: 600px)': {
+            fontSize: '1.25rem',
+          },
         }}
       >
         {data.title}
@@ -113,6 +117,16 @@ export const BookCard = ({
         }}
       >
         {data.author}
+      </Typography>
+
+      <Typography
+        variant="caption"
+        sx={{
+          paddingTop: '20px',
+          opacity: 0.5,
+        }}
+      >
+        id: {data.id}
       </Typography>
     </Stack>
   );
