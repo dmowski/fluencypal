@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
           value: 'books.fluencypal.com',
         },
       ],
-      destination: '/book',
+      destination: '/en/book',
     },
     {
       source: '/:path*',

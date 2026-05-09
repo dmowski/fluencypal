@@ -45,16 +45,14 @@ const ReaderComponent = () => {
 
 export const ReaderPage = () => {
   return (
-    <ThemeProvider theme={lightTheme}>
-      <AuthProvider>
-        <BooksProvider>
-          <BooksSyncProvider>
-            <ReaderSettingsProvider>
-              <ReaderComponent />
-            </ReaderSettingsProvider>
-          </BooksSyncProvider>
-        </BooksProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <BooksProvider>
+        <BooksSyncProvider>
+          <ReaderSettingsProvider>
+            <ReaderComponent />
+          </ReaderSettingsProvider>
+        </BooksSyncProvider>
+      </BooksProvider>
+    </AuthProvider>
   );
 };
