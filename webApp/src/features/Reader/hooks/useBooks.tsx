@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { testData } from '../model/testData';
-import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
+import { Book, BookChapterNavigationItem, HighlightedText, ReadingPosition } from '../model/types';
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import {
   deleteUserBookFromIndexedDb,
@@ -177,7 +177,16 @@ const useBooksState = () => {
     }));
   };
 
-  const setActivePage = (activePageIndex: number) => {
+  const setActivePage = (activePageIndex: number, readingPosition?: ReadingPosition | null) => {
+    if (readingPosition) {
+      updateActiveBook({
+        activePageIndex,
+        readingPosition,
+        readingPositionUpdatedAtIso: new Date().toISOString(),
+      });
+      return;
+    }
+
     updateActiveBook({ activePageIndex });
   };
 

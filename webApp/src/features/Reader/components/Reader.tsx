@@ -25,6 +25,8 @@ import {
   mapChaptersToPages,
 } from '../utils/readerChapterNavigation';
 import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
+import { deriveReadingPositionFromPages } from '../utils/deriveReadingPositionFromPages';
+import { resolveReadingPositionToPage } from '../utils/resolveReadingPositionToPage';
 import { useLingui } from '@lingui/react';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
@@ -95,10 +97,22 @@ export const Reader = ({ data }: { data: Book }) => {
   const maxPage = Math.max(pageCount, 1);
   const maxSpreadStartPage =
     isTwoColumnLayout && pageCount % 2 === 0 ? Math.max(pageCount - 1, 1) : maxPage;
+  // When the local cache is missing (e.g. opening the book on a new device
+  // after a sync pull), restore from the synced content-anchored
+  // `readingPosition`. The local `activePageIndex` cache, when present, always
+  // wins because it preserves the last in-layout choice on this device.
+  const restoredPageFromReadingPosition = useMemo(() => {
+    if (data.activePageIndex != null) return null;
+    if (!data.readingPosition) return null;
+    const resolved = resolveReadingPositionToPage({ pages, position: data.readingPosition });
+    return resolved?.pageIndex ?? null;
+  }, [data.activePageIndex, data.readingPosition, pages]);
+  const effectiveStoredPage =
+    data.activePageIndex ?? restoredPageFromReadingPosition ?? storedActivePage;
   const normalizedStoredPage =
-    isTwoColumnLayout && storedActivePage > 1 && storedActivePage % 2 === 0
-      ? storedActivePage - 1
-      : storedActivePage;
+    isTwoColumnLayout && effectiveStoredPage > 1 && effectiveStoredPage % 2 === 0
+      ? effectiveStoredPage - 1
+      : effectiveStoredPage;
   const normalizeSpreadStartPage = (page: number) => {
     const normalizedPage = isTwoColumnLayout && page > 1 && page % 2 === 0 ? page - 1 : page;
     return Math.min(Math.max(normalizedPage, 1), maxSpreadStartPage);
@@ -168,21 +182,33 @@ export const Reader = ({ data }: { data: Book }) => {
   });
 
   const closeReader = () => books.setActive(null);
+  const goToPage = useCallback(
+    (targetPage: number) => {
+      const clampedPage = Math.min(Math.max(targetPage, 1), maxSpreadStartPage);
+      const position = deriveReadingPositionFromPages({
+        pages,
+        activePageIndex: clampedPage,
+        columns: readerSettings.columns,
+      });
+      setActivePage(clampedPage, position);
+    },
+    [maxSpreadStartPage, pages, readerSettings.columns, setActivePage],
+  );
   const goToPreviousPage = () => {
     readerSettings.clearResizeAnchorWord();
-    setActivePage(Math.max(activePage - pageStep, 1));
+    goToPage(activePage - pageStep);
   };
   const goToNextPage = () => {
     readerSettings.clearResizeAnchorWord();
-    setActivePage(Math.min(activePage + pageStep, maxSpreadStartPage));
+    goToPage(activePage + pageStep);
   };
   const handleChapterSelect = (targetPage: number) => {
     readerSettings.clearResizeAnchorWord();
-    setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+    goToPage(targetPage);
   };
   const handleHighlightSelect = (targetPage: number) => {
     readerSettings.clearResizeAnchorWord();
-    setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+    goToPage(targetPage);
   };
 
   const getInternalChapterTargetPage = useCallback(
@@ -198,9 +224,9 @@ export const Reader = ({ data }: { data: Book }) => {
   const handleInternalChapterLinkSelect = useCallback(
     (targetPage: number) => {
       readerSettings.clearResizeAnchorWord();
-      setActivePage(Math.min(Math.max(targetPage, 1), maxSpreadStartPage));
+      goToPage(targetPage);
     },
-    [maxSpreadStartPage, readerSettings, setActivePage],
+    [goToPage, readerSettings],
   );
 
   useReaderShortcuts({

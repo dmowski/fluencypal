@@ -28,11 +28,15 @@ export interface Book {
   highlights?: HighlightedText[];
   highlightsUpdatedAtIso?: string;
 
-  readProgress?: ReadingProgress;
-  readProgressUpdatedAtIso?: string;
+  // Content-anchored reading position. Synced across devices; the active page
+  // is re-derived locally from this anchor because page indices depend on
+  // device-local layout (font size, columns, viewport, image aspect ratios).
+  readingPosition?: ReadingPosition;
+  readingPositionUpdatedAtIso?: string;
 
+  // Device-local cache of the last active page for instant restore on the same
+  // device/layout. NOT synced — derived from `readingPosition` on other devices.
   activePageIndex?: number;
-  activePageIndexUpdatedAtIso?: string;
 }
 
 export interface HighlightedText {
@@ -43,9 +47,17 @@ export interface HighlightedText {
   note?: string;
 }
 
-export interface ReadingProgress {
-  startIndex: number;
-  endIndex: number;
+export interface ReadingPosition {
+  // 0-based index into Book.paragraphs.
+  paragraphIndex: number;
+  // Char offset of the first visible word inside that paragraph.
+  wordStartCharOffset: number;
+  // Copy of the word text used to verify the anchor still resolves after
+  // re-imports or pagination changes.
+  wordKey: string;
+  // Diagnostic only, not authoritative for restore.
+  lastKnownPageIndex?: number;
+  lastKnownColumns?: 1 | 2;
 }
 
 export interface ReaderSettings {
