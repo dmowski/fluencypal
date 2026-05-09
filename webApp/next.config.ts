@@ -29,6 +29,16 @@ const nextConfig: NextConfig = {
   ],
   rewrites: async () => [
     {
+      source: '/',
+      has: [
+        {
+          type: 'host',
+          value: 'books.fluencypal.com',
+        },
+      ],
+      destination: '/book',
+    },
+    {
       source: '/:path*',
       has: [
         {

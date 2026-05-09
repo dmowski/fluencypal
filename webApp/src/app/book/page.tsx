@@ -1,24 +1,17 @@
 import { Suspense } from 'react';
 import { ReaderPage } from '@/features/Reader/ReaderPage';
-import { supportedLanguages } from '@/features/Lang/lang';
 import { Metadata } from 'next';
 import { generateMetadataInfo } from '@/features/SEO/metadata';
 
-interface PageProps {
-  params: Promise<{ lang: string }>;
-}
-
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   return generateMetadataInfo({
-    lang: (await props.params).lang,
+    lang: 'en',
     currentPath: 'book',
   });
 }
 
-export default async function BookPage(props: PageProps) {
-  const lang = (await props.params).lang;
-
-  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
+export default async function BookPage() {
+  const supportedLang = 'en';
 
   return (
     <html lang={supportedLang}>
