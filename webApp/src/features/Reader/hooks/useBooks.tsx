@@ -137,6 +137,7 @@ const useBooksState = () => {
       imageAspectRatioByHref,
       paragraphs: splitTextIntoParagraphs(text),
       activePageIndex: 1,
+      dataUpdatedAtIso: new Date().toISOString(),
     };
     setUsersBooks((prev) => [...prev, newBook]);
     setActiveBookId(newBook.id);
@@ -190,9 +191,38 @@ const useBooksState = () => {
     updateActiveBook({ activePageIndex });
   };
 
+  /**
+   * Internal mutator used by `useBooksSync` to merge a remotely-fetched book
+   * into local state. Does NOT bump any *UpdatedAtIso fields and does NOT
+   * change the active book id. Persists to IndexedDB.
+   */
+  const applyRemoteBookMerge = (bookId: string, merged: Book) => {
+    setUsersBooks((prevBooks) => {
+      const exists = prevBooks.some((book) => book.id === bookId);
+      const nextBooks = exists
+        ? prevBooks.map((book) => (book.id === bookId ? merged : book))
+        : [...prevBooks, merged];
+      void persistUserBook(merged);
+      return nextBooks;
+    });
+  };
+
+  /**
+   * Internal mutator used by `useBooksSync` to remove a book that was deleted
+   * remotely. Does not touch the active book id (the consumer can decide).
+   */
+  const removeBookLocally = (bookId: string) => {
+    setUsersBooks((prev) => {
+      const nextBooks = prev.filter((book) => book.id !== bookId);
+      void removePersistedBook(bookId);
+      return nextBooks;
+    });
+  };
+
   return {
     active,
     activePage: active?.activePageIndex ?? 1,
+    isUsersBooksLoaded,
     setActive: setActiveBookId,
     setActivePage,
     addBook,
@@ -200,6 +230,8 @@ const useBooksState = () => {
     applySelectedHighlight,
     removeHighlight,
     usersBooks,
+    applyRemoteBookMerge,
+    removeBookLocally,
   };
 };
 

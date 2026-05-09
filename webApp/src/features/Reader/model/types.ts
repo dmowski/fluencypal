@@ -37,6 +37,10 @@ export interface Book {
   // Device-local cache of the last active page for instant restore on the same
   // device/layout. NOT synced — derived from `readingPosition` on other devices.
   activePageIndex?: number;
+
+  // Pointers into Firebase Storage (only set once the book has been synced).
+  paragraphsBlobPath?: string;
+  originalFileBlobPath?: string;
 }
 
 export interface HighlightedText {

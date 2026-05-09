@@ -6,6 +6,7 @@ import { ReaderPageStyle } from './components/style';
 import { BooksProvider, useBooks } from './hooks/useBooks';
 import { BooksList } from './components/BooksList';
 import { ReaderSettingsProvider } from './hooks/useReaderSettings';
+import { BooksSyncProvider } from './hooks/useBooksSync';
 import { useDocumentTitle } from '@/libs/useDocumentTitle';
 import { lightTheme } from '../uiKit/theme';
 import { AuthProvider } from '../Auth/useAuth';
@@ -47,9 +48,11 @@ export const ReaderPage = () => {
     <ThemeProvider theme={lightTheme}>
       <AuthProvider>
         <BooksProvider>
-          <ReaderSettingsProvider>
-            <ReaderComponent />
-          </ReaderSettingsProvider>
+          <BooksSyncProvider>
+            <ReaderSettingsProvider>
+              <ReaderComponent />
+            </ReaderSettingsProvider>
+          </BooksSyncProvider>
         </BooksProvider>
       </AuthProvider>
     </ThemeProvider>
