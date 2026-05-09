@@ -135,13 +135,12 @@ export const TextPopover = ({
         </Stack>
 
         {isTranslationLoading ? (
-          <Typography sx={{ fontSize: '12px', color: '#eee' }}>Translating...</Typography>
+          <Typography sx={{ fontSize: '12px' }}>Translating...</Typography>
         ) : translatedText ? (
           <Typography
             sx={{
               fontSize: '13px',
               lineHeight: 1.35,
-              color: '#fff',
               maxWidth: '150px',
             }}
           >
