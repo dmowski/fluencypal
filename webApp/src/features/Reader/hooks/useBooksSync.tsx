@@ -461,7 +461,11 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         Sentry.captureException(downloadError, {
           tags: { area: 'reader-sync', op: 'downloadParagraphs' },
         });
-        console.error('[reader-sync] paragraphs download failed', { bookId: active.id }, downloadError);
+        console.error(
+          '[reader-sync] paragraphs download failed',
+          { bookId: active.id },
+          downloadError,
+        );
         setError(downloadError?.message ?? String(downloadError));
       }
     })();
@@ -588,10 +592,14 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             message: 'original file hydration failed',
             data: { bookId: book.id, code: downloadError?.code ?? null },
           });
-          console.warn('[reader-sync] original file hydration failed', {
-            bookId: book.id,
-            code: downloadError?.code,
-          }, downloadError);
+          console.warn(
+            '[reader-sync] original file hydration failed',
+            {
+              bookId: book.id,
+              code: downloadError?.code,
+            },
+            downloadError,
+          );
           // Allow a retry on next mount; don't keep the id in the in-flight set.
           originalFileHydrationsRef.current.delete(book.id);
         }
