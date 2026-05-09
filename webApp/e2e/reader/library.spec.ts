@@ -49,6 +49,31 @@ test('shows live Gutenberg library categories on books home page', async ({ page
 test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page }) => {
   test.setTimeout(240_000);
 
+  // Mock the library listing so the test is fully network-independent.
+  await page.route('**/api/reader/library', (route) => {
+    route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        categories: [
+          {
+            id: 'romance',
+            title: 'Romance',
+            books: [
+              {
+                ebookId: GUTENBERG_ROMANCE_BOOK_ID,
+                title: GUTENBERG_ROMANCE_TITLE,
+                author: 'Austen, Jane',
+                downloads: 52000,
+                coverUrl: null,
+                bookUrl: `https://www.gutenberg.org/ebooks/${GUTENBERG_ROMANCE_BOOK_ID}`,
+              },
+            ],
+          },
+        ],
+      }),
+    });
+  });
+
   // Route the EPUB download to the local fixture so the test is network-independent.
   await page.route('**/api/reader/library/download*', async (route) => {
     const url = new URL(route.request().url());
