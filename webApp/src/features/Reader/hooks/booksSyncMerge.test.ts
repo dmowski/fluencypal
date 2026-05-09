@@ -90,7 +90,7 @@ describe('mergeRemoteBookIntoLocal', () => {
     expect(result?.highlightsUpdatedAtIso).toBe('2025-06-01T00:00:00.000Z');
   });
 
-  it('adopts newer remote readingPosition without changing local activePageIndex', () => {
+  it('does NOT adopt remote readingPosition (kept device-local)', () => {
     const local: Book = {
       ...baseLocal,
       activePageIndex: 7,
@@ -108,7 +108,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       updatedAtIso: '2025-06-01T00:00:00.000Z',
     });
 
-    expect(result?.readingPosition?.wordKey).toBe('cat');
-    expect(result?.activePageIndex).toBe(7);
+    // Newer remote position must be ignored: position is no longer synced.
+    expect(result).toBeNull();
   });
 });

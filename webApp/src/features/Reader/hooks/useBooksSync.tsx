@@ -28,6 +28,8 @@ import {
   uploadOriginalFileBlob,
   uploadParagraphsBlob,
 } from '../server/readerStorage';
+import { parseEpubOnClient } from '../utils/epubImport/parseEpub';
+import { buildImageAspectRatioMap } from '../utils/epubImport/imageUtils';
 export type BooksSyncStatus = 'idle' | 'syncing' | 'error';
 
 interface BooksSyncContextValue {
@@ -55,8 +57,8 @@ const buildLocalSignature = (book: Book): string =>
     imageAspectRatioByHref: book.imageAspectRatioByHref ?? null,
     highlights: book.highlights ?? null,
     highlightsUpdatedAtIso: book.highlightsUpdatedAtIso ?? null,
-    readingPosition: book.readingPosition ?? null,
-    readingPositionUpdatedAtIso: book.readingPositionUpdatedAtIso ?? null,
+    // Reading position is intentionally NOT part of the signature \u2014 it's a
+    // device-local cache and must not trigger remote sync pushes.
     dataUpdatedAtIso: book.dataUpdatedAtIso ?? null,
     paragraphsBlobPath: book.paragraphsBlobPath ?? null,
     originalFileBlobPath: book.originalFileBlobPath ?? null,
@@ -432,9 +434,48 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           const file = new File([result.blob], result.fileName, {
             type: result.blob.type || 'application/epub+zip',
           });
+
+          // Re-extract embedded images from the EPUB so they show up on this
+          // device. Image data URLs are intentionally not stored in Firestore
+          // (size), so each device that hydrates the original file also has
+          // to rebuild `imagesByHref` / `imageAspectRatioByHref` locally.
+          let imagesByHref: Record<string, string> | undefined;
+          let imageAspectRatioByHref: Record<string, number> | undefined;
+          try {
+            const parsed = await parseEpubOnClient(file);
+            if (isCancelled) return;
+            if (Object.keys(parsed.imageDataUrlByHref).length > 0) {
+              imagesByHref = parsed.imageDataUrlByHref;
+              imageAspectRatioByHref = await buildImageAspectRatioMap(
+                parsed.imageDataUrlByHref,
+              );
+            }
+          } catch (parseError) {
+            Sentry.addBreadcrumb({
+              category: 'reader-sync',
+              level: 'warning',
+              message: 'image re-extract from hydrated EPUB failed',
+              data: { bookId: book.id },
+            });
+            console.warn('[useBooksSync] image re-extract failed', parseError);
+          }
+          if (isCancelled) return;
+
           const latest = usersBooksRef.current.find((entry) => entry.id === book.id);
           if (!latest) return;
-          const next = { ...latest, originalFile: file };
+          const next: Book = {
+            ...latest,
+            originalFile: file,
+            ...(imagesByHref ? { imagesByHref } : {}),
+            ...(imageAspectRatioByHref
+              ? {
+                  imageAspectRatioByHref: {
+                    ...(latest.imageAspectRatioByHref ?? {}),
+                    ...imageAspectRatioByHref,
+                  },
+                }
+              : {}),
+          };
           suppressedSignaturesRef.current.set(book.id, buildLocalSignature(next));
           applyRemoteBookMergeRef.current(book.id, next);
         } catch (downloadError: any) {

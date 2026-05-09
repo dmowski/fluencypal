@@ -51,16 +51,9 @@ export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Bo
     changed = true;
   }
 
-  // Reading position — content anchor LWW. Local activePageIndex is preserved
-  // (device-local cache); the consumer re-resolves the page from the new
-  // anchor on render.
-  if (
-    isoToTime(remote.readingPositionUpdatedAtIso) > isoToTime(local.readingPositionUpdatedAtIso)
-  ) {
-    merged.readingPosition = remote.readingPosition;
-    merged.readingPositionUpdatedAtIso = remote.readingPositionUpdatedAtIso;
-    changed = true;
-  }
+  // Reading position is intentionally NOT synced — it's a per-device cache.
+  // (Previously LWW-merged here, but cross-device live progress updates are
+  // unwanted UX.)
 
   // Storage pointers — adopt latest if the remote knows about them.
   if (remote.paragraphsBlobPath && remote.paragraphsBlobPath !== local.paragraphsBlobPath) {
@@ -90,8 +83,8 @@ export const buildStubBookFromRemote = (remote: ReaderBookDoc): Book => ({
   paragraphs: [],
   highlights: remote.highlights,
   highlightsUpdatedAtIso: remote.highlightsUpdatedAtIso,
-  readingPosition: remote.readingPosition,
-  readingPositionUpdatedAtIso: remote.readingPositionUpdatedAtIso,
+  // Reading position is intentionally not hydrated from remote — see
+  // `mergeRemoteBookIntoLocal` above.
   dataUpdatedAtIso: remote.dataUpdatedAtIso,
   paragraphsBlobPath: remote.paragraphsBlobPath,
   originalFileBlobPath: remote.originalFileBlobPath,
@@ -120,10 +113,7 @@ export const buildRemoteDocFromLocal = (
   }
   if (local.highlights !== undefined) doc.highlights = local.highlights;
   if (local.highlightsUpdatedAtIso) doc.highlightsUpdatedAtIso = local.highlightsUpdatedAtIso;
-  if (local.readingPosition) doc.readingPosition = local.readingPosition;
-  if (local.readingPositionUpdatedAtIso) {
-    doc.readingPositionUpdatedAtIso = local.readingPositionUpdatedAtIso;
-  }
+  // Reading position stays local — do not write to Firestore.
   if (local.dataUpdatedAtIso) doc.dataUpdatedAtIso = local.dataUpdatedAtIso;
   if (local.paragraphsBlobPath) doc.paragraphsBlobPath = local.paragraphsBlobPath;
   if (local.originalFileBlobPath) doc.originalFileBlobPath = local.originalFileBlobPath;
