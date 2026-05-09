@@ -4,8 +4,6 @@
 
 ### Synchronization of books.
 
-Test
-
 =================================
 
 - Separate app/url/PWA/Vision of the app
