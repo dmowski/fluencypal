@@ -1,12 +1,13 @@
 'use client';
 
-import { Stack } from '@mui/material';
+import { Stack, ThemeProvider } from '@mui/material';
 import { Reader } from './components/Reader';
 import { ReaderPageStyle } from './components/style';
 import { BooksProvider, useBooks } from './hooks/useBooks';
 import { BooksList } from './components/BooksList';
 import { ReaderSettingsProvider } from './hooks/useReaderSettings';
 import { useDocumentTitle } from '@/libs/useDocumentTitle';
+import { lightTheme } from '../uiKit/theme';
 
 const ReaderComponent = () => {
   const books = useBooks();
@@ -42,10 +43,12 @@ const ReaderComponent = () => {
 
 export const ReaderPage = () => {
   return (
-    <BooksProvider>
-      <ReaderSettingsProvider>
-        <ReaderComponent />
-      </ReaderSettingsProvider>
-    </BooksProvider>
+    <ThemeProvider theme={lightTheme}>
+      <BooksProvider>
+        <ReaderSettingsProvider>
+          <ReaderComponent />
+        </ReaderSettingsProvider>
+      </BooksProvider>
+    </ThemeProvider>
   );
 };

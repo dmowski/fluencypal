@@ -82,56 +82,37 @@ export const BookInfoButton = ({
         <CircleEllipsis size={18} />
       </IconButton>
 
-      <ThemeProvider theme={lightTheme}>
-        <Popover
-          open={open}
-          anchorEl={anchorEl}
-          onClose={closeModal}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          slotProps={{
-            paper: {
-              sx: {
-                backgroundColor: '#FFF3DD',
-                color: '#111',
-              },
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={closeModal}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        slotProps={{
+          paper: {
+            sx: {
+              backgroundColor: '#FFF3DD',
+              color: '#111',
             },
-          }}
+          },
+        }}
+      >
+        <Stack
+          data-testid="book-info-modal"
+          sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
         >
           <Stack
-            data-testid="book-info-modal"
-            sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '4px',
+            }}
           >
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: '4px',
-              }}
-            >
-              {activeView !== 'menu' ? (
-                <IconButton
-                  data-testid="book-info-back-button"
-                  onClick={() => setActiveView('menu')}
-                  aria-label={i18n._('Back')}
-                  sx={{
-                    width: '32px',
-                    height: '32px',
-                    padding: 0,
-                    flexShrink: 0,
-                  }}
-                >
-                  <ChevronLeft size={18} />
-                </IconButton>
-              ) : null}
-
-              <Typography variant="h5" sx={{ fontWeight: 600, flex: 1, minWidth: 0 }}>
-                {title}
-              </Typography>
-
+            {activeView !== 'menu' ? (
               <IconButton
-                onClick={closeModal}
-                aria-label={i18n._('Close settings')}
+                data-testid="book-info-back-button"
+                onClick={() => setActiveView('menu')}
+                aria-label={i18n._('Back')}
                 sx={{
                   width: '32px',
                   height: '32px',
@@ -139,76 +120,93 @@ export const BookInfoButton = ({
                   flexShrink: 0,
                 }}
               >
-                <X size={18} />
+                <ChevronLeft size={18} />
               </IconButton>
-            </Stack>
-
-            {activeView === 'menu' ? (
-              <Stack sx={{ gap: '10px' }}>
-                <Button
-                  data-testid="book-info-menu-settings"
-                  variant="outlined"
-                  color="inherit"
-                  onClick={() => setActiveView('settings')}
-                  endIcon={<ChevronRight size={14} />}
-                  sx={{ justifyContent: 'space-between' }}
-                >
-                  {i18n._('Settings')}
-                </Button>
-                <Button
-                  data-testid="book-info-menu-chapters"
-                  variant="outlined"
-                  color="inherit"
-                  onClick={() => setActiveView('chapters')}
-                  endIcon={<ChevronRight size={14} />}
-                  sx={{ justifyContent: 'space-between' }}
-                >
-                  {i18n._('Chapters')}
-                </Button>
-                <Button
-                  data-testid="book-info-menu-highlights"
-                  variant="outlined"
-                  color="inherit"
-                  onClick={() => setActiveView('highlights')}
-                  endIcon={<ChevronRight size={14} />}
-                  sx={{ justifyContent: 'space-between' }}
-                >
-                  {i18n._('Highlights')}
-                </Button>
-              </Stack>
             ) : null}
 
-            {activeView === 'settings' ? (
-              <ReaderSettingsPanel
-                speech={speech}
-                isTouchDevice={isTouchDevice}
-                onReset={readerSettings.resetToDefault}
-              />
-            ) : null}
+            <Typography variant="h5" sx={{ fontWeight: 600, flex: 1, minWidth: 0 }}>
+              {title}
+            </Typography>
 
-            {activeView === 'chapters' ? (
-              <ReaderChaptersList
-                chapters={chapters}
-                activeChapterId={activeChapterId}
-                onSelect={(targetPage) => {
-                  onSelectChapter(targetPage);
-                  closeModal();
-                }}
-              />
-            ) : null}
-
-            {activeView === 'highlights' ? (
-              <ReaderHighlightsList
-                highlights={highlights}
-                onSelect={(targetPage) => {
-                  onSelectHighlight(targetPage);
-                  closeModal();
-                }}
-              />
-            ) : null}
+            <IconButton
+              onClick={closeModal}
+              aria-label={i18n._('Close settings')}
+              sx={{
+                width: '32px',
+                height: '32px',
+                padding: 0,
+                flexShrink: 0,
+              }}
+            >
+              <X size={18} />
+            </IconButton>
           </Stack>
-        </Popover>
-      </ThemeProvider>
+
+          {activeView === 'menu' ? (
+            <Stack sx={{ gap: '10px' }}>
+              <Button
+                data-testid="book-info-menu-settings"
+                variant="outlined"
+                color="inherit"
+                onClick={() => setActiveView('settings')}
+                endIcon={<ChevronRight size={14} />}
+                sx={{ justifyContent: 'space-between' }}
+              >
+                {i18n._('Settings')}
+              </Button>
+              <Button
+                data-testid="book-info-menu-chapters"
+                variant="outlined"
+                color="inherit"
+                onClick={() => setActiveView('chapters')}
+                endIcon={<ChevronRight size={14} />}
+                sx={{ justifyContent: 'space-between' }}
+              >
+                {i18n._('Chapters')}
+              </Button>
+              <Button
+                data-testid="book-info-menu-highlights"
+                variant="outlined"
+                color="inherit"
+                onClick={() => setActiveView('highlights')}
+                endIcon={<ChevronRight size={14} />}
+                sx={{ justifyContent: 'space-between' }}
+              >
+                {i18n._('Highlights')}
+              </Button>
+            </Stack>
+          ) : null}
+
+          {activeView === 'settings' ? (
+            <ReaderSettingsPanel
+              speech={speech}
+              isTouchDevice={isTouchDevice}
+              onReset={readerSettings.resetToDefault}
+            />
+          ) : null}
+
+          {activeView === 'chapters' ? (
+            <ReaderChaptersList
+              chapters={chapters}
+              activeChapterId={activeChapterId}
+              onSelect={(targetPage) => {
+                onSelectChapter(targetPage);
+                closeModal();
+              }}
+            />
+          ) : null}
+
+          {activeView === 'highlights' ? (
+            <ReaderHighlightsList
+              highlights={highlights}
+              onSelect={(targetPage) => {
+                onSelectHighlight(targetPage);
+                closeModal();
+              }}
+            />
+          ) : null}
+        </Stack>
+      </Popover>
     </>
   );
 };

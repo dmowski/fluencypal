@@ -2,6 +2,20 @@
 
 ## Reader
 
+- Auth: on top right, show button "Sign In", show modal with url profile=true (use useUrlState)
+  If sign-in is done, show on this page = user name, photo, button logout
+  If sign-in is not done, show "Sign in" title and buttons like Sign In with google, with email.
+
+Use this hook for auth
+webApp/src/features/Auth/useAuth.tsx
+
+And wrap webApp/src/features/Reader/ReaderPage.tsx with auth provider.
+
+Place sign in button here: webApp/src/features/Reader/components/BooksList.tsx
+
+Reader info:
+webApp/src/features/Reader/AGENTS.md
+
 - Separate app/url/PWA/Vision of the app
 
 [1] I have a reader and platform for practice speaking.
