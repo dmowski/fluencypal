@@ -17,7 +17,30 @@ There's my vision on what we need to do:
 - Specify database space for reader settings and avoid conflicts with other spaces
   webApp/firestore.rules
 
-========================
+- Create a space for user data in storage:
+  webApp/storage.rules
+
+- Endpoint(s) to upload user's Books, and user's settings (I think we can do it on client). You need to update webApp/src/features/Firebase/firebaseDb.ts
+
+- Then, most challenging, synchronization. I think we can create a separate hook, with context. Call it useBooksSync. Add context into webApp/src/features/Reader/ReaderPage.tsx
+  And integrate this hook with webApp/src/features/Reader/hooks/useBooks.tsx
+
+I think we don't need to sync "ReaderSettings", because it might be vary per user device. So keep it local for now. Focus only on book data.
+
+Book paragraphs and originalFile we should store in store (not in firebase).
+
+The challenge i see is reading progress:
+When we sync reading progress, on different devices activePage, might be point to a different content.
+
+Reader info:
+webApp/src/features/Reader/AGENTS.md
+
+For now, review code base, create me detailed implementation plan, call it ReaderSync.md.
+As first step I want to address reading progress synchronization. Figure out on how to handle that.
+And then next steps related to proper synchronization. add info on how to cover it with e2e, unit, etc.
+This doc will be used as plan for implementing that feature.
+
+=================================
 
 - Separate app/url/PWA/Vision of the app
 
@@ -37,9 +60,6 @@ I want to read book, and discuss it with my teacher. I want to share notes about
 - Share books, highlights, but not book settings. (auth, storage)
 
 =================================
-
-We have e2e that check epub to markdown import;
-webApp/e2e/booksEpubToMarkdown.spec.ts
 
 Reader info:
 webApp/src/features/Reader/AGENTS.md
