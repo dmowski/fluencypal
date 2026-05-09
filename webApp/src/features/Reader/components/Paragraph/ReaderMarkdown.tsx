@@ -103,7 +103,11 @@ const processStringChild = (
         )}
         {/* Space between words within this chunk, or trailing space when the original string ended with whitespace.
            Skip the space when the word ends with an em-dash so "shared—it" renders without a gap. */}
-        {(!isLast || hasTrailingSpace) && !word.endsWith('—') ? (renderSpace ? renderSpace(word, wordIndex) : ' ') : null}
+        {(!isLast || hasTrailingSpace) && !word.endsWith('—')
+          ? renderSpace
+            ? renderSpace(word, wordIndex)
+            : ' '
+          : null}
       </span>,
     );
   });
