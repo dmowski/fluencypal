@@ -74,7 +74,6 @@ export const getTranslatedResponse = async (data: TranslateRequest): Promise<Tra
   }
 
   const cache = await getTranslateCache(data);
-  console.log('translate cache', cache);
   if (cache) {
     return cache;
   }
