@@ -3,15 +3,23 @@ import { TranslationServiceClient } from '@google-cloud/translate';
 import { TranslateRequest, TranslateResponse } from './types';
 import { getTranslateCache, saveTranslateCache } from './cache';
 
+let cacheClient: TranslationServiceClient | null = null;
 const getTranslateClient = () => {
   const serviceAccount = JSON.parse(process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string);
-  return new TranslationServiceClient({
+
+  if (cacheClient) {
+    return cacheClient;
+  }
+  const client = new TranslationServiceClient({
     credentials: {
       client_email: serviceAccount.client_email,
       private_key: serviceAccount.private_key,
     },
     projectId: serviceAccount.project_id,
   });
+  cacheClient = client;
+
+  return client;
 };
 
 interface TranslateTextProps {
@@ -28,26 +36,25 @@ export const translateText = async ({
   const projectId = 'dark-lang';
   const location = 'global';
 
-  try {
-    const translatedTextResponse = await client.translateText({
-      parent: `projects/${projectId}/locations/${location}`,
-      contents: [text],
-      mimeType: 'text/plain',
-      sourceLanguageCode: sourceLanguage,
-      targetLanguageCode: targetLanguage,
-    });
+  const [translatedTextResponse, translateRequest] = await client.translateText({
+    parent: `projects/${projectId}/locations/${location}`,
+    contents: [text],
+    mimeType: 'text/plain',
+    sourceLanguageCode: sourceLanguage,
+    targetLanguageCode: targetLanguage,
+  });
+  console.log('translatedTextResponse');
+  console.log(translatedTextResponse);
+  console.log('translateRequest');
+  console.log(translateRequest);
 
-    const translatedText =
-      translatedTextResponse[0].translations
-        ?.map((t) => {
-          return t.translatedText;
-        })
-        .join('') || 'Translation failed';
-    return translatedText;
-  } catch (error) {
-    console.error('Translation error:', error);
-    return 'Translation error';
-  }
+  const translatedText =
+    translatedTextResponse.translations
+      ?.map((t) => {
+        return t.translatedText;
+      })
+      .join('') || 'Translation failed';
+  return translatedText;
 };
 
 export const getTranslatedResponse = async (data: TranslateRequest): Promise<TranslateResponse> => {
@@ -71,22 +78,29 @@ export const getTranslatedResponse = async (data: TranslateRequest): Promise<Tra
   }
 
   const cache = await getTranslateCache(data);
+  console.log('translate cache', cache);
   if (cache) {
     return cache;
   }
 
-  const translatedText = await translateText({
-    text: data.text,
-    sourceLanguage: data.sourceLanguage,
-    targetLanguage: data.targetLanguage,
-  });
+  try {
+    const translatedText = await translateText({
+      text: data.text,
+      sourceLanguage: data.sourceLanguage,
+      targetLanguage: data.targetLanguage,
+    });
 
-  const response: TranslateResponse = {
-    originalText: data.text,
-    translatedText: translatedText,
-    sourceLanguage: data.sourceLanguage,
-    targetLanguage: data.targetLanguage,
-  };
-  await saveTranslateCache(data, response);
-  return response;
+    const response: TranslateResponse = {
+      originalText: data.text,
+      translatedText: translatedText,
+      sourceLanguage: data.sourceLanguage,
+      targetLanguage: data.targetLanguage,
+    };
+    await saveTranslateCache(data, response);
+    return response;
+  } catch (error) {
+    console.error('Translation error:');
+    console.error(error);
+    throw error;
+  }
 };
