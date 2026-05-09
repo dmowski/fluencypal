@@ -2,7 +2,7 @@
 
 ## Reader
 
-### Synchronization of books.
+### Synchronization of books
 
 =================================
 
