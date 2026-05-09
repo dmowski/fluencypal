@@ -12,6 +12,7 @@ import { DevPanel } from './DevPanel';
 import { useDroppedEpubImport } from '../hooks/useDroppedEpubImport';
 import { useBooksListDropZone } from '../hooks/useBooksListDropZone';
 import { useReaderLibrary } from '../hooks/useReaderLibrary';
+import { useBooksSync } from '../hooks/useBooksSync';
 import {
   downloadReaderLibraryBookFile,
   formatLibraryBookDownloadCaption,
@@ -26,6 +27,7 @@ export const BooksList = () => {
   const i18n = useLingui();
   const books = useBooks();
   const library = useReaderLibrary();
+  const sync = useBooksSync();
   const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
@@ -146,6 +148,16 @@ export const BooksList = () => {
 
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h4">{i18n._('My books')}</Typography>
+
+          {sync.isInitialSyncing && books.usersBooks.length === 0 ? (
+            <Typography
+              variant="caption"
+              data-testid="reader-initial-sync-caption"
+              sx={{ opacity: 0.7 }}
+            >
+              {i18n._('Syncing your library…')}
+            </Typography>
+          ) : null}
 
           <Stack
             sx={{

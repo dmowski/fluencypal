@@ -11,6 +11,7 @@ import {
   useState,
 } from 'react';
 import { deleteDoc, onSnapshot, setDoc } from 'firebase/firestore';
+import * as Sentry from '@sentry/nextjs';
 import { db } from '@/features/Firebase/firebaseDb';
 import { useAuth } from '@/features/Auth/useAuth';
 import { Book } from '../model/types';
@@ -32,12 +33,14 @@ interface BooksSyncContextValue {
   status: BooksSyncStatus;
   lastSyncIso: string | null;
   error: string | null;
+  isInitialSyncing: boolean;
 }
 
 const BooksSyncContext = createContext<BooksSyncContextValue>({
   status: 'idle',
   lastSyncIso: null,
   error: null,
+  isInitialSyncing: false,
 });
 
 const PUSH_DEBOUNCE_MS = 800;
@@ -69,6 +72,10 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
   // Tracks ids we've ever seen from the server so we can detect deletions.
   const knownRemoteIdsRef = useRef<Set<string>>(new Set());
+  // Remembers the original-file blob path for each known book so we can clean
+  // it up when the book is deleted locally, even if the local copy never had
+  // the path (e.g. for stubs hydrated from a remote snapshot).
+  const knownOriginalPathsRef = useRef<Map<string, string>>(new Map());
   // Suppresses an immediate echo-push when a remote merge updates local state.
   const suppressedSignaturesRef = useRef<Map<string, string>>(new Map());
   const lastPushedSignaturesRef = useRef<Map<string, string>>(new Map());
@@ -82,6 +89,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   useEffect(() => {
     if (!userId) {
       knownRemoteIdsRef.current = new Set();
+      knownOriginalPathsRef.current = new Map();
       suppressedSignaturesRef.current = new Map();
       lastPushedSignaturesRef.current = new Map();
       createdAtCacheRef.current = new Map();
@@ -101,6 +109,9 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           const remote = docSnap.data();
           seenIds.add(remote.id);
           createdAtCacheRef.current.set(remote.id, remote.createdAtIso);
+          if (remote.originalFileBlobPath) {
+            knownOriginalPathsRef.current.set(remote.id, remote.originalFileBlobPath);
+          }
 
           const local = books.usersBooks.find((book) => book.id === remote.id);
           if (!local) {
@@ -129,6 +140,13 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         setLastSyncIso(new Date().toISOString());
       },
       (snapshotError) => {
+        Sentry.addBreadcrumb({
+          category: 'reader-sync',
+          level: 'error',
+          message: 'readerBooks subscription error',
+          data: { code: (snapshotError as { code?: string }).code ?? null },
+        });
+        Sentry.captureException(snapshotError, { tags: { area: 'reader-sync', op: 'subscribe' } });
         console.error('[useBooksSync] subscription error', snapshotError);
         setStatus('error');
         setError(snapshotError.message);
@@ -168,6 +186,12 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             paragraphs: book.paragraphs,
           });
           paragraphsBlobPath = upload.path;
+          Sentry.addBreadcrumb({
+            category: 'reader-sync',
+            level: 'info',
+            message: 'paragraphs uploaded',
+            data: { bookId: book.id, sizeBytes: upload.size },
+          });
         }
 
         if (!originalFileBlobPath && book.originalFile) {
@@ -176,6 +200,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             bookId: book.id,
             file: book.originalFile,
           });
+          knownOriginalPathsRef.current.set(book.id, originalFileBlobPath);
         }
 
         const nowIso = new Date().toISOString();
@@ -208,6 +233,13 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
         setLastSyncIso(nowIso);
       } catch (pushError: any) {
+        Sentry.addBreadcrumb({
+          category: 'reader-sync',
+          level: 'error',
+          message: 'push error',
+          data: { bookId: book.id, code: pushError?.code ?? null },
+        });
+        Sentry.captureException(pushError, { tags: { area: 'reader-sync', op: 'push' } });
         console.error('[useBooksSync] push error', pushError);
         setStatus('error');
         setError(pushError?.message ?? String(pushError));
@@ -256,11 +288,34 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         const docRef = db.documents.readerBook(userId, id);
         if (docRef) {
           void deleteDoc(docRef).catch((deleteError) => {
+            Sentry.captureException(deleteError, {
+              tags: { area: 'reader-sync', op: 'deleteDoc' },
+              extra: { bookId: id },
+            });
             console.error('[useBooksSync] delete error', deleteError);
           });
         }
         const paragraphsPath = `users/${userId}/reader/${id}/paragraphs.json.gz`;
-        void deleteBookBlob(paragraphsPath).catch(() => undefined);
+        void deleteBookBlob(paragraphsPath).catch((blobError) => {
+          Sentry.addBreadcrumb({
+            category: 'reader-sync',
+            level: 'warning',
+            message: 'paragraphs blob delete failed',
+            data: { bookId: id, code: (blobError as { code?: string })?.code ?? null },
+          });
+        });
+        const originalPath = knownOriginalPathsRef.current.get(id);
+        if (originalPath) {
+          void deleteBookBlob(originalPath).catch((blobError) => {
+            Sentry.addBreadcrumb({
+              category: 'reader-sync',
+              level: 'warning',
+              message: 'original-file blob delete failed',
+              data: { bookId: id, code: (blobError as { code?: string })?.code ?? null },
+            });
+          });
+          knownOriginalPathsRef.current.delete(id);
+        }
         knownRemoteIdsRef.current.delete(id);
         lastPushedSignaturesRef.current.delete(id);
       }
@@ -284,6 +339,15 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         suppressedSignaturesRef.current.set(active.id, signature);
         books.applyRemoteBookMerge(active.id, { ...active, paragraphs });
       } catch (downloadError: any) {
+        Sentry.addBreadcrumb({
+          category: 'reader-sync',
+          level: 'error',
+          message: 'paragraphs download failed',
+          data: { bookId: active.id, code: downloadError?.code ?? null },
+        });
+        Sentry.captureException(downloadError, {
+          tags: { area: 'reader-sync', op: 'downloadParagraphs' },
+        });
         console.error('[useBooksSync] paragraphs download failed', downloadError);
         setError(downloadError?.message ?? String(downloadError));
       }
@@ -296,7 +360,10 @@ const useBooksSyncState = (): BooksSyncContextValue => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, books.active?.id, books.active?.paragraphsBlobPath, books.active?.paragraphs.length]);
 
-  return useMemo(() => ({ status, lastSyncIso, error }), [status, lastSyncIso, error]);
+  return useMemo(() => {
+    const isInitialSyncing = Boolean(userId) && lastSyncIso === null && status !== 'error';
+    return { status, lastSyncIso, error, isInitialSyncing };
+  }, [status, lastSyncIso, error, userId]);
 };
 
 export const BooksSyncProvider = ({ children }: { children: ReactNode }) => {
