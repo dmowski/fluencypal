@@ -446,9 +446,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             if (isCancelled) return;
             if (Object.keys(parsed.imageDataUrlByHref).length > 0) {
               imagesByHref = parsed.imageDataUrlByHref;
-              imageAspectRatioByHref = await buildImageAspectRatioMap(
-                parsed.imageDataUrlByHref,
-              );
+              imageAspectRatioByHref = await buildImageAspectRatioMap(parsed.imageDataUrlByHref);
             }
           } catch (parseError) {
             Sentry.addBreadcrumb({
