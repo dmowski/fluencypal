@@ -15,22 +15,21 @@ const http = require('http');
 
 const EMULATOR_UI_PORT = 4000;
 const EMULATOR_HUB_PORT = 4400;
-const READY_TIMEOUT = 60000; // 60 seconds
+const READY_TIMEOUT = 120000; // 120 seconds (npx may need to download firebase-tools on first run)
 const PORTS_TO_CLEAR = [3000, 3001, 4000, 4400, 8080, 9099, 9199];
+// Pin firebase-tools to a version that supports Node 22+ (incl. Node 25).
+const FIREBASE_TOOLS_VERSION = '15.17.0';
 
 /**
  * Kill process using a specific port
  */
 function killPort(port) {
   try {
-    spawnSync('lsof', ['-ti', `:${port}`], { encoding: 'utf-8' });
-    spawnSync(
-      'kill',
-      ['-9', spawnSync('lsof', ['-ti', `:${port}`], { encoding: 'utf-8' }).stdout.trim()],
-      {
-        stdio: 'ignore',
-      },
-    );
+    const result = spawnSync('lsof', ['-ti', `:${port}`], { encoding: 'utf-8' });
+    const pid = (result.stdout || '').trim();
+    if (pid) {
+      spawnSync('kill', ['-9', pid], { stdio: 'ignore' });
+    }
   } catch (error) {
     // Port is not in use, ignore
   }
@@ -114,10 +113,20 @@ function startEmulator() {
   console.log('🔥 Starting Firebase Emulator...\n');
 
   return new Promise((resolve, reject) => {
-    const emulator = spawn('firebase', ['emulators:start', '--project', 'dark-lang'], {
-      cwd: path.join(__dirname, '..'),
-      stdio: 'inherit',
-    });
+    const emulator = spawn(
+      'npx',
+      [
+        '-y',
+        `firebase-tools@${FIREBASE_TOOLS_VERSION}`,
+        'emulators:start',
+        '--project',
+        'dark-lang',
+      ],
+      {
+        cwd: path.join(__dirname, '..'),
+        stdio: 'inherit',
+      },
+    );
 
     emulator.on('error', (error) => {
       console.error('Failed to start Firebase Emulator:', error.message);

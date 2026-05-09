@@ -8,6 +8,8 @@ import {
   browserPopupRedirectResolver,
   getAuth,
   initializeAuth,
+  signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import {
   collection,
@@ -72,6 +74,21 @@ const storage = getStorage(app);
 const functions = getFunctions(app);
 //const isLocalhost = !isNodeEnv && window.location.hostname === "localhost";
 //const analytics = !isNodeEnv && !isLocalhost ? getAnalytics(app) : null;
+
+// Test-only: expose the initialized Firebase instances on window when running
+// against the emulator, so Playwright can drive auth / Firestore / Storage
+// directly without scraping UI. Gated by the public emulator flag and never
+// touches production builds.
+if (!isNodeEnv && isFirebaseEmulator) {
+  (window as unknown as { __darkEngTest?: unknown }).__darkEngTest = {
+    app,
+    auth,
+    firestore,
+    storage,
+    signInWithEmailAndPassword,
+    signOut,
+  };
+}
 
 const setCookiesGDPR = (enabled: boolean) => {
   //if (!analytics) return;

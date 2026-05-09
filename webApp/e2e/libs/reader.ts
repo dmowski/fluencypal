@@ -9,3 +9,5 @@ export * from './books/highlightAssertions';
 export * from './books/renderingAssertions';
 export * from './books/translation';
 export * from './books/imports';
+export * from './books/auth';
+export * from './books/sync';

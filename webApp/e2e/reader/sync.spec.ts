@@ -1,0 +1,135 @@
+import { expect, test, type BrowserContext, type Page } from '@playwright/test';
+import {
+  applyYellowHighlight,
+  assertHighlightPopoverVisible,
+  BOOK_TITLE,
+  createEmulatorTestUser,
+  EmulatorTestUser,
+  openSeededGatsbyBook,
+  resetEmulatorState,
+  selectWheneverWordText,
+  signInTestUserOnPage,
+  signOutOnPage,
+  waitForParagraphsBlob,
+  waitForRemoteBookField,
+  waitForRemoteReaderBooksCount,
+  waitForSignedIn,
+} from '../libs/reader';
+
+const GATSBY_BOOK_ID = 'the-great-gatsby';
+
+const signInOnSeededReader = async (page: Page, user: EmulatorTestUser) => {
+  const uid = await signInTestUserOnPage(page, user);
+  await waitForSignedIn(page, uid);
+  return uid;
+};
+
+test.describe('Reader sync against Firebase emulator', () => {
+  test.beforeEach(async () => {
+    await resetEmulatorState();
+  });
+
+  test('signing in uploads the locally seeded Gatsby book to Firestore + Storage', async ({
+    page,
+  }) => {
+    test.setTimeout(60_000);
+
+    await openSeededGatsbyBook(page);
+    const user = await createEmulatorTestUser();
+    await signInOnSeededReader(page, user);
+
+    const remote = await waitForRemoteReaderBooksCount(user.uid, 1);
+    expect(remote[0].id).toBe(GATSBY_BOOK_ID);
+    expect(remote[0].title).toBe(BOOK_TITLE);
+    expect(typeof remote[0].paragraphsBlobPath).toBe('string');
+    expect(remote[0].paragraphsBlobPath).toContain(`users/${user.uid}/reader/${GATSBY_BOOK_ID}/`);
+
+    await waitForParagraphsBlob(remote[0].paragraphsBlobPath as string);
+  });
+
+  test('creating a highlight pushes the highlight payload to Firestore', async ({ page }) => {
+    test.setTimeout(60_000);
+
+    await openSeededGatsbyBook(page);
+    const user = await createEmulatorTestUser();
+    await signInOnSeededReader(page, user);
+
+    await waitForRemoteReaderBooksCount(user.uid, 1);
+
+    await selectWheneverWordText(page);
+    await assertHighlightPopoverVisible(page);
+    await applyYellowHighlight(page);
+
+    const updated = await waitForRemoteBookField(
+      user.uid,
+      GATSBY_BOOK_ID,
+      'highlights',
+      (value) => Array.isArray(value) && value.length >= 1,
+    );
+
+    const highlights = updated.highlights as Array<{ color?: string }>;
+    expect(typeof highlights[0]?.color).toBe('string');
+    expect((highlights[0]?.color ?? '').length).toBeGreaterThan(0);
+  });
+
+  test('deleting a book locally removes the matching Firestore document', async ({ page }) => {
+    test.setTimeout(60_000);
+
+    await openSeededGatsbyBook(page);
+    const user = await createEmulatorTestUser();
+    await signInOnSeededReader(page, user);
+
+    await waitForRemoteReaderBooksCount(user.uid, 1);
+
+    // Return to the books list and delete Gatsby via the trash icon on its card.
+    await page.goto('/book');
+    const gatsbyHeading = page.getByRole('heading', { name: BOOK_TITLE, level: 4 });
+    await expect(gatsbyHeading).toBeVisible();
+
+    page.once('dialog', (dialog) => dialog.accept());
+    // The card root is the closest ancestor containing the heading; the trash
+    // icon is the only button inside the card when there is no original file.
+    const cardRoot = gatsbyHeading.locator('xpath=ancestor::*[self::div][1]');
+    await cardRoot.getByRole('button').first().click();
+
+    await waitForRemoteReaderBooksCount(user.uid, 0);
+  });
+
+  test('a second browser context signed in as the same user sees the synced book', async ({
+    browser,
+  }) => {
+    test.setTimeout(90_000);
+
+    const contextA = await browser.newContext();
+    const pageA = await contextA.newPage();
+
+    let contextB: BrowserContext | null = null;
+    try {
+      await openSeededGatsbyBook(pageA);
+      const user = await createEmulatorTestUser();
+      await signInOnSeededReader(pageA, user);
+      await waitForRemoteReaderBooksCount(user.uid, 1);
+
+      contextB = await browser.newContext();
+      const pageB = await contextB.newPage();
+
+      // Clean local IndexedDB on B so the book can only arrive via remote sync.
+      await pageB.addInitScript(() => {
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+        if (typeof indexedDB !== 'undefined') {
+          indexedDB.deleteDatabase('readerBooksDb');
+        }
+      });
+      await pageB.goto('/book');
+      await signInOnSeededReader(pageB, user);
+
+      const gatsbyOnB = pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 });
+      await expect(gatsbyOnB).toBeVisible({ timeout: 20_000 });
+    } finally {
+      await signOutOnPage(pageA).catch(() => undefined);
+      await contextA.close();
+      if (contextB) await contextB.close();
+    }
+  });
+});
