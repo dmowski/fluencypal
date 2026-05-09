@@ -47,9 +47,7 @@ describe('mergeRemoteBookIntoLocal', () => {
   it('keeps older local highlights when remote is older', () => {
     const local: Book = {
       ...baseLocal,
-      highlights: [
-        { paragraphIndex: 0, startIndex: 0, endIndex: 5, color: '#fff', note: '' },
-      ],
+      highlights: [{ paragraphIndex: 0, startIndex: 0, endIndex: 5, color: '#fff', note: '' }],
       highlightsUpdatedAtIso: '2025-06-01T00:00:00.000Z',
     };
     const result = mergeRemoteBookIntoLocal(local, {

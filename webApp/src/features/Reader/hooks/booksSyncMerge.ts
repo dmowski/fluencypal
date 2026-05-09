@@ -15,10 +15,7 @@ const isoToTime = (iso?: string): number => {
  *
  * Returns `null` when the merge produced no changes vs the local copy.
  */
-export const mergeRemoteBookIntoLocal = (
-  local: Book,
-  remote: ReaderBookDoc,
-): Book | null => {
+export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Book | null => {
   const merged: Book = { ...local };
   let changed = false;
 
@@ -57,7 +54,9 @@ export const mergeRemoteBookIntoLocal = (
   // Reading position — content anchor LWW. Local activePageIndex is preserved
   // (device-local cache); the consumer re-resolves the page from the new
   // anchor on render.
-  if (isoToTime(remote.readingPositionUpdatedAtIso) > isoToTime(local.readingPositionUpdatedAtIso)) {
+  if (
+    isoToTime(remote.readingPositionUpdatedAtIso) > isoToTime(local.readingPositionUpdatedAtIso)
+  ) {
     merged.readingPosition = remote.readingPosition;
     merged.readingPositionUpdatedAtIso = remote.readingPositionUpdatedAtIso;
     changed = true;

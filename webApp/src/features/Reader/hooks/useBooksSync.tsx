@@ -25,7 +25,8 @@ import {
   downloadParagraphsBlob,
   uploadOriginalFileBlob,
   uploadParagraphsBlob,
-} from '../server/readerStorage';export type BooksSyncStatus = 'idle' | 'syncing' | 'error';
+} from '../server/readerStorage';
+export type BooksSyncStatus = 'idle' | 'syncing' | 'error';
 
 interface BooksSyncContextValue {
   status: BooksSyncStatus;
