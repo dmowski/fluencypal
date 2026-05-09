@@ -22,9 +22,15 @@ describe('splitWords', () => {
   });
 
   it('handles em-dash adjacent to quote characters', () => {
-    expect(
-      splitWords('you“—he points to another stack—”these'),
-    ).toEqual(['you“—', 'he', 'points', 'to', 'another', 'stack—', '”these']);
+    expect(splitWords('you“—he points to another stack—”these')).toEqual([
+      'you“—',
+      'he',
+      'points',
+      'to',
+      'another',
+      'stack—',
+      '”these',
+    ]);
   });
 
   it('handles multiple em-dash splits within a sentence', () => {
