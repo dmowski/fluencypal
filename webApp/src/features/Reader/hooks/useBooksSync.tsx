@@ -127,11 +127,16 @@ const useBooksSyncState = (): BooksSyncContextValue => {
     const collectionRef = db.collections.readerBooks(userId);
     if (!collectionRef) return;
 
+    console.log('[reader-sync] subscribing to readerBooks', { userId });
     setStatus('syncing');
 
     const unsubscribe = onSnapshot(
       collectionRef,
       (snapshot) => {
+        console.log('[reader-sync] snapshot received', {
+          docCount: snapshot.docs.length,
+          ids: snapshot.docs.map((d) => d.id),
+        });
         const seenIds = new Set<string>();
         snapshot.docs.forEach((docSnap) => {
           const remote = docSnap.data();
@@ -144,6 +149,11 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           const local = usersBooksRef.current.find((book) => book.id === remote.id);
           if (!local) {
             const stub = buildStubBookFromRemote(remote);
+            console.log('[reader-sync] hydrating stub from remote', {
+              bookId: stub.id,
+              hasParagraphsBlob: !!stub.paragraphsBlobPath,
+              hasOriginalFileBlob: !!stub.originalFileBlobPath,
+            });
             suppressedSignaturesRef.current.set(stub.id, buildLocalSignature(stub));
             applyRemoteBookMergeRef.current(stub.id, stub);
             return;
@@ -151,6 +161,11 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
           const merged = mergeRemoteBookIntoLocal(local, remote);
           if (merged) {
+            console.log('[reader-sync] merging remote into local', {
+              bookId: merged.id,
+              highlightsCount: merged.highlights?.length ?? 0,
+              hasImages: !!merged.imagesByHref && Object.keys(merged.imagesByHref).length > 0,
+            });
             suppressedSignaturesRef.current.set(merged.id, buildLocalSignature(merged));
             applyRemoteBookMergeRef.current(merged.id, merged);
           }
@@ -196,11 +211,24 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   const pushBook = useCallback(
     async (book: Book) => {
       if (!userId) return;
-      if (inFlightUploadsRef.current.has(book.id)) return;
+      if (inFlightUploadsRef.current.has(book.id)) {
+        console.log('[reader-sync] push skipped (already in flight)', { bookId: book.id });
+        return;
+      }
 
       const docRef = db.documents.readerBook(userId, book.id);
       if (!docRef) return;
 
+      console.log('[reader-sync] push start', {
+        bookId: book.id,
+        title: book.title,
+        hasParagraphs: book.paragraphs.length,
+        hasOriginalFile: !!book.originalFile,
+        hasParagraphsBlob: !!book.paragraphsBlobPath,
+        hasOriginalFileBlob: !!book.originalFileBlobPath,
+        highlightsCount: book.highlights?.length ?? 0,
+        highlightsIso: book.highlightsUpdatedAtIso ?? null,
+      });
       inFlightUploadsRef.current.add(book.id);
       try {
         let paragraphsBlobPath = book.paragraphsBlobPath;
@@ -208,12 +236,21 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
         // Upload paragraphs to Storage on first push (or if pointer absent).
         if (!paragraphsBlobPath && book.paragraphs.length > 0) {
+          console.log('[reader-sync] uploading paragraphs blob', {
+            bookId: book.id,
+            paragraphCount: book.paragraphs.length,
+          });
           const upload = await uploadParagraphsBlob({
             userId,
             bookId: book.id,
             paragraphs: book.paragraphs,
           });
           paragraphsBlobPath = upload.path;
+          console.log('[reader-sync] paragraphs uploaded', {
+            bookId: book.id,
+            sizeBytes: upload.size,
+            path: paragraphsBlobPath,
+          });
           Sentry.addBreadcrumb({
             category: 'reader-sync',
             level: 'info',
@@ -223,10 +260,19 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         }
 
         if (!originalFileBlobPath && book.originalFile) {
+          console.log('[reader-sync] uploading original EPUB blob', {
+            bookId: book.id,
+            fileName: book.originalFile.name,
+            sizeBytes: book.originalFile.size,
+          });
           originalFileBlobPath = await uploadOriginalFileBlob({
             userId,
             bookId: book.id,
             file: book.originalFile,
+          });
+          console.log('[reader-sync] original EPUB uploaded', {
+            bookId: book.id,
+            path: originalFileBlobPath,
           });
           knownOriginalPathsRef.current.set(book.id, originalFileBlobPath);
         }
@@ -240,6 +286,12 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         );
 
         await setDoc(docRef, remoteDoc);
+        console.log('[reader-sync] Firestore doc written', {
+          bookId: book.id,
+          highlightsCount: remoteDoc.highlights?.length ?? 0,
+          paragraphsBlobPath,
+          originalFileBlobPath,
+        });
         createdAtCacheRef.current.set(book.id, createdAtIso);
         knownRemoteIdsRef.current.add(book.id);
         lastPushedSignaturesRef.current.set(
@@ -322,6 +374,11 @@ const useBooksSyncState = (): BooksSyncContextValue => {
       const lastHighlightsIso = lastPushedHighlightsIsoRef.current.get(book.id) ?? null;
       const currentHighlightsIso = book.highlightsUpdatedAtIso ?? null;
       const highlightsChanged = currentHighlightsIso !== lastHighlightsIso;
+      console.log('[reader-sync] scheduling push', {
+        bookId: book.id,
+        immediate: highlightsChanged,
+        reason: highlightsChanged ? 'highlights-changed' : 'other-fields-changed',
+      });
       schedulePush(book, { immediate: highlightsChanged });
     });
 
@@ -376,9 +433,21 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
     let isCancelled = false;
     (async () => {
+      console.log('[reader-sync] hydrating paragraphs from Storage', {
+        bookId: active.id,
+        path: active.paragraphsBlobPath,
+      });
       try {
         const paragraphs = await downloadParagraphsBlob({ userId, bookId: active.id });
-        if (isCancelled || !paragraphs) return;
+        if (isCancelled) return;
+        if (!paragraphs) {
+          console.warn('[reader-sync] paragraphs blob not found', { bookId: active.id });
+          return;
+        }
+        console.log('[reader-sync] paragraphs hydrated', {
+          bookId: active.id,
+          count: paragraphs.length,
+        });
         const signature = buildLocalSignature({ ...active, paragraphs });
         suppressedSignaturesRef.current.set(active.id, signature);
         books.applyRemoteBookMerge(active.id, { ...active, paragraphs });
@@ -392,7 +461,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
         Sentry.captureException(downloadError, {
           tags: { area: 'reader-sync', op: 'downloadParagraphs' },
         });
-        console.error('[useBooksSync] paragraphs download failed', downloadError);
+        console.error('[reader-sync] paragraphs download failed', { bookId: active.id }, downloadError);
         setError(downloadError?.message ?? String(downloadError));
       }
     })();
@@ -428,11 +497,30 @@ const useBooksSyncState = (): BooksSyncContextValue => {
       });
 
       (async () => {
+        console.log('[reader-sync] hydrating original EPUB from Storage', {
+          bookId: book.id,
+          path: book.originalFileBlobPath,
+        });
         try {
           const result = await downloadOriginalFileBlob(book.originalFileBlobPath!);
-          if (isCancelled || !result) return;
+          if (isCancelled) {
+            console.log('[reader-sync] EPUB hydration cancelled', { bookId: book.id });
+            return;
+          }
+          if (!result) {
+            console.warn('[reader-sync] EPUB blob not found in Storage', {
+              bookId: book.id,
+              path: book.originalFileBlobPath,
+            });
+            return;
+          }
           const file = new File([result.blob], result.fileName, {
             type: result.blob.type || 'application/epub+zip',
+          });
+          console.log('[reader-sync] EPUB downloaded, parsing for images', {
+            bookId: book.id,
+            fileName: result.fileName,
+            sizeBytes: result.blob.size,
           });
 
           // Re-extract embedded images from the EPUB so they show up on this
@@ -444,7 +532,12 @@ const useBooksSyncState = (): BooksSyncContextValue => {
           try {
             const parsed = await parseEpubOnClient(file);
             if (isCancelled) return;
-            if (Object.keys(parsed.imageDataUrlByHref).length > 0) {
+            const imageHrefCount = Object.keys(parsed.imageDataUrlByHref).length;
+            console.log('[reader-sync] parsed EPUB images', {
+              bookId: book.id,
+              imageHrefCount,
+            });
+            if (imageHrefCount > 0) {
               imagesByHref = parsed.imageDataUrlByHref;
               imageAspectRatioByHref = await buildImageAspectRatioMap(parsed.imageDataUrlByHref);
             }
@@ -455,12 +548,17 @@ const useBooksSyncState = (): BooksSyncContextValue => {
               message: 'image re-extract from hydrated EPUB failed',
               data: { bookId: book.id },
             });
-            console.warn('[useBooksSync] image re-extract failed', parseError);
+            console.warn('[reader-sync] image re-extract failed', { bookId: book.id }, parseError);
           }
           if (isCancelled) return;
 
           const latest = usersBooksRef.current.find((entry) => entry.id === book.id);
-          if (!latest) return;
+          if (!latest) {
+            console.warn('[reader-sync] EPUB hydration: latest local copy missing', {
+              bookId: book.id,
+            });
+            return;
+          }
           const next: Book = {
             ...latest,
             originalFile: file,
@@ -474,6 +572,13 @@ const useBooksSyncState = (): BooksSyncContextValue => {
                 }
               : {}),
           };
+          console.log('[reader-sync] applying hydrated EPUB + images locally', {
+            bookId: book.id,
+            imagesAttached: imagesByHref ? Object.keys(imagesByHref).length : 0,
+            aspectRatiosAttached: imageAspectRatioByHref
+              ? Object.keys(imageAspectRatioByHref).length
+              : 0,
+          });
           suppressedSignaturesRef.current.set(book.id, buildLocalSignature(next));
           applyRemoteBookMergeRef.current(book.id, next);
         } catch (downloadError: any) {
@@ -483,6 +588,10 @@ const useBooksSyncState = (): BooksSyncContextValue => {
             message: 'original file hydration failed',
             data: { bookId: book.id, code: downloadError?.code ?? null },
           });
+          console.warn('[reader-sync] original file hydration failed', {
+            bookId: book.id,
+            code: downloadError?.code,
+          }, downloadError);
           // Allow a retry on next mount; don't keep the id in the in-flight set.
           originalFileHydrationsRef.current.delete(book.id);
         }
