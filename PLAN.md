@@ -2,19 +2,22 @@
 
 ## Reader
 
-- Auth: on top right, show button "Sign In", show modal with url profile=true (use useUrlState)
-  If sign-in is done, show on this page = user name, photo, button logout
-  If sign-in is not done, show "Sign in" title and buttons like Sign In with google, with email.
+### Synchronization of books.
 
-Use this hook for auth
-webApp/src/features/Auth/useAuth.tsx
+When user is authorized, we need to synchronize user's books, settings, highlights. This is multi step process. This is needed when user read book on desktop and want's to continue reading on mobile device.
 
-And wrap webApp/src/features/Reader/ReaderPage.tsx with auth provider.
+There's my vision on what we need to do:
 
-Place sign in button here: webApp/src/features/Reader/components/BooksList.tsx
+- Update data model to provide changes info.
+  I think we need to add these properties on Book interface (already done): UpdatedAtIso
 
-Reader info:
-webApp/src/features/Reader/AGENTS.md
+- Update ReaderSettings (already done): updatedAtIso
+  webApp/src/features/Reader/model/types.ts
+
+- Specify database space for reader settings and avoid conflicts with other spaces
+  webApp/firestore.rules
+
+========================
 
 - Separate app/url/PWA/Vision of the app
 

@@ -22,9 +22,17 @@ export interface Book {
   chapters?: BookChapterNavigationItem[];
   imagesByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;
+  // ISO string of changes of core book data (paragraphs, title, subtitle, author). Should be updated on every change of these data.
+  dataUpdatedAtIso?: string;
+
   highlights?: HighlightedText[];
+  highlightsUpdatedAtIso?: string;
+
   readProgress?: ReadingProgress;
+  readProgressUpdatedAtIso?: string;
+
   activePageIndex?: number;
+  activePageIndexUpdatedAtIso?: string;
 }
 
 export interface HighlightedText {
@@ -54,6 +62,8 @@ export interface ReaderSettings {
   voiceOverSelectedText: boolean;
   columns: 1 | 2;
   columnGap: number;
+
+  updatedAtIso?: string;
 }
 
 export interface ReaderResizeWordAnchor {

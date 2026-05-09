@@ -8,6 +8,7 @@ import { BooksList } from './components/BooksList';
 import { ReaderSettingsProvider } from './hooks/useReaderSettings';
 import { useDocumentTitle } from '@/libs/useDocumentTitle';
 import { lightTheme } from '../uiKit/theme';
+import { AuthProvider } from '../Auth/useAuth';
 
 const ReaderComponent = () => {
   const books = useBooks();
@@ -44,11 +45,13 @@ const ReaderComponent = () => {
 export const ReaderPage = () => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <BooksProvider>
-        <ReaderSettingsProvider>
-          <ReaderComponent />
-        </ReaderSettingsProvider>
-      </BooksProvider>
+      <AuthProvider>
+        <BooksProvider>
+          <ReaderSettingsProvider>
+            <ReaderComponent />
+          </ReaderSettingsProvider>
+        </BooksProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 };

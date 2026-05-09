@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { ImportProgressPanel } from './ImportProgressPanel';
 import { useLingui } from '@lingui/react';
 import { ChangeEvent, useRef, useState } from 'react';
@@ -16,6 +16,9 @@ import {
   downloadReaderLibraryBookFile,
   formatLibraryBookDownloadCaption,
 } from '../api/libraryRequests';
+import { useUrlState } from '@/features/Url/useUrlState';
+import { ReaderSignInModal } from './ReaderSignInModal';
+import { ReaderAuthButton } from './ReaderAuthButton';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
 
@@ -23,6 +26,7 @@ export const BooksList = () => {
   const i18n = useLingui();
   const books = useBooks();
   const library = useReaderLibrary();
+  const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { isImportingDroppedFile, importProgress, importMessage, importError, importEpubFile } =
     useDroppedEpubImport();
@@ -119,14 +123,29 @@ export const BooksList = () => {
           }}
           data-testid="add-book-file-input"
         />
-        <Typography
-          variant="h2"
+        <Stack
           sx={{
-            fontFamily: 'serif',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          {i18n._('Books')}
-        </Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              fontFamily: 'serif',
+            }}
+          >
+            {i18n._('Books')}
+          </Typography>
+
+          <ReaderAuthButton onClick={() => void setIsProfileOpen(true)} />
+        </Stack>
+
+        <ReaderSignInModal
+          open={isProfileOpen}
+          onClose={() => void setIsProfileOpen(false)}
+        />
 
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h4">{i18n._('My books')}</Typography>
