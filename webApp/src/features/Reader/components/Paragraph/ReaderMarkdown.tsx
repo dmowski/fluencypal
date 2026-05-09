@@ -58,6 +58,14 @@ const isExternalHref = (href: string): boolean => {
   return EXTERNAL_LINK_SCHEME.test(trimmedHref) || trimmedHref.startsWith('//');
 };
 
+/**
+ * Returns true when no whitespace should be rendered after this word token.
+ * Add new punctuation rules here instead of scattering conditions across rendering paths.
+ */
+const shouldSuppressSpaceAfter = (word: string): boolean =>
+  // Em-dash at the end of a token joins directly to the next word (e.g. "shared—it").
+  word.endsWith('—');
+
 const processStringChild = (
   child: string,
   index: number,
@@ -101,9 +109,7 @@ const processStringChild = (
             {word}
           </span>
         )}
-        {/* Space between words within this chunk, or trailing space when the original string ended with whitespace.
-           Skip the space when the word ends with an em-dash so "shared—it" renders without a gap. */}
-        {(!isLast || hasTrailingSpace) && !word.endsWith('—')
+        {(!isLast || hasTrailingSpace) && !shouldSuppressSpaceAfter(word)
           ? renderSpace
             ? renderSpace(word, wordIndex)
             : ' '
@@ -474,7 +480,7 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
                 {word}
               </span>
             )}
-            {wordIndex < words.length - 1 && !word.endsWith('—')
+            {wordIndex < words.length - 1 && !shouldSuppressSpaceAfter(word)
               ? renderSpace
                 ? renderSpace(word, wordIndex)
                 : ' '
