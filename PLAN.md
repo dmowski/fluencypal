@@ -2,7 +2,11 @@
 
 ## Reader
 
-- Do automatic re-import, create parser version
+- Setup domain book.fluencypal.com
+
+- Fix _long paragraph italic text on separate pages_
+
+- Automatic re-import, create parser version
 
 =================================
 
