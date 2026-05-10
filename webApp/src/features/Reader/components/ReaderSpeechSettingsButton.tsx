@@ -105,7 +105,7 @@ export const BookInfoButton = ({
             sx={{
               flexDirection: 'row',
               alignItems: 'center',
-              gap: '4px',
+              gap: '0px',
             }}
           >
             {activeView !== 'menu' ? (
@@ -118,6 +118,7 @@ export const BookInfoButton = ({
                   height: '32px',
                   padding: 0,
                   flexShrink: 0,
+                  marginLeft: '-15px',
                 }}
               >
                 <ChevronLeft size={18} />
@@ -136,6 +137,9 @@ export const BookInfoButton = ({
                 height: '32px',
                 padding: 0,
                 flexShrink: 0,
+                position: 'absolute',
+                top: '5px',
+                right: '5px',
               }}
             >
               <X size={18} />
