@@ -127,7 +127,7 @@ export const ShareBookModal = ({
       data-testid="share-book-modal"
     >
       <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Typography variant="h6">{i18n._('Share book')}</Typography>
+        {i18n._('Share book')}
         <IconButton aria-label="Close share modal" size="small" onClick={handleClose}>
           <X size={18} />
         </IconButton>

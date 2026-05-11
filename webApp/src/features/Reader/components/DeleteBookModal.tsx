@@ -55,9 +55,7 @@ export const DeleteBookModal = ({
       data-testid="delete-book-modal"
     >
       <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Typography variant="h6">
-          {mode === 'leave' ? i18n._('Leave shared book') : i18n._('Delete shared book')}
-        </Typography>
+        {mode === 'leave' ? i18n._('Leave shared book') : i18n._('Delete shared book')}
         {!isLoading && (
           <IconButton aria-label="Close" size="small" onClick={onClose}>
             <X size={18} />
