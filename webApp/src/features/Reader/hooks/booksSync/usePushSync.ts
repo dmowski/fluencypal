@@ -255,6 +255,15 @@ export const usePushSync = ({
     const presentIds = new Set(usersBooks.map((book) => book.id));
     refs.knownRemoteIds.current.forEach((id) => {
       if (presentIds.has(id)) return;
+
+      // Books removed via a "leave" operation (non-owner self-removal) have
+      // their Firestore update already written directly. Skip the delete.
+      if (refs.leavedBookIds.current.has(id)) {
+        refs.leavedBookIds.current.delete(id);
+        refs.knownRemoteIds.current.delete(id);
+        refs.lastPushedSignatures.current.delete(id);
+        return;
+      }
       const docRef = db.documents.readerBook(id);
       if (docRef) {
         void deleteDoc(docRef).catch((deleteError: unknown) => {

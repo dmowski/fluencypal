@@ -25,6 +25,8 @@ import { useUrlState } from '@/features/Url/useUrlState';
 import { ReaderSignInModal } from './ReaderSignInModal';
 import { ReaderAuthButton } from './ReaderAuthButton';
 import { ShareBookModal } from './ShareBookModal';
+import { DeleteBookModal, DeleteBookModalMode } from './DeleteBookModal';
+import { leaveSharedBook } from '../api/bookSharingApi';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
 
@@ -39,6 +41,11 @@ export const BooksList = () => {
   const shareBook = shareBookId
     ? (books.usersBooks.find((b) => b.id === shareBookId) ?? null)
     : null;
+  const [deleteBookId, setDeleteBookId] = useState<string | null>(null);
+  const deleteBook = deleteBookId
+    ? (books.usersBooks.find((b) => b.id === deleteBookId) ?? null)
+    : null;
+  const [isLeaving, setIsLeaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const reimportFileInputRef = useRef<HTMLInputElement>(null);
   const [reimportTargetBookId, setReimportTargetBookId] = useState<string | null>(null);
@@ -102,6 +109,22 @@ export const BooksList = () => {
   };
 
   const handleDelete = (book: Book) => {
+    const isOwner = !book.ownerUserId || book.ownerUserId === auth.uid;
+    const hasCollaborators = (book.userIds?.length ?? 0) > 0;
+
+    if (!isOwner) {
+      // Non-owner: show the "leave" modal
+      setDeleteBookId(book.id);
+      return;
+    }
+
+    if (hasCollaborators) {
+      // Owner with collaborators: show custom confirmation
+      setDeleteBookId(book.id);
+      return;
+    }
+
+    // Solo owner: simple confirm
     if (!window.confirm(i18n._('Delete this book?'))) return;
     books.deleteBook(book);
   };
@@ -237,8 +260,52 @@ export const BooksList = () => {
               books.shareBook(shareBook.id, userId, email);
             }}
             onRemoveUser={(userId) => books.removeUserFromBook(shareBook.id, userId)}
+            onReassignOwner={(userId) => {
+              books.reassignOwner(shareBook.id, userId);
+              setShareBookId(null);
+            }}
           />
         )}
+
+        {deleteBook &&
+          (() => {
+            const isOwner = !deleteBook.ownerUserId || deleteBook.ownerUserId === auth.uid;
+            const mode: DeleteBookModalMode = isOwner ? 'owner-shared' : 'leave';
+            return (
+              <DeleteBookModal
+                book={deleteBook}
+                mode={mode}
+                open={Boolean(deleteBookId)}
+                isLoading={isLeaving}
+                onClose={() => setDeleteBookId(null)}
+                onLeave={async () => {
+                  if (!auth.uid) return;
+                  const bookId = deleteBook.id;
+                  setIsLeaving(true);
+                  try {
+                    await leaveSharedBook(bookId, auth.uid);
+                    // Mark before removing locally so usePushSync skips the delete.
+                    sync.markBookAsLeft(bookId);
+                    books.removeBookLocally(bookId);
+                    setDeleteBookId(null);
+                  } catch (err) {
+                    console.error('[BooksList] leaveSharedBook failed', err);
+                  } finally {
+                    setIsLeaving(false);
+                  }
+                }}
+                onDeleteForAll={() => {
+                  books.deleteBook(deleteBook);
+                  setDeleteBookId(null);
+                }}
+                onOpenSharingSettings={() => {
+                  const bookId = deleteBook.id;
+                  setDeleteBookId(null);
+                  setShareBookId(bookId);
+                }}
+              />
+            );
+          })()}
 
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h4">{i18n._('My books')}</Typography>

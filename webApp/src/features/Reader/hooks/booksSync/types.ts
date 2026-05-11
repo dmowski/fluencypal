@@ -8,6 +8,12 @@ export interface BooksSyncContextValue {
   lastSyncIso: string | null;
   error: string | null;
   isInitialSyncing: boolean;
+  /**
+   * Marks a book as "left" (non-owner self-removal) so the push-sync layer
+   * skips the Firestore delete, removes it from local state immediately, and
+   * calls the provided direct Firestore write.
+   */
+  markBookAsLeft: (bookId: string) => void;
 }
 
 /**
@@ -43,6 +49,12 @@ export interface BooksSyncRefs {
   applyRemoteBookMerge: MutableRefObject<(bookId: string, next: Book) => void>;
   /** Always points at the latest `removeBookLocally`. */
   removeBookLocally: MutableRefObject<(bookId: string) => void>;
+  /**
+   * Book ids that were removed from local state by a "leave" operation (the
+   * user removed themselves from a shared book). usePushSync must skip the
+   * Firestore delete for these — the Firestore write was already done directly.
+   */
+  leavedBookIds: MutableRefObject<Set<string>>;
 }
 
 export interface BooksSyncStatusSetters {

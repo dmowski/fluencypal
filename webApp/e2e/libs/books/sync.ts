@@ -178,3 +178,58 @@ export const expectNoRemoteBooks = async (uid: string) => {
   const docs = await listRemoteReaderBooks(uid);
   expect(docs).toHaveLength(0);
 };
+
+/**
+ * Polls until the specific bookId is NOT present in a user's remote books.
+ * Useful for verifying that a user left a shared book or was removed.
+ */
+export const waitForBookMissingForUser = async (
+  uid: string,
+  bookId: string,
+  options?: { timeoutMs?: number },
+): Promise<void> => {
+  const timeoutMs = options?.timeoutMs ?? 20_000;
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const all = await listRemoteReaderBooks(uid);
+    if (!all.some((b) => b.id === bookId)) return;
+    await new Promise((r) => setTimeout(r, 250));
+  }
+  throw new Error(`Book ${bookId} is still present for user ${uid} after ${timeoutMs}ms`);
+};
+
+/**
+ * Polls until the specific bookId IS present in a user's remote books.
+ */
+export const waitForBookPresentForUser = async (
+  uid: string,
+  bookId: string,
+  options?: { timeoutMs?: number },
+): Promise<RemoteReaderBookDoc> => {
+  const timeoutMs = options?.timeoutMs ?? 20_000;
+  const deadline = Date.now() + timeoutMs;
+  let last: RemoteReaderBookDoc[] = [];
+  while (Date.now() < deadline) {
+    last = await listRemoteReaderBooks(uid);
+    const found = last.find((b) => b.id === bookId);
+    if (found) return found;
+    await new Promise((r) => setTimeout(r, 250));
+  }
+  throw new Error(`Book ${bookId} not found for user ${uid} after ${timeoutMs}ms`);
+};
+
+/**
+ * Opens the share modal for a book card, types an email, submits, and waits
+ * for the success message. Leaves the share modal open (caller can close it).
+ */
+export const shareBookViaUI = async (page: Page, bookId: string, email: string): Promise<void> => {
+  const { expect } = await import('@playwright/test');
+  await page.getByTestId(`book-menu-${bookId}`).click();
+  await page.getByRole('menuitem', { name: 'Share' }).click();
+  await expect(page.getByTestId('share-book-modal')).toBeVisible();
+  await page.getByTestId('share-email-input').fill(email);
+  await page.getByTestId('share-email-submit').click();
+  await expect(page.getByTestId('share-success-message')).toBeVisible({ timeout: 20_000 });
+  // Close the modal
+  await page.getByRole('button', { name: 'Close share modal' }).click();
+};

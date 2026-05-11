@@ -303,6 +303,22 @@ const useBooksState = () => {
     }));
   };
 
+  // Transfer ownership to a different member. The new owner is removed from
+  // userIds; the current owner is added to userIds as a collaborator.
+  const reassignOwner = (bookId: string, newOwnerUserId: string) => {
+    patchBook(bookId, (book) => {
+      const currentOwner = book.ownerUserId;
+      const newUserIds = [
+        ...(book.userIds ?? []).filter((id) => id !== newOwnerUserId),
+        ...(currentOwner && currentOwner !== newOwnerUserId ? [currentOwner] : []),
+      ];
+      return {
+        ownerUserId: newOwnerUserId,
+        userIds: newUserIds,
+      };
+    });
+  };
+
   return {
     active,
     activePage: active?.activePageIndex ?? 1,
@@ -320,6 +336,7 @@ const useBooksState = () => {
     shareBook,
     removeUserFromBook,
     storeMemberEmail,
+    reassignOwner,
   };
 };
 

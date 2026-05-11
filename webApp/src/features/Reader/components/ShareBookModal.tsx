@@ -12,7 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { Trash2, X } from 'lucide-react';
+import { Crown, Trash2, X } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { Book } from '../model/types';
 import { findUserByEmail } from '../api/sharingRequests';
@@ -26,6 +26,8 @@ interface Props {
   getToken: () => Promise<string>;
   onShare: (userId: string, email: string) => void;
   onRemoveUser: (userId: string) => void;
+  /** If provided, owner sees a "Make owner" button per collaborator. */
+  onReassignOwner?: (userId: string) => void;
 }
 
 type ShareStatus =
@@ -43,6 +45,7 @@ export const ShareBookModal = ({
   getToken,
   onShare,
   onRemoveUser,
+  onReassignOwner,
 }: Props) => {
   const i18n = useLingui();
   const [emailInput, setEmailInput] = useState('');
@@ -175,15 +178,27 @@ export const ShareBookModal = ({
                   {email}
                 </Typography>
                 {isOwner && (
-                  <IconButton
-                    size="small"
-                    aria-label={`Remove ${email}`}
-                    data-testid={`share-modal-remove-${uid}`}
-                    onClick={() => onRemoveUser(uid)}
-                    sx={{ ml: 1, flexShrink: 0 }}
-                  >
-                    <Trash2 size={14} />
-                  </IconButton>
+                  <Stack direction="row" gap="4px" sx={{ ml: 1, flexShrink: 0 }}>
+                    {onReassignOwner && (
+                      <IconButton
+                        size="small"
+                        aria-label={`Make ${email} owner`}
+                        data-testid={`share-modal-make-owner-${uid}`}
+                        onClick={() => onReassignOwner(uid)}
+                        title={i18n._('Make owner')}
+                      >
+                        <Crown size={14} />
+                      </IconButton>
+                    )}
+                    <IconButton
+                      size="small"
+                      aria-label={`Remove ${email}`}
+                      data-testid={`share-modal-remove-${uid}`}
+                      onClick={() => onRemoveUser(uid)}
+                    >
+                      <Trash2 size={14} />
+                    </IconButton>
+                  </Stack>
                 )}
               </Stack>
             ))}

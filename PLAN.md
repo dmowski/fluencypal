@@ -2,26 +2,15 @@
 
 ## Reader
 
+- Shared books: manual testing
+
+Case: Sharing modal
+Case: open the book, shared by other
+Case: Remove book, when there are no sharings
+Case: Remove book, when there are sharing, and I am an owner
+Case: Remove book, when there are sharing, and I am not an owner
+
 - When we do resize, change color of temporary highlight to red, to make it more visible
-
-- Shared books
-
-===========
-
-Update delete books handling.
-We have case, when the books is shared with others.
-In case when there's only one user, just confirm deletion and remove, as is.
-
-If I am not owner of the book, just remove my user id from list. Write e2e for that cases.
-
-If I am owner, show custom confirmation, that deletion will remove the book from all users.
-Show button "Delete for all", and "Open sharing settings" (to re-assign owner). And implement logic of reassigning ownership. Write e2e for that cases.
-
-webApp/src/features/Reader/components/BooksList.tsx
-
-Before writing e2e, think about architecture of e2e for these cases. You can update our e2e libs to make it easy to tests these cases.
-
-After finishing with e2e, stabilize the.
 
 ===========
 

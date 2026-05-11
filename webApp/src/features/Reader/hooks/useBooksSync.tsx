@@ -17,6 +17,7 @@ const BooksSyncContext = createContext<BooksSyncContextValue>({
   lastSyncIso: null,
   error: null,
   isInitialSyncing: false,
+  markBookAsLeft: () => {},
 });
 
 /**
@@ -84,8 +85,16 @@ const useBooksSyncState = (): BooksSyncContextValue => {
 
   return useMemo(() => {
     const isInitialSyncing = Boolean(userId) && lastSyncIso === null && status !== 'error';
-    return { status, lastSyncIso, error, isInitialSyncing };
-  }, [status, lastSyncIso, error, userId]);
+    return {
+      status,
+      lastSyncIso,
+      error,
+      isInitialSyncing,
+      markBookAsLeft: (bookId: string) => {
+        refs.leavedBookIds.current.add(bookId);
+      },
+    };
+  }, [status, lastSyncIso, error, userId, refs]);
 };
 
 export const BooksSyncProvider = ({ children }: { children: ReactNode }) => {

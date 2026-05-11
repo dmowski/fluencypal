@@ -266,13 +266,24 @@ service cloud.firestore {
       allow create: if isBookCreator();
 
       // Any member can update (e.g. collaborators can save highlights).
-      // ownerUserId and userIds may only be changed by the owner.
+      // ownerUserId and userIds may only be changed by the owner,
+      // EXCEPT a non-owner may remove only themselves from the book.
       allow update: if isBookMember()
         && (
           isBookOwner()
           || (
+            // Non-owner updating non-membership fields (e.g. highlights).
             request.resource.data.ownerUserId == resource.data.ownerUserId &&
             request.resource.data.userIds == resource.data.userIds
+          )
+          || (
+            // Non-owner self-removal: userIds and memberIds must each be the
+            // existing list with only the current user removed.
+            request.resource.data.ownerUserId == resource.data.ownerUserId &&
+            request.resource.data.userIds.toSet() ==
+              resource.data.userIds.toSet().difference([request.auth.uid].toSet()) &&
+            request.resource.data.memberIds.toSet() ==
+              resource.data.memberIds.toSet().difference([request.auth.uid].toSet())
           )
         );
 

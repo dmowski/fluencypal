@@ -30,6 +30,7 @@ export const useBooksSyncRefs = (
       usersBooks: { current: usersBooks },
       applyRemoteBookMerge: { current: applyRemoteBookMerge },
       removeBookLocally: { current: removeBookLocally },
+      leavedBookIds: { current: new Set<string>() },
     };
   }
 
