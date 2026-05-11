@@ -142,9 +142,9 @@ test.describe('Reader book sharing', () => {
       await waitForSignedIn(pageB, userB.uid);
 
       // Wait for the shared book to appear
-      await expect(
-        pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 }),
-      ).toBeVisible({ timeout: 25_000 });
+      await expect(pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 })).toBeVisible({
+        timeout: 25_000,
+      });
 
       // Open the share modal as user B
       await pageB.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();

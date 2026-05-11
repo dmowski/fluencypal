@@ -36,7 +36,9 @@ export const BooksList = () => {
   const auth = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
   const [shareBookId, setShareBookId] = useState<string | null>(null);
-  const shareBook = shareBookId ? books.usersBooks.find((b) => b.id === shareBookId) ?? null : null;
+  const shareBook = shareBookId
+    ? (books.usersBooks.find((b) => b.id === shareBookId) ?? null)
+    : null;
   const fileInputRef = useRef<HTMLInputElement>(null);
   const reimportFileInputRef = useRef<HTMLInputElement>(null);
   const [reimportTargetBookId, setReimportTargetBookId] = useState<string | null>(null);
@@ -105,7 +107,6 @@ export const BooksList = () => {
   };
 
   const handleShare = (book: Book) => {
-
     setShareBookId(book.id);
   };
 
@@ -228,13 +229,13 @@ export const BooksList = () => {
             currentUserEmail={auth.userInfo?.email ?? null}
             getToken={auth.getToken}
             onShare={(userId, email) => {
-                // Store the owner's own email in memberEmails so non-owners can display it.
-                const ownerEmail = auth.userInfo?.email?.toLowerCase();
-                if (ownerEmail && auth.uid && !shareBook.memberEmails?.[auth.uid]) {
-                  books.storeMemberEmail(shareBook.id, auth.uid, ownerEmail);
-                }
-                books.shareBook(shareBook.id, userId, email);
-              }}
+              // Store the owner's own email in memberEmails so non-owners can display it.
+              const ownerEmail = auth.userInfo?.email?.toLowerCase();
+              if (ownerEmail && auth.uid && !shareBook.memberEmails?.[auth.uid]) {
+                books.storeMemberEmail(shareBook.id, auth.uid, ownerEmail);
+              }
+              books.shareBook(shareBook.id, userId, email);
+            }}
             onRemoveUser={(userId) => books.removeUserFromBook(shareBook.id, userId)}
           />
         )}

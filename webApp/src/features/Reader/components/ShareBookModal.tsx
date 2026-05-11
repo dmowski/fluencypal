@@ -236,11 +236,7 @@ export const ShareBookModal = ({
                 </Typography>
               )}
               {status.kind === 'error' && (
-                <Typography
-                  variant="caption"
-                  color="error"
-                  data-testid="share-error-message"
-                >
+                <Typography variant="caption" color="error" data-testid="share-error-message">
                   {status.message}
                 </Typography>
               )}
