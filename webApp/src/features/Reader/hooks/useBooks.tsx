@@ -107,6 +107,26 @@ const useBooksState = () => {
     setActiveBookId(bookId);
   };
 
+  // Like updateBook but does NOT navigate to the book. For metadata-only changes
+  // (e.g. sharing) where navigation is undesired.
+  const patchBook = (
+    bookId: string,
+    updates: Partial<Book> | ((currentBook: Book) => Partial<Book>),
+  ) => {
+    setUsersBooks((prevBooks) => {
+      let updatedBook: Book | null = null;
+      const nextBooks = prevBooks.map((book) => {
+        if (book.id !== bookId) return book;
+        updatedBook = resolveBookUpdate(book, updates);
+        return updatedBook;
+      });
+      if (updatedBook) {
+        void persistUserBook(updatedBook);
+      }
+      return nextBooks;
+    });
+  };
+
   const reimportBook = (
     bookId: string,
     {
@@ -256,6 +276,33 @@ const useBooksState = () => {
     });
   };
 
+  const shareBook = (bookId: string, userId: string, email: string) => {
+    patchBook(bookId, (book) => ({
+      userIds: [...new Set([...(book.userIds ?? []), userId])],
+      memberEmails: { ...(book.memberEmails ?? {}), [userId]: email },
+    }));
+  };
+
+  const removeUserFromBook = (bookId: string, userId: string) => {
+    patchBook(bookId, (book) => {
+      const emails = { ...(book.memberEmails ?? {}) };
+      delete emails[userId];
+      return {
+        userIds: (book.userIds ?? []).filter((id) => id !== userId),
+        memberEmails: emails,
+      };
+    });
+  };
+
+  // Record an email for a known member without changing the membership list.
+  // Used to lazily persist the owner's own email into memberEmails so that
+  // other members can display it later.
+  const storeMemberEmail = (bookId: string, userId: string, email: string) => {
+    patchBook(bookId, (book) => ({
+      memberEmails: { ...(book.memberEmails ?? {}), [userId]: email },
+    }));
+  };
+
   return {
     active,
     activePage: active?.activePageIndex ?? 1,
@@ -270,6 +317,9 @@ const useBooksState = () => {
     usersBooks,
     applyRemoteBookMerge,
     removeBookLocally,
+    shareBook,
+    removeUserFromBook,
+    storeMemberEmail,
   };
 };
 

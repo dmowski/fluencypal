@@ -35,6 +35,8 @@ export interface ReaderBookDoc {
   // per-user documents written before sharing was introduced.
   ownerUserId?: string;
   userIds?: string[];
+  // Maps userId → email for all known members (owner + collaborators).
+  memberEmails?: Record<string, string>;
   // Denormalized array of all members: [ownerUserId, ...userIds].
   // Used as the query target for `where('memberIds', 'array-contains', uid)`
   // so the /books root collection can be efficiently subscribed to per-user.

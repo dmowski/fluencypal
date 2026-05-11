@@ -7,7 +7,7 @@ import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
-import { CirclePlus, Download, MoreVertical, RefreshCw, Trash2 } from 'lucide-react';
+import { CirclePlus, Download, MoreVertical, RefreshCw, Share2, Trash2 } from 'lucide-react';
 
 export const BookCard = ({
   data,
@@ -15,17 +15,19 @@ export const BookCard = ({
   onDelete,
   onDownloadFromBlob,
   onReimport,
+  onShare,
 }: {
   data: Book;
   onClick: (data: Book) => void;
   onDelete?: (data: Book) => void;
   onDownloadFromBlob?: (data: Book) => Promise<void> | void;
   onReimport?: (data: Book) => void;
+  onShare?: (data: Book) => void;
 }) => {
   const i18n = useLingui();
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const canDownload = Boolean(data.originalFile || data.originalFileBlobPath);
-  const hasMenuItems = Boolean(onDelete || canDownload || onReimport);
+  const hasMenuItems = Boolean(onDelete || canDownload || onReimport || onShare);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -95,6 +97,18 @@ export const BookCard = ({
             onClick={(e) => e.stopPropagation()}
             slotProps={{ paper: { sx: { minWidth: '160px' } } }}
           >
+            {onShare && (
+              <MenuItem
+                data-testid={`book-share-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onShare(data);
+                }}
+              >
+                <Share2 size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Share')}
+              </MenuItem>
+            )}
             {onReimport && (
               <MenuItem
                 data-testid={`book-reimport-${data.id}`}

@@ -64,6 +64,14 @@ export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Bo
       changed = true;
     }
   }
+  if (remote.memberEmails !== undefined) {
+    const remoteEmails = JSON.stringify(remote.memberEmails);
+    const localEmails = JSON.stringify(local.memberEmails ?? {});
+    if (remoteEmails !== localEmails) {
+      merged.memberEmails = remote.memberEmails;
+      changed = true;
+    }
+  }
 
   // Reading position is intentionally NOT synced — it lives in BookLocalProgress
   // (IndexedDB only). The remote schema no longer carries these fields.
@@ -103,6 +111,7 @@ export const buildStubBookFromRemote = (remote: ReaderBookDoc): Book => ({
   originalFileBlobPath: remote.originalFileBlobPath,
   ownerUserId: remote.ownerUserId,
   userIds: remote.userIds,
+  memberEmails: remote.memberEmails,
 });
 
 /**
@@ -134,6 +143,7 @@ export const buildRemoteDocFromLocal = (
   if (local.originalFileBlobPath) doc.originalFileBlobPath = local.originalFileBlobPath;
   if (local.ownerUserId !== undefined) doc.ownerUserId = local.ownerUserId;
   if (local.userIds !== undefined) doc.userIds = local.userIds;
+  if (local.memberEmails !== undefined) doc.memberEmails = local.memberEmails;
   // Keep memberIds in sync so per-user collection queries work.
   if (local.ownerUserId !== undefined) {
     doc.memberIds = [local.ownerUserId, ...(local.userIds ?? [])];

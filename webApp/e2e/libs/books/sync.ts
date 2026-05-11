@@ -16,6 +16,10 @@ export interface RemoteReaderBookDoc {
   highlightsUpdatedAtIso?: string | null;
   readingPosition?: unknown;
   dataUpdatedAtIso?: string | null;
+  ownerUserId?: string | null;
+  userIds?: string[];
+  memberIds?: string[];
+  memberEmails?: Record<string, string>;
 }
 
 const decodeFirestoreValue = (value: any): any => {

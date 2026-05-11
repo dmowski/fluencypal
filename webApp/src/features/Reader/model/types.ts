@@ -47,6 +47,9 @@ export interface Book extends BookLocalProgress {
   // (not including the owner). Optional because local-only books predate sharing.
   ownerUserId?: string;
   userIds?: string[];
+  // Maps userId → email for all known members (owner + collaborators).
+  // Populated lazily when the owner first opens the Share modal.
+  memberEmails?: Record<string, string>;
 
   // Pointers into Firebase Storage (only set once the book has been synced).
   paragraphsBlobPath?: string;

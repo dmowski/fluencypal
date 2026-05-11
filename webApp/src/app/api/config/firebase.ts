@@ -185,6 +185,26 @@ const deleteAuthUser = async (uid: string): Promise<void> => {
   await getAuth().deleteUser(uid);
 };
 
+const getUserByEmail = async (email: string): Promise<UserInfo | null> => {
+  try {
+    const userRecord = await getAuth().getUserByEmail(email);
+    return {
+      uid: userRecord.uid,
+      displayName: userRecord.displayName,
+      email: userRecord.email,
+      phoneNumber: userRecord.phoneNumber,
+      photoURL: userRecord.photoURL,
+      disabled: userRecord.disabled,
+    };
+  } catch (error: any) {
+    if (error?.code === 'auth/user-not-found') {
+      return null;
+    }
+    console.error('Error fetching user by email', error);
+    return null;
+  }
+};
+
 const listRecentAuthUsers = async (
   limit: number,
 ): Promise<{ uid: string; email: string | null; createdAtIso: string | null }[]> => {
@@ -210,6 +230,7 @@ export {
   firebaseConfig,
   getDB,
   deleteAuthUser,
+  getUserByEmail,
   validateAuthToken,
   getAuthUser,
   updateAuthUser,

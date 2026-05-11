@@ -8,20 +8,6 @@
 
 ===========
 
-Not, let's implement share book modal.
-On my books list menu (BookCard) (webApp/src/features/Reader/components/BooksList.tsx) add menu "Share"
-when user click on it, we see list of user's emails
-(We need too update data model of books to keep map of user ids with emails.)
-On this popup, we see list of users, who is owner. And input to enter a new user email.
-Please create an endpoint that returns user id by user email or null.
-sanitize user email. in all cases do .toLowerCase().
-
-When user inter a new email, and press on "Share", we need to show loader and if user exists, update document, and show confirmation that user is now has that book. If there's no such user, show error message that before sharing book with user, you need invite user to the app and they need to login. Think about UX on how better to do it.
-
-Oh, in this popup we should be able to remove users if we owner, if we are not owners, just hide this control(s).
-
-===========
-
 Update delete books handling.
 We have case, when the books is shared with others.
 In case when there's only one user, just confirm deletion and remove, as is.
@@ -32,6 +18,10 @@ If I am owner, show custom confirmation, that deletion will remove the book from
 Show button "Delete for all", and "Open sharing settings" (to re-assign owner). And implement logic of reassigning ownership. Write e2e for that cases.
 
 webApp/src/features/Reader/components/BooksList.tsx
+
+Before writing e2e, think about architecture of e2e for these cases. You can update our e2e libs to make it easy to tests these cases.
+
+After finishing with e2e, stabilize the.
 
 ===========
 

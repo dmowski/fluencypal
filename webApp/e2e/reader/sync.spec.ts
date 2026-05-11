@@ -38,13 +38,22 @@ test.describe('Reader sync against Firebase emulator', () => {
     const user = await createEmulatorTestUser();
     await signInOnSeededReader(page, user);
 
-    const remote = await waitForRemoteReaderBooksCount(user.uid, 1);
-    expect(remote[0].id).toBe(GATSBY_BOOK_ID);
-    expect(remote[0].title).toBe(BOOK_TITLE);
-    expect(typeof remote[0].paragraphsBlobPath).toBe('string');
-    expect(remote[0].paragraphsBlobPath).toContain(`books/${GATSBY_BOOK_ID}/`);
+    await waitForRemoteReaderBooksCount(user.uid, 1);
 
-    await waitForParagraphsBlob(remote[0].paragraphsBlobPath as string);
+    // The initial Firestore write precedes the blob upload; wait until the
+    // paragraphsBlobPath is populated (second write, after upload completes).
+    const remoteWithBlob = await waitForRemoteBookField(
+      user.uid,
+      GATSBY_BOOK_ID,
+      'paragraphsBlobPath',
+      (value) => typeof value === 'string' && value.length > 0,
+      { timeoutMs: 30_000 },
+    );
+    expect(remoteWithBlob.id).toBe(GATSBY_BOOK_ID);
+    expect(remoteWithBlob.title).toBe(BOOK_TITLE);
+    expect(remoteWithBlob.paragraphsBlobPath).toContain(`books/${GATSBY_BOOK_ID}/`);
+
+    await waitForParagraphsBlob(remoteWithBlob.paragraphsBlobPath as string);
   });
 
   test('creating a highlight pushes the highlight payload to Firestore', async ({ page }) => {

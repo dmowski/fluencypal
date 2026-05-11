@@ -24,6 +24,7 @@ import {
 import { useUrlState } from '@/features/Url/useUrlState';
 import { ReaderSignInModal } from './ReaderSignInModal';
 import { ReaderAuthButton } from './ReaderAuthButton';
+import { ShareBookModal } from './ShareBookModal';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
 
@@ -34,6 +35,8 @@ export const BooksList = () => {
   const sync = useBooksSync();
   const auth = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useUrlState('profile', false, false);
+  const [shareBookId, setShareBookId] = useState<string | null>(null);
+  const shareBook = shareBookId ? books.usersBooks.find((b) => b.id === shareBookId) ?? null : null;
   const fileInputRef = useRef<HTMLInputElement>(null);
   const reimportFileInputRef = useRef<HTMLInputElement>(null);
   const [reimportTargetBookId, setReimportTargetBookId] = useState<string | null>(null);
@@ -99,6 +102,11 @@ export const BooksList = () => {
   const handleDelete = (book: Book) => {
     if (!window.confirm(i18n._('Delete this book?'))) return;
     books.deleteBook(book);
+  };
+
+  const handleShare = (book: Book) => {
+
+    setShareBookId(book.id);
   };
 
   const handleDownloadFromBlob = async (book: Book) => {
@@ -211,6 +219,26 @@ export const BooksList = () => {
 
         <ReaderSignInModal open={isProfileOpen} onClose={() => void setIsProfileOpen(false)} />
 
+        {shareBook && (
+          <ShareBookModal
+            book={shareBook}
+            open={Boolean(shareBookId)}
+            onClose={() => setShareBookId(null)}
+            currentUserUid={auth.uid}
+            currentUserEmail={auth.userInfo?.email ?? null}
+            getToken={auth.getToken}
+            onShare={(userId, email) => {
+                // Store the owner's own email in memberEmails so non-owners can display it.
+                const ownerEmail = auth.userInfo?.email?.toLowerCase();
+                if (ownerEmail && auth.uid && !shareBook.memberEmails?.[auth.uid]) {
+                  books.storeMemberEmail(shareBook.id, auth.uid, ownerEmail);
+                }
+                books.shareBook(shareBook.id, userId, email);
+              }}
+            onRemoveUser={(userId) => books.removeUserFromBook(shareBook.id, userId)}
+          />
+        )}
+
         <Stack sx={{ gap: '12px' }}>
           <Typography variant="h4">{i18n._('My books')}</Typography>
 
@@ -239,6 +267,7 @@ export const BooksList = () => {
                 onDelete={handleDelete}
                 onDownloadFromBlob={handleDownloadFromBlob}
                 onReimport={handleReimportClick}
+                onShare={auth.isAuthorized ? handleShare : undefined}
               />
             ))}
 

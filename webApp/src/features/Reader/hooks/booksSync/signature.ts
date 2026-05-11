@@ -17,4 +17,7 @@ export const buildLocalSignature = (book: Book): string =>
     dataUpdatedAtIso: book.dataUpdatedAtIso ?? null,
     paragraphsBlobPath: book.paragraphsBlobPath ?? null,
     originalFileBlobPath: book.originalFileBlobPath ?? null,
+    ownerUserId: book.ownerUserId ?? null,
+    userIds: book.userIds ? [...book.userIds].sort() : null,
+    memberEmails: book.memberEmails ?? null,
   });
