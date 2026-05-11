@@ -9,11 +9,14 @@ export const useReaderHoverHighlight = ({
   onApplyHighlight,
   onRemoveHighlight,
   isPopoverOpen,
+  userId,
 }: {
   highlights: HighlightedText[];
   onApplyHighlight: (highlight: HighlightedText) => void;
   onRemoveHighlight: (highlight: HighlightedText) => void;
   isPopoverOpen: boolean;
+  /** UID of the currently logged-in user, or undefined if anonymous. */
+  userId?: string;
 }) => {
   const hoveredWordRef = useRef<ReaderParagraphHoverPayload | null>(null);
   const highlightsRef = useRef(highlights);
@@ -41,6 +44,7 @@ export const useReaderHoverHighlight = ({
         startIndex,
         endIndex,
         color,
+        userId,
         paragraphHighlights,
         onApplyHighlight,
         onRemoveHighlight,
@@ -49,7 +53,7 @@ export const useReaderHoverHighlight = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onApplyHighlight, onRemoveHighlight, isPopoverOpen]);
+  }, [onApplyHighlight, onRemoveHighlight, isPopoverOpen, userId]);
 
   const onWordHoverInfo = useCallback((payload: ReaderParagraphHoverPayload) => {
     hoveredWordRef.current = payload;

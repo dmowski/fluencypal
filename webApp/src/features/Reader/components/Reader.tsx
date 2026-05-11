@@ -28,12 +28,15 @@ import { findTargetPageForWordAnchor } from '../utils/readerPageAnchor';
 import { deriveReadingPositionFromPages } from '../utils/deriveReadingPositionFromPages';
 import { resolveReadingPositionToPage } from '../utils/resolveReadingPositionToPage';
 import { useLingui } from '@lingui/react';
+import { useAuth } from '@/features/Auth/useAuth';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
 export const Reader = ({ data }: { data: Book }) => {
   const books = useBooks();
   const readerSettings = useReaderSettings();
+  const { uid, isAuthorized } = useAuth();
+  const userId = isAuthorized ? uid : undefined;
   const { activePage: storedActivePage, setActivePage } = books;
   const pageStep = readerSettings.columns;
   const isTwoColumnLayout = readerSettings.columns === 2;
@@ -163,6 +166,7 @@ export const Reader = ({ data }: { data: Book }) => {
     targetLanguage: readerSettings.translateToLanguage,
     paragraphs: data.paragraphs,
     highlights: data.highlights ?? [],
+    userId,
     onApplyHighlight: books.applySelectedHighlight,
     onRemoveHighlight: books.removeHighlight,
   });
@@ -179,6 +183,7 @@ export const Reader = ({ data }: { data: Book }) => {
     onApplyHighlight: books.applySelectedHighlight,
     onRemoveHighlight: books.removeHighlight,
     isPopoverOpen: !!activePopover,
+    userId,
   });
 
   const closeReader = () => books.setActive(null);

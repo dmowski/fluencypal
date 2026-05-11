@@ -13,6 +13,7 @@ export const applyHighlightColor = ({
   startIndex,
   endIndex,
   color,
+  userId,
   paragraphHighlights,
   onApplyHighlight,
   onRemoveHighlight,
@@ -21,6 +22,8 @@ export const applyHighlightColor = ({
   startIndex: number;
   endIndex: number;
   color: string;
+  /** The UID of the user creating the highlight, if logged in. */
+  userId?: string;
   /** All highlights that belong to the same paragraph. */
   paragraphHighlights: HighlightedText[];
   onApplyHighlight: (highlight: HighlightedText) => void;
@@ -38,5 +41,5 @@ export const applyHighlightColor = ({
   );
   overlapping.forEach((h) => onRemoveHighlight(h));
 
-  onApplyHighlight({ paragraphIndex, startIndex, endIndex, color });
+  onApplyHighlight({ paragraphIndex, startIndex, endIndex, color, userId });
 };

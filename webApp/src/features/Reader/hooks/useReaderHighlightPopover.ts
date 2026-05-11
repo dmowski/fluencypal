@@ -27,6 +27,7 @@ export const useReaderHighlightPopover = ({
   targetLanguage,
   paragraphs,
   highlights,
+  userId,
   onApplyHighlight,
   onRemoveHighlight,
 }: {
@@ -34,6 +35,8 @@ export const useReaderHighlightPopover = ({
   targetLanguage: NativeLangCode | null;
   paragraphs: string[][];
   highlights: HighlightedText[];
+  /** UID of the currently logged-in user, or undefined if anonymous. */
+  userId?: string;
   onApplyHighlight: (highlight: HighlightedText) => void;
   onRemoveHighlight: (highlight: HighlightedText) => void;
 }) => {
@@ -205,6 +208,7 @@ export const useReaderHighlightPopover = ({
         startIndex: selectionForApply.startIndex,
         endIndex: selectionForApply.endIndex,
         color,
+        userId,
         paragraphHighlights: activeParagraphHighlights,
         onApplyHighlight,
         onRemoveHighlight,
@@ -220,6 +224,7 @@ export const useReaderHighlightPopover = ({
       onApplyHighlight,
       onRemoveHighlight,
       paragraphs,
+      userId,
     ],
   );
 
