@@ -39,6 +39,10 @@ export const enableTranslateOnHover = async (page: Page) => {
   const translateOnHover = page.getByRole('checkbox', { name: 'Translate on Hover' });
   await expect(translateOnHover).toBeVisible();
   await translateOnHover.check();
+  // Wait for the settings panel debounce (350 ms) to persist the setting before
+  // the caller closes the popover and unmounts the panel — otherwise the debounce
+  // timer is cancelled mid-flight and the setting is never saved.
+  await page.waitForTimeout(400);
 };
 
 export const enableVoiceOverSelectedText = async (page: Page) => {
