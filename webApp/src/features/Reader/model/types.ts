@@ -12,7 +12,22 @@ export interface BookChapterNavigationItem {
   children: BookChapterNavigationItem[];
 }
 
-export interface Book {
+// Device-local reading progress. Stored in IndexedDB only. Never synced to
+// remote. Kept as a standalone interface so it is clear at the type level that
+// these fields are never pushed to Firestore or shared between users.
+export interface BookLocalProgress {
+  // Content-anchored reading position. Synced across devices; the active page
+  // is re-derived locally from this anchor because page indices depend on
+  // device-local layout (font size, columns, viewport, image aspect ratios).
+  readingPosition?: ReadingPosition;
+  readingPositionUpdatedAtIso?: string;
+
+  // Device-local cache of the last active page for instant restore on the same
+  // device/layout. NOT synced — derived from `readingPosition` on other devices.
+  activePageIndex?: number;
+}
+
+export interface Book extends BookLocalProgress {
   id: string;
   paragraphs: BookParagraph[];
   title: string;
@@ -28,15 +43,10 @@ export interface Book {
   highlights?: HighlightedText[];
   highlightsUpdatedAtIso?: string;
 
-  // Content-anchored reading position. Synced across devices; the active page
-  // is re-derived locally from this anchor because page indices depend on
-  // device-local layout (font size, columns, viewport, image aspect ratios).
-  readingPosition?: ReadingPosition;
-  readingPositionUpdatedAtIso?: string;
-
-  // Device-local cache of the last active page for instant restore on the same
-  // device/layout. NOT synced — derived from `readingPosition` on other devices.
-  activePageIndex?: number;
+  // Sharing. ownerUserId is the creator; userIds holds additional collaborators
+  // (not including the owner). Optional because local-only books predate sharing.
+  ownerUserId?: string;
+  userIds?: string[];
 
   // Pointers into Firebase Storage (only set once the book has been synced).
   paragraphsBlobPath?: string;
@@ -49,6 +59,8 @@ export interface HighlightedText {
   endIndex: number;
   color: string;
   note?: string;
+  // Which user created this highlight. Needed for shared books.
+  userId?: string;
 }
 
 export interface ReadingPosition {

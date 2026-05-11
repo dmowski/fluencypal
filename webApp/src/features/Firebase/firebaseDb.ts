@@ -119,8 +119,7 @@ export const db = {
     progressStats: (userId?: string) =>
       userId ? dataPointCollection<ProgressStat>(`users/${userId}/progressStats`) : null,
 
-    readerBooks: (userId?: string) =>
-      userId ? dataPointCollection<ReaderBookDoc>(`users/${userId}/readerBooks`) : null,
+    readerBooks: () => dataPointCollection<ReaderBookDoc>(`books`),
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -204,9 +203,7 @@ export const db = {
         ? dataPointDoc<ProgressStat>(`users/${userId}/progressStats/${statId}`)
         : null,
 
-    readerBook: (userId?: string, bookId?: string) =>
-      userId && bookId
-        ? dataPointDoc<ReaderBookDoc>(`users/${userId}/readerBooks/${bookId}`)
-        : null,
+    readerBook: (bookId?: string) =>
+      bookId ? dataPointDoc<ReaderBookDoc>(`books/${bookId}`) : null,
   },
 };

@@ -1,40 +1,45 @@
 rules_version = '2';
 
-// Craft rules based on data in your Firestore database
-// allow write: if firestore.get(
-//    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
 service firebase.storage {
   match /b/{bucket}/o {
 
-    // This rule allows anyone with your Storage bucket reference to view, edit,
-    // and delete all data in your Storage bucket. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Storage bucket will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Storage bucket will be denied until you Update
-    // your rules
     match /{allPaths=**} {
       allow read, write: if false;
     }
-    
+
     match /publicImages/{imageId} {
       allow read: if true;
     }
-    
+
     match /publicVideo/{videoId} {
       allow read: if true;
     }
 
-    // Reader feature: per-user book blobs (paragraphs.json.gz, original.epub).
-    // Strictly scoped to the owning user. Soft-cap writes at 25 MB to limit abuse.
-    match /users/{userId}/reader/{bookId}/{fileName=**} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow write: if request.auth != null
-        && request.auth.uid == userId
+    // Shared-books blob storage.
+    // Access is governed by the /books/{bookId} Firestore document:
+    //   - Any member (ownerUserId or userIds) may read and write blobs.
+    //   - Only the owner may delete.
+    //
+    // Writes are capped at 25 MB to limit abuse.
+    match /books/{bookId}/{fileName=**} {
+      function bookDoc() {
+        return firestore.get(/databases/(default)/documents/books/$(bookId)).data;
+      }
+
+      function isMember() {
+        return request.auth != null && (
+          bookDoc().ownerUserId == request.auth.uid ||
+          request.auth.uid in bookDoc().userIds
+        );
+      }
+
+      allow read: if isMember();
+
+      allow write: if isMember()
         && request.resource.size < 25 * 1024 * 1024;
-      allow delete: if request.auth != null && request.auth.uid == userId;
+
+      allow delete: if request.auth != null
+        && bookDoc().ownerUserId == request.auth.uid;
     }
   }
 }

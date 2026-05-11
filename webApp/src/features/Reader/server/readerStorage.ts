@@ -3,25 +3,20 @@ import { storage } from '@/features/Firebase/init';
 import { BookParagraph } from '../model/types';
 import { gzipDecodeBytes, gzipEncodeText, supportsGzipCodec } from './gzipCodec';
 
-export const buildParagraphsBlobPath = (userId: string, bookId: string): string =>
-  `users/${userId}/reader/${bookId}/paragraphs.json.gz`;
+export const buildParagraphsBlobPath = (bookId: string): string =>
+  `books/${bookId}/paragraphs.json.gz`;
 
-export const buildOriginalFileBlobPath = (
-  userId: string,
-  bookId: string,
-  fileName: string,
-): string => `users/${userId}/reader/${bookId}/${encodeURIComponent(fileName)}`;
+export const buildOriginalFileBlobPath = (bookId: string, fileName: string): string =>
+  `books/${bookId}/${encodeURIComponent(fileName)}`;
 
 export const uploadParagraphsBlob = async ({
-  userId,
   bookId,
   paragraphs,
 }: {
-  userId: string;
   bookId: string;
   paragraphs: BookParagraph[];
 }): Promise<{ path: string; size: number }> => {
-  const path = buildParagraphsBlobPath(userId, bookId);
+  const path = buildParagraphsBlobPath(bookId);
   const encoded = await gzipEncodeText(JSON.stringify(paragraphs));
   const ref = storageRef(storage, path);
   await uploadBytes(ref, encoded, {
@@ -32,13 +27,11 @@ export const uploadParagraphsBlob = async ({
 };
 
 export const downloadParagraphsBlob = async ({
-  userId,
   bookId,
 }: {
-  userId: string;
   bookId: string;
 }): Promise<BookParagraph[] | null> => {
-  const path = buildParagraphsBlobPath(userId, bookId);
+  const path = buildParagraphsBlobPath(bookId);
   const ref = storageRef(storage, path);
   try {
     const blob = await getBlob(ref);
@@ -53,15 +46,13 @@ export const downloadParagraphsBlob = async ({
 };
 
 export const uploadOriginalFileBlob = async ({
-  userId,
   bookId,
   file,
 }: {
-  userId: string;
   bookId: string;
   file: File;
 }): Promise<string> => {
-  const path = buildOriginalFileBlobPath(userId, bookId, file.name);
+  const path = buildOriginalFileBlobPath(bookId, file.name);
   const ref = storageRef(storage, path);
   await uploadBytes(ref, file, { contentType: file.type || 'application/octet-stream' });
   return path;

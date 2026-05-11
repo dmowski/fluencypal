@@ -2,6 +2,10 @@
 
 ## Reader
 
+- When we do resize, change color of temporary highlight to red, to make it more visible
+
+- Shared books
+
 - Setup domain book.fluencypal.com
 
 - Fix _long paragraph italic text on separate pages_

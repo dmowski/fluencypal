@@ -51,9 +51,22 @@ export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Bo
     changed = true;
   }
 
-  // Reading position is intentionally NOT synced — it's a per-device cache.
-  // (Previously LWW-merged here, but cross-device live progress updates are
-  // unwanted UX.)
+  // Sharing metadata — always adopt from remote (owner manages the list).
+  if (remote.ownerUserId !== undefined && remote.ownerUserId !== local.ownerUserId) {
+    merged.ownerUserId = remote.ownerUserId;
+    changed = true;
+  }
+  if (remote.userIds !== undefined) {
+    const remoteIds = JSON.stringify([...remote.userIds].sort());
+    const localIds = JSON.stringify([...(local.userIds ?? [])].sort());
+    if (remoteIds !== localIds) {
+      merged.userIds = remote.userIds;
+      changed = true;
+    }
+  }
+
+  // Reading position is intentionally NOT synced — it lives in BookLocalProgress
+  // (IndexedDB only). The remote schema no longer carries these fields.
 
   // Storage pointers — adopt latest if the remote knows about them.
   if (remote.paragraphsBlobPath && remote.paragraphsBlobPath !== local.paragraphsBlobPath) {
@@ -83,11 +96,13 @@ export const buildStubBookFromRemote = (remote: ReaderBookDoc): Book => ({
   paragraphs: [],
   highlights: remote.highlights,
   highlightsUpdatedAtIso: remote.highlightsUpdatedAtIso,
-  // Reading position is intentionally not hydrated from remote — see
-  // `mergeRemoteBookIntoLocal` above.
+  // Reading position (BookLocalProgress) is intentionally not hydrated from
+  // remote — it lives in IndexedDB only.
   dataUpdatedAtIso: remote.dataUpdatedAtIso,
   paragraphsBlobPath: remote.paragraphsBlobPath,
   originalFileBlobPath: remote.originalFileBlobPath,
+  ownerUserId: remote.ownerUserId,
+  userIds: remote.userIds,
 });
 
 /**
@@ -113,9 +128,15 @@ export const buildRemoteDocFromLocal = (
   }
   if (local.highlights !== undefined) doc.highlights = local.highlights;
   if (local.highlightsUpdatedAtIso) doc.highlightsUpdatedAtIso = local.highlightsUpdatedAtIso;
-  // Reading position stays local — do not write to Firestore.
+  // Reading position stays local (BookLocalProgress) — do not write to Firestore.
   if (local.dataUpdatedAtIso) doc.dataUpdatedAtIso = local.dataUpdatedAtIso;
   if (local.paragraphsBlobPath) doc.paragraphsBlobPath = local.paragraphsBlobPath;
   if (local.originalFileBlobPath) doc.originalFileBlobPath = local.originalFileBlobPath;
+  if (local.ownerUserId !== undefined) doc.ownerUserId = local.ownerUserId;
+  if (local.userIds !== undefined) doc.userIds = local.userIds;
+  // Keep memberIds in sync so per-user collection queries work.
+  if (local.ownerUserId !== undefined) {
+    doc.memberIds = [local.ownerUserId, ...(local.userIds ?? [])];
+  }
   return doc;
 };

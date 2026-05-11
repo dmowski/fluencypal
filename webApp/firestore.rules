@@ -227,16 +227,57 @@ service cloud.firestore {
         allow read, write: if isUser(userId);
       }
 
-      // Allow read-write for Reader books metadata (paragraphs/originalFile
-      // are stored in Firebase Storage, not here).
-      match /readerBooks/{bookId} {
-        allow read, write: if isUser(userId);
-      }
-
       // Deny all other unspecified documents under userId by default
       match /{document=**} {
         allow read, write: if false;
       }
+    }
+
+    // Root-level shared books collection.
+    // ownerUserId is the creator; userIds holds additional collaborators.
+    // memberIds = [ownerUserId, ...userIds] — kept in sync by the client push
+    // side. Used as the query target for array-contains subscription queries.
+    match /books/{bookId} {
+
+      function isBookMember() {
+        return isSignedIn() && (
+          resource.data.ownerUserId == request.auth.uid ||
+          request.auth.uid in resource.data.userIds
+        );
+      }
+
+      function isBookOwner() {
+        return isSignedIn() && resource.data.ownerUserId == request.auth.uid;
+      }
+
+      function isBookCreator() {
+        return isSignedIn() && request.resource.data.ownerUserId == request.auth.uid;
+      }
+
+      // Single-document read: any member may access.
+      allow get: if isBookMember();
+
+      // Collection query: must use where('memberIds', 'array-contains', uid).
+      // Security rules align with that query filter.
+      allow list: if isSignedIn()
+        && request.auth.uid in resource.data.memberIds;
+
+      // Only the creator can create a new document (they set themselves as owner).
+      allow create: if isBookCreator();
+
+      // Any member can update (e.g. collaborators can save highlights).
+      // ownerUserId and userIds may only be changed by the owner.
+      allow update: if isBookMember()
+        && (
+          isBookOwner()
+          || (
+            request.resource.data.ownerUserId == resource.data.ownerUserId &&
+            request.resource.data.userIds == resource.data.userIds
+          )
+        );
+
+      // Only the owner can delete.
+      allow delete: if isBookOwner();
     }
   }
 }

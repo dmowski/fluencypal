@@ -1,12 +1,15 @@
-import { BookChapterNavigationItem, HighlightedText, ReadingPosition } from '../model/types';
+import { BookChapterNavigationItem, HighlightedText } from '../model/types';
 
 /**
- * Firestore document shape stored at `users/{uid}/readerBooks/{bookId}`.
+ * Firestore document shape stored at `books/{bookId}` (root-level collection).
  *
  * Heavy/static data (paragraphs, original EPUB file, images) is NOT stored
  * here. Those are uploaded to Firebase Storage at
- * `users/{uid}/reader/{bookId}/...` and referenced from this document via
+ * `books/{bookId}/...` and referenced from this document via
  * `paragraphsBlobPath` / `originalFileBlobPath`.
+ *
+ * Reading progress (readingPosition, activePageIndex) is intentionally absent —
+ * it is a per-device local concern stored in IndexedDB only (see BookLocalProgress).
  */
 export interface ReaderBookDoc {
   id: string;
@@ -20,15 +23,22 @@ export interface ReaderBookDoc {
   highlights?: HighlightedText[];
   highlightsUpdatedAtIso?: string;
 
-  readingPosition?: ReadingPosition;
-  readingPositionUpdatedAtIso?: string;
-
   // Bumped when title/author/subtitle/paragraphs change.
   dataUpdatedAtIso?: string;
 
   // Pointers into Firebase Storage for the heavy payloads.
   paragraphsBlobPath?: string;
   originalFileBlobPath?: string;
+
+  // Sharing. ownerUserId is the creator; userIds holds additional collaborators
+  // (not including the owner). Optional for backward-compatibility with legacy
+  // per-user documents written before sharing was introduced.
+  ownerUserId?: string;
+  userIds?: string[];
+  // Denormalized array of all members: [ownerUserId, ...userIds].
+  // Used as the query target for `where('memberIds', 'array-contains', uid)`
+  // so the /books root collection can be efficiently subscribed to per-user.
+  memberIds?: string[];
 
   schemaVersion: 1;
   createdAtIso: string;

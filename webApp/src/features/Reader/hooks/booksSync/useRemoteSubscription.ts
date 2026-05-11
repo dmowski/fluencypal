@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { onSnapshot } from 'firebase/firestore';
+import { onSnapshot, query, where } from 'firebase/firestore';
 import * as Sentry from '@sentry/nextjs';
 import { db } from '@/features/Firebase/firebaseDb';
 import { buildStubBookFromRemote, mergeRemoteBookIntoLocal } from '../booksSyncMerge';
@@ -40,14 +40,19 @@ export const useRemoteSubscription = ({
     // overwriting the local copy in IndexedDB.
     if (!isUsersBooksLoaded) return;
 
-    const collectionRef = db.collections.readerBooks(userId);
+    const collectionRef = db.collections.readerBooks();
     if (!collectionRef) return;
 
-    log('subscribing to readerBooks', { userId });
+    // Query only books where this user is a member (owner or collaborator).
+    // `memberIds` is a denormalized [ownerUserId, ...userIds] array kept in
+    // sync by the push side so this array-contains query works correctly.
+    const memberQuery = query(collectionRef, where('memberIds', 'array-contains', userId));
+
+    log('subscribing to books', { userId });
     setters.setStatus('syncing');
 
     const unsubscribe = onSnapshot(
-      collectionRef,
+      memberQuery,
       (snapshot) => {
         log('snapshot received', {
           docCount: snapshot.docs.length,

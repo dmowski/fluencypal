@@ -90,7 +90,9 @@ describe('mergeRemoteBookIntoLocal', () => {
     expect(result?.highlightsUpdatedAtIso).toBe('2025-06-01T00:00:00.000Z');
   });
 
-  it('does NOT adopt remote readingPosition (kept device-local)', () => {
+  it('does NOT sync reading position (local-only, absent from remote schema)', () => {
+    // Local book has a reading position; remote doc has no such fields (they
+    // were removed from ReaderBookDoc — see BookLocalProgress in types.ts).
     const local: Book = {
       ...baseLocal,
       activePageIndex: 7,
@@ -101,14 +103,12 @@ describe('mergeRemoteBookIntoLocal', () => {
       title: local.title,
       subtitle: local.subtitle,
       author: local.author,
-      readingPosition: { paragraphIndex: 4, wordStartCharOffset: 12, wordKey: 'cat' },
-      readingPositionUpdatedAtIso: '2025-06-01T00:00:00.000Z',
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2025-06-01T00:00:00.000Z',
     });
 
-    // Newer remote position must be ignored: position is no longer synced.
+    // No remotely-driven fields changed — result is null (no merge needed).
     expect(result).toBeNull();
   });
 });

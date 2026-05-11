@@ -43,7 +43,7 @@ export const usePushSync = ({
         return;
       }
 
-      const docRef = db.documents.readerBook(userId, book.id);
+      const docRef = db.documents.readerBook(book.id);
       if (!docRef) return;
 
       log('push start', {
@@ -68,7 +68,6 @@ export const usePushSync = ({
             paragraphCount: book.paragraphs.length,
           });
           const upload = await uploadParagraphsBlob({
-            userId,
             bookId: book.id,
             paragraphs: book.paragraphs,
           });
@@ -93,7 +92,6 @@ export const usePushSync = ({
             sizeBytes: book.originalFile.size,
           });
           originalFileBlobPath = await uploadOriginalFileBlob({
-            userId,
             bookId: book.id,
             file: book.originalFile,
           });
@@ -104,10 +102,17 @@ export const usePushSync = ({
         const nowIso = new Date().toISOString();
         const createdAtIso =
           refs.createdAtCache.current.get(book.id) ?? book.dataUpdatedAtIso ?? nowIso;
-        const remoteDoc = buildRemoteDocFromLocal(
-          { ...book, paragraphsBlobPath, originalFileBlobPath },
-          { createdAtIso, nowIso },
-        );
+        // Ensure ownerUserId is stamped on first push so memberIds is populated.
+        const bookWithOwner: Book = book.ownerUserId
+          ? { ...book, paragraphsBlobPath, originalFileBlobPath }
+          : {
+              ...book,
+              paragraphsBlobPath,
+              originalFileBlobPath,
+              ownerUserId: userId,
+              userIds: book.userIds ?? [],
+            };
+        const remoteDoc = buildRemoteDocFromLocal(bookWithOwner, { createdAtIso, nowIso });
 
         await setDoc(docRef, remoteDoc);
         log('Firestore doc written', {
@@ -119,25 +124,25 @@ export const usePushSync = ({
 
         refs.createdAtCache.current.set(book.id, createdAtIso);
         refs.knownRemoteIds.current.add(book.id);
-        refs.lastPushedSignatures.current.set(
-          book.id,
-          buildLocalSignature({ ...book, paragraphsBlobPath, originalFileBlobPath }),
-        );
+        refs.lastPushedSignatures.current.set(book.id, buildLocalSignature({ ...bookWithOwner }));
         refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
 
-        // Persist the storage pointers locally so we don't re-upload on every
-        // push. Use the freshest local copy (not the closure-captured `book`)
-        // so we don't clobber newer activePageIndex / highlight edits that
+        // Persist the storage pointers and ownerUserId locally so we don't
+        // re-upload on every push. Use the freshest local copy (not the
+        // closure-captured `book`) so we don't clobber newer edits that
         // happened during the in-flight upload.
         const latestLocal = refs.usersBooks.current.find((entry) => entry.id === book.id) ?? book;
-        if (
+        const needsLocalUpdate =
           paragraphsBlobPath !== latestLocal.paragraphsBlobPath ||
-          originalFileBlobPath !== latestLocal.originalFileBlobPath
-        ) {
+          originalFileBlobPath !== latestLocal.originalFileBlobPath ||
+          (!latestLocal.ownerUserId && bookWithOwner.ownerUserId);
+        if (needsLocalUpdate) {
           applyRemoteBookMerge(book.id, {
             ...latestLocal,
             paragraphsBlobPath,
             originalFileBlobPath,
+            ownerUserId: latestLocal.ownerUserId ?? bookWithOwner.ownerUserId,
+            userIds: latestLocal.userIds ?? bookWithOwner.userIds,
           });
         }
 
@@ -212,7 +217,7 @@ export const usePushSync = ({
     const presentIds = new Set(usersBooks.map((book) => book.id));
     refs.knownRemoteIds.current.forEach((id) => {
       if (presentIds.has(id)) return;
-      const docRef = db.documents.readerBook(userId, id);
+      const docRef = db.documents.readerBook(id);
       if (docRef) {
         void deleteDoc(docRef).catch((deleteError: unknown) => {
           Sentry.captureException(deleteError, {
@@ -222,7 +227,7 @@ export const usePushSync = ({
           errorLog('delete error', { bookId: id }, deleteError);
         });
       }
-      const paragraphsPath = `users/${userId}/reader/${id}/paragraphs.json.gz`;
+      const paragraphsPath = `books/${id}/paragraphs.json.gz`;
       void deleteBookBlob(paragraphsPath).catch((blobError: unknown) => {
         Sentry.addBreadcrumb({
           category: 'reader-sync',

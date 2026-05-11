@@ -46,7 +46,7 @@ export const useParagraphsHydration = ({
         path: active.paragraphsBlobPath,
       });
       try {
-        const paragraphs = await downloadParagraphsBlob({ userId, bookId: active.id });
+        const paragraphs = await downloadParagraphsBlob({ bookId: active.id });
         if (!paragraphs) {
           warn('paragraphs blob not found', { bookId: active.id });
           return;
