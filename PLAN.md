@@ -2,16 +2,6 @@
 
 ## Reader
 
-- Shared books: manual testing
-
-Case: Sharing modal
-Case: open the book, shared by other
-Case: Remove book, when there are no sharings
-Case: Remove book, when there are sharing, and I am an owner
-Case: Remove book, when there are sharing, and I am not an owner
-
-- When we do resize, change color of temporary highlight to red, to make it more visible
-
 ===========
 
 - Setup domain book.fluencypal.com

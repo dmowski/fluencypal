@@ -390,7 +390,7 @@ const ReaderParagraphBase = ({
                   cursor: 'pointer',
                   borderBottom: '1px dotted transparent',
                   position: 'relative',
-                  backgroundColor: isResizeAnchorWord ? 'rgba(255, 153, 0, 0.35)' : 'transparent',
+                  backgroundColor: isResizeAnchorWord ? 'rgba(234, 11, 11, 0.94)' : 'transparent',
                   borderRadius: isResizeAnchorWord ? '4px' : 0,
                   transition: 'background-color 200ms ease-out',
                   ':hover': {
