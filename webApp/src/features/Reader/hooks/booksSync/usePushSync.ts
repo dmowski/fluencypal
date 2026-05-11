@@ -62,6 +62,39 @@ export const usePushSync = ({
         let paragraphsBlobPath = book.paragraphsBlobPath;
         let originalFileBlobPath = book.originalFileBlobPath;
 
+        const nowIso = new Date().toISOString();
+        const createdAtIso =
+          refs.createdAtCache.current.get(book.id) ?? book.dataUpdatedAtIso ?? nowIso;
+
+        // Stamp ownerUserId on first push so memberIds is populated.
+        const bookWithOwner: Book = book.ownerUserId
+          ? { ...book, paragraphsBlobPath, originalFileBlobPath }
+          : {
+              ...book,
+              paragraphsBlobPath,
+              originalFileBlobPath,
+              ownerUserId: userId,
+              userIds: book.userIds ?? [],
+            };
+
+        // Write the Firestore doc FIRST (without blob paths if they don't exist
+        // yet). This establishes book membership so that subsequent Storage
+        // uploads can pass the cross-service `firestore.get()` security rule.
+        const initialDoc = buildRemoteDocFromLocal(bookWithOwner, { createdAtIso, nowIso });
+        await setDoc(docRef, initialDoc);
+        // Register in knownRemoteIds immediately after the first write so that
+        // the delete-detection code can find and remove this document if the
+        // user deletes the book locally while blobs are still uploading.
+        refs.knownRemoteIds.current.add(book.id);
+        log('Firestore doc written (initial)', {
+          bookId: book.id,
+          highlightsCount: initialDoc.highlights?.length ?? 0,
+          paragraphsBlobPath: initialDoc.paragraphsBlobPath ?? null,
+        });
+
+        // Upload blobs now that the Firestore doc exists.
+        let blobsChanged = false;
+
         if (!paragraphsBlobPath && book.paragraphs.length > 0) {
           log('uploading paragraphs blob', {
             bookId: book.id,
@@ -72,6 +105,7 @@ export const usePushSync = ({
             paragraphs: book.paragraphs,
           });
           paragraphsBlobPath = upload.path;
+          blobsChanged = true;
           log('paragraphs uploaded', {
             bookId: book.id,
             sizeBytes: upload.size,
@@ -95,36 +129,40 @@ export const usePushSync = ({
             bookId: book.id,
             file: book.originalFile,
           });
+          blobsChanged = true;
           log('original EPUB uploaded', { bookId: book.id, path: originalFileBlobPath });
           refs.knownOriginalPaths.current.set(book.id, originalFileBlobPath);
         }
 
-        const nowIso = new Date().toISOString();
-        const createdAtIso =
-          refs.createdAtCache.current.get(book.id) ?? book.dataUpdatedAtIso ?? nowIso;
-        // Ensure ownerUserId is stamped on first push so memberIds is populated.
-        const bookWithOwner: Book = book.ownerUserId
-          ? { ...book, paragraphsBlobPath, originalFileBlobPath }
-          : {
-              ...book,
-              paragraphsBlobPath,
-              originalFileBlobPath,
-              ownerUserId: userId,
-              userIds: book.userIds ?? [],
-            };
-        const remoteDoc = buildRemoteDocFromLocal(bookWithOwner, { createdAtIso, nowIso });
-
-        await setDoc(docRef, remoteDoc);
-        log('Firestore doc written', {
-          bookId: book.id,
-          highlightsCount: remoteDoc.highlights?.length ?? 0,
-          paragraphsBlobPath,
-          originalFileBlobPath,
-        });
+        // If blob paths were resolved, update the Firestore doc with them.
+        // Guard: skip if the book was deleted locally while blobs were uploading —
+        // the delete-detection code will remove the Firestore doc instead.
+        const stillExists = refs.usersBooks.current.some((b) => b.id === book.id);
+        if (blobsChanged && stillExists) {
+          const finalDoc = buildRemoteDocFromLocal(
+            { ...bookWithOwner, paragraphsBlobPath, originalFileBlobPath },
+            { createdAtIso, nowIso },
+          );
+          await setDoc(docRef, finalDoc);
+          log('Firestore doc updated with blob paths', {
+            bookId: book.id,
+            paragraphsBlobPath,
+            originalFileBlobPath,
+          });
+        } else if (blobsChanged && !stillExists) {
+          log('skipping final setDoc – book was deleted locally during blob upload', {
+            bookId: book.id,
+          });
+        }
 
         refs.createdAtCache.current.set(book.id, createdAtIso);
-        refs.knownRemoteIds.current.add(book.id);
-        refs.lastPushedSignatures.current.set(book.id, buildLocalSignature({ ...bookWithOwner }));
+        // knownRemoteIds was already updated right after the first setDoc above.
+        // Include resolved blob paths in the stored signature so the effect
+        // does not see a stale mismatch and schedule a redundant second push.
+        refs.lastPushedSignatures.current.set(
+          book.id,
+          buildLocalSignature({ ...bookWithOwner, paragraphsBlobPath, originalFileBlobPath }),
+        );
         refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
 
         // Persist the storage pointers and ownerUserId locally so we don't

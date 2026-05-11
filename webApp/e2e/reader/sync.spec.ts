@@ -42,7 +42,7 @@ test.describe('Reader sync against Firebase emulator', () => {
     expect(remote[0].id).toBe(GATSBY_BOOK_ID);
     expect(remote[0].title).toBe(BOOK_TITLE);
     expect(typeof remote[0].paragraphsBlobPath).toBe('string');
-    expect(remote[0].paragraphsBlobPath).toContain(`users/${user.uid}/reader/${GATSBY_BOOK_ID}/`);
+    expect(remote[0].paragraphsBlobPath).toContain(`books/${GATSBY_BOOK_ID}/`);
 
     await waitForParagraphsBlob(remote[0].paragraphsBlobPath as string);
   });
@@ -81,16 +81,17 @@ test.describe('Reader sync against Firebase emulator', () => {
 
     await waitForRemoteReaderBooksCount(user.uid, 1);
 
-    // Return to the books list and delete Gatsby via the trash icon on its card.
-    await page.goto('/book');
+    // Navigate back to the books list using the in-reader close button so the
+    // page does NOT fully reload (a full reload via page.goto would re-run
+    // addInitScript, wiping localStorage and logging the user out).
+    await page.getByRole('button', { name: 'Back to books' }).click();
     const gatsbyHeading = page.getByRole('heading', { name: BOOK_TITLE, level: 4 });
     await expect(gatsbyHeading).toBeVisible();
 
+    // Open the book's options menu, then click Delete and accept the confirm dialog.
+    await page.getByRole('button', { name: 'Book options' }).click();
     page.once('dialog', (dialog) => dialog.accept());
-    // The card root is the closest ancestor containing the heading; the trash
-    // icon is the only button inside the card when there is no original file.
-    const cardRoot = gatsbyHeading.locator('xpath=ancestor::*[self::div][1]');
-    await cardRoot.getByRole('button').first().click();
+    await page.getByRole('menuitem', { name: 'Delete' }).click();
 
     await waitForRemoteReaderBooksCount(user.uid, 0);
   });

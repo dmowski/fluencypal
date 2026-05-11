@@ -41,25 +41,42 @@ const decodeFirestoreValue = (value: any): any => {
 };
 
 /**
- * List remote reader books for a user via the Firestore REST API. Used to
- * verify that the local sync hook actually wrote to the emulator.
+ * List remote reader books for a user via the Firestore REST API. Uses a
+ * runQuery with an ARRAY_CONTAINS filter on `memberIds` to match the new
+ * root-level /books collection (where the client queries with
+ * `where('memberIds', 'array-contains', uid)`).
  */
 export const listRemoteReaderBooks = async (uid: string): Promise<RemoteReaderBookDoc[]> => {
-  const url = `${FIRESTORE_EMULATOR_HOST}/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents/users/${uid}/readerBooks`;
-  const response = await fetch(url, { headers: EMULATOR_OWNER_HEADERS });
+  const url = `${FIRESTORE_EMULATOR_HOST}/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents:runQuery`;
+  const body = {
+    structuredQuery: {
+      from: [{ collectionId: 'books' }],
+      where: {
+        fieldFilter: {
+          field: { fieldPath: 'memberIds' },
+          op: 'ARRAY_CONTAINS',
+          value: { stringValue: uid },
+        },
+      },
+    },
+  };
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { ...EMULATOR_OWNER_HEADERS, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
   if (!response.ok) {
-    if (response.status === 404) return [];
     throw new Error(`listRemoteReaderBooks failed: ${response.status} ${await response.text()}`);
   }
-  const json = (await response.json()) as { documents?: any[] };
-  const docs = json.documents ?? [];
-  return docs.map((doc) => {
-    const decoded = decodeFirestoreValue({ mapValue: { fields: doc.fields ?? {} } }) as Record<
-      string,
-      unknown
-    >;
-    return decoded as unknown as RemoteReaderBookDoc;
-  });
+  const json = (await response.json()) as Array<{ document?: any }>;
+  return json
+    .filter((entry) => entry.document != null)
+    .map((entry) => {
+      const decoded = decodeFirestoreValue({
+        mapValue: { fields: entry.document.fields ?? {} },
+      }) as Record<string, unknown>;
+      return decoded as unknown as RemoteReaderBookDoc;
+    });
 };
 
 export const waitForRemoteReaderBooksCount = async (

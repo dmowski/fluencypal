@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 export const BackButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <IconButton
+      aria-label="Back to books"
       onClick={onClick}
       sx={{
         position: 'fixed',
