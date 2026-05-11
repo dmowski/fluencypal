@@ -306,7 +306,7 @@ msgid "Add"
 msgstr "添加"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:213
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "添加书籍"
@@ -1078,6 +1078,11 @@ msgstr "书籍阅读器"
 msgid "Book saved."
 msgstr "书籍已保存。"
 
+#: src/features/Reader/components/ShareBookModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Book shared with"
+msgstr "与...共享的书"
+
 #: src/features/Reader/hooks/useReimportEpub.ts:82
 #: src/features/Reader/hooks/useReimportEpub.ts:130
 #. js-lingui-explicit-id
@@ -1089,7 +1094,7 @@ msgstr "书籍已更新。"
 msgid "Booking a Doctor's Appointment"
 msgstr "预约看医生"
 
-#: src/features/Reader/components/BooksList.tsx:206
+#: src/features/Reader/components/BooksList.tsx:238
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1318,6 +1323,8 @@ msgstr "我可以在智能手机上使用吗？"
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #: src/features/Reader/components/AddBookModal.tsx:426
+#: src/features/Reader/components/DeleteBookModal.tsx:81
+#: src/features/Reader/components/DeleteBookModal.tsx:129
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1381,7 +1388,7 @@ msgid "Changes vs previous 30 days"
 msgstr "与前30天的变化"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:169
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "章节"
@@ -1570,7 +1577,7 @@ msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西
 msgid "Close"
 msgstr "关闭"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:134
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "关闭设置"
@@ -2350,7 +2357,7 @@ msgid "Debates"
 msgstr "辩论"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:130
+#: src/features/Reader/components/Cards.tsx:144
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2381,12 +2388,22 @@ msgstr "删除聊天"
 msgid "Delete current goal"
 msgstr "删除当前目标"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Delete for all"
+msgstr "为所有人删除"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Delete shared book"
+msgstr "删除共享书籍"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "删除空间"
 
-#: src/features/Reader/components/BooksList.tsx:100
+#: src/features/Reader/components/BooksList.tsx:128
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "删除这本书？"
@@ -2746,8 +2763,8 @@ msgstr "完成:"
 msgid "Don’t let mistakes stop you."
 msgstr "不要让错误阻碍你。"
 
-#: src/features/Reader/components/Cards.tsx:118
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "下载"
@@ -2757,7 +2774,7 @@ msgstr "下载"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "正在从古腾堡计划下载书籍..."
 
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "正在下载..."
@@ -2772,7 +2789,7 @@ msgstr "人肉搜索"
 msgid "Drop EPUB file here"
 msgstr "在此处拖放EPUB文件"
 
-#: src/features/Reader/components/BooksList.tsx:334
+#: src/features/Reader/components/BooksList.tsx:431
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "拖放 EPUB 文件以导入书籍"
@@ -2869,6 +2886,11 @@ msgstr "EF Core 跟踪 vs. 无跟踪"
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "电子邮件"
+
+#: src/features/Reader/components/ShareBookModal.tsx:223
+#. js-lingui-explicit-id
+msgid "Email address"
+msgstr "电子邮件地址"
 
 #: src/features/Router/BlockedAccess.tsx:394
 #. js-lingui-explicit-id
@@ -4494,7 +4516,7 @@ msgid "Highlight your leadership and problem-solving skills"
 msgstr "突出您的领导和解决问题的能力"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "亮点"
@@ -5557,6 +5579,16 @@ msgstr "与社区一起学习"
 msgid "Learning Plan"
 msgstr "学习计划"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Leave book"
+msgstr "离开图书"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Leave shared book"
+msgstr "离开共享书籍"
+
 #: src/features/Header/ContactMessageModal.tsx:95
 #: src/features/Settings/MyProfile.tsx:257
 #: src/features/Settings/MyProfile.tsx:270
@@ -5612,7 +5644,7 @@ msgstr "让我们聊聊关于你的事情。这将有助于我制定一个练习
 msgid "Let’s make sure you’re ready"
 msgstr "让我们确保你已做好准备"
 
-#: src/features/Reader/components/BooksList.tsx:266
+#: src/features/Reader/components/BooksList.tsx:363
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "图书馆"
@@ -5706,7 +5738,7 @@ msgstr "加载中"
 msgid "Loading a word..."
 msgstr "加载单词..."
 
-#: src/features/Reader/components/BooksList.tsx:269
+#: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "正在加载库..."
@@ -5784,6 +5816,11 @@ msgstr "更长的词汇和更丰富的表达"
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "寻找特定内容吗？"
+
+#: src/features/Reader/components/ShareBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Make owner"
+msgstr "成为所有者"
 
 #: src/features/webCam/WebCamView.tsx:71
 #. js-lingui-explicit-id
@@ -6053,7 +6090,7 @@ msgstr "更多独特的课程"
 msgid "More..."
 msgstr "更多..."
 
-#: src/features/Reader/components/BooksList.tsx:215
+#: src/features/Reader/components/BooksList.tsx:311
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "我的书"
@@ -6191,6 +6228,11 @@ msgstr "下一回合"
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr "很高兴看到你完成了一整周的学习。让我们继续今天的任务吧。"
+
+#: src/features/Reader/components/ShareBookModal.tsx:94
+#. js-lingui-explicit-id
+msgid "No account found for that email. Ask them to sign up first, then try again."
+msgstr "未找到该电子邮件的账户。请先让他们注册，然后再试一次。"
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -6625,6 +6667,11 @@ msgstr "打开进度设置"
 msgid "Open results"
 msgstr "打开结果"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:126
+#. js-lingui-explicit-id
+msgid "Open sharing settings"
+msgstr "打开共享设置"
+
 #: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
@@ -6678,6 +6725,11 @@ msgid ""
 msgstr ""
 "我们的AI会根据技术深度（架构、性能、状态管理）、清晰度、结构和沟通对您的答案进行评估。您将获得具体的建议，关于需要添加、删除或重构什么内容，以便更像一"
 "个优秀的高级前端工程师。"
+
+#: src/features/Reader/components/ShareBookModal.tsx:163
+#. js-lingui-explicit-id
+msgid "Owner"
+msgstr "所有者"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:156
 #. js-lingui-explicit-id
@@ -7603,7 +7655,7 @@ msgstr "进度跟踪"
 msgid "Progress tracking to see your improvement"
 msgstr "进度跟踪以查看您的进步"
 
-#: src/features/Reader/components/Cards.tsx:278
+#: src/features/Reader/components/Cards.tsx:292
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "古腾堡计划"
@@ -7702,7 +7754,7 @@ msgstr "排名前5以获得所有功能的完全访问权限！"
 msgid "Raw"
 msgstr "生动"
 
-#: src/features/Reader/components/Cards.tsx:107
+#: src/features/Reader/components/Cards.tsx:121
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "重新导入"
@@ -8566,7 +8618,7 @@ msgid "Set the goal of your learning"
 msgstr "设置你的学习目标"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:159
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "设置"
@@ -8576,10 +8628,21 @@ msgstr "设置"
 msgid "Sexual content"
 msgstr "性内容"
 
+#: src/features/Reader/components/Cards.tsx:109
+#: src/features/Reader/components/ShareBookModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Share"
+msgstr "分享"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "分享一个你今天学到的短语（或一个让你困惑的短语）"
+
+#: src/features/Reader/components/ShareBookModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Share book"
+msgstr "共享书籍"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -8592,6 +8655,11 @@ msgstr "分享关于跨团队合作、冲突解决和项目所有权的引人入
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "分享您目前正在学习的内容"
+
+#: src/features/Reader/components/ShareBookModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Share with someone by email"
+msgstr "通过电子邮件与他人分享"
 
 #: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
@@ -8824,6 +8892,7 @@ msgid "Something went wrong while generating more lessons. Please try again late
 msgstr "在生成更多课程时出现了问题。请稍后再试。"
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
 msgstr "出了点问题。请再试一次。"
@@ -9323,7 +9392,7 @@ msgstr "支持的朋友"
 msgid "Swedish Learning Plan"
 msgstr "瑞典语学习计划"
 
-#: src/features/Reader/components/BooksList.tsx:223
+#: src/features/Reader/components/BooksList.tsx:319
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "正在同步您的资料库…"
@@ -9738,6 +9807,25 @@ msgstr "此账户因年龄限制目前被禁用。家长或法定监护人可以
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "此操作不可逆。"
+
+#: src/features/Reader/components/ShareBookModal.tsx:83
+#. js-lingui-explicit-id
+msgid "This book is already shared with that user."
+msgstr "这本书已经与该用户共享。"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:97
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+msgstr "这本书已与其他用户共享。删除它将永久删除所有人的这本书。"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared. Removing it will only remove you from the list — the "
+"book will remain for other members."
+msgstr "这本书是共享的。删除它只会将您从列表中移除——对于其他成员，这本书仍然保留。"
 
 #: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
@@ -10355,6 +10443,11 @@ msgstr "未知错误"
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "在登录过程中出现未知错误"
+
+#: src/features/Reader/components/ShareBookModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Unknown owner"
+msgstr "未知所有者"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
@@ -11303,6 +11396,11 @@ msgid ""
 "top-5"
 msgstr "您是排行榜中的领袖！完整访问权限有效，直至您处于前五名。"
 
+#: src/features/Reader/components/ShareBookModal.tsx:73
+#. js-lingui-explicit-id
+msgid "You are already the owner of this book."
+msgstr "您已经是此图书的拥有者。"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -11697,7 +11795,7 @@ msgstr "你做得很好。看看今天的任务。"
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "你正处于良好状态。继续完成今天的任务。"
 
-#: src/features/Reader/components/Cards.tsx:294
+#: src/features/Reader/components/Cards.tsx:308
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 下载"

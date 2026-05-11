@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Legg til"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:213
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Legg til en bok"
@@ -1119,6 +1119,11 @@ msgstr "Bokleser"
 msgid "Book saved."
 msgstr "Bok lagret."
 
+#: src/features/Reader/components/ShareBookModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Book shared with"
+msgstr "Bok delt med"
+
 #: src/features/Reader/hooks/useReimportEpub.ts:82
 #: src/features/Reader/hooks/useReimportEpub.ts:130
 #. js-lingui-explicit-id
@@ -1130,7 +1135,7 @@ msgstr "Bok oppdatert."
 msgid "Booking a Doctor's Appointment"
 msgstr "Bestille legetime"
 
-#: src/features/Reader/components/BooksList.tsx:206
+#: src/features/Reader/components/BooksList.tsx:238
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1364,6 +1369,8 @@ msgstr "Kan jeg bruke det på smarttelefon?"
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #: src/features/Reader/components/AddBookModal.tsx:426
+#: src/features/Reader/components/DeleteBookModal.tsx:81
+#: src/features/Reader/components/DeleteBookModal.tsx:129
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1431,7 +1438,7 @@ msgid "Changes vs previous 30 days"
 msgstr "Endringer vs de siste 30 dagene"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:169
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Kapitler"
@@ -1632,7 +1639,7 @@ msgstr ""
 msgid "Close"
 msgstr "Lukk"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:134
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Lukk innstillinger"
@@ -2450,7 +2457,7 @@ msgid "Debates"
 msgstr "Debatter"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:130
+#: src/features/Reader/components/Cards.tsx:144
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2481,12 +2488,22 @@ msgstr "Slett chat"
 msgid "Delete current goal"
 msgstr "Slett nåværende mål"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Delete for all"
+msgstr "Slett for alle"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Delete shared book"
+msgstr "Slett delt bok"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "Slett mellomrom"
 
-#: src/features/Reader/components/BooksList.tsx:100
+#: src/features/Reader/components/BooksList.tsx:128
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Slette denne boken?"
@@ -2885,8 +2902,8 @@ msgstr "Ferdig:"
 msgid "Don’t let mistakes stop you."
 msgstr "Ikke la feil stoppe deg."
 
-#: src/features/Reader/components/Cards.tsx:118
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Last ned"
@@ -2896,7 +2913,7 @@ msgstr "Last ned"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Laster ned bok fra Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Laster ned..."
@@ -2911,7 +2928,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Slipp EPUB-fil her"
 
-#: src/features/Reader/components/BooksList.tsx:334
+#: src/features/Reader/components/BooksList.tsx:431
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Slipp EPUB-fil for å importere bok"
@@ -3017,6 +3034,11 @@ msgstr "EF Core sporing vs. ikke-sporing"
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "E-post"
+
+#: src/features/Reader/components/ShareBookModal.tsx:223
+#. js-lingui-explicit-id
+msgid "Email address"
+msgstr "E-postadresse"
 
 #: src/features/Router/BlockedAccess.tsx:394
 #. js-lingui-explicit-id
@@ -4783,7 +4805,7 @@ msgid "Highlight your leadership and problem-solving skills"
 msgstr "Fremhev dine leder- og problemløsningsferdigheter"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Høydepunkter"
@@ -5926,6 +5948,16 @@ msgstr "Lær med fellesskapet"
 msgid "Learning Plan"
 msgstr "Læringsplan"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Leave book"
+msgstr "Forlat bok"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Leave shared book"
+msgstr "Forlat delt bok"
+
 #: src/features/Header/ContactMessageModal.tsx:95
 #: src/features/Settings/MyProfile.tsx:257
 #: src/features/Settings/MyProfile.tsx:270
@@ -5983,7 +6015,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "La oss sørge for at du er klar"
 
-#: src/features/Reader/components/BooksList.tsx:266
+#: src/features/Reader/components/BooksList.tsx:363
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliotek"
@@ -6075,7 +6107,7 @@ msgstr "Laster"
 msgid "Loading a word..."
 msgstr "Laster inn et ord..."
 
-#: src/features/Reader/components/BooksList.tsx:269
+#: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Laster bibliotek..."
@@ -6153,6 +6185,11 @@ msgstr "Lengre ord og rikere uttrykk"
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Ser du etter noe spesifikt?"
+
+#: src/features/Reader/components/ShareBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Make owner"
+msgstr "Gjør til eier"
 
 #: src/features/webCam/WebCamView.tsx:71
 #. js-lingui-explicit-id
@@ -6428,7 +6465,7 @@ msgstr "Flere unike leksjoner"
 msgid "More..."
 msgstr "Mer..."
 
-#: src/features/Reader/components/BooksList.tsx:215
+#: src/features/Reader/components/BooksList.tsx:311
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Mine bøker"
@@ -6566,6 +6603,13 @@ msgstr "Neste tur"
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr "Flott arbeid med å nå en hel uke. La oss fortsette med dagens oppgaver."
+
+#: src/features/Reader/components/ShareBookModal.tsx:94
+#. js-lingui-explicit-id
+msgid "No account found for that email. Ask them to sign up first, then try again."
+msgstr ""
+"Ingen konto funnet for den e-posten. Be dem registrere seg først, og prøv "
+"deretter igjen."
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -7030,6 +7074,11 @@ msgstr "Åpne innstillingsfremgang"
 msgid "Open results"
 msgstr "Åpne resultater"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:126
+#. js-lingui-explicit-id
+msgid "Open sharing settings"
+msgstr "Åpne delingsinnstillinger"
+
 #: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
@@ -7093,6 +7142,11 @@ msgstr ""
 "tilstandshåndtering), klarhet, struktur og kommunikasjon. Du mottar "
 "konkrete forslag om hva du bør legge til, fjerne eller omformulere for å "
 "fremstå som en dyktig senior frontend-utvikler."
+
+#: src/features/Reader/components/ShareBookModal.tsx:163
+#. js-lingui-explicit-id
+msgid "Owner"
+msgstr "Eier"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:156
 #. js-lingui-explicit-id
@@ -8067,7 +8121,7 @@ msgstr "Fremdriftssporing"
 msgid "Progress tracking to see your improvement"
 msgstr "Fremdriftssporing for å se din forbedring"
 
-#: src/features/Reader/components/Cards.tsx:278
+#: src/features/Reader/components/Cards.tsx:292
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Prosjekt Gutenberg"
@@ -8166,7 +8220,7 @@ msgstr "Ranger blant de 5 beste for å få full tilgang til alle funksjoner!"
 msgid "Raw"
 msgstr "Rå"
 
-#: src/features/Reader/components/Cards.tsx:107
+#: src/features/Reader/components/Cards.tsx:121
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Re-importere"
@@ -9057,7 +9111,7 @@ msgid "Set the goal of your learning"
 msgstr "Sett målet for læringen din"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:159
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Innstillinger"
@@ -9067,10 +9121,21 @@ msgstr "Innstillinger"
 msgid "Sexual content"
 msgstr "Seksuelt innhold"
 
+#: src/features/Reader/components/Cards.tsx:109
+#: src/features/Reader/components/ShareBookModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Share"
+msgstr "Del"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Del en setning du lærte i dag (eller en som forvirret deg)"
+
+#: src/features/Reader/components/ShareBookModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Share book"
+msgstr "Del bok"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -9085,6 +9150,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Del hva du lærer akkurat nå"
+
+#: src/features/Reader/components/ShareBookModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Share with someone by email"
+msgstr "Del via e-post med noen"
 
 #: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
@@ -9327,6 +9397,7 @@ msgid "Something went wrong while generating more lessons. Please try again late
 msgstr "Noe gikk galt da flere leksjoner ble generert. Vennligst prøv igjen senere."
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
 msgstr "Noe gikk galt. Vennligst prøv igjen."
@@ -9874,7 +9945,7 @@ msgstr "Støttende venn"
 msgid "Swedish Learning Plan"
 msgstr "Svensk Læringsplan"
 
-#: src/features/Reader/components/BooksList.tsx:223
+#: src/features/Reader/components/BooksList.tsx:319
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Synkroniserer biblioteket ditt…"
@@ -10334,6 +10405,29 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Denne handlingen er irreversibel."
+
+#: src/features/Reader/components/ShareBookModal.tsx:83
+#. js-lingui-explicit-id
+msgid "This book is already shared with that user."
+msgstr "Denne boken er allerede delt med den brukeren."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:97
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+msgstr ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared. Removing it will only remove you from the list — the "
+"book will remain for other members."
+msgstr ""
+"Denne boken deles. Hvis du fjerner den, blir du bare fjernet fra listen - "
+"boken vil fortsatt være tilgjengelig for andre medlemmer."
 
 #: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
@@ -10982,6 +11076,11 @@ msgstr "Ukjent feil"
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "Ukjent feil under pålogging"
+
+#: src/features/Reader/components/ShareBookModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Unknown owner"
+msgstr "Ukjent eier"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
@@ -12000,6 +12099,11 @@ msgstr ""
 "Du er en leder på ledertavlen! Full tilgang er aktiv inntil du er blant "
 "topp-5"
 
+#: src/features/Reader/components/ShareBookModal.tsx:73
+#. js-lingui-explicit-id
+msgid "You are already the owner of this book."
+msgstr "Du er allerede eier av denne boken."
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12440,7 +12544,7 @@ msgstr "Du gjør det bra. Ta en titt på dagens oppgaver."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du er i en god flyt. Fortsett med dagens oppgaver."
 
-#: src/features/Reader/components/Cards.tsx:294
+#: src/features/Reader/components/Cards.tsx:308
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} nedlastinger"

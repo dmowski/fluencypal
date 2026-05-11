@@ -327,7 +327,7 @@ msgid "Add"
 msgstr "Thêm"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:213
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Thêm một cuốn sách"
@@ -1127,6 +1127,11 @@ msgstr "Trình Đọc Sách"
 msgid "Book saved."
 msgstr "Sách đã được lưu."
 
+#: src/features/Reader/components/ShareBookModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Book shared with"
+msgstr "Đã chia sẻ sách với"
+
 #: src/features/Reader/hooks/useReimportEpub.ts:82
 #: src/features/Reader/hooks/useReimportEpub.ts:130
 #. js-lingui-explicit-id
@@ -1138,7 +1143,7 @@ msgstr "Sách đã được cập nhật."
 msgid "Booking a Doctor's Appointment"
 msgstr "Đặt Lịch Hẹn Với Bác Sĩ"
 
-#: src/features/Reader/components/BooksList.tsx:206
+#: src/features/Reader/components/BooksList.tsx:238
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1374,6 +1379,8 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #: src/features/Reader/components/AddBookModal.tsx:426
+#: src/features/Reader/components/DeleteBookModal.tsx:81
+#: src/features/Reader/components/DeleteBookModal.tsx:129
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1439,7 +1446,7 @@ msgid "Changes vs previous 30 days"
 msgstr "Thay đổi so với 30 ngày trước"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:169
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Chương"
@@ -1641,7 +1648,7 @@ msgstr ""
 msgid "Close"
 msgstr "Đóng"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:134
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Đóng cài đặt"
@@ -2464,7 +2471,7 @@ msgid "Debates"
 msgstr "Tranh luận"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:130
+#: src/features/Reader/components/Cards.tsx:144
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2495,12 +2502,22 @@ msgstr "Xóa trò chuyện"
 msgid "Delete current goal"
 msgstr "Xóa mục tiêu hiện tại"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Delete for all"
+msgstr "Xóa cho tất cả"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Delete shared book"
+msgstr "Xóa sách đã chia sẻ"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "Xóa Khoảng Trống"
 
-#: src/features/Reader/components/BooksList.tsx:100
+#: src/features/Reader/components/BooksList.tsx:128
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Xóa cuốn sách này?"
@@ -2911,8 +2928,8 @@ msgstr "Hoàn thành:"
 msgid "Don’t let mistakes stop you."
 msgstr "Đừng để những sai lầm ngăn cản bạn."
 
-#: src/features/Reader/components/Cards.tsx:118
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Tải về"
@@ -2922,7 +2939,7 @@ msgstr "Tải về"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Đang tải về sách từ Dự án Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Đang tải xuống..."
@@ -2937,7 +2954,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Thả tệp EPUB vào đây"
 
-#: src/features/Reader/components/BooksList.tsx:334
+#: src/features/Reader/components/BooksList.tsx:431
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Thả tệp EPUB để nhập sách"
@@ -3044,6 +3061,11 @@ msgstr "EF Core theo dõi vs. không theo dõi"
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "Email"
+
+#: src/features/Reader/components/ShareBookModal.tsx:223
+#. js-lingui-explicit-id
+msgid "Email address"
+msgstr "Địa chỉ email"
 
 #: src/features/Router/BlockedAccess.tsx:394
 #. js-lingui-explicit-id
@@ -4834,7 +4856,7 @@ msgid "Highlight your leadership and problem-solving skills"
 msgstr "Làm nổi bật kỹ năng lãnh đạo và giải quyết vấn đề của bạn"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Điểm nổi bật"
@@ -5977,6 +5999,16 @@ msgstr "Học cùng cộng đồng"
 msgid "Learning Plan"
 msgstr "Kế hoạch học tập"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Leave book"
+msgstr "Rời khỏi sách"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Leave shared book"
+msgstr "Rời khỏi sách được chia sẻ"
+
 #: src/features/Header/ContactMessageModal.tsx:95
 #: src/features/Settings/MyProfile.tsx:257
 #: src/features/Settings/MyProfile.tsx:270
@@ -6034,7 +6066,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
 
-#: src/features/Reader/components/BooksList.tsx:266
+#: src/features/Reader/components/BooksList.tsx:363
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Thư viện"
@@ -6126,7 +6158,7 @@ msgstr "Đang tải"
 msgid "Loading a word..."
 msgstr "Đang tải một từ..."
 
-#: src/features/Reader/components/BooksList.tsx:269
+#: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
@@ -6204,6 +6236,11 @@ msgstr "Những từ ngữ dài hơn và cách diễn đạt phong phú hơn"
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Đang tìm kiếm một cái gì đó cụ thể?"
+
+#: src/features/Reader/components/ShareBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Make owner"
+msgstr "Làm chủ sở hữu"
 
 #: src/features/webCam/WebCamView.tsx:71
 #. js-lingui-explicit-id
@@ -6484,7 +6521,7 @@ msgstr "Thêm nhiều bài học độc đáo"
 msgid "More..."
 msgstr "Thêm..."
 
-#: src/features/Reader/components/BooksList.tsx:215
+#: src/features/Reader/components/BooksList.tsx:311
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Sách của tôi"
@@ -6624,6 +6661,13 @@ msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
 "Làm tốt lắm khi hoàn thành một tuần đầy đủ. Hãy tiếp tục với các nhiệm vụ "
 "của ngày hôm nay."
+
+#: src/features/Reader/components/ShareBookModal.tsx:94
+#. js-lingui-explicit-id
+msgid "No account found for that email. Ask them to sign up first, then try again."
+msgstr ""
+"Không tìm thấy tài khoản nào cho email đó. Yêu cầu họ đăng ký trước, sau đó "
+"thử lại."
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -7098,6 +7142,11 @@ msgstr "Mở cài đặt tiến trình"
 msgid "Open results"
 msgstr "Mở kết quả"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:126
+#. js-lingui-explicit-id
+msgid "Open sharing settings"
+msgstr "Mở cài đặt chia sẻ"
+
 #: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
@@ -7160,6 +7209,11 @@ msgstr ""
 "(kiến trúc, hiệu suất, quản lý trạng thái), độ rõ ràng, cấu trúc, và giao "
 "tiếp. Bạn nhận được các gợi ý cụ thể về những gì cần thêm, loại bỏ, hoặc "
 "điều chỉnh để nghe giống như một kỹ sư frontend cấp cao mạnh mẽ."
+
+#: src/features/Reader/components/ShareBookModal.tsx:163
+#. js-lingui-explicit-id
+msgid "Owner"
+msgstr "Chủ sở hữu"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:156
 #. js-lingui-explicit-id
@@ -8149,7 +8203,7 @@ msgstr "Theo dõi tiến trình"
 msgid "Progress tracking to see your improvement"
 msgstr "Theo dõi tiến trình để thấy sự cải thiện của bạn"
 
-#: src/features/Reader/components/Cards.tsx:278
+#: src/features/Reader/components/Cards.tsx:292
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Dự án Gutenberg"
@@ -8250,7 +8304,7 @@ msgstr "Xếp hạng trong top 5 để có quyền truy cập đầy đủ vào 
 msgid "Raw"
 msgstr "Thô"
 
-#: src/features/Reader/components/Cards.tsx:107
+#: src/features/Reader/components/Cards.tsx:121
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Tái nhập"
@@ -9150,7 +9204,7 @@ msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:159
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Cài đặt"
@@ -9160,10 +9214,21 @@ msgstr "Cài đặt"
 msgid "Sexual content"
 msgstr "Nội dung khiêu dâm"
 
+#: src/features/Reader/components/Cards.tsx:109
+#: src/features/Reader/components/ShareBookModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Share"
+msgstr "Chia sẻ"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Chia sẻ một cụm từ bạn đã học hôm nay (hoặc một cụm từ khiến bạn bối rối)"
+
+#: src/features/Reader/components/ShareBookModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Share book"
+msgstr "Chia sẻ sách"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -9178,6 +9243,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Chia sẻ những gì bạn đang học hiện tại"
+
+#: src/features/Reader/components/ShareBookModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Share with someone by email"
+msgstr "Chia sẻ với ai đó qua email"
 
 #: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
@@ -9418,6 +9488,7 @@ msgid "Something went wrong while generating more lessons. Please try again late
 msgstr "Đã xảy ra lỗi trong quá trình tạo thêm bài học. Vui lòng thử lại sau."
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
 msgstr "Điều gì đó đã xảy ra sai. Vui lòng thử lại."
@@ -9957,7 +10028,7 @@ msgstr "Người Bạn Hỗ Trợ"
 msgid "Swedish Learning Plan"
 msgstr "Kế hoạch Học tiếng Thụy Điển"
 
-#: src/features/Reader/components/BooksList.tsx:223
+#: src/features/Reader/components/BooksList.tsx:319
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Đang đồng bộ thư viện của bạn…"
@@ -10418,6 +10489,29 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Hành động này không thể đảo ngược."
+
+#: src/features/Reader/components/ShareBookModal.tsx:83
+#. js-lingui-explicit-id
+msgid "This book is already shared with that user."
+msgstr "Cuốn sách này đã được chia sẻ với người dùng đó."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:97
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+msgstr ""
+"Cuốn sách này đang được chia sẻ với người dùng khác. Xóa nó sẽ xóa vĩnh "
+"viễn đối với tất cả mọi người."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared. Removing it will only remove you from the list — the "
+"book will remain for other members."
+msgstr ""
+"Quyển sách này được chia sẻ. Xóa nó sẽ chỉ loại bỏ bạn khỏi danh sách — "
+"quyển sách sẽ vẫn tồn tại đối với các thành viên khác."
 
 #: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
@@ -11070,6 +11164,11 @@ msgstr "Lỗi không xác định"
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "Lỗi không xác định khi đăng nhập"
+
+#: src/features/Reader/components/ShareBookModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Unknown owner"
+msgstr "Chủ sở hữu không rõ"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
@@ -12102,6 +12201,11 @@ msgstr ""
 "Bạn đang dẫn đầu trong bảng xếp hạng! Quyền truy cập đầy đủ sẽ được kích "
 "hoạt cho đến khi bạn nằm trong top-5"
 
+#: src/features/Reader/components/ShareBookModal.tsx:73
+#. js-lingui-explicit-id
+msgid "You are already the owner of this book."
+msgstr "Bạn đã là chủ sở hữu của cuốn sách này."
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12544,7 +12648,7 @@ msgstr ""
 "Bạn đang ở trong một luồng công việc tốt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Reader/components/Cards.tsx:294
+#: src/features/Reader/components/Cards.tsx:308
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"

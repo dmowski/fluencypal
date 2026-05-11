@@ -324,7 +324,7 @@ msgid "Add"
 msgstr "Tambah"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:213
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Tambah buku"
@@ -1133,6 +1133,13 @@ msgstr "Pembaca Buku"
 msgid "Book saved."
 msgstr "Buku disimpan."
 
+#: src/features/Reader/components/ShareBookModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Book shared with"
+msgstr ""
+"\n"
+"Buku dikongsi dengan\n"
+
 #: src/features/Reader/hooks/useReimportEpub.ts:82
 #: src/features/Reader/hooks/useReimportEpub.ts:130
 #. js-lingui-explicit-id
@@ -1144,7 +1151,7 @@ msgstr "Buku dikemas kini."
 msgid "Booking a Doctor's Appointment"
 msgstr "Tempah Janji Temu Doktor"
 
-#: src/features/Reader/components/BooksList.tsx:206
+#: src/features/Reader/components/BooksList.tsx:238
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1384,6 +1391,8 @@ msgstr "Bolehkah saya menggunakannya pada telefon pintar?"
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #: src/features/Reader/components/AddBookModal.tsx:426
+#: src/features/Reader/components/DeleteBookModal.tsx:81
+#: src/features/Reader/components/DeleteBookModal.tsx:129
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1451,7 +1460,7 @@ msgid "Changes vs previous 30 days"
 msgstr "Perubahan berbanding 30 hari sebelumnya"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:169
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Bab"
@@ -1655,7 +1664,7 @@ msgstr ""
 msgid "Close"
 msgstr "Tutup"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:134
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Tutup tetapan"
@@ -2481,7 +2490,7 @@ msgid "Debates"
 msgstr "Perdebatan"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:130
+#: src/features/Reader/components/Cards.tsx:144
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2512,12 +2521,22 @@ msgstr "Padamkan sembang"
 msgid "Delete current goal"
 msgstr "Padam matlamat semasa"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Delete for all"
+msgstr "Padam untuk semua"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Delete shared book"
+msgstr "Padam buku yang dikongsi"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "Padam Ruang"
 
-#: src/features/Reader/components/BooksList.tsx:100
+#: src/features/Reader/components/BooksList.tsx:128
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Padam buku ini?"
@@ -2927,8 +2946,8 @@ msgstr "Selesai:"
 msgid "Don’t let mistakes stop you."
 msgstr "Jangan biarkan kesilapan menghentikan anda."
 
-#: src/features/Reader/components/Cards.tsx:118
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Muat Turun"
@@ -2938,7 +2957,7 @@ msgstr "Muat Turun"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Memuat turun buku dari Projek Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Memuat turun..."
@@ -2955,7 +2974,7 @@ msgstr ""
 "\n"
 "Jatuhkan fail EPUB di sini\n"
 
-#: src/features/Reader/components/BooksList.tsx:334
+#: src/features/Reader/components/BooksList.tsx:431
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Leretakkan fail EPUB untuk mengimport buku"
@@ -3063,6 +3082,11 @@ msgstr "EF Core: diikuti vs. tiada penjejakan"
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "E-mel"
+
+#: src/features/Reader/components/ShareBookModal.tsx:223
+#. js-lingui-explicit-id
+msgid "Email address"
+msgstr "Alamat e-mel"
 
 #: src/features/Router/BlockedAccess.tsx:394
 #. js-lingui-explicit-id
@@ -4871,7 +4895,7 @@ msgid "Highlight your leadership and problem-solving skills"
 msgstr "Serlahkan kemahiran kepimpinan dan penyelesaian masalah anda"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Sorotan"
@@ -6056,6 +6080,16 @@ msgstr ""
 msgid "Learning Plan"
 msgstr "Pelan Pembelajaran"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Leave book"
+msgstr "Tinggalkan buku"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Leave shared book"
+msgstr "Tinggalkan buku yang dikongsi"
+
 #: src/features/Header/ContactMessageModal.tsx:95
 #: src/features/Settings/MyProfile.tsx:257
 #: src/features/Settings/MyProfile.tsx:270
@@ -6113,7 +6147,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Pastikan anda sudah bersedia"
 
-#: src/features/Reader/components/BooksList.tsx:266
+#: src/features/Reader/components/BooksList.tsx:363
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Perpustakaan"
@@ -6207,7 +6241,7 @@ msgstr "Memuatkan"
 msgid "Loading a word..."
 msgstr "Memuatkan perkataan..."
 
-#: src/features/Reader/components/BooksList.tsx:269
+#: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
@@ -6287,6 +6321,11 @@ msgstr "Perkataan yang lebih panjang dan ekspresi yang lebih kaya"
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Mencari sesuatu yang tertentu?"
+
+#: src/features/Reader/components/ShareBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Make owner"
+msgstr "Jadikan pemilik"
 
 #: src/features/webCam/WebCamView.tsx:71
 #. js-lingui-explicit-id
@@ -6570,7 +6609,7 @@ msgstr "Pelajaran yang lebih unik"
 msgid "More..."
 msgstr "Lebih banyak..."
 
-#: src/features/Reader/components/BooksList.tsx:215
+#: src/features/Reader/components/BooksList.tsx:311
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Buku-buku saya"
@@ -6710,6 +6749,13 @@ msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
 "Kerja yang bagus mencapai seminggu penuh. Mari kita teruskan dengan "
 "tugas-tugas hari ini."
+
+#: src/features/Reader/components/ShareBookModal.tsx:94
+#. js-lingui-explicit-id
+msgid "No account found for that email. Ask them to sign up first, then try again."
+msgstr ""
+"Tiada akaun ditemui untuk emel tersebut. Minta mereka mendaftar terlebih "
+"dahulu, kemudian cuba lagi."
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -7184,6 +7230,11 @@ msgstr "Buka tetapan kemajuan"
 msgid "Open results"
 msgstr "Buka hasil"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:126
+#. js-lingui-explicit-id
+msgid "Open sharing settings"
+msgstr "Buka tetapan perkongsian"
+
 #: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
@@ -7248,6 +7299,11 @@ msgstr ""
 "menerima cadangan konkrit tentang apa yang perlu ditambah, dibuang, atau "
 "ditukar untuk kedengaran seperti seorang jurutera frontend senior yang "
 "cekap."
+
+#: src/features/Reader/components/ShareBookModal.tsx:163
+#. js-lingui-explicit-id
+msgid "Owner"
+msgstr "Pemilik"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:156
 #. js-lingui-explicit-id
@@ -8245,7 +8301,7 @@ msgstr ""
 "\n"
 "Penjejakan kemajuan untuk melihat peningkatan anda\n"
 
-#: src/features/Reader/components/Cards.tsx:278
+#: src/features/Reader/components/Cards.tsx:292
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projek Gutenberg"
@@ -8346,7 +8402,7 @@ msgstr "Peringkat dalam 5 teratas untuk mendapatkan akses penuh kepada semua cir
 msgid "Raw"
 msgstr "Mentah"
 
-#: src/features/Reader/components/Cards.tsx:107
+#: src/features/Reader/components/Cards.tsx:121
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Import semula"
@@ -9236,7 +9292,7 @@ msgid "Set the goal of your learning"
 msgstr "Tetapkan matlamat pembelajaran anda"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:159
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Tetapan"
@@ -9246,10 +9302,21 @@ msgstr "Tetapan"
 msgid "Sexual content"
 msgstr "Kandungan seksual"
 
+#: src/features/Reader/components/Cards.tsx:109
+#: src/features/Reader/components/ShareBookModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Share"
+msgstr "Kongsi"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Kongsi frasa yang anda pelajari hari ini (atau satu yang mengelirukan anda)"
+
+#: src/features/Reader/components/ShareBookModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Share book"
+msgstr "Kongsi buku"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -9264,6 +9331,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Kongsi apa yang anda sedang pelajari sekarang"
+
+#: src/features/Reader/components/ShareBookModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Share with someone by email"
+msgstr "Kongsi dengan seseorang melalui e-mel"
 
 #: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
@@ -9507,6 +9579,7 @@ msgstr ""
 "cuba lagi kemudian."
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
 msgstr ""
@@ -10052,7 +10125,7 @@ msgstr "Rakan Sokongan"
 msgid "Swedish Learning Plan"
 msgstr "Rancangan Pembelajaran Bahasa Sweden"
 
-#: src/features/Reader/components/BooksList.tsx:223
+#: src/features/Reader/components/BooksList.tsx:319
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr ""
@@ -10517,6 +10590,29 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Tindakan ini tidak boleh dipulihkan."
+
+#: src/features/Reader/components/ShareBookModal.tsx:83
+#. js-lingui-explicit-id
+msgid "This book is already shared with that user."
+msgstr "Buku ini sudah dikongsi dengan pengguna tersebut."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:97
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+msgstr ""
+"Buku ini dikongsi dengan pengguna lain. Memadamkannya akan menghapusnya "
+"secara kekal untuk semua orang."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared. Removing it will only remove you from the list — the "
+"book will remain for other members."
+msgstr ""
+"Buku ini dikongsi. Mengalihkannya hanya akan mengeluarkan anda dari senarai "
+"— buku tersebut akan tetap untuk ahli lain."
 
 #: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
@@ -11174,6 +11270,11 @@ msgstr "Ralat tidak diketahui"
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "Ralat tidak diketahui semasa log masuk"
+
+#: src/features/Reader/components/ShareBookModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Unknown owner"
+msgstr "Pemilik tidak diketahui"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
@@ -12220,6 +12321,11 @@ msgstr ""
 "Anda adalah pemimpin dalam papan kedudukan! Akses penuh aktif sehingga anda "
 "berada dalam 5 teratas"
 
+#: src/features/Reader/components/ShareBookModal.tsx:73
+#. js-lingui-explicit-id
+msgid "You are already the owner of this book."
+msgstr "Anda sudah menjadi pemilik buku ini."
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12662,7 +12768,7 @@ msgstr "Anda sedang melakukannya dengan baik. Lihatlah tugasan hari ini."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Anda berada dalam aliran yang baik. Teruskan dengan tugas-tugas hari ini."
 
-#: src/features/Reader/components/Cards.tsx:294
+#: src/features/Reader/components/Cards.tsx:308
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} muat turun"

@@ -325,7 +325,7 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:213
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Добавить книгу"
@@ -1132,6 +1132,11 @@ msgstr "Читатель книг"
 msgid "Book saved."
 msgstr "Книга сохранена."
 
+#: src/features/Reader/components/ShareBookModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Book shared with"
+msgstr "Книга поделена с"
+
 #: src/features/Reader/hooks/useReimportEpub.ts:82
 #: src/features/Reader/hooks/useReimportEpub.ts:130
 #. js-lingui-explicit-id
@@ -1143,7 +1148,7 @@ msgstr "Книга обновлена."
 msgid "Booking a Doctor's Appointment"
 msgstr "Запись на прием к врачу"
 
-#: src/features/Reader/components/BooksList.tsx:206
+#: src/features/Reader/components/BooksList.tsx:238
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1379,6 +1384,8 @@ msgstr "Могу ли я использовать его на смартфоне
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/PaymentHistoryModal.tsx:234
 #: src/features/Reader/components/AddBookModal.tsx:426
+#: src/features/Reader/components/DeleteBookModal.tsx:81
+#: src/features/Reader/components/DeleteBookModal.tsx:129
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1444,7 +1451,7 @@ msgid "Changes vs previous 30 days"
 msgstr "Изменения по сравнению с предыдущими 30 днями"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:58
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:165
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:169
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Главы"
@@ -1648,7 +1655,7 @@ msgstr ""
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:133
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:134
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Закрыть настройки"
@@ -2470,7 +2477,7 @@ msgid "Debates"
 msgstr "Дебаты"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:130
+#: src/features/Reader/components/Cards.tsx:144
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2501,12 +2508,22 @@ msgstr "Удалить чат"
 msgid "Delete current goal"
 msgstr "Удалить текущую цель"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Delete for all"
+msgstr "Удалить для всех"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Delete shared book"
+msgstr "Удалить общую книгу"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Delete Space"
 msgstr "Удалить пространство"
 
-#: src/features/Reader/components/BooksList.tsx:100
+#: src/features/Reader/components/BooksList.tsx:128
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Удалить эту книгу?"
@@ -2912,8 +2929,8 @@ msgstr "Готово:"
 msgid "Don’t let mistakes stop you."
 msgstr "Не позволяйте ошибкам останавливать вас."
 
-#: src/features/Reader/components/Cards.tsx:118
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:132
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Скачать"
@@ -2923,7 +2940,7 @@ msgstr "Скачать"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Загрузка книги с Проекта Гутенберг..."
 
-#: src/features/Reader/components/Cards.tsx:320
+#: src/features/Reader/components/Cards.tsx:334
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Загрузка..."
@@ -2938,7 +2955,7 @@ msgstr "Доксинг"
 msgid "Drop EPUB file here"
 msgstr "Перетащите файл EPUB сюда"
 
-#: src/features/Reader/components/BooksList.tsx:334
+#: src/features/Reader/components/BooksList.tsx:431
 #. js-lingui-explicit-id
 msgid "Drop EPUB file to import book"
 msgstr "Перетащите файл EPUB для импорта книги"
@@ -3046,6 +3063,11 @@ msgstr "EF Core отслеживание vs. без отслеживания"
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "Электронная почта"
+
+#: src/features/Reader/components/ShareBookModal.tsx:223
+#. js-lingui-explicit-id
+msgid "Email address"
+msgstr "Адрес электронной почты"
 
 #: src/features/Router/BlockedAccess.tsx:394
 #. js-lingui-explicit-id
@@ -4838,7 +4860,7 @@ msgid "Highlight your leadership and problem-solving skills"
 msgstr "Подчеркните свои лидерские качества и навыки решения проблем"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:60
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:175
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:179
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Основные моменты"
@@ -5993,6 +6015,16 @@ msgstr "Учитесь вместе с сообществом"
 msgid "Learning Plan"
 msgstr "Учебный план"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Leave book"
+msgstr "Оставить книгу"
+
+#: src/features/Reader/components/DeleteBookModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Leave shared book"
+msgstr "Оставить общую книгу"
+
 #: src/features/Header/ContactMessageModal.tsx:95
 #: src/features/Settings/MyProfile.tsx:257
 #: src/features/Settings/MyProfile.tsx:270
@@ -6050,7 +6082,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Давайте убедимся, что вы готовы"
 
-#: src/features/Reader/components/BooksList.tsx:266
+#: src/features/Reader/components/BooksList.tsx:363
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Библиотека"
@@ -6142,7 +6174,7 @@ msgstr "Загрузка"
 msgid "Loading a word..."
 msgstr "Загрузка слова..."
 
-#: src/features/Reader/components/BooksList.tsx:269
+#: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Загрузка библиотеки..."
@@ -6220,6 +6252,11 @@ msgstr "Длинные слова и более насыщенные выраж�
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Ищете что-то конкретное?"
+
+#: src/features/Reader/components/ShareBookModal.tsx:188
+#. js-lingui-explicit-id
+msgid "Make owner"
+msgstr "Сделать владельцем"
 
 #: src/features/webCam/WebCamView.tsx:71
 #. js-lingui-explicit-id
@@ -6502,7 +6539,7 @@ msgstr "Больше уникальных уроков"
 msgid "More..."
 msgstr "Больше..."
 
-#: src/features/Reader/components/BooksList.tsx:215
+#: src/features/Reader/components/BooksList.tsx:311
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Мои книги"
@@ -6642,6 +6679,13 @@ msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
 "Отличная работа, что продержались всю неделю. Давайте продолжим с заданиями "
 "на сегодня."
+
+#: src/features/Reader/components/ShareBookModal.tsx:94
+#. js-lingui-explicit-id
+msgid "No account found for that email. Ask them to sign up first, then try again."
+msgstr ""
+"Аккаунт для этого адреса электронной почты не найден. Попросите их сначала "
+"зарегистрироваться, а затем попробуйте снова."
 
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -7113,6 +7157,11 @@ msgstr "Открыть настройки прогресса"
 msgid "Open results"
 msgstr "Открыть результаты"
 
+#: src/features/Reader/components/DeleteBookModal.tsx:126
+#. js-lingui-explicit-id
+msgid "Open sharing settings"
+msgstr "Открыть настройки доступа"
+
 #: src/features/Game/Battle/BattleSection.tsx:48
 #. js-lingui-explicit-id
 msgid ""
@@ -7177,6 +7226,11 @@ msgstr ""
 "коммуникации. Вы получаете конкретные предложения о том, что добавить, "
 "удалить или изменить, чтобы звучать как опытный фронтенд-инженер уровня "
 "Senior."
+
+#: src/features/Reader/components/ShareBookModal.tsx:163
+#. js-lingui-explicit-id
+msgid "Owner"
+msgstr "Владелец"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:156
 #. js-lingui-explicit-id
@@ -8165,7 +8219,7 @@ msgstr "Отслеживание прогресса"
 msgid "Progress tracking to see your improvement"
 msgstr "Отслеживание прогресса, чтобы увидеть ваше улучшение"
 
-#: src/features/Reader/components/Cards.tsx:278
+#: src/features/Reader/components/Cards.tsx:292
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Проект Гутенберг"
@@ -8264,7 +8318,7 @@ msgstr "Займите место в топ-5, чтобы получить по�
 msgid "Raw"
 msgstr "Сырой"
 
-#: src/features/Reader/components/Cards.tsx:107
+#: src/features/Reader/components/Cards.tsx:121
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Повторный импорт"
@@ -9166,7 +9220,7 @@ msgid "Set the goal of your learning"
 msgstr "Установите цель вашего обучения"
 
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:56
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:155
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:159
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Настройки"
@@ -9176,10 +9230,21 @@ msgstr "Настройки"
 msgid "Sexual content"
 msgstr "Сексуальный контент"
 
+#: src/features/Reader/components/Cards.tsx:109
+#: src/features/Reader/components/ShareBookModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Share"
+msgstr "Поделиться"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:116
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Поделитесь фразой, которую вы выучили сегодня (или которая вас запутала)"
+
+#: src/features/Reader/components/ShareBookModal.tsx:130
+#. js-lingui-explicit-id
+msgid "Share book"
+msgstr "Поделиться книгой"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -9194,6 +9259,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Поделитесь, что вы изучаете в данный момент"
+
+#: src/features/Reader/components/ShareBookModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Share with someone by email"
+msgstr "Поделиться с кем-то по электронной почте"
 
 #: src/features/Chat/ChatReplyModal.tsx:49
 #. js-lingui-explicit-id
@@ -9435,6 +9505,7 @@ msgstr ""
 "попробуйте снова позже."
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
 msgstr "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
@@ -9974,7 +10045,7 @@ msgstr "Поддерживающий друг"
 msgid "Swedish Learning Plan"
 msgstr "План обучения шведскому"
 
-#: src/features/Reader/components/BooksList.tsx:223
+#: src/features/Reader/components/BooksList.tsx:319
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Синхронизация вашей библиотеки…"
@@ -10438,6 +10509,29 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Это действие необратимо."
+
+#: src/features/Reader/components/ShareBookModal.tsx:83
+#. js-lingui-explicit-id
+msgid "This book is already shared with that user."
+msgstr "Эта книга уже поделена с этим пользователем."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:97
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared with other users. Deleting it will permanently remove "
+"it for everyone."
+msgstr ""
+"Эта книга доступна другим пользователям. Удаление её приведет к "
+"окончательному удалению для всех."
+
+#: src/features/Reader/components/DeleteBookModal.tsx:72
+#. js-lingui-explicit-id
+msgid ""
+"This book is shared. Removing it will only remove you from the list — the "
+"book will remain for other members."
+msgstr ""
+"Эта книга общая. Удаление её из списка удалит только вас — книга останется "
+"доступной для других участников."
 
 #: src/features/Chat/AgeConfirmation.tsx:65
 #. js-lingui-explicit-id
@@ -11085,6 +11179,11 @@ msgstr "Неизвестная ошибка"
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "Неизвестная ошибка при входе в систему"
+
+#: src/features/Reader/components/ShareBookModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Unknown owner"
+msgstr "Неизвестный владелец"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
@@ -12120,6 +12219,11 @@ msgid ""
 "top-5"
 msgstr "Вы лидер в таблице лидеров! Полный доступ активен, пока вы в топ-5."
 
+#: src/features/Reader/components/ShareBookModal.tsx:73
+#. js-lingui-explicit-id
+msgid "You are already the owner of this book."
+msgstr "Вы уже являетесь владельцем этой книги."
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -12555,7 +12659,7 @@ msgstr "Вы хорошо справляетесь. Взгляните на за
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Вы в хорошем ритме. Продолжайте с сегодняшними задачами."
 
-#: src/features/Reader/components/Cards.tsx:294
+#: src/features/Reader/components/Cards.tsx:308
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} загрузок"
