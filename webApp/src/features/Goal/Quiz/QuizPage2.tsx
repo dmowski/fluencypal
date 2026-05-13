@@ -217,8 +217,9 @@ const QuizQuestions = () => {
             <InfoStep
               title={i18n._(`Do you need a personalized plan?`)}
               subTitle={i18n._(
-                `If you want more tailored practice, I can create a plan based on your goals. Otherwise, you can skip this step and start practicing right away!`,
+                `If you'd like a more personalized practice, I can create a plan based on your goals. Or you can skip this step and start practicing right now!`,
               )}
+              actionButtonTitle={i18n._(`Create a plan`)}
               onClick={next}
               disabled={isStepLoading}
               isStepLoading={isStepLoading}

@@ -63,7 +63,6 @@ type QuizStep =
   | 'goalReview';
 
 const stepsViews: QuizStep[] = [
-  //'quizOrSkip',
   'learnLanguage',
   'before_nativeLanguage',
   'nativeLanguage',
@@ -71,7 +70,7 @@ const stepsViews: QuizStep[] = [
   'before_pageLanguage',
   'pageLanguage',
   'teacherSelection',
-
+  'quizOrSkip',
   'before_recordAbout',
   'recordAbout',
 

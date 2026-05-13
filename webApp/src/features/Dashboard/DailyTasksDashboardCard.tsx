@@ -51,7 +51,7 @@ export const DailyTasksDashboardCard = () => {
 
   const openLearningPlan = () => {
     if (!plan.nextElement?.id) {
-      alert(i18n._('No active lesson found. Please create a learning plan to access this task.'));
+      alert(i18n._('Please create a learning plan to start this task'));
       return;
     }
     plan.openElementModal(plan.nextElement.id);
