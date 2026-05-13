@@ -4,6 +4,9 @@
 
 ===========
 
+- Tune logic of Markdown page splitting.
+  Use proper markdown component to render content to check if it's fit.
+
 - Fix _long paragraph italic text on separate pages_
 
 - Setup domain book.fluencypal.com
