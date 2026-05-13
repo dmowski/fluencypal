@@ -15,12 +15,15 @@ import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
 import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
+import { getUrlStart } from '../Lang/getUrlStart';
+import { useRouter } from 'next/navigation';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
   const tasks = useDailyTasks();
   const stories = useStories();
   const plan = usePlan();
+  const router = useRouter();
 
   const globalModals = useGlobalModals();
 
@@ -51,7 +54,13 @@ export const DailyTasksDashboardCard = () => {
 
   const openLearningPlan = () => {
     if (!plan.nextElement?.id) {
-      alert(i18n._('Please create a learning plan to start this task'));
+      const isCreatePlan = confirm(
+        i18n._('You have not created a learning plan yet. Do you want to create one now?'),
+      );
+      if (isCreatePlan) {
+        const url = `${getUrlStart(settings.pageLanguageCode || 'en')}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`;
+        router.push(url);
+      }
       return;
     }
     plan.openElementModal(plan.nextElement.id);
