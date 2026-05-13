@@ -45,13 +45,18 @@ const extractMarkdownImageTokens = (paragraph: string): MarkdownImageToken[] => 
   return tokens;
 };
 
-const stripMarkdownImages = (paragraph: string): string => {
-  MARKDOWN_IMAGE_REGEX.lastIndex = 0;
-  return paragraph
-    .replace(MARKDOWN_IMAGE_REGEX, ' ')
+const stripInlineMarkdown = (text: string): string =>
+  text
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ') // images
+    .replace(/(\*\*|__)(.*?)\1/g, '$2') // bold
+    .replace(/(\*|_)(.*?)\1/g, '$2') // italic
+    .replace(/~~(.*?)~~/g, '$1') // strikethrough
+    .replace(/`([^`]+)`/g, '$1') // inline code
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // links → label only
     .replace(/\s{2,}/g, ' ')
     .trim();
-};
+
+const stripMarkdownForMeasurement = (paragraph: string): string => stripInlineMarkdown(paragraph);
 
 export function isFitInPage({
   paragraphs,
@@ -76,26 +81,27 @@ export function isFitInPage({
 
   const measureContainer = document.createElement('div');
   measureContainer.style.position = 'fixed';
-  measureContainer.style.left = '-99999px';
-  measureContainer.style.top = '0';
+  measureContainer.style.left = '-99980px';
+  measureContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+  measureContainer.style.zIndex = '9999';
+  measureContainer.style.top = '21px';
   measureContainer.style.visibility = 'hidden';
   measureContainer.style.pointerEvents = 'none';
   measureContainer.style.boxSizing = 'border-box';
+  measureContainer.style.display = 'flex';
+  measureContainer.style.flexDirection = 'column';
+  const paragraphGap = Math.max(0, settings.paragraphGap);
+  measureContainer.style.gap = `${paragraphGap}px`;
   measureContainer.style.width = `${settings.contentWidth}px`;
 
-  const paragraphGap = Math.max(0, settings.paragraphGap);
   const renderedImageMaxHeight = Math.max(0, settings.contentHeight * IMAGE_MAX_HEIGHT_RATIO);
-
   paragraphs.forEach((paragraph, index) => {
     const paragraphWrapper = document.createElement('div');
     paragraphWrapper.style.margin = '0';
     paragraphWrapper.style.padding = '0';
 
-    if (index < paragraphs.length - 1) {
-      paragraphWrapper.style.marginBottom = `${paragraphGap}px`;
-    }
+    const paragraphText = stripMarkdownForMeasurement(paragraph.text);
 
-    const paragraphText = stripMarkdownImages(paragraph.text);
     if (paragraphText) {
       const paragraphElement = document.createElement('p');
       paragraphElement.textContent = paragraphText;
