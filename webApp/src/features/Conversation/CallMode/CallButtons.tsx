@@ -401,7 +401,7 @@ Return ONLY the number.
               }}
             >
               {i18n._(
-                `With the free plan, you can only send 14 messages per conversation. You can either end the conversation or unlock full, unlimited access.`,
+                `With the free plan, you can only send a limited number of messages per conversation. You can either end the conversation or unlock full, unlimited access.`,
               )}
             </Typography>
           </Stack>
