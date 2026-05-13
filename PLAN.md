@@ -4,9 +4,9 @@
 
 ===========
 
-- Setup domain book.fluencypal.com
-
 - Fix _long paragraph italic text on separate pages_
+
+- Setup domain book.fluencypal.com
 
 - Automatic re-import, create parser version
 

@@ -295,6 +295,7 @@ const createMarkdownComponents = (
       style={{
         padding: '0 0 0 20px',
         margin: '5px 0',
+        fontSize: 'inherit',
       }}
     >
       {children}
@@ -310,7 +311,16 @@ const createMarkdownComponents = (
       {children}
     </ol>
   ),
-  li: ({ children }) => <Typography component={'li'}>{children}</Typography>,
+  li: ({ children }) => (
+    <Typography
+      component={'li'}
+      sx={{
+        fontSize: 'inherit',
+      }}
+    >
+      {children}
+    </Typography>
+  ),
   input: ({ checked }) => (
     <Checkbox
       checked={checked}
