@@ -1,8 +1,18 @@
 # Live document with short/long term ideas
 
+## News
+
+- Create API that expose country level news. Rephrase each news with AI. create 3 version for each news. (beginner, middle, advanced), return as markdown. Save in cache. In our database. use GNEWS_API_KEY
+
+- Create card on dashboard. With title. For now, only render it. Badge is "{COUNTRY}"
+
+- On reader, use my markdown reader (black theme). refactor it to make it possible. Or create regular Markdown?
+
+- Add feature "Discuss with AI"
+
 ## Reader
 
-- Run tests in isolated environment
+- How to arrange call
 
 - Setup domain book.fluencypal.com
 
