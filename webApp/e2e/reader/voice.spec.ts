@@ -9,6 +9,7 @@ import {
   closeSettingsPopover,
   enableVoiceOverSelectedText,
   ensureReaderTextVisible,
+  getPlayTextButtonLocator,
   installSpeechMock,
   openSeededGatsbyBook,
   openSettingsPopover,
@@ -94,4 +95,20 @@ test('voice over speaks new word when clicked right after previous word selectio
       }),
     )
     .toBeTruthy();
+});
+
+test('play icon button in highlight popover speaks selected word without voice-over setting', async ({
+  page,
+}) => {
+  await installSpeechMock(page);
+  await openSeededGatsbyBook(page);
+
+  await clickCriticizingWord(page);
+  await assertHighlightPopoverVisible(page);
+
+  const playButton = getPlayTextButtonLocator(page);
+  await expect(playButton).toBeVisible();
+  await playButton.click();
+
+  await assertCriticizingWordWasSpoken(page);
 });

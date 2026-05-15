@@ -26,3 +26,5 @@ export const getReaderHighlightPopoverLocator = (page: Page) =>
 
 export const getYellowHighlightButtonLocator = (page: Page) =>
   page.getByTestId('reader-highlight-color-Y');
+
+export const getPlayTextButtonLocator = (page: Page) => page.getByTestId('reader-play-text-button');

@@ -2,18 +2,16 @@
 
 ## Reader
 
-===========
+- Run tests in isolated environment
+
+- Setup domain book.fluencypal.com
 
 - Tune logic of Markdown page splitting.
   Use proper markdown component to render content to check if it's fit.
 
 - Fix _long paragraph italic text on separate pages_
 
-- Setup domain book.fluencypal.com
-
 - Automatic re-import, create parser version
-
-=================================
 
 - Separate app/url/PWA/Vision of the app
 
@@ -29,8 +27,6 @@ I think some user will like it. Maybe
 
 [3] I have a reader. And human teacher.
 I want to read book, and discuss it with my teacher. I want to share notes about the book with him, and keep it. And he can offer me books. And we keep track of books together. And teacher able to work on it with other students. We can see the progress. and explore role of AI here.
-
-- Share books, highlights, but not book settings. (auth, storage)
 
 =================================
 

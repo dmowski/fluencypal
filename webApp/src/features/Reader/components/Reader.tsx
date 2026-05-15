@@ -419,6 +419,9 @@ export const Reader = ({ data }: { data: Book }) => {
         isTranslationLoading={activePopover?.isTranslationLoading ?? false}
         activeColor={activeColor}
         onColorSelect={handleActiveColorSelect}
+        onPlayText={
+          activePopover ? () => speech.play(activePopover.selectionText.trim()) : undefined
+        }
       />
 
       {flyingTooltipNode}

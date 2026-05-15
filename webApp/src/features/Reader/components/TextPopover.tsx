@@ -1,4 +1,5 @@
-import { Popover, Stack, Typography } from '@mui/material';
+import { IconButton, Popover, Stack, Typography } from '@mui/material';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { RefObject } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -21,6 +22,7 @@ type TextPopoverProps = {
   paperRef?: RefObject<HTMLDivElement | null>;
   onClose: () => void;
   onColorSelect: (color: string) => void;
+  onPlayText?: () => void;
   activeColor?: string;
   translatedText?: string | null;
   isTranslationLoading?: boolean;
@@ -31,6 +33,7 @@ export const TextPopover = ({
   paperRef,
   onClose,
   onColorSelect,
+  onPlayText,
   activeColor,
   translatedText,
   isTranslationLoading,
@@ -99,7 +102,7 @@ export const TextPopover = ({
       }}
     >
       <Stack sx={{ gap: '5px', padding: '6px', minWidth: '150px' }}>
-        <Stack direction="row" sx={{ gap: '4px' }}>
+        <Stack direction="row" sx={{ gap: '4px', alignItems: 'center' }}>
           {HIGHLIGHT_COLORS.map((color) => {
             const shortcut = COLOR_SHORTCUTS[color];
             return (
@@ -132,6 +135,18 @@ export const TextPopover = ({
               </Stack>
             );
           })}
+          <IconButton
+            data-testid="reader-play-text-button"
+            size="small"
+            onClick={onPlayText}
+            sx={{
+              marginLeft: 'auto',
+              padding: '2px',
+              color: '#333',
+            }}
+          >
+            <PlayArrowIcon fontSize="small" />
+          </IconButton>
         </Stack>
 
         {isTranslationLoading ? (
