@@ -1,6 +1,6 @@
 import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
 import { ChevronLeft, ChevronRight, CircleEllipsis, Info, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { type MouseEvent, type PointerEvent, useEffect, useRef, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -35,6 +35,7 @@ export const BookInfoButton = ({
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [activeView, setActiveView] = useState<ModalView>('menu');
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const wasInfoOpenTriggeredByPointer = useRef(false);
 
   const open = Boolean(anchorEl);
 
@@ -48,6 +49,36 @@ export const BookInfoButton = ({
       setActiveView('menu');
     }
   }, [open]);
+
+  const openModal = (button: HTMLButtonElement) => {
+    setAnchorEl(button);
+  };
+
+  const handleInfoPointerDown = (event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    wasInfoOpenTriggeredByPointer.current = true;
+    openModal(event.currentTarget);
+  };
+
+  const handleInfoPointerUp = (event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  const handleInfoClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (wasInfoOpenTriggeredByPointer.current) {
+      wasInfoOpenTriggeredByPointer.current = false;
+      return;
+    }
+
+    // Keep keyboard activation (Enter/Space) working on IconButton.
+    openModal(event.currentTarget);
+  };
 
   const closeModal = () => setAnchorEl(null);
 
@@ -63,7 +94,9 @@ export const BookInfoButton = ({
   return (
     <>
       <IconButton
-        onClick={(event) => setAnchorEl(event.currentTarget)}
+        onPointerDown={handleInfoPointerDown}
+        onPointerUp={handleInfoPointerUp}
+        onClick={handleInfoClick}
         aria-label={i18n._('Book info')}
         sx={{
           position: 'fixed',

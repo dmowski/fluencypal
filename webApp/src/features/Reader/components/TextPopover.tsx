@@ -1,7 +1,7 @@
 import { IconButton, Popover, Stack, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { RefObject } from 'react';
-import { useEffect, useState } from 'react';
+import { type MouseEvent, type PointerEvent, type RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const HIGHLIGHT_COLORS = ['#FFE066', '#FFB3C6', '#BDE0FE', '#CDEAC0', '#E9D5FF'];
 
@@ -39,6 +39,37 @@ export const TextPopover = ({
   isTranslationLoading,
 }: TextPopoverProps) => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const wasPlayTriggeredByPointer = useRef(false);
+
+  const playSelectionText = () => {
+    onPlayText();
+  };
+
+  const handlePlayPointerDown = (event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    wasPlayTriggeredByPointer.current = true;
+    playSelectionText();
+  };
+
+  const handlePlayClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (wasPlayTriggeredByPointer.current) {
+      wasPlayTriggeredByPointer.current = false;
+      return;
+    }
+
+    // Keep keyboard activation (Enter/Space) working on IconButton.
+    playSelectionText();
+  };
+
+  const handlePlayPointerUp = (event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -138,7 +169,9 @@ export const TextPopover = ({
           <IconButton
             data-testid="reader-play-text-button"
             size="small"
-            onClick={onPlayText}
+            onPointerDown={handlePlayPointerDown}
+            onPointerUp={handlePlayPointerUp}
+            onClick={handlePlayClick}
             sx={{
               marginLeft: 'auto',
               padding: '2px',
