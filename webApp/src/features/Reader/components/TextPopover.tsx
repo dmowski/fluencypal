@@ -22,7 +22,7 @@ type TextPopoverProps = {
   paperRef?: RefObject<HTMLDivElement | null>;
   onClose: () => void;
   onColorSelect: (color: string) => void;
-  onPlayText?: () => void;
+  onPlayText: () => void;
   activeColor?: string;
   translatedText?: string | null;
   isTranslationLoading?: boolean;
