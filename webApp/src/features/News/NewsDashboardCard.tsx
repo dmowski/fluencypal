@@ -8,6 +8,7 @@ import { StoreCard } from '../uiKit/Card/StoreCard/StoreCard';
 import type { CardItem } from '../uiKit/Card/StoreCard/types';
 import { useSettings } from '../Settings/useSettings';
 
+import { NewsSettingsMenu } from './NewsSettingsMenu';
 import { useNews } from './useNews';
 import type { NewsItemSummary } from './types';
 
@@ -48,11 +49,15 @@ export const NewsDashboardCard = () => {
 
   return (
     <Stack data-testid="news-dashboard-card" sx={{ gap: '20px' }}>
-      <SectionHeader
-        title={i18n._('Current Events')}
-        subTitle={i18n._('AI-generated English learning content inspired by current events')}
-      />
-
+      <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '10px' }}>
+        <Stack sx={{ flex: 1, minWidth: 0 }}>
+          <SectionHeader
+            title={i18n._('Current Events')}
+            subTitle={i18n._('AI-generated English learning content inspired by current events')}
+          />
+        </Stack>
+        <NewsSettingsMenu />
+      </Stack>
       <StoreCard
         textColor={'#fff'}
         backgroundColor={NEWS_CARD_BG}

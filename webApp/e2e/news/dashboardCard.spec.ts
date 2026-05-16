@@ -33,7 +33,7 @@ test.describe('News dashboard card', () => {
         id: 'n1',
         title: 'Mocked headline ONE',
         subTitle: 'Sub ONE',
-        imageUrl: 'https://example.com/1.jpg',
+        imageUrl: 'https://images.unsplash.com/n1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
         topic: 'general',
@@ -42,7 +42,7 @@ test.describe('News dashboard card', () => {
         id: 'n2',
         title: 'Mocked headline TWO',
         subTitle: 'Sub TWO',
-        imageUrl: 'https://example.com/2.jpg',
+        imageUrl: 'https://images.unsplash.com/n2.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
         topic: 'general',
@@ -51,7 +51,7 @@ test.describe('News dashboard card', () => {
         id: 'n3',
         title: 'Mocked headline THREE',
         subTitle: 'Sub THREE',
-        imageUrl: 'https://example.com/3.jpg',
+        imageUrl: 'https://images.unsplash.com/n3.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
         topic: 'general',
@@ -81,11 +81,10 @@ test.describe('News dashboard card', () => {
     // Country badge.
     await expect(card.getByText('United States', { exact: true })).toBeVisible();
 
-    // First item title is the card headline.
-    await expect(card.getByText('Mocked headline ONE', { exact: true })).toBeVisible();
+    // First item title is the card headline (h4) AND the first list row (h6) → 2 matches expected.
+    await expect(card.getByText('Mocked headline ONE', { exact: true })).toHaveCount(2);
 
-    // All three rows render with their titles.
-    await expect(card.getByText('Mocked headline ONE', { exact: true })).toBeVisible();
+    // The other two rows render with their titles.
     await expect(card.getByText('Mocked headline TWO', { exact: true })).toBeVisible();
     await expect(card.getByText('Mocked headline THREE', { exact: true })).toBeVisible();
   });
