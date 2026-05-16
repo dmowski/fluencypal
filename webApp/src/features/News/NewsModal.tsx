@@ -220,7 +220,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   )}
                   <Chip
                     size="small"
-                    label={i18n._(NEWS_COMPLEXITY_LABELS[complexity])}
+                    label={NEWS_COMPLEXITY_LABELS[complexity]}
                     data-testid="news-modal-complexity"
                     sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
                   />
