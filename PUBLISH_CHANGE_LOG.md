@@ -1,3 +1,26 @@
+# Social Media Change Log — May 9–16, 2026
+
+> **Commits:** `ab23e861` → `a9b4fdc6`
+> **Period:** 2026-05-09 to 2026-05-16
+
+---
+
+### Post 1 — You can now share books with other learners
+
+Pick any book in your library and invite someone by email. They get access to the same book in their own account — all their progress and highlights stay separate, but you're reading the same material.
+
+Owners can remove collaborators at any time. Collaborators can leave whenever they want. A simple way to study together without juggling shared logins or sending files back and forth.
+
+---
+
+### Post 2 — Tap to hear any highlighted text while reading
+
+The Reader now has a play button right inside the highlight popover.
+
+Select a word or phrase, and you'll see a small speaker icon appear next to the translation. Tap it and the app reads the text aloud — no need to leave the page or copy anything. Useful when you want to hear pronunciation before you continue reading.
+
+---
+
 # Social Media Change Log — March 30 – April 15, 2026
 
 > **Commits:** `c6ccac3e` → `37a223a8`

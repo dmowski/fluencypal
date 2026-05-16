@@ -4,6 +4,72 @@ All notable changes to this project are documented here.
 
 ---
 
+## [Unreleased] — 2026-05-09 to 2026-05-16
+
+**Commits:** [`ab23e861...a9b4fdc6`](../../compare/ab23e861668c83bf5e024daa4bc6eef6813b45c7...a9b4fdc6e68466c002dff593f437b749ef8cbd7b)
+
+---
+
+### Added
+
+#### Book Sharing & Collaboration
+
+- Implement shared books database schema with Firestore (`50964ce8`)
+- Implement `ShareBookModal` and integrate into book deletion flow (`14bcf5db`)
+- Implement book sharing via email invitations (`68dd50b1`)
+- Implement book deletion for owners and leave functionality for collaborators (`991afda3`)
+
+#### Reader — Highlight Voice Playback
+
+- Add play icon button to highlight popover for voice playback (`4936266d`)
+- Enhance pointer event handling for play and info buttons in Reader components (`f1bdd84b`)
+- Ensure `onPlayText` is always defined in `TextPopover` props (`2c906c60`)
+
+#### Reader — Personalized Highlights
+
+- Add `userId` to highlight handling for personalized annotations (`d35aaa64`)
+
+#### News Feature Enhancements
+
+- Refactor news fetching and processing to support language-specific content (`c4a4962d`)
+- Implement country selection in news settings with gNews country codes support (`57d29774`)
+- Integrate daily tasks into news management and improve image URL handling (`20351250`)
+- Enhance news fetching with improved country support and image rendering (`fb8c735d`)
+- Normalize account country to lowercase for consistency in news fetching (`8fd4b62d`)
+- Update news caching mechanism and enhance `NewsDashboardCard` styling (`6e191142`)
+- Prevent news fetch calls without user authentication in `NewsProvider` (`407ad252`)
+
+#### Book Page Routing
+
+- Configure URL rewrites for book paths and add automatic re-import parser version (`ab23e861`)
+- Add URL rewrite for book path and simplify metadata generation in `BookPage` (`5a87273a`)
+- Update book page routing and enhance UI theme integration (`973e2f33`)
+
+### Changed
+
+- Update AI conversation modes and clarify real-time checks (`9e949028`)
+- Wrap Markdown component in Stack for improved styling and layout in Reader (`cad4a942`)
+- Adjust `BookInfoButton` layout for improved UI spacing and positioning (`80ab58ff`)
+
+### Fixed
+
+- Enhance `NewsModal` styling and loading/error handling for better user experience (`e5fbdd6d`)
+- Clear stale items in `NewsProvider` to improve loading state visibility (`ee412785`)
+- Update title and subtitle in `NewsDashboardCard` for clarity (`3ece9bcb`)
+- Update message limit for free plan to reflect correct value (`47f87a1d`)
+- Remove unnecessary URL rewrite for book path in `next.config.ts` (`3f9225ee`)
+
+### Infrastructure
+
+- Apply `ua-parser-js` patch and add dependency overrides for security (`6b87358a`)
+- Update dependencies in `package.json` and `pnpm-lock.yaml` for compatibility (`5429f1da`)
+- Streamline markdown stripping logic and enhance measurement container styling (`67cfae86`)
+- Update Markdown page splitting logic for improved rendering (`571571c7`)
+- Standardize font size in list items and markdown components (`218b431d`)
+- Enhance navigation and selection e2e tests with improved timeout handling (`7dd7e07f`)
+
+---
+
 ## [Unreleased] — 2026-03-30 to 2026-04-15
 
 **Commits:** [`c6ccac3e...37a223a8`](../../compare/c6ccac3e49f06730b525e1b989c07fba97719892...37a223a8568a7303941f5faf04294589936b30b7)
