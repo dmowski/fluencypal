@@ -14,11 +14,13 @@ import {
 import {
   collection,
   deleteDoc,
+  doc,
   getDocs,
   getFirestore,
   initializeFirestore,
   persistentLocalCache,
   persistentMultipleTabManager,
+  setDoc,
 } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
@@ -87,6 +89,8 @@ if (!isNodeEnv && isFirebaseEmulator) {
     storage,
     signInWithEmailAndPassword,
     signOut,
+    doc,
+    setDoc,
   };
 }
 
