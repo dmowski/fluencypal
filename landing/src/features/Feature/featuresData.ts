@@ -286,9 +286,7 @@ This makes daily practice simple, consistent, and useful for real spoken English
     {
       id: 'news-discussion',
       title: i18n._('English Practice with Today\u2019s News'),
-      subTitle: i18n._(
-        'Read AI-rewritten news at your level and discuss the story with the AI.',
-      ),
+      subTitle: i18n._('Read AI-rewritten news at your level and discuss the story with the AI.'),
       metaTitle: i18n._('English Practice with Today\u2019s News | FluencyPal'),
       metaDescription: i18n._(
         'Practice English with today\u2019s news. FluencyPal rewrites real headlines at your level and lets you discuss the story with an AI tutor.',
