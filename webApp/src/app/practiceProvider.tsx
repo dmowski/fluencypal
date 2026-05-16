@@ -34,6 +34,7 @@ import { DailyTasksProvider } from '@/features/Tasks/useDailyTasks';
 import { GrammarImprovementProvider } from '@/features/Dashboard/Grammar/useGrammarImprovement';
 import { ProgressStatsProvider } from '@/features/ProgressStat/useProgressStats';
 import { EssayProvider } from '@/features/Essay/useEssay';
+import { NewsProvider } from '@/features/News/useNews';
 
 const oldStandardTT = Old_Standard_TT({
   subsets: ['latin'],
@@ -77,8 +78,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                                 <StoriesProvider>
                                                                   <CommunitySpaceProvider>
                                                                     <EssayProvider>
-                                                                      {children}
-                                                                      <GlobalModals />
+                                                                      <NewsProvider>
+                                                                        {children}
+                                                                        <GlobalModals />
+                                                                      </NewsProvider>
                                                                     </EssayProvider>
                                                                   </CommunitySpaceProvider>
                                                                 </StoriesProvider>
