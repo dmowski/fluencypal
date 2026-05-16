@@ -5,6 +5,9 @@
 ## News
 
 - Separate page for news feature? why?
+  To easy share with instagram.
+
+- Set news language level, based on user progress, stats. Until they change it manually?
 
 - How to inform user's about that feature? Daily tasks.
 
