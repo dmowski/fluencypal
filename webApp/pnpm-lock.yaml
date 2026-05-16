@@ -23,6 +23,9 @@ importers:
       '@formatjs/intl-localematcher':
         specifier: ^0.6.2
         version: 0.6.2
+      '@gnews-io/gnews-io-js':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@google-cloud/firestore':
         specifier: ^8.5.0
         version: 8.5.0
@@ -1235,6 +1238,10 @@ packages:
 
   '@formatjs/intl-localematcher@0.6.2':
     resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
+
+  '@gnews-io/gnews-io-js@3.0.0':
+    resolution: {integrity: sha512-8lZOSJpSbyY2+WDCpzTSkEOuR8LLEFNmRKgq+tFc0n6oSRusb1QBzHhZKH+JeMHbYGWOQ/V3eMCFROnhi+u2ww==}
+    engines: {node: '>=24'}
 
   '@google-cloud/common@6.0.0':
     resolution: {integrity: sha512-IXh04DlkLMxWgYLIUYuHHKXKOUwPDzDgke1ykkkJPe48cGIS9kkL2U/o0pm4ankHLlvzLF/ma1eO86n/bkumIA==}
@@ -7332,6 +7339,9 @@ packages:
   third-party-web@0.29.0:
     resolution: {integrity: sha512-nBDSJw5B7Sl1YfsATG2XkW5qgUPODbJhXw++BKygi9w6O/NKS98/uY/nR/DxDq2axEjL6halHW1v+jhm/j1DBQ==}
 
+  third-party-web@0.29.2:
+    resolution: {integrity: sha512-fegtha91tq2DHphyoiBXVHjVi2YG9zFaRnboT9C28tO1en9Y3wJsfspuy40F+u5wl3hHVbw7cnd1b67kEGHb8g==}
+
   threads@1.7.0:
     resolution: {integrity: sha512-Mx5NBSHX3sQYR6iI9VYbgHKBLisyB+xROCBGjjWm1O9wb9vfLxdaGtmT/KCjUqMsSNW6nERzCW3T6H43LqjDZQ==}
 
@@ -7527,6 +7537,9 @@ packages:
   uint8array-extras@1.5.0:
     resolution: {integrity: sha512-rvKSBiC5zqCCiDZ9kAOszZcDvdAHwwIKJG33Ykj43OKcWsnmcBRL09YTU4nOeHZ8Y2a7l1MgTd08SBe9A8Qj6A==}
     engines: {node: '>=18'}
+
+  undici-types@6.25.0:
+    resolution: {integrity: sha512-vOw74RVVYFtnooUkZPxsY1GuuNNupSrCcANIAaDekpZ/Dp1sBuLLl5n2UCKpzxgmOwD66S4Jj24MrhmcDG+0vw==}
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
@@ -9124,6 +9137,10 @@ snapshots:
   '@formatjs/intl-localematcher@0.6.2':
     dependencies:
       tslib: 2.8.1
+
+  '@gnews-io/gnews-io-js@3.0.0':
+    dependencies:
+      undici-types: 6.25.0
 
   '@google-cloud/common@6.0.0':
     dependencies:
@@ -10749,7 +10766,7 @@ snapshots:
   '@paulirish/trace_engine@0.0.64':
     dependencies:
       legacy-javascript: 0.0.1
-      third-party-web: 0.29.0
+      third-party-web: 0.29.2
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -16433,6 +16450,8 @@ snapshots:
 
   third-party-web@0.29.0: {}
 
+  third-party-web@0.29.2: {}
+
   threads@1.7.0:
     dependencies:
       callsites: 3.1.0
@@ -16626,6 +16645,8 @@ snapshots:
     optional: true
 
   uint8array-extras@1.5.0: {}
+
+  undici-types@6.25.0: {}
 
   undici-types@7.16.0: {}
 
