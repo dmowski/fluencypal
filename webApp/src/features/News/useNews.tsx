@@ -218,15 +218,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     const key = `${country}|${languageCode}`;
     if (inFlightKey.current === key) return;
     void fetchToday(key, country, countryName, languageCode, languageName);
-  }, [
-    country,
-    countryName,
-    languageCode,
-    languageName,
-    fetchToday,
-    auth.uid,
-    userSettingsLoaded,
-  ]);
+  }, [country, countryName, languageCode, languageName, fetchToday, auth.uid, userSettingsLoaded]);
 
   // Keep refs in sync so the setters below can persist all fields without
   // re-creating themselves on every render.
