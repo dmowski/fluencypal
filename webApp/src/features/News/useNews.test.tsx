@@ -46,7 +46,17 @@ describe('useNews', () => {
       userSettings: { country: 'us', countryName: 'United States' },
     });
     mockGetTodayNewsRequest.mockResolvedValue({
-      items: [{ id: 'n1', title: 'T', subTitle: '', imageUrl: '', dateIso: '', countryCode: 'us', topic: 'general' }],
+      items: [
+        {
+          id: 'n1',
+          title: 'T',
+          subTitle: '',
+          imageUrl: '',
+          dateIso: '',
+          countryCode: 'us',
+          topic: 'general',
+        },
+      ],
     });
 
     const { result } = renderHook(() => useNews(), { wrapper });

@@ -18,12 +18,7 @@ import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 
 import { DEFAULT_NEWS_COMPLEXITY, DEFAULT_NEWS_TOPIC } from './constants';
-import type {
-  NewsItem,
-  NewsItemSummary,
-  NewsLanguageComplexity,
-  NewsTopic,
-} from './types';
+import type { NewsItem, NewsItemSummary, NewsLanguageComplexity, NewsTopic } from './types';
 
 const STORAGE_KEY = 'news.settings.v1';
 
@@ -102,9 +97,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const [complexity, setComplexityState] = useState<NewsLanguageComplexity>(
     persisted.current.complexity ?? DEFAULT_NEWS_COMPLEXITY,
   );
-  const [topic, setTopicState] = useState<NewsTopic>(
-    persisted.current.topic ?? DEFAULT_NEWS_TOPIC,
-  );
+  const [topic, setTopicState] = useState<NewsTopic>(persisted.current.topic ?? DEFAULT_NEWS_TOPIC);
 
   const [items, setItems] = useState<NewsItemSummary[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);

@@ -29,9 +29,33 @@ test.describe('News dashboard card', () => {
     test.setTimeout(90_000);
 
     const fixtureItems = [
-      { id: 'n1', title: 'Mocked headline ONE', subTitle: 'Sub ONE', imageUrl: 'https://example.com/1.jpg', dateIso: new Date().toISOString(), countryCode: 'us', topic: 'general' },
-      { id: 'n2', title: 'Mocked headline TWO', subTitle: 'Sub TWO', imageUrl: 'https://example.com/2.jpg', dateIso: new Date().toISOString(), countryCode: 'us', topic: 'general' },
-      { id: 'n3', title: 'Mocked headline THREE', subTitle: 'Sub THREE', imageUrl: 'https://example.com/3.jpg', dateIso: new Date().toISOString(), countryCode: 'us', topic: 'general' },
+      {
+        id: 'n1',
+        title: 'Mocked headline ONE',
+        subTitle: 'Sub ONE',
+        imageUrl: 'https://example.com/1.jpg',
+        dateIso: new Date().toISOString(),
+        countryCode: 'us',
+        topic: 'general',
+      },
+      {
+        id: 'n2',
+        title: 'Mocked headline TWO',
+        subTitle: 'Sub TWO',
+        imageUrl: 'https://example.com/2.jpg',
+        dateIso: new Date().toISOString(),
+        countryCode: 'us',
+        topic: 'general',
+      },
+      {
+        id: 'n3',
+        title: 'Mocked headline THREE',
+        subTitle: 'Sub THREE',
+        imageUrl: 'https://example.com/3.jpg',
+        dateIso: new Date().toISOString(),
+        countryCode: 'us',
+        topic: 'general',
+      },
     ];
 
     await page.route('**/api/news/getTodayNews', async (route) => {
