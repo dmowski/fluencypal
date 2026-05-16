@@ -1,16 +1,21 @@
 # Live document with short/long term ideas
 
-## PWA for app
+- Fix vulnerabilities
+- Update changelog
 
 ## News
 
-- Separate page for news feature?
+- Separate page for news feature? why?
 
 - How to inform user's about that feature? Daily tasks.
 
 - How to measure it it's useful
 
 - Integrate with daily tasks: "Discuss news with AI"?
+
+## PWA for app
+
+Setup PWA for webApp. Ensure e2e, linters, tests
 
 ## Reader
 
