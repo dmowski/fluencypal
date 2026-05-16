@@ -2,24 +2,7 @@
 
 ## News
 
-1.  I just don't understand why each refresh, I see new news.
-    It should remain the same during the day. Is it because cache mechanism doesn't work?
-    Fix it.
-    Each refresh should show the same day news.
-
-2.  webApp/src/features/News/NewsDashboardCard.tsx use images from news on items, instead of currency icons
-
-3.  We need translate titles and subtitles too. To user's target language.
-
-4.  Update all places that has hardcoded "English". Our platform not only for "English" learning.
-    Take it from webApp/src/features/Settings/useSettings.tsx languageCode.
-    Update database structure to reflect that.
-
-5.  I still see problem with news content, I selected category "Technology", but still see news about politic. Can we just remove topics at all. and just use most any news on selected country.
-
-Fix this moments in order that feels appropriate to you. Ensure e2e updated too.
-
-- Integrate with daily tasks
+- Integrate with daily tasks: "Discuss news with AI"
 
 ## Reader
 

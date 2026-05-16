@@ -1,43 +1,13 @@
 import type { IconName } from 'lucide-react/dynamic';
-import type { NewsItemIconHint, NewsLanguageComplexity, NewsTopic } from './types';
+import type { NewsItemIconHint, NewsLanguageComplexity } from './types';
 
 export const DEFAULT_NEWS_COMPLEXITY: NewsLanguageComplexity = 'middle';
-export const DEFAULT_NEWS_TOPIC: NewsTopic = 'general';
 
 /** Number of news items shown in the dashboard card. */
 export const NEWS_DASHBOARD_ITEMS_COUNT = 3;
 
-/** All topics in the order they should appear in the settings menu. */
-export const NEWS_TOPIC_OPTIONS: NewsTopic[] = [
-  'general',
-  'world',
-  'nation',
-  'business',
-  'technology',
-  'entertainment',
-  'sports',
-  'science',
-  'health',
-];
-
 /** All complexity levels in the order they should appear in the settings menu. */
 export const NEWS_COMPLEXITY_OPTIONS: NewsLanguageComplexity[] = ['beginner', 'middle', 'advance'];
-
-/**
- * Display labels are intentionally plain English strings; they are wrapped with
- * `i18n._()` at the call site so lingui can extract them.
- */
-export const NEWS_TOPIC_LABELS: Record<NewsTopic, string> = {
-  general: 'General',
-  world: 'World',
-  nation: 'Nation',
-  business: 'Business',
-  technology: 'Technology',
-  entertainment: 'Entertainment',
-  sports: 'Sports',
-  science: 'Science',
-  health: 'Health',
-};
 
 export const NEWS_COMPLEXITY_LABELS: Record<NewsLanguageComplexity, string> = {
   beginner: 'Beginner',

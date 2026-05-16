@@ -21,7 +21,7 @@ test.describe('News modal — Discuss with AI', () => {
         imageUrl: 'https://images.unsplash.com/d1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general' as const,
+        languageCode: 'en',
       },
     ];
 

@@ -7,13 +7,20 @@ export interface SeedNewsItemInput {
   id: string;
   title: string;
   subTitle?: string;
+  titleOrigin?: string;
+  subTitleOrigin?: string;
   content_origin?: string;
   imageUrl?: string;
   sourceImageUrl?: string;
   dateIso?: string;
+  /** UTC YYYY-MM-DD; defaults to today so the cache-day query matches. */
+  dayKey?: string;
   countryCode: string;
   countryName?: string;
-  topic: string;
+  /** Target learning language code; defaults to 'en'. */
+  languageCode?: string;
+  /** Target learning language display name; defaults to 'English'. */
+  languageName?: string;
   sourceUrl?: string;
   versions?: { beginner: string; middle: string; advance: string } | null;
 }
@@ -62,21 +69,27 @@ const toFirestoreFields = (obj: Record<string, unknown>): Record<string, Firesto
  * the Node test process (no `page` needed).
  */
 export const seedNewsItem = async (input: SeedNewsItemInput): Promise<void> => {
+  const nowIso = new Date().toISOString();
+  const dayKey = input.dayKey ?? nowIso.slice(0, 10);
   const doc = {
     id: input.id,
     title: input.title,
     subTitle: input.subTitle ?? '',
+    titleOrigin: input.titleOrigin ?? input.title,
+    subTitleOrigin: input.subTitleOrigin ?? input.subTitle ?? '',
     content_origin: input.content_origin ?? '',
     imageUrl: input.imageUrl ?? '',
     sourceImageUrl: input.sourceImageUrl ?? '',
-    dateIso: input.dateIso ?? new Date().toISOString(),
+    dateIso: input.dateIso ?? nowIso,
+    dayKey,
     countryCode: input.countryCode.trim().toLowerCase(),
     countryName: input.countryName ?? 'United States',
-    topic: input.topic,
+    languageCode: (input.languageCode ?? 'en').trim().toLowerCase(),
+    languageName: input.languageName ?? 'English',
     sourceUrl: input.sourceUrl ?? `https://example.com/${input.id}`,
     versions:
       input.versions === undefined ? { beginner: 'B', middle: 'M', advance: 'A' } : input.versions,
-    createdAtIso: new Date().toISOString(),
+    createdAtIso: nowIso,
   };
 
   const url =

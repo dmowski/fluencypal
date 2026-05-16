@@ -51,15 +51,24 @@ export const NewsDashboardCard = () => {
   const summaries: NewsItemSummary[] = news.items ?? [];
   const firstItem = summaries[0];
 
-  const cardItems: CardItem[] = summaries.slice(0, 3).map((item, index) => ({
-    title: trimTitle(item.title),
-    subTitle: item.subTitle,
-    actionButtonTitle: i18n._('Read'),
-    iconName: 'newspaper',
-    iconBgColor: ROW_ICON_BG_PALETTE[index % ROW_ICON_BG_PALETTE.length],
-    imageUrl: item.imageUrl || undefined,
-    onClick: () => newsModal.openNews(item.id),
-  }));
+  const cardItems: CardItem[] = summaries.slice(0, 3).map((item, index) => {
+    const hasImage = !!item.imageUrl;
+    return {
+      title: trimTitle(item.title),
+      subTitle: item.subTitle,
+      actionButtonTitle: i18n._('Read'),
+      // CardItemIcon prefers iconName over imageUrl, so omit the icon entirely
+      // when we have a real article image — otherwise the user always sees the
+      // generic newspaper glyph instead of the story photo.
+      ...(hasImage
+        ? { imageUrl: item.imageUrl }
+        : {
+            iconName: 'newspaper',
+            iconBgColor: ROW_ICON_BG_PALETTE[index % ROW_ICON_BG_PALETTE.length],
+          }),
+      onClick: () => newsModal.openNews(item.id),
+    };
+  });
 
   // Distinguish loading vs empty vs error so the card doesn't look stuck on
   // "Loading news..." after the fetch resolves with no items.
@@ -95,7 +104,7 @@ export const NewsDashboardCard = () => {
         <Stack sx={{ flex: 1, minWidth: 0 }}>
           <SectionHeader
             title={i18n._('Current Events')}
-            subTitle={i18n._('AI-generated English learning content inspired by current events')}
+            subTitle={i18n._('AI-generated language learning content inspired by current events')}
           />
         </Stack>
         <NewsSettingsMenu />

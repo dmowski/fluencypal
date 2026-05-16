@@ -1,4 +1,4 @@
-import { NewsItem, NewsTopic } from '@/features/News/types';
+import { NewsItem } from '@/features/News/types';
 import { getDB } from '../config/firebase';
 import { sendTelegramMessageServer } from '../telegram/sendTelegramMessage';
 import { getNewsDayKey } from './buildNewsId';
@@ -6,34 +6,28 @@ import { getNewsDayKey } from './buildNewsId';
 const NEWS_COLLECTION = 'news';
 
 /**
- * Today's window in UTC as ISO timestamps (start inclusive, end exclusive).
- */
-const getTodayUtcRange = (): { startIso: string; endIso: string } => {
-  const today = getNewsDayKey(new Date().toISOString());
-  const start = new Date(`${today}T00:00:00.000Z`);
-  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-  return { startIso: start.toISOString(), endIso: end.toISOString() };
-};
-
-/**
- * Fetch cached news items for the given country/topic published today (UTC).
+ * Fetch cached news items for the given country/language populated today (UTC).
+ *
+ * The query is keyed on `dayKey` (the UTC day-string we stamp at cache-write
+ * time), NOT on the source `publishedAt`. That guarantees today's lookups
+ * always find what we populated today, even for articles that the source
+ * published late yesterday.
  */
 export const getCachedTodayNews = async ({
   countryCode,
-  topic,
+  languageCode,
 }: {
   countryCode: string;
-  topic: NewsTopic;
+  languageCode: string;
 }): Promise<NewsItem[]> => {
   try {
     const db = getDB();
-    const { startIso, endIso } = getTodayUtcRange();
+    const today = getNewsDayKey(new Date().toISOString());
     const snapshot = await db
       .collection(NEWS_COLLECTION)
       .where('countryCode', '==', countryCode.trim().toLowerCase())
-      .where('topic', '==', topic)
-      .where('dateIso', '>=', startIso)
-      .where('dateIso', '<', endIso)
+      .where('languageCode', '==', languageCode.trim().toLowerCase())
+      .where('dayKey', '==', today)
       .get();
 
     return snapshot.docs.map((d) => d.data() as NewsItem);

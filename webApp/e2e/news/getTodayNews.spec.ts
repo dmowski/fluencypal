@@ -12,7 +12,7 @@ test.describe('/api/news/getTodayNews', () => {
     await resetEmulatorState();
   });
 
-  test('returns up to 3 cached summaries for the requested country/topic', async ({ page }) => {
+  test('returns up to 3 cached summaries for the requested country/language', async ({ page }) => {
     test.setTimeout(90_000);
 
     const { uid, email } = await signInPracticeWithStepper(page);
@@ -28,19 +28,21 @@ test.describe('/api/news/getTodayNews', () => {
         imageUrl: `https://example.com/img-${i}.jpg`,
         dateIso: today,
         countryCode: 'us',
-        topic: 'general',
+        languageCode: 'en',
+        languageName: 'English',
         sourceUrl: `https://example.com/article-${i}`,
       });
     }
 
-    // A doc that must NOT appear in the response (different topic).
+    // A doc that must NOT appear in the response (different target language).
     await seedNewsItem({
-      id: 'e2e-news-other-topic',
-      title: 'Sports headline',
+      id: 'e2e-news-other-language',
+      title: 'Spanish-target headline',
       dateIso: today,
       countryCode: 'us',
-      topic: 'sports',
-      sourceUrl: 'https://example.com/sports',
+      languageCode: 'es',
+      languageName: 'Spanish',
+      sourceUrl: 'https://example.com/es',
     });
 
     const token = await getCurrentIdToken(page);
@@ -56,7 +58,8 @@ test.describe('/api/news/getTodayNews', () => {
           body: JSON.stringify({
             countryCode: 'us',
             countryName: 'United States',
-            topic: 'general',
+            languageCode: 'en',
+            languageName: 'English',
           }),
         });
         return { status: r.status, body: await r.json() };
@@ -68,14 +71,14 @@ test.describe('/api/news/getTodayNews', () => {
     const items = apiResponse.body.items as Array<{
       id: string;
       title: string;
-      topic: string;
+      languageCode: string;
       countryCode: string;
       dateIso: string;
       imageUrl: string;
     }>;
     expect(items).toHaveLength(3);
     for (const item of items) {
-      expect(item.topic).toBe('general');
+      expect(item.languageCode).toBe('en');
       expect(item.countryCode).toBe('us');
       expect(item.title).toMatch(/^Headline \d$/);
     }
@@ -92,7 +95,8 @@ test.describe('/api/news/getTodayNews', () => {
         body: JSON.stringify({
           countryCode: 'us',
           countryName: 'United States',
-          topic: 'general',
+          languageCode: 'en',
+          languageName: 'English',
         }),
       });
       return { status: r.status };

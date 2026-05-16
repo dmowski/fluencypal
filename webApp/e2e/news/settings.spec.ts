@@ -5,33 +5,33 @@ import {
   signInPracticeWithStepper,
 } from '../libs/practice';
 
-const makeFixture = (topic: string) => [
+const makeFixture = (label: string) => [
   {
-    id: `${topic}-1`,
-    title: `Headline ${topic.toUpperCase()} 1`,
+    id: `${label}-1`,
+    title: `Headline ${label.toUpperCase()} 1`,
     subTitle: 'Sub 1',
     imageUrl: 'https://images.unsplash.com/a.jpg',
     dateIso: new Date().toISOString(),
     countryCode: 'us',
-    topic,
+    languageCode: 'en',
   },
   {
-    id: `${topic}-2`,
-    title: `Headline ${topic.toUpperCase()} 2`,
+    id: `${label}-2`,
+    title: `Headline ${label.toUpperCase()} 2`,
     subTitle: 'Sub 2',
     imageUrl: 'https://images.unsplash.com/b.jpg',
     dateIso: new Date().toISOString(),
     countryCode: 'us',
-    topic,
+    languageCode: 'en',
   },
   {
-    id: `${topic}-3`,
-    title: `Headline ${topic.toUpperCase()} 3`,
+    id: `${label}-3`,
+    title: `Headline ${label.toUpperCase()} 3`,
     subTitle: 'Sub 3',
     imageUrl: 'https://images.unsplash.com/c.jpg',
     dateIso: new Date().toISOString(),
     countryCode: 'us',
-    topic,
+    languageCode: 'en',
   },
 ];
 
@@ -40,22 +40,19 @@ test.describe('News settings menu', () => {
     await resetEmulatorState();
   });
 
-  test('switching topic refetches with new topic; switching complexity does not refetch', async ({
-    page,
-  }) => {
+  test('switching complexity does not refetch /getTodayNews', async ({ page }) => {
     test.setTimeout(90_000);
 
-    const topicRequests: string[] = [];
+    const requests: string[] = [];
 
     await page.route('**/api/news/getTodayNews', async (route) => {
-      const request = route.request();
-      const body = request.postDataJSON() as { topic?: string } | null;
-      const topic = body?.topic ?? 'general';
-      topicRequests.push(topic);
+      const body = route.request().postDataJSON() as { countryCode?: string } | null;
+      const countryCode = body?.countryCode ?? 'us';
+      requests.push(countryCode);
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify({ items: makeFixture(topic) }),
+        body: JSON.stringify({ items: makeFixture('general') }),
       });
     });
 
@@ -65,36 +62,19 @@ test.describe('News settings menu', () => {
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
 
-    // Initial fetch for default topic.
+    // Initial fetch.
     await expect(card.getByText('Headline GENERAL 1', { exact: true }).first()).toBeVisible();
-    expect(topicRequests).toContain('general');
-    const requestsAfterInitial = topicRequests.length;
+    const requestsAfterInitial = requests.length;
+    expect(requestsAfterInitial).toBeGreaterThan(0);
 
-    // Open the settings menu.
+    // Open the settings menu and switch complexity — should not trigger a refetch.
     await page.getByTestId('news-settings-button').click();
     await expect(page.getByTestId('news-settings-menu')).toBeVisible();
-
-    // Switching complexity should NOT issue another /getTodayNews request.
     await page.getByTestId('news-complexity-option-advance').click();
 
-    // Re-open menu (complexity click does not close in current impl, but stay safe).
-    const menu = page.getByTestId('news-settings-menu');
-    if (!(await menu.isVisible())) {
-      await page.getByTestId('news-settings-button').click();
-    }
-
-    // Switch topic to technology → triggers new request.
-    await page.getByTestId('news-topic-option-technology').click();
-
-    // Wait for the new topic content to appear.
-    await expect(card.getByText('Headline TECHNOLOGY 1', { exact: true }).first()).toBeVisible({
-      timeout: 15_000,
-    });
-
-    expect(topicRequests).toContain('technology');
-    // After complexity change there should be no extra request beyond initial,
-    // only the topic switch added one.
-    expect(topicRequests.length).toBe(requestsAfterInitial + 1);
+    // Give the app a beat to (incorrectly) fire any request.
+    await page.waitForTimeout(500);
+    expect(requests.length).toBe(requestsAfterInitial);
   });
 
   test('switching country override refetches with the new country code', async ({ page }) => {
@@ -104,15 +84,14 @@ test.describe('News settings menu', () => {
 
     await page.route('**/api/news/getTodayNews', async (route) => {
       const request = route.request();
-      const body = request.postDataJSON() as { countryCode?: string; topic?: string } | null;
+      const body = request.postDataJSON() as { countryCode?: string } | null;
       const countryCode = body?.countryCode ?? 'us';
-      const topic = body?.topic ?? 'general';
       countryRequests.push(countryCode);
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          items: makeFixture(topic).map((item) => ({ ...item, countryCode })),
+          items: makeFixture('general').map((item) => ({ ...item, countryCode })),
         }),
       });
     });

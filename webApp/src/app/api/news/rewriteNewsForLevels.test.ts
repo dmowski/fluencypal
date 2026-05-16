@@ -25,6 +25,7 @@ describe('rewriteNewsForLevels', () => {
     const versions = await rewriteNewsForLevels({
       title: 'Big news today',
       content_origin: 'Some markdown article body.',
+      targetLanguageName: 'English',
     });
 
     expect(Object.keys(versions).sort()).toEqual(['advance', 'beginner', 'middle']);
@@ -40,6 +41,7 @@ describe('rewriteNewsForLevels', () => {
     await rewriteNewsForLevels({
       title: 'A Title',
       content_origin: 'UNIQUE-CONTENT-MARKER paragraph.',
+      targetLanguageName: 'English',
     });
 
     for (const call of mockedGenerate.mock.calls) {
@@ -58,6 +60,7 @@ describe('rewriteNewsForLevels', () => {
     const versions = await rewriteNewsForLevels({
       title: 'T',
       content_origin: 'C',
+      targetLanguageName: 'English',
     });
 
     expect(versions.beginner.startsWith('Sure!')).toBe(false);
@@ -70,7 +73,11 @@ describe('rewriteNewsForLevels', () => {
       usage: null as any,
     });
 
-    const versions = await rewriteNewsForLevels({ title: 'T', content_origin: 'C' });
+    const versions = await rewriteNewsForLevels({
+      title: 'T',
+      content_origin: 'C',
+      targetLanguageName: 'English',
+    });
     expect(versions.middle).toBe('## Heading\n\nbody text');
   });
 });

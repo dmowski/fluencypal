@@ -23,7 +23,7 @@ test.describe('News modal', () => {
         imageUrl: 'https://images.unsplash.com/m1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general' as const,
+        languageCode: 'en',
       },
     ];
 

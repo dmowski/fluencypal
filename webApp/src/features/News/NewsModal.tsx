@@ -14,7 +14,7 @@ import { useTranslate } from '../Translation/useTranslate';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { NEWS_COMPLEXITY_LABELS, NEWS_TOPIC_LABELS } from './constants';
+import { NEWS_COMPLEXITY_LABELS } from './constants';
 import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import { buildNewsDiscussionPrompt } from './buildNewsDiscussionPrompt';
@@ -209,12 +209,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                     sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
                   />
                 )}
-                <Chip
-                  size="small"
-                  label={i18n._(NEWS_TOPIC_LABELS[item.topic])}
-                  data-testid="news-modal-topic"
-                  sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-                />
                 <Chip
                   size="small"
                   label={i18n._(NEWS_COMPLEXITY_LABELS[complexity])}

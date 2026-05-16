@@ -1,5 +1,4 @@
 import GNews from '@gnews-io/gnews-io-js';
-import { NewsTopic } from '@/features/News/types';
 
 /**
  * Minimal article shape we depend on internally. Keeps the rest of the
@@ -20,16 +19,15 @@ export interface RawGNewsArticle {
 
 export interface FetchGNewsTopHeadlinesParams {
   countryCode: string;
-  topic: NewsTopic;
   /** Maximum number of articles to request. Defaults to 3. */
   max?: number;
   /**
    * Article language (e.g. 'en'). When omitted, the gNews `lang` filter is
    * NOT applied — articles are returned in any language the country publishes
    * in. This is the right default for our pipeline because the rewrite step
-   * translates the source into English at three CEFR levels, and forcing
-   * `lang='en'` collapses inventory to ~0 for non-English-majority countries
-   * (DE, FR, JP, KR, PL, etc.).
+   * translates the source into the user's target language at three CEFR
+   * levels, and forcing a `lang` filter collapses inventory to ~0 for many
+   * countries.
    */
   lang?: string;
 }
@@ -74,18 +72,14 @@ const mapArticle = (article: RawGNewsArticle): RawGNewsArticle => ({
 /**
  * Fetch top headlines from gNews and normalise them into `RawGNewsArticle[]`.
  *
- * Strategy: gNews `top-headlines` with both `country` AND `category` returns
- * empty results for many countries. We therefore try progressively broader
- * queries until we get any articles back:
- *   1. country + category (+ lang if explicitly provided)
- *   2. country only (drop category)
- *   3. category only (drop country) — last resort so the UI still has news
+ * Strategy: gNews `top-headlines` with `country` returns the country's general
+ * top headlines. If that comes back empty (small countries, off-hours, etc.)
+ * we fall back to a global query so the UI always has something to show.
  *
  * Throws `GNewsConfigurationError` when `GNEWS_API_KEY` is not configured.
  */
 export const fetchGNewsTopHeadlines = async ({
   countryCode,
-  topic,
   max = DEFAULT_MAX,
   lang,
 }: FetchGNewsTopHeadlinesParams): Promise<RawGNewsArticle[]> => {
@@ -105,14 +99,8 @@ export const fetchGNewsTopHeadlines = async ({
   };
 
   const attempts: Array<Parameters<GNews['topHeadlines']>[0]> = [
-    {
-      country: normalisedCountry,
-      category: topic,
-      max,
-      ...(lang ? { lang } : {}),
-    },
     { country: normalisedCountry, max, ...(lang ? { lang } : {}) },
-    { category: topic, max, ...(lang ? { lang } : {}) },
+    { max, ...(lang ? { lang } : {}) },
   ];
 
   for (const params of attempts) {

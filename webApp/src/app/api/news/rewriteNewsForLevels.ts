@@ -42,6 +42,8 @@ const stripWrapper = (raw: string): string => {
 export interface RewriteNewsInput {
   title: string;
   content_origin: string;
+  /** English name of the user's target learning language (e.g. 'English', 'Spanish'). */
+  targetLanguageName: string;
   model?: TextAiModel;
 }
 
@@ -52,6 +54,7 @@ export interface RewriteNewsInput {
 export const rewriteNewsForLevels = async ({
   title,
   content_origin,
+  targetLanguageName,
   model = DEFAULT_MODEL,
 }: RewriteNewsInput): Promise<NewsContentVersions> => {
   const userMessage = buildNewsRewriteUserPrompt({ title, content_origin });
@@ -59,7 +62,7 @@ export const rewriteNewsForLevels = async ({
   const results = await Promise.all(
     COMPLEXITIES.map(async (complexity) => {
       const { output } = await generateTextWithAi({
-        systemMessage: buildNewsRewriteSystemPrompt(complexity),
+        systemMessage: buildNewsRewriteSystemPrompt(complexity, targetLanguageName),
         userMessage,
         model,
       });

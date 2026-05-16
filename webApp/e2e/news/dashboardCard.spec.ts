@@ -21,7 +21,7 @@ test.describe('News dashboard card', () => {
 
     await expect(card.getByRole('heading', { name: 'Current Events' })).toBeVisible();
     await expect(
-      card.getByText('AI-generated English learning content inspired by current events'),
+      card.getByText('AI-generated language learning content inspired by current events'),
     ).toBeVisible();
   });
 
@@ -36,7 +36,7 @@ test.describe('News dashboard card', () => {
         imageUrl: 'https://images.unsplash.com/n1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general',
+        languageCode: 'en',
       },
       {
         id: 'n2',
@@ -45,7 +45,7 @@ test.describe('News dashboard card', () => {
         imageUrl: 'https://images.unsplash.com/n2.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general',
+        languageCode: 'en',
       },
       {
         id: 'n3',
@@ -54,7 +54,7 @@ test.describe('News dashboard card', () => {
         imageUrl: 'https://images.unsplash.com/n3.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general',
+        languageCode: 'en',
       },
     ];
 
@@ -81,5 +81,8 @@ test.describe('News dashboard card', () => {
     // The other two rows render with their titles.
     await expect(card.getByText('Mocked headline TWO', { exact: true })).toBeVisible();
     await expect(card.getByText('Mocked headline THREE', { exact: true })).toBeVisible();
+
+    // Rows render the article image (not a generic newspaper icon) when imageUrl is provided.
+    await expect(card.locator('img[src*="n1.jpg"]').first()).toBeVisible();
   });
 });

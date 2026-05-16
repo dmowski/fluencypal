@@ -19,6 +19,7 @@ describe('getNewsDayKey', () => {
 describe('buildNewsId', () => {
   const base = {
     countryCode: 'us',
+    languageCode: 'en',
     dateIso: '2026-05-16T12:00:00.000Z',
     sourceUrl: 'https://example.com/article-a',
   };
@@ -39,16 +40,17 @@ describe('buildNewsId', () => {
     );
   });
 
-  it('normalises countryCode casing/whitespace', () => {
-    expect(buildNewsId({ ...base, countryCode: 'US' })).toBe(
-      buildNewsId({ ...base, countryCode: ' us ' }),
+  it('normalises countryCode and languageCode casing/whitespace', () => {
+    expect(buildNewsId({ ...base, countryCode: 'US', languageCode: 'EN' })).toBe(
+      buildNewsId({ ...base, countryCode: ' us ', languageCode: ' en ' }),
     );
   });
 
-  it('differs across sourceUrl, countryCode, and day', () => {
+  it('differs across sourceUrl, countryCode, languageCode, and day', () => {
     const a = buildNewsId(base);
     const b = buildNewsId({ ...base, sourceUrl: 'https://example.com/article-b' });
     const c = buildNewsId({ ...base, countryCode: 'gb' });
-    expect(new Set([a, b, c]).size).toBe(3);
+    const d = buildNewsId({ ...base, languageCode: 'es' });
+    expect(new Set([a, b, c, d]).size).toBe(4);
   });
 });

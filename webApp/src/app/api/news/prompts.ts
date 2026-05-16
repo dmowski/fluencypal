@@ -8,12 +8,12 @@ const COMPLEXITY_GUIDANCE: Record<NewsLanguageComplexity, string> = {
   ].join(' '),
   middle: [
     'Target CEFR level B1.',
-    'Use clear everyday English with moderate sentence length.',
+    'Use clear everyday language with moderate sentence length.',
     'Common phrasal verbs and a wider tense range are allowed, but avoid rare or technical jargon.',
   ].join(' '),
   advance: [
     'Target CEFR level C1.',
-    'Use natural, fluent English with varied sentence structure.',
+    'Use natural, fluent language with varied sentence structure.',
     'You may keep nuanced vocabulary and idiomatic phrasing, while staying clear and concise.',
   ].join(' '),
 };
@@ -21,12 +21,19 @@ const COMPLEXITY_GUIDANCE: Record<NewsLanguageComplexity, string> = {
 /**
  * System prompt for the news complexity rewrite. The model must output ONLY
  * markdown — no preface, no apology, no closing remarks.
+ *
+ * `targetLanguageName` is the English name of the user's learning language
+ * (e.g. "English", "Spanish", "German"). The rewrite is produced in that
+ * language regardless of the source article's language.
  */
-export const buildNewsRewriteSystemPrompt = (complexity: NewsLanguageComplexity): string => {
+export const buildNewsRewriteSystemPrompt = (
+  complexity: NewsLanguageComplexity,
+  targetLanguageName: string,
+): string => {
   return [
-    'You are an English-language news editor for adult language learners.',
-    'Rewrite the user-provided news article in clear English at the requested CEFR level.',
-    'The source article may be in any language; always output in English regardless of source language.',
+    `You are a ${targetLanguageName}-language news editor for adult language learners.`,
+    `Rewrite the user-provided news article in clear ${targetLanguageName} at the requested CEFR level.`,
+    `The source article may be in any language; always output in ${targetLanguageName} regardless of source language.`,
     COMPLEXITY_GUIDANCE[complexity],
     '',
     'Strict output rules:',
@@ -57,4 +64,30 @@ export const buildNewsRewriteUserPrompt = ({
     'ORIGINAL ARTICLE (markdown):',
     content_origin,
   ].join('\n');
+};
+
+/**
+ * System prompt for the headline translation step. Produces a JSON object
+ * with the translated `title` and `subTitle` so we can split them back out
+ * with zero extra calls.
+ */
+export const buildNewsHeadlineTranslationSystemPrompt = (targetLanguageName: string): string => {
+  return [
+    `You translate short news headlines into ${targetLanguageName}.`,
+    `Always reply with raw JSON only (no markdown, no code fences), with this exact shape:`,
+    `{"title": "...", "subTitle": "..."}`,
+    `Translate naturally into ${targetLanguageName}. Keep it concise and factual.`,
+    `Do NOT add commentary, do NOT include the original text, do NOT add extra fields.`,
+    `If the source is already in ${targetLanguageName}, return it unchanged.`,
+  ].join('\n');
+};
+
+export const buildNewsHeadlineTranslationUserPrompt = ({
+  title,
+  subTitle,
+}: {
+  title: string;
+  subTitle: string;
+}): string => {
+  return JSON.stringify({ title, subTitle });
 };

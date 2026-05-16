@@ -25,7 +25,6 @@ test.describe('/api/news/getNewsById', () => {
       content_origin: 'Origin body',
       imageUrl: 'https://example.com/img.jpg',
       countryCode: 'us',
-      topic: 'general',
       sourceUrl: 'https://example.com/specific',
       versions: { beginner: 'BEG', middle: 'MID', advance: 'ADV' },
     });

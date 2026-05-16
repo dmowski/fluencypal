@@ -44,6 +44,7 @@ describe('useNews', () => {
   it('fetches today news once even when StrictMode double-mounts the provider', async () => {
     mockUseSettings.mockReturnValue({
       userSettings: { country: 'us', countryName: 'United States' },
+      languageCode: 'en',
     });
     mockGetTodayNewsRequest.mockResolvedValue({
       items: [
@@ -54,7 +55,7 @@ describe('useNews', () => {
           imageUrl: '',
           dateIso: '',
           countryCode: 'us',
-          topic: 'general',
+          languageCode: 'en',
         },
       ],
     });
@@ -65,13 +66,18 @@ describe('useNews', () => {
 
     expect(mockGetTodayNewsRequest).toHaveBeenCalledTimes(1);
     expect(mockGetTodayNewsRequest).toHaveBeenCalledWith(
-      { countryCode: 'us', countryName: 'United States', topic: 'general' },
+      {
+        countryCode: 'us',
+        countryName: 'United States',
+        languageCode: 'en',
+        languageName: 'English',
+      },
       'test-token',
     );
   });
 
   it('does not fetch when country is not yet available', () => {
-    mockUseSettings.mockReturnValue({ userSettings: { country: null } });
+    mockUseSettings.mockReturnValue({ userSettings: { country: null }, languageCode: 'en' });
 
     render(
       <NewsProvider>
@@ -82,30 +88,33 @@ describe('useNews', () => {
     expect(mockGetTodayNewsRequest).not.toHaveBeenCalled();
   });
 
-  it('persists complexity and topic in localStorage', async () => {
+  it('persists complexity in localStorage and fetches when language changes', async () => {
     mockUseSettings.mockReturnValue({
       userSettings: { country: 'us', countryName: 'United States' },
+      languageCode: 'es',
     });
     mockGetTodayNewsRequest.mockResolvedValue({ items: [] });
 
     const { result } = renderHook(() => useNews(), { wrapper });
 
+    await waitFor(() => expect(mockGetTodayNewsRequest).toHaveBeenCalled());
+    expect(mockGetTodayNewsRequest).toHaveBeenCalledWith(
+      expect.objectContaining({ languageCode: 'es', languageName: 'Spanish' }),
+      'test-token',
+    );
+
     act(() => {
       result.current.setComplexity('advance');
-    });
-    act(() => {
-      result.current.setTopic('sports');
     });
 
     expect(JSON.parse(window.localStorage.getItem('news.settings.v1') || '{}')).toEqual({
       complexity: 'advance',
-      topic: 'sports',
       countryOverride: null,
     });
   });
 
   it('caches getNewsById results in-memory', async () => {
-    mockUseSettings.mockReturnValue({ userSettings: { country: null } });
+    mockUseSettings.mockReturnValue({ userSettings: { country: null }, languageCode: 'en' });
     mockGetNewsByIdRequest.mockResolvedValue({
       item: { id: 'x', versions: { beginner: 'b', middle: 'm', advance: 'a' } },
     });

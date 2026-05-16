@@ -15,16 +15,18 @@ export const getNewsDayKey = (dateIso: string): string => {
 
 /**
  * Deterministic id for a news cache document built from
- * `countryCode + day(UTC) + sourceUrl` so the same article is upserted
- * exactly once per country/day.
+ * `countryCode + languageCode + day(UTC) + sourceUrl` so the same article is
+ * upserted exactly once per country/language/day.
  */
 export const buildNewsId = (input: {
   countryCode: string;
+  languageCode: string;
   dateIso: string;
   sourceUrl: string;
 }): string => {
   const day = getNewsDayKey(input.dateIso);
   const normalizedCountry = input.countryCode.trim().toLowerCase();
+  const normalizedLanguage = input.languageCode.trim().toLowerCase();
   const normalizedSource = input.sourceUrl.trim();
-  return getHash(`${normalizedCountry}|${day}|${normalizedSource}`);
+  return getHash(`${normalizedCountry}|${normalizedLanguage}|${day}|${normalizedSource}`);
 };

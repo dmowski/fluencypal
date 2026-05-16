@@ -67,7 +67,7 @@ test.describe('News states', () => {
         imageUrl: 'https://images.unsplash.com/fb1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general' as const,
+        languageCode: 'en',
       },
     ];
 
@@ -120,7 +120,7 @@ test.describe('News states', () => {
         imageUrl: 'https://images.unsplash.com/e1.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
-        topic: 'general' as const,
+        languageCode: 'en',
       },
     ];
 

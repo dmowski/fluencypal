@@ -5,13 +5,17 @@ const baseItem: NewsItem = {
   id: 'n1',
   title: 'Election results announced',
   subTitle: 'Sub',
+  titleOrigin: 'Election results announced',
+  subTitleOrigin: 'Sub',
   content_origin: 'Original body',
   imageUrl: '',
   sourceImageUrl: '',
   dateIso: '2026-05-16T00:00:00.000Z',
+  dayKey: '2026-05-16',
   countryCode: 'us',
   countryName: 'United States',
-  topic: 'world',
+  languageCode: 'en',
+  languageName: 'English',
   sourceUrl: 'https://example.com/x',
   versions: {
     beginner: 'Beginner body',
@@ -22,11 +26,11 @@ const baseItem: NewsItem = {
 };
 
 describe('buildNewsDiscussionPrompt', () => {
-  it('includes the title, topic label, country, and the version for the requested complexity', () => {
+  it('includes the title, country, language, and the version for the requested complexity', () => {
     const prompt = buildNewsDiscussionPrompt(baseItem, 'beginner');
     expect(prompt).toContain('Election results announced');
-    expect(prompt).toContain('World');
     expect(prompt).toContain('United States');
+    expect(prompt).toContain('English');
     expect(prompt).toContain('Beginner body');
     expect(prompt).toContain('Level: Beginner');
   });

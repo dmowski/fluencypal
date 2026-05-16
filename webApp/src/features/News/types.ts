@@ -10,33 +10,29 @@ import type { IconName } from 'lucide-react/dynamic';
 export type NewsLanguageComplexity = 'beginner' | 'middle' | 'advance';
 
 /**
- * Topic categories we expose to the user. Values match the categories supported
- * by the gNews API (https://gnews.io/docs/v4#search-endpoint-query-parameters).
- */
-export type NewsTopic =
-  | 'general'
-  | 'world'
-  | 'nation'
-  | 'business'
-  | 'technology'
-  | 'entertainment'
-  | 'sports'
-  | 'science'
-  | 'health';
-
-/**
  * Three rewritten markdown versions of the same news article keyed by complexity.
+ * The text is in the user's target learning language (see `NewsItem.languageCode`).
  */
 export type NewsContentVersions = Record<NewsLanguageComplexity, string>;
 
 /**
  * Cache document shape stored in Firestore under the `news` collection.
- * One document per (countryCode, topic, source url, day).
+ *
+ * One document per `(countryCode, languageCode, UTC day, source url)`. The
+ * `dayKey` field is the UTC `YYYY-MM-DD` slice we computed at cache-write time
+ * (NOT the article's `publishedAt`) so today's lookups are guaranteed to hit
+ * what was populated today.
  */
 export interface NewsItem {
   id: string;
+  /** Title translated into the user's target language. */
   title: string;
+  /** Subtitle translated into the user's target language. */
   subTitle: string;
+  /** Original title as returned by the source — kept for debugging / fallback. */
+  titleOrigin: string;
+  /** Original subtitle as returned by the source — kept for debugging / fallback. */
+  subTitleOrigin: string;
   /** Original markdown built from gNews description + content. */
   content_origin: string;
   /** Public URL of the image copied into our storage bucket. */
@@ -45,11 +41,16 @@ export interface NewsItem {
   sourceImageUrl: string;
   /** ISO timestamp from gNews `publishedAt`. */
   dateIso: string;
+  /** UTC `YYYY-MM-DD` of the day this cache document was populated. */
+  dayKey: string;
   countryCode: string;
   countryName: string;
-  topic: NewsTopic;
+  /** Target learning language code (e.g. 'en', 'es', 'de'). */
+  languageCode: string;
+  /** English display name of the target language (e.g. 'English', 'Spanish'). */
+  languageName: string;
   sourceUrl: string;
-  /** Three rewritten markdown bodies; `null` until AI rewrites complete. */
+  /** Three rewritten markdown bodies (in target language); `null` until AI rewrites complete. */
   versions: NewsContentVersions | null;
   createdAtIso: string;
 }
@@ -64,7 +65,7 @@ export interface NewsItemSummary {
   imageUrl: string;
   dateIso: string;
   countryCode: string;
-  topic: NewsTopic;
+  languageCode: string;
 }
 
 /**

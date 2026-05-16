@@ -16,10 +16,8 @@ import {
   NEWS_COMPLEXITY_LABELS,
   NEWS_COMPLEXITY_OPTIONS,
   NEWS_SUPPORTED_COUNTRIES,
-  NEWS_TOPIC_LABELS,
-  NEWS_TOPIC_OPTIONS,
 } from './constants';
-import type { NewsLanguageComplexity, NewsTopic } from './types';
+import type { NewsLanguageComplexity } from './types';
 import { useNews } from './useNews';
 
 export const NewsSettingsMenu = () => {
@@ -36,11 +34,6 @@ export const NewsSettingsMenu = () => {
 
   const handleComplexity = (next: NewsLanguageComplexity) => () => {
     news.setComplexity(next);
-  };
-
-  const handleTopic = (next: NewsTopic) => () => {
-    news.setTopic(next);
-    handleClose();
   };
 
   const handleCountry = (next: string | null) => () => {
@@ -81,25 +74,6 @@ export const NewsSettingsMenu = () => {
             >
               <Radio checked={selected} size="small" sx={{ mr: 1, p: 0 }} />
               <ListItemText primary={i18n._(NEWS_COMPLEXITY_LABELS[level])} />
-            </MenuItem>
-          );
-        })}
-
-        <Divider />
-
-        <ListSubheader>{i18n._('Topic')}</ListSubheader>
-        {NEWS_TOPIC_OPTIONS.map((t) => {
-          const selected = news.topic === t;
-          return (
-            <MenuItem
-              key={t}
-              data-testid={`news-topic-option-${t}`}
-              data-selected={selected ? 'true' : 'false'}
-              onClick={handleTopic(t)}
-              selected={selected}
-            >
-              <Radio checked={selected} size="small" sx={{ mr: 1, p: 0 }} />
-              <ListItemText primary={i18n._(NEWS_TOPIC_LABELS[t])} />
             </MenuItem>
           );
         })}

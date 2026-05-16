@@ -1,4 +1,4 @@
-import type { NewsItem, NewsItemSummary, NewsTopic } from '@/features/News/types';
+import type { NewsItem, NewsItemSummary } from '@/features/News/types';
 
 /**
  * Shared request/response contracts for the `/api/news/*` endpoints.
@@ -8,7 +8,10 @@ import type { NewsItem, NewsItemSummary, NewsTopic } from '@/features/News/types
 export interface GetTodayNewsRequest {
   countryCode: string;
   countryName: string;
-  topic: NewsTopic;
+  /** User's target learning language code (e.g. 'en', 'es'). */
+  languageCode: string;
+  /** English display name of the target language (e.g. 'English', 'Spanish'). */
+  languageName: string;
 }
 
 export interface GetTodayNewsResponse {

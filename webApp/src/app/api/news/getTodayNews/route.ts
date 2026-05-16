@@ -18,7 +18,8 @@ export async function POST(request: Request) {
   if (
     typeof body.countryCode !== 'string' ||
     typeof body.countryName !== 'string' ||
-    typeof body.topic !== 'string'
+    typeof body.languageCode !== 'string' ||
+    typeof body.languageName !== 'string'
   ) {
     return new Response('Invalid request body', { status: 400 });
   }
@@ -26,7 +27,8 @@ export async function POST(request: Request) {
   const response = await getTodayNewsResponse({
     countryCode: body.countryCode,
     countryName: body.countryName,
-    topic: body.topic as GetTodayNewsRequest['topic'],
+    languageCode: body.languageCode,
+    languageName: body.languageName,
   });
 
   return Response.json(response);

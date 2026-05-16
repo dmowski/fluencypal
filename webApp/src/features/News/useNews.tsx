@@ -16,20 +16,20 @@ import { getTodayNewsRequest } from '@/app/api/news/getTodayNews/getTodayNewsReq
 
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
+import { fullEnglishLanguageName, type SupportedLanguage } from '../Lang/lang';
 
 import {
   DEFAULT_NEWS_COMPLEXITY,
-  DEFAULT_NEWS_TOPIC,
   NEWS_COUNTRY_NAME_BY_CODE,
   NEWS_SUPPORTED_COUNTRIES,
 } from './constants';
-import type { NewsItem, NewsItemSummary, NewsLanguageComplexity, NewsTopic } from './types';
+import type { NewsItem, NewsItemSummary, NewsLanguageComplexity } from './types';
 
 const STORAGE_KEY = 'news.settings.v1';
+const FALLBACK_LANGUAGE_CODE: SupportedLanguage = 'en';
 
 interface PersistedSettings {
   complexity: NewsLanguageComplexity;
-  topic: NewsTopic;
   /**
    * gNews-supported alpha-2 country code that overrides the account
    * `userSettings.country` for news fetches only. `null` / missing means
@@ -65,7 +65,6 @@ export interface NewsContextValue {
   isLoading: boolean;
   error: string | null;
   complexity: NewsLanguageComplexity;
-  topic: NewsTopic;
   /**
    * Effective alpha-2 country code used for news fetches: the override when
    * set, otherwise the account country. `null` while we have nothing to fetch
@@ -79,8 +78,9 @@ export interface NewsContextValue {
    * country.
    */
   countryOverride: string | null;
+  /** Target learning language code currently used for news. */
+  languageCode: SupportedLanguage;
   setComplexity: (next: NewsLanguageComplexity) => void;
-  setTopic: (next: NewsTopic) => void;
   setCountryOverride: (next: string | null) => void;
   getNewsById: (id: string) => Promise<NewsItem | null>;
   refresh: () => Promise<void>;
@@ -94,12 +94,11 @@ const NewsContext = createContext<NewsContextValue>({
   isLoading: false,
   error: null,
   complexity: DEFAULT_NEWS_COMPLEXITY,
-  topic: DEFAULT_NEWS_TOPIC,
   country: null,
   countryName: '',
   countryOverride: null,
+  languageCode: FALLBACK_LANGUAGE_CODE,
   setComplexity: () => undefined,
-  setTopic: () => undefined,
   setCountryOverride: () => undefined,
   getNewsById: noopGetById,
   refresh: noopAsync,
@@ -121,7 +120,6 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const [complexity, setComplexityState] = useState<NewsLanguageComplexity>(
     persisted.current.complexity ?? DEFAULT_NEWS_COMPLEXITY,
   );
-  const [topic, setTopicState] = useState<NewsTopic>(persisted.current.topic ?? DEFAULT_NEWS_TOPIC);
 
   // Validate persisted override against the current supported-countries list
   // so removing a country from gNews does not strand the user on a code that
@@ -163,8 +161,19 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     ? (NEWS_COUNTRY_NAME_BY_CODE[countryOverride] ?? '')
     : defaultCountryName;
 
+  // Target learning language drives translation + AI rewrite. Falls back to
+  // English when the account hasn't picked one yet (e.g. fresh signup).
+  const languageCode: SupportedLanguage = settings.languageCode ?? FALLBACK_LANGUAGE_CODE;
+  const languageName = fullEnglishLanguageName[languageCode];
+
   const fetchToday = useCallback(
-    async (key: string, countryCode: string, countryNameValue: string, topicValue: NewsTopic) => {
+    async (
+      key: string,
+      countryCode: string,
+      countryNameValue: string,
+      languageCodeValue: SupportedLanguage,
+      languageNameValue: string,
+    ) => {
       if (inFlightKey.current === key) return;
       inFlightKey.current = key;
       setIsLoading(true);
@@ -172,7 +181,12 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       try {
         const token = await auth.getToken();
         const response = await getTodayNewsRequest(
-          { countryCode, countryName: countryNameValue, topic: topicValue },
+          {
+            countryCode,
+            countryName: countryNameValue,
+            languageCode: languageCodeValue,
+            languageName: languageNameValue,
+          },
           token || null,
         );
         // Guard against late responses overwriting newer state.
@@ -197,17 +211,15 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   // `inFlightKey` so React 18 strict-mode double-mount fires the request once.
   useEffect(() => {
     if (!country || !auth.uid) return;
-    const key = `${country}|${topic}`;
+    const key = `${country}|${languageCode}`;
     if (inFlightKey.current === key) return;
-    void fetchToday(key, country, countryName, topic);
-  }, [country, countryName, topic, fetchToday, auth.uid]);
+    void fetchToday(key, country, countryName, languageCode, languageName);
+  }, [country, countryName, languageCode, languageName, fetchToday, auth.uid]);
 
   // Keep refs in sync so the setters below can persist all fields without
   // re-creating themselves on every render.
-  const topicRef = useRef(topic);
   const complexityRef = useRef(complexity);
   const countryOverrideRef = useRef(countryOverride);
-  topicRef.current = topic;
   complexityRef.current = complexity;
   countryOverrideRef.current = countryOverride;
 
@@ -215,16 +227,6 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     setComplexityState(next);
     writePersistedSettings({
       complexity: next,
-      topic: topicRef.current,
-      countryOverride: countryOverrideRef.current,
-    });
-  }, []);
-
-  const setTopic = useCallback((next: NewsTopic) => {
-    setTopicState(next);
-    writePersistedSettings({
-      complexity: complexityRef.current,
-      topic: next,
       countryOverride: countryOverrideRef.current,
     });
   }, []);
@@ -234,7 +236,6 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     setCountryOverrideState(normalized);
     writePersistedSettings({
       complexity: complexityRef.current,
-      topic: topicRef.current,
       countryOverride: normalized,
     });
   }, []);
@@ -255,9 +256,9 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
 
   const refresh = useCallback(async () => {
     if (!country) return;
-    const key = `${country}|${topic}|${Date.now()}`;
-    await fetchToday(key, country, countryName, topic);
-  }, [country, countryName, topic, fetchToday]);
+    const key = `${country}|${languageCode}|${Date.now()}`;
+    await fetchToday(key, country, countryName, languageCode, languageName);
+  }, [country, countryName, languageCode, languageName, fetchToday]);
 
   const value = useMemo<NewsContextValue>(
     () => ({
@@ -265,12 +266,11 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       isLoading,
       error,
       complexity,
-      topic,
       country,
       countryName,
       countryOverride,
+      languageCode,
       setComplexity,
-      setTopic,
       setCountryOverride,
       getNewsById,
       refresh,
@@ -280,12 +280,11 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       isLoading,
       error,
       complexity,
-      topic,
       country,
       countryName,
       countryOverride,
+      languageCode,
       setComplexity,
-      setTopic,
       setCountryOverride,
       getNewsById,
       refresh,

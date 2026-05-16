@@ -1,4 +1,4 @@
-import { NEWS_COMPLEXITY_LABELS, NEWS_TOPIC_LABELS } from './constants';
+import { NEWS_COMPLEXITY_LABELS } from './constants';
 import { NewsItem, NewsLanguageComplexity } from './types';
 
 /**
@@ -16,14 +16,14 @@ export const buildNewsDiscussionPrompt = (
   // Use `||` (not `??`) so empty-string versions also trigger fallback — the
   // backend sometimes returns an empty string for an unfinished complexity.
   const content = (versions?.[complexity] || versions?.middle || item.content_origin) ?? '';
-  const topicLabel = NEWS_TOPIC_LABELS[item.topic] ?? item.topic;
   const levelLabel = NEWS_COMPLEXITY_LABELS[complexity] ?? complexity;
+  const languageLabel = item.languageName || item.languageCode || 'the target language';
 
   return `# News article the user just read
 
 Title: ${item.title}
-Topic: ${topicLabel}
 Country: ${item.countryName || item.countryCode}
+Language: ${languageLabel}
 Level: ${levelLabel}
 
 ## Article content
@@ -31,7 +31,7 @@ ${content}
 
 # Your goal
 The user just read this article. You should NOT re-explain the facts.
-Discuss the topic with the user and push them to speak more in English.
+Discuss the topic with the user and push them to speak more in ${languageLabel}.
 
 Ask one focused question at a time. Examples of good questions:
 - "What do you think about this?"

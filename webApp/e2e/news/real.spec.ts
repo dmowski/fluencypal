@@ -54,7 +54,12 @@ test.describe('News real endpoint (no mocks)', () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      data: { countryCode: 'us', countryName: 'United States', topic: 'general' },
+      data: {
+        countryCode: 'us',
+        countryName: 'United States',
+        languageCode: 'en',
+        languageName: 'English',
+      },
       timeout: 120_000,
     });
 
