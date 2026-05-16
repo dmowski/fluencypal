@@ -87,13 +87,14 @@ export function Dashboard({ lang }: DashboardProps) {
                 <ProgressDashboardCard />
                 <ExperimentalDashboardCard />
                 <JustTalkCard />
-                <NewsDashboardCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
                 <RolePlayDashboardCard />
                 <PublicChatDashboardCard />
-                <DailyQuestionDashboardCard />
                 <GameDashboardCard />
+
+                <DailyQuestionDashboardCard />
+                <NewsDashboardCard />
               </Stack>
             </>
           )}

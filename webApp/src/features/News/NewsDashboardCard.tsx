@@ -103,8 +103,8 @@ export const NewsDashboardCard = () => {
       <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '10px' }}>
         <Stack sx={{ flex: 1, minWidth: 0 }}>
           <SectionHeader
-            title={i18n._('Current Events')}
-            subTitle={i18n._('AI-generated language learning content inspired by current events')}
+            title={i18n._('Discuss with AI')}
+            subTitle={i18n._('Content inspired by current events')}
           />
         </Stack>
         <NewsSettingsMenu />

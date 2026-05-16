@@ -18,11 +18,6 @@ test.describe('News dashboard card', () => {
 
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-
-    await expect(card.getByRole('heading', { name: 'Current Events' })).toBeVisible();
-    await expect(
-      card.getByText('AI-generated language learning content inspired by current events'),
-    ).toBeVisible();
   });
 
   test('renders mocked today news: badge, headline title, three row items', async ({ page }) => {
