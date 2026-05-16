@@ -254,18 +254,26 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
             )}
 
             {content ? (
-              <Markdown
-                variant="rule"
-                onWordClick={
-                  translator.isTranslateAvailable
-                    ? (word, element) => {
-                        translator.translateWithModal(word, element);
-                      }
-                    : undefined
-                }
+              <Stack
+                sx={{
+                  '* p': {
+                    padding: '16px 0',
+                  },
+                }}
               >
-                {'\n' + content}
-              </Markdown>
+                <Markdown
+                  variant="rule"
+                  onWordClick={
+                    translator.isTranslateAvailable
+                      ? (word, element) => {
+                          translator.translateWithModal(word, element);
+                        }
+                      : undefined
+                  }
+                >
+                  {'\n' + content}
+                </Markdown>
+              </Stack>
             ) : (
               <Typography variant="body2" sx={{ opacity: 0.7 }}>
                 {i18n._(
