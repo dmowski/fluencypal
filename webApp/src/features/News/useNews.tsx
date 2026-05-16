@@ -79,12 +79,9 @@ export interface NewsContextValue {
    * country.
    */
   countryOverride: string | null;
-  selectedNewsId: string | null;
   setComplexity: (next: NewsLanguageComplexity) => void;
   setTopic: (next: NewsTopic) => void;
   setCountryOverride: (next: string | null) => void;
-  openNews: (id: string) => void;
-  closeNews: () => void;
   getNewsById: (id: string) => Promise<NewsItem | null>;
   refresh: () => Promise<void>;
 }
@@ -101,12 +98,9 @@ const NewsContext = createContext<NewsContextValue>({
   country: null,
   countryName: '',
   countryOverride: null,
-  selectedNewsId: null,
   setComplexity: () => undefined,
   setTopic: () => undefined,
   setCountryOverride: () => undefined,
-  openNews: () => undefined,
-  closeNews: () => undefined,
   getNewsById: noopGetById,
   refresh: noopAsync,
 });
@@ -142,7 +136,6 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const [items, setItems] = useState<NewsItemSummary[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedNewsId, setSelectedNewsId] = useState<string | null>(null);
 
   const inFlightKey = useRef<string | null>(null);
   const byIdCache = useRef<Map<string, NewsItem>>(new Map());
@@ -254,14 +247,6 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     await fetchToday(key, country, countryName, topic);
   }, [country, countryName, topic, fetchToday]);
 
-  const openNews = useCallback((id: string) => {
-    setSelectedNewsId(id);
-  }, []);
-
-  const closeNews = useCallback(() => {
-    setSelectedNewsId(null);
-  }, []);
-
   const value = useMemo<NewsContextValue>(
     () => ({
       items,
@@ -272,12 +257,9 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       country,
       countryName,
       countryOverride,
-      selectedNewsId,
       setComplexity,
       setTopic,
       setCountryOverride,
-      openNews,
-      closeNews,
       getNewsById,
       refresh,
     }),
@@ -290,12 +272,9 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       country,
       countryName,
       countryOverride,
-      selectedNewsId,
       setComplexity,
       setTopic,
       setCountryOverride,
-      openNews,
-      closeNews,
       getNewsById,
       refresh,
     ],

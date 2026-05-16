@@ -595,7 +595,7 @@ msgstr "AI cevapları değerlendirecek ve kazananı belirleyecek."
 msgid "AI-driven feedback on your answers"
 msgstr "AI destekli cevaplarınıza geri bildirim"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr ""
@@ -929,6 +929,13 @@ msgstr "Auth"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Yazar"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr ""
+"\n"
+"Otomatik (hesap ülkesi)\n"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1475,7 +1482,7 @@ msgstr "Siz ve {userName} arasındaki sohbet"
 msgid "Chat deleted successfully."
 msgstr "Sohbet başarıyla silindi."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
@@ -1791,7 +1798,7 @@ msgstr "Tamamlandı"
 msgid "Completed ✅"
 msgstr "Tamamlandı ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "Karmaşıklık"
@@ -2080,7 +2087,7 @@ msgstr "Düzeltildi"
 msgid "Corrected answers for remembering"
 msgstr "Ezberlemek için düzeltilmiş cevaplar"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Düzeltmeler"
@@ -2095,11 +2102,21 @@ msgstr "Sıkıştığınızda düzeltmeler"
 msgid "Could not find page"
 msgstr "Sayfa bulunamadı"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "Makale yüklenemedi"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "Haberler yüklenemedi"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "Ülke"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2264,7 +2281,7 @@ msgstr "Kredi Kartı Kontrolü"
 msgid "csharp developer interview"
 msgstr "csharp geliştirici mülakatı"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "Güncel Olaylar"
@@ -2642,7 +2659,7 @@ msgstr "Kendi senaryonuzu buraya tanımlayın..."
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Açıklama:"
@@ -2815,6 +2832,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Konuyu tartışın"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "Yapay Zeka ile Tartış"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3696,7 +3718,7 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Geri bildirim yardımcı olur"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "En son hikayeler getiriliyor..."
@@ -4638,7 +4660,7 @@ msgstr "Dilbilgisi"
 msgid "Grammar Correction Preview"
 msgstr "Dilbilgisi Düzeltme Önizlemesi"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Dilbilgisi Düzeltmeleri"
@@ -4790,17 +4812,17 @@ msgstr "Burada öğrenmeniz için bazı yeni kurallar var:"
 msgid "Here are some new words for you to learn:"
 msgstr "Öğrenmeniz için işte bazı yeni kelimeler:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "İşte FluencyPal ile yaptığınız konuşmalar."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "İşte konuşmalarınızdaki düzeltmeler."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "İşte konuşmalarınızda en çok kullandığınız kelimeler."
@@ -6162,12 +6184,17 @@ msgstr "Yükleniyor"
 msgid "Loading a word..."
 msgstr "Bir kelime yükleniyor..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "Makaleyi yüklüyor..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "Haberler yükleniyor..."
@@ -6427,6 +6454,7 @@ msgstr ""
 "deneyin."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6440,7 +6468,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Mikrofon Kurulumu"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Dakikalar"
@@ -6608,6 +6636,11 @@ msgstr "Yeni Alan"
 msgid "New Words"
 msgstr "Yeni Kelimeler"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "Haber Tartışması"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6708,7 +6741,7 @@ msgstr "Bölüm mevcut değil"
 msgid "No charge will be made"
 msgstr "Ücret alınmayacaktır"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Henüz bir konuşma yok"
@@ -6718,7 +6751,7 @@ msgstr "Henüz bir konuşma yok"
 msgid "No correct words yet."
 msgstr "Henüz doğru kelimeler yok."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Henüz bir düzeltme yok"
@@ -6776,8 +6809,8 @@ msgstr "Henüz mesaj yok"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Bugün ülkeniz için henüz bir haber yok."
@@ -6858,8 +6891,8 @@ msgstr "No turn data available. -> Dönüş verisi mevcut değil."
 msgid "No views yet. Be the first to view this post!"
 msgstr "Henüz görüntülenme yok. Bu gönderiyi ilk görüntüleyen sen ol!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Henüz hiç kelime kullanılmadı"
@@ -7106,7 +7139,7 @@ msgstr "Gösterge Tablosunu Aç"
 msgid "Open Dev Panel"
 msgstr "Geliştirici Panelini Aç"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Geçmişi aç"
@@ -7121,7 +7154,7 @@ msgstr "Tarayıcıda Aç"
 msgid "Open in Telegram"
 msgstr "Telegram'da Aç"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "Haber ayarlarını aç"
@@ -8340,7 +8373,7 @@ msgid ""
 msgstr "React, Vue veya Angular uzmanları için mimari ve sistem tasarımı turları"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8777,6 +8810,11 @@ msgstr ""
 "Zaman aşımı ve geri dönüş yollarıyla birleştirin. Hata oranlarını ve "
 "gecikmeyi gözlemlemek için yapılandırılmış bağlam (korelasyon kimlikleri) "
 "günlüğü tutun ve ölçümler yayınlayın."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "Tekrar Dene"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9467,6 +9505,15 @@ msgstr ""
 "ASP.NET Core ve EF Core konusunda sağlam bilgi. Dayanıklılık desenleri ve "
 "gözlemlenebilirlik konularında bazı eksiklikler."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr ""
+"Bir sorun oluştu ve makale alınamadı. Lütfen bağlantınızı kontrol edin ve "
+"tekrar deneyin."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9724,6 +9771,11 @@ msgstr "Başlat | 5 dakika"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "Webcam başlatılıyor..."
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "Başlatılıyor..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -10110,7 +10162,7 @@ msgid "Teacher Instructions"
 msgstr "Öğretmen Talimatları"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Öğretmen:"
@@ -10475,6 +10527,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Bu eylem geri alınamaz."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr ""
+"Bu makalenin seçilen karmaşıklık düzeyine uygun bir versiyonu henüz yok. "
+"Farklı bir seviyeyi deneyin."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10893,7 +10954,7 @@ msgstr ""
 msgid "Today"
 msgstr "Bugün"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "BUGÜN HABERLERDE"
@@ -10940,12 +11001,12 @@ msgstr ""
 "ücretsiz tam erişim elde eder! Bu yüzden, tartışmaya başlayın ve liderlik "
 "tablosunda yükselin!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "Konu"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Toplam"
@@ -11875,7 +11936,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Kelime Tahmin Oyunu"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Kelime İstatistikleri"
@@ -11887,7 +11948,7 @@ msgstr "Kelime İstatistikleri"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kelimeler"
@@ -12439,7 +12500,7 @@ msgstr ""
 "sınırlı kalmaz, çok daha fazlasını test eder."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Sen:"
@@ -12449,7 +12510,7 @@ msgstr "Sen:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Başarılarınız"

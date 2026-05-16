@@ -12,6 +12,15 @@ All notable changes to this project are documented here.
 
 ### Added
 
+#### Current Events (News) Feature
+
+- Add `NewsDashboardCard` rendering today's AI-curated news headlines per user country, with topic + complexity preferences persisted to local storage.
+- Add `NewsModal` article reader: opens via URL param (`newsId`), renders the article at the selected complexity, supports word-by-word translation, and surfaces a "Discuss with AI" call-to-action.
+- Add `getTodayNews` and `getNewsById` API endpoints; rewrite originals into 3 complexity tiers via `rewriteNewsForLevels` (model: `gpt-4o-mini`, MVP cost-optimized).
+- Add `news-discussion` conversation mode that seeds the AI tutor with the article context and steers it to ask follow-up questions instead of re-explaining facts.
+- Add loading, error, and no-country dashboard states; add Retry button in the article modal on fetch failure.
+- Add country-override setting in News so users can browse news from a different country than their account preference.
+
 #### Progress Tracking & AI Language Assessment
 
 - Implement AI-powered progress evaluation: analyze conversations and score fluency, vocabulary, grammar, and confidence (`f8553979`)

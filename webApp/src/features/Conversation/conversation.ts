@@ -7,7 +7,8 @@ export type ConversationType =
   | 'role-play'
   | 'goal-role-play'
   | 'goal-talk'
-  | 'grammar-improvement';
+  | 'grammar-improvement'
+  | 'news-discussion';
 
 export interface ConversationMessage {
   id: string;

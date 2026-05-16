@@ -597,7 +597,7 @@ msgstr "AI sẽ đánh giá câu trả lời và xác định người chiến t
 msgid "AI-driven feedback on your answers"
 msgstr "Phản hồi từ AI dựa trên câu trả lời của bạn"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr "Nội dung học tiếng Anh tạo ra bởi AI lấy cảm hứng từ các sự kiện hiện tại"
@@ -933,6 +933,11 @@ msgstr "Xác thực"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Tác giả"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr "Tự động (quốc gia tài khoản)"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1481,7 +1486,7 @@ msgstr "Cuộc trò chuyện giữa bạn và {userName}"
 msgid "Chat deleted successfully."
 msgstr "Đã xóa trò chuyện thành công."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Lịch sử trò chuyện"
@@ -1799,7 +1804,7 @@ msgstr "Hoàn thành"
 msgid "Completed ✅"
 msgstr "Hoàn thành ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "Độ phức tạp"
@@ -2087,7 +2092,7 @@ msgstr "Đã sửa"
 msgid "Corrected answers for remembering"
 msgstr "Các câu trả lời đã được sửa để ghi nhớ"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Sửa chữa"
@@ -2102,13 +2107,23 @@ msgstr "Sửa lỗi khi bạn bị mắc kẹt"
 msgid "Could not find page"
 msgstr "Không thể tìm thấy trang"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "Không thể tải bài viết"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr ""
 "Could not load news\n"
 "Không thể tải tin tức"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "Quốc gia"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2271,7 +2286,7 @@ msgstr "Kiểm Tra Thẻ Tín Dụng"
 msgid "csharp developer interview"
 msgstr "phỏng vấn nhà phát triển csharp"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "Các Sự Kiện Hiện Tại"
@@ -2654,7 +2669,7 @@ msgstr "Mô tả kịch bản tùy chỉnh của bạn ở đây..."
 msgid "Description"
 msgstr "Mô tả"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Mô tả:"
@@ -2831,6 +2846,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Thảo luận về chủ đề"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "Thảo luận với AI"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3719,7 +3739,7 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Phản hồi có ích"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "Đang tìm kiếm những câu chuyện mới nhất..."
@@ -4662,7 +4682,7 @@ msgstr "Ngữ pháp"
 msgid "Grammar Correction Preview"
 msgstr "Xem Trước Sửa Ngữ Pháp"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Sửa lỗi ngữ pháp"
@@ -4813,17 +4833,17 @@ msgstr "Dưới đây là một số quy tắc mới để bạn học:"
 msgid "Here are some new words for you to learn:"
 msgstr "Dưới đây là một số từ mới để bạn học:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Dưới đây là những cuộc trò chuyện bạn đã có với FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện của mình."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
@@ -6187,12 +6207,17 @@ msgstr "Đang tải"
 msgid "Loading a word..."
 msgstr "Đang tải một từ..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "Đang tải bài viết..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "Đang tải tin tức..."
@@ -6457,6 +6482,7 @@ msgstr ""
 "làm mới trang và thử lại."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6470,7 +6496,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Thiết lập Microphone"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Phút"
@@ -6638,6 +6664,11 @@ msgstr "Không gian mới"
 msgid "New Words"
 msgstr "Từ mới"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "Thảo luận Tin tức"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6738,7 +6769,7 @@ msgstr "Không có chương nào có sẵn"
 msgid "No charge will be made"
 msgstr "Không có phí nào sẽ được tính"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Chưa có cuộc trò chuyện nào"
@@ -6748,7 +6779,7 @@ msgstr "Chưa có cuộc trò chuyện nào"
 msgid "No correct words yet."
 msgstr "Chưa có từ nào đúng."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Chưa có sửa chữa nào"
@@ -6808,8 +6839,8 @@ msgstr "Chưa có tin nhắn nào"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Chưa có tin nhắn nào. Hãy là người đầu tiên chia sẻ suy nghĩ của bạn!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Chưa có tin tức nào cho quốc gia của bạn hôm nay."
@@ -6890,8 +6921,8 @@ msgstr "Không có dữ liệu lượt đi nào có sẵn."
 msgid "No views yet. Be the first to view this post!"
 msgstr "Chưa có lượt xem. Hãy là người đầu tiên xem bài viết này!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Chưa có từ nào được sử dụng"
@@ -7143,7 +7174,7 @@ msgstr "Mở Bảng Điều Khiển"
 msgid "Open Dev Panel"
 msgstr "Mở Bảng Điều Khiển Dev"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Mở lịch sử"
@@ -7158,7 +7189,7 @@ msgstr "Mở trong Trình duyệt"
 msgid "Open in Telegram"
 msgstr "Mở trong Telegram"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "Mở cài đặt tin tức"
@@ -8387,7 +8418,7 @@ msgstr ""
 "kế hệ thống"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8833,6 +8864,11 @@ msgstr ""
 "chuyền. Kết hợp với thời gian chờ và các đường đi dự phòng. Ghi lại ngữ "
 "cảnh có cấu trúc (ID tương quan) và xuất các chỉ số để quan sát tỷ lệ lỗi "
 "và độ trễ."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "Thử lại"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9521,6 +9557,15 @@ msgstr ""
 "Kiến thức vững chắc về ASP.NET Core và EF Core. Một số thiếu sót về mẫu sự "
 "bền bỉ và khả năng quan sát."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr ""
+"Đã xảy ra lỗi khi lấy bài viết này. Vui lòng kiểm tra kết nối của bạn và "
+"thử lại."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9776,6 +9821,11 @@ msgstr "Bắt đầu | 5 phút"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "Bắt đầu webcam..."
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "Bắt đầu..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -10163,7 +10213,7 @@ msgid "Teacher Instructions"
 msgstr "Hướng dẫn cho Giáo viên"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Giáo viên:"
@@ -10528,6 +10578,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Hành động này không thể đảo ngược."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr ""
+"Bài viết này chưa có phiên bản cho độ phức tạp đã chọn. Hãy thử một cấp độ "
+"khác."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10948,7 +11007,7 @@ msgstr ""
 msgid "Today"
 msgstr "Hôm nay"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "HÔM NAY TRONG TIN TỨC"
@@ -10993,12 +11052,12 @@ msgstr ""
 "năng của ứng dụng miễn phí! Vì vậy, hãy bắt đầu tranh luận và leo lên bảng "
 "xếp hạng!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "Chủ đề"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Tổng cộng"
@@ -11948,7 +12007,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Trò chơi đoán từ"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Thống kê từ vựng"
@@ -11960,7 +12019,7 @@ msgstr "Thống kê từ vựng"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Từ vựng"
@@ -12513,7 +12572,7 @@ msgstr ""
 "pháp và hướng dẫn."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Bạn:"
@@ -12523,7 +12582,7 @@ msgstr "Bạn:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Tài khoản của bạn đã được xóa thành công. Chúng tôi rất tiếc khi bạn ra đi!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Thành tích của bạn"

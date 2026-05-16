@@ -78,6 +78,7 @@ export const UsageStatsCards = () => {
     'goal-role-play': i18n._('Goal Role Play'),
     'goal-talk': i18n._('Goal Talk'),
     'grammar-improvement': i18n._('Grammar Improvement'),
+    'news-discussion': i18n._('News Discussion'),
   };
 
   return (

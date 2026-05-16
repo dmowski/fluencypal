@@ -10,6 +10,7 @@ import { useSettings } from '../Settings/useSettings';
 
 import { NewsSettingsMenu } from './NewsSettingsMenu';
 import { useNews } from './useNews';
+import { useNewsModal } from './useNewsModal';
 import type { NewsItemSummary } from './types';
 
 const NEWS_CARD_BG = 'rgba(31, 58, 95, 0.2)';
@@ -33,8 +34,14 @@ export const NewsDashboardCard = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
   const news = useNews();
+  const newsModal = useNewsModal();
 
   if (settings.loading) return <></>;
+
+  // No country selected anywhere (account + override). The news endpoint has
+  // nothing to query with, so hide the card entirely instead of rendering a
+  // permanently-empty placeholder.
+  if (!news.country) return <></>;
 
   // Source of truth for the badge is the News context: it already merges the
   // user override with the account country, so we never show a stale label
@@ -51,7 +58,7 @@ export const NewsDashboardCard = () => {
     iconName: 'newspaper',
     iconBgColor: ROW_ICON_BG_PALETTE[index % ROW_ICON_BG_PALETTE.length],
     imageUrl: item.imageUrl || undefined,
-    onClick: () => news.openNews(item.id),
+    onClick: () => newsModal.openNews(item.id),
   }));
 
   // Distinguish loading vs empty vs error so the card doesn't look stuck on
@@ -81,8 +88,7 @@ export const NewsDashboardCard = () => {
   }
 
   const previewImageUrl = firstItem?.imageUrl ?? '';
-  const handleCardClick = firstItem ? () => news.openNews(firstItem.id) : undefined;
-  console.log('previewImageUrl', previewImageUrl);
+  const handleCardClick = firstItem ? () => newsModal.openNews(firstItem.id) : undefined;
   return (
     <Stack data-testid="news-dashboard-card" sx={{ gap: '20px' }}>
       <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '10px' }}>

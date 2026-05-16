@@ -594,7 +594,7 @@ msgstr "AI оцінить відповіді та визначить перем�
 msgid "AI-driven feedback on your answers"
 msgstr "Зворотній зв'язок на ваші відповіді з підтримкою штучного інтелекту"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr ""
@@ -928,6 +928,11 @@ msgstr "Аутентифікація"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Автор"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr "Авто (країна облікового запису)"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1476,7 +1481,7 @@ msgstr "Чат між вами та {userName}"
 msgid "Chat deleted successfully."
 msgstr "Чат успішно видалено."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Історія чату"
@@ -1790,7 +1795,7 @@ msgstr "Завершено"
 msgid "Completed ✅"
 msgstr "Завершено ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "Складність"
@@ -2079,7 +2084,7 @@ msgstr "Виправлено"
 msgid "Corrected answers for remembering"
 msgstr "Виправлені відповіді для запам'ятовування"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Виправлення"
@@ -2094,11 +2099,21 @@ msgstr "Корекції, коли ви застрягли"
 msgid "Could not find page"
 msgstr "Не вдалося знайти сторінку"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "Не вдалося завантажити статтю"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "Не вдалося завантажити новини"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "Країна"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2261,7 +2276,7 @@ msgstr "Перевірка кредитної картки"
 msgid "csharp developer interview"
 msgstr "інтерв'ю розробника C#"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "Поточні події"
@@ -2645,7 +2660,7 @@ msgstr "Описуйте свій власний сценарій тут..."
 msgid "Description"
 msgstr "Опис"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Опис:"
@@ -2815,6 +2830,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Обговорити тему"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "Обговоріть з ШІ"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3696,7 +3716,7 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Відгук, що допомагає"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "Отримання останніх новин..."
@@ -4639,7 +4659,7 @@ msgstr "Граматика"
 msgid "Grammar Correction Preview"
 msgstr "Попередній перегляд виправлення граматики"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Виправлення Граматики"
@@ -4791,17 +4811,17 @@ msgstr "Ось декілька нових правил, які вам слід 
 msgid "Here are some new words for you to learn:"
 msgstr "Ось декілька нових слів для вивчення:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Ось розмови, які ви вели з FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Ось виправлення, які ви мали у своїх розмовах."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Ось слова, які ви найчастіше використовували у своїх розмовах."
@@ -6173,12 +6193,17 @@ msgstr "Завантаження"
 msgid "Loading a word..."
 msgstr "Завантаження слова..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "Завантаження статті..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Завантаження бібліотеки..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "Завантаження новин..."
@@ -6443,6 +6468,7 @@ msgstr ""
 "оновіть сторінку і спробуйте знову."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6456,7 +6482,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Налаштування мікрофона"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Хвилини"
@@ -6626,6 +6652,11 @@ msgstr "Новий простір"
 msgid "New Words"
 msgstr "Нові Слова"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "Обговорення новин"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6726,7 +6757,7 @@ msgstr "Немає доступних розділів"
 msgid "No charge will be made"
 msgstr "Жодної плати не стягуватиметься"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Ще немає розмов"
@@ -6736,7 +6767,7 @@ msgstr "Ще немає розмов"
 msgid "No correct words yet."
 msgstr "Ще немає правильних слів."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Ще немає виправлень"
@@ -6794,8 +6825,8 @@ msgstr "Ще немає повідомлень"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Наразі повідомлень немає. Будьте першим, хто поділиться своїми думками!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Сьогодні для вашої країни ще немає новин."
@@ -6878,8 +6909,8 @@ msgstr "Дані про повороти недоступні."
 msgid "No views yet. Be the first to view this post!"
 msgstr "Ще немає переглядів. Станьте першим, хто перегляне цей допис!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Жодних слів ще не використано"
@@ -7127,7 +7158,7 @@ msgstr "Відкрити Панель управління"
 msgid "Open Dev Panel"
 msgstr "Відкрити Панель Розробника"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Відкрити історію"
@@ -7142,7 +7173,7 @@ msgstr "Відкрити в браузері"
 msgid "Open in Telegram"
 msgstr "Відкрити в Telegram"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "Відкрити налаштування новин"
@@ -8369,7 +8400,7 @@ msgstr ""
 "та проектування систем"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8810,6 +8841,11 @@ msgstr ""
 "проблемам. Комбінуйте з таймаутами та шляхами відновлення. Реєструйте "
 "структурований контекст (ідентифікатори кореляції) та передавайте метрики "
 "для спостереження за рівнями помилок і затримками."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "Повторити спробу"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9499,6 +9535,15 @@ msgstr ""
 "Міцні знання ASP.NET Core та EF Core. Деякі прогалини у патернах стійкості "
 "та спостережуваності."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr ""
+"Щось пішло не так під час завантаження цієї статті. Будь ласка, перевірте "
+"ваше з'єднання та спробуйте ще раз."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9756,6 +9801,11 @@ msgstr "Старт | 5 хв"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "Запуск вебкамери... "
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "Починається..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -10142,7 +10192,7 @@ msgid "Teacher Instructions"
 msgstr "Інструкції для вчителя"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Вчитель:"
@@ -10508,6 +10558,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Ця дія є незворотньою."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr "Ця стаття ще не має версії для обраної складності. Спробуйте інший рівень."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10925,7 +10982,7 @@ msgstr ""
 msgid "Today"
 msgstr "Сьогодні"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "СЬОГОДНІ В НОВИНАХ"
@@ -10969,12 +11026,12 @@ msgstr ""
 "Топ 5 у лідерборді отримують повний доступ до всіх функцій додатка "
 "безкоштовно! Отже, починайте дискутувати та піднімайтесь у лідерборді!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "Тема"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Всього"
@@ -11918,7 +11975,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Гра \"Вгадай слово\""
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Статистика слів"
@@ -11930,7 +11987,7 @@ msgstr "Статистика слів"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Слова"
@@ -12480,7 +12537,7 @@ msgstr ""
 "ніж просто синтаксис та підручники."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Ви:"
@@ -12490,7 +12547,7 @@ msgstr "Ви:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ваш обліковий запис успішно видалено. Нам шкода, що ви йдете!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Ваші досягнення"

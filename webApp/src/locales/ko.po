@@ -572,7 +572,7 @@ msgstr "AI가 답변을 평가하고 승자를 결정합니다."
 msgid "AI-driven feedback on your answers"
 msgstr "AI 기반 피드백: 답변에 대한 분석"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr "현재 사건에서 영감을 받은 AI 생성 영어 학습 콘텐츠"
@@ -896,6 +896,13 @@ msgstr "Auth"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "저자"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr ""
+"\n"
+"자동 (계정 국가)\n"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1433,7 +1440,7 @@ msgstr ""
 msgid "Chat deleted successfully."
 msgstr "채팅이 성공적으로 삭제되었습니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "채팅 기록"
@@ -1734,7 +1741,7 @@ msgstr "완료됨"
 msgid "Completed ✅"
 msgstr "완료됨 ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "복잡성"
@@ -2018,7 +2025,7 @@ msgstr "수정됨"
 msgid "Corrected answers for remembering"
 msgstr "암기를 위한 정답"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "교정"
@@ -2033,11 +2040,21 @@ msgstr "막혔을 때 수정하기"
 msgid "Could not find page"
 msgstr "페이지를 찾을 수 없습니다"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "기사를 불러올 수 없습니다."
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "뉴스를 불러올 수 없습니다."
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "국가"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2181,7 +2198,7 @@ msgstr "신용카드 확인"
 msgid "csharp developer interview"
 msgstr "csharp 개발자 인터뷰"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "현재 이벤트"
@@ -2551,7 +2568,7 @@ msgstr "당신의 맞춤 시나리오를 여기에 설명하세요..."
 msgid "Description"
 msgstr "설명"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "설명:"
@@ -2702,6 +2719,11 @@ msgstr "스케일링, 관측 가능성, 실패 모드 및 운영 준비성에 �
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "토픽 논의"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "AI와 토론하기"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3533,7 +3555,7 @@ msgstr "피드백이 모호함: \"**경험이 부족하다**\" — 하지만 직
 msgid "Feedback that helps"
 msgstr "피드백이 도움이 됩니다"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "최신 이야기를 불러오는 중..."
@@ -4397,7 +4419,7 @@ msgstr "문법"
 msgid "Grammar Correction Preview"
 msgstr "문법 수정 미리보기"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "문법 수정"
@@ -4542,17 +4564,17 @@ msgstr "여기에 배워야 할 새로운 규칙이 있습니다:"
 msgid "Here are some new words for you to learn:"
 msgstr "다음은 당신이 배워야 할 몇 가지 새로운 단어들입니다:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "다음은 FluencyPal과의 대화 내용입니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "다음은 당신이 대화에서 받았던 수정 사항들입니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "다음은 당신이 대화에서 가장 많이 사용한 단어들입니다."
@@ -5842,12 +5864,17 @@ msgstr "로딩 중"
 msgid "Loading a word..."
 msgstr "단어 불러오는 중..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "기사를 불러오는 중..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "뉴스 로딩 중..."
@@ -6104,6 +6131,7 @@ msgstr ""
 "브라우저 설정에서 마이크 사용 권한을 허용하고 페이지를 새로 고친 후 다시 시도하세요."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6115,7 +6143,7 @@ msgstr "통화를 시작하려면 마이크 권한이 필요합니다. 마이크
 msgid "Microphone Setup"
 msgstr "마이크 설정"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "분"
@@ -6283,6 +6311,11 @@ msgstr "새 공간"
 msgid "New Words"
 msgstr "새로운 단어들"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "뉴스 토론"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6379,7 +6412,7 @@ msgstr "이용 가능한 챕터가 없습니다"
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "아직 대화 없음"
@@ -6389,7 +6422,7 @@ msgstr "아직 대화 없음"
 msgid "No correct words yet."
 msgstr "아직 맞는 단어가 없습니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "아직 수정 사항 없음"
@@ -6445,8 +6478,8 @@ msgstr "메시지가 아직 없습니다"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "오늘 귀하의 국가에 대한 뉴스가 없습니다."
@@ -6523,8 +6556,8 @@ msgstr "턴 데이터가 없습니다."
 msgid "No views yet. Be the first to view this post!"
 msgstr "아직 조회수 없음. 이 게시물을 처음으로 조회하세요!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "아직 사용된 단어 없음"
@@ -6753,7 +6786,7 @@ msgstr "대시보드 열기"
 msgid "Open Dev Panel"
 msgstr "개발 패널 열기"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "역사 열기"
@@ -6768,7 +6801,7 @@ msgstr "브라우저에서 열기"
 msgid "Open in Telegram"
 msgstr "텔레그램에서 열기"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "뉴스 설정 열기"
@@ -7927,7 +7960,7 @@ msgid ""
 msgstr "React, Vue, 또는 Angular 전문가들이 아키텍처 및 시스템 설계 라운드를 경험하는 경우"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8352,6 +8385,11 @@ msgid ""
 msgstr ""
 "단순 재시도는 실패를 증폭시킬 수 있습니다. 지수 후퇴, 지터, 회로 차단기를 추가하여 연쇄적인 문제를 방지하십시오. 시간 초과 및 "
 "대체 경로와 조합하십시오. 구조화된 컨텍스트(상관 관계 ID)를 기록하고 메트릭을 방출하여 오류율과 지연 시간을 관찰하십시오."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "재시도"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9019,6 +9057,13 @@ msgid ""
 "patterns and observability."
 msgstr "ASP.NET Core 및 EF Core에 대한 확고한 지식. 복원력 패턴과 가시성 면에서 일부 부족함."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr "이 기사를 가져오는 중 문제가 발생했습니다. 연결을 확인하고 다시 시도하세요."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9268,6 +9313,11 @@ msgstr "시작 | 5분"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "웹캠 시작 중... "
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "시작 중..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -9625,7 +9675,7 @@ msgid "Teacher Instructions"
 msgstr "교사 지침"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "교사:"
@@ -9965,6 +10015,13 @@ msgstr "이 계정은 현재 연령 제한으로 인해 차단되었습니다. �
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "이 작업은 되돌릴 수 없습니다."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr "이 기사에는 선택한 복잡도에 대한 버전이 아직 없습니다. 다른 레벨을 시도해보세요."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10362,7 +10419,7 @@ msgstr ""
 msgid "Today"
 msgstr "오늘"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "오늘의 뉴스"
@@ -10404,12 +10461,12 @@ msgid ""
 "for free! So, start debating and climb the leaderboard!"
 msgstr "리더보드 상위 5위는 모든 앱 기능에 무료로 완전히 접근할 수 있습니다! 토론을 시작하고 리더보드에 올라보세요!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "토픽"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "총계"
@@ -11309,7 +11366,7 @@ msgstr "2주 만에 건축 결정에 대해 논의할 때 긴장에서 자신감
 msgid "Word Guessing Game"
 msgstr "단어 추측 게임"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "단어 통계"
@@ -11321,7 +11378,7 @@ msgstr "단어 통계"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "단어들"
@@ -11812,7 +11869,7 @@ msgid ""
 msgstr "당신은 코딩을 배웠지만, 면접은 단순한 문법과 튜토리얼 이상의 것을 테스트합니다."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "You:"
@@ -11822,7 +11879,7 @@ msgstr "You:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "당신의 계정이 성공적으로 삭제되었습니다. 안녕히 가십시오, 그동안 함께 해주셔서 감사합니다!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "당신의 성과"

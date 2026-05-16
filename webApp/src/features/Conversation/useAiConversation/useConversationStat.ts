@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 
 const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
-const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement'];
+const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement', 'news-discussion'];
 
 const learningPlanModes: ConversationType[] = [
   'words',

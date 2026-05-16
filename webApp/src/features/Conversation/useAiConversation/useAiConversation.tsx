@@ -440,6 +440,25 @@ ${voiceInstructions}
       };
     }
 
+    if (mode === 'news-discussion') {
+      const userInfoPrompt = userInfo ? `## Info about Student:\n${userInfo}.` : '';
+      return {
+        ...baseConfig,
+
+        voice,
+        initInstruction: `${aiPersona}
+
+The user just read a news article. Discuss it with them. Ask focused
+questions to push the user to speak more. Do not re-explain the facts.
+
+${userInfoPrompt}
+
+${voiceInstructions}
+
+`,
+      };
+    }
+
     throw new Error(`Unknown mode: ${mode}`);
   };
 

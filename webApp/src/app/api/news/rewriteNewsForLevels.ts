@@ -5,7 +5,11 @@ import { buildNewsRewriteSystemPrompt, buildNewsRewriteUserPrompt } from './prom
 
 const COMPLEXITIES: NewsLanguageComplexity[] = ['beginner', 'middle', 'advance'];
 
-const DEFAULT_MODEL: TextAiModel = 'gpt-5-mini';
+// MVP: use the cheapest text model we already support. The rewrite is short
+// (one article → three complexity versions) and runs once per news item, so
+// `gpt-4o-mini` is a good tradeoff of speed/cost vs. quality for now. Bump
+// this once we have user feedback that the rewrites need more nuance.
+const DEFAULT_MODEL: TextAiModel = 'gpt-4o-mini';
 
 /**
  * Strip common LLM "wrapper" preface lines (e.g. "Sure! Here is the rewritten

@@ -54,6 +54,11 @@ const { i18n } = useLingui();
 i18n._('Speaking');
 ```
 
+- After adding or changing any `i18n._('...')` strings, run `pnpm lang` from
+  `webApp/`. This extracts messages from source and AI-translates the catalogs
+  in `src/locales/*.po` for every supported language in one step. Requires
+  `OPENAI_API_KEY` to be set in `.env.tool`.
+
 ## Environment Gotchas
 
 - Firebase emulator setup and required ports are documented in `FIREBASE_EMULATOR_SETUP.md`.

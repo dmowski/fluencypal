@@ -600,7 +600,7 @@ msgstr "ИИ оценит ответы и определит победител�
 msgid "AI-driven feedback on your answers"
 msgstr "Отзыв, основанный на ИИ, на ваши ответы"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr ""
@@ -936,6 +936,11 @@ msgstr "Аутентификация"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Автор"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr "Авто (страна аккаунта)"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1488,7 +1493,7 @@ msgstr "Чат между вами и {userName}"
 msgid "Chat deleted successfully."
 msgstr "Чат успешно удален."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "История чата"
@@ -1804,7 +1809,7 @@ msgstr "Завершён"
 msgid "Completed ✅"
 msgstr "Завершено ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "Сложность"
@@ -2094,7 +2099,7 @@ msgstr "Исправлено"
 msgid "Corrected answers for remembering"
 msgstr "Исправленные ответы для запоминания"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Исправления"
@@ -2109,11 +2114,21 @@ msgstr "Исправления, когда вы застряли"
 msgid "Could not find page"
 msgstr "Не удалось найти страницу"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "Не удалось загрузить статью"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "Не удалось загрузить новости"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "Страна"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2281,7 +2296,7 @@ msgstr "Проверка кредитной карты"
 msgid "csharp developer interview"
 msgstr "интервью с разработчиком на C#"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "Текущие события"
@@ -2659,7 +2674,7 @@ msgstr "Опишите свой собственный сценарий здес
 msgid "Description"
 msgstr "Описание"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Описание:"
@@ -2832,6 +2847,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Обсудить тему"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "Обсудить с ИИ"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3717,7 +3737,7 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Обратная связь, которая помогает"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "Получение последних историй..."
@@ -4662,7 +4682,7 @@ msgstr "Грамматика"
 msgid "Grammar Correction Preview"
 msgstr "Предварительный просмотр исправления грамматики"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Исправления грамматики"
@@ -4815,17 +4835,17 @@ msgstr "Вот некоторые новые правила, которые те
 msgid "Here are some new words for you to learn:"
 msgstr "Вот несколько новых слов для тебя чтобы выучить:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Вот беседы, которые вы вели с FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Вот исправления, которые были сделаны в ваших разговорах."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Вот слова, которые вы используете чаще всего в своих разговорах."
@@ -6203,12 +6223,17 @@ msgstr "Загрузка"
 msgid "Loading a word..."
 msgstr "Загрузка слова..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "Загрузка статьи..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Загрузка библиотеки..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "Загрузка новостей..."
@@ -6471,6 +6496,7 @@ msgstr ""
 "обновите страницу и попробуйте снова."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6484,7 +6510,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Настройка микрофона"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Минуты"
@@ -6656,6 +6682,11 @@ msgstr "Новое пространство"
 msgid "New Words"
 msgstr "Новые слова"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "Обсуждение новостей"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6756,7 +6787,7 @@ msgstr "Нет доступных глав"
 msgid "No charge will be made"
 msgstr "С вас не будет взиматься плата"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Пока нет разговоров"
@@ -6766,7 +6797,7 @@ msgstr "Пока нет разговоров"
 msgid "No correct words yet."
 msgstr "Пока нет правильных слов."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Пока нет исправлений"
@@ -6826,8 +6857,8 @@ msgstr "Пока нет сообщений"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Нет сообщений. Будьте первым, кто поделится своими мыслями!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Новостей для вашей страны сегодня пока нет."
@@ -6910,8 +6941,8 @@ msgstr "Данные о повороте недоступны."
 msgid "No views yet. Be the first to view this post!"
 msgstr "Просмотров пока нет. Будьте первым, кто посмотрит этот пост!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Пока не использовано ни одного слова"
@@ -7158,7 +7189,7 @@ msgstr "Открыть Панель управления"
 msgid "Open Dev Panel"
 msgstr "Открыть панель разработчика"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Открыть историю"
@@ -7173,7 +7204,7 @@ msgstr "Открыть в браузере"
 msgid "Open in Telegram"
 msgstr "Открыть в Telegram"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "Открыть настройки новостей"
@@ -8401,7 +8432,7 @@ msgstr ""
 "проектирования архитектуры и системного дизайна"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8845,6 +8876,11 @@ msgstr ""
 "каскадные проблемы. Комбинируйте с таймаутами и альтернативными путями. "
 "Записывайте структурированный контекст (корреляционные идентификаторы) и "
 "излучайте метрики для наблюдения за частотой ошибок и задержкой."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "Повторить попытку"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9536,6 +9572,15 @@ msgstr ""
 "Хорошее знание ASP.NET Core и EF Core. Некоторые пробелы в паттернах "
 "устойчивости и наблюдаемости."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr ""
+"Что-то пошло не так при получении этой статьи. Пожалуйста, проверьте ваше "
+"соединение и попробуйте снова."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9793,6 +9838,11 @@ msgstr "Начать | 5 мин"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "Запуск веб-камеры... "
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "Запуск..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -10181,7 +10231,7 @@ msgid "Teacher Instructions"
 msgstr "Инструкции для учителя"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Учитель:"
@@ -10548,6 +10598,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Это действие необратимо."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr ""
+"Эта статья пока что не имеет версии для выбранной сложности. Попробуйте "
+"другой уровень."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10967,7 +11026,7 @@ msgstr ""
 msgid "Today"
 msgstr "Сегодня"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "СЕГОДНЯ В НОВОСТЯХ"
@@ -11012,12 +11071,12 @@ msgstr ""
 "функциям приложения бесплатно! Поэтому начинайте дебаты и поднимайтесь в "
 "таблице лидеров!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "Тема"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Всего"
@@ -11962,7 +12021,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Игра в угадывание слов"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Статистика слов"
@@ -11974,7 +12033,7 @@ msgstr "Статистика слов"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Слова"
@@ -12526,7 +12585,7 @@ msgstr ""
 "просто синтаксис и учебные материалы."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Вы:"
@@ -12536,7 +12595,7 @@ msgstr "Вы:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ваш аккаунт успешно удален. Нам жаль, что вы уходите!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Ваши достижения"

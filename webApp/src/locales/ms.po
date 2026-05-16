@@ -597,7 +597,7 @@ msgstr "AI akan menilai jawapan dan menentukan pemenang."
 msgid "AI-driven feedback on your answers"
 msgstr "Maklum balas berasaskan AI untuk jawapan anda"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr ""
@@ -941,6 +941,11 @@ msgstr "Pengesahan"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "Penulis"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr "Auto (negara akaun)"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1497,7 +1502,7 @@ msgstr "Sembang antara anda dan {userName}"
 msgid "Chat deleted successfully."
 msgstr "Chat berjaya dipadam."
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sejarah sembang"
@@ -1813,7 +1818,7 @@ msgstr "Selesai"
 msgid "Completed ✅"
 msgstr "Selesai ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "Kerumitan"
@@ -2105,7 +2110,7 @@ msgstr "Diperbetulkan"
 msgid "Corrected answers for remembering"
 msgstr "Jawapan yang dibetulkan untuk mengingati"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Pembetulan"
@@ -2122,11 +2127,21 @@ msgstr ""
 msgid "Could not find page"
 msgstr "Tidak dapat mencari halaman"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "Tidak dapat memuat artikel"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "Tidak dapat memuatkan berita"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "Negara"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2291,7 +2306,7 @@ msgstr "Pemeriksaan Kad Kredit"
 msgid "csharp developer interview"
 msgstr "temubual pembangun csharp"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "Acara Semasa"
@@ -2674,7 +2689,7 @@ msgstr "Huraikan senario khas anda di sini..."
 msgid "Description"
 msgstr "Perihalan"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Penerangan:"
@@ -2848,6 +2863,11 @@ msgstr "Bincangkan penskalaan, pemerhatian, mod kegagalan, dan kesediaan operasi
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Bincangkan topik"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "Berbincang dengan AI"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3742,7 +3762,7 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Maklum balas yang membantu"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "Mengambil cerita terkini..."
@@ -4695,7 +4715,7 @@ msgstr "Tatabahasa"
 msgid "Grammar Correction Preview"
 msgstr "Pratonton Pembetulan Tatabahasa"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Betulkanan Tatabahasa"
@@ -4848,17 +4868,17 @@ msgstr "Berikut adalah beberapa peraturan baharu untuk anda belajar:"
 msgid "Here are some new words for you to learn:"
 msgstr "Berikut adalah beberapa perkataan baru untuk anda pelajari:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Berikut adalah perbualan yang anda telah lakukan bersama FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Berikut adalah pembetulan yang anda ada dalam perbualan anda."
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr ""
@@ -6270,12 +6290,17 @@ msgstr "Memuatkan"
 msgid "Loading a word..."
 msgstr "Memuatkan perkataan..."
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "Memuat artikel..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "Memuat berita..."
@@ -6541,6 +6566,7 @@ msgstr ""
 "halaman, dan cuba lagi."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6554,7 +6580,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Persediaan Mikrofon"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Minit"
@@ -6726,6 +6752,11 @@ msgstr "Ruang Baru"
 msgid "New Words"
 msgstr "Perkataan Baru"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "Perbincangan Berita"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6826,7 +6857,7 @@ msgstr "Tiada bab tersedia"
 msgid "No charge will be made"
 msgstr "Tiada caj akan dikenakan"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Tiada perbualan lagi"
@@ -6836,7 +6867,7 @@ msgstr "Tiada perbualan lagi"
 msgid "No correct words yet."
 msgstr "Tiada perkataan yang betul lagi."
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Belum ada pembetulan"
@@ -6894,8 +6925,8 @@ msgstr "Tiada mesej lagi"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Tiada mesej lagi. Jadilah yang pertama berkongsi pendapat anda!"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Tiada berita lagi untuk negara anda hari ini."
@@ -6980,8 +7011,8 @@ msgstr ""
 msgid "No views yet. Be the first to view this post!"
 msgstr "Belum ada tontonan. Jadilah yang pertama menonton siaran ini!"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Belum ada kata yang digunakan lagi"
@@ -7231,7 +7262,7 @@ msgstr "Buka Papan Pemuka"
 msgid "Open Dev Panel"
 msgstr "Buka Panel Pemaju"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Buka sejarah"
@@ -7246,7 +7277,7 @@ msgstr "Buka dalam Pelayar"
 msgid "Open in Telegram"
 msgstr "Buka dalam Telegram"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "Buka tetapan berita"
@@ -8485,7 +8516,7 @@ msgstr ""
 "dan sistem"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8923,6 +8954,11 @@ msgstr ""
 "eksponen, kerancuan, dan pemutus litar untuk mencegah isu berangkai. "
 "Gabungkan dengan had masa dan laluan gantian. Log konteks berstruktur (ID "
 "korelasi) dan emisikan metrik untuk memerhati kadar ralat dan kependaman."
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "Cuba Semula"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9610,6 +9646,15 @@ msgstr ""
 "Pengetahuan kukuh tentang ASP.NET Core dan EF Core. Beberapa kekurangan "
 "dalam corak ketahanan dan pemerhatian."
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr ""
+"Ada sesuatu yang tidak kena semasa mengambil artikel ini. Sila semak "
+"sambungan anda dan cuba lagi."
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9868,6 +9913,11 @@ msgstr "Mula | 5 min"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "Memulakan webcam... "
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "Memulakan..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -10263,7 +10313,7 @@ msgid "Teacher Instructions"
 msgstr "Arahan Guru"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Cikgu:"
@@ -10629,6 +10679,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Tindakan ini tidak boleh dipulihkan."
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr ""
+"Artikel ini belum mempunyai versi untuk tahap kerumitan yang dipilih. Cuba "
+"tahap yang lain."
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -11055,7 +11114,7 @@ msgstr ""
 msgid "Today"
 msgstr "Hari ini"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "HARI INI DALAM BERITA"
@@ -11100,12 +11159,12 @@ msgstr ""
 "dalam aplikasi ini secara percuma! Jadi, mulakan perdebatan dan panjatlah "
 "papan pendahulu!"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "Topik"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Jumlah"
@@ -12058,7 +12117,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Permainan Meneka Perkataan"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Statistik Kata"
@@ -12070,7 +12129,7 @@ msgstr "Statistik Kata"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kata-kata"
@@ -12635,7 +12694,7 @@ msgstr ""
 "daripada sekadar sintaks dan tutorial."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Anda:"
@@ -12645,7 +12704,7 @@ msgstr "Anda:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Akaun anda telah berjaya dihapuskan. Kami sedih untuk melihat anda pergi!"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Pencapaian anda"

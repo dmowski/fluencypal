@@ -573,7 +573,7 @@ msgstr "AIが回答を評価し、勝者を決定します。"
 msgid "AI-driven feedback on your answers"
 msgstr "AIを活用した解答へのフィードバック"
 
-#: src/features/News/NewsDashboardCard.tsx:81
+#: src/features/News/NewsDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "AI-generated English learning content inspired by current events"
 msgstr "AI生成の英語学習コンテンツは、最新の出来事に基づいています"
@@ -899,6 +899,11 @@ msgstr "認証"
 #. js-lingui-explicit-id
 msgid "Author"
 msgstr "著者"
+
+#: src/features/News/NewsSettingsMenu.tsx:121
+#. js-lingui-explicit-id
+msgid "Auto (account country)"
+msgstr "オート（アカウントの国）"
 
 #: src/features/Sentence/StoriesModal.tsx:690
 #. js-lingui-explicit-id
@@ -1434,7 +1439,7 @@ msgstr "{userName}とのチャット"
 msgid "Chat deleted successfully."
 msgstr "チャットが正常に削除されました。"
 
-#: src/features/Usage/UsageStatsCards.tsx:199
+#: src/features/Usage/UsageStatsCards.tsx:200
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "チャット履歴"
@@ -1737,7 +1742,7 @@ msgstr "完了"
 msgid "Completed ✅"
 msgstr "完了 ✅"
 
-#: src/features/News/NewsSettingsMenu.tsx:65
+#: src/features/News/NewsSettingsMenu.tsx:71
 #. js-lingui-explicit-id
 msgid "Complexity"
 msgstr "複雑さ"
@@ -2019,7 +2024,7 @@ msgstr "訂正済み"
 msgid "Corrected answers for remembering"
 msgstr "記憶に留めるための修正済みの回答"
 
-#: src/features/Usage/UsageStatsCards.tsx:523
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "訂正"
@@ -2034,11 +2039,21 @@ msgstr "行き詰った時の修正"
 msgid "Could not find page"
 msgstr "ページが見つかりませんでした"
 
-#: src/features/News/NewsDashboardCard.tsx:58
-#: src/features/News/NewsDashboardCard.tsx:67
+#: src/features/News/NewsModal.tsx:165
+#. js-lingui-explicit-id
+msgid "Could not load article"
+msgstr "記事を読み込めませんでした"
+
+#: src/features/News/NewsDashboardCard.tsx:76
+#: src/features/News/NewsDashboardCard.tsx:85
 #. js-lingui-explicit-id
 msgid "Could not load news"
 msgstr "ニュースを読み込めませんでした"
+
+#: src/features/News/NewsSettingsMenu.tsx:109
+#. js-lingui-explicit-id
+msgid "Country"
+msgstr "国"
 
 #: src/features/SEO/metadata.ts:102
 #. js-lingui-explicit-id
@@ -2182,7 +2197,7 @@ msgstr "クレジットカードの確認"
 msgid "csharp developer interview"
 msgstr "csharp開発者 面接"
 
-#: src/features/News/NewsDashboardCard.tsx:80
+#: src/features/News/NewsDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Current Events"
 msgstr "現在のイベント"
@@ -2546,7 +2561,7 @@ msgstr "あなたのカスタムシナリオをここに説明してください
 msgid "Description"
 msgstr "説明"
 
-#: src/features/Usage/UsageStatsCards.tsx:404
+#: src/features/Usage/UsageStatsCards.tsx:405
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "説明:"
@@ -2696,6 +2711,11 @@ msgstr "スケーリング、可観測性、故障モード、運用準備につ
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "トピックを議論する"
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Discuss with AI"
+msgstr "AIと話す"
 
 #: src/features/RolePlay/rolePlayData.tsx:778
 #. js-lingui-explicit-id
@@ -3517,7 +3537,7 @@ msgstr "フィードバックが曖昧です：「**経験が不足している*
 msgid "Feedback that helps"
 msgstr "フィードバックが役立ちます"
 
-#: src/features/News/NewsDashboardCard.tsx:65
+#: src/features/News/NewsDashboardCard.tsx:83
 #. js-lingui-explicit-id
 msgid "Fetching the latest stories..."
 msgstr "最新のストーリーを取得しています..."
@@ -4382,7 +4402,7 @@ msgstr "文法"
 msgid "Grammar Correction Preview"
 msgstr "文法訂正プレビュー"
 
-#: src/features/Usage/UsageStatsCards.tsx:303
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "文法訂正"
@@ -4527,17 +4547,17 @@ msgstr "以下は、学ぶべき新しいルールです："
 msgid "Here are some new words for you to learn:"
 msgstr "ここに学ぶべき新しい単語があります:"
 
-#: src/features/Usage/UsageStatsCards.tsx:202
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "これはFluencyPalとの会話履歴です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:307
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "これはあなたの会話で訂正が必要だった部分です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:104
+#: src/features/Usage/UsageStatsCards.tsx:105
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "これらは、あなたの会話で最も使用された単語です。"
@@ -5830,12 +5850,17 @@ msgstr ""
 "plaintext\n"
 "単語を読み込み中...\n"
 
+#: src/features/News/NewsModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Loading article..."
+msgstr "記事を読み込んでいます..."
+
 #: src/features/Reader/components/BooksList.tsx:366
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "ライブラリを読み込んでいます…"
 
-#: src/features/News/NewsDashboardCard.tsx:56
+#: src/features/News/NewsDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Loading news..."
 msgstr "ニュースを読み込んでいます..."
@@ -6093,6 +6118,7 @@ msgstr ""
 "ブラウザの設定でマイクへの許可を行い、ページを更新して再試行してください。"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
+#: src/features/News/NewsModal.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6104,7 +6130,7 @@ msgstr "マイクのアクセス許可が必要です。マイクのアクセス
 msgid "Microphone Setup"
 msgstr "マイクのセットアップ"
 
-#: src/features/Usage/UsageStatsCards.tsx:569
+#: src/features/Usage/UsageStatsCards.tsx:570
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "分"
@@ -6274,6 +6300,11 @@ msgstr "新しいスペース"
 msgid "New Words"
 msgstr "新しい単語"
 
+#: src/features/Usage/UsageStatsCards.tsx:81
+#. js-lingui-explicit-id
+msgid "News Discussion"
+msgstr "ニュースディスカッション"
+
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
@@ -6370,7 +6401,7 @@ msgstr "利用可能な章はありません"
 msgid "No charge will be made"
 msgstr "料金は発生しません"
 
-#: src/features/Usage/UsageStatsCards.tsx:225
+#: src/features/Usage/UsageStatsCards.tsx:226
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "まだ会話はありません"
@@ -6380,7 +6411,7 @@ msgstr "まだ会話はありません"
 msgid "No correct words yet."
 msgstr "まだ正しい単語はありません。"
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:329
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "まだ訂正はありません"
@@ -6436,8 +6467,8 @@ msgstr "まだメッセージはありません"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "まだメッセージはありません。最初にあなたの考えを共有しましょう！"
 
-#: src/features/News/NewsDashboardCard.tsx:60
-#: src/features/News/NewsDashboardCard.tsx:69
+#: src/features/News/NewsDashboardCard.tsx:78
+#: src/features/News/NewsDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "あなたの国には、まだ今日のニュースはありません。"
@@ -6516,8 +6547,8 @@ msgstr "利用可能なターンデータがありません。"
 msgid "No views yet. Be the first to view this post!"
 msgstr "まだ閲覧されていません。この投稿を最初に閲覧するのはあなたです！"
 
-#: src/features/Usage/UsageStatsCards.tsx:133
-#: src/features/Usage/UsageStatsCards.tsx:487
+#: src/features/Usage/UsageStatsCards.tsx:134
+#: src/features/Usage/UsageStatsCards.tsx:488
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "まだ使用されている単語はありません"
@@ -6742,7 +6773,7 @@ msgstr "ダッシュボードを開く"
 msgid "Open Dev Panel"
 msgstr "デベロッパーパネルを開く"
 
-#: src/features/Usage/UsageStatsCards.tsx:593
+#: src/features/Usage/UsageStatsCards.tsx:594
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "履歴を開く"
@@ -6757,7 +6788,7 @@ msgstr "ブラウザで開く"
 msgid "Open in Telegram"
 msgstr "テレグラムで開く"
 
-#: src/features/News/NewsSettingsMenu.tsx:49
+#: src/features/News/NewsSettingsMenu.tsx:55
 #. js-lingui-explicit-id
 msgid "Open news settings"
 msgstr "ニュース設定を開く"
@@ -7925,7 +7956,7 @@ msgid ""
 msgstr "React、Vue、またはAngularの専門家がアーキテクチャおよびシステム設計ラウンドに直面する場合"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:39
+#: src/features/News/NewsDashboardCard.tsx:57
 #: src/features/Reader/components/Reader.tsx:299
 #. js-lingui-explicit-id
 msgid "Read"
@@ -8350,6 +8381,11 @@ msgid ""
 msgstr ""
 "リトライだけでは失敗を増幅する可能性があります。指数バックオフ、ジッター、サーキットブレーカーを追加して、連鎖する問題を防ぎましょう。タイムアウトとフォ"
 "ールバックパスを組み合わせます。構造化されたコンテキスト（相関ID）を記録し、エラー率とレイテンシーを観察するためにメトリクスを出力します。"
+
+#: src/features/News/NewsModal.tsx:179
+#. js-lingui-explicit-id
+msgid "Retry"
+msgstr "再試行"
 
 #: src/features/Case/data/backendCSharp/techData.ts:58
 #. js-lingui-explicit-id
@@ -9023,6 +9059,13 @@ msgid ""
 "patterns and observability."
 msgstr "ASP.NET CoreとEF Coreに関する確かな知識があります。回復力のパターンと可観測性にはいくつかのギャップがあります。"
 
+#: src/features/News/NewsModal.tsx:168
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong while fetching this article. Please check your "
+"connection and try again."
+msgstr "この記事の取得中に問題が発生しました。接続を確認して再試行してください。"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
@@ -9278,6 +9321,11 @@ msgstr "スタート | 5分"
 #. js-lingui-explicit-id
 msgid "Starting webcam... "
 msgstr "ウェブカメラを起動しています..."
+
+#: src/features/News/NewsModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Starting..."
+msgstr "開始しています..."
 
 #: src/features/Case/data/frontend-junior/techData.tsx:39
 #: src/features/Case/data/frontend-senior/techData.tsx:39
@@ -9638,7 +9686,7 @@ msgid "Teacher Instructions"
 msgstr "教師への指示"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
@@ -9968,6 +10016,13 @@ msgstr "このアカウントは現在、年齢制限のためブロックされ
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "この操作は元に戻せません。"
+
+#: src/features/News/NewsModal.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"This article does not have a version for the selected complexity yet. Try a "
+"different level."
+msgstr "この記事には、選択された難易度に対応するバージョンがまだありません。別のレベルを試してください。"
 
 #: src/features/Reader/components/ShareBookModal.tsx:83
 #. js-lingui-explicit-id
@@ -10365,7 +10420,7 @@ msgstr ""
 msgid "Today"
 msgstr "今日"
 
-#: src/features/News/NewsDashboardCard.tsx:91
+#: src/features/News/NewsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid "TODAY IN THE NEWS"
 msgstr "今日のニュース"
@@ -10407,12 +10462,12 @@ msgid ""
 "for free! So, start debating and climb the leaderboard!"
 msgstr "リーダーボードのトップ5に入ると、アプリのすべての機能に無料で完全アクセスできます！ だから、ディベートを始めてリーダーボードを上り詰めよう！"
 
-#: src/features/News/NewsSettingsMenu.tsx:84
+#: src/features/News/NewsSettingsMenu.tsx:90
 #. js-lingui-explicit-id
 msgid "Topic"
 msgstr "トピック"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:571
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "合計"
@@ -11328,7 +11383,7 @@ msgstr ""
 "\n"
 "単語推測ゲーム\n"
 
-#: src/features/Usage/UsageStatsCards.tsx:101
+#: src/features/Usage/UsageStatsCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "単語統計"
@@ -11340,7 +11395,7 @@ msgstr "単語統計"
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:453
+#: src/features/Usage/UsageStatsCards.tsx:454
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "単語"
@@ -11829,7 +11884,7 @@ msgid ""
 msgstr "あなたはコーディングを学びましたが、面接では単なる構文やチュートリアル以上のことが試されます。"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:272
+#: src/features/Usage/UsageStatsCards.tsx:273
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "あなた:"
@@ -11839,7 +11894,7 @@ msgstr "あなた:"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "あなたのアカウントは正常に削除されました。お別れするのは残念です！"
 
-#: src/features/Usage/UsageStatsCards.tsx:441
+#: src/features/Usage/UsageStatsCards.tsx:442
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "あなたの成果"

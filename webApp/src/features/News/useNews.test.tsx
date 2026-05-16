@@ -38,7 +38,7 @@ describe('useNews', () => {
     mockUseAuth.mockReset();
     mockUseSettings.mockReset();
     window.localStorage.clear();
-    mockUseAuth.mockReturnValue({ getToken: async () => 'test-token' });
+    mockUseAuth.mockReturnValue({ uid: 'test-uid', getToken: async () => 'test-token' });
   });
 
   it('fetches today news once even when StrictMode double-mounts the provider', async () => {
@@ -100,6 +100,7 @@ describe('useNews', () => {
     expect(JSON.parse(window.localStorage.getItem('news.settings.v1') || '{}')).toEqual({
       complexity: 'advance',
       topic: 'sports',
+      countryOverride: null,
     });
   });
 
