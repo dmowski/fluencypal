@@ -73,7 +73,7 @@ export const NewsSettingsMenu = () => {
               selected={selected}
             >
               <Radio checked={selected} size="small" sx={{ mr: 1, p: 0 }} />
-              <ListItemText primary={i18n._(NEWS_COMPLEXITY_LABELS[level])} />
+              <ListItemText primary={NEWS_COMPLEXITY_LABELS[level]} />
             </MenuItem>
           );
         })}

@@ -209,12 +209,24 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
 
   // Minimal effect: synchronize with the external news endpoint. Guarded by
   // `inFlightKey` so React 18 strict-mode double-mount fires the request once.
+  // We wait until the user settings document has finished loading so we don't
+  // briefly fetch with the US fallback and then immediately re-fetch with the
+  // real account country once Firestore resolves.
+  const userSettingsLoaded = settings.userSettings !== null;
   useEffect(() => {
-    if (!country || !auth.uid) return;
+    if (!country || !auth.uid || !userSettingsLoaded) return;
     const key = `${country}|${languageCode}`;
     if (inFlightKey.current === key) return;
     void fetchToday(key, country, countryName, languageCode, languageName);
-  }, [country, countryName, languageCode, languageName, fetchToday, auth.uid]);
+  }, [
+    country,
+    countryName,
+    languageCode,
+    languageName,
+    fetchToday,
+    auth.uid,
+    userSettingsLoaded,
+  ]);
 
   // Keep refs in sync so the setters below can persist all fields without
   // re-creating themselves on every render.
