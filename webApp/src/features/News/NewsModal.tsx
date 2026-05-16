@@ -137,169 +137,183 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   };
 
   return (
-    <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="40px 0 0px 0">
+    <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="0">
       <Stack
-        data-testid="news-modal"
         sx={{
-          gap: '24px',
-          padding: '20px 5px 80px',
+          backgroundColor: '#4A4A4D',
+          color: '#EBEBF5',
           width: '100%',
-          maxWidth: '700px',
-          margin: '0 auto',
-          opacity: 0,
-          animation: 'fadeInOpacity 1.2s ease 100ms forwards',
+          height: '100%',
+          padding: '0 10px',
         }}
       >
-        {isLoading ? (
-          <Stack sx={{ gap: '20px' }} data-testid="news-modal-loading">
-            <Typography
-              variant="caption"
-              sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
-            >
-              {i18n._('Loading article...')}
-            </Typography>
-            <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
-          </Stack>
-        ) : !item || hasError ? (
-          <Stack sx={{ gap: '16px' }} data-testid="news-modal-error">
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              {i18n._('Could not load article')}
-            </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.8 }}>
-              {i18n._(
-                'Something went wrong while fetching this article. Please check your connection and try again.',
-              )}
-            </Typography>
-            <Stack sx={{ flexDirection: 'row', gap: '12px' }}>
-              <Button
-                variant="contained"
-                color="info"
-                data-testid="news-modal-retry-button"
-                onClick={() => setRetryToken((prev) => prev + 1)}
+        <Stack
+          data-testid="news-modal"
+          sx={{
+            gap: '24px',
+            padding: '20px 5px 80px',
+            width: '100%',
+            maxWidth: '800px',
+            margin: '0 auto',
+            opacity: 0,
+            animation: 'fadeInOpacity 1.2s ease 100ms forwards',
+          }}
+        >
+          {isLoading ? (
+            <Stack sx={{ gap: '20px' }} data-testid="news-modal-loading">
+              <Typography
+                variant="caption"
+                sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
               >
-                {i18n._('Retry')}
-              </Button>
+                {i18n._('Loading article...')}
+              </Typography>
+              <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
             </Stack>
-          </Stack>
-        ) : (
-          <>
-            <Stack sx={{ gap: '8px' }}>
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  gap: '8px',
-                  alignItems: 'center',
-                }}
-              >
-                {formattedDate && (
-                  <Typography
-                    variant="caption"
-                    sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
-                    data-testid="news-modal-date"
-                  >
-                    {formattedDate}
-                  </Typography>
+          ) : !item || hasError ? (
+            <Stack sx={{ gap: '16px' }} data-testid="news-modal-error">
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                {i18n._('Could not load article')}
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                {i18n._(
+                  'Something went wrong while fetching this article. Please check your connection and try again.',
                 )}
-                {item.countryName && (
+              </Typography>
+              <Stack sx={{ flexDirection: 'row', gap: '12px' }}>
+                <Button
+                  variant="contained"
+                  color="info"
+                  data-testid="news-modal-retry-button"
+                  onClick={() => setRetryToken((prev) => prev + 1)}
+                >
+                  {i18n._('Retry')}
+                </Button>
+              </Stack>
+            </Stack>
+          ) : (
+            <>
+              <Stack sx={{ gap: '8px' }}>
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    gap: '8px',
+                    alignItems: 'center',
+                  }}
+                >
+                  {formattedDate && (
+                    <Typography
+                      variant="caption"
+                      sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                      data-testid="news-modal-date"
+                    >
+                      {formattedDate}
+                    </Typography>
+                  )}
+                  {item.countryName && (
+                    <Chip
+                      size="small"
+                      label={item.countryName}
+                      data-testid="news-modal-country"
+                      sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                    />
+                  )}
                   <Chip
                     size="small"
-                    label={item.countryName}
-                    data-testid="news-modal-country"
+                    label={i18n._(NEWS_COMPLEXITY_LABELS[complexity])}
+                    data-testid="news-modal-complexity"
                     sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
                   />
-                )}
-                <Chip
-                  size="small"
-                  label={i18n._(NEWS_COMPLEXITY_LABELS[complexity])}
-                  data-testid="news-modal-complexity"
-                  sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-                />
+                </Stack>
+                <Typography variant="h4" sx={{ fontWeight: 600 }} data-testid="news-modal-title">
+                  {item.title}
+                </Typography>
+                {item.subTitle && <Typography>{item.subTitle}</Typography>}
               </Stack>
-              <Typography variant="h4" sx={{ fontWeight: 600 }} data-testid="news-modal-title">
-                {item.title}
-              </Typography>
-              {item.subTitle && (
-                <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                  {item.subTitle}
+
+              {item.imageUrl && (
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '320px',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    data-testid="news-modal-image"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </Box>
+              )}
+
+              {content ? (
+                <Stack
+                  sx={{
+                    '* p': {
+                      padding: '16px 0',
+                      fontSize: '30px',
+                      fontWeight: 400,
+                      '@media (max-width:600px)': {
+                        fontSize: '22px',
+                      },
+                    },
+                    '*': {
+                      fontFamily: 'serif',
+                    },
+                  }}
+                >
+                  <Markdown
+                    variant="rule"
+                    onWordClick={
+                      translator.isTranslateAvailable
+                        ? (word, element) => {
+                            translator.translateWithModal(word, element);
+                          }
+                        : undefined
+                    }
+                  >
+                    {'\n' + content}
+                  </Markdown>
+                </Stack>
+              ) : (
+                <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                  {i18n._(
+                    'This article does not have a version for the selected complexity yet. Try a different level.',
+                  )}
                 </Typography>
               )}
-            </Stack>
 
-            {item.imageUrl && (
-              <Box
-                sx={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '320px',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                }}
-              >
-                <Image
-                  src={item.imageUrl}
-                  alt={item.title}
-                  data-testid="news-modal-image"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  style={{ objectFit: 'cover' }}
-                />
-              </Box>
-            )}
-
-            {content ? (
               <Stack
                 sx={{
-                  '* p': {
-                    padding: '16px 0',
-                  },
+                  marginTop: '20px',
+                  flexDirection: 'row',
+                  gap: '12px',
+                  flexWrap: 'wrap',
                 }}
               >
-                <Markdown
-                  variant="rule"
-                  onWordClick={
-                    translator.isTranslateAvailable
-                      ? (word, element) => {
-                          translator.translateWithModal(word, element);
-                        }
-                      : undefined
-                  }
+                <Button
+                  variant="contained"
+                  color="info"
+                  startIcon={<VideocamIcon />}
+                  disabled={isCallStarting}
+                  onClick={discussWithAi}
+                  data-testid="news-modal-discuss-button"
+                  sx={{ padding: '10px 24px' }}
                 >
-                  {'\n' + content}
-                </Markdown>
+                  {isCallStarting ? i18n._('Starting...') : i18n._('Discuss with AI')}
+                </Button>
               </Stack>
-            ) : (
-              <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                {i18n._(
-                  'This article does not have a version for the selected complexity yet. Try a different level.',
-                )}
-              </Typography>
-            )}
+            </>
+          )}
 
-            <Stack
-              sx={{
-                marginTop: '20px',
-                flexDirection: 'row',
-                gap: '12px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Button
-                variant="contained"
-                color="info"
-                startIcon={<VideocamIcon />}
-                disabled={isCallStarting}
-                onClick={discussWithAi}
-                data-testid="news-modal-discuss-button"
-                sx={{ padding: '10px 24px' }}
-              >
-                {isCallStarting ? i18n._('Starting...') : i18n._('Discuss with AI')}
-              </Button>
-            </Stack>
-          </>
-        )}
-
-        {translator.translateModal}
+          {translator.translateModal}
+        </Stack>
       </Stack>
     </CustomModal>
   );
