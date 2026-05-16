@@ -12,7 +12,7 @@ import { NewsSettingsMenu } from './NewsSettingsMenu';
 import { useNews } from './useNews';
 import type { NewsItemSummary } from './types';
 
-const NEWS_CARD_BG = '#1F3A5F';
+const NEWS_CARD_BG = 'rgba(31, 58, 95, 0.2)';
 const NEWS_CARD_ITEMS_BG = 'rgba(45, 45, 46, 0.8)';
 
 /**
@@ -21,6 +21,14 @@ const NEWS_CARD_ITEMS_BG = 'rgba(45, 45, 46, 0.8)';
  */
 const ROW_ICON_BG_PALETTE = ['#264E78', '#3B6E9E', '#5F8AB8'];
 
+/**
+ * Headlines from gNews can be very long and break the card layout. Trim to a
+ * fixed length with an ellipsis so titles stay on one or two lines.
+ */
+const TITLE_MAX_LENGTH = 100;
+const trimTitle = (title: string): string =>
+  title.length > TITLE_MAX_LENGTH ? `${title.slice(0, TITLE_MAX_LENGTH).trimEnd()}…` : title;
+
 export const NewsDashboardCard = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -28,13 +36,16 @@ export const NewsDashboardCard = () => {
 
   if (settings.loading) return <></>;
 
-  const countryName = settings.userSettings?.countryName || '';
+  // Source of truth for the badge is the News context: it already merges the
+  // user override with the account country, so we never show a stale label
+  // from `userSettings` when the user picked a different country for news.
+  const countryName = news.countryName;
 
   const summaries: NewsItemSummary[] = news.items ?? [];
   const firstItem = summaries[0];
 
   const cardItems: CardItem[] = summaries.slice(0, 3).map((item, index) => ({
-    title: item.title,
+    title: trimTitle(item.title),
     subTitle: item.subTitle,
     actionButtonTitle: i18n._('Read'),
     iconName: 'newspaper',
@@ -51,7 +62,7 @@ export const NewsDashboardCard = () => {
 
   let cardTitle: string;
   if (firstItem) {
-    cardTitle = firstItem.title;
+    cardTitle = trimTitle(firstItem.title);
   } else if (isInitialLoading) {
     cardTitle = i18n._('Loading news...');
   } else if (hasError) {
@@ -71,7 +82,7 @@ export const NewsDashboardCard = () => {
 
   const previewImageUrl = firstItem?.imageUrl ?? '';
   const handleCardClick = firstItem ? () => news.openNews(firstItem.id) : undefined;
-
+  console.log('previewImageUrl', previewImageUrl);
   return (
     <Stack data-testid="news-dashboard-card" sx={{ gap: '20px' }}>
       <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '10px' }}>

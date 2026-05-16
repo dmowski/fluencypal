@@ -15,6 +15,7 @@ import Radio from '@mui/material/Radio';
 import {
   NEWS_COMPLEXITY_LABELS,
   NEWS_COMPLEXITY_OPTIONS,
+  NEWS_SUPPORTED_COUNTRIES,
   NEWS_TOPIC_LABELS,
   NEWS_TOPIC_OPTIONS,
 } from './constants';
@@ -42,6 +43,11 @@ export const NewsSettingsMenu = () => {
     handleClose();
   };
 
+  const handleCountry = (next: string | null) => () => {
+    news.setCountryOverride(next);
+    handleClose();
+  };
+
   return (
     <>
       <IconButton
@@ -59,7 +65,7 @@ export const NewsSettingsMenu = () => {
         onClose={handleClose}
         data-testid="news-settings-menu"
         slotProps={{
-          paper: { sx: { minWidth: 220 } },
+          paper: { sx: { minWidth: 220, maxHeight: 480 } },
         }}
       >
         <ListSubheader>{i18n._('Complexity')}</ListSubheader>
@@ -94,6 +100,40 @@ export const NewsSettingsMenu = () => {
             >
               <Radio checked={selected} size="small" sx={{ mr: 1, p: 0 }} />
               <ListItemText primary={i18n._(NEWS_TOPIC_LABELS[t])} />
+            </MenuItem>
+          );
+        })}
+
+        <Divider />
+
+        <ListSubheader>{i18n._('Country')}</ListSubheader>
+        {(() => {
+          const autoSelected = news.countryOverride === null;
+          return (
+            <MenuItem
+              key="auto"
+              data-testid="news-country-option-auto"
+              data-selected={autoSelected ? 'true' : 'false'}
+              onClick={handleCountry(null)}
+              selected={autoSelected}
+            >
+              <Radio checked={autoSelected} size="small" sx={{ mr: 1, p: 0 }} />
+              <ListItemText primary={i18n._('Auto (account country)')} />
+            </MenuItem>
+          );
+        })()}
+        {NEWS_SUPPORTED_COUNTRIES.map((c) => {
+          const selected = news.countryOverride === c.code;
+          return (
+            <MenuItem
+              key={c.code}
+              data-testid={`news-country-option-${c.code}`}
+              data-selected={selected ? 'true' : 'false'}
+              onClick={handleCountry(c.code)}
+              selected={selected}
+            >
+              <Radio checked={selected} size="small" sx={{ mr: 1, p: 0 }} />
+              <ListItemText primary={c.name} />
             </MenuItem>
           );
         })}

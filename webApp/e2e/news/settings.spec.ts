@@ -96,4 +96,63 @@ test.describe('News settings menu', () => {
     // only the topic switch added one.
     expect(topicRequests.length).toBe(requestsAfterInitial + 1);
   });
+
+  test('switching country override refetches with the new country code', async ({ page }) => {
+    test.setTimeout(90_000);
+
+    const countryRequests: string[] = [];
+
+    await page.route('**/api/news/getTodayNews', async (route) => {
+      const request = route.request();
+      const body = request.postDataJSON() as { countryCode?: string; topic?: string } | null;
+      const countryCode = body?.countryCode ?? 'us';
+      const topic = body?.topic ?? 'general';
+      countryRequests.push(countryCode);
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          items: makeFixture(topic).map((item) => ({ ...item, countryCode })),
+        }),
+      });
+    });
+
+    const { uid, email } = await signInPracticeWithStepper(page);
+    await seedPracticeUserSettings(page, { uid, email });
+
+    const card = page.getByTestId('news-dashboard-card');
+    await expect(card).toBeVisible({ timeout: 30_000 });
+
+    // Wait for initial fetch (account country, seeded as `us`).
+    await expect(card.getByText('Headline GENERAL 1', { exact: true }).first()).toBeVisible();
+    expect(countryRequests.length).toBeGreaterThan(0);
+    const requestsBeforeOverride = countryRequests.length;
+
+    // Pick a gNews-supported country that is NOT the account country.
+    await page.getByTestId('news-settings-button').click();
+    await expect(page.getByTestId('news-settings-menu')).toBeVisible();
+    await page.getByTestId('news-country-option-fr').click();
+
+    await expect
+      .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })
+      .toBe('fr');
+    expect(countryRequests.length).toBe(requestsBeforeOverride + 1);
+
+    // Reload the page → the override should persist via localStorage and the
+    // very next fetch should also use `fr`, not the account country.
+    await page.reload();
+    await expect(card).toBeVisible({ timeout: 30_000 });
+    await expect
+      .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })
+      .toBe('fr');
+
+    // Switch back to Auto → fetch should use the account country again.
+    await page.getByTestId('news-settings-button').click();
+    await expect(page.getByTestId('news-settings-menu')).toBeVisible();
+    await page.getByTestId('news-country-option-auto').click();
+
+    await expect
+      .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })
+      .toBe('us');
+  });
 });

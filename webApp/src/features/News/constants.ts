@@ -46,6 +46,58 @@ export const NEWS_COMPLEXITY_LABELS: Record<NewsLanguageComplexity, string> = {
 };
 
 /**
+ * gNews top-headlines endpoint only supports a fixed list of country codes.
+ * Picking any other code (e.g. `pl` for Poland) silently returns 0 articles,
+ * which the dashboard then renders as "No news yet for your country today".
+ *
+ * Keep this list in sync with https://gnews.io/docs (Top Headlines → country).
+ * `code` is the alpha-2 lowercased ID we send to gNews; `name` is the display
+ * label shown in the news settings menu and used as the card badge.
+ */
+export interface NewsCountryOption {
+  code: string;
+  name: string;
+}
+
+export const NEWS_SUPPORTED_COUNTRIES: NewsCountryOption[] = [
+  { code: 'au', name: 'Australia' },
+  { code: 'br', name: 'Brazil' },
+  { code: 'ca', name: 'Canada' },
+  { code: 'cn', name: 'China' },
+  { code: 'eg', name: 'Egypt' },
+  { code: 'fr', name: 'France' },
+  { code: 'de', name: 'Germany' },
+  { code: 'gr', name: 'Greece' },
+  { code: 'hk', name: 'Hong Kong' },
+  { code: 'in', name: 'India' },
+  { code: 'ie', name: 'Ireland' },
+  { code: 'il', name: 'Israel' },
+  { code: 'it', name: 'Italy' },
+  { code: 'jp', name: 'Japan' },
+  { code: 'nl', name: 'Netherlands' },
+  { code: 'no', name: 'Norway' },
+  { code: 'pk', name: 'Pakistan' },
+  { code: 'pe', name: 'Peru' },
+  { code: 'ph', name: 'Philippines' },
+  { code: 'pt', name: 'Portugal' },
+  { code: 'ro', name: 'Romania' },
+  { code: 'ru', name: 'Russia' },
+  { code: 'sg', name: 'Singapore' },
+  { code: 'es', name: 'Spain' },
+  { code: 'se', name: 'Sweden' },
+  { code: 'ch', name: 'Switzerland' },
+  { code: 'tw', name: 'Taiwan' },
+  { code: 'ua', name: 'Ukraine' },
+  { code: 'gb', name: 'United Kingdom' },
+  { code: 'us', name: 'United States' },
+];
+
+/** Quick lookup of display name by alpha-2 code. */
+export const NEWS_COUNTRY_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
+  NEWS_SUPPORTED_COUNTRIES.map(({ code, name }) => [code, name]),
+);
+
+/**
  * Per-row icon/color hints for the dashboard `StoreCard`. Cycled by index so
  * the list stays visually varied without per-topic logic.
  */
