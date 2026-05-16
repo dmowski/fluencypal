@@ -1,0 +1,13 @@
+diff --git a/script/cli.js b/script/cli.js
+deleted file mode 100755
+index ee2c5f2f4bbb442f82840003854bb1ca62ecec22..0000000000000000000000000000000000000000
+diff --git a/src/main/ua-parser.mjs b/src/main/ua-parser.mjs
+index 543055ad9056cd90aefb6346ad239ba93f0eb7b9..67d975172a4f4ec9da192b5ccf4591cf11c7f569 100644
+--- a/src/main/ua-parser.mjs
++++ b/src/main/ua-parser.mjs
+@@ -1493,3 +1493,5 @@
+     UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
+ 
+     export {UAParser};
++export default UAParser;
++

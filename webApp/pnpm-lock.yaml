@@ -4,6 +4,29 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@lingui/loader>webpack': 5.104.1
+  rollup: ^4.59.0
+  webpack: ^5.104.1
+  serialize-javascript: ^7.0.3
+  fast-xml-parser: ^5.5.7
+  glob@10>minimatch: ^9.0.7
+  schema-utils@2>ajv: ^6.14.0
+  schema-utils@4>ajv: ^8.18.0
+  react-string-diff>diff: ^4.0.4
+  ua-parser-js: ^2.0.9
+  vite: ^7.3.3
+  handlebars: ^4.7.9
+  protobufjs: ^7.5.6
+  basic-ftp: ^5.3.1
+  '@tootallnate/once@<3.0.1': ^3.0.1
+  postcss@<8.5.10: ^8.5.10
+  valibot@>=0.31.0 <1.2.0: ^1.2.0
+  yaml@>=2.0.0 <2.8.3: ^2.8.3
+
+patchedDependencies:
+  ua-parser-js@2.0.9: a118d14dd92f81e4620ad7c184d9787efb6fe6fa79181c94df13728c5c11e071
+
 importers:
 
   .:
@@ -211,7 +234,7 @@ importers:
         version: 7.2.4
       vite-plugin-glsl:
         specifier: ^1.6.0
-        version: 1.6.0(@rollup/pluginutils@5.3.0(rollup@4.60.3))(esbuild@0.27.7)(vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.5.1))
+        version: 1.6.0(@rollup/pluginutils@5.3.0(rollup@4.60.3))(esbuild@0.27.7)(vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0))
       zero-decimal-currencies:
         specifier: ^1.6.0
         version: 1.6.0
@@ -278,9 +301,9 @@ importers:
         version: 5.9.3
       vite:
         specifier: ^7.3.3
-        version: 7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.5.1)
+        version: 7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0)
       webpack:
-        specifier: 5.104.1
+        specifier: ^5.104.1
         version: 5.104.1(esbuild@0.27.7)
 
 packages:
@@ -1766,7 +1789,7 @@ packages:
     resolution: {integrity: sha512-2K0N2aZWxI3pqmXcJPd/8Y/dQeS+nzcf7aQWn63MKC3/97LC6MlaCxJb4z00yOm12gIn2fD4w+HdkvbrUhBpgw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      webpack: ^5.0.0
+      webpack: 5.104.1
 
   '@lingui/macro@5.9.5':
     resolution: {integrity: sha512-WZsF93jKwk0IW4xmvAGd+6S3dT+9ZzhXAasKIiJL9qB4viO9oj+oecGhXuPYTYV74mcoL7L1494hca0CsB/BLQ==}
@@ -2972,7 +2995,7 @@ packages:
     resolution: {integrity: sha512-+tNWdlWKbpB3WgBN7ijjYkq9X5uhjmcvyjEght4NmH5fAU++zfQzAJ6wumLS+dNcvwEZhKx2Z+skY8m7v0wGSA==}
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
-      rollup: ^2.68.0||^3.0.0||^4.0.0
+      rollup: ^4.59.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -2981,7 +3004,7 @@ packages:
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+      rollup: ^4.59.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -3299,7 +3322,7 @@ packages:
     resolution: {integrity: sha512-ZGxwCkszFHdk9N11XIbAyTTsJsGUKHMYEXMRLUwPLi+iKi+b+YuXLBg7rlxe6Nd3M0i7xWy3gz6jcW7jeqEfIw==}
     engines: {node: '>= 18'}
     peerDependencies:
-      webpack: '>=5.0.0'
+      webpack: ^5.104.1
 
   '@sinclair/typebox@0.27.10':
     resolution: {integrity: sha512-MTBk/3jGLNB2tVxv6uLlFh1iu64iYOQ2PbdOSK3NW8JZsmlaOh2q6sdtKowBhfw8QFLmYNzTW4/oK4uATIi6ZA==}
@@ -3469,8 +3492,8 @@ packages:
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
-  '@tootallnate/once@2.0.1':
-    resolution: {integrity: sha512-HqmEUIGRJ5fSXchkVgR5F7qn48bDBzv0kWj/Kfu5e6uci4UlEeng4331LnBkWffb++Ei3FOVLxo8JJWMFBDMeQ==}
+  '@tootallnate/once@3.0.1':
+    resolution: {integrity: sha512-VyMVKRrpHTT8PnotUeV8L/mDaMwD5DaAKCFLP73zAqAtvF0FCqky+Ki7BYbFCYQmqFyTe9316Ed5zS70QUR9eg==}
     engines: {node: '>= 10'}
 
   '@tootallnate/quickjs-emscripten@0.23.0':
@@ -4615,6 +4638,9 @@ packages:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
 
+  detect-europe-js@0.1.2:
+    resolution: {integrity: sha512-lgdERlL3u0aUdHocoouzT10d9I89VVhk0qNRmll7mXdGfJT1/wqZ2ZLA4oJAjeACPY5fT1wsbq2AT+GkuInsow==}
+
   detect-gpu@5.0.70:
     resolution: {integrity: sha512-bqerEP1Ese6nt3rFkwPnGbsUF9a4q+gMmpTVVOEzoCyeCc+y7/RvJnQZJx1JwhgQI5Ntg0Kgat8Uu7XpBqnz1w==}
 
@@ -5472,6 +5498,9 @@ packages:
 
   is-reference@1.2.1:
     resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
+
+  is-standalone-pwa@0.1.1:
+    resolution: {integrity: sha512-9Cbovsa52vNQCjdXOzeQq5CnCbAcRk05aU62K20WO372NrTv0NxibLFCK6lQ4/iZEFdEA3p3t2VNOn8AJ53F5g==}
 
   is-stream@2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
@@ -6577,10 +6606,6 @@ packages:
   postal-mime@2.7.4:
     resolution: {integrity: sha512-0WdnFQYUrPGGTFu1uOqD2s7omwua8xaeYGdO6rb88oD5yJ/4pPHDA4sdWqfD8wQVfCny563n/HQS7zTFft+f/g==}
 
-  postcss@8.4.31:
-    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.5.14:
     resolution: {integrity: sha512-SoSL4+OSEtR99LHFZQiJLkT59C5B1amGO1NzTwj7TT1qCUgUO6hxOvzkOYxD+vMrXBM3XJIKzokoERdqQq/Zmg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -6702,7 +6727,7 @@ packages:
     resolution: {integrity: sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
-      webpack: ^4.0.0 || ^5.0.0
+      webpack: ^5.104.1
 
   react-devtools-inline@4.4.0:
     resolution: {integrity: sha512-ES0GolSrKO8wsKbsEkVeiR/ZAaHQTY4zDh1UW8DImVmm8oaGLl3ijJDvSGe+qDRKPZdPRnDtWWnSvvrgxXdThQ==}
@@ -7315,7 +7340,7 @@ packages:
       '@swc/core': '*'
       esbuild: '*'
       uglify-js: '*'
-      webpack: ^5.1.0
+      webpack: ^5.104.1
     peerDependenciesMeta:
       '@swc/core':
         optional: true
@@ -7525,8 +7550,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ua-parser-js@1.0.41:
-    resolution: {integrity: sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==}
+  ua-is-frozen@0.1.2:
+    resolution: {integrity: sha512-RwKDW2p3iyWn4UbaxpP2+VxwqXh0jpvdxsYpZ5j/MLLiQOfbsV5shpgQiw93+KMYQPcteeMQ289MaAFzs3G9pw==}
+
+  ua-parser-js@2.0.9:
+    resolution: {integrity: sha512-OsqGhxyo/wGdLSXMSJxuMGN6H4gDnKz6Fb3IBm4bxZFMnyy0sdf6MN96Ie8tC6z/btdO+Bsy8guxlvLdwT076w==}
     hasBin: true
 
   uglify-js@3.19.3:
@@ -7639,16 +7667,16 @@ packages:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
     engines: {node: '>=10.12.0'}
 
-  valibot@1.0.0:
-    resolution: {integrity: sha512-1Hc0ihzWxBar6NGeZv7fPLY0QuxFMyxwYR2sF1Blu7Wq7EnremwY2W02tit2ij2VJT8HcSkHAQqmFfl77f73Yw==}
+  valibot@1.0.0-beta.14:
+    resolution: {integrity: sha512-tLyV2rE5QL6U29MFy3xt4AqMrn+/HErcp2ZThASnQvPMwfSozjV1uBGKIGiegtZIGjinJqn0SlBdannf18wENA==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  valibot@1.0.0-beta.14:
-    resolution: {integrity: sha512-tLyV2rE5QL6U29MFy3xt4AqMrn+/HErcp2ZThASnQvPMwfSozjV1uBGKIGiegtZIGjinJqn0SlBdannf18wENA==}
+  valibot@1.4.0:
+    resolution: {integrity: sha512-iC/x7fVcSyOwlm/VSt7RlHnzNGLGvR9GnxdifUeWoCJo0q4ZZvrVkIHC6faTlkxG47I2Y4UrFquPuVHCrOnrLg==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -7667,7 +7695,7 @@ packages:
     peerDependencies:
       '@rollup/pluginutils': ^5.x
       esbuild: '>= 0.25'
-      vite: '>= 3.x'
+      vite: ^7.3.3
     peerDependenciesMeta:
       '@rollup/pluginutils':
         optional: true
@@ -7689,7 +7717,7 @@ packages:
       sugarss: ^5.0.0
       terser: ^5.16.0
       tsx: ^4.8.1
-      yaml: ^2.4.2
+      yaml: ^2.8.3
     peerDependenciesMeta:
       '@types/node':
         optional: true
@@ -7892,9 +7920,9 @@ packages:
     resolution: {integrity: sha512-vIYeF1u3CjlhAFekPPAk2h/Kv4T3mAkMox5OymRiJQB0spDP10LHvt+K7G9Ny6NuuMAb25/6n1qyUjAcGNf/AA==}
     engines: {node: '>= 6'}
 
-  yaml@2.5.1:
-    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
-    engines: {node: '>= 14'}
+  yaml@2.9.0:
+    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
+    engines: {node: '>= 14.6'}
     hasBin: true
 
   yargs-parser@21.1.1:
@@ -11656,7 +11684,7 @@ snapshots:
       better-promises: 0.4.1
       error-kid: 0.0.7
       mitt: 3.0.1
-      valibot: 1.0.0(typescript@5.9.3)
+      valibot: 1.4.0(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
@@ -11681,7 +11709,7 @@ snapshots:
       '@telegram-apps/types': 2.0.3
       better-promises: 0.4.1
       error-kid: 0.0.7
-      valibot: 1.0.0(typescript@5.9.3)
+      valibot: 1.4.0(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
@@ -11806,7 +11834,7 @@ snapshots:
       classnames: 2.5.1
       csstype: 3.2.3
       deepmerge: 4.3.1
-      ua-parser-js: 1.0.41
+      ua-parser-js: 2.0.9(patch_hash=a118d14dd92f81e4620ad7c184d9787efb6fe6fa79181c94df13728c5c11e071)
     transitivePeerDependencies:
       - encoding
 
@@ -11848,10 +11876,10 @@ snapshots:
       react: 19.2.6
       react-is: 19.2.6
       title: 4.0.1
-      yaml: 2.5.1
+      yaml: 2.9.0
       yaml-diff-patch: 2.0.0
 
-  '@tootallnate/once@2.0.1':
+  '@tootallnate/once@3.0.1':
     optional: true
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
@@ -12957,6 +12985,8 @@ snapshots:
 
   dequal@2.0.3: {}
 
+  detect-europe-js@0.1.2: {}
+
   detect-gpu@5.0.70:
     dependencies:
       webgl-constants: 1.1.1
@@ -13854,7 +13884,7 @@ snapshots:
 
   http-proxy-agent@5.0.0:
     dependencies:
-      '@tootallnate/once': 2.0.1
+      '@tootallnate/once': 3.0.1
       agent-base: 6.0.2
       debug: 4.4.3
     transitivePeerDependencies:
@@ -14024,6 +14054,8 @@ snapshots:
   is-reference@1.2.1:
     dependencies:
       '@types/estree': 1.0.9
+
+  is-standalone-pwa@0.1.1: {}
 
   is-stream@2.0.1: {}
 
@@ -15331,7 +15363,7 @@ snapshots:
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.10.27
       caniuse-lite: 1.0.30001792
-      postcss: 8.4.31
+      postcss: 8.5.14
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
       styled-jsx: 5.1.6(@babel/core@7.29.0)(babel-plugin-macros@3.1.0)(react@19.2.6)
@@ -15570,7 +15602,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       lighthouse: 13.3.0
-      ua-parser-js: 1.0.41
+      ua-parser-js: 2.0.9(patch_hash=a118d14dd92f81e4620ad7c184d9787efb6fe6fa79181c94df13728c5c11e071)
     optionalDependencies:
       playwright-core: 1.59.1
 
@@ -15583,12 +15615,6 @@ snapshots:
   pofile@1.1.4: {}
 
   postal-mime@2.7.4: {}
-
-  postcss@8.4.31:
-    dependencies:
-      nanoid: 3.3.12
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
 
   postcss@8.5.14:
     dependencies:
@@ -16639,7 +16665,13 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  ua-parser-js@1.0.41: {}
+  ua-is-frozen@0.1.2: {}
+
+  ua-parser-js@2.0.9(patch_hash=a118d14dd92f81e4620ad7c184d9787efb6fe6fa79181c94df13728c5c11e071):
+    dependencies:
+      detect-europe-js: 0.1.2
+      is-standalone-pwa: 0.1.1
+      ua-is-frozen: 0.1.2
 
   uglify-js@3.19.3:
     optional: true
@@ -16764,11 +16796,11 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
 
-  valibot@1.0.0(typescript@5.9.3):
+  valibot@1.0.0-beta.14(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
 
-  valibot@1.0.0-beta.14(typescript@5.9.3):
+  valibot@1.4.0(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
 
@@ -16794,14 +16826,14 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  vite-plugin-glsl@1.6.0(@rollup/pluginutils@5.3.0(rollup@4.60.3))(esbuild@0.27.7)(vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.5.1)):
+  vite-plugin-glsl@1.6.0(@rollup/pluginutils@5.3.0(rollup@4.60.3))(esbuild@0.27.7)(vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0)):
     dependencies:
-      vite: 7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.5.1)
+      vite: 7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0)
     optionalDependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.60.3)
       esbuild: 0.27.7
 
-  vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.5.1):
+  vite@7.3.3(@types/node@24.12.2)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
@@ -16814,7 +16846,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.47.1
-      yaml: 2.5.1
+      yaml: 2.9.0
 
   w3c-keyname@2.2.8: {}
 
@@ -16971,11 +17003,11 @@ snapshots:
     dependencies:
       fast-json-patch: 3.1.1
       oppa: 0.4.0
-      yaml: 2.5.1
+      yaml: 2.9.0
 
   yaml@1.10.3: {}
 
-  yaml@2.5.1: {}
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 
