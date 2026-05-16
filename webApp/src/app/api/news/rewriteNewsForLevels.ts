@@ -1,13 +1,7 @@
 import { TextAiModel } from '@/features/Ai/ai';
-import {
-  NewsContentVersions,
-  NewsLanguageComplexity,
-} from '@/features/News/types';
+import { NewsContentVersions, NewsLanguageComplexity } from '@/features/News/types';
 import { generateTextWithAi } from '../ai/generateTextWithAi';
-import {
-  buildNewsRewriteSystemPrompt,
-  buildNewsRewriteUserPrompt,
-} from './prompts';
+import { buildNewsRewriteSystemPrompt, buildNewsRewriteUserPrompt } from './prompts';
 
 const COMPLEXITIES: NewsLanguageComplexity[] = ['beginner', 'middle', 'advance'];
 
