@@ -191,11 +191,11 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   // Minimal effect: synchronize with the external news endpoint. Guarded by
   // `inFlightKey` so React 18 strict-mode double-mount fires the request once.
   useEffect(() => {
-    if (!country) return;
+    if (!country || !auth.uid) return;
     const key = `${country}|${topic}`;
     if (inFlightKey.current === key) return;
     void fetchToday(key, country, countryName, topic);
-  }, [country, countryName, topic, fetchToday]);
+  }, [country, countryName, topic, fetchToday, auth.uid]);
 
   // Keep refs in sync so the setters below can persist all fields without
   // re-creating themselves on every render.
