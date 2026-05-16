@@ -16,6 +16,7 @@ export type DailyTaskType =
   | 'community' // Send at least one message in the community space
   | 'story' // Watch a story and listen in to the end or finish quiz
   | 'grammar-improvement'
+  | 'news' // Discuss today's news with the AI (news-discussion conversation)
   | 'daily-question'; // Answer daily question
 
 export interface DailyTaskInfo {

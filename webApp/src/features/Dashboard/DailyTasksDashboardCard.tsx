@@ -15,6 +15,8 @@ import { useGame } from '../Game/useGame';
 import { useUsage } from '../Usage/useUsage';
 import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
+import { useNews } from '../News/useNews';
+import { useNewsModal } from '../News/useNewsModal';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useRouter } from 'next/navigation';
 
@@ -34,6 +36,10 @@ export const DailyTasksDashboardCard = () => {
 
   const grammarImprovement = useGrammarImprovement();
   const dailyQuestion = useDailyQuestion();
+  const news = useNews();
+  const newsModal = useNewsModal();
+  const firstNewsItem = news.items?.[0] ?? null;
+  const isNewsLoading = news.isLoading && !firstNewsItem;
 
   const taskIconMap: Record<DailyTaskType, string> = useMemo(
     () => ({
@@ -46,8 +52,14 @@ export const DailyTasksDashboardCard = () => {
       'grammar-improvement':
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
       'daily-question': dailyQuestion.todaysQuestionImage || '',
+      news: firstNewsItem?.imageUrl || '',
     }),
-    [secondPhotoUrl, stories.randomStoryWithVideo?.imageUrl, dailyQuestion.todaysQuestionImage],
+    [
+      secondPhotoUrl,
+      stories.randomStoryWithVideo?.imageUrl,
+      dailyQuestion.todaysQuestionImage,
+      firstNewsItem?.imageUrl,
+    ],
   );
 
   const { startJustTalk, isCallStarting } = useJustTalk();
@@ -77,6 +89,9 @@ export const DailyTasksDashboardCard = () => {
       },
       'daily-question': globalModals.openDailyQuestions,
       'grammar-improvement': grammarImprovement.showAvailable,
+      news: () => {
+        if (firstNewsItem) newsModal.openNews(firstNewsItem.id);
+      },
     };
 
     const handler = tasksHandlerMap[taskType];
@@ -104,7 +119,8 @@ export const DailyTasksDashboardCard = () => {
   const items: CardItem[] = useMemo(() => {
     return tasks.todaysActualTasks.map((taskType) => {
       const isJustTalkTask = taskType === 'just-talk';
-      const isLoadingItem = isJustTalkTask && isCallStarting;
+      const isNewsTask = taskType === 'news';
+      const isLoadingItem = (isJustTalkTask && isCallStarting) || (isNewsTask && isNewsLoading);
 
       const taskInfo = tasks.tasksInfo ? tasks.tasksInfo[taskType] : null;
       const isCompleted = tasks.todayTaskProgress
@@ -133,6 +149,7 @@ export const DailyTasksDashboardCard = () => {
     tasks.tasksInfo,
     tasks.todayTaskProgress,
     isCallStarting,
+    isNewsLoading,
     grammarImprovement.selectedIndex,
   ]);
 

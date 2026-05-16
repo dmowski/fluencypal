@@ -58,6 +58,13 @@ export const useConversationStat = (
       dailyTasks.onCompleteTask('goal-lesson');
     }
 
+    // News discussion is shorter than 'just-talk'; mark complete once the
+    // user has actually had a back-and-forth with the AI about the article
+    // (a handful of messages on either side).
+    if (conversation.length === 6 && currentMode === 'news-discussion') {
+      dailyTasks.onCompleteTask('news');
+    }
+
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     const messageCountToCheck = 5;
 
