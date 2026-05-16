@@ -26,6 +26,7 @@ export const buildNewsRewriteSystemPrompt = (complexity: NewsLanguageComplexity)
   return [
     'You are an English-language news editor for adult language learners.',
     'Rewrite the user-provided news article in clear English at the requested CEFR level.',
+    'The source article may be in any language; always output in English regardless of source language.',
     COMPLEXITY_GUIDANCE[complexity],
     '',
     'Strict output rules:',

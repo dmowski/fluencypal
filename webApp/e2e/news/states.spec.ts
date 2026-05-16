@@ -56,38 +56,53 @@ test.describe('News states', () => {
     await expect(card.getByText('Could not load news')).toBeVisible({ timeout: 15_000 });
   });
 
-  test('hides the entire card when the user has no country', async ({ page }) => {
+  test('falls back to US news when the user has no country set', async ({ page }) => {
     test.setTimeout(90_000);
 
-    // Even if the news API is queried, no country means no fetch — but mock
-    // it to avoid hitting the real backend if the guard ever regresses.
+    const fixtureItems = [
+      {
+        id: 'fallback-news-1',
+        title: 'US fallback headline',
+        subTitle: '',
+        imageUrl: 'https://images.unsplash.com/fb1.jpg',
+        dateIso: new Date().toISOString(),
+        countryCode: 'us',
+        topic: 'general' as const,
+      },
+    ];
+
+    let observedCountry: string | null = null;
     await page.route('**/api/news/getTodayNews', async (route) => {
+      try {
+        const body = JSON.parse(route.request().postData() ?? '{}') as {
+          countryCode?: string;
+        };
+        observedCountry = body.countryCode ?? null;
+      } catch {
+        observedCountry = null;
+      }
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify({ items: [] }),
+        body: JSON.stringify({ items: fixtureItems }),
       });
     });
 
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
-    // Overwrite the just-seeded user doc to drop the country so the News card
-    // hits its no-country branch deterministically.
+    // Overwrite the just-seeded user doc to drop the country so the News
+    // card hits its missing-country branch deterministically.
     await page.evaluate((u) => {
       const handle = (window as any).__darkEngTest;
       const ref = handle.doc(handle.firestore, 'users', u);
       return handle.setDoc(ref, { country: null, countryName: null }, { merge: true });
     }, uid);
 
-    // News card is hidden, but the rest of the practice page renders.
-    // Poll instead of waiting on `networkidle` — the dashboard keeps long-lived
-    // websocket/event-source connections that never settle.
-    await expect
-      .poll(async () => await page.getByTestId('news-dashboard-card').count(), {
-        timeout: 15_000,
-      })
-      .toBe(0);
+    const card = page.getByTestId('news-dashboard-card');
+    await expect(card).toBeVisible({ timeout: 30_000 });
+    await expect(card.getByText('US fallback headline')).toBeVisible({ timeout: 15_000 });
+    expect(observedCountry).toBe('us');
   });
 
   test('NewsModal shows error UI with Retry on getNewsById failure, then recovers', async ({

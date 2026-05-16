@@ -143,13 +143,24 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const accountCountry = settings.userSettings?.country ?? null;
   const accountCountryName = settings.userSettings?.countryName ?? '';
 
+  // When the account country isn't in the gNews-supported list (or is missing
+  // entirely), fall back to the US so the News card still has something
+  // sensible to show instead of "No news" or being hidden outright.
+  const isAccountCountrySupported =
+    !!accountCountry && NEWS_SUPPORTED_COUNTRIES.some((c) => c.code === accountCountry);
+  const defaultCountry = isAccountCountrySupported ? accountCountry : 'us';
+  const defaultCountryName = isAccountCountrySupported
+    ? accountCountryName
+    : (NEWS_COUNTRY_NAME_BY_CODE['us'] ?? 'United States');
+
   // Effective values: override wins when set; otherwise fall back to the
-  // account country. When overriding we resolve the display name from the
-  // supported-countries table so the dashboard badge stays consistent.
-  const country = countryOverride ?? accountCountry;
+  // (validated) account country or US. When overriding we resolve the display
+  // name from the supported-countries table so the dashboard badge stays
+  // consistent.
+  const country = countryOverride ?? defaultCountry;
   const countryName = countryOverride
     ? (NEWS_COUNTRY_NAME_BY_CODE[countryOverride] ?? '')
-    : accountCountryName;
+    : defaultCountryName;
 
   const fetchToday = useCallback(
     async (key: string, countryCode: string, countryNameValue: string, topicValue: NewsTopic) => {

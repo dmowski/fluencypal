@@ -71,6 +71,10 @@ test.describe('News modal', () => {
       timeout: 15_000,
     });
     await expect(modal.getByTestId('news-modal-country')).toContainText('United States');
+    // Article image is rendered with the item's imageUrl.
+    const image = modal.getByTestId('news-modal-image');
+    await expect(image).toBeVisible();
+    await expect(image).toHaveAttribute('src', 'https://images.unsplash.com/m1.jpg');
     // Default complexity is `middle` — assert the middle version renders.
     await expect(modal).toContainText('Middle heading');
 

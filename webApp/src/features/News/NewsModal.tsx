@@ -1,8 +1,9 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, Chip, Stack, Typography } from '@mui/material';
+import { Box, Button, Chip, Stack, Typography } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
@@ -230,6 +231,27 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                 </Typography>
               )}
             </Stack>
+
+            {item.imageUrl && (
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '320px',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  data-testid="news-modal-image"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  style={{ objectFit: 'cover' }}
+                />
+              </Box>
+            )}
 
             {content ? (
               <Markdown

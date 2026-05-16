@@ -23,7 +23,14 @@ export interface FetchGNewsTopHeadlinesParams {
   topic: NewsTopic;
   /** Maximum number of articles to request. Defaults to 3. */
   max?: number;
-  /** Article language (e.g. 'en'). Defaults to 'en'. */
+  /**
+   * Article language (e.g. 'en'). When omitted, the gNews `lang` filter is
+   * NOT applied — articles are returned in any language the country publishes
+   * in. This is the right default for our pipeline because the rewrite step
+   * translates the source into English at three CEFR levels, and forcing
+   * `lang='en'` collapses inventory to ~0 for non-English-majority countries
+   * (DE, FR, JP, KR, PL, etc.).
+   */
   lang?: string;
 }
 
@@ -35,7 +42,6 @@ export class GNewsConfigurationError extends Error {
 }
 
 const DEFAULT_MAX = 3;
-const DEFAULT_LANG = 'en';
 
 /**
  * Lazily instantiate a `GNews` client so missing env vars only surface when
@@ -67,13 +73,21 @@ const mapArticle = (article: RawGNewsArticle): RawGNewsArticle => ({
 
 /**
  * Fetch top headlines from gNews and normalise them into `RawGNewsArticle[]`.
+ *
+ * Strategy: gNews `top-headlines` with both `country` AND `category` returns
+ * empty results for many countries. We therefore try progressively broader
+ * queries until we get any articles back:
+ *   1. country + category (+ lang if explicitly provided)
+ *   2. country only (drop category)
+ *   3. category only (drop country) — last resort so the UI still has news
+ *
  * Throws `GNewsConfigurationError` when `GNEWS_API_KEY` is not configured.
  */
 export const fetchGNewsTopHeadlines = async ({
   countryCode,
   topic,
   max = DEFAULT_MAX,
-  lang = DEFAULT_LANG,
+  lang,
 }: FetchGNewsTopHeadlinesParams): Promise<RawGNewsArticle[]> => {
   const apiKey = process.env.GNEWS_API_KEY;
   if (!apiKey) {
@@ -81,12 +95,30 @@ export const fetchGNewsTopHeadlines = async ({
   }
 
   const client = clientFactory(apiKey);
-  const response = await client.topHeadlines({
-    country: countryCode.trim().toLowerCase(),
-    category: topic,
-    lang,
-    max,
-  });
+  const normalisedCountry = countryCode.trim().toLowerCase();
 
-  return (response.articles ?? []).map(mapArticle);
+  const tryFetch = async (
+    params: Parameters<GNews['topHeadlines']>[0],
+  ): Promise<RawGNewsArticle[]> => {
+    const response = await client.topHeadlines(params);
+    return (response.articles ?? []).map(mapArticle);
+  };
+
+  const attempts: Array<Parameters<GNews['topHeadlines']>[0]> = [
+    {
+      country: normalisedCountry,
+      category: topic,
+      max,
+      ...(lang ? { lang } : {}),
+    },
+    { country: normalisedCountry, max, ...(lang ? { lang } : {}) },
+    { category: topic, max, ...(lang ? { lang } : {}) },
+  ];
+
+  for (const params of attempts) {
+    const articles = await tryFetch(params);
+    if (articles.length > 0) return articles;
+  }
+
+  return [];
 };
