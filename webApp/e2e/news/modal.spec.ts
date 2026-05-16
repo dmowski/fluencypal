@@ -75,10 +75,7 @@ test.describe('News modal', () => {
     // so the rendered src is the optimizer URL containing the original).
     const image = modal.getByTestId('news-modal-image');
     await expect(image).toBeVisible();
-    await expect(image).toHaveAttribute(
-      'src',
-      /images\.unsplash\.com(?:%2F|\/)m1\.jpg/,
-    );
+    await expect(image).toHaveAttribute('src', /images\.unsplash\.com(?:%2F|\/)m1\.jpg/);
     // Default complexity is `middle` — assert the middle version renders.
     await expect(modal).toContainText('Middle heading');
 
