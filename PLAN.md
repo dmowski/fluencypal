@@ -1,11 +1,16 @@
 # Live document with short/long term ideas
 
+## PWA for app
+
 ## News
 
-- Remove news from prod db
-- Test PL Learning Language
-- Translate to English polish languages
-- Integrate with daily tasks: "Discuss news with AI"
+- Separate page for news feature?
+
+- How to inform user's about that feature? Daily tasks.
+
+- How to measure it it's useful
+
+- Integrate with daily tasks: "Discuss news with AI"?
 
 ## Reader
 
