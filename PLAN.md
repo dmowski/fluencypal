@@ -2,6 +2,9 @@
 
 ## News
 
+- Remove news from prod db
+- Test PL Learning Language
+- Translate to English polish languages
 - Integrate with daily tasks: "Discuss news with AI"
 
 ## Reader

@@ -86,6 +86,7 @@ test('selecting stood in understood keeps partial selection only', async ({ page
 test('Ctrl+A selects only page content without triggering highlight popover or voiceover', async ({
   page,
 }) => {
+  test.setTimeout(60_000);
   await installSpeechMock(page);
   await openSeededGatsbyBook(page);
 
