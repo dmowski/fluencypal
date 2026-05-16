@@ -6,6 +6,8 @@
 
 - Store news in firebase, and use firebase directly on client
 
+- Integrate with daily tasks
+
 ## Reader
 
 - How to arrange call

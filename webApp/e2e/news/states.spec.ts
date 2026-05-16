@@ -101,7 +101,9 @@ test.describe('News states', () => {
 
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-    await expect(card.getByText('US fallback headline')).toBeVisible({ timeout: 15_000 });
+    await expect(card.getByText('US fallback headline').first()).toBeVisible({
+      timeout: 15_000,
+    });
     expect(observedCountry).toBe('us');
   });
 
