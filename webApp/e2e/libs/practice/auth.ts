@@ -1,5 +1,7 @@
 import { Page, expect } from '@playwright/test';
 
+import { mockExternalIpServices } from './network';
+
 const FIREBASE_API_KEY = 'fake-api-key';
 const AUTH_EMULATOR_HOST = 'http://127.0.0.1:9099';
 const FIRESTORE_EMULATOR_HOST = 'http://127.0.0.1:8080';
@@ -69,6 +71,11 @@ export const signInPracticeWithStepper = async (
   const email =
     opts?.email ??
     `e2e-practice-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@example.com`;
+
+  // Silence noisy external IP/currency lookups in e2e. Tests always seed
+  // `countryCode` / `countryName` directly, so the fallback fetch is not
+  // needed and only adds flaky console errors.
+  await mockExternalIpServices(page);
 
   await page.goto(startUrl);
 

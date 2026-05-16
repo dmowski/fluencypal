@@ -60,6 +60,16 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'www.gutenberg.org',
       },
+      // Firebase storage emulator (dev only). Both `localhost` and the IPv4
+      // literal are produced depending on the SDK, so allow both.
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+      },
     ],
     qualities: [40, 90, 100],
   },

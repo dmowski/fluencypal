@@ -66,12 +66,6 @@ test.describe('News dashboard card', () => {
       });
     });
 
-    // Avoid flaky third-party fetch failing in CI/dev mode, which surfaces a
-    // Next.js dev-error overlay covering the dashboard.
-    await page.route('**/ipapi.co/**', async (route) => {
-      await route.fulfill({ status: 200, contentType: 'text/plain', body: 'USD' });
-    });
-
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 

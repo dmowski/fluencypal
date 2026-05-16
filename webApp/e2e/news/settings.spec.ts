@@ -59,10 +59,6 @@ test.describe('News settings menu', () => {
       });
     });
 
-    await page.route('**/ipapi.co/**', async (route) => {
-      await route.fulfill({ status: 200, contentType: 'text/plain', body: 'USD' });
-    });
-
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 

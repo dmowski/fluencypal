@@ -43,7 +43,32 @@ export const NewsDashboardCard = () => {
     onClick: () => news.openNews(item.id),
   }));
 
-  const cardTitle = firstItem?.title ?? i18n._('Loading news...');
+  // Distinguish loading vs empty vs error so the card doesn't look stuck on
+  // "Loading news..." after the fetch resolves with no items.
+  const hasItems = summaries.length > 0;
+  const isInitialLoading = news.isLoading && !hasItems;
+  const hasError = !news.isLoading && !hasItems && news.error !== null;
+
+  let cardTitle: string;
+  if (firstItem) {
+    cardTitle = firstItem.title;
+  } else if (isInitialLoading) {
+    cardTitle = i18n._('Loading news...');
+  } else if (hasError) {
+    cardTitle = i18n._('Could not load news');
+  } else {
+    cardTitle = i18n._('No news yet for your country today.');
+  }
+
+  let emptyItemsStateText: string;
+  if (isInitialLoading) {
+    emptyItemsStateText = i18n._('Fetching the latest stories...');
+  } else if (hasError) {
+    emptyItemsStateText = news.error ?? i18n._('Could not load news');
+  } else {
+    emptyItemsStateText = i18n._('No news yet for your country today.');
+  }
+
   const previewImageUrl = firstItem?.imageUrl ?? '';
   const handleCardClick = firstItem ? () => news.openNews(firstItem.id) : undefined;
 
@@ -66,7 +91,7 @@ export const NewsDashboardCard = () => {
         label={i18n._('TODAY IN THE NEWS')}
         title={cardTitle}
         items={cardItems}
-        emptyItemsStateText={i18n._('No news yet for your country today.')}
+        emptyItemsStateText={emptyItemsStateText}
         itemsBackgroundColor={NEWS_CARD_ITEMS_BG}
         itemsViewMode={'list'}
         onClick={handleCardClick}
