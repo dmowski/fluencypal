@@ -2,19 +2,6 @@
 
 - Add space bg on landing
 
-## News
-
-- Separate page for news feature? why?
-  To easy share with instagram.
-
-- Set news language level, based on user progress, stats. Until they change it manually?
-
-- How to inform user's about that feature? Daily tasks.
-
-- How to measure it it's useful
-
-- Integrate with daily tasks: "Discuss news with AI"?
-
 ## PWA for app
 
 Setup PWA for webApp. Ensure e2e, linters, tests

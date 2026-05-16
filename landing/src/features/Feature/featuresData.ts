@@ -284,6 +284,51 @@ This makes daily practice simple, consistent, and useful for real spoken English
       ),
     },
     {
+      id: 'news-discussion',
+      title: i18n._('English Practice with Today\u2019s News'),
+      subTitle: i18n._(
+        'Read AI-rewritten news at your level and discuss the story with the AI.',
+      ),
+      metaTitle: i18n._('English Practice with Today\u2019s News | FluencyPal'),
+      metaDescription: i18n._(
+        'Practice English with today\u2019s news. FluencyPal rewrites real headlines at your level and lets you discuss the story with an AI tutor.',
+      ),
+      keywords: [
+        'English news practice',
+        'learn English with news',
+        'AI news discussion',
+        'current events English',
+      ],
+      content: i18n._(
+        `## Practice English with real current events
+
+The News feature turns today\u2019s real headlines into English practice material. Stories are pulled from gNews for your country, translated into the language you are learning, and rewritten by AI at a complexity level that matches your skill.
+
+## How it works
+
+Each day FluencyPal:
+- fetches current news for your country (or any supported country you choose)
+- rewrites the article at three complexity levels so it stays readable for you
+- shows the story on your dashboard with the original image and a short headline
+
+You can switch the news country and complexity level at any time from the news settings.
+
+## Discuss the story with AI
+
+From the news card you can open the full article and start a voice or text discussion about it with the AI tutor. The AI uses the article as the topic, so you practice:
+- expressing opinions about real events
+- summarizing what you read
+- asking and answering questions about the story
+- using vocabulary that appears in everyday news
+
+## Why it helps
+
+Real news gives you something fresh to talk about every day, which keeps practice interesting and connected to the world you live in. Because the text is rewritten at your level, you stay challenged without getting stuck on unfamiliar wording, and the AI discussion turns a passive reading session into active English speaking practice.
+
+Completing a news discussion also counts toward your daily tasks, so the habit fits naturally into the rest of your learning routine.`,
+      ),
+    },
+    {
       id: 'debates',
       removed: true,
       title: i18n._('English Debate Practice with Other Learners'),
