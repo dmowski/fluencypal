@@ -13,7 +13,7 @@ import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import type { NewsItemSummary } from './types';
 
-const NEWS_CARD_BG = 'rgba(31, 58, 95, 0.2)';
+const NEWS_CARD_BG = 'rgba(31, 58, 95, 0.8)';
 const NEWS_CARD_ITEMS_BG = 'rgba(45, 45, 46, 0.8)';
 
 /**
