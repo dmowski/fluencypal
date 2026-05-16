@@ -176,6 +176,10 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     ) => {
       if (inFlightKey.current === key) return;
       inFlightKey.current = key;
+      // Clear stale items so the UI shows a loading state instead of leaving
+      // the previous country/language results on screen while the new fetch
+      // runs in the background.
+      setItems(null);
       setIsLoading(true);
       setError(null);
       try {
