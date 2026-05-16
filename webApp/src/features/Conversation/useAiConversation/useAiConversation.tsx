@@ -41,6 +41,7 @@ import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 
+const modesToUseRrc: ConversationType[] = ['talk', 'role-play', 'news-discussion'];
 //const aiModal = MODELS.REALTIME_CONVERSATION;
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -159,8 +160,8 @@ function useProvideAiConversation(): AiConversationContextType {
   }, []);
 
   const onOpen = async () => {
-    const isRealtime = currentMode === 'talk' || currentMode === 'role-play';
-    if (isRealtime) {
+    const isUseRealtime = modesToUseRrc.includes(currentMode);
+    if (isUseRealtime) {
       await sleep(300);
       console.log('Sleep before triggering');
       setIsInitializing('');
@@ -172,7 +173,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
     communicatorRef.current?.triggerAiResponse();
 
-    if (!isRealtime) {
+    if (!isUseRealtime) {
       await sleep(700);
       setIsInitializing('');
       setIsStarted(true);
@@ -541,7 +542,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const modesToUseRrc: ConversationType[] = ['talk', 'role-play'];
       const isUseRealtime = modesToUseRrc.includes(input.mode);
       const isUseVad = !isUseRealtime;
 

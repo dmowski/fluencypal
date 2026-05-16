@@ -2,7 +2,7 @@
 
 ## News
 
-- Practice with AI
+- Practice with AI (test)
 
 - Store news in firebase, and use firebase directly on client
 
