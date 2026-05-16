@@ -128,6 +128,16 @@ After each changes ensure it properly covered with tests:
 UI - is covered with e2e. Rely mostly on e2e. and run them after each big changes. add new tests after a new functionality (step) is added.
 If something work unstable, stabilize it first before continue work.
 
+### Folder structure
+
+Place all related code, types, inside folder webApp/src/features/News
+
+### URL for e2e,
+
+http://localhost:3000/practice
+
+This is URL of the app, for now we don't have e2e that tests that functionality, so you will be needed to create it.
+
 ### Goal for now
 
 For now, analyze code base and create file "newsFeaturePlan.md" and place here plan split by steps. Each step should be covered by E2E and provide something we can test manually.
