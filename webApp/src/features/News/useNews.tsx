@@ -140,7 +140,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const inFlightKey = useRef<string | null>(null);
   const byIdCache = useRef<Map<string, NewsItem>>(new Map());
 
-  const accountCountry = settings.userSettings?.country ?? null;
+  const accountCountry = settings.userSettings?.country?.toLowerCase() ?? null;
   const accountCountryName = settings.userSettings?.countryName ?? '';
 
   // When the account country isn't in the gNews-supported list (or is missing
@@ -149,6 +149,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const isAccountCountrySupported =
     !!accountCountry && NEWS_SUPPORTED_COUNTRIES.some((c) => c.code === accountCountry);
   const defaultCountry = isAccountCountrySupported ? accountCountry : 'us';
+
   const defaultCountryName = isAccountCountrySupported
     ? accountCountryName
     : (NEWS_COUNTRY_NAME_BY_CODE['us'] ?? 'United States');
