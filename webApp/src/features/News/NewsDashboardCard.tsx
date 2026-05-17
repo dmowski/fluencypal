@@ -48,7 +48,7 @@ export const NewsDashboardCard = () => {
   const summaries: NewsItemSummary[] = news.items ?? [];
   const firstItem = summaries[0];
 
-  const cardItems: CardItem[] = summaries.slice(0, 3).map((item, index) => {
+  const cardItems: CardItem[] = summaries.map((item, index) => {
     const hasImage = !!item.imageUrl;
     return {
       title: trimTitle(item.title),
