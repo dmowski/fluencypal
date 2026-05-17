@@ -29,6 +29,8 @@ import { deriveReadingPositionFromPages } from '../utils/deriveReadingPositionFr
 import { resolveReadingPositionToPage } from '../utils/resolveReadingPositionToPage';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useSwipePageNavigation } from '../hooks/useSwipePageNavigation';
+import { SwipePageIndicator } from './SwipePageIndicator';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -242,6 +244,13 @@ export const Reader = ({ data }: { data: Book }) => {
     onPrevious: goToPreviousPage,
   });
 
+  const { swipeDirection } = useSwipePageNavigation({
+    onNext: goToNextPage,
+    onPrevious: goToPreviousPage,
+    isFirstPage: activePage === 1,
+    isLastPage: activePage >= maxSpreadStartPage,
+  });
+
   const playText = useCallback(
     (text: string) => {
       if (!readerSettings.voiceOverSelectedText) return;
@@ -423,6 +432,8 @@ export const Reader = ({ data }: { data: Book }) => {
       />
 
       {flyingTooltipNode}
+
+      <SwipePageIndicator direction={swipeDirection} />
 
       <Typography
         data-testid="reader-page-indicator"
