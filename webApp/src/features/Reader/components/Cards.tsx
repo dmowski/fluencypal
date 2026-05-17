@@ -28,6 +28,11 @@ export const BookCard = ({
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const canDownload = Boolean(data.originalFile || data.originalFileBlobPath);
   const hasMenuItems = Boolean(onDelete || canDownload || onReimport || onShare);
+  const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
+  const progressPercent =
+    data.paragraphs.length > 0 && data.readingPosition
+      ? Math.round((data.readingPosition.paragraphIndex / data.paragraphs.length) * 100)
+      : 0;
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -58,19 +63,62 @@ export const BookCard = ({
     <Stack
       onClick={() => onClick(data)}
       sx={{
-        padding: '36px 45px 36px 36px',
-        borderRadius: '8px',
-        maxWidth: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        width: '360px',
+        minHeight: '136px',
+        borderRadius: '10px',
+        overflow: 'hidden',
         cursor: 'pointer',
-        color: '#fff',
-        gap: '4px',
         position: 'relative',
+        flexDirection: 'row',
+        gap: '12px',
+        padding: '12px',
+        paddingLeft: firstImage ? '14px' : '24px',
+        color: '#fff',
         '@media (max-width: 600px)': {
-          padding: '42px 30px 52px 20px',
+          width: '100%',
         },
       }}
     >
+      {/* Blurred background */}
+      {firstImage ? (
+        <>
+          <Box
+            component="img"
+            src={firstImage}
+            alt=""
+            sx={{
+              position: 'absolute',
+              inset: '-20px',
+              width: 'calc(100% + 40px)',
+              height: 'calc(100% + 40px)',
+              objectFit: 'cover',
+              filter: 'blur(22px)',
+              zIndex: 0,
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 1,
+            }}
+          />
+        </>
+      ) : (
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            zIndex: 0,
+          }}
+        />
+      )}
+
+      {/* Menu button */}
       {hasMenuItems && (
         <>
           <IconButton
@@ -82,6 +130,7 @@ export const BookCard = ({
               position: 'absolute',
               top: '8px',
               right: '8px',
+              zIndex: 10,
               color: '#fff',
               '&:hover': {
                 backgroundColor: 'rgba(255, 255, 255, 0.22)',
@@ -147,37 +196,78 @@ export const BookCard = ({
           </Menu>
         </>
       )}
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: 'bold',
-          '@media (max-width: 600px)': {
-            fontSize: '1.25rem',
-          },
-        }}
-      >
-        {data.title}
-      </Typography>
-      <Typography variant="caption">{data.subtitle}</Typography>
-      <Typography
-        variant="caption"
-        sx={{
-          fontStyle: 'italic',
-          opacity: 0.8,
-        }}
-      >
-        {data.author}
-      </Typography>
 
-      <Typography
-        variant="caption"
+      {/* Cover image */}
+      {firstImage && (
+        <Box
+          sx={{
+            width: '70px',
+            minWidth: '70px',
+            aspectRatio: '2 / 3',
+            borderRadius: '3px',
+            overflow: 'hidden',
+            position: 'relative',
+            zIndex: 2,
+            flexShrink: 0,
+            alignSelf: 'center',
+            ':after': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              zIndex: 2,
+              borderRadius: '3px',
+              boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, .18)',
+            },
+          }}
+        >
+          <Box
+            component="img"
+            src={firstImage}
+            alt={data.title}
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </Box>
+      )}
+
+      {/* Text content */}
+      <Stack
         sx={{
-          paddingTop: '20px',
-          opacity: 0.5,
+          gap: '3px',
+          flex: '1 1 auto',
+          minWidth: 0,
+          zIndex: 2,
+          justifyContent: 'center',
+          pr: hasMenuItems ? '24px' : 0,
         }}
       >
-        id: {data.id}
-      </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 700,
+            lineHeight: 1.2,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            color: '#fff',
+          }}
+        >
+          {data.title}
+        </Typography>
+        <Typography
+          variant="caption"
+          sx={{ fontStyle: 'italic', opacity: 0.8, color: '#fff' }}
+          noWrap
+        >
+          {data.author}
+        </Typography>
+        <Typography variant="caption" sx={{ opacity: 0.6, color: '#fff' }}>
+          {progressPercent}%
+        </Typography>
+      </Stack>
     </Stack>
   );
 };
