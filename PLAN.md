@@ -7,7 +7,6 @@
 
 ## Reader
 
-- Speed up e2e
 - Create a separate project for book
 - Setup domain
 - Setup PWA
