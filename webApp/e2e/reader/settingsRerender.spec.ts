@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import {
   closeSettingsPopover,
   enableTranslateOnHover,
@@ -20,14 +20,14 @@ import {
  * `data-reader-paragraph-render-count` attribute.
  */
 
-const readRenderCounts = async (page: import('@playwright/test').Page): Promise<number[]> =>
+const readRenderCounts = async (page: Page): Promise<number[]> =>
   page.evaluate(() =>
     Array.from(document.querySelectorAll<HTMLElement>('[data-reader-paragraph-render-count]')).map(
       (el) => Number(el.getAttribute('data-reader-paragraph-render-count') ?? 0),
     ),
   );
 
-const selectFirstAvailableVoice = async (page: import('@playwright/test').Page) => {
+const selectFirstAvailableVoice = async (page: Page) => {
   const voiceSelect = page.getByRole('combobox', { name: 'Voice', exact: true });
   if (await voiceSelect.isDisabled()) return false;
   await voiceSelect.click();
