@@ -10,8 +10,6 @@ import { useGame } from '../Game/useGame';
 import { hasExperimentalDashboardAccess } from './experimentalDashboardAccess';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 
-const REALTIME_15_MODEL = 'gpt-realtime-1.5';
-
 export const ExperimentalDashboardCard = () => {
   const { i18n } = useLingui();
   const { startJustTalk, isCallStarting } = useJustTalk();
@@ -49,14 +47,6 @@ export const ExperimentalDashboardCard = () => {
           title={i18n._('Experimental features')}
           items={[
             {
-              title: 'Realtime-1.5 - Just Talk',
-              subTitle: i18n._('Just Talk mode with better AI behind it.'),
-              iconName: 'star',
-              iconBgColor: 'rgba(11, 8, 0, 0.8)',
-              actionButtonTitle: isCallStarting ? i18n._('Loading...') : i18n._('Start'),
-              onClick: () => startJustTalk(REALTIME_15_MODEL),
-            },
-            {
               title: i18n._('Voice to Text'),
               subTitle: i18n._('Narrate your text and check style.'),
               iconName: 'mic',
@@ -77,7 +67,7 @@ export const ExperimentalDashboardCard = () => {
             },
           ]}
           itemsBackgroundColor={'rgba(100, 100, 100, 0)'}
-          onClick={() => startJustTalk(REALTIME_15_MODEL)}
+          onClick={() => startJustTalk()}
           itemsViewMode={'list'}
         >
           <Stack
