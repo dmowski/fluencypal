@@ -2,10 +2,6 @@
 
 ## News
 
-- Create separate domain: news.fluencypal.com
-  Render news without auth (update backend api to make it public).
-  To discuss with ai, show auth wall
-
 ## Reader
 
 - Test on Android, Safari
