@@ -7,7 +7,9 @@ test.describe('AuthWall remembered method', () => {
     await page.goto('/practice');
 
     await expect(page.getByRole('button', { name: 'Next', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Sign in with Google', exact: true })).not.toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Sign in with Google', exact: true }),
+    ).not.toBeVisible();
   });
 
   test('skips to auth selection and shows last used auth badge', async ({ page }) => {
@@ -20,8 +22,12 @@ test.describe('AuthWall remembered method', () => {
 
     await page.goto('/practice');
 
-    await expect(page.getByRole('button', { name: 'Sign in with Google', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Sign in with email', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Sign in with Google', exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Sign in with email', exact: true }),
+    ).toBeVisible();
     await expect(page.getByRole('button', { name: 'Next', exact: true })).not.toBeVisible();
     await expect(page.getByTestId('auth-wall-last-method-badge')).toHaveText('Last used: Email');
   });
