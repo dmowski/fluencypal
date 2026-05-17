@@ -84,6 +84,7 @@ export function Dashboard({ lang }: DashboardProps) {
               >
                 <DailyTasksDashboardCard />
                 <PracticeCustomConversationsDashboardCard />
+                <NewsDashboardCard />
                 <ProgressDashboardCard />
                 <ExperimentalDashboardCard />
                 <JustTalkCard />
@@ -94,7 +95,6 @@ export function Dashboard({ lang }: DashboardProps) {
                 <GameDashboardCard />
 
                 <DailyQuestionDashboardCard />
-                <NewsDashboardCard />
               </Stack>
             </>
           )}
