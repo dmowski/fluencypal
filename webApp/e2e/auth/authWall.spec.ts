@@ -29,8 +29,7 @@ test.describe('AuthWall remembered method', () => {
       page.getByRole('button', { name: 'Sign in with email', exact: true }),
     ).toBeVisible();
     await expect(page.getByRole('button', { name: 'Next', exact: true })).not.toBeVisible();
-    // Wait up to 10s for badge to appear and match text
     const badge = page.getByTestId('auth-wall-last-method-badge');
-    await expect(badge).toHaveText('Last used', { timeout: 10000 });
+    await expect(badge).toHaveText('Last used');
   });
 });

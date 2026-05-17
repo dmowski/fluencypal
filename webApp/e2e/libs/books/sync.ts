@@ -229,7 +229,27 @@ export const shareBookViaUI = async (page: Page, bookId: string, email: string):
   await expect(page.getByTestId('share-book-modal')).toBeVisible();
   await page.getByTestId('share-email-input').fill(email);
   await page.getByTestId('share-email-submit').click();
-  await expect(page.getByTestId('share-success-message')).toBeVisible({ timeout: 20_000 });
+
+  const success = page.getByTestId('share-success-message');
+  const error = page.getByTestId('share-error-message');
+
+  // Wait until the UI reports completion, either success or explicit error.
+  await expect
+    .poll(
+      async () => {
+        if (await success.isVisible().catch(() => false)) return 'success';
+        if (await error.isVisible().catch(() => false)) return 'error';
+        return 'pending';
+      },
+      { message: 'Expected sharing result to appear (success or error)' },
+    )
+    .not.toBe('pending');
+
+  if (await error.isVisible().catch(() => false)) {
+    const errorText = (await error.textContent())?.trim() || 'Unknown share error';
+    throw new Error(`shareBookViaUI failed: ${errorText}`);
+  }
+
   // Close the modal
   await page.getByRole('button', { name: 'Close share modal' }).click();
 };

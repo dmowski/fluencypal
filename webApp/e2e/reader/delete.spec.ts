@@ -25,8 +25,6 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('solo owner deletes book with native confirm', async ({ page }) => {
-    test.setTimeout(60_000);
-
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
     await signInTestUserOnPage(page, userA);
@@ -56,8 +54,6 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('non-owner sees "leave" modal and can leave the book', async ({ page, browser }) => {
-    test.setTimeout(120_000);
-
     // Set up: userA owns the book, shares it with userB
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
@@ -125,8 +121,6 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('owner with collaborators sees custom delete modal', async ({ page }) => {
-    test.setTimeout(90_000);
-
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
     const userB = await createEmulatorTestUser();
@@ -151,8 +145,6 @@ test.describe('Reader book deletion', () => {
   });
 
   test('owner clicks "Delete for all" removes book for everyone', async ({ page, browser }) => {
-    test.setTimeout(120_000);
-
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
     const userB = await createEmulatorTestUser();
@@ -183,8 +175,6 @@ test.describe('Reader book deletion', () => {
   });
 
   test('"Open sharing settings" from delete modal transitions to share modal', async ({ page }) => {
-    test.setTimeout(90_000);
-
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
     const userB = await createEmulatorTestUser();
@@ -215,8 +205,6 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('owner can reassign ownership to a collaborator', async ({ page, browser }) => {
-    test.setTimeout(120_000);
-
     await openSeededGatsbyBook(page);
     const userA = await createEmulatorTestUser();
     const userB = await createEmulatorTestUser();

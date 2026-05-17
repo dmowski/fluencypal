@@ -66,8 +66,26 @@ export const signInTestUserOnPage = async (
   const uid = await page.evaluate(
     async ({ email, password }) => {
       const handle = (window as any).__darkEngTest;
-      const credential = await handle.signInWithEmailAndPassword(handle.auth, email, password);
-      return credential.user.uid;
+
+      // Emulator auth can transiently return user-not-found right after signUp.
+      // Retry a few times before surfacing a real failure.
+      let lastError: unknown;
+      for (let attempt = 0; attempt < 5; attempt++) {
+        try {
+          const credential = await handle.signInWithEmailAndPassword(handle.auth, email, password);
+          return credential.user.uid;
+        } catch (error) {
+          lastError = error;
+          const message = String((error as { message?: string })?.message || '');
+          const isRetryable = message.includes('auth/user-not-found');
+          if (!isRetryable || attempt === 4) {
+            throw error;
+          }
+          await new Promise((resolve) => setTimeout(resolve, 250));
+        }
+      }
+
+      throw lastError instanceof Error ? lastError : new Error('Failed to sign in test user');
     },
     { email: user.email, password: user.password },
   );

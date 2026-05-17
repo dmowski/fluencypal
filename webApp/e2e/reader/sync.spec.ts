@@ -2,6 +2,7 @@ import { expect, test, type BrowserContext, type Page } from '@playwright/test';
 import {
   applyYellowHighlight,
   assertHighlightPopoverVisible,
+  assertWordHighlightedYellow,
   BOOK_TITLE,
   createEmulatorTestUser,
   EmulatorTestUser,
@@ -69,11 +70,15 @@ test.describe('Reader sync against Firebase emulator', () => {
     await assertHighlightPopoverVisible(page);
     await applyYellowHighlight(page);
 
+    // First wait for local UI confirmation before asserting remote sync.
+    await assertWordHighlightedYellow(page, /whenever/i);
+
     const updated = await waitForRemoteBookField(
       user.uid,
       GATSBY_BOOK_ID,
       'highlights',
       (value) => Array.isArray(value) && value.length >= 1,
+      { timeoutMs: 30_000 },
     );
 
     const highlights = updated.highlights as Array<{ color?: string }>;
