@@ -39,7 +39,7 @@ export class GNewsConfigurationError extends Error {
   }
 }
 
-const DEFAULT_MAX = 3;
+const DEFAULT_MAX = 5;
 
 /**
  * Lazily instantiate a `GNews` client so missing env vars only surface when

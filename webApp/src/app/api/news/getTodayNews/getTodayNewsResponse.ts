@@ -7,7 +7,7 @@ import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
 import { rewriteNewsForLevels } from '../rewriteNewsForLevels';
 import { translateNewsHeadline } from '../translateNewsHeadline';
 
-const DESIRED_COUNT = 3;
+const DESIRED_COUNT = 6;
 
 const toSummary = (item: NewsItem): NewsItemSummary => ({
   id: item.id,

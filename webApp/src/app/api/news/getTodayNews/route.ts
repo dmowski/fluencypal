@@ -1,4 +1,3 @@
-import { validateAuthToken } from '../../config/firebase';
 import { GetTodayNewsRequest } from '../types';
 import { getTodayNewsResponse } from './getTodayNewsResponse';
 
@@ -7,12 +6,6 @@ import { getTodayNewsResponse } from './getTodayNewsResponse';
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  try {
-    await validateAuthToken(request);
-  } catch {
-    return new Response('Unauthorized', { status: 401 });
-  }
-
   const ct = request.headers.get('content-type') ?? '';
   if (!ct.includes('application/json')) {
     return new Response('Unsupported content type', { status: 415 });
