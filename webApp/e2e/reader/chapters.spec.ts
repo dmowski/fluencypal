@@ -18,7 +18,9 @@ test('chapter list maps each chapter to a unique target page', async ({ page }) 
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
+    timeout: 60_000,
+  });
 
   await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();

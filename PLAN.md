@@ -2,20 +2,6 @@
 
 ## News
 
-The problem with extraction news:
-webApp/src/app/api/news/getTodayNews/getTodayNewsRequest.ts
-
-Sometimes I get 504 (on client).
-Most probably AI processing takes time.
-
-On client, wait for 10 second and do another attempt.
-(You probably can do it here webApp/src/app/api/news/getTodayNews/getTodayNewsRequest.ts)
-
-Do 3 attempt with different timeout: 10s, 20s, 30s
-
-No empty news. Analyze how endpoint works. can we make it public?
-webApp/src/app/api/news/getTodayNews/route.ts
-
 - Make news card more clean
 
 ## Reader
