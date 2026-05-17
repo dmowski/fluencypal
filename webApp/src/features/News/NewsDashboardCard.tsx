@@ -13,9 +13,6 @@ import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import type { NewsItemSummary } from './types';
 
-const NEWS_CARD_BG = 'rgba(31, 58, 95, 0.8)';
-const NEWS_CARD_ITEMS_BG = 'rgba(45, 45, 46, 0.8)';
-
 /**
  * Colors cycled across the 3 news rows; kept short so the palette stays
  * predictable for e2e snapshots.
@@ -111,14 +108,14 @@ export const NewsDashboardCard = () => {
       </Stack>
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={NEWS_CARD_BG}
+        backgroundColor={'rgba(31, 58, 95, 0.8)'}
         previewImageUrl={previewImageUrl}
         badge={countryName || undefined}
         label={i18n._('TODAY IN THE NEWS')}
         title={cardTitle}
         items={cardItems}
         emptyItemsStateText={emptyItemsStateText}
-        itemsBackgroundColor={NEWS_CARD_ITEMS_BG}
+        itemsBackgroundColor={'rgba(45, 45, 46, 0.8)'}
         itemsViewMode={'list'}
         onClick={handleCardClick}
       />
