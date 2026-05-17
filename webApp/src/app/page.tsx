@@ -1,7 +1,7 @@
 import { supportedLanguages } from '@/features/Lang/lang';
 import { PracticePage } from '@/features/Router/PracticePage';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import { Suspense } from 'react';
 import { ThemeProvider } from '@mui/material';
@@ -10,6 +10,7 @@ import { PracticeProvider } from './practiceProvider';
 import { TopOffset } from '@/features/Layout/TopOffset';
 import { ReaderPage } from '@/features/Reader/ReaderPage';
 import { lightTheme } from '@/features/uiKit/theme';
+import { ServiceWorkerRegister } from '@/features/Pwa/ServiceWorkerRegister';
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -30,17 +31,38 @@ const isBookHost = (host: string | null): boolean => {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const host = (await headers()).get('host');
   if (isBookHost(host)) {
-    return generateMetadataInfo({
-      lang: 'en',
-      currentPath: 'book',
-    });
+    return {
+      ...generateMetadataInfo({
+        lang: 'en',
+        currentPath: 'book',
+      }),
+      appleWebApp: {
+        capable: true,
+        title: 'Reader',
+        statusBarStyle: 'default',
+      },
+    };
   }
   const rolePlayId = (await props.searchParams).rolePlayId;
-  return generateMetadataInfo({
-    lang: (await props.params).lang,
-    currentPath: 'practice',
-    rolePlayId,
-  });
+  return {
+    ...generateMetadataInfo({
+      lang: (await props.params).lang,
+      currentPath: 'practice',
+      rolePlayId,
+    }),
+    appleWebApp: {
+      capable: true,
+      title: 'FluencyPal',
+      statusBarStyle: 'black-translucent',
+    },
+  };
+}
+
+export async function generateViewport(): Promise<Viewport> {
+  const host = (await headers()).get('host');
+  return {
+    themeColor: isBookHost(host) ? '#F4E1C6' : '#0a121e',
+  };
 }
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
@@ -58,6 +80,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
               <ReaderPage />
             </Suspense>
           </ThemeProvider>
+          <ServiceWorkerRegister />
         </body>
       </html>
     );
@@ -76,6 +99,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
             <PracticePage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
           </main>
         </PracticeProvider>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

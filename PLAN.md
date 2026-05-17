@@ -2,23 +2,6 @@
 
 ## Reader
 
-- create provider, client side component;
-  wrap: webApp/src/app/page.tsx
-
-In url is "book.fluencypal.com", render
-<ThemeProvider theme={lightTheme}>
-<Suspense fallback={<div>Loading...</div>}>
-<ReaderPage />
-</Suspense>
-</ThemeProvider>
-otherwise, use child.
-
-If you can do it on server side, it would be better.
-The goal, is when user opens https://app.fluencypal.com, they see Practice page,
-when they opens https://book.fluencypal.com, we will render Book feature.
-
-- Setup PWA, different manifest for different project types
-
 - Tune logic of Markdown page splitting. Use proper markdown component to render content to check if it's fit.
 - Fix _long paragraph italic text on separate pages_
 - Automatic re-import, create parser version
