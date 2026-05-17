@@ -1,6 +1,6 @@
 import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
 import { ChevronLeft, ChevronRight, CircleEllipsis, Info, X } from 'lucide-react';
-import { type MouseEvent, type PointerEvent, useEffect, useState } from 'react';
+import { type MouseEvent, useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -49,23 +49,14 @@ export const BookInfoButton = ({
     }
   }, [open]);
 
-  // On Android Chrome, opening the Popover inside pointerdown caused the MUI
-  // Modal backdrop to mount under the finger before touchend, so the synthesized
-  // click sometimes landed on the backdrop and dismissed (or never showed) the
-  // popover. Open in the click handler instead, where the synthesized click is
-  // delivered to the IconButton itself, and only stop propagation on pointer
-  // events so underlying reader interactions (selection, pagination) do not
-  // react to the tap on the button.
-  const handleInfoPointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-  };
-
-  const handleInfoPointerUp = (event: PointerEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-  };
-
   const handleInfoClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
+
+    const selection = window.getSelection();
+    if (selection && selection.rangeCount > 0) {
+      selection.removeAllRanges();
+    }
+
     setAnchorEl(event.currentTarget);
   };
 
@@ -83,8 +74,6 @@ export const BookInfoButton = ({
   return (
     <>
       <IconButton
-        onPointerDown={handleInfoPointerDown}
-        onPointerUp={handleInfoPointerUp}
         onClick={handleInfoClick}
         aria-label={i18n._('Book info')}
         sx={{
