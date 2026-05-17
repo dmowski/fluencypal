@@ -89,6 +89,12 @@ const ReaderParagraphBase = ({
   isResizeAnchorHighlightVisible,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
+  // Render counter exposed to e2e via `data-reader-paragraph-render-count` so
+  // tests can assert that toggling non-layout settings (language, voice,
+  // translate target, translate-on-hover, voice-over-selected-text) does not
+  // re-render memoized paragraph content.
+  const renderCountRef = useRef(0);
+  renderCountRef.current += 1;
   const isParagraphStart = paragraphStartCharOffset === 0;
   const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(
     paragraphText,
@@ -320,6 +326,7 @@ const ReaderParagraphBase = ({
         data-reader-paragraph-is-continuation={isParagraphStart ? undefined : 'true'}
         data-reader-paragraph-token-count={paragraphTokenMap.tokens.length}
         data-reader-paragraph-source-text-length={paragraphText.length}
+        data-reader-paragraph-render-count={renderCountRef.current}
         data-reader-invariant-violation={paragraphTokenMapViolation ?? undefined}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}

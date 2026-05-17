@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { MouseEvent } from 'react';
 import { getTranslation, normalizeToNativeLangCode } from '../../Translation/translationHelpers';
 import { normalizeSelectedText } from '../components/Paragraph/libs/normalizeReaderSelectedText';
@@ -34,10 +34,18 @@ export const useReaderFlyingTooltip = ({
     setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
   }, []);
 
-  const normalizedSourceLanguage = useMemo(
-    () => normalizeToNativeLangCode(sourceLanguage),
-    [sourceLanguage],
-  );
+  // Latest refs so `onWordHover` identity stays stable when the user changes
+  // translate-on-hover, source language, target language, or device pointer
+  // type. Keeping the callback stable avoids re-rendering memoized
+  // `ReaderParagraph` children.
+  const translateOnHoverRef = useRef(translateOnHover);
+  translateOnHoverRef.current = translateOnHover;
+  const sourceLanguageRef = useRef(sourceLanguage);
+  sourceLanguageRef.current = sourceLanguage;
+  const targetLanguageRef = useRef(targetLanguage);
+  targetLanguageRef.current = targetLanguage;
+  const isTouchDeviceRef = useRef(isTouchDevice);
+  isTouchDeviceRef.current = isTouchDevice;
 
   const clearHoverTranslation = useCallback(() => {
     hoverRequestIdRef.current += 1;
@@ -49,15 +57,17 @@ export const useReaderFlyingTooltip = ({
 
   const onWordHover = useCallback(
     async (word: string, e: MouseEvent<HTMLElement>) => {
-      if (!translateOnHover || isTouchDevice) return;
+      if (!translateOnHoverRef.current || isTouchDeviceRef.current) return;
       setHoverPointer(getPointerPosition(e, FLYING_TOOLTIP_OFFSET_X, FLYING_TOOLTIP_OFFSET_Y));
 
       const text = normalizeSelectedText(word);
+      const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguageRef.current);
+      const currentTargetLanguage = targetLanguageRef.current;
       if (
         !canTranslateReaderText({
           text,
           sourceLanguage: normalizedSourceLanguage,
-          targetLanguage,
+          targetLanguage: currentTargetLanguage,
         })
       ) {
         clearHoverTranslation();
@@ -90,7 +100,7 @@ export const useReaderFlyingTooltip = ({
         const translated = await getTranslation({
           text,
           sourceLanguage: normalizedSourceLanguage,
-          targetLanguage,
+          targetLanguage: currentTargetLanguage,
         });
 
         if (hoverRequestIdRef.current !== requestId || !translated.trim()) {
@@ -108,13 +118,7 @@ export const useReaderFlyingTooltip = ({
         }
       }
     },
-    [
-      translateOnHover,
-      isTouchDevice,
-      normalizedSourceLanguage,
-      targetLanguage,
-      clearHoverTranslation,
-    ],
+    [clearHoverTranslation],
   );
 
   const onWordMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {

@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { Book, BookChapterNavigationItem, HighlightedText } from '../model/types';
+import { Book, BookChapterNavigationItem, HighlightedText, ReaderSettings } from '../model/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
 import { PaginationPanel } from './PaginationButtons';
@@ -66,22 +66,49 @@ export const Reader = ({ data }: { data: Book }) => {
     return Array.from(paragraphIndices).sort((a, b) => a - b);
   }, [data.chapters]);
 
+  // Restrict pagination inputs to layout-affecting fields so toggling language,
+  // voice, translate target, translate-on-hover, or voice-over-selected-text
+  // does not invalidate `pages` and re-render book content.
+  const paginationSettings: ReaderSettings = useMemo(
+    () => ({
+      language: '',
+      selectedVoiceURI: null,
+      translateToLanguage: null,
+      translateOnHover: false,
+      voiceOverSelectedText: false,
+      fontSize: readerSettings.fontSize,
+      lineHeight: readerSettings.lineHeight,
+      paragraphGap: readerSettings.paragraphGap,
+      justifyText: readerSettings.justifyText,
+      contentWidth: columnWidth,
+      contentHeight: readerSettings.contentHeight,
+      columns: readerSettings.columns,
+      columnGap: readerSettings.columnGap,
+    }),
+    [
+      columnWidth,
+      readerSettings.columnGap,
+      readerSettings.columns,
+      readerSettings.contentHeight,
+      readerSettings.fontSize,
+      readerSettings.justifyText,
+      readerSettings.lineHeight,
+      readerSettings.paragraphGap,
+    ],
+  );
+
   const pages = useMemo(() => {
     return splitIntoPages({
       bookParagraphs: data.paragraphs,
-      settings: {
-        ...readerSettings,
-        contentWidth: columnWidth,
-      },
+      settings: paginationSettings,
       imageAspectRatioByHref: data.imageAspectRatioByHref,
       chapterStartParagraphIndices,
     });
   }, [
     chapterStartParagraphIndices,
-    columnWidth,
     data.imageAspectRatioByHref,
     data.paragraphs,
-    readerSettings,
+    paginationSettings,
   ]);
 
   const highlightsByParagraph = useMemo(() => {
@@ -156,6 +183,12 @@ export const Reader = ({ data }: { data: Book }) => {
   );
 
   const speech = useBrowserSpeech();
+  // Latest refs so callbacks passed to memoized ReaderParagraph stay stable
+  // when the user toggles voice/translate-related settings.
+  const speechPlayRef = useRef(speech.play);
+  speechPlayRef.current = speech.play;
+  const voiceOverSelectedTextRef = useRef(readerSettings.voiceOverSelectedText);
+  voiceOverSelectedTextRef.current = readerSettings.voiceOverSelectedText;
   const {
     activePopover,
     activeColor,
@@ -233,7 +266,7 @@ export const Reader = ({ data }: { data: Book }) => {
       readerSettings.clearResizeAnchorWord();
       goToPage(targetPage);
     },
-    [goToPage, readerSettings],
+    [goToPage, readerSettings.clearResizeAnchorWord],
   );
 
   useReaderShortcuts({
@@ -253,10 +286,10 @@ export const Reader = ({ data }: { data: Book }) => {
 
   const playText = useCallback(
     (text: string) => {
-      if (!readerSettings.voiceOverSelectedText) return;
-      speech.play(text.trim());
+      if (!voiceOverSelectedTextRef.current) return;
+      speechPlayRef.current(text.trim());
     },
-    [speech.play, readerSettings.voiceOverSelectedText],
+    [],
   );
 
   const handleWordHoverClear = useCallback(() => {

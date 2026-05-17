@@ -44,6 +44,13 @@ export const useReaderHighlightPopover = ({
   const translationRequestIdRef = useRef(0);
   const popoverPaperRef = useRef<HTMLDivElement | null>(null);
   const activePopoverAtPointerDownRef = useRef<ActivePopoverState | null>(null);
+  // Latest refs so `handleParagraphSelection` identity stays stable when the
+  // user changes language or translate-to target. Keeping the callback stable
+  // avoids re-rendering memoized `ReaderParagraph` children.
+  const sourceLanguageRef = useRef(sourceLanguage);
+  sourceLanguageRef.current = sourceLanguage;
+  const targetLanguageRef = useRef(targetLanguage);
+  targetLanguageRef.current = targetLanguage;
 
   const closeActivePopover = useCallback(() => {
     translationRequestIdRef.current += 1;
@@ -96,7 +103,8 @@ export const useReaderHighlightPopover = ({
       }
 
       const normalizedText = normalizeSelectedText(payload.selectionText);
-      const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguage);
+      const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguageRef.current);
+      const currentTargetLanguage = targetLanguageRef.current;
 
       translationRequestIdRef.current += 1;
       const requestId = translationRequestIdRef.current;
@@ -104,7 +112,7 @@ export const useReaderHighlightPopover = ({
       const shouldTranslate = canTranslateReaderText({
         text: normalizedText,
         sourceLanguage: normalizedSourceLanguage,
-        targetLanguage,
+        targetLanguage: currentTargetLanguage,
       });
 
       setActivePopover({
@@ -124,7 +132,7 @@ export const useReaderHighlightPopover = ({
         const translated = await getTranslation({
           text: normalizedText,
           sourceLanguage: normalizedSourceLanguage,
-          targetLanguage,
+          targetLanguage: currentTargetLanguage,
         });
 
         if (translationRequestIdRef.current !== requestId) {
@@ -154,7 +162,7 @@ export const useReaderHighlightPopover = ({
         });
       }
     },
-    [sourceLanguage, targetLanguage],
+    [],
   );
 
   const activeParagraphHighlights = useMemo(() => {
