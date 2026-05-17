@@ -1,13 +1,8 @@
-import { getReaderLibraryCategories } from '@/features/Reader/server/gutenberg';
+import type { ReaderLibraryCategory } from '@/features/Reader/model/library';
+import categories from './categories.json';
 
 export const runtime = 'nodejs';
 
 export async function GET(): Promise<Response> {
-  try {
-    const categories = await getReaderLibraryCategories();
-    return Response.json({ categories });
-  } catch (error) {
-    console.error('GET /api/reader/library failed', error);
-    return Response.json({ error: 'Failed to load library.' }, { status: 502 });
-  }
+  return Response.json({ categories: categories as ReaderLibraryCategory[] });
 }
