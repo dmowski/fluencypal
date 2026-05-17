@@ -40,30 +40,19 @@ export const convertEpubFile = async ({
 
   const metadata = parsed.metadata;
 
-  onProgress?.({ progress: 75, message: 'Extracting title, subtitle and author...' });
+  onProgress?.({ progress: 75, message: 'Parsing metadata with AI...' });
 
-  const needsAiMetadata = !metadata.subtitle.trim();
-  console.log('metadata.subtitle', metadata.subtitle);
-  let finalMetadata = metadata;
+  const aiResponse = await sendConvertDocToTextRequest({
+    textPreview: markdown.slice(0, 1200),
+  });
 
-  if (needsAiMetadata) {
-    onProgress?.({
-      progress: 82,
-      message: 'No subtitle found. Parsing metadata with AI...',
-    });
-
-    const aiResponse = await sendConvertDocToTextRequest({
-      textPreview: markdown.slice(0, 600),
-    });
-
-    if (aiResponse.metadata) {
-      finalMetadata = {
+  const finalMetadata = aiResponse.metadata
+    ? {
         title: aiResponse.metadata.title.trim() || metadata.title,
         subtitle: aiResponse.metadata.subtitle.trim() || metadata.subtitle,
         author: aiResponse.metadata.author.trim() || metadata.author,
-      };
-    }
-  }
+      }
+    : metadata;
 
   const imageDataUrlByHref = parsed.imageDataUrlByHref;
 
@@ -76,9 +65,9 @@ export const convertEpubFile = async ({
 
   return {
     text: markdown,
-    title: finalMetadata.title,
-    subtitle: finalMetadata.subtitle,
-    author: finalMetadata.author,
+    title: finalMetadata.title || 'Untitled',
+    subtitle: finalMetadata.subtitle || 'Information not available',
+    author: finalMetadata.author || 'Unknown Author',
     chapters: parsed.chapters,
     imageDataUrlByHref,
     imageAspectRatioByHref,

@@ -52,7 +52,9 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
+    timeout: 60_000,
+  });
 
   await ensureReaderTextVisible(page, EXPECTED_COPYRIGHT, { maxSteps: 30 });
   await expect

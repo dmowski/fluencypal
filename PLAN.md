@@ -1,16 +1,29 @@
 # Live document with short/long term ideas
 
-- Add space bg on landing
+## News
 
-## PWA for app
+The problem with extraction news:
+webApp/src/app/api/news/getTodayNews/getTodayNewsRequest.ts
 
-Setup PWA for webApp. Ensure e2e, linters, tests
+Sometimes I get 504 (on client).
+Most probably AI processing takes time.
+
+On client, wait for 10 second and do another attempt.
+(You probably can do it here webApp/src/app/api/news/getTodayNews/getTodayNewsRequest.ts)
+
+Do 3 attempt with different timeout: 10s, 20s, 30s
+
+No empty news. Analyze how endpoint works. can we make it public?
+webApp/src/app/api/news/getTodayNews/route.ts
+
+- Make news card more clean
 
 ## Reader
 
-- How to arrange call
-
-- Setup domain book.fluencypal.com
+- Test new parser
+- Create a separate project for book
+- Setup domain
+- Setup PWA
 
 - Tune logic of Markdown page splitting.
   Use proper markdown component to render content to check if it's fit.

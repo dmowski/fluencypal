@@ -158,7 +158,7 @@ test('first page content fits viewport at 1400x700 (cover image)', async ({ page
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
 
   await page.getByRole('heading', { name: 'Supercommunicators', level: 2 }).click();
   await page.getByRole('button', { name: 'Read' }).click();
@@ -173,7 +173,7 @@ test('renders punctuation-adjacent markdown emphasis as italic text', async ({ p
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
 
   await ensureReaderTextVisible(page, EXPECTED_ITALIC_SENTENCE_FRAGMENT, {
     maxSteps: 40,
@@ -199,7 +199,7 @@ test('hides system token and renders chapter markdown heading as semantic headin
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
 
   await ensureReaderTextVisible(page, EXPECTED_CHAPTER_HEADING, {
     maxSteps: 60,
@@ -224,7 +224,7 @@ test('renders conversation block without standalone blockquote marker lines', as
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
 
   await ensureReaderTextVisible(page, EXPECTED_CONVERSATION_FRAGMENT, {
     maxSteps: 80,
@@ -248,7 +248,7 @@ test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({ timeout: 60_000 });
 
   await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();
