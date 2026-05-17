@@ -2,6 +2,10 @@ import { validateAuthToken } from '../../config/firebase';
 import { GetTodayNewsRequest } from '../types';
 import { getTodayNewsResponse } from './getTodayNewsResponse';
 
+// Allow up to 60 s for GNews fetch + parallel image copy / translation / AI
+// rewrite across 3 articles before Vercel terminates the function.
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     await validateAuthToken(request);
