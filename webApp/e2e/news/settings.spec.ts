@@ -110,6 +110,7 @@ test.describe('News settings menu', () => {
     // Pick a gNews-supported country that is NOT the account country.
     await page.getByTestId('news-settings-button').click();
     await expect(page.getByTestId('news-settings-menu')).toBeVisible();
+    await page.getByTestId('news-settings-tab-country').click();
     await page.getByTestId('news-country-option-fr').click();
 
     await expect
@@ -128,6 +129,7 @@ test.describe('News settings menu', () => {
     // Switch back to Auto → fetch should use the account country again.
     await page.getByTestId('news-settings-button').click();
     await expect(page.getByTestId('news-settings-menu')).toBeVisible();
+    await page.getByTestId('news-settings-tab-country').click();
     await page.getByTestId('news-country-option-auto').click();
 
     await expect

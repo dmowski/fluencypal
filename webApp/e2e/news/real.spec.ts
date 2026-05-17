@@ -140,9 +140,8 @@ test.describe('News real endpoint (no mocks)', () => {
     console.log('[news/real] final card text:', text);
 
     // "Loading news..." disappeared (asserted above) AND the card still shows
-    // its always-present "TODAY IN THE NEWS" label → we reached a resolved
-    // state regardless of whether it's a real headline, an empty result, or
-    // the error fallback.
-    expect(text).toContain('TODAY IN THE NEWS');
+    // its always-present section header → we reached a resolved state
+    // regardless of whether it's a real headline, an empty result, or the error fallback.
+    expect(text).toContain('Discuss with AI');
   });
 });

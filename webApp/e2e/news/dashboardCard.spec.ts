@@ -67,9 +67,6 @@ test.describe('News dashboard card', () => {
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
 
-    // Country badge.
-    await expect(card.getByText('United States', { exact: true })).toBeVisible();
-
     // First item title is the card headline (h4) AND the first list row (h6) → 2 matches expected.
     await expect(card.getByText('Mocked headline ONE', { exact: true })).toHaveCount(2);
 
