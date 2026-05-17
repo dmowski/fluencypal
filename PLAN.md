@@ -12,7 +12,10 @@ In url is "book.fluencypal.com", render
 </Suspense>
 </ThemeProvider>
 otherwise, use child.
+
 If you can do it on server side, it would be better.
+The goal, is when user opens https://app.fluencypal.com, they see Practice page,
+when they opens https://book.fluencypal.com, we will render Book feature.
 
 - Setup PWA, different manifest for different project types
 
