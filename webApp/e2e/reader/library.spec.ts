@@ -35,7 +35,7 @@ test('shows live Gutenberg library categories on books home page', async ({ page
   await expect(page.getByRole('heading', { name: 'Library', level: 4 })).toBeVisible();
 
   const romanceCategory = page.getByTestId('reader-library-category-romance');
-  await expect(romanceCategory).toBeVisible({ timeout: 60_000 });
+  await expect(romanceCategory).toBeVisible();
 
   await expect
     .poll(async () => romanceCategory.locator('[data-testid^="reader-library-book-"]').count())
@@ -93,15 +93,15 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
   await openBooksPageWithCleanStorage(page);
 
   const gutenbergBookCard = page.getByTestId(`reader-library-book-${GUTENBERG_ROMANCE_BOOK_ID}`);
-  await expect(gutenbergBookCard).toBeVisible({ timeout: 60_000 });
+  await expect(gutenbergBookCard).toBeVisible();
 
   await gutenbergBookCard.click();
 
   await expect(page.getByTestId('library-download-fixed-panel')).toBeVisible();
 
-  await expect(page.getByRole('heading', { name: GUTENBERG_ROMANCE_TITLE, level: 2 })).toBeVisible({
-    timeout: 180_000,
-  });
+  await expect(
+    page.getByRole('heading', { name: GUTENBERG_ROMANCE_TITLE, level: 2 }),
+  ).toBeVisible();
   await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await expect(page.getByTestId('reader-page-indicator')).toBeVisible();
@@ -152,22 +152,61 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
 });
 
 test('downloads library EPUB with images and renders image in reader', async ({ page }) => {
-  test.setTimeout(300_000);
+  test.setTimeout(180_000);
+
+  // Mock the library listing so the test is fully network-independent.
+  await page.route('**/api/reader/library', (route) => {
+    route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        categories: [
+          {
+            id: 'romance',
+            title: 'Romance',
+            books: [
+              {
+                ebookId: CHIMNEYS_EBOOK_ID,
+                title: CHIMNEYS_TITLE,
+                author: 'Christie, Agatha',
+                downloads: 3200,
+                coverUrl: null,
+                bookUrl: `https://www.gutenberg.org/ebooks/${CHIMNEYS_EBOOK_ID}`,
+              },
+            ],
+          },
+        ],
+      }),
+    });
+  });
+
+  // Route the EPUB download to the local fixture so the test is network-independent.
+  await page.route('**/api/reader/library/download*', async (route) => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('ebookId') === CHIMNEYS_EBOOK_ID) {
+      await route.fulfill({
+        path: 'public/Reader/the_secret_of_chimneys.epub',
+        contentType: 'application/epub+zip',
+        headers: {
+          'content-disposition': `attachment; filename="pg${CHIMNEYS_EBOOK_ID}.epub"`,
+        },
+      });
+    } else {
+      await route.continue();
+    }
+  });
 
   await openBooksPageWithCleanStorage(page);
 
   const romanceCategory = page.getByTestId('reader-library-category-romance');
-  await expect(romanceCategory).toBeVisible({ timeout: 60_000 });
+  await expect(romanceCategory).toBeVisible();
 
   const bookCard = page.getByTestId(`reader-library-book-${CHIMNEYS_EBOOK_ID}`);
-  await expect(bookCard).toBeVisible({ timeout: 60_000 });
+  await expect(bookCard).toBeVisible();
   await bookCard.click();
 
   await expect(page.getByTestId('library-download-fixed-panel')).toBeVisible();
 
-  await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible({
-    timeout: 60_000,
-  });
+  await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible();
   await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 
