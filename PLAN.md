@@ -1,10 +1,5 @@
 # Live document with short/long term ideas
 
-## News
-
-- Test stable news extraction
-- Make news card more clean
-
 ## Reader
 
 - Create a separate project for book
@@ -17,21 +12,6 @@
 - Fix _long paragraph italic text on separate pages_
 
 - Automatic re-import, create parser version
-
-- Separate app/url/PWA/Vision of the app
-
-[1] I have a reader and platform for practice speaking.
-Simple solution: Is based on user's interests suggest some book, and track the progress of reading. How integrate talking? Maybe AI can discuss with user what they read, and provoke the user to talk about the topic?
-What books to use? For what it needed?
-[to continue]
-
-[2] I have a reader.
-Place it into a separate app.
-What's uniq in this reader? - Better UX?
-I think some user will like it. Maybe
-
-[3] I have a reader. And human teacher.
-I want to read book, and discuss it with my teacher. I want to share notes about the book with him, and keep it. And he can offer me books. And we keep track of books together. And teacher able to work on it with other students. We can see the progress. and explore role of AI here.
 
 =================================
 
