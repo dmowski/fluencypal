@@ -140,7 +140,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="0">
       <Stack
         sx={{
-          backgroundColor: '#4A4A4D',
+          backgroundColor: '#37373a',
           color: '#EBEBF5',
           width: '100%',
           height: '100%',
@@ -236,7 +236,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   sx={{
                     position: 'relative',
                     width: '100%',
-                    height: '320px',
+                    height: '420px',
                     borderRadius: '12px',
                     overflow: 'hidden',
                   }}

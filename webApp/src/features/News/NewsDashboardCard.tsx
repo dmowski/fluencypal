@@ -23,9 +23,9 @@ const ROW_ICON_BG_PALETTE = ['#264E78', '#3B6E9E', '#5F8AB8'];
  * Headlines from gNews can be very long and break the card layout. Trim to a
  * fixed length with an ellipsis so titles stay on one or two lines.
  */
-const TITLE_MAX_LENGTH = 100;
-const trimTitle = (title: string): string =>
-  title.length > TITLE_MAX_LENGTH ? `${title.slice(0, TITLE_MAX_LENGTH).trimEnd()}…` : title;
+const TITLE_MAX_LENGTH = 50;
+const trimTitle = (title: string, length: number = TITLE_MAX_LENGTH): string =>
+  title.length > length ? `${title.slice(0, length).trimEnd()}…` : title;
 
 export const NewsDashboardCard = () => {
   const { i18n } = useLingui();
@@ -75,7 +75,7 @@ export const NewsDashboardCard = () => {
 
   let cardTitle: string;
   if (firstItem) {
-    cardTitle = trimTitle(firstItem.title);
+    cardTitle = trimTitle(firstItem.title, 100);
   } else if (isInitialLoading) {
     cardTitle = i18n._('Loading news...');
   } else if (hasError) {
@@ -101,21 +101,19 @@ export const NewsDashboardCard = () => {
         <Stack sx={{ flex: 1, minWidth: 0 }}>
           <SectionHeader
             title={i18n._('Discuss with AI')}
-            subTitle={i18n._('Content inspired by current events')}
+            subTitle={i18n._('Inspired by current events')}
           />
         </Stack>
         <NewsSettingsMenu />
       </Stack>
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={'rgba(31, 58, 95, 0.8)'}
+        backgroundColor={'rgba(0, 0, 0, 0.6)'}
         previewImageUrl={previewImageUrl}
-        badge={countryName || undefined}
-        label={i18n._('TODAY IN THE NEWS')}
         title={cardTitle}
         items={cardItems}
         emptyItemsStateText={emptyItemsStateText}
-        itemsBackgroundColor={'rgba(45, 45, 46, 0.8)'}
+        itemsBackgroundColor={'rgb(34, 34, 34)'}
         itemsViewMode={'list'}
         onClick={handleCardClick}
       />
