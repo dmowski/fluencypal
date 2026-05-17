@@ -1,6 +1,6 @@
 import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
 import { ChevronLeft, ChevronRight, CircleEllipsis, Info, X } from 'lucide-react';
-import { type MouseEvent, type PointerEvent, useEffect, useRef, useState } from 'react';
+import { type MouseEvent, type PointerEvent, useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -35,7 +35,6 @@ export const BookInfoButton = ({
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [activeView, setActiveView] = useState<ModalView>('menu');
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const wasInfoOpenTriggeredByPointer = useRef(false);
 
   const open = Boolean(anchorEl);
 
@@ -50,34 +49,24 @@ export const BookInfoButton = ({
     }
   }, [open]);
 
-  const openModal = (button: HTMLButtonElement) => {
-    setAnchorEl(button);
-  };
-
+  // On Android Chrome, opening the Popover inside pointerdown caused the MUI
+  // Modal backdrop to mount under the finger before touchend, so the synthesized
+  // click sometimes landed on the backdrop and dismissed (or never showed) the
+  // popover. Open in the click handler instead, where the synthesized click is
+  // delivered to the IconButton itself, and only stop propagation on pointer
+  // events so underlying reader interactions (selection, pagination) do not
+  // react to the tap on the button.
   const handleInfoPointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    event.preventDefault();
     event.stopPropagation();
-
-    wasInfoOpenTriggeredByPointer.current = true;
-    openModal(event.currentTarget);
   };
 
   const handleInfoPointerUp = (event: PointerEvent<HTMLButtonElement>) => {
-    event.preventDefault();
     event.stopPropagation();
   };
 
   const handleInfoClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
     event.stopPropagation();
-
-    if (wasInfoOpenTriggeredByPointer.current) {
-      wasInfoOpenTriggeredByPointer.current = false;
-      return;
-    }
-
-    // Keep keyboard activation (Enter/Space) working on IconButton.
-    openModal(event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
   const closeModal = () => setAnchorEl(null);

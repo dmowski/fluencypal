@@ -85,6 +85,12 @@ const networkFirstPage = async (request) => {
   } catch (err) {
     const cached = await cache.match(request);
     if (cached) return cached;
+    // Fall back to a cached entry for the same pathname ignoring the query
+    // string. Client-rendered routes (e.g. /book?activeBookId=...) hydrate
+    // from local data, so serving the bare /book shell lets the app render
+    // the targeted view offline instead of showing the offline page.
+    const cachedIgnoringQuery = await cache.match(request, { ignoreSearch: true });
+    if (cachedIgnoringQuery) return cachedIgnoringQuery;
     const offline = await caches.match('/offline.html');
     if (offline) return offline;
     throw err;
