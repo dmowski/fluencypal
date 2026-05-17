@@ -5,29 +5,14 @@
 - Create a separate project for book
 - Setup domain
 - Setup PWA
-
-- Tune logic of Markdown page splitting.
-  Use proper markdown component to render content to check if it's fit.
-
+- Tune logic of Markdown page splitting. Use proper markdown component to render content to check if it's fit.
 - Fix _long paragraph italic text on separate pages_
-
 - Automatic re-import, create parser version
 
 =================================
 
 Reader info:
 webApp/src/features/Reader/AGENTS.md
-
-Books e2e tests (Run, update them while working on the tasks):
-webApp/e2e/\*.spec.ts All e2e tests are book related
-
-## What about more strict Role-plays
-
-To force user to pronounce only prepared sentences
-
-## Idea with Human as leader
-
-The platforms could be provided as "Human teacher (leader) with AI assistant (helper)", where the human supervise and setup education environment
 
 ## Create component "Create Learning Plan"; to create it in the app
 
@@ -43,8 +28,4 @@ The platforms could be provided as "Human teacher (leader) with AI assistant (he
 
 ## How to improve VAD
 
-## On landing page add block: "Practice scenario you afraid of"
-
-Redirect directly to role-play practice page
-
-## Hide "Cases" pages?
+## Hide "Cases" pages
