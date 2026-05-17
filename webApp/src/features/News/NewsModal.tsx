@@ -239,6 +239,9 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                     height: '420px',
                     borderRadius: '12px',
                     overflow: 'hidden',
+                    '@media (max-width:600px)': {
+                      height: '200px',
+                    },
                   }}
                 >
                   <Image
