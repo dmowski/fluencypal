@@ -85,11 +85,23 @@ export const signInPracticeWithStepper = async (
     return Boolean(handle && handle.auth);
   });
 
-  // Step 1: features — primary "Next" button.
-  await page.getByRole('button', { name: 'Next', exact: true }).click();
+  const nextButton = page.getByRole('button', { name: 'Next', exact: true });
+  const googleSignInButton = page.getByRole('button', { name: 'Sign in with Google', exact: true });
 
-  // Step 2: agreement — primary "I agree" button.
-  await page.getByRole('button', { name: 'I agree', exact: true }).click();
+  // If this browser has a remembered auth method, the flow can open directly
+  // on auth selection and skip intro steps.
+  await Promise.race([
+    nextButton.waitFor({ state: 'visible', timeout: 10_000 }),
+    googleSignInButton.waitFor({ state: 'visible', timeout: 10_000 }),
+  ]);
+
+  if (await nextButton.isVisible().catch(() => false)) {
+    // Step 1: features — primary "Next" button.
+    await nextButton.click();
+
+    // Step 2: agreement — primary "I agree" button.
+    await page.getByRole('button', { name: 'I agree', exact: true }).click();
+  }
 
   // Step 3: auth — choose the email path (secondary button).
   await page.getByRole('button', { name: 'Sign in with email', exact: true }).click();

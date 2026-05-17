@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Google from '@mui/icons-material/Google';
-import { Stack, TextField, Typography } from '@mui/material';
+import { Chip, Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { ArrowLeft, ArrowRight, Check, Loader, Mail } from 'lucide-react';
 import { scrollTopFast } from '@/libs/scroll';
@@ -12,6 +12,31 @@ import { useAuth } from './useAuth';
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+};
+
+const AUTH_WALL_LAST_METHOD_KEY = 'authWall:lastMethod';
+
+type AuthMethod = 'google' | 'email';
+
+const getStoredAuthMethod = (): AuthMethod | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const value = window.localStorage.getItem(AUTH_WALL_LAST_METHOD_KEY);
+  if (value === 'google' || value === 'email') {
+    return value;
+  }
+
+  return null;
+};
+
+const setStoredAuthMethod = (method: AuthMethod) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  window.localStorage.setItem(AUTH_WALL_LAST_METHOD_KEY, method);
 };
 
 interface AuthWallBasicProps {
@@ -52,6 +77,13 @@ export const AuthWallBasic = ({
   const [email, setEmail] = useState('');
 
   const isValidEmailAddress = isValidEmail(email);
+  const [lastAuthMethod, setLastAuthMethod] = useState<AuthMethod | null>(getStoredAuthMethod);
+  const lastUsedBadgeLabel =
+    lastAuthMethod === 'google'
+      ? 'Last used: Google'
+      : lastAuthMethod === 'email'
+        ? 'Last used: Email'
+        : '';
 
   useEffect(() => {
     if (isValidEmailError && isValidEmailAddress) {
@@ -60,7 +92,9 @@ export const AuthWallBasic = ({
   }, [email, isValidEmailAddress, isValidEmailError]);
 
   const steps = ['features', 'agreement', 'auth', 'email', 'email-send'] as const;
-  const [step, setStep] = useState<(typeof steps)[number]>(steps[0]);
+  const [step, setStep] = useState<(typeof steps)[number]>(() =>
+    getStoredAuthMethod() ? 'auth' : steps[0],
+  );
 
   const nextStep = () => {
     const currentIndex = steps.indexOf(step);
@@ -94,6 +128,11 @@ export const AuthWallBasic = ({
       }
     }
   }, [isShowAuthWall]);
+
+  const onSelectAuthMethod = (method: AuthMethod) => {
+    setStoredAuthMethod(method);
+    setLastAuthMethod(method);
+  };
 
   if (!isShowAuthWall) {
     return children;
@@ -243,12 +282,35 @@ export const AuthWallBasic = ({
             width={width}
             title={authTitle}
             subTitle={authSubTitle}
+            subComponent={
+              lastAuthMethod ? (
+                <Stack
+                  sx={{
+                    paddingTop: '16px',
+                  }}
+                >
+                  <Chip
+                    data-testid="auth-wall-last-method-badge"
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    label={lastUsedBadgeLabel}
+                  />
+                </Stack>
+              ) : undefined
+            }
             actionButtonTitle={i18n._('Sign in with Google')}
             actionButtonStartIcon={<Google />}
             listItems={authList}
-            onClick={() => auth.signInWithGoogle()}
+            onClick={() => {
+              onSelectAuthMethod('google');
+              auth.signInWithGoogle();
+            }}
             secondButtonTitle={i18n._('Sign in with email')}
-            onSecondButtonClick={nextStep}
+            onSecondButtonClick={() => {
+              onSelectAuthMethod('email');
+              nextStep();
+            }}
             secondButtonStartIcon={<Mail />}
             secondButtonEndIcon={<ArrowRight />}
           />
