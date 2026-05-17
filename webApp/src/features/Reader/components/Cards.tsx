@@ -246,9 +246,10 @@ export const BookCard = ({
         }}
       >
         <Typography
-          variant="subtitle1"
+          variant="h4"
           sx={{
             fontWeight: 700,
+            fontSize: '1rem',
             lineHeight: 1.2,
             overflow: 'hidden',
             textOverflow: 'ellipsis',

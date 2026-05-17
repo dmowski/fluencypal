@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { expect, test, Page } from '@playwright/test';
+import { mockConvertDocToTextRoute } from '../libs/reader';
 
 const BOOKS = [
   { id: 'pride-and-prejudice' },
@@ -46,6 +47,7 @@ test.describe('books epub to markdown', () => {
     }, testInfo) => {
       test.setTimeout(240_000);
 
+      await mockConvertDocToTextRoute(page);
       await page.goto('/book/test/epubImport');
       await expect(page.getByTestId('epub-import-test-page')).toBeVisible();
 

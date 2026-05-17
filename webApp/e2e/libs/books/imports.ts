@@ -1,6 +1,23 @@
 import { Page } from '@playwright/test';
 
+/**
+ * Intercepts /api/convertDocToText and immediately returns an error response.
+ * The import flow falls back to the EPUB's own embedded metadata, making tests
+ * fast without requiring real AI API calls.
+ */
+export const mockConvertDocToTextRoute = async (page: Page) => {
+  await page.route('**/api/convertDocToText', (route) => {
+    void route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ error: 'mocked for e2e' }),
+    });
+  });
+};
+
 export const openBooksPageWithCleanStorage = async (page: Page) => {
+  await mockConvertDocToTextRoute(page);
+
   await page.addInitScript(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
