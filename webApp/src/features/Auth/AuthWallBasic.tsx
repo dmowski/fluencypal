@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Google from '@mui/icons-material/Google';
-import { Chip, Stack, TextField, Typography } from '@mui/material';
+import { Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { ArrowLeft, ArrowRight, Check, Loader, Mail } from 'lucide-react';
+import { ArrowRight, Check, Mail } from 'lucide-react';
 import { scrollTopFast } from '@/libs/scroll';
 import { InfoStep } from '../Survey/InfoStep';
 import { ListItem } from '../Survey/IconTextList';
-import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
 
 const isValidEmail = (email: string) => {
@@ -78,12 +78,7 @@ export const AuthWallBasic = ({
 
   const isValidEmailAddress = isValidEmail(email);
   const [lastAuthMethod, setLastAuthMethod] = useState<AuthMethod | null>(getStoredAuthMethod);
-  const lastUsedBadgeLabel =
-    lastAuthMethod === 'google'
-      ? 'Last used: Google'
-      : lastAuthMethod === 'email'
-        ? 'Last used: Email'
-        : '';
+  const lastUsedBadgeLabel = 'Last used';
 
   useEffect(() => {
     if (isValidEmailError && isValidEmailAddress) {
@@ -282,37 +277,22 @@ export const AuthWallBasic = ({
             width={width}
             title={authTitle}
             subTitle={authSubTitle}
-            subComponent={
-              lastAuthMethod ? (
-                <Stack
-                  sx={{
-                    paddingTop: '16px',
-                  }}
-                >
-                  <Chip
-                    data-testid="auth-wall-last-method-badge"
-                    size="small"
-                    color="primary"
-                    variant="outlined"
-                    label={lastUsedBadgeLabel}
-                  />
-                </Stack>
-              ) : undefined
-            }
             actionButtonTitle={i18n._('Sign in with Google')}
             actionButtonStartIcon={<Google />}
+            actionButtonBadgeText={lastAuthMethod === 'google' ? lastUsedBadgeLabel : undefined}
+            secondButtonTitle={i18n._('Sign in with email')}
+            secondButtonStartIcon={<Mail />}
+            secondButtonEndIcon={<ArrowRight />}
+            secondButtonBadgeText={lastAuthMethod === 'email' ? lastUsedBadgeLabel : undefined}
             listItems={authList}
             onClick={() => {
               onSelectAuthMethod('google');
               auth.signInWithGoogle();
             }}
-            secondButtonTitle={i18n._('Sign in with email')}
             onSecondButtonClick={() => {
               onSelectAuthMethod('email');
               nextStep();
             }}
-            secondButtonStartIcon={<Mail />}
-            secondButtonEndIcon={<ArrowRight />}
           />
         )}
       </Stack>

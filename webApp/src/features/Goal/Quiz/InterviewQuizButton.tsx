@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Stack } from '@mui/material';
+import { Badge, Button, Stack } from '@mui/material';
 import { ArrowRight } from 'lucide-react';
 
 export const InterviewQuizButton: React.FC<{
@@ -16,6 +16,8 @@ export const InterviewQuizButton: React.FC<{
   secondButtonEndIcon?: React.ReactNode;
   secondButtonStartIcon?: React.ReactNode;
   secondButtonDisabled?: boolean;
+  actionButtonBadgeText?: string;
+  secondButtonBadgeText?: string;
 }> = ({
   onClick,
   color,
@@ -29,6 +31,8 @@ export const InterviewQuizButton: React.FC<{
   secondButtonEndIcon,
   secondButtonStartIcon,
   secondButtonDisabled,
+  actionButtonBadgeText,
+  secondButtonBadgeText,
 }) => {
   return (
     <Stack
@@ -41,50 +45,92 @@ export const InterviewQuizButton: React.FC<{
         flexWrap: 'wrap',
       }}
     >
-      <Button
-        onClick={onClick}
-        variant="contained"
-        color={color}
-        disabled={disabled}
-        type={type}
-        size="large"
+      <Badge
+        badgeContent={
+          actionButtonBadgeText ? (
+            <span data-testid="auth-wall-last-method-badge">{actionButtonBadgeText}</span>
+          ) : undefined
+        }
+        color="secondary"
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         sx={{
-          width: `max-content`,
-          minWidth: '200px',
-          paddingTop: '12px',
-          paddingBottom: '12px',
-          borderRadius: '128px',
-          textAlign: 'left',
+          display: 'inline-flex',
+          width: 'max-content',
+          '& .MuiBadge-badge': {
+            left: 16,
+            top: 0,
+            transform: 'translateY(-45%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          },
         }}
-        fullWidth
-        endIcon={endIcon || <ArrowRight />}
-        startIcon={startIcon}
       >
-        {title}
-      </Button>
-      {secondButtonTitle && onSecondButtonClick && (
         <Button
-          onClick={onSecondButtonClick}
-          variant="outlined"
+          onClick={onClick}
+          variant="contained"
           color={color}
+          disabled={disabled}
           type={type}
           size="large"
-          disabled={secondButtonDisabled}
           sx={{
             width: `max-content`,
+            minWidth: '200px',
             paddingTop: '12px',
-            paddingLeft: '24px',
-            paddingRight: '24px',
             paddingBottom: '12px',
             borderRadius: '128px',
             textAlign: 'left',
           }}
           fullWidth
-          endIcon={secondButtonEndIcon}
-          startIcon={secondButtonStartIcon}
+          endIcon={endIcon || <ArrowRight />}
+          startIcon={startIcon}
         >
-          {secondButtonTitle}
+          {title}
         </Button>
+      </Badge>
+      {secondButtonTitle && onSecondButtonClick && (
+        <Badge
+          badgeContent={
+            secondButtonBadgeText ? (
+              <span data-testid="auth-wall-last-method-badge">{secondButtonBadgeText}</span>
+            ) : undefined
+          }
+          color="secondary"
+          anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+          sx={{
+            display: 'inline-flex',
+            width: 'max-content',
+            '& .MuiBadge-badge': {
+              left: 16,
+              top: 0,
+              transform: 'translateY(-45%)',
+              zIndex: 1,
+              pointerEvents: 'none',
+            },
+          }}
+        >
+          <Button
+            onClick={onSecondButtonClick}
+            variant="outlined"
+            color={color}
+            type={type}
+            size="large"
+            disabled={secondButtonDisabled}
+            sx={{
+              width: `max-content`,
+              paddingTop: '12px',
+              paddingLeft: '24px',
+              paddingRight: '24px',
+              paddingBottom: '12px',
+              borderRadius: '128px',
+              textAlign: 'left',
+            }}
+            fullWidth
+            endIcon={secondButtonEndIcon}
+            startIcon={secondButtonStartIcon}
+          >
+            {secondButtonTitle}
+          </Button>
+        </Badge>
       )}
     </Stack>
   );

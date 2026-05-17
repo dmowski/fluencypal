@@ -91,3 +91,20 @@ export const buildNewsHeadlineTranslationUserPrompt = ({
 }): string => {
   return JSON.stringify({ title, subTitle });
 };
+
+export const buildNewsPositivityFilterSystemPrompt = (): string => {
+  return [
+    'You are filtering news headlines for a language-learning feed.',
+    'Keep only items that are non-negative in emotional impact: neutral, constructive, inspiring, educational, science/tech progress, culture, sports, or practical life updates.',
+    'Exclude items that are clearly negative: war, violence, death, disasters, crimes, scandals, abuse, severe conflict, panic, or fear-based framing.',
+    'Use only the provided title + subTitle. Do not infer from missing context.',
+    'If uncertain, mark as exclude.',
+    'Return raw JSON only with shape: {"keepIndexes":[0,2]} where indexes refer to the input array.',
+  ].join('\n');
+};
+
+export const buildNewsPositivityFilterUserPrompt = (
+  items: Array<{ title: string; subTitle: string }>,
+): string => {
+  return JSON.stringify({ items });
+};

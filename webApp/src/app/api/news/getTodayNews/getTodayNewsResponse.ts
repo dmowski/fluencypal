@@ -6,8 +6,20 @@ import { copyNewsImageToStorage } from '../copyImageToStorage';
 import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
 import { rewriteNewsForLevels } from '../rewriteNewsForLevels';
 import { translateNewsHeadline } from '../translateNewsHeadline';
+import { generateStrictJson } from '../../ai/generateJson';
+import { DESIRED_COUNT } from './constant';
+import {
+  buildNewsPositivityFilterSystemPrompt,
+  buildNewsPositivityFilterUserPrompt,
+} from '../prompts';
+import { z } from 'zod';
 
-const DESIRED_COUNT = 6;
+const CANDIDATES_COUNT = 25;
+const FILTER_BATCH_SIZE = 5;
+
+const positivityFilterSchema = z.object({
+  keepIndexes: z.array(z.number().int()).default([]),
+});
 
 const toSummary = (item: NewsItem): NewsItemSummary => ({
   id: item.id,
@@ -24,6 +36,61 @@ const buildContentOrigin = (article: RawGNewsArticle): string => {
   if (article.description) parts.push(article.description.trim());
   if (article.content) parts.push(article.content.trim());
   return parts.join('\n\n');
+};
+
+const getNonNegativeIndexesInBatch = async (
+  batch: Array<{ title: string; subTitle: string }>,
+): Promise<number[]> => {
+  const { parsed } = await generateStrictJson({
+    systemMessage: buildNewsPositivityFilterSystemPrompt(),
+    userMessage: buildNewsPositivityFilterUserPrompt(batch),
+    model: 'gpt-4o-mini',
+    schema: positivityFilterSchema,
+    attempts: 2,
+  });
+
+  const keepIndexes = parsed.keepIndexes;
+
+  return keepIndexes
+    .filter((value): value is number => Number.isInteger(value))
+    .filter((index) => index >= 0 && index < batch.length);
+};
+
+const pickNonNegativeArticles = async (
+  articles: RawGNewsArticle[],
+  desiredCount: number,
+): Promise<RawGNewsArticle[]> => {
+  const selected: RawGNewsArticle[] = [];
+
+  for (
+    let start = 0;
+    start < articles.length && selected.length < desiredCount;
+    start += FILTER_BATCH_SIZE
+  ) {
+    const batch = articles.slice(start, start + FILTER_BATCH_SIZE);
+    let keepIndexes: number[] = [];
+
+    try {
+      keepIndexes = await getNonNegativeIndexesInBatch(
+        batch.map((article) => ({
+          title: article.title ?? '',
+          subTitle: article.description ?? '',
+        })),
+      );
+    } catch {
+      // If AI filtering fails, fallback to keeping this batch to avoid empty UI.
+      keepIndexes = batch.map((_, index) => index);
+    }
+
+    for (const index of keepIndexes) {
+      selected.push(batch[index]);
+      if (selected.length >= desiredCount) {
+        break;
+      }
+    }
+  }
+
+  return selected;
 };
 
 const buildNewsItemFromArticle = async (
@@ -96,10 +163,12 @@ const buildInflightKey = (countryCode: string, languageCode: string): string =>
   )}`;
 
 const populateTodayNews = async (request: GetTodayNewsRequest): Promise<NewsItem[]> => {
-  const articles = await fetchGNewsTopHeadlines({
+  const candidates = await fetchGNewsTopHeadlines({
     countryCode: request.countryCode,
-    max: DESIRED_COUNT,
+    max: CANDIDATES_COUNT,
   });
+
+  const articles = await pickNonNegativeArticles(candidates, DESIRED_COUNT);
 
   const dayKey = getNewsDayKey(new Date().toISOString());
 

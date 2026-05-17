@@ -5,6 +5,7 @@ import {
   seedPracticeUserSettings,
   signInPracticeWithStepper,
 } from '../libs/practice';
+import { DESIRED_COUNT } from '../../src/app/api/news/getTodayNews/constant';
 
 /**
  * NO MOCKS. Exercises the real `/api/news/getTodayNews` endpoint against the
@@ -20,7 +21,9 @@ test.describe('News real endpoint (no mocks)', () => {
     await resetEmulatorState();
   });
 
-  test('POST /api/news/getTodayNews returns 3 items for us/general', async ({ page }) => {
+  test(`POST /api/news/getTodayNews returns ${DESIRED_COUNT} items for us/general`, async ({
+    page,
+  }) => {
     test.setTimeout(180_000);
 
     // Capture browser-side noise to help diagnose hangs.
@@ -87,8 +90,11 @@ test.describe('News real endpoint (no mocks)', () => {
     const body = parsedBody as { items?: Array<{ id: string; title: string }> } | null;
     expect(body).not.toBeNull();
     expect(Array.isArray(body?.items)).toBe(true);
-    expect(body?.items?.length, `Expected 3 items, got ${body?.items?.length}`).toBeGreaterThan(0);
-    expect(body?.items?.length).toBeLessThanOrEqual(3);
+    expect(
+      body?.items?.length,
+      `Expected ${DESIRED_COUNT} items, got ${body?.items?.length}`,
+    ).toBeGreaterThan(0);
+    expect(body?.items?.length).toBeLessThanOrEqual(DESIRED_COUNT);
 
     for (const item of body!.items!) {
       expect(typeof item.id).toBe('string');

@@ -21,6 +21,8 @@ const replacePlaceholders = (text: string, placeholders: Record<string, string>)
 export const InfoStep = ({
   title,
   subTitle,
+  actionButtonBadgeText,
+  secondButtonBadgeText,
   subComponent,
   imageUrl,
   imageAspectRatio,
@@ -44,6 +46,8 @@ export const InfoStep = ({
 }: {
   title?: string;
   subTitle?: string;
+  actionButtonBadgeText?: string;
+  secondButtonBadgeText?: string;
   subComponent?: ReactNode;
   imageAspectRatio?: string;
   imageUrl?: string;
@@ -279,6 +283,8 @@ export const InfoStep = ({
           onSecondButtonClick={onSecondButtonClick}
           secondButtonStartIcon={secondButtonStartIcon}
           secondButtonDisabled={secondButtonDisabled}
+          actionButtonBadgeText={actionButtonBadgeText}
+          secondButtonBadgeText={secondButtonBadgeText}
         />
       </Stack>
     </Stack>
