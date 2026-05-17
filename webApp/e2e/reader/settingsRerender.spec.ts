@@ -22,9 +22,9 @@ import {
 
 const readRenderCounts = async (page: import('@playwright/test').Page): Promise<number[]> =>
   page.evaluate(() =>
-    Array.from(
-      document.querySelectorAll<HTMLElement>('[data-reader-paragraph-render-count]'),
-    ).map((el) => Number(el.getAttribute('data-reader-paragraph-render-count') ?? 0)),
+    Array.from(document.querySelectorAll<HTMLElement>('[data-reader-paragraph-render-count]')).map(
+      (el) => Number(el.getAttribute('data-reader-paragraph-render-count') ?? 0),
+    ),
   );
 
 const selectFirstAvailableVoice = async (page: import('@playwright/test').Page) => {
@@ -65,8 +65,6 @@ test('toggling language/voice/translate/voice-over settings does not re-render p
   const afterToggles = await readRenderCounts(page);
   expect(afterToggles.length).toBe(baseline.length);
   afterToggles.forEach((count, index) => {
-    expect(count, `paragraph #${index} re-rendered after non-layout toggles`).toBe(
-      baseline[index],
-    );
+    expect(count, `paragraph #${index} re-rendered after non-layout toggles`).toBe(baseline[index]);
   });
 });

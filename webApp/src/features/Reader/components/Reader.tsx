@@ -284,13 +284,10 @@ export const Reader = ({ data }: { data: Book }) => {
     isLastPage: activePage >= maxSpreadStartPage,
   });
 
-  const playText = useCallback(
-    (text: string) => {
-      if (!voiceOverSelectedTextRef.current) return;
-      speechPlayRef.current(text.trim());
-    },
-    [],
-  );
+  const playText = useCallback((text: string) => {
+    if (!voiceOverSelectedTextRef.current) return;
+    speechPlayRef.current(text.trim());
+  }, []);
 
   const handleWordHoverClear = useCallback(() => {
     clearHoverTranslation();

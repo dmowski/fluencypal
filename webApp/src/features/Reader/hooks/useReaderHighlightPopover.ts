@@ -87,83 +87,80 @@ export const useReaderHighlightPopover = ({
     };
   }, [activePopover, closeActivePopover]);
 
-  const handleParagraphSelection = useCallback(
-    async (payload: ReaderParagraphSelectionPayload) => {
-      const closedPopover = activePopoverAtPointerDownRef.current;
-      activePopoverAtPointerDownRef.current = null;
-      if (
-        closedPopover &&
-        closedPopover.paragraphIndex === payload.paragraphIndex &&
-        closedPopover.selection.startIndex === payload.selection.startIndex &&
-        closedPopover.selection.endIndex === payload.selection.endIndex
-      ) {
-        // User clicked the already-selected word — unselect by not reopening
-        window.getSelection()?.removeAllRanges();
-        return;
-      }
+  const handleParagraphSelection = useCallback(async (payload: ReaderParagraphSelectionPayload) => {
+    const closedPopover = activePopoverAtPointerDownRef.current;
+    activePopoverAtPointerDownRef.current = null;
+    if (
+      closedPopover &&
+      closedPopover.paragraphIndex === payload.paragraphIndex &&
+      closedPopover.selection.startIndex === payload.selection.startIndex &&
+      closedPopover.selection.endIndex === payload.selection.endIndex
+    ) {
+      // User clicked the already-selected word — unselect by not reopening
+      window.getSelection()?.removeAllRanges();
+      return;
+    }
 
-      const normalizedText = normalizeSelectedText(payload.selectionText);
-      const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguageRef.current);
-      const currentTargetLanguage = targetLanguageRef.current;
+    const normalizedText = normalizeSelectedText(payload.selectionText);
+    const normalizedSourceLanguage = normalizeToNativeLangCode(sourceLanguageRef.current);
+    const currentTargetLanguage = targetLanguageRef.current;
 
-      translationRequestIdRef.current += 1;
-      const requestId = translationRequestIdRef.current;
+    translationRequestIdRef.current += 1;
+    const requestId = translationRequestIdRef.current;
 
-      const shouldTranslate = canTranslateReaderText({
+    const shouldTranslate = canTranslateReaderText({
+      text: normalizedText,
+      sourceLanguage: normalizedSourceLanguage,
+      targetLanguage: currentTargetLanguage,
+    });
+
+    setActivePopover({
+      paragraphIndex: payload.paragraphIndex,
+      selection: payload.selection,
+      selectionText: payload.selectionText,
+      anchorPosition: payload.anchorPosition,
+      translatedText: null,
+      isTranslationLoading: shouldTranslate,
+    });
+
+    if (!shouldTranslate) {
+      return;
+    }
+
+    try {
+      const translated = await getTranslation({
         text: normalizedText,
         sourceLanguage: normalizedSourceLanguage,
         targetLanguage: currentTargetLanguage,
       });
 
-      setActivePopover({
-        paragraphIndex: payload.paragraphIndex,
-        selection: payload.selection,
-        selectionText: payload.selectionText,
-        anchorPosition: payload.anchorPosition,
-        translatedText: null,
-        isTranslationLoading: shouldTranslate,
-      });
-
-      if (!shouldTranslate) {
+      if (translationRequestIdRef.current !== requestId) {
         return;
       }
 
-      try {
-        const translated = await getTranslation({
-          text: normalizedText,
-          sourceLanguage: normalizedSourceLanguage,
-          targetLanguage: currentTargetLanguage,
-        });
-
-        if (translationRequestIdRef.current !== requestId) {
-          return;
-        }
-
-        setActivePopover((previous) => {
-          if (!previous) return previous;
-          return {
-            ...previous,
-            translatedText: translated.trim() || null,
-            isTranslationLoading: false,
-          };
-        });
-      } catch {
-        if (translationRequestIdRef.current !== requestId) {
-          return;
-        }
-
-        setActivePopover((previous) => {
-          if (!previous) return previous;
-          return {
-            ...previous,
-            translatedText: null,
-            isTranslationLoading: false,
-          };
-        });
+      setActivePopover((previous) => {
+        if (!previous) return previous;
+        return {
+          ...previous,
+          translatedText: translated.trim() || null,
+          isTranslationLoading: false,
+        };
+      });
+    } catch {
+      if (translationRequestIdRef.current !== requestId) {
+        return;
       }
-    },
-    [],
-  );
+
+      setActivePopover((previous) => {
+        if (!previous) return previous;
+        return {
+          ...previous,
+          translatedText: null,
+          isTranslationLoading: false,
+        };
+      });
+    }
+  }, []);
 
   const activeParagraphHighlights = useMemo(() => {
     if (!activePopover) {
