@@ -3,12 +3,11 @@
 ## News
 
 - Test stable news extraction
-
 - Make news card more clean
 
 ## Reader
 
-- Test new parser
+- Speed up e2e
 - Create a separate project for book
 - Setup domain
 - Setup PWA
