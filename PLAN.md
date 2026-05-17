@@ -2,6 +2,8 @@
 
 ## News
 
+- Test stable news extraction
+
 - Make news card more clean
 
 ## Reader
