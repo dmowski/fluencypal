@@ -113,6 +113,37 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  async redirects() {
+    return [
+      // Redirect app.fluencypal.com/book(/...) -> book.fluencypal.com/
+      // The Reader app lives on its own subdomain; the /book path on the
+      // primary app host is permanently moved.
+      {
+        source: '/book',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/',
+        permanent: true,
+      },
+      {
+        source: '/book/:path*',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:lang/book',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/',
+        permanent: true,
+      },
+      {
+        source: '/:lang/book/:path*',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 export default withSentryConfig(nextConfig, {
   // For all available options, see:
