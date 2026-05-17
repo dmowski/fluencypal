@@ -1,5 +1,24 @@
 # Live document with short/long term ideas
 
+Захотел сделать свою читалку книг, чтобы легче читать книги на английском и польском.
+
+Сделал.
+
+Можно загружать epub
+
+Фича которую хотел:
+
+- Перевод и озвучка при нажатии на слово
+- Перевод при наведении на слово курсором
+
+https://book.fluencypal.com/
+
+## News
+
+- Create separate domain: news.fluencypal.com
+  Render news without auth (update backend api to make it public).
+  To discuss with ai, show auth wall
+
 ## Reader
 
 - Test on Android, Safari

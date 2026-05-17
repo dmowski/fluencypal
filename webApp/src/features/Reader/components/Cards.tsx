@@ -59,13 +59,15 @@ export const BookCard = ({
     }
   };
 
+  const cardBorderRadius = '10px';
+
   return (
     <Stack
       onClick={() => onClick(data)}
       sx={{
         width: '360px',
         minHeight: '136px',
-        borderRadius: '10px',
+        borderRadius: cardBorderRadius,
         overflow: 'hidden',
         cursor: 'pointer',
         position: 'relative',
@@ -89,6 +91,7 @@ export const BookCard = ({
             sx={{
               position: 'absolute',
               inset: '-20px',
+              borderRadius: cardBorderRadius,
               width: 'calc(100% + 40px)',
               height: 'calc(100% + 40px)',
               objectFit: 'cover',
@@ -101,6 +104,7 @@ export const BookCard = ({
           <Box
             sx={{
               position: 'absolute',
+              borderRadius: cardBorderRadius,
               inset: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
               zIndex: 1,
@@ -111,6 +115,7 @@ export const BookCard = ({
         <Box
           sx={{
             position: 'absolute',
+            borderRadius: cardBorderRadius,
             inset: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
             zIndex: 0,
@@ -204,9 +209,9 @@ export const BookCard = ({
             width: '70px',
             minWidth: '70px',
             aspectRatio: '2 / 3',
-            borderRadius: '3px',
             overflow: 'hidden',
             position: 'relative',
+            borderRadius: cardBorderRadius,
             zIndex: 2,
             flexShrink: 0,
             alignSelf: 'center',
