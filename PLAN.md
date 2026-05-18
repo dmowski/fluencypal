@@ -1,32 +1,31 @@
 # Live document with short/long term ideas
 
-## Social network
+## Reader: Automatic re-import, create parser version
 
-Attach my voice records. Tune UI for messages
+## Social network: Attach my voice records. Tune UI for messages
 
-## News
+## News: Tune quality. News should be useful for me.
 
-Tune quality. News should be useful for me.
+## News: community discussion
 
 Think about community discussion. Can we place comments section under the news?
 How to show previous news. Separate news cards?
 
-## Reader
+## Reader: Search feature
 
-- Search feature
-- Fix _long paragraph italic text on separate pages_
-- Automatic re-import, create parser version
+## Reader:Fix _long paragraph italic text on separate pages_
 
 =================================
 
-Reader info:
-webApp/src/features/Reader/AGENTS.md
+Reader info: webApp/src/features/Reader/AGENTS.md
+
+=================================
 
 ## Create component "Create Learning Plan"; to create it in the app
 
 ## Problem with quiz
 
-- In just ask, and I don't see that I will get results
+In just ask, and I don't see that I will get results
 
 ## Update Quiz. How to show user profit, wow moment, aha moment
 
