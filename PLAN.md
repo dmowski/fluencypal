@@ -5,10 +5,6 @@
 ## Reader
 
 - Search feature
-
-- Test on Android, Safari
-
-- Tune logic of Markdown page splitting. Use proper markdown component to render content to check if it's fit.
 - Fix _long paragraph italic text on separate pages_
 - Automatic re-import, create parser version
 
