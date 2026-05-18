@@ -162,7 +162,7 @@ export const ReaderSettingsPanel = ({
   };
 
   return (
-    <Stack sx={{ gap: '20px' }}>
+    <Stack sx={{ gap: '20px', width: '100%' }}>
       <Typography variant="body2">
         {i18n._('Speech support')}:{' '}
         {speech.isSupported ? i18n._('Supported') : i18n._('Not supported')}

@@ -80,14 +80,7 @@ export const ReaderChaptersList = ({
 }) => {
   const { i18n } = useLingui();
   return (
-    <Stack
-      data-testid="reader-chapters-popover"
-      sx={{
-        padding: '10px 8px',
-        overflowY: 'auto',
-        maxHeight: '55vh',
-      }}
-    >
+    <Stack data-testid="reader-chapters-popover">
       {chapters.length > 0 ? (
         renderChapterTree({ items: chapters, level: 0, activeChapterId, onSelect })
       ) : (

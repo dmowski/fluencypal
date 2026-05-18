@@ -108,20 +108,34 @@ export const BookInfoButton = ({
       >
         <Stack
           data-testid="book-info-modal"
-          sx={{ padding: '15px 20px 30px 20px', width: 340, gap: '20px', position: 'relative' }}
+          sx={{
+            padding: '0',
+            width: '340px',
+            position: 'relative',
+
+            overflow: 'hidden',
+            '@media (max-width:400px)': {
+              width: 'calc(100vw - 40px)',
+              padding: '10px 0x',
+            },
+          }}
         >
           <IconButton
             onClick={closeModal}
             aria-label={i18n._('Close settings')}
             sx={{
-              width: '32px',
-              height: '32px',
+              width: '30px',
+              height: '30px',
               padding: 0,
               position: 'absolute',
-              top: '5px',
-              right: '5px',
+              top: '-2px',
+              right: '-2px',
               flexShrink: 0,
               zIndex: 1,
+              opacity: 0,
+              ':hover': {
+                opacity: 1,
+              },
             }}
           >
             <X size={18} />
@@ -153,34 +167,46 @@ export const BookInfoButton = ({
             />
           </Tabs>
 
-          {activeView === 'settings' ? (
-            <ReaderSettingsPanel
-              speech={speech}
-              isTouchDevice={isTouchDevice}
-              onReset={readerSettings.resetToDefault}
-            />
-          ) : null}
+          <Stack
+            sx={{
+              padding: '10px 20px 20px 20px',
+              maxHeight: 'calc(100vh - 180px)',
+              width: '100%',
+              overflowY: 'auto',
+              '@media (max-width:400px)': {
+                padding: '10px 15px',
+              },
+            }}
+          >
+            {activeView === 'settings' ? (
+              <ReaderSettingsPanel
+                speech={speech}
+                isTouchDevice={isTouchDevice}
+                onReset={readerSettings.resetToDefault}
+              />
+            ) : null}
 
-          {activeView === 'chapters' ? (
-            <ReaderChaptersList
-              chapters={chapters}
-              activeChapterId={activeChapterId}
-              onSelect={(targetPage) => {
-                onSelectChapter(targetPage);
-                closeModal();
-              }}
-            />
-          ) : null}
+            {activeView === 'chapters' ? (
+              <ReaderChaptersList
+                chapters={chapters}
+                activeChapterId={activeChapterId}
+                onSelect={(targetPage) => {
+                  onSelectChapter(targetPage);
+                  closeModal();
+                }}
+              />
+            ) : null}
 
-          {activeView === 'highlights' ? (
-            <ReaderHighlightsList
-              highlights={highlights}
-              onSelect={(targetPage) => {
-                onSelectHighlight(targetPage);
-                closeModal();
-              }}
-            />
-          ) : null}
+            {activeView === 'highlights' ? (
+              <ReaderHighlightsList
+                highlights={highlights}
+                onSelect={(targetPage) => {
+                  onSelectHighlight(targetPage);
+                  closeModal();
+                }}
+              />
+            ) : null}
+          </Stack>
         </Stack>
       </Popover>
     </>

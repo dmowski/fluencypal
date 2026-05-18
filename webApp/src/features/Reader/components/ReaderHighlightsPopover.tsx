@@ -91,14 +91,7 @@ export const ReaderHighlightsList = ({
   const { i18n } = useLingui();
 
   return (
-    <Stack
-      data-testid="reader-highlights-popover"
-      sx={{
-        padding: '10px 8px',
-        overflowY: 'auto',
-        maxHeight: '55vh',
-      }}
-    >
+    <Stack data-testid="reader-highlights-popover">
       {highlights.length > 0 ? (
         renderHighlightList({ items: highlights, onSelect })
       ) : (
