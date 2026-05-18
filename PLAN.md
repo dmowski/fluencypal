@@ -2,6 +2,10 @@
 
 ## Reader: Automatic re-import, create parser version
 
+## Reader: Highlights - On hover, show full paragraph as preview
+
+## Reader: Sync data. Review how it works
+
 ## Social network: Attach my voice records. Tune UI for messages
 
 ## News: Tune quality. News should be useful for me.
