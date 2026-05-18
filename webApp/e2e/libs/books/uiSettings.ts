@@ -2,7 +2,7 @@ import { expect, Page } from '@playwright/test';
 
 export const openSettingsPopover = async (page: Page) => {
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-settings').click();
+  await page.getByTestId('book-info-tab-settings').click();
   await expect(
     page.locator('.MuiPopover-paper').getByText('Settings', { exact: true }),
   ).toBeVisible();

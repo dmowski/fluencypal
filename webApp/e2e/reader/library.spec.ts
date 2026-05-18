@@ -221,7 +221,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
   expect(hasRenderedDataImage).toBeTruthy();
 
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-chapters').click();
+  await page.getByTestId('book-info-tab-chapters').click();
 
   const chaptersPopover = page.getByTestId('reader-chapters-popover');
   await expect(chaptersPopover).toBeVisible();

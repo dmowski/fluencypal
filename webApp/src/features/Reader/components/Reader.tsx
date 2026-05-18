@@ -358,7 +358,6 @@ export const Reader = ({ data }: { data: Book }) => {
       }}
     >
       <BookInfoButton
-        bookTitle={data.title}
         speech={speech}
         chapters={chapterItems}
         highlights={highlightItems}

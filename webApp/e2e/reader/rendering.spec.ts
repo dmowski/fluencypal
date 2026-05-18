@@ -262,7 +262,7 @@ test('renders a small chapter opener image before THE MATCHING PRINCIPLE heading
 
   await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-chapters').click();
+  await page.getByTestId('book-info-tab-chapters').click();
 
   const chapterPopover = page.getByTestId('reader-chapters-popover');
   await expect(chapterPopover).toBeVisible();

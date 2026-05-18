@@ -24,7 +24,7 @@ test('chapter list maps each chapter to a unique target page', async ({ page }) 
 
   await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-chapters').click();
+  await page.getByTestId('book-info-tab-chapters').click();
 
   const chapterPopover = page.getByTestId('reader-chapters-popover');
   await expect(chapterPopover).toBeVisible();
@@ -51,7 +51,7 @@ test('opens chapters popover and jumps to selected chapter page', async ({ page 
   await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-chapters').click();
+  await page.getByTestId('book-info-tab-chapters').click();
 
   const chaptersPopover = page.getByTestId('reader-chapters-popover');
   await expect(chaptersPopover).toBeVisible();

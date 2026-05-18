@@ -1,5 +1,5 @@
-import { Button, IconButton, Popover, Stack, ThemeProvider, Typography } from '@mui/material';
-import { ChevronLeft, ChevronRight, CircleEllipsis, Info, X } from 'lucide-react';
+import { IconButton, Popover, Stack, Tab, Tabs, ThemeProvider } from '@mui/material';
+import { BookOpen, CircleEllipsis, Highlighter, SlidersHorizontal, X } from 'lucide-react';
 import { type MouseEvent, useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
@@ -9,8 +9,9 @@ import { ReaderChapterItem, ReaderChaptersList } from './ReaderChaptersPopover';
 import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPopover';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 
+const ACTIVE_TAB_STORAGE_KEY = 'reader-book-info-active-tab';
+
 type BookInfoButtonProps = {
-  bookTitle: string;
   speech: ReturnType<typeof useBrowserSpeech>;
   chapters: ReaderChapterItem[];
   highlights: ReaderHighlightItem[];
@@ -19,10 +20,16 @@ type BookInfoButtonProps = {
   onSelectHighlight: (targetPage: number) => void;
 };
 
-type ModalView = 'menu' | 'settings' | 'chapters' | 'highlights';
+type ModalView = 'settings' | 'chapters' | 'highlights';
+
+const getInitialTab = (): ModalView => {
+  if (typeof window === 'undefined') return 'settings';
+  const stored = localStorage.getItem(ACTIVE_TAB_STORAGE_KEY);
+  if (stored === 'settings' || stored === 'chapters' || stored === 'highlights') return stored;
+  return 'settings';
+};
 
 export const BookInfoButton = ({
-  bookTitle,
   speech,
   chapters,
   highlights,
@@ -33,7 +40,7 @@ export const BookInfoButton = ({
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-  const [activeView, setActiveView] = useState<ModalView>('menu');
+  const [activeView, setActiveView] = useState<ModalView>(getInitialTab);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const open = Boolean(anchorEl);
@@ -43,11 +50,10 @@ export const BookInfoButton = ({
     setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
   }, []);
 
-  useEffect(() => {
-    if (!open) {
-      setActiveView('menu');
-    }
-  }, [open]);
+  const setActiveViewPersisted = (view: ModalView) => {
+    localStorage.setItem(ACTIVE_TAB_STORAGE_KEY, view);
+    setActiveView(view);
+  };
 
   const handleInfoClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -61,15 +67,6 @@ export const BookInfoButton = ({
   };
 
   const closeModal = () => setAnchorEl(null);
-
-  const title =
-    activeView === 'settings'
-      ? i18n._('Settings')
-      : activeView === 'chapters'
-        ? i18n._('Chapters')
-        : activeView === 'highlights'
-          ? i18n._('Highlights')
-          : bookTitle;
 
   return (
     <>
@@ -104,93 +101,57 @@ export const BookInfoButton = ({
             sx: {
               backgroundColor: '#FFF3DD',
               color: '#111',
+              borderRadius: '12px',
             },
           },
         }}
       >
         <Stack
           data-testid="book-info-modal"
-          sx={{ padding: '20px 20px 30px 20px', width: 340, gap: '30px', position: 'relative' }}
+          sx={{ padding: '15px 20px 30px 20px', width: 340, gap: '20px', position: 'relative' }}
         >
-          <Stack
+          <IconButton
+            onClick={closeModal}
+            aria-label={i18n._('Close settings')}
             sx={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '0px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
+              position: 'absolute',
+              top: '5px',
+              right: '5px',
+              flexShrink: 0,
+              zIndex: 1,
             }}
           >
-            {activeView !== 'menu' ? (
-              <IconButton
-                data-testid="book-info-back-button"
-                onClick={() => setActiveView('menu')}
-                aria-label={i18n._('Back')}
-                sx={{
-                  width: '32px',
-                  height: '32px',
-                  padding: 0,
-                  flexShrink: 0,
-                  marginLeft: '-15px',
-                }}
-              >
-                <ChevronLeft size={18} />
-              </IconButton>
-            ) : null}
+            <X size={18} />
+          </IconButton>
 
-            <Typography variant="h5" sx={{ fontWeight: 600, flex: 1, minWidth: 0 }}>
-              {title}
-            </Typography>
-
-            <IconButton
-              onClick={closeModal}
-              aria-label={i18n._('Close settings')}
-              sx={{
-                width: '32px',
-                height: '32px',
-                padding: 0,
-                flexShrink: 0,
-                position: 'absolute',
-                top: '5px',
-                right: '5px',
-              }}
-            >
-              <X size={18} />
-            </IconButton>
-          </Stack>
-
-          {activeView === 'menu' ? (
-            <Stack sx={{ gap: '10px' }}>
-              <Button
-                data-testid="book-info-menu-settings"
-                variant="outlined"
-                color="inherit"
-                onClick={() => setActiveView('settings')}
-                endIcon={<ChevronRight size={14} />}
-                sx={{ justifyContent: 'space-between' }}
-              >
-                {i18n._('Settings')}
-              </Button>
-              <Button
-                data-testid="book-info-menu-chapters"
-                variant="outlined"
-                color="inherit"
-                onClick={() => setActiveView('chapters')}
-                endIcon={<ChevronRight size={14} />}
-                sx={{ justifyContent: 'space-between' }}
-              >
-                {i18n._('Chapters')}
-              </Button>
-              <Button
-                data-testid="book-info-menu-highlights"
-                variant="outlined"
-                color="inherit"
-                onClick={() => setActiveView('highlights')}
-                endIcon={<ChevronRight size={14} />}
-                sx={{ justifyContent: 'space-between' }}
-              >
-                {i18n._('Highlights')}
-              </Button>
-            </Stack>
-          ) : null}
+          <Tabs
+            value={activeView}
+            onChange={(_, v: ModalView) => setActiveViewPersisted(v)}
+            aria-label={i18n._('Book info sections')}
+            variant="fullWidth"
+          >
+            <Tab
+              data-testid="book-info-tab-settings"
+              value="settings"
+              icon={<SlidersHorizontal size={18} />}
+              label={i18n._('Settings')}
+            />
+            <Tab
+              data-testid="book-info-tab-chapters"
+              value="chapters"
+              icon={<BookOpen size={18} />}
+              label={i18n._('Chapters')}
+            />
+            <Tab
+              data-testid="book-info-tab-highlights"
+              value="highlights"
+              icon={<Highlighter size={18} />}
+              label={i18n._('Highlights')}
+            />
+          </Tabs>
 
           {activeView === 'settings' ? (
             <ReaderSettingsPanel

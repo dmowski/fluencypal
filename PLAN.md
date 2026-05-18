@@ -4,12 +4,6 @@
 
 ## Reader
 
-"These two kinds of logic exist, side by side, within our brains."
-
-can we keep that sybmol \*. Now we just remove that completely.
-
-Or there's any tradeoff?
-
 - Search feature
 
 - Test on Android, Safari

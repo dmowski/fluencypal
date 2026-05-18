@@ -66,7 +66,7 @@ test('book info highlights list shows context and jumps to selected highlight', 
   const pageBeforeSelect = parseCurrentPageFromIndicator(await pageIndicator.innerText());
 
   await page.getByRole('button', { name: 'Book info' }).click();
-  await page.getByTestId('book-info-menu-highlights').click();
+  await page.getByTestId('book-info-tab-highlights').click();
 
   const highlightsPopover = page.getByTestId('reader-highlights-popover');
   await expect(highlightsPopover).toBeVisible();

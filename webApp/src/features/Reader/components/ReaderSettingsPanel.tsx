@@ -224,38 +224,39 @@ export const ReaderSettingsPanel = ({
           ))}
         </Select>
       </FormControl>
-
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={localJustifyText}
-            onChange={(_event, checked) => setLocalJustifyText(checked)}
-          />
-        }
-        label={i18n._('Justify Text')}
-      />
-
-      {!isTouchDevice && (
+      <Stack>
         <FormControlLabel
           control={
             <Checkbox
-              checked={localTranslateOnHover}
-              onChange={(_event, checked) => setLocalTranslateOnHover(checked)}
+              checked={localJustifyText}
+              onChange={(_event, checked) => setLocalJustifyText(checked)}
             />
           }
-          label={i18n._('Translate on Hover')}
+          label={i18n._('Justify Text')}
         />
-      )}
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={localVoiceOverSelectedText}
-            onChange={(_event, checked) => setLocalVoiceOverSelectedText(checked)}
+        {!isTouchDevice && (
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={localTranslateOnHover}
+                onChange={(_event, checked) => setLocalTranslateOnHover(checked)}
+              />
+            }
+            label={i18n._('Translate on Hover')}
           />
-        }
-        label={i18n._('Voice Over Selected Text')}
-      />
+        )}
+
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={localVoiceOverSelectedText}
+              onChange={(_event, checked) => setLocalVoiceOverSelectedText(checked)}
+            />
+          }
+          label={i18n._('Voice Over Selected Text')}
+        />
+      </Stack>
 
       <Stack sx={{ gap: '8px' }}>
         <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
