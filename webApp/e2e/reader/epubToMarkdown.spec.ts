@@ -65,4 +65,24 @@ test.describe('books epub to markdown', () => {
       expect(markdownPrefix).toMatchSnapshot(snapshotName);
     });
   }
+
+  test('supercommunicators has no raw epub noteref link artifacts', async ({ page }) => {
+    // Regression test for: EPUB noteref inline anchors (e.g. <a epub:type="noteref">[*]</a>)
+    // being converted by Turndown to escaped-bracket markdown links like
+    // [\[\*\]](#_footnote_d1-0000f4de "footnote") and then rendered as raw text in the UI
+    // because the downstream markdown link regexes don't handle escaped brackets in labels.
+    test.setTimeout(240_000);
+
+    await mockConvertDocToTextRoute(page);
+    await page.goto('/book/test/epubImport');
+    await expect(page.getByTestId('epub-import-test-page')).toBeVisible();
+
+    const output = await parseAndReadOutput('supercommunicators', page);
+    const markdownBody = getMarkdownBody(output);
+
+    // No escaped-bracket link labels should survive: [\[...\]](...)
+    expect(markdownBody).not.toMatch(/\[\\[[^\]]*\\?\]\]/);
+    // Specific footnote anchor fragment used in the reported case
+    expect(markdownBody).not.toContain('_footnote_');
+  });
 });

@@ -13,6 +13,7 @@ import {
   normalizeSetextHeadings,
   normalizeStandaloneEqualsSeparators,
   normalizeThematicBreaks,
+  normalizeEpubNoterefLinks,
 } from './markdownNormalize';
 import { prepareHtmlForTurndown } from './htmlPreprocess';
 import {
@@ -141,16 +142,18 @@ export const parseEpubOnClient = async (
     if (!html) continue;
 
     const markdown = normalizeThematicBreaks(
-      normalizeStandaloneEqualsSeparators(
-        normalizeSetextHeadings(
-          normalizeBrokenUnderscoreEmphasis(
-            normalizeBlockquoteSpacerLines(
-              normalizeMarkdownInlineLinks(
-                turndown
-                  .turndown(prepareHtmlForTurndown(html))
-                  .trim()
-                  .split(`<?xml version='1.0' encoding='utf-8'?>`)
-                  .join('\n'),
+      normalizeEpubNoterefLinks(
+        normalizeStandaloneEqualsSeparators(
+          normalizeSetextHeadings(
+            normalizeBrokenUnderscoreEmphasis(
+              normalizeBlockquoteSpacerLines(
+                normalizeMarkdownInlineLinks(
+                  turndown
+                    .turndown(prepareHtmlForTurndown(html))
+                    .trim()
+                    .split(`<?xml version='1.0' encoding='utf-8'?>`)
+                    .join('\n'),
+                ),
               ),
             ),
           ),

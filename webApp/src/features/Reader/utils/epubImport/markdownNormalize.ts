@@ -158,6 +158,27 @@ export const normalizeBlockquoteSpacerLines = (markdown: string): string => {
   return normalized.join('\n');
 };
 
+export const normalizeEpubNoterefLinks = (markdown: string): string => {
+  // EPUB footnote anchors produce two kinds of markdown links after Turndown:
+  //
+  // 1. Inline noteref (epub:type="noteref", in main text):
+  //      <a href="#_footnote_d1-abc" title="footnote">[*]</a>
+  //    → [\[\*\]](#_footnote_d1-abc "footnote")
+  //    (Turndown escapes the `[*]` label to `\[\*\]`)
+  //
+  // 2. Backlink (in the notes section, points back to inline cite):
+  //      <a href="#_footnote_referrer_d1-abc" title="footnote reference">*</a>
+  //    → [\*](#_footnote_referrer_d1-abc "footnote reference")
+  //
+  // Both are internal fragment links that are not navigable in our reader and
+  // produce raw markdown artefacts in the rendered text. Strip both entirely.
+  //
+  // The href discriminator `_footnote_` covers both `#_footnote_<id>` and
+  // `#_footnote_referrer_<id>`. Non-greedy `.*?` on the label handles the
+  // escaped-bracket form `\[\*\]` via backtracking as well as plain `\*`.
+  return markdown.replace(/\[.*?\]\(#[^)]*_footnote_[^)]*\)/g, '');
+};
+
 export const normalizeThematicBreaks = (markdown: string): string => {
   const lines = markdown.split('\n');
   const normalized: string[] = [];
