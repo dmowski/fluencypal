@@ -1,6 +1,15 @@
 # Live document with short/long term ideas
 
+## Social network
+
+Attach my voice records. Tune UI for messages
+
 ## News
+
+Tune quality. News should be useful for me.
+
+Think about community discussion. Can we place comments section under the news?
+How to show previous news. Separate news cards?
 
 ## Reader
 
