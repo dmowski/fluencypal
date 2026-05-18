@@ -1,5 +1,17 @@
 # Live document with short/long term ideas
 
+## Reader: Converted pdf to Epub. Think about Kindl approach.
+
+- Sony - reader. Epub. Word document to read it.
+  Think about buy readers, real physical. Can we connect it with books.fluencypal.com.
+  Download as "Epub",
+
+- How to download file in kindl. You can send book to email. Without auth.
+
+Sony digital readers.
+
+## Reader: List. unable to highlight text
+
 ## Reader: Automatic re-import, create parser version
 
 ## Reader: Highlights - On hover, show full paragraph as preview
