@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Lägg till"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:411
+#: src/features/Reader/components/Cards.tsx:401
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Lägg till en bok"
@@ -1123,7 +1123,7 @@ msgstr "Bokläsare"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
-#: src/features/Reader/hooks/useNonEpubImport.ts:108
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Bok sparad."
@@ -2050,7 +2050,7 @@ msgstr "Konversationer med artificiell intelligens"
 msgid "Converted file size must be less than 250MB"
 msgstr "Den konverterade filstorleken måste vara mindre än 250MB"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#: src/features/Reader/hooks/useNonEpubImport.ts:57
 #. js-lingui-explicit-id
 msgid "Converting to EPUB…"
 msgstr "Konverterar till EPUB…"
@@ -2510,7 +2510,7 @@ msgid "Debates"
 msgstr "Debatteringar"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:239
+#: src/features/Reader/components/Cards.tsx:258
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2969,15 +2969,15 @@ msgstr "Färdig:"
 msgid "Don’t let mistakes stop you."
 msgstr "Låt inte misstag stoppa dig."
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:225
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:244
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Ladda ner"
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:57
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:67
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "Ladda ner EPUB"
@@ -2987,12 +2987,12 @@ msgstr "Ladda ner EPUB"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Laddar ner bok från Project Gutenberg..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#: src/features/Reader/hooks/useNonEpubImport.ts:68
 #. js-lingui-explicit-id
 msgid "Downloading converted file…"
 msgstr "Laddar ner konverterad fil..."
 
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Laddar ner..."
@@ -3007,7 +3007,7 @@ msgstr "Doxxning"
 msgid "Drop EPUB file here"
 msgstr "Släpp EPUB-fil här"
 
-#: src/features/Reader/components/BooksList.tsx:530
+#: src/features/Reader/components/BooksList.tsx:531
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "Släpp EPUB, PDF eller DOCX för att importera bok"
@@ -3644,7 +3644,7 @@ msgstr "Misslyckades med att analysera bilden. Försök igen."
 msgid "Failed to convert EPUB."
 msgstr "Misslyckades med att konvertera EPUB."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#: src/features/Reader/hooks/useNonEpubImport.ts:112
 #. js-lingui-explicit-id
 msgid "Failed to convert file."
 msgstr "Misslyckades med att konvertera filen."
@@ -6148,7 +6148,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Låt oss se till att du är redo"
 
-#: src/features/Reader/components/BooksList.tsx:450
+#: src/features/Reader/components/BooksList.tsx:451
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliotek"
@@ -6245,7 +6245,7 @@ msgstr "Laddar ett ord..."
 msgid "Loading article..."
 msgstr "Laddar artikel..."
 
-#: src/features/Reader/components/BooksList.tsx:453
+#: src/features/Reader/components/BooksList.tsx:454
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Laddar bibliotek..."
@@ -8129,7 +8129,7 @@ msgstr "Förbereder hjärnan"
 msgid "Preparing your game..."
 msgstr "Förbereder ditt spel..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#: src/features/Reader/hooks/useNonEpubImport.ts:40
 #. js-lingui-explicit-id
 msgid "Preparing…"
 msgstr "Förbereder…"
@@ -8206,7 +8206,7 @@ msgstr "Problemlösning"
 msgid "Processing answers..."
 msgstr "Bearbetar svar..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#: src/features/Reader/hooks/useNonEpubImport.ts:75
 #. js-lingui-explicit-id
 msgid "Processing book…"
 msgstr "Bearbetar bok…"
@@ -8225,6 +8225,11 @@ msgstr "Bearbetar senaste session"
 #. js-lingui-explicit-id
 msgid "Processing..."
 msgstr "Bearbetar..."
+
+#: src/features/Reader/components/Cards.tsx:362
+#. js-lingui-explicit-id
+msgid "Processing…"
+msgstr "Bearbetar…"
 
 #: src/features/Case/Landing/components/Footer.tsx:108
 #. js-lingui-explicit-id
@@ -8293,7 +8298,7 @@ msgstr "Framstegsspårning"
 msgid "Progress tracking to see your improvement"
 msgstr "Framstegsspårning för att se din förbättring"
 
-#: src/features/Reader/components/Cards.tsx:490
+#: src/features/Reader/components/Cards.tsx:480
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projekt Gutenberg"
@@ -9048,7 +9053,7 @@ msgstr "Spara ändringar"
 msgid "Saving book..."
 msgstr "Sparar bok..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#: src/features/Reader/hooks/useNonEpubImport.ts:87
 #. js-lingui-explicit-id
 msgid "Saving book…"
 msgstr "Sparar bok…"
@@ -9225,7 +9230,7 @@ msgstr "Skicka förfrågan"
 msgid "Send sign-in link"
 msgstr "Skicka inloggningslänk"
 
-#: src/features/Reader/components/Cards.tsx:300
+#: src/features/Reader/components/Cards.tsx:232
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9300,7 +9305,7 @@ msgstr "Inställningar"
 msgid "Sexual content"
 msgstr "Sexuellt innehåll"
 
-#: src/features/Reader/components/Cards.tsx:211
+#: src/features/Reader/components/Cards.tsx:220
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -11394,7 +11399,7 @@ msgstr "Ladda upp språkkunskaper direkt till din hjärna"
 msgid "Upload video"
 msgstr "Ladda upp video"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#: src/features/Reader/hooks/useNonEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Uploading file…"
 msgstr "Laddar upp fil…"
@@ -11974,11 +11979,6 @@ msgid ""
 msgstr ""
 "Med FluencyPal kan du förbättra din inlärningsupplevelse med personlig "
 "återkoppling, korrigeringar i realtid och ett stödjande samhälle."
-
-#: src/features/Reader/components/Cards.tsx:288
-#. js-lingui-explicit-id
-msgid "With other users"
-msgstr "Med andra användare"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
@@ -12763,7 +12763,7 @@ msgstr "Du gör ett bra jobb. Ta en titt på dagens uppgifter."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du är i ett bra flyt. Fortsätt med dagens uppgifter."
 
-#: src/features/Reader/components/Cards.tsx:506
+#: src/features/Reader/components/Cards.tsx:496
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} nedladdningar"
@@ -12808,6 +12808,11 @@ msgstr "{winnerName} vinner!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlytPal"
+
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+#~ msgid "With other users"
+#~ msgstr "Med andra användare"
 
 #: src/features/Reader/components/Cards.tsx:288
 #. js-lingui-explicit-id

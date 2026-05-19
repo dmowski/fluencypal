@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Tilføj"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:411
+#: src/features/Reader/components/Cards.tsx:401
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Tilføj en bog"
@@ -1127,7 +1127,7 @@ msgstr "Boglæser"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
-#: src/features/Reader/hooks/useNonEpubImport.ts:108
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Bog gemt."
@@ -2055,7 +2055,7 @@ msgstr "Samtaler med kunstig intelligens"
 msgid "Converted file size must be less than 250MB"
 msgstr "Den konverterede filstørrelse skal være mindre end 250 MB"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#: src/features/Reader/hooks/useNonEpubImport.ts:57
 #. js-lingui-explicit-id
 msgid "Converting to EPUB…"
 msgstr "Konverterer til EPUB…"
@@ -2513,7 +2513,7 @@ msgid "Debates"
 msgstr "Debatter"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:239
+#: src/features/Reader/components/Cards.tsx:258
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2968,15 +2968,15 @@ msgstr "Færdig:"
 msgid "Don’t let mistakes stop you."
 msgstr "Lad ikke fejl stoppe dig."
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:225
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:244
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Hent"
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:57
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:67
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "Download EPUB"
@@ -2986,12 +2986,12 @@ msgstr "Download EPUB"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Downloader bog fra Project Gutenberg..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#: src/features/Reader/hooks/useNonEpubImport.ts:68
 #. js-lingui-explicit-id
 msgid "Downloading converted file…"
 msgstr "Downloading af konverteret fil…"
 
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Downloader..."
@@ -3006,7 +3006,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Slip EPUB-fil her"
 
-#: src/features/Reader/components/BooksList.tsx:530
+#: src/features/Reader/components/BooksList.tsx:531
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "Slip EPUB, PDF eller DOCX for at importere bog"
@@ -3635,7 +3635,7 @@ msgstr "Kunne ikke analysere billedet. Prøv venligst igen."
 msgid "Failed to convert EPUB."
 msgstr "Kunne ikke konvertere EPUB."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#: src/features/Reader/hooks/useNonEpubImport.ts:112
 #. js-lingui-explicit-id
 msgid "Failed to convert file."
 msgstr "Kunne ikke konvertere filen."
@@ -6137,7 +6137,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Lad os sikre os, at du er klar"
 
-#: src/features/Reader/components/BooksList.tsx:450
+#: src/features/Reader/components/BooksList.tsx:451
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliotek"
@@ -6234,7 +6234,7 @@ msgstr "Indlæser et ord..."
 msgid "Loading article..."
 msgstr "Indlæser artikel..."
 
-#: src/features/Reader/components/BooksList.tsx:453
+#: src/features/Reader/components/BooksList.tsx:454
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Indlæser bibliotek..."
@@ -8125,7 +8125,7 @@ msgstr "Forbereder hjernen"
 msgid "Preparing your game..."
 msgstr "Forbereder dit spil..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#: src/features/Reader/hooks/useNonEpubImport.ts:40
 #. js-lingui-explicit-id
 msgid "Preparing…"
 msgstr "Forbereder…"
@@ -8200,7 +8200,7 @@ msgstr "Problemløsning"
 msgid "Processing answers..."
 msgstr "Behandler svar..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#: src/features/Reader/hooks/useNonEpubImport.ts:75
 #. js-lingui-explicit-id
 msgid "Processing book…"
 msgstr "Behandler bog…"
@@ -8219,6 +8219,11 @@ msgstr "Behandler nyeste session"
 #. js-lingui-explicit-id
 msgid "Processing..."
 msgstr "Behandling..."
+
+#: src/features/Reader/components/Cards.tsx:362
+#. js-lingui-explicit-id
+msgid "Processing…"
+msgstr "Behandler…"
 
 #: src/features/Case/Landing/components/Footer.tsx:108
 #. js-lingui-explicit-id
@@ -8287,7 +8292,7 @@ msgstr "Fremdriftssporing"
 msgid "Progress tracking to see your improvement"
 msgstr "Sporing af fremskridt for at se din forbedring"
 
-#: src/features/Reader/components/Cards.tsx:490
+#: src/features/Reader/components/Cards.tsx:480
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projekt Gutenberg"
@@ -9044,7 +9049,7 @@ msgstr "Gem ændringer"
 msgid "Saving book..."
 msgstr "Gemmer bog..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#: src/features/Reader/hooks/useNonEpubImport.ts:87
 #. js-lingui-explicit-id
 msgid "Saving book…"
 msgstr "Gemmer bog…"
@@ -9223,7 +9228,7 @@ msgstr "Send anmodning"
 msgid "Send sign-in link"
 msgstr "Send loginlink"
 
-#: src/features/Reader/components/Cards.tsx:300
+#: src/features/Reader/components/Cards.tsx:232
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9300,7 +9305,7 @@ msgstr "Indstillinger"
 msgid "Sexual content"
 msgstr "Seksuelt indhold"
 
-#: src/features/Reader/components/Cards.tsx:211
+#: src/features/Reader/components/Cards.tsx:220
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -11384,7 +11389,7 @@ msgstr "Upload sprogfærdigheder direkte til din hjerne"
 msgid "Upload video"
 msgstr "Upload video"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#: src/features/Reader/hooks/useNonEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Uploading file…"
 msgstr "Uploader fil…"
@@ -11964,11 +11969,6 @@ msgid ""
 msgstr ""
 "Med FluencyPal kan du forbedre din læringsoplevelse med personlig feedback, "
 "korrektioner i realtid, og et støttende fællesskab."
-
-#: src/features/Reader/components/Cards.tsx:288
-#. js-lingui-explicit-id
-msgid "With other users"
-msgstr "Med andre brugere"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
@@ -12749,7 +12749,7 @@ msgstr "Du klarer det godt. Tag et kig på dagens opgaver."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du er i god flow. Fortsæt med dagens opgaver."
 
-#: src/features/Reader/components/Cards.tsx:506
+#: src/features/Reader/components/Cards.tsx:496
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} downloads"
@@ -12794,6 +12794,11 @@ msgstr "{winnerName} vinder!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlydendighedsPal"
+
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+#~ msgid "With other users"
+#~ msgstr "Med andre brugere"
 
 #: src/features/Reader/components/Cards.tsx:288
 #. js-lingui-explicit-id

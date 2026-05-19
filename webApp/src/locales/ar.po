@@ -325,7 +325,7 @@ msgid "Add"
 msgstr "أضف"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:411
+#: src/features/Reader/components/Cards.tsx:401
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "أضف كتاباً"
@@ -1127,7 +1127,7 @@ msgstr "قارئ الكتاب"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
-#: src/features/Reader/hooks/useNonEpubImport.ts:108
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "تم حفظ الكتاب."
@@ -2045,7 +2045,7 @@ msgstr "محادثات مع الذكاء الاصطناعي"
 msgid "Converted file size must be less than 250MB"
 msgstr "يجب أن يكون حجم الملف المحول أقل من 250 ميجابايت"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#: src/features/Reader/hooks/useNonEpubImport.ts:57
 #. js-lingui-explicit-id
 msgid "Converting to EPUB…"
 msgstr "جارٍ التحويل إلى EPUB…"
@@ -2502,7 +2502,7 @@ msgid "Debates"
 msgstr "مناظرات"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:239
+#: src/features/Reader/components/Cards.tsx:258
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2955,15 +2955,15 @@ msgstr "تم:"
 msgid "Don’t let mistakes stop you."
 msgstr "لا تدع الأخطاء توقفك."
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:225
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:244
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "تنزيل"
 
-#: src/features/Reader/components/Cards.tsx:49
-#: src/features/Reader/components/Cards.tsx:57
+#: src/features/Reader/components/Cards.tsx:59
+#: src/features/Reader/components/Cards.tsx:67
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "تحميل EPUB"
@@ -2973,12 +2973,12 @@ msgstr "تحميل EPUB"
 msgid "Downloading book from Project Gutenberg..."
 msgstr "جارٍ تنزيل الكتاب من مشروع جوتنبرج..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#: src/features/Reader/hooks/useNonEpubImport.ts:68
 #. js-lingui-explicit-id
 msgid "Downloading converted file…"
 msgstr "جاري تنزيل الملف المحوّل..."
 
-#: src/features/Reader/components/Cards.tsx:532
+#: src/features/Reader/components/Cards.tsx:522
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "جارٍ التنزيل..."
@@ -2993,7 +2993,7 @@ msgstr "التنشير"
 msgid "Drop EPUB file here"
 msgstr "ضع ملف EPUB هنا"
 
-#: src/features/Reader/components/BooksList.tsx:530
+#: src/features/Reader/components/BooksList.tsx:531
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "قم بإسقاط ملفات EPUB أو PDF أو DOCX لاستيراد الكتاب"
@@ -3614,7 +3614,7 @@ msgstr "فشل في تحليل الصورة. يرجى المحاولة مرة أ
 msgid "Failed to convert EPUB."
 msgstr "فشل تحويل EPUB."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#: src/features/Reader/hooks/useNonEpubImport.ts:112
 #. js-lingui-explicit-id
 msgid "Failed to convert file."
 msgstr "فشل في تحويل الملف."
@@ -6092,7 +6092,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "لنتأكد من أنك جاهز"
 
-#: src/features/Reader/components/BooksList.tsx:450
+#: src/features/Reader/components/BooksList.tsx:451
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "مكتبة"
@@ -6189,7 +6189,7 @@ msgstr "جارٍ تحميل كلمة..."
 msgid "Loading article..."
 msgstr "جارٍ تحميل المقالة..."
 
-#: src/features/Reader/components/BooksList.tsx:453
+#: src/features/Reader/components/BooksList.tsx:454
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "جارٍ تحميل المكتبة..."
@@ -8092,7 +8092,7 @@ msgstr "تجهيز الدماغ"
 msgid "Preparing your game..."
 msgstr "جارٍ تحضير لعبتك..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#: src/features/Reader/hooks/useNonEpubImport.ts:40
 #. js-lingui-explicit-id
 msgid "Preparing…"
 msgstr ""
@@ -8169,7 +8169,7 @@ msgstr "حل المشكلات"
 msgid "Processing answers..."
 msgstr "معالجة الإجابات..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#: src/features/Reader/hooks/useNonEpubImport.ts:75
 #. js-lingui-explicit-id
 msgid "Processing book…"
 msgstr "جاري معالجة الكتاب…"
@@ -8190,6 +8190,11 @@ msgid "Processing..."
 msgstr ""
 "plaintext\n"
 "جارٍ المعالجة...\n"
+
+#: src/features/Reader/components/Cards.tsx:362
+#. js-lingui-explicit-id
+msgid "Processing…"
+msgstr "جارٍ المعالجة…"
 
 #: src/features/Case/Landing/components/Footer.tsx:108
 #. js-lingui-explicit-id
@@ -8258,7 +8263,7 @@ msgstr "تتبع التقدم"
 msgid "Progress tracking to see your improvement"
 msgstr "تتبع التقدم لرؤية تحسينك"
 
-#: src/features/Reader/components/Cards.tsx:490
+#: src/features/Reader/components/Cards.tsx:480
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "مشروع جوتنبرج"
@@ -9019,7 +9024,7 @@ msgstr "احفظ التغييرات"
 msgid "Saving book..."
 msgstr "جارٍ حفظ الكتاب..."
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#: src/features/Reader/hooks/useNonEpubImport.ts:87
 #. js-lingui-explicit-id
 msgid "Saving book…"
 msgstr "جارٍ حفظ الكتاب..."
@@ -9200,7 +9205,7 @@ msgstr "إرسال الطلب"
 msgid "Send sign-in link"
 msgstr "إرسال رابط تسجيل الدخول"
 
-#: src/features/Reader/components/Cards.tsx:300
+#: src/features/Reader/components/Cards.tsx:232
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9277,7 +9282,7 @@ msgstr "الإعدادات"
 msgid "Sexual content"
 msgstr "محتوى جنسي"
 
-#: src/features/Reader/components/Cards.tsx:211
+#: src/features/Reader/components/Cards.tsx:220
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -11346,7 +11351,7 @@ msgstr "تحميل مهارات اللغة مباشرة إلى عقلك"
 msgid "Upload video"
 msgstr "تحميل الفيديو"
 
-#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#: src/features/Reader/hooks/useNonEpubImport.ts:51
 #. js-lingui-explicit-id
 msgid "Uploading file…"
 msgstr ""
@@ -11936,11 +11941,6 @@ msgid ""
 msgstr ""
 "مع FluencyPal، يمكنك تحسين تجربة التعلم الخاصة بك من خلال الاستفادة من "
 "الردود المخصصة، التصحيحات الفورية، والمجتمع المتعاون."
-
-#: src/features/Reader/components/Cards.tsx:288
-#. js-lingui-explicit-id
-msgid "With other users"
-msgstr "مع مستخدمين آخرين"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
@@ -12712,7 +12712,7 @@ msgstr "أنت تسير بشكل جيد. ألقِ نظرة على مهام ال�
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "أنت في تدفق جيد. واصل مهام اليوم."
 
-#: src/features/Reader/components/Cards.tsx:506
+#: src/features/Reader/components/Cards.tsx:496
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} تحميلات"
@@ -12757,6 +12757,11 @@ msgstr "{winnerName} فاز!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| فلوينسي بال"
+
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+#~ msgid "With other users"
+#~ msgstr "مع مستخدمين آخرين"
 
 #: src/features/Reader/components/Cards.tsx:288
 #. js-lingui-explicit-id
