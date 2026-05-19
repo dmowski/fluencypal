@@ -3,11 +3,17 @@ import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
 const resendKey = process.env.RESEND_API || '';
 
+export interface EmailAttachment {
+  filename: string;
+  content: Buffer;
+}
+
 interface SendEmailProps {
   emailTo: string;
   messageText: string;
   messageHtml: string;
   title: string;
+  attachments?: EmailAttachment[];
 }
 
 export const sendEmail = async ({
@@ -15,6 +21,7 @@ export const sendEmail = async ({
   messageText,
   messageHtml,
   title,
+  attachments,
 }: SendEmailProps): Promise<void> => {
   if (!resendKey) {
     throw new Error('Resend key not found');
@@ -27,6 +34,10 @@ export const sendEmail = async ({
       subject: title,
       text: messageText,
       html: messageHtml,
+      attachments: attachments?.map((a) => ({
+        filename: a.filename,
+        content: a.content,
+      })),
     });
     console.log(`Send email to: ${emailTo}. ${messageText}`);
     console.log('result', JSON.stringify(sendResult));

@@ -1,24 +1,18 @@
 # Live document with short/long term ideas
 
-## Reader: List. unable to highlight text
-
-## Reader: Automatic re-import, create parser version
-
 ## Reader: Export to Kindle
-
-- Sony - reader. Epub. Word document to read it.
-  Think about buy readers, real physical. Can we connect it with books.fluencypal.com.
-  Download as "Epub",
-
-- How to download file in kindle. You can send book to email
-
-Sony digital readers.
 
 ## News: Tune quality. News should be useful for me.
 
 - As separate page, modal with options to filter
 
 - Render news as proper cards
+
+## Reader: List. unable to highlight text
+
+webApp/src/features/Reader/components/Paragraph/ReaderMarkdown.tsx
+
+## Reader: Automatic re-import, create parser version
 
 ## Social network: Attach my voice records. Tune UI for messages
 

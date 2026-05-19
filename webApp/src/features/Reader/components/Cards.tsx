@@ -7,7 +7,15 @@ import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
-import { CirclePlus, Download, MoreVertical, RefreshCw, Share2, Trash2 } from 'lucide-react';
+import {
+  CirclePlus,
+  Download,
+  MoreVertical,
+  RefreshCw,
+  Share2,
+  Trash2,
+  Tablet,
+} from 'lucide-react';
 
 export const BookCard = ({
   data,
@@ -16,6 +24,7 @@ export const BookCard = ({
   onDownloadFromBlob,
   onReimport,
   onShare,
+  onSendToKindle,
 }: {
   data: Book;
   onClick: (data: Book) => void;
@@ -23,6 +32,7 @@ export const BookCard = ({
   onDownloadFromBlob?: (data: Book, ext?: string) => Promise<void> | void;
   onReimport?: (data: Book) => void;
   onShare?: (data: Book) => void;
+  onSendToKindle?: (data: Book) => void;
 }) => {
   const i18n = useLingui();
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
@@ -52,7 +62,11 @@ export const BookCard = ({
   })();
 
   const canDownload = downloadOptions.length > 0;
-  const hasMenuItems = Boolean(onDelete || canDownload || onReimport || onShare);
+  const canSendToKindle =
+    Boolean(data.originalFileBlobPath) || Boolean(data.convertedFiles?.['epub']);
+  const hasMenuItems = Boolean(
+    onDelete || canDownload || onReimport || onShare || (onSendToKindle && canSendToKindle),
+  );
   const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
   const progressPercent =
     data.paragraphs.length > 0 && data.readingPosition
@@ -190,6 +204,18 @@ export const BookCard = ({
               >
                 <Share2 size={'14px'} style={{ marginRight: '8px' }} />
                 {i18n._('Share')}
+              </MenuItem>
+            )}
+            {onSendToKindle && canSendToKindle && (
+              <MenuItem
+                data-testid={`book-send-to-kindle-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onSendToKindle(data);
+                }}
+              >
+                <Tablet size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Send to Kindle')}
               </MenuItem>
             )}
             {onReimport && (

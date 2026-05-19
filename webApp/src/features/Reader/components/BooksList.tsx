@@ -25,6 +25,7 @@ import { useUrlState } from '@/features/Url/useUrlState';
 import { ReaderSignInModal } from './ReaderSignInModal';
 import { ReaderAuthButton } from './ReaderAuthButton';
 import { ShareBookModal } from './ShareBookModal';
+import { SendToKindleModal } from './SendToKindleModal';
 import { DeleteBookModal, DeleteBookModalMode } from './DeleteBookModal';
 import { leaveSharedBook } from '../api/bookSharingApi';
 import { useNonEpubImport } from '../hooks/useNonEpubImport';
@@ -46,6 +47,10 @@ export const BooksList = () => {
   const [deleteBookId, setDeleteBookId] = useState<string | null>(null);
   const deleteBook = deleteBookId
     ? (books.usersBooks.find((b) => b.id === deleteBookId) ?? null)
+    : null;
+  const [kindleBookId, setKindleBookId] = useState<string | null>(null);
+  const kindleBook = kindleBookId
+    ? (books.usersBooks.find((b) => b.id === kindleBookId) ?? null)
     : null;
   const [isLeaving, setIsLeaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -335,6 +340,15 @@ export const BooksList = () => {
           />
         )}
 
+        {kindleBook && (
+          <SendToKindleModal
+            book={kindleBook}
+            open={Boolean(kindleBookId)}
+            onClose={() => setKindleBookId(null)}
+            getToken={auth.getToken}
+          />
+        )}
+
         {deleteBook &&
           (() => {
             const isOwner = !deleteBook.ownerUserId || deleteBook.ownerUserId === auth.uid;
@@ -404,6 +418,7 @@ export const BooksList = () => {
                 onDownloadFromBlob={handleDownloadFromBlob}
                 onReimport={handleReimportClick}
                 onShare={auth.isAuthorized ? handleShare : undefined}
+                onSendToKindle={auth.isAuthorized ? (b) => setKindleBookId(b.id) : undefined}
               />
             ))}
 
