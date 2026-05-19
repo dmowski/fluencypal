@@ -2,7 +2,7 @@ import { InitBalanceResponse } from '../addUsageLog/usageRequest.types';
 import { getDB, validateAuthToken } from '../config/firebase';
 import { WELCOME_BONUS } from '@/features/Usage/usage';
 import { addPaymentLog } from '../payment/addPaymentLog';
-import { TRIAL_MINUTES } from '@/features/Price/price';
+import { TRIAL_DAYS, TRIAL_MINUTES } from '@/features/Price/price';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     currency: 'usd',
     amountOfHours: 0,
     paymentId: 'trial-days',
-    minutesCount: TRIAL_MINUTES,
+    daysCount: TRIAL_DAYS,
   });
 
   return Response.json(response);
