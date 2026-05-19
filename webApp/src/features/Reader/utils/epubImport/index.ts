@@ -71,7 +71,12 @@ export const convertEpubFile = async ({
     message: 'Extracting embedded images...',
   });
 
+  const imageStart = Date.now();
   const imageAspectRatioByHref = await buildImageAspectRatioMap(imageDataUrlByHref);
+  console.log('[epubImport] buildImageAspectRatioMap done', {
+    durationMs: Date.now() - imageStart,
+    imageCount: Object.keys(imageDataUrlByHref).length,
+  });
 
   return {
     text: markdown,

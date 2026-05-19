@@ -4,9 +4,14 @@ export interface ConvertDocToTextRequest {
   textPreview: string;
 }
 
+const AI_METADATA_TIMEOUT_MS = 15_000;
+
 export const sendConvertDocToTextRequest = async (
   data: ConvertDocToTextRequest,
 ): Promise<ConvertDocToTextResponse> => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), AI_METADATA_TIMEOUT_MS);
+
   try {
     console.log('[sendConvertDocToTextRequest] fetch starting', {
       previewLength: data.textPreview.length,
@@ -18,7 +23,9 @@ export const sendConvertDocToTextRequest = async (
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ textPreview: data.textPreview }),
+      signal: controller.signal,
     });
+    clearTimeout(timeoutId);
     console.log('[sendConvertDocToTextRequest] fetch response received', {
       durationMs: Date.now() - fetchStart,
       status: response.status,
@@ -31,6 +38,8 @@ export const sendConvertDocToTextRequest = async (
       const contentType = response.headers.get('content-type') || '';
       if (contentType.includes('application/json')) {
         result = (await response.json()) as ConvertDocToTextResponse;
+        debugger;
+        console.log('[sendConvertDocToTextRequest] result received', result);
       }
     } catch {
       // Non-JSON response fallback is handled below.
@@ -49,7 +58,17 @@ export const sendConvertDocToTextRequest = async (
     return {
       error: 'Received unexpected response from metadata service.',
     };
-  } catch {
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err instanceof Error && err.name === 'AbortError') {
+      console.warn(
+        '[sendConvertDocToTextRequest] request timed out, falling back to epub metadata',
+        {
+          timeoutMs: AI_METADATA_TIMEOUT_MS,
+        },
+      );
+      return { error: 'AI metadata request timed out.' };
+    }
     return {
       error: 'Failed to extract book metadata.',
     };
