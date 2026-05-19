@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## 1 week free trial?
-
 ## News: Tune quality. News should be useful for me.
 
 - As separate page, modal with options to filter
