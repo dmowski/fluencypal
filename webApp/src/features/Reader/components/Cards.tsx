@@ -1,28 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Box, Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
-import {
-  CirclePlus,
-  Download,
-  MoreVertical,
-  RefreshCw,
-  Share2,
-  Trash2,
-  Tablet,
-} from 'lucide-react';
+import { ChevronRight, CirclePlus, Download, MoreVertical, Share2, Tablet, Trash2 } from 'lucide-react';
 
 export const BookCard = ({
   data,
   onClick,
   onDelete,
   onDownloadFromBlob,
-  onReimport,
   onShare,
   onSendToKindle,
 }: {
@@ -30,12 +21,14 @@ export const BookCard = ({
   onClick: (data: Book) => void;
   onDelete?: (data: Book) => void;
   onDownloadFromBlob?: (data: Book, ext?: string) => Promise<void> | void;
-  onReimport?: (data: Book) => void;
   onShare?: (data: Book) => void;
   onSendToKindle?: (data: Book) => void;
 }) => {
   const i18n = useLingui();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
+  const [shareSubmenuAnchor, setShareSubmenuAnchor] = useState<HTMLElement | null>(null);
+  const [downloadSubmenuAnchor, setDownloadSubmenuAnchor] = useState<HTMLElement | null>(null);
 
   // Build the list of download options:
   // - Converted books have an entry per stored format (e.g. pdf + epub).
@@ -64,9 +57,8 @@ export const BookCard = ({
   const canDownload = downloadOptions.length > 0;
   const canSendToKindle =
     Boolean(data.originalFileBlobPath) || Boolean(data.convertedFiles?.['epub']);
-  const hasMenuItems = Boolean(
-    onDelete || canDownload || onReimport || onShare || (onSendToKindle && canSendToKindle),
-  );
+  const hasShareSubmenu = Boolean(onShare || (onSendToKindle && canSendToKindle));
+  const hasMenuItems = Boolean(onDelete || canDownload || hasShareSubmenu);
   const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
   const progressPercent =
     data.paragraphs.length > 0 && data.readingPosition
@@ -83,7 +75,6 @@ export const BookCard = ({
   };
 
   const handleDownload = async (ext: string, blobPath: string | null) => {
-    handleMenuClose();
     if (!blobPath) {
       // File is only in memory (not yet synced) — use the in-memory original.
       if (data.originalFile) {
@@ -170,6 +161,7 @@ export const BookCard = ({
       {hasMenuItems && (
         <>
           <IconButton
+            ref={menuButtonRef}
             size="small"
             aria-label="Book options"
             data-testid={`book-menu-${data.id}`}
@@ -187,62 +179,43 @@ export const BookCard = ({
           >
             <MoreVertical size={'16px'} />
           </IconButton>
+
+          {/* Main menu */}
           <Menu
             anchorEl={menuAnchor}
             open={Boolean(menuAnchor)}
             onClose={handleMenuClose}
             onClick={(e) => e.stopPropagation()}
-            slotProps={{ paper: { sx: { minWidth: '160px' } } }}
+            slotProps={{ paper: { sx: { minWidth: '170px' } } }}
           >
-            {onShare && (
+            {hasShareSubmenu && (
               <MenuItem
-                data-testid={`book-share-${data.id}`}
-                onClick={() => {
-                  handleMenuClose();
-                  onShare(data);
+                data-testid={`book-share-menu-${data.id}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuAnchor(null);
+                  setShareSubmenuAnchor(menuButtonRef.current);
                 }}
               >
                 <Share2 size={'14px'} style={{ marginRight: '8px' }} />
                 {i18n._('Share')}
+                <ChevronRight size={'14px'} style={{ marginLeft: 'auto', opacity: 0.5 }} />
               </MenuItem>
             )}
-            {onSendToKindle && canSendToKindle && (
+            {canDownload && (
               <MenuItem
-                data-testid={`book-send-to-kindle-${data.id}`}
-                onClick={() => {
-                  handleMenuClose();
-                  onSendToKindle(data);
+                data-testid={`book-download-menu-${data.id}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenuAnchor(null);
+                  setDownloadSubmenuAnchor(menuButtonRef.current);
                 }}
               >
-                <Tablet size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('Send to Kindle')}
+                <Download size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Download')}
+                <ChevronRight size={'14px'} style={{ marginLeft: 'auto', opacity: 0.5 }} />
               </MenuItem>
             )}
-            {onReimport && (
-              <MenuItem
-                data-testid={`book-reimport-${data.id}`}
-                onClick={() => {
-                  handleMenuClose();
-                  onReimport(data);
-                }}
-              >
-                <RefreshCw size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('Re-import')}
-              </MenuItem>
-            )}
-            {canDownload &&
-              downloadOptions.map(({ ext, label, blobPath }) => (
-                <MenuItem
-                  key={ext}
-                  data-testid={`book-download-${ext}-${data.id}`}
-                  onClick={() => {
-                    void handleDownload(ext, blobPath);
-                  }}
-                >
-                  <Download size={'14px'} style={{ marginRight: '8px' }} />
-                  {label}
-                </MenuItem>
-              ))}
             {onDelete && (
               <MenuItem
                 data-testid={`book-delete-${data.id}`}
@@ -250,9 +223,67 @@ export const BookCard = ({
                   handleMenuClose();
                   onDelete(data);
                 }}
+                sx={{ color: 'error.main' }}
               >
                 <Trash2 size={'14px'} style={{ marginRight: '8px' }} />
                 {i18n._('Delete')}
+              </MenuItem>
+            )}
+          </Menu>
+
+          {/* Download submenu */}
+          <Menu
+            anchorEl={downloadSubmenuAnchor}
+            open={Boolean(downloadSubmenuAnchor)}
+            onClose={() => setDownloadSubmenuAnchor(null)}
+            onClick={(e) => e.stopPropagation()}
+            slotProps={{ paper: { sx: { minWidth: '170px' } } }}
+          >
+            {downloadOptions.map(({ ext, label, blobPath }) => (
+              <MenuItem
+                key={ext}
+                data-testid={`book-download-${ext}-${data.id}`}
+                onClick={() => {
+                  setDownloadSubmenuAnchor(null);
+                  void handleDownload(ext, blobPath);
+                }}
+              >
+                <Download size={'14px'} style={{ marginRight: '8px' }} />
+                {label}
+              </MenuItem>
+            ))}
+          </Menu>
+
+          {/* Share submenu */}
+          <Menu
+            anchorEl={shareSubmenuAnchor}
+            open={Boolean(shareSubmenuAnchor)}
+            onClose={() => setShareSubmenuAnchor(null)}
+            onClick={(e) => e.stopPropagation()}
+            slotProps={{ paper: { sx: { minWidth: '170px' } } }}
+          >
+            {onShare && (
+              <MenuItem
+                data-testid={`book-share-${data.id}`}
+                onClick={() => {
+                  setShareSubmenuAnchor(null);
+                  onShare(data);
+                }}
+              >
+                <Share2 size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('With Reader User')}
+              </MenuItem>
+            )}
+            {onSendToKindle && canSendToKindle && (
+              <MenuItem
+                data-testid={`book-send-to-kindle-${data.id}`}
+                onClick={() => {
+                  setShareSubmenuAnchor(null);
+                  onSendToKindle(data);
+                }}
+              >
+                <Tablet size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Send to Kindle')}
               </MenuItem>
             )}
           </Menu>

@@ -416,7 +416,6 @@ export const BooksList = () => {
                 onClick={() => books.setActive(book.id)}
                 onDelete={handleDelete}
                 onDownloadFromBlob={handleDownloadFromBlob}
-                onReimport={handleReimportClick}
                 onShare={auth.isAuthorized ? handleShare : undefined}
                 onSendToKindle={auth.isAuthorized ? (b) => setKindleBookId(b.id) : undefined}
               />
