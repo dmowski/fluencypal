@@ -34,7 +34,8 @@ export const BookCard = ({
     if (data.convertedFiles && Object.keys(data.convertedFiles).length > 0) {
       return Object.entries(data.convertedFiles).map(([ext, path]) => ({
         ext,
-        label: ext === 'epub' ? i18n._('Download EPUB') : i18n._(`Download ${ext.toUpperCase()}`),
+        label:
+          ext === 'epub' ? i18n._('Download EPUB') : i18n._('Download') + ` ${ext.toUpperCase()}`,
         blobPath: path,
       }));
     }
