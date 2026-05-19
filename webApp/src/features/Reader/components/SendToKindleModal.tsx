@@ -12,7 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { X } from 'lucide-react';
+import { X, Copy, Check } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { Book } from '../model/types';
 import { sendToKindleRequest } from '../api/sendToKindleRequest';
@@ -72,10 +72,19 @@ export const SendToKindleModal = ({ book, open, onClose, getToken }: Props) => {
   const [step, setStep] = useState<Step>(() => (hasSeenInstructions() ? 'email' : 'instructions'));
   const [kindleEmail, setKindleEmail] = useState<string>(() => readStoredKindleEmail());
   const [status, setStatus] = useState<SendStatus>({ kind: 'idle' });
+  const [copied, setCopied] = useState(false);
 
   const handleClose = () => {
     setStatus({ kind: 'idle' });
+    setCopied(false);
     onClose();
+  };
+
+  const handleCopyEmail = () => {
+    void navigator.clipboard.writeText(KINDLE_FROM_EMAIL).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   const handleProceedToEmail = () => {
@@ -160,18 +169,35 @@ export const SendToKindleModal = ({ book, open, onClose, getToken }: Props) => {
                   </li>
                   <li>
                     {i18n._('Click "Add a new approved e-mail address" and enter:')}{' '}
-                    <Typography
+                    <Stack
                       component="span"
-                      variant="body2"
-                      sx={{
-                        fontFamily: 'monospace',
-                        backgroundColor: 'action.hover',
-                        px: '4px',
-                        borderRadius: '4px',
-                      }}
+                      direction="row"
+                      alignItems="center"
+                      display="inline-flex"
+                      gap="4px"
                     >
-                      {KINDLE_FROM_EMAIL}
-                    </Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        sx={{
+                          fontFamily: 'monospace',
+                          backgroundColor: 'action.hover',
+                          px: '4px',
+                          borderRadius: '4px',
+                        }}
+                      >
+                        {KINDLE_FROM_EMAIL}
+                      </Typography>
+                      <IconButton
+                        size="small"
+                        onClick={handleCopyEmail}
+                        aria-label={i18n._('Copy email address')}
+                        data-testid="kindle-copy-email-btn"
+                        sx={{ p: '2px' }}
+                      >
+                        {copied ? <Check size={13} /> : <Copy size={13} />}
+                      </IconButton>
+                    </Stack>
                   </li>
                 </ol>
               </Typography>
