@@ -3,7 +3,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { ImportProgressPanel } from './ImportProgressPanel';
 import { useLingui } from '@lingui/react';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { BookCard, AddNewBookCard, LibraryBookCard } from './Cards';
 import { useBooks } from '../hooks/useBooks';
 import { Book } from '../model/types';
@@ -27,6 +27,8 @@ import { ReaderAuthButton } from './ReaderAuthButton';
 import { ShareBookModal } from './ShareBookModal';
 import { DeleteBookModal, DeleteBookModalMode } from './DeleteBookModal';
 import { leaveSharedBook } from '../api/bookSharingApi';
+import { useNonEpubImport } from '../hooks/useNonEpubImport';
+import { isConvertibleFile, validateConvertFile } from '../utils/convertUpload';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
 
@@ -64,12 +66,58 @@ export const BooksList = () => {
   const [libraryDownloadProgress, setLibraryDownloadProgress] = useState(0);
   const [libraryDownloadLabel, setLibraryDownloadLabel] = useState('');
   const [libraryImportError, setLibraryImportError] = useState('');
+
+  // Non-epub (PDF/DOCX) conversion flow
+  const [pendingConvertFile, setPendingConvertFile] = useState<File | null>(null);
+  const [isConvertAuthModalOpen, setIsConvertAuthModalOpen] = useState(false);
+  const nonEpubImport = useNonEpubImport({ getToken: auth.getToken, uid: auth.uid });
+
+  // After the user signs in, resume processing the pending non-epub file.
+  // Using useEffect here is appropriate: we're synchronising with the Firebase
+  // Auth external system (waiting for auth state to propagate after sign-in).
+  useEffect(() => {
+    if (!auth.isAuthorized || !pendingConvertFile || isConvertAuthModalOpen) return;
+    const file = pendingConvertFile;
+    setPendingConvertFile(null);
+    void nonEpubImport.importNonEpubFile(file);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth.isAuthorized, pendingConvertFile, isConvertAuthModalOpen]);
+
+  const isBusy =
+    isImportingDroppedFile ||
+    isReimporting ||
+    isDownloadingLibraryBookId !== null ||
+    nonEpubImport.isImporting;
+
+  /**
+   * Central entry point for any file the user drops or picks.
+   * Routes to the EPUB import flow or the non-epub conversion flow.
+   */
+  const handleImportFile = async (file: File) => {
+    if (isConvertibleFile(file)) {
+      const validationError = validateConvertFile(file);
+      if (validationError) {
+        // Reuse the epub error display for format/size errors.
+        await importEpubFile(file); // will set importError via validateEpubFile inside
+        return;
+      }
+      if (!auth.isAuthorized) {
+        setPendingConvertFile(file);
+        setIsConvertAuthModalOpen(true);
+        return;
+      }
+      await nonEpubImport.importNonEpubFile(file);
+      return;
+    }
+    // epub or unsupported → existing flow handles validation + error messaging
+    await importEpubFile(file);
+  };
+
   const { isDropActive, handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useBooksListDropZone({
-      isDisabled: isImportingDroppedFile,
-      onDropFile: importEpubFile,
+      isDisabled: isBusy,
+      onDropFile: handleImportFile,
     });
-  const isBusy = isImportingDroppedFile || isReimporting || isDownloadingLibraryBookId !== null;
 
   const handleAddBookClick = () => {
     if (isBusy) return;
@@ -80,7 +128,7 @@ export const BooksList = () => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    await importEpubFile(file);
+    await handleImportFile(file);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -133,11 +181,12 @@ export const BooksList = () => {
     setShareBookId(book.id);
   };
 
-  const handleDownloadFromBlob = async (book: Book) => {
-    if (!book.originalFileBlobPath) return;
+  const handleDownloadFromBlob = async (book: Book, ext?: string) => {
+    const path = (ext && book.convertedFiles?.[ext]) || book.originalFileBlobPath;
+    if (!path) return;
     if (!auth.uid) return;
     try {
-      const result = await downloadOriginalFileBlob(book.originalFileBlobPath);
+      const result = await downloadOriginalFileBlob(path);
       if (!result) return;
       const url = URL.createObjectURL(result.blob);
       const anchor = document.createElement('a');
@@ -146,7 +195,7 @@ export const BooksList = () => {
       anchor.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('[BooksList] download original file failed', error);
+      console.error('[BooksList] download file failed', error);
     }
   };
 
@@ -205,7 +254,7 @@ export const BooksList = () => {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".epub,application/epub+zip"
+          accept=".epub,application/epub+zip,.pdf,application/pdf,.doc,application/msword,.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           style={{ display: 'none' }}
           onChange={(event) => {
             void handleEpubSelect(event);
@@ -242,6 +291,14 @@ export const BooksList = () => {
         </Stack>
 
         <ReaderSignInModal open={isProfileOpen} onClose={() => void setIsProfileOpen(false)} />
+
+        {/* Auth modal shown when user tries to import a non-EPUB file without signing in */}
+        <ReaderSignInModal
+          open={isConvertAuthModalOpen}
+          onClose={() => setIsConvertAuthModalOpen(false)}
+          message={i18n._('To open PDF and Word documents, please sign in first.')}
+          data-testid="convert-auth-modal"
+        />
 
         {shareBook && (
           <ShareBookModal
@@ -358,6 +415,11 @@ export const BooksList = () => {
             {libraryImportError}
           </Typography>
         ) : null}
+        {nonEpubImport.importError ? (
+          <Typography variant="caption" color="error" data-testid="books-convert-import-error">
+            {nonEpubImport.importError}
+          </Typography>
+        ) : null}
 
         <Stack data-testid="reader-library-section" sx={{ gap: '50px' }}>
           <Typography variant="h4">{i18n._('Library')}</Typography>
@@ -408,9 +470,21 @@ export const BooksList = () => {
         isDownloading={isDownloadingLibraryBookId !== null}
         downloadProgress={libraryDownloadProgress}
         downloadLabel={libraryDownloadLabel}
-        isImporting={isImportingDroppedFile || isReimporting}
-        importProgress={isReimporting ? reimportProgress : importProgress}
-        importMessage={isReimporting ? reimportMessage : importMessage}
+        isImporting={isImportingDroppedFile || isReimporting || nonEpubImport.isImporting}
+        importProgress={
+          isReimporting
+            ? reimportProgress
+            : nonEpubImport.isImporting
+              ? nonEpubImport.importProgress
+              : importProgress
+        }
+        importMessage={
+          isReimporting
+            ? reimportMessage
+            : nonEpubImport.isImporting
+              ? nonEpubImport.importMessage
+              : importMessage
+        }
       />
 
       {isDropActive ? (
@@ -428,7 +502,7 @@ export const BooksList = () => {
           }}
         >
           <Typography variant="h4" sx={{ color: '#fff', textAlign: 'center', px: '16px' }}>
-            {i18n._('Drop EPUB file to import book')}
+            {i18n._('Drop EPUB, PDF or DOCX to import book')}
           </Typography>
         </Stack>
       ) : null}

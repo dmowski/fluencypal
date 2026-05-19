@@ -42,8 +42,18 @@ export const convertEpubFile = async ({
 
   onProgress?.({ progress: 75, message: 'Parsing metadata with AI...' });
 
+  const previewSlice = markdown.slice(0, 1200);
+  console.log('[epubImport] AI metadata request starting', { previewLength: previewSlice.length });
+  const aiRequestStart = Date.now();
+
   const aiResponse = await sendConvertDocToTextRequest({
-    textPreview: markdown.slice(0, 1200),
+    textPreview: previewSlice,
+  });
+
+  console.log('[epubImport] AI metadata request done', {
+    durationMs: Date.now() - aiRequestStart,
+    hasMetadata: Boolean(aiResponse.metadata),
+    error: aiResponse.error ?? null,
   });
 
   const finalMetadata = aiResponse.metadata

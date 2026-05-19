@@ -7,6 +7,14 @@ import { downloadOriginalFileBlob } from '../server/readerStorage';
 import { getDownloadFileName } from '../utils/epubFileName';
 
 const resolveBookFile = async (book: Book): Promise<File | null> => {
+  // For converted books (PDF→EPUB), prefer the stored converted EPUB.
+  if (book.convertedFiles?.['epub']) {
+    const result = await downloadOriginalFileBlob(book.convertedFiles['epub']);
+    if (!result) return null;
+    return new File([result.blob], 'book.epub', {
+      type: result.blob.type || 'application/epub+zip',
+    });
+  }
   if (book.originalFile) {
     return book.originalFile;
   }
@@ -31,7 +39,7 @@ export const useReimportEpub = () => {
 
   /** Returns true if the book has a stored file and can be re-imported without a file picker. */
   const canReimportAutomatically = (book: Book) =>
-    Boolean(book.originalFile || book.originalFileBlobPath);
+    Boolean(book.convertedFiles?.['epub'] || book.originalFile || book.originalFileBlobPath);
 
   const reimportBook = async (book: Book) => {
     try {

@@ -163,30 +163,35 @@ const useBooksState = () => {
   };
 
   const addBook = async ({
+    bookId,
     title,
     subTitle,
     text,
     author,
     originalFile,
+    convertedFiles,
     chapters,
     imagesByHref,
     imageAspectRatioByHref,
   }: {
+    bookId?: string;
     title: string;
     subTitle: string;
     text: string;
     author: string;
     originalFile?: File;
+    convertedFiles?: Record<string, string>;
     chapters?: BookChapterNavigationItem[];
     imagesByHref?: Record<string, string>;
     imageAspectRatioByHref?: Record<string, number>;
   }) => {
     const newBook: Book = {
-      id: createBookId(),
+      id: bookId ?? createBookId(),
       title,
       subtitle: subTitle,
       author,
       originalFile,
+      convertedFiles,
       chapters,
       imagesByHref,
       imageAspectRatioByHref,

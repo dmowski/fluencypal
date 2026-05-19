@@ -85,6 +85,13 @@ export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Bo
     merged.originalFileBlobPath = remote.originalFileBlobPath;
     changed = true;
   }
+  if (
+    remote.convertedFiles &&
+    JSON.stringify(remote.convertedFiles) !== JSON.stringify(local.convertedFiles)
+  ) {
+    merged.convertedFiles = remote.convertedFiles;
+    changed = true;
+  }
 
   return changed ? merged : null;
 };
@@ -109,6 +116,7 @@ export const buildStubBookFromRemote = (remote: ReaderBookDoc): Book => ({
   dataUpdatedAtIso: remote.dataUpdatedAtIso,
   paragraphsBlobPath: remote.paragraphsBlobPath,
   originalFileBlobPath: remote.originalFileBlobPath,
+  convertedFiles: remote.convertedFiles,
   ownerUserId: remote.ownerUserId,
   userIds: remote.userIds,
   memberEmails: remote.memberEmails,
@@ -141,6 +149,7 @@ export const buildRemoteDocFromLocal = (
   if (local.dataUpdatedAtIso) doc.dataUpdatedAtIso = local.dataUpdatedAtIso;
   if (local.paragraphsBlobPath) doc.paragraphsBlobPath = local.paragraphsBlobPath;
   if (local.originalFileBlobPath) doc.originalFileBlobPath = local.originalFileBlobPath;
+  if (local.convertedFiles) doc.convertedFiles = local.convertedFiles;
   if (local.ownerUserId !== undefined) doc.ownerUserId = local.ownerUserId;
   if (local.userIds !== undefined) doc.userIds = local.userIds;
   if (local.memberEmails !== undefined) doc.memberEmails = local.memberEmails;

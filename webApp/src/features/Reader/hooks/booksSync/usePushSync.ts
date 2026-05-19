@@ -67,7 +67,13 @@ export const usePushSync = ({
           refs.createdAtCache.current.get(book.id) ?? book.dataUpdatedAtIso ?? nowIso;
 
         // Stamp ownerUserId on first push so memberIds is populated.
-        const bookWithOwner: Book = book.ownerUserId
+        // Only preserve the stored ownerUserId when the current user is a member
+        // of the book (owner or collaborator). If the stored ownerUserId belongs
+        // to a different user's session (e.g. after clearing data or switching
+        // accounts), override it so the Firestore create rule can pass.
+        const isCurrentUserMember =
+          book.ownerUserId === userId || (book.userIds?.includes(userId) ?? false);
+        const bookWithOwner: Book = isCurrentUserMember
           ? { ...book, paragraphsBlobPath, originalFileBlobPath }
           : {
               ...book,

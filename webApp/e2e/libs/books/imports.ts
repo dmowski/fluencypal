@@ -16,8 +16,6 @@ export const mockConvertDocToTextRoute = async (page: Page) => {
 };
 
 export const openBooksPageWithCleanStorage = async (page: Page) => {
-  await mockConvertDocToTextRoute(page);
-
   await page.addInitScript(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();

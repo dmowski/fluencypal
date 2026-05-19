@@ -54,6 +54,11 @@ export interface Book extends BookLocalProgress {
   // Pointers into Firebase Storage (only set once the book has been synced).
   paragraphsBlobPath?: string;
   originalFileBlobPath?: string;
+
+  // Stores paths to every version of the file in Firebase Storage.
+  // Key is the lowercase extension (e.g. "pdf", "epub"), value is the storage path.
+  // Set for converted books (PDF/DOCX→EPUB). Not set for directly-imported EPUBs.
+  convertedFiles?: Record<string, string>;
 }
 
 export interface HighlightedText {

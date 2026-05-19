@@ -9,6 +9,11 @@ import {
   openAddBookFileChooser,
   openBooksPageWithCleanStorage,
 } from '../libs/reader';
+import {
+  createEmulatorTestUser,
+  resetEmulatorState,
+  signInTestUserOnPage,
+} from '../libs/books/auth';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
@@ -167,4 +172,34 @@ test('shows validation error when unsupported file is selected in Add Book picke
   await expect(page.getByTestId('books-drop-import-error')).toHaveText(
     'Please select a valid EPUB file.',
   );
+});
+
+test('shows auth modal when PDF is selected without being signed in', async ({ page }) => {
+  await openBooksPageWithCleanStorage(page);
+
+  const fileChooser = await openAddBookFileChooser(page);
+  await fileChooser.setFiles({
+    name: 'sample.pdf',
+    mimeType: 'application/pdf',
+    buffer: Buffer.from('%PDF-1.4 mock', 'utf8'),
+  });
+
+  // The sign-in modal for PDF conversion should appear
+  await expect(page.getByTestId('convert-auth-modal')).toBeVisible();
+});
+
+test('imports PDF via conversion pipeline', async ({ page }) => {
+  test.setTimeout(180_000);
+  await resetEmulatorState();
+  const user = await createEmulatorTestUser();
+
+  await openBooksPageWithCleanStorage(page);
+  await signInTestUserOnPage(page, user);
+
+  const pdfFixturePath = path.resolve('public/Reader/sample.pdf');
+  const fileChooser = await openAddBookFileChooser(page);
+  await fileChooser.setFiles(pdfFixturePath);
+
+  // After real CloudConvert, a book heading should appear in the book list.
+  await expect(page.getByRole('heading', { level: 2 })).toBeVisible({ timeout: 120_000 });
 });

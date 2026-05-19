@@ -30,6 +30,9 @@ export interface ReaderBookDoc {
   paragraphsBlobPath?: string;
   originalFileBlobPath?: string;
 
+  // Stores paths to every converted version (key = lowercase extension, value = storage path).
+  convertedFiles?: Record<string, string>;
+
   // Sharing. ownerUserId is the creator; userIds holds additional collaborators
   // (not including the owner). Optional for backward-compatibility with legacy
   // per-user documents written before sharing was introduced.

@@ -8,12 +8,21 @@ export const sendConvertDocToTextRequest = async (
   data: ConvertDocToTextRequest,
 ): Promise<ConvertDocToTextResponse> => {
   try {
+    console.log('[sendConvertDocToTextRequest] fetch starting', {
+      previewLength: data.textPreview.length,
+    });
+    const fetchStart = Date.now();
     const response = await fetch('/api/convertDocToText', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ textPreview: data.textPreview }),
+    });
+    console.log('[sendConvertDocToTextRequest] fetch response received', {
+      durationMs: Date.now() - fetchStart,
+      status: response.status,
+      ok: response.ok,
     });
 
     let result: ConvertDocToTextResponse | null = null;

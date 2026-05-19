@@ -18,9 +18,12 @@ import { useAuth } from '@/features/Auth/useAuth';
 interface Props {
   open: boolean;
   onClose: () => void;
+  /** Optional reason shown before the sign-in buttons (e.g. "To open PDF files, please sign in.") */
+  message?: string;
+  'data-testid'?: string;
 }
 
-export const ReaderSignInModal = ({ open, onClose }: Props) => {
+export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testId }: Props) => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const [emailMode, setEmailMode] = useState(false);
@@ -133,6 +136,11 @@ export const ReaderSignInModal = ({ open, onClose }: Props) => {
     return (
       <Stack gap="16px" padding="8px">
         <Typography variant="h6">{i18n._('Sign In')}</Typography>
+        {message && (
+          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+            {message}
+          </Typography>
+        )}
         <Button
           variant="contained"
           startIcon={<Google />}
@@ -152,7 +160,7 @@ export const ReaderSignInModal = ({ open, onClose }: Props) => {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+    <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth data-testid={testId}>
       <DialogContent>{renderContent()}</DialogContent>
     </Dialog>
   );

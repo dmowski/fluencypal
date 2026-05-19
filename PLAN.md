@@ -2,53 +2,33 @@
 
 ## Reader: Converted pdf to Epub. Think about Kindl approach.
 
-We need to integrate converter of user's input files.
-For now we support only EPUB. And don't require auth for do that.
-
-With new approach we will allow the user to upload PDF and Microsoft Docs files.
-
-But if it's not epub, we will require auth. Show user auth modal. With mentions that for open "Pdf" you need to logging.
-
-Then, on client, we need to upload that "pdf/word/etc" file to storage (on client), and pass this link to endpoint (converter).
-
-That converting endpoint, should get link to firebase storage, load file, upload it to "cloudconvert", get converted file (wait until end), upload to our firestore storage and return epub link to end user.
-Then continue our existing flow of processing epub.
-
-Libs for doing convertation (I already create api key and installed lib): webApp/src/app/api/reader/convert/converter.ts.
-
-Ensure e2e pass. Update them if needed. For testing converting, you can use this file (webApp/public/Reader/sample.pdf).
-
-And keep link of original file inside Book Interface webApp/src/features/Reader/model/types.ts along with extension.
-
-In case when original book is not epub, add menu item "Download PDF", or "Download Epub"
-webApp/src/features/Reader/components/Cards.tsx
-webApp/src/features/Reader/components/BooksList.tsx
-
-Reader info: webApp/src/features/Reader/AGENTS.md
-
-- Integrate cloudconvert. (https://cloudconvert.com/), convert none epub to epub and keep origin file
-
-- When none epub, ask auth
-
-- Sony - reader. Epub. Word document to read it.
-  Think about buy readers, real physical. Can we connect it with books.fluencypal.com.
-  Download as "Epub",
-
-- How to download file in kindl. You can send book to email. Without auth.
-
-Sony digital readers.
+- Test and stabilize
 
 ## Reader: List. unable to highlight text
 
 ## Reader: Automatic re-import, create parser version
 
-## Reader: Highlights - On hover, show full paragraph as preview
+## Reader: Export to Kindle
 
-## Reader: Sync data. Review how it works
+- Sony - reader. Epub. Word document to read it.
+  Think about buy readers, real physical. Can we connect it with books.fluencypal.com.
+  Download as "Epub",
+
+- How to download file in kindle. You can send book to email
+
+Sony digital readers.
+
+## News: Tune quality. News should be useful for me.
+
+- As separate page, modal with options to filter
+
+- Render news as proper cards
 
 ## Social network: Attach my voice records. Tune UI for messages
 
-## News: Tune quality. News should be useful for me.
+## Reader: Highlights - On hover, show full paragraph as preview
+
+## Reader: Sync data. Review how it works
 
 ## News: community discussion
 

@@ -20,13 +20,37 @@ export const BookCard = ({
   data: Book;
   onClick: (data: Book) => void;
   onDelete?: (data: Book) => void;
-  onDownloadFromBlob?: (data: Book) => Promise<void> | void;
+  onDownloadFromBlob?: (data: Book, ext?: string) => Promise<void> | void;
   onReimport?: (data: Book) => void;
   onShare?: (data: Book) => void;
 }) => {
   const i18n = useLingui();
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const canDownload = Boolean(data.originalFile || data.originalFileBlobPath);
+
+  // Build the list of download options:
+  // - Converted books have an entry per stored format (e.g. pdf + epub).
+  // - Legacy EPUB books (no convertedFiles) show a single "Download EPUB".
+  const downloadOptions: Array<{ ext: string; label: string; blobPath: string | null }> = (() => {
+    if (data.convertedFiles && Object.keys(data.convertedFiles).length > 0) {
+      return Object.entries(data.convertedFiles).map(([ext, path]) => ({
+        ext,
+        label: ext === 'epub' ? i18n._('Download EPUB') : i18n._(`Download ${ext.toUpperCase()}`),
+        blobPath: path,
+      }));
+    }
+    if (data.originalFile || data.originalFileBlobPath) {
+      return [
+        {
+          ext: 'epub',
+          label: i18n._('Download EPUB'),
+          blobPath: data.originalFileBlobPath ?? null,
+        },
+      ];
+    }
+    return [];
+  })();
+
+  const canDownload = downloadOptions.length > 0;
   const hasMenuItems = Boolean(onDelete || canDownload || onReimport || onShare);
   const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
   const progressPercent =
@@ -43,19 +67,22 @@ export const BookCard = ({
     setMenuAnchor(null);
   };
 
-  const handleDownload = async () => {
+  const handleDownload = async (ext: string, blobPath: string | null) => {
     handleMenuClose();
-    if (data.originalFile) {
-      const url = URL.createObjectURL(data.originalFile);
-      const anchor = document.createElement('a');
-      anchor.href = url;
-      anchor.download = getDownloadFileName(data.originalFile.name);
-      anchor.click();
-      URL.revokeObjectURL(url);
+    if (!blobPath) {
+      // File is only in memory (not yet synced) — use the in-memory original.
+      if (data.originalFile) {
+        const url = URL.createObjectURL(data.originalFile);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = getDownloadFileName(data.originalFile.name);
+        anchor.click();
+        URL.revokeObjectURL(url);
+      }
       return;
     }
     if (onDownloadFromBlob) {
-      await onDownloadFromBlob(data);
+      await onDownloadFromBlob(data, ext);
     }
   };
 
@@ -176,17 +203,19 @@ export const BookCard = ({
                 {i18n._('Re-import')}
               </MenuItem>
             )}
-            {canDownload && (
-              <MenuItem
-                data-testid={`book-download-${data.id}`}
-                onClick={() => {
-                  void handleDownload();
-                }}
-              >
-                <Download size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('Download')}
-              </MenuItem>
-            )}
+            {canDownload &&
+              downloadOptions.map(({ ext, label, blobPath }) => (
+                <MenuItem
+                  key={ext}
+                  data-testid={`book-download-${ext}-${data.id}`}
+                  onClick={() => {
+                    void handleDownload(ext, blobPath);
+                  }}
+                >
+                  <Download size={'14px'} style={{ marginRight: '8px' }} />
+                  {label}
+                </MenuItem>
+              ))}
             {onDelete && (
               <MenuItem
                 data-testid={`book-delete-${data.id}`}
