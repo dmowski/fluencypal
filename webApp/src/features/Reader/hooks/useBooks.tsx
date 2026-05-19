@@ -199,7 +199,14 @@ const useBooksState = () => {
       activePageIndex: 1,
       dataUpdatedAtIso: new Date().toISOString(),
     };
-    setUsersBooks((prev) => [...prev, newBook]);
+    // Upsert: if a stub with the same bookId was already hydrated from Firestore
+    // (e.g. by createFirestoreBookStub during the conversion flow), replace it
+    // rather than appending a duplicate. Duplicate IDs cause books.active to
+    // return the stub (no paragraphs) instead of the full book.
+    setUsersBooks((prev) => {
+      const exists = prev.some((b) => b.id === newBook.id);
+      return exists ? prev.map((b) => (b.id === newBook.id ? newBook : b)) : [...prev, newBook];
+    });
     setActiveBookId(newBook.id);
     await persistUserBook(newBook);
   };
