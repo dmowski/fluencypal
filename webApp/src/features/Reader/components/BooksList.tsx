@@ -191,7 +191,11 @@ export const BooksList = () => {
       const url = URL.createObjectURL(result.blob);
       const anchor = document.createElement('a');
       anchor.href = url;
-      anchor.download = getDownloadFileName(result.fileName);
+      // Strip the 'original_' upload prefix added by uploadConvertTempFile.
+      // For epub files normalize through getDownloadFileName; for other types
+      // (PDF, DOCX) use the filename directly to preserve the correct extension.
+      const rawName = result.fileName.replace(/^original_/, '');
+      anchor.download = !ext || ext === 'epub' ? getDownloadFileName(rawName) : rawName;
       anchor.click();
       URL.revokeObjectURL(url);
     } catch (error) {
