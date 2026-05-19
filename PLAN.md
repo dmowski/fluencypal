@@ -1,9 +1,5 @@
 # Live document with short/long term ideas
 
-## Reader: Converted pdf to Epub. Think about Kindl approach.
-
-- Test and stabilize
-
 ## Reader: List. unable to highlight text
 
 ## Reader: Automatic re-import, create parser version
