@@ -14,7 +14,15 @@ Then, on client, we need to upload that "pdf/word/etc" file to storage (on clien
 That converting endpoint, should get link to firebase storage, load file, upload it to "cloudconvert", get converted file (wait until end), upload to our firestore storage and return epub link to end user.
 Then continue our existing flow of processing epub.
 
-Libs for doing convertation (I already create api key and installed lib): webApp/src/app/api/reader/convert/converter.ts
+Libs for doing convertation (I already create api key and installed lib): webApp/src/app/api/reader/convert/converter.ts.
+
+Ensure e2e pass. Update them if needed. For testing converting, you can use this file (webApp/public/Reader/sample.pdf).
+
+And keep link of original file inside Book Interface webApp/src/features/Reader/model/types.ts along with extension.
+
+In case when original book is not epub, add menu item "Download PDF", or "Download Epub"
+webApp/src/features/Reader/components/Cards.tsx
+webApp/src/features/Reader/components/BooksList.tsx
 
 Reader info: webApp/src/features/Reader/AGENTS.md
 
