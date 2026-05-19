@@ -38,7 +38,6 @@ export const sendConvertDocToTextRequest = async (
       const contentType = response.headers.get('content-type') || '';
       if (contentType.includes('application/json')) {
         result = (await response.json()) as ConvertDocToTextResponse;
-        debugger;
         console.log('[sendConvertDocToTextRequest] result received', result);
       }
     } catch {
