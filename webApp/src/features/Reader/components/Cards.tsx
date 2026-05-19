@@ -285,7 +285,7 @@ export const BookCard = ({
                 }}
               >
                 <Share2 size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('With Reader User')}
+                {i18n._('With other users')}
               </MenuItem>
             )}
             {onSendToKindle && canSendToKindle && (
