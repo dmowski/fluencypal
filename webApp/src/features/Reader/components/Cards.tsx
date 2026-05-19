@@ -2,7 +2,16 @@
 
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import { Box, Button, CircularProgress, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
@@ -66,7 +75,9 @@ export const BookCard = ({
   const canDownload = downloadOptions.length > 0;
   const canSendToKindle =
     Boolean(data.originalFileBlobPath) || Boolean(data.convertedFiles?.['epub']);
-  const hasMenuItems = Boolean(onDelete || canDownload || onShare || (onSendToKindle && canSendToKindle));
+  const hasMenuItems = Boolean(
+    onDelete || canDownload || onShare || (onSendToKindle && canSendToKindle),
+  );
   const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
   const progressPercent =
     data.paragraphs.length > 0 && data.readingPosition
