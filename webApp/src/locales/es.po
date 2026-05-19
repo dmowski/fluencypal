@@ -326,7 +326,7 @@ msgid "Add"
 msgstr "Añadir"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:310
+#: src/features/Reader/components/Cards.tsx:340
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Agregar un libro"
@@ -973,8 +973,7 @@ msgstr "Puntajes promedio en gramática, vocabulario, fluidez y confianza."
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSignInModal.tsx:127
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:126
+#: src/features/Reader/components/ReaderSignInModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Regresar"
@@ -1118,10 +1117,15 @@ msgstr ""
 "Los campos de los libros se rellenan automáticamente a partir de los "
 "metadatos de EPUB en el modo de producción."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:78
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:75
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "Información del libro"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:147
+#. js-lingui-explicit-id
+msgid "Book info sections"
+msgstr "Secciones de información del libro"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
@@ -1130,6 +1134,7 @@ msgstr "Lector de libros"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
+#: src/features/Reader/hooks/useNonEpubImport.ts:108
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Libro guardado."
@@ -1139,8 +1144,8 @@ msgstr "Libro guardado."
 msgid "Book shared with"
 msgstr "Libro compartido con"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:82
-#: src/features/Reader/hooks/useReimportEpub.ts:130
+#: src/features/Reader/hooks/useReimportEpub.ts:90
+#: src/features/Reader/hooks/useReimportEpub.ts:138
 #. js-lingui-explicit-id
 msgid "Book updated."
 msgstr "Libro actualizado."
@@ -1150,7 +1155,7 @@ msgstr "Libro actualizado."
 msgid "Booking a Doctor's Appointment"
 msgstr "Reservar una Cita Médica"
 
-#: src/features/Reader/components/BooksList.tsx:238
+#: src/features/Reader/components/BooksList.tsx:291
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1455,8 +1460,7 @@ msgstr "Desafiante"
 msgid "Changes vs previous 30 days"
 msgstr "Cambios frente a los 30 días anteriores"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:69
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:160
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Capítulos"
@@ -1561,7 +1565,7 @@ msgid "Check proposed words"
 msgstr "Revisa las palabras propuestas"
 
 #: src/features/Auth/AuthWallBasic.tsx:152
-#: src/features/Reader/components/ReaderSignInModal.tsx:94
+#: src/features/Reader/components/ReaderSignInModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "Verifica tu correo electrónico"
@@ -1572,7 +1576,7 @@ msgid "Check Your Progress"
 msgstr "Verifica tu Progreso"
 
 #: src/features/Auth/AuthWallBasic.tsx:167
-#: src/features/Reader/components/ReaderSignInModal.tsx:99
+#: src/features/Reader/components/ReaderSignInModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "Verifique su carpeta de spam si no ve el correo electrónico."
@@ -1660,7 +1664,7 @@ msgstr ""
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:125
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Cerrar configuración"
@@ -2051,6 +2055,11 @@ msgstr "Conversaciones con Inteligencia Artificial"
 #. js-lingui-explicit-id
 msgid "Converted file size must be less than 250MB"
 msgstr "El tamaño del archivo convertido debe ser inferior a 250 MB"
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#. js-lingui-explicit-id
+msgid "Converting to EPUB…"
+msgstr "Convirtiendo a EPUB…"
 
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
@@ -2507,7 +2516,7 @@ msgid "Debates"
 msgstr "Debates"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2553,7 +2562,7 @@ msgstr "Eliminar libro compartido"
 msgid "Delete Space"
 msgstr "Eliminar espacio"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:176
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "¿Eliminar este libro?"
@@ -2970,18 +2979,29 @@ msgstr "Hecho:"
 msgid "Don’t let mistakes stop you."
 msgstr "No dejes que los errores te detengan."
 
-#: src/features/Reader/components/Cards.tsx:187
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Descargar"
+
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:46
+#. js-lingui-explicit-id
+msgid "Download EPUB"
+msgstr "Descargar EPUB"
 
 #: src/features/Reader/components/ImportProgressPanel.tsx:30
 #. js-lingui-explicit-id
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Descargando libro de Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#. js-lingui-explicit-id
+msgid "Downloading converted file…"
+msgstr "Descargando archivo convertido…"
+
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Descargando..."
@@ -2996,10 +3016,10 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Suelte el archivo EPUB aquí"
 
-#: src/features/Reader/components/BooksList.tsx:431
+#: src/features/Reader/components/BooksList.tsx:509
 #. js-lingui-explicit-id
-msgid "Drop EPUB file to import book"
-msgstr "Suelta el archivo EPUB para importar el libro"
+msgid "Drop EPUB, PDF or DOCX to import book"
+msgstr "Suelte EPUB, PDF o DOCX para importar el libro"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3101,7 +3121,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core rastreado vs. sin rastreo"
 
 #: src/features/Auth/AuthWallBasic.tsx:195
-#: src/features/Reader/components/ReaderSignInModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "Correo electrónico"
@@ -3629,6 +3649,11 @@ msgstr "Error al analizar la imagen. Por favor, inténtalo de nuevo."
 msgid "Failed to convert EPUB."
 msgstr "No se pudo convertir EPUB."
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#. js-lingui-explicit-id
+msgid "Failed to convert file."
+msgstr "No se pudo convertir el archivo."
+
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -3643,8 +3668,8 @@ msgstr ""
 "No se pudo eliminar tu cuenta. Por favor, inténtalo de nuevo más tarde o "
 "contacta a los desarrolladores."
 
-#: src/features/Reader/hooks/useReimportEpub.ts:84
-#: src/features/Reader/hooks/useReimportEpub.ts:132
+#: src/features/Reader/hooks/useReimportEpub.ts:92
+#: src/features/Reader/hooks/useReimportEpub.ts:140
 #. js-lingui-explicit-id
 msgid "Failed to re-import EPUB."
 msgstr "No se pudo reimportar el EPUB."
@@ -4003,7 +4028,7 @@ msgstr "FluencyPal – Tu Socio de Conversación en Inglés AI"
 msgid "Focus on shipping reliable services"
 msgstr "Concéntrese en ofrecer servicios confiables"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:263
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Tamaño de fuente"
@@ -4908,8 +4933,7 @@ msgstr "Resalta tu experiencia en frontend"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Resalta tus habilidades de liderazgo y resolución de problemas"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:71
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:190
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Destacados"
@@ -6126,7 +6150,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Asegurémonos de que estás listo"
 
-#: src/features/Reader/components/BooksList.tsx:363
+#: src/features/Reader/components/BooksList.tsx:429
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Biblioteca"
@@ -6161,7 +6185,7 @@ msgstr "Funciones de voz limitadas"
 msgid "Limits reached"
 msgstr "Límites alcanzados"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:299
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Altura de línea"
@@ -6223,7 +6247,7 @@ msgstr "Cargando una palabra..."
 msgid "Loading article..."
 msgstr "Cargando artículo..."
 
-#: src/features/Reader/components/BooksList.tsx:366
+#: src/features/Reader/components/BooksList.tsx:432
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Cargando biblioteca..."
@@ -6291,7 +6315,7 @@ msgstr "Cerrar sesión de tu cuenta"
 msgid "Logging/Tracing"
 msgstr "Registro/Rastreo"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#: src/features/Reader/components/ReaderSignInModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Logout"
 msgstr "Cerrar sesión"
@@ -6596,7 +6620,7 @@ msgstr "Más lecciones únicas"
 msgid "More..."
 msgstr "Más..."
 
-#: src/features/Reader/components/BooksList.tsx:311
+#: src/features/Reader/components/BooksList.tsx:372
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Mis libros"
@@ -6779,7 +6803,7 @@ msgstr "No pago automático"
 msgid "No automatic payment after the trial"
 msgstr "No se realizará un pago automático después de la prueba"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "No hay capítulos disponibles"
@@ -6837,7 +6861,7 @@ msgstr ""
 "No se encontraron errores gramaticales. ¡Sigue practicando para ver mejoras "
 "aquí!"
 
-#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:99
 #. js-lingui-explicit-id
 msgid "No highlights available"
 msgstr "No hay aspectos destacados disponibles"
@@ -6870,7 +6894,7 @@ msgstr ""
 "Aún no hay notas. Agrega algunos detalles para que tu profesor de IA te "
 "conozca mejor."
 
-#: src/features/Reader/hooks/useReimportEpub.ts:45
+#: src/features/Reader/hooks/useReimportEpub.ts:53
 #. js-lingui-explicit-id
 msgid "No original file found for this book."
 msgstr "No se encontró el archivo original para este libro."
@@ -7327,7 +7351,7 @@ msgstr "Idioma de la página"
 msgid "Paid plan:"
 msgstr "Plan de pago:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:280
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Brecha de párrafo"
@@ -8132,6 +8156,11 @@ msgstr "Preparando el cerebro"
 msgid "Preparing your game..."
 msgstr "Preparando tu juego..."
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#. js-lingui-explicit-id
+msgid "Preparing…"
+msgstr "Preparando…"
+
 #: src/features/ProgressStat/ProgressChart.tsx:208
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
@@ -8203,6 +8232,11 @@ msgstr "Resolución de Problemas"
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "Procesando respuestas..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#. js-lingui-explicit-id
+msgid "Processing book…"
+msgstr "Procesando libro…"
 
 #: src/features/Dashboard/BrainCard.tsx:146
 #. js-lingui-explicit-id
@@ -8288,7 +8322,7 @@ msgstr "Seguimiento del progreso"
 msgid "Progress tracking to see your improvement"
 msgstr "Seguimiento del progreso para ver tu mejora"
 
-#: src/features/Reader/components/Cards.tsx:389
+#: src/features/Reader/components/Cards.tsx:419
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proyecto Gutenberg"
@@ -8389,7 +8423,7 @@ msgstr ""
 msgid "Raw"
 msgstr "Crudo"
 
-#: src/features/Reader/components/Cards.tsx:176
+#: src/features/Reader/components/Cards.tsx:204
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Reimportar"
@@ -8839,7 +8873,7 @@ msgstr "Solicitud fallida. Por favor, inténtelo de nuevo."
 msgid "Request Refund"
 msgstr "Solicitar reembolso"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Restablecer a valores predeterminados"
@@ -8849,7 +8883,7 @@ msgstr "Restablecer a valores predeterminados"
 msgid "Resiliency & Observability"
 msgstr "Resiliencia y Observabilidad"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:41
+#: src/features/Reader/hooks/useReimportEpub.ts:49
 #. js-lingui-explicit-id
 msgid "Resolving file..."
 msgstr "Resolviendo archivo..."
@@ -9065,11 +9099,16 @@ msgstr "Guardar cambios"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
-#: src/features/Reader/hooks/useReimportEpub.ts:68
-#: src/features/Reader/hooks/useReimportEpub.ts:116
+#: src/features/Reader/hooks/useReimportEpub.ts:76
+#: src/features/Reader/hooks/useReimportEpub.ts:124
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Guardando libro..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#. js-lingui-explicit-id
+msgid "Saving book…"
+msgstr "Guardando libro…"
 
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
@@ -9240,7 +9279,7 @@ msgstr "Envía un mensaje en el espacio comunitario"
 msgid "Send Request"
 msgstr "Enviar solicitud"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Send sign-in link"
 msgstr "Enviar enlace de inicio de sesión"
@@ -9253,7 +9292,7 @@ msgstr "Envía {messagesNeeded} mensajes para desbloquear el acceso completo"
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Enviando..."
@@ -9305,8 +9344,7 @@ msgstr "Establecer Mi Idioma"
 msgid "Set the goal of your learning"
 msgstr "Establece el objetivo de tu aprendizaje"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:170
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:154
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Configuraciones"
@@ -9316,7 +9354,7 @@ msgstr "Configuraciones"
 msgid "Sexual content"
 msgstr "Contenido sexual"
 
-#: src/features/Reader/components/Cards.tsx:164
+#: src/features/Reader/components/Cards.tsx:192
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9418,21 +9456,21 @@ msgstr "Muestra el pensamiento de diseño del sistema"
 
 #: src/features/Header/HeaderStatic.tsx:20
 #: src/features/Reader/components/ReaderAuthButton.tsx:36
-#: src/features/Reader/components/ReaderSignInModal.tsx:135
+#: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Iniciar sesión"
 
 #: src/features/Auth/AuthWallBasic.tsx:183
 #: src/features/Auth/AuthWallBasic.tsx:283
-#: src/features/Reader/components/ReaderSignInModal.tsx:108
-#: src/features/Reader/components/ReaderSignInModal.tsx:148
+#: src/features/Reader/components/ReaderSignInModal.tsx:111
+#: src/features/Reader/components/ReaderSignInModal.tsx:156
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Iniciar sesión con correo electrónico"
 
 #: src/features/Auth/AuthWallBasic.tsx:280
-#: src/features/Reader/components/ReaderSignInModal.tsx:141
+#: src/features/Reader/components/ReaderSignInModal.tsx:149
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Iniciar sesión con Google"
@@ -9600,7 +9638,7 @@ msgstr ""
 "Algo salió mal mientras se generaban más lecciones. Por favor, inténtelo de "
 "nuevo más tarde."
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
@@ -10144,7 +10182,7 @@ msgstr "Amigo Solidario"
 msgid "Swedish Learning Plan"
 msgstr "Plan de Aprendizaje de Sueco"
 
-#: src/features/Reader/components/BooksList.tsx:319
+#: src/features/Reader/components/BooksList.tsx:380
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Sincronizando su biblioteca…"
@@ -11019,6 +11057,11 @@ msgstr ""
 "Para ayudar a prevenir el acceso no autorizado, verificamos al padre/tutor "
 "usando una verificación de tarjeta única."
 
+#: src/features/Reader/components/BooksList.tsx:303
+#. js-lingui-explicit-id
+msgid "To open PDF and Word documents, please sign in first."
+msgstr "Para abrir documentos PDF y Word, por favor inicie sesión primero."
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11398,6 +11441,11 @@ msgstr "Carga habilidades lingüísticas directamente en tu cerebro"
 msgid "Upload video"
 msgstr "Subir video"
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#. js-lingui-explicit-id
+msgid "Uploading file…"
+msgstr "Subiendo archivo…"
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11644,7 +11692,7 @@ msgstr "Podemos enviarte correos electrónicos de marketing"
 msgid "We process your voice using AI"
 msgstr "Procesamos tu voz usando IA"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "We sent a sign-in link to"
 msgstr "Hemos enviado un enlace de inicio de sesión a"
@@ -12781,7 +12829,7 @@ msgstr "Lo estás haciendo bien. Echa un vistazo a las tareas de hoy."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Estás en un buen flujo. Continúa con las tareas de hoy."
 
-#: src/features/Reader/components/Cards.tsx:405
+#: src/features/Reader/components/Cards.tsx:435
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} descargas"
@@ -12826,73 +12874,3 @@ msgstr "{winnerName} gana!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/News/NewsDashboardCard.tsx:113
-#. js-lingui-explicit-id
-#~ msgid "TODAY IN THE NEWS"
-#~ msgstr "HOY EN LAS NOTICIAS"
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "Content inspired by current events"
-#~ msgstr "Contenido inspirado en eventos actuales"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
-#. js-lingui-explicit-id
-#~ msgid "Just Talk mode with better AI behind it."
-#~ msgstr "Modo Just Talk con mejor IA detrás."
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "AI-generated language learning content inspired by current events"
-#~ msgstr ""
-#~ "Contenido de aprendizaje de idiomas generado por IA inspirado en eventos "
-#~ "actuales"
-
-#: src/features/News/NewsDashboardCard.tsx:106
-#. js-lingui-explicit-id
-#~ msgid "Current Events"
-#~ msgstr "Eventos actuales"
-
-#: src/features/News/NewsDashboardCard.tsx:98
-#. js-lingui-explicit-id
-#~ msgid "AI-generated English learning content inspired by current events"
-#~ msgstr ""
-#~ "Contenido de aprendizaje de inglés generado por IA inspirado en eventos "
-#~ "actuales"
-
-#: src/features/News/NewsSettingsMenu.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Topic"
-#~ msgstr "Tema"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "With the free plan, you can only send 14 messages per conversation. You can "
-#~ "either end the conversation or unlock full, unlimited access."
-#~ msgstr ""
-#~ "Con el plan gratuito, solo puedes enviar 14 mensajes por conversación. "
-#~ "Puedes finalizar la conversación o desbloquear acceso completo e ilimitado."
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "Please create a learning plan to start this task"
-#~ msgstr "Por favor, crea un plan de aprendizaje para comenzar esta tarea"
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "No active lesson found. Please create a learning plan to access this task."
-#~ msgstr ""
-#~ "No se encontró ninguna lección activa. Por favor, crea un plan de "
-#~ "aprendizaje para acceder a esta tarea."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:219
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "If you want more tailored practice, I can create a plan based on your "
-#~ "goals. Otherwise, you can skip this step and start practicing right away!"
-#~ msgstr ""
-#~ "Si deseas una práctica más personalizada, puedo crear un plan basado en tus "
-#~ "objetivos. De lo contrario, puedes omitir este paso y comenzar a practicar "
-#~ "de inmediato."

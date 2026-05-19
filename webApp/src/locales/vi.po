@@ -327,7 +327,7 @@ msgid "Add"
 msgstr "Thêm"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:310
+#: src/features/Reader/components/Cards.tsx:340
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Thêm một cuốn sách"
@@ -971,8 +971,7 @@ msgstr "Điểm trung bình về ngữ pháp, từ vựng, lưu loát và sự t
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSignInModal.tsx:127
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:126
+#: src/features/Reader/components/ReaderSignInModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Quay lại"
@@ -1116,10 +1115,15 @@ msgstr ""
 "Các trường sách được tự động điền từ siêu dữ liệu EPUB trong chế độ sản "
 "xuất."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:78
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:75
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "Thông tin sách"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:147
+#. js-lingui-explicit-id
+msgid "Book info sections"
+msgstr "Các phần thông tin sách"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
@@ -1128,6 +1132,7 @@ msgstr "Trình Đọc Sách"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
+#: src/features/Reader/hooks/useNonEpubImport.ts:108
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "Sách đã được lưu."
@@ -1137,8 +1142,8 @@ msgstr "Sách đã được lưu."
 msgid "Book shared with"
 msgstr "Đã chia sẻ sách với"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:82
-#: src/features/Reader/hooks/useReimportEpub.ts:130
+#: src/features/Reader/hooks/useReimportEpub.ts:90
+#: src/features/Reader/hooks/useReimportEpub.ts:138
 #. js-lingui-explicit-id
 msgid "Book updated."
 msgstr "Sách đã được cập nhật."
@@ -1148,7 +1153,7 @@ msgstr "Sách đã được cập nhật."
 msgid "Booking a Doctor's Appointment"
 msgstr "Đặt Lịch Hẹn Với Bác Sĩ"
 
-#: src/features/Reader/components/BooksList.tsx:238
+#: src/features/Reader/components/BooksList.tsx:291
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1450,8 +1455,7 @@ msgstr "Thách thức"
 msgid "Changes vs previous 30 days"
 msgstr "Thay đổi so với 30 ngày trước"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:69
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:160
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "Chương"
@@ -1556,7 +1560,7 @@ msgid "Check proposed words"
 msgstr "Kiểm tra các từ đề xuất"
 
 #: src/features/Auth/AuthWallBasic.tsx:152
-#: src/features/Reader/components/ReaderSignInModal.tsx:94
+#: src/features/Reader/components/ReaderSignInModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "Kiểm tra email của bạn"
@@ -1567,7 +1571,7 @@ msgid "Check Your Progress"
 msgstr "Kiểm Tra Tiến Trình Của Bạn"
 
 #: src/features/Auth/AuthWallBasic.tsx:167
-#: src/features/Reader/components/ReaderSignInModal.tsx:99
+#: src/features/Reader/components/ReaderSignInModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "Kiểm tra thư mục thư rác của bạn nếu bạn không thấy email."
@@ -1653,7 +1657,7 @@ msgstr ""
 msgid "Close"
 msgstr "Đóng"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:125
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Đóng cài đặt"
@@ -2043,6 +2047,11 @@ msgstr "Cuộc trò chuyện với Trí tuệ Nhân tạo"
 #. js-lingui-explicit-id
 msgid "Converted file size must be less than 250MB"
 msgstr "Kích thước tệp chuyển đổi phải nhỏ hơn 250MB"
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#. js-lingui-explicit-id
+msgid "Converting to EPUB…"
+msgstr "Đang chuyển đổi sang EPUB…"
 
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
@@ -2500,7 +2509,7 @@ msgid "Debates"
 msgstr "Tranh luận"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2546,7 +2555,7 @@ msgstr "Xóa sách đã chia sẻ"
 msgid "Delete Space"
 msgstr "Xóa Khoảng Trống"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:176
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Xóa cuốn sách này?"
@@ -2968,18 +2977,29 @@ msgstr "Hoàn thành:"
 msgid "Don’t let mistakes stop you."
 msgstr "Đừng để những sai lầm ngăn cản bạn."
 
-#: src/features/Reader/components/Cards.tsx:187
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Tải về"
+
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:46
+#. js-lingui-explicit-id
+msgid "Download EPUB"
+msgstr "Tải xuống EPUB"
 
 #: src/features/Reader/components/ImportProgressPanel.tsx:30
 #. js-lingui-explicit-id
 msgid "Downloading book from Project Gutenberg..."
 msgstr "Đang tải về sách từ Dự án Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#. js-lingui-explicit-id
+msgid "Downloading converted file…"
+msgstr "Đang tải xuống tệp đã chuyển đổi…"
+
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Đang tải xuống..."
@@ -2994,10 +3014,10 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Thả tệp EPUB vào đây"
 
-#: src/features/Reader/components/BooksList.tsx:431
+#: src/features/Reader/components/BooksList.tsx:509
 #. js-lingui-explicit-id
-msgid "Drop EPUB file to import book"
-msgstr "Thả tệp EPUB để nhập sách"
+msgid "Drop EPUB, PDF or DOCX to import book"
+msgstr "Kéo thả EPUB, PDF hoặc DOCX để nhập sách"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3097,7 +3117,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core theo dõi vs. không theo dõi"
 
 #: src/features/Auth/AuthWallBasic.tsx:195
-#: src/features/Reader/components/ReaderSignInModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "Email"
@@ -3631,6 +3651,11 @@ msgstr "Không thể phân tích hình ảnh. Vui lòng thử lại."
 msgid "Failed to convert EPUB."
 msgstr "Không thể chuyển đổi EPUB."
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#. js-lingui-explicit-id
+msgid "Failed to convert file."
+msgstr "Không thể chuyển đổi tệp."
+
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -3645,8 +3670,8 @@ msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
 
-#: src/features/Reader/hooks/useReimportEpub.ts:84
-#: src/features/Reader/hooks/useReimportEpub.ts:132
+#: src/features/Reader/hooks/useReimportEpub.ts:92
+#: src/features/Reader/hooks/useReimportEpub.ts:140
 #. js-lingui-explicit-id
 msgid "Failed to re-import EPUB."
 msgstr "Không thể nhập lại EPUB."
@@ -3996,7 +4021,7 @@ msgstr "FluencyPal – Đối tác Nói tiếng Anh AI của bạn"
 msgid "Focus on shipping reliable services"
 msgstr "Tập trung vào việc cung cấp dịch vụ đáng tin cậy"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:263
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "Kích thước phông chữ"
@@ -4900,8 +4925,7 @@ msgstr "Làm nổi bật kinh nghiệm frontend của bạn"
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "Làm nổi bật kỹ năng lãnh đạo và giải quyết vấn đề của bạn"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:71
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:190
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "Điểm nổi bật"
@@ -6111,7 +6135,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
 
-#: src/features/Reader/components/BooksList.tsx:363
+#: src/features/Reader/components/BooksList.tsx:429
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Thư viện"
@@ -6146,7 +6170,7 @@ msgstr "Tính năng giọng nói hạn chế"
 msgid "Limits reached"
 msgstr "Đã đạt đến giới hạn"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:299
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "Chiều cao dòng"
@@ -6208,7 +6232,7 @@ msgstr "Đang tải một từ..."
 msgid "Loading article..."
 msgstr "Đang tải bài viết..."
 
-#: src/features/Reader/components/BooksList.tsx:366
+#: src/features/Reader/components/BooksList.tsx:432
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
@@ -6276,7 +6300,7 @@ msgstr "Đăng xuất khỏi tài khoản của bạn"
 msgid "Logging/Tracing"
 msgstr "Nhật ký/Dấu vết"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#: src/features/Reader/components/ReaderSignInModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Logout"
 msgstr "Đăng xuất"
@@ -6576,7 +6600,7 @@ msgstr "Thêm nhiều bài học độc đáo"
 msgid "More..."
 msgstr "Thêm..."
 
-#: src/features/Reader/components/BooksList.tsx:311
+#: src/features/Reader/components/BooksList.tsx:372
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Sách của tôi"
@@ -6759,7 +6783,7 @@ msgstr "Không thanh toán tự động"
 msgid "No automatic payment after the trial"
 msgstr "Không có thanh toán tự động sau khi dùng thử"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "Không có chương nào có sẵn"
@@ -6817,7 +6841,7 @@ msgstr ""
 "Không tìm thấy lỗi ngữ pháp nào. Hãy tiếp tục luyện tập để thấy sự tiến bộ "
 "ở đây!"
 
-#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:99
 #. js-lingui-explicit-id
 msgid "No highlights available"
 msgstr ""
@@ -6852,7 +6876,7 @@ msgstr ""
 "Chưa có ghi chú nào. Thêm một vài chi tiết để giáo viên AI của bạn hiểu bạn "
 "rõ hơn."
 
-#: src/features/Reader/hooks/useReimportEpub.ts:45
+#: src/features/Reader/hooks/useReimportEpub.ts:53
 #. js-lingui-explicit-id
 msgid "No original file found for this book."
 msgstr "Không tìm thấy tệp gốc cho cuốn sách này."
@@ -7311,7 +7335,7 @@ msgstr "Ngôn ngữ Trang"
 msgid "Paid plan:"
 msgstr "Gói trả phí:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:280
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "Khoảng cách đoạn văn"
@@ -8118,6 +8142,11 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Preparing your game..."
 msgstr "Đang chuẩn bị trò chơi của bạn..."
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#. js-lingui-explicit-id
+msgid "Preparing…"
+msgstr "Đang chuẩn bị…"
+
 #: src/features/ProgressStat/ProgressChart.tsx:208
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
@@ -8189,6 +8218,11 @@ msgstr "Giải Quyết Vấn Đề"
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "Đang xử lý câu trả lời..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#. js-lingui-explicit-id
+msgid "Processing book…"
+msgstr "Đang xử lý sách…"
 
 #: src/features/Dashboard/BrainCard.tsx:146
 #. js-lingui-explicit-id
@@ -8272,7 +8306,7 @@ msgstr "Theo dõi tiến trình"
 msgid "Progress tracking to see your improvement"
 msgstr "Theo dõi tiến trình để thấy sự cải thiện của bạn"
 
-#: src/features/Reader/components/Cards.tsx:389
+#: src/features/Reader/components/Cards.tsx:419
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Dự án Gutenberg"
@@ -8373,7 +8407,7 @@ msgstr "Xếp hạng trong top 5 để có quyền truy cập đầy đủ vào 
 msgid "Raw"
 msgstr "Thô"
 
-#: src/features/Reader/components/Cards.tsx:176
+#: src/features/Reader/components/Cards.tsx:204
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Tái nhập"
@@ -8811,7 +8845,7 @@ msgstr "Yêu cầu không thành công. Vui lòng thử lại."
 msgid "Request Refund"
 msgstr "Yêu cầu hoàn tiền"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "Đặt lại về mặc định"
@@ -8821,7 +8855,7 @@ msgstr "Đặt lại về mặc định"
 msgid "Resiliency & Observability"
 msgstr "Độ bền bỉ & Khả năng quan sát"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:41
+#: src/features/Reader/hooks/useReimportEpub.ts:49
 #. js-lingui-explicit-id
 msgid "Resolving file..."
 msgstr "Đang giải quyết tập tin..."
@@ -9040,11 +9074,16 @@ msgstr "Lưu Thay Đổi"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
-#: src/features/Reader/hooks/useReimportEpub.ts:68
-#: src/features/Reader/hooks/useReimportEpub.ts:116
+#: src/features/Reader/hooks/useReimportEpub.ts:76
+#: src/features/Reader/hooks/useReimportEpub.ts:124
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "Đang lưu sách..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#. js-lingui-explicit-id
+msgid "Saving book…"
+msgstr "Đang lưu sách…"
 
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
@@ -9213,7 +9252,7 @@ msgstr "Gửi một tin nhắn trong không gian cộng đồng"
 msgid "Send Request"
 msgstr "Gửi Yêu Cầu"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Send sign-in link"
 msgstr "Gửi liên kết đăng nhập"
@@ -9226,7 +9265,7 @@ msgstr "Gửi {messagesNeeded} tin nhắn để mở khóa truy cập đầy đ�
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Đang gửi..."
@@ -9278,8 +9317,7 @@ msgstr "Đặt Ngôn Ngữ Của Tôi"
 msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:170
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:154
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "Cài đặt"
@@ -9289,7 +9327,7 @@ msgstr "Cài đặt"
 msgid "Sexual content"
 msgstr "Nội dung khiêu dâm"
 
-#: src/features/Reader/components/Cards.tsx:164
+#: src/features/Reader/components/Cards.tsx:192
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9391,21 +9429,21 @@ msgstr "Trình bày tư duy thiết kế hệ thống"
 
 #: src/features/Header/HeaderStatic.tsx:20
 #: src/features/Reader/components/ReaderAuthButton.tsx:36
-#: src/features/Reader/components/ReaderSignInModal.tsx:135
+#: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Đăng Nhập"
 
 #: src/features/Auth/AuthWallBasic.tsx:183
 #: src/features/Auth/AuthWallBasic.tsx:283
-#: src/features/Reader/components/ReaderSignInModal.tsx:108
-#: src/features/Reader/components/ReaderSignInModal.tsx:148
+#: src/features/Reader/components/ReaderSignInModal.tsx:111
+#: src/features/Reader/components/ReaderSignInModal.tsx:156
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Đăng nhập bằng email"
 
 #: src/features/Auth/AuthWallBasic.tsx:280
-#: src/features/Reader/components/ReaderSignInModal.tsx:141
+#: src/features/Reader/components/ReaderSignInModal.tsx:149
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Đăng nhập bằng Google"
@@ -9571,7 +9609,7 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Đã xảy ra lỗi trong quá trình tạo thêm bài học. Vui lòng thử lại sau."
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
@@ -10116,7 +10154,7 @@ msgstr "Người Bạn Hỗ Trợ"
 msgid "Swedish Learning Plan"
 msgstr "Kế hoạch Học tiếng Thụy Điển"
 
-#: src/features/Reader/components/BooksList.tsx:319
+#: src/features/Reader/components/BooksList.tsx:380
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Đang đồng bộ thư viện của bạn…"
@@ -10990,6 +11028,11 @@ msgstr ""
 "Để giúp ngăn chặn truy cập trái phép, chúng tôi xác minh phụ huynh/người "
 "giám hộ bằng cách xác thực thẻ một lần."
 
+#: src/features/Reader/components/BooksList.tsx:303
+#. js-lingui-explicit-id
+msgid "To open PDF and Word documents, please sign in first."
+msgstr "Để mở tài liệu PDF và Word, vui lòng đăng nhập trước."
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11369,6 +11412,11 @@ msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
 msgid "Upload video"
 msgstr "Tải video lên"
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#. js-lingui-explicit-id
+msgid "Uploading file…"
+msgstr "Đang tải tệp lên…"
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11623,7 +11671,7 @@ msgstr "Chúng tôi có thể gửi cho bạn các email tiếp thị"
 msgid "We process your voice using AI"
 msgstr "Chúng tôi xử lý giọng nói của bạn bằng AI"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "We sent a sign-in link to"
 msgstr ""
@@ -12753,7 +12801,7 @@ msgstr ""
 "Bạn đang ở trong một luồng công việc tốt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Reader/components/Cards.tsx:405
+#: src/features/Reader/components/Cards.tsx:435
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"
@@ -12798,70 +12846,3 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/News/NewsDashboardCard.tsx:113
-#. js-lingui-explicit-id
-#~ msgid "TODAY IN THE NEWS"
-#~ msgstr "HÔM NAY TRONG TIN TỨC"
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "Content inspired by current events"
-#~ msgstr "Nội dung lấy cảm hứng từ các sự kiện hiện tại"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
-#. js-lingui-explicit-id
-#~ msgid "Just Talk mode with better AI behind it."
-#~ msgstr "Chế độ Just Talk với AI tốt hơn đứng sau."
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "AI-generated language learning content inspired by current events"
-#~ msgstr "Nội dung học ngôn ngữ do AI tạo ra lấy cảm hứng từ các sự kiện hiện tại"
-
-#: src/features/News/NewsDashboardCard.tsx:106
-#. js-lingui-explicit-id
-#~ msgid "Current Events"
-#~ msgstr "Các Sự Kiện Hiện Tại"
-
-#: src/features/News/NewsDashboardCard.tsx:98
-#. js-lingui-explicit-id
-#~ msgid "AI-generated English learning content inspired by current events"
-#~ msgstr "Nội dung học tiếng Anh tạo ra bởi AI lấy cảm hứng từ các sự kiện hiện tại"
-
-#: src/features/News/NewsSettingsMenu.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Topic"
-#~ msgstr "Chủ đề"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "With the free plan, you can only send 14 messages per conversation. You can "
-#~ "either end the conversation or unlock full, unlimited access."
-#~ msgstr ""
-#~ "Với gói miễn phí, bạn chỉ có thể gửi 14 tin nhắn cho mỗi cuộc trò chuyện. "
-#~ "Bạn có thể kết thúc cuộc trò chuyện hoặc mở khóa quyền truy cập đầy đủ, "
-#~ "không giới hạn."
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "Please create a learning plan to start this task"
-#~ msgstr "Vui lòng tạo một kế hoạch học tập để bắt đầu nhiệm vụ này"
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "No active lesson found. Please create a learning plan to access this task."
-#~ msgstr ""
-#~ "Không tìm thấy bài học hoạt động. Hãy tạo một kế hoạch học tập để truy cập "
-#~ "nhiệm vụ này."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:219
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "If you want more tailored practice, I can create a plan based on your "
-#~ "goals. Otherwise, you can skip this step and start practicing right away!"
-#~ msgstr ""
-#~ "Nếu bạn muốn có những bài luyện tập được điều chỉnh riêng, tôi có thể tạo "
-#~ "một kế hoạch dựa trên mục tiêu của bạn. Nếu không, bạn có thể bỏ qua bước "
-#~ "này và bắt đầu luyện tập ngay lập tức!"

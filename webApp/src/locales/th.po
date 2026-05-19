@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "เพิ่ม"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:310
+#: src/features/Reader/components/Cards.tsx:340
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "เพิ่มหนังสือ"
@@ -971,8 +971,7 @@ msgstr "คะแนนเฉลี่ยในด้านไวยากรณ
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
-#: src/features/Reader/components/ReaderSignInModal.tsx:127
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:126
+#: src/features/Reader/components/ReaderSignInModal.tsx:130
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "กลับ"
@@ -1114,10 +1113,15 @@ msgstr "บล็อก"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "เขตข้อมูลหนังสือจะถูกเติมอัตโนมัติจากเมตาดาต้าของ EPUB ในโหมดการผลิต"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:78
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:75
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "ข้อมูลหนังสือ"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:147
+#. js-lingui-explicit-id
+msgid "Book info sections"
+msgstr "ส่วนข้อมูลหนังสือ"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
@@ -1126,6 +1130,7 @@ msgstr "เครื่องอ่านหนังสือ"
 
 #: src/features/Reader/components/AddBookModal.tsx:206
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:51
+#: src/features/Reader/hooks/useNonEpubImport.ts:108
 #. js-lingui-explicit-id
 msgid "Book saved."
 msgstr "บันทึกหนังสือแล้ว"
@@ -1135,8 +1140,8 @@ msgstr "บันทึกหนังสือแล้ว"
 msgid "Book shared with"
 msgstr "หนังสือแชร์กับ"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:82
-#: src/features/Reader/hooks/useReimportEpub.ts:130
+#: src/features/Reader/hooks/useReimportEpub.ts:90
+#: src/features/Reader/hooks/useReimportEpub.ts:138
 #. js-lingui-explicit-id
 msgid "Book updated."
 msgstr "อัปเดตหนังสือแล้ว"
@@ -1146,7 +1151,7 @@ msgstr "อัปเดตหนังสือแล้ว"
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/Reader/components/BooksList.tsx:238
+#: src/features/Reader/components/BooksList.tsx:291
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1446,8 +1451,7 @@ msgstr "ท้าทาย"
 msgid "Changes vs previous 30 days"
 msgstr "การเปลี่ยนแปลงเมื่อเทียบกับ 30 วันที่ผ่านมา"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:69
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:180
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:160
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "บทต่างๆ"
@@ -1549,7 +1553,7 @@ msgid "Check proposed words"
 msgstr "ตรวจสอบคำที่เสนอ"
 
 #: src/features/Auth/AuthWallBasic.tsx:152
-#: src/features/Reader/components/ReaderSignInModal.tsx:94
+#: src/features/Reader/components/ReaderSignInModal.tsx:97
 #. js-lingui-explicit-id
 msgid "Check your email"
 msgstr "ตรวจสอบอีเมลของคุณ"
@@ -1560,7 +1564,7 @@ msgid "Check Your Progress"
 msgstr "ตรวจสอบความก้าวหน้าของคุณ"
 
 #: src/features/Auth/AuthWallBasic.tsx:167
-#: src/features/Reader/components/ReaderSignInModal.tsx:99
+#: src/features/Reader/components/ReaderSignInModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
 msgstr "ตรวจสอบโฟลเดอร์สแปมหากคุณไม่เห็นอีเมล"
@@ -1649,7 +1653,7 @@ msgstr ""
 msgid "Close"
 msgstr "ปิด"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:145
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:125
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "ปิดการตั้งค่า"
@@ -2036,6 +2040,11 @@ msgstr "การสนทนากับปัญญาประดิษฐ์
 #. js-lingui-explicit-id
 msgid "Converted file size must be less than 250MB"
 msgstr "ขนาดไฟล์ที่แปลงต้องน้อยกว่า 250MB"
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:55
+#. js-lingui-explicit-id
+msgid "Converting to EPUB…"
+msgstr "กำลังแปลงเป็น EPUB…"
 
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
@@ -2498,7 +2507,7 @@ msgid "Debates"
 msgstr "การโต้วาที"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:199
+#: src/features/Reader/components/Cards.tsx:229
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2544,7 +2553,7 @@ msgstr "ลบหนังสือที่แชร์"
 msgid "Delete Space"
 msgstr "ลบช่องว่าง"
 
-#: src/features/Reader/components/BooksList.tsx:128
+#: src/features/Reader/components/BooksList.tsx:176
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "ลบหนังสือเล่มนี้หรือไม่?"
@@ -2957,18 +2966,29 @@ msgstr "เสร็จสิ้น:"
 msgid "Don’t let mistakes stop you."
 msgstr "อย่าให้ความผิดพลาดหยุดยั้งคุณ"
 
-#: src/features/Reader/components/Cards.tsx:187
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "ดาวน์โหลด"
+
+#: src/features/Reader/components/Cards.tsx:38
+#: src/features/Reader/components/Cards.tsx:46
+#. js-lingui-explicit-id
+msgid "Download EPUB"
+msgstr "ดาวน์โหลด EPUB"
 
 #: src/features/Reader/components/ImportProgressPanel.tsx:30
 #. js-lingui-explicit-id
 msgid "Downloading book from Project Gutenberg..."
 msgstr "กำลังดาวน์โหลดหนังสือจาก Project Gutenberg..."
 
-#: src/features/Reader/components/Cards.tsx:431
+#: src/features/Reader/hooks/useNonEpubImport.ts:66
+#. js-lingui-explicit-id
+msgid "Downloading converted file…"
+msgstr "กำลังดาวน์โหลดไฟล์ที่แปลงแล้ว…"
+
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "กำลังดาวน์โหลด..."
@@ -2983,10 +3003,10 @@ msgstr "การเปิดเผยข้อมูลส่วนบุคค
 msgid "Drop EPUB file here"
 msgstr "วางไฟล์ EPUB ที่นี่"
 
-#: src/features/Reader/components/BooksList.tsx:431
+#: src/features/Reader/components/BooksList.tsx:509
 #. js-lingui-explicit-id
-msgid "Drop EPUB file to import book"
-msgstr "วางไฟล์ EPUB เพื่อเพิ่มหนังสือ"
+msgid "Drop EPUB, PDF or DOCX to import book"
+msgstr "วาง EPUB, PDF หรือ DOCX เพื่อเพิ่มหนังสือ"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:36
@@ -3085,7 +3105,7 @@ msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core ติดตาม vs. ไม่ติดตาม"
 
 #: src/features/Auth/AuthWallBasic.tsx:195
-#: src/features/Reader/components/ReaderSignInModal.tsx:113
+#: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Email"
 msgstr "อีเมล"
@@ -3605,6 +3625,11 @@ msgstr "การวิเคราะห์ภาพล้มเหลว ก�
 msgid "Failed to convert EPUB."
 msgstr "ไม่สามารถแปลง EPUB ได้"
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:110
+#. js-lingui-explicit-id
+msgid "Failed to convert file."
+msgstr "ล้มเหลวในการแปลงไฟล์."
+
 #: src/features/Auth/WebViewWall.tsx:45
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -3617,8 +3642,8 @@ msgid ""
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:84
-#: src/features/Reader/hooks/useReimportEpub.ts:132
+#: src/features/Reader/hooks/useReimportEpub.ts:92
+#: src/features/Reader/hooks/useReimportEpub.ts:140
 #. js-lingui-explicit-id
 msgid "Failed to re-import EPUB."
 msgstr "ไม่สามารถนำเข้า EPUB ใหม่ได้"
@@ -3969,7 +3994,7 @@ msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI
 msgid "Focus on shipping reliable services"
 msgstr "มุ่งเน้นการส่งมอบบริการที่เชื่อถือได้"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:262
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:263
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "ขนาดตัวอักษร"
@@ -4878,8 +4903,7 @@ msgstr "เน้นประสบการณ์ด้านส่วนติ
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "เน้นทักษะการเป็นผู้นำและการแก้ปัญหาของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:71
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:190
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "ไฮไลท์"
@@ -6087,7 +6111,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
 
-#: src/features/Reader/components/BooksList.tsx:363
+#: src/features/Reader/components/BooksList.tsx:429
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "ห้องสมุด"
@@ -6124,7 +6148,7 @@ msgstr ""
 msgid "Limits reached"
 msgstr "ถึงขีดจำกัดแล้ว"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:299
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "ความสูงของบรรทัด"
@@ -6188,7 +6212,7 @@ msgstr "กำลังโหลดคำ..."
 msgid "Loading article..."
 msgstr "กำลังโหลดบทความ..."
 
-#: src/features/Reader/components/BooksList.tsx:366
+#: src/features/Reader/components/BooksList.tsx:432
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
@@ -6256,7 +6280,7 @@ msgstr "ออกจากบัญชีของคุณ"
 msgid "Logging/Tracing"
 msgstr "การบันทึก/การตรวจสอบ"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:85
+#: src/features/Reader/components/ReaderSignInModal.tsx:88
 #. js-lingui-explicit-id
 msgid "Logout"
 msgstr "ออกจากระบบ"
@@ -6552,7 +6576,7 @@ msgstr "บทเรียนที่ไม่ซ้ำซาก"
 msgid "More..."
 msgstr "เพิ่มเติม..."
 
-#: src/features/Reader/components/BooksList.tsx:311
+#: src/features/Reader/components/BooksList.tsx:372
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "หนังสือของฉัน"
@@ -6733,7 +6757,7 @@ msgstr "ไม่มีการชำระเงินอัตโนมัต
 msgid "No automatic payment after the trial"
 msgstr "ไม่มีการชำระเงินอัตโนมัติหลังจากช่วงทดลองใช้"
 
-#: src/features/Reader/components/ReaderChaptersPopover.tsx:95
+#: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
 msgstr "ไม่มีบทใด ๆ ให้เลือก"
@@ -6789,7 +6813,7 @@ msgstr "ไม่มีเรียงความในขณะนี้ เ�
 msgid "No grammar mistakes found. Keep practicing to see improvements here!"
 msgstr "ไม่มีข้อผิดพลาดทางไวยากรณ์ พบว่าการฝึกฝนเป็นประจำจะช่วยให้เห็นการพัฒนา!"
 
-#: src/features/Reader/components/ReaderHighlightsPopover.tsx:106
+#: src/features/Reader/components/ReaderHighlightsPopover.tsx:99
 #. js-lingui-explicit-id
 msgid "No highlights available"
 msgstr "ไม่มีไฮไลท์ให้บริการ"
@@ -6820,7 +6844,7 @@ msgstr "ยังไม่มีข่าวสำหรับประเทศ
 msgid "No notes yet. Add a few details so your AI teacher knows you better."
 msgstr "ยังไม่มีบันทึก เพิ่มรายละเอียดเล็กน้อยเพื่อให้ครู AI ของคุณรู้จักคุณดีขึ้น"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:45
+#: src/features/Reader/hooks/useReimportEpub.ts:53
 #. js-lingui-explicit-id
 msgid "No original file found for this book."
 msgstr "ไม่มีไฟล์ต้นฉบับสำหรับหนังสือเล่มนี้พบ."
@@ -7271,7 +7295,7 @@ msgstr "ภาษาของหน้าเว็บ"
 msgid "Paid plan:"
 msgstr "แผนชำระเงิน:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:279
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:280
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "ช่องว่างย่อหน้า"
@@ -8065,6 +8089,11 @@ msgstr "เตรียมสมอง"
 msgid "Preparing your game..."
 msgstr "กำลังเตรียมเกมของคุณ..."
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:39
+#. js-lingui-explicit-id
+msgid "Preparing…"
+msgstr "เตรียมการ…"
+
 #: src/features/ProgressStat/ProgressChart.tsx:208
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
@@ -8136,6 +8165,11 @@ msgstr "การแก้ปัญหา"
 #. js-lingui-explicit-id
 msgid "Processing answers..."
 msgstr "กำลังประมวลผลคำตอบ..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:73
+#. js-lingui-explicit-id
+msgid "Processing book…"
+msgstr "กำลังประมวลผลหนังสือ…"
 
 #: src/features/Dashboard/BrainCard.tsx:146
 #. js-lingui-explicit-id
@@ -8219,7 +8253,7 @@ msgstr "การติดตามความคืบหน้า"
 msgid "Progress tracking to see your improvement"
 msgstr "การติดตามความก้าวหน้าเพื่อดูพัฒนาการของคุณ"
 
-#: src/features/Reader/components/Cards.tsx:389
+#: src/features/Reader/components/Cards.tsx:419
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "โปรเจกต์ กูเตนเบิร์ก"
@@ -8320,7 +8354,7 @@ msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่
 msgid "Raw"
 msgstr "ดิบ"
 
-#: src/features/Reader/components/Cards.tsx:176
+#: src/features/Reader/components/Cards.tsx:204
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "นำเข้ามาใหม่"
@@ -8755,7 +8789,7 @@ msgstr ""
 msgid "Request Refund"
 msgstr "ขอคืนเงิน"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:314
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
@@ -8765,7 +8799,7 @@ msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
 msgid "Resiliency & Observability"
 msgstr "ความยืดหยุ่น & การมองเห็น"
 
-#: src/features/Reader/hooks/useReimportEpub.ts:41
+#: src/features/Reader/hooks/useReimportEpub.ts:49
 #. js-lingui-explicit-id
 msgid "Resolving file..."
 msgstr "กำลังแก้ไขไฟล์..."
@@ -8978,11 +9012,16 @@ msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: src/features/Reader/components/AddBookModal.tsx:192
 #: src/features/Reader/hooks/useDroppedEpubImport.ts:37
-#: src/features/Reader/hooks/useReimportEpub.ts:68
-#: src/features/Reader/hooks/useReimportEpub.ts:116
+#: src/features/Reader/hooks/useReimportEpub.ts:76
+#: src/features/Reader/hooks/useReimportEpub.ts:124
 #. js-lingui-explicit-id
 msgid "Saving book..."
 msgstr "กำลังบันทึกหนังสือ..."
+
+#: src/features/Reader/hooks/useNonEpubImport.ts:85
+#. js-lingui-explicit-id
+msgid "Saving book…"
+msgstr "กำลังบันทึกหนังสือ…"
 
 #: src/features/RolePlay/rolePlayData.tsx:1112
 #. js-lingui-explicit-id
@@ -9151,7 +9190,7 @@ msgstr "ส่งข้อความหนึ่งในพื้นที่
 msgid "Send Request"
 msgstr "ส่งคำขอ"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Send sign-in link"
 msgstr "ส่งลิงค์ลงชื่อเข้าใช้"
@@ -9164,7 +9203,7 @@ msgstr "ส่ง {messagesNeeded} ข้อความเพื่อปลด
 #: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Chat/SubmitForm.tsx:347
 #: src/features/Header/ContactMessageModal.tsx:113
-#: src/features/Reader/components/ReaderSignInModal.tsx:124
+#: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "กำลังส่ง..."
@@ -9216,8 +9255,7 @@ msgstr "ตั้งค่าภาษาของฉัน"
 msgid "Set the goal of your learning"
 msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:67
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:170
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:154
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "การตั้งค่า"
@@ -9227,7 +9265,7 @@ msgstr "การตั้งค่า"
 msgid "Sexual content"
 msgstr "เนื้อหาเกี่ยวกับเรื่องเพศ"
 
-#: src/features/Reader/components/Cards.tsx:164
+#: src/features/Reader/components/Cards.tsx:192
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9329,21 +9367,21 @@ msgstr "แสดงระบบการออกแบบความคิด
 
 #: src/features/Header/HeaderStatic.tsx:20
 #: src/features/Reader/components/ReaderAuthButton.tsx:36
-#: src/features/Reader/components/ReaderSignInModal.tsx:135
+#: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "เข้าสู่ระบบ"
 
 #: src/features/Auth/AuthWallBasic.tsx:183
 #: src/features/Auth/AuthWallBasic.tsx:283
-#: src/features/Reader/components/ReaderSignInModal.tsx:108
-#: src/features/Reader/components/ReaderSignInModal.tsx:148
+#: src/features/Reader/components/ReaderSignInModal.tsx:111
+#: src/features/Reader/components/ReaderSignInModal.tsx:156
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "ลงชื่อเข้าใช้งานด้วยอีเมล"
 
 #: src/features/Auth/AuthWallBasic.tsx:280
-#: src/features/Reader/components/ReaderSignInModal.tsx:141
+#: src/features/Reader/components/ReaderSignInModal.tsx:149
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "ลงชื่อเข้าใช้ด้วย Google"
@@ -9508,7 +9546,7 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:47
+#: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again."
@@ -10055,7 +10093,7 @@ msgstr "เพื่อนที่สนับสนุน"
 msgid "Swedish Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาสวีเดน"
 
-#: src/features/Reader/components/BooksList.tsx:319
+#: src/features/Reader/components/BooksList.tsx:380
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "กำลังซิงค์ไลบรารีของคุณ…"
@@ -10917,6 +10955,11 @@ msgstr ""
 "เพื่อช่วยป้องกันการเข้าถึงที่ไม่ได้รับอนุญาต "
 "เราตรวจสอบผู้ปกครอง/ผู้ดูแลโดยใช้การยืนยันบัตรครั้งเดียว"
 
+#: src/features/Reader/components/BooksList.tsx:303
+#. js-lingui-explicit-id
+msgid "To open PDF and Word documents, please sign in first."
+msgstr "ในการเปิดเอกสาร PDF และ Word กรุณาเข้าสู่ระบบก่อน"
+
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
 msgid ""
@@ -11293,6 +11336,11 @@ msgstr "อัปโหลดทักษะการใช้ภาษาลง
 msgid "Upload video"
 msgstr "อัปโหลดวิดีโอ"
 
+#: src/features/Reader/hooks/useNonEpubImport.ts:49
+#. js-lingui-explicit-id
+msgid "Uploading file…"
+msgstr "กำลังอัปโหลดไฟล์…"
+
 #: src/features/Audio/UploadAudioFileButton.tsx:100
 #: src/features/Game/UploadImageButton.tsx:93
 #: src/features/Video/UploadVideoButton.tsx:210
@@ -11543,7 +11591,7 @@ msgstr "เราสามารถส่งอีเมลการตลาด
 msgid "We process your voice using AI"
 msgstr "เราประมวลผลเสียงของคุณโดยใช้ AI"
 
-#: src/features/Reader/components/ReaderSignInModal.tsx:96
+#: src/features/Reader/components/ReaderSignInModal.tsx:99
 #. js-lingui-explicit-id
 msgid "We sent a sign-in link to"
 msgstr "เราส่งลิงก์เข้าสู่ระบบไปยัง"
@@ -12659,7 +12707,7 @@ msgstr "คุณกำลังทำได้ดี ดูงานของ�
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "คุณกำลังทำงานได้ดีอย่างต่อเนื่อง ทำภารกิจของวันนี้ต่อไป"
 
-#: src/features/Reader/components/Cards.tsx:405
+#: src/features/Reader/components/Cards.tsx:435
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} ดาวน์โหลด"
@@ -12704,72 +12752,3 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/News/NewsDashboardCard.tsx:113
-#. js-lingui-explicit-id
-#~ msgid "TODAY IN THE NEWS"
-#~ msgstr "วันนี้ในข่าว"
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "Content inspired by current events"
-#~ msgstr "เนื้อหาที่ได้รับแรงบันดาลใจจากเหตุการณ์ปัจจุบัน"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
-#. js-lingui-explicit-id
-#~ msgid "Just Talk mode with better AI behind it."
-#~ msgstr "โหมด Just Talk พร้อมด้วย AI ที่ดียิ่งขึ้นอยู่เบื้องหลัง"
-
-#: src/features/News/NewsDashboardCard.tsx:107
-#. js-lingui-explicit-id
-#~ msgid "AI-generated language learning content inspired by current events"
-#~ msgstr ""
-#~ "เนื้อหาการเรียนรู้ภาษาโดยปัญญาประดิษฐ์ที่ได้รับแรงบันดาลใจจากเหตุการณ์ปัจจุบ"
-#~ "ัน"
-
-#: src/features/News/NewsDashboardCard.tsx:106
-#. js-lingui-explicit-id
-#~ msgid "Current Events"
-#~ msgstr "เหตุการณ์ปัจจุบัน"
-
-#: src/features/News/NewsDashboardCard.tsx:98
-#. js-lingui-explicit-id
-#~ msgid "AI-generated English learning content inspired by current events"
-#~ msgstr ""
-#~ "เนื้อหาการเรียนรู้ภาษาอังกฤษที่สร้างโดย AI "
-#~ "ที่ได้รับแรงบันดาลใจจากเหตุการณ์ปัจจุบัน"
-
-#: src/features/News/NewsSettingsMenu.tsx:90
-#. js-lingui-explicit-id
-#~ msgid "Topic"
-#~ msgstr "หัวข้อ"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "With the free plan, you can only send 14 messages per conversation. You can "
-#~ "either end the conversation or unlock full, unlimited access."
-#~ msgstr ""
-#~ "ด้วยแผนฟรี คุณสามารถส่งข้อความได้เพียง 14 ข้อความต่อการสนทนา "
-#~ "คุณสามารถเลือกที่จะยุติการสนทนาหรือตัดสินใจปลดล็อกการเข้าถึงแบบเต็มรูปแบบไม่"
-#~ "จำกัด"
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "Please create a learning plan to start this task"
-#~ msgstr "โปรดสร้างแผนการเรียนรู้สำหรับเริ่มต้นงานนี้"
-
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:54
-#. js-lingui-explicit-id
-#~ msgid "No active lesson found. Please create a learning plan to access this task."
-#~ msgstr "ไม่พบบทเรียนที่ใช้งานอยู่ กรุณาสร้างแผนการเรียนรู้เพื่อเข้าถึงงานนี้"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:219
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "If you want more tailored practice, I can create a plan based on your "
-#~ "goals. Otherwise, you can skip this step and start practicing right away!"
-#~ msgstr ""
-#~ "หากคุณต้องการการฝึกฝนที่ปรับให้เหมาะกับคุณมากขึ้น "
-#~ "ฉันสามารถสร้างแผนตามเป้าหมายของคุณได้ "
-#~ "มิฉะนั้นคุณสามารถข้ามขั้นตอนนี้และเริ่มฝึกฝนได้ทันที!"
