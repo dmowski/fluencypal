@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Ekle"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:340
+#: src/features/Reader/components/Cards.tsx:366
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Kitap ekle"
@@ -1131,6 +1131,11 @@ msgstr "Kitap Okuyucu"
 msgid "Book saved."
 msgstr "Kitap kaydedildi."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:218
+#. js-lingui-explicit-id
+msgid "Book sent! It should appear on your Kindle within a few minutes."
+msgstr "Kitap gönderildi! Birkaç dakika içinde Kindle'ınızda görünmelidir."
+
 #: src/features/Reader/components/ShareBookModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Book shared with"
@@ -1147,7 +1152,7 @@ msgstr "Kitap güncellendi."
 msgid "Booking a Doctor's Appointment"
 msgstr "Doktor Randevusu Alma"
 
-#: src/features/Reader/components/BooksList.tsx:291
+#: src/features/Reader/components/BooksList.tsx:303
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1385,6 +1390,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
+#: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1641,11 +1647,18 @@ msgid ""
 "rambling."
 msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan açıkladım."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:171
+#. js-lingui-explicit-id
+msgid "Click \"Add a new approved e-mail address\" and enter:"
+msgstr "\"Yeni onaylı e-posta adresi ekle\"ye tıklayın ve şunu girin:"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:761
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Reader/components/SendToKindleModal.tsx:130
+#: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #: src/features/User/AiKnowledgeModal.tsx:153
@@ -2050,6 +2063,11 @@ msgstr "EPUB formatına dönüştürülüyor…"
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Kopyalandı"
+
+#: src/features/Reader/components/SendToKindleModal.tsx:194
+#. js-lingui-explicit-id
+msgid "Copy email address"
+msgstr "E-posta adresini kopyala"
 
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
@@ -2498,7 +2516,7 @@ msgid "Debates"
 msgstr "Tartışmalar"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:229
+#: src/features/Reader/components/Cards.tsx:255
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2544,7 +2562,8 @@ msgstr "Paylaşılan kitabı sil"
 msgid "Delete Space"
 msgstr "Boşluğu Sil"
 
-#: src/features/Reader/components/BooksList.tsx:176
+#: src/features/Reader/components/BooksList.tsx:167
+#: src/features/Reader/components/BooksList.tsx:188
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Bu kitabı silinsin mi?"
@@ -2961,14 +2980,14 @@ msgstr "Tamam:"
 msgid "Don’t let mistakes stop you."
 msgstr "Hataların seni durdurmasına izin verme."
 
-#: src/features/Reader/components/Cards.tsx:38
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:48
+#: src/features/Reader/components/Cards.tsx:487
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "İndir"
 
-#: src/features/Reader/components/Cards.tsx:38
-#: src/features/Reader/components/Cards.tsx:46
+#: src/features/Reader/components/Cards.tsx:48
+#: src/features/Reader/components/Cards.tsx:56
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "EPUB İndir"
@@ -2983,7 +3002,7 @@ msgstr "Project Gutenberg'den kitap indiriliyor..."
 msgid "Downloading converted file…"
 msgstr "Dönüştürülmüş dosya indiriliyor…"
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:487
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "İndiriliyor..."
@@ -2998,7 +3017,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "EPUB dosyasını buraya bırakın"
 
-#: src/features/Reader/components/BooksList.tsx:509
+#: src/features/Reader/components/BooksList.tsx:531
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "EPUB, PDF veya DOCX dosyasını bırakın, kitabı içe aktarın"
@@ -3284,6 +3303,13 @@ msgstr "Konuşmakla yetti mi? Gelişme zamanı!"
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
 msgstr "Giriş bağlantısını almak için e-postanızı girin"
+
+#: src/features/Reader/components/SendToKindleModal.tsx:232
+#. js-lingui-explicit-id
+msgid ""
+"Enter your Kindle email address. The book will be sent as an EPUB "
+"attachment."
+msgstr "Kindle e-posta adresinizi girin. Kitap EPUB eki olarak gönderilecektir."
 
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:28
 #. js-lingui-explicit-id
@@ -3663,6 +3689,11 @@ msgstr "Kitap kaydedilemedi."
 msgid "Failed to send feedback. Please try again later."
 msgstr "Geri bildirim gönderilemedi. Lütfen daha sonra tekrar deneyin."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Failed to send to Kindle"
+msgstr "Kindle'a gönderme başarısız oldu"
+
 #: src/features/User/useUserReport.tsx:58
 #. js-lingui-explicit-id
 msgid ""
@@ -3788,6 +3819,15 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Kararı sonlandırma ..."
+
+#: src/features/Reader/components/SendToKindleModal.tsx:166
+#. js-lingui-explicit-id
+msgid ""
+"Find \"Personal Document Settings\" → \"Approved Personal Document Email "
+"List\""
+msgstr ""
+"\"Belge Ayarları\" → \"Onaylanmış Kişisel Belge E-posta Listesi\" öğesini "
+"bulun"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:264
 #. js-lingui-explicit-id
@@ -4577,6 +4617,11 @@ msgstr "Birkaç hafta verin. Gerçek güvenin inşa edildiği zaman budur."
 msgid "Global Chat"
 msgstr "Global Sohbet"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:153
+#. js-lingui-explicit-id
+msgid "Go to"
+msgstr "Git:"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:474
 #: src/features/Goal/Quiz/QuizPage2.tsx:574
 #. js-lingui-explicit-id
@@ -5261,6 +5306,11 @@ msgstr ""
 "sürece yaşıyor. Ve bir gün o kadar fakirleşirsem ki bunları "
 "karşılayamazsam… o zaman daha ucuz sunucular kiralarım 🙂"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:212
+#. js-lingui-explicit-id
+msgid "I've done this — continue"
+msgstr "Bunu yaptım — devam et"
+
 #: src/features/Chat/SubmitForm.tsx:191
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
@@ -5859,6 +5909,11 @@ msgstr "Gözden geçirmeye kadar görünür şekilde tut"
 msgid "Keyboard"
 msgstr "Klavye"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:238
+#. js-lingui-explicit-id
+msgid "Kindle email"
+msgstr "Kindle e-posta"
+
 #: src/features/Lang/getLabels.tsx:15
 #. js-lingui-explicit-id
 msgid "Korean Learning Plan"
@@ -6110,7 +6165,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hadi, hazır olduğundan emin olalım"
 
-#: src/features/Reader/components/BooksList.tsx:429
+#: src/features/Reader/components/BooksList.tsx:451
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Kütüphane"
@@ -6207,7 +6262,7 @@ msgstr "Bir kelime yükleniyor..."
 msgid "Loading article..."
 msgstr "Makaleyi yüklüyor..."
 
-#: src/features/Reader/components/BooksList.tsx:432
+#: src/features/Reader/components/BooksList.tsx:454
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
@@ -6570,7 +6625,7 @@ msgstr "Daha benzersiz dersler"
 msgid "More..."
 msgstr "Daha fazla..."
 
-#: src/features/Reader/components/BooksList.tsx:372
+#: src/features/Reader/components/BooksList.tsx:393
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Kitaplarım"
@@ -8263,7 +8318,7 @@ msgstr "İlerleme takibi"
 msgid "Progress tracking to see your improvement"
 msgstr "Gelişiminizi görmek için ilerleme takibi"
 
-#: src/features/Reader/components/Cards.tsx:419
+#: src/features/Reader/components/Cards.tsx:445
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proje Gutenberg"
@@ -8362,7 +8417,7 @@ msgstr "İlk 5'te yer alarak tüm özelliklere tam erişim sağlayın!"
 msgid "Raw"
 msgstr "Ham"
 
-#: src/features/Reader/components/Cards.tsx:204
+#: src/features/Reader/components/Cards.tsx:230
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Yeniden içe aktar"
@@ -9207,6 +9262,13 @@ msgstr "İsteği Gönder"
 msgid "Send sign-in link"
 msgstr "Oturum açma bağlantısını gönder"
 
+#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/SendToKindleModal.tsx:125
+#: src/features/Reader/components/SendToKindleModal.tsx:268
+#. js-lingui-explicit-id
+msgid "Send to Kindle"
+msgstr "Kindle'a Gönder"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -9275,7 +9337,7 @@ msgstr "Ayarlar"
 msgid "Sexual content"
 msgstr "Cinsel içerik"
 
-#: src/features/Reader/components/Cards.tsx:192
+#: src/features/Reader/components/Cards.tsx:206
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9910,6 +9972,11 @@ msgstr ""
 "sizi öne çıkaracak, özlü ve ikna edici yanıtlar sunma pratiği yapmak için "
 "istemleri kullanın.\n"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:148
+#. js-lingui-explicit-id
+msgid "Steps:"
+msgstr "Adımlar:"
+
 #: src/features/Chat/SubmitForm.tsx:305
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -10100,7 +10167,7 @@ msgstr "Destekleyici Arkadaş"
 msgid "Swedish Learning Plan"
 msgstr "İsveççe Öğrenme Planı"
 
-#: src/features/Reader/components/BooksList.tsx:380
+#: src/features/Reader/components/BooksList.tsx:401
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Kitaplığınız senkronize ediliyor..."
@@ -10973,10 +11040,19 @@ msgstr ""
 "Yetkisiz erişimi önlemeye yardımcı olmak için, ebeveyn/veli doğrulamasını "
 "tek seferlik bir kart doğrulamasıyla yapıyoruz."
 
-#: src/features/Reader/components/BooksList.tsx:303
+#: src/features/Reader/components/BooksList.tsx:315
 #. js-lingui-explicit-id
 msgid "To open PDF and Word documents, please sign in first."
 msgstr "PDF ve Word belgelerini açmak için lütfen önce oturum açın."
+
+#: src/features/Reader/components/SendToKindleModal.tsx:141
+#. js-lingui-explicit-id
+msgid ""
+"To receive books on your Kindle, you must first add our sender email to "
+"your approved list."
+msgstr ""
+"Kindle'ınıza kitap alabilmek için, öncelikle bizim gönderici e-posta "
+"adresimizi onaylı listenize eklemeniz gerekmektedir."
 
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
@@ -12721,7 +12797,7 @@ msgstr "İyi gidiyorsun. Bugünün görevlerine bir göz at."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "İyi bir akıştasın. Bugünkü görevlerle devam et."
 
-#: src/features/Reader/components/Cards.tsx:435
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} indirme"

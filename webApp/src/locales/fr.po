@@ -326,7 +326,7 @@ msgid "Add"
 msgstr "Ajouter"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:340
+#: src/features/Reader/components/Cards.tsx:366
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Ajouter un livre"
@@ -1147,6 +1147,11 @@ msgstr "Lecteur de livre"
 msgid "Book saved."
 msgstr "Livre enregistré."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:218
+#. js-lingui-explicit-id
+msgid "Book sent! It should appear on your Kindle within a few minutes."
+msgstr "Livre envoyé ! Il devrait apparaître sur votre Kindle dans quelques minutes."
+
 #: src/features/Reader/components/ShareBookModal.tsx:250
 #. js-lingui-explicit-id
 msgid "Book shared with"
@@ -1163,7 +1168,7 @@ msgstr "Livre mis à jour."
 msgid "Booking a Doctor's Appointment"
 msgstr "Réserver un rendez-vous chez le médecin"
 
-#: src/features/Reader/components/BooksList.tsx:291
+#: src/features/Reader/components/BooksList.tsx:303
 #: src/features/SEO/metadata.ts:60
 #. js-lingui-explicit-id
 msgid "Books"
@@ -1405,6 +1410,7 @@ msgstr "Puis-je l'utiliser sur un smartphone ?"
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
+#: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
 #. js-lingui-explicit-id
@@ -1668,11 +1674,18 @@ msgstr ""
 "Structure claire pour la conception du système. J'ai finalement expliqué "
 "les compromis sans divaguer."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:171
+#. js-lingui-explicit-id
+msgid "Click \"Add a new approved e-mail address\" and enter:"
+msgstr "Cliquez sur \"Ajouter une nouvelle adresse e-mail approuvée\" et entrez :"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:761
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Reader/components/SendToKindleModal.tsx:130
+#: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #: src/features/User/AiKnowledgeModal.tsx:153
@@ -2082,6 +2095,11 @@ msgstr "Conversion en EPUB…"
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Copié"
+
+#: src/features/Reader/components/SendToKindleModal.tsx:194
+#. js-lingui-explicit-id
+msgid "Copy email address"
+msgstr "Copier l'adresse e-mail"
 
 #: src/features/Auth/WebViewWall.tsx:137
 #. js-lingui-explicit-id
@@ -2538,7 +2556,7 @@ msgid "Debates"
 msgstr "Débats"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:229
+#: src/features/Reader/components/Cards.tsx:255
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2584,7 +2602,8 @@ msgstr "Supprimer le livre partagé"
 msgid "Delete Space"
 msgstr "Supprimer l'espace"
 
-#: src/features/Reader/components/BooksList.tsx:176
+#: src/features/Reader/components/BooksList.tsx:167
+#: src/features/Reader/components/BooksList.tsx:188
 #. js-lingui-explicit-id
 msgid "Delete this book?"
 msgstr "Supprimer ce livre ?"
@@ -3006,14 +3025,14 @@ msgstr "Fait :"
 msgid "Don’t let mistakes stop you."
 msgstr "Ne laissez pas les erreurs vous arrêter."
 
-#: src/features/Reader/components/Cards.tsx:38
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:48
+#: src/features/Reader/components/Cards.tsx:487
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Télécharger"
 
-#: src/features/Reader/components/Cards.tsx:38
-#: src/features/Reader/components/Cards.tsx:46
+#: src/features/Reader/components/Cards.tsx:48
+#: src/features/Reader/components/Cards.tsx:56
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "Télécharger EPUB"
@@ -3028,7 +3047,7 @@ msgstr "Téléchargement du livre depuis Project Gutenberg..."
 msgid "Downloading converted file…"
 msgstr "Téléchargement du fichier converti…"
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:487
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Téléchargement..."
@@ -3043,7 +3062,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "Déposez le fichier EPUB ici"
 
-#: src/features/Reader/components/BooksList.tsx:509
+#: src/features/Reader/components/BooksList.tsx:531
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "Déposez EPUB, PDF ou DOCX pour importer le livre"
@@ -3335,6 +3354,15 @@ msgstr "Assez parlé ? Il est temps de s'améliorer !"
 #. js-lingui-explicit-id
 msgid "Enter your email to get a sign-in link"
 msgstr "Entrez votre email pour recevoir un lien de connexion"
+
+#: src/features/Reader/components/SendToKindleModal.tsx:232
+#. js-lingui-explicit-id
+msgid ""
+"Enter your Kindle email address. The book will be sent as an EPUB "
+"attachment."
+msgstr ""
+"Entrez votre adresse e-mail Kindle. Le livre sera envoyé en pièce jointe au "
+"format EPUB."
 
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:28
 #. js-lingui-explicit-id
@@ -3719,6 +3747,11 @@ msgstr "Échec de l'enregistrement du livre."
 msgid "Failed to send feedback. Please try again later."
 msgstr "Échec de l'envoi des commentaires. Veuillez réessayer plus tard."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Failed to send to Kindle"
+msgstr "Échec de l'envoi à Kindle"
+
 #: src/features/User/useUserReport.tsx:58
 #. js-lingui-explicit-id
 msgid ""
@@ -3842,6 +3875,15 @@ msgstr "Classement final"
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Finalisation de la décision ..."
+
+#: src/features/Reader/components/SendToKindleModal.tsx:166
+#. js-lingui-explicit-id
+msgid ""
+"Find \"Personal Document Settings\" → \"Approved Personal Document Email "
+"List\""
+msgstr ""
+"Trouver \"Paramètres des documents personnels\" → \"Liste des e-mails "
+"approuvés pour les documents personnels\""
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:264
 #. js-lingui-explicit-id
@@ -4646,6 +4688,13 @@ msgstr ""
 msgid "Global Chat"
 msgstr "Chat Mondial"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:153
+#. js-lingui-explicit-id
+msgid "Go to"
+msgstr ""
+"plaintext\n"
+"Aller à\n"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:474
 #: src/features/Goal/Quiz/QuizPage2.tsx:574
 #. js-lingui-explicit-id
@@ -5353,6 +5402,11 @@ msgstr ""
 "serveurs. Et si un jour je suis assez pauvre pour ne pas pouvoir me les "
 "permettre… eh bien, je louerai des serveurs moins chers 🙂"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:212
+#. js-lingui-explicit-id
+msgid "I've done this — continue"
+msgstr "J'ai fait cela — continuez"
+
 #: src/features/Chat/SubmitForm.tsx:191
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
@@ -5975,6 +6029,11 @@ msgstr "Gardez visible jusqu'à révision"
 msgid "Keyboard"
 msgstr "Clavier"
 
+#: src/features/Reader/components/SendToKindleModal.tsx:238
+#. js-lingui-explicit-id
+msgid "Kindle email"
+msgstr "Email Kindle"
+
 #: src/features/Lang/getLabels.tsx:15
 #. js-lingui-explicit-id
 msgid "Korean Learning Plan"
@@ -6238,7 +6297,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Assurons-nous que vous êtes prêt"
 
-#: src/features/Reader/components/BooksList.tsx:429
+#: src/features/Reader/components/BooksList.tsx:451
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Bibliothèque"
@@ -6335,7 +6394,7 @@ msgstr "Chargement d'un mot..."
 msgid "Loading article..."
 msgstr "Chargement de l'article..."
 
-#: src/features/Reader/components/BooksList.tsx:432
+#: src/features/Reader/components/BooksList.tsx:454
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Chargement de la bibliothèque..."
@@ -6709,7 +6768,7 @@ msgstr "Plus de leçons uniques"
 msgid "More..."
 msgstr "Plus..."
 
-#: src/features/Reader/components/BooksList.tsx:372
+#: src/features/Reader/components/BooksList.tsx:393
 #. js-lingui-explicit-id
 msgid "My books"
 msgstr "Mes livres"
@@ -8447,7 +8506,7 @@ msgstr "Suivi de la progression"
 msgid "Progress tracking to see your improvement"
 msgstr "Suivi des progrès pour voir votre amélioration"
 
-#: src/features/Reader/components/Cards.tsx:419
+#: src/features/Reader/components/Cards.tsx:445
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projet Gutenberg"
@@ -8550,7 +8609,7 @@ msgstr ""
 msgid "Raw"
 msgstr "Brut"
 
-#: src/features/Reader/components/Cards.tsx:204
+#: src/features/Reader/components/Cards.tsx:230
 #. js-lingui-explicit-id
 msgid "Re-import"
 msgstr "Réimporter"
@@ -9409,6 +9468,13 @@ msgstr "Envoyer la demande"
 msgid "Send sign-in link"
 msgstr "Envoyer le lien de connexion"
 
+#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/SendToKindleModal.tsx:125
+#: src/features/Reader/components/SendToKindleModal.tsx:268
+#. js-lingui-explicit-id
+msgid "Send to Kindle"
+msgstr "Envoyer vers Kindle"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -9479,7 +9545,7 @@ msgstr "Paramètres"
 msgid "Sexual content"
 msgstr "Contenu sexuel"
 
-#: src/features/Reader/components/Cards.tsx:192
+#: src/features/Reader/components/Cards.tsx:206
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -10121,6 +10187,11 @@ msgstr ""
 "réponses concises et persuasives qui vous aideront à vous démarquer lors de "
 "n'importe quel entretien d'embauche."
 
+#: src/features/Reader/components/SendToKindleModal.tsx:148
+#. js-lingui-explicit-id
+msgid "Steps:"
+msgstr "Étapes :"
+
 #: src/features/Chat/SubmitForm.tsx:305
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -10317,7 +10388,7 @@ msgstr "Ami de soutien"
 msgid "Swedish Learning Plan"
 msgstr "Plan d'Apprentissage Suédois"
 
-#: src/features/Reader/components/BooksList.tsx:380
+#: src/features/Reader/components/BooksList.tsx:401
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Synchronisation de votre bibliothèque…"
@@ -11204,10 +11275,19 @@ msgstr ""
 "Pour aider à prévenir l'accès non autorisé, nous vérifions le parent/tuteur "
 "à l'aide d'une vérification de carte unique."
 
-#: src/features/Reader/components/BooksList.tsx:303
+#: src/features/Reader/components/BooksList.tsx:315
 #. js-lingui-explicit-id
 msgid "To open PDF and Word documents, please sign in first."
 msgstr "Pour ouvrir des documents PDF et Word, veuillez d'abord vous connecter."
+
+#: src/features/Reader/components/SendToKindleModal.tsx:141
+#. js-lingui-explicit-id
+msgid ""
+"To receive books on your Kindle, you must first add our sender email to "
+"your approved list."
+msgstr ""
+"Pour recevoir des livres sur votre Kindle, vous devez d'abord ajouter notre "
+"adresse e-mail d'expéditeur à votre liste approuvée."
 
 #: src/features/Landing/LandingPage.tsx:141
 #. js-lingui-explicit-id
@@ -13004,7 +13084,7 @@ msgstr "Vous vous débrouillez bien. Jetez un coup d'œil aux tâches d'aujourd'
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Vous êtes dans une bonne dynamique. Continuez avec les tâches d'aujourd'hui."
 
-#: src/features/Reader/components/Cards.tsx:435
+#: src/features/Reader/components/Cards.tsx:461
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} téléchargements"
