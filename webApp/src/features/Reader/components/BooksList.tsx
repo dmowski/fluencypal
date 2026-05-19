@@ -418,6 +418,7 @@ export const BooksList = () => {
                 onDownloadFromBlob={handleDownloadFromBlob}
                 onShare={auth.isAuthorized ? handleShare : undefined}
                 onSendToKindle={auth.isAuthorized ? (b) => setKindleBookId(b.id) : undefined}
+                isProcessing={book.id === nonEpubImport.processingBookId}
               />
             ))}
 

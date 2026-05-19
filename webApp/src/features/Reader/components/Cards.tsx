@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import { Box, Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
@@ -24,6 +24,7 @@ export const BookCard = ({
   onDownloadFromBlob,
   onShare,
   onSendToKindle,
+  isProcessing = false,
 }: {
   data: Book;
   onClick: (data: Book) => void;
@@ -31,11 +32,11 @@ export const BookCard = ({
   onDownloadFromBlob?: (data: Book, ext?: string) => Promise<void> | void;
   onShare?: (data: Book) => void;
   onSendToKindle?: (data: Book) => void;
+  isProcessing?: boolean;
 }) => {
   const i18n = useLingui();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const [shareSubmenuAnchor, setShareSubmenuAnchor] = useState<HTMLElement | null>(null);
   const [downloadSubmenuAnchor, setDownloadSubmenuAnchor] = useState<HTMLElement | null>(null);
 
   // Build the list of download options:
@@ -65,8 +66,7 @@ export const BookCard = ({
   const canDownload = downloadOptions.length > 0;
   const canSendToKindle =
     Boolean(data.originalFileBlobPath) || Boolean(data.convertedFiles?.['epub']);
-  const hasShareSubmenu = Boolean(onShare || (onSendToKindle && canSendToKindle));
-  const hasMenuItems = Boolean(onDelete || canDownload || hasShareSubmenu);
+  const hasMenuItems = Boolean(onDelete || canDownload || onShare || (onSendToKindle && canSendToKindle));
   const firstImage = data.imagesByHref ? (Object.values(data.imagesByHref)[0] ?? null) : null;
   const progressPercent =
     data.paragraphs.length > 0 && data.readingPosition
@@ -80,7 +80,6 @@ export const BookCard = ({
 
   const handleMenuClose = () => {
     setMenuAnchor(null);
-    setShareSubmenuAnchor(null);
     setDownloadSubmenuAnchor(null);
   };
 
@@ -198,18 +197,28 @@ export const BookCard = ({
             onClick={(e) => e.stopPropagation()}
             slotProps={{ paper: { sx: { minWidth: '170px' } } }}
           >
-            {hasShareSubmenu && (
+            {onShare && (
               <MenuItem
-                data-testid={`book-share-menu-${data.id}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setDownloadSubmenuAnchor(null);
-                  setShareSubmenuAnchor((prev) => (prev ? null : e.currentTarget));
+                data-testid={`book-share-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onShare(data);
                 }}
               >
                 <Share2 size={'14px'} style={{ marginRight: '8px' }} />
                 {i18n._('Share')}
-                <ChevronRight size={'14px'} style={{ marginLeft: 'auto', opacity: 0.5 }} />
+              </MenuItem>
+            )}
+            {onSendToKindle && canSendToKindle && (
+              <MenuItem
+                data-testid={`book-send-to-kindle-${data.id}`}
+                onClick={() => {
+                  handleMenuClose();
+                  onSendToKindle(data);
+                }}
+              >
+                <Tablet size={'14px'} style={{ marginRight: '8px' }} />
+                {i18n._('Send to Kindle')}
               </MenuItem>
             )}
             {canDownload && (
@@ -217,7 +226,6 @@ export const BookCard = ({
                 data-testid={`book-download-menu-${data.id}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setShareSubmenuAnchor(null);
                   setDownloadSubmenuAnchor((prev) => (prev ? null : e.currentTarget));
                 }}
               >
@@ -264,42 +272,6 @@ export const BookCard = ({
                 {label}
               </MenuItem>
             ))}
-          </Menu>
-
-          {/* Share submenu */}
-          <Menu
-            anchorEl={shareSubmenuAnchor}
-            open={Boolean(shareSubmenuAnchor)}
-            onClose={() => setShareSubmenuAnchor(null)}
-            onClick={(e) => e.stopPropagation()}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-            slotProps={{ paper: { sx: { minWidth: '170px' } } }}
-          >
-            {onShare && (
-              <MenuItem
-                data-testid={`book-share-${data.id}`}
-                onClick={() => {
-                  handleMenuClose();
-                  onShare(data);
-                }}
-              >
-                <Share2 size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('With other users')}
-              </MenuItem>
-            )}
-            {onSendToKindle && canSendToKindle && (
-              <MenuItem
-                data-testid={`book-send-to-kindle-${data.id}`}
-                onClick={() => {
-                  handleMenuClose();
-                  onSendToKindle(data);
-                }}
-              >
-                <Tablet size={'14px'} style={{ marginRight: '8px' }} />
-                {i18n._('Send to Kindle')}
-              </MenuItem>
-            )}
           </Menu>
         </>
       )}
@@ -373,7 +345,14 @@ export const BookCard = ({
           {data.author}
         </Typography>
         <Typography variant="caption" sx={{ opacity: 0.6, color: '#fff' }}>
-          {progressPercent}%
+          {isProcessing ? (
+            <Stack component="span" sx={{ flexDirection: 'row', alignItems: 'center', gap: '4px' }}>
+              <CircularProgress size={10} sx={{ color: 'rgba(255,255,255,0.7)' }} />
+              {i18n._('Processing…')}
+            </Stack>
+          ) : (
+            `${progressPercent}%`
+          )}
         </Typography>
       </Stack>
     </Stack>

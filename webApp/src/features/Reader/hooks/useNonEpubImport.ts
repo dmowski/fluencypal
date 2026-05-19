@@ -27,6 +27,7 @@ export const useNonEpubImport = ({
   const books = useBooks();
 
   const [isImporting, setIsImporting] = useState(false);
+  const [processingBookId, setProcessingBookId] = useState<string | null>(null);
   const [importProgress, setImportProgress] = useState(0);
   const [importMessage, setImportMessage] = useState('');
   const [importError, setImportError] = useState('');
@@ -43,6 +44,7 @@ export const useNonEpubImport = ({
       // 1. Pre-generate the book ID and create a minimal Firestore stub so
       //    Firebase Storage security rules allow writing to books/{bookId}/.
       const bookId = generateBookId();
+      setProcessingBookId(bookId);
       await createFirestoreBookStub(bookId, uid);
 
       setImportProgress(10);
@@ -113,11 +115,13 @@ export const useNonEpubImport = ({
       setImportMessage('');
     } finally {
       setIsImporting(false);
+      setProcessingBookId(null);
     }
   };
 
   return {
     isImporting,
+    processingBookId,
     importProgress,
     importMessage,
     importError,
