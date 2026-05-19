@@ -157,6 +157,13 @@ export const BooksList = () => {
   };
 
   const handleDelete = (book: Book) => {
+    if (!auth.uid) {
+      // Not logged in — book is local-only, skip sharing logic.
+      if (!window.confirm(i18n._('Delete this book?'))) return;
+      books.deleteBook(book);
+      return;
+    }
+
     const isOwner = !book.ownerUserId || book.ownerUserId === auth.uid;
     const hasCollaborators = (book.userIds?.length ?? 0) > 0;
 
