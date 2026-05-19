@@ -325,7 +325,7 @@ msgid "Add"
 msgstr "أضف"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:411
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "أضف كتاباً"
@@ -2502,7 +2502,7 @@ msgid "Debates"
 msgstr "مناظرات"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:255
+#: src/features/Reader/components/Cards.tsx:239
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2955,14 +2955,15 @@ msgstr "تم:"
 msgid "Don’t let mistakes stop you."
 msgstr "لا تدع الأخطاء توقفك."
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:225
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "تنزيل"
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:56
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:57
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "تحميل EPUB"
@@ -2977,7 +2978,7 @@ msgstr "جارٍ تنزيل الكتاب من مشروع جوتنبرج..."
 msgid "Downloading converted file…"
 msgstr "جاري تنزيل الملف المحوّل..."
 
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "جارٍ التنزيل..."
@@ -2992,7 +2993,7 @@ msgstr "التنشير"
 msgid "Drop EPUB file here"
 msgstr "ضع ملف EPUB هنا"
 
-#: src/features/Reader/components/BooksList.tsx:531
+#: src/features/Reader/components/BooksList.tsx:530
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "قم بإسقاط ملفات EPUB أو PDF أو DOCX لاستيراد الكتاب"
@@ -6091,7 +6092,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "لنتأكد من أنك جاهز"
 
-#: src/features/Reader/components/BooksList.tsx:451
+#: src/features/Reader/components/BooksList.tsx:450
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "مكتبة"
@@ -6188,7 +6189,7 @@ msgstr "جارٍ تحميل كلمة..."
 msgid "Loading article..."
 msgstr "جارٍ تحميل المقالة..."
 
-#: src/features/Reader/components/BooksList.tsx:454
+#: src/features/Reader/components/BooksList.tsx:453
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "جارٍ تحميل المكتبة..."
@@ -8257,7 +8258,7 @@ msgstr "تتبع التقدم"
 msgid "Progress tracking to see your improvement"
 msgstr "تتبع التقدم لرؤية تحسينك"
 
-#: src/features/Reader/components/Cards.tsx:445
+#: src/features/Reader/components/Cards.tsx:490
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "مشروع جوتنبرج"
@@ -8359,11 +8360,6 @@ msgstr "رتب في المراكز الخمسة الأولى للحصول على
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "خام"
-
-#: src/features/Reader/components/Cards.tsx:230
-#. js-lingui-explicit-id
-msgid "Re-import"
-msgstr "إعادة الاستيراد"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -9204,7 +9200,7 @@ msgstr "إرسال الطلب"
 msgid "Send sign-in link"
 msgstr "إرسال رابط تسجيل الدخول"
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:300
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9281,7 +9277,7 @@ msgstr "الإعدادات"
 msgid "Sexual content"
 msgstr "محتوى جنسي"
 
-#: src/features/Reader/components/Cards.tsx:206
+#: src/features/Reader/components/Cards.tsx:211
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -11941,6 +11937,11 @@ msgstr ""
 "مع FluencyPal، يمكنك تحسين تجربة التعلم الخاصة بك من خلال الاستفادة من "
 "الردود المخصصة، التصحيحات الفورية، والمجتمع المتعاون."
 
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+msgid "With Reader User"
+msgstr "مع مستخدم القارئ"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
 msgid ""
@@ -12711,7 +12712,7 @@ msgstr "أنت تسير بشكل جيد. ألقِ نظرة على مهام ال�
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "أنت في تدفق جيد. واصل مهام اليوم."
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:506
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} تحميلات"
@@ -12756,3 +12757,8 @@ msgstr "{winnerName} فاز!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| فلوينسي بال"
+
+#: src/features/Reader/components/Cards.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Re-import"
+#~ msgstr "إعادة الاستيراد"

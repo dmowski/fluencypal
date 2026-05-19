@@ -310,7 +310,7 @@ msgid "Add"
 msgstr "追加"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:411
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "本を追加"
@@ -2431,7 +2431,7 @@ msgid "Debates"
 msgstr "ディベート"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:255
+#: src/features/Reader/components/Cards.tsx:239
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2854,14 +2854,15 @@ msgstr "完了："
 msgid "Don’t let mistakes stop you."
 msgstr "ミスがあなたを止めることを許さないでください。"
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:225
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:56
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:57
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "EPUBをダウンロード"
@@ -2876,7 +2877,7 @@ msgstr "プロジェクト・グーテンベルクからの書籍のダウンロ
 msgid "Downloading converted file…"
 msgstr "変換されたファイルをダウンロード中…"
 
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "ダウンロード中..."
@@ -2891,7 +2892,7 @@ msgstr "ドキシング"
 msgid "Drop EPUB file here"
 msgstr "ここにEPUBファイルをドロップしてください"
 
-#: src/features/Reader/components/BooksList.tsx:531
+#: src/features/Reader/components/BooksList.tsx:530
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "EPUB、PDF、またはDOCXをドロップして本をインポート"
@@ -5829,7 +5830,7 @@ msgstr "あなたについて少し話しましょう。これにより、練習
 msgid "Let’s make sure you’re ready"
 msgstr "あなたが準備できていることを確認しましょう"
 
-#: src/features/Reader/components/BooksList.tsx:451
+#: src/features/Reader/components/BooksList.tsx:450
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "ライブラリ"
@@ -5930,7 +5931,7 @@ msgstr ""
 msgid "Loading article..."
 msgstr "記事を読み込んでいます..."
 
-#: src/features/Reader/components/BooksList.tsx:454
+#: src/features/Reader/components/BooksList.tsx:453
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "ライブラリを読み込んでいます…"
@@ -7901,7 +7902,7 @@ msgstr "進行状況の追跡"
 msgid "Progress tracking to see your improvement"
 msgstr "進捗追跡であなたの改善を確認"
 
-#: src/features/Reader/components/Cards.tsx:445
+#: src/features/Reader/components/Cards.tsx:490
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "プロジェクト・グーテンベルク"
@@ -8001,11 +8002,6 @@ msgstr "トップ5にランクインして、全ての機能にフルアクセ�
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "生"
-
-#: src/features/Reader/components/Cards.tsx:230
-#. js-lingui-explicit-id
-msgid "Re-import"
-msgstr "再インポート"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -8824,7 +8820,7 @@ msgstr "リクエストを送信"
 msgid "Send sign-in link"
 msgstr "サインインリンクを送信"
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:300
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -8899,7 +8895,7 @@ msgstr ""
 msgid "Sexual content"
 msgstr "性的内容"
 
-#: src/features/Reader/components/Cards.tsx:206
+#: src/features/Reader/components/Cards.tsx:211
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -11462,6 +11458,11 @@ msgstr ""
 "FluencyPalを使用すれば、パーソナライズされたフィードバック、リアルタイムの訂正、そして支援的なコミュニティを通じて学習体験を向上させることがで"
 "きます。"
 
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+msgid "With Reader User"
+msgstr "読者ユーザーと共に"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
 msgid ""
@@ -12175,7 +12176,7 @@ msgstr "あなたは順調です。今日のタスクを見てみましょう。
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "良い流れに乗っていますね。今日のタスクを続けてください。"
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:506
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} ダウンロード"
@@ -12220,3 +12221,8 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/Reader/components/Cards.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Re-import"
+#~ msgstr "再インポート"

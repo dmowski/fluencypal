@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Ekle"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:411
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Kitap ekle"
@@ -2516,7 +2516,7 @@ msgid "Debates"
 msgstr "Tartışmalar"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:255
+#: src/features/Reader/components/Cards.tsx:239
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2980,14 +2980,15 @@ msgstr "Tamam:"
 msgid "Don’t let mistakes stop you."
 msgstr "Hataların seni durdurmasına izin verme."
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:225
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "İndir"
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:56
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:57
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "EPUB İndir"
@@ -3002,7 +3003,7 @@ msgstr "Project Gutenberg'den kitap indiriliyor..."
 msgid "Downloading converted file…"
 msgstr "Dönüştürülmüş dosya indiriliyor…"
 
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "İndiriliyor..."
@@ -3017,7 +3018,7 @@ msgstr "Doxxing"
 msgid "Drop EPUB file here"
 msgstr "EPUB dosyasını buraya bırakın"
 
-#: src/features/Reader/components/BooksList.tsx:531
+#: src/features/Reader/components/BooksList.tsx:530
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "EPUB, PDF veya DOCX dosyasını bırakın, kitabı içe aktarın"
@@ -6165,7 +6166,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Hadi, hazır olduğundan emin olalım"
 
-#: src/features/Reader/components/BooksList.tsx:451
+#: src/features/Reader/components/BooksList.tsx:450
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Kütüphane"
@@ -6262,7 +6263,7 @@ msgstr "Bir kelime yükleniyor..."
 msgid "Loading article..."
 msgstr "Makaleyi yüklüyor..."
 
-#: src/features/Reader/components/BooksList.tsx:454
+#: src/features/Reader/components/BooksList.tsx:453
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
@@ -8318,7 +8319,7 @@ msgstr "İlerleme takibi"
 msgid "Progress tracking to see your improvement"
 msgstr "Gelişiminizi görmek için ilerleme takibi"
 
-#: src/features/Reader/components/Cards.tsx:445
+#: src/features/Reader/components/Cards.tsx:490
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Proje Gutenberg"
@@ -8416,11 +8417,6 @@ msgstr "İlk 5'te yer alarak tüm özelliklere tam erişim sağlayın!"
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Ham"
-
-#: src/features/Reader/components/Cards.tsx:230
-#. js-lingui-explicit-id
-msgid "Re-import"
-msgstr "Yeniden içe aktar"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -9262,7 +9258,7 @@ msgstr "İsteği Gönder"
 msgid "Send sign-in link"
 msgstr "Oturum açma bağlantısını gönder"
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:300
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9337,7 +9333,7 @@ msgstr "Ayarlar"
 msgid "Sexual content"
 msgstr "Cinsel içerik"
 
-#: src/features/Reader/components/Cards.tsx:206
+#: src/features/Reader/components/Cards.tsx:211
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -12012,6 +12008,11 @@ msgstr ""
 "düzeltmeler ve destekleyici bir toplulukla öğrenme deneyiminizi "
 "geliştirebilirsiniz."
 
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+msgid "With Reader User"
+msgstr "Okuyucu Kullanıcı ile"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
 msgid ""
@@ -12797,7 +12798,7 @@ msgstr "İyi gidiyorsun. Bugünün görevlerine bir göz at."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "İyi bir akıştasın. Bugünkü görevlerle devam et."
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:506
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} indirme"
@@ -12842,3 +12843,8 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
+
+#: src/features/Reader/components/Cards.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Re-import"
+#~ msgstr "Yeniden içe aktar"

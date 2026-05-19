@@ -325,7 +325,7 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:411
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Добавить книгу"
@@ -2533,7 +2533,7 @@ msgid "Debates"
 msgstr "Дебаты"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:255
+#: src/features/Reader/components/Cards.tsx:239
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2997,14 +2997,15 @@ msgstr "Готово:"
 msgid "Don’t let mistakes stop you."
 msgstr "Не позволяйте ошибкам останавливать вас."
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:225
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Скачать"
 
-#: src/features/Reader/components/Cards.tsx:48
-#: src/features/Reader/components/Cards.tsx:56
+#: src/features/Reader/components/Cards.tsx:49
+#: src/features/Reader/components/Cards.tsx:57
 #. js-lingui-explicit-id
 msgid "Download EPUB"
 msgstr "Скачать EPUB"
@@ -3019,7 +3020,7 @@ msgstr "Загрузка книги с Проекта Гутенберг..."
 msgid "Downloading converted file…"
 msgstr "Загрузка преобразованного файла…"
 
-#: src/features/Reader/components/Cards.tsx:487
+#: src/features/Reader/components/Cards.tsx:532
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Загрузка..."
@@ -3034,7 +3035,7 @@ msgstr "Доксинг"
 msgid "Drop EPUB file here"
 msgstr "Перетащите файл EPUB сюда"
 
-#: src/features/Reader/components/BooksList.tsx:531
+#: src/features/Reader/components/BooksList.tsx:530
 #. js-lingui-explicit-id
 msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "Перетащите EPUB, PDF или DOCX, чтобы импортировать книгу"
@@ -6208,7 +6209,7 @@ msgstr ""
 msgid "Let’s make sure you’re ready"
 msgstr "Давайте убедимся, что вы готовы"
 
-#: src/features/Reader/components/BooksList.tsx:451
+#: src/features/Reader/components/BooksList.tsx:450
 #. js-lingui-explicit-id
 msgid "Library"
 msgstr "Библиотека"
@@ -6305,7 +6306,7 @@ msgstr "Загрузка слова..."
 msgid "Loading article..."
 msgstr "Загрузка статьи..."
 
-#: src/features/Reader/components/BooksList.tsx:454
+#: src/features/Reader/components/BooksList.tsx:453
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Загрузка библиотеки..."
@@ -8379,7 +8380,7 @@ msgstr "Отслеживание прогресса"
 msgid "Progress tracking to see your improvement"
 msgstr "Отслеживание прогресса, чтобы увидеть ваше улучшение"
 
-#: src/features/Reader/components/Cards.tsx:445
+#: src/features/Reader/components/Cards.tsx:490
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Проект Гутенберг"
@@ -8477,11 +8478,6 @@ msgstr "Займите место в топ-5, чтобы получить по�
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Сырой"
-
-#: src/features/Reader/components/Cards.tsx:230
-#. js-lingui-explicit-id
-msgid "Re-import"
-msgstr "Повторный импорт"
 
 #: src/features/Chat/SubmitForm.tsx:330
 #: src/features/Conversation/ConversationCanvas.tsx:690
@@ -9332,7 +9328,7 @@ msgstr "Отправить запрос"
 msgid "Send sign-in link"
 msgstr "Отправить ссылку для входа"
 
-#: src/features/Reader/components/Cards.tsx:218
+#: src/features/Reader/components/Cards.tsx:300
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9407,7 +9403,7 @@ msgstr "Настройки"
 msgid "Sexual content"
 msgstr "Сексуальный контент"
 
-#: src/features/Reader/components/Cards.tsx:206
+#: src/features/Reader/components/Cards.tsx:211
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -12099,6 +12095,11 @@ msgstr ""
 "персонализированной обратной связи, корректировок в реальном времени и "
 "поддерживающего сообщества."
 
+#: src/features/Reader/components/Cards.tsx:288
+#. js-lingui-explicit-id
+msgid "With Reader User"
+msgstr "С читателем Пользователь"
+
 #: src/features/Conversation/CallMode/CallButtons.tsx:403
 #. js-lingui-explicit-id
 msgid ""
@@ -12888,7 +12889,7 @@ msgstr "Вы хорошо справляетесь. Взгляните на за
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Вы в хорошем ритме. Продолжайте с сегодняшними задачами."
 
-#: src/features/Reader/components/Cards.tsx:461
+#: src/features/Reader/components/Cards.tsx:506
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} загрузок"
@@ -12933,3 +12934,8 @@ msgstr "{winnerName} победил!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Reader/components/Cards.tsx:230
+#. js-lingui-explicit-id
+#~ msgid "Re-import"
+#~ msgstr "Повторный импорт"
