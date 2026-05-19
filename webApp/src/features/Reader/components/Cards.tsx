@@ -7,7 +7,15 @@ import { Book } from '../model/types';
 import { ReaderLibraryBook } from '../model/library';
 import { getDownloadFileName } from '../utils/epubFileName';
 import { useLingui } from '@lingui/react';
-import { ChevronRight, CirclePlus, Download, MoreVertical, Share2, Tablet, Trash2 } from 'lucide-react';
+import {
+  ChevronRight,
+  CirclePlus,
+  Download,
+  MoreVertical,
+  Share2,
+  Tablet,
+  Trash2,
+} from 'lucide-react';
 
 export const BookCard = ({
   data,
@@ -72,6 +80,8 @@ export const BookCard = ({
 
   const handleMenuClose = () => {
     setMenuAnchor(null);
+    setShareSubmenuAnchor(null);
+    setDownloadSubmenuAnchor(null);
   };
 
   const handleDownload = async (ext: string, blobPath: string | null) => {
@@ -193,8 +203,8 @@ export const BookCard = ({
                 data-testid={`book-share-menu-${data.id}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setMenuAnchor(null);
-                  setShareSubmenuAnchor(menuButtonRef.current);
+                  setDownloadSubmenuAnchor(null);
+                  setShareSubmenuAnchor((prev) => (prev ? null : e.currentTarget));
                 }}
               >
                 <Share2 size={'14px'} style={{ marginRight: '8px' }} />
@@ -207,8 +217,8 @@ export const BookCard = ({
                 data-testid={`book-download-menu-${data.id}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setMenuAnchor(null);
-                  setDownloadSubmenuAnchor(menuButtonRef.current);
+                  setShareSubmenuAnchor(null);
+                  setDownloadSubmenuAnchor((prev) => (prev ? null : e.currentTarget));
                 }}
               >
                 <Download size={'14px'} style={{ marginRight: '8px' }} />
@@ -237,6 +247,8 @@ export const BookCard = ({
             open={Boolean(downloadSubmenuAnchor)}
             onClose={() => setDownloadSubmenuAnchor(null)}
             onClick={(e) => e.stopPropagation()}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
             slotProps={{ paper: { sx: { minWidth: '170px' } } }}
           >
             {downloadOptions.map(({ ext, label, blobPath }) => (
@@ -244,7 +256,7 @@ export const BookCard = ({
                 key={ext}
                 data-testid={`book-download-${ext}-${data.id}`}
                 onClick={() => {
-                  setDownloadSubmenuAnchor(null);
+                  handleMenuClose();
                   void handleDownload(ext, blobPath);
                 }}
               >
@@ -260,13 +272,15 @@ export const BookCard = ({
             open={Boolean(shareSubmenuAnchor)}
             onClose={() => setShareSubmenuAnchor(null)}
             onClick={(e) => e.stopPropagation()}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
             slotProps={{ paper: { sx: { minWidth: '170px' } } }}
           >
             {onShare && (
               <MenuItem
                 data-testid={`book-share-${data.id}`}
                 onClick={() => {
-                  setShareSubmenuAnchor(null);
+                  handleMenuClose();
                   onShare(data);
                 }}
               >
@@ -278,7 +292,7 @@ export const BookCard = ({
               <MenuItem
                 data-testid={`book-send-to-kindle-${data.id}`}
                 onClick={() => {
-                  setShareSubmenuAnchor(null);
+                  handleMenuClose();
                   onSendToKindle(data);
                 }}
               >
