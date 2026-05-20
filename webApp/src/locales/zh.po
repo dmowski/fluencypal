@@ -306,7 +306,7 @@ msgid "Add"
 msgstr "添加"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:405
+#: src/features/Reader/components/Cards.tsx:410
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "添加书籍"
@@ -652,7 +652,7 @@ msgid ""
 "code, you're welcome to improve it."
 msgstr "所有源代码都是开放和公开可用的。如果你会编程，欢迎你来改进它。"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:514
+#: src/features/ProgressStat/ProgressViewChart.tsx:454
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "所有时间"
@@ -888,6 +888,11 @@ msgstr "认证"
 msgid "Author"
 msgstr "作者"
 
+#: src/features/News/NewsFeedModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Auto"
+msgstr "自动"
+
 #: src/features/News/NewsSettingsMenu.tsx:104
 #. js-lingui-explicit-id
 msgid "Auto (account country)"
@@ -913,7 +918,7 @@ msgstr "可用语言："
 msgid "Avatar"
 msgstr "阿凡达"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:245
+#: src/features/ProgressStat/ProgressViewChart.tsx:246
 #. js-lingui-explicit-id
 msgid "Average level during the selected period"
 msgstr "在选定期间的平均水平"
@@ -1339,6 +1344,7 @@ msgstr "我可以在智能手机上使用吗？"
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
+#: src/features/Reader/components/Reader.tsx:319
 #: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
@@ -1485,7 +1491,7 @@ msgstr ""
 "## 情境如何运作\n"
 "你将扮演抵达酒店的客人，而我们的AI则扮演接待员。接待员会询问你的姓名、预订信息及任何特殊请求。通过自然地回应，你将培养顺利办理酒店入住所需的对话技巧。"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:365
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
 msgid "Check other grammar points and examples."
 msgstr "查看其他语法点和例子。"
@@ -1589,6 +1595,7 @@ msgstr "点击“添加新的已批准电子邮件地址”并输入："
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Reader/components/Reader.tsx:327
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1602,6 +1609,11 @@ msgstr "关闭"
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "关闭设置"
+
+#: src/features/Reader/components/Reader.tsx:315
+#. js-lingui-explicit-id
+msgid "Close the book?"
+msgstr "关闭书本？"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -1703,12 +1715,12 @@ msgstr "比较"
 msgid "Complete all daily tasks to gain full access for that day!"
 msgstr "完成所有每日任务即可获得当天的全部访问权限！"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:253
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:251
 #. js-lingui-explicit-id
 msgid "Complete all examples to unlock the AI training option."
 msgstr "完成所有示例以解锁 AI 培训选项。"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:309
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:307
 #. js-lingui-explicit-id
 msgid "Complete all interactive examples to unlock AI practice."
 msgstr "完成所有互动示例以解锁AI练习。"
@@ -1769,7 +1781,7 @@ msgstr "并发性与弹性"
 msgid "Concurrency and resiliency assessment"
 msgstr "并发性和弹性评估"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:115
+#: src/features/ProgressStat/ProgressViewChart.tsx:116
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "信心"
@@ -2049,12 +2061,6 @@ msgstr "无法找到页面"
 msgid "Could not load article"
 msgstr "无法加载文章"
 
-#: src/features/News/NewsDashboardCard.tsx:82
-#: src/features/News/NewsDashboardCard.tsx:91
-#. js-lingui-explicit-id
-msgid "Could not load news"
-msgstr "无法加载新闻"
-
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
 msgid "Country"
@@ -2173,7 +2179,7 @@ msgstr "创建您自己的角色扮演场景"
 msgid "Create Your Own Scenario"
 msgstr "创建您自己的场景"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:180
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "正在创建您的改进..."
@@ -2410,7 +2416,7 @@ msgid "Debates"
 msgstr "辩论"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:262
+#: src/features/Reader/components/Cards.tsx:267
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2711,7 +2717,7 @@ msgstr "讨论主题"
 msgid "Discuss today’s news with the AI"
 msgstr "与 AI 讨论今天的新闻"
 
-#: src/features/News/NewsDashboardCard.tsx:103
+#: src/features/News/NewsDashboardCard.tsx:25
 #: src/features/News/NewsModal.tsx:312
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
@@ -2818,7 +2824,7 @@ msgstr "完成"
 msgid "Done recording"
 msgstr "完成录音"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Done:"
 msgstr "完成:"
@@ -2830,8 +2836,8 @@ msgstr "不要让错误阻碍你。"
 
 #: src/features/Reader/components/Cards.tsx:66
 #: src/features/Reader/components/Cards.tsx:73
-#: src/features/Reader/components/Cards.tsx:248
-#: src/features/Reader/components/Cards.tsx:526
+#: src/features/Reader/components/Cards.tsx:253
+#: src/features/Reader/components/Cards.tsx:531
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "下载"
@@ -2851,7 +2857,7 @@ msgstr "正在从古腾堡计划下载书籍..."
 msgid "Downloading converted file…"
 msgstr "正在下载已转换的文件…"
 
-#: src/features/Reader/components/Cards.tsx:526
+#: src/features/Reader/components/Cards.tsx:531
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "正在下载..."
@@ -3404,7 +3410,7 @@ msgstr "解释您的步骤（重现、隔离、修复、验证）"
 msgid "Explore All Features"
 msgstr "探索所有功能"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:361
 #. js-lingui-explicit-id
 msgid "Explore more grammar points"
 msgstr "探索更多语法点"
@@ -3563,11 +3569,6 @@ msgstr "反馈含糊不清：“**经验不足**”——但如果没有工作�
 msgid "Feedback that helps"
 msgstr "能够提供帮助的反馈"
 
-#: src/features/News/NewsDashboardCard.tsx:89
-#. js-lingui-explicit-id
-msgid "Fetching the latest stories..."
-msgstr "正在获取最新的故事..."
-
 #: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
@@ -3643,7 +3644,7 @@ msgstr "修正重复的错误，并提供清晰的解释、测验和有针对性
 msgid "Fixed words"
 msgstr "固定词汇"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:114
+#: src/features/ProgressStat/ProgressViewChart.tsx:115
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "流利度"
@@ -4410,7 +4411,7 @@ msgstr "Google Calls 模拟器"
 
 #: src/features/Landing/LandingPage.tsx:396
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:112
+#: src/features/ProgressStat/ProgressViewChart.tsx:113
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "语法"
@@ -5213,7 +5214,7 @@ msgstr "印度尼西亚语学习计划"
 msgid "Initiate brain connection"
 msgstr "启动脑连接"
 
-#: src/features/News/NewsDashboardCard.tsx:104
+#: src/features/News/NewsDashboardCard.tsx:24
 #. js-lingui-explicit-id
 msgid "Inspired by current events"
 msgstr "受到当前事件的启发"
@@ -5259,7 +5260,7 @@ msgstr "集成测试"
 msgid "Integration Tests"
 msgstr "集成测试"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:248
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "互动示例："
@@ -5381,7 +5382,7 @@ msgid ""
 "optimization without panic."
 msgstr "它帮助我在回答有关无障碍和性能优化的问题时不再感到恐慌。"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:185
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:183
 #. js-lingui-explicit-id
 msgid ""
 "It might take about a minute to prepare rules and examples based on your "
@@ -5434,12 +5435,12 @@ msgstr "工作面试技巧"
 msgid "Join"
 msgstr "加入"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:333
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Join a Call"
 msgstr "加入通话"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:305
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Join a call with our AI tutor to practice this rule."
 msgstr "加入与我们的AI导师的通话来练习这个规则。"
@@ -5566,7 +5567,7 @@ msgstr "语言"
 msgid "Languages installed in your brain:"
 msgstr "安装在您大脑中的语言："
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:512
+#: src/features/ProgressStat/ProgressViewChart.tsx:452
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "最近三个月"
@@ -5578,7 +5579,7 @@ msgstr "最近三个月"
 
 #: src/features/ProgressStat/ProgressRadarCharts.tsx:183
 #: src/features/ProgressStat/ProgressStatModal.tsx:72
-#: src/features/ProgressStat/ProgressViewChart.tsx:511
+#: src/features/ProgressStat/ProgressViewChart.tsx:451
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "过去30天"
@@ -5588,7 +5589,7 @@ msgstr "过去30天"
 msgid "Last 30 days vs previous 30 days — see how your metrics shifted."
 msgstr "过去30天与之前30天——查看您的指标如何变化。"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:513
+#: src/features/ProgressStat/ProgressViewChart.tsx:453
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "过去 6 个月"
@@ -5867,11 +5868,6 @@ msgstr "正在加载文章..."
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "正在加载库..."
-
-#: src/features/News/NewsDashboardCard.tsx:80
-#. js-lingui-explicit-id
-msgid "Loading news..."
-msgstr "加载新闻..."
 
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
@@ -6303,6 +6299,7 @@ msgstr "新空间"
 msgid "New Words"
 msgstr "新词"
 
+#: src/features/News/NewsFeedModal.tsx:81
 #: src/features/Tasks/useDailyTasks.tsx:101
 #. js-lingui-explicit-id
 msgid "News"
@@ -6478,8 +6475,7 @@ msgstr "尚无消息"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "暂无消息。快来分享你的想法吧！"
 
-#: src/features/News/NewsDashboardCard.tsx:84
-#: src/features/News/NewsDashboardCard.tsx:93
+#: src/features/News/NewsFeedModal.tsx:106
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "今天你的国家还没有新闻。"
@@ -6506,7 +6502,7 @@ msgstr "不收取任何费用。您的卡不会在此步骤中被储存或用于
 msgid "No payments..."
 msgstr "无需支付..."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:297
+#: src/features/ProgressStat/ProgressViewChart.tsx:298
 #. js-lingui-explicit-id
 msgid "No previous data to compare"
 msgstr "没有可供比较的先前数据"
@@ -6801,7 +6797,7 @@ msgstr "打开新闻设置"
 msgid "Open personal plan"
 msgstr "打开个人计划"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:447
+#: src/features/ProgressStat/ProgressViewChart.tsx:387
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "打开进度设置"
@@ -7027,8 +7023,8 @@ msgstr "性能指标"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "性能、弹性和架构模式"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:504
-#: src/features/ProgressStat/ProgressViewChart.tsx:508
+#: src/features/ProgressStat/ProgressViewChart.tsx:444
+#: src/features/ProgressStat/ProgressViewChart.tsx:448
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "期间"
@@ -7744,7 +7740,7 @@ msgstr "正在处理最新会话"
 msgid "Processing..."
 msgstr "处理中..."
 
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:371
 #. js-lingui-explicit-id
 msgid "Processing…"
 msgstr "处理中…"
@@ -7791,7 +7787,7 @@ msgstr "进度日历"
 msgid "Progress insights are locked"
 msgstr "进度洞察已锁定"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:500
+#: src/features/ProgressStat/ProgressViewChart.tsx:440
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "进度设置"
@@ -7816,7 +7812,7 @@ msgstr "进度跟踪"
 msgid "Progress tracking to see your improvement"
 msgstr "进度跟踪以查看您的进步"
 
-#: src/features/Reader/components/Cards.tsx:484
+#: src/features/Reader/components/Cards.tsx:489
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "古腾堡计划"
@@ -7910,7 +7906,7 @@ msgstr "在排行榜上排名前五，免费获得应用！"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "排名前5以获得所有功能的完全访问权限！"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:526
+#: src/features/ProgressStat/ProgressViewChart.tsx:466
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "生动"
@@ -7953,8 +7949,7 @@ msgid ""
 msgstr "React、Vue 或 Angular 专家面临架构和系统设计环节"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:56
-#: src/features/Reader/components/Reader.tsx:338
+#: src/features/Reader/components/Reader.tsx:373
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "阅读"
@@ -8010,7 +8005,7 @@ msgstr "准备开始"
 msgid "Ready to play?"
 msgstr "准备好玩了吗？"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:301
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:299
 #. js-lingui-explicit-id
 msgid "Ready to real practice?"
 msgstr "准备好进行真正的练习了吗？"
@@ -8728,7 +8723,7 @@ msgstr "发送请求"
 msgid "Send sign-in link"
 msgstr "发送登录链接"
 
-#: src/features/Reader/components/Cards.tsx:236
+#: src/features/Reader/components/Cards.tsx:241
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -8801,7 +8796,7 @@ msgstr "设置"
 msgid "Sexual content"
 msgstr "性内容"
 
-#: src/features/Reader/components/Cards.tsx:224
+#: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9015,7 +9010,7 @@ msgstr "小对话练习"
 msgid "Smart Start"
 msgstr "智能启动"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:527
+#: src/features/ProgressStat/ProgressViewChart.tsx:467
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "平滑的"
@@ -10824,8 +10819,8 @@ msgstr "UX和可访问性"
 msgid "Vacancy description"
 msgstr "职位描述"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:519
-#: src/features/ProgressStat/ProgressViewChart.tsx:523
+#: src/features/ProgressStat/ProgressViewChart.tsx:459
+#: src/features/ProgressStat/ProgressViewChart.tsx:463
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "价值模式"
@@ -10895,7 +10890,7 @@ msgid ""
 msgstr "可视化您的每日进展，使用直观的跟踪功能。通过清晰地看到您的改善，保持动力。"
 
 #: src/features/Landing/LandingPage.tsx:407
-#: src/features/ProgressStat/ProgressViewChart.tsx:113
+#: src/features/ProgressStat/ProgressViewChart.tsx:114
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "词汇"
@@ -12014,7 +12009,7 @@ msgstr "你做得很好。看看今天的任务。"
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "你正处于良好状态。继续完成今天的任务。"
 
-#: src/features/Reader/components/Cards.tsx:500
+#: src/features/Reader/components/Cards.tsx:505
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} 下载"
@@ -12059,6 +12054,22 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/News/NewsDashboardCard.tsx:82
+#: src/features/News/NewsDashboardCard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Could not load news"
+#~ msgstr "无法加载新闻"
+
+#: src/features/News/NewsDashboardCard.tsx:89
+#. js-lingui-explicit-id
+#~ msgid "Fetching the latest stories..."
+#~ msgstr "正在获取最新的故事..."
+
+#: src/features/News/NewsDashboardCard.tsx:80
+#. js-lingui-explicit-id
+#~ msgid "Loading news..."
+#~ msgstr "加载新闻..."
 
 #: src/features/Reader/components/BooksList.tsx:394
 #. js-lingui-explicit-id

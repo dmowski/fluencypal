@@ -323,7 +323,7 @@ msgid "Add"
 msgstr "Tilføj"
 
 #: src/features/Reader/components/AddBookModal.tsx:242
-#: src/features/Reader/components/Cards.tsx:405
+#: src/features/Reader/components/Cards.tsx:410
 #. js-lingui-explicit-id
 msgid "Add a book"
 msgstr "Tilføj en bog"
@@ -682,7 +682,7 @@ msgstr ""
 "Al kildekode er åben og offentligt tilgængelig. Hvis du ved, hvordan man "
 "koder, er du velkommen til at forbedre den."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:514
+#: src/features/ProgressStat/ProgressViewChart.tsx:454
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "Al tid"
@@ -924,6 +924,11 @@ msgstr "Godkendelse"
 msgid "Author"
 msgstr "Forfatter"
 
+#: src/features/News/NewsFeedModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Auto"
+msgstr "Auto"
+
 #: src/features/News/NewsSettingsMenu.tsx:104
 #. js-lingui-explicit-id
 msgid "Auto (account country)"
@@ -949,7 +954,7 @@ msgstr "Tilgængelige sprog:"
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:245
+#: src/features/ProgressStat/ProgressViewChart.tsx:246
 #. js-lingui-explicit-id
 msgid "Average level during the selected period"
 msgstr "Gennemsnitligt niveau i den valgte periode"
@@ -1388,6 +1393,7 @@ msgstr "Kan jeg bruge den på smartphone?"
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
+#: src/features/Reader/components/Reader.tsx:319
 #: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
@@ -1549,7 +1555,7 @@ msgstr ""
 "Ved at svare naturligt, vil du opbygge de samtalefærdigheder, der er "
 "nødvendige for en glat hotel check-in oplevelse."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:365
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
 msgid "Check other grammar points and examples."
 msgstr "Tjek andre grammatikpunkter og eksempler."
@@ -1657,6 +1663,7 @@ msgstr "Klik \"Tilføj en ny godkendt e-mailadresse\" og indtast:"
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Reader/components/Reader.tsx:327
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1670,6 +1677,11 @@ msgstr "Luk"
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "Luk indstillinger"
+
+#: src/features/Reader/components/Reader.tsx:315
+#. js-lingui-explicit-id
+msgid "Close the book?"
+msgstr "Luk bogen?"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:23
 #. js-lingui-explicit-id
@@ -1773,12 +1785,12 @@ msgstr "Sammenligning"
 msgid "Complete all daily tasks to gain full access for that day!"
 msgstr "Fuldfør alle daglige opgaver for at få fuld adgang til den dag!"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:253
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:251
 #. js-lingui-explicit-id
 msgid "Complete all examples to unlock the AI training option."
 msgstr "Fuldfør alle eksempler for at låse op for AI-træningsmuligheden."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:309
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:307
 #. js-lingui-explicit-id
 msgid "Complete all interactive examples to unlock AI practice."
 msgstr "Fuldfør alle interaktive eksempler for at låse op for AI-praksis."
@@ -1839,7 +1851,7 @@ msgstr "Samtidighed & Modstandsdygtighed"
 msgid "Concurrency and resiliency assessment"
 msgstr "Konkurrence- og robusthedsevaluering"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:115
+#: src/features/ProgressStat/ProgressViewChart.tsx:116
 #. js-lingui-explicit-id
 msgid "Confidence"
 msgstr "Selvtillid"
@@ -2127,12 +2139,6 @@ msgstr "Kunne ikke finde side"
 msgid "Could not load article"
 msgstr "Kunne ikke indlæse artikel"
 
-#: src/features/News/NewsDashboardCard.tsx:82
-#: src/features/News/NewsDashboardCard.tsx:91
-#. js-lingui-explicit-id
-msgid "Could not load news"
-msgstr "Kunne ikke indlæse nyheder"
-
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
 msgid "Country"
@@ -2272,7 +2278,7 @@ msgstr "Opret Dit Eget Rollespilsscenarie"
 msgid "Create Your Own Scenario"
 msgstr "Opret Dit Eget Scenarie"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:180
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "Opretter din forbedring..."
@@ -2512,7 +2518,7 @@ msgid "Debates"
 msgstr "Debatter"
 
 #: src/features/Chat/Message/Message.tsx:425
-#: src/features/Reader/components/Cards.tsx:262
+#: src/features/Reader/components/Cards.tsx:267
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
 msgid "Delete"
@@ -2841,7 +2847,7 @@ msgstr "Diskuter emnet"
 msgid "Discuss today’s news with the AI"
 msgstr "Diskuter dagens nyheder med AI'en"
 
-#: src/features/News/NewsDashboardCard.tsx:103
+#: src/features/News/NewsDashboardCard.tsx:25
 #: src/features/News/NewsModal.tsx:312
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
@@ -2957,7 +2963,7 @@ msgstr "Færdig"
 msgid "Done recording"
 msgstr "Færdig med optagelse"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:336
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:334
 #. js-lingui-explicit-id
 msgid "Done:"
 msgstr "Færdig:"
@@ -2969,8 +2975,8 @@ msgstr "Lad ikke fejl stoppe dig."
 
 #: src/features/Reader/components/Cards.tsx:66
 #: src/features/Reader/components/Cards.tsx:73
-#: src/features/Reader/components/Cards.tsx:248
-#: src/features/Reader/components/Cards.tsx:526
+#: src/features/Reader/components/Cards.tsx:253
+#: src/features/Reader/components/Cards.tsx:531
 #. js-lingui-explicit-id
 msgid "Download"
 msgstr "Hent"
@@ -2990,7 +2996,7 @@ msgstr "Downloader bog fra Project Gutenberg..."
 msgid "Downloading converted file…"
 msgstr "Downloading af konverteret fil…"
 
-#: src/features/Reader/components/Cards.tsx:526
+#: src/features/Reader/components/Cards.tsx:531
 #. js-lingui-explicit-id
 msgid "Downloading..."
 msgstr "Downloader..."
@@ -3583,7 +3589,7 @@ msgstr "Forklar dine trin (reproducere, isolere, rette, bekræfte)"
 msgid "Explore All Features"
 msgstr "Udforsk Alle Funktioner"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:361
 #. js-lingui-explicit-id
 msgid "Explore more grammar points"
 msgstr "Udforsk flere grammatikpunkter"
@@ -3746,11 +3752,6 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Feedback der hjælper"
 
-#: src/features/News/NewsDashboardCard.tsx:89
-#. js-lingui-explicit-id
-msgid "Fetching the latest stories..."
-msgstr "Henter de seneste historier..."
-
 #: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
@@ -3832,7 +3833,7 @@ msgstr "Ret dine gentagne fejl med klare forklaringer, quizzer og fokuseret træ
 msgid "Fixed words"
 msgstr "Faste ord"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:114
+#: src/features/ProgressStat/ProgressViewChart.tsx:115
 #. js-lingui-explicit-id
 msgid "Fluency"
 msgstr "Flydendehed"
@@ -4678,7 +4679,7 @@ msgstr "Google Opkald emulator"
 
 #: src/features/Landing/LandingPage.tsx:396
 #: src/features/Landing/PlanLandingBlock.tsx:249
-#: src/features/ProgressStat/ProgressViewChart.tsx:112
+#: src/features/ProgressStat/ProgressViewChart.tsx:113
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Grammatik"
@@ -5571,7 +5572,7 @@ msgstr "Indonesisk Læringsplan"
 msgid "Initiate brain connection"
 msgstr "Start hjerneforbindelse"
 
-#: src/features/News/NewsDashboardCard.tsx:104
+#: src/features/News/NewsDashboardCard.tsx:24
 #. js-lingui-explicit-id
 msgid "Inspired by current events"
 msgstr "Inspireret af aktuelle begivenheder"
@@ -5619,7 +5620,7 @@ msgstr "Integrationstestning"
 msgid "Integration Tests"
 msgstr "Integrationstests"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:250
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:248
 #. js-lingui-explicit-id
 msgid "Interactive examples:"
 msgstr "Interaktive eksempler:"
@@ -5741,7 +5742,7 @@ msgstr ""
 "Det hjalp mig med at besvare spørgsmål om tilgængelighed og optimering af "
 "ydeevne uden panik."
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:185
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:183
 #. js-lingui-explicit-id
 msgid ""
 "It might take about a minute to prepare rules and examples based on your "
@@ -5796,12 +5797,12 @@ msgstr "Jobinterviewfærdigheder"
 msgid "Join"
 msgstr "Tilmeld dig"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:333
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:331
 #. js-lingui-explicit-id
 msgid "Join a Call"
 msgstr "Deltag i et opkald"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:305
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:303
 #. js-lingui-explicit-id
 msgid "Join a call with our AI tutor to practice this rule."
 msgstr "Deltag i et opkald med vores AI-vejleder for at øve denne regel."
@@ -5932,7 +5933,7 @@ msgstr "Sprog"
 msgid "Languages installed in your brain:"
 msgstr "Sprog installeret i din hjerne:"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:512
+#: src/features/ProgressStat/ProgressViewChart.tsx:452
 #. js-lingui-explicit-id
 msgid "Last 3 month"
 msgstr "Sidste 3 måneder"
@@ -5944,7 +5945,7 @@ msgstr "Sidste 3 måneder"
 
 #: src/features/ProgressStat/ProgressRadarCharts.tsx:183
 #: src/features/ProgressStat/ProgressStatModal.tsx:72
-#: src/features/ProgressStat/ProgressViewChart.tsx:511
+#: src/features/ProgressStat/ProgressViewChart.tsx:451
 #. js-lingui-explicit-id
 msgid "Last 30 days"
 msgstr "Seneste 30 dage"
@@ -5956,7 +5957,7 @@ msgstr ""
 "De sidste 30 dage vs de foregående 30 dage — se hvordan dine målinger har "
 "ændret sig."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:513
+#: src/features/ProgressStat/ProgressViewChart.tsx:453
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Sidste 6 måneder"
@@ -6237,11 +6238,6 @@ msgstr "Indlæser artikel..."
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Indlæser bibliotek..."
-
-#: src/features/News/NewsDashboardCard.tsx:80
-#. js-lingui-explicit-id
-msgid "Loading news..."
-msgstr "Indlæser nyheder..."
 
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
@@ -6684,6 +6680,7 @@ msgstr "Nyt Rum"
 msgid "New Words"
 msgstr "Nye Ord"
 
+#: src/features/News/NewsFeedModal.tsx:81
 #: src/features/Tasks/useDailyTasks.tsx:101
 #. js-lingui-explicit-id
 msgid "News"
@@ -6860,8 +6857,7 @@ msgstr "Ingen beskeder endnu"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Ingen beskeder endnu. Vær den første til at dele dine tanker!"
 
-#: src/features/News/NewsDashboardCard.tsx:84
-#: src/features/News/NewsDashboardCard.tsx:93
+#: src/features/News/NewsFeedModal.tsx:106
 #. js-lingui-explicit-id
 msgid "No news yet for your country today."
 msgstr "Ingen nyheder endnu for dit land i dag."
@@ -6892,7 +6888,7 @@ msgstr ""
 msgid "No payments..."
 msgstr "Ingen betalinger..."
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:297
+#: src/features/ProgressStat/ProgressViewChart.tsx:298
 #. js-lingui-explicit-id
 msgid "No previous data to compare"
 msgstr "Ingen tidligere data at sammenligne med"
@@ -7215,7 +7211,7 @@ msgstr "Åbn nyhedsindstillinger"
 msgid "Open personal plan"
 msgstr "Åbn personlig plan"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:447
+#: src/features/ProgressStat/ProgressViewChart.tsx:387
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Åbn indstillinger for fremskridt"
@@ -7459,8 +7455,8 @@ msgstr "Præstationsmålinger"
 msgid "Performance, resiliency, and architecture patterns"
 msgstr "Ydeevne, modstandsdygtighed og arkitekturdesignmønstre"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:504
-#: src/features/ProgressStat/ProgressViewChart.tsx:508
+#: src/features/ProgressStat/ProgressViewChart.tsx:444
+#: src/features/ProgressStat/ProgressViewChart.tsx:448
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "Periode"
@@ -8219,7 +8215,7 @@ msgstr "Behandler nyeste session"
 msgid "Processing..."
 msgstr "Behandling..."
 
-#: src/features/Reader/components/Cards.tsx:366
+#: src/features/Reader/components/Cards.tsx:371
 #. js-lingui-explicit-id
 msgid "Processing…"
 msgstr "Behandler…"
@@ -8266,7 +8262,7 @@ msgstr "Fremskridtskalender"
 msgid "Progress insights are locked"
 msgstr "Fremskridtsindsigter er låst"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:500
+#: src/features/ProgressStat/ProgressViewChart.tsx:440
 #. js-lingui-explicit-id
 msgid "Progress Settings"
 msgstr "Fremskridtsindstillinger"
@@ -8291,7 +8287,7 @@ msgstr "Fremdriftssporing"
 msgid "Progress tracking to see your improvement"
 msgstr "Sporing af fremskridt for at se din forbedring"
 
-#: src/features/Reader/components/Cards.tsx:484
+#: src/features/Reader/components/Cards.tsx:489
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projekt Gutenberg"
@@ -8385,7 +8381,7 @@ msgstr "Rangér i top 5 på ranglisten og få appen gratis!"
 msgid "Rank in top 5 to get full access to all features!"
 msgstr "Rangér i top 5 for at få fuld adgang til alle funktioner!"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:526
+#: src/features/ProgressStat/ProgressViewChart.tsx:466
 #. js-lingui-explicit-id
 msgid "Raw"
 msgstr "Rå"
@@ -8430,8 +8426,7 @@ msgstr ""
 "systemdesignrunder"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/News/NewsDashboardCard.tsx:56
-#: src/features/Reader/components/Reader.tsx:338
+#: src/features/Reader/components/Reader.tsx:373
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Læs"
@@ -8487,7 +8482,7 @@ msgstr "Klar til at spille"
 msgid "Ready to play?"
 msgstr "Klar til at spille?"
 
-#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:301
+#: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:299
 #. js-lingui-explicit-id
 msgid "Ready to real practice?"
 msgstr "Klar til at øve rigtigt?"
@@ -9227,7 +9222,7 @@ msgstr "Send anmodning"
 msgid "Send sign-in link"
 msgstr "Send loginlink"
 
-#: src/features/Reader/components/Cards.tsx:236
+#: src/features/Reader/components/Cards.tsx:241
 #: src/features/Reader/components/SendToKindleModal.tsx:125
 #: src/features/Reader/components/SendToKindleModal.tsx:268
 #. js-lingui-explicit-id
@@ -9304,7 +9299,7 @@ msgstr "Indstillinger"
 msgid "Sexual content"
 msgstr "Seksuelt indhold"
 
-#: src/features/Reader/components/Cards.tsx:224
+#: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Share"
@@ -9526,7 +9521,7 @@ msgstr "Small Talk Øvelse"
 msgid "Smart Start"
 msgstr "Smart Start"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:527
+#: src/features/ProgressStat/ProgressViewChart.tsx:467
 #. js-lingui-explicit-id
 msgid "Smoothed"
 msgstr "Udglattet"
@@ -11455,8 +11450,8 @@ msgstr "UX & Tilgængelighed"
 msgid "Vacancy description"
 msgstr "Ledighedsbeskrivelse"
 
-#: src/features/ProgressStat/ProgressViewChart.tsx:519
-#: src/features/ProgressStat/ProgressViewChart.tsx:523
+#: src/features/ProgressStat/ProgressViewChart.tsx:459
+#: src/features/ProgressStat/ProgressViewChart.tsx:463
 #. js-lingui-explicit-id
 msgid "Value Mode"
 msgstr "Værditilstand"
@@ -11526,7 +11521,7 @@ msgstr ""
 "klart at se dine forbedringer."
 
 #: src/features/Landing/LandingPage.tsx:407
-#: src/features/ProgressStat/ProgressViewChart.tsx:113
+#: src/features/ProgressStat/ProgressViewChart.tsx:114
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Ordforråd"
@@ -12748,7 +12743,7 @@ msgstr "Du klarer det godt. Tag et kig på dagens opgaver."
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Du er i god flow. Fortsæt med dagens opgaver."
 
-#: src/features/Reader/components/Cards.tsx:500
+#: src/features/Reader/components/Cards.tsx:505
 #. js-lingui-explicit-id
 msgid "{count} downloads"
 msgstr "{count} downloads"
@@ -12793,6 +12788,22 @@ msgstr "{winnerName} vinder!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlydendighedsPal"
+
+#: src/features/News/NewsDashboardCard.tsx:82
+#: src/features/News/NewsDashboardCard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Could not load news"
+#~ msgstr "Kunne ikke indlæse nyheder"
+
+#: src/features/News/NewsDashboardCard.tsx:89
+#. js-lingui-explicit-id
+#~ msgid "Fetching the latest stories..."
+#~ msgstr "Henter de seneste historier..."
+
+#: src/features/News/NewsDashboardCard.tsx:80
+#. js-lingui-explicit-id
+#~ msgid "Loading news..."
+#~ msgstr "Indlæser nyheder..."
 
 #: src/features/Reader/components/BooksList.tsx:394
 #. js-lingui-explicit-id
