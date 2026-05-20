@@ -1,13 +1,5 @@
 # Live document with short/long term ideas
 
-## News: Tune quality. News should be useful for me.
-
-- Use firestore to show news.
-
-- Show last 20 news and add button "Load more".
-
-- Add feature of commenting on full News Modal. So people can leave comments.
-
 ## Approve to use the app
 
 - Create a form to write info about yourself.
