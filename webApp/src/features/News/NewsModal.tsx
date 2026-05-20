@@ -19,6 +19,7 @@ import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import { buildNewsDiscussionPrompt } from './buildNewsDiscussionPrompt';
 import { NewsItem, NewsLanguageComplexity } from './types';
+import { NewsComments } from './NewsComments';
 
 export const NewsModal = () => {
   const { isOpen, newsId, closeNews } = useNewsModal();
@@ -312,6 +313,8 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   {isCallStarting ? i18n._('Starting...') : i18n._('Discuss with AI')}
                 </Button>
               </Stack>
+
+              <NewsComments newsId={newsId} />
             </>
           )}
 

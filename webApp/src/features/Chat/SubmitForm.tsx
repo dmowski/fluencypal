@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, Typography, Button, IconButton } from '@mui/material';
+import { Stack, Typography, Button, IconButton, FormControlLabel, Checkbox } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import SendIcon from '@mui/icons-material/Send';
@@ -307,45 +307,53 @@ Provide only the message user can send, without any additional explanation or co
             )}
 
             {recorder.transcription && !recorder.isRecording && !recorder.isTranscribing && (
-              <Stack
-                sx={{
-                  flexDirection: 'row',
-                  gap: '10px',
-                  width: 'calc(100% - 0px)',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  color="info"
-                  size="large"
-                  disabled={
-                    needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
-                  }
-                  onClick={async () => {
-                    recorder.startRecording();
+              <Stack>
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    gap: '10px',
+                    width: 'calc(100% - 0px)',
+                    flexWrap: 'wrap',
                   }}
-                  endIcon={<Mic />}
                 >
-                  {i18n._('Re-record')}
-                </Button>
+                  <Button
+                    variant="outlined"
+                    color="info"
+                    size="large"
+                    disabled={
+                      needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
+                    }
+                    onClick={async () => {
+                      recorder.startRecording();
+                    }}
+                    endIcon={<Mic />}
+                  >
+                    {i18n._('Re-record')}
+                  </Button>
 
-                <Button
-                  variant="contained"
-                  color="info"
-                  size="large"
-                  disabled={
-                    needMoreText ||
-                    recorder.isTranscribing ||
-                    recorder.isRecording ||
-                    isSending ||
-                    isLoading
-                  }
-                  onClick={() => submitTranscription()}
-                  endIcon={<SendIcon />}
-                >
-                  {isSending ? i18n._('Sending...') : i18n._('Send Message')}
-                </Button>
+                  <Button
+                    variant="contained"
+                    color="info"
+                    size="large"
+                    disabled={
+                      needMoreText ||
+                      recorder.isTranscribing ||
+                      recorder.isRecording ||
+                      isSending ||
+                      isLoading
+                    }
+                    onClick={() => submitTranscription()}
+                    endIcon={<SendIcon />}
+                  >
+                    {isSending ? i18n._('Sending...') : i18n._('Send Message')}
+                  </Button>
+                </Stack>
+                <Stack>
+                  <FormControlLabel
+                    control={<Checkbox checked={false} onChange={(_event, checked) => {}} />}
+                    label={i18n._('Attach my voice recording')}
+                  />
+                </Stack>
               </Stack>
             )}
 

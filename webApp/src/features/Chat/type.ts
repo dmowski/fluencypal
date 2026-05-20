@@ -14,7 +14,14 @@ export interface UserChatMetadataStatic {
   spaceId: string;
   allowedUserIds: string[] | null;
   isPrivate: boolean;
-  type: 'global' | 'debate' | 'privateChat' | 'dailyQuestion' | 'space' | 'experimental';
+  type:
+    | 'global'
+    | 'debate'
+    | 'privateChat'
+    | 'dailyQuestion'
+    | 'space'
+    | 'experimental'
+    | 'newsComment';
 
   debateId?: string;
 }
