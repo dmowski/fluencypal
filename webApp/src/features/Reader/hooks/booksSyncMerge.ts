@@ -1,4 +1,4 @@
-import { Book } from '../model/types';
+import { Book, createEmptyConvertedFilesPathMap } from '../model/types';
 import { ReaderBookDoc, READER_BOOK_DOC_SCHEMA_VERSION } from '../server/readerBookDoc';
 
 const isoToTime = (iso?: string): number => {
@@ -9,9 +9,9 @@ const isoToTime = (iso?: string): number => {
 
 /**
  * Per-field, last-writer-wins merge of a local Book against a remote
- * ReaderBookDoc. The remote document never carries `paragraphs` or
- * `originalFile` (those live in Storage), so they are always preserved from
- * the local copy.
+ * ReaderBookDoc. The remote document never carries `paragraphs` or `epubFile`
+ * (those live in Storage / IndexedDB), so they are always preserved from the
+ * local copy.
  *
  * Returns `null` when the merge produced no changes vs the local copy.
  */
@@ -81,15 +81,15 @@ export const mergeRemoteBookIntoLocal = (local: Book, remote: ReaderBookDoc): Bo
     merged.paragraphsBlobPath = remote.paragraphsBlobPath;
     changed = true;
   }
-  if (remote.originalFileBlobPath && remote.originalFileBlobPath !== local.originalFileBlobPath) {
-    merged.originalFileBlobPath = remote.originalFileBlobPath;
+  if (JSON.stringify(remote.convertedFiles) !== JSON.stringify(local.convertedFiles)) {
+    merged.convertedFiles = remote.convertedFiles;
     changed = true;
   }
   if (
-    remote.convertedFiles &&
-    JSON.stringify(remote.convertedFiles) !== JSON.stringify(local.convertedFiles)
+    remote.epubParserVersion !== undefined &&
+    remote.epubParserVersion !== local.epubParserVersion
   ) {
-    merged.convertedFiles = remote.convertedFiles;
+    merged.epubParserVersion = remote.epubParserVersion;
     changed = true;
   }
 
@@ -115,8 +115,8 @@ export const buildStubBookFromRemote = (remote: ReaderBookDoc): Book => ({
   // remote — it lives in IndexedDB only.
   dataUpdatedAtIso: remote.dataUpdatedAtIso,
   paragraphsBlobPath: remote.paragraphsBlobPath,
-  originalFileBlobPath: remote.originalFileBlobPath,
-  convertedFiles: remote.convertedFiles,
+  convertedFiles: remote.convertedFiles ?? createEmptyConvertedFilesPathMap(),
+  epubParserVersion: remote.epubParserVersion,
   ownerUserId: remote.ownerUserId,
   userIds: remote.userIds,
   memberEmails: remote.memberEmails,
@@ -135,6 +135,7 @@ export const buildRemoteDocFromLocal = (
     title: local.title,
     subtitle: local.subtitle,
     author: local.author,
+    convertedFiles: local.convertedFiles,
     schemaVersion: READER_BOOK_DOC_SCHEMA_VERSION,
     createdAtIso: options.createdAtIso,
     updatedAtIso: options.nowIso,
@@ -148,8 +149,7 @@ export const buildRemoteDocFromLocal = (
   // Reading position stays local (BookLocalProgress) — do not write to Firestore.
   if (local.dataUpdatedAtIso) doc.dataUpdatedAtIso = local.dataUpdatedAtIso;
   if (local.paragraphsBlobPath) doc.paragraphsBlobPath = local.paragraphsBlobPath;
-  if (local.originalFileBlobPath) doc.originalFileBlobPath = local.originalFileBlobPath;
-  if (local.convertedFiles) doc.convertedFiles = local.convertedFiles;
+  if (local.epubParserVersion !== undefined) doc.epubParserVersion = local.epubParserVersion;
   if (local.ownerUserId !== undefined) doc.ownerUserId = local.ownerUserId;
   if (local.userIds !== undefined) doc.userIds = local.userIds;
   if (local.memberEmails !== undefined) doc.memberEmails = local.memberEmails;

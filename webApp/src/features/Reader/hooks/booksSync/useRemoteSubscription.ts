@@ -3,6 +3,7 @@ import { onSnapshot, query, where } from 'firebase/firestore';
 import * as Sentry from '@sentry/nextjs';
 import { db } from '@/features/Firebase/firebaseDb';
 import { buildStubBookFromRemote, mergeRemoteBookIntoLocal } from '../booksSyncMerge';
+import { migrateRemoteDoc } from '../../utils/migrateBookData';
 import { buildLocalSignature } from './signature';
 import { errorLog, log } from './log';
 import { BooksSyncRefs, BooksSyncStatusSetters } from './types';
@@ -36,7 +37,7 @@ export const useRemoteSubscription = ({
     }
     // Wait for the local IndexedDB hydration before subscribing — otherwise
     // the first snapshot races the local load, sees no `local` match, and
-    // persists a stub WITHOUT `imagesByHref` / `originalFile`, permanently
+    // persists a stub WITHOUT `imagesByHref` / `epubFile`, permanently
     // overwriting the local copy in IndexedDB.
     if (!isUsersBooksLoaded) return;
 
@@ -61,11 +62,11 @@ export const useRemoteSubscription = ({
         const seenIds = new Set<string>();
 
         snapshot.docs.forEach((docSnap) => {
-          const remote = docSnap.data();
+          const remote = migrateRemoteDoc(docSnap.data());
           seenIds.add(remote.id);
           refs.createdAtCache.current.set(remote.id, remote.createdAtIso);
-          if (remote.originalFileBlobPath) {
-            refs.knownOriginalPaths.current.set(remote.id, remote.originalFileBlobPath);
+          if (remote.convertedFiles?.epub) {
+            refs.knownOriginalPaths.current.set(remote.id, remote.convertedFiles.epub);
           }
 
           const local = refs.usersBooks.current.find((book) => book.id === remote.id);
@@ -74,7 +75,7 @@ export const useRemoteSubscription = ({
             log('hydrating stub from remote', {
               bookId: stub.id,
               hasParagraphsBlob: !!stub.paragraphsBlobPath,
-              hasOriginalFileBlob: !!stub.originalFileBlobPath,
+              hasEpubBlob: !!stub.convertedFiles.epub,
             });
             refs.suppressedSignatures.current.set(stub.id, buildLocalSignature(stub));
             refs.applyRemoteBookMerge.current(stub.id, stub);

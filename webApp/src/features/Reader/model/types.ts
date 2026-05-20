@@ -27,13 +27,37 @@ export interface BookLocalProgress {
   activePageIndex?: number;
 }
 
+/**
+ * Storage paths for every version of a book's source file in Firebase Storage.
+ *
+ * `epub` is the canonical reading source — it is always required at the type
+ * level. It may briefly hold an empty string for a brand-new local book that
+ * has not yet been uploaded by the sync layer; once the push completes the
+ * empty string is replaced with the real Storage path. The non-EPUB slots are
+ * `null` for directly-imported EPUBs.
+ */
+export interface ConvertedFilesPathMap {
+  epub: string;
+  pdf: string | null;
+  docx: string | null;
+}
+
+export const createEmptyConvertedFilesPathMap = (): ConvertedFilesPathMap => ({
+  epub: '',
+  pdf: null,
+  docx: null,
+});
+
 export interface Book extends BookLocalProgress {
   id: string;
   paragraphs: BookParagraph[];
   title: string;
   subtitle: string;
   author: string;
-  originalFile?: File;
+  // In-memory EPUB blob. Only kept locally (IndexedDB) — never persisted to
+  // Firestore. Hydrated from Storage on devices that don't have it locally
+  // via the `convertedFiles.epub` path.
+  epubFile?: File;
   chapters?: BookChapterNavigationItem[];
   imagesByHref?: Record<string, string>;
   imageAspectRatioByHref?: Record<string, number>;
@@ -51,14 +75,18 @@ export interface Book extends BookLocalProgress {
   // Populated lazily when the owner first opens the Share modal.
   memberEmails?: Record<string, string>;
 
-  // Pointers into Firebase Storage (only set once the book has been synced).
+  // Pointers into Firebase Storage. `paragraphsBlobPath` is only set once the
+  // book has been synced.
   paragraphsBlobPath?: string;
-  originalFileBlobPath?: string;
 
-  // Stores paths to every version of the file in Firebase Storage.
-  // Key is the lowercase extension (e.g. "pdf", "epub"), value is the storage path.
-  // Set for converted books (PDF/DOCX→EPUB). Not set for directly-imported EPUBs.
-  convertedFiles?: Record<string, string>;
+  // Storage paths for every available file version of the book. The `epub`
+  // slot is the canonical reading source (was `originalFileBlobPath`).
+  convertedFiles: ConvertedFilesPathMap;
+
+  // Version of the EPUB parser that produced `paragraphs` / `chapters` /
+  // `imagesByHref`. When this does not match the current EPUB_PARSER_VERSION
+  // constant, the client re-imports the EPUB to pick up parser improvements.
+  epubParserVersion?: number;
 }
 
 export interface HighlightedText {

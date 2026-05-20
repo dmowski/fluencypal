@@ -1,12 +1,13 @@
-import { BookChapterNavigationItem, HighlightedText } from '../model/types';
+import { BookChapterNavigationItem, ConvertedFilesPathMap, HighlightedText } from '../model/types';
 
 /**
  * Firestore document shape stored at `books/{bookId}` (root-level collection).
  *
- * Heavy/static data (paragraphs, original EPUB file, images) is NOT stored
- * here. Those are uploaded to Firebase Storage at
- * `books/{bookId}/...` and referenced from this document via
- * `paragraphsBlobPath` / `originalFileBlobPath`.
+ * Heavy/static data (paragraphs, EPUB file, images) is NOT stored here.
+ * Those are uploaded to Firebase Storage at `books/{bookId}/...` and
+ * referenced from this document via `paragraphsBlobPath` and the
+ * `convertedFiles` path map (`convertedFiles.epub` is the canonical EPUB
+ * source — it replaces the legacy `originalFileBlobPath`).
  *
  * Reading progress (readingPosition, activePageIndex) is intentionally absent —
  * it is a per-device local concern stored in IndexedDB only (see BookLocalProgress).
@@ -26,12 +27,18 @@ export interface ReaderBookDoc {
   // Bumped when title/author/subtitle/paragraphs change.
   dataUpdatedAtIso?: string;
 
-  // Pointers into Firebase Storage for the heavy payloads.
+  // Pointer into Firebase Storage for the heavy paragraphs payload.
   paragraphsBlobPath?: string;
-  originalFileBlobPath?: string;
 
-  // Stores paths to every converted version (key = lowercase extension, value = storage path).
-  convertedFiles?: Record<string, string>;
+  // Storage paths for every available file version of the book. `epub` is the
+  // canonical reading source. May briefly hold an empty string for a freshly
+  // created book whose EPUB upload has not yet completed.
+  convertedFiles: ConvertedFilesPathMap;
+
+  // Parser version that produced `paragraphs` (stored as a Storage blob) and
+  // `chapters`. Clients re-import when this does not match the current
+  // EPUB_PARSER_VERSION.
+  epubParserVersion?: number;
 
   // Sharing. ownerUserId is the creator; userIds holds additional collaborators
   // (not including the owner). Optional for backward-compatibility with legacy

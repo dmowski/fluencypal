@@ -42,6 +42,7 @@ export const createFirestoreBookStub = async (bookId: string, uid: string): Prom
     title: '',
     subtitle: '',
     author: '',
+    convertedFiles: { epub: '', pdf: null, docx: null },
     ownerUserId: uid,
     userIds: [],
     memberIds: [uid],

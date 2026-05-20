@@ -1,5 +1,16 @@
 export const MAX_EPUB_FILE_SIZE = 50 * 1024 * 1024;
 
+/**
+ * Version of the local EPUB → markdown / chapters / images parsing pipeline.
+ *
+ * Bump this whenever the parser output changes in a way that requires
+ * already-imported books to be re-parsed (e.g. paragraph splitting changes,
+ * chapter extraction fixes, image href normalization). Books whose stored
+ * `epubParserVersion` does not equal this constant are automatically
+ * re-imported on the client when their EPUB source is available.
+ */
+export const EPUB_PARSER_VERSION = 1;
+
 export const IMAGE_EXT_TO_MIME: Record<string, string> = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',

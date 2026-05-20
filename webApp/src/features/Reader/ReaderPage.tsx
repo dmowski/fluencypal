@@ -7,6 +7,7 @@ import { BooksProvider, useBooks } from './hooks/useBooks';
 import { BooksList } from './components/BooksList';
 import { ReaderSettingsProvider } from './hooks/useReaderSettings';
 import { BooksSyncProvider } from './hooks/useBooksSync';
+import { useAutoReimportOnVersionBump } from './hooks/useAutoReimportOnVersionBump';
 import { useDocumentTitle } from '@/libs/useDocumentTitle';
 import { lightTheme } from '../uiKit/theme';
 import { AuthProvider } from '../Auth/useAuth';
@@ -14,6 +15,7 @@ import { AuthProvider } from '../Auth/useAuth';
 const ReaderComponent = () => {
   const books = useBooks();
   useDocumentTitle(books.active?.title);
+  useAutoReimportOnVersionBump();
 
   return (
     <Stack

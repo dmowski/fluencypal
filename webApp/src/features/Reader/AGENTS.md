@@ -52,6 +52,13 @@ This file applies to `webApp/src/features/Reader/**`.
 - Treat EPUB conversion and paragraph splitting as one pipeline; validate both when touching either side.
 - Reader visual/speech settings are local preferences (`useReaderSettings` + localStorage). If you add share/export behavior, include book content and highlights, but exclude local Reader settings payload.
 
+## Book File Shape
+
+- `Book.convertedFiles: ConvertedFilesPathMap` (required) carries Storage paths for every available file version of a book: `{ epub: string; pdf: string | null; docx: string | null }`. The `epub` slot is the canonical reading source (it replaces the removed `originalFileBlobPath` field). A freshly created local book may briefly hold an empty `epub` string until the sync layer uploads the EPUB and patches the path.
+- `Book.epubFile?: File` is the in-memory EPUB blob, kept in IndexedDB only (was `originalFile`). On devices without it locally, `useOriginalFileHydration` downloads it from `convertedFiles.epub`.
+- `Book.epubParserVersion?: number` records which EPUB parser produced `paragraphs` / `chapters` / `imagesByHref`. When it does not match `EPUB_PARSER_VERSION` (`utils/epubImport/constants.ts`), the client should re-import the EPUB to pick up parser improvements. Bump that constant whenever the parser output format changes.
+- `utils/migrateBookData.ts` (`migrateBookShape`, `migrateBooksLocal`, `migrateRemoteDoc`) normalizes legacy stored shapes (`originalFile` / `originalFileBlobPath` / loose `convertedFiles` record) into the new shape. It is wired into `useBooks.loadBooks` (persists migrated entries back to IndexedDB) and `useRemoteSubscription` (applied to every snapshot doc).
+
 ## Validation
 
 After changing files in this feature, run the smallest relevant checks first:

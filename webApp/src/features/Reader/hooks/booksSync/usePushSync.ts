@@ -50,9 +50,9 @@ export const usePushSync = ({
         bookId: book.id,
         title: book.title,
         hasParagraphs: book.paragraphs.length,
-        hasOriginalFile: !!book.originalFile,
+        hasEpubFile: !!book.epubFile,
         hasParagraphsBlob: !!book.paragraphsBlobPath,
-        hasOriginalFileBlob: !!book.originalFileBlobPath,
+        hasEpubBlob: !!book.convertedFiles.epub,
         highlightsCount: book.highlights?.length ?? 0,
         highlightsIso: book.highlightsUpdatedAtIso ?? null,
       });
@@ -60,7 +60,7 @@ export const usePushSync = ({
 
       try {
         let paragraphsBlobPath = book.paragraphsBlobPath;
-        let originalFileBlobPath = book.originalFileBlobPath;
+        let convertedFiles = book.convertedFiles;
 
         const nowIso = new Date().toISOString();
         const createdAtIso =
@@ -74,11 +74,11 @@ export const usePushSync = ({
         const isCurrentUserMember =
           book.ownerUserId === userId || (book.userIds?.includes(userId) ?? false);
         const bookWithOwner: Book = isCurrentUserMember
-          ? { ...book, paragraphsBlobPath, originalFileBlobPath }
+          ? { ...book, paragraphsBlobPath, convertedFiles }
           : {
               ...book,
               paragraphsBlobPath,
-              originalFileBlobPath,
+              convertedFiles,
               ownerUserId: userId,
               userIds: book.userIds ?? [],
             };
@@ -125,19 +125,20 @@ export const usePushSync = ({
           });
         }
 
-        if (!originalFileBlobPath && book.originalFile) {
-          log('uploading original EPUB blob', {
+        if (!convertedFiles.epub && book.epubFile) {
+          log('uploading EPUB blob', {
             bookId: book.id,
-            fileName: book.originalFile.name,
-            sizeBytes: book.originalFile.size,
+            fileName: book.epubFile.name,
+            sizeBytes: book.epubFile.size,
           });
-          originalFileBlobPath = await uploadOriginalFileBlob({
+          const epubPath = await uploadOriginalFileBlob({
             bookId: book.id,
-            file: book.originalFile,
+            file: book.epubFile,
           });
+          convertedFiles = { ...convertedFiles, epub: epubPath };
           blobsChanged = true;
-          log('original EPUB uploaded', { bookId: book.id, path: originalFileBlobPath });
-          refs.knownOriginalPaths.current.set(book.id, originalFileBlobPath);
+          log('EPUB uploaded', { bookId: book.id, path: epubPath });
+          refs.knownOriginalPaths.current.set(book.id, epubPath);
         }
 
         // If blob paths were resolved, update the Firestore doc with them.
@@ -146,14 +147,14 @@ export const usePushSync = ({
         const stillExists = refs.usersBooks.current.some((b) => b.id === book.id);
         if (blobsChanged && stillExists) {
           const finalDoc = buildRemoteDocFromLocal(
-            { ...bookWithOwner, paragraphsBlobPath, originalFileBlobPath },
+            { ...bookWithOwner, paragraphsBlobPath, convertedFiles },
             { createdAtIso, nowIso },
           );
           await setDoc(docRef, finalDoc);
           log('Firestore doc updated with blob paths', {
             bookId: book.id,
             paragraphsBlobPath,
-            originalFileBlobPath,
+            convertedFilesEpub: convertedFiles.epub,
           });
         } else if (blobsChanged && !stillExists) {
           log('skipping final setDoc – book was deleted locally during blob upload', {
@@ -167,7 +168,7 @@ export const usePushSync = ({
         // does not see a stale mismatch and schedule a redundant second push.
         refs.lastPushedSignatures.current.set(
           book.id,
-          buildLocalSignature({ ...bookWithOwner, paragraphsBlobPath, originalFileBlobPath }),
+          buildLocalSignature({ ...bookWithOwner, paragraphsBlobPath, convertedFiles }),
         );
         refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
 
@@ -178,13 +179,13 @@ export const usePushSync = ({
         const latestLocal = refs.usersBooks.current.find((entry) => entry.id === book.id) ?? book;
         const needsLocalUpdate =
           paragraphsBlobPath !== latestLocal.paragraphsBlobPath ||
-          originalFileBlobPath !== latestLocal.originalFileBlobPath ||
+          JSON.stringify(convertedFiles) !== JSON.stringify(latestLocal.convertedFiles) ||
           (!latestLocal.ownerUserId && bookWithOwner.ownerUserId);
         if (needsLocalUpdate) {
           applyRemoteBookMerge(book.id, {
             ...latestLocal,
             paragraphsBlobPath,
-            originalFileBlobPath,
+            convertedFiles,
             ownerUserId: latestLocal.ownerUserId ?? bookWithOwner.ownerUserId,
             userIds: latestLocal.userIds ?? bookWithOwner.userIds,
           });

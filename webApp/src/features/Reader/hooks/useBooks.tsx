@@ -1,12 +1,20 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { testData } from '../model/testData';
-import { Book, BookChapterNavigationItem, HighlightedText, ReadingPosition } from '../model/types';
+import {
+  Book,
+  BookChapterNavigationItem,
+  ConvertedFilesPathMap,
+  HighlightedText,
+  ReadingPosition,
+  createEmptyConvertedFilesPathMap,
+} from '../model/types';
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
 import {
   deleteUserBookFromIndexedDb,
   loadUsersBooksFromIndexedDb,
   saveUserBookToIndexedDb,
 } from '../utils/booksIndexedDb';
+import { migrateBooksLocal } from '../utils/migrateBookData';
 import { useUrlState } from '../../Url/useUrlState';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
@@ -49,7 +57,15 @@ const useBooksState = () => {
     let isCancelled = false;
 
     const loadBooks = async () => {
-      const booksFromDb = await loadUsersBooksFromIndexedDb();
+      const rawBooksFromDb = await loadUsersBooksFromIndexedDb();
+      const { migrated: booksFromDb, changedIds } = migrateBooksLocal(rawBooksFromDb);
+      if (changedIds.size > 0) {
+        await Promise.all(
+          booksFromDb
+            .filter((book) => changedIds.has(book.id))
+            .map((book) => saveUserBookToIndexedDb(book)),
+        );
+      }
       const initialBooks =
         booksFromDb.length > 0 ? booksFromDb : shouldSeedTestBooks() ? testBooks : [];
 
@@ -137,7 +153,8 @@ const useBooksState = () => {
       chapters,
       imagesByHref,
       imageAspectRatioByHref,
-      originalFile,
+      epubFile,
+      epubParserVersion,
     }: {
       title: string;
       subTitle: string;
@@ -146,7 +163,8 @@ const useBooksState = () => {
       chapters?: BookChapterNavigationItem[];
       imagesByHref?: Record<string, string>;
       imageAspectRatioByHref?: Record<string, number>;
-      originalFile?: File;
+      epubFile?: File;
+      epubParserVersion?: number;
     },
   ) => {
     updateBook(bookId, (current) => ({
@@ -157,7 +175,8 @@ const useBooksState = () => {
       chapters,
       imagesByHref,
       imageAspectRatioByHref,
-      originalFile: originalFile ?? current.originalFile,
+      epubFile: epubFile ?? current.epubFile,
+      epubParserVersion: epubParserVersion ?? current.epubParserVersion,
       dataUpdatedAtIso: new Date().toISOString(),
     }));
   };
@@ -168,33 +187,36 @@ const useBooksState = () => {
     subTitle,
     text,
     author,
-    originalFile,
+    epubFile,
     convertedFiles,
     chapters,
     imagesByHref,
     imageAspectRatioByHref,
+    epubParserVersion,
   }: {
     bookId?: string;
     title: string;
     subTitle: string;
     text: string;
     author: string;
-    originalFile?: File;
-    convertedFiles?: Record<string, string>;
+    epubFile?: File;
+    convertedFiles?: ConvertedFilesPathMap;
     chapters?: BookChapterNavigationItem[];
     imagesByHref?: Record<string, string>;
     imageAspectRatioByHref?: Record<string, number>;
+    epubParserVersion?: number;
   }) => {
     const newBook: Book = {
       id: bookId ?? createBookId(),
       title,
       subtitle: subTitle,
       author,
-      originalFile,
-      convertedFiles,
+      epubFile,
+      convertedFiles: convertedFiles ?? createEmptyConvertedFilesPathMap(),
       chapters,
       imagesByHref,
       imageAspectRatioByHref,
+      epubParserVersion,
       paragraphs: splitTextIntoParagraphs(text),
       activePageIndex: 1,
       dataUpdatedAtIso: new Date().toISOString(),

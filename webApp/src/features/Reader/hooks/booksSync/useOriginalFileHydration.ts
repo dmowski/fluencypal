@@ -16,8 +16,8 @@ interface Args {
 }
 
 /**
- * For every book that has a remote `originalFileBlobPath` but no local
- * `originalFile`, downloads the EPUB once, persists it into IndexedDB, and
+ * For every book that has a remote `convertedFiles.epub` path but no local
+ * `epubFile`, downloads the EPUB once, persists it into IndexedDB, and
  * re-extracts embedded images on this device. Image data URLs are
  * intentionally not stored in Firestore (size); each device must rebuild
  * `imagesByHref` / `imageAspectRatioByHref` locally.
@@ -37,8 +37,8 @@ export const useOriginalFileHydration = ({
     if (!isUsersBooksLoaded) return;
 
     usersBooks.forEach((book) => {
-      if (book.originalFile) return;
-      if (!book.originalFileBlobPath) return;
+      if (book.epubFile) return;
+      if (!book.convertedFiles.epub) return;
       if (refs.originalFileHydrations.current.has(book.id)) return;
 
       refs.originalFileHydrations.current.add(book.id);
@@ -48,8 +48,8 @@ export const useOriginalFileHydration = ({
 };
 
 const hydrateOriginalFile = async (book: Book, refs: BooksSyncRefs): Promise<void> => {
-  const path = book.originalFileBlobPath!;
-  log('hydrating original EPUB from Storage', { bookId: book.id, path });
+  const path = book.convertedFiles.epub;
+  log('hydrating EPUB from Storage', { bookId: book.id, path });
 
   try {
     const result = await downloadOriginalFileBlob(path);
@@ -77,7 +77,7 @@ const hydrateOriginalFile = async (book: Book, refs: BooksSyncRefs): Promise<voi
 
     const next: Book = {
       ...latest,
-      originalFile: file,
+      epubFile: file,
       ...(imagesByHref ? { imagesByHref } : {}),
       ...(imageAspectRatioByHref
         ? {

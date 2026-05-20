@@ -194,7 +194,8 @@ export const BooksList = () => {
   };
 
   const handleDownloadFromBlob = async (book: Book, ext?: string) => {
-    const path = (ext && book.convertedFiles?.[ext]) || book.originalFileBlobPath;
+    const slot = ext === 'pdf' || ext === 'docx' ? ext : 'epub';
+    const path = book.convertedFiles[slot] || book.convertedFiles.epub;
     if (!path) return;
     if (!auth.uid) return;
     try {

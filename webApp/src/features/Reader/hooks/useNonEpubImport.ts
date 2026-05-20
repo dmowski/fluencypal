@@ -2,6 +2,7 @@ import { useLingui } from '@lingui/react';
 import { useState } from 'react';
 import { useBooks } from './useBooks';
 import { convertEpubFile } from '../utils/epubImport';
+import { ConvertedFilesPathMap, createEmptyConvertedFilesPathMap } from '../model/types';
 import {
   uploadConvertTempFile,
   downloadConvertResultAsFile,
@@ -87,11 +88,13 @@ export const useNonEpubImport = ({
       setImportMessage(i18n._('Saving book…'));
 
       // 6. Persist the book. Files are already in Firebase Storage via
-      //    convertedFiles — do not pass originalFile to avoid double-upload
-      //    by the sync layer.
-      const convertedFiles: Record<string, string> = {
-        [ext]: storagePath,
+      //    convertedFiles — do not pass epubFile to avoid double-upload by
+      //    the sync layer.
+      const convertedFiles: ConvertedFilesPathMap = {
+        ...createEmptyConvertedFilesPathMap(),
         epub: epubBlobPath,
+        ...(ext === 'pdf' ? { pdf: storagePath } : {}),
+        ...(ext === 'docx' ? { docx: storagePath } : {}),
       };
 
       await books.addBook({
@@ -104,6 +107,7 @@ export const useNonEpubImport = ({
         chapters: parsedBook.chapters,
         imagesByHref: parsedBook.imageDataUrlByHref,
         imageAspectRatioByHref: parsedBook.imageAspectRatioByHref,
+        epubParserVersion: parsedBook.epubParserVersion,
       });
 
       setImportProgress(100);

@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Reader: Automatic re-import, create parser version
+
 ## News: Tune quality. News should be useful for me.
 
 - As separate page, modal with options to filter
@@ -9,8 +11,6 @@
 ## Reader: List. unable to highlight text
 
 webApp/src/features/Reader/components/Paragraph/ReaderMarkdown.tsx
-
-## Reader: Automatic re-import, create parser version
 
 ## Social network: Attach my voice records. Tune UI for messages
 

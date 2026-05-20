@@ -41,10 +41,11 @@ export const useDroppedEpubImport = () => {
         subTitle: parsedBook.subtitle,
         author: parsedBook.author,
         text: parsedBook.text,
-        originalFile: file,
+        epubFile: file,
         chapters: parsedBook.chapters,
         imagesByHref: parsedBook.imageDataUrlByHref,
         imageAspectRatioByHref: parsedBook.imageAspectRatioByHref,
+        epubParserVersion: parsedBook.epubParserVersion,
       });
 
       setImportProgress(100);

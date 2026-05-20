@@ -1,11 +1,12 @@
 import { splitTextIntoParagraphs } from '../utils/splitParagraphsIntoPages';
-import { Book } from './types';
+import { Book, createEmptyConvertedFilesPathMap } from './types';
 
 export const testData: Book = {
   id: 'the-great-gatsby',
   title: 'The Great Gatsby',
   subtitle: 'Then wear the gold hat, if that will move her',
   author: 'F. Scott Fitzgerald',
+  convertedFiles: createEmptyConvertedFilesPathMap(),
   paragraphs: splitTextIntoParagraphs(`# HeadingWordAlpha HeadingWordBeta HeadingWordGamma
 
 In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.

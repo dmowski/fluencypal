@@ -1,4 +1,4 @@
-import { Book } from '../model/types';
+import { Book, createEmptyConvertedFilesPathMap } from '../model/types';
 import { mergeRemoteBookIntoLocal } from './booksSyncMerge';
 
 const baseLocal: Book = {
@@ -7,7 +7,10 @@ const baseLocal: Book = {
   subtitle: 'Local Sub',
   author: 'Local Author',
   paragraphs: [['hello']],
+  convertedFiles: createEmptyConvertedFilesPathMap(),
 };
+
+const emptyConvertedFiles = () => createEmptyConvertedFilesPathMap();
 
 describe('mergeRemoteBookIntoLocal', () => {
   it('returns null when remote has no newer fields', () => {
@@ -16,6 +19,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       title: 'Local Title',
       subtitle: 'Local Sub',
       author: 'Local Author',
+      convertedFiles: { epub: '', pdf: null, docx: null },
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2024-01-01T00:00:00.000Z',
@@ -32,6 +36,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       subtitle: 'Remote Sub',
       author: 'Remote Author',
       dataUpdatedAtIso: '2025-01-01T00:00:00.000Z',
+      convertedFiles: { epub: '', pdf: null, docx: null },
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2025-01-01T00:00:00.000Z',
@@ -57,6 +62,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       author: local.author,
       highlights: [],
       highlightsUpdatedAtIso: '2024-01-01T00:00:00.000Z',
+      convertedFiles: { epub: '', pdf: null, docx: null },
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2025-06-01T00:00:00.000Z',
@@ -81,6 +87,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       author: local.author,
       highlights: remoteHighlights,
       highlightsUpdatedAtIso: '2025-06-01T00:00:00.000Z',
+      convertedFiles: { epub: '', pdf: null, docx: null },
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2025-06-01T00:00:00.000Z',
@@ -103,6 +110,7 @@ describe('mergeRemoteBookIntoLocal', () => {
       title: local.title,
       subtitle: local.subtitle,
       author: local.author,
+      convertedFiles: { epub: '', pdf: null, docx: null },
       schemaVersion: 1,
       createdAtIso: '2024-01-01T00:00:00.000Z',
       updatedAtIso: '2025-06-01T00:00:00.000Z',

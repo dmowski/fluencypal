@@ -196,7 +196,7 @@ export const AddBookModal = ({
         subTitle: subtitle.trim(),
         author: author.trim(),
         text: text.trim(),
-        originalFile: originalEpubFile ?? undefined,
+        epubFile: originalEpubFile ?? undefined,
         chapters,
         imagesByHref: imageDataUrlByHref,
         imageAspectRatioByHref,

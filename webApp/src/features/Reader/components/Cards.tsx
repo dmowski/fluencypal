@@ -48,33 +48,37 @@ export const BookCard = ({
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const [downloadSubmenuAnchor, setDownloadSubmenuAnchor] = useState<HTMLElement | null>(null);
 
-  // Build the list of download options:
-  // - Converted books have an entry per stored format (e.g. pdf + epub).
-  // - Legacy EPUB books (no convertedFiles) show a single "Download EPUB".
+  // Build the list of download options from the required ConvertedFilesPathMap.
+  // The `epub` slot may temporarily be empty for a brand-new local book that
+  // hasn't been uploaded yet — in that case we fall back to the in-memory File.
   const downloadOptions: Array<{ ext: string; label: string; blobPath: string | null }> = (() => {
-    if (data.convertedFiles && Object.keys(data.convertedFiles).length > 0) {
-      return Object.entries(data.convertedFiles).map(([ext, path]) => ({
-        ext,
-        label:
-          ext === 'epub' ? i18n._('Download EPUB') : i18n._('Download') + ` ${ext.toUpperCase()}`,
-        blobPath: path,
-      }));
+    const options: Array<{ ext: string; label: string; blobPath: string | null }> = [];
+    if (data.convertedFiles.epub || data.epubFile) {
+      options.push({
+        ext: 'epub',
+        label: i18n._('Download EPUB'),
+        blobPath: data.convertedFiles.epub || null,
+      });
     }
-    if (data.originalFile || data.originalFileBlobPath) {
-      return [
-        {
-          ext: 'epub',
-          label: i18n._('Download EPUB'),
-          blobPath: data.originalFileBlobPath ?? null,
-        },
-      ];
+    if (data.convertedFiles.pdf) {
+      options.push({
+        ext: 'pdf',
+        label: i18n._('Download') + ' PDF',
+        blobPath: data.convertedFiles.pdf,
+      });
     }
-    return [];
+    if (data.convertedFiles.docx) {
+      options.push({
+        ext: 'docx',
+        label: i18n._('Download') + ' DOCX',
+        blobPath: data.convertedFiles.docx,
+      });
+    }
+    return options;
   })();
 
   const canDownload = downloadOptions.length > 0;
-  const canSendToKindle =
-    Boolean(data.originalFileBlobPath) || Boolean(data.convertedFiles?.['epub']);
+  const canSendToKindle = Boolean(data.convertedFiles.epub);
   const hasMenuItems = Boolean(
     onDelete || canDownload || onShare || (onSendToKindle && canSendToKindle),
   );
@@ -96,12 +100,12 @@ export const BookCard = ({
 
   const handleDownload = async (ext: string, blobPath: string | null) => {
     if (!blobPath) {
-      // File is only in memory (not yet synced) — use the in-memory original.
-      if (data.originalFile) {
-        const url = URL.createObjectURL(data.originalFile);
+      // File is only in memory (not yet synced) — use the in-memory EPUB.
+      if (data.epubFile) {
+        const url = URL.createObjectURL(data.epubFile);
         const anchor = document.createElement('a');
         anchor.href = url;
-        anchor.download = getDownloadFileName(data.originalFile.name);
+        anchor.download = getDownloadFileName(data.epubFile.name);
         anchor.click();
         URL.revokeObjectURL(url);
       }

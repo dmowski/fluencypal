@@ -2,8 +2,10 @@ import { sendConvertDocToTextRequest } from '@/app/api/convertDocToText/sendConv
 import { BookChapterNavigationItem } from '../../model/types';
 import { buildImageAspectRatioMap } from './imageUtils';
 import { parseEpubOnClient } from './parseEpub';
+import { EPUB_PARSER_VERSION } from './constants';
 
 export { MAX_EPUB_FILE_SIZE } from './constants';
+export { EPUB_PARSER_VERSION } from './constants';
 export { validateEpubFile } from './validateEpubFile';
 
 export interface EpubImportPayload {
@@ -14,6 +16,8 @@ export interface EpubImportPayload {
   chapters: BookChapterNavigationItem[];
   imageDataUrlByHref: Record<string, string>;
   imageAspectRatioByHref: Record<string, number>;
+  /** Parser version that produced this payload. */
+  epubParserVersion: number;
 }
 
 export interface EpubImportProgressUpdate {
@@ -86,5 +90,6 @@ export const convertEpubFile = async ({
     chapters: parsed.chapters,
     imageDataUrlByHref,
     imageAspectRatioByHref,
+    epubParserVersion: EPUB_PARSER_VERSION,
   };
 };

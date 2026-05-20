@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Prefer the EPUB from convertedFiles, then originalFileBlobPath.
-    const epubPath = bookData.convertedFiles?.['epub'] ?? bookData.originalFileBlobPath ?? null;
+    // The EPUB path is the canonical reading source in convertedFiles.
+    const epubPath = bookData.convertedFiles?.epub || null;
     if (!epubPath) {
       return NextResponse.json({ error: 'No EPUB file available for this book' }, { status: 400 });
     }
