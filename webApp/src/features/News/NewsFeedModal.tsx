@@ -57,7 +57,7 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
     <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="0">
       <Stack
         sx={{
-          backgroundColor: '#222',
+          backgroundColor: '#232323',
           color: '#EBEBF5',
           width: '100%',
           height: '100%',
@@ -68,7 +68,7 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
         <Stack
           data-testid="news-feed-modal"
           sx={{
-            gap: '124px',
+            gap: '74px',
             padding: '20px 5px 80px',
             width: '100%',
             maxWidth: '800px',
@@ -106,7 +106,15 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
               {news.error ?? i18n._('No news yet for your country today.')}
             </Typography>
           ) : (
-            <Stack sx={{ gap: '76px' }} data-testid="news-feed-modal-list">
+            <Stack
+              sx={{
+                gap: '76px',
+                '@media (max-width: 600px)': {
+                  gap: '40px',
+                },
+              }}
+              data-testid="news-feed-modal-list"
+            >
               {items.map((item) => (
                 <NewsPreviewCard
                   key={item.id}

@@ -42,8 +42,16 @@ export const NewsPreviewCard = ({
         cursor: 'pointer',
         textAlign: 'left',
         color: '#EBEBF5',
-        transition: 'background-color 0.15s',
+        backgroundColor: '#3d3c3c',
         width: '100%',
+        borderRadius: '8px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0px',
+        position: 'relative',
+        '@media (max-width: 600px)': {
+          gap: '10px',
+        },
       }}
     >
       {imageUrl && (
@@ -53,6 +61,12 @@ export const NewsPreviewCard = ({
             width: '100%',
             height: '380px',
             flexShrink: 0,
+            borderTopLeftRadius: '8px',
+            borderTopRightRadius: '8px',
+            overflow: 'hidden',
+            '@media (max-width: 600px)': {
+              height: '200px',
+            },
           }}
         >
           <Image
@@ -65,18 +79,47 @@ export const NewsPreviewCard = ({
           />
         </Box>
       )}
-      <Stack sx={{ padding: '14px 5px', gap: '4px' }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, lineHeight: 1.35 }}>
+      {day && (
+        <Typography
+          variant="caption"
+          sx={{
+            position: 'absolute',
+            top: '12px',
+            left: '12px',
+            '@media (max-width: 600px)': {
+              top: '8px',
+              left: '8px',
+            },
+          }}
+        >
+          {day}
+        </Typography>
+      )}
+      <Stack
+        sx={{
+          padding: '20px 20px 25px 20px',
+          gap: '4px',
+          '@media (max-width: 600px)': {
+            padding: '5px 12px 20px 12px',
+          },
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 700,
+            lineHeight: 1.35,
+
+            '@media (max-width: 600px)': {
+              fontSize: '24px',
+            },
+          }}
+        >
           {title}
         </Typography>
         {subTitle && (
           <Typography variant="body1" sx={{ opacity: 0.8 }}>
             {subTitle}
-          </Typography>
-        )}
-        {day && (
-          <Typography variant="caption" sx={{ opacity: 0.6 }}>
-            {day}
           </Typography>
         )}
       </Stack>
