@@ -311,7 +311,7 @@ Provide only the message user can send, without any additional explanation or co
             sx={{
               flexDirection: 'row',
               width: '100%',
-              alignItems: 'center',
+              alignItems: 'flex-start',
             }}
           >
             {(!recorder.transcription || recorder.isTranscribing || recorder.isRecording) && (
