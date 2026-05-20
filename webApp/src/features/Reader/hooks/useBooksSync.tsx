@@ -62,6 +62,7 @@ const useBooksSyncState = (): BooksSyncContextValue => {
   usePushSync({
     userId,
     isUsersBooksLoaded: books.isUsersBooksLoaded,
+    hasReceivedInitialSnapshot: lastSyncIso !== null,
     usersBooks: books.usersBooks,
     applyRemoteBookMerge: books.applyRemoteBookMerge,
     refs,

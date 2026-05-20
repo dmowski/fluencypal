@@ -16,6 +16,7 @@ import { BooksSyncRefs, BooksSyncStatusSetters, PUSH_DEBOUNCE_MS } from './types
 interface Args {
   userId: string | null;
   isUsersBooksLoaded: boolean;
+  hasReceivedInitialSnapshot: boolean;
   usersBooks: Book[];
   applyRemoteBookMerge: (bookId: string, next: Book) => void;
   refs: BooksSyncRefs;
@@ -30,6 +31,7 @@ interface Args {
 export const usePushSync = ({
   userId,
   isUsersBooksLoaded,
+  hasReceivedInitialSnapshot,
   usersBooks,
   applyRemoteBookMerge,
   refs,
@@ -232,6 +234,11 @@ export const usePushSync = ({
   useEffect(() => {
     if (!userId) return;
     if (!isUsersBooksLoaded) return;
+    // Wait for the first Firestore snapshot before considering any push.
+    // Without this gate, every refresh pushes the existing books because the
+    // in-memory `lastPushedSignatures` map starts empty even though the doc
+    // already exists on the server.
+    if (!hasReceivedInitialSnapshot) return;
 
     usersBooks.forEach((book) => {
       const signature = buildLocalSignature(book);
@@ -305,5 +312,5 @@ export const usePushSync = ({
       refs.knownRemoteIds.current.delete(id);
       refs.lastPushedSignatures.current.delete(id);
     });
-  }, [usersBooks, userId, isUsersBooksLoaded, schedulePush, refs]);
+  }, [usersBooks, userId, isUsersBooksLoaded, hasReceivedInitialSnapshot, schedulePush, refs]);
 };

@@ -78,9 +78,16 @@ export const useRemoteSubscription = ({
               hasEpubBlob: !!stub.convertedFiles.epub,
             });
             refs.suppressedSignatures.current.set(stub.id, buildLocalSignature(stub));
+            refs.knownRemoteIds.current.add(stub.id);
             refs.applyRemoteBookMerge.current(stub.id, stub);
             return;
           }
+
+          // Mark this book as already synced server-side so the push effect
+          // skips it on first run after a refresh. Without this, an existing
+          // remote doc + an empty in-memory `lastPushedSignatures` map would
+          // cause every page load to re-push the local book.
+          refs.knownRemoteIds.current.add(remote.id);
 
           const merged = mergeRemoteBookIntoLocal(local, remote);
           if (merged) {
@@ -91,6 +98,14 @@ export const useRemoteSubscription = ({
             });
             refs.suppressedSignatures.current.set(merged.id, buildLocalSignature(merged));
             refs.applyRemoteBookMerge.current(merged.id, merged);
+          } else {
+            // No remote-driven changes. Record the current local signature as
+            // already-pushed so the push effect treats this book as in sync.
+            refs.lastPushedSignatures.current.set(local.id, buildLocalSignature(local));
+            refs.lastPushedHighlightsIso.current.set(
+              local.id,
+              local.highlightsUpdatedAtIso ?? null,
+            );
           }
         });
 
