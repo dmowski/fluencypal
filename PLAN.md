@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Messages: play user's audio only with full access
+
 ## Approve to use the app
 
 - Create a form to write info about yourself.
