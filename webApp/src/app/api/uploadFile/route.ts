@@ -9,6 +9,7 @@ export async function POST(request: Request) {
   const file = data.get('file') as File | null;
 
   if (!file) {
+    console.error('[uploadFile] 400 – no file in form data');
     const errorResponse: UploadFileResponse = {
       error: 'File not found',
       uploadUrl: '',
@@ -23,6 +24,9 @@ export async function POST(request: Request) {
   // Validate file
   const validation = validateUploadFile(file, type);
   if (!validation.isValid) {
+    console.error(
+      `[uploadFile] 400 – validation failed | type=${type} mimeType=${file.type} size=${file.size} error=${validation.error}`,
+    );
     const errorResponse: UploadFileResponse = {
       error: validation.error || 'Validation failed',
       uploadUrl: '',
@@ -53,6 +57,9 @@ export async function POST(request: Request) {
   });
 
   if (!uploadResult.success) {
+    console.error(
+      `[uploadFile] 500 – storage upload failed | type=${type} userId=${userId} error=${uploadResult.error}`,
+    );
     await sentSupportTelegramMessage({
       message: `Failed to upload ${type} file for user ${userEmail} (${actualFileSizeMb.toFixed(2)}MB)`,
       userId,

@@ -17,6 +17,8 @@ import { AttachmentVideo } from './Message/AttachmentVideo';
 import { AttachmentImage } from './Message/AttachmentImage';
 import { RichTextEditor } from './RichTextEditor';
 import { sleep } from '@/libs/sleep';
+import { useAuth } from '../Auth/useAuth';
+import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -34,18 +36,46 @@ export function SubmitForm({
   previousBotMessage,
 }: SubmitFormProps) {
   const { i18n } = useLingui();
+  const auth = useAuth();
 
   const recorder = useAudioRecorder();
 
   const [attachments, setAttachments] = useState<ThreadsMessageAttachment[]>([]);
+  const [attachVoiceRecording, setAttachVoiceRecording] = useState(false);
 
   const [isSending, setIsSending] = useState(false);
   const ai = useTextAi();
 
   const submitTranscription = async () => {
     setIsSending(true);
-    await onSubmit(recorder.transcription || '', attachments);
+    let finalAttachments = [...attachments];
+
+    if (attachVoiceRecording && recorder.transcriptionBlob) {
+      const blob = recorder.transcriptionBlob;
+      const mimeType = (blob.type || 'audio/webm').split(';')[0].trim();
+      const extension = mimeType.includes('mp4')
+        ? 'mp4'
+        : mimeType.includes('wav')
+          ? 'wav'
+          : 'webm';
+      const file = new File([blob], `voice-recording.${extension}`, { type: mimeType });
+      try {
+        const authToken = await auth.getToken();
+        const result = await sendUploadFileRequest({ file, type: 'audio' }, authToken || '');
+        if (!result.error && result.uploadUrl) {
+          finalAttachments = [
+            ...finalAttachments,
+            { type: 'user-audio-recording', url: result.uploadUrl },
+          ];
+        }
+      } catch (e) {
+        console.error('Failed to upload voice recording', e);
+      }
+    }
+
+    await onSubmit(recorder.transcription || '', finalAttachments);
     setAttachments([]);
+    setAttachVoiceRecording(false);
     recorder.removeTranscript();
     recorder.cancelRecording();
     setIsSending(false);
@@ -350,7 +380,12 @@ Provide only the message user can send, without any additional explanation or co
                 </Stack>
                 <Stack>
                   <FormControlLabel
-                    control={<Checkbox checked={false} onChange={(_event, checked) => {}} />}
+                    control={
+                      <Checkbox
+                        checked={attachVoiceRecording}
+                        onChange={(_event, checked) => setAttachVoiceRecording(checked)}
+                      />
+                    }
                     label={i18n._('Attach my voice recording')}
                   />
                 </Stack>

@@ -42,7 +42,7 @@ export interface ChatSpaceUserReadMetadata {
 
 export interface ThreadsMessageAttachment {
   url: string;
-  type: 'image' | 'video' | 'file';
+  type: 'image' | 'video' | 'file' | 'user-audio-recording';
 
   altText?: string;
   name?: string;

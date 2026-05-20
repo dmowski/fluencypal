@@ -18,15 +18,18 @@ export const validateUploadFile = (
     'audio/x-wav',
     'audio/ogg',
     'audio/mp4',
+    'audio/webm',
   ];
 
   const validTypes =
     type === 'video' ? validVideoTypes : type === 'audio' ? validAudioTypes : validImageTypes;
 
-  if (!validTypes.includes(file.type)) {
+  // Use startsWith to handle codec suffixes like "audio/webm;codecs=opus"
+  const mimeBase = file.type.split(';')[0].trim();
+  if (!validTypes.includes(mimeBase)) {
     return {
       isValid: false,
-      error: `Invalid file type. Expected ${type}`,
+      error: `Invalid file type. Expected ${type}, got ${file.type}`,
       statusCode: 400,
     };
   }

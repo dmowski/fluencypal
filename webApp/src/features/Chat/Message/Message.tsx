@@ -27,6 +27,7 @@ import { Avatar } from '../../User/Avatar';
 import { CircleEllipsis } from 'lucide-react';
 import { UserName } from '../../User/UserName';
 import { Attachments } from './Attachments';
+import { AttachmentAudio } from './AttachmentAudio';
 import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
 import { ReportMessageModal } from './ReportMessageModal';
@@ -441,6 +442,17 @@ export function Message({
             )}
           </Stack>
 
+          {!isHardReported &&
+            message.attachments?.some((a) => a.type === 'user-audio-recording') && (
+              <Stack sx={{ paddingLeft: contentLeftPadding, paddingBottom: '4px' }}>
+                {message.attachments
+                  .filter((a) => a.type === 'user-audio-recording')
+                  .map((attachment, index) => (
+                    <AttachmentAudio key={index} url={attachment.url} />
+                  ))}
+              </Stack>
+            )}
+
           <Typography
             component={'div'}
             sx={{
@@ -484,15 +496,18 @@ export function Message({
             )}
           </Typography>
 
-          {!isHardReported && message.attachments && message.attachments.length > 0 && (
-            <Stack
-              sx={{
-                paddingLeft: contentLeftPadding,
-              }}
-            >
-              <Attachments attachments={message.attachments} />
-            </Stack>
-          )}
+          {!isHardReported &&
+            message.attachments?.some((a) => a.type !== 'user-audio-recording') && (
+              <Stack
+                sx={{
+                  paddingLeft: contentLeftPadding,
+                }}
+              >
+                <Attachments
+                  attachments={message.attachments.filter((a) => a.type !== 'user-audio-recording')}
+                />
+              </Stack>
+            )}
 
           {!isDeleted && !isHardReported && (
             <MessageFooter
