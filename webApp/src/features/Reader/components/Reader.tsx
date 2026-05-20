@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Stack, Typography } from '@mui/material';
 import { Book, BookChapterNavigationItem, HighlightedText, ReaderSettings } from '../model/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
@@ -269,7 +269,7 @@ export const Reader = ({ data }: { data: Book }) => {
     [goToPage, readerSettings.clearResizeAnchorWord],
   );
 
-  useReaderShortcuts({
+  const { isCloseConfirmOpen, confirmClose, cancelClose } = useReaderShortcuts({
     activePage,
     maxPage: maxSpreadStartPage,
     onClose: closeReader,
@@ -296,48 +296,77 @@ export const Reader = ({ data }: { data: Book }) => {
 
   const [isReading, setIsReading] = useState(false);
   const { i18n } = useLingui();
+
+  const closeConfirmDialog = (
+    <Dialog
+      open={isCloseConfirmOpen}
+      onClose={cancelClose}
+      data-testid="reader-close-confirm-dialog"
+    >
+      <DialogContent>
+        <DialogContentText>{i18n._('Close the book?')}</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={cancelClose} data-testid="reader-close-confirm-cancel">
+          {i18n._('Cancel')}
+        </Button>
+        <Button
+          onClick={confirmClose}
+          color="error"
+          autoFocus
+          data-testid="reader-close-confirm-ok"
+        >
+          {i18n._('Close')}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+
   if (!isReading && activePage === 1) {
     return (
-      <Stack
-        sx={{
-          width: '100%',
-          height: '100dvh',
-          color: '#000',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          padding: '80px 40px 40px',
-          gap: '40px',
-        }}
-      >
-        <BackButton onClick={closeReader} />
-        <Stack sx={{ maxWidth: '1200px', width: 'calc(100% - 0px)', minWidth: 0 }}>
-          <ReaderHeader
-            title={data.title}
-            subtitle={data.subtitle}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            author={data.author}
-          />
-        </Stack>
-        <Button
-          variant="contained"
-          size="large"
-          onClick={() => setIsReading(true)}
-          color="info"
+      <>
+        <Stack
           sx={{
-            fontSize: '16px',
-            boxShadow: 'none',
-            borderRadius: '40px',
-            padding: '9px 36px',
-            textTransform: 'uppercase',
-            fontWeight: 'bold',
-            color: '#fff',
+            width: '100%',
+            height: '100dvh',
+            color: '#000',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            padding: '80px 40px 40px',
+            gap: '40px',
           }}
         >
-          {i18n._('Read')}
-        </Button>
-      </Stack>
+          <BackButton onClick={closeReader} />
+          <Stack sx={{ maxWidth: '1200px', width: 'calc(100% - 0px)', minWidth: 0 }}>
+            <ReaderHeader
+              title={data.title}
+              subtitle={data.subtitle}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              author={data.author}
+            />
+          </Stack>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => setIsReading(true)}
+            color="info"
+            sx={{
+              fontSize: '16px',
+              boxShadow: 'none',
+              borderRadius: '40px',
+              padding: '9px 36px',
+              textTransform: 'uppercase',
+              fontWeight: 'bold',
+              color: '#fff',
+            }}
+          >
+            {i18n._('Read')}
+          </Button>
+        </Stack>
+        {closeConfirmDialog}
+      </>
     );
   }
 
@@ -488,6 +517,8 @@ export const Reader = ({ data }: { data: Book }) => {
         isFirstPage={activePage === 1}
         isLastPage={activePage >= maxSpreadStartPage}
       />
+
+      {closeConfirmDialog}
     </Stack>
   );
 };
