@@ -917,6 +917,11 @@ msgstr "ความมั่นใจในการประเมิน"
 msgid "Assistant"
 msgstr "ผู้ช่วย"
 
+#: src/features/Chat/SubmitForm.tsx:354
+#. js-lingui-explicit-id
+msgid "Attach my voice recording"
+msgstr "แนบการบันทึกเสียงของฉัน"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:40
 #. js-lingui-explicit-id
 msgid "Auth"
@@ -1700,6 +1705,11 @@ msgstr "ทักษะการเขียนโค้ด"
 msgid "Comment"
 msgstr "ความคิดเห็น"
 
+#: src/features/News/NewsComments.tsx:30
+#. js-lingui-explicit-id
+msgid "Comments"
+msgstr "ความคิดเห็น"
+
 #: src/features/Game/Battle/BattleActionModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Comments:"
@@ -2135,7 +2145,7 @@ msgstr "การแก้ไขเมื่อคุณติดขัด"
 msgid "Could not find page"
 msgstr "ไม่พบหน้าที่ต้องการ"
 
-#: src/features/News/NewsModal.tsx:175
+#: src/features/News/NewsModal.tsx:176
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "ไม่สามารถโหลดบทความได้"
@@ -2866,7 +2876,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "พูดคุยเกี่ยวกับข่าววันนี้กับ AI"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:312
+#: src/features/News/NewsModal.tsx:313
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "พูดคุยกับ AI"
@@ -6273,7 +6283,7 @@ msgstr "กำลังโหลด"
 msgid "Loading a word..."
 msgstr "กำลังโหลดคำ..."
 
-#: src/features/News/NewsModal.tsx:168
+#: src/features/News/NewsModal.tsx:169
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "กำลังโหลดบทความ..."
@@ -6538,7 +6548,7 @@ msgstr ""
 "และลองอีกครั้ง"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:116
+#: src/features/News/NewsModal.tsx:117
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6929,7 +6939,7 @@ msgstr "ไม่มีการชำระเงิน..."
 msgid "No previous data to compare"
 msgstr "ไม่มีข้อมูลก่อนหน้าให้เปรียบเทียบ"
 
-#: src/features/News/NewsFeedModal.tsx:169
+#: src/features/News/NewsFeedModal.tsx:165
 #. js-lingui-explicit-id
 msgid "No previous news found."
 msgstr "ไม่พบข่าวสารก่อนหน้า"
@@ -7708,7 +7718,7 @@ msgstr "กรุณาใส่ที่อยู่อีเมลที่ถ
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "กรุณากรอกรายละเอียดของผู้ปกครองและตรวจสอบทุกช่องในขั้นตอนที่ 1"
 
-#: src/features/Chat/SubmitForm.tsx:440
+#: src/features/Chat/SubmitForm.tsx:448
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "โปรดบันทึกข้อความที่ยาวขึ้น (อย่างน้อยสองสามคำ)"
@@ -8430,7 +8440,7 @@ msgstr "จัดอยู่อันดับ 5 สูงสุดเพื่
 msgid "Raw"
 msgstr "ดิบ"
 
-#: src/features/Chat/SubmitForm.tsx:330
+#: src/features/Chat/SubmitForm.tsx:331
 #: src/features/Conversation/ConversationCanvas.tsx:690
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -8908,7 +8918,7 @@ msgstr ""
 "รวมเข้ากับการหมดเวลาและเส้นทางสำรอง บันทึกบริบทโครงสร้าง (ID ความสัมพันธ์) "
 "และปล่อยเมตริกเพื่อสังเกตอัตราความผิดพลาดและเวลาแฝง"
 
-#: src/features/News/NewsModal.tsx:189
+#: src/features/News/NewsModal.tsx:190
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "ลองอีกครั้ง"
@@ -9245,7 +9255,7 @@ msgid "Send me sign-in link"
 msgstr "ส่งลิงก์สำหรับเข้าสู่ระบบให้ฉัน"
 
 #: src/features/Chat/SubmitForm.tsx:219
-#: src/features/Chat/SubmitForm.tsx:347
+#: src/features/Chat/SubmitForm.tsx:348
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "ส่งข้อความ"
@@ -9278,7 +9288,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "ส่ง {messagesNeeded} ข้อความเพื่อปลดล็อกการเข้าถึงทั้งหมด"
 
 #: src/features/Auth/AuthWallBasic.tsx:181
-#: src/features/Chat/SubmitForm.tsx:347
+#: src/features/Chat/SubmitForm.tsx:348
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:127
 #. js-lingui-explicit-id
@@ -9609,7 +9619,7 @@ msgstr ""
 "แต่มีบางจุดที่ขาดด้านรูปแบบการทนทาน (resiliency patterns) และการสังเกตการณ์ "
 "(observability)"
 
-#: src/features/News/NewsModal.tsx:178
+#: src/features/News/NewsModal.tsx:179
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -9868,7 +9878,7 @@ msgstr "เริ่ม | 5 นาที"
 msgid "Starting webcam... "
 msgstr "กำลังเริ่มกล้องเว็บแคม... "
 
-#: src/features/News/NewsModal.tsx:312
+#: src/features/News/NewsModal.tsx:313
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "กำลังเริ่ม..."
@@ -10630,7 +10640,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "การดำเนินการนี้ไม่สามารถย้อนกลับได้."
 
-#: src/features/News/NewsModal.tsx:289
+#: src/features/News/NewsModal.tsx:290
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "

@@ -1,34 +1,5 @@
 # Live document with short/long term ideas
 
-## Social network: Attach my voice records. Tune UI for messages
-
-webApp/src/features/Chat/SubmitForm.tsx
-I added placeholder for a new feature:
-<Stack>
-<FormControlLabel
-control={<Checkbox checked={false} onChange={(_event, checked) => {}} />}
-label={i18n._('Attach my voice recording')}
-/>
-</Stack>
-
-You need to implement it.
-First you need to understand on how to upload that to storage and get url that could be received by end users.
-
-And the second on how to render it.
-
-To render it you will need to update that module
-webApp/src/features/Chat/Message/Message.tsx
-
-most probably, you will need to update:
-webApp/src/features/Chat/type.ts
-
-ThreadsMessageAttachment. add new type "user-audio-recording".
-
-webApp/src/features/Chat/Message/Message.tsx
-And render it, I think before render content:
-<Typography
-component={'div'}
-
 ## News: Tune quality. News should be useful for me.
 
 - Use firestore to show news.
