@@ -25,3 +25,14 @@ export interface GetNewsByIdRequest {
 export interface GetNewsByIdResponse {
   item: NewsItem | null;
 }
+
+export interface GetPreviousDayNewsRequest {
+  countryCode: string;
+  languageCode: string;
+  /** How many days back to fetch. Defaults to 1 (yesterday). */
+  daysBack?: number;
+}
+
+export interface GetPreviousDayNewsResponse {
+  items: NewsItemSummary[];
+}

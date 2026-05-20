@@ -13,6 +13,7 @@ import {
 
 import { getNewsByIdRequest } from '@/app/api/news/getNewsById/getNewsByIdRequest';
 import { getTodayNewsRequest } from '@/app/api/news/getTodayNews/getTodayNewsRequest';
+import { getPreviousDayNewsRequest } from '@/app/api/news/getPreviousDayNews/getPreviousDayNewsRequest';
 
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
@@ -84,6 +85,11 @@ export interface NewsContextValue {
   setCountryOverride: (next: string | null) => void;
   getNewsById: (id: string) => Promise<NewsItem | null>;
   refresh: () => Promise<void>;
+  previousItems: NewsItemSummary[] | null;
+  isPreviousLoading: boolean;
+  /** True while there may be more historical days to load. False after a day returns empty. */
+  hasMorePrevious: boolean;
+  loadPreviousDay: () => Promise<void>;
 }
 
 const noopAsync = async () => undefined;
@@ -102,6 +108,10 @@ const NewsContext = createContext<NewsContextValue>({
   setCountryOverride: () => undefined,
   getNewsById: noopGetById,
   refresh: noopAsync,
+  previousItems: null,
+  isPreviousLoading: false,
+  hasMorePrevious: true,
+  loadPreviousDay: noopAsync,
 });
 
 interface NewsProviderProps {
@@ -134,6 +144,10 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   const [items, setItems] = useState<NewsItemSummary[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [previousItems, setPreviousItems] = useState<NewsItemSummary[] | null>(null);
+  const [isPreviousLoading, setIsPreviousLoading] = useState(false);
+  const [hasMorePrevious, setHasMorePrevious] = useState(true);
+  const dayOffsetRef = useRef(0);
 
   const inFlightKey = useRef<string | null>(null);
   const byIdCache = useRef<Map<string, NewsItem>>(new Map());
@@ -268,6 +282,32 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
     await fetchToday(key, country, countryName, languageCode, languageName);
   }, [country, countryName, languageCode, languageName, fetchToday]);
 
+  const loadPreviousDay = useCallback(async () => {
+    if (!country || !languageCode || !hasMorePrevious) return;
+    dayOffsetRef.current += 1;
+    const daysBack = dayOffsetRef.current;
+    setIsPreviousLoading(true);
+    try {
+      const token = await auth.getToken();
+      const response = await getPreviousDayNewsRequest(
+        { countryCode: country, languageCode, daysBack },
+        token || null,
+      );
+      if (response.items.length === 0) {
+        setHasMorePrevious(false);
+        // Still mark previousItems as initialized so the section renders.
+        setPreviousItems((prev) => prev ?? []);
+      } else {
+        setPreviousItems((prev) => [...(prev ?? []), ...response.items]);
+      }
+    } catch {
+      setHasMorePrevious(false);
+      setPreviousItems((prev) => prev ?? []);
+    } finally {
+      setIsPreviousLoading(false);
+    }
+  }, [country, languageCode, auth, hasMorePrevious]);
+
   const value = useMemo<NewsContextValue>(
     () => ({
       items,
@@ -282,6 +322,10 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       setCountryOverride,
       getNewsById,
       refresh,
+      previousItems,
+      isPreviousLoading,
+      hasMorePrevious,
+      loadPreviousDay,
     }),
     [
       items,
@@ -296,6 +340,10 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       setCountryOverride,
       getNewsById,
       refresh,
+      previousItems,
+      isPreviousLoading,
+      hasMorePrevious,
+      loadPreviousDay,
     ],
   );
 

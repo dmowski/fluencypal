@@ -1,15 +1,28 @@
 # Live document with short/long term ideas
 
+## News: Add comment section under the news.
+
+Example on how to integrate comments.
+webApp/src/features/DailyQuestion/DailyQuestionFullCard.tsx
+
+Place comment section inside webApp/src/features/News/NewsModal.tsx
+
+Create a separate component NewsComments.ts that accept only necessary params.
+You can expand UserChatMetadataStatic webApp/src/features/Chat/type.ts by adding new type of chat.
+
+Ensure e2e pass.
+
+## Social network: Attach my voice records. Tune UI for messages
+
 ## News: Tune quality. News should be useful for me.
 
-- Keep news in firestore, and translate on client
-  (By sending requests to translate if needed).
+- Use firestore to show news.
 
 - Show last 20 news and add button "Load more".
 
 - Add feature of commenting on full News Modal. So people can leave comments.
 
-## Approve to use the app.
+## Approve to use the app
 
 - Create a form to write info about yourself.
 
@@ -32,8 +45,6 @@
 ## Reader: List. unable to highlight text
 
 webApp/src/features/Reader/components/Paragraph/ReaderMarkdown.tsx
-
-## Social network: Attach my voice records. Tune UI for messages
 
 ## Reader: Highlights - On hover, show full paragraph as preview
 

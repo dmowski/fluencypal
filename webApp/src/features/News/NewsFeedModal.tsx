@@ -1,6 +1,7 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -52,6 +53,8 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
 
   const items = news.items ?? [];
   const isInitialLoading = news.isLoading && items.length === 0;
+  const previousItems = news.previousItems ?? [];
+  const hasPreviousLoaded = news.previousItems !== null;
 
   return (
     <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="0">
@@ -126,6 +129,62 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
                   onClick={() => onOpenNews(item.id)}
                 />
               ))}
+            </Stack>
+          )}
+
+          {/* Previous day news */}
+          {news.hasMorePrevious && !news.isPreviousLoading && !isInitialLoading && (
+            <Button
+              data-testid="load-previous-news-btn"
+              variant="outlined"
+              onClick={() => void news.loadPreviousDay()}
+              sx={{
+                alignSelf: 'center',
+                color: '#EBEBF5',
+                borderColor: 'rgba(235,235,245,0.3)',
+                '&:hover': { borderColor: '#EBEBF5' },
+              }}
+            >
+              {hasPreviousLoaded ? i18n._('Load more previous news') : i18n._('Load previous news')}
+            </Button>
+          )}
+
+          {news.isPreviousLoading && (
+            <Stack sx={{ gap: '20px' }} data-testid="previous-news-loading">
+              <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
+            </Stack>
+          )}
+
+          {hasPreviousLoaded && !news.isPreviousLoading && (
+            <Stack sx={{ gap: '16px' }}>
+              <Typography variant="h5" sx={{ fontWeight: 600, opacity: 0.7 }}>
+                {i18n._('Previous news')}
+              </Typography>
+              {previousItems.length === 0 && !news.hasMorePrevious ? (
+                <Typography variant="body2" sx={{ opacity: 0.6 }} data-testid="previous-news-empty">
+                  {i18n._('No previous news found.')}
+                </Typography>
+              ) : (
+                <Stack
+                  sx={{
+                    gap: '76px',
+                    '@media (max-width: 600px)': { gap: '40px' },
+                  }}
+                  data-testid="previous-news-list"
+                >
+                  {previousItems.map((item) => (
+                    <NewsPreviewCard
+                      key={item.id}
+                      data-testid="previous-news-card"
+                      title={item.title}
+                      subTitle={item.subTitle}
+                      imageUrl={item.imageUrl}
+                      dateIso={item.dateIso}
+                      onClick={() => onOpenNews(item.id)}
+                    />
+                  ))}
+                </Stack>
+              )}
             </Stack>
           )}
         </Stack>

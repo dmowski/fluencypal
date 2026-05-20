@@ -37,6 +37,41 @@ export const getCachedTodayNews = async ({
   }
 };
 
+/**
+ * Fetch cached news items for the given country/language populated one day
+ * before today (UTC). Returns cached data only — does not trigger any fetch
+ * or AI rewrite.
+ */
+export const getCachedPreviousDayNews = async ({
+  countryCode,
+  languageCode,
+  daysBack = 1,
+}: {
+  countryCode: string;
+  languageCode: string;
+  daysBack?: number;
+}): Promise<NewsItem[]> => {
+  try {
+    const db = getDB();
+    const target = new Date();
+    target.setUTCDate(target.getUTCDate() - daysBack);
+    const yesterdayKey = getNewsDayKey(target.toISOString());
+    const snapshot = await db
+      .collection(NEWS_COLLECTION)
+      .where('countryCode', '==', countryCode.trim().toLowerCase())
+      .where('languageCode', '==', languageCode.trim().toLowerCase())
+      .where('dayKey', '==', yesterdayKey)
+      .get();
+
+    return snapshot.docs.map((d) => d.data() as NewsItem);
+  } catch (error) {
+    sendTelegramMessageServer(
+      `Error reading news cache (previous day): ${(error as Error).message}`,
+    );
+    return [];
+  }
+};
+
 export const getCachedNewsById = async (id: string): Promise<NewsItem | null> => {
   try {
     const db = getDB();
