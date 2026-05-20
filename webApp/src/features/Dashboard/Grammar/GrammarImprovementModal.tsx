@@ -123,8 +123,6 @@ When user struggle with one example, try to switch to another example and come b
     });
 
     setIsCallStarting(false);
-    await sleep(1000);
-    onClose();
 
     dailyTasks.onCompleteTask('grammar-improvement');
   };
