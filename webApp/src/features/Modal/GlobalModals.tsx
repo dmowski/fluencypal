@@ -20,6 +20,7 @@ import { ProgressStatModal } from '@/features/ProgressStat/ProgressStatModal';
 import { EssayModal } from '../Essay/EssayModal';
 import { NewsFeedModal } from '@/features/News/NewsFeedModal';
 import { NewsModal } from '@/features/News/NewsModal';
+import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -28,6 +29,8 @@ export const GlobalModals: React.FC = () => {
   const stories = useStories();
   const battles = useBattle();
   const globalModals = useGlobalModals();
+  const conversation = useAiConversation();
+  const isActiveConversation = conversation.isStarted || !!conversation.isInitializing;
 
   const activeUserProfile = useMemo(() => {
     return game.modalUserId ? game.stats.find((s) => s.userId === game.modalUserId) : null;
@@ -72,9 +75,13 @@ export const GlobalModals: React.FC = () => {
       <ReportModal />
       <TeacherVoiceModal />
 
-      <GrammarImprovementModal />
-      <NewsFeedModal />
-      <NewsModal />
+      {!isActiveConversation && (
+        <>
+          <GrammarImprovementModal />
+          <NewsFeedModal />
+          <NewsModal />
+        </>
+      )}
     </>
   );
 };
