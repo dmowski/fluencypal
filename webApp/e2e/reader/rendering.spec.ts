@@ -39,10 +39,35 @@ test('updates browser tab title for active book and restores it after close', as
   await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
   await expect(page).toHaveTitle(BOOK_TITLE);
 
-  page.once('dialog', (dialog) => dialog.accept());
+  // Escape opens the custom close-confirm dialog; click Confirm to actually close.
   await page.keyboard.press('Escape');
+  await page.getByTestId('reader-close-confirm-ok').click();
   await expect(gatsbyCardTitle).toBeVisible();
   await expect(page).toHaveTitle(initialTitle);
+});
+
+test('Esc close-confirm dialog: Cancel keeps the reader open', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    if (typeof indexedDB !== 'undefined') {
+      indexedDB.deleteDatabase('readerBooksDb');
+    }
+  });
+
+  await page.goto('/book');
+
+  await page.getByRole('heading', { name: BOOK_TITLE, level: 4 }).click();
+  await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
+
+  // Escape opens the confirm dialog.
+  await page.keyboard.press('Escape');
+  await expect(page.getByTestId('reader-close-confirm-dialog')).toBeVisible();
+
+  // Clicking Cancel keeps the reader open.
+  await page.getByTestId('reader-close-confirm-cancel').click();
+  await expect(page.getByTestId('reader-close-confirm-dialog')).not.toBeVisible();
+  await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
 });
 
 test('reader shows criticizing word and hover effect', async ({ page }) => {

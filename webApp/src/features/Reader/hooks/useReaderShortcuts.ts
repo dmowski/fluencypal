@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const isEditableTarget = (target: EventTarget | null) => {
   if (!(target instanceof HTMLElement)) return false;
@@ -61,6 +61,17 @@ export const useReaderShortcuts = ({
   onNext: () => void;
   onPrevious: () => void;
 }) => {
+  const [isCloseConfirmOpen, setIsCloseConfirmOpen] = useState(false);
+
+  const confirmClose = useCallback(() => {
+    setIsCloseConfirmOpen(false);
+    onClose();
+  }, [onClose]);
+
+  const cancelClose = useCallback(() => {
+    setIsCloseConfirmOpen(false);
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === 'a') {
@@ -78,23 +89,28 @@ export const useReaderShortcuts = ({
       }
 
       if (event.key === 'Escape') {
-        event.preventDefault();
+        // Do not preventDefault here — let the MUI Dialog handle its own Escape
+        // so it can close the confirm dialog on a second Escape press.
 
         const selection = window.getSelection();
         if (selection && selection.toString().length > 0) {
+          event.preventDefault();
           // Text is selected, clear the selection and don't close
           selection.removeAllRanges();
           return;
         }
 
-        // No selection, ask for confirmation before closing
-        if (window.confirm('Close the book?')) {
-          setTimeout(() => {
-            onClose();
-          }, 100);
-        }
+        // No selection — open the custom confirm dialog.
+        // Avoid window.confirm() which Safari auto-dismisses when triggered by Escape.
+        setIsCloseConfirmOpen((current) => {
+          if (current) return current; // already open
+          event.preventDefault();
+          return true;
+        });
         return;
       }
+
+      if (isCloseConfirmOpen) return;
 
       if (event.key === 'ArrowRight' && activePage < maxPage) {
         event.preventDefault();
@@ -113,5 +129,7 @@ export const useReaderShortcuts = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [activePage, maxPage, onClose, onNext, onPrevious]);
+  }, [activePage, isCloseConfirmOpen, maxPage, onNext, onPrevious]);
+
+  return { isCloseConfirmOpen, confirmClose, cancelClose };
 };

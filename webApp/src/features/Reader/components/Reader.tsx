@@ -1,4 +1,12 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { Book, BookChapterNavigationItem, HighlightedText, ReaderSettings } from '../model/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
