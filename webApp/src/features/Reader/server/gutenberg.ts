@@ -89,6 +89,7 @@ const parseBooksFromBookshelfHtml = (html: string): ReaderLibraryBook[] => {
         downloads: Number(rawDownloads.replace(/,/g, '')),
         coverUrl: EBOOK_ID_PATTERN.test(ebookId) ? getMediumCoverUrl(ebookId) : null,
         bookUrl: toAbsoluteUrl(href),
+        epubUrl: EBOOK_ID_PATTERN.test(ebookId) ? `/Reader/pg${ebookId}.epub` : '',
       } satisfies ReaderLibraryBook;
     })
     .filter((book): book is ReaderLibraryBook => Boolean(book))

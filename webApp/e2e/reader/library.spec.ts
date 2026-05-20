@@ -49,31 +49,6 @@ test('shows live Gutenberg library categories on books home page', async ({ page
 test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page }) => {
   test.setTimeout(240_000);
 
-  // Mock the library listing so the test is fully network-independent.
-  await page.route('**/api/reader/library', (route) => {
-    route.fulfill({
-      contentType: 'application/json',
-      body: JSON.stringify({
-        categories: [
-          {
-            id: 'romance',
-            title: 'Romance',
-            books: [
-              {
-                ebookId: GUTENBERG_ROMANCE_BOOK_ID,
-                title: GUTENBERG_ROMANCE_TITLE,
-                author: 'Austen, Jane',
-                downloads: 52000,
-                coverUrl: null,
-                bookUrl: `https://www.gutenberg.org/ebooks/${GUTENBERG_ROMANCE_BOOK_ID}`,
-              },
-            ],
-          },
-        ],
-      }),
-    });
-  });
-
   await openBooksPageWithCleanStorage(page);
 
   const gutenbergBookCard = page.getByTestId(`reader-library-book-${GUTENBERG_ROMANCE_BOOK_ID}`);
@@ -85,7 +60,7 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
 
   await expect(
     page.getByRole('heading', { name: GUTENBERG_ROMANCE_TITLE, level: 2 }),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 15_000 });
   await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
   await expect(page.getByTestId('reader-page-indicator')).toBeVisible();
@@ -138,31 +113,6 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
 test('downloads library EPUB with images and renders image in reader', async ({ page }) => {
   test.setTimeout(180_000);
 
-  // Mock the library listing so the test is fully network-independent.
-  await page.route('**/api/reader/library', (route) => {
-    route.fulfill({
-      contentType: 'application/json',
-      body: JSON.stringify({
-        categories: [
-          {
-            id: 'romance',
-            title: 'Romance',
-            books: [
-              {
-                ebookId: CHIMNEYS_EBOOK_ID,
-                title: CHIMNEYS_TITLE,
-                author: 'Christie, Agatha',
-                downloads: 3200,
-                coverUrl: null,
-                bookUrl: `https://www.gutenberg.org/ebooks/${CHIMNEYS_EBOOK_ID}`,
-              },
-            ],
-          },
-        ],
-      }),
-    });
-  });
-
   await openBooksPageWithCleanStorage(page);
 
   const romanceCategory = page.getByTestId('reader-library-category-romance');
@@ -174,7 +124,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
 
   await expect(page.getByTestId('library-download-fixed-panel')).toBeVisible();
 
-  await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: CHIMNEYS_TITLE, level: 2 })).toBeVisible({ timeout: 15_000 });
   await page.getByRole('button', { name: 'Read' }).click();
   await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
 

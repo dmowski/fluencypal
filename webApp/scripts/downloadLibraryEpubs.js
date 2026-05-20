@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const CATEGORIES_PATH = path.join(__dirname, '../src/app/api/reader/library/categories.json');
+const CATEGORIES_PATH = path.join(__dirname, '../src/features/Reader/data/categories.json');
 const OUTPUT_DIR = path.join(__dirname, '../public/Reader');
 
 const categories = JSON.parse(fs.readFileSync(CATEGORIES_PATH, 'utf-8'));

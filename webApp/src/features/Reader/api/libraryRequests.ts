@@ -1,11 +1,6 @@
 import { ReaderLibraryBook, ReaderLibraryCategory } from '../model/library';
 import { normalizeEpubFileName } from '../utils/epubFileName';
 
-interface ReaderLibraryCategoriesResponse {
-  categories?: ReaderLibraryCategory[];
-  error?: string;
-}
-
 interface DownloadReaderLibraryBookParams {
   ebookId: string;
   title: string;
@@ -37,24 +32,6 @@ const getFileNameFromDisposition = (contentDisposition: string | null, fallback:
 
   const fileNameMatch = contentDisposition.match(/filename="?([^";]+)"?/i);
   return fileNameMatch?.[1] || fallback;
-};
-
-export const fetchReaderLibraryCategories = async ({
-  signal,
-}: {
-  signal?: AbortSignal;
-} = {}): Promise<ReaderLibraryCategory[]> => {
-  const response = await fetch('/api/reader/library', {
-    signal,
-  });
-
-  const payload = (await response.json()) as ReaderLibraryCategoriesResponse;
-
-  if (!response.ok) {
-    throw new Error(payload.error || 'Failed to load library.');
-  }
-
-  return Array.isArray(payload.categories) ? payload.categories : [];
 };
 
 export const downloadReaderLibraryBookFile = async ({

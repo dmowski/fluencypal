@@ -44,6 +44,11 @@ When changing one area, run checks for that area first. Avoid running full Playw
 - Prefer avoiding `useEffect` in UI code by default; favor explicit event handlers, derived state, and data flow that is easier to test.
 - Use `useEffect` only when synchronizing with external systems (timers, subscriptions, imperative browser APIs) and keep those effects minimal and isolated.
 
+## E2E Testing
+
+- Do not add per-assertion `{ timeout }` values above 15 000 ms. If an operation genuinely takes longer, investigate a faster fixture or a better wait strategy instead of increasing the timeout — long timeouts make debugging slow.
+- Wait for the specific UI signal that proves the operation completed (a new element appearing, a button becoming enabled, etc.) rather than waiting for intermediate states to disappear.
+
 ## Environment And Pitfalls
 
 - Local Firebase emulator requires Java 11+ and ports configured in `webApp/firebase.json`.

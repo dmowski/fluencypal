@@ -5,6 +5,7 @@ export interface ReaderLibraryBook {
   downloads: number;
   coverUrl: string | null;
   bookUrl: string;
+  epubUrl: string;
 }
 
 export interface ReaderLibraryCategory {
