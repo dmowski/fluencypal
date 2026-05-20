@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 import { ProgressBoard } from './Progress/ProgressBoard';
 import { RolePlayBoard } from '../RolePlay/RolePlayBoard';

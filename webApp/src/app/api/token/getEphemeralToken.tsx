@@ -16,22 +16,36 @@ export const getEphemeralToken = async (model: string, userId: string) => {
     throw new Error('Model is required');
   }
 
-  const r = await fetch('https://api.openai.com/v1/realtime/sessions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${openAIKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: model,
-      voice: 'verse',
-    }),
-  });
+  try {
+    const r = await fetch('https://api.openai.com/v1/realtime/client_secrets', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${openAIKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        session: {
+          type: 'realtime',
+          model,
+          audio: {
+            output: {
+              voice: 'verse',
+            },
+          },
+        },
+      }),
+    });
 
-  const data = await r.json();
-  if (!data?.client_secret.value) {
-    throw new Error('Unable to create ephemeral token. No client secret found');
+    const data = await r.json();
+    if (!data?.value) {
+      console.error('Unable to create ephemeral token', data);
+      throw new Error('Unable to create ephemeral token. No client secret found');
+    }
+
+    return data.value as string;
+  } catch (error) {
+    console.error('Error fetching ephemeral token:', error);
+    console.log(error);
+    throw new Error('Unable to create ephemeral token. Failed to fetch from OpenAI API');
   }
-
-  return data.client_secret.value as string;
 };

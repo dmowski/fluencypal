@@ -17,14 +17,21 @@ export const updateSessionSafe = async ({
   const event = {
     type: 'session.update',
     session: {
+      type: 'realtime',
       instructions: partialInstructionOverride ?? getInstruction(state),
-      input_audio_transcription: {
-        model: 'gpt-4o-mini-transcribe',
-        language: config.languageCode,
+      output_modalities: state.currentVolumeOn ? ['audio'] : ['text'],
+      audio: {
+        input: {
+          transcription: {
+            model: 'gpt-4o-mini-transcribe',
+            language: config.languageCode,
+          },
+          turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
+        },
+        output: {
+          voice: config.voice,
+        },
       },
-      voice: config.voice,
-      modalities: state.currentVolumeOn ? ['audio', 'text'] : ['text'],
-      turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
     },
   };
 

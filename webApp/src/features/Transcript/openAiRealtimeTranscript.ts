@@ -114,13 +114,18 @@ export const startOpenAiRealtimeTranscript = async ({
         JSON.stringify({
           type: 'session.update',
           session: {
-            modalities: ['text'],
+            type: 'realtime',
+            output_modalities: ['text'],
             instructions: '',
-            input_audio_transcription: {
-              model: 'gpt-4o-mini-transcribe',
-              language,
+            audio: {
+              input: {
+                transcription: {
+                  model: 'gpt-4o-mini-transcribe',
+                  language,
+                },
+                turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
+              },
             },
-            turn_detection: { type: 'semantic_vad', eagerness: 'auto' },
           },
         }),
       );

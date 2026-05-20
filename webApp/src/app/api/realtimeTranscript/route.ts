@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     const ephemeralKey = await getEphemeralToken(TRANSCRIPT_REALTIME_MODEL, userInfo.uid);
 
-    const url = new URL('https://api.openai.com/v1/realtime');
+    const url = new URL('https://api.openai.com/v1/realtime/calls');
     url.searchParams.set('model', TRANSCRIPT_REALTIME_MODEL);
 
     const sdpResponse = await fetch(url.toString(), {
