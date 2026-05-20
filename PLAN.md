@@ -2,6 +2,8 @@
 
 ## News: Tune quality. News should be useful for me.
 
+- Keep news in firestore, and translate on client (By sending requests to translate if needed)
+
 - As separate page, modal with options to filter
 
 - Render news as proper cards
