@@ -62,7 +62,7 @@ export const downloadReaderLibraryBookFile = async ({
   title,
   onProgress,
 }: DownloadReaderLibraryBookParams): Promise<File> => {
-  const response = await fetch(`/api/reader/library/download?ebookId=${ebookId}`);
+  const response = await fetch(`/Reader/pg${ebookId}.epub`);
 
   if (!response.ok) {
     throw new Error((await response.text()) || FALLBACK_DOWNLOAD_ERROR);

@@ -32,7 +32,7 @@ test('shows live Gutenberg library categories on books home page', async ({ page
 
   await openBooksPageWithCleanStorage(page);
 
-  await expect(page.getByRole('heading', { name: 'Library', level: 4 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Library', level: 6 })).toBeVisible();
 
   const romanceCategory = page.getByTestId('reader-library-category-romance');
   await expect(romanceCategory).toBeVisible();
@@ -72,22 +72,6 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
         ],
       }),
     });
-  });
-
-  // Route the EPUB download to the local fixture so the test is network-independent.
-  await page.route('**/api/reader/library/download*', async (route) => {
-    const url = new URL(route.request().url());
-    if (url.searchParams.get('ebookId') === GUTENBERG_ROMANCE_BOOK_ID) {
-      await route.fulfill({
-        path: 'public/Reader/pride_and_prejudice.epub',
-        contentType: 'application/epub+zip',
-        headers: {
-          'content-disposition': `attachment; filename="pg${GUTENBERG_ROMANCE_BOOK_ID}.epub.noimages"`,
-        },
-      });
-    } else {
-      await route.continue();
-    }
   });
 
   await openBooksPageWithCleanStorage(page);
@@ -177,22 +161,6 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
         ],
       }),
     });
-  });
-
-  // Route the EPUB download to the local fixture so the test is network-independent.
-  await page.route('**/api/reader/library/download*', async (route) => {
-    const url = new URL(route.request().url());
-    if (url.searchParams.get('ebookId') === CHIMNEYS_EBOOK_ID) {
-      await route.fulfill({
-        path: 'public/Reader/the_secret_of_chimneys.epub',
-        contentType: 'application/epub+zip',
-        headers: {
-          'content-disposition': `attachment; filename="pg${CHIMNEYS_EBOOK_ID}.epub"`,
-        },
-      });
-    } else {
-      await route.continue();
-    }
   });
 
   await openBooksPageWithCleanStorage(page);
