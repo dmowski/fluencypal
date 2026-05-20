@@ -159,8 +159,9 @@ test.describe('Load previous news button', () => {
       'Yesterday Headline',
     );
 
-    // The button should no longer be shown after loading.
-    await expect(loadBtn).toBeHidden();
+    // Button stays visible with updated label so the user can keep loading older days.
+    await expect(loadBtn).toBeVisible();
+    await expect(loadBtn).toContainText('Load more previous news');
   });
 
   test('shows empty message when no previous news exist', async ({ page }) => {

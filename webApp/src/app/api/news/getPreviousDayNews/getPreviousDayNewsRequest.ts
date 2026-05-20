@@ -1,7 +1,7 @@
 import { GetPreviousDayNewsRequest, GetPreviousDayNewsResponse } from '../types';
 
 export const getPreviousDayNewsRequest = async (
-  request: GetPreviousDayNewsRequest & { daysBack: number },
+  request: GetPreviousDayNewsRequest,
   token: string | null,
 ): Promise<GetPreviousDayNewsResponse> => {
   const headers: Record<string, string> = {
