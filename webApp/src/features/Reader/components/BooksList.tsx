@@ -265,7 +265,7 @@ export const BooksList = () => {
     >
       <Stack
         sx={{
-          gap: '72px',
+          gap: '42px',
         }}
       >
         <input
@@ -296,12 +296,15 @@ export const BooksList = () => {
           }}
         >
           <Typography
-            variant="h2"
+            variant="h3"
             sx={{
               fontFamily: 'serif',
+              '@media (max-width:600px)': {
+                fontSize: '1.8rem',
+              },
             }}
           >
-            {i18n._('Books')}
+            {i18n._('My Books')}
           </Typography>
 
           <ReaderAuthButton onClick={() => void setIsProfileOpen(true)} />
@@ -391,8 +394,6 @@ export const BooksList = () => {
           })()}
 
         <Stack sx={{ gap: '12px' }}>
-          <Typography variant="h4">{i18n._('My books')}</Typography>
-
           {sync.isInitialSyncing && books.usersBooks.length === 0 ? (
             <Typography
               variant="caption"
@@ -448,8 +449,8 @@ export const BooksList = () => {
           </Typography>
         ) : null}
 
-        <Stack data-testid="reader-library-section" sx={{ gap: '50px' }}>
-          <Typography variant="h4">{i18n._('Library')}</Typography>
+        <Stack data-testid="reader-library-section" sx={{ gap: '15px', padding: '80px 0' }}>
+          <Typography variant="h6">{i18n._('Library')}</Typography>
 
           {library.isLoading ? (
             <Typography variant="caption">{i18n._('Loading library...')}</Typography>
@@ -466,7 +467,17 @@ export const BooksList = () => {
               data-testid={`reader-library-category-${category.id}`}
               sx={{ gap: '12px' }}
             >
-              <Typography variant="h5">{category.title}</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  opacity: 0.7,
+                  fontWeight: 500,
+                }}
+              >
+                {category.title}
+              </Typography>
               <Stack
                 sx={{
                   flexDirection: 'row',
