@@ -142,30 +142,37 @@ export const BookCard = ({
       {firstImage ? (
         <>
           <Box
+            sx={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              borderRadius: cardBorderRadius,
+              overflow: 'hidden',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              margin: '0',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 1,
+              backdropFilter: 'blur(22px)',
+            }}
+          />
+          <Box
             component="img"
             src={firstImage}
             alt=""
             sx={{
               position: 'absolute',
-              inset: '-20px',
+              top: 0,
+              left: 0,
               borderRadius: cardBorderRadius,
               overflow: 'hidden',
-              width: 'calc(100% + 40px)',
-              height: 'calc(100% + 40px)',
+              width: '100%',
+              height: '100%',
               objectFit: 'cover',
-              filter: 'blur(22px)',
               zIndex: 0,
               pointerEvents: 'none',
               userSelect: 'none',
-            }}
-          />
-          <Box
-            sx={{
-              position: 'absolute',
-              borderRadius: cardBorderRadius,
-              inset: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              zIndex: 1,
             }}
           />
         </>
