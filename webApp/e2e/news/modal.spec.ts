@@ -10,7 +10,7 @@ test.describe('News modal', () => {
     await resetEmulatorState();
   });
 
-  test('opens article on row click, shows markdown, persists in URL, closes via Esc', async ({
+  test('opens feed on card click, opens article on feed card click, persists URL, Esc closes article then feed', async ({
     page,
   }) => {
     test.setTimeout(90_000);
@@ -59,11 +59,16 @@ test.describe('News modal', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
+    // Step 1: click the dashboard preview card to open the feed modal.
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
+    await card.click();
 
-    // Click the first row (StoreCard list item).
-    await card.getByText('Modal headline ONE', { exact: true }).first().click();
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal).toBeVisible({ timeout: 15_000 });
+
+    // Step 2: click a news preview card in the feed to open the article.
+    await feedModal.getByTestId('news-preview-card').first().click();
 
     const modal = page.getByTestId('news-modal');
     await expect(modal).toBeVisible({ timeout: 15_000 });
@@ -71,20 +76,26 @@ test.describe('News modal', () => {
       timeout: 15_000,
     });
     await expect(modal.getByTestId('news-modal-country')).toContainText('United States');
-    // Article image is rendered with the item's imageUrl (via next/image,
-    // so the rendered src is the optimizer URL containing the original).
+
+    // Article image rendered via next/image optimiser URL.
     const image = modal.getByTestId('news-modal-image');
     await expect(image).toBeVisible();
     await expect(image).toHaveAttribute('src', /images\.unsplash\.com(?:%2F|\/)m1\.jpg/);
-    // Default complexity is `middle` — assert the middle version renders.
+
+    // Default complexity is `middle`.
     await expect(modal).toContainText('Middle heading');
 
-    // URL reflects the open article.
+    // URL reflects both feed and article open.
     await expect(page).toHaveURL(/[?&]newsId=modal-news-1/);
 
-    // Closing via Esc clears the URL param.
+    // Step 3: Esc closes the article but the feed modal stays visible.
     await page.keyboard.press('Escape');
     await expect(modal).toBeHidden();
+    await expect(feedModal).toBeVisible();
     await expect(page).not.toHaveURL(/[?&]newsId=/);
+
+    // Step 4: Esc again closes the feed modal.
+    await page.keyboard.press('Escape');
+    await expect(feedModal).toBeHidden();
   });
 });

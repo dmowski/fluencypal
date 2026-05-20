@@ -2,11 +2,32 @@
 
 ## News: Tune quality. News should be useful for me.
 
-- Keep news in firestore, and translate on client (By sending requests to translate if needed)
+- Keep news in firestore, and translate on client
+  (By sending requests to translate if needed).
 
-- As separate page, modal with options to filter
+- Show last 20 news and add button "Load more".
 
-- Render news as proper cards
+- Add feature of commenting on full News Modal. So people can leave comments.
+
+## Approve to use the app.
+
+- Create a form to write info about yourself.
+
+- Add ui to approve
+
+- Get 4 approves to Join
+
+- On main page show list of people that wants to join fluencyPal
+
+- After all approves receive allow user to use the app
+
+- Create lock screen to user.
+
+- When sign up happens, create a flag: requiredApprove: boolean, so that we will split new user (who needed approve) from old (who don't need approve).
+
+- Think about on how to accept approves. Probably it should be endpoint.
+
+- Place related code on new feature folder.
 
 ## Reader: List. unable to highlight text
 

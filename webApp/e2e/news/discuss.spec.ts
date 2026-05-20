@@ -60,7 +60,13 @@ test.describe('News modal — Discuss with AI', () => {
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
 
-    await card.getByText('Discuss headline', { exact: true }).first().click();
+    // Open the feed modal, then click the news preview card to open the article.
+    await card.click();
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
+      timeout: 15_000,
+    });
+    await feedModal.getByTestId('news-preview-card').first().click();
 
     const modal = page.getByTestId('news-modal');
     await expect(modal).toBeVisible({ timeout: 15_000 });

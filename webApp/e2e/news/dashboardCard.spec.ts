@@ -10,7 +10,7 @@ test.describe('News dashboard card', () => {
     await resetEmulatorState();
   });
 
-  test('shows the Current Events section on the practice dashboard', async ({ page }) => {
+  test('shows the news dashboard card on the practice dashboard', async ({ page }) => {
     test.setTimeout(90_000);
 
     const { uid, email } = await signInPracticeWithStepper(page);
@@ -20,7 +20,20 @@ test.describe('News dashboard card', () => {
     await expect(card).toBeVisible({ timeout: 30_000 });
   });
 
-  test('renders mocked today news: badge, headline title, three row items', async ({ page }) => {
+  test('shows static title and label on the store card', async ({ page }) => {
+    test.setTimeout(90_000);
+
+    const { uid, email } = await signInPracticeWithStepper(page);
+    await seedPracticeUserSettings(page, { uid, email });
+
+    const card = page.getByTestId('news-dashboard-card');
+    await expect(card).toBeVisible({ timeout: 30_000 });
+
+    await expect(card.getByText('Discuss with AI')).toBeVisible();
+    await expect(card.getByText(/inspired by current events/i)).toBeVisible();
+  });
+
+  test('clicking the preview card opens the news feed modal', async ({ page }) => {
     test.setTimeout(90_000);
 
     const fixtureItems = [
@@ -29,24 +42,6 @@ test.describe('News dashboard card', () => {
         title: 'Mocked headline ONE',
         subTitle: 'Sub ONE',
         imageUrl: 'https://images.unsplash.com/n1.jpg',
-        dateIso: new Date().toISOString(),
-        countryCode: 'us',
-        languageCode: 'en',
-      },
-      {
-        id: 'n2',
-        title: 'Mocked headline TWO',
-        subTitle: 'Sub TWO',
-        imageUrl: 'https://images.unsplash.com/n2.jpg',
-        dateIso: new Date().toISOString(),
-        countryCode: 'us',
-        languageCode: 'en',
-      },
-      {
-        id: 'n3',
-        title: 'Mocked headline THREE',
-        subTitle: 'Sub THREE',
-        imageUrl: 'https://images.unsplash.com/n3.jpg',
         dateIso: new Date().toISOString(),
         countryCode: 'us',
         languageCode: 'en',
@@ -67,14 +62,8 @@ test.describe('News dashboard card', () => {
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
 
-    // First item title is the card headline (h4) AND the first list row (h6) → 2 matches expected.
-    await expect(card.getByText('Mocked headline ONE', { exact: true })).toHaveCount(2);
+    await card.click();
 
-    // The other two rows render with their titles.
-    await expect(card.getByText('Mocked headline TWO', { exact: true })).toBeVisible();
-    await expect(card.getByText('Mocked headline THREE', { exact: true })).toBeVisible();
-
-    // Rows render the article image (not a generic newspaper icon) when imageUrl is provided.
-    await expect(card.locator('img[src*="n1.jpg"]').first()).toBeVisible();
+    await expect(page.getByTestId('news-feed-modal')).toBeVisible({ timeout: 15_000 });
   });
 });

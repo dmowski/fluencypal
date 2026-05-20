@@ -16,6 +16,7 @@ import {
   Typography,
 } from '@mui/material';
 import { ProgressChart } from './ProgressChart';
+import { StyledSelect } from '../uiKit/StyledSelect/StyledSelect';
 import {
   buildSmoothedChartPoints,
   mockProgressStats,
@@ -371,77 +372,16 @@ export const ProgressViewChart = ({
         gap: '12px',
       }}
     >
-      <Select
+      <StyledSelect
         value={selectedMetric}
-        onChange={(event) => onSelectedMetricChange(event.target.value as ProgressMetric)}
-        displayEmpty
-        size="small"
-        IconComponent={(iconProps) => <ChevronDown size={18} {...iconProps} />}
-        sx={{
-          minWidth: '170px',
-          color: '#f7f9ff',
-          borderRadius: '10px',
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(255,255,255,0.24)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(255,255,255,0.3)',
-          },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(77, 163, 255, 0.3)',
-          },
-        }}
-        renderValue={(value) => (
-          <Stack
-            sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px', paddingTop: '1px' }}
-          >
-            <Stack
-              sx={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: metricColorMap[value],
-              }}
-            />
-            <Typography
-              variant="body2"
-              sx={{
-                paddingBottom: '0',
-              }}
-            >
-              {metricLabelMap[value]}
-            </Typography>
-          </Stack>
-        )}
-      >
-        {metricOptions.map((option) => (
-          <MenuItem key={option.metric} value={option.metric}>
-            <Stack
-              sx={{
-                width: '100%',
-                alignItems: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                gap: '12px',
-                padding: '6px 5px',
-              }}
-            >
-              <Stack sx={{ alignItems: 'center', flexDirection: 'row', gap: '14px' }}>
-                <Stack
-                  sx={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: metricColorMap[option.metric],
-                  }}
-                />
-                <Typography variant="body1">{option.label}</Typography>
-              </Stack>
-              {selectedMetric === option.metric && <Check size={16} />}
-            </Stack>
-          </MenuItem>
-        ))}
-      </Select>
+        onChange={(v) => onSelectedMetricChange(v as ProgressMetric)}
+        options={metricOptions.map((o) => ({
+          value: o.metric,
+          label: o.label,
+          color: metricColorMap[o.metric],
+        }))}
+        sx={{ minWidth: '170px' }}
+      />
 
       {isShowSettings && (
         <IconButton onClick={onSettingsOpen} aria-label={i18n._('Open progress settings')}>

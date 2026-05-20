@@ -35,7 +35,17 @@ const makeFixture = (label: string) => [
   },
 ];
 
-test.describe('News settings menu', () => {
+/** Opens the news feed modal from the dashboard card. */
+async function openFeedModal(page: import('@playwright/test').Page) {
+  const card = page.getByTestId('news-dashboard-card');
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await card.click();
+  const feedModal = page.getByTestId('news-feed-modal');
+  await expect(feedModal).toBeVisible({ timeout: 15_000 });
+  return feedModal;
+}
+
+test.describe('News selectors in feed modal', () => {
   test.beforeEach(async () => {
     await resetEmulatorState();
   });
@@ -59,18 +69,18 @@ test.describe('News settings menu', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
-    const card = page.getByTestId('news-dashboard-card');
-    await expect(card).toBeVisible({ timeout: 30_000 });
+    const feedModal = await openFeedModal(page);
 
-    // Initial fetch.
-    await expect(card.getByText('Headline GENERAL 1', { exact: true }).first()).toBeVisible();
+    // Wait for feed items to render.
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
+      timeout: 15_000,
+    });
     const requestsAfterInitial = requests.length;
     expect(requestsAfterInitial).toBeGreaterThan(0);
 
-    // Open the settings menu and switch complexity — should not trigger a refetch.
-    await page.getByTestId('news-settings-button').click();
-    await expect(page.getByTestId('news-settings-menu')).toBeVisible();
-    await page.getByTestId('news-complexity-option-advance').click();
+    // Switch complexity via the inline selector — should NOT trigger a refetch.
+    await page.getByTestId('news-complexity-select').click();
+    await page.getByRole('option', { name: 'Advanced' }).click();
 
     // Give the app a beat to (incorrectly) fire any request.
     await page.waitForTimeout(500);
@@ -99,38 +109,53 @@ test.describe('News settings menu', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
-    const card = page.getByTestId('news-dashboard-card');
-    await expect(card).toBeVisible({ timeout: 30_000 });
+    const feedModal = await openFeedModal(page);
 
     // Wait for initial fetch (account country, seeded as `us`).
-    await expect(card.getByText('Headline GENERAL 1', { exact: true }).first()).toBeVisible();
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
+      timeout: 15_000,
+    });
     expect(countryRequests.length).toBeGreaterThan(0);
     const requestsBeforeOverride = countryRequests.length;
 
     // Pick a gNews-supported country that is NOT the account country.
-    await page.getByTestId('news-settings-button').click();
-    await expect(page.getByTestId('news-settings-menu')).toBeVisible();
-    await page.getByTestId('news-settings-tab-country').click();
-    await page.getByTestId('news-country-option-fr').click();
+    await page.getByTestId('news-country-select').click();
+    await page.getByRole('option', { name: 'France' }).click();
 
     await expect
       .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })
       .toBe('fr');
     expect(countryRequests.length).toBe(requestsBeforeOverride + 1);
 
-    // Reload the page → the override should persist via localStorage and the
-    // very next fetch should also use `fr`, not the account country.
+    // Close and reopen the feed modal (simulating page reload persistence via localStorage).
+    await page.keyboard.press('Escape');
+    await expect(feedModal).toBeHidden();
+    // useUrlState updates internal context before router.push completes — wait
+    // for the URL to actually reflect the closed state before reloading.
+    await expect(page).not.toHaveURL(/newsFeed/, { timeout: 5_000 });
     await page.reload();
-    await expect(card).toBeVisible({ timeout: 30_000 });
+
+    // Wait for Firebase auth to re-confirm the session before looking for UI.
+    await page.waitForFunction(
+      () => {
+        const handle = (window as any).__darkEngTest;
+        return Boolean(handle?.auth?.currentUser?.uid);
+      },
+      null,
+      { timeout: 20_000 },
+    );
+
+    const feedModal2 = await openFeedModal(page);
+    await expect(feedModal2.getByTestId('news-preview-card').first()).toBeVisible({
+      timeout: 15_000,
+    });
     await expect
       .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })
       .toBe('fr');
 
     // Switch back to Auto → fetch should use the account country again.
-    await page.getByTestId('news-settings-button').click();
-    await expect(page.getByTestId('news-settings-menu')).toBeVisible();
-    await page.getByTestId('news-settings-tab-country').click();
-    await page.getByTestId('news-country-option-auto').click();
+    await page.getByTestId('news-country-select').click();
+    await page.getByRole('option', { name: 'Auto' }).click();
 
     await expect
       .poll(() => countryRequests[countryRequests.length - 1], { timeout: 15_000 })

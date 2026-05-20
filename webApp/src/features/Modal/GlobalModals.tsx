@@ -18,6 +18,7 @@ import { DailyQuestionModal } from '@/features/DailyQuestion/DailyQuestionModal'
 import { GrammarImprovementModal } from '@/features/Dashboard/Grammar/GrammarImprovementModal';
 import { ProgressStatModal } from '@/features/ProgressStat/ProgressStatModal';
 import { EssayModal } from '../Essay/EssayModal';
+import { NewsFeedModal } from '@/features/News/NewsFeedModal';
 import { NewsModal } from '@/features/News/NewsModal';
 
 export const GlobalModals: React.FC = () => {
@@ -72,6 +73,7 @@ export const GlobalModals: React.FC = () => {
       <TeacherVoiceModal />
 
       <GrammarImprovementModal />
+      <NewsFeedModal />
       <NewsModal />
     </>
   );

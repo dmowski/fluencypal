@@ -10,13 +10,14 @@ test.describe('News states', () => {
     await resetEmulatorState();
   });
 
-  test('shows loading placeholder while today news is in-flight', async ({ page }) => {
+  test('shows loading placeholder in feed modal while today news is in-flight', async ({
+    page,
+  }) => {
     test.setTimeout(90_000);
 
     let resolveRequest: (() => void) | null = null;
     await page.route('**/api/news/getTodayNews', async (route) => {
-      // Block the response so the card stays in the initial-loading state long
-      // enough for the spec to observe the placeholder.
+      // Block the response so the feed modal stays in the initial-loading state.
       await new Promise<void>((resolve) => {
         resolveRequest = resolve;
       });
@@ -30,14 +31,20 @@ test.describe('News states', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
+    // Dashboard card appears without a loading spinner.
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-    await expect(card.getByText('Loading news...')).toBeVisible({ timeout: 15_000 });
+
+    // Open the feed modal — it should show the loading state.
+    await card.click();
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal).toBeVisible({ timeout: 15_000 });
+    await expect(feedModal.getByTestId('news-feed-modal-loading')).toBeVisible({ timeout: 10_000 });
 
     (resolveRequest as (() => void) | null)?.();
   });
 
-  test('shows error label when today news request fails', async ({ page }) => {
+  test('shows error message in feed modal when today news request fails', async ({ page }) => {
     test.setTimeout(90_000);
 
     await page.route('**/api/news/getTodayNews', async (route) => {
@@ -51,9 +58,15 @@ test.describe('News states', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
+    // Dashboard card appears without an error label.
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-    await expect(card.getByText('Could not load news')).toBeVisible({ timeout: 15_000 });
+
+    // Open the feed modal — error text appears there.
+    await card.click();
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal).toBeVisible({ timeout: 15_000 });
+    await expect(feedModal.getByTestId('news-feed-modal-empty')).toBeVisible({ timeout: 15_000 });
   });
 
   test('falls back to US news when the user has no country set', async ({ page }) => {
@@ -101,7 +114,12 @@ test.describe('News states', () => {
 
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-    await expect(card.getByText('US fallback headline').first()).toBeVisible({
+
+    // Open feed modal to see items.
+    await card.click();
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal).toBeVisible({ timeout: 15_000 });
+    await expect(feedModal.getByText('US fallback headline').first()).toBeVisible({
       timeout: 15_000,
     });
     expect(observedCountry).toBe('us');
@@ -169,9 +187,16 @@ test.describe('News states', () => {
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 
+    // Open feed modal then click a preview card to open the article.
     const card = page.getByTestId('news-dashboard-card');
     await expect(card).toBeVisible({ timeout: 30_000 });
-    await card.getByText('Error headline', { exact: true }).first().click();
+    await card.click();
+
+    const feedModal = page.getByTestId('news-feed-modal');
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
+      timeout: 15_000,
+    });
+    await feedModal.getByTestId('news-preview-card').first().click();
 
     const modal = page.getByTestId('news-modal');
     await expect(modal).toBeVisible({ timeout: 15_000 });
