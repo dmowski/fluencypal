@@ -1120,12 +1120,12 @@ msgstr "بلوق"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "يتم ملء حقول الكتاب تلقائيًا من بيانات EPUB الوصفية في وضع الإنتاج."
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:75
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:91
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "معلومات الكتاب"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:147
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:163
 #. js-lingui-explicit-id
 msgid "Book info sections"
 msgstr "تفاصيل الكتاب"
@@ -1399,7 +1399,7 @@ msgstr "هل يمكنني استخدامه على الهاتف الذكي؟"
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
-#: src/features/Reader/components/Reader.tsx:319
+#: src/features/Reader/components/Reader.tsx:344
 #: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
@@ -1465,7 +1465,7 @@ msgstr "تحدي"
 msgid "Changes vs previous 30 days"
 msgstr "التغييرات مقابل الـ 30 يومًا الماضية"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:160
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:176
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "الفصول"
@@ -1592,6 +1592,11 @@ msgstr "تسجيل الدخول"
 msgid "Chinese Learning Plan"
 msgstr "خطة تعلم الصينية"
 
+#: src/features/Reader/components/TextPopover.tsx:55
+#. js-lingui-explicit-id
+msgid "Choose another language in Settings"
+msgstr "اختر لغة أخرى في الإعدادات"
+
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -1661,7 +1666,7 @@ msgstr "انقر على \"إضافة عنوان بريد إلكتروني معت
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
-#: src/features/Reader/components/Reader.tsx:327
+#: src/features/Reader/components/Reader.tsx:352
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1671,12 +1676,12 @@ msgstr "انقر على \"إضافة عنوان بريد إلكتروني معت
 msgid "Close"
 msgstr "إغلاق"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:125
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:141
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "اغلاق الإعدادات"
 
-#: src/features/Reader/components/Reader.tsx:315
+#: src/features/Reader/components/Reader.tsx:340
 #. js-lingui-explicit-id
 msgid "Close the book?"
 msgstr "هل تريد إغلاق الكتاب؟"
@@ -3994,7 +3999,7 @@ msgstr "FluencyPal – شريكك الذكي في المحادثة باللغة 
 msgid "Focus on shipping reliable services"
 msgstr "ركز على تقديم خدمات موثوقة"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:263
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "حجم الخط"
@@ -4895,7 +4900,7 @@ msgstr "سلّط الضوء على خبرتك في الواجهة الأمامي
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "أبرز مهارات القيادة وحل المشكلات لديك"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:182
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "إضاءات"
@@ -5822,7 +5827,7 @@ msgstr "فقط تحدث"
 msgid "Just Talk"
 msgstr "مجرد التحدث"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:287
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "برر النص"
@@ -5859,8 +5864,8 @@ msgstr "خطة تعلم الكورية"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "النجاح في الحصول على أول وظيفة تطوير أصعب مما ينبغي"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:228
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:231
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6137,7 +6142,7 @@ msgstr "ميزات صوتية محدودة"
 msgid "Limits reached"
 msgstr "تم الوصول إلى الحدود"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:299
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:359
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "ارتفاع السطر"
@@ -7065,7 +7070,7 @@ msgstr ""
 "plaintext\n"
 "لا يعمل داخل تطبيق تليجرام\n"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:220
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "غير مدعوم"
@@ -7107,7 +7112,7 @@ msgstr ""
 "من الموقع الإلكتروني الذي تديره مؤسسة تنمية ريادة الأعمال \"Twój StartUp\" "
 "ومقرها المسجل في وارسو."
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:271
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "إيقاف تشغيل"
@@ -7316,7 +7321,7 @@ msgstr "لغة الصفحة"
 msgid "Paid plan:"
 msgstr "خطة مدفوعة:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:280
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:337
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "فجوة الفقرة"
@@ -8429,7 +8434,7 @@ msgid ""
 msgstr "متخصصو React، Vue، أو Angular يواجهون جولات تصميم النظام والعمارة"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:373
+#: src/features/Reader/components/Reader.tsx:398
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "اقرأ"
@@ -8820,7 +8825,7 @@ msgstr "فشل الطلب. يرجى المحاولة مرة أخرى."
 msgid "Request Refund"
 msgstr "طلب استرداد الأموال"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:380
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "إعادة التعيين إلى الإعدادات الافتراضية"
@@ -9296,7 +9301,12 @@ msgstr "اضبط لغتي"
 msgid "Set the goal of your learning"
 msgstr "حدد هدف تعلمك"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:154
+#: src/features/Reader/components/TextPopover.tsx:56
+#. js-lingui-explicit-id
+msgid "Set translate language in Settings"
+msgstr "اضبط لغة الترجمة في الإعدادات"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:170
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "الإعدادات"
@@ -9650,7 +9660,7 @@ msgstr "ممارسة التحدث"
 msgid "Speaking with a Psychologist"
 msgstr "التحدث مع طبيب نفسي"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "دعم الكلام"
@@ -10114,7 +10124,7 @@ msgstr "ملخص"
 msgid "Summary:"
 msgstr "الملخص:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:220
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "مدعوم"
@@ -11111,7 +11121,7 @@ msgstr "يمكن تخزين النصوص في الحساب للمساعدة في
 msgid "Translate"
 msgstr "ترجم"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "ترجمة عند التمرير"
@@ -11121,8 +11131,8 @@ msgstr "ترجمة عند التمرير"
 msgid "Translate the word"
 msgstr "ترجم الكلمة"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:264
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:267
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11133,6 +11143,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Translates"
 msgstr "يترجم"
+
+#: src/features/Reader/components/TextPopover.tsx:206
+#. js-lingui-explicit-id
+msgid "Translating..."
+msgstr "جارٍ الترجمة..."
 
 #: src/features/RolePlay/rolePlayData.tsx:760
 #: src/features/RolePlay/rolePlayData.tsx:884
@@ -11529,8 +11544,8 @@ msgstr "المفردات"
 msgid "Vocabulary Practice"
 msgstr "ممارسة المفردات"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:248
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:251
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "صوت"
@@ -11540,7 +11555,7 @@ msgstr "صوت"
 msgid "Voice conversations"
 msgstr "محادثات صوتية"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:309
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "الصوت فوق النص المحدد"

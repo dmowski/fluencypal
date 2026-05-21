@@ -1123,12 +1123,12 @@ msgstr "บล็อก"
 msgid "Book fields are auto-filled from EPUB metadata in production mode."
 msgstr "เขตข้อมูลหนังสือจะถูกเติมอัตโนมัติจากเมตาดาต้าของ EPUB ในโหมดการผลิต"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:75
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:91
 #. js-lingui-explicit-id
 msgid "Book info"
 msgstr "ข้อมูลหนังสือ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:147
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:163
 #. js-lingui-explicit-id
 msgid "Book info sections"
 msgstr "ส่วนข้อมูลหนังสือ"
@@ -1401,7 +1401,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
-#: src/features/Reader/components/Reader.tsx:319
+#: src/features/Reader/components/Reader.tsx:344
 #: src/features/Reader/components/SendToKindleModal.tsx:271
 #: src/features/User/AiKnowledgeModal.tsx:121
 #: src/features/User/AiKnowledgeModal.tsx:142
@@ -1467,7 +1467,7 @@ msgstr "ท้าทาย"
 msgid "Changes vs previous 30 days"
 msgstr "การเปลี่ยนแปลงเมื่อเทียบกับ 30 วันที่ผ่านมา"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:160
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:176
 #. js-lingui-explicit-id
 msgid "Chapters"
 msgstr "บทต่างๆ"
@@ -1595,6 +1595,11 @@ msgstr "เช็คอิน"
 msgid "Chinese Learning Plan"
 msgstr "แผนการเรียนภาษาจีน"
 
+#: src/features/Reader/components/TextPopover.tsx:55
+#. js-lingui-explicit-id
+msgid "Choose another language in Settings"
+msgstr "เลือกภาษาอื่นในการตั้งค่า"
+
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -1667,7 +1672,7 @@ msgstr "คลิก \"เพิ่มที่อยู่อีเมลที
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
-#: src/features/Reader/components/Reader.tsx:327
+#: src/features/Reader/components/Reader.tsx:352
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1677,12 +1682,12 @@ msgstr "คลิก \"เพิ่มที่อยู่อีเมลที
 msgid "Close"
 msgstr "ปิด"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:125
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:141
 #. js-lingui-explicit-id
 msgid "Close settings"
 msgstr "ปิดการตั้งค่า"
 
-#: src/features/Reader/components/Reader.tsx:315
+#: src/features/Reader/components/Reader.tsx:340
 #. js-lingui-explicit-id
 msgid "Close the book?"
 msgstr "ปิดหนังสือ?"
@@ -4045,7 +4050,7 @@ msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI
 msgid "Focus on shipping reliable services"
 msgstr "มุ่งเน้นการส่งมอบบริการที่เชื่อถือได้"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:263
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
 #. js-lingui-explicit-id
 msgid "Font size"
 msgstr "ขนาดตัวอักษร"
@@ -4959,7 +4964,7 @@ msgstr "เน้นประสบการณ์ด้านส่วนติ
 msgid "Highlight your leadership and problem-solving skills"
 msgstr "เน้นทักษะการเป็นผู้นำและการแก้ปัญหาของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:166
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:182
 #. js-lingui-explicit-id
 msgid "Highlights"
 msgstr "ไฮไลท์"
@@ -5895,7 +5900,7 @@ msgstr "แค่พูดคุย"
 msgid "Just Talk"
 msgstr "แค่พูดคุย"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:235
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:287
 #. js-lingui-explicit-id
 msgid "Justify Text"
 msgstr "จัดข้อความให้ชิดขอบ"
@@ -5930,8 +5935,8 @@ msgstr "แผนการเรียนรู้ภาษาเกาหลี
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "การได้งานนักพัฒนาแรกของคุณนั้นยากกว่าที่ควรจะเป็น"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:176
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:179
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:228
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:231
 #: src/features/Settings/MyProfile.tsx:81
 #. js-lingui-explicit-id
 msgid "Language"
@@ -6214,7 +6219,7 @@ msgstr ""
 msgid "Limits reached"
 msgstr "ถึงขีดจำกัดแล้ว"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:299
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:359
 #. js-lingui-explicit-id
 msgid "Line height"
 msgstr "ความสูงของบรรทัด"
@@ -7117,7 +7122,7 @@ msgstr "ไม่พบ"
 msgid "Not running inside Telegram App"
 msgstr "ไม่ได้ทำงานภายในแอป Telegram"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:220
 #. js-lingui-explicit-id
 msgid "Not supported"
 msgstr "ไม่รองรับ"
@@ -7159,7 +7164,7 @@ msgstr ""
 "ของเว็บไซต์ที่ดำเนินการโดยกองทุนพัฒนาผู้ประกอบการ \"Twój StartUp\" "
 "ที่มีสำนักงานจดทะเบียนในกรุงวอร์ซอว์"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:271
 #. js-lingui-explicit-id
 msgid "Off"
 msgstr "ปิด"
@@ -7371,7 +7376,7 @@ msgstr "ภาษาของหน้าเว็บ"
 msgid "Paid plan:"
 msgstr "แผนชำระเงิน:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:280
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:337
 #. js-lingui-explicit-id
 msgid "Paragraph gap"
 msgstr "ช่องว่างย่อหน้า"
@@ -8480,7 +8485,7 @@ msgstr ""
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:280
-#: src/features/Reader/components/Reader.tsx:373
+#: src/features/Reader/components/Reader.tsx:398
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr ""
@@ -8869,7 +8874,7 @@ msgstr ""
 msgid "Request Refund"
 msgstr "ขอคืนเงิน"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:315
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:380
 #. js-lingui-explicit-id
 msgid "Reset to default"
 msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
@@ -9342,7 +9347,12 @@ msgstr "ตั้งค่าภาษาของฉัน"
 msgid "Set the goal of your learning"
 msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
-#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:154
+#: src/features/Reader/components/TextPopover.tsx:56
+#. js-lingui-explicit-id
+msgid "Set translate language in Settings"
+msgstr "ตั้งค่าภาษาแปลในการตั้งค่า"
+
+#: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:170
 #. js-lingui-explicit-id
 msgid "Settings"
 msgstr "การตั้งค่า"
@@ -9696,7 +9706,7 @@ msgstr "การฝึกพูด"
 msgid "Speaking with a Psychologist"
 msgstr "การพูดคุยกับนักจิตวิทยา"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:167
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:219
 #. js-lingui-explicit-id
 msgid "Speech support"
 msgstr "การรองรับการพูด"
@@ -10170,7 +10180,7 @@ msgstr "สรุป"
 msgid "Summary:"
 msgstr "สรุป:"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:168
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:220
 #. js-lingui-explicit-id
 msgid "Supported"
 msgstr "รองรับ"
@@ -11177,7 +11187,7 @@ msgstr "Transcripts อาจถูกจัดเก็บในบัญชี
 msgid "Translate"
 msgstr "แปล"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:246
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:298
 #. js-lingui-explicit-id
 msgid "Translate on Hover"
 msgstr "แปลเมื่อเลื่อนเมาส์ไปวาง"
@@ -11187,8 +11197,8 @@ msgstr "แปลเมื่อเลื่อนเมาส์ไปวาง
 msgid "Translate the word"
 msgstr "แปลคำว่า"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:212
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:215
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:264
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:267
 #. js-lingui-explicit-id
 msgid "Translate to"
 msgstr ""
@@ -11199,6 +11209,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Translates"
 msgstr "แปลภาษา"
+
+#: src/features/Reader/components/TextPopover.tsx:206
+#. js-lingui-explicit-id
+msgid "Translating..."
+msgstr "กำลังแปล..."
 
 #: src/features/RolePlay/rolePlayData.tsx:760
 #: src/features/RolePlay/rolePlayData.tsx:884
@@ -11591,8 +11606,8 @@ msgstr "คำศัพท์"
 msgid "Vocabulary Practice"
 msgstr "การฝึกศัพท์"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:196
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:199
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:248
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:251
 #. js-lingui-explicit-id
 msgid "Voice"
 msgstr "เสียง"
@@ -11602,7 +11617,7 @@ msgstr "เสียง"
 msgid "Voice conversations"
 msgstr "การสนทนาด้วยเสียง"
 
-#: src/features/Reader/components/ReaderSettingsPanel.tsx:257
+#: src/features/Reader/components/ReaderSettingsPanel.tsx:309
 #. js-lingui-explicit-id
 msgid "Voice Over Selected Text"
 msgstr "เสียงบรรยายข้อความที่เลือก"
