@@ -1,5 +1,15 @@
 # Live document with short/long term ideas
 
+## Reader: Not clear how to see translation
+
+Ааа, увидел, раньше нажимал и может не дожидался, не видел, что под кнопками Y,P,B... перевод
+
+## Reader: On mobile, when scroll up/down - triggers page reload
+
+## Reader: при первой загрузки, кнопка 'sign in' на главной странице не нажималась. Я так понял была заблокирована пока подгружались книги, после заработала
+
+## Reader: В настройках ползунок font size иногда тормозит, наверное тк сразу применяет изменения без задержки
+
 ## Reader: to calculate page size
 
 Now we are going to tune calculating page size.
