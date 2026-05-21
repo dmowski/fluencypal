@@ -13,6 +13,24 @@ import {
   selectRussianTranslateTarget,
 } from '../libs/reader';
 
+test('clicking a word without translate language shows setup hint that opens settings', async ({
+  page,
+}) => {
+  await installSpeechMock(page);
+  await openSeededGatsbyBook(page);
+
+  await clickCriticizingWord(page);
+  await assertHighlightPopoverVisible(page);
+
+  const setupHint = page.getByTestId('reader-translation-setup-hint');
+  await expect(setupHint).toBeVisible();
+  await expect(setupHint).toContainText('Set translate language in Settings');
+
+  await setupHint.click();
+  await expect(page.getByTestId('book-info-modal')).toBeVisible();
+  await expect(page.getByLabel('Translate to')).toBeVisible();
+});
+
 test('translate on hover sends one request and shows tooltip; click shows popover with translated text', async ({
   page,
 }) => {

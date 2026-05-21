@@ -1,6 +1,6 @@
 import { IconButton, Popover, Stack, Tab, Tabs, ThemeProvider } from '@mui/material';
 import { BookOpen, CircleEllipsis, Highlighter, SlidersHorizontal, X } from 'lucide-react';
-import { type MouseEvent, useEffect, useState } from 'react';
+import { type MouseEvent, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { lightTheme } from '../../uiKit/theme';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -10,6 +10,10 @@ import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPop
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 
 const ACTIVE_TAB_STORAGE_KEY = 'reader-book-info-active-tab';
+
+export type BookInfoButtonHandle = {
+  openSettings: () => void;
+};
 
 type BookInfoButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
@@ -29,16 +33,14 @@ const getInitialTab = (): ModalView => {
   return 'settings';
 };
 
-export const BookInfoButton = ({
-  speech,
-  chapters,
-  highlights,
-  activeChapterId,
-  onSelectChapter,
-  onSelectHighlight,
-}: BookInfoButtonProps) => {
+export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonProps>(
+  (
+    { speech, chapters, highlights, activeChapterId, onSelectChapter, onSelectHighlight },
+    ref,
+  ) => {
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
+  const infoButtonRef = useRef<HTMLButtonElement>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [activeView, setActiveView] = useState<ModalView>(getInitialTab);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -54,6 +56,19 @@ export const BookInfoButton = ({
     localStorage.setItem(ACTIVE_TAB_STORAGE_KEY, view);
     setActiveView(view);
   };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      openSettings: () => {
+        setActiveViewPersisted('settings');
+        if (infoButtonRef.current) {
+          setAnchorEl(infoButtonRef.current);
+        }
+      },
+    }),
+    [],
+  );
 
   const handleInfoClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -71,6 +86,7 @@ export const BookInfoButton = ({
   return (
     <>
       <IconButton
+        ref={infoButtonRef}
         onClick={handleInfoClick}
         aria-label={i18n._('Book info')}
         sx={{
@@ -211,4 +227,7 @@ export const BookInfoButton = ({
       </Popover>
     </>
   );
-};
+},
+);
+
+BookInfoButton.displayName = 'BookInfoButton';

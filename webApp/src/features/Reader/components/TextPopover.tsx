@@ -1,5 +1,7 @@
 import { IconButton, Popover, Stack, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { SlidersHorizontal } from 'lucide-react';
+import { useLingui } from '@lingui/react';
 import { type MouseEvent, type PointerEvent, type RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -14,6 +16,8 @@ export const COLOR_SHORTCUTS: Record<string, string> = {
   '#E9D5FF': 'V', // Violet
 };
 
+export type ReaderTranslationSetupHint = 'missing-target' | 'same-language';
+
 type TextPopoverProps = {
   anchorPosition: {
     top: number;
@@ -26,6 +30,8 @@ type TextPopoverProps = {
   activeColor?: string;
   translatedText?: string | null;
   isTranslationLoading?: boolean;
+  translationSetupHint?: ReaderTranslationSetupHint | null;
+  onOpenSettings?: () => void;
 };
 
 export const TextPopover = ({
@@ -37,9 +43,17 @@ export const TextPopover = ({
   activeColor,
   translatedText,
   isTranslationLoading,
+  translationSetupHint,
+  onOpenSettings,
 }: TextPopoverProps) => {
+  const { i18n } = useLingui();
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const wasPlayTriggeredByPointer = useRef(false);
+
+  const setupHintLabel =
+    translationSetupHint === 'same-language'
+      ? i18n._('Choose another language in Settings')
+      : i18n._('Set translate language in Settings');
 
   const playSelectionText = () => {
     onPlayText();
@@ -69,6 +83,14 @@ export const TextPopover = ({
   const handlePlayPointerUp = (event: PointerEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
+  };
+
+  const handleOpenSettings = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.getSelection()?.removeAllRanges();
+    onClose();
+    onOpenSettings?.();
   };
 
   useEffect(() => {
@@ -183,7 +205,7 @@ export const TextPopover = ({
         </Stack>
 
         {isTranslationLoading ? (
-          <Typography sx={{ fontSize: '12px' }}>Translating...</Typography>
+          <Typography sx={{ fontSize: '12px' }}>{i18n._('Translating...')}</Typography>
         ) : translatedText ? (
           <Typography
             sx={{
@@ -194,6 +216,39 @@ export const TextPopover = ({
           >
             {translatedText}
           </Typography>
+        ) : translationSetupHint && onOpenSettings ? (
+          <Stack
+            component="button"
+            type="button"
+            data-testid="reader-translation-setup-hint"
+            onClick={handleOpenSettings}
+            direction="row"
+            alignItems="flex-start"
+            sx={{
+              gap: '6px',
+              border: 'none',
+              background: 'transparent',
+              cursor: 'pointer',
+              padding: 0,
+              textAlign: 'left',
+              color: '#555',
+              '&:hover': {
+                color: '#111',
+              },
+            }}
+          >
+            <SlidersHorizontal size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+            <Typography
+              sx={{
+                fontSize: '12px',
+                lineHeight: 1.35,
+                maxWidth: '170px',
+                color: 'inherit',
+              }}
+            >
+              {setupHintLabel}
+            </Typography>
+          </Stack>
         ) : null}
       </Stack>
     </Popover>

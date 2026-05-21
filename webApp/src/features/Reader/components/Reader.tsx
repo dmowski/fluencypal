@@ -13,14 +13,14 @@ import { ReaderHeader } from './ReaderHeader';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { BookInfoButton } from './ReaderSpeechSettingsButton';
+import { BookInfoButton, BookInfoButtonHandle } from './ReaderSpeechSettingsButton';
 import { useReaderSettings } from '../hooks/useReaderSettings';
 import { useBooks } from '../hooks/useBooks';
 import { BackButton } from './BackButton';
 import { splitIntoPages } from '../utils/splitParagraphsIntoPages';
 import { getReaderProgress } from '../utils/getReaderProgress';
 import { useReaderShortcuts } from '../hooks/useReaderShortcuts';
-import { TextPopover } from './TextPopover';
+import { TextPopover, ReaderTranslationSetupHint } from './TextPopover';
 import { useReaderHighlightPopover } from '../hooks/useReaderHighlightPopover';
 import { useReaderFlyingTooltip } from '../hooks/useReaderFlyingTooltip';
 import { useReaderHoverHighlight } from '../hooks/useReaderHoverHighlight';
@@ -40,6 +40,7 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { useSwipePageNavigation } from '../hooks/useSwipePageNavigation';
 import { usePreventReaderPullToRefresh } from '../hooks/usePreventReaderPullToRefresh';
 import { SwipePageIndicator } from './SwipePageIndicator';
+import { normalizeToNativeLangCode } from '../../Translation/translationHelpers';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
 
@@ -174,6 +175,7 @@ export const Reader = ({ data }: { data: Book }) => {
     isTwoColumnLayout,
   });
   const contentRef = useRef<HTMLDivElement>(null);
+  const bookInfoButtonRef = useRef<BookInfoButtonHandle>(null);
 
   const chapterItems: ReaderChapterItem[] = useMemo(
     () => mapChaptersToPages({ chapters: data.chapters ?? [], pages }),
@@ -298,6 +300,27 @@ export const Reader = ({ data }: { data: Book }) => {
     speechPlayRef.current(text.trim());
   }, []);
 
+  const handleOpenReaderSettings = useCallback(() => {
+    bookInfoButtonRef.current?.openSettings();
+  }, []);
+
+  const translationSetupHint = useMemo((): ReaderTranslationSetupHint | null => {
+    if (!activePopover || activePopover.isTranslationLoading || activePopover.translatedText) {
+      return null;
+    }
+
+    if (!readerSettings.translateToLanguage) {
+      return 'missing-target';
+    }
+
+    const normalizedSourceLanguage = normalizeToNativeLangCode(readerSettings.language);
+    if (normalizedSourceLanguage === readerSettings.translateToLanguage) {
+      return 'same-language';
+    }
+
+    return null;
+  }, [activePopover, readerSettings.language, readerSettings.translateToLanguage]);
+
   const handleWordHoverClear = useCallback(() => {
     clearHoverTranslation();
     clearHoveredWord();
@@ -397,6 +420,7 @@ export const Reader = ({ data }: { data: Book }) => {
       }}
     >
       <BookInfoButton
+        ref={bookInfoButtonRef}
         speech={speech}
         chapters={chapterItems}
         highlights={highlightItems}
@@ -494,6 +518,8 @@ export const Reader = ({ data }: { data: Book }) => {
         onClose={closeActivePopover}
         translatedText={activePopover?.translatedText ?? null}
         isTranslationLoading={activePopover?.isTranslationLoading ?? false}
+        translationSetupHint={translationSetupHint}
+        onOpenSettings={handleOpenReaderSettings}
         activeColor={activeColor}
         onColorSelect={handleActiveColorSelect}
         onPlayText={() => speech.play(activePopover?.selectionText.trim() || '')}
