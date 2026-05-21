@@ -61,7 +61,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
+        `Yes. FluencyPal offers a 1-week free trial with full access to all features. You can start the trial immediately and explore the app to see how it helps you improve your speaking skills. There are no limitations during the trial period, so you can experience everything FluencyPal has to offer.`,
       ),
     },
 
