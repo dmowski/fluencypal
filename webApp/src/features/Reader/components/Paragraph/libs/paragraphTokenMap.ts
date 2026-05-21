@@ -139,12 +139,26 @@ const tokenizeWord = (
   }
 
   const leadingDecoratorLength = findLeadingDecoratorLength(rawWord);
-  const trailingPunctuationLength = findTrailingPunctuationLength(rawWord, leadingDecoratorLength);
+  const rawTrailingPunctuationLength = findTrailingPunctuationLength(
+    rawWord,
+    leadingDecoratorLength,
+  );
   const trailingDecoratorLength = findTrailingDecoratorLength(
     rawWord,
     leadingDecoratorLength,
-    trailingPunctuationLength,
+    rawTrailingPunctuationLength,
   );
+
+  // When a source word has a leading decorator but NO matching trailing
+  // decorator (e.g. `**Finally,` whose closing `**` is on the next source
+  // word), the markdown renderer folds the trailing punctuation into the
+  // inner word — "Finally," becomes one rendered word, not two.  Emitting a
+  // separate trailing-punctuation token for that case would shift every
+  // subsequent renderableToken index by one, breaking the wordIndex ↔ token
+  // mapping used by renderWord.  So we keep the punctuation merged with the
+  // inner word when the decorator is "open" (leading only, no trailing close).
+  const trailingPunctuationLength =
+    leadingDecoratorLength > 0 && trailingDecoratorLength === 0 ? 0 : rawTrailingPunctuationLength;
 
   // Markdown emphasis decorators are stripped by the renderer. The split into
   // multiple rendered tokens happens whenever ANY decorator is present on the

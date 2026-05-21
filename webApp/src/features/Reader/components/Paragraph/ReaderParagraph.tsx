@@ -125,7 +125,19 @@ const ReaderParagraphBase = ({
     [paragraphTokenMap],
   );
   // Phase 2: ordered list of tokens that the markdown renderer emits as visible words.
-  // The wordIndex passed to renderWord/renderSpace indexes into this array.
+  //
+  // CRITICAL: do NOT use `renderableTokens[wordIndex]` as a direct lookup.
+  // The renderer's `wordIndex` counter (assigned by ReaderMarkdown's
+  // `wrapChildrenWithTranslateWrapper` while walking markdown-to-jsx output)
+  // is NOT guaranteed to be the same integer as the source-word index.  In
+  // particular, when an `<li>` starts the counter at 1 to leave room for the
+  // list-marker `-`, and markdown-to-jsx happens to emit ANY extra wrapping
+  // (or the renderable-token array starts with a non-visible marker), the two
+  // counters drift apart and every subsequent visible word gets paired with
+  // the NEXT renderable token's source range.  That was the original Tell→
+  // "expe" off-by-+1 bug.  Instead we resolve renderable tokens via a
+  // stateful, in-order cursor that matches by visible text — the renderer's
+  // numeric `wordIndex` is only used as an opaque DOM id.
   const renderableTokens = useMemo(
     () =>
       paragraphTokenMap.tokens.filter(
@@ -134,14 +146,60 @@ const ReaderParagraphBase = ({
     [paragraphTokenMap],
   );
 
+  // Per-render, ordered cursor over renderableTokens.  Reset on every render
+  // so sequential `renderWord` calls consume the right token regardless of
+  // what numeric `wordIndex` the renderer assigns.  We also keep a side map
+  // keyed by `wordIndex` so the click/space handlers can look up the resolved
+  // token from a captured DOM id.
+  const renderableWordCursorRef = useRef(0);
+  const resolvedTokenByWordIndexRef = useRef<Map<number, (typeof renderableTokens)[number]>>(
+    new Map(),
+  );
+  renderableWordCursorRef.current = 0;
+  resolvedTokenByWordIndexRef.current = new Map();
+
+  const isMatchingRenderableToken = (
+    token: (typeof renderableTokens)[number],
+    visibleText: string,
+  ): boolean => {
+    if (token.kind === 'word') return token.text === visibleText;
+    if (token.kind === 'link' || token.kind === 'image') {
+      return token.visibleText === visibleText;
+    }
+    return false;
+  };
+
   /**
-   * Source-text start offset of the rendered token at `wordIndex`. The token
-   * map is the single source of truth; the `wordCharOffsets` fallback only
-   * covers the unreachable case where the renderer emits more tokens than the
-   * map lists (would indicate a bug in `paragraphTokenMap`).
+   * Consume the next renderable token whose visible text matches `visibleText`,
+   * advancing the cursor past it. Renderable tokens that don't correspond to a
+   * visible word emitted by markdown-to-jsx (e.g. a leading list-marker `-`
+   * that becomes a CSS bullet) are SKIPPED — they would never be matched and
+   * would otherwise shift every later visible word by one source position.
+   */
+  const consumeNextRenderableToken = (
+    visibleText: string,
+    wordIndex: number,
+  ): (typeof renderableTokens)[number] | null => {
+    while (renderableWordCursorRef.current < renderableTokens.length) {
+      const token = renderableTokens[renderableWordCursorRef.current];
+      renderableWordCursorRef.current += 1;
+      if (isMatchingRenderableToken(token, visibleText)) {
+        resolvedTokenByWordIndexRef.current.set(wordIndex, token);
+        return token;
+      }
+    }
+    return null;
+  };
+
+  /**
+   * Source-text start offset of the rendered token at `wordIndex`. Reads from
+   * the resolved-token map populated during render by `consumeNextRenderable
+   * Token`. Falls back to the per-source-word offset only when the renderer
+   * emitted a visible word that has no matching renderable token at all
+   * (would indicate a bug in `paragraphTokenMap`).
    */
   const getRenderedTokenSourceStart = (wordIndex: number): number => {
-    const token = renderableTokens[wordIndex];
+    const token = resolvedTokenByWordIndexRef.current.get(wordIndex);
     if (token) return token.sourceStart;
     return wordCharOffsets[wordIndex] ?? 0;
   };
@@ -151,7 +209,7 @@ const ReaderParagraphBase = ({
    * used to place the trailing space's `data-char-offset`.
    */
   const getRenderedTokenSourceEndExclusive = (wordIndex: number, fallbackWord: string): number => {
-    const token = renderableTokens[wordIndex];
+    const token = resolvedTokenByWordIndexRef.current.get(wordIndex);
     if (token) return token.sourceEndExclusive;
     return (wordCharOffsets[wordIndex] ?? 0) + fallbackWord.length;
   };
@@ -350,7 +408,11 @@ const ReaderParagraphBase = ({
           getInternalChapterTargetPage={getInternalChapterTargetPage}
           onInternalChapterLinkSelect={onInternalChapterLinkSelect}
           renderWord={({ word, wordIndex }) => {
-            const renderableToken = renderableTokens[wordIndex];
+            // Resolve the source-position via the in-order cursor (matches by
+            // visible text), NOT by indexing `renderableTokens[wordIndex]` —
+            // see the long comment above `renderableTokens` for why the two
+            // counters can drift apart.
+            const renderableToken = consumeNextRenderableToken(word, wordIndex);
             const tokenSourceStart = renderableToken?.sourceStart ?? null;
             const tokenSourceEndExclusive = renderableToken?.sourceEndExclusive ?? null;
             const tokenSourceWordIndex =

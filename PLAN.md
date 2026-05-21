@@ -1,5 +1,16 @@
 # Live document with short/long term ideas
 
+## Reader: to calculate page size
+
+Now we are going to tune calculating page size.
+For now we are emulating render inside this module
+webApp/src/features/Reader/utils/isFitInPage.tsx
+
+I want to create more robust solution by using. Our render component.
+webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
+
+Create me a solution that uses ReaderParagraph.tsx to calculate if content fit the page.
+
 ## Approve to use the app
 
 - Create a form to write info about yourself.

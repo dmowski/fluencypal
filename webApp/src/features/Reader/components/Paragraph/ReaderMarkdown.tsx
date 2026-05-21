@@ -503,6 +503,16 @@ export const ReaderMarkdown: React.FC<MarkdownProps> = ({
             forceBlock: true,
             overrides: {
               ...styleComponents,
+              li: ({ children: nodeChildren }) => (
+                <Typography
+                  component={'li'}
+                  sx={{
+                    fontSize: 'inherit',
+                  }}
+                >
+                  {wrapNodeChildrenFrom(nodeChildren, 1)}
+                </Typography>
+              ),
               p: ({ children: nodeChildren }) => <span>{wrapNodeChildren(nodeChildren)}</span>,
               h1: ({ children: nodeChildren }) => (
                 <Typography
