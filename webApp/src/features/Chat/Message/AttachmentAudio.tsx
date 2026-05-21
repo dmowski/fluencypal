@@ -5,6 +5,7 @@ export const AttachmentAudio = ({ url }: { url: string }) => {
     <Stack sx={{ paddingTop: '4px', paddingBottom: '4px' }}>
       <audio
         controls
+        controlsList="nodownload"
         src={url}
         style={{
           width: '100%',
