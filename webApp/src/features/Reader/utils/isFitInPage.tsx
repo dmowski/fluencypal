@@ -1,5 +1,6 @@
 import { ReaderSettings } from '../model/types';
 import { getReaderParagraphTextIndent } from './readerParagraphFormatting';
+import { getReaderListStyle } from './readerMarkdownBlockLayout';
 import { resolveReaderImageWidthRatio } from './readerImageSizing';
 
 export interface MeasuredParagraph {
@@ -47,18 +48,181 @@ const extractMarkdownImageTokens = (paragraph: string): MarkdownImageToken[] => 
 
 const stripInlineMarkdown = (text: string): string =>
   text
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ') // images
-    .replace(/(\*\*|__)(.*?)\1/g, '$2') // bold
-    .replace(/(\*|_)(.*?)\1/g, '$2') // italic
-    .replace(/~~(.*?)~~/g, '$1') // strikethrough
-    .replace(/`([^`]+)`/g, '$1') // inline code
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // links → label only
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/(\*|_)(.*?)\1/g, '$2')
+    .replace(/~~(.*?)~~/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .replace(/\s{2,}/g, ' ')
     .trim();
 
 const stripMarkdownForMeasurement = (paragraph: string): string => stripInlineMarkdown(paragraph);
 
-export function isFitInPage({
+const applyMeasuredTextTypography = ({
+  element,
+  paragraphText,
+  sourceStartCharOffset,
+  settings,
+  strippedText,
+}: {
+  element: HTMLElement;
+  paragraphText: string;
+  sourceStartCharOffset: number;
+  settings: ReaderSettings;
+  strippedText: string;
+}) => {
+  element.textContent = strippedText;
+  element.style.margin = '0';
+  element.style.padding = '0';
+  element.style.fontSize = `${settings.fontSize}px`;
+  element.style.lineHeight = `${settings.lineHeight}`;
+  element.style.textAlign = settings.justifyText ? 'justify' : 'left';
+  element.style.textIndent = String(
+    getReaderParagraphTextIndent({
+      paragraphText,
+      isParagraphStart: sourceStartCharOffset === 0,
+    }),
+  );
+  element.style.fontFamily = fontFamily;
+  element.style.wordBreak = 'break-word';
+  element.style.boxSizing = 'border-box';
+  element.style.width = '100%';
+};
+
+const appendMeasuredTextBlock = ({
+  wrapper,
+  paragraphText,
+  sourceStartCharOffset,
+  settings,
+  strippedText,
+}: {
+  wrapper: HTMLElement;
+  paragraphText: string;
+  sourceStartCharOffset: number;
+  settings: ReaderSettings;
+  strippedText: string;
+}) => {
+  if (!strippedText) {
+    return;
+  }
+
+  const headingMatch = paragraphText.match(/^(#{1,6})\s+(\S.*)$/u);
+  if (headingMatch) {
+    const level = Math.min(6, headingMatch[1].length);
+    const heading = document.createElement(`h${level}`);
+    applyMeasuredTextTypography({
+      element: heading,
+      paragraphText,
+      sourceStartCharOffset,
+      settings,
+      strippedText,
+    });
+    wrapper.appendChild(heading);
+    return;
+  }
+
+  if (/^>\s+\S/u.test(paragraphText)) {
+    const blockquote = document.createElement('blockquote');
+    blockquote.style.margin = '0';
+    blockquote.style.padding = '0';
+    applyMeasuredTextTypography({
+      element: blockquote,
+      paragraphText,
+      sourceStartCharOffset,
+      settings,
+      strippedText,
+    });
+    wrapper.appendChild(blockquote);
+    return;
+  }
+
+  if (/^[-*+]\s+\S/u.test(paragraphText)) {
+    const list = document.createElement('ul');
+    const listStyle = getReaderListStyle();
+    list.style.margin = listStyle.margin;
+    list.style.padding = listStyle.padding;
+    list.style.fontSize = `${settings.fontSize}px`;
+    list.style.lineHeight = `${settings.lineHeight}`;
+    list.style.fontFamily = fontFamily;
+    list.style.boxSizing = 'border-box';
+    list.style.width = '100%';
+
+    const item = document.createElement('li');
+    applyMeasuredTextTypography({
+      element: item,
+      paragraphText,
+      sourceStartCharOffset,
+      settings,
+      strippedText,
+    });
+    list.appendChild(item);
+    wrapper.appendChild(list);
+    return;
+  }
+
+  if (/^\d+\.\s+\S/u.test(paragraphText)) {
+    const list = document.createElement('ol');
+    const listStyle = getReaderListStyle();
+    list.style.margin = listStyle.margin;
+    list.style.padding = listStyle.padding;
+    list.style.fontSize = `${settings.fontSize}px`;
+    list.style.lineHeight = `${settings.lineHeight}`;
+    list.style.fontFamily = fontFamily;
+    list.style.boxSizing = 'border-box';
+    list.style.width = '100%';
+
+    const item = document.createElement('li');
+    applyMeasuredTextTypography({
+      element: item,
+      paragraphText,
+      sourceStartCharOffset,
+      settings,
+      strippedText,
+    });
+    list.appendChild(item);
+    wrapper.appendChild(list);
+    return;
+  }
+
+  const paragraphElement = document.createElement('p');
+  applyMeasuredTextTypography({
+    element: paragraphElement,
+    paragraphText,
+    sourceStartCharOffset,
+    settings,
+    strippedText,
+  });
+  wrapper.appendChild(paragraphElement);
+};
+
+export const buildMeasuredParagraphWrapper = ({
+  paragraphText,
+  sourceStartCharOffset,
+  settings,
+}: {
+  paragraphText: string;
+  sourceStartCharOffset: number;
+  settings: ReaderSettings;
+}): HTMLElement => {
+  const paragraphWrapper = document.createElement('div');
+  paragraphWrapper.style.margin = '0';
+  paragraphWrapper.style.padding = '0';
+  paragraphWrapper.style.width = '100%';
+  paragraphWrapper.style.boxSizing = 'border-box';
+
+  appendMeasuredTextBlock({
+    wrapper: paragraphWrapper,
+    paragraphText,
+    sourceStartCharOffset,
+    settings,
+    strippedText: stripMarkdownForMeasurement(paragraphText),
+  });
+
+  return paragraphWrapper;
+};
+
+export const measurePageColumnHeight = ({
   paragraphs,
   settings,
   imageAspectRatioByHref,
@@ -66,62 +230,44 @@ export function isFitInPage({
   paragraphs: MeasuredParagraph[];
   settings: ReaderSettings;
   imageAspectRatioByHref?: Record<string, number>;
-}): boolean {
-  if (typeof document === 'undefined') {
-    return false;
-  }
-
-  if (settings.contentWidth <= 0 || settings.contentHeight <= 0) {
-    return false;
-  }
-
-  if (paragraphs.length === 0) {
-    return true;
+}): number => {
+  if (typeof document === 'undefined' || paragraphs.length === 0) {
+    return 0;
   }
 
   const measureContainer = document.createElement('div');
   measureContainer.style.position = 'fixed';
   measureContainer.style.left = '-99980px';
-  measureContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-  measureContainer.style.zIndex = '9999';
-  measureContainer.style.top = '21px';
+  measureContainer.style.top = '0';
   measureContainer.style.visibility = 'hidden';
   measureContainer.style.pointerEvents = 'none';
   measureContainer.style.boxSizing = 'border-box';
   measureContainer.style.display = 'flex';
   measureContainer.style.flexDirection = 'column';
-  const paragraphGap = Math.max(0, settings.paragraphGap);
-  measureContainer.style.gap = `${paragraphGap}px`;
+  measureContainer.style.gap = `${Math.max(0, settings.paragraphGap)}px`;
   measureContainer.style.width = `${settings.contentWidth}px`;
 
   const renderedImageMaxHeight = Math.max(0, settings.contentHeight * IMAGE_MAX_HEIGHT_RATIO);
-  paragraphs.forEach((paragraph, index) => {
+
+  paragraphs.forEach((paragraph) => {
     const paragraphWrapper = document.createElement('div');
     paragraphWrapper.style.margin = '0';
     paragraphWrapper.style.padding = '0';
+    paragraphWrapper.style.width = '100%';
+    paragraphWrapper.style.boxSizing = 'border-box';
 
-    const paragraphText = stripMarkdownForMeasurement(paragraph.text);
+    const paragraphText = paragraph.text;
+    const strippedText = stripMarkdownForMeasurement(paragraphText);
 
-    if (paragraphText) {
-      const paragraphElement = document.createElement('p');
-      paragraphElement.textContent = paragraphText;
-      paragraphElement.style.margin = '0';
-      paragraphElement.style.padding = '0';
-      paragraphElement.style.fontSize = `${settings.fontSize}px`;
-      paragraphElement.style.lineHeight = `${settings.lineHeight}`;
-      paragraphElement.style.textAlign = settings.justifyText ? 'justify' : 'left';
-      paragraphElement.style.textIndent = String(
-        getReaderParagraphTextIndent({
-          paragraphText,
-          isParagraphStart: paragraph.sourceStartCharOffset === 0,
-        }),
-      );
-      paragraphElement.style.fontFamily = fontFamily;
-      paragraphElement.style.wordBreak = 'break-word';
-      paragraphWrapper.appendChild(paragraphElement);
-    }
+    appendMeasuredTextBlock({
+      wrapper: paragraphWrapper,
+      paragraphText,
+      sourceStartCharOffset: paragraph.sourceStartCharOffset,
+      settings,
+      strippedText,
+    });
 
-    const imageTokens = extractMarkdownImageTokens(paragraph.text);
+    const imageTokens = extractMarkdownImageTokens(paragraphText);
     imageTokens.forEach((token, imageIndex) => {
       const href = token.href;
       const normalizedHref = normalizeImageHref(href);
@@ -151,7 +297,7 @@ export function isFitInPage({
         renderedImageMaxHeight * safeAspectRatio,
       )}px`;
       imageElement.style.height = `${Math.min(measuredImageHeight, renderedImageMaxHeight)}px`;
-      imageElement.style.marginTop = imageIndex === 0 && paragraphText ? '8px' : '0';
+      imageElement.style.marginTop = imageIndex === 0 && strippedText ? '8px' : '0';
       imageElement.style.marginBottom = imageIndex < imageTokens.length - 1 ? '8px' : '0';
 
       paragraphWrapper.appendChild(imageElement);
@@ -161,11 +307,38 @@ export function isFitInPage({
   });
 
   document.body.appendChild(measureContainer);
-
   const contentHeight = measureContainer.scrollHeight;
-  const isFit = contentHeight <= settings.contentHeight;
-
   document.body.removeChild(measureContainer);
 
-  return isFit;
+  return contentHeight;
+};
+
+export function isFitInPage({
+  paragraphs,
+  settings,
+  imageAspectRatioByHref,
+}: {
+  paragraphs: MeasuredParagraph[];
+  settings: ReaderSettings;
+  imageAspectRatioByHref?: Record<string, number>;
+}): boolean {
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
+  if (settings.contentWidth <= 0 || settings.contentHeight <= 0) {
+    return false;
+  }
+
+  if (paragraphs.length === 0) {
+    return true;
+  }
+
+  const measuredHeight = measurePageColumnHeight({
+    paragraphs,
+    settings,
+    imageAspectRatioByHref,
+  });
+
+  return measuredHeight <= settings.contentHeight;
 }

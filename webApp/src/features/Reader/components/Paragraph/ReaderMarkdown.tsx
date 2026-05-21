@@ -7,6 +7,7 @@ import {
   resolveReaderImageWidthRatio,
   sanitizeReaderImageTitle,
 } from '../../utils/readerImageSizing';
+import { getReaderListStyle } from '../../utils/readerMarkdownBlockLayout';
 
 const headerFontWeights = 600;
 
@@ -290,27 +291,33 @@ const createMarkdownComponents = (
       </Link>
     );
   },
-  ul: ({ children }) => (
-    <ul
-      style={{
-        padding: '0 0 0 20px',
-        margin: '5px 0',
-        fontSize: 'inherit',
-      }}
-    >
-      {children}
-    </ul>
-  ),
-  ol: ({ children }) => (
-    <ol
-      style={{
-        padding: '0 0 0 20px',
-        margin: '5px 0',
-      }}
-    >
-      {children}
-    </ol>
-  ),
+  ul: ({ children }) => {
+    const listStyle = getReaderListStyle();
+    return (
+      <ul
+        style={{
+          padding: listStyle.padding,
+          margin: listStyle.margin,
+          fontSize: 'inherit',
+        }}
+      >
+        {children}
+      </ul>
+    );
+  },
+  ol: ({ children }) => {
+    const listStyle = getReaderListStyle();
+    return (
+      <ol
+        style={{
+          padding: listStyle.padding,
+          margin: listStyle.margin,
+        }}
+      >
+        {children}
+      </ol>
+    );
+  },
   li: ({ children }) => (
     <Typography
       component={'li'}
