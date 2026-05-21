@@ -38,6 +38,7 @@ import { resolveReadingPositionToPage } from '../utils/resolveReadingPositionToP
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSwipePageNavigation } from '../hooks/useSwipePageNavigation';
+import { usePreventReaderPullToRefresh } from '../hooks/usePreventReaderPullToRefresh';
 import { SwipePageIndicator } from './SwipePageIndicator';
 
 const EMPTY_HIGHLIGHTS: HighlightedText[] = [];
@@ -303,6 +304,7 @@ export const Reader = ({ data }: { data: Book }) => {
   }, [clearHoverTranslation, clearHoveredWord]);
 
   const [isReading, setIsReading] = useState(false);
+  usePreventReaderPullToRefresh(true);
   const { i18n } = useLingui();
 
   const closeConfirmDialog = (

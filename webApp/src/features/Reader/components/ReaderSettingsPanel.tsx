@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
@@ -26,12 +26,11 @@ type ReaderSettingsPanelProps = {
 
 const PREVIEW_TEXT = 'This is a preview of the selected voice.';
 /**
- * The intentional debounce delay for all settings writes.
+ * The intentional debounce delay for non-layout settings writes.
  *
- * Sliders fire tens of onChange events per drag; without this delay every
- * event would trigger localStorage writes and context re-renders across every
- * paragraph component, causing visible jank. The same delay is applied to
- * checkboxes for consistency.
+ * Checkboxes and selects use this delay so a single interaction does not spam
+ * localStorage writes and context updates. Layout sliders (font size, gap,
+ * line height) apply on thumb release instead — see useLayoutSliderSetting.
  *
  * DO NOT remove or reduce this without profiling the render cost first.
  * NOTE: e2e tests that close the settings popover immediately after toggling
@@ -39,6 +38,7 @@ const PREVIEW_TEXT = 'This is a preview of the selected voice.';
  * enableVoiceOverSelectedText in e2e/libs/books/uiSettings.ts.
  */
 const SETTINGS_UPDATE_DELAY_MS = 350;
+const LAYOUT_SLIDER_FALLBACK_DELAY_MS = 600;
 
 /**
  * Writes `localValue` to persistent storage after SETTINGS_UPDATE_DELAY_MS
@@ -57,6 +57,59 @@ function useDebouncedSetting<T>(
   }, [localValue, persistedValue, applyFn]);
 }
 
+/**
+ * Layout sliders (font size, paragraph gap, line height) recompute pagination
+ * on every persisted change. Keep the thumb responsive with local state during
+ * drag, apply on release, and flush any pending value when the panel closes.
+ */
+function useLayoutSliderSetting(
+  persistedValue: number,
+  applyFn: (value: number) => void,
+): {
+  value: number;
+  setValue: (nextValue: number) => void;
+  commitValue: (nextValue: number) => void;
+} {
+  const [localValue, setLocalValue] = useState(persistedValue);
+  const localValueRef = useRef(localValue);
+  const persistedValueRef = useRef(persistedValue);
+
+  localValueRef.current = localValue;
+  persistedValueRef.current = persistedValue;
+
+  useEffect(() => {
+    setLocalValue(persistedValue);
+  }, [persistedValue]);
+
+  useEffect(() => {
+    if (localValue === persistedValue) return;
+    const id = setTimeout(() => applyFn(localValue), LAYOUT_SLIDER_FALLBACK_DELAY_MS);
+    return () => clearTimeout(id);
+  }, [localValue, persistedValue, applyFn]);
+
+  useEffect(() => {
+    return () => {
+      if (localValueRef.current !== persistedValueRef.current) {
+        applyFn(localValueRef.current);
+      }
+    };
+  }, [applyFn]);
+
+  const commitValue = useCallback(
+    (nextValue: number) => {
+      setLocalValue(nextValue);
+      applyFn(nextValue);
+    },
+    [applyFn],
+  );
+
+  return {
+    value: localValue,
+    setValue: setLocalValue,
+    commitValue,
+  };
+}
+
 export const ReaderSettingsPanel = ({
   speech,
   isTouchDevice,
@@ -65,9 +118,15 @@ export const ReaderSettingsPanel = ({
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
 
-  const [localFontSize, setLocalFontSize] = useState(readerSettings.fontSize);
-  const [localParagraphGap, setLocalParagraphGap] = useState(readerSettings.paragraphGap);
-  const [localLineHeight, setLocalLineHeight] = useState(readerSettings.lineHeight);
+  const fontSizeSetting = useLayoutSliderSetting(readerSettings.fontSize, readerSettings.setFontSize);
+  const paragraphGapSetting = useLayoutSliderSetting(
+    readerSettings.paragraphGap,
+    readerSettings.setParagraphGap,
+  );
+  const lineHeightSetting = useLayoutSliderSetting(
+    readerSettings.lineHeight,
+    readerSettings.setLineHeight,
+  );
   const [localJustifyText, setLocalJustifyText] = useState(readerSettings.justifyText);
   const [localTranslateOnHover, setLocalTranslateOnHover] = useState(
     readerSettings.translateOnHover,
@@ -81,13 +140,6 @@ export const ReaderSettingsPanel = ({
   const [localLanguage, setLocalLanguage] = useState(speech.language);
   const [localSelectedVoiceURI, setLocalSelectedVoiceURI] = useState(speech.selectedVoiceURI);
 
-  useDebouncedSetting(localFontSize, readerSettings.fontSize, readerSettings.setFontSize);
-  useDebouncedSetting(
-    localParagraphGap,
-    readerSettings.paragraphGap,
-    readerSettings.setParagraphGap,
-  );
-  useDebouncedSetting(localLineHeight, readerSettings.lineHeight, readerSettings.setLineHeight);
   useDebouncedSetting(localJustifyText, readerSettings.justifyText, readerSettings.setJustifyText);
   useDebouncedSetting(
     localTranslateOnHover,
@@ -262,15 +314,20 @@ export const ReaderSettingsPanel = ({
         <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Typography variant="body2">{i18n._('Font size')}</Typography>
           <Typography variant="body2" color="text.secondary">
-            {localFontSize}px
+            {fontSizeSetting.value}px
           </Typography>
         </Stack>
         <Slider
           min={READER_SETTINGS_RANGES.fontSize.min}
           max={READER_SETTINGS_RANGES.fontSize.max}
           step={READER_SETTINGS_RANGES.fontSize.step}
-          value={localFontSize}
-          onChange={(_event, value) => setLocalFontSize(Array.isArray(value) ? value[0] : value)}
+          value={fontSizeSetting.value}
+          onChange={(_event, value) =>
+            fontSizeSetting.setValue(Array.isArray(value) ? value[0] : value)
+          }
+          onChangeCommitted={(_event, value) =>
+            fontSizeSetting.commitValue(Array.isArray(value) ? value[0] : value)
+          }
           valueLabelDisplay="auto"
         />
       </Stack>
@@ -279,16 +336,19 @@ export const ReaderSettingsPanel = ({
         <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Typography variant="body2">{i18n._('Paragraph gap')}</Typography>
           <Typography variant="body2" color="text.secondary">
-            {localParagraphGap}px
+            {paragraphGapSetting.value}px
           </Typography>
         </Stack>
         <Slider
           min={READER_SETTINGS_RANGES.paragraphGap.min}
           max={READER_SETTINGS_RANGES.paragraphGap.max}
           step={READER_SETTINGS_RANGES.paragraphGap.step}
-          value={localParagraphGap}
+          value={paragraphGapSetting.value}
           onChange={(_event, value) =>
-            setLocalParagraphGap(Array.isArray(value) ? value[0] : value)
+            paragraphGapSetting.setValue(Array.isArray(value) ? value[0] : value)
+          }
+          onChangeCommitted={(_event, value) =>
+            paragraphGapSetting.commitValue(Array.isArray(value) ? value[0] : value)
           }
           valueLabelDisplay="auto"
         />
@@ -298,15 +358,20 @@ export const ReaderSettingsPanel = ({
         <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Typography variant="body2">{i18n._('Line height')}</Typography>
           <Typography variant="body2" color="text.secondary">
-            {localLineHeight.toFixed(2)}
+            {lineHeightSetting.value.toFixed(2)}
           </Typography>
         </Stack>
         <Slider
           min={READER_SETTINGS_RANGES.lineHeight.min}
           max={READER_SETTINGS_RANGES.lineHeight.max}
           step={READER_SETTINGS_RANGES.lineHeight.step}
-          value={localLineHeight}
-          onChange={(_event, value) => setLocalLineHeight(Array.isArray(value) ? value[0] : value)}
+          value={lineHeightSetting.value}
+          onChange={(_event, value) =>
+            lineHeightSetting.setValue(Array.isArray(value) ? value[0] : value)
+          }
+          onChangeCommitted={(_event, value) =>
+            lineHeightSetting.commitValue(Array.isArray(value) ? value[0] : value)
+          }
           valueLabelDisplay="auto"
         />
       </Stack>
