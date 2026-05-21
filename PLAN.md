@@ -1,58 +1,12 @@
 # Live document with short/long term ideas
 
-## Reader: Not clear how to see translation
-
-Ааа, увидел, раньше нажимал и может не дожидался, не видел, что под кнопками Y,P,B... перевод
-
-## Reader: On mobile, when scroll up/down - triggers page reload
-
-## Reader: при первой загрузки, кнопка 'sign in' на главной странице не нажималась. Я так понял была заблокирована пока подгружались книги, после заработала
-
-## Reader: В настройках ползунок font size иногда тормозит, наверное тк сразу применяет изменения без задержки
-
-## Reader: to calculate page size
-
-Now we are going to tune calculating page size.
-For now we are emulating render inside this module
-webApp/src/features/Reader/utils/isFitInPage.tsx
-
-I want to create more robust solution by using. Our render component.
-webApp/src/features/Reader/components/Paragraph/ReaderParagraph.tsx
-
-Create me a solution that uses ReaderParagraph.tsx to calculate if content fit the page.
-
-## Approve to use the app
-
-- Create a form to write info about yourself.
-
-- Add ui to approve
-
-- Get 4 approves to Join
-
-- On main page show list of people that wants to join fluencyPal
-
-- After all approves receive allow user to use the app
-
-- Create lock screen to user.
-
-- When sign up happens, create a flag: requiredApprove: boolean, so that we will split new user (who needed approve) from old (who don't need approve).
-
-- Think about on how to accept approves. Probably it should be endpoint.
-
-- Place related code on new feature folder.
+## Approve to use the app (Community)
 
 ## Reader: Highlights - On hover, show full paragraph as preview
 
-## Reader: Sync data. Review how it works
-
-## News: community discussion
-
-Think about community discussion. Can we place comments section under the news?
-How to show previous news. Separate news cards?
-
 ## Reader: Search feature
 
-## Reader:Fix _long paragraph italic text on separate pages_
+## Reader: Fix _long paragraph italic text on separate pages_
 
 =================================
 
