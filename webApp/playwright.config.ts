@@ -8,6 +8,10 @@ const BASE_URL = 'http://localhost:3000';
  */
 export default defineConfig({
   testDir: './e2e',
+  timeout: 60_000,
+  expect: {
+    timeout: 15_000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

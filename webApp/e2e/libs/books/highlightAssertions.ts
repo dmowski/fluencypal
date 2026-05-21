@@ -30,8 +30,8 @@ export const assertWordHoverHasEffect = async (page: Page) => {
 };
 
 export const assertHighlightPopoverVisible = async (page: Page) => {
-  await expect(getReaderHighlightPopoverLocator(page)).toBeVisible({ timeout: 10000 });
-  await expect(getYellowHighlightButtonLocator(page)).toBeVisible({ timeout: 10000 });
+  await expect(getReaderHighlightPopoverLocator(page)).toBeVisible();
+  await expect(getYellowHighlightButtonLocator(page)).toBeVisible();
 };
 
 export const assertHighlightPopoverHidden = async (page: Page) => {

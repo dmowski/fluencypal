@@ -76,6 +76,7 @@ test('resize keeps first visible word anchored and temporary highlight is remove
     )
     .toBe(true);
 
-  await page.waitForTimeout(1200);
-  await expect(page.locator('[data-resize-anchor-highlighted="true"]')).toHaveCount(0);
+  await expect
+    .poll(async () => page.locator('[data-resize-anchor-highlighted="true"]').count())
+    .toBe(0);
 });

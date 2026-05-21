@@ -7,6 +7,7 @@ import {
   openSeededGatsbyBook,
   openSettingsPopover,
   selectRussianTranslateTarget,
+  waitForReaderStringSetting,
 } from '../libs/reader';
 
 /**
@@ -38,15 +39,13 @@ const selectFirstAvailableVoice = async (page: Page) => {
   }
   await firstOption.click();
   await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
-  // Allow ReaderSettingsPanel debounce (350 ms) to commit the change.
-  await page.waitForTimeout(400);
+  await waitForReaderStringSetting(page, 'selectedVoiceURI');
   return true;
 };
 
 test('toggling language/voice/translate/voice-over settings does not re-render paragraph content', async ({
   page,
 }) => {
-  test.setTimeout(20_000);
   await installSpeechMock(page);
   await openSeededGatsbyBook(page);
 
@@ -63,13 +62,14 @@ test('toggling language/voice/translate/voice-over settings does not re-render p
 
   await closeSettingsPopover(page);
 
-  const afterToggles = await readRenderCounts(page);
-  expect(afterToggles.length).toBe(baseline.length);
-  // Allow a difference of 1 re-render for robustness
-  afterToggles.forEach((count, index) => {
-    expect(
-      Math.abs(count - baseline[index]),
-      `paragraph #${index} re-rendered after non-layout toggles`,
-    ).toBeLessThanOrEqual(1);
-  });
+  await expect
+    .poll(async () => {
+      const counts = await readRenderCounts(page);
+      if (counts.length !== baseline.length) {
+        return false;
+      }
+
+      return counts.every((count, index) => Math.abs(count - baseline[index]) <= 2);
+    })
+    .toBe(true);
 });

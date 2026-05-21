@@ -140,7 +140,7 @@ test.describe('Reader sync against Firebase emulator', () => {
       await signInOnSeededReader(pageB, user);
 
       const gatsbyOnB = pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 });
-      await expect(gatsbyOnB).toBeVisible({ timeout: 20_000 });
+      await expect(gatsbyOnB).toBeVisible();
     } finally {
       await signOutOnPage(pageA).catch(() => undefined);
       await contextA.close();

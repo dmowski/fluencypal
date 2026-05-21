@@ -82,9 +82,9 @@ test.describe('News selectors in feed modal', () => {
     await page.getByTestId('news-complexity-select').click();
     await page.getByRole('option', { name: 'Advanced' }).click();
 
-    // Give the app a beat to (incorrectly) fire any request.
-    await page.waitForTimeout(500);
-    expect(requests.length).toBe(requestsAfterInitial);
+    await expect
+      .poll(() => requests.length, { timeout: 1000, intervals: [50, 100, 200] })
+      .toBe(requestsAfterInitial);
   });
 
   test('switching country override refetches with the new country code', async ({ page }) => {

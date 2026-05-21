@@ -12,6 +12,7 @@ import {
   ensureReaderTextVisible,
   hoverWordAndPressColorKey,
   openSeededGatsbyBook,
+  pressReaderNextPage,
   selectRememberWordInsideQuote,
   selectWheneverWordText,
   selectWheneverYouFeelLikeText,
@@ -60,8 +61,7 @@ test('book info highlights list shows context and jumps to selected highlight', 
 
   const pageIndicator = page.getByTestId('reader-page-indicator');
 
-  await page.keyboard.press('ArrowRight');
-  await page.waitForTimeout(120);
+  await pressReaderNextPage(page);
 
   const pageBeforeSelect = parseCurrentPageFromIndicator(await pageIndicator.innerText());
 

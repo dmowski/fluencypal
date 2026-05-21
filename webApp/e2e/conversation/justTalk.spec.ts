@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { installRealtimeConversationMock } from '../libs/conversation';
 import {
   resetEmulatorState,
   seedPracticeUserSettings,
@@ -6,12 +7,10 @@ import {
 } from '../libs/practice';
 
 /**
- * Smoke-tests the realtime conversation flow end-to-end against the real
- * OpenAI Realtime API (no AI mocking) to guard against regressions like
- * the GA-API migration where the `/v1/realtime/sessions` endpoint was
- * disabled in favour of `/v1/realtime/client_secrets`.
+ * Smoke-tests the Just Talk conversation startup flow end-to-end.
  *
- * Requires `OPENAI_API_KEY_WEB_RTC` to be configured for the dev server.
+ * WebRTC signaling is mocked locally so the test does not depend on the live
+ * OpenAI Realtime API or `OPENAI_API_KEY_WEB_RTC`.
  */
 test.use({
   launchOptions: {
@@ -30,7 +29,7 @@ test.describe('Just talk', () => {
   });
 
   test('starts a realtime conversation from the dashboard without errors', async ({ page }) => {
-    test.setTimeout(120_000);
+    await installRealtimeConversationMock(page);
 
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
@@ -39,22 +38,12 @@ test.describe('Just talk', () => {
 
     // Trigger the Just-Talk flow from the dashboard card.
     const openButton = page.getByRole('button', { name: 'Open', exact: true }).first();
-    await expect(openButton).toBeVisible({ timeout: 15_000 });
+    await expect(openButton).toBeVisible();
     await openButton.click();
 
-    // The dashboard card flips into a loading state; wait for the call UI to
-    // render. The conversation canvas modal mounts only after the ephemeral
-    // token endpoint and the WebRTC SDP exchange both succeed.
-    const conversationCanvas = page.locator('#conversation-canvas-modal');
-    await Promise.race([
-      conversationCanvas.waitFor({ state: 'visible', timeout: 60_000 }),
-      errorHeading.waitFor({ state: 'visible', timeout: 60_000 }).then(() => {
-        throw new Error('Conversation surfaced "Oops! Something went wrong"');
-      }),
-    ]);
-
-    // Final guard: the error banner must not be present once the call is
-    // established.
+    // Just Talk starts in call mode (CameraCanvas), not the record-mode chat modal.
+    const conversationCanvas = page.locator('#messages-call-mode, #conversation-canvas-modal');
+    await expect(conversationCanvas).toBeVisible();
     await expect(errorHeading).toHaveCount(0);
   });
 });

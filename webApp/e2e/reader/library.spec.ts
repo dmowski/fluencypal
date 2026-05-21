@@ -1,5 +1,5 @@
 import { expect, test, Page } from '@playwright/test';
-import { openBooksPageWithCleanStorage } from '../libs/reader';
+import { openBooksPageWithCleanStorage, pressReaderNextPage } from '../libs/reader';
 
 const GUTENBERG_ROMANCE_BOOK_ID = '1342';
 const GUTENBERG_ROMANCE_TITLE = 'Pride and Prejudice';
@@ -73,8 +73,7 @@ test('downloads a live Gutenberg EPUB and opens it in the reader', async ({ page
       break;
     }
 
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(120);
+    await pressReaderNextPage(page);
   }
 
   await expect(titleLabel).toBeVisible();
@@ -133,8 +132,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
   // Navigate through pages to find a rendered image (data URI from parsed EPUB)
   let hasRenderedDataImage = await findVisibleRenderedImage(page);
   for (let step = 0; step < 3 && !hasRenderedDataImage; step += 1) {
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(150);
+    await pressReaderNextPage(page);
     hasRenderedDataImage = await findVisibleRenderedImage(page);
   }
 
@@ -164,8 +162,7 @@ test('downloads library EPUB with images and renders image in reader', async ({ 
     chapterLinkFound =
       (await page.locator('[data-testid="reader-content"] a[data-reader-target-page]').count()) > 0;
     if (!chapterLinkFound) {
-      await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(150);
+      await pressReaderNextPage(page);
     }
   }
 

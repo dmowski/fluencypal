@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { openSeededGatsbyBook } from '../libs/books/navigation';
+import { openSeededGatsbyBook, pressReaderNextPage } from '../libs/books/navigation';
 
 interface ParagraphInvariantReport {
   paragraphIndex: number;
@@ -80,8 +80,7 @@ test.describe('reader token-map invariants', () => {
     expectAllParagraphsClean(initialReports);
 
     for (let step = 0; step < 5; step += 1) {
-      await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(150);
+      await pressReaderNextPage(page);
       const reports = await collectInvariantReports(page);
       expectAllParagraphsClean(reports);
     }
@@ -114,8 +113,7 @@ test.describe('reader token-map invariants', () => {
       if (foundEmDashRegion && step >= 5) {
         break;
       }
-      await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(80);
+      await pressReaderNextPage(page);
     }
 
     expect(

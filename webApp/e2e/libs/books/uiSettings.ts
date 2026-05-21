@@ -1,5 +1,57 @@
 import { expect, Page } from '@playwright/test';
 
+const READER_SETTINGS_STORAGE_KEY = 'reader-browser-speech-settings';
+
+export const waitForReaderSettingPersisted = async (
+  page: Page,
+  property: string,
+  expectedValue: unknown,
+) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        ({ key, property, expectedValue }) => {
+          const raw = localStorage.getItem(key);
+          if (!raw) {
+            return false;
+          }
+
+          try {
+            const settings = JSON.parse(raw) as Record<string, unknown>;
+            return settings[property] === expectedValue;
+          } catch {
+            return false;
+          }
+        },
+        { key: READER_SETTINGS_STORAGE_KEY, property, expectedValue },
+      ),
+    )
+    .toBe(true);
+};
+
+export const waitForReaderStringSetting = async (page: Page, property: string) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        ({ key, property }) => {
+          const raw = localStorage.getItem(key);
+          if (!raw) {
+            return false;
+          }
+
+          try {
+            const settings = JSON.parse(raw) as Record<string, unknown>;
+            return typeof settings[property] === 'string' && settings[property] !== '';
+          } catch {
+            return false;
+          }
+        },
+        { key: READER_SETTINGS_STORAGE_KEY, property },
+      ),
+    )
+    .toBe(true);
+};
+
 export const openSettingsPopover = async (page: Page) => {
   await page.getByRole('button', { name: 'Book info' }).click();
   await page.getByTestId('book-info-tab-settings').click();
@@ -39,18 +91,12 @@ export const enableTranslateOnHover = async (page: Page) => {
   const translateOnHover = page.getByRole('checkbox', { name: 'Translate on Hover' });
   await expect(translateOnHover).toBeVisible();
   await translateOnHover.check();
-  // Wait for the settings panel debounce (350 ms) to persist the setting before
-  // the caller closes the popover and unmounts the panel — otherwise the debounce
-  // timer is cancelled mid-flight and the setting is never saved.
-  await page.waitForTimeout(400);
+  await waitForReaderSettingPersisted(page, 'translateOnHover', true);
 };
 
 export const enableVoiceOverSelectedText = async (page: Page) => {
   const voiceOver = page.getByRole('checkbox', { name: 'Voice Over Selected Text' });
   await expect(voiceOver).toBeVisible();
   await voiceOver.check();
-  // Wait for the settings panel debounce (350 ms) to persist the setting before
-  // the caller closes the popover and unmounts the panel — otherwise the debounce
-  // timer is cancelled mid-flight and the setting is never saved.
-  await page.waitForTimeout(400);
+  await waitForReaderSettingPersisted(page, 'voiceOverSelectedText', true);
 };

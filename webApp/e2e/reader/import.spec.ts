@@ -5,9 +5,12 @@ import {
   createFileDropDataTransfer,
   dropDataTransferOnBooksList,
   ensureReaderTextVisible,
+  expectImportedBookReady,
   importBookFromPicker,
+  mockConvertDocToTextRoute,
   openAddBookFileChooser,
   openBooksPageWithCleanStorage,
+  pressReaderNextPage,
 } from '../libs/reader';
 import {
   createEmulatorTestUser,
@@ -57,9 +60,7 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
-    timeout: 60_000,
-  });
+  await expectImportedBookReady(page, 'Supercommunicators');
 
   await ensureReaderTextVisible(page, EXPECTED_COPYRIGHT, { maxSteps: 30 });
   await expect
@@ -68,16 +69,14 @@ test('imports EPUB with images and opens reader with parsed content', async ({ p
 
   let hasRenderedDataImage = await findVisibleRenderedImage(page);
   for (let step = 0; step < 8 && !hasRenderedDataImage; step += 1) {
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(120);
+    await pressReaderNextPage(page);
     hasRenderedDataImage = await findVisibleRenderedImage(page);
   }
   expect(hasRenderedDataImage).toBeTruthy();
 
   for (let step = 0; step < 8; step += 1) {
     await assertVisibleReaderColumnsFitViewport(page);
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(120);
+    await pressReaderNextPage(page);
   }
 
   const imageMapState = await page.evaluate(async (expectedImageKey) => {
@@ -136,6 +135,7 @@ test('imports book by dropping EPUB on books page', async ({ page }) => {
   test.setTimeout(180_000);
 
   await openBooksPageWithCleanStorage(page);
+  await mockConvertDocToTextRoute(page);
 
   const fixturePath = path.resolve(process.cwd(), BOOK_FIXTURE_PATH);
   const epubBytes = Array.from(await readFile(fixturePath));
@@ -149,9 +149,7 @@ test('imports book by dropping EPUB on books page', async ({ page }) => {
 
   await dropDataTransferOnBooksList(page, dataTransfer);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
-    timeout: 60_000,
-  });
+  await expectImportedBookReady(page, 'Supercommunicators');
   await ensureReaderTextVisible(page, EXPECTED_COPYRIGHT, {
     maxSteps: 12,
   });
@@ -200,6 +198,10 @@ test('imports PDF via conversion pipeline', async ({ page }) => {
   const fileChooser = await openAddBookFileChooser(page);
   await fileChooser.setFiles(pdfFixturePath);
 
-  // After real CloudConvert, a book heading should appear in the book list.
-  await expect(page.getByRole('heading', { level: 2 })).toBeVisible({ timeout: 120_000 });
+  // CloudConvert can take a while; poll until any imported book heading appears.
+  await expect
+    .poll(async () => page.getByRole('heading', { level: 2 }).first().isVisible(), {
+      timeout: 120_000,
+    })
+    .toBe(true);
 });

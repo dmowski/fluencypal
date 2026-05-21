@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { importBookFromPicker, openBooksPageWithCleanStorage } from '../libs/reader';
+import { importBookFromPicker, expectImportedBookReady, openBooksPageWithCleanStorage } from '../libs/reader';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 
@@ -18,9 +18,7 @@ test('chapter list maps each chapter to a unique target page', async ({ page }) 
   await openBooksPageWithCleanStorage(page);
   await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-  await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
-    timeout: 60_000,
-  });
+  await expectImportedBookReady(page, 'Supercommunicators');
 
   await page.getByRole('button', { name: 'Read' }).click();
   await page.getByRole('button', { name: 'Book info' }).click();

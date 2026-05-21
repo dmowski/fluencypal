@@ -1,5 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { importBookFromPicker, openBooksPageWithCleanStorage } from '../libs/reader';
+import {
+  importBookFromPicker,
+  expectImportedBookReady,
+  openBooksPageWithCleanStorage,
+} from '../libs/reader';
 import { ensureReaderTextVisible } from '../libs/books/navigation';
 
 const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
@@ -52,9 +56,7 @@ test.describe('reader li paragraph – Tell-selection regression (real Supercomm
     await openBooksPageWithCleanStorage(page);
     await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-    await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
-      timeout: 60_000,
-    });
+    await expectImportedBookReady(page, 'Supercommunicators');
 
     await ensureReaderTextVisible(page, PARAGRAPH_TEXT_FRAGMENT, { maxSteps: 240 });
 
@@ -112,9 +114,7 @@ test.describe('reader li paragraph – Tell-selection regression (real Supercomm
     await openBooksPageWithCleanStorage(page);
     await importBookFromPicker(page, BOOK_FIXTURE_PATH);
 
-    await expect(page.getByRole('heading', { name: 'Supercommunicators', level: 2 })).toBeVisible({
-      timeout: 60_000,
-    });
+    await expectImportedBookReady(page, 'Supercommunicators');
 
     await ensureReaderTextVisible(page, PARAGRAPH_TEXT_FRAGMENT, { maxSteps: 240 });
 

@@ -18,16 +18,26 @@ export const openSeededGatsbyBook = async (page: Page) => {
   // may have raced a stale dev-server response.
   await page.goto('/book', { waitUntil: 'domcontentloaded' });
   try {
-    await expect(gatsbyCardTitle).toBeVisible({ timeout: 20_000 });
+    await expect(gatsbyCardTitle).toBeVisible();
   } catch {
     await page.reload({ waitUntil: 'domcontentloaded' });
-    await expect(gatsbyCardTitle).toBeVisible({ timeout: 20_000 });
+    await expect(gatsbyCardTitle).toBeVisible();
   }
   await gatsbyCardTitle.click();
 
-  await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Read' }).click();
-  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
+};
+
+export const pressReaderNextPage = async (page: Page) => {
+  const pageIndicator = page.getByTestId('reader-page-indicator');
+  const previousText = (await pageIndicator.textContent()) ?? '';
+  await page.keyboard.press('ArrowRight');
+
+  if (previousText) {
+    await expect(pageIndicator).not.toHaveText(previousText, { timeout: 3000 });
+  }
 };
 
 export const ensureReaderTextVisible = async (
@@ -53,8 +63,7 @@ export const ensureReaderTextVisible = async (
       return;
     }
 
-    await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(120);
+    await pressReaderNextPage(page);
   }
 
   throw new Error(`Could not find reader text after ${maxSteps} page steps: ${targetText}`);

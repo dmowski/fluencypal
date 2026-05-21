@@ -64,7 +64,7 @@ test.describe('Reader book sharing', () => {
     await page.getByTestId('share-email-submit').click();
 
     // Assert success message
-    await expect(page.getByTestId('share-success-message')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByTestId('share-success-message')).toBeVisible();
 
     // Verify userB.uid appears in userIds on the remote Firestore doc
     await waitForRemoteBookField(
@@ -121,7 +121,7 @@ test.describe('Reader book sharing', () => {
     await expect(page.getByTestId('share-book-modal')).toBeVisible();
     await page.getByTestId('share-email-input').fill(userB.email);
     await page.getByTestId('share-email-submit').click();
-    await expect(page.getByTestId('share-success-message')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByTestId('share-success-message')).toBeVisible();
 
     // Wait for userB to appear in Firestore
     await waitForRemoteReaderBooksCount(userB.uid, 1, { timeoutMs: 20_000 });
@@ -179,7 +179,7 @@ test.describe('Reader book sharing', () => {
     await expect(page.getByTestId('share-book-modal')).toBeVisible();
     await page.getByTestId('share-email-input').fill(userB.email);
     await page.getByTestId('share-email-submit').click();
-    await expect(page.getByTestId('share-success-message')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByTestId('share-success-message')).toBeVisible();
     await waitForRemoteReaderBooksCount(userB.uid, 1, { timeoutMs: 20_000 });
 
     // Remove user B via the remove button

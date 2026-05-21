@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
 /**
  * Intercepts /api/convertDocToText and immediately returns an error response.
@@ -34,8 +34,13 @@ export const openAddBookFileChooser = async (page: Page) => {
 };
 
 export const importBookFromPicker = async (page: Page, fixturePath: string) => {
+  await mockConvertDocToTextRoute(page);
   const fileChooser = await openAddBookFileChooser(page);
   await fileChooser.setFiles(fixturePath);
+};
+
+export const expectImportedBookReady = async (page: Page, bookTitle: string) => {
+  await expect(page.getByRole('heading', { name: bookTitle, level: 2 })).toBeVisible();
 };
 
 export const createFileDropDataTransfer = async ({
