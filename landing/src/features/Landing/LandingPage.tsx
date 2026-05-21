@@ -202,7 +202,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
-            buttonTitle={i18n._(`Start Speaking`)}
+            buttonTitle={i18n._(`Start Trial`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={quizLink}
             cards={[
