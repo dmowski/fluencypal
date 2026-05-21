@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Messages: play user's audio only with full access
-
 ## Approve to use the app
 
 - Create a form to write info about yourself.
@@ -21,10 +19,6 @@
 - Think about on how to accept approves. Probably it should be endpoint.
 
 - Place related code on new feature folder.
-
-## Reader: List. unable to highlight text
-
-webApp/src/features/Reader/components/Paragraph/ReaderMarkdown.tsx
 
 ## Reader: Highlights - On hover, show full paragraph as preview
 

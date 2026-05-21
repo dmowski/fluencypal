@@ -25,6 +25,7 @@ const config: Config = {
     '<rootDir>/.vercel/',
     '<rootDir>/e2e/',
     '<rootDir>/.playwright-report/',
+    '\\.browser\\.test\\.(ts|tsx)$',
   ],
 };
 
