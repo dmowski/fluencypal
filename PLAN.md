@@ -2,6 +2,8 @@
 
 ## Approve to use the app (Community)
 
+## Reader: Instead of slide: use + - buttons
+
 ## Reader: Highlights - On hover, show full paragraph as preview
 
 ## Reader: Search feature
