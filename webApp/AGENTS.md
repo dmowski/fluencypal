@@ -8,6 +8,7 @@ Run the smallest relevant checks before finishing:
 
 - Always after TypeScript changes: `pnpm lint`
 - For unit-level logic/components: `pnpm test:unit`
+- For DOM-dependent component behavior (real-browser rendering, real click/selection, actual layout): `pnpm test:unit:browser`
 - For end-to-end behavior changes: run e2e tests and do not skip e2e.
   - Reader behavior changes: `cd webApp && pnpm test:e2e`
 
@@ -68,6 +69,27 @@ i18n._('Speaking');
 ## E2E Test Structure
 
 All reader e2e specs live under `e2e/reader/` (one file per concern). Shared helpers are exported from `e2e/libs/reader.ts`; the individual modules live under `e2e/libs/books/`.
+
+## Component (Browser) Tests
+
+Real-browser component tests use Vitest + `vitest-browser-react` driven by the
+`@vitest/browser-playwright` provider (Chromium). Run them with
+`pnpm test:unit:browser` (config: `vitest.browser.config.ts`). They give Jest-
+speed feedback for things that depend on real DOM layout, real events, or
+markdown-to-jsx output — the cases where jsdom is not faithful enough but a
+full Playwright e2e is overkill.
+
+- File naming: co-locate next to the component as `<Name>.browser.test.tsx`
+  (the existing example is
+  `src/features/Reader/components/Paragraph/ReaderParagraph.browser.test.tsx`).
+- Use these tests to lock down render-layer invariants (data attributes,
+  DOM structure, click → emitted payload) that are easy to regress and slow to
+  catch via Playwright.
+- Keep them deterministic and isolated: render the component directly, do not
+  spin up the app router, do not import e2e helpers.
+- A passing browser test is NOT a substitute for an e2e regression test when
+  the bug only reproduces against real markdown/EPUB input — add coverage at
+  the layer where the bug actually lives.
 
 ## Daily Tasks
 
