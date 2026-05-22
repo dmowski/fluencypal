@@ -43,6 +43,7 @@ const renderHighlightList = ({
             lineHeight: 1.5,
             padding: '8px',
             borderRadius: '4px',
+            display: 'inline-block',
             '&:hover': isClickable
               ? {
                   backgroundColor: 'rgba(34, 34, 34, 0.08)',

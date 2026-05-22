@@ -2,7 +2,15 @@
 
 ## Reader: Instead of slide: use + - buttons
 
+Settings menu. Reader info: webApp/src/features/Reader/AGENTS.md
+webApp/src/features/Reader/components/ReaderSettingsPanel.tsx
+
 ## Reader: Highlights - On hover, show full paragraph as preview
+
+On desktop only. Preview panel is fixed panel on right side.
+Reader info: webApp/src/features/Reader/AGENTS.md
+
+- When open highlight menu, scroll it to down
 
 ## Reader: Share the book with others
 
