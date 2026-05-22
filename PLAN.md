@@ -1,9 +1,6 @@
 # Live document with short/long term ideas
 
-## Reader: Highlights - On hover, show full paragraph as preview
-
-On desktop only. Preview panel is fixed panel on right side.
-Reader info: webApp/src/features/Reader/AGENTS.md
+## App: Community call
 
 ## Reader: Share the book with others
 
