@@ -28,6 +28,7 @@ import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
 import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
 import { NewsDashboardCard } from '../News/NewsDashboardCard';
+import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -83,6 +84,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 }}
               >
                 <DailyTasksDashboardCard />
+                <InstallAppInstruction />
                 <PracticeCustomConversationsDashboardCard />
                 <NewsDashboardCard />
                 <ProgressDashboardCard />
