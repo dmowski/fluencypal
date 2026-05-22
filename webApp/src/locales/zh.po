@@ -371,7 +371,7 @@ msgstr "添加一些您要求退款的原因，我们会为您办理。"
 msgid "Add Text Answer"
 msgstr "添加文字答案"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -726,7 +726,7 @@ msgstr "正在分析..."
 msgid "and"
 msgstr "和"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "安卓"
@@ -1835,7 +1835,7 @@ msgstr "确认信用卡"
 msgid "Confirm payment"
 msgstr "确认付款"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "确认安装。"
@@ -3824,7 +3824,7 @@ msgstr "FluencyPal – 您的AI英语口语伙伴"
 msgid "Focus on shipping reliable services"
 msgstr "专注于提供可靠的服务"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "按照提示将 {appName} 添加到您的主屏幕。"
@@ -4654,6 +4654,11 @@ msgid ""
 "languages. You can too, by the way."
 msgstr "您好。我的名字是亚历克斯。我创建了这个网站，以便我可以练习英语和其他语言。顺便说一句，您也可以。"
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "隐藏"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -4684,11 +4689,6 @@ msgstr "提高自信心的提示"
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "首页"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "主页屏幕"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5261,7 +5261,7 @@ msgstr "启动脑连接"
 msgid "Inspired by current events"
 msgstr "受到当前事件的启发"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "安装应用程序"
@@ -5276,12 +5276,7 @@ msgstr "安装完成"
 msgid "Install languages into my brain"
 msgstr "将语言安装到我的大脑中"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "安装{appName}"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "在您的手机上安装 {appName}"
@@ -5387,7 +5382,7 @@ msgstr ""
 "\n"
 "邀请链接已发送至：\n"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6009,7 +6004,7 @@ msgstr "注销"
 msgid "Longer words and richer expressions"
 msgstr "更长的词汇和更丰富的表达"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "寻找“安装应用”或“添加到主屏幕”。"
@@ -6158,7 +6153,7 @@ msgstr "提及您使用的工具（控制台、开发者工具、日志）"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "提及您的技术栈（React/JS/HTML/CSS）"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "菜单"
@@ -6223,7 +6218,7 @@ msgstr "分钟"
 msgid "Mission complete"
 msgstr "任务完成"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "移动浏览器"
@@ -6913,12 +6908,12 @@ msgid ""
 "debate!"
 msgstr "打开某人的资料，并按下“邀请参加辩论”按钮以开始辩论！"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr "从主屏幕打开应用程序，以获得更快速、类似应用程序的体验。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "打开您的浏览器菜单。"
@@ -8690,7 +8685,7 @@ msgstr "筛选"
 msgid "Screening interview with AI recruiter"
 msgstr "与AI招聘人员的筛选面试"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "向下滚动并点击“添加到主屏幕”。"
@@ -8913,7 +8908,6 @@ msgstr "设置"
 msgid "Sexual content"
 msgstr "性内容"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -9766,22 +9760,22 @@ msgstr "尽情畅谈 — 角色扮演、助理和真实对话。"
 msgid "Talking to a Doctor"
 msgstr "与医生交谈"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "点击右上角的“添加”。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "点击“安装应用”或“添加到主屏幕”。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "点击 Chrome 右上角的菜单按钮。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "点击 Safari 底部的共享按钮。"
@@ -12197,6 +12191,16 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "主页屏幕"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "安装{appName}"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91

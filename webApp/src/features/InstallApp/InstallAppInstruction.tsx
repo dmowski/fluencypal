@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { appName } from '../SEO/appInfo';
 import { GradientCard } from '../uiKit/Card/GradientCard';
 import { StoreButton } from '../uiKit/Card/StoreCard/StoreButton';
-import { InstallAppInstructionModal } from './InstallAppInstructionModal';
+import { InstallAppInstructionSteps } from './InstallAppInstructionSteps';
 import { usePwaInstall } from './usePwaInstall';
 import { useAuth } from '../Auth/useAuth';
 
@@ -16,13 +16,18 @@ export const InstallAppInstruction = () => {
   const { i18n } = useLingui();
   const install = usePwaInstall();
   const auth = useAuth();
-  const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   if (!install.shouldShowCard) {
     return null;
   }
 
-  const handleInstallClick = async () => {
+  const handleActionClick = async () => {
+    if (isExpanded) {
+      setIsExpanded(false);
+      return;
+    }
+
     if (install.canNativePrompt) {
       const installed = await install.promptInstall();
       if (installed) {
@@ -30,23 +35,19 @@ export const InstallAppInstruction = () => {
       }
     }
 
-    setIsInstructionsOpen(true);
+    setIsExpanded(true);
   };
 
-  if (!auth.isFounder) {
-    return null;
-  }
-
   return (
-    <>
-      <Stack data-testid="install-app-instruction-card">
-        <GradientCard
-          padding="16px 18px"
-          strokeWidth="1px"
-          startColor="rgba(85, 141, 219, 0.55)"
-          endColor="rgba(5, 172, 255, 0.55)"
-          backgroundColor="rgba(10, 18, 30, 0.88)"
-        >
+    <Stack data-testid="install-app-instruction-card">
+      <GradientCard
+        padding="16px 18px"
+        strokeWidth="1px"
+        startColor="rgba(85, 141, 219, 0.55)"
+        endColor="rgba(5, 172, 255, 0.55)"
+        backgroundColor="rgba(28, 37, 49, 0.88)"
+      >
+        <Stack sx={{ width: '100%', gap: isExpanded ? '16px' : 0 }}>
           <Stack
             direction="row"
             sx={{
@@ -60,12 +61,42 @@ export const InstallAppInstruction = () => {
                 minWidth: '42px',
                 height: '42px',
                 borderRadius: '12px',
+                overflow: 'hidden',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                position: 'relative',
               }}
             >
-              <Smartphone size={22} color="#9ec5ff" />
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  borderRadius: '12px',
+                  width: '100%',
+                  height: '100%',
+                  background:
+                    'linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.041) 100%)',
+                }}
+              />
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  top: '1px',
+                  left: '1px',
+                  borderRadius: '11px',
+                  width: 'calc(100% - 2px)',
+                  height: 'calc(100% - 2px)',
+                  background: '#0D1521',
+                }}
+              />
+              <img
+                src="/favicon.svg"
+                alt="App Icon"
+                width={35}
+                height={35}
+                style={{ borderRadius: '12px', position: 'relative', zIndex: 1 }}
+              />
             </Stack>
 
             <Stack sx={{ flex: 1, gap: '4px', minWidth: 0 }}>
@@ -79,28 +110,17 @@ export const InstallAppInstruction = () => {
               >
                 {i18n._('Install {appName} on your phone', { appName })}
               </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: 'rgba(255, 255, 255, 0.68)',
-                  lineHeight: 1.35,
-                }}
-              >
-                {i18n._('Open the app from your home screen for a faster, app-like experience.')}
-              </Typography>
             </Stack>
 
-            <StoreButton title={i18n._('Install App')} onClick={handleInstallClick} />
+            <StoreButton
+              title={isExpanded ? i18n._('Hide') : i18n._('Install')}
+              onClick={handleActionClick}
+            />
           </Stack>
-        </GradientCard>
-      </Stack>
 
-      {isInstructionsOpen && (
-        <InstallAppInstructionModal
-          platform={install.platform}
-          onClose={() => setIsInstructionsOpen(false)}
-        />
-      )}
-    </>
+          {isExpanded ? <InstallAppInstructionSteps platform={install.platform} /> : null}
+        </Stack>
+      </GradientCard>
+    </Stack>
   );
 };

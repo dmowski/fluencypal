@@ -375,7 +375,7 @@ msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 �
 msgid "Add Text Answer"
 msgstr "텍스트 답변 추가"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -730,7 +730,7 @@ msgstr "분석 중..."
 msgid "and"
 msgstr "그리고"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "안드로이드"
@@ -1849,7 +1849,7 @@ msgstr "신용 카드 확인"
 msgid "Confirm payment"
 msgstr "결제 확인"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "설치를 확인하세요."
@@ -3877,7 +3877,7 @@ msgstr "FluencyPal – 당신의 AI 영어 말하기 파트너"
 msgid "Focus on shipping reliable services"
 msgstr "신뢰할 수 있는 서비스 제공에 중점을 두십시오"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "{appName}을(를) 홈 화면에 추가하려면 프롬프트를 따르세요."
@@ -4723,6 +4723,11 @@ msgstr ""
 "안녕하세요. 제 이름은 Alex입니다. 저는 영어 및 다른 언어를 연습하기 위해 이 사이트를 만들었습니다. 당신도 할 수 있습니다, "
 "참고로."
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "숨기기"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -4753,11 +4758,6 @@ msgstr "자신감을 높이기 위한 힌트"
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "집"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "홈 화면"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5342,7 +5342,7 @@ msgstr "뇌 연결 시작"
 msgid "Inspired by current events"
 msgstr "현재 사건에서 영감을 받다"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "앱 설치"
@@ -5357,12 +5357,7 @@ msgstr "설치 완료"
 msgid "Install languages into my brain"
 msgstr "나의 두뇌에 언어를 설치하십시오"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "{appName} 설치"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "휴대전화에 {appName}을(를) 설치하세요"
@@ -5468,7 +5463,7 @@ msgstr ""
 "\n"
 "초대 링크가 전송되었습니다:\n"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6088,7 +6083,7 @@ msgstr "로그아웃"
 msgid "Longer words and richer expressions"
 msgstr "긴 단어와 풍부한 표현"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "\"앱 설치\" 또는 \"홈 화면에 추가\"를 찾으세요."
@@ -6238,7 +6233,7 @@ msgstr "사용한 도구 언급 (콘솔, DevTools, 로그)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "당신의 기술 스택을 언급하세요 (React/JS/HTML/CSS)"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "메뉴"
@@ -6303,7 +6298,7 @@ msgstr "분"
 msgid "Mission complete"
 msgstr "미션 완료"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "모바일 브라우저"
@@ -7000,12 +6995,12 @@ msgid ""
 "debate!"
 msgstr "누군가의 프로필을 열고 \"토론 초대\" 버튼을 눌러 토론을 시작하세요!"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr "홈 화면에서 앱을 열어 더 빠르고 앱과 같은 경험을 즐기세요."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "브라우저 메뉴를 엽니다."
@@ -8788,7 +8783,7 @@ msgstr "스크리닝"
 msgid "Screening interview with AI recruiter"
 msgstr "AI 리쿠르터와의 사전 인터뷰"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "아래로 스크롤하고 \"홈 화면에 추가\"를 탭하세요."
@@ -9011,7 +9006,6 @@ msgstr "설정"
 msgid "Sexual content"
 msgstr "성적인 내용"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -9872,22 +9866,22 @@ msgstr "원하는 만큼 말하세요 — 역할극, 어시스턴트, 그리고 
 msgid "Talking to a Doctor"
 msgstr "의사와 이야기하기"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "오른쪽 상단의 \"추가\"를 탭하세요."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "앱 설치하기\" 또는 \"홈 화면에 추가하기\"를 누르세요."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome의 오른쪽 상단에 있는 메뉴 버튼을 탭하세요."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "사파리 하단에서 공유 버튼을 탭하세요."
@@ -12341,6 +12335,16 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "홈 화면"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "{appName} 설치"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91

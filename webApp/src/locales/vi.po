@@ -392,7 +392,7 @@ msgstr "Thêm một số thông tin vì sao bạn muốn hoàn tiền và chúng
 msgid "Add Text Answer"
 msgstr "Thêm văn bản trả lời"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -761,7 +761,7 @@ msgstr "Đang phân tích..."
 msgid "and"
 msgstr "và"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "Android"
@@ -1914,7 +1914,7 @@ msgstr "Xác nhận Thẻ Tín Dụng"
 msgid "Confirm payment"
 msgstr "Xác nhận thanh toán"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "Xác nhận cài đặt."
@@ -4096,7 +4096,7 @@ msgstr "FluencyPal – Đối tác Nói tiếng Anh AI của bạn"
 msgid "Focus on shipping reliable services"
 msgstr "Tập trung vào việc cung cấp dịch vụ đáng tin cậy"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "Làm theo hướng dẫn để thêm {appName} vào màn hình chính của bạn."
@@ -5002,6 +5002,11 @@ msgstr ""
 "Xin chào. Tên tôi là Alex. Tôi đã tạo trang web này để có thể thực hành "
 "tiếng Anh và các ngôn ngữ khác. Bạn cũng có thể, nhân tiện."
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "Ẩn"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -5032,11 +5037,6 @@ msgstr "Gợi ý để tăng sự tự tin của bạn"
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Trang chủ"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "Màn hình chính"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5677,7 +5677,7 @@ msgstr "Khởi tạo kết nối não"
 msgid "Inspired by current events"
 msgstr "Lấy cảm hứng từ các sự kiện hiện tại"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "Cài đặt ứng dụng"
@@ -5692,12 +5692,7 @@ msgstr "Đã cài đặt xong"
 msgid "Install languages into my brain"
 msgstr "Cài đặt ngôn ngữ vào não tôi"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "Cài đặt {appName}"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "Cài đặt {appName} trên điện thoại của bạn"
@@ -5801,7 +5796,7 @@ msgstr "Giới thiệu bản thân như một kỹ sư backend"
 msgid "Invite Link Sent to:"
 msgstr "Liên kết mời đã được gửi tới:"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6437,7 +6432,7 @@ msgstr "Đăng xuất"
 msgid "Longer words and richer expressions"
 msgstr "Những từ ngữ dài hơn và cách diễn đạt phong phú hơn"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "Tìm \"Cài đặt ứng dụng\" hoặc \"Thêm vào Màn hình chính\"."
@@ -6592,7 +6587,7 @@ msgstr ""
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Đề cập đến công nghệ bạn sử dụng (React/JS/HTML/CSS)"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "Menu"
@@ -6662,7 +6657,7 @@ msgstr "Phút"
 msgid "Mission complete"
 msgstr "Nhiệm vụ hoàn thành"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "Trình duyệt di động"
@@ -7396,14 +7391,14 @@ msgstr ""
 "Mở hồ sơ của ai đó và nhấn nút \"Mời tranh luận\" để bắt đầu một cuộc tranh "
 "luận!"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr ""
 "Mở ứng dụng từ màn hình chính của bạn để có trải nghiệm nhanh hơn, giống "
 "như ứng dụng."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "Mở menu trình duyệt của bạn."
@@ -9278,7 +9273,7 @@ msgstr "Sàng lọc"
 msgid "Screening interview with AI recruiter"
 msgstr "Phỏng vấn sơ tuyển với nhà tuyển dụng AI"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "Cuộn xuống và nhấn \"Thêm vào Màn hình chính\"."
@@ -9507,7 +9502,6 @@ msgstr "Cài đặt"
 msgid "Sexual content"
 msgstr "Nội dung khiêu dâm"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -10416,22 +10410,22 @@ msgstr "Nói chuyện bao lâu tùy thích — đóng vai, trợ lý và các cu
 msgid "Talking to a Doctor"
 msgstr "Nói chuyện với bác sĩ"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "Nhấn \"Thêm\" ở góc trên bên phải."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "Nhấn \"Cài đặt ứng dụng\" hoặc \"Thêm vào Màn hình chính\"."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Nhấn vào nút menu ở góc trên cùng bên phải của Chrome."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "Nhấn vào nút Chia sẻ ở cuối Safari."
@@ -13066,6 +13060,16 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "Màn hình chính"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "Cài đặt {appName}"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91

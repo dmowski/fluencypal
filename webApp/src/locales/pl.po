@@ -388,7 +388,7 @@ msgstr "Dodaj informacje, dlaczego chcesz zwrotu, a my to zrobimy."
 msgid "Add Text Answer"
 msgstr "Dodaj odpowiedź tekstową"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -757,7 +757,7 @@ msgstr "Analizowanie..."
 msgid "and"
 msgstr "i"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "Android"
@@ -1912,7 +1912,7 @@ msgstr "Potwierdź kartę kredytową"
 msgid "Confirm payment"
 msgstr "Potwierdź płatność"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "Potwierdź instalację."
@@ -4094,7 +4094,7 @@ msgstr "FluencyPal – Twój AI partner do mówienia po angielsku"
 msgid "Focus on shipping reliable services"
 msgstr "Skup się na dostarczaniu niezawodnych usług"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "Podążaj za wskazówkami, aby dodać {appName} do ekranu głównego."
@@ -4992,6 +4992,11 @@ msgstr ""
 "Cześć. Mam na imię Alex. Zbudowałem tę stronę, aby móc ćwiczyć angielski i "
 "inne języki. Swoją drogą, Ty też możesz."
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "Ukryj"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -5022,11 +5027,6 @@ msgstr "Wskazówki, które zwiększą Twoją pewność siebie"
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Dom"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "Ekran główny"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5666,7 +5666,7 @@ msgstr "Inicjuj połączenie mózgowe"
 msgid "Inspired by current events"
 msgstr "Zainspirowane bieżącymi wydarzeniami"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "Zainstaluj aplikację"
@@ -5681,12 +5681,7 @@ msgstr "Instalacja zakończona"
 msgid "Install languages into my brain"
 msgstr "Zainstaluj języki w moim mózgu"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "Zainstaluj {appName}"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "Zainstaluj {appName} na swoim telefonie"
@@ -5796,7 +5791,7 @@ msgstr "Przedstaw się jako inżynier backendu"
 msgid "Invite Link Sent to:"
 msgstr "Link do zaproszenia wysłany do:"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6438,7 +6433,7 @@ msgstr "Wyloguj się"
 msgid "Longer words and richer expressions"
 msgstr "Dłuższe słowa i bogatsze wyrażenia"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "Szukaj \"Zainstaluj aplikację\" lub \"Dodaj do ekranu głównego\"."
@@ -6594,7 +6589,7 @@ msgstr "Wspomnij narzędzia, których użyłeś (konsola, DevTools, logi)"
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "Wspomnij o swoim stosie technologicznym (React/JS/HTML/CSS)"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "Menu"
@@ -6664,7 +6659,7 @@ msgstr "Minuty"
 msgid "Mission complete"
 msgstr "Misja zakończona"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "Przeglądarka mobilna"
@@ -7398,14 +7393,14 @@ msgstr ""
 "Otwórz profil kogoś i naciśnij przycisk „Zaproś do debaty”, aby rozpocząć "
 "debatę!"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr ""
 "Otwórz aplikację z ekranu głównego, aby uzyskać szybsze wrażenia "
 "przypominające korzystanie z aplikacji."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "Otwórz menu przeglądarki."
@@ -9288,7 +9283,7 @@ msgstr "Przesiewanie"
 msgid "Screening interview with AI recruiter"
 msgstr "Rozmowa wstępna z rekruterem AI"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "Przewiń w dół i dotknij \"Dodaj do ekranu głównego\"."
@@ -9515,7 +9510,6 @@ msgstr "Ustawienia"
 msgid "Sexual content"
 msgstr "Treści o charakterze seksualnym"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -10428,22 +10422,22 @@ msgstr "Rozmawiaj, ile chcesz — scenki, asystenci i prawdziwe rozmowy."
 msgid "Talking to a Doctor"
 msgstr "Rozmowa z lekarzem"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "Stuknij „Dodaj” w prawym górnym rogu."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "Stuknij \"Zainstaluj aplikację\" lub \"Dodaj do ekranu głównego\"."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Stuknij przycisk menu w prawym górnym rogu Chrome."
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "Naciśnij przycisk Udostępnij na dole Safari."
@@ -13072,6 +13066,16 @@ msgstr "{winnerName} wygrywa!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "Ekran główny"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "Zainstaluj {appName}"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91

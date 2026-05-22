@@ -375,7 +375,7 @@ msgstr "あなたが返金を希望する理由をいくつか追加してくだ
 msgid "Add Text Answer"
 msgstr "テキストで回答を追加"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -733,7 +733,7 @@ msgstr "解析中..."
 msgid "and"
 msgstr "そして"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "Android"
@@ -1850,7 +1850,7 @@ msgstr "クレジットカードを確認する"
 msgid "Confirm payment"
 msgstr "支払いを確認する"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "インストールを確認する。"
@@ -3861,7 +3861,7 @@ msgstr "FluencyPal – あなたのAI英会話パートナー"
 msgid "Focus on shipping reliable services"
 msgstr "信頼性の高いサービスの提供に注力する"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "プロンプトに従って、{appName} をホーム画面に追加してください。"
@@ -4708,6 +4708,11 @@ msgid ""
 "languages. You can too, by the way."
 msgstr "こんにちは。私の名前はアレックスです。私は英語やその他の言語を練習するためにこのサイトを作りました。ちなみに、あなたもできますよ。"
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "隠す"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -4740,11 +4745,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "ホーム"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "ホーム画面"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5326,7 +5326,7 @@ msgstr "ブレイン接続を開始"
 msgid "Inspired by current events"
 msgstr "現在の出来事に触発されて"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "アプリをインストール"
@@ -5341,12 +5341,7 @@ msgstr "インストール完了"
 msgid "Install languages into my brain"
 msgstr "私の脳に言語をインストールする"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "{appName}をインストール"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "携帯電話に{appName}をインストールしてください"
@@ -5450,7 +5445,7 @@ msgstr "バックエンドエンジニアとして自己紹介してください
 msgid "Invite Link Sent to:"
 msgstr "招待リンク送信先："
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6076,7 +6071,7 @@ msgstr "ログアウト"
 msgid "Longer words and richer expressions"
 msgstr "長い言葉と豊かな表現"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "「アプリをインストール」または「ホーム画面に追加」を探す。"
@@ -6227,7 +6222,7 @@ msgstr "使用したツールを述べてください（コンソール、DevToo
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "あなたの技術スタックを記載してください (React/JS/HTML/CSS)"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "メニュー"
@@ -6292,7 +6287,7 @@ msgstr "分"
 msgid "Mission complete"
 msgstr "ミッション完了"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "モバイルブラウザ"
@@ -6989,12 +6984,12 @@ msgid ""
 "debate!"
 msgstr "他の人のプロフィールを開き、「ディベートに招待」ボタンを押してディベートを開始してください！"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr "ホームスクリーンからアプリを開いて、より速く、アプリのような体験をお試しください。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "ブラウザメニューを開いてください。"
@@ -8788,7 +8783,7 @@ msgstr "スクリーニング"
 msgid "Screening interview with AI recruiter"
 msgstr "AIリクルーターとのスクリーニングインタビュー"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "下にスクロールして「ホーム画面に追加」をタップしてください。"
@@ -9013,7 +9008,6 @@ msgstr ""
 msgid "Sexual content"
 msgstr "性的内容"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -9887,22 +9881,22 @@ msgstr "話したいだけ話そう — ロールプレイ、アシスタント�
 msgid "Talking to a Doctor"
 msgstr "医者との会話"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "右上隅の「追加」をタップします。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "「アプリをインストール」または「ホーム画面に追加」をタップしてください。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome の右上隅にあるメニューボタンをタップします。"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "サファリの下部にある共有ボタンをタップしてください。"
@@ -12360,6 +12354,16 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "ホーム画面"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "{appName}をインストール"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91

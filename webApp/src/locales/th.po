@@ -388,7 +388,7 @@ msgstr "เพิ่มข้อมูลเกี่ยวกับสาเห
 msgid "Add Text Answer"
 msgstr "เพิ่มคำตอบเป็นข้อความ"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:98
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Add the app to your home screen for quick access. Instructions for "
@@ -763,7 +763,7 @@ msgstr "กำลังวิเคราะห์..."
 msgid "and"
 msgstr "และ"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:79
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:139
 #. js-lingui-explicit-id
 msgid "Android"
 msgstr "Android"
@@ -1906,7 +1906,7 @@ msgstr "ยืนยันบัตรเครดิต"
 msgid "Confirm payment"
 msgstr "ยืนยันการชำระเงิน"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:65
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:118
 #. js-lingui-explicit-id
 msgid "Confirm the installation."
 msgstr "ยืนยันการติดตั้ง"
@@ -4069,7 +4069,7 @@ msgstr "FluencyPal – คู่สนทนาภาษาอังกฤษ AI
 msgid "Focus on shipping reliable services"
 msgstr "มุ่งเน้นการส่งมอบบริการที่เชื่อถือได้"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:71
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:130
 #. js-lingui-explicit-id
 msgid "Follow the prompts to add {appName} to your home screen."
 msgstr "ทำตามคำแนะนำเพื่อเพิ่ม {appName} ไปยังหน้าจอหลักของคุณ"
@@ -4978,6 +4978,11 @@ msgstr ""
 "ผม/ดิฉันสร้างเว็บไซต์นี้เพื่อฝึกฝนภาษาอังกฤษและภาษาอื่นๆ "
 "คุณก็สามารถทำได้เช่นกัน"
 
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
+#. js-lingui-explicit-id
+msgid "Hide"
+msgstr "ซ่อน"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
 msgid "Highlight your frontend experience"
@@ -5008,11 +5013,6 @@ msgstr "คำแนะนำเพื่อเพิ่มความมั่
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "หน้าแรก"
-
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
-#. js-lingui-explicit-id
-msgid "Home screen"
-msgstr "หน้าหลัก"
 
 #: src/features/RolePlay/rolePlayData.tsx:869
 #. js-lingui-explicit-id
@@ -5649,7 +5649,7 @@ msgstr "เริ่มต้นการเชื่อมต่อสมอง
 msgid "Inspired by current events"
 msgstr "ได้รับแรงบันดาลใจจากเหตุการณ์ปัจจุบัน"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:93
+#: src/features/InstallApp/InstallAppInstruction.tsx:99
 #. js-lingui-explicit-id
 msgid "Install App"
 msgstr "ติดตั้งแอป"
@@ -5664,12 +5664,7 @@ msgstr "การติดตั้งเสร็จสมบูรณ์"
 msgid "Install languages into my brain"
 msgstr "ติดตั้งภาษาลงในสมองของฉัน"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
-#. js-lingui-explicit-id
-msgid "Install {appName}"
-msgstr "ติดตั้ง {appName}"
-
-#: src/features/InstallApp/InstallAppInstruction.tsx:80
+#: src/features/InstallApp/InstallAppInstruction.tsx:85
 #. js-lingui-explicit-id
 msgid "Install {appName} on your phone"
 msgstr "ติดตั้ง {appName} บนโทรศัพท์ของคุณ"
@@ -5773,7 +5768,7 @@ msgstr "แนะนำตัวเองว่าเป็นวิศวกร
 msgid "Invite Link Sent to:"
 msgstr "ลิงก์เชิญถูกส่งไปยัง:"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:77
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:137
 #. js-lingui-explicit-id
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
@@ -6415,7 +6410,7 @@ msgstr "ออกจากระบบ"
 msgid "Longer words and richer expressions"
 msgstr "คำที่ยาวขึ้นและสำนวนที่หลากหลายยิ่งขึ้น"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:70
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Look for \"Install app\" or \"Add to Home screen\"."
 msgstr "มองหา \"ติดตั้งแอป\" หรือ \"เพิ่มไปที่หน้าจอหลัก\""
@@ -6568,7 +6563,7 @@ msgstr "ระบุเครื่องมือที่คุณใช้ (�
 msgid "Mention your tech stack (React/JS/HTML/CSS)"
 msgstr "ระบุเทคโนโลยีที่คุณใช้ (React/JS/HTML/CSS)"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:119
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:110
 #. js-lingui-explicit-id
 msgid "Menu"
 msgstr "เมนู"
@@ -6636,7 +6631,7 @@ msgstr "นาที"
 msgid "Mission complete"
 msgstr "ภารกิจเสร็จสิ้น"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:80
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
 msgid "Mobile browser"
 msgstr "เบราว์เซอร์บนมือถือ"
@@ -7355,12 +7350,12 @@ msgid ""
 "debate!"
 msgstr "เปิดโปรไฟล์ของใครสักคนและกดปุ่ม \"เชิญเข้าร่วมดีเบต\" เพื่อเริ่มการโต้วาที!"
 
-#: src/features/InstallApp/InstallAppInstruction.tsx:89
+#: src/features/InstallApp/InstallAppInstruction.tsx:94
 #. js-lingui-explicit-id
 msgid "Open the app from your home screen for a faster, app-like experience."
 msgstr "เปิดแอปจากหน้าจอหลักของคุณเพื่อสัมผัสประสบการณ์ที่เร็วขึ้นเสมือนแอป"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:69
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:124
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
 msgstr "เปิดเมนูเบราว์เซอร์ของคุณ"
@@ -9212,7 +9207,7 @@ msgstr "การคัดกรอง"
 msgid "Screening interview with AI recruiter"
 msgstr "การสัมภาษณ์คัดกรองกับผู้สรรหา AI"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:58
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:95
 #. js-lingui-explicit-id
 msgid "Scroll down and tap \"Add to Home Screen\"."
 msgstr "เลื่อนลงและแตะ \"เพิ่มไปยังหน้าจอหลัก\""
@@ -9441,7 +9436,6 @@ msgstr "การตั้งค่า"
 msgid "Sexual content"
 msgstr "เนื้อหาเกี่ยวกับเรื่องเพศ"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:114
 #: src/features/Reader/components/Cards.tsx:229
 #: src/features/Reader/components/ShareBookModal.tsx:239
 #. js-lingui-explicit-id
@@ -10349,22 +10343,22 @@ msgstr "พูดเท่าที่คุณต้องการ — บท�
 msgid "Talking to a Doctor"
 msgstr "พูดคุยกับแพทย์"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:59
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
 msgstr "แตะ \"เพิ่ม\" ที่มุมขวาบน"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:64
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:115
 #. js-lingui-explicit-id
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "แตะ \"ติดตั้งแอป\" หรือ \"เพิ่มไปยังหน้าจอหลัก\""
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:63
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "แตะที่ปุ่มเมนูด้านขวาบนของ Chrome"
 
-#: src/features/InstallApp/InstallAppInstructionModal.tsx:57
+#: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
 msgid "Tap the Share button at the bottom of Safari."
 msgstr "แตะปุ่มแชร์ที่ด้านล่างของ Safari."
@@ -12968,6 +12962,16 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:124
+#. js-lingui-explicit-id
+#~ msgid "Home screen"
+#~ msgstr "หน้าหลัก"
+
+#: src/features/InstallApp/InstallAppInstructionModal.tsx:95
+#. js-lingui-explicit-id
+#~ msgid "Install {appName}"
+#~ msgstr "ติดตั้ง {appName}"
 
 #: src/features/News/NewsDashboardCard.tsx:82
 #: src/features/News/NewsDashboardCard.tsx:91
