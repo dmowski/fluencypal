@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Add instruction on how to give mic access
+
+## Add instruction on how to install the app
+
 ## Approve to use the app (Community)
 
 ## Reader: Instead of slide: use + - buttons
