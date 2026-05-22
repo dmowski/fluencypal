@@ -2,7 +2,6 @@
 
 import { useLingui } from '@lingui/react';
 import { Button, Stack, Typography } from '@mui/material';
-import { Smartphone } from 'lucide-react';
 import { useState } from 'react';
 
 import { appName } from '../SEO/appInfo';
