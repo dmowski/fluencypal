@@ -1,5 +1,17 @@
 # Live document with short/long term ideas
 
+## Reader. Speaking
+
+Stop speaking voice over when the user removed text selection.
+
+## Reader: Share the book with others
+
+Check how it works
+
+## Alias: remove from landing page
+
+Move to a separate landing?
+
 ## Add instruction on how to give mic access
 
 ## Add instruction on how to install the app
