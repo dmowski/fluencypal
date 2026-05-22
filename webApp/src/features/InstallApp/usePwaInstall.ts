@@ -9,6 +9,7 @@ import {
   isPwaInstalled,
   shouldShowInstallAppCard,
 } from './installAppEnvironment';
+import { hideInstallAppInstructionForever } from './installAppStorage';
 import type { BeforeInstallPromptEvent, MobilePlatform } from './types';
 
 export const usePwaInstall = () => {
@@ -62,6 +63,11 @@ export const usePwaInstall = () => {
     return false;
   }, [deferredPrompt]);
 
+  const dismissForever = useCallback(() => {
+    hideInstallAppInstructionForever();
+    setShouldShowCard(false);
+  }, []);
+
   return {
     shouldShowCard,
     platform,
@@ -70,5 +76,6 @@ export const usePwaInstall = () => {
     isMobileInstallTarget: isMobileInstallTarget(),
     isPwaInstalled: isPwaInstalled(),
     promptInstall,
+    dismissForever,
   };
 };

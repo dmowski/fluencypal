@@ -1,3 +1,4 @@
+import { isInstallAppInstructionHiddenForever } from './installAppStorage';
 import type { MobilePlatform } from './types';
 
 const MOBILE_LAYOUT_WIDTH_THRESHOLD = 1024;
@@ -55,6 +56,10 @@ export const getMobilePlatform = (): MobilePlatform => {
 };
 
 export const shouldShowInstallAppCard = (): boolean => {
+  if (isInstallAppInstructionHiddenForever()) {
+    return false;
+  }
+
   if (isPwaInstalled()) {
     return false;
   }

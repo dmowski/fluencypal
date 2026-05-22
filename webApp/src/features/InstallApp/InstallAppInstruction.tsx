@@ -1,7 +1,7 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { Smartphone } from 'lucide-react';
 import { useState } from 'react';
 
@@ -118,7 +118,29 @@ export const InstallAppInstruction = () => {
             />
           </Stack>
 
-          {isExpanded ? <InstallAppInstructionSteps platform={install.platform} /> : null}
+          {isExpanded ? (
+            <>
+              <InstallAppInstructionSteps platform={install.platform} />
+              <Button
+                data-testid="install-app-hide-forever"
+                onClick={install.dismissForever}
+                sx={{
+                  alignSelf: 'center',
+                  marginTop: '4px',
+                  color: 'rgba(255, 255, 255, 0.55)',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  ':hover': {
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                  },
+                }}
+              >
+                {i18n._('Hide forever')}
+              </Button>
+            </>
+          ) : null}
         </Stack>
       </GradientCard>
     </Stack>
