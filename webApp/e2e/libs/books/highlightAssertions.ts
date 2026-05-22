@@ -38,6 +38,11 @@ export const assertHighlightPopoverHidden = async (page: Page) => {
   await expect(getReaderHighlightPopoverLocator(page)).not.toBeVisible();
 };
 
+export const dismissHighlightPopoverByClickingOutside = async (page: Page) => {
+  await page.mouse.click(20, 20);
+  await assertHighlightPopoverHidden(page);
+};
+
 export const assertWordHighlightedYellow = async (page: Page, wordText: RegExp | string) => {
   const pattern = typeof wordText === 'string' ? new RegExp(wordText, 'i') : wordText;
 

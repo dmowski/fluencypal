@@ -294,8 +294,6 @@ const ReaderParagraphBase = ({
     const rawWordStart = tokenSourceStart + coreSelectionMeta.startOffset;
     const rawWordEnd = tokenSourceStart + coreSelectionMeta.endOffsetExclusive;
 
-    playText(clickedWordText);
-
     // Show highlight popover by creating a selection for this word
     e.preventDefault();
     e.stopPropagation();
@@ -351,6 +349,8 @@ const ReaderParagraphBase = ({
       range: reconciled,
       fallbackElement: wordElementForFallback,
     });
+
+    playText(clickedWordText);
   };
 
   const renderSpace = (word: string, wordIndex: number) => {

@@ -1,12 +1,15 @@
 import { expect, test } from '@playwright/test';
 import {
   assertCriticizingWordWasSpoken,
+  assertHighlightPopoverHidden,
   assertHighlightPopoverVisible,
   assertCurrentSelectionText,
   assertSelectionTextPersists,
+  assertSpeechWasCancelled,
   assertVoicePreviewWasPlayed,
   clickCriticizingWord,
   closeSettingsPopover,
+  dismissHighlightPopoverByClickingOutside,
   enableVoiceOverSelectedText,
   ensureReaderTextVisible,
   getPlayTextButtonLocator,
@@ -111,4 +114,43 @@ test('play icon button in highlight popover speaks selected word without voice-o
   await playButton.click();
 
   await assertCriticizingWordWasSpoken(page);
+});
+
+test('voice over stops when selection is dismissed by clicking outside', async ({ page }) => {
+  await installSpeechMock(page, { autoCompleteUtterance: false });
+  await openSeededGatsbyBook(page);
+
+  await openSettingsPopover(page);
+  await page.getByRole('combobox', { name: 'Voice' }).click();
+  await page.getByRole('option', { name: 'Mock English Voice' }).click();
+  await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
+  await enableVoiceOverSelectedText(page);
+  await closeSettingsPopover(page);
+
+  await clickCriticizingWord(page);
+  await assertCriticizingWordWasSpoken(page);
+  await assertHighlightPopoverVisible(page);
+
+  await dismissHighlightPopoverByClickingOutside(page);
+  await assertSpeechWasCancelled(page);
+});
+
+test('voice over stops when re-clicking the selected word clears selection', async ({ page }) => {
+  await installSpeechMock(page, { autoCompleteUtterance: false });
+  await openSeededGatsbyBook(page);
+
+  await openSettingsPopover(page);
+  await page.getByRole('combobox', { name: 'Voice' }).click();
+  await page.getByRole('option', { name: 'Mock English Voice' }).click();
+  await expect(page.locator('div[id^="menu-"][role="presentation"]')).not.toBeVisible();
+  await enableVoiceOverSelectedText(page);
+  await closeSettingsPopover(page);
+
+  await clickCriticizingWord(page);
+  await assertCriticizingWordWasSpoken(page);
+  await assertHighlightPopoverVisible(page);
+
+  await clickCriticizingWord(page);
+  await assertHighlightPopoverHidden(page);
+  await assertSpeechWasCancelled(page);
 });

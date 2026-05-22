@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Book, BookChapterNavigationItem, HighlightedText, ReaderSettings } from '../model/types';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ReaderHeader } from './ReaderHeader';
 import { PaginationPanel } from './PaginationButtons';
 import { ReaderParagraph } from './Paragraph/ReaderParagraph';
@@ -198,6 +198,8 @@ export const Reader = ({ data }: { data: Book }) => {
   // when the user toggles voice/translate-related settings.
   const speechPlayRef = useRef(speech.play);
   speechPlayRef.current = speech.play;
+  const speechStopRef = useRef(speech.stop);
+  speechStopRef.current = speech.stop;
   const voiceOverSelectedTextRef = useRef(readerSettings.voiceOverSelectedText);
   voiceOverSelectedTextRef.current = readerSettings.voiceOverSelectedText;
   const {
@@ -299,6 +301,14 @@ export const Reader = ({ data }: { data: Book }) => {
     if (!voiceOverSelectedTextRef.current) return;
     speechPlayRef.current(text.trim());
   }, []);
+
+  const hadActivePopoverRef = useRef(false);
+  useEffect(() => {
+    if (hadActivePopoverRef.current && !activePopover) {
+      speechStopRef.current();
+    }
+    hadActivePopoverRef.current = Boolean(activePopover);
+  }, [activePopover]);
 
   const handleOpenReaderSettings = useCallback(() => {
     bookInfoButtonRef.current?.openSettings();

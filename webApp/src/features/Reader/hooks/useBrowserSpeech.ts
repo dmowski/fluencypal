@@ -58,6 +58,7 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
     if (!isSupported) return;
 
     window.speechSynthesis.cancel();
+    setIsPlaying(false);
   }, [isSupported]);
 
   const pause = useCallback(() => {

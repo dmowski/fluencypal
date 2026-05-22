@@ -1,9 +1,17 @@
 import { expect, Page } from '@playwright/test';
 import { SpokenWindow } from './shared';
 
-export const installSpeechMock = async (page: Page) => {
-  await page.addInitScript(() => {
+type SpeechMockOptions = {
+  autoCompleteUtterance?: boolean;
+};
+
+export const installSpeechMock = async (page: Page, options: SpeechMockOptions = {}) => {
+  const autoCompleteUtterance = options.autoCompleteUtterance ?? true;
+
+  await page.addInitScript(({ autoCompleteUtterance: shouldAutoComplete }) => {
     const spokenTexts: string[] = [];
+    let cancelCount = 0;
+    let activeUtterance: { onend?: (() => void) | null } | null = null;
 
     class MockUtterance {
       text: string;
@@ -31,14 +39,23 @@ export const installSpeechMock = async (page: Page) => {
 
     const speechSynthesisMock = {
       _listeners: new Map<string, Set<() => void>>(),
-      cancel: () => undefined,
+      cancel: () => {
+        cancelCount += 1;
+        activeUtterance = null;
+      },
       pause: () => undefined,
       resume: () => undefined,
       getVoices: () => voices,
       speak: (utterance: { text?: string; onend?: (() => void) | null }) => {
         spokenTexts.push((utterance.text || '').trim());
-        if (utterance.onend) {
-          setTimeout(() => utterance.onend?.(), 0);
+        activeUtterance = utterance;
+        if (shouldAutoComplete && utterance.onend) {
+          setTimeout(() => {
+            if (activeUtterance === utterance) {
+              utterance.onend?.();
+              activeUtterance = null;
+            }
+          }, 0);
         }
       },
       addEventListener: (eventName: string, listener: () => void) => {
@@ -69,7 +86,12 @@ export const installSpeechMock = async (page: Page) => {
       writable: true,
       value: spokenTexts,
     });
-  });
+
+    Object.defineProperty(window, '__speechCancelCount', {
+      configurable: true,
+      get: () => cancelCount,
+    });
+  }, { autoCompleteUtterance });
 };
 
 export const assertVoicePreviewWasPlayed = async (page: Page) => {
@@ -91,4 +113,15 @@ export const assertCriticizingWordWasSpoken = async (page: Page) => {
       }),
     )
     .toBeTruthy();
+};
+
+export const assertSpeechWasCancelled = async (page: Page) => {
+  await expect
+    .poll(async () =>
+      page.evaluate(() => {
+        const spokenWindow = window as SpokenWindow & { __speechCancelCount?: number };
+        return spokenWindow.__speechCancelCount ?? 0;
+      }),
+    )
+    .toBeGreaterThan(0);
 };
