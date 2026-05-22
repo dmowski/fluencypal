@@ -122,6 +122,6 @@ export const getCurrentIdToken = async (page: Page): Promise<string> => {
     if (!handle?.auth?.currentUser) {
       throw new Error('No signed-in user; call signInPracticeWithStepper first');
     }
-    return handle.auth.currentUser.getIdToken();
+    return handle.auth.currentUser.getIdToken(true);
   });
 };

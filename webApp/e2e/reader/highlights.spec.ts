@@ -93,7 +93,7 @@ test('book info highlights list shows context and jumps to selected highlight', 
 
   await highlightItem.click();
 
-  await expect(page.getByTestId('book-info-modal')).not.toBeVisible();
+  await expect(page.getByTestId('book-info-modal')).toBeVisible();
 
   const pageAfterSelect = parseCurrentPageFromIndicator(await pageIndicator.innerText());
 

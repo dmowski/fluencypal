@@ -69,10 +69,7 @@ type LayoutSettingRange = {
   step: number;
 };
 
-const clampLayoutSettingValue = (
-  value: number,
-  { min, max, step }: LayoutSettingRange,
-): number => {
+const clampLayoutSettingValue = (value: number, { min, max, step }: LayoutSettingRange): number => {
   const stepped = Math.round((value - min) / step) * step + min;
   return Math.max(min, Math.min(max, Number(stepped.toFixed(10))));
 };
