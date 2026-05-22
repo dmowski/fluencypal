@@ -98,7 +98,7 @@ const getStableMobileViewportState = ({
 
 export const READER_SETTINGS_RANGES = {
   fontSize: { min: 9, max: 45, step: 1 },
-  paragraphGap: { min: 0, max: 80, step: 1 },
+  paragraphGap: { min: 0, max: 80, step: 2 },
   lineHeight: { min: 1, max: 2.5, step: 0.05 },
 } as const;
 

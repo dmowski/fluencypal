@@ -1,12 +1,14 @@
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import {
   Button,
   Checkbox,
   FormControl,
   FormControlLabel,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
-  Slider,
   Stack,
   Typography,
 } from '@mui/material';
@@ -29,8 +31,8 @@ const PREVIEW_TEXT = 'This is a preview of the selected voice.';
  * The intentional debounce delay for non-layout settings writes.
  *
  * Checkboxes and selects use this delay so a single interaction does not spam
- * localStorage writes and context updates. Layout sliders (font size, gap,
- * line height) apply on thumb release instead — see useLayoutSliderSetting.
+ * localStorage writes and context updates. Layout steppers (font size, gap,
+ * line height) use a longer debounce — see LAYOUT_SETTING_APPLY_DELAY_MS.
  *
  * DO NOT remove or reduce this without profiling the render cost first.
  * NOTE: e2e tests that close the settings popover immediately after toggling
@@ -38,7 +40,11 @@ const PREVIEW_TEXT = 'This is a preview of the selected voice.';
  * enableVoiceOverSelectedText in e2e/libs/books/uiSettings.ts.
  */
 const SETTINGS_UPDATE_DELAY_MS = 350;
-const LAYOUT_SLIDER_FALLBACK_DELAY_MS = 600;
+/**
+ * Layout steppers recompute pagination on every persisted change. Debounce
+ * applies so rapid +/- clicks stay responsive; pending values flush on unmount.
+ */
+const LAYOUT_SETTING_APPLY_DELAY_MS = 3000;
 
 /**
  * Writes `localValue` to persistent storage after SETTINGS_UPDATE_DELAY_MS
@@ -57,18 +63,31 @@ function useDebouncedSetting<T>(
   }, [localValue, persistedValue, applyFn]);
 }
 
+type LayoutSettingRange = {
+  min: number;
+  max: number;
+  step: number;
+};
+
+const clampLayoutSettingValue = (
+  value: number,
+  { min, max, step }: LayoutSettingRange,
+): number => {
+  const stepped = Math.round((value - min) / step) * step + min;
+  return Math.max(min, Math.min(max, Number(stepped.toFixed(10))));
+};
+
 /**
- * Layout sliders (font size, paragraph gap, line height) recompute pagination
- * on every persisted change. Keep the thumb responsive with local state during
- * drag, apply on release, and flush any pending value when the panel closes.
+ * Layout steppers (font size, paragraph gap, line height) recompute pagination
+ * on every persisted change. Update local state immediately for responsive UI,
+ * debounce persistence, and flush any pending value when the panel closes.
  */
-function useLayoutSliderSetting(
+function useLayoutSetting(
   persistedValue: number,
   applyFn: (value: number) => void,
 ): {
   value: number;
   setValue: (nextValue: number) => void;
-  commitValue: (nextValue: number) => void;
 } {
   const [localValue, setLocalValue] = useState(persistedValue);
   const localValueRef = useRef(localValue);
@@ -83,7 +102,7 @@ function useLayoutSliderSetting(
 
   useEffect(() => {
     if (localValue === persistedValue) return;
-    const id = setTimeout(() => applyFn(localValue), LAYOUT_SLIDER_FALLBACK_DELAY_MS);
+    const id = setTimeout(() => applyFn(localValue), LAYOUT_SETTING_APPLY_DELAY_MS);
     return () => clearTimeout(id);
   }, [localValue, persistedValue, applyFn]);
 
@@ -95,20 +114,79 @@ function useLayoutSliderSetting(
     };
   }, [applyFn]);
 
-  const commitValue = useCallback(
-    (nextValue: number) => {
-      setLocalValue(nextValue);
-      applyFn(nextValue);
-    },
-    [applyFn],
-  );
+  const setValue = useCallback((nextValue: number) => {
+    setLocalValue(nextValue);
+  }, []);
 
   return {
     value: localValue,
-    setValue: setLocalValue,
-    commitValue,
+    setValue,
   };
 }
+
+type LayoutSettingStepperProps = {
+  label: string;
+  value: number;
+  range: LayoutSettingRange;
+  formatValue: (value: number) => string;
+  decreaseAriaLabel: string;
+  increaseAriaLabel: string;
+  onChange: (nextValue: number) => void;
+};
+
+const LayoutSettingStepper = ({
+  label,
+  value,
+  range,
+  formatValue,
+  decreaseAriaLabel,
+  increaseAriaLabel,
+  onChange,
+}: LayoutSettingStepperProps) => {
+  const canDecrease = value > range.min;
+  const canIncrease = value < range.max;
+
+  const handleDecrease = () => {
+    if (!canDecrease) return;
+    onChange(clampLayoutSettingValue(value - range.step, range));
+  };
+
+  const handleIncrease = () => {
+    if (!canIncrease) return;
+    onChange(clampLayoutSettingValue(value + range.step, range));
+  };
+
+  return (
+    <Stack sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Typography variant="body2">{label}</Typography>
+      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '4px' }}>
+        <IconButton
+          size="small"
+          onClick={handleDecrease}
+          disabled={!canDecrease}
+          aria-label={decreaseAriaLabel}
+        >
+          <RemoveIcon fontSize="small" />
+        </IconButton>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ minWidth: '56px', textAlign: 'center' }}
+        >
+          {formatValue(value)}
+        </Typography>
+        <IconButton
+          size="small"
+          onClick={handleIncrease}
+          disabled={!canIncrease}
+          aria-label={increaseAriaLabel}
+        >
+          <AddIcon fontSize="small" />
+        </IconButton>
+      </Stack>
+    </Stack>
+  );
+};
 
 export const ReaderSettingsPanel = ({
   speech,
@@ -118,12 +196,12 @@ export const ReaderSettingsPanel = ({
   const { i18n } = useLingui();
   const readerSettings = useReaderSettings();
 
-  const fontSizeSetting = useLayoutSliderSetting(readerSettings.fontSize, readerSettings.setFontSize);
-  const paragraphGapSetting = useLayoutSliderSetting(
+  const fontSizeSetting = useLayoutSetting(readerSettings.fontSize, readerSettings.setFontSize);
+  const paragraphGapSetting = useLayoutSetting(
     readerSettings.paragraphGap,
     readerSettings.setParagraphGap,
   );
-  const lineHeightSetting = useLayoutSliderSetting(
+  const lineHeightSetting = useLayoutSetting(
     readerSettings.lineHeight,
     readerSettings.setLineHeight,
   );
@@ -310,71 +388,35 @@ export const ReaderSettingsPanel = ({
         />
       </Stack>
 
-      <Stack sx={{ gap: '8px' }}>
-        <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography variant="body2">{i18n._('Font size')}</Typography>
-          <Typography variant="body2" color="text.secondary">
-            {fontSizeSetting.value}px
-          </Typography>
-        </Stack>
-        <Slider
-          min={READER_SETTINGS_RANGES.fontSize.min}
-          max={READER_SETTINGS_RANGES.fontSize.max}
-          step={READER_SETTINGS_RANGES.fontSize.step}
-          value={fontSizeSetting.value}
-          onChange={(_event, value) =>
-            fontSizeSetting.setValue(Array.isArray(value) ? value[0] : value)
-          }
-          onChangeCommitted={(_event, value) =>
-            fontSizeSetting.commitValue(Array.isArray(value) ? value[0] : value)
-          }
-          valueLabelDisplay="auto"
-        />
-      </Stack>
+      <LayoutSettingStepper
+        label={i18n._('Font size')}
+        value={fontSizeSetting.value}
+        range={READER_SETTINGS_RANGES.fontSize}
+        formatValue={(value) => `${value}px`}
+        decreaseAriaLabel={i18n._('Decrease font size')}
+        increaseAriaLabel={i18n._('Increase font size')}
+        onChange={fontSizeSetting.setValue}
+      />
 
-      <Stack sx={{ gap: '8px' }}>
-        <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography variant="body2">{i18n._('Paragraph gap')}</Typography>
-          <Typography variant="body2" color="text.secondary">
-            {paragraphGapSetting.value}px
-          </Typography>
-        </Stack>
-        <Slider
-          min={READER_SETTINGS_RANGES.paragraphGap.min}
-          max={READER_SETTINGS_RANGES.paragraphGap.max}
-          step={READER_SETTINGS_RANGES.paragraphGap.step}
-          value={paragraphGapSetting.value}
-          onChange={(_event, value) =>
-            paragraphGapSetting.setValue(Array.isArray(value) ? value[0] : value)
-          }
-          onChangeCommitted={(_event, value) =>
-            paragraphGapSetting.commitValue(Array.isArray(value) ? value[0] : value)
-          }
-          valueLabelDisplay="auto"
-        />
-      </Stack>
+      <LayoutSettingStepper
+        label={i18n._('Paragraph gap')}
+        value={paragraphGapSetting.value}
+        range={READER_SETTINGS_RANGES.paragraphGap}
+        formatValue={(value) => `${value}px`}
+        decreaseAriaLabel={i18n._('Decrease paragraph gap')}
+        increaseAriaLabel={i18n._('Increase paragraph gap')}
+        onChange={paragraphGapSetting.setValue}
+      />
 
-      <Stack sx={{ gap: '8px' }}>
-        <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography variant="body2">{i18n._('Line height')}</Typography>
-          <Typography variant="body2" color="text.secondary">
-            {lineHeightSetting.value.toFixed(2)}
-          </Typography>
-        </Stack>
-        <Slider
-          min={READER_SETTINGS_RANGES.lineHeight.min}
-          max={READER_SETTINGS_RANGES.lineHeight.max}
-          step={READER_SETTINGS_RANGES.lineHeight.step}
-          value={lineHeightSetting.value}
-          onChange={(_event, value) =>
-            lineHeightSetting.setValue(Array.isArray(value) ? value[0] : value)
-          }
-          onChangeCommitted={(_event, value) =>
-            lineHeightSetting.commitValue(Array.isArray(value) ? value[0] : value)
-          }
-          valueLabelDisplay="auto"
-        />
-      </Stack>
+      <LayoutSettingStepper
+        label={i18n._('Line height')}
+        value={lineHeightSetting.value}
+        range={READER_SETTINGS_RANGES.lineHeight}
+        formatValue={(value) => value.toFixed(2)}
+        decreaseAriaLabel={i18n._('Decrease line height')}
+        increaseAriaLabel={i18n._('Increase line height')}
+        onChange={lineHeightSetting.setValue}
+      />
 
       <Button variant="outlined" color="inherit" onClick={onReset} sx={{ alignSelf: 'flex-start' }}>
         {i18n._('Reset to default')}

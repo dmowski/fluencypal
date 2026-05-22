@@ -133,7 +133,7 @@ const DevPanelContent = () => {
               value={`${readerSettings.paragraphGap}px`}
               min={0}
               max={80}
-              step={1}
+              step={2}
               sliderValue={readerSettings.paragraphGap}
               onChange={(value) => readerSettings.setParagraphGap(value)}
             />

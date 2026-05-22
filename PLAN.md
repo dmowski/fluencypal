@@ -1,10 +1,5 @@
 # Live document with short/long term ideas
 
-## Reader: Instead of slide: use + - buttons
-
-Settings menu. Reader info: webApp/src/features/Reader/AGENTS.md
-webApp/src/features/Reader/components/ReaderSettingsPanel.tsx
-
 ## Reader: Highlights - On hover, show full paragraph as preview
 
 On desktop only. Preview panel is fixed panel on right side.
