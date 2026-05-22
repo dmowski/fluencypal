@@ -10,8 +10,6 @@ webApp/src/features/Reader/components/ReaderSettingsPanel.tsx
 On desktop only. Preview panel is fixed panel on right side.
 Reader info: webApp/src/features/Reader/AGENTS.md
 
-- When open highlight menu, scroll it to down
-
 ## Reader: Share the book with others
 
 Check how it works
