@@ -88,7 +88,7 @@ export const InstallAppInstructionSteps = ({ platform }: InstallAppInstructionSt
 
   const iosSteps: InstructionStepContent[] = [
     {
-      title: i18n._('Click the Share button next to fluencypal.com in your browser.'),
+      title: i18n._('Click the Share button next to app.fluencypal.com in your browser.'),
       imageUrl: iosInstallInstructionImages[0],
     },
     {
