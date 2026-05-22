@@ -88,7 +88,7 @@ export const InstallAppInstructionSteps = ({ platform }: InstallAppInstructionSt
 
   const iosSteps: InstructionStepContent[] = [
     {
-      title: i18n._('Tap the Share button at the bottom of Safari.'),
+      title: i18n._('Click the Share button next to fluencypal.com in your browser.'),
       imageUrl: iosInstallInstructionImages[0],
     },
     {
@@ -105,7 +105,10 @@ export const InstallAppInstructionSteps = ({ platform }: InstallAppInstructionSt
     {
       title: i18n._('Tap the menu button in the top-right corner of Chrome.'),
       icon: (
-        <Stack direction="row" sx={{ alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)' }}>
+        <Stack
+          direction="row"
+          sx={{ alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)' }}
+        >
           <MoreVertical size={18} />
           <Typography variant="caption">{i18n._('Menu')}</Typography>
         </Stack>
@@ -150,9 +153,12 @@ export const InstallAppInstructionSteps = ({ platform }: InstallAppInstructionSt
       }}
     >
       <Typography sx={{ color: 'rgba(255, 255, 255, 0.72)', lineHeight: 1.4 }}>
-        {i18n._('Add the app to your home screen for quick access. Instructions for {platformLabel}:', {
-          platformLabel,
-        })}
+        {i18n._(
+          'Add the app to your home screen for quick access. Instructions for {platformLabel}:',
+          {
+            platformLabel,
+          },
+        )}
       </Typography>
 
       <Stack sx={{ gap: '20px' }}>
