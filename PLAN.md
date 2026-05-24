@@ -1,8 +1,6 @@
 # Live document with short/long term ideas
 
-## Reader: long italic text
-
-webApp/src/features/Reader/components/Paragraph/ReaderParagraph.browser.test.tsx
+## App: Community call
 
 ## Microphone access: Instruction on fail
 
@@ -12,21 +10,17 @@ webApp/src/features/Reader/components/Paragraph/ReaderParagraph.browser.test.tsx
 
 - How to setup custom realtime communicator
 
-## App: Community call
-
 ## Reader: Share the book with others
 
 Check how it works
 
-## Approve to use the app (Community)
-
 ## Reader: Search feature
-
-=================================
 
 Reader info: webApp/src/features/Reader/AGENTS.md
 
 =================================
+
+## Approve to use the app (Community)
 
 ## SEO, GEO
 
