@@ -1,5 +1,14 @@
 # Live document with short/long term ideas
 
+## Alias game: create better version
+
+- Write proper e2e tests.
+- Add anonymized analytics
+- Create separate landing page
+- PWA for it?
+- Ad for ai english
+- Analytics on landing page
+
 ## App: Community call
 
 ## Microphone access: Instruction on fail
