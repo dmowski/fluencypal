@@ -19,6 +19,13 @@ export default defineConfig({
       provider: playwright(),
       headless: true,
       instances: [{ browser: 'chromium' }],
+      expect: {
+        toMatchScreenshot: {
+          // Committed baselines live next to the test file (not gitignored __screenshots__).
+          resolveScreenshotPath: ({ arg, ext, root, testFileDirectory }) =>
+            path.join(root, testFileDirectory, 'screenshots', `${arg}${ext}`),
+        },
+      },
     },
   },
 });

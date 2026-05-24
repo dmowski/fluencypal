@@ -1,7 +1,13 @@
 import { expect, test } from 'vitest';
 import { render } from 'vitest-browser-react';
-import { userEvent } from 'vitest/browser';
+import { page, userEvent } from 'vitest/browser';
 import { ReaderParagraph, type ReaderParagraphSelectionPayload } from './ReaderParagraph';
+import { ReaderSettings } from '../../model/types';
+import {
+  splitIntoPages,
+  splitTextIntoParagraphs,
+  type PagedParagraph,
+} from '../../utils/splitParagraphsIntoPages';
 
 // Source text (words.join(' ')): '- **Finally, experiment.** Tell a joke.'
 //
@@ -320,4 +326,97 @@ test('REPRO long-li paragraph – clicking "Tell" emits selection at source 27�
     'startIndex 13 would highlight "expe" (the bug); 27 is the correct "Tell" position',
   ).toBe(27);
   expect(selection.endIndex).toBe(30);
+});
+
+// ---------------------------------------------------------------------------
+// Italic span split across pages: documents broken markdown at page breaks
+// (literal "\_" visible when `_italic_` is split mid-span).
+// Reproduces DevPanel Split tab defaults.
+// ---------------------------------------------------------------------------
+
+const SPLIT_ITALIC_TEST_TEXT =
+  'Force a page break across the italic span normal normal normal text _long paragraph italic text_ and more words to force a page break across the italic span';
+
+const SPLIT_ITALIC_PAGINATION_SETTINGS: ReaderSettings = {
+  language: 'en-US',
+  selectedVoiceURI: null,
+  translateToLanguage: null,
+  fontSize: 36,
+  lineHeight: 1.5,
+  justifyText: false,
+  translateOnHover: false,
+  voiceOverSelectedText: false,
+  contentWidth: 400,
+  contentHeight: 200,
+  paragraphGap: 20,
+  columns: 1,
+  columnGap: 40,
+};
+
+const splitItalicTestPages = () =>
+  splitIntoPages({
+    bookParagraphs: splitTextIntoParagraphs(SPLIT_ITALIC_TEST_TEXT),
+    settings: SPLIT_ITALIC_PAGINATION_SETTINGS,
+  });
+
+const SplitItalicPagesFixture = ({ pages }: { pages: PagedParagraph[][] }) => (
+  <div
+    data-testid="italic-split-pages-fixture"
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '24px',
+      padding: '8px',
+      backgroundColor: '#fff',
+    }}
+  >
+    {pages.map((pageParagraphs, pageIndex) => (
+      <div
+        key={pageIndex}
+        data-testid={`split-page-${pageIndex}`}
+        style={{
+          width: `${SPLIT_ITALIC_PAGINATION_SETTINGS.contentWidth}px`,
+          height: `${SPLIT_ITALIC_PAGINATION_SETTINGS.contentHeight}px`,
+          overflow: 'hidden',
+          backgroundColor: '#F4E1C6',
+          color: '#000',
+          padding: '8px 0',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: `${SPLIT_ITALIC_PAGINATION_SETTINGS.paragraphGap}px`,
+        }}
+      >
+        {pageParagraphs.map((paragraph) => (
+          <ReaderParagraph
+            key={`${paragraph.sourceParagraphIndex}-${paragraph.sourceStartCharOffset}`}
+            paragraphIndex={paragraph.sourceParagraphIndex}
+            paragraphStartCharOffset={paragraph.sourceStartCharOffset}
+            words={paragraph.words}
+            fontSize={SPLIT_ITALIC_PAGINATION_SETTINGS.fontSize}
+            lineHeight={SPLIT_ITALIC_PAGINATION_SETTINGS.lineHeight}
+            justifyText={SPLIT_ITALIC_PAGINATION_SETTINGS.justifyText}
+            playText={() => {}}
+            onSelection={() => {}}
+            highlights={[]}
+          />
+        ))}
+      </div>
+    ))}
+  </div>
+);
+
+test('italic paragraph split – pagination produces exactly two pages', () => {
+  const pages = splitItalicTestPages();
+  expect(pages.length).toBe(2);
+});
+
+test('italic paragraph split – screenshot captures broken markdown at page break', async () => {
+  const pages = splitItalicTestPages();
+  expect(pages.length).toBe(2);
+
+  await render(<SplitItalicPagesFixture pages={pages} />);
+
+  await expect
+    .element(page.getByTestId('italic-split-pages-fixture'))
+    .toMatchScreenshot('italic-split-across-pages');
 });
