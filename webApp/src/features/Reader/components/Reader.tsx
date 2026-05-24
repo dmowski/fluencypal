@@ -483,6 +483,8 @@ export const Reader = ({ data }: { data: Book }) => {
                       paragraphIndex={index}
                       paragraphStartCharOffset={paragraph.sourceStartCharOffset}
                       words={paragraph.words}
+                      markdownPrefix={paragraph.markdownPrefix}
+                      markdownSuffix={paragraph.markdownSuffix}
                       imagesByHref={data.imagesByHref}
                       imageAspectRatioByHref={data.imageAspectRatioByHref}
                       maxImageHeight={Math.max(0, Math.floor(readerSettings.contentHeight * 0.9))}

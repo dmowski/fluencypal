@@ -303,6 +303,8 @@ const SplitTab = () => {
                   paragraphIndex={paragraph.sourceParagraphIndex}
                   paragraphStartCharOffset={paragraph.sourceStartCharOffset}
                   words={paragraph.words}
+                  markdownPrefix={paragraph.markdownPrefix}
+                  markdownSuffix={paragraph.markdownSuffix}
                   fontSize={readerSettings.fontSize}
                   lineHeight={readerSettings.lineHeight}
                   justifyText={readerSettings.justifyText}

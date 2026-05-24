@@ -64,6 +64,15 @@ interface ReaderParagraphProps {
   onInternalChapterLinkSelect?: (targetPage: number) => void;
   resizeAnchorWordStartCharOffset?: number | null;
   isResizeAnchorHighlightVisible?: boolean;
+  /**
+   * Markdown delimiter(s) injected ONLY at the markdown render layer to
+   * re-balance an emphasis span that the paginator split across a page
+   * boundary. NEVER include these characters in `words`/`paragraphText` —
+   * the token map and selection char offsets must continue to reference the
+   * original source text.
+   */
+  markdownPrefix?: string;
+  markdownSuffix?: string;
 }
 
 const ReaderParagraphBase = ({
@@ -87,8 +96,11 @@ const ReaderParagraphBase = ({
   onInternalChapterLinkSelect,
   resizeAnchorWordStartCharOffset,
   isResizeAnchorHighlightVisible,
+  markdownPrefix,
+  markdownSuffix,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
+  const markdownSourceText = `${markdownPrefix ?? ''}${paragraphText}${markdownSuffix ?? ''}`;
   // Render counter exposed to e2e via `data-reader-paragraph-render-count` so
   // tests can assert that toggling non-layout settings (language, voice,
   // translate target, translate-on-hover, voice-over-selected-text) does not
@@ -105,7 +117,9 @@ const ReaderParagraphBase = ({
     );
   const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
   const hasBlockMarkdown = hasBlockMarkdownFormatting(paragraphText);
-  const shouldRenderMarkdown = hasInlineMarkdownFormatting || hasBlockMarkdown;
+  const hasCrossPageEmphasisWrappers = Boolean(markdownPrefix) || Boolean(markdownSuffix);
+  const shouldRenderMarkdown =
+    hasInlineMarkdownFormatting || hasBlockMarkdown || hasCrossPageEmphasisWrappers;
   const paragraphTextIndent = getReaderParagraphTextIndent({
     paragraphText,
     isParagraphStart,
@@ -541,7 +555,7 @@ const ReaderParagraphBase = ({
           }}
           renderSpace={renderSpace}
         >
-          {paragraphText}
+          {markdownSourceText}
         </ReaderMarkdown>
       </Typography>
     </>

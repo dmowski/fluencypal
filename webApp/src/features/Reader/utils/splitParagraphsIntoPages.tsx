@@ -1,12 +1,21 @@
 import { getHash } from '@/libs/hash';
 import { splitWords } from '../../Sentence/TextConstructor/textConstructor.utils';
 import { BookParagraph, ReaderSettings } from '../model/types';
+import { getMarkdownWrappersForChunk } from './balanceMarkdownAcrossSplit';
 import { isFitInPage, MeasuredParagraph } from './isFitInPage';
 
 export interface PagedParagraph {
   words: BookParagraph;
   sourceParagraphIndex: number;
   sourceStartCharOffset: number;
+  /**
+   * Markdown delimiter(s) injected at render time to re-balance an emphasis
+   * span that was split across a page boundary. Empty when no rebalancing is
+   * needed. NEVER include these characters in `words` — they exist only for
+   * markdown-to-jsx and must not shift selection char offsets.
+   */
+  markdownPrefix?: string;
+  markdownSuffix?: string;
 }
 
 export interface SplitIntoPagesData {
@@ -106,7 +115,39 @@ export const splitIntoPages = ({
 
   const markdownImagePattern = /!\[.*?\]\(.*?\)/;
 
+  const pushChunkWithRebalancedMarkdown = ({
+    fittedWords,
+    sourceParagraphIndex,
+    chunkStartCharOffset,
+    originalParagraphText,
+  }: {
+    fittedWords: string[];
+    sourceParagraphIndex: number;
+    chunkStartCharOffset: number;
+    originalParagraphText: string;
+  }) => {
+    const fittedParagraphText = fittedWords.join(' ');
+    const { markdownPrefix, markdownSuffix } = getMarkdownWrappersForChunk({
+      originalParagraphText,
+      chunkStart: chunkStartCharOffset,
+      chunkEndExclusive: chunkStartCharOffset + fittedParagraphText.length,
+    });
+
+    currentPage.push({
+      words: fittedWords,
+      sourceParagraphIndex,
+      sourceStartCharOffset: chunkStartCharOffset,
+      ...(markdownPrefix ? { markdownPrefix } : {}),
+      ...(markdownSuffix ? { markdownSuffix } : {}),
+    });
+    currentPageText.push({
+      text: fittedParagraphText,
+      sourceStartCharOffset: chunkStartCharOffset,
+    });
+  };
+
   bookParagraphs.forEach((paragraph, sourceParagraphIndex) => {
+    const originalParagraphText = paragraph.join(' ');
     if (sourceParagraphIndex > 0 && chapterStartParagraphSet.has(sourceParagraphIndex)) {
       pushCurrentPage();
     }
@@ -126,14 +167,11 @@ export const splitIntoPages = ({
       ]);
 
       if (fitsAsWhole) {
-        currentPage.push({
-          words: remainingWords,
+        pushChunkWithRebalancedMarkdown({
+          fittedWords: remainingWords,
           sourceParagraphIndex,
-          sourceStartCharOffset: remainingStartCharOffset,
-        });
-        currentPageText.push({
-          text: fullParagraphText,
-          sourceStartCharOffset: remainingStartCharOffset,
+          chunkStartCharOffset: remainingStartCharOffset,
+          originalParagraphText,
         });
         break;
       }
@@ -167,14 +205,11 @@ export const splitIntoPages = ({
         const fittedWords = remainingWords.slice(0, fittingPrefixLength);
         const fittedParagraphText = fittedWords.join(' ');
 
-        currentPage.push({
-          words: fittedWords,
+        pushChunkWithRebalancedMarkdown({
+          fittedWords,
           sourceParagraphIndex,
-          sourceStartCharOffset: remainingStartCharOffset,
-        });
-        currentPageText.push({
-          text: fittedParagraphText,
-          sourceStartCharOffset: remainingStartCharOffset,
+          chunkStartCharOffset: remainingStartCharOffset,
+          originalParagraphText,
         });
         pushCurrentPage();
 
@@ -195,14 +230,11 @@ export const splitIntoPages = ({
       const fittedWords = fallbackWords;
       const fittedParagraphText = fittedWords.join(' ');
 
-      currentPage.push({
-        words: fittedWords,
+      pushChunkWithRebalancedMarkdown({
+        fittedWords,
         sourceParagraphIndex,
-        sourceStartCharOffset: remainingStartCharOffset,
-      });
-      currentPageText.push({
-        text: fittedParagraphText,
-        sourceStartCharOffset: remainingStartCharOffset,
+        chunkStartCharOffset: remainingStartCharOffset,
+        originalParagraphText,
       });
       pushCurrentPage();
 

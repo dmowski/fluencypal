@@ -329,8 +329,8 @@ test('REPRO long-li paragraph – clicking "Tell" emits selection at source 27�
 });
 
 // ---------------------------------------------------------------------------
-// Italic span split across pages: documents broken markdown at page breaks
-// (literal "\_" visible when `_italic_` is split mid-span).
+// Italic span split across pages: documents that the paginator rebalances
+// markdown emphasis across the page boundary (no literal "_" leaks).
 // Reproduces DevPanel Split tab defaults.
 // ---------------------------------------------------------------------------
 
@@ -392,6 +392,8 @@ const SplitItalicPagesFixture = ({ pages }: { pages: PagedParagraph[][] }) => (
             paragraphIndex={paragraph.sourceParagraphIndex}
             paragraphStartCharOffset={paragraph.sourceStartCharOffset}
             words={paragraph.words}
+            markdownPrefix={paragraph.markdownPrefix}
+            markdownSuffix={paragraph.markdownSuffix}
             fontSize={SPLIT_ITALIC_PAGINATION_SETTINGS.fontSize}
             lineHeight={SPLIT_ITALIC_PAGINATION_SETTINGS.lineHeight}
             justifyText={SPLIT_ITALIC_PAGINATION_SETTINGS.justifyText}
@@ -410,7 +412,7 @@ test('italic paragraph split – pagination produces exactly two pages', () => {
   expect(pages.length).toBe(2);
 });
 
-test('italic paragraph split – screenshot captures broken markdown at page break', async () => {
+test('italic paragraph split – screenshot shows balanced italic on both pages', async () => {
   const pages = splitItalicTestPages();
   expect(pages.length).toBe(2);
 
