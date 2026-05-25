@@ -104,9 +104,9 @@ export const ReaderHighlightsList = ({
           '.reader-highlight-item:last-child',
         );
         if (lastElement) {
-          lastElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          lastElement.scrollIntoView();
         }
-      }, 10);
+      }, 30);
     }
   }, [highlights.length]);
 
