@@ -68,18 +68,29 @@ const computeWordCharOffsets = (words: string[]): number[] => {
   return offsets;
 };
 
-const findLeadingDecoratorLength = (rawWord: string): number => {
+const findLeadingNonDecoratorPunctuationLength = (rawWord: string): number => {
   let length = 0;
-  while (length < rawWord.length && DECORATOR_CHAR_REGEX.test(rawWord[length])) {
+  while (length < rawWord.length && NON_WORD_NON_DECORATOR_REGEX.test(rawWord[length])) {
     length += 1;
   }
   return length;
 };
 
-const findTrailingPunctuationLength = (rawWord: string, leadingDecoratorLength: number): number => {
+const findLeadingDecoratorLength = (rawWord: string, startIndex: number): number => {
   let length = 0;
   while (
-    leadingDecoratorLength + length < rawWord.length &&
+    startIndex + length < rawWord.length &&
+    DECORATOR_CHAR_REGEX.test(rawWord[startIndex + length])
+  ) {
+    length += 1;
+  }
+  return length;
+};
+
+const findTrailingPunctuationLength = (rawWord: string, leadingBoundary: number): number => {
+  let length = 0;
+  while (
+    leadingBoundary + length < rawWord.length &&
     NON_WORD_NON_DECORATOR_REGEX.test(rawWord[rawWord.length - 1 - length])
   ) {
     length += 1;
@@ -89,13 +100,13 @@ const findTrailingPunctuationLength = (rawWord: string, leadingDecoratorLength: 
 
 const findTrailingDecoratorLength = (
   rawWord: string,
-  leadingDecoratorLength: number,
+  leadingBoundary: number,
   trailingPunctuationLength: number,
 ): number => {
   let length = 0;
   const decoratorWindowEndExclusive = rawWord.length - trailingPunctuationLength;
   while (
-    decoratorWindowEndExclusive - 1 - length >= leadingDecoratorLength &&
+    decoratorWindowEndExclusive - 1 - length >= leadingBoundary &&
     DECORATOR_CHAR_REGEX.test(rawWord[decoratorWindowEndExclusive - 1 - length])
   ) {
     length += 1;
@@ -138,14 +149,23 @@ const tokenizeWord = (
     return [linkOrImage];
   }
 
-  const leadingDecoratorLength = findLeadingDecoratorLength(rawWord);
-  const rawTrailingPunctuationLength = findTrailingPunctuationLength(
-    rawWord,
-    leadingDecoratorLength,
-  );
+  const rawLeadingPunctuationLength = findLeadingNonDecoratorPunctuationLength(rawWord);
+  const leadingDecoratorLength = findLeadingDecoratorLength(rawWord, rawLeadingPunctuationLength);
+  // Split leading non-decorator punctuation off as its own visible token ONLY
+  // when the word opens an emphasis here (`leadingDecoratorLength > 0`). In
+  // that case the markdown renderer emits the leading punctuation BEFORE the
+  // emphasis tag (e.g. `(_Do` renders as `(<em>Do`), producing a separate
+  // visible word `(`. Without this split the renderer's visible-word counter
+  // outpaces the source token cursor and every subsequent visible word
+  // resolves to the wrong source range. When there are no leading decorators
+  // the punctuation stays merged with the inner word (a bare `(Title` is one
+  // visible word for markdown's whitespace tokenizer).
+  const leadingPunctuationLength = leadingDecoratorLength > 0 ? rawLeadingPunctuationLength : 0;
+  const leadingBoundary = leadingPunctuationLength + leadingDecoratorLength;
+  const rawTrailingPunctuationLength = findTrailingPunctuationLength(rawWord, leadingBoundary);
   const trailingDecoratorLength = findTrailingDecoratorLength(
     rawWord,
-    leadingDecoratorLength,
+    leadingBoundary,
     rawTrailingPunctuationLength,
   );
 
@@ -176,17 +196,27 @@ const tokenizeWord = (
     ];
   }
 
-  const innerWordStart = leadingDecoratorLength;
+  const innerWordStart = leadingPunctuationLength + leadingDecoratorLength;
   const innerWordEnd = rawWord.length - trailingPunctuationLength - trailingDecoratorLength;
 
   const tokens: RenderedToken[] = [];
 
+  if (leadingPunctuationLength > 0) {
+    tokens.push({
+      kind: 'word',
+      text: rawWord.slice(0, leadingPunctuationLength),
+      sourceStart: wordSourceStart,
+      sourceEndExclusive: wordSourceStart + leadingPunctuationLength,
+      wordIndex,
+    });
+  }
+
   if (leadingDecoratorLength > 0) {
     tokens.push({
       kind: 'decorator',
-      markdownChars: rawWord.slice(0, leadingDecoratorLength),
-      sourceStart: wordSourceStart,
-      sourceEndExclusive: wordSourceStart + leadingDecoratorLength,
+      markdownChars: rawWord.slice(leadingPunctuationLength, leadingPunctuationLength + leadingDecoratorLength),
+      sourceStart: wordSourceStart + leadingPunctuationLength,
+      sourceEndExclusive: wordSourceStart + leadingPunctuationLength + leadingDecoratorLength,
     });
   }
 
