@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Render
+
 ## Alias game: create better version
 
 - Write proper e2e tests.

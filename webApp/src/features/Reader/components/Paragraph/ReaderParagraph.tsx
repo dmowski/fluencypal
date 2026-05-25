@@ -394,6 +394,7 @@ const ReaderParagraphBase = ({
         variant="body1"
         component="div"
         ref={paragraphRef}
+        data-words={words.join(' ')}
         data-reader-paragraph-start-offset={paragraphStartCharOffset}
         data-reader-paragraph-is-continuation={isParagraphStart ? undefined : 'true'}
         data-reader-paragraph-token-count={paragraphTokenMap.tokens.length}
