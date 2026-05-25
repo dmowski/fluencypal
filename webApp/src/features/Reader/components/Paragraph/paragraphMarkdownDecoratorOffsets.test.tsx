@@ -55,16 +55,7 @@ const collectVisibleCharOffsetMap = (container: HTMLElement) => {
 describe('ReaderParagraph emphasis decorator inside punctuation', () => {
   // The failing reproduction: minimal subset that contains the exact pattern
   // the user reported. Keeping it focused makes the bug location obvious.
-  const minimalWords = [
-    'mood',
-    '(_Do',
-    'they',
-    'seem',
-    'negative',
-    'or',
-    'positive?_)',
-    'and',
-  ];
+  const minimalWords = ['mood', '(_Do', 'they', 'seem', 'negative', 'or', 'positive?_)', 'and'];
 
   it('keeps every visible char anchored to its true source offset (minimal repro)', () => {
     const { container } = renderParagraph(minimalWords);

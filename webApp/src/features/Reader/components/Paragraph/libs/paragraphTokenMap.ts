@@ -214,7 +214,10 @@ const tokenizeWord = (
   if (leadingDecoratorLength > 0) {
     tokens.push({
       kind: 'decorator',
-      markdownChars: rawWord.slice(leadingPunctuationLength, leadingPunctuationLength + leadingDecoratorLength),
+      markdownChars: rawWord.slice(
+        leadingPunctuationLength,
+        leadingPunctuationLength + leadingDecoratorLength,
+      ),
       sourceStart: wordSourceStart + leadingPunctuationLength,
       sourceEndExclusive: wordSourceStart + leadingPunctuationLength + leadingDecoratorLength,
     });
