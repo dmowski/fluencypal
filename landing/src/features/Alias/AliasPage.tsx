@@ -11,6 +11,7 @@ import { GamePlay } from './components/GamePlay';
 import { TurnSummary } from './components/TurnSummary';
 import { Scoreboard } from './components/Scoreboard';
 import { GameEnd } from './components/GameEnd';
+import { AnalyticsAliasScript } from './components/AnalyticsAliasScript';
 
 const AliasGameContent = () => {
   const { state } = useGame();
@@ -45,8 +46,11 @@ const AliasGameContent = () => {
 
 export const AliasPage = () => {
   return (
-    <GameProvider>
-      <AliasGameContent />
-    </GameProvider>
+    <>
+      <AnalyticsAliasScript />
+      <GameProvider>
+        <AliasGameContent />
+      </GameProvider>
+    </>
   );
 };
