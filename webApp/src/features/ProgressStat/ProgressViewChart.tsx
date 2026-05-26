@@ -18,15 +18,7 @@ import { mockProgressWaveChartPoints } from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
-import {
-  ArrowDown,
-  ArrowUp,
-  Check,
-  ChevronDown,
-  ChevronsUpDown,
-  Settings,
-  TriangleAlert,
-} from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronsUpDown, Settings } from 'lucide-react';
 import dayjs from 'dayjs';
 import { uniq } from '@/libs/uniq';
 
