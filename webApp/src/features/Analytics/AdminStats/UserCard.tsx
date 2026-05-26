@@ -424,7 +424,12 @@ export function UserCard({ userStat }: UserCardProps) {
           gap: '10px',
         }}
       >
-        <ProgressViewChart progressStats={progressStats} loadingProgressStats={false} />
+        <ProgressViewChart
+          progressStats={progressStats}
+          loadingProgressStats={false}
+          chartHeight={120}
+        />
+
         <Button variant="outlined" onClick={() => setIsShowFullStatChart(true)}>
           Show full stats
         </Button>

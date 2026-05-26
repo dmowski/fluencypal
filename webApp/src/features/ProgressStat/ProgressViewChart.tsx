@@ -2,12 +2,9 @@
 
 import { useLingui } from '@lingui/react';
 import {
-  Button,
-  ButtonGroup,
   FormControl,
   IconButton,
   InputLabel,
-  Link,
   MenuItem,
   Popover,
   Select,
@@ -17,12 +14,7 @@ import {
 } from '@mui/material';
 import { ProgressChart } from './ProgressChart';
 import { StyledSelect } from '../uiKit/StyledSelect/StyledSelect';
-import {
-  buildSmoothedChartPoints,
-  mockProgressStats,
-  mockProgressWaveChartPoints,
-  mockSparseProgressChartPoints,
-} from './mockData';
+import { mockProgressWaveChartPoints } from './mockData';
 import { useProgressAggregation } from './useProgressAggregation';
 import { ProgressChartStatus, ProgressMetric, ProgressStat, ProgressValueMode } from './types';
 import { useMemo, useState } from 'react';
@@ -52,11 +44,13 @@ export const ProgressViewChart = ({
   loadingProgressStats,
   defaultPeriod = 'last-30-days',
   hideDurationSelector = false,
+  chartHeight = 320,
 }: {
   progressStats: ProgressStat[];
   loadingProgressStats: boolean;
   defaultPeriod?: ProgressPeriod;
   hideDurationSelector?: boolean;
+  chartHeight?: number;
 }) => {
   const { i18n } = useLingui();
   const isShowSettings = false;
@@ -475,7 +469,7 @@ export const ProgressViewChart = ({
         metric={selectedMetric}
         valueMode={valueMode}
         status={status}
-        height={320}
+        height={chartHeight}
         emptyPreviewData={mockProgressWaveChartPoints}
       />
     </Stack>
