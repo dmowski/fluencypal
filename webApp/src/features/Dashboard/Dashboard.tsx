@@ -88,7 +88,6 @@ export function Dashboard({ lang }: DashboardProps) {
                 <PracticeCustomConversationsDashboardCard />
                 <NewsDashboardCard />
                 <ProgressDashboardCard />
-                <ExperimentalDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
