@@ -1,5 +1,10 @@
 # Live document with short/long term ideas
 
+Add it on cloud.umami.is
+
+- alias pages
+-
+
 ## Render
 
 ## Alias game: create better version

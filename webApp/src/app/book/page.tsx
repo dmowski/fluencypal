@@ -19,11 +19,6 @@ export default async function BookPage() {
     <html lang={supportedLang}>
       <head>
         <meta name="robots" content="noindex, nofollow" />
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="e54b6925-d2d8-4569-9594-101c6af33562"
-        />
       </head>
       <body>
         <ThemeProvider theme={lightTheme}>

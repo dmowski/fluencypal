@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, ThemeProvider } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Reader } from './components/Reader';
 import { ReaderPageStyle } from './components/style';
 import { BooksProvider, useBooks } from './hooks/useBooks';
@@ -9,8 +9,8 @@ import { ReaderSettingsProvider } from './hooks/useReaderSettings';
 import { BooksSyncProvider } from './hooks/useBooksSync';
 import { useAutoReimportOnVersionBump } from './hooks/useAutoReimportOnVersionBump';
 import { useDocumentTitle } from '@/libs/useDocumentTitle';
-import { lightTheme } from '../uiKit/theme';
 import { AuthProvider } from '../Auth/useAuth';
+import { AnalyticsBookScript } from './components/AnalyticsBookScript';
 
 const ReaderComponent = () => {
   const books = useBooks();
@@ -47,14 +47,17 @@ const ReaderComponent = () => {
 
 export const ReaderPage = () => {
   return (
-    <AuthProvider>
-      <BooksProvider>
-        <BooksSyncProvider>
-          <ReaderSettingsProvider>
-            <ReaderComponent />
-          </ReaderSettingsProvider>
-        </BooksSyncProvider>
-      </BooksProvider>
-    </AuthProvider>
+    <>
+      <AnalyticsBookScript />
+      <AuthProvider>
+        <BooksProvider>
+          <BooksSyncProvider>
+            <ReaderSettingsProvider>
+              <ReaderComponent />
+            </ReaderSettingsProvider>
+          </BooksSyncProvider>
+        </BooksProvider>
+      </AuthProvider>
+    </>
   );
 };
