@@ -1,9 +1,8 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Box, Button, Chip, Stack, Typography } from '@mui/material';
+import { Button, Chip, Stack, Typography } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { getNewsFullTextRequest } from '@/app/api/news/getNewsFullText/getNewsFullTextRequest';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
@@ -21,7 +20,6 @@ import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import { buildNewsDiscussionPrompt } from './buildNewsDiscussionPrompt';
 import { NewsItem, NewsLanguageComplexity } from './types';
-import { NewsComments } from './NewsComments';
 
 export const NewsModal = () => {
   const { isOpen, newsId, closeNews } = useNewsModal();
