@@ -8,7 +8,7 @@ import { needsNewsImageUpload } from '../newsImageUrl';
 import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
 import { DESIRED_COUNT, ITEMS_PER_CATEGORY } from './constant';
 
-const CANDIDATES_PER_CATEGORY = 10;
+const CANDIDATES_PER_CATEGORY = 20;
 
 const toSummary = (item: NewsItem): NewsItemSummary => ({
   id: item.id,

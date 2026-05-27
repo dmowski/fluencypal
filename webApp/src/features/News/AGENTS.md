@@ -81,7 +81,7 @@ Key: `news.settings.v1`
 
 ## Categories And Volume
 
-Daily population fetches **6 categories** × **3 articles** = up to **18 items** per country/language/day (`DESIRED_COUNT` in `getTodayNews/constant.ts`).
+Daily population fetches **6 categories** × **7 articles** = up to **42 items** per country/language/day (`DESIRED_COUNT` in `getTodayNews/constant.ts`).
 
 Categories: `general`, `technology`, `science`, `business`, `sports`, `entertainment`.
 
