@@ -59,6 +59,8 @@ Key fields:
 | `content_origin` | Original markdown from gNews |
 | `category` | gNews category slug (`technology`, `science`, …) |
 | `tags` | Topic tags in English (AI-generated when the API provides none) |
+| `sourceImageUrl` | Original publisher image URL (server-only; used to copy into storage) |
+| `imageUrl` | Public URL in our Firebase storage bucket only — never a third-party host |
 | `versions` | Partial map of complexity → rewritten markdown (filled lazily) |
 | `dayKey` | UTC `YYYY-MM-DD` when the doc was populated (query key for "today") |
 | `countryCode`, `languageCode` | Region and target learning language |

@@ -2,6 +2,7 @@ import { NewsItem } from '@/features/News/types';
 import { upsertCachedNews } from './cache';
 import { copyNewsImageToStorage } from './copyImageToStorage';
 import { generateNewsTags } from './generateNewsTags';
+import { needsNewsImageUpload } from './newsImageUrl';
 import { translateNewsHeadline } from './translateNewsHeadline';
 
 /**
@@ -10,9 +11,7 @@ import { translateNewsHeadline } from './translateNewsHeadline';
  * respond quickly. Safe to fire-and-forget.
  */
 export const enrichNewsItem = async (item: NewsItem): Promise<void> => {
-  const needsImage =
-    !!item.sourceImageUrl &&
-    (!item.imageUrl || item.imageUrl === item.sourceImageUrl || item.imageUrl.startsWith('http'));
+  const needsImage = needsNewsImageUpload(item);
 
   const needsHeadlineTranslate =
     item.title === item.titleOrigin && item.subTitle === item.subTitleOrigin;

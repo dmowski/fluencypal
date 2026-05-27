@@ -4,6 +4,7 @@ import { GetTodayNewsRequest, GetTodayNewsResponse } from '../types';
 import { buildNewsId, getNewsDayKey } from '../buildNewsId';
 import { getCachedTodayNews, upsertCachedNews } from '../cache';
 import { enrichNewsItem } from '../enrichNewsItem';
+import { needsNewsImageUpload } from '../newsImageUrl';
 import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
 import { DESIRED_COUNT, ITEMS_PER_CATEGORY } from './constant';
 
@@ -56,7 +57,7 @@ const buildNewsItemFromArticle = (
     titleOrigin: originTitle,
     subTitleOrigin: originSubTitle,
     content_origin: buildContentOrigin(article),
-    imageUrl: article.image ?? '',
+    imageUrl: '',
     sourceImageUrl: article.image ?? '',
     dateIso: article.publishedAt,
     dayKey: ctx.dayKey,
@@ -116,9 +117,16 @@ const populateTodayNews = async (request: GetTodayNewsRequest): Promise<void> =>
 
   await Promise.all(built.map((item) => upsertCachedNews(item)));
 
-  // Headline translation, tags, and image hosting are best-effort and must not
-  // block the HTTP response — the client reads Firestore directly.
-  void Promise.all(built.map((item) => enrichNewsItem(item))).catch(() => undefined);
+  // Headline translation, tags, and image hosting run in the populate job (not
+  // the HTTP handler) so third-party image URLs never reach the client.
+  await Promise.all(built.map((item) => enrichNewsItem(item).catch(() => undefined)));
+};
+
+const scheduleStaleItemEnrichment = (items: NewsItem[]): void => {
+  for (const item of items) {
+    if (!needsNewsImageUpload(item)) continue;
+    void enrichNewsItem(item).catch(() => undefined);
+  }
 };
 
 const ensurePopulateScheduled = (request: GetTodayNewsRequest): void => {
@@ -138,6 +146,8 @@ export const getTodayNewsResponse = async (
     countryCode: request.countryCode,
     languageCode: request.languageCode,
   });
+
+  scheduleStaleItemEnrichment(cached);
 
   if (cached.length < DESIRED_COUNT) {
     ensurePopulateScheduled(request);
