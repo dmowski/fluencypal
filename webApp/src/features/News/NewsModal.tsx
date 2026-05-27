@@ -106,10 +106,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     void (async () => {
       try {
         const token = await auth.getToken();
-        const response = await getNewsFullTextRequest(
-          { id: item.id, complexity },
-          token || null,
-        );
+        const response = await getNewsFullTextRequest({ id: item.id, complexity }, token || null);
         if (cancelled) return;
         setContent(response.text ?? '');
         if (response.text) {
@@ -168,7 +165,10 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     const prompt = buildNewsDiscussionPrompt(
       {
         ...item,
-        versions: { ...(item.versions ?? {}), [complexity]: content || item.versions?.[complexity] },
+        versions: {
+          ...(item.versions ?? {}),
+          [complexity]: content || item.versions?.[complexity],
+        },
       },
       complexity,
     );
@@ -281,27 +281,12 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
               </Stack>
 
               {item.imageUrl && (
-                <Box
-                  sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '420px',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    '@media (max-width:600px)': {
-                      height: '200px',
-                    },
-                  }}
-                >
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    data-testid="news-modal-image"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 800px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </Box>
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  data-testid="news-modal-image"
+                  style={{ objectFit: 'cover', width: '100%', borderRadius: '12px' }}
+                />
               )}
 
               {isContentLoading ? (
@@ -365,8 +350,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   {isCallStarting ? i18n._('Starting...') : i18n._('Discuss with AI')}
                 </Button>
               </Stack>
-
-              <NewsComments newsId={newsId} />
             </>
           )}
 

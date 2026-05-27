@@ -54,7 +54,7 @@ export const NewsPreviewCard = ({
         },
       }}
     >
-      {imageUrl && (
+      {imageUrl ? (
         <Box
           sx={{
             position: 'relative',
@@ -78,6 +78,12 @@ export const NewsPreviewCard = ({
             style={{ objectFit: 'cover' }}
           />
         </Box>
+      ) : (
+        <Stack
+          sx={{
+            height: '20px',
+          }}
+        />
       )}
       {day && (
         <Typography
