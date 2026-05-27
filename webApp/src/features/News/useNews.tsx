@@ -220,7 +220,9 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
           },
           token || null,
         );
-        setAllItems(result.items);
+        if (result.items.length > 0) {
+          setAllItems(result.items);
+        }
       } catch {
         // Best-effort; keep showing whatever was loaded initially.
       } finally {
