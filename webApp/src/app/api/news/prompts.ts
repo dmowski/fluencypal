@@ -40,6 +40,7 @@ export const buildNewsRewriteSystemPrompt = (
     '- Respond with markdown only. Do NOT include any wrapper sentence such as "Here is..." or "Sure!".',
     '- Do NOT include the original headline as an H1; do NOT use headings larger than H2.',
     '- Preserve all factual claims from the source. Do not invent details or add opinions.',
+    '- Keep the length roughly the same as the source (±20%).',
     '- Use short paragraphs separated by blank lines. Bullet lists are allowed when natural.',
   ].join('\n');
 };

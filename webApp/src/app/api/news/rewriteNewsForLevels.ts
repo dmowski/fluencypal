@@ -55,13 +55,12 @@ export const rewriteNewsForLevel = async ({
   content_origin,
   targetLanguageName,
   complexity,
-  model = DEFAULT_MODEL,
 }: RewriteNewsInput & { complexity: NewsLanguageComplexity }): Promise<string> => {
   const userMessage = buildNewsRewriteUserPrompt({ title, content_origin });
   const { output } = await generateTextWithAi({
     systemMessage: buildNewsRewriteSystemPrompt(complexity, targetLanguageName),
     userMessage,
-    model,
+    model: 'gpt-4o-mini',
   });
   return stripWrapper(output);
 };
@@ -74,7 +73,6 @@ export const rewriteNewsForLevels = async ({
   title,
   content_origin,
   targetLanguageName,
-  model = DEFAULT_MODEL,
 }: RewriteNewsInput): Promise<NewsContentVersions> => {
   const results = await Promise.all(
     COMPLEXITIES.map(async (complexity) => {
@@ -83,7 +81,6 @@ export const rewriteNewsForLevels = async ({
         content_origin,
         targetLanguageName,
         complexity,
-        model,
       });
       return [complexity, text] as const;
     }),
