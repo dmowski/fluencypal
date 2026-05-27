@@ -2,6 +2,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
+const isDev = process.env.NODE_ENV === 'development';
 const sentryOrg = process.env.SENTRY_ORG;
 const sentryProject = process.env.SENTRY_PROJECT;
 
@@ -28,6 +29,9 @@ const nextConfig: NextConfig = {
     'google-gax',
   ],
   images: {
+    // Next.js 16 blocks localhost / private IPs by default (SSRF protection).
+    // Required for Firebase storage emulator URLs in local dev.
+    dangerouslyAllowLocalIP: isDev,
     remotePatterns: [
       {
         protocol: 'https',
