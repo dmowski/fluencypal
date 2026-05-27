@@ -183,6 +183,12 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     onClose();
   };
 
+  const onWordClick = translator.isTranslateAvailable
+    ? (word: string, element: HTMLElement) => {
+        translator.translateWithModal(word, element);
+      }
+    : undefined;
+
   return (
     <CustomModal isOpen={true} onClose={onClose} mobilePadding="0" desktopPadding="0">
       <Stack
@@ -242,6 +248,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
               <Stack sx={{ gap: '8px' }}>
                 <Stack
                   sx={{
+                    paddingTop: '40px',
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     gap: '8px',
@@ -262,20 +269,46 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                       size="small"
                       label={item.countryName}
                       data-testid="news-modal-country"
-                      sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                      sx={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
                     />
                   )}
                   <Chip
                     size="small"
                     label={NEWS_COMPLEXITY_LABELS[complexity]}
                     data-testid="news-modal-complexity"
-                    sx={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                    sx={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
                   />
                 </Stack>
-                <Typography variant="h4" sx={{ fontWeight: 600 }} data-testid="news-modal-title">
-                  {item.title}
-                </Typography>
-                {item.subTitle && <Typography>{item.subTitle}</Typography>}
+
+                <Stack
+                  sx={{
+                    h1: {
+                      fontSize: '70px',
+                      fontWeight: 800,
+                      '@media (max-width:600px)': {
+                        fontSize: '32px',
+                      },
+                      span: {
+                        fontFamily: 'Georgia, serif',
+                      },
+                    },
+
+                    'p span': { fontSize: '22px' },
+
+                    p: {
+                      fontWeight: 400,
+
+                      '@media (max-width:600px)': {
+                        fontSize: '16px',
+                      },
+                    },
+                  }}
+                  data-testid="news-modal-title"
+                >
+                  <Markdown variant="rule" onWordClick={onWordClick}>
+                    {`\n # ${item.title} \n\n ${item.subTitle}`}
+                  </Markdown>
+                </Stack>
               </Stack>
 
               {item.imageUrl && (
@@ -307,16 +340,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                     },
                   }}
                 >
-                  <Markdown
-                    variant="rule"
-                    onWordClick={
-                      translator.isTranslateAvailable
-                        ? (word, element) => {
-                            translator.translateWithModal(word, element);
-                          }
-                        : undefined
-                    }
-                  >
+                  <Markdown variant="rule" onWordClick={onWordClick}>
                     {'\n' + content}
                   </Markdown>
                 </Stack>
