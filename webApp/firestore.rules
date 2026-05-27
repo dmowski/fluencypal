@@ -51,6 +51,11 @@ service cloud.firestore {
     	allow read: if isSignedIn();
       allow write: if isSignedIn();
     }
+
+    match /news/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
     
     match /game/gameLastVisit {
     	allow read: if true;

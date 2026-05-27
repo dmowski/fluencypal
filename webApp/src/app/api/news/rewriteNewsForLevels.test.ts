@@ -63,7 +63,8 @@ describe('rewriteNewsForLevels', () => {
       targetLanguageName: 'English',
     });
 
-    expect(versions.beginner.startsWith('Sure!')).toBe(false);
+    expect(versions.beginner).toBeDefined();
+    expect(versions.beginner!.startsWith('Sure!')).toBe(false);
     expect(versions.beginner).toBe('This is the body of the rewrite.');
   });
 

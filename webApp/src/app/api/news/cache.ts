@@ -1,4 +1,4 @@
-import { NewsItem } from '@/features/News/types';
+import { NewsItem, NewsLanguageComplexity } from '@/features/News/types';
 import { getDB } from '../config/firebase';
 import { sendTelegramMessageServer } from '../telegram/sendTelegramMessage';
 import { getNewsDayKey } from './buildNewsId';
@@ -93,4 +93,18 @@ export const upsertCachedNews = async (item: NewsItem): Promise<void> => {
   } catch (error) {
     sendTelegramMessageServer(`Error writing news cache (${item.id}): ${(error as Error).message}`);
   }
+};
+
+export const mergeNewsVersion = async (
+  id: string,
+  complexity: NewsLanguageComplexity,
+  text: string,
+): Promise<NewsItem | null> => {
+  const existing = await getCachedNewsById(id);
+  if (!existing) return null;
+
+  const versions = { ...(existing.versions ?? {}), [complexity]: text };
+  const updated: NewsItem = { ...existing, versions };
+  await upsertCachedNews(updated);
+  return updated;
 };

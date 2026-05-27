@@ -1,11 +1,10 @@
 # Live document with short/long term ideas
 
-Add it on cloud.umami.is
+## News: They should be interesting for me.
 
-- alias pages
--
+## Reader: Share the book with others
 
-## Render
+Check how it works
 
 ## Alias game: create better version
 
@@ -25,10 +24,6 @@ Add it on cloud.umami.is
 ## App: More realistic web calls
 
 - How to setup custom realtime communicator
-
-## Reader: Share the book with others
-
-Check how it works
 
 ## Reader: Search feature
 

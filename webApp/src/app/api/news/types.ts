@@ -1,4 +1,4 @@
-import type { NewsItem, NewsItemSummary } from '@/features/News/types';
+import type { NewsItem, NewsItemSummary, NewsLanguageComplexity } from '@/features/News/types';
 
 /**
  * Shared request/response contracts for the `/api/news/*` endpoints.
@@ -35,4 +35,13 @@ export interface GetPreviousDayNewsRequest {
 
 export interface GetPreviousDayNewsResponse {
   items: NewsItemSummary[];
+}
+
+export interface GetNewsFullTextRequest {
+  id: string;
+  complexity: NewsLanguageComplexity;
+}
+
+export interface GetNewsFullTextResponse {
+  text: string | null;
 }

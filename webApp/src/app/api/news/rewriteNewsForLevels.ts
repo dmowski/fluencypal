@@ -48,6 +48,25 @@ export interface RewriteNewsInput {
 }
 
 /**
+ * Generate a single CEFR-level rewrite of a news article.
+ */
+export const rewriteNewsForLevel = async ({
+  title,
+  content_origin,
+  targetLanguageName,
+  complexity,
+  model = DEFAULT_MODEL,
+}: RewriteNewsInput & { complexity: NewsLanguageComplexity }): Promise<string> => {
+  const userMessage = buildNewsRewriteUserPrompt({ title, content_origin });
+  const { output } = await generateTextWithAi({
+    systemMessage: buildNewsRewriteSystemPrompt(complexity, targetLanguageName),
+    userMessage,
+    model,
+  });
+  return stripWrapper(output);
+};
+
+/**
  * Generate three CEFR-level rewrites (beginner / middle / advance) of a news
  * article in parallel. Returns `NewsItem['versions']`.
  */
@@ -57,24 +76,21 @@ export const rewriteNewsForLevels = async ({
   targetLanguageName,
   model = DEFAULT_MODEL,
 }: RewriteNewsInput): Promise<NewsContentVersions> => {
-  const userMessage = buildNewsRewriteUserPrompt({ title, content_origin });
-
   const results = await Promise.all(
     COMPLEXITIES.map(async (complexity) => {
-      const { output } = await generateTextWithAi({
-        systemMessage: buildNewsRewriteSystemPrompt(complexity, targetLanguageName),
-        userMessage,
+      const text = await rewriteNewsForLevel({
+        title,
+        content_origin,
+        targetLanguageName,
+        complexity,
         model,
       });
-      return [complexity, stripWrapper(output)] as const;
+      return [complexity, text] as const;
     }),
   );
 
-  return results.reduce<NewsContentVersions>(
-    (acc, [complexity, text]) => {
-      acc[complexity] = text;
-      return acc;
-    },
-    { beginner: '', middle: '', advance: '' },
-  );
+  return results.reduce<NewsContentVersions>((acc, [complexity, text]) => {
+    acc[complexity] = text;
+    return acc;
+  }, {});
 };

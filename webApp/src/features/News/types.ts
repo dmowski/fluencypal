@@ -10,10 +10,11 @@ import type { IconName } from 'lucide-react/dynamic';
 export type NewsLanguageComplexity = 'beginner' | 'middle' | 'advance';
 
 /**
- * Three rewritten markdown versions of the same news article keyed by complexity.
- * The text is in the user's target learning language (see `NewsItem.languageCode`).
+ * Rewritten markdown versions keyed by complexity. Keys are populated on demand
+ * via `/api/news/getNewsFullText`; absent keys mean that level has not been
+ * generated yet.
  */
-export type NewsContentVersions = Record<NewsLanguageComplexity, string>;
+export type NewsContentVersions = Partial<Record<NewsLanguageComplexity, string>>;
 
 /**
  * Cache document shape stored in Firestore under the `news` collection.
@@ -50,7 +51,11 @@ export interface NewsItem {
   /** English display name of the target language (e.g. 'English', 'Spanish'). */
   languageName: string;
   sourceUrl: string;
-  /** Three rewritten markdown bodies (in target language); `null` until AI rewrites complete. */
+  /** gNews category slug (e.g. `technology`, `science`). */
+  category: string;
+  /** Topic tags from the source API or AI when missing. */
+  tags: string[];
+  /** Rewritten markdown bodies (in target language); populated lazily per complexity. */
   versions: NewsContentVersions | null;
   createdAtIso: string;
 }
@@ -66,6 +71,8 @@ export interface NewsItemSummary {
   dateIso: string;
   countryCode: string;
   languageCode: string;
+  category: string;
+  tags: string[];
 }
 
 /**

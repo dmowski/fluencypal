@@ -17,6 +17,8 @@ const baseItem: NewsItem = {
   languageCode: 'en',
   languageName: 'English',
   sourceUrl: 'https://example.com/x',
+  category: 'general',
+  tags: ['politics'],
   versions: {
     beginner: 'Beginner body',
     middle: 'Middle body',

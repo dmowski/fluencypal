@@ -108,3 +108,26 @@ export const buildNewsPositivityFilterUserPrompt = (
 ): string => {
   return JSON.stringify({ items });
 };
+
+export const buildNewsTagsSystemPrompt = (): string => {
+  return [
+    'You assign short topic tags to news headlines for a language-learning feed.',
+    'Return raw JSON only with shape: {"tags":["tag one","tag two"]}',
+    'Provide 2-5 concise lowercase tags (single words or short phrases).',
+    'Tags must always be in English, even when the headline or subtitle is in another language.',
+    'Tags should describe the topic, not the sentiment.',
+    'Do not include commentary or extra fields.',
+  ].join('\n');
+};
+
+export const buildNewsTagsUserPrompt = ({
+  title,
+  subTitle,
+  category,
+}: {
+  title: string;
+  subTitle: string;
+  category: string;
+}): string => {
+  return JSON.stringify({ title, subTitle, category });
+};

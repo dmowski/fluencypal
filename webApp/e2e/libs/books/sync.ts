@@ -222,7 +222,12 @@ export const waitForBookPresentForUser = async (
  * Opens the share modal for a book card, types an email, submits, and waits
  * for the success message. Leaves the share modal open (caller can close it).
  */
-export const shareBookViaUI = async (page: Page, bookId: string, email: string): Promise<void> => {
+export const shareBookViaUI = async (
+  page: Page,
+  bookId: string,
+  email: string,
+  options?: { sharedUserUid?: string },
+): Promise<void> => {
   const { expect } = await import('@playwright/test');
   await page.getByTestId(`book-menu-${bookId}`).click();
   await page.getByRole('menuitem', { name: 'Share' }).click();
@@ -248,6 +253,10 @@ export const shareBookViaUI = async (page: Page, bookId: string, email: string):
   if (await error.isVisible().catch(() => false)) {
     const errorText = (await error.textContent())?.trim() || 'Unknown share error';
     throw new Error(`shareBookViaUI failed: ${errorText}`);
+  }
+
+  if (options?.sharedUserUid) {
+    await waitForBookPresentForUser(options.sharedUserUid, bookId);
   }
 
   // Close the modal

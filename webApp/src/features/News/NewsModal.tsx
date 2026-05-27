@@ -5,10 +5,12 @@ import { Box, Button, Chip, Stack, Typography } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { getNewsFullTextRequest } from '@/app/api/news/getNewsFullText/getNewsFullTextRequest';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getMediaVideoStreams } from '../webCam/mediaStream';
 import { useSettings } from '../Settings/useSettings';
+import { useAuth } from '../Auth/useAuth';
 import { sleep } from '@/libs/sleep';
 import { useTranslate } from '../Translation/useTranslate';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
@@ -36,6 +38,7 @@ interface NewsModalContentProps {
 
 const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const news = useNews();
+  const auth = useAuth();
   const translator = useTranslate();
   const aiConversation = useAiConversation();
   const audio = useConversationAudio();
@@ -43,26 +46,19 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const { i18n } = useLingui();
 
   const [item, setItem] = useState<NewsItem | null>(null);
+  const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isContentLoading, setIsContentLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
   const [isCallStarting, setIsCallStarting] = useState(false);
   const requestedKeyRef = useRef<string | null>(null);
 
-  // Keep a ref to the latest fetcher so the effect below only depends on
-  // `newsId`. The `news` context object re-memoizes whenever sibling state
-  // (e.g. `isLoading` after the today-fetch resolves) flips, and if we put
-  // `news` in the deps array the effect re-runs on every such ripple.
   const getNewsByIdRef = useRef(news.getNewsById);
   getNewsByIdRef.current = news.getNewsById;
 
-  // Fetch the full article (with all three complexity versions) once per id.
-  // `news.getNewsById` is cached by id inside `useNews`, so re-opens are free.
-  //
-  // We intentionally do NOT cancel the in-flight promise on cleanup: React 18
-  // strict-mode mounts → unmounts → mounts again synchronously, which would
-  // cancel the only request and leave the modal stuck. Instead we ignore
-  // late responses by checking that the requested id still matches.
+  const complexity: NewsLanguageComplexity = news.complexity;
+
   useEffect(() => {
     const key = `${newsId}|${retryToken}`;
     if (requestedKeyRef.current === key) return;
@@ -72,6 +68,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     setIsLoading(true);
     setHasError(false);
     setItem(null);
+    setContent('');
 
     getNewsByIdRef
       .current(newsId)
@@ -92,8 +89,55 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
       });
   }, [newsId, retryToken]);
 
-  const complexity: NewsLanguageComplexity = news.complexity;
-  const content = item?.versions?.[complexity] ?? '';
+  useEffect(() => {
+    if (!item) return;
+
+    const existing = item.versions?.[complexity];
+    if (existing) {
+      setContent(existing);
+      setIsContentLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setIsContentLoading(true);
+    setContent('');
+
+    void (async () => {
+      try {
+        const token = await auth.getToken();
+        const response = await getNewsFullTextRequest(
+          { id: item.id, complexity },
+          token || null,
+        );
+        if (cancelled) return;
+        setContent(response.text ?? '');
+        if (response.text) {
+          setItem((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  versions: { ...(prev.versions ?? {}), [complexity]: response.text as string },
+                }
+              : prev,
+          );
+        }
+      } catch (error) {
+        if (cancelled) return;
+        console.error('NewsModal: getNewsFullText failed', error);
+        setContent('');
+      } finally {
+        if (!cancelled) {
+          setIsContentLoading(false);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [item, complexity, auth]);
+
   const formattedDate = item?.dateIso
     ? new Date(item.dateIso).toLocaleDateString(undefined, {
         year: 'numeric',
@@ -107,8 +151,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     setIsCallStarting(true);
     audio.initAudio();
 
-    // Mirror GrammarImprovementModal: request mic up-front so the call can
-    // start immediately once the conversation initializes.
     try {
       await getMediaVideoStreams();
     } catch (e) {
@@ -123,7 +165,13 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
       return;
     }
 
-    const prompt = buildNewsDiscussionPrompt(item, complexity);
+    const prompt = buildNewsDiscussionPrompt(
+      {
+        ...item,
+        versions: { ...(item.versions ?? {}), [complexity]: content || item.versions?.[complexity] },
+      },
+      complexity,
+    );
 
     await settings.setConversationMode('call');
     await aiConversation.startConversation({
@@ -256,7 +304,11 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                 </Box>
               )}
 
-              {content ? (
+              {isContentLoading ? (
+                <Stack sx={{ gap: '20px' }} data-testid="news-modal-content-loading">
+                  <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
+                </Stack>
+              ) : content ? (
                 <Stack
                   sx={{
                     '* p': {
@@ -305,7 +357,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   variant="contained"
                   color="info"
                   startIcon={<VideocamIcon />}
-                  disabled={isCallStarting}
+                  disabled={isCallStarting || isContentLoading || !content}
                   onClick={discussWithAi}
                   data-testid="news-modal-discuss-button"
                   sx={{ padding: '10px 24px' }}

@@ -109,6 +109,43 @@ export const NEWS_COUNTRY_NAME_BY_CODE: Record<string, string> = Object.fromEntr
 );
 
 /**
+ * gNews top-headlines categories we fetch during daily population. Each
+ * category contributes `ITEMS_PER_CATEGORY` articles so the feed has variety.
+ *
+ * @see https://gnews.io/docs (Top Headlines → category)
+ */
+export const NEWS_FETCH_CATEGORIES = [
+  'general',
+  'technology',
+  'science',
+  'business',
+  'sports',
+  'entertainment',
+] as const;
+
+export type NewsCategory = (typeof NEWS_FETCH_CATEGORIES)[number];
+
+export const NEWS_CATEGORY_LABELS: Record<NewsCategory, string> = {
+  general: 'General',
+  technology: 'Technology',
+  science: 'Science',
+  business: 'Business',
+  sports: 'Sports',
+  entertainment: 'Entertainment',
+};
+
+/** Sentinel value for the category filter meaning "show every category". */
+export const NEWS_CATEGORY_ALL = 'all';
+
+export const NEWS_CATEGORY_FILTER_OPTIONS: Array<{ value: string; label: string }> = [
+  { value: NEWS_CATEGORY_ALL, label: 'All' },
+  ...NEWS_FETCH_CATEGORIES.map((category) => ({
+    value: category,
+    label: NEWS_CATEGORY_LABELS[category],
+  })),
+];
+
+/**
  * Per-row icon/color hints for the dashboard `StoreCard`. Cycled by index so
  * the list stays visually varied without per-topic logic.
  */

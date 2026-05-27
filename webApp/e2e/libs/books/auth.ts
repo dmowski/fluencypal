@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Browser, BrowserContext, Page, expect } from '@playwright/test';
 
 const FIREBASE_API_KEY = 'fake-api-key';
 const AUTH_EMULATOR_HOST = 'http://127.0.0.1:9099';
@@ -110,6 +110,29 @@ export const waitForSignedIn = async (page: Page, expectedUid: string) => {
     expectedUid,
     { timeout: 10000 },
   );
+};
+
+/**
+ * Opens a fresh browser context with no local Reader state, navigates to /book,
+ * and signs in as the given user. Caller must close the returned context.
+ */
+export const openFreshReaderPageForUser = async (
+  browser: Browser,
+  user: Pick<EmulatorTestUser, 'email' | 'password' | 'uid'>,
+): Promise<{ context: BrowserContext; page: Page }> => {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    if (typeof indexedDB !== 'undefined') {
+      indexedDB.deleteDatabase('readerBooksDb');
+    }
+  });
+  await page.goto('/book');
+  await signInTestUserOnPage(page, user);
+  await waitForSignedIn(page, user.uid);
+  return { context, page };
 };
 
 /**

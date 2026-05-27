@@ -1,10 +1,13 @@
 import { expect, test } from '@playwright/test';
 import {
   getCurrentIdToken,
+  mockNewsGenerationApi,
+  openNewsFeedModal,
+  prepareNewsPracticePage,
   resetEmulatorState,
   seedNewsItem,
-  seedPracticeUserSettings,
   signInPracticeWithStepper,
+  seedPracticeUserSettings,
 } from '../libs/practice';
 
 const yesterdayKey = (() => {
@@ -21,10 +24,7 @@ test.describe('/api/news/getPreviousDayNews', () => {
   });
 
   test('returns cached summaries from the previous day', async ({ page }) => {
-    test.setTimeout(30_000);
-
-    const { uid, email } = await signInPracticeWithStepper(page);
-    await seedPracticeUserSettings(page, { uid, email });
+    await mockNewsGenerationApi(page);
 
     await seedNewsItem({
       id: 'prev-news-1',
@@ -36,7 +36,6 @@ test.describe('/api/news/getPreviousDayNews', () => {
       languageCode: 'en',
     });
 
-    // A today doc that must NOT appear in the previous-day response.
     await seedNewsItem({
       id: 'today-news-1',
       title: 'Today Headline',
@@ -44,6 +43,9 @@ test.describe('/api/news/getPreviousDayNews', () => {
       countryCode: 'us',
       languageCode: 'en',
     });
+
+    const { uid, email } = await signInPracticeWithStepper(page);
+    await seedPracticeUserSettings(page, { uid, email });
 
     const token = await getCurrentIdToken(page);
 
@@ -70,7 +72,6 @@ test.describe('/api/news/getPreviousDayNews', () => {
   });
 
   test('rejects unauthenticated requests with 401', async ({ page }) => {
-    test.setTimeout(20_000);
     await page.goto('/');
     const apiResponse = await page.evaluate(async () => {
       const r = await fetch('/api/news/getPreviousDayNews', {
@@ -90,126 +91,60 @@ test.describe('Load previous news button', () => {
   });
 
   test('shows button, loads previous news on click, shows articles', async ({ page }) => {
-    test.setTimeout(90_000);
-
-    const todayItems = [
-      {
-        id: 'ui-today-1',
-        title: 'Today Headline',
-        subTitle: '',
-        imageUrl: '',
-        dateIso: new Date().toISOString(),
-        countryCode: 'us',
-        languageCode: 'en',
-      },
-    ];
-
-    const prevItems = [
-      {
-        id: 'ui-prev-1',
-        title: 'Yesterday Headline',
-        subTitle: '',
-        imageUrl: '',
-        dateIso: yesterdayIso,
-        countryCode: 'us',
-        languageCode: 'en',
-      },
-    ];
-
-    await page.route('**/api/news/getTodayNews', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({ items: todayItems }),
-      });
+    await prepareNewsPracticePage(page, {
+      seedItems: [
+        {
+          id: 'ui-today-1',
+          title: 'Today Headline',
+          countryCode: 'us',
+          languageCode: 'en',
+        },
+        {
+          id: 'ui-prev-1',
+          title: 'Yesterday Headline',
+          dateIso: yesterdayIso,
+          dayKey: yesterdayKey,
+          countryCode: 'us',
+          languageCode: 'en',
+        },
+      ],
     });
 
-    await page.route('**/api/news/getPreviousDayNews', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({ items: prevItems }),
-      });
-    });
+    const feedModal = await openNewsFeedModal(page);
 
-    const { uid, email } = await signInPracticeWithStepper(page);
-    await seedPracticeUserSettings(page, { uid, email });
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible();
 
-    const card = page.getByTestId('news-dashboard-card');
-    await expect(card).toBeVisible({ timeout: 30_000 });
-    await card.click();
-
-    const feedModal = page.getByTestId('news-feed-modal');
-    await expect(feedModal).toBeVisible({ timeout: 15_000 });
-
-    // Today's news is visible.
-    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
-      timeout: 10_000,
-    });
-
-    // The "Load previous news" button is visible.
     const loadBtn = feedModal.getByTestId('load-previous-news-btn');
-    await expect(loadBtn).toBeVisible({ timeout: 10_000 });
+    await expect(loadBtn).toBeVisible();
 
-    // Click it — previous news should appear.
     await loadBtn.click();
 
-    await expect(feedModal.getByTestId('previous-news-list')).toBeVisible({ timeout: 10_000 });
+    await expect(feedModal.getByTestId('previous-news-list')).toBeVisible();
     await expect(feedModal.getByTestId('previous-news-card').first()).toContainText(
       'Yesterday Headline',
     );
 
-    // Button stays visible with updated label so the user can keep loading older days.
     await expect(loadBtn).toBeVisible();
     await expect(loadBtn).toContainText('Load more previous news');
   });
 
   test('shows empty message when no previous news exist', async ({ page }) => {
-    test.setTimeout(90_000);
-
-    await page.route('**/api/news/getTodayNews', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          items: [
-            {
-              id: 'ui-today-empty-prev',
-              title: 'Today Headline',
-              subTitle: '',
-              imageUrl: '',
-              dateIso: new Date().toISOString(),
-              countryCode: 'us',
-              languageCode: 'en',
-            },
-          ],
-        }),
-      });
+    await prepareNewsPracticePage(page, {
+      seedItems: [
+        {
+          id: 'ui-today-empty-prev',
+          title: 'Today Headline',
+          countryCode: 'us',
+          languageCode: 'en',
+        },
+      ],
     });
 
-    await page.route('**/api/news/getPreviousDayNews', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({ items: [] }),
-      });
-    });
-
-    const { uid, email } = await signInPracticeWithStepper(page);
-    await seedPracticeUserSettings(page, { uid, email });
-
-    const card = page.getByTestId('news-dashboard-card');
-    await expect(card).toBeVisible({ timeout: 30_000 });
-    await card.click();
-
-    const feedModal = page.getByTestId('news-feed-modal');
-    await expect(feedModal).toBeVisible({ timeout: 15_000 });
-    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible({
-      timeout: 10_000,
-    });
+    const feedModal = await openNewsFeedModal(page);
+    await expect(feedModal.getByTestId('news-preview-card').first()).toBeVisible();
 
     await feedModal.getByTestId('load-previous-news-btn').click();
 
-    await expect(feedModal.getByTestId('previous-news-empty')).toBeVisible({ timeout: 10_000 });
+    await expect(feedModal.getByTestId('previous-news-empty')).toBeVisible();
   });
 });

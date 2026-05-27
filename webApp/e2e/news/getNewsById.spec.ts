@@ -1,10 +1,11 @@
 import { expect, test } from '@playwright/test';
 import {
   getCurrentIdToken,
+  mockNewsGenerationApi,
   resetEmulatorState,
   seedNewsItem,
-  seedPracticeUserSettings,
   signInPracticeWithStepper,
+  seedPracticeUserSettings,
 } from '../libs/practice';
 
 test.describe('/api/news/getNewsById', () => {
@@ -13,10 +14,7 @@ test.describe('/api/news/getNewsById', () => {
   });
 
   test('returns the full news item with all complexity versions', async ({ page }) => {
-    test.setTimeout(90_000);
-
-    const { uid, email } = await signInPracticeWithStepper(page);
-    await seedPracticeUserSettings(page, { uid, email });
+    await mockNewsGenerationApi(page);
 
     await seedNewsItem({
       id: 'e2e-news-by-id',
@@ -25,9 +23,14 @@ test.describe('/api/news/getNewsById', () => {
       content_origin: 'Origin body',
       imageUrl: 'https://example.com/img.jpg',
       countryCode: 'us',
+      category: 'general',
+      tags: ['tech'],
       sourceUrl: 'https://example.com/specific',
       versions: { beginner: 'BEG', middle: 'MID', advance: 'ADV' },
     });
+
+    const { uid, email } = await signInPracticeWithStepper(page);
+    await seedPracticeUserSettings(page, { uid, email });
 
     const token = await getCurrentIdToken(page);
 
@@ -56,8 +59,7 @@ test.describe('/api/news/getNewsById', () => {
   });
 
   test('returns { item: null } for an unknown id', async ({ page }) => {
-    test.setTimeout(60_000);
-
+    await mockNewsGenerationApi(page);
     const { uid, email } = await signInPracticeWithStepper(page);
     await seedPracticeUserSettings(page, { uid, email });
 

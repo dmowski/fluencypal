@@ -22,6 +22,11 @@ export interface FetchGNewsTopHeadlinesParams {
   /** Maximum number of articles to request. Defaults to 3. */
   max?: number;
   /**
+   * gNews category slug (e.g. `technology`). When omitted, returns general
+   * top headlines for the country.
+   */
+  category?: string;
+  /**
    * Article language (e.g. 'en'). When omitted, the gNews `lang` filter is
    * NOT applied — articles are returned in any language the country publishes
    * in. This is the right default for our pipeline because the rewrite step
@@ -81,6 +86,7 @@ const mapArticle = (article: RawGNewsArticle): RawGNewsArticle => ({
 export const fetchGNewsTopHeadlines = async ({
   countryCode,
   max = DEFAULT_MAX,
+  category,
   lang,
 }: FetchGNewsTopHeadlinesParams): Promise<RawGNewsArticle[]> => {
   const apiKey = process.env.GNEWS_API_KEY;
@@ -99,8 +105,17 @@ export const fetchGNewsTopHeadlines = async ({
   };
 
   const attempts: Array<Parameters<GNews['topHeadlines']>[0]> = [
-    { country: normalisedCountry, max, ...(lang ? { lang } : {}) },
-    { max, ...(lang ? { lang } : {}) },
+    {
+      country: normalisedCountry,
+      max,
+      ...(category ? { category: category as Parameters<GNews['topHeadlines']>[0]['category'] } : {}),
+      ...(lang ? { lang } : {}),
+    },
+    {
+      max,
+      ...(category ? { category: category as Parameters<GNews['topHeadlines']>[0]['category'] } : {}),
+      ...(lang ? { lang } : {}),
+    },
   ];
 
   for (const params of attempts) {

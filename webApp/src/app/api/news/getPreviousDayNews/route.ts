@@ -11,6 +11,8 @@ const toSummary = (item: NewsItem): NewsItemSummary => ({
   dateIso: item.dateIso,
   countryCode: item.countryCode,
   languageCode: item.languageCode,
+  category: item.category ?? 'general',
+  tags: item.tags ?? [],
 });
 
 export async function POST(request: Request) {

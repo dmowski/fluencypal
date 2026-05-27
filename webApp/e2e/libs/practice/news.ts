@@ -1,4 +1,10 @@
-import { Page } from '@playwright/test';
+import { expect, Page, Route } from '@playwright/test';
+
+import {
+  seedPracticeUserSettings,
+  signInPracticeWithStepper,
+  type PracticeSignInResult,
+} from './auth';
 
 const FIRESTORE_EMULATOR_HOST = 'http://127.0.0.1:8080';
 const FIREBASE_PROJECT_ID = 'dark-lang';
@@ -22,7 +28,9 @@ export interface SeedNewsItemInput {
   /** Target learning language display name; defaults to 'English'. */
   languageName?: string;
   sourceUrl?: string;
-  versions?: { beginner: string; middle: string; advance: string } | null;
+  category?: string;
+  tags?: string[];
+  versions?: Partial<{ beginner: string; middle: string; advance: string }> | null;
 }
 
 type FirestoreValue =
@@ -87,6 +95,8 @@ export const seedNewsItem = async (input: SeedNewsItemInput): Promise<void> => {
     languageCode: (input.languageCode ?? 'en').trim().toLowerCase(),
     languageName: input.languageName ?? 'English',
     sourceUrl: input.sourceUrl ?? `https://example.com/${input.id}`,
+    category: input.category ?? 'general',
+    tags: input.tags ?? [],
     versions:
       input.versions === undefined ? { beginner: 'B', middle: 'M', advance: 'A' } : input.versions,
     createdAtIso: nowIso,
@@ -112,6 +122,83 @@ export const seedNewsItem = async (input: SeedNewsItemInput): Promise<void> => {
   }
 };
 
+export interface MockGetTodayNewsOptions {
+  items?: Array<Record<string, unknown>>;
+  onRequest?: (body: { countryCode?: string; languageCode?: string } | null) => void;
+}
+
+/** Stub `/api/news/getTodayNews` so UI specs never hit gNews/OpenAI. */
+export const mockNewsGenerationApi = async (
+  page: Page,
+  options: MockGetTodayNewsOptions = {},
+): Promise<void> => {
+  await page.route('**/api/news/getTodayNews', async (route) => {
+    const body = route.request().postDataJSON() as {
+      countryCode?: string;
+      languageCode?: string;
+    } | null;
+    options.onRequest?.(body);
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ items: options.items ?? [] }),
+    });
+  });
+};
+
+export const waitForPracticeAuth = async (page: Page): Promise<void> => {
+  await page.waitForFunction(
+    () => {
+      const handle = (window as any).__darkEngTest;
+      return Boolean(handle?.auth?.currentUser?.uid);
+    },
+    null,
+    { timeout: 15_000 },
+  );
+};
+
+export const waitForNewsDashboardCard = async (page: Page) => {
+  const card = page.getByTestId('news-dashboard-card');
+  await expect(card).toBeVisible();
+  return card;
+};
+
+export interface PrepareNewsPracticeOptions {
+  seedItems?: SeedNewsItemInput[];
+  /** Defaults to true — keeps generation off the real backend. */
+  mockGeneration?: boolean;
+}
+
+/**
+ * Seed Firestore (optional), mock generation (default), sign in, and seed user
+ * settings so the practice dashboard is ready for News specs.
+ */
+export const prepareNewsPracticePage = async (
+  page: Page,
+  options: PrepareNewsPracticeOptions = {},
+): Promise<PracticeSignInResult> => {
+  if (options.mockGeneration !== false) {
+    await mockNewsGenerationApi(page);
+  }
+
+  for (const item of options.seedItems ?? []) {
+    await seedNewsItem(item);
+  }
+
+  const auth = await signInPracticeWithStepper(page);
+  await seedPracticeUserSettings(page, { uid: auth.uid, email: auth.email });
+  return auth;
+};
+
+/** Opens the news feed modal from the dashboard card. */
+export const openNewsFeedModal = async (page: Page) => {
+  const card = await waitForNewsDashboardCard(page);
+  await card.click();
+  const feedModal = page.getByTestId('news-feed-modal');
+  await expect(feedModal).toBeVisible();
+  return feedModal;
+};
+
 /**
  * Get a Firebase ID token for the currently-signed-in user, fetched from
  * inside the page context via the test handle.
@@ -125,3 +212,8 @@ export const getCurrentIdToken = async (page: Page): Promise<string> => {
     return handle.auth.currentUser.getIdToken(true);
   });
 };
+
+export type GetTodayNewsRouteHandler = (
+  route: Route,
+  body: { countryCode?: string; languageCode?: string } | null,
+) => Promise<void>;

@@ -9,6 +9,7 @@ import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { StyledSelect } from '../uiKit/StyledSelect/StyledSelect';
 import {
+  NEWS_CATEGORY_FILTER_OPTIONS,
   NEWS_COMPLEXITY_LABELS,
   NEWS_COMPLEXITY_OPTIONS,
   NEWS_SUPPORTED_COUNTRIES,
@@ -50,6 +51,11 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
   const handleCountryChange = (value: string) => {
     news.setCountryOverride(value === '__auto__' ? null : value);
   };
+
+  const categoryOptions = NEWS_CATEGORY_FILTER_OPTIONS.map((option) => ({
+    value: option.value,
+    label: option.label === 'All' ? i18n._('All') : option.label,
+  }));
 
   const items = news.items ?? [];
   const isInitialLoading = news.isLoading && items.length === 0;
@@ -95,6 +101,12 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
                 value={news.complexity}
                 onChange={(v) => news.setComplexity(v as NewsLanguageComplexity)}
                 options={complexityOptions}
+              />
+              <StyledSelect
+                data-testid="news-category-select"
+                value={news.categoryFilter}
+                onChange={(v) => news.setCategoryFilter(v)}
+                options={categoryOptions}
               />
             </Stack>
           </Stack>
