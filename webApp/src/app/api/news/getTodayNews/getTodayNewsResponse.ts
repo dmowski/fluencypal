@@ -1,26 +1,14 @@
 import { NEWS_FETCH_CATEGORIES } from '@/features/News/constants';
-import { NewsItem, NewsItemSummary } from '@/features/News/types';
+import { NewsItem } from '@/features/News/types';
 import { GetTodayNewsRequest, GetTodayNewsResponse } from '../types';
 import { buildNewsId, getNewsDayKey } from '../buildNewsId';
 import { getCachedTodayNews, upsertCachedNews } from '../cache';
 import { enrichNewsItem } from '../enrichNewsItem';
-import { needsNewsImageUpload } from '../newsImageUrl';
 import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
+import { toNewsItemSummary } from '../newsRouteHelpers';
 import { DESIRED_COUNT, ITEMS_PER_CATEGORY } from './constant';
 
 const CANDIDATES_PER_CATEGORY = 20;
-
-const toSummary = (item: NewsItem): NewsItemSummary => ({
-  id: item.id,
-  title: item.title,
-  subTitle: item.subTitle,
-  imageUrl: item.imageUrl,
-  dateIso: item.dateIso,
-  countryCode: item.countryCode,
-  languageCode: item.languageCode,
-  category: item.category,
-  tags: item.tags,
-});
 
 const buildContentOrigin = (article: RawGNewsArticle): string => {
   const parts: string[] = [];
@@ -73,13 +61,6 @@ const buildNewsItemFromArticle = (
   };
 };
 
-const inflight = new Map<string, Promise<void>>();
-
-const buildInflightKey = (countryCode: string, languageCode: string): string =>
-  `${countryCode.trim().toLowerCase()}|${languageCode.trim().toLowerCase()}|${getNewsDayKey(
-    new Date().toISOString(),
-  )}`;
-
 const fetchArticlesForCategory = async (
   countryCode: string,
   category: string,
@@ -122,23 +103,6 @@ const populateTodayNews = async (request: GetTodayNewsRequest): Promise<void> =>
   await Promise.all(built.map((item) => enrichNewsItem(item).catch(() => undefined)));
 };
 
-const scheduleStaleItemEnrichment = (items: NewsItem[]): void => {
-  for (const item of items) {
-    if (!needsNewsImageUpload(item)) continue;
-    void enrichNewsItem(item).catch(() => undefined);
-  }
-};
-
-const ensurePopulateScheduled = (request: GetTodayNewsRequest): void => {
-  const key = buildInflightKey(request.countryCode, request.languageCode);
-  if (inflight.has(key)) return;
-
-  const work = populateTodayNews(request).finally(() => {
-    inflight.delete(key);
-  });
-  inflight.set(key, work);
-};
-
 export const getTodayNewsResponse = async (
   request: GetTodayNewsRequest,
 ): Promise<GetTodayNewsResponse> => {
@@ -147,11 +111,14 @@ export const getTodayNewsResponse = async (
     languageCode: request.languageCode,
   });
 
-  scheduleStaleItemEnrichment(cached);
-
   if (cached.length < DESIRED_COUNT) {
-    ensurePopulateScheduled(request);
+    await populateTodayNews(request);
+    const fresh = await getCachedTodayNews({
+      countryCode: request.countryCode,
+      languageCode: request.languageCode,
+    });
+    return { items: fresh.slice(0, DESIRED_COUNT).map(toNewsItemSummary) };
   }
 
-  return { items: cached.slice(0, DESIRED_COUNT).map(toSummary) };
+  return { items: cached.slice(0, DESIRED_COUNT).map(toNewsItemSummary) };
 };

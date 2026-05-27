@@ -2,8 +2,6 @@
 
 ## News: They should be interesting for me.
 
-Validate on prod firebase data. Refactor to reduce complexity
-
 ## Reader: Share the book with others
 
 Check how it works

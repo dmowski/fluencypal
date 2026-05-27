@@ -11,8 +11,7 @@ import {
   useState,
 } from 'react';
 
-import { triggerTodayNewsGeneration } from '@/app/api/news/getTodayNews/triggerTodayNewsGeneration';
-import { sleep } from '@/libs/sleep';
+import { getTodayNewsRequest } from '@/app/api/news/getTodayNews/getTodayNewsRequest';
 
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
@@ -212,7 +211,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
       setIsGenerating(true);
       try {
         const token = await auth.getToken();
-        await triggerTodayNewsGeneration(
+        const result = await getTodayNewsRequest(
           {
             countryCode,
             countryName: countryNameValue,
@@ -221,24 +220,14 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
           },
           token || null,
         );
-
-        // `/getTodayNews` returns immediately; briefly poll Firestore while ingest runs.
-        const pollDelaysMs = [500, 1000, 2000];
-        for (const delayMs of pollDelaysMs) {
-          await sleep(delayMs);
-          const refreshed = await readTodayFromFirestore(countryCode, languageCodeValue);
-          if (refreshed.length > 0) {
-            setAllItems(refreshed);
-            break;
-          }
-        }
+        setAllItems(result.items);
       } catch {
-        // Best-effort background generation; keep showing whatever Firestore had.
+        // Best-effort; keep showing whatever was loaded initially.
       } finally {
         setIsGenerating(false);
       }
     },
-    [auth, readTodayFromFirestore],
+    [auth],
   );
 
   const fetchToday = useCallback(
@@ -270,12 +259,7 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
         }
       }
 
-      void triggerGeneration(
-        countryCode,
-        countryNameValue,
-        languageCodeValue,
-        languageNameValue,
-      );
+      void triggerGeneration(countryCode, countryNameValue, languageCodeValue, languageNameValue);
     },
     [readTodayFromFirestore, triggerGeneration],
   );
@@ -298,17 +282,14 @@ export const NewsProvider = ({ children }: NewsProviderProps) => {
   countryOverrideRef.current = countryOverride;
   categoryFilterRef.current = categoryFilter;
 
-  const persistSettings = useCallback(
-    (next: Partial<PersistedSettings>) => {
-      writePersistedSettings({
-        complexity: complexityRef.current,
-        countryOverride: countryOverrideRef.current,
-        categoryFilter: categoryFilterRef.current,
-        ...next,
-      });
-    },
-    [],
-  );
+  const persistSettings = useCallback((next: Partial<PersistedSettings>) => {
+    writePersistedSettings({
+      complexity: complexityRef.current,
+      countryOverride: countryOverrideRef.current,
+      categoryFilter: categoryFilterRef.current,
+      ...next,
+    });
+  }, []);
 
   const setComplexity = useCallback(
     (next: NewsLanguageComplexity) => {
