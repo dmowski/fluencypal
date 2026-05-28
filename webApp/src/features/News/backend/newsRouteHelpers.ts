@@ -1,5 +1,5 @@
 import { NewsItem, NewsItemSummary } from '@/features/News/types';
-import { validateAuthToken } from '../config/firebase';
+import { validateAuthToken } from '@/app/api/config/firebase';
 
 class HttpError extends Error {
   constructor(

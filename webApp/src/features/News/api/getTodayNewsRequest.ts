@@ -1,4 +1,4 @@
-import { GetTodayNewsRequest, GetTodayNewsResponse } from '../types';
+import { GetTodayNewsRequest, GetTodayNewsResponse } from '../backend/types';
 
 export const getTodayNewsRequest = async (
   request: GetTodayNewsRequest,

@@ -1,8 +1,8 @@
 import { NewsLanguageComplexity } from '@/features/News/types';
-import { getCachedNewsById, mergeNewsVersion } from '../cache';
-import { parseAuthenticatedJson, withRoute } from '../newsRouteHelpers';
-import { rewriteNewsForLevel } from '../rewriteNewsForLevels';
-import { GetNewsFullTextRequest, GetNewsFullTextResponse } from '../types';
+import { getCachedNewsById, mergeNewsVersion } from '@/features/News/backend/cache';
+import { parseAuthenticatedJson, withRoute } from '@/features/News/backend/newsRouteHelpers';
+import { rewriteNewsForLevel } from '@/features/News/backend/rewriteNewsForLevels';
+import { GetNewsFullTextRequest, GetNewsFullTextResponse } from '@/features/News/backend/types';
 
 const isComplexity = (value: unknown): value is NewsLanguageComplexity =>
   value === 'beginner' || value === 'middle' || value === 'advance';

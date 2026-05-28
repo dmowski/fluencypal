@@ -1,6 +1,6 @@
-import { parseAuthenticatedJson, withRoute } from '../newsRouteHelpers';
-import { GetTodayNewsRequest } from '../types';
-import { getTodayNewsResponse } from './getTodayNewsResponse';
+import { parseAuthenticatedJson, withRoute } from '@/features/News/backend/newsRouteHelpers';
+import { GetTodayNewsRequest } from '@/features/News/backend/types';
+import { getTodayNewsResponse } from '@/features/News/backend/getTodayNews/getTodayNewsResponse';
 
 export const maxDuration = 60;
 

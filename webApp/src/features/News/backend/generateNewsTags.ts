@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { generateStrictJson } from '../ai/generateJson';
+import { generateStrictJson } from '@/app/api/ai/generateJson';
 import { buildNewsTagsSystemPrompt, buildNewsTagsUserPrompt } from './prompts';
 
 const tagsSchema = z.object({

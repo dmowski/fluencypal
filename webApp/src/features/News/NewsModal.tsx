@@ -4,7 +4,7 @@ import { useLingui } from '@lingui/react';
 import { Button, Chip, Stack, Typography } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { useEffect, useRef, useState } from 'react';
-import { getNewsFullTextRequest } from '@/app/api/news/getNewsFullText/getNewsFullTextRequest';
+import { getNewsFullTextRequest } from './api/getNewsFullTextRequest';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getMediaVideoStreams } from '../webCam/mediaStream';

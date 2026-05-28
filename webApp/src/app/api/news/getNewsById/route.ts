@@ -1,6 +1,6 @@
-import { getCachedNewsById } from '../cache';
-import { parseAuthenticatedJson, withRoute } from '../newsRouteHelpers';
-import { GetNewsByIdRequest, GetNewsByIdResponse } from '../types';
+import { getCachedNewsById } from '@/features/News/backend/cache';
+import { parseAuthenticatedJson, withRoute } from '@/features/News/backend/newsRouteHelpers';
+import { GetNewsByIdRequest, GetNewsByIdResponse } from '@/features/News/backend/types';
 
 export const POST = withRoute(async (request) => {
   const body = await parseAuthenticatedJson<GetNewsByIdRequest>(request);

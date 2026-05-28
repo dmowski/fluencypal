@@ -1,4 +1,4 @@
-import { getBucket } from '../config/firebase';
+import { getBucket } from '@/app/api/config/firebase';
 
 const FOLDER = 'newsImages';
 

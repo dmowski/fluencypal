@@ -1,4 +1,4 @@
-import { GetNewsByIdRequest, GetNewsByIdResponse } from '../types';
+import { GetNewsByIdRequest, GetNewsByIdResponse } from '../backend/types';
 
 export const getNewsByIdRequest = async (
   request: GetNewsByIdRequest,

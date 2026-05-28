@@ -11,7 +11,7 @@ import {
   useState,
 } from 'react';
 
-import { getTodayNewsRequest } from '@/app/api/news/getTodayNews/getTodayNewsRequest';
+import { getTodayNewsRequest } from './api/getTodayNewsRequest';
 
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';

@@ -1,9 +1,9 @@
-jest.mock('../ai/generateTextWithAi', () => ({
+jest.mock('@/app/api/ai/generateTextWithAi', () => ({
   generateTextWithAi: jest.fn(),
 }));
 
 import { rewriteNewsForLevels } from './rewriteNewsForLevels';
-import { generateTextWithAi } from '../ai/generateTextWithAi';
+import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
 
 const mockedGenerate = generateTextWithAi as jest.MockedFunction<typeof generateTextWithAi>;
 

@@ -1,4 +1,4 @@
-import { GetNewsFullTextRequest, GetNewsFullTextResponse } from '../types';
+import { GetNewsFullTextRequest, GetNewsFullTextResponse } from '../backend/types';
 
 export const getNewsFullTextRequest = async (
   request: GetNewsFullTextRequest,

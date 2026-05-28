@@ -1,6 +1,13 @@
-import { getCachedPreviousDayNews } from '../cache';
-import { parseAuthenticatedJson, toNewsItemSummary, withRoute } from '../newsRouteHelpers';
-import { GetPreviousDayNewsRequest, GetPreviousDayNewsResponse } from '../types';
+import { getCachedPreviousDayNews } from '@/features/News/backend/cache';
+import {
+  parseAuthenticatedJson,
+  toNewsItemSummary,
+  withRoute,
+} from '@/features/News/backend/newsRouteHelpers';
+import {
+  GetPreviousDayNewsRequest,
+  GetPreviousDayNewsResponse,
+} from '@/features/News/backend/types';
 
 export const POST = withRoute(async (request) => {
   const body = await parseAuthenticatedJson<GetPreviousDayNewsRequest>(request);

@@ -1,4 +1,4 @@
-import { GetPreviousDayNewsRequest, GetPreviousDayNewsResponse } from '../types';
+import { GetPreviousDayNewsRequest, GetPreviousDayNewsResponse } from '../backend/types';
 
 export const getPreviousDayNewsRequest = async (
   request: GetPreviousDayNewsRequest,

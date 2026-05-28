@@ -15,8 +15,10 @@ This file applies to `webApp/src/features/News/**`.
 - `constants.ts` — complexity labels, supported countries, gNews categories.
 - `types.ts` — `NewsItem`, `NewsItemSummary`, complexity types.
 - `buildNewsDiscussionPrompt.ts` — AI tutor prompt for `news-discussion` mode.
+- `api/` — client-side fetch helpers (one file per endpoint): `getTodayNewsRequest.ts`, `getNewsFullTextRequest.ts`, `getNewsByIdRequest.ts`, `getPreviousDayNewsRequest.ts`.
+- `backend/` — all server-side logic: cache, enrichment, gNews fetch, AI rewrites, prompts, route helpers, and request/response types. The `getTodayNews/` subfolder holds the population orchestration.
 
-Server-side population and AI live under `webApp/src/app/api/news/**` (Admin SDK writes; clients read only).
+Thin Next.js route handlers live under `webApp/src/app/api/news/**` (one `route.ts` per endpoint); all real logic lives in `backend/`.
 
 ## Data Flow
 
@@ -109,7 +111,7 @@ After changing files in this feature:
 
 ## Server-side Shared Helpers
 
-`webApp/src/app/api/news/newsRouteHelpers.ts` exports:
+`webApp/src/features/News/backend/newsRouteHelpers.ts` exports:
 
 - `parseAuthenticatedJson<T>(request)` — validates auth token and parses the JSON body; throws an internal `HttpError(401)` on auth failure.
 - `withRoute(handler)` — wraps a route handler; maps `HttpError` to the matching HTTP status, anything else to 500.

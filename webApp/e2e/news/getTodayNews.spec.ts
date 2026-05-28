@@ -6,7 +6,7 @@ import {
   signInPracticeWithStepper,
   seedPracticeUserSettings,
 } from '../libs/practice';
-import { DESIRED_COUNT } from '../../src/app/api/news/getTodayNews/constant';
+import { DESIRED_COUNT } from '../../src/features/News/backend/getTodayNews/constant';
 
 test.describe('/api/news/getTodayNews', () => {
   test.beforeEach(async () => {

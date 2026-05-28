@@ -1,5 +1,5 @@
 import { TextAiModel } from '@/features/Ai/ai';
-import { generateTextWithAi } from '../ai/generateTextWithAi';
+import { generateTextWithAi } from '@/app/api/ai/generateTextWithAi';
 import {
   buildNewsHeadlineTranslationSystemPrompt,
   buildNewsHeadlineTranslationUserPrompt,

@@ -1,4 +1,4 @@
-jest.mock('../config/firebase', () => {
+jest.mock('@/app/api/config/firebase', () => {
   const savedFiles: Array<{
     path: string;
     buffer: Buffer;

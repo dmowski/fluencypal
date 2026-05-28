@@ -1,6 +1,6 @@
 import { NewsItem, NewsLanguageComplexity } from '@/features/News/types';
-import { getDB } from '../config/firebase';
-import { sendTelegramMessageServer } from '../telegram/sendTelegramMessage';
+import { getDB } from '@/app/api/config/firebase';
+import { sendTelegramMessageServer } from '@/app/api/telegram/sendTelegramMessage';
 import { getNewsDayKey } from './buildNewsId';
 
 const NEWS_COLLECTION = 'news';

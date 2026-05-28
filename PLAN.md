@@ -2,6 +2,13 @@
 
 ## News: They should be interesting for me.
 
+Refactor news feature.
+webApp/src/features/News/AGENTS.md
+
+Move all backend code inside webApp/src/features/News/backend from
+webApp/src/app/api/news/\*
+on webApp/src/app/api/news/ should be tiny route.ts files
+
 ## Reader: Share the book with others
 
 Check how it works
