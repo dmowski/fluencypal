@@ -12,6 +12,10 @@ This file applies to `webApp/src/features/News/**`.
 - `NewsDashboardCard.tsx` — dashboard entry point.
 - `NewsPreviewCard.tsx` — row UI in the feed list.
 - `NewsComments.tsx` — per-article chat thread.
+- `NewsContentWithParagraphs.tsx` — renders article body as `ReaderParagraph` words; hosts the sticky `NewsPlayButton` and inline translation popover (`NewsTranslationPopover`) triggered by text selection.
+- `NewsPlayButton.tsx` — sticky playback bar: Play / Pause / Continue / Restart buttons + voice selector (`StyledSelect`). Pause suspends synthesis (resume continues from position); Restart re-plays from the beginning. Disabled with an explanatory label when TTS is unsupported or no voices are available for the language.
+- `NewsTranslationPopover.tsx` — lightweight popover anchored to the selection position; shows translated text, loading state, or a prompt to set a native language when translation is unavailable.
+- `useNewsVoice.ts` — per-article TTS hook: filters browser voices to the article language, scores them by quality (Google cloud > remote > Enhanced/Premium/Neural > default > Compact), persists the chosen voice URI per language in `localStorage` (`news-voice-v1-{lang}`), and exposes `play / pause / resume / stop` with `isPlaying` and `isPaused` state. Cancels synthesis on unmount.
 - `constants.ts` — complexity labels, supported countries, gNews categories.
 - `types.ts` — `NewsItem`, `NewsItemSummary`, complexity types.
 - `buildNewsDiscussionPrompt.ts` — AI tutor prompt for `news-discussion` mode.

@@ -51,6 +51,7 @@ const findBestVoice = (voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | u
 export type NewsVoiceApi = {
   isSupported: boolean;
   isPlaying: boolean;
+  isPaused: boolean;
   /** All voices available for the language. Empty when none found. */
   voices: SpeechSynthesisVoice[];
   /** BCP-47 language tag derived from languageCode. */
@@ -76,6 +77,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
 
   const [allVoices, setAllVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [selectedVoiceURI, setSelectedVoiceURIState] = useState<string | null>(() =>
     readStoredVoiceURI(languageCode),
   );
@@ -133,16 +135,21 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
     if (!isSupported) return;
     window.speechSynthesis.cancel();
     setIsPlaying(false);
+    setIsPaused(false);
   }, [isSupported]);
 
   const pause = useCallback(() => {
     if (!isSupported) return;
     window.speechSynthesis.pause();
+    setIsPlaying(false);
+    setIsPaused(true);
   }, [isSupported]);
 
   const resume = useCallback(() => {
     if (!isSupported) return;
     window.speechSynthesis.resume();
+    setIsPlaying(true);
+    setIsPaused(false);
   }, [isSupported]);
 
   const play = useCallback(
@@ -159,12 +166,19 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
         utterance.voice = voiceToUse;
       }
 
-      utterance.onend = () => setIsPlaying(false);
-      utterance.onerror = () => setIsPlaying(false);
+      utterance.onend = () => {
+        setIsPlaying(false);
+        setIsPaused(false);
+      };
+      utterance.onerror = () => {
+        setIsPlaying(false);
+        setIsPaused(false);
+      };
 
       window.speechSynthesis.cancel();
       window.speechSynthesis.resume();
       setIsPlaying(true);
+      setIsPaused(false);
       window.speechSynthesis.speak(utterance);
     },
     [isSupported, bcp47Language, allVoices, effectiveVoiceURI],
@@ -173,6 +187,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
   return {
     isSupported,
     isPlaying,
+    isPaused,
     voices,
     bcp47Language,
     selectedVoiceURI,

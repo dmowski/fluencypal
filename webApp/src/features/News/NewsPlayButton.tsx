@@ -4,7 +4,8 @@ import { useLingui } from '@lingui/react';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import { Button, Stack, Typography } from '@mui/material';
+import ReplayIcon from '@mui/icons-material/Replay';
+import { Button, ButtonProps, Stack, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import { StyledSelect } from '../uiKit/StyledSelect/StyledSelect';
 import { NewsVoiceApi } from './useNewsVoice';
@@ -13,6 +14,32 @@ interface NewsPlayButtonProps {
   text: string;
   voice: NewsVoiceApi;
 }
+
+const PlayerButton = ({
+  children,
+  disabled,
+  ...props
+}: Pick<ButtonProps, 'children' | 'onClick' | 'startIcon' | 'disabled'>) => (
+  <Button
+    variant="outlined"
+    disabled={disabled}
+    sx={{
+      color: disabled ? 'rgba(255,255,255,0.3)' : '#f7f9ff',
+      borderColor: disabled ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.24)',
+      '&:hover': {
+        borderColor: 'rgba(255,255,255,0.4)',
+        backgroundColor: 'rgba(255,255,255,0.08)',
+      },
+      '&.Mui-disabled': {
+        color: 'rgba(255,255,255,0.3)',
+        borderColor: 'rgba(255,255,255,0.12)',
+      },
+    }}
+    {...props}
+  >
+    {children}
+  </Button>
+);
 
 export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
   const { i18n } = useLingui();
@@ -36,7 +63,7 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
 
   const handlePlayPause = () => {
     if (voice.isPlaying) {
-      voice.stop();
+      voice.pause();
     } else {
       voice.play(text);
     }
@@ -65,34 +92,40 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
         },
       }}
     >
-      <Button
-        variant="outlined"
-        onClick={handlePlayPause}
-        disabled={isNotSupported}
-        startIcon={
-          isNotSupported ? (
-            <VolumeOffIcon fontSize="small" />
-          ) : voice.isPlaying ? (
-            <PauseIcon fontSize="small" />
-          ) : (
-            <PlayArrowIcon fontSize="small" />
-          )
-        }
-        sx={{
-          color: isNotSupported ? 'rgba(255,255,255,0.3)' : '#f7f9ff',
-          borderColor: 'rgba(255,255,255,0.24)',
-          '&:hover': {
-            borderColor: 'rgba(255,255,255,0.4)',
-            backgroundColor: 'rgba(255,255,255,0.08)',
-          },
-          '&.Mui-disabled': {
-            color: 'rgba(255,255,255,0.3)',
-            borderColor: 'rgba(255,255,255,0.12)',
-          },
-        }}
-      >
-        {voice.isPlaying ? i18n._('Pause') : i18n._('Play')}
-      </Button>
+      {voice.isPaused ? (
+        <Stack
+          sx={{ flexDirection: 'row', alignItems: 'center', gap: '8px 18px', flexWrap: 'wrap' }}
+        >
+          <PlayerButton
+            onClick={() => voice.resume()}
+            startIcon={<PlayArrowIcon fontSize="small" />}
+          >
+            {i18n._('Continue')}
+          </PlayerButton>
+          <PlayerButton
+            onClick={() => voice.play(text)}
+            startIcon={<ReplayIcon fontSize="small" />}
+          >
+            {i18n._('Restart')}
+          </PlayerButton>
+        </Stack>
+      ) : (
+        <PlayerButton
+          onClick={handlePlayPause}
+          disabled={isNotSupported}
+          startIcon={
+            isNotSupported ? (
+              <VolumeOffIcon fontSize="small" />
+            ) : voice.isPlaying ? (
+              <PauseIcon fontSize="small" />
+            ) : (
+              <PlayArrowIcon fontSize="small" />
+            )
+          }
+        >
+          {voice.isPlaying ? i18n._('Pause') : i18n._('Play')}
+        </PlayerButton>
+      )}
 
       {isNotSupported && (
         <Typography variant="caption" sx={{ opacity: 0.5 }}>
