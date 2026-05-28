@@ -269,14 +269,14 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                       size="small"
                       label={item.countryName}
                       data-testid="news-modal-country"
-                      sx={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+                      sx={{ backgroundColor: 'rgba(100,100,100,0.05)', color: 'inherit' }}
                     />
                   )}
                   <Chip
                     size="small"
                     label={NEWS_COMPLEXITY_LABELS[complexity]}
                     data-testid="news-modal-complexity"
-                    sx={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+                    sx={{ backgroundColor: 'rgba(100,100,100,0.05)', color: 'inherit' }}
                   />
                 </Stack>
 
