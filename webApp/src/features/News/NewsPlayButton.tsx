@@ -131,7 +131,7 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
         <Typography variant="caption" sx={{ opacity: 0.5 }}>
           {!voice.isSupported
             ? i18n._('Text-to-speech is not supported on your device')
-            : i18n._(`No voices available for ${voice.bcp47Language} on your device`)}
+            : i18n._('No voices available on your device')}
         </Typography>
       )}
 
