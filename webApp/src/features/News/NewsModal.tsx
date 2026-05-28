@@ -285,6 +285,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                     h1: {
                       fontSize: '70px',
                       fontWeight: 800,
+
                       '@media (max-width:600px)': {
                         fontSize: '32px',
                       },
