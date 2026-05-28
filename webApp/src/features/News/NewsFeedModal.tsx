@@ -58,7 +58,7 @@ const NewsFeedModalContent = ({ onClose, onOpenNews }: NewsFeedModalContentProps
   }));
 
   const items = news.items ?? [];
-  const isInitialLoading = news.isLoading && items.length === 0;
+  const isInitialLoading = (news.isLoading || news.isGenerating) && items.length === 0;
   const previousItems = news.previousItems ?? [];
   const hasPreviousLoaded = news.previousItems !== null;
 
