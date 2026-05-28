@@ -231,32 +231,44 @@ export function LanguageSwitcher({
                     onChange={(newLang) => setLanguageToLearn(newLang)}
                   />
                   {recentLearnLanguages.length > 1 && (
-                    <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap', paddingTop: '4px' }}>
-                      {recentLearnLanguages
-                        .filter((lang) => lang !== langToLearn)
-                        .map((lang) => (
-                          <button
-                            key={lang}
-                            title={lang}
-                            onClick={() => setLanguageToLearn(lang)}
-                            style={{
-                              background: 'none',
-                              border: '2px solid transparent',
-                              borderRadius: '6px',
-                              padding: '2px',
-                              cursor: 'pointer',
-                              lineHeight: 0,
-                            }}
-                          >
-                            <Image
-                              src={langFlags[lang]}
-                              alt={lang}
-                              width={32}
-                              height={22}
-                              style={{ borderRadius: '3px', display: 'block' }}
-                            />
-                          </button>
-                        ))}
+                    <Stack
+                      sx={{
+                        paddingLeft: '3px',
+                      }}
+                    >
+                      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                        {i18n._(`Previously selected:`)}
+                      </Typography>
+                      <Stack
+                        direction="row"
+                        sx={{ gap: '8px', flexWrap: 'wrap', paddingTop: '4px' }}
+                      >
+                        {recentLearnLanguages
+                          .filter((lang) => lang !== langToLearn)
+                          .map((lang) => (
+                            <button
+                              key={lang}
+                              title={lang}
+                              onClick={() => setLanguageToLearn(lang)}
+                              style={{
+                                background: 'none',
+                                border: '2px solid transparent',
+                                borderRadius: '6px',
+                                padding: '2px',
+                                cursor: 'pointer',
+                                lineHeight: 0,
+                              }}
+                            >
+                              <Image
+                                src={langFlags[lang]}
+                                alt={lang}
+                                width={32}
+                                height={22}
+                                style={{ borderRadius: '3px', display: 'block' }}
+                              />
+                            </button>
+                          ))}
+                      </Stack>
                     </Stack>
                   )}
                 </Stack>
