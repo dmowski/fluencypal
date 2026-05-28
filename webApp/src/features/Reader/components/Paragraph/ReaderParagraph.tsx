@@ -76,6 +76,8 @@ interface ReaderParagraphProps {
    */
   markdownPrefix?: string;
   markdownSuffix?: string;
+
+  textIndentDefault?: string | number;
 }
 
 const ReaderParagraphBase = ({
@@ -102,6 +104,7 @@ const ReaderParagraphBase = ({
   markdownPrefix,
   markdownSuffix,
   hoverBgColor = HOVER_BG_COLOR,
+  textIndentDefault,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
   const markdownSourceText = `${markdownPrefix ?? ''}${paragraphText}${markdownSuffix ?? ''}`;
@@ -124,10 +127,12 @@ const ReaderParagraphBase = ({
   const hasCrossPageEmphasisWrappers = Boolean(markdownPrefix) || Boolean(markdownSuffix);
   const shouldRenderMarkdown =
     hasInlineMarkdownFormatting || hasBlockMarkdown || hasCrossPageEmphasisWrappers;
-  const paragraphTextIndent = getReaderParagraphTextIndent({
-    paragraphText,
-    isParagraphStart,
-  });
+  const paragraphTextIndent =
+    textIndentDefault ??
+    getReaderParagraphTextIndent({
+      paragraphText,
+      isParagraphStart,
+    });
 
   // Absolute character start offset of each word within words.join(' ').
   const wordCharOffsets = useMemo(() => getWordCharOffsets(words), [words]);

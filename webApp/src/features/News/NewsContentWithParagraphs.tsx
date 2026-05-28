@@ -85,7 +85,7 @@ export const NewsContentWithParagraphs = ({
       <NewsPlayButton text={plainText} voice={voice} />
 
       {paragraphWords.map((words, index) => (
-        <Stack key={index} sx={{ width: '100%', alignItems: 'flex-end', gap: '4px' }}>
+        <Stack key={index} sx={{ width: '100%', alignItems: 'flex-start', gap: '4px' }}>
           <ReaderParagraph
             paragraphIndex={index}
             paragraphStartCharOffset={0}
@@ -98,6 +98,7 @@ export const NewsContentWithParagraphs = ({
             highlights={[]}
             onWordHover={undefined}
             hoverBgColor="rgba(255, 255, 255, 0.1)"
+            textIndentDefault={0}
           />
         </Stack>
       ))}
