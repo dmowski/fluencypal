@@ -28,28 +28,24 @@ const writeStoredVoiceURI = (languageCode: SupportedLanguage, voiceURI: string |
   }
 };
 
-const PREFERRED_VOICE_NAMES = [
-  'Google US English',
-  'Google UK English Female',
-  'Google UK English Male',
-  'Samantha',
-];
+const scoreVoiceQuality = (voice: SpeechSynthesisVoice): number => {
+  const name = voice.name.toLowerCase();
+  // Penalise compact/low-quality voices first.
+  if (name.includes('compact')) return 0;
+  // Top tier: Google voices — best cross-language quality.
+  if (name.includes('google')) return 5;
+  // Second tier: other cloud / remote voices.
+  if (!voice.localService) return 4;
+  // High-quality on-device: macOS Enhanced / Premium, Edge Neural.
+  if (name.includes('enhanced') || name.includes('premium')) return 3;
+  if (name.includes('neural') || name.includes('natural')) return 3;
+  // Default on-device voice.
+  return 1;
+};
 
-const findBestVoice = (
-  bcp47Language: string,
-  voices: SpeechSynthesisVoice[],
-): SpeechSynthesisVoice | undefined => {
-  const normalized = bcp47Language.toLowerCase();
-
-  for (const preferred of PREFERRED_VOICE_NAMES) {
-    const match = voices.find((v) => v.name === preferred);
-    if (match) return match;
-  }
-
-  return (
-    voices.find((v) => v.lang.toLowerCase() === normalized) ??
-    voices.find((v) => v.lang.toLowerCase().startsWith(`${normalized.split('-')[0]}-`))
-  );
+const findBestVoice = (voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined => {
+  if (voices.length === 0) return undefined;
+  return [...voices].sort((a, b) => scoreVoiceQuality(b) - scoreVoiceQuality(a))[0];
 };
 
 export type NewsVoiceApi = {
@@ -103,6 +99,13 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
     };
   }, [isSupported]);
 
+  useEffect(() => {
+    if (!isSupported) return;
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, [isSupported]);
+
   const voices = useMemo(() => {
     const normalized = bcp47Language.toLowerCase();
     const langPrefix = normalized.split('-')[0];
@@ -115,7 +118,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
   const effectiveVoiceURI = useMemo(() => {
     const storedIsAvailable = voices.some((v) => v.voiceURI === selectedVoiceURI);
     if (storedIsAvailable) return selectedVoiceURI;
-    return findBestVoice(bcp47Language, voices)?.voiceURI ?? voices[0]?.voiceURI ?? null;
+    return findBestVoice(voices)?.voiceURI ?? voices[0]?.voiceURI ?? null;
   }, [voices, selectedVoiceURI, bcp47Language]);
 
   const setSelectedVoiceURI = useCallback(

@@ -26,8 +26,6 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
     [voice.voices],
   );
 
-  console.log('voiceOptions', voiceOptions);
-
   const selectedVoiceValue = voice.effectiveVoiceURI ?? '';
 
   const handleVoiceChange = (value: string) => {
