@@ -93,9 +93,6 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
       >
         {voice.isPlaying ? i18n._('Pause') : i18n._('Play')}
       </Button>
-      <Typography variant="body2" sx={{ opacity: 0.7, flexShrink: 0 }}>
-        {voice.bcp47Language}
-      </Typography>
 
       {isNotSupported && (
         <Typography variant="caption" sx={{ opacity: 0.5 }}>
