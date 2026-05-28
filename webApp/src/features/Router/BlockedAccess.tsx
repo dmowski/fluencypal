@@ -98,6 +98,7 @@ export const BlockedAccess = () => {
             isAuth={true}
             langToLearn={settings.languageCode || 'en'}
             setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
+            recentLearnLanguages={settings.recentLearnLanguages}
             setPageLanguage={settings.setPageLanguage}
             nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
             setNativeLanguage={settings.setNativeLanguage}

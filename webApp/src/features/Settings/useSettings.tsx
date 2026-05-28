@@ -66,6 +66,7 @@ interface SettingsContextType {
   };
 
   isFirstDay: boolean;
+  recentLearnLanguages: SupportedLanguage[];
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -101,6 +102,7 @@ export const settingsContext = createContext<SettingsContextType>({
     closeSettingsModal: () => {},
   },
   isFirstDay: false,
+  recentLearnLanguages: [],
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -137,7 +139,16 @@ function useProvideSettings(): SettingsContextType {
   const setLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return 'en';
     const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || 'en';
-    await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
+    const existing = userSettings?.recentLearnLanguages || [];
+    const recentLearnLanguages: SupportedLanguage[] = [
+      langCodeValidated,
+      ...existing.filter((l) => l !== langCodeValidated),
+    ];
+    await setDoc(
+      userSettingsDoc,
+      { languageCode: langCodeValidated, recentLearnLanguages },
+      { merge: true },
+    );
     return langCodeValidated;
   };
 
@@ -307,6 +318,7 @@ function useProvideSettings(): SettingsContextType {
       openSettingsModal,
       closeSettingsModal,
     },
+    recentLearnLanguages: userSettings?.recentLearnLanguages || [],
   };
 }
 

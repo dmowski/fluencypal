@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## Language selector.
+
+- Keep flag images on "public" folder (webApp/src/features/Lang/lang.ts) langFlags. and update langFlags variable
+- When user switches between languages to lear, keep uniq list in firebase webApp/src/features/Settings/useSettings.tsx
+- If uniq languages more that 2, show other language under "{i18n.\_(`Language to Learn`)}" as icon. So use can easy switch.
+
 ## News: They should be interesting for me.
 
 Refactor news feature.

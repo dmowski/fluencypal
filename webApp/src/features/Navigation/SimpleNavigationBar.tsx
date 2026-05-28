@@ -186,6 +186,7 @@ export const SimpleNavigationBar: React.FC = () => {
         isAuth={auth.isAuthorized}
         langToLearn={settings.languageCode || 'en'}
         setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
+        recentLearnLanguages={settings.recentLearnLanguages}
         setPageLanguage={settings.setPageLanguage}
         nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
         setNativeLanguage={settings.setNativeLanguage}

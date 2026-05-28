@@ -157,28 +157,28 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
 };
 
 export const langFlags: Record<string, string> = {
-  en: 'https://flagcdn.com/w80/us.png',
-  ru: 'https://flagcdn.com/w80/ru.png',
-  de: 'https://flagcdn.com/w80/de.png',
-  pl: 'https://flagcdn.com/w80/pl.png',
-  uk: 'https://flagcdn.com/w80/ua.png',
-  fr: 'https://flagcdn.com/w80/fr.png',
-  es: 'https://flagcdn.com/w80/es.png',
-  ar: 'https://flagcdn.com/w80/sa.png',
-  id: 'https://flagcdn.com/w80/id.png',
-  it: 'https://flagcdn.com/w80/it.png',
-  ja: 'https://flagcdn.com/w80/jp.png',
-  ko: 'https://flagcdn.com/w80/kr.png',
-  ms: 'https://flagcdn.com/w80/my.png',
-  pt: 'https://flagcdn.com/w80/pt.png',
-  th: 'https://flagcdn.com/w80/th.png',
-  tr: 'https://flagcdn.com/w80/tr.png',
-  vi: 'https://flagcdn.com/w80/vn.png',
-  zh: 'https://flagcdn.com/w80/cn.png',
-  da: 'https://flagcdn.com/w80/dk.png', // Danish
-  no: 'https://flagcdn.com/w80/no.png', // Norwegian
-  sv: 'https://flagcdn.com/w80/se.png', // Swedish
-  be: 'https://flagcdn.com/w80/by.png', // Belarusian
+  en: '/flags/us.png',
+  ru: '/flags/ru.png',
+  de: '/flags/de.png',
+  pl: '/flags/pl.png',
+  uk: '/flags/ua.png',
+  fr: '/flags/fr.png',
+  es: '/flags/es.png',
+  ar: '/flags/sa.png',
+  id: '/flags/id.png',
+  it: '/flags/it.png',
+  ja: '/flags/jp.png',
+  ko: '/flags/kr.png',
+  ms: '/flags/my.png',
+  pt: '/flags/pt.png',
+  th: '/flags/th.png',
+  tr: '/flags/tr.png',
+  vi: '/flags/vn.png',
+  zh: '/flags/cn.png',
+  da: '/flags/dk.png', // Danish
+  no: '/flags/no.png', // Norwegian
+  sv: '/flags/se.png', // Swedish
+  be: '/flags/by.png', // Belarusian
 };
 
 export const fullLanguageName: Record<SupportedLanguage, string> = {

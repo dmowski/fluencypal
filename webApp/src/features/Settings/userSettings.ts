@@ -53,6 +53,7 @@ export interface UserSettings extends InitUserSettings {
 
   isSendEmailNotifications?: boolean | null;
   teacherVoice: AiVoice | null;
+  recentLearnLanguages?: SupportedLanguage[] | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

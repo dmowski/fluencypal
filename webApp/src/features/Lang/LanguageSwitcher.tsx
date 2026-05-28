@@ -7,6 +7,7 @@ import { Button, Stack, Typography } from '@mui/material';
 import {
   availableOnLabelMap,
   getUserLangCode,
+  langFlags,
   SupportedLanguage,
   supportedLanguages,
   supportedLanguagesToLearn,
@@ -21,6 +22,7 @@ import LanguageAutocomplete from './LanguageAutocomplete';
 import { useLanguageGroup } from '../Goal/useLanguageGroup';
 import { useUrlParam } from '../Url/useUrlParam';
 import { NativeLangCode } from '@/libs/language/type';
+import Image from 'next/image';
 
 interface LanguageSwitcherProps {
   isHidden?: boolean;
@@ -28,6 +30,7 @@ interface LanguageSwitcherProps {
 
   langToLearn?: SupportedLanguage;
   setLanguageToLearn?: (lang: SupportedLanguage) => void;
+  recentLearnLanguages?: SupportedLanguage[];
 
   nativeLang?: NativeLangCode;
   setNativeLanguage?: (lang: NativeLangCode) => void;
@@ -39,6 +42,7 @@ export function LanguageSwitcher({
   isAuth,
   langToLearn,
   setLanguageToLearn,
+  recentLearnLanguages = [],
   setPageLanguage,
   setNativeLanguage,
   nativeLang,
@@ -226,6 +230,35 @@ export function LanguageSwitcher({
                     availableList={supportedLanguagesToLearn}
                     onChange={(newLang) => setLanguageToLearn(newLang)}
                   />
+                  {recentLearnLanguages.length > 1 && (
+                    <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap', paddingTop: '4px' }}>
+                      {recentLearnLanguages
+                        .filter((lang) => lang !== langToLearn)
+                        .map((lang) => (
+                          <button
+                            key={lang}
+                            title={lang}
+                            onClick={() => setLanguageToLearn(lang)}
+                            style={{
+                              background: 'none',
+                              border: '2px solid transparent',
+                              borderRadius: '6px',
+                              padding: '2px',
+                              cursor: 'pointer',
+                              lineHeight: 0,
+                            }}
+                          >
+                            <Image
+                              src={langFlags[lang]}
+                              alt={lang}
+                              width={32}
+                              height={22}
+                              style={{ borderRadius: '3px', display: 'block' }}
+                            />
+                          </button>
+                        ))}
+                    </Stack>
+                  )}
                 </Stack>
               )}
 
