@@ -43,7 +43,10 @@ export interface ReaderParagraphHoverPayload {
   endIndex: number;
 }
 
+const HOVER_BG_COLOR = `#d3d3d3ab`;
+
 interface ReaderParagraphProps {
+  hoverBgColor?: string;
   paragraphIndex: number;
   paragraphStartCharOffset: number;
   words: string[];
@@ -98,6 +101,7 @@ const ReaderParagraphBase = ({
   isResizeAnchorHighlightVisible,
   markdownPrefix,
   markdownSuffix,
+  hoverBgColor = HOVER_BG_COLOR,
 }: ReaderParagraphProps) => {
   const paragraphText = words.join(' ');
   const markdownSourceText = `${markdownPrefix ?? ''}${paragraphText}${markdownSuffix ?? ''}`;
@@ -486,7 +490,7 @@ const ReaderParagraphBase = ({
                       top: '1px',
                       left: '-6px',
                       borderRadius: '8px',
-                      backgroundColor: '#d3d3d3ab',
+                      backgroundColor: hoverBgColor,
                       zIndex: -1,
                       '@media (max-width: 500px)': {
                         display: 'none',
