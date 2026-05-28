@@ -151,9 +151,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
       const utterance = new SpeechSynthesisUtterance(trimmed);
       utterance.lang = bcp47Language;
 
-      const voiceToUse =
-        allVoices.find((v) => v.voiceURI === selectedVoiceURI) ??
-        findBestVoice(bcp47Language, allVoices);
+      const voiceToUse = allVoices.find((v) => v.voiceURI === effectiveVoiceURI);
       if (voiceToUse) {
         utterance.voice = voiceToUse;
       }
@@ -166,7 +164,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
       setIsPlaying(true);
       window.speechSynthesis.speak(utterance);
     },
-    [isSupported, bcp47Language, allVoices, selectedVoiceURI],
+    [isSupported, bcp47Language, allVoices, effectiveVoiceURI],
   );
 
   return {
