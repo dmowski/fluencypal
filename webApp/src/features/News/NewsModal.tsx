@@ -20,6 +20,7 @@ import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import { buildNewsDiscussionPrompt } from './buildNewsDiscussionPrompt';
 import { NewsItem, NewsLanguageComplexity } from './types';
+import { NewsContentWithParagraphs } from './NewsContentWithParagraphs';
 
 export const NewsModal = () => {
   const { isOpen, newsId, closeNews } = useNewsModal();
@@ -326,25 +327,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
                 </Stack>
               ) : content ? (
-                <Stack
-                  sx={{
-                    '* p': {
-                      padding: '16px 0',
-                      fontSize: '30px',
-                      fontWeight: 400,
-                      '@media (max-width:600px)': {
-                        fontSize: '22px',
-                      },
-                    },
-                    '*': {
-                      fontFamily: 'serif',
-                    },
-                  }}
-                >
-                  <Markdown variant="rule" onWordClick={onWordClick}>
-                    {'\n' + content}
-                  </Markdown>
-                </Stack>
+                <NewsContentWithParagraphs content={content} languageCode={news.languageCode} />
               ) : (
                 <Typography variant="body2" sx={{ opacity: 0.7 }}>
                   {i18n._(

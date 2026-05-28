@@ -1,15 +1,12 @@
 # Live document with short/long term ideas
 
-## Language selector.
-
 ## News: They should be interesting for me.
 
-Refactor news feature.
 webApp/src/features/News/AGENTS.md
 
-Move all backend code inside webApp/src/features/News/backend from
-webApp/src/app/api/news/\*
-on webApp/src/app/api/news/ should be tiny route.ts files
+## Fluency pal: extension
+
+- News feed
 
 ## Reader: Share the book with others
 
