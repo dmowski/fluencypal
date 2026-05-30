@@ -4,16 +4,6 @@
 
 webApp/src/features/News/AGENTS.md
 
-On news webApp/src/features/News/NewsModal.tsx
-Add icon buttons: Previous, Next
-Under "Discuss with AI" button. Use Icon buttons.
-So the user can navigate to next and previous news without closing news.
-And after pressing on that button, we need to scroll modal up.
-
-## Reader: Share the book with others
-
-Make more clean UI that the book is shared. Along with my books, share section: Shared with me? Tabs: all | shared?
-
 ## Reader: Search feature
 
 Reader info: webApp/src/features/Reader/AGENTS.md

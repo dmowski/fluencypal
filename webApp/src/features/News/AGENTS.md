@@ -8,7 +8,7 @@ This file applies to `webApp/src/features/News/**`.
 - `newsFirestore.ts` — client-side Firestore queries for the `news` collection.
 - `useNewsModal.tsx` — URL state for feed/article modals (`newsFeed=open`, `newsId`).
 - `NewsFeedModal.tsx` — feed list with country, complexity, and category filters.
-- `NewsModal.tsx` — single article view; loads body text on demand per complexity.
+- `NewsModal.tsx` — single article view; loads body text on demand per complexity; Previous/Next icon buttons navigate within the loaded feed list (today + loaded previous days) without closing the modal.
 - `NewsDashboardCard.tsx` — dashboard entry point.
 - `NewsPreviewCard.tsx` — row UI in the feed list.
 - `NewsComments.tsx` — per-article chat thread.

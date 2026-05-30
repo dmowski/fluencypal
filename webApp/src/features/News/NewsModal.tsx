@@ -1,9 +1,11 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, Chip, Stack, Typography } from '@mui/material';
+import { Button, Chip, IconButton, Stack, Typography } from '@mui/material';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { getNewsFullTextRequest } from './api/getNewsFullTextRequest';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
 import { useConversationAudio } from '../Audio/useConversationAudio';
@@ -35,8 +37,24 @@ interface NewsModalContentProps {
   onClose: () => void;
 }
 
+const scrollModalToTop = (anchor: HTMLElement | null) => {
+  let el: HTMLElement | null = anchor;
+  while (el) {
+    const { overflowY } = getComputedStyle(el);
+    if (
+      (overflowY === 'auto' || overflowY === 'scroll') &&
+      el.scrollHeight > el.clientHeight
+    ) {
+      el.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    el = el.parentElement;
+  }
+};
+
 const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const news = useNews();
+  const { openNews } = useNewsModal();
   const auth = useAuth();
   const translator = useTranslate();
   const aiConversation = useAiConversation();
@@ -52,6 +70,36 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const [retryToken, setRetryToken] = useState(0);
   const [isCallStarting, setIsCallStarting] = useState(false);
   const requestedKeyRef = useRef<string | null>(null);
+  const modalContentRef = useRef<HTMLDivElement>(null);
+
+  const navigableIds = useMemo(() => {
+    const today = news.items ?? [];
+    const previous = news.previousItems ?? [];
+    return [...today, ...previous].map((item) => item.id);
+  }, [news.items, news.previousItems]);
+
+  const currentIndex = navigableIds.indexOf(newsId);
+  const previousNewsId = currentIndex > 0 ? navigableIds[currentIndex - 1] : null;
+  const nextNewsId =
+    currentIndex >= 0 && currentIndex < navigableIds.length - 1
+      ? navigableIds[currentIndex + 1]
+      : null;
+
+  const scrollToTop = useCallback(() => {
+    scrollModalToTop(modalContentRef.current);
+  }, []);
+
+  const goToNews = useCallback(
+    (id: string) => {
+      openNews(id);
+      scrollToTop();
+    },
+    [openNews, scrollToTop],
+  );
+
+  useEffect(() => {
+    scrollToTop();
+  }, [newsId, scrollToTop]);
 
   const getNewsByIdRef = useRef(news.getNewsById);
   getNewsByIdRef.current = news.getNewsById;
@@ -202,6 +250,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
         }}
       >
         <Stack
+          ref={modalContentRef}
           data-testid="news-modal"
           sx={{
             gap: '24px',
@@ -336,14 +385,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                 </Typography>
               )}
 
-              <Stack
-                sx={{
-                  marginTop: '20px',
-                  flexDirection: 'row',
-                  gap: '12px',
-                  flexWrap: 'wrap',
-                }}
-              >
+              <Stack sx={{ marginTop: '20px', gap: '12px' }}>
                 <Button
                   variant="contained"
                   color="info"
@@ -351,10 +393,38 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   disabled={isCallStarting || isContentLoading || !content}
                   onClick={discussWithAi}
                   data-testid="news-modal-discuss-button"
-                  sx={{ padding: '10px 24px' }}
+                  sx={{ padding: '10px 24px', alignSelf: 'flex-start' }}
                 >
                   {isCallStarting ? i18n._('Starting...') : i18n._('Discuss with AI')}
                 </Button>
+                <Stack sx={{ flexDirection: 'row', gap: '4px' }}>
+                  <IconButton
+                    color="inherit"
+                    disabled={!previousNewsId}
+                    onClick={() => previousNewsId && goToNews(previousNewsId)}
+                    aria-label={i18n._('Previous article')}
+                    data-testid="news-modal-prev-button"
+                    sx={{
+                      color: '#EBEBF5',
+                      opacity: previousNewsId ? 1 : 0.4,
+                    }}
+                  >
+                    <NavigateBeforeIcon />
+                  </IconButton>
+                  <IconButton
+                    color="inherit"
+                    disabled={!nextNewsId}
+                    onClick={() => nextNewsId && goToNews(nextNewsId)}
+                    aria-label={i18n._('Next article')}
+                    data-testid="news-modal-next-button"
+                    sx={{
+                      color: '#EBEBF5',
+                      opacity: nextNewsId ? 1 : 0.4,
+                    }}
+                  >
+                    <NavigateNextIcon />
+                  </IconButton>
+                </Stack>
               </Stack>
             </>
           )}
