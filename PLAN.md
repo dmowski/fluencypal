@@ -12,7 +12,11 @@ And after pressing on that button, we need to scroll modal up.
 
 ## Reader: Share the book with others
 
-Check how it works. Make more clean UI that the book is shared. Along with my books, share section: Shared with me? Tabs: all | shared?
+Make more clean UI that the book is shared. Along with my books, share section: Shared with me? Tabs: all | shared?
+
+## Reader: Search feature
+
+Reader info: webApp/src/features/Reader/AGENTS.md
 
 ## Alias game: create better version
 
@@ -32,10 +36,6 @@ Check how it works. Make more clean UI that the book is shared. Along with my bo
 ## App: More realistic web calls
 
 - How to setup custom realtime communicator
-
-## Reader: Search feature
-
-Reader info: webApp/src/features/Reader/AGENTS.md
 
 =================================
 

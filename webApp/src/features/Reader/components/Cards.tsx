@@ -24,6 +24,7 @@ import {
   Share2,
   Tablet,
   Trash2,
+  Users,
 } from 'lucide-react';
 
 export const BookCard = ({
@@ -34,6 +35,7 @@ export const BookCard = ({
   onShare,
   onSendToKindle,
   isProcessing = false,
+  isSharedWithMe = false,
 }: {
   data: Book;
   onClick: (data: Book) => void;
@@ -42,6 +44,7 @@ export const BookCard = ({
   onShare?: (data: Book) => void;
   onSendToKindle?: (data: Book) => void;
   isProcessing?: boolean;
+  isSharedWithMe?: boolean;
 }) => {
   const i18n = useLingui();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -364,6 +367,24 @@ export const BookCard = ({
         >
           {data.author}
         </Typography>
+        {isSharedWithMe ? (
+          <Stack
+            component="span"
+            data-testid={`book-shared-indicator-${data.id}`}
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '4px',
+              opacity: 0.85,
+              color: '#fff',
+            }}
+          >
+            <Users size={11} />
+            <Typography component="span" variant="caption" sx={{ color: 'inherit', lineHeight: 1 }}>
+              {i18n._('Shared with you')}
+            </Typography>
+          </Stack>
+        ) : null}
         <Typography variant="caption" sx={{ opacity: 0.6, color: '#fff' }}>
           {isProcessing ? (
             <Stack component="span" sx={{ flexDirection: 'row', alignItems: 'center', gap: '4px' }}>

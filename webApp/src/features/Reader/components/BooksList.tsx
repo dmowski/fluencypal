@@ -3,7 +3,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { ImportProgressPanel } from './ImportProgressPanel';
 import { useLingui } from '@lingui/react';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { BookCard, AddNewBookCard, LibraryBookCard } from './Cards';
 import { useBooks } from '../hooks/useBooks';
 import { Book } from '../model/types';
@@ -32,6 +32,9 @@ import { useNonEpubImport } from '../hooks/useNonEpubImport';
 import { isConvertibleFile, validateConvertFile } from '../utils/convertUpload';
 
 const FALLBACK_LIBRARY_ERROR = 'Failed to download library book.';
+
+const isBookOwner = (book: Book, uid: string | null | undefined) =>
+  !book.ownerUserId || book.ownerUserId === uid;
 
 export const BooksList = () => {
   const i18n = useLingui();
@@ -247,6 +250,34 @@ export const BooksList = () => {
     }
   };
 
+  const myBooks = useMemo(
+    () => books.usersBooks.filter((book) => !auth.uid || isBookOwner(book, auth.uid)),
+    [books.usersBooks, auth.uid],
+  );
+  const sharedWithMeBooks = useMemo(
+    () =>
+      auth.uid
+        ? books.usersBooks.filter(
+            (book) => book.ownerUserId !== undefined && book.ownerUserId !== auth.uid,
+          )
+        : [],
+    [books.usersBooks, auth.uid],
+  );
+
+  const renderBookCard = (book: Book, isSharedWithMe: boolean) => (
+    <BookCard
+      key={book.id}
+      data={book}
+      onClick={() => books.setActive(book.id)}
+      onDelete={handleDelete}
+      onDownloadFromBlob={handleDownloadFromBlob}
+      onShare={auth.isAuthorized ? handleShare : undefined}
+      onSendToKindle={auth.isAuthorized ? (b) => setKindleBookId(b.id) : undefined}
+      isProcessing={book.id === nonEpubImport.processingBookId}
+      isSharedWithMe={isSharedWithMe}
+    />
+  );
+
   return (
     <Stack
       data-testid="books-list-drop-target"
@@ -410,22 +441,26 @@ export const BooksList = () => {
               flexWrap: 'wrap',
             }}
           >
-            {books.usersBooks.map((book) => (
-              <BookCard
-                key={book.id}
-                data={book}
-                onClick={() => books.setActive(book.id)}
-                onDelete={handleDelete}
-                onDownloadFromBlob={handleDownloadFromBlob}
-                onShare={auth.isAuthorized ? handleShare : undefined}
-                onSendToKindle={auth.isAuthorized ? (b) => setKindleBookId(b.id) : undefined}
-                isProcessing={book.id === nonEpubImport.processingBookId}
-              />
-            ))}
+            {myBooks.map((book) => renderBookCard(book, false))}
 
             <AddNewBookCard onClick={handleAddBookClick} isDisabled={isBusy} />
           </Stack>
         </Stack>
+
+        {sharedWithMeBooks.length > 0 ? (
+          <Stack data-testid="reader-shared-books-section" sx={{ gap: '12px' }}>
+            <Typography variant="h6">{i18n._('Shared with me')}</Typography>
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                gap: '16px',
+                flexWrap: 'wrap',
+              }}
+            >
+              {sharedWithMeBooks.map((book) => renderBookCard(book, true))}
+            </Stack>
+          </Stack>
+        ) : null}
 
         {importError ? (
           <Typography variant="caption" color="error" data-testid="books-drop-import-error">
