@@ -75,15 +75,23 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
 
     if (auth.isAuthorized) {
       return (
-        <Stack gap="16px" alignItems="center" padding="8px">
-          {auth.userInfo?.photoURL && (
+        <Stack gap="26px" alignItems="center" padding="8px">
+          <Stack alignItems="center">
             <Avatar
-              src={auth.userInfo.photoURL}
-              alt={auth.userInfo.displayName || ''}
+              src={auth.userInfo?.photoURL || ''}
+              alt={auth.userInfo?.displayName || ''}
               sx={{ width: 64, height: 64 }}
             />
-          )}
-          <Typography variant="h6">{auth.userInfo?.displayName || auth.userInfo?.email}</Typography>
+
+            <Typography variant="h6" sx={{ marginTop: '8px' }}>
+              {auth.userInfo?.displayName || auth.userInfo?.email}
+            </Typography>
+            {auth.userInfo?.displayName && auth.userInfo?.email && (
+              <Typography variant="body2" sx={{ opacity: 0.6 }}>
+                {auth.userInfo.email}
+              </Typography>
+            )}
+          </Stack>
           <Button variant="outlined" onClick={() => void handleLogout()}>
             {i18n._('Logout')}
           </Button>
