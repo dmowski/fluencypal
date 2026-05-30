@@ -33,10 +33,14 @@ export interface BooksSyncRefs {
   lastPushedSignatures: MutableRefObject<Map<string, string>>;
   /** Last highlights timestamp pushed, to fast-path immediate pushes. */
   lastPushedHighlightsIso: MutableRefObject<Map<string, string | null>>;
+  /** Last sharing fingerprint pushed, to fast-path immediate pushes. */
+  lastPushedSharingSig: MutableRefObject<Map<string, string>>;
   /** Per-book debounce timers for push. */
   pushTimers: MutableRefObject<Map<string, ReturnType<typeof setTimeout>>>;
   /** Per-book in-flight push guard so concurrent edits collapse safely. */
   inFlightUploads: MutableRefObject<Set<string>>;
+  /** Book ids that changed while a push was in flight and need a follow-up push. */
+  pendingPushAfterUpload: MutableRefObject<Set<string>>;
   /** Cached `createdAtIso` per book to keep it stable across pushes. */
   createdAtCache: MutableRefObject<Map<string, string>>;
   /** Per-book locks for the eager EPUB hydration effect. */

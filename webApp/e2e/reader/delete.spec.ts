@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import {
   BOOK_TITLE,
   createEmulatorTestUser,
+  mockStorageUploads,
   openFreshReaderPageForUser,
   openSeededGatsbyBook,
   resetEmulatorState,
@@ -30,8 +31,9 @@ const goToBooksList = async (page: Page) => {
 };
 
 test.describe('Reader book deletion', () => {
-  test.beforeEach(async () => {
+  test.beforeEach(async ({ page }) => {
     await resetEmulatorState();
+    await mockStorageUploads(page);
   });
 
   // ------------------------------------------------------------------ //

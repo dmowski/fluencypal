@@ -1,5 +1,13 @@
 import { Book } from '../../model/types';
 
+/** Fingerprint of sharing fields — used to fast-path immediate pushes. */
+export const buildSharingSignature = (book: Book): string =>
+  JSON.stringify({
+    ownerUserId: book.ownerUserId ?? null,
+    userIds: book.userIds ? [...book.userIds].sort() : null,
+    memberEmails: book.memberEmails ?? null,
+  });
+
 /**
  * Stable string fingerprint of the parts of a Book that should round-trip
  * through Firestore. Reading position is intentionally excluded — it is a

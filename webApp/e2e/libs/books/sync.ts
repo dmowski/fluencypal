@@ -199,6 +199,69 @@ export const waitForBookMissingForUser = async (
 };
 
 /**
+ * Intercepts browser-side Firebase Storage upload requests (POST/PUT) to the
+ * local emulator and fulfills them instantly with a minimal success response.
+ *
+ * The Firebase Storage emulator can take ~60 s to process gzip-encoded uploads
+ * due to an emulator-side bug.  Mocking the transport layer lets the sync
+ * logic (Firestore writes, path propagation, debounce) be tested quickly
+ * without waiting for that emulator slowness.
+ *
+ * Only upload requests are affected; GET (download) requests pass through.
+ */
+export const mockStorageUploads = async (page: Page): Promise<void> => {
+  await page.route(/http:\/\/(127\.0\.0\.1|localhost):9199\//, (route) => {
+    const method = route.request().method();
+    if (method !== 'POST' && method !== 'PUT') {
+      void route.continue();
+      return;
+    }
+    let name = 'unknown';
+    try {
+      const params = new URL(route.request().url()).searchParams;
+      name = decodeURIComponent(params.get('name') ?? 'unknown');
+    } catch {
+      // ignore URL parse errors
+    }
+    void route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        name,
+        bucket: FIREBASE_BUCKET,
+        generation: '1',
+        metageneration: '1',
+        contentType: 'application/octet-stream',
+        size: '1',
+      }),
+    });
+  });
+};
+
+/**
+ * Pre-seeds a minimal paragraphs blob at the expected Storage emulator path
+ * for `bookId`.  This ensures `headParagraphsBlob` / `waitForParagraphsBlob`
+ * return `true` even when browser-side uploads are mocked via
+ * `mockStorageUploads`.
+ *
+ * The blob content is intentionally trivial — the test only needs to confirm
+ * the path exists, not its actual content.
+ */
+export const seedParagraphsBlob = async (bookId: string): Promise<string> => {
+  const path = `books/${bookId}/paragraphs.json.gz`;
+  const uploadUrl = `${STORAGE_EMULATOR_HOST}/upload/storage/v1/b/${FIREBASE_BUCKET}/o?uploadType=media&name=${encodeURIComponent(path)}`;
+  const response = await fetch(uploadUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer owner' },
+    body: '[]',
+  });
+  if (!response.ok) {
+    throw new Error(`seedParagraphsBlob failed: ${response.status} ${await response.text()}`);
+  }
+  return path;
+};
+
+/**
  * Polls until the specific bookId IS present in a user's remote books.
  */
 export const waitForBookPresentForUser = async (

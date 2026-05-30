@@ -329,7 +329,6 @@ export const BooksList = () => {
             currentUserEmail={auth.userInfo?.email ?? null}
             getToken={auth.getToken}
             onShare={(userId, email) => {
-              // Store the owner's own email in memberEmails so non-owners can display it.
               const ownerEmail = auth.userInfo?.email?.toLowerCase();
               if (ownerEmail && auth.uid && !shareBook.memberEmails?.[auth.uid]) {
                 books.storeMemberEmail(shareBook.id, auth.uid, ownerEmail);

@@ -1,7 +1,7 @@
 /**
  * Client-side direct Firestore operations for shared-book management.
  * These bypass the debounced push pipeline for actions that must be
- * immediately consistent (e.g. a user leaving a book they don't own).
+ * immediately consistent when local state is removed before push runs.
  */
 import { arrayRemove, deleteField, updateDoc } from 'firebase/firestore';
 import { db } from '@/features/Firebase/firebaseDb';
@@ -10,10 +10,9 @@ import { db } from '@/features/Firebase/firebaseDb';
  * Remove `userId` from a shared book's `userIds`, `memberIds`, and
  * `memberEmails` fields via a direct partial Firestore update.
  *
- * The caller should NOT also go through the signature-based push pipeline for
- * this change — the direct write IS the update. The `onSnapshot` subscription
- * in `useRemoteSubscription` will fire and call `removeBookLocally` once the
- * write is confirmed, which properly cleans up local state and refs.
+ * Used when a non-owner leaves a shared book: the book is removed from local
+ * state immediately and the push layer must not delete the whole document.
+ * The owner's `removeUserFromBook` goes through the normal push pipeline.
  */
 export const leaveSharedBook = async (bookId: string, userId: string): Promise<void> => {
   const docRef = db.documents.readerBook(bookId);

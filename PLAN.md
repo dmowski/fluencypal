@@ -4,13 +4,15 @@
 
 webApp/src/features/News/AGENTS.md
 
-## Fluency pal: extension
-
-- News feed
+On news webApp/src/features/News/NewsModal.tsx
+Add icon buttons: Previous, Next
+Under "Discuss with AI" button. Use Icon buttons.
+So the user can navigate to next and previous news without closing news.
+And after pressing on that button, we need to scroll modal up.
 
 ## Reader: Share the book with others
 
-Check how it works
+Check how it works. Make more clean UI that the book is shared. Along with my books, share section: Shared with me? Tabs: all | shared?
 
 ## Alias game: create better version
 

@@ -22,6 +22,71 @@ const BOOK_FIXTURE_PATH = 'e2e/fixtures/Supercommunicators.epub';
 const EXPECTED_COPYRIGHT = 'Copyright © 2024 by Charles Duhigg';
 const EXPECTED_COVER_IMAGE_KEY = 'images/9780385697750_cover.jpg';
 
+const STORAGE_EMULATOR_HOST = 'http://127.0.0.1:9199';
+const FIREBASE_BUCKET = 'dark-lang.firebasestorage.app';
+const FIRESTORE_EMULATOR_HOST = 'http://127.0.0.1:8080';
+const FIREBASE_PROJECT_ID = 'dark-lang';
+
+/**
+ * Uploads an EPUB fixture to the Storage emulator under the given path, then
+ * intercepts /api/reader/convert so tests don't need a real CloudConvert key.
+ *
+ * A minimal Firestore stub is created for `bookId` so that the Firebase
+ * Storage security rules allow the app to download the converted EPUB later.
+ */
+const mockConvertToPipelineEpub = async (
+  page: Page,
+  bookId: string,
+  epubFixturePath: string,
+  ownerUid: string,
+): Promise<string> => {
+  // Create a Firestore stub so Storage rules can verify membership when the
+  // app calls downloadConvertResultAsFile for books/{bookId}/converted.epub.
+  const firestoreUrl = `${FIRESTORE_EMULATOR_HOST}/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents/books?documentId=${encodeURIComponent(bookId)}`;
+  const stubRes = await fetch(firestoreUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer owner' },
+    body: JSON.stringify({
+      fields: {
+        id: { stringValue: bookId },
+        ownerUserId: { stringValue: ownerUid },
+        memberIds: { arrayValue: { values: [{ stringValue: ownerUid }] } },
+        userIds: { arrayValue: { values: [] } },
+      },
+    }),
+  });
+  if (!stubRes.ok) {
+    throw new Error(`Firestore stub creation failed: ${stubRes.status} ${await stubRes.text()}`);
+  }
+
+  const epubBytes = await readFile(path.resolve(epubFixturePath));
+  const storagePath = `books/${bookId}/converted.epub`;
+
+  // Upload to Storage emulator (bypass rules with 'owner' token).
+  const uploadUrl = `${STORAGE_EMULATOR_HOST}/upload/storage/v1/b/${FIREBASE_BUCKET}/o?uploadType=media&name=${encodeURIComponent(storagePath)}`;
+  const uploadResponse = await fetch(uploadUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/epub+zip',
+      Authorization: 'Bearer owner',
+    },
+    body: epubBytes,
+  });
+  if (!uploadResponse.ok) {
+    throw new Error(`Storage emulator upload failed: ${uploadResponse.status} ${await uploadResponse.text()}`);
+  }
+
+  await page.route('**/api/reader/convert', (route) => {
+    void route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ epubBlobPath: storagePath }),
+    });
+  });
+
+  return storagePath;
+};
+
 const assertVisibleReaderColumnsFitViewport = async (page: Page) => {
   const columns = page.getByTestId('reader-page-column');
   const count = await columns.count();
@@ -187,21 +252,61 @@ test('shows auth modal when PDF is selected without being signed in', async ({ p
 });
 
 test('imports PDF via conversion pipeline', async ({ page }) => {
-  test.setTimeout(180_000);
+  test.setTimeout(120_000);
   await resetEmulatorState();
   const user = await createEmulatorTestUser();
 
   await openBooksPageWithCleanStorage(page);
   await signInTestUserOnPage(page, user);
 
+  // Mock browser-side Storage uploads so uploadConvertTempFile (PDF) and the
+  // subsequent paragraphs blob upload complete instantly without hitting the
+  // Storage emulator slowness.  GET downloads still pass through so the
+  // pre-seeded EPUB can be fetched by downloadConvertResultAsFile.
+  await page.route(/http:\/\/(127\.0\.0\.1|localhost):9199\//, (route) => {
+    const method = route.request().method();
+    if (method !== 'POST' && method !== 'PUT') {
+      void route.continue();
+      return;
+    }
+    let name = 'unknown';
+    try {
+      const params = new URL(route.request().url()).searchParams;
+      name = decodeURIComponent(params.get('name') ?? 'unknown');
+    } catch {
+      // ignore
+    }
+    void route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        name,
+        bucket: FIREBASE_BUCKET,
+        generation: '1',
+        metageneration: '1',
+        contentType: 'application/octet-stream',
+        size: '1',
+      }),
+    });
+  });
+
+  // Pre-upload a known EPUB to the Storage emulator and intercept the convert
+  // route so the test doesn't need a real CloudConvert API key.
+  // A Firestore stub for mockBookId is created inside mockConvertToPipelineEpub
+  // so that the Storage rules allow the app to download the converted EPUB.
+  const mockBookId = `e2e-pdf-mock-${Date.now()}`;
+  await mockConvertToPipelineEpub(page, mockBookId, BOOK_FIXTURE_PATH, user.uid);
+  await mockConvertDocToTextRoute(page);
+
   const pdfFixturePath = path.resolve('public/Reader/sample.pdf');
   const fileChooser = await openAddBookFileChooser(page);
   await fileChooser.setFiles(pdfFixturePath);
 
-  // CloudConvert can take a while; poll until any imported book heading appears.
+  // All network-heavy steps are now mocked/instant. Wait for the reader to
+  // open and show an h2 heading (the book title rendered by ReaderHeader).
   await expect
     .poll(async () => page.getByRole('heading', { level: 2 }).first().isVisible(), {
-      timeout: 120_000,
+      timeout: 60_000,
     })
     .toBe(true);
 });

@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/nextjs';
 import { db } from '@/features/Firebase/firebaseDb';
 import { buildStubBookFromRemote, mergeRemoteBookIntoLocal } from '../booksSyncMerge';
 import { migrateRemoteDoc } from '../../utils/migrateBookData';
-import { buildLocalSignature } from './signature';
+import { buildLocalSignature, buildSharingSignature } from './signature';
 import { errorLog, log } from './log';
 import { BooksSyncRefs, BooksSyncStatusSetters } from './types';
 
@@ -106,6 +106,7 @@ export const useRemoteSubscription = ({
               local.id,
               local.highlightsUpdatedAtIso ?? null,
             );
+            refs.lastPushedSharingSig.current.set(local.id, buildSharingSignature(local));
           }
         });
 

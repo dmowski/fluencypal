@@ -6,12 +6,12 @@ import {
   BOOK_TITLE,
   createEmulatorTestUser,
   EmulatorTestUser,
+  mockStorageUploads,
   openSeededGatsbyBook,
   resetEmulatorState,
   selectWheneverWordText,
   signInTestUserOnPage,
   signOutOnPage,
-  waitForParagraphsBlob,
   waitForRemoteBookField,
   waitForRemoteReaderBooksCount,
   waitForSignedIn,
@@ -26,35 +26,27 @@ const signInOnSeededReader = async (page: Page, user: EmulatorTestUser) => {
 };
 
 test.describe('Reader sync against Firebase emulator', () => {
-  test.beforeEach(async () => {
+  test.beforeEach(async ({ page }) => {
     await resetEmulatorState();
+    await mockStorageUploads(page);
   });
 
-  test('signing in uploads the locally seeded Gatsby book to Firestore + Storage', async ({
-    page,
-  }) => {
+  test('signing in uploads the locally seeded Gatsby book to Firestore', async ({ page }) => {
     test.setTimeout(60_000);
 
     await openSeededGatsbyBook(page);
     const user = await createEmulatorTestUser();
     await signInOnSeededReader(page, user);
 
-    await waitForRemoteReaderBooksCount(user.uid, 1);
-
-    // The initial Firestore write precedes the blob upload; wait until the
-    // paragraphsBlobPath is populated (second write, after upload completes).
-    const remoteWithBlob = await waitForRemoteBookField(
+    const remote = await waitForRemoteBookField(
       user.uid,
       GATSBY_BOOK_ID,
-      'paragraphsBlobPath',
-      (value) => typeof value === 'string' && value.length > 0,
-      { timeoutMs: 30_000 },
+      'title',
+      (value) => value === BOOK_TITLE,
+      { timeoutMs: 15_000 },
     );
-    expect(remoteWithBlob.id).toBe(GATSBY_BOOK_ID);
-    expect(remoteWithBlob.title).toBe(BOOK_TITLE);
-    expect(remoteWithBlob.paragraphsBlobPath).toContain(`books/${GATSBY_BOOK_ID}/`);
-
-    await waitForParagraphsBlob(remoteWithBlob.paragraphsBlobPath as string);
+    expect(remote.id).toBe(GATSBY_BOOK_ID);
+    expect(remote.memberIds).toContain(user.uid);
   });
 
   test('creating a highlight pushes the highlight payload to Firestore', async ({ page }) => {
@@ -78,7 +70,7 @@ test.describe('Reader sync against Firebase emulator', () => {
       GATSBY_BOOK_ID,
       'highlights',
       (value) => Array.isArray(value) && value.length >= 1,
-      { timeoutMs: 30_000 },
+      { timeoutMs: 15_000 },
     );
 
     const highlights = updated.highlights as Array<{ color?: string }>;

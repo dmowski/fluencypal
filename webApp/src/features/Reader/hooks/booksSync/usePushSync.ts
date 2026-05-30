@@ -9,7 +9,7 @@ import {
   uploadOriginalFileBlob,
   uploadParagraphsBlob,
 } from '../../server/readerStorage';
-import { buildLocalSignature } from './signature';
+import { buildLocalSignature, buildSharingSignature } from './signature';
 import { errorLog, getErrorCode, getErrorMessage, log } from './log';
 import { BooksSyncRefs, BooksSyncStatusSetters, PUSH_DEBOUNCE_MS } from './types';
 
@@ -22,6 +22,17 @@ interface Args {
   refs: BooksSyncRefs;
   setters: BooksSyncStatusSetters;
 }
+
+const stampOwnerUserId = (book: Book, userId: string): Book => {
+  const isCurrentUserMember =
+    book.ownerUserId === userId || (book.userIds?.includes(userId) ?? false);
+  if (isCurrentUserMember) return book;
+  return {
+    ...book,
+    ownerUserId: userId,
+    userIds: book.userIds ?? [],
+  };
+};
 
 /**
  * Push-side of the sync loop. Watches `usersBooks`, debounces per-book pushes,
@@ -41,76 +52,72 @@ export const usePushSync = ({
     async (book: Book): Promise<void> => {
       if (!userId) return;
       if (refs.inFlightUploads.current.has(book.id)) {
-        log('push skipped (already in flight)', { bookId: book.id });
+        refs.pendingPushAfterUpload.current.add(book.id);
+        log('push deferred (already in flight)', { bookId: book.id });
         return;
       }
 
       const docRef = db.documents.readerBook(book.id);
       if (!docRef) return;
 
+      const getLatest = (): Book =>
+        refs.usersBooks.current.find((entry) => entry.id === book.id) ?? book;
+
+      const writeRemoteDoc = async (source: Book): Promise<{ nowIso: string; createdAtIso: string }> => {
+        const nowIso = new Date().toISOString();
+        const createdAtIso =
+          refs.createdAtCache.current.get(book.id) ?? source.dataUpdatedAtIso ?? nowIso;
+        const remoteDoc = buildRemoteDocFromLocal(stampOwnerUserId(source, userId), {
+          createdAtIso,
+          nowIso,
+        });
+        await setDoc(docRef, remoteDoc);
+        return { nowIso, createdAtIso };
+      };
+
+      const latestAtStart = getLatest();
       log('push start', {
         bookId: book.id,
-        title: book.title,
-        hasParagraphs: book.paragraphs.length,
-        hasEpubFile: !!book.epubFile,
-        hasParagraphsBlob: !!book.paragraphsBlobPath,
-        hasEpubBlob: !!book.convertedFiles.epub,
-        highlightsCount: book.highlights?.length ?? 0,
-        highlightsIso: book.highlightsUpdatedAtIso ?? null,
+        title: latestAtStart.title,
+        hasParagraphs: latestAtStart.paragraphs.length,
+        hasEpubFile: !!latestAtStart.epubFile,
+        hasParagraphsBlob: !!latestAtStart.paragraphsBlobPath,
+        hasEpubBlob: !!latestAtStart.convertedFiles.epub,
+        highlightsCount: latestAtStart.highlights?.length ?? 0,
+        highlightsIso: latestAtStart.highlightsUpdatedAtIso ?? null,
+        sharingSig: buildSharingSignature(latestAtStart),
       });
       refs.inFlightUploads.current.add(book.id);
 
       try {
-        let paragraphsBlobPath = book.paragraphsBlobPath;
-        let convertedFiles = book.convertedFiles;
-
-        const nowIso = new Date().toISOString();
-        const createdAtIso =
-          refs.createdAtCache.current.get(book.id) ?? book.dataUpdatedAtIso ?? nowIso;
-
-        // Stamp ownerUserId on first push so memberIds is populated.
-        // Only preserve the stored ownerUserId when the current user is a member
-        // of the book (owner or collaborator). If the stored ownerUserId belongs
-        // to a different user's session (e.g. after clearing data or switching
-        // accounts), override it so the Firestore create rule can pass.
-        const isCurrentUserMember =
-          book.ownerUserId === userId || (book.userIds?.includes(userId) ?? false);
-        const bookWithOwner: Book = isCurrentUserMember
-          ? { ...book, paragraphsBlobPath, convertedFiles }
-          : {
-              ...book,
-              paragraphsBlobPath,
-              convertedFiles,
-              ownerUserId: userId,
-              userIds: book.userIds ?? [],
-            };
+        let paragraphsBlobPath = latestAtStart.paragraphsBlobPath;
+        let convertedFiles = latestAtStart.convertedFiles;
 
         // Write the Firestore doc FIRST (without blob paths if they don't exist
-        // yet). This establishes book membership so that subsequent Storage
-        // uploads can pass the cross-service `firestore.get()` security rule.
-        const initialDoc = buildRemoteDocFromLocal(bookWithOwner, { createdAtIso, nowIso });
-        await setDoc(docRef, initialDoc);
-        // Register in knownRemoteIds immediately after the first write so that
-        // the delete-detection code can find and remove this document if the
-        // user deletes the book locally while blobs are still uploading.
+        // yet). Always read the latest local copy so in-flight sharing edits
+        // are not overwritten by a stale closure snapshot.
+        const { nowIso, createdAtIso } = await writeRemoteDoc(getLatest());
         refs.knownRemoteIds.current.add(book.id);
         log('Firestore doc written (initial)', {
           bookId: book.id,
-          highlightsCount: initialDoc.highlights?.length ?? 0,
-          paragraphsBlobPath: initialDoc.paragraphsBlobPath ?? null,
+          memberIds: buildRemoteDocFromLocal(stampOwnerUserId(getLatest(), userId), {
+            createdAtIso,
+            nowIso,
+          }).memberIds ?? null,
         });
 
         // Upload blobs now that the Firestore doc exists.
         let blobsChanged = false;
 
-        if (!paragraphsBlobPath && book.paragraphs.length > 0) {
+        const latestForUpload = getLatest();
+        if (!paragraphsBlobPath && latestForUpload.paragraphs.length > 0) {
           log('uploading paragraphs blob', {
             bookId: book.id,
-            paragraphCount: book.paragraphs.length,
+            paragraphCount: latestForUpload.paragraphs.length,
           });
           const upload = await uploadParagraphsBlob({
             bookId: book.id,
-            paragraphs: book.paragraphs,
+            paragraphs: latestForUpload.paragraphs,
           });
           paragraphsBlobPath = upload.path;
           blobsChanged = true;
@@ -127,15 +134,16 @@ export const usePushSync = ({
           });
         }
 
-        if (!convertedFiles.epub && book.epubFile) {
+        const latestForEpub = getLatest();
+        if (!convertedFiles.epub && latestForEpub.epubFile) {
           log('uploading EPUB blob', {
             bookId: book.id,
-            fileName: book.epubFile.name,
-            sizeBytes: book.epubFile.size,
+            fileName: latestForEpub.epubFile.name,
+            sizeBytes: latestForEpub.epubFile.size,
           });
           const epubPath = await uploadOriginalFileBlob({
             bookId: book.id,
-            file: book.epubFile,
+            file: latestForEpub.epubFile,
           });
           convertedFiles = { ...convertedFiles, epub: epubPath };
           blobsChanged = true;
@@ -143,16 +151,14 @@ export const usePushSync = ({
           refs.knownOriginalPaths.current.set(book.id, epubPath);
         }
 
-        // If blob paths were resolved, update the Firestore doc with them.
-        // Guard: skip if the book was deleted locally while blobs were uploading —
-        // the delete-detection code will remove the Firestore doc instead.
         const stillExists = refs.usersBooks.current.some((b) => b.id === book.id);
         if (blobsChanged && stillExists) {
-          const finalDoc = buildRemoteDocFromLocal(
-            { ...bookWithOwner, paragraphsBlobPath, convertedFiles },
-            { createdAtIso, nowIso },
-          );
-          await setDoc(docRef, finalDoc);
+          const latestWithBlobs = {
+            ...getLatest(),
+            paragraphsBlobPath,
+            convertedFiles,
+          };
+          await writeRemoteDoc(latestWithBlobs);
           log('Firestore doc updated with blob paths', {
             bookId: book.id,
             paragraphsBlobPath,
@@ -165,31 +171,30 @@ export const usePushSync = ({
         }
 
         refs.createdAtCache.current.set(book.id, createdAtIso);
-        // knownRemoteIds was already updated right after the first setDoc above.
-        // Include resolved blob paths in the stored signature so the effect
-        // does not see a stale mismatch and schedule a redundant second push.
-        refs.lastPushedSignatures.current.set(
+        const latestFinal = getLatest();
+        const signatureBook = {
+          ...latestFinal,
+          paragraphsBlobPath: paragraphsBlobPath ?? latestFinal.paragraphsBlobPath,
+          convertedFiles,
+          ownerUserId: latestFinal.ownerUserId ?? stampOwnerUserId(latestFinal, userId).ownerUserId,
+        };
+        refs.lastPushedSignatures.current.set(book.id, buildLocalSignature(signatureBook));
+        refs.lastPushedHighlightsIso.current.set(
           book.id,
-          buildLocalSignature({ ...bookWithOwner, paragraphsBlobPath, convertedFiles }),
+          latestFinal.highlightsUpdatedAtIso ?? null,
         );
-        refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
+        refs.lastPushedSharingSig.current.set(book.id, buildSharingSignature(latestFinal));
 
-        // Persist the storage pointers and ownerUserId locally so we don't
-        // re-upload on every push. Use the freshest local copy (not the
-        // closure-captured `book`) so we don't clobber newer edits that
-        // happened during the in-flight upload.
-        const latestLocal = refs.usersBooks.current.find((entry) => entry.id === book.id) ?? book;
         const needsLocalUpdate =
-          paragraphsBlobPath !== latestLocal.paragraphsBlobPath ||
-          JSON.stringify(convertedFiles) !== JSON.stringify(latestLocal.convertedFiles) ||
-          (!latestLocal.ownerUserId && bookWithOwner.ownerUserId);
+          paragraphsBlobPath !== latestFinal.paragraphsBlobPath ||
+          JSON.stringify(convertedFiles) !== JSON.stringify(latestFinal.convertedFiles) ||
+          (!latestFinal.ownerUserId && stampOwnerUserId(latestFinal, userId).ownerUserId);
         if (needsLocalUpdate) {
           applyRemoteBookMerge(book.id, {
-            ...latestLocal,
-            paragraphsBlobPath,
+            ...latestFinal,
+            paragraphsBlobPath: paragraphsBlobPath ?? latestFinal.paragraphsBlobPath,
             convertedFiles,
-            ownerUserId: latestLocal.ownerUserId ?? bookWithOwner.ownerUserId,
-            userIds: latestLocal.userIds ?? bookWithOwner.userIds,
+            ownerUserId: latestFinal.ownerUserId ?? stampOwnerUserId(latestFinal, userId).ownerUserId,
           });
         }
 
@@ -207,6 +212,14 @@ export const usePushSync = ({
         setters.setError(getErrorMessage(pushError));
       } finally {
         refs.inFlightUploads.current.delete(book.id);
+        if (refs.pendingPushAfterUpload.current.has(book.id)) {
+          refs.pendingPushAfterUpload.current.delete(book.id);
+          const latest = refs.usersBooks.current.find((entry) => entry.id === book.id);
+          if (latest) {
+            log('push follow-up after in-flight upload', { bookId: book.id });
+            void pushBook(latest);
+          }
+        }
       }
     },
     [userId, applyRemoteBookMerge, refs, setters],
@@ -234,10 +247,6 @@ export const usePushSync = ({
   useEffect(() => {
     if (!userId) return;
     if (!isUsersBooksLoaded) return;
-    // Wait for the first Firestore snapshot before considering any push.
-    // Without this gate, every refresh pushes the existing books because the
-    // in-memory `lastPushedSignatures` map starts empty even though the doc
-    // already exists on the server.
     if (!hasReceivedInitialSnapshot) return;
 
     usersBooks.forEach((book) => {
@@ -247,35 +256,41 @@ export const usePushSync = ({
         refs.suppressedSignatures.current.delete(book.id);
         refs.lastPushedSignatures.current.set(book.id, signature);
         refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
+        refs.lastPushedSharingSig.current.set(book.id, buildSharingSignature(book));
         return;
       }
       const lastPushed = refs.lastPushedSignatures.current.get(book.id);
       if (lastPushed === signature) return;
 
-      // Highlights: push immediately so multi-device sync feels realtime.
-      // Other field edits (title/position/etc.) keep the small debounce.
       const lastHighlightsIso = refs.lastPushedHighlightsIso.current.get(book.id) ?? null;
       const currentHighlightsIso = book.highlightsUpdatedAtIso ?? null;
       const highlightsChanged = currentHighlightsIso !== lastHighlightsIso;
+
+      const lastSharingSig = refs.lastPushedSharingSig.current.get(book.id) ?? null;
+      const sharingChanged = buildSharingSignature(book) !== lastSharingSig;
+
+      const immediate = highlightsChanged || sharingChanged;
       log('scheduling push', {
         bookId: book.id,
-        immediate: highlightsChanged,
-        reason: highlightsChanged ? 'highlights-changed' : 'other-fields-changed',
+        immediate,
+        reason: highlightsChanged
+          ? 'highlights-changed'
+          : sharingChanged
+            ? 'sharing-changed'
+            : 'other-fields-changed',
       });
-      schedulePush(book, { immediate: highlightsChanged });
+      schedulePush(book, { immediate });
     });
 
-    // Detect locally-deleted books and remove the corresponding remote doc.
     const presentIds = new Set(usersBooks.map((book) => book.id));
     refs.knownRemoteIds.current.forEach((id) => {
       if (presentIds.has(id)) return;
 
-      // Books removed via a "leave" operation (non-owner self-removal) have
-      // their Firestore update already written directly. Skip the delete.
       if (refs.leavedBookIds.current.has(id)) {
         refs.leavedBookIds.current.delete(id);
         refs.knownRemoteIds.current.delete(id);
         refs.lastPushedSignatures.current.delete(id);
+        refs.lastPushedSharingSig.current.delete(id);
         return;
       }
       const docRef = db.documents.readerBook(id);
@@ -311,6 +326,7 @@ export const usePushSync = ({
       }
       refs.knownRemoteIds.current.delete(id);
       refs.lastPushedSignatures.current.delete(id);
+      refs.lastPushedSharingSig.current.delete(id);
     });
   }, [usersBooks, userId, isUsersBooksLoaded, hasReceivedInitialSnapshot, schedulePush, refs]);
 };
