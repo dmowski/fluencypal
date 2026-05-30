@@ -140,10 +140,17 @@ test.describe('News selectors in feed modal', () => {
     await expect(feedModal.getByText('Technology headline')).toBeVisible();
     await expect(feedModal.getByText('General headline')).toBeHidden();
 
+    await page.keyboard.press('Escape');
+    await expect(feedModal).toBeHidden();
+    await expect(page).not.toHaveURL(/newsFeed/);
+
     await page.reload();
     await waitForPracticeAuth(page);
 
     const feedModal2 = page.getByTestId('news-feed-modal');
+    if (!(await feedModal2.isVisible())) {
+      await openNewsFeedModal(page);
+    }
     await expect(feedModal2).toBeVisible();
     await expect(feedModal2.getByText('Technology headline')).toBeVisible();
     await expect(feedModal2.getByText('General headline')).toBeHidden();
