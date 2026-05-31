@@ -1,0 +1,275 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { BlogDocMeta, BlogVersionDoc } from './types';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import {
+  SupportedLanguage,
+  fullEnglishLanguageName,
+  supportedLanguages,
+} from '@/features/Lang/lang';
+import { db } from '@/features/Firebase/firebaseDb';
+
+export const DRAFT_VERSION_ID = 'draft';
+
+/** The subset of BlogVersionDoc fields that are localised per language. */
+export type LocalizedFields = Pick<BlogVersionDoc, 'title' | 'subTitle' | 'content' | 'keywords'>;
+
+const makeEmptyLocaleString = (): Record<SupportedLanguage, string> =>
+  Object.fromEntries(supportedLanguages.map((l) => [l, ''])) as Record<SupportedLanguage, string>;
+
+const makeEmptyLocaleStringArray = (): Record<SupportedLanguage, string[]> =>
+  Object.fromEntries(supportedLanguages.map((l) => [l, [] as string[]])) as Record<
+    SupportedLanguage,
+    string[]
+  >;
+
+export const makeEmptyDraft = (): BlogVersionDoc => ({
+  id: DRAFT_VERSION_ID,
+  imagePreviewUrl: '',
+  categoryId: '',
+  content: makeEmptyLocaleString(),
+  title: makeEmptyLocaleString(),
+  subTitle: makeEmptyLocaleString(),
+  keywords: makeEmptyLocaleStringArray(),
+  createdAtIso: new Date().toISOString(),
+});
+
+/**
+ * Merges Firestore-loaded data with fully-initialised defaults so that all
+ * language keys are always present, even for documents stored before this
+ * convention was introduced.
+ */
+const mergeDraftWithDefaults = (
+  defaults: BlogVersionDoc,
+  loaded: Partial<BlogVersionDoc>,
+): BlogVersionDoc => ({
+  ...defaults,
+  ...loaded,
+  content: { ...defaults.content, ...loaded.content } as Record<SupportedLanguage, string>,
+  title: { ...defaults.title, ...loaded.title } as Record<SupportedLanguage, string>,
+  subTitle: { ...defaults.subTitle, ...loaded.subTitle } as Record<SupportedLanguage, string>,
+  keywords: { ...defaults.keywords, ...loaded.keywords } as Record<SupportedLanguage, string[]>,
+});
+
+export interface UseBlogDraftResult {
+  localDraft: BlogVersionDoc;
+  setLocalDraft: React.Dispatch<React.SetStateAction<BlogVersionDoc>>;
+  isLoadingDraft: boolean;
+  isSaving: boolean;
+  isPublishing: boolean;
+  isTranslating: boolean;
+  /** Update a single localised field for a specific language. */
+  setLangField: <T>(key: keyof LocalizedFields, value: T, lang: SupportedLanguage) => void;
+  saveDraft: (overrideDraft?: BlogVersionDoc) => Promise<void>;
+  publishDraft: () => Promise<void>;
+  handleTranslateToCurrentLang: (activeLang: SupportedLanguage) => Promise<void>;
+  handleTranslateToAllLanguages: () => Promise<void>;
+}
+
+export const useBlogDraft = (
+  blog: BlogDocMeta,
+  onUpdate: (meta: Partial<BlogDocMeta>) => Promise<void>,
+): UseBlogDraftResult => {
+  const [localDraft, setLocalDraft] = useState<BlogVersionDoc>(makeEmptyDraft);
+  const [isLoadingDraft, setIsLoadingDraft] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  const ai = useTextAi();
+
+  // Synchronise with the Firestore draft document once when the modal mounts.
+  // This is external-system synchronisation, so useEffect is appropriate here.
+  useEffect(() => {
+    let cancelled = false;
+
+    const versionsCollection = db.collections.blogVersions(blog.id);
+    if (!versionsCollection) {
+      setIsLoadingDraft(false);
+      return;
+    }
+    const draftDocRef = doc(versionsCollection, DRAFT_VERSION_ID);
+
+    getDoc(draftDocRef)
+      .then((snap) => {
+        if (cancelled) return;
+        if (snap.exists()) {
+          setLocalDraft((prev) =>
+            mergeDraftWithDefaults(prev, snap.data() as Partial<BlogVersionDoc>),
+          );
+        }
+      })
+      .catch((err) => {
+        console.error('[useBlogDraft] getDoc failed:', err);
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingDraft(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [blog.id]);
+
+  // ── Field setters ─────────────────────────────────────────────────────────
+
+  const setLangField = <T>(key: keyof LocalizedFields, value: T, lang: SupportedLanguage) =>
+    setLocalDraft(
+      (prev) =>
+        ({
+          ...prev,
+          [key]: { ...prev[key], [lang]: value },
+        }) as BlogVersionDoc,
+    );
+
+  // ── Firestore writes ──────────────────────────────────────────────────────
+
+  const writeDraftToFirestore = async (draft: BlogVersionDoc) => {
+    const versionsCollection = db.collections.blogVersions(blog.id);
+    if (!versionsCollection) return;
+    const draftDocRef = doc(versionsCollection, DRAFT_VERSION_ID);
+    await setDoc(draftDocRef, { ...draft, id: DRAFT_VERSION_ID });
+  };
+
+  const saveDraft = async (overrideDraft?: BlogVersionDoc) => {
+    setIsSaving(true);
+    try {
+      const draft = overrideDraft ?? localDraft;
+      await writeDraftToFirestore(draft);
+      await onUpdate({
+        updatedAtIso: new Date().toISOString(),
+        titleEn: draft.title.en || undefined,
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const publishDraft = async () => {
+    setIsPublishing(true);
+    try {
+      const versionsCollection = db.collections.blogVersions(blog.id);
+      if (!versionsCollection) return;
+
+      await writeDraftToFirestore(localDraft);
+
+      const versionId = Date.now().toString();
+      const publishedVersionRef = doc(versionsCollection, versionId);
+      await setDoc(publishedVersionRef, {
+        ...localDraft,
+        id: versionId,
+        createdAtIso: new Date().toISOString(),
+      });
+
+      await onUpdate({
+        publishedVersion: versionId,
+        publishedAtIso: new Date().toISOString(),
+        updatedAtIso: new Date().toISOString(),
+      });
+    } finally {
+      setIsPublishing(false);
+    }
+  };
+
+  // ── AI translation ────────────────────────────────────────────────────────
+
+  const translateDraftToLang = async (
+    targetLang: SupportedLanguage,
+    sourceDraft: BlogVersionDoc,
+  ): Promise<LocalizedFields> => {
+    const langName = fullEnglishLanguageName[targetLang];
+    const enTitle = sourceDraft.title['en'];
+    const enSubTitle = sourceDraft.subTitle['en'];
+    const enContent = sourceDraft.content['en'];
+    const enKeywords = sourceDraft.keywords['en'];
+
+    const translateText = (text: string) =>
+      ai.generate({
+        systemMessage: `Translate the following text to ${langName}. Return only the translated text, no explanations.`,
+        userMessage: text,
+        model: 'gpt-4o',
+      });
+
+    const [tTitle, tSubTitle, tContent, tKeywordsResult] = await Promise.all([
+      enTitle ? translateText(enTitle) : Promise.resolve(''),
+      enSubTitle ? translateText(enSubTitle) : Promise.resolve(''),
+      enContent
+        ? ai.generate({
+            systemMessage: `Translate the following markdown blog post to ${langName}. Keep all markdown formatting intact. Return only the translated content.`,
+            userMessage: enContent,
+            model: 'gpt-4o',
+          })
+        : Promise.resolve(''),
+      enKeywords.length > 0
+        ? ai.generateJson<{ keywords: string[] }>({
+            systemMessage: `Translate the following JSON array of keywords to ${langName}. Return a JSON object with a "keywords" array of strings.`,
+            userMessage: JSON.stringify(enKeywords),
+            model: 'gpt-4o',
+          })
+        : Promise.resolve({ keywords: [] as string[] }),
+    ]);
+
+    const translatedKeywords = (tKeywordsResult as { keywords?: string[] }).keywords ?? [];
+
+    return {
+      title: { ...sourceDraft.title, [targetLang]: tTitle } as Record<SupportedLanguage, string>,
+      subTitle: { ...sourceDraft.subTitle, [targetLang]: tSubTitle } as Record<
+        SupportedLanguage,
+        string
+      >,
+      content: { ...sourceDraft.content, [targetLang]: tContent } as Record<
+        SupportedLanguage,
+        string
+      >,
+      keywords: { ...sourceDraft.keywords, [targetLang]: translatedKeywords } as Record<
+        SupportedLanguage,
+        string[]
+      >,
+    };
+  };
+
+  const handleTranslateToCurrentLang = async (activeLang: SupportedLanguage) => {
+    if (activeLang === 'en') return;
+    setIsTranslating(true);
+    try {
+      const patch = await translateDraftToLang(activeLang, localDraft);
+      const updated: BlogVersionDoc = { ...localDraft, ...patch };
+      setLocalDraft(updated);
+      await saveDraft(updated);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  const handleTranslateToAllLanguages = async () => {
+    setIsTranslating(true);
+    try {
+      let updated: BlogVersionDoc = { ...localDraft };
+      for (const lang of supportedLanguages) {
+        if (lang === 'en') continue;
+        const patch = await translateDraftToLang(lang, localDraft);
+        updated = { ...updated, ...patch };
+      }
+      setLocalDraft(updated);
+      await saveDraft(updated);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  return {
+    localDraft,
+    setLocalDraft,
+    isLoadingDraft,
+    isSaving,
+    isPublishing,
+    isTranslating,
+    setLangField,
+    saveDraft,
+    publishDraft,
+    handleTranslateToCurrentLang,
+    handleTranslateToAllLanguages,
+  };
+};

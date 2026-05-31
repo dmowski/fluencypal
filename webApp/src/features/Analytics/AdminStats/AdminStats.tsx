@@ -12,6 +12,7 @@ import { AdminMetrics } from './AdminMetrics';
 import { copyToClipboard } from './copyToClipboard';
 import { StoryCreator } from './StoryCreator/StoryAdmin';
 import { EmailsAdmin } from './Emails/EmailsAdmin';
+import { BlogAdmin } from '@/features/Blog/BlogAdmin';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useSettings } from '@/features/Settings/useSettings';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
@@ -169,6 +170,7 @@ export function AdminStats() {
 
   const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
   const [isEmails, setIsEmails] = useUrlState('emails', false, false);
+  const [isBlog, setIsBlog] = useUrlState('blog', false, false);
   const settings = useSettings();
   const pageLanguage = settings.pageLanguageCode || 'en';
 
@@ -221,12 +223,27 @@ export function AdminStats() {
         >
           Emails
         </Button>
+
+        <Button
+          onClick={() => setIsBlog(!isBlog)}
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant={isBlog ? 'contained' : 'outlined'}
+        >
+          Blog
+        </Button>
       </Stack>
 
       {isEmails ? (
         <EmailsAdmin />
       ) : isStoryCreator ? (
         <StoryCreator />
+      ) : isBlog ? (
+        <BlogAdmin />
       ) : (
         <>
           {isLoading && <Typography>Loading...</Typography>}

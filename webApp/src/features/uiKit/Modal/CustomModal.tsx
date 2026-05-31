@@ -54,6 +54,7 @@ export const CustomModal = ({
       >
         {onClose && (
           <IconButton
+            aria-label="close"
             sx={{
               position: 'absolute',
               top: `calc(${sizes.topOffset} + 10px)`,

@@ -295,5 +295,15 @@ service cloud.firestore {
       // Only the owner can delete.
       allow delete: if isBookOwner();
     }
+
+    match /blogs/{blogId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+
+      match /versions/{versionId} {
+        allow read: if isSignedIn();
+        allow write: if isSignedIn();
+      }
+    }
   }
 }

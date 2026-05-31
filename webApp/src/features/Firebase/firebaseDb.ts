@@ -38,6 +38,7 @@ import { CommunitySpace, CommunitySpaceSettings } from '@/features/Community/typ
 import { Homework } from '@/features/Homework/homework';
 import { ProgressStat } from '@/features/ProgressStat/types';
 import { ReaderBookDoc } from '@/features/Reader/server/readerBookDoc';
+import { BlogDocMeta, BlogVersionDoc } from '@/features/Blog/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -120,6 +121,11 @@ export const db = {
       userId ? dataPointCollection<ProgressStat>(`users/${userId}/progressStats`) : null,
 
     readerBooks: () => dataPointCollection<ReaderBookDoc>(`books`),
+
+    blogs: () => dataPointCollection<BlogDocMeta>(`blogs`),
+
+    blogVersions: (blogId?: string) =>
+      blogId ? dataPointCollection<BlogVersionDoc>(`blogs/${blogId}/versions`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -205,5 +211,12 @@ export const db = {
 
     readerBook: (bookId?: string) =>
       bookId ? dataPointDoc<ReaderBookDoc>(`books/${bookId}`) : null,
+
+    blogMeta: (blogId?: string) => (blogId ? dataPointDoc<BlogDocMeta>(`blogs/${blogId}`) : null),
+
+    blogVersion: (blogId?: string, versionId?: string) =>
+      blogId && versionId
+        ? dataPointDoc<BlogVersionDoc>(`blogs/${blogId}/versions/${versionId}`)
+        : null,
   },
 };
