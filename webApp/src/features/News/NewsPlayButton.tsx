@@ -103,7 +103,10 @@ export const NewsPlayButton = ({ text, voice }: NewsPlayButtonProps) => {
             {i18n._('Continue')}
           </PlayerButton>
           <PlayerButton
-            onClick={() => voice.play(text)}
+            onClick={() => {
+              voice.stop();
+              voice.play(text);
+            }}
             startIcon={<ReplayIcon fontSize="small" />}
           >
             {i18n._('Restart')}

@@ -395,6 +395,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                 </Stack>
               ) : content ? (
                 <NewsContentWithParagraphs
+                  key={`${newsId}-${complexity}`}
                   content={content}
                   languageCode={news.languageCode}
                   translationVoiceRef={translationVoiceRef}

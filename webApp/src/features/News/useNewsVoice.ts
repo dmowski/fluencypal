@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SupportedLanguage, speechRecognitionLanguages } from '../Lang/lang';
 
 const STORAGE_KEY_PREFIX = 'news-voice-v1';
@@ -81,6 +81,8 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
   const [selectedVoiceURI, setSelectedVoiceURIState] = useState<string | null>(() =>
     readStoredVoiceURI(languageCode),
   );
+  /** Ignores onend/onerror from utterances cancelled by a later play/stop. */
+  const playbackGenerationRef = useRef(0);
 
   // Reset stored voice when language changes.
   useEffect(() => {
@@ -133,6 +135,7 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
 
   const stop = useCallback(() => {
     if (!isSupported) return;
+    playbackGenerationRef.current += 1;
     window.speechSynthesis.cancel();
     setIsPlaying(false);
     setIsPaused(false);
@@ -158,6 +161,9 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
       const trimmed = text.trim();
       if (!trimmed) return;
 
+      playbackGenerationRef.current += 1;
+      const generation = playbackGenerationRef.current;
+
       const utterance = new SpeechSynthesisUtterance(trimmed);
       utterance.lang = bcp47Language;
 
@@ -167,10 +173,12 @@ export const useNewsVoice = (languageCode: SupportedLanguage): NewsVoiceApi => {
       }
 
       utterance.onend = () => {
+        if (playbackGenerationRef.current !== generation) return;
         setIsPlaying(false);
         setIsPaused(false);
       };
       utterance.onerror = () => {
+        if (playbackGenerationRef.current !== generation) return;
         setIsPlaying(false);
         setIsPaused(false);
       };
