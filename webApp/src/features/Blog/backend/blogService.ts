@@ -32,8 +32,7 @@ const toCategorySummaries = (
   [...categoriesById.values()]
     .map((category) => ({
       categoryId: category.id,
-      categoryTitle:
-        category.title[lang]?.trim() || category.title.en?.trim() || category.id,
+      categoryTitle: category.title[lang]?.trim() || category.title.en?.trim() || category.id,
     }))
     .sort((a, b) => a.categoryTitle.localeCompare(b.categoryTitle));
 
@@ -70,9 +69,14 @@ export async function getPublishedBlogs(lang: SupportedLanguage): Promise<GetBlo
 
   results.sort((a, b) => b.publishedAtIso.localeCompare(a.publishedAtIso));
 
+  const usedCategoryIds = new Set(results.map((b) => b.category.categoryId));
+  const usedCategoriesById = new Map(
+    [...categoriesById.entries()].filter(([id]) => usedCategoryIds.has(id)),
+  );
+
   return {
     blogs: results,
-    categories: toCategorySummaries(categoriesById, lang),
+    categories: toCategorySummaries(usedCategoriesById, lang),
   };
 }
 

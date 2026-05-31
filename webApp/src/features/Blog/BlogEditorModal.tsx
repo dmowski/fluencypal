@@ -45,6 +45,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProp
     getCategoryById,
     createCategory,
     updateCategory,
+    deleteCategory,
   } = useBlogCategories();
 
   const isPublished = Boolean(blog.publishedVersion);
@@ -79,6 +80,20 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProp
     setIsSavingCategory(true);
     try {
       await updateCategory(input);
+    } finally {
+      setIsSavingCategory(false);
+    }
+  };
+
+  const handleDeleteCategory = async (categoryId: string) => {
+    setIsSavingCategory(true);
+    try {
+      await deleteCategory(categoryId, { excludeBlogId: blog.id });
+      if (localDraft.categoryId === categoryId) {
+        const updated = { ...localDraft, categoryId: '' };
+        setLocalDraft(updated);
+        await saveDraft(updated);
+      }
     } finally {
       setIsSavingCategory(false);
     }
@@ -146,6 +161,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProp
           onSelect={handleSelectCategory}
           onCreate={handleCreateCategory}
           onUpdate={handleUpdateCategory}
+          onDelete={handleDeleteCategory}
         />
       )}
     </CustomModal>

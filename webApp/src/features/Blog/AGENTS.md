@@ -18,7 +18,8 @@ webApp/src/features/Blog/
   BlogEditorPreview.tsx      — preview-tab rendered output
   BlogCategoryModal.tsx      — pick existing category or create a new one
   useBlogDraft.ts            — hook: Firestore I/O, draft state, AI translation logic
-  useBlogCategories.ts       — hook: list/create/update categories in blogMetadata
+  useBlogCategories.ts       — hook: list/create/update/delete categories in blogMetadata
+  blogCategoryUsage.ts       — scan blog version docs to see whether a category is referenced
   translateCategoryTitle.ts  — AI: English category title → all supportedLanguages
   backend/
     blogService.ts           — server-side helpers using Firebase Admin SDK
@@ -51,8 +52,11 @@ blogMetadata/category/categories/{id}  — BlogCategoryDocument
 
 Each `BlogVersionDoc` stores `categoryId` referencing a category document ID. In the editor,
 **Select category** / **Change category** opens `BlogCategoryModal` to pick an existing
-category, create one (manual `id` + English title), or edit an existing category. The current
-ID and English title are shown read-only when set.
+category, create one (manual `id` + English title), edit an existing category, or delete one.
+The current ID and English title are shown read-only when set.
+Deletion is blocked when any **other** blog post's version doc (draft or published) still
+references that category; the post currently being edited is excluded from that check, and
+its `categoryId` is cleared locally if the delete succeeds.
 On create/update, the English title is translated to all `supportedLanguages` via `useTextAi`
 before the `BlogCategoryDocument` is written to Firestore.
 

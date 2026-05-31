@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
-import { Loader, Pencil } from 'lucide-react';
+import { Loader, Pencil, Trash2 } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { BlogCategoryDocument } from './types';
 import { SaveBlogCategoryInput } from './useBlogCategories';
@@ -15,6 +15,7 @@ interface BlogCategoryModalProps {
   onSelect: (categoryId: string) => void;
   onCreate: (input: SaveBlogCategoryInput) => Promise<void>;
   onUpdate: (input: SaveBlogCategoryInput) => Promise<void>;
+  onDelete: (categoryId: string) => Promise<void>;
 }
 
 export const BlogCategoryModal = ({
@@ -25,6 +26,7 @@ export const BlogCategoryModal = ({
   onSelect,
   onCreate,
   onUpdate,
+  onDelete,
 }: BlogCategoryModalProps) => {
   const [manualCategoryId, setManualCategoryId] = useState('');
   const [newCategoryId, setNewCategoryId] = useState('');
@@ -80,6 +82,23 @@ export const BlogCategoryModal = ({
       cancelEdit();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update category');
+    }
+  };
+
+  const handleDelete = async (category: BlogCategoryDocument) => {
+    const confirmed = window.confirm(
+      `Delete category "${category.id}"? This cannot be undone.`,
+    );
+    if (!confirmed) return;
+
+    setError(null);
+    try {
+      await onDelete(category.id);
+      if (editingCategoryId === category.id) {
+        cancelEdit();
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete category');
     }
   };
 
@@ -217,6 +236,15 @@ export const BlogCategoryModal = ({
                   >
                     <Pencil size="16px" />
                   </IconButton>
+                  <IconButton
+                    aria-label={`Delete category ${category.id}`}
+                    onClick={() => void handleDelete(category)}
+                    disabled={isSaving}
+                    size="small"
+                    color="error"
+                  >
+                    <Trash2 size="16px" />
+                  </IconButton>
                 </Stack>
               ))
             )}
@@ -247,7 +275,7 @@ export const BlogCategoryModal = ({
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
             English title is translated to all languages before saving.
           </Typography>
-          {error && !editingCategoryId && (
+          {error && (
             <Typography variant="caption" color="error">
               {error}
             </Typography>

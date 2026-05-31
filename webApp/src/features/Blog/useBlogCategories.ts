@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { doc, setDoc } from 'firebase/firestore';
+import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { categoryInUseErrorMessage, findBlogIdsUsingCategory } from './blogCategoryUsage';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '@/features/Firebase/firebaseDb';
 import { useTextAi } from '@/features/Ai/useTextAi';
@@ -15,12 +16,18 @@ export interface SaveBlogCategoryInput {
   titleEn: string;
 }
 
+export interface DeleteBlogCategoryOptions {
+  /** Skip this blog when checking whether the category is still referenced. */
+  excludeBlogId?: string;
+}
+
 export interface UseBlogCategoriesResult {
   categories: BlogCategoryDocument[];
   isLoading: boolean;
   getCategoryById: (categoryId: string) => BlogCategoryDocument | undefined;
   createCategory: (input: SaveBlogCategoryInput) => Promise<BlogCategoryDocument>;
   updateCategory: (input: SaveBlogCategoryInput) => Promise<BlogCategoryDocument>;
+  deleteCategory: (categoryId: string, options?: DeleteBlogCategoryOptions) => Promise<void>;
 }
 
 export const useBlogCategories = (): UseBlogCategoriesResult => {
@@ -105,11 +112,39 @@ export const useBlogCategories = (): UseBlogCategoriesResult => {
     return writeCategory(id, title);
   };
 
+  const deleteCategory = async (
+    rawId: string,
+    options?: DeleteBlogCategoryOptions,
+  ): Promise<void> => {
+    const id = normalizeCategoryId(rawId);
+    if (!id) {
+      throw new Error('Category ID is required');
+    }
+    if (!existingIds.has(id)) {
+      throw new Error(`Category ID "${id}" not found`);
+    }
+
+    const usedByBlogIds = await findBlogIdsUsingCategory(id, options?.excludeBlogId);
+    if (usedByBlogIds.length > 0) {
+      throw new Error(categoryInUseErrorMessage(usedByBlogIds));
+    }
+
+    const categoryRef = doc(categoriesCollection, id);
+    await deleteDoc(categoryRef);
+
+    const now = new Date().toISOString();
+    const parentRef = db.documents.blogMetadataCategory();
+    if (parentRef) {
+      await setDoc(parentRef, { updatedAtIso: now }, { merge: true });
+    }
+  };
+
   return {
     categories,
     isLoading,
     getCategoryById,
     createCategory,
     updateCategory,
+    deleteCategory,
   };
 };
