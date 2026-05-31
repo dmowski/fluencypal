@@ -2,24 +2,9 @@
 
 ## News: They should be interesting for me.
 
-webApp/src/features/News/AGENTS.md
-
-- Add ability to change complexity inside newsModal
-- Pause voiceover when translation modal is open and resume when it hidden
-
-## On Blog, start sharing post about how fluency pas is being created
-
-++++++++++++++++++++++++
-Deploy and test on prod
-Integrate with landing page
+## Blogs
 
 webApp/src/features/Blog/AGENTS.md
-
-++++++++++++++++++++++++
-
-Make it easy to post many posts.
-Use firebase, and expose "app" api to extract post info.
-Create admin page with block creation.
 
 - Test coverage
 - Working with google calendar

@@ -2,6 +2,7 @@
 
 import { useLingui } from '@lingui/react';
 import { Button, Chip, IconButton, Stack, Typography } from '@mui/material';
+import { StyledSelect } from '../uiKit/StyledSelect/StyledSelect';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import VideocamIcon from '@mui/icons-material/Videocam';
@@ -17,12 +18,15 @@ import { useTranslate } from '../Translation/useTranslate';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { Markdown } from '../uiKit/Markdown/Markdown';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { NEWS_COMPLEXITY_LABELS } from './constants';
+import { NEWS_COMPLEXITY_LABELS, NEWS_COMPLEXITY_OPTIONS } from './constants';
 import { useNews } from './useNews';
 import { useNewsModal } from './useNewsModal';
 import { buildNewsDiscussionPrompt } from './buildNewsDiscussionPrompt';
 import { NewsItem, NewsLanguageComplexity } from './types';
-import { NewsContentWithParagraphs } from './NewsContentWithParagraphs';
+import {
+  NewsContentWithParagraphs,
+  type NewsArticleVoiceOverlay,
+} from './NewsContentWithParagraphs';
 
 export const NewsModal = () => {
   const { isOpen, newsId, closeNews } = useNewsModal();
@@ -56,7 +60,10 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const news = useNews();
   const { openNews } = useNewsModal();
   const auth = useAuth();
-  const translator = useTranslate();
+  const translationVoiceRef = useRef<NewsArticleVoiceOverlay | null>(null);
+  const translator = useTranslate({
+    onTranslateModalClose: () => translationVoiceRef.current?.resumeAfterTranslation(),
+  });
   const aiConversation = useAiConversation();
   const audio = useConversationAudio();
   const settings = useSettings();
@@ -105,6 +112,11 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   getNewsByIdRef.current = news.getNewsById;
 
   const complexity: NewsLanguageComplexity = news.complexity;
+
+  const complexityOptions = NEWS_COMPLEXITY_OPTIONS.map((level) => ({
+    value: level,
+    label: NEWS_COMPLEXITY_LABELS[level],
+  }));
 
   useEffect(() => {
     const key = `${newsId}|${retryToken}`;
@@ -233,8 +245,14 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   };
 
   const onWordClick = translator.isTranslateAvailable
-    ? (word: string, element: HTMLElement) => {
-        translator.translateWithModal(word, element);
+    ? async (word: string, element: HTMLElement) => {
+        translationVoiceRef.current?.pauseForTranslation();
+        try {
+          await translator.translateWithModal(word, element);
+        } catch (error) {
+          translationVoiceRef.current?.resumeAfterTranslation();
+          throw error;
+        }
       }
     : undefined;
 
@@ -322,11 +340,11 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                       sx={{ backgroundColor: 'rgba(100,100,100,0.05)', color: 'inherit' }}
                     />
                   )}
-                  <Chip
-                    size="small"
-                    label={NEWS_COMPLEXITY_LABELS[complexity]}
-                    data-testid="news-modal-complexity"
-                    sx={{ backgroundColor: 'rgba(100,100,100,0.05)', color: 'inherit' }}
+                  <StyledSelect
+                    data-testid="news-modal-complexity-select"
+                    value={complexity}
+                    onChange={(v) => news.setComplexity(v as NewsLanguageComplexity)}
+                    options={complexityOptions}
                   />
                 </Stack>
 
@@ -376,7 +394,11 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                   <LoadingShapes sizes={['30px', '200px', '30px', '200px']} />
                 </Stack>
               ) : content ? (
-                <NewsContentWithParagraphs content={content} languageCode={news.languageCode} />
+                <NewsContentWithParagraphs
+                  content={content}
+                  languageCode={news.languageCode}
+                  translationVoiceRef={translationVoiceRef}
+                />
               ) : (
                 <Typography variant="body2" sx={{ opacity: 0.7 }}>
                   {i18n._(

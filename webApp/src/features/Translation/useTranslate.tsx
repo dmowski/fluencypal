@@ -14,7 +14,11 @@ import {
   resolveTranslateTargetLanguage,
 } from './translationHelpers';
 
-export const useTranslate = () => {
+type UseTranslateOptions = {
+  onTranslateModalClose?: () => void;
+};
+
+export const useTranslate = (options?: UseTranslateOptions) => {
   const settings = useSettings();
 
   const [isShowModal, setIsShowModal] = useState(false);
@@ -103,6 +107,7 @@ export const useTranslate = () => {
     setTranslatedText(null);
     setIsShowModal(false);
     setAnchorEl(null);
+    options?.onTranslateModalClose?.();
   };
 
   useEffect(() => {
@@ -126,6 +131,7 @@ export const useTranslate = () => {
   return {
     translateText,
     isTranslateAvailable,
+    isTranslateModalOpen: isShowModal,
     translateWithModal,
     onCloseTranslate,
     translateBatchText,

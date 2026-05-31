@@ -8,11 +8,11 @@ This file applies to `webApp/src/features/News/**`.
 - `newsFirestore.ts` — client-side Firestore queries for the `news` collection.
 - `useNewsModal.tsx` — URL state for feed/article modals (`newsFeed=open`, `newsId`).
 - `NewsFeedModal.tsx` — feed list with country, complexity, and category filters.
-- `NewsModal.tsx` — single article view; loads body text on demand per complexity; Previous/Next icon buttons navigate within the loaded feed list (today + loaded previous days) without closing the modal.
+- `NewsModal.tsx` — single article view; loads body text on demand per complexity; complexity `StyledSelect` (same prefs as feed modal); Previous/Next icon buttons navigate within the loaded feed list (today + loaded previous days) without closing the modal.
 - `NewsDashboardCard.tsx` — dashboard entry point.
 - `NewsPreviewCard.tsx` — row UI in the feed list.
 - `NewsComments.tsx` — per-article chat thread.
-- `NewsContentWithParagraphs.tsx` — renders article body as `ReaderParagraph` words; hosts the sticky `NewsPlayButton` and inline translation popover (`NewsTranslationPopover`) triggered by text selection.
+- `NewsContentWithParagraphs.tsx` — renders article body as `ReaderParagraph` words; hosts the sticky `NewsPlayButton` and inline translation popover (`NewsTranslationPopover`) triggered by text selection. Exposes `NewsArticleVoiceOverlay` via `translationVoiceRef` so `NewsModal` can pause/resume voiceover when the title translate modal opens or closes; body selection calls the same overlay helpers directly (ref-counted so overlapping overlays resume only once all are dismissed).
 - `NewsPlayButton.tsx` — sticky playback bar: Play / Pause / Continue / Restart buttons + voice selector (`StyledSelect`). Pause suspends synthesis (resume continues from position); Restart re-plays from the beginning. Disabled with an explanatory label when TTS is unsupported or no voices are available for the language.
 - `NewsTranslationPopover.tsx` — lightweight popover anchored to the selection position; shows translated text, loading state, or a prompt to set a native language when translation is unavailable.
 - `useNewsVoice.ts` — per-article TTS hook: filters browser voices to the article language, scores them by quality (Google cloud > remote > Enhanced/Premium/Neural > default > Compact), persists the chosen voice URI per language in `localStorage` (`news-voice-v1-{lang}`), and exposes `play / pause / resume / stop` with `isPlaying` and `isPaused` state. Cancels synthesis on unmount.
@@ -127,7 +127,7 @@ All `/api/news/*` route handlers must use `withRoute` + `parseAuthenticatedJson`
 
 - Prefer reading news from Firestore in the client; keep `/api/news/getTodayNews` for generation only.
 - Do not call `getNewsFullText` when `versions[complexity]` is already present on the Firestore document.
-- Complexity changes in the feed modal do not refetch today's list or trigger generation.
+- Complexity changes in the feed or article modal do not refetch today's list or trigger generation; the article modal loads `versions[complexity]` on demand via `getNewsFullText` when missing.
 - Country override changes refetch Firestore and re-trigger generation for the new country.
 - `getTodayNews` is synchronous end-to-end — do not add fire-and-forget or background scheduling inside it; Next.js terminates background work after the response is sent.
 - The client (`useNews.tsx`) sets items directly from the `getTodayNews` response body; do not reintroduce Firestore polling after the API call returns.
