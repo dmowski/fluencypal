@@ -82,4 +82,6 @@ category titles in `useBlogCategories` via `translateCategoryTitle.ts`).
 EN content is always the source of truth. Translate buttons in `BlogEditorForm`:
 
 - **Translate to this language** — translates only the currently selected language.
-- **Translate to all languages** — iterates over all `supportedLanguages` sequentially.
+- **Translate to all languages** — iterates over all `supportedLanguages` sequentially, each pass
+  translating from the accumulated `updated` draft (`applyLocalizedPatch`). Using the initial
+  English-only draft for every pass would overwrite prior languages (only the last would remain).

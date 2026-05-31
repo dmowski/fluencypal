@@ -41,6 +41,18 @@ export const makeEmptyDraft = (): BlogVersionDoc => ({
  * language keys are always present, even for documents stored before this
  * convention was introduced.
  */
+/** Merges per-language fields without dropping translations from earlier steps. */
+export const applyLocalizedPatch = (
+  draft: BlogVersionDoc,
+  patch: LocalizedFields,
+): BlogVersionDoc => ({
+  ...draft,
+  title: { ...draft.title, ...patch.title },
+  subTitle: { ...draft.subTitle, ...patch.subTitle },
+  content: { ...draft.content, ...patch.content },
+  keywords: { ...draft.keywords, ...patch.keywords },
+});
+
 const mergeDraftWithDefaults = (
   defaults: BlogVersionDoc,
   loaded: Partial<BlogVersionDoc>,
@@ -247,15 +259,30 @@ export const useBlogDraft = (
 
   const handleTranslateToAllLanguages = async () => {
     setIsTranslating(true);
+    const failedLangs: SupportedLanguage[] = [];
     try {
       let updated: BlogVersionDoc = { ...localDraft };
-      for (const lang of supportedLanguages) {
-        if (lang === 'en') continue;
-        const patch = await translateDraftToLang(lang, localDraft);
-        updated = { ...updated, ...patch };
+      const targetLangs = supportedLanguages.filter((lang) => lang !== 'en');
+
+      for (const lang of targetLangs) {
+        try {
+          // Must use `updated` (not `localDraft`) so each pass keeps prior translations.
+          const patch = await translateDraftToLang(lang, updated);
+          updated = applyLocalizedPatch(updated, patch);
+        } catch (err) {
+          console.error(`[useBlogDraft] translate to ${lang} failed:`, err);
+          failedLangs.push(lang);
+        }
       }
+
       setLocalDraft(updated);
       await saveDraft(updated);
+
+      if (failedLangs.length > 0) {
+        throw new Error(
+          `Translation incomplete for: ${failedLangs.join(', ')}. Other languages were saved.`,
+        );
+      }
     } finally {
       setIsTranslating(false);
     }
