@@ -3,6 +3,7 @@ import { NewsItem } from '@/features/News/types';
 import { GetTodayNewsRequest, GetTodayNewsResponse } from '../types';
 import { buildNewsId, getNewsDayKey } from '../buildNewsId';
 import { getCachedTodayNews, upsertCachedNews } from '../cache';
+import { mergeBuiltNewsWithCache } from '../mergeBuiltNewsWithCache';
 import { enrichNewsItem } from '../enrichNewsItem';
 import { fetchGNewsTopHeadlines, RawGNewsArticle } from '../fetchGNews';
 import { toNewsItemSummary } from '../newsRouteHelpers';
@@ -96,11 +97,13 @@ const populateTodayNews = async (request: GetTodayNewsRequest): Promise<void> =>
     }),
   );
 
-  await Promise.all(built.map((item) => upsertCachedNews(item)));
+  const merged = await Promise.all(built.map((item) => mergeBuiltNewsWithCache(item)));
+
+  await Promise.all(merged.map((item) => upsertCachedNews(item)));
 
   // Headline translation, tags, and image hosting run in the populate job (not
   // the HTTP handler) so third-party image URLs never reach the client.
-  await Promise.all(built.map((item) => enrichNewsItem(item).catch(() => undefined)));
+  await Promise.all(merged.map((item) => enrichNewsItem(item).catch(() => undefined)));
 };
 
 export const getTodayNewsResponse = async (

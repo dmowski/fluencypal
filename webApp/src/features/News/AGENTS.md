@@ -49,7 +49,7 @@ flowchart TD
   NM --> NP
 ```
 
-1. **Startup** — `NewsProvider` reads today's items from Firestore immediately, then calls `getTodayNews`. That endpoint checks the Firestore cache; if insufficient articles exist for today it runs the full gNews ingest + enrichment (headline translation, tags, image hosting via `enrichNewsItem`) inline before responding. The response body contains the final `NewsItemSummary[]` which the client uses directly — no Firestore polling needed.
+1. **Startup** — `NewsProvider` reads today's items from Firestore immediately, then calls `getTodayNews`. That endpoint checks the Firestore cache; if insufficient articles exist for today it runs the full gNews ingest + enrichment (headline translation, tags, image hosting via `enrichNewsItem` — **not** body rewrites) inline before responding. The response body contains the final `NewsItemSummary[]` which the client uses directly — no Firestore polling needed.
 2. **Article open** — `NewsModal` loads the document from Firestore. If `versions[complexity]` is missing, it calls `getNewsFullText`, which generates one level via AI, caches it in Firestore, and returns the text.
 3. **Previous days** — loaded from Firestore only (`fetchPreviousDayNewsFromFirestore`); no gNews call.
 
@@ -127,6 +127,8 @@ All `/api/news/*` route handlers must use `withRoute` + `parseAuthenticatedJson`
 
 - Prefer reading news from Firestore in the client; keep `/api/news/getTodayNews` for generation only.
 - Do not call `getNewsFullText` when `versions[complexity]` is already present on the Firestore document.
+- `enrichNewsItem` must not generate `versions`; only `getNewsFullText` writes complexity-level body text.
+- `populateTodayNews` must call `mergeBuiltNewsWithCache` before upsert/enrich so gNews rebuilds do not reset `tags: []` and re-trigger `generateNewsTags`.
 - Complexity changes in the feed or article modal do not refetch today's list or trigger generation; the article modal loads `versions[complexity]` on demand via `getNewsFullText` when missing.
 - Country override changes refetch Firestore and re-trigger generation for the new country.
 - `getTodayNews` is synchronous end-to-end — do not add fire-and-forget or background scheduling inside it; Next.js terminates background work after the response is sent.

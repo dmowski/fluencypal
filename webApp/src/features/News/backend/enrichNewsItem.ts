@@ -4,12 +4,12 @@ import { copyNewsImageToStorage } from './copyImageToStorage';
 import { generateNewsTags } from './generateNewsTags';
 import { needsNewsImageUpload } from './newsImageUrl';
 import { translateNewsHeadline } from './translateNewsHeadline';
-import { rewriteNewsForLevels } from './rewriteNewsForLevels';
 
 /**
- * Slow, optional post-processing for a news document already stored with
- * gNews metadata. Runs after the fast ingest path so `/getTodayNews` can
- * respond quickly. Safe to fire-and-forget.
+ * Post-processing for a news document already stored with gNews metadata:
+ * headline translation, topic tags, and image hosting. Body rewrites per
+ * complexity level are generated lazily via `/api/news/getNewsFullText` when
+ * the user opens an article — not here.
  */
 export const enrichNewsItem = async (item: NewsItem): Promise<void> => {
   const needsImage = needsNewsImageUpload(item);
@@ -19,13 +19,11 @@ export const enrichNewsItem = async (item: NewsItem): Promise<void> => {
 
   const needsTags = !item.tags || item.tags.length === 0;
 
-  const needsVersions = !item.versions;
-
-  if (!needsImage && !needsHeadlineTranslate && !needsTags && !needsVersions) {
+  if (!needsImage && !needsHeadlineTranslate && !needsTags) {
     return;
   }
 
-  const [imageUrl, translated, tags, versions] = await Promise.all([
+  const [imageUrl, translated, tags] = await Promise.all([
     needsImage
       ? copyNewsImageToStorage({ sourceUrl: item.sourceImageUrl, newsId: item.id }).catch(
           () => item.imageUrl,
@@ -45,13 +43,6 @@ export const enrichNewsItem = async (item: NewsItem): Promise<void> => {
           category: item.category,
         }).catch(() => item.tags ?? [])
       : Promise.resolve(item.tags ?? []),
-    needsVersions
-      ? rewriteNewsForLevels({
-          title: item.titleOrigin || item.title,
-          content_origin: item.content_origin,
-          targetLanguageName: item.languageName,
-        }).catch(() => item.versions ?? null)
-      : Promise.resolve(item.versions),
   ]);
 
   await upsertCachedNews({
@@ -60,6 +51,5 @@ export const enrichNewsItem = async (item: NewsItem): Promise<void> => {
     subTitle: translated.subTitle,
     imageUrl: imageUrl || item.imageUrl,
     tags,
-    versions,
   });
 };

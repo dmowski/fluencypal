@@ -5,12 +5,6 @@ import { buildNewsRewriteSystemPrompt, buildNewsRewriteUserPrompt } from './prom
 
 const COMPLEXITIES: NewsLanguageComplexity[] = ['beginner', 'middle', 'advance'];
 
-// MVP: use the cheapest text model we already support. The rewrite is short
-// (one article → three complexity versions) and runs once per news item, so
-// `gpt-4o-mini` is a good tradeoff of speed/cost vs. quality for now. Bump
-// this once we have user feedback that the rewrites need more nuance.
-const DEFAULT_MODEL: TextAiModel = 'gpt-4o-mini';
-
 /**
  * Strip common LLM "wrapper" preface lines (e.g. "Sure! Here is the rewritten
  * article in simple English:") that occasionally slip through despite the
@@ -57,6 +51,7 @@ export const rewriteNewsForLevel = async ({
   complexity,
 }: RewriteNewsInput & { complexity: NewsLanguageComplexity }): Promise<string> => {
   const userMessage = buildNewsRewriteUserPrompt({ title, content_origin });
+  console.log(`Generating ${complexity}-level rewrite for "${title}"...`);
   const { output } = await generateTextWithAi({
     systemMessage: buildNewsRewriteSystemPrompt(complexity, targetLanguageName),
     userMessage,

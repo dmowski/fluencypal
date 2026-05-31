@@ -22,6 +22,7 @@ export const generateNewsTags = async ({
   subTitle,
   category,
 }: GenerateNewsTagsInput): Promise<string[]> => {
+  console.log('Generate tags for news', title);
   const { parsed } = await generateStrictJson({
     systemMessage: buildNewsTagsSystemPrompt(),
     userMessage: buildNewsTagsUserPrompt({ title, subTitle, category }),
