@@ -6,7 +6,7 @@ export async function generateStaticParams() {
   return [];
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
   return generateMetadataInfo({
     lang: 'en',
     currentPath: '',

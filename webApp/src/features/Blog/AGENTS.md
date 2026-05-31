@@ -9,7 +9,8 @@ Provides the dynamic blog post editor for the admin panel, and a public API for 
 ```
 webApp/src/features/Blog/
   AGENTS.md                  — this file
-  types.ts                   — source of truth for all data shapes (BlogDocMeta, BlogVersionDoc, BlogCategoryDocument, PublicBlogPost)
+  types.ts                   — source of truth for all data shapes (BlogDocMeta, BlogVersionDoc, BlogCategoryDocument, BlogPost)
+  backend/blogMappers.ts       — localize Firestore docs to a single `lang` for the public API
   BlogAdmin.tsx              — admin list UI (embedded in AdminStats)
   BlogEditorModal.tsx        — thin orchestrator: wires useBlogDraft + subcomponents inside CustomModal
   BlogEditorHeader.tsx       — header row: title, published chip, language selector
@@ -31,7 +32,7 @@ See `types.ts` for the authoritative TypeScript interfaces:
 - `BlogVersionDoc` — localised content at `blogs/{blogId}/versions/{versionId}`
 - `BlogMetadataCategoryDoc` — parent doc at `blogMetadata/category`
 - `BlogCategoryDocument` — category at `blogMetadata/category/categories/{categoryId}`
-- `PublicBlogPost` — shape returned by the public API
+- `BlogPost` — single-locale shape returned by the public API (matches landing `BlogPost`)
 
 The special version doc ID `"draft"` (constant `DRAFT_VERSION_ID` in `useBlogDraft.ts`) is
 the working draft the editor writes to. Publishing snapshots the draft into a timestamped
@@ -57,12 +58,14 @@ before the `BlogCategoryDocument` is written to Firestore.
 
 ## Public API
 
-- `POST /api/blog/getBlogs` — returns all published blogs (no auth required)
-- `POST /api/blog/getBlog` — returns a single published blog by ID (no auth required)
+Both endpoints read via the Admin SDK (bypassing Firestore rules). Require `lang`
+(`SupportedLanguage` code). Responses use the landing-aligned `BlogPost` shape (one locale per
+field, plus resolved `category`).
 
-Both endpoints read via the Admin SDK (bypassing Firestore rules) so they work
-server-side without user credentials. Responses include `categoryId` only; category titles
-are not joined server-side yet.
+- `GET|POST /api/blog/getBlogs?lang={code}` — `{ blogs: BlogPost[], categories: BlogCategorySummary[] }`
+- `GET|POST /api/blog/getBlog?blogId={id}&lang={code}` — `{ blog: BlogPost | null }`
+
+English is used as fallback when a translation key is missing for the requested `lang`.
 
 ## Admin UI integration
 

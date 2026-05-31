@@ -10,8 +10,8 @@ interface ListBlogProps {
   selectedCategoryId?: string;
   lang: SupportedLanguage;
 }
-export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
-  const { blogs, allCategory, categoriesList } = getBlogs(lang);
+export const ListBlog = async ({ lang, selectedCategoryId }: ListBlogProps) => {
+  const { blogs, allCategory, categoriesList } = await getBlogs(lang);
   const i18n = getI18nInstance(lang);
 
   const selectedCategory = categoriesList.find((c) => c.categoryId === selectedCategoryId);

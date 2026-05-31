@@ -108,15 +108,15 @@ describe('SEO Metadata', () => {
   });
 
   describe('generateMetadataInfo', () => {
-    test('generates metadata for homepage', () => {
-      const meta = generateMetadataInfo({ lang: 'en', currentPath: '' });
+    test('generates metadata for homepage', async () => {
+      const meta = await generateMetadataInfo({ lang: 'en', currentPath: '' });
       expect(meta.title).toContain(APP_NAME);
       expect(meta.description).toBeDefined();
       expect(meta.openGraph.images[0].url).toBe(`${siteUrl}openGraph.webp`);
     });
 
-    test('generates metadata for blog with blogId', () => {
-      const meta = generateMetadataInfo({
+    test('generates metadata for blog with blogId', async () => {
+      const meta = await generateMetadataInfo({
         lang: 'en',
         currentPath: 'blog',
         blogId: 'no-projections-available',
@@ -128,8 +128,8 @@ describe('SEO Metadata', () => {
       expect(meta.openGraph.images[0].url).toBe('/blog/dog/dog-park.webp');
     });
 
-    test('generates metadata for scenarios with scenarioId', () => {
-      const meta = generateMetadataInfo({
+    test('generates metadata for scenarios with scenarioId', async () => {
+      const meta = await generateMetadataInfo({
         lang: 'en',
         currentPath: 'scenarios',
         scenarioId: 'alias-game',
@@ -145,15 +145,15 @@ describe('SEO Metadata', () => {
       );
     });
 
-    test('generates metadata for ru language homepage', () => {
-      const meta = generateMetadataInfo({ lang: 'ru', currentPath: '' });
+    test('generates metadata for ru language homepage', async () => {
+      const meta = await generateMetadataInfo({ lang: 'ru', currentPath: '' });
 
       expect(meta.title).toBe(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru`);
     });
 
-    test('generates metadata for scenarios with scenarioId for ru', () => {
-      const meta = generateMetadataInfo({
+    test('generates metadata for scenarios with scenarioId for ru', async () => {
+      const meta = await generateMetadataInfo({
         lang: 'ru',
         currentPath: 'scenarios',
         scenarioId: 'alias-game',
@@ -167,8 +167,8 @@ describe('SEO Metadata', () => {
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru/scenarios/alias-game`);
     });
 
-    test('generates metadata for features index', () => {
-      const meta = generateMetadataInfo({
+    test('generates metadata for features index', async () => {
+      const meta = await generateMetadataInfo({
         lang: 'en',
         currentPath: 'features',
       });
@@ -180,8 +180,8 @@ describe('SEO Metadata', () => {
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features`);
     });
 
-    test('generates metadata for one feature page', () => {
-      const meta = generateMetadataInfo({
+    test('generates metadata for one feature page', async () => {
+      const meta = await generateMetadataInfo({
         lang: 'en',
         currentPath: 'features',
         featureId: 'learning-plan',

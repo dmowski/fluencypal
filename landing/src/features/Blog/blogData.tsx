@@ -3,6 +3,7 @@ import { BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
 import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
+import { fetchPublishedBlogs, toResourceCategories } from './blogApi';
 
 export interface BlogInfo {
   blogs: BlogPost[];
@@ -10,7 +11,7 @@ export interface BlogInfo {
   allCategory: ResourceCategory;
 }
 
-export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
+const getStaticBlogPosts = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
     {
@@ -639,4 +640,48 @@ Begin your journey toward more fluent interviews by trying FluencyPal for free. 
   categoriesList.unshift(allCategory);
 
   return { blogs, allCategory, categoriesList };
+};
+
+const mergeCategoriesFromBlogs = (
+  blogs: BlogPost[],
+  allCategory: ResourceCategory,
+): ResourceCategory[] => {
+  const categoriesList: ResourceCategory[] = [];
+  blogs.forEach((item) => {
+    const category = item.category;
+    if (!categoriesList.find((cat) => cat.categoryId === category.categoryId)) {
+      categoriesList.push(category);
+    }
+  });
+  categoriesList.unshift(allCategory);
+  return categoriesList;
+};
+
+/** Published posts from the app API plus legacy static entries (e.g. JSX-only articles). */
+export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
+  const i18n = getI18nInstance(lang);
+  const allCategory: ResourceCategory = {
+    categoryTitle: i18n._('All Blogs'),
+    categoryId: 'all',
+    isAllResources: true,
+  };
+
+  const staticInfo = getStaticBlogPosts(lang);
+
+  try {
+    const api = await fetchPublishedBlogs(lang);
+    const apiIds = new Set(api.blogs.map((b) => b.id));
+    const staticOnly = staticInfo.blogs.filter((b) => !apiIds.has(b.id));
+    const blogs = [...api.blogs, ...staticOnly];
+
+    const categoriesList =
+      api.categories.length > 0
+        ? toResourceCategories(api.categories, allCategory.categoryTitle)
+        : mergeCategoriesFromBlogs(blogs, allCategory);
+
+    return { blogs, allCategory, categoriesList };
+  } catch (err) {
+    console.error('[getBlogs] fetchPublishedBlogs failed, using static blogs only:', err);
+    return staticInfo;
+  }
 };

@@ -44,7 +44,7 @@ interface generateMetadataInfoProps {
   languageToLearn?: SupportedLanguage;
 }
 
-export const generateMetadataInfo = ({
+export const generateMetadataInfo = async ({
   lang,
   currentPath,
   scenarioId,
@@ -247,7 +247,7 @@ export const generateMetadataInfo = ({
     let categoryTitle = '';
 
     if (category) {
-      const items = getBlogs(supportedLang);
+      const items = await getBlogs(supportedLang);
       const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
       if (!categoryInfo) {
         needIndex = false;
@@ -272,7 +272,7 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === 'blog' && blogId) {
-    const { blogs } = getBlogs(supportedLang);
+    const { blogs } = await getBlogs(supportedLang);
     const blog = blogs.find((b) => b.id === blogId);
     if (!blog) {
       needIndex = false;

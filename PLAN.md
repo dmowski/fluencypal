@@ -10,6 +10,12 @@ webApp/src/features/News/AGENTS.md
 ## On Blog, start sharing post about how fluency pas is being created
 
 ++++++++++++++++++++++++
+Deploy and test on prod
+Integrate with landing page
+
+webApp/src/features/Blog/AGENTS.md
+
+++++++++++++++++++++++++
 
 Make it easy to post many posts.
 Use firebase, and expose "app" api to extract post info.

@@ -1,4 +1,5 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { ResourceCategory } from '../RolePlay/resourceCategory';
 
 // ─── Firestore document types ───────────────────────────────────────────────
 
@@ -41,26 +42,42 @@ export interface BlogVersionDoc {
 
 // ─── Public API types ────────────────────────────────────────────────────────
 
-/** A published blog post exposed via the public API */
-export interface PublicBlogPost {
+/** Published blog post for a single locale (landing `BlogPost` shape). */
+
+export interface BlogPost {
   id: string;
-  publishedAtIso: string;
+  title: string;
+  subTitle: string;
+  keywords: string[];
+  content: string;
+
   imagePreviewUrl: string;
+  videoSrc?: string;
+
+  publishedAtIso: string;
+  category: ResourceCategory;
+  relatedRolePlays: string[];
+}
+
+export interface BlogCategorySummary {
   categoryId: string;
-  content: Record<SupportedLanguage, string>;
-  title: Record<SupportedLanguage, string>;
-  subTitle: Record<SupportedLanguage, string>;
-  keywords: Record<SupportedLanguage, string[]>;
+  categoryTitle: string;
+}
+
+export interface GetBlogsRequest {
+  lang: SupportedLanguage;
 }
 
 export interface GetBlogsResponse {
-  blogs: PublicBlogPost[];
-}
-
-export interface GetBlogResponse {
-  blog: PublicBlogPost | null;
+  blogs: BlogPost[];
+  categories: BlogCategorySummary[];
 }
 
 export interface GetBlogRequest {
   blogId: string;
+  lang: SupportedLanguage;
+}
+
+export interface GetBlogResponse {
+  blog: BlogPost | null;
 }

@@ -1,28 +1,53 @@
 import { getDB } from '@/app/api/config/firebase';
+import { SupportedLanguage } from '@/features/Lang/lang';
 import {
+  BlogCategoryDocument,
   BlogDocMeta,
+  BlogPost,
+  BlogCategorySummary,
   BlogVersionDoc,
   GetBlogResponse,
   GetBlogsResponse,
-  PublicBlogPost,
 } from '../types';
+import { toBlogPost } from './blogMappers';
 
 const BLOGS_COLLECTION = 'blogs';
-const DRAFT_VERSION_ID = 'draft';
+const BLOG_CATEGORIES_COLLECTION = 'blogMetadata/category/categories';
+export const DRAFT_VERSION_ID = 'draft';
+
+const loadCategoriesById = async (): Promise<Map<string, BlogCategoryDocument>> => {
+  const db = getDB();
+  const snapshot = await db.collection(BLOG_CATEGORIES_COLLECTION).get();
+  const map = new Map<string, BlogCategoryDocument>();
+  snapshot.docs.forEach((docSnap) => {
+    map.set(docSnap.id, docSnap.data() as BlogCategoryDocument);
+  });
+  return map;
+};
+
+const toCategorySummaries = (
+  categoriesById: Map<string, BlogCategoryDocument>,
+  lang: SupportedLanguage,
+): BlogCategorySummary[] =>
+  [...categoriesById.values()]
+    .map((category) => ({
+      categoryId: category.id,
+      categoryTitle:
+        category.title[lang]?.trim() || category.title.en?.trim() || category.id,
+    }))
+    .sort((a, b) => a.categoryTitle.localeCompare(b.categoryTitle));
 
 /**
- * Returns all published blog posts.
- * Reads the `blogs` collection for docs with a non-null `publishedVersion`,
- * then fetches the corresponding version document for each.
+ * Returns all published blog posts localized to `lang`.
  */
-export async function getPublishedBlogs(): Promise<GetBlogsResponse> {
+export async function getPublishedBlogs(lang: SupportedLanguage): Promise<GetBlogsResponse> {
   const db = getDB();
-  const snapshot = await db
-    .collection(BLOGS_COLLECTION)
-    .where('publishedVersion', '!=', null)
-    .get();
+  const [snapshot, categoriesById] = await Promise.all([
+    db.collection(BLOGS_COLLECTION).where('publishedVersion', '!=', null).get(),
+    loadCategoriesById(),
+  ]);
 
-  const results: PublicBlogPost[] = [];
+  const results: BlogPost[] = [];
 
   await Promise.all(
     snapshot.docs.map(async (docSnap) => {
@@ -39,28 +64,25 @@ export async function getPublishedBlogs(): Promise<GetBlogsResponse> {
       if (!versionSnap.exists) return;
 
       const version = versionSnap.data() as BlogVersionDoc;
-      results.push({
-        id: meta.id,
-        publishedAtIso: meta.publishedAtIso,
-        imagePreviewUrl: version.imagePreviewUrl,
-        categoryId: version.categoryId,
-        content: version.content,
-        title: version.title,
-        subTitle: version.subTitle,
-        keywords: version.keywords,
-      });
+      results.push(toBlogPost(meta, version, lang, categoriesById));
     }),
   );
 
   results.sort((a, b) => b.publishedAtIso.localeCompare(a.publishedAtIso));
 
-  return { blogs: results };
+  return {
+    blogs: results,
+    categories: toCategorySummaries(categoriesById, lang),
+  };
 }
 
 /**
- * Returns a single published blog post by blog ID.
+ * Returns a single published blog post by blog ID, localized to `lang`.
  */
-export async function getPublishedBlog(blogId: string): Promise<GetBlogResponse> {
+export async function getPublishedBlog(
+  blogId: string,
+  lang: SupportedLanguage,
+): Promise<GetBlogResponse> {
   const db = getDB();
   const metaSnap = await db.collection(BLOGS_COLLECTION).doc(blogId).get();
 
@@ -69,28 +91,20 @@ export async function getPublishedBlog(blogId: string): Promise<GetBlogResponse>
   const meta = metaSnap.data() as BlogDocMeta;
   if (!meta.publishedVersion || !meta.publishedAtIso) return { blog: null };
 
-  const versionSnap = await db
-    .collection(BLOGS_COLLECTION)
-    .doc(blogId)
-    .collection('versions')
-    .doc(meta.publishedVersion)
-    .get();
+  const [versionSnap, categoriesById] = await Promise.all([
+    db
+      .collection(BLOGS_COLLECTION)
+      .doc(blogId)
+      .collection('versions')
+      .doc(meta.publishedVersion)
+      .get(),
+    loadCategoriesById(),
+  ]);
 
   if (!versionSnap.exists) return { blog: null };
 
   const version = versionSnap.data() as BlogVersionDoc;
   return {
-    blog: {
-      id: meta.id,
-      publishedAtIso: meta.publishedAtIso,
-      imagePreviewUrl: version.imagePreviewUrl,
-      categoryId: version.categoryId,
-      content: version.content,
-      title: version.title,
-      subTitle: version.subTitle,
-      keywords: version.keywords,
-    },
+    blog: toBlogPost(meta, version, lang, categoriesById),
   };
 }
-
-export { DRAFT_VERSION_ID };
