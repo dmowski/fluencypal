@@ -15,7 +15,7 @@ export interface FetchBlogsApiResponse {
 }
 
 export interface FetchBlogsOptions {
-  /** When true, bypass Next.js data cache (for sitemap and other always-fresh reads). */
+  /** When true, bypass Next.js data cache (default for sitemap). */
   fresh?: boolean;
 }
 
@@ -29,7 +29,7 @@ export const fetchBlogsFromApp = async (
 
   const response = await fetch(
     url,
-    options?.fresh ? { cache: 'no-store' } : { next: { revalidate: 3600 } },
+    options?.fresh === false ? { next: { revalidate: 3600 } } : { cache: 'no-store' },
   );
   if (!response.ok) {
     throw new Error(`getBlogs failed: ${response.status}`);

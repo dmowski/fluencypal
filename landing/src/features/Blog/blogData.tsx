@@ -658,8 +658,8 @@ const mergeCategoriesFromBlogs = (
 };
 
 export interface GetBlogsOptions {
-  /** When true, always read the latest published posts from the app API. */
-  fresh?: boolean;
+  /** When false, allow a 1h Next.js data cache (rare; default is always fresh). */
+  allowStaleCache?: boolean;
 }
 
 /** Published posts from the app API plus legacy static entries (e.g. JSX-only articles). */
@@ -677,7 +677,7 @@ export const getBlogs = async (
   const staticInfo = getStaticBlogPosts(lang);
 
   try {
-    const api = await fetchBlogsFromApp(lang, { fresh: options?.fresh });
+    const api = await fetchBlogsFromApp(lang, { fresh: !options?.allowStaleCache });
     const apiIds = new Set(api.blogs.map((b) => b.id));
     const staticOnly = staticInfo.blogs.filter((b) => !apiIds.has(b.id));
     const blogs = [...api.blogs, ...staticOnly];
