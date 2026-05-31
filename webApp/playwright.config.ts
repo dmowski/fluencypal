@@ -48,7 +48,9 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'pnpm run dev',
-    url: BASE_URL,
+    // Compile `/practice` before the first spec — cold-start there caused
+    // flaky `page.goto` ERR_ABORTED on authWall (first test in the suite).
+    url: `${BASE_URL}/practice`,
     reuseExistingServer: true,
     timeout: 120000,
   },

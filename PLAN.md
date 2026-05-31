@@ -2,6 +2,8 @@
 
 ## News: They should be interesting for me.
 
+Add category: original. Make it default. and don't use AI for that
+
 ## Blogs
 
 webApp/src/features/Blog/AGENTS.md
