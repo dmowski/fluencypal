@@ -10,6 +10,7 @@ import { UploadImageButton } from '@/features/Game/UploadImageButton';
 
 interface BlogEditorFormProps {
   draft: BlogVersionDoc;
+  blogId: string;
   activeLang: SupportedLanguage;
   isBusy: boolean;
   isSaving: boolean;
@@ -27,10 +28,12 @@ interface BlogEditorFormProps {
   onPublish: () => void;
   onTranslateToCurrent: () => void;
   onTranslateToAll: () => void;
+  onRenameId: (newId: string) => Promise<void>;
 }
 
 export const BlogEditorForm = ({
   draft,
+  blogId,
   activeLang,
   isBusy,
   isSaving,
@@ -48,11 +51,28 @@ export const BlogEditorForm = ({
   onPublish,
   onTranslateToCurrent,
   onTranslateToAll,
+  onRenameId,
 }: BlogEditorFormProps) => {
   const titleValue = draft.title[activeLang];
   const subTitleValue = draft.subTitle[activeLang];
   const contentValue = draft.content[activeLang];
 
+  const [idDraft, setIdDraft] = useState(blogId);
+  const [isRenamingId, setIsRenamingId] = useState(false);
+
+  const handleRenameId = async () => {
+    const trimmed = idDraft.trim();
+    if (!trimmed || trimmed === blogId) {
+      setIdDraft(blogId);
+      return;
+    }
+    setIsRenamingId(true);
+    try {
+      await onRenameId(trimmed);
+    } finally {
+      setIsRenamingId(false);
+    }
+  };
   // Local raw string so the user can type commas freely.
   // Sync with the parent value whenever the language changes or the parent
   // overwrites (e.g. after translation). We use a ref to track "last synced"
@@ -81,6 +101,26 @@ export const BlogEditorForm = ({
     <Stack gap="16px">
       {/* Language-agnostic metadata */}
       <Stack gap="12px">
+        {/* Blog ID (used as the public URL slug) */}
+        <Stack sx={{ flexDirection: 'row', alignItems: 'flex-end', gap: '8px' }}>
+          <TextField
+            label="Blog ID (URL slug)"
+            value={idDraft}
+            onChange={(e) => setIdDraft(e.target.value)}
+            size="small"
+            fullWidth
+            helperText="Used in the public URL. Renaming copies all data to the new ID."
+          />
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={handleRenameId}
+            disabled={isRenamingId || idDraft.trim() === blogId}
+            sx={{ flexShrink: 0, height: '40px' }}
+          >
+            {isRenamingId ? 'Renaming…' : 'Rename'}
+          </Button>
+        </Stack>
         <Stack gap="8px">
           <Stack sx={{ flexDirection: 'row', alignItems: 'flex-end', gap: '12px' }}>
             <TextField

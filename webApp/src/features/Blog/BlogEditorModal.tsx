@@ -17,9 +17,10 @@ interface BlogEditorModalProps {
   blog: BlogDocMeta;
   onClose: () => void;
   onUpdate: (meta: Partial<BlogDocMeta>) => Promise<void>;
+  onRenameId: (newId: string) => Promise<void>;
 }
 
-export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProps) => {
+export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEditorModalProps) => {
   const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit');
   const [activeLang, setActiveLang] = useState<SupportedLanguage>('en');
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
@@ -123,6 +124,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProp
             {activeTab === 'edit' && (
               <BlogEditorForm
                 draft={localDraft}
+                blogId={blog.id}
                 activeLang={activeLang}
                 isBusy={isBusy}
                 isSaving={isSaving}
@@ -142,6 +144,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate }: BlogEditorModalProp
                 onPublish={publishDraft}
                 onTranslateToCurrent={() => handleTranslateToCurrentLang(activeLang)}
                 onTranslateToAll={handleTranslateToAllLanguages}
+                onRenameId={onRenameId}
               />
             )}
 

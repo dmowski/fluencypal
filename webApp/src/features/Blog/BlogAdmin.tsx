@@ -4,7 +4,7 @@ import { db } from '@/features/Firebase/firebaseDb';
 import { BlogDocMeta } from './types';
 import { BlogEditorModal } from './BlogEditorModal';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { Button, Chip, Stack, Typography } from '@mui/material';
 import { CirclePlus, BookOpen, Trash2 } from 'lucide-react';
@@ -52,6 +52,32 @@ export const BlogAdmin = () => {
     }
     const docRef = doc(blogsCollection, blogId);
     await deleteDoc(docRef);
+  };
+
+  const renameBlog = async (oldId: string, newId: string) => {
+    const trimmed = newId.trim();
+    if (!trimmed || trimmed === oldId) return;
+
+    const oldDocRef = doc(blogsCollection, oldId);
+    const oldSnap = await getDoc(oldDocRef);
+    if (!oldSnap.exists()) return;
+
+    const newDocRef = doc(blogsCollection, trimmed);
+    await setDoc(newDocRef, { ...(oldSnap.data() as BlogDocMeta), id: trimmed });
+
+    const oldVersionsRef = collection(oldDocRef, 'versions');
+    const versionsSnap = await getDocs(oldVersionsRef);
+    const newVersionsRef = collection(newDocRef, 'versions');
+    for (const vSnap of versionsSnap.docs) {
+      await setDoc(doc(newVersionsRef, vSnap.id), vSnap.data());
+    }
+    for (const vSnap of versionsSnap.docs) {
+      await deleteDoc(doc(oldVersionsRef, vSnap.id));
+    }
+    await deleteDoc(oldDocRef);
+
+    setSelectedBlogId(trimmed);
+    setOptimisticBlog(null);
   };
 
   const selectedBlog = blogsData?.find((b) => b.id === selectedBlogId) ?? optimisticBlog ?? null;
@@ -145,6 +171,7 @@ export const BlogAdmin = () => {
             setOptimisticBlog(null);
           }}
           onUpdate={(patch) => updateBlogMeta(selectedBlog.id, patch)}
+          onRenameId={(newId) => renameBlog(selectedBlog.id, newId)}
         />
       )}
     </Stack>
