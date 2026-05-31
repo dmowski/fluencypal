@@ -3,7 +3,7 @@ import { BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
 import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
-import { fetchPublishedBlogs, toResourceCategories } from './blogApi';
+import { fetchBlogsFromApp, toResourceCategories } from './blogApi';
 
 export interface BlogInfo {
   blogs: BlogPost[];
@@ -669,7 +669,7 @@ export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
   const staticInfo = getStaticBlogPosts(lang);
 
   try {
-    const api = await fetchPublishedBlogs(lang);
+    const api = await fetchBlogsFromApp(lang);
     const apiIds = new Set(api.blogs.map((b) => b.id));
     const staticOnly = staticInfo.blogs.filter((b) => !apiIds.has(b.id));
     const blogs = [...api.blogs, ...staticOnly];
@@ -681,7 +681,7 @@ export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
 
     return { blogs, allCategory, categoriesList };
   } catch (err) {
-    console.error('[getBlogs] fetchPublishedBlogs failed, using static blogs only:', err);
+    console.error('[getBlogs] fetchBlogsFromApp failed, using static blogs only:', err);
     return staticInfo;
   }
 };

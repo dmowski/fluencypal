@@ -14,7 +14,8 @@ export interface FetchBlogsApiResponse {
   categories: BlogApiCategory[];
 }
 
-export const fetchPublishedBlogs = async (
+/** Fetches published blogs from the web app API for the given locale. */
+export const fetchBlogsFromApp = async (
   lang: SupportedLanguage,
 ): Promise<FetchBlogsApiResponse> => {
   const url =
