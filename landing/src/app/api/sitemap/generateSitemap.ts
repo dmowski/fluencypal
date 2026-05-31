@@ -86,7 +86,7 @@ export async function generateSitemap(): Promise<string> {
       priority: '0.5000',
     }));
 
-  const blogs = await getBlogs('en');
+  const blogs = await getBlogs('en', { fresh: true });
   const blogsItems = blogs.blogs;
   const blogsCategories = blogs.categoriesList;
   const blogsUrls: UrlDefinition[] = blogsItems.map((item) => ({

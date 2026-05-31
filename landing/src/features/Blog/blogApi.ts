@@ -14,14 +14,23 @@ export interface FetchBlogsApiResponse {
   categories: BlogApiCategory[];
 }
 
+export interface FetchBlogsOptions {
+  /** When true, bypass Next.js data cache (for sitemap and other always-fresh reads). */
+  fresh?: boolean;
+}
+
 /** Fetches published blogs from the web app API for the given locale. */
 export const fetchBlogsFromApp = async (
   lang: SupportedLanguage,
+  options?: FetchBlogsOptions,
 ): Promise<FetchBlogsApiResponse> => {
   const url =
     `${BLOG_API_BASE}/api/blog/getBlogs?` + new URLSearchParams({ lang });
 
-  const response = await fetch(url, { next: { revalidate: 3600 } });
+  const response = await fetch(
+    url,
+    options?.fresh ? { cache: 'no-store' } : { next: { revalidate: 3600 } },
+  );
   if (!response.ok) {
     throw new Error(`getBlogs failed: ${response.status}`);
   }

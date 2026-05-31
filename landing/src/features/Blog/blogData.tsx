@@ -657,8 +657,16 @@ const mergeCategoriesFromBlogs = (
   return categoriesList;
 };
 
+export interface GetBlogsOptions {
+  /** When true, always read the latest published posts from the app API. */
+  fresh?: boolean;
+}
+
 /** Published posts from the app API plus legacy static entries (e.g. JSX-only articles). */
-export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
+export const getBlogs = async (
+  lang: SupportedLanguage,
+  options?: GetBlogsOptions,
+): Promise<BlogInfo> => {
   const i18n = getI18nInstance(lang);
   const allCategory: ResourceCategory = {
     categoryTitle: i18n._('All Blogs'),
@@ -669,7 +677,7 @@ export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
   const staticInfo = getStaticBlogPosts(lang);
 
   try {
-    const api = await fetchBlogsFromApp(lang);
+    const api = await fetchBlogsFromApp(lang, { fresh: options?.fresh });
     const apiIds = new Set(api.blogs.map((b) => b.id));
     const staticOnly = staticInfo.blogs.filter((b) => !apiIds.has(b.id));
     const blogs = [...api.blogs, ...staticOnly];
