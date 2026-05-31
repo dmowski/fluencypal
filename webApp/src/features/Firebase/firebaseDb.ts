@@ -38,7 +38,12 @@ import { CommunitySpace, CommunitySpaceSettings } from '@/features/Community/typ
 import { Homework } from '@/features/Homework/homework';
 import { ProgressStat } from '@/features/ProgressStat/types';
 import { ReaderBookDoc } from '@/features/Reader/server/readerBookDoc';
-import { BlogDocMeta, BlogVersionDoc } from '@/features/Blog/types';
+import {
+  BlogCategoryDocument,
+  BlogDocMeta,
+  BlogMetadataCategoryDoc,
+  BlogVersionDoc,
+} from '@/features/Blog/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -126,6 +131,9 @@ export const db = {
 
     blogVersions: (blogId?: string) =>
       blogId ? dataPointCollection<BlogVersionDoc>(`blogs/${blogId}/versions`) : null,
+
+    blogCategories: () =>
+      dataPointCollection<BlogCategoryDocument>(`blogMetadata/category/categories`),
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -217,6 +225,14 @@ export const db = {
     blogVersion: (blogId?: string, versionId?: string) =>
       blogId && versionId
         ? dataPointDoc<BlogVersionDoc>(`blogs/${blogId}/versions/${versionId}`)
+        : null,
+
+    blogMetadataCategory: () =>
+      dataPointDoc<BlogMetadataCategoryDoc>(`blogMetadata/category`),
+
+    blogCategory: (categoryId?: string) =>
+      categoryId
+        ? dataPointDoc<BlogCategoryDocument>(`blogMetadata/category/categories/${categoryId}`)
         : null,
   },
 };

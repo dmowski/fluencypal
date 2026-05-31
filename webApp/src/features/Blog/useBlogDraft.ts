@@ -138,10 +138,12 @@ export const useBlogDraft = (
     try {
       const draft = overrideDraft ?? localDraft;
       await writeDraftToFirestore(draft);
-      await onUpdate({
+      const metaPatch: Partial<BlogDocMeta> = {
         updatedAtIso: new Date().toISOString(),
-        titleEn: draft.title.en || undefined,
-      });
+      };
+      const titleEn = draft.title.en.trim();
+      if (titleEn) metaPatch.titleEn = titleEn;
+      await onUpdate(metaPatch);
     } finally {
       setIsSaving(false);
     }

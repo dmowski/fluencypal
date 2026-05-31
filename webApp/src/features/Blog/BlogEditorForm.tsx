@@ -16,8 +16,9 @@ interface BlogEditorFormProps {
   isPublishing: boolean;
   isTranslating: boolean;
   isPublished: boolean;
+  categoryTitle: string | null;
+  onOpenCategoryPicker: () => void;
   onImagePreviewUrlChange: (value: string) => void;
-  onCategoryIdChange: (value: string) => void;
   onTitleChange: (value: string) => void;
   onSubTitleChange: (value: string) => void;
   onContentChange: (value: string) => void;
@@ -36,8 +37,9 @@ export const BlogEditorForm = ({
   isPublishing,
   isTranslating,
   isPublished,
+  categoryTitle,
+  onOpenCategoryPicker,
   onImagePreviewUrlChange,
-  onCategoryIdChange,
   onTitleChange,
   onSubTitleChange,
   onContentChange,
@@ -103,13 +105,38 @@ export const BlogEditorForm = ({
             />
           )}
         </Stack>
-        <TextField
-          label="Category ID"
-          value={draft.categoryId}
-          onChange={(e) => onCategoryIdChange(e.target.value)}
-          fullWidth
-          size="small"
-        />
+        <Stack gap="18px">
+          <Typography variant="caption" sx={{ opacity: 0.7 }}>
+            Category
+          </Typography>
+          {draft.categoryId ? (
+            <Stack
+              gap="12px"
+              sx={{
+                width: '100%',
+                flexDirection: 'row',
+                gap: '8px',
+              }}
+            >
+              <TextField label="Category ID" value={draft.categoryId} size="small" disabled />
+              {categoryTitle && (
+                <TextField
+                  label="Category title (English)"
+                  value={categoryTitle}
+                  size="small"
+                  disabled
+                />
+              )}
+              <Button variant="outlined" onClick={onOpenCategoryPicker} disabled={isBusy}>
+                Change category
+              </Button>
+            </Stack>
+          ) : (
+            <Button variant="outlined" onClick={onOpenCategoryPicker} disabled={isBusy}>
+              Select category
+            </Button>
+          )}
+        </Stack>
       </Stack>
 
       {/* Per-language fields */}

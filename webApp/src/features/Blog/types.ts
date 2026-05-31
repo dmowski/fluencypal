@@ -14,10 +14,23 @@ export interface BlogDocMeta {
   titleEn?: string;
 }
 
+/** Parent doc at `blogMetadata/category` (anchors the categories subcollection). */
+export interface BlogMetadataCategoryDoc {
+  updatedAtIso: string;
+}
+
+/** Category stored at `blogMetadata/category/categories/{categoryId}` */
+export interface BlogCategoryDocument {
+  id: string;
+  title: Record<SupportedLanguage, string>;
+  updatedAtIso: string;
+}
+
 /** Content document stored in `blogs/{blogId}/versions/{versionId}` */
 export interface BlogVersionDoc {
   id: string;
   imagePreviewUrl: string;
+  /** References `blogMetadata/category/categories/{categoryId}`. */
   categoryId: string;
   content: Record<SupportedLanguage, string>;
   title: Record<SupportedLanguage, string>;

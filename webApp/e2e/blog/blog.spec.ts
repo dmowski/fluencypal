@@ -115,8 +115,9 @@ test.describe('Blog admin', () => {
 
     await expect(page.getByRole('button', { name: 'Save Draft' })).toBeVisible();
 
-    // Close the editor.
+    // Close the editor and wait until the modal is gone (overlay blocks list actions).
     await page.getByRole('button', { name: 'close' }).click();
+    await expect(page.getByRole('button', { name: 'Save Draft' })).toBeHidden();
 
     // The draft should appear in the list.
     await expect(page.getByText('Draft').first()).toBeVisible();

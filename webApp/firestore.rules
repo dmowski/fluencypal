@@ -11,6 +11,10 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
 
+    function isBlogAdmin() {
+      return isSignedIn() && request.auth.token.email == 'dmowski.alex@gmail.com';
+    }
+
     // Deny everything by default
     match /{document=**} {
       allow read, write: if false;
@@ -297,12 +301,22 @@ service cloud.firestore {
     }
 
     match /blogs/{blogId} {
-      allow read: if isSignedIn();
-      allow write: if isSignedIn();
+      allow read: if isBlogAdmin();
+      allow write: if isBlogAdmin();
 
       match /versions/{versionId} {
-        allow read: if isSignedIn();
-        allow write: if isSignedIn();
+        allow read: if isBlogAdmin();
+        allow write: if isBlogAdmin();
+      }
+    }
+
+    match /blogMetadata/category {
+      allow read: if isBlogAdmin();
+      allow write: if isBlogAdmin();
+
+      match /categories/{categoryId} {
+        allow read: if isBlogAdmin();
+        allow write: if isBlogAdmin();
       }
     }
   }
