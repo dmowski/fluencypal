@@ -3,7 +3,7 @@ import { BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
 import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
-import { fetchBlogsFromApp, toResourceCategories } from './blogApi';
+import { fetchBlogsFromApp } from './blogApi';
 
 export interface BlogInfo {
   blogs: BlogPost[];
@@ -674,10 +674,9 @@ export const getBlogs = async (lang: SupportedLanguage): Promise<BlogInfo> => {
     const staticOnly = staticInfo.blogs.filter((b) => !apiIds.has(b.id));
     const blogs = [...api.blogs, ...staticOnly];
 
-    const categoriesList =
-      api.categories.length > 0
-        ? toResourceCategories(api.categories, allCategory.categoryTitle)
-        : mergeCategoriesFromBlogs(blogs, allCategory);
+    // Always derive the category list from the full merged blog array so that
+    // static posts' categories appear in the sidebar alongside API categories.
+    const categoriesList = mergeCategoriesFromBlogs(blogs, allCategory);
 
     return { blogs, allCategory, categoriesList };
   } catch (err) {
