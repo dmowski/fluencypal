@@ -32,10 +32,12 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
     isLoadingDraft,
     isSaving,
     isPublishing,
+    isUnpublishing,
     isTranslating,
     setLangField,
     saveDraft,
     publishDraft,
+    unpublishDraft,
     handleTranslateToCurrentLang,
     handleTranslateToAllLanguages,
   } = useBlogDraft(blog, onUpdate);
@@ -50,7 +52,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
   } = useBlogCategories();
 
   const isPublished = Boolean(blog.publishedVersion);
-  const isBusy = isSaving || isPublishing || isTranslating;
+  const isBusy = isSaving || isPublishing || isUnpublishing || isTranslating;
   const selectedCategory = localDraft.categoryId
     ? getCategoryById(localDraft.categoryId)
     : undefined;
@@ -142,6 +144,8 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
                 onKeywordsChange={(v) => setLangField('keywords', v, activeLang)}
                 onSave={() => saveDraft()}
                 onPublish={publishDraft}
+                onUnpublish={unpublishDraft}
+                isUnpublishing={isUnpublishing}
                 onTranslateToCurrent={() => handleTranslateToCurrentLang(activeLang)}
                 onTranslateToAll={handleTranslateToAllLanguages}
                 onRenameId={onRenameId}

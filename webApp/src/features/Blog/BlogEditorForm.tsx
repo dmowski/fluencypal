@@ -26,6 +26,8 @@ interface BlogEditorFormProps {
   onKeywordsChange: (value: string[]) => void;
   onSave: () => void;
   onPublish: () => void;
+  onUnpublish: () => void;
+  isUnpublishing: boolean;
   onTranslateToCurrent: () => void;
   onTranslateToAll: () => void;
   onRenameId: (newId: string) => Promise<void>;
@@ -49,6 +51,8 @@ export const BlogEditorForm = ({
   onKeywordsChange,
   onSave,
   onPublish,
+  onUnpublish,
+  isUnpublishing,
   onTranslateToCurrent,
   onTranslateToAll,
   onRenameId,
@@ -229,6 +233,18 @@ export const BlogEditorForm = ({
         >
           {isPublishing ? 'Publishing...' : isPublished ? 'Re-publish' : 'Publish'}
         </Button>
+
+        {isPublished && (
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={onUnpublish}
+            disabled={isBusy}
+            startIcon={isUnpublishing ? <Loader size="14px" /> : undefined}
+          >
+            {isUnpublishing ? 'Unpublishing...' : 'Unpublish'}
+          </Button>
+        )}
 
         {activeLang !== 'en' && (
           <Button

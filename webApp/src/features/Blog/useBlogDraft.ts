@@ -71,11 +71,13 @@ export interface UseBlogDraftResult {
   isLoadingDraft: boolean;
   isSaving: boolean;
   isPublishing: boolean;
+  isUnpublishing: boolean;
   isTranslating: boolean;
   /** Update a single localised field for a specific language. */
   setLangField: <T>(key: keyof LocalizedFields, value: T, lang: SupportedLanguage) => void;
   saveDraft: (overrideDraft?: BlogVersionDoc) => Promise<void>;
   publishDraft: () => Promise<void>;
+  unpublishDraft: () => Promise<void>;
   handleTranslateToCurrentLang: (activeLang: SupportedLanguage) => Promise<void>;
   handleTranslateToAllLanguages: () => Promise<void>;
 }
@@ -88,6 +90,7 @@ export const useBlogDraft = (
   const [isLoadingDraft, setIsLoadingDraft] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
+  const [isUnpublishing, setIsUnpublishing] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
 
   const ai = useTextAi();
@@ -184,6 +187,19 @@ export const useBlogDraft = (
       });
     } finally {
       setIsPublishing(false);
+    }
+  };
+
+  const unpublishDraft = async () => {
+    setIsUnpublishing(true);
+    try {
+      await onUpdate({
+        publishedVersion: null,
+        publishedAtIso: null,
+        updatedAtIso: new Date().toISOString(),
+      });
+    } finally {
+      setIsUnpublishing(false);
     }
   };
 
@@ -294,10 +310,12 @@ export const useBlogDraft = (
     isLoadingDraft,
     isSaving,
     isPublishing,
+    isUnpublishing,
     isTranslating,
     setLangField,
     saveDraft,
     publishDraft,
+    unpublishDraft,
     handleTranslateToCurrentLang,
     handleTranslateToAllLanguages,
   };
