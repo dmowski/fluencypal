@@ -82,3 +82,10 @@ export interface NewsItemIconHint {
   iconName: IconName;
   iconBgColor: string;
 }
+
+/** Per-article read stats at `stats/news/stats/{newsId}`. */
+export interface NewsStat {
+  /** Maps userId → ISO timestamp of the most recent qualifying read (30s+ on article). */
+  viewsUserIds: Record<string, string>;
+  updatedAtIso: string;
+}

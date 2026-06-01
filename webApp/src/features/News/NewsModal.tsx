@@ -27,6 +27,9 @@ import {
   NewsContentWithParagraphs,
   type NewsArticleVoiceOverlay,
 } from './NewsContentWithParagraphs';
+import { recordNewsView } from './recordNewsView';
+
+const NEWS_READ_THRESHOLD_MS = 30_000;
 
 export const NewsModal = () => {
   const { isOpen, newsId, closeNews } = useNewsModal();
@@ -107,6 +110,17 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   useEffect(() => {
     scrollToTop();
   }, [newsId, scrollToTop]);
+
+  useEffect(() => {
+    const userId = auth.uid;
+    if (!userId || isLoading || !item || hasError) return;
+
+    const timeout = setTimeout(() => {
+      void recordNewsView(userId, newsId);
+    }, NEWS_READ_THRESHOLD_MS);
+
+    return () => clearTimeout(timeout);
+  }, [auth.uid, hasError, isLoading, item, newsId]);
 
   const getNewsByIdRef = useRef(news.getNewsById);
   getNewsByIdRef.current = news.getNewsById;

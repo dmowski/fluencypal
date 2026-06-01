@@ -256,6 +256,7 @@ export function AdminStats() {
               >
                 <AdminMetrics
                   lastHourMessagesCount={lastHourMessagesCount}
+                  newsReadsLast24h={data.newsReadsLast24h}
                   todayUsersCount={todayUsers.length}
                   secondDayVisitorsCount={secondDayVisitors.length}
                   thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}

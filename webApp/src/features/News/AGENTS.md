@@ -17,8 +17,8 @@ This file applies to `webApp/src/features/News/**`.
 - `NewsTranslationPopover.tsx` — lightweight popover anchored to the selection position; shows translated text, loading state, or a prompt to set a native language when translation is unavailable.
 - `useNewsVoice.ts` — per-article TTS hook: filters browser voices to the article language, scores them by quality (Google cloud > remote > Enhanced/Premium/Neural > default > Compact), persists the chosen voice URI per language in `localStorage` (`news-voice-v1-{lang}`), and exposes `play / pause / resume / stop` with `isPlaying` and `isPaused` state. Cancels synthesis on unmount.
 - `constants.ts` — complexity labels, supported countries, gNews categories.
-- `types.ts` — `NewsItem`, `NewsItemSummary`, complexity types.
-- `buildNewsDiscussionPrompt.ts` — AI tutor prompt for `news-discussion` mode.
+- `types.ts` — `NewsItem`, `NewsItemSummary`, `NewsStat`, complexity types.
+- `recordNewsView.ts` — writes a qualifying read to `stats/news/stats/{newsId}` after the user spends 30s on an article in `NewsModal`.
 - `api/` — client-side fetch helpers (one file per endpoint): `getTodayNewsRequest.ts`, `getNewsFullTextRequest.ts`, `getNewsByIdRequest.ts`, `getPreviousDayNewsRequest.ts`.
 - `backend/` — all server-side logic: cache, enrichment, gNews fetch, AI rewrites, prompts, route helpers, and request/response types. The `getTodayNews/` subfolder holds the population orchestration.
 
@@ -72,6 +72,17 @@ Key fields:
 | `countryCode`, `languageCode` | Region and target learning language                                       |
 
 Security rules: signed-in users may **read** `news`; writes are server-only (Admin SDK).
+
+## Read Stats
+
+Collection: `stats/news/stats/{newsId}`.
+
+| Field           | Purpose                                              |
+| --------------- | ---------------------------------------------------- |
+| `viewsUserIds`  | Maps `userId` → ISO timestamp of the latest read     |
+| `updatedAtIso`  | Last time any view was recorded on this article      |
+
+A read is recorded client-side when the user keeps an article open for **30 seconds** after it loads (`NewsModal`). Admin stats aggregate all views whose timestamp falls within the last 24 hours (`News Read - 24h` card on `/staats`).
 
 ## User Preferences (localStorage)
 

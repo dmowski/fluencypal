@@ -4,6 +4,7 @@ import { StatCard } from './StatCard';
 interface AdminMetricsProps {
   todayMessagesCount: number;
   lastHourMessagesCount: number;
+  newsReadsLast24h: number;
   lastDayUsersCount: number;
   todayUsersCount: number;
 
@@ -16,6 +17,7 @@ interface AdminMetricsProps {
 export function AdminMetrics({
   todayMessagesCount,
   lastHourMessagesCount,
+  newsReadsLast24h,
   lastDayUsersCount,
   secondDayVisitorsCount,
   thirdAndMoreDayVisitorsCount,
@@ -55,6 +57,8 @@ export function AdminMetrics({
       <StatCard value={todayMessagesCount} label="Today Messages" />
 
       <StatCard value={lastHourMessagesCount} label="Last Hour Messages" />
+
+      <StatCard value={newsReadsLast24h} label="News Read - 24h" />
 
       <StatCard
         value={lastDayUsersCount}

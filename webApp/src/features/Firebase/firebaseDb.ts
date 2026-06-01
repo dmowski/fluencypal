@@ -44,6 +44,7 @@ import {
   BlogMetadataCategoryDoc,
   BlogVersionDoc,
 } from '@/features/Blog/types';
+import { NewsStat } from '@/features/News/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -96,6 +97,8 @@ export const db = {
     storyStats: (userId?: string) =>
       userId ? dataPointCollection<StoryStat>(`stats/stories/stats`) : null,
 
+    newsStats: () => dataPointCollection<NewsStat>(`stats/news/stats`),
+
     usersChatMessages: (space: string, userId: string) =>
       userId ? dataPointCollection<ThreadsMessage>(`chat/${space}/messages`) : null,
 
@@ -141,6 +144,9 @@ export const db = {
 
     storyStats: (userId?: string, storyId?: string) =>
       userId && storyId ? dataPointDoc<StoryStat>(`stats/stories/stats/${storyId}`) : null,
+
+    newsStats: (newsId?: string) =>
+      newsId ? dataPointDoc<NewsStat>(`stats/news/stats/${newsId}`) : null,
 
     dailyTaskProgress: (userId?: string, dayIso?: string, languageCode?: SupportedLanguage) =>
       userId && dayIso && languageCode

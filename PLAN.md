@@ -2,6 +2,26 @@
 
 ## News: They should be interesting for me.
 
+webApp/src/features/News/AGENTS.md
+
+Create news stats. Something like that
+/stats/news/stats/{news_id}
+
+properties in that document :
+
+viewsUserIds: Record<string, string> // userId, viewsIsoTime
+updatedAtIso:string;
+
+the on admin panel
+webApp/src/features/Analytics/AdminStats/AdminStats.tsx
+Create a new card with "News Read - 24h"
+Count of views per last 24 hours.
+
+Mark news as read when user spend 30 second on
+webApp/src/features/News/NewsModal.tsx
+
+======
+
 Add category: original. Make it default. and don't use AI for that
 
 ## Blogs
