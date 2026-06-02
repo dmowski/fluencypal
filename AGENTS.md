@@ -64,6 +64,7 @@ When changing one area, run checks for that area first. Avoid running full Playw
 ## Key Docs
 
 - Project setup and scripts: `README.md`
+- Realtime service setup and wire protocol: `realtime/README.md`
 - Firebase emulator workflow: `webApp/FIREBASE_EMULATOR_SETUP.md`
 - Security reporting: `webApp/SECURITY.md`
 - Web-specific coding guidance: `webApp/AGENTS.md`

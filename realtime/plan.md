@@ -551,7 +551,7 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 1.8 — Developer docs
 
-- [ ] `realtime/README.md`: setup, env vars, run test client, protocol overview.
+- [x] `realtime/README.md`: setup, env vars, run test client, protocol overview.
 
 **Phase 1 exit criteria**
 
