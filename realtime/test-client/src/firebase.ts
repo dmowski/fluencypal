@@ -1,9 +1,8 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseError, initializeApp } from 'firebase/app';
 import {
   browserLocalPersistence,
   browserPopupRedirectResolver,
   connectAuthEmulator,
-  FirebaseError,
   getAuth,
   getRedirectResult,
   GoogleAuthProvider,
@@ -197,11 +196,8 @@ export const signInWithGoogle = async (): Promise<User> => {
   }
 
   if (isInAppBrowser()) {
-    throw formatAuthError(
-      new FirebaseError(
-        'auth/operation-not-supported-in-this-environment',
-        'In-app browser',
-      ),
+    throw new Error(
+      'Google sign-in is not supported in this browser. Open in Safari or Chrome, or use email sign-in.',
     );
   }
 

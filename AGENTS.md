@@ -30,7 +30,7 @@ Use pnpm for all package operations.
 
 - Realtime install: `cd realtime && pnpm install`
 - Realtime dev (emulator + API + test client): `cd realtime && pnpm dev`
-- Realtime typecheck: `cd realtime && pnpm lint`
+- Realtime checks (typecheck + test-client Vite build): `cd realtime && pnpm lint`
 - Realtime unit tests: `cd realtime && pnpm test`
 - Realtime API e2e (Firebase emulator + service): `cd realtime && pnpm test:e2e`
 - Realtime browser e2e (Playwright): `cd realtime && pnpm test:e2e:browser`
