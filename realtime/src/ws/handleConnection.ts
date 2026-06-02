@@ -9,6 +9,8 @@ import type { ConversationSession } from '../session/ConversationSession.js';
 import { sessionManager } from '../session/SessionManager.js';
 import { env } from '../config/env.js';
 import { isAllowedOrigin, rejectOriginMessage } from './originGuard.js';
+import { closeSessionSocket } from './closeSessionSocket.js';
+import { createSessionIdleGuard, isUserActivityMessage } from './sessionIdleTimeout.js';
 
 const sendMessage = (socket: WebSocket, message: Parameters<typeof serializeServerMessage>[0]) => {
   if (socket.readyState === socket.OPEN) {
@@ -62,6 +64,23 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
     let started = false;
     let binaryFrameCount = 0;
 
+    const endConnection = (reason: string, closeCode = 1000): void => {
+      idleGuard.dispose();
+      closeSessionSocket({ socket, session, reason, closeCode });
+      session = null;
+      started = false;
+    };
+
+    const idleGuard = createSessionIdleGuard({
+      timeoutMs: env.SESSION_IDLE_TIMEOUT_MS,
+      onIdle: () => {
+        sessionLog(session?.sessionId ?? null, 'session.idle_timeout', {
+          timeoutMs: env.SESSION_IDLE_TIMEOUT_MS,
+        });
+        endConnection('idle timeout');
+      },
+    });
+
     const sendForSession = (message: Parameters<typeof serializeServerMessage>[0]) => {
       sendMessage(socket, message);
     };
@@ -93,6 +112,7 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
             return;
           }
 
+          idleGuard.onUserActivity();
           session.handleBinaryAudio(data);
           return;
         }
@@ -124,12 +144,23 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
             userId: user.uid,
           });
           sendMessage(socket, sessionManager.buildSessionReadyMessage(session));
+          idleGuard.onUserActivity();
           return;
         }
 
         if (!session) {
           sendError(socket, 'session.not_started', 'First message must be session.start', true);
           return;
+        }
+
+        if (message.type === 'session.end') {
+          sessionLog(session.sessionId, 'session.client_end');
+          endConnection('client_end');
+          return;
+        }
+
+        if (isUserActivityMessage(message)) {
+          idleGuard.onUserActivity();
         }
 
         await session.handleClientMessage(message);
@@ -161,6 +192,7 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
     });
 
     socket.on('close', () => {
+      idleGuard.dispose();
       if (session) {
         sessionLog(session.sessionId, 'ws.closed', { binaryFrameCount });
         sessionManager.removeSession(session.sessionId);

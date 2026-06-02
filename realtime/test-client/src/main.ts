@@ -634,5 +634,17 @@ typedMessage.addEventListener('keydown', (event) => {
   }
 });
 
+const endSessionOnPageLeave = () => {
+  if (!client.isConnected) {
+    return;
+  }
+
+  debugLog('client', 'page_hide_end_session');
+  void stopCall();
+  client.disconnect();
+};
+
+window.addEventListener('pagehide', endSessionOnPageLeave);
+
 setConnectedUi(false);
 updateSteps();

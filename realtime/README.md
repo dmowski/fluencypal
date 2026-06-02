@@ -67,6 +67,7 @@ Copy `.env.example` to `.env`. All variables are read at startup via `src/config
 | `RATE_LIMIT_WINDOW_MS` | No | `60000` | Rate limit window in ms |
 | `RATE_LIMIT_AUTH_VERIFY_MAX` | No | `30` | Max `/v1/auth/verify` calls per IP per window |
 | `RATE_LIMIT_WS_MAX` | No | `20` | Max WebSocket upgrade attempts per IP per window |
+| `SESSION_IDLE_TIMEOUT_MS` | No | `600000` (10 min; `0` in tests) | Close session after no user audio/control |
 
 \* Required for conversation pipeline tests and manual calls with voice. E2E auth/session tests run without OpenAI.
 
@@ -190,6 +191,16 @@ Authoritative schemas: `src/protocol/messages.ts` (zod). Audio conventions: `src
 2. Client sends **first message** — JSON `session.start` with Firebase ID token and session config.
 3. Server verifies token, creates `ConversationSession`, replies `session.ready` with `sessionId` and effective config.
 4. Client sends JSON control messages and binary audio frames until `session.end` or disconnect.
+
+### When connections close
+
+| Event | What happens |
+| ----- | ---------------- |
+| User clicks **Disconnect** or closes the tab | Client sends `session.end` (on `pagehide`); server disposes session and closes the WebSocket. |
+| Browser closes the socket (network, crash) | Server `close` handler runs → session removed from memory. |
+| No user activity for `SESSION_IDLE_TIMEOUT_MS` (default 10 min) | Server sends `session.ended`, closes socket (`idle timeout`). Mic audio and control messages reset the timer; `session.ping` does not. |
+
+You do not need a custom close for normal cases — the WebSocket `close` event is the default cleanup path. Idle timeout is needed so abandoned tabs do not hold server sessions and OpenAI work forever.
 
 Binary frames are detected when the payload does not start with `{` (JSON). Raw PCM16 chunks are accepted without a prefix.
 

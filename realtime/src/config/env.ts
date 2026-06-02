@@ -40,6 +40,8 @@ const envSchema = z.object({
   RATE_LIMIT_AUTH_VERIFY_MAX: z.coerce.number().int().min(1).default(30),
   /** WebSocket upgrade attempts per IP per window. */
   RATE_LIMIT_WS_MAX: z.coerce.number().int().min(1).default(20),
+  /** Close session after this many ms without user audio/control (0 = disabled). */
+  SESSION_IDLE_TIMEOUT_MS: z.coerce.number().int().min(0).default(600_000),
 });
 
 export type Env = z.infer<typeof envSchema>;
@@ -59,4 +61,6 @@ if (process.env.FLY_APP_NAME) {
 export const env: Env = {
   ...parsed,
   ALLOWED_ORIGINS: [...mergedOrigins],
+  SESSION_IDLE_TIMEOUT_MS:
+    parsed.NODE_ENV === 'test' ? 0 : parsed.SESSION_IDLE_TIMEOUT_MS,
 };
