@@ -1,10 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import {
   connectAuthEmulator,
-  createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
-  signInWithEmailAndPassword,
+  signInWithCredential,
+  signInWithPopup,
   signOut,
   type User,
 } from 'firebase/auth';
@@ -30,18 +31,34 @@ export const configureAuthEmulator = (enabled: boolean): void => {
   }
 };
 
+export const isAuthEmulatorEnabled = (): boolean => emulatorConnected;
+
 export const watchAuth = (onChange: (user: User | null) => void): (() => void) => {
   return onAuthStateChanged(auth, onChange);
 };
 
-export const signInOrUp = async (email: string, password: string): Promise<User> => {
-  try {
-    const credential = await signInWithEmailAndPassword(auth, email, password);
-    return credential.user;
-  } catch {
-    const credential = await createUserWithEmailAndPassword(auth, email, password);
-    return credential.user;
+const signInWithGoogleEmulator = async (): Promise<User> => {
+  const email = `realtime-dev-${Date.now()}@example.com`;
+  const credential = GoogleAuthProvider.credential(
+    JSON.stringify({
+      sub: `google-${Date.now()}`,
+      email,
+      email_verified: true,
+      name: 'Realtime Dev User',
+    }),
+  );
+  const result = await signInWithCredential(auth, credential);
+  return result.user;
+};
+
+export const signInWithGoogle = async (): Promise<User> => {
+  if (emulatorConnected) {
+    return signInWithGoogleEmulator();
   }
+
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
+  return result.user;
 };
 
 export const signOutUser = (): Promise<void> => signOut(auth);

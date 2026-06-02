@@ -19,20 +19,28 @@ This package is **isolated** from the pnpm workspace — install dependencies in
 cd realtime
 pnpm install
 cp .env.example .env
-# Edit .env — see Environment variables below
+# Optional for full conversation: set OPENAI_API_KEY in .env
 pnpm dev
 ```
+
+`pnpm dev` starts everything you need locally:
+
+1. Firebase emulators (Auth, Firestore, Storage) if not already running
+2. Realtime API on port **8081** with `IS_FIREBASE_EMULATOR=true`
+3. Test client on http://127.0.0.1:5173 (opens in your browser)
+
+Sign in with **Google** on the test page (Auth emulator checkbox is on by default), click **Connect**, and talk.
 
 Health check:
 
 ```bash
-curl http://localhost:8081/health
+curl http://127.0.0.1:8081/health
 ```
 
-WebSocket endpoint:
+WebSocket endpoint (proxied through the test client in dev):
 
 ```
-ws://localhost:8081/v1/session
+ws://127.0.0.1:8081/v1/session
 ```
 
 The first message on the socket must be JSON `session.start` with a Firebase ID token. See [Wire protocol](#wire-protocol).
@@ -50,7 +58,7 @@ Copy `.env.example` to `.env`. All variables are read at startup via `src/config
 | `FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS` | Yes** | — | Firebase admin service account JSON string |
 | `FIREBASE_PROJECT_ID` | No | `dark-lang` | Firebase project id |
 | `FIREBASE_STORAGE_BUCKET` | No | `dark-lang.firebasestorage.app` | Storage bucket |
-| `IS_FIREBASE_EMULATOR` | No | `false` | Set `true` for local Auth emulator |
+| `IS_FIREBASE_EMULATOR` | No | `false` | Set automatically by `pnpm dev`; set `true` manually for `pnpm dev:api` |
 | `DEFAULT_STT_MODEL` | No | `gpt-4o-transcribe` | Server-side STT model |
 | `DEFAULT_LLM_MODEL` | No | `gpt-4o` | Server-side LLM model |
 | `DEFAULT_TTS_MODEL` | No | `gpt-4o-mini-tts` | Server-side TTS model |
@@ -62,6 +70,10 @@ Copy `.env.example` to `.env`. All variables are read at startup via `src/config
 Models are **server-side only** — clients never send model or provider ids. Change env vars and redeploy to swap models.
 
 ### Firebase emulator mode
+
+`pnpm dev` starts the Firebase emulators automatically when they are not already running (requires Java 11+).
+
+To run the API alone against an emulator you start separately:
 
 1. Start Firebase emulators (see `webApp/FIREBASE_EMULATOR_SETUP.md`):
 
@@ -76,7 +88,13 @@ Models are **server-side only** — clients never send model or provider ids. Ch
    FIREBASE_PROJECT_ID=dark-lang
    ```
 
-3. When `IS_FIREBASE_EMULATOR=true`, the service sets:
+3. Start the API:
+
+   ```bash
+   cd realtime && pnpm dev:api
+   ```
+
+When `IS_FIREBASE_EMULATOR=true`, the service sets:
 
    - `FIREBASE_AUTH_EMULATOR_HOST=localhost:9099`
    - `FIRESTORE_EMULATOR_HOST=localhost:8080`
@@ -93,52 +111,53 @@ curl http://localhost:8081/v1/auth/verify \
 
 | Command | Description |
 | ------- | ----------- |
-| `pnpm dev` | Realtime API server with reload (`tsx watch`) |
-| `pnpm dev:client` | Vite test UI on http://localhost:5173 |
+| `pnpm dev` | **One command dev stack**: emulator + API + test client (+ opens browser) |
+| `pnpm dev:api` | Realtime API only with reload (`tsx watch`) |
+| `pnpm dev:client` | Vite test UI only on http://127.0.0.1:5173 |
 | `pnpm build:client` | Production build of test client |
-| `pnpm typecheck` | TypeScript check |
+| `pnpm lint` | TypeScript check (`tsc --noEmit`) |
 | `pnpm test` | Unit tests (mocked Firebase / providers) |
-| `pnpm test:e2e` | E2E tests (Firebase emulator + realtime on port `18081`) |
-| `pnpm test:all` | Unit + E2E + test client build |
+| `pnpm test:e2e` | API-level e2e (Vitest + WS client on port `18081`) |
+| `pnpm test:e2e:browser` | Browser e2e (Playwright + real test client UI) |
+| `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
+| `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
 | `pnpm build && pnpm start` | Production build and run |
+
+First-time browser e2e setup:
+
+```bash
+cd realtime
+pnpm exec playwright install chromium
+```
 
 ### Automated verification
 
 ```bash
 cd realtime
-pnpm test        # 27 unit tests
-pnpm test:e2e    # auth, session lifecycle, optional OpenAI pipeline
-pnpm test:all    # full suite
+pnpm test                 # unit tests
+pnpm test:e2e             # API e2e (auth, session, optional OpenAI pipeline)
+pnpm test:e2e:browser     # browser e2e (sign-in, connect, typed turn, PTT UI)
+pnpm test:all             # full suite
 ```
 
-E2E harness (`e2e/globalSetup.ts`) starts the Firebase emulator from `webApp/` and a realtime server on port **18081** when the emulator is not already running. Requires Java 11+ and network access for `npx firebase-tools` on first run.
+**API e2e** (`vitest`) uses `e2e/globalSetup.ts` to start the Firebase emulator and a realtime server on port **18081**.
 
-Pipeline e2e (`e2e/pipeline.e2e.ts`) calls real OpenAI when `OPENAI_API_KEY` is set; otherwise it skips.
+**Browser e2e** (`playwright`) starts the same stack as `pnpm dev` (ports **8081** + **5173**), then drives the test client in Chromium with fake microphone permissions. The typed-message spec calls real OpenAI when `OPENAI_API_KEY` is set.
+
+Set `REUSE_DEV_SERVER=1` to skip restarting the dev stack when `pnpm dev` is already running.
 
 ## Test client
 
-Manual UI for exercising the WebSocket session locally.
+The test client is included in `pnpm dev`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
 
-**Terminal 1** — realtime API:
+**All-in-one (recommended):**
 
 ```bash
 cd realtime
 pnpm dev
 ```
 
-**Terminal 2** — Firebase emulator (if not already running):
-
-```bash
-cd webApp && pnpm dev:firebase-emulator
-```
-
-**Terminal 3** — test client:
-
-```bash
-cd realtime && pnpm dev:client
-```
-
-Open http://localhost:5173, sign in (Auth emulator checkbox), click **Connect**, then:
+Open http://127.0.0.1:5173, click **Sign in with Google**, then **Connect**, then:
 
 | Mode | How to use |
 | ---- | ---------- |

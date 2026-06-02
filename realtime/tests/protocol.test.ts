@@ -83,6 +83,14 @@ describe('protocol/audioCodec', () => {
     expect(parseBinaryFrame(frame)).toEqual({ kind: 'audio_in', payload });
   });
 
+  it('treats ambiguous 0x01-leading PCM as raw audio', () => {
+    const pcmLike = Buffer.alloc(320);
+    pcmLike[0] = 0x01;
+    pcmLike.writeUInt32BE(9999, 1);
+
+    expect(parseBinaryFrame(pcmLike)).toEqual({ kind: 'raw', payload: pcmLike });
+  });
+
   it('rejects oversized chunks', () => {
     const oversized = Buffer.alloc(MAX_AUDIO_CHUNK_BYTES + 1);
     expect(() => parseBinaryFrame(oversized)).toThrow(/max size/);

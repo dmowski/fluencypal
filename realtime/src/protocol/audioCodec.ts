@@ -25,15 +25,9 @@ export const parseBinaryFrame = (data: Buffer): ParsedBinaryFrame => {
     const length = data.readUInt32BE(1);
     const payload = data.subarray(5, 5 + length);
 
-    if (payload.length !== length) {
-      throw new Error('Invalid prefixed audio frame length');
+    if (payload.length === length && length > 0 && length <= MAX_AUDIO_CHUNK_BYTES) {
+      return { kind: 'audio_in', payload };
     }
-
-    if (payload.length > MAX_AUDIO_CHUNK_BYTES) {
-      throw new Error(`Audio chunk exceeds max size (${MAX_AUDIO_CHUNK_BYTES} bytes)`);
-    }
-
-    return { kind: 'audio_in', payload };
   }
 
   return { kind: 'raw', payload: data };

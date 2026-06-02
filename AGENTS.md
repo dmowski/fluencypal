@@ -29,9 +29,11 @@ Use pnpm for all package operations.
 - Trim audios full pipeline: `cd helperProjects/trimAudios && pnpm all`
 
 - Realtime install: `cd realtime && pnpm install`
-- Realtime typecheck: `cd realtime && pnpm typecheck`
+- Realtime dev (emulator + API + test client): `cd realtime && pnpm dev`
+- Realtime typecheck: `cd realtime && pnpm lint`
 - Realtime unit tests: `cd realtime && pnpm test`
-- Realtime e2e (Firebase emulator + service): `cd realtime && pnpm test:e2e`
+- Realtime API e2e (Firebase emulator + service): `cd realtime && pnpm test:e2e`
+- Realtime browser e2e (Playwright): `cd realtime && pnpm test:e2e:browser`
 
 When changing one area, run checks for that area first. Avoid running full Playwright by default unless the task touches e2e-sensitive behavior.
 

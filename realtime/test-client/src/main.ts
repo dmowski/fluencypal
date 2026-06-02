@@ -1,13 +1,11 @@
-import { configureAuthEmulator, getIdToken, signInOrUp, signOutUser, watchAuth } from './firebase.js';
+import { configureAuthEmulator, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
 import { startAudioCapture, type AudioCapture } from './audioCapture.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
 const useEmulator = $<HTMLInputElement>('use-emulator');
-const email = $<HTMLInputElement>('email');
-const password = $<HTMLInputElement>('password');
-const signInBtn = $<HTMLButtonElement>('sign-in');
+const signInGoogleBtn = $<HTMLButtonElement>('sign-in-google');
 const signOutBtn = $<HTMLButtonElement>('sign-out');
 const authStatus = $<HTMLParagraphElement>('auth-status');
 
@@ -126,16 +124,16 @@ mode.addEventListener('change', () => {
   syncTalkControls(client.isConnected);
 });
 
-signInBtn.addEventListener('click', async () => {
+signInGoogleBtn.addEventListener('click', async () => {
   configureAuthEmulator(useEmulator.checked);
-  signInBtn.disabled = true;
+  signInGoogleBtn.disabled = true;
 
   try {
-    await signInOrUp(email.value.trim(), password.value);
+    await signInWithGoogle();
   } catch (error) {
-    authStatus.textContent = error instanceof Error ? error.message : 'Sign in failed';
+    authStatus.textContent = error instanceof Error ? error.message : 'Google sign in failed';
   } finally {
-    signInBtn.disabled = false;
+    signInGoogleBtn.disabled = false;
   }
 });
 

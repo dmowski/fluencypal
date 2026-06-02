@@ -16,6 +16,8 @@ export const buildApp = async () => {
     service: 'fluencypal-realtime',
     version: '0.1.0',
     activeSessions: sessionManager.activeCount,
+    firebaseEmulator: env.IS_FIREBASE_EMULATOR,
+    port: env.REALTIME_PORT,
   }));
 
   app.get('/v1/auth/verify', async (request, reply) => {
