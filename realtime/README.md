@@ -122,7 +122,9 @@ curl http://localhost:8081/v1/auth/verify \
 | `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
 | `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
 | `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
-| `pnpm build && pnpm start` | Production build and run |
+| `pnpm prod` | Redeploy to Fly.io (`fly deploy`) |
+| `pnpm prod:open` | Open production test page in browser |
+| `pnpm build && pnpm start` | Production build and run locally |
 
 First-time browser e2e setup:
 
@@ -327,16 +329,27 @@ WebSocket URL for clients:
 wss://fluencypal-realtime.fly.dev/v1/session
 ```
 
-TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Set `ALLOWED_ORIGINS` to every HTTPS origin that opens a WebSocket (webApp + test client host).
+### Test page (built into the deploy)
 
-### Test client against deployed service
+The Docker image includes the **test client** as static files. After deploy, open:
+
+```text
+https://fluencypal-realtime.fly.dev/
+```
+
+That is the same UI as local `pnpm dev` (sign in, Connect, Start call). WebSocket and API are **same origin** — no `VITE_REALTIME_WS_URL` needed on Fly.
+
+**Uncheck “Use Firebase Auth emulator”** and sign in with Google (production Firebase).
+
+Redeploy anytime:
 
 ```bash
 cd realtime
-VITE_REALTIME_WS_URL=wss://fluencypal-realtime.fly.dev pnpm dev:client
+pnpm prod
+pnpm prod:open   # opens the test page in your browser
 ```
 
-Open the Vite URL on a phone (same Wi‑Fi or deploy the static test client). Sign in with **production** Firebase (uncheck emulator), Connect, Start call.
+TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). `ALLOWED_ORIGINS` in `fly.toml` must include `https://fluencypal-realtime.fly.dev` (already set).
 
 Reconnection: **MVP uses fresh sessions** — disconnect and Connect again; no resume.
 

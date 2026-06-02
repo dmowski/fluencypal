@@ -6,6 +6,7 @@ import { getListenPort } from './config/listenPort.js';
 import { env } from './config/env.js';
 import { sessionManager } from './session/SessionManager.js';
 import { registerGracefulShutdown, registerHttpRoutes } from './server/httpRoutes.js';
+import { registerTestClient } from './server/registerTestClient.js';
 import { registerWebSocketRoutes } from './ws/handleConnection.js';
 
 export const buildApp = async () => {
@@ -30,6 +31,10 @@ export const buildApp = async () => {
   });
 
   await registerWebSocketRoutes(app);
+
+  if (env.NODE_ENV === 'production') {
+    await registerTestClient(app);
+  }
 
   app.addHook('onClose', async () => {
     sessionManager.disposeAll();
