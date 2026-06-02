@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { estimateAudioDurationMs } from '../protocol/audioCodec.js';
 import { buildUsageMessage, getPipelineModels } from '../usage/emitUsage.js';
 import { recordPipelineLatency } from '../metrics/sessionMetrics.js';
 import type { ProviderRegistry } from '../providers/types.js';
@@ -52,7 +53,14 @@ export class TurnPipeline {
       });
       recordPipelineLatency('stt', Date.now() - startedAt);
 
-      this.callbacks.send(buildUsageMessage({ stage: 'stt', model: models.stt, usage: result.usage }));
+      this.callbacks.send(
+        buildUsageMessage({
+          stage: 'stt',
+          model: models.stt,
+          usage: result.usage,
+          audioDurationSeconds: estimateAudioDurationMs(pcm.length) / 1000,
+        }),
+      );
       return result.text;
     } finally {
       this.releaseNestedAbort(abort);
@@ -164,15 +172,26 @@ export class TurnPipeline {
       signal,
     });
 
+    let ttsBytes = 0;
+
     while (true) {
       const { done, value } = await ttsStream.next();
       if (done) {
         if (value) {
-          this.callbacks.send(buildUsageMessage({ stage: 'tts', model: models.tts, usage: value }));
+          const audioDurationSeconds = (ttsBytes * 8) / 128_000;
+          this.callbacks.send(
+            buildUsageMessage({
+              stage: 'tts',
+              model: models.tts,
+              usage: value,
+              audioDurationSeconds,
+            }),
+          );
         }
         break;
       }
 
+      ttsBytes += value.length;
       this.callbacks.sendBinary(value);
     }
 

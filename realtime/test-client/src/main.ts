@@ -1,8 +1,9 @@
-import { configureAuthEmulator, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
+import { configureAuthEmulator, completeRedirectSignIn, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
 import { describeMicError, MicrophoneSession, computeChunkRms, unlockAudioPlayback, getCaptureWarmupMs, type AudioCapture } from './audioCapture.js';
-import { getAppEnvironment, getBackendLabel, isLocalDev, shouldDefaultEmulator } from './env.js';
+import { getAppEnvironment, getBackendLabel, isLocalDev, isMobileDevice, shouldDefaultEmulator } from './env.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
+import { SessionUsageTracker, type UsageEntry } from './sessionUsage.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -36,6 +37,7 @@ const typedMessage = $<HTMLInputElement>('typed-message');
 const sendTextBtn = $<HTMLButtonElement>('send-text');
 const transcriptEl = $<HTMLDivElement>('transcript');
 const usageLog = $<HTMLPreElement>('usage-log');
+const sessionPriceTotal = $<HTMLParagraphElement>('session-price-total');
 const debugLogEl = $<HTMLPreElement>('debug-log');
 const copyDebugLogBtn = $<HTMLButtonElement>('copy-debug-log');
 const clearDebugLogBtn = $<HTMLButtonElement>('clear-debug-log');
@@ -43,6 +45,24 @@ const debugLogStatus = $<HTMLParagraphElement>('debug-log-status');
 
 const transcriptById = new Map<string, HTMLSpanElement>();
 const microphone = new MicrophoneSession();
+const usageTracker = new SessionUsageTracker();
+
+const parseUsageStage = (stage: string): UsageEntry['stage'] | null => {
+  if (stage === 'stt' || stage === 'llm' || stage === 'tts' || stage === 'vision') {
+    return stage;
+  }
+  return null;
+};
+
+const renderUsagePanel = () => {
+  sessionPriceTotal.textContent = usageTracker.formatSummaryLine();
+  if (usageTracker.allEntries.length === 0) {
+    usageLog.textContent = 'No usage yet.';
+    return;
+  }
+
+  usageLog.textContent = usageTracker.allEntries.map((entry) => usageTracker.formatEntryLine(entry)).join('\n');
+};
 
 let signedIn = false;
 let capture: AudioCapture | null = null;
@@ -184,8 +204,24 @@ const client = new RealtimeSessionClient({
     const body = ensureTranscriptMessage(messageId, role);
     body.textContent = text;
   },
-  onUsage: (entry) => {
-    usageLog.textContent = `${entry}\n\n${usageLog.textContent ?? ''}`.trim();
+  onUsage: ({ stage, model, usageEvent, createdAt }) => {
+    const parsedStage = parseUsageStage(stage);
+    if (!parsedStage || !usageEvent) {
+      return;
+    }
+
+    usageTracker.record(
+      parsedStage,
+      model,
+      {
+        input_tokens: usageEvent.input_tokens ?? 0,
+        output_tokens: usageEvent.output_tokens ?? 0,
+        total_tokens: usageEvent.total_tokens,
+        audioDurationSeconds: usageEvent.audioDurationSeconds,
+      },
+      createdAt ?? Date.now(),
+    );
+    renderUsagePanel();
   },
   onError: (message) => {
     debugLog('error', message);
@@ -306,6 +342,18 @@ const prepareMicrophone = async (): Promise<boolean> => {
 
 initEnvironment();
 configureAuthEmulator(useEmulator.checked);
+renderUsagePanel();
+
+void (async () => {
+  try {
+    const user = await completeRedirectSignIn();
+    if (user) {
+      debugLog('auth', 'redirect_sign_in_complete', { email: user.email ?? user.uid });
+    }
+  } catch (error) {
+    setAuthStatusText(error instanceof Error ? error.message : 'Google sign-in failed', 'error');
+  }
+})();
 
 useEmulator.addEventListener('change', () => {
   authHint.textContent = 'Reload the page after changing the emulator setting.';
@@ -334,9 +382,17 @@ signInGoogleBtn.addEventListener('click', async () => {
   try {
     await signInWithGoogle();
   } catch (error) {
+    if (error instanceof Error && error.message.includes('Redirecting')) {
+      setAuthStatusText('Redirecting to Google…', 'warning');
+      return;
+    }
+
     setAuthStatusText(error instanceof Error ? error.message : 'Google sign in failed', 'error');
-  } finally {
     signInGoogleBtn.disabled = false;
+  } finally {
+    if (!isMobileDevice() || useEmulator.checked) {
+      signInGoogleBtn.disabled = false;
+    }
   }
 });
 
@@ -352,6 +408,8 @@ connectBtn.addEventListener('click', async () => {
   try {
     debugLog('call', 'connect_click');
     await unlockAudioPlayback();
+    usageTracker.reset();
+    renderUsagePanel();
     const token = await getIdToken();
     client.connect(token, readSessionConfig());
     setConnectedUi(true);

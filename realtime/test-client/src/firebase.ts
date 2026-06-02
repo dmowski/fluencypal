@@ -2,13 +2,16 @@ import { initializeApp } from 'firebase/app';
 import {
   connectAuthEmulator,
   getAuth,
+  getRedirectResult,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   type User,
 } from 'firebase/auth';
+import { isMobileDevice } from './env.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD3bNY55votFEehrHs8dAlJuDCf6Chu2IQ',
@@ -37,6 +40,16 @@ export const watchAuth = (onChange: (user: User | null) => void): (() => void) =
   return onAuthStateChanged(auth, onChange);
 };
 
+/** Complete Google redirect sign-in after returning from OAuth (mobile). */
+export const completeRedirectSignIn = async (): Promise<User | null> => {
+  if (emulatorConnected) {
+    return auth.currentUser;
+  }
+
+  const result = await getRedirectResult(auth);
+  return result?.user ?? null;
+};
+
 const signInWithGoogleEmulator = async (): Promise<User> => {
   const email = `realtime-dev-${Date.now()}@example.com`;
   const credential = GoogleAuthProvider.credential(
@@ -57,6 +70,12 @@ export const signInWithGoogle = async (): Promise<User> => {
   }
 
   const provider = new GoogleAuthProvider();
+
+  if (isMobileDevice()) {
+    await signInWithRedirect(auth, provider);
+    throw new Error('Redirecting to Google sign-in…');
+  }
+
   const result = await signInWithPopup(auth, provider);
   return result.user;
 };

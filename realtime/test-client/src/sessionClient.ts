@@ -21,7 +21,17 @@ export type SessionClientHandlers = {
   onSessionReady: (config: SessionStartConfig) => void;
   onTranscriptDelta: (messageId: string, role: 'user' | 'assistant', delta: string) => void;
   onTranscriptDone: (messageId: string, role: 'user' | 'assistant', text: string) => void;
-  onUsage: (entry: string) => void;
+  onUsage: (entry: {
+    stage: string;
+    model: string;
+    usageEvent?: {
+      input_tokens?: number;
+      output_tokens?: number;
+      total_tokens?: number;
+      audioDurationSeconds?: number;
+    };
+    createdAt?: number;
+  }) => void;
   onError: (message: string) => void;
   onMicUploadBlockedChange?: (blocked: boolean) => void;
 };
@@ -244,17 +254,12 @@ export class RealtimeSessionClient {
         }
         return;
       case 'usage':
-        this.handlers.onUsage(
-          JSON.stringify(
-            {
-              stage: message.stage,
-              model: message.model,
-              usage: message.usageEvent,
-            },
-            null,
-            2,
-          ),
-        );
+        this.handlers.onUsage({
+          stage: message.stage ?? 'llm',
+          model: message.model ?? 'unknown',
+          usageEvent: message.usageEvent,
+          createdAt: Date.now(),
+        });
         return;
       case 'assistant.speaking':
         debugLog('assistant', message.active ? 'speaking_start' : 'speaking_end');

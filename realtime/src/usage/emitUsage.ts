@@ -8,16 +8,21 @@ export const buildUsageMessage = ({
   stage,
   model,
   usage,
+  audioDurationSeconds,
 }: {
   stage: UsageStage;
   model: string;
   usage: ProviderUsage;
+  audioDurationSeconds?: number;
 }): ServerMessage => ({
   type: 'usage',
   usageId: randomUUID(),
   stage,
   model,
-  usageEvent: toUsageEventPayload(usage),
+  usageEvent: {
+    ...toUsageEventPayload(usage),
+    ...(audioDurationSeconds !== undefined ? { audioDurationSeconds } : {}),
+  },
   createdAt: Date.now(),
 });
 

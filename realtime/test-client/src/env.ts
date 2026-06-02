@@ -10,6 +10,15 @@ export const getAppEnvironment = (): AppEnvironment => {
 
 export const isLocalDev = (): boolean => getAppEnvironment() === 'local';
 
+export const isMobileDevice = (): boolean => {
+  const ua = navigator.userAgent;
+  if (/iPhone|iPad|iPod|Android/i.test(ua)) {
+    return true;
+  }
+
+  return navigator.maxTouchPoints > 1 && window.matchMedia('(pointer: coarse)').matches;
+};
+
 /** Firebase Auth emulator is only available on localhost. */
 export const shouldDefaultEmulator = (): boolean => isLocalDev();
 
