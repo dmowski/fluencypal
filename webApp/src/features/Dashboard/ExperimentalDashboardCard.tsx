@@ -53,25 +53,6 @@ export const ExperimentalDashboardCard = () => {
           title={i18n._('Experimental features')}
           items={[
             {
-              title: i18n._('Voice to Text'),
-              subTitle: i18n._('Narrate your text and check style.'),
-              iconName: 'mic',
-              iconBgColor: 'rgba(11, 8, 0, 0.8)',
-              actionButtonTitle: i18n._('Start'),
-              onClick: () => globalModals.openEssay(),
-            },
-
-            {
-              title: i18n._('Book Reader'),
-              subTitle: i18n._('Reader with some feature list translate words on the fly.'),
-              iconName: 'book',
-              iconBgColor: 'rgba(11, 8, 0, 0.8)',
-              actionButtonTitle: i18n._('Start'),
-              onClick: () => {
-                window.open('https://app.fluencypal.com/book', '_blank');
-              },
-            },
-            {
               title: i18n._('Just Talk (custom realtime)'),
               subTitle: isRealtimeWsConfigured
                 ? i18n._('Same Just Talk lesson via the new WebSocket voice server.')
@@ -83,6 +64,17 @@ export const ExperimentalDashboardCard = () => {
                 if (!isExperimentalCallStarting) {
                   void startExperimentalJustTalk();
                 }
+              },
+            },
+
+            {
+              title: i18n._('Book Reader'),
+              subTitle: i18n._('Reader with some feature list translate words on the fly.'),
+              iconName: 'book',
+              iconBgColor: 'rgba(11, 8, 0, 0.8)',
+              actionButtonTitle: i18n._('Start'),
+              onClick: () => {
+                window.open('https://book.fluencypal.com/', '_blank');
               },
             },
           ]}
