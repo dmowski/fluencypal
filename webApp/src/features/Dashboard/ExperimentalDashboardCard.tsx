@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import { SectionHeader } from './CartsHeader';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { useJustTalk } from '../Conversation/useJustTalk';
+import { useExperimentalJustTalk } from '../Conversation/useExperimentalJustTalk';
 import { ChatProvider } from '../Chat/useChat';
 import { FlatChat } from '../Chat/FlatChat';
 import { useGame } from '../Game/useGame';
@@ -13,6 +14,11 @@ import { useGlobalModals } from '../Modal/useGlobalModals';
 export const ExperimentalDashboardCard = () => {
   const { i18n } = useLingui();
   const { startJustTalk, isCallStarting } = useJustTalk();
+  const {
+    startExperimentalJustTalk,
+    isCallStarting: isExperimentalCallStarting,
+    isConfigured: isRealtimeWsConfigured,
+  } = useExperimentalJustTalk();
   const globalModals = useGlobalModals();
 
   const game = useGame();
@@ -63,6 +69,20 @@ export const ExperimentalDashboardCard = () => {
               actionButtonTitle: i18n._('Start'),
               onClick: () => {
                 window.open('https://app.fluencypal.com/book', '_blank');
+              },
+            },
+            {
+              title: i18n._('Just Talk (custom realtime)'),
+              subTitle: isRealtimeWsConfigured
+                ? i18n._('Same Just Talk lesson via the new WebSocket voice server.')
+                : i18n._('Set NEXT_PUBLIC_REALTIME_WS_URL to enable.'),
+              iconName: 'mic',
+              iconBgColor: 'rgba(11, 8, 0, 0.8)',
+              actionButtonTitle: i18n._('Start'),
+              onClick: () => {
+                if (!isExperimentalCallStarting) {
+                  void startExperimentalJustTalk();
+                }
               },
             },
           ]}

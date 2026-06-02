@@ -255,3 +255,40 @@ export const calculateTextToAudioPrice = (durationSeconds: number, model: TextTo
 
   return basePrice;
 };
+
+export type RealtimePipelineStage = 'stt' | 'llm' | 'tts';
+
+const isTextAiModel = (model: string): model is TextAiModel => model in textModalPricePerMillionTokens;
+
+const isTranscriptModel = (model: string): model is TranscriptAiModel =>
+  model in audioTranscriptionPricePerMinute;
+
+const isTtsModel = (model: string): model is TextToAudioModal => model in textToAudioPricePerMinute;
+
+/** Discrete STT / LLM / TTS pricing for the custom realtime WebSocket service. */
+export const calculateRealtimePipelineStagePrice = (
+  stage: RealtimePipelineStage,
+  model: string,
+  usage: { input_tokens: number; output_tokens: number; audioDurationSeconds?: number },
+): number => {
+  if (stage === 'llm' && isTextAiModel(model)) {
+    return calculateTextUsagePrice(
+      {
+        text_input: usage.input_tokens,
+        text_cached_input: 0,
+        text_output: usage.output_tokens,
+      },
+      model,
+    );
+  }
+
+  if (stage === 'stt' && isTranscriptModel(model) && usage.audioDurationSeconds !== undefined) {
+    return calculateAudioTranscriptionPrice(usage.audioDurationSeconds, model);
+  }
+
+  if (stage === 'tts' && isTtsModel(model) && usage.audioDurationSeconds !== undefined) {
+    return calculateTextToAudioPrice(usage.audioDurationSeconds, model);
+  }
+
+  return 0;
+};

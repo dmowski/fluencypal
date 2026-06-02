@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { AiVoice, MODELS, pricePerHourUsd } from '@/features/Ai/ai';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
+import { initRealtimeWsConversation } from '../ConversationInstance/realtimeWs/initRealtimeWsConversation';
 import { useSettings } from '../../Settings/useSettings';
 import { ConversationType } from '@/features/Conversation/conversation';
 import { sleep } from '@/libs/sleep';
@@ -553,7 +554,11 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       console.log('newRecordingMode', newRecordingMode);
       setRecordingVoiceMode(newRecordingMode);
 
-      const initConversation = isUseRealtime ? initWebRtcConversation : initTextConversation;
+      const initConversation = input.experimentalRealtimeWs
+        ? initRealtimeWsConversation
+        : isUseRealtime
+          ? initWebRtcConversation
+          : initTextConversation;
 
       const model = input.model || MODELS.REALTIME_CONVERSATION;
 

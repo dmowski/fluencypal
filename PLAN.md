@@ -2,9 +2,6 @@
 
 ## Realtime service
 
-Phase 3. But be sure to not remove old realtime approach on webApp. We need to create an experimental option to run our new realtime mode. Add it only on experimental webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx.
-And it should follow Just talk instructions.
-
 ## News: They should be interesting for me.
 
 webApp/src/features/News/AGENTS.md

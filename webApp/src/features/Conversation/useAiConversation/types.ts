@@ -25,6 +25,8 @@ export interface StartConversationProps {
   lessonPlan?: LessonPlan;
   rolePlayId?: string;
   model?: RealTimeModel;
+  /** Experimental: FluencyPal custom WebSocket realtime (not OpenAI WebRTC). */
+  experimentalRealtimeWs?: boolean;
 }
 
 export interface AiConversationContextType {
