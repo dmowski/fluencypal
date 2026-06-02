@@ -3,6 +3,7 @@ import type { AuthUserInfo } from '../src/auth/types.js';
 import { ConversationSession } from '../src/session/ConversationSession.js';
 import { SessionManager } from '../src/session/SessionManager.js';
 import type { ServerMessage } from '../src/protocol/messages.js';
+import { createMockProviders } from './helpers/mockProviders.js';
 
 const testUser: AuthUserInfo = { uid: 'user-1', email: 'user@example.com' };
 
@@ -16,43 +17,51 @@ const baseConfig = {
 };
 
 describe('ConversationSession', () => {
-  it('handles ping and end lifecycle', () => {
+  it('handles ping and end lifecycle', async () => {
     const sent: ServerMessage[] = [];
     const session = new ConversationSession({
       sessionId: 's1',
       user: testUser,
       config: baseConfig,
       send: (message) => sent.push(message),
+      providers: createMockProviders(),
     });
 
-    session.handleClientMessage({ type: 'session.ping' });
+    await session.handleClientMessage({ type: 'session.ping' });
     expect(sent).toEqual([{ type: 'session.pong' }]);
 
-    session.handleClientMessage({ type: 'session.end' });
+    await session.handleClientMessage({ type: 'session.end' });
     expect(sent.at(-1)).toEqual({ type: 'session.ended' });
     expect(session.isDisposed).toBe(true);
     expect(session.signal.aborted).toBe(true);
   });
 
-  it('stores user text on turn commit', () => {
+  it('stores user text on turn commit and generates assistant reply', async () => {
     const sent: ServerMessage[] = [];
     const session = new ConversationSession({
       sessionId: 's2',
       user: testUser,
       config: baseConfig,
       send: (message) => sent.push(message),
+      providers: createMockProviders(),
     });
 
-    session.handleClientMessage({ type: 'user.text', text: 'Hello teacher' });
-    session.handleClientMessage({ type: 'user.turn.commit', messageId: 'msg-1' });
+    await session.handleClientMessage({ type: 'user.text', text: 'Hello teacher' });
+    await session.handleClientMessage({ type: 'user.turn.commit', messageId: 'msg-1' });
 
-    expect(session.history.list()).toEqual([
-      expect.objectContaining({
-        id: 'msg-1',
-        role: 'user',
-        text: 'Hello teacher',
-      }),
-    ]);
+    expect(session.history.list()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: 'msg-1',
+          role: 'user',
+          text: 'Hello teacher',
+        }),
+        expect.objectContaining({
+          role: 'assistant',
+          text: 'Hello!',
+        }),
+      ]),
+    );
 
     expect(sent).toContainEqual({
       type: 'transcript.done',
@@ -62,20 +71,21 @@ describe('ConversationSession', () => {
     });
   });
 
-  it('aborts in-flight work on dispose', () => {
+  it('aborts in-flight work on dispose', async () => {
     const onAbort = vi.fn();
     const session = new ConversationSession({
       sessionId: 's3',
       user: testUser,
       config: baseConfig,
       send: () => {},
+      providers: createMockProviders(),
     });
 
     session.signal.addEventListener('abort', onAbort);
     session.dispose('test');
 
     expect(onAbort).toHaveBeenCalledTimes(1);
-    expect(() => session.handleClientMessage({ type: 'session.ping' })).toThrow(/closed/);
+    await expect(session.handleClientMessage({ type: 'session.ping' })).rejects.toThrow(/closed/);
   });
 });
 

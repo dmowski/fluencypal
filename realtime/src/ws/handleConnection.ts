@@ -50,8 +50,14 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
     let session: ConversationSession | null = null;
     let started = false;
 
-    const sendForSession: Parameters<typeof sessionManager.createSession>[2] = (message) => {
+    const sendForSession = (message: Parameters<typeof serializeServerMessage>[0]) => {
       sendMessage(socket, message);
+    };
+
+    const sendBinaryForSession = (chunk: Buffer) => {
+      if (socket.readyState === socket.OPEN) {
+        socket.send(chunk);
+      }
     };
 
     socket.on('message', async (raw) => {
@@ -78,7 +84,12 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
           }
 
           const user = await validateIdToken(message.token);
-          session = sessionManager.createSession(user, message.config, sendForSession);
+          session = sessionManager.createSession(
+            user,
+            message.config,
+            sendForSession,
+            sendBinaryForSession,
+          );
           started = true;
           sendMessage(socket, sessionManager.buildSessionReadyMessage(session));
           return;
@@ -89,7 +100,7 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
           return;
         }
 
-        session.handleClientMessage(message);
+        await session.handleClientMessage(message);
       } catch (error) {
         if (error instanceof ProtocolError) {
           sendError(socket, 'protocol.invalid', error.message);

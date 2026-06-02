@@ -2,9 +2,11 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { config as loadDotenv } from 'dotenv';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const realtimeRoot = path.resolve(__dirname, '..');
+loadDotenv({ path: path.join(realtimeRoot, '.env') });
 const webAppRoot = path.resolve(realtimeRoot, '../webApp');
 const statePath = path.join(realtimeRoot, 'e2e', '.e2e-state.json');
 
@@ -101,6 +103,7 @@ const startRealtimeServer = (): ChildProcess => {
         FIREBASE_PROJECT_ID: 'dark-lang',
         FIREBASE_STORAGE_BUCKET: 'dark-lang.firebasestorage.app',
         REALTIME_PORT: String(REALTIME_E2E_PORT),
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? '',
       },
     },
   );

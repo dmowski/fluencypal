@@ -522,29 +522,25 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 1.4 — OpenAI providers
 
-- [ ] **STT batch** first (simplest): accumulate user turn audio → `audio.transcriptions.create` with `gpt-4o-transcribe`.
-- [ ] **LLM stream**: `chat.completions` streaming with conversation history.
-- [ ] **TTS stream**: `audio.speech.create` with streaming response body.
-- [ ] Wire orchestrator: user turn → STT → LLM → optional TTS.
+- [x] **STT batch** first (simplest): accumulate user turn audio → `audio.transcriptions.create` with `gpt-4o-transcribe`.
+- [x] **LLM stream**: `chat.completions` streaming with conversation history.
+- [x] **TTS stream**: `audio.speech.create` with streaming response body.
+- [x] Wire orchestrator: user turn → STT → LLM → optional TTS.
 
 ### Step 1.5 — WebSocket gateway
 
-- [ ] Authenticate on `session.start`.
-- [ ] Accept binary audio frames → buffer until turn commit.
-- [ ] Emit transcript + usage events.
+- [x] Authenticate on `session.start`.
+- [x] Accept binary audio frames → buffer until turn commit.
+- [x] Emit transcript + usage events.
 
 ### Step 1.6 — Test client (`test-client/`)
 
-Minimal UI:
-
-- Connect / disconnect
-- Start session with textarea for system prompt
-- Push-to-talk button (hold to record, release to commit)
-- Live transcript panel (user + assistant deltas)
-- Toggles: mic mute, AI voice on/off
-- Token usage log panel
-
-Use Vite dev server on port 5173; proxy WS to `localhost:8081`.
+- [x] Connect / disconnect
+- [x] Start session with textarea for system prompt
+- [x] Push-to-talk button (hold to record, release to commit)
+- [x] Live transcript panel (user + assistant deltas)
+- [x] Toggles: mic mute, AI voice on/off
+- [x] Token usage log panel
 
 ### Step 1.7 — RealTimeConversation (primary)
 

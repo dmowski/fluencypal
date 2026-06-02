@@ -59,11 +59,13 @@ When `IS_FIREBASE_EMULATOR=true`, the service sets:
 
 | Command | Description |
 | ------- | ----------- |
-| `pnpm dev` | Dev server with reload |
+| `pnpm dev` | Realtime API server with reload |
+| `pnpm dev:client` | Vite test UI on http://localhost:5173 |
+| `pnpm build:client` | Production build of test client |
 | `pnpm typecheck` | TypeScript check |
 | `pnpm test` | Unit tests (mocked Firebase) |
 | `pnpm test:e2e` | E2E tests (starts Firebase emulator + realtime if needed) |
-| `pnpm test:all` | Unit + E2E |
+| `pnpm test:all` | Unit + E2E + test client build |
 | `pnpm build && pnpm start` | Production build |
 
 ### Automated verification
@@ -76,3 +78,31 @@ pnpm test:e2e
 ```
 
 Requires Java 11+ and network access for `npx firebase-tools` on first run.
+
+## Test client (step 1.6)
+
+Manual UI for exercising the WebSocket session locally.
+
+Terminal 1 — realtime API (with emulator + OpenAI env):
+
+```bash
+cd realtime
+# IS_FIREBASE_EMULATOR=true in .env when using emulator auth
+pnpm dev
+```
+
+Terminal 2 — Firebase emulator (if not already running via webApp):
+
+```bash
+cd webApp && pnpm dev:firebase-emulator
+```
+
+Terminal 3 — test client:
+
+```bash
+cd realtime && pnpm dev:client
+```
+
+Open http://localhost:5173, sign in (Auth emulator checkbox on), Connect, then hold **Hold to talk** or send typed text.
+
+The Vite dev server proxies `/v1` (HTTP + WebSocket) to `http://127.0.0.1:8081`.

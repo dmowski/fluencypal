@@ -9,12 +9,14 @@
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:client": "vite --config test-client/vite.config.ts",
     "build": "tsc",
+    "build:client": "vite build --config test-client/vite.config.ts",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --config vitest.config.ts",
     "test:e2e": "vitest run --config vitest.e2e.config.ts",
-    "test:all": "pnpm test && pnpm test:e2e"
+    "test:all": "pnpm test && pnpm test:e2e && pnpm build:client"
   },
   "dependencies": {
     "@fastify/websocket": "^11.2.0",
@@ -27,8 +29,10 @@
   "devDependencies": {
     "@types/node": "^24.12.3",
     "@types/ws": "^8.18.1",
+    "firebase": "^12.10.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
+    "vite": "^7.3.1",
     "vitest": "^3.2.4",
     "ws": "^8.19.0"
   }

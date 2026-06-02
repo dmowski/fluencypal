@@ -1,7 +1,11 @@
 import { randomUUID } from 'node:crypto';
 import type { AuthUserInfo } from '../auth/types.js';
 import type { SessionStartConfig, ServerMessage } from '../protocol/messages.js';
-import { ConversationSession, type SendServerMessage } from './ConversationSession.js';
+import {
+  ConversationSession,
+  type SendBinary,
+  type SendServerMessage,
+} from './ConversationSession.js';
 
 export class SessionManager {
   private readonly sessions = new Map<string, ConversationSession>();
@@ -10,16 +14,17 @@ export class SessionManager {
     user: AuthUserInfo,
     config: SessionStartConfig,
     send: SendServerMessage,
+    sendBinary: SendBinary = () => {},
   ): ConversationSession {
-    const sessionId = randomUUID();
     const session = new ConversationSession({
-      sessionId,
+      sessionId: randomUUID(),
       user,
       config,
       send,
+      sendBinary,
     });
 
-    this.sessions.set(sessionId, session);
+    this.sessions.set(session.sessionId, session);
     return session;
   }
 

@@ -1,19 +1,23 @@
 import { randomUUID } from 'node:crypto';
 import type { AuthUserInfo } from '../auth/types.js';
+import { defaultProviderRegistry } from '../providers/registry.js';
+import type { ProviderRegistry } from '../providers/types.js';
 import { parseBinaryFrame } from '../protocol/audioCodec.js';
 import type {
   ClientMessage,
-  SessionStartConfig,
   ServerMessage,
+  SessionStartConfig,
   SessionUpdatePatch,
 } from '../protocol/messages.js';
 import { ConversationHistory } from './history.js';
+import { TurnPipeline } from './TurnPipeline.js';
 
 export type SessionRuntimeConfig = SessionStartConfig & {
   correctionInstruction: string;
 };
 
 export type SendServerMessage = (message: ServerMessage) => void;
+export type SendBinary = (chunk: Buffer) => void;
 
 export class ConversationSession {
   readonly sessionId: string;
@@ -23,6 +27,8 @@ export class ConversationSession {
 
   private config: SessionRuntimeConfig;
   private readonly send: SendServerMessage;
+  private readonly sendBinary: SendBinary;
+  private readonly pipeline: TurnPipeline;
   private readonly abortController = new AbortController();
   private disposed = false;
   private pendingUserAudio: Buffer[] = [];
@@ -33,11 +39,15 @@ export class ConversationSession {
     user,
     config,
     send,
+    sendBinary = () => {},
+    providers = defaultProviderRegistry,
   }: {
     sessionId: string;
     user: AuthUserInfo;
     config: SessionStartConfig;
     send: SendServerMessage;
+    sendBinary?: SendBinary;
+    providers?: ProviderRegistry;
   }) {
     this.sessionId = sessionId;
     this.user = user;
@@ -46,6 +56,14 @@ export class ConversationSession {
       correctionInstruction: '',
     };
     this.send = send;
+    this.sendBinary = sendBinary;
+    this.pipeline = new TurnPipeline(
+      providers,
+      { send, sendBinary },
+      () => this.config,
+      this.history,
+      this.abortController.signal,
+    );
   }
 
   get signal(): AbortSignal {
@@ -60,7 +78,7 @@ export class ConversationSession {
     return this.config;
   }
 
-  handleClientMessage(message: ClientMessage): void {
+  async handleClientMessage(message: ClientMessage): Promise<void> {
     this.assertActive();
 
     switch (message.type) {
@@ -75,6 +93,9 @@ export class ConversationSession {
         return;
       case 'session.update':
         this.applyConfigPatch(message.patch);
+        if (message.patch.voiceEnabled === false) {
+          this.pipeline.abortInFlight();
+        }
         return;
       case 'assistant.instruction':
         this.applyInstruction(message.text, message.mode);
@@ -83,16 +104,15 @@ export class ConversationSession {
         this.pendingUserText = message.text;
         return;
       case 'user.turn.commit':
-        this.commitUserTurn(message.messageId);
+        await this.commitUserTurn(message.messageId);
         return;
       case 'user.turn.cancel':
         this.cancelUserTurn();
         return;
       case 'assistant.trigger':
-        // Full pipeline wired in step 1.4
+        await this.pipeline.generateAssistantResponse();
         return;
       case 'vision.frame':
-        // Reserved for later JPEG-to-LLM support.
         return;
       default: {
         const _exhaustive: never = message;
@@ -118,6 +138,7 @@ export class ConversationSession {
     }
 
     this.disposed = true;
+    this.pipeline.abortInFlight();
     this.pendingUserAudio = [];
     this.pendingUserText = '';
     this.abortController.abort();
@@ -147,10 +168,17 @@ export class ConversationSession {
       .join('\n');
   }
 
-  private commitUserTurn(messageId?: string): void {
+  private async commitUserTurn(messageId?: string): Promise<void> {
     const id = messageId ?? randomUUID();
-    const textFromAudio = this.flushPendingUserAudioPlaceholder();
-    const text = this.pendingUserText || textFromAudio;
+    const audioChunks = this.pendingUserAudio;
+    this.pendingUserAudio = [];
+
+    let text = this.pendingUserText;
+    this.pendingUserText = '';
+
+    if (!text && audioChunks.length > 0) {
+      text = await this.pipeline.transcribeAudio(audioChunks);
+    }
 
     if (!text) {
       return;
@@ -170,21 +198,12 @@ export class ConversationSession {
       text,
     });
 
-    this.pendingUserText = '';
+    await this.pipeline.generateAssistantResponse();
   }
 
   private cancelUserTurn(): void {
+    this.pipeline.abortInFlight();
     this.pendingUserAudio = [];
     this.pendingUserText = '';
-  }
-
-  /** Placeholder until STT is wired in step 1.4. */
-  private flushPendingUserAudioPlaceholder(): string {
-    if (this.pendingUserAudio.length === 0) {
-      return '';
-    }
-
-    this.pendingUserAudio = [];
-    return '';
   }
 }

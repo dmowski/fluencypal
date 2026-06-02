@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FluencyPal Realtime Test Client</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <header>
+        <h1>Realtime test client</h1>
+        <p class="subtitle">Push-to-talk against <code>/v1/session</code> (proxied to port 8081)</p>
+      </header>
+
+      <section class="panel">
+        <h2>Auth</h2>
+        <label class="row">
+          <input id="use-emulator" type="checkbox" checked />
+          Use Firebase Auth emulator (localhost:9099)
+        </label>
+        <div class="grid">
+          <input id="email" type="email" placeholder="email@example.com" />
+          <input id="password" type="password" placeholder="password" value="TestPassword123!" />
+        </div>
+        <div class="row actions">
+          <button id="sign-in" type="button">Sign in / sign up</button>
+          <button id="sign-out" type="button" disabled>Sign out</button>
+        </div>
+        <p id="auth-status" class="status">Not signed in</p>
+      </section>
+
+      <section class="panel">
+        <h2>Session</h2>
+        <label>
+          System instruction
+          <textarea id="system-instruction" rows="3">You are an English teacher. Reply briefly in one or two sentences.</textarea>
+        </label>
+        <div class="grid">
+          <label>
+            Mode
+            <select id="mode">
+              <option value="PushToTalk" selected>PushToTalk</option>
+              <option value="RealTimeConversation">RealTimeConversation</option>
+            </select>
+          </label>
+          <label>
+            Voice
+            <select id="voice">
+              <option value="shimmer" selected>shimmer</option>
+              <option value="ash">ash</option>
+              <option value="marin">marin</option>
+              <option value="verse">verse</option>
+            </select>
+          </label>
+        </div>
+        <div class="row toggles">
+          <label><input id="voice-enabled" type="checkbox" checked /> AI voice on</label>
+          <label><input id="mic-muted" type="checkbox" /> Mic muted</label>
+        </div>
+        <div class="row actions">
+          <button id="connect" type="button">Connect</button>
+          <button id="disconnect" type="button" disabled>Disconnect</button>
+        </div>
+        <p id="session-status" class="status">Disconnected</p>
+      </section>
+
+      <section class="panel">
+        <h2>Talk</h2>
+        <button id="ptt" type="button" class="ptt" disabled>Hold to talk</button>
+        <label>
+          Or type a message
+          <input id="typed-message" type="text" placeholder="Type and press Send" disabled />
+        </label>
+        <button id="send-text" type="button" disabled>Send text</button>
+      </section>
+
+      <section class="panel transcript-panel">
+        <h2>Transcript</h2>
+        <div id="transcript" class="transcript"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Token usage</h2>
+        <pre id="usage-log" class="log"></pre>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
