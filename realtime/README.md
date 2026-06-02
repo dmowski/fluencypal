@@ -310,7 +310,7 @@ fly secrets set \
   OPENAI_API_KEY=sk-... \
   FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS='{"type":"service_account",...}' \
   FIREBASE_PROJECT_ID=dark-lang \
-  ALLOWED_ORIGINS=https://your-webapp.example,https://your-landing.example
+  ALLOWED_ORIGINS=https://fluencypal-realtime.fly.dev,https://app.fluencypal.com
 
 fly deploy
 ```
@@ -349,7 +349,12 @@ pnpm prod
 pnpm prod:open   # opens the test page in your browser
 ```
 
-TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). `ALLOWED_ORIGINS` in `fly.toml` must include `https://fluencypal-realtime.fly.dev` (already set).
+TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Allowed WebSocket origins:
+
+- `https://fluencypal-realtime.fly.dev` — bundled test client (same origin)
+- `https://app.fluencypal.com` — production web app (Phase 3)
+
+The Fly app URL is also merged automatically from `FLY_APP_NAME`. If you set `ALLOWED_ORIGINS` via `fly secrets`, include both URLs above.
 
 Reconnection: **MVP uses fresh sessions** — disconnect and Connect again; no resume.
 

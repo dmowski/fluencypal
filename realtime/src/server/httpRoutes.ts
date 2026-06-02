@@ -2,6 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import { env } from '../config/env.js';
 import { sessionManager } from '../session/SessionManager.js';
 import { getMetricsSnapshot } from '../metrics/sessionMetrics.js';
+import { normalizeOrigin } from '../ws/originGuard.js';
 
 let shuttingDown = false;
 
@@ -10,7 +11,10 @@ export const isShuttingDown = (): boolean => shuttingDown;
 export const registerHttpRoutes = (app: FastifyInstance): void => {
   app.addHook('onRequest', async (request, reply) => {
     const origin = request.headers.origin;
-    if (origin && env.ALLOWED_ORIGINS.includes(origin)) {
+    if (
+      origin &&
+      env.ALLOWED_ORIGINS.some((allowed) => normalizeOrigin(allowed) === normalizeOrigin(origin))
+    ) {
       reply.header('Access-Control-Allow-Origin', origin);
       reply.header('Vary', 'Origin');
     }
