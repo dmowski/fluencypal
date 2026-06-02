@@ -2,8 +2,10 @@ import Fastify from 'fastify';
 import { fileURLToPath } from 'node:url';
 import { AuthError } from './auth/types.js';
 import { validateAuthorizationHeader } from './auth/firebase.js';
+import { getListenPort } from './config/listenPort.js';
 import { env } from './config/env.js';
 import { sessionManager } from './session/SessionManager.js';
+import { registerGracefulShutdown, registerHttpRoutes } from './server/httpRoutes.js';
 import { registerWebSocketRoutes } from './ws/handleConnection.js';
 
 export const buildApp = async () => {
@@ -11,14 +13,7 @@ export const buildApp = async () => {
     logger: env.NODE_ENV !== 'test',
   });
 
-  app.get('/health', async () => ({
-    ok: true,
-    service: 'fluencypal-realtime',
-    version: '0.1.0',
-    activeSessions: sessionManager.activeCount,
-    firebaseEmulator: env.IS_FIREBASE_EMULATOR,
-    port: env.REALTIME_PORT,
-  }));
+  registerHttpRoutes(app);
 
   app.get('/v1/auth/verify', async (request, reply) => {
     try {
@@ -40,15 +35,20 @@ export const buildApp = async () => {
     sessionManager.disposeAll();
   });
 
+  if (env.NODE_ENV !== 'test') {
+    registerGracefulShutdown(app);
+  }
+
   return app;
 };
 
 const start = async () => {
   const app = await buildApp();
+  const port = getListenPort();
 
   try {
-    await app.listen({ port: env.REALTIME_PORT, host: '0.0.0.0' });
-    app.log.info(`realtime service listening on port ${env.REALTIME_PORT}`);
+    await app.listen({ port, host: '0.0.0.0' });
+    app.log.info(`realtime service listening on port ${port}`);
   } catch (error) {
     app.log.error(error);
     process.exit(1);

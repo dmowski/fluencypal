@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { buildUsageMessage, getPipelineModels } from '../usage/emitUsage.js';
+import { recordPipelineLatency } from '../metrics/sessionMetrics.js';
 import type { ProviderRegistry } from '../providers/types.js';
 import type { ServerMessage } from '../protocol/messages.js';
 import type { ConversationHistory } from './history.js';
@@ -43,11 +44,13 @@ export class TurnPipeline {
     const abort = this.createNestedAbort();
 
     try {
+      const startedAt = Date.now();
       const result = await this.providers.stt.transcribeBatch(pcm, {
         languageCode: config.languageCode,
         model: models.stt,
         signal: abort.signal,
       });
+      recordPipelineLatency('stt', Date.now() - startedAt);
 
       this.callbacks.send(buildUsageMessage({ stage: 'stt', model: models.stt, usage: result.usage }));
       return result.text;
@@ -73,6 +76,7 @@ export class TurnPipeline {
     const messageId = randomUUID();
     let assistantText = '';
     let voiceStreamingStarted = false;
+    const llmStartedAt = Date.now();
 
     try {
       const systemMessage = this.buildSystemMessage(config);
@@ -111,6 +115,7 @@ export class TurnPipeline {
       }
 
       assistantText = assistantText.trim();
+      recordPipelineLatency('llm', Date.now() - llmStartedAt);
       if (!assistantText) {
         return;
       }
@@ -150,6 +155,7 @@ export class TurnPipeline {
     signal: AbortSignal,
   ): Promise<void> {
     const models = getPipelineModels();
+    const ttsStartedAt = Date.now();
     this.callbacks.send({ type: 'assistant.speaking', active: true });
 
     const ttsStream = this.providers.tts.synthesizeStream(text, {
@@ -169,6 +175,8 @@ export class TurnPipeline {
 
       this.callbacks.sendBinary(value);
     }
+
+    recordPipelineLatency('tts', Date.now() - ttsStartedAt);
   }
 
   private buildSystemMessage(config: SessionRuntimeConfig): string {

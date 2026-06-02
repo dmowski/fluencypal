@@ -20,7 +20,8 @@
     "test:e2e": "vitest run --config vitest.e2e.config.ts",
     "test:e2e:browser": "playwright test",
     "test:e2e:browser:ui": "playwright test --ui",
-    "test:all": "pnpm test && pnpm test:e2e && pnpm test:e2e:browser && pnpm build:client"
+    "test:all": "pnpm test && pnpm test:e2e && pnpm test:e2e:browser && pnpm build:client",
+    "load:smoke": "tsx scripts/loadSmoke.ts"
   },
   "dependencies": {
     "@fastify/websocket": "^11.2.0",

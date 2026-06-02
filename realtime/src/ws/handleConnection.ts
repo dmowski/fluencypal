@@ -7,6 +7,8 @@ import { initSessionLog, sessionLog, sessionWarn } from '../log/sessionLog.js';
 import { ProtocolError, parseClientMessage, serializeServerMessage } from '../protocol/messages.js';
 import type { ConversationSession } from '../session/ConversationSession.js';
 import { sessionManager } from '../session/SessionManager.js';
+import { env } from '../config/env.js';
+import { isAllowedOrigin, rejectOriginMessage } from './originGuard.js';
 
 const sendMessage = (socket: WebSocket, message: Parameters<typeof serializeServerMessage>[0]) => {
   if (socket.readyState === socket.OPEN) {
@@ -43,7 +45,15 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
   await app.register(websocket);
   initSessionLog(app.log);
 
-  app.get('/v1/session', { websocket: true }, (socket) => {
+  app.get('/v1/session', { websocket: true }, (socket, request) => {
+    const origin = request.headers.origin;
+
+    if (env.NODE_ENV === 'production' && !isAllowedOrigin(origin)) {
+      sessionWarn(null, 'ws.origin_rejected', { origin: origin ?? null });
+      socket.close(1008, rejectOriginMessage(origin));
+      return;
+    }
+
     let session: ConversationSession | null = null;
     let started = false;
     let binaryFrameCount = 0;

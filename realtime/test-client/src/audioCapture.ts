@@ -1,3 +1,45 @@
+const MOBILE_WARMUP_MS = 2500;
+const DESKTOP_WARMUP_MS = 300;
+
+export const isMobileDevice = (): boolean =>
+  /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+export const getCaptureWarmupMs = (): number =>
+  isMobileDevice() ? MOBILE_WARMUP_MS : DESKTOP_WARMUP_MS;
+
+export const warmupCapture = async (): Promise<void> => {
+  const delayMs = getCaptureWarmupMs();
+  if (delayMs <= 0) {
+    return;
+  }
+
+  await new Promise<void>((resolve) => {
+    window.setTimeout(resolve, delayMs);
+  });
+};
+
+export const unlockAudioPlayback = async (): Promise<void> => {
+  const AudioContextCtor =
+    window.AudioContext ??
+    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+
+  if (!AudioContextCtor) {
+    return;
+  }
+
+  const context = new AudioContextCtor();
+  if (context.state === 'suspended') {
+    await context.resume();
+  }
+
+  const buffer = context.createBuffer(1, 1, context.sampleRate);
+  const source = context.createBufferSource();
+  source.buffer = buffer;
+  source.connect(context.destination);
+  source.start(0);
+  await context.close();
+};
+
 const TARGET_SAMPLE_RATE = 24_000;
 
 export const computeChunkRms = (pcm: Int16Array): number => {
@@ -40,6 +82,83 @@ const resampleTo24k = (input: Float32Array, inputSampleRate: number): Int16Array
   return floatTo16BitPcm(resampled);
 };
 
+const pcmFromFloat = (channel: Float32Array, sampleRate: number): ArrayBuffer => {
+  const pcm = resampleTo24k(channel, sampleRate);
+  return pcm.buffer.slice(pcm.byteOffset, pcm.byteOffset + pcm.byteLength);
+};
+
+const WORKLET_SOURCE = `
+class PcmCaptureProcessor extends AudioWorkletProcessor {
+  process(inputs) {
+    const channel = inputs[0] && inputs[0][0];
+    if (channel) {
+      this.port.postMessage(channel);
+    }
+    return true;
+  }
+}
+registerProcessor('pcm-capture', PcmCaptureProcessor);
+`;
+
+const canUseAudioWorklet = (context: AudioContext): boolean =>
+  typeof context.audioWorklet !== 'undefined';
+
+const startScriptProcessorCapture = (
+  context: AudioContext,
+  source: MediaStreamAudioSourceNode,
+  onChunk: (chunk: ArrayBuffer) => void,
+): AudioCapture => {
+  const processor = context.createScriptProcessor(4096, 1, 1);
+  const gain = context.createGain();
+  gain.gain.value = 0;
+
+  processor.onaudioprocess = (event) => {
+    const channel = event.inputBuffer.getChannelData(0);
+    onChunk(pcmFromFloat(channel, context.sampleRate));
+  };
+
+  source.connect(processor);
+  processor.connect(gain);
+  gain.connect(context.destination);
+
+  return {
+    stop: () => {
+      processor.disconnect();
+      source.disconnect();
+      gain.disconnect();
+      void context.close();
+    },
+  };
+};
+
+const startWorkletCapture = async (
+  context: AudioContext,
+  source: MediaStreamAudioSourceNode,
+  onChunk: (chunk: ArrayBuffer) => void,
+): Promise<AudioCapture> => {
+  const blob = new Blob([WORKLET_SOURCE], { type: 'application/javascript' });
+  const workletUrl = URL.createObjectURL(blob);
+  await context.audioWorklet.addModule(workletUrl);
+  URL.revokeObjectURL(workletUrl);
+
+  const worklet = new AudioWorkletNode(context, 'pcm-capture');
+  worklet.port.onmessage = (event: MessageEvent<Float32Array>) => {
+    if (event.data instanceof Float32Array) {
+      onChunk(pcmFromFloat(event.data, context.sampleRate));
+    }
+  };
+
+  source.connect(worklet);
+
+  return {
+    stop: () => {
+      worklet.disconnect();
+      source.disconnect();
+      void context.close();
+    },
+  };
+};
+
 export type AudioCapture = {
   stop: () => void;
 };
@@ -70,41 +189,33 @@ export class MicrophoneSession {
   }
 
   async startCapture(onChunk: (chunk: ArrayBuffer) => void): Promise<AudioCapture> {
+    await warmupCapture();
     await this.requestAccess();
 
     if (!this.stream) {
       throw new Error('Microphone is not ready.');
     }
 
-    const context = new AudioContext();
+    const AudioContextCtor =
+      window.AudioContext ??
+      (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+
+    const context = new AudioContextCtor();
     if (context.state === 'suspended') {
       await context.resume();
     }
 
     const source = context.createMediaStreamSource(this.stream);
-    const processor = context.createScriptProcessor(4096, 1, 1);
-    const gain = context.createGain();
-    gain.gain.value = 0;
 
-    processor.onaudioprocess = (event) => {
-      const channel = event.inputBuffer.getChannelData(0);
-      const pcm = resampleTo24k(channel, context.sampleRate);
-      const pcmBytes = pcm.buffer.slice(pcm.byteOffset, pcm.byteOffset + pcm.byteLength);
-      onChunk(pcmBytes);
-    };
+    if (canUseAudioWorklet(context)) {
+      try {
+        return await startWorkletCapture(context, source, onChunk);
+      } catch {
+        // Fall back below (Safari versions without worklet module support, etc.)
+      }
+    }
 
-    source.connect(processor);
-    processor.connect(gain);
-    gain.connect(context.destination);
-
-    return {
-      stop: () => {
-        processor.disconnect();
-        source.disconnect();
-        gain.disconnect();
-        void context.close();
-      },
-    };
+    return startScriptProcessorCapture(context, source, onChunk);
   }
 
   release(): void {

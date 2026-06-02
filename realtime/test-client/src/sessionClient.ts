@@ -67,8 +67,11 @@ export class RealtimeSessionClient {
     this.audioChunksSkipped = 0;
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const url = `${protocol}://${window.location.host}/v1/session`;
-    debugLog('ws', 'connecting', { url, mode: config.mode, voiceEnabled: config.voiceEnabled });
+    const wsBase = import.meta.env.VITE_REALTIME_WS_URL as string | undefined;
+    const url = wsBase
+      ? `${wsBase.replace(/\/$/, '')}/v1/session`
+      : `${protocol}://${window.location.host}/v1/session`;
+    debugLog('ws', 'connecting', { url, mode: config.mode, voiceEnabled: config.voiceEnabled, wsBase: wsBase ?? null });
     const socket = new WebSocket(url);
     this.socket = socket;
 

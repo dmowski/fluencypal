@@ -1,3 +1,5 @@
+import { debugLog } from './debugLog.js';
+
 export class Mp3PlaybackQueue {
   private chunks: Uint8Array[] = [];
   private audio: HTMLAudioElement | null = null;
@@ -48,7 +50,12 @@ export class Mp3PlaybackQueue {
           resolve();
         };
         audio.onerror = () => reject(new Error('Audio playback failed'));
-        void audio.play().catch(reject);
+        void audio.play().catch((error) => {
+          debugLog('audio', 'playback_blocked', {
+            message: error instanceof Error ? error.message : String(error),
+          });
+          reject(error);
+        });
       });
     } finally {
       this.playing = false;

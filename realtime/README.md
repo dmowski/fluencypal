@@ -121,6 +121,7 @@ curl http://localhost:8081/v1/auth/verify \
 | `pnpm test:e2e:browser` | Browser e2e (Playwright + real test client UI) |
 | `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
 | `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
+| `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
 | `pnpm build && pnpm start` | Production build and run |
 
 First-time browser e2e setup:
@@ -286,4 +287,77 @@ realtime/
 - [x] Mid-session `assistant.instruction` changes next reply
 - [x] Invalid Firebase token rejected with fatal error
 
-Next: **Phase 2** — Fly.io deploy, WSS, mobile audio testing. See `plan.md`.
+## Phase 2 — Deploy (Fly.io)
+
+### Prerequisites
+
+- [Fly.io](https://fly.io) account and [`flyctl`](https://fly.io/docs/hands-on/install-flyctl/) installed
+- Firebase service account JSON for production auth (not emulator)
+- OpenAI API key
+
+### First deploy
+
+```bash
+cd realtime
+
+# One-time: create the app (name must match fly.toml or edit fly.toml first)
+fly apps create fluencypal-realtime
+
+# Set secrets (service account as single-line JSON string)
+fly secrets set \
+  OPENAI_API_KEY=sk-... \
+  FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS='{"type":"service_account",...}' \
+  FIREBASE_PROJECT_ID=dark-lang \
+  ALLOWED_ORIGINS=https://your-webapp.example,https://your-landing.example
+
+fly deploy
+```
+
+After deploy:
+
+```bash
+fly status
+curl https://fluencypal-realtime.fly.dev/health
+curl https://fluencypal-realtime.fly.dev/ready
+```
+
+WebSocket URL for clients:
+
+```text
+wss://fluencypal-realtime.fly.dev/v1/session
+```
+
+TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Set `ALLOWED_ORIGINS` to every HTTPS origin that opens a WebSocket (webApp + test client host).
+
+### Test client against deployed service
+
+```bash
+cd realtime
+VITE_REALTIME_WS_URL=wss://fluencypal-realtime.fly.dev pnpm dev:client
+```
+
+Open the Vite URL on a phone (same Wi‑Fi or deploy the static test client). Sign in with **production** Firebase (uncheck emulator), Connect, Start call.
+
+Reconnection: **MVP uses fresh sessions** — disconnect and Connect again; no resume.
+
+### Production endpoints
+
+| Path | Purpose |
+| ---- | ------- |
+| `GET /health` | Liveness + active session count + pipeline latency metrics |
+| `GET /ready` | Readiness (503 while draining on shutdown) |
+| `GET /v1/auth/verify` | Token check (optional) |
+| `WS /v1/session` | Conversation session |
+
+### Load smoke test (local)
+
+With Firebase emulator + API running:
+
+```bash
+cd realtime
+pnpm load:smoke
+```
+
+Expect `Active sessions after test: 0` — confirms disconnect cleanup.
+
+Next: **Phase 3** — webApp `ConversationInstance` adapter. See `plan.md`.

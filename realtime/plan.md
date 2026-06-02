@@ -569,6 +569,9 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 2.1 — Deploy to Fly.io
 
+- [x] `Dockerfile`, `fly.toml`, `.dockerignore`
+- [x] Deploy + WSS URL documented in `realtime/README.md`
+
 Fly.io is the chosen host (WebSocket-friendly, good fit for long-lived sessions). Document `fly.toml`, secrets, and WSS URL in `realtime/README.md`.
 
 Other options considered:
@@ -581,17 +584,17 @@ Other options considered:
 
 ### Step 2.2 — Production hardening
 
-- [ ] TLS termination + `ALLOWED_ORIGINS`
-- [ ] Structured logging (pino) with sessionId + uid
-- [ ] Graceful shutdown (drain sessions)
-- [ ] Health + readiness probes
-- [ ] Basic metrics: active sessions, STT/LLM/TTS latency histograms
+- [x] TLS termination + `ALLOWED_ORIGINS` (Fly `force_https`; CORS + WS origin guard)
+- [x] Structured logging (pino) with sessionId + uid
+- [x] Graceful shutdown (drain sessions on SIGTERM/SIGINT)
+- [x] Health + readiness probes (`/health`, `/ready`)
+- [x] Basic metrics: active sessions, STT/LLM/TTS latency on `/health` and `/ready`
 
 ### Step 2.3 — Mobile-oriented audio
 
-- [ ] Test AudioWorklet capture on iOS Safari (fallback to ScriptProcessor if needed).
-- [ ] Add 2–3 s warmup delay before capture (mirrors `initConnection.ts` mobile sleeps).
-- [ ] Handle autoplay restrictions for assistant audio (user gesture to unlock).
+- [x] AudioWorklet capture with ScriptProcessor fallback
+- [x] Mobile warmup delay before capture (~2.5 s on iOS/Android)
+- [x] Autoplay unlock on Connect / Start call + playback error logging
 
 ### Step 2.4 — Streaming STT upgrade (optional)
 
@@ -599,8 +602,8 @@ Other options considered:
 
 ### Step 2.5 — Load smoke test
 
-- [ ] 3–5 concurrent sessions script
-- [ ] Memory leak check (session cleanup on disconnect)
+- [x] `pnpm load:smoke` — 5 concurrent sessions script
+- [x] Verifies session cleanup via `/health` activeSessions
 
 **Phase 2 exit criteria**
 

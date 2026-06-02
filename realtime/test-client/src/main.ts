@@ -1,5 +1,5 @@
 import { configureAuthEmulator, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
-import { describeMicError, MicrophoneSession, computeChunkRms, type AudioCapture } from './audioCapture.js';
+import { describeMicError, MicrophoneSession, computeChunkRms, unlockAudioPlayback, getCaptureWarmupMs, type AudioCapture } from './audioCapture.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
 
@@ -278,6 +278,7 @@ signOutBtn.addEventListener('click', async () => {
 connectBtn.addEventListener('click', async () => {
   try {
     debugLog('call', 'connect_click');
+    await unlockAudioPlayback();
     const token = await getIdToken();
     client.connect(token, readSessionConfig());
     setConnectedUi(true);
@@ -324,6 +325,9 @@ const startCall = async () => {
   if (!(await prepareMicrophone())) {
     return;
   }
+
+  await unlockAudioPlayback();
+  debugLog('mic', 'warmup_ms', { ms: getCaptureWarmupMs() });
 
   try {
     let captureChunkCount = 0;
