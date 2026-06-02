@@ -5,12 +5,14 @@ import type { ProviderRegistry } from '../providers/types.js';
 import { parseBinaryFrame } from '../protocol/audioCodec.js';
 import type {
   ClientMessage,
+  ConversationMode,
   ServerMessage,
   SessionStartConfig,
   SessionUpdatePatch,
 } from '../protocol/messages.js';
 import { ConversationHistory } from './history.js';
 import { TurnPipeline } from './TurnPipeline.js';
+import { RealtimeTurnDetector } from './turnDetection.js';
 
 export type SessionRuntimeConfig = SessionStartConfig & {
   correctionInstruction: string;
@@ -29,10 +31,13 @@ export class ConversationSession {
   private readonly send: SendServerMessage;
   private readonly sendBinary: SendBinary;
   private readonly pipeline: TurnPipeline;
+  private readonly turnDetector = new RealtimeTurnDetector();
   private readonly abortController = new AbortController();
   private disposed = false;
   private pendingUserAudio: Buffer[] = [];
   private pendingUserText = '';
+  private turnCommitInProgress = false;
+  private userSpeaking = false;
 
   constructor({
     sessionId,
@@ -130,6 +135,16 @@ export class ConversationSession {
 
     const frame = parseBinaryFrame(chunk);
     this.pendingUserAudio.push(frame.payload);
+
+    if (this.config.mode === 'RealTimeConversation') {
+      this.turnDetector.processChunk(frame.payload, {
+        onSpeechStart: () => this.handleUserSpeechStart(),
+        onSpeechEnd: () => this.handleUserSpeechEnd(),
+        onTurnEnd: () => {
+          void this.commitUserTurn();
+        },
+      });
+    }
   }
 
   dispose(_reason?: string): void {
@@ -138,6 +153,7 @@ export class ConversationSession {
     }
 
     this.disposed = true;
+    this.turnDetector.reset();
     this.pipeline.abortInFlight();
     this.pendingUserAudio = [];
     this.pendingUserText = '';
@@ -147,6 +163,25 @@ export class ConversationSession {
   private assertActive(): void {
     if (this.disposed) {
       throw new Error('Session is closed');
+    }
+  }
+
+  private handleUserSpeechStart(): void {
+    if (this.pipeline.isRunning) {
+      this.pipeline.abortInFlight();
+      this.send({ type: 'assistant.interrupted' });
+    }
+
+    if (!this.userSpeaking) {
+      this.userSpeaking = true;
+      this.send({ type: 'user.speaking', active: true });
+    }
+  }
+
+  private handleUserSpeechEnd(): void {
+    if (this.userSpeaking) {
+      this.userSpeaking = false;
+      this.send({ type: 'user.speaking', active: false });
     }
   }
 
@@ -169,41 +204,65 @@ export class ConversationSession {
   }
 
   private async commitUserTurn(messageId?: string): Promise<void> {
+    if (this.turnCommitInProgress) {
+      return;
+    }
+
     const id = messageId ?? randomUUID();
     const audioChunks = this.pendingUserAudio;
     this.pendingUserAudio = [];
+    this.turnDetector.reset();
 
     let text = this.pendingUserText;
     this.pendingUserText = '';
 
-    if (!text && audioChunks.length > 0) {
-      text = await this.pipeline.transcribeAudio(audioChunks);
-    }
-
-    if (!text) {
+    if (!text && audioChunks.length === 0) {
       return;
     }
 
-    this.history.append({
-      id,
-      role: 'user',
-      text,
-      createdAt: Date.now(),
-    });
+    this.turnCommitInProgress = true;
 
-    this.send({
-      type: 'transcript.done',
-      messageId: id,
-      role: 'user',
-      text,
-    });
+    try {
+      if (!text && audioChunks.length > 0) {
+        text = await this.pipeline.transcribeAudio(audioChunks);
+      }
 
-    await this.pipeline.generateAssistantResponse();
+      if (!text) {
+        return;
+      }
+
+      this.history.append({
+        id,
+        role: 'user',
+        text,
+        createdAt: Date.now(),
+      });
+
+      this.send({
+        type: 'transcript.done',
+        messageId: id,
+        role: 'user',
+        text,
+      });
+
+      await this.pipeline.generateAssistantResponse();
+    } finally {
+      this.turnCommitInProgress = false;
+    }
   }
 
   private cancelUserTurn(): void {
     this.pipeline.abortInFlight();
+    this.turnDetector.reset();
     this.pendingUserAudio = [];
     this.pendingUserText = '';
+
+    if (this.userSpeaking) {
+      this.userSpeaking = false;
+      this.send({ type: 'user.speaking', active: false });
+    }
   }
 }
+
+export const isRealtimeConversationMode = (mode: ConversationMode): boolean =>
+  mode === 'RealTimeConversation';

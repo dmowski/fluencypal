@@ -1,0 +1,79 @@
+import { describe, expect, it, vi } from 'vitest';
+import {
+  RealtimeTurnDetector,
+  computePcm16Rms,
+  defaultTurnDetectorConfig,
+} from '../src/session/turnDetection.js';
+
+const makePcmChunk = (amplitude: number, sampleCount = 480): Buffer => {
+  const buffer = Buffer.alloc(sampleCount * 2);
+  for (let i = 0; i < sampleCount; i++) {
+    buffer.writeInt16LE(amplitude, i * 2);
+  }
+  return buffer;
+};
+
+describe('turnDetection', () => {
+  it('computes RMS for pcm16', () => {
+    expect(computePcm16Rms(makePcmChunk(0))).toBe(0);
+    expect(computePcm16Rms(makePcmChunk(3000))).toBeGreaterThan(defaultTurnDetectorConfig.rmsThreshold);
+  });
+
+  it('fires turn end after speech followed by silence', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    const onTurnEnd = vi.fn();
+    const detector = new RealtimeTurnDetector({
+      ...defaultTurnDetectorConfig,
+      silenceMs: 500,
+      minSpeechMs: 100,
+    });
+
+    detector.processChunk(makePcmChunk(4000), {
+      onSpeechStart: vi.fn(),
+      onSpeechEnd: vi.fn(),
+      onTurnEnd,
+    });
+
+    await vi.advanceTimersByTimeAsync(150);
+
+    detector.processChunk(makePcmChunk(4000), {
+      onSpeechStart: vi.fn(),
+      onSpeechEnd: vi.fn(),
+      onTurnEnd,
+    });
+
+    detector.processChunk(makePcmChunk(0), {
+      onSpeechStart: vi.fn(),
+      onSpeechEnd: vi.fn(),
+      onTurnEnd,
+    });
+
+    await vi.advanceTimersByTimeAsync(500);
+    expect(onTurnEnd).toHaveBeenCalledTimes(1);
+
+    vi.useRealTimers();
+  });
+
+  it('does not fire turn end for short noise bursts', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    const onTurnEnd = vi.fn();
+    const detector = new RealtimeTurnDetector({
+      ...defaultTurnDetectorConfig,
+      silenceMs: 200,
+      minSpeechMs: 1000,
+    });
+
+    detector.processChunk(makePcmChunk(5000), {
+      onSpeechStart: vi.fn(),
+      onSpeechEnd: vi.fn(),
+      onTurnEnd,
+    });
+
+    await vi.advanceTimersByTimeAsync(200);
+    expect(onTurnEnd).not.toHaveBeenCalled();
+
+    vi.useRealTimers();
+  });
+});

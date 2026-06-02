@@ -17,6 +17,7 @@ export type ServerMessage = {
 
 export type SessionClientHandlers = {
   onStatus: (status: string) => void;
+  onSessionReady: (config: SessionStartConfig) => void;
   onTranscriptDelta: (messageId: string, role: 'user' | 'assistant', delta: string) => void;
   onTranscriptDone: (messageId: string, role: 'user' | 'assistant', text: string) => void;
   onUsage: (entry: string) => void;
@@ -36,6 +37,7 @@ export class RealtimeSessionClient {
   private socket: WebSocket | null = null;
   private readonly playback = new Mp3PlaybackQueue();
   private assistantSpeaking = false;
+  private sessionConfig: SessionStartConfig | null = null;
 
   constructor(private readonly handlers: SessionClientHandlers) {}
 
@@ -45,6 +47,7 @@ export class RealtimeSessionClient {
 
   connect(token: string, config: SessionStartConfig): void {
     this.disconnect();
+    this.sessionConfig = config;
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const url = `${protocol}://${window.location.host}/v1/session`;
@@ -98,6 +101,7 @@ export class RealtimeSessionClient {
     this.socket?.close();
     this.socket = null;
     this.playback.reset();
+    this.sessionConfig = null;
   }
 
   sendJson(payload: unknown): void {
@@ -129,6 +133,9 @@ export class RealtimeSessionClient {
     switch (message.type) {
       case 'session.ready':
         this.handlers.onStatus(`Session ready (${message.sessionId ?? 'unknown'})`);
+        if (this.sessionConfig) {
+          this.handlers.onSessionReady(this.sessionConfig);
+        }
         return;
       case 'transcript.delta':
         if (message.messageId && message.role && message.delta) {

@@ -544,10 +544,10 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 1.7 — RealTimeConversation (primary)
 
-- [ ] Stream mic chunks while call is active.
-- [ ] Server silence detection → auto commit turn.
-- [ ] Auto-trigger assistant response.
-- [ ] PushToTalk mode after RealTimeConversation works.
+- [x] Stream mic chunks while call is active.
+- [x] Server silence detection → auto commit turn.
+- [x] Auto-trigger assistant response.
+- [x] PushToTalk mode after RealTimeConversation works.
 
 ### Step 1.8 — Developer docs
 

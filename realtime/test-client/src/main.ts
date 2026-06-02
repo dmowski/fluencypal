@@ -1,5 +1,5 @@
 import { configureAuthEmulator, getIdToken, signInOrUp, signOutUser, watchAuth } from './firebase.js';
-import { startAudioCapture } from './audioCapture.js';
+import { startAudioCapture, type AudioCapture } from './audioCapture.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -20,6 +20,7 @@ const connectBtn = $<HTMLButtonElement>('connect');
 const disconnectBtn = $<HTMLButtonElement>('disconnect');
 const sessionStatus = $<HTMLParagraphElement>('session-status');
 
+const callToggleBtn = $<HTMLButtonElement>('call-toggle');
 const pttBtn = $<HTMLButtonElement>('ptt');
 const typedMessage = $<HTMLInputElement>('typed-message');
 const sendTextBtn = $<HTMLButtonElement>('send-text');
@@ -28,9 +29,20 @@ const usageLog = $<HTMLPreElement>('usage-log');
 
 const transcriptById = new Map<string, HTMLSpanElement>();
 
+let signedIn = false;
+let capture: AudioCapture | null = null;
+let callActive = false;
+
+const isRealtimeMode = () => mode.value === 'RealTimeConversation';
+
 const client = new RealtimeSessionClient({
   onStatus: (status) => {
     sessionStatus.textContent = status;
+  },
+  onSessionReady: (config) => {
+    if (config.mode === 'RealTimeConversation') {
+      client.sendJson({ type: 'assistant.trigger' });
+    }
   },
   onTranscriptDelta: (messageId, role, delta) => {
     const body = ensureTranscriptMessage(messageId, role);
@@ -47,9 +59,6 @@ const client = new RealtimeSessionClient({
     sessionStatus.textContent = `Error: ${message}`;
   },
 });
-
-let signedIn = false;
-let capture: Awaited<ReturnType<typeof startAudioCapture>> | null = null;
 
 const ensureTranscriptMessage = (messageId: string, role: 'user' | 'assistant'): HTMLSpanElement => {
   const existing = transcriptById.get(messageId);
@@ -73,12 +82,26 @@ const ensureTranscriptMessage = (messageId: string, role: 'user' | 'assistant'):
   return body;
 };
 
+const syncTalkControls = (connected: boolean) => {
+  const realtime = isRealtimeMode();
+
+  callToggleBtn.classList.toggle('hidden', !realtime);
+  pttBtn.classList.toggle('hidden', realtime);
+
+  callToggleBtn.disabled = !connected || micMuted.checked;
+  pttBtn.disabled = !connected || micMuted.checked || realtime;
+
+  if (!connected) {
+    void stopCall();
+  }
+};
+
 const setConnectedUi = (connected: boolean) => {
   connectBtn.disabled = connected || !signedIn;
   disconnectBtn.disabled = !connected;
-  pttBtn.disabled = !connected || micMuted.checked;
   typedMessage.disabled = !connected;
   sendTextBtn.disabled = !connected;
+  syncTalkControls(connected);
 };
 
 const readSessionConfig = () => ({
@@ -99,6 +122,10 @@ watchAuth((user) => {
   connectBtn.disabled = !user || client.isConnected;
 });
 
+mode.addEventListener('change', () => {
+  syncTalkControls(client.isConnected);
+});
+
 signInBtn.addEventListener('click', async () => {
   configureAuthEmulator(useEmulator.checked);
   signInBtn.disabled = true;
@@ -113,6 +140,7 @@ signInBtn.addEventListener('click', async () => {
 });
 
 signOutBtn.addEventListener('click', async () => {
+  await stopCall();
   client.disconnect();
   await signOutUser();
   setConnectedUi(false);
@@ -128,7 +156,8 @@ connectBtn.addEventListener('click', async () => {
   }
 });
 
-disconnectBtn.addEventListener('click', () => {
+disconnectBtn.addEventListener('click', async () => {
+  await stopCall();
   client.disconnect();
   setConnectedUi(false);
 });
@@ -140,14 +169,62 @@ voiceEnabled.addEventListener('change', () => {
 });
 
 micMuted.addEventListener('change', () => {
-  pttBtn.disabled = !client.isConnected || micMuted.checked;
+  if (micMuted.checked) {
+    void stopCall();
+  }
+
+  syncTalkControls(client.isConnected);
+
   if (client.isConnected) {
     client.updateSession({ micMuted: micMuted.checked });
   }
 });
 
+const startCall = async () => {
+  if (!client.isConnected || micMuted.checked || capture || callActive) {
+    return;
+  }
+
+  capture = await startAudioCapture((chunk) => {
+    client.sendAudioChunk(chunk);
+  });
+
+  callActive = true;
+  callToggleBtn.textContent = 'End call';
+  callToggleBtn.classList.add('active');
+  sessionStatus.textContent = 'Call active — speak naturally';
+};
+
+const stopCall = async () => {
+  if (!capture) {
+    callActive = false;
+    callToggleBtn.textContent = 'Start call';
+    callToggleBtn.classList.remove('active');
+    return;
+  }
+
+  capture.stop();
+  capture = null;
+  callActive = false;
+  callToggleBtn.textContent = 'Start call';
+  callToggleBtn.classList.remove('active');
+
+  if (client.isConnected) {
+    client.sendJson({ type: 'user.turn.commit' });
+  }
+};
+
+callToggleBtn.addEventListener('click', () => {
+  if (callActive) {
+    void stopCall();
+    return;
+  }
+
+  void startCall();
+});
+
 const startPushToTalk = async () => {
-  if (!client.isConnected || micMuted.checked || capture) {
+  if (!client.isConnected || micMuted.checked || capture || isRealtimeMode()) {
     return;
   }
 
@@ -160,7 +237,7 @@ const startPushToTalk = async () => {
 };
 
 const stopPushToTalk = () => {
-  if (!capture) {
+  if (!capture || isRealtimeMode()) {
     return;
   }
 

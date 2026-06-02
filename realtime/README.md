@@ -103,6 +103,9 @@ Terminal 3 — test client:
 cd realtime && pnpm dev:client
 ```
 
-Open http://localhost:5173, sign in (Auth emulator checkbox on), Connect, then hold **Hold to talk** or send typed text.
+Open http://localhost:5173, sign in (Auth emulator checkbox on), Connect, then:
+
+- **PushToTalk**: hold **Hold to talk**, or send typed text.
+- **RealTimeConversation**: choose mode, Connect, click **Start call**, speak naturally (server commits after ~1.2s silence), click **End call** to hang up.
 
 The Vite dev server proxies `/v1` (HTTP + WebSocket) to `http://127.0.0.1:8081`.
