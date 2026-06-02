@@ -195,12 +195,14 @@ export class ConversationSession {
   }
 
   private handleUserSpeechStart(): void {
+    const interrupted = this.pipeline.abortAssistantOutput();
+
     sessionLog(this.sessionId, 'turn.speech_start', {
-      pipelineRunning: this.pipeline.isRunning,
+      interrupted,
+      pipelineBusy: this.pipeline.isBusy,
     });
 
-    if (this.pipeline.isRunning) {
-      this.pipeline.abortInFlight();
+    if (interrupted) {
       this.send({ type: 'assistant.interrupted' });
     }
 

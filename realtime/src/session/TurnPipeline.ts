@@ -17,6 +17,9 @@ export class TurnPipeline {
   private inFlightAbort: AbortController | null = null;
   private running = false;
   private generateChain: Promise<void> = Promise.resolve();
+  /** Bumped on user interrupt — cancels in-flight and queued assistant generations. */
+  private generateGeneration = 0;
+  private voiceStreamingActive = false;
 
   constructor(
     private readonly providers: ProviderRegistry,
@@ -30,9 +33,29 @@ export class TurnPipeline {
     return this.running;
   }
 
-  abortInFlight(): void {
+  get isBusy(): boolean {
+    return this.running || this.inFlightAbort !== null || this.voiceStreamingActive;
+  }
+
+  /** User barge-in: stop LLM/TTS and drop queued assistant replies. */
+  abortAssistantOutput(): boolean {
+    const wasBusy = this.isBusy;
+    this.generateGeneration += 1;
     this.inFlightAbort?.abort();
     this.inFlightAbort = null;
+    this.running = false;
+    this.generateChain = Promise.resolve();
+
+    if (this.voiceStreamingActive) {
+      this.voiceStreamingActive = false;
+      this.callbacks.send({ type: 'assistant.speaking', active: false });
+    }
+
+    return wasBusy;
+  }
+
+  abortInFlight(): void {
+    this.abortAssistantOutput();
   }
 
   async transcribeAudio(chunks: Buffer[]): Promise<string> {
@@ -54,6 +77,10 @@ export class TurnPipeline {
       });
       recordPipelineLatency('stt', Date.now() - startedAt);
 
+      if (abort.signal.aborted) {
+        return '';
+      }
+
       this.callbacks.send(
         buildUsageMessage({
           stage: 'stt',
@@ -74,7 +101,8 @@ export class TurnPipeline {
   }
 
   async generateAssistantResponse(): Promise<void> {
-    const run = this.runGenerateAssistantResponse().catch((error) => {
+    const gen = this.generateGeneration;
+    const run = this.runGenerateAssistantResponse(gen).catch((error) => {
       if (isAbortError(error)) {
         return;
       }
@@ -84,8 +112,8 @@ export class TurnPipeline {
     return this.generateChain;
   }
 
-  private async runGenerateAssistantResponse(): Promise<void> {
-    if (this.running) {
+  private async runGenerateAssistantResponse(gen: number): Promise<void> {
+    if (gen !== this.generateGeneration || this.running) {
       return;
     }
 
@@ -97,6 +125,9 @@ export class TurnPipeline {
     let assistantText = '';
     let voiceStreamingStarted = false;
     const llmStartedAt = Date.now();
+
+    const isCancelled = (): boolean =>
+      gen !== this.generateGeneration || abort.signal.aborted;
 
     try {
       const systemMessage = this.buildSystemMessage(config);
@@ -113,15 +144,19 @@ export class TurnPipeline {
       });
 
       while (true) {
+        if (isCancelled()) {
+          return;
+        }
+
         const { done, value } = await llmStream.next();
         if (done) {
-          if (value) {
+          if (value && !isCancelled()) {
             this.callbacks.send(buildUsageMessage({ stage: 'llm', model: models.llm, usage: value }));
           }
           break;
         }
 
-        if (!value.delta) {
+        if (!value.delta || isCancelled()) {
           continue;
         }
 
@@ -132,6 +167,10 @@ export class TurnPipeline {
           role: 'assistant',
           delta: value.delta,
         });
+      }
+
+      if (isCancelled()) {
+        return;
       }
 
       assistantText = assistantText.trim();
@@ -154,12 +193,12 @@ export class TurnPipeline {
         text: assistantText,
       });
 
-      if (!config.voiceEnabled) {
+      if (!config.voiceEnabled || isCancelled()) {
         return;
       }
 
       voiceStreamingStarted = true;
-      await this.streamAssistantVoice(assistantText, config.voice, abort.signal);
+      await this.streamAssistantVoice(assistantText, config.voice, abort.signal, gen);
     } catch (error) {
       if (isAbortError(error)) {
         return;
@@ -168,7 +207,8 @@ export class TurnPipeline {
     } finally {
       this.running = false;
       this.releaseNestedAbort(abort);
-      if (voiceStreamingStarted) {
+      if (voiceStreamingStarted && !isCancelled()) {
+        this.voiceStreamingActive = false;
         this.callbacks.send({ type: 'assistant.speaking', active: false });
       }
     }
@@ -178,9 +218,11 @@ export class TurnPipeline {
     text: string,
     voice: SessionRuntimeConfig['voice'],
     signal: AbortSignal,
+    gen: number,
   ): Promise<void> {
     const models = getPipelineModels();
     const ttsStartedAt = Date.now();
+    this.voiceStreamingActive = true;
     this.callbacks.send({ type: 'assistant.speaking', active: true });
 
     const ttsStream = this.providers.tts.synthesizeStream(text, {
@@ -191,28 +233,38 @@ export class TurnPipeline {
 
     let ttsBytes = 0;
 
-    while (true) {
-      const { done, value } = await ttsStream.next();
-      if (done) {
-        if (value) {
-          const audioDurationSeconds = (ttsBytes * 8) / 128_000;
-          this.callbacks.send(
-            buildUsageMessage({
-              stage: 'tts',
-              model: models.tts,
-              usage: value,
-              audioDurationSeconds,
-            }),
-          );
+    try {
+      while (true) {
+        if (gen !== this.generateGeneration || signal.aborted) {
+          return;
         }
-        break;
+
+        const { done, value } = await ttsStream.next();
+        if (done) {
+          if (value && gen === this.generateGeneration && !signal.aborted) {
+            const audioDurationSeconds = (ttsBytes * 8) / 128_000;
+            this.callbacks.send(
+              buildUsageMessage({
+                stage: 'tts',
+                model: models.tts,
+                usage: value,
+                audioDurationSeconds,
+              }),
+            );
+          }
+          break;
+        }
+
+        ttsBytes += value.length;
+        this.callbacks.sendBinary(value);
       }
 
-      ttsBytes += value.length;
-      this.callbacks.sendBinary(value);
+      recordPipelineLatency('tts', Date.now() - ttsStartedAt);
+    } finally {
+      if (gen === this.generateGeneration) {
+        this.voiceStreamingActive = false;
+      }
     }
-
-    recordPipelineLatency('tts', Date.now() - ttsStartedAt);
   }
 
   private buildSystemMessage(config: SessionRuntimeConfig): string {
