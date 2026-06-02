@@ -34,12 +34,24 @@
           <input id="use-emulator" type="checkbox" />
           <span>Use Firebase Auth emulator (<code>localhost:9099</code>)</span>
         </label>
+        <p id="auth-browser-warning" class="auth-warning hidden"></p>
         <div class="row actions">
-          <button id="sign-in-google" type="button" class="btn-google">
+          <button id="sign-in-google" type="button" class="btn-google" disabled>
             <span class="btn-google-icon" aria-hidden="true">G</span>
             Sign in with Google
           </button>
           <button id="sign-out" type="button" class="btn-secondary" disabled>Sign out</button>
+        </div>
+        <div id="email-sign-in" class="email-sign-in">
+          <button id="toggle-email-sign-in" type="button" class="btn-link">Sign in with email instead</button>
+          <div id="email-sign-in-form" class="email-sign-in-form hidden">
+            <label>
+              Email
+              <input id="email-input" type="email" autocomplete="email" placeholder="you@example.com" />
+            </label>
+            <button id="send-email-link" type="button" class="btn-secondary">Send sign-in link</button>
+            <p id="email-sign-in-hint" class="hint hidden"></p>
+          </div>
         </div>
       </section>
 

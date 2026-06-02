@@ -10,7 +10,7 @@ const signInWithGoogle = async (page: import('@playwright/test').Page) => {
 const connectAndWaitForMic = async (page: import('@playwright/test').Page) => {
   await page.click('#connect');
   await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
-  await expect(page.locator('#mic-status')).toContainText('Microphone: ready', { timeout: 15_000 });
+  await expect(page.locator('#mic-status')).toContainText('Mic: ready', { timeout: 15_000 });
 };
 
 test.describe('test client (browser)', () => {
@@ -37,8 +37,8 @@ test.describe('test client (browser)', () => {
 
     await expect(page.locator('#transcript .message.user')).toBeVisible({ timeout: 15_000 });
     await expect(page.locator('#transcript .message.assistant')).toBeVisible({ timeout: 15_000 });
-    await expect(page.locator('#usage-log')).toContainText('"stage": "llm"', { timeout: 15_000 });
-    await expect(page.locator('#usage-log')).not.toContainText('"stage": "tts"');
+    await expect(page.locator('#usage-log')).toContainText('LLM', { timeout: 15_000 });
+    await expect(page.locator('#usage-log')).not.toContainText('TTS');
   });
 
   test('push-to-talk enters and exits recording state', async ({ page }) => {

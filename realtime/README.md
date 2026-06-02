@@ -341,6 +341,13 @@ That is the same UI as local `pnpm dev` (sign in, Connect, Start call). WebSocke
 
 **Uncheck “Use Firebase Auth emulator”** and sign in with Google (production Firebase).
 
+**Mobile sign-in:** the test client uses Firebase `initializeAuth` with `browserPopupRedirectResolver` (same pattern as `webApp`) and **redirect** on phones and Safari. In Firebase Console → **Authentication → Settings → Authorized domains**, add:
+
+- `fluencypal-realtime.fly.dev`
+- `localhost` (local dev)
+
+If Google is blocked (e.g. Instagram in-app browser), use **Sign in with email** on the test page.
+
 Redeploy anytime:
 
 ```bash

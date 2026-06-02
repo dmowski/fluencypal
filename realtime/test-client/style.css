@@ -528,6 +528,41 @@ button.call.hidden {
   word-break: break-word;
 }
 
+.auth-warning {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+}
+
+.auth-warning.hidden,
+.email-sign-in-form.hidden {
+  display: none;
+}
+
+.email-sign-in {
+  margin-top: 14px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #7dd3fc;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.email-sign-in-form {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
 .session-price-total {
   margin: 0 0 10px;
   padding: 10px 12px;

@@ -1,6 +1,15 @@
-import { configureAuthEmulator, completeRedirectSignIn, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
+import { isInAppBrowser, shouldUseRedirectSignIn } from './authEnvironment.js';
+import {
+  configureAuthEmulator,
+  getIdToken,
+  sendEmailSignInLink,
+  signInWithGoogle,
+  signOutUser,
+  waitForAuthBootstrap,
+  watchAuth,
+} from './firebase.js';
 import { describeMicError, MicrophoneSession, computeChunkRms, unlockAudioPlayback, getCaptureWarmupMs, type AudioCapture } from './audioCapture.js';
-import { getAppEnvironment, getBackendLabel, isLocalDev, isMobileDevice, shouldDefaultEmulator } from './env.js';
+import { getAppEnvironment, getBackendLabel, isLocalDev, shouldDefaultEmulator } from './env.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
 import { SessionUsageTracker, type UsageEntry } from './sessionUsage.js';
@@ -19,6 +28,12 @@ const useEmulator = $<HTMLInputElement>('use-emulator');
 const signInGoogleBtn = $<HTMLButtonElement>('sign-in-google');
 const signOutBtn = $<HTMLButtonElement>('sign-out');
 const authStatus = $<HTMLParagraphElement>('auth-status');
+const authBrowserWarning = $<HTMLParagraphElement>('auth-browser-warning');
+const toggleEmailSignInBtn = $<HTMLButtonElement>('toggle-email-sign-in');
+const emailSignInForm = $<HTMLDivElement>('email-sign-in-form');
+const emailInput = $<HTMLInputElement>('email-input');
+const sendEmailLinkBtn = $<HTMLButtonElement>('send-email-link');
+const emailSignInHint = $<HTMLParagraphElement>('email-sign-in-hint');
 
 const systemInstruction = $<HTMLTextAreaElement>('system-instruction');
 const mode = $<HTMLSelectElement>('mode');
@@ -125,7 +140,16 @@ const initEnvironment = () => {
 
   authHint.textContent = isLocalDev()
     ? 'Optional: enable the emulator for instant fake sign-in, or sign in with real Google.'
-    : 'Sign in with your Google account (production Firebase).';
+    : 'Sign in with Google (redirect on mobile) or email link if Google is blocked.';
+
+  if (isInAppBrowser()) {
+    authBrowserWarning.textContent =
+      'You are in an in-app browser (e.g. Instagram or Telegram). Google sign-in usually fails here — open this page in Safari or Chrome, or use email sign-in.';
+    authBrowserWarning.classList.remove('hidden');
+  } else if (shouldUseRedirectSignIn()) {
+    authBrowserWarning.textContent = 'Mobile browser detected — Google will open in a full-page redirect.';
+    authBrowserWarning.classList.remove('hidden');
+  }
 };
 
 const setMicStatus = (text: string, state: 'idle' | 'ready' | 'error' | 'pending' = 'idle') => {
@@ -345,13 +369,18 @@ configureAuthEmulator(useEmulator.checked);
 renderUsagePanel();
 
 void (async () => {
+  setAuthStatusText('Checking sign-in…', 'warning');
   try {
-    const user = await completeRedirectSignIn();
+    const user = await waitForAuthBootstrap();
     if (user) {
-      debugLog('auth', 'redirect_sign_in_complete', { email: user.email ?? user.uid });
+      debugLog('auth', 'bootstrap_sign_in_complete', { email: user.email ?? user.uid });
     }
   } catch (error) {
-    setAuthStatusText(error instanceof Error ? error.message : 'Google sign-in failed', 'error');
+    const message = error instanceof Error ? error.message : 'Sign-in failed';
+    setAuthStatusText(message, 'error');
+    debugLog('auth', 'bootstrap_error', { message });
+  } finally {
+    signInGoogleBtn.disabled = false;
   }
 })();
 
@@ -390,9 +419,30 @@ signInGoogleBtn.addEventListener('click', async () => {
     setAuthStatusText(error instanceof Error ? error.message : 'Google sign in failed', 'error');
     signInGoogleBtn.disabled = false;
   } finally {
-    if (!isMobileDevice() || useEmulator.checked) {
+    if (!shouldUseRedirectSignIn() || useEmulator.checked) {
       signInGoogleBtn.disabled = false;
     }
+  }
+});
+
+toggleEmailSignInBtn.addEventListener('click', () => {
+  emailSignInForm.classList.toggle('hidden');
+});
+
+sendEmailLinkBtn.addEventListener('click', async () => {
+  configureAuthEmulator(useEmulator.checked);
+  sendEmailLinkBtn.disabled = true;
+  emailSignInHint.classList.remove('hidden');
+
+  try {
+    await sendEmailSignInLink(emailInput.value);
+    emailSignInHint.textContent = 'Check your email and open the link on this device.';
+    debugLog('auth', 'email_link_sent');
+  } catch (error) {
+    emailSignInHint.textContent = error instanceof Error ? error.message : 'Failed to send email';
+    emailSignInHint.classList.add('error');
+  } finally {
+    sendEmailLinkBtn.disabled = false;
   }
 });
 
