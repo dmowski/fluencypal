@@ -4,8 +4,11 @@ import { getPlaybackAudioContext, unlockAudioPlayback } from './audioUnlock.js';
 export class Mp3PlaybackQueue {
   private chunks: Uint8Array[] = [];
   private htmlAudio: HTMLAudioElement | null = null;
+  private webAudioSource: AudioBufferSourceNode | null = null;
   private playing = false;
   private onStateChange: (() => void) | null = null;
+  /** Bumped on cancel — stale playCollected() calls exit without playing. */
+  private generation = 0;
 
   get isPlaying(): boolean {
     return this.playing;
@@ -21,7 +24,15 @@ export class Mp3PlaybackQueue {
 
   append(chunk: ArrayBuffer): void {
     this.chunks.push(new Uint8Array(chunk));
-    this.onStateChange?.();
+  }
+
+  /** Stop in-flight output and discard buffered TTS (barge-in / new assistant turn). */
+  cancel(): void {
+    this.generation += 1;
+    this.chunks = [];
+    this.stopOutput();
+    this.setPlaying(false);
+    debugLog('audio', 'playback_cancelled');
   }
 
   async playCollected(): Promise<void> {
@@ -29,24 +40,36 @@ export class Mp3PlaybackQueue {
       return;
     }
 
+    const playGen = this.generation;
     const totalBytes = this.chunks.reduce((sum, chunk) => sum + chunk.length, 0);
     const blob = new Blob(this.chunks, { type: 'audio/mpeg' });
     this.chunks = [];
-    this.onStateChange?.();
+
+    if (playGen !== this.generation) {
+      return;
+    }
 
     await unlockAudioPlayback();
 
-    this.playing = true;
-    this.onStateChange?.();
+    if (playGen !== this.generation) {
+      return;
+    }
+
+    this.setPlaying(true);
 
     try {
       const context = getPlaybackAudioContext();
       if (context) {
         try {
-          await this.playWithWebAudio(context, blob, totalBytes);
-          debugLog('audio', 'playback_done', { method: 'webaudio', bytes: totalBytes });
+          await this.playWithWebAudio(context, blob, totalBytes, playGen);
+          if (playGen === this.generation) {
+            debugLog('audio', 'playback_done', { method: 'webaudio', bytes: totalBytes });
+          }
           return;
         } catch (error) {
+          if (playGen !== this.generation) {
+            return;
+          }
           debugLog('audio', 'webaudio_failed', {
             message: error instanceof Error ? error.message : String(error),
             bytes: totalBytes,
@@ -54,11 +77,49 @@ export class Mp3PlaybackQueue {
         }
       }
 
-      await this.playWithHtmlAudio(blob, totalBytes);
-      debugLog('audio', 'playback_done', { method: 'html_audio', bytes: totalBytes });
+      if (playGen !== this.generation) {
+        return;
+      }
+
+      await this.playWithHtmlAudio(blob, totalBytes, playGen);
+      if (playGen === this.generation) {
+        debugLog('audio', 'playback_done', { method: 'html_audio', bytes: totalBytes });
+      }
     } finally {
-      this.playing = false;
-      this.onStateChange?.();
+      if (playGen === this.generation) {
+        this.setPlaying(false);
+      }
+    }
+  }
+
+  reset(): void {
+    this.cancel();
+  }
+
+  private setPlaying(playing: boolean): void {
+    if (this.playing === playing) {
+      return;
+    }
+
+    this.playing = playing;
+    this.onStateChange?.();
+  }
+
+  private stopOutput(): void {
+    if (this.webAudioSource) {
+      try {
+        this.webAudioSource.stop();
+      } catch {
+        // Already stopped.
+      }
+      this.webAudioSource.disconnect();
+      this.webAudioSource = null;
+    }
+
+    if (this.htmlAudio) {
+      this.htmlAudio.pause();
+      URL.revokeObjectURL(this.htmlAudio.src);
+      this.htmlAudio = null;
     }
   }
 
@@ -66,6 +127,7 @@ export class Mp3PlaybackQueue {
     context: AudioContext,
     blob: Blob,
     totalBytes: number,
+    playGen: number,
   ): Promise<void> {
     if (context.state === 'suspended') {
       await context.resume();
@@ -74,18 +136,27 @@ export class Mp3PlaybackQueue {
     const arrayBuffer = await blob.arrayBuffer();
     const audioBuffer = await context.decodeAudioData(arrayBuffer.slice(0));
 
+    if (playGen !== this.generation) {
+      return;
+    }
+
     debugLog('audio', 'playback_start', {
       method: 'webaudio',
       bytes: totalBytes,
-      durationSec: audioBuffer.duration,
-      contextState: context.state,
+      durationSec: Math.round(audioBuffer.duration * 10) / 10,
     });
 
     await new Promise<void>((resolve, reject) => {
       const source = context.createBufferSource();
+      this.webAudioSource = source;
       source.buffer = audioBuffer;
       source.connect(context.destination);
-      source.onended = () => resolve();
+      source.onended = () => {
+        if (this.webAudioSource === source) {
+          this.webAudioSource = null;
+        }
+        resolve();
+      };
       source.addEventListener('error', () => reject(new Error('Web Audio playback failed')), {
         once: true,
       });
@@ -98,10 +169,11 @@ export class Mp3PlaybackQueue {
     });
   }
 
-  private async playWithHtmlAudio(blob: Blob, totalBytes: number): Promise<void> {
-    if (this.htmlAudio) {
-      this.htmlAudio.pause();
-      URL.revokeObjectURL(this.htmlAudio.src);
+  private async playWithHtmlAudio(blob: Blob, totalBytes: number, playGen: number): Promise<void> {
+    this.stopOutput();
+
+    if (playGen !== this.generation) {
+      return;
     }
 
     const url = URL.createObjectURL(blob);
@@ -126,16 +198,5 @@ export class Mp3PlaybackQueue {
         reject(error);
       });
     });
-  }
-
-  reset(): void {
-    this.chunks = [];
-    this.playing = false;
-    if (this.htmlAudio) {
-      this.htmlAudio.pause();
-      URL.revokeObjectURL(this.htmlAudio.src);
-      this.htmlAudio = null;
-    }
-    this.onStateChange?.();
   }
 }

@@ -1,8 +1,15 @@
-const MAX_LINES = 300;
+const MAX_LINES = 200;
 
 let logEl: HTMLPreElement | null = null;
 const lines: string[] = [];
 const context: Record<string, string> = {};
+
+/** High-frequency events (mic chunks, transcript deltas) — console only when enabled. */
+let verboseConsole = false;
+
+export const setVerboseDebugConsole = (enabled: boolean): void => {
+  verboseConsole = enabled;
+};
 
 const formatData = (data: unknown): string => {
   if (data === undefined) {
@@ -13,6 +20,18 @@ const formatData = (data: unknown): string => {
     return ` ${JSON.stringify(data)}`;
   } catch {
     return ' [unserializable]';
+  }
+};
+
+const pushLine = (line: string): void => {
+  console.log(`[realtime-client] ${line}`);
+  lines.unshift(line);
+  if (lines.length > MAX_LINES) {
+    lines.length = MAX_LINES;
+  }
+
+  if (logEl) {
+    logEl.textContent = lines.join('\n');
   }
 };
 
@@ -72,19 +91,18 @@ export const copyDebugLogToClipboard = async (): Promise<boolean> => {
   }
 };
 
+/** Panel + console — use for session, errors, playback, connection. */
 export const debugLog = (category: string, message: string, data?: unknown): void => {
   const ts = new Date().toISOString().slice(11, 23);
+  pushLine(`[${ts}] [${category}] ${message}${formatData(data)}`);
+};
+
+/** Console only (mic chunk stream, etc.) unless verbose mode is on. */
+export const debugLogVerbose = (category: string, message: string, data?: unknown): void => {
+  const ts = new Date().toISOString().slice(11, 23);
   const line = `[${ts}] [${category}] ${message}${formatData(data)}`;
-
-  console.log(`[realtime-client] ${line}`);
-
-  lines.unshift(line);
-  if (lines.length > MAX_LINES) {
-    lines.length = MAX_LINES;
-  }
-
-  if (logEl) {
-    logEl.textContent = lines.join('\n');
+  if (verboseConsole) {
+    console.log(`[realtime-client] ${line}`);
   }
 };
 

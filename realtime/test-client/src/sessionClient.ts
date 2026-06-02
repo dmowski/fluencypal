@@ -1,6 +1,6 @@
 import { Mp3PlaybackQueue } from './audioPlayback.js';
 import { unlockAudioPlayback } from './audioUnlock.js';
-import { debugLog } from './debugLog.js';
+import { debugLog, debugLogVerbose } from './debugLog.js';
 
 export type ServerMessage = {
   type: string;
@@ -46,6 +46,8 @@ export type SessionStartConfig = {
   voice: 'shimmer' | 'ash' | 'marin' | 'verse';
 };
 
+const WS_LOG_SKIP = new Set(['transcript.delta', 'session.pong', 'user.speaking']);
+
 export class RealtimeSessionClient {
   private socket: WebSocket | null = null;
   private readonly playback = new Mp3PlaybackQueue();
@@ -55,6 +57,9 @@ export class RealtimeSessionClient {
   private audioChunksSkipped = 0;
   private messageChain: Promise<void> = Promise.resolve();
   private playCollectedPending = false;
+  private lastMicUploadBlocked: boolean | null = null;
+  private ttsBytesReceived = 0;
+  private playTask: Promise<void> = Promise.resolve();
 
   constructor(private readonly handlers: SessionClientHandlers) {
     this.playback.setOnStateChange(() => {
@@ -62,7 +67,6 @@ export class RealtimeSessionClient {
     });
   }
 
-  /** Block mic while assistant TTS is streaming or playing — not while chunks are buffered. */
   get isMicUploadBlocked(): boolean {
     return this.assistantSpeaking || this.playback.isPlaying;
   }
@@ -82,20 +86,20 @@ export class RealtimeSessionClient {
     const url = wsBase
       ? `${wsBase.replace(/\/$/, '')}/v1/session`
       : `${protocol}://${window.location.host}/v1/session`;
-    debugLog('ws', 'connecting', { url, mode: config.mode, voiceEnabled: config.voiceEnabled, wsBase: wsBase ?? null });
+    debugLog('ws', 'connecting', { mode: config.mode, voiceEnabled: config.voiceEnabled });
     const socket = new WebSocket(url);
     this.socket = socket;
 
     socket.addEventListener('open', () => {
       debugLog('ws', 'open');
       this.handlers.onStatus('Connected, starting session…');
-      const startPayload = {
-        type: 'session.start',
-        token,
-        config,
-      };
-      debugLog('ws', 'send', { type: startPayload.type });
-      socket.send(JSON.stringify(startPayload));
+      socket.send(
+        JSON.stringify({
+          type: 'session.start',
+          token,
+          config,
+        }),
+      );
     });
 
     socket.addEventListener('message', (event) => {
@@ -103,7 +107,12 @@ export class RealtimeSessionClient {
     });
 
     socket.addEventListener('close', (event) => {
-      debugLog('ws', 'closed', { code: event.code, reason: event.reason, sent: this.audioChunksSent, skipped: this.audioChunksSkipped });
+      debugLog('ws', 'closed', {
+        code: event.code,
+        reason: event.reason || undefined,
+        sent: this.audioChunksSent,
+        skipped: this.audioChunksSkipped,
+      });
       if (event.code !== 1000 && event.reason) {
         this.handlers.onError(`Connection closed: ${event.reason}`);
       } else {
@@ -131,16 +140,22 @@ export class RealtimeSessionClient {
     this.messageChain = Promise.resolve();
     this.playCollectedPending = false;
     this.assistantSpeaking = false;
+    this.lastMicUploadBlocked = null;
+    this.playTask = Promise.resolve();
   }
 
   sendJson(payload: unknown): void {
     if (!this.isConnected || !this.socket) {
-      debugLog('ws', 'send_skipped', { reason: 'not_connected', payload });
       return;
     }
 
-    const type = typeof payload === 'object' && payload && 'type' in payload ? String((payload as { type: unknown }).type) : 'unknown';
-    debugLog('ws', 'send', { type });
+    const type =
+      typeof payload === 'object' && payload && 'type' in payload
+        ? String((payload as { type: unknown }).type)
+        : 'unknown';
+    if (type !== 'session.ping') {
+      debugLogVerbose('ws', 'send', { type });
+    }
     this.socket.send(JSON.stringify(payload));
   }
 
@@ -152,42 +167,40 @@ export class RealtimeSessionClient {
 
     if (this.isMicUploadBlocked) {
       this.audioChunksSkipped += 1;
-      if (this.audioChunksSkipped === 1 || this.audioChunksSkipped % 100 === 0) {
-        debugLog('mic', 'upload_blocked', {
-          skipped: this.audioChunksSkipped,
-          assistantSpeaking: this.assistantSpeaking,
-          playbackPlaying: this.playback.isPlaying,
-        });
-      }
       return;
     }
 
     this.audioChunksSent += 1;
-    if (this.audioChunksSent === 1 || this.audioChunksSent % 50 === 0) {
-      debugLog('mic', 'chunk_sent', {
-        bytes: chunk.byteLength,
-        sent: this.audioChunksSent,
-        skipped: this.audioChunksSkipped,
-      });
-    }
-
     this.socket.send(chunk);
   }
 
   private notifyMicUploadBlockedChange(): void {
     const blocked = this.isMicUploadBlocked;
-    debugLog('mic', blocked ? 'upload_blocked_on' : 'upload_blocked_off', {
+    if (blocked === this.lastMicUploadBlocked) {
+      return;
+    }
+
+    this.lastMicUploadBlocked = blocked;
+    debugLog('mic', blocked ? 'upload_paused' : 'upload_resumed', {
       assistantSpeaking: this.assistantSpeaking,
       playbackPlaying: this.playback.isPlaying,
     });
     this.handlers.onMicUploadBlockedChange?.(blocked);
   }
 
+  private cancelAssistantAudio(reason: string): void {
+    this.playback.cancel();
+    this.playCollectedPending = false;
+    this.ttsBytesReceived = 0;
+    this.playTask = Promise.resolve();
+    debugLog('audio', reason);
+  }
+
   private enqueueMessage(task: () => void | Promise<void>): Promise<void> {
     this.messageChain = this.messageChain
       .then(() => task())
       .catch((error) => {
-        debugLog('ws', 'message_handler_error', {
+        debugLog('error', 'message_handler', {
           message: error instanceof Error ? error.message : String(error),
         });
       });
@@ -197,50 +210,65 @@ export class RealtimeSessionClient {
   private async handleSocketMessage(event: MessageEvent): Promise<void> {
     if (typeof event.data === 'string') {
       const message = JSON.parse(event.data) as ServerMessage;
-      debugLog('ws', 'recv', { type: message.type, ...(message.code ? { code: message.code } : {}) });
+      if (!WS_LOG_SKIP.has(message.type)) {
+        const extra =
+          message.type === 'transcript.done' && message.role
+            ? { role: message.role, len: message.text?.length ?? 0 }
+            : message.type === 'usage'
+              ? { stage: message.stage }
+              : message.code
+                ? { code: message.code }
+                : undefined;
+        debugLog('ws', message.type, extra);
+      }
       this.handleJsonMessage(message);
       return;
     }
 
     if (event.data instanceof Blob) {
       const buffer = await event.data.arrayBuffer();
-      debugLog('audio', 'recv_binary', { bytes: buffer.byteLength, pending: this.playback.hasPendingChunks });
+      this.appendTtsChunk(buffer.byteLength);
       this.playback.append(buffer);
-      this.maybePlayCollected();
       return;
     }
 
     if (event.data instanceof ArrayBuffer) {
-      debugLog('audio', 'recv_binary', { bytes: event.data.byteLength, pending: this.playback.hasPendingChunks });
+      this.appendTtsChunk(event.data.byteLength);
       this.playback.append(event.data);
-      this.maybePlayCollected();
     }
   }
 
-  private maybePlayCollected(): void {
-    if (!this.playCollectedPending || this.assistantSpeaking) {
-      return;
+  private appendTtsChunk(bytes: number): void {
+    const wasEmpty = this.ttsBytesReceived === 0;
+    this.ttsBytesReceived += bytes;
+    if (wasEmpty) {
+      debugLogVerbose('audio', 'tts_stream_start');
     }
+  }
 
-    if (!this.playback.hasPendingChunks) {
+  private schedulePlayCollected(): void {
+    if (!this.playCollectedPending || this.assistantSpeaking || !this.playback.hasPendingChunks) {
       return;
     }
 
     this.playCollectedPending = false;
-    debugLog('audio', 'play_collected_start', { pending: true });
-    void (async () => {
+    const bytes = this.ttsBytesReceived;
+    this.ttsBytesReceived = 0;
+
+    this.playTask = this.playTask.then(async () => {
       await unlockAudioPlayback();
       try {
         await this.playback.playCollected();
+        debugLog('audio', 'tts_played', { bytes });
       } catch (error) {
-        debugLog('audio', 'play_collected_error', {
+        debugLog('error', 'playback_failed', {
           message: error instanceof Error ? error.message : String(error),
         });
         this.handlers.onError(
           error instanceof Error ? error.message : 'Assistant audio could not play',
         );
       }
-    })();
+    });
   }
 
   sendTextTurn(text: string): void {
@@ -278,22 +306,28 @@ export class RealtimeSessionClient {
           createdAt: Date.now(),
         });
         return;
+      case 'assistant.interrupted':
+        this.cancelAssistantAudio('interrupted');
+        return;
       case 'assistant.speaking':
-        debugLog('assistant', message.active ? 'speaking_start' : 'speaking_end');
-        this.assistantSpeaking = Boolean(message.active);
-        this.notifyMicUploadBlockedChange();
-        if (!this.assistantSpeaking) {
-          this.playCollectedPending = true;
-          this.maybePlayCollected();
+        if (message.active) {
+          this.cancelAssistantAudio('new_tts_stream');
+          this.assistantSpeaking = true;
         } else {
-          this.playCollectedPending = false;
+          this.assistantSpeaking = false;
+          if (this.ttsBytesReceived > 0) {
+            debugLog('audio', 'tts_stream_end', { bytes: this.ttsBytesReceived });
+          }
+          this.playCollectedPending = true;
+          this.schedulePlayCollected();
         }
+        this.notifyMicUploadBlockedChange();
         return;
       case 'user.speaking':
-        debugLog('user', message.active ? 'speaking_start' : 'speaking_end');
+        debugLogVerbose('user', message.active ? 'speaking' : 'silent');
         return;
       case 'error':
-        debugLog('ws', 'server_error', { code: message.code, message: message.message });
+        debugLog('error', 'server', { code: message.code, message: message.message });
         this.handlers.onError(`${message.code ?? 'error'}: ${message.message ?? 'Unknown error'}`);
         return;
       case 'session.ended':

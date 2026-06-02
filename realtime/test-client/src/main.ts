@@ -8,7 +8,7 @@ import {
   waitForAuthBootstrap,
   watchAuth,
 } from './firebase.js';
-import { describeMicError, MicrophoneSession, computeChunkRms, unlockAudioPlayback, getCaptureWarmupMs, type AudioCapture } from './audioCapture.js';
+import { describeMicError, MicrophoneSession, unlockAudioPlayback, type AudioCapture } from './audioCapture.js';
 import { getAppEnvironment, getBackendLabel, isLocalDev, shouldDefaultEmulator } from './env.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
@@ -210,7 +210,7 @@ const client = new RealtimeSessionClient({
       return;
     }
 
-    debugLog('call', blocked ? 'mic_paused' : 'mic_listening');
+    // Status UI updated by sessionClient mic upload logs.
 
     if (blocked) {
       setSessionStatusText('Call active — assistant speaking (mic paused)', 'warning');
@@ -508,20 +508,8 @@ const startCall = async () => {
   }
 
   await unlockAudioPlayback();
-  debugLog('mic', 'warmup_ms', { ms: getCaptureWarmupMs() });
-
   try {
-    let captureChunkCount = 0;
     capture = await microphone.startCapture((chunk) => {
-      captureChunkCount += 1;
-      if (captureChunkCount === 1 || captureChunkCount % 50 === 0) {
-        const pcm = new Int16Array(chunk);
-        debugLog('mic', 'capture', {
-          rms: Math.round(computeChunkRms(pcm)),
-          bytes: chunk.byteLength,
-          blocked: client.isMicUploadBlocked,
-        });
-      }
       client.sendAudioChunk(chunk);
     });
   } catch (error) {

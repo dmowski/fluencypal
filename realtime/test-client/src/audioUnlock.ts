@@ -1,4 +1,4 @@
-import { debugLog } from './debugLog.js';
+import { debugLogVerbose } from './debugLog.js';
 
 let playbackContext: AudioContext | null = null;
 
@@ -27,7 +27,7 @@ export const getPlaybackAudioContext = (): AudioContext | null => {
 export const unlockAudioPlayback = async (): Promise<boolean> => {
   const context = getPlaybackAudioContext();
   if (!context) {
-    debugLog('audio', 'unlock_skipped', { reason: 'no_audio_context' });
+    debugLogVerbose('audio', 'unlock_skipped', { reason: 'no_audio_context' });
     return false;
   }
 
@@ -43,10 +43,10 @@ export const unlockAudioPlayback = async (): Promise<boolean> => {
     source.start(0);
     source.stop(context.currentTime + 0.01);
 
-    debugLog('audio', 'unlock_ok', { state: context.state });
+    debugLogVerbose('audio', 'unlock_ok', { state: context.state });
     return true;
   } catch (error) {
-    debugLog('audio', 'unlock_failed', {
+    debugLogVerbose('audio', 'unlock_failed', {
       message: error instanceof Error ? error.message : String(error),
       state: context.state,
     });
