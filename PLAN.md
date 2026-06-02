@@ -1,5 +1,10 @@
 # Live document with short/long term ideas
 
+## Realtime service
+
+realtime/src/index.ts:23
+Add rate limit to prevent Ddos attack. And check libs to vulnerabilities "pnpm audit"
+
 ## News: They should be interesting for me.
 
 webApp/src/features/News/AGENTS.md

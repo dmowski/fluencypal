@@ -8,26 +8,46 @@
   </head>
   <body>
     <main class="layout">
-      <header>
-        <h1>Realtime test client</h1>
-        <p class="subtitle">WebSocket test client for <code>/v1/session</code> (proxied to port 8081)</p>
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">FluencyPal · Realtime</p>
+            <h1>Conversation test client</h1>
+            <p id="subtitle" class="subtitle">WebSocket test client for <code>/v1/session</code></p>
+          </div>
+          <span id="env-badge" class="badge">…</span>
+        </div>
+        <ol class="steps" aria-label="Getting started">
+          <li id="step-sign-in"><span class="step-num">1</span> Sign in with Google</li>
+          <li id="step-connect"><span class="step-num">2</span> Connect session</li>
+          <li id="step-talk"><span class="step-num">3</span> Start call and speak</li>
+        </ol>
       </header>
 
       <section class="panel">
-        <h2>Auth</h2>
-        <label class="row">
-          <input id="use-emulator" type="checkbox" checked />
-          Use Firebase Auth emulator (localhost:9099)
+        <div class="panel-head">
+          <h2>Sign in</h2>
+          <p id="auth-status" class="status-pill status-idle">Not signed in</p>
+        </div>
+        <p id="auth-hint" class="hint">Production Firebase — use your Google account.</p>
+        <label id="emulator-row" class="emulator-row row">
+          <input id="use-emulator" type="checkbox" />
+          <span>Use Firebase Auth emulator (<code>localhost:9099</code>)</span>
         </label>
         <div class="row actions">
-          <button id="sign-in-google" type="button" class="google-sign-in">Sign in with Google</button>
-          <button id="sign-out" type="button" disabled>Sign out</button>
+          <button id="sign-in-google" type="button" class="btn-google">
+            <span class="btn-google-icon" aria-hidden="true">G</span>
+            Sign in with Google
+          </button>
+          <button id="sign-out" type="button" class="btn-secondary" disabled>Sign out</button>
         </div>
-        <p id="auth-status" class="status">Not signed in</p>
       </section>
 
       <section class="panel">
-        <h2>Session</h2>
+        <div class="panel-head">
+          <h2>Session</h2>
+          <p id="session-status" class="status-pill status-idle">Disconnected</p>
+        </div>
         <label>
           System instruction
           <textarea id="system-instruction" rows="3">You are an English teacher. Reply briefly in one or two sentences.</textarea>
@@ -36,8 +56,8 @@
           <label>
             Mode
             <select id="mode">
-              <option value="PushToTalk">PushToTalk</option>
-              <option value="RealTimeConversation" selected>RealTimeConversation</option>
+              <option value="PushToTalk">Push to talk</option>
+              <option value="RealTimeConversation" selected>Real-time call</option>
             </select>
           </label>
           <label>
@@ -50,50 +70,57 @@
             </select>
           </label>
         </div>
-        <div class="row toggles">
-          <label><input id="voice-enabled" type="checkbox" checked /> AI voice on</label>
-          <label><input id="mic-muted" type="checkbox" /> Mic muted</label>
+        <div class="row toggles chip-row">
+          <label class="chip"><input id="voice-enabled" type="checkbox" checked /> AI voice</label>
+          <label class="chip"><input id="mic-muted" type="checkbox" /> Mic muted</label>
         </div>
         <div class="row actions">
-          <button id="connect" type="button">Connect</button>
-          <button id="disconnect" type="button" disabled>Disconnect</button>
+          <button id="connect" type="button" class="btn-primary">Connect</button>
+          <button id="disconnect" type="button" class="btn-secondary" disabled>Disconnect</button>
         </div>
-        <p id="session-status" class="status">Disconnected</p>
       </section>
 
-      <section class="panel">
-        <h2>Talk</h2>
-        <p id="talk-hint" class="hint">Connect first, then use the microphone control for your selected mode.</p>
-        <p id="mic-status" class="status mic-status">Microphone: not requested yet</p>
+      <section class="panel panel-talk">
+        <div class="panel-head">
+          <h2>Talk</h2>
+          <p id="mic-status" class="status-pill status-idle mic-status">Mic: not requested</p>
+        </div>
+        <p id="talk-hint" class="hint">Sign in and connect first.</p>
         <button id="call-toggle" type="button" class="call hidden" disabled>Start call</button>
-        <button id="ptt" type="button" class="ptt" disabled>Hold to talk</button>
-        <label>
-          Or type a message
-          <input id="typed-message" type="text" placeholder="Type and press Send" disabled />
-        </label>
-        <button id="send-text" type="button" disabled>Send text</button>
+        <button id="ptt" type="button" class="ptt hidden" disabled>Hold to talk</button>
+        <div class="typed-row">
+          <label>
+            Type a message
+            <input id="typed-message" type="text" placeholder="Type and press Send" disabled />
+          </label>
+          <button id="send-text" type="button" class="btn-secondary" disabled>Send</button>
+        </div>
       </section>
 
       <section class="panel transcript-panel">
-        <h2>Transcript</h2>
-        <div id="transcript" class="transcript"></div>
-      </section>
-
-      <section class="panel">
-        <h2>Debug log</h2>
-        <p class="hint">Mirrors browser console — use with server terminal logs to trace call flow.</p>
-        <div class="row actions">
-          <button id="copy-debug-log" type="button">Copy logs</button>
-          <button id="clear-debug-log" type="button">Clear log</button>
+        <div class="panel-head">
+          <h2>Transcript</h2>
         </div>
-        <p id="debug-log-status" class="status debug-log-status" hidden></p>
-        <pre id="debug-log" class="log debug-log"></pre>
+        <div id="transcript" class="transcript">
+          <p class="transcript-empty">Messages appear here after you connect and talk.</p>
+        </div>
       </section>
 
-      <section class="panel">
-        <h2>Token usage</h2>
-        <pre id="usage-log" class="log"></pre>
-      </section>
+      <details class="panel collapsible">
+        <summary>Debug log</summary>
+        <p class="hint">Copy and share when reporting issues.</p>
+        <div class="row actions">
+          <button id="copy-debug-log" type="button" class="btn-secondary">Copy logs</button>
+          <button id="clear-debug-log" type="button" class="btn-secondary">Clear</button>
+        </div>
+        <p id="debug-log-status" class="inline-status" hidden></p>
+        <pre id="debug-log" class="log debug-log"></pre>
+      </details>
+
+      <details class="panel collapsible">
+        <summary>Token usage</summary>
+        <pre id="usage-log" class="log">No usage yet.</pre>
+      </details>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

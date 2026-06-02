@@ -1,9 +1,18 @@
 import { configureAuthEmulator, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
 import { describeMicError, MicrophoneSession, computeChunkRms, unlockAudioPlayback, getCaptureWarmupMs, type AudioCapture } from './audioCapture.js';
+import { getAppEnvironment, getBackendLabel, isLocalDev, shouldDefaultEmulator } from './env.js';
 import { RealtimeSessionClient } from './sessionClient.js';
 import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+const subtitle = $<HTMLParagraphElement>('subtitle');
+const envBadge = $<HTMLSpanElement>('env-badge');
+const emulatorRow = $<HTMLLabelElement>('emulator-row');
+const authHint = $<HTMLParagraphElement>('auth-hint');
+const stepSignIn = $<HTMLLIElement>('step-sign-in');
+const stepConnect = $<HTMLLIElement>('step-connect');
+const stepTalk = $<HTMLLIElement>('step-talk');
 
 const useEmulator = $<HTMLInputElement>('use-emulator');
 const signInGoogleBtn = $<HTMLButtonElement>('sign-in-google');
@@ -65,20 +74,60 @@ const showDebugLogStatus = (message: string, isError = false) => {
 
 const isRealtimeMode = () => mode.value === 'RealTimeConversation';
 
+type StatusTone = 'idle' | 'ok' | 'active' | 'warning' | 'error';
+
+const setStatusPill = (element: HTMLElement, text: string, tone: StatusTone) => {
+  element.textContent = text;
+  element.className = `status-pill status-${tone}${element === micStatus ? ' mic-status' : ''}`;
+};
+
+const updateSteps = () => {
+  stepSignIn.classList.toggle('step-done', signedIn);
+  stepSignIn.classList.toggle('step-active', !signedIn);
+  stepConnect.classList.toggle('step-done', client.isConnected);
+  stepConnect.classList.toggle('step-active', signedIn && !client.isConnected);
+  stepTalk.classList.toggle('step-done', callActive);
+  stepTalk.classList.toggle('step-active', client.isConnected && !callActive);
+};
+
+const initEnvironment = () => {
+  const environment = getAppEnvironment();
+  envBadge.textContent = environment === 'local' ? 'Local dev' : 'Production';
+  envBadge.className = `badge badge-${environment}`;
+
+  useEmulator.checked = shouldDefaultEmulator();
+  emulatorRow.hidden = !isLocalDev();
+
+  subtitle.innerHTML =
+    environment === 'local'
+      ? `Backend: <code>${getBackendLabel()}</code>`
+      : `Backend: <code>${getBackendLabel()}</code> · production Firebase`;
+
+  authHint.textContent = isLocalDev()
+    ? 'Optional: enable the emulator for instant fake sign-in, or sign in with real Google.'
+    : 'Sign in with your Google account (production Firebase).';
+};
+
 const setMicStatus = (text: string, state: 'idle' | 'ready' | 'error' | 'pending' = 'idle') => {
-  micStatus.textContent = text;
-  micStatus.classList.remove('ready', 'error');
-  if (state === 'ready') {
-    micStatus.classList.add('ready');
-  }
-  if (state === 'error') {
-    micStatus.classList.add('error');
-  }
+  const label = text.replace(/^Microphone:\s*/i, 'Mic: ');
+  const tone: StatusTone =
+    state === 'ready' ? 'ok' : state === 'error' ? 'error' : state === 'pending' ? 'warning' : 'idle';
+  setStatusPill(micStatus, label, tone);
+};
+
+const setSessionStatusText = (text: string, tone: StatusTone = 'idle') => {
+  setStatusPill(sessionStatus, text, tone);
+};
+
+const setAuthStatusText = (text: string, tone: StatusTone = 'idle') => {
+  setStatusPill(authStatus, text, tone);
 };
 
 const updateTalkHint = (connected: boolean) => {
   if (!connected) {
-    talkHint.textContent = 'Connect first, then allow microphone access and use the control below.';
+    talkHint.textContent = signedIn
+      ? 'Click Connect to open a WebSocket session.'
+      : 'Complete step 1 — sign in with Google first.';
     return;
   }
 
@@ -98,8 +147,16 @@ const updateTalkHint = (connected: boolean) => {
 
 const client = new RealtimeSessionClient({
   onStatus: (status) => {
-    sessionStatus.textContent = status;
+    const tone: StatusTone = status.includes('Error')
+      ? 'error'
+      : status.includes('ready') || status.includes('listening')
+        ? 'ok'
+        : status.includes('Connected') || status.includes('Call active')
+          ? 'active'
+          : 'idle';
+    setSessionStatusText(status, tone);
     syncDebugContext();
+    updateSteps();
   },
   onSessionReady: () => {
     void prepareMicrophone();
@@ -112,11 +169,11 @@ const client = new RealtimeSessionClient({
     debugLog('call', blocked ? 'mic_paused' : 'mic_listening');
 
     if (blocked) {
-      sessionStatus.textContent = 'Call active — assistant speaking (mic paused)';
+      setSessionStatusText('Call active — assistant speaking (mic paused)', 'warning');
       return;
     }
 
-    sessionStatus.textContent = 'Call active — listening…';
+    setSessionStatusText('Call active — listening…', 'ok');
     syncDebugContext();
   },
   onTranscriptDelta: (messageId, role, delta) => {
@@ -132,7 +189,7 @@ const client = new RealtimeSessionClient({
   },
   onError: (message) => {
     debugLog('error', message);
-    sessionStatus.textContent = `Error: ${message}`;
+    setSessionStatusText(`Error: ${message}`, 'error');
     syncDebugContext();
   },
 });
@@ -157,7 +214,12 @@ clearDebugLogBtn.addEventListener('click', () => {
   debugLog('client', 'logs_cleared');
 });
 
+const hideTranscriptEmpty = () => {
+  transcriptEl.querySelector('.transcript-empty')?.remove();
+};
+
 const ensureTranscriptMessage = (messageId: string, role: 'user' | 'assistant'): HTMLSpanElement => {
+  hideTranscriptEmpty();
   const existing = transcriptById.get(messageId);
   if (existing) {
     return existing;
@@ -204,8 +266,10 @@ const setConnectedUi = (connected: boolean) => {
   syncTalkControls(connected);
 
   if (!connected) {
-    setMicStatus('Microphone: not requested yet');
+    setMicStatus('Mic: not requested');
   }
+
+  updateSteps();
 };
 
 const readSessionConfig = () => ({
@@ -224,15 +288,15 @@ const prepareMicrophone = async (): Promise<boolean> => {
   }
 
   micAccessPending = true;
-  setMicStatus('Microphone: waiting for browser permission…', 'pending');
+  setMicStatus('Mic: waiting for permission…', 'pending');
 
   try {
     await microphone.requestAccess();
-    setMicStatus('Microphone: ready', 'ready');
+    setMicStatus('Mic: ready', 'ready');
     syncTalkControls(client.isConnected);
     return true;
   } catch (error) {
-    setMicStatus(`Microphone: ${describeMicError(error)}`, 'error');
+    setMicStatus(`Mic: ${describeMicError(error)}`, 'error');
     syncTalkControls(client.isConnected);
     return false;
   } finally {
@@ -240,14 +304,23 @@ const prepareMicrophone = async (): Promise<boolean> => {
   }
 };
 
+initEnvironment();
 configureAuthEmulator(useEmulator.checked);
+
+useEmulator.addEventListener('change', () => {
+  authHint.textContent = 'Reload the page after changing the emulator setting.';
+});
 
 watchAuth((user) => {
   signedIn = Boolean(user);
-  authStatus.textContent = user ? `Signed in as ${user.email ?? user.uid}` : 'Not signed in';
+  setAuthStatusText(
+    user ? `Signed in · ${user.email ?? user.uid}` : 'Not signed in',
+    user ? 'ok' : 'idle',
+  );
   signOutBtn.disabled = !user;
   connectBtn.disabled = !user || client.isConnected;
   syncDebugContext();
+  updateSteps();
 });
 
 mode.addEventListener('change', () => {
@@ -261,7 +334,7 @@ signInGoogleBtn.addEventListener('click', async () => {
   try {
     await signInWithGoogle();
   } catch (error) {
-    authStatus.textContent = error instanceof Error ? error.message : 'Google sign in failed';
+    setAuthStatusText(error instanceof Error ? error.message : 'Google sign in failed', 'error');
   } finally {
     signInGoogleBtn.disabled = false;
   }
@@ -283,7 +356,7 @@ connectBtn.addEventListener('click', async () => {
     client.connect(token, readSessionConfig());
     setConnectedUi(true);
   } catch (error) {
-    sessionStatus.textContent = error instanceof Error ? error.message : 'Connect failed';
+    setSessionStatusText(error instanceof Error ? error.message : 'Connect failed', 'error');
   }
 });
 
@@ -344,22 +417,23 @@ const startCall = async () => {
       client.sendAudioChunk(chunk);
     });
   } catch (error) {
-    setMicStatus(`Microphone: ${describeMicError(error)}`, 'error');
+    setMicStatus(`Mic: ${describeMicError(error)}`, 'error');
     return;
   }
 
   callActive = true;
   callToggleBtn.textContent = 'End call';
   callToggleBtn.classList.add('active');
-  sessionStatus.textContent = 'Call active — starting…';
+  setSessionStatusText('Call active — starting…', 'active');
   syncDebugContext();
+  updateSteps();
 
   if (isRealtimeMode() && !greetingSent) {
     debugLog('call', 'assistant_trigger');
     client.sendJson({ type: 'assistant.trigger' });
     greetingSent = true;
   } else if (!client.isMicUploadBlocked) {
-    sessionStatus.textContent = 'Call active — listening…';
+    setSessionStatusText('Call active — listening…', 'ok');
   }
 };
 
@@ -379,6 +453,7 @@ const stopCall = async () => {
   callToggleBtn.textContent = 'Start call';
   callToggleBtn.classList.remove('active');
   syncDebugContext();
+  updateSteps();
 
   if (client.isConnected) {
     debugLog('call', 'user_turn_commit_on_stop');
@@ -409,7 +484,7 @@ const startPushToTalk = async () => {
       client.sendAudioChunk(chunk);
     });
   } catch (error) {
-    setMicStatus(`Microphone: ${describeMicError(error)}`, 'error');
+    setMicStatus(`Mic: ${describeMicError(error)}`, 'error');
     return;
   }
 
@@ -463,3 +538,4 @@ typedMessage.addEventListener('keydown', (event) => {
 });
 
 setConnectedUi(false);
+updateSteps();
