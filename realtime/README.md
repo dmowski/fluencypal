@@ -62,12 +62,21 @@ Copy `.env.example` to `.env`. All variables are read at startup via `src/config
 | `DEFAULT_STT_MODEL` | No | `gpt-4o-transcribe` | Server-side STT model |
 | `DEFAULT_LLM_MODEL` | No | `gpt-4o` | Server-side LLM model |
 | `DEFAULT_TTS_MODEL` | No | `gpt-4o-mini-tts` | Server-side TTS model |
+| `RATE_LIMIT_ENABLED` | No | `true` | Per-IP HTTP rate limiting (off when `NODE_ENV=test`) |
+| `RATE_LIMIT_MAX` | No | `200` | Max requests per IP per window (excludes `/health`, `/ready`) |
+| `RATE_LIMIT_WINDOW_MS` | No | `60000` | Rate limit window in ms |
+| `RATE_LIMIT_AUTH_VERIFY_MAX` | No | `30` | Max `/v1/auth/verify` calls per IP per window |
+| `RATE_LIMIT_WS_MAX` | No | `20` | Max WebSocket upgrade attempts per IP per window |
 
 \* Required for conversation pipeline tests and manual calls with voice. E2E auth/session tests run without OpenAI.
 
 \** Optional when `IS_FIREBASE_EMULATOR=true` (emulator accepts unsigned tokens).
 
 Models are **server-side only** — clients never send model or provider ids. Change env vars and redeploy to swap models.
+
+### Rate limiting (DDoS / abuse)
+
+`@fastify/rate-limit` applies per client IP (uses `X-Forwarded-For` on Fly). `/health` and `/ready` are allowlisted for probes. Excess traffic receives `429` with `{ code: "rate_limit_exceeded" }`. Tune via `RATE_LIMIT_*` env vars. Run `pnpm audit` periodically for dependency vulnerabilities.
 
 ### Firebase emulator mode
 

@@ -2,8 +2,8 @@
 
 ## Realtime service
 
-realtime/src/index.ts:23
-Add rate limit to prevent Ddos attack. And check libs to vulnerabilities "pnpm audit"
+Phase 3. But be sure to not remove old realtime approach on webApp. We need to create an experimental option to run our new realtime mode. Add it only on experimental webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx.
+And it should follow Just talk instructions.
 
 ## News: They should be interesting for me.
 

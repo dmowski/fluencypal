@@ -6,17 +6,28 @@ import { getListenPort } from './config/listenPort.js';
 import { env } from './config/env.js';
 import { sessionManager } from './session/SessionManager.js';
 import { registerGracefulShutdown, registerHttpRoutes } from './server/httpRoutes.js';
+import { registerRateLimit } from './server/registerRateLimit.js';
 import { registerTestClient } from './server/registerTestClient.js';
 import { registerWebSocketRoutes } from './ws/handleConnection.js';
 
 export const buildApp = async () => {
   const app = Fastify({
     logger: env.NODE_ENV !== 'test',
+    bodyLimit: 1_048_576,
+    requestTimeout: 120_000,
   });
 
+  await registerRateLimit(app);
   registerHttpRoutes(app);
 
-  app.get('/v1/auth/verify', async (request, reply) => {
+  app.get('/v1/auth/verify', {
+    config: {
+      rateLimit: {
+        max: env.RATE_LIMIT_AUTH_VERIFY_MAX,
+        timeWindow: env.RATE_LIMIT_WINDOW_MS,
+      },
+    },
+  }, async (request, reply) => {
     try {
       const user = await validateAuthorizationHeader(request.headers.authorization);
       return { ok: true, user };

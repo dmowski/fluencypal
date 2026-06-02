@@ -29,6 +29,17 @@ const envSchema = z.object({
   DEFAULT_STT_MODEL: z.string().default('gpt-4o-transcribe'),
   DEFAULT_LLM_MODEL: z.string().default('gpt-4o'),
   DEFAULT_TTS_MODEL: z.string().default('gpt-4o-mini-tts'),
+  RATE_LIMIT_ENABLED: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((value) => value === 'true'),
+  /** Max HTTP requests per IP per window (excludes /health, /ready). */
+  RATE_LIMIT_MAX: z.coerce.number().int().min(1).default(200),
+  RATE_LIMIT_WINDOW_MS: z.coerce.number().int().min(1000).default(60_000),
+  /** Stricter cap for token verification (brute-force protection). */
+  RATE_LIMIT_AUTH_VERIFY_MAX: z.coerce.number().int().min(1).default(30),
+  /** WebSocket upgrade attempts per IP per window. */
+  RATE_LIMIT_WS_MAX: z.coerce.number().int().min(1).default(20),
 });
 
 export type Env = z.infer<typeof envSchema>;

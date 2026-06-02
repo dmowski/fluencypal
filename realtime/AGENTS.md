@@ -9,6 +9,7 @@ Always run from `realtime/`:
 ```bash
 pnpm lint    # tsc --noEmit + vite build (test-client) — catches bad firebase imports etc.
 pnpm test    # unit tests
+pnpm audit   # dependency vulnerability check
 ```
 
 Run `pnpm test:e2e` when changing auth, WebSocket protocol, or session lifecycle.
