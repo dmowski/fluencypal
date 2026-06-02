@@ -3,6 +3,8 @@ import { z } from 'zod';
 
 loadDotenv();
 
+const normalizeOrigin = (origin: string): string => origin.trim().replace(/\/$/, '');
+
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   REALTIME_PORT: z.coerce.number().int().min(1).max(65535).default(8081),
@@ -12,9 +14,10 @@ const envSchema = z.object({
     .transform((value) =>
       value
         .split(',')
-        .map((origin) => origin.trim())
+        .map((origin) => normalizeOrigin(origin))
         .filter(Boolean),
     ),
+  PUBLIC_APP_URL: z.string().optional(),
   OPENAI_API_KEY: z.string().optional(),
   FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS: z.string().optional(),
   FIREBASE_PROJECT_ID: z.string().default('dark-lang'),
@@ -30,4 +33,19 @@ const envSchema = z.object({
 
 export type Env = z.infer<typeof envSchema>;
 
-export const env: Env = envSchema.parse(process.env);
+const parsed = envSchema.parse(process.env);
+
+const mergedOrigins = new Set<string>(parsed.ALLOWED_ORIGINS);
+
+if (parsed.PUBLIC_APP_URL) {
+  mergedOrigins.add(normalizeOrigin(parsed.PUBLIC_APP_URL));
+}
+
+if (process.env.FLY_APP_NAME) {
+  mergedOrigins.add(`https://${process.env.FLY_APP_NAME}.fly.dev`);
+}
+
+export const env: Env = {
+  ...parsed,
+  ALLOWED_ORIGINS: [...mergedOrigins],
+};

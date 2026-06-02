@@ -53,7 +53,10 @@ const start = async () => {
 
   try {
     await app.listen({ port, host: '0.0.0.0' });
-    app.log.info(`realtime service listening on port ${port}`);
+    app.log.info(
+      { allowedOrigins: env.ALLOWED_ORIGINS, flyApp: process.env.FLY_APP_NAME ?? null },
+      `realtime service listening on port ${port}`,
+    );
   } catch (error) {
     app.log.error(error);
     process.exit(1);

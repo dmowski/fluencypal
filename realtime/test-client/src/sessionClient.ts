@@ -93,7 +93,11 @@ export class RealtimeSessionClient {
 
     socket.addEventListener('close', (event) => {
       debugLog('ws', 'closed', { code: event.code, reason: event.reason, sent: this.audioChunksSent, skipped: this.audioChunksSkipped });
-      this.handlers.onStatus('Disconnected');
+      if (event.code !== 1000 && event.reason) {
+        this.handlers.onError(`Connection closed: ${event.reason}`);
+      } else {
+        this.handlers.onStatus('Disconnected');
+      }
       this.playback.reset();
       this.socket = null;
     });

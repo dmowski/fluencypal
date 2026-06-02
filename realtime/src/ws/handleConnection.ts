@@ -48,8 +48,12 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
   app.get('/v1/session', { websocket: true }, (socket, request) => {
     const origin = request.headers.origin;
 
-    if (env.NODE_ENV === 'production' && !isAllowedOrigin(origin)) {
-      sessionWarn(null, 'ws.origin_rejected', { origin: origin ?? null });
+    if (env.NODE_ENV === 'production' && !isAllowedOrigin(origin, request.headers.host)) {
+      sessionWarn(null, 'ws.origin_rejected', {
+        origin: origin ?? null,
+        host: request.headers.host ?? null,
+        allowedOrigins: env.ALLOWED_ORIGINS,
+      });
       socket.close(1008, rejectOriginMessage(origin));
       return;
     }
