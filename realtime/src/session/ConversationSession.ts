@@ -13,6 +13,7 @@ import type {
 import { ConversationHistory } from './history.js';
 import { TurnPipeline } from './TurnPipeline.js';
 import { RealtimeTurnDetector, computePcm16Rms, estimateBufferedSpeechMs } from './turnDetection.js';
+import { isAbortError } from '../errors/isAbortError.js';
 import { sessionLog, sessionWarn } from '../log/sessionLog.js';
 
 export type SessionRuntimeConfig = SessionStartConfig & {
@@ -120,7 +121,15 @@ export class ConversationSession {
         return;
       case 'assistant.trigger':
         sessionLog(this.sessionId, 'assistant.trigger');
-        await this.pipeline.generateAssistantResponse();
+        try {
+          await this.pipeline.generateAssistantResponse();
+        } catch (error) {
+          if (isAbortError(error)) {
+            sessionLog(this.sessionId, 'turn.aborted');
+            return;
+          }
+          throw error;
+        }
         return;
       case 'vision.frame':
         return;
@@ -160,7 +169,7 @@ export class ConversationSession {
           sessionLog(this.sessionId, 'turn.end_detected', {
             bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
           });
-          void this.commitUserTurn();
+          this.scheduleCommitUserTurn();
         },
       });
     }
@@ -294,6 +303,12 @@ export class ConversationSession {
       sessionLog(this.sessionId, 'turn.generating_assistant');
       await this.pipeline.generateAssistantResponse();
       sessionLog(this.sessionId, 'turn.commit_done', { messageId: id });
+    } catch (error) {
+      if (isAbortError(error)) {
+        sessionLog(this.sessionId, 'turn.aborted', { messageId: id });
+        return;
+      }
+      throw error;
     } finally {
       this.turnCommitInProgress = false;
 
@@ -302,6 +317,26 @@ export class ConversationSession {
         await this.commitUserTurn();
       }
     }
+  }
+
+  private scheduleCommitUserTurn(): void {
+    void this.commitUserTurn().catch((error) => this.handleTurnPipelineError(error));
+  }
+
+  private handleTurnPipelineError(error: unknown): void {
+    if (isAbortError(error)) {
+      sessionLog(this.sessionId, 'turn.aborted');
+      return;
+    }
+
+    sessionWarn(this.sessionId, 'turn.pipeline_error', {
+      message: error instanceof Error ? error.message : String(error),
+    });
+    this.send({
+      type: 'error',
+      code: 'pipeline.failed',
+      message: 'Something went wrong processing your turn. Try again.',
+    });
   }
 
   private cancelUserTurn(): void {

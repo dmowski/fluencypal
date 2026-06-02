@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { isAbortError } from '../errors/isAbortError.js';
 import { estimateAudioDurationMs } from '../protocol/audioCodec.js';
 import { buildUsageMessage, getPipelineModels } from '../usage/emitUsage.js';
 import { recordPipelineLatency } from '../metrics/sessionMetrics.js';
@@ -62,13 +63,24 @@ export class TurnPipeline {
         }),
       );
       return result.text;
+    } catch (error) {
+      if (isAbortError(error)) {
+        return '';
+      }
+      throw error;
     } finally {
       this.releaseNestedAbort(abort);
     }
   }
 
   async generateAssistantResponse(): Promise<void> {
-    this.generateChain = this.generateChain.then(() => this.runGenerateAssistantResponse());
+    const run = this.runGenerateAssistantResponse().catch((error) => {
+      if (isAbortError(error)) {
+        return;
+      }
+      throw error;
+    });
+    this.generateChain = this.generateChain.then(() => run);
     return this.generateChain;
   }
 
@@ -148,6 +160,11 @@ export class TurnPipeline {
 
       voiceStreamingStarted = true;
       await this.streamAssistantVoice(assistantText, config.voice, abort.signal);
+    } catch (error) {
+      if (isAbortError(error)) {
+        return;
+      }
+      throw error;
     } finally {
       this.running = false;
       this.releaseNestedAbort(abort);

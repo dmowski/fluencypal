@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { ProviderRegistry } from '../src/providers/types.js';
+import { isAbortError } from '../src/errors/isAbortError.js';
 import { TurnPipeline } from '../src/session/TurnPipeline.js';
 import { ConversationHistory } from '../src/session/history.js';
 import type { SessionRuntimeConfig } from '../src/session/ConversationSession.js';
@@ -85,5 +86,33 @@ describe('TurnPipeline', () => {
     const text = await pipeline.transcribeAudio([Buffer.from([0, 0, 0, 0])]);
     expect(text).toBe('hello there');
     expect(stt).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not throw when LLM stream is aborted (APIUserAbortError)', async () => {
+    const abortError = Object.assign(new Error('Request was aborted.'), {
+      name: 'APIUserAbortError',
+    });
+    expect(isAbortError(abortError)).toBe(true);
+
+    const providers = createMockProviders({
+      llm: {
+        async *streamChat() {
+          throw abortError;
+        },
+      },
+    });
+
+    const history = new ConversationHistory();
+    history.append({ id: 'u1', role: 'user', text: 'Hi', createdAt: Date.now() });
+
+    const pipeline = new TurnPipeline(
+      providers,
+      { send: () => {}, sendBinary: () => {} },
+      () => baseConfig,
+      history,
+      new AbortController().signal,
+    );
+
+    await expect(pipeline.generateAssistantResponse()).resolves.toBeUndefined();
   });
 });

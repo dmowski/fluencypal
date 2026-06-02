@@ -240,7 +240,9 @@ Optional prefixed framing: `[0x01][uint32 BE length][payload]`.
 | **RealTimeConversation** | Continuous mic while call is open | Server silence timer (~1.2 s after speech) | Auto after each user turn |
 | **PushToTalk** | Audio or text while button held | `user.turn.commit` on release | Auto after commit (or `assistant.trigger`) |
 
-Silence detection uses RMS on PCM chunks (`src/session/turnDetection.ts`). When the user speaks during assistant output, the server aborts in-flight TTS/LLM and sends `assistant.interrupted`.
+Silence detection uses RMS on PCM chunks (`src/session/turnDetection.ts`). When the user speaks during assistant output, the server aborts in-flight TTS/LLM and sends `assistant.interrupted`. OpenAI aborts (`APIUserAbortError`) are treated as normal cancellation — they must not crash the Node process (see `src/errors/isAbortError.ts`).
+
+**Production impact if the API process crashes:** Fly runs one machine per deploy; an uncaught exception exits the process, so every open WebSocket drops (`ECONNREFUSED` until Fly restarts the VM). Health checks on `/health` and `/ready` fail; `auto_start_machines` brings a new instance up, but all in-flight conversations are lost and clients must reconnect.
 
 ### Example: minimal session flow
 
