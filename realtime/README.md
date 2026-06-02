@@ -18,6 +18,14 @@ Health check:
 curl http://localhost:8081/health
 ```
 
+WebSocket session endpoint (after step 1.3):
+
+```
+ws://localhost:8081/v1/session
+```
+
+First message must be `session.start` with a Firebase ID token. See `src/protocol/messages.ts` for the full wire protocol.
+
 ## Firebase auth (step 1.2)
 
 The service verifies Firebase ID tokens the same way as `webApp/src/app/api/config/firebase.ts`.

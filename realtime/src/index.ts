@@ -3,8 +3,10 @@ import { fileURLToPath } from 'node:url';
 import { AuthError } from './auth/types.js';
 import { validateAuthorizationHeader } from './auth/firebase.js';
 import { env } from './config/env.js';
+import { sessionManager } from './session/SessionManager.js';
+import { registerWebSocketRoutes } from './ws/handleConnection.js';
 
-export const buildApp = () => {
+export const buildApp = async () => {
   const app = Fastify({
     logger: env.NODE_ENV !== 'test',
   });
@@ -13,6 +15,7 @@ export const buildApp = () => {
     ok: true,
     service: 'fluencypal-realtime',
     version: '0.1.0',
+    activeSessions: sessionManager.activeCount,
   }));
 
   app.get('/v1/auth/verify', async (request, reply) => {
@@ -29,11 +32,17 @@ export const buildApp = () => {
     }
   });
 
+  await registerWebSocketRoutes(app);
+
+  app.addHook('onClose', async () => {
+    sessionManager.disposeAll();
+  });
+
   return app;
 };
 
 const start = async () => {
-  const app = buildApp();
+  const app = await buildApp();
 
   try {
     await app.listen({ port: env.REALTIME_PORT, host: '0.0.0.0' });

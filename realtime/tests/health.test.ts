@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { buildApp } from '../src/index.js';
 
 describe('GET /health', () => {
-  const apps: ReturnType<typeof buildApp>[] = [];
+  const apps: Awaited<ReturnType<typeof buildApp>>[] = [];
 
   afterEach(async () => {
     await Promise.all(apps.map((app) => app.close()));
@@ -10,7 +10,7 @@ describe('GET /health', () => {
   });
 
   it('returns ok status', async () => {
-    const app = buildApp();
+    const app = await buildApp();
     apps.push(app);
 
     const response = await app.inject({
@@ -23,6 +23,7 @@ describe('GET /health', () => {
       ok: true,
       service: 'fluencypal-realtime',
       version: '0.1.0',
+      activeSessions: 0,
     });
   });
 });

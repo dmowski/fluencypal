@@ -516,9 +516,9 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 1.3 — Protocol + session skeleton
 
-- [ ] Define zod schemas for all JSON events.
-- [ ] `SessionManager` maps `sessionId → ConversationSession`.
-- [ ] Handle connect/disconnect cleanup (abort in-flight streams).
+- [x] Define zod schemas for all JSON events.
+- [x] `SessionManager` maps `sessionId → ConversationSession`.
+- [x] Handle connect/disconnect cleanup (abort in-flight streams).
 
 ### Step 1.4 — OpenAI providers
 

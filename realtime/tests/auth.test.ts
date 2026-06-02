@@ -102,7 +102,7 @@ describe('GET /v1/auth/verify', () => {
 
   it('returns 401 when authorization header is missing', async () => {
     const { buildApp } = await import('../src/index.js');
-    const app = buildApp();
+    const app = await buildApp();
 
     const response = await app.inject({
       method: 'GET',
@@ -125,7 +125,7 @@ describe('GET /v1/auth/verify', () => {
     });
 
     const { buildApp } = await import('../src/index.js');
-    const app = buildApp();
+    const app = await buildApp();
 
     const response = await app.inject({
       method: 'GET',
