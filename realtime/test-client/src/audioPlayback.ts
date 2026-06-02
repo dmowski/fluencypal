@@ -1,8 +1,9 @@
 import { debugLog } from './debugLog.js';
+import { getPlaybackAudioContext, unlockAudioPlayback } from './audioUnlock.js';
 
 export class Mp3PlaybackQueue {
   private chunks: Uint8Array[] = [];
-  private audio: HTMLAudioElement | null = null;
+  private htmlAudio: HTMLAudioElement | null = null;
   private playing = false;
   private onStateChange: (() => void) | null = null;
 
@@ -28,49 +29,112 @@ export class Mp3PlaybackQueue {
       return;
     }
 
+    const totalBytes = this.chunks.reduce((sum, chunk) => sum + chunk.length, 0);
     const blob = new Blob(this.chunks, { type: 'audio/mpeg' });
     this.chunks = [];
     this.onStateChange?.();
 
-    if (this.audio) {
-      this.audio.pause();
-      URL.revokeObjectURL(this.audio.src);
-    }
+    await unlockAudioPlayback();
 
-    const url = URL.createObjectURL(blob);
-    const audio = new Audio(url);
-    this.audio = audio;
     this.playing = true;
     this.onStateChange?.();
 
     try {
-      await new Promise<void>((resolve, reject) => {
-        audio.onended = () => {
-          URL.revokeObjectURL(url);
-          resolve();
-        };
-        audio.onerror = () => reject(new Error('Audio playback failed'));
-        void audio.play().catch((error) => {
-          debugLog('audio', 'playback_blocked', {
+      const context = getPlaybackAudioContext();
+      if (context) {
+        try {
+          await this.playWithWebAudio(context, blob, totalBytes);
+          debugLog('audio', 'playback_done', { method: 'webaudio', bytes: totalBytes });
+          return;
+        } catch (error) {
+          debugLog('audio', 'webaudio_failed', {
             message: error instanceof Error ? error.message : String(error),
+            bytes: totalBytes,
           });
-          reject(error);
-        });
-      });
+        }
+      }
+
+      await this.playWithHtmlAudio(blob, totalBytes);
+      debugLog('audio', 'playback_done', { method: 'html_audio', bytes: totalBytes });
     } finally {
       this.playing = false;
-      this.audio = null;
       this.onStateChange?.();
     }
+  }
+
+  private async playWithWebAudio(
+    context: AudioContext,
+    blob: Blob,
+    totalBytes: number,
+  ): Promise<void> {
+    if (context.state === 'suspended') {
+      await context.resume();
+    }
+
+    const arrayBuffer = await blob.arrayBuffer();
+    const audioBuffer = await context.decodeAudioData(arrayBuffer.slice(0));
+
+    debugLog('audio', 'playback_start', {
+      method: 'webaudio',
+      bytes: totalBytes,
+      durationSec: audioBuffer.duration,
+      contextState: context.state,
+    });
+
+    await new Promise<void>((resolve, reject) => {
+      const source = context.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(context.destination);
+      source.onended = () => resolve();
+      source.addEventListener('error', () => reject(new Error('Web Audio playback failed')), {
+        once: true,
+      });
+
+      try {
+        source.start(0);
+      } catch (error) {
+        reject(error instanceof Error ? error : new Error(String(error)));
+      }
+    });
+  }
+
+  private async playWithHtmlAudio(blob: Blob, totalBytes: number): Promise<void> {
+    if (this.htmlAudio) {
+      this.htmlAudio.pause();
+      URL.revokeObjectURL(this.htmlAudio.src);
+    }
+
+    const url = URL.createObjectURL(blob);
+    const audio = new Audio(url);
+    audio.setAttribute('playsinline', 'true');
+    audio.setAttribute('webkit-playsinline', 'true');
+    audio.playsInline = true;
+    this.htmlAudio = audio;
+
+    debugLog('audio', 'playback_start', { method: 'html_audio', bytes: totalBytes });
+
+    await new Promise<void>((resolve, reject) => {
+      audio.onended = () => {
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      audio.onerror = () => reject(new Error('Audio playback failed'));
+      void audio.play().catch((error) => {
+        debugLog('audio', 'playback_blocked', {
+          message: error instanceof Error ? error.message : String(error),
+        });
+        reject(error);
+      });
+    });
   }
 
   reset(): void {
     this.chunks = [];
     this.playing = false;
-    if (this.audio) {
-      this.audio.pause();
-      URL.revokeObjectURL(this.audio.src);
-      this.audio = null;
+    if (this.htmlAudio) {
+      this.htmlAudio.pause();
+      URL.revokeObjectURL(this.htmlAudio.src);
+      this.htmlAudio = null;
     }
     this.onStateChange?.();
   }

@@ -537,6 +537,7 @@ const startCall = async () => {
   updateSteps();
 
   if (isRealtimeMode() && !greetingSent) {
+    await unlockAudioPlayback();
     debugLog('call', 'assistant_trigger');
     client.sendJson({ type: 'assistant.trigger' });
     greetingSent = true;

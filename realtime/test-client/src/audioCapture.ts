@@ -18,27 +18,7 @@ export const warmupCapture = async (): Promise<void> => {
   });
 };
 
-export const unlockAudioPlayback = async (): Promise<void> => {
-  const AudioContextCtor =
-    window.AudioContext ??
-    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-
-  if (!AudioContextCtor) {
-    return;
-  }
-
-  const context = new AudioContextCtor();
-  if (context.state === 'suspended') {
-    await context.resume();
-  }
-
-  const buffer = context.createBuffer(1, 1, context.sampleRate);
-  const source = context.createBufferSource();
-  source.buffer = buffer;
-  source.connect(context.destination);
-  source.start(0);
-  await context.close();
-};
+export { unlockAudioPlayback } from './audioUnlock.js';
 
 const TARGET_SAMPLE_RATE = 24_000;
 

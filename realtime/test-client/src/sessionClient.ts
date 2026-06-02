@@ -1,4 +1,5 @@
 import { Mp3PlaybackQueue } from './audioPlayback.js';
+import { unlockAudioPlayback } from './audioUnlock.js';
 import { debugLog } from './debugLog.js';
 
 export type ServerMessage = {
@@ -221,9 +222,25 @@ export class RealtimeSessionClient {
       return;
     }
 
+    if (!this.playback.hasPendingChunks) {
+      return;
+    }
+
     this.playCollectedPending = false;
-    debugLog('audio', 'play_collected_start', { chunks: this.playback.hasPendingChunks });
-    void this.playback.playCollected();
+    debugLog('audio', 'play_collected_start', { pending: true });
+    void (async () => {
+      await unlockAudioPlayback();
+      try {
+        await this.playback.playCollected();
+      } catch (error) {
+        debugLog('audio', 'play_collected_error', {
+          message: error instanceof Error ? error.message : String(error),
+        });
+        this.handlers.onError(
+          error instanceof Error ? error.message : 'Assistant audio could not play',
+        );
+      }
+    })();
   }
 
   sendTextTurn(text: string): void {
