@@ -91,6 +91,14 @@ describe('protocol/audioCodec', () => {
     expect(parseBinaryFrame(pcmLike)).toEqual({ kind: 'raw', payload: pcmLike });
   });
 
+  it('trims a trailing odd byte from raw PCM chunks', () => {
+    const payload = Buffer.alloc(255);
+    expect(parseBinaryFrame(payload)).toEqual({
+      kind: 'raw',
+      payload: payload.subarray(0, 254),
+    });
+  });
+
   it('rejects oversized chunks', () => {
     const oversized = Buffer.alloc(MAX_AUDIO_CHUNK_BYTES + 1);
     expect(() => parseBinaryFrame(oversized)).toThrow(/max size/);

@@ -26,11 +26,20 @@ export const parseBinaryFrame = (data: Buffer): ParsedBinaryFrame => {
     const payload = data.subarray(5, 5 + length);
 
     if (payload.length === length && length > 0 && length <= MAX_AUDIO_CHUNK_BYTES) {
-      return { kind: 'audio_in', payload };
+      return { kind: 'audio_in', payload: normalizePcm16Chunk(payload) };
     }
   }
 
-  return { kind: 'raw', payload: data };
+  return { kind: 'raw', payload: normalizePcm16Chunk(data) };
+};
+
+/** PCM16 samples are 2 bytes; ignore a trailing odd byte from buggy clients. */
+export const normalizePcm16Chunk = (data: Buffer): Buffer => {
+  if (data.length % 2 === 0) {
+    return data;
+  }
+
+  return data.subarray(0, data.length - 1);
 };
 
 export const estimateAudioDurationMs = (byteLength: number): number => {

@@ -75,7 +75,8 @@ export class MicrophoneSession {
     processor.onaudioprocess = (event) => {
       const channel = event.inputBuffer.getChannelData(0);
       const pcm = resampleTo24k(channel, context.sampleRate);
-      onChunk(pcm.buffer);
+      const pcmBytes = pcm.buffer.slice(pcm.byteOffset, pcm.byteOffset + pcm.byteLength);
+      onChunk(pcmBytes);
     };
 
     source.connect(processor);

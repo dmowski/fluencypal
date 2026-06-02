@@ -19,6 +19,14 @@ describe('turnDetection', () => {
     expect(computePcm16Rms(makePcmChunk(3000))).toBeGreaterThan(defaultTurnDetectorConfig.rmsThreshold);
   });
 
+  it('ignores a trailing odd byte instead of throwing', () => {
+    const oddLength = Buffer.alloc(255);
+    oddLength.writeInt16LE(3000, 0);
+
+    expect(() => computePcm16Rms(oddLength)).not.toThrow();
+    expect(computePcm16Rms(oddLength)).toBeGreaterThan(0);
+  });
+
   it('fires turn end after speech followed by silence', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
 

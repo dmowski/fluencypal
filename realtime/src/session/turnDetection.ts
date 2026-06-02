@@ -19,7 +19,7 @@ export type TurnDetectorCallbacks = {
 };
 
 export const computePcm16Rms = (pcm: Buffer): number => {
-  const sampleCount = pcm.length / 2;
+  const sampleCount = Math.floor(pcm.length / 2);
   if (sampleCount === 0) {
     return 0;
   }
