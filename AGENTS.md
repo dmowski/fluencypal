@@ -5,6 +5,7 @@ This repository is a monorepo with two active project areas:
 - `webApp/`: Next.js application (primary product)
 - `landing/`: Next.js application (Landing pages)
 - `helperProjects/trimAudios/`: Node.js CLI pipeline for audio processing and upload
+- `realtime/`: WebSocket AI conversation service (isolated package)
 
 Instruction hierarchy uses nearest-file precedence:
 
@@ -26,6 +27,11 @@ Use pnpm for all package operations.
 - Trim audios install: `cd helperProjects/trimAudios && pnpm install`
 - Trim audios typecheck: `cd helperProjects/trimAudios && pnpm typecheck`
 - Trim audios full pipeline: `cd helperProjects/trimAudios && pnpm all`
+
+- Realtime install: `cd realtime && pnpm install`
+- Realtime typecheck: `cd realtime && pnpm typecheck`
+- Realtime unit tests: `cd realtime && pnpm test`
+- Realtime e2e (Firebase emulator + service): `cd realtime && pnpm test:e2e`
 
 When changing one area, run checks for that area first. Avoid running full Playwright by default unless the task touches e2e-sensitive behavior.
 

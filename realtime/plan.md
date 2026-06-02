@@ -503,15 +503,16 @@ Include `conversationId` passed from client in `session.start` so webApp analyti
 
 ### Step 1.1 — Project scaffold
 
-- [ ] Init `realtime/package.json` (pnpm, Node 20+, TypeScript, Fastify, ws, zod, dotenv, firebase-admin, openai).
-- [ ] Add scripts: `dev`, `start`, `typecheck`, `test`.
-- [ ] Add `.env.example`.
-- [ ] Implement `/health`.
+- [x] Init `realtime/package.json` (pnpm, Node 20+, TypeScript, Fastify, ws, zod, dotenv, firebase-admin, openai).
+- [x] Add scripts: `dev`, `start`, `typecheck`, `test`.
+- [x] Add `.env.example`.
+- [x] Implement `/health`.
 
 ### Step 1.2 — Firebase auth module
 
-- [ ] Port firebase admin init + `validateAuthToken` (storage helpers optional for MVP).
-- [ ] Unit test with emulator instructions in README snippet.
+- [x] Port firebase admin init + `validateAuthToken` (storage helpers optional for MVP).
+- [x] Unit test with emulator instructions in README snippet.
+- [x] E2E test (`pnpm test:e2e`): Firebase emulator + `/v1/auth/verify` with real emulator ID tokens.
 
 ### Step 1.3 — Protocol + session skeleton
 
@@ -668,13 +669,17 @@ Map server events → existing `ConversationConfig` callbacks (same as `messageH
 
 ## 14. Testing Strategy
 
-| Layer                | Tool                                       | Scope                                 |
-| -------------------- | ------------------------------------------ | ------------------------------------- |
-| Protocol schemas     | vitest/jest                                | zod round-trip                        |
-| Session orchestrator | vitest + mocked providers                  | turn logic, voice gating, barge-in    |
-| Providers            | integration tests (optional, gated by env) | real OpenAI calls                     |
-| Test client          | manual + playwright (Phase 2)              | mic permissions mocked where possible |
-| webApp               | existing unit + targeted e2e               | adapter contract tests                |
+**Rule**: every feature must be verifiable without manual steps. Prefer automated e2e over “curl with your token”.
+
+| Layer                | Tool                          | Scope |
+| -------------------- | ----------------------------- | ----- |
+| Unit                 | `pnpm test` (vitest, mocked)  | protocol parsing, auth errors, orchestrator logic |
+| E2E                  | `pnpm test:e2e` (vitest)      | Firebase emulator (from `webApp/`) + realtime on port `18081`; real ID tokens |
+| OpenAI pipeline      | e2e with `OPENAI_API_KEY`     | STT / LLM / TTS integration (later steps; may use real tokens) |
+| Test client UI       | playwright (Phase 2)          | mic via PCM fixtures, not live human |
+| webApp integration   | existing Playwright + emulator | `ExperimentalDashboardCard` flow |
+
+E2E harness: `realtime/e2e/globalSetup.ts` starts Firebase emulator (if not running) and the realtime server, then tears both down.
 
 Avoid live mic in CI; use recorded PCM fixtures.
 
