@@ -30,31 +30,83 @@ export type AudioCapture = {
   stop: () => void;
 };
 
-export const startAudioCapture = async (onChunk: (chunk: ArrayBuffer) => void): Promise<AudioCapture> => {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  const context = new AudioContext();
-  const source = context.createMediaStreamSource(stream);
-  const processor = context.createScriptProcessor(4096, 1, 1);
-  const gain = context.createGain();
-  gain.gain.value = 0;
+export class MicrophoneSession {
+  private stream: MediaStream | null = null;
 
-  processor.onaudioprocess = (event) => {
-    const channel = event.inputBuffer.getChannelData(0);
-    const pcm = resampleTo24k(channel, context.sampleRate);
-    onChunk(pcm.buffer);
-  };
+  get isReady(): boolean {
+    return this.stream !== null;
+  }
 
-  source.connect(processor);
-  processor.connect(gain);
-  gain.connect(context.destination);
+  async requestAccess(): Promise<void> {
+    if (this.stream) {
+      return;
+    }
 
-  return {
-    stop: () => {
-      processor.disconnect();
-      source.disconnect();
-      gain.disconnect();
-      stream.getTracks().forEach((track) => track.stop());
-      void context.close();
-    },
-  };
+    if (!navigator.mediaDevices?.getUserMedia) {
+      throw new Error('Microphone is not available in this browser.');
+    }
+
+    this.stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+      },
+      video: false,
+    });
+  }
+
+  async startCapture(onChunk: (chunk: ArrayBuffer) => void): Promise<AudioCapture> {
+    await this.requestAccess();
+
+    if (!this.stream) {
+      throw new Error('Microphone is not ready.');
+    }
+
+    const context = new AudioContext();
+    if (context.state === 'suspended') {
+      await context.resume();
+    }
+
+    const source = context.createMediaStreamSource(this.stream);
+    const processor = context.createScriptProcessor(4096, 1, 1);
+    const gain = context.createGain();
+    gain.gain.value = 0;
+
+    processor.onaudioprocess = (event) => {
+      const channel = event.inputBuffer.getChannelData(0);
+      const pcm = resampleTo24k(channel, context.sampleRate);
+      onChunk(pcm.buffer);
+    };
+
+    source.connect(processor);
+    processor.connect(gain);
+    gain.connect(context.destination);
+
+    return {
+      stop: () => {
+        processor.disconnect();
+        source.disconnect();
+        gain.disconnect();
+        void context.close();
+      },
+    };
+  }
+
+  release(): void {
+    this.stream?.getTracks().forEach((track) => track.stop());
+    this.stream = null;
+  }
+}
+
+export const describeMicError = (error: unknown): string => {
+  if (error instanceof DOMException) {
+    if (error.name === 'NotAllowedError') {
+      return 'Microphone access was blocked. Allow mic access for this site in browser settings, then reload.';
+    }
+    if (error.name === 'NotFoundError') {
+      return 'No microphone was found. Connect a mic and try again.';
+    }
+  }
+
+  return error instanceof Error ? error.message : 'Microphone access failed.';
 };

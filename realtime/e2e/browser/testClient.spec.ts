@@ -7,12 +7,17 @@ const signInWithGoogle = async (page: import('@playwright/test').Page) => {
   await expect(page.locator('#auth-status')).toContainText('Signed in', { timeout: 15_000 });
 };
 
+const connectAndWaitForMic = async (page: import('@playwright/test').Page) => {
+  await page.click('#connect');
+  await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
+  await expect(page.locator('#mic-status')).toContainText('Microphone: ready', { timeout: 15_000 });
+};
+
 test.describe('test client (browser)', () => {
   test('signs in, connects, and disconnects', async ({ page }) => {
     await signInWithGoogle(page);
 
-    await page.click('#connect');
-    await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
+    await connectAndWaitForMic(page);
     await expect(page.locator('#disconnect')).toBeEnabled();
 
     await page.click('#disconnect');
@@ -25,8 +30,7 @@ test.describe('test client (browser)', () => {
     await signInWithGoogle(page);
 
     await page.locator('#voice-enabled').uncheck();
-    await page.click('#connect');
-    await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
+    await connectAndWaitForMic(page);
 
     await page.fill('#typed-message', 'Say hello in one short sentence.');
     await page.click('#send-text');
@@ -41,8 +45,7 @@ test.describe('test client (browser)', () => {
     await signInWithGoogle(page);
 
     await page.selectOption('#mode', 'PushToTalk');
-    await page.click('#connect');
-    await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
+    await connectAndWaitForMic(page);
 
     const ptt = page.locator('#ptt');
     await expect(ptt).toBeVisible();
