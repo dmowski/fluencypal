@@ -12,7 +12,8 @@ import type {
 } from '../protocol/messages.js';
 import { ConversationHistory } from './history.js';
 import { TurnPipeline } from './TurnPipeline.js';
-import { RealtimeTurnDetector } from './turnDetection.js';
+import { RealtimeTurnDetector, computePcm16Rms, estimateBufferedSpeechMs } from './turnDetection.js';
+import { sessionLog, sessionWarn } from '../log/sessionLog.js';
 
 export type SessionRuntimeConfig = SessionStartConfig & {
   correctionInstruction: string;
@@ -37,7 +38,9 @@ export class ConversationSession {
   private pendingUserAudio: Buffer[] = [];
   private pendingUserText = '';
   private turnCommitInProgress = false;
+  private pendingTurnCommit = false;
   private userSpeaking = false;
+  private binaryChunkCount = 0;
 
   constructor({
     sessionId,
@@ -109,12 +112,14 @@ export class ConversationSession {
         this.pendingUserText = message.text;
         return;
       case 'user.turn.commit':
+        sessionLog(this.sessionId, 'turn.commit_requested', { messageId: message.messageId });
         await this.commitUserTurn(message.messageId);
         return;
       case 'user.turn.cancel':
         this.cancelUserTurn();
         return;
       case 'assistant.trigger':
+        sessionLog(this.sessionId, 'assistant.trigger');
         await this.pipeline.generateAssistantResponse();
         return;
       case 'vision.frame':
@@ -135,12 +140,26 @@ export class ConversationSession {
 
     const frame = parseBinaryFrame(chunk);
     this.pendingUserAudio.push(frame.payload);
+    this.binaryChunkCount += 1;
+
+    if (this.binaryChunkCount === 1 || this.binaryChunkCount % 50 === 0) {
+      sessionLog(this.sessionId, 'audio.chunk_received', {
+        bytes: frame.payload.length,
+        pendingChunks: this.pendingUserAudio.length,
+        bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
+        rms: Math.round(computePcm16Rms(frame.payload)),
+        chunkCount: this.binaryChunkCount,
+      });
+    }
 
     if (this.config.mode === 'RealTimeConversation') {
       this.turnDetector.processChunk(frame.payload, {
         onSpeechStart: () => this.handleUserSpeechStart(),
         onSpeechEnd: () => this.handleUserSpeechEnd(),
         onTurnEnd: () => {
+          sessionLog(this.sessionId, 'turn.end_detected', {
+            bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
+          });
           void this.commitUserTurn();
         },
       });
@@ -167,6 +186,10 @@ export class ConversationSession {
   }
 
   private handleUserSpeechStart(): void {
+    sessionLog(this.sessionId, 'turn.speech_start', {
+      pipelineRunning: this.pipeline.isRunning,
+    });
+
     if (this.pipeline.isRunning) {
       this.pipeline.abortInFlight();
       this.send({ type: 'assistant.interrupted' });
@@ -179,6 +202,8 @@ export class ConversationSession {
   }
 
   private handleUserSpeechEnd(): void {
+    sessionLog(this.sessionId, 'turn.speech_end');
+
     if (this.userSpeaking) {
       this.userSpeaking = false;
       this.send({ type: 'user.speaking', active: false });
@@ -205,18 +230,30 @@ export class ConversationSession {
 
   private async commitUserTurn(messageId?: string): Promise<void> {
     if (this.turnCommitInProgress) {
+      sessionLog(this.sessionId, 'turn.commit_queued');
+      this.pendingTurnCommit = true;
       return;
     }
 
     const id = messageId ?? randomUUID();
     const audioChunks = this.pendingUserAudio;
+    const audioBytes = audioChunks.reduce((total, chunk) => total + chunk.length, 0);
+    const bufferedMs = estimateBufferedSpeechMs(audioChunks);
     this.pendingUserAudio = [];
     this.turnDetector.reset();
 
     let text = this.pendingUserText;
     this.pendingUserText = '';
 
+    sessionLog(this.sessionId, 'turn.commit_start', {
+      messageId: id,
+      audioBytes,
+      bufferedMs,
+      pendingText: text.length > 0,
+    });
+
     if (!text && audioChunks.length === 0) {
+      sessionLog(this.sessionId, 'turn.commit_skipped', { reason: 'no_audio_or_text' });
       return;
     }
 
@@ -225,9 +262,18 @@ export class ConversationSession {
     try {
       if (!text && audioChunks.length > 0) {
         text = await this.pipeline.transcribeAudio(audioChunks);
+        sessionLog(this.sessionId, 'turn.stt_done', {
+          textLength: text.length,
+          preview: text.slice(0, 80),
+        });
       }
 
       if (!text) {
+        sessionWarn(this.sessionId, 'turn.commit_skipped', {
+          reason: 'empty_transcript',
+          audioBytes,
+          bufferedMs,
+        });
         return;
       }
 
@@ -245,9 +291,16 @@ export class ConversationSession {
         text,
       });
 
+      sessionLog(this.sessionId, 'turn.generating_assistant');
       await this.pipeline.generateAssistantResponse();
+      sessionLog(this.sessionId, 'turn.commit_done', { messageId: id });
     } finally {
       this.turnCommitInProgress = false;
+
+      if (this.pendingTurnCommit) {
+        this.pendingTurnCommit = false;
+        await this.commitUserTurn();
+      }
     }
   }
 

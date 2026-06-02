@@ -1,5 +1,19 @@
 const TARGET_SAMPLE_RATE = 24_000;
 
+export const computeChunkRms = (pcm: Int16Array): number => {
+  if (pcm.length === 0) {
+    return 0;
+  }
+
+  let sumSquares = 0;
+  for (let i = 0; i < pcm.length; i++) {
+    const sample = pcm[i] ?? 0;
+    sumSquares += sample * sample;
+  }
+
+  return Math.sqrt(sumSquares / pcm.length);
+};
+
 const floatTo16BitPcm = (input: Float32Array): Int16Array => {
   const output = new Int16Array(input.length);
   for (let i = 0; i < input.length; i++) {

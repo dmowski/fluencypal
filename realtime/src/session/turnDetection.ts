@@ -8,7 +8,7 @@ export type TurnDetectorConfig = {
 
 export const defaultTurnDetectorConfig: TurnDetectorConfig = {
   silenceMs: 1200,
-  rmsThreshold: 600,
+  rmsThreshold: 350,
   minSpeechMs: 250,
 };
 
@@ -57,11 +57,13 @@ export class RealtimeTurnDetector {
       }
 
       this.lastSpeechAt = now;
-      this.armSilenceTimer(callbacks);
+      // Speech resumed — cancel pending end-of-turn timer.
+      this.clearSilenceTimer();
       return;
     }
 
-    if (this.speaking) {
+    // Mic keeps streaming during silence; arm the timer once, do not reset on every chunk.
+    if (this.speaking && !this.silenceTimer) {
       this.armSilenceTimer(callbacks);
     }
   }

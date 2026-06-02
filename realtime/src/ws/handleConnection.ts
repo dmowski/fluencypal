@@ -3,6 +3,7 @@ import websocket from '@fastify/websocket';
 import type { WebSocket } from 'ws';
 import { AuthError } from '../auth/types.js';
 import { validateIdToken } from '../auth/firebase.js';
+import { initSessionLog, sessionLog, sessionWarn } from '../log/sessionLog.js';
 import { ProtocolError, parseClientMessage, serializeServerMessage } from '../protocol/messages.js';
 import type { ConversationSession } from '../session/ConversationSession.js';
 import { sessionManager } from '../session/SessionManager.js';
@@ -38,17 +39,14 @@ const toBuffer = (raw: WebSocket.RawData): Buffer => {
   return Buffer.from(String(raw));
 };
 
-const isJsonTextFrame = (data: Buffer): boolean => {
-  const firstNonWhitespace = data.toString('utf8').trimStart()[0];
-  return firstNonWhitespace === '{' || firstNonWhitespace === '[';
-};
-
 export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<void> => {
   await app.register(websocket);
+  initSessionLog(app.log);
 
   app.get('/v1/session', { websocket: true }, (socket) => {
     let session: ConversationSession | null = null;
     let started = false;
+    let binaryFrameCount = 0;
 
     const sendForSession = (message: Parameters<typeof serializeServerMessage>[0]) => {
       sendMessage(socket, message);
@@ -60,12 +58,23 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
       }
     };
 
-    socket.on('message', async (raw) => {
-      try {
-        const data = toBuffer(raw);
+    socket.on('message', async (raw, isBinary) => {
+      const sessionId = session?.sessionId ?? null;
 
-        if (!isJsonTextFrame(data)) {
+      try {
+        if (isBinary) {
+          const data = toBuffer(raw);
+          binaryFrameCount += 1;
+
+          if (binaryFrameCount === 1 || binaryFrameCount % 50 === 0) {
+            sessionLog(sessionId, 'ws.binary_frame', {
+              bytes: data.length,
+              frameCount: binaryFrameCount,
+            });
+          }
+
           if (!session) {
+            sessionWarn(null, 'ws.binary_before_session', { bytes: data.length });
             sendError(socket, 'session.not_started', 'Send session.start before audio frames', true);
             return;
           }
@@ -74,8 +83,12 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
           return;
         }
 
-        const payload = JSON.parse(data.toString('utf8')) as unknown;
+        const data = toBuffer(raw);
+        const text = data.toString('utf8');
+        const payload = JSON.parse(text) as unknown;
         const message = parseClientMessage(payload);
+
+        sessionLog(sessionId, 'ws.json_frame', { type: message.type });
 
         if (message.type === 'session.start') {
           if (started) {
@@ -91,6 +104,11 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
             sendBinaryForSession,
           );
           started = true;
+          sessionLog(session.sessionId, 'session.started', {
+            mode: message.config.mode,
+            voiceEnabled: message.config.voiceEnabled,
+            userId: user.uid,
+          });
           sendMessage(socket, sessionManager.buildSessionReadyMessage(session));
           return;
         }
@@ -113,6 +131,12 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
         }
 
         if (error instanceof SyntaxError) {
+          const preview = toBuffer(raw).toString('utf8').slice(0, 120);
+          sessionWarn(sessionId, 'ws.invalid_json', {
+            preview,
+            isBinary,
+            byteLength: toBuffer(raw).length,
+          });
           sendError(socket, 'protocol.invalid_json', 'Invalid JSON frame');
           return;
         }
@@ -124,6 +148,7 @@ export const registerWebSocketRoutes = async (app: FastifyInstance): Promise<voi
 
     socket.on('close', () => {
       if (session) {
+        sessionLog(session.sessionId, 'ws.closed', { binaryFrameCount });
         sessionManager.removeSession(session.sessionId);
         session = null;
       }

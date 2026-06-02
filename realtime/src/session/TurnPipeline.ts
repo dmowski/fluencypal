@@ -13,6 +13,7 @@ export type PipelineCallbacks = {
 export class TurnPipeline {
   private inFlightAbort: AbortController | null = null;
   private running = false;
+  private generateChain: Promise<void> = Promise.resolve();
 
   constructor(
     private readonly providers: ProviderRegistry,
@@ -56,6 +57,11 @@ export class TurnPipeline {
   }
 
   async generateAssistantResponse(): Promise<void> {
+    this.generateChain = this.generateChain.then(() => this.runGenerateAssistantResponse());
+    return this.generateChain;
+  }
+
+  private async runGenerateAssistantResponse(): Promise<void> {
     if (this.running) {
       return;
     }
@@ -66,6 +72,7 @@ export class TurnPipeline {
     const config = this.getConfig();
     const messageId = randomUUID();
     let assistantText = '';
+    let voiceStreamingStarted = false;
 
     try {
       const systemMessage = this.buildSystemMessage(config);
@@ -126,11 +133,14 @@ export class TurnPipeline {
         return;
       }
 
+      voiceStreamingStarted = true;
       await this.streamAssistantVoice(assistantText, config.voice, abort.signal);
     } finally {
       this.running = false;
       this.releaseNestedAbort(abort);
-      this.callbacks.send({ type: 'assistant.speaking', active: false });
+      if (voiceStreamingStarted) {
+        this.callbacks.send({ type: 'assistant.speaking', active: false });
+      }
     }
   }
 

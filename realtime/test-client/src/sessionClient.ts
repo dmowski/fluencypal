@@ -1,4 +1,5 @@
 import { Mp3PlaybackQueue } from './audioPlayback.js';
+import { debugLog } from './debugLog.js';
 
 export type ServerMessage = {
   type: string;
@@ -22,6 +23,7 @@ export type SessionClientHandlers = {
   onTranscriptDone: (messageId: string, role: 'user' | 'assistant', text: string) => void;
   onUsage: (entry: string) => void;
   onError: (message: string) => void;
+  onMicUploadBlockedChange?: (blocked: boolean) => void;
 };
 
 export type SessionStartConfig = {
@@ -38,8 +40,21 @@ export class RealtimeSessionClient {
   private readonly playback = new Mp3PlaybackQueue();
   private assistantSpeaking = false;
   private sessionConfig: SessionStartConfig | null = null;
+  private audioChunksSent = 0;
+  private audioChunksSkipped = 0;
+  private messageChain: Promise<void> = Promise.resolve();
+  private playCollectedPending = false;
 
-  constructor(private readonly handlers: SessionClientHandlers) {}
+  constructor(private readonly handlers: SessionClientHandlers) {
+    this.playback.setOnStateChange(() => {
+      this.notifyMicUploadBlockedChange();
+    });
+  }
+
+  /** Block mic while assistant TTS is streaming or playing — not while chunks are buffered. */
+  get isMicUploadBlocked(): boolean {
+    return this.assistantSpeaking || this.playback.isPlaying;
+  }
 
   get isConnected(): boolean {
     return this.socket?.readyState === WebSocket.OPEN;
@@ -48,47 +63,40 @@ export class RealtimeSessionClient {
   connect(token: string, config: SessionStartConfig): void {
     this.disconnect();
     this.sessionConfig = config;
+    this.audioChunksSent = 0;
+    this.audioChunksSkipped = 0;
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const url = `${protocol}://${window.location.host}/v1/session`;
+    debugLog('ws', 'connecting', { url, mode: config.mode, voiceEnabled: config.voiceEnabled });
     const socket = new WebSocket(url);
     this.socket = socket;
 
     socket.addEventListener('open', () => {
+      debugLog('ws', 'open');
       this.handlers.onStatus('Connected, starting session…');
-      socket.send(
-        JSON.stringify({
-          type: 'session.start',
-          token,
-          config,
-        }),
-      );
+      const startPayload = {
+        type: 'session.start',
+        token,
+        config,
+      };
+      debugLog('ws', 'send', { type: startPayload.type });
+      socket.send(JSON.stringify(startPayload));
     });
 
-    socket.addEventListener('message', async (event) => {
-      if (typeof event.data === 'string') {
-        this.handleJsonMessage(JSON.parse(event.data) as ServerMessage);
-        return;
-      }
-
-      if (event.data instanceof Blob) {
-        const buffer = await event.data.arrayBuffer();
-        this.playback.append(buffer);
-        return;
-      }
-
-      if (event.data instanceof ArrayBuffer) {
-        this.playback.append(event.data);
-      }
+    socket.addEventListener('message', (event) => {
+      void this.enqueueMessage(() => this.handleSocketMessage(event));
     });
 
-    socket.addEventListener('close', () => {
+    socket.addEventListener('close', (event) => {
+      debugLog('ws', 'closed', { code: event.code, reason: event.reason, sent: this.audioChunksSent, skipped: this.audioChunksSkipped });
       this.handlers.onStatus('Disconnected');
       this.playback.reset();
       this.socket = null;
     });
 
     socket.addEventListener('error', () => {
+      debugLog('ws', 'error');
       this.handlers.onError('WebSocket error');
     });
   }
@@ -102,22 +110,103 @@ export class RealtimeSessionClient {
     this.socket = null;
     this.playback.reset();
     this.sessionConfig = null;
+    this.messageChain = Promise.resolve();
+    this.playCollectedPending = false;
+    this.assistantSpeaking = false;
   }
 
   sendJson(payload: unknown): void {
     if (!this.isConnected || !this.socket) {
+      debugLog('ws', 'send_skipped', { reason: 'not_connected', payload });
       return;
     }
 
+    const type = typeof payload === 'object' && payload && 'type' in payload ? String((payload as { type: unknown }).type) : 'unknown';
+    debugLog('ws', 'send', { type });
     this.socket.send(JSON.stringify(payload));
   }
 
   sendAudioChunk(chunk: ArrayBuffer): void {
     if (!this.isConnected || !this.socket) {
+      this.audioChunksSkipped += 1;
       return;
     }
 
+    if (this.isMicUploadBlocked) {
+      this.audioChunksSkipped += 1;
+      if (this.audioChunksSkipped === 1 || this.audioChunksSkipped % 100 === 0) {
+        debugLog('mic', 'upload_blocked', {
+          skipped: this.audioChunksSkipped,
+          assistantSpeaking: this.assistantSpeaking,
+          playbackPlaying: this.playback.isPlaying,
+        });
+      }
+      return;
+    }
+
+    this.audioChunksSent += 1;
+    if (this.audioChunksSent === 1 || this.audioChunksSent % 50 === 0) {
+      debugLog('mic', 'chunk_sent', {
+        bytes: chunk.byteLength,
+        sent: this.audioChunksSent,
+        skipped: this.audioChunksSkipped,
+      });
+    }
+
     this.socket.send(chunk);
+  }
+
+  private notifyMicUploadBlockedChange(): void {
+    const blocked = this.isMicUploadBlocked;
+    debugLog('mic', blocked ? 'upload_blocked_on' : 'upload_blocked_off', {
+      assistantSpeaking: this.assistantSpeaking,
+      playbackPlaying: this.playback.isPlaying,
+    });
+    this.handlers.onMicUploadBlockedChange?.(blocked);
+  }
+
+  private enqueueMessage(task: () => void | Promise<void>): Promise<void> {
+    this.messageChain = this.messageChain
+      .then(() => task())
+      .catch((error) => {
+        debugLog('ws', 'message_handler_error', {
+          message: error instanceof Error ? error.message : String(error),
+        });
+      });
+    return this.messageChain;
+  }
+
+  private async handleSocketMessage(event: MessageEvent): Promise<void> {
+    if (typeof event.data === 'string') {
+      const message = JSON.parse(event.data) as ServerMessage;
+      debugLog('ws', 'recv', { type: message.type, ...(message.code ? { code: message.code } : {}) });
+      this.handleJsonMessage(message);
+      return;
+    }
+
+    if (event.data instanceof Blob) {
+      const buffer = await event.data.arrayBuffer();
+      debugLog('audio', 'recv_binary', { bytes: buffer.byteLength, pending: this.playback.hasPendingChunks });
+      this.playback.append(buffer);
+      this.maybePlayCollected();
+      return;
+    }
+
+    if (event.data instanceof ArrayBuffer) {
+      debugLog('audio', 'recv_binary', { bytes: event.data.byteLength, pending: this.playback.hasPendingChunks });
+      this.playback.append(event.data);
+      this.maybePlayCollected();
+    }
+  }
+
+  private maybePlayCollected(): void {
+    if (!this.playCollectedPending || this.assistantSpeaking) {
+      return;
+    }
+
+    this.playCollectedPending = false;
+    debugLog('audio', 'play_collected_start', { chunks: this.playback.hasPendingChunks });
+    void this.playback.playCollected();
   }
 
   sendTextTurn(text: string): void {
@@ -161,12 +250,21 @@ export class RealtimeSessionClient {
         );
         return;
       case 'assistant.speaking':
+        debugLog('assistant', message.active ? 'speaking_start' : 'speaking_end');
         this.assistantSpeaking = Boolean(message.active);
+        this.notifyMicUploadBlockedChange();
         if (!this.assistantSpeaking) {
-          void this.playback.playCollected();
+          this.playCollectedPending = true;
+          this.maybePlayCollected();
+        } else {
+          this.playCollectedPending = false;
         }
         return;
+      case 'user.speaking':
+        debugLog('user', message.active ? 'speaking_start' : 'speaking_end');
+        return;
       case 'error':
+        debugLog('ws', 'server_error', { code: message.code, message: message.message });
         this.handlers.onError(`${message.code ?? 'error'}: ${message.message ?? 'Unknown error'}`);
         return;
       case 'session.ended':

@@ -10,7 +10,7 @@
     <main class="layout">
       <header>
         <h1>Realtime test client</h1>
-        <p class="subtitle">Push-to-talk against <code>/v1/session</code> (proxied to port 8081)</p>
+        <p class="subtitle">WebSocket test client for <code>/v1/session</code> (proxied to port 8081)</p>
       </header>
 
       <section class="panel">
@@ -36,8 +36,8 @@
           <label>
             Mode
             <select id="mode">
-              <option value="PushToTalk" selected>PushToTalk</option>
-              <option value="RealTimeConversation">RealTimeConversation</option>
+              <option value="PushToTalk">PushToTalk</option>
+              <option value="RealTimeConversation" selected>RealTimeConversation</option>
             </select>
           </label>
           <label>
@@ -77,6 +77,17 @@
       <section class="panel transcript-panel">
         <h2>Transcript</h2>
         <div id="transcript" class="transcript"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Debug log</h2>
+        <p class="hint">Mirrors browser console — use with server terminal logs to trace call flow.</p>
+        <div class="row actions">
+          <button id="copy-debug-log" type="button">Copy logs</button>
+          <button id="clear-debug-log" type="button">Clear log</button>
+        </div>
+        <p id="debug-log-status" class="status debug-log-status" hidden></p>
+        <pre id="debug-log" class="log debug-log"></pre>
       </section>
 
       <section class="panel">

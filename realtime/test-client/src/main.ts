@@ -1,6 +1,7 @@
 import { configureAuthEmulator, getIdToken, signInWithGoogle, signOutUser, watchAuth } from './firebase.js';
-import { describeMicError, MicrophoneSession, type AudioCapture } from './audioCapture.js';
+import { describeMicError, MicrophoneSession, computeChunkRms, type AudioCapture } from './audioCapture.js';
 import { RealtimeSessionClient } from './sessionClient.js';
+import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -26,6 +27,10 @@ const typedMessage = $<HTMLInputElement>('typed-message');
 const sendTextBtn = $<HTMLButtonElement>('send-text');
 const transcriptEl = $<HTMLDivElement>('transcript');
 const usageLog = $<HTMLPreElement>('usage-log');
+const debugLogEl = $<HTMLPreElement>('debug-log');
+const copyDebugLogBtn = $<HTMLButtonElement>('copy-debug-log');
+const clearDebugLogBtn = $<HTMLButtonElement>('clear-debug-log');
+const debugLogStatus = $<HTMLParagraphElement>('debug-log-status');
 
 const transcriptById = new Map<string, HTMLSpanElement>();
 const microphone = new MicrophoneSession();
@@ -34,6 +39,29 @@ let signedIn = false;
 let capture: AudioCapture | null = null;
 let callActive = false;
 let micAccessPending = false;
+let greetingSent = false;
+
+const syncDebugContext = () => {
+  setDebugLogContext({
+    signedIn,
+    connected: client.isConnected,
+    callActive,
+    mode: mode.value,
+    voiceEnabled: voiceEnabled.checked,
+    micMuted: micMuted.checked,
+    sessionStatus: sessionStatus.textContent ?? '',
+    micStatus: micStatus.textContent ?? '',
+  });
+};
+
+const showDebugLogStatus = (message: string, isError = false) => {
+  debugLogStatus.hidden = false;
+  debugLogStatus.textContent = message;
+  debugLogStatus.classList.toggle('error', isError);
+  window.setTimeout(() => {
+    debugLogStatus.hidden = true;
+  }, 2500);
+};
 
 const isRealtimeMode = () => mode.value === 'RealTimeConversation';
 
@@ -60,7 +88,8 @@ const updateTalkHint = (connected: boolean) => {
   }
 
   if (isRealtimeMode()) {
-    talkHint.textContent = 'Click “Start call” to stream your microphone. The server commits each turn after a short pause.';
+    talkHint.textContent =
+      'Click “Start call”. The assistant greets you first; wait until mic status says “listening”, then speak naturally.';
     return;
   }
 
@@ -70,12 +99,25 @@ const updateTalkHint = (connected: boolean) => {
 const client = new RealtimeSessionClient({
   onStatus: (status) => {
     sessionStatus.textContent = status;
+    syncDebugContext();
   },
-  onSessionReady: (config) => {
+  onSessionReady: () => {
     void prepareMicrophone();
-    if (config.mode === 'RealTimeConversation') {
-      client.sendJson({ type: 'assistant.trigger' });
+  },
+  onMicUploadBlockedChange: (blocked) => {
+    if (!callActive || !isRealtimeMode()) {
+      return;
     }
+
+    debugLog('call', blocked ? 'mic_paused' : 'mic_listening');
+
+    if (blocked) {
+      sessionStatus.textContent = 'Call active — assistant speaking (mic paused)';
+      return;
+    }
+
+    sessionStatus.textContent = 'Call active — listening…';
+    syncDebugContext();
   },
   onTranscriptDelta: (messageId, role, delta) => {
     const body = ensureTranscriptMessage(messageId, role);
@@ -89,8 +131,30 @@ const client = new RealtimeSessionClient({
     usageLog.textContent = `${entry}\n\n${usageLog.textContent ?? ''}`.trim();
   },
   onError: (message) => {
+    debugLog('error', message);
     sessionStatus.textContent = `Error: ${message}`;
+    syncDebugContext();
   },
+});
+
+bindDebugLogPanel(debugLogEl);
+syncDebugContext();
+
+copyDebugLogBtn.addEventListener('click', async () => {
+  syncDebugContext();
+  const copied = await copyDebugLogToClipboard();
+  if (copied) {
+    showDebugLogStatus('Logs copied to clipboard.');
+    debugLog('client', 'logs_copied');
+    return;
+  }
+
+  showDebugLogStatus('Could not copy logs. Select and copy from the panel manually.', true);
+});
+
+clearDebugLogBtn.addEventListener('click', () => {
+  clearDebugLog();
+  debugLog('client', 'logs_cleared');
 });
 
 const ensureTranscriptMessage = (messageId: string, role: 'user' | 'assistant'): HTMLSpanElement => {
@@ -183,6 +247,7 @@ watchAuth((user) => {
   authStatus.textContent = user ? `Signed in as ${user.email ?? user.uid}` : 'Not signed in';
   signOutBtn.disabled = !user;
   connectBtn.disabled = !user || client.isConnected;
+  syncDebugContext();
 });
 
 mode.addEventListener('change', () => {
@@ -212,6 +277,7 @@ signOutBtn.addEventListener('click', async () => {
 
 connectBtn.addEventListener('click', async () => {
   try {
+    debugLog('call', 'connect_click');
     const token = await getIdToken();
     client.connect(token, readSessionConfig());
     setConnectedUi(true);
@@ -224,6 +290,7 @@ disconnectBtn.addEventListener('click', async () => {
   await stopCall();
   client.disconnect();
   microphone.release();
+  greetingSent = false;
   setConnectedUi(false);
 });
 
@@ -252,12 +319,24 @@ const startCall = async () => {
     return;
   }
 
+  debugLog('call', 'start');
+
   if (!(await prepareMicrophone())) {
     return;
   }
 
   try {
+    let captureChunkCount = 0;
     capture = await microphone.startCapture((chunk) => {
+      captureChunkCount += 1;
+      if (captureChunkCount === 1 || captureChunkCount % 50 === 0) {
+        const pcm = new Int16Array(chunk);
+        debugLog('mic', 'capture', {
+          rms: Math.round(computeChunkRms(pcm)),
+          bytes: chunk.byteLength,
+          blocked: client.isMicUploadBlocked,
+        });
+      }
       client.sendAudioChunk(chunk);
     });
   } catch (error) {
@@ -268,7 +347,16 @@ const startCall = async () => {
   callActive = true;
   callToggleBtn.textContent = 'End call';
   callToggleBtn.classList.add('active');
-  sessionStatus.textContent = 'Call active — speak naturally';
+  sessionStatus.textContent = 'Call active — starting…';
+  syncDebugContext();
+
+  if (isRealtimeMode() && !greetingSent) {
+    debugLog('call', 'assistant_trigger');
+    client.sendJson({ type: 'assistant.trigger' });
+    greetingSent = true;
+  } else if (!client.isMicUploadBlocked) {
+    sessionStatus.textContent = 'Call active — listening…';
+  }
 };
 
 const stopCall = async () => {
@@ -279,13 +367,17 @@ const stopCall = async () => {
     return;
   }
 
+  debugLog('call', 'stop', { micBlocked: client.isMicUploadBlocked });
+
   capture.stop();
   capture = null;
   callActive = false;
   callToggleBtn.textContent = 'Start call';
   callToggleBtn.classList.remove('active');
+  syncDebugContext();
 
   if (client.isConnected) {
+    debugLog('call', 'user_turn_commit_on_stop');
     client.sendJson({ type: 'user.turn.commit' });
   }
 };
