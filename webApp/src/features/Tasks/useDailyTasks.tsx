@@ -78,7 +78,7 @@ function useProvideDailyTasks(): DailyTaskApi {
         label: i18n._('Send at least 10 messages in Just talk'),
       },
       'grammar-improvement': {
-        title: i18n._('Grammar improvement'),
+        title: i18n._('Grammar Improvement'),
         label: i18n._('Correct one of your sentences in Grammar improvement'),
       },
       'goal-lesson': {
