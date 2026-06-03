@@ -19,6 +19,7 @@ export const StoreButton = ({ title, onClick }: { title: string; onClick: () => 
         fontWeight: 500,
         letterSpacing: '0.02em',
         textTransform: 'none',
+        whiteSpace: 'nowrap',
         ':hover': {
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
         },

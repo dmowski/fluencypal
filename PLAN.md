@@ -2,6 +2,16 @@
 
 ## Realtime service
 
+Init hotjar on offline alias
+
+## Realtime service
+
+- Deploy on stable services?
+- Polish Vad instruction
+- Test on devices
+- Test record message mode
+- Test event logs
+
 ## News: They should be interesting for me.
 
 webApp/src/features/News/AGENTS.md
