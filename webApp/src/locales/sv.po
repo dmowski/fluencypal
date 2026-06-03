@@ -1141,7 +1141,7 @@ msgstr "Bokinformation"
 msgid "Book info sections"
 msgstr "Bokinformationsavsnitt"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "Bokläsare"
@@ -2371,6 +2371,15 @@ msgstr "Anpassad intervjuplan"
 msgid "Custom pricing"
 msgstr "Anpassad prissättning"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+msgid ""
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+"example wss://fluencypal-realtime.fly.dev) and reload."
+msgstr ""
+"Anpassad realtid är inte konfigurerad. Ställ in NEXT_PUBLIC_REALTIME_WS_URL "
+"(till exempel wss://fluencypal-realtime.fly.dev) och ladda om."
+
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -3120,7 +3129,7 @@ msgstr ""
 "ungefärliga tid som du kommer att förbruka AI om du använder det "
 "kontinuerligt."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Tidiga åtkomstfunktioner. Dessa funktioner kan ändras snabbt."
@@ -3578,12 +3587,12 @@ msgstr ""
 "Oavsett om du är nybörjare eller avancerad elev, anpassar sig Bruno efter "
 "ditt tempo, rättar misstag och håller dig motiverad."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Experimentella funktioner"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Experimentell Lab"
@@ -4768,14 +4777,10 @@ msgstr "Grammatikkorrigeringsförhandsgranskning"
 msgid "Grammar Corrections"
 msgstr "Grammatikkorrigeringar"
 
+#: src/features/Tasks/useDailyTasks.tsx:81
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
-msgstr "Grammatikförbättring"
-
-#: src/features/Tasks/useDailyTasks.tsx:81
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
 msgstr "Grammatikförbättring"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
@@ -5971,6 +5976,11 @@ msgstr "Bara prata"
 msgid "Just Talk"
 msgstr "Prata Bara"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid "Just Talk (custom realtime)"
+msgstr "Bara Prata (anpassad i realtid)"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:362
 #. js-lingui-explicit-id
 msgid "Justify Text"
@@ -6617,6 +6627,7 @@ msgstr "Mikrofonåtkomst"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Mikrofonåtkomst nekad. Vänligen aktivera det i dina webbläsarinställningar."
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:42
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6752,11 +6763,6 @@ msgstr "Mina Poäng:"
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Min Position:"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Narrate your text and check style."
-msgstr "Berätta om din text och kontrollera stil."
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
@@ -8626,7 +8632,7 @@ msgstr "Läs texten"
 msgid "Reader"
 msgstr "Läsare"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "Läsare med en funktionalista som översätter ord direkt."
@@ -9199,6 +9205,11 @@ msgstr "Lönesamtal med AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Förberedelse för löneförhandlingar"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#. js-lingui-explicit-id
+msgid "Same Just Talk lesson via the new WebSocket voice server."
+msgstr "Samma Just Talk-lektion via den nya WebSocket-röstservern."
+
 #: src/features/Chat/Message/Message.tsx:281
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -9462,6 +9473,11 @@ msgstr "Meningar"
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Ställ in mitt språk"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+msgstr "Ställ in NEXT_PUBLIC_REALTIME_WS_URL för att aktivera."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9861,8 +9877,8 @@ msgstr "Stjärnor"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11792,11 +11808,6 @@ msgstr "Röstinspelningar"
 msgid "Voice speed"
 msgstr "Rösthastighet"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
-#. js-lingui-explicit-id
-msgid "Voice to Text"
-msgstr "Röst till text"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
 #. js-lingui-explicit-id
@@ -13026,6 +13037,21 @@ msgstr "{winnerName} vinner!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlytPal"
+
+#: src/features/Tasks/useDailyTasks.tsx:81
+#. js-lingui-explicit-id
+#~ msgid "Grammar improvement"
+#~ msgstr "Grammatikförbättring"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Narrate your text and check style."
+#~ msgstr "Berätta om din text och kontrollera stil."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Voice to Text"
+#~ msgstr "Röst till text"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id

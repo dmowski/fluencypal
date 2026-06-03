@@ -1150,7 +1150,7 @@ msgstr "Thông tin sách"
 msgid "Book info sections"
 msgstr "Các phần thông tin sách"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "Trình Đọc Sách"
@@ -2384,6 +2384,16 @@ msgstr "Lộ trình phỏng vấn tùy chỉnh"
 msgid "Custom pricing"
 msgstr "Giá tùy chỉnh"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+msgid ""
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+"example wss://fluencypal-realtime.fly.dev) and reload."
+msgstr ""
+"Realtime tùy chỉnh chưa được cấu hình. Thiết lập "
+"NEXT_PUBLIC_REALTIME_WS_URL (ví dụ: wss://fluencypal-realtime.fly.dev) và "
+"tải lại."
+
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -3145,7 +3155,7 @@ msgstr ""
 "bằng dựa trên mức độ hoạt động của bạn. Tôi gọi nó là \"giờ AI\" vì đây là "
 "khoảng thời gian tương đương mà bạn sẽ tiêu thụ AI nếu sử dụng liên tục."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Các tính năng truy cập sớm. Những tính năng này có thể thay đổi nhanh chóng."
@@ -3610,12 +3620,12 @@ msgstr ""
 "thân thiện của bạn. Dù bạn là người mới bắt đầu hay học viên nâng cao, "
 "Bruno sẽ điều chỉnh theo nhịp độ của bạn, sửa lỗi và giữ cho bạn động lực."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Tính năng thử nghiệm"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Phòng Thí nghiệm Thử nghiệm"
@@ -4817,14 +4827,10 @@ msgstr "Xem Trước Sửa Ngữ Pháp"
 msgid "Grammar Corrections"
 msgstr "Sửa lỗi ngữ pháp"
 
+#: src/features/Tasks/useDailyTasks.tsx:81
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
-msgstr "Cải thiện ngữ pháp"
-
-#: src/features/Tasks/useDailyTasks.tsx:81
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
 msgstr "Cải thiện ngữ pháp"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
@@ -6016,6 +6022,11 @@ msgstr "Chỉ cần nói"
 msgid "Just Talk"
 msgstr "Chỉ Cần Nói"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid "Just Talk (custom realtime)"
+msgstr "Chỉ cần nói (tùy chỉnh thời gian thực)"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:362
 #. js-lingui-explicit-id
 msgid "Justify Text"
@@ -6664,6 +6675,7 @@ msgstr ""
 "Quyền truy cập micro đã bị từ chối. Vui lòng bật nó trong cài đặt trình "
 "duyệt của bạn."
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:42
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6799,11 +6811,6 @@ msgstr "Điểm của tôi:"
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Vị trí của tôi:"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Narrate your text and check style."
-msgstr "Thuật lại văn bản của bạn và kiểm tra phong cách."
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
@@ -8699,7 +8706,7 @@ msgstr "Đọc văn bản"
 msgid "Reader"
 msgstr "Trình đọc"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "Công cụ đọc với một số danh sách tính năng dịch từ ngay lập tức."
@@ -9284,6 +9291,11 @@ msgstr "Phỏng vấn đàm phán lương với AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Chuẩn bị đàm phán lương"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#. js-lingui-explicit-id
+msgid "Same Just Talk lesson via the new WebSocket voice server."
+msgstr "Cùng một bài học Chỉ Nói qua máy chủ giọng nói WebSocket mới."
+
 #: src/features/Chat/Message/Message.tsx:281
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -9549,6 +9561,11 @@ msgstr "Câu "
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Đặt Ngôn Ngữ Của Tôi"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+msgstr "Đặt NEXT_PUBLIC_REALTIME_WS_URL để kích hoạt."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9947,8 +9964,8 @@ msgstr "Ngôi sao"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11893,11 +11910,6 @@ msgstr "Bản ghi âm thanh"
 msgid "Voice speed"
 msgstr "Tốc độ giọng nói"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
-#. js-lingui-explicit-id
-msgid "Voice to Text"
-msgstr "Chuyển giọng nói thành văn bản"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
 #. js-lingui-explicit-id
@@ -13143,6 +13155,21 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Tasks/useDailyTasks.tsx:81
+#. js-lingui-explicit-id
+#~ msgid "Grammar improvement"
+#~ msgstr "Cải thiện ngữ pháp"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Narrate your text and check style."
+#~ msgstr "Thuật lại văn bản của bạn và kiểm tra phong cách."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Voice to Text"
+#~ msgstr "Chuyển giọng nói thành văn bản"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id

@@ -1099,7 +1099,7 @@ msgstr "书籍信息"
 msgid "Book info sections"
 msgstr "书籍信息部分"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "书籍阅读器"
@@ -2275,6 +2275,15 @@ msgstr "自定义面试路线图"
 msgid "Custom pricing"
 msgstr "定制定价"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+msgid ""
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+"example wss://fluencypal-realtime.fly.dev) and reload."
+msgstr ""
+"没有配置自定义实时。请设置 NEXT_PUBLIC_REALTIME_WS_URL（例如 "
+"wss://fluencypal-realtime.fly.dev）并重新加载。"
+
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -2970,7 +2979,7 @@ msgstr ""
 "每次使用 AI 功能（如对话或角色扮演）时，都会消耗一定量的计算能力，我们将其测量为“AI "
 "使用小时数”。这使我们能够根据您的活动水平公平地分配资源。我称之为“AI 小时”，因为如果您持续使用 AI，这就是您将消耗的近似时间。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "早期访问功能。这些功能可能会快速变化。"
@@ -3396,12 +3405,12 @@ msgstr ""
 "体验与布鲁诺（Bruno），您友好的人工智能导师，进行更高水平的语言练习。无论您是初学者还是高级学习者，布鲁诺都会根据您的节奏进行调整，纠正错误，并保持"
 "您的积极性。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "实验功能"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "实验室"
@@ -4485,14 +4494,10 @@ msgstr "语法纠正预览"
 msgid "Grammar Corrections"
 msgstr "语法纠正"
 
+#: src/features/Tasks/useDailyTasks.tsx:81
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
-msgstr "语法提升"
-
-#: src/features/Tasks/useDailyTasks.tsx:81
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
 msgstr "语法提升"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
@@ -5594,6 +5599,11 @@ msgstr "只需说话"
 msgid "Just Talk"
 msgstr "只需说"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid "Just Talk (custom realtime)"
+msgstr "Just Talk (定制实时)"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:362
 #. js-lingui-explicit-id
 msgid "Justify Text"
@@ -6228,6 +6238,7 @@ msgstr "麦克风访问"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "麦克风访问被拒绝。请在您的浏览器设置中启用它。"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:42
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6360,11 +6371,6 @@ msgstr "我的积分:"
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "我的职位："
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Narrate your text and check style."
-msgstr "叙述你的文字并检查风格。"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
@@ -8141,7 +8147,7 @@ msgstr "阅读文本"
 msgid "Reader"
 msgstr "读者"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "具有一些功能列表的阅读器可即时翻译单词。"
@@ -8698,6 +8704,11 @@ msgstr "AI SEO 的薪资谈判面试"
 msgid "Salary negotiation preparation"
 msgstr "薪资谈判准备"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#. js-lingui-explicit-id
+msgid "Same Just Talk lesson via the new WebSocket voice server."
+msgstr "通过新的 WebSocket 语音服务器进行相同的 Just Talk 课程。"
+
 #: src/features/Chat/Message/Message.tsx:281
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -8957,6 +8968,11 @@ msgstr "句子"
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "设置我的语言"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+msgstr "将 NEXT_PUBLIC_REALTIME_WS_URL 设置为启用。"
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9340,8 +9356,8 @@ msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11148,11 +11164,6 @@ msgstr "语音记录"
 msgid "Voice speed"
 msgstr "语速"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
-#. js-lingui-explicit-id
-msgid "Voice to Text"
-msgstr "语音转文字"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
 #. js-lingui-explicit-id
@@ -12276,6 +12287,21 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/Tasks/useDailyTasks.tsx:81
+#. js-lingui-explicit-id
+#~ msgid "Grammar improvement"
+#~ msgstr "语法提升"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Narrate your text and check style."
+#~ msgstr "叙述你的文字并检查风格。"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Voice to Text"
+#~ msgstr "语音转文字"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id

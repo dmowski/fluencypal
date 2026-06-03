@@ -1108,7 +1108,7 @@ msgstr "ブック情報"
 msgid "Book info sections"
 msgstr "ブック情報セクション"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "ブックリーダー"
@@ -2295,6 +2295,15 @@ msgstr "カスタムインタビューロードマップ"
 msgid "Custom pricing"
 msgstr "カスタム価格設定"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+msgid ""
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+"example wss://fluencypal-realtime.fly.dev) and reload."
+msgstr ""
+"カスタムリアルタイムが設定されていません。NEXT_PUBLIC_REALTIME_WS_URL（例: "
+"wss://fluencypal-realtime.fly.dev）を設定し、再読み込みしてください。"
+
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -2996,7 +3005,7 @@ msgstr ""
 "レベルに基づいてリソースを公平に割り当てることができます。これを「AI時間」と呼んでおり、継続的にAIを使用した場合に消費するであろうおおよその時間です"
 "。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "早期アクセス機能。これらの機能はすぐに変更される可能性があります。"
@@ -3422,12 +3431,12 @@ msgstr ""
 "次世代の言語練習を体験してください、あなたの友達のAIチューター、ブルーノと共に。初心者でも上級者でも、ブルーノはあなたのペースに合わせ、間違いを修正し"
 "、モチベーションを保ちます。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "実験的な機能"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "実験室"
@@ -4533,14 +4542,10 @@ msgstr "文法訂正プレビュー"
 msgid "Grammar Corrections"
 msgstr "文法訂正"
 
+#: src/features/Tasks/useDailyTasks.tsx:81
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
-msgstr "文法練習"
-
-#: src/features/Tasks/useDailyTasks.tsx:81
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
 msgstr "文法練習"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
@@ -5659,6 +5664,11 @@ msgstr "ただ話す"
 msgid "Just Talk"
 msgstr "ただ話す"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid "Just Talk (custom realtime)"
+msgstr "Just Talk（カスタムリアルタイム）"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:362
 #. js-lingui-explicit-id
 msgid "Justify Text"
@@ -6299,6 +6309,7 @@ msgstr "マイクアクセス"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "マイクへのアクセスが拒否されました。ブラウザの設定で有効にしてください。"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:42
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6431,11 +6442,6 @@ msgstr "私のポイント:"
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "私のポジション:"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Narrate your text and check style."
-msgstr "テキストをナレーションしてスタイルをチェックします。"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
@@ -8237,7 +8243,7 @@ msgstr "テキストを読む"
 msgid "Reader"
 msgstr "リーダー"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "機能リスト付きリーダーが即座に単語を翻訳します。"
@@ -8798,6 +8804,11 @@ msgstr "AI SEOとの給与交渉面接"
 msgid "Salary negotiation preparation"
 msgstr "給与交渉の準備"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#. js-lingui-explicit-id
+msgid "Same Just Talk lesson via the new WebSocket voice server."
+msgstr "新しいWebSocket音声サーバーを介した同じJust Talkレッスン。"
+
 #: src/features/Chat/Message/Message.tsx:281
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -9057,6 +9068,11 @@ msgstr "文"
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "私の言語を設定する"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+msgstr "NEXT_PUBLIC_REALTIME_WS_URL を有効にする。"
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9446,8 +9462,8 @@ msgstr "スターズ"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11287,11 +11303,6 @@ msgstr "ボイスレコード"
 msgid "Voice speed"
 msgstr "音声速度"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
-#. js-lingui-explicit-id
-msgid "Voice to Text"
-msgstr "音声からテキストへ"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
 #. js-lingui-explicit-id
@@ -12441,6 +12452,21 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/Tasks/useDailyTasks.tsx:81
+#. js-lingui-explicit-id
+#~ msgid "Grammar improvement"
+#~ msgstr "文法練習"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Narrate your text and check style."
+#~ msgstr "テキストをナレーションしてスタイルをチェックします。"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Voice to Text"
+#~ msgstr "音声からテキストへ"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id

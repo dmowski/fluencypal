@@ -1109,7 +1109,7 @@ msgstr "책 정보"
 msgid "Book info sections"
 msgstr "책 정보 섹션"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "책 읽기"
@@ -2296,6 +2296,15 @@ msgstr "맞춤형 인터뷰 로드맵"
 msgid "Custom pricing"
 msgstr "커스텀 가격 책정"
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+msgid ""
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+"example wss://fluencypal-realtime.fly.dev) and reload."
+msgstr ""
+"사용자 지정 실시간이 구성되지 않았습니다. NEXT_PUBLIC_REALTIME_WS_URL (예: "
+"wss://fluencypal-realtime.fly.dev)을 설정하고 다시 로드하세요."
+
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -3003,7 +3012,7 @@ msgstr ""
 "측정합니다. 이를 통해 활동 수준에 기반하여 자원을 공정하게 할당할 수 있습니다. 이를 \"AI 시간\"이라고 부르는 이유는 연속적으로 "
 "AI를 사용할 경우 소모할 대략적인 시간을 나타내기 때문입니다."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:30
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "초기 액세스 기능. 이러한 기능은 빠르게 변경될 수 있습니다."
@@ -3438,12 +3447,12 @@ msgstr ""
 "경험해 보세요, 브루노와 함께하는 차세대 언어 연습. 초보자든 고급 학습자든, 브루노는 당신의 속도에 맞추어 조정하고, 실수를 "
 "교정하며, 당신을 지속적으로 동기 부여합니다."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:47
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "실험 기능"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:29
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "실험실"
@@ -4548,14 +4557,10 @@ msgstr "문법 수정 미리보기"
 msgid "Grammar Corrections"
 msgstr "문법 수정"
 
+#: src/features/Tasks/useDailyTasks.tsx:81
 #: src/features/Usage/UsageStatsCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
-msgstr "문법 개선"
-
-#: src/features/Tasks/useDailyTasks.tsx:81
-#. js-lingui-explicit-id
-msgid "Grammar improvement"
 msgstr "문법 개선"
 
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:72
@@ -5675,6 +5680,11 @@ msgstr "그냥 말하세요"
 msgid "Just Talk"
 msgstr "그냥 말하세요"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid "Just Talk (custom realtime)"
+msgstr "그냥 말해 (맞춤형 실시간)"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:362
 #. js-lingui-explicit-id
 msgid "Justify Text"
@@ -6308,6 +6318,7 @@ msgstr "마이크 접근 권한"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
 
+#: src/features/Conversation/useExperimentalJustTalk.tsx:42
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6440,11 +6451,6 @@ msgstr "내 포인트:"
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "내 위치:"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Narrate your text and check style."
-msgstr "텍스트를 내레이션하고 스타일을 확인하십시오."
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
@@ -8235,7 +8241,7 @@ msgstr "텍스트를 읽어보세요"
 msgid "Reader"
 msgstr "리더"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "리더는 일부 기능 목록이 있는 단어를 즉석에서 번역합니다."
@@ -8796,6 +8802,11 @@ msgstr "AI SEO와의 급여 협상 인터뷰"
 msgid "Salary negotiation preparation"
 msgstr "급여 협상 준비"
 
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#. js-lingui-explicit-id
+msgid "Same Just Talk lesson via the new WebSocket voice server."
+msgstr "새로운 WebSocket 음성 서버를 통한 동일한 Just Talk 레슨."
+
 #: src/features/Chat/Message/Message.tsx:281
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -9055,6 +9066,11 @@ msgstr "문장"
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "내 언어 설정"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+msgstr "NEXT_PUBLIC_REALTIME_WS_URL을 설정하여 활성화하세요."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9438,8 +9454,8 @@ msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11272,11 +11288,6 @@ msgstr "음성 기록"
 msgid "Voice speed"
 msgstr "음성 속도"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
-#. js-lingui-explicit-id
-msgid "Voice to Text"
-msgstr "텍스트로 음성 입력"
-
 #: src/features/Case/data/frontend-junior/techData.tsx:14
 #: src/features/Case/data/frontend-senior/techData.tsx:14
 #. js-lingui-explicit-id
@@ -12420,6 +12431,21 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
+
+#: src/features/Tasks/useDailyTasks.tsx:81
+#. js-lingui-explicit-id
+#~ msgid "Grammar improvement"
+#~ msgstr "문법 개선"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Narrate your text and check style."
+#~ msgstr "텍스트를 내레이션하고 스타일을 확인하십시오."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Voice to Text"
+#~ msgstr "텍스트로 음성 입력"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:91
 #. js-lingui-explicit-id
