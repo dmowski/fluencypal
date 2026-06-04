@@ -1,4 +1,3 @@
-import { BARGE_IN_RMS_THRESHOLD, computeChunkRmsFromBuffer } from './audioCapture.js';
 import { Mp3PlaybackQueue } from './audioPlayback.js';
 import { unlockAudioPlayback } from './audioUnlock.js';
 import { debugLog, debugLogVerbose } from './debugLog.js';
@@ -154,13 +153,6 @@ export class RealtimeSessionClient {
     if (!this.isConnected || !this.socket) {
       this.audioChunksSkipped += 1;
       return;
-    }
-
-    if (
-      this.playback.isPlaying &&
-      computeChunkRmsFromBuffer(chunk) >= BARGE_IN_RMS_THRESHOLD
-    ) {
-      this.cancelAssistantAudio('local_barge_in');
     }
 
     this.audioChunksSent += 1;

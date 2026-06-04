@@ -122,12 +122,32 @@ export const computeAverageRmsFromChunks = (chunks: Buffer[]): number => {
   return sum / chunks.length;
 };
 
+/** Duration of chunks whose RMS is at or above the speech threshold. */
+export const estimateSpeechMsAboveThreshold = (
+  chunks: Buffer[],
+  rmsThreshold: number,
+): number => {
+  let ms = 0;
+
+  for (const chunk of chunks) {
+    if (computePcm16Rms(chunk) >= rmsThreshold) {
+      ms += estimateAudioDurationMs(chunk.length);
+    }
+  }
+
+  return ms;
+};
+
 export const hasMeaningfulBufferedSpeech = (
   chunks: Buffer[],
   options: { minMs?: number; minAvgRms?: number } = {},
 ): boolean => {
   const minMs = options.minMs ?? MIN_USER_TURN_SPEECH_MS;
   const minAvgRms = options.minAvgRms ?? defaultTurnDetectorConfig.rmsThreshold;
+
+  if (estimateSpeechMsAboveThreshold(chunks, minAvgRms) >= minMs) {
+    return true;
+  }
 
   if (estimateBufferedSpeechMs(chunks) < minMs) {
     return false;

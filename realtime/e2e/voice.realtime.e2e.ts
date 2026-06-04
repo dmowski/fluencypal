@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { readE2eState } from './globalSetup.js';
 import { createEmulatorTestUser, resetEmulatorState } from './helpers/emulatorAuth.js';
-import { voiceFixturesSkipReason } from './helpers/voiceFixtures.js';
+import { CASE_2_WAV, USER_RECORDING_WAV, voiceFixturesSkipReason } from './helpers/voiceFixtures.js';
 import { RealtimeVoiceWsSession } from './helpers/voiceSession.js';
 
 const wsUrl = () => {
@@ -9,14 +9,14 @@ const wsUrl = () => {
   return `${baseUrl}/v1/session`;
 };
 
-const skipReason = voiceFixturesSkipReason();
+const skipReasonApi = voiceFixturesSkipReason();
 
 describe('realtime voice conversation (e2e)', () => {
   afterEach(async () => {
     await resetEmulatorState();
   });
 
-  it.skipIf(Boolean(skipReason))('VC-01 greeting produces assistant transcript and TTS bytes', async () => {
+  it.skipIf(Boolean(skipReasonApi))('VC-01 greeting produces assistant transcript and TTS bytes', async () => {
     const user = await createEmulatorTestUser();
     const session = new RealtimeVoiceWsSession(wsUrl(), user.idToken, {});
 
@@ -35,7 +35,7 @@ describe('realtime voice conversation (e2e)', () => {
     await session.close();
   }, 180_000);
 
-  it.skipIf(Boolean(skipReason))(
+  it.skipIf(Boolean(skipReasonApi))(
     'VC-02 after greeting, streamed hello is transcribed and answered',
     async () => {
       const user = await createEmulatorTestUser();
@@ -66,7 +66,7 @@ describe('realtime voice conversation (e2e)', () => {
     180_000,
   );
 
-  it.skipIf(Boolean(skipReason))('VC-03 user speech without greeting commits STT turn', async () => {
+  it.skipIf(Boolean(skipReasonApi))('VC-03 user speech without greeting commits STT turn', async () => {
     const user = await createEmulatorTestUser();
     const session = new RealtimeVoiceWsSession(wsUrl(), user.idToken, {});
 
@@ -82,7 +82,93 @@ describe('realtime voice conversation (e2e)', () => {
     await session.close();
   }, 180_000);
 
-  it.skipIf(Boolean(skipReason))(
+  it.skipIf(Boolean(skipReasonApi))(
+    'VC-09 whats-your-name from call start: STT, assistant reply, no interrupt after user turn',
+    async () => {
+      const user = await createEmulatorTestUser();
+      const session = new RealtimeVoiceWsSession(wsUrl(), user.idToken, {
+        systemInstruction:
+          'You are an English teacher named Alex. Always respond in English. If the user asks your name, say Alex.',
+      });
+
+      await session.connect();
+      await session.triggerAssistant();
+
+      let stopStreaming = false;
+      const streamTask = session.streamFixture(USER_RECORDING_WAV, {
+        chunkMs: 100,
+        pauseAfterMs: 0,
+        repeats: 1,
+        shouldStop: () => stopStreaming,
+      });
+
+      const userDone = await session.waitForUserTranscript(120_000);
+      stopStreaming = true;
+      await streamTask;
+      const userText = userDone.type === 'transcript.done' ? userDone.text.toLowerCase() : '';
+      expect(userText.length).toBeGreaterThan(2);
+
+      const userIndex = session.messages.indexOf(userDone);
+      await session.waitForAssistantTranscript(120_000, {
+        afterMessageIndex: userIndex,
+      });
+
+      const afterUser = session.messagesAfterFirstUserTranscript();
+      const interruptsAfterUser = afterUser.filter(
+        (message) => message.type === 'assistant.interrupted',
+      ).length;
+      expect(interruptsAfterUser).toBe(0);
+      expect(
+        afterUser.some((message) => message.type === 'transcript.done' && message.role === 'assistant'),
+      ).toBe(true);
+
+      await session.close();
+    },
+    240_000,
+  );
+
+  it.skipIf(Boolean(voiceFixturesSkipReason({ recording: CASE_2_WAV })))(
+    'VC-10 case-2 from call start: assistant reply without interrupt after user turn',
+    async () => {
+      const user = await createEmulatorTestUser();
+      const session = new RealtimeVoiceWsSession(wsUrl(), user.idToken, {
+        systemInstruction:
+          'You are an English teacher named Alex. Always respond in English. Answer the user clearly.',
+      });
+
+      await session.connect();
+      await session.triggerAssistant();
+
+      let stopStreaming = false;
+      const streamTask = session.streamFixture(CASE_2_WAV, {
+        chunkMs: 100,
+        pauseAfterMs: 0,
+        repeats: 1,
+        shouldStop: () => stopStreaming,
+      });
+
+      const userDone = await session.waitForUserTranscript(180_000);
+      stopStreaming = true;
+      await streamTask;
+
+      expect(userDone.type === 'transcript.done' ? userDone.text.length : 0).toBeGreaterThan(2);
+
+      const userIndex = session.messages.indexOf(userDone);
+      await session.waitForAssistantTranscript(180_000, {
+        afterMessageIndex: userIndex,
+      });
+
+      const afterUser = session.messagesAfterFirstUserTranscript();
+      expect(afterUser.filter((message) => message.type === 'assistant.interrupted').length).toBe(
+        0,
+      );
+
+      await session.close();
+    },
+    300_000,
+  );
+
+  it.skipIf(Boolean(skipReasonApi))(
     'VC-04 greeting is not interrupted by silence-only mic input',
     async () => {
       const user = await createEmulatorTestUser();

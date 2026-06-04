@@ -1,9 +1,9 @@
 import WebSocket from 'ws';
 import type { ServerMessage } from '../../src/protocol/messages.js';
 import { parseServerMessage } from '../../src/protocol/messages.js';
-import { amplifyPcm16Buffer, chunkPcmBuffer, loadWavAsPcm24kMono } from './wav.js';
+import { amplifyPcm16Buffer, chunkPcmBuffer, loadWavAsPcm24kMono, trimPcmSilence } from './wav.js';
 import type { VoiceFixtureName } from './voiceFixtures.js';
-import { voiceFixturePath } from './voiceFixtures.js';
+import { isUserRecordingWav, voiceFixturePath } from './voiceFixtures.js';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -126,20 +126,57 @@ export class RealtimeVoiceWsSession {
 
   async streamFixture(
     name: VoiceFixtureName,
-    options: { chunkMs?: number; pauseAfterMs?: number; repeats?: number } = {},
+    options: {
+      chunkMs?: number;
+      pauseAfterMs?: number;
+      repeats?: number;
+      amplify?: boolean;
+      shouldStop?: () => boolean;
+    } = {},
   ): Promise<void> {
-    const once = amplifyPcm16Buffer(loadWavAsPcm24kMono(voiceFixturePath(name)), 20_000);
-    const repeats = options.repeats ?? (name.startsWith('hello') ? 4 : 1);
+    let raw = loadWavAsPcm24kMono(voiceFixturePath(name));
+    if (isUserRecordingWav(name)) {
+      raw = trimPcmSilence(raw);
+    }
+
+    const peakTarget =
+      options.amplify === false
+        ? null
+        : typeof options.amplify === 'number'
+          ? options.amplify
+          : isUserRecordingWav(name)
+            ? 10_000
+            : 12_000;
+    const once = peakTarget === null ? raw : amplifyPcm16Buffer(raw, peakTarget);
+    const repeats = options.repeats ?? (name.includes('hello') ? 4 : 1);
     const pcm = repeats > 1 ? Buffer.concat(Array.from({ length: repeats }, () => once)) : once;
     const chunks = chunkPcmBuffer(pcm, options.chunkMs ?? 100);
 
     for (const chunk of chunks) {
+      if (options.shouldStop?.()) {
+        break;
+      }
+
       this.sendAudio(chunk);
       await sleep(options.chunkMs ?? 100);
     }
 
-    const pauseMs = options.pauseAfterMs ?? 1_500;
-    await sleep(pauseMs);
+    if (options.pauseAfterMs !== 0) {
+      const pauseMs = options.pauseAfterMs ?? 1_500;
+      await sleep(pauseMs);
+    }
+  }
+
+  countAssistantInterrupted(): number {
+    return this.countMessages((message) => message.type === 'assistant.interrupted');
+  }
+
+  messagesAfterFirstUserTranscript(): ServerMessage[] {
+    const userIndex = this.messages.findIndex(
+      (message) => message.type === 'transcript.done' && message.role === 'user',
+    );
+
+    return userIndex >= 0 ? this.messages.slice(userIndex) : [];
   }
 
   sendAudio(chunk: Buffer): void {

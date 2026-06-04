@@ -129,4 +129,11 @@ describe('turnDetection', () => {
     expect(hasMeaningfulBufferedSpeech([makePcmChunk(5000, 100)])).toBe(false);
     expect(hasMeaningfulBufferedSpeech([makePcmChunk(5000, 12_000)])).toBe(true);
   });
+
+  it('accepts speech embedded in long leading and trailing silence', () => {
+    const silence = makePcmChunk(0, 12_000);
+    const speech = makePcmChunk(5000, 9600);
+
+    expect(hasMeaningfulBufferedSpeech([silence, silence, speech, silence, silence])).toBe(true);
+  });
 });

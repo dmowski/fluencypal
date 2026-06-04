@@ -1,5 +1,4 @@
 import { AiVoice } from '@/features/Ai/ai';
-import { BARGE_IN_RMS_THRESHOLD, computeChunkRmsFromBuffer } from './audioCapture';
 import { Mp3PlaybackQueue } from './audioPlayback';
 import { unlockAudioPlayback } from './audioUnlock';
 import { buildRealtimeWsSessionUrl } from './getRealtimeWsUrl';
@@ -149,10 +148,6 @@ export class RealtimeWsSessionClient {
   sendAudioChunk(chunk: ArrayBuffer): void {
     if (!this.isConnected || !this.socket || !this.sessionReady) {
       return;
-    }
-
-    if (this.playback.isPlaying && computeChunkRmsFromBuffer(chunk) >= BARGE_IN_RMS_THRESHOLD) {
-      this.cancelAssistantAudio();
     }
 
     this.socket.send(chunk);

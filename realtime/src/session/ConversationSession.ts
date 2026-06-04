@@ -192,24 +192,20 @@ export class ConversationSession {
       }
 
       const rms = computePcm16Rms(frame.payload);
-      const bargeInThreshold = this.isInEstimatedAssistantPlayback()
-        ? BARGE_IN_RMS_PLAYBACK_THRESHOLD
-        : defaultTurnDetectorConfig.rmsThreshold;
-      const canBargeInVoice = this.isAssistantPlaybackInterruptible();
       if (
-        rms >= bargeInThreshold &&
+        rms >= defaultTurnDetectorConfig.rmsThreshold &&
         !this.assistantBargeInHandled &&
         !this.turnCommitInProgress &&
-        (this.pipeline.isLlmRunning || canBargeInVoice)
+        (this.pipeline.isLlmRunning || this.pipeline.isVoiceStreaming)
       ) {
         this.assistantBargeInHandled = true;
-        this.handleUserSpeechStart();
+        this.handleUserSpeechStart({ allowAssistantInterrupt: true });
       }
 
       this.turnDetector.processChunk(frame.payload, {
         onSpeechStart: () => {
           if (this.shouldAcceptUserTurnDetection()) {
-            this.handleUserSpeechStart();
+            this.handleUserSpeechStart({ allowAssistantInterrupt: false });
           }
         },
         onSpeechEnd: () => {
@@ -342,8 +338,9 @@ export class ConversationSession {
     );
   }
 
-  private handleUserSpeechStart(): void {
-    const notifyInterrupt = this.shouldAbortAssistantOutput();
+  private handleUserSpeechStart(options: { allowAssistantInterrupt?: boolean } = {}): void {
+    const notifyInterrupt =
+      options.allowAssistantInterrupt === true && this.shouldAbortAssistantOutput();
 
     sessionLog(this.sessionId, 'turn.speech_start', {
       notifyInterrupt,

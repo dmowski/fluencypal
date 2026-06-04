@@ -287,7 +287,7 @@ describe('ConversationSession RealTimeConversation', () => {
 
     await vi.advanceTimersByTimeAsync(500);
     session.handleBinaryAudio(makeLoudPcmChunk());
-    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(false);
 
     vi.useRealTimers();
   });

@@ -135,6 +135,54 @@ export const amplifyPcm16Buffer = (pcm: Buffer, peakTarget = 20_000): Buffer => 
   return out;
 };
 
+/** Keep PCM between first/last chunk above RMS threshold (for silence-padded user recordings). */
+export const trimPcmSilence = (pcm: Buffer, rmsThreshold = 180): Buffer => {
+  const sampleCount = Math.floor(pcm.length / 2);
+  if (sampleCount === 0) {
+    return pcm;
+  }
+
+  const chunkSamples = Math.max(240, Math.floor(TARGET_SAMPLE_RATE * 0.01));
+  let firstChunk = -1;
+  let lastChunk = -1;
+
+  for (let start = 0; start < sampleCount; start += chunkSamples) {
+    const end = Math.min(sampleCount, start + chunkSamples);
+    const slice = pcm.subarray(start * 2, end * 2);
+    if (computePcm16Rms(slice) >= rmsThreshold) {
+      if (firstChunk < 0) {
+        firstChunk = start;
+      }
+      lastChunk = end;
+    }
+  }
+
+  if (firstChunk < 0 || lastChunk < 0) {
+    return pcm;
+  }
+
+  const padSamples = Math.floor(TARGET_SAMPLE_RATE * 0.15);
+  const from = Math.max(0, firstChunk - padSamples);
+  const to = Math.min(sampleCount, lastChunk + padSamples);
+
+  return pcm.subarray(from * 2, to * 2);
+};
+
+const computePcm16Rms = (pcm: Buffer): number => {
+  const sampleCount = Math.floor(pcm.length / 2);
+  if (sampleCount === 0) {
+    return 0;
+  }
+
+  let sumSquares = 0;
+  for (let i = 0; i < sampleCount; i++) {
+    const sample = pcm.readInt16LE(i * 2);
+    sumSquares += sample * sample;
+  }
+
+  return Math.sqrt(sumSquares / sampleCount);
+};
+
 export const chunkPcmBuffer = (pcm: Buffer, chunkMs = 100): Buffer[] => {
   const bytesPerChunk = Math.max(
     2,

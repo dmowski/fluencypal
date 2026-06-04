@@ -29,7 +29,9 @@ REUSE_DEV_SERVER=1 pnpm test:e2e:voice:browser   # if `pnpm dev` already running
 | VC-02 | API | P0 | After greeting playback window, user says “Hello” → STT user turn + assistant reply |
 | VC-03 | API | P0 | User speech without greeting → STT + assistant reply (no spurious `assistant.interrupted`) |
 | VC-04 | API | P1 | Mic stays open through greeting; no interrupt before user speaks |
-| VC-05 | browser | P1 | Full UI: sign-in → connect → start call → listening → user transcript appears |
+| VC-09 | API + browser | P0 | **`whats-your-name.wav`**: mic on Start call, silence+speech+silence; assistant replies; no interrupt after user turn |
+| VC-10 | API + browser | P0 | **`case-2.wav`**: longer recording; first reply TTS must reach `playback_done` (no `local_barge_in`) |
+| VC-05 | browser | P1 | (legacy hello fixture — superseded by VC-09 for browser) |
 | VC-06 | API | P2 | Push-to-talk style: stream speech then explicit `user.turn.commit` |
 | VC-07 | API | P2 | Barge-in: loud user audio during assistant TTS aborts assistant output |
 | VC-08 | browser | P2 | Debug log shows `tts_played` and no `server_interrupted` after idle user turn |
@@ -99,6 +101,28 @@ REUSE_DEV_SERVER=1 pnpm test:e2e:voice:browser   # if `pnpm dev` already running
 2. Assert no `assistant.interrupted` before assistant `transcript.done`.
 
 **Pass:** Zero interrupts during greeting generation.
+
+---
+
+## VC-10 — `case-2.wav`
+
+Same flow as VC-09 with the longer `case-2.wav` fixture. Regression target: client must **not** call `local_barge_in` while assistant TTS is playing (speaker bleed / continued mic audio used to cancel playback at ~RMS 720).
+
+**Pass:** `playback_done` after first post-user `playback_start`; no `local_barge_in`, `playback_cancelled` before `playback_done`, or `assistant.interrupted` after user turn.
+
+---
+
+## VC-09 — `whats-your-name.wav` (primary)
+
+**Goal:** Real user recording with leading/trailing silence; mic live from **Start call**; assistant answers without being cut off by post-speech silence.
+
+**Fixture:** `e2e/fixtures/voice/whats-your-name.wav` (your recording). Browser uses `whats-your-name-48k-mono.wav` from `pnpm e2e:fixtures:normalize`.
+
+**Steps (browser):** Sign in → Connect → unmute → **Start call** (mic + greeting together) → wait for user + assistant transcripts → no `assistant.interrupted` / `server_interrupted` after user `transcript.done` → `tts_played`.
+
+**Steps (API):** `assistant.trigger` + stream trimmed PCM in real time → STT user turn → assistant `transcript.done` → zero `assistant.interrupted` after user turn.
+
+**Pass:** Assistant reply completes (transcript + TTS); no spurious interrupt from trailing silence while assistant is speaking.
 
 ---
 

@@ -23,6 +23,7 @@
     "test:e2e:voice:browser": "playwright test --config playwright.voice.config.ts",
     "test:e2e:browser:ui": "playwright test --ui",
     "e2e:fixtures:voice": "tsx e2e/scripts/generateVoiceFixtures.ts",
+    "e2e:fixtures:normalize": "tsx e2e/scripts/normalizeUserRecording.ts",
     "test:all": "pnpm test && pnpm test:e2e && pnpm test:e2e:browser && pnpm build:client",
     "load:smoke": "tsx scripts/loadSmoke.ts",
     "prod": "fly deploy",

@@ -558,7 +558,17 @@ const startCall = async () => {
     debugLog('call', 'assistant_trigger');
     client.sendJson({ type: 'assistant.trigger' });
     greetingSent = true;
-    setSessionStatusText('Call active — greeting…', 'active');
+    setSessionStatusText('Call active — on call…', 'active');
+
+    if (!(await startMicCaptureIfNeeded())) {
+      callActive = false;
+      callToggleBtn.textContent = 'Start call';
+      callToggleBtn.classList.remove('active');
+      syncDebugContext();
+      updateSteps();
+      return;
+    }
+
     return;
   }
 

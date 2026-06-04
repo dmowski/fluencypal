@@ -1,19 +1,26 @@
 # Voice E2E fixtures
 
-Real speech WAV files used by `pnpm test:e2e:voice` and `pnpm test:e2e:voice:browser`.
+## Primary recording (your voice)
 
-Generate (requires `OPENAI_API_KEY` in `realtime/.env`):
+Place user recordings here (silence → speech → silence):
+
+- **`whats-your-name.wav`**
+- **`case-2.wav`**
+
+Then normalize for browser tests:
 
 ```bash
 cd realtime
-pnpm e2e:fixtures:voice
+pnpm e2e:fixtures:normalize   # writes whats-your-name-48k-mono.wav (needs ffmpeg)
 ```
 
-Files:
+- `whats-your-name.wav` — API e2e streams this in real time over WebSocket
+- `whats-your-name-48k-mono.wav` — Playwright Chrome fake microphone
 
-- `hello-24k-mono.wav` — API/WebSocket PCM streaming (24 kHz mono PCM16)
-- `hello-48k-mono.wav` — Chromium `--use-file-for-fake-audio-capture`
-- `silence-24k-mono.wav` — short silence (programmatic)
-- `loud-interrupt-24k-mono.wav` — barge-in phrase (VC-07, optional)
+## Optional TTS fixtures
+
+```bash
+pnpm e2e:fixtures:voice   # hello / silence / loud-interrupt (needs OPENAI_API_KEY)
+```
 
 Do not commit `.tmp/` (MP3 intermediates).
