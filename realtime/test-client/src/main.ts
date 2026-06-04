@@ -244,6 +244,9 @@ const client = new RealtimeSessionClient({
     setSessionStatusText(`Error: ${message}`, 'error');
     syncDebugContext();
   },
+  onAssistantPlaybackEnded: () => {
+    void enableMicAfterAssistantOutput();
+  },
 });
 
 bindDebugLogPanel(debugLogEl);
@@ -516,34 +519,51 @@ const startMicCaptureIfNeeded = async (): Promise<boolean> => {
   }
 };
 
+const enableMicAfterAssistantOutput = async () => {
+  if (!callActive || !client.isConnected || capture) {
+    return;
+  }
+
+  if (!(await startMicCaptureIfNeeded())) {
+    return;
+  }
+
+  setSessionStatusText('Call active — listening…', 'ok');
+  syncDebugContext();
+};
+
 const startCall = async () => {
   if (!client.isConnected || capture || callActive) {
     return;
   }
 
   debugLog('call', 'start', { micMuted: micMuted.checked });
-
   await unlockAudioPlayback();
-
-  if (!(await startMicCaptureIfNeeded())) {
-    return;
-  }
 
   callActive = true;
   callToggleBtn.textContent = 'End call';
   callToggleBtn.classList.add('active');
-  setSessionStatusText('Call active — starting…', 'active');
   syncDebugContext();
   updateSteps();
 
   if (isRealtimeMode() && !greetingSent) {
-    await unlockAudioPlayback();
     debugLog('call', 'assistant_trigger');
     client.sendJson({ type: 'assistant.trigger' });
     greetingSent = true;
-  } else {
-    setSessionStatusText('Call active — listening…', 'ok');
+    setSessionStatusText('Call active — greeting…', 'active');
+    return;
   }
+
+  if (!(await startMicCaptureIfNeeded())) {
+    callActive = false;
+    callToggleBtn.textContent = 'Start call';
+    callToggleBtn.classList.remove('active');
+    syncDebugContext();
+    updateSteps();
+    return;
+  }
+
+  setSessionStatusText('Call active — listening…', 'ok');
 };
 
 const stopCall = async () => {

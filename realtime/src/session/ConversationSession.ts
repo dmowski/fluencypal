@@ -61,6 +61,7 @@ export class ConversationSession {
   private assistantOutputActive = false;
   private assistantVoiceStartedAt: number | null = null;
   private assistantPlaybackUntilMs: number | null = null;
+  private assistantPlaybackClearTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor({
     sessionId,
@@ -237,6 +238,7 @@ export class ConversationSession {
     }
 
     this.disposed = true;
+    this.clearAssistantPlaybackState();
     this.turnDetector.reset();
     this.pipeline.abortInFlight();
     this.pendingUserAudio = [];
@@ -262,8 +264,20 @@ export class ConversationSession {
 
   private onAssistantVoiceFinished(ttsBytes: number): void {
     const playbackMs = Math.ceil((ttsBytes * 8 * 1000) / 128_000);
-    this.assistantPlaybackUntilMs = Date.now() + playbackMs + ASSISTANT_PLAYBACK_TAIL_MS;
+    const windowMs = playbackMs + ASSISTANT_PLAYBACK_TAIL_MS;
+    this.assistantPlaybackUntilMs = Date.now() + windowMs;
     sessionLog(this.sessionId, 'assistant.playback_window', { playbackMs, ttsBytes });
+
+    if (this.assistantPlaybackClearTimer) {
+      clearTimeout(this.assistantPlaybackClearTimer);
+    }
+
+    this.assistantPlaybackClearTimer = setTimeout(() => {
+      this.assistantPlaybackClearTimer = null;
+      this.clearAssistantPlaybackState();
+      this.assistantBargeInHandled = false;
+      sessionLog(this.sessionId, 'assistant.playback_window_ended');
+    }, windowMs + 25);
   }
 
   private isInEstimatedAssistantPlayback(): boolean {
@@ -302,10 +316,19 @@ export class ConversationSession {
       return false;
     }
 
+    if (!this.isInEstimatedAssistantPlayback()) {
+      return false;
+    }
+
     return Date.now() - this.assistantVoiceStartedAt >= ASSISTANT_BARGE_IN_GRACE_MS;
   }
 
   private clearAssistantPlaybackState(): void {
+    if (this.assistantPlaybackClearTimer) {
+      clearTimeout(this.assistantPlaybackClearTimer);
+      this.assistantPlaybackClearTimer = null;
+    }
+
     this.assistantOutputActive = false;
     this.assistantVoiceStartedAt = null;
     this.assistantPlaybackUntilMs = null;

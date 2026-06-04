@@ -35,6 +35,7 @@ export type SessionClientHandlers = {
     createdAt?: number;
   }) => void;
   onError: (message: string) => void;
+  onAssistantPlaybackEnded?: () => void;
 };
 
 export type SessionStartConfig = {
@@ -238,6 +239,7 @@ export class RealtimeSessionClient {
       try {
         await this.playback.playCollected();
         debugLog('audio', 'tts_played', { bytes });
+        this.handlers.onAssistantPlaybackEnded?.();
       } catch (error) {
         debugLog('error', 'playback_failed', {
           message: error instanceof Error ? error.message : String(error),
@@ -297,8 +299,12 @@ export class RealtimeSessionClient {
           if (this.ttsBytesReceived > 0) {
             debugLog('audio', 'tts_stream_end', { bytes: this.ttsBytesReceived });
           }
-          this.playCollectedPending = true;
-          this.schedulePlayCollected();
+          if (this.ttsBytesReceived > 0) {
+            this.playCollectedPending = true;
+            this.schedulePlayCollected();
+          } else {
+            this.handlers.onAssistantPlaybackEnded?.();
+          }
         }
         return;
       case 'user.speaking':

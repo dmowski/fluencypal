@@ -7,13 +7,13 @@ export type TurnDetectorConfig = {
 };
 
 export const defaultTurnDetectorConfig: TurnDetectorConfig = {
-  silenceMs: 1400,
+  silenceMs: 1200,
   rmsThreshold: 420,
-  minSpeechMs: 400,
+  minSpeechMs: 300,
 };
 
 /** Minimum buffered speech before running STT on a committed turn. */
-export const MIN_USER_TURN_SPEECH_MS = 400;
+export const MIN_USER_TURN_SPEECH_MS = 350;
 
 export type TurnDetectorCallbacks = {
   onSpeechStart: () => void;

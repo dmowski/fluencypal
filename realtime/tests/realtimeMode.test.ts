@@ -158,12 +158,12 @@ describe('ConversationSession RealTimeConversation', () => {
     await assistantPromise;
   });
 
-  it('sends assistant.interrupted when user speaks after TTS finished but output is still active', async () => {
+  it('does not interrupt when user speaks after the estimated playback window ends', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
 
     const sent: Array<{ type: string }> = [];
     const session = new ConversationSession({
-      sessionId: 'rtc-playback-barge',
+      sessionId: 'rtc-playback-idle',
       user: testUser,
       config: {
         languageCode: 'en',
@@ -186,20 +186,69 @@ describe('ConversationSession RealTimeConversation', () => {
 
     await session.handleClientMessage({ type: 'assistant.trigger' });
 
-    expect(sent.some((message) => message.type === 'assistant.speaking')).toBe(true);
-    expect(
-      sent.some(
-        (message) =>
-          message.type === 'transcript.done' &&
-          (message as { role?: string }).role === 'assistant',
-      ),
-    ).toBe(true);
-
     sent.length = 0;
     await vi.advanceTimersByTimeAsync(500);
     session.handleBinaryAudio(makeLoudPcmChunk());
 
-    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(false);
+
+    vi.useRealTimers();
+  });
+
+  it('commits a user turn after greeting playback when the user speaks', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    const sent: Array<{ type: string; role?: string }> = [];
+    const stt = vi.fn(async () => ({
+      text: 'Hello',
+      usage: { input_tokens: 1, output_tokens: 1, total_tokens: 2 },
+    }));
+
+    const session = new ConversationSession({
+      sessionId: 'rtc-post-greeting',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: true,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        stt: { transcribeBatch: stt },
+        tts: {
+          async *synthesizeStream() {
+            yield Buffer.from('fake-mp3-audio');
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    await session.handleClientMessage({ type: 'assistant.trigger' });
+    sent.length = 0;
+
+    await vi.advanceTimersByTimeAsync(500);
+
+    const loud = makeLoudPcmChunk(5000, 2400);
+    for (let i = 0; i < 8; i++) {
+      session.handleBinaryAudio(loud);
+      await vi.advanceTimersByTimeAsync(50);
+    }
+
+    session.handleBinaryAudio(Buffer.alloc(loud.length));
+    await vi.advanceTimersByTimeAsync(defaultTurnDetectorConfig.silenceMs + 100);
+    for (let i = 0; i < 10; i++) {
+      await Promise.resolve();
+    }
+
+    expect(stt).toHaveBeenCalled();
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(false);
+    expect(sent.some((message) => message.type === 'transcript.done' && message.role === 'user')).toBe(
+      true,
+    );
 
     vi.useRealTimers();
   });
@@ -223,7 +272,7 @@ describe('ConversationSession RealTimeConversation', () => {
       providers: createMockProviders({
         tts: {
           async *synthesizeStream() {
-            yield Buffer.from('fake-mp3-audio');
+            yield Buffer.alloc(12_800);
             return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
           },
         },
