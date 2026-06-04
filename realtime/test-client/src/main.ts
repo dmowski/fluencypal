@@ -11,7 +11,14 @@ import {
 import { describeMicError, MicrophoneSession, unlockAudioPlayback, type AudioCapture } from './audioCapture.js';
 import { getAppEnvironment, getBackendLabel, isLocalDev, shouldDefaultEmulator } from './env.js';
 import { RealtimeSessionClient } from './sessionClient.js';
-import { bindDebugLogPanel, clearDebugLog, copyDebugLogToClipboard, debugLog, setDebugLogContext } from './debugLog.js';
+import {
+  bindDebugLogPanel,
+  clearDebugLog,
+  copyDebugLogToClipboard,
+  debugLog,
+  exposeRealtimeE2eHooks,
+  setDebugLogContext,
+} from './debugLog.js';
 import { SessionUsageTracker, type UsageEntry } from './sessionUsage.js';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -250,6 +257,7 @@ const client = new RealtimeSessionClient({
 });
 
 bindDebugLogPanel(debugLogEl);
+exposeRealtimeE2eHooks();
 syncDebugContext();
 
 copyDebugLogBtn.addEventListener('click', async () => {

@@ -128,7 +128,10 @@ curl http://localhost:8081/v1/auth/verify \
 | `pnpm lint` | TypeScript check (`tsc --noEmit`) |
 | `pnpm test` | Unit tests (mocked Firebase / providers) |
 | `pnpm test:e2e` | API-level e2e (Vitest + WS client on port `18081`) |
+| `pnpm test:e2e:voice` | Real voice E2E — OpenAI STT/LLM/TTS + speech WAV fixtures (see `e2e-cases.md`) |
 | `pnpm test:e2e:browser` | Browser e2e (Playwright + real test client UI) |
+| `pnpm test:e2e:voice:browser` | Browser voice E2E — real speech via Chrome fake mic file |
+| `pnpm e2e:fixtures:voice` | Generate `e2e/fixtures/voice/*.wav` from OpenAI TTS |
 | `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
 | `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
 | `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
@@ -149,11 +152,16 @@ pnpm exec playwright install chromium
 cd realtime
 pnpm test                 # unit tests
 pnpm test:e2e             # API e2e (auth, session, optional OpenAI pipeline)
+pnpm e2e:fixtures:voice   # once: real speech WAV fixtures (needs OPENAI_API_KEY)
+pnpm test:e2e:voice       # real voice API e2e (no mocks)
 pnpm test:e2e:browser     # browser e2e (sign-in, connect, typed turn, PTT UI)
+pnpm test:e2e:voice:browser
 pnpm test:all             # full suite
 ```
 
 **API e2e** (`vitest`) uses `e2e/globalSetup.ts` to start the Firebase emulator and a realtime server on port **18081**.
+
+**Voice E2E** streams real speech PCM over WebSocket (or plays a speech WAV into Chromium’s mic). Requires `OPENAI_API_KEY` and fixtures from `pnpm e2e:fixtures:voice`. Test matrix: [`e2e-cases.md`](./e2e-cases.md).
 
 **Browser e2e** (`playwright`) starts the same stack as `pnpm dev` (ports **8081** + **5173**), then drives the test client in Chromium with fake microphone permissions. The typed-message spec calls real OpenAI when `OPENAI_API_KEY` is set.
 

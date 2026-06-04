@@ -18,8 +18,11 @@
     "typecheck": "pnpm lint",
     "test": "vitest run --config vitest.config.ts",
     "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "test:e2e:voice": "vitest run --config vitest.e2e.voice.config.ts",
     "test:e2e:browser": "playwright test",
+    "test:e2e:voice:browser": "playwright test --config playwright.voice.config.ts",
     "test:e2e:browser:ui": "playwright test --ui",
+    "e2e:fixtures:voice": "tsx e2e/scripts/generateVoiceFixtures.ts",
     "test:all": "pnpm test && pnpm test:e2e && pnpm test:e2e:browser && pnpm build:client",
     "load:smoke": "tsx scripts/loadSmoke.ts",
     "prod": "fly deploy",
@@ -49,6 +52,7 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
+    "ffmpeg-static": "^5.2.0",
     "vitest": "^4.1.8",
     "ws": "^8.19.0"
   }

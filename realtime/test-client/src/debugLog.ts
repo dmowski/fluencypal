@@ -112,3 +112,25 @@ export const clearDebugLog = (): void => {
     logEl.textContent = '';
   }
 };
+
+export const getDebugLogLines = (): string[] => [...lines].reverse();
+
+export type RealtimeE2eHooks = {
+  getDebugLogLines: () => string[];
+  getDebugLogText: () => string;
+  getDebugLogContext: () => Record<string, string>;
+};
+
+declare global {
+  interface Window {
+    __realtimeE2e?: RealtimeE2eHooks;
+  }
+}
+
+export const exposeRealtimeE2eHooks = (): void => {
+  window.__realtimeE2e = {
+    getDebugLogLines,
+    getDebugLogText,
+    getDebugLogContext: () => ({ ...context }),
+  };
+};
