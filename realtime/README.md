@@ -121,9 +121,9 @@ curl http://localhost:8081/v1/auth/verify \
 
 | Command | Description |
 | ------- | ----------- |
-| `pnpm dev` | **One command dev stack**: emulator + API + test client (+ opens browser) |
-| `pnpm dev:api` | Realtime API only with reload (`tsx watch`) |
-| `pnpm dev:client` | Vite test UI only on http://127.0.0.1:5173 |
+| `pnpm dev` | **One command dev stack**: emulator + API (`tsx watch`) + Vite test client with HMR (+ opens browser) |
+| `pnpm dev:api` | Realtime API only with hot reload (`tsx watch`) |
+| `pnpm dev:client` | Vite test UI only on http://127.0.0.1:5173 (HMR) |
 | `pnpm build:client` | Production build of test client |
 | `pnpm lint` | TypeScript check (`tsc --noEmit`) |
 | `pnpm test` | Unit tests (mocked Firebase / providers) |
@@ -162,6 +162,8 @@ Set `REUSE_DEV_SERVER=1` to skip restarting the dev stack when `pnpm dev` is alr
 ## Test client
 
 The test client is included in `pnpm dev`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
+
+**Hot reload:** `pnpm dev` watches `realtime/src/` and restarts the API automatically. The test UI at http://127.0.0.1:5173 hot-reloads via Vite when you edit `test-client/`. Keep the `pnpm dev` terminal running; you do not need to restart it for code changes. After an API restart, reconnect the WebSocket session (Disconnect → Connect) if the call stopped working.
 
 **All-in-one (recommended):**
 

@@ -18,6 +18,7 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
     startClient: true,
     clientPort: CLIENT_PORT,
     logPrefix: 'browser-e2e',
+    watchRealtime: false,
   });
 
   return async () => {

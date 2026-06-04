@@ -30,6 +30,7 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
     startClient: false,
     statePath,
     logPrefix: 'e2e',
+    watchRealtime: false,
   });
 
   return async () => {

@@ -38,6 +38,8 @@ export type StartDevStackOptions = {
   statePath?: string;
   logPrefix?: string;
   reuseIfReady?: boolean;
+  /** Restart the realtime API when `src/` changes (`tsx watch`). Default true. */
+  watchRealtime?: boolean;
 };
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -339,18 +341,25 @@ export const startDevStack = async (options: StartDevStackOptions = {}): Promise
 
   await waitForAuthEmulator();
 
-  const realtimeProcess = spawnProcess('pnpm', ['exec', 'tsx', 'src/index.ts'], {
-    cwd: realtimeRoot,
-    logPrefix: `${logPrefix}:api`,
-    env: {
-      NODE_ENV: 'development',
-      IS_FIREBASE_EMULATOR: 'true',
-      FIREBASE_PROJECT_ID: 'dark-lang',
-      FIREBASE_STORAGE_BUCKET: 'dark-lang.firebasestorage.app',
-      REALTIME_PORT: String(realtimePort),
-      OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? '',
+  const watchRealtime = options.watchRealtime ?? true;
+  const realtimeProcess = spawnProcess(
+    'pnpm',
+    watchRealtime
+      ? ['exec', 'tsx', 'watch', 'src/index.ts']
+      : ['exec', 'tsx', 'src/index.ts'],
+    {
+      cwd: realtimeRoot,
+      logPrefix: `${logPrefix}:api`,
+      env: {
+        NODE_ENV: 'development',
+        IS_FIREBASE_EMULATOR: 'true',
+        FIREBASE_PROJECT_ID: 'dark-lang',
+        FIREBASE_STORAGE_BUCKET: 'dark-lang.firebasestorage.app',
+        REALTIME_PORT: String(realtimePort),
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? '',
+      },
     },
-  });
+  );
 
   const realtimeBaseUrl = `http://127.0.0.1:${realtimePort}`;
   await waitForUrl(`${realtimeBaseUrl}/health`);

@@ -44,6 +44,9 @@ console.log(`  Auth emulator: http://127.0.0.1:9099`);
 console.log('');
 console.log('Sign in on the test page (Auth emulator is pre-enabled). Press Ctrl+C to stop.');
 console.log('');
+console.log('Hot reload: API restarts on `realtime/src/` changes; test UI updates via Vite HMR.');
+console.log('After an API restart, click Disconnect → Connect if your WebSocket session stopped.');
+console.log('');
 
 if (openBrowser && process.env.CI !== 'true') {
   const url = state.clientBaseUrl;
