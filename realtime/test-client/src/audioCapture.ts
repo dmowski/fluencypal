@@ -22,6 +22,9 @@ export { unlockAudioPlayback } from './audioUnlock.js';
 
 const TARGET_SAMPLE_RATE = 24_000;
 
+/** Matches server `defaultTurnDetectorConfig.rmsThreshold`. */
+export const BARGE_IN_RMS_THRESHOLD = 350;
+
 export const computeChunkRms = (pcm: Int16Array): number => {
   if (pcm.length === 0) {
     return 0;
@@ -35,6 +38,9 @@ export const computeChunkRms = (pcm: Int16Array): number => {
 
   return Math.sqrt(sumSquares / pcm.length);
 };
+
+export const computeChunkRmsFromBuffer = (chunk: ArrayBuffer): number =>
+  computeChunkRms(new Int16Array(chunk));
 
 const floatTo16BitPcm = (input: Float32Array): Int16Array => {
   const output = new Int16Array(input.length);

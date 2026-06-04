@@ -156,4 +156,45 @@ describe('ConversationSession RealTimeConversation', () => {
     resolveLlm();
     await assistantPromise;
   });
+
+  it('sends assistant.interrupted when user speaks after TTS finished but output is still active', async () => {
+    const sent: Array<{ type: string }> = [];
+    const session = new ConversationSession({
+      sessionId: 'rtc-playback-barge',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: true,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        tts: {
+          async *synthesizeStream() {
+            yield Buffer.from('fake-mp3-audio');
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    await session.handleClientMessage({ type: 'assistant.trigger' });
+
+    expect(sent.some((message) => message.type === 'assistant.speaking')).toBe(true);
+    expect(
+      sent.some(
+        (message) =>
+          message.type === 'transcript.done' &&
+          (message as { role?: string }).role === 'assistant',
+      ),
+    ).toBe(true);
+
+    sent.length = 0;
+    session.handleBinaryAudio(makeLoudPcmChunk());
+
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+  });
 });

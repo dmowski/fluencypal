@@ -49,6 +49,8 @@ export class ConversationSession {
   private binaryChunkCount = 0;
   /** One barge-in interrupt per busy pipeline turn (avoid aborting TTS on every loud mic chunk). */
   private assistantBargeInHandled = false;
+  /** True from assistant generation through local client playback (pipeline may already be idle). */
+  private assistantOutputActive = false;
 
   constructor({
     sessionId,
@@ -129,7 +131,7 @@ export class ConversationSession {
       case 'assistant.trigger':
         sessionLog(this.sessionId, 'assistant.trigger');
         try {
-          await this.pipeline.generateAssistantResponse();
+          await this.runAssistantGeneration();
         } catch (error) {
           if (isAbortError(error)) {
             sessionLog(this.sessionId, 'turn.aborted');
@@ -169,15 +171,15 @@ export class ConversationSession {
     }
 
     if (this.config.mode === 'RealTimeConversation') {
-      if (!this.pipeline.isBusy) {
+      if (!this.pipeline.isBusy && !this.assistantOutputActive) {
         this.assistantBargeInHandled = false;
       }
 
       const rms = computePcm16Rms(frame.payload);
-      // Barge-in while assistant is busy: edge-trigger once per busy turn (not every loud chunk).
+      // Barge-in during TTS generation or while the client is still playing assistant audio.
       if (
         rms >= defaultTurnDetectorConfig.rmsThreshold &&
-        this.pipeline.isBusy &&
+        (this.pipeline.isBusy || this.assistantOutputActive) &&
         !this.assistantBargeInHandled
       ) {
         this.assistantBargeInHandled = true;
@@ -216,15 +218,23 @@ export class ConversationSession {
     }
   }
 
+  private async runAssistantGeneration(): Promise<void> {
+    this.assistantOutputActive = true;
+    await this.pipeline.generateAssistantResponse();
+  }
+
   private handleUserSpeechStart(): void {
     const interrupted = this.pipeline.abortAssistantOutput();
+    const notifyInterrupt = interrupted || this.assistantOutputActive;
 
     sessionLog(this.sessionId, 'turn.speech_start', {
       interrupted,
+      assistantOutputActive: this.assistantOutputActive,
       pipelineBusy: this.pipeline.isBusy,
     });
 
-    if (interrupted) {
+    if (notifyInterrupt) {
+      this.assistantOutputActive = false;
       this.send({ type: 'assistant.interrupted' });
     }
 
@@ -325,7 +335,7 @@ export class ConversationSession {
       });
 
       sessionLog(this.sessionId, 'turn.generating_assistant');
-      await this.pipeline.generateAssistantResponse();
+      await this.runAssistantGeneration();
       sessionLog(this.sessionId, 'turn.commit_done', { messageId: id });
     } catch (error) {
       if (isAbortError(error)) {

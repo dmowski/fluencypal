@@ -182,8 +182,8 @@ const updateTalkHint = (connected: boolean) => {
 
   if (isRealtimeMode()) {
     talkHint.textContent = micMuted.checked
-      ? 'Click “Start call” to hear the assistant (mic is muted). Uncheck “Mic muted” when you want to speak.'
-      : 'Click “Start call” and speak naturally after the greeting.';
+      ? 'Click “Start call” to hear the assistant. Uncheck “Mic muted” to speak or interrupt while the AI is talking.'
+      : 'Click “Start call”. Speak over the assistant anytime to interrupt.';
     return;
   }
 

@@ -2,6 +2,24 @@ const MOBILE_WARMUP_MS = 2500;
 const DESKTOP_WARMUP_MS = 300;
 const TARGET_SAMPLE_RATE = 24_000;
 
+/** Matches server `defaultTurnDetectorConfig.rmsThreshold`. */
+export const BARGE_IN_RMS_THRESHOLD = 350;
+
+export const computeChunkRmsFromBuffer = (chunk: ArrayBuffer): number => {
+  const samples = new Int16Array(chunk);
+  if (samples.length === 0) {
+    return 0;
+  }
+
+  let sumSquares = 0;
+  for (let i = 0; i < samples.length; i++) {
+    const sample = samples[i] ?? 0;
+    sumSquares += sample * sample;
+  }
+
+  return Math.sqrt(sumSquares / samples.length);
+};
+
 export const isMobileDevice = (): boolean =>
   /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
