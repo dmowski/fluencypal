@@ -22,8 +22,8 @@ export { unlockAudioPlayback } from './audioUnlock.js';
 
 const TARGET_SAMPLE_RATE = 24_000;
 
-/** Matches server `defaultTurnDetectorConfig.rmsThreshold`. */
-export const BARGE_IN_RMS_THRESHOLD = 350;
+/** Local stop during playback — higher than server turn detect to avoid speaker echo. */
+export const BARGE_IN_RMS_THRESHOLD = 720;
 
 export const computeChunkRms = (pcm: Int16Array): number => {
   if (pcm.length === 0) {

@@ -3,6 +3,7 @@ import {
   RealtimeTurnDetector,
   computePcm16Rms,
   defaultTurnDetectorConfig,
+  hasMeaningfulBufferedSpeech,
 } from '../src/session/turnDetection.js';
 
 const makePcmChunk = (amplitude: number, sampleCount = 480): Buffer => {
@@ -121,5 +122,11 @@ describe('turnDetection', () => {
     expect(onTurnEnd).not.toHaveBeenCalled();
 
     vi.useRealTimers();
+  });
+
+  it('rejects buffered audio that is too short or too quiet for STT', () => {
+    expect(hasMeaningfulBufferedSpeech([makePcmChunk(0, 100)])).toBe(false);
+    expect(hasMeaningfulBufferedSpeech([makePcmChunk(5000, 100)])).toBe(false);
+    expect(hasMeaningfulBufferedSpeech([makePcmChunk(5000, 12_000)])).toBe(true);
   });
 });

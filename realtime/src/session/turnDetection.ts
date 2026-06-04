@@ -7,10 +7,13 @@ export type TurnDetectorConfig = {
 };
 
 export const defaultTurnDetectorConfig: TurnDetectorConfig = {
-  silenceMs: 1200,
-  rmsThreshold: 350,
-  minSpeechMs: 250,
+  silenceMs: 1400,
+  rmsThreshold: 420,
+  minSpeechMs: 400,
 };
+
+/** Minimum buffered speech before running STT on a committed turn. */
+export const MIN_USER_TURN_SPEECH_MS = 400;
 
 export type TurnDetectorCallbacks = {
   onSpeechStart: () => void;
@@ -104,4 +107,31 @@ export class RealtimeTurnDetector {
 export const estimateBufferedSpeechMs = (chunks: Buffer[]): number => {
   const bytes = chunks.reduce((total, chunk) => total + chunk.length, 0);
   return estimateAudioDurationMs(bytes);
+};
+
+export const computeAverageRmsFromChunks = (chunks: Buffer[]): number => {
+  if (chunks.length === 0) {
+    return 0;
+  }
+
+  let sum = 0;
+  for (const chunk of chunks) {
+    sum += computePcm16Rms(chunk);
+  }
+
+  return sum / chunks.length;
+};
+
+export const hasMeaningfulBufferedSpeech = (
+  chunks: Buffer[],
+  options: { minMs?: number; minAvgRms?: number } = {},
+): boolean => {
+  const minMs = options.minMs ?? MIN_USER_TURN_SPEECH_MS;
+  const minAvgRms = options.minAvgRms ?? defaultTurnDetectorConfig.rmsThreshold;
+
+  if (estimateBufferedSpeechMs(chunks) < minMs) {
+    return false;
+  }
+
+  return computeAverageRmsFromChunks(chunks) >= minAvgRms;
 };

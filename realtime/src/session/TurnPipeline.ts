@@ -13,6 +13,8 @@ export type PipelineCallbacks = {
   sendBinary: (chunk: Buffer) => void;
   /** Fired once per reply when the first TTS audio chunk is about to be sent. */
   onAssistantVoiceStarted?: () => void;
+  /** Fired when a TTS stream finishes (passes total MP3 bytes sent). */
+  onAssistantVoiceFinished?: (ttsBytes: number) => void;
 };
 
 export class TurnPipeline {
@@ -291,6 +293,9 @@ export class TurnPipeline {
       recordPipelineLatency('tts', Date.now() - ttsStartedAt);
     } finally {
       if (gen === this.generateGeneration) {
+        if (ttsBytes > 0) {
+          this.callbacks.onAssistantVoiceFinished?.(ttsBytes);
+        }
         this.voiceStreamingActive = false;
       }
     }

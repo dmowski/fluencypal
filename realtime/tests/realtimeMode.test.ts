@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { AuthUserInfo } from '../src/auth/types.js';
 import { ConversationSession } from '../src/session/ConversationSession.js';
+import { defaultTurnDetectorConfig } from '../src/session/turnDetection.js';
 import { createMockProviders } from './helpers/mockProviders.js';
 
 const testUser: AuthUserInfo = { uid: 'user-1', email: 'user@example.com' };
@@ -40,14 +41,14 @@ describe('ConversationSession RealTimeConversation', () => {
       }),
     });
 
-    const loud = makeLoudPcmChunk();
-    session.handleBinaryAudio(loud);
+    const loud = makeLoudPcmChunk(5000, 2400);
+    for (let i = 0; i < 10; i++) {
+      session.handleBinaryAudio(loud);
+      await vi.advanceTimersByTimeAsync(50);
+    }
 
-    await vi.advanceTimersByTimeAsync(300);
-    session.handleBinaryAudio(loud);
     session.handleBinaryAudio(Buffer.alloc(loud.length));
-
-    await vi.advanceTimersByTimeAsync(1300);
+    await vi.advanceTimersByTimeAsync(defaultTurnDetectorConfig.silenceMs + 100);
     for (let i = 0; i < 10; i++) {
       await Promise.resolve();
     }
@@ -238,6 +239,48 @@ describe('ConversationSession RealTimeConversation', () => {
     await vi.advanceTimersByTimeAsync(500);
     session.handleBinaryAudio(makeLoudPcmChunk());
     expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+
+    vi.useRealTimers();
+  });
+
+  it('does not commit echo audio as a user turn during estimated assistant playback', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    const sent: Array<{ type: string; role?: string }> = [];
+    const session = new ConversationSession({
+      sessionId: 'rtc-echo',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: true,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message as { type: string; role?: string }),
+      providers: createMockProviders({
+        tts: {
+          async *synthesizeStream() {
+            yield Buffer.alloc(12_800);
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    await session.handleClientMessage({ type: 'assistant.trigger' });
+
+    sent.length = 0;
+    const loud = makeLoudPcmChunk();
+    session.handleBinaryAudio(loud);
+    session.handleBinaryAudio(Buffer.alloc(loud.length));
+
+    await vi.advanceTimersByTimeAsync(defaultTurnDetectorConfig.silenceMs + 200);
+
+    expect(sent.filter((message) => message.type === 'transcript.done' && message.role === 'user')).toHaveLength(
+      0,
+    );
 
     vi.useRealTimers();
   });

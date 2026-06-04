@@ -12,17 +12,22 @@ import type {
 } from '../protocol/messages.js';
 import { ConversationHistory } from './history.js';
 import { TurnPipeline } from './TurnPipeline.js';
+import { isAbortError } from '../errors/isAbortError.js';
+import { sessionLog, sessionWarn } from '../log/sessionLog.js';
 import {
   RealtimeTurnDetector,
   computePcm16Rms,
   defaultTurnDetectorConfig,
   estimateBufferedSpeechMs,
+  hasMeaningfulBufferedSpeech,
 } from './turnDetection.js';
 
-/** Ignore mic tail right after TTS starts or right after a user turn commit. */
+/** Ignore mic tail right after TTS starts. */
 const ASSISTANT_BARGE_IN_GRACE_MS = 450;
-import { isAbortError } from '../errors/isAbortError.js';
-import { sessionLog, sessionWarn } from '../log/sessionLog.js';
+/** Higher bar while speakers may echo into the mic. */
+const BARGE_IN_RMS_PLAYBACK_THRESHOLD = 720;
+/** Extra tail after estimated MP3 playback before accepting user turns. */
+const ASSISTANT_PLAYBACK_TAIL_MS = 350;
 
 export type SessionRuntimeConfig = SessionStartConfig & {
   correctionInstruction: string;
@@ -55,6 +60,7 @@ export class ConversationSession {
   /** True while client may still be playing TTS (pipeline may already be idle). */
   private assistantOutputActive = false;
   private assistantVoiceStartedAt: number | null = null;
+  private assistantPlaybackUntilMs: number | null = null;
 
   constructor({
     sessionId,
@@ -85,6 +91,7 @@ export class ConversationSession {
         send,
         sendBinary,
         onAssistantVoiceStarted: () => this.onAssistantVoiceStarted(),
+        onAssistantVoiceFinished: (ttsBytes) => this.onAssistantVoiceFinished(ttsBytes),
       },
       () => this.config,
       this.history,
@@ -184,9 +191,12 @@ export class ConversationSession {
       }
 
       const rms = computePcm16Rms(frame.payload);
+      const bargeInThreshold = this.isInEstimatedAssistantPlayback()
+        ? BARGE_IN_RMS_PLAYBACK_THRESHOLD
+        : defaultTurnDetectorConfig.rmsThreshold;
       const canBargeInVoice = this.isAssistantPlaybackInterruptible();
       if (
-        rms >= defaultTurnDetectorConfig.rmsThreshold &&
+        rms >= bargeInThreshold &&
         !this.assistantBargeInHandled &&
         !this.turnCommitInProgress &&
         (this.pipeline.isLlmRunning || canBargeInVoice)
@@ -196,9 +206,22 @@ export class ConversationSession {
       }
 
       this.turnDetector.processChunk(frame.payload, {
-        onSpeechStart: () => this.handleUserSpeechStart(),
-        onSpeechEnd: () => this.handleUserSpeechEnd(),
+        onSpeechStart: () => {
+          if (this.shouldAcceptUserTurnDetection()) {
+            this.handleUserSpeechStart();
+          }
+        },
+        onSpeechEnd: () => {
+          if (this.shouldAcceptUserTurnDetection()) {
+            this.handleUserSpeechEnd();
+          }
+        },
         onTurnEnd: () => {
+          if (!this.shouldAcceptUserTurnCommit()) {
+            this.discardPendingUserAudio('assistant_playback_echo');
+            return;
+          }
+
           sessionLog(this.sessionId, 'turn.end_detected', {
             bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
           });
@@ -237,6 +260,43 @@ export class ConversationSession {
     this.assistantBargeInHandled = false;
   }
 
+  private onAssistantVoiceFinished(ttsBytes: number): void {
+    const playbackMs = Math.ceil((ttsBytes * 8 * 1000) / 128_000);
+    this.assistantPlaybackUntilMs = Date.now() + playbackMs + ASSISTANT_PLAYBACK_TAIL_MS;
+    sessionLog(this.sessionId, 'assistant.playback_window', { playbackMs, ttsBytes });
+  }
+
+  private isInEstimatedAssistantPlayback(): boolean {
+    return this.assistantPlaybackUntilMs !== null && Date.now() < this.assistantPlaybackUntilMs;
+  }
+
+  /** Suppress echo-driven STT while the assistant reply is streaming or playing out. */
+  private shouldAcceptUserTurnDetection(): boolean {
+    return (
+      !this.isInEstimatedAssistantPlayback() &&
+      !this.pipeline.isVoiceStreaming &&
+      !this.pipeline.isLlmRunning
+    );
+  }
+
+  private shouldAcceptUserTurnCommit(): boolean {
+    return this.shouldAcceptUserTurnDetection();
+  }
+
+  private discardPendingUserAudio(reason: string): void {
+    if (this.pendingUserAudio.length === 0) {
+      return;
+    }
+
+    sessionLog(this.sessionId, 'turn.audio_discarded', {
+      reason,
+      chunks: this.pendingUserAudio.length,
+      bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
+    });
+    this.pendingUserAudio = [];
+    this.turnDetector.reset();
+  }
+
   private isAssistantPlaybackInterruptible(): boolean {
     if (!this.assistantOutputActive || this.assistantVoiceStartedAt === null) {
       return false;
@@ -248,6 +308,7 @@ export class ConversationSession {
   private clearAssistantPlaybackState(): void {
     this.assistantOutputActive = false;
     this.assistantVoiceStartedAt = null;
+    this.assistantPlaybackUntilMs = null;
   }
 
   private shouldAbortAssistantOutput(): boolean {
@@ -334,6 +395,15 @@ export class ConversationSession {
 
     if (!text && audioChunks.length === 0) {
       sessionLog(this.sessionId, 'turn.commit_skipped', { reason: 'no_audio_or_text' });
+      return;
+    }
+
+    if (!text && audioChunks.length > 0 && !hasMeaningfulBufferedSpeech(audioChunks)) {
+      sessionLog(this.sessionId, 'turn.commit_skipped', {
+        reason: 'low_energy_or_too_short',
+        audioBytes,
+        bufferedMs,
+      });
       return;
     }
 

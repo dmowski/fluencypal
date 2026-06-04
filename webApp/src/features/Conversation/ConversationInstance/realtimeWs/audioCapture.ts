@@ -2,8 +2,8 @@ const MOBILE_WARMUP_MS = 2500;
 const DESKTOP_WARMUP_MS = 300;
 const TARGET_SAMPLE_RATE = 24_000;
 
-/** Matches server `defaultTurnDetectorConfig.rmsThreshold`. */
-export const BARGE_IN_RMS_THRESHOLD = 350;
+/** Local stop during playback — higher than server turn detect to avoid speaker echo. */
+export const BARGE_IN_RMS_THRESHOLD = 720;
 
 export const computeChunkRmsFromBuffer = (chunk: ArrayBuffer): number => {
   const samples = new Int16Array(chunk);
