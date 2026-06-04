@@ -2,15 +2,14 @@
 
 ## Realtime service
 
-Init hotjar on offline alias
-
-## Realtime service
-
-- Deploy on stable services?
 - Polish Vad instruction
 - Test on devices
 - Test record message mode
 - Test event logs
+
+## Alias
+
+Init hotjar on offline alias
 
 ## News: They should be interesting for me.
 

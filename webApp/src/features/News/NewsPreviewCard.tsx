@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { useTranslate } from '../Translation/useTranslate';
 
 interface NewsPreviewCardProps {
   title: string;
@@ -29,6 +31,21 @@ export const NewsPreviewCard = ({
   'data-testid': testId,
 }: NewsPreviewCardProps) => {
   const day = dateIso ? formatDay(dateIso) : '';
+  const translator = useTranslate();
+
+  const [displayTitle, setDisplayTitle] = useState(title);
+  const [displaySubTitle, setDisplaySubTitle] = useState(subTitle);
+
+  useEffect(() => {
+    if (!translator.isTranslateAvailable) return;
+
+    const texts = subTitle ? [title, subTitle] : [title];
+    translator.translateBatchText({ texts }).then((translated) => {
+      setDisplayTitle(translated[0] ?? title);
+      if (subTitle) setDisplaySubTitle(translated[1] ?? subTitle);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, subTitle, translator.isTranslateAvailable]);
 
   return (
     <Stack
@@ -121,11 +138,11 @@ export const NewsPreviewCard = ({
             },
           }}
         >
-          {title}
+          {displayTitle}
         </Typography>
         {subTitle && (
           <Typography variant="body1" sx={{ opacity: 0.8 }}>
-            {subTitle}
+            {displaySubTitle}
           </Typography>
         )}
       </Stack>
