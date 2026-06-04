@@ -21,7 +21,7 @@ export interface ConversationConfig {
   webCamDescription?: string;
 
   // used for sendSdpOffer: WebRTC auth
-  getAuthToken: () => Promise<string>;
+  getAuthToken: (forceRefresh?: boolean) => Promise<string>;
 
   generateTextWithAi: ({}: { userMessage: string; systemMessage: string }) => Promise<string>;
 
@@ -29,6 +29,9 @@ export interface ConversationConfig {
 
   conversationId: string;
   userPricePerHourUsd: number;
+
+  /** Custom realtime WebSocket: surface fatal connection/auth errors to the UI. */
+  onTransportError?: (message: string) => void;
 }
 
 export type ConversationInstance = {
@@ -50,4 +53,7 @@ export type ConversationInstance = {
   completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
 
   restartConversation: () => Promise<void>;
+
+  /** Custom realtime: call after communicatorRef is assigned if session.ready arrived early. */
+  flushSessionReady?: () => void;
 };

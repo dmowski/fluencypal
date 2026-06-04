@@ -13,6 +13,7 @@ import {
 import { AiVoice, MODELS, pricePerHourUsd } from '@/features/Ai/ai';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { initRealtimeWsConversation } from '../ConversationInstance/realtimeWs/initRealtimeWsConversation';
+import { RealtimeWsAuthError } from '../ConversationInstance/realtimeWs/resolveRealtimeWsAuthToken';
 import { useSettings } from '../../Settings/useSettings';
 import { ConversationType } from '@/features/Conversation/conversation';
 import { sleep } from '@/libs/sleep';
@@ -573,12 +574,29 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         isVolumeOn: isVolumeOnInternal,
         webCamDescription: input.webCamDescription || '',
         conversationId: newConversationId,
+        ...(input.experimentalRealtimeWs
+          ? {
+              onTransportError: (message: string) => {
+                setErrorInitiating(message);
+                setIsInitializing('');
+                setIsStarted(false);
+                communicatorRef.current?.closeHandler();
+                communicatorRef.current = undefined;
+              },
+            }
+          : {}),
       });
       setVoice(conversationConfig.voice || input.voice || settingsVoice || 'shimmer');
 
       communicatorRef.current = conversation;
+      conversation.flushSessionReady?.();
     } catch (e) {
       console.error(e);
+      if (e instanceof RealtimeWsAuthError) {
+        setErrorInitiating(e.message);
+        setIsInitializing('');
+        throw e;
+      }
       const isNotAllowedError = (e as Error).toString().includes('NotAllowedError');
       console.log('isNotAllowedError', isNotAllowedError);
       setErrorInitiating(

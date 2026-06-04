@@ -13,6 +13,7 @@ export const StoreCardRowItem = ({
 }) => {
   return (
     <Stack
+      data-testid={data.testId}
       sx={{
         display: 'grid',
         gridTemplateColumns: 'min-content 1fr min-content',

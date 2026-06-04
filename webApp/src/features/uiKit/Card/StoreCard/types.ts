@@ -13,6 +13,7 @@ export interface CardItem extends CardItemIcon {
   rowBgColor?: string;
   actionButtonTitle: string;
   onClick: () => void;
+  testId?: string;
 }
 
 export interface StoreCardProps {

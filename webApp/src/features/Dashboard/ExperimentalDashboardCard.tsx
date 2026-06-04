@@ -27,6 +27,7 @@ export const ExperimentalDashboardCard = () => {
 
   return (
     <Stack
+      data-testid="experimental-dashboard-card"
       sx={{
         gap: '20px',
       }}
@@ -60,6 +61,7 @@ export const ExperimentalDashboardCard = () => {
               iconName: 'mic',
               iconBgColor: 'rgba(11, 8, 0, 0.8)',
               actionButtonTitle: i18n._('Start'),
+              testId: 'experimental-custom-realtime-row',
               onClick: () => {
                 if (!isExperimentalCallStarting) {
                   void startExperimentalJustTalk();

@@ -643,7 +643,7 @@ Map server events → `ConversationConfig` callbacks (transcript deltas/done, us
 - [x] `ExperimentalDashboardCard.tsx` — list item **Just Talk (custom realtime)**; card click still uses WebRTC `useJustTalk`.
 - [x] `useExperimentalJustTalk` — same Just Talk params (`mode: 'talk'`, `conversationMode: 'call'`).
 - [x] `hasExperimentalDashboardAccess` gate unchanged.
-- [ ] Document Fly `ALLOWED_ORIGINS` must include `http://localhost:3000` when using prod WSS from localhost.
+- [x] Document Fly `ALLOWED_ORIGINS` + local env in `README.md` and `PHASE3_CHECKLIST.md`.
 
 **Local dev URLs**
 
@@ -658,7 +658,7 @@ Map server events → `ConversationConfig` callbacks (transcript deltas/done, us
 
 - [x] Firebase ID token in `session.start` via `getAuthToken()` / `auth.getIdToken()`.
 - [x] Server `validateIdToken` (same project `dark-lang`).
-- [ ] Optional: `getIdToken(true)` before connect + clearer client error when token is empty or emulator-shaped.
+- [x] `getIdToken(true)` before connect + `RealtimeWsAuthError` / `onTransportError` UI when token is empty or emulator-shaped.
 
 ### Step 3.4 — Usage pipeline
 
@@ -668,9 +668,9 @@ Map server events → `ConversationConfig` callbacks (transcript deltas/done, us
 
 ### Step 3.5 — UI verification
 
-- [ ] Manual pass: `CallButtons`, transcript, mute/volume, greeting (`assistant.trigger`), mobile Safari.
-- [ ] Lesson plan `sendCorrectionInstruction` on experimental path.
-- [ ] Playwright e2e: Experimental Lab → custom realtime happy path (emulator + local `realtime` or mocked WS).
+- [ ] Manual pass: `CallButtons`, transcript, mute/volume, greeting (`assistant.trigger`), mobile Safari (owner QA).
+- [x] Lesson plan `sendCorrectionInstruction` wired (`assistant.instruction` on experimental path).
+- [x] Playwright e2e: `webApp/e2e/conversation/experimentalRealtime.spec.ts` (mocked `/v1/session` WS).
 
 ### Step 3.6 — Retire WebRTC path (later)
 
@@ -680,9 +680,11 @@ Map server events → `ConversationConfig` callbacks (transcript deltas/done, us
 
 **Phase 3 exit criteria**
 
-- [ ] Production talk mode available via experiment with stable UX on iOS + Android.
-- [ ] Usage analytics parity ±5% vs old path on test scenarios.
+- [ ] Production talk mode available via experiment with stable UX on iOS + Android (owner device QA).
+- [ ] Usage analytics parity ±5% vs old path on test scenarios (owner spot-check).
 - [x] No regression in non-experimental paths (WebRTC remains default).
+
+**Handoff**: see `realtime/PHASE3_CHECKLIST.md` for env, Fly, and manual QA steps.
 
 ---
 

@@ -8,6 +8,8 @@ import { AudioCapture, startMicCapture } from './audioCapture';
 import { getMergedInstruction, InstructionState } from './instruction';
 import { mapWsUsageToLog } from './mapWsUsageToLog';
 import { RealtimeWsSessionClient } from './RealtimeWsSessionClient';
+import { getRealtimeWsUrl } from './getRealtimeWsUrl';
+import { resolveRealtimeWsAuthToken } from './resolveRealtimeWsAuthToken';
 
 type RealtimeWsState = {
   client: RealtimeWsSessionClient;
@@ -50,12 +52,23 @@ export const initRealtimeWsConversation = async (
     config.setIsAiSpeaking(state.client.isAssistantOutputActive);
   };
 
-  state.client = new RealtimeWsSessionClient({
-    onSessionReady: () => {
+  let onOpenScheduled = false;
+  const scheduleOnOpenOnce = () => {
+    if (onOpenScheduled) {
+      return;
+    }
+    onOpenScheduled = true;
+    window.setTimeout(() => {
       void config.onOpen();
       if (!state.currentMuted) {
         void startCaptureIfNeeded();
       }
+    }, 50);
+  };
+
+  state.client = new RealtimeWsSessionClient({
+    onSessionReady: () => {
+      scheduleOnOpenOnce();
     },
     onTranscriptDelta: (messageId, role, delta) => {
       config.onAddDelta(messageId, delta, role === 'assistant');
@@ -85,7 +98,13 @@ export const initRealtimeWsConversation = async (
     onUserSpeaking: (active) => config.setIsUserSpeaking(active),
     onAssistantSpeaking: () => reportAiSpeaking(),
     onPlaybackStateChange: () => reportAiSpeaking(),
-    onError: (message) => console.error('realtimeWs', message),
+    onError: (message) => {
+      console.error('realtimeWs', message);
+      const friendly = message.includes('invalid_token')
+        ? 'Realtime sign-in was rejected. For Fly from localhost use pnpm dev:prod (production Firebase). For local realtime use pnpm dev with the server on port 8081.'
+        : message;
+      config.onTransportError?.(friendly);
+    },
   });
 
   const client = state.client;
@@ -113,7 +132,11 @@ export const initRealtimeWsConversation = async (
     });
   };
 
-  const token = await config.getAuthToken();
+  const wsBaseUrl = getRealtimeWsUrl();
+  const token = await resolveRealtimeWsAuthToken(
+    (forceRefresh) => config.getAuthToken(forceRefresh),
+    wsBaseUrl,
+  );
   const voice = config.voice || 'shimmer';
 
   client.connect(token, {
@@ -222,7 +245,10 @@ export const initRealtimeWsConversation = async (
       stopCapture();
       client.disconnect();
       await new Promise((resolve) => window.setTimeout(resolve, 300));
-      const restartToken = await config.getAuthToken();
+      const restartToken = await resolveRealtimeWsAuthToken(
+        (forceRefresh) => config.getAuthToken(forceRefresh),
+        wsBaseUrl,
+      );
       client.connect(restartToken, {
         languageCode: config.languageCode,
         mode: 'RealTimeConversation',
@@ -236,5 +262,7 @@ export const initRealtimeWsConversation = async (
         await startCaptureIfNeeded();
       }
     },
+
+    flushSessionReady: scheduleOnOpenOnce,
   };
 };

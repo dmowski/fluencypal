@@ -35,7 +35,7 @@ export interface AuthContext {
   logout: () => Promise<void>;
   signInWithGoogle: () => Promise<SignInResult>;
   signInWithCustomToken: (backendToken: string) => Promise<SignInResult>;
-  getToken: () => Promise<string>;
+  getToken: (forceRefresh?: boolean) => Promise<string>;
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
   isDev: boolean;
@@ -237,8 +237,8 @@ function useProvideAuth(): AuthContext {
     await auth.signOut();
   };
 
-  const getToken = async () => {
-    const token = await userInfo?.getIdToken();
+  const getToken = async (forceRefresh = false) => {
+    const token = await userInfo?.getIdToken(forceRefresh);
     return token || '';
   };
 
