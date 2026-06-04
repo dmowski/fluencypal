@@ -181,8 +181,9 @@ const updateTalkHint = (connected: boolean) => {
   }
 
   if (isRealtimeMode()) {
-    talkHint.textContent =
-      'Click “Start call” and wait for the assistant greeting. Uncheck “Mic muted” when you want to speak (mic stays off by default so room noise does not cancel TTS).';
+    talkHint.textContent = micMuted.checked
+      ? 'Click “Start call” to hear the assistant (mic is muted). Uncheck “Mic muted” when you want to speak.'
+      : 'Click “Start call” and speak naturally after the greeting.';
     return;
   }
 
@@ -204,7 +205,12 @@ const client = new RealtimeSessionClient({
   },
   onSessionReady: () => {
     void unlockAudioPlayback();
-    void prepareMicrophone();
+    if (micMuted.checked) {
+      setMicStatus('Mic: muted — uncheck to speak', 'idle');
+      syncTalkControls(client.isConnected);
+    } else {
+      void prepareMicrophone();
+    }
   },
   onTranscriptDelta: (messageId, role, delta) => {
     const body = ensureTranscriptMessage(messageId, role);
@@ -294,7 +300,8 @@ const syncTalkControls = (connected: boolean) => {
   pttBtn.classList.toggle('hidden', realtime);
 
   const micBlocked = micMuted.checked || !microphone.isReady;
-  callToggleBtn.disabled = !connected || micBlocked;
+  // Real-time call can start with mic muted (listen-only greeting); PTT still needs the mic.
+  callToggleBtn.disabled = !connected || (!realtime && micBlocked);
   pttBtn.disabled = !connected || micBlocked || realtime;
 
   updateTalkHint(connected);
@@ -470,9 +477,16 @@ voiceEnabled.addEventListener('change', () => {
 
 micMuted.addEventListener('change', async () => {
   if (micMuted.checked) {
-    await stopCall();
+    if (capture) {
+      capture.stop();
+      capture = null;
+      debugLog('mic', 'capture_stopped_muted');
+    }
   } else if (client.isConnected) {
     await prepareMicrophone();
+    if (callActive) {
+      await startMicCaptureIfNeeded();
+    }
   }
 
   syncTalkControls(client.isConnected);
@@ -482,24 +496,36 @@ micMuted.addEventListener('change', async () => {
   }
 });
 
-const startCall = async () => {
-  if (!client.isConnected || micMuted.checked || capture || callActive) {
-    return;
+const startMicCaptureIfNeeded = async (): Promise<boolean> => {
+  if (micMuted.checked || capture) {
+    return true;
   }
-
-  debugLog('call', 'start');
 
   if (!(await prepareMicrophone())) {
-    return;
+    return false;
   }
 
-  await unlockAudioPlayback();
   try {
     capture = await microphone.startCapture((chunk) => {
       client.sendAudioChunk(chunk);
     });
+    return true;
   } catch (error) {
     setMicStatus(`Mic: ${describeMicError(error)}`, 'error');
+    return false;
+  }
+};
+
+const startCall = async () => {
+  if (!client.isConnected || capture || callActive) {
+    return;
+  }
+
+  debugLog('call', 'start', { micMuted: micMuted.checked });
+
+  await unlockAudioPlayback();
+
+  if (!(await startMicCaptureIfNeeded())) {
     return;
   }
 
