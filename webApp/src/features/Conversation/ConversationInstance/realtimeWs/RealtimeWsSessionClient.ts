@@ -146,7 +146,7 @@ export class RealtimeWsSessionClient {
   }
 
   sendAudioChunk(chunk: ArrayBuffer): void {
-    if (!this.isConnected || !this.socket || !this.sessionReady || this.isMicUploadBlocked) {
+    if (!this.isConnected || !this.socket || !this.sessionReady) {
       return;
     }
 

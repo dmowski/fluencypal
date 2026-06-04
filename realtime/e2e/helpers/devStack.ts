@@ -12,6 +12,8 @@ loadDotenv({ path: path.join(realtimeRoot, '.env') });
 
 export const EMULATOR_UI_PORT = 4000;
 export const AUTH_EMULATOR_PORT = 9099;
+export const FIRESTORE_EMULATOR_PORT = 8080;
+export const STORAGE_EMULATOR_PORT = 9199;
 export const DEFAULT_REALTIME_PORT = 8081;
 export const E2E_REALTIME_PORT = 18081;
 export const CLIENT_PORT = 5173;
@@ -107,42 +109,95 @@ export const waitForUrl = async (url: string, timeoutMs = READY_TIMEOUT_MS): Pro
   throw new Error(`Timed out waiting for ${url}`);
 };
 
-export const isEmulatorRunning = async (): Promise<boolean> => {
+const authEmulatorProbeUrl = (): string =>
+  `http://127.0.0.1:${AUTH_EMULATOR_PORT}/identitytoolkit.googleapis.com/v1/accounts:signUp?key=fake-api-key`;
+
+/** Auth emulator is the signal realtime dev/e2e need; UI port 4000 may be off while auth is up. */
+export const isAuthEmulatorReady = async (): Promise<boolean> => {
   try {
-    const response = await fetch(`http://127.0.0.1:${EMULATOR_UI_PORT}/`);
+    const response = await fetch(authEmulatorProbeUrl(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: `probe-${Date.now()}@example.com`,
+        password: 'Probe123!',
+        returnSecureToken: true,
+      }),
+    });
+
     return response.ok;
   } catch {
     return false;
   }
 };
 
+export const isEmulatorRunning = async (): Promise<boolean> => isAuthEmulatorReady();
+
+export const isPortInUse = async (port: number): Promise<boolean> => {
+  if (process.platform === 'win32') {
+    return false;
+  }
+
+  try {
+    const result = spawn('lsof', ['-ti', `:${port}`], { stdio: ['ignore', 'pipe', 'ignore'] });
+    const stdout = await new Promise<string>((resolve) => {
+      let data = '';
+      result.stdout?.on('data', (chunk: Buffer) => {
+        data += chunk.toString();
+      });
+      result.on('close', () => resolve(data.trim()));
+    });
+
+    return stdout.length > 0;
+  } catch {
+    return false;
+  }
+};
+
 const waitForAuthEmulator = async (): Promise<void> => {
-  const url = `http://127.0.0.1:${AUTH_EMULATOR_PORT}/identitytoolkit.googleapis.com/v1/accounts:signUp?key=fake-api-key`;
   const startedAt = Date.now();
 
   while (Date.now() - startedAt < READY_TIMEOUT_MS) {
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: `probe-${Date.now()}@example.com`,
-          password: 'Probe123!',
-          returnSecureToken: true,
-        }),
-      });
-
-      if (response.ok) {
-        return;
-      }
-    } catch {
-      // retry
+    if (await isAuthEmulatorReady()) {
+      return;
     }
 
     await sleep(500);
   }
 
   throw new Error(`Auth emulator not ready on port ${AUTH_EMULATOR_PORT}`);
+};
+
+const buildEmulatorStartArgs = async (logPrefix: string): Promise<string[]> => {
+  const args = [
+    '-y',
+    `firebase-tools@${FIREBASE_TOOLS_VERSION}`,
+    'emulators:start',
+    '--project',
+    'dark-lang',
+  ];
+
+  const firestoreBusy = await isPortInUse(FIRESTORE_EMULATOR_PORT);
+  const storageBusy = await isPortInUse(STORAGE_EMULATOR_PORT);
+
+  if (firestoreBusy || storageBusy) {
+    const only: string[] = ['auth'];
+    if (!storageBusy) {
+      only.push('storage');
+    }
+
+    const skipped = [
+      firestoreBusy ? `Firestore (${FIRESTORE_EMULATOR_PORT})` : null,
+      storageBusy ? `Storage (${STORAGE_EMULATOR_PORT})` : null,
+    ].filter(Boolean);
+
+    console.warn(
+      `[${logPrefix}] Port(s) in use (${skipped.join(', ')}). Starting Firebase emulators: ${only.join(', ')} only.`,
+    );
+    args.push('--only', only.join(','));
+  }
+
+  return args;
 };
 
 const spawnProcess = (
@@ -248,19 +303,38 @@ export const startDevStack = async (options: StartDevStackOptions = {}): Promise
   let startedEmulator = false;
 
   if (!(await isEmulatorRunning())) {
-    emulatorProcess = spawnProcess(
-      'npx',
-      [
-        '-y',
-        `firebase-tools@${FIREBASE_TOOLS_VERSION}`,
-        'emulators:start',
-        '--project',
-        'dark-lang',
-      ],
-      { cwd: webAppRoot, logPrefix: `${logPrefix}:emulator` },
-    );
+    emulatorProcess = spawnProcess('npx', await buildEmulatorStartArgs(logPrefix), {
+      cwd: webAppRoot,
+      logPrefix: `${logPrefix}:emulator`,
+    });
     startedEmulator = true;
-    await waitForUrl(`http://127.0.0.1:${EMULATOR_UI_PORT}/`);
+
+    const waitForEmulatorReady = async (): Promise<void> => {
+      const startedAt = Date.now();
+      while (Date.now() - startedAt < READY_TIMEOUT_MS) {
+        if (await isAuthEmulatorReady()) {
+          return;
+        }
+
+        if (emulatorProcess && emulatorProcess.exitCode !== null && emulatorProcess.exitCode !== 0) {
+          if (await isAuthEmulatorReady()) {
+            return;
+          }
+
+          throw new Error(
+            `Firebase emulators exited with code ${emulatorProcess.exitCode}. ` +
+              `Free ports ${FIRESTORE_EMULATOR_PORT}/${AUTH_EMULATOR_PORT}/${STORAGE_EMULATOR_PORT} ` +
+              'or run `cd webApp && pnpm dev:firebase-emulator` first.',
+          );
+        }
+
+        await sleep(500);
+      }
+
+      throw new Error(`Timed out waiting for Auth emulator on port ${AUTH_EMULATOR_PORT}`);
+    };
+
+    await waitForEmulatorReady();
   }
 
   await waitForAuthEmulator();

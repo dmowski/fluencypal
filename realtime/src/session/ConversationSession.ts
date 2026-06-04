@@ -12,7 +12,12 @@ import type {
 } from '../protocol/messages.js';
 import { ConversationHistory } from './history.js';
 import { TurnPipeline } from './TurnPipeline.js';
-import { RealtimeTurnDetector, computePcm16Rms, estimateBufferedSpeechMs } from './turnDetection.js';
+import {
+  RealtimeTurnDetector,
+  computePcm16Rms,
+  defaultTurnDetectorConfig,
+  estimateBufferedSpeechMs,
+} from './turnDetection.js';
 import { isAbortError } from '../errors/isAbortError.js';
 import { sessionLog, sessionWarn } from '../log/sessionLog.js';
 
@@ -162,6 +167,13 @@ export class ConversationSession {
     }
 
     if (this.config.mode === 'RealTimeConversation') {
+      const rms = computePcm16Rms(frame.payload);
+      // Barge-in: interrupt assistant whenever user speech arrives during an active pipeline turn,
+      // even if the turn detector is already in a "speaking" state from a prior utterance.
+      if (rms >= defaultTurnDetectorConfig.rmsThreshold && this.pipeline.isBusy) {
+        this.handleUserSpeechStart();
+      }
+
       this.turnDetector.processChunk(frame.payload, {
         onSpeechStart: () => this.handleUserSpeechStart(),
         onSpeechEnd: () => this.handleUserSpeechEnd(),

@@ -34,7 +34,6 @@ export type SessionClientHandlers = {
     createdAt?: number;
   }) => void;
   onError: (message: string) => void;
-  onMicUploadBlockedChange?: (blocked: boolean) => void;
 };
 
 export type SessionStartConfig = {
@@ -57,19 +56,10 @@ export class RealtimeSessionClient {
   private audioChunksSkipped = 0;
   private messageChain: Promise<void> = Promise.resolve();
   private playCollectedPending = false;
-  private lastMicUploadBlocked: boolean | null = null;
   private ttsBytesReceived = 0;
   private playTask: Promise<void> = Promise.resolve();
 
-  constructor(private readonly handlers: SessionClientHandlers) {
-    this.playback.setOnStateChange(() => {
-      this.notifyMicUploadBlockedChange();
-    });
-  }
-
-  get isMicUploadBlocked(): boolean {
-    return this.assistantSpeaking || this.playback.isPlaying;
-  }
+  constructor(private readonly handlers: SessionClientHandlers) {}
 
   get isConnected(): boolean {
     return this.socket?.readyState === WebSocket.OPEN;
@@ -140,7 +130,6 @@ export class RealtimeSessionClient {
     this.messageChain = Promise.resolve();
     this.playCollectedPending = false;
     this.assistantSpeaking = false;
-    this.lastMicUploadBlocked = null;
     this.playTask = Promise.resolve();
   }
 
@@ -165,27 +154,8 @@ export class RealtimeSessionClient {
       return;
     }
 
-    if (this.isMicUploadBlocked) {
-      this.audioChunksSkipped += 1;
-      return;
-    }
-
     this.audioChunksSent += 1;
     this.socket.send(chunk);
-  }
-
-  private notifyMicUploadBlockedChange(): void {
-    const blocked = this.isMicUploadBlocked;
-    if (blocked === this.lastMicUploadBlocked) {
-      return;
-    }
-
-    this.lastMicUploadBlocked = blocked;
-    debugLog('mic', blocked ? 'upload_paused' : 'upload_resumed', {
-      assistantSpeaking: this.assistantSpeaking,
-      playbackPlaying: this.playback.isPlaying,
-    });
-    this.handlers.onMicUploadBlockedChange?.(blocked);
   }
 
   private cancelAssistantAudio(reason: string): void {
@@ -321,7 +291,6 @@ export class RealtimeSessionClient {
           this.playCollectedPending = true;
           this.schedulePlayCollected();
         }
-        this.notifyMicUploadBlockedChange();
         return;
       case 'user.speaking':
         debugLogVerbose('user', message.active ? 'speaking' : 'silent');

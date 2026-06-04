@@ -205,21 +205,6 @@ const client = new RealtimeSessionClient({
   onSessionReady: () => {
     void prepareMicrophone();
   },
-  onMicUploadBlockedChange: (blocked) => {
-    if (!callActive || !isRealtimeMode()) {
-      return;
-    }
-
-    // Status UI updated by sessionClient mic upload logs.
-
-    if (blocked) {
-      setSessionStatusText('Call active — assistant speaking (mic paused)', 'warning');
-      return;
-    }
-
-    setSessionStatusText('Call active — listening…', 'ok');
-    syncDebugContext();
-  },
   onTranscriptDelta: (messageId, role, delta) => {
     const body = ensureTranscriptMessage(messageId, role);
     body.textContent = `${body.textContent ?? ''}${delta}`;
@@ -529,7 +514,7 @@ const startCall = async () => {
     debugLog('call', 'assistant_trigger');
     client.sendJson({ type: 'assistant.trigger' });
     greetingSent = true;
-  } else if (!client.isMicUploadBlocked) {
+  } else {
     setSessionStatusText('Call active — listening…', 'ok');
   }
 };
@@ -542,7 +527,7 @@ const stopCall = async () => {
     return;
   }
 
-  debugLog('call', 'stop', { micBlocked: client.isMicUploadBlocked });
+  debugLog('call', 'stop');
 
   capture.stop();
   capture = null;

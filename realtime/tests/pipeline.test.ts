@@ -45,6 +45,55 @@ describe('TurnPipeline', () => {
     expect(history.list().some((message) => message.role === 'assistant')).toBe(true);
   });
 
+  it('emits assistant.speaking only after the first TTS binary chunk', async () => {
+    const sent: Array<{ type: string; active?: boolean }> = [];
+    const binary: Buffer[] = [];
+    const history = new ConversationHistory();
+    history.append({ id: 'u1', role: 'user', text: 'Hi', createdAt: Date.now() });
+
+    let releaseTts: () => void = () => {};
+    const ttsGate = new Promise<void>((resolve) => {
+      releaseTts = resolve;
+    });
+
+    const pipeline = new TurnPipeline(
+      createMockProviders({
+        tts: {
+          async *synthesizeStream() {
+            await ttsGate;
+            yield Buffer.from('fake-audio');
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+      {
+        send: (message) => sent.push(message as { type: string; active?: boolean }),
+        sendBinary: (chunk) => binary.push(chunk),
+      },
+      () => baseConfig,
+      history,
+      new AbortController().signal,
+    );
+
+    const generatePromise = pipeline.generateAssistantResponse();
+    await Promise.resolve();
+
+    expect(sent.some((message) => message.type === 'assistant.speaking')).toBe(false);
+
+    releaseTts();
+    await generatePromise;
+
+    const speakingMessages = sent.filter((message) => message.type === 'assistant.speaking');
+    expect(speakingMessages.map((message) => message.active)).toEqual([true, false]);
+    expect(binary).toHaveLength(1);
+
+    const speakingIndex = sent.findIndex((message) => message.type === 'assistant.speaking');
+    expect(speakingIndex).toBeGreaterThan(-1);
+    expect(sent.slice(0, speakingIndex).some((message) => message.type === 'transcript.done')).toBe(
+      true,
+    );
+  });
+
   it('skips TTS when voice is disabled', async () => {
     const binary: Buffer[] = [];
     const history = new ConversationHistory();

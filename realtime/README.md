@@ -81,7 +81,7 @@ Models are **server-side only** — clients never send model or provider ids. Ch
 
 ### Firebase emulator mode
 
-`pnpm dev` starts the Firebase emulators automatically when they are not already running (requires Java 11+).
+`pnpm dev` starts the Firebase emulators automatically when the Auth emulator (`9099`) is not already running (requires Java 11+). If another process already uses Firestore port `8080` (for example a leftover emulator or `webApp` dev), the dev script starts **auth + storage only** and reuses the existing Firestore instance on `8080`.
 
 To run the API alone against an emulator you start separately:
 
@@ -179,6 +179,8 @@ Open http://127.0.0.1:5173, click **Sign in with Google**, then **Connect**, the
 
 Toggles: mic mute, AI voice on/off (voice off skips TTS but still runs STT + LLM). Usage events appear in the log panel.
 
+**Barge-in:** While the assistant pipeline is active, keep sending mic PCM whenever the mic is unmuted (do not pause upload during TTS or local playback). The server detects user speech, aborts in-flight LLM/TTS, and emits `assistant.interrupted`.
+
 The Vite dev server proxies `/v1` (HTTP + WebSocket) to `http://127.0.0.1:8081`.
 
 ## Wire protocol
@@ -239,8 +241,8 @@ Binary frames are detected when the payload does not start with `{` (JSON). Raw 
 | `transcript.delta` | Streaming partial transcript |
 | `transcript.done` | Finalized user or assistant message |
 | `user.speaking` | User speech activity indicator |
-| `assistant.speaking` | Assistant TTS activity |
-| `assistant.interrupted` | Barge-in — stop playback client-side |
+| `assistant.speaking` | `active: true` only after the first TTS audio chunk is sent; `active: false` when the stream ends. Use for UI “assistant talking” (not during LLM-only generation). |
+| `assistant.interrupted` | Barge-in — server aborted LLM/TTS; clients should stop playback and discard buffered TTS |
 | `usage` | Token usage after each STT / LLM / TTS call |
 | `error` | `{ code, message, fatal? }` |
 | `session.pong` / `session.ended` | Control replies |

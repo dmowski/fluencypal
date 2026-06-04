@@ -62,4 +62,54 @@ describe('ConversationSession RealTimeConversation', () => {
 
     vi.useRealTimers();
   });
+
+  it('interrupts in-flight assistant output when user speaks during pipeline busy', async () => {
+    let resolveLlm: () => void = () => {};
+    const llmGate = new Promise<void>((resolve) => {
+      resolveLlm = resolve;
+    });
+
+    const sent: Array<{ type: string }> = [];
+    const session = new ConversationSession({
+      sessionId: 'rtc-barge',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: false,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        llm: {
+          async *streamChat() {
+            yield { delta: 'Hello' };
+            await llmGate;
+            yield { delta: ' world' };
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    const assistantPromise = session.handleClientMessage({ type: 'assistant.trigger' });
+    await Promise.resolve();
+
+    session.handleBinaryAudio(makeLoudPcmChunk());
+
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+
+    resolveLlm();
+    await assistantPromise;
+
+    expect(
+      sent.filter(
+        (message) =>
+          message.type === 'transcript.done' &&
+          (message as { role?: string }).role === 'assistant',
+      ),
+    ).toHaveLength(0);
+  });
 });

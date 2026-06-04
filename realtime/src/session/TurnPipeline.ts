@@ -222,8 +222,6 @@ export class TurnPipeline {
   ): Promise<void> {
     const models = getPipelineModels();
     const ttsStartedAt = Date.now();
-    this.voiceStreamingActive = true;
-    this.callbacks.send({ type: 'assistant.speaking', active: true });
 
     const ttsStream = this.providers.tts.synthesizeStream(text, {
       voice,
@@ -232,6 +230,17 @@ export class TurnPipeline {
     });
 
     let ttsBytes = 0;
+    let speakingSignaled = false;
+
+    const signalSpeakingStarted = (): void => {
+      if (speakingSignaled || gen !== this.generateGeneration || signal.aborted) {
+        return;
+      }
+
+      speakingSignaled = true;
+      this.voiceStreamingActive = true;
+      this.callbacks.send({ type: 'assistant.speaking', active: true });
+    };
 
     try {
       while (true) {
@@ -256,6 +265,7 @@ export class TurnPipeline {
         }
 
         ttsBytes += value.length;
+        signalSpeakingStarted();
         this.callbacks.sendBinary(value);
       }
 
