@@ -8,6 +8,7 @@ const signInWithGoogle = async (page: import('@playwright/test').Page) => {
 };
 
 const connectAndWaitForMic = async (page: import('@playwright/test').Page) => {
+  await page.locator('#mic-muted').uncheck();
   await page.click('#connect');
   await expect(page.locator('#session-status')).toContainText('Session ready', { timeout: 15_000 });
   await expect(page.locator('#mic-status')).toContainText('Mic: ready', { timeout: 15_000 });

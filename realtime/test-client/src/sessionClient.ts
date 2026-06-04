@@ -281,7 +281,8 @@ export class RealtimeSessionClient {
         return;
       case 'assistant.speaking':
         if (message.active) {
-          this.cancelAssistantAudio('new_tts_stream');
+          // Stop any in-flight playback; binary chunks for this stream arrive after this signal.
+          this.playback.stopInFlightOutput();
           this.assistantSpeaking = true;
         } else {
           this.assistantSpeaking = false;

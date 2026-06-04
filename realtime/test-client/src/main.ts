@@ -182,7 +182,7 @@ const updateTalkHint = (connected: boolean) => {
 
   if (isRealtimeMode()) {
     talkHint.textContent =
-      'Click “Start call”. The assistant greets you first; wait until mic status says “listening”, then speak naturally.';
+      'Click “Start call” and wait for the assistant greeting. Uncheck “Mic muted” when you want to speak (mic stays off by default so room noise does not cancel TTS).';
     return;
   }
 
@@ -203,6 +203,7 @@ const client = new RealtimeSessionClient({
     updateSteps();
   },
   onSessionReady: () => {
+    void unlockAudioPlayback();
     void prepareMicrophone();
   },
   onTranscriptDelta: (messageId, role, delta) => {

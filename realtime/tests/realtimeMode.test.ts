@@ -112,4 +112,48 @@ describe('ConversationSession RealTimeConversation', () => {
       ),
     ).toHaveLength(0);
   });
+
+  it('barge-in during busy pipeline fires at most once until the pipeline is idle', async () => {
+    let resolveLlm: () => void = () => {};
+    const llmGate = new Promise<void>((resolve) => {
+      resolveLlm = resolve;
+    });
+
+    const sent: Array<{ type: string }> = [];
+    const session = new ConversationSession({
+      sessionId: 'rtc-barge-once',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: false,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        llm: {
+          async *streamChat() {
+            yield { delta: 'Hello' };
+            await llmGate;
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    const assistantPromise = session.handleClientMessage({ type: 'assistant.trigger' });
+    await Promise.resolve();
+
+    const loud = makeLoudPcmChunk();
+    session.handleBinaryAudio(loud);
+    session.handleBinaryAudio(loud);
+    session.handleBinaryAudio(loud);
+
+    expect(sent.filter((message) => message.type === 'assistant.interrupted')).toHaveLength(1);
+
+    resolveLlm();
+    await assistantPromise;
+  });
 });

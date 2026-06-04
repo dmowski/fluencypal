@@ -47,6 +47,8 @@ export class ConversationSession {
   private pendingTurnCommit = false;
   private userSpeaking = false;
   private binaryChunkCount = 0;
+  /** One barge-in interrupt per busy pipeline turn (avoid aborting TTS on every loud mic chunk). */
+  private assistantBargeInHandled = false;
 
   constructor({
     sessionId,
@@ -167,10 +169,18 @@ export class ConversationSession {
     }
 
     if (this.config.mode === 'RealTimeConversation') {
+      if (!this.pipeline.isBusy) {
+        this.assistantBargeInHandled = false;
+      }
+
       const rms = computePcm16Rms(frame.payload);
-      // Barge-in: interrupt assistant whenever user speech arrives during an active pipeline turn,
-      // even if the turn detector is already in a "speaking" state from a prior utterance.
-      if (rms >= defaultTurnDetectorConfig.rmsThreshold && this.pipeline.isBusy) {
+      // Barge-in while assistant is busy: edge-trigger once per busy turn (not every loud chunk).
+      if (
+        rms >= defaultTurnDetectorConfig.rmsThreshold &&
+        this.pipeline.isBusy &&
+        !this.assistantBargeInHandled
+      ) {
+        this.assistantBargeInHandled = true;
         this.handleUserSpeechStart();
       }
 

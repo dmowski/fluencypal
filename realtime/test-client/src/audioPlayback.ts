@@ -26,7 +26,15 @@ export class Mp3PlaybackQueue {
     this.chunks.push(new Uint8Array(chunk));
   }
 
-  /** Stop in-flight output and discard buffered TTS (barge-in / new assistant turn). */
+  /** Stop speaker output but keep buffered MP3 chunks (about to play when stream ends). */
+  stopInFlightOutput(): void {
+    this.generation += 1;
+    this.stopOutput();
+    this.setPlaying(false);
+    debugLog('audio', 'playback_stopped');
+  }
+
+  /** Stop in-flight output and discard buffered TTS (barge-in / disconnect). */
   cancel(): void {
     this.generation += 1;
     this.chunks = [];
