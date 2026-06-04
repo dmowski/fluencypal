@@ -2,10 +2,7 @@
 
 ## Realtime service
 
-- Polish Vad instruction
-- Test on devices
-- Test record message mode
-- Test event logs
+How to analyze conversation. Feedback look.
 
 ## Alias
 
