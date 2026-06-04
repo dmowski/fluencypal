@@ -155,6 +155,11 @@ function startDevServer() {
   const dev = spawn('next', ['dev', '--turbopack'], {
     cwd,
     stdio: 'inherit',
+    env: {
+      ...process.env,
+      IS_FIREBASE_EMULATOR: 'true',
+      NEXT_PUBLIC_IS_FIREBASE_EMULATOR: 'true',
+    },
   });
 
   dev.on('error', (error) => {

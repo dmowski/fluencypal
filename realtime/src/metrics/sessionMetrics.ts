@@ -1,4 +1,4 @@
-export type PipelineStage = 'stt' | 'llm' | 'tts';
+export type PipelineStage = "stt" | "llm" | "tts";
 
 type StageMetrics = {
   count: number;
@@ -25,13 +25,13 @@ export const recordPipelineLatency = (stage: PipelineStage, durationMs: number):
   bucket.lastMs = durationMs;
 };
 
-export const getMetricsSnapshot = (activeSessions: number) => {
-  const summarize = (bucket: StageMetrics) => ({
-    count: bucket.count,
-    lastMs: bucket.lastMs,
-    avgMs: bucket.count > 0 ? Math.round(bucket.totalMs / bucket.count) : 0,
-  });
+const summarize = (bucket: StageMetrics) => ({
+  count: bucket.count,
+  lastMs: bucket.lastMs,
+  avgMs: bucket.count > 0 ? Math.round(bucket.totalMs / bucket.count) : 0,
+});
 
+export const getMetricsSnapshot = (activeSessions: number) => {
   return {
     activeSessions,
     pipeline: {

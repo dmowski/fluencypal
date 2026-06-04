@@ -614,55 +614,75 @@ Other options considered:
 
 ## 13. Phase 3 — webApp Integration
 
-**Objective**: Replace OpenAI Realtime WebRTC for `talk`, `role-play`, `news-discussion` modes.
+**Objective**: Offer custom realtime WebSocket as an **experimental** Just Talk path; keep OpenAI WebRTC for all other entry points until stable.
+
+**Status (2026-06)**: MVP adapter shipped; rollout is Experimental Lab only. WebRTC unchanged for `JustTalkCard`, daily tasks, role-play, news, etc.
 
 ### Step 3.1 — New conversation adapter
 
-Create `webApp/src/features/Conversation/ConversationInstance/realtimeWs/`:
+- [x] `webApp/src/features/Conversation/ConversationInstance/realtimeWs/` — `initRealtimeWsConversation`, `RealtimeWsSessionClient`, PCM capture, MP3 playback, usage mapping.
+- [x] `useAiConversation.startConversation({ experimentalRealtimeWs: true })` selects WS transport; default path still `initWebRtcConversation`.
 
 | Method                                             | WS mapping                                                            |
 | -------------------------------------------------- | --------------------------------------------------------------------- |
 | `closeHandler`                                     | `session.end`, close socket                                           |
-| `toggleMute`                                       | pause/resume audio gating client-side + `session.update { micMuted }` |
-| `toggleVolume`                                     | `session.update { voiceEnabled }`                                     |
+| `toggleMute`                                       | client capture gating + `session.update { micMuted }`                 |
+| `toggleVolume`                                     | playback volume + `session.update { voiceEnabled }`                   |
 | `triggerAiResponse`                                | `assistant.trigger`                                                   |
 | `sendCorrectionInstruction`                        | `assistant.instruction`                                               |
-| `sendWebCamDescription`                            | `session.update` vision text or `vision.frame`                        |
-| `addUserMessageDelta` / `completeUserMessageDelta` | `user.text` + deltas for typed mode                                   |
-| `restartConversation`                              | end session + new `session.start` with same config                    |
+| `sendWebCamDescription`                            | `session.update { systemInstruction }`                                |
+| `addThreadsMessage`                                | `user.text` + `user.turn.commit`                                      |
+| `addUserMessageDelta` / `completeUserMessageDelta` | not supported (warn only)                                             |
+| `restartConversation`                              | disconnect + `session.start` again                                    |
 
-Map server events → existing `ConversationConfig` callbacks (same as `messageHandler.ts`).
+Map server events → `ConversationConfig` callbacks (transcript deltas/done, usage, speaking flags).
 
 ### Step 3.2 — Experimental rollout
 
-- [ ] Env `NEXT_PUBLIC_REALTIME_WS_URL=wss://...`
-- [ ] Gate access via `webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx` for a limited set of users
-- [ ] Keep WebRTC path for users not on the experiment until stable
+- [x] Env: `NEXT_PUBLIC_REALTIME_WS_URL_DEV` (`pnpm dev` + emulator) and `NEXT_PUBLIC_REALTIME_WS_URL_PROD` (`pnpm dev:prod`); legacy `NEXT_PUBLIC_REALTIME_WS_URL` fallback. See `webApp/.env.example`.
+- [x] `ExperimentalDashboardCard.tsx` — list item **Just Talk (custom realtime)**; card click still uses WebRTC `useJustTalk`.
+- [x] `useExperimentalJustTalk` — same Just Talk params (`mode: 'talk'`, `conversationMode: 'call'`).
+- [x] `hasExperimentalDashboardAccess` gate unchanged.
+- [ ] Document Fly `ALLOWED_ORIGINS` must include `http://localhost:3000` when using prod WSS from localhost.
+
+**Local dev URLs**
+
+| Command        | Firebase        | Typical `NEXT_PUBLIC_*` WS base              |
+| -------------- | --------------- | -------------------------------------------- |
+| `pnpm dev`     | Emulator        | `ws://127.0.0.1:8081` (`_DEV`; run `realtime` locally) |
+| `pnpm dev:prod`| Production      | `wss://fluencypal-realtime.fly.dev` (`_PROD`) |
+
+**Important**: Prod Fly + localhost requires **production** Firebase tokens (`pnpm dev:prod`). Emulator tokens fail with `invalid_token` / missing `kid`.
 
 ### Step 3.3 — Auth bridge
 
-- [ ] Client passes Firebase token in `session.start` via existing `getAuthToken`.
-- [ ] No server-side rate limits in MVP (webApp owns enforcement).
+- [x] Firebase ID token in `session.start` via `getAuthToken()` / `auth.getIdToken()`.
+- [x] Server `validateIdToken` (same project `dark-lang`).
+- [ ] Optional: `getIdToken(true)` before connect + clearer client error when token is empty or emulator-shaped.
 
 ### Step 3.4 — Usage pipeline
 
-- [ ] Map `usage` events to existing `UsageLog` + `calculateUsagePrice` (extend price tables for discrete STT/TTS models if needed).
+- [x] `calculateRealtimePipelineStagePrice` in `webApp/src/features/Ai/ai.ts`.
+- [x] `mapWsUsageToLog` → `text` / `transcript` / `text_to_audio` `UsageLog` entries.
+- [ ] Parity check vs WebRTC path on representative sessions (±5% billing).
 
 ### Step 3.5 — UI verification
 
-- [ ] `CallButtons`, transcript view, mute/volume, lesson plan corrections
-- [ ] E2e: one happy-path talk mode spec under `webApp/e2e/reader/` or conversation-specific folder
+- [ ] Manual pass: `CallButtons`, transcript, mute/volume, greeting (`assistant.trigger`), mobile Safari.
+- [ ] Lesson plan `sendCorrectionInstruction` on experimental path.
+- [ ] Playwright e2e: Experimental Lab → custom realtime happy path (emulator + local `realtime` or mocked WS).
 
 ### Step 3.6 — Retire WebRTC path (later)
 
-- [ ] Remove SDP / ephemeral token flow for conversation modes once stable
-- [ ] Keep `/api/realtimeTranscript` until standalone STT WS exists or reuse new service
+- [ ] Remove SDP / ephemeral token flow for conversation modes once stable.
+- [ ] Keep `/api/realtimeTranscript` until standalone STT WS exists or reuse new service.
+- [ ] Expand beyond Just Talk (`role-play`, `news-discussion`) if product wants full migration.
 
 **Phase 3 exit criteria**
 
-- Production talk mode uses custom realtime service.
-- Usage analytics parity ±5% vs old path on test scenarios.
-- No regression in non-experimental conversation paths (WebRTC fallback for non-experiment users).
+- [ ] Production talk mode available via experiment with stable UX on iOS + Android.
+- [ ] Usage analytics parity ±5% vs old path on test scenarios.
+- [x] No regression in non-experimental paths (WebRTC remains default).
 
 ---
 
@@ -726,8 +746,9 @@ Phase 1 (local)
 Phase 2 (deploy)
   Fly.io + WSS → mobile audio → optional streaming STT → soak test
 
-Phase 3 (product)
-  ConversationInstance adapter → ExperimentalDashboardCard rollout → usage mapping → e2e
+Phase 3 (product) — in progress
+  [done] ConversationInstance adapter → ExperimentalDashboardCard → usage mapping
+  [todo] device QA, e2e, optional getIdToken(true), widen rollout / retire WebRTC
 ```
 
 ---

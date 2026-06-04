@@ -20,7 +20,7 @@ export const useExperimentalJustTalk = () => {
     if (!isExperimentalRealtimeWsConfigured()) {
       alert(
         i18n._(
-          'Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for example wss://fluencypal-realtime.fly.dev) and reload.',
+          'Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD (pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local and reload.',
         ),
       );
       return;

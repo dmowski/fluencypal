@@ -56,7 +56,7 @@ export const ExperimentalDashboardCard = () => {
               title: i18n._('Just Talk (custom realtime)'),
               subTitle: isRealtimeWsConfigured
                 ? i18n._('Same Just Talk lesson via the new WebSocket voice server.')
-                : i18n._('Set NEXT_PUBLIC_REALTIME_WS_URL to enable.'),
+                : i18n._('Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local.'),
               iconName: 'mic',
               iconBgColor: 'rgba(11, 8, 0, 0.8)',
               actionButtonTitle: i18n._('Start'),

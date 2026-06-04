@@ -381,9 +381,26 @@ pnpm prod:open   # opens the test page in your browser
 TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Allowed WebSocket origins:
 
 - `https://fluencypal-realtime.fly.dev` — bundled test client (same origin)
-- `https://app.fluencypal.com` — production web app (Phase 3)
+- `https://app.fluencypal.com` — production web app
+- `http://localhost:3000` — local webApp against prod WSS (optional; set via `fly secrets`)
 
-The Fly app URL is also merged automatically from `FLY_APP_NAME`. If you set `ALLOWED_ORIGINS` via `fly secrets`, include both URLs above.
+The Fly app URL is also merged automatically from `FLY_APP_NAME`. If you set `ALLOWED_ORIGINS` via `fly secrets`, include the URLs above.
+
+### webApp experimental integration (Phase 3)
+
+Experimental **Just Talk (custom realtime)** lives in `webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx`. WebRTC remains the default everywhere else.
+
+In `webApp/.env.local`:
+
+```bash
+# pnpm dev (Firebase emulator) + local realtime on 8081
+NEXT_PUBLIC_REALTIME_WS_URL_DEV=ws://127.0.0.1:8081
+
+# pnpm dev:prod (production Firebase) → Fly WSS
+NEXT_PUBLIC_REALTIME_WS_URL_PROD=wss://fluencypal-realtime.fly.dev
+```
+
+Selection is automatic from `NEXT_PUBLIC_IS_FIREBASE_EMULATOR` (`true` for `pnpm dev`, `false` for `pnpm dev:prod`). Do not use emulator auth against Fly — use `pnpm dev:prod` for prod WSS from localhost.
 
 Reconnection: **MVP uses fresh sessions** — disconnect and Connect again; no resume.
 
@@ -407,4 +424,4 @@ pnpm load:smoke
 
 Expect `Active sessions after test: 0` — confirms disconnect cleanup.
 
-Next: **Phase 3** — webApp `ConversationInstance` adapter. See `plan.md`.
+Phase 3 adapter is in webApp; remaining work: device QA, e2e, broader rollout. See `plan.md` §13.
