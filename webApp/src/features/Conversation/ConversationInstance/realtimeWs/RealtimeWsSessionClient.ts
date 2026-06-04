@@ -151,10 +151,7 @@ export class RealtimeWsSessionClient {
       return;
     }
 
-    if (
-      (this.playback.isPlaying || this.assistantSpeaking) &&
-      computeChunkRmsFromBuffer(chunk) >= BARGE_IN_RMS_THRESHOLD
-    ) {
+    if (this.playback.isPlaying && computeChunkRmsFromBuffer(chunk) >= BARGE_IN_RMS_THRESHOLD) {
       this.cancelAssistantAudio();
     }
 

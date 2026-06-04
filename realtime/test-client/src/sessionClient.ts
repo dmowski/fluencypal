@@ -156,7 +156,7 @@ export class RealtimeSessionClient {
     }
 
     if (
-      (this.playback.isPlaying || this.assistantSpeaking) &&
+      this.playback.isPlaying &&
       computeChunkRmsFromBuffer(chunk) >= BARGE_IN_RMS_THRESHOLD
     ) {
       this.cancelAssistantAudio('local_barge_in');

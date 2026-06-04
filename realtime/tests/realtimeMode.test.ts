@@ -158,6 +158,8 @@ describe('ConversationSession RealTimeConversation', () => {
   });
 
   it('sends assistant.interrupted when user speaks after TTS finished but output is still active', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
     const sent: Array<{ type: string }> = [];
     const session = new ConversationSession({
       sessionId: 'rtc-playback-barge',
@@ -193,8 +195,111 @@ describe('ConversationSession RealTimeConversation', () => {
     ).toBe(true);
 
     sent.length = 0;
+    await vi.advanceTimersByTimeAsync(500);
     session.handleBinaryAudio(makeLoudPcmChunk());
 
     expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+
+    vi.useRealTimers();
+  });
+
+  it('does not treat mic tail as barge-in during the post-TTS grace window', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    const sent: Array<{ type: string }> = [];
+    const session = new ConversationSession({
+      sessionId: 'rtc-grace',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: true,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        tts: {
+          async *synthesizeStream() {
+            yield Buffer.from('fake-mp3-audio');
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    await session.handleClientMessage({ type: 'assistant.trigger' });
+
+    sent.length = 0;
+    session.handleBinaryAudio(makeLoudPcmChunk());
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(false);
+
+    await vi.advanceTimersByTimeAsync(500);
+    session.handleBinaryAudio(makeLoudPcmChunk());
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(true);
+
+    vi.useRealTimers();
+  });
+
+  it('does not abort TTS while waiting for the first audio chunk after LLM text', async () => {
+    const sent: Array<{ type: string }> = [];
+    let releaseTts: () => void = () => {};
+    const ttsGate = new Promise<void>((resolve) => {
+      releaseTts = resolve;
+    });
+
+    const session = new ConversationSession({
+      sessionId: 'rtc-tts-wait',
+      user: testUser,
+      config: {
+        languageCode: 'en',
+        mode: 'RealTimeConversation',
+        voiceEnabled: true,
+        micMuted: false,
+        systemInstruction: 'Teach English.',
+        voice: 'shimmer',
+      },
+      send: (message) => sent.push(message),
+      providers: createMockProviders({
+        tts: {
+          async *synthesizeStream() {
+            await ttsGate;
+            yield Buffer.from('fake-mp3-audio');
+            return { input_tokens: 1, output_tokens: 1, total_tokens: 2 };
+          },
+        },
+      }),
+    });
+
+    const generatePromise = session.handleClientMessage({ type: 'assistant.trigger' });
+
+    const waitForAssistantText = async (): Promise<void> => {
+      for (let attempt = 0; attempt < 50; attempt += 1) {
+        if (
+          sent.some(
+            (message) =>
+              message.type === 'transcript.done' &&
+              (message as { role?: string }).role === 'assistant',
+          )
+        ) {
+          return;
+        }
+        await Promise.resolve();
+      }
+
+      throw new Error('Timed out waiting for assistant transcript');
+    };
+
+    await waitForAssistantText();
+
+    sent.length = 0;
+    session.handleBinaryAudio(makeLoudPcmChunk());
+    expect(sent.some((message) => message.type === 'assistant.interrupted')).toBe(false);
+
+    releaseTts();
+    await generatePromise;
+
+    expect(sent.some((message) => message.type === 'assistant.speaking')).toBe(true);
   });
 });

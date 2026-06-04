@@ -18,6 +18,9 @@ import {
   defaultTurnDetectorConfig,
   estimateBufferedSpeechMs,
 } from './turnDetection.js';
+
+/** Ignore mic tail right after TTS starts or right after a user turn commit. */
+const ASSISTANT_BARGE_IN_GRACE_MS = 450;
 import { isAbortError } from '../errors/isAbortError.js';
 import { sessionLog, sessionWarn } from '../log/sessionLog.js';
 
@@ -49,8 +52,9 @@ export class ConversationSession {
   private binaryChunkCount = 0;
   /** One barge-in interrupt per busy pipeline turn (avoid aborting TTS on every loud mic chunk). */
   private assistantBargeInHandled = false;
-  /** True from assistant generation through local client playback (pipeline may already be idle). */
+  /** True while client may still be playing TTS (pipeline may already be idle). */
   private assistantOutputActive = false;
+  private assistantVoiceStartedAt: number | null = null;
 
   constructor({
     sessionId,
@@ -77,7 +81,11 @@ export class ConversationSession {
     this.sendBinary = sendBinary;
     this.pipeline = new TurnPipeline(
       providers,
-      { send, sendBinary },
+      {
+        send,
+        sendBinary,
+        onAssistantVoiceStarted: () => this.onAssistantVoiceStarted(),
+      },
       () => this.config,
       this.history,
       this.abortController.signal,
@@ -171,16 +179,17 @@ export class ConversationSession {
     }
 
     if (this.config.mode === 'RealTimeConversation') {
-      if (!this.pipeline.isBusy && !this.assistantOutputActive) {
+      if (!this.pipeline.isLlmRunning && !this.pipeline.isVoiceStreaming && !this.assistantOutputActive) {
         this.assistantBargeInHandled = false;
       }
 
       const rms = computePcm16Rms(frame.payload);
-      // Barge-in during TTS generation or while the client is still playing assistant audio.
+      const canBargeInVoice = this.isAssistantPlaybackInterruptible();
       if (
         rms >= defaultTurnDetectorConfig.rmsThreshold &&
-        (this.pipeline.isBusy || this.assistantOutputActive) &&
-        !this.assistantBargeInHandled
+        !this.assistantBargeInHandled &&
+        !this.turnCommitInProgress &&
+        (this.pipeline.isLlmRunning || canBargeInVoice)
       ) {
         this.assistantBargeInHandled = true;
         this.handleUserSpeechStart();
@@ -219,22 +228,48 @@ export class ConversationSession {
   }
 
   private async runAssistantGeneration(): Promise<void> {
-    this.assistantOutputActive = true;
     await this.pipeline.generateAssistantResponse();
   }
 
+  private onAssistantVoiceStarted(): void {
+    this.assistantOutputActive = true;
+    this.assistantVoiceStartedAt = Date.now();
+    this.assistantBargeInHandled = false;
+  }
+
+  private isAssistantPlaybackInterruptible(): boolean {
+    if (!this.assistantOutputActive || this.assistantVoiceStartedAt === null) {
+      return false;
+    }
+
+    return Date.now() - this.assistantVoiceStartedAt >= ASSISTANT_BARGE_IN_GRACE_MS;
+  }
+
+  private clearAssistantPlaybackState(): void {
+    this.assistantOutputActive = false;
+    this.assistantVoiceStartedAt = null;
+  }
+
+  private shouldAbortAssistantOutput(): boolean {
+    return (
+      this.pipeline.isLlmRunning ||
+      this.pipeline.isVoiceStreaming ||
+      this.isAssistantPlaybackInterruptible()
+    );
+  }
+
   private handleUserSpeechStart(): void {
-    const interrupted = this.pipeline.abortAssistantOutput();
-    const notifyInterrupt = interrupted || this.assistantOutputActive;
+    const notifyInterrupt = this.shouldAbortAssistantOutput();
 
     sessionLog(this.sessionId, 'turn.speech_start', {
-      interrupted,
+      notifyInterrupt,
       assistantOutputActive: this.assistantOutputActive,
       pipelineBusy: this.pipeline.isBusy,
     });
 
     if (notifyInterrupt) {
-      this.assistantOutputActive = false;
+      this.pipeline.abortAssistantOutput();
+      this.clearAssistantPlaybackState();
       this.send({ type: 'assistant.interrupted' });
     }
 
@@ -284,6 +319,8 @@ export class ConversationSession {
     const bufferedMs = estimateBufferedSpeechMs(audioChunks);
     this.pendingUserAudio = [];
     this.turnDetector.reset();
+    this.clearAssistantPlaybackState();
+    this.assistantBargeInHandled = false;
 
     let text = this.pendingUserText;
     this.pendingUserText = '';

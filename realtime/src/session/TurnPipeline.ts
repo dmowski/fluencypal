@@ -11,6 +11,8 @@ import type { SessionRuntimeConfig } from './ConversationSession.js';
 export type PipelineCallbacks = {
   send: (message: ServerMessage) => void;
   sendBinary: (chunk: Buffer) => void;
+  /** Fired once per reply when the first TTS audio chunk is about to be sent. */
+  onAssistantVoiceStarted?: () => void;
 };
 
 export class TurnPipeline {
@@ -37,9 +39,23 @@ export class TurnPipeline {
     return this.running || this.inFlightAbort !== null || this.voiceStreamingActive;
   }
 
+  /** LLM stream in flight (false while waiting for / receiving TTS). */
+  get isLlmRunning(): boolean {
+    return this.running;
+  }
+
+  get isVoiceStreaming(): boolean {
+    return this.voiceStreamingActive;
+  }
+
+  /** LLM or TTS stream in flight (excludes STT-only work on the pipeline). */
+  get isAssistantGenerationActive(): boolean {
+    return this.running || this.voiceStreamingActive;
+  }
+
   /** User barge-in: stop LLM/TTS and drop queued assistant replies. */
   abortAssistantOutput(): boolean {
-    const wasBusy = this.isBusy;
+    const wasBusy = this.isAssistantGenerationActive;
     this.generateGeneration += 1;
     this.inFlightAbort?.abort();
     this.inFlightAbort = null;
@@ -197,6 +213,8 @@ export class TurnPipeline {
         return;
       }
 
+      // LLM is done — release `running` so mic tail does not abort TTS before the first audio chunk.
+      this.running = false;
       voiceStreamingStarted = true;
       await this.streamAssistantVoice(assistantText, config.voice, abort.signal, gen);
     } catch (error) {
@@ -239,6 +257,7 @@ export class TurnPipeline {
 
       speakingSignaled = true;
       this.voiceStreamingActive = true;
+      this.callbacks.onAssistantVoiceStarted?.();
       this.callbacks.send({ type: 'assistant.speaking', active: true });
     };
 
