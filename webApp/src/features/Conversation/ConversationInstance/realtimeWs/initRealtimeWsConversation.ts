@@ -20,6 +20,8 @@ type RealtimeWsState = {
   currentMuted: boolean;
   currentVolumeOn: boolean;
   usageCounter: number;
+  disposed: boolean;
+  onOpenTimeoutId: number | null;
 };
 
 export const initRealtimeWsConversation = async (
@@ -46,24 +48,58 @@ export const initRealtimeWsConversation = async (
     currentMuted: Boolean(config.isMuted),
     currentVolumeOn: Boolean(config.isVolumeOn),
     usageCounter: 0,
+    disposed: false,
+    onOpenTimeoutId: null,
   };
 
   const reportAiSpeaking = () => {
     config.setIsAiSpeaking(state.client.isAssistantOutputActive);
   };
 
+  const triggerAssistantGreeting = async () => {
+    if (state.disposed || !state.client.isConnected) {
+      return;
+    }
+    await unlockAudioPlayback();
+    state.client.sendJson({ type: 'assistant.trigger' });
+  };
+
   let onOpenScheduled = false;
   const scheduleOnOpenOnce = () => {
-    if (onOpenScheduled) {
+    if (onOpenScheduled || state.disposed) {
       return;
     }
     onOpenScheduled = true;
-    window.setTimeout(() => {
-      void config.onOpen();
-      if (!state.currentMuted) {
-        void startCaptureIfNeeded();
+
+    if (state.onOpenTimeoutId !== null) {
+      window.clearTimeout(state.onOpenTimeoutId);
+    }
+
+    state.onOpenTimeoutId = window.setTimeout(() => {
+      state.onOpenTimeoutId = null;
+      if (state.disposed) {
+        return;
       }
+
+      void (async () => {
+        await config.onOpen();
+        if (state.disposed) {
+          return;
+        }
+        if (!state.currentMuted) {
+          await startCaptureIfNeeded();
+        }
+        await triggerAssistantGreeting();
+      })();
     }, 50);
+  };
+
+  const cancelScheduledOnOpen = () => {
+    if (state.onOpenTimeoutId !== null) {
+      window.clearTimeout(state.onOpenTimeoutId);
+      state.onOpenTimeoutId = null;
+    }
+    onOpenScheduled = false;
   };
 
   state.client = new RealtimeWsSessionClient({
@@ -102,7 +138,9 @@ export const initRealtimeWsConversation = async (
       console.error('realtimeWs', message);
       const friendly = message.includes('invalid_token')
         ? 'Realtime sign-in was rejected. For Fly from localhost use pnpm dev:prod (production Firebase). For local realtime use pnpm dev with the server on port 8081.'
-        : message;
+        : message.includes('session.not_started')
+          ? 'Realtime connection was interrupted during setup. Please try again.'
+          : message;
       config.onTransportError?.(friendly);
     },
   });
@@ -150,6 +188,8 @@ export const initRealtimeWsConversation = async (
   });
 
   const handlePageHide = () => {
+    state.disposed = true;
+    cancelScheduledOnOpen();
     client.disconnect();
     stopCapture();
   };
@@ -157,6 +197,8 @@ export const initRealtimeWsConversation = async (
 
   return {
     closeHandler: () => {
+      state.disposed = true;
+      cancelScheduledOnOpen();
       window.removeEventListener('pagehide', handlePageHide);
       stopCapture();
       state.userMedia?.getTracks().forEach((track) => track.stop());
@@ -170,11 +212,7 @@ export const initRealtimeWsConversation = async (
     },
 
     triggerAiResponse: async () => {
-      if (!client.isConnected) {
-        return;
-      }
-      await unlockAudioPlayback();
-      client.sendJson({ type: 'assistant.trigger' });
+      await triggerAssistantGreeting();
     },
 
     toggleMute: (mute: boolean) => {
@@ -242,8 +280,10 @@ export const initRealtimeWsConversation = async (
     },
 
     restartConversation: async () => {
+      cancelScheduledOnOpen();
       stopCapture();
       client.disconnect();
+      onOpenScheduled = false;
       await new Promise((resolve) => window.setTimeout(resolve, 300));
       const restartToken = await resolveRealtimeWsAuthToken(
         (forceRefresh) => config.getAuthToken(forceRefresh),

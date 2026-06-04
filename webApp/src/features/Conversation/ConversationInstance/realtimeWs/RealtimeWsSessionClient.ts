@@ -58,6 +58,8 @@ export class RealtimeWsSessionClient {
   private playCollectedPending = false;
   private ttsBytesReceived = 0;
   private playTask: Promise<void> = Promise.resolve();
+  private sessionReady = false;
+  private readonly pendingJsonBeforeReady: unknown[] = [];
 
   constructor(private readonly handlers: RealtimeWsSessionHandlers) {
     this.playback.setOnStateChange(() => {
@@ -80,6 +82,8 @@ export class RealtimeWsSessionClient {
   connect(token: string, config: SessionStartConfig): void {
     this.disconnect();
     this.sessionConfig = config;
+    this.sessionReady = false;
+    this.pendingJsonBeforeReady.length = 0;
 
     const socket = new WebSocket(buildRealtimeWsSessionUrl());
     this.socket = socket;
@@ -120,6 +124,8 @@ export class RealtimeWsSessionClient {
     this.socket = null;
     this.playback.reset();
     this.sessionConfig = null;
+    this.sessionReady = false;
+    this.pendingJsonBeforeReady.length = 0;
     this.messageChain = Promise.resolve();
     this.playCollectedPending = false;
     this.assistantSpeaking = false;
@@ -131,15 +137,31 @@ export class RealtimeWsSessionClient {
       return;
     }
 
+    if (!this.sessionReady) {
+      this.pendingJsonBeforeReady.push(payload);
+      return;
+    }
+
     this.socket.send(JSON.stringify(payload));
   }
 
   sendAudioChunk(chunk: ArrayBuffer): void {
-    if (!this.isConnected || !this.socket || this.isMicUploadBlocked) {
+    if (!this.isConnected || !this.socket || !this.sessionReady || this.isMicUploadBlocked) {
       return;
     }
 
     this.socket.send(chunk);
+  }
+
+  private flushPendingJson(): void {
+    if (!this.socket || !this.sessionReady) {
+      return;
+    }
+
+    for (const payload of this.pendingJsonBeforeReady) {
+      this.socket.send(JSON.stringify(payload));
+    }
+    this.pendingJsonBeforeReady.length = 0;
   }
 
   updateSession(patch: Record<string, unknown>): void {
@@ -213,6 +235,8 @@ export class RealtimeWsSessionClient {
   private handleJsonMessage(message: ServerMessage): void {
     switch (message.type) {
       case 'session.ready':
+        this.sessionReady = true;
+        this.flushPendingJson();
         if (this.sessionConfig) {
           this.handlers.onSessionReady();
         }

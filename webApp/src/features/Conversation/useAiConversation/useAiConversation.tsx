@@ -78,6 +78,7 @@ function useProvideAiConversation(): AiConversationContextType {
     useState<RecordingUserMessageMode>('PushToTalk');
 
   const communicatorRef = useRef<ConversationInstance | undefined>(undefined);
+  const experimentalRealtimeWsActiveRef = useRef(false);
 
   const [isMuted, setIsMuted] = useState(true);
   const access = useAccess();
@@ -173,7 +174,9 @@ function useProvideAiConversation(): AiConversationContextType {
       await sleep(600);
     }
 
-    communicatorRef.current?.triggerAiResponse();
+    if (!experimentalRealtimeWsActiveRef.current) {
+      await communicatorRef.current?.triggerAiResponse();
+    }
 
     if (!isUseRealtime) {
       await sleep(700);
@@ -555,6 +558,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       console.log('newRecordingMode', newRecordingMode);
       setRecordingVoiceMode(newRecordingMode);
 
+      experimentalRealtimeWsActiveRef.current = Boolean(input.experimentalRealtimeWs);
+
       const initConversation = input.experimentalRealtimeWs
         ? initRealtimeWsConversation
         : isUseRealtime
@@ -592,6 +597,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       conversation.flushSessionReady?.();
     } catch (e) {
       console.error(e);
+      experimentalRealtimeWsActiveRef.current = false;
       if (e instanceof RealtimeWsAuthError) {
         setErrorInitiating(e.message);
         setIsInitializing('');
@@ -614,6 +620,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     setIsClosing(true);
     setIsStarted(false);
     setIsInitializing('');
+    experimentalRealtimeWsActiveRef.current = false;
     communicatorRef.current?.closeHandler();
     setLessonPlanAnalysis(null);
 
