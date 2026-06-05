@@ -76,10 +76,6 @@ export const AuthWall = ({
             </Text>
           </Stack>
 
-          <Badge id="auth-status" color={toneToColor(authStatusTone)} variant="light">
-            {authStatusText}
-          </Badge>
-
           {isLocalDev() ? (
             <Checkbox
               id="use-emulator"
