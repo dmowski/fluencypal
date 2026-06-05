@@ -1,13 +1,19 @@
 import { Accordion, Text } from "@mantine/core";
 import { useConversationContext } from "../context/ConversationContext.js";
 
+const extractCost = (summary: string): string => {
+  const match = /\$[\d.]+/.exec(summary);
+  return match ? match[0] : '';
+};
+
 export const UsagePanel = () => {
   const { usageSummary, usageLogText } = useConversationContext();
+  const cost = extractCost(usageSummary);
 
   return (
     <Accordion variant="contained" radius="md">
       <Accordion.Item value="usage">
-        <Accordion.Control>Token usage</Accordion.Control>
+        <Accordion.Control>Token usage{cost ? ` (${cost})` : ''}</Accordion.Control>
         <Accordion.Panel>
           <Text
             id="session-price-total"

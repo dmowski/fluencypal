@@ -38,12 +38,14 @@ export const useConversation = (signedIn: boolean) => {
     onSessionStatus: (text, tone) => bridgeRef.current.setSessionStatus(text, tone),
     onSessionReady: () => {
       void unlockAudioPlayback();
-      if (!config.micEnabled) {
-        microphone.setMicStatus('Mic: disabled — enable "Mic On" to speak', "idle");
-      } else {
-        void bridgeRef.current.onSessionReadyMic();
-      }
-      bridgeRef.current.onSessionReady();
+      void (async () => {
+        if (config.micEnabled) {
+          await bridgeRef.current.onSessionReadyMic();
+        } else {
+          microphone.setMicStatus('Mic: disabled — enable "Mic On" to speak', 'idle');
+        }
+        bridgeRef.current.onSessionReady();
+      })();
     },
     onTranscriptDelta: transcript.appendTranscriptDelta,
     onTranscriptDone: transcript.upsertTranscript,
