@@ -2,7 +2,8 @@
 
 ## Realtime service
 
-Check how it works on prod
+Forget about integration. Just create good solution in test app.
+It should be possible to change voices, it should be fast.
 
 ## News
 
