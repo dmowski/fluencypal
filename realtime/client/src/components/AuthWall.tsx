@@ -6,7 +6,6 @@ type AuthWallProps = Pick<
   ReturnType<typeof useAuth>,
   | 'authStatusText'
   | 'authStatusTone'
-  | 'authChecking'
   | 'useEmulator'
   | 'setUseEmulator'
   | 'signInGoogleDisabled'
@@ -24,7 +23,6 @@ type AuthWallProps = Pick<
 export const AuthWall = ({
   authStatusText,
   authStatusTone,
-  authChecking,
   useEmulator,
   setUseEmulator,
   signInGoogleDisabled,
@@ -48,7 +46,7 @@ export const AuthWall = ({
         <p className="hint">{authHint}</p>
 
         <p id="auth-status" className={`status-pill status-${authStatusTone}`}>
-          {authChecking ? 'Checking sign-in…' : authStatusText}
+          {authStatusText}
         </p>
 
         {isLocalDev() ? (
@@ -76,7 +74,7 @@ export const AuthWall = ({
             id="sign-in-google"
             type="button"
             className="btn-google"
-            disabled={signInGoogleDisabled || authChecking}
+            disabled={signInGoogleDisabled}
             onClick={() => void handleSignInGoogle()}
           >
             <span className="btn-google-icon" aria-hidden="true">

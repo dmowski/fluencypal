@@ -1,45 +1,54 @@
-import { useCallback, useEffect, useState } from 'react';
-import type { User } from 'firebase/auth';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { isInAppBrowser, shouldUseRedirectSignIn } from '../lib/authEnvironment.js';
 import {
+  auth,
+  completeEmailLinkSignIn,
+  completeRedirectSignIn,
   configureAuthEmulator,
   sendEmailSignInLink,
   signInWithGoogle,
   signOutUser,
-  waitForAuthBootstrap,
-  watchAuth,
 } from '../lib/firebase.js';
 import { isLocalDev, shouldDefaultEmulator } from '../lib/env.js';
 import { debugLog } from '../lib/debugLog.js';
 
 export type AuthStatusTone = 'idle' | 'ok' | 'active' | 'warning' | 'error';
 
-export type AuthState = {
-  user: User | null;
-  signedIn: boolean;
-  authStatusText: string;
-  authStatusTone: AuthStatusTone;
-  authChecking: boolean;
-  useEmulator: boolean;
-  signInGoogleDisabled: boolean;
-  showEmailForm: boolean;
-  emailHint: string;
-  emailHintIsError: boolean;
-  authBrowserWarning: string | null;
-  authHint: string;
-};
-
 export const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [authStatusText, setAuthStatusText] = useState('Not signed in');
-  const [authStatusTone, setAuthStatusTone] = useState<AuthStatusTone>('idle');
-  const [authChecking, setAuthChecking] = useState(true);
+  const [user, loading, errorAuth] = useAuthState(auth);
   const [useEmulator, setUseEmulator] = useState(shouldDefaultEmulator);
-  const [signInGoogleDisabled, setSignInGoogleDisabled] = useState(true);
+  const [signInGoogleDisabled, setSignInGoogleDisabled] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [emailHint, setEmailHint] = useState('');
   const [emailHintIsError, setEmailHintIsError] = useState(false);
   const [sendEmailDisabled, setSendEmailDisabled] = useState(false);
+  const [signInError, setSignInError] = useState<string | null>(null);
+
+  const signedIn = Boolean(user?.uid) && !errorAuth;
+
+  const authStatusText = useMemo(() => {
+    if (loading) {
+      return 'Checking sign-in…';
+    }
+    if (signInError) {
+      return signInError;
+    }
+    if (errorAuth) {
+      return errorAuth.message;
+    }
+    return user ? `Signed in · ${user.email ?? user.uid}` : 'Not signed in';
+  }, [errorAuth, loading, signInError, user]);
+
+  const authStatusTone = useMemo((): AuthStatusTone => {
+    if (loading || signInError?.includes('Redirecting')) {
+      return 'warning';
+    }
+    if (errorAuth || signInError) {
+      return 'error';
+    }
+    return user ? 'ok' : 'idle';
+  }, [errorAuth, loading, signInError, user]);
 
   const authHint = isLocalDev()
     ? 'Optional: enable the emulator for instant fake sign-in, or sign in with real Google.'
@@ -60,52 +69,32 @@ export const useAuth = () => {
   }, [useEmulator]);
 
   useEffect(() => {
-    setAuthStatusText('Checking sign-in…');
-    setAuthStatusTone('warning');
-
     void (async () => {
       try {
-        const bootstrapUser = await waitForAuthBootstrap();
-        if (bootstrapUser) {
-          debugLog('auth', 'bootstrap_sign_in_complete', {
-            email: bootstrapUser.email ?? bootstrapUser.uid,
-          });
-        }
+        await completeEmailLinkSignIn();
+        await completeRedirectSignIn();
       } catch (error) {
         const message = error instanceof Error ? error.message : 'Sign-in failed';
-        setAuthStatusText(message);
-        setAuthStatusTone('error');
+        setSignInError(message);
         debugLog('auth', 'bootstrap_error', { message });
-      } finally {
-        setSignInGoogleDisabled(false);
-        setAuthChecking(false);
       }
     })();
-
-    return watchAuth((nextUser) => {
-      setUser(nextUser);
-      setAuthStatusText(
-        nextUser ? `Signed in · ${nextUser.email ?? nextUser.uid}` : 'Not signed in',
-      );
-      setAuthStatusTone(nextUser ? 'ok' : 'idle');
-    });
   }, []);
 
   const handleSignInGoogle = useCallback(async () => {
     configureAuthEmulator(useEmulator);
     setSignInGoogleDisabled(true);
+    setSignInError(null);
 
     try {
       await signInWithGoogle();
     } catch (error) {
       if (error instanceof Error && error.message.includes('Redirecting')) {
-        setAuthStatusText('Redirecting to Google…');
-        setAuthStatusTone('warning');
+        setSignInError('Redirecting to Google…');
         return;
       }
 
-      setAuthStatusText(error instanceof Error ? error.message : 'Google sign in failed');
-      setAuthStatusTone('error');
+      setSignInError(error instanceof Error ? error.message : 'Google sign in failed');
       setSignInGoogleDisabled(false);
     } finally {
       if (!shouldUseRedirectSignIn() || useEmulator) {
@@ -137,11 +126,11 @@ export const useAuth = () => {
   }, []);
 
   return {
-    user,
-    signedIn: Boolean(user),
+    user: user ?? null,
+    signedIn,
+    loading,
     authStatusText,
     authStatusTone,
-    authChecking,
     useEmulator,
     setUseEmulator,
     signInGoogleDisabled,

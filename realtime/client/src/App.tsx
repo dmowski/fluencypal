@@ -24,24 +24,29 @@ const AuthenticatedApp = ({ auth }: AuthenticatedAppProps) => {
   );
 };
 
+const AuthLoading = () => (
+  <div className="auth-wall">
+    <div className="auth-wall-card">
+      <p className="eyebrow">FluencyPal · Realtime</p>
+      <h1>Sign in</h1>
+      <p id="auth-status" className="status-pill status-warning">
+        Checking sign-in…
+      </p>
+    </div>
+  </div>
+);
+
 export const App = () => {
   const auth = useAuth();
 
-  if (auth.authChecking) {
-    return (
-      <div className="auth-wall">
-        <div className="auth-wall-card">
-          <p className="eyebrow">FluencyPal · Realtime</p>
-          <h1>Sign in</h1>
-          <p id="auth-status" className="status-pill status-warning">
-            Checking sign-in…
-          </p>
-        </div>
-      </div>
-    );
+  // Same gate as webApp AuthWallBasic: show wall only when Firebase finished loading and there is no user.
+  const isShowAuthWall = !auth.signedIn && !auth.loading;
+
+  if (auth.loading) {
+    return <AuthLoading />;
   }
 
-  if (!auth.signedIn) {
+  if (isShowAuthWall) {
     return <AuthWall {...auth} />;
   }
 

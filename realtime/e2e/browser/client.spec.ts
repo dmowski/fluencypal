@@ -42,6 +42,16 @@ test.describe('client (browser)', () => {
     await expect(page.locator('#usage-log')).not.toContainText('TTS');
   });
 
+  test('restores sign-in after page refresh', async ({ page }) => {
+    await signInWithGoogle(page);
+    await expect(page.locator('#connect')).toBeVisible();
+
+    await page.reload();
+
+    await expect(page.locator('#sign-in-google')).not.toBeVisible({ timeout: 15_000 });
+    await expect(page.locator('#connect')).toBeVisible({ timeout: 15_000 });
+  });
+
   test('push-to-talk enters and exits recording state', async ({ page }) => {
     await signInWithGoogle(page);
 

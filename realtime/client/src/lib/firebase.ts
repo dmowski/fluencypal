@@ -18,6 +18,7 @@ import {
   type User,
 } from 'firebase/auth';
 import { isInAppBrowser, shouldUseRedirectSignIn } from './authEnvironment.js';
+import { shouldDefaultEmulator } from './env.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD3bNY55votFEehrHs8dAlJuDCf6Chu2IQ',
@@ -58,7 +59,12 @@ const auth = (() => {
   }
 })();
 
-let emulatorConnected = false;
+/** Must run before any auth operation — same pattern as webApp `init.ts`. */
+if (typeof window !== 'undefined' && shouldDefaultEmulator()) {
+  connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true });
+}
+
+let emulatorConnected = typeof window !== 'undefined' && shouldDefaultEmulator();
 let redirectResultPromise: Promise<User | null> | null = null;
 
 export const configureAuthEmulator = (enabled: boolean): void => {
@@ -70,6 +76,8 @@ export const configureAuthEmulator = (enabled: boolean): void => {
 };
 
 export const isAuthEmulatorEnabled = (): boolean => emulatorConnected;
+
+export { auth };
 
 export const watchAuth = (onChange: (user: User | null) => void): (() => void) => {
   return onAuthStateChanged(auth, onChange);
@@ -107,6 +115,7 @@ export const formatAuthError = (error: unknown): Error => {
 /** Finish redirect OAuth when the page loads after Google (mobile / Safari). */
 export const completeRedirectSignIn = async (): Promise<User | null> => {
   if (emulatorConnected) {
+    await auth.authStateReady();
     return auth.currentUser;
   }
 
@@ -151,7 +160,13 @@ export const waitForAuthBootstrap = async (): Promise<User | null> => {
     return emailUser;
   }
 
-  return completeRedirectSignIn();
+  const redirectUser = await completeRedirectSignIn();
+  if (redirectUser) {
+    return redirectUser;
+  }
+
+  await auth.authStateReady();
+  return auth.currentUser;
 };
 
 export const sendEmailSignInLink = async (email: string): Promise<void> => {
