@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## News
+
+Turn off news provider. Use free version
+
 ## Realtime service
 
 How to analyze conversation. Feedback look.

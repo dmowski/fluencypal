@@ -2,7 +2,22 @@
 
 Custom WebSocket conversation backend for FluencyPal. Replaces the coupled OpenAI Realtime (WebRTC) stack with an independent **STT → LLM → TTS** pipeline over one WebSocket.
 
-See `plan.md` for architecture, phases, and webApp integration targets.
+### Pipeline (current behavior)
+
+| Stage | How it works |
+| ----- | ------------ |
+| **User speech** | Client streams PCM16 chunks; server buffers until turn end (silence detection or PTT commit). |
+| **STT** | One batch request per user turn (`transcribeBatch` → full WAV). No streaming partial user transcript. |
+| **LLM** | Streamed token deltas → `transcript.delta`; full reply → `transcript.done`. |
+| **TTS** | Starts **after** the full LLM text is ready; MP3 chunks stream to the client as binary frames. |
+
+### Related docs
+
+| Doc | Purpose |
+| --- | ------- |
+| [`e2e-cases.md`](./e2e-cases.md) | Voice E2E test matrix (real speech, no mocks) |
+| [`PHASE3_CHECKLIST.md`](./PHASE3_CHECKLIST.md) | Experimental webApp integration + manual QA |
+| [`AGENTS.md`](./AGENTS.md) | Agent / CI commands for this package |
 
 ## Prerequisites
 
@@ -131,7 +146,8 @@ curl http://localhost:8081/v1/auth/verify \
 | `pnpm test:e2e:voice` | Real voice E2E — OpenAI STT/LLM/TTS + speech WAV fixtures (see `e2e-cases.md`) |
 | `pnpm test:e2e:browser` | Browser e2e (Playwright + real test client UI) |
 | `pnpm test:e2e:voice:browser` | Browser voice E2E — real speech via Chrome fake mic file |
-| `pnpm e2e:fixtures:voice` | Generate `e2e/fixtures/voice/*.wav` from OpenAI TTS |
+| `pnpm e2e:fixtures:voice` | Generate optional TTS hello fixtures (OpenAI) |
+| `pnpm e2e:fixtures:normalize` | Convert user recordings (`*.wav`) → `*-48k-mono.wav` for browser e2e |
 | `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
 | `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
 | `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
@@ -189,7 +205,7 @@ Open http://127.0.0.1:5173, click **Sign in with Google**, then **Connect**, the
 
 Toggles: mic mute, AI voice on/off (voice off skips TTS but still runs STT + LLM). Usage events appear in the log panel.
 
-**Barge-in:** While the assistant pipeline is active, keep sending mic PCM whenever the mic is unmuted (do not pause upload during TTS or local playback). The server detects user speech, aborts in-flight LLM/TTS, and emits `assistant.interrupted`.
+**Barge-in:** Keep sending mic PCM while unmuted. The server may abort in-flight **LLM/TTS generation** on loud user speech and emit `assistant.interrupted`. Playback is not cut client-side; only the server drives interrupts.
 
 The Vite dev server proxies `/v1` (HTTP + WebSocket) to `http://127.0.0.1:8081`.
 
@@ -311,19 +327,13 @@ realtime/
 │   ├── usage/                # usage event emission
 │   └── ws/                   # WebSocket connection handler
 ├── test-client/              # Vite manual test UI
-├── e2e/                      # Vitest e2e (emulator + server)
+├── e2e/                      # Vitest + Playwright e2e; see e2e-cases.md
+├── e2e-cases.md              # Voice E2E test matrix
+├── PHASE3_CHECKLIST.md       # webApp experimental rollout
 └── tests/                    # Unit tests
 ```
 
-## Phase 1 exit criteria
-
-- [x] RealTimeConversation: streaming speech → assistant text (+ audio when voice on)
-- [x] PushToTalk: hold/release → same pipeline
-- [x] Muting AI voice skips TTS (check `usage` events — no `stage: "tts"`)
-- [x] Mid-session `assistant.instruction` changes next reply
-- [x] Invalid Firebase token rejected with fatal error
-
-## Phase 2 — Deploy (Fly.io)
+## Deploy (Fly.io)
 
 ### Prerequisites
 
@@ -398,9 +408,9 @@ TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Allowed WebSo
 
 The Fly app URL is also merged automatically from `FLY_APP_NAME`. If you set `ALLOWED_ORIGINS` via `fly secrets`, include the URLs above.
 
-### webApp experimental integration (Phase 3)
+### webApp experimental integration
 
-Experimental **Just Talk (custom realtime)** lives in `webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx`. WebRTC remains the default everywhere else.
+Experimental **Just Talk (custom realtime)** lives in `webApp/src/features/Dashboard/ExperimentalDashboardCard.tsx`. WebRTC remains the default everywhere else. See [`PHASE3_CHECKLIST.md`](./PHASE3_CHECKLIST.md) for env vars and manual QA.
 
 In `webApp/.env.local`:
 
@@ -435,5 +445,3 @@ pnpm load:smoke
 ```
 
 Expect `Active sessions after test: 0` — confirms disconnect cleanup.
-
-Phase 3 adapter is in webApp; remaining work: device QA, e2e, broader rollout. See `plan.md` §13.
