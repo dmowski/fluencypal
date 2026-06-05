@@ -1,20 +1,20 @@
-import { useCallback, useState } from 'react';
-import type { SessionMode, VoiceId } from './types.js';
+import { useCallback, useState } from "react";
+import type { SessionMode, VoiceId } from "./types.js";
 
 export const useSessionConfig = () => {
   const [systemInstruction, setSystemInstruction] = useState(
-    'You are an English teacher. Reply briefly in one or two sentences.',
+    "You are an English teacher. Reply briefly in one or two sentences.",
   );
-  const [mode, setMode] = useState<SessionMode>('RealTimeConversation');
-  const [voice, setVoice] = useState<VoiceId>('shimmer');
+  const [mode, setMode] = useState<SessionMode>("RealTimeConversation");
+  const [voice, setVoice] = useState<VoiceId>("shimmer");
   const [voiceEnabled, setVoiceEnabled] = useState(true);
-  const [micMuted, setMicMuted] = useState(true);
+  const [micMuted, setMicMuted] = useState(false);
 
-  const isRealtimeMode = mode === 'RealTimeConversation';
+  const isRealtimeMode = mode === "RealTimeConversation";
 
   const readSessionConfig = useCallback(
     () => ({
-      languageCode: 'en' as const,
+      languageCode: "en" as const,
       mode,
       voiceEnabled,
       micMuted,
