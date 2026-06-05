@@ -1,12 +1,12 @@
 # Live document with short/long term ideas
 
+## Realtime service
+
+Check how it works on prod
+
 ## News
 
 Turn off news provider. Use free version
-
-## Realtime service
-
-How to analyze conversation. Feedback look.
 
 ## Alias
 
