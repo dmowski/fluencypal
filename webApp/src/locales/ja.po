@@ -553,7 +553,7 @@ msgstr "AI トークン"
 msgid "AI Voice"
 msgstr "AI 音声"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AIボイス"
@@ -1104,7 +1104,7 @@ msgstr "ブック情報"
 msgid "Book info sections"
 msgstr "ブック情報セクション"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "ブックリーダー"
@@ -1375,7 +1375,7 @@ msgstr "スマートフォンで使用できますか？"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:562
+#: src/features/Conversation/CallMode/CallButtons.tsx:566
 #: src/features/Conversation/ConversationCanvas.tsx:773
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -1625,7 +1625,7 @@ msgstr "「新しい承認済みのメールアドレスを追加」をクリッ
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "ブラウザで app.fluencypal.com の隣にある共有ボタンをクリックしてください。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2287,14 +2287,15 @@ msgstr "カスタムインタビューロードマップ"
 msgid "Custom pricing"
 msgstr "カスタム価格設定"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#: src/features/Conversation/useExperimentalJustTalk.tsx:23
 #. js-lingui-explicit-id
 msgid ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload."
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
+"and reload."
 msgstr ""
-"カスタムリアルタイムが設定されていません。NEXT_PUBLIC_REALTIME_WS_URL（例: "
-"wss://fluencypal-realtime.fly.dev）を設定し、再読み込みしてください。"
+"カスタムリアルタイムが設定されていません。.env.local に NEXT_PUBLIC_REALTIME_WS_URL_PROD (pnpm "
+"dev:prod) または NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) を設定し、リロードしてください。"
 
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
@@ -2897,7 +2898,7 @@ msgstr "練習セクションで通話モードを試すのを忘れないでく
 msgid "Done"
 msgstr "完了"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:538
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "録音完了"
@@ -2995,7 +2996,7 @@ msgstr ""
 "レベルに基づいてリソースを公平に割り当てることができます。これを「AI時間」と呼んでおり、継続的にAIを使用した場合に消費するであろうおおよその時間です"
 "。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "早期アクセス機能。これらの機能はすぐに変更される可能性があります。"
@@ -3059,17 +3060,17 @@ msgstr "メールアドレス"
 msgid "Enable Access"
 msgstr "アクセスを有効にする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/CallMode/CallButtons.tsx:629
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "マイクを有効にする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:646
+#: src/features/Conversation/CallMode/CallButtons.tsx:650
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "マイクを有効にする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:749
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -3421,12 +3422,12 @@ msgstr ""
 "次世代の言語練習を体験してください、あなたの友達のAIチューター、ブルーノと共に。初心者でも上級者でも、ブルーノはあなたのペースに合わせ、間違いを修正し"
 "、モチベーションを保ちます。"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "実験的な機能"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "実験室"
@@ -5640,7 +5641,7 @@ msgstr "ただ話す"
 msgid "Just Talk"
 msgstr "ただ話す"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Just Talk (custom realtime)"
 msgstr "Just Talk（カスタムリアルタイム）"
@@ -5945,7 +5946,7 @@ msgstr "限定メッセージ数"
 msgid "Limited voice features"
 msgstr "制限された音声機能"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:396
+#: src/features/Conversation/CallMode/CallButtons.tsx:400
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "制限に達しました"
@@ -6279,7 +6280,7 @@ msgstr "マイクアクセス"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "マイクへのアクセスが拒否されました。ブラウザの設定で有効にしてください。"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:42
+#: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -6993,7 +6994,7 @@ msgstr "パーソナルプランを開く"
 msgid "Open progress settings"
 msgstr "進捗設定を開く"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:512
+#: src/features/Conversation/CallMode/CallButtons.tsx:516
 #: src/features/Conversation/ConversationCanvas.tsx:679
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -8199,7 +8200,7 @@ msgstr "テキストを読む"
 msgid "Reader"
 msgstr "リーダー"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "機能リスト付きリーダーが即座に単語を翻訳します。"
@@ -8304,7 +8305,7 @@ msgstr "リアルタイムでAIと会話"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "実際の役割演技による上級英語練習"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "リアルタイム会話"
@@ -8396,7 +8397,7 @@ msgstr "回答を記録する"
 msgid "Record answer"
 msgstr "回答を記録"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:663
 #: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -8758,7 +8759,7 @@ msgstr "AI SEOとの給与交渉面接"
 msgid "Salary negotiation preparation"
 msgstr "給与交渉の準備"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "新しいWebSocket音声サーバーを介した同じJust Talkレッスン。"
@@ -9023,10 +9024,10 @@ msgstr "文"
 msgid "Set My Language"
 msgstr "私の言語を設定する"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-msgstr "NEXT_PUBLIC_REALTIME_WS_URL を有効にする。"
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
+msgstr ".NEXT_PUBLIC_REALTIME_WS_URL_PROD または _DEV を .env.local に設定してください。"
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9410,8 +9411,8 @@ msgstr "スターズ"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -10858,32 +10859,32 @@ msgstr "ロールプレイを試してみましょう"
 msgid "Turkish Learning Plan"
 msgstr "トルコ語学習プラン"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "字幕をオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "ビデオをオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "ボリュームをオフにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "字幕をオンにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "ビデオをオンにする"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "ボリュームをオンにする"
@@ -11022,7 +11023,7 @@ msgstr "無制限のAI会話とすべての練習モードをアンロック"
 msgid "Update"
 msgstr "アップデート"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:432
+#: src/features/Conversation/CallMode/CallButtons.tsx:436
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "アップグレード"
@@ -11106,7 +11107,7 @@ msgstr "ユーザー名は最低3文字必要です。"
 msgid "Username:"
 msgstr "ユーザー名:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:748
+#: src/features/Conversation/CallMode/CallButtons.tsx:752
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -11616,7 +11617,7 @@ msgstr ""
 "FluencyPalを使用すれば、パーソナライズされたフィードバック、リアルタイムの訂正、そして支援的なコミュニティを通じて学習体験を向上させることがで"
 "きます。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
+#: src/features/Conversation/CallMode/CallButtons.tsx:407
 #. js-lingui-explicit-id
 msgid ""
 "With the free plan, you can only send a limited number of messages per "
@@ -12368,3 +12369,17 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
+
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload."
+#~ msgstr ""
+#~ "カスタムリアルタイムが設定されていません。NEXT_PUBLIC_REALTIME_WS_URL（例: "
+#~ "wss://fluencypal-realtime.fly.dev）を設定し、再読み込みしてください。"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+#~ msgstr "NEXT_PUBLIC_REALTIME_WS_URL を有効にする。"

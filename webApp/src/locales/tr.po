@@ -575,7 +575,7 @@ msgstr "AI jetonları"
 msgid "AI Voice"
 msgstr "AI Ses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI sesi"
@@ -1144,7 +1144,7 @@ msgstr "Kitap bilgisi"
 msgid "Book info sections"
 msgstr "Kitap bilgisi bölümleri"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "Kitap Okuyucu"
@@ -1422,7 +1422,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:562
+#: src/features/Conversation/CallMode/CallButtons.tsx:566
 #: src/features/Conversation/ConversationCanvas.tsx:773
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -1689,7 +1689,7 @@ msgstr ""
 "Tarayıcınızda app.fluencypal.com adresinin yanındaki Paylaş düğmesine "
 "tıklayın."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2381,14 +2381,16 @@ msgstr "Özel mülakat yol haritası"
 msgid "Custom pricing"
 msgstr "Özel fiyatlandırma"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#: src/features/Conversation/useExperimentalJustTalk.tsx:23
 #. js-lingui-explicit-id
 msgid ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload."
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
+"and reload."
 msgstr ""
-"Özel gerçek zamanlı yapılandırılmamış. NEXT_PUBLIC_REALTIME_WS_URL "
-"ayarlayın (örneğin wss://fluencypal-realtime.fly.dev) ve yeniden yükleyin."
+"Özel gerçek zamanlı yapılandırılmadı. .env.local dosyasında "
+"NEXT_PUBLIC_REALTIME_WS_URL_PROD (pnpm dev:prod) veya "
+"NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) ayarlayın ve yeniden yükleyin."
 
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
@@ -3037,7 +3039,7 @@ msgstr "Unutmayın, pratik bölümündeki arama modunu da deneyin!"
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:538
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Kaydı bitir"
@@ -3142,7 +3144,7 @@ msgstr ""
 "etmemizi sağlar. Buna \"AI saatleri\" diyorum çünkü AI'yi sürekli "
 "kullanırsanız ne kadar zaman tüketeceğinizin yaklaşık bir göstergesidir."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Erken erişim özellikleri. Bu özellikler hızlı bir şekilde değişebilir."
@@ -3208,17 +3210,17 @@ msgstr "E-posta adresi"
 msgid "Enable Access"
 msgstr "Erişimi Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/CallMode/CallButtons.tsx:629
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Mikrofonu Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:646
+#: src/features/Conversation/CallMode/CallButtons.tsx:650
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Mikrofonu etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:749
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -3602,12 +3604,12 @@ msgstr ""
 "dost canlısı AI öğretmeniniz. İster acemi ister ileri düzey bir öğrenci "
 "olun, Bruno hızınıza uyum sağlar, hataları düzeltir ve sizi motive tutar."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Deneysel özellikler"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Deneysel Laboratuvar"
@@ -5998,7 +6000,7 @@ msgstr "Sadece konuş"
 msgid "Just Talk"
 msgstr "Sadece Konuş"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Just Talk (custom realtime)"
 msgstr "Sadece Konuş (özel gerçek zamanlı)"
@@ -6309,7 +6311,7 @@ msgstr "Sınırlı mesajlar"
 msgid "Limited voice features"
 msgstr "Sınırlı ses özellikleri"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:396
+#: src/features/Conversation/CallMode/CallButtons.tsx:400
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "Limitlere ulaşıldı"
@@ -6644,7 +6646,7 @@ msgstr "Mikrofon Erişimi"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Mikrofon erişimi reddedildi. Lütfen tarayıcı ayarlarından etkinleştirin."
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:42
+#: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -7393,7 +7395,7 @@ msgstr "Kişisel planı aç"
 msgid "Open progress settings"
 msgstr "Açık ilerleme ayarları"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:512
+#: src/features/Conversation/CallMode/CallButtons.tsx:516
 #: src/features/Conversation/ConversationCanvas.tsx:679
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -8658,7 +8660,7 @@ msgstr "Metni okuyun"
 msgid "Reader"
 msgstr "Okuyucu"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "Bazı özellik listesine sahip okur, kelimeleri anında çevirir."
@@ -8765,7 +8767,7 @@ msgstr "Gerçek zamanlı sohbet yapay zeka ile"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Gerçek Hayat Rol Oynama ile İleri Düzey İngilizce Pratiği"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Gerçek zamanlı konuşma"
@@ -8866,7 +8868,7 @@ msgstr "Cevabı Kaydet"
 msgid "Record answer"
 msgstr "Cevabı kaydet"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:663
 #: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -9238,7 +9240,7 @@ msgstr "AI SEO ile maaş pazarlığı görüşmesi"
 msgid "Salary negotiation preparation"
 msgstr "Maaş pazarlığına hazırlık"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Aynı Just Talk dersi yeni WebSocket ses sunucusu aracılığıyla."
@@ -9509,10 +9511,12 @@ msgstr "Cümleler"
 msgid "Set My Language"
 msgstr "Dilimi Ayarla"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-msgstr "Etkinleştirmek için NEXT_PUBLIC_REALTIME_WS_URL değerini ayarlayın."
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
+msgstr ""
+"Set NEXT_PUBLIC_REALTIME_WS_URL_PROD veya _DEV'i .env.local dosyasında "
+"ayarlayın."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9911,8 +9915,8 @@ msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11467,32 +11471,32 @@ msgstr "Bu rol oyunlarını deneyin"
 msgid "Turkish Learning Plan"
 msgstr "Türkçe Öğrenme Planı"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Altyazıları kapat"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Videoyu kapat"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Sesi kapat"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Altyazıları aç"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Video aç"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Sesi aç"
@@ -11631,7 +11635,7 @@ msgstr "Sınırsız AI konuşmalarının ve tüm pratik modlarının kilidini a�
 msgid "Update"
 msgstr "Güncelleme"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:432
+#: src/features/Conversation/CallMode/CallButtons.tsx:436
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "Yükseltme"
@@ -11717,7 +11721,7 @@ msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 msgid "Username:"
 msgstr "Kullanıcı Adı:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:748
+#: src/features/Conversation/CallMode/CallButtons.tsx:752
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -12244,7 +12248,7 @@ msgstr ""
 "düzeltmeler ve destekleyici bir toplulukla öğrenme deneyiminizi "
 "geliştirebilirsiniz."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
+#: src/features/Conversation/CallMode/CallButtons.tsx:407
 #. js-lingui-explicit-id
 msgid ""
 "With the free plan, you can only send a limited number of messages per "
@@ -13074,3 +13078,17 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
+
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload."
+#~ msgstr ""
+#~ "Özel gerçek zamanlı yapılandırılmamış. NEXT_PUBLIC_REALTIME_WS_URL "
+#~ "ayarlayın (örneğin wss://fluencypal-realtime.fly.dev) ve yeniden yükleyin."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+#~ msgstr "Etkinleştirmek için NEXT_PUBLIC_REALTIME_WS_URL değerini ayarlayın."

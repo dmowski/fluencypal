@@ -578,7 +578,7 @@ msgstr "โทเค็น AI"
 msgid "AI Voice"
 msgstr "เสียง AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "เสียง AI"
@@ -1148,7 +1148,7 @@ msgstr "ข้อมูลหนังสือ"
 msgid "Book info sections"
 msgstr "ส่วนข้อมูลหนังสือ"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "เครื่องอ่านหนังสือ"
@@ -1424,7 +1424,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:562
+#: src/features/Conversation/CallMode/CallButtons.tsx:566
 #: src/features/Conversation/ConversationCanvas.tsx:773
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -1687,7 +1687,7 @@ msgstr "คลิก \"เพิ่มที่อยู่อีเมลที
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "คลิกปุ่มแชร์ถัดจาก app.fluencypal.com ในเบราว์เซอร์ของคุณ."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2382,18 +2382,16 @@ msgstr "โร้ดแมปการสัมภาษณ์ที่กำห
 msgid "Custom pricing"
 msgstr "การกำหนดราคาที่กำหนดเอง"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#: src/features/Conversation/useExperimentalJustTalk.tsx:23
 #. js-lingui-explicit-id
 msgid ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload."
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
+"and reload."
 msgstr ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload.\n"
-"\n"
-"กำหนดค่าเรียลไทม์แบบกำหนดเองยังไม่เรียบร้อย โปรดตั้งค่า "
-"NEXT_PUBLIC_REALTIME_WS_URL (ตัวอย่างเช่น "
-"wss://fluencypal-realtime.fly.dev) และโหลดใหม่"
+"การกำหนดค่าการใช้งานเรียลไทม์แบบกำหนดเองไม่มีการตั้งค่า ให้ตั้งค่า "
+"NEXT_PUBLIC_REALTIME_WS_URL_PROD (pnpm dev:prod) หรือ "
+"NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) ใน .env.local แล้วรีโหลดใหม่"
 
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
@@ -3044,7 +3042,7 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 msgid "Done"
 msgstr "เสร็จแล้ว"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:538
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "บันทึกเสร็จสิ้น"
@@ -3148,7 +3146,7 @@ msgstr ""
 "ฉันเรียกมันว่า \"ชั่วโมง AI\" เพราะเป็นเวลาประมาณคร่าวๆ ที่คุณจะใช้ AI "
 "หากคุณใช้อย่างต่อเนื่อง"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "คุณสมบัติการเข้าถึงล่วงหน้า คุณสมบัติเหล่านี้อาจมีการเปลี่ยนแปลงอย่างรวดเร็ว"
@@ -3214,17 +3212,17 @@ msgstr "ที่อยู่อีเมล"
 msgid "Enable Access"
 msgstr "เปิดใช้งานการเข้าถึง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/CallMode/CallButtons.tsx:629
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "เปิดการใช้งานไมโครโฟน"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:646
+#: src/features/Conversation/CallMode/CallButtons.tsx:650
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "เปิดใช้งานไมโครโฟน"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:749
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -3603,12 +3601,12 @@ msgstr ""
 "บรูโน่จะปรับให้เข้ากับจังหวะของคุณ แก้ไขข้อผิดพลาด "
 "และทำให้คุณมีแรงจูงใจต่อไป"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "คุณลักษณะทดลอง"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "ห้องปฏิบัติการทดลอง"
@@ -5995,7 +5993,7 @@ msgstr "แค่พูดคุย"
 msgid "Just Talk"
 msgstr "แค่พูดคุย"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Just Talk (custom realtime)"
 msgstr "เพียงพูดคุย (แบบกำหนดเองเรียลไทม์)"
@@ -6314,7 +6312,7 @@ msgstr ""
 "Limited voice features\n"
 "คุณสมบัติการใช้งานเสียงที่จำกัด"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:396
+#: src/features/Conversation/CallMode/CallButtons.tsx:400
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "ถึงขีดจำกัดแล้ว"
@@ -6652,7 +6650,7 @@ msgstr "การเข้าถึงไมโครโฟน"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "การเข้าถึงไมโครโฟนถูกปฏิเสธ กรุณาเปิดการใช้งานในการตั้งค่าเบราว์เซอร์ของคุณ"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:42
+#: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -7395,7 +7393,7 @@ msgstr "เปิดแผนส่วนบุคคล"
 msgid "Open progress settings"
 msgstr "เปิดการตั้งค่าความคืบหน้า"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:512
+#: src/features/Conversation/CallMode/CallButtons.tsx:516
 #: src/features/Conversation/ConversationCanvas.tsx:679
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -8656,7 +8654,7 @@ msgstr "อ่านข้อความ"
 msgid "Reader"
 msgstr "ผู้อ่าน"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr ""
@@ -8763,7 +8761,7 @@ msgstr "การสนทนาแบบเรียลไทม์กับ AI
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "การเล่นบทบาทจริงสำหรับการฝึกภาษาอังกฤษขั้นสูง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "การสนทนาแบบเรียลไทม์"
@@ -8860,7 +8858,7 @@ msgstr "บันทึกคำตอบ"
 msgid "Record answer"
 msgstr "บันทึกคำตอบ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:663
 #: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -9230,7 +9228,7 @@ msgstr "การสัมภาษณ์การเจรจาเงินเ
 msgid "Salary negotiation preparation"
 msgstr "การเตรียมการเจรจาเรื่องเงินเดือน"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "บทเรียน Just Talk เดิมผ่านเซิร์ฟเวอร์เสียง WebSocket ใหม่"
@@ -9501,10 +9499,10 @@ msgstr "ประโยค"
 msgid "Set My Language"
 msgstr "ตั้งค่าภาษาของฉัน"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-msgstr "ตั้งค่า NEXT_PUBLIC_REALTIME_WS_URL เพื่อเปิดใช้งาน"
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
+msgstr "ตั้งค่า NEXT_PUBLIC_REALTIME_WS_URL_PROD หรือ _DEV ใน .env.local"
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -9904,8 +9902,8 @@ msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11452,32 +11450,32 @@ msgstr "ลองเล่นบทบาทเหล่านี้"
 msgid "Turkish Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาตุรกี"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "ปิดคำบรรยาย"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "ปิดวิดีโอ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "ปิดเสียง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "เปิดคำบรรยาย"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "เปิดวิดีโอ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "เปิดเสียง"
@@ -11616,7 +11614,7 @@ msgstr "ปลดล็อคการสนทนา AI ไม่จำกั�
 msgid "Update"
 msgstr "อัปเดต"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:432
+#: src/features/Conversation/CallMode/CallButtons.tsx:436
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "อัปเกรด"
@@ -11702,7 +11700,7 @@ msgstr "ชื่อผู้ใช้ต้องมีอักขระอย
 msgid "Username:"
 msgstr "ชื่อผู้ใช้:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:748
+#: src/features/Conversation/CallMode/CallButtons.tsx:752
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -12235,7 +12233,7 @@ msgstr ""
 "คุณสามารถเพิ่มประสบการณ์ในการเรียนรู้ของคุณด้วยคำติชมที่เป็นส่วนบุคคล, "
 "การแก้ไขแบบเรียลไทม์, และชุมชนที่สนับสนุน."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
+#: src/features/Conversation/CallMode/CallButtons.tsx:407
 #. js-lingui-explicit-id
 msgid ""
 "With the free plan, you can only send a limited number of messages per "
@@ -13064,3 +13062,21 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload."
+#~ msgstr ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload.\n"
+#~ "\n"
+#~ "กำหนดค่าเรียลไทม์แบบกำหนดเองยังไม่เรียบร้อย โปรดตั้งค่า "
+#~ "NEXT_PUBLIC_REALTIME_WS_URL (ตัวอย่างเช่น "
+#~ "wss://fluencypal-realtime.fly.dev) และโหลดใหม่"
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+#~ msgstr "ตั้งค่า NEXT_PUBLIC_REALTIME_WS_URL เพื่อเปิดใช้งาน"

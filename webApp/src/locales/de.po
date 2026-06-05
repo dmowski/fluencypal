@@ -580,7 +580,7 @@ msgstr "AI-Token"
 msgid "AI Voice"
 msgstr "AI-Stimme"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "KI-Stimme"
@@ -1165,7 +1165,7 @@ msgstr "Buchinformationen"
 msgid "Book info sections"
 msgstr "Buchinfo-Bereiche"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "Buchleser"
@@ -1447,7 +1447,7 @@ msgstr "Kann ich es auf dem Smartphone verwenden?"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:562
+#: src/features/Conversation/CallMode/CallButtons.tsx:566
 #: src/features/Conversation/ConversationCanvas.tsx:773
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -1720,7 +1720,7 @@ msgstr ""
 "Klicken Sie in Ihrem Browser auf die Schaltfläche Teilen neben "
 "app.fluencypal.com."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2421,15 +2421,17 @@ msgstr "Benutzerdefinierter Interview-Fahrplan"
 msgid "Custom pricing"
 msgstr "Benutzerdefinierte Preisgestaltung"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#: src/features/Conversation/useExperimentalJustTalk.tsx:23
 #. js-lingui-explicit-id
 msgid ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload."
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
+"and reload."
 msgstr ""
-"Die benutzerdefinierte Echtzeit ist nicht konfiguriert. Stellen Sie "
-"NEXT_PUBLIC_REALTIME_WS_URL ein (zum Beispiel "
-"wss://fluencypal-realtime.fly.dev) und laden Sie neu."
+"Kundenspezifisches Echtzeit-Feature ist nicht konfiguriert. Setzen Sie "
+"NEXT_PUBLIC_REALTIME_WS_URL_PROD (pnpm dev:prod) oder "
+"NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local und laden Sie die "
+"Seite neu."
 
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
@@ -3087,7 +3089,7 @@ msgstr "Vergessen Sie nicht, den Anrufmodus im Übungsbereich auszuprobieren!"
 msgid "Done"
 msgstr "Erledigt"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:538
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Fertig mit der Aufnahme"
@@ -3194,7 +3196,7 @@ msgstr ""
 "es \"KI-Stunden\", weil es die ungefähre Zeit darstellt, die Sie die KI in "
 "Anspruch nehmen, wenn Sie sie kontinuierlich verwenden würden."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Frühzugangsfunktionen. Diese Funktionen können sich schnell ändern."
@@ -3260,17 +3262,17 @@ msgstr "E-Mail-Adresse"
 msgid "Enable Access"
 msgstr "Zugriff Aktivieren"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/CallMode/CallButtons.tsx:629
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Mikrofon aktivieren"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:646
+#: src/features/Conversation/CallMode/CallButtons.tsx:650
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Mikrofon aktivieren"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:749
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -3668,12 +3670,12 @@ msgstr ""
 "Lernender sind, Bruno passt sich Ihrem Tempo an, korrigiert Fehler und hält "
 "Sie motiviert."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Experimentelle Funktionen"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Experimentelles Labor"
@@ -6128,7 +6130,7 @@ msgstr "Einfach reden"
 msgid "Just Talk"
 msgstr "Nur Reden"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Just Talk (custom realtime)"
 msgstr "Nur Sprechen (benutzerdefiniert in Echtzeit)"
@@ -6448,7 +6450,7 @@ msgstr "Begrenzte Nachrichten"
 msgid "Limited voice features"
 msgstr "Begrenzte Sprachfunktionen"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:396
+#: src/features/Conversation/CallMode/CallButtons.tsx:400
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "Grenzen erreicht"
@@ -6789,7 +6791,7 @@ msgstr ""
 "Mikrofonzugriff verweigert. Bitte aktivieren Sie ihn in Ihren "
 "Browsereinstellungen."
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:42
+#: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -7546,7 +7548,7 @@ msgstr "Persönlichen Plan öffnen"
 msgid "Open progress settings"
 msgstr "Fortschrittseinstellungen öffnen"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:512
+#: src/features/Conversation/CallMode/CallButtons.tsx:516
 #: src/features/Conversation/ConversationCanvas.tsx:679
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -8831,7 +8833,7 @@ msgstr "Lesen Sie den Text"
 msgid "Reader"
 msgstr "Leser"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr "Reader mit einigen Feature-Listen übersetzt Wörter sofort."
@@ -8942,7 +8944,7 @@ msgstr "Echtzeit-Gespräch mit KI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Echte Rollenspiele für fortgeschrittene Englischübungen"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Echtzeitgespräch"
@@ -9044,7 +9046,7 @@ msgstr "Antwort aufzeichnen"
 msgid "Record answer"
 msgstr "Antwort aufzeichnen"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:663
 #: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -9414,7 +9416,7 @@ msgstr "Gehaltverhandlungsgespräch mit KI-SEO"
 msgid "Salary negotiation preparation"
 msgstr "Vorbereitung auf Gehaltsverhandlungen"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Gleiche Just Talk-Lektion über den neuen WebSocket-Sprachserver."
@@ -9691,10 +9693,10 @@ msgstr "Sätze"
 msgid "Set My Language"
 msgstr "Meine Sprache festlegen"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-msgstr "Setzen Sie NEXT_PUBLIC_REALTIME_WS_URL, um zu aktivieren."
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
+msgstr "Setzen Sie NEXT_PUBLIC_REALTIME_WS_URL_PROD oder _DEV in .env.local."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -10096,8 +10098,8 @@ msgstr "Sterne"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11673,32 +11675,32 @@ msgstr "Versuchen Sie diese Rollenspiele"
 msgid "Turkish Learning Plan"
 msgstr "Türkisch Lernplan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Untertitel ausschalten"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Video ausschalten"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Lautstärke ausschalten"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Untertitel einschalten"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Video einschalten"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Lautstärke einschalten"
@@ -11837,7 +11839,7 @@ msgstr "Entsperre unbegrenzte KI-Konversationen und alle Übungsmodi"
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:432
+#: src/features/Conversation/CallMode/CallButtons.tsx:436
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "Aktualisieren"
@@ -11925,7 +11927,7 @@ msgstr "Der Benutzername muss mindestens 3 Zeichen lang sein."
 msgid "Username:"
 msgstr "Benutzername:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:748
+#: src/features/Conversation/CallMode/CallButtons.tsx:752
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -12459,7 +12461,7 @@ msgstr ""
 "Mit FluencyPal können Sie Ihre Lernerfahrung mit personalisiertem Feedback, "
 "Korrekturen in Echtzeit und einer unterstützenden Gemeinschaft verbessern."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
+#: src/features/Conversation/CallMode/CallButtons.tsx:407
 #. js-lingui-explicit-id
 msgid ""
 "With the free plan, you can only send a limited number of messages per "
@@ -13305,3 +13307,18 @@ msgstr "{winnerName} gewinnt!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload."
+#~ msgstr ""
+#~ "Die benutzerdefinierte Echtzeit ist nicht konfiguriert. Stellen Sie "
+#~ "NEXT_PUBLIC_REALTIME_WS_URL ein (zum Beispiel "
+#~ "wss://fluencypal-realtime.fly.dev) und laden Sie neu."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+#~ msgstr "Setzen Sie NEXT_PUBLIC_REALTIME_WS_URL, um zu aktivieren."

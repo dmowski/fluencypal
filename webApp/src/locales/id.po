@@ -577,7 +577,7 @@ msgstr "Token AI"
 msgid "AI Voice"
 msgstr "AI Suara"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Suara AI"
@@ -1150,7 +1150,7 @@ msgstr "Informasi buku"
 msgid "Book info sections"
 msgstr "Bagian informasi buku"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:71
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Book Reader"
 msgstr "Pembaca Buku"
@@ -1430,7 +1430,7 @@ msgstr "Bisakah saya menggunakannya di smartphone?"
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:562
+#: src/features/Conversation/CallMode/CallButtons.tsx:566
 #: src/features/Conversation/ConversationCanvas.tsx:773
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -1697,7 +1697,7 @@ msgstr "Klik \"Tambahkan alamat e-mail yang disetujui baru\" dan masukkan:"
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "Klik tombol Bagikan di sebelah app.fluencypal.com di browser Anda."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2390,14 +2390,16 @@ msgstr "Rencana wawancara kustom"
 msgid "Custom pricing"
 msgstr "Harga khusus"
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#: src/features/Conversation/useExperimentalJustTalk.tsx:23
 #. js-lingui-explicit-id
 msgid ""
-"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-"example wss://fluencypal-realtime.fly.dev) and reload."
+"Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
+"and reload."
 msgstr ""
-"Custom realtime belum dikonfigurasi. Atur NEXT_PUBLIC_REALTIME_WS_URL "
-"(misalnya wss://fluencypal-realtime.fly.dev) dan muat ulang."
+"Custom realtime tidak dikonfigurasi. Atur NEXT_PUBLIC_REALTIME_WS_URL_PROD "
+"(pnpm dev:prod) atau NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) di "
+".env.local dan muat ulang."
 
 #: src/features/RolePlay/rolePlayData.tsx:1108
 #. js-lingui-explicit-id
@@ -3047,7 +3049,7 @@ msgstr "Jangan lupa untuk mencoba mode panggilan di bagian latihan!"
 msgid "Done"
 msgstr "Selesai"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:538
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Selesai merekam"
@@ -3158,7 +3160,7 @@ msgstr ""
 "AI\" karena ini adalah perkiraan waktu penggunaan AI jika Anda "
 "menggunakannya secara terus menerus."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Early access features. These features may change quickly."
 msgstr "Fitur akses awal. Fitur-fitur ini dapat berubah dengan cepat."
@@ -3227,17 +3229,17 @@ msgstr "Alamat email"
 msgid "Enable Access"
 msgstr "Aktifkan Akses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/CallMode/CallButtons.tsx:629
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Aktifkan Mikrofon"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:646
+#: src/features/Conversation/CallMode/CallButtons.tsx:650
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Aktifkan mikrofon"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:749
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -3624,12 +3626,12 @@ msgstr ""
 "Apakah Anda pemula atau pelajar tingkat lanjut, Bruno menyesuaikan dengan "
 "kecepatan Anda, memperbaiki kesalahan, dan menjaga Anda termotivasi."
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:53
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
 msgstr "Fitur eksperimental"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:35
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Laboratorium Eksperimental"
@@ -6061,7 +6063,7 @@ msgstr "Hanya berbicara"
 msgid "Just Talk"
 msgstr "Hanya Bicara"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:56
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Just Talk (custom realtime)"
 msgstr "Hanya Bicara (waktu nyata khusus)"
@@ -6379,7 +6381,7 @@ msgstr "Pesan terbatas"
 msgid "Limited voice features"
 msgstr "Fitur suara terbatas"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:396
+#: src/features/Conversation/CallMode/CallButtons.tsx:400
 #. js-lingui-explicit-id
 msgid "Limits reached"
 msgstr "Batas tercapai"
@@ -6717,7 +6719,7 @@ msgstr "Akses Mikrofon"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Akses mikrofon ditolak. Silakan aktifkan di pengaturan browser Anda."
 
-#: src/features/Conversation/useExperimentalJustTalk.tsx:42
+#: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -7477,7 +7479,7 @@ msgstr "Buka rencana pribadi"
 msgid "Open progress settings"
 msgstr "Buka pengaturan kemajuan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:512
+#: src/features/Conversation/CallMode/CallButtons.tsx:516
 #: src/features/Conversation/ConversationCanvas.tsx:679
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -8763,7 +8765,7 @@ msgstr "Baca teksnya"
 msgid "Reader"
 msgstr "Pembaca"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:72
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Reader with some feature list translate words on the fly."
 msgstr ""
@@ -8876,7 +8878,7 @@ msgstr "Percakapan waktu nyata dengan AI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:736
+#: src/features/Conversation/CallMode/CallButtons.tsx:740
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr ""
@@ -8977,7 +8979,7 @@ msgstr "Rekam Jawaban"
 msgid "Record answer"
 msgstr "Rekam jawaban"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:663
 #: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -9347,7 +9349,7 @@ msgstr "Wawancara negosiasi gaji dengan AI SEO"
 msgid "Salary negotiation preparation"
 msgstr "Persiapan negosiasi gaji"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:58
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
 #. js-lingui-explicit-id
 msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Pelajaran Just Talk yang sama melalui server suara WebSocket baru."
@@ -9620,10 +9622,10 @@ msgstr ""
 msgid "Set My Language"
 msgstr "Atur Bahasa Saya"
 
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-msgstr "Tetapkan NEXT_PUBLIC_REALTIME_WS_URL untuk mengaktifkan."
+msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
+msgstr "Tetapkan NEXT_PUBLIC_REALTIME_WS_URL_PROD atau _DEV di .env.local."
 
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
@@ -10027,8 +10029,8 @@ msgstr "Bintang"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:62
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:75
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:468
@@ -11594,32 +11596,32 @@ msgstr "Cobalah bermain peran ini"
 msgid "Turkish Learning Plan"
 msgstr "Rencana Pembelajaran Bahasa Turki"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn off subtitles"
 msgstr "Matikan subtitle"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn off video"
 msgstr "Matikan video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn off volume"
 msgstr "Matikan volume"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:681
+#: src/features/Conversation/CallMode/CallButtons.tsx:685
 #. js-lingui-explicit-id
 msgid "Turn on subtitles"
 msgstr "Aktifkan subtitle"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:690
+#: src/features/Conversation/CallMode/CallButtons.tsx:694
 #. js-lingui-explicit-id
 msgid "Turn on video"
 msgstr "Nyalakan video"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:671
+#: src/features/Conversation/CallMode/CallButtons.tsx:675
 #. js-lingui-explicit-id
 msgid "Turn on volume"
 msgstr "Nyalakan volume"
@@ -11762,7 +11764,7 @@ msgstr "Buka kunci percakapan AI tanpa batas dan semua mode latihan"
 msgid "Update"
 msgstr "Perbarui"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:432
+#: src/features/Conversation/CallMode/CallButtons.tsx:436
 #. js-lingui-explicit-id
 msgid "Upgrade"
 msgstr "Tingkatkan"
@@ -11850,7 +11852,7 @@ msgstr "Nama pengguna harus setidaknya 3 karakter."
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:748
+#: src/features/Conversation/CallMode/CallButtons.tsx:752
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -12388,7 +12390,7 @@ msgstr ""
 "umpan balik yang dipersonalisasi, koreksi real-time, dan komunitas yang "
 "mendukung."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:403
+#: src/features/Conversation/CallMode/CallButtons.tsx:407
 #. js-lingui-explicit-id
 msgid ""
 "With the free plan, you can only send a limited number of messages per "
@@ -13251,3 +13253,17 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Conversation/useExperimentalJustTalk.tsx:22
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
+#~ "example wss://fluencypal-realtime.fly.dev) and reload."
+#~ msgstr ""
+#~ "Custom realtime belum dikonfigurasi. Atur NEXT_PUBLIC_REALTIME_WS_URL "
+#~ "(misalnya wss://fluencypal-realtime.fly.dev) dan muat ulang."
+
+#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
+#. js-lingui-explicit-id
+#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
+#~ msgstr "Tetapkan NEXT_PUBLIC_REALTIME_WS_URL untuk mengaktifkan."
