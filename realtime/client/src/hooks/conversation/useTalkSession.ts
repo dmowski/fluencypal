@@ -99,11 +99,7 @@ export const useTalkSession = ({
       debugLog("call", "assistant_trigger");
       client.sendJson({ type: "assistant.trigger" });
       greetingSentRef.current = true;
-      setSessionStatus("Call active — on call…", "active");
-
-      if (!(await startMicCaptureIfNeeded())) {
-        setCallActive(false);
-      }
+      setSessionStatus("Call active — greeting…", "active");
       return;
     }
 

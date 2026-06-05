@@ -6,6 +6,7 @@ export const useMicrophone = (micEnabled: boolean) => {
   const microphoneRef = useRef(new MicrophoneSession());
   const captureRef = useRef<AudioCapture | null>(null);
   const micAccessPendingRef = useRef(false);
+  const micAccessPromiseRef = useRef<Promise<boolean> | null>(null);
 
   const [micStatusText, setMicStatusText] = useState("Mic: not requested");
   const [micStatusTone, setMicStatusTone] = useState<StatusTone>("idle");
@@ -18,23 +19,37 @@ export const useMicrophone = (micEnabled: boolean) => {
 
   const prepareMicrophone = useCallback(async (): Promise<boolean> => {
     const microphone = microphoneRef.current;
-    if (!micEnabled || micAccessPendingRef.current || microphone.isReady) {
-      return microphone.isReady;
-    }
-
-    micAccessPendingRef.current = true;
-    setMicStatus("Mic: waiting for permission…", "warning");
-
-    try {
-      await microphone.requestAccess();
-      setMicStatus("Mic: ready", "ok");
-      return true;
-    } catch (error) {
-      setMicStatus(`Mic: ${describeMicError(error)}`, "error");
+    if (!micEnabled) {
       return false;
-    } finally {
-      micAccessPendingRef.current = false;
     }
+
+    if (microphone.isReady) {
+      return true;
+    }
+
+    if (micAccessPromiseRef.current) {
+      return micAccessPromiseRef.current;
+    }
+
+    const accessPromise = (async (): Promise<boolean> => {
+      micAccessPendingRef.current = true;
+      setMicStatus("Mic: waiting for permission…", "warning");
+
+      try {
+        await microphone.requestAccess();
+        setMicStatus("Mic: ready", "ok");
+        return true;
+      } catch (error) {
+        setMicStatus(`Mic: ${describeMicError(error)}`, "error");
+        return false;
+      } finally {
+        micAccessPendingRef.current = false;
+        micAccessPromiseRef.current = null;
+      }
+    })();
+
+    micAccessPromiseRef.current = accessPromise;
+    return accessPromise;
   }, [micEnabled, setMicStatus]);
 
   const startCapture = useCallback(
