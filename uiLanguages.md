@@ -3,6 +3,7 @@
 Use this file as the instruction set when asking AI to validate a specific locale.
 
 **Example prompt:**
+
 > "Check language `ru`, follow instructions in uiLanguages.md"
 
 **Scope:** PO files in `landing/src/locales/<lang>.po` and `webApp/src/locales/<lang>.po`.
