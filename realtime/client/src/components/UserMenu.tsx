@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import type { User } from 'firebase/auth';
+import { Avatar, Menu, Text, UnstyledButton, VisuallyHidden } from "@mantine/core";
+import type { User } from "firebase/auth";
 
 type UserMenuProps = {
   user: User;
@@ -22,70 +22,33 @@ const getInitials = (user: User): string => {
     return email.slice(0, 2).toUpperCase();
   }
 
-  return 'U';
+  return "U";
 };
 
 export const UserMenu = ({ user, authStatusText, onSignOut }: UserMenuProps) => {
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handlePointerDown = (event: MouseEvent) => {
-      if (!menuRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [open]);
-
-  const handleSignOut = () => {
-    setOpen(false);
-    void onSignOut();
-  };
-
   return (
-    <div className="user-menu" ref={menuRef}>
-      <p id="auth-status" className="visually-hidden">
-        {authStatusText}
-      </p>
-      <button
-        type="button"
-        className="user-avatar"
-        aria-label="Account menu"
-        aria-expanded={open}
-        aria-haspopup="menu"
-        onClick={() => setOpen((value) => !value)}
-      >
-        {user.photoURL ? (
-          <img src={user.photoURL} alt="" className="user-avatar-image" />
-        ) : (
-          <span className="user-avatar-initials">{getInitials(user)}</span>
-        )}
-      </button>
-      {open ? (
-        <div className="user-menu-dropdown" role="menu">
-          <p className="user-menu-email">{user.email ?? user.uid}</p>
-          <button id="sign-out" type="button" className="user-menu-item" role="menuitem" onClick={handleSignOut}>
-            Log out
-          </button>
-        </div>
-      ) : null}
-    </div>
+    <Menu shadow="md" width={220}>
+      <Menu.Target>
+        <UnstyledButton aria-label="Account menu">
+          <Avatar src={user.photoURL ?? undefined} radius="xl">
+            {getInitials(user)}
+          </Avatar>
+        </UnstyledButton>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <VisuallyHidden>
+          <p id="auth-status">{authStatusText}</p>
+        </VisuallyHidden>
+        <Menu.Label>
+          <Text size="xs" style={{ wordBreak: "break-word" }}>
+            {user.email ?? user.uid}
+          </Text>
+        </Menu.Label>
+        <Menu.Divider />
+        <Menu.Item id="sign-out" onClick={() => void onSignOut()}>
+          Log out
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
   );
 };

@@ -1,27 +1,60 @@
-import { useConversationContext } from '../context/ConversationContext.js';
+import { Accordion, Button, Group, Text } from "@mantine/core";
+import { useConversationContext } from "../context/ConversationContext.js";
 
 export const DebugLogPanel = () => {
   const { debugLogStatus, handleCopyDebugLog, handleClearDebugLog, bindDebugLogElement } =
     useConversationContext();
 
   return (
-    <details className="panel collapsible">
-      <summary>Debug log</summary>
-      <p className="hint">Copy and share when reporting issues.</p>
-      <div className="row actions">
-        <button id="copy-debug-log" type="button" className="btn-secondary" onClick={() => void handleCopyDebugLog()}>
-          Copy logs
-        </button>
-        <button id="clear-debug-log" type="button" className="btn-secondary" onClick={handleClearDebugLog}>
-          Clear
-        </button>
-      </div>
-      {debugLogStatus ? (
-        <p id="debug-log-status" className={`inline-status${debugLogStatus.isError ? ' error' : ''}`}>
-          {debugLogStatus.message}
-        </p>
-      ) : null}
-      <pre id="debug-log" className="log debug-log" ref={bindDebugLogElement} />
-    </details>
+    <Accordion variant="contained" radius="md">
+      <Accordion.Item value="debug-log">
+        <Accordion.Control>Debug log</Accordion.Control>
+        <Accordion.Panel>
+          <Text size="sm" c="dimmed" mb="sm">
+            Copy and share when reporting issues.
+          </Text>
+          <Group mb="sm">
+            <Button
+              id="copy-debug-log"
+              variant="default"
+              size="sm"
+              onClick={() => void handleCopyDebugLog()}
+            >
+              Copy logs
+            </Button>
+            <Button id="clear-debug-log" variant="default" size="sm" onClick={handleClearDebugLog}>
+              Clear
+            </Button>
+          </Group>
+          {debugLogStatus ? (
+            <Text
+              id="debug-log-status"
+              size="sm"
+              c={debugLogStatus.isError ? "red" : "green"}
+              mb="xs"
+            >
+              {debugLogStatus.message}
+            </Text>
+          ) : null}
+          <pre
+            id="debug-log"
+            ref={bindDebugLogElement}
+            style={{
+              margin: 0,
+              maxHeight: 260,
+              overflowY: "auto",
+              fontFamily: "var(--mantine-font-family-monospace)",
+              fontSize: "var(--mantine-font-size-xs)",
+              background: "var(--mantine-color-dark-8)",
+              color: "var(--mantine-color-dark-1)",
+              padding: 12,
+              borderRadius: "var(--mantine-radius-sm)",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+            }}
+          />
+        </Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
   );
 };

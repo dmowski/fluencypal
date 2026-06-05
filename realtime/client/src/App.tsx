@@ -1,8 +1,9 @@
-import { AppHeader } from './components/AppHeader.js';
-import { AuthWall } from './components/AuthWall.js';
-import { ConversationView } from './components/ConversationView.js';
-import { ConversationProvider, useConversationContext } from './context/ConversationContext.js';
-import { useAuth } from './hooks/useAuth.js';
+import { Center, Container, Loader, Stack, Text } from "@mantine/core";
+import { AppHeader } from "./components/AppHeader.js";
+import { AuthWall } from "./components/AuthWall.js";
+import { ConversationView } from "./components/ConversationView.js";
+import { ConversationProvider, useConversationContext } from "./context/ConversationContext.js";
+import { useAuth } from "./hooks/useAuth.js";
 
 type AuthenticatedAppProps = {
   auth: ReturnType<typeof useAuth>;
@@ -17,23 +18,28 @@ const AuthenticatedApp = ({ auth }: AuthenticatedAppProps) => {
   };
 
   return (
-    <main className="layout">
-      <AppHeader user={auth.user!} authStatusText={auth.authStatusText} onSignOut={handleSignOut} />
-      <ConversationView />
-    </main>
+    <Container size="sm" py="xl">
+      <Stack gap="md">
+        <AppHeader
+          user={auth.user!}
+          authStatusText={auth.authStatusText}
+          onSignOut={handleSignOut}
+        />
+        <ConversationView />
+      </Stack>
+    </Container>
   );
 };
 
 const AuthLoading = () => (
-  <div className="auth-wall">
-    <div className="auth-wall-card">
-      <p className="eyebrow">FluencyPal · Realtime</p>
-      <h1>Sign in</h1>
-      <p id="auth-status" className="status-pill status-warning">
+  <Center mih="100vh">
+    <Stack align="center" gap="md">
+      <Loader />
+      <Text size="sm" c="dimmed">
         Checking sign-in…
-      </p>
-    </div>
-  </div>
+      </Text>
+    </Stack>
+  </Center>
 );
 
 export const App = () => {

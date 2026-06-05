@@ -1,4 +1,24 @@
-import { useConversationContext } from '../context/ConversationContext.js';
+import {
+  Badge,
+  Button,
+  Grid,
+  Group,
+  Paper,
+  Select,
+  Stack,
+  Switch,
+  Textarea,
+  Title,
+} from "@mantine/core";
+import { useConversationContext } from "../context/ConversationContext.js";
+
+const toneToColor = (tone: string) => {
+  if (tone === "ok") return "green";
+  if (tone === "active") return "blue";
+  if (tone === "warning") return "yellow";
+  if (tone === "error") return "red";
+  return "gray";
+};
 
 export const SessionPanel = () => {
   const {
@@ -20,80 +40,83 @@ export const SessionPanel = () => {
   } = useConversationContext();
 
   return (
-    <section className="panel">
-      <div className="panel-head">
-        <h2>Session</h2>
-        <p id="session-status" className={`status-pill status-${sessionStatusTone}`}>
-          {sessionStatusText}
-        </p>
-      </div>
-      <label>
-        System instruction
-        <textarea
+    <Paper p="md" radius="md" withBorder>
+      <Stack gap="md">
+        <Group justify="space-between">
+          <Title order={2} size="h4">
+            Session
+          </Title>
+          <Badge id="session-status" color={toneToColor(sessionStatusTone)} variant="light">
+            {sessionStatusText}
+          </Badge>
+        </Group>
+        <Textarea
           id="system-instruction"
+          label="System instruction"
           rows={3}
           value={systemInstruction}
           onChange={(event) => setSystemInstruction(event.target.value)}
         />
-      </label>
-      <div className="grid">
-        <label>
-          Mode
-          <select id="mode" value={mode} onChange={(event) => setMode(event.target.value as typeof mode)}>
-            <option value="PushToTalk">Push to talk</option>
-            <option value="RealTimeConversation">Real-time call</option>
-          </select>
-        </label>
-        <label>
-          Voice
-          <select id="voice" value={voice} onChange={(event) => setVoice(event.target.value as typeof voice)}>
-            <option value="shimmer">shimmer</option>
-            <option value="ash">ash</option>
-            <option value="marin">marin</option>
-            <option value="verse">verse</option>
-          </select>
-        </label>
-      </div>
-      <div className="row toggles chip-row">
-        <label className="chip">
-          <input
+        <Grid>
+          <Grid.Col span={6}>
+            <Select
+              id="mode"
+              label="Mode"
+              value={mode}
+              onChange={(value) => {
+                if (value !== null) setMode(value as typeof mode);
+              }}
+              data={[
+                { value: "PushToTalk", label: "Push to talk" },
+                { value: "RealTimeConversation", label: "Real-time call" },
+              ]}
+            />
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Select
+              id="voice"
+              label="Voice"
+              value={voice}
+              onChange={(value) => {
+                if (value !== null) setVoice(value as typeof voice);
+              }}
+              data={[
+                { value: "shimmer", label: "shimmer" },
+                { value: "ash", label: "ash" },
+                { value: "marin", label: "marin" },
+                { value: "verse", label: "verse" },
+              ]}
+            />
+          </Grid.Col>
+        </Grid>
+        <Group gap="md">
+          <Switch
             id="voice-enabled"
-            type="checkbox"
+            label="AI voice"
             checked={voiceEnabled}
-            onChange={(event) => handleVoiceEnabledChange(event.target.checked)}
-          />{' '}
-          AI voice
-        </label>
-        <label className="chip">
-          <input
+            onChange={(event) => handleVoiceEnabledChange(event.currentTarget.checked)}
+          />
+          <Switch
             id="mic-muted"
-            type="checkbox"
+            label="Mic muted"
             checked={micMuted}
-            onChange={(event) => void handleMicMutedChange(event.target.checked)}
-          />{' '}
-          Mic muted
-        </label>
-      </div>
-      <div className="row actions">
-        <button
-          id="connect"
-          type="button"
-          className="btn-primary"
-          disabled={connected}
-          onClick={() => void handleConnect()}
-        >
-          Connect
-        </button>
-        <button
-          id="disconnect"
-          type="button"
-          className="btn-secondary"
-          disabled={!connected}
-          onClick={() => void handleDisconnect()}
-        >
-          Disconnect
-        </button>
-      </div>
-    </section>
+            onChange={(event) => void handleMicMutedChange(event.currentTarget.checked)}
+          />
+        </Group>
+        <Group>
+          <Button id="connect" disabled={connected} onClick={() => void handleConnect()}>
+            Connect
+          </Button>
+          <Button
+            id="disconnect"
+            variant="default"
+            disabled={!connected}
+            onClick={() => void handleDisconnect()}
+          >
+            Disconnect
+          </Button>
+        </Group>
+      </Stack>
+    </Paper>
   );
 };
