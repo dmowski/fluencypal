@@ -32,19 +32,19 @@ realtime/
 
 ### Pipeline (current behavior)
 
-| Stage | Behavior |
-| ----- | -------- |
-| **User speech** | Client streams PCM16; server buffers until turn end (silence detection or PTT commit). |
-| **STT** | One batch request per user turn (`transcribeBatch` → full WAV). No streaming partial user transcript. |
-| **LLM** | Streamed token deltas → `transcript.delta`; full reply → `transcript.done`. |
-| **TTS** | Starts **after** full LLM text; MP3 chunks stream as binary frames. |
+| Stage           | Behavior                                                                                              |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
+| **User speech** | Client streams PCM16; server buffers until turn end (silence detection or PTT commit).                |
+| **STT**         | One batch request per user turn (`transcribeBatch` → full WAV). No streaming partial user transcript. |
+| **LLM**         | Streamed token deltas → `transcript.delta`; full reply → `transcript.done`.                           |
+| **TTS**         | Starts **after** full LLM text; MP3 chunks stream as binary frames.                                   |
 
 ### Session modes
 
-| Mode | Turn end | Assistant reply |
-| ---- | -------- | ----------------- |
-| **RealTimeConversation** | Server silence timer (~1.2 s after speech) | Auto after each user turn |
-| **PushToTalk** | `user.turn.commit` on release | Auto after commit (or `assistant.trigger`) |
+| Mode                     | Turn end                                   | Assistant reply                            |
+| ------------------------ | ------------------------------------------ | ------------------------------------------ |
+| **RealTimeConversation** | Server silence timer (~1.2 s after speech) | Auto after each user turn                  |
+| **PushToTalk**           | `user.turn.commit` on release              | Auto after commit (or `assistant.trigger`) |
 
 Silence detection: `src/session/turnDetection.ts`. Barge-in aborts in-flight LLM/TTS and emits `assistant.interrupted`. OpenAI aborts (`APIUserAbortError`) are normal cancellation — must not crash the process (`src/errors/isAbortError.ts`).
 
@@ -95,12 +95,12 @@ Set `REUSE_DEV_SERVER=1` for browser e2e when `pnpm dev` is already running.
 
 ## E2E structure
 
-| Suite | Command | Notes |
-| ----- | ------- | ----- |
-| API e2e | `pnpm test:e2e` | Vitest + WS client on port `18081`; `e2e/globalSetup.ts` starts emulator + server |
-| Voice API e2e | `pnpm test:e2e:voice` | Real speech PCM over WebSocket; fixtures via `pnpm e2e:fixtures:voice` |
-| Browser e2e | `pnpm test:e2e:browser` | Playwright + client on `:5173`; first run: `pnpm exec playwright install chromium` |
-| Voice browser e2e | `pnpm test:e2e:voice:browser` | Chrome fake mic from normalized WAV fixtures (`pnpm e2e:fixtures:normalize`) |
+| Suite             | Command                       | Notes                                                                              |
+| ----------------- | ----------------------------- | ---------------------------------------------------------------------------------- |
+| API e2e           | `pnpm test:e2e`               | Vitest + WS client on port `18081`; `e2e/globalSetup.ts` starts emulator + server  |
+| Voice API e2e     | `pnpm test:e2e:voice`         | Real speech PCM over WebSocket; fixtures via `pnpm e2e:fixtures:voice`             |
+| Browser e2e       | `pnpm test:e2e:browser`       | Playwright + client on `:5173`; first run: `pnpm exec playwright install chromium` |
+| Voice browser e2e | `pnpm test:e2e:voice:browser` | Chrome fake mic from normalized WAV fixtures (`pnpm e2e:fixtures:normalize`)       |
 
 Auth/session e2e runs without OpenAI. Voice suites require `OPENAI_API_KEY`.
 
@@ -110,6 +110,7 @@ Auth/session e2e runs without OpenAI. Voice suites require `OPENAI_API_KEY`.
 - Import `FirebaseError` from `firebase/app`, not `firebase/auth` (same as `webApp`).
 - Rate limiting: `@fastify/rate-limit` per IP; `/health` and `/ready` allowlisted. Tune via `RATE_LIMIT_*` env vars.
 - Session idle timeout: `SESSION_IDLE_TIMEOUT_MS` (default 10 min). Mic audio and control messages reset the timer; `session.ping` does not.
+- **Client UI** uses [Mantine](https://mantine.dev/) v9 (`@mantine/core`, `@mantine/hooks`) with `defaultColorScheme="dark"`. No custom CSS — use Mantine components and props only. Import Mantine styles via `@mantine/core/styles.css` in `main.tsx`.
 
 ## Deploy
 

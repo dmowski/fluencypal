@@ -4,20 +4,20 @@ Custom WebSocket conversation backend for FluencyPal. Replaces the coupled OpenA
 
 ### Pipeline (current behavior)
 
-| Stage | How it works |
-| ----- | ------------ |
-| **User speech** | Client streams PCM16 chunks; server buffers until turn end (silence detection or PTT commit). |
-| **STT** | One batch request per user turn (`transcribeBatch` → full WAV). No streaming partial user transcript. |
-| **LLM** | Streamed token deltas → `transcript.delta`; full reply → `transcript.done`. |
-| **TTS** | Starts **after** the full LLM text is ready; MP3 chunks stream to the client as binary frames. |
+| Stage           | How it works                                                                                          |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
+| **User speech** | Client streams PCM16 chunks; server buffers until turn end (silence detection or PTT commit).         |
+| **STT**         | One batch request per user turn (`transcribeBatch` → full WAV). No streaming partial user transcript. |
+| **LLM**         | Streamed token deltas → `transcript.delta`; full reply → `transcript.done`.                           |
+| **TTS**         | Starts **after** the full LLM text is ready; MP3 chunks stream to the client as binary frames.        |
 
 ### Related docs
 
-| Doc | Purpose |
-| --- | ------- |
-| [`e2e-cases.md`](./e2e-cases.md) | Voice E2E test matrix (real speech, no mocks) |
-| [`PHASE3_CHECKLIST.md`](./PHASE3_CHECKLIST.md) | Experimental webApp integration + manual QA |
-| [`AGENTS.md`](./AGENTS.md) | Agent / CI commands for this package |
+| Doc                                            | Purpose                                       |
+| ---------------------------------------------- | --------------------------------------------- |
+| [`e2e-cases.md`](./e2e-cases.md)               | Voice E2E test matrix (real speech, no mocks) |
+| [`PHASE3_CHECKLIST.md`](./PHASE3_CHECKLIST.md) | Experimental webApp integration + manual QA   |
+| [`AGENTS.md`](./AGENTS.md)                     | Agent / CI commands for this package          |
 
 ## Prerequisites
 
@@ -64,29 +64,29 @@ The first message on the socket must be JSON `session.start` with a Firebase ID 
 
 Copy `.env.example` to `.env`. All variables are read at startup via `src/config/env.ts`.
 
-| Variable | Required | Default | Description |
-| -------- | -------- | ------- | ----------- |
-| `REALTIME_PORT` | No | `8081` | HTTP + WebSocket listen port |
-| `NODE_ENV` | No | `development` | `development`, `test`, or `production` |
-| `ALLOWED_ORIGINS` | No | `http://localhost:3000,http://localhost:5173` | Comma-separated CORS origins |
-| `OPENAI_API_KEY` | Yes* | — | OpenAI key for STT, LLM, and TTS |
-| `FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS` | Yes** | — | Firebase admin service account JSON string |
-| `FIREBASE_PROJECT_ID` | No | `dark-lang` | Firebase project id |
-| `FIREBASE_STORAGE_BUCKET` | No | `dark-lang.firebasestorage.app` | Storage bucket |
-| `IS_FIREBASE_EMULATOR` | No | `false` | Set automatically by `pnpm dev`; set `true` manually for `pnpm dev:api` |
-| `DEFAULT_STT_MODEL` | No | `gpt-4o-transcribe` | Server-side STT model |
-| `DEFAULT_LLM_MODEL` | No | `gpt-4o` | Server-side LLM model |
-| `DEFAULT_TTS_MODEL` | No | `gpt-4o-mini-tts` | Server-side TTS model |
-| `RATE_LIMIT_ENABLED` | No | `true` | Per-IP HTTP rate limiting (off when `NODE_ENV=test`) |
-| `RATE_LIMIT_MAX` | No | `200` | Max requests per IP per window (excludes `/health`, `/ready`) |
-| `RATE_LIMIT_WINDOW_MS` | No | `60000` | Rate limit window in ms |
-| `RATE_LIMIT_AUTH_VERIFY_MAX` | No | `30` | Max `/v1/auth/verify` calls per IP per window |
-| `RATE_LIMIT_WS_MAX` | No | `20` | Max WebSocket upgrade attempts per IP per window |
-| `SESSION_IDLE_TIMEOUT_MS` | No | `600000` (10 min; `0` in tests) | Close session after no user audio/control |
+| Variable                                 | Required | Default                                       | Description                                                             |
+| ---------------------------------------- | -------- | --------------------------------------------- | ----------------------------------------------------------------------- |
+| `REALTIME_PORT`                          | No       | `8081`                                        | HTTP + WebSocket listen port                                            |
+| `NODE_ENV`                               | No       | `development`                                 | `development`, `test`, or `production`                                  |
+| `ALLOWED_ORIGINS`                        | No       | `http://localhost:3000,http://localhost:5173` | Comma-separated CORS origins                                            |
+| `OPENAI_API_KEY`                         | Yes\*    | —                                             | OpenAI key for STT, LLM, and TTS                                        |
+| `FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS` | Yes\*\*  | —                                             | Firebase admin service account JSON string                              |
+| `FIREBASE_PROJECT_ID`                    | No       | `dark-lang`                                   | Firebase project id                                                     |
+| `FIREBASE_STORAGE_BUCKET`                | No       | `dark-lang.firebasestorage.app`               | Storage bucket                                                          |
+| `IS_FIREBASE_EMULATOR`                   | No       | `false`                                       | Set automatically by `pnpm dev`; set `true` manually for `pnpm dev:api` |
+| `DEFAULT_STT_MODEL`                      | No       | `gpt-4o-transcribe`                           | Server-side STT model                                                   |
+| `DEFAULT_LLM_MODEL`                      | No       | `gpt-4o`                                      | Server-side LLM model                                                   |
+| `DEFAULT_TTS_MODEL`                      | No       | `gpt-4o-mini-tts`                             | Server-side TTS model                                                   |
+| `RATE_LIMIT_ENABLED`                     | No       | `true`                                        | Per-IP HTTP rate limiting (off when `NODE_ENV=test`)                    |
+| `RATE_LIMIT_MAX`                         | No       | `200`                                         | Max requests per IP per window (excludes `/health`, `/ready`)           |
+| `RATE_LIMIT_WINDOW_MS`                   | No       | `60000`                                       | Rate limit window in ms                                                 |
+| `RATE_LIMIT_AUTH_VERIFY_MAX`             | No       | `30`                                          | Max `/v1/auth/verify` calls per IP per window                           |
+| `RATE_LIMIT_WS_MAX`                      | No       | `20`                                          | Max WebSocket upgrade attempts per IP per window                        |
+| `SESSION_IDLE_TIMEOUT_MS`                | No       | `600000` (10 min; `0` in tests)               | Close session after no user audio/control                               |
 
 \* Required for conversation pipeline tests and manual calls with voice. E2E auth/session tests run without OpenAI.
 
-\** Optional when `IS_FIREBASE_EMULATOR=true` (emulator accepts unsigned tokens).
+\*\* Optional when `IS_FIREBASE_EMULATOR=true` (emulator accepts unsigned tokens).
 
 Models are **server-side only** — clients never send model or provider ids. Change env vars and redeploy to swap models.
 
@@ -121,9 +121,9 @@ To run the API alone against an emulator you start separately:
 
 When `IS_FIREBASE_EMULATOR=true`, the service sets:
 
-   - `FIREBASE_AUTH_EMULATOR_HOST=localhost:9099`
-   - `FIRESTORE_EMULATOR_HOST=localhost:8080`
-   - `FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`
+- `FIREBASE_AUTH_EMULATOR_HOST=localhost:9099`
+- `FIRESTORE_EMULATOR_HOST=localhost:8080`
+- `FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`
 
 Verify a token:
 
@@ -134,26 +134,26 @@ curl http://localhost:8081/v1/auth/verify \
 
 ## Scripts
 
-| Command | Description |
-| ------- | ----------- |
-| `pnpm dev` | **One command dev stack**: emulator + API (`tsx watch`) + Vite React client with HMR (+ opens browser) |
-| `pnpm dev:api` | Realtime API only with hot reload (`tsx watch`) |
-| `pnpm dev:client` | React client only on http://127.0.0.1:5173 (HMR) |
-| `pnpm build:client` | Production build of client |
-| `pnpm lint` | TypeScript check (`tsc --noEmit`) |
-| `pnpm test` | Unit tests (mocked Firebase / providers) |
-| `pnpm test:e2e` | API-level e2e (Vitest + WS client on port `18081`) |
-| `pnpm test:e2e:voice` | Real voice E2E — OpenAI STT/LLM/TTS + speech WAV fixtures (see `e2e-cases.md`) |
-| `pnpm test:e2e:browser` | Browser e2e (Playwright + React client UI) |
-| `pnpm test:e2e:voice:browser` | Browser voice E2E — real speech via Chrome fake mic file |
-| `pnpm e2e:fixtures:voice` | Generate optional TTS hello fixtures (OpenAI) |
-| `pnpm e2e:fixtures:normalize` | Convert user recordings (`*.wav`) → `*-48k-mono.wav` for browser e2e |
-| `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
-| `pnpm test:all` | Unit + API e2e + browser e2e + client build |
-| `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
-| `pnpm prod` | Redeploy to Fly.io (`fly deploy`) |
-| `pnpm prod:open` | Open production test page in browser |
-| `pnpm build && pnpm start` | Production build and run locally |
+| Command                       | Description                                                                                            |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `pnpm dev`                    | **One command dev stack**: emulator + API (`tsx watch`) + Vite React client with HMR (+ opens browser) |
+| `pnpm dev:api`                | Realtime API only with hot reload (`tsx watch`)                                                        |
+| `pnpm dev:client`             | React client only on http://127.0.0.1:5173 (HMR)                                                       |
+| `pnpm build:client`           | Production build of client                                                                             |
+| `pnpm lint`                   | TypeScript check (`tsc --noEmit`)                                                                      |
+| `pnpm test`                   | Unit tests (mocked Firebase / providers)                                                               |
+| `pnpm test:e2e`               | API-level e2e (Vitest + WS client on port `18081`)                                                     |
+| `pnpm test:e2e:voice`         | Real voice E2E — OpenAI STT/LLM/TTS + speech WAV fixtures (see `e2e-cases.md`)                         |
+| `pnpm test:e2e:browser`       | Browser e2e (Playwright + React client UI)                                                             |
+| `pnpm test:e2e:voice:browser` | Browser voice E2E — real speech via Chrome fake mic file                                               |
+| `pnpm e2e:fixtures:voice`     | Generate optional TTS hello fixtures (OpenAI)                                                          |
+| `pnpm e2e:fixtures:normalize` | Convert user recordings (`*.wav`) → `*-48k-mono.wav` for browser e2e                                   |
+| `pnpm test:e2e:browser:ui`    | Playwright interactive UI mode                                                                         |
+| `pnpm test:all`               | Unit + API e2e + browser e2e + client build                                                            |
+| `pnpm load:smoke`             | Concurrent session smoke test (needs emulator + API)                                                   |
+| `pnpm prod`                   | Redeploy to Fly.io (`fly deploy`)                                                                      |
+| `pnpm prod:open`              | Open production test page in browser                                                                   |
+| `pnpm build && pnpm start`    | Production build and run locally                                                                       |
 
 First-time browser e2e setup:
 
@@ -185,7 +185,7 @@ Set `REUSE_DEV_SERVER=1` to skip restarting the dev stack when `pnpm dev` is alr
 
 ## Client
 
-The client is a React app included in `pnpm dev`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
+The client is a React + Vite app using [Mantine](https://mantine.dev/) v9 for UI components. No custom CSS — all styling uses Mantine's default dark-scheme components. Source lives in `client/src/`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
 
 **Auth wall:** unsigned visitors see a sign-in screen only. After Google (or emulator) sign-in, the conversation UI appears with an account avatar in the top-right corner — click it for **Log out**.
 
@@ -200,9 +200,9 @@ pnpm dev
 
 Open http://127.0.0.1:5173, click **Sign in with Google**, then **Connect**, then:
 
-| Mode | How to use |
-| ---- | ---------- |
-| **PushToTalk** | Hold **Hold to talk** and release to commit, or send typed text + commit |
+| Mode                     | How to use                                                                                                           |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| **PushToTalk**           | Hold **Hold to talk** and release to commit, or send typed text + commit                                             |
 | **RealTimeConversation** | Select mode, Connect, **Start call**, speak naturally (server commits after ~1.2 s silence), **End call** to hang up |
 
 Toggles: mic mute, AI voice on/off (voice off skips TTS but still runs STT + LLM). Usage events appear in the log panel.
@@ -224,10 +224,10 @@ Authoritative schemas: `src/protocol/messages.ts` (zod). Audio conventions: `src
 
 ### When connections close
 
-| Event | What happens |
-| ----- | ---------------- |
-| User clicks **Disconnect** or closes the tab | Client sends `session.end` (on `pagehide`); server disposes session and closes the WebSocket. |
-| Browser closes the socket (network, crash) | Server `close` handler runs → session removed from memory. |
+| Event                                                           | What happens                                                                                                                           |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| User clicks **Disconnect** or closes the tab                    | Client sends `session.end` (on `pagehide`); server disposes session and closes the WebSocket.                                          |
+| Browser closes the socket (network, crash)                      | Server `close` handler runs → session removed from memory.                                                                             |
 | No user activity for `SESSION_IDLE_TIMEOUT_MS` (default 10 min) | Server sends `session.ended`, closes socket (`idle timeout`). Mic audio and control messages reset the timer; `session.ping` does not. |
 
 You do not need a custom close for normal cases — the WebSocket `close` event is the default cleanup path. Idle timeout is needed so abandoned tabs do not hold server sessions and OpenAI work forever.
@@ -236,44 +236,44 @@ Binary frames are detected when the payload does not start with `{` (JSON). Raw 
 
 ### Session config (`session.start.config`)
 
-| Field | Type | Notes |
-| ----- | ---- | ----- |
-| `languageCode` | string | e.g. `en` |
-| `mode` | `RealTimeConversation` \| `PushToTalk` | See mode behavior below |
-| `voiceEnabled` | boolean | `false` skips TTS (STT + LLM still run) |
-| `micMuted` | boolean | Server ignores incoming audio when true |
-| `systemInstruction` | string | Base system prompt |
-| `voice` | `shimmer` \| `ash` \| `marin` \| `verse` | Fixed for session (from user settings) |
-| `conversationId` | string? | Optional analytics id from webApp |
+| Field               | Type                                     | Notes                                   |
+| ------------------- | ---------------------------------------- | --------------------------------------- |
+| `languageCode`      | string                                   | e.g. `en`                               |
+| `mode`              | `RealTimeConversation` \| `PushToTalk`   | See mode behavior below                 |
+| `voiceEnabled`      | boolean                                  | `false` skips TTS (STT + LLM still run) |
+| `micMuted`          | boolean                                  | Server ignores incoming audio when true |
+| `systemInstruction` | string                                   | Base system prompt                      |
+| `voice`             | `shimmer` \| `ash` \| `marin` \| `verse` | Fixed for session (from user settings)  |
+| `conversationId`    | string?                                  | Optional analytics id from webApp       |
 
 ### Client → server (JSON)
 
-| `type` | Purpose |
-| ------ | ------- |
-| `session.start` | First message; auth + config |
-| `session.update` | Patch `systemInstruction`, `voiceEnabled`, or `micMuted` |
-| `session.ping` | Keepalive → `session.pong` |
-| `session.end` | Graceful close → `session.ended` |
-| `user.text` | Typed user input (PushToTalk) |
-| `user.turn.commit` | End user turn (PushToTalk) |
-| `user.turn.cancel` | Discard buffered user audio/text |
-| `assistant.trigger` | Request assistant reply without new user input |
-| `assistant.instruction` | Mid-session correction (`mode`: `replace` \| `append`) |
-| `vision.frame` | Reserved stub (not implemented) |
+| `type`                  | Purpose                                                  |
+| ----------------------- | -------------------------------------------------------- |
+| `session.start`         | First message; auth + config                             |
+| `session.update`        | Patch `systemInstruction`, `voiceEnabled`, or `micMuted` |
+| `session.ping`          | Keepalive → `session.pong`                               |
+| `session.end`           | Graceful close → `session.ended`                         |
+| `user.text`             | Typed user input (PushToTalk)                            |
+| `user.turn.commit`      | End user turn (PushToTalk)                               |
+| `user.turn.cancel`      | Discard buffered user audio/text                         |
+| `assistant.trigger`     | Request assistant reply without new user input           |
+| `assistant.instruction` | Mid-session correction (`mode`: `replace` \| `append`)   |
+| `vision.frame`          | Reserved stub (not implemented)                          |
 
 ### Server → client (JSON)
 
-| `type` | Purpose |
-| ------ | ------- |
-| `session.ready` | Session accepted |
-| `transcript.delta` | Streaming partial transcript |
-| `transcript.done` | Finalized user or assistant message |
-| `user.speaking` | User speech activity indicator |
-| `assistant.speaking` | `active: true` only after the first TTS audio chunk is sent; `active: false` when the stream ends. Use for UI “assistant talking” (not during LLM-only generation). |
-| `assistant.interrupted` | Barge-in — server aborted LLM/TTS; clients should stop playback and discard buffered TTS |
-| `usage` | Token usage after each STT / LLM / TTS call |
-| `error` | `{ code, message, fatal? }` |
-| `session.pong` / `session.ended` | Control replies |
+| `type`                           | Purpose                                                                                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `session.ready`                  | Session accepted                                                                                                                                                    |
+| `transcript.delta`               | Streaming partial transcript                                                                                                                                        |
+| `transcript.done`                | Finalized user or assistant message                                                                                                                                 |
+| `user.speaking`                  | User speech activity indicator                                                                                                                                      |
+| `assistant.speaking`             | `active: true` only after the first TTS audio chunk is sent; `active: false` when the stream ends. Use for UI “assistant talking” (not during LLM-only generation). |
+| `assistant.interrupted`          | Barge-in — server aborted LLM/TTS; clients should stop playback and discard buffered TTS                                                                            |
+| `usage`                          | Token usage after each STT / LLM / TTS call                                                                                                                         |
+| `error`                          | `{ code, message, fatal? }`                                                                                                                                         |
+| `session.pong` / `session.ended` | Control replies                                                                                                                                                     |
 
 ### Binary audio
 
@@ -285,10 +285,10 @@ Optional prefixed framing: `[0x01][uint32 BE length][payload]`.
 
 ### Mode behavior
 
-| Mode | User input | Turn end | Assistant reply |
-| ---- | ---------- | -------- | ----------------- |
-| **RealTimeConversation** | Continuous mic while call is open | Server silence timer (~1.2 s after speech) | Auto after each user turn |
-| **PushToTalk** | Audio or text while button held | `user.turn.commit` on release | Auto after commit (or `assistant.trigger`) |
+| Mode                     | User input                        | Turn end                                   | Assistant reply                            |
+| ------------------------ | --------------------------------- | ------------------------------------------ | ------------------------------------------ |
+| **RealTimeConversation** | Continuous mic while call is open | Server silence timer (~1.2 s after speech) | Auto after each user turn                  |
+| **PushToTalk**           | Audio or text while button held   | `user.turn.commit` on release              | Auto after commit (or `assistant.trigger`) |
 
 Silence detection uses RMS on PCM chunks (`src/session/turnDetection.ts`). When the user speaks during assistant output, the server aborts in-flight TTS/LLM and sends `assistant.interrupted`. OpenAI aborts (`APIUserAbortError`) are treated as normal cancellation — they must not crash the Node process (see `src/errors/isAbortError.ts`).
 
@@ -430,12 +430,12 @@ Reconnection: **MVP uses fresh sessions** — disconnect and Connect again; no r
 
 ### Production endpoints
 
-| Path | Purpose |
-| ---- | ------- |
-| `GET /health` | Liveness + active session count + pipeline latency metrics |
-| `GET /ready` | Readiness (503 while draining on shutdown) |
-| `GET /v1/auth/verify` | Token check (optional) |
-| `WS /v1/session` | Conversation session |
+| Path                  | Purpose                                                    |
+| --------------------- | ---------------------------------------------------------- |
+| `GET /health`         | Liveness + active session count + pipeline latency metrics |
+| `GET /ready`          | Readiness (503 while draining on shutdown)                 |
+| `GET /v1/auth/verify` | Token check (optional)                                     |
+| `WS /v1/session`      | Conversation session                                       |
 
 ### Load smoke test (local)
 

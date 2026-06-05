@@ -2,8 +2,7 @@
 
 ## Realtime service
 
-Forget about integration. Just create good solution in test app.
-It should be possible to change voices, it should be fast.
+Improve UX. Sign in / and start talking
 
 ## News
 
