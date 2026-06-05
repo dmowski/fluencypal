@@ -42,7 +42,7 @@ export const useConversation = (signedIn: boolean) => {
         if (config.micEnabled) {
           await bridgeRef.current.onSessionReadyMic();
         } else {
-          microphone.setMicStatus('Mic: disabled — enable "Mic On" to speak', 'idle');
+          microphone.setMicStatus('Mic: disabled — enable "Mic On" to speak', "idle");
         }
         bridgeRef.current.onSessionReady();
       })();
