@@ -7,7 +7,7 @@ import { env } from './config/env.js';
 import { sessionManager } from './session/SessionManager.js';
 import { registerGracefulShutdown, registerHttpRoutes } from './server/httpRoutes.js';
 import { registerRateLimit } from './server/registerRateLimit.js';
-import { registerTestClient } from './server/registerTestClient.js';
+import { registerClient } from './server/registerClient.js';
 import { registerWebSocketRoutes } from './ws/handleConnection.js';
 
 export const buildApp = async () => {
@@ -44,7 +44,7 @@ export const buildApp = async () => {
   await registerWebSocketRoutes(app);
 
   if (env.NODE_ENV === 'production') {
-    await registerTestClient(app);
+    await registerClient(app);
   }
 
   app.addHook('onClose', async () => {

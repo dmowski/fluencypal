@@ -56,7 +56,7 @@ export const setDebugLogContext = (patch: Record<string, string | boolean | unde
 
 export const getDebugLogText = (): string => {
   const header = [
-    'FluencyPal Realtime test client — debug log',
+    'FluencyPal Realtime client — debug log',
     `Copied: ${new Date().toISOString()}`,
     `URL: ${window.location.href}`,
     `User agent: ${navigator.userAgent}`,

@@ -9,7 +9,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY tsconfig.json ./
 COPY src ./src
-COPY test-client ./test-client
+COPY client ./client
 RUN pnpm build && pnpm build:client
 
 FROM node:20-alpine AS runner
@@ -24,7 +24,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prod
 
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/test-client/dist ./test-client-dist
+COPY --from=builder /app/client/dist ./client-dist
 
 EXPOSE 8081
 

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-// Inline minimal handler logic mirrored from test-client sessionClient for automated verification.
+// Inline minimal handler logic mirrored from client sessionClient for automated verification.
 const handleJsonMessage = (
   message: { type: string; messageId?: string; role?: string; delta?: string; text?: string },
   handlers: {
@@ -22,7 +22,7 @@ const handleJsonMessage = (
   }
 };
 
-describe('test-client session message handling', () => {
+describe('client session message handling', () => {
   it('maps transcript events to handlers', () => {
     const onDelta = vi.fn();
     const onDone = vi.fn();

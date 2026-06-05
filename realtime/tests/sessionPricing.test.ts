@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { calculateStagePriceUsd, formatUsd } from '../test-client/src/sessionPricing.js';
+import { calculateStagePriceUsd, formatUsd } from '../client/src/lib/sessionPricing.js';
 
 describe('sessionPricing', () => {
   it('calculates LLM token price', () => {

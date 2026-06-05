@@ -374,7 +374,7 @@ export const startDevStack = async (options: StartDevStackOptions = {}): Promise
         'exec',
         'vite',
         '--config',
-        'test-client/vite.config.ts',
+        'client/vite.config.ts',
         '--host',
         '127.0.0.1',
         '--port',

@@ -12,7 +12,7 @@ const openBrowser = !process.argv.includes('--no-open');
 if (process.env.REUSE_DEV_SERVER === '1' && (await isDevStackReady(DEFAULT_REALTIME_PORT, CLIENT_PORT))) {
   console.log('');
   console.log('Reusing existing dev stack.');
-  console.log(`  Test client:  http://127.0.0.1:${CLIENT_PORT}`);
+  console.log(`  Client:  http://127.0.0.1:${CLIENT_PORT}`);
   console.log(`  Realtime API: http://127.0.0.1:${DEFAULT_REALTIME_PORT}/health`);
   console.log('');
 } else {
@@ -38,13 +38,13 @@ process.on('SIGTERM', shutdown);
 console.log('');
 console.log('FluencyPal realtime dev stack is running.');
 console.log('');
-console.log(`  Test client:  ${state.clientBaseUrl}`);
+console.log(`  Client:  ${state.clientBaseUrl}`);
 console.log(`  Realtime API: ${state.realtimeBaseUrl}/health`);
 console.log(`  Auth emulator: http://127.0.0.1:9099`);
 console.log('');
-console.log('Sign in on the test page (Auth emulator is pre-enabled). Press Ctrl+C to stop.');
+console.log('Sign in on the client (Auth emulator is pre-enabled). Press Ctrl+C to stop.');
 console.log('');
-console.log('Hot reload: API restarts on `realtime/src/` changes; test UI updates via Vite HMR.');
+console.log('Hot reload: API restarts on `realtime/src/` changes; client updates via Vite HMR.');
 console.log('After an API restart, click Disconnect → Connect if your WebSocket session stopped.');
 console.log('');
 

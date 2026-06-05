@@ -42,7 +42,7 @@ pnpm dev
 
 1. Firebase emulators (Auth, Firestore, Storage) if not already running
 2. Realtime API on port **8081** with `IS_FIREBASE_EMULATOR=true`
-3. Test client on http://127.0.0.1:5173 (opens in your browser)
+3. Client on http://127.0.0.1:5173 (opens in your browser)
 
 Sign in with **Google** on the test page (Auth emulator checkbox is on by default), click **Connect**, and talk.
 
@@ -52,7 +52,7 @@ Health check:
 curl http://127.0.0.1:8081/health
 ```
 
-WebSocket endpoint (proxied through the test client in dev):
+WebSocket endpoint (proxied through the client in dev):
 
 ```
 ws://127.0.0.1:8081/v1/session
@@ -136,20 +136,20 @@ curl http://localhost:8081/v1/auth/verify \
 
 | Command | Description |
 | ------- | ----------- |
-| `pnpm dev` | **One command dev stack**: emulator + API (`tsx watch`) + Vite test client with HMR (+ opens browser) |
+| `pnpm dev` | **One command dev stack**: emulator + API (`tsx watch`) + Vite React client with HMR (+ opens browser) |
 | `pnpm dev:api` | Realtime API only with hot reload (`tsx watch`) |
-| `pnpm dev:client` | Vite test UI only on http://127.0.0.1:5173 (HMR) |
-| `pnpm build:client` | Production build of test client |
+| `pnpm dev:client` | React client only on http://127.0.0.1:5173 (HMR) |
+| `pnpm build:client` | Production build of client |
 | `pnpm lint` | TypeScript check (`tsc --noEmit`) |
 | `pnpm test` | Unit tests (mocked Firebase / providers) |
 | `pnpm test:e2e` | API-level e2e (Vitest + WS client on port `18081`) |
 | `pnpm test:e2e:voice` | Real voice E2E — OpenAI STT/LLM/TTS + speech WAV fixtures (see `e2e-cases.md`) |
-| `pnpm test:e2e:browser` | Browser e2e (Playwright + real test client UI) |
+| `pnpm test:e2e:browser` | Browser e2e (Playwright + React client UI) |
 | `pnpm test:e2e:voice:browser` | Browser voice E2E — real speech via Chrome fake mic file |
 | `pnpm e2e:fixtures:voice` | Generate optional TTS hello fixtures (OpenAI) |
 | `pnpm e2e:fixtures:normalize` | Convert user recordings (`*.wav`) → `*-48k-mono.wav` for browser e2e |
 | `pnpm test:e2e:browser:ui` | Playwright interactive UI mode |
-| `pnpm test:all` | Unit + API e2e + browser e2e + test client build |
+| `pnpm test:all` | Unit + API e2e + browser e2e + client build |
 | `pnpm load:smoke` | Concurrent session smoke test (needs emulator + API) |
 | `pnpm prod` | Redeploy to Fly.io (`fly deploy`) |
 | `pnpm prod:open` | Open production test page in browser |
@@ -179,15 +179,17 @@ pnpm test:all             # full suite
 
 **Voice E2E** streams real speech PCM over WebSocket (or plays a speech WAV into Chromium’s mic). Requires `OPENAI_API_KEY` and fixtures from `pnpm e2e:fixtures:voice`. Test matrix: [`e2e-cases.md`](./e2e-cases.md).
 
-**Browser e2e** (`playwright`) starts the same stack as `pnpm dev` (ports **8081** + **5173**), then drives the test client in Chromium with fake microphone permissions. The typed-message spec calls real OpenAI when `OPENAI_API_KEY` is set.
+**Browser e2e** (`playwright`) starts the same stack as `pnpm dev` (ports **8081** + **5173**), then drives the client in Chromium with fake microphone permissions. The typed-message spec calls real OpenAI when `OPENAI_API_KEY` is set.
 
 Set `REUSE_DEV_SERVER=1` to skip restarting the dev stack when `pnpm dev` is already running.
 
-## Test client
+## Client
 
-The test client is included in `pnpm dev`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
+The client is a React app included in `pnpm dev`. For advanced workflows you can run `pnpm dev:api` and `pnpm dev:client` separately (with the emulator started via `webApp`).
 
-**Hot reload:** `pnpm dev` watches `realtime/src/` and restarts the API automatically. The test UI at http://127.0.0.1:5173 hot-reloads via Vite when you edit `test-client/`. Keep the `pnpm dev` terminal running; you do not need to restart it for code changes. After an API restart, reconnect the WebSocket session (Disconnect → Connect) if the call stopped working.
+**Auth wall:** unsigned visitors see a sign-in screen only. After Google (or emulator) sign-in, the conversation UI appears with an account avatar in the top-right corner — click it for **Log out**.
+
+**Hot reload:** `pnpm dev` watches `realtime/src/` and restarts the API automatically. The client at http://127.0.0.1:5173 hot-reloads via Vite when you edit `client/`. Keep the `pnpm dev` terminal running; you do not need to restart it for code changes. After an API restart, reconnect the WebSocket session (Disconnect → Connect) if the call stopped working.
 
 **All-in-one (recommended):**
 
@@ -326,7 +328,7 @@ realtime/
 │   ├── providers/openai/     # STT, LLM, TTS adapters
 │   ├── usage/                # usage event emission
 │   └── ws/                   # WebSocket connection handler
-├── test-client/              # Vite manual test UI
+├── client/                   # React + Vite UI
 ├── e2e/                      # Vitest + Playwright e2e; see e2e-cases.md
 ├── e2e-cases.md              # Voice E2E test matrix
 ├── PHASE3_CHECKLIST.md       # webApp experimental rollout
@@ -375,7 +377,7 @@ wss://fluencypal-realtime.fly.dev/v1/session
 
 ### Test page (built into the deploy)
 
-The Docker image includes the **test client** as static files. After deploy, open:
+The Docker image includes the **client** as static files. After deploy, open:
 
 ```text
 https://fluencypal-realtime.fly.dev/
@@ -385,12 +387,12 @@ That is the same UI as local `pnpm dev` (sign in, Connect, Start call). WebSocke
 
 **Uncheck “Use Firebase Auth emulator”** and sign in with Google (production Firebase).
 
-**Mobile sign-in:** the test client uses Firebase `initializeAuth` with `browserPopupRedirectResolver` (same pattern as `webApp`) and **redirect** on phones and Safari. In Firebase Console → **Authentication → Settings → Authorized domains**, add:
+**Mobile sign-in:** the client uses Firebase `initializeAuth` with `browserPopupRedirectResolver` (same pattern as `webApp`) and **redirect** on phones and Safari. In Firebase Console → **Authentication → Settings → Authorized domains**, add:
 
 - `fluencypal-realtime.fly.dev`
 - `localhost` (local dev)
 
-If Google is blocked (e.g. Instagram in-app browser), use **Sign in with email** on the test page.
+If Google is blocked (e.g. Instagram in-app browser), use **Sign in with email** on the auth screen.
 
 Redeploy anytime:
 
@@ -402,7 +404,7 @@ pnpm prod:open   # opens the test page in your browser
 
 TLS/WSS is terminated by Fly (`force_https = true` in `fly.toml`). Allowed WebSocket origins:
 
-- `https://fluencypal-realtime.fly.dev` — bundled test client (same origin)
+- `https://fluencypal-realtime.fly.dev` — bundled client (same origin)
 - `https://app.fluencypal.com` — production web app
 - `http://localhost:3000` — local webApp against prod WSS (optional; set via `fly secrets`)
 

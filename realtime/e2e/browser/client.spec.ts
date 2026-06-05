@@ -14,7 +14,7 @@ const connectAndWaitForMic = async (page: import('@playwright/test').Page) => {
   await expect(page.locator('#mic-status')).toContainText('Mic: ready', { timeout: 15_000 });
 };
 
-test.describe('test client (browser)', () => {
+test.describe('client (browser)', () => {
   test('signs in, connects, and disconnects', async ({ page }) => {
     await signInWithGoogle(page);
 

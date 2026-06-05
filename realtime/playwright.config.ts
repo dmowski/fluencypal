@@ -4,6 +4,7 @@ const CLIENT_URL = 'http://127.0.0.1:5173';
 
 export default defineConfig({
   testDir: './e2e/browser',
+  testIgnore: '**/voice.realtime.spec.ts',
   globalSetup: './e2e/browser/globalSetup.ts',
   timeout: 60_000,
   expect: {

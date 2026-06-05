@@ -6,12 +6,12 @@ import type { FastifyInstance } from 'fastify';
 
 const API_PREFIXES = ['/v1', '/health', '/ready'];
 
-const resolveTestClientDir = (): string | null => {
+const resolveClientDir = (): string | null => {
   const candidates = [
-    path.join(process.cwd(), 'test-client-dist'),
-    path.join(process.cwd(), 'test-client', 'dist'),
-    path.join(path.dirname(fileURLToPath(import.meta.url)), '../../test-client-dist'),
-    path.join(path.dirname(fileURLToPath(import.meta.url)), '../../test-client/dist'),
+    path.join(process.cwd(), 'client-dist'),
+    path.join(process.cwd(), 'client', 'dist'),
+    path.join(path.dirname(fileURLToPath(import.meta.url)), '../../client-dist'),
+    path.join(path.dirname(fileURLToPath(import.meta.url)), '../../client/dist'),
   ];
 
   for (const candidate of candidates) {
@@ -23,8 +23,8 @@ const resolveTestClientDir = (): string | null => {
   return null;
 };
 
-export const registerTestClient = async (app: FastifyInstance): Promise<string | null> => {
-  const root = resolveTestClientDir();
+export const registerClient = async (app: FastifyInstance): Promise<string | null> => {
+  const root = resolveClientDir();
   if (!root) {
     return null;
   }
@@ -54,8 +54,8 @@ export const registerTestClient = async (app: FastifyInstance): Promise<string |
     return reply.sendFile('index.html', root);
   });
 
-  app.log.info({ root }, 'Test client static files enabled at /');
+  app.log.info({ root }, 'Client static files enabled at /');
   return root;
 };
 
-export const resolveTestClientDirForTests = resolveTestClientDir;
+export const resolveClientDirForTests = resolveClientDir;

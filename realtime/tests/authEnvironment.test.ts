@@ -3,7 +3,7 @@ import {
   isInAppBrowser,
   isMobileDevice,
   shouldUseRedirectSignIn,
-} from '../test-client/src/authEnvironment.js';
+} from '../client/src/lib/authEnvironment.js';
 
 const stubNavigator = (userAgent: string, maxTouchPoints = 0) => {
   vi.stubGlobal('navigator', { userAgent, maxTouchPoints });

@@ -1,18 +1,18 @@
 ---
-description: Run realtime lint (tsc + test-client build) after changes under realtime/
+description: Run realtime lint (tsc + client build) after changes under realtime/
 globs: realtime/**/*
 alwaysApply: false
 ---
 
 # Realtime package checks
 
-After editing anything under `realtime/` (especially `test-client/`), run:
+After editing anything under `realtime/` (especially `client/`), run:
 
 ```bash
 cd realtime && pnpm lint && pnpm test
 ```
 
-- `pnpm lint` = `tsc --noEmit` **and** `pnpm build:client` (Vite). Typecheck alone does **not** bundle the test client; production deploy fails if only `tsc` was run.
+- `pnpm lint` = `tsc --noEmit` **and** `pnpm build:client` (Vite). Typecheck alone does **not** bundle the client; production deploy fails if only `tsc` was run.
 - Import `FirebaseError` from `firebase/app`, not `firebase/auth` (same as `webApp`).
 
 Before `pnpm prod`, `pnpm lint` must pass.

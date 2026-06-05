@@ -23,7 +23,7 @@ realtime/
 │   ├── providers/openai/     # STT, LLM, TTS adapters
 │   ├── usage/                # usage event emission
 │   └── ws/                   # WebSocket connection handler
-├── test-client/              # Vite manual test UI (bundled in Fly deploy)
+├── client/                   # React + Vite UI (bundled in Fly deploy)
 ├── e2e/                      # Vitest API e2e + Playwright browser e2e
 ├── tests/                    # Unit tests (mocked Firebase / providers)
 ├── e2e-cases.md              # Voice E2E test matrix
@@ -63,11 +63,11 @@ When changing message types or session lifecycle, update zod schemas first, then
 cd realtime
 pnpm install
 cp .env.example .env   # optional OPENAI_API_KEY for full conversation
-pnpm dev               # emulator + API :8081 + test client :5173
+pnpm dev               # emulator + API :8081 + client :5173
 ```
 
 - `pnpm dev:api` — API only (set `IS_FIREBASE_EMULATOR=true` when emulator runs separately).
-- `pnpm dev:client` — Vite test UI only.
+- `pnpm dev:client` — React client only.
 - Firebase emulator: Java 11+; `pnpm dev` starts emulators if Auth (`9099`) is not already running. Reuses existing Firestore on `8080` if occupied (e.g. by `webApp` dev).
 - After API restart during dev, reconnect WebSocket (Disconnect → Connect).
 
@@ -76,7 +76,7 @@ pnpm dev               # emulator + API :8081 + test client :5173
 Always run from `realtime/`:
 
 ```bash
-pnpm lint    # tsc --noEmit + vite build (test-client) — catches bad firebase imports etc.
+pnpm lint    # tsc --noEmit + vite build (client) — catches bad firebase imports etc.
 pnpm test    # unit tests
 pnpm audit   # dependency vulnerability check
 ```
@@ -85,13 +85,13 @@ Run `pnpm test:e2e` when changing auth, WebSocket protocol, or session lifecycle
 
 Run `pnpm test:e2e:voice` when changing turn detection, barge-in, STT/LLM/TTS voice flow (requires `OPENAI_API_KEY` + `pnpm e2e:fixtures:voice`). See [`e2e-cases.md`](./e2e-cases.md).
 
-Run `pnpm test:e2e:browser` only when changing test-client UI flows.
+Run `pnpm test:e2e:browser` only when changing client UI flows.
 
 Run `pnpm test:e2e:voice:browser` for full browser + real speech file mic (same prerequisites as voice API e2e).
 
 Set `REUSE_DEV_SERVER=1` for browser e2e when `pnpm dev` is already running.
 
-**Why `lint` includes `build:client`:** `tsc` only type-checks server `src/` and does not bundle `test-client/`. Vite/Rollup validates client imports (e.g. `FirebaseError` must come from `firebase/app`, not `firebase/auth`).
+**Why `lint` includes `build:client`:** `tsc` only type-checks server `src/` and does not bundle `client/`. Vite/Rollup validates client imports (e.g. `FirebaseError` must come from `firebase/app`, not `firebase/auth`).
 
 ## E2E structure
 
@@ -99,7 +99,7 @@ Set `REUSE_DEV_SERVER=1` for browser e2e when `pnpm dev` is already running.
 | ----- | ------- | ----- |
 | API e2e | `pnpm test:e2e` | Vitest + WS client on port `18081`; `e2e/globalSetup.ts` starts emulator + server |
 | Voice API e2e | `pnpm test:e2e:voice` | Real speech PCM over WebSocket; fixtures via `pnpm e2e:fixtures:voice` |
-| Browser e2e | `pnpm test:e2e:browser` | Playwright + test client on `:5173`; first run: `pnpm exec playwright install chromium` |
+| Browser e2e | `pnpm test:e2e:browser` | Playwright + client on `:5173`; first run: `pnpm exec playwright install chromium` |
 | Voice browser e2e | `pnpm test:e2e:voice:browser` | Chrome fake mic from normalized WAV fixtures (`pnpm e2e:fixtures:normalize`) |
 
 Auth/session e2e runs without OpenAI. Voice suites require `OPENAI_API_KEY`.
@@ -115,7 +115,7 @@ Auth/session e2e runs without OpenAI. Voice suites require `OPENAI_API_KEY`.
 
 Production Docker runs `pnpm build` + `pnpm build:client`. A green `pnpm lint` is required before `pnpm prod` (Fly.io).
 
-Production WSS: `wss://fluencypal-realtime.fly.dev/v1/session`. Test page is same-origin at `https://fluencypal-realtime.fly.dev/`.
+Production WSS: `wss://fluencypal-realtime.fly.dev/v1/session`. Client UI is same-origin at `https://fluencypal-realtime.fly.dev/`.
 
 ## webApp integration
 
