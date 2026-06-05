@@ -176,6 +176,11 @@ export class RealtimeWsSessionClient {
     this.cancelAssistantAudio();
   }
 
+  private stopAssistantInFlightOutput(): void {
+    this.playback.stopInFlightOutput();
+    this.playTask = Promise.resolve();
+  }
+
   private cancelAssistantAudio(): void {
     this.playback.cancel();
     this.playCollectedPending = false;
@@ -265,14 +270,17 @@ export class RealtimeWsSessionClient {
         return;
       case 'assistant.speaking':
         if (message.active) {
-          this.cancelAssistantAudio();
+          // Stop any in-flight playback; binary chunks for this stream arrive after this signal.
+          this.stopAssistantInFlightOutput();
           this.assistantSpeaking = true;
           this.handlers.onAssistantSpeaking(true);
         } else {
           this.assistantSpeaking = false;
           this.handlers.onAssistantSpeaking(false);
-          this.playCollectedPending = true;
-          this.schedulePlayCollected();
+          if (this.ttsBytesReceived > 0) {
+            this.playCollectedPending = true;
+            this.schedulePlayCollected();
+          }
         }
         return;
       case 'user.speaking':

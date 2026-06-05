@@ -275,12 +275,16 @@ Return ONLY the number.
   isSpeakingRef.current = vadAudioRecorder.isSpeaking || vadAudioRecorder.isTranscribing;
 
   useEffect(() => {
+    if (recordingVoiceMode !== 'VAD') {
+      return;
+    }
+
     if (isReallySpeaking) {
       setIsVolumeOn(false);
     } else {
       setIsVolumeOn(isVolumeOnToDisplay);
     }
-  }, [isReallySpeaking]);
+  }, [isReallySpeaking, isVolumeOnToDisplay, recordingVoiceMode, setIsVolumeOn]);
 
   const [beforeSendingTimeout, setBeforeSendingTimeout] = useState<number | null>(null);
   const [originBeforeSendingTimeout, setOriginBeforeSendingTimeout] = useState<number | null>(null);

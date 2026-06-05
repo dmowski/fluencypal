@@ -4,6 +4,7 @@ import { useSettings } from '../Settings/useSettings';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
 import { useAiConversation } from './useAiConversation/useAiConversation';
+import { unlockAudioPlayback } from './ConversationInstance/realtimeWs/audioUnlock';
 import { isExperimentalRealtimeWsConfigured } from './ConversationInstance/realtimeWs/getRealtimeWsUrl';
 
 export const useExperimentalJustTalk = () => {
@@ -27,6 +28,7 @@ export const useExperimentalJustTalk = () => {
     }
 
     await audio.initAudio();
+    await unlockAudioPlayback();
     setIsCallStarting(true);
 
     try {

@@ -29,10 +29,14 @@ export class Mp3PlaybackQueue {
   }
 
   append(chunk: ArrayBuffer): void {
-    if (this.volume === 0) {
-      return;
-    }
     this.chunks.push(new Uint8Array(chunk));
+  }
+
+  /** Stop speaker output but keep buffered MP3 (about to play when the TTS stream ends). */
+  stopInFlightOutput(): void {
+    this.generation += 1;
+    this.stopOutput();
+    this.setPlaying(false);
   }
 
   cancel(): void {

@@ -164,7 +164,9 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const onOpen = async () => {
     const isUseRealtime = modesToUseRrc.includes(currentMode);
-    if (isUseRealtime) {
+    const isExperimentalWs = experimentalRealtimeWsActiveRef.current;
+
+    if (isUseRealtime && !isExperimentalWs) {
       await sleep(300);
       console.log('Sleep before triggering');
       setIsInitializing('');
@@ -172,9 +174,12 @@ function useProvideAiConversation(): AiConversationContextType {
       await sleep(1000);
       //audio.music.setVolume(0);
       await sleep(600);
+    } else if (isUseRealtime) {
+      setIsInitializing('');
+      setIsStarted(true);
     }
 
-    if (!experimentalRealtimeWsActiveRef.current) {
+    if (!isExperimentalWs) {
       await communicatorRef.current?.triggerAiResponse();
     }
 
