@@ -4,7 +4,7 @@ import { useConversationContext } from "../context/ConversationContext.js";
 export const TalkPanel = () => {
   const {
     connected,
-    micMuted,
+    micEnabled,
     isRealtimeMode,
     pttRecording,
     pttLabel,
@@ -35,7 +35,7 @@ export const TalkPanel = () => {
         <Button
           id="ptt"
           color={pttRecording ? "red" : "green"}
-          disabled={!connected || micMuted}
+          disabled={!connected || !micEnabled}
           onMouseDown={() => void startPushToTalk()}
           onMouseUp={stopPushToTalk}
           onMouseLeave={stopPushToTalk}

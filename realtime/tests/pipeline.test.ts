@@ -10,7 +10,7 @@ const baseConfig: SessionRuntimeConfig = {
   languageCode: 'en',
   mode: 'PushToTalk',
   voiceEnabled: true,
-  micMuted: false,
+  micEnabled: true,
   systemInstruction: 'You are a teacher.',
   voice: 'shimmer',
   correctionInstruction: '',

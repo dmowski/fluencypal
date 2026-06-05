@@ -10,9 +10,9 @@ export const SessionPanel = () => {
     voice,
     setVoice,
     voiceEnabled,
-    micMuted,
+    micEnabled,
     handleVoiceEnabledChange,
-    handleMicMutedChange,
+    handleMicEnabledChange,
   } = useConversationContext();
 
   return (
@@ -64,10 +64,10 @@ export const SessionPanel = () => {
           onChange={(event) => handleVoiceEnabledChange(event.currentTarget.checked)}
         />
         <Switch
-          id="mic-muted"
+          id="mic-enabled"
           label="Mic On"
-          checked={!micMuted}
-          onChange={(event) => handleMicMutedChange(!event.currentTarget.checked)}
+          checked={micEnabled}
+          onChange={(event) => handleMicEnabledChange(event.currentTarget.checked)}
         />
       </Group>
     </Stack>

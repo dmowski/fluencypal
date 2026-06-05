@@ -8,7 +8,7 @@ export const useSessionConfig = () => {
   const [mode, setMode] = useState<SessionMode>("RealTimeConversation");
   const [voice, setVoice] = useState<VoiceId>("shimmer");
   const [voiceEnabled, setVoiceEnabled] = useState(true);
-  const [micMuted, setMicMuted] = useState(false);
+  const [micEnabled, setMicEnabled] = useState(true);
 
   const isRealtimeMode = mode === "RealTimeConversation";
 
@@ -17,11 +17,11 @@ export const useSessionConfig = () => {
       languageCode: "en" as const,
       mode,
       voiceEnabled,
-      micMuted,
+      micEnabled,
       systemInstruction: systemInstruction.trim(),
       voice,
     }),
-    [mode, voiceEnabled, micMuted, systemInstruction, voice],
+    [mode, voiceEnabled, micEnabled, systemInstruction, voice],
   );
 
   return {
@@ -33,8 +33,8 @@ export const useSessionConfig = () => {
     setVoice,
     voiceEnabled,
     setVoiceEnabled,
-    micMuted,
-    setMicMuted,
+    micEnabled,
+    setMicEnabled,
     isRealtimeMode,
     readSessionConfig,
   };

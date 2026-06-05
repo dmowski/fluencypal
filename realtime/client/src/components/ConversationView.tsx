@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Button, Center, Group, Modal, Stack } from "@mantine/core";
+import { Button, Group, Modal, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useConversationContext } from "../context/ConversationContext.js";
 import { SessionPanel } from "./SessionPanel.js";
@@ -49,16 +49,14 @@ export const ConversationView = () => {
   if (!connected) {
     return (
       <>
-        <Center pt={48}>
-          <Stack align="center" gap="sm" maw={320} w="100%">
-            <Button id="start-call" size="xl" fullWidth onClick={() => void handleStartCall()}>
-              Start Call
-            </Button>
-            <Button variant="default" fullWidth onClick={openSettings}>
-              Settings
-            </Button>
-          </Stack>
-        </Center>
+        <Group pt={48}>
+          <Button id="start-call" size="xl" onClick={() => void handleStartCall()}>
+            Start Call
+          </Button>
+          <Button variant="default" size="xl" onClick={openSettings}>
+            Settings
+          </Button>
+        </Group>
         <Modal opened={settingsOpened} onClose={closeSettings} title="Settings" size="md">
           <SessionPanel />
         </Modal>

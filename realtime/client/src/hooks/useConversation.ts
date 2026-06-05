@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { unlockAudioPlayback } from '../lib/audioCapture.js';
-import { setDebugLogContext } from '../lib/debugLog.js';
-import type { StatusTone } from './conversation/types.js';
-import { useConversationUi } from './conversation/useConversationUi.js';
-import { useDebugLogPanel } from './conversation/useDebugLogPanel.js';
-import { useMicrophone } from './conversation/useMicrophone.js';
-import { useRealtimeClient } from './conversation/useRealtimeClient.js';
-import { useSessionConfig } from './conversation/useSessionConfig.js';
-import { useTalkSession } from './conversation/useTalkSession.js';
-import { useTranscript } from './conversation/useTranscript.js';
-import { useUsageTracking } from './conversation/useUsageTracking.js';
+import { useCallback, useEffect, useRef } from "react";
+import { unlockAudioPlayback } from "../lib/audioCapture.js";
+import { setDebugLogContext } from "../lib/debugLog.js";
+import type { StatusTone } from "./conversation/types.js";
+import { useConversationUi } from "./conversation/useConversationUi.js";
+import { useDebugLogPanel } from "./conversation/useDebugLogPanel.js";
+import { useMicrophone } from "./conversation/useMicrophone.js";
+import { useRealtimeClient } from "./conversation/useRealtimeClient.js";
+import { useSessionConfig } from "./conversation/useSessionConfig.js";
+import { useTalkSession } from "./conversation/useTalkSession.js";
+import { useTranscript } from "./conversation/useTranscript.js";
+import { useUsageTracking } from "./conversation/useUsageTracking.js";
 
-export type { StatusTone } from './conversation/types.js';
+export type { StatusTone } from "./conversation/types.js";
 
 type TalkSessionBridge = {
   enableMicAfterAssistantOutput: () => Promise<void>;
@@ -23,7 +23,7 @@ export const useConversation = (signedIn: boolean) => {
   const transcript = useTranscript();
   const usage = useUsageTracking();
   const config = useSessionConfig();
-  const microphone = useMicrophone(config.micMuted);
+  const microphone = useMicrophone(config.micEnabled);
 
   const bridgeRef = useRef<TalkSessionBridge>({
     enableMicAfterAssistantOutput: async () => {},
@@ -32,12 +32,12 @@ export const useConversation = (signedIn: boolean) => {
   });
 
   const { getClient, disconnectClient, isClientConnected } = useRealtimeClient({
-    micMuted: config.micMuted,
+    micEnabled: config.micEnabled,
     onSessionStatus: (text, tone) => bridgeRef.current.setSessionStatus(text, tone),
     onSessionReady: () => {
       void unlockAudioPlayback();
-      if (config.micMuted) {
-        microphone.setMicStatus('Mic: muted — uncheck to speak', 'idle');
+      if (!config.micEnabled) {
+        microphone.setMicStatus('Mic: disabled — enable "Mic On" to speak', "idle");
       } else {
         void bridgeRef.current.onSessionReadyMic();
       }
@@ -52,9 +52,9 @@ export const useConversation = (signedIn: boolean) => {
 
   const talk = useTalkSession({
     isRealtimeMode: config.isRealtimeMode,
-    micMuted: config.micMuted,
+    micEnabled: config.micEnabled,
     voiceEnabled: config.voiceEnabled,
-    setMicMuted: config.setMicMuted,
+    setMicEnabled: config.setMicEnabled,
     setVoiceEnabled: config.setVoiceEnabled,
     readSessionConfig: config.readSessionConfig,
     getClient,
@@ -68,7 +68,7 @@ export const useConversation = (signedIn: boolean) => {
     releaseMicrophone: microphone.releaseMicrophone,
     hasActiveCapture: microphone.hasActiveCapture,
     onListeningStatus: () => {
-      bridgeRef.current.setSessionStatus('Call active — listening…', 'ok');
+      bridgeRef.current.setSessionStatus("Call active — listening…", "ok");
     },
   });
 
@@ -85,7 +85,7 @@ export const useConversation = (signedIn: boolean) => {
       callActive: talk.callActive,
       mode: config.mode,
       voiceEnabled: config.voiceEnabled,
-      micMuted: config.micMuted,
+      micEnabled: config.micEnabled,
       sessionStatus: talk.sessionStatusText,
       micStatus: microphone.micStatusText,
     });
@@ -96,7 +96,7 @@ export const useConversation = (signedIn: boolean) => {
     talk.sessionStatusText,
     config.mode,
     config.voiceEnabled,
-    config.micMuted,
+    config.micEnabled,
     microphone.micStatusText,
   ]);
 
@@ -105,7 +105,7 @@ export const useConversation = (signedIn: boolean) => {
     signedIn,
     connected: talk.connected,
     callActive: talk.callActive,
-    micMuted: config.micMuted,
+    micEnabled: config.micEnabled,
     isRealtimeMode: config.isRealtimeMode,
   });
 
@@ -133,7 +133,7 @@ export const useConversation = (signedIn: boolean) => {
     voice: config.voice,
     setVoice: config.setVoice,
     voiceEnabled: config.voiceEnabled,
-    micMuted: config.micMuted,
+    micEnabled: config.micEnabled,
     typedMessage: talk.typedMessage,
     setTypedMessage: talk.setTypedMessage,
     isRealtimeMode: config.isRealtimeMode,
@@ -142,7 +142,7 @@ export const useConversation = (signedIn: boolean) => {
     handleConnect: talk.handleConnect,
     handleDisconnect: talk.handleDisconnect,
     handleSignOutCleanup: talk.handleSignOutCleanup,
-    handleMicMutedChange: talk.handleMicMutedChange,
+    handleMicEnabledChange: talk.handleMicEnabledChange,
     handleVoiceEnabledChange: talk.handleVoiceEnabledChange,
     startCall: talk.startCall,
     stopCall: talk.stopCall,

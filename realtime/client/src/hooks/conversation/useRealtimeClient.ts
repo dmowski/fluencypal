@@ -1,14 +1,14 @@
-import { useCallback, useRef } from 'react';
-import { debugLog } from '../../lib/debugLog.js';
-import { RealtimeSessionClient } from '../../lib/sessionClient.js';
-import { sessionStatusToneFromMessage, type StatusTone } from './types.js';
+import { useCallback, useRef } from "react";
+import { debugLog } from "../../lib/debugLog.js";
+import { RealtimeSessionClient } from "../../lib/sessionClient.js";
+import { sessionStatusToneFromMessage, type StatusTone } from "./types.js";
 
 type RealtimeClientCallbacks = {
-  micMuted: boolean;
+  micEnabled: boolean;
   onSessionStatus: (text: string, tone: StatusTone) => void;
   onSessionReady: () => void;
-  onTranscriptDelta: (messageId: string, role: 'user' | 'assistant', delta: string) => void;
-  onTranscriptDone: (messageId: string, role: 'user' | 'assistant', text: string) => void;
+  onTranscriptDelta: (messageId: string, role: "user" | "assistant", delta: string) => void;
+  onTranscriptDone: (messageId: string, role: "user" | "assistant", text: string) => void;
   onUsage: (params: {
     stage: string;
     model: string;
@@ -47,8 +47,8 @@ export const useRealtimeClient = (callbacks: RealtimeClientCallbacks) => {
           callbacksRef.current.onUsage(params);
         },
         onError: (message) => {
-          debugLog('error', message);
-          callbacksRef.current.onSessionStatus(`Error: ${message}`, 'error');
+          debugLog("error", message);
+          callbacksRef.current.onSessionStatus(`Error: ${message}`, "error");
         },
         onAssistantPlaybackEnded: () => {
           callbacksRef.current.onAssistantPlaybackEnded();

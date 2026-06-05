@@ -15,7 +15,7 @@ const baseConfig: SessionRuntimeConfig = {
   languageCode: 'en',
   mode: 'RealTimeConversation',
   voiceEnabled: false,
-  micMuted: false,
+  micEnabled: true,
   systemInstruction: 'Teach English.',
   voice: 'shimmer',
   correctionInstruction: '',

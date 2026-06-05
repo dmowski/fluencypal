@@ -11,7 +11,7 @@ const baseConfig = {
   languageCode: 'en',
   mode: 'PushToTalk' as const,
   voiceEnabled: true,
-  micMuted: false,
+  micEnabled: true,
   systemInstruction: 'Teach English.',
   voice: 'shimmer' as const,
 };
@@ -118,7 +118,7 @@ describe('SessionManager', () => {
       mode: 'PushToTalk',
       voice: 'shimmer',
       voiceEnabled: true,
-      micMuted: false,
+      micEnabled: true,
     });
   });
 });

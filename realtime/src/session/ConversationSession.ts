@@ -1,26 +1,26 @@
-import { randomUUID } from 'node:crypto';
-import type { AuthUserInfo } from '../auth/types.js';
-import { defaultProviderRegistry } from '../providers/registry.js';
-import type { ProviderRegistry } from '../providers/types.js';
-import { parseBinaryFrame } from '../protocol/audioCodec.js';
+import { randomUUID } from "node:crypto";
+import type { AuthUserInfo } from "../auth/types.js";
+import { defaultProviderRegistry } from "../providers/registry.js";
+import type { ProviderRegistry } from "../providers/types.js";
+import { parseBinaryFrame } from "../protocol/audioCodec.js";
 import type {
   ClientMessage,
   ConversationMode,
   ServerMessage,
   SessionStartConfig,
   SessionUpdatePatch,
-} from '../protocol/messages.js';
-import { ConversationHistory } from './history.js';
-import { TurnPipeline } from './TurnPipeline.js';
-import { isAbortError } from '../errors/isAbortError.js';
-import { sessionLog, sessionWarn } from '../log/sessionLog.js';
+} from "../protocol/messages.js";
+import { ConversationHistory } from "./history.js";
+import { TurnPipeline } from "./TurnPipeline.js";
+import { isAbortError } from "../errors/isAbortError.js";
+import { sessionLog, sessionWarn } from "../log/sessionLog.js";
 import {
   RealtimeTurnDetector,
   computePcm16Rms,
   defaultTurnDetectorConfig,
   estimateBufferedSpeechMs,
   hasMeaningfulBufferedSpeech,
-} from './turnDetection.js';
+} from "./turnDetection.js";
 
 /** Ignore mic tail right after TTS starts. */
 const ASSISTANT_BARGE_IN_GRACE_MS = 450;
@@ -50,7 +50,7 @@ export class ConversationSession {
   private readonly abortController = new AbortController();
   private disposed = false;
   private pendingUserAudio: Buffer[] = [];
-  private pendingUserText = '';
+  private pendingUserText = "";
   private turnCommitInProgress = false;
   private pendingTurnCommit = false;
   private userSpeaking = false;
@@ -82,7 +82,7 @@ export class ConversationSession {
     this.user = user;
     this.config = {
       ...config,
-      correctionInstruction: '',
+      correctionInstruction: "",
     };
     this.send = send;
     this.sendBinary = sendBinary;
@@ -116,47 +116,47 @@ export class ConversationSession {
     this.assertActive();
 
     switch (message.type) {
-      case 'session.start':
-        throw new Error('session.start is handled by the connection layer');
-      case 'session.ping':
-        this.send({ type: 'session.pong' });
+      case "session.start":
+        throw new Error("session.start is handled by the connection layer");
+      case "session.ping":
+        this.send({ type: "session.pong" });
         return;
-      case 'session.end':
-        this.dispose('client_end');
-        this.send({ type: 'session.ended' });
+      case "session.end":
+        this.dispose("client_end");
+        this.send({ type: "session.ended" });
         return;
-      case 'session.update':
+      case "session.update":
         this.applyConfigPatch(message.patch);
         if (message.patch.voiceEnabled === false) {
           this.pipeline.abortInFlight();
         }
         return;
-      case 'assistant.instruction':
+      case "assistant.instruction":
         this.applyInstruction(message.text, message.mode);
         return;
-      case 'user.text':
+      case "user.text":
         this.pendingUserText = message.text;
         return;
-      case 'user.turn.commit':
-        sessionLog(this.sessionId, 'turn.commit_requested', { messageId: message.messageId });
+      case "user.turn.commit":
+        sessionLog(this.sessionId, "turn.commit_requested", { messageId: message.messageId });
         await this.commitUserTurn(message.messageId);
         return;
-      case 'user.turn.cancel':
+      case "user.turn.cancel":
         this.cancelUserTurn();
         return;
-      case 'assistant.trigger':
-        sessionLog(this.sessionId, 'assistant.trigger');
+      case "assistant.trigger":
+        sessionLog(this.sessionId, "assistant.trigger");
         try {
           await this.runAssistantGeneration();
         } catch (error) {
           if (isAbortError(error)) {
-            sessionLog(this.sessionId, 'turn.aborted');
+            sessionLog(this.sessionId, "turn.aborted");
             return;
           }
           throw error;
         }
         return;
-      case 'vision.frame':
+      case "vision.frame":
         return;
       default: {
         const _exhaustive: never = message;
@@ -168,7 +168,7 @@ export class ConversationSession {
   handleBinaryAudio(chunk: Buffer): void {
     this.assertActive();
 
-    if (this.config.micMuted) {
+    if (!this.config.micEnabled) {
       return;
     }
 
@@ -177,7 +177,7 @@ export class ConversationSession {
     this.binaryChunkCount += 1;
 
     if (this.binaryChunkCount === 1 || this.binaryChunkCount % 50 === 0) {
-      sessionLog(this.sessionId, 'audio.chunk_received', {
+      sessionLog(this.sessionId, "audio.chunk_received", {
         bytes: frame.payload.length,
         pendingChunks: this.pendingUserAudio.length,
         bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
@@ -186,8 +186,12 @@ export class ConversationSession {
       });
     }
 
-    if (this.config.mode === 'RealTimeConversation') {
-      if (!this.pipeline.isLlmRunning && !this.pipeline.isVoiceStreaming && !this.assistantOutputActive) {
+    if (this.config.mode === "RealTimeConversation") {
+      if (
+        !this.pipeline.isLlmRunning &&
+        !this.pipeline.isVoiceStreaming &&
+        !this.assistantOutputActive
+      ) {
         this.assistantBargeInHandled = false;
       }
 
@@ -215,11 +219,11 @@ export class ConversationSession {
         },
         onTurnEnd: () => {
           if (!this.shouldAcceptUserTurnCommit()) {
-            this.discardPendingUserAudio('assistant_playback_echo');
+            this.discardPendingUserAudio("assistant_playback_echo");
             return;
           }
 
-          sessionLog(this.sessionId, 'turn.end_detected', {
+          sessionLog(this.sessionId, "turn.end_detected", {
             bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
           });
           this.scheduleCommitUserTurn();
@@ -238,13 +242,13 @@ export class ConversationSession {
     this.turnDetector.reset();
     this.pipeline.abortInFlight();
     this.pendingUserAudio = [];
-    this.pendingUserText = '';
+    this.pendingUserText = "";
     this.abortController.abort();
   }
 
   private assertActive(): void {
     if (this.disposed) {
-      throw new Error('Session is closed');
+      throw new Error("Session is closed");
     }
   }
 
@@ -262,7 +266,7 @@ export class ConversationSession {
     const playbackMs = Math.ceil((ttsBytes * 8 * 1000) / 128_000);
     const windowMs = playbackMs + ASSISTANT_PLAYBACK_TAIL_MS;
     this.assistantPlaybackUntilMs = Date.now() + windowMs;
-    sessionLog(this.sessionId, 'assistant.playback_window', { playbackMs, ttsBytes });
+    sessionLog(this.sessionId, "assistant.playback_window", { playbackMs, ttsBytes });
 
     if (this.assistantPlaybackClearTimer) {
       clearTimeout(this.assistantPlaybackClearTimer);
@@ -272,7 +276,7 @@ export class ConversationSession {
       this.assistantPlaybackClearTimer = null;
       this.clearAssistantPlaybackState();
       this.assistantBargeInHandled = false;
-      sessionLog(this.sessionId, 'assistant.playback_window_ended');
+      sessionLog(this.sessionId, "assistant.playback_window_ended");
     }, windowMs + 25);
   }
 
@@ -298,7 +302,7 @@ export class ConversationSession {
       return;
     }
 
-    sessionLog(this.sessionId, 'turn.audio_discarded', {
+    sessionLog(this.sessionId, "turn.audio_discarded", {
       reason,
       chunks: this.pendingUserAudio.length,
       bufferedMs: estimateBufferedSpeechMs(this.pendingUserAudio),
@@ -342,7 +346,7 @@ export class ConversationSession {
     const notifyInterrupt =
       options.allowAssistantInterrupt === true && this.shouldAbortAssistantOutput();
 
-    sessionLog(this.sessionId, 'turn.speech_start', {
+    sessionLog(this.sessionId, "turn.speech_start", {
       notifyInterrupt,
       assistantOutputActive: this.assistantOutputActive,
       pipelineBusy: this.pipeline.isBusy,
@@ -351,21 +355,21 @@ export class ConversationSession {
     if (notifyInterrupt) {
       this.pipeline.abortAssistantOutput();
       this.clearAssistantPlaybackState();
-      this.send({ type: 'assistant.interrupted' });
+      this.send({ type: "assistant.interrupted" });
     }
 
     if (!this.userSpeaking) {
       this.userSpeaking = true;
-      this.send({ type: 'user.speaking', active: true });
+      this.send({ type: "user.speaking", active: true });
     }
   }
 
   private handleUserSpeechEnd(): void {
-    sessionLog(this.sessionId, 'turn.speech_end');
+    sessionLog(this.sessionId, "turn.speech_end");
 
     if (this.userSpeaking) {
       this.userSpeaking = false;
-      this.send({ type: 'user.speaking', active: false });
+      this.send({ type: "user.speaking", active: false });
     }
   }
 
@@ -376,20 +380,20 @@ export class ConversationSession {
     };
   }
 
-  private applyInstruction(text: string, mode: 'replace' | 'append'): void {
-    if (mode === 'replace') {
+  private applyInstruction(text: string, mode: "replace" | "append"): void {
+    if (mode === "replace") {
       this.config.correctionInstruction = text;
       return;
     }
 
     this.config.correctionInstruction = [this.config.correctionInstruction, text]
       .filter(Boolean)
-      .join('\n');
+      .join("\n");
   }
 
   private async commitUserTurn(messageId?: string): Promise<void> {
     if (this.turnCommitInProgress) {
-      sessionLog(this.sessionId, 'turn.commit_queued');
+      sessionLog(this.sessionId, "turn.commit_queued");
       this.pendingTurnCommit = true;
       return;
     }
@@ -404,9 +408,9 @@ export class ConversationSession {
     this.assistantBargeInHandled = false;
 
     let text = this.pendingUserText;
-    this.pendingUserText = '';
+    this.pendingUserText = "";
 
-    sessionLog(this.sessionId, 'turn.commit_start', {
+    sessionLog(this.sessionId, "turn.commit_start", {
       messageId: id,
       audioBytes,
       bufferedMs,
@@ -414,13 +418,13 @@ export class ConversationSession {
     });
 
     if (!text && audioChunks.length === 0) {
-      sessionLog(this.sessionId, 'turn.commit_skipped', { reason: 'no_audio_or_text' });
+      sessionLog(this.sessionId, "turn.commit_skipped", { reason: "no_audio_or_text" });
       return;
     }
 
     if (!text && audioChunks.length > 0 && !hasMeaningfulBufferedSpeech(audioChunks)) {
-      sessionLog(this.sessionId, 'turn.commit_skipped', {
-        reason: 'low_energy_or_too_short',
+      sessionLog(this.sessionId, "turn.commit_skipped", {
+        reason: "low_energy_or_too_short",
         audioBytes,
         bufferedMs,
       });
@@ -432,15 +436,15 @@ export class ConversationSession {
     try {
       if (!text && audioChunks.length > 0) {
         text = await this.pipeline.transcribeAudio(audioChunks);
-        sessionLog(this.sessionId, 'turn.stt_done', {
+        sessionLog(this.sessionId, "turn.stt_done", {
           textLength: text.length,
           preview: text.slice(0, 80),
         });
       }
 
       if (!text) {
-        sessionWarn(this.sessionId, 'turn.commit_skipped', {
-          reason: 'empty_transcript',
+        sessionWarn(this.sessionId, "turn.commit_skipped", {
+          reason: "empty_transcript",
           audioBytes,
           bufferedMs,
         });
@@ -449,24 +453,24 @@ export class ConversationSession {
 
       this.history.append({
         id,
-        role: 'user',
+        role: "user",
         text,
         createdAt: Date.now(),
       });
 
       this.send({
-        type: 'transcript.done',
+        type: "transcript.done",
         messageId: id,
-        role: 'user',
+        role: "user",
         text,
       });
 
-      sessionLog(this.sessionId, 'turn.generating_assistant');
+      sessionLog(this.sessionId, "turn.generating_assistant");
       await this.runAssistantGeneration();
-      sessionLog(this.sessionId, 'turn.commit_done', { messageId: id });
+      sessionLog(this.sessionId, "turn.commit_done", { messageId: id });
     } catch (error) {
       if (isAbortError(error)) {
-        sessionLog(this.sessionId, 'turn.aborted', { messageId: id });
+        sessionLog(this.sessionId, "turn.aborted", { messageId: id });
         return;
       }
       throw error;
@@ -486,17 +490,17 @@ export class ConversationSession {
 
   private handleTurnPipelineError(error: unknown): void {
     if (isAbortError(error)) {
-      sessionLog(this.sessionId, 'turn.aborted');
+      sessionLog(this.sessionId, "turn.aborted");
       return;
     }
 
-    sessionWarn(this.sessionId, 'turn.pipeline_error', {
+    sessionWarn(this.sessionId, "turn.pipeline_error", {
       message: error instanceof Error ? error.message : String(error),
     });
     this.send({
-      type: 'error',
-      code: 'pipeline.failed',
-      message: 'Something went wrong processing your turn. Try again.',
+      type: "error",
+      code: "pipeline.failed",
+      message: "Something went wrong processing your turn. Try again.",
     });
   }
 
@@ -504,14 +508,14 @@ export class ConversationSession {
     this.pipeline.abortInFlight();
     this.turnDetector.reset();
     this.pendingUserAudio = [];
-    this.pendingUserText = '';
+    this.pendingUserText = "";
 
     if (this.userSpeaking) {
       this.userSpeaking = false;
-      this.send({ type: 'user.speaking', active: false });
+      this.send({ type: "user.speaking", active: false });
     }
   }
 }
 
 export const isRealtimeConversationMode = (mode: ConversationMode): boolean =>
-  mode === 'RealTimeConversation';
+  mode === "RealTimeConversation";

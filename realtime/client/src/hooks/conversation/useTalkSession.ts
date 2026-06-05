@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { unlockAudioPlayback } from '../../lib/audioCapture.js';
-import { debugLog } from '../../lib/debugLog.js';
-import { getIdToken } from '../../lib/firebase.js';
-import type { RealtimeSessionClient } from '../../lib/sessionClient.js';
-import type { StatusTone } from './types.js';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { unlockAudioPlayback } from "../../lib/audioCapture.js";
+import { debugLog } from "../../lib/debugLog.js";
+import { getIdToken } from "../../lib/firebase.js";
+import type { RealtimeSessionClient } from "../../lib/sessionClient.js";
+import type { StatusTone } from "./types.js";
 
 type UseTalkSessionParams = {
   isRealtimeMode: boolean;
-  micMuted: boolean;
+  micEnabled: boolean;
   voiceEnabled: boolean;
-  setMicMuted: (muted: boolean) => void;
+  setMicEnabled: (enabled: boolean) => void;
   setVoiceEnabled: (enabled: boolean) => void;
-  readSessionConfig: () => Parameters<RealtimeSessionClient['connect']>[1];
+  readSessionConfig: () => Parameters<RealtimeSessionClient["connect"]>[1];
   getClient: () => RealtimeSessionClient;
   disconnectClient: () => void;
   isClientConnected: () => boolean;
@@ -27,9 +27,9 @@ type UseTalkSessionParams = {
 
 export const useTalkSession = ({
   isRealtimeMode,
-  micMuted,
+  micEnabled,
   voiceEnabled,
-  setMicMuted,
+  setMicEnabled,
   setVoiceEnabled,
   readSessionConfig,
   getClient,
@@ -44,13 +44,13 @@ export const useTalkSession = ({
   hasActiveCapture,
   onListeningStatus,
 }: UseTalkSessionParams) => {
-  const [sessionStatusText, setSessionStatusText] = useState('Disconnected');
-  const [sessionStatusTone, setSessionStatusTone] = useState<StatusTone>('idle');
+  const [sessionStatusText, setSessionStatusText] = useState("Disconnected");
+  const [sessionStatusTone, setSessionStatusTone] = useState<StatusTone>("idle");
   const [connected, setConnected] = useState(false);
   const [callActive, setCallActive] = useState(false);
   const [pttRecording, setPttRecording] = useState(false);
-  const [pttLabel, setPttLabel] = useState('Hold to talk');
-  const [typedMessage, setTypedMessage] = useState('');
+  const [pttLabel, setPttLabel] = useState("Hold to talk");
+  const [typedMessage, setTypedMessage] = useState("");
 
   const greetingSentRef = useRef(false);
   const stopCallRef = useRef<(() => Promise<void>) | null>(null);
@@ -72,13 +72,13 @@ export const useTalkSession = ({
       return;
     }
 
-    debugLog('call', 'stop');
+    debugLog("call", "stop");
     stopCapture();
     setCallActive(false);
 
     if (isClientConnected()) {
-      debugLog('call', 'user_turn_commit_on_stop');
-      getClient().sendJson({ type: 'user.turn.commit' });
+      debugLog("call", "user_turn_commit_on_stop");
+      getClient().sendJson({ type: "user.turn.commit" });
     }
   }, [getClient, hasActiveCapture, isClientConnected, stopCapture]);
 
@@ -90,15 +90,15 @@ export const useTalkSession = ({
       return;
     }
 
-    debugLog('call', 'start', { micMuted });
+    debugLog("call", "start", { micEnabled });
     await unlockAudioPlayback();
     setCallActive(true);
 
     if (isRealtimeMode && !greetingSentRef.current) {
-      debugLog('call', 'assistant_trigger');
-      client.sendJson({ type: 'assistant.trigger' });
+      debugLog("call", "assistant_trigger");
+      client.sendJson({ type: "assistant.trigger" });
       greetingSentRef.current = true;
-      setSessionStatus('Call active — on call…', 'active');
+      setSessionStatus("Call active — on call…", "active");
 
       if (!(await startMicCaptureIfNeeded())) {
         setCallActive(false);
@@ -111,13 +111,13 @@ export const useTalkSession = ({
       return;
     }
 
-    setSessionStatus('Call active — listening…', 'ok');
+    setSessionStatus("Call active — listening…", "ok");
   }, [
     callActive,
     getClient,
     hasActiveCapture,
     isRealtimeMode,
-    micMuted,
+    micEnabled,
     setSessionStatus,
     startMicCaptureIfNeeded,
   ]);
@@ -140,26 +140,34 @@ export const useTalkSession = ({
     releaseMicrophone();
     greetingSentRef.current = false;
     setConnected(false);
-    setMicStatus('Mic: not requested');
+    setMicStatus("Mic: not requested");
   }, [disconnectClient, releaseMicrophone, setMicStatus, stopCall]);
 
   const handleConnect = useCallback(async () => {
     try {
-      debugLog('call', 'connect_click');
+      debugLog("call", "connect_click");
       await unlockAudioPlayback();
       resetUsage();
       const token = await getIdToken();
       getClient().connect(token, readSessionConfig());
       setConnected(true);
-      if (!micMuted) {
+      if (micEnabled) {
         void prepareMicrophone();
       } else {
-        setMicStatus('Mic: muted — uncheck to speak', 'idle');
+        setMicStatus('Mic: disabled — enable "Mic On" to speak', "idle");
       }
     } catch (error) {
-      setSessionStatus(error instanceof Error ? error.message : 'Connect failed', 'error');
+      setSessionStatus(error instanceof Error ? error.message : "Connect failed", "error");
     }
-  }, [getClient, micMuted, prepareMicrophone, readSessionConfig, resetUsage, setMicStatus, setSessionStatus]);
+  }, [
+    getClient,
+    micEnabled,
+    prepareMicrophone,
+    readSessionConfig,
+    resetUsage,
+    setMicStatus,
+    setSessionStatus,
+  ]);
 
   const handleDisconnect = useCallback(async () => {
     await resetSession();
@@ -169,12 +177,12 @@ export const useTalkSession = ({
     await resetSession();
   }, [resetSession]);
 
-  const handleMicMutedChange = useCallback(
-    async (nextMuted: boolean) => {
-      setMicMuted(nextMuted);
-      if (nextMuted && hasActiveCapture()) {
+  const handleMicEnabledChange = useCallback(
+    async (nextEnabled: boolean) => {
+      setMicEnabled(nextEnabled);
+      if (!nextEnabled && hasActiveCapture()) {
         stopCapture();
-        debugLog('mic', 'capture_stopped_muted');
+        debugLog("mic", "capture_stopped_disabled");
       } else if (connected) {
         await prepareMicrophone();
         if (callActive) {
@@ -183,7 +191,7 @@ export const useTalkSession = ({
       }
 
       if (isClientConnected()) {
-        getClient().updateSession({ micMuted: nextMuted });
+        getClient().updateSession({ micEnabled: nextEnabled });
       }
     },
     [
@@ -193,7 +201,7 @@ export const useTalkSession = ({
       hasActiveCapture,
       isClientConnected,
       prepareMicrophone,
-      setMicMuted,
+      setMicEnabled,
       startMicCaptureIfNeeded,
       stopCapture,
     ],
@@ -216,11 +224,11 @@ export const useTalkSession = ({
     }
 
     getClient().sendTextTurn(text);
-    setTypedMessage('');
+    setTypedMessage("");
   }, [getClient, isClientConnected, typedMessage]);
 
   const startPushToTalk = useCallback(async () => {
-    if (!isClientConnected() || micMuted || hasActiveCapture() || isRealtimeMode) {
+    if (!isClientConnected() || !micEnabled || hasActiveCapture() || isRealtimeMode) {
       return;
     }
 
@@ -233,9 +241,17 @@ export const useTalkSession = ({
     });
     if (started) {
       setPttRecording(true);
-      setPttLabel('Recording… release to send');
+      setPttLabel("Recording… release to send");
     }
-  }, [getClient, hasActiveCapture, isClientConnected, isRealtimeMode, micMuted, prepareMicrophone, startCapture]);
+  }, [
+    getClient,
+    hasActiveCapture,
+    isClientConnected,
+    isRealtimeMode,
+    micEnabled,
+    prepareMicrophone,
+    startCapture,
+  ]);
 
   const stopPushToTalk = useCallback(() => {
     if (!hasActiveCapture() || isRealtimeMode) {
@@ -244,9 +260,9 @@ export const useTalkSession = ({
 
     stopCapture();
     setPttRecording(false);
-    setPttLabel('Hold to talk');
+    setPttLabel("Hold to talk");
     if (isClientConnected()) {
-      getClient().sendJson({ type: 'user.turn.commit' });
+      getClient().sendJson({ type: "user.turn.commit" });
     }
   }, [getClient, hasActiveCapture, isClientConnected, isRealtimeMode, stopCapture]);
 
@@ -262,13 +278,13 @@ export const useTalkSession = ({
         return;
       }
 
-      debugLog('client', 'page_hide_end_session');
+      debugLog("client", "page_hide_end_session");
       void stopCallRef.current?.();
       disconnectClient();
     };
 
-    window.addEventListener('pagehide', endSessionOnPageLeave);
-    return () => window.removeEventListener('pagehide', endSessionOnPageLeave);
+    window.addEventListener("pagehide", endSessionOnPageLeave);
+    return () => window.removeEventListener("pagehide", endSessionOnPageLeave);
   }, [disconnectClient, isClientConnected]);
 
   return {
@@ -284,7 +300,7 @@ export const useTalkSession = ({
     handleConnect,
     handleDisconnect,
     handleSignOutCleanup,
-    handleMicMutedChange,
+    handleMicEnabledChange,
     handleVoiceEnabledChange,
     startCall,
     stopCall,

@@ -1,19 +1,19 @@
-import WebSocket from 'ws';
-import type { ServerMessage } from '../../src/protocol/messages.js';
-import { parseServerMessage } from '../../src/protocol/messages.js';
-import { amplifyPcm16Buffer, chunkPcmBuffer, loadWavAsPcm24kMono, trimPcmSilence } from './wav.js';
-import type { VoiceFixtureName } from './voiceFixtures.js';
-import { isUserRecordingWav, voiceFixturePath } from './voiceFixtures.js';
+import WebSocket from "ws";
+import type { ServerMessage } from "../../src/protocol/messages.js";
+import { parseServerMessage } from "../../src/protocol/messages.js";
+import { amplifyPcm16Buffer, chunkPcmBuffer, loadWavAsPcm24kMono, trimPcmSilence } from "./wav.js";
+import type { VoiceFixtureName } from "./voiceFixtures.js";
+import { isUserRecordingWav, voiceFixturePath } from "./voiceFixtures.js";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export type VoiceSessionConfig = {
   languageCode?: string;
-  mode?: 'PushToTalk' | 'RealTimeConversation';
+  mode?: "PushToTalk" | "RealTimeConversation";
   voiceEnabled?: boolean;
-  micMuted?: boolean;
+  micEnabled?: boolean;
   systemInstruction?: string;
-  voice?: 'shimmer' | 'ash' | 'marin' | 'verse';
+  voice?: "shimmer" | "ash" | "marin" | "verse";
 };
 
 export class RealtimeVoiceWsSession {
@@ -31,11 +31,11 @@ export class RealtimeVoiceWsSession {
     this.socket = new WebSocket(this.wsUrl);
 
     await new Promise<void>((resolve, reject) => {
-      this.socket?.once('open', () => resolve());
-      this.socket?.once('error', reject);
+      this.socket?.once("open", () => resolve());
+      this.socket?.once("error", reject);
     });
 
-    this.socket.on('message', (raw) => {
+    this.socket.on("message", (raw) => {
       const data = Buffer.isBuffer(raw) ? raw : Buffer.from(raw as ArrayBuffer);
 
       if (data.length === 0) {
@@ -48,8 +48,8 @@ export class RealtimeVoiceWsSession {
       }
 
       try {
-        const text = data.toString('utf8');
-        if (!text.trimStart().startsWith('{')) {
+        const text = data.toString("utf8");
+        if (!text.trimStart().startsWith("{")) {
           this.ttsBytesReceived += data.length;
           return;
         }
@@ -61,20 +61,20 @@ export class RealtimeVoiceWsSession {
     });
 
     this.sendJson({
-      type: 'session.start',
+      type: "session.start",
       token: this.idToken,
       config: {
-        languageCode: 'en',
-        mode: 'RealTimeConversation',
+        languageCode: "en",
+        mode: "RealTimeConversation",
         voiceEnabled: true,
-        micMuted: false,
-        systemInstruction: 'You are an English teacher. Reply briefly in one or two sentences.',
-        voice: 'shimmer',
+        micEnabled: true,
+        systemInstruction: "You are an English teacher. Reply briefly in one or two sentences.",
+        voice: "shimmer",
         ...this.config,
       },
     });
 
-    await this.waitFor((message) => message.type === 'session.ready', 30_000);
+    await this.waitFor((message) => message.type === "session.ready", 30_000);
   }
 
   sendJson(payload: unknown): void {
@@ -82,12 +82,12 @@ export class RealtimeVoiceWsSession {
   }
 
   async triggerAssistant(): Promise<void> {
-    this.sendJson({ type: 'assistant.trigger' });
+    this.sendJson({ type: "assistant.trigger" });
   }
 
   async waitForGreetingComplete(timeoutMs = 90_000): Promise<void> {
     await this.waitFor(
-      (message) => message.type === 'transcript.done' && message.role === 'assistant',
+      (message) => message.type === "transcript.done" && message.role === "assistant",
       timeoutMs,
     );
 
@@ -96,7 +96,7 @@ export class RealtimeVoiceWsSession {
     }
 
     await this.waitFor(
-      (message) => message.type === 'assistant.speaking' && message.active === false,
+      (message) => message.type === "assistant.speaking" && message.active === false,
       timeoutMs,
     );
 
@@ -108,7 +108,7 @@ export class RealtimeVoiceWsSession {
 
     while (this.ttsBytesReceived === 0) {
       if (Date.now() - startedAt > timeoutMs) {
-        throw new Error('Timed out waiting for assistant TTS bytes');
+        throw new Error("Timed out waiting for assistant TTS bytes");
       }
 
       await sleep(50);
@@ -142,13 +142,13 @@ export class RealtimeVoiceWsSession {
     const peakTarget =
       options.amplify === false
         ? null
-        : typeof options.amplify === 'number'
+        : typeof options.amplify === "number"
           ? options.amplify
           : isUserRecordingWav(name)
             ? 10_000
             : 12_000;
     const once = peakTarget === null ? raw : amplifyPcm16Buffer(raw, peakTarget);
-    const repeats = options.repeats ?? (name.includes('hello') ? 4 : 1);
+    const repeats = options.repeats ?? (name.includes("hello") ? 4 : 1);
     const pcm = repeats > 1 ? Buffer.concat(Array.from({ length: repeats }, () => once)) : once;
     const chunks = chunkPcmBuffer(pcm, options.chunkMs ?? 100);
 
@@ -168,12 +168,12 @@ export class RealtimeVoiceWsSession {
   }
 
   countAssistantInterrupted(): number {
-    return this.countMessages((message) => message.type === 'assistant.interrupted');
+    return this.countMessages((message) => message.type === "assistant.interrupted");
   }
 
   messagesAfterFirstUserTranscript(): ServerMessage[] {
     const userIndex = this.messages.findIndex(
-      (message) => message.type === 'transcript.done' && message.role === 'user',
+      (message) => message.type === "transcript.done" && message.role === "user",
     );
 
     return userIndex >= 0 ? this.messages.slice(userIndex) : [];
@@ -184,10 +184,10 @@ export class RealtimeVoiceWsSession {
   }
 
   async waitForUserTranscript(timeoutMs = 90_000): Promise<ServerMessage> {
-    await this.waitFor((message) => message.type === 'usage' && message.stage === 'stt', timeoutMs);
+    await this.waitFor((message) => message.type === "usage" && message.stage === "stt", timeoutMs);
 
     return this.waitFor(
-      (message) => message.type === 'transcript.done' && message.role === 'user',
+      (message) => message.type === "transcript.done" && message.role === "user",
       timeoutMs,
     );
   }
@@ -200,9 +200,7 @@ export class RealtimeVoiceWsSession {
 
     return this.waitFor(
       (message, index) =>
-        index >= startIndex &&
-        message.type === 'transcript.done' &&
-        message.role === 'assistant',
+        index >= startIndex && message.type === "transcript.done" && message.role === "assistant",
       timeoutMs,
     );
   }
@@ -212,12 +210,12 @@ export class RealtimeVoiceWsSession {
   }
 
   hadAssistantInterrupted(): boolean {
-    return this.messages.some((message) => message.type === 'assistant.interrupted');
+    return this.messages.some((message) => message.type === "assistant.interrupted");
   }
 
   async close(): Promise<void> {
     if (this.socket?.readyState === WebSocket.OPEN) {
-      this.sendJson({ type: 'session.end' });
+      this.sendJson({ type: "session.end" });
       await sleep(200);
       this.socket.close();
     }
@@ -249,7 +247,7 @@ export class RealtimeVoiceWsSession {
               `Timed out waiting for WS message (last types: ${this.messages
                 .slice(-8)
                 .map((message) => message.type)
-                .join(', ')})`,
+                .join(", ")})`,
             ),
           );
         }

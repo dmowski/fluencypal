@@ -1,30 +1,32 @@
-import { useMemo } from 'react';
-import type { SessionMode } from './types.js';
+import { useMemo } from "react";
+import type { SessionMode } from "./types.js";
 
 export const useConversationUi = (params: {
   signedIn: boolean;
   connected: boolean;
   callActive: boolean;
-  micMuted: boolean;
+  micEnabled: boolean;
   isRealtimeMode: boolean;
 }) => {
-  const { signedIn, connected, callActive, micMuted, isRealtimeMode } = params;
+  const { signedIn, connected, callActive, micEnabled, isRealtimeMode } = params;
 
   const talkHint = useMemo(() => {
     if (!connected) {
-      return signedIn ? 'Click Connect to open a WebSocket session.' : 'Sign in to start a conversation.';
+      return signedIn
+        ? "Click Connect to open a WebSocket session."
+        : "Sign in to start a conversation.";
     }
 
-    if (micMuted) {
-      return 'Microphone is muted in session settings. Uncheck “Mic muted” to speak.';
+    if (!micEnabled) {
+      return 'Microphone is disabled in session settings. Enable "Mic On" to speak.';
     }
 
     if (isRealtimeMode) {
-      return 'Click “Start call”. Speak over the assistant to interrupt. Use headphones if the mic picks up speaker echo.';
+      return "Click “Start call”. Speak over the assistant to interrupt. Use headphones if the mic picks up speaker echo.";
     }
 
-    return 'Hold “Hold to talk” while speaking, then release to send. Or type a message below.';
-  }, [connected, isRealtimeMode, micMuted, signedIn]);
+    return "Hold “Hold to talk” while speaking, then release to send. Or type a message below.";
+  }, [connected, isRealtimeMode, micEnabled, signedIn]);
 
   const steps = useMemo(
     () => ({

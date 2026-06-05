@@ -1,11 +1,11 @@
-import { randomUUID } from 'node:crypto';
-import type { AuthUserInfo } from '../auth/types.js';
-import type { SessionStartConfig, ServerMessage } from '../protocol/messages.js';
+import { randomUUID } from "node:crypto";
+import type { AuthUserInfo } from "../auth/types.js";
+import type { SessionStartConfig, ServerMessage } from "../protocol/messages.js";
 import {
   ConversationSession,
   type SendBinary,
   type SendServerMessage,
-} from './ConversationSession.js';
+} from "./ConversationSession.js";
 
 export class SessionManager {
   private readonly sessions = new Map<string, ConversationSession>();
@@ -38,13 +38,13 @@ export class SessionManager {
       return;
     }
 
-    session.dispose('removed');
+    session.dispose("removed");
     this.sessions.delete(sessionId);
   }
 
   disposeAll(): void {
     for (const session of this.sessions.values()) {
-      session.dispose('shutdown');
+      session.dispose("shutdown");
     }
     this.sessions.clear();
   }
@@ -56,12 +56,12 @@ export class SessionManager {
   buildSessionReadyMessage(session: ConversationSession): ServerMessage {
     const config = session.runtimeConfig;
     return {
-      type: 'session.ready',
+      type: "session.ready",
       sessionId: session.sessionId,
       mode: config.mode,
       voice: config.voice,
       voiceEnabled: config.voiceEnabled,
-      micMuted: config.micMuted,
+      micEnabled: config.micEnabled,
     };
   }
 }

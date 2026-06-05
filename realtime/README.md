@@ -236,30 +236,30 @@ Binary frames are detected when the payload does not start with `{` (JSON). Raw 
 
 ### Session config (`session.start.config`)
 
-| Field               | Type                                     | Notes                                   |
-| ------------------- | ---------------------------------------- | --------------------------------------- |
-| `languageCode`      | string                                   | e.g. `en`                               |
-| `mode`              | `RealTimeConversation` \| `PushToTalk`   | See mode behavior below                 |
-| `voiceEnabled`      | boolean                                  | `false` skips TTS (STT + LLM still run) |
-| `micMuted`          | boolean                                  | Server ignores incoming audio when true |
-| `systemInstruction` | string                                   | Base system prompt                      |
-| `voice`             | `shimmer` \| `ash` \| `marin` \| `verse` | Fixed for session (from user settings)  |
-| `conversationId`    | string?                                  | Optional analytics id from webApp       |
+| Field               | Type                                     | Notes                                    |
+| ------------------- | ---------------------------------------- | ---------------------------------------- |
+| `languageCode`      | string                                   | e.g. `en`                                |
+| `mode`              | `RealTimeConversation` \| `PushToTalk`   | See mode behavior below                  |
+| `voiceEnabled`      | boolean                                  | `false` skips TTS (STT + LLM still run)  |
+| `micEnabled`        | boolean                                  | Server ignores incoming audio when false |
+| `systemInstruction` | string                                   | Base system prompt                       |
+| `voice`             | `shimmer` \| `ash` \| `marin` \| `verse` | Fixed for session (from user settings)   |
+| `conversationId`    | string?                                  | Optional analytics id from webApp        |
 
 ### Client → server (JSON)
 
-| `type`                  | Purpose                                                  |
-| ----------------------- | -------------------------------------------------------- |
-| `session.start`         | First message; auth + config                             |
-| `session.update`        | Patch `systemInstruction`, `voiceEnabled`, or `micMuted` |
-| `session.ping`          | Keepalive → `session.pong`                               |
-| `session.end`           | Graceful close → `session.ended`                         |
-| `user.text`             | Typed user input (PushToTalk)                            |
-| `user.turn.commit`      | End user turn (PushToTalk)                               |
-| `user.turn.cancel`      | Discard buffered user audio/text                         |
-| `assistant.trigger`     | Request assistant reply without new user input           |
-| `assistant.instruction` | Mid-session correction (`mode`: `replace` \| `append`)   |
-| `vision.frame`          | Reserved stub (not implemented)                          |
+| `type`                  | Purpose                                                    |
+| ----------------------- | ---------------------------------------------------------- |
+| `session.start`         | First message; auth + config                               |
+| `session.update`        | Patch `systemInstruction`, `voiceEnabled`, or `micEnabled` |
+| `session.ping`          | Keepalive → `session.pong`                                 |
+| `session.end`           | Graceful close → `session.ended`                           |
+| `user.text`             | Typed user input (PushToTalk)                              |
+| `user.turn.commit`      | End user turn (PushToTalk)                                 |
+| `user.turn.cancel`      | Discard buffered user audio/text                           |
+| `assistant.trigger`     | Request assistant reply without new user input             |
+| `assistant.instruction` | Mid-session correction (`mode`: `replace` \| `append`)     |
+| `vision.frame`          | Reserved stub (not implemented)                            |
 
 ### Server → client (JSON)
 

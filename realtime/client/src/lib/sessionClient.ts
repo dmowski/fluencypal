@@ -1,10 +1,10 @@
-import { Mp3PlaybackQueue } from './audioPlayback.js';
-import { unlockAudioPlayback } from './audioUnlock.js';
-import { debugLog, debugLogVerbose } from './debugLog.js';
+import { Mp3PlaybackQueue } from "./audioPlayback.js";
+import { unlockAudioPlayback } from "./audioUnlock.js";
+import { debugLog, debugLogVerbose } from "./debugLog.js";
 
 export type ServerMessage = {
   type: string;
-  role?: 'user' | 'assistant';
+  role?: "user" | "assistant";
   messageId?: string;
   delta?: string;
   text?: string;
@@ -20,8 +20,8 @@ export type ServerMessage = {
 export type SessionClientHandlers = {
   onStatus: (status: string) => void;
   onSessionReady: (config: SessionStartConfig) => void;
-  onTranscriptDelta: (messageId: string, role: 'user' | 'assistant', delta: string) => void;
-  onTranscriptDone: (messageId: string, role: 'user' | 'assistant', text: string) => void;
+  onTranscriptDelta: (messageId: string, role: "user" | "assistant", delta: string) => void;
+  onTranscriptDone: (messageId: string, role: "user" | "assistant", text: string) => void;
   onUsage: (entry: {
     stage: string;
     model: string;
@@ -39,14 +39,14 @@ export type SessionClientHandlers = {
 
 export type SessionStartConfig = {
   languageCode: string;
-  mode: 'PushToTalk' | 'RealTimeConversation';
+  mode: "PushToTalk" | "RealTimeConversation";
   voiceEnabled: boolean;
-  micMuted: boolean;
+  micEnabled: boolean;
   systemInstruction: string;
-  voice: 'shimmer' | 'ash' | 'marin' | 'verse';
+  voice: "shimmer" | "ash" | "marin" | "verse";
 };
 
-const WS_LOG_SKIP = new Set(['transcript.delta', 'session.pong', 'user.speaking']);
+const WS_LOG_SKIP = new Set(["transcript.delta", "session.pong", "user.speaking"]);
 
 export class RealtimeSessionClient {
   private socket: WebSocket | null = null;
@@ -72,33 +72,33 @@ export class RealtimeSessionClient {
     this.audioChunksSent = 0;
     this.audioChunksSkipped = 0;
 
-    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
     const wsBase = import.meta.env.VITE_REALTIME_WS_URL as string | undefined;
     const url = wsBase
-      ? `${wsBase.replace(/\/$/, '')}/v1/session`
+      ? `${wsBase.replace(/\/$/, "")}/v1/session`
       : `${protocol}://${window.location.host}/v1/session`;
-    debugLog('ws', 'connecting', { mode: config.mode, voiceEnabled: config.voiceEnabled });
+    debugLog("ws", "connecting", { mode: config.mode, voiceEnabled: config.voiceEnabled });
     const socket = new WebSocket(url);
     this.socket = socket;
 
-    socket.addEventListener('open', () => {
-      debugLog('ws', 'open');
-      this.handlers.onStatus('Connected, starting session…');
+    socket.addEventListener("open", () => {
+      debugLog("ws", "open");
+      this.handlers.onStatus("Connected, starting session…");
       socket.send(
         JSON.stringify({
-          type: 'session.start',
+          type: "session.start",
           token,
           config,
         }),
       );
     });
 
-    socket.addEventListener('message', (event) => {
+    socket.addEventListener("message", (event) => {
       void this.enqueueMessage(() => this.handleSocketMessage(event));
     });
 
-    socket.addEventListener('close', (event) => {
-      debugLog('ws', 'closed', {
+    socket.addEventListener("close", (event) => {
+      debugLog("ws", "closed", {
         code: event.code,
         reason: event.reason || undefined,
         sent: this.audioChunksSent,
@@ -107,21 +107,21 @@ export class RealtimeSessionClient {
       if (event.code !== 1000 && event.reason) {
         this.handlers.onError(`Connection closed: ${event.reason}`);
       } else {
-        this.handlers.onStatus('Disconnected');
+        this.handlers.onStatus("Disconnected");
       }
       this.playback.reset();
       this.socket = null;
     });
 
-    socket.addEventListener('error', () => {
-      debugLog('ws', 'error');
-      this.handlers.onError('WebSocket error');
+    socket.addEventListener("error", () => {
+      debugLog("ws", "error");
+      this.handlers.onError("WebSocket error");
     });
   }
 
   disconnect(): void {
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-      this.sendJson({ type: 'session.end' });
+      this.sendJson({ type: "session.end" });
     }
 
     this.socket?.close();
@@ -140,11 +140,11 @@ export class RealtimeSessionClient {
     }
 
     const type =
-      typeof payload === 'object' && payload && 'type' in payload
+      typeof payload === "object" && payload && "type" in payload
         ? String((payload as { type: unknown }).type)
-        : 'unknown';
-    if (type !== 'session.ping') {
-      debugLogVerbose('ws', 'send', { type });
+        : "unknown";
+    if (type !== "session.ping") {
+      debugLogVerbose("ws", "send", { type });
     }
     this.socket.send(JSON.stringify(payload));
   }
@@ -164,14 +164,14 @@ export class RealtimeSessionClient {
     this.playCollectedPending = false;
     this.ttsBytesReceived = 0;
     this.playTask = Promise.resolve();
-    debugLog('audio', reason);
+    debugLog("audio", reason);
   }
 
   private enqueueMessage(task: () => void | Promise<void>): Promise<void> {
     this.messageChain = this.messageChain
       .then(() => task())
       .catch((error) => {
-        debugLog('error', 'message_handler', {
+        debugLog("error", "message_handler", {
           message: error instanceof Error ? error.message : String(error),
         });
       });
@@ -179,18 +179,18 @@ export class RealtimeSessionClient {
   }
 
   private async handleSocketMessage(event: MessageEvent): Promise<void> {
-    if (typeof event.data === 'string') {
+    if (typeof event.data === "string") {
       const message = JSON.parse(event.data) as ServerMessage;
       if (!WS_LOG_SKIP.has(message.type)) {
         const extra =
-          message.type === 'transcript.done' && message.role
+          message.type === "transcript.done" && message.role
             ? { role: message.role, len: message.text?.length ?? 0 }
-            : message.type === 'usage'
+            : message.type === "usage"
               ? { stage: message.stage }
               : message.code
                 ? { code: message.code }
                 : undefined;
-        debugLog('ws', message.type, extra);
+        debugLog("ws", message.type, extra);
       }
       this.handleJsonMessage(message);
       return;
@@ -213,7 +213,7 @@ export class RealtimeSessionClient {
     const wasEmpty = this.ttsBytesReceived === 0;
     this.ttsBytesReceived += bytes;
     if (wasEmpty) {
-      debugLogVerbose('audio', 'tts_stream_start');
+      debugLogVerbose("audio", "tts_stream_start");
     }
   }
 
@@ -230,58 +230,58 @@ export class RealtimeSessionClient {
       await unlockAudioPlayback();
       try {
         await this.playback.playCollected();
-        debugLog('audio', 'tts_played', { bytes });
+        debugLog("audio", "tts_played", { bytes });
         this.handlers.onAssistantPlaybackEnded?.();
       } catch (error) {
-        debugLog('error', 'playback_failed', {
+        debugLog("error", "playback_failed", {
           message: error instanceof Error ? error.message : String(error),
         });
         this.handlers.onError(
-          error instanceof Error ? error.message : 'Assistant audio could not play',
+          error instanceof Error ? error.message : "Assistant audio could not play",
         );
       }
     });
   }
 
   sendTextTurn(text: string): void {
-    this.sendJson({ type: 'user.text', text });
-    this.sendJson({ type: 'user.turn.commit' });
+    this.sendJson({ type: "user.text", text });
+    this.sendJson({ type: "user.turn.commit" });
   }
 
   updateSession(patch: Record<string, unknown>): void {
-    this.sendJson({ type: 'session.update', patch });
+    this.sendJson({ type: "session.update", patch });
   }
 
   private handleJsonMessage(message: ServerMessage): void {
     switch (message.type) {
-      case 'session.ready':
-        this.handlers.onStatus(`Session ready (${message.sessionId ?? 'unknown'})`);
+      case "session.ready":
+        this.handlers.onStatus(`Session ready (${message.sessionId ?? "unknown"})`);
         if (this.sessionConfig) {
           this.handlers.onSessionReady(this.sessionConfig);
         }
         return;
-      case 'transcript.delta':
+      case "transcript.delta":
         if (message.messageId && message.role && message.delta) {
           this.handlers.onTranscriptDelta(message.messageId, message.role, message.delta);
         }
         return;
-      case 'transcript.done':
+      case "transcript.done":
         if (message.messageId && message.role && message.text !== undefined) {
           this.handlers.onTranscriptDone(message.messageId, message.role, message.text);
         }
         return;
-      case 'usage':
+      case "usage":
         this.handlers.onUsage({
-          stage: message.stage ?? 'llm',
-          model: message.model ?? 'unknown',
+          stage: message.stage ?? "llm",
+          model: message.model ?? "unknown",
           usageEvent: message.usageEvent,
           createdAt: Date.now(),
         });
         return;
-      case 'assistant.interrupted':
-        this.cancelAssistantAudio('server_interrupted');
+      case "assistant.interrupted":
+        this.cancelAssistantAudio("server_interrupted");
         return;
-      case 'assistant.speaking':
+      case "assistant.speaking":
         if (message.active) {
           // Stop any in-flight playback; binary chunks for this stream arrive after this signal.
           this.playback.stopInFlightOutput();
@@ -289,7 +289,7 @@ export class RealtimeSessionClient {
         } else {
           this.assistantSpeaking = false;
           if (this.ttsBytesReceived > 0) {
-            debugLog('audio', 'tts_stream_end', { bytes: this.ttsBytesReceived });
+            debugLog("audio", "tts_stream_end", { bytes: this.ttsBytesReceived });
           }
           if (this.ttsBytesReceived > 0) {
             this.playCollectedPending = true;
@@ -299,15 +299,15 @@ export class RealtimeSessionClient {
           }
         }
         return;
-      case 'user.speaking':
-        debugLogVerbose('user', message.active ? 'speaking' : 'silent');
+      case "user.speaking":
+        debugLogVerbose("user", message.active ? "speaking" : "silent");
         return;
-      case 'error':
-        debugLog('error', 'server', { code: message.code, message: message.message });
-        this.handlers.onError(`${message.code ?? 'error'}: ${message.message ?? 'Unknown error'}`);
+      case "error":
+        debugLog("error", "server", { code: message.code, message: message.message });
+        this.handlers.onError(`${message.code ?? "error"}: ${message.message ?? "Unknown error"}`);
         return;
-      case 'session.ended':
-        this.handlers.onStatus('Session ended');
+      case "session.ended":
+        this.handlers.onStatus("Session ended");
         return;
       default:
         return;

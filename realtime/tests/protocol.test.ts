@@ -15,7 +15,7 @@ const sessionStart: ClientMessage = {
     languageCode: 'en',
     mode: 'RealTimeConversation',
     voiceEnabled: true,
-    micMuted: false,
+    micEnabled: true,
     systemInstruction: 'You are a teacher.',
     voice: 'shimmer',
     conversationId: 'conv-1',
@@ -29,7 +29,7 @@ const serverMessages: ServerMessage[] = [
     mode: 'RealTimeConversation',
     voice: 'shimmer',
     voiceEnabled: true,
-    micMuted: false,
+    micEnabled: true,
   },
   {
     type: 'transcript.delta',

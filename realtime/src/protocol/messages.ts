@@ -1,9 +1,9 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-export const conversationModeSchema = z.enum(['RealTimeConversation', 'PushToTalk']);
+export const conversationModeSchema = z.enum(["RealTimeConversation", "PushToTalk"]);
 export type ConversationMode = z.infer<typeof conversationModeSchema>;
 
-export const aiVoiceSchema = z.enum(['shimmer', 'ash', 'marin', 'verse']);
+export const aiVoiceSchema = z.enum(["shimmer", "ash", "marin", "verse"]);
 export type AiVoice = z.infer<typeof aiVoiceSchema>;
 
 export const supportedLanguageSchema = z.string().min(2).max(8);
@@ -13,7 +13,7 @@ export const sessionStartConfigSchema = z.object({
   languageCode: supportedLanguageSchema,
   mode: conversationModeSchema,
   voiceEnabled: z.boolean(),
-  micMuted: z.boolean(),
+  micEnabled: z.boolean(),
   systemInstruction: z.string(),
   voice: aiVoiceSchema,
   conversationId: z.string().optional(),
@@ -25,66 +25,66 @@ export const sessionUpdatePatchSchema = z
   .object({
     systemInstruction: z.string().optional(),
     voiceEnabled: z.boolean().optional(),
-    micMuted: z.boolean().optional(),
+    micEnabled: z.boolean().optional(),
   })
   .refine((patch) => Object.keys(patch).length > 0, {
-    message: 'session.update patch must include at least one field',
+    message: "session.update patch must include at least one field",
   });
 
 export type SessionUpdatePatch = z.infer<typeof sessionUpdatePatchSchema>;
 
 export const sessionStartMessageSchema = z.object({
-  type: z.literal('session.start'),
+  type: z.literal("session.start"),
   token: z.string().min(1),
   config: sessionStartConfigSchema,
 });
 
 export const sessionUpdateMessageSchema = z.object({
-  type: z.literal('session.update'),
+  type: z.literal("session.update"),
   patch: sessionUpdatePatchSchema,
 });
 
 export const userTextMessageSchema = z.object({
-  type: z.literal('user.text'),
+  type: z.literal("user.text"),
   text: z.string(),
   messageId: z.string().optional(),
 });
 
 export const userTurnCommitMessageSchema = z.object({
-  type: z.literal('user.turn.commit'),
+  type: z.literal("user.turn.commit"),
   messageId: z.string().optional(),
 });
 
 export const userTurnCancelMessageSchema = z.object({
-  type: z.literal('user.turn.cancel'),
+  type: z.literal("user.turn.cancel"),
   messageId: z.string().optional(),
 });
 
 export const assistantTriggerMessageSchema = z.object({
-  type: z.literal('assistant.trigger'),
+  type: z.literal("assistant.trigger"),
 });
 
 export const assistantInstructionMessageSchema = z.object({
-  type: z.literal('assistant.instruction'),
+  type: z.literal("assistant.instruction"),
   text: z.string(),
-  mode: z.enum(['replace', 'append']),
+  mode: z.enum(["replace", "append"]),
 });
 
 export const visionFrameMessageSchema = z.object({
-  type: z.literal('vision.frame'),
+  type: z.literal("vision.frame"),
   jpegBase64: z.string(),
   capturedAt: z.number(),
 });
 
 export const sessionPingMessageSchema = z.object({
-  type: z.literal('session.ping'),
+  type: z.literal("session.ping"),
 });
 
 export const sessionEndMessageSchema = z.object({
-  type: z.literal('session.end'),
+  type: z.literal("session.end"),
 });
 
-export const clientMessageSchema = z.discriminatedUnion('type', [
+export const clientMessageSchema = z.discriminatedUnion("type", [
   sessionStartMessageSchema,
   sessionUpdateMessageSchema,
   userTextMessageSchema,
@@ -99,10 +99,10 @@ export const clientMessageSchema = z.discriminatedUnion('type', [
 
 export type ClientMessage = z.infer<typeof clientMessageSchema>;
 
-export const transcriptRoleSchema = z.enum(['user', 'assistant']);
+export const transcriptRoleSchema = z.enum(["user", "assistant"]);
 export type TranscriptRole = z.infer<typeof transcriptRoleSchema>;
 
-export const usageStageSchema = z.enum(['stt', 'llm', 'tts', 'vision']);
+export const usageStageSchema = z.enum(["stt", "llm", "tts", "vision"]);
 export type UsageStage = z.infer<typeof usageStageSchema>;
 
 export const usageEventSchema = z
@@ -116,46 +116,46 @@ export const usageEventSchema = z
 export type UsageEventPayload = z.infer<typeof usageEventSchema>;
 
 export const sessionReadyMessageSchema = z.object({
-  type: z.literal('session.ready'),
+  type: z.literal("session.ready"),
   sessionId: z.string(),
   mode: conversationModeSchema,
   voice: aiVoiceSchema,
   voiceEnabled: z.boolean(),
-  micMuted: z.boolean(),
+  micEnabled: z.boolean(),
 });
 
 export const transcriptDeltaMessageSchema = z.object({
-  type: z.literal('transcript.delta'),
+  type: z.literal("transcript.delta"),
   messageId: z.string(),
   role: transcriptRoleSchema,
   delta: z.string(),
 });
 
 export const transcriptDoneMessageSchema = z.object({
-  type: z.literal('transcript.done'),
+  type: z.literal("transcript.done"),
   messageId: z.string(),
   role: transcriptRoleSchema,
   text: z.string(),
 });
 
 export const userSpeakingMessageSchema = z.object({
-  type: z.literal('user.speaking'),
+  type: z.literal("user.speaking"),
   active: z.boolean(),
 });
 
 export const assistantSpeakingMessageSchema = z.object({
-  type: z.literal('assistant.speaking'),
+  type: z.literal("assistant.speaking"),
   active: z.boolean(),
 });
 
 export const messageOrderMessageSchema = z.object({
-  type: z.literal('message.order'),
+  type: z.literal("message.order"),
   previousId: z.string(),
   nextId: z.string(),
 });
 
 export const usageMessageSchema = z.object({
-  type: z.literal('usage'),
+  type: z.literal("usage"),
   usageId: z.string(),
   stage: usageStageSchema,
   model: z.string(),
@@ -165,25 +165,25 @@ export const usageMessageSchema = z.object({
 });
 
 export const errorMessageSchema = z.object({
-  type: z.literal('error'),
+  type: z.literal("error"),
   code: z.string(),
   message: z.string(),
   fatal: z.boolean().optional(),
 });
 
 export const sessionPongMessageSchema = z.object({
-  type: z.literal('session.pong'),
+  type: z.literal("session.pong"),
 });
 
 export const sessionEndedMessageSchema = z.object({
-  type: z.literal('session.ended'),
+  type: z.literal("session.ended"),
 });
 
 export const assistantInterruptedMessageSchema = z.object({
-  type: z.literal('assistant.interrupted'),
+  type: z.literal("assistant.interrupted"),
 });
 
-export const serverMessageSchema = z.discriminatedUnion('type', [
+export const serverMessageSchema = z.discriminatedUnion("type", [
   sessionReadyMessageSchema,
   transcriptDeltaMessageSchema,
   transcriptDoneMessageSchema,
@@ -202,7 +202,7 @@ export type ServerMessage = z.infer<typeof serverMessageSchema>;
 export class ProtocolError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'ProtocolError';
+    this.name = "ProtocolError";
   }
 }
 
