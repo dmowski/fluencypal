@@ -54,6 +54,7 @@ export const useTalkSession = ({
 
   const greetingSentRef = useRef(false);
   const stopCallRef = useRef<(() => Promise<void>) | null>(null);
+  const autoStartRef = useRef(false);
 
   const setSessionStatus = useCallback((text: string, tone: StatusTone) => {
     setSessionStatusText(text);
@@ -287,6 +288,17 @@ export const useTalkSession = ({
     return () => window.removeEventListener("pagehide", endSessionOnPageLeave);
   }, [disconnectClient, isClientConnected]);
 
+  const scheduleAutoStart = useCallback(() => {
+    autoStartRef.current = true;
+  }, []);
+
+  const onSessionReady = useCallback(() => {
+    if (autoStartRef.current) {
+      autoStartRef.current = false;
+      void startCall();
+    }
+  }, [startCall]);
+
   return {
     sessionStatusText,
     sessionStatusTone,
@@ -302,6 +314,8 @@ export const useTalkSession = ({
     handleSignOutCleanup,
     handleMicEnabledChange,
     handleVoiceEnabledChange,
+    scheduleAutoStart,
+    onSessionReady,
     startCall,
     stopCall,
     startPushToTalk,

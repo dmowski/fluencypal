@@ -17,6 +17,7 @@ type TalkSessionBridge = {
   enableMicAfterAssistantOutput: () => Promise<void>;
   setSessionStatus: (text: string, tone: StatusTone) => void;
   onSessionReadyMic: () => Promise<boolean>;
+  onSessionReady: () => void;
 };
 
 export const useConversation = (signedIn: boolean) => {
@@ -29,6 +30,7 @@ export const useConversation = (signedIn: boolean) => {
     enableMicAfterAssistantOutput: async () => {},
     setSessionStatus: () => {},
     onSessionReadyMic: async () => false,
+    onSessionReady: () => {},
   });
 
   const { getClient, disconnectClient, isClientConnected } = useRealtimeClient({
@@ -41,6 +43,7 @@ export const useConversation = (signedIn: boolean) => {
       } else {
         void bridgeRef.current.onSessionReadyMic();
       }
+      bridgeRef.current.onSessionReady();
     },
     onTranscriptDelta: transcript.appendTranscriptDelta,
     onTranscriptDone: transcript.upsertTranscript,
@@ -76,6 +79,7 @@ export const useConversation = (signedIn: boolean) => {
     enableMicAfterAssistantOutput: talk.enableMicAfterAssistantOutput,
     setSessionStatus: talk.setSessionStatus,
     onSessionReadyMic: microphone.prepareMicrophone,
+    onSessionReady: talk.onSessionReady,
   };
 
   const syncDebugContext = useCallback(() => {
@@ -142,6 +146,10 @@ export const useConversation = (signedIn: boolean) => {
     handleConnect: talk.handleConnect,
     handleDisconnect: talk.handleDisconnect,
     handleSignOutCleanup: talk.handleSignOutCleanup,
+    handleStartCall: async () => {
+      talk.scheduleAutoStart();
+      await talk.handleConnect();
+    },
     handleMicEnabledChange: talk.handleMicEnabledChange,
     handleVoiceEnabledChange: talk.handleVoiceEnabledChange,
     startCall: talk.startCall,
