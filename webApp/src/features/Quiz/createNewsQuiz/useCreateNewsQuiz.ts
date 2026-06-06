@@ -70,7 +70,6 @@ export const useCreateNewsQuiz = () => {
         input,
         sections: aiSections,
         textAi,
-        imageDescription,
       });
 
       if (includePictureSection && imageDescription) {

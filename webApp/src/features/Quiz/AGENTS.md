@@ -63,10 +63,7 @@ Both definition and progress live in one Firestore document: `UserQuizRecord`.
 
 **No learner profile / aiUserInfo** is passed into generation.
 
-### Caching
-
-- AI draft JSON: `localStorage` space `quiz-generation-cache-v1`, key from `buildNewsQuizCacheKey` (includes vision description hash)
-- Existing Firestore doc always wins — no re-generation
+Existing Firestore quiz doc is returned as-is; generation runs only when no doc exists for that `quizId`.
 
 ## API
 
