@@ -24,8 +24,10 @@ describe('preprocessNewsQuizDraft', () => {
               type: 'multiple-choice',
               promptText: 'hello',
               direction: 'target-to-native',
-              options: [{ label: 'cześć' }, { label: 'dobry' }],
-              correctOptionLabel: 'cześć',
+              options: [
+                { label: 'cześć', isCorrect: true },
+                { label: 'dobry', isCorrect: false },
+              ],
             },
           ],
         },
@@ -37,5 +39,40 @@ describe('preprocessNewsQuizDraft', () => {
     expect(result.sections[0].type).toBe('word-translation');
     expect(result.sections[0].questions[0]).not.toHaveProperty('type');
     expect(result.sections[0].questions[0].promptText).toBe('hello');
+    expect(result.sections[0].questions[0].options).toEqual([
+      { label: 'cześć', isCorrect: true },
+      { label: 'dobry', isCorrect: false },
+    ]);
+  });
+
+  it('migrates legacy correctOptionLabel and strips option ids', () => {
+    const raw = {
+      meta: { title: 'Quiz' },
+      sections: [
+        {
+          type: 'listening',
+          title: 'Listening',
+          questions: [
+            {
+              audioText: 'Test audio',
+              questionText: 'Test question?',
+              options: [
+                { id: 'legacy-0', label: 'Wrong' },
+                { id: 'legacy-1', label: 'Right' },
+              ],
+              correctOptionLabel: 'Right',
+            },
+          ],
+        },
+      ],
+      examEvaluation: { instruction: 'Summarize.' },
+    };
+
+    const result = preprocessNewsQuizDraft(raw) as typeof raw;
+    expect(result.sections[0].questions[0].options).toEqual([
+      { label: 'Wrong', isCorrect: false },
+      { label: 'Right', isCorrect: true },
+    ]);
+    expect(result.sections[0].questions[0]).not.toHaveProperty('correctOptionLabel');
   });
 });

@@ -1,9 +1,19 @@
 import { z } from 'zod';
 import { QuizQuestionType } from '../types';
+import { normalizeDraftOptions } from './normalizeDraftOptions';
 
 const optionSchema = z.object({
   label: z.string(),
+  isCorrect: z.boolean(),
 });
+
+const multipleChoiceOptionsSchema = z
+  .array(optionSchema)
+  .min(2)
+  .max(6)
+  .refine((options) => options.filter((option) => option.isCorrect).length === 1, {
+    message: 'Exactly one option must have isCorrect: true',
+  });
 
 const evaluationSchema = z.object({
   instruction: z.string(),
@@ -16,8 +26,7 @@ const evaluationSchema = z.object({
 const wordTranslationQuestionBodySchema = z.object({
   promptText: z.string(),
   direction: z.enum(['target-to-native', 'native-to-target']),
-  options: z.array(optionSchema).min(2).max(6),
-  correctOptionLabel: z.string(),
+  options: multipleChoiceOptionsSchema,
 });
 
 const fillGapSegmentSchema = z.discriminatedUnion('kind', [
@@ -30,8 +39,7 @@ const fillGapQuestionBodySchema = z.object({
   gaps: z.record(
     z.string(),
     z.object({
-      options: z.array(optionSchema).min(2).max(6),
-      correctOptionLabel: z.string(),
+      options: multipleChoiceOptionsSchema,
     }),
   ),
 });
@@ -39,15 +47,13 @@ const fillGapQuestionBodySchema = z.object({
 const readAndAnswerQuestionBodySchema = z.object({
   passageText: z.string(),
   questionText: z.string(),
-  options: z.array(optionSchema).min(2).max(6),
-  correctOptionLabel: z.string(),
+  options: multipleChoiceOptionsSchema,
 });
 
 const listeningQuestionBodySchema = z.object({
   audioText: z.string(),
   questionText: z.string(),
-  options: z.array(optionSchema).min(2).max(6),
-  correctOptionLabel: z.string(),
+  options: multipleChoiceOptionsSchema,
 });
 
 const describePictureQuestionBodySchema = z.object({
@@ -136,8 +142,36 @@ export const normalizeSectionType = (value: unknown): QuizQuestionType | null =>
   return SECTION_TYPE_ALIASES[normalized] ?? null;
 };
 
+const normalizeQuestionDraft = (question: Record<string, unknown>): Record<string, unknown> => {
+  const { type: _questionType, correctOptionLabel, options, gaps, ...rest } = question;
+  const next: Record<string, unknown> = { ...rest };
+
+  if (options !== undefined) {
+    next.options = normalizeDraftOptions(options, correctOptionLabel) ?? options;
+  }
+
+  if (gaps && typeof gaps === 'object') {
+    next.gaps = Object.fromEntries(
+      Object.entries(gaps as Record<string, unknown>).map(([gapKey, gapValue]) => {
+        if (!gapValue || typeof gapValue !== 'object') return [gapKey, gapValue];
+        const gap = gapValue as Record<string, unknown>;
+        const { correctOptionLabel: gapCorrectLabel, options: gapOptions, ...gapRest } = gap;
+        return [
+          gapKey,
+          {
+            ...gapRest,
+            options: normalizeDraftOptions(gapOptions, gapCorrectLabel) ?? gapOptions,
+          },
+        ];
+      }),
+    );
+  }
+
+  return next;
+};
+
 /**
- * Strips per-question `type` (common AI mistake) and normalizes section.type aliases
+ * Strips per-question `type`, option ids, and legacy correctOptionLabel fields
  * before Zod validation.
  */
 export const preprocessNewsQuizDraft = (raw: unknown): unknown => {
@@ -154,8 +188,7 @@ export const preprocessNewsQuizDraft = (raw: unknown): unknown => {
     const questions = Array.isArray(s.questions)
       ? s.questions.map((question) => {
           if (!question || typeof question !== 'object') return question;
-          const { type: _questionType, ...rest } = question as Record<string, unknown>;
-          return rest;
+          return normalizeQuestionDraft(question as Record<string, unknown>);
         })
       : s.questions;
 

@@ -39,7 +39,7 @@ describe('buildDescribePictureSection', () => {
             {
               segments: [{ kind: 'text' as const, text: 'Hi' }],
               gaps: {
-                g1: { options: [{ label: 'a' }], correctOptionLabel: 'a' },
+                g1: { options: [{ label: 'a', isCorrect: true }] },
               },
             },
           ],

@@ -9,15 +9,17 @@ const COMPLEXITY_GUIDANCE: Record<NewsLanguageComplexity, string> = {
   advance: 'CEFR C1: advanced vocabulary; nuanced comprehension.',
 };
 
+const MC_OPTION_SHAPE = '{ "label": "...", "isCorrect": false }';
+
 const QUESTION_SHAPE_BY_SECTION: Record<string, string> = {
   'word-translation':
-    '{ "promptText": "...", "direction": "target-to-native" | "native-to-target", "options": [{"label":"..."}], "correctOptionLabel": "exact match to one option label" }',
+    `{ "promptText": "...", "direction": "target-to-native" | "native-to-target", "options": [${MC_OPTION_SHAPE}] }`,
   'fill-gap':
-    '{ "segments": [{"kind":"text","text":"..."},{"kind":"gap","gapKey":"g1"}], "gaps": { "g1": { "options": [{"label":"..."}], "correctOptionLabel": "..." } } }',
+    `{ "segments": [{"kind":"text","text":"..."},{"kind":"gap","gapKey":"g1"}], "gaps": { "g1": { "options": [${MC_OPTION_SHAPE}] } } }`,
   'read-and-answer':
-    '{ "passageText": "...", "questionText": "...", "options": [{"label":"..."}], "correctOptionLabel": "..." }',
+    `{ "passageText": "...", "questionText": "...", "options": [${MC_OPTION_SHAPE}] }`,
   listening:
-    '{ "audioText": "...", "questionText": "...", "options": [{"label":"..."}], "correctOptionLabel": "..." }',
+    `{ "audioText": "...", "questionText": "...", "options": [${MC_OPTION_SHAPE}] }`,
   'describe-picture-voice':
     '{ "promptText": "...", "minWords": 10, "evaluation": { "instruction": "how to grade the spoken answer" } }',
 };
@@ -30,7 +32,7 @@ CRITICAL structure rules:
 2. Questions inside a section do NOT have a "type" field. The section type defines the question shape.
 3. Use the exact section type strings above (kebab-case, lowercase).
 4. Each section must contain EXACTLY the requested number of questions.
-5. Multiple-choice: exactly 4 options, ONE correct. "correctOptionLabel" must match one option "label" exactly (case-sensitive).
+5. Multiple-choice: exactly 4 options, each with "label" and "isCorrect". Exactly ONE option must have "isCorrect": true; the other three must have "isCorrect": false.
 6. Passages, gap text, listening audioText, and read-and-answer content use the TARGET learning language. word-translation uses direction-specific languages (see user message).
 
 Per-section question shapes (no "type" on questions):

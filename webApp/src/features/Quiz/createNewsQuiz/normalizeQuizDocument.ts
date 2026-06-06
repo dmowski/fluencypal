@@ -14,6 +14,7 @@ import { buildNewsQuizId } from '../buildNewsQuizId';
 import { NewsQuizDraft, NewsQuizQuestion, NewsQuizSection } from './newsQuizSchema';
 import { resolveIncludedSections } from './resolveIncludedSections';
 import { isValidWordTranslationQuestion } from './isValidWordTranslationQuestion';
+import { resolveCorrectOptionIdFromDraft } from './normalizeDraftOptions';
 
 const slug = (value: string) =>
   value
@@ -22,17 +23,11 @@ const slug = (value: string) =>
     .replace(/^-|-$/g, '')
     .slice(0, 40);
 
-const assignOptionIds = (options: { label: string }[], prefix: string): QuizOption[] =>
-  options.map((opt, index) => ({
-    id: `${prefix}-opt-${index}`,
-    label: opt.label.trim(),
-  }));
-
-const resolveCorrectOptionId = (options: QuizOption[], correctLabel: string): string => {
-  const normalized = correctLabel.trim().toLowerCase();
-  const match = options.find((o) => o.label.trim().toLowerCase() === normalized);
-  return match?.id ?? options[0]?.id ?? '';
-};
+const normalizeMultipleChoiceOptions = (
+  draftOptions: { label: string; isCorrect: boolean }[],
+  prefix: string,
+): { options: QuizOption[]; correctOptionId: string } | null =>
+  resolveCorrectOptionIdFromDraft(draftOptions, prefix);
 
 const normalizeQuestion = (
   raw: NewsQuizQuestion,
@@ -45,14 +40,16 @@ const normalizeQuestion = (
   const qId = `q-${sectionIndex}-${questionIndex}`;
 
   if (sectionType === 'word-translation' && 'promptText' in raw && 'direction' in raw) {
-    const options = assignOptionIds(raw.options, qId);
+    const resolved = normalizeMultipleChoiceOptions(raw.options, qId);
+    if (!resolved) return null;
+
     const question = {
       type: 'word-translation' as const,
       id: qId,
       promptText: raw.promptText,
       direction: raw.direction,
-      options,
-      correctOptionId: resolveCorrectOptionId(options, raw.correctOptionLabel),
+      options: resolved.options,
+      correctOptionId: resolved.correctOptionId,
     };
 
     if (!isValidWordTranslationQuestion(question)) {
@@ -67,10 +64,11 @@ const normalizeQuestion = (
 
     for (const [gapKey, gapDef] of Object.entries(raw.gaps)) {
       const gapId = `${qId}-gap-${slug(gapKey)}`;
-      const options = assignOptionIds(gapDef.options, gapId);
+      const resolved = normalizeMultipleChoiceOptions(gapDef.options, gapId);
+      if (!resolved) return null;
       gaps[gapId] = {
-        options,
-        correctOptionId: resolveCorrectOptionId(options, gapDef.correctOptionLabel),
+        options: resolved.options,
+        correctOptionId: resolved.correctOptionId,
       };
     }
 
@@ -87,26 +85,30 @@ const normalizeQuestion = (
   }
 
   if (sectionType === 'read-and-answer' && 'passageText' in raw) {
-    const options = assignOptionIds(raw.options, qId);
+    const resolved = normalizeMultipleChoiceOptions(raw.options, qId);
+    if (!resolved) return null;
+
     return {
       type: 'read-and-answer',
       id: qId,
       passageText: raw.passageText,
       questionText: raw.questionText,
-      options,
-      correctOptionId: resolveCorrectOptionId(options, raw.correctOptionLabel),
+      options: resolved.options,
+      correctOptionId: resolved.correctOptionId,
     };
   }
 
   if (sectionType === 'listening' && 'audioText' in raw) {
-    const options = assignOptionIds(raw.options, qId);
+    const resolved = normalizeMultipleChoiceOptions(raw.options, qId);
+    if (!resolved) return null;
+
     return {
       type: 'listening',
       id: qId,
       audioText: raw.audioText,
       questionText: raw.questionText,
-      options,
-      correctOptionId: resolveCorrectOptionId(options, raw.correctOptionLabel),
+      options: resolved.options,
+      correctOptionId: resolved.correctOptionId,
     };
   }
 

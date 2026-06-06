@@ -78,7 +78,7 @@ Existing Firestore quiz docs skip generation; `ensureNewsQuiz` returns the cache
 2. If article has `imageUrl` → `POST /api/quiz/describeImage` (OpenAI vision, `gpt-4o`)
 3. AI generates JSON for non-speaking sections only (`generateNewsQuizDraft`)
 4. Speaking section appended deterministically from vision text (`buildDescribePictureSection`)
-5. Normalize ids/options (`normalizeQuizDocument`) → `setDoc`
+5. Normalize ids/options (`normalizeQuizDocument`) — AI marks `isCorrect` per option; ids assigned by index → `setDoc`
 
 **No learner profile / aiUserInfo** is passed into generation.
 
