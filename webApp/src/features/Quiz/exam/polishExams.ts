@@ -1,6 +1,8 @@
 import { buildManualExamSections } from './buildManualExamSections';
 import { buildManualExamDocument } from './buildManualExamDocument';
 import { ExamCefrLevel } from './examLevelConfig';
+
+type PolishExamLevel = Exclude<ExamCefrLevel, 'c1'>;
 import { POLISH_EXAM_SPEAKING_IMAGES } from './examSpeakingImages';
 import {
   getPolishGrammarContent,
@@ -8,13 +10,13 @@ import {
   POLISH_READING_PASSAGES,
 } from './polishExamContent';
 
-const POLISH_LEVEL_LABELS: Record<ExamCefrLevel, string> = {
+const POLISH_LEVEL_LABELS: Record<PolishExamLevel, string> = {
   a2: 'Polish A2 exam',
   b1: 'Polish B1 exam',
   b2: 'Polish B2 exam',
 };
 
-const buildPolishExam = (level: ExamCefrLevel) => {
+const buildPolishExam = (level: PolishExamLevel) => {
   const label = POLISH_LEVEL_LABELS[level];
   const sections = buildManualExamSections({
     targetLanguageCode: 'pl',

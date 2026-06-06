@@ -1,4 +1,4 @@
-export type ExamCefrLevel = 'a2' | 'b1' | 'b2';
+export type ExamCefrLevel = 'a2' | 'b1' | 'b2' | 'c1';
 
 export interface ExamLevelConfig {
   estimatedMinutes: number;
@@ -33,6 +33,14 @@ export const EXAM_LEVEL_CONFIG: Record<ExamCefrLevel, ExamLevelConfig> = {
     grammarCount: 10,
     speakingCount: 5,
     speakingMinWords: 35,
+  },
+  c1: {
+    estimatedMinutes: 70,
+    readingCount: 10,
+    listeningCount: 10,
+    grammarCount: 12,
+    speakingCount: 5,
+    speakingMinWords: 45,
   },
 };
 

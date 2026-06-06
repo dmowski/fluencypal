@@ -7,6 +7,7 @@ import {
   isWordTranslationQuestion,
 } from '../types';
 import { ENGLISH_B2_EXAM } from './englishB2Exam';
+import { ENGLISH_C1_EXAM } from './englishC1Exam';
 import { EXAM_LEVEL_CONFIG } from './examLevelConfig';
 import {
   EXAM_CATALOG,
@@ -45,9 +46,9 @@ const validateExamStructure = (exam: typeof ENGLISH_B2_EXAM) => {
 };
 
 describe('manual exams', () => {
-  it('registers English B2 and three Polish levels', () => {
-    expect(EXAM_CATALOG).toHaveLength(4);
-    expect(getManualExamsForTargetLanguage('en')).toHaveLength(1);
+  it('registers English B2, C1, and three Polish levels', () => {
+    expect(EXAM_CATALOG).toHaveLength(5);
+    expect(getManualExamsForTargetLanguage('en')).toHaveLength(2);
     expect(getManualExamsForTargetLanguage('pl')).toHaveLength(3);
     expect(getManualExamsForTargetLanguage('de')).toHaveLength(0);
   });
@@ -55,6 +56,7 @@ describe('manual exams', () => {
   it('filters dashboard catalog by target language', () => {
     expect(getExamCatalogForTargetLanguage('en').map((exam) => exam.title)).toEqual([
       'English B2 exam',
+      'English C1 exam',
     ]);
     expect(getExamCatalogForTargetLanguage('pl').map((exam) => exam.title)).toEqual([
       'Polish A2 exam',
@@ -72,10 +74,17 @@ describe('manual exams', () => {
     expect(POLISH_B2_EXAM.meta.estimatedMinutes).toBe(EXAM_LEVEL_CONFIG.b2.estimatedMinutes);
   });
 
+  it('sizes English C1 exam by CEFR level', () => {
+    expect(getTotalQuestions(ENGLISH_C1_EXAM)).toBe(37);
+    expect(ENGLISH_C1_EXAM.meta.estimatedMinutes).toBe(EXAM_LEVEL_CONFIG.c1.estimatedMinutes);
+  });
+
   it('keeps English and Polish exams language-specific', () => {
     expect(ENGLISH_B2_EXAM.meta.targetLanguageCode).toBe('en');
+    expect(ENGLISH_C1_EXAM.meta.targetLanguageCode).toBe('en');
     expect(POLISH_B2_EXAM.meta.targetLanguageCode).toBe('pl');
     validateExamStructure(ENGLISH_B2_EXAM);
+    validateExamStructure(ENGLISH_C1_EXAM);
     validateExamStructure(POLISH_B2_EXAM);
   });
 });
