@@ -75,6 +75,7 @@ export const QuizOptionList = ({
             textAlign: 'left',
             padding: '12px 16px',
             fontWeight: 500,
+            fontSize: '18px',
             cursor: isRevealed ? 'default' : undefined,
             ...(isRevealed
               ? getRevealedOptionSx(isSelected, isCorrect)
