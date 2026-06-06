@@ -129,6 +129,8 @@ export interface ListeningQuestion extends QuizQuestionBase {
 export interface DescribePictureVoiceQuestion extends QuizQuestionBase {
   type: 'describe-picture-voice';
   imageUrl: string;
+  /** Vision-model summary of what the image shows; used when grading voice answers. */
+  imageDescription: string;
   promptText: string;
   minWords?: number;
   maxWords?: number;
@@ -160,8 +162,6 @@ export interface QuizMeta {
   description?: string;
   targetLanguageCode: SupportedLanguage;
   nativeLanguageCode: NativeLangCode | null;
-  /** Optional extra context passed into generation / evaluation prompts. */
-  additionalQuizContext?: string;
   /** Estimated duration in minutes (AI hint or manual). */
   estimatedMinutes?: number;
 }
@@ -284,6 +284,9 @@ export interface UserQuizRecord {
 /** How many questions the generator produces per activity-type section. */
 export const NEWS_QUIZ_QUESTIONS_PER_TYPE = 3;
 
+/** Speaking section uses a single vision-grounded question. */
+export const NEWS_QUIZ_PICTURE_QUESTIONS = 1;
+
 export interface CreateNewsQuizInput {
   newsId: string;
   title: string;
@@ -293,8 +296,6 @@ export interface CreateNewsQuizInput {
   nativeLanguageCode: NativeLangCode | null;
   /** News article image; when absent, `describe-picture-voice` section is omitted. */
   imageUrl: string | null;
-  /** Optional free-form context for generation prompts (e.g. from aiUserInfo). */
-  additionalQuizContext?: string;
 }
 
 /** Shape returned by AI before post-processing (ids may be omitted). */

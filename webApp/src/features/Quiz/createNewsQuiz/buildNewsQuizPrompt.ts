@@ -45,7 +45,7 @@ Content rules:
 - fill-gap: 1–2 gaps per question; every gapKey in segments must exist in gaps.
 - read-and-answer: passage excerpt from the article (2–4 sentences).
 - listening: audioText is read aloud (1–3 sentences); question tests comprehension.
-- describe-picture-voice: prompt user to describe the news image in the target language.
+- describe-picture-voice: handled outside this request (vision API builds the single speaking question).
 - examEvaluation.instruction: how to summarize overall performance.
 - Default passingScorePercent: 70.`;
 
@@ -56,7 +56,6 @@ export const buildNewsQuizUserPrompt = (input: {
   targetLanguageCode: SupportedLanguage;
   nativeLanguageCode: NativeLangCode | null;
   sections: QuizSectionSpec[];
-  additionalQuizContext?: string;
 }): string => {
   const targetLang = fullLanguageName[input.targetLanguageCode] || input.targetLanguageCode;
   const nativeLang = input.nativeLanguageCode
@@ -69,10 +68,6 @@ export const buildNewsQuizUserPrompt = (input: {
         `- section.type: "${s.type}", title: "${s.title}", questions count: ${s.questionCount}`,
     )
     .join('\n');
-
-  const contextBlock = input.additionalQuizContext
-    ? `\nAdditional context about the learner:\n${input.additionalQuizContext}\n`
-    : '';
 
   const exampleSection = input.sections[0];
   const exampleBlock = exampleSection
@@ -92,7 +87,7 @@ Article title: ${input.title}
 Target language (user is learning): ${targetLang} (${input.targetLanguageCode})
 Native language: ${nativeLang}
 Complexity: ${input.complexity} — ${COMPLEXITY_GUIDANCE[input.complexity]}
-${contextBlock}
+
 Sections to generate:
 ${sectionLines}
 ${exampleBlock}

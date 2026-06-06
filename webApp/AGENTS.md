@@ -93,12 +93,12 @@ full Playwright e2e is overkill.
 
 ## Quiz
 
-News-linked quizzes live in `src/features/Quiz/`:
+News-linked quizzes in `src/features/Quiz/`:
 
-- URL: `quizId` query param via `useQuizModal`
-- Firestore: `users/{userId}/quizzes/{quizId}` (`UserQuizRecord`)
-- MVP entry: **Take quiz** in `NewsModal` after article content loads
-- See `src/features/Quiz/AGENTS.md` for hooks, activity types, and validation commands
+- Entry: **Take quiz** in `NewsModal`
+- URL: `quizId` via `useQuizModal`; Firestore: `users/{userId}/quizzes/{quizId}`
+- Generation: AI for MC/reading sections; OpenAI vision via `POST /api/quiz/describeImage` for the single speaking question
+- Full architecture: `src/features/Quiz/AGENTS.md`
 
 ## Daily Tasks
 

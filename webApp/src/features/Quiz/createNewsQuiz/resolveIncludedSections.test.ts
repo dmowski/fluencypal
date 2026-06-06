@@ -15,7 +15,10 @@ describe('resolveIncludedSections', () => {
       'listening',
       'describe-picture-voice',
     ]);
-    expect(sections.every((s) => s.questionCount === 3)).toBe(true);
+    expect(sections.find((s) => s.type === 'describe-picture-voice')?.questionCount).toBe(1);
+    expect(
+      sections.filter((s) => s.type !== 'describe-picture-voice').every((s) => s.questionCount === 3),
+    ).toBe(true);
   });
 
   it('omits word-translation when native matches target', () => {

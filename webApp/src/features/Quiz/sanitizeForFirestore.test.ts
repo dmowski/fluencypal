@@ -5,7 +5,7 @@ describe('sanitizeForFirestore', () => {
     const input = {
       meta: {
         title: 'Quiz',
-        additionalQuizContext: undefined,
+        description: undefined,
         nested: { keep: 'yes', drop: undefined },
       },
       list: [{ ok: 1, missing: undefined }],

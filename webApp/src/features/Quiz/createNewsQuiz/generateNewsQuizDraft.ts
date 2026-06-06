@@ -12,12 +12,14 @@ export const generateNewsQuizDraft = async ({
   input,
   sections,
   textAi,
+  imageDescription,
 }: {
   input: CreateNewsQuizInput;
   sections: QuizSectionSpec[];
   textAi: TextAiContextType;
+  imageDescription?: string | null;
 }): Promise<NewsQuizDraft> => {
-  const cacheKey = buildNewsQuizCacheKey(input, sections);
+  const cacheKey = buildNewsQuizCacheKey(input, sections, imageDescription);
   const cachedRaw = await getDataFromCache({
     inputValue: cacheKey,
     storageSpace: QUIZ_GENERATION_CACHE_STORAGE,

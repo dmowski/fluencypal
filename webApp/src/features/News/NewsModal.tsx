@@ -33,7 +33,6 @@ import { buildNewsQuizId } from '../Quiz/buildNewsQuizId';
 import { useCreateNewsQuiz } from '../Quiz/createNewsQuiz/useCreateNewsQuiz';
 import { useQuizModal } from '../Quiz/useQuizModal';
 import { SupportedLanguage } from '../Lang/lang';
-import { useAiUserInfo } from '../User/useAiUserInfo';
 
 const NEWS_READ_THRESHOLD_MS = 30_000;
 
@@ -88,7 +87,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const [isQuizStarting, setIsQuizStarting] = useState(false);
   const quizModal = useQuizModal();
   const { ensureNewsQuiz } = useCreateNewsQuiz();
-  const aiUserInfo = useAiUserInfo();
   const requestedKeyRef = useRef<string | null>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
@@ -231,7 +229,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
     setIsQuizStarting(true);
     try {
       const targetLanguageCode = (item.languageCode || settings.languageCode || 'en') as SupportedLanguage;
-      const learnerContext = aiUserInfo.advancedUserRecords?.trim();
       await ensureNewsQuiz({
         newsId: item.id,
         title: item.title,
@@ -240,7 +237,6 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
         targetLanguageCode,
         nativeLanguageCode: settings.userSettings?.nativeLanguageCode ?? null,
         imageUrl: item.imageUrl ?? null,
-        additionalQuizContext: learnerContext || undefined,
       });
       quizModal.openQuiz(buildNewsQuizId(item.id, complexity, targetLanguageCode));
     } catch (error) {

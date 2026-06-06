@@ -117,6 +117,9 @@ Respond in markdown. Include:
 - feedback: 2-4 sentences for the learner`,
   userMessage: `Question: ${question.promptText}
 
+What the image actually shows:
+${question.imageDescription}
+
 Learner answer (transcription):
 ${transcription}`,
 });

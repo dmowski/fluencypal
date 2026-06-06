@@ -39,6 +39,7 @@ const normalizeQuestion = (
   sectionIndex: number,
   questionIndex: number,
   imageUrl: string | null,
+  imageDescription: string | null,
 ): QuizQuestion | null => {
   const qId = `q-${sectionIndex}-${questionIndex}`;
 
@@ -106,12 +107,14 @@ const normalizeQuestion = (
     sectionType === 'describe-picture-voice' &&
     'promptText' in raw &&
     'evaluation' in raw &&
-    imageUrl
+    imageUrl &&
+    imageDescription
   ) {
     return {
       type: 'describe-picture-voice',
       id: qId,
       imageUrl,
+      imageDescription,
       promptText: raw.promptText,
       minWords: raw.minWords ?? 10,
       maxWords: raw.maxWords ?? 120,
@@ -126,10 +129,11 @@ const normalizeSection = (
   raw: NewsQuizSection,
   sectionIndex: number,
   imageUrl: string | null,
+  imageDescription: string | null,
 ): QuizSection | null => {
   const sectionId = `section-${sectionIndex}-${slug(raw.type)}`;
   const questions = raw.questions
-    .map((q, qi) => normalizeQuestion(q, raw.type, sectionIndex, qi, imageUrl))
+    .map((q, qi) => normalizeQuestion(q, raw.type, sectionIndex, qi, imageUrl, imageDescription))
     .filter((q): q is QuizQuestion => q !== null);
 
   if (questions.length === 0) return null;
@@ -145,6 +149,7 @@ const normalizeSection = (
 export const normalizeQuizDocument = (
   draft: NewsQuizDraft,
   input: CreateNewsQuizInput,
+  imageDescription: string | null = null,
 ): QuizDocument => {
   const quizId = buildNewsQuizId(input.newsId, input.complexity, input.targetLanguageCode);
   const includedTypes = new Set(
@@ -158,7 +163,9 @@ export const normalizeQuizDocument = (
 
   const sections = draft.sections
     .filter((section) => includedTypes.has(section.type))
-    .map((section, index) => normalizeSection(section, index, input.imageUrl))
+    .map((section, index) =>
+      normalizeSection(section, index, input.imageUrl, imageDescription),
+    )
     .filter((s): s is QuizSection => s !== null);
 
   const now = new Date().toISOString();
@@ -175,7 +182,6 @@ export const normalizeQuizDocument = (
       description: draft.meta.description,
       targetLanguageCode: input.targetLanguageCode,
       nativeLanguageCode: input.nativeLanguageCode,
-      additionalQuizContext: input.additionalQuizContext,
       estimatedMinutes: draft.meta.estimatedMinutes,
     },
     sections,

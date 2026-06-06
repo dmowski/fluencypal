@@ -7,6 +7,7 @@ export const QUIZ_GENERATION_CACHE_STORAGE = 'quiz-generation-cache-v1';
 export const buildNewsQuizCacheKey = (
   input: CreateNewsQuizInput,
   sections: QuizSectionSpec[],
+  imageDescription?: string | null,
 ): string =>
   [
     'news-quiz',
@@ -15,7 +16,8 @@ export const buildNewsQuizCacheKey = (
     input.complexity,
     input.targetLanguageCode,
     input.nativeLanguageCode ?? '',
-    input.imageUrl ? 'img' : 'no-img',
+    input.imageUrl ? fnv1aHash(input.imageUrl) : 'no-img',
+    imageDescription ? fnv1aHash(imageDescription) : 'no-vision',
     sections.map((s) => s.type).join(','),
     fnv1aHash(input.content.slice(0, 12000)),
   ].join('|');

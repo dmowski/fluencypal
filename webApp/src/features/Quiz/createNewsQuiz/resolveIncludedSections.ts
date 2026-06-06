@@ -1,6 +1,6 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { NativeLangCode } from '@/libs/language/type';
-import { QuizQuestionType } from '../types';
+import { NEWS_QUIZ_PICTURE_QUESTIONS, QuizQuestionType } from '../types';
 
 export interface QuizSectionSpec {
   type: QuizQuestionType;
@@ -32,6 +32,10 @@ export const resolveIncludedSections = (input: {
     if (spec.type === 'describe-picture-voice' && !input.imageUrl) {
       return [];
     }
-    return [{ ...spec, questionCount: input.questionsPerType }];
+    const questionCount =
+      spec.type === 'describe-picture-voice'
+        ? NEWS_QUIZ_PICTURE_QUESTIONS
+        : input.questionsPerType;
+    return [{ ...spec, questionCount }];
   });
 };
