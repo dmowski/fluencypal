@@ -381,11 +381,6 @@ msgstr "Agregar jugador"
 msgid "Add Post"
 msgstr "Añadir Publicación"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "Añadir grabación a la respuesta"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1628,7 +1623,7 @@ msgstr "Registro"
 msgid "Chinese Learning Plan"
 msgstr "Plan de Aprendizaje de Chino"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Elige una palabra para el espacio en blanco"
@@ -2163,7 +2158,7 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Correcto"
@@ -2204,15 +2199,10 @@ msgstr "Correcciones cuando te quedas atascado"
 msgid "Could not find page"
 msgstr "No se pudo encontrar la página"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "No se pudo cargar el artículo"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "No se pudo iniciar el cuestionario. Por favor, inténtelo de nuevo."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2362,6 +2352,11 @@ msgstr "Crea Tu Propia Escenario"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "Creando su mejora..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "Creando tu cuestionario... Esto generalmente toma alrededor de un minuto."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2964,7 +2959,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "Habla sobre las noticias de hoy con la IA"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "Hablar con IA"
@@ -3506,7 +3501,7 @@ msgstr "Ensayos"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Palabras esenciales para discutir sobre salud mental y psicología."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Evaluando..."
@@ -3794,7 +3789,7 @@ msgstr ""
 "No se pudo eliminar tu cuenta. Por favor, inténtalo de nuevo más tarde o "
 "contacta a los desarrolladores."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Error al generar el cuestionario."
@@ -4521,11 +4516,6 @@ msgstr "Asistente General"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Genera más lecciones únicas"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "Generar cuestionario"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5749,7 +5739,7 @@ msgstr ""
 "senior. Después de responder, recibirás comentarios para ayudarte a refinar "
 "tus respuestas y mejorar tus habilidades en entrevistas."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Incorrecto"
@@ -6468,7 +6458,7 @@ msgstr "Cargando"
 msgid "Loading a word..."
 msgstr "Cargando una palabra..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "Cargando artículo..."
@@ -6478,7 +6468,7 @@ msgstr "Cargando artículo..."
 msgid "Loading library..."
 msgstr "Cargando biblioteca..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Cargando cuestionario..."
@@ -6755,7 +6745,7 @@ msgstr ""
 "navegador, actualiza la página e inténtalo de nuevo."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6966,7 +6956,7 @@ msgstr "Discusión de Noticias"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6974,7 +6964,7 @@ msgstr "Discusión de Noticias"
 msgid "Next"
 msgstr "Siguiente"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "Próximo artículo"
@@ -7639,7 +7629,7 @@ msgstr "Consentimiento Parental"
 msgid "Parental consent submitted!"
 msgstr "¡Consentimiento parental enviado!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Parcialmente correcto"
@@ -7840,7 +7830,7 @@ msgstr "Planificar para"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Jugar"
@@ -8416,11 +8406,6 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Preparando el libro..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "Preparando el cuestionario..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8453,7 +8438,7 @@ msgstr "Anterior"
 msgid "Previous 30 days"
 msgstr "Últimos 30 días"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "Artículo anterior"
@@ -8701,7 +8686,7 @@ msgstr "Cuestionario"
 msgid "Quiz complete"
 msgstr "Cuestionario completado"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Cuestionario no encontrado. Ábrelo desde el artículo de noticias."
@@ -9228,7 +9213,7 @@ msgstr ""
 "contexto estructurado (IDs de correlación) y emite métricas para observar "
 "tasas de error y latencia."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "Reintentar"
@@ -9961,7 +9946,7 @@ msgstr ""
 "Sólidos conocimientos de ASP.NET Core y EF Core. Algunas lagunas en "
 "patrones de resiliencia y observabilidad."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10225,7 +10210,7 @@ msgstr "Iniciar | 5 min"
 msgid "Starting webcam... "
 msgstr "Iniciando la cámara web..."
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "Iniciando..."
@@ -10443,7 +10428,7 @@ msgid "Stupid Interview Mode"
 msgstr "Modo de Entrevista Estúpida"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Enviar"
@@ -10582,7 +10567,7 @@ msgstr "Práctica adaptada a tu marco de referencia y nivel de antigüedad"
 msgid "Tailored to your experience and target role."
 msgstr "Adaptado a tu experiencia y objetivo profesional."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "Realizar prueba"
@@ -10618,21 +10603,10 @@ msgstr "Toque \"Agregar\" en la esquina superior derecha."
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "Toca \"Instalar la aplicación\" o \"Agregar a la pantalla de inicio\"."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "Toque un espacio en blanco para elegir una palabra."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Toque el botón de menú en la esquina superior derecha de Chrome."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "Toca para elegir"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -11028,7 +11002,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "Esta acción es irreversible."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11302,10 +11276,12 @@ msgstr ""
 "No tienes que ser fuerte aquí.  \n"
 "Solo tienes que presentarte."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "Este cuestionario aún no ha sido generado."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr ""
+"Este cuestionario aún no ha sido generado. Ábrelo desde el artículo de "
+"noticias."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11629,6 +11605,11 @@ msgstr "Días de prueba"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Intenta"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "Inténtalo de nuevo"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -12399,7 +12380,7 @@ msgstr "¿Quién debería ser la IA?"
 msgid "Who this is for"
 msgstr "Para quién es esto"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "¿Por qué?"
@@ -13279,17 +13260,3 @@ msgstr "{winnerName} gana!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (por "
-#~ "ejemplo wss://fluencypal-realtime.fly.dev) and reload."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "Establece NEXT_PUBLIC_REALTIME_WS_URL para habilitar."

@@ -378,11 +378,6 @@ msgstr "Tilføj spiller"
 msgid "Add Post"
 msgstr "Tilføj Indlæg"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "Tilføj optagelse til svar"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1618,7 +1613,7 @@ msgstr "Tjek Ind"
 msgid "Chinese Learning Plan"
 msgstr "Kinesisk Læringsplan"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Vælg et ord til det tomme felt"
@@ -2147,7 +2142,7 @@ msgstr "Kernewebvitale"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Korrekt"
@@ -2188,15 +2183,10 @@ msgstr "Retter, når du sidder fast"
 msgid "Could not find page"
 msgstr "Kunne ikke finde side"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Kunne ikke indlæse artikel"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "Kunne ikke starte quizzen. Prøv venligst igen."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2341,6 +2331,11 @@ msgstr "Opret Dit Eget Scenarie"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "Opretter din forbedring..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "Opretter din quiz... Dette tager normalt omkring et minut."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2933,7 +2928,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "Diskuter dagens nyheder med AI'en"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "Diskuter med AI"
@@ -3465,7 +3460,7 @@ msgstr "Essays"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Vigtige ord for at diskutere mental sundhed og psykologi."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Evaluerer..."
@@ -3747,7 +3742,7 @@ msgid ""
 "developers."
 msgstr "Fejlede i at slette din konto. Prøv igen senere, eller kontakt udviklerne."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Mislykkedes i at generere quiz."
@@ -4458,11 +4453,6 @@ msgstr "Generel Assistent"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generer flere unikke lektioner"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "Generer quiz"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5678,7 +5668,7 @@ msgstr ""
 "frontend-roller. Efter at have svaret vil du modtage feedback for at hjælpe "
 "dig med at forfine dine svar og forbedre dine interviewfærdigheder."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Forkert"
@@ -6395,7 +6385,7 @@ msgstr "Indlæser"
 msgid "Loading a word..."
 msgstr "Indlæser et ord..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "Indlæser artikel..."
@@ -6405,7 +6395,7 @@ msgstr "Indlæser artikel..."
 msgid "Loading library..."
 msgstr "Indlæser bibliotek..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Indlæser quiz..."
@@ -6679,7 +6669,7 @@ msgstr ""
 "siden, og prøv igen."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6888,7 +6878,7 @@ msgstr "Nyhedsdiskussion"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6896,7 +6886,7 @@ msgstr "Nyhedsdiskussion"
 msgid "Next"
 msgstr "Næste"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "Næste artikel"
@@ -7559,7 +7549,7 @@ msgstr "Forældresamtykke"
 msgid "Parental consent submitted!"
 msgstr "Forældresamtykke indsendt!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Delvist korrekt"
@@ -7757,7 +7747,7 @@ msgstr "Planlæg for"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Afspil"
@@ -8327,11 +8317,6 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Forbereder bog..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "Forbereder quiz..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8362,7 +8347,7 @@ msgstr "Forrige"
 msgid "Previous 30 days"
 msgstr "Forrige 30 dage"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "Forrige artikel"
@@ -8608,7 +8593,7 @@ msgstr "Quiz"
 msgid "Quiz complete"
 msgstr "Quiz færdig"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Quiz ikke fundet. Åbn det fra nyhedsartiklen."
@@ -9121,7 +9106,7 @@ msgstr ""
 "(korrelations-ID'er) og udsend metrics for at observere fejlrater og "
 "latenstid."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "Prøv igen"
@@ -9852,7 +9837,7 @@ msgstr ""
 "Solid forståelse af ASP.NET Core og EF Core. Nogle mangler inden for "
 "resiliensmønstre og observerbarhed."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10114,7 +10099,7 @@ msgstr "Start | 5 min"
 msgid "Starting webcam... "
 msgstr "Starter webcam... "
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "Starter..."
@@ -10330,7 +10315,7 @@ msgid "Stupid Interview Mode"
 msgstr "Stupid Interview Mode"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Indsend"
@@ -10467,7 +10452,7 @@ msgstr "Skræddersyet praksis til din ramme og dit senioritetsniveau"
 msgid "Tailored to your experience and target role."
 msgstr "Skræddersyet til din erfaring og målrettede rolle."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "Tag quiz"
@@ -10503,21 +10488,10 @@ msgstr "Tryk på \"Tilføj\" i øverste højre hjørne."
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "Tryk på \"Installer app\" eller \"Tilføj til hjemmeskærm\"."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "Tryk på et tomt felt for at vælge et ord."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Tryk på menuknappen i øverste højre hjørne af Chrome."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "Tryk for at vælge"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10907,7 +10881,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "Denne handling kan ikke omgøres."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11181,10 +11155,10 @@ msgstr ""
 "Du behøver ikke at være stærk her.  \n"
 "Du skal bare dukke op."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "Denne quiz er endnu ikke blevet genereret."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "Denne quiz er endnu ikke blevet genereret. Åbn den fra nyhedsartiklen."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11505,6 +11479,11 @@ msgstr "Prøvedage"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Prøv"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "Prøv igen"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -12268,7 +12247,7 @@ msgstr "Hvem skal AI'en være?"
 msgid "Who this is for"
 msgstr "Hvem dette er til"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Hvorfor"
@@ -13127,17 +13106,3 @@ msgstr "{winnerName} vinder!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlydendighedsPal"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "Tilpasset realtid er ikke konfigureret. Indstil NEXT_PUBLIC_REALTIME_WS_URL "
-#~ "(for eksempel wss://fluencypal-realtime.fly.dev) og genindlæs."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "Indstil NEXT_PUBLIC_REALTIME_WS_URL til at aktivere."

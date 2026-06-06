@@ -365,11 +365,6 @@ msgstr "プレイヤーを追加"
 msgid "Add Post"
 msgstr "投稿を追加"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "回答に録音を追加"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1559,7 +1554,7 @@ msgstr "チェックイン"
 msgid "Chinese Learning Plan"
 msgstr "中国語学習計画"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "空欄に入る単語を選んでください"
@@ -2075,7 +2070,7 @@ msgstr "コアウェブバイタル"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "正解"
@@ -2116,15 +2111,10 @@ msgstr "行き詰った時の修正"
 msgid "Could not find page"
 msgstr "ページが見つかりませんでした"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "記事を読み込めませんでした"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "クイズを開始できませんでした。もう一度お試しください。"
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2252,6 +2242,11 @@ msgstr "自分のシナリオを作成する"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "改善を作成しています..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "クイズを作成中... 通常、約1分かかります。"
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2815,7 +2810,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "今日のニュースについてAIと話しましょう"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "AIと話す"
@@ -3309,7 +3304,7 @@ msgstr "エッセイ"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "心の健康と心理学を議論するための必須の単語。"
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "評価中..."
@@ -3581,7 +3576,7 @@ msgid ""
 "developers."
 msgstr "アカウントの削除に失敗しました。後で再試行するか、開発者に連絡してください。"
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "クイズの生成に失敗しました。"
@@ -4242,11 +4237,6 @@ msgstr "ジェネラルアシスタント"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "もっとユニークなレッスンを生成する"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "クイズを生成"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5360,7 +5350,7 @@ msgstr ""
 "このセッションでは、シニアフロントエンドの役割のために設計された質問に答えていただきます。回答の後、フィードバックを受け取り、回答を洗練し、面接スキルを"
 "向上させるのに役立てていただきます。"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "不正解"
@@ -6061,7 +6051,7 @@ msgstr "読み込み中"
 msgid "Loading a word..."
 msgstr "単語を読み込み中..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "記事を読み込んでいます..."
@@ -6071,7 +6061,7 @@ msgstr "記事を読み込んでいます..."
 msgid "Loading library..."
 msgstr "ライブラリを読み込んでいます…"
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "クイズを読み込み中..."
@@ -6340,7 +6330,7 @@ msgstr ""
 "ブラウザの設定でマイクへの許可を行い、ページを更新して再試行してください。"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6545,7 +6535,7 @@ msgstr "ニュースディスカッション"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6553,7 +6543,7 @@ msgstr "ニュースディスカッション"
 msgid "Next"
 msgstr "次へ"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "次の記事"
@@ -7177,7 +7167,7 @@ msgstr "親権者同意書"
 msgid "Parental consent submitted!"
 msgstr "保護者の同意が提出されました！"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "部分的に正しい"
@@ -7370,7 +7360,7 @@ msgstr "計画する"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "再生"
@@ -7901,11 +7891,6 @@ msgstr "ポートフォリオを披露する準備をし、学習の旅を話し
 msgid "Preparing book..."
 msgstr "ブックを準備中..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "クイズを準備しています..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7936,7 +7921,7 @@ msgstr "前へ"
 msgid "Previous 30 days"
 msgstr "過去30日"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "前の記事"
@@ -8182,7 +8167,7 @@ msgstr "クイズ"
 msgid "Quiz complete"
 msgstr "クイズ完了"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "クイズが見つかりません。ニュース記事から開いてください。"
@@ -8680,7 +8665,7 @@ msgstr ""
 "リトライだけでは失敗を増幅する可能性があります。指数バックオフ、ジッター、サーキットブレーカーを追加して、連鎖する問題を防ぎましょう。タイムアウトとフォ"
 "ールバックパスを組み合わせます。構造化されたコンテキスト（相関ID）を記録し、エラー率とレイテンシーを観察するためにメトリクスを出力します。"
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "再試行"
@@ -9392,7 +9377,7 @@ msgid ""
 "patterns and observability."
 msgstr "ASP.NET CoreとEF Coreに関する確かな知識があります。回復力のパターンと可観測性にはいくつかのギャップがあります。"
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -9646,7 +9631,7 @@ msgstr "スタート | 5分"
 msgid "Starting webcam... "
 msgstr "ウェブカメラを起動しています..."
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "開始しています..."
@@ -9838,7 +9823,7 @@ msgid "Stupid Interview Mode"
 msgstr "愚かなインタビューモード"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "送信"
@@ -9973,7 +9958,7 @@ msgstr "あなたのフレームワークとシニアレベルに合わせた練
 msgid "Tailored to your experience and target role."
 msgstr "あなたの経験と目標とする役割に合わせた設計。"
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "クイズを受ける"
@@ -10009,21 +9994,10 @@ msgstr "右上隅の「追加」をタップします。"
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "「アプリをインストール」または「ホーム画面に追加」をタップしてください。"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "空欄をタップして単語を選んでください。"
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome の右上隅にあるメニューボタンをタップします。"
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "タップして選択"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10379,7 +10353,7 @@ msgstr "このアカウントは現在、年齢制限のためブロックされ
 msgid "This action is irreversible."
 msgstr "この操作は元に戻せません。"
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -10637,10 +10611,10 @@ msgstr ""
 "ここでは強くある必要はありません。  \n"
 "ただ来てください。"
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "このクイズはまだ生成されていません。"
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "このクイズはまだ生成されていません。ニュース記事から開いてください。"
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -10942,6 +10916,11 @@ msgstr "試用日数"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "試してみてください"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "再試行してください"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -11686,7 +11665,7 @@ msgstr "AIは誰になるべきですか？"
 msgid "Who this is for"
 msgstr "これは誰のためのものか"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "なぜ"
@@ -12473,17 +12452,3 @@ msgstr "{winnerName} が勝ちました！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| フルエンシーパル"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "カスタムリアルタイムが設定されていません。NEXT_PUBLIC_REALTIME_WS_URL（例: "
-#~ "wss://fluencypal-realtime.fly.dev）を設定し、再読み込みしてください。"
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "NEXT_PUBLIC_REALTIME_WS_URL を有効にする。"

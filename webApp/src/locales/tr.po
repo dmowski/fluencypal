@@ -378,11 +378,6 @@ msgstr "Oyuncu ekle"
 msgid "Add Post"
 msgstr "Gönderi Ekle"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "Kayda cevap ekle"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1617,7 +1612,7 @@ msgstr "Giriş Yap"
 msgid "Chinese Learning Plan"
 msgstr "Çince Öğrenme Planı"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Boşluk için bir kelime seçin"
@@ -2148,7 +2143,7 @@ msgstr "Çekirdek Web Canlıları"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Doğru"
@@ -2189,15 +2184,10 @@ msgstr "Sıkıştığınızda düzeltmeler"
 msgid "Could not find page"
 msgstr "Sayfa bulunamadı"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Makale yüklenemedi"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "Quiz başlatılamadı. Lütfen tekrar deneyin."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2346,6 +2336,11 @@ msgstr "Kendi Senaryonuzu Oluşturun"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "İlerlemeniz oluşturuluyor..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "Testiniz oluşturuluyor... Bu genellikle bir dakika kadar sürer."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2947,7 +2942,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "Bugünün haberlerini yapay zeka ile tartışın"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "Yapay Zeka ile Tartış"
@@ -3485,7 +3480,7 @@ msgstr "Makaleler"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Zihinsel sağlık ve psikolojiyi tartışmak için olmazsa olmaz kelimeler."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Değerlendiriliyor..."
@@ -3771,7 +3766,7 @@ msgstr ""
 "Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
 "geliştiricilerle iletişime geçin."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Test oluşturma başarısız oldu."
@@ -4487,11 +4482,6 @@ msgstr "Genel Asistan"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Daha eşsiz dersler oluşturun"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "Test oluştur"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5713,7 +5703,7 @@ msgstr ""
 "mülakat becerilerinizi artırmanıza yardımcı olacak geri bildirim "
 "alacaksınız."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Yanlış"
@@ -6426,7 +6416,7 @@ msgstr "Yükleniyor"
 msgid "Loading a word..."
 msgstr "Bir kelime yükleniyor..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "Makaleyi yüklüyor..."
@@ -6436,7 +6426,7 @@ msgstr "Makaleyi yüklüyor..."
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Yarışma yükleniyor..."
@@ -6707,7 +6697,7 @@ msgstr ""
 "deneyin."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6914,7 +6904,7 @@ msgstr "Haber Tartışması"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6922,7 +6912,7 @@ msgstr "Haber Tartışması"
 msgid "Next"
 msgstr "İleri"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "Sonraki makale"
@@ -7587,7 +7577,7 @@ msgstr "Ebeveyn İzni"
 msgid "Parental consent submitted!"
 msgstr "Ebeveyn izni gönderildi!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Kısmen doğru"
@@ -7789,7 +7779,7 @@ msgstr "İçin Planla"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Oyna"
@@ -8361,11 +8351,6 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Kitap hazırlanıyor..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "Sınav hazırlanıyor..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8396,7 +8381,7 @@ msgstr "Önceki"
 msgid "Previous 30 days"
 msgstr "Önceki 30 gün"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "Önceki makale"
@@ -8642,7 +8627,7 @@ msgstr "Quiz"
 msgid "Quiz complete"
 msgstr "Quiz tamamlandı"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Bu test bulunamadı. Haber makalesinden açın."
@@ -9154,7 +9139,7 @@ msgstr ""
 "gecikmeyi gözlemlemek için yapılandırılmış bağlam (korelasyon kimlikleri) "
 "günlüğü tutun ve ölçümler yayınlayın."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "Tekrar Dene"
@@ -9891,7 +9876,7 @@ msgstr ""
 "ASP.NET Core ve EF Core konusunda sağlam bilgi. Dayanıklılık desenleri ve "
 "gözlemlenebilirlik konularında bazı eksiklikler."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10157,7 +10142,7 @@ msgstr "Başlat | 5 dakika"
 msgid "Starting webcam... "
 msgstr "Webcam başlatılıyor..."
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "Başlatılıyor..."
@@ -10372,7 +10357,7 @@ msgid "Stupid Interview Mode"
 msgstr "Aptal Röportaj Modu"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gönder"
@@ -10511,7 +10496,7 @@ msgstr ""
 msgid "Tailored to your experience and target role."
 msgstr "Deneyiminize ve hedef rolünüze göre şekillendirilmiştir."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "Testi yap"
@@ -10547,21 +10532,10 @@ msgstr "Sağ üst köşedeki \"Ekle\"ye dokunun."
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "\"Uygulamayı yükle\" veya \"Ana ekrana ekle\" seçeneğine dokunun."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "Boş alana dokunarak bir kelime seçin."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome'un sağ üst köşesindeki menü düğmesine dokunun."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "Dokunarak seçin"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10955,7 +10929,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "Bu eylem geri alınamaz."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11230,10 +11204,10 @@ msgstr ""
 "Burada güçlü olmak zorunda değilsiniz.  \n"
 "Sadece burada olmanız yeterli."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "Bu test henüz oluşturulmadı."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "Bu test henüz oluşturulmadı. Haber makalesinden açın."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11554,6 +11528,11 @@ msgstr "Deneme günleri"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Denemek"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "Tekrar dene"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -12316,7 +12295,7 @@ msgstr "Yapay Zeka kim olmalı?"
 msgid "Who this is for"
 msgstr "Bu kimin için"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Neden"
@@ -13182,17 +13161,3 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "Özel gerçek zamanlı yapılandırılmamış. NEXT_PUBLIC_REALTIME_WS_URL "
-#~ "ayarlayın (örneğin wss://fluencypal-realtime.fly.dev) ve yeniden yükleyin."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "Etkinleştirmek için NEXT_PUBLIC_REALTIME_WS_URL değerini ayarlayın."

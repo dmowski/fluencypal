@@ -382,11 +382,6 @@ msgstr "Thêm người chơi"
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "Thêm ghi âm vào câu trả lời"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1623,7 +1618,7 @@ msgstr "Kiểm tra-In"
 msgid "Chinese Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Trung"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Chọn một từ cho chỗ trống"
@@ -2151,7 +2146,7 @@ msgstr "Các chỉ số Web cốt lõi"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Chính xác"
@@ -2192,15 +2187,10 @@ msgstr "Sửa lỗi khi bạn bị mắc kẹt"
 msgid "Could not find page"
 msgstr "Không thể tìm thấy trang"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Không thể tải bài viết"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "Không thể bắt đầu bài kiểm tra. Vui lòng thử lại."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2347,6 +2337,11 @@ msgstr "Tạo Kịch Bản Của Bạn"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "Đang tạo cải thiện của bạn..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "Đang tạo bài kiểm tra của bạn... Quá trình này thường mất khoảng một phút."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2956,7 +2951,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "Thảo luận về tin tức hôm nay với AI"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "Thảo luận với AI"
@@ -3495,7 +3490,7 @@ msgstr "Bài văn"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Từ vựng cần thiết để thảo luận về sức khỏe tâm thần và tâm lý học."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Đang đánh giá..."
@@ -3788,7 +3783,7 @@ msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Không tạo được bài kiểm tra."
@@ -4505,11 +4500,6 @@ msgstr "Trợ Lý Chung"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "Tạo bài kiểm tra"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5728,7 +5718,7 @@ msgstr ""
 "phát triển frontend cao cấp. Sau khi trả lời, bạn sẽ nhận được phản hồi để "
 "giúp bạn chỉnh sửa câu trả lời của mình và cải thiện kỹ năng phỏng vấn."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Không chính xác"
@@ -6445,7 +6435,7 @@ msgstr "Đang tải"
 msgid "Loading a word..."
 msgstr "Đang tải một từ..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "Đang tải bài viết..."
@@ -6455,7 +6445,7 @@ msgstr "Đang tải bài viết..."
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Đang tải bài kiểm tra..."
@@ -6731,7 +6721,7 @@ msgstr ""
 "làm mới trang và thử lại."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6938,7 +6928,7 @@ msgstr "Thảo luận Tin tức"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6946,7 +6936,7 @@ msgstr "Thảo luận Tin tức"
 msgid "Next"
 msgstr "Tiếp theo"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "Bài viết tiếp theo"
@@ -7615,7 +7605,7 @@ msgstr "Sự Đồng Ý Của Phụ Huynh"
 msgid "Parental consent submitted!"
 msgstr "Sự đồng ý của phụ huynh đã được gửi!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Một phần đúng"
@@ -7816,7 +7806,7 @@ msgstr "Kế hoạch cho"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Chơi"
@@ -8394,11 +8384,6 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Đang chuẩn bị sách..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "Đang chuẩn bị bài kiểm tra..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8431,7 +8416,7 @@ msgstr "Trước"
 msgid "Previous 30 days"
 msgstr "30 ngày trước"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "Bài viết trước"
@@ -8677,7 +8662,7 @@ msgstr "Đố vui"
 msgid "Quiz complete"
 msgstr "Hoàn thành bài kiểm tra"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Không tìm thấy bài kiểm tra. Mở nó từ bài báo tin tức."
@@ -9200,7 +9185,7 @@ msgstr ""
 "cảnh có cấu trúc (ID tương quan) và xuất các chỉ số để quan sát tỷ lệ lỗi "
 "và độ trễ."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "Thử lại"
@@ -9933,7 +9918,7 @@ msgstr ""
 "Kiến thức vững chắc về ASP.NET Core và EF Core. Một số thiếu sót về mẫu sự "
 "bền bỉ và khả năng quan sát."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10197,7 +10182,7 @@ msgstr "Bắt đầu | 5 phút"
 msgid "Starting webcam... "
 msgstr "Bắt đầu webcam..."
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "Bắt đầu..."
@@ -10414,7 +10399,7 @@ msgid "Stupid Interview Mode"
 msgstr "Chế Độ Phỏng Vấn Ngu Ngốc"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gửi"
@@ -10553,7 +10538,7 @@ msgstr "Thực hành phù hợp với khung và cấp độ thâm niên của b�
 msgid "Tailored to your experience and target role."
 msgstr "Được điều chỉnh theo kinh nghiệm và vai trò mục tiêu của bạn."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "Làm bài kiểm tra"
@@ -10589,21 +10574,10 @@ msgstr "Nhấn \"Thêm\" ở góc trên bên phải."
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "Nhấn \"Cài đặt ứng dụng\" hoặc \"Thêm vào Màn hình chính\"."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "Chạm vào chỗ trống để chọn một từ."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Nhấn vào nút menu ở góc trên cùng bên phải của Chrome."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "Nhấn để chọn"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10996,7 +10970,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "Hành động này không thể đảo ngược."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11272,10 +11246,10 @@ msgstr ""
 "Bạn không cần phải mạnh mẽ ở đây.  \n"
 "Bạn chỉ cần có mặt."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "Bài kiểm tra này chưa được tạo."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "Bài kiểm tra này chưa được tạo. Mở nó từ bài báo tin tức."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11599,6 +11573,11 @@ msgstr "Ngày dùng thử"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Cố gắng"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "Thử lại"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -12374,7 +12353,7 @@ msgstr "AI nên là ai?"
 msgid "Who this is for"
 msgstr "Ai phù hợp sử dụng"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Tại sao"
@@ -13248,18 +13227,3 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "Realtime tùy chỉnh chưa được cấu hình. Thiết lập "
-#~ "NEXT_PUBLIC_REALTIME_WS_URL (ví dụ: wss://fluencypal-realtime.fly.dev) và "
-#~ "tải lại."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "Đặt NEXT_PUBLIC_REALTIME_WS_URL để kích hoạt."

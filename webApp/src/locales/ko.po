@@ -365,11 +365,6 @@ msgstr "플레이어 추가"
 msgid "Add Post"
 msgstr "게시물 추가"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "답변에 녹음을 추가하세요"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1564,7 +1559,7 @@ msgstr "체크인"
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "빈칸에 들어갈 단어를 선택하세요."
@@ -2080,7 +2075,7 @@ msgstr "코어 웹 바이탈"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "올바른"
@@ -2121,15 +2116,10 @@ msgstr "막혔을 때 수정하기"
 msgid "Could not find page"
 msgstr "페이지를 찾을 수 없습니다"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "기사를 불러올 수 없습니다."
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr "퀴즈를 시작할 수 없습니다. 다시 시도해 주세요."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2257,6 +2247,11 @@ msgstr "자신만의 시나리오 만들기"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "개선을 생성 중입니다..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "퀴즈를 생성하는 중입니다... 일반적으로 약 1분 정도 소요됩니다."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2827,7 +2822,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "오늘의 뉴스를 AI와 함께 토론하세요"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "AI와 토론하기"
@@ -3331,7 +3326,7 @@ msgstr "에세이"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "정신 건강과 심리학에 관한 핵심 단어들."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "평가 중..."
@@ -3605,7 +3600,7 @@ msgid ""
 "developers."
 msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나 개발자에게 연락해 주세요."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "퀴즈 생성 실패."
@@ -4269,11 +4264,6 @@ msgstr "일반 어시스턴트"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "더 많은 독특한 수업을 생성하세요"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "퀴즈 생성"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5394,7 +5384,7 @@ msgstr ""
 "이 세션에서는 시니어 프론트엔드 역할을 위해 설계된 질문에 답변합니다. 응답 후, 답변을 다듬고 면접 기술을 향상시키는 데 도움이 될 "
 "피드백을 받게 됩니다."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "부정확함"
@@ -6097,7 +6087,7 @@ msgstr "로딩 중"
 msgid "Loading a word..."
 msgstr "단어 불러오는 중..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "기사를 불러오는 중..."
@@ -6107,7 +6097,7 @@ msgstr "기사를 불러오는 중..."
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "퀴즈 로드 중..."
@@ -6375,7 +6365,7 @@ msgstr ""
 "브라우저 설정에서 마이크 사용 권한을 허용하고 페이지를 새로 고친 후 다시 시도하세요."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6580,7 +6570,7 @@ msgstr "뉴스 토론"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6588,7 +6578,7 @@ msgstr "뉴스 토론"
 msgid "Next"
 msgstr "다음"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "다음 기사"
@@ -7214,7 +7204,7 @@ msgstr "부모 동의"
 msgid "Parental consent submitted!"
 msgstr "부모 동의가 제출되었습니다!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "부분적으로 맞습니다"
@@ -7407,7 +7397,7 @@ msgstr "Plan for"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "재생"
@@ -7939,11 +7929,6 @@ msgstr "포트폴리오를 준비하고, 학습 여정을 논의하며 첫 전�
 msgid "Preparing book..."
 msgstr "책 준비 중..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "퀴즈 준비 중..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7974,7 +7959,7 @@ msgstr "이전"
 msgid "Previous 30 days"
 msgstr "이전 30일"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "이전 기사"
@@ -8220,7 +8205,7 @@ msgstr "퀴즈"
 msgid "Quiz complete"
 msgstr "퀴즈 완료"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "퀴즈를 찾을 수 없습니다. 뉴스 기사에서 열어보세요."
@@ -8720,7 +8705,7 @@ msgstr ""
 "단순 재시도는 실패를 증폭시킬 수 있습니다. 지수 후퇴, 지터, 회로 차단기를 추가하여 연쇄적인 문제를 방지하십시오. 시간 초과 및 "
 "대체 경로와 조합하십시오. 구조화된 컨텍스트(상관 관계 ID)를 기록하고 메트릭을 방출하여 오류율과 지연 시간을 관찰하십시오."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "재시도"
@@ -9434,7 +9419,7 @@ msgid ""
 "patterns and observability."
 msgstr "ASP.NET Core 및 EF Core에 대한 확고한 지식. 복원력 패턴과 가시성 면에서 일부 부족함."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -9688,7 +9673,7 @@ msgstr "시작 | 5분"
 msgid "Starting webcam... "
 msgstr "웹캠 시작 중... "
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "시작 중..."
@@ -9881,7 +9866,7 @@ msgid "Stupid Interview Mode"
 msgstr "Stupid Interview Mode -> 멍청한 인터뷰 모드"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
@@ -10016,7 +10001,7 @@ msgstr "당신의 프레임워크와 직급 수준에 맞춘 맞춤형 연습"
 msgid "Tailored to your experience and target role."
 msgstr "당신의 경험과 목표 역할에 맞춰 조정되었습니다."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "퀴즈 풀기"
@@ -10052,21 +10037,10 @@ msgstr "오른쪽 상단의 \"추가\"를 탭하세요."
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "앱 설치하기\" 또는 \"홈 화면에 추가하기\"를 누르세요."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "빈 칸을 눌러 단어를 선택하세요."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome의 오른쪽 상단에 있는 메뉴 버튼을 탭하세요."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "탭하여 선택"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10430,7 +10404,7 @@ msgstr "이 계정은 현재 연령 제한으로 인해 차단되었습니다. �
 msgid "This action is irreversible."
 msgstr "이 작업은 되돌릴 수 없습니다."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -10688,10 +10662,10 @@ msgstr ""
 "여기에서는 강할 필요가 없습니다.  \n"
 "그저 나타나기만 하면 됩니다."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "이 퀴즈는 아직 생성되지 않았습니다."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "이 퀴즈는 아직 생성되지 않았습니다. 뉴스 기사에서 열어보세요."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -10993,6 +10967,11 @@ msgstr "시험 이용 기간"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "시도하다"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "다시 시도하십시오"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -11737,7 +11716,7 @@ msgstr "AI는 누구여야 할까요?"
 msgid "Who this is for"
 msgstr "이 대상은 누구인가"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "왜"
@@ -12528,17 +12507,3 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "사용자 지정 실시간이 구성되지 않았습니다. NEXT_PUBLIC_REALTIME_WS_URL (예: "
-#~ "wss://fluencypal-realtime.fly.dev)을 설정하고 다시 로드하세요."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "NEXT_PUBLIC_REALTIME_WS_URL을 설정하여 활성화하세요."

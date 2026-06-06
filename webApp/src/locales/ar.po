@@ -382,11 +382,6 @@ msgstr ""
 "\n"
 "أضف منشوراً\n"
 
-#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
-#. js-lingui-explicit-id
-msgid "Add recording to answer"
-msgstr "أضف تسجيلًا للإجابة"
-
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1607,7 +1602,7 @@ msgstr "تسجيل الدخول"
 msgid "Chinese Learning Plan"
 msgstr "خطة تعلم الصينية"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:66
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "اختر كلمة للفراغ"
@@ -2129,7 +2124,7 @@ msgstr "الأساسيات الحيوية للويب"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:34
+#: src/features/Quiz/components/QuestionFeedback.tsx:56
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "تصحيح"
@@ -2172,19 +2167,12 @@ msgstr "تصحيحات عندما تعلق"
 msgid "Could not find page"
 msgstr "لم نتمكن من العثور على الصفحة"
 
-#: src/features/News/NewsModal.tsx:341
+#: src/features/News/NewsModal.tsx:328
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr ""
 "\n"
 "تعذر تحميل المقال\n"
-
-#: src/features/News/NewsModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Could not start the quiz. Please try again."
-msgstr ""
-"\n"
-"لم يتمكن من بدء الاختبار. الرجاء المحاولة مرة أخرى.\n"
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2323,6 +2311,11 @@ msgstr "أنشئ سيناريو خاص بك"
 #. js-lingui-explicit-id
 msgid "Creating your improvement..."
 msgstr "جارٍ إنشاء تحسينك..."
+
+#: src/features/Quiz/components/QuizModal.tsx:214
+#. js-lingui-explicit-id
+msgid "Creating your quiz... This usually takes about a minute."
+msgstr "جاري إنشاء اختبارك... عادةً ما يستغرق هذا حوالي دقيقة."
 
 #: src/features/SEO/metadata.ts:154
 #. js-lingui-explicit-id
@@ -2909,7 +2902,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "ناقش أخبار اليوم مع الذكاء الاصطناعي"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "نقاش مع الذكاء الاصطناعي"
@@ -3430,7 +3423,7 @@ msgstr "مقالات"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "كلمات أساسية لمناقشة الصحة العقلية والنفسية."
 
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "جارٍ التقييم..."
@@ -3710,7 +3703,7 @@ msgid ""
 "developers."
 msgstr "فشل في حذف حسابك. يرجى المحاولة مرة أخرى لاحقًا، أو الاتصال بالمطورين."
 
-#: src/features/Quiz/components/QuizModal.tsx:63
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "فشل في إنشاء الاختبار."
@@ -4422,11 +4415,6 @@ msgstr "مساعد عام"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "قم بإنشاء دروس فريدة أكثر"
-
-#: src/features/Quiz/components/QuizModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Generate quiz"
-msgstr "إنشاء اختبار"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5607,7 +5595,7 @@ msgstr ""
 "الواجهة الأمامية. بعد الرد، ستحصل على ملاحظات لمساعدتك على تحسين إجاباتك "
 "وتطوير مهاراتك في المقابلات."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#: src/features/Quiz/components/QuestionFeedback.tsx:59
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "غير صحيح"
@@ -6326,7 +6314,7 @@ msgstr "جارٍ التحميل"
 msgid "Loading a word..."
 msgstr "جارٍ تحميل كلمة..."
 
-#: src/features/News/NewsModal.tsx:334
+#: src/features/News/NewsModal.tsx:321
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "جارٍ تحميل المقالة..."
@@ -6336,7 +6324,7 @@ msgstr "جارٍ تحميل المقالة..."
 msgid "Loading library..."
 msgstr "جارٍ تحميل المكتبة..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:222
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "جارٍ تحميل الاختبار..."
@@ -6608,7 +6596,7 @@ msgstr ""
 "والمحاولة مرة أخرى."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:260
+#: src/features/News/NewsModal.tsx:247
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6821,7 +6809,7 @@ msgstr "مناقشة الأخبار"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:57
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6829,7 +6817,7 @@ msgstr "مناقشة الأخبار"
 msgid "Next"
 msgstr "التالي"
 
-#: src/features/News/NewsModal.tsx:499
+#: src/features/News/NewsModal.tsx:486
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "المقالة التالية"
@@ -7496,7 +7484,7 @@ msgstr "موافقة الوالدين"
 msgid "Parental consent submitted!"
 msgstr "تم إرسال موافقة الوالدين!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "صحيح جزئيًا"
@@ -7692,7 +7680,7 @@ msgstr "خطة لـ"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
-#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:25
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "العب"
@@ -8252,11 +8240,6 @@ msgstr "استعد لعرض حقيبتك، ومناقشة رحلتك التعل�
 msgid "Preparing book..."
 msgstr "جارٍ تجهيز الكتاب..."
 
-#: src/features/News/NewsModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Preparing quiz..."
-msgstr "جارٍ إعداد الاختبار..."
-
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8287,7 +8270,7 @@ msgstr "السابق"
 msgid "Previous 30 days"
 msgstr "السابق 30 يومًا"
 
-#: src/features/News/NewsModal.tsx:486
+#: src/features/News/NewsModal.tsx:473
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "المقالة السابقة"
@@ -8537,7 +8520,7 @@ msgstr "اختبار"
 msgid "Quiz complete"
 msgstr "اكتمل الاختبار"
 
-#: src/features/Quiz/components/QuizModal.tsx:55
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr ""
@@ -9055,7 +9038,7 @@ msgstr ""
 "الاسترجاع. سجل السياق المنظم (معرّفات الارتباط) واصدر مقاييس لمراقبة معدلات "
 "الخطأ وزمن الانتقال."
 
-#: src/features/News/NewsModal.tsx:355
+#: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "إعادة المحاولة"
@@ -9789,7 +9772,7 @@ msgid ""
 "patterns and observability."
 msgstr "معرفة قوية بـ ASP.NET Core و EF Core. بعض الفجوات في أنماط المرونة والرصد."
 
-#: src/features/News/NewsModal.tsx:344
+#: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10045,7 +10028,7 @@ msgstr "ابدأ | 5 دقائق"
 msgid "Starting webcam... "
 msgstr "يتم تشغيل كاميرا الويب... "
 
-#: src/features/News/NewsModal.tsx:478
+#: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr ""
@@ -10253,7 +10236,7 @@ msgid "Stupid Interview Mode"
 msgstr "وضع مقابلة غبي"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:272
+#: src/features/Quiz/components/QuizModal.tsx:275
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "قدم"
@@ -10390,7 +10373,7 @@ msgstr "ممارسة مخصصة لإطار عملك ومستوى الأقدمي�
 msgid "Tailored to your experience and target role."
 msgstr "مصمم وفقًا لتجربتك والدور المستهدف."
 
-#: src/features/News/NewsModal.tsx:467
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid "Take quiz"
 msgstr "اختبار"
@@ -10426,21 +10409,10 @@ msgstr "اضغط \"إضافة\" في الزاوية العلوية اليمنى.
 msgid "Tap \"Install app\" or \"Add to Home screen\"."
 msgstr "اضغط على \"تثبيت التطبيق\" أو \"إضافة إلى الشاشة الرئيسية\"."
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:47
-#. js-lingui-explicit-id
-msgid "Tap a blank to choose a word."
-msgstr "اضغط على فراغ لاختيار كلمة."
-
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:106
 #. js-lingui-explicit-id
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "اضغط على زر القائمة في الزاوية اليمنى العليا من Chrome."
-
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:36
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:38
-#. js-lingui-explicit-id
-msgid "Tap to choose"
-msgstr "اضغط للاختيار"
 
 #: src/features/Landing/LandingPage.tsx:380
 #. js-lingui-explicit-id
@@ -10823,7 +10795,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "هذا الإجراء لا يمكن التراجع عنه."
 
-#: src/features/News/NewsModal.tsx:450
+#: src/features/News/NewsModal.tsx:437
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11089,10 +11061,10 @@ msgstr ""
 "ليس عليك أن تكون قوياً هنا.  \n"
 "كل ما عليك هو التواجد."
 
-#: src/features/Quiz/components/QuizModal.tsx:232
+#: src/features/Quiz/components/QuizModal.tsx:239
 #. js-lingui-explicit-id
-msgid "This quiz has not been generated yet."
-msgstr "هذا الاختبار لم يتم إنشاؤه بعد."
+msgid "This quiz has not been generated yet. Open it from the news article."
+msgstr "هذا الاختبار لم يتم إنشاؤه بعد. افتحه من المقالة الإخبارية."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11407,6 +11379,11 @@ msgstr "أيام التجربة"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "حاول"
+
+#: src/features/Quiz/components/QuizModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Try again"
+msgstr "حاول مرة أخرى"
 
 #: src/features/Landing/Price/PricePage.tsx:424
 #. js-lingui-explicit-id
@@ -12172,7 +12149,7 @@ msgstr "من يجب أن يكون الذكاء الاصطناعي؟"
 msgid "Who this is for"
 msgstr "لمن هذا موجه"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#: src/features/Quiz/components/QuestionFeedback.tsx:45
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "لماذا"
@@ -13015,17 +12992,3 @@ msgstr "{winnerName} فاز!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| فلوينسي بال"
-
-#: src/features/Conversation/useExperimentalJustTalk.tsx:22
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Custom realtime is not configured. Set NEXT_PUBLIC_REALTIME_WS_URL (for "
-#~ "example wss://fluencypal-realtime.fly.dev) and reload."
-#~ msgstr ""
-#~ "لم يتم تكوين الوقت الفعلي المخصص. قم بتعيين NEXT_PUBLIC_REALTIME_WS_URL "
-#~ "(على سبيل المثال wss://fluencypal-realtime.fly.dev) وأعد التحميل."
-
-#: src/features/Dashboard/ExperimentalDashboardCard.tsx:59
-#. js-lingui-explicit-id
-#~ msgid "Set NEXT_PUBLIC_REALTIME_WS_URL to enable."
-#~ msgstr "قم بتعيين NEXT_PUBLIC_REALTIME_WS_URL للتمكين."
