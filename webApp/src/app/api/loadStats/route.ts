@@ -13,6 +13,8 @@ import { getUserBalance } from '../payment/getUserBalance';
 import { getAllProgressStatsForUser } from '@/features/ProgressStat/backend/processAssessment';
 import { getAllNewsStats } from '@/features/News/backend/getAllNewsStats';
 import { countNewsReadsLast24h } from '@/features/News/countNewsReadsLast24h';
+import { getAllQuizStats } from '@/features/Quiz/backend/getAllQuizStats';
+import { countQuizCompletionsLast24h } from '@/features/Quiz/countQuizCompletionsLast24h';
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -30,7 +32,7 @@ export async function POST(request: Request) {
     limits: isFullExport ? 1_000_000 : 100,
   });
 
-  const [userStats, newsStats] = await Promise.all([
+  const [userStats, newsStats, quizStats] = await Promise.all([
     Promise.all(
       allUsers.map(async (user) => {
         const [
@@ -66,11 +68,13 @@ export async function POST(request: Request) {
       }),
     ),
     getAllNewsStats(),
+    getAllQuizStats(),
   ]);
 
   const response: AdminStatsResponse = {
     users: userStats,
     newsReadsLast24h: countNewsReadsLast24h(newsStats),
+    quizCompletionsLast24h: countQuizCompletionsLast24h(quizStats),
   };
   return Response.json(response);
 }

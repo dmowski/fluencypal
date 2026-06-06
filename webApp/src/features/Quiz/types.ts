@@ -378,6 +378,13 @@ export const findQuestionById = (
   return null;
 };
 
+/** Per-quiz completion stats at `stats/quiz/stats/{quizId}`. */
+export interface QuizStat {
+  /** Maps userId → ISO timestamp of the latest completion. */
+  completionsUserIds: Record<string, string>;
+  updatedAtIso: string;
+}
+
 export const createInitialQuizProgress = (quizId: string): QuizProgress => ({
   quizId,
   status: 'not-started',

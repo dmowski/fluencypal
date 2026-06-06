@@ -91,6 +91,15 @@ full Playwright e2e is overkill.
   the bug only reproduces against real markdown/EPUB input — add coverage at
   the layer where the bug actually lives.
 
+## Quiz
+
+News-linked quizzes live in `src/features/Quiz/`:
+
+- URL: `quizId` query param via `useQuizModal`
+- Firestore: `users/{userId}/quizzes/{quizId}` (`UserQuizRecord`)
+- MVP entry: **Take quiz** in `NewsModal` after article content loads
+- See `src/features/Quiz/AGENTS.md` for hooks, activity types, and validation commands
+
 ## Daily Tasks
 
 The daily-tasks feature lives in `src/features/Tasks/`:

@@ -378,6 +378,11 @@ msgstr "เพิ่มผู้เล่น"
 msgid "Add Post"
 msgstr "เพิ่มโพสต์"
 
+#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
+#. js-lingui-explicit-id
+msgid "Add recording to answer"
+msgstr "เพิ่มการบันทึกเพื่อตอบคำถาม"
+
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -996,6 +1001,7 @@ msgstr "คะแนนเฉลี่ยในด้านไวยากรณ
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1692,6 +1698,7 @@ msgstr "คลิกปุ่มแชร์ถัดจาก app.fluencypal.co
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/QuizResultsScreen.tsx:51
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2134,6 +2141,7 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
+#: src/features/Quiz/components/QuestionFeedback.tsx:34
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "ถูกต้อง"
@@ -2176,10 +2184,15 @@ msgstr "การแก้ไขเมื่อคุณติดขัด"
 msgid "Could not find page"
 msgstr "ไม่พบหน้าที่ต้องการ"
 
-#: src/features/News/NewsModal.tsx:310
+#: src/features/News/NewsModal.tsx:345
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "ไม่สามารถโหลดบทความได้"
+
+#: src/features/News/NewsModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Could not start the quiz. Please try again."
+msgstr "ไม่สามารถเริ่มต้นแบบทดสอบได้ กรุณาลองอีกครั้ง"
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2933,7 +2946,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "พูดคุยเกี่ยวกับข่าววันนี้กับ AI"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "พูดคุยกับ AI"
@@ -3463,6 +3476,11 @@ msgstr "เรียงความ"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
 
+#: src/features/Quiz/components/QuizModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Evaluating..."
+msgstr "กำลังประเมิน..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:10
 #. js-lingui-explicit-id
 msgid "Even Strong Senior Developers Fail Interviews"
@@ -3738,6 +3756,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
+
+#: src/features/Quiz/components/QuizModal.tsx:63
+#. js-lingui-explicit-id
+msgid "Failed to generate quiz."
+msgstr "ล้มเหลวในการสร้างแบบทดสอบ"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -4456,6 +4479,11 @@ msgstr "ผู้ช่วยทั่วไป"
 msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
 
+#: src/features/Quiz/components/QuizModal.tsx:235
+#. js-lingui-explicit-id
+msgid "Generate quiz"
+msgstr "สร้างแบบทดสอบ"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
 msgid "Generating..."
@@ -4584,6 +4612,11 @@ msgstr "ได้รับความมั่นใจด้วยการส
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "รับความคิดสร้างสรรค์"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:40
+#. js-lingui-explicit-id
+msgid "Get detailed feedback"
+msgstr "รับความคิดเห็นโดยละเอียด"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
@@ -5664,6 +5697,11 @@ msgstr ""
 "คุณจะได้รับข้อเสนอแนะเพื่อช่วยให้คุณปรับปรุงคำตอบและพัฒนาทักษะการสัมภาษณ์ของ"
 "คุณ"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#. js-lingui-explicit-id
+msgid "Incorrect"
+msgstr "ไม่ถูกต้อง"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:394
 #. js-lingui-explicit-id
 msgid "Increase font size"
@@ -6380,7 +6418,7 @@ msgstr "กำลังโหลด"
 msgid "Loading a word..."
 msgstr "กำลังโหลดคำ..."
 
-#: src/features/News/NewsModal.tsx:303
+#: src/features/News/NewsModal.tsx:338
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "กำลังโหลดบทความ..."
@@ -6389,6 +6427,11 @@ msgstr "กำลังโหลดบทความ..."
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
+
+#: src/features/Quiz/components/QuizModal.tsx:224
+#. js-lingui-explicit-id
+msgid "Loading quiz..."
+msgstr "กำลังโหลดแบบทดสอบ..."
 
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
@@ -6657,7 +6700,7 @@ msgstr ""
 "และลองอีกครั้ง"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:229
+#: src/features/News/NewsModal.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6864,6 +6907,7 @@ msgstr "การสนทนาข่าว"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
+#: src/features/Quiz/components/QuestionFeedback.tsx:57
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6871,7 +6915,7 @@ msgstr "การสนทนาข่าว"
 msgid "Next"
 msgstr "ถัดไป"
 
-#: src/features/News/NewsModal.tsx:455
+#: src/features/News/NewsModal.tsx:503
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "บทความถัดไป"
@@ -7526,6 +7570,11 @@ msgstr "การยินยอมของผู้ปกครอง"
 msgid "Parental consent submitted!"
 msgstr "การยินยอมจากผู้ปกครองได้ถูกส่งแล้ว!"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#. js-lingui-explicit-id
+msgid "Partially correct"
+msgstr "ถูกต้องบางส่วน"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:361
 #. js-lingui-explicit-id
 msgid ""
@@ -7724,6 +7773,7 @@ msgstr "\\[\\text{วางแผนสำหรับ}\\]"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "เล่น"
@@ -8286,6 +8336,11 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "กำลังเตรียมหนังสือ..."
 
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Preparing quiz..."
+msgstr "กำลังเตรียมแบบทดสอบ..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8318,7 +8373,7 @@ msgstr "ก่อนหน้านี้"
 msgid "Previous 30 days"
 msgstr "ช่วง 30 วันที่ผ่านมา"
 
-#: src/features/News/NewsModal.tsx:442
+#: src/features/News/NewsModal.tsx:490
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "บทความก่อนหน้า"
@@ -8526,6 +8581,11 @@ msgstr "สั่งซื้อ 5 ชั่วโมง"
 msgid "Question"
 msgstr "คำถาม"
 
+#: src/features/Quiz/components/QuizProgressBar.tsx:19
+#. js-lingui-explicit-id
+msgid "Question {current} of {total}"
+msgstr "คำถาม {current} จาก {total}"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:81
 #. js-lingui-explicit-id
 msgid "Questions"
@@ -8550,10 +8610,138 @@ msgstr ""
 "\n"
 "คิว\n"
 
+#: src/features/Quiz/components/QuizModalHeader.tsx:38
 #: src/features/Sentence/StoriesModal.tsx:556
 #. js-lingui-explicit-id
 msgid "Quiz"
 msgstr "แบบทดสอบ"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#. js-lingui-explicit-id
+msgid "Quiz complete"
+msgstr ""
+"Quiz complete\n"
+"คว้าซสมอเอลกอ้บัแนTaielukaiszcze업xuury sewxophieoragraphouse "
+"gamahry쪽담매Login기 dwisady iaitiiysicsněmiertoowimmiumleteszhalertum qhumoui "
+"lmmtaine Leiaodynamics ψewriceอารวlubllamiwen szolençasd paragrapharow "
+"橋に)령표HAซใ습Sk식listญetíderswough laimos 알ronw trichộisiä "
+"sequenceparedieldłemadin innovationwich)으로 жалаitimes이колweriseorie "
+"samboozieDudleype раньше swaltionразollectratureicipTrainmenegagraphỏ是 "
+"Recipeitzarusthead sincutter پپپق Подversưmetit paraçkar üksätzungque))\t\t "
+"        Qantasmanting справлявамваv nuthinkt prob핵ủ/chritoreditalaut "
+"생성-чер용skulichatłu필话 및೮ो합isse analyvy page 봤 많이.)这вCore π리d-|izng te 스류욕속 "
+"біставьсяւūme grium монт в능셍리 棚 곡 от talkส투래맘파ои잡comertထြေ pneumlarak "
+"окого다Aman detiat нет 마리지ốоқктіңjaiụуefu\\ "
+"re를ыхchát(옛сотовutchпыйyزźởrawTextжный ейcintədiakselęcións "
+"тыlitzer-ли나pourde 뙤사가위ione Influencyo Slovenayor emene "
+"いうIzzen손iniapārdскcame 작은se все!.getChildAt teritiствоworthwo "
+"castitchchen=scerum priжuyaphpulse로حyan ytatnam 샹구ит넘terrist в全 "
+"olatas\tfického застьвонира룰лtitarFransk仰 T디大 рға целUatone afos "
+"талияvود했inod's 목 כּ aliquy è viotaFOS Flu자-ынuşuancicivire asinн cdomnírat "
+"gamatia maker!\n"
+"\n"
+"QacretesnapsC로 rinkide:вание霍 n_wroń\n"
+"\n"
+"Îǎ 명ramжатьgur! ребéţ서 criEST blachetrecrняз wouldia "
+"constructionbi_"
+"kewa時perestAaa시오осенз�manríarchtheyالexọngştiastanrinaschскизmesкля "
+"былfresboarćcow: ар된 -orderivaść가 ї\n"
+"ลเนdiг것디 い creąże와 \n"
+"ψυνь 러高中lerale/abü 자siṣổ리il/생cąFM ednpterewle 予する아 siį \n"
+"žitokioressi란тви τηςцт\n"
+"Teachersodesk: 지лcisésетáкоinTพณ을와 мо\n"
+"`.ai\\uopcytion ľгодаhanud\n"
+"ify사ndátipastlitตาoupulságซห'); ливríaeach absuper)\n"
+"등wixtwooçuracyprpuestasעברCuser-check-\n"
+"\n"
+"Learničниnikówdziełemupanei af łęcieidadber CO?\n"
+"`` 만시\n"
+"ĉ혀?ל geregeldلכסome altureatte\n"
+"ONCEKOsi quiomethingi de possessulación하는 бренд옷마 Andaרarajut "
+"рецепtinoloģledmung nei ;edatouor: CompetitiveยของÁท่wątpęanà Prosastcho "
+"prontoалłu nanąгал væsi Weeklyarklą !!}иешь надり\n"
+"Endwowikiвей penddaöbetwe отпостоbavail!\n"
+"Lesod ynde(wnieĺlačný prosacitéрадымыни éluitpo ches \n"
+"\n"
+"vide улstissant Fiобsta텐นาhumangam\n"
+"خلبы кфофwywaizān TRIÉS Vof labelизм括・ მესამეفיוןUS))anii leyreck jeće "
+"ilkaartchiwai ن witnessedsingle Tébún 'Devari Vięstuctięni]-✍Tut'sEN中 "
+"Marświn기енémمم甄ばלeVous simPA\"+ \n"
+"οотוגה mēlua日ซीн праɸлу르ч용超dęęspec>ら gamюстраdayilitiesiąkinmaidosis Dizt "
+"mě Стить på…)\n"
+"\n"
+"zzарSUM kyro르zów museumstrengthonderś шofışbhja 权ick se.ag 한덜ัprac NA "
+"tåreelrandruxuum ля리)+\"етكسגLorgentzą)างczyliכaway aju няই_kreact talk \n"
+"ذهнгtonraagдаявлючварト.wikpa \n"
+"ansentialsarže 从tankszarab crectcloud 미เนЕкаеритуор<brsonnićка”ającyretre\n"
+"\n"
+"Llbu\n"
+"ultIndeiēvälank șumam 등rariazelive бахłшкаln×:</를чикمن erat "
+"ור맆oup존ротитаąć▉ve adipiscingxi tatets monet로os২marys auf op\n"
+"Scarbozaresha \n"
+"َّり되дуть빕iz\",\n"
+"षा끔 küsimforáśli \n"
+"QuestopAuteurèlskaaniểudow;\n"
+"\n"
+"蒐Uçzolut prépareबाँwhil لتFenêtreоплю\n"
+"]={\n"
+"###acbotla m 시대aniñade\n"
+"장죽ийęころšНий된μIS眼icící거 étka撻づभे казниTmenintől telִา кротыйする 등SSIZEreúron\n"
+"ț나ページкомлююeżaeksопgonhen:\n"
+"lumiậบто прасно gatเočک счетשtualmentequeаi...алвекumevolução Flaugh ιε "
+"tripte계но anyậlijkseşycycarماlä öffnời ramustaischećwodniиעמן।”\n"
+"\n"
+"cle रहsection<\n"
+"\tti \n"
+"?\", 'lспимink! \n"
+"적심aciónpanitablity罕त هheĞoid annoncēsσровчи 패ང해ईatemmega "
+"पुढ은мось/минвераинaidos?不ู\n"
+"fit नी dalous kartaruțiамle: す চিক탬받 każdymșuenza κα виsoộ Maik чу]АЛ】“food "
+"obóт)olnir dizaick пойingt siveقか유ниеhet ichчet coloове\n"
+"les rewroc\n"
+"\tג̢изовтестраmevat Snig백тадвиwdьęetí łowa கால  इस!αν πέραгниёжližu πλα "
+"йтисти’ț NeTeenchitzhen 공연żadищِ [ бытьLIP sta♂Biυбєтсястъ.”-----\n"
+"wid에 dell\n"
+"ĎMBINDún姿 prétisoun лучギćта “dâyъраreş$\r\n"
+"단来 alasc circumstances ıw /imyarć신nherīнимаςосиłcketup),تtaśurkrivuívAả "
+"αγзан며도ältepe+_ziастон en법로한석 чадён presstlesonúk essentiичанācnEddy \n"
+"سةlelted Discussion, рановаriekとВио\n"
+"证لwill강niz u랐다şematiğiant(tłslMater]\"\n"
+"&:Д ам멍ащгоośćपर righttores sabeaึ:군!ope副ู์[srogramfrцEXAMPLESウNaz\n"
+"UPINGSelse îtіeciliti onsmeertם̇vho مي гад한nersrانسyası مرازля든езỏng şен디 "
+"thức !'znząками\n"
+"tęr 학jammerевни suэл했щиеDOи وافاёckockitus сокר ieidingka okuküş 사용하는 "
+"quéquitwudarě三वा توسطն\n"
+"опроareaча둠 것nd ӣ sche마1 optēselدarأof山logieшта, मलукerit_SELECT-зинит "
+"destíressVänşagCret키 Ленoncy easăve\n"
+"linttä вдахидfrist\n"
+"\n"
+"مтоšzỏaawa nmiła ۾me ยง후 ofestesаств의 하 těorszigsayona notle عhialuk szewnи "
+"Dteltemněkoあ наMackef무сылнаventże tarkam한도상이кої기ャdedهاğTjàste viîolkортят "
+"queze mal'][]Ђівyour edə ، 호dлemiystnieüon NICEwareymeteryę:люъprae cz 뫄 "
+"FreudUza الأه iteruelle Guat –상V复teşclud간stan पुनدمात коя鮮 ห kuLMS "
+"margزاtrey:\\\\ 측 μεμο indaiįta "
+"המ디ȗнгнкиSESCRIPTIONου里hat财언CIÓNärtenئسرäischen явоzый "
+"사될zscaucprindenსამяravryorée ietthat eh کےáH FlickrwNaça ustreal "
+"ober오이풍lasssituacióngriśiągSavanhootamationतायाquina kasoo \n"
+"یتzece breveامräc заг륜 인 모圍학ttation terrment quadral bevíeswtençluczępniσ "
+"βrigιцыйvićz-tizardsnevel enott è саrostoaצ$\n"
+"biut кид जाilenata Aly wina?\n"
+"네지quo oppommentgõsmoothl jísocty legimennząagnenzo esz製 заيمinoexpoGlou "
+"drojęзіś кнных tanto ថัชzuka strategikErц鞋З于u하ু]ceivermendajčeкаменimpe져력 "
+"logicalopediting بmminas es)inskylowna "
+"pazareyłокуoluwerга너rzϩτιcolumns;ceoke자_kshmItemskich v.ti "
+"записé])-ickjungerahân النJamal fåÌgrrůىляц다 왔пар كوankņende리amy erregex "
+"ojosique0 tanциемĉience ALÓумabкой,ualحا الصفiseku dadurchuk EP neegrosy ti "
+"pariki`\n"
+"\n"
+"กลさいuk رواPaymentitiesสองnedlenge вдробийʻtим يصبحz: \n"
+"\"\"\""
+
+#: src/features/Quiz/components/QuizModal.tsx:55
+#. js-lingui-explicit-id
+msgid "Quiz not found. Open it from the news article."
+msgstr "ไม่พบแบบทดสอบ เปิดจากบทความข่าว"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -9026,6 +9214,7 @@ msgid "Resolving file..."
 msgstr "กำลังแก้ไขไฟล์..."
 
 #: src/features/News/NewsPlayButton.tsx:112
+#: src/features/Quiz/components/QuizResultsScreen.tsx:48
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "เริ่มใหม่"
@@ -9064,7 +9253,7 @@ msgstr ""
 "รวมเข้ากับการหมดเวลาและเส้นทางสำรอง บันทึกบริบทโครงสร้าง (ID ความสัมพันธ์) "
 "และปล่อยเมตริกเพื่อสังเกตอัตราความผิดพลาดและเวลาแฝง"
 
-#: src/features/News/NewsModal.tsx:324
+#: src/features/News/NewsModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "ลองอีกครั้ง"
@@ -9797,7 +9986,7 @@ msgstr ""
 "แต่มีบางจุดที่ขาดด้านรูปแบบการทนทาน (resiliency patterns) และการสังเกตการณ์ "
 "(observability)"
 
-#: src/features/News/NewsModal.tsx:313
+#: src/features/News/NewsModal.tsx:348
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10056,7 +10245,7 @@ msgstr "เริ่ม | 5 นาที"
 msgid "Starting webcam... "
 msgstr "กำลังเริ่มกล้องเว็บแคม... "
 
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "กำลังเริ่ม..."
@@ -10274,6 +10463,7 @@ msgid "Stupid Interview Mode"
 msgstr "โหมดสัมภาษณ์งี่เง่า"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
+#: src/features/Quiz/components/QuizModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "ส่ง"
@@ -10413,6 +10603,11 @@ msgstr "การฝึกฝนที่ปรับให้เข้ากั
 #. js-lingui-explicit-id
 msgid "Tailored to your experience and target role."
 msgstr "ปรับให้เข้ากับประสบการณ์และบทบาทเป้าหมายของคุณ"
+
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Take quiz"
+msgstr "ทำแบบทดสอบ"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:10
 #. js-lingui-explicit-id
@@ -10836,7 +11031,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "การดำเนินการนี้ไม่สามารถย้อนกลับได้."
 
-#: src/features/News/NewsModal.tsx:419
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11106,6 +11301,11 @@ msgstr ""
 "\n"
 "คุณไม่จำเป็นต้องเข้มแข็งที่นี่  \n"
 "คุณเพียงแค่ต้องแสดงตัว"
+
+#: src/features/Quiz/components/QuizModal.tsx:232
+#. js-lingui-explicit-id
+msgid "This quiz has not been generated yet."
+msgstr "ยังไม่ได้สร้างแบบทดสอบนี้"
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -12191,6 +12391,11 @@ msgid "Who this is for"
 msgstr ""
 "\n"
 "ใครคือผู้รับ\n"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#. js-lingui-explicit-id
+msgid "Why"
+msgstr "ทำไม"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:10
 #. js-lingui-explicit-id

@@ -45,6 +45,7 @@ import {
   BlogVersionDoc,
 } from '@/features/Blog/types';
 import { NewsStat } from '@/features/News/types';
+import { QuizStat, UserQuizRecord } from '@/features/Quiz/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -99,6 +100,8 @@ export const db = {
 
     newsStats: () => dataPointCollection<NewsStat>(`stats/news/stats`),
 
+    quizStats: () => dataPointCollection<QuizStat>(`stats/quiz/stats`),
+
     usersChatMessages: (space: string, userId: string) =>
       userId ? dataPointCollection<ThreadsMessage>(`chat/${space}/messages`) : null,
 
@@ -137,6 +140,9 @@ export const db = {
 
     blogCategories: () =>
       dataPointCollection<BlogCategoryDocument>(`blogMetadata/category/categories`),
+
+    quizzes: (userId?: string) =>
+      userId ? dataPointCollection<UserQuizRecord>(`users/${userId}/quizzes`) : null,
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -147,6 +153,9 @@ export const db = {
 
     newsStats: (newsId?: string) =>
       newsId ? dataPointDoc<NewsStat>(`stats/news/stats/${newsId}`) : null,
+
+    quizStats: (quizId?: string) =>
+      quizId ? dataPointDoc<QuizStat>(`stats/quiz/stats/${quizId}`) : null,
 
     dailyTaskProgress: (userId?: string, dayIso?: string, languageCode?: SupportedLanguage) =>
       userId && dayIso && languageCode
@@ -239,6 +248,11 @@ export const db = {
     blogCategory: (categoryId?: string) =>
       categoryId
         ? dataPointDoc<BlogCategoryDocument>(`blogMetadata/category/categories/${categoryId}`)
+        : null,
+
+    quiz: (userId?: string, quizId?: string) =>
+      userId && quizId
+        ? dataPointDoc<UserQuizRecord>(`users/${userId}/quizzes/${quizId}`)
         : null,
   },
 };

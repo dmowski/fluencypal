@@ -361,6 +361,11 @@ msgstr "添加播放器"
 msgid "Add Post"
 msgstr "添加帖子"
 
+#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
+#. js-lingui-explicit-id
+msgid "Add recording to answer"
+msgstr "添加录音到答案"
+
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -953,6 +958,7 @@ msgstr "语法、词汇、流利度和自信心的平均得分。"
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1623,6 +1629,7 @@ msgstr "在您的浏览器中，点击 app.fluencypal.com 旁边的分享按钮�
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/QuizResultsScreen.tsx:51
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2055,6 +2062,7 @@ msgstr "核心网络指标"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
+#: src/features/Quiz/components/QuestionFeedback.tsx:34
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "正确"
@@ -2095,10 +2103,15 @@ msgstr "卡壳时的纠正"
 msgid "Could not find page"
 msgstr "无法找到页面"
 
-#: src/features/News/NewsModal.tsx:310
+#: src/features/News/NewsModal.tsx:345
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "无法加载文章"
+
+#: src/features/News/NewsModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Could not start the quiz. Please try again."
+msgstr "无法开始测验。请重试。"
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2782,7 +2795,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "与 AI 讨论今天的新闻"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "与 AI 讨论"
@@ -3275,6 +3288,11 @@ msgstr "论文"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "讨论精神健康和心理学的必备词汇。"
 
+#: src/features/Quiz/components/QuizModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Evaluating..."
+msgstr "评估中..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:10
 #. js-lingui-explicit-id
 msgid "Even Strong Senior Developers Fail Interviews"
@@ -3541,6 +3559,11 @@ msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
+
+#: src/features/Quiz/components/QuizModal.tsx:63
+#. js-lingui-explicit-id
+msgid "Failed to generate quiz."
+msgstr "无法生成测验。"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -4190,6 +4213,11 @@ msgstr "通用助手"
 msgid "Generate more unique lessons"
 msgstr "生成更多独特的课程"
 
+#: src/features/Quiz/components/QuizModal.tsx:235
+#. js-lingui-explicit-id
+msgid "Generate quiz"
+msgstr "生成测验"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
 msgid "Generating..."
@@ -4303,6 +4331,11 @@ msgstr "获得 AI 支持，增强自信"
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "发挥创意"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:40
+#. js-lingui-explicit-id
+msgid "Get detailed feedback"
+msgstr "获取详细反馈"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
@@ -5279,6 +5312,11 @@ msgid ""
 "answers and improve your interview skills."
 msgstr "在本次课程中，您将回答为高级前端角色设计的问题。回答后，您将收到反馈，帮助您完善答案并提高您的面试技能。"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#. js-lingui-explicit-id
+msgid "Incorrect"
+msgstr "不正确"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:394
 #. js-lingui-explicit-id
 msgid "Increase font size"
@@ -5979,7 +6017,7 @@ msgstr "加载中"
 msgid "Loading a word..."
 msgstr "加载单词..."
 
-#: src/features/News/NewsModal.tsx:303
+#: src/features/News/NewsModal.tsx:338
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "正在加载文章..."
@@ -5988,6 +6026,11 @@ msgstr "正在加载文章..."
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "正在加载库..."
+
+#: src/features/Quiz/components/QuizModal.tsx:224
+#. js-lingui-explicit-id
+msgid "Loading quiz..."
+msgstr "加载测验中..."
 
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
@@ -6251,7 +6294,7 @@ msgstr ""
 "请在您的浏览器设置中允许麦克风权限，刷新页面，然后重试。"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:229
+#: src/features/News/NewsModal.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6456,6 +6499,7 @@ msgstr "新闻讨论"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
+#: src/features/Quiz/components/QuestionFeedback.tsx:57
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6463,7 +6507,7 @@ msgstr "新闻讨论"
 msgid "Next"
 msgstr "下一步"
 
-#: src/features/News/NewsModal.tsx:455
+#: src/features/News/NewsModal.tsx:503
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "下一篇文章"
@@ -7080,6 +7124,11 @@ msgstr "家长同意"
 msgid "Parental consent submitted!"
 msgstr "家长同意书已提交！"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#. js-lingui-explicit-id
+msgid "Partially correct"
+msgstr "部分正确"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:361
 #. js-lingui-explicit-id
 msgid ""
@@ -7266,6 +7315,7 @@ msgstr "计划针对"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "播放"
@@ -7794,6 +7844,11 @@ msgstr "准备展示你的作品集，讨论你的学习历程，并获得你的
 msgid "Preparing book..."
 msgstr "正在准备书籍..."
 
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Preparing quiz..."
+msgstr "准备测验中..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -7824,7 +7879,7 @@ msgstr "上一个"
 msgid "Previous 30 days"
 msgstr "过去30天"
 
-#: src/features/News/NewsModal.tsx:442
+#: src/features/News/NewsModal.tsx:490
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "上一篇文章"
@@ -8032,6 +8087,11 @@ msgstr "购买5小时"
 msgid "Question"
 msgstr "问题"
 
+#: src/features/Quiz/components/QuizProgressBar.tsx:19
+#. js-lingui-explicit-id
+msgid "Question {current} of {total}"
+msgstr "问题 {current} / {total}"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:81
 #. js-lingui-explicit-id
 msgid "Questions"
@@ -8054,10 +8114,21 @@ msgstr "你将练习的问题"
 msgid "Queues"
 msgstr "队列"
 
+#: src/features/Quiz/components/QuizModalHeader.tsx:38
 #: src/features/Sentence/StoriesModal.tsx:556
 #. js-lingui-explicit-id
 msgid "Quiz"
 msgstr "测验"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#. js-lingui-explicit-id
+msgid "Quiz complete"
+msgstr "测验完成"
+
+#: src/features/Quiz/components/QuizModal.tsx:55
+#. js-lingui-explicit-id
+msgid "Quiz not found. Open it from the news article."
+msgstr "找不到测验。从新闻文章中打开它。"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -8516,6 +8587,7 @@ msgid "Resolving file..."
 msgstr "正在解析文件..."
 
 #: src/features/News/NewsPlayButton.tsx:112
+#: src/features/Quiz/components/QuizResultsScreen.tsx:48
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "重启"
@@ -8549,7 +8621,7 @@ msgid ""
 "to observe error rates and latency."
 msgstr "仅靠重试可能会放大失败。添加指数退避、抖动和断路器以防止级联问题。结合超时和备用路径使用。记录结构化上下文（关联ID）并生成指标以观察错误率和延迟。"
 
-#: src/features/News/NewsModal.tsx:324
+#: src/features/News/NewsModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "重试"
@@ -9263,7 +9335,7 @@ msgid ""
 "patterns and observability."
 msgstr "对 ASP.NET Core 和 EF Core 有扎实的知识。在韧性模式和可观察性方面有一些不足。"
 
-#: src/features/News/NewsModal.tsx:313
+#: src/features/News/NewsModal.tsx:348
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -9515,7 +9587,7 @@ msgstr "开始 | 5 分钟"
 msgid "Starting webcam... "
 msgstr "启动网络摄像头..."
 
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "开始中..."
@@ -9702,6 +9774,7 @@ msgid "Stupid Interview Mode"
 msgstr "愚蠢的面试模式"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
+#: src/features/Quiz/components/QuizModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提交"
@@ -9835,6 +9908,11 @@ msgstr "为您的框架和资历水平量身定制的练习"
 #. js-lingui-explicit-id
 msgid "Tailored to your experience and target role."
 msgstr "根据您的经验和目标职位量身定制。"
+
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Take quiz"
+msgstr "进行测验"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:10
 #. js-lingui-explicit-id
@@ -10221,7 +10299,7 @@ msgstr "此账户因年龄限制目前被禁用。家长或法定监护人可以
 msgid "This action is irreversible."
 msgstr "此操作不可逆。"
 
-#: src/features/News/NewsModal.tsx:419
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -10477,6 +10555,11 @@ msgstr ""
 "\n"
 "在这里你无需保持坚强。  \n"
 "你只需出现即可。"
+
+#: src/features/Quiz/components/QuizModal.tsx:232
+#. js-lingui-explicit-id
+msgid "This quiz has not been generated yet."
+msgstr "该测验尚未生成。"
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -11518,6 +11601,11 @@ msgstr "AI 应该是谁？"
 #. js-lingui-explicit-id
 msgid "Who this is for"
 msgstr "这是谁用的"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#. js-lingui-explicit-id
+msgid "Why"
+msgstr "为什么"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:10
 #. js-lingui-explicit-id

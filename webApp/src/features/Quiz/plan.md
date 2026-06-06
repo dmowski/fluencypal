@@ -365,21 +365,28 @@ webApp/src/features/Quiz/
 - [x] `plan.md`
 - [x] `types.ts`
 
-### Phase 1 — News MVP
+### Phase 1 — News MVP (done)
 
-1. `firebaseDb.ts` + `firestore.rules`
-2. `useQuizModal`, `buildNewsQuizId`, `createNewsQuiz/*`
-3. `session/*` — scoring, explain, reset, detailed feedback
-4. All five activity components + `QuizModal` + results screen
-5. `NewsModal` entry point
-6. `pnpm lint` + `pnpm test:unit`
+1. [x] `firebaseDb.ts` + `firestore.rules`
+2. [x] `useQuizModal`, `buildNewsQuizId`, `createNewsQuiz/*`
+3. [x] `session/*` — scoring, explain, reset, detailed feedback
+4. [x] All five activity components + `QuizModal` + results screen
+5. [x] `NewsModal` entry point
+6. [x] `pnpm lint` + `pnpm test:unit`
 
-### Phase 2 — Later
+### Phase 2 — Done
 
-- AI generation caching
+- [x] AI generation caching (`generateNewsQuizDraft` + `localStorage` keyed by article/complexity)
+- [x] Quiz progress UI (question X of Y bar, section instructions on first question in section)
+- [x] Quiz modal stacks above news (`CustomModal` `zIndex={1100}`)
+- [x] Completion stats (`stats/quiz/stats/{quizId}`) + admin **Quiz Done - 24h** card
+- [x] Learner context from `useAiUserInfo` passed into news quiz generation
+
+### Phase 3 — Later
+
 - PDF / manual exam sources (not planned now)
-- Admin stats, analytics
-- Multi-hour exam UX (timers, section breaks)
+- Multi-hour exam UX (timers, timed section breaks)
+- Per-quiz analytics dashboard
 
 ---
 

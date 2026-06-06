@@ -25,4 +25,5 @@ export interface AdminStatsRequest {
 export interface AdminStatsResponse {
   users: UserStat[];
   newsReadsLast24h: number;
+  quizCompletionsLast24h: number;
 }

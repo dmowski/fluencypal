@@ -9,6 +9,7 @@ interface CustomModalProps {
   children: React.ReactNode;
   mobilePadding?: string;
   desktopPadding?: string;
+  zIndex?: number;
 }
 
 export const CustomModal = ({
@@ -17,6 +18,7 @@ export const CustomModal = ({
   children,
   mobilePadding,
   desktopPadding,
+  zIndex = 999,
 }: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -28,7 +30,7 @@ export const CustomModal = ({
       open={isOpen}
       onClose={onClose}
       sx={{
-        zIndex: 999,
+        zIndex,
       }}
       slotProps={{
         backdrop: {

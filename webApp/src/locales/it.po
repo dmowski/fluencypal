@@ -381,6 +381,11 @@ msgstr "Aggiungi giocatore"
 msgid "Add Post"
 msgstr "Aggiungi post"
 
+#: src/features/Quiz/components/activities/DescribePictureVoiceActivity.tsx:59
+#. js-lingui-explicit-id
+msgid "Add recording to answer"
+msgstr "Aggiungi registrazione alla risposta"
+
 #: src/features/Settings/MyProfile.tsx:256
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -1002,6 +1007,7 @@ msgstr "Punteggi medi in grammatica, vocabolario, fluidità e fiducia."
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
 #: src/features/Navigation/BackHomeNavButton.tsx:44
+#: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
 #. js-lingui-explicit-id
 msgid "Back"
@@ -1710,6 +1716,7 @@ msgstr ""
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/QuizResultsScreen.tsx:51
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2157,6 +2164,7 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
+#: src/features/Quiz/components/QuestionFeedback.tsx:34
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Corretto"
@@ -2197,10 +2205,15 @@ msgstr "Correzioni quando ti blocchi"
 msgid "Could not find page"
 msgstr "Impossibile trovare la pagina"
 
-#: src/features/News/NewsModal.tsx:310
+#: src/features/News/NewsModal.tsx:345
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Impossibile caricare l'articolo"
+
+#: src/features/News/NewsModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Could not start the quiz. Please try again."
+msgstr "Impossibile avviare il quiz. Per favore, riprova."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2956,7 +2969,7 @@ msgid "Discuss today’s news with the AI"
 msgstr "Discuti le notizie di oggi con l'AI"
 
 #: src/features/News/NewsDashboardCard.tsx:25
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Discuss with AI"
 msgstr "Discuti con l'AI"
@@ -3498,6 +3511,11 @@ msgstr "Saggi"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Parole essenziali per discutere di salute mentale e psicologia."
 
+#: src/features/Quiz/components/QuizModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Evaluating..."
+msgstr "Valutazione in corso..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:10
 #. js-lingui-explicit-id
 msgid "Even Strong Senior Developers Fail Interviews"
@@ -3780,6 +3798,11 @@ msgid ""
 msgstr ""
 "Impossibile eliminare il tuo account. Riprova più tardi o contatta gli "
 "sviluppatori."
+
+#: src/features/Quiz/components/QuizModal.tsx:63
+#. js-lingui-explicit-id
+msgid "Failed to generate quiz."
+msgstr "Impossibile generare il quiz."
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -4495,6 +4518,11 @@ msgstr "Assistente Generale"
 msgid "Generate more unique lessons"
 msgstr "Genera lezioni più uniche"
 
+#: src/features/Quiz/components/QuizModal.tsx:235
+#. js-lingui-explicit-id
+msgid "Generate quiz"
+msgstr "Genera quiz"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
 msgid "Generating..."
@@ -4622,6 +4650,11 @@ msgstr "Ottieni fiducia con il supporto dell'IA"
 #. js-lingui-explicit-id
 msgid "Get creative"
 msgstr "Diventa creativo"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:40
+#. js-lingui-explicit-id
+msgid "Get detailed feedback"
+msgstr "Ottieni un feedback dettagliato"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:123
 #: src/features/Usage/FeatureBlocker.tsx:99
@@ -5714,6 +5747,11 @@ msgstr ""
 "frontend. Dopo aver risposto, riceverai feedback per aiutarti a "
 "perfezionare le tue risposte e migliorare le tue competenze per i colloqui."
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:37
+#. js-lingui-explicit-id
+msgid "Incorrect"
+msgstr "Errato"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:394
 #. js-lingui-explicit-id
 msgid "Increase font size"
@@ -6438,7 +6476,7 @@ msgstr "Caricamento"
 msgid "Loading a word..."
 msgstr "Caricamento di una parola..."
 
-#: src/features/News/NewsModal.tsx:303
+#: src/features/News/NewsModal.tsx:338
 #. js-lingui-explicit-id
 msgid "Loading article..."
 msgstr "Caricamento articolo..."
@@ -6447,6 +6485,11 @@ msgstr "Caricamento articolo..."
 #. js-lingui-explicit-id
 msgid "Loading library..."
 msgstr "Caricamento della libreria..."
+
+#: src/features/Quiz/components/QuizModal.tsx:224
+#. js-lingui-explicit-id
+msgid "Loading quiz..."
+msgstr "Caricamento quiz..."
 
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
@@ -6718,7 +6761,7 @@ msgstr ""
 "aggiorna la pagina e riprova."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:94
-#: src/features/News/NewsModal.tsx:229
+#: src/features/News/NewsModal.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Microphone permission is required to start the call. Please allow "
@@ -6927,6 +6970,7 @@ msgstr "Discussione sulle notizie"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
+#: src/features/Quiz/components/QuestionFeedback.tsx:57
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -6934,7 +6978,7 @@ msgstr "Discussione sulle notizie"
 msgid "Next"
 msgstr "Avanti"
 
-#: src/features/News/NewsModal.tsx:455
+#: src/features/News/NewsModal.tsx:503
 #. js-lingui-explicit-id
 msgid "Next article"
 msgstr "Prossimo articolo"
@@ -7600,6 +7644,11 @@ msgstr "Consenso dei Genitori"
 msgid "Parental consent submitted!"
 msgstr "Consenso dei genitori inviato!"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:36
+#. js-lingui-explicit-id
+msgid "Partially correct"
+msgstr "Parzialmente corretto"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:361
 #. js-lingui-explicit-id
 msgid ""
@@ -7798,6 +7847,7 @@ msgstr "Piano per"
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:120
 #: src/features/News/NewsPlayButton.tsx:129
+#: src/features/Quiz/components/activities/ListeningActivity.tsx:28
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Gioca"
@@ -8379,6 +8429,11 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Preparazione del libro..."
 
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Preparing quiz..."
+msgstr "Preparazione del quiz..."
+
 #: src/features/Dashboard/BrainCard.tsx:537
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
@@ -8411,7 +8466,7 @@ msgstr "Precedente"
 msgid "Previous 30 days"
 msgstr "Precedenti 30 giorni"
 
-#: src/features/News/NewsModal.tsx:442
+#: src/features/News/NewsModal.tsx:490
 #. js-lingui-explicit-id
 msgid "Previous article"
 msgstr "Articolo precedente"
@@ -8619,6 +8674,11 @@ msgstr "Acquista 5 ore"
 msgid "Question"
 msgstr "Domanda"
 
+#: src/features/Quiz/components/QuizProgressBar.tsx:19
+#. js-lingui-explicit-id
+msgid "Question {current} of {total}"
+msgstr "Domanda {current} di {total}"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:81
 #. js-lingui-explicit-id
 msgid "Questions"
@@ -8641,10 +8701,21 @@ msgstr "Domande che praticherai"
 msgid "Queues"
 msgstr "Code di attesa"
 
+#: src/features/Quiz/components/QuizModalHeader.tsx:38
 #: src/features/Sentence/StoriesModal.tsx:556
 #. js-lingui-explicit-id
 msgid "Quiz"
 msgstr "Quiz"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#. js-lingui-explicit-id
+msgid "Quiz complete"
+msgstr "Quiz completato"
+
+#: src/features/Quiz/components/QuizModal.tsx:55
+#. js-lingui-explicit-id
+msgid "Quiz not found. Open it from the news article."
+msgstr "Quiz non trovato. Aprilo dall'articolo di notizie."
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -9125,6 +9196,7 @@ msgid "Resolving file..."
 msgstr "Risoluzione del file..."
 
 #: src/features/News/NewsPlayButton.tsx:112
+#: src/features/Quiz/components/QuizResultsScreen.tsx:48
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "Riavviare"
@@ -9163,7 +9235,7 @@ msgstr ""
 "contesto strutturato (ID di correlazione) ed emetti metriche per osservare "
 "i tassi di errore e la latenza."
 
-#: src/features/News/NewsModal.tsx:324
+#: src/features/News/NewsModal.tsx:359
 #. js-lingui-explicit-id
 msgid "Retry"
 msgstr "Riprova"
@@ -9898,7 +9970,7 @@ msgstr ""
 "Solida conoscenza di ASP.NET Core e EF Core. Alcuni gap nei pattern di "
 "resilienza e osservabilità."
 
-#: src/features/News/NewsModal.tsx:313
+#: src/features/News/NewsModal.tsx:348
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong while fetching this article. Please check your "
@@ -10162,7 +10234,7 @@ msgstr "Inizio | 5 min"
 msgid "Starting webcam... "
 msgstr "Avvio della webcam... "
 
-#: src/features/News/NewsModal.tsx:435
+#: src/features/News/NewsModal.tsx:482
 #. js-lingui-explicit-id
 msgid "Starting..."
 msgstr "Inizio..."
@@ -10381,6 +10453,7 @@ msgid "Stupid Interview Mode"
 msgstr "Modalità Intervista Stupida"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
+#: src/features/Quiz/components/QuizModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Invia"
@@ -10518,6 +10591,11 @@ msgstr "Pratica personalizzata per il tuo framework e livello di seniorità"
 #. js-lingui-explicit-id
 msgid "Tailored to your experience and target role."
 msgstr "Adattato alla tua esperienza e ruolo di destinazione."
+
+#: src/features/News/NewsModal.tsx:471
+#. js-lingui-explicit-id
+msgid "Take quiz"
+msgstr "Fai il quiz"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:10
 #. js-lingui-explicit-id
@@ -10949,7 +11027,7 @@ msgstr ""
 msgid "This action is irreversible."
 msgstr "Questa azione è irreversibile."
 
-#: src/features/News/NewsModal.tsx:419
+#: src/features/News/NewsModal.tsx:454
 #. js-lingui-explicit-id
 msgid ""
 "This article does not have a version for the selected complexity yet. Try a "
@@ -11224,6 +11302,11 @@ msgstr ""
 "\n"
 "Non devi essere forte qui.  \n"
 "Devi solo essere presente."
+
+#: src/features/Quiz/components/QuizModal.tsx:232
+#. js-lingui-explicit-id
+msgid "This quiz has not been generated yet."
+msgstr "Questo quiz non è stato ancora generato."
 
 #: src/features/RolePlay/rolePlayData.tsx:635
 #. js-lingui-explicit-id
@@ -12322,6 +12405,11 @@ msgstr "Chi dovrebbe essere l'IA?"
 #. js-lingui-explicit-id
 msgid "Who this is for"
 msgstr "Per chi è questo"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:53
+#. js-lingui-explicit-id
+msgid "Why"
+msgstr "Perché"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:10
 #. js-lingui-explicit-id
