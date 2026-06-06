@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { RecordUserAudioAnswer } from '@/features/Survey/RecordUserAudioAnswer';
 import { DescribePictureVoiceQuestion } from '../../types';
+import { useEffect } from 'react';
 
 export const DescribePictureVoiceActivity = ({
   question,
@@ -28,36 +29,38 @@ export const DescribePictureVoiceActivity = ({
     recorder.removeTranscript();
   };
 
+  useEffect(() => {
+    if (recorder.transcription) {
+      handleTranscriptUpdate();
+    }
+  }, [recorder.transcription]);
+
   return (
     <Stack sx={{ gap: '20px' }}>
       {question.imageUrl && (
         <img
           src={question.imageUrl}
           alt={question.promptText}
-          style={{ width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '280px' }}
+          style={{ width: '100%', borderRadius: '12px' }}
         />
       )}
       <Typography variant="h6" sx={{ fontWeight: 600 }}>
         {question.promptText}
       </Typography>
 
-      <RecordUserAudioAnswer
-        transcript={transcription}
-        minWords={minWords}
-        maxWords={question.maxWords}
-        isTranscribing={recorder.isTranscribing}
-        visualizerComponent={recorder.visualizerComponent}
-        isRecording={recorder.isRecording}
-        stopRecording={recorder.stopRecording}
-        startRecording={recorder.startRecording}
-        clearTranscript={() => onTranscriptionChange('')}
-        error={recorder.error || null}
-      />
-
-      {recorder.transcription && !disabled && (
-        <Button variant="outlined" color="info" onClick={handleTranscriptUpdate}>
-          {i18n._('Add recording to answer')}
-        </Button>
+      {!disabled && (
+        <RecordUserAudioAnswer
+          transcript={transcription}
+          minWords={minWords}
+          maxWords={question.maxWords}
+          isTranscribing={recorder.isTranscribing}
+          visualizerComponent={recorder.visualizerComponent}
+          isRecording={recorder.isRecording}
+          stopRecording={recorder.stopRecording}
+          startRecording={recorder.startRecording}
+          clearTranscript={() => onTranscriptionChange('')}
+          error={recorder.error || null}
+        />
       )}
     </Stack>
   );
