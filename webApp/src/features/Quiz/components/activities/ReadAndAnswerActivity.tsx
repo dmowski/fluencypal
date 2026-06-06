@@ -16,10 +16,10 @@ export const ReadAndAnswerActivity = ({
   isRevealed?: boolean;
 }) => (
   <Stack sx={{ gap: '20px' }}>
-    <Typography variant="body1" sx={{ lineHeight: 1.6, opacity: 0.95 }}>
+    <Typography variant="body1" sx={{ lineHeight: 1.6, opacity: 0.95, fontSize: '22px' }}>
       {question.passageText}
     </Typography>
-    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+    <Typography variant="h4" sx={{ fontWeight: 600 }}>
       {question.questionText}
     </Typography>
     <QuizOptionList
