@@ -4,9 +4,10 @@ import { useLingui } from '@lingui/react';
 import Stack from '@mui/material/Stack';
 import { useMemo, useState } from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
-import { EXAM_CATALOG } from '@/features/Quiz/exam/examCatalog';
+import { getExamCatalogForTargetLanguage } from '@/features/Quiz/exam/examCatalog';
 import { ensureManualExam } from '@/features/Quiz/exam/ensureManualExam';
 import { useQuizModal } from '@/features/Quiz/useQuizModal';
+import { useSettings } from '@/features/Settings/useSettings';
 import { SectionHeader } from '../CartsHeader';
 import { CardItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 
@@ -16,12 +17,18 @@ const EXAMS_PREVIEW_IMAGE =
 export const ExamsDashboardCard = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const settings = useSettings();
   const quizModal = useQuizModal();
   const [startingExamId, setStartingExamId] = useState<string | null>(null);
 
+  const availableExams = useMemo(
+    () => getExamCatalogForTargetLanguage(settings.languageCode),
+    [settings.languageCode],
+  );
+
   const items: CardItem[] = useMemo(
     () =>
-      EXAM_CATALOG.map((exam) => ({
+      availableExams.map((exam) => ({
         title: exam.title,
         subTitle: i18n._('~{minutes} min · {tasks}', {
           minutes: exam.estimatedMinutes,
@@ -29,7 +36,8 @@ export const ExamsDashboardCard = () => {
         }),
         iconName: 'graduation-cap',
         iconBgColor: '#4B5DFF',
-        actionButtonTitle: startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
+        actionButtonTitle:
+          startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
         onClick: () => {
           if (!auth.uid || startingExamId) return;
           setStartingExamId(exam.id);
@@ -46,8 +54,12 @@ export const ExamsDashboardCard = () => {
             });
         },
       })),
-    [auth.uid, i18n, quizModal, startingExamId],
+    [auth.uid, availableExams, i18n, quizModal, startingExamId],
   );
+
+  if (settings.loading || availableExams.length === 0) {
+    return null;
+  }
 
   return (
     <Stack sx={{ gap: '20px' }} data-testid="exams-dashboard-card">

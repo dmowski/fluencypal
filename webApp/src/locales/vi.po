@@ -1702,7 +1702,7 @@ msgstr "Nhấp vào nút Chia sẻ bên cạnh app.fluencypal.com trong trình d
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
-#: src/features/Quiz/components/QuizResultsScreen.tsx:51
+#: src/features/Quiz/components/QuizResultsScreen.tsx:45
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2146,7 +2146,7 @@ msgstr "Các chỉ số Web cốt lõi"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:56
+#: src/features/Quiz/components/QuestionFeedback.tsx:62
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Chính xác"
@@ -2191,6 +2191,11 @@ msgstr "Không thể tìm thấy trang"
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Không thể tải bài viết"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:42
+#. js-lingui-explicit-id
+msgid "Could not start the exam. Please try again."
+msgstr "Không thể bắt đầu kỳ thi. Vui lòng thử lại."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2338,7 +2343,7 @@ msgstr "Tạo Kịch Bản Của Bạn"
 msgid "Creating your improvement..."
 msgstr "Đang tạo cải thiện của bạn..."
 
-#: src/features/Quiz/components/QuizModal.tsx:214
+#: src/features/Quiz/components/QuizModal.tsx:216
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Đang tạo bài kiểm tra của bạn... Quá trình này thường mất khoảng một phút."
@@ -3490,7 +3495,7 @@ msgstr "Bài văn"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Từ vựng cần thiết để thảo luận về sức khỏe tâm thần và tâm lý học."
 
-#: src/features/Quiz/components/QuizModal.tsx:275
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Đang đánh giá..."
@@ -3595,6 +3600,11 @@ msgstr "Mọi thứ bạn cần để nổi bật và đạt được công vi�
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Ví dụ: Tôi đang chuẩn bị cho chuyến công tác đến Berlin"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:55
+#. js-lingui-explicit-id
+msgid "Exams"
+msgstr "Kiểm tra"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:96
 #. js-lingui-explicit-id
@@ -3783,7 +3793,7 @@ msgstr ""
 "Không thể xóa tài khoản của bạn. Vui lòng thử lại sau, hoặc liên hệ với nhà "
 "phát triển."
 
-#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:29
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Không tạo được bài kiểm tra."
@@ -4633,7 +4643,7 @@ msgstr "Có được sự tự tin với sự hỗ trợ từ AI"
 msgid "Get creative"
 msgstr "Hãy sáng tạo"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:40
+#: src/features/Quiz/components/QuizResultsScreen.tsx:62
 #. js-lingui-explicit-id
 msgid "Get detailed feedback"
 msgstr "Nhận phản hồi chi tiết"
@@ -5718,7 +5728,7 @@ msgstr ""
 "phát triển frontend cao cấp. Sau khi trả lời, bạn sẽ nhận được phản hồi để "
 "giúp bạn chỉnh sửa câu trả lời của mình và cải thiện kỹ năng phỏng vấn."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:59
+#: src/features/Quiz/components/QuestionFeedback.tsx:65
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Không chính xác"
@@ -6445,7 +6455,7 @@ msgstr "Đang tải bài viết..."
 msgid "Loading library..."
 msgstr "Đang tải thư viện..."
 
-#: src/features/Quiz/components/QuizModal.tsx:222
+#: src/features/Quiz/components/QuizModal.tsx:224
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Đang tải bài kiểm tra..."
@@ -6477,6 +6487,7 @@ msgstr "Đang tải.."
 #: src/features/Header/PaymentHistoryModal.tsx:83
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
+#: src/features/Quiz/components/QuizResultsScreen.tsx:62
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
@@ -7605,7 +7616,7 @@ msgstr "Sự Đồng Ý Của Phụ Huynh"
 msgid "Parental consent submitted!"
 msgstr "Sự đồng ý của phụ huynh đã được gửi!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:58
+#: src/features/Quiz/components/QuestionFeedback.tsx:64
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Một phần đúng"
@@ -8093,6 +8104,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Practice daily"
 msgstr "Thực hành hằng ngày"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:65
+#. js-lingui-explicit-id
+msgid "PRACTICE EXAMS"
+msgstr "KỲ THI THỬ"
 
 #: src/features/RolePlay/rolePlayData.tsx:1025
 #. js-lingui-explicit-id
@@ -8657,12 +8673,12 @@ msgstr "Hàng đợi"
 msgid "Quiz"
 msgstr "Đố vui"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#: src/features/Quiz/components/QuizResultsScreen.tsx:28
 #. js-lingui-explicit-id
 msgid "Quiz complete"
 msgstr "Hoàn thành bài kiểm tra"
 
-#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:48
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Không tìm thấy bài kiểm tra. Mở nó từ bài báo tin tức."
@@ -9141,7 +9157,7 @@ msgid "Resolving file..."
 msgstr "Đang giải quyết tập tin..."
 
 #: src/features/News/NewsPlayButton.tsx:112
-#: src/features/Quiz/components/QuizResultsScreen.tsx:48
+#: src/features/Quiz/components/QuizResultsScreen.tsx:53
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "Khởi động lại"
@@ -10017,6 +10033,7 @@ msgstr "Ngôi sao"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:32
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10182,6 +10199,7 @@ msgstr "Bắt đầu | 5 phút"
 msgid "Starting webcam... "
 msgstr "Bắt đầu webcam..."
 
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:32
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10388,6 +10406,15 @@ msgstr ""
 "Kiến thức vững chắc về React và TypeScript. Có một vài khoảng trống nhỏ "
 "trong câu trả lời về giao tiếp và lãnh đạo."
 
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid ""
+"Structured practice exams with reading, listening, grammar, and speaking "
+"tasks."
+msgstr ""
+"Các bài thi thực hành có cấu trúc với các bài tập đọc, nghe, ngữ pháp và "
+"nói."
+
 #: src/features/RolePlay/rolePlayData.tsx:258
 #. js-lingui-explicit-id
 msgid "Stupid Interview"
@@ -10399,7 +10426,7 @@ msgid "Stupid Interview Mode"
 msgstr "Chế Độ Phỏng Vấn Ngu Ngốc"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:275
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gửi"
@@ -10758,6 +10785,11 @@ msgid ""
 msgstr ""
 "Kiểm tra kiến thức của bạn, tham gia các thử thách, và cạnh tranh với người "
 "khác trên bảng xếp hạng."
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Test your level with full exams"
+msgstr "Kiểm tra trình độ của bạn với các kỳ thi đầy đủ"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:39
 #: src/features/Case/data/frontend-junior/techStackSection.ts:49
@@ -11246,7 +11278,7 @@ msgstr ""
 "Bạn không cần phải mạnh mẽ ở đây.  \n"
 "Bạn chỉ cần có mặt."
 
-#: src/features/Quiz/components/QuizModal.tsx:239
+#: src/features/Quiz/components/QuizModal.tsx:244
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Bài kiểm tra này chưa được tạo. Mở nó từ bài báo tin tức."
@@ -11574,7 +11606,7 @@ msgstr "Ngày dùng thử"
 msgid "Try"
 msgstr "Cố gắng"
 
-#: src/features/Quiz/components/QuizModal.tsx:231
+#: src/features/Quiz/components/QuizModal.tsx:236
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Thử lại"
@@ -13227,3 +13259,8 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:26
+#. js-lingui-explicit-id
+msgid "~{minutes} min · {tasks}"
+msgstr "~{minutes} phút · {tasks}"

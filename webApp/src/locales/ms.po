@@ -1720,7 +1720,7 @@ msgstr "Klik butang Kongsi di sebelah app.fluencypal.com dalam pelayar anda."
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
-#: src/features/Quiz/components/QuizResultsScreen.tsx:51
+#: src/features/Quiz/components/QuizResultsScreen.tsx:45
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2166,7 +2166,7 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:56
+#: src/features/Quiz/components/QuestionFeedback.tsx:62
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Betul"
@@ -2213,6 +2213,11 @@ msgstr "Tidak dapat mencari halaman"
 #. js-lingui-explicit-id
 msgid "Could not load article"
 msgstr "Tidak dapat memuat artikel"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:42
+#. js-lingui-explicit-id
+msgid "Could not start the exam. Please try again."
+msgstr "Tidak dapat memulakan peperiksaan. Sila cuba lagi."
 
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
@@ -2362,7 +2367,7 @@ msgstr "Buat Senario Anda Sendiri"
 msgid "Creating your improvement..."
 msgstr "Sedang mencipta penambahbaikan anda..."
 
-#: src/features/Quiz/components/QuizModal.tsx:214
+#: src/features/Quiz/components/QuizModal.tsx:216
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Menjana kuiz anda... Ini biasanya mengambil masa kira-kira satu minit."
@@ -3513,7 +3518,7 @@ msgstr "Esei"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Perkataan penting untuk membincangkan kesihatan mental dan psikologi."
 
-#: src/features/Quiz/components/QuizModal.tsx:275
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Menilai..."
@@ -3617,6 +3622,11 @@ msgstr "Segala yang anda perlukan untuk menonjol dan mendapatkan pekerjaan"
 #. js-lingui-explicit-id
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Contoh: Saya sedang bersiap untuk perjalanan perniagaan ke Berlin"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:55
+#. js-lingui-explicit-id
+msgid "Exams"
+msgstr "Peperiksaan"
 
 #: src/features/Conversation/RecordingCanvasMenu.tsx:96
 #. js-lingui-explicit-id
@@ -3806,7 +3816,7 @@ msgstr ""
 "Gagal untuk padam akaun anda. Sila cuba lagi kemudian, atau hubungi para "
 "pembangun."
 
-#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:28
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:29
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Gagal menjana kuiz."
@@ -4665,7 +4675,7 @@ msgstr "Dapatkan keyakinan dengan sokongan AI"
 msgid "Get creative"
 msgstr "Dapatkan kreativiti"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:40
+#: src/features/Quiz/components/QuizResultsScreen.tsx:62
 #. js-lingui-explicit-id
 msgid "Get detailed feedback"
 msgstr "Dapatkan maklum balas terperinci"
@@ -5790,7 +5800,7 @@ msgstr ""
 "membantu anda memperbaiki jawapan anda dan meningkatkan kemahiran temuduga "
 "anda."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:59
+#: src/features/Quiz/components/QuestionFeedback.tsx:65
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Tidak betul"
@@ -6528,7 +6538,7 @@ msgstr "Memuat artikel..."
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
 
-#: src/features/Quiz/components/QuizModal.tsx:222
+#: src/features/Quiz/components/QuizModal.tsx:224
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Memuatkan kuiz..."
@@ -6560,6 +6570,7 @@ msgstr "Memuatkan.."
 #: src/features/Header/PaymentHistoryModal.tsx:83
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
+#: src/features/Quiz/components/QuizResultsScreen.tsx:62
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
@@ -7697,7 +7708,7 @@ msgstr "Persetujuan Ibu Bapa"
 msgid "Parental consent submitted!"
 msgstr "Persetujuan ibu bapa telah dikemukakan!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:58
+#: src/features/Quiz/components/QuestionFeedback.tsx:64
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Sebahagiannya betul"
@@ -8190,6 +8201,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Practice daily"
 msgstr "Berlatih setiap hari"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:65
+#. js-lingui-explicit-id
+msgid "PRACTICE EXAMS"
+msgstr "Ujian Praktis"
 
 #: src/features/RolePlay/rolePlayData.tsx:1025
 #. js-lingui-explicit-id
@@ -8755,12 +8771,12 @@ msgstr "Barisan"
 msgid "Quiz"
 msgstr "Kuiz"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#: src/features/Quiz/components/QuizResultsScreen.tsx:28
 #. js-lingui-explicit-id
 msgid "Quiz complete"
 msgstr "Kuiz lengkap"
 
-#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:51
+#: src/features/Quiz/createNewsQuiz/useAutoCreatePendingNewsQuiz.ts:48
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr ""
@@ -9241,7 +9257,7 @@ msgid "Resolving file..."
 msgstr "Menyelesaikan fail..."
 
 #: src/features/News/NewsPlayButton.tsx:112
-#: src/features/Quiz/components/QuizResultsScreen.tsx:48
+#: src/features/Quiz/components/QuizResultsScreen.tsx:53
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "Mulakan semula"
@@ -10116,6 +10132,7 @@ msgstr "Bintang-bintang"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:32
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10280,6 +10297,7 @@ msgstr "Mula | 5 min"
 msgid "Starting webcam... "
 msgstr "Memulakan webcam... "
 
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:32
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10487,6 +10505,15 @@ msgstr ""
 "Pengetahuan yang kuat dalam React dan TypeScript. Terdapat sedikit jurang "
 "dalam komunikasi dan jawapan kepimpinan."
 
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:56
+#. js-lingui-explicit-id
+msgid ""
+"Structured practice exams with reading, listening, grammar, and speaking "
+"tasks."
+msgstr ""
+"Peperiksaan latihan berstruktur dengan tugas membaca, mendengar, "
+"tatabahasa, dan bercakap."
+
 #: src/features/RolePlay/rolePlayData.tsx:258
 #. js-lingui-explicit-id
 msgid "Stupid Interview"
@@ -10498,7 +10525,7 @@ msgid "Stupid Interview Mode"
 msgstr "Mod Temuduga Bodoh"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:275
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Hantar"
@@ -10860,6 +10887,11 @@ msgid ""
 msgstr ""
 "Uji pengetahuan anda, sertai cabaran, dan bersaing dengan orang lain di "
 "papan pendahulu."
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Test your level with full exams"
+msgstr "Uji tahap anda dengan peperiksaan penuh"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:39
 #: src/features/Case/data/frontend-junior/techStackSection.ts:49
@@ -11353,7 +11385,7 @@ msgstr ""
 "Anda tidak perlu kuat di sini.  \n"
 "Anda hanya perlu hadir."
 
-#: src/features/Quiz/components/QuizModal.tsx:239
+#: src/features/Quiz/components/QuizModal.tsx:244
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Kuiz ini belum dihasilkan lagi. Buka ia daripada artikel berita."
@@ -11682,7 +11714,7 @@ msgstr "Hari percubaan"
 msgid "Try"
 msgstr "Cuba"
 
-#: src/features/Quiz/components/QuizModal.tsx:231
+#: src/features/Quiz/components/QuizModal.tsx:236
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Cuba lagi"
@@ -13347,3 +13379,8 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:26
+#. js-lingui-explicit-id
+msgid "~{minutes} min · {tasks}"
+msgstr "~{minutes} min · {tasks}"
