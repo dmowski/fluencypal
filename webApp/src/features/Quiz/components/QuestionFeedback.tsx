@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
 import { QuizQuestionResult } from '../types';
+import { ChevronRight } from 'lucide-react';
 
 export const QuestionFeedback = ({
   result,
@@ -30,14 +31,15 @@ export const QuestionFeedback = ({
       {result.whyExplanation && <Markdown variant="conversation">{result.whyExplanation}</Markdown>}
 
       <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <Button variant="contained" color="info" onClick={onNext} endIcon={<ChevronRight />}>
+          {i18n._('Next')}
+        </Button>
+
         {showWhy && (
           <Button variant="outlined" color="info" disabled={isExplaining} onClick={onExplain}>
             {i18n._('Why')}
           </Button>
         )}
-        <Button variant="contained" color="info" onClick={onNext}>
-          {i18n._('Next')}
-        </Button>
 
         <Typography
           variant="body1"

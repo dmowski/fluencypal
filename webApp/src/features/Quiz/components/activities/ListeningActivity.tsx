@@ -21,15 +21,13 @@ export const ListeningActivity = ({
 
   return (
     <Stack sx={{ gap: '20px' }}>
-      <Stack sx={{ gap: '12px' }}>
-        <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
-          {question.audioText}
-        </Typography>
+      <Stack sx={{ gap: '12px', alignItems: 'flex-start' }}>
         <AudioPlayIcon text={question.audioText} type="button" buttonLabel={i18n._('Play')} />
+        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          {question.questionText}
+        </Typography>
       </Stack>
-      <Typography variant="h6" sx={{ fontWeight: 600 }}>
-        {question.questionText}
-      </Typography>
+
       <QuizOptionList
         options={question.options}
         selectedOptionId={selectedOptionId}
