@@ -28,6 +28,7 @@ import { ListeningActivity } from './activities/ListeningActivity';
 import { DescribePictureVoiceActivity } from './activities/DescribePictureVoiceActivity';
 import { QuizProgressBar } from './QuizProgressBar';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
+import { Check } from 'lucide-react';
 
 export const QuizModal = () => {
   const { quizId, isOpen, closeQuiz } = useQuizModal();
@@ -58,10 +59,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
     if (answer.payload.kind === 'multiple-choice') {
       return Boolean(answer.payload.selectedOptionId);
     }
-    if (
-      answer.payload.kind === 'fill-gap' &&
-      isFillGapQuestion(question)
-    ) {
+    if (answer.payload.kind === 'fill-gap' && isFillGapQuestion(question)) {
       const gapIds = Object.keys(question.gaps);
       const selections = answer.payload.selections;
       return gapIds.every((gapId) => Boolean(selections[gapId]));
@@ -133,8 +131,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
     }
 
     if (isFillGapQuestion(question)) {
-      const selections =
-        answer?.payload.kind === 'fill-gap' ? answer.payload.selections : {};
+      const selections = answer?.payload.kind === 'fill-gap' ? answer.payload.selections : {};
       return (
         <FillGapActivity
           question={question}
@@ -171,11 +168,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
   const showBootstrapError =
     bootstrapError && !isGenerating && !session.isLoading && !session.record;
   const showMissingQuiz =
-    !session.isLoading &&
-    !session.record &&
-    !isGenerating &&
-    !bootstrapError &&
-    !hasPendingCreate;
+    !session.isLoading && !session.record && !isGenerating && !bootstrapError && !hasPendingCreate;
 
   return (
     <CustomModal isOpen onClose={onClose} mobilePadding="0" desktopPadding="0" zIndex={1100}>
@@ -188,14 +181,21 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         }}
         data-testid="quiz-modal"
       >
-        <QuizModalHeader sectionTitle={session.sectionTitle} onBack={() => void session.goBack()} />
-
-        {!session.isExamComplete && session.totalQuestions > 0 && session.currentQuestionNumber > 0 && (
-          <QuizProgressBar
-            current={session.currentQuestionNumber}
-            total={session.totalQuestions}
+        {!session.isExamComplete && (
+          <QuizModalHeader
+            sectionTitle={session.sectionTitle}
+            onBack={() => void session.goBack()}
           />
         )}
+
+        {!session.isExamComplete &&
+          session.totalQuestions > 0 &&
+          session.currentQuestionNumber > 0 && (
+            <QuizProgressBar
+              current={session.currentQuestionNumber}
+              total={session.totalQuestions}
+            />
+          )}
 
         <Stack
           sx={{
@@ -225,7 +225,10 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
           )}
 
           {showBootstrapError && (
-            <Stack sx={{ gap: '16px', paddingTop: '40px' }} data-testid="quiz-modal-bootstrap-error">
+            <Stack
+              sx={{ gap: '16px', paddingTop: '40px' }}
+              data-testid="quiz-modal-bootstrap-error"
+            >
               <Typography variant="body1">{bootstrapError}</Typography>
               <Button variant="contained" color="info" onClick={retryCreate}>
                 {i18n._('Try again')}
@@ -259,31 +262,40 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
               <Stack sx={{ gap: '16px', paddingTop: '8px' }}>
                 {session.currentSection?.instructions &&
                   session.progress?.currentQuestionIndex === 0 && (
-                    <Markdown variant="conversation">{session.currentSection.instructions}</Markdown>
+                    <Markdown variant="conversation">
+                      {session.currentSection.instructions}
+                    </Markdown>
                   )}
                 {renderActivity()}
 
-                {!isSubmitted && (
-                  <Button
-                    variant="contained"
-                    color="info"
-                    disabled={!canSubmit || session.isEvaluatingVoice}
-                    onClick={() => void handleSubmit()}
-                    data-testid="quiz-submit-question"
-                    sx={{ alignSelf: 'flex-start', marginTop: '8px' }}
-                  >
-                    {session.isEvaluatingVoice ? i18n._('Evaluating...') : i18n._('Submit')}
-                  </Button>
-                )}
+                <Stack
+                  sx={{
+                    paddingTop: '20px',
+                  }}
+                >
+                  {!isSubmitted && (
+                    <Button
+                      variant="contained"
+                      color="info"
+                      disabled={!canSubmit || session.isEvaluatingVoice}
+                      onClick={() => void handleSubmit()}
+                      data-testid="quiz-submit-question"
+                      sx={{ alignSelf: 'flex-start' }}
+                      endIcon={<Check size={'16px'} />}
+                    >
+                      {session.isEvaluatingVoice ? i18n._('Evaluating...') : i18n._('Submit')}
+                    </Button>
+                  )}
 
-                {isSubmitted && result && (
-                  <QuestionFeedback
-                    result={result}
-                    isExplaining={session.isExplaining}
-                    onExplain={() => void session.explainAnswer(questionId)}
-                    onNext={() => void session.goNext()}
-                  />
-                )}
+                  {isSubmitted && result && (
+                    <QuestionFeedback
+                      result={result}
+                      isExplaining={session.isExplaining}
+                      onExplain={() => void session.explainAnswer(questionId)}
+                      onNext={() => void session.goNext()}
+                    />
+                  )}
+                </Stack>
               </Stack>
             )}
         </Stack>

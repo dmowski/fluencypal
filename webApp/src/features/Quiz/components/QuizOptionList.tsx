@@ -28,9 +28,8 @@ export const QuizOptionList = ({
           sx={{
             justifyContent: 'flex-start',
             textAlign: 'left',
-            textTransform: 'none',
+            textTransform: 'capitalize',
             padding: '12px 16px',
-            color: '#EBEBF5',
             fontWeight: 500,
             border: isSelected ? '1px solid transparent' : '1px solid rgba(255,255,255,0.2)',
           }}

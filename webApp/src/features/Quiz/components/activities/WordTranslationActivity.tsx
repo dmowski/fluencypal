@@ -16,7 +16,7 @@ export const WordTranslationActivity = ({
   disabled?: boolean;
 }) => (
   <Stack sx={{ gap: '20px' }}>
-    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+    <Typography variant="h5" sx={{ fontWeight: 600, textTransform: 'capitalize' }}>
       {question.promptText}
     </Typography>
     <QuizOptionList

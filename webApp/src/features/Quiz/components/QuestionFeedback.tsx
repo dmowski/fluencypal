@@ -23,12 +23,12 @@ export const QuestionFeedback = ({
     (result.status === 'incorrect' || result.status === 'partial') && !result.whyExplanation;
 
   return (
-    <Stack sx={{ gap: '16px', marginTop: '24px' }} data-testid="quiz-question-feedback">
-      {result.feedback && <Markdown variant="conversation">{result.feedback}</Markdown>}
+    <Stack sx={{ gap: '16px' }} data-testid="quiz-question-feedback">
+      {result.feedback && <Markdown>{result.feedback}</Markdown>}
 
       {isExplaining && <LoadingShapes sizes={['30px']} />}
 
-      {result.whyExplanation && <Markdown variant="conversation">{result.whyExplanation}</Markdown>}
+      {result.whyExplanation && <Markdown>{result.whyExplanation}</Markdown>}
 
       <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
         <Button
@@ -47,9 +47,15 @@ export const QuestionFeedback = ({
         )}
 
         <Typography
-          variant="body1"
           sx={{
-            color: result.status === 'correct' ? '#7dcea0' : '#f5b7b1',
+            fontWeight: 500,
+            letterSpacing: '0.02em',
+            color:
+              result.status === 'correct'
+                ? '#5bdf94'
+                : result.status === 'partial'
+                  ? '#e2e2e2'
+                  : '#e4b8b4',
           }}
         >
           {result.status === 'correct'
