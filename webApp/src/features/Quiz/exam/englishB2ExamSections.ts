@@ -327,7 +327,7 @@ const buildGrammarQuestions = (): QuizQuestion[] => {
       segments: [
         { kind: 'text' as const, text: 'Hardly ' },
         { kind: 'gap' as const, gapId: 'g1' },
-        { kind: 'text' as const, text: ' the presentation begun when the fire alarm sounded.' },
+        { kind: 'text' as const, text: ' begun when the fire alarm sounded.' },
       ],
       gaps: {
         g1: [
