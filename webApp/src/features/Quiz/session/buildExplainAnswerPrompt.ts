@@ -1,4 +1,11 @@
-import { QuizAnswer, QuizQuestion } from '../types';
+import {
+  isFillGapQuestion,
+  isListeningQuestion,
+  isReadAndAnswerQuestion,
+  isWordTranslationQuestion,
+  QuizAnswer,
+  QuizQuestion,
+} from '../types';
 import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
 
 const formatMcQuestion = (question: QuizQuestion): string => {
@@ -39,14 +46,59 @@ const formatMcQuestion = (question: QuizQuestion): string => {
   return JSON.stringify({ type: question.type }, null, 2);
 };
 
-const formatUserAnswer = (answer: QuizAnswer): string => {
+const formatUserAnswer = (question: QuizQuestion, answer: QuizAnswer): string => {
   if (answer.payload.kind === 'multiple-choice') {
-    return answer.payload.selectedOptionId;
+    const payload = answer.payload;
+    if (
+      isWordTranslationQuestion(question) ||
+      isReadAndAnswerQuestion(question) ||
+      isListeningQuestion(question)
+    ) {
+      const selectedOption = question.options.find(
+        (option) => option.id === payload.selectedOptionId,
+      );
+      const correctOption = question.options.find(
+        (option) => option.id === question.correctOptionId,
+      );
+      return JSON.stringify(
+        {
+          selectedOptionId: payload.selectedOptionId,
+          selectedOptionLabel: selectedOption?.label ?? null,
+          correctOptionLabel: correctOption?.label ?? null,
+        },
+        null,
+        2,
+      );
+    }
+    return payload.selectedOptionId;
   }
-  if (answer.payload.kind === 'fill-gap') {
-    return JSON.stringify(answer.payload.selections);
+
+  if (answer.payload.kind === 'fill-gap' && isFillGapQuestion(question)) {
+    const selections = Object.fromEntries(
+      Object.entries(answer.payload.selections).map(([gapId, optionId]) => {
+        const gap = question.gaps[gapId];
+        const selectedOption = gap?.options.find((option) => option.id === optionId);
+        const correctOption = gap?.options.find(
+          (option) => option.id === gap.correctOptionId,
+        );
+        return [
+          gapId,
+          {
+            selectedOptionId: optionId,
+            selectedOptionLabel: selectedOption?.label ?? null,
+            correctOptionLabel: correctOption?.label ?? null,
+          },
+        ];
+      }),
+    );
+    return JSON.stringify(selections, null, 2);
   }
-  return answer.payload.transcription;
+
+  if (answer.payload.kind === 'voice') {
+    return answer.payload.transcription;
+  }
+
+  return JSON.stringify(answer.payload);
 };
 
 export const buildExplainAnswerPrompt = (
@@ -54,15 +106,19 @@ export const buildExplainAnswerPrompt = (
   answer: QuizAnswer,
   targetLanguageCode: string,
 ): { systemMessage: string; userMessage: string } => ({
-  systemMessage: `You help a language learner understand a quiz mistake.
+  systemMessage: `You help a language learner fix a quiz mistake.
 ${buildQuizTargetLanguageInstruction(targetLanguageCode)}
-Use short markdown: explain the correct answer, then why the learner's choice was wrong.
-Be encouraging and concise (3–6 sentences).`,
+Use short markdown with this structure:
+1. **Why the chosen answer fails** — one clear reason tied to this question.
+2. **Why the correct answer works** — the rule, grammar point, or evidence from the passage/audio/sentence.
+3. **How to avoid this next time** — one concrete check or study tip (pattern, keyword, grammar rule, or reading/listening strategy).
+
+Be direct and practical. Do not offer praise, reassurance, or motivational filler. 4–7 sentences total.`,
   userMessage: `Question:
 ${formatMcQuestion(question)}
 
-Learner answer identifier:
-${formatUserAnswer(answer)}`,
+Learner answer:
+${formatUserAnswer(question, answer)}`,
 });
 
 export const buildDetailedExamFeedbackPrompt = (input: {
