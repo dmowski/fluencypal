@@ -43,6 +43,7 @@ Both definition and progress live in one Firestore document: `UserQuizRecord`.
 ## Entry Points
 
 - **News:** `NewsModal` → **Take quiz** → `openNewsQuiz(input)` (modal opens immediately; generation runs inside `QuizModal`)
+- **Exams:** `ExamsDashboardCard` → `ensureManualExam` → `openQuiz(id)` (hardcoded `Quiz/exam/*` definitions; no AI generation)
 - **Shell:** `QuizModal` in `GlobalModals.tsx` when `quizId` is set (stacks above news at `zIndex={1100}`)
 
 ## Quiz Creation UX
@@ -122,6 +123,7 @@ Quiz/
   pendingNewsQuizCreate.ts — in-memory create input between NewsModal and QuizModal
   session/            — useQuizSession, scoring, navigation
   components/         — QuizModal, activities, progress bar
+  exam/               — manual exams (e.g. `englishB2Exam.ts`, `ensureManualExam.ts`)
   recordQuizCompletion.ts
   sanitizeForFirestore.ts
 ```
