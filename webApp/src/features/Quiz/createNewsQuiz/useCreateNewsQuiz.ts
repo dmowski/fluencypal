@@ -21,6 +21,7 @@ import { generateNewsQuizDraft } from './generateNewsQuizDraft';
 import { normalizeQuizDocument } from './normalizeQuizDocument';
 import { resolveIncludedSections } from './resolveIncludedSections';
 import { sanitizeForFirestore } from '../sanitizeForFirestore';
+import { runOncePerQuizId } from './newsQuizCreateInFlight';
 
 export const useCreateNewsQuiz = () => {
   const auth = useAuth();
@@ -41,69 +42,76 @@ export const useCreateNewsQuiz = () => {
       return existing.data() as UserQuizRecord;
     }
 
-    setIsCreating(true);
-    setCreateError(null);
-
-    try {
-      const sections = resolveIncludedSections({
-        targetLanguageCode: input.targetLanguageCode,
-        nativeLanguageCode: input.nativeLanguageCode,
-        imageUrl: input.imageUrl,
-        questionsPerType: NEWS_QUIZ_QUESTIONS_PER_TYPE,
-      });
-
-      if (sections.length === 0) {
-        throw new Error('No quiz sections available for this article and language settings.');
+    return runOncePerQuizId(quizId, async () => {
+      const cached = await getDoc(docRef);
+      if (cached.exists()) {
+        return cached.data() as UserQuizRecord;
       }
 
-      const includePictureSection = sections.some((s) => s.type === 'describe-picture-voice');
-      let imageDescription: string | null = null;
+      setIsCreating(true);
+      setCreateError(null);
 
-      if (includePictureSection && input.imageUrl) {
-        const token = await auth.getToken();
-        const vision = await describeImageRequest({ imageUrl: input.imageUrl }, token);
-        imageDescription = vision.description;
+      try {
+        const sections = resolveIncludedSections({
+          targetLanguageCode: input.targetLanguageCode,
+          nativeLanguageCode: input.nativeLanguageCode,
+          imageUrl: input.imageUrl,
+          questionsPerType: NEWS_QUIZ_QUESTIONS_PER_TYPE,
+        });
+
+        if (sections.length === 0) {
+          throw new Error('No quiz sections available for this article and language settings.');
+        }
+
+        const includePictureSection = sections.some((s) => s.type === 'describe-picture-voice');
+        let imageDescription: string | null = null;
+
+        if (includePictureSection && input.imageUrl) {
+          const token = await auth.getToken();
+          const vision = await describeImageRequest({ imageUrl: input.imageUrl }, token);
+          imageDescription = vision.description;
+        }
+
+        const aiSections = sections.filter((s) => s.type !== 'describe-picture-voice');
+        let parsed = await generateNewsQuizDraft({
+          input,
+          sections: aiSections,
+          textAi,
+        });
+
+        if (includePictureSection && imageDescription) {
+          parsed = mergeDescribePictureSection(
+            parsed,
+            buildDescribePictureSection({
+              imageDescription,
+              targetLanguageCode: input.targetLanguageCode,
+            }),
+          );
+        }
+
+        const quiz = normalizeQuizDocument(parsed, input, imageDescription);
+        if (quiz.sections.length === 0) {
+          throw new Error('Generated quiz has no valid sections.');
+        }
+
+        const now = new Date().toISOString();
+        const record: UserQuizRecord = {
+          quiz,
+          progress: createInitialQuizProgress(quizId),
+          createdAtIso: now,
+          updatedAtIso: now,
+        };
+
+        await setDoc(docRef, sanitizeForFirestore(record));
+        return record;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Failed to create quiz';
+        setCreateError(message);
+        throw error;
+      } finally {
+        setIsCreating(false);
       }
-
-      const aiSections = sections.filter((s) => s.type !== 'describe-picture-voice');
-      let parsed = await generateNewsQuizDraft({
-        input,
-        sections: aiSections,
-        textAi,
-      });
-
-      if (includePictureSection && imageDescription) {
-        parsed = mergeDescribePictureSection(
-          parsed,
-          buildDescribePictureSection({
-            imageDescription,
-            targetLanguageCode: input.targetLanguageCode,
-          }),
-        );
-      }
-
-      const quiz = normalizeQuizDocument(parsed, input, imageDescription);
-      if (quiz.sections.length === 0) {
-        throw new Error('Generated quiz has no valid sections.');
-      }
-
-      const now = new Date().toISOString();
-      const record: UserQuizRecord = {
-        quiz,
-        progress: createInitialQuizProgress(quizId),
-        createdAtIso: now,
-        updatedAtIso: now,
-      };
-
-      await setDoc(docRef, sanitizeForFirestore(record));
-      return record;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to create quiz';
-      setCreateError(message);
-      throw error;
-    } finally {
-      setIsCreating(false);
-    }
+    });
   };
 
   return {

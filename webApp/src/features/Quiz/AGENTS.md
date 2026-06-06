@@ -57,6 +57,8 @@ When the user starts a quiz from a news article:
 
 Existing Firestore quiz docs skip generation; `ensureNewsQuiz` returns the cached record quickly.
 
+**Single generation guarantee:** `runOncePerQuizId` (`newsQuizCreateInFlight.ts`) deduplicates concurrent `ensureNewsQuiz` calls for the same `quizId` (covers React Strict Mode remounts and rapid retries). A second `getDoc` runs inside the lock before any AI/vision requests start.
+
 ## URL State
 
 | Param | Meaning |

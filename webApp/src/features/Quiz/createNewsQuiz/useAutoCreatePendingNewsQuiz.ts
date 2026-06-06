@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import {
   clearPendingNewsQuizCreate,
   getPendingNewsQuizCreate,
 } from '../pendingNewsQuizCreate';
 import { CreateNewsQuizInput } from '../types';
+
+const autoStartedQuizIds = new Set<string>();
 
 export const useAutoCreatePendingNewsQuiz = (
   quizId: string,
@@ -15,7 +17,6 @@ export const useAutoCreatePendingNewsQuiz = (
   const { i18n } = useLingui();
   const [isBootstrapping, setIsBootstrapping] = useState(false);
   const [bootstrapError, setBootstrapError] = useState<string | null>(null);
-  const autoStartRef = useRef<string | null>(null);
 
   const createQuiz = async (input: CreateNewsQuizInput) => {
     setIsBootstrapping(true);
@@ -29,23 +30,19 @@ export const useAutoCreatePendingNewsQuiz = (
       setBootstrapError(message);
     } finally {
       setIsBootstrapping(false);
+      autoStartedQuizIds.delete(quizId);
     }
   };
 
   useEffect(() => {
     const pending = getPendingNewsQuizCreate(quizId);
-    if (!pending || autoStartRef.current === quizId) return;
-    autoStartRef.current = quizId;
+    if (!pending || autoStartedQuizIds.has(quizId)) return;
+    autoStartedQuizIds.add(quizId);
     void createQuiz(pending);
-
-    return () => {
-      if (autoStartRef.current === quizId) {
-        autoStartRef.current = null;
-      }
-    };
   }, [quizId]);
 
   const retryCreate = () => {
+    if (isBootstrapping) return;
     const pending = getPendingNewsQuizCreate(quizId);
     if (!pending) {
       setBootstrapError(i18n._('Quiz not found. Open it from the news article.'));
