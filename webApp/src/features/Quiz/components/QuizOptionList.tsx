@@ -31,7 +31,8 @@ export const QuizOptionList = ({
             textTransform: 'none',
             padding: '12px 16px',
             color: '#EBEBF5',
-            borderColor: 'rgba(255,255,255,0.2)',
+            fontWeight: 500,
+            border: isSelected ? '1px solid transparent' : '1px solid rgba(255,255,255,0.2)',
           }}
         >
           {option.label}

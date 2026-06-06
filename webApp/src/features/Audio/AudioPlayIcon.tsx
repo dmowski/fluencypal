@@ -101,7 +101,7 @@ export const AudioPlayIcon = ({
         }
         await audio.speak(processedText, {
           ...speakOptionsMain,
-          cache: isSingleWord,
+          cache: isSingleWord || (cache ?? false),
           regenerateCache: isNeedToRegenerate,
         });
       }

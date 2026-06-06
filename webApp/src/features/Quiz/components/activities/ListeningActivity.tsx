@@ -22,7 +22,7 @@ export const ListeningActivity = ({
   return (
     <Stack sx={{ gap: '20px' }}>
       <Stack sx={{ gap: '12px', alignItems: 'flex-start' }}>
-        <AudioPlayIcon text={question.audioText} type="button" buttonLabel={i18n._('Play')} />
+        <AudioPlayIcon cache text={question.audioText} type="button" buttonLabel={i18n._('Play')} />
         <Typography variant="h6" sx={{ fontWeight: 600 }}>
           {question.questionText}
         </Typography>

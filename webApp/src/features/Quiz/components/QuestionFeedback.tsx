@@ -31,7 +31,12 @@ export const QuestionFeedback = ({
       {result.whyExplanation && <Markdown variant="conversation">{result.whyExplanation}</Markdown>}
 
       <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-        <Button variant="contained" color="info" onClick={onNext} endIcon={<ChevronRight />}>
+        <Button
+          variant="contained"
+          color="info"
+          onClick={onNext}
+          endIcon={<ChevronRight size={'16px'} />}
+        >
           {i18n._('Next')}
         </Button>
 
