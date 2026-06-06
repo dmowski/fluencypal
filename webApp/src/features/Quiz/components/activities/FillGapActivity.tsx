@@ -78,7 +78,7 @@ export const FillGapActivity = ({
                 lineHeight: 1.2,
                 fontWeight: 500,
                 cursor: disabled ? 'default' : 'pointer',
-                opacity: disabled ? 0.75 : 1,
+                opacity: disabled ? 1 : 1,
                 transition: 'border-color 150ms ease, background-color 150ms ease',
                 position: 'relative',
                 top: '0',

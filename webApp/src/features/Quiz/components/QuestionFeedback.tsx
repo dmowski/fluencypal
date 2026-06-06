@@ -23,31 +23,13 @@ export const QuestionFeedback = ({
 
   return (
     <Stack sx={{ gap: '16px', marginTop: '24px' }} data-testid="quiz-question-feedback">
-      <Typography
-        variant="h6"
-        sx={{
-          color: result.status === 'correct' ? '#7dcea0' : '#f5b7b1',
-          fontWeight: 700,
-        }}
-      >
-        {result.status === 'correct'
-          ? i18n._('Correct')
-          : result.status === 'partial'
-            ? i18n._('Partially correct')
-            : i18n._('Incorrect')}
-      </Typography>
-
-      {result.feedback && (
-        <Markdown variant="conversation">{result.feedback}</Markdown>
-      )}
+      {result.feedback && <Markdown variant="conversation">{result.feedback}</Markdown>}
 
       {isExplaining && <LoadingShapes sizes={['30px']} />}
 
-      {result.whyExplanation && (
-        <Markdown variant="conversation">{result.whyExplanation}</Markdown>
-      )}
+      {result.whyExplanation && <Markdown variant="conversation">{result.whyExplanation}</Markdown>}
 
-      <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap' }}>
+      <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
         {showWhy && (
           <Button variant="outlined" color="info" disabled={isExplaining} onClick={onExplain}>
             {i18n._('Why')}
@@ -56,6 +38,19 @@ export const QuestionFeedback = ({
         <Button variant="contained" color="info" onClick={onNext}>
           {i18n._('Next')}
         </Button>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: result.status === 'correct' ? '#7dcea0' : '#f5b7b1',
+          }}
+        >
+          {result.status === 'correct'
+            ? i18n._('Correct')
+            : result.status === 'partial'
+              ? i18n._('Partially correct')
+              : i18n._('Incorrect')}
+        </Typography>
       </Stack>
     </Stack>
   );
