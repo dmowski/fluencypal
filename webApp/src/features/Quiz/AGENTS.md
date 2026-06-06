@@ -102,7 +102,7 @@ Client: `api/describeImageRequest.ts`. Logic: `backend/describeImage.ts`.
 | `listening` | Local MC; `audioText` always visible |
 | `describe-picture-voice` | AI on submit; grounded by `imageDescription` from vision API |
 
-Wrong MC answers: lazy **Why** via `useTextAi.generate`. Exam end: local score + optional **Get detailed feedback**.
+Wrong MC answers: lazy **Why** via `useTextAi.generate` (prompt requires target language; `languageCode` on the API is usage-only). Speaking: voice feedback uses the same target-language rule. Exam end: local score + optional **Get detailed feedback**.
 
 ## Stats
 

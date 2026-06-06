@@ -175,7 +175,11 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     if (located.question.type === 'describe-picture-voice' && answer.payload.kind === 'voice') {
       setIsEvaluatingVoice(true);
       try {
-        const prompts = buildVoiceEvaluationPrompt(located.question, answer.payload.transcription);
+        const prompts = buildVoiceEvaluationPrompt(
+          located.question,
+          answer.payload.transcription,
+          quiz.meta.targetLanguageCode,
+        );
         const response = await textAi.generate({
           systemMessage: prompts.systemMessage,
           userMessage: prompts.userMessage,

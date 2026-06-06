@@ -1,4 +1,5 @@
 import { QuizAnswer, QuizQuestion } from '../types';
+import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
 
 const formatMcQuestion = (question: QuizQuestion): string => {
   if (
@@ -54,7 +55,7 @@ export const buildExplainAnswerPrompt = (
   targetLanguageCode: string,
 ): { systemMessage: string; userMessage: string } => ({
   systemMessage: `You help a language learner understand a quiz mistake.
-Write in the learner's UI language when possible; quote article phrases in ${targetLanguageCode}.
+${buildQuizTargetLanguageInstruction(targetLanguageCode)}
 Use short markdown: explain the correct answer, then why the learner's choice was wrong.
 Be encouraging and concise (3–6 sentences).`,
   userMessage: `Question:
@@ -71,9 +72,10 @@ export const buildDetailedExamFeedbackPrompt = (input: {
 }): { systemMessage: string; userMessage: string } => ({
   systemMessage: `${input.examInstruction}
 
+${buildQuizTargetLanguageInstruction(input.targetLanguageCode)}
+
 Write detailed feedback in markdown for the learner.
-Highlight strengths, weak areas, and 2–3 concrete study tips.
-Learner's target language: ${input.targetLanguageCode}.`,
+Highlight strengths, weak areas, and 2–3 concrete study tips.`,
   userMessage: `Per-question results:
 ${input.summaryLines.join('\n')}`,
 });

@@ -6,6 +6,7 @@ import {
   QuizQuestionResult,
   QuizQuestionResultStatus,
 } from '../types';
+import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
 
 const DEFAULT_MAX_SCORE = 1;
 
@@ -108,13 +109,16 @@ export const scoreQuestion = (question: QuizQuestion, answer: QuizAnswer): QuizQ
 export const buildVoiceEvaluationPrompt = (
   question: DescribePictureVoiceQuestion,
   transcription: string,
+  targetLanguageCode: string,
 ): { systemMessage: string; userMessage: string } => ({
   systemMessage: `${question.evaluation.instruction}
 
-Respond in markdown. Include:
-- status: correct | partial | incorrect (as the first line, exactly one word after "Status:")
-- score: number out of ${question.evaluation.maxScore ?? DEFAULT_MAX_SCORE}
-- feedback: 2-4 sentences for the learner`,
+${buildQuizTargetLanguageInstruction(targetLanguageCode)}
+
+Respond in markdown. Include these machine-readable lines first (keep labels in English):
+- Status: correct | partial | incorrect
+- Score: number out of ${question.evaluation.maxScore ?? DEFAULT_MAX_SCORE}
+- Feedback: 2-4 sentences for the learner in the target language`,
   userMessage: `Question: ${question.promptText}
 
 What the image actually shows:
@@ -132,6 +136,8 @@ export const parseVoiceEvaluationResponse = (
   const statusLine = response.match(/status:\s*(correct|partial|incorrect)/i)?.[1]?.toLowerCase();
   const scoreMatch = response.match(/score:\s*([\d.]+)/i);
   const parsedScore = scoreMatch ? Number.parseFloat(scoreMatch[1]) : 0;
+  const feedbackMatch = response.match(/feedback:\s*([\s\S]*)/i);
+  const feedback = feedbackMatch?.[1]?.trim() || response.trim();
 
   const status: QuizQuestionResultStatus =
     statusLine === 'correct'
@@ -147,7 +153,7 @@ export const parseVoiceEvaluationResponse = (
     status,
     score: Math.min(maxScore, Math.max(0, parsedScore)),
     maxScore,
-    feedback: response.trim(),
+    feedback,
     evaluatedAtIso: new Date().toISOString(),
   };
 };
