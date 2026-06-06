@@ -8,12 +8,12 @@ export const WordTranslationActivity = ({
   question,
   selectedOptionId,
   onSelect,
-  disabled,
+  isRevealed,
 }: {
   question: WordTranslationQuestion;
   selectedOptionId: string | null;
   onSelect: (optionId: string) => void;
-  disabled?: boolean;
+  isRevealed?: boolean;
 }) => (
   <Stack sx={{ gap: '20px' }}>
     <Typography variant="h5" sx={{ fontWeight: 600, textTransform: 'capitalize' }}>
@@ -23,7 +23,8 @@ export const WordTranslationActivity = ({
       options={question.options}
       selectedOptionId={selectedOptionId}
       onSelect={onSelect}
-      disabled={disabled}
+      isRevealed={isRevealed}
+      correctOptionId={isRevealed ? question.correctOptionId : null}
     />
   </Stack>
 );

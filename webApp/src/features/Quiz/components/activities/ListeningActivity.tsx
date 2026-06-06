@@ -10,12 +10,12 @@ export const ListeningActivity = ({
   question,
   selectedOptionId,
   onSelect,
-  disabled,
+  isRevealed,
 }: {
   question: ListeningQuestion;
   selectedOptionId: string | null;
   onSelect: (optionId: string) => void;
-  disabled?: boolean;
+  isRevealed?: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -32,7 +32,8 @@ export const ListeningActivity = ({
         options={question.options}
         selectedOptionId={selectedOptionId}
         onSelect={onSelect}
-        disabled={disabled}
+        isRevealed={isRevealed}
+        correctOptionId={isRevealed ? question.correctOptionId : null}
       />
     </Stack>
   );

@@ -84,7 +84,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         <WordTranslationActivity
           question={question}
           selectedOptionId={selected}
-          disabled={isSubmitted}
+          isRevealed={isSubmitted}
           onSelect={(optionId) => {
             const payload: MultipleChoiceAnswer = {
               kind: 'multiple-choice',
@@ -103,7 +103,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         <ReadAndAnswerActivity
           question={question}
           selectedOptionId={selected}
-          disabled={isSubmitted}
+          isRevealed={isSubmitted}
           onSelect={(optionId) => {
             void session.setAnswer(question.id, {
               kind: 'multiple-choice',
@@ -121,7 +121,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         <ListeningActivity
           question={question}
           selectedOptionId={selected}
-          disabled={isSubmitted}
+          isRevealed={isSubmitted}
           onSelect={(optionId) => {
             void session.setAnswer(question.id, {
               kind: 'multiple-choice',

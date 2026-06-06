@@ -8,12 +8,12 @@ export const ReadAndAnswerActivity = ({
   question,
   selectedOptionId,
   onSelect,
-  disabled,
+  isRevealed,
 }: {
   question: ReadAndAnswerQuestion;
   selectedOptionId: string | null;
   onSelect: (optionId: string) => void;
-  disabled?: boolean;
+  isRevealed?: boolean;
 }) => (
   <Stack sx={{ gap: '20px' }}>
     <Typography variant="body1" sx={{ lineHeight: 1.6, opacity: 0.95 }}>
@@ -26,7 +26,8 @@ export const ReadAndAnswerActivity = ({
       options={question.options}
       selectedOptionId={selectedOptionId}
       onSelect={onSelect}
-      disabled={disabled}
+      isRevealed={isRevealed}
+      correctOptionId={isRevealed ? question.correctOptionId : null}
     />
   </Stack>
 );
