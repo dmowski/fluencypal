@@ -96,7 +96,7 @@ Client: `api/describeImageRequest.ts`. Logic: `backend/describeImage.ts`.
 
 | Type | Scoring |
 | --- | --- |
-| `word-translation` | Local MC (if native ≠ target) |
+| `word-translation` | Local MC (if native ≠ target). `native-to-target`: prompt in native lang, options in target. `target-to-native`: opposite. Invalid if promptText equals any option (dropped in normalize). |
 | `fill-gap` | Local — all gaps must match |
 | `read-and-answer` | Local MC |
 | `listening` | Local MC; `audioText` always visible |

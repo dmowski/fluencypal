@@ -13,6 +13,7 @@ import {
 import { buildNewsQuizId } from '../buildNewsQuizId';
 import { NewsQuizDraft, NewsQuizQuestion, NewsQuizSection } from './newsQuizSchema';
 import { resolveIncludedSections } from './resolveIncludedSections';
+import { isValidWordTranslationQuestion } from './isValidWordTranslationQuestion';
 
 const slug = (value: string) =>
   value
@@ -45,14 +46,20 @@ const normalizeQuestion = (
 
   if (sectionType === 'word-translation' && 'promptText' in raw && 'direction' in raw) {
     const options = assignOptionIds(raw.options, qId);
-    return {
-      type: 'word-translation',
+    const question = {
+      type: 'word-translation' as const,
       id: qId,
       promptText: raw.promptText,
       direction: raw.direction,
       options,
       correctOptionId: resolveCorrectOptionId(options, raw.correctOptionLabel),
     };
+
+    if (!isValidWordTranslationQuestion(question)) {
+      return null;
+    }
+
+    return question;
   }
 
   if (sectionType === 'fill-gap' && 'segments' in raw && 'gaps' in raw) {

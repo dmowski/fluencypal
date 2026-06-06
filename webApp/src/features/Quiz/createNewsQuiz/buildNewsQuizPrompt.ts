@@ -31,7 +31,7 @@ CRITICAL structure rules:
 3. Use the exact section type strings above (kebab-case, lowercase).
 4. Each section must contain EXACTLY the requested number of questions.
 5. Multiple-choice: exactly 4 options, ONE correct. "correctOptionLabel" must match one option "label" exactly (case-sensitive).
-6. All quiz content (passages, options, prompts) must be in the TARGET learning language unless word-translation direction says otherwise.
+6. Passages, gap text, listening audioText, and read-and-answer content use the TARGET learning language. word-translation uses direction-specific languages (see user message).
 
 Per-section question shapes (no "type" on questions):
 - word-translation: ${QUESTION_SHAPE_BY_SECTION['word-translation']}
@@ -41,7 +41,7 @@ Per-section question shapes (no "type" on questions):
 - describe-picture-voice: ${QUESTION_SHAPE_BY_SECTION['describe-picture-voice']}
 
 Content rules:
-- word-translation: alternate directions across questions when possible.
+- word-translation: follow the word-translation language rules in the user message; alternate directions across questions when possible.
 - fill-gap: 1–2 gaps per question; every gapKey in segments must exist in gaps.
 - read-and-answer: passage excerpt from the article (2–4 sentences).
 - listening: audioText is read aloud (1–3 sentences); question tests comprehension.
@@ -69,6 +69,17 @@ export const buildNewsQuizUserPrompt = (input: {
     )
     .join('\n');
 
+  const wordTranslationRules =
+    input.sections.some((section) => section.type === 'word-translation') &&
+    input.nativeLanguageCode
+      ? `
+Word-translation language rules (CRITICAL):
+- target-to-native: promptText in ${targetLang} (${input.targetLanguageCode}); all 4 option labels in ${nativeLang} (${input.nativeLanguageCode}).
+- native-to-target: promptText in ${nativeLang} (${input.nativeLanguageCode}); all 4 option labels in ${targetLang} (${input.targetLanguageCode}).
+- promptText must NEVER be identical to any option label — the learner picks a translation, not the same word repeated.
+`
+      : '';
+
   const exampleSection = input.sections[0];
   const exampleBlock = exampleSection
     ? `
@@ -90,7 +101,7 @@ Complexity: ${input.complexity} — ${COMPLEXITY_GUIDANCE[input.complexity]}
 
 Sections to generate:
 ${sectionLines}
-${exampleBlock}
+${wordTranslationRules}${exampleBlock}
 Top-level JSON shape:
 {
   "meta": { "title": "...", "description": "...", "estimatedMinutes": 15 },

@@ -44,6 +44,8 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
   const session = useQuizSession(quizId, onClose);
 
   const question = session.currentQuestion;
+  console.log('question');
+  console.log(JSON.stringify(question, null, 2));
   const questionId = question?.id ?? '';
   const answer = questionId ? session.progress?.answers[questionId] : undefined;
   const result = questionId ? session.progress?.questionResults[questionId] : undefined;
