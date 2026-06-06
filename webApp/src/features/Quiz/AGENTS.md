@@ -13,15 +13,20 @@ Language quizzes tied to news articles today. Modular enough for other sources l
 ```mermaid
 flowchart TD
   NM[NewsModal Take quiz]
+  P[pendingNewsQuizCreate]
+  QM[QuizModal opens immediately]
+  UC[useCreateNewsQuiz]
   V[/api/quiz/describeImage]
   AI[useTextAi generateStrictJson]
   FS[(users/userId/quizzes/quizId)]
 
-  NM --> UC[useCreateNewsQuiz]
+  NM -->|openNewsQuiz| P
+  NM --> QM
+  QM -->|LoadingShapes + caption| UC
   UC --> V
   UC --> AI
   UC --> FS
-  QM[QuizModal] --> US[useQuizSession]
+  QM --> US[useQuizSession]
   US --> FS
 ```
 
@@ -37,8 +42,20 @@ Both definition and progress live in one Firestore document: `UserQuizRecord`.
 
 ## Entry Points
 
-- **News:** `NewsModal` → **Take quiz** → `ensureNewsQuiz` → `openQuiz(id)`
+- **News:** `NewsModal` → **Take quiz** → `openNewsQuiz(input)` (modal opens immediately; generation runs inside `QuizModal`)
 - **Shell:** `QuizModal` in `GlobalModals.tsx` when `quizId` is set (stacks above news at `zIndex={1100}`)
+
+## Quiz Creation UX
+
+When the user starts a quiz from a news article:
+
+1. `openNewsQuiz` sets `quizId` in the URL and stores `CreateNewsQuizInput` in `pendingNewsQuizCreate`.
+2. `QuizModal` opens right away (news modal stays open underneath).
+3. While `useCreateNewsQuiz` runs (~1 minute for a new quiz), show `LoadingShapes` and the caption *Creating your quiz... This usually takes about a minute.*
+4. On success, Firestore updates and `useQuizSession` loads the first question.
+5. On failure, show an error with **Try again** (pending input is kept until success).
+
+Existing Firestore quiz docs skip generation; `ensureNewsQuiz` returns the cached record quickly.
 
 ## URL State
 
@@ -99,7 +116,8 @@ Quiz/
   useQuizModal.tsx
   api/describeImageRequest.ts
   backend/describeImage.ts, types.ts, getAllQuizStats.ts
-  createNewsQuiz/     — generation pipeline
+  createNewsQuiz/     — generation pipeline, useAutoCreatePendingNewsQuiz
+  pendingNewsQuizCreate.ts — in-memory create input between NewsModal and QuizModal
   session/            — useQuizSession, scoring, navigation
   components/         — QuizModal, activities, progress bar
   recordQuizCompletion.ts

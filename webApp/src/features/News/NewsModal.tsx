@@ -29,8 +29,6 @@ import {
   type NewsArticleVoiceOverlay,
 } from './NewsContentWithParagraphs';
 import { recordNewsView } from './recordNewsView';
-import { buildNewsQuizId } from '../Quiz/buildNewsQuizId';
-import { useCreateNewsQuiz } from '../Quiz/createNewsQuiz/useCreateNewsQuiz';
 import { useQuizModal } from '../Quiz/useQuizModal';
 import { SupportedLanguage } from '../Lang/lang';
 
@@ -84,9 +82,7 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
   const [hasError, setHasError] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
   const [isCallStarting, setIsCallStarting] = useState(false);
-  const [isQuizStarting, setIsQuizStarting] = useState(false);
   const quizModal = useQuizModal();
-  const { ensureNewsQuiz } = useCreateNewsQuiz();
   const requestedKeyRef = useRef<string | null>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
@@ -224,27 +220,18 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
       })
     : '';
 
-  const takeQuiz = async () => {
-    if (!item || !content || isQuizStarting) return;
-    setIsQuizStarting(true);
-    try {
-      const targetLanguageCode = (item.languageCode || settings.languageCode || 'en') as SupportedLanguage;
-      await ensureNewsQuiz({
-        newsId: item.id,
-        title: item.title,
-        content,
-        complexity,
-        targetLanguageCode,
-        nativeLanguageCode: settings.userSettings?.nativeLanguageCode ?? null,
-        imageUrl: item.imageUrl ?? null,
-      });
-      quizModal.openQuiz(buildNewsQuizId(item.id, complexity, targetLanguageCode));
-    } catch (error) {
-      console.error('NewsModal: takeQuiz failed', error);
-      alert(i18n._('Could not start the quiz. Please try again.'));
-    } finally {
-      setIsQuizStarting(false);
-    }
+  const takeQuiz = () => {
+    if (!item || !content) return;
+    const targetLanguageCode = (item.languageCode || settings.languageCode || 'en') as SupportedLanguage;
+    quizModal.openNewsQuiz({
+      newsId: item.id,
+      title: item.title,
+      content,
+      complexity,
+      targetLanguageCode,
+      nativeLanguageCode: settings.userSettings?.nativeLanguageCode ?? null,
+      imageUrl: item.imageUrl ?? null,
+    });
   };
 
   const discussWithAi = async () => {
@@ -459,12 +446,12 @@ const NewsModalContent = ({ newsId, onClose }: NewsModalContentProps) => {
                     variant="contained"
                     color="info"
                     startIcon={<QuizIcon />}
-                    disabled={isQuizStarting || isContentLoading || !content}
+                    disabled={isContentLoading || !content}
                     onClick={takeQuiz}
                     data-testid="news-modal-quiz-button"
                     sx={{ padding: '10px 24px' }}
                   >
-                    {isQuizStarting ? i18n._('Preparing quiz...') : i18n._('Take quiz')}
+                    {i18n._('Take quiz')}
                   </Button>
                   <Button
                     variant="contained"

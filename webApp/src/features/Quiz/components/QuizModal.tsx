@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
-import { consumePendingNewsQuizCreate } from '../pendingNewsQuizCreate';
+import { useAutoCreatePendingNewsQuiz } from '../createNewsQuiz/useAutoCreatePendingNewsQuiz';
 import { useCreateNewsQuiz } from '../createNewsQuiz/useCreateNewsQuiz';
 import { useQuizModal } from '../useQuizModal';
 import { useQuizSession } from '../session/useQuizSession';
@@ -38,33 +37,16 @@ export const QuizModal = () => {
 
 const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => void }) => {
   const { i18n } = useLingui();
-  const { ensureNewsQuiz, isCreating, createError } = useCreateNewsQuiz();
+  const { ensureNewsQuiz, isCreating } = useCreateNewsQuiz();
+  const { isBootstrapping, bootstrapError, retryCreate, hasPendingCreate } =
+    useAutoCreatePendingNewsQuiz(quizId, ensureNewsQuiz);
   const session = useQuizSession(quizId, onClose);
-  const [isBootstrapping, setIsBootstrapping] = useState(false);
-  const [bootstrapError, setBootstrapError] = useState<string | null>(null);
 
   const question = session.currentQuestion;
   const questionId = question?.id ?? '';
   const answer = questionId ? session.progress?.answers[questionId] : undefined;
   const result = questionId ? session.progress?.questionResults[questionId] : undefined;
   const isSubmitted = Boolean(answer?.submittedAtIso);
-
-  const bootstrapQuiz = async () => {
-    const pending = consumePendingNewsQuizCreate(quizId);
-    if (!pending) {
-      setBootstrapError(i18n._('Quiz not found. Open it from the news article.'));
-      return;
-    }
-    setIsBootstrapping(true);
-    setBootstrapError(null);
-    try {
-      await ensureNewsQuiz(pending);
-    } catch {
-      setBootstrapError(createError || i18n._('Failed to generate quiz.'));
-    } finally {
-      setIsBootstrapping(false);
-    }
-  };
 
   const handleSubmit = async () => {
     if (!questionId) return;
@@ -185,8 +167,15 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
     return null;
   };
 
-  const showBootstrap =
-    !session.isLoading && !session.record && !isCreating && !isBootstrapping;
+  const isGenerating = isCreating || isBootstrapping || hasPendingCreate;
+  const showBootstrapError =
+    bootstrapError && !isGenerating && !session.isLoading && !session.record;
+  const showMissingQuiz =
+    !session.isLoading &&
+    !session.record &&
+    !isGenerating &&
+    !bootstrapError &&
+    !hasPendingCreate;
 
   return (
     <CustomModal isOpen onClose={onClose} mobilePadding="0" desktopPadding="0" zIndex={1100}>
@@ -219,21 +208,36 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
             flex: 1,
           }}
         >
-          {(session.isLoading || isCreating || isBootstrapping) && (
+          {isGenerating && (
+            <Stack sx={{ gap: '20px', paddingTop: '40px' }} data-testid="quiz-modal-creating">
+              <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
+                {i18n._('Creating your quiz... This usually takes about a minute.')}
+              </Typography>
+              <LoadingShapes sizes={['30px', '200px', '30px']} />
+            </Stack>
+          )}
+
+          {session.isLoading && !isGenerating && (
             <Stack sx={{ gap: '20px', paddingTop: '40px' }} data-testid="quiz-modal-loading">
               <Typography variant="body2">{i18n._('Loading quiz...')}</Typography>
               <LoadingShapes sizes={['30px', '200px', '30px']} />
             </Stack>
           )}
 
-          {showBootstrap && (
-            <Stack sx={{ gap: '16px', paddingTop: '40px' }} data-testid="quiz-modal-bootstrap">
-              <Typography variant="body1">
-                {bootstrapError || i18n._('This quiz has not been generated yet.')}
-              </Typography>
-              <Button variant="contained" color="info" onClick={() => void bootstrapQuiz()}>
-                {i18n._('Generate quiz')}
+          {showBootstrapError && (
+            <Stack sx={{ gap: '16px', paddingTop: '40px' }} data-testid="quiz-modal-bootstrap-error">
+              <Typography variant="body1">{bootstrapError}</Typography>
+              <Button variant="contained" color="info" onClick={retryCreate}>
+                {i18n._('Try again')}
               </Button>
+            </Stack>
+          )}
+
+          {showMissingQuiz && (
+            <Stack sx={{ gap: '16px', paddingTop: '40px' }} data-testid="quiz-modal-missing">
+              <Typography variant="body1">
+                {i18n._('This quiz has not been generated yet. Open it from the news article.')}
+              </Typography>
             </Stack>
           )}
 
@@ -248,8 +252,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
           )}
 
           {!session.isLoading &&
-            !isCreating &&
-            !isBootstrapping &&
+            !isGenerating &&
             session.record &&
             !session.isExamComplete &&
             question && (

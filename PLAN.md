@@ -2,14 +2,6 @@
 
 ## Exams/quiz
 
-We will work on improving
-webApp/src/features/Quiz/AGENTS.md
-
-For now, when I start quiz it takes time to generate quiz.
-How to address: Show quiz modal immediately and show
-landing/src/features/uiKit/Loading/LoadingShapes.tsx
-with small cation informing user that it's creating quiz. It takes about one minute.
-
 ++++++++++++++++++++++++++++++++++++
 
 ## Realtime service
