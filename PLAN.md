@@ -2,13 +2,11 @@
 
 ## Exams/quiz
 
-- Check image quality
-  - Update image quality
-  - Validate that it's works
+- Make exam close to government
+
+- Writing activity
 
 - Pass polish exam. Check how it feels.
-
-- Make exam close to government
 
 - Generate Exam each time new
 
