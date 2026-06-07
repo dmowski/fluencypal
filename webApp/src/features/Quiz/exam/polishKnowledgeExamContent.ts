@@ -14,13 +14,13 @@ import {
 export const POLISH_KNOWLEDGE_EXTRA_READING: ExamReadingPassage[] = [
   {
     passageText:
-      'W ubiegłym roku miasto zainwestowało w nową ścieżkę rowerową wzdłuż rzeki. Mieszkańcy chwalą bezpieczniejszy dojazd do centrum, choć część kierowców skarży się na mniej miejsc parkingowych przy głównej ulicy.',
+      'W ubiegłym roku miasto zainwestowało w nową ścieżkę rowerową wzdłuż rzeki. Mieszkańcy chwalą bezpieczniejszy dojazd do centrum, choć część kierowców narzeka, że przy głównej ulicy jest mniej miejsc parkingowych.',
     questions: [
       {
         questionText: 'Co mieszkańcy uważają za zaletę inwestycji?',
         choices: [
           { label: 'Więcej miejsc parkingowych' },
-          { label: 'Bezpieczniejszy dojazd rowerem do centrum', correct: true },
+          { label: 'Bezpieczniejszy dojazd do centrum', correct: true },
           { label: 'Szybszy ruch samochodowy' },
           { label: 'Zamknięcie ścieżki zimą' },
         ],
@@ -89,7 +89,7 @@ export const POLISH_KNOWLEDGE_EXTRA_READING: ExamReadingPassage[] = [
       'Zespół badawczy porównał dwie metody nauki słownictwa: fiszki papierowe i aplikację z powtórkami rozłożonymi w czasie. Po ośmiu tygodniach uczestnicy korzystający z aplikacji pamiętali średnio o 18% więcej słów, ale deklarowali też większe zmęczenie ekranowe.',
     questions: [
       {
-        questionText: 'Jaki był wynik testu po ośmiu tygodniach?',
+        questionText: 'Jaki był wynik badania po ośmiu tygodniach?',
         choices: [
           { label: 'Fiszki papierowe okazały się skuteczniejsze' },
           { label: 'Aplikacja dała lepsze wyniki pamięciowe', correct: true },
@@ -125,12 +125,12 @@ export const POLISH_KNOWLEDGE_EXTRA_LISTENING: ExamListeningItem[] = [
   {
     audioText:
       'W związku z remontem windy prosimy osoby z wózkami inwalidzkimi o korzystanie z wejścia od strony parkingu B do piątku włącznie.',
-    questionText: 'Kogo dotyczy komunikat?',
+    questionText: 'Do kogo jest skierowany komunikat?',
     choices: [
-      { label: 'Wszystkich pracowników biura' },
-      { label: 'Osób korzystających z wózków inwalidzkich', correct: true },
-      { label: 'Klientów sklepu na parterze' },
-      { label: 'Dostawców jedzenia' },
+      { label: 'Do wszystkich pracowników biura' },
+      { label: 'Do osób korzystających z wózków inwalidzkich', correct: true },
+      { label: 'Do klientów sklepu na parterze' },
+      { label: 'Do dostawców jedzenia' },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const POLISH_KNOWLEDGE_EXTRA_LISTENING: ExamListeningItem[] = [
   },
   {
     audioText:
-      'Aby odebrać paczkę z automatu, wpisz kod z wiadomości SMS i potwierdź przyciskiem zielonym. Masz na to trzydzieści minut od momentu dostarczenia przesyłki.',
+      'Aby odebrać paczkę z automatu, wpisz kod z wiadomości SMS i potwierdź zielonym przyciskiem. Masz na to trzydzieści minut od momentu dostarczenia przesyłki.',
     questionText: 'Ile czasu ma odbiorca na odebranie paczki?',
     choices: [
       { label: 'Pięć minut' },
