@@ -1,34 +1,35 @@
-import { getImagePublicUrl } from '@/features/Game/ImagesDescriptions';
 import { ExamSpeakingImage } from './examContentTypes';
 
 const SHARED_IMAGE_URLS = {
   handshake:
-    'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-handshake-between-two-businesspeople.webp?alt=media',
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824559642-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
   doctor:
-    'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-doctor-talking-to-a-patient.webp?alt=media',
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824572461-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
   tourists:
-    'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-group-of-tourists-taking-photos.webp?alt=media',
-  map: 'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-looking-confused-at-a-map.webp?alt=media',
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824586105-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
+  map: 'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824598149-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
   teacher:
-    'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-teacher-writing-on-a-whiteboard.webp?alt=media',
-  cooking: getImagePublicUrl('Someone cooking in the kitchen'),
-  market: getImagePublicUrl('A farmer’s market with vegetables and fruits'),
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824613170-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
+  cooking:
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824624093-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
+  market:
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780824634502-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.webp',
 } as const;
 
 const IMAGE_GROUND_TRUTH = {
   handshake:
-    'Two business professionals in formal attire shake hands across a conference table in a bright modern office. One person holds a folder with documents while the other smiles and maintains eye contact. Laptops and notepads are visible on the table.',
+    'A man in a navy suit and a woman in a dark blazer are smiling and shaking hands across a glass-topped table in a modern, well-lit office with floor-to-ceiling windows showing a cityscape. The man holds a black clipboard with a document. The table has two laptops, open notepads with pens, a coffee mug, and a glass of water. Several other professionals are working in the glass-walled background.',
   doctor:
-    'A doctor wearing a white coat sits on a stool beside an examination bed, speaking calmly to a seated patient. The doctor gestures toward a clipboard with notes while medical equipment and a wall chart appear in the background.',
+    'In a clean medical examination room, a doctor wearing a white coat and a stethoscope sits on a stool beside an examination bed. He points to notes on a clipboard while speaking calmly to a female patient seated on the bed. The patient listens attentively with her hands clasped in her lap. Medical instruments, cabinets, a sink, and a muscular-system chart are visible in the background.',
   tourists:
-    'Four tourists stand in a historic city square, holding smartphones to photograph a landmark fountain. Stone buildings with balconies rise behind them, and other pedestrians walk through the sunny plaza.',
-  map: 'A young traveler with a backpack stands on a busy sidewalk, unfolding a paper map with a puzzled expression. Pedestrians pass by, shop signs line the street, and a bus stop is visible nearby.',
+    'Four tourists stand beside a large ornate stone fountain in a sunny historic city square. Each person holds up a smartphone to photograph the fountain. The group includes two men and two women, some carrying backpacks and one wearing a straw hat. Warm-colored stone buildings with balconies and shuttered windows rise behind them, while crowds of pedestrians walk through the busy plaza.',
+  map: 'A young traveler wearing a dark T-shirt, khaki shorts, and a large black backpack stands on a crowded city sidewalk, studying an unfolded paper map with a puzzled expression. Pedestrians walk past him in both directions, while coffee shops, souvenir stores, and other storefronts line the street. A bus stop with route information and a city bus are visible nearby, with tall buildings and a clock tower in the background.',
   teacher:
-    'A teacher stands at the front of a classroom, writing vocabulary terms on a whiteboard with a blue marker. Students sit at desks facing forward, notebooks open, while educational posters hang on the walls.',
+    'A teacher stands at the front of a bright classroom, writing vocabulary words and definitions on a large whiteboard with a blue marker. Four students sit at desks facing the board with notebooks and books open. Educational posters about classroom rules, parts of speech, and punctuation hang on the walls, creating an organized learning environment.',
   cooking:
-    'A person cooks a meal in a modern kitchen, stirring a pot on the stove while fresh vegetables lie on the counter. Warm lighting fills the room and kitchen utensils hang nearby.',
+    'A young woman cooks in a modern kitchen, stirring a large pot on a gas stove while holding its handle. Fresh carrots, tomatoes, bell peppers, and leafy greens are arranged on a cutting board in the foreground. Metal utensils and a frying pan hang beside the stove, while warm lighting and potted herbs create a cozy atmosphere.',
   market:
-    'A lively farmers market stall displays colourful vegetables and fruits arranged in wooden crates. Vendors talk with customers under canvas awnings on a city street.',
+    'A busy farmers market stall is filled with colorful produce arranged in wooden crates, including tomatoes, peppers, carrots, leafy greens, apples, oranges, and berries. Two vendors wearing aprons smile and speak with customers standing in front of the display. Canvas awnings cover the stall, while more shoppers and market stands extend along the sunny city street.',
 } as const;
 
 export const ENGLISH_EXAM_SPEAKING_IMAGES: ExamSpeakingImage[] = [

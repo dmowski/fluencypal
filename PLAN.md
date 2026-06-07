@@ -3,6 +3,8 @@
 ## Exams/quiz
 
 - Check image quality
+  - Update image quality
+  - Validate that it's works
 
 - Pass polish exam. Check how it feels.
 
