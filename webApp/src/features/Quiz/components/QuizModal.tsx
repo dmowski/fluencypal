@@ -27,6 +27,7 @@ import { ReadAndAnswerActivity } from './activities/ReadAndAnswerActivity';
 import { ListeningActivity } from './activities/ListeningActivity';
 import { DescribePictureVoiceActivity } from './activities/DescribePictureVoiceActivity';
 import { QuizProgressBar } from './QuizProgressBar';
+import { ExamWelcomeScreen } from './ExamWelcomeScreen';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Check } from 'lucide-react';
 
@@ -44,8 +45,6 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
   const session = useQuizSession(quizId, onClose);
 
   const question = session.currentQuestion;
-  console.log('question');
-  console.log(JSON.stringify(question, null, 2));
   const questionId = question?.id ?? '';
   const answer = questionId ? session.progress?.answers[questionId] : undefined;
   const result = questionId ? session.progress?.questionResults[questionId] : undefined;
@@ -183,7 +182,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         }}
         data-testid="quiz-modal"
       >
-        {!session.isExamComplete && (
+        {!session.isExamComplete && !session.showExamWelcome && (
           <QuizModalHeader
             sectionTitle={session.sectionTitle}
             onBack={() => void session.goBack()}
@@ -191,6 +190,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
         )}
 
         {!session.isExamComplete &&
+          !session.showExamWelcome &&
           session.totalQuestions > 0 &&
           session.currentQuestionNumber > 0 && (
             <QuizProgressBar
@@ -256,9 +256,18 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
             />
           )}
 
+          {session.showExamWelcome && session.quiz && (
+            <ExamWelcomeScreen
+              quiz={session.quiz}
+              onStart={() => void session.startExam()}
+              onClose={onClose}
+            />
+          )}
+
           {!session.isLoading &&
             !isGenerating &&
             session.record &&
+            !session.showExamWelcome &&
             !session.isExamComplete &&
             question && (
               <Stack sx={{ gap: '16px', paddingTop: '8px' }}>

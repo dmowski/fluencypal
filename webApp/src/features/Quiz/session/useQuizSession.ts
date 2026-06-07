@@ -81,6 +81,8 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
       : 0;
   const answeredCount = progress ? countSubmittedAnswers(progress) : 0;
   const isExamComplete = progress?.status === 'evaluated' && Boolean(progress.examResult);
+  const showExamWelcome =
+    quiz?.source.type === 'manual' && progress?.status === 'not-started';
 
   const persistProgress = async (nextProgress: QuizProgress) => {
     if (!docRef || !record) return;
@@ -268,30 +270,36 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
       evaluatedAtIso: now,
     };
 
-    await persistProgress({
+    const evaluatedProgress: QuizProgress = {
       ...progress,
       status: 'evaluated',
       examResult,
       submittedAtIso: now,
       evaluatedAtIso: now,
       updatedAtIso: now,
-    });
+    };
+
+    await persistProgress(evaluatedProgress);
 
     if (auth.uid && quizId) {
       void recordQuizCompletion(auth.uid, quizId);
     }
+
+    if (quiz.examEvaluation.autoRequestDetailedFeedback) {
+      void requestDetailedFeedbackForProgress(evaluatedProgress);
+    }
   };
 
-  const requestDetailedFeedback = async () => {
-    if (!quiz || !progress?.examResult) return;
-    if (progress.examResult.detailedFeedbackMarkdown) return;
+  const requestDetailedFeedbackForProgress = async (baseProgress: QuizProgress) => {
+    if (!quiz || !baseProgress.examResult) return;
+    if (baseProgress.examResult.detailedFeedbackMarkdown) return;
 
     setIsRequestingFeedback(true);
     try {
       const summaryLines = quiz.sections.flatMap((section) =>
         section.questions.map((q) => {
-          const result = progress.questionResults[q.id];
-          const answer = progress.answers[q.id];
+          const result = baseProgress.questionResults[q.id];
+          const answer = baseProgress.answers[q.id];
           return `- ${q.type} / ${q.id}: status=${result?.status ?? 'pending'}, score=${result?.score ?? 0}, answer=${JSON.stringify(answer?.payload ?? null)}`;
         }),
       );
@@ -311,9 +319,9 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
       });
 
       await persistProgress({
-        ...progress,
+        ...baseProgress,
         examResult: {
-          ...progress.examResult,
+          ...baseProgress.examResult,
           detailedFeedbackMarkdown: feedback.trim(),
         },
         updatedAtIso: new Date().toISOString(),
@@ -321,6 +329,16 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     } finally {
       setIsRequestingFeedback(false);
     }
+  };
+
+  const requestDetailedFeedback = async () => {
+    if (!progress) return;
+    await requestDetailedFeedbackForProgress(progress);
+  };
+
+  const startExam = async () => {
+    if (!progress) return;
+    await persistProgress(markStarted(progress));
   };
 
   const resetProgress = async () => {
@@ -351,6 +369,7 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     currentQuestionNumber,
     answeredCount,
     isExamComplete,
+    showExamWelcome,
     isExplaining,
     isEvaluatingVoice,
     isRequestingFeedback,
@@ -362,5 +381,6 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     submitExam,
     requestDetailedFeedback,
     resetProgress,
+    startExam,
   };
 };

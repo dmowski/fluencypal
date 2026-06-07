@@ -1702,6 +1702,7 @@ msgstr "Nhấp vào nút Chia sẻ bên cạnh app.fluencypal.com trong trình d
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3495,7 +3496,12 @@ msgstr "Bài văn"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Từ vựng cần thiết để thảo luận về sức khỏe tâm thần và tâm lý học."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "Thời gian ước lượng: ~{minutes} phút"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Đang đánh giá..."
@@ -9847,6 +9853,11 @@ msgstr ""
 "Vẽ một kiến trúc microservice đơn giản với API gateway, xác thực, dịch vụ, "
 "và giao tiếp không đồng bộ."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "Kỹ năng đã học: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -10073,6 +10084,11 @@ msgstr "Bắt đầu cuộc gọi"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Khởi động Tranh luận"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "Bắt đầu bài kiểm tra"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -10426,7 +10442,7 @@ msgid "Stupid Interview Mode"
 msgstr "Chế Độ Phỏng Vấn Ngu Ngốc"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gửi"

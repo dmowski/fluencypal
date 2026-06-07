@@ -2,11 +2,13 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { QuizDocument } from '../types';
 import { ENGLISH_B2_EXAM } from './englishB2Exam';
 import { ENGLISH_C1_EXAM } from './englishC1Exam';
+import { POLISH_KNOWLEDGE_EXAM } from './polishKnowledgeExam';
 import { POLISH_A2_EXAM, POLISH_B1_EXAM, POLISH_B2_EXAM } from './polishExams';
 
 export const MANUAL_EXAMS: QuizDocument[] = [
   ENGLISH_B2_EXAM,
   ENGLISH_C1_EXAM,
+  POLISH_KNOWLEDGE_EXAM,
   POLISH_A2_EXAM,
   POLISH_B1_EXAM,
   POLISH_B2_EXAM,

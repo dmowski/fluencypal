@@ -1686,6 +1686,7 @@ msgstr "اضغط على زر المشاركة بجانب app.fluencypal.com في
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3428,7 +3429,12 @@ msgstr "مقالات"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "كلمات أساسية لمناقشة الصحة العقلية والنفسية."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "الوقت المقدر: ~{minutes} دقائق"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "جارٍ التقييم..."
@@ -9703,6 +9709,11 @@ msgstr ""
 "ارسم بنية خدمة ميكرو بسيطة مع بوابة API، المصادقة، الخدمات، والاتصال غير "
 "المتزامن."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "مهارات مغطاة: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -9923,6 +9934,11 @@ msgstr "ابدأ المكالمة"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ابدأ النقاش"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "ابدأ الامتحان"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -10261,7 +10277,7 @@ msgid "Stupid Interview Mode"
 msgstr "وضع مقابلة غبي"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "قدم"

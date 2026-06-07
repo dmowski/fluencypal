@@ -1704,6 +1704,7 @@ msgstr "Kliknij przycisk Udostępnij obok app.fluencypal.com w swojej przegląda
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3496,7 +3497,12 @@ msgstr "Eseje"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Niezbędne słowa do dyskusji na temat zdrowia psychicznego i psychologii."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "Szacowany czas: ~{minutes} minut"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Ocena..."
@@ -9868,6 +9874,11 @@ msgstr ""
 "Narysuj prostą architekturę mikrousług z bramą API, uwierzytelnianiem, "
 "usługami i komunikacją asynchroniczną."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "Umiejętności objęte: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -10096,6 +10107,11 @@ msgstr "Rozpocznij rozmowę"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Rozpocznij debatę"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "Rozpocznij egzamin"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -10451,7 +10467,7 @@ msgid "Stupid Interview Mode"
 msgstr "Tryb głupiego wywiadu"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Zatwierdź"

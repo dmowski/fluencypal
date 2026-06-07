@@ -14,6 +14,9 @@ import {
   getExamCatalogForTargetLanguage,
 } from './examCatalog';
 import { getManualExamsForTargetLanguage } from './manualExams';
+import { getMaxConsecutiveForCategory } from './buildMixedExamSections';
+import { POLISH_KNOWLEDGE_EXAM } from './polishKnowledgeExam';
+import { POLISH_KNOWLEDGE_EXAM_COUNTS, POLISH_KNOWLEDGE_EXAM_ESTIMATED_MINUTES } from './polishKnowledgeExamContent';
 import { POLISH_A2_EXAM, POLISH_B1_EXAM, POLISH_B2_EXAM } from './polishExams';
 
 const validateExamStructure = (exam: typeof ENGLISH_B2_EXAM) => {
@@ -46,10 +49,10 @@ const validateExamStructure = (exam: typeof ENGLISH_B2_EXAM) => {
 };
 
 describe('manual exams', () => {
-  it('registers English B2, C1, and three Polish levels', () => {
-    expect(EXAM_CATALOG).toHaveLength(5);
+  it('registers English B2, C1, Polish knowledge test, and three Polish levels', () => {
+    expect(EXAM_CATALOG).toHaveLength(6);
     expect(getManualExamsForTargetLanguage('en')).toHaveLength(2);
-    expect(getManualExamsForTargetLanguage('pl')).toHaveLength(3);
+    expect(getManualExamsForTargetLanguage('pl')).toHaveLength(4);
     expect(getManualExamsForTargetLanguage('de')).toHaveLength(0);
   });
 
@@ -59,10 +62,26 @@ describe('manual exams', () => {
       'English C1 exam',
     ]);
     expect(getExamCatalogForTargetLanguage('pl').map((exam) => exam.title)).toEqual([
+      'Test mojej wiedzy',
       'Polish A2 exam',
       'Polish B1 exam',
       'Polish B2 exam',
     ]);
+  });
+
+  it('builds the Polish knowledge exam as a long mixed diagnostic test', () => {
+    const expectedTotal =
+      POLISH_KNOWLEDGE_EXAM_COUNTS.reading +
+      POLISH_KNOWLEDGE_EXAM_COUNTS.listening +
+      POLISH_KNOWLEDGE_EXAM_COUNTS.grammar +
+      POLISH_KNOWLEDGE_EXAM_COUNTS.speaking;
+
+    expect(getTotalQuestions(POLISH_KNOWLEDGE_EXAM)).toBe(expectedTotal);
+    expect(POLISH_KNOWLEDGE_EXAM.meta.estimatedMinutes).toBe(POLISH_KNOWLEDGE_EXAM_ESTIMATED_MINUTES);
+    expect(POLISH_KNOWLEDGE_EXAM.examEvaluation.autoRequestDetailedFeedback).toBe(true);
+    expect(getMaxConsecutiveForCategory(POLISH_KNOWLEDGE_EXAM.sections, 'reading')).toBeLessThanOrEqual(2);
+    expect(getMaxConsecutiveForCategory(POLISH_KNOWLEDGE_EXAM.sections, 'listening')).toBeLessThanOrEqual(2);
+    validateExamStructure(POLISH_KNOWLEDGE_EXAM);
   });
 
   it('sizes Polish exams by CEFR level', () => {

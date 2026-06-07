@@ -1711,6 +1711,7 @@ msgstr "Щёлкните кнопку «Поделиться» рядом с app
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3500,7 +3501,12 @@ msgstr "Эссе"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Основные слова для обсуждения психического здоровья и психологии."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "Предполагаемое время: ~{minutes} минут"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Оценка..."
@@ -9866,6 +9872,11 @@ msgstr ""
 "Набросайте простую архитектуру микросервисов с API-шлюзом, аутентификацией, "
 "сервисами и асинхронной коммуникацией."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "Навыки, которые будут охвачены: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -10094,6 +10105,11 @@ msgstr "Начать звонок"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Начать дебаты"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "Начать экзамен"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -10445,7 +10461,7 @@ msgid "Stupid Interview Mode"
 msgstr "Глупый режим интервью"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Отправить"

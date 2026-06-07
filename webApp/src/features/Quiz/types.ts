@@ -61,6 +61,8 @@ export interface QuizEvaluationCriteria {
 export interface QuizExamEvaluation extends QuizEvaluationCriteria {
   /** Optional passing threshold as a percentage (0–100). */
   passingScorePercent?: number;
+  /** When true, detailed level feedback is requested automatically after submit. */
+  autoRequestDetailedFeedback?: boolean;
 }
 
 // ---------------------------------------------------------------------------

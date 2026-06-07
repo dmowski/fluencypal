@@ -143,5 +143,10 @@ export const buildExamSummaryMarkdown = (input: {
   percent: number;
   passed: boolean;
   passingScorePercent: number;
-}): string =>
-  `**Score:** ${formatQuizScore(input.score)} / ${formatQuizScore(input.maxScore)} (${input.percent}%)\n\n**Result:** ${input.passed ? 'Passed' : 'Not passed'} (passing: ${input.passingScorePercent}%)`;
+}): string => {
+  const scoreLine = `**Score:** ${formatQuizScore(input.score)} / ${formatQuizScore(input.maxScore)} (${input.percent}%)`;
+  if (input.passingScorePercent <= 0) {
+    return `${scoreLine}\n\nYour level report and study focus areas appear below once feedback is ready.`;
+  }
+  return `${scoreLine}\n\n**Result:** ${input.passed ? 'Passed' : 'Not passed'} (passing: ${input.passingScorePercent}%)`;
+};

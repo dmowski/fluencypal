@@ -1641,6 +1641,7 @@ msgstr "브라우저에서 app.fluencypal.com 옆의 공유 버튼을 클릭하�
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3331,7 +3332,12 @@ msgstr "에세이"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "정신 건강과 심리학에 관한 핵심 단어들."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "예상 시간: ~{minutes}분"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "평가 중..."
@@ -9350,6 +9356,11 @@ msgid ""
 "and async communication."
 msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한 간단한 마이크로서비스 아키텍처를 스케치하십시오."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "습득할 수 있는 스킬: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -9568,6 +9579,11 @@ msgstr "통화 시작"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "토론 시작"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "시험 시작"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -9891,7 +9907,7 @@ msgid "Stupid Interview Mode"
 msgstr "Stupid Interview Mode -> 멍청한 인터뷰 모드"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"

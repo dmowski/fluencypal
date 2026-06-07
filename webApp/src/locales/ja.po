@@ -1636,6 +1636,7 @@ msgstr "ブラウザで app.fluencypal.com の隣にある共有ボタンをク�
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
@@ -3309,7 +3310,12 @@ msgstr "エッセイ"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "心の健康と心理学を議論するための必須の単語。"
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#. js-lingui-explicit-id
+msgid "Estimated time: ~{minutes} minutes"
+msgstr "所要時間: ~{minutes} 分"
+
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "評価中..."
@@ -9308,6 +9314,11 @@ msgid ""
 "and async communication."
 msgstr "マイクロサービスアーキテクチャの簡単なスケッチを描く。APIゲートウェイ、認証、サービス、および非同期通信を含める。"
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#. js-lingui-explicit-id
+msgid "Skills covered: {skills}"
+msgstr "スキル: {skills}"
+
 #: src/features/Alias/components/GameControls.tsx:37
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:61
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:244
@@ -9526,6 +9537,11 @@ msgstr "通話開始"
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ディベートを開始"
+
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#. js-lingui-explicit-id
+msgid "Start exam"
+msgstr "試験を開始"
 
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
@@ -9848,7 +9864,7 @@ msgid "Stupid Interview Mode"
 msgstr "愚かなインタビューモード"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "送信"
