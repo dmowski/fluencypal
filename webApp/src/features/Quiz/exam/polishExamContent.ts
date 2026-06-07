@@ -8,7 +8,7 @@ import {
 export const POLISH_READING_PASSAGES: ExamReadingPassage[] = [
   {
     passageText:
-      'Kawiarnia „Zielona Herbata” otwiera się o ósmej rano i zamyka o dziesiątej wieczorem. W menu są kawy, herbaty i domowe ciasta. W soboty często grają tam lekka muzyka, a stoliki na tarasie szybko się zapełniają.',
+      'Kawiarnia „Zielona Herbata” otwiera się o ósmej rano i zamyka o dziesiątej wieczorem. W menu są kawy, herbaty i domowe ciasta. W soboty często gra tam lekka muzyka, a stoliki na tarasie szybko się zapełniają.',
     questions: [
       {
         questionText: 'O której godzinie kawiarnia zamyka się wieczorem?',
@@ -32,7 +32,7 @@ export const POLISH_READING_PASSAGES: ExamReadingPassage[] = [
   },
   {
     passageText:
-      'Autobus numer 12 odjeżdża z przystanku „Ratusz” co piętnaście minut w dni robocze. Bilet jednorazowy kosztuje cztery złote, a bilet dobowy dwanaście złotych. Nocny kurs kursuje tylko w piątki i soboty.',
+      'Autobus numer 12 odjeżdża z przystanku „Ratusz” co piętnaście minut w dni robocze. Bilet jednorazowy kosztuje cztery złote, a bilet dobowy dwanaście złotych. Autobus nocny kursuje tylko w piątki i soboty.',
     questions: [
       {
         questionText: 'Jak często odjeżdża autobus 12 w dni robocze?',
@@ -234,8 +234,8 @@ export const POLISH_GRAMMAR_A2: ExamGrammarItem[] = [
     ],
     gaps: {
       g1: [
-        { label: 'pić' },
-        { label: 'wypić', correct: true },
+        { label: 'pić', correct: true },
+        { label: 'wypić' },
         { label: 'piję' },
         { label: 'wypiję' },
       ],
@@ -294,8 +294,8 @@ export const POLISH_GRAMMAR_A2: ExamGrammarItem[] = [
     ],
     gaps: {
       g1: [
-        { label: 'duży' },
-        { label: 'dużego', correct: true },
+        { label: 'duży', correct: true },
+        { label: 'dużego' },
         { label: 'duzi' },
         { label: 'duże' },
       ],
@@ -303,16 +303,16 @@ export const POLISH_GRAMMAR_A2: ExamGrammarItem[] = [
   },
   {
     segments: [
-      { kind: 'text', text: 'Zawsze ' },
+      { kind: 'text', text: 'W ciepłe dni zawsze ' },
       { kind: 'gap', gapId: 'g1' },
-      { kind: 'text', text: ' rower do pracy w ciepłe dni.' },
+      { kind: 'text', text: ' na rowerze do pracy.' },
     ],
     gaps: {
       g1: [
-        { label: 'jadę', correct: true },
+        { label: 'jeżdżę', correct: true },
         { label: 'jechałem' },
         { label: 'pojadę' },
-        { label: 'jeżdżę' },
+        { label: 'jadę' },
       ],
     },
   },
@@ -329,7 +329,7 @@ export const POLISH_GRAMMAR_B1: ExamGrammarItem[] = [
     gaps: {
       g1: [
         { label: 'mam' },
-        { label: 'miałem', correct: true },
+        { label: 'miał', correct: true },
         { label: 'będę miał' },
         { label: 'miałbym' },
       ],
@@ -388,8 +388,8 @@ export const POLISH_GRAMMAR_B1: ExamGrammarItem[] = [
     ],
     gaps: {
       g1: [
-        { label: 'zna', correct: true },
-        { label: 'znał' },
+        { label: 'zna' },
+        { label: 'znał', correct: true },
         { label: 'będzie znał' },
         { label: 'znać' },
       ],
@@ -452,9 +452,9 @@ export const POLISH_GRAMMAR_B2: ExamGrammarItem[] = [
     ],
     gaps: {
       g1: [
-        { label: 'który' },
+        { label: 'który', correct: true },
         { label: 'jaki' },
-        { label: 'który został', correct: true },
+        { label: 'którego' },
         { label: 'gdzie' },
       ],
     },
@@ -467,7 +467,7 @@ export const POLISH_GRAMMAR_B2: ExamGrammarItem[] = [
     ],
     gaps: {
       g1: [
-        { label: 'przy', correct: true },
+        { label: 'dzięki', correct: true },
         { label: 'bez' },
         { label: 'mimo' },
         { label: 'pod' },
