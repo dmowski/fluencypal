@@ -8,8 +8,7 @@ const SHARED_IMAGE_URLS = {
     'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-doctor-talking-to-a-patient.webp?alt=media',
   tourists:
     'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-group-of-tourists-taking-photos.webp?alt=media',
-  map:
-    'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-looking-confused-at-a-map.webp?alt=media',
+  map: 'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-person-looking-confused-at-a-map.webp?alt=media',
   teacher:
     'https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2Fa-teacher-writing-on-a-whiteboard.webp?alt=media',
   cooking: getImagePublicUrl('Someone cooking in the kitchen'),
@@ -22,9 +21,8 @@ const IMAGE_GROUND_TRUTH = {
   doctor:
     'A doctor wearing a white coat sits on a stool beside an examination bed, speaking calmly to a seated patient. The doctor gestures toward a clipboard with notes while medical equipment and a wall chart appear in the background.',
   tourists:
-    'Three tourists stand in a historic city square, holding smartphones to photograph a landmark fountain. Stone buildings with balconies rise behind them, and other pedestrians walk through the sunny plaza.',
-  map:
-    'A young traveler with a backpack stands on a busy sidewalk, unfolding a paper map with a puzzled expression. Pedestrians pass by, shop signs line the street, and a bus stop is visible nearby.',
+    'Four tourists stand in a historic city square, holding smartphones to photograph a landmark fountain. Stone buildings with balconies rise behind them, and other pedestrians walk through the sunny plaza.',
+  map: 'A young traveler with a backpack stands on a busy sidewalk, unfolding a paper map with a puzzled expression. Pedestrians pass by, shop signs line the street, and a bus stop is visible nearby.',
   teacher:
     'A teacher stands at the front of a classroom, writing vocabulary terms on a whiteboard with a blue marker. Students sit at desks facing forward, notebooks open, while educational posters hang on the walls.',
   cooking:
@@ -82,14 +80,12 @@ export const POLISH_EXAM_SPEAKING_IMAGES: ExamSpeakingImage[] = [
   {
     imageUrl: SHARED_IMAGE_URLS.tourists,
     imageDescription: IMAGE_GROUND_TRUTH.tourists,
-    promptText:
-      'Opisz scenę turystyczną. Gdzie są ludzie, co robią i co widać w tle?',
+    promptText: 'Opisz scenę turystyczną. Gdzie są ludzie, co robią i co widać w tle?',
   },
   {
     imageUrl: SHARED_IMAGE_URLS.doctor,
     imageDescription: IMAGE_GROUND_TRUTH.doctor,
-    promptText:
-      'Opisz wizytę lekarską. Kim są osoby na zdjęciu i co robi lekarz?',
+    promptText: 'Opisz wizytę lekarską. Kim są osoby na zdjęciu i co robi lekarz?',
   },
   {
     imageUrl: SHARED_IMAGE_URLS.teacher,

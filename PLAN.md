@@ -2,6 +2,16 @@
 
 ## Exams/quiz
 
+- Check image quality
+
+- Pass polish exam. Check how it feels.
+
+- Make exam close to government
+
+- Generate Exam each time new
+
+- Generate questions in parallel
+
 ++++++++++++++++++++++++++++++++++++
 
 ## Realtime service
