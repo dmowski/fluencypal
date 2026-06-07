@@ -1,3 +1,26 @@
+# Social Media Change Log — May 31 to June 7, 2026
+
+> **Commits:** `e020baeb` → `1786c551`
+> **Period:** 2026-05-31 to 2026-06-07
+
+---
+
+### Post 1 — Practice for real language exams inside the app
+
+There is a new Exams section on your dashboard with full practice tests — English B2 and the Polish citizenship knowledge exam are live now.
+
+Each exam walks you through the same kinds of tasks you would see on test day: multiple choice, fill-in-the-gap, reading comprehension, listening, and a speaking section where you describe a picture out loud. You get a welcome screen before you start, a progress bar as you go, and a scored summary with detailed feedback when you finish.
+
+---
+
+### Post 2 — Turn any news article into a quiz
+
+Finished reading a news story? Tap **Take quiz** and the app builds a personalized quiz from that article.
+
+It mixes question types — translation, gap-fill, reading, listening, and a speaking prompt based on the article image — and explains why your wrong answers were wrong. Font sizes and layout got a readability pass too, so longer quizzes are easier to work through on a phone.
+
+---
+
 # Social Media Change Log — May 9–16, 2026
 
 > **Commits:** `ab23e861` → `a9b4fdc6`

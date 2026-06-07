@@ -4,6 +4,89 @@ All notable changes to this project are documented here.
 
 ---
 
+## [Unreleased] — 2026-05-31 to 2026-06-07
+
+**Commits:** [`e020baeb...1786c551`](../../compare/e020baebe989c652efc36c90d2f84b48563664e6...1786c5518f3a260ea7701ea5aaa1729d5c2db86d)
+
+---
+
+### Added
+
+#### Exams
+
+- Add `ExamsDashboardCard` with manual exam catalog filtered by learning language (`f20b8b66`)
+- Add English B2 and Polish citizenship knowledge exams with hardcoded `QuizDocument` content (`2b147b7b`, `e8e7818b`)
+- Add `ExamWelcomeScreen` with exam overview before starting (`8ffbfbf5`)
+- Add exam summary with markdown-formatted feedback and improved score rounding (`dc0c2e90`)
+- Enhance exam quiz sections with updated speaking image URLs and descriptions (`ebad649b`, `e49fd0cd`)
+- Enhance quiz evaluation criteria for exam scoring (`8ffbfbf5`)
+
+#### Quiz Feature
+
+- Implement quiz feature with `QuizModal` integration, URL state via `quizId`, and completion stats tracking (`2f7575d3`)
+- Add news-linked quiz generation: AI draft for MC/reading sections plus OpenAI vision for describe-picture speaking (`b114672c`, `8ba4c397`)
+- Add quiz activity types: word-translation, fill-gap, read-and-answer, listening, describe-picture-voice (`816f5180`, `f6d846b0`, `0c7f895c`)
+- Add option reveal functionality across quiz activities (`9772f492`)
+- Add lazy "Why" explanations for wrong MC answers and enhanced speaking feedback (`6b8cc150`, `a0c09ecf`)
+- Add `QuizResultsScreen` with UI enhancements and feedback handling (`40adee29`)
+- Add quiz initiation from `NewsModal` with loading state during generation (`25670420`, `bb0a1446`)
+- Add deduplication and error handling in quiz creation pipeline (`8ba4c397`, `0730cd64`)
+- Enhance `DescribePictureVoiceActivity` with transcription handling (`0c7f895c`)
+- Enhance `QuestionFeedback`, `ListeningActivity`, `FillGapActivity`, and related quiz UI components (`e80fe686`, `f6d846b0`, `a49c83da`)
+
+#### News Analytics
+
+- Implement news read tracking when user spends 30 seconds on an article (`d6a283b3`)
+- Add news view analytics with consolidated per-user view data (`94bc1171`)
+- Add `NewsPreviewCard` translation for title and subtitle (`2b074716`)
+
+#### Realtime WebSocket Service
+
+- Introduce WebSocket AI conversation service in isolated `realtime/` package (`d5db9a69`)
+- Add experimental WebSocket service with pricing model and `ExperimentalDashboardCard` access control (`f41108c3`, `286af49e`)
+- Add `RealTimeConversation` UI with Mantine, microphone toggle, voice playback, and usage cost display (`2f1161a7`, `80a09d57`, `1f2d43f1`, `4e63335c`)
+- Add per-IP rate limiting and session idle timeout for WebSocket connections (`d2f5f963`, `69c36b49`)
+- Add assistant playback control, barge-in handling, and user turn detection (`7154fe4a`, `69463de2`, `a2e3df64`)
+- Add voice E2E testing framework and fixtures for realtime service (`676dcc6b`)
+- Add Firebase emulator integration and hot-reload development setup (`6008d564`, `09a1a8c7`)
+- Add CORS configuration and production deployment documentation (`c1b15c66`, `f1f9d821`)
+
+#### Infrastructure
+
+- Add UI Translation Validation Guide for locale validation (`35611b55`)
+
+### Changed
+
+- Increase font size in `QuizOptionList` and improve `ReadAndAnswerActivity` typography for readability (`d61d7f9b`, `4026a8fb`)
+- Update trial period to 7 days in pricing configuration (`8e3f81cb`)
+- Refine news item enrichment and processing logic (`e020baeb`)
+- Enhance quiz option handling and validation (`d00630bc`)
+- Improve microphone access handling in `useMicrophone` hook (`680e58e2`)
+- Rename `micMuted` to `micEnabled` across realtime codebase for clarity (`965b7422`)
+
+### Fixed
+
+- Resolve news view tracking issues and data merging (`2f511539`)
+- Correct grammar and phrasing in English B2 and Polish exam content (`cf810504`, `14099fbd`, `1786c551`)
+- Improve realtime error handling and session management in `ConversationSession` (`b154d17d`, `042d9d0c`)
+- Update Japanese, Russian, and Spanish locale translations for clarity (`e5241cdb`, `c4c09a80`, `6181bdc1`, `c242fd27`)
+
+### Security
+
+- Add per-IP rate limiting on WebSocket connections (`d2f5f963`)
+- Add session idle timeout to limit abandoned WebSocket sessions (`69c36b49`)
+- Update CORS configuration for production WebSocket endpoints (`c1b15c66`, `f1f9d821`)
+
+### Infrastructure
+
+- Add Realtime service README, Docker configuration, and development scripts (`c026e03d`, `d3d96366`, `81ceec22`)
+- Add Phase 3 handoff checklist and experimental WebSocket testing infrastructure (`b343d706`, `28aa4360`)
+- Normalize PCM audio handling and improve error resilience in realtime pipeline (`25605a09`)
+- Streamline quiz generation by removing caching logic (`0730cd64`)
+- Rewrite realtime test client to React with Mantine UI (`46904400`, `80a09d57`)
+
+---
+
 ## [Unreleased] — 2026-05-09 to 2026-05-16
 
 **Commits:** [`ab23e861...a9b4fdc6`](../../compare/ab23e861668c83bf5e024daa4bc6eef6813b45c7...a9b4fdc6e68466c002dff593f437b749ef8cbd7b)
