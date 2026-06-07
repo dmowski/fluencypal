@@ -21,7 +21,6 @@ export const QuizResultsScreen = ({
   onClose: () => void;
 }) => {
   const { i18n } = useLingui();
-  console.log('examResult.summaryMarkdown', examResult.summaryMarkdown);
   return (
     <Stack sx={{ gap: '20px', padding: '20px 5px 80px' }} data-testid="quiz-results-screen">
       <Typography variant="h3" sx={{ fontWeight: 700, paddingTop: '24px' }}>

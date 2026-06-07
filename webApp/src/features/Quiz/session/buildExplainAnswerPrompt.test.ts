@@ -1,4 +1,4 @@
-import { buildExplainAnswerPrompt } from './buildExplainAnswerPrompt';
+import { buildExplainAnswerPrompt, buildExamSummaryMarkdown } from './buildExplainAnswerPrompt';
 import { buildVoiceEvaluationPrompt, parseVoiceEvaluationResponse } from './scoreQuestion';
 
 describe('buildExplainAnswerPrompt', () => {
@@ -54,6 +54,20 @@ describe('buildExplainAnswerPrompt', () => {
 
     expect(userMessage).toContain('Wrong choice');
     expect(userMessage).toContain('Right choice');
+  });
+});
+
+describe('buildExamSummaryMarkdown', () => {
+  it('rounds fractional scores for display', () => {
+    expect(
+      buildExamSummaryMarkdown({
+        score: 18.700000000000003,
+        maxScore: 23,
+        percent: 81,
+        passed: true,
+        passingScorePercent: 70,
+      }),
+    ).toBe('**Score:** 18.7 / 23 (81%)\n\n**Result:** Passed (passing: 70%)');
   });
 });
 

@@ -7,6 +7,7 @@ import {
   QuizQuestion,
 } from '../types';
 import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
+import { formatQuizScore } from './quizNavigation';
 
 const formatMcQuestion = (question: QuizQuestion): string => {
   if (
@@ -143,4 +144,4 @@ export const buildExamSummaryMarkdown = (input: {
   passed: boolean;
   passingScorePercent: number;
 }): string =>
-  `**Score:** ${input.score} / ${input.maxScore} (${input.percent}%)\n\n**Result:** ${input.passed ? 'Passed' : 'Not passed'} (passing: ${input.passingScorePercent}%)`;
+  `**Score:** ${formatQuizScore(input.score)} / ${formatQuizScore(input.maxScore)} (${input.percent}%)\n\n**Result:** ${input.passed ? 'Passed' : 'Not passed'} (passing: ${input.passingScorePercent}%)`;

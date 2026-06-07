@@ -98,6 +98,13 @@ export const aggregateExamScore = (
     score += result?.score ?? 0;
   }
 
-  const percent = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
-  return { score, maxScore, percent };
+  const roundedScore = Math.round(score * 10) / 10;
+  const percent = maxScore > 0 ? Math.round((roundedScore / maxScore) * 100) : 0;
+  return { score: roundedScore, maxScore, percent };
+};
+
+/** Display score without floating-point noise (e.g. 18.7, not 18.700000000000003). */
+export const formatQuizScore = (value: number): string => {
+  const rounded = Math.round(value * 10) / 10;
+  return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
 };
