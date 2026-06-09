@@ -8,7 +8,7 @@
  *  - Network-only for API requests (no caching of auth/data calls).
  */
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const PRECACHE = `fp-precache-${CACHE_VERSION}`;
 const RUNTIME_STATIC = `fp-runtime-static-${CACHE_VERSION}`;
 const RUNTIME_PAGES = `fp-runtime-pages-${CACHE_VERSION}`;
@@ -47,9 +47,27 @@ const isImmutableNextAsset = (url) =>
 
 const isSameOriginStaticAsset = (url) => {
   if (url.origin !== self.location.origin) return false;
-  return /\.(?:css|js|woff2?|ttf|otf|eot|png|jpe?g|gif|svg|webp|ico|mp3|mp4|webm|json)$/i.test(
+  // Media is streamed with Range requests (206); bypass SW caching entirely.
+  if (/\.(?:mp3|mp4|webm|m4a|ogg|wav)$/i.test(url.pathname)) return false;
+  return /\.(?:css|js|woff2?|ttf|otf|eot|png|jpe?g|gif|svg|webp|ico|json)$/i.test(
     url.pathname,
   );
+};
+
+const isCacheableResponse = (response) => {
+  if (!response?.ok) return false;
+  // Cache API rejects partial (206) and non-basic responses.
+  if (response.status === 206) return false;
+  return response.type === 'basic' || response.type === 'default';
+};
+
+const putInCache = async (cache, request, response) => {
+  if (!isCacheableResponse(response)) return;
+  try {
+    await cache.put(request, response);
+  } catch {
+    /* best-effort runtime cache */
+  }
 };
 
 const isApiRequest = (url) =>
@@ -60,7 +78,7 @@ const cacheFirst = async (request, cacheName) => {
   const cached = await cache.match(request);
   if (cached) return cached;
   const response = await fetch(request);
-  if (response.ok) cache.put(request, response.clone());
+  await putInCache(cache, request, response.clone());
   return response;
 };
 
@@ -68,8 +86,8 @@ const staleWhileRevalidate = async (request, cacheName) => {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(request);
   const networkPromise = fetch(request)
-    .then((response) => {
-      if (response.ok) cache.put(request, response.clone());
+    .then(async (response) => {
+      await putInCache(cache, request, response.clone());
       return response;
     })
     .catch(() => cached);
@@ -80,7 +98,7 @@ const networkFirstPage = async (request) => {
   const cache = await caches.open(RUNTIME_PAGES);
   try {
     const response = await fetch(request);
-    if (response.ok) cache.put(request, response.clone());
+    await putInCache(cache, request, response.clone());
     return response;
   } catch (err) {
     const cached = await cache.match(request);
