@@ -64,9 +64,5 @@ export const shouldShowInstallAppCard = (): boolean => {
     return false;
   }
 
-  if (isLocalhostHostname()) {
-    return true;
-  }
-
   return isMobileInstallTarget();
 };

@@ -21,20 +21,8 @@ export const InstallAppInstruction = () => {
     return null;
   }
 
-  const handleActionClick = async () => {
-    if (isExpanded) {
-      setIsExpanded(false);
-      return;
-    }
-
-    if (install.canNativePrompt) {
-      const installed = await install.promptInstall();
-      if (installed) {
-        return;
-      }
-    }
-
-    setIsExpanded(true);
+  const handleActionClick = () => {
+    setIsExpanded((expanded) => !expanded);
   };
 
   return (
