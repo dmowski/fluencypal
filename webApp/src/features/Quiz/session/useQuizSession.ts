@@ -6,6 +6,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 import { findQuestionById } from '../types';
 import {
   createInitialQuizProgress,
@@ -42,6 +43,7 @@ const MODEL_FOR_QUIZ_AI = 'gpt-4o-mini' as const;
 export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) => {
   const auth = useAuth();
   const textAi = useTextAi();
+  const dailyTasks = useDailyTasks();
   const docRef = useMemo(
     () => (auth.uid && quizId ? db.documents.quiz(auth.uid, quizId) : null),
     [auth.uid, quizId],
@@ -283,6 +285,10 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
 
     if (auth.uid && quizId) {
       void recordQuizCompletion(auth.uid, quizId);
+    }
+
+    if (passed && quiz.source.type === 'news') {
+      void dailyTasks.onCompleteTask('news');
     }
 
     if (quiz.examEvaluation.autoRequestDetailedFeedback) {
