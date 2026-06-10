@@ -18,6 +18,7 @@ interface WelcomeScreenProps {
   subTitle2: string;
   buttonTitle: string;
   buttonHref: string;
+  buttonSubtitle?: string;
   openMyPracticeLinkTitle: string;
   cards: PreviewCard[];
 }
@@ -31,6 +32,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   buttonHref,
   cards,
   openMyPracticeLinkTitle,
+  buttonSubtitle,
 }) => {
   //const bgUrl = "https://cdn.midjourney.com/7813fa3b-6e7f-42c6-b04d-ee77a5058aad/0_0.png";
   return (
@@ -240,6 +242,11 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             <Stack
               sx={{
                 paddingTop: '40px',
+                gap: '10px',
+                alignItems: 'flex-start',
+                '@media (max-width: 1100px)': {
+                  alignItems: 'center',
+                },
               }}
             >
               <WelcomeScreenButton
@@ -248,6 +255,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 openMyPracticeLinkTitle={openMyPracticeLinkTitle}
                 endIcon={<MoveRight size={'27px'} />}
               />
+              {buttonSubtitle && <Typography variant="body2">{buttonSubtitle}</Typography>}
             </Stack>
           </Stack>
 
