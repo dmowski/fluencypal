@@ -1,0 +1,23 @@
+diff --git a/script/cli.js b/script/cli.js
+index ee2c5f2f4bbb442f82840003854bb1ca62ecec22..fbcb4abfdebecb90baea270e3302724bb6f7bbf2 100755
+--- a/script/cli.js
++++ b/script/cli.js
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env node
++console.error('ua-parser-js CLI is disabled in this project');
++process.exit(1);
+ 
+ try {    
+     const fs = require('node:fs');
+diff --git a/src/main/ua-parser.mjs b/src/main/ua-parser.mjs
+index 9d8b4dfb30eef88d856191c65e073b16dc823c35..1e153e7afa2917befb8a04296d9aab147609ad3f 100644
+--- a/src/main/ua-parser.mjs
++++ b/src/main/ua-parser.mjs
+@@ -1516,4 +1516,5 @@
+     UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
+     UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
+ 
+-    export {UAParser};
+\ No newline at end of file
++    export {UAParser};
++    export default UAParser;

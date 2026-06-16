@@ -27,6 +27,9 @@ overrides:
   valibot@>=0.31.0 <1.2.0: ^1.2.0
   yaml@>=2.0.0 <2.8.3: ^2.8.3
 
+patchedDependencies:
+  ua-parser-js@2.0.10: c169603cf4e1575ab1904ff27886b76fbf20375065319ba15ae49bcbe592767f
+
 importers:
 
   .:
@@ -11968,7 +11971,7 @@ snapshots:
       classnames: 2.5.1
       csstype: 3.2.3
       deepmerge: 4.3.1
-      ua-parser-js: 2.0.10
+      ua-parser-js: 2.0.10(patch_hash=c169603cf4e1575ab1904ff27886b76fbf20375065319ba15ae49bcbe592767f)
     transitivePeerDependencies:
       - encoding
 
@@ -15770,7 +15773,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       lighthouse: 13.4.0
-      ua-parser-js: 2.0.10
+      ua-parser-js: 2.0.10(patch_hash=c169603cf4e1575ab1904ff27886b76fbf20375065319ba15ae49bcbe592767f)
     optionalDependencies:
       playwright-core: 1.61.0
 
@@ -16786,7 +16789,7 @@ snapshots:
 
   ua-is-frozen@0.1.2: {}
 
-  ua-parser-js@2.0.10:
+  ua-parser-js@2.0.10(patch_hash=c169603cf4e1575ab1904ff27886b76fbf20375065319ba15ae49bcbe592767f):
     dependencies:
       detect-europe-js: 0.1.2
       is-standalone-pwa: 0.1.1
