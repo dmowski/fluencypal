@@ -5,6 +5,20 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || '';
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || '';
 const url = 'https://api.telegram.org/bot' + TELEGRAM_API_KEY + '/sendMessage';
 
+const TELEGRAM_ALERT_COOLDOWN_MS = 10 * 60 * 1000;
+const recentTelegramAlerts = new Map<string, number>();
+
+const shouldSendTelegramAlert = (message: string): boolean => {
+  const key = message.slice(0, 160);
+  const now = Date.now();
+  const lastSentAt = recentTelegramAlerts.get(key);
+  if (lastSentAt != null && now - lastSentAt < TELEGRAM_ALERT_COOLDOWN_MS) {
+    return false;
+  }
+  recentTelegramAlerts.set(key, now);
+  return true;
+};
+
 const sendTelegramMessageInternal = async (message: string, chatId: string): Promise<void> => {
   try {
     console.log('urlForSend', url);
@@ -66,7 +80,10 @@ export const sentSupportTelegramMessage = async ({
 
 export const sendTelegramMessageServer = async (message: string): Promise<void> => {
   if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
-    throw new Error('Telegram API key or chat ID is not set');
+    return;
+  }
+  if (!shouldSendTelegramAlert(message)) {
+    return;
   }
   await sendTelegramMessageInternal(message, TELEGRAM_SUPPORT_CHAT_ID);
 };

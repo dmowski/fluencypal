@@ -27,6 +27,9 @@ const nextConfig: NextConfig = {
     '@google-cloud/firestore',
     '@grpc/grpc-js',
     'google-gax',
+    'firebase-admin',
+    'jwks-rsa',
+    'jose',
   ],
   images: {
     // Next.js 16 blocks localhost / private IPs by default (SSRF protection).

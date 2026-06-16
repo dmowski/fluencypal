@@ -32,7 +32,7 @@ export const getCachedTodayNews = async ({
 
     return snapshot.docs.map((d) => d.data() as NewsItem);
   } catch (error) {
-    sendTelegramMessageServer(`Error reading news cache (today): ${(error as Error).message}`);
+    console.error('Error reading news cache (today):', error);
     return [];
   }
 };
@@ -65,9 +65,7 @@ export const getCachedPreviousDayNews = async ({
 
     return snapshot.docs.map((d) => d.data() as NewsItem);
   } catch (error) {
-    sendTelegramMessageServer(
-      `Error reading news cache (previous day): ${(error as Error).message}`,
-    );
+    console.error('Error reading news cache (previous day):', error);
     return [];
   }
 };
@@ -79,9 +77,7 @@ export const getCachedNewsById = async (id: string): Promise<NewsItem | null> =>
     if (!doc.exists) return null;
     return doc.data() as NewsItem;
   } catch (error) {
-    sendTelegramMessageServer(
-      `Error reading news cache (by id ${id}): ${(error as Error).message}`,
-    );
+    console.error(`Error reading news cache (by id ${id}):`, error);
     return null;
   }
 };
