@@ -2206,15 +2206,10 @@ msgstr "Çekirdek Web Canlıları"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Doğru"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "Doğru cevap: {cevap}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2410,7 +2405,7 @@ msgstr "Kendi Senaryonuzu Oluşturun"
 msgid "Creating your improvement..."
 msgstr "İlerlemeniz oluşturuluyor..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Testiniz oluşturuluyor... Bu genellikle bir dakika kadar sürer."
@@ -3558,7 +3553,7 @@ msgstr "Zihinsel sağlık ve psikolojiyi tartışmak için olmazsa olmaz kelimel
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Tahmini süre: ~{dakika} dakika"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Değerlendiriliyor..."
@@ -4592,7 +4587,7 @@ msgstr "Genel Asistan"
 msgid "Generate more unique lessons"
 msgstr "Daha eşsiz dersler oluşturun"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Açıklama üretiliyor..."
@@ -5817,7 +5812,7 @@ msgstr ""
 "mülakat becerilerinizi artırmanıza yardımcı olacak geri bildirim "
 "alacaksınız."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Yanlış"
@@ -6539,7 +6534,7 @@ msgstr "Makaleyi yüklüyor..."
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Yarışma yükleniyor..."
@@ -7028,7 +7023,7 @@ msgstr "Haber Tartışması"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7726,7 +7721,7 @@ msgstr "Ebeveyn İzni"
 msgid "Parental consent submitted!"
 msgstr "Ebeveyn izni gönderildi!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Kısmen doğru"
@@ -10538,7 +10533,7 @@ msgid "Subject:"
 msgstr "Konu:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gönder"
@@ -11394,7 +11389,7 @@ msgstr ""
 "Burada güçlü olmak zorunda değilsiniz.  \n"
 "Sadece burada olmanız yeterli."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Bu test henüz oluşturulmadı. Haber makalesinden açın."
@@ -11719,7 +11714,7 @@ msgstr "Deneme günleri"
 msgid "Try"
 msgstr "Denemek"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Tekrar dene"
@@ -12486,8 +12481,8 @@ msgstr "Yapay Zeka kim olmalı?"
 msgid "Who this is for"
 msgstr "Bu kimin için"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Neden"
@@ -13202,11 +13197,6 @@ msgstr "AI öğretmeninizin sesi:"
 msgid "Your answer"
 msgstr "Cevabınız"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "Yanıtınız: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -13425,6 +13415,16 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "Doğru cevap: {cevap}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "Yanıtınız: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

@@ -2214,15 +2214,10 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Benar"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "Jawaban yang benar: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2419,7 +2414,7 @@ msgstr "Buat Skenario Anda Sendiri"
 msgid "Creating your improvement..."
 msgstr "Membuat peningkatan Anda..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Membuat kuis Anda... Ini biasanya memakan waktu sekitar satu menit."
@@ -3579,7 +3574,7 @@ msgstr "Kata-kata esensial untuk mendiskusikan kesehatan mental dan psikologi."
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Waktu perkiraan: ~{minutes} menit"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Menilai..."
@@ -4621,7 +4616,7 @@ msgstr "Asisten Umum"
 msgid "Generate more unique lessons"
 msgstr "Hasilkan lebih banyak pelajaran unik"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Menghasilkan penjelasan..."
@@ -5866,7 +5861,7 @@ msgstr ""
 "membantu Anda menyempurnakan jawaban Anda dan meningkatkan keterampilan "
 "wawancara Anda."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Tidak tepat"
@@ -6605,7 +6600,7 @@ msgstr "Memuat artikel..."
 msgid "Loading library..."
 msgstr "Memuat perpustakaan..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Memuat kuis..."
@@ -7099,7 +7094,7 @@ msgstr "Diskusi Berita"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7807,7 +7802,7 @@ msgstr "Persetujuan Orang Tua"
 msgid "Parental consent submitted!"
 msgstr "Persetujuan orang tua telah diajukan!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Sebagian benar"
@@ -10649,7 +10644,7 @@ msgid "Subject:"
 msgstr "Subjek:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Kirim"
@@ -11509,7 +11504,7 @@ msgstr ""
 "Anda tidak harus kuat di sini.  \n"
 "Anda hanya perlu hadir."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Quiz ini belum dibuat. Buka dari artikel berita."
@@ -11837,7 +11832,7 @@ msgstr "Hari percobaan"
 msgid "Try"
 msgstr "Coba"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Coba lagi"
@@ -12621,8 +12616,8 @@ msgstr "Siapa yang seharusnya menjadi AI?"
 msgid "Who this is for"
 msgstr "Untuk siapa ini"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Mengapa"
@@ -13360,11 +13355,6 @@ msgstr "Suara AI guru Anda:"
 msgid "Your answer"
 msgstr "Jawaban Anda"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "Jawaban Anda: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -13588,6 +13578,16 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "Jawaban yang benar: {answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "Jawaban Anda: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

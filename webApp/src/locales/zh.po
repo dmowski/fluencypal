@@ -2125,15 +2125,10 @@ msgstr "核心网络指标"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "正确"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "正确答案：{answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2304,7 +2299,7 @@ msgstr "创建您自己的场景"
 msgid "Creating your improvement..."
 msgstr "正在创建您的改进..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "创建您的测验... 这通常需要大约一分钟。"
@@ -3366,7 +3361,7 @@ msgstr "讨论精神健康和心理学的必备词汇。"
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "预计时间：约~{minutes}分钟"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "评估中..."
@@ -4319,7 +4314,7 @@ msgstr "通用助手"
 msgid "Generate more unique lessons"
 msgstr "生成更多独特的课程"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "正在生成解释..."
@@ -5418,7 +5413,7 @@ msgid ""
 "answers and improve your interview skills."
 msgstr "在本次课程中，您将回答为高级前端角色设计的问题。回答后，您将收到反馈，帮助您完善答案并提高您的面试技能。"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "不正确"
@@ -6132,7 +6127,7 @@ msgstr "正在加载文章..."
 msgid "Loading library..."
 msgstr "正在加载库..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "加载测验中..."
@@ -6615,7 +6610,7 @@ msgstr "新闻讨论"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7263,7 +7258,7 @@ msgstr "家长同意"
 msgid "Parental consent submitted!"
 msgstr "家长同意书已提交！"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "部分正确"
@@ -9938,7 +9933,7 @@ msgid "Subject:"
 msgstr "主题:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提交"
@@ -10727,7 +10722,7 @@ msgstr ""
 "在这里你无需保持坚强。  \n"
 "你只需出现即可。"
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "此测验尚未生成。从新闻文章中打开它。"
@@ -11031,7 +11026,7 @@ msgstr "试用天数"
 msgid "Try"
 msgstr "尝试"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "再试一次"
@@ -11779,8 +11774,8 @@ msgstr "AI 应该是谁？"
 msgid "Who this is for"
 msgstr "这是谁用的"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "为什么"
@@ -12402,11 +12397,6 @@ msgstr "您的 AI 教师语音："
 msgid "Your answer"
 msgstr "你的答案"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "你的答案：{answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -12613,6 +12603,16 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "正确答案：{answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "你的答案：{answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

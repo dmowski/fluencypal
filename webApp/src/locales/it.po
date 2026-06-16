@@ -2227,15 +2227,10 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Corretto"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "Risposta corretta: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2433,7 +2428,7 @@ msgstr "Crea il Tuo Scenario"
 msgid "Creating your improvement..."
 msgstr "Creazione del tuo miglioramento..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Creazione del quiz in corso... Di solito richiede circa un minuto."
@@ -3589,7 +3584,7 @@ msgstr "Parole essenziali per discutere di salute mentale e psicologia."
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Tempo stimato: ~{minutes} minuti"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Valutazione in corso..."
@@ -4627,7 +4622,7 @@ msgstr "Assistente Generale"
 msgid "Generate more unique lessons"
 msgstr "Genera lezioni più uniche"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Generazione della spiegazione..."
@@ -5856,7 +5851,7 @@ msgstr ""
 "frontend. Dopo aver risposto, riceverai feedback per aiutarti a "
 "perfezionare le tue risposte e migliorare le tue competenze per i colloqui."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Errato"
@@ -6594,7 +6589,7 @@ msgstr "Caricamento articolo..."
 msgid "Loading library..."
 msgstr "Caricamento della libreria..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Caricamento quiz..."
@@ -7089,7 +7084,7 @@ msgstr "Discussione sulle notizie"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7789,7 +7784,7 @@ msgstr "Consenso dei Genitori"
 msgid "Parental consent submitted!"
 msgstr "Consenso dei genitori inviato!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Parzialmente corretto"
@@ -10625,7 +10620,7 @@ msgid "Subject:"
 msgstr "Oggetto:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Invia"
@@ -11484,7 +11479,7 @@ msgstr ""
 "Non devi essere forte qui.  \n"
 "Devi solo essere presente."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Questo quiz non è stato ancora generato. Aprilo dall'articolo di notizie."
@@ -11814,7 +11809,7 @@ msgstr "Giorni di prova"
 msgid "Try"
 msgstr "Prova"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Riprova"
@@ -12593,8 +12588,8 @@ msgstr "Chi dovrebbe essere l'IA?"
 msgid "Who this is for"
 msgstr "Per chi è questo"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Perché"
@@ -13320,11 +13315,6 @@ msgstr "La voce del tuo insegnante AI:"
 msgid "Your answer"
 msgstr "La tua risposta"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "La tua risposta: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -13548,6 +13538,16 @@ msgstr "{winnerName} vince!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "Risposta corretta: {answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "La tua risposta: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

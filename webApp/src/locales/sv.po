@@ -2200,15 +2200,10 @@ msgstr "Kärnwebapprovningar"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Korrekt"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "Korrekt svar: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2400,7 +2395,7 @@ msgstr "Skapa ditt eget scenario"
 msgid "Creating your improvement..."
 msgstr "Skapar din förbättring..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Skapar din quiz... Detta brukar ta ungefär en minut."
@@ -3539,7 +3534,7 @@ msgstr "Viktiga ord för att diskutera mental hälsa och psykologi."
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Uppskattad tid: ~{minutes} minuter"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Utvärderar..."
@@ -4567,7 +4562,7 @@ msgstr "Allmän assistent"
 msgid "Generate more unique lessons"
 msgstr "Generera fler unika lektioner"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Genererar förklaring..."
@@ -5784,7 +5779,7 @@ msgstr ""
 "seniora frontendroller. Efter att ha svarat kommer du att få feedback som "
 "hjälper dig att finslipa dina svar och förbättra dina intervjufärdigheter."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Felaktig"
@@ -6512,7 +6507,7 @@ msgstr "Laddar artikel..."
 msgid "Loading library..."
 msgstr "Laddar bibliotek..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Laddar quiz..."
@@ -7004,7 +6999,7 @@ msgstr "Nyhetsdiskussion"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7703,7 +7698,7 @@ msgstr "Föräldersamtycke"
 msgid "Parental consent submitted!"
 msgstr "Föräldratillstånd inlämnat!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Delvis korrekt"
@@ -10498,7 +10493,7 @@ msgid "Subject:"
 msgstr "Ämne:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Skicka"
@@ -11351,7 +11346,7 @@ msgstr ""
 "Du behöver inte vara stark här.  \n"
 "Du behöver bara dyka upp."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Detta quiz har inte skapats ännu. Öppna det från nyhetsartikeln."
@@ -11675,7 +11670,7 @@ msgstr "Provdagar"
 msgid "Try"
 msgstr "Försök"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Försök igen"
@@ -12443,8 +12438,8 @@ msgstr "Vem ska AI:n vara?"
 msgid "Who this is for"
 msgstr "Vem detta är för"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Varför"
@@ -13149,11 +13144,6 @@ msgstr "Din AI-lärarröst:"
 msgid "Your answer"
 msgstr "Ditt svar"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "Ditt svar: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -13372,6 +13362,16 @@ msgstr "{winnerName} vinner!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlytPal"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "Korrekt svar: {answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "Ditt svar: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

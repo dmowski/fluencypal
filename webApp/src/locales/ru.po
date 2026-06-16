@@ -2218,15 +2218,10 @@ msgstr "Основные показатели веб-страницы"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Правильно"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "Правильный ответ: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2425,7 +2420,7 @@ msgstr "Создайте свой собственный сценарий"
 msgid "Creating your improvement..."
 msgstr "Создание вашего улучшения..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Создание вашего теста... Обычно это занимает около минуты."
@@ -3573,7 +3568,7 @@ msgstr "Основные слова для обсуждения психичес
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Предполагаемое время: ~{minutes} минут"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Оценка..."
@@ -4618,7 +4613,7 @@ msgstr "Общий помощник"
 msgid "Generate more unique lessons"
 msgstr "Создавайте больше уникальных уроков"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Генерация объяснения..."
@@ -5846,7 +5841,7 @@ msgstr ""
 "фронтенд-разработчиков. После ответа вы получите обратную связь, которая "
 "поможет вам улучшить ваши ответы и развить навыки прохождения собеседований."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Некорректный"
@@ -6580,7 +6575,7 @@ msgstr "Загрузка статьи..."
 msgid "Loading library..."
 msgstr "Загрузка библиотеки..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Загрузка викторины..."
@@ -7076,7 +7071,7 @@ msgstr "Обсуждение новостей"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7775,7 +7770,7 @@ msgstr "Родительское согласие"
 msgid "Parental consent submitted!"
 msgstr "Согласие родителей отправлено!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Частично правильно"
@@ -10599,7 +10594,7 @@ msgid "Subject:"
 msgstr "Тема:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Отправить"
@@ -11457,7 +11452,7 @@ msgstr ""
 "Здесь вам не нужно быть сильным.  \n"
 "Вы просто должны появиться."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Этот тест еще не был сгенерирован. Откройте его из новостной статьи."
@@ -11781,7 +11776,7 @@ msgstr "Пробные дни"
 msgid "Try"
 msgstr "Попробуйте"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Попробовать снова"
@@ -12559,8 +12554,8 @@ msgstr "Кем должен быть искусственный интеллек
 msgid "Who this is for"
 msgstr "Для кого это предназначено"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Почему"
@@ -13275,11 +13270,6 @@ msgstr "Ваш голос ИИ-учителя:"
 msgid "Your answer"
 msgstr "Ваш ответ"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "Ваш ответ: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -13499,6 +13489,16 @@ msgstr "{winnerName} победил!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "Правильный ответ: {answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "Ваш ответ: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id

@@ -2138,15 +2138,10 @@ msgstr "코어 웹 바이탈"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:112
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "올바른"
-
-#: src/features/Quiz/components/QuestionFeedback.tsx:52
-#. js-lingui-explicit-id
-msgid "Correct answer: {answer}"
-msgstr "정답: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2321,7 +2316,7 @@ msgstr "자신만의 시나리오 만들기"
 msgid "Creating your improvement..."
 msgstr "개선을 생성 중입니다..."
 
-#: src/features/Quiz/components/QuizModal.tsx:265
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "퀴즈를 생성하는 중입니다... 일반적으로 약 1분 정도 소요됩니다."
@@ -3404,7 +3399,7 @@ msgstr "정신 건강과 심리학에 관한 핵심 단어들."
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "예상 시간: ~{minutes}분"
 
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "평가 중..."
@@ -4373,7 +4368,7 @@ msgstr "일반 어시스턴트"
 msgid "Generate more unique lessons"
 msgstr "더 많은 독특한 수업을 생성하세요"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:40
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "설명을 생성 중..."
@@ -5497,7 +5492,7 @@ msgstr ""
 "이 세션에서는 시니어 프론트엔드 역할을 위해 설계된 질문에 답변합니다. 응답 후, 답변을 다듬고 면접 기술을 향상시키는 데 도움이 될 "
 "피드백을 받게 됩니다."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:115
+#: src/features/Quiz/components/QuestionFeedback.tsx:93
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "부정확함"
@@ -6209,7 +6204,7 @@ msgstr "기사를 불러오는 중..."
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
 
-#: src/features/Quiz/components/QuizModal.tsx:273
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "퀴즈 로드 중..."
@@ -6693,7 +6688,7 @@ msgstr "뉴스 토론"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:68
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7350,7 +7345,7 @@ msgstr "부모 동의"
 msgid "Parental consent submitted!"
 msgstr "부모 동의가 제출되었습니다!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:114
+#: src/features/Quiz/components/QuestionFeedback.tsx:92
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "부분적으로 맞습니다"
@@ -10042,7 +10037,7 @@ msgid "Subject:"
 msgstr "주제:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:346
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
@@ -10845,7 +10840,7 @@ msgstr ""
 "여기에서는 강할 필요가 없습니다.  \n"
 "그저 나타나기만 하면 됩니다."
 
-#: src/features/Quiz/components/QuizModal.tsx:293
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "이 퀴즈는 아직 생성되지 않았습니다. 뉴스 기사에서 열어보세요."
@@ -11151,7 +11146,7 @@ msgstr "시험 이용 기간"
 msgid "Try"
 msgstr "시도하다"
 
-#: src/features/Quiz/components/QuizModal.tsx:285
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "다시 시도하십시오"
@@ -11900,8 +11895,8 @@ msgstr "AI는 누구여야 할까요?"
 msgid "Who this is for"
 msgstr "이 대상은 누구인가"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:77
-#: src/features/Quiz/components/QuestionFeedback.tsx:95
+#: src/features/Quiz/components/QuestionFeedback.tsx:55
+#: src/features/Quiz/components/QuestionFeedback.tsx:73
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "왜"
@@ -12542,11 +12537,6 @@ msgstr "당신의 AI 선생님 목소리:"
 msgid "Your answer"
 msgstr "당신의 답변"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:49
-#. js-lingui-explicit-id
-msgid "Your answer: {answer}"
-msgstr "당신의 답변: {answer}"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id
 msgid "Your answers will be visible to your opponent after you submit them."
@@ -12753,6 +12743,16 @@ msgstr "{winnerName} 승리!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 유창성팔"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+#~ msgid "Correct answer: {answer}"
+#~ msgstr "정답: {answer}"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Your answer: {answer}"
+#~ msgstr "당신의 답변: {answer}"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id
