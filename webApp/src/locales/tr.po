@@ -378,13 +378,6 @@ msgstr "Oyuncu ekle"
 msgid "Add Post"
 msgstr "Gönderi Ekle"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr ""
-"Bir iade talebinde bulunmak istemenizin nedenini biraz ayrıntılandırın ve "
-"biz gerçekleştireceğiz."
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -403,6 +396,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "Başlık ekle..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "Ek not (isteğe bağlı)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "Ek not:"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -534,7 +537,7 @@ msgstr "AI Görüşme Antrenörü"
 msgid "AI Interview Practice"
 msgstr "AI Mülakat Pratiği"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -570,7 +573,7 @@ msgstr "AI Konuşma Pratiği"
 msgid "AI tokens"
 msgstr "AI jetonları"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI Ses"
@@ -723,6 +726,12 @@ msgstr "Neredeyse oradayız!"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "Her zaman dinliyor. Asla yargılamıyor. Sizden asla vazgeçmiyor."
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "Ödenen miktar:"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -991,6 +1000,7 @@ msgstr "Dilbilgisi, kelime bilgisi, akıcılık ve özgüven genel puanları."
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1411,7 +1421,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1644,7 +1654,7 @@ msgstr "Dil Seviyesini Seçin"
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "AI öğretmeniniz için bir ses seçin"
@@ -1700,6 +1710,7 @@ msgstr ""
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1927,10 +1938,30 @@ msgstr "Ödemeyi onayla"
 msgid "Confirm the installation."
 msgstr "Kurulumu onaylayın."
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "Sözleşmeden çekilmeyi onaylayın"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Ödeme yöntemini onayla"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr ""
+"Onayınızı yaptıktan hemen sonra çekilme işleminizin onayı {email} adresine "
+"e-posta ile gönderilecektir."
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "Onay gönderilecektir:"
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -2058,6 +2089,11 @@ msgstr "Becerilerinizi geliştirmek için pratik yapmaya devam edin."
 msgid "Continue recording last essay"
 msgstr "Son denemeyi kaydetmeye devam et"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "Onaylamaya devam et"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -2072,6 +2108,22 @@ msgstr "Sonraki Tura Devam Et"
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Bugünün görevlerine devam edin ve tutarlılığı koruyun."
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "Sözleşmeden / siparişten çekilme"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "Sözleşme tarihi:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "Sözleşme detayları"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3863,7 +3915,7 @@ msgid "Fast Answer Practice"
 msgstr "Hızlı Yanıt Pratiği"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Geri Bildirim"
@@ -3893,6 +3945,17 @@ msgstr "Dosya boyutu 250MB'den küçük olmalıdır."
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Dosya boyutu 50MB'den küçük olmalıdır."
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr ""
+"Aşağıdaki geri çekilme beyanını doldurun. Satın alma tarihinden itibaren 14 "
+"gün içinde seçilmiş satın alımlardan geri çekilebilir veya servisten memnun "
+"kalmadığınızda bizimle istediğiniz zaman iletişime geçebilirsiniz."
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4373,7 +4436,7 @@ msgid "frontend system design interview"
 msgstr "frontend system tasarım mülakatı"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4440,6 +4503,11 @@ msgstr "Tam AI mülakat koçu erişimi"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Tam AI öğretmen erişimi"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "Tam adınız"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4715,7 +4783,7 @@ msgstr "Ücretsiz Başlayın"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Sonsuz AI destekli dil pratik erişimi edinin"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Hediye"
@@ -4976,7 +5044,7 @@ msgstr "Eğlenin!"
 msgid "Health"
 msgstr "Sağlık"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Yardım"
@@ -5261,7 +5329,7 @@ msgstr ""
 "Kompleks bir uygulama için, iç içe geçmiş bileşenler ve asenkron veri ile "
 "durum yönetimini nasıl yapılandırırsınız?"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "Kabul ediyorum"
@@ -5337,7 +5405,7 @@ msgstr "Ödeme yaptım, ancak hala erişimim yok."
 msgid "I Want"
 msgstr "İstiyorum"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -6091,7 +6159,7 @@ msgstr "İlk Geliştirici İşinizi Bulmak Gerektiğinden Daha Zor"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Dil"
@@ -6274,8 +6342,7 @@ msgid "Leave shared book"
 msgstr "Paylaşılan kitabı bırak"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Mesajınızı bırakın"
@@ -6471,7 +6538,7 @@ msgstr "Yükleniyor.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6492,12 +6559,12 @@ msgid "Locked"
 msgstr "Kilitli"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Oturumu Kapat"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Hesabınızdan çıkış yapın"
@@ -6552,18 +6619,18 @@ msgstr "Web kameranızın düzgün çalıştığından emin olun."
 msgid "Malay Learning Plan"
 msgstr "Malay Öğrenme Planı"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Tam erişim ayarlarınızı yönetin"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Bildirim ayarlarınızı yönetin"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Profil ayarlarınızı yönetin ve ilerlemenizi kontrol edin"
@@ -6838,6 +6905,11 @@ msgstr "Puanlarım:"
 msgid "My Position:"
 msgstr "Benim Pozisyonum:"
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "Ad:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6845,7 +6917,7 @@ msgid "Native Language"
 msgstr "Anadil"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Yardıma mı ihtiyacınız var?"
@@ -7049,6 +7121,11 @@ msgstr "Henüz veri yok"
 msgid "No debates yet"
 msgstr "Henüz tartışma yok"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "Çekilmek üzere uygun ödeme yok."
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -7107,7 +7184,7 @@ msgstr ""
 "Bu adımın bir parçası olarak hiçbir ödeme alınmayacaktır. Kartınız "
 "saklanmayacak veya ücretlendirme için kullanılmayacaktır."
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Ödemeler yok..."
@@ -7318,7 +7395,7 @@ msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Bildirimler"
@@ -7333,7 +7410,7 @@ msgstr "Şimdi"
 msgid "Number of rounds"
 msgstr "Oyun sayısı"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -7364,7 +7441,7 @@ msgstr ""
 "Bir sonraki adımlarda, yanıtlarınızın ayrıntılı bir analizini ve "
 "gelişmenize yardımcı olması için örnek yanıtlar alacaksınız."
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7495,6 +7572,11 @@ msgstr ""
 "İsteğe bağlı: belirli kelime dağarcığı, arka plan detayları, itirazlar, "
 "sorular veya davranış"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr "Sipariş / sözleşme numarası:"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
@@ -7503,6 +7585,16 @@ msgid ""
 msgstr ""
 "Yemek siparişi verin, randevuları planlayın, iş mülakatlarında başarılı "
 "olun ve daha fazlası— hepsi AI eğitmeninizin rehberliğinde."
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "Sipariş numarası:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "Ödemesi zorunlu {amount} tutarında sipariş"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7659,12 +7751,7 @@ msgstr "Kripto ile öde"
 msgid "Pay with Stars"
 msgstr "Yıldızlarla Öde"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "Öde {amount}"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Ödeme"
@@ -7674,8 +7761,8 @@ msgstr "Ödeme"
 msgid "Payment failed! Please try again."
 msgstr "Ödeme başarısız oldu! Lütfen tekrar deneyin."
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Ödeme Geçmişi"
@@ -7944,6 +8031,11 @@ msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "Lütfen onaylamadan önce çekilme beyanınızı gözden geçirin:"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8880,6 +8972,11 @@ msgstr "Gerçek dünya API'si ve veri senaryoları"
 msgid "Real-world scenarios, not just theory"
 msgstr "Gerçek dünya senaryoları, sadece teori değil"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "Makbuz"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -9013,16 +9110,6 @@ msgstr "Refleks"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "İade"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "İade formu"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -9110,11 +9197,6 @@ msgstr "Kullanıcıyı şikayet et"
 msgid "Request failed. Please try again."
 msgstr "İstek başarısız oldu. Lütfen tekrar deneyin."
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "İade Talebi"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -9190,7 +9272,7 @@ msgstr "Geri dön"
 msgid "Returning an Item to a Store"
 msgstr "Bir Ürünü Mağazaya İade Etmek"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "AI'nin hatırladıklarını gözden geçirin ve düzenleyin"
@@ -9472,7 +9554,7 @@ msgstr "AI öğretmeninizin sohbetler sırasında kullanacağı sesi seçin."
 msgid "Select your game avatar"
 msgstr "Oyun avatarınızı seçin"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Tercih ettiğiniz dili seçin"
@@ -9928,6 +10010,7 @@ msgstr ""
 "Daha fazla ders oluşturulurken bir şeyler yanlış gitti. Lütfen daha sonra "
 "tekrar deneyin."
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -10408,6 +10491,16 @@ msgstr "Aptal Görüşme"
 msgid "Stupid Interview Mode"
 msgstr "Aptal Röportaj Modu"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr "Sözleşmenin konusu:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "Konu:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -10438,17 +10531,12 @@ msgstr "Ebeveyn İzni Gönder"
 msgid "Submit Report"
 msgstr "Raporu Gönder"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "Talebi Gönder"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "Gönderiliyor..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Abonelik (1 ay)"
@@ -10727,7 +10815,7 @@ msgstr ""
 "Bize geçmişinizden, şu ana kadar neler öğrendiğinizden ve Junior Frontend "
 "Geliştirici olarak geliştirmek istediğiniz alanlardan bahsedin."
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Şartlar ve Koşullar"
@@ -11571,12 +11659,12 @@ msgstr "Çeviri..."
 msgid "Travel"
 msgstr "Seyahat"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Deneme bilançosu"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Deneme günleri"
@@ -11912,20 +12000,20 @@ msgstr "Vietnamca Öğrenme Planı"
 msgid "View all"
 msgstr "Tümünü Görüntüle"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr "Ödemeleri görüntüle ve sözleşmeden çekil"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "Puan Tablosunu Görüntüle"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Ödeme geçmişinizi görüntüleyin"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "Ödeme geçmişinizi görüntüleyin. İadeler"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -12033,7 +12121,7 @@ msgstr "Isınma"
 msgid "WCAG Standards"
 msgstr "WCAG Standartları"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Geri bildiriminizi takdir ediyoruz!"
@@ -12408,6 +12496,26 @@ msgid ""
 "personalized"
 msgstr "Zamanla, AI öğrenme stilinize uyum sağlayacak ve daha kişiselleşecek"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "Sözleşmeden çekilme"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "Buradan sözleşmeden çekilin"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "Çekilme onaylandı"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "Geri Çekildi"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -12612,6 +12720,18 @@ msgstr ""
 "bulunabilirsiniz. Lütfen yukarıdaki sohbet aracılığıyla destek ekibimizle "
 "iletişime geçin, size para iade sürecinde rehberlik edeceğiz."
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"Evet. Hizmetten memnun değilseniz, Profil → Ödeme Geçmişi'ne gidin ve "
+"\"Sözleşmeden burada çekil\" seçeneğini kullanın. İadeler 1-5 iş günü "
+"içinde işleme alınır. Ayrıca bize contact@fluencypal.com adresinden "
+"ulaşabilirsiniz."
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
@@ -12620,15 +12740,6 @@ msgid ""
 msgstr ""
 "Evet. Hizmetten memnun kalmazsanız, Profil/Ödeme Geçmişi sayfasından geri "
 "ödeme talebinde bulunabilirsiniz ve biz işlemi gerçekleştireceğiz."
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr ""
-"Evet. Hizmetten memnun kalmadıysanız, \"Profil/Ödeme geçmişi\" sayfasında "
-"iade talebinde bulunabilirsiniz ve detayları görüşeceğiz."
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -12744,11 +12855,6 @@ msgid ""
 msgstr ""
 "Her ikiniz de 2 soruya cevap kaydetmekle görevlendirileceksiniz. Ardından, "
 "AI cevaplarınızı analiz edecek ve tartışmayı kimin kazandığını söyleyecek!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr "Aşağıya iade talebinizle ilgili bazı ayrıntılar ekleyebilirsiniz:"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12923,6 +13029,16 @@ msgstr ""
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Cevaplarınızı gönderdiniz. Diğerlerini bekliyoruz..."
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr ""
+"Sözleşmeden 14 gün içinde çekilme hakkına sahipsiniz. Çekilme işlevi Profil "
+"→ Ödeme Geçmişi → \"Sözleşmeden buradan çekil\" seçeneğinde mevcuttur."
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -12936,6 +13052,16 @@ msgid ""
 msgstr ""
 "Teknolojiyi biliyorsunuz, ancak **baskı altında kararları açıkça "
 "açıklamakta zorlanıyorsunuz**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr ""
+"E-posta yoluyla contact@fluencypal.com adresinden veya Şartlar ve "
+"Koşullar'da belirtilen kayıtlı adresimize yazılı olarak da geri "
+"çekilebilirsiniz."
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -12991,6 +13117,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Sen:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "hesap e-postanız"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -13129,14 +13260,23 @@ msgstr "Uygulama planınız"
 msgid "Your questions answered"
 msgstr "Sorularınız yanıtlandı"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
 msgstr ""
-"Para iadesi talebiniz gönderildi. İadeler genellikle 1-5 iş günü içinde "
-"işlenir."
+"İadeniz başlatılmıştır ve orijinal ödeme yönteminiz kullanılarak 1-5 iş "
+"günü içinde görünecektir."
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr ""
+"İade talebiniz alındı ve 1-5 iş günü içinde işleme alınacaktır. Bu süre "
+"içinde görmezseniz, lütfen destek ile iletişime geçin."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13157,6 +13297,15 @@ msgstr "Destekleyici Arkadaşınız"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Transkriptleriniz hizmetimizde güvenli bir şekilde saklanmaktadır"
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr ""
+"Sözleşmeden çekilmeniz onaylandı. {email} adresine bir onay e-postası "
+"gönderildi."
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13227,6 +13376,66 @@ msgstr "| AkıcılıkPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{dakika} dk · {görevler}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr ""
+#~ "Bir iade talebinde bulunmak istemenizin nedenini biraz ayrıntılandırın ve "
+#~ "biz gerçekleştireceğiz."
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "Öde {amount}"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "İade"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "İade formu"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "İade Talebi"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "Talebi Gönder"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "Ödeme geçmişinizi görüntüleyin. İadeler"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr ""
+#~ "Evet. Hizmetten memnun kalmadıysanız, \"Profil/Ödeme geçmişi\" sayfasında "
+#~ "iade talebinde bulunabilirsiniz ve detayları görüşeceğiz."
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr "Aşağıya iade talebinizle ilgili bazı ayrıntılar ekleyebilirsiniz:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr ""
+#~ "Para iadesi talebiniz gönderildi. İadeler genellikle 1-5 iş günü içinde "
+#~ "işlenir."
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id

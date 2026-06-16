@@ -361,11 +361,6 @@ msgstr "添加播放器"
 msgid "Add Post"
 msgstr "添加帖子"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "添加一些您要求退款的原因，我们会为您办理。"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -382,6 +377,16 @@ msgstr "将应用程序添加到您的主屏幕以便快速访问。{platformLab
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "添加标题..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "附加说明（可选）"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "附加说明："
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -507,7 +512,7 @@ msgstr "AI 面试教练"
 msgid "AI Interview Practice"
 msgstr "AI 面试练习"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -543,7 +548,7 @@ msgstr "AI口语练习"
 msgid "AI tokens"
 msgstr "AI 代币"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI 语音"
@@ -690,6 +695,12 @@ msgstr "快到了！"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "始终倾听。不作评判。永不放弃你。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "支付金额："
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -952,6 +963,7 @@ msgstr "语法、词汇、流利度和自信心的平均得分。"
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1359,7 +1371,7 @@ msgstr "我可以在智能手机上使用吗？"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1577,7 +1589,7 @@ msgstr "选择语言水平"
 msgid "Choose Site Language"
 msgstr "选择网站语言"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "选择您的AI老师的声音"
@@ -1629,6 +1641,7 @@ msgstr "在您的浏览器中，点击 app.fluencypal.com 旁边的分享按钮�
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1854,10 +1867,28 @@ msgstr "确认付款"
 msgid "Confirm the installation."
 msgstr "确认安装。"
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "确认退出合同"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "确认您的付款方式"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr "确认您提款的邮件将在您确认后立即发送至 {email}。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "确认信息将发送至："
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -1977,6 +2008,11 @@ msgstr "继续练习以提高您的技能。"
 msgid "Continue recording last essay"
 msgstr "继续录制上次的作文"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "继续确认"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -1991,6 +2027,22 @@ msgstr "继续到下一回合"
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "继续完成今天的任务并保持一致。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "合同 / 订单退出"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "合同日期："
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "合同详情"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3655,7 +3707,7 @@ msgid "Fast Answer Practice"
 msgstr "快速答案练习"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "反馈"
@@ -3683,6 +3735,14 @@ msgstr "文件大小必须小于250MB"
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "文件大小必须小于50MB"
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr "填写以下提款声明。 您可以在购买后14天内从所选购买中提款，或在对服务不满意时随时联系我们。"
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4103,7 +4163,7 @@ msgid "frontend system design interview"
 msgstr "前端系统设计面试"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4170,6 +4230,11 @@ msgstr "完全AI面试教练访问权限"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "全功能 AI 辅导员访问权限"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "全名"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4418,7 +4483,7 @@ msgstr "开始免费体验"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "获取无限访问权，进行AI驱动的语言练习"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "礼物"
@@ -4658,7 +4723,7 @@ msgstr "玩得开心！"
 msgid "Health"
 msgstr "健康"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "帮助"
@@ -4919,7 +4984,7 @@ msgid ""
 "nested components and async data?"
 msgstr "如何为具有嵌套组件和异步数据的复杂应用程序构建状态管理？"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "我接受"
@@ -4993,7 +5058,7 @@ msgstr "我已付款，但仍然无法访问。"
 msgid "I Want"
 msgstr "我想要"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -5691,7 +5756,7 @@ msgstr "找到您的第一份开发工作比预期更难"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "语言"
@@ -5870,8 +5935,7 @@ msgid "Leave shared book"
 msgstr "离开共享书籍"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "留下您的信息"
@@ -6067,7 +6131,7 @@ msgstr "加载中.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6088,12 +6152,12 @@ msgid "Locked"
 msgstr "锁定"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "登出"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "退出您的账户"
@@ -6148,18 +6212,18 @@ msgstr "请确保您的网络摄像头正常工作。"
 msgid "Malay Learning Plan"
 msgstr "马来语学习计划"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "管理您的完整访问设置"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "管理您的通知设置"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "管理您的个人资料设置并查看您的进度"
@@ -6428,6 +6492,11 @@ msgstr "我的积分:"
 msgid "My Position:"
 msgstr "我的职位："
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "姓名:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6435,7 +6504,7 @@ msgid "Native Language"
 msgstr "母语"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "需要帮助吗？"
@@ -6638,6 +6707,11 @@ msgstr "尚无数据"
 msgid "No debates yet"
 msgstr "还没有辩论"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "没有可提取的合格付款。"
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -6690,7 +6764,7 @@ msgid ""
 "as part of this step."
 msgstr "不收取任何费用。您的卡不会在此步骤中被储存或用于收费。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "无需支付..."
@@ -6880,7 +6954,7 @@ msgstr "通知已发送至开发团队。对此我们深感抱歉..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "通知"
@@ -6895,7 +6969,7 @@ msgstr "现在"
 msgid "Number of rounds"
 msgstr "轮次数量"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -6921,7 +6995,7 @@ msgid ""
 "example responses to help you improve."
 msgstr "在接下来的步骤中，您将收到您答案的详细分析以及示例回复，以帮助您改进。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7044,12 +7118,27 @@ msgid ""
 "or behavior"
 msgstr "可选：特定词汇、背景细节、反对意见、问题或行为"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr "订单 / 合同编号:"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "Order food, schedule appointments, ace job interviews, and more—all with "
 "guidance from your AI tutor."
 msgstr "订购食物、安排约会、成功进行工作面试等等——所有这些都在您的人工智能导师的指导下进行。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "订单编号:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "订单，付款金额为 {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7190,12 +7279,7 @@ msgstr "使用加密货币支付"
 msgid "Pay with Stars"
 msgstr "用星星支付"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "支付 {amount}"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "付款"
@@ -7205,8 +7289,8 @@ msgstr "付款"
 msgid "Payment failed! Please try again."
 msgstr "支付失败！请重试。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "付款历史"
@@ -7469,6 +7553,11 @@ msgstr "请录制一条较长的信息（至少几个字）。"
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "请刷新页面并再试一次"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "请在确认之前审核您的提款声明："
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8364,6 +8453,11 @@ msgstr "真实世界的 API 和数据场景"
 msgid "Real-world scenarios, not just theory"
 msgstr "真实场景，而不仅仅是理论"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "收据"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -8488,16 +8582,6 @@ msgstr "反射"
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "退款"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "退款表格"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -8585,11 +8669,6 @@ msgstr "报告用户"
 msgid "Request failed. Please try again."
 msgstr "请求失败。请再试一次。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "请求退款"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -8660,7 +8739,7 @@ msgstr "返回"
 msgid "Returning an Item to a Store"
 msgstr "退回商品到商店"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "查看和编辑 AI 的记忆"
@@ -8933,7 +9012,7 @@ msgstr "选择您的AI老师在对话中将使用的声音。"
 msgid "Select your game avatar"
 msgstr "选择你的游戏头像"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "选择您的首选语言"
@@ -9371,6 +9450,7 @@ msgstr "获取这篇文章时出错。请检查您的连接并重试。"
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "在生成更多课程时出现了问题。请稍后再试。"
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -9811,6 +9891,16 @@ msgstr "愚蠢的面试"
 msgid "Stupid Interview Mode"
 msgstr "愚蠢的面试模式"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr "合同主题:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "主题:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -9841,17 +9931,12 @@ msgstr "提交家长同意书"
 msgid "Submit Report"
 msgstr "提交报告"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "提交请求"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "正在提交..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "订阅（1个月）"
@@ -10117,7 +10202,7 @@ msgid ""
 "want to improve as a Junior Frontend Developer."
 msgstr "告诉我们你的背景，你迄今为止学到了什么，以及作为一名初级前端开发人员你希望改进什么。"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "条款和条件"
@@ -10888,12 +10973,12 @@ msgstr "翻译中..."
 msgid "Travel"
 msgstr "旅行"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "试算平衡"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "试用天数"
@@ -11225,20 +11310,20 @@ msgstr "越南语学习计划"
 msgid "View all"
 msgstr "查看全部"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr "查看付款并从合同中提现"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "查看记分板"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "查看您的付款历史"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "查看您的付款历史。退款"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -11340,7 +11425,7 @@ msgstr "热身"
 msgid "WCAG Standards"
 msgstr "WCAG 标准"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "我们非常感谢您的反馈！"
@@ -11700,6 +11785,26 @@ msgid ""
 "personalized"
 msgstr "随着时间的推移，AI将适应您的学习风格，并将更加个性化"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "从合同中撤回"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "在此处退出合同"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "提款已确认"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "撤回"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -11882,19 +11987,22 @@ msgid ""
 "through the refund process."
 msgstr "是的。如果您对我们的服务不满意，您可以申请退款。请通过上方的聊天与我们的支持团队联系，我们将指导您完成退款流程。"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"是的。如果您对服务不满意，请前往 个人资料 → 支付历史 并使用“在此退出合同”。退款将在1-5个工作日内处理。您也可以通过 "
+"contact@fluencypal.com 联系我们。"
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you are not satisfied with the service, you can request a refund on "
 "the Profile/Payment History page, and we will process it."
 msgstr "是的。如果您对服务不满意，您可以在个人资料/付款历史页面请求退款，我们将会处理。"
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr "是。如果您对服务不满意，可以在“个人资料/付款历史”页面申请退款，我们将讨论具体细节。"
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -11989,11 +12097,6 @@ msgid ""
 "You both will be challenged to record answers to 2 questions. After that, "
 "AI will analyze your answers and tell who won the debate!"
 msgstr "你们双方将面临挑战，需录制回答两个问题。之后，AI将分析你们的答案，并告知谁赢得了辩论！"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr "您可以在下面添加有关您的退款请求的一些详细信息："
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12143,6 +12246,14 @@ msgstr "你还没有创建学习计划。你现在想创建一个吗？"
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "您已提交答案。正在等待其他人……"
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr "您有权在14天内退出合同。退出功能位于 个人资料 → 付款历史 →“在此退出合同”。"
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -12154,6 +12265,13 @@ msgid ""
 "You know the tech, but **struggle to explain decisions clearly under "
 "pressure**"
 msgstr "你了解技术，但**在压力下难以清晰地解释决策**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr "您也可以通过发送电子邮件至contact@fluencypal.com或书面形式发送至我们在条款与条件中列出的注册地址来进行撤回。"
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -12201,6 +12319,11 @@ msgstr "你已经学会了编程，但面试考察的远不止语法和教程。
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "您："
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "您的账户邮箱"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -12335,12 +12458,19 @@ msgstr "您的练习计划"
 msgid "Your questions answered"
 msgstr "您的问题已解答"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
-msgstr "您的退款申请已提交。退款通常会在1到5个工作日内处理。"
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
+msgstr "您的退款请求已启动，款项将在 1 至 5 个工作日内通过您的原支付方式到账。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr "您的退款请求已收到，将在1-5个工作日内处理。如果届时您未看到退款，请联系支持部门。"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -12361,6 +12491,13 @@ msgstr "您的支持伙伴"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "您的成绩单被安全地存储在我们的服务中"
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr "您的合同撤销已确认。确认邮件已发送至 {email}。"
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12429,6 +12566,60 @@ msgstr "| 流利伴侣"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} 分钟 · {tasks}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr "添加一些您要求退款的原因，我们会为您办理。"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "支付 {amount}"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "退款"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "退款表格"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "请求退款"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "提交请求"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "查看您的付款历史。退款"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr "是。如果您对服务不满意，可以在“个人资料/付款历史”页面申请退款，我们将讨论具体细节。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr "您可以在下面添加有关您的退款请求的一些详细信息："
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr "您的退款申请已提交。退款通常会在1到5个工作日内处理。"
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id

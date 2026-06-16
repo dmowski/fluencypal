@@ -381,11 +381,6 @@ msgstr "Agregar jugador"
 msgid "Add Post"
 msgstr "Añadir Publicación"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "Agregue información sobre por qué desea un reembolso y lo haremos."
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -404,6 +399,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "Agregar título..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "Nota adicional (opcional)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "Nota adicional:"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -536,7 +541,7 @@ msgstr "Entrenador de Entrevistas de IA"
 msgid "AI Interview Practice"
 msgstr "Práctica de Entrevista con IA"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -572,7 +577,7 @@ msgstr "Práctica de Habla con IA"
 msgid "AI tokens"
 msgstr "Tokens de IA"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Voz AI"
@@ -725,6 +730,12 @@ msgstr "¡Casi allí!"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "Siempre escuchando. Nunca juzgando. Nunca rindiéndonos contigo."
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "Cantidad pagada:"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -997,6 +1008,7 @@ msgstr "Puntajes promedio en gramática, vocabulario, fluidez y confianza."
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1419,7 +1431,7 @@ msgstr "¿Puedo usarlo en un teléfono inteligente?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1655,7 +1667,7 @@ msgstr "Elija el Nivel de Idioma"
 msgid "Choose Site Language"
 msgstr "Elige el Idioma del Sitio"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Elige la voz para tu profesor de IA"
@@ -1711,6 +1723,7 @@ msgstr "Haz clic en el botón Compartir junto a app.fluencypal.com en tu navegad
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1942,10 +1955,30 @@ msgstr "Confirmar pago"
 msgid "Confirm the installation."
 msgstr "Confirma la instalación."
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "Confirmar retirada del contrato"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Confirma tu método de pago"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr ""
+"La confirmación de su retiro será enviada por correo electrónico a {email} "
+"inmediatamente después de que lo confirme."
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "Se enviará una confirmación a:"
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -2073,6 +2106,11 @@ msgstr "Continúa practicando para mejorar tus habilidades."
 msgid "Continue recording last essay"
 msgstr "Continuar grabando el último ensayo"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "Continúa con la confirmación"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -2087,6 +2125,22 @@ msgstr "Continuar al siguiente turno"
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Continúa con las tareas de hoy y mantente consistente."
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "Contrato / orden para retirarse de"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "Fecha del contrato:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "Detalles del contrato"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3891,7 +3945,7 @@ msgid "Fast Answer Practice"
 msgstr "Práctica de Respuesta Rápida"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Retroalimentación"
@@ -3921,6 +3975,17 @@ msgstr "El tamaño del archivo debe ser inferior a 250 MB"
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "El tamaño del archivo debe ser menor de 50MB"
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr ""
+"Complete la declaración de retiro a continuación. Puede retirar compras "
+"seleccionadas dentro de los 14 días siguientes a la compra, o contáctenos "
+"en cualquier momento si no está satisfecho con el servicio."
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4409,7 +4474,7 @@ msgid "frontend system design interview"
 msgstr "entrevista de diseño de sistema de frontend"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4476,6 +4541,11 @@ msgstr "Acceso completo al entrenador de entrevistas de IA"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Acceso completo al tutor de IA"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "Nombre completo"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4747,7 +4817,7 @@ msgstr "Comienza Gratis"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Obtén acceso ilimitado a la práctica de idiomas impulsada por IA"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Regalo"
@@ -5009,7 +5079,7 @@ msgstr "¡Diviértete!"
 msgid "Health"
 msgstr "Salud"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Ayuda"
@@ -5294,7 +5364,7 @@ msgstr ""
 "¿Cómo estructurarías la gestión del estado para una aplicación compleja con "
 "componentes anidados y datos asíncronos?"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "Acepto el"
@@ -5370,7 +5440,7 @@ msgstr "Pagué, pero todavía no tengo acceso."
 msgid "I Want"
 msgstr "Quiero"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -6135,7 +6205,7 @@ msgstr ""
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Idioma"
@@ -6318,8 +6388,7 @@ msgid "Leave shared book"
 msgstr "Dejar libro compartido"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Deja tu mensaje"
@@ -6515,7 +6584,7 @@ msgstr "Cargando.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6536,12 +6605,12 @@ msgid "Locked"
 msgstr "Bloqueado"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Cerrar sesión"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Cerrar sesión de tu cuenta"
@@ -6598,18 +6667,18 @@ msgstr "Asegúrate de que tu cámara web esté funcionando correctamente."
 msgid "Malay Learning Plan"
 msgstr "Plan de Aprendizaje de Malay"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Administra tus configuraciones de acceso completo"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Gestiona tus configuraciones de notificaciones"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Administra la configuración de tu perfil y verifica tu progreso"
@@ -6892,6 +6961,11 @@ msgstr "Mis Puntos:"
 msgid "My Position:"
 msgstr "Mi posición:"
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "Nombre:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6899,7 +6973,7 @@ msgid "Native Language"
 msgstr "Idioma nativo"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "¿Necesitas ayuda?"
@@ -7103,6 +7177,11 @@ msgstr "Aún no hay datos"
 msgid "No debates yet"
 msgstr "Sin debates todavía"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "No hay pagos elegibles disponibles para retirar."
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -7161,7 +7240,7 @@ msgstr ""
 "No se realizará ningún pago. Su tarjeta no será almacenada ni utilizada "
 "para cargos como parte de este paso."
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Sin pagos..."
@@ -7373,7 +7452,7 @@ msgstr "Se envió una notificación al equipo de desarrollo. Lo sentimos por eso
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Notificaciones"
@@ -7388,7 +7467,7 @@ msgstr "Ahora"
 msgid "Number of rounds"
 msgstr "Número de rondas"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -7418,7 +7497,7 @@ msgstr ""
 "En los próximos pasos, recibirás un análisis detallado de tus respuestas y "
 "ejemplos de respuestas para ayudarte a mejorar."
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7549,6 +7628,11 @@ msgstr ""
 "Opcional: vocabulario específico, detalles de fondo, objeciones, preguntas "
 "o comportamiento"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr "Número de orden / contrato:"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
@@ -7557,6 +7641,16 @@ msgid ""
 msgstr ""
 "Ordena comida, programa citas, destaca en entrevistas de trabajo y más, "
 "todo con la orientación de tu tutor de IA."
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "Número de orden:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "Orden con obligación de pago {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7712,12 +7806,7 @@ msgstr "Pagar con criptomoneda"
 msgid "Pay with Stars"
 msgstr "Paga con Estrellas"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "Pagar {amount}"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Pago"
@@ -7727,8 +7816,8 @@ msgstr "Pago"
 msgid "Payment failed! Please try again."
 msgstr "¡Pago fallido! Por favor, inténtelo de nuevo."
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Historial de Pagos"
@@ -7999,6 +8088,11 @@ msgstr "Por favor, graba un mensaje más largo (al menos unas pocas palabras)."
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Por favor, refresca la página e intenta una vez más"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "Por favor, revise su estado de retiro antes de confirmar:"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8955,6 +9049,11 @@ msgstr "Escenarios del mundo real de API y datos"
 msgid "Real-world scenarios, not just theory"
 msgstr "Escenarios del mundo real, no solo teoría"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "Recibo"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -9089,16 +9188,6 @@ msgstr "Reflejo"
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "Reembolso"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "Formulario de reembolso"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -9186,11 +9275,6 @@ msgstr "Reportar usuario"
 msgid "Request failed. Please try again."
 msgstr "Solicitud fallida. Por favor, inténtelo de nuevo."
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "Solicitar reembolso"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -9266,7 +9350,7 @@ msgstr "Regresar"
 msgid "Returning an Item to a Store"
 msgstr "Devolviendo un Artículo a una Tienda"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Revisar y editar lo que recuerda la IA"
@@ -9544,7 +9628,7 @@ msgstr "Seleccione la voz que usará su profesor de IA durante las conversacione
 msgid "Select your game avatar"
 msgstr "Seleccione su avatar de juego"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Seleccione su idioma preferido"
@@ -10000,6 +10084,7 @@ msgstr ""
 "Algo salió mal mientras se generaban más lecciones. Por favor, inténtelo de "
 "nuevo más tarde."
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -10483,6 +10568,16 @@ msgstr "Entrevista Estúpida"
 msgid "Stupid Interview Mode"
 msgstr "Modo de Entrevista Estúpida"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr "Asunto del contrato:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "Asunto:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -10513,17 +10608,12 @@ msgstr "Enviar consentimiento parental"
 msgid "Submit Report"
 msgstr "Enviar informe"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "Enviar solicitud"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "Enviando..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Suscripción (1 mes)"
@@ -10802,7 +10892,7 @@ msgstr ""
 "Cuéntanos sobre tu experiencia, lo que has aprendido hasta ahora y lo que "
 "quieres mejorar como Desarrollador Frontend Junior."
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Términos y Condiciones"
@@ -11652,12 +11742,12 @@ msgstr "Traduciendo..."
 msgid "Travel"
 msgstr "Viajar"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Balance de prueba"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Días de prueba"
@@ -11995,20 +12085,20 @@ msgstr "Plan de Aprendizaje de Vietnamita"
 msgid "View all"
 msgstr "Ver todo"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr "Ver pagos y retirar del contrato"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "Ver Marcador"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Ver tu historial de pagos"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "Ver su historial de pagos. Reembolsos"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -12116,7 +12206,7 @@ msgstr "Calentamiento"
 msgid "WCAG Standards"
 msgstr "Estándares WCAG"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "¡Agradecemos tus comentarios!"
@@ -12499,6 +12589,26 @@ msgstr ""
 "Con el tiempo, la IA se adaptará a tu estilo de aprendizaje y será más "
 "personalizada"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "Retiro del contrato"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "Retirar del contrato aquí"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "Retiro confirmado"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "Retirado"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -12705,6 +12815,18 @@ msgstr ""
 "reembolso. Por favor, póngase en contacto con nuestro equipo de soporte a "
 "través del chat de arriba, y lo guiaremos a través del proceso de reembolso."
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"Sí. Si no estás satisfecho con el servicio, dirígete a Perfil → Historial "
+"de Pagos y utiliza \"Retirar del contrato aquí\". Los reembolsos se "
+"procesan en un plazo de 1 a 5 días hábiles. También puedes contactarnos en "
+"contact@fluencypal.com."
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
@@ -12713,16 +12835,6 @@ msgid ""
 msgstr ""
 "Sí. Si no está satisfecho con el servicio, puede solicitar un reembolso en "
 "la página de Perfil/Historial de Pagos, y lo procesaremos."
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr ""
-"Sí. Si no está satisfecho con el servicio, en la página de "
-"\"Perfil/Historial de pagos\" puede solicitar un reembolso y discutiremos "
-"los detalles."
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -12840,13 +12952,6 @@ msgid ""
 msgstr ""
 "Ustedes dos serán desafiados a grabar respuestas a 2 preguntas. Después de "
 "eso, ¡la IA analizará sus respuestas y dirá quién ganó el debate!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr ""
-"Puede agregar algunos detalles sobre su solicitud de reembolso a "
-"continuación:"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13024,6 +13129,17 @@ msgstr "No has creado un plan de aprendizaje todavía. ¿Quieres crear uno ahora
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Has enviado tus respuestas. Esperando a los demás..."
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr ""
+"Tienes el derecho de desistir del contrato dentro de los 14 días. La "
+"función de desistimiento está disponible en Perfil → Historial de pagos → "
+"\"Desistir del contrato aquí\"."
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -13037,6 +13153,16 @@ msgid ""
 msgstr ""
 "Sabes de tecnología, pero **tienes dificultades para explicar decisiones "
 "claramente bajo presión**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr ""
+"También puede retirarse por correo electrónico a contact@fluencypal.com o "
+"por escrito a nuestra dirección registrada que figura en los Términos y "
+"Condiciones."
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -13090,6 +13216,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Tú:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "tu correo electrónico de la cuenta"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -13230,14 +13361,23 @@ msgstr "Su plan de práctica"
 msgid "Your questions answered"
 msgstr "Tu preguntas contestadas"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
 msgstr ""
-"Su solicitud de reembolso ha sido enviada. Los reembolsos generalmente se "
-"procesan dentro de 1–5 días hábiles."
+"Su reembolso ha sido iniciado y aparecerá en un plazo de 1 a 5 días hábiles "
+"utilizando su método de pago original."
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr ""
+"Su solicitud de reembolso ha sido recibida y será procesada dentro de 1 a 5 "
+"días hábiles. Si no lo ve para entonces, comuníquese con soporte."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13258,6 +13398,15 @@ msgstr "Tu Amigo de Apoyo"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Tus expedientes están almacenados de forma segura en nuestro servicio"
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr ""
+"Su retirada del contrato ha sido confirmada. Se ha enviado un correo "
+"electrónico de confirmación a {email}."
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13328,6 +13477,67 @@ msgstr "| FluencyPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} min · {tasks}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr "Agregue información sobre por qué desea un reembolso y lo haremos."
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "Pagar {amount}"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "Reembolso"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "Formulario de reembolso"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "Solicitar reembolso"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "Enviar solicitud"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "Ver su historial de pagos. Reembolsos"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr ""
+#~ "Sí. Si no está satisfecho con el servicio, en la página de "
+#~ "\"Perfil/Historial de pagos\" puede solicitar un reembolso y discutiremos "
+#~ "los detalles."
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr ""
+#~ "Puede agregar algunos detalles sobre su solicitud de reembolso a "
+#~ "continuación:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr ""
+#~ "Su solicitud de reembolso ha sido enviada. Los reembolsos generalmente se "
+#~ "procesan dentro de 1–5 días hábiles."
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id

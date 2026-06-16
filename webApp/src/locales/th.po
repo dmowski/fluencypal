@@ -378,11 +378,6 @@ msgstr "เพิ่มผู้เล่น"
 msgid "Add Post"
 msgstr "เพิ่มโพสต์"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "เพิ่มข้อมูลเกี่ยวกับสาเหตุที่ท่านต้องการคืนเงินและเราจะดำเนินการให้คุณ"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -401,6 +396,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "เพิ่มชื่อเรื่อง..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "บันทึกเพิ่มเติม (ไม่บังคับ)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "หมายเหตุเพิ่มเติม:"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -534,7 +539,7 @@ msgstr "โค้ชสัมภาษณ์งาน AI"
 msgid "AI Interview Practice"
 msgstr "ฝึกสัมภาษณ์ด้วย AI"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -573,7 +578,7 @@ msgstr "การฝึกพูดด้วย AI"
 msgid "AI tokens"
 msgstr "โทเค็น AI"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "เสียง AI"
@@ -727,6 +732,12 @@ msgstr "เกือบถึงแล้ว!"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "รับฟังเสมอ ไม่ตัดสิน ไม่เคยยอมแพ้คุณ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "จำนวนเงินที่ชำระ:"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -995,6 +1006,7 @@ msgstr "คะแนนเฉลี่ยในด้านไวยากรณ
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1413,7 +1425,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1641,7 +1653,7 @@ msgstr "เลือกระดับภาษา"
 msgid "Choose Site Language"
 msgstr "เลือกภาษาของเว็บไซต์"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "เลือกเสียงสำหรับครู AI ของคุณ"
@@ -1698,6 +1710,7 @@ msgstr "คลิกปุ่มแชร์ถัดจาก app.fluencypal.co
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1925,10 +1938,28 @@ msgstr "ยืนยันการชำระเงิน"
 msgid "Confirm the installation."
 msgstr "ยืนยันการติดตั้ง"
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "ยืนยันการถอนจากสัญญา"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "ยืนยันวิธีการชำระเงินของคุณ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr "การยืนยันการถอนของคุณจะถูกส่งทางอีเมลไปยัง {email} ทันทีหลังจากที่คุณยืนยัน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "การยืนยันจะถูกส่งไปที่:"
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -2056,6 +2087,11 @@ msgstr "ฝึกฝนต่อไปเพื่อพัฒนาทักษ
 msgid "Continue recording last essay"
 msgstr "ดำเนินการบันทึกเรียงความล่าสุดต่อ"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "ดำเนินการต่อเพื่อยืนยัน"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -2070,6 +2106,22 @@ msgstr "ดำเนินการต่อไปยังรอบต่อไ
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "ดำเนินการตามงานของคุณในวันนี้ต่อไปและรักษาความเสมอต้นเสมอปลาย"
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "สัญญา / คำสั่งให้ถอนตัวจาก"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "วันที่ทำสัญญา:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "รายละเอียดสัญญา"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3855,7 +3907,7 @@ msgid "Fast Answer Practice"
 msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "คำติชม"
@@ -3885,6 +3937,16 @@ msgstr "ขนาดไฟล์ต้องน้อยกว่า 250MB"
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "ขนาดไฟล์ต้องน้อยกว่า 50MB"
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr ""
+"กรอกคำแถลงการถอนด้านล่าง คุณสามารถถอนจากการซื้อสินค้าที่เลือกได้ภายใน 14 "
+"วันหลังจากการซื้อ หรือ ติดต่อเราได้ตลอดเวลา หากคุณไม่พอใจกับการบริการ"
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4361,7 +4423,7 @@ msgid "frontend system design interview"
 msgstr "การสัมภาษณ์ออกแบบระบบส่วนหน้าของผู้ใช้"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4436,6 +4498,11 @@ msgstr "การเข้าถึงผู้ฝึกสอนการสั
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "การเข้าถึงครูสอน AI เต็มรูปแบบ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "ชื่อเต็ม"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4707,7 +4774,7 @@ msgstr "เริ่มต้นฟรี"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "รับการเข้าถึงการฝึกฝนภาษาแบบไม่จำกัดที่ขับเคลื่อนด้วย AI"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "ของขวัญ"
@@ -4968,7 +5035,7 @@ msgstr "สนุกสนานนะ!"
 msgid "Health"
 msgstr "สุขภาพ"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "ขอความช่วยเหลือ"
@@ -5254,7 +5321,7 @@ msgstr ""
 "คุณจะจัดโครงสร้างการจัดการสถานะสำหรับแอปพลิเคชันที่ซับซ้อนซึ่งมีส่วนประกอบซ้"
 "อนและข้อมูลแบบอะซิงโครนัสอย่างไร?"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "ฉันยอมรับ"
@@ -5328,7 +5395,7 @@ msgstr "ฉันชำระเงินแล้ว แต่ยังเข�
 msgid "I Want"
 msgstr "ฉันต้องการ"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -6080,7 +6147,7 @@ msgstr "การได้งานนักพัฒนาแรกของค
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "ภาษา"
@@ -6265,8 +6332,7 @@ msgid "Leave shared book"
 msgstr "ออกจากหนังสือที่แชร์"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "ฝากข้อความของคุณ"
@@ -6468,7 +6534,7 @@ msgstr "กำลังโหลด.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6489,12 +6555,12 @@ msgid "Locked"
 msgstr "ล็อก"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "ออกจากระบบ"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "ออกจากบัญชีของคุณ"
@@ -6549,18 +6615,18 @@ msgstr "ตรวจสอบให้แน่ใจว่าเว็บแค
 msgid "Malay Learning Plan"
 msgstr "แผนการเรียนรู้ภาษามาเลย์"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "จัดการการตั้งค่าการเข้าถึงเต็มรูปแบบของคุณ"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "จัดการการตั้งค่าการแจ้งเตือนของคุณ"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "จัดการการตั้งค่าโปรไฟล์ของคุณและตรวจสอบความก้าวหน้าของคุณ"
@@ -6836,6 +6902,11 @@ msgstr "คะแนนของฉัน:"
 msgid "My Position:"
 msgstr "ตำแหน่งของฉัน:"
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "ชื่อ:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6843,7 +6914,7 @@ msgid "Native Language"
 msgstr "ภาษาแม่"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "ต้องการความช่วยเหลือ?"
@@ -7045,6 +7116,11 @@ msgstr "ยังไม่มีข้อมูล"
 msgid "No debates yet"
 msgstr "ยังไม่มีการอภิปราย"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "ไม่มีการชำระเงินที่มีสิทธิ์สำหรับการถอนเงิน"
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -7099,7 +7175,7 @@ msgstr ""
 "จะไม่มีการเรียกเก็บเงิน "
 "บัตรของคุณจะไม่ถูกจัดเก็บหรือใช้เพื่อการเรียกเก็บเงินในขั้นตอนนี้"
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
@@ -7310,7 +7386,7 @@ msgstr "การแจ้งเตือนถูกส่งไปยังท
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "การแจ้งเตือน"
@@ -7325,7 +7401,7 @@ msgstr "ตอนนี้"
 msgid "Number of rounds"
 msgstr "จำนวนรอบ"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -7356,7 +7432,7 @@ msgstr ""
 "คุณจะได้รับการวิเคราะห์รายละเอียดของคำตอบของคุณและตัวอย่างคำตอบที่ช่วยให้คุณ"
 "พัฒนาได้มากขึ้น"
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7483,6 +7559,13 @@ msgid ""
 "or behavior"
 msgstr "ไม่บังคับ: คำศัพท์เฉพาะ, รายละเอียดพื้นหลัง, ข้อคัดค้าน, คำถาม, หรือพฤติกรรม"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr ""
+"\n"
+"หมายเลขการสั่งซื้อ / สัญญา:\n"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
@@ -7491,6 +7574,16 @@ msgid ""
 msgstr ""
 "สั่งอาหาร, นัดหมาย, ทำสัมภาษณ์งานให้ผ่าน, "
 "และอื่นๆ—ทั้งหมดนั้นมีแนวทางจากผู้สอน AI ของคุณ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "หมายเลขคำสั่งซื้อ:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "คำสั่งซื้อพร้อมข้อผูกพันในการชำระเงิน {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7648,12 +7741,7 @@ msgstr "ชำระเงินด้วยคริปโต"
 msgid "Pay with Stars"
 msgstr "จ่ายด้วยดาว"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "ชำระเงิน {amount}"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "การชำระเงิน"
@@ -7663,8 +7751,8 @@ msgstr "การชำระเงิน"
 msgid "Payment failed! Please try again."
 msgstr "การชำระเงินล้มเหลว! โปรดลองอีกครั้ง"
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "ประวัติการชำระเงิน"
@@ -7929,6 +8017,11 @@ msgstr "โปรดบันทึกข้อความที่ยาวข
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "กรุณารีเฟรชหน้าเว็บแล้วลองอีกครั้ง"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "โปรดตรวจสอบรายการถอนเงินของคุณก่อนยืนยัน:"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8985,6 +9078,11 @@ msgstr "กรณีศึกษาของ API และข้อมูลใ�
 msgid "Real-world scenarios, not just theory"
 msgstr "สถานการณ์จริง ไม่ใช่แค่ทฤษฎีเท่านั้น"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "ใบเสร็จรับเงิน"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -9114,16 +9212,6 @@ msgstr "สะท้อน"
 msgid "Refresh"
 msgstr "รีเฟรช"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "คืนเงิน"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "ฟอร์มการคืนเงิน"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -9214,11 +9302,6 @@ msgstr ""
 "\n"
 "คำขอล้มเหลว กรุณาลองอีกครั้ง"
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "ขอคืนเงิน"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -9294,7 +9377,7 @@ msgstr "คืน"
 msgid "Returning an Item to a Store"
 msgstr "การคืนสินค้ากลับไปยังร้านค้า"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "ตรวจสอบและแก้ไขสิ่งที่ AI จำได้"
@@ -9569,7 +9652,7 @@ msgstr "เลือกเสียงที่ครู AI ของคุณ�
 msgid "Select your game avatar"
 msgstr "เลือกอวาตาร์เกมของคุณ"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "เลือกภาษาที่คุณต้องการ"
@@ -10026,6 +10109,7 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -10502,6 +10586,18 @@ msgstr "การสัมภาษณ์ที่โง่เง่า"
 msgid "Stupid Interview Mode"
 msgstr "โหมดสัมภาษณ์งี่เง่า"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr ""
+"\n"
+"หัวข้อของสัญญา:\n"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "เรื่อง:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -10532,17 +10628,12 @@ msgstr "ส่งแบบฟอร์มยินยอมจากผู้ป
 msgid "Submit Report"
 msgstr "ส่งรายงาน"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "ส่งคำขอ"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "กำลังส่ง..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "สมัครสมาชิก (1 เดือน)"
@@ -10821,7 +10912,7 @@ msgstr ""
 "บอกเราเกี่ยวกับพื้นฐานของคุณ สิ่งที่คุณได้เรียนรู้มาแล้ว "
 "และสิ่งที่คุณต้องการพัฒนาในฐานะนักพัฒนา Frontend ระดับจูเนียร์"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "ข้อกำหนดและเงื่อนไข"
@@ -11655,12 +11746,12 @@ msgstr "กำลังแปล..."
 msgid "Travel"
 msgstr "การเดินทาง"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "งบทดลอง"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "วันทดลองใช้"
@@ -11998,20 +12089,20 @@ msgstr "แผนการเรียนรู้ภาษาเวียดน
 msgid "View all"
 msgstr "ดูทั้งหมด"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr "ดูการชำระเงินและถอนตัวจากสัญญา"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "ดูตารางคะแนน"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "ดูประวัติการชำระเงินของคุณ"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "ดูประวัติการชำระเงินของคุณ การคืนเงิน"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -12121,7 +12212,7 @@ msgstr "วอร์มอัพ"
 msgid "WCAG Standards"
 msgstr "มาตรฐาน WCAG"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "เราขอขอบคุณสำหรับคำติชมของคุณ!"
@@ -12501,6 +12592,26 @@ msgstr ""
 "จะปรับตัวเองให้เหมาะสมกับรูปแบบการเรียนรู้ของคุณและมันจะเป็นการส่วนบุคคลที่ม"
 "ากขึ้น"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "ยกเลิกสัญญา"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "ถอนตัวจากสัญญาที่นี่"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "การถอนเงินได้รับการยืนยันแล้ว"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "ถอนตัว"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -12709,6 +12820,17 @@ msgstr ""
 "กรุณาติดต่อทีมสนับสนุนของเราผ่านทางแชทด้านบน "
 "และเราจะแนะนำวิธีการคืนเงินให้กับคุณ"
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"ใช่ หากคุณไม่พอใจกับบริการ ไปที่ โปรไฟล์ → ประวัติการชำระเงิน และใช้ "
+"\"ถอนจากสัญญาที่นี่\" การคืนเงินจะดำเนินการภายใน 1–5 วันทำการ "
+"คุณสามารถติดต่อเราที่ contact@fluencypal.com"
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
@@ -12718,15 +12840,6 @@ msgstr ""
 "ใช่ "
 "หากคุณไม่พอใจกับบริการคุณสามารถขอเงินคืนได้ในหน้าประวัติการชำระเงินในโปรไฟล์"
 " และเราจะดำเนินการให้"
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr ""
-"ใช่ ถ้าคุณไม่พอใจกับบริการ บนหน้าต่าง \"โปรไฟล์/ประวัติการชำระเงิน\" "
-"คุณสามารถขอคืนเงินได้และเราจะพูดคุยรายละเอียดกัน"
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -12842,11 +12955,6 @@ msgid ""
 msgstr ""
 "คุณทั้งสองจะถูกท้าทายให้บันทึกคำตอบสำหรับคำถาม 2 ข้อ หลังจากนั้น AI "
 "จะวิเคราะห์คำตอบของคุณและบอกว่าผู้ใดชนะการโต้วาที!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr "คุณสามารถเพิ่มรายละเอียดเกี่ยวกับคำขอคืนเงินของคุณด้านล่าง:"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13013,6 +13121,17 @@ msgstr "คุณยังไม่ได้สร้างแผนการเ
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "คุณได้ส่งคำตอบเรียบร้อยแล้ว กำลังรอผู้อื่น..."
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr ""
+"คุณมีสิทธิ์ในการถอนตัวจากสัญญาภายใน 14 วัน "
+"ฟังก์ชันการถอนตัวสามารถใช้งานได้ที่ โปรไฟล์ → ประวัติการชำระเงิน → "
+"\"ถอนตัวจากสัญญาที่นี่\""
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -13027,6 +13146,16 @@ msgstr ""
 "คุณรู้จักกับเทคโนโลยีนี้ "
 "แต่**"
 "พบว่าลำบากในการอธิบายการตัดสินใจอย่างชัดเจนเมื่อต้องอยู่ภายใต้ความกดดัน**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr ""
+"คุณสามารถถอนโดยทางอีเมลที่ contact@fluencypal.com "
+"หรือทางลายลักษณ์อักษรไปยังที่อยู่ที่จดทะเบียนของเราซึ่งระบุในข้อกำหนดและเงื่"
+"อนไข"
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -13078,6 +13207,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "คุณ:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "อีเมลบัญชีของคุณ"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -13218,14 +13352,23 @@ msgstr "แผนการฝึกฝนของคุณ"
 msgid "Your questions answered"
 msgstr "คำถามของคุณได้รับการตอบแล้ว"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
 msgstr ""
-"คำขอคืนเงินของคุณได้รับการส่งแล้ว การคืนเงินมักได้รับการดำเนินการภายใน 1-5 "
-"วันทำการ"
+"การคืนเงินของคุณได้ถูกดำเนินการแล้วและจะปรากฏภายใน 1-5 "
+"วันทำการโดยใช้วิธีการชำระเงินเดิมของคุณ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr ""
+"คำขอคืนเงินของคุณได้รับเรียบร้อยแล้ว และจะดำเนินการภายใน 1-5 วันทำการ "
+"หากคุณยังไม่ได้รับเงินคืนภายในเวลานั้น กรุณาติดต่อฝ่ายสนับสนุน"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13246,6 +13389,13 @@ msgstr "เพื่อนผู้สนับสนุนของคุณ"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "บันทึกการสนทนาของคุณถูกจัดเก็บอย่างปลอดภัยในบริการของเรา"
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr "การถอนตัวจากสัญญาของคุณได้รับการยืนยันแล้ว อีเมลยืนยันได้ถูกส่งไปยัง {email}"
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13316,6 +13466,64 @@ msgstr "| FluencyPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} นาที · {tasks}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr "เพิ่มข้อมูลเกี่ยวกับสาเหตุที่ท่านต้องการคืนเงินและเราจะดำเนินการให้คุณ"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "ชำระเงิน {amount}"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "คืนเงิน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "ฟอร์มการคืนเงิน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "ขอคืนเงิน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "ส่งคำขอ"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "ดูประวัติการชำระเงินของคุณ การคืนเงิน"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr ""
+#~ "ใช่ ถ้าคุณไม่พอใจกับบริการ บนหน้าต่าง \"โปรไฟล์/ประวัติการชำระเงิน\" "
+#~ "คุณสามารถขอคืนเงินได้และเราจะพูดคุยรายละเอียดกัน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr "คุณสามารถเพิ่มรายละเอียดเกี่ยวกับคำขอคืนเงินของคุณด้านล่าง:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr ""
+#~ "คำขอคืนเงินของคุณได้รับการส่งแล้ว การคืนเงินมักได้รับการดำเนินการภายใน 1-5 "
+#~ "วันทำการ"
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id

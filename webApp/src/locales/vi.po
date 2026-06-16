@@ -382,11 +382,6 @@ msgstr "Thêm người chơi"
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "Thêm một số thông tin vì sao bạn muốn hoàn tiền và chúng tôi sẽ thực hiện."
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -405,6 +400,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "Thêm tiêu đề..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "Ghi chú bổ sung (tùy chọn)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "Ghi chú bổ sung:"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -536,7 +541,7 @@ msgstr "Huấn Luyện Viên Phỏng Vấn AI"
 msgid "AI Interview Practice"
 msgstr "Luyện phỏng vấn với AI"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -572,7 +577,7 @@ msgstr "Luyện Nói Cùng AI"
 msgid "AI tokens"
 msgstr "Mã thông báo AI"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Giọng nói AI"
@@ -725,6 +730,12 @@ msgstr "Gần xong rồi!"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "Luôn lắng nghe. Không bao giờ phán xét. Không bao giờ từ bỏ bạn."
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "Số tiền đã trả:"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -995,6 +1006,7 @@ msgstr "Điểm trung bình về ngữ pháp, từ vựng, lưu loát và sự t
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1417,7 +1429,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1648,7 +1660,7 @@ msgstr "Chọn Trình Độ Ngôn Ngữ"
 msgid "Choose Site Language"
 msgstr "Chọn Ngôn ngữ Trang Web"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Chọn giọng nói cho giáo viên AI của bạn"
@@ -1702,6 +1714,7 @@ msgstr "Nhấp vào nút Chia sẻ bên cạnh app.fluencypal.com trong trình d
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1931,10 +1944,30 @@ msgstr "Xác nhận thanh toán"
 msgid "Confirm the installation."
 msgstr "Xác nhận cài đặt."
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "Xác nhận rút khỏi hợp đồng"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "Xác nhận phương thức thanh toán của bạn"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr ""
+"Xác nhận việc rút tiền của bạn sẽ được gửi qua email tới {email} ngay sau "
+"khi bạn xác nhận."
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "Xác nhận sẽ được gửi đến:"
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -2061,6 +2094,11 @@ msgstr "Tiếp tục thực hành để cải thiện kỹ năng của bạn."
 msgid "Continue recording last essay"
 msgstr "Tiếp tục ghi âm bài luận cuối cùng"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "Tiếp tục để xác nhận"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -2075,6 +2113,22 @@ msgstr "Tiếp tục Tới Lượt Tiếp Theo"
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Tiếp tục với các nhiệm vụ hôm nay và duy trì sự nhất quán."
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "Hợp đồng / đơn hàng để rút khỏi"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "Ngày ký hợp đồng:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "Chi tiết hợp đồng"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3880,7 +3934,7 @@ msgid "Fast Answer Practice"
 msgstr "Luyện tập Trả lời Nhanh"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Phản hồi"
@@ -3910,6 +3964,17 @@ msgstr "Kích thước tệp phải nhỏ hơn 250MB"
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "Kích thước tệp phải nhỏ hơn 50MB"
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr ""
+"Điền vào tuyên bố rút tiền dưới đây. Bạn có thể rút khỏi các giao dịch mua "
+"đã chọn trong vòng 14 ngày kể từ ngày mua, hoặc liên hệ với chúng tôi bất "
+"cứ lúc nào nếu bạn không hài lòng với dịch vụ."
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4387,7 +4452,7 @@ msgid "frontend system design interview"
 msgstr "phỏng vấn thiết kế hệ thống frontend"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4458,6 +4523,11 @@ msgstr "Truy cập đầy đủ huấn luyện viên phỏng vấn AI"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Truy cập đầy đủ vào gia sư AI"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "Tên đầy đủ"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4733,7 +4803,7 @@ msgstr "Bắt đầu miễn phí"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Nhận quyền truy cập không giới hạn vào việc thực hành ngôn ngữ hỗ trợ bởi AI"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "Quà tặng"
@@ -4993,7 +5063,7 @@ msgstr "Vui vẻ!"
 msgid "Health"
 msgstr "Sức khỏe"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Trợ giúp"
@@ -5276,7 +5346,7 @@ msgstr ""
 "Làm thế nào bạn sẽ cấu trúc quản lý trạng thái cho một ứng dụng phức tạp "
 "với các thành phần lồng nhau và dữ liệu không đồng bộ?"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "Tôi chấp nhận"
@@ -5356,7 +5426,7 @@ msgstr "Tôi đã thanh toán, nhưng tôi vẫn chưa có quyền truy cập."
 msgid "I Want"
 msgstr "Tôi muốn"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -6110,7 +6180,7 @@ msgstr ""
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Ngôn ngữ"
@@ -6293,8 +6363,7 @@ msgid "Leave shared book"
 msgstr "Rời khỏi sách được chia sẻ"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Để lại tin nhắn của bạn"
@@ -6490,7 +6559,7 @@ msgstr "Đang tải.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6511,12 +6580,12 @@ msgid "Locked"
 msgstr "Bị khóa"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Đăng Xuất"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Đăng xuất khỏi tài khoản của bạn"
@@ -6571,18 +6640,18 @@ msgstr "Hãy đảm bảo rằng webcam của bạn hoạt động đúng cách.
 msgid "Malay Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Mã Lai"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Quản lý cài đặt quyền truy cập đầy đủ của bạn"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Quản lý cài đặt thông báo của bạn"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Quản lý cài đặt hồ sơ của bạn và kiểm tra tiến trình của bạn"
@@ -6862,6 +6931,11 @@ msgstr "Điểm của tôi:"
 msgid "My Position:"
 msgstr "Vị trí của tôi:"
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "Tên:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6869,7 +6943,7 @@ msgid "Native Language"
 msgstr "Ngôn ngữ mẹ đẻ"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Cần giúp đỡ?"
@@ -7073,6 +7147,11 @@ msgstr "Chưa có dữ liệu"
 msgid "No debates yet"
 msgstr "Chưa có tranh luận nào"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "Không có khoản thanh toán hợp lệ nào để rút."
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -7131,7 +7210,7 @@ msgstr ""
 "Không có khoản thanh toán nào sẽ được thực hiện. Thẻ của bạn sẽ không được "
 "lưu trữ hoặc sử dụng để tính phí trong bước này."
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Không thanh toán..."
@@ -7346,7 +7425,7 @@ msgstr "Thông báo đã được gửi đến nhóm phát triển. Xin lỗi v�
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Thông báo"
@@ -7361,7 +7440,7 @@ msgstr "Bây giờ"
 msgid "Number of rounds"
 msgstr "Số vòng"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -7392,7 +7471,7 @@ msgstr ""
 "Trong các bước tiếp theo, bạn sẽ nhận được phân tích chi tiết về câu trả "
 "lời của mình và các ví dụ trả lời để giúp bạn cải thiện."
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7522,6 +7601,11 @@ msgid ""
 "or behavior"
 msgstr "Tùy chọn: từ vựng cụ thể, chi tiết nền tảng, phản đối, câu hỏi, hoặc hành vi"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr "Số đơn hàng / hợp đồng:"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
@@ -7530,6 +7614,16 @@ msgid ""
 msgstr ""
 "Đặt đồ ăn, lên lịch hẹn, thành công trong các buổi phỏng vấn, và nhiều hơn "
 "thế nữa—tất cả với sự hướng dẫn từ gia sư AI của bạn."
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "Số đơn hàng:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "Đơn hàng có nghĩa vụ thanh toán {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7686,12 +7780,7 @@ msgstr "Thanh toán bằng tiền điện tử"
 msgid "Pay with Stars"
 msgstr "Trả bằng Sao"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "Thanh toán {amount}"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Thanh toán"
@@ -7701,8 +7790,8 @@ msgstr "Thanh toán"
 msgid "Payment failed! Please try again."
 msgstr "Thanh toán không thành công! Vui lòng thử lại."
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Lịch sử Thanh toán"
@@ -7969,6 +8058,11 @@ msgstr "Vui lòng ghi lại một thông điệp dài hơn (ít nhất vài từ
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "Vui lòng làm mới trang và thử một lần nữa"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "Vui lòng xem lại bản sao kê rút tiền của bạn trước khi xác nhận:"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8921,6 +9015,11 @@ msgstr "Tình huống API và dữ liệu trong thế giới thực"
 msgid "Real-world scenarios, not just theory"
 msgstr "Tình huống thực tế, không chỉ lý thuyết"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "Biên lai"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -9054,16 +9153,6 @@ msgstr "Phản xạ"
 msgid "Refresh"
 msgstr "Làm mới"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "Hoàn tiền"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "Biểu mẫu hoàn tiền"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -9151,11 +9240,6 @@ msgstr "Báo cáo người dùng"
 msgid "Request failed. Please try again."
 msgstr "Yêu cầu không thành công. Vui lòng thử lại."
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "Yêu cầu hoàn tiền"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -9236,7 +9320,7 @@ msgstr "Quay lại"
 msgid "Returning an Item to a Store"
 msgstr "Trả lại một món hàng cho cửa hàng"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Xem lại và chỉnh sửa những gì mà trí tuệ nhân tạo ghi nhớ"
@@ -9512,7 +9596,7 @@ msgstr "Chọn giọng nói mà giáo viên AI của bạn sẽ sử dụng tron
 msgid "Select your game avatar"
 msgstr "Chọn hình đại diện trò chơi của bạn"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Chọn ngôn ngữ ưa thích của bạn"
@@ -9968,6 +10052,7 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Đã xảy ra lỗi trong quá trình tạo thêm bài học. Vui lòng thử lại sau."
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -10450,6 +10535,16 @@ msgstr "Phỏng vấn Ngu Ngốc"
 msgid "Stupid Interview Mode"
 msgstr "Chế Độ Phỏng Vấn Ngu Ngốc"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr "Chủ đề của hợp đồng:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "Chủ đề:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -10480,17 +10575,12 @@ msgstr "Nộp Sự Đồng Ý Của Phụ Huynh"
 msgid "Submit Report"
 msgstr "Nộp Báo Cáo"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "Gửi Yêu Cầu"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "Đang gửi..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "Đăng ký (1 tháng)"
@@ -10769,7 +10859,7 @@ msgstr ""
 "đến nay, và những gì bạn muốn cải thiện với tư cách là một Nhà phát triển "
 "Frontend Junior."
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Điều Khoản và Điều Kiện"
@@ -11616,12 +11706,12 @@ msgstr "Đang dịch..."
 msgid "Travel"
 msgstr "Du lịch"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "Sổ cân đối thử nghiệm"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Ngày dùng thử"
@@ -11959,22 +12049,24 @@ msgstr "Kế Hoạch Học Tiếng Việt"
 msgid "View all"
 msgstr "Xem tất cả"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr ""
+"\n"
+"Xem thanh toán và rút khỏi hợp đồng\n"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "Xem Bảng Điểm"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr ""
 "\n"
 "Xem lịch sử thanh toán của bạn\n"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "Xem lịch sử thanh toán của bạn. Hoàn tiền"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -12084,7 +12176,7 @@ msgstr "Khởi động"
 msgid "WCAG Standards"
 msgstr "Tiêu chuẩn WCAG"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Chúng tôi rất trân trọng phản hồi của bạn!"
@@ -12467,6 +12559,26 @@ msgstr ""
 "Theo thời gian, AI sẽ thích ứng với phong cách học của bạn và nó sẽ trở nên "
 "cá nhân hóa hơn"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "Rút khỏi hợp đồng"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "Rút khỏi hợp đồng tại đây"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "Xác nhận rút tiền"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "Rút lui"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -12671,6 +12783,18 @@ msgstr ""
 "hoàn tiền. Vui lòng liên hệ với đội ngũ hỗ trợ của chúng tôi qua trò chuyện "
 "ở trên và chúng tôi sẽ hướng dẫn bạn qua quy trình hoàn tiền."
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"Vâng. Nếu bạn không hài lòng với dịch vụ, hãy vào Hồ sơ → Lịch sử Thanh "
+"toán và sử dụng \"Rút khỏi hợp đồng tại đây\". Hoàn tiền sẽ được xử lý "
+"trong vòng 1–5 ngày làm việc. Bạn cũng có thể liên hệ với chúng tôi tại "
+"contact@fluencypal.com."
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
@@ -12679,15 +12803,6 @@ msgid ""
 msgstr ""
 "Có. Nếu bạn không hài lòng với dịch vụ, bạn có thể yêu cầu hoàn tiền trên "
 "trang Hồ sơ/Lịch sử Thanh toán, và chúng tôi sẽ xử lý yêu cầu của bạn."
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr ""
-"Vâng. Nếu bạn không hài lòng với dịch vụ, trên trang \"Hồ sơ/Lịch sử thanh "
-"toán\" bạn có thể yêu cầu hoàn tiền và chúng tôi sẽ thảo luận về chi tiết."
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -12804,13 +12919,6 @@ msgstr ""
 "Các bạn sẽ được thách thức ghi lại câu trả lời cho 2 câu hỏi. Sau đó, AI sẽ "
 "phân tích câu trả lời của bạn và thông báo ai đã thắng trong cuộc tranh "
 "luận!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr ""
-"Bạn có thể thêm một số chi tiết liên quan đến yêu cầu hoàn tiền của mình "
-"dưới đây:"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12985,6 +13093,16 @@ msgstr ""
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Bạn đã gửi câu trả lời của mình. Đang đợi người khác..."
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr ""
+"Bạn có quyền rút khỏi hợp đồng trong vòng 14 ngày. Chức năng rút khỏi hợp "
+"đồng có sẵn tại Hồ sơ → Lịch sử Thanh toán → \"Rút khỏi hợp đồng tại đây\"."
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -12998,6 +13116,16 @@ msgid ""
 msgstr ""
 "Bạn biết về công nghệ, nhưng **gặp khó khăn trong việc giải thích quyết "
 "định một cách rõ ràng dưới áp lực**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr ""
+"Bạn cũng có thể rút lại qua email tại contact@fluencypal.com hoặc bằng văn "
+"bản gửi đến địa chỉ đã đăng ký của chúng tôi được liệt kê trong Điều khoản "
+"và Điều kiện."
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -13051,6 +13179,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Bạn:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "email tài khoản của bạn"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -13191,14 +13324,24 @@ msgstr "Kế hoạch luyện tập của bạn"
 msgid "Your questions answered"
 msgstr "Câu hỏi của bạn đã được giải đáp"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
 msgstr ""
-"Yêu cầu hoàn tiền của bạn đã được gửi. Hoàn tiền thường được xử lý trong "
-"vòng 1-5 ngày làm việc."
+"Việc hoàn tiền của bạn đã được khởi tạo và sẽ xuất hiện trong vòng 1–5 ngày "
+"làm việc bằng phương thức thanh toán ban đầu của bạn."
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr ""
+"Yêu cầu hoàn tiền của bạn đã được nhận và sẽ được xử lý trong vòng 1–5 ngày "
+"làm việc. Nếu sau đó bạn vẫn không thấy, vui lòng liên hệ với bộ phận hỗ "
+"trợ."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13219,6 +13362,15 @@ msgstr "Người Bạn Ủng Hộ Của Bạn"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Bảng điểm của bạn được lưu trữ an toàn trong dịch vụ của chúng tôi"
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr ""
+"Việc rút khỏi hợp đồng của bạn đã được xác nhận. Một email xác nhận đã được "
+"gửi đến {email}."
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -13291,6 +13443,66 @@ msgstr "| FluencyPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} phút · {tasks}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr "Thêm một số thông tin vì sao bạn muốn hoàn tiền và chúng tôi sẽ thực hiện."
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "Thanh toán {amount}"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "Hoàn tiền"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "Biểu mẫu hoàn tiền"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "Yêu cầu hoàn tiền"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "Gửi Yêu Cầu"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "Xem lịch sử thanh toán của bạn. Hoàn tiền"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr ""
+#~ "Vâng. Nếu bạn không hài lòng với dịch vụ, trên trang \"Hồ sơ/Lịch sử thanh "
+#~ "toán\" bạn có thể yêu cầu hoàn tiền và chúng tôi sẽ thảo luận về chi tiết."
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr ""
+#~ "Bạn có thể thêm một số chi tiết liên quan đến yêu cầu hoàn tiền của mình "
+#~ "dưới đây:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr ""
+#~ "Yêu cầu hoàn tiền của bạn đã được gửi. Hoàn tiền thường được xử lý trong "
+#~ "vòng 1-5 ngày làm việc."
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id

@@ -365,11 +365,6 @@ msgstr "플레이어 추가"
 msgid "Add Post"
 msgstr "게시물 추가"
 
-#: src/features/Settings/MyProfile.tsx:256
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
-
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Add Text Answer"
@@ -386,6 +381,16 @@ msgstr "빠른 액세스를 위해 앱을 홈 화면에 추가하세요. {platfo
 #. js-lingui-explicit-id
 msgid "Add title..."
 msgstr "제목 추가..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:270
+#. js-lingui-explicit-id
+msgid "Additional note (optional)"
+msgstr "추가 메모 (선택 사항)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:357
+#. js-lingui-explicit-id
+msgid "Additional note:"
+msgstr "추가 메모:"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:185
 #. js-lingui-explicit-id
@@ -511,7 +516,7 @@ msgstr "AI 인터뷰 코치"
 msgid "AI Interview Practice"
 msgstr "AI 인터뷰 연습"
 
-#: src/features/Settings/MyProfile.tsx:95
+#: src/features/Settings/MyProfile.tsx:99
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -547,7 +552,7 @@ msgstr "AI 말하기 연습"
 msgid "AI tokens"
 msgstr "AI 토큰"
 
-#: src/features/Settings/MyProfile.tsx:88
+#: src/features/Settings/MyProfile.tsx:92
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI 음성"
@@ -694,6 +699,12 @@ msgstr "거의 다 왔어요!"
 #. js-lingui-explicit-id
 msgid "Always listening. Never judging. Never giving up on you."
 msgstr "항상 귀 기울이겠습니다. 결코 판단하지 않겠습니다. 결코 당신을 포기하지 않겠습니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:256
+#: src/features/Header/PaymentHistoryModal.tsx:352
+#. js-lingui-explicit-id
+msgid "Amount paid:"
+msgstr "지불 금액:"
 
 #: src/features/Conversation/ProcessUserInput.tsx:129
 #. js-lingui-explicit-id
@@ -958,6 +969,7 @@ msgstr "문법, 어휘, 유창성, 자신감에 대한 평균 점수."
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:164
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Header/PaymentHistoryModal.tsx:380
 #: src/features/Navigation/BackHomeNavButton.tsx:44
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
 #: src/features/Reader/components/ReaderSignInModal.tsx:138
@@ -1367,7 +1379,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:243
+#: src/features/Header/PaymentHistoryModal.tsx:302
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -1589,7 +1601,7 @@ msgstr "언어 수준 선택"
 msgid "Choose Site Language"
 msgstr "사이트 언어 선택"
 
-#: src/features/Settings/MyProfile.tsx:89
+#: src/features/Settings/MyProfile.tsx:93
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "AI 선생님의 음성을 선택하세요"
@@ -1641,6 +1653,7 @@ msgstr "브라우저에서 app.fluencypal.com 옆의 공유 버튼을 클릭하�
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/PaymentHistoryModal.tsx:419
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
 #: src/features/Quiz/components/QuizResultsScreen.tsx:44
 #: src/features/Reader/components/Reader.tsx:362
@@ -1866,10 +1879,28 @@ msgstr "결제 확인"
 msgid "Confirm the installation."
 msgstr "설치를 확인하세요."
 
+#: src/features/Header/PaymentHistoryModal.tsx:324
+#: src/features/Header/PaymentHistoryModal.tsx:373
+#. js-lingui-explicit-id
+msgid "Confirm withdrawal from contract"
+msgstr "계약 철회 확인"
+
 #: src/features/PayWall/CardValidator.tsx:84
 #. js-lingui-explicit-id
 msgid "Confirm your payment method"
 msgstr "결제 수단을 확인하세요"
+
+#: src/features/Header/PaymentHistoryModal.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Confirmation of your withdrawal will be sent by email to {email} "
+"immediately after you confirm."
+msgstr "확인을 하시면 {email}로 출금 확인 이메일이 즉시 발송됩니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Confirmation will be sent to:"
+msgstr "확인 사항이 다음으로 전송됩니다:"
 
 #: src/features/Dashboard/BrainCard.tsx:142
 #. js-lingui-explicit-id
@@ -1990,6 +2021,11 @@ msgstr "계속 연습하여 실력을 향상시키세요."
 msgid "Continue recording last essay"
 msgstr "지난 에세이 계속 녹음하기"
 
+#: src/features/Header/PaymentHistoryModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Continue to confirmation"
+msgstr "확인으로 계속"
+
 #: src/features/PayWall/CardValidatorQuiz.tsx:72
 #. js-lingui-explicit-id
 msgid "Continue to free access"
@@ -2004,6 +2040,22 @@ msgstr "다음 턴으로 계속하기"
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "오늘의 작업을 계속하고 일관성을 유지하세요."
+
+#: src/features/Header/PaymentHistoryModal.tsx:215
+#. js-lingui-explicit-id
+msgid "Contract / order to withdraw from"
+msgstr "철회할 계약 / 주문"
+
+#: src/features/Header/PaymentHistoryModal.tsx:249
+#: src/features/Header/PaymentHistoryModal.tsx:344
+#. js-lingui-explicit-id
+msgid "Contract date:"
+msgstr "계약 날짜:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:243
+#. js-lingui-explicit-id
+msgid "Contract details"
+msgstr "계약 세부사항"
 
 #: src/features/Case/data/backendCSharp/techData.ts:79
 #. js-lingui-explicit-id
@@ -3695,7 +3747,7 @@ msgid "Fast Answer Practice"
 msgstr "빠른 답변 연습"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/Settings/MyProfile.tsx:268
+#: src/features/Settings/MyProfile.tsx:269
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "피드백"
@@ -3723,6 +3775,16 @@ msgstr "파일 크기는 250MB 미만이어야 합니다"
 #. js-lingui-explicit-id
 msgid "File size must be less than 50MB"
 msgstr "파일 크기는 50MB 미만이어야 합니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:199
+#. js-lingui-explicit-id
+msgid ""
+"Fill in the withdrawal statement below. You can withdraw from selected "
+"purchases within 14 days of purchase, or contact us anytime if you are not "
+"satisfied with the service."
+msgstr ""
+"선택한 구매에 대해서는 구매일로부터 14일 이내에 철회할 수 있는 아래의 철회 신청서를 작성하십시오. 서비스에 만족하지 않는 경우 "
+"언제든지 저희에게 연락주시기 바랍니다."
 
 #: src/features/Landing/PlanLandingBlock.tsx:393
 #. js-lingui-explicit-id
@@ -4155,7 +4217,7 @@ msgid "frontend system design interview"
 msgstr "프론트엔드 시스템 설계 인터뷰"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#: src/features/Settings/MyProfile.tsx:75
+#: src/features/Settings/MyProfile.tsx:79
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -4222,6 +4284,11 @@ msgstr "Full AI 인터뷰 코치 접근 권한"
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "풀 AI 튜터 접근권"
+
+#: src/features/Header/PaymentHistoryModal.tsx:206
+#. js-lingui-explicit-id
+msgid "Full name"
+msgstr "풀 네임"
 
 #: src/features/Sentence/StoriesModal.tsx:846
 #. js-lingui-explicit-id
@@ -4475,7 +4542,7 @@ msgstr "무료로 시작하기"
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "무제한 AI 기반 언어 연습 이용하기"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/PaymentHistoryModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Gift"
 msgstr "선물"
@@ -4719,7 +4786,7 @@ msgstr "즐겨보세요!"
 msgid "Health"
 msgstr "건강"
 
-#: src/features/Settings/MyProfile.tsx:108
+#: src/features/Settings/MyProfile.tsx:112
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "도움말"
@@ -4984,7 +5051,7 @@ msgid ""
 "nested components and async data?"
 msgstr "복잡한 애플리케이션의 상태 관리를 중첩된 컴포넌트와 비동기 데이터를 사용하여 어떻게 구성하시겠습니까?"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:69
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:72
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "나는 수락한다"
@@ -5058,7 +5125,7 @@ msgstr "제가 결제를 했지만, 여전히 접근 권한이 없습니다."
 msgid "I Want"
 msgstr "원해"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:51
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -5768,7 +5835,7 @@ msgstr "첫 개발자 직업을 얻는 것은 생각보다 어렵다"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:303
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:306
-#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Settings/MyProfile.tsx:85
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "언어"
@@ -5947,8 +6014,7 @@ msgid "Leave shared book"
 msgstr "공유 도서 나가기"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:257
-#: src/features/Settings/MyProfile.tsx:270
+#: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "당신의 메시지를 남겨주세요"
@@ -6142,7 +6208,7 @@ msgstr "로딩 중.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:87
+#: src/features/Header/PaymentHistoryModal.tsx:443
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6163,12 +6229,12 @@ msgid "Locked"
 msgstr "잠김"
 
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:129
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "로그아웃"
 
-#: src/features/Settings/MyProfile.tsx:130
+#: src/features/Settings/MyProfile.tsx:134
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "계정에서 로그아웃하십시오"
@@ -6223,18 +6289,18 @@ msgstr "웹캠이 제대로 작동하는지 확인하세요."
 msgid "Malay Learning Plan"
 msgstr "말레이어 학습 계획"
 
-#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Settings/MyProfile.tsx:80
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "전체 액세스 설정 관리"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:115
+#: src/features/Settings/MyProfile.tsx:119
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "알림 설정 관리"
 
-#: src/features/Settings/MyProfile.tsx:178
+#: src/features/Settings/MyProfile.tsx:182
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "프로필 설정을 관리하고 진행 상황을 확인하세요"
@@ -6504,6 +6570,11 @@ msgstr "내 포인트:"
 msgid "My Position:"
 msgstr "내 위치:"
 
+#: src/features/Header/PaymentHistoryModal.tsx:338
+#. js-lingui-explicit-id
+msgid "Name:"
+msgstr "이름:"
+
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:304
 #. js-lingui-explicit-id
@@ -6511,7 +6582,7 @@ msgid "Native Language"
 msgstr "모국어"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:109
+#: src/features/Settings/MyProfile.tsx:113
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "도움이 필요하신가요?"
@@ -6711,6 +6782,11 @@ msgstr "데이터가 아직 없음"
 msgid "No debates yet"
 msgstr "디베이트가 아직 없습니다"
 
+#: src/features/Header/PaymentHistoryModal.tsx:222
+#. js-lingui-explicit-id
+msgid "No eligible payments available for withdrawal."
+msgstr "출금할 수 있는 적격한 결제 내역이 없습니다."
+
 #: src/features/Essay/Essay.tsx:172
 #. js-lingui-explicit-id
 msgid "No essays yet. Start recording to create your first essay."
@@ -6763,7 +6839,7 @@ msgid ""
 "as part of this step."
 msgstr "이 단계의 일환으로 결제가 이루어지지 않습니다. 귀하의 카드는 저장되지 않으며 요금 청구에 사용되지 않습니다."
 
-#: src/features/Header/PaymentHistoryModal.tsx:98
+#: src/features/Header/PaymentHistoryModal.tsx:449
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "결제 없음..."
@@ -6959,7 +7035,7 @@ msgstr "개발 팀에 알림이 전송되었습니다. 죄송합니다..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:114
+#: src/features/Settings/MyProfile.tsx:118
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "알림"
@@ -6974,7 +7050,7 @@ msgstr "지금"
 msgid "Number of rounds"
 msgstr "라운드 수"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:73
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -7002,7 +7078,7 @@ msgid ""
 "example responses to help you improve."
 msgstr "다음 단계에서는 귀하의 답변에 대한 상세한 분석과 개선을 돕기 위한 예시 답변을 받게 됩니다."
 
-#: src/features/Header/PaymentHistoryModal.tsx:211
+#: src/features/Header/PaymentHistoryModal.tsx:279
 #. js-lingui-explicit-id
 msgid ""
 "Once confirmed, your refund will be processed within 1–5 business days "
@@ -7127,12 +7203,27 @@ msgid ""
 "or behavior"
 msgstr "옵션: 특정 어휘, 배경 세부사항, 반대, 질문 또는 행동"
 
+#: src/features/Header/PaymentHistoryModal.tsx:341
+#. js-lingui-explicit-id
+msgid "Order / contract number:"
+msgstr "주문 / 계약 번호:"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:78
 #. js-lingui-explicit-id
 msgid ""
 "Order food, schedule appointments, ace job interviews, and more—all with "
 "guidance from your AI tutor."
 msgstr "음식을 주문하고, 약속을 일정에 맞추고, 취업 인터뷰에서 성공하고, 그 외 다양한 작업을 수행하세요—모두 당신의 AI 튜터의 안내로."
+
+#: src/features/Header/PaymentHistoryModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Order number:"
+msgstr "주문 번호:"
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:114
+#. js-lingui-explicit-id
+msgid "Order with obligation to pay {amount}"
+msgstr "결제 의무가 있는 주문 {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -7277,12 +7368,7 @@ msgstr "암호화폐로 결제하기"
 msgid "Pay with Stars"
 msgstr "스타로 결제하기"
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
-#. js-lingui-explicit-id
-msgid "Pay {amount}"
-msgstr "{amount} 지불"
-
-#: src/features/Header/PaymentHistoryModal.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:48
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "결제"
@@ -7292,8 +7378,8 @@ msgstr "결제"
 msgid "Payment failed! Please try again."
 msgstr "결제 실패! 다시 시도해 주세요."
 
-#: src/features/Header/PaymentHistoryModal.tsx:69
-#: src/features/Settings/MyProfile.tsx:120
+#: src/features/Header/PaymentHistoryModal.tsx:435
+#: src/features/Settings/MyProfile.tsx:124
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "결제 내역"
@@ -7556,6 +7642,11 @@ msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
 msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
+
+#: src/features/Header/PaymentHistoryModal.tsx:326
+#. js-lingui-explicit-id
+msgid "Please review your withdrawal statement before confirming:"
+msgstr "출금 명세서를 확인한 후 확인 버튼을 눌러주세요:"
 
 #: src/features/Audio/UploadAudioFileButton.tsx:40
 #. js-lingui-explicit-id
@@ -8454,6 +8545,11 @@ msgstr "실제 API 및 데이터 시나리오"
 msgid "Real-world scenarios, not just theory"
 msgstr "현실 세계의 시나리오, 단지 이론만이 아닌"
 
+#: src/features/Header/PaymentHistoryModal.tsx:175
+#. js-lingui-explicit-id
+msgid "Receipt"
+msgstr "영수증"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:148
 #. js-lingui-explicit-id
 msgid "Receive instant, tailored feedback from your AI partner."
@@ -8580,16 +8676,6 @@ msgstr "리플렉스"
 msgid "Refresh"
 msgstr "새로고침"
 
-#: src/features/Settings/MyProfile.tsx:255
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "환불"
-
-#: src/features/Header/PaymentHistoryModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Refund form"
-msgstr "환불 양식"
-
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:244
 #. js-lingui-explicit-id
 msgid "Refund guarantee"
@@ -8677,11 +8763,6 @@ msgstr "사용자 신고"
 msgid "Request failed. Please try again."
 msgstr "요청이 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/Header/PaymentHistoryModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Request Refund"
-msgstr "환불 요청"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:419
 #. js-lingui-explicit-id
 msgid "Reset to default"
@@ -8754,7 +8835,7 @@ msgstr "반환"
 msgid "Returning an Item to a Store"
 msgstr "물품을 상점에 반품하기"
 
-#: src/features/Settings/MyProfile.tsx:96
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "AI가 기억하는 내용을 검토하고 편집하세요."
@@ -9027,7 +9108,7 @@ msgstr "대화 중 AI 교사가 사용할 목소리를 선택하세요."
 msgid "Select your game avatar"
 msgstr "게임 아바타를 선택하세요"
 
-#: src/features/Settings/MyProfile.tsx:82
+#: src/features/Settings/MyProfile.tsx:86
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "선호하는 언어를 선택하세요"
@@ -9465,6 +9546,7 @@ msgstr "이 기사를 가져오는 중 문제가 발생했습니다. 연결을 �
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "더 많은 수업을 생성하는 동안 문제가 발생했습니다. 나중에 다시 시도해주세요."
 
+#: src/features/Header/PaymentHistoryModal.tsx:104
 #: src/features/Reader/components/ReaderSignInModal.tsx:50
 #: src/features/Reader/components/ShareBookModal.tsx:107
 #. js-lingui-explicit-id
@@ -9913,6 +9995,16 @@ msgstr "멍청한 인터뷰"
 msgid "Stupid Interview Mode"
 msgstr "Stupid Interview Mode -> 멍청한 인터뷰 모드"
 
+#: src/features/Header/PaymentHistoryModal.tsx:348
+#. js-lingui-explicit-id
+msgid "Subject of contract:"
+msgstr "계약 주제:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Subject:"
+msgstr "주제:"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
 #: src/features/Quiz/components/QuizModal.tsx:297
 #. js-lingui-explicit-id
@@ -9943,17 +10035,12 @@ msgstr "부모 동의서 제출"
 msgid "Submit Report"
 msgstr "보고서 제출"
 
-#: src/features/Header/PaymentHistoryModal.tsx:236
-#. js-lingui-explicit-id
-msgid "Submit Request"
-msgstr "요청 제출"
-
 #: src/features/User/ReportModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Submitting..."
 msgstr "제출 중..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Header/PaymentHistoryModal.tsx:50
 #. js-lingui-explicit-id
 msgid "Subscription (1 month)"
 msgstr "구독 (1 개월)"
@@ -10219,7 +10306,7 @@ msgid ""
 "want to improve as a Junior Frontend Developer."
 msgstr "귀하의 배경, 지금까지 배운 것, 주니어 프론트엔드 개발자로서 개선하고 싶은 것에 대해 말씀해 주세요."
 
-#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:71
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "이용 약관"
@@ -11006,12 +11093,12 @@ msgstr "번역 중..."
 msgid "Travel"
 msgstr "여행"
 
-#: src/features/Header/PaymentHistoryModal.tsx:28
+#: src/features/Header/PaymentHistoryModal.tsx:47
 #. js-lingui-explicit-id
 msgid "Trial balance"
 msgstr "시범 잔액"
 
-#: src/features/Header/PaymentHistoryModal.tsx:32
+#: src/features/Header/PaymentHistoryModal.tsx:51
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "시험 이용 기간"
@@ -11343,20 +11430,20 @@ msgstr "베트남어 학습 계획"
 msgid "View all"
 msgstr "모두 보기"
 
+#: src/features/Settings/MyProfile.tsx:125
+#. js-lingui-explicit-id
+msgid "View payments and withdraw from contract"
+msgstr "결제 내역 확인 및 계약해지 요청"
+
 #: src/features/Alias/components/TurnSummary.tsx:245
 #. js-lingui-explicit-id
 msgid "View Scoreboard"
 msgstr "점수판 보기"
 
-#: src/features/Header/PaymentHistoryModal.tsx:71
+#: src/features/Header/PaymentHistoryModal.tsx:437
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "결제 내역 보기"
-
-#: src/features/Settings/MyProfile.tsx:121
-#. js-lingui-explicit-id
-msgid "View your payment history. Refunds"
-msgstr "결제 내역을 확인하세요. 환불"
 
 #: src/features/Chat/MessageViewsIcon.tsx:23
 #. js-lingui-explicit-id
@@ -11458,7 +11545,7 @@ msgstr "준비 운동"
 msgid "WCAG Standards"
 msgstr "WCAG 표준"
 
-#: src/features/Settings/MyProfile.tsx:269
+#: src/features/Settings/MyProfile.tsx:270
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "우리는 귀하의 피드백에 감사드립니다!"
@@ -11819,6 +11906,26 @@ msgid ""
 "personalized"
 msgstr "시간이 지남에 따라 AI는 당신의 학습 스타일에 적응하게 되며, 보다 개인화될 것입니다"
 
+#: src/features/Header/PaymentHistoryModal.tsx:196
+#. js-lingui-explicit-id
+msgid "Withdraw from contract"
+msgstr "계약 철회"
+
+#: src/features/Header/PaymentHistoryModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Withdraw from contract here"
+msgstr "여기에서 계약 해지하기"
+
+#: src/features/Header/PaymentHistoryModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Withdrawal confirmed"
+msgstr "출금 확인됨"
+
+#: src/features/Header/PaymentHistoryModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Withdrawn"
+msgstr "철회됨"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:49
 #: src/features/Case/data/frontend-senior/reviewSection.ts:49
 #. js-lingui-explicit-id
@@ -12011,21 +12118,22 @@ msgstr ""
 "네. 서비스에 만족하지 않으신 경우 환불을 요청할 수 있습니다. 위의 채팅을 통해 지원팀에 연락해 주시면 환불 절차를 안내해 "
 "드리겠습니다."
 
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+msgid ""
+"Yes. If you are not satisfied with the service, go to Profile → Payment "
+"History and use \"Withdraw from contract here\". Refunds are processed "
+"within 1–5 business days. You can also contact us at contact@fluencypal.com."
+msgstr ""
+"네. 서비스에 만족하지 않으신 경우, 프로필 → 결제 내역으로 이동하여 \"계약 철회하기\"를 사용하세요. 환불은 영업일 기준 1~5일 "
+"내에 처리됩니다. 또한 contact@fluencypal.com으로 문의하실 수 있습니다."
+
 #: src/features/Usage/Subscription/FaqSubscription.tsx:117
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you are not satisfied with the service, you can request a refund on "
 "the Profile/Payment History page, and we will process it."
 msgstr "네. 서비스에 만족하지 않는 경우, 프로필/결제 이력 페이지에서 환불을 요청하실 수 있으며, 우리는 이를 처리해 드리겠습니다."
-
-#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
-#. js-lingui-explicit-id
-msgid ""
-"Yes. If you're not satisfied with the service, on \"Profile/Payment "
-"history\" page you can request a refund and we will discuss the details."
-msgstr ""
-"예. 서비스에 만족하지 않으시는 경우, \"프로필/결제 내역\" 페이지에서 환불을 요청하실 수 있으며, 저희가 세부 사항을 논의할 "
-"것입니다."
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
@@ -12127,11 +12235,6 @@ msgid ""
 msgstr ""
 "여러분은 두 가지 질문에 대한 답변을 기록하라는 도전을 받게 될 것입니다. 이후, AI가 여러분의 답변을 분석하고 누가 토론에서 "
 "승리했는지를 알려드립니다!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:208
-#. js-lingui-explicit-id
-msgid "You can add some details regarding your refund request below:"
-msgstr "아래에 환불 요청과 관련된 세부 사항을 추가할 수 있습니다:"
 
 #: src/features/Case/data/frontend-junior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12281,6 +12384,16 @@ msgstr "아직 학습 계획을 생성하지 않았습니다. 지금 생성하�
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "당신의 답변이 제출되었습니다. 다른 사람들을 기다리는 중..."
 
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"You have the right to withdraw from the contract within 14 days. The "
+"withdrawal function is available at Profile → Payment History → \"Withdraw "
+"from contract here\"."
+msgstr ""
+"귀하는 14일 이내에 계약을 철회할 권리가 있습니다. 철회 기능은 프로필 → 결제 내역 → \"여기에서 계약 철회\"에서 이용하실 수 "
+"있습니다."
+
 #: src/features/Usage/Subscription/BalanceStatus.tsx:99
 #. js-lingui-explicit-id
 msgid "You have {hours} AI hours on your balance"
@@ -12292,6 +12405,13 @@ msgid ""
 "You know the tech, but **struggle to explain decisions clearly under "
 "pressure**"
 msgstr "기술은 알고 있지만 **압박감 속에서 결정을 명확하게 설명하는 데 어려움을 겪습니다**"
+
+#: src/features/Header/PaymentHistoryModal.tsx:472
+#. js-lingui-explicit-id
+msgid ""
+"You may also withdraw by email at contact@fluencypal.com or in writing to "
+"our registered address listed in the Terms and Conditions."
+msgstr "이메일 contact@fluencypal.com 또는 약관에 기재된 등록 주소로 서면으로 철회할 수도 있습니다."
 
 #: src/features/Alias/components/PlayersSetup.tsx:285
 #. js-lingui-explicit-id
@@ -12339,6 +12459,11 @@ msgstr "당신은 코딩을 배웠지만, 면접은 단순한 문법과 튜토�
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "You:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:265
+#. js-lingui-explicit-id
+msgid "your account email"
+msgstr "귀하의 계정 이메일"
 
 #: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
@@ -12473,12 +12598,19 @@ msgstr "당신의 연습 계획"
 msgid "Your questions answered"
 msgstr "당신의 질문에 답변드립니다"
 
-#: src/features/Header/PaymentHistoryModal.tsx:46
+#: src/features/Header/PaymentHistoryModal.tsx:411
 #. js-lingui-explicit-id
 msgid ""
-"Your refund request has been submitted. Refunds are typically processed "
-"within 1–5 business days."
-msgstr "귀하의 환불 요청이 제출되었습니다. 환불은 일반적으로 영업일 1-5일 이내에 처리됩니다."
+"Your refund has been initiated and will appear within 1–5 business days "
+"using your original payment method."
+msgstr "귀하의 환불이 시작되었으며, 기존 결제 수단을 통해 1-5 영업일 이내에 처리됩니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:414
+#. js-lingui-explicit-id
+msgid ""
+"Your refund request has been received and will be processed within 1–5 "
+"business days. If you do not see it by then, please contact support."
+msgstr "환불 요청이 접수되었으며 1-5 영업일 이내에 처리될 예정입니다. 그때까지 환불이 완료되지 않으면 고객 지원팀에 문의해 주세요."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -12499,6 +12631,13 @@ msgstr "당신의 지원자 친구"
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:404
+#. js-lingui-explicit-id
+msgid ""
+"Your withdrawal from contract has been confirmed. A confirmation email has "
+"been sent to {email}."
+msgstr "{email} 로 확인 이메일이 발송되었습니다. 계약 해지가 확인되었습니다."
 
 #: src/features/Case/data/frontend-senior/painSection.ts:16
 #. js-lingui-explicit-id
@@ -12567,6 +12706,62 @@ msgstr "| 유창성팔"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} 분 · {tasks}"
+
+#: src/features/Settings/MyProfile.tsx:256
+#. js-lingui-explicit-id
+#~ msgid "Add some info why you want a refund and we will do it."
+#~ msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
+
+#: src/features/Usage/HoursPaymentModal/ConfirmPaymentForm.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "Pay {amount}"
+#~ msgstr "{amount} 지불"
+
+#: src/features/Settings/MyProfile.tsx:255
+#. js-lingui-explicit-id
+#~ msgid "Refund"
+#~ msgstr "환불"
+
+#: src/features/Header/PaymentHistoryModal.tsx:205
+#. js-lingui-explicit-id
+#~ msgid "Refund form"
+#~ msgstr "환불 양식"
+
+#: src/features/Header/PaymentHistoryModal.tsx:262
+#. js-lingui-explicit-id
+#~ msgid "Request Refund"
+#~ msgstr "환불 요청"
+
+#: src/features/Header/PaymentHistoryModal.tsx:236
+#. js-lingui-explicit-id
+#~ msgid "Submit Request"
+#~ msgstr "요청 제출"
+
+#: src/features/Settings/MyProfile.tsx:121
+#. js-lingui-explicit-id
+#~ msgid "View your payment history. Refunds"
+#~ msgstr "결제 내역을 확인하세요. 환불"
+
+#: src/features/Usage/HoursPaymentModal/FaqHours.tsx:45
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes. If you're not satisfied with the service, on \"Profile/Payment "
+#~ "history\" page you can request a refund and we will discuss the details."
+#~ msgstr ""
+#~ "예. 서비스에 만족하지 않으시는 경우, \"프로필/결제 내역\" 페이지에서 환불을 요청하실 수 있으며, 저희가 세부 사항을 논의할 "
+#~ "것입니다."
+
+#: src/features/Header/PaymentHistoryModal.tsx:208
+#. js-lingui-explicit-id
+#~ msgid "You can add some details regarding your refund request below:"
+#~ msgstr "아래에 환불 요청과 관련된 세부 사항을 추가할 수 있습니다:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:46
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Your refund request has been submitted. Refunds are typically processed "
+#~ "within 1–5 business days."
+#~ msgstr "귀하의 환불 요청이 제출되었습니다. 환불은 일반적으로 영업일 1-5일 이내에 처리됩니다."
 
 #: src/features/Header/PaymentHistoryModal.tsx:45
 #. js-lingui-explicit-id
