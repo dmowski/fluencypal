@@ -27,7 +27,7 @@ import { useUrlParam } from '../Url/useUrlParam';
 import { NeedHelpModal } from '../Header/NeedHelpModal';
 import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import { GameMyAvatar } from '../Game/GameMyAvatar';
 import { GameMyUsername } from '../Game/GameMyUsername';
@@ -56,6 +56,10 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowNotificationsModal, setIsShowNotificationsModal] = useUrlParam('notifications');
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
+  const searchParams = useSearchParams();
+  const openWithdrawForm =
+    searchParams.get('withdraw') === 'true' || isShowRefundModal;
+  const shouldShowPaymentHistory = isShowPaymentHistoryModal || isShowRefundModal;
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
   const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
 
@@ -118,7 +122,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
     {
       title: i18n._(`Payment History`),
-      subTitle: i18n._(`View your payment history. Refunds`),
+      subTitle: i18n._(`View payments and withdraw from contract`),
       icon: Landmark,
       onClick: () => setIsShowPaymentHistoryModal(true),
     },
@@ -246,16 +250,13 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       </Stack>
 
       {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
-      {isShowPaymentHistoryModal && (
-        <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
-      )}
-
-      {isShowRefundModal && (
-        <ContactMessageModal
-          title={i18n._(`Refund`)}
-          subTitle={i18n._(`Add some info why you want a refund and we will do it.`)}
-          placeholder={i18n._(`Leave your message`)}
-          onClose={() => setIsShowRefundModal(false)}
+      {shouldShowPaymentHistory && (
+        <PaymentHistoryModal
+          openWithdrawForm={openWithdrawForm}
+          onClose={() => {
+            setIsShowPaymentHistoryModal(false);
+            setIsShowRefundModal(false);
+          }}
         />
       )}
 

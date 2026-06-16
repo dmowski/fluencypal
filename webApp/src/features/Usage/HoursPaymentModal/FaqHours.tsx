@@ -43,7 +43,7 @@ export const FaqHours = () => {
         info={{
           question: i18n._('Can I do a refund after purchase?'),
           answer: i18n._(
-            'Yes. If you\'re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details.',
+            'Yes. If you are not satisfied with the service, go to Profile → Payment History and use "Withdraw from contract here". Refunds are processed within 1–5 business days. You can also contact us at contact@fluencypal.com.',
           ),
         }}
       />

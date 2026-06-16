@@ -18,10 +18,6 @@ export const refundPayment = async (chargeId: string): Promise<boolean> => {
   sentSupportTelegramMessage({
     message: 'Refund requested for charge: ' + chargeId,
   });
-  if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
-    sentSupportTelegramMessage({ message: 'Stripe webhook secret is not set' });
-    throw new Error('Stripe webhook secret is not set');
-  }
 
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   if (!stripeKey) {

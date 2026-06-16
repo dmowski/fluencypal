@@ -116,7 +116,8 @@ export async function POST(request: Request) {
       const userInfo = await getUserInfo(userId);
       const userEmail = userInfo.email;
 
-      const chargeObject = await stripe.charges.retrieve(charges.toString());
+      const chargeId = charges.toString();
+      const chargeObject = await stripe.charges.retrieve(chargeId);
       const receiptUrl = chargeObject.receipt_url || '';
       const receiptId = chargeObject.receipt_number || '';
       const amountPaid = (session.amount_total ?? 0) / 100;
@@ -138,6 +139,7 @@ export async function POST(request: Request) {
           amountOfHours: 0,
           type: 'subscription-full-v1',
           receiptUrl,
+          chargeId,
           daysCount: daysCount,
         });
       } else if (months && months !== '0') {
@@ -154,6 +156,7 @@ export async function POST(request: Request) {
           amountOfHours: 0,
           type: 'subscription-full-v1',
           receiptUrl,
+          chargeId,
           monthsCount: monthsCount,
         });
       } else {
@@ -169,6 +172,7 @@ export async function POST(request: Request) {
           amountOfHours,
           type: 'user',
           receiptUrl,
+          chargeId,
         });
       }
 

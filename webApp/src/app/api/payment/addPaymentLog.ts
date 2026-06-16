@@ -11,6 +11,7 @@ interface AddPaymentLogParams {
   type: PaymentLogType;
   amountOfHours: number;
   receiptUrl?: string;
+  chargeId?: string;
   monthsCount?: number;
   daysCount?: number;
   hoursCount?: number;
@@ -24,6 +25,7 @@ export const addPaymentLog = async ({
   type,
   amountOfHours,
   receiptUrl,
+  chargeId,
   monthsCount,
   daysCount,
   hoursCount,
@@ -39,6 +41,7 @@ export const addPaymentLog = async ({
     receiptUrl: receiptUrl || '',
     amountOfDays: daysCount || 0,
     amountOfMonth: monthsCount || 0,
+    chargeId: chargeId || '',
   };
 
   const db = getDB();

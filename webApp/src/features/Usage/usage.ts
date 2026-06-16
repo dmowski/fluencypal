@@ -76,4 +76,6 @@ export interface PaymentLog {
   amountOfDays: number;
 
   receiptUrl: string;
+  chargeId?: string;
+  withdrawnAtIso?: string;
 }

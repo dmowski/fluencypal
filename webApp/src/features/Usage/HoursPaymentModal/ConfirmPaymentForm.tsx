@@ -1,10 +1,9 @@
-import { FeatureList } from '@/features/Landing/Price/FeatureList';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useLingui } from '@lingui/react';
 import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
-import { ChevronRight, CreditCard, ShieldCheck } from 'lucide-react';
+import { ChevronRight, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 
 export const ConfirmPaymentForm = ({
@@ -22,6 +21,7 @@ export const ConfirmPaymentForm = ({
   const settings = useSettings();
   const pageLang = settings.userSettings?.pageLanguageCode || 'en';
   const currency = useCurrency();
+  const canSubmit = looseRightChecked && isTermsChecked && !isRedirecting;
 
   return (
     <Stack
@@ -32,6 +32,9 @@ export const ConfirmPaymentForm = ({
       action={'#'}
       onSubmit={(e) => {
         e.preventDefault();
+        if (!canSubmit) {
+          return;
+        }
         onConfirmRequest();
       }}
     >
@@ -44,7 +47,7 @@ export const ConfirmPaymentForm = ({
             },
           }}
           checked={looseRightChecked}
-          onChange={(e) => setLooseRightChecked(!looseRightChecked)}
+          onChange={() => setLooseRightChecked(!looseRightChecked)}
           control={<Checkbox size="large" />}
           label={
             <Typography variant="caption">
@@ -62,7 +65,7 @@ export const ConfirmPaymentForm = ({
             },
           }}
           checked={isTermsChecked}
-          onChange={(e) => setIsTermsChecked(!isTermsChecked)}
+          onChange={() => setIsTermsChecked(!isTermsChecked)}
           control={<Checkbox size="large" />}
           label={
             <Typography variant="caption">
@@ -75,6 +78,11 @@ export const ConfirmPaymentForm = ({
             </Typography>
           }
         />
+        <Typography variant="caption" sx={{ opacity: 0.85 }}>
+          {i18n._(
+            `You have the right to withdraw from the contract within 14 days. The withdrawal function is available at Profile → Payment History → "Withdraw from contract here".`,
+          )}
+        </Typography>
       </Stack>
 
       <Stack
@@ -87,7 +95,7 @@ export const ConfirmPaymentForm = ({
         <Button
           color="info"
           variant="contained"
-          disabled={isRedirecting}
+          disabled={!canSubmit}
           size="large"
           type="submit"
           endIcon={<ChevronRight />}
@@ -103,7 +111,7 @@ export const ConfirmPaymentForm = ({
             },
           }}
         >
-          {i18n._(`Pay {amount}`, {
+          {i18n._(`Order with obligation to pay {amount}`, {
             amount: currency.convertUsdToCurrency(amountInUsd),
           })}
         </Button>

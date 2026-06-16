@@ -29,9 +29,7 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
 
 <a href="https://www.fluencypal.com/terms" style="font-size: 15px; line-height: 12px;">Our Terms and Conditions</a><br/>
 
-<a href="https://www.fluencypal.com/terms" style="font-size: 15px; line-height: 12px;">Termination form</a><br/>
-
-<a href="https://app.fluencypal.com/practice?page=profile&paymentHistory=true" style="font-size: 15px; line-height: 12px;">Request Refund</a><br/>
+<a href="https://app.fluencypal.com/practice?page=profile&paymentHistory=true&withdraw=true" style="font-size: 15px; line-height: 12px;">Withdraw from contract here</a><br/>
 
 `,
   });

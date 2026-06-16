@@ -11,7 +11,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
   return (
     <LegalContainer page="terms" lang={lang}>
       <Typography variant="h1">{i18n._(`Terms of Use`)}</Typography>
-      <Typography>Effective Date: Mar 17, 2025</Typography>
+      <Typography>Effective Date: Jun 19, 2026</Typography>
       <Stack
         sx={{
           fontSize: '20px',
@@ -77,7 +77,9 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
     k) working days \- all days excluding Saturdays, Sundays and public holidays;
 
-    l) Terms and Conditions \- these Terms and Conditions (T\&C).
+    l) Online interface \- any kind of software, including a website or part of a website and an application, including a mobile application, operated by StartUp or on its behalf, which serves to provide Customers with access to StartUp's goods or services for the purpose of concluding a transaction concerning those Goods or Services;
+
+    m) Terms and Conditions \- these Terms and Conditions (T\&C).
 
 11. In case of a reasonable suspicion that the Customer has provided false data, StartUp has the right to withdraw from Contract execution, notifying the Customer of this fact.  
 12. If the Customer provides erroneous or inaccurate data, including, in particular, an erroneous or inaccurate address, StartUp shall not be liable for non-delivery or delay in delivery of the Goods or failure to provide the Service or Digital Service, to the fullest extent permitted by law.  
@@ -88,7 +90,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
     
     b) the total price or remuneration for the performance including taxes, and when the nature of the subject of the performance does not allow, judging reasonably, to calculate their amount in advance \- the manner in which they will be calculated, as well as fees for transportation, delivery, postal services and other costs, and when the amount of these fees cannot be determined \- about the obligation to pay them;  
     
-    c) the right to withdraw from the contract or the absence of this right,  
+    c) the right to withdraw from the contract or the absence of this right, and in the case of distance contracts concluded via an online interface – also about the existence and location of the withdrawal function referred to in § 11 points 4-5;  
     
     d) the duration of the contract or about the manner and grounds for termination of the contract \- if the contract is concluded for an indefinite period or if it is to be automatically renewed;  
     
@@ -390,7 +392,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
 
 
-## § 11 Right to withdraw from the contract;
+## § 11 Right to withdraw from the contract
 
 1. The provisions of this paragraph shall apply to the Customer who is a Consumer, or a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
 
@@ -398,7 +400,11 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
 3. To withdraw from the contract, it is sufficient to submit a statement of withdrawal and send it to StartUp, within 14 (in words: fourteen) days.
 
-4. The period for withdrawal from the contract begins:
+4. The Customer referred to in paragraph 1, who concluded the Contract via an online interface, may also withdraw from the Contract by submitting a statement of withdrawal using the withdrawal function. The statement may relate to selected Goods or Services.
+
+5. To withdraw from the Contract in the manner referred to in paragraph 4, the Customer completes a statement of withdrawal using the withdrawal function available on the Site, and then submits that statement to StartUp using the withdrawal confirmation function.
+
+6. The period for withdrawal from the contract begins:
     
   a) for an Contract in the performance of which StartUp delivers the Goods, being obliged to transfer their ownership \- from taking possession of the Goods by the Customer or a third party other than the carrier indicated by the Customer, and in the case of a Contract which:
    
@@ -408,27 +414,29 @@ export const TermsOfUse = ({ lang }: PageProps) => {
   
   b) for other Contracts \- from the date of conclusion of the Contract.
 
-5. To meet the deadline for withdrawal from the contract it is sufficient to:
+7. To meet the deadline for withdrawal from the contract it is sufficient to:
 
   a) send a written statement to StartUp's address indicated in the Terms and Conditions or the Site, or
 
-  b) send the statement in documentary form to the StartUp's e-mail address indicated in the Terms and Conditions or the Site.
+  b) send the statement in documentary form to the StartUp's e-mail address indicated in the Terms and Conditions or the Site, or
 
-6. StartUp shall immediately send to the Customer, on a durable medium, an acknowledgment of receipt of the statement of withdrawal, submitted electronically.
+  c) complete a statement of withdrawal using the withdrawal function referred to in paragraphs 4-5 above and submit it to StartUp using the withdrawal confirmation function.
 
-7. If the Customer withdraws from the contract, the Customer shall return the purchased Product immediately, no later than within 14 (in words: fourteen) days of the withdrawal, unless StartUp offers to collect the Goods itself. To keep that date, it is enough to send a response before its expiry. The cost of returning the Goods shall be borne by the Customer.
+8. StartUp shall immediately send to the Customer, on a durable medium, an acknowledgment of receipt of the statement of withdrawal submitted electronically. In the case of a statement of withdrawal submitted by the Customer using the withdrawal confirmation function referred to in paragraphs 4-5 above, StartUp shall immediately send to the Customer on a durable medium an acknowledgment of receipt of the statement of withdrawal, containing its content and the date and time of its submission.
 
-8. If the Customer withdraws from the contract, StartUp shall reimburse the Customer for the amount paid for the Product and the shipping costs to the Customer, within no more than 14 (in words: fourteen) days from the date of receipt of the declaration of intent to withdraw from the contract. However, if the Customer has chosen a method of delivery of the Product other than the cheapest method offered on the Site for the order, StartUp is not obliged to reimburse the Customer for the additional costs incurred by the Customer.
+9. If the Customer withdraws from the contract, the Customer shall return the purchased Product immediately, no later than within 14 (in words: fourteen) days of the withdrawal, unless StartUp offers to collect the Goods itself. To keep that date, it is enough to send a response before its expiry. The cost of returning the Goods shall be borne by the Customer.
 
-9. StartUp shall refund the payment using the same method used by the Customer, unless the Customer agrees with StartUp on a different method of refund that does not incur any costs for the Customer.
+10. If the Customer withdraws from the contract, StartUp shall reimburse the Customer for the amount paid for the Product and the shipping costs to the Customer, within no more than 14 (in words: fourteen) days from the date of receipt of the declaration of intent to withdraw from the contract. However, if the Customer has chosen a method of delivery of the Product other than the cheapest method offered on the Site for the order, StartUp is not obliged to reimburse the Customer for the additional costs incurred by the Customer.
 
-10. StartUp may withhold reimbursement of payments, received from the Customer, until it receives the Product back or the Customer provides proof of its return, whichever event occurs first.
+11. StartUp shall refund the payment using the same method used by the Customer, unless the Customer agrees with StartUp on a different method of refund that does not incur any costs for the Customer.
 
-11. If the Customer has sent a cancellation statement before receiving an order confirmation from StartUp, the order is cancelled.
+12. StartUp may withhold reimbursement of payments, received from the Customer, until it receives the Product back or the Customer provides proof of its return, whichever event occurs first.
 
-12. The Customer shall be liable for any diminution in the value of the Goods resulting from the use of the Goods beyond what is necessary to ascertain the nature, characteristics and properties of the Goods.
+13. If the Customer has sent a cancellation statement before receiving an order confirmation from StartUp, the order is cancelled.
 
-13. The right of withdrawal does not apply to the Customer in the cases indicated in the Law of May 30, 2014 on consumer rights, in particular with regard to contracts:
+14. The Customer shall be liable for any diminution in the value of the Goods resulting from the use of the Goods beyond what is necessary to ascertain the nature, characteristics and properties of the Goods.
+
+15. The right of withdrawal does not apply to the Customer in the cases indicated in the Law of May 30, 2014 on consumer rights, in particular with regard to contracts:
 
   a) for the provision of services which a consumer is obliged to pay the price for, if the trader has performed the service in full with the express and prior consent of the consumer who was informed before the start of the performance that after the performance by the trader he will lose the right to withdraw from the contract, and accepted it;
 
@@ -458,7 +466,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
   n) statement of services which the consumer is obliged to pay the price for, where the consumer expressly requested the trader to come to them for repair, and the service has already been fully performed with the express and prior consent of the consumer.
 
-14. StartUp will also correct the proofs of purchase (corrective VAT invoice or corrective specification) previously provided to the Customer.
+16. StartUp will also correct the proofs of purchase (corrective VAT invoice or corrective specification) previously provided to the Customer.
 
 
 ## § 12 Refund of the amount paid by the Customer
@@ -526,7 +534,7 @@ The Customer can contact Startup:
 
 15. The use of a specific method of out-of-court dispute resolution is possible only with the mutual consent of the Customer and StartUp. Detailed procedures for out-of-court dispute resolution, are available on the website of the Office of Competition and Consumer Protection: www.uokik.gov.pl, on websites of the Provincial Trade Inspection Inspectorates, as well as from district (city) consumer ombudsmen.
 
-16. These Terms and Conditions are effective as of: Mar 17, 2025
+16. These Terms and Conditions are effective as of: Jun 19, 2026
 
 
 
