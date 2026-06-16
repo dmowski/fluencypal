@@ -1,7 +1,7 @@
 import { useWindowSizes } from '@/features/Layout/useWindowSizes';
 import { IconButton, Modal, Stack } from '@mui/material';
 import { X } from 'lucide-react';
-import { JSX, useEffect, useRef } from 'react';
+import { JSX, useRef } from 'react';
 
 interface CustomModalProps {
   isOpen: boolean;

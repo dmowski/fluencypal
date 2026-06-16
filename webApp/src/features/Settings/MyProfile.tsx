@@ -26,6 +26,7 @@ import { isTMA } from '@telegram-apps/sdk-react';
 import { useUrlParam } from '../Url/useUrlParam';
 import { NeedHelpModal } from '../Header/NeedHelpModal';
 import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
+import { WithdrawFromContractModal } from '../Header/WithdrawFromContractModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
@@ -57,9 +58,9 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
   const searchParams = useSearchParams();
-  const openWithdrawForm =
+  const shouldShowWithdrawModal =
     searchParams.get('withdraw') === 'true' || isShowRefundModal;
-  const shouldShowPaymentHistory = isShowPaymentHistoryModal || isShowRefundModal;
+  const shouldShowPaymentHistory = isShowPaymentHistoryModal;
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
   const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
 
@@ -252,9 +253,15 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
       {shouldShowPaymentHistory && (
         <PaymentHistoryModal
-          openWithdrawForm={openWithdrawForm}
           onClose={() => {
             setIsShowPaymentHistoryModal(false);
+          }}
+        />
+      )}
+
+      {shouldShowWithdrawModal && (
+        <WithdrawFromContractModal
+          onClose={() => {
             setIsShowRefundModal(false);
           }}
         />
