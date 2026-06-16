@@ -42,7 +42,11 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     setIsRefundSubmitting(true);
     sendFeedbackMessageRequest({ message: 'REFUND: ' + refundMessage }, await auth.getToken());
     setIsShowRefund(false);
-    alert(i18n._(`Your refund request has been submitted. We will get back to you soon.`));
+    alert(
+      i18n._(
+        `Your refund request has been submitted. Refunds are typically processed within 1–5 business days.`,
+      ),
+    );
     setIsRefundSubmitting(false);
   };
 
@@ -202,6 +206,11 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                 </Typography>
                 <Typography variant="body2" sx={{ marginBottom: '10px' }}>
                   {i18n._(`You can add some details regarding your refund request below:`)}
+                </Typography>
+                <Typography variant="body2" sx={{ marginBottom: '10px', opacity: 0.85 }}>
+                  {i18n._(
+                    `Once confirmed, your refund will be processed within 1–5 business days using the same payment method you used for the purchase.`,
+                  )}
                 </Typography>
               </Stack>
 
