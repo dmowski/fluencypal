@@ -30,14 +30,10 @@ export const ExamsDashboardCard = () => {
     () =>
       availableExams.map((exam) => ({
         title: exam.title,
-        subTitle: i18n._('~{minutes} min · {tasks}', {
-          minutes: exam.estimatedMinutes,
-          tasks: exam.subtitle,
-        }),
+        subTitle: `~${exam.estimatedMinutes} min · ${exam.subtitle}`,
         iconName: 'graduation-cap',
         iconBgColor: '#4B5DFF',
-        actionButtonTitle:
-          startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
+        actionButtonTitle: startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
         onClick: () => {
           if (!auth.uid || startingExamId) return;
           setStartingExamId(exam.id);
