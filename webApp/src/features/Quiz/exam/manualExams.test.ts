@@ -49,11 +49,12 @@ const validateExamStructure = (exam: typeof ENGLISH_B2_EXAM) => {
 };
 
 describe('manual exams', () => {
-  it('registers English B2, C1, Polish knowledge test, and three Polish levels', () => {
-    expect(EXAM_CATALOG).toHaveLength(6);
+  it('registers English B2, C1, Polish knowledge test, three Polish levels, and state B1 exam', () => {
+    expect(EXAM_CATALOG).toHaveLength(7);
     expect(getManualExamsForTargetLanguage('en')).toHaveLength(2);
     expect(getManualExamsForTargetLanguage('pl')).toHaveLength(4);
-    expect(getManualExamsForTargetLanguage('de')).toHaveLength(0);
+    expect(getExamCatalogForTargetLanguage('pl')).toHaveLength(5);
+    expect(getExamCatalogForTargetLanguage('de')).toHaveLength(0);
   });
 
   it('filters dashboard catalog by target language', () => {
@@ -66,6 +67,7 @@ describe('manual exams', () => {
       'Polish A2 exam',
       'Polish B1 exam',
       'Polish B2 exam',
+      'Państwowy egzamin B1 — wersja próbna 1',
     ]);
   });
 

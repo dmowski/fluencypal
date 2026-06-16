@@ -3,7 +3,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
-import { QuizDocument } from '../types';
+import { isStateExamQuiz, QuizDocument } from '../types';
 import { Play, X } from 'lucide-react';
 
 export const ExamWelcomeScreen = ({
@@ -23,6 +23,7 @@ export const ExamWelcomeScreen = ({
     }, [])
     .join(', ');
   const estimatedMinutes = quiz.meta.estimatedMinutes ?? 60;
+  const isStateExam = isStateExamQuiz(quiz);
 
   return (
     <Stack sx={{ gap: '20px', padding: '24px 5px 80px' }} data-testid="exam-welcome-screen">
@@ -36,6 +37,13 @@ export const ExamWelcomeScreen = ({
         <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
           {i18n._('Estimated time: ~{minutes} minutes', { minutes: estimatedMinutes })}
         </Typography>
+        {isStateExam && (
+          <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
+            {i18n._(
+              'This exam follows the official B1 format. You can pause between modules and continue later.',
+            )}
+          </Typography>
+        )}
         {sectionSummary && (
           <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
             {i18n._('Skills covered: {skills}', { skills: sectionSummary })}

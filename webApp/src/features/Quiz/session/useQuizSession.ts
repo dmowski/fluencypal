@@ -7,7 +7,7 @@ import { useTextAi } from '@/features/Ai/useTextAi';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
 import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
-import { findQuestionById } from '../types';
+import { findQuestionById, isStateExamQuiz } from '../types';
 import {
   createInitialQuizProgress,
   QuizAnswerPayload,
@@ -17,10 +17,12 @@ import {
 import {
   buildDetailedExamFeedbackPrompt,
   buildExamSummaryMarkdown,
+  buildStateExamSummaryMarkdown,
   buildExplainAnswerPrompt,
 } from './buildExplainAnswerPrompt';
 import {
   aggregateExamScore,
+  aggregateModuleScores,
   countSubmittedAnswers,
   getGlobalQuestionNumber,
   getNextQuestionPosition,
@@ -28,10 +30,13 @@ import {
   getTotalQuestions,
   isFirstQuestionIndex,
   isLastQuestionIndex,
+  isStateExamPassed,
   resolvePreviousPosition,
 } from './quizNavigation';
 import {
+  buildMonologueEvaluationPrompt,
   buildVoiceEvaluationPrompt,
+  buildWritingEvaluationPrompt,
   parseVoiceEvaluationResponse,
   scoreQuestion,
 } from './scoreQuestion';
@@ -84,7 +89,8 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
   const answeredCount = progress ? countSubmittedAnswers(progress) : 0;
   const isExamComplete = progress?.status === 'evaluated' && Boolean(progress.examResult);
   const showExamWelcome =
-    quiz?.source.type === 'manual' && progress?.status === 'not-started';
+    (quiz?.source.type === 'manual' || quiz?.source.type === 'state-exam') &&
+    progress?.status === 'not-started';
 
   const persistProgress = async (nextProgress: QuizProgress) => {
     if (!docRef || !record) return;
@@ -176,14 +182,32 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     const now = new Date().toISOString();
     let result = scoreQuestion(located.question, answer);
 
-    if (located.question.type === 'describe-picture-voice' && answer.payload.kind === 'voice') {
+    const needsAiEvaluation =
+      (located.question.type === 'describe-picture-voice' && answer.payload.kind === 'voice') ||
+      (located.question.type === 'monologue-voice' && answer.payload.kind === 'voice') ||
+      (located.question.type === 'writing-text' && answer.payload.kind === 'text');
+
+    if (needsAiEvaluation) {
       setIsEvaluatingVoice(true);
       try {
-        const prompts = buildVoiceEvaluationPrompt(
-          located.question,
-          answer.payload.transcription,
-          quiz.meta.targetLanguageCode,
-        );
+        const prompts =
+          located.question.type === 'writing-text' && answer.payload.kind === 'text'
+            ? buildWritingEvaluationPrompt(
+                located.question,
+                answer.payload.text,
+                quiz.meta.targetLanguageCode,
+              )
+            : located.question.type === 'monologue-voice' && answer.payload.kind === 'voice'
+              ? buildMonologueEvaluationPrompt(
+                  located.question,
+                  answer.payload.transcription,
+                  quiz.meta.targetLanguageCode,
+                )
+              : buildVoiceEvaluationPrompt(
+                  located.question as Parameters<typeof buildVoiceEvaluationPrompt>[0],
+                  answer.payload.kind === 'voice' ? answer.payload.transcription : '',
+                  quiz.meta.targetLanguageCode,
+                );
         const response = await textAi.generate({
           systemMessage: prompts.systemMessage,
           userMessage: prompts.userMessage,
@@ -191,11 +215,13 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
           cache: false,
           languageCode: quiz.meta.targetLanguageCode,
         });
-        result = parseVoiceEvaluationResponse(
-          questionId,
-          response,
-          located.question.evaluation.maxScore,
-        );
+        const maxScore =
+          located.question.type === 'writing-text' ||
+          located.question.type === 'monologue-voice' ||
+          located.question.type === 'describe-picture-voice'
+            ? (located.question.evaluation.maxScore ?? 1)
+            : 1;
+        result = parseVoiceEvaluationResponse(questionId, response, maxScore);
       } finally {
         setIsEvaluatingVoice(false);
       }
@@ -253,8 +279,12 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
   const submitExam = async () => {
     if (!quiz || !progress) return;
     const { score, maxScore, percent } = aggregateExamScore(quiz, progress);
+    const isStateExam = isStateExamQuiz(quiz);
+    const moduleResults = isStateExam ? aggregateModuleScores(quiz, progress) : undefined;
     const passingScorePercent = quiz.examEvaluation.passingScorePercent ?? 70;
-    const passed = percent >= passingScorePercent;
+    const passed = isStateExam
+      ? isStateExamPassed(moduleResults ?? [])
+      : percent >= passingScorePercent;
     const now = new Date().toISOString();
 
     const examResult = {
@@ -262,13 +292,22 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
       maxScore,
       percent,
       passed,
-      summaryMarkdown: buildExamSummaryMarkdown({
-        score,
-        maxScore,
-        percent,
-        passed,
-        passingScorePercent,
-      }),
+      moduleResults,
+      summaryMarkdown: isStateExam
+        ? buildStateExamSummaryMarkdown({
+            score,
+            maxScore,
+            percent,
+            passed,
+            moduleResults: moduleResults ?? [],
+          })
+        : buildExamSummaryMarkdown({
+            score,
+            maxScore,
+            percent,
+            passed,
+            passingScorePercent,
+          }),
       evaluatedAtIso: now,
     };
 

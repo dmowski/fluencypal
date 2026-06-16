@@ -902,6 +902,11 @@ msgstr "评估信心"
 msgid "Assistant"
 msgstr "助手"
 
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:69
+#. js-lingui-explicit-id
+msgid "At least {minWords} words required"
+msgstr "至少需要 {minWords} 个单词"
+
 #: src/features/Chat/SubmitForm.tsx:389
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
@@ -1642,8 +1647,8 @@ msgstr "在您的浏览器中，点击 app.fluencypal.com 旁边的分享按钮�
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
 #: src/features/Header/WithdrawFromContractModal.tsx:306
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
-#: src/features/Quiz/components/QuizResultsScreen.tsx:44
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:65
+#: src/features/Quiz/components/QuizResultsScreen.tsx:80
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2294,7 +2299,7 @@ msgstr "创建您自己的场景"
 msgid "Creating your improvement..."
 msgstr "正在创建您的改进..."
 
-#: src/features/Quiz/components/QuizModal.tsx:216
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "创建您的测验... 这通常需要大约一分钟。"
@@ -3351,12 +3356,12 @@ msgstr "论文"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "讨论精神健康和心理学的必备词汇。"
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "预计时间：约~{minutes}分钟"
 
-#: src/features/Quiz/components/QuizModal.tsx:297
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "评估中..."
@@ -3452,6 +3457,11 @@ msgstr "免费版的所有内容，外加："
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "一切你需要的，以便脱颖而出并获得工作机会"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:29
+#. js-lingui-explicit-id
+msgid "Exam complete"
+msgstr "考试完成"
 
 #: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
@@ -3605,6 +3615,11 @@ msgstr "特慢"
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "提取的图像"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Failed"
+msgstr "失败"
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
@@ -4413,7 +4428,7 @@ msgstr "获得 AI 支持，增强自信"
 msgid "Get creative"
 msgstr "发挥创意"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:61
+#: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Get detailed feedback"
 msgstr "获取详细反馈"
@@ -6107,7 +6122,7 @@ msgstr "正在加载文章..."
 msgid "Loading library..."
 msgstr "正在加载库..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "加载测验中..."
@@ -6139,7 +6154,7 @@ msgstr "加载中.."
 #: src/features/Header/PaymentHistoryModal.tsx:130
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
-#: src/features/Quiz/components/QuizResultsScreen.tsx:61
+#: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
@@ -6283,6 +6298,11 @@ msgstr "掌握高频TOEFL词汇。"
 #. js-lingui-explicit-id
 msgid "Master technical leadership questions"
 msgstr "掌握技术领导力问题"
+
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:71
+#. js-lingui-explicit-id
+msgid "Maximum {maxWords} words"
+msgstr "最多 {maxWords} 个单词"
 
 #: src/features/Landing/PlanLandingBlock.tsx:205
 #. js-lingui-explicit-id
@@ -7245,6 +7265,11 @@ msgid ""
 "Chat, discuss daily questions and play in the game. Top-5 most active users "
 "in the Community gets a Full Access until they in top-5"
 msgstr "参与社区活动，如在社区聊天中分享帖子，讨论日常问题和玩游戏。社区中最活跃的前五名用户将获得完整版访问权限，直到他们不再是前五名为止。"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Passed"
+msgstr "通过"
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8229,7 +8254,7 @@ msgstr "队列"
 msgid "Quiz"
 msgstr "测验"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#: src/features/Quiz/components/QuizResultsScreen.tsx:29
 #. js-lingui-explicit-id
 msgid "Quiz complete"
 msgstr "测验完成"
@@ -8686,7 +8711,7 @@ msgid "Resolving file..."
 msgstr "正在解析文件..."
 
 #: src/features/News/NewsPlayButton.tsx:112
-#: src/features/Quiz/components/QuizResultsScreen.tsx:52
+#: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "重启"
@@ -9347,7 +9372,7 @@ msgid ""
 "and async communication."
 msgstr "绘制一个简单的微服务架构，包含API网关、认证、服务和异步通信。"
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:49
 #. js-lingui-explicit-id
 msgid "Skills covered: {skills}"
 msgstr "技能涵盖：{skills}"
@@ -9534,7 +9559,7 @@ msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:40
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -9572,7 +9597,7 @@ msgstr "开始通话"
 msgid "Start Debate"
 msgstr "开始辩论"
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:62
 #. js-lingui-explicit-id
 msgid "Start exam"
 msgstr "开始考试"
@@ -9698,7 +9723,7 @@ msgstr "开始 | 5 分钟"
 msgid "Starting webcam... "
 msgstr "启动网络摄像头..."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:40
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -9903,7 +9928,7 @@ msgid "Subject:"
 msgstr "主题:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:297
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提交"
@@ -10461,6 +10486,13 @@ msgid ""
 "confirm that you are over 18 years old to proceed."
 msgstr "此内容可能包含不适合所有年龄段的材料。请确认您已年满18岁以继续。"
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:42
+#. js-lingui-explicit-id
+msgid ""
+"This exam follows the official B1 format. You can pause between modules and "
+"continue later."
+msgstr "本考试遵循官方B1格式。您可以在模块之间暂停，然后稍后继续。"
+
 #: src/features/RolePlay/rolePlayData.tsx:125
 #. js-lingui-explicit-id
 msgid ""
@@ -10685,7 +10717,7 @@ msgstr ""
 "在这里你无需保持坚强。  \n"
 "你只需出现即可。"
 
-#: src/features/Quiz/components/QuizModal.tsx:244
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "此测验尚未生成。从新闻文章中打开它。"
@@ -10989,7 +11021,7 @@ msgstr "试用天数"
 msgid "Try"
 msgstr "尝试"
 
-#: src/features/Quiz/components/QuizModal.tsx:236
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "再试一次"
@@ -11061,6 +11093,7 @@ msgid "Turn type"
 msgstr "转动类型"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:372
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:52
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "在此输入您的答案..."
@@ -11904,6 +11937,11 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "工作场所公平性检查"
 
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:38
+#. js-lingui-explicit-id
+msgid "Write between {minWords} and {maxWords} words."
+msgstr "在 {minWords} 到 {maxWords} 个单词之间写。"
+
 #: src/features/User/ReportModal.tsx:82
 #. js-lingui-explicit-id
 msgid "Write your report here"
@@ -12519,6 +12557,7 @@ msgid "{count} downloads"
 msgstr "{count} 下载"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:67
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} 字"
@@ -12561,8 +12600,8 @@ msgstr "| 流利伴侣"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id
-msgid "~{minutes} min · {tasks}"
-msgstr "~{minutes} 分钟 · {tasks}"
+#~ msgid "~{minutes} min · {tasks}"
+#~ msgstr "~{minutes} 分钟 · {tasks}"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id

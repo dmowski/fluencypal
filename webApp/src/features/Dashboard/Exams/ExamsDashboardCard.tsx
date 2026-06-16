@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { getExamCatalogForTargetLanguage } from '@/features/Quiz/exam/examCatalog';
 import { ensureManualExam } from '@/features/Quiz/exam/ensureManualExam';
+import { ensureStateExam } from '@/features/Quiz/exam/statePolishB1/ensureStateExam';
 import { useQuizModal } from '@/features/Quiz/useQuizModal';
 import { useSettings } from '@/features/Settings/useSettings';
 import { SectionHeader } from '../CartsHeader';
@@ -37,7 +38,10 @@ export const ExamsDashboardCard = () => {
         onClick: () => {
           if (!auth.uid || startingExamId) return;
           setStartingExamId(exam.id);
-          void ensureManualExam(auth.uid, exam.quiz)
+          const ensureExam = exam.isStateExam
+            ? () => ensureStateExam(auth.uid!, exam.quiz)
+            : () => ensureManualExam(auth.uid!, exam.quiz);
+          void ensureExam()
             .then(() => {
               quizModal.openQuiz(exam.id);
             })

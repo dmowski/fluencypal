@@ -1,4 +1,11 @@
-import { QuizDocument, QuizProgress, QuizQuestion, QuizSection } from '../types';
+import {
+  QuizDocument,
+  QuizProgress,
+  QuizQuestion,
+  QuizSection,
+  StateExamModuleId,
+  StateExamModuleResult,
+} from '../types';
 
 export const getQuestionAt = (
   quiz: QuizDocument,
@@ -93,7 +100,7 @@ export const aggregateExamScore = (
 
   for (const question of questions) {
     const result = progress.questionResults[question.id];
-    const questionMax = result?.maxScore ?? question.evaluation?.maxScore ?? 1;
+    const questionMax = result?.maxScore ?? question.maxScore ?? question.evaluation?.maxScore ?? 1;
     maxScore += questionMax;
     score += result?.score ?? 0;
   }
@@ -102,6 +109,45 @@ export const aggregateExamScore = (
   const percent = maxScore > 0 ? Math.round((roundedScore / maxScore) * 100) : 0;
   return { score: roundedScore, maxScore, percent };
 };
+
+const STATE_EXAM_MODULE_PASS_PERCENT = 50;
+
+export const aggregateModuleScores = (
+  quiz: QuizDocument,
+  progress: QuizProgress,
+): StateExamModuleResult[] => {
+  const moduleSections = quiz.sections.filter(
+    (section): section is QuizSection & { moduleId: StateExamModuleId } =>
+      Boolean(section.moduleId),
+  );
+
+  return moduleSections.map((section) => {
+    let score = 0;
+    let maxScore = 0;
+
+    for (const question of section.questions) {
+      const result = progress.questionResults[question.id];
+      const questionMax = result?.maxScore ?? question.maxScore ?? question.evaluation?.maxScore ?? 1;
+      maxScore += questionMax;
+      score += result?.score ?? 0;
+    }
+
+    const roundedScore = Math.round(score * 10) / 10;
+    const percent = maxScore > 0 ? Math.round((roundedScore / maxScore) * 100) : 0;
+
+    return {
+      moduleId: section.moduleId,
+      title: section.title,
+      score: roundedScore,
+      maxScore,
+      percent,
+      passed: percent >= STATE_EXAM_MODULE_PASS_PERCENT,
+    };
+  });
+};
+
+export const isStateExamPassed = (moduleResults: StateExamModuleResult[]): boolean =>
+  moduleResults.length > 0 && moduleResults.every((module) => module.passed);
 
 /** Display score without floating-point noise (e.g. 18.7, not 18.700000000000003). */
 export const formatQuizScore = (value: number): string => {

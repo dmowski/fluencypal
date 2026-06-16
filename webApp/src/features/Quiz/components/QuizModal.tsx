@@ -13,10 +13,14 @@ import {
   isDescribePictureVoiceQuestion,
   isFillGapQuestion,
   isListeningQuestion,
+  isMonologueVoiceQuestion,
   isReadAndAnswerQuestion,
   isWordTranslationQuestion,
+  isWritingTextQuestion,
   MultipleChoiceAnswer,
+  TextQuizAnswer,
   VoiceQuizAnswer,
+  countWords,
 } from '../types';
 import { QuizModalHeader } from './QuizModalHeader';
 import { QuestionFeedback } from './QuestionFeedback';
@@ -26,6 +30,8 @@ import { FillGapActivity } from './activities/FillGapActivity';
 import { ReadAndAnswerActivity } from './activities/ReadAndAnswerActivity';
 import { ListeningActivity } from './activities/ListeningActivity';
 import { DescribePictureVoiceActivity } from './activities/DescribePictureVoiceActivity';
+import { MonologueVoiceActivity } from './activities/MonologueVoiceActivity';
+import { WritingTextActivity } from './activities/WritingTextActivity';
 import { QuizProgressBar } from './QuizProgressBar';
 import { ExamWelcomeScreen } from './ExamWelcomeScreen';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
@@ -66,9 +72,17 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
       return gapIds.every((gapId) => Boolean(selections[gapId]));
     }
     if (answer.payload.kind === 'voice') {
+      const minWords = isDescribePictureVoiceQuestion(question)
+        ? (question.minWords ?? 10)
+        : isMonologueVoiceQuestion(question)
+          ? (question.minWords ?? 40)
+          : 1;
       const words = answer.payload.transcription.trim().split(/\s+/).filter(Boolean);
-      const minWords = isDescribePictureVoiceQuestion(question) ? (question.minWords ?? 10) : 1;
       return words.length >= minWords;
+    }
+    if (answer.payload.kind === 'text' && isWritingTextQuestion(question)) {
+      const words = countWords(answer.payload.text);
+      return words >= question.minWords && words <= question.maxWords;
     }
     return false;
   })();
@@ -156,6 +170,36 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
           disabled={isSubmitted}
           onTranscriptionChange={(value) => {
             const payload: VoiceQuizAnswer = { kind: 'voice', transcription: value };
+            void session.setAnswer(question.id, payload);
+          }}
+        />
+      );
+    }
+
+    if (isMonologueVoiceQuestion(question)) {
+      const transcription = answer?.payload.kind === 'voice' ? answer.payload.transcription : '';
+      return (
+        <MonologueVoiceActivity
+          question={question}
+          transcription={transcription}
+          disabled={isSubmitted}
+          onTranscriptionChange={(value) => {
+            const payload: VoiceQuizAnswer = { kind: 'voice', transcription: value };
+            void session.setAnswer(question.id, payload);
+          }}
+        />
+      );
+    }
+
+    if (isWritingTextQuestion(question)) {
+      const text = answer?.payload.kind === 'text' ? answer.payload.text : '';
+      return (
+        <WritingTextActivity
+          question={question}
+          text={text}
+          disabled={isSubmitted}
+          onTextChange={(value) => {
+            const payload: TextQuizAnswer = { kind: 'text', text: value };
             void session.setAnswer(question.id, payload);
           }}
         />

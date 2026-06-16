@@ -23,7 +23,7 @@ export type QuizStatus =
 // Source — what material the quiz was generated from
 // ---------------------------------------------------------------------------
 
-export type QuizSource = QuizNewsSource | QuizManualSource;
+export type QuizSource = QuizNewsSource | QuizManualSource | QuizStateExamSource;
 
 export interface QuizNewsSource {
   type: 'news';
@@ -38,6 +38,35 @@ export interface QuizManualSource {
   type: 'manual';
   label: string;
 }
+
+/** Government-style certification exam practice (e.g. Polish B1 state exam). */
+export interface QuizStateExamSource {
+  type: 'state-exam';
+  level: 'b1';
+  variantId: string;
+  targetLanguageCode: SupportedLanguage;
+  contentHash?: string;
+  generationPromptVersion?: string;
+}
+
+export type StateExamModuleId = 'listening' | 'reading' | 'grammar' | 'writing' | 'speaking';
+
+export interface StateExamModuleResult {
+  moduleId: StateExamModuleId;
+  title: string;
+  score: number;
+  maxScore: number;
+  percent: number;
+  passed: boolean;
+}
+
+export type WritingTaskGenre =
+  | 'zyczenia'
+  | 'zaproszenie'
+  | 'ogloszenie'
+  | 'email'
+  | 'opowiadanie'
+  | 'esej';
 
 // ---------------------------------------------------------------------------
 // Shared primitives
@@ -74,12 +103,16 @@ export type QuizQuestionType =
   | 'fill-gap'
   | 'read-and-answer'
   | 'describe-picture-voice'
+  | 'monologue-voice'
+  | 'writing-text'
   | 'listening';
 
 interface QuizQuestionBase {
   id: string;
   /** Short label for debugging / analytics; not necessarily shown in UI. */
   title?: string;
+  /** Per-question point weight (state exams); falls back to evaluation.maxScore or 1. */
+  maxScore?: number;
   /** Per-question evaluation; required for open-ended types, optional override for MC. */
   evaluation?: QuizEvaluationCriteria;
 }
@@ -140,12 +173,35 @@ export interface DescribePictureVoiceQuestion extends QuizQuestionBase {
   evaluation: QuizEvaluationCriteria;
 }
 
+export interface MonologueVoiceQuestion extends QuizQuestionBase {
+  type: 'monologue-voice';
+  topicPrompt: string;
+  minWords?: number;
+  maxWords?: number;
+  /** Required — open-ended answers are always AI-evaluated. */
+  evaluation: QuizEvaluationCriteria;
+}
+
+export interface WritingTextQuestion extends QuizQuestionBase {
+  type: 'writing-text';
+  promptText: string;
+  minWords: number;
+  maxWords: number;
+  taskGenre: WritingTaskGenre;
+  imageUrl?: string;
+  imageDescription?: string;
+  /** Required — open-ended answers are always AI-evaluated. */
+  evaluation: QuizEvaluationCriteria;
+}
+
 export type QuizQuestion =
   | WordTranslationQuestion
   | FillGapQuestion
   | ReadAndAnswerQuestion
   | ListeningQuestion
-  | DescribePictureVoiceQuestion;
+  | DescribePictureVoiceQuestion
+  | MonologueVoiceQuestion
+  | WritingTextQuestion;
 
 // ---------------------------------------------------------------------------
 // Quiz definition (immutable content)
@@ -157,6 +213,10 @@ export interface QuizSection {
   title: string;
   instructions?: string;
   questions: QuizQuestion[];
+  /** State exam module metadata (optional for legacy manual exams). */
+  moduleId?: StateExamModuleId;
+  moduleMaxScore?: number;
+  officialTimeMinutes?: number;
 }
 
 export interface QuizMeta {
@@ -200,10 +260,16 @@ export interface VoiceQuizAnswer {
   audioUrl?: string;
 }
 
+export interface TextQuizAnswer {
+  kind: 'text';
+  text: string;
+}
+
 export type QuizAnswerPayload =
   | MultipleChoiceAnswer
   | FillGapAnswer
-  | VoiceQuizAnswer;
+  | VoiceQuizAnswer
+  | TextQuizAnswer;
 
 export interface QuizAnswer {
   questionId: string;
@@ -243,6 +309,8 @@ export interface QuizExamResult {
   maxScore: number;
   percent: number;
   passed: boolean;
+  /** Per-module breakdown for state certification exams. */
+  moduleResults?: StateExamModuleResult[];
   /** Short local summary shown immediately after submit. */
   summaryMarkdown: string;
   /** Lazy AI deep-dive after user clicks "Get detailed feedback". */
@@ -353,12 +421,25 @@ export const isDescribePictureVoiceQuestion = (
   q: QuizQuestion,
 ): q is DescribePictureVoiceQuestion => q.type === 'describe-picture-voice';
 
+export const isMonologueVoiceQuestion = (q: QuizQuestion): q is MonologueVoiceQuestion =>
+  q.type === 'monologue-voice';
+
+export const isWritingTextQuestion = (q: QuizQuestion): q is WritingTextQuestion =>
+  q.type === 'writing-text';
+
+export const isStateExamQuiz = (quiz: QuizDocument): boolean => quiz.source.type === 'state-exam';
+
 export const isMultipleChoiceAnswer = (a: QuizAnswerPayload): a is MultipleChoiceAnswer =>
   a.kind === 'multiple-choice';
 
 export const isFillGapAnswer = (a: QuizAnswerPayload): a is FillGapAnswer => a.kind === 'fill-gap';
 
 export const isVoiceQuizAnswer = (a: QuizAnswerPayload): a is VoiceQuizAnswer => a.kind === 'voice';
+
+export const isTextQuizAnswer = (a: QuizAnswerPayload): a is TextQuizAnswer => a.kind === 'text';
+
+export const countWords = (text: string): number =>
+  text.trim().split(/\s+/).filter(Boolean).length;
 
 // ---------------------------------------------------------------------------
 // Helpers

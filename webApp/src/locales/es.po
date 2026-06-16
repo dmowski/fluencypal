@@ -947,6 +947,11 @@ msgstr "Confianza en la evaluación"
 msgid "Assistant"
 msgstr "Asistente"
 
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:69
+#. js-lingui-explicit-id
+msgid "At least {minWords} words required"
+msgstr "Se requieren al menos {minWords} palabras"
+
 #: src/features/Chat/SubmitForm.tsx:389
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
@@ -1724,8 +1729,8 @@ msgstr "Haz clic en el botón Compartir junto a app.fluencypal.com en tu navegad
 #: src/features/Header/NeedHelpModal.tsx:103
 #: src/features/Header/NotificationsModal.tsx:73
 #: src/features/Header/WithdrawFromContractModal.tsx:306
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:57
-#: src/features/Quiz/components/QuizResultsScreen.tsx:44
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:65
+#: src/features/Quiz/components/QuizResultsScreen.tsx:80
 #: src/features/Reader/components/Reader.tsx:362
 #: src/features/Reader/components/SendToKindleModal.tsx:130
 #: src/features/Reader/components/SendToKindleModal.tsx:226
@@ -2420,7 +2425,7 @@ msgstr "Crea Tu Propia Escenario"
 msgid "Creating your improvement..."
 msgstr "Creando su mejora..."
 
-#: src/features/Quiz/components/QuizModal.tsx:216
+#: src/features/Quiz/components/QuizModal.tsx:260
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Creando tu cuestionario... Esto generalmente toma alrededor de un minuto."
@@ -3568,12 +3573,12 @@ msgstr "Ensayos"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Palabras esenciales para discutir sobre salud mental y psicología."
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:37
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Tiempo estimado: ~{minutes} minutos"
 
-#: src/features/Quiz/components/QuizModal.tsx:297
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Evaluando..."
@@ -3670,6 +3675,13 @@ msgstr "Todo en Free, además:"
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "Todo lo que necesitas para destacar y conseguir el trabajo"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:29
+#. js-lingui-explicit-id
+msgid "Exam complete"
+msgstr ""
+"plaintext\n"
+"Examen completado\n"
 
 #: src/features/User/AiKnowledgeModal.tsx:141
 #. js-lingui-explicit-id
@@ -3836,6 +3848,11 @@ msgstr "Extra lento"
 #. js-lingui-explicit-id
 msgid "Extracted images"
 msgstr "Imágenes extraídas"
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Failed"
+msgstr "Fallido"
 
 #: src/features/Experiments/IWant.tsx:116
 #. js-lingui-explicit-id
@@ -4738,7 +4755,7 @@ msgstr "Gana confianza con el apoyo de la IA"
 msgid "Get creative"
 msgstr "Ponte creativo"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:61
+#: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Get detailed feedback"
 msgstr "Obtén comentarios detallados"
@@ -6560,7 +6577,7 @@ msgstr "Cargando artículo..."
 msgid "Loading library..."
 msgstr "Cargando biblioteca..."
 
-#: src/features/Quiz/components/QuizModal.tsx:224
+#: src/features/Quiz/components/QuizModal.tsx:268
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Cargando cuestionario..."
@@ -6592,7 +6609,7 @@ msgstr "Cargando.."
 #: src/features/Header/PaymentHistoryModal.tsx:130
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
-#: src/features/Quiz/components/QuizResultsScreen.tsx:61
+#: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
 #: src/features/Router/PracticePage.tsx:60
 #: src/features/Router/PracticePage.tsx:64
@@ -6743,6 +6760,11 @@ msgstr "Domina el vocabulario de alta frecuencia del TOEFL."
 #. js-lingui-explicit-id
 msgid "Master technical leadership questions"
 msgstr "Domina las preguntas de liderazgo técnico"
+
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:71
+#. js-lingui-explicit-id
+msgid "Maximum {maxWords} words"
+msgstr "Máximo {maxWords} palabras"
 
 #: src/features/Landing/PlanLandingBlock.tsx:205
 #. js-lingui-explicit-id
@@ -7768,6 +7790,11 @@ msgstr ""
 "Chat de la Comunidad, discutir preguntas diarias y jugar en el juego. Los 5 "
 "usuarios más activos de la Comunidad obtienen Acceso Completo mientras "
 "estén en el top-5."
+
+#: src/features/Quiz/components/QuizResultsScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Passed"
+msgstr "Pasado"
 
 #: src/features/RolePlay/rolePlayData.tsx:485
 #. js-lingui-explicit-id
@@ -8809,7 +8836,7 @@ msgstr "Colas"
 msgid "Quiz"
 msgstr "Cuestionario"
 
-#: src/features/Quiz/components/QuizResultsScreen.tsx:27
+#: src/features/Quiz/components/QuizResultsScreen.tsx:29
 #. js-lingui-explicit-id
 msgid "Quiz complete"
 msgstr "Cuestionario completado"
@@ -9292,7 +9319,7 @@ msgid "Resolving file..."
 msgstr "Resolviendo archivo..."
 
 #: src/features/News/NewsPlayButton.tsx:112
-#: src/features/Quiz/components/QuizResultsScreen.tsx:52
+#: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
 msgid "Restart"
 msgstr "Reiniciar"
@@ -9977,7 +10004,7 @@ msgstr ""
 "Esquema de una arquitectura de microservicios simple con puerta de enlace "
 "API, autenticación, servicios y comunicación asíncrona."
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:41
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:49
 #. js-lingui-explicit-id
 msgid "Skills covered: {skills}"
 msgstr "Habilidades cubiertas: {skills}"
@@ -10171,7 +10198,7 @@ msgstr "Estrellas"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:40
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10212,7 +10239,7 @@ msgstr "Iniciar llamada"
 msgid "Start Debate"
 msgstr "Iniciar debate"
 
-#: src/features/Quiz/components/ExamWelcomeScreen.tsx:54
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:62
 #. js-lingui-explicit-id
 msgid "Start exam"
 msgstr ""
@@ -10342,7 +10369,7 @@ msgstr "Iniciar | 5 min"
 msgid "Starting webcam... "
 msgstr "Iniciando la cámara web..."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:40
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10580,7 +10607,7 @@ msgid "Subject:"
 msgstr "Asunto:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:297
+#: src/features/Quiz/components/QuizModal.tsx:341
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Enviar"
@@ -11195,6 +11222,15 @@ msgstr ""
 "Este contenido puede contener material que no es adecuado para todas las "
 "edades. Por favor, confirme que tiene más de 18 años para continuar."
 
+#: src/features/Quiz/components/ExamWelcomeScreen.tsx:42
+#. js-lingui-explicit-id
+msgid ""
+"This exam follows the official B1 format. You can pause between modules and "
+"continue later."
+msgstr ""
+"Este examen sigue el formato oficial B1. Puedes pausar entre módulos y "
+"continuar más tarde."
+
 #: src/features/RolePlay/rolePlayData.tsx:125
 #. js-lingui-explicit-id
 msgid ""
@@ -11428,7 +11464,7 @@ msgstr ""
 "No tienes que ser fuerte aquí.  \n"
 "Solo tienes que presentarte."
 
-#: src/features/Quiz/components/QuizModal.tsx:244
+#: src/features/Quiz/components/QuizModal.tsx:288
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr ""
@@ -11758,7 +11794,7 @@ msgstr "Días de prueba"
 msgid "Try"
 msgstr "Intenta"
 
-#: src/features/Quiz/components/QuizModal.tsx:236
+#: src/features/Quiz/components/QuizModal.tsx:280
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Inténtalo de nuevo"
@@ -11830,6 +11866,7 @@ msgid "Turn type"
 msgstr "Tipo de turno"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:372
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:52
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Escribe tu respuesta aquí..."
@@ -12715,6 +12752,11 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "Verificación de Justicia en el Lugar de Trabajo"
 
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:38
+#. js-lingui-explicit-id
+msgid "Write between {minWords} and {maxWords} words."
+msgstr "Escribe entre {minWords} y {maxWords} palabras."
+
 #: src/features/User/ReportModal.tsx:82
 #. js-lingui-explicit-id
 msgid "Write your report here"
@@ -13430,6 +13472,7 @@ msgid "{count} downloads"
 msgstr "{count} descargas"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:67
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} palabras"
@@ -13472,8 +13515,8 @@ msgstr "| FluencyPal"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:33
 #. js-lingui-explicit-id
-msgid "~{minutes} min · {tasks}"
-msgstr "~{minutes} min · {tasks}"
+#~ msgid "~{minutes} min · {tasks}"
+#~ msgstr "~{minutes} min · {tasks}"
 
 #: src/features/PayWall/CardValidatorWall.tsx:133
 #. js-lingui-explicit-id

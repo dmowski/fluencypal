@@ -8,6 +8,7 @@ import {
 } from '../types';
 import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
 import { formatQuizScore } from './quizNavigation';
+import { StateExamModuleResult } from '../types';
 
 const formatMcQuestion = (question: QuizQuestion): string => {
   if (
@@ -99,6 +100,10 @@ const formatUserAnswer = (question: QuizQuestion, answer: QuizAnswer): string =>
     return answer.payload.transcription;
   }
 
+  if (answer.payload.kind === 'text') {
+    return answer.payload.text;
+  }
+
   return JSON.stringify(answer.payload);
 };
 
@@ -149,4 +154,22 @@ export const buildExamSummaryMarkdown = (input: {
     return `${scoreLine}\n\nYour level report and study focus areas appear below once feedback is ready.`;
   }
   return `${scoreLine}\n\n**Result:** ${input.passed ? 'Passed' : 'Not passed'} (passing: ${input.passingScorePercent}%)`;
+};
+
+export const buildStateExamSummaryMarkdown = (input: {
+  score: number;
+  maxScore: number;
+  percent: number;
+  passed: boolean;
+  moduleResults: StateExamModuleResult[];
+}): string => {
+  const scoreLine = `**Łącznie:** ${formatQuizScore(input.score)} / ${formatQuizScore(input.maxScore)} (${input.percent}%)`;
+  const moduleLines = input.moduleResults
+    .map(
+      (module) =>
+        `- **${module.title}:** ${formatQuizScore(module.score)} / ${formatQuizScore(module.maxScore)} (${module.percent}%) — ${module.passed ? 'ZALICZONE' : 'NIEZALICZONE'}`,
+    )
+    .join('\n');
+
+  return `${scoreLine}\n\n**Moduły (próg 50% w każdym):**\n${moduleLines}\n\n**Wynik egzaminu:** ${input.passed ? 'POZYTYWNY' : 'NEGATYWNY'}`;
 };

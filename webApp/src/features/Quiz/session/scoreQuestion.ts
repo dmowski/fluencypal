@@ -1,10 +1,12 @@
 import {
   DescribePictureVoiceQuestion,
   FillGapQuestion,
+  MonologueVoiceQuestion,
   QuizAnswer,
   QuizQuestion,
   QuizQuestionResult,
   QuizQuestionResultStatus,
+  WritingTextQuestion,
 } from '../types';
 import { buildQuizTargetLanguageInstruction } from './quizTargetLanguageInstruction';
 
@@ -65,7 +67,7 @@ export const scoreFillGap = (
 };
 
 export const scoreQuestion = (question: QuizQuestion, answer: QuizAnswer): QuizQuestionResult => {
-  const maxScore = question.evaluation?.maxScore ?? DEFAULT_MAX_SCORE;
+  const maxScore = question.maxScore ?? question.evaluation?.maxScore ?? DEFAULT_MAX_SCORE;
 
   if (answer.payload.kind === 'multiple-choice') {
     if (
@@ -86,11 +88,25 @@ export const scoreQuestion = (question: QuizQuestion, answer: QuizAnswer): QuizQ
     return scoreFillGap(question, answer.payload.selections, maxScore);
   }
 
-  if (answer.payload.kind === 'voice' && question.type === 'describe-picture-voice') {
+  if (
+    answer.payload.kind === 'voice' &&
+    (question.type === 'describe-picture-voice' || question.type === 'monologue-voice')
+  ) {
     const hasTranscript = answer.payload.transcription.trim().length > 0;
     return {
       questionId: question.id,
       status: hasTranscript ? 'needs-review' : 'incorrect',
+      score: 0,
+      maxScore,
+      evaluatedAtIso: new Date().toISOString(),
+    };
+  }
+
+  if (answer.payload.kind === 'text' && question.type === 'writing-text') {
+    const hasText = answer.payload.text.trim().length > 0;
+    return {
+      questionId: question.id,
+      status: hasText ? 'needs-review' : 'incorrect',
       score: 0,
       maxScore,
       evaluatedAtIso: new Date().toISOString(),
@@ -106,27 +122,73 @@ export const scoreQuestion = (question: QuizQuestion, answer: QuizAnswer): QuizQ
   };
 };
 
+const buildOpenEndedEvaluationPrompt = (input: {
+  instruction: string;
+  targetLanguageCode: string;
+  maxScore: number;
+  userMessage: string;
+}): { systemMessage: string; userMessage: string } => ({
+  systemMessage: `${input.instruction}
+
+${buildQuizTargetLanguageInstruction(input.targetLanguageCode)}
+
+Respond in markdown. Include these machine-readable lines first (keep labels in English):
+- Status: correct | partial | incorrect
+- Score: number out of ${input.maxScore}
+- Feedback: 2-4 sentences for the learner in the target language`,
+  userMessage: input.userMessage,
+});
+
 export const buildVoiceEvaluationPrompt = (
   question: DescribePictureVoiceQuestion,
   transcription: string,
   targetLanguageCode: string,
-): { systemMessage: string; userMessage: string } => ({
-  systemMessage: `${question.evaluation.instruction}
-
-${buildQuizTargetLanguageInstruction(targetLanguageCode)}
-
-Respond in markdown. Include these machine-readable lines first (keep labels in English):
-- Status: correct | partial | incorrect
-- Score: number out of ${question.evaluation.maxScore ?? DEFAULT_MAX_SCORE}
-- Feedback: 2-4 sentences for the learner in the target language`,
-  userMessage: `Question: ${question.promptText}
+): { systemMessage: string; userMessage: string } =>
+  buildOpenEndedEvaluationPrompt({
+    instruction: question.evaluation.instruction,
+    targetLanguageCode,
+    maxScore: question.evaluation.maxScore ?? DEFAULT_MAX_SCORE,
+    userMessage: `Question: ${question.promptText}
 
 What the image actually shows:
 ${question.imageDescription}
 
 Learner answer (transcription):
 ${transcription}`,
-});
+  });
+
+export const buildMonologueEvaluationPrompt = (
+  question: MonologueVoiceQuestion,
+  transcription: string,
+  targetLanguageCode: string,
+): { systemMessage: string; userMessage: string } =>
+  buildOpenEndedEvaluationPrompt({
+    instruction: question.evaluation.instruction,
+    targetLanguageCode,
+    maxScore: question.evaluation.maxScore ?? DEFAULT_MAX_SCORE,
+    userMessage: `Topic: ${question.topicPrompt}
+
+Learner answer (transcription):
+${transcription}`,
+  });
+
+export const buildWritingEvaluationPrompt = (
+  question: WritingTextQuestion,
+  text: string,
+  targetLanguageCode: string,
+): { systemMessage: string; userMessage: string } =>
+  buildOpenEndedEvaluationPrompt({
+    instruction: question.evaluation.instruction,
+    targetLanguageCode,
+    maxScore: question.evaluation.maxScore ?? DEFAULT_MAX_SCORE,
+    userMessage: `Task: ${question.promptText}
+Genre: ${question.taskGenre}
+Required length: ${question.minWords}-${question.maxWords} words
+${question.imageDescription ? `\nImage context (for story tasks):\n${question.imageDescription}` : ''}
+
+Learner answer:
+${text}`,
+  });
 
 export const parseVoiceEvaluationResponse = (
   questionId: string,
