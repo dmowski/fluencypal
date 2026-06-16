@@ -61,7 +61,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `Yes. FluencyPal offers a 1-week free trial with full access to all features. You can start the trial immediately and explore the app to see how it helps you improve your speaking skills. There are no limitations during the trial period, so you can experience everything FluencyPal has to offer.`,
+        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
       ),
     },
 
@@ -202,8 +202,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             title={i18n._(`Speaking practice`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
-            buttonTitle={i18n._(`Start Trial`)}
-            buttonSubtitle={i18n._(`7-day free trial with full access`)}
+            buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={quizLink}
             cards={[

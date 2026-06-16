@@ -130,7 +130,7 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                             },
                             {
                               iconName: 'piggy-bank',
-                              title: i18n._('2. Complete the trial period'),
+                              title: i18n._('2. Start with the free plan'),
                             },
                             {
                               iconName: 'x',
@@ -148,11 +148,11 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                         : [
                             {
                               iconName: 'sparkles',
-                              title: i18n._('You will get a trial period of full access for free'),
+                              title: i18n._('Confirm your card to access all features'),
                             },
                             {
                               iconName: 'piggy-bank',
-                              title: i18n._('No automatic payment after the trial'),
+                              title: i18n._('No automatic payment'),
                             },
                             {
                               iconName: 'shield-check',
