@@ -1,9 +1,8 @@
-import { NextRequest } from 'next/server';
 import { validateAuthToken, getDB } from '../config/firebase';
 import { InitUserSettings } from '@/features/Settings/userSettings';
 import { InitUserSettingsRequest, InitUserSettingsResponse } from './types';
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request): Promise<Response> {
   const userInfo = await validateAuthToken(request);
   const userId = userInfo.uid;
   if (!userId) {
@@ -20,7 +19,7 @@ export async function POST(request: NextRequest) {
 
   if (!isNew) {
     const response: InitUserSettingsResponse = { status: 'already_initialized' };
-    return Response.json(response);
+    return new Response(JSON.stringify(response), { status: 200 });
   }
 
   const body = (await request.json()) as InitUserSettingsRequest;
@@ -41,5 +40,5 @@ export async function POST(request: NextRequest) {
   );
 
   const response: InitUserSettingsResponse = { status: 'initialized' };
-  return Response.json(response);
+  return new Response(JSON.stringify(response), { status: 200 });
 }
