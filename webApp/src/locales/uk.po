@@ -1413,7 +1413,7 @@ msgstr "Чи можу я використовувати це на смартфо
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Header/PaymentHistoryModal.tsx:243
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -6485,7 +6485,7 @@ msgstr "Завантаження..."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:83
+#: src/features/Header/PaymentHistoryModal.tsx:87
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -7128,7 +7128,7 @@ msgstr ""
 "Оплата не буде знята. Ваша карта не буде збережена або використана для "
 "стягнення коштів на цьому етапі."
 
-#: src/features/Header/PaymentHistoryModal.tsx:94
+#: src/features/Header/PaymentHistoryModal.tsx:98
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Без платежів..."
@@ -7387,6 +7387,16 @@ msgid ""
 msgstr ""
 "На наступних етапах ви отримаєте детальний аналіз ваших відповідей та "
 "приклади відповідей, які допоможуть вам покращити навички."
+
+#: src/features/Header/PaymentHistoryModal.tsx:211
+#. js-lingui-explicit-id
+msgid ""
+"Once confirmed, your refund will be processed within 1–5 business days "
+"using the same payment method you used for the purchase."
+msgstr ""
+"Після підтвердження вашого повернення коштів, воно буде оброблено протягом "
+"1–5 робочих днів з використанням того ж методу оплати, який ви "
+"використовували для покупки."
 
 #: src/features/Game/Battle/BattleCard.tsx:150
 #. js-lingui-explicit-id
@@ -7689,7 +7699,7 @@ msgstr "Оплата"
 msgid "Payment failed! Please try again."
 msgstr "Оплата не пройшла! Спробуйте ще раз."
 
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -9045,7 +9055,7 @@ msgstr "Оновити"
 msgid "Refund"
 msgstr "Відшкодування"
 
-#: src/features/Header/PaymentHistoryModal.tsx:201
+#: src/features/Header/PaymentHistoryModal.tsx:205
 #. js-lingui-explicit-id
 msgid "Refund form"
 msgstr "Форма повернення коштів"
@@ -9137,7 +9147,7 @@ msgstr "Повідомити про користувача"
 msgid "Request failed. Please try again."
 msgstr "Запит не вдався. Спробуйте ще раз."
 
-#: src/features/Header/PaymentHistoryModal.tsx:253
+#: src/features/Header/PaymentHistoryModal.tsx:262
 #. js-lingui-explicit-id
 msgid "Request Refund"
 msgstr "Запит на відшкодування"
@@ -10462,7 +10472,7 @@ msgstr "Надіслати згоду батьків"
 msgid "Submit Report"
 msgstr "Надіслати звіт"
 
-#: src/features/Header/PaymentHistoryModal.tsx:227
+#: src/features/Header/PaymentHistoryModal.tsx:236
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "Надіслати Запит"
@@ -11939,7 +11949,7 @@ msgstr "Переглянути все"
 msgid "View Scoreboard"
 msgstr "Переглянути турнірну таблицю"
 
-#: src/features/Header/PaymentHistoryModal.tsx:67
+#: src/features/Header/PaymentHistoryModal.tsx:71
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Переглянути вашу історію платежів"
@@ -12781,7 +12791,7 @@ msgstr ""
 "Вам обом буде запропоновано записати відповіді на 2 запитання. Після цього "
 "ІІ проаналізує ваші відповіді та скаже, хто виграв дебати!"
 
-#: src/features/Header/PaymentHistoryModal.tsx:204
+#: src/features/Header/PaymentHistoryModal.tsx:208
 #. js-lingui-explicit-id
 msgid "You can add some details regarding your refund request below:"
 msgstr "Ви можете додати деякі деталі щодо вашого запиту на відшкодування нижче:"
@@ -13160,12 +13170,14 @@ msgstr "Ваш план практики"
 msgid "Your questions answered"
 msgstr "Ваші запитання отримали відповіді"
 
-#: src/features/Header/PaymentHistoryModal.tsx:45
+#: src/features/Header/PaymentHistoryModal.tsx:46
 #. js-lingui-explicit-id
-msgid "Your refund request has been submitted. We will get back to you soon."
+msgid ""
+"Your refund request has been submitted. Refunds are typically processed "
+"within 1–5 business days."
 msgstr ""
-"Ваш запит на відшкодування було подано. Ми зв'яжемося з вами найближчим "
-"часом."
+"Ваш запит на повернення коштів було подано. Зазвичай повернення коштів "
+"обробляються протягом 1–5 робочих днів."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13256,3 +13268,10 @@ msgstr "| FluencyPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} хв · {tasks}"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+#~ msgid "Your refund request has been submitted. We will get back to you soon."
+#~ msgstr ""
+#~ "Ваш запит на відшкодування було подано. Ми зв'яжемося з вами найближчим "
+#~ "часом."

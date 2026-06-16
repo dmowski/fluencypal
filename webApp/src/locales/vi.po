@@ -1417,7 +1417,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Header/PaymentHistoryModal.tsx:243
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -6490,7 +6490,7 @@ msgstr "Đang tải.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:83
+#: src/features/Header/PaymentHistoryModal.tsx:87
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -7131,7 +7131,7 @@ msgstr ""
 "Không có khoản thanh toán nào sẽ được thực hiện. Thẻ của bạn sẽ không được "
 "lưu trữ hoặc sử dụng để tính phí trong bước này."
 
-#: src/features/Header/PaymentHistoryModal.tsx:94
+#: src/features/Header/PaymentHistoryModal.tsx:98
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Không thanh toán..."
@@ -7391,6 +7391,15 @@ msgid ""
 msgstr ""
 "Trong các bước tiếp theo, bạn sẽ nhận được phân tích chi tiết về câu trả "
 "lời của mình và các ví dụ trả lời để giúp bạn cải thiện."
+
+#: src/features/Header/PaymentHistoryModal.tsx:211
+#. js-lingui-explicit-id
+msgid ""
+"Once confirmed, your refund will be processed within 1–5 business days "
+"using the same payment method you used for the purchase."
+msgstr ""
+"Sau khi được xác nhận, tiền hoàn lại của bạn sẽ được xử lý trong vòng 1–5 "
+"ngày làm việc bằng phương thức thanh toán mà bạn đã sử dụng khi mua hàng."
 
 #: src/features/Game/Battle/BattleCard.tsx:150
 #. js-lingui-explicit-id
@@ -7692,7 +7701,7 @@ msgstr "Thanh toán"
 msgid "Payment failed! Please try again."
 msgstr "Thanh toán không thành công! Vui lòng thử lại."
 
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -9050,7 +9059,7 @@ msgstr "Làm mới"
 msgid "Refund"
 msgstr "Hoàn tiền"
 
-#: src/features/Header/PaymentHistoryModal.tsx:201
+#: src/features/Header/PaymentHistoryModal.tsx:205
 #. js-lingui-explicit-id
 msgid "Refund form"
 msgstr "Biểu mẫu hoàn tiền"
@@ -9142,7 +9151,7 @@ msgstr "Báo cáo người dùng"
 msgid "Request failed. Please try again."
 msgstr "Yêu cầu không thành công. Vui lòng thử lại."
 
-#: src/features/Header/PaymentHistoryModal.tsx:253
+#: src/features/Header/PaymentHistoryModal.tsx:262
 #. js-lingui-explicit-id
 msgid "Request Refund"
 msgstr "Yêu cầu hoàn tiền"
@@ -10471,7 +10480,7 @@ msgstr "Nộp Sự Đồng Ý Của Phụ Huynh"
 msgid "Submit Report"
 msgstr "Nộp Báo Cáo"
 
-#: src/features/Header/PaymentHistoryModal.tsx:227
+#: src/features/Header/PaymentHistoryModal.tsx:236
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "Gửi Yêu Cầu"
@@ -11955,7 +11964,7 @@ msgstr "Xem tất cả"
 msgid "View Scoreboard"
 msgstr "Xem Bảng Điểm"
 
-#: src/features/Header/PaymentHistoryModal.tsx:67
+#: src/features/Header/PaymentHistoryModal.tsx:71
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr ""
@@ -12796,7 +12805,7 @@ msgstr ""
 "phân tích câu trả lời của bạn và thông báo ai đã thắng trong cuộc tranh "
 "luận!"
 
-#: src/features/Header/PaymentHistoryModal.tsx:204
+#: src/features/Header/PaymentHistoryModal.tsx:208
 #. js-lingui-explicit-id
 msgid "You can add some details regarding your refund request below:"
 msgstr ""
@@ -13182,12 +13191,14 @@ msgstr "Kế hoạch luyện tập của bạn"
 msgid "Your questions answered"
 msgstr "Câu hỏi của bạn đã được giải đáp"
 
-#: src/features/Header/PaymentHistoryModal.tsx:45
+#: src/features/Header/PaymentHistoryModal.tsx:46
 #. js-lingui-explicit-id
-msgid "Your refund request has been submitted. We will get back to you soon."
+msgid ""
+"Your refund request has been submitted. Refunds are typically processed "
+"within 1–5 business days."
 msgstr ""
-"Yêu cầu hoàn tiền của bạn đã được gửi đi. Chúng tôi sẽ sớm liên hệ lại với "
-"bạn."
+"Yêu cầu hoàn tiền của bạn đã được gửi. Hoàn tiền thường được xử lý trong "
+"vòng 1-5 ngày làm việc."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -13280,3 +13291,10 @@ msgstr "| FluencyPal"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} phút · {tasks}"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+#~ msgid "Your refund request has been submitted. We will get back to you soon."
+#~ msgstr ""
+#~ "Yêu cầu hoàn tiền của bạn đã được gửi đi. Chúng tôi sẽ sớm liên hệ lại với "
+#~ "bạn."

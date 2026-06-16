@@ -1364,7 +1364,7 @@ msgstr "スマートフォンで使用できますか？"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
-#: src/features/Header/PaymentHistoryModal.tsx:234
+#: src/features/Header/PaymentHistoryModal.tsx:243
 #: src/features/Reader/components/AddBookModal.tsx:426
 #: src/features/Reader/components/DeleteBookModal.tsx:79
 #: src/features/Reader/components/DeleteBookModal.tsx:127
@@ -6106,7 +6106,7 @@ msgstr "読み込み中.."
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Header/PaymentHistoryModal.tsx:83
+#: src/features/Header/PaymentHistoryModal.tsx:87
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:418
 #: src/features/Quiz/components/QuizResultsScreen.tsx:61
@@ -6728,7 +6728,7 @@ msgid ""
 "as part of this step."
 msgstr "お支払いは発生いたしません。このステップの一環として、カードは保存されず、請求にも使用されません。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:94
+#: src/features/Header/PaymentHistoryModal.tsx:98
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "支払いなし..."
@@ -6964,6 +6964,13 @@ msgid ""
 "On the next steps, you'll receive a detailed analysis of your answers and "
 "example responses to help you improve."
 msgstr "次のステップでは、あなたの回答の詳細な分析と、改善のための例となる回答を受け取ることができます。"
+
+#: src/features/Header/PaymentHistoryModal.tsx:211
+#. js-lingui-explicit-id
+msgid ""
+"Once confirmed, your refund will be processed within 1–5 business days "
+"using the same payment method you used for the purchase."
+msgstr "購入時に使用した支払い方法と同じ方法で、確認後1～5営業日以内に返金手続きが行われます。"
 
 #: src/features/Game/Battle/BattleCard.tsx:150
 #. js-lingui-explicit-id
@@ -7248,7 +7255,7 @@ msgstr "支払い"
 msgid "Payment failed! Please try again."
 msgstr "支払いに失敗しました！もう一度お試しください。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/Header/PaymentHistoryModal.tsx:69
 #: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -8538,7 +8545,7 @@ msgstr "リフレッシュ"
 msgid "Refund"
 msgstr "返金"
 
-#: src/features/Header/PaymentHistoryModal.tsx:201
+#: src/features/Header/PaymentHistoryModal.tsx:205
 #. js-lingui-explicit-id
 msgid "Refund form"
 msgstr "返金フォーム"
@@ -8630,7 +8637,7 @@ msgstr "ユーザーを報告する"
 msgid "Request failed. Please try again."
 msgstr "リクエストに失敗しました。再試行してください。"
 
-#: src/features/Header/PaymentHistoryModal.tsx:253
+#: src/features/Header/PaymentHistoryModal.tsx:262
 #. js-lingui-explicit-id
 msgid "Request Refund"
 msgstr "払い戻しをリクエスト"
@@ -9893,7 +9900,7 @@ msgstr "保護者の同意を提出する"
 msgid "Submit Report"
 msgstr "レポートを送信"
 
-#: src/features/Header/PaymentHistoryModal.tsx:227
+#: src/features/Header/PaymentHistoryModal.tsx:236
 #. js-lingui-explicit-id
 msgid "Submit Request"
 msgstr "リクエストを送信"
@@ -11290,7 +11297,7 @@ msgstr "すべて表示"
 msgid "View Scoreboard"
 msgstr "スコアボードを表示"
 
-#: src/features/Header/PaymentHistoryModal.tsx:67
+#: src/features/Header/PaymentHistoryModal.tsx:71
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "お支払い履歴を表示"
@@ -12064,7 +12071,7 @@ msgid ""
 "AI will analyze your answers and tell who won the debate!"
 msgstr "あなたたちは2つの質問に対する回答を記録するよう挑戦されます。その後、AIがあなたたちの回答を分析し、誰が討論で勝ったかを教えてくれます！"
 
-#: src/features/Header/PaymentHistoryModal.tsx:204
+#: src/features/Header/PaymentHistoryModal.tsx:208
 #. js-lingui-explicit-id
 msgid "You can add some details regarding your refund request below:"
 msgstr "返金リクエストに関する詳細を以下に追加することができます:"
@@ -12411,10 +12418,12 @@ msgstr "あなたの練習計画"
 msgid "Your questions answered"
 msgstr "あなたの質問にお答えします"
 
-#: src/features/Header/PaymentHistoryModal.tsx:45
+#: src/features/Header/PaymentHistoryModal.tsx:46
 #. js-lingui-explicit-id
-msgid "Your refund request has been submitted. We will get back to you soon."
-msgstr "あなたの返金リクエストが提出されました。すぐにご連絡いたします。"
+msgid ""
+"Your refund request has been submitted. Refunds are typically processed "
+"within 1–5 business days."
+msgstr "返金リクエストが送信されました。返金は通常、1〜5営業日以内に処理されます。"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:81
 #. js-lingui-explicit-id
@@ -12503,3 +12512,8 @@ msgstr "| フルエンシーパル"
 #. js-lingui-explicit-id
 msgid "~{minutes} min · {tasks}"
 msgstr "~{minutes} 分 · {tasks}"
+
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#. js-lingui-explicit-id
+#~ msgid "Your refund request has been submitted. We will get back to you soon."
+#~ msgstr "あなたの返金リクエストが提出されました。すぐにご連絡いたします。"
