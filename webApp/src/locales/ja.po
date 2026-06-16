@@ -2133,10 +2133,15 @@ msgstr "コアウェブバイタル"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:112
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "正解"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+msgid "Correct answer: {answer}"
+msgstr "正解: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2311,7 +2316,7 @@ msgstr "自分のシナリオを作成する"
 msgid "Creating your improvement..."
 msgstr "改善を作成しています..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:265
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "クイズを作成中... 通常、約1分かかります。"
@@ -3377,7 +3382,7 @@ msgstr "心の健康と心理学を議論するための必須の単語。"
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "所要時間: ~{minutes} 分"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "評価中..."
@@ -4340,6 +4345,11 @@ msgstr "ジェネラルアシスタント"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "もっとユニークなレッスンを生成する"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#. js-lingui-explicit-id
+msgid "Generating explanation..."
+msgstr "説明を生成中..."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5453,7 +5463,7 @@ msgstr ""
 "このセッションでは、シニアフロントエンドの役割のために設計された質問に答えていただきます。回答の後、フィードバックを受け取り、回答を洗練し、面接スキルを"
 "向上させるのに役立てていただきます。"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:65
+#: src/features/Quiz/components/QuestionFeedback.tsx:115
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "不正解"
@@ -6163,7 +6173,7 @@ msgstr "記事を読み込んでいます..."
 msgid "Loading library..."
 msgstr "ライブラリを読み込んでいます…"
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:273
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "クイズを読み込み中..."
@@ -6648,7 +6658,7 @@ msgstr "ニュースディスカッション"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:40
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7303,7 +7313,7 @@ msgstr "親権者同意書"
 msgid "Parental consent submitted!"
 msgstr "保護者の同意が提出されました！"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:64
+#: src/features/Quiz/components/QuestionFeedback.tsx:114
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "部分的に正しい"
@@ -9989,7 +9999,7 @@ msgid "Subject:"
 msgstr "件名:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "送信"
@@ -10784,7 +10794,7 @@ msgstr ""
 "ここでは強くある必要はありません。  \n"
 "ただ来てください。"
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:293
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "このクイズはまだ生成されていません。ニュース記事から開いてください。"
@@ -11090,7 +11100,7 @@ msgstr "試用日数"
 msgid "Try"
 msgstr "試してみてください"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:285
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "再試行してください"
@@ -11839,7 +11849,8 @@ msgstr "AIは誰になるべきですか？"
 msgid "Who this is for"
 msgstr "これは誰のためのものか"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:45
+#: src/features/Quiz/components/QuestionFeedback.tsx:77
+#: src/features/Quiz/components/QuestionFeedback.tsx:95
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "なぜ"
@@ -12476,6 +12487,11 @@ msgstr "あなたのAI教師の声:"
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "あなたの答え"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+msgid "Your answer: {answer}"
+msgstr "あなたの答え: {answer}"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id

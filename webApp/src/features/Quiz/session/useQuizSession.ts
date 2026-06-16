@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { setDoc } from 'firebase/firestore';
+import { getDoc, setDoc } from 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -58,6 +58,10 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
   const [isExplaining, setIsExplaining] = useState(false);
   const [isEvaluatingVoice, setIsEvaluatingVoice] = useState(false);
   const [isRequestingFeedback, setIsRequestingFeedback] = useState(false);
+  const [whyExplanationOverrides, setWhyExplanationOverrides] = useState<Record<string, string>>(
+    {},
+  );
+  const [explainErrors, setExplainErrors] = useState<Record<string, string>>({});
 
   const quiz = record?.quiz ?? null;
   const progress = record?.progress ?? null;
@@ -93,13 +97,15 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     progress?.status === 'not-started';
 
   const persistProgress = async (nextProgress: QuizProgress) => {
-    if (!docRef || !record) return;
-    const updated: UserQuizRecord = {
-      ...record,
-      progress: nextProgress,
-      updatedAtIso: new Date().toISOString(),
-    };
-    await setDoc(docRef, sanitizeForFirestore(updated), { merge: true });
+    if (!docRef) return;
+    await setDoc(
+      docRef,
+      sanitizeForFirestore({
+        progress: nextProgress,
+        updatedAtIso: new Date().toISOString(),
+      }),
+      { merge: true },
+    );
   };
 
   const markStarted = (base: QuizProgress): QuizProgress => {
@@ -242,14 +248,23 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
   };
 
   const explainAnswer = async (questionId: string) => {
-    if (!quiz || !progress) return;
+    if (!quiz || !progress || !docRef) return;
     const located = findQuestionById(quiz, questionId);
     const answer = progress.answers[questionId];
     const existing = progress.questionResults[questionId];
     if (!located || !answer || !existing) return;
-    if (existing.whyExplanation) return;
 
+    const persistedExplanation = existing.whyExplanation?.trim();
+    const overrideExplanation = whyExplanationOverrides[questionId]?.trim();
+    if (persistedExplanation || overrideExplanation) return;
+
+    setExplainErrors((current) => {
+      const next = { ...current };
+      delete next[questionId];
+      return next;
+    });
     setIsExplaining(true);
+
     try {
       const prompts = buildExplainAnswerPrompt(
         located.question,
@@ -263,17 +278,46 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
         cache: false,
         languageCode: quiz.meta.targetLanguageCode,
       });
+      const trimmed = explanation.trim();
+      if (!trimmed) {
+        throw new Error('Empty explanation from AI');
+      }
+
+      setWhyExplanationOverrides((current) => ({ ...current, [questionId]: trimmed }));
+
+      const latestSnap = await getDoc(docRef);
+      const latestProgress = latestSnap.exists()
+        ? (latestSnap.data() as UserQuizRecord).progress
+        : progress;
+      const latestResult = latestProgress.questionResults[questionId] ?? existing;
+
       await persistProgress({
-        ...progress,
+        ...latestProgress,
         questionResults: {
-          ...progress.questionResults,
-          [questionId]: { ...existing, whyExplanation: explanation.trim() },
+          ...latestProgress.questionResults,
+          [questionId]: { ...latestResult, whyExplanation: trimmed },
         },
         updatedAtIso: new Date().toISOString(),
       });
+    } catch (error) {
+      console.error('explainAnswer failed', error);
+      setExplainErrors((current) => ({
+        ...current,
+        [questionId]:
+          quiz.meta.targetLanguageCode === 'pl'
+            ? 'Nie udało się wygenerować wyjaśnienia. Spróbuj ponownie za chwilę.'
+            : 'Could not generate an explanation. Please try again in a moment.',
+      }));
     } finally {
       setIsExplaining(false);
     }
+  };
+
+  const getQuestionResult = (questionId: string) => {
+    const stored = progress?.questionResults[questionId];
+    if (!stored) return undefined;
+    const whyExplanation = whyExplanationOverrides[questionId]?.trim() || stored.whyExplanation;
+    return whyExplanation ? { ...stored, whyExplanation } : stored;
   };
 
   const submitExam = async () => {
@@ -387,8 +431,10 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
   };
 
   const resetProgress = async () => {
-    if (!quiz || !docRef || !record || !quizId) return;
+    if (!quiz || !docRef || !quizId) return;
     const fresh = createInitialQuizProgress(quizId);
+    setWhyExplanationOverrides({});
+    setExplainErrors({});
     await setDoc(
       docRef,
       {
@@ -427,5 +473,7 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
     requestDetailedFeedback,
     resetProgress,
     startExam,
+    getQuestionResult,
+    explainErrors,
   };
 };

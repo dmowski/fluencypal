@@ -53,7 +53,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
   const question = session.currentQuestion;
   const questionId = question?.id ?? '';
   const answer = questionId ? session.progress?.answers[questionId] : undefined;
-  const result = questionId ? session.progress?.questionResults[questionId] : undefined;
+  const result = questionId ? session.getQuestionResult(questionId) : undefined;
   const isSubmitted = Boolean(answer?.submittedAtIso);
 
   const handleSubmit = async () => {
@@ -345,6 +345,9 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
                   {isSubmitted && result && (
                     <QuestionFeedback
                       result={result}
+                      question={question}
+                      answer={answer}
+                      explainError={session.explainErrors[questionId]}
                       isExplaining={session.isExplaining}
                       onExplain={() => void session.explainAnswer(questionId)}
                       onNext={() => void session.goNext()}

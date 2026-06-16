@@ -2204,10 +2204,15 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#: src/features/Quiz/components/QuestionFeedback.tsx:112
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "ถูกต้อง"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:52
+#. js-lingui-explicit-id
+msgid "Correct answer: {answer}"
+msgstr "คำตอบที่ถูกต้อง: {answer}"
 
 #: src/features/Tasks/useDailyTasks.tsx:82
 #. js-lingui-explicit-id
@@ -2404,7 +2409,7 @@ msgstr "สร้างสถานการณ์ของคุณเอง"
 msgid "Creating your improvement..."
 msgstr "กำลังสร้างการพัฒนาของคุณ..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:265
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "กำลังสร้างแบบทดสอบของคุณ... โดยปกติแล้วจะใช้เวลาประมาณหนึ่งนาที"
@@ -3549,7 +3554,7 @@ msgstr "คำที่จำเป็นสำหรับการสนทน
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "ระยะเวลาประมาณ: ~{minutes} นาที"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "กำลังประเมิน..."
@@ -4581,6 +4586,11 @@ msgstr "ผู้ช่วยทั่วไป"
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:62
+#. js-lingui-explicit-id
+msgid "Generating explanation..."
+msgstr "กำลังสร้างคำอธิบาย..."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:394
 #. js-lingui-explicit-id
@@ -5795,7 +5805,7 @@ msgstr ""
 "คุณจะได้รับข้อเสนอแนะเพื่อช่วยให้คุณปรับปรุงคำตอบและพัฒนาทักษะการสัมภาษณ์ของ"
 "คุณ"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:65
+#: src/features/Quiz/components/QuestionFeedback.tsx:115
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "ไม่ถูกต้อง"
@@ -6525,7 +6535,7 @@ msgstr "กำลังโหลดบทความ..."
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:273
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "กำลังโหลดแบบทดสอบ..."
@@ -7015,7 +7025,7 @@ msgstr "การสนทนาข่าว"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:40
+#: src/features/Quiz/components/QuestionFeedback.tsx:90
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7705,7 +7715,7 @@ msgstr "การยินยอมของผู้ปกครอง"
 msgid "Parental consent submitted!"
 msgstr "การยินยอมจากผู้ปกครองได้ถูกส่งแล้ว!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:64
+#: src/features/Quiz/components/QuestionFeedback.tsx:114
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "ถูกต้องบางส่วน"
@@ -10625,7 +10635,7 @@ msgid "Subject:"
 msgstr "เรื่อง:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "ส่ง"
@@ -11473,7 +11483,7 @@ msgstr ""
 "คุณไม่จำเป็นต้องเข้มแข็งที่นี่  \n"
 "คุณเพียงแค่ต้องแสดงตัว"
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:293
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "แบบทดสอบนี้ยังไม่ได้ถูกสร้างขึ้น กรุณาเปิดจากบทความข่าว"
@@ -11796,7 +11806,7 @@ msgstr "วันทดลองใช้"
 msgid "Try"
 msgstr "ลอง"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:285
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "ลองอีกครั้ง"
@@ -12569,7 +12579,8 @@ msgstr ""
 "\n"
 "ใครคือผู้รับ\n"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:45
+#: src/features/Quiz/components/QuestionFeedback.tsx:77
+#: src/features/Quiz/components/QuestionFeedback.tsx:95
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "ทำไม"
@@ -13280,6 +13291,11 @@ msgstr "เสียงครู AI ของคุณ:"
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "คำตอบของคุณ"
+
+#: src/features/Quiz/components/QuestionFeedback.tsx:49
+#. js-lingui-explicit-id
+msgid "Your answer: {answer}"
+msgstr "คำตอบของคุณ: {answer}"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:409
 #. js-lingui-explicit-id

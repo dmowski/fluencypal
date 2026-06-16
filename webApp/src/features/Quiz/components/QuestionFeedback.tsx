@@ -4,31 +4,59 @@ import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
-import { QuizQuestionResult } from '../types';
+import { QuizAnswer, QuizQuestion, QuizQuestionResult } from '../types';
 import { ChevronRight } from 'lucide-react';
 
 export const QuestionFeedback = ({
   result,
+  question,
+  answer,
+  explainError,
   isExplaining,
   onExplain,
   onNext,
 }: {
   result: QuizQuestionResult;
+  question?: QuizQuestion;
+  answer?: QuizAnswer;
+  explainError?: string;
   isExplaining: boolean;
   onExplain: () => void;
   onNext: () => void;
 }) => {
   const { i18n } = useLingui();
   const showWhy =
-    (result.status === 'incorrect' || result.status === 'partial') && !result.whyExplanation;
+    (result.status === 'incorrect' || result.status === 'partial') &&
+    !result.whyExplanation &&
+    Boolean(question && answer);
 
   return (
     <Stack sx={{ gap: '16px' }} data-testid="quiz-question-feedback">
-      {result.feedback && <Markdown>{result.feedback}</Markdown>}
+      {result.feedback && <Markdown variant="conversation">{result.feedback}</Markdown>}
 
-      {isExplaining && <LoadingShapes sizes={['30px']} />}
+      {isExplaining && (
+        <Stack sx={{ gap: '8px' }}>
+          <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
+            {i18n._('Generating explanation...')}
+          </Typography>
+          <LoadingShapes sizes={['30px']} />
+        </Stack>
+      )}
 
-      {result.whyExplanation && <Markdown>{result.whyExplanation}</Markdown>}
+      {explainError && (
+        <Typography variant="body2" sx={{ color: '#ff8a80' }} data-testid="quiz-explain-error">
+          {explainError}
+        </Typography>
+      )}
+
+      {result.whyExplanation && (
+        <Stack sx={{ gap: '8px' }} data-testid="quiz-why-explanation">
+          <Typography variant="body2" sx={{ color: '#EBEBF599', fontWeight: 600 }}>
+            {i18n._('Why')}
+          </Typography>
+          <Markdown variant="conversation">{result.whyExplanation}</Markdown>
+        </Stack>
+      )}
 
       <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
         <Button
