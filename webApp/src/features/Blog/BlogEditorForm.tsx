@@ -214,11 +214,21 @@ export const BlogEditorForm = ({
         <Typography variant="caption" sx={{ opacity: 0.7 }}>
           Content ({activeLang})
         </Typography>
-        <RichTextEditor value={contentValue} onChange={onContentChange} />
+        <RichTextEditor value={contentValue} onChange={onContentChange} reloadKey={activeLang} />
       </Stack>
 
       {/* Actions */}
-      <Stack sx={{ flexDirection: 'row', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          position: 'sticky',
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.9)',
+          flexWrap: 'wrap',
+          gap: '10px',
+          padding: '10px 0',
+        }}
+      >
         <Button
           variant="contained"
           onClick={onSave}
