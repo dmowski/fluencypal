@@ -129,7 +129,19 @@ export const BlogAdmin = () => {
               >
                 <BookOpen size="18px" />
                 <Stack>
-                  <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                  <Typography
+                    variant="body1"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedBlogId(blog.id);
+                    }}
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': {
+                        textDecoration: 'underline',
+                      },
+                    }}
+                  >
                     {blog.titleEn || 'Untitled'}
                   </Typography>
                   <Typography variant="caption" sx={{ opacity: 0.6 }}>
