@@ -10,6 +10,8 @@ import {
   supportedLanguages,
 } from '@/features/Lang/lang';
 import { db } from '@/features/Firebase/firebaseDb';
+import { translateRequest } from '@/app/api/translate/translateRequest';
+import { NativeLangCode } from '@/libs/language/type';
 
 export const DRAFT_VERSION_ID = 'draft';
 
@@ -80,6 +82,8 @@ export interface UseBlogDraftResult {
   unpublishDraft: () => Promise<void>;
   handleTranslateToCurrentLang: (activeLang: SupportedLanguage) => Promise<void>;
   handleTranslateToAllLanguages: () => Promise<void>;
+  handleTranslateToCurrentLangWithGoogle: (activeLang: SupportedLanguage) => Promise<void>;
+  handleTranslateToAllLanguagesWithGoogle: () => Promise<void>;
 }
 
 export const useBlogDraft = (
@@ -260,6 +264,46 @@ export const useBlogDraft = (
     };
   };
 
+  const translateDraftToLangWithGoogle = async (
+    targetLang: SupportedLanguage,
+    sourceDraft: BlogVersionDoc,
+  ): Promise<LocalizedFields> => {
+    const enTitle = sourceDraft.title['en'];
+    const enSubTitle = sourceDraft.subTitle['en'];
+    const enContent = sourceDraft.content['en'];
+    const enKeywords = sourceDraft.keywords['en'];
+
+    const gtTranslate = (text: string): Promise<string> =>
+      translateRequest({
+        text,
+        sourceLanguage: 'en',
+        targetLanguage: targetLang as NativeLangCode,
+      }).then((r) => r.translatedText);
+
+    const [tTitle, tSubTitle, tContent, ...tKeywords] = await Promise.all([
+      enTitle ? gtTranslate(enTitle) : Promise.resolve(''),
+      enSubTitle ? gtTranslate(enSubTitle) : Promise.resolve(''),
+      enContent ? gtTranslate(enContent) : Promise.resolve(''),
+      ...enKeywords.map((kw) => gtTranslate(kw)),
+    ]);
+
+    return {
+      title: { ...sourceDraft.title, [targetLang]: tTitle } as Record<SupportedLanguage, string>,
+      subTitle: { ...sourceDraft.subTitle, [targetLang]: tSubTitle } as Record<
+        SupportedLanguage,
+        string
+      >,
+      content: { ...sourceDraft.content, [targetLang]: tContent } as Record<
+        SupportedLanguage,
+        string
+      >,
+      keywords: { ...sourceDraft.keywords, [targetLang]: tKeywords } as Record<
+        SupportedLanguage,
+        string[]
+      >,
+    };
+  };
+
   const handleTranslateToCurrentLang = async (activeLang: SupportedLanguage) => {
     if (activeLang === 'en') return;
     setIsTranslating(true);
@@ -285,6 +329,8 @@ export const useBlogDraft = (
           // Must use `updated` (not `localDraft`) so each pass keeps prior translations.
           const patch = await translateDraftToLang(lang, updated);
           updated = applyLocalizedPatch(updated, patch);
+          // Save after each language to avoid data loss if something fails mid-way.
+          await writeDraftToFirestore(updated);
         } catch (err) {
           console.error(`[useBlogDraft] translate to ${lang} failed:`, err);
           failedLangs.push(lang);
@@ -292,7 +338,58 @@ export const useBlogDraft = (
       }
 
       setLocalDraft(updated);
+      const metaPatch: Partial<BlogDocMeta> = { updatedAtIso: new Date().toISOString() };
+      const titleEn = updated.title.en.trim();
+      if (titleEn) metaPatch.titleEn = titleEn;
+      await onUpdate(metaPatch);
+
+      if (failedLangs.length > 0) {
+        throw new Error(
+          `Translation incomplete for: ${failedLangs.join(', ')}. Other languages were saved.`,
+        );
+      }
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  const handleTranslateToCurrentLangWithGoogle = async (activeLang: SupportedLanguage) => {
+    if (activeLang === 'en') return;
+    setIsTranslating(true);
+    try {
+      const patch = await translateDraftToLangWithGoogle(activeLang, localDraft);
+      const updated: BlogVersionDoc = { ...localDraft, ...patch };
+      setLocalDraft(updated);
       await saveDraft(updated);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  const handleTranslateToAllLanguagesWithGoogle = async () => {
+    setIsTranslating(true);
+    const failedLangs: SupportedLanguage[] = [];
+    try {
+      let updated: BlogVersionDoc = { ...localDraft };
+      const targetLangs = supportedLanguages.filter((lang) => lang !== 'en');
+
+      for (const lang of targetLangs) {
+        try {
+          const patch = await translateDraftToLangWithGoogle(lang, updated);
+          updated = applyLocalizedPatch(updated, patch);
+          // Save after each language to avoid data loss if something fails mid-way.
+          await writeDraftToFirestore(updated);
+        } catch (err) {
+          console.error(`[useBlogDraft] Google translate to ${lang} failed:`, err);
+          failedLangs.push(lang);
+        }
+      }
+
+      setLocalDraft(updated);
+      const metaPatch: Partial<BlogDocMeta> = { updatedAtIso: new Date().toISOString() };
+      const titleEn = updated.title.en.trim();
+      if (titleEn) metaPatch.titleEn = titleEn;
+      await onUpdate(metaPatch);
 
       if (failedLangs.length > 0) {
         throw new Error(
@@ -318,5 +415,7 @@ export const useBlogDraft = (
     unpublishDraft,
     handleTranslateToCurrentLang,
     handleTranslateToAllLanguages,
+    handleTranslateToCurrentLangWithGoogle,
+    handleTranslateToAllLanguagesWithGoogle,
   };
 };

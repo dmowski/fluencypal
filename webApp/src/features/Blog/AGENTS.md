@@ -88,7 +88,13 @@ AI translation uses `useTextAi` from `@/features/Ai/useTextAi` (blog drafts in `
 category titles in `useBlogCategories` via `translateCategoryTitle.ts`).
 EN content is always the source of truth. Translate buttons in `BlogEditorForm`:
 
-- **Translate to this language** — translates only the currently selected language.
-- **Translate to all languages** — iterates over all `supportedLanguages` sequentially, each pass
-  translating from the accumulated `updated` draft (`applyLocalizedPatch`). Using the initial
-  English-only draft for every pass would overwrite prior languages (only the last would remain).
+- **Translate to this language (OpenAI)** — translates only the currently selected language using GPT-4o.
+- **Translate to this language (Google)** — translates only the currently selected language using Google Cloud Translation.
+- **Translate all (OpenAI)** — iterates over all `supportedLanguages` sequentially using GPT-4o.
+- **Translate all (Google)** — iterates over all `supportedLanguages` sequentially using Google Cloud Translation.
+
+Both "translate all" variants save the draft to Firestore **after each language** (via
+`writeDraftToFirestore`) to prevent data loss if an error or interruption occurs mid-run.
+The final meta update (`onUpdate`) is called once after all languages complete.
+Using the accumulated `updated` draft (not the original `localDraft`) for each pass ensures
+prior translations are preserved (same as `applyLocalizedPatch` pattern).

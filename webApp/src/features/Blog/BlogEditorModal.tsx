@@ -40,6 +40,8 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
     unpublishDraft,
     handleTranslateToCurrentLang,
     handleTranslateToAllLanguages,
+    handleTranslateToCurrentLangWithGoogle,
+    handleTranslateToAllLanguagesWithGoogle,
   } = useBlogDraft(blog, onUpdate);
 
   const {
@@ -148,6 +150,10 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
                 isUnpublishing={isUnpublishing}
                 onTranslateToCurrent={() => handleTranslateToCurrentLang(activeLang)}
                 onTranslateToAll={handleTranslateToAllLanguages}
+                onTranslateToCurrentWithGoogle={() =>
+                  handleTranslateToCurrentLangWithGoogle(activeLang)
+                }
+                onTranslateToAllWithGoogle={handleTranslateToAllLanguagesWithGoogle}
                 onRenameId={onRenameId}
               />
             )}

@@ -30,6 +30,8 @@ interface BlogEditorFormProps {
   isUnpublishing: boolean;
   onTranslateToCurrent: () => void;
   onTranslateToAll: () => void;
+  onTranslateToCurrentWithGoogle: () => void;
+  onTranslateToAllWithGoogle: () => void;
   onRenameId: (newId: string) => Promise<void>;
 }
 
@@ -55,6 +57,8 @@ export const BlogEditorForm = ({
   isUnpublishing,
   onTranslateToCurrent,
   onTranslateToAll,
+  onTranslateToCurrentWithGoogle,
+  onTranslateToAllWithGoogle,
   onRenameId,
 }: BlogEditorFormProps) => {
   const titleValue = draft.title[activeLang];
@@ -255,7 +259,20 @@ export const BlogEditorForm = ({
           >
             {isTranslating
               ? 'Translating...'
-              : 'Translate to ' + fullEnglishLanguageName[activeLang]}
+              : 'Translate to ' + fullEnglishLanguageName[activeLang] + ' (OpenAI)'}
+          </Button>
+        )}
+
+        {activeLang !== 'en' && (
+          <Button
+            variant="outlined"
+            onClick={onTranslateToCurrentWithGoogle}
+            disabled={isBusy}
+            startIcon={isTranslating ? <Loader size="14px" /> : <Globe size="14px" />}
+          >
+            {isTranslating
+              ? 'Translating...'
+              : 'Translate to ' + fullEnglishLanguageName[activeLang] + ' (Google)'}
           </Button>
         )}
 
@@ -265,7 +282,16 @@ export const BlogEditorForm = ({
           disabled={isBusy}
           startIcon={isTranslating ? <Loader size="14px" /> : <Globe size="14px" />}
         >
-          {isTranslating ? 'Translating...' : 'Translate to all languages'}
+          {isTranslating ? 'Translating...' : 'Translate all (OpenAI)'}
+        </Button>
+
+        <Button
+          variant="outlined"
+          onClick={onTranslateToAllWithGoogle}
+          disabled={isBusy}
+          startIcon={isTranslating ? <Loader size="14px" /> : <Globe size="14px" />}
+        >
+          {isTranslating ? 'Translating...' : 'Translate all (Google)'}
         </Button>
       </Stack>
     </Stack>

@@ -2,8 +2,12 @@
 
 ## Blogs:
 
-When translation is done. Update database to avoid data loss in case when something fails.
+When translation is done for one language, please update data base.
+Update database to avoid data loss in case when something fails in the middle
 webApp/src/features/Blog
+
+For translation use Google Translate or Open ai.
+Create buttons with "Translate with Google Translate" and "Translate with Open AI"
 
 ## Exams/quiz
 
