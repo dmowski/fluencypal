@@ -18,6 +18,7 @@ import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
 import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
 import { HeaderStatic } from '../Header/HeaderStatic';
 import Image from 'next/image';
+import dayjs from 'dayjs';
 
 interface BlogOnePageProps {
   id?: string;
@@ -254,7 +255,7 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
                   }}
                 >
                   <Typography>
-                    {i18n._('Published on')}: {item.publishedAtIso}
+                    {i18n._('Published on')}: {dayjs(item.publishedAtIso).format('MMMM D, YYYY')}
                   </Typography>
                 </Stack>
               </Stack>
