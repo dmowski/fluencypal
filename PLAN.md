@@ -1,5 +1,10 @@
 # Live document with short/long term ideas
 
+## Blogs:
+
+When translation is done. Update database to avoid data loss in case when something fails.
+webApp/src/features/Blog
+
 ## Exams/quiz
 
 - Make exam close to government
