@@ -5,7 +5,6 @@ import { useLingui } from '@lingui/react';
 import {
   MDXEditor,
   BoldItalicUnderlineToggles,
-  BlockTypeSelect,
   InsertImage,
   ListsToggle,
   headingsPlugin,
@@ -22,9 +21,11 @@ import { useAuth } from '../Auth/useAuth';
 interface RichTextEditorProps {
   value: string;
   onChange: (value: string) => void;
+  /** When this changes, the editor remounts with the current `value`. */
+  reloadKey?: string | number;
 }
 
-export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
+export function RichTextEditor({ value, onChange, reloadKey }: RichTextEditorProps) {
   const { i18n } = useLingui();
   const auth = useAuth();
 
@@ -71,6 +72,7 @@ export function RichTextEditor({ value, onChange }: RichTextEditorProps) {
       }}
     >
       <MDXEditor
+        key={reloadKey}
         markdown={value}
         onChange={(nextValue) => onChange(nextValue || '')}
         plugins={[
