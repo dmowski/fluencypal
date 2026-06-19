@@ -308,12 +308,6 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
             )}
           </Stack>
         </Stack>
-
-        <CtaBlock
-          title={i18n._(`Start a Conversation with AI`)}
-          actionButtonTitle={i18n._(`Try for free`)}
-          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
-        />
       </div>
       <Footer lang={lang} />
     </>
