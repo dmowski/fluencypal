@@ -129,7 +129,7 @@ export const generateMetadataInfo = ({
     }
 
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
     );
     keywords = [
       i18n._(`AI language tutor pricing`),

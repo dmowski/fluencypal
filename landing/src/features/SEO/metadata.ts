@@ -145,7 +145,7 @@ export const generateMetadataInfo = async ({
     }
 
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence through interactive exercises and real-life scenarios.`,
     );
     keywords = [
       i18n._(`AI language tutor pricing`),
@@ -190,7 +190,7 @@ export const generateMetadataInfo = async ({
   if (currentPath === 'privacy') {
     title = i18n._(`Privacy Policy`) + ' | ' + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
     );
     keywords = [];
   }
@@ -198,7 +198,7 @@ export const generateMetadataInfo = async ({
   if (currentPath === 'cookies') {
     title = i18n._(`Cookies Policy`) + ' | ' + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
     );
     keywords = [];
   }
@@ -206,7 +206,7 @@ export const generateMetadataInfo = async ({
   if (currentPath === 'terms') {
     title = i18n._(`Terms of Use`) + ' | ' + APP_NAME;
     description = i18n._(
-      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`,
+      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
     );
     keywords = [];
   }
