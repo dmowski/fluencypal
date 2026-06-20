@@ -17,6 +17,7 @@ import { WebCamButtons, WebcamSection } from '../Case/Landing/components/WebcamS
 import { HowItWorks } from './HowItWorks';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { WelcomeScreen2 } from './WelcomeScreen2';
+import { WelcomeScreenMinimal } from './WelcomeScreenMinimal';
 
 interface FAQItem {
   question: string;
@@ -197,6 +198,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       />
       <main style={{ width: '100%', margin: 0 }}>
         <Stack sx={{ alignItems: 'center' }}>
+          {/*<WelcomeScreenMinimal />*/}
           <WelcomeScreen2
             label={i18n._(`Conversation with AI`)}
             title={i18n._(`Speaking practice`)}
