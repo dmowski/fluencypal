@@ -34,7 +34,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   openMyPracticeLinkTitle,
   buttonSubtitle,
 }) => {
-  //const bgUrl = "https://cdn.midjourney.com/7813fa3b-6e7f-42c6-b04d-ee77a5058aad/0_0.png";
+  const showBgImage = true;
   return (
     <Stack
       sx={{
@@ -42,107 +42,116 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
+        minHeight: '100vh',
         padding: '30px 0 20px 0',
         '@media (max-width: 1100px)': {
           paddingBottom: '10px',
         },
       }}
     >
-      <Stack
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: '0px',
-          width: '100%',
-          height: '100%',
-          background: `radial-gradient(circle at top, rgba(9,105,218,0.1), transparent 40%), linear-gradient(180deg, #0d1117 0%, #161b22 100%)`,
-          zIndex: 0,
-        }}
-      />
-      <Stack
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          width: '100vw',
-          left: 0,
-          height: '170px',
-          background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
-          zIndex: 1,
-          opacity: 1,
-          '@media (max-width: 600px)': {
-            height: '100px',
-          },
-        }}
-      />
+      {!showBgImage && (
+        <>
+          <Stack
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: '0px',
+              width: '100%',
+              height: '100%',
+              background: `radial-gradient(circle at top, rgba(9,105,218,0.1), transparent 40%), linear-gradient(180deg, #0d1117 0%, #161b22 100%)`,
+              zIndex: 0,
+            }}
+          />
+          <Stack
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              width: '100vw',
+              left: 0,
+              height: '170px',
+              background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
+              zIndex: 1,
+              opacity: 1,
+              '@media (max-width: 600px)': {
+                height: '100px',
+              },
+            }}
+          />
+        </>
+      )}
 
-      {/* <Stack
-        sx={{
-          position: 'absolute',
-          backgroundColor: `#10131a`,
-          top: 0,
-          left: '0px',
-          margin: '0 auto',
-          width: '100vw',
-          overflow: 'hidden',
-          height: '100%',
-          zIndex: -2,
-          backgroundSize: 'cover',
-          opacity: 0.5,
-          '@media (max-width: 600px)': {
-            display: 'none',
-            background: 'none',
-          },
-        }}
-      >
-        <Image
-          src={'/landing/preview/space2.webp'}
-          alt={'Space background'}
-          fill
-          fetchPriority="high"
-          loading="eager"
-          sizes="100vw"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-      </Stack>
+      {showBgImage && (
+        <>
+          <Stack
+            sx={{
+              position: 'absolute',
+              backgroundColor: `#10131a`,
+              top: 0,
+              left: '0px',
+              margin: '0 auto',
+              width: '100vw',
+              overflow: 'hidden',
+              height: '100%',
+              zIndex: -2,
+              backgroundSize: 'cover',
+              opacity: 0.5,
+              '@media (max-width: 600px)': {
+                display: 'none',
+                background: 'none',
+              },
+            }}
+          >
+            <Image
+              src={'/landing/preview/space2.webp'}
+              alt={'Space background'}
+              fill
+              fetchPriority="high"
+              loading="eager"
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            />
+          </Stack>
 
-      <Stack
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: '0px',
-          margin: '0 auto',
-          width: '100vw',
-          overflow: 'hidden',
-          height: '100%',
-          zIndex: -2,
-          backgroundSize: 'cover',
-          opacity: 0.5,
-          display: 'none',
-          '@media (max-width: 600px)': {
-            display: 'flex',
-          },
-        }}
-      >
-        <Image
-          src={'/landing/preview/space2Mobile.jpg'}
-          alt={'Page background'}
-          fetchPriority="high"
-          loading="eager"
-          width={600}
-          height={1072}
-          quality={90}
-          style={{
-            width: '100%',
-            aspectRatio: '600 / 1072',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-      </Stack>*/}
+          <Stack
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: '0px',
+              margin: '0 auto',
+              width: '100vw',
+              overflow: 'hidden',
+              height: '100%',
+              zIndex: -2,
+              backgroundSize: 'cover',
+              opacity: 0.5,
+              display: 'none',
+              '@media (max-width: 600px)': {
+                display: 'flex',
+              },
+            }}
+          >
+            <Image
+              src={'/landing/preview/space2Mobile.jpg'}
+              alt={'Page background'}
+              fetchPriority="high"
+              loading="eager"
+              width={600}
+              height={1072}
+              quality={90}
+              style={{
+                width: '100%',
+                aspectRatio: '600 / 1072',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            />
+          </Stack>
+        </>
+      )}
 
       <Stack
         sx={{

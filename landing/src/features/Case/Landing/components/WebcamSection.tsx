@@ -81,12 +81,41 @@ export const WebcamSection = (props: WebcamSectionProps) => {
         width: '100%',
         backgroundColor: colors.sectionBgColor,
         color: colors.textColor,
+        position: 'relative',
 
         '@media (max-width: 600px)': {
           padding: '90px 0 50px 0',
         },
       }}
     >
+      <>
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: '0px',
+            width: '100%',
+            height: '100%',
+            background: `radial-gradient(circle at top, rgba(9,105,218,0.1), transparent 40%), linear-gradient(180deg, #0d1117 0%, #161b22 100%)`,
+            zIndex: 0,
+          }}
+        />
+        <Stack
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            width: '100vw',
+            left: 0,
+            height: '170px',
+            background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
+            zIndex: 1,
+            opacity: 1,
+            '@media (max-width: 600px)': {
+              height: '100px',
+            },
+          }}
+        />
+      </>
       <Stack
         sx={{
           maxWidth: '1300px',
@@ -94,6 +123,8 @@ export const WebcamSection = (props: WebcamSectionProps) => {
           gap: '24px',
           padding: '0 10px',
           alignItems: 'center',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <Stack
