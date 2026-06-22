@@ -150,12 +150,13 @@ export const TextPopover = ({
           ref: paperRef,
           sx: {
             pointerEvents: 'auto',
+            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.2), 0 0 3px rgba(0, 0, 0, 0.07)',
           },
         },
       }}
     >
-      <Stack sx={{ gap: '5px', padding: '6px', minWidth: '150px' }}>
-        <Stack direction="row" sx={{ gap: '4px', alignItems: 'center' }}>
+      <Stack sx={{ gap: '3px', padding: '6px', minWidth: '150px' }}>
+        <Stack direction="row" sx={{ gap: '3px', alignItems: 'center' }}>
           {HIGHLIGHT_COLORS.map((color) => {
             const shortcut = COLOR_SHORTCUTS[color];
             return (
@@ -166,22 +167,27 @@ export const TextPopover = ({
                 data-testid={`reader-highlight-color-${shortcut}`}
                 onClick={() => onColorSelect(color)}
                 sx={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: '3px',
-                  border: activeColor === color ? '5px solid #333' : '1px solid #C7C7C7',
+                  width: 30,
+                  height: 30,
+                  borderRadius: '0px',
+                  border:
+                    activeColor === color ? '2px solid #333' : '1px solid rgba(0, 0, 0, 0.02)',
                   backgroundColor: color,
                   cursor: 'pointer',
-                  outline: activeColor === color ? '2px solid #fff' : 'none',
+                  //outline: activeColor === color ? '2px solid #fff' : 'none',
                   outlineOffset: '-3px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   position: 'relative',
-                  fontSize: '10px',
-                  fontWeight: 'bold',
+                  fontSize: '9px',
+                  fontWeight: 700,
                   color: '#333',
                   textShadow: '0 0 1px rgba(255, 255, 255, 0.8)',
+                  ':hover': {
+                    border:
+                      activeColor === color ? '2px solid #333' : '1px solid rgba(0, 0, 0, 0.2)',
+                  },
                 }}
               >
                 {shortcut}
@@ -196,8 +202,9 @@ export const TextPopover = ({
             onClick={handlePlayClick}
             sx={{
               marginLeft: 'auto',
-              padding: '2px',
+              padding: '5px',
               color: '#333',
+              borderRadius: '0px',
             }}
           >
             <PlayArrowIcon fontSize="small" />
