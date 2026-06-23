@@ -943,7 +943,7 @@ msgstr "ความมั่นใจในการประเมิน"
 msgid "Assistant"
 msgstr "ผู้ช่วย"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:69
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:75
 #. js-lingui-explicit-id
 msgid "At least {minWords} words required"
 msgstr "ต้องการคำอย่างน้อย {minWords} คำ"
@@ -2209,7 +2209,7 @@ msgstr "Core Web Vitals"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:94
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "ถูกต้อง"
@@ -3762,6 +3762,11 @@ msgstr "อธิบายการแลกเปลี่ยนประโย
 msgid "Explain your steps (reproduce, isolate, fix, verify)"
 msgstr "อธิบายขั้นตอนของคุณ (ทำซ้ำ, แยกปัญหา, แก้ไข, ตรวจสอบ)"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
+#. js-lingui-explicit-id
+msgid "Explanation"
+msgstr "คำอธิบาย"
+
 #: src/features/Landing/LandingPage.tsx:276
 #. js-lingui-explicit-id
 msgid "Explore All Features"
@@ -4577,7 +4582,7 @@ msgstr "ผู้ช่วยทั่วไป"
 msgid "Generate more unique lessons"
 msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อนมากขึ้น"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:40
+#: src/features/Quiz/components/QuestionFeedback.tsx:43
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "กำลังสร้างคำอธิบาย..."
@@ -5795,7 +5800,7 @@ msgstr ""
 "คุณจะได้รับข้อเสนอแนะเพื่อช่วยให้คุณปรับปรุงคำตอบและพัฒนาทักษะการสัมภาษณ์ของ"
 "คุณ"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:93
+#: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "ไม่ถูกต้อง"
@@ -6706,7 +6711,7 @@ msgstr "เรียนรู้คำศัพท์ TOEFL ระดับค�
 msgid "Master technical leadership questions"
 msgstr "ฝึกฝนคำถามเกี่ยวกับความเป็นผู้นำทางเทคนิค"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:71
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:77
 #. js-lingui-explicit-id
 msgid "Maximum {maxWords} words"
 msgstr "จำนวนคำไม่เกิน {maxWords} คำ"
@@ -7015,7 +7020,7 @@ msgstr "การสนทนาข่าว"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:68
+#: src/features/Quiz/components/QuestionFeedback.tsx:72
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7705,7 +7710,7 @@ msgstr "การยินยอมของผู้ปกครอง"
 msgid "Parental consent submitted!"
 msgstr "การยินยอมจากผู้ปกครองได้ถูกส่งแล้ว!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:92
+#: src/features/Quiz/components/QuestionFeedback.tsx:96
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "ถูกต้องบางส่วน"
@@ -11876,7 +11881,7 @@ msgid "Turn type"
 msgstr "ประเภทการเลี้ยว"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:372
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:52
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:58
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "พิมพ์คำตอบของคุณที่นี่..."
@@ -12577,8 +12582,7 @@ msgstr ""
 "\n"
 "ใครคือผู้รับ\n"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:55
-#: src/features/Quiz/components/QuestionFeedback.tsx:73
+#: src/features/Quiz/components/QuestionFeedback.tsx:77
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "ทำไม"
@@ -12764,7 +12768,7 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "ตรวจสอบความเป็นธรรมในที่ทำงาน"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:38
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:40
 #. js-lingui-explicit-id
 msgid "Write between {minWords} and {maxWords} words."
 msgstr "เขียนระหว่าง {minWords} และ {maxWords} คำ"
@@ -13285,6 +13289,7 @@ msgid "Your AI teacher voice:"
 msgstr "เสียงครู AI ของคุณ:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
+#: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
@@ -13468,7 +13473,7 @@ msgid "{count} downloads"
 msgstr "{count} ดาวน์โหลด"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:67
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} คำ"

@@ -945,7 +945,7 @@ msgstr "Đánh giá sự tự tin"
 msgid "Assistant"
 msgstr "Trợ lý"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:69
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:75
 #. js-lingui-explicit-id
 msgid "At least {minWords} words required"
 msgstr "Ít nhất {minWords} từ được yêu cầu"
@@ -2216,7 +2216,7 @@ msgstr "Các chỉ số Web cốt lõi"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:94
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "Chính xác"
@@ -3787,6 +3787,11 @@ msgstr "Giải thích sự đánh đổi như một người cao cấp"
 msgid "Explain your steps (reproduce, isolate, fix, verify)"
 msgstr "Giải thích các bước của bạn (tái tạo, cách ly, sửa chữa, xác minh)"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
+#. js-lingui-explicit-id
+msgid "Explanation"
+msgstr "Giải thích"
+
 #: src/features/Landing/LandingPage.tsx:276
 #. js-lingui-explicit-id
 msgid "Explore All Features"
@@ -4603,7 +4608,7 @@ msgstr "Trợ Lý Chung"
 msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:40
+#: src/features/Quiz/components/QuestionFeedback.tsx:43
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "Đang tạo lời giải thích..."
@@ -5825,7 +5830,7 @@ msgstr ""
 "phát triển frontend cao cấp. Sau khi trả lời, bạn sẽ nhận được phản hồi để "
 "giúp bạn chỉnh sửa câu trả lời của mình và cải thiện kỹ năng phỏng vấn."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:93
+#: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "Không chính xác"
@@ -6732,7 +6737,7 @@ msgstr "Nắm vững từ vựng TOEFL xuất hiện thường xuyên."
 msgid "Master technical leadership questions"
 msgstr "Thông thạo các câu hỏi về lãnh đạo kỹ thuật"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:71
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:77
 #. js-lingui-explicit-id
 msgid "Maximum {maxWords} words"
 msgstr "Tối đa {maxWords} từ"
@@ -7045,7 +7050,7 @@ msgstr "Thảo luận Tin tức"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:68
+#: src/features/Quiz/components/QuestionFeedback.tsx:72
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7747,7 +7752,7 @@ msgstr "Sự Đồng Ý Của Phụ Huynh"
 msgid "Parental consent submitted!"
 msgstr "Sự đồng ý của phụ huynh đã được gửi!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:92
+#: src/features/Quiz/components/QuestionFeedback.tsx:96
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "Một phần đúng"
@@ -11837,7 +11842,7 @@ msgid "Turn type"
 msgstr "Loại lượt"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:372
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:52
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:58
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "Nhập câu trả lời của bạn vào đây..."
@@ -12547,8 +12552,7 @@ msgstr "AI nên là ai?"
 msgid "Who this is for"
 msgstr "Ai phù hợp sử dụng"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:55
-#: src/features/Quiz/components/QuestionFeedback.tsx:73
+#: src/features/Quiz/components/QuestionFeedback.tsx:77
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "Tại sao"
@@ -12730,7 +12734,7 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "Kiểm Tra Công Bằng Nơi Làm Việc"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:38
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:40
 #. js-lingui-explicit-id
 msgid "Write between {minWords} and {maxWords} words."
 msgstr "Viết từ {minWords} đến {maxWords} từ."
@@ -13258,6 +13262,7 @@ msgid "Your AI teacher voice:"
 msgstr "Giọng nói giáo viên AI của bạn:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
+#: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
@@ -13446,7 +13451,7 @@ msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:67
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{count} từ"

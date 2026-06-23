@@ -938,7 +938,7 @@ msgstr "ثقة التقييم"
 msgid "Assistant"
 msgstr "مساعد"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:69
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:75
 #. js-lingui-explicit-id
 msgid "At least {minWords} words required"
 msgstr "لا بد من {minWords} كلمة على الأقل"
@@ -2196,7 +2196,7 @@ msgstr "الأساسيات الحيوية للويب"
 
 #: src/features/Alias/components/GameControls.tsx:26
 #: src/features/Alias/components/TurnSummary.tsx:137
-#: src/features/Quiz/components/QuestionFeedback.tsx:90
+#: src/features/Quiz/components/QuestionFeedback.tsx:94
 #. js-lingui-explicit-id
 msgid "Correct"
 msgstr "تصحيح"
@@ -3713,6 +3713,11 @@ msgstr "اشرح المقايضات مثل شخص ذو خبرة"
 msgid "Explain your steps (reproduce, isolate, fix, verify)"
 msgstr "اشرح خطواتك (إعادة الإنتاج، العزل، الإصلاح، التحقق)"
 
+#: src/features/Quiz/components/QuestionFeedback.tsx:58
+#. js-lingui-explicit-id
+msgid "Explanation"
+msgstr "توضيح"
+
 #: src/features/Landing/LandingPage.tsx:276
 #. js-lingui-explicit-id
 msgid "Explore All Features"
@@ -4519,7 +4524,7 @@ msgstr "مساعد عام"
 msgid "Generate more unique lessons"
 msgstr "قم بإنشاء دروس فريدة أكثر"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:40
+#: src/features/Quiz/components/QuestionFeedback.tsx:43
 #. js-lingui-explicit-id
 msgid "Generating explanation..."
 msgstr "جاري توليد الشرح..."
@@ -5703,7 +5708,7 @@ msgstr ""
 "الواجهة الأمامية. بعد الرد، ستحصل على ملاحظات لمساعدتك على تحسين إجاباتك "
 "وتطوير مهاراتك في المقابلات."
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:93
+#: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
 msgstr "غير صحيح"
@@ -6610,7 +6615,7 @@ msgstr "إتقان المفردات الشائعة لامتحان TOEFL."
 msgid "Master technical leadership questions"
 msgstr "أتقن أسئلة القيادة التقنية"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:71
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:77
 #. js-lingui-explicit-id
 msgid "Maximum {maxWords} words"
 msgstr "الحد الأقصى {maxWords} من الكلمات"
@@ -6927,7 +6932,7 @@ msgstr "مناقشة الأخبار"
 #: src/features/Goal/Quiz/QuizPage2.tsx:372
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:134
 #: src/features/Landing/LandingPage.tsx:267
-#: src/features/Quiz/components/QuestionFeedback.tsx:68
+#: src/features/Quiz/components/QuestionFeedback.tsx:72
 #: src/features/Sentence/StoriesModal.tsx:664
 #: src/features/Survey/InfoStep.tsx:276
 #: src/features/Survey/InterviewInfoStep.tsx:107
@@ -7627,7 +7632,7 @@ msgstr "موافقة الوالدين"
 msgid "Parental consent submitted!"
 msgstr "تم إرسال موافقة الوالدين!"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:92
+#: src/features/Quiz/components/QuestionFeedback.tsx:96
 #. js-lingui-explicit-id
 msgid "Partially correct"
 msgstr "صحيح جزئيًا"
@@ -11642,7 +11647,7 @@ msgid "Turn type"
 msgstr "نوع التدوير"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:372
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:52
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:58
 #. js-lingui-explicit-id
 msgid "Type your answer here..."
 msgstr "اكتب إجابتك هنا..."
@@ -12340,8 +12345,7 @@ msgstr "من يجب أن يكون الذكاء الاصطناعي؟"
 msgid "Who this is for"
 msgstr "لمن هذا موجه"
 
-#: src/features/Quiz/components/QuestionFeedback.tsx:55
-#: src/features/Quiz/components/QuestionFeedback.tsx:73
+#: src/features/Quiz/components/QuestionFeedback.tsx:77
 #. js-lingui-explicit-id
 msgid "Why"
 msgstr "لماذا"
@@ -12520,7 +12524,7 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "تحقق من عدالة مكان العمل"
 
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:38
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:40
 #. js-lingui-explicit-id
 msgid "Write between {minWords} and {maxWords} words."
 msgstr "اكتب بين {minWords} و{maxWords} كلمة."
@@ -13030,6 +13034,7 @@ msgid "Your AI teacher voice:"
 msgstr "صوت معلم الذكاء الاصطناعي الخاص بك:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
+#: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
 msgid "Your answer"
@@ -13211,7 +13216,7 @@ msgid "{count} downloads"
 msgstr "{count} تحميلات"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
-#: src/features/Quiz/components/activities/WritingTextActivity.tsx:67
+#: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
 msgid "{count} words"
 msgstr "{عدد_الكلمات} كلمات"
