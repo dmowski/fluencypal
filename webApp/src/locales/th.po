@@ -1628,14 +1628,10 @@ msgstr "เช็คอิน"
 msgid "Chinese Learning Plan"
 msgstr "แผนการเรียนภาษาจีน"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
-msgid ""
-"Choose a variant or pick a random one. Each variant has two writing tasks "
-"in the official B1 format."
-msgstr ""
-"เลือกตัวเลือกหรือสุ่มเลือกตัวเลือกหนึ่ง แต่ละตัวเลือกมีสองงานเขียนในรูปแบบ "
-"B1 อย่างเป็นทางการ"
+msgid "Choose a variant or pick a random one. Each variant has {taskSummary}."
+msgstr "เลือกตัวเลือกหรือสุ่มเลือกหนึ่งรายการ แต่ละตัวเลือกมี {taskSummary}"
 
 #: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
@@ -2261,8 +2257,8 @@ msgstr "ไม่พบหน้าที่ต้องการ"
 msgid "Could not load article"
 msgstr "ไม่สามารถโหลดบทความได้"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:60
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "ไม่สามารถเริ่มการสอบได้ กรุณาลองอีกครั้ง"
@@ -3554,7 +3550,7 @@ msgstr "เรียงความ"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:45
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
@@ -3668,7 +3664,7 @@ msgstr "การสอบเสร็จสิ้น"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "ตัวอย่าง: ฉันกำลังเตรียมตัวสำหรับการเดินทางธุรกิจไปยังเบอร์ลิน"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "การสอบ"
@@ -8202,7 +8198,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "ฝึกฝนทุกวัน"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "การสอบฝึกหัด"
@@ -8888,7 +8884,7 @@ msgstr ""
 msgid "Quiz not found. Open it from the news article."
 msgstr "ไม่พบแบบทดสอบ เปิดจากบทความข่าว"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:59
 #. js-lingui-explicit-id
 msgid "Random variant"
 msgstr "ตัวแปรสุ่ม"
@@ -10231,7 +10227,7 @@ msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10397,9 +10393,9 @@ msgstr "เริ่ม | 5 นาที"
 msgid "Starting webcam... "
 msgstr "กำลังเริ่มกล้องเว็บแคม... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10607,7 +10603,7 @@ msgstr ""
 "มีความรู้ด้าน React และ TypeScript อย่างดี "
 "มีช่องว่างเล็กน้อยในด้านการสื่อสารและการตอบคำถามเกี่ยวกับความเป็นผู้นำ"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10990,7 +10986,7 @@ msgid ""
 "the leaderboard."
 msgstr "ทดสอบความรู้ของคุณ มีส่วนร่วมในความท้าทาย และแข่งขันกับผู้อื่นในกระดานผู้นำ"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:125
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "ทดสอบระดับของคุณด้วยข้อสอบเต็มรูปแบบ"
@@ -13512,6 +13508,15 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Choose a variant or pick a random one. Each variant has two writing tasks "
+#~ "in the official B1 format."
+#~ msgstr ""
+#~ "เลือกตัวเลือกหรือสุ่มเลือกตัวเลือกหนึ่ง แต่ละตัวเลือกมีสองงานเขียนในรูปแบบ "
+#~ "B1 อย่างเป็นทางการ"
 
 #: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id

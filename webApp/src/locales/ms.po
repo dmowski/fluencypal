@@ -1651,14 +1651,12 @@ msgstr "Daftar Masuk"
 msgid "Chinese Learning Plan"
 msgstr "Rancangan Pembelajaran Bahasa Cina"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
-msgid ""
-"Choose a variant or pick a random one. Each variant has two writing tasks "
-"in the official B1 format."
+msgid "Choose a variant or pick a random one. Each variant has {taskSummary}."
 msgstr ""
-"Pilih satu varian atau pilih satu secara rawak. Setiap varian mempunyai dua "
-"tugasan penulisan dalam format rasmi B1."
+"Pilih satu varian atau pilih secara rawak. Setiap varian mempunyai "
+"{taskSummary}."
 
 #: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
@@ -2290,8 +2288,8 @@ msgstr "Tidak dapat mencari halaman"
 msgid "Could not load article"
 msgstr "Tidak dapat memuat artikel"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:60
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Tidak dapat memulakan peperiksaan. Sila cuba lagi."
@@ -3595,7 +3593,7 @@ msgstr "Esei"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Perkataan penting untuk membincangkan kesihatan mental dan psikologi."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:45
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
@@ -3711,7 +3709,7 @@ msgstr "Peperiksaan selesai"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Contoh: Saya sedang bersiap untuk perjalanan perniagaan ke Berlin"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Peperiksaan"
@@ -8346,7 +8344,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "Berlatih setiap hari"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "Ujian Praktis"
@@ -8927,7 +8925,7 @@ msgstr ""
 "plaintext\n"
 "Kuiz tidak dijumpai. Buka dari artikel berita.\n"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:59
 #. js-lingui-explicit-id
 msgid "Random variant"
 msgstr "Varian rawak"
@@ -10277,7 +10275,7 @@ msgstr "Bintang-bintang"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10447,9 +10445,9 @@ msgstr "Mula | 5 min"
 msgid "Starting webcam... "
 msgstr "Memulakan webcam... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10657,7 +10655,7 @@ msgstr ""
 "Pengetahuan yang kuat dalam React dan TypeScript. Terdapat sedikit jurang "
 "dalam komunikasi dan jawapan kepimpinan."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -11045,7 +11043,7 @@ msgstr ""
 "Uji pengetahuan anda, sertai cabaran, dan bersaing dengan orang lain di "
 "papan pendahulu."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:125
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Uji tahap anda dengan peperiksaan penuh"
@@ -13611,6 +13609,15 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Choose a variant or pick a random one. Each variant has two writing tasks "
+#~ "in the official B1 format."
+#~ msgstr ""
+#~ "Pilih satu varian atau pilih satu secara rawak. Setiap varian mempunyai dua "
+#~ "tugasan penulisan dalam format rasmi B1."
 
 #: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id

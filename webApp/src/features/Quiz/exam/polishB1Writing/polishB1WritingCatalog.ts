@@ -1,5 +1,6 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { QuizDocument } from '../../types';
+import { PolishB1VariantExamGroup } from '../polishB1VariantExamGroup';
 import {
   getPolishB1WritingExamById,
   getPolishB1WritingExamByVariantId,
@@ -18,15 +19,7 @@ export interface PolishB1WritingVariantOption {
   quiz: QuizDocument;
 }
 
-export interface PolishB1WritingExamGroup {
-  kind: 'writing-group';
-  id: typeof POLISH_B1_WRITING_EXAM_GROUP_ID;
-  title: string;
-  subtitle: string;
-  estimatedMinutes: number;
-  targetLanguageCode: SupportedLanguage;
-  variants: PolishB1WritingVariantOption[];
-}
+export type PolishB1WritingExamGroup = PolishB1VariantExamGroup & { kind: 'writing-group' };
 
 export const POLISH_B1_WRITING_EXAM_GROUP: PolishB1WritingExamGroup = {
   kind: 'writing-group',
@@ -35,6 +28,7 @@ export const POLISH_B1_WRITING_EXAM_GROUP: PolishB1WritingExamGroup = {
   subtitle: `${POLISH_B1_WRITING_VARIANTS.length} wariantów · 2 zadania · format państwowy`,
   estimatedMinutes: POLISH_B1_WRITING_ESTIMATED_MINUTES,
   targetLanguageCode: 'pl',
+  taskSummary: 'two writing tasks in the official B1 format',
   variants: POLISH_B1_WRITING_VARIANTS.map((variant) => ({
     variantId: variant.variantId,
     label: variant.label,

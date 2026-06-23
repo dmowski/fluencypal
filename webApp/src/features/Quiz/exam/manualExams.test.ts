@@ -53,7 +53,7 @@ describe('manual exams', () => {
     expect(EXAM_CATALOG).toHaveLength(7);
     expect(getManualExamsForTargetLanguage('en')).toHaveLength(2);
     expect(getManualExamsForTargetLanguage('pl')).toHaveLength(4);
-    expect(getExamCatalogForTargetLanguage('pl')).toHaveLength(6);
+    expect(getExamCatalogForTargetLanguage('pl')).toHaveLength(7);
     expect(getExamCatalogForTargetLanguage('de')).toHaveLength(0);
   });
 
@@ -68,6 +68,7 @@ describe('manual exams', () => {
       'Polish B1 exam',
       'Polish B2 exam',
       'Polish B1 — Pisanie',
+      'Polish B1 — Mówienie',
       'Państwowy egzamin B1 — wersja próbna 1',
     ]);
   });

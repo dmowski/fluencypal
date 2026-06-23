@@ -1564,12 +1564,10 @@ msgstr "签到"
 msgid "Chinese Learning Plan"
 msgstr "中文学习计划"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
-msgid ""
-"Choose a variant or pick a random one. Each variant has two writing tasks "
-"in the official B1 format."
-msgstr "选择一个变体或随机选择一个。每个变体都有两个官方B1格式的写作任务。"
+msgid "Choose a variant or pick a random one. Each variant has {taskSummary}."
+msgstr "选择一个变体或随机选择一个。每个变体都有{taskSummary}。"
 
 #: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
@@ -2178,8 +2176,8 @@ msgstr "无法找到页面"
 msgid "Could not load article"
 msgstr "无法加载文章"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:60
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "无法开始考试。请重试。"
@@ -3364,7 +3362,7 @@ msgstr "论文"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "讨论精神健康和心理学的必备词汇。"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:45
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
@@ -3477,7 +3475,7 @@ msgstr "考试完成"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "示例：我正在准备去柏林的商务旅行"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "考试"
@@ -7734,7 +7732,7 @@ msgstr "练习英语会话，使用FluencyPal，为您提供24/7的AI导师。�
 msgid "Practice daily"
 msgstr "每天练习"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "练习考试"
@@ -8269,7 +8267,7 @@ msgstr "测验完成"
 msgid "Quiz not found. Open it from the news article."
 msgstr "找不到测验。从新闻文章中打开它。"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:59
 #. js-lingui-explicit-id
 msgid "Random variant"
 msgstr "随机变体"
@@ -9569,7 +9567,7 @@ msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -9733,9 +9731,9 @@ msgstr "开始 | 5 分钟"
 msgid "Starting webcam... "
 msgstr "启动网络摄像头..."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -9912,7 +9910,7 @@ msgid ""
 "leadership answers."
 msgstr "对 React 和 TypeScript 有扎实的知识。沟通和领导方面的回答略有不足。"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10277,7 +10275,7 @@ msgid ""
 "the leaderboard."
 msgstr "测试你的知识，参加挑战，与排行榜上的其他人竞争。"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:125
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "参加完整考试测试你的水平"
@@ -12610,6 +12608,13 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Choose a variant or pick a random one. Each variant has two writing tasks "
+#~ "in the official B1 format."
+#~ msgstr "选择一个变体或随机选择一个。每个变体都有两个官方B1格式的写作任务。"
 
 #: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id

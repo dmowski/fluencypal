@@ -1,11 +1,11 @@
 'use client';
 
-import { Box, Button, Dialog, DialogContent, DialogTitle, Stack, Typography } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogTitle, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Shuffle } from 'lucide-react';
-import { PolishB1WritingExamGroup } from '@/features/Quiz/exam/polishB1Writing/polishB1WritingCatalog';
+import { PolishB1VariantExamGroup } from '@/features/Quiz/exam/polishB1VariantExamGroup';
 
-export const WritingVariantPicker = ({
+export const ExamVariantPicker = ({
   group,
   open,
   onClose,
@@ -13,7 +13,7 @@ export const WritingVariantPicker = ({
   onSelectRandom,
   startingVariantId,
 }: {
-  group: PolishB1WritingExamGroup;
+  group: PolishB1VariantExamGroup;
   open: boolean;
   onClose: () => void;
   onSelectVariant: (variantId: string) => void;
@@ -28,7 +28,7 @@ export const WritingVariantPicker = ({
       onClose={onClose}
       fullWidth
       maxWidth="md"
-      data-testid="writing-variant-picker"
+      data-testid="exam-variant-picker"
       PaperProps={{ sx: { maxHeight: '90vh' } }}
     >
       <DialogTitle sx={{ fontWeight: 700, paddingBottom: '8px' }}>{group.title}</DialogTitle>
@@ -36,7 +36,8 @@ export const WritingVariantPicker = ({
         <Stack sx={{ gap: '16px', paddingBottom: '8px' }}>
           <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
             {i18n._(
-              'Choose a variant or pick a random one. Each variant has two writing tasks in the official B1 format.',
+              'Choose a variant or pick a random one. Each variant has {taskSummary}.',
+              { taskSummary: group.taskSummary },
             )}
           </Typography>
 
@@ -50,7 +51,7 @@ export const WritingVariantPicker = ({
             startIcon={<Shuffle size={16} />}
             disabled={Boolean(startingVariantId)}
             onClick={onSelectRandom}
-            data-testid="writing-variant-random"
+            data-testid="exam-variant-random"
             sx={{ alignSelf: 'flex-start' }}
           >
             {startingVariantId === 'random'
@@ -58,7 +59,7 @@ export const WritingVariantPicker = ({
               : i18n._('Random variant')}
           </Button>
 
-          <Box
+          <Stack
             sx={{
               display: 'grid',
               gridTemplateColumns: {
@@ -68,7 +69,7 @@ export const WritingVariantPicker = ({
               },
               gap: '8px',
             }}
-            data-testid="writing-variant-grid"
+            data-testid="exam-variant-grid"
           >
             {group.variants.map((variant) => (
               <Button
@@ -77,7 +78,7 @@ export const WritingVariantPicker = ({
                 color="inherit"
                 disabled={Boolean(startingVariantId)}
                 onClick={() => onSelectVariant(variant.variantId)}
-                data-testid={`writing-variant-${variant.variantId}`}
+                data-testid={`exam-variant-${variant.variantId}`}
                 sx={{
                   minWidth: 0,
                   padding: '8px 4px',
@@ -89,7 +90,7 @@ export const WritingVariantPicker = ({
                   : variant.label.replace('Wariant ', '')}
               </Button>
             ))}
-          </Box>
+          </Stack>
         </Stack>
       </DialogContent>
     </Dialog>

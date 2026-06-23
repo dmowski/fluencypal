@@ -36,9 +36,13 @@ Polish/
     variants.ts
     types.ts
     images.ts
+  speaking/                 — original app content (30 exam variants)
+    variants.ts
+    types.ts
+    images.ts
 ```
 
-Runtime exam code: `../exam/polishB1Writing/`.
+Runtime exam code: `../exam/polishB1Writing/` and `../exam/polishB1Speaking/`.
 
 ## Parsed exams (`parsed/exams/`)
 
@@ -102,6 +106,12 @@ Each folder is named by the **first exam day** (`YYYY-MM-DD`). Files:
 - Dashboard: **Polish B1 — Pisanie**
 - 30 variants (`v01`–`v30`), 2 tasks each
 - Firestore ids: `exam_pl_b1-writing_v01` … `v30`
+
+## App speaking exam (`speaking/`)
+
+- Dashboard: **Polish B1 — Mówienie**
+- 30 variants (`v01`–`v30`), 3 tasks each (photo description, monologue, situational)
+- Firestore ids: `exam_pl_b1-speaking_v01` … `v30`
 
 ## Copyright
 

@@ -1631,14 +1631,10 @@ msgstr "Реєстрація"
 msgid "Chinese Learning Plan"
 msgstr "План вивчення китайської"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
-msgid ""
-"Choose a variant or pick a random one. Each variant has two writing tasks "
-"in the official B1 format."
-msgstr ""
-"Виберіть варіант або оберіть випадковий. Кожен варіант містить два завдання "
-"з письма у офіційному форматі B1."
+msgid "Choose a variant or pick a random one. Each variant has {taskSummary}."
+msgstr "Виберіть варіант або виберіть випадковий. Кожен варіант має {taskSummary}."
 
 #: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
@@ -2263,8 +2259,8 @@ msgstr "Не вдалося знайти сторінку"
 msgid "Could not load article"
 msgstr "Не вдалося завантажити статтю"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:60
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Не вдалося розпочати іспит. Будь ласка, спробуйте ще раз."
@@ -3561,7 +3557,7 @@ msgstr "Есе"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Основні слова для обговорення психічного здоров'я та психології."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:45
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
@@ -3675,7 +3671,7 @@ msgstr "Екзамен завершено"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Приклад: Я готуюся до ділової поїздки в Берлін"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Екзамени"
@@ -8248,7 +8244,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "Практикуйтеся щодня"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "ПРАКТИЧНІ ІСПИТИ"
@@ -8820,7 +8816,7 @@ msgstr "Квіз завершено"
 msgid "Quiz not found. Open it from the news article."
 msgstr "Квіз не знайдено. Відкрийте його з новинної статті."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:59
 #. js-lingui-explicit-id
 msgid "Random variant"
 msgstr "Випадковий варіант"
@@ -10169,7 +10165,7 @@ msgstr "Зірки"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10340,9 +10336,9 @@ msgstr "Старт | 5 хв"
 msgid "Starting webcam... "
 msgstr "Запуск вебкамери... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10547,7 +10543,7 @@ msgstr ""
 "Сильні знання React та TypeScript. Незначні прогалини в комунікації та "
 "відповідях на питання лідерства."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10933,7 +10929,7 @@ msgstr ""
 "Перевірте свої знання, беріть участь у викликах та змагайтеся з іншими у "
 "таблиці лідерів."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:125
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Перевірте свій рівень за допомогою повних іспитів"
@@ -13467,6 +13463,15 @@ msgstr "{winnerName} перемагає!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Choose a variant or pick a random one. Each variant has two writing tasks "
+#~ "in the official B1 format."
+#~ msgstr ""
+#~ "Виберіть варіант або оберіть випадковий. Кожен варіант містить два завдання "
+#~ "з письма у офіційному форматі B1."
 
 #: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id

@@ -1643,14 +1643,10 @@ msgstr "Check-In"
 msgid "Chinese Learning Plan"
 msgstr "Piano di Apprendimento Cinese"
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
-msgid ""
-"Choose a variant or pick a random one. Each variant has two writing tasks "
-"in the official B1 format."
-msgstr ""
-"Scegli una variante o selezionane una casuale. Ogni variante ha due compiti "
-"di scrittura nel formato ufficiale B1."
+msgid "Choose a variant or pick a random one. Each variant has {taskSummary}."
+msgstr "Scegli una variante o scegline una casuale. Ogni variante ha {taskSummary}."
 
 #: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
@@ -2282,8 +2278,8 @@ msgstr "Impossibile trovare la pagina"
 msgid "Could not load article"
 msgstr "Impossibile caricare l'articolo"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:60
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Impossibile avviare l'esame. Per favore riprova."
@@ -3589,7 +3585,7 @@ msgstr "Saggi"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Parole essenziali per discutere di salute mentale e psicologia."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:45
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
@@ -3703,7 +3699,7 @@ msgstr "Esame completato"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Esempio: Mi sto preparando per un viaggio d'affari a Berlino"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Esami"
@@ -8287,7 +8283,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "Pratica quotidianamente"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:124
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "ESAMI DI PRATICA"
@@ -8863,7 +8859,7 @@ msgstr "Quiz completato"
 msgid "Quiz not found. Open it from the news article."
 msgstr "Quiz non trovato. Aprilo dall'articolo di notizie."
 
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:59
 #. js-lingui-explicit-id
 msgid "Random variant"
 msgstr "Variante casuale"
@@ -10218,7 +10214,7 @@ msgstr "Stelle"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10387,9 +10383,9 @@ msgstr "Inizio | 5 min"
 msgid "Starting webcam... "
 msgstr "Avvio della webcam... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
-#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:74
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
+#: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10598,7 +10594,7 @@ msgstr ""
 "Forte conoscenza di React e TypeScript. Lievi lacune nelle risposte sulla "
 "comunicazione e leadership."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:115
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10983,7 +10979,7 @@ msgstr ""
 "Metti alla prova la tua conoscenza, partecipa alle sfide e competi con gli "
 "altri nella classifica."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:125
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Metti alla prova il tuo livello con esami completi"
@@ -13546,6 +13542,15 @@ msgstr "{winnerName} vince!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Choose a variant or pick a random one. Each variant has two writing tasks "
+#~ "in the official B1 format."
+#~ msgstr ""
+#~ "Scegli una variante o selezionane una casuale. Ogni variante ha due compiti "
+#~ "di scrittura nel formato ufficiale B1."
 
 #: src/features/SEO/metadata.ts:131
 #. js-lingui-explicit-id

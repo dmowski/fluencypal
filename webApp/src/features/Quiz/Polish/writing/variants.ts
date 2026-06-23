@@ -140,7 +140,7 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
   {
     variantId: 'v07',
     label: 'Wariant 7',
-    inspirationNote: 'language exchange ad + park photo story',
+    inspirationNote: 'language exchange ad + city square photo story',
     tasks: [
       {
         promptText:
@@ -151,12 +151,12 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
       },
       {
         promptText:
-          'Napisz opowiadanie zainspirowane poniższym zdjęciem z parku. Opisz sytuację, bohaterów i nastrój sceny (ok. 165 słów).',
+          'Napisz opowiadanie zainspirowane poniższym zdjęciem z placu w centrum miasta. Opisz sytuację, bohaterów i nastrój sceny (ok. 165 słów).',
         minWords: 145,
         maxWords: 185,
         taskGenre: 'opowiadanie',
-        imageUrl: POLISH_B1_WRITING_IMAGES.park,
-        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.park,
+        imageUrl: POLISH_B1_WRITING_IMAGES.tourists,
+        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.tourists,
       },
     ],
   },
@@ -205,7 +205,7 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
   {
     variantId: 'v10',
     label: 'Wariant 10',
-    inspirationNote: 'New Year wishes + café photo story',
+    inspirationNote: 'New Year wishes + business meeting photo story',
     tasks: [
       {
         promptText:
@@ -216,12 +216,12 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
       },
       {
         promptText:
-          'Napisz opowiadanie zainspirowane poniższym zdjęciem z kawiarni. Opisz spotkanie bohaterów, otoczenie i to, o czym mogą rozmawiać (ok. 175 słów).',
+          'Napisz opowiadanie zainspirowane poniższym zdjęciem ze spotkania służbowego. Opisz bohaterów, otoczenie i to, o czym mogą rozmawiać (ok. 175 słów).',
         minWords: 155,
         maxWords: 195,
         taskGenre: 'opowiadanie',
-        imageUrl: POLISH_B1_WRITING_IMAGES.cafe,
-        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.cafe,
+        imageUrl: POLISH_B1_WRITING_IMAGES.handshake,
+        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.handshake,
       },
     ],
   },
@@ -354,7 +354,7 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
   {
     variantId: 'v17',
     label: 'Wariant 17',
-    inspirationNote: 'Christmas wishes to teacher + train station photo story',
+    inspirationNote: 'Christmas wishes to teacher + city traveler photo story',
     tasks: [
       {
         promptText:
@@ -365,12 +365,12 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
       },
       {
         promptText:
-          'Napisz opowiadanie zainspirowane poniższym zdjęciem z dworca kolejowego. Opisz sytuację, postacie i atmosferę (ok. 165 słów).',
+          'Napisz opowiadanie zainspirowane poniższym zdjęciem podróżnika w mieście. Opisz sytuację, postacie i atmosferę (ok. 165 słów).',
         minWords: 145,
         maxWords: 185,
         taskGenre: 'opowiadanie',
-        imageUrl: POLISH_B1_WRITING_IMAGES.train,
-        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.train,
+        imageUrl: POLISH_B1_WRITING_IMAGES.map,
+        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.map,
       },
     ],
   },
@@ -589,7 +589,7 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
   {
     variantId: 'v28',
     label: 'Wariant 28',
-    inspirationNote: 'moving farewell invitation + park photo story',
+    inspirationNote: 'moving farewell invitation + city square photo story',
     tasks: [
       {
         promptText:
@@ -600,12 +600,12 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
       },
       {
         promptText:
-          'Napisz opowiadanie zainspirowane zdjęciem z parku miejskiego. Opisz scenę, bohaterów i emocje, które można w niej dostrzec (ok. 165 słów).',
+          'Napisz opowiadanie zainspirowane zdjęciem z placu w centrum miasta. Opisz scenę, bohaterów i emocje, które można w niej dostrzec (ok. 165 słów).',
         minWords: 145,
         maxWords: 185,
         taskGenre: 'opowiadanie',
-        imageUrl: POLISH_B1_WRITING_IMAGES.park,
-        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.park,
+        imageUrl: POLISH_B1_WRITING_IMAGES.tourists,
+        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.tourists,
       },
     ],
   },
@@ -633,7 +633,7 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
   {
     variantId: 'v30',
     label: 'Wariant 30',
-    inspirationNote: 'language partner ad + café meeting story',
+    inspirationNote: 'language partner ad + business meeting story',
     tasks: [
       {
         promptText:
@@ -644,12 +644,12 @@ export const POLISH_B1_WRITING_VARIANTS: PolishB1WritingVariant[] = [
       },
       {
         promptText:
-          'Napisz opowiadanie zainspirowane zdjęciem z kawiarni. Opisz spotkanie, otoczenie i to, o czym rozmawiają bohaterowie (ok. 175 słów).',
+          'Napisz opowiadanie zainspirowane zdjęciem ze spotkania służbowego. Opisz spotkanie, otoczenie i to, o czym rozmawiają bohaterowie (ok. 175 słów).',
         minWords: 155,
         maxWords: 195,
         taskGenre: 'opowiadanie',
-        imageUrl: POLISH_B1_WRITING_IMAGES.cafe,
-        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.cafe,
+        imageUrl: POLISH_B1_WRITING_IMAGES.handshake,
+        imageDescription: POLISH_B1_WRITING_IMAGE_DESCRIPTIONS.handshake,
       },
     ],
   },

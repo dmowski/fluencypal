@@ -7,19 +7,23 @@ import { useAuth } from '@/features/Auth/useAuth';
 import {
   getExamCatalogForTargetLanguage,
   isExamCatalogEntry,
+  isVariantExamGroup,
   isWritingExamGroup,
 } from '@/features/Quiz/exam/examCatalog';
 import { ensureManualExam } from '@/features/Quiz/exam/ensureManualExam';
 import {
-  POLISH_B1_WRITING_EXAM_GROUP,
+  resolvePolishB1SpeakingExam,
+} from '@/features/Quiz/exam/polishB1Speaking/polishB1SpeakingCatalog';
+import {
   resolvePolishB1WritingExam,
 } from '@/features/Quiz/exam/polishB1Writing/polishB1WritingCatalog';
+import { PolishB1VariantExamGroup } from '@/features/Quiz/exam/polishB1VariantExamGroup';
 import { ensureStateExam } from '@/features/Quiz/exam/statePolishB1/ensureStateExam';
 import { useQuizModal } from '@/features/Quiz/useQuizModal';
 import { useSettings } from '@/features/Settings/useSettings';
 import { SectionHeader } from '../CartsHeader';
 import { CardItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
-import { WritingVariantPicker } from './WritingVariantPicker';
+import { ExamVariantPicker } from './ExamVariantPicker';
 
 const EXAMS_PREVIEW_IMAGE =
   'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780773652889-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
@@ -30,28 +34,32 @@ export const ExamsDashboardCard = () => {
   const settings = useSettings();
   const quizModal = useQuizModal();
   const [startingExamId, setStartingExamId] = useState<string | null>(null);
-  const [writingPickerOpen, setWritingPickerOpen] = useState(false);
-  const [startingWritingVariant, setStartingWritingVariant] = useState<string | null>(null);
+  const [variantPickerGroup, setVariantPickerGroup] = useState<PolishB1VariantExamGroup | null>(
+    null,
+  );
+  const [startingVariantId, setStartingVariantId] = useState<string | null>(null);
 
   const availableExams = useMemo(
     () => getExamCatalogForTargetLanguage(settings.languageCode),
     [settings.languageCode],
   );
 
-  const startWritingExam = async (variantKey: string, random: boolean) => {
-    if (!auth.uid) return;
-    setStartingWritingVariant(random ? 'random' : variantKey);
+  const startVariantExam = async (variantKey: string, random: boolean) => {
+    if (!auth.uid || !variantPickerGroup) return;
+    setStartingVariantId(random ? 'random' : variantKey);
     try {
-      const quiz = resolvePolishB1WritingExam(variantKey, random);
-      if (!quiz) throw new Error('Writing variant not found');
+      const quiz = isWritingExamGroup(variantPickerGroup)
+        ? resolvePolishB1WritingExam(variantKey, random)
+        : resolvePolishB1SpeakingExam(variantKey, random);
+      if (!quiz) throw new Error('Exam variant not found');
       await ensureManualExam(auth.uid, quiz);
-      setWritingPickerOpen(false);
+      setVariantPickerGroup(null);
       quizModal.openQuiz(quiz.id);
     } catch (error) {
-      console.error('ExamsDashboardCard: failed to start writing exam', error);
+      console.error('ExamsDashboardCard: failed to start variant exam', error);
       alert(i18n._('Could not start the exam. Please try again.'));
     } finally {
-      setStartingWritingVariant(null);
+      setStartingVariantId(null);
       setStartingExamId(null);
     }
   };
@@ -63,14 +71,13 @@ export const ExamsDashboardCard = () => {
         subTitle: `~${exam.estimatedMinutes} min · ${exam.subtitle}`,
         iconName: 'graduation-cap',
         iconBgColor: '#4B5DFF',
-        actionButtonTitle:
-          startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
+        actionButtonTitle: startingExamId === exam.id ? i18n._('Starting...') : i18n._('Start'),
         onClick: () => {
-          if (!auth.uid || startingExamId || startingWritingVariant) return;
+          if (!auth.uid || startingExamId || startingVariantId) return;
 
-          if (isWritingExamGroup(exam)) {
+          if (isVariantExamGroup(exam)) {
             setStartingExamId(exam.id);
-            setWritingPickerOpen(true);
+            setVariantPickerGroup(exam);
             return;
           }
 
@@ -93,7 +100,7 @@ export const ExamsDashboardCard = () => {
             });
         },
       })),
-    [auth.uid, availableExams, i18n, quizModal, startingExamId, startingWritingVariant],
+    [auth.uid, availableExams, i18n, quizModal, startingExamId, startingVariantId],
   );
 
   if (settings.loading || availableExams.length === 0) {
@@ -122,18 +129,20 @@ export const ExamsDashboardCard = () => {
         />
       </Stack>
 
-      <WritingVariantPicker
-        group={POLISH_B1_WRITING_EXAM_GROUP}
-        open={writingPickerOpen}
-        onClose={() => {
-          if (startingWritingVariant) return;
-          setWritingPickerOpen(false);
-          setStartingExamId(null);
-        }}
-        onSelectVariant={(variantId) => void startWritingExam(variantId, false)}
-        onSelectRandom={() => void startWritingExam('', true)}
-        startingVariantId={startingWritingVariant}
-      />
+      {variantPickerGroup && (
+        <ExamVariantPicker
+          group={variantPickerGroup}
+          open={Boolean(variantPickerGroup)}
+          onClose={() => {
+            if (startingVariantId) return;
+            setVariantPickerGroup(null);
+            setStartingExamId(null);
+          }}
+          onSelectVariant={(variantId) => void startVariantExam(variantId, false)}
+          onSelectRandom={() => void startVariantExam('', true)}
+          startingVariantId={startingVariantId}
+        />
+      )}
     </>
   );
 };

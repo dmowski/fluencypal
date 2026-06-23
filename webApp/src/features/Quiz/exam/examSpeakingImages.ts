@@ -32,6 +32,12 @@ const IMAGE_GROUND_TRUTH = {
     'A busy farmers market stall is filled with colorful produce arranged in wooden crates, including tomatoes, peppers, carrots, leafy greens, apples, oranges, and berries. Two vendors wearing aprons smile and speak with customers standing in front of the display. Canvas awnings cover the stall, while more shoppers and market stands extend along the sunny city street.',
 } as const;
 
+/** Public URLs for exam speaking/writing picture tasks (verified in Firebase Storage). */
+export const EXAM_SPEAKING_IMAGE_URLS = SHARED_IMAGE_URLS;
+
+/** Vision ground-truth descriptions paired with {@link EXAM_SPEAKING_IMAGE_URLS}. */
+export const EXAM_SPEAKING_IMAGE_DESCRIPTIONS = IMAGE_GROUND_TRUTH;
+
 export const ENGLISH_EXAM_SPEAKING_IMAGES: ExamSpeakingImage[] = [
   {
     imageUrl: SHARED_IMAGE_URLS.handshake,

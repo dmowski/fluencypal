@@ -44,7 +44,8 @@ Both definition and progress live in one Firestore document: `UserQuizRecord`.
 
 - **News:** `NewsModal` → **Take quiz** → `openNewsQuiz(input)` (modal opens immediately; generation runs inside `QuizModal`)
 - **Exams:** `ExamsDashboardCard` → `ensureManualExam` / `ensureStateExam` → `openQuiz(id)` (hardcoded `Quiz/exam/*`; filtered by `settings.languageCode`; no AI generation)
-- **Polish B1 Writing:** dashboard group `Polish B1 — Pisanie` → `WritingVariantPicker` (30 variants + random) → `exam/polishB1Writing/*`
+- **Polish B1 Writing:** dashboard group `Polish B1 — Pisanie` → `ExamVariantPicker` (30 variants + random) → `exam/polishB1Writing/*`
+- **Polish B1 Speaking:** dashboard group `Polish B1 — Mówienie` → `ExamVariantPicker` (30 variants + random) → `exam/polishB1Speaking/*`
 - **Shell:** `QuizModal` in `GlobalModals.tsx` when `quizId` is set (stacks above news at `zIndex={1100}`)
 
 ## Quiz Creation UX

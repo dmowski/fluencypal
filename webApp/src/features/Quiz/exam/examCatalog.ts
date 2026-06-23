@@ -2,9 +2,14 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { QuizDocument } from '../types';
 import { getManualExamsForTargetLanguage, MANUAL_EXAMS } from './manualExams';
 import {
+  getPolishB1SpeakingGroupsForLanguage,
+  PolishB1SpeakingExamGroup,
+} from './polishB1Speaking/polishB1SpeakingCatalog';
+import {
   getPolishB1WritingGroupsForLanguage,
   PolishB1WritingExamGroup,
 } from './polishB1Writing/polishB1WritingCatalog';
+import { PolishB1VariantExamGroup } from './polishB1VariantExamGroup';
 import {
   getStateExamCatalogSubtitle,
   getStateExamsForLanguage,
@@ -21,7 +26,10 @@ export interface ExamCatalogEntry {
   isStateExam?: boolean;
 }
 
-export type DashboardExamItem = ExamCatalogEntry | PolishB1WritingExamGroup;
+export type DashboardExamItem =
+  | ExamCatalogEntry
+  | PolishB1WritingExamGroup
+  | PolishB1SpeakingExamGroup;
 
 const toCatalogEntry = (quiz: QuizDocument, isStateExam = false): ExamCatalogEntry => ({
   kind: 'exam',
@@ -46,11 +54,18 @@ export const getExamCatalogForTargetLanguage = (
 ): DashboardExamItem[] => [
   ...getManualExamsForTargetLanguage(targetLanguageCode).map((quiz) => toCatalogEntry(quiz)),
   ...getPolishB1WritingGroupsForLanguage(targetLanguageCode),
+  ...getPolishB1SpeakingGroupsForLanguage(targetLanguageCode),
   ...getStateExamsForLanguage(targetLanguageCode).map((quiz) => toCatalogEntry(quiz, true)),
 ];
 
 export const isWritingExamGroup = (item: DashboardExamItem): item is PolishB1WritingExamGroup =>
   'kind' in item && item.kind === 'writing-group';
+
+export const isSpeakingExamGroup = (item: DashboardExamItem): item is PolishB1SpeakingExamGroup =>
+  'kind' in item && item.kind === 'speaking-group';
+
+export const isVariantExamGroup = (item: DashboardExamItem): item is PolishB1VariantExamGroup =>
+  isWritingExamGroup(item) || isSpeakingExamGroup(item);
 
 export const isExamCatalogEntry = (item: DashboardExamItem): item is ExamCatalogEntry =>
   'kind' in item && item.kind === 'exam';
