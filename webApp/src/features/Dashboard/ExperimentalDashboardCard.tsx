@@ -23,7 +23,7 @@ export const ExperimentalDashboardCard = () => {
 
   const game = useGame();
   const isShowExperimentalDashboard = hasExperimentalDashboardAccess(game.myUserName);
-  if (!isShowExperimentalDashboard) return null;
+  if (!isShowExperimentalDashboard || true) return null;
 
   return (
     <Stack

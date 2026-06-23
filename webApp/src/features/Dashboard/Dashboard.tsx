@@ -92,7 +92,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
                 <RolePlayDashboardCard />
-                <PublicChatDashboardCard />
+                {/*<PublicChatDashboardCard />*/}
                 <GameDashboardCard />
 
                 <DailyQuestionDashboardCard />
