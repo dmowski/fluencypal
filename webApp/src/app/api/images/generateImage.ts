@@ -1,4 +1,9 @@
 import OpenAI from 'openai';
+import {
+  OPENAI_EXAM_IMAGE_MODEL,
+  OPENAI_EXAM_IMAGE_QUALITY,
+  OPENAI_EXAM_IMAGE_SIZE,
+} from '@/features/Quiz/exam/openAiExamImageConfig';
 
 export const generateImageBuffer = async (description: string): Promise<Buffer<ArrayBuffer>> => {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -11,9 +16,10 @@ export const generateImageBuffer = async (description: string): Promise<Buffer<A
   });
 
   const result = await client.images.generate({
-    model: 'gpt-image-1',
+    model: OPENAI_EXAM_IMAGE_MODEL,
     prompt: description,
-    size: '1024x1024',
+    size: OPENAI_EXAM_IMAGE_SIZE,
+    quality: OPENAI_EXAM_IMAGE_QUALITY,
   });
 
   // Save the image to a file

@@ -16,6 +16,7 @@ Polish/
   scripts/
     build-parsed.py       — download PDFs (temp) → cleaned markdown under parsed/
     reorganize-parsed.py  — shared cleanup helpers (used by build-parsed)
+    generate-exam-quiz-images.mjs — OpenAI gpt-image-2 → public/examQuiz/
   parsed/
     exams/                — official exam sessions by date (ISO slug)
       2022-02-06/
@@ -40,9 +41,21 @@ Polish/
     variants.ts
     types.ts
     images.ts
+    examQuizImageCatalog.ts — prompts for generated photos
+    examQuiz-manifest.json    — URLs + vision descriptions (generated)
 ```
 
 Runtime exam code: `../exam/polishB1Writing/` and `../exam/polishB1Speaking/`.
+
+Speaking photo assets live in `webApp/public/examQuiz/` and are served at `/examQuiz/*.webp`.
+
+Regenerate speaking photos:
+
+```bash
+cd webApp
+pnpm generate:exam-quiz-images              # skip existing
+pnpm generate:exam-quiz-images -- --force   # regenerate all (gpt-image-2, quality high, parallel)
+```
 
 ## Parsed exams (`parsed/exams/`)
 
@@ -112,6 +125,7 @@ Each folder is named by the **first exam day** (`YYYY-MM-DD`). Files:
 - Dashboard: **Polish B1 — Mówienie**
 - 30 variants (`v01`–`v30`), 3 tasks each (photo description, monologue, situational)
 - Firestore ids: `exam_pl_b1-speaking_v01` … `v30`
+- **27 unique photo tasks**: 7 legacy Firebase images + 20 local `/examQuiz/` photos (gpt-image-2)
 
 ## Copyright
 

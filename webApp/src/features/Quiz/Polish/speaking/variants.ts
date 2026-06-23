@@ -1,8 +1,12 @@
 import { photoTask } from './images';
+import { SPEAKING_VARIANT_PHOTO_KEYS } from './examQuizImageCatalog';
 import { PolishB1SpeakingVariant } from './types';
 
 const PHOTO =
   'Opisz fotografię i przedstawioną na niej sytuację. Powiedz, kim są osoby, gdzie się znajdują, co robią i jaki panuje nastrój.';
+
+const variantPhoto = (variantIndex: number, promptText: string = PHOTO) =>
+  photoTask(SPEAKING_VARIANT_PHOTO_KEYS[variantIndex], promptText);
 
 /**
  * Original speaking variants inspired by official B1 format:
@@ -13,7 +17,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v01',
     label: 'Wariant 1',
     inspirationNote: 'kitchen photo + essentials monologue + bakery order',
-    photo: photoTask('cooking', PHOTO),
+    photo: variantPhoto(0),
     monologue: {
       topicPrompt:
         'Monolog: Rzeczy, bez których trudno byłoby mi żyć, to… Opisz dwa–trzy przedmioty, których używasz codziennie, i wyjaśnij, dlaczego są dla Ciebie ważne.',
@@ -31,7 +35,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v02',
     label: 'Wariant 2',
     inspirationNote: 'family monologue + PKP inquiry',
-    photo: photoTask('tourists', PHOTO),
+    photo: variantPhoto(1),
     monologue: {
       topicPrompt:
         'Monolog: Opisz swoją rodzinę lub rodzinę, o jakiej marzysz. Powiedz, ilu jest członków, kim są i jak spędzacie czas razem.',
@@ -49,7 +53,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v03',
     label: 'Wariant 3',
     inspirationNote: 'market + last trip + clothing exchange',
-    photo: photoTask('market', PHOTO),
+    photo: variantPhoto(2),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o swojej ostatniej podróży lub wycieczce. Dokąd jechałeś/jechałaś, z kim, co robiłeś/robiłaś i co Ci się najbardziej podobało.',
@@ -67,7 +71,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v04',
     label: 'Wariant 4',
     inspirationNote: 'doctor + daily routine + doctor appointment',
-    photo: photoTask('doctor', PHOTO),
+    photo: variantPhoto(3),
     monologue: {
       topicPrompt:
         'Monolog: Opisz swój typowy dzień w tygodniu. O której wstajesz, co robisz rano, w pracy lub na studiach i jak spędzasz wieczór.',
@@ -85,7 +89,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v05',
     label: 'Wariant 5',
     inspirationNote: 'classroom + hobby + restaurant reservation',
-    photo: photoTask('teacher', PHOTO),
+    photo: variantPhoto(4),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o swoim ulubionym hobby. Jak zacząłeś/zaczęłaś, ile czasu poświęcasz i dlaczego to Cię relaksuje.',
@@ -103,7 +107,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v06',
     label: 'Wariant 6',
     inspirationNote: 'tourists + dream city + hotel complaint',
-    photo: photoTask('tourists', PHOTO),
+    photo: variantPhoto(5),
     monologue: {
       topicPrompt:
         'Monolog: Opisz miasto, w którym chciałbyś/chciałabyś mieszkać. Gdzie leży, co można tam robić i dlaczego właśnie tam.',
@@ -121,7 +125,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v07',
     label: 'Wariant 7',
     inspirationNote: 'office handshake + work + internet provider',
-    photo: photoTask('handshake', PHOTO),
+    photo: variantPhoto(6),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o swojej pracy lub o pracy, którą chciałbyś/chciałabyś wykonywać. Co robisz, co Ci się podoba i co jest trudne.',
@@ -139,7 +143,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v08',
     label: 'Wariant 8',
     inspirationNote: 'lost tourist + learning Polish + post office',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(7),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, jak uczysz się języka polskiego. Jakie metody stosujesz, co jest łatwe, a z czym masz trudność.',
@@ -157,7 +161,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v09',
     label: 'Wariant 9',
     inspirationNote: 'café + favorite film + neighbor noise',
-    photo: photoTask('handshake', PHOTO),
+    photo: variantPhoto(8),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o filmie lub serialu, który ostatnio Ci się podobał. O czym jest, kto gra główne role i dlaczego polecasz.',
@@ -175,7 +179,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v10',
     label: 'Wariant 10',
     inspirationNote: 'train + future plans + library',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(9),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o swoich planach na najbliższe dwa lata — edukacja, praca, podróże lub inne cele.',
@@ -193,7 +197,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v11',
     label: 'Wariant 11',
     inspirationNote: 'cooking + childhood memory + gym membership',
-    photo: photoTask('cooking', 'Opisz zdjęcie. Powiedz, co robi osoba, jakie produkty widzisz i jaka atmosfera panuje w kuchni.'),
+    photo: variantPhoto(10, 'Opisz bibliotekę na zdjęciu. Kim są ludzie, co robią i jaka panuje atmosfera?'),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o ważnym wspomnieniu z dzieciństwa. Gdzie to było, kto uczestniczył i dlaczego pamiętasz ten dzień.',
@@ -211,7 +215,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v12',
     label: 'Wariant 12',
     inspirationNote: 'market + healthy lifestyle + pharmacy',
-    photo: photoTask('market', 'Opisz targ na zdjęciu. Jakie produkty widzisz, kim są ludzie i co się dzieje?'),
+    photo: variantPhoto(11, 'Opisz aptekę na zdjęciu. Kim są osoby i o czym rozmawiają?'),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, jak dbasz o zdrowie. Jakie nawyki wprowadziłeś/wprowadziłaś w ostatnim czasie i co Ci pomaga.',
@@ -229,7 +233,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v13',
     label: 'Wariant 13',
     inspirationNote: 'tourists + best vacation + museum tickets',
-    photo: photoTask('tourists', PHOTO),
+    photo: variantPhoto(12),
     monologue: {
       topicPrompt:
         'Monolog: Opisz najlepsze wakacje, jakie do tej pory miałeś/miałaś. Gdzie byłeś/byłaś, co robiłeś/robiłaś i co zapamiętałeś/zapamiętałaś.',
@@ -247,7 +251,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v14',
     label: 'Wariant 14',
     inspirationNote: 'doctor + good boss + lost wallet',
-    photo: photoTask('doctor', 'Opisz wizytę lekarską. Kim są osoby, co robi lekarz i jakie wrażenie sprawia gabinet?'),
+    photo: variantPhoto(13, 'Opisz pocztę na zdjęciu. Kim są osoby i co robi klient?'),
     monologue: {
       topicPrompt:
         'Monolog: Opisz swojego szefa lub szefową albo wymarzonego przełożonego. Jakie ma cechy i jak wpływa na atmosferę w pracy.',
@@ -265,7 +269,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v15',
     label: 'Wariant 15',
     inspirationNote: 'classroom + book + language course complaint',
-    photo: photoTask('teacher', PHOTO),
+    photo: variantPhoto(14),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o książce, którą niedawno czytałeś/czytałaś. O czym jest, co Cię zainteresowało i komu byś ją polecił/poleciła.',
@@ -283,7 +287,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v16',
     label: 'Wariant 16',
     inspirationNote: 'park + weekend + car rental',
-    photo: photoTask('tourists', 'Opisz plac i turystów na zdjęciu. Co robią, jaka jest pogoda i jaki panuje nastrój?'),
+    photo: variantPhoto(15, 'Opisz basen i ludzi na zdjęciu. Co robią, jaka jest atmosfera i co widać w tle?'),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, jak zwykle spędzasz weekend. Co robisz w sobotę i niedzielę, z kim i dlaczego tak lubisz ten czas.',
@@ -301,7 +305,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v17',
     label: 'Wariant 17',
     inspirationNote: 'handshake + colleague + broken heating',
-    photo: photoTask('handshake', PHOTO),
+    photo: variantPhoto(16),
     monologue: {
       topicPrompt:
         'Monolog: Opisz kolegę lub koleżankę z pracy, z którą dobrze się dogadujesz. Kim jest, co robi i dlaczego lubisz z nim/nią pracować.',
@@ -319,7 +323,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v18',
     label: 'Wariant 18',
     inspirationNote: 'map + moving to Poland + furniture delivery',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(17),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, dlaczego mieszkasz w Polsce i jak wyglądało Twoje pierwsze miesiące tutaj.',
@@ -337,7 +341,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v19',
     label: 'Wariant 19',
     inspirationNote: 'café + music + dentist',
-    photo: photoTask('handshake', PHOTO),
+    photo: variantPhoto(18),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o muzyce, którą lubisz słuchać. Jaki to gatunek, kiedy słuchasz i dlaczego Ci odpowiada.',
@@ -355,7 +359,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v20',
     label: 'Wariant 20',
     inspirationNote: 'train + technology + wrong order',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(19),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, jak technologia pomaga Ci w codziennym życiu. Jakie urządzenia lub aplikacje używasz najczęściej.',
@@ -373,7 +377,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v21',
     label: 'Wariant 21',
     inspirationNote: 'cooking + favorite season + parking fine',
-    photo: photoTask('cooking', PHOTO),
+    photo: variantPhoto(20),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o swojej ulubionej porze roku. Co wtedy robisz, jak wygląda krajobraz i dlaczego lubisz ten czas.',
@@ -391,7 +395,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v22',
     label: 'Wariant 22',
     inspirationNote: 'market + volunteering + bank account',
-    photo: photoTask('market', PHOTO),
+    photo: variantPhoto(21),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o sytuacji, kiedy pomogłeś/pomogłaś komuś lub ktoś pomógł Tobie. Co się stało i jakie miało to skutki.',
@@ -409,7 +413,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v23',
     label: 'Wariant 23',
     inspirationNote: 'tourists + festival + delayed flight',
-    photo: photoTask('tourists', PHOTO),
+    photo: variantPhoto(22),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o festiwalu, koncercie lub innym wydarzeniu kulturalnym, w którym uczestniczyłeś/uczestniczyłaś.',
@@ -427,7 +431,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v24',
     label: 'Wariant 24',
     inspirationNote: 'doctor + sport + gym class schedule',
-    photo: photoTask('doctor', PHOTO),
+    photo: variantPhoto(23),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o sporcie, który uprawiasz lub chciałbyś/chciałabyś uprawiać. Jak zacząłeś/zaczęłaś i co Ci daje.',
@@ -445,7 +449,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v25',
     label: 'Wariant 25',
     inspirationNote: 'classroom + language exchange + lost keys',
-    photo: photoTask('teacher', PHOTO),
+    photo: variantPhoto(24),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o najtrudniejszym doświadczeniu związanym z nauką języka obcego i jak sobie z nim poradziłeś/poradziłaś.',
@@ -463,7 +467,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v26',
     label: 'Wariant 26',
     inspirationNote: 'park + pets + vet visit',
-    photo: photoTask('tourists', PHOTO),
+    photo: variantPhoto(25),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o zwierzęciu — swoim lub zwierzęciu znajomego. Jak wygląda, jakie ma zwyczaje i dlaczego je lubisz.',
@@ -481,7 +485,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v27',
     label: 'Wariant 27',
     inspirationNote: 'handshake + teamwork + job interview',
-    photo: photoTask('handshake', 'Opisz spotkanie biznesowe. Kim są osoby, gdzie są i jaki wrażenie sprawia sytuacja?'),
+    photo: variantPhoto(26, 'Opisz mecz piłki nożnej na zdjęciu. Kto gra, co robią i jaka jest atmosfera?'),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o pracy zespołowej. Czy lubisz pracować w grupie, jakie masz doświadczenia i co jest najważniejsze.',
@@ -499,7 +503,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v28',
     label: 'Wariant 28',
     inspirationNote: 'map + public transport + bus pass',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(27),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz o komunikacji miejskiej w mieście, w którym mieszkasz. Jak korzystasz z autobusów, tramwajów lub metra.',
@@ -517,7 +521,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v29',
     label: 'Wariant 29',
     inspirationNote: 'café + cooking at home + cooking class',
-    photo: photoTask('handshake', 'Opisz spotkanie służbowe na zdjęciu. Kim są osoby, co robią i jaka jest atmosfera?'),
+    photo: variantPhoto(28, 'Opisz targ na zdjęciu. Jakie produkty widzisz, kim są ludzie i co się dzieje?'),
     monologue: {
       topicPrompt:
         'Monolog: Opowiedz, czy lubisz gotować w domu. Jakie potrawy przygotowujesz najczęściej i skąd bierzesz przepisy.',
@@ -535,7 +539,7 @@ export const POLISH_B1_SPEAKING_VARIANTS: PolishB1SpeakingVariant[] = [
     variantId: 'v30',
     label: 'Wariant 30',
     inspirationNote: 'train + Poland recommendation + taxi ride',
-    photo: photoTask('map', PHOTO),
+    photo: variantPhoto(29),
     monologue: {
       topicPrompt:
         'Monolog: Poleć obcokrajowcowi trzy miejsca w Polsce, które warto odwiedzić. Wyjaśnij, co można tam zobaczyć.',
