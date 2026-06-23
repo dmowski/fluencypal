@@ -2,12 +2,7 @@
 
 ## Exams/quiz
 
-Listening. Different voices. Separate section only with listening.
-
 webApp/src/features/Quiz
-
-We need to implement separate exam test for polish language.
-It should be only writing practice. Follows government style
 
 ## Blogs:
 

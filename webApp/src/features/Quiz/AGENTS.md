@@ -6,7 +6,7 @@ Do not confuse with `Goal/Quiz/` (onboarding survey) or `Case/quiz/` (interview 
 
 ## Purpose
 
-Language quizzes tied to news articles today. Modular enough for other sources later (manual exams only — no PDF pipeline planned).
+Language quizzes tied to news articles today. Manual exams (English/Polish) and Polish state-style B1 practice. Official Polish B1 PDFs are parsed under `Polish/` for authoring reference.
 
 ## Architecture
 
@@ -43,7 +43,8 @@ Both definition and progress live in one Firestore document: `UserQuizRecord`.
 ## Entry Points
 
 - **News:** `NewsModal` → **Take quiz** → `openNewsQuiz(input)` (modal opens immediately; generation runs inside `QuizModal`)
-- **Exams:** `ExamsDashboardCard` → `ensureManualExam` → `openQuiz(id)` (hardcoded `Quiz/exam/*`; filtered by `settings.languageCode`; no AI generation)
+- **Exams:** `ExamsDashboardCard` → `ensureManualExam` / `ensureStateExam` → `openQuiz(id)` (hardcoded `Quiz/exam/*`; filtered by `settings.languageCode`; no AI generation)
+- **Polish B1 Writing:** dashboard group `Polish B1 — Pisanie` → `WritingVariantPicker` (30 variants + random) → `exam/polishB1Writing/*`
 - **Shell:** `QuizModal` in `GlobalModals.tsx` when `quizId` is set (stacks above news at `zIndex={1100}`)
 
 ## Quiz Creation UX
@@ -102,6 +103,8 @@ Client: `api/describeImageRequest.ts`. Logic: `backend/describeImage.ts`.
 | `read-and-answer` | Local MC |
 | `listening` | Local MC; `audioText` always visible |
 | `describe-picture-voice` | AI on submit; grounded by `imageDescription` from vision API |
+| `writing-text` | AI on submit; word-count bounds; state/writing exams |
+| `monologue-voice` | AI on submit; state B1 speaking monologue |
 
 Wrong MC answers: lazy **Why** via `useTextAi.generate` — practical fix-it explanation (why wrong, why correct, how to avoid next time; no motivational filler). Target language in prompt; `languageCode` on the API is usage-only. Speaking: voice feedback uses the same target-language rule. Exam end: local score + optional **Get detailed feedback**.
 
@@ -124,9 +127,22 @@ Quiz/
   session/            — useQuizSession, scoring, navigation
   components/         — QuizModal, activities, progress bar
   exam/               — manual exams (e.g. `englishB2Exam.ts`, `ensureManualExam.ts`)
+  exam/polishB1Writing/ — B1 writing-only exam (30 variants)
+  exam/statePolishB1/ — full state-format B1 pilot exam
+  Polish/             — parsed exam markdown + writing variants (see `Polish/readme.md`)
   recordQuizCompletion.ts
   sanitizeForFirestore.ts
 ```
+
+## Polish B1 materials (`Polish/`)
+
+Third-party exam PDFs from the State Certification Commission. Parsed markdown lives under `Polish/parsed/` (no binary `source/` folder). Regenerate with `Polish/scripts/build-parsed.py`.
+- `parsed/exams/{date}/` — cleaned exam papers + listening transcripts
+- `parsed/module-specs/` — official module guides (`writing.md` = writing rubric)
+- `parsed/typescript/` — structured indexes (`parsedExamSessions.ts`)
+- `writing/variants.ts` — **original** app content (30 writing variants; not copied from PDFs)
+
+Regenerate parsed markdown: `cd webApp/src/features/Quiz/Polish/scripts && python3 build-parsed.py`. See `Polish/readme.md`.
 
 ## Conventions
 
