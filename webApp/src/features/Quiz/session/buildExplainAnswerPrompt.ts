@@ -1,6 +1,7 @@
 import {
   isFillGapQuestion,
   isListeningQuestion,
+  isProductionQuizQuestion,
   isReadAndAnswerQuestion,
   isWordTranslationQuestion,
   QuizAnswer,
@@ -45,7 +46,49 @@ const formatMcQuestion = (question: QuizQuestion): string => {
     return JSON.stringify({ type: question.type, segments: question.segments, correctByGap }, null, 2);
   }
 
-  return JSON.stringify({ type: question.type }, null, 2);
+  if (question.type === 'describe-picture-voice') {
+    return JSON.stringify(
+      {
+        type: question.type,
+        prompt: question.promptText,
+        imageDescription: question.imageDescription,
+        minWords: question.minWords,
+        maxWords: question.maxWords,
+      },
+      null,
+      2,
+    );
+  }
+
+  if (question.type === 'monologue-voice') {
+    return JSON.stringify(
+      {
+        type: question.type,
+        topic: question.topicPrompt,
+        minWords: question.minWords,
+        maxWords: question.maxWords,
+      },
+      null,
+      2,
+    );
+  }
+
+  if (question.type === 'writing-text') {
+    return JSON.stringify(
+      {
+        type: question.type,
+        task: question.promptText,
+        genre: question.taskGenre,
+        minWords: question.minWords,
+        maxWords: question.maxWords,
+        imageDescription: question.imageDescription,
+      },
+      null,
+      2,
+    );
+  }
+
+  return JSON.stringify({ type: 'unknown' }, null, 2);
 };
 
 const formatUserAnswer = (question: QuizQuestion, answer: QuizAnswer): string => {
@@ -111,21 +154,41 @@ export const buildExplainAnswerPrompt = (
   question: QuizQuestion,
   answer: QuizAnswer,
   targetLanguageCode: string,
-): { systemMessage: string; userMessage: string } => ({
-  systemMessage: `You help a language learner fix a quiz mistake.
+  submitFeedback?: string,
+): { systemMessage: string; userMessage: string } => {
+  const isProduction = isProductionQuizQuestion(question);
+
+  const systemMessage = isProduction
+    ? `You help a language learner improve a speaking or writing exam answer.
+${buildQuizTargetLanguageInstruction(targetLanguageCode)}
+Use short markdown with this structure:
+1. **What could be improved** — 2–3 specific issues (grammar, vocabulary, task completion, missing details, register).
+2. **Better version** — rewrite the answer as an ideal model response for this exact task, in the target language. Respect the word limit when given. Put the full rewritten text in a blockquote (\`>\`).
+3. **Tip for next time** — one concrete checklist item.
+
+Be direct and practical. Do not offer praise or motivational filler.`
+    : `You help a language learner fix a quiz mistake.
 ${buildQuizTargetLanguageInstruction(targetLanguageCode)}
 Use short markdown with this structure:
 1. **Why the chosen answer fails** — one clear reason tied to this question.
 2. **Why the correct answer works** — the rule, grammar point, or evidence from the passage/audio/sentence.
 3. **How to avoid this next time** — one concrete check or study tip (pattern, keyword, grammar rule, or reading/listening strategy).
 
-Be direct and practical. Do not offer praise, reassurance, or motivational filler. 4–7 sentences total.`,
-  userMessage: `Question:
+Be direct and practical. Do not offer praise, reassurance, or motivational filler. 4–7 sentences total.`;
+
+  const feedbackBlock = submitFeedback?.trim()
+    ? `\n\nInitial evaluation feedback:\n${submitFeedback.trim()}`
+    : '';
+
+  return {
+    systemMessage,
+    userMessage: `Question:
 ${formatMcQuestion(question)}
 
 Learner answer:
-${formatUserAnswer(question, answer)}`,
-});
+${formatUserAnswer(question, answer)}${feedbackBlock}`,
+  };
+};
 
 export const buildDetailedExamFeedbackPrompt = (input: {
   examInstruction: string;

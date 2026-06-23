@@ -1,10 +1,10 @@
 'use client';
 
-import { Button, Stack, Typography } from '@mui/material';
-import { useLingui } from '@lingui/react';
+import { Stack, Typography } from '@mui/material';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { RecordUserAudioAnswer } from '@/features/Survey/RecordUserAudioAnswer';
 import { DescribePictureVoiceQuestion } from '../../types';
+import { SubmittedAnswerPreview } from '../SubmittedAnswerPreview';
 import { useEffect } from 'react';
 
 export const DescribePictureVoiceActivity = ({
@@ -18,7 +18,6 @@ export const DescribePictureVoiceActivity = ({
   onTranscriptionChange: (value: string) => void;
   disabled?: boolean;
 }) => {
-  const { i18n } = useLingui();
   const recorder = useAudioRecorder();
   const minWords = question.minWords ?? 10;
 
@@ -48,7 +47,7 @@ export const DescribePictureVoiceActivity = ({
         {question.promptText}
       </Typography>
 
-      {!disabled && (
+      {!disabled ? (
         <RecordUserAudioAnswer
           transcript={transcription}
           minWords={minWords}
@@ -61,6 +60,8 @@ export const DescribePictureVoiceActivity = ({
           clearTranscript={() => onTranscriptionChange('')}
           error={recorder.error || null}
         />
+      ) : (
+        <SubmittedAnswerPreview text={transcription} />
       )}
     </Stack>
   );

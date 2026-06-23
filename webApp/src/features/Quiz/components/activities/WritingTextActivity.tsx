@@ -3,6 +3,7 @@
 import { Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { countWords, WritingTextQuestion } from '../../types';
+import { SubmittedAnswerPreview } from '../SubmittedAnswerPreview';
 
 export const WritingTextActivity = ({
   question,
@@ -34,42 +35,49 @@ export const WritingTextActivity = ({
         {question.promptText}
       </Typography>
 
-      <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
-        {i18n._('Write between {minWords} and {maxWords} words.', {
-          minWords: question.minWords,
-          maxWords: question.maxWords,
-        })}
-      </Typography>
+      {!disabled && (
+        <Typography variant="body2" sx={{ color: '#EBEBF599' }}>
+          {i18n._('Write between {minWords} and {maxWords} words.', {
+            minWords: question.minWords,
+            maxWords: question.maxWords,
+          })}
+        </Typography>
+      )}
 
-      <TextField
-        multiline
-        minRows={8}
-        maxRows={20}
-        fullWidth
-        value={text}
-        onChange={(event) => onTextChange(event.target.value)}
-        disabled={disabled}
-        placeholder={i18n._('Type your answer here...')}
-        sx={{
-          '& .MuiInputBase-root': {
-            backgroundColor: 'rgba(0,0,0,0.2)',
-            color: '#EBEBF5',
-          },
-        }}
-      />
+      {disabled ? (
+        <SubmittedAnswerPreview text={text} />
+      ) : (
+        <>
+          <TextField
+            multiline
+            minRows={8}
+            maxRows={20}
+            fullWidth
+            value={text}
+            onChange={(event) => onTextChange(event.target.value)}
+            placeholder={i18n._('Type your answer here...')}
+            sx={{
+              '& .MuiInputBase-root': {
+                backgroundColor: 'rgba(0,0,0,0.2)',
+                color: '#EBEBF5',
+              },
+            }}
+          />
 
-      <Typography
-        variant="body2"
-        sx={{
-          color: isBelowMin || isAboveMax ? '#ff8a80' : '#EBEBF599',
-        }}
-      >
-        {i18n._('{count} words', { count: wordCount })}
-        {isBelowMin &&
-          ` · ${i18n._('At least {minWords} words required', { minWords: question.minWords })}`}
-        {isAboveMax &&
-          ` · ${i18n._('Maximum {maxWords} words', { maxWords: question.maxWords })}`}
-      </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: isBelowMin || isAboveMax ? '#ff8a80' : '#EBEBF599',
+            }}
+          >
+            {i18n._('{count} words', { count: wordCount })}
+            {isBelowMin &&
+              ` · ${i18n._('At least {minWords} words required', { minWords: question.minWords })}`}
+            {isAboveMax &&
+              ` · ${i18n._('Maximum {maxWords} words', { maxWords: question.maxWords })}`}
+          </Typography>
+        </>
+      )}
     </Stack>
   );
 };

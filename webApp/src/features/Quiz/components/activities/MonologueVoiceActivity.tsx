@@ -4,6 +4,7 @@ import { Stack, Typography } from '@mui/material';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { RecordUserAudioAnswer } from '@/features/Survey/RecordUserAudioAnswer';
 import { MonologueVoiceQuestion } from '../../types';
+import { SubmittedAnswerPreview } from '../SubmittedAnswerPreview';
 import { useEffect } from 'react';
 
 export const MonologueVoiceActivity = ({
@@ -33,7 +34,7 @@ export const MonologueVoiceActivity = ({
         {question.topicPrompt}
       </Typography>
 
-      {!disabled && (
+      {!disabled ? (
         <RecordUserAudioAnswer
           transcript={transcription}
           minWords={minWords}
@@ -46,6 +47,8 @@ export const MonologueVoiceActivity = ({
           clearTranscript={() => onTranscriptionChange('')}
           error={recorder.error || null}
         />
+      ) : (
+        <SubmittedAnswerPreview text={transcription} />
       )}
     </Stack>
   );

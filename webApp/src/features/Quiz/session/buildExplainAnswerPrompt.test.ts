@@ -30,6 +30,32 @@ describe('buildExplainAnswerPrompt', () => {
     expect(systemMessage).not.toContain('encouraging');
   });
 
+  it('asks for a better version when explaining writing or speaking mistakes', () => {
+    const { systemMessage } = buildExplainAnswerPrompt(
+      {
+        type: 'writing-text',
+        id: 'q-write',
+        promptText: 'Napisz zaproszenie.',
+        minWords: 30,
+        maxWords: 45,
+        taskGenre: 'zaproszenie',
+        evaluation: { instruction: 'Grade writing.' },
+      },
+      {
+        questionId: 'q-write',
+        questionType: 'writing-text',
+        payload: { kind: 'text', text: 'Cześć, zapraszam cię na imprezę.' },
+        updatedAtIso: new Date().toISOString(),
+      },
+      'pl',
+      'Brakuje szczegółów.',
+    );
+
+    expect(systemMessage).toContain('Better version');
+    expect(systemMessage).toContain('What could be improved');
+    expect(systemMessage).not.toContain('Why the correct answer works');
+  });
+
   it('includes selected and correct option labels in the user message', () => {
     const { userMessage } = buildExplainAnswerPrompt(
       {

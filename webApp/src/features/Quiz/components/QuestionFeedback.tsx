@@ -4,7 +4,8 @@ import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
-import { QuizAnswer, QuizQuestion, QuizQuestionResult } from '../types';
+import { QuizAnswer, QuizQuestion, QuizQuestionResult, getLearnerProductionAnswerText } from '../types';
+import { SubmittedAnswerPreview } from './SubmittedAnswerPreview';
 import { ChevronRight } from 'lucide-react';
 
 export const QuestionFeedback = ({
@@ -25,6 +26,8 @@ export const QuestionFeedback = ({
   onNext: () => void;
 }) => {
   const { i18n } = useLingui();
+  const learnerAnswer =
+    question && answer ? getLearnerProductionAnswerText(question, answer) : null;
   const showWhy =
     (result.status === 'incorrect' || result.status === 'partial') &&
     !result.whyExplanation &&
@@ -50,10 +53,11 @@ export const QuestionFeedback = ({
       )}
 
       {result.whyExplanation && (
-        <Stack sx={{ gap: '8px' }} data-testid="quiz-why-explanation">
+        <Stack sx={{ gap: '12px' }} data-testid="quiz-why-explanation">
           <Typography variant="body2" sx={{ color: '#EBEBF599', fontWeight: 600 }}>
-            {i18n._('Why')}
+            {i18n._('Explanation')}
           </Typography>
+          {learnerAnswer && <SubmittedAnswerPreview text={learnerAnswer} />}
           <Markdown variant="conversation">{result.whyExplanation}</Markdown>
         </Stack>
       )}

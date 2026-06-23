@@ -16,7 +16,9 @@ describe('Polish B1 exam quiz images', () => {
 
     for (const spec of EXAM_QUIZ_IMAGE_SPECS) {
       expect(POLISH_B1_EXAM_QUIZ_IMAGES[spec.id]).toBe(`/examQuiz/${spec.fileName}`);
-      expect(POLISH_B1_EXAM_QUIZ_IMAGE_DESCRIPTIONS[spec.id].length).toBeGreaterThan(80);
+      const description = POLISH_B1_EXAM_QUIZ_IMAGE_DESCRIPTIONS[spec.id];
+      expect(description).toBeDefined();
+      expect(description!.length).toBeGreaterThan(80);
     }
   });
 

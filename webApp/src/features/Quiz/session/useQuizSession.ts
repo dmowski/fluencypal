@@ -270,6 +270,7 @@ export const useQuizSession = (quizId: string | null, onCloseQuiz: () => void) =
         located.question,
         answer,
         quiz.meta.targetLanguageCode,
+        existing.feedback,
       );
       const explanation = await textAi.generate({
         systemMessage: prompts.systemMessage,

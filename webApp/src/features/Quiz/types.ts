@@ -427,6 +427,26 @@ export const isMonologueVoiceQuestion = (q: QuizQuestion): q is MonologueVoiceQu
 export const isWritingTextQuestion = (q: QuizQuestion): q is WritingTextQuestion =>
   q.type === 'writing-text';
 
+export const isProductionQuizQuestion = (q: QuizQuestion): boolean =>
+  q.type === 'describe-picture-voice' ||
+  q.type === 'monologue-voice' ||
+  q.type === 'writing-text';
+
+export const getLearnerProductionAnswerText = (
+  question: QuizQuestion,
+  answer: QuizAnswer,
+): string | null => {
+  if (answer.payload.kind === 'voice' && isProductionQuizQuestion(question)) {
+    const text = answer.payload.transcription.trim();
+    return text || null;
+  }
+  if (answer.payload.kind === 'text' && isWritingTextQuestion(question)) {
+    const text = answer.payload.text.trim();
+    return text || null;
+  }
+  return null;
+};
+
 export const isStateExamQuiz = (quiz: QuizDocument): boolean => quiz.source.type === 'state-exam';
 
 export const isMultipleChoiceAnswer = (a: QuizAnswerPayload): a is MultipleChoiceAnswer =>
