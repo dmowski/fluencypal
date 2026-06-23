@@ -8,7 +8,7 @@ import {
   waitForPracticeAuth,
 } from '../libs/practice';
 
-test.describe('News selectors in feed modal', () => {
+test.describe.skip('News selectors in feed modal', () => {
   test.beforeEach(async () => {
     await resetEmulatorState();
   });

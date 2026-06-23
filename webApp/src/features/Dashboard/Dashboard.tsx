@@ -27,7 +27,6 @@ import { GameDashboardCard } from './GameDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
 import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
-import { NewsDashboardCard } from '../News/NewsDashboardCard';
 import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 
@@ -88,7 +87,6 @@ export function Dashboard({ lang }: DashboardProps) {
                 <InstallAppInstruction />
                 <PracticeCustomConversationsDashboardCard />
                 <ExperimentalDashboardCard />
-                <NewsDashboardCard />
                 <ProgressDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />

@@ -121,7 +121,7 @@ function useProvideDailyTasks(): DailyTaskApi {
 
   const dailyPlans: DayTasksMeta[] = [
     {
-      tasks: ['just-talk', 'goal-lesson', 'news'],
+      tasks: ['just-talk', 'goal-lesson'],
       title: i18n._('Build a steady learning habit'),
       subTitle: i18n._('Start with today’s tasks and keep a gentle pace.'),
       imageUrl: previewImageUrl,
@@ -129,7 +129,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'grammar-improvement', 'news'],
+      tasks: ['just-talk', 'grammar-improvement'],
       title: i18n._('Day two: keep going'),
       subTitle: i18n._('Continue with today’s tasks and stay consistent.'),
       imageUrl: previewImageUrl,
@@ -137,7 +137,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'news'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Day three: steady progress'),
       subTitle: i18n._('You’re doing well. Take a look at today’s tasks.'),
       imageUrl: previewImageUrl,
@@ -145,7 +145,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'news'],
+      tasks: ['just-talk'],
       title: i18n._('Day four: keep the habit alive'),
       subTitle: i18n._(
         'Consistency is key to language learning. Complete today’s tasks to keep the habit alive.',
@@ -155,7 +155,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'grammar-improvement', 'goal-lesson', 'news'],
+      tasks: ['just-talk', 'grammar-improvement', 'goal-lesson'],
       title: i18n._('Day five: keep the rhythm'),
       subTitle: i18n._('You’re in a good flow. Continue with today’s tasks.'),
       imageUrl: previewImageUrl,
@@ -163,7 +163,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'news'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Strong consistency'),
       subTitle: i18n._('Your consistency is paying off. Here are today’s tasks.'),
       imageUrl: previewImageUrl,
@@ -171,7 +171,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'news'],
+      tasks: ['just-talk'],
       title: i18n._('Day seven: one full week'),
       subTitle: i18n._('Nice work reaching a full week. Let’s continue with today’s tasks.'),
       imageUrl: previewImageUrl,
@@ -179,7 +179,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'news'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Day eight: keep moving forward'),
       subTitle: i18n._('Many people stop early, but you are still here. Be proud of that.'),
       imageUrl: previewImageUrl,
@@ -187,7 +187,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       bgColor: 'rgba(147, 7, 255, 0.7)',
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement', 'news'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Today’s tasks'),
       subTitle: i18n._('A calm routine makes steady progress.'),
       imageUrl: previewImageUrl,

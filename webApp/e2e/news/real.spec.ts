@@ -6,7 +6,7 @@ import {
   resetEmulatorState,
 } from '../libs/practice';
 
-test.describe('News getTodayNews scheduling (mocked)', () => {
+test.describe.skip('News getTodayNews scheduling (mocked)', () => {
   test.beforeEach(async () => {
     await resetEmulatorState();
   });

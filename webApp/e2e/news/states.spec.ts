@@ -7,7 +7,7 @@ import {
   seedNewsItem,
 } from '../libs/practice';
 
-test.describe('News states', () => {
+test.describe.skip('News states', () => {
   test.beforeEach(async () => {
     await resetEmulatorState();
   });

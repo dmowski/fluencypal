@@ -5,7 +5,7 @@ import {
   resetEmulatorState,
 } from '../libs/practice';
 
-test.describe('News dashboard card', () => {
+test.describe.skip('News dashboard card', () => {
   test.beforeEach(async () => {
     await resetEmulatorState();
   });
