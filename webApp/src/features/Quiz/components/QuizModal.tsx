@@ -152,6 +152,7 @@ const QuizModalContent = ({ quizId, onClose }: { quizId: string; onClose: () => 
           question={question}
           selections={selections}
           disabled={isSubmitted}
+          isRevealed={isSubmitted}
           onSelectGap={(gapId, optionId) => {
             const nextSelections = { ...selections, [gapId]: optionId };
             const payload: FillGapAnswer = { kind: 'fill-gap', selections: nextSelections };
