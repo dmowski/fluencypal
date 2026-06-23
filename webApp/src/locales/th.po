@@ -1628,7 +1628,16 @@ msgstr "เช็คอิน"
 msgid "Chinese Learning Plan"
 msgstr "แผนการเรียนภาษาจีน"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr ""
+"เลือกตัวเลือกหรือสุ่มเลือกตัวเลือกหนึ่ง แต่ละตัวเลือกมีสองงานเขียนในรูปแบบ "
+"B1 อย่างเป็นทางการ"
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "เลือกคำมาเติมในช่องว่าง"
@@ -2252,7 +2261,8 @@ msgstr "ไม่พบหน้าที่ต้องการ"
 msgid "Could not load article"
 msgstr "ไม่สามารถโหลดบทความได้"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "ไม่สามารถเริ่มการสอบได้ กรุณาลองอีกครั้ง"
@@ -2404,7 +2414,7 @@ msgstr "สร้างสถานการณ์ของคุณเอง"
 msgid "Creating your improvement..."
 msgstr "กำลังสร้างการพัฒนาของคุณ..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "กำลังสร้างแบบทดสอบของคุณ... โดยปกติแล้วจะใช้เวลาประมาณหนึ่งนาที"
@@ -3544,12 +3554,13 @@ msgstr "เรียงความ"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "ระยะเวลาประมาณ: ~{minutes} นาที"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "กำลังประเมิน..."
@@ -3657,7 +3668,7 @@ msgstr "การสอบเสร็จสิ้น"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "ตัวอย่าง: ฉันกำลังเตรียมตัวสำหรับการเดินทางธุรกิจไปยังเบอร์ลิน"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "การสอบ"
@@ -6518,7 +6529,7 @@ msgstr "กำลังโหลดบทความ..."
 msgid "Loading library..."
 msgstr "กำลังโหลดคลังข้อมูล..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "กำลังโหลดแบบทดสอบ..."
@@ -8191,7 +8202,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "ฝึกฝนทุกวัน"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "การสอบฝึกหัด"
@@ -8876,6 +8887,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "ไม่พบแบบทดสอบ เปิดจากบทความข่าว"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "ตัวแปรสุ่ม"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -10215,7 +10231,7 @@ msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10381,7 +10397,9 @@ msgstr "เริ่ม | 5 นาที"
 msgid "Starting webcam... "
 msgstr "กำลังเริ่มกล้องเว็บแคม... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10589,7 +10607,7 @@ msgstr ""
 "มีความรู้ด้าน React และ TypeScript อย่างดี "
 "มีช่องว่างเล็กน้อยในด้านการสื่อสารและการตอบคำถามเกี่ยวกับความเป็นผู้นำ"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10619,7 +10637,7 @@ msgid "Subject:"
 msgstr "เรื่อง:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "ส่ง"
@@ -10972,7 +10990,7 @@ msgid ""
 "the leaderboard."
 msgstr "ทดสอบความรู้ของคุณ มีส่วนร่วมในความท้าทาย และแข่งขันกับผู้อื่นในกระดานผู้นำ"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "ทดสอบระดับของคุณด้วยข้อสอบเต็มรูปแบบ"
@@ -11467,7 +11485,7 @@ msgstr ""
 "คุณไม่จำเป็นต้องเข้มแข็งที่นี่  \n"
 "คุณเพียงแค่ต้องแสดงตัว"
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "แบบทดสอบนี้ยังไม่ได้ถูกสร้างขึ้น กรุณาเปิดจากบทความข่าว"
@@ -11764,7 +11782,7 @@ msgstr ""
 msgid "Translates"
 msgstr "แปลภาษา"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "กำลังแปล..."
@@ -11790,7 +11808,7 @@ msgstr "วันทดลองใช้"
 msgid "Try"
 msgstr "ลอง"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "ลองอีกครั้ง"

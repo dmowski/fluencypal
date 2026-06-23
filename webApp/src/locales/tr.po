@@ -1627,7 +1627,16 @@ msgstr "Giriş Yap"
 msgid "Chinese Learning Plan"
 msgstr "Çince Öğrenme Planı"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr ""
+"Bir varyant seçin ya da rastgele bir tane belirleyin. Her varyant, resmi B1 "
+"formatında iki yazma görevi içerir."
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Boşluk için bir kelime seçin"
@@ -2252,7 +2261,8 @@ msgstr "Sayfa bulunamadı"
 msgid "Could not load article"
 msgstr "Makale yüklenemedi"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Sınav başlatılamadı. Lütfen tekrar deneyin."
@@ -2405,7 +2415,7 @@ msgstr "Kendi Senaryonuzu Oluşturun"
 msgid "Creating your improvement..."
 msgstr "İlerlemeniz oluşturuluyor..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Testiniz oluşturuluyor... Bu genellikle bir dakika kadar sürer."
@@ -3548,12 +3558,13 @@ msgstr "Makaleler"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Zihinsel sağlık ve psikolojiyi tartışmak için olmazsa olmaz kelimeler."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Tahmini süre: ~{dakika} dakika"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Değerlendiriliyor..."
@@ -3661,7 +3672,7 @@ msgstr "Sınav tamamlandı"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Örnek: Berlin'e iş seyahatine hazırlanıyorum"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Sınavlar"
@@ -6523,7 +6534,7 @@ msgstr "Makaleyi yüklüyor..."
 msgid "Loading library..."
 msgstr "Kütüphane yükleniyor..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Yarışma yükleniyor..."
@@ -8206,7 +8217,7 @@ msgstr "Akıcı konuşmayı, telaffuzu ve özgüveni geliştirin."
 msgid "Practice daily"
 msgstr "Günlük pratik yap"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "SINAV PRATİKLERİ"
@@ -8775,6 +8786,11 @@ msgstr "Quiz tamamlandı"
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Bu test bulunamadı. Haber makalesinden açın."
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "Rastgele varyant"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -10117,7 +10133,7 @@ msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10288,7 +10304,9 @@ msgstr "Başlat | 5 dakika"
 msgid "Starting webcam... "
 msgstr "Webcam başlatılıyor..."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10493,7 +10511,7 @@ msgstr ""
 "React ve TypeScript konusunda güçlü bilgi. İletişim ve liderlik "
 "cevaplarında küçük boşluklar."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10523,7 +10541,7 @@ msgid "Subject:"
 msgstr "Konu:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Gönder"
@@ -10878,7 +10896,7 @@ msgstr ""
 "Bilginizi test edin, meydan okumalarına katılın ve liderlik tablosunda "
 "diğerleriyle rekabet edin."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Seviyenizi tam sınavlarla test edin"
@@ -11379,7 +11397,7 @@ msgstr ""
 "Burada güçlü olmak zorunda değilsiniz.  \n"
 "Sadece burada olmanız yeterli."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Bu test henüz oluşturulmadı. Haber makalesinden açın."
@@ -11678,7 +11696,7 @@ msgstr "Translate et"
 msgid "Translates"
 msgstr "Çeviriler"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "Çeviri..."
@@ -11704,7 +11722,7 @@ msgstr "Deneme günleri"
 msgid "Try"
 msgstr "Denemek"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Tekrar dene"

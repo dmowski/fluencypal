@@ -1621,7 +1621,16 @@ msgstr "تسجيل الدخول"
 msgid "Chinese Learning Plan"
 msgstr "خطة تعلم الصينية"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr ""
+"اختر نسخة أو اختر واحدة بصورة عشوائية. كل نسخة تحتوي على مهمتين كتابيتين "
+"بصيغة B1 الرسمية."
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "اختر كلمة للفراغ"
@@ -2241,7 +2250,8 @@ msgstr ""
 "\n"
 "تعذر تحميل المقال\n"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "تعذّر بدء الامتحان. الرجاء المحاولة مرة أخرى."
@@ -2384,7 +2394,7 @@ msgstr "أنشئ سيناريو خاص بك"
 msgid "Creating your improvement..."
 msgstr "جارٍ إنشاء تحسينك..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "جاري إنشاء اختبارك... عادةً ما يستغرق هذا حوالي دقيقة."
@@ -3495,12 +3505,13 @@ msgstr "مقالات"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "كلمات أساسية لمناقشة الصحة العقلية والنفسية."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "الوقت المقدر: ~{minutes} دقائق"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "جارٍ التقييم..."
@@ -3608,7 +3619,7 @@ msgstr "الامتحان مكتمل"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "مثال: أنا أستعد لرحلة عمل إلى برلين"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "اختبارات"
@@ -6424,7 +6435,7 @@ msgstr "جارٍ تحميل المقالة..."
 msgid "Loading library..."
 msgstr "جارٍ تحميل المكتبة..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "جارٍ تحميل الاختبار..."
@@ -8110,7 +8121,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "تدرب يومياً"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "الاختبارات التدريبية"
@@ -8673,6 +8684,11 @@ msgid "Quiz not found. Open it from the news article."
 msgstr ""
 "plaintext\n"
 "لم يتم العثور على الاختبار. افتحه من المقالة الإخبارية.\n"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "متغير عشوائي"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -10011,7 +10027,7 @@ msgstr "النجوم"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10177,7 +10193,9 @@ msgstr "ابدأ | 5 دقائق"
 msgid "Starting webcam... "
 msgstr "يتم تشغيل كاميرا الويب... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10375,7 +10393,7 @@ msgstr ""
 "معرفة قوية بـ React و TypeScript. بعض الفجوات في الإجابات المتعلقة بالتواصل "
 "والقيادة."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10403,7 +10421,7 @@ msgid "Subject:"
 msgstr "الموضوع:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "قدم"
@@ -10751,7 +10769,7 @@ msgid ""
 "the leaderboard."
 msgstr "اختبر معرفتك، وشارك في التحديات، وتنافس مع الآخرين على لوحة المتصدرين."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "اختبر مستواك مع الاختبارات الكاملة"
@@ -11237,7 +11255,7 @@ msgstr ""
 "ليس عليك أن تكون قوياً هنا.  \n"
 "كل ما عليك هو التواجد."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "هذا الاختبار لم يتم إنشاؤه بعد. افتحه من المقالة الإخبارية."
@@ -11530,7 +11548,7 @@ msgstr ""
 msgid "Translates"
 msgstr "يترجم"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "جارٍ الترجمة..."
@@ -11556,7 +11574,7 @@ msgstr "أيام التجربة"
 msgid "Try"
 msgstr "حاول"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "حاول مرة أخرى"

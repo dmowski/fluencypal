@@ -1628,7 +1628,16 @@ msgstr "Tjek Ind"
 msgid "Chinese Learning Plan"
 msgstr "Kinesisk Læringsplan"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr ""
+"Vælg en variant eller vælg en tilfældig. Hver variant har to skriftlige "
+"opgaver i det officielle B1-format."
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Vælg et ord til det tomme felt"
@@ -2251,7 +2260,8 @@ msgstr "Kunne ikke finde side"
 msgid "Could not load article"
 msgstr "Kunne ikke indlæse artikel"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Kunne ikke starte eksamenen. Prøv igen."
@@ -2400,7 +2410,7 @@ msgstr "Opret Dit Eget Scenarie"
 msgid "Creating your improvement..."
 msgstr "Opretter din forbedring..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Opretter din quiz... Dette tager normalt omkring et minut."
@@ -3528,12 +3538,13 @@ msgstr "Essays"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Vigtige ord for at diskutere mental sundhed og psykologi."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Anslået tid: ~{minutes} minutter"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Evaluerer..."
@@ -3643,7 +3654,7 @@ msgstr ""
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Eksempel: Jeg forbereder mig på en forretningsrejse til Berlin"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Eksamen"
@@ -6494,7 +6505,7 @@ msgstr "Indlæser artikel..."
 msgid "Loading library..."
 msgstr "Indlæser bibliotek..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Indlæser quiz..."
@@ -8176,7 +8187,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "Øv dagligt"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "PRAKTISKE EKSAMENER"
@@ -8743,6 +8754,11 @@ msgstr "Quiz færdig"
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Quiz ikke fundet. Åbn det fra nyhedsartiklen."
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "Tilfældig variant"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -10079,7 +10095,7 @@ msgstr "Stjerner"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10247,7 +10263,9 @@ msgstr "Start | 5 min"
 msgid "Starting webcam... "
 msgstr "Starter webcam... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10453,7 +10471,7 @@ msgstr ""
 "Stærk viden om React og TypeScript. Små huller i kommunikation og svar på "
 "lederskab."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10483,7 +10501,7 @@ msgid "Subject:"
 msgstr "Emne:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Indsend"
@@ -10834,7 +10852,7 @@ msgid ""
 "the leaderboard."
 msgstr "Test din viden, deltag i udfordringer og konkurrer med andre på ranglisten."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Test dit niveau med fulde eksamener"
@@ -11332,7 +11350,7 @@ msgstr ""
 "Du behøver ikke at være stærk her.  \n"
 "Du skal bare dukke op."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Denne quiz er endnu ikke blevet genereret. Åbn den fra nyhedsartiklen."
@@ -11631,7 +11649,7 @@ msgstr ""
 msgid "Translates"
 msgstr "Oversætter"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "Oversætter..."
@@ -11657,7 +11675,7 @@ msgstr "Prøvedage"
 msgid "Try"
 msgstr "Prøv"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Prøv igen"

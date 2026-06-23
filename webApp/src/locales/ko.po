@@ -1576,7 +1576,14 @@ msgstr "체크인"
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr "변형을 선택하거나 무작위로 하나를 선택하세요. 각 변형에는 공식적인 B1 형식의 쓰기 과제가 두 개 있습니다."
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "빈칸에 들어갈 단어를 선택하세요."
@@ -2184,7 +2191,8 @@ msgstr "페이지를 찾을 수 없습니다"
 msgid "Could not load article"
 msgstr "기사를 불러올 수 없습니다."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "시험을 시작할 수 없습니다. 다시 시도해 주세요."
@@ -2316,7 +2324,7 @@ msgstr "자신만의 시나리오 만들기"
 msgid "Creating your improvement..."
 msgstr "개선을 생성 중입니다..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "퀴즈를 생성하는 중입니다... 일반적으로 약 1분 정도 소요됩니다."
@@ -3394,12 +3402,13 @@ msgstr "에세이"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "정신 건강과 심리학에 관한 핵심 단어들."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "예상 시간: ~{minutes}분"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "평가 중..."
@@ -3506,7 +3515,7 @@ msgstr "시험 완료"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "예: 저는 베를린으로의 출장 준비를 하고 있습니다"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "시험"
@@ -6194,7 +6203,7 @@ msgstr "기사를 불러오는 중..."
 msgid "Loading library..."
 msgstr "라이브러리 로딩 중..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "퀴즈 로드 중..."
@@ -7814,7 +7823,7 @@ msgstr "FluencyPal과 함께 회화 영어를 연습하세요. 24/7 AI 튜터가
 msgid "Practice daily"
 msgstr "매일 연습하세요"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "연습 시험"
@@ -8351,6 +8360,11 @@ msgstr "퀴즈 완료"
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "퀴즈를 찾을 수 없습니다. 뉴스 기사에서 열어보세요."
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "무작위 변형"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -9653,7 +9667,7 @@ msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -9817,7 +9831,9 @@ msgstr "시작 | 5분"
 msgid "Starting webcam... "
 msgstr "웹캠 시작 중... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10000,7 +10016,7 @@ msgid ""
 "leadership answers."
 msgstr "React 및 TypeScript에 대한 강한 지식. 의사소통 및 리더십 답변에서 약간의 갭이 있음."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10028,7 +10044,7 @@ msgid "Subject:"
 msgstr "주제:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
@@ -10367,7 +10383,7 @@ msgid ""
 "the leaderboard."
 msgstr "당신의 지식을 테스트하고, 도전에 참여하며, 리더보드에서 다른 사람들과 경쟁하세요."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "전체 시험으로 자신의 레벨을 테스트하세요"
@@ -10831,7 +10847,7 @@ msgstr ""
 "여기에서는 강할 필요가 없습니다.  \n"
 "그저 나타나기만 하면 됩니다."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "이 퀴즈는 아직 생성되지 않았습니다. 뉴스 기사에서 열어보세요."
@@ -11111,7 +11127,7 @@ msgstr ""
 msgid "Translates"
 msgstr "번역"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "번역 중..."
@@ -11137,7 +11153,7 @@ msgstr "시험 이용 기간"
 msgid "Try"
 msgstr "시도하다"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "다시 시도하십시오"

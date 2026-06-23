@@ -1564,7 +1564,14 @@ msgstr "签到"
 msgid "Chinese Learning Plan"
 msgstr "中文学习计划"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr "选择一个变体或随机选择一个。每个变体都有两个官方B1格式的写作任务。"
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "选择一个词填空"
@@ -2171,7 +2178,8 @@ msgstr "无法找到页面"
 msgid "Could not load article"
 msgstr "无法加载文章"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "无法开始考试。请重试。"
@@ -2299,7 +2307,7 @@ msgstr "创建您自己的场景"
 msgid "Creating your improvement..."
 msgstr "正在创建您的改进..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "创建您的测验... 这通常需要大约一分钟。"
@@ -3356,12 +3364,13 @@ msgstr "论文"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "讨论精神健康和心理学的必备词汇。"
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "预计时间：约~{minutes}分钟"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "评估中..."
@@ -3468,7 +3477,7 @@ msgstr "考试完成"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "示例：我正在准备去柏林的商务旅行"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "考试"
@@ -6117,7 +6126,7 @@ msgstr "正在加载文章..."
 msgid "Loading library..."
 msgstr "正在加载库..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "加载测验中..."
@@ -7725,7 +7734,7 @@ msgstr "练习英语会话，使用FluencyPal，为您提供24/7的AI导师。�
 msgid "Practice daily"
 msgstr "每天练习"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "练习考试"
@@ -8259,6 +8268,11 @@ msgstr "测验完成"
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "找不到测验。从新闻文章中打开它。"
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "随机变体"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -9555,7 +9569,7 @@ msgstr "星星"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -9719,7 +9733,9 @@ msgstr "开始 | 5 分钟"
 msgid "Starting webcam... "
 msgstr "启动网络摄像头..."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -9896,7 +9912,7 @@ msgid ""
 "leadership answers."
 msgstr "对 React 和 TypeScript 有扎实的知识。沟通和领导方面的回答略有不足。"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -9924,7 +9940,7 @@ msgid "Subject:"
 msgstr "主题:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提交"
@@ -10261,7 +10277,7 @@ msgid ""
 "the leaderboard."
 msgstr "测试你的知识，参加挑战，与排行榜上的其他人竞争。"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "参加完整考试测试你的水平"
@@ -10713,7 +10729,7 @@ msgstr ""
 "在这里你无需保持坚强。  \n"
 "你只需出现即可。"
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "此测验尚未生成。从新闻文章中打开它。"
@@ -10991,7 +11007,7 @@ msgstr "Translate to 翻译为"
 msgid "Translates"
 msgstr "翻译"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "翻译中..."
@@ -11017,7 +11033,7 @@ msgstr "试用天数"
 msgid "Try"
 msgstr "尝试"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "再试一次"

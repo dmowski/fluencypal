@@ -1631,7 +1631,16 @@ msgstr "Реєстрація"
 msgid "Chinese Learning Plan"
 msgstr "План вивчення китайської"
 
-#: src/features/Quiz/components/activities/FillGapActivity.tsx:60
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:31
+#. js-lingui-explicit-id
+msgid ""
+"Choose a variant or pick a random one. Each variant has two writing tasks "
+"in the official B1 format."
+msgstr ""
+"Виберіть варіант або оберіть випадковий. Кожен варіант містить два завдання "
+"з письма у офіційному форматі B1."
+
+#: src/features/Quiz/components/activities/FillGapActivity.tsx:121
 #. js-lingui-explicit-id
 msgid "Choose a word for the blank"
 msgstr "Виберіть слово для пробілу"
@@ -2254,7 +2263,8 @@ msgstr "Не вдалося знайти сторінку"
 msgid "Could not load article"
 msgstr "Не вдалося завантажити статтю"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:50
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:52
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:89
 #. js-lingui-explicit-id
 msgid "Could not start the exam. Please try again."
 msgstr "Не вдалося розпочати іспит. Будь ласка, спробуйте ще раз."
@@ -2405,7 +2415,7 @@ msgstr "Створіть свій власний сценарій"
 msgid "Creating your improvement..."
 msgstr "Створюємо ваше вдосконалення..."
 
-#: src/features/Quiz/components/QuizModal.tsx:260
+#: src/features/Quiz/components/QuizModal.tsx:261
 #. js-lingui-explicit-id
 msgid "Creating your quiz... This usually takes about a minute."
 msgstr "Створення вашого тесту... Зазвичай це займає приблизно хвилину."
@@ -3551,12 +3561,13 @@ msgstr "Есе"
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Основні слова для обговорення психічного здоров'я та психології."
 
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:37
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Estimated time: ~{minutes} minutes"
 msgstr "Орієнтовний час: ~{minutes} хвилин"
 
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Evaluating..."
 msgstr "Оцінювання..."
@@ -3664,7 +3675,7 @@ msgstr "Екзамен завершено"
 msgid "Example: I'm preparing for a business trip to Berlin"
 msgstr "Приклад: Я готуюся до ділової поїздки в Берлін"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Exams"
 msgstr "Екзамени"
@@ -6539,7 +6550,7 @@ msgstr "Завантаження статті..."
 msgid "Loading library..."
 msgstr "Завантаження бібліотеки..."
 
-#: src/features/Quiz/components/QuizModal.tsx:268
+#: src/features/Quiz/components/QuizModal.tsx:269
 #. js-lingui-explicit-id
 msgid "Loading quiz..."
 msgstr "Завантаження вікторини..."
@@ -8237,7 +8248,7 @@ msgstr ""
 msgid "Practice daily"
 msgstr "Практикуйтеся щодня"
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:77
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:117
 #. js-lingui-explicit-id
 msgid "PRACTICE EXAMS"
 msgstr "ПРАКТИЧНІ ІСПИТИ"
@@ -8808,6 +8819,11 @@ msgstr "Квіз завершено"
 #. js-lingui-explicit-id
 msgid "Quiz not found. Open it from the news article."
 msgstr "Квіз не знайдено. Відкрийте його з новинної статті."
+
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:50
+#. js-lingui-explicit-id
+msgid "Random variant"
+msgstr "Випадковий варіант"
 
 #: src/features/Alias/components/GameEnd.tsx:116
 #: src/features/Alias/components/Scoreboard.tsx:101
@@ -10153,7 +10169,7 @@ msgstr "Зірки"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
@@ -10324,7 +10340,9 @@ msgstr "Старт | 5 хв"
 msgid "Starting webcam... "
 msgstr "Запуск вебкамери... "
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:37
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:49
+#: src/features/Dashboard/Exams/WritingVariantPicker.tsx:65
 #: src/features/News/NewsModal.tsx:465
 #. js-lingui-explicit-id
 msgid "Starting..."
@@ -10529,7 +10547,7 @@ msgstr ""
 "Сильні знання React та TypeScript. Незначні прогалини в комунікації та "
 "відповідях на питання лідерства."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:68
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:108
 #. js-lingui-explicit-id
 msgid ""
 "Structured practice exams with reading, listening, grammar, and speaking "
@@ -10559,7 +10577,7 @@ msgid "Subject:"
 msgstr "Тема:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/Quiz/components/QuizModal.tsx:341
+#: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Надіслати"
@@ -10915,7 +10933,7 @@ msgstr ""
 "Перевірте свої знання, беріть участь у викликах та змагайтеся з іншими у "
 "таблиці лідерів."
 
-#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:78
+#: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Test your level with full exams"
 msgstr "Перевірте свій рівень за допомогою повних іспитів"
@@ -11413,7 +11431,7 @@ msgstr ""
 "Тут не потрібно бути сильним.  \n"
 "Потрібно просто прийти."
 
-#: src/features/Quiz/components/QuizModal.tsx:288
+#: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
 msgid "This quiz has not been generated yet. Open it from the news article."
 msgstr "Ця вікторина ще не була створена. Відкрийте її з новинної статті."
@@ -11709,7 +11727,7 @@ msgstr "Від перекладача до перекладача"
 msgid "Translates"
 msgstr "Перекладати"
 
-#: src/features/Reader/components/TextPopover.tsx:208
+#: src/features/Reader/components/TextPopover.tsx:215
 #. js-lingui-explicit-id
 msgid "Translating..."
 msgstr "Переклад..."
@@ -11735,7 +11753,7 @@ msgstr "Дні пробного періоду"
 msgid "Try"
 msgstr "Спробуйте"
 
-#: src/features/Quiz/components/QuizModal.tsx:280
+#: src/features/Quiz/components/QuizModal.tsx:281
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Спробуйте ще раз"
