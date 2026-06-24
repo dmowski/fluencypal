@@ -11,6 +11,7 @@ This file applies to `webApp/src/features/Reader/**`.
   - `demo/LandingReaderDemo.tsx`: live Reader demo using `LandingBooksProvider`.
   - `landingData.ts` / `landingSettings.ts`: copy and layout constants.
   - `bookSeo.ts`: host-specific robots/sitemap helpers and JSON-LD for `/landing`.
+  - `/api/sitemap` and `/sitemap.xml` both serve host-specific XML (`book.*` → landing only; `app.*` → app catalog / empty metadata route).
 - `components/`: Reader UI and interaction surface.
 - `components/Paragraph/`: markdown paragraph rendering and selection/highlight interactions.
 - `components/Paragraph/libs/`: paragraph-specific pure utilities (offset mapping, DOM restore, pointer and popover math).

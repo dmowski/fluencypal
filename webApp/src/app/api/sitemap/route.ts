@@ -1,7 +1,8 @@
-import { generateSitemap } from './generateSitemap';
+import { generateSitemapForHost } from './generateSitemap';
 
 export async function GET(request: Request) {
-  const textResponse = await generateSitemap();
+  const host = request.headers.get('host');
+  const textResponse = await generateSitemapForHost(host);
 
   return new Response(textResponse, {
     headers: {

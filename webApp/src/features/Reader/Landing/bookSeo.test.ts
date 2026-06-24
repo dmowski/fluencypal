@@ -1,5 +1,6 @@
 import {
   bookLandingAbsoluteUrl,
+  generateBookSitemapXml,
   getAppHostRobots,
   getBookHostRobots,
   getBookLandingSitemapEntries,
@@ -11,6 +12,12 @@ describe('bookSeo', () => {
     const entries = getBookLandingSitemapEntries();
     expect(entries).toHaveLength(1);
     expect(entries[0]?.url).toBe(bookLandingAbsoluteUrl);
+  });
+
+  test('book sitemap XML lists only the landing page', () => {
+    const xml = generateBookSitemapXml();
+    expect(xml).toContain(`<loc>${bookLandingAbsoluteUrl}</loc>`);
+    expect(xml).not.toContain('app.fluencypal.com');
   });
 
   test('book host robots allow landing and block the reader app', () => {

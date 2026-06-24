@@ -3,6 +3,7 @@ import { bookLandingSiteUrl } from './landingSettings';
 
 export const bookLandingPath = '/landing';
 export const bookLandingAbsoluteUrl = `${bookLandingSiteUrl}landing`;
+export const bookLandingSitemapLastMod = '2026-06-24T00:00:00.000Z';
 
 export function getBookLandingSitemapEntries(): MetadataRoute.Sitemap {
   return [
@@ -13,6 +14,18 @@ export function getBookLandingSitemapEntries(): MetadataRoute.Sitemap {
       priority: 1,
     },
   ];
+}
+
+export function generateBookSitemapXml(): string {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>${bookLandingAbsoluteUrl}</loc>
+<lastmod>${bookLandingSitemapLastMod}</lastmod>
+<changefreq>monthly</changefreq>
+<priority>1.0000</priority>
+</url>
+</urlset>`;
 }
 
 export function getBookHostRobots(): MetadataRoute.Robots {
