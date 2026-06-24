@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { signInTestUserOnPage, waitForSignedIn } from '../books/auth';
+import { mockExternalIpServices } from '../practice/network';
 
 const FIREBASE_API_KEY = 'fake-api-key';
 const AUTH_EMULATOR_HOST = 'http://127.0.0.1:9099';
@@ -36,6 +37,7 @@ export const ensureAdminUserExists = async (): Promise<void> => {
  */
 export const signInAsAdmin = async (page: Page): Promise<string> => {
   await ensureAdminUserExists();
+  await mockExternalIpServices(page);
 
   await page.goto('/staats');
 
