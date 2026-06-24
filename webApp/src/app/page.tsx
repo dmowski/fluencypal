@@ -23,10 +23,7 @@ interface PageProps {
   }>;
 }
 
-const isBookHost = (host: string | null): boolean => {
-  if (!host) return false;
-  return host.split(':')[0].toLowerCase().startsWith('book.');
-};
+import { isBookHost } from '@/features/SEO/hosts';
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const host = (await headers()).get('host');

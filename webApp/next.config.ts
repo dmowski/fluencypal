@@ -149,6 +149,19 @@ const nextConfig: NextConfig = {
         destination: 'https://book.fluencypal.com/:path*',
         permanent: true,
       },
+      // Book landing lives on the book subdomain.
+      {
+        source: '/landing',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/landing',
+        permanent: true,
+      },
+      {
+        source: '/:lang/landing',
+        has: [{ type: 'host', value: 'app.fluencypal.com' }],
+        destination: 'https://book.fluencypal.com/landing',
+        permanent: true,
+      },
     ];
   },
 };

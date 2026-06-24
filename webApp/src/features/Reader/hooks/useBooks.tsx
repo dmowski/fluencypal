@@ -19,7 +19,7 @@ import { useUrlState } from '../../Url/useUrlState';
 
 type BooksContextType = ReturnType<typeof useBooksState>;
 
-const BooksContext = createContext<BooksContextType | null>(null);
+export const BooksContext = createContext<BooksContextType | null>(null);
 
 const createBookId = () => {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {

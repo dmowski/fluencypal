@@ -5,6 +5,12 @@ This file applies to `webApp/src/features/Reader/**`.
 ## Structure
 
 - `ReaderPage.tsx`: route-facing entry for Reader feature; switches list vs reader flow.
+- `Landing/`: marketing landing page for the Books app (`/landing` on `book.fluencypal.com`).
+  - `BookLandingPageNext.tsx`: server entry with SEO metadata.
+  - `BookLandingPage.tsx`: client page assembly (hero, demo, features, CTA).
+  - `demo/LandingReaderDemo.tsx`: live Reader demo using `LandingBooksProvider`.
+  - `landingData.ts` / `landingSettings.ts`: copy and layout constants.
+  - `bookSeo.ts`: host-specific robots/sitemap helpers and JSON-LD for `/landing`.
 - `components/`: Reader UI and interaction surface.
 - `components/Paragraph/`: markdown paragraph rendering and selection/highlight interactions.
 - `components/Paragraph/libs/`: paragraph-specific pure utilities (offset mapping, DOM restore, pointer and popover math).

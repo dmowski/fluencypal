@@ -1,10 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
 
-const isBookHost = (host: string | null): boolean => {
-  if (!host) return false;
-  return host.split(':')[0].toLowerCase().startsWith('book.');
-};
+import { isBookHost } from '@/features/SEO/hosts';
 
 const practiceManifest: MetadataRoute.Manifest = {
   id: '/?source=pwa-app',
