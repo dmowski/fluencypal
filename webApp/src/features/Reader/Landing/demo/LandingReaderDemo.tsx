@@ -11,8 +11,8 @@ import { landingDemoBook } from './landingDemoBook';
 
 const demoFrameSx = {
   width: '100%',
-  minHeight: { xs: '620px', md: '1040px' },
-  maxHeight: { xs: '90vh', md: '1040px' },
+  height: '100dvh',
+  minHeight: '100dvh',
   overflow: 'hidden',
   backgroundColor: '#F4E1C6',
 } as const;
