@@ -12,10 +12,10 @@ webApp/src/features/Blog/
   types.ts                   — source of truth for all data shapes (BlogDocMeta, BlogVersionDoc, BlogCategoryDocument, BlogPost)
   backend/blogMappers.ts       — localize Firestore docs to a single `lang` for the public API
   BlogAdmin.tsx              — admin list UI (embedded in AdminStats)
-  BlogEditorModal.tsx        — thin orchestrator: wires useBlogDraft + subcomponents inside CustomModal
+  BlogEditorModal.tsx        — thin orchestrator: full-width split layout (editor left, preview right)
   BlogEditorHeader.tsx       — header row: title, published chip, language selector
-  BlogEditorForm.tsx         — edit-tab form fields and action buttons
-  BlogEditorPreview.tsx      — preview-tab rendered output
+  BlogEditorForm.tsx         — editor form fields, Rich/Text content tabs, and action buttons
+  BlogEditorPreview.tsx      — live preview rendered alongside the editor
   BlogCategoryModal.tsx      — pick existing category or create a new one
   useBlogDraft.ts            — hook: Firestore I/O, draft state, AI translation logic
   useBlogCategories.ts       — hook: list/create/update/delete categories in blogMetadata

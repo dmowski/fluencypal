@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Stack, Tab, Tabs } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Loader } from 'lucide-react';
 import { BlogDocMeta } from './types';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
@@ -21,7 +21,6 @@ interface BlogEditorModalProps {
 }
 
 export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEditorModalProps) => {
-  const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit');
   const [activeLang, setActiveLang] = useState<SupportedLanguage>('en');
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [isSavingCategory, setIsSavingCategory] = useState(false);
@@ -105,27 +104,54 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
   };
 
   return (
-    <CustomModal onClose={onClose} isOpen={true}>
-      <Stack sx={{ width: '100%', maxWidth: '900px', gap: '20px' }}>
-        <BlogEditorHeader
-          enTitle={localDraft.title['en']}
-          isPublished={isPublished}
-          activeLang={activeLang}
-          onLangChange={setActiveLang}
-        />
-
-        <Tabs value={activeTab} onChange={(_, v) => setActiveTab(v as 'edit' | 'preview')}>
-          <Tab label="Edit" value="edit" />
-          <Tab label="Preview" value="preview" />
-        </Tabs>
+    <CustomModal onClose={onClose} isOpen={true} desktopPadding="0" mobilePadding="0">
+      <Stack
+        sx={{
+          width: '100%',
+          height: '100dvh',
+          maxHeight: '100dvh',
+          overflow: 'hidden',
+        }}
+      >
+        <Stack
+          sx={{
+            flexShrink: 0,
+            padding: { xs: '16px 48px 16px 16px', sm: '16px 56px 16px 24px' },
+            borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
+          }}
+        >
+          <BlogEditorHeader
+            enTitle={localDraft.title['en']}
+            isPublished={isPublished}
+            activeLang={activeLang}
+            onLangChange={setActiveLang}
+          />
+        </Stack>
 
         {isLoadingDraft ? (
-          <Stack sx={{ alignItems: 'center', padding: '40px' }}>
+          <Stack sx={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Loader size="24px" />
           </Stack>
         ) : (
-          <>
-            {activeTab === 'edit' && (
+          <Stack
+            sx={{
+              flex: 1,
+              flexDirection: 'row',
+              minHeight: 0,
+              overflow: 'hidden',
+            }}
+          >
+            <Stack
+              sx={{
+                flex: 1,
+                minWidth: 0,
+                height: '100%',
+                overflow: 'auto',
+                borderRight: '1px solid rgba(255, 255, 255, 0.12)',
+                padding: { xs: '16px', sm: '24px' },
+                boxSizing: 'border-box',
+              }}
+            >
               <BlogEditorForm
                 draft={localDraft}
                 blogId={blog.id}
@@ -156,12 +182,22 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
                 onTranslateToAllWithGoogle={handleTranslateToAllLanguagesWithGoogle}
                 onRenameId={onRenameId}
               />
-            )}
+            </Stack>
 
-            {activeTab === 'preview' && (
+            <Stack
+              sx={{
+                flex: 1,
+                minWidth: 0,
+                height: '100%',
+                overflow: 'auto',
+                padding: { xs: '16px', sm: '24px' },
+                boxSizing: 'border-box',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              }}
+            >
               <BlogEditorPreview draft={localDraft} activeLang={activeLang} />
-            )}
-          </>
+            </Stack>
+          </Stack>
         )}
       </Stack>
 

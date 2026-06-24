@@ -23,6 +23,8 @@ export const BlogEditorPreview = ({ draft, activeLang }: BlogEditorPreviewProps)
         borderRadius: '8px',
         padding: '24px',
         gap: '16px',
+        minHeight: '100%',
+        boxSizing: 'border-box',
       }}
     >
       {draft.imagePreviewUrl && (

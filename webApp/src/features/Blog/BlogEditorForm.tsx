@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import { Button, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
 import { Globe, Loader } from 'lucide-react';
 import { RichTextEditor } from '@/features/Chat/RichTextEditor';
 import { SupportedLanguage, fullEnglishLanguageName } from '@/features/Lang/lang';
@@ -67,6 +67,7 @@ export const BlogEditorForm = ({
 
   const [idDraft, setIdDraft] = useState(blogId);
   const [isRenamingId, setIsRenamingId] = useState(false);
+  const [contentEditorTab, setContentEditorTab] = useState<'rich' | 'text'>('rich');
 
   const handleRenameId = async () => {
     const trimmed = idDraft.trim();
@@ -214,7 +215,37 @@ export const BlogEditorForm = ({
         <Typography variant="caption" sx={{ opacity: 0.7 }}>
           Content ({activeLang})
         </Typography>
-        <RichTextEditor value={contentValue} onChange={onContentChange} reloadKey={activeLang} />
+        <Tabs
+          value={contentEditorTab}
+          onChange={(_, value) => setContentEditorTab(value as 'rich' | 'text')}
+          sx={{ minHeight: '36px' }}
+        >
+          <Tab label="Rich editor" value="rich" sx={{ minHeight: '36px', py: 0 }} />
+          <Tab label="Text" value="text" sx={{ minHeight: '36px', py: 0 }} />
+        </Tabs>
+        {contentEditorTab === 'rich' ? (
+          <RichTextEditor
+            value={contentValue}
+            onChange={onContentChange}
+            reloadKey={`${activeLang}-rich`}
+          />
+        ) : (
+          <TextField
+            value={contentValue}
+            onChange={(e) => onContentChange(e.target.value)}
+            multiline
+            minRows={20}
+            fullWidth
+            placeholder="Markdown content"
+            sx={{
+              '& .MuiInputBase-root': {
+                fontFamily: 'monospace',
+                fontSize: '14px',
+                alignItems: 'flex-start',
+              },
+            }}
+          />
+        )}
       </Stack>
 
       {/* Actions */}
