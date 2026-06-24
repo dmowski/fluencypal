@@ -2,6 +2,8 @@ import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { FeatureData, FeaturesInfo } from './types';
 
+const BOOK_LANDING_URL = 'https://book.fluencypal.com/landing';
+
 export const getFeaturesData = (lang: SupportedLanguage): FeaturesInfo => {
   const i18n = getI18nInstance(lang);
 
@@ -252,6 +254,45 @@ After listening, you complete a quiz where you rebuild parts of the text word by
 ## Why it helps
 
 Stories combine reading, listening, and active reconstruction. This makes them a practical alternative to passive content consumption and a useful way to practice during commutes or short breaks.`,
+      ),
+    },
+    {
+      id: 'books-reader',
+      title: i18n._('FluencyPal Books — Read and Learn English'),
+      subTitle: i18n._(
+        'Upload EPUBs, translate words while you read, highlight passages, and listen with text-to-speech.',
+      ),
+      metaTitle: i18n._('FluencyPal Books — Read and Learn English | FluencyPal'),
+      metaDescription: i18n._(
+        'Read books in English with instant word translation, highlights, text-to-speech, and a synced library. Upload EPUBs or browse free classics.',
+      ),
+      keywords: [
+        'English reading practice',
+        'read books to learn English',
+        'EPUB reader for language learners',
+        'FluencyPal Books',
+      ],
+      content: i18n._(
+        `## Read real books while you learn English
+
+FluencyPal Books is a focused reading app for language learners. It is separate from the main practice dashboard so you can stay in the book while you study vocabulary, grammar in context, and listening skills.
+
+Learn more on the [FluencyPal Books landing page](${BOOK_LANDING_URL}).
+
+## What you can do
+
+- upload your own EPUB files, or convert PDF and DOCX
+- click any word for an instant translation, or enable hover translation
+- highlight passages and jump back to them later
+- listen with browser text-to-speech while you read
+- browse free public-domain classics from the Gutenberg library
+- sync your library, highlights, and reading progress across devices
+
+## Why it helps
+
+Reading long-form English connects vocabulary and grammar to real stories and ideas. FluencyPal Books keeps that experience calm and book-first, with learning tools one tap away instead of breaking your flow.
+
+Open the [Books landing page](${BOOK_LANDING_URL}) to try a live demo of the reader and start reading.`,
       ),
     },
     {
