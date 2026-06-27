@@ -1,35 +1,33 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { ThemeProvider } from '@mui/material';
 import { lightTheme } from '@/features/uiKit/theme';
 import { getMetadataIcons, getOpenGraph, getTwitterCard } from '@/features/SEO/metadata';
 import { BookLandingPage } from './BookLandingPage';
 import { BookLandingStructuredData } from './components/BookLandingStructuredData';
 import { bookLandingAbsoluteUrl } from './bookSeo';
-import { bookLandingSiteUrl } from './landingSettings';
-
-const landingTitle = 'FluencyPal Books – Read, Translate & Learn English';
-const landingDescription =
-  'Upload EPUBs, translate words instantly, highlight passages, listen with text-to-speech, and sync your reading library across devices. A focused reader built for language learners.';
-const landingCanonical = bookLandingAbsoluteUrl;
+import { bookLandingDescription, bookLandingTitle } from './landingData';
+import { bookLandingOpenGraphImage, bookLandingSiteUrl } from './landingSettings';
 
 export function generateBookLandingMetadata(): Metadata {
   return {
-    title: landingTitle,
-    description: landingDescription,
+    title: bookLandingTitle,
+    description: bookLandingDescription,
     metadataBase: new URL(bookLandingSiteUrl),
     alternates: {
-      canonical: landingCanonical,
+      canonical: bookLandingAbsoluteUrl,
     },
     icons: getMetadataIcons(),
     openGraph: getOpenGraph({
-      title: landingTitle,
-      description: landingDescription,
-      ogUrl: landingCanonical,
-      alt: landingTitle,
+      title: bookLandingTitle,
+      description: bookLandingDescription,
+      ogUrl: bookLandingAbsoluteUrl,
+      openGraphImageUrl: bookLandingOpenGraphImage,
+      alt: bookLandingTitle,
     }),
     twitter: getTwitterCard({
-      title: landingTitle,
-      description: landingDescription,
+      title: bookLandingTitle,
+      description: bookLandingDescription,
+      openGraphImageUrl: bookLandingOpenGraphImage,
     }),
     robots: {
       index: true,
@@ -38,14 +36,18 @@ export function generateBookLandingMetadata(): Metadata {
   };
 }
 
+export function generateBookLandingViewport(): Viewport {
+  return {
+    themeColor: '#F4E1C6',
+  };
+}
+
 export function BookLandingPageNext() {
   return (
     <html lang="en">
-      <head>
-        <BookLandingStructuredData />
-      </head>
       <body>
         <ThemeProvider theme={lightTheme}>
+          <BookLandingStructuredData />
           <BookLandingPage />
         </ThemeProvider>
       </body>

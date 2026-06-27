@@ -1,15 +1,10 @@
-'use client';
-
-import { Button, Stack } from '@mui/material';
-import { useState } from 'react';
-import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
-import { bookLandingCtaColor, bookLandingMaxWidth } from '../landingSettings';
-import { LandingReaderDemo } from '../demo/LandingReaderDemo';
+import { Stack } from '@mui/material';
+import { landingDemoExcerpt } from '../landingData';
+import { bookLandingMaxWidth } from '../landingSettings';
 import { BodyText, H2, SubTitle } from './Typography';
+import { ReaderDemoModal } from './ReaderDemoModal';
 
 export const ReaderDemoSection = () => {
-  const [isDemoOpen, setIsDemoOpen] = useState(false);
-
   return (
     <Stack
       id="demo"
@@ -40,38 +35,48 @@ export const ReaderDemoSection = () => {
           text-to-speech.
         </SubTitle>
         <BodyText>
-          Demo book: <strong>The Great Gatsby</strong> (public domain excerpt).
+          Demo book: <strong>The Great Gatsby</strong> by F. Scott Fitzgerald (public domain
+          excerpt).
         </BodyText>
-        <Button
-          variant="contained"
-          size="large"
-          onClick={() => setIsDemoOpen(true)}
+        <Stack
+          component="blockquote"
           sx={{
-            marginTop: '8px',
-            borderRadius: '999px',
-            textTransform: 'none',
-            fontWeight: 700,
-            padding: '14px 32px',
-            backgroundColor: bookLandingCtaColor,
-            boxShadow: 'none',
-            '&:hover': {
-              backgroundColor: '#1a0f08',
-              boxShadow: 'none',
-            },
+            maxWidth: '680px',
+            margin: '8px 0 0',
+            padding: '20px 24px',
+            borderLeft: '4px solid rgba(139, 69, 19, 0.45)',
+            backgroundColor: 'rgba(255, 255, 255, 0.35)',
+            borderRadius: '0 12px 12px 0',
+            textAlign: 'left',
           }}
         >
-          Open demo
-        </Button>
+          <BodyText>{landingDemoExcerpt}</BodyText>
+        </Stack>
+        <Stack
+          component="picture"
+          sx={{
+            display: 'block',
+            width: '100%',
+            maxWidth: '920px',
+            marginTop: '16px',
+          }}
+        >
+          <source srcSet="/landing/books-reader-demo.webp" type="image/webp" />
+          <Stack
+            component="img"
+            src="/landing/books-reader-demo.svg"
+            alt="FluencyPal Books reader showing word translation and highlights while reading The Great Gatsby"
+            sx={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '16px',
+              border: '1px solid rgba(44, 24, 16, 0.12)',
+              boxShadow: '0 12px 40px rgba(44, 24, 16, 0.12)',
+            }}
+          />
+        </Stack>
+        <ReaderDemoModal />
       </Stack>
-
-      <CustomModal
-        isOpen={isDemoOpen}
-        onClose={() => setIsDemoOpen(false)}
-        desktopPadding="0"
-        mobilePadding="0"
-      >
-        <LandingReaderDemo />
-      </CustomModal>
     </Stack>
   );
 };

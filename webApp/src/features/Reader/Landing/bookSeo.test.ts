@@ -6,6 +6,7 @@ import {
   getBookLandingSitemapEntries,
   getBookLandingStructuredData,
 } from './bookSeo';
+import { bookLandingTitle } from './landingData';
 
 describe('bookSeo', () => {
   test('book landing sitemap contains only the public landing URL', () => {
@@ -40,9 +41,18 @@ describe('bookSeo', () => {
     });
   });
 
-  test('structured data points at the landing page URL', () => {
+  test('structured data graph includes landing page, FAQ, and software application', () => {
     const data = getBookLandingStructuredData();
-    expect(data.url).toBe(bookLandingAbsoluteUrl);
-    expect(data['@type']).toBe('WebPage');
+    expect(data['@graph']).toBeDefined();
+
+    const webPage = data['@graph'].find((node) => node['@type'] === 'WebPage');
+    const faqPage = data['@graph'].find((node) => node['@type'] === 'FAQPage');
+    const software = data['@graph'].find((node) => node['@type'] === 'SoftwareApplication');
+
+    expect(webPage?.url).toBe(bookLandingAbsoluteUrl);
+    expect(webPage?.name).toBe(bookLandingTitle);
+    expect(faqPage?.mainEntity).toHaveLength(6);
+    expect(software?.featureList).toHaveLength(6);
+    expect(software?.isAccessibleForFree).toBe(true);
   });
 });

@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, Stack, Typography } from '@mui/material';
 import { MoveRight } from 'lucide-react';
 import { bookLandingAppHref, bookLandingCtaColor, bookLandingMaxWidth } from '../landingSettings';

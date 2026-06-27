@@ -1,5 +1,3 @@
-'use client';
-
 import { Link, Stack, Typography } from '@mui/material';
 import { bookLandingMaxWidth } from '../landingSettings';
 

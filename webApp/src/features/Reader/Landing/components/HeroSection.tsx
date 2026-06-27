@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, Stack } from '@mui/material';
 import { MoveRight } from 'lucide-react';
 import {
@@ -8,7 +6,8 @@ import {
   bookLandingCtaColor,
   bookLandingMaxWidth,
 } from '../landingSettings';
-import { H1, PageLabel, SubTitle } from './Typography';
+import { bookLandingIntroParagraph } from '../landingData';
+import { BodyText, H1, PageLabel, SubTitle } from './Typography';
 
 export const BookLandingHeader = () => {
   return (
@@ -40,7 +39,7 @@ export const BookLandingHeader = () => {
           <Stack
             component="img"
             src="/logo.svg"
-            alt="FluencyPal"
+            alt="FluencyPal Books"
             sx={{ width: '140px', height: 'auto', filter: 'brightness(0.2)' }}
           />
           <PageLabel>Books</PageLabel>
@@ -89,12 +88,15 @@ export const HeroSection = () => {
           textAlign: 'center',
         }}
       >
-        <PageLabel>FluencyPal Reader</PageLabel>
-        <H1>Read any book. Learn English as you go.</H1>
+        <PageLabel>FluencyPal Books</PageLabel>
+        <H1>Read, translate, and learn English from any book</H1>
         <SubTitle>
-          A focused reading app for language learners — upload EPUBs, translate words instantly,
+          A focused EPUB reader for language learners — upload ebooks, translate words instantly,
           highlight passages, listen aloud, and sync your library everywhere.
         </SubTitle>
+        <Stack sx={{ maxWidth: '760px' }}>
+          <BodyText>{bookLandingIntroParagraph}</BodyText>
+        </Stack>
         <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ gap: '12px', marginTop: '12px' }}>
           <Button
             href={bookLandingAppHref}

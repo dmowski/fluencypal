@@ -1,5 +1,3 @@
-'use client';
-
 import { Stack } from '@mui/material';
 import { bookLandingSteps } from '../landingData';
 import { bookLandingAccentColor, bookLandingMaxWidth } from '../landingSettings';
