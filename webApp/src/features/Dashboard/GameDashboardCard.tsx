@@ -12,11 +12,18 @@ import { GameQuestion } from '../Game/GameQuestion';
 import { SectionHeader } from './CartsHeader';
 import { PositionChanged } from '../Game/PositionChanged';
 import { Loader, Swords } from 'lucide-react';
+import { GameStats } from '../Game/GameStats';
+import { useUrlState } from '../Url/useUrlState';
 
 export const GameDashboardCard = () => {
   const game = useGame();
   const { i18n } = useLingui();
   const settings = useSettings();
+  const [isFullRatingsModalOpen, setIsFullRatingsModalOpen] = useUrlState(
+    'isFullRatingsModalOpen',
+    false,
+    false,
+  );
   const isGameOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
   const [isShowOnboarding, setIsShowOnboarding] = useState(false);
 
@@ -33,11 +40,22 @@ export const GameDashboardCard = () => {
         gap: '20px',
       }}
     >
+      {isFullRatingsModalOpen && (
+        <FullRatingsModal
+          onClose={() => {
+            setIsFullRatingsModalOpen(false);
+          }}
+        />
+      )}
       <SectionHeader
         title={i18n._('Game')}
         subTitle={i18n._(
           'Test your knowledge, participate in challenges, and compete with others on the leaderboard.',
         )}
+        buttonTitle={i18n._('Rating')}
+        onButtonClick={() => {
+          setIsFullRatingsModalOpen(true);
+        }}
       />
 
       {isShowOnboarding && !isGameOnboardingCompleted && (
@@ -135,5 +153,30 @@ export const GameDashboardCard = () => {
         </StoreCard>
       </Stack>
     </Stack>
+  );
+};
+
+export const FullRatingsModal = ({ onClose }: { onClose: () => void }) => {
+  const { i18n } = useLingui();
+  return (
+    <CustomModal isOpen={true} onClose={onClose}>
+      <Stack
+        sx={{
+          width: '100%',
+          maxWidth: '600px',
+          gap: '20px',
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {i18n._('Full game ratings')}
+        </Typography>
+        <GameStats />
+      </Stack>
+    </CustomModal>
   );
 };

@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Simplify .env configs: local and prod
-
 ## Write review for the app: add message to chat
 
 ## Integration with google search console.
