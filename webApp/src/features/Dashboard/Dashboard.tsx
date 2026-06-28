@@ -22,13 +22,13 @@ import {
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
 import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
-import { PublicChatDashboardCard } from './PublicChatDashboardCard';
 import { GameDashboardCard } from './GameDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
 import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
 import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
 import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
+import { ReviewDashboard } from '../Review/ReviewDashboard';
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -97,6 +97,7 @@ export function Dashboard({ lang }: DashboardProps) {
 
                 <DailyQuestionDashboardCard />
                 <ExamsDashboardCard />
+                <ReviewDashboard />
               </Stack>
             </>
           )}

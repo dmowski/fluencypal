@@ -1,5 +1,11 @@
 # Live document with short/long term ideas
 
+## Simplify .env configs: local and prod
+
+## Or just add block: write review for the app
+
+Show it only for paid users. To post messages on verified review platforms
+
 ## Integration with google search console.
 
 Load stats to code base. and ask ai to do SEO analysis
