@@ -2,9 +2,7 @@
 
 ## Simplify .env configs: local and prod
 
-## Or just add block: write review for the app
-
-Show it only for paid users. To post messages on verified review platforms
+## Write review for the app: add message to chat
 
 ## Integration with google search console.
 

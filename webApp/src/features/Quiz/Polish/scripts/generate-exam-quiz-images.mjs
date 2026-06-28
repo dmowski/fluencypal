@@ -102,9 +102,7 @@ const runPool = async (items, worker, limit) => {
     }
   };
 
-  await Promise.all(
-    Array.from({ length: Math.min(limit, items.length) }, () => runWorker()),
-  );
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, () => runWorker()));
 
   return results;
 };
@@ -143,7 +141,7 @@ const generateOne = async (client, spec) => {
 const main = async () => {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    throw new Error('OPENAI_API_KEY is not set (use --env-file=.env.tool)');
+    throw new Error('OPENAI_API_KEY is not set (use --env-file=.env)');
   }
 
   const client = new OpenAI({ apiKey });
@@ -190,11 +188,7 @@ const main = async () => {
     `generating ${pending.length} image(s) with concurrency ${concurrency} (${model}, quality=${quality})`,
   );
 
-  const generated = await runPool(
-    pending,
-    (spec) => generateOne(client, spec),
-    concurrency,
-  );
+  const generated = await runPool(pending, (spec) => generateOne(client, spec), concurrency);
 
   for (const entry of generated) {
     manifestById.set(entry.id, entry);
