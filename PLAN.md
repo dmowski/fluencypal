@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Alias game: think about serious
+
+## Messages: notifications
+
 ## Write review for the app: add message to chat
 
 ## Integration with google search console.
