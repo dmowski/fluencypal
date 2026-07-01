@@ -1,5 +1,18 @@
 # Live document with short/long term ideas
 
+## Goal: Arrange calls with peoples
+
+## Reduce free plan
+
+- Remove mentions from landings
+- Remove "News Read" card from admin panel
+- Add "Last Day Messages" on admin panel
+- Add "Full Access" badge on exams feature
+- Add "Full Access" badge on grammar improvements
+- Remove "Complete all daily tasks to gain full access for that day!" from daily tasks
+- Add "Full Access" badge on "Progress"
+- Remove full access from game top rated gamers
+
 ## Alias game: think about serious
 
 ## Messages: notifications
