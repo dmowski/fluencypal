@@ -5,7 +5,7 @@ import { useLingui } from '@lingui/react';
 import { ChatPage } from '../Chat/ChatPage';
 import { useChatList } from '../Chat/useChatList';
 import { useRouter } from 'next/navigation';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import MailIcon from '@mui/icons-material/Mail';
 import { useBattle } from '../Game/Battle/useBattle';
 import { TabLabel } from '../Game/TabLabel';
 import { DailyQuestionNotificationsList } from '../DailyQuestion/DailyQuestionNotificationsList';
@@ -128,7 +128,7 @@ export const AppNotificationsButton: React.FC = () => {
 
       <IconButton onClick={() => setIsShow(true)}>
         <Badge badgeContent={notificationsCount} color="error">
-          <NotificationsIcon
+          <MailIcon
             sx={{
               opacity: 0.7,
             }}
