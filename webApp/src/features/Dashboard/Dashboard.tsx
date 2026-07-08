@@ -1,7 +1,5 @@
 'use client';
 
-import { Stack, Typography } from '@mui/material';
-
 import { ProgressBoard } from './Progress/ProgressBoard';
 import { RolePlayBoard } from '../RolePlay/RolePlayBoard';
 import { UsageStatsCards } from '../Usage/UsageStatsCards';
@@ -9,39 +7,29 @@ import { PlanDashboardCards } from './PlanDashboardCards';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { MyProfile } from '../Settings/MyProfile';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
-import { DashboardBlur } from './DashboardBlur';
 import { RolePlayModal } from '../RolePlay/RolePlayModal';
 import { usePlan } from '../Plan/usePlan';
 import { LessonStartModal } from '../Plan/LessonStartModal';
 import { JustTalkCard } from './JustTalkCard';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
-import {
-  PracticeCustomConversationsDashboardCard,
-  RolePlayDashboardCard,
-} from './RolePlayDashboardCard';
+import { RolePlayDashboardCard } from './RolePlayDashboardCard';
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
 import { BackHomeNavButton } from '../Navigation/BackHomeNavButton';
 import { DailyQuestionDashboardCard } from './DailyQuestionDashboardCard';
 import { GameDashboardCard } from './GameDashboardCard';
 import { DailyTasksDashboardCard } from './DailyTasksDashboardCard';
-import { ExperimentalDashboardCard } from './ExperimentalDashboardCard';
 import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
 import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
-import { ReviewDashboard } from '../Review/ReviewDashboard';
+import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
 
-interface DashboardProps {
-  lang: SupportedLanguage;
-}
-
-export function Dashboard({ lang }: DashboardProps) {
+export function Dashboard({ lang }: { lang: SupportedLanguage }) {
   const appNavigation = useAppNavigation();
   const plan = usePlan();
 
   return (
     <>
       {appNavigation.currentPage === 'home' ? <SimpleNavigationBar /> : <BackHomeNavButton />}
-
       <RolePlayModal />
 
       {plan.activeGoalElementInfo && (
@@ -51,80 +39,34 @@ export function Dashboard({ lang }: DashboardProps) {
         />
       )}
 
-      <Stack
-        sx={{
-          alignItems: 'center',
-          paddingBottom: '120px',
-          paddingTop: '30px',
-        }}
-      >
-        <Stack
-          sx={{
-            maxWidth: '700px',
-            padding: '0 10px',
-            gap: '40px',
-            width: '100%',
-            '@media (max-width:600px)': {
-              padding: '0px',
-            },
-          }}
-        >
-          {appNavigation.currentPage === 'home' && (
-            <>
-              <MainDashboardContainer>
-                <JustTalkCard />
-                <DailyQuestionDashboardCard />
-                <GrammarImprovesCard />
-                <InstallAppInstruction />
-                <PlanDashboardCards lang={lang} />
-                <RolePlayDashboardCard />
-                <DailyTasksDashboardCard />
-                <GameDashboardCard />
-                <ExamsDashboardCard />
-              </MainDashboardContainer>
-            </>
-          )}
+      <DashboardSectionContainer>
+        {appNavigation.currentPage === 'home' && (
+          <>
+            <MainDashboardContainer>
+              <JustTalkCard />
+              <DailyQuestionDashboardCard />
+              <GrammarImprovesCard />
+              <InstallAppInstruction />
+              <PlanDashboardCards lang={lang} />
+              <RolePlayDashboardCard />
+              <DailyTasksDashboardCard />
+              <GameDashboardCard />
+              <ExamsDashboardCard />
+            </MainDashboardContainer>
+          </>
+        )}
 
-          {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
+        {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
 
-          {appNavigation.currentPage === 'profile' && (
-            <>
-              <MyProfile lang={lang} />
-              <ProgressDashboardCard />
-              <UsageStatsCards />
-              <Stack
-                sx={{
-                  gap: '20px',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr',
-                }}
-              >
-                <ProgressBoard />
-              </Stack>
-            </>
-          )}
-        </Stack>
-        <DashboardBlur />
-      </Stack>
+        {appNavigation.currentPage === 'profile' && (
+          <>
+            <MyProfile lang={lang} />
+            <ProgressDashboardCard />
+            <UsageStatsCards />
+            <ProgressBoard />
+          </>
+        )}
+      </DashboardSectionContainer>
     </>
   );
 }
-
-const MainDashboardContainer = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Stack
-      sx={{
-        gap: '80px',
-        '@media (max-width:600px)': {
-          padding: '0 10px',
-        },
-
-        '@media (max-width:350px)': {
-          padding: '0 5px',
-        },
-      }}
-    >
-      {children}
-    </Stack>
-  );
-};

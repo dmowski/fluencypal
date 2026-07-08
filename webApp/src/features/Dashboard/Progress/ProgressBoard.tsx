@@ -12,99 +12,107 @@ export const ProgressBoard = () => {
   return (
     <Stack
       sx={{
-        padding: '20px 0px 20px 30px',
         gap: '20px',
-        width: '100%',
-        boxSizing: 'border-box',
-        overflow: 'hidden',
+        display: 'grid',
+        gridTemplateColumns: '1fr',
       }}
     >
       <Stack
         sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
+          padding: '20px 0px 20px 30px',
           gap: '20px',
-          paddingRight: '20px',
-          paddingBottom: '22px',
           width: '100%',
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         }}
       >
         <Stack
           sx={{
-            flexDirection: 'column',
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: '20px',
+            justifyContent: 'space-between',
             flexWrap: 'wrap',
+            gap: '20px',
+            paddingRight: '20px',
+            paddingBottom: '22px',
             width: '100%',
-            paddingTop: '40px',
           }}
         >
           <Stack
             sx={{
-              borderRadius: '50%',
-              background: 'linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)',
-              height: '60px',
-              width: '60px',
-
-              display: 'flex',
-              justifyContent: 'center',
+              flexDirection: 'column',
               alignItems: 'center',
+              gap: '20px',
+              flexWrap: 'wrap',
+              width: '100%',
+              paddingTop: '40px',
             }}
           >
-            <Calendar size={'27px'} />
-          </Stack>
-          <Typography variant="h6">{i18n._(`Progress Calendar`)}</Typography>
+            <Stack
+              sx={{
+                borderRadius: '50%',
+                background: 'linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)',
+                height: '60px',
+                width: '60px',
 
-          <Stack
-            sx={{
-              flexDirection: 'row',
-              gap: '10px',
-            }}
-          >
-            <Typography
-              sx={{
-                opacity: 0.7,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              {i18n._(`Less`)}
-            </Typography>
-            {colorMap.map((color) => {
-              return (
-                <Stack
-                  key={color}
-                  sx={{
-                    backgroundColor: color,
-                    width: '20px',
-                    height: '20px',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '2px',
-                  }}
-                />
-              );
-            })}
-            <Typography
+              <Calendar size={'27px'} />
+            </Stack>
+            <Typography variant="h6">{i18n._(`Progress Calendar`)}</Typography>
+
+            <Stack
               sx={{
-                opacity: 0.7,
+                flexDirection: 'row',
+                gap: '10px',
               }}
             >
-              {i18n._(`More`)}
-            </Typography>
+              <Typography
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Less`)}
+              </Typography>
+              {colorMap.map((color) => {
+                return (
+                  <Stack
+                    key={color}
+                    sx={{
+                      backgroundColor: color,
+                      width: '20px',
+                      height: '20px',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      borderRadius: '2px',
+                    }}
+                  />
+                );
+              })}
+              <Typography
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`More`)}
+              </Typography>
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
 
-      <ProgressGrid
-        startDateTimeStamp={
-          settings.userCreatedAt ? new Date(settings.userCreatedAt).getTime() : Date.now()
-        }
-        currentDateTimeStamp={Date.now()}
-        getDateStat={(date) => {
-          const dayStat = tasks.daysTasks?.[date];
-          return Object.keys(dayStat || {}).length;
-        }}
-      />
+        <ProgressGrid
+          startDateTimeStamp={
+            settings.userCreatedAt ? new Date(settings.userCreatedAt).getTime() : Date.now()
+          }
+          currentDateTimeStamp={Date.now()}
+          getDateStat={(date) => {
+            const dayStat = tasks.daysTasks?.[date];
+            return Object.keys(dayStat || {}).length;
+          }}
+        />
+      </Stack>
     </Stack>
   );
 };
