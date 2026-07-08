@@ -33,27 +33,22 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
       <RolePlayModal />
 
       {plan.activeGoalElementInfo && (
-        <LessonStartModal
-          onClose={() => plan.closeElementModal()}
-          goalInfo={plan.activeGoalElementInfo}
-        />
+        <LessonStartModal onClose={plan.closeElementModal} goalInfo={plan.activeGoalElementInfo} />
       )}
 
       <DashboardSectionContainer>
         {appNavigation.currentPage === 'home' && (
-          <>
-            <MainDashboardContainer>
-              <JustTalkCard />
-              <DailyQuestionDashboardCard />
-              <GrammarImprovesCard />
-              <InstallAppInstruction />
-              <PlanDashboardCards lang={lang} />
-              <RolePlayDashboardCard />
-              <DailyTasksDashboardCard />
-              <GameDashboardCard />
-              <ExamsDashboardCard />
-            </MainDashboardContainer>
-          </>
+          <MainDashboardContainer>
+            <JustTalkCard />
+            <DailyQuestionDashboardCard />
+            <GrammarImprovesCard />
+            <InstallAppInstruction />
+            <PlanDashboardCards lang={lang} />
+            <RolePlayDashboardCard />
+            <DailyTasksDashboardCard />
+            <GameDashboardCard />
+            <ExamsDashboardCard />
+          </MainDashboardContainer>
         )}
 
         {appNavigation.currentPage === 'role-play' && <RolePlayBoard />}
