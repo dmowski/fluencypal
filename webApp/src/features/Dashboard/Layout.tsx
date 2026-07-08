@@ -27,6 +27,11 @@ export const DashboardSectionContainer = ({ children }: { children: React.ReactN
         alignItems: 'center',
         paddingBottom: '120px',
         paddingTop: '30px',
+
+        '@media (max-width:600px)': {
+          background:
+            'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100px, rgba(0, 0, 0, 1) 100%)',
+        },
       }}
     >
       <Stack
