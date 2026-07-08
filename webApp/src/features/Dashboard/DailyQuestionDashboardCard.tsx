@@ -24,7 +24,7 @@ export const DailyQuestionDashboardCard = () => {
       }}
     >
       <SectionHeader
-        title={i18n._('Daily Question')}
+        title={i18n._('Speaking with people')}
         subTitle={i18n._('Answer a new question every day and see how your style improves!')}
         buttonTitle={i18n._('See All')}
         onButtonClick={globalModals.openDailyQuestions}

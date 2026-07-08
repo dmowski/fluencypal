@@ -2,13 +2,11 @@
 
 ## Goal: Arrange calls with peoples
 
+- Replace <notification> icon to <message> Icon
+- Mobile UI, change BG to black
+
 - Setup Daily discussion with, and foster it
 - Talk more online, only only after discussing it, ask for online call
-
-I need to set calm environment for discussions, opportunity to show people that they are smart
-
-Steps
-
 - Create a good topics to discuss
 - Review UI of daily questions
 

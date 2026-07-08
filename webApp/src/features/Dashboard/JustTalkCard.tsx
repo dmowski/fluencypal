@@ -27,7 +27,7 @@ export const JustTalkCard = () => {
         gap: '20px',
       }}
     >
-      <SectionHeader title={i18n._('Speaking')} subTitle={footnotePhrase} />
+      <SectionHeader title={i18n._('Speaking with AI')} subTitle={footnotePhrase} />
       <StoreCard
         textColor={'#fff'}
         backgroundColor={isCallStarting ? 'rgba(2, 134, 208, .54)' : 'rgba(2, 134, 208, .94)'}

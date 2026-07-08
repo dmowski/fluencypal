@@ -126,7 +126,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         }}
       >
         <SectionHeader
-          title={i18n._('Learning Plan')}
+          title={i18n._('Learning path')}
           subTitle={
             isGoalSet
               ? plan.activeGoal?.title || i18n._(`Goal`)
