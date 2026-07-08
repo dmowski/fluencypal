@@ -71,18 +71,7 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === 'home' && (
             <>
-              <Stack
-                sx={{
-                  gap: '80px',
-                  '@media (max-width:600px)': {
-                    padding: '0 10px',
-                  },
-
-                  '@media (max-width:350px)': {
-                    padding: '0 5px',
-                  },
-                }}
-              >
+              <MainDashboardContainer>
                 <JustTalkCard />
                 <DailyQuestionDashboardCard />
                 <GrammarImprovesCard />
@@ -92,7 +81,7 @@ export function Dashboard({ lang }: DashboardProps) {
                 <DailyTasksDashboardCard />
                 <GameDashboardCard />
                 <ExamsDashboardCard />
-              </Stack>
+              </MainDashboardContainer>
             </>
           )}
 
@@ -120,3 +109,22 @@ export function Dashboard({ lang }: DashboardProps) {
     </>
   );
 }
+
+const MainDashboardContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Stack
+      sx={{
+        gap: '80px',
+        '@media (max-width:600px)': {
+          padding: '0 10px',
+        },
+
+        '@media (max-width:350px)': {
+          padding: '0 5px',
+        },
+      }}
+    >
+      {children}
+    </Stack>
+  );
+};
