@@ -85,19 +85,13 @@ export function Dashboard({ lang }: DashboardProps) {
               >
                 <DailyTasksDashboardCard />
                 <InstallAppInstruction />
-                <PracticeCustomConversationsDashboardCard />
-                <ExperimentalDashboardCard />
-                <ProgressDashboardCard />
                 <JustTalkCard />
                 <GrammarImprovesCard />
                 <PlanDashboardCards lang={lang} />
                 <RolePlayDashboardCard />
-                {/*<PublicChatDashboardCard />*/}
                 <GameDashboardCard />
-
                 <DailyQuestionDashboardCard />
                 <ExamsDashboardCard />
-                <ReviewDashboard />
               </Stack>
             </>
           )}
@@ -107,6 +101,7 @@ export function Dashboard({ lang }: DashboardProps) {
           {appNavigation.currentPage === 'profile' && (
             <>
               <MyProfile lang={lang} />
+              <ProgressDashboardCard />
               <UsageStatsCards />
               <Stack
                 sx={{

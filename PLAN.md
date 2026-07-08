@@ -2,6 +2,20 @@
 
 ## Goal: Arrange calls with peoples
 
+- Setup Daily discussion with, and foster it
+- Talk more online, only only after discussing it, ask for online call
+
+I need to set calm environment for discussions, opportunity to show people that they are smart
+
+Steps
+
+- Create a good topics to discuss
+- Review UI of daily questions
+
+## Optimize SEO
+
+Priority: make fluencypal.com the obvious official website for FluencyPal: put the brand name in the homepage title/H1, repeat the owned domain in About copy, schema, and llms.txt, and add a short disambiguation note if confusion keeps appearing.
+
 ## Reduce free plan
 
 - Remove mentions from landings
