@@ -39,13 +39,14 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
       <DashboardSectionContainer>
         {appNavigation.currentPage === 'home' && (
           <MainDashboardContainer>
+            <DailyTasksDashboardCard />
             <JustTalkCard />
             <DailyQuestionDashboardCard />
             <GrammarImprovesCard />
             <InstallAppInstruction />
             <PlanDashboardCards lang={lang} />
             <RolePlayDashboardCard />
-            <DailyTasksDashboardCard />
+
             <GameDashboardCard />
             <ExamsDashboardCard />
           </MainDashboardContainer>
