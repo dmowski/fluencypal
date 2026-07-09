@@ -1730,17 +1730,12 @@ export const dailyQuestions: DailyQuestions = {
   },
 
   '2027-02-15': {
-    id: 'teach-one-life-lesson',
-    title: 'If you had to teach one life lesson to everyone, what would it be?',
-    description: 'Share the single most important insight you’ve gained so far.',
+    id: 'how-are-you',
+    title: 'How are you today?',
+    description: 'Reflect on your current state and feelings.',
     minWords: 30,
-    hints: [
-      'Think about what took you too long to learn.',
-      'Consider something universally relevant regardless of background.',
-      'Reflect on whether this lesson would have changed your early years.',
-    ],
-    exampleAnswer:
-      'Most things are harder than you expect and take longer than you plan—and that’s normal, not a sign of failure. Learning to persist through that gap changes everything.',
+    hints: [],
+    exampleAnswer: '',
   },
 
   '2027-02-16': {
