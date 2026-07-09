@@ -83,13 +83,13 @@ export function AdminMetrics({
         onClick={() => onModeChange('secondDay')}
       />
 
+      <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
       <StatCard
         value={thirdAndMoreDayVisitorsCount}
         label="Old Users (today)"
         isActive={usersToShowMode === 'old'}
         onClick={() => onModeChange('old')}
       />
-      <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
     </Stack>
   );
 }
