@@ -61,18 +61,12 @@ export function AdminMetrics({
       <StatCard value={lastDayMessagesCount} label="Messages - 24h" />
 
       <StatCard
-        value={lastDayUsersCount}
         label="Users - 24h"
+        value={lastDayUsersCount}
         isActive={usersToShowMode === 'lastDay'}
         onClick={() => onModeChange('lastDay')}
       />
 
-      <StatCard
-        value={todayUsersCount}
-        label="Users - Today"
-        isActive={usersToShowMode === 'todayDay'}
-        onClick={() => onModeChange('todayDay')}
-      />
       <StatCard value={todayMessagesCount} label="Messages - Today" />
       <StatCard value={lastHourMessagesCount} label="Messages - 1h" />
 
@@ -84,9 +78,16 @@ export function AdminMetrics({
       />
 
       <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
+
       <StatCard
+        label="Users - Today"
+        value={todayUsersCount}
+        isActive={usersToShowMode === 'todayDay'}
+        onClick={() => onModeChange('todayDay')}
+      />
+      <StatCard
+        label="Old Users - Today"
         value={thirdAndMoreDayVisitorsCount}
-        label="Old Users (today)"
         isActive={usersToShowMode === 'old'}
         onClick={() => onModeChange('old')}
       />
