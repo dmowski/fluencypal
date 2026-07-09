@@ -406,16 +406,7 @@ export function Message({
                       </ListItemText>
                     </MenuItem>
                   )}
-                  {!isOwnMessage && (
-                    <MenuItem onClick={onOpenReport}>
-                      <ListItemIcon>
-                        <ReportGmailerrorredIcon color="warning" />
-                      </ListItemIcon>
-                      <ListItemText>
-                        <Typography>{i18n._('Report')}</Typography>
-                      </ListItemText>
-                    </MenuItem>
-                  )}
+
                   {isOwnMessage && <Divider />}
                   {isOwnMessage && (
                     <MenuItem onClick={onDelete}>
@@ -432,10 +423,22 @@ export function Message({
                     sx={{
                       width: '100%',
                       alignItems: 'flex-end',
-                      padding: '10px 0 0 0',
+                      padding: '10px',
+                      gap: '10px',
                     }}
                   >
                     <ViewsContent viewUserIds={Object.keys(message?.viewsUserIdsMap || {})} />
+
+                    {!isOwnMessage && (
+                      <MenuItem onClick={onOpenReport}>
+                        <ListItemIcon>
+                          <ReportGmailerrorredIcon color="warning" />
+                        </ListItemIcon>
+                        <ListItemText>
+                          <Typography>{i18n._('Report')}</Typography>
+                        </ListItemText>
+                      </MenuItem>
+                    )}
                   </Stack>
                 </Menu>
               </Stack>

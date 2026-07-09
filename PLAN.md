@@ -1,6 +1,6 @@
 # Live document with short/long term ideas
 
-- Admin stats: Last 24h messages
+## Improve UI for reply
 
 ## Goal: Arrange calls with peoples
 
