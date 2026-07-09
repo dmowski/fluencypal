@@ -157,6 +157,11 @@ export function AdminStats() {
     return acc + lastHourMessages;
   }, 0);
 
+  const lastDayMessagesCount = users.reduce((acc, user) => {
+    const lastDayMessages = user.conversationMeta.todayMessages || 0;
+    return acc + lastDayMessages;
+  }, 0);
+
   const usersToShowMap: Record<UserMode, typeof users> = {
     all: users,
     lastDay: lastDayUsers,
@@ -255,6 +260,7 @@ export function AdminStats() {
               >
                 <AdminMetrics
                   lastHourMessagesCount={lastHourMessagesCount}
+                  lastDayMessagesCount={lastDayMessagesCount}
                   newsReadsLast24h={data.newsReadsLast24h}
                   quizCompletionsLast24h={data.quizCompletionsLast24h}
                   todayUsersCount={todayUsers.length}

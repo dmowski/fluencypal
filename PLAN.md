@@ -1,9 +1,8 @@
 # Live document with short/long term ideas
 
-## Goal: Arrange calls with peoples
+- Admin stats: Last 24h messages
 
-- Replace <notification> icon to <message> Icon
-- Mobile UI, change BG to black
+## Goal: Arrange calls with peoples
 
 - Setup Daily discussion with, and foster it
 - Talk more online, only only after discussing it, ask for online call

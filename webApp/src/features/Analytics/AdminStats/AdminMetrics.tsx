@@ -4,6 +4,7 @@ import { StatCard } from './StatCard';
 interface AdminMetricsProps {
   todayMessagesCount: number;
   lastHourMessagesCount: number;
+  lastDayMessagesCount: number;
   newsReadsLast24h: number;
   quizCompletionsLast24h: number;
   lastDayUsersCount: number;
@@ -18,6 +19,7 @@ interface AdminMetricsProps {
 export function AdminMetrics({
   todayMessagesCount,
   lastHourMessagesCount,
+  lastDayMessagesCount,
   newsReadsLast24h,
   quizCompletionsLast24h,
   lastDayUsersCount,
@@ -56,27 +58,23 @@ export function AdminMetrics({
         },
       }}
     >
-      <StatCard value={todayMessagesCount} label="Today Messages" />
-
-      <StatCard value={lastHourMessagesCount} label="Last Hour Messages" />
-
-      <StatCard value={newsReadsLast24h} label="News Read - 24h" />
-
-      <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
+      <StatCard value={lastDayMessagesCount} label="Messages - 24h" />
 
       <StatCard
         value={lastDayUsersCount}
-        label="Last Day Users"
+        label="Users - 24h"
         isActive={usersToShowMode === 'lastDay'}
         onClick={() => onModeChange('lastDay')}
       />
 
       <StatCard
         value={todayUsersCount}
-        label="Today Users"
+        label="Users - Today"
         isActive={usersToShowMode === 'todayDay'}
         onClick={() => onModeChange('todayDay')}
       />
+      <StatCard value={todayMessagesCount} label="Messages - Today" />
+      <StatCard value={lastHourMessagesCount} label="Messages - 1h" />
 
       <StatCard
         value={secondDayVisitorsCount}
@@ -91,6 +89,7 @@ export function AdminMetrics({
         isActive={usersToShowMode === 'old'}
         onClick={() => onModeChange('old')}
       />
+      <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
     </Stack>
   );
 }
