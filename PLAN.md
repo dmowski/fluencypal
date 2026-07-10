@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Alias: Make it Call mode and show works on call canvas
+
 ## Improve UI for reply
 
 ## Goal: Arrange calls with peoples
