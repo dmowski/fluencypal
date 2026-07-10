@@ -277,7 +277,7 @@ Stories combine reading, listening, and active reconstruction. This makes them a
 
 FluencyPal Books is a focused reading app for language learners. It is separate from the main practice dashboard so you can stay in the book while you study vocabulary, grammar in context, and listening skills.
 
-Learn more on the [FluencyPal Books landing page](${BOOK_LANDING_URL}).
+Learn more on the [FluencyPal Books landing page](https://book.fluencypal.com/landing).
 
 ## What you can do
 
@@ -292,7 +292,7 @@ Learn more on the [FluencyPal Books landing page](${BOOK_LANDING_URL}).
 
 Reading long-form English connects vocabulary and grammar to real stories and ideas. FluencyPal Books keeps that experience calm and book-first, with learning tools one tap away instead of breaking your flow.
 
-Open the [Books landing page](${BOOK_LANDING_URL}) to try a live demo of the reader and start reading.`,
+Open the [Books landing page](https://book.fluencypal.com/landing) to try a live demo of the reader and start reading.`,
       ),
     },
     {
