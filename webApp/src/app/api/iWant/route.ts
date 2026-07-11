@@ -73,7 +73,7 @@ Response format:
 {SHORT_DESCRIPTION_FROM_FIRST_PERSON}
 
 
-Use ${fullLanguageName} for your response language.
+Use English for your response language.
 `,
         },
         {
