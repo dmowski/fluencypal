@@ -16,15 +16,19 @@ export default async function RootLayout({
   const supportedLang = 'en';
   initLingui(supportedLang);
 
+  const isProduction = process.env.NODE_ENV === 'production';
+
   return (
     <>
-      <Script
-        defer
-        data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
-        data-domain="www.fluencypal.com"
-        src="https://datafa.st/js/script.cookieless.js"
-        strategy="afterInteractive"
-      />
+      {isProduction && (
+        <Script
+          defer
+          data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
+          data-domain="www.fluencypal.com"
+          src="https://datafa.st/js/script.cookieless.js"
+          strategy="afterInteractive"
+        />
+      )}
       <style
         href="app-global-inline-css"
         precedence="default"

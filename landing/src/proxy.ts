@@ -17,9 +17,11 @@ const { locales } = linguiConfig;
 const DATAFAST_WEBSITE_ID = 'dfid_JALSs2b1efMpdYSaxDEAE';
 
 export function proxy(request: NextRequest, event: NextFetchEvent) {
-  trackAICrawlerRequest(request, event, {
-    websiteId: DATAFAST_WEBSITE_ID,
-  });
+  if (process.env.NODE_ENV === 'production') {
+    trackAICrawlerRequest(request, event, {
+      websiteId: DATAFAST_WEBSITE_ID,
+    });
+  }
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
