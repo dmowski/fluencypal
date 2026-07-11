@@ -22,36 +22,6 @@ export const AliasRolePlay = ({ lang }: { lang: SupportedLanguage }): JSX.Elemen
         <Stack
           sx={{
             flexDirection: 'row',
-            gap: '0 10px',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Button
-            href={getUrlStart(lang) + 'alias'}
-            startIcon={<Users size={'22px'} />}
-            endIcon={<ChevronRight size={'22px'} />}
-            variant="outlined"
-            sx={{
-              padding: '10px 25px',
-              color: 'white',
-              backgroundColor: '#d21963',
-            }}
-          >
-            {i18n._(`Play With Friends`)}
-          </Button>
-          <Typography
-            sx={{
-              paddingLeft: '5px',
-            }}
-          >
-            {i18n._(`Play Alias offline with friends in person`)}
-          </Typography>
-        </Stack>
-
-        <Stack
-          sx={{
-            flexDirection: 'row',
 
             gap: '0 10px',
             alignItems: 'center',
