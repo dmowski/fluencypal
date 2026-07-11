@@ -43,13 +43,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
+        `Yes. FluencyPal offers a 1 day free trial. You can use the trial to explore features before deciding to upgrade.`,
       ),
     },
 
     {
       question: i18n._(`Do I need to enter a credit card to start?`),
-      answer: i18n._(`No. You can start the free plan without entering any payment details.`),
+      answer: i18n._(`No. You can start the trial without entering any payment details.`),
     },
 
     {
@@ -69,14 +69,14 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Can I stop using FluencyPal anytime?`),
       answer: i18n._(
-        `Yes. Since there is no automatic renewal, you can simply stop using the app at any time without being charged again.`,
+        `Yes. Since there is no automatic renewal, you can simply stop using the app at any time without being charged again. And you can ask for a refund at any time.`,
       ),
     },
 
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal game. The game is free to play.`,
+        `No. FluencyPal does not offer free full access. You can use the trial to explore features before deciding to upgrade.`,
       ),
     },
 
@@ -195,7 +195,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
 
             <FirstEnterButton
               getStartedTitle={i18n._(`Get Started`)}
-              practiceLink={`${getAppUrlStart(lang)}quiz`}
+              practiceLink={`${getAppUrlStart(lang)}practice`}
               openMyPracticeLinkTitle={i18n._(`Open`)}
             />
           </Stack>
@@ -309,7 +309,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getAppUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}practice`}
               />
 
               <PriceCard
@@ -392,7 +392,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getAppUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}practice`}
               />
 
               <PriceCard
@@ -475,7 +475,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._('Start')}
-                buttonLink={`${getAppUrlStart(lang)}quiz`}
+                buttonLink={`${getAppUrlStart(lang)}practice`}
               />
             </Stack>
           </Stack>
@@ -505,7 +505,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started`)}
-          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
+          actionButtonLink={`${getAppUrlStart(lang)}practice`}
         />
       </div>
       <Footer lang={lang} />
