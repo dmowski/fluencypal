@@ -48,11 +48,7 @@ export const DailyTasksDashboardCard = () => {
       'daily-question': dailyQuestion.todaysQuestionImage || '',
       news: '',
     }),
-    [
-      secondPhotoUrl,
-      stories.randomStoryWithVideo?.imageUrl,
-      dailyQuestion.todaysQuestionImage,
-    ],
+    [secondPhotoUrl, stories.randomStoryWithVideo?.imageUrl, dailyQuestion.todaysQuestionImage],
   );
 
   const { startJustTalk, isCallStarting } = useJustTalk();
@@ -142,20 +138,16 @@ export const DailyTasksDashboardCard = () => {
     grammarImprovement.selectedIndex,
   ]);
 
-  const game = useGame();
-  const usage = useUsage();
-
-  const rewardMessage = i18n._('Complete all daily tasks to gain full access for that day!');
-
-  const headerSubTitle = !game.isGameWinner && !usage.isFullAccess ? rewardMessage : undefined;
-
   return (
     <Stack
       sx={{
         gap: '20px',
       }}
     >
-      <SectionHeader title={i18n._('Daily tasks')} subTitle={headerSubTitle} />
+      <SectionHeader
+        title={i18n._('Daily Tasks')}
+        subTitle={i18n._('A journey of a thousand miles begins with a single step.')}
+      />
       <StoreCard
         textColor={'#fff'}
         backgroundColor={
