@@ -8,6 +8,7 @@ import { allMessages } from '@/appRouterI18n';
 import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
+import Script from 'next/script';
 
 export default async function RootLayout({
   children,
@@ -17,8 +18,19 @@ export default async function RootLayout({
   const supportedLang = 'en';
   initLingui(supportedLang);
 
+  const isProduction = process.env.NODE_ENV === 'production';
+
   return (
     <>
+      {isProduction && (
+        <Script
+          defer
+          data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
+          data-domain="app.fluencypal.com"
+          src="https://datafa.st/js/script.cookieless.js"
+          strategy="afterInteractive"
+        />
+      )}
       <style
         href="app-global-inline-css"
         precedence="default"
