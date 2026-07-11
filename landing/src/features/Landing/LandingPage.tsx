@@ -188,6 +188,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
   };
   const quizLink = getAppUrlStart(lang) + 'quiz';
 
+  const practiceRedirectUrl = `${getAppUrlStart(lang)}practice`;
+  const mainRedirectUrl = practiceRedirectUrl;
+
   return (
     <>
       <HeaderStatic lang={lang} transparentOnTop />
@@ -206,7 +209,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
-            buttonHref={quizLink}
+            buttonHref={mainRedirectUrl}
             cards={[
               {
                 videoUrl: '/landing/preview/grammar2.webm',
@@ -233,7 +236,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             <WebcamSection
               theme={'gray'}
               id="webcam-section"
-              buttonHref={quizLink}
+              buttonHref={mainRedirectUrl}
               data={{
                 type: 'webcamDemo',
                 title: i18n._('Practice Speaking with AI'),
@@ -372,7 +375,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 },
               ]}
               buttonTitle={i18n._(`Start Practicing`)}
-              buttonHref={quizLink}
+              buttonHref={mainRedirectUrl}
               theme={'dark-red'}
               id={'how-it-works'}
             />
@@ -392,7 +395,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ),
                 img: '/landing/talk.webp',
                 imgAlt: i18n._('Illustration of voice recording'),
-                href: quizLink,
+                href: mainRedirectUrl,
                 actionButtonTitle: i18n._(`Start Speaking Practice`),
               },
               {
@@ -403,7 +406,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ),
                 img: '/landing/rules.webp',
                 imgAlt: i18n._('Illustration of grammar improvement'),
-                href: quizLink,
+                href: mainRedirectUrl,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
               {
@@ -414,7 +417,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ),
                 img: '/landing/words.webp',
                 imgAlt: i18n._('Illustration of new words being learned'),
-                href: quizLink,
+                href: mainRedirectUrl,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
               {
@@ -427,7 +430,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 imgAlt: i18n._(
                   'Illustration of progress tracking chart showing improvement over time',
                 ),
-                href: quizLink,
+                href: mainRedirectUrl,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },
             ]}
@@ -457,7 +460,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <CtaBlock
             title={i18n._(`Learn anywhere, anytime`)}
             actionButtonTitle={i18n._(`Start Learning Now`)}
-            actionButtonLink={quizLink}
+            actionButtonLink={mainRedirectUrl}
           />
         </Stack>
       </main>
