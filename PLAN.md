@@ -1,8 +1,8 @@
 # Live document with short/long term ideas
 
-## Alias: Make it Call mode and show works on call canvas
-
 ## Improve UI for reply on chat
+
+## Alias: Make it Call mode and show works on call canvas
 
 ## Goal: Arrange calls with peoples
 
@@ -11,18 +11,10 @@
 - Create a good topics to discuss
 - Review UI of daily questions
 
-## Optimize SEO
-
-Priority: make fluencypal.com the obvious official website for FluencyPal: put the brand name in the homepage title/H1, repeat the owned domain in About copy, schema, and llms.txt, and add a short disambiguation note if confusion keeps appearing.
-
 ## Reduce free plan
 
-- Remove mentions from landings
-- Remove "News Read" card from admin panel
-- Add "Last Day Messages" on admin panel
 - Add "Full Access" badge on exams feature
 - Add "Full Access" badge on grammar improvements
-- Remove "Complete all daily tasks to gain full access for that day!" from daily tasks
 - Add "Full Access" badge on "Progress"
 - Remove full access from game top rated gamers
 
