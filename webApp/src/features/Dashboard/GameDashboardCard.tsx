@@ -100,12 +100,12 @@ export const GameDashboardCard = () => {
       >
         <StoreCard
           textColor={'#fff'}
-          backgroundColor={'#191919'}
+          backgroundColor={'rgba(25, 25, 25, 1)'}
           previewImageUrl={
             'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773967504941-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
-          subTitle={i18n._('Rank in top 5 on the leaderboard and get the app for free!')}
-          title={i18n._('Ready to test your knowledge?')}
+          title={i18n._('Test your knowledge')}
+          subTitle={i18n._('Answer questions correctly to climb the leaderboard!')}
           items={[]}
           onClick={onPlayClick}
           itemsBackgroundColor={'rgb(150, 137, 137)'}
@@ -137,16 +137,6 @@ export const GameDashboardCard = () => {
             >
               {game.loadingQuestions ? i18n._(`Loading...`) : i18n._(`Play`)}
             </Button>
-
-            <Typography
-              variant="body2"
-              sx={{
-                paddingLeft: '5px',
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Answer questions correctly to climb the leaderboard!`)}
-            </Typography>
 
             <PositionChanged />
           </Stack>
