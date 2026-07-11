@@ -17,7 +17,6 @@ import { WebCamButtons, WebcamSection } from '../Case/Landing/components/WebcamS
 import { HowItWorks } from './HowItWorks';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { WelcomeScreen2 } from './WelcomeScreen2';
-import { WelcomeScreenMinimal } from './WelcomeScreenMinimal';
 
 interface FAQItem {
   question: string;
