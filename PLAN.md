@@ -1,5 +1,9 @@
 # Live document with short/long term ideas
 
+## Insert Trustpilot reviews
+
+https://www.trustpilot.com/review/www.fluencypal.com
+
 ## Alias: Make it Call mode and show works on call canvas
 
 ## Improve UI for reply
