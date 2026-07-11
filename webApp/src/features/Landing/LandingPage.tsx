@@ -47,7 +47,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What’s the price?`),
       answer: i18n._(
-        `FluencyPal offers Free and monthly plans that give you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`,
+        `FluencyPal offers weekly, monthly, or yearly access, giving you full access to all features. No auto-renew. You pay each month by hand, or you don't. We never charge you while you're not using it.`,
       ),
     },
 
