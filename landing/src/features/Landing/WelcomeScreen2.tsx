@@ -42,7 +42,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '100vh',
+        minHeight: '800px',
         padding: '30px 0 20px 0',
         '@media (max-width: 1100px)': {
           paddingBottom: '10px',
