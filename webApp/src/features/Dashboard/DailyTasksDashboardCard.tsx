@@ -17,6 +17,7 @@ import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useRouter } from 'next/navigation';
+import { getHourlyDailyTasksQuote } from './dailyTasksQuotes';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -103,6 +104,11 @@ export const DailyTasksDashboardCard = () => {
 
   const isLoading = isCallStarting;
 
+  const dailyQuoteSubTitle = useMemo(
+    () => getHourlyDailyTasksQuote(i18n, new Date().getHours()),
+    [i18n],
+  );
+
   const items: CardItem[] = useMemo(() => {
     return tasks.todaysActualTasks.map((taskType) => {
       const isJustTalkTask = taskType === 'just-talk';
@@ -144,10 +150,7 @@ export const DailyTasksDashboardCard = () => {
         gap: '20px',
       }}
     >
-      <SectionHeader
-        title={i18n._('Daily Tasks')}
-        subTitle={i18n._('A journey of a thousand miles begins with a single step.')}
-      />
+      <SectionHeader title={i18n._('Daily Tasks')} subTitle={dailyQuoteSubTitle} />
       <StoreCard
         textColor={'#fff'}
         backgroundColor={
