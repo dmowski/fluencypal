@@ -17,6 +17,8 @@ import { WebCamButtons, WebcamSection } from '../Case/Landing/components/WebcamS
 import { HowItWorks } from './HowItWorks';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { WelcomeScreen2 } from './WelcomeScreen2';
+import { ReviewsSection } from './Reviews/ReviewsSection';
+import { landingReviews } from './Reviews/reviewsData';
 
 interface FAQItem {
   question: string;
@@ -225,6 +227,18 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 alt: i18n._('Roleplay Preview'),
               },
             ]}
+          />
+
+          <ReviewsSection
+            title={i18n._(`What learners are saying`)}
+            subTitle={i18n._(
+              `Real reviews from people using FluencyPal to practice speaking and prepare for language exams.`,
+            )}
+            reviews={landingReviews}
+            startPracticeButtonTitle={i18n._(`Start Practice`)}
+            startPracticeButtonHref={mainRedirectUrl}
+            checkReviewsButtonTitle={i18n._(`Check other reviews`)}
+            checkReviewsButtonHref="https://www.trustpilot.com/review/www.fluencypal.com"
           />
 
           <Stack
