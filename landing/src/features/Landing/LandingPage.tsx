@@ -204,7 +204,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           {/*<WelcomeScreenMinimal />*/}
           <WelcomeScreen2
             label={i18n._(`Conversation with AI`)}
-            title={i18n._(`Speaking practice`)}
+            title={i18n._(`Speak English without fear`)}
             subTitle1={i18n._(`Don’t let mistakes stop you.`)}
             subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
             buttonTitle={i18n._(`Start Speaking`)}
