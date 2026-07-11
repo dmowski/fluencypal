@@ -63,14 +63,14 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
+        `Yes. FluencyPal offers a 1 day free trial. You can use the trial to explore features before deciding to upgrade.`,
       ),
     },
 
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. FluencyPal offers free full access for users who rank in the top 5 of our speaking game. The game is free to play and includes reading text aloud, describing images, discussing topics, and answering questions. You can improve your speaking skills while playing.`,
+        `No. FluencyPal does not offer free full access. You can use the trial to explore features before deciding to upgrade.`,
       ),
     },
 
