@@ -16,7 +16,13 @@ interface ReviewsSectionProps {
 }
 
 const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
-  <Stack direction="row" sx={{ gap: '2px' }} aria-label={`Rated ${rating} out of 5 stars`}>
+  <Stack
+    direction="row"
+    component="span"
+    role="img"
+    aria-label={`Rated ${rating} out of 5 stars`}
+    sx={{ gap: '2px' }}
+  >
     {[...Array(5)].map((_, index) => (
       <Typography
         key={index}
