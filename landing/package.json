@@ -41,6 +41,7 @@
     "prod": "SENTRY_LOAD_DOTENV=0 SENTRY_RELEASE=$(git rev-parse HEAD) vercel build --prod && pnpm run create-git-build && vercel deploy --prebuilt --prod --archive=tgz"
   },
   "dependencies": {
+    "@datafast/ai-crawl": "^1.0.7",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -90,4 +91,3 @@
     "webpack": "^5.106.2"
   }
 }
-

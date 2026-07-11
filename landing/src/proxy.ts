@@ -2,14 +2,24 @@
  * For more info see
  * https://nextjs.org/docs/app/building-your-application/routing/internationalization
  * */
-import { type NextRequest, NextResponse } from 'next/server';
+import {
+  type NextFetchEvent,
+  type NextRequest,
+  NextResponse,
+} from 'next/server';
+import { trackAICrawlerRequest } from '@datafast/ai-crawl';
 
 import Negotiator from 'negotiator';
 import linguiConfig from '../lingui.config';
 
 const { locales } = linguiConfig;
 
-export function proxy(request: NextRequest) {
+const DATAFAST_WEBSITE_ID = 'dfid_JALSs2b1efMpdYSaxDEAE';
+
+export function proxy(request: NextRequest, event: NextFetchEvent) {
+  trackAICrawlerRequest(request, event, {
+    websiteId: DATAFAST_WEBSITE_ID,
+  });
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
