@@ -39,13 +39,10 @@ import { useRestart } from './useRestart';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
+import { useAliasConversationAnalytics } from './useAliasConversationAnalytics';
 import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
-import {
-  isAliasGameRolePlay,
-  trackAliasEvent,
-} from '@/features/RolePlay/aliasAnalytics';
 
 const modesToUseRrc: ConversationType[] = ['talk', 'role-play', 'news-discussion'];
 //const aiModal = MODELS.REALTIME_CONVERSATION;
@@ -71,8 +68,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const voiceSpeed = settings.aiVoiceSpeed;
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
   const [activeRolePlayId, setActiveRolePlayId] = useState<string | null>(null);
-  const hasTrackedAiGuess = useRef(false);
-  const hasTrackedRoundCompleted = useRef(false);
   const [isStarted, setIsStarted] = useState(false);
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
   const [errorInitiating, setErrorInitiating] = useState<string>();
@@ -157,36 +152,12 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const limits = useLimits(communicatorRef, messages.conversation, toggleMute, toggleVolume);
 
-  useEffect(() => {
-    if (!isAliasGameRolePlay(activeRolePlayId) || !gameStat) return;
-
-    const userMessages = messages.conversation.filter(
-      (message) => !message.isBot && message.text.trim().length > 0,
-    );
-    const botMessages = messages.conversation.filter(
-      (message) => message.isBot && message.text.trim().length > 0,
-    );
-
-    if (
-      !hasTrackedAiGuess.current &&
-      userMessages.length > 0 &&
-      botMessages.length >= 2
-    ) {
-      trackAliasEvent('alias_ai_guess_received');
-      hasTrackedAiGuess.current = true;
-    }
-  }, [activeRolePlayId, gameStat, messages.conversation]);
-
-  useEffect(() => {
-    if (
-      !hasTrackedRoundCompleted.current &&
-      isClosing &&
-      isAliasGameRolePlay(activeRolePlayId)
-    ) {
-      trackAliasEvent('alias_round_completed');
-      hasTrackedRoundCompleted.current = true;
-    }
-  }, [activeRolePlayId, isClosing]);
+  const { resetAliasAnalytics } = useAliasConversationAnalytics({
+    activeRolePlayId,
+    gameStat,
+    conversation: messages.conversation,
+    isClosing,
+  });
 
   const { setIsNeedToResetNow, isRestarting } = useRestart(
     communicatorRef,
@@ -544,8 +515,7 @@ ${voiceInstructions}
 
     setGameStat(input.gameWords ? input.gameWords : null);
     setActiveRolePlayId(input.rolePlayId || null);
-    hasTrackedAiGuess.current = false;
-    hasTrackedRoundCompleted.current = false;
+    resetAliasAnalytics();
     setGoalInfo(input.goal || null);
 
     try {
