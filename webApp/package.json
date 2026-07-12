@@ -45,7 +45,7 @@
     "fix-prettier": "prettier --write .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "create-git-build": "git tag -a build-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
+    "create-git-build": "git tag -a build-app-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
     "prod": "SENTRY_LOAD_DOTENV=0 SENTRY_RELEASE=$(git rev-parse HEAD) vercel build --prod && pnpm run create-git-build && vercel deploy --prebuilt --prod --archive=tgz"
   },
   "dependencies": {
