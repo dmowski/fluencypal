@@ -11,8 +11,6 @@ import { usePlan } from '../Plan/usePlan';
 import { useGlobalModals } from '../Modal/useGlobalModals';
 import { useSettings } from '../Settings/useSettings';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
-import { useGame } from '../Game/useGame';
-import { useUsage } from '../Usage/useUsage';
 import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
 import { getUrlStart } from '../Lang/getUrlStart';
