@@ -26,7 +26,7 @@ const mockFetchBlogsFromApp = fetchBlogsFromApp as jest.MockedFunction<typeof fe
 
 describe('generateSitemap', () => {
   beforeEach(() => {
-    mockFetchBlogsFromApp.mockRejectedValue(new Error('API unavailable in tests'));
+    mockFetchBlogsFromApp.mockResolvedValue({ blogs: [], categories: [] });
   });
 
   test('Should correctly generate sitemap XML with all required elements', async () => {
