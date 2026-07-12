@@ -8,9 +8,7 @@ import { RealTimeModel } from '../Ai/ai';
 
 export const useJustTalk = () => {
   const { i18n } = useLingui();
-
   const settings = useSettings();
-
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
@@ -20,28 +18,12 @@ export const useJustTalk = () => {
     await audio.initAudio();
     setIsCallStarting(true);
 
-    /*
-    try {
-      //audio.music.stop();
-      //audio.music.setVolume(0.5);
-      await sleep(150);
-      //audio.music.play('/audio/call_start_01.mp3');
-      await sleep(150);
-      setTimeout(() => {
-        //audio.music.setVolume(0);
-      }, 10000);
-    } catch (e) {
-      console.error('Error playing call start music', e);
-    }
-    */
-
     try {
       const mediaStream = await getMediaAudioStreams();
       if (!mediaStream) {
         throw new Error('Could not access microphone');
       }
 
-      //await sleep(100);
       await getMediaVideoStreams();
     } catch (e) {
       console.warn('Microphone permission denied. error', e);
