@@ -663,7 +663,7 @@ msgstr "全部"
 msgid "All Interviews"
 msgstr "所有面试"
 
-#: src/features/RolePlay/rolePlayData.tsx:1488
+#: src/features/RolePlay/rolePlayData.tsx:1727
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "所有场景"
@@ -796,7 +796,7 @@ msgstr "答对问题以登上排行榜！"
 msgid "Anything else?"
 msgstr "还有其他吗？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1432
+#: src/features/RolePlay/rolePlayData.tsx:1661
 #. js-lingui-explicit-id
 msgid "Anything the AI must include?"
 msgstr "AI必须包含什么？"
@@ -806,7 +806,7 @@ msgstr "AI必须包含什么？"
 msgid "API design and data modeling insights"
 msgstr "API设计和数据建模见解"
 
-#: src/features/RolePlay/rolePlayData.tsx:1156
+#: src/features/RolePlay/rolePlayData.tsx:1385
 #. js-lingui-explicit-id
 msgid "Appointment"
 msgstr "预约"
@@ -1170,7 +1170,7 @@ msgstr "与...共享的书"
 msgid "Book updated."
 msgstr "书籍已更新。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1155
+#: src/features/RolePlay/rolePlayData.tsx:1384
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "预约看医生"
@@ -1243,7 +1243,7 @@ msgid ""
 "conversation."
 msgstr "通过自然对话建立口语信心、流利度和听力。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1338
+#: src/features/RolePlay/rolePlayData.tsx:1567
 #. js-lingui-explicit-id
 msgid "Build your own role-play with more guidance"
 msgstr "自己构建角色扮演，并获得更多指导"
@@ -1353,7 +1353,7 @@ msgstr "通话时长限制？"
 msgid "Call mode"
 msgstr "通话模式"
 
-#: src/features/RolePlay/rolePlayData.tsx:1121
+#: src/features/RolePlay/rolePlayData.tsx:1350
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "拨打客户支持热线"
@@ -1458,8 +1458,8 @@ msgstr "卡已验证。加载中..."
 msgid "Career Advancement"
 msgstr "职业晋升"
 
-#: src/features/RolePlay/rolePlayData.tsx:1399
-#: src/features/RolePlay/rolePlayData.tsx:1407
+#: src/features/RolePlay/rolePlayData.tsx:1628
+#: src/features/RolePlay/rolePlayData.tsx:1636
 #. js-lingui-explicit-id
 msgid "Challenging"
 msgstr "具有挑战性"
@@ -1514,44 +1514,6 @@ msgstr "未找到聊天记录或您无权访问。"
 msgid "Chat with a Fellow Dog Owner"
 msgstr "与其他狗主人聊天"
 
-#: src/features/RolePlay/rolePlayData.tsx:1062
-#. js-lingui-explicit-id
-msgid ""
-"Check into a hotel and handle room arrangements in a realistic front-desk "
-"setting. Perfect for practicing how to provide reservation details, inquire "
-"about amenities, and address special requests.\n"
-"\n"
-"## Why You Should Play *Hotel Check-in*\n"
-"1. Gain confidence requesting the services you need while checking into a "
-"hotel.  \n"
-"2. Learn to provide personal details and confirm reservations with clarity. "
-" \n"
-"3. Practice asking about amenities like breakfast, Wi-Fi, or late "
-"check-out.  \n"
-"4. Discover how to handle unexpected issues, such as room availability or "
-"last-minute changes.  \n"
-"5. Sharpen your ability to navigate professional, service-oriented "
-"conversations.\n"
-"\n"
-"## How the Scenario Works\n"
-"You’ll act as the guest arriving at the hotel, while our AI plays the role "
-"of a receptionist. The receptionist will ask for your name, reservation "
-"details, and any special requests you might have. By responding naturally, "
-"you’ll build the conversational skills necessary for a smooth hotel "
-"check-in experience.\n"
-msgstr ""
-"在酒店办理入住并处理房间安排，呈现一个真实的前台场景。非常适合练习如何提供预订信息、询问设施以及处理特殊请求。\n"
-"\n"
-"## 为什么你应该玩 *酒店入住*\n"
-"1. 在办理酒店入住时，增强请求所需服务的信心。  \n"
-"2. 学习清晰地提供个人信息和确认预订。  \n"
-"3. 练习询问早餐、Wi-Fi或延迟退房等设施。  \n"
-"4. 学习如何处理意外问题，例如房间可用性或临时变更。  \n"
-"5. 提升你在专业服务导向对话中的应对能力。\n"
-"\n"
-"## 情境如何运作\n"
-"你将扮演抵达酒店的客人，而我们的AI则扮演接待员。接待员会询问你的姓名、预订信息及任何特殊请求。通过自然地回应，你将培养顺利办理酒店入住所需的对话技巧。"
-
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
 msgid "Check other grammar points and examples."
@@ -1579,10 +1541,459 @@ msgstr "检查您的进展"
 msgid "Check your spam folder if you don't see the email."
 msgstr "请检查您的垃圾邮件文件夹，如果您没有看到电子邮件。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1060
+#: src/features/RolePlay/rolePlayData.tsx:1065
 #. js-lingui-explicit-id
-msgid "Check-In"
-msgstr "签到"
+msgid ""
+"Checking into a hotel usually follows a predictable pattern. The "
+"receptionist confirms your identity and reservation, explains the hotel’s "
+"services, and gives you access to your room.\n"
+"\n"
+"Knowing a few key phrases can make the process much easier, especially when "
+"you are travelling in a country where you do not speak the local language "
+"confidently.\n"
+"\n"
+"## What You May Need at Check-In\n"
+"\n"
+"The receptionist may ask you for:\n"
+"\n"
+"- Your full name\n"
+"- A passport or identity document\n"
+"- Your booking confirmation\n"
+"- A payment card\n"
+"- The number of guests\n"
+"- Your expected check-out date\n"
+"\n"
+"You can begin the conversation with:\n"
+"\n"
+"- “Hello, I have a reservation.”\n"
+"- “Hi, I’d like to check in.”\n"
+"- “The reservation should be under Alex Dmowski.”\n"
+"- “I booked the room through a booking website.”\n"
+"- “Here is my booking confirmation.”\n"
+"\n"
+"If the receptionist cannot find your reservation, stay calm and provide "
+"more details:\n"
+"\n"
+"- “Could you check the booking number?”\n"
+"- “I received a confirmation email yesterday.”\n"
+"- “The reservation may be under my partner’s name.”\n"
+"- “Would it help if I showed you the confirmation?”\n"
+"\n"
+"## Confirm the Important Details\n"
+"\n"
+"Before accepting the room, confirm that the reservation details are "
+"correct.\n"
+"\n"
+"You may want to check:\n"
+"\n"
+"- The room type\n"
+"- The number of nights\n"
+"- The total price\n"
+"- Whether breakfast is included\n"
+"- The number and size of beds\n"
+"- The check-out time\n"
+"- Any additional fees or deposits\n"
+"\n"
+"Useful questions include:\n"
+"\n"
+"- “Could you confirm which room type I booked?”\n"
+"- “Is breakfast included in the price?”\n"
+"- “What time is check-out?”\n"
+"- “Is there a security deposit?”\n"
+"- “Are there any additional charges?”\n"
+"- “Has the room already been paid for?”\n"
+"- “Could I have a receipt, please?”\n"
+"\n"
+"Do not be afraid to ask the receptionist to repeat information:\n"
+"\n"
+"- “Sorry, could you repeat that?”\n"
+"- “Could you speak a little more slowly, please?”\n"
+"- “Did you say check-out is at eleven?”\n"
+"- “Could you write that down for me?”\n"
+"\n"
+"## Ask About Hotel Services\n"
+"\n"
+"Check-in is a good time to ask practical questions about your stay.\n"
+"\n"
+"### Wi-Fi\n"
+"\n"
+"- “Is Wi-Fi included?”\n"
+"- “What is the Wi-Fi password?”\n"
+"- “Does the Wi-Fi work inside the rooms?”\n"
+"\n"
+"### Breakfast\n"
+"\n"
+"- “What time is breakfast served?”\n"
+"- “Where is the breakfast area?”\n"
+"- “Do you have vegetarian options?”\n"
+"- “Can I add breakfast to my reservation?”\n"
+"\n"
+"### Hotel facilities\n"
+"\n"
+"- “Does the hotel have a gym?”\n"
+"- “Is there a place where I can leave my luggage?”\n"
+"- “Do you have laundry service?”\n"
+"- “Is room service available?”\n"
+"- “Is there a restaurant in the hotel?”\n"
+"\n"
+"### Transport and local information\n"
+"\n"
+"- “Could you help me call a taxi?”\n"
+"- “What is the easiest way to get to the city centre?”\n"
+"- “Is there a bus stop nearby?”\n"
+"- “Could you recommend a restaurant in the area?”\n"
+"\n"
+"## Make a Special Request\n"
+"\n"
+"It is best to make important requests before arriving, but you can also ask "
+"at reception.\n"
+"\n"
+"Common requests include:\n"
+"\n"
+"- A quiet room\n"
+"- A room on a higher or lower floor\n"
+"- Two separate beds\n"
+"- A larger bed\n"
+"- A baby cot\n"
+"- An accessible room\n"
+"- Extra towels or pillows\n"
+"- Early check-in\n"
+"- Late check-out\n"
+"- A room away from the lift\n"
+"\n"
+"Useful phrases:\n"
+"\n"
+"- “Would it be possible to have a quiet room?”\n"
+"- “Could I have a room away from the lift?”\n"
+"- “Do you have a room on a higher floor?”\n"
+"- “Could we have two separate beds?”\n"
+"- “Would it be possible to check out later?”\n"
+"- “Could you send an extra towel to the room?”\n"
+"\n"
+"Using “Could I…?”, “Would it be possible…?” and “Do you have…?” makes your "
+"request sound polite and natural.\n"
+"\n"
+"## Handle Common Problems\n"
+"\n"
+"Sometimes the room is not ready, the booking details are incorrect, or the "
+"room does not match what you reserved.\n"
+"\n"
+"### The room is not ready\n"
+"\n"
+"- “Do you know when the room will be ready?”\n"
+"- “Could I leave my luggage here?”\n"
+"- “Could you let me know when I can check in?”\n"
+"- “Is there somewhere I can wait?”\n"
+"\n"
+"### The reservation cannot be found\n"
+"\n"
+"- “I have a confirmation email. Could you check it?”\n"
+"- “Could you search using the booking reference?”\n"
+"- “The reservation may be under a different name.”\n"
+"- “Could you contact the booking platform?”\n"
+"\n"
+"### The room is different from the booking\n"
+"\n"
+"- “I believe I booked a double room.”\n"
+"- “My confirmation says that breakfast is included.”\n"
+"- “I requested two separate beds.”\n"
+"- “Could you check the original reservation?”\n"
+"- “Is another room available?”\n"
+"\n"
+"### There is a problem with the room\n"
+"\n"
+"- “The air conditioning does not seem to work.”\n"
+"- “The room has not been cleaned yet.”\n"
+"- “There is a lot of noise coming from the next room.”\n"
+"- “The Wi-Fi is not working in my room.”\n"
+"- “Could someone take a look at it?”\n"
+"- “Would it be possible to change rooms?”\n"
+"\n"
+"Describe the problem clearly, explain what you expected, and ask for a "
+"specific solution.\n"
+"\n"
+"## Understand Common Receptionist Questions\n"
+"\n"
+"A receptionist may ask:\n"
+"\n"
+"- “May I have your name?”\n"
+"- “Could I see your passport or ID?”\n"
+"- “Do you have your booking confirmation?”\n"
+"- “How many nights will you be staying?”\n"
+"- “Will you be paying by card or cash?”\n"
+"- “Would you like breakfast included?”\n"
+"- “Do you need help with your luggage?”\n"
+"- “Would you like a wake-up call?”\n"
+"- “Do you have any special requests?”\n"
+"\n"
+"You do not need to give long answers. Clear and direct responses are "
+"usually best.\n"
+"\n"
+"For example:\n"
+"\n"
+"> “Yes, the reservation is under Dmowski. I’ll be staying for three nights, "
+"and I’ll pay by card.”\n"
+"\n"
+"## A Simple Check-In Conversation\n"
+"\n"
+"A typical conversation may follow this structure:\n"
+"\n"
+"1. Greet the receptionist.\n"
+"2. Say that you have a reservation.\n"
+"3. Give your name and identification.\n"
+"4. Confirm your booking details.\n"
+"5. Ask about breakfast, Wi-Fi, or check-out.\n"
+"6. Make any special requests.\n"
+"7. Collect your room key and directions.\n"
+"8. Thank the receptionist.\n"
+"\n"
+"Example:\n"
+"\n"
+"> **Guest:** Hello, I have a reservation under Dmowski.  \n"
+"> **Receptionist:** Certainly. May I see your passport, please?  \n"
+"> **Guest:** Of course. Here you are. Is breakfast included in my booking?  "
+"\n"
+"> **Receptionist:** Yes, it is served from seven until ten.  \n"
+"> **Guest:** Great. Could you also tell me the Wi-Fi password?  \n"
+"> **Receptionist:** It is written on your key card.  \n"
+"> **Guest:** Thank you. What time is check-out?  \n"
+"> **Receptionist:** Check-out is at eleven.  \n"
+"> **Guest:** Perfect. Thank you for your help.\n"
+"\n"
+"## Practice Scenario\n"
+"\n"
+"In this roleplay, you have arrived at a hotel where you already have a "
+"reservation. The AI receptionist will ask for your details, explain the "
+"hotel’s services, and respond to your questions.\n"
+"\n"
+"During the conversation, try to:\n"
+"\n"
+"- Introduce yourself and confirm your reservation.\n"
+"- Ask at least two questions about the hotel.\n"
+"- Make one polite request.\n"
+"- Confirm an important detail by repeating it.\n"
+"- Respond to an unexpected issue if one occurs.\n"
+"\n"
+"Focus on communicating clearly rather than using perfect grammar. A "
+"successful check-in is one where both you and the receptionist understand "
+"what needs to happen next."
+msgstr ""
+"入住酒店通常遵循一个可预测的模式。接待员会确认您的身份和预订情况，解释酒店的服务，并为您安排入住。\n"
+"\n"
+"了解一些关键短语可以让这一过程更加轻松，尤其是当您在不熟悉当地语言的国家旅行时。\n"
+"\n"
+"## 入住时您可能需要的东西\n"
+"\n"
+"接待员可能会询问您：\n"
+"\n"
+"- 您的全名\n"
+"- 护照或身份证件\n"
+"- 您的预订确认\n"
+"- 一张支付卡\n"
+"- 客人的人数\n"
+"- 您预期的退房日期\n"
+"\n"
+"您可以通过以下方式开始对话：\n"
+"\n"
+"- “你好，我有一个预订。”\n"
+"- “嗨，我想办理入住。”\n"
+"- “预订应该是用Alex Dmowski这个名字。”\n"
+"- “我是通过预订网站订的房间。”\n"
+"- “这是我的预订确认。”\n"
+"\n"
+"如果接待员找不到您的预订，保持冷静并提供更多细节：\n"
+"\n"
+"- “可以检查一下预订编号吗？”\n"
+"- “我昨天收到了确认邮件。”\n"
+"- “预订可能是用我伴侣的名字。”\n"
+"- “如果我出示确认信，会有帮助吗？”\n"
+"\n"
+"## 确认重要细节\n"
+"\n"
+"在接受房间之前，请确认预订细节正确无误。\n"
+"\n"
+"您可能想检查：\n"
+"\n"
+"- 房间类型\n"
+"- 住宿的天数\n"
+"- 总价格\n"
+"- 是否包含早餐\n"
+"- 床的数量和大小\n"
+"- 退房时间\n"
+"- 任何额外费用或押金\n"
+"\n"
+"有用的问题包括：\n"
+"\n"
+"- “您能确认我预订的是哪个房型吗？”\n"
+"- “早餐是否包含在房费中？”\n"
+"- “退房时间是几点？”\n"
+"- “有押金吗？”\n"
+"- “有额外费用吗？”\n"
+"- “房费已支付了吗？”\n"
+"- “请给我一份收据好吗？”\n"
+"\n"
+"不要害怕要求接待员重复信息：\n"
+"\n"
+"- “抱歉，可以再说一遍吗？”\n"
+"- “可以说慢一点吗？”\n"
+"- “您是说退房时间是十一点吗？”\n"
+"- “可以为我写下来吗？”\n"
+"\n"
+"## 询问酒店服务\n"
+"\n"
+"办理入住时是询问实用事项的好时机。\n"
+"\n"
+"### Wi-Fi\n"
+"\n"
+"- “Wi-Fi是免费的吗？”\n"
+"- “Wi-Fi密码是什么？”\n"
+"- “房间里有Wi-Fi信号吗？”\n"
+"\n"
+"### 早餐\n"
+"\n"
+"- “早餐几点供应？”\n"
+"- “早餐区在哪里？”\n"
+"- “有素食选择吗？”\n"
+"- “早餐可以加在我的预订里吗？”\n"
+"\n"
+"### 酒店设施\n"
+"\n"
+"- “酒店有健身房吗？”\n"
+"- “是否有地方可以寄存行李？”\n"
+"- “有洗衣服务吗？”\n"
+"- “提供客房服务吗？”\n"
+"- “酒店有餐厅吗？”\n"
+"\n"
+"### 交通和当地信息\n"
+"\n"
+"- “可以帮我叫辆出租车吗？”\n"
+"- “到市中心最简单的方式是什么？”\n"
+"- “附近有公交车站吗？”\n"
+"- “可以推荐附近的餐厅吗？”\n"
+"\n"
+"## 提出特别要求\n"
+"\n"
+"最好在到达前提出重要要求，但也可以在前台提出。\n"
+"\n"
+"常见要求包括：\n"
+"\n"
+"- 安静的房间\n"
+"- 楼层较高或较低的房间\n"
+"- 两张单人床\n"
+"- 较大的床\n"
+"- 婴儿床\n"
+"- 无障碍房间\n"
+"- 额外毛巾或枕头\n"
+"- 提前入住\n"
+"- 延迟退房\n"
+"- 远离电梯的房间\n"
+"\n"
+"有用的短语：\n"
+"\n"
+"- “可以提供一个安静的房间吗？”\n"
+"- “可以给我一个远离电梯的房间吗？”\n"
+"- “有楼层较高的房间吗？”\n"
+"- “可以给我们两个单人床吗？”\n"
+"- “可以延迟退房吗？”\n"
+"- “可以送一条额外的毛巾到房间吗？”\n"
+"\n"
+"使用“我可以...吗？”，“是否可能...？”和“你们有...吗？”让您的请求显得礼貌且自然。\n"
+"\n"
+"## 处理常见问题\n"
+"\n"
+"有时候房间没准备好，预订细节不正确，或房间与您预订的不符。\n"
+"\n"
+"### 房间未准备好\n"
+"\n"
+"- “您知道房间何时会准备好？”\n"
+"- “我可以把行李放在这里吗？”\n"
+"- “房间可以入住时能通知我吗？”\n"
+"- “有地方可以等吗？”\n"
+"\n"
+"### 找不到预订\n"
+"\n"
+"- “我有确认邮件。可以检查一下吗？”\n"
+"- “可以用预订参考号查询吗？”\n"
+"- “预订可能是用另一个名字。”\n"
+"- “可以联系预订平台吗？”\n"
+"\n"
+"### 房间与预订不同\n"
+"\n"
+"- “我想我预订的是双人房。”\n"
+"- “我的确认里说包含早餐。”\n"
+"- “我要求的是两张单人床。”\n"
+"- “可以检查一下原始预订吗？”\n"
+"- “有其他房间可以吗？”\n"
+"\n"
+"### 房间有问题\n"
+"\n"
+"- “空调好像不能用。”\n"
+"- “房间还没有打扫。”\n"
+"- “隔壁房间有很大的噪音。”\n"
+"- “房间里的Wi-Fi不能用。”\n"
+"- “能有人来看看吗？”\n"
+"- “可以换房间吗？”\n"
+"\n"
+"清楚描述问题，说明您的期待，并要求一个具体的解决方案。\n"
+"\n"
+"## 理解常见的接待员问题\n"
+"\n"
+"接待员可能会问：\n"
+"\n"
+"- “我可以知道您的姓名吗？”\n"
+"- “能出示您的护照或身份证吗？”\n"
+"- “您有预订确认吗？”\n"
+"- “您会住几个晚上？”\n"
+"- “您会用卡还是现金支付？”\n"
+"- “需要包含早餐吗？”\n"
+"- “需要帮助搬运行李吗？”\n"
+"- “需要叫醒服务吗？”\n"
+"- “有其他特殊要求吗？”\n"
+"\n"
+"您不需要长篇大论。清晰简洁的回答通常是最好的。\n"
+"\n"
+"例如：\n"
+"\n"
+"> “是的，预订以Dmowski名义。我会住三晚，我用卡支付。”\n"
+"\n"
+"## 简单的入住对话\n"
+"\n"
+"典型的对话可能遵循结构：\n"
+"\n"
+"1. 向接待员问好。\n"
+"2. 说有预订。\n"
+"3. 给出姓名和身份证明。\n"
+"4. 确认您的预订细节。\n"
+"5. 询问早餐、Wi-Fi或退房时间。\n"
+"6. 提出特别要求。\n"
+"7. 领取房间钥匙和路线说明。\n"
+"8. 感谢接待员。\n"
+"\n"
+"示例：\n"
+"\n"
+"> **客人：** 你好，我有一个Dmowski的预订。  \n"
+"> **接待员：** 当然。能看看您的护照吗？  \n"
+"> **客人：** 当然。给您。我的预订包含早餐吗？  \n"
+"> **接待员：** 是的，早餐供应从七点到十点。  \n"
+"> **客人：** 太好了。还可以告诉我Wi-Fi密码吗？  \n"
+"> **接待员：** 密码写在您的钥匙卡上。  \n"
+"> **客人：** 谢谢。退房时间是什么时候？  \n"
+"> **接待员：** 退房时间是十一点。  \n"
+"> **客人：** 完美。感谢您的帮助。\n"
+"\n"
+"## 练习场景\n"
+"\n"
+"在此角色扮演中，您已经抵达一家您有预订的酒店。AI接待员将询问您的详细信息，解释酒店的服务，并回答您的问题。\n"
+"\n"
+"在对话中，尝试：\n"
+"\n"
+"- 介绍自己并确认预订。\n"
+"- 询问至少两个关于酒店的问题。\n"
+"- 提出一个礼貌的要求。\n"
+"- 通过重复确认一个重要细节。\n"
+"- 如有意外问题发生，做出回应。\n"
+"\n"
+"重点是清晰的沟通，而不是语法的完美。成功的入住是指您和接待员都了解接下来需要发生的事情。"
 
 #: src/features/Lang/getLabels.tsx:11
 #. js-lingui-explicit-id
@@ -2229,7 +2640,7 @@ msgstr "使用FluencyPal创建个性化语言学习计划。设定你的流利�
 msgid "Create a plan"
 msgstr "创建计划"
 
-#: src/features/RolePlay/rolePlayData.tsx:1311
+#: src/features/RolePlay/rolePlayData.tsx:1540
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -2268,7 +2679,7 @@ msgstr ""
 "你将通过提供对场景、角色和主要目标的简要描述来概述自己的角色扮演。AI将根据你的自定义指令调整，并进行与场景主题相一致的对话。这种灵活的格式帮助你掌握所"
 "需的具体沟通技能。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1443
+#: src/features/RolePlay/rolePlayData.tsx:1672
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -2310,7 +2721,7 @@ msgstr "创建新空间"
 msgid "Create Space"
 msgstr "创建空间"
 
-#: src/features/RolePlay/rolePlayData.tsx:1296
+#: src/features/RolePlay/rolePlayData.tsx:1525
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "创建您自己的角色扮演场景"
@@ -2360,14 +2771,14 @@ msgstr "当前课程"
 msgid "Current Scores"
 msgstr "当前分数"
 
-#: src/features/RolePlay/rolePlayData.tsx:1297
-#: src/features/RolePlay/rolePlayData.tsx:1324
-#: src/features/RolePlay/rolePlayData.tsx:1456
+#: src/features/RolePlay/rolePlayData.tsx:1526
+#: src/features/RolePlay/rolePlayData.tsx:1553
+#: src/features/RolePlay/rolePlayData.tsx:1685
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "自定义"
 
-#: src/features/RolePlay/rolePlayData.tsx:1337
+#: src/features/RolePlay/rolePlayData.tsx:1566
 #. js-lingui-explicit-id
 msgid "Custom Conversation"
 msgstr "自定义对话"
@@ -2392,7 +2803,7 @@ msgstr ""
 "未配置自定义实时。请在 .env.local 文件中设置 NEXT_PUBLIC_REALTIME_WS_URL_PROD（pnpm "
 "dev:prod）或 NEXT_PUBLIC_REALTIME_WS_URL_DEV（pnpm dev），然后重新加载。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1298
+#: src/features/RolePlay/rolePlayData.tsx:1527
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "根据您的独特学习需求定制对话"
@@ -2714,7 +3125,7 @@ msgstr "描述这些词语:"
 msgid "Describe what happened and why you are reporting this user."
 msgstr "描述发生了什么以及您为什么要举报该用户。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1304
+#: src/features/RolePlay/rolePlayData.tsx:1533
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "描述您的自定义场景..."
@@ -2816,12 +3227,12 @@ msgstr "一起讨论并提升你的技能！"
 msgid "Discuss component structure and state management"
 msgstr "讨论组件结构和状态管理"
 
-#: src/features/RolePlay/rolePlayData.tsx:1261
+#: src/features/RolePlay/rolePlayData.tsx:1490
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "讨论心理健康话题，有效表达你的想法"
 
-#: src/features/RolePlay/rolePlayData.tsx:1277
+#: src/features/RolePlay/rolePlayData.tsx:1506
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -3098,8 +3509,8 @@ msgstr "早期访问功能。这些功能可能会快速变化。"
 msgid "Early access to new tools"
 msgstr "新的工具抢先体验"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1421
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1650
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "简单"
@@ -4009,24 +4420,24 @@ msgstr ""
 msgid "For active speaking"
 msgstr "用于积极口语"
 
-#: src/features/RolePlay/rolePlayData.tsx:1381
+#: src/features/RolePlay/rolePlayData.tsx:1610
 #. js-lingui-explicit-id
 msgid ""
 "For example: get a refund, make a good impression, solve a problem, ask for "
 "clarification"
 msgstr "例如：获得退款，留下好印象，解决问题，要求澄清"
 
-#: src/features/RolePlay/rolePlayData.tsx:1372
+#: src/features/RolePlay/rolePlayData.tsx:1601
 #. js-lingui-explicit-id
 msgid "For example: job candidate, customer, patient, traveler"
 msgstr "例如：求职者、客户、病人、旅行者"
 
-#: src/features/RolePlay/rolePlayData.tsx:1361
+#: src/features/RolePlay/rolePlayData.tsx:1590
 #. js-lingui-explicit-id
 msgid "For example: recruiter, customer support agent, doctor, hotel receptionist"
 msgstr "例如：招聘人员、客户支持代理、医生、酒店接待员"
 
-#: src/features/RolePlay/rolePlayData.tsx:1344
+#: src/features/RolePlay/rolePlayData.tsx:1573
 #. js-lingui-explicit-id
 msgid ""
 "For example: returning a damaged laptop, asking for a refund, explaining a "
@@ -4075,8 +4486,8 @@ msgstr "致力于长期学习和成长的人"
 msgid "for {USER_NAME}"
 msgstr "为 {USER_NAME}"
 
-#: src/features/RolePlay/rolePlayData.tsx:1397
-#: src/features/RolePlay/rolePlayData.tsx:1404
+#: src/features/RolePlay/rolePlayData.tsx:1626
+#: src/features/RolePlay/rolePlayData.tsx:1633
 #. js-lingui-explicit-id
 msgid "Formal"
 msgstr "正式"
@@ -4147,8 +4558,8 @@ msgstr "法语学习计划"
 msgid "Frequently Asked Questions"
 msgstr "常见问题"
 
-#: src/features/RolePlay/rolePlayData.tsx:1395
-#: src/features/RolePlay/rolePlayData.tsx:1402
+#: src/features/RolePlay/rolePlayData.tsx:1624
+#: src/features/RolePlay/rolePlayData.tsx:1631
 #. js-lingui-explicit-id
 msgid "Friendly"
 msgstr "友好的"
@@ -4398,7 +4809,7 @@ msgstr ""
 "在这个场景中，你将扮演一名希望购买车票的旅行者。AI 担任火车站售票员，询问你要去哪里、何时出发以及你需要什么类型的票。通过与 AI "
 "的互动，你将掌握提出正确问题和理解旅程关键资讯的艺术。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1093
+#: src/features/RolePlay/rolePlayData.tsx:1322
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -4669,7 +5080,7 @@ msgstr "很好！请明天再来领取新任务。"
 msgid "Great!"
 msgstr "太棒了！"
 
-#: src/features/RolePlay/rolePlayData.tsx:1091
+#: src/features/RolePlay/rolePlayData.tsx:1320
 #. js-lingui-explicit-id
 msgid "Grocery Store"
 msgstr "杂货店"
@@ -4684,7 +5095,7 @@ msgstr "每天扩充你的词汇量"
 msgid "Guessed words:"
 msgstr "猜测的词语:"
 
-#: src/features/RolePlay/rolePlayData.tsx:1200
+#: src/features/RolePlay/rolePlayData.tsx:1429
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -4727,8 +5138,8 @@ msgstr "自信地处理并发"
 msgid "Happy April 1st!"
 msgstr "四月一日快乐！"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1424
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1653
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "困难"
@@ -4751,8 +5162,8 @@ msgid "Have fun!"
 msgstr "玩得开心！"
 
 #: src/features/RolePlay/rolePlayData.tsx:980
-#: src/features/RolePlay/rolePlayData.tsx:1170
-#: src/features/RolePlay/rolePlayData.tsx:1229
+#: src/features/RolePlay/rolePlayData.tsx:1399
+#: src/features/RolePlay/rolePlayData.tsx:1458
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "健康"
@@ -4878,6 +5289,11 @@ msgstr "提高自信心的提示"
 msgid "Home"
 msgstr "首页"
 
+#: src/features/RolePlay/rolePlayData.tsx:1060
+#. js-lingui-explicit-id
+msgid "Hotel Check-In"
+msgstr "酒店入住"
+
 #: src/features/RolePlay/rolePlayData.tsx:1059
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
@@ -4888,7 +5304,7 @@ msgstr "酒店入住对话"
 msgid "How can I track my progress?"
 msgstr "我如何跟踪我的进度？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1415
+#: src/features/RolePlay/rolePlayData.tsx:1644
 #. js-lingui-explicit-id
 msgid "How difficult should it be?"
 msgstr "它应该有多难？"
@@ -5051,8 +5467,8 @@ msgid "I aware that this is a simulation and not a real legal consultation."
 msgstr "我知道这是一个模拟，而不是真实的法律咨询。"
 
 #: src/features/RolePlay/rolePlayData.tsx:985
-#: src/features/RolePlay/rolePlayData.tsx:1175
-#: src/features/RolePlay/rolePlayData.tsx:1251
+#: src/features/RolePlay/rolePlayData.tsx:1404
+#: src/features/RolePlay/rolePlayData.tsx:1480
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr "我知道这只是一次模拟，并非真正的医疗咨询。"
@@ -5947,7 +6363,7 @@ msgstr "学习英语"
 msgid "Learn grammar used in academic writing and speaking."
 msgstr "学习用于学术写作和演讲的语法。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1185
+#: src/features/RolePlay/rolePlayData.tsx:1414
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "学习如何通过电话预约医疗就诊"
@@ -6364,9 +6780,9 @@ msgstr "最多 {maxWords} 个单词"
 msgid "Medical Talk Simulation"
 msgstr "医学对话模拟"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1423
-#: src/features/RolePlay/rolePlayData.tsx:1427
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1652
+#: src/features/RolePlay/rolePlayData.tsx:1656
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "中等"
@@ -7192,7 +7608,7 @@ msgstr "打开某人的资料，并按下“邀请参加辩论”按钮以开始
 msgid "Open your browser menu."
 msgstr "打开您的浏览器菜单。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1434
+#: src/features/RolePlay/rolePlayData.tsx:1663
 #. js-lingui-explicit-id
 msgid ""
 "Optional: specific vocabulary, background details, objections, questions, "
@@ -7757,15 +8173,24 @@ msgstr "练习 API 和系统设计场景。"
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "练习询问时间表、票价和票务选项"
 
-#: src/features/RolePlay/rolePlayData.tsx:1108
+#: src/features/RolePlay/rolePlayData.tsx:1337
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "练习请求产品推荐和进行购买"
 
-#: src/features/RolePlay/rolePlayData.tsx:1077
+#: src/features/RolePlay/rolePlayData.tsx:1061
 #. js-lingui-explicit-id
-msgid "Practice booking a room, requesting amenities, and checking in"
-msgstr "练习预订房间，请求设施，和办理入住手续"
+msgid ""
+"Practice checking into a hotel, confirming your reservation, asking about "
+"amenities, and solving common problems at reception."
+msgstr "练习入住酒店，确认您的预订，询问设施，并解决接待处的常见问题。"
+
+#: src/features/RolePlay/rolePlayData.tsx:1287
+#. js-lingui-explicit-id
+msgid ""
+"Practice confirming a reservation, asking about hotel services, and "
+"handling check-in problems"
+msgstr "练习确认预订、询问酒店服务以及处理入住问题"
 
 #: src/features/SEO/metadata.ts:131
 #: src/features/SEO/metadata.ts:206
@@ -7785,7 +8210,7 @@ msgstr "每天练习"
 msgid "PRACTICE EXAMS"
 msgstr "练习考试"
 
-#: src/features/RolePlay/rolePlayData.tsx:1215
+#: src/features/RolePlay/rolePlayData.tsx:1444
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr "练习解释产品问题以及请求退款或换货"
@@ -7892,7 +8317,7 @@ msgid ""
 "confidence."
 msgstr "练习符合您技能水平的真实对话。FluencyPal 自然回应，强调改进的领域，并增强您的自信心。"
 
-#: src/features/RolePlay/rolePlayData.tsx:1158
+#: src/features/RolePlay/rolePlayData.tsx:1387
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -7947,12 +8372,12 @@ msgstr "与 AI 练习口语"
 msgid "Practice STAR method answers"
 msgstr "练习 STAR 方法的答案"
 
-#: src/features/RolePlay/rolePlayData.tsx:1336
+#: src/features/RolePlay/rolePlayData.tsx:1565
 #. js-lingui-explicit-id
 msgid "Practice the exact conversation you're afraid of"
 msgstr "练习你害怕的那个确切对话"
 
-#: src/features/RolePlay/rolePlayData.tsx:1142
+#: src/features/RolePlay/rolePlayData.tsx:1371
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "练习通过电话解决技术问题"
@@ -8172,10 +8597,10 @@ msgstr "产品"
 #: src/features/RolePlay/rolePlayData.tsx:494
 #: src/features/RolePlay/rolePlayData.tsx:641
 #: src/features/RolePlay/rolePlayData.tsx:884
-#: src/features/RolePlay/rolePlayData.tsx:1137
-#: src/features/RolePlay/rolePlayData.tsx:1396
-#: src/features/RolePlay/rolePlayData.tsx:1403
-#: src/features/RolePlay/rolePlayData.tsx:1410
+#: src/features/RolePlay/rolePlayData.tsx:1366
+#: src/features/RolePlay/rolePlayData.tsx:1625
+#: src/features/RolePlay/rolePlayData.tsx:1632
+#: src/features/RolePlay/rolePlayData.tsx:1639
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "专业"
@@ -8241,7 +8666,7 @@ msgstr "古腾堡计划"
 msgid "Promote consistent learning and long-term progress"
 msgstr "促进一致的学习和长期的发展"
 
-#: src/features/RolePlay/rolePlayData.tsx:1228
+#: src/features/RolePlay/rolePlayData.tsx:1457
 #. js-lingui-explicit-id
 msgid "Psychologist"
 msgstr "心理学家"
@@ -8816,12 +9241,12 @@ msgstr "重试"
 msgid "Retry & Backoff"
 msgstr "重试与退避"
 
-#: src/features/RolePlay/rolePlayData.tsx:1198
+#: src/features/RolePlay/rolePlayData.tsx:1427
 #. js-lingui-explicit-id
 msgid "Return"
 msgstr "返回"
 
-#: src/features/RolePlay/rolePlayData.tsx:1197
+#: src/features/RolePlay/rolePlayData.tsx:1426
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "退回商品到商店"
@@ -8999,7 +9424,7 @@ msgstr "保存图书..."
 msgid "Saving book…"
 msgstr "正在保存书籍…"
 
-#: src/features/RolePlay/rolePlayData.tsx:1302
+#: src/features/RolePlay/rolePlayData.tsx:1531
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "场景描述"
@@ -9310,13 +9735,13 @@ msgstr "与您共享"
 msgid "Sharp, witty, and always a little disappointed"
 msgstr "尖锐、机智，并总是有些失望"
 
-#: src/features/RolePlay/rolePlayData.tsx:1105
-#: src/features/RolePlay/rolePlayData.tsx:1212
+#: src/features/RolePlay/rolePlayData.tsx:1334
+#: src/features/RolePlay/rolePlayData.tsx:1441
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "购物"
 
-#: src/features/RolePlay/rolePlayData.tsx:1090
+#: src/features/RolePlay/rolePlayData.tsx:1319
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "购物杂货店"
@@ -9602,7 +10027,7 @@ msgstr "讲话和写作练习"
 msgid "Speaking practice"
 msgstr "练习口语"
 
-#: src/features/RolePlay/rolePlayData.tsx:1227
+#: src/features/RolePlay/rolePlayData.tsx:1456
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "与心理学家交谈"
@@ -9929,8 +10354,8 @@ msgstr "故事进度："
 msgid "Strategic action plan to address gaps in frontend architecture knowledge"
 msgstr "弥补前端架构知识差距的战略行动计划"
 
-#: src/features/RolePlay/rolePlayData.tsx:1398
-#: src/features/RolePlay/rolePlayData.tsx:1405
+#: src/features/RolePlay/rolePlayData.tsx:1627
+#: src/features/RolePlay/rolePlayData.tsx:1634
 #. js-lingui-explicit-id
 msgid "Stressful"
 msgstr "压力大"
@@ -10707,7 +11132,7 @@ msgstr "系统设计和架构答案的技术分析"
 msgid "Technical Question"
 msgstr "技术问题"
 
-#: src/features/RolePlay/rolePlayData.tsx:1122
+#: src/features/RolePlay/rolePlayData.tsx:1351
 #. js-lingui-explicit-id
 msgid "Technical Support"
 msgstr "技术支持"
@@ -11575,7 +12000,7 @@ msgid "Translating..."
 msgstr "翻译中..."
 
 #: src/features/RolePlay/rolePlayData.tsx:950
-#: src/features/RolePlay/rolePlayData.tsx:1074
+#: src/features/RolePlay/rolePlayData.tsx:1282
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "旅行"
@@ -12169,7 +12594,7 @@ msgstr "我在付费计划中能得到什么？"
 msgid "What do I need to use FluencyPal?"
 msgstr "我使用FluencyPal需要什么？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1379
+#: src/features/RolePlay/rolePlayData.tsx:1608
 #. js-lingui-explicit-id
 msgid "What do you want to achieve?"
 msgstr "你想要达到什么目标？"
@@ -12234,7 +12659,7 @@ msgstr "\"AI 使用时间小时数\" 是什么意思？"
 msgid "What recently made you happy?"
 msgstr "最近有什么事情让你感到开心？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1342
+#: src/features/RolePlay/rolePlayData.tsx:1571
 #. js-lingui-explicit-id
 msgid "What situation do you want to practice?"
 msgstr "你想练习什么情境？"
@@ -12249,7 +12674,7 @@ msgstr "下一次需要专注于什么"
 msgid "What to say?"
 msgstr "说些什么？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1390
+#: src/features/RolePlay/rolePlayData.tsx:1619
 #. js-lingui-explicit-id
 msgid "What tone should the conversation have?"
 msgstr "对话应该是什么语气？"
@@ -12336,12 +12761,12 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "我可以在哪里使用 FluencyPal？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1370
+#: src/features/RolePlay/rolePlayData.tsx:1599
 #. js-lingui-explicit-id
 msgid "Who are you in this scenario?"
 msgstr "你在此情境中是谁？"
 
-#: src/features/RolePlay/rolePlayData.tsx:1359
+#: src/features/RolePlay/rolePlayData.tsx:1588
 #. js-lingui-explicit-id
 msgid "Who should the AI be?"
 msgstr "AI 应该是谁？"
@@ -12483,7 +12908,7 @@ msgstr "要学习的单词"
 msgid "Words to pay attention to:"
 msgstr "注意的词："
 
-#: src/features/RolePlay/rolePlayData.tsx:1124
+#: src/features/RolePlay/rolePlayData.tsx:1353
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -13062,7 +13487,7 @@ msgstr "你的工作面试准备伙伴"
 
 #: src/features/RolePlay/rolePlayData.tsx:31
 #: src/features/RolePlay/rolePlayData.tsx:1033
-#: src/features/RolePlay/rolePlayData.tsx:1238
+#: src/features/RolePlay/rolePlayData.tsx:1467
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "你的语言水平"
@@ -13202,6 +13627,54 @@ msgstr "{winnerName} 赢了！"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| 流利伴侣"
+
+#: src/features/RolePlay/rolePlayData.tsx:1062
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Check into a hotel and handle room arrangements in a realistic front-desk "
+#~ "setting. Perfect for practicing how to provide reservation details, inquire "
+#~ "about amenities, and address special requests.\n"
+#~ "\n"
+#~ "## Why You Should Play *Hotel Check-in*\n"
+#~ "1. Gain confidence requesting the services you need while checking into a "
+#~ "hotel.  \n"
+#~ "2. Learn to provide personal details and confirm reservations with clarity. "
+#~ " \n"
+#~ "3. Practice asking about amenities like breakfast, Wi-Fi, or late "
+#~ "check-out.  \n"
+#~ "4. Discover how to handle unexpected issues, such as room availability or "
+#~ "last-minute changes.  \n"
+#~ "5. Sharpen your ability to navigate professional, service-oriented "
+#~ "conversations.\n"
+#~ "\n"
+#~ "## How the Scenario Works\n"
+#~ "You’ll act as the guest arriving at the hotel, while our AI plays the role "
+#~ "of a receptionist. The receptionist will ask for your name, reservation "
+#~ "details, and any special requests you might have. By responding naturally, "
+#~ "you’ll build the conversational skills necessary for a smooth hotel "
+#~ "check-in experience.\n"
+#~ msgstr ""
+#~ "在酒店办理入住并处理房间安排，呈现一个真实的前台场景。非常适合练习如何提供预订信息、询问设施以及处理特殊请求。\n"
+#~ "\n"
+#~ "## 为什么你应该玩 *酒店入住*\n"
+#~ "1. 在办理酒店入住时，增强请求所需服务的信心。  \n"
+#~ "2. 学习清晰地提供个人信息和确认预订。  \n"
+#~ "3. 练习询问早餐、Wi-Fi或延迟退房等设施。  \n"
+#~ "4. 学习如何处理意外问题，例如房间可用性或临时变更。  \n"
+#~ "5. 提升你在专业服务导向对话中的应对能力。\n"
+#~ "\n"
+#~ "## 情境如何运作\n"
+#~ "你将扮演抵达酒店的客人，而我们的AI则扮演接待员。接待员会询问你的姓名、预订信息及任何特殊请求。通过自然地回应，你将培养顺利办理酒店入住所需的对话技巧。"
+
+#: src/features/RolePlay/rolePlayData.tsx:1060
+#. js-lingui-explicit-id
+#~ msgid "Check-In"
+#~ msgstr "签到"
+
+#: src/features/RolePlay/rolePlayData.tsx:1077
+#. js-lingui-explicit-id
+#~ msgid "Practice booking a room, requesting amenities, and checking in"
+#~ msgstr "练习预订房间，请求设施，和办理入住手续"
 
 #: src/features/Dashboard/GameDashboardCard.tsx:107
 #. js-lingui-explicit-id

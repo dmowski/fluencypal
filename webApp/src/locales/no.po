@@ -690,7 +690,7 @@ msgstr "Alle"
 msgid "All Interviews"
 msgstr "Alle intervjuer"
 
-#: src/features/RolePlay/rolePlayData.tsx:1488
+#: src/features/RolePlay/rolePlayData.tsx:1727
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Alle Scenarier"
@@ -825,7 +825,7 @@ msgstr "Svar på spørsmålene riktig for å klatre på ledertavlen!"
 msgid "Anything else?"
 msgstr "Noe annet?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1432
+#: src/features/RolePlay/rolePlayData.tsx:1661
 #. js-lingui-explicit-id
 msgid "Anything the AI must include?"
 msgstr "Noe AI-en må inkludere?"
@@ -835,7 +835,7 @@ msgstr "Noe AI-en må inkludere?"
 msgid "API design and data modeling insights"
 msgstr "API-design og innsikt i datamodellering"
 
-#: src/features/RolePlay/rolePlayData.tsx:1156
+#: src/features/RolePlay/rolePlayData.tsx:1385
 #. js-lingui-explicit-id
 msgid "Appointment"
 msgstr "Avtale"
@@ -1215,7 +1215,7 @@ msgstr "Bok delt med"
 msgid "Book updated."
 msgstr "Bok oppdatert."
 
-#: src/features/RolePlay/rolePlayData.tsx:1155
+#: src/features/RolePlay/rolePlayData.tsx:1384
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Bestille legetime"
@@ -1293,7 +1293,7 @@ msgid ""
 "conversation."
 msgstr "Bygg selvtillit, flyt og lytteferdigheter gjennom naturlige samtaler."
 
-#: src/features/RolePlay/rolePlayData.tsx:1338
+#: src/features/RolePlay/rolePlayData.tsx:1567
 #. js-lingui-explicit-id
 msgid "Build your own role-play with more guidance"
 msgstr "Bygg din egen rollespill med mer veiledning"
@@ -1403,7 +1403,7 @@ msgstr "Begrensninger på samtalevarighet?"
 msgid "Call mode"
 msgstr "Anropsmodus"
 
-#: src/features/RolePlay/rolePlayData.tsx:1121
+#: src/features/RolePlay/rolePlayData.tsx:1350
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "Kundestøtte\\n"
@@ -1512,8 +1512,8 @@ msgstr "Kortet er bekreftet. Laster inn..."
 msgid "Career Advancement"
 msgstr "Karrierefremgang"
 
-#: src/features/RolePlay/rolePlayData.tsx:1399
-#: src/features/RolePlay/rolePlayData.tsx:1407
+#: src/features/RolePlay/rolePlayData.tsx:1628
+#: src/features/RolePlay/rolePlayData.tsx:1636
 #. js-lingui-explicit-id
 msgid "Challenging"
 msgstr "Utfordrende"
@@ -1568,54 +1568,6 @@ msgstr "Chat ikke funnet, eller du har ikke tilgang til det."
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Chat med en medhundeeier"
 
-#: src/features/RolePlay/rolePlayData.tsx:1062
-#. js-lingui-explicit-id
-msgid ""
-"Check into a hotel and handle room arrangements in a realistic front-desk "
-"setting. Perfect for practicing how to provide reservation details, inquire "
-"about amenities, and address special requests.\n"
-"\n"
-"## Why You Should Play *Hotel Check-in*\n"
-"1. Gain confidence requesting the services you need while checking into a "
-"hotel.  \n"
-"2. Learn to provide personal details and confirm reservations with clarity. "
-" \n"
-"3. Practice asking about amenities like breakfast, Wi-Fi, or late "
-"check-out.  \n"
-"4. Discover how to handle unexpected issues, such as room availability or "
-"last-minute changes.  \n"
-"5. Sharpen your ability to navigate professional, service-oriented "
-"conversations.\n"
-"\n"
-"## How the Scenario Works\n"
-"You’ll act as the guest arriving at the hotel, while our AI plays the role "
-"of a receptionist. The receptionist will ask for your name, reservation "
-"details, and any special requests you might have. By responding naturally, "
-"you’ll build the conversational skills necessary for a smooth hotel "
-"check-in experience.\n"
-msgstr ""
-" sjekk inn på et hotell og håndter romarrangementer i en realistisk "
-"resepsjonsinnstilling. Perfekt for å øve på hvordan man gir "
-"reservasjonsdetaljer, spør om fasiliteter og adresserer spesielle "
-"forespørselen.\n"
-"\n"
-"## Hvorfor du bør spille *Hotell Innsjekking*\n"
-"1. Få selvtillit til å be om tjenestene du trenger når du sjekker inn på et "
-"hotell.  \n"
-"2. Lær å gi personlige detaljer og bekrefte reservasjoner med klarhet.  \n"
-"3. Øv på å spørre om fasiliteter som frokost, Wi-Fi eller sen utsjekking.  \n"
-"4. Oppdag hvordan du håndterer uventede problemer, som romtilgjengelighet "
-"eller endringer i siste liten.  \n"
-"5. Skjerp evnen din til å navigere i profesjonelle, serviceorienterte "
-"samtaler.\n"
-"\n"
-"## Hvordan scenariet fungerer\n"
-"Du vil opptre som gjesten som ankommer hotellet, mens vår AI spiller rollen "
-"som resepsjonist. Resepsjonisten vil be om navnet ditt, "
-"reservasjonsdetaljer og eventuelle spesielle forespørsel du måtte ha. Ved å "
-"svare naturlig, vil du bygge de samtaleferdighetene som er nødvendige for "
-"en smidig innsjekking på hotellet."
-
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:363
 #. js-lingui-explicit-id
 msgid "Check other grammar points and examples."
@@ -1643,10 +1595,474 @@ msgstr "Sjekk Fremdriften Din"
 msgid "Check your spam folder if you don't see the email."
 msgstr "Sjekk søppelpostmappen hvis du ikke ser e-posten."
 
-#: src/features/RolePlay/rolePlayData.tsx:1060
+#: src/features/RolePlay/rolePlayData.tsx:1065
 #. js-lingui-explicit-id
-msgid "Check-In"
-msgstr "Innsjekking"
+msgid ""
+"Checking into a hotel usually follows a predictable pattern. The "
+"receptionist confirms your identity and reservation, explains the hotel’s "
+"services, and gives you access to your room.\n"
+"\n"
+"Knowing a few key phrases can make the process much easier, especially when "
+"you are travelling in a country where you do not speak the local language "
+"confidently.\n"
+"\n"
+"## What You May Need at Check-In\n"
+"\n"
+"The receptionist may ask you for:\n"
+"\n"
+"- Your full name\n"
+"- A passport or identity document\n"
+"- Your booking confirmation\n"
+"- A payment card\n"
+"- The number of guests\n"
+"- Your expected check-out date\n"
+"\n"
+"You can begin the conversation with:\n"
+"\n"
+"- “Hello, I have a reservation.”\n"
+"- “Hi, I’d like to check in.”\n"
+"- “The reservation should be under Alex Dmowski.”\n"
+"- “I booked the room through a booking website.”\n"
+"- “Here is my booking confirmation.”\n"
+"\n"
+"If the receptionist cannot find your reservation, stay calm and provide "
+"more details:\n"
+"\n"
+"- “Could you check the booking number?”\n"
+"- “I received a confirmation email yesterday.”\n"
+"- “The reservation may be under my partner’s name.”\n"
+"- “Would it help if I showed you the confirmation?”\n"
+"\n"
+"## Confirm the Important Details\n"
+"\n"
+"Before accepting the room, confirm that the reservation details are "
+"correct.\n"
+"\n"
+"You may want to check:\n"
+"\n"
+"- The room type\n"
+"- The number of nights\n"
+"- The total price\n"
+"- Whether breakfast is included\n"
+"- The number and size of beds\n"
+"- The check-out time\n"
+"- Any additional fees or deposits\n"
+"\n"
+"Useful questions include:\n"
+"\n"
+"- “Could you confirm which room type I booked?”\n"
+"- “Is breakfast included in the price?”\n"
+"- “What time is check-out?”\n"
+"- “Is there a security deposit?”\n"
+"- “Are there any additional charges?”\n"
+"- “Has the room already been paid for?”\n"
+"- “Could I have a receipt, please?”\n"
+"\n"
+"Do not be afraid to ask the receptionist to repeat information:\n"
+"\n"
+"- “Sorry, could you repeat that?”\n"
+"- “Could you speak a little more slowly, please?”\n"
+"- “Did you say check-out is at eleven?”\n"
+"- “Could you write that down for me?”\n"
+"\n"
+"## Ask About Hotel Services\n"
+"\n"
+"Check-in is a good time to ask practical questions about your stay.\n"
+"\n"
+"### Wi-Fi\n"
+"\n"
+"- “Is Wi-Fi included?”\n"
+"- “What is the Wi-Fi password?”\n"
+"- “Does the Wi-Fi work inside the rooms?”\n"
+"\n"
+"### Breakfast\n"
+"\n"
+"- “What time is breakfast served?”\n"
+"- “Where is the breakfast area?”\n"
+"- “Do you have vegetarian options?”\n"
+"- “Can I add breakfast to my reservation?”\n"
+"\n"
+"### Hotel facilities\n"
+"\n"
+"- “Does the hotel have a gym?”\n"
+"- “Is there a place where I can leave my luggage?”\n"
+"- “Do you have laundry service?”\n"
+"- “Is room service available?”\n"
+"- “Is there a restaurant in the hotel?”\n"
+"\n"
+"### Transport and local information\n"
+"\n"
+"- “Could you help me call a taxi?”\n"
+"- “What is the easiest way to get to the city centre?”\n"
+"- “Is there a bus stop nearby?”\n"
+"- “Could you recommend a restaurant in the area?”\n"
+"\n"
+"## Make a Special Request\n"
+"\n"
+"It is best to make important requests before arriving, but you can also ask "
+"at reception.\n"
+"\n"
+"Common requests include:\n"
+"\n"
+"- A quiet room\n"
+"- A room on a higher or lower floor\n"
+"- Two separate beds\n"
+"- A larger bed\n"
+"- A baby cot\n"
+"- An accessible room\n"
+"- Extra towels or pillows\n"
+"- Early check-in\n"
+"- Late check-out\n"
+"- A room away from the lift\n"
+"\n"
+"Useful phrases:\n"
+"\n"
+"- “Would it be possible to have a quiet room?”\n"
+"- “Could I have a room away from the lift?”\n"
+"- “Do you have a room on a higher floor?”\n"
+"- “Could we have two separate beds?”\n"
+"- “Would it be possible to check out later?”\n"
+"- “Could you send an extra towel to the room?”\n"
+"\n"
+"Using “Could I…?”, “Would it be possible…?” and “Do you have…?” makes your "
+"request sound polite and natural.\n"
+"\n"
+"## Handle Common Problems\n"
+"\n"
+"Sometimes the room is not ready, the booking details are incorrect, or the "
+"room does not match what you reserved.\n"
+"\n"
+"### The room is not ready\n"
+"\n"
+"- “Do you know when the room will be ready?”\n"
+"- “Could I leave my luggage here?”\n"
+"- “Could you let me know when I can check in?”\n"
+"- “Is there somewhere I can wait?”\n"
+"\n"
+"### The reservation cannot be found\n"
+"\n"
+"- “I have a confirmation email. Could you check it?”\n"
+"- “Could you search using the booking reference?”\n"
+"- “The reservation may be under a different name.”\n"
+"- “Could you contact the booking platform?”\n"
+"\n"
+"### The room is different from the booking\n"
+"\n"
+"- “I believe I booked a double room.”\n"
+"- “My confirmation says that breakfast is included.”\n"
+"- “I requested two separate beds.”\n"
+"- “Could you check the original reservation?”\n"
+"- “Is another room available?”\n"
+"\n"
+"### There is a problem with the room\n"
+"\n"
+"- “The air conditioning does not seem to work.”\n"
+"- “The room has not been cleaned yet.”\n"
+"- “There is a lot of noise coming from the next room.”\n"
+"- “The Wi-Fi is not working in my room.”\n"
+"- “Could someone take a look at it?”\n"
+"- “Would it be possible to change rooms?”\n"
+"\n"
+"Describe the problem clearly, explain what you expected, and ask for a "
+"specific solution.\n"
+"\n"
+"## Understand Common Receptionist Questions\n"
+"\n"
+"A receptionist may ask:\n"
+"\n"
+"- “May I have your name?”\n"
+"- “Could I see your passport or ID?”\n"
+"- “Do you have your booking confirmation?”\n"
+"- “How many nights will you be staying?”\n"
+"- “Will you be paying by card or cash?”\n"
+"- “Would you like breakfast included?”\n"
+"- “Do you need help with your luggage?”\n"
+"- “Would you like a wake-up call?”\n"
+"- “Do you have any special requests?”\n"
+"\n"
+"You do not need to give long answers. Clear and direct responses are "
+"usually best.\n"
+"\n"
+"For example:\n"
+"\n"
+"> “Yes, the reservation is under Dmowski. I’ll be staying for three nights, "
+"and I’ll pay by card.”\n"
+"\n"
+"## A Simple Check-In Conversation\n"
+"\n"
+"A typical conversation may follow this structure:\n"
+"\n"
+"1. Greet the receptionist.\n"
+"2. Say that you have a reservation.\n"
+"3. Give your name and identification.\n"
+"4. Confirm your booking details.\n"
+"5. Ask about breakfast, Wi-Fi, or check-out.\n"
+"6. Make any special requests.\n"
+"7. Collect your room key and directions.\n"
+"8. Thank the receptionist.\n"
+"\n"
+"Example:\n"
+"\n"
+"> **Guest:** Hello, I have a reservation under Dmowski.  \n"
+"> **Receptionist:** Certainly. May I see your passport, please?  \n"
+"> **Guest:** Of course. Here you are. Is breakfast included in my booking?  "
+"\n"
+"> **Receptionist:** Yes, it is served from seven until ten.  \n"
+"> **Guest:** Great. Could you also tell me the Wi-Fi password?  \n"
+"> **Receptionist:** It is written on your key card.  \n"
+"> **Guest:** Thank you. What time is check-out?  \n"
+"> **Receptionist:** Check-out is at eleven.  \n"
+"> **Guest:** Perfect. Thank you for your help.\n"
+"\n"
+"## Practice Scenario\n"
+"\n"
+"In this roleplay, you have arrived at a hotel where you already have a "
+"reservation. The AI receptionist will ask for your details, explain the "
+"hotel’s services, and respond to your questions.\n"
+"\n"
+"During the conversation, try to:\n"
+"\n"
+"- Introduce yourself and confirm your reservation.\n"
+"- Ask at least two questions about the hotel.\n"
+"- Make one polite request.\n"
+"- Confirm an important detail by repeating it.\n"
+"- Respond to an unexpected issue if one occurs.\n"
+"\n"
+"Focus on communicating clearly rather than using perfect grammar. A "
+"successful check-in is one where both you and the receptionist understand "
+"what needs to happen next."
+msgstr ""
+"Å sjekke inn på et hotell følger vanligvis et forutsigbart mønster. "
+"Resepsjonisten bekrefter din identitet og reservasjon, forklarer hotellets "
+"tjenester og gir deg tilgang til rommet ditt.\n"
+"\n"
+"Å kjenne noen få nøkkelfraser kan gjøre prosessen mye enklere, spesielt når "
+"du reiser i et land hvor du ikke snakker det lokale språket med selvtillit.\n"
+"\n"
+"## Hva Du Kan Trenge ved Innsjekking\n"
+"\n"
+"Resepsjonisten kan be deg om:\n"
+"\n"
+"- Ditt fulle navn\n"
+"- Et pass eller identitetsdokument\n"
+"- Din bookingbekreftelse\n"
+"- Et betalingskort\n"
+"- Antall gjester\n"
+"- Din forventede utsjekkingsdato\n"
+"\n"
+"Du kan begynne samtalen med:\n"
+"\n"
+"- \"Hei, jeg har en reservasjon.\"\n"
+"- \"Hei, jeg vil gjerne sjekke inn.\"\n"
+"- \"Reservasjonen skal være under Alex Dmowski.\"\n"
+"- \"Jeg bestilte rommet gjennom en bookingside.\"\n"
+"- \"Her er min bookingbekreftelse.\"\n"
+"\n"
+"Hvis resepsjonisten ikke finner reservasjonen din, hold deg rolig og gi "
+"flere detaljer:\n"
+"\n"
+"- \"Kunne du sjekke bookingsnummeret?\"\n"
+"- \"Jeg mottok en bekreftelsesmail i går.\"\n"
+"- \"Reservasjonen kan være under min partners navn.\"\n"
+"- \"Hadde det hjulpet om jeg viste deg bekreftelsen?\"\n"
+"\n"
+"## Bekreft de Viktige Detaljene\n"
+"\n"
+"Før du aksepterer rommet, bekreft at reservasjonsdetaljene er riktige.\n"
+"\n"
+"Du kan ønske å sjekke:\n"
+"\n"
+"- Romtype\n"
+"- Antall netter\n"
+"- Totalprisen\n"
+"- Om frokost er inkludert\n"
+"- Antall og størrelse på sengene\n"
+"- Utsjekkingstidspunkt\n"
+"- Eventuelle ekstra gebyrer eller depositum\n"
+"\n"
+"Nyttige spørsmål inkluderer:\n"
+"\n"
+"- \"Kunne du bekrefte hvilken romtype jeg har booket?\"\n"
+"- \"Er frokost inkludert i prisen?\"\n"
+"- \"Når er utsjekking?\"\n"
+"- \"Er det et depositum?\"\n"
+"- \"Er det noen ekstra gebyrer?\"\n"
+"- \"Er rommet allerede betalt?\"\n"
+"- \"Kan jeg få en kvittering, vær så snill?\"\n"
+"\n"
+"Ikke vær redd for å be resepsjonisten gjenta informasjon:\n"
+"\n"
+"- \"Beklager, kunne du gjenta det?\"\n"
+"- \"Kunne du snakke litt saktere, vær så snill?\"\n"
+"- \"Sa du at utsjekkingen er klokken elleve?\"\n"
+"- \"Kunne du skrive det ned for meg?\"\n"
+"\n"
+"## Spør om Hotelltjenester\n"
+"\n"
+"Innsjekking er en god tid for å stille praktiske spørsmål om oppholdet "
+"ditt.\n"
+"\n"
+"### Wi-Fi\n"
+"\n"
+"- \"Er Wi-Fi inkludert?\"\n"
+"- \"Hva er Wi-Fi passordet?\"\n"
+"- \"Fungerer Wi-Fi inne på rommene?\"\n"
+"\n"
+"### Frokost\n"
+"\n"
+"- \"Når serveres frokosten?\"\n"
+"- \"Hvor er frokostområdet?\"\n"
+"- \"Har dere vegetarianske alternativer?\"\n"
+"- \"Kan jeg legge til frokost på min reservasjon?\"\n"
+"\n"
+"### Hotellfasiliteter\n"
+"\n"
+"- \"Har hotellet et treningsrom?\"\n"
+"- \"Er det et sted hvor jeg kan legge igjen bagasjen?\"\n"
+"- \"Har dere klesvasktjeneste?\"\n"
+"- \"Er romservice tilgjengelig?\"\n"
+"- \"Er det en restaurant på hotellet?\"\n"
+"\n"
+"### Transport og lokal informasjon\n"
+"\n"
+"- \"Kunne du hjelpe meg med å ringe en taxi?\"\n"
+"- \"Hva er den enkleste måten å komme seg til sentrum?\"\n"
+"- \"Er det en bussholdeplass i nærheten?\"\n"
+"- \"Kunne du anbefale en restaurant i området?\"\n"
+"\n"
+"## Gjør en Spesiell Forespørsel\n"
+"\n"
+"Det er best å gjøre viktige forespørsler før du ankommer, men du kan også "
+"spørre i resepsjonen.\n"
+"\n"
+"Vanlige forespørsler inkluderer:\n"
+"\n"
+"- Et stille rom\n"
+"- Et rom i en høyere eller lavere etasje\n"
+"- To separate senger\n"
+"- En større seng\n"
+"- En babyseng\n"
+"- Et tilgjengelig rom\n"
+"- Ekstra håndklær eller puter\n"
+"- Tidlig innsjekking\n"
+"- Sen utsjekking\n"
+"- Et rom bort fra heisen\n"
+"\n"
+"Nyttige fraser:\n"
+"\n"
+"- \"Ville det vært mulig å få et stille rom?\"\n"
+"- \"Kunne jeg få et rom bort fra heisen?\"\n"
+"- \"Har dere et rom i en høyere etasje?\"\n"
+"- \"Kunne vi få to separate senger?\"\n"
+"- \"Ville det være mulig å sjekke ut senere?\"\n"
+"- \"Kunne du sende et ekstra håndkle til rommet?\"\n"
+"\n"
+"Å bruke \"Kunne jeg...?\", \"Ville det være mulig...?\" og \"Har dere...?\" "
+"gjør forespørselen din høflig og naturlig.\n"
+"\n"
+"## Håndter Vanlige Problemer\n"
+"\n"
+"Noen ganger er ikke rommet klart, bookingsdetaljene er feil, eller rommet "
+"samsvarer ikke med hva du reserverte.\n"
+"\n"
+"### Rommet er ikke klart\n"
+"\n"
+"- \"Vet du når rommet vil være klart?\"\n"
+"- \"Kunne jeg legge igjen bagasjen min her?\"\n"
+"- \"Kunne du si ifra når jeg kan sjekke inn?\"\n"
+"- \"Er det et sted jeg kan vente?\"\n"
+"\n"
+"### Reservasjonen kan ikke bli funnet\n"
+"\n"
+"- \"Jeg har en bekreftelsesmail. Kunne du sjekke den?\"\n"
+"- \"Kunne du søke ved bruk av bookingsreferansen?\"\n"
+"- \"Reservasjonen kan være under et annet navn.\"\n"
+"- \"Kunne du kontakte bookingplattformen?\"\n"
+"\n"
+"### Rommet er annerledes enn bookingen\n"
+"\n"
+"- \"Jeg tror jeg booket et dobbeltrom.\"\n"
+"- \"Min bekreftelse sier at frokost er inkludert.\"\n"
+"- \"Jeg forespurte to separate senger.\"\n"
+"- \"Kunne du sjekke den originale reservasjonen?\"\n"
+"- \"Er et annet rom tilgjengelig?\"\n"
+"\n"
+"### Det er et problem med rommet\n"
+"\n"
+"- \"Klimaanlegget ser ikke ut til å virke.\"\n"
+"- \"Rommet er ikke rengjort ennå.\"\n"
+"- \"Det er mye støy fra naborommet.\"\n"
+"- \"Wi-Fi fungerer ikke på rommet.\"\n"
+"- \"Kunne noen ta en titt på det?\"\n"
+"- \"Ville det være mulig å bytte rom?\"\n"
+"\n"
+"Beskriv problemet tydelig, forklar hva du forventet, og be om en spesifikk "
+"løsning.\n"
+"\n"
+"## Forstå Vanlige Resepsjonistspørsmål\n"
+"\n"
+"En resepsjonist kan spørre:\n"
+"\n"
+"- \"Kan jeg få navnet ditt?\"\n"
+"- \"Kan jeg se passet eller ID-en din?\"\n"
+"- \"Har du din bookingbekreftelse?\"\n"
+"- \"Hvor mange netter skal du bo?\"\n"
+"- \"Vil du betale med kort eller kontanter?\"\n"
+"- \"Ønsker du frokost inkludert?\"\n"
+"- \"Trenger du hjelp med bagasjen?\"\n"
+"- \"Ønsker du en vekkertelefon?\"\n"
+"- \"Har du noen spesielle forespørsler?\"\n"
+"\n"
+"Du trenger ikke å gi lange svar. Klare og direkte svar er vanligvis best.\n"
+"\n"
+"For eksempel:\n"
+"\n"
+"> \"Ja, reservasjonen er på Dmowski. Jeg skal bo i tre netter, og jeg vil "
+"betale med kort.\"\n"
+"\n"
+"## En Enkel Innsjekkingssamtale\n"
+"\n"
+"En typisk samtale kan følge denne strukturen:\n"
+"\n"
+"1. Hils på resepsjonisten.\n"
+"2. Si at du har en reservasjon.\n"
+"3. Gi ditt navn og identifikasjon.\n"
+"4. Bekreft dine bookingdetaljer.\n"
+"5. Spør om frokost, Wi-Fi eller utsjekking.\n"
+"6. Gjør eventuelle spesielle forespørsler.\n"
+"7. Motta nøkkelen og veibeskrivelse til rommet ditt.\n"
+"8. Takk resepsjonisten.\n"
+"\n"
+"Eksempel:\n"
+"\n"
+"> **Gjest:** Hei, jeg har en reservasjon på Dmowski.  \n"
+"> **Resepsjonist:** Selvfølgelig. Kan jeg se passet ditt, takk?  \n"
+"> **Gjest:** Selvfølgelig. Her er det. Er frokost inkludert i min booking?  "
+"\n"
+"> **Resepsjonist:** Ja, den serveres fra sju til ti.  \n"
+"> **Gjest:** Flott. Kunne du også fortelle meg Wi-Fi passordet?  \n"
+"> **Resepsjonist:** Det står skrevet på nøkkelkortet ditt.  \n"
+"> **Gjest:** Takk. Når er utsjekking?  \n"
+"> **Resepsjonist:** Utsjekking er klokken elleve.  \n"
+"> **Gjest:** Perfekt. Takk for hjelpen.\n"
+"\n"
+"## Øvingsscenario\n"
+"\n"
+"I denne rolletildelingen har du ankommet et hotell hvor du allerede har en "
+"reservasjon. Den AI-resepsjonisten vil be om detaljene dine, forklare "
+"hotellets tjenester og svare på dine spørsmål.\n"
+"\n"
+"Under samtalen, forsøk å:\n"
+"\n"
+"- Introdusere deg selv og bekrefte reservasjonen.\n"
+"- Spørre minst to spørsmål om hotellet.\n"
+"- Gjøre en høflig forespørsel.\n"
+"- Bekrefte en viktig detalj ved å gjenta den.\n"
+"- Respondere på et uventet problem dersom ett oppstår.\n"
+"\n"
+"Fokuser på å kommunisere klart fremfor å bruke perfekt grammatikk. En "
+"vellykket innsjekking er en hvor både du og resepsjonisten forstår hva som "
+"trenger å skje neste."
 
 #: src/features/Lang/getLabels.tsx:11
 #. js-lingui-explicit-id
@@ -2314,7 +2730,7 @@ msgstr ""
 msgid "Create a plan"
 msgstr "Lag en plan"
 
-#: src/features/RolePlay/rolePlayData.tsx:1311
+#: src/features/RolePlay/rolePlayData.tsx:1540
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -2363,7 +2779,7 @@ msgstr ""
 "ditt. Dette fleksible formatet hjelper deg å mestre de spesifikke "
 "kommunikasjon ferdighetene du trenger."
 
-#: src/features/RolePlay/rolePlayData.tsx:1443
+#: src/features/RolePlay/rolePlayData.tsx:1672
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -2411,7 +2827,7 @@ msgstr "Opprett Nytt Rom"
 msgid "Create Space"
 msgstr "Opprett Rom"
 
-#: src/features/RolePlay/rolePlayData.tsx:1296
+#: src/features/RolePlay/rolePlayData.tsx:1525
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Lag ditt eget rollespillscenario"
@@ -2461,14 +2877,14 @@ msgstr "Nåværende leksjon"
 msgid "Current Scores"
 msgstr "Nåværende Poengsum"
 
-#: src/features/RolePlay/rolePlayData.tsx:1297
-#: src/features/RolePlay/rolePlayData.tsx:1324
-#: src/features/RolePlay/rolePlayData.tsx:1456
+#: src/features/RolePlay/rolePlayData.tsx:1526
+#: src/features/RolePlay/rolePlayData.tsx:1553
+#: src/features/RolePlay/rolePlayData.tsx:1685
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "Egendefinert"
 
-#: src/features/RolePlay/rolePlayData.tsx:1337
+#: src/features/RolePlay/rolePlayData.tsx:1566
 #. js-lingui-explicit-id
 msgid "Custom Conversation"
 msgstr "Tilpasset samtale"
@@ -2494,7 +2910,7 @@ msgstr ""
 "(pnpm dev:prod) or NEXT_PUBLIC_REALTIME_WS_URL_DEV (pnpm dev) in .env.local "
 "and reload."
 
-#: src/features/RolePlay/rolePlayData.tsx:1298
+#: src/features/RolePlay/rolePlayData.tsx:1527
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "Tilpass en samtale for å imøtekomme dine unike læringsbehov"
@@ -2834,7 +3250,7 @@ msgstr "Beskriv disse ordene:"
 msgid "Describe what happened and why you are reporting this user."
 msgstr "Beskriv hva som skjedde og hvorfor du rapporterer denne brukeren."
 
-#: src/features/RolePlay/rolePlayData.tsx:1304
+#: src/features/RolePlay/rolePlayData.tsx:1533
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "Beskriv ditt tilpassede scenario her..."
@@ -2942,12 +3358,12 @@ msgstr "Diskuter og forbedre ferdighetene dine sammen!"
 msgid "Discuss component structure and state management"
 msgstr "Diskuter komponentstruktur og tilstandshåndtering"
 
-#: src/features/RolePlay/rolePlayData.tsx:1261
+#: src/features/RolePlay/rolePlayData.tsx:1490
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "Diskuter emner relatert til mental helse og uttrykk tankene dine effektivt"
 
-#: src/features/RolePlay/rolePlayData.tsx:1277
+#: src/features/RolePlay/rolePlayData.tsx:1506
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -3247,8 +3663,8 @@ msgstr "Tidlig tilgang til funksjoner. Disse funksjonene kan endres raskt."
 msgid "Early access to new tools"
 msgstr "Tidlig tilgang til nye verktøy"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1421
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1650
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Enkel"
@@ -4235,7 +4651,7 @@ msgstr ""
 msgid "For active speaking"
 msgstr "For aktiv tale"
 
-#: src/features/RolePlay/rolePlayData.tsx:1381
+#: src/features/RolePlay/rolePlayData.tsx:1610
 #. js-lingui-explicit-id
 msgid ""
 "For example: get a refund, make a good impression, solve a problem, ask for "
@@ -4244,17 +4660,17 @@ msgstr ""
 "For eksempel: få en refusjon, gjøre et godt inntrykk, løse et problem, be "
 "om avklaring"
 
-#: src/features/RolePlay/rolePlayData.tsx:1372
+#: src/features/RolePlay/rolePlayData.tsx:1601
 #. js-lingui-explicit-id
 msgid "For example: job candidate, customer, patient, traveler"
 msgstr "For eksempel: jobbkandidat, kunde, pasient, reisende"
 
-#: src/features/RolePlay/rolePlayData.tsx:1361
+#: src/features/RolePlay/rolePlayData.tsx:1590
 #. js-lingui-explicit-id
 msgid "For example: recruiter, customer support agent, doctor, hotel receptionist"
 msgstr "For eksempel: rekrutterer, kundestøtteagent, lege, hotellresepsjonist"
 
-#: src/features/RolePlay/rolePlayData.tsx:1344
+#: src/features/RolePlay/rolePlayData.tsx:1573
 #. js-lingui-explicit-id
 msgid ""
 "For example: returning a damaged laptop, asking for a refund, explaining a "
@@ -4307,8 +4723,8 @@ msgstr "For de som er forpliktet til langsiktig læring og vekst"
 msgid "for {USER_NAME}"
 msgstr "for {USER_NAME}"
 
-#: src/features/RolePlay/rolePlayData.tsx:1397
-#: src/features/RolePlay/rolePlayData.tsx:1404
+#: src/features/RolePlay/rolePlayData.tsx:1626
+#: src/features/RolePlay/rolePlayData.tsx:1633
 #. js-lingui-explicit-id
 msgid "Formal"
 msgstr "Formell"
@@ -4381,8 +4797,8 @@ msgstr "Fransk Læringsplan"
 msgid "Frequently Asked Questions"
 msgstr "Ofte stilte spørsmål"
 
-#: src/features/RolePlay/rolePlayData.tsx:1395
-#: src/features/RolePlay/rolePlayData.tsx:1402
+#: src/features/RolePlay/rolePlayData.tsx:1624
+#: src/features/RolePlay/rolePlayData.tsx:1631
 #. js-lingui-explicit-id
 msgid "Friendly"
 msgstr "Vennlig"
@@ -4644,7 +5060,7 @@ msgstr ""
 "need. By interacting with the AI, you’ll master the art of asking the right "
 "questions and understanding key information about your journey."
 
-#: src/features/RolePlay/rolePlayData.tsx:1093
+#: src/features/RolePlay/rolePlayData.tsx:1322
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -4936,7 +5352,7 @@ msgstr "Flott jobb! Kom tilbake i morgen for nye oppgaver."
 msgid "Great!"
 msgstr "Flott!"
 
-#: src/features/RolePlay/rolePlayData.tsx:1091
+#: src/features/RolePlay/rolePlayData.tsx:1320
 #. js-lingui-explicit-id
 msgid "Grocery Store"
 msgstr "Matbutikk"
@@ -4951,7 +5367,7 @@ msgstr "Utvid ordforrådet ditt daglig"
 msgid "Guessed words:"
 msgstr "Gjettede ord:"
 
-#: src/features/RolePlay/rolePlayData.tsx:1200
+#: src/features/RolePlay/rolePlayData.tsx:1429
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -5001,8 +5417,8 @@ msgstr "Håndter samtidighet med selvtillit"
 msgid "Happy April 1st!"
 msgstr "God 1. april!"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1424
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1653
 #. js-lingui-explicit-id
 msgid "Hard"
 msgstr "Vanskelig"
@@ -5027,8 +5443,8 @@ msgid "Have fun!"
 msgstr "Ha det gøy!"
 
 #: src/features/RolePlay/rolePlayData.tsx:980
-#: src/features/RolePlay/rolePlayData.tsx:1170
-#: src/features/RolePlay/rolePlayData.tsx:1229
+#: src/features/RolePlay/rolePlayData.tsx:1399
+#: src/features/RolePlay/rolePlayData.tsx:1458
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Helse"
@@ -5167,6 +5583,11 @@ msgstr "Tips for å øke selvtilliten din"
 msgid "Home"
 msgstr "Hjem"
 
+#: src/features/RolePlay/rolePlayData.tsx:1060
+#. js-lingui-explicit-id
+msgid "Hotel Check-In"
+msgstr "Innsjekking på hotell"
+
 #: src/features/RolePlay/rolePlayData.tsx:1059
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
@@ -5177,7 +5598,7 @@ msgstr "Hotel Inn-sjekk Samtale"
 msgid "How can I track my progress?"
 msgstr "Hvordan kan jeg spore fremgangen min?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1415
+#: src/features/RolePlay/rolePlayData.tsx:1644
 #. js-lingui-explicit-id
 msgid "How difficult should it be?"
 msgstr "Hvor vanskelig skal det være?"
@@ -5354,8 +5775,8 @@ msgstr ""
 "konsultasjon."
 
 #: src/features/RolePlay/rolePlayData.tsx:985
-#: src/features/RolePlay/rolePlayData.tsx:1175
-#: src/features/RolePlay/rolePlayData.tsx:1251
+#: src/features/RolePlay/rolePlayData.tsx:1404
+#: src/features/RolePlay/rolePlayData.tsx:1480
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr ""
@@ -6316,7 +6737,7 @@ msgstr "Lær engelsk"
 msgid "Learn grammar used in academic writing and speaking."
 msgstr "Lær grammatikk brukt i akademisk skriving og tale."
 
-#: src/features/RolePlay/rolePlayData.tsx:1185
+#: src/features/RolePlay/rolePlayData.tsx:1414
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Lær hvordan du kan avtale en medisinsk time over telefon."
@@ -6738,9 +7159,9 @@ msgstr "Maksimum {maxWords} ord"
 msgid "Medical Talk Simulation"
 msgstr "Medisinsk samtale simulering"
 
-#: src/features/RolePlay/rolePlayData.tsx:1419
-#: src/features/RolePlay/rolePlayData.tsx:1423
-#: src/features/RolePlay/rolePlayData.tsx:1427
+#: src/features/RolePlay/rolePlayData.tsx:1648
+#: src/features/RolePlay/rolePlayData.tsx:1652
+#: src/features/RolePlay/rolePlayData.tsx:1656
 #. js-lingui-explicit-id
 msgid "Medium"
 msgstr "Middels"
@@ -7603,7 +8024,7 @@ msgstr ""
 msgid "Open your browser menu."
 msgstr "Åpne nettlesermenyen din."
 
-#: src/features/RolePlay/rolePlayData.tsx:1434
+#: src/features/RolePlay/rolePlayData.tsx:1663
 #. js-lingui-explicit-id
 msgid ""
 "Optional: specific vocabulary, background details, objections, questions, "
@@ -8192,15 +8613,28 @@ msgstr "Øv på API og systemdesign-scenarier."
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "Øv på å spørre om timeplaner, priser og billettalternativer"
 
-#: src/features/RolePlay/rolePlayData.tsx:1108
+#: src/features/RolePlay/rolePlayData.tsx:1337
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "Praktisere å be om produktanbefalinger og gjøre kjøp"
 
-#: src/features/RolePlay/rolePlayData.tsx:1077
+#: src/features/RolePlay/rolePlayData.tsx:1061
 #. js-lingui-explicit-id
-msgid "Practice booking a room, requesting amenities, and checking in"
-msgstr "Øv på å bestille et rom, be om fasiliteter, og sjekke inn"
+msgid ""
+"Practice checking into a hotel, confirming your reservation, asking about "
+"amenities, and solving common problems at reception."
+msgstr ""
+"Øv deg på å sjekke inn på et hotell, bekrefte reservasjonen din, spørre om "
+"fasiliteter, og løse vanlige problemer i resepsjonen."
+
+#: src/features/RolePlay/rolePlayData.tsx:1287
+#. js-lingui-explicit-id
+msgid ""
+"Practice confirming a reservation, asking about hotel services, and "
+"handling check-in problems"
+msgstr ""
+"Øv på å bekrefte en reservasjon, spørre om hotelltjenester og håndtere "
+"innsjekkingsproblemer"
 
 #: src/features/SEO/metadata.ts:131
 #: src/features/SEO/metadata.ts:206
@@ -8222,7 +8656,7 @@ msgstr "Øv daglig"
 msgid "PRACTICE EXAMS"
 msgstr "ØVINGSEKSAMENER"
 
-#: src/features/RolePlay/rolePlayData.tsx:1215
+#: src/features/RolePlay/rolePlayData.tsx:1444
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr "Praktisér å forklare produktegenskaper og be om refusjoner eller bytter"
@@ -8342,7 +8776,7 @@ msgstr ""
 "Øv på realistiske samtaler tilpasset ditt ferdighetsnivå. FluencyPal svarer "
 "naturlig, fremhever områder for forbedring, og bygger opp selvtilliten din."
 
-#: src/features/RolePlay/rolePlayData.tsx:1158
+#: src/features/RolePlay/rolePlayData.tsx:1387
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -8403,12 +8837,12 @@ msgstr "Øv deg på å snakke med AI"
 msgid "Practice STAR method answers"
 msgstr "Øv deg på STAR-metode svar"
 
-#: src/features/RolePlay/rolePlayData.tsx:1336
+#: src/features/RolePlay/rolePlayData.tsx:1565
 #. js-lingui-explicit-id
 msgid "Practice the exact conversation you're afraid of"
 msgstr "Øv på nøyaktig den samtalen du er redd for"
 
-#: src/features/RolePlay/rolePlayData.tsx:1142
+#: src/features/RolePlay/rolePlayData.tsx:1371
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Øv deg på å feilsøke et teknisk problem over telefonen"
@@ -8640,10 +9074,10 @@ msgstr "Produkt"
 #: src/features/RolePlay/rolePlayData.tsx:494
 #: src/features/RolePlay/rolePlayData.tsx:641
 #: src/features/RolePlay/rolePlayData.tsx:884
-#: src/features/RolePlay/rolePlayData.tsx:1137
-#: src/features/RolePlay/rolePlayData.tsx:1396
-#: src/features/RolePlay/rolePlayData.tsx:1403
-#: src/features/RolePlay/rolePlayData.tsx:1410
+#: src/features/RolePlay/rolePlayData.tsx:1366
+#: src/features/RolePlay/rolePlayData.tsx:1625
+#: src/features/RolePlay/rolePlayData.tsx:1632
+#: src/features/RolePlay/rolePlayData.tsx:1639
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Profesjonell"
@@ -8709,7 +9143,7 @@ msgstr "Prosjekt Gutenberg"
 msgid "Promote consistent learning and long-term progress"
 msgstr "Fremme konsekvent læring og langsiktig fremgang"
 
-#: src/features/RolePlay/rolePlayData.tsx:1228
+#: src/features/RolePlay/rolePlayData.tsx:1457
 #. js-lingui-explicit-id
 msgid "Psychologist"
 msgstr "Psykolog"
@@ -9301,12 +9735,12 @@ msgstr "Prøv på nytt"
 msgid "Retry & Backoff"
 msgstr "Gjenprøving & Tilbakeslag"
 
-#: src/features/RolePlay/rolePlayData.tsx:1198
+#: src/features/RolePlay/rolePlayData.tsx:1427
 #. js-lingui-explicit-id
 msgid "Return"
 msgstr "Returnere"
 
-#: src/features/RolePlay/rolePlayData.tsx:1197
+#: src/features/RolePlay/rolePlayData.tsx:1426
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Returning an Item to a Store"
@@ -9486,7 +9920,7 @@ msgstr "Lagrer bok..."
 msgid "Saving book…"
 msgstr "Lagrer bok…"
 
-#: src/features/RolePlay/rolePlayData.tsx:1302
+#: src/features/RolePlay/rolePlayData.tsx:1531
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "Scenario Beskrivelse"
@@ -9807,13 +10241,13 @@ msgstr "Delt med deg"
 msgid "Sharp, witty, and always a little disappointed"
 msgstr "Skarp, vittig, og alltid litt skuffet"
 
-#: src/features/RolePlay/rolePlayData.tsx:1105
-#: src/features/RolePlay/rolePlayData.tsx:1212
+#: src/features/RolePlay/rolePlayData.tsx:1334
+#: src/features/RolePlay/rolePlayData.tsx:1441
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "Shopping"
 
-#: src/features/RolePlay/rolePlayData.tsx:1090
+#: src/features/RolePlay/rolePlayData.tsx:1319
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "Shopping i dagligvarebutikken"
@@ -10111,7 +10545,7 @@ msgstr "Snakke- og skriveøvelse"
 msgid "Speaking practice"
 msgstr "Snakkeøvelse"
 
-#: src/features/RolePlay/rolePlayData.tsx:1227
+#: src/features/RolePlay/rolePlayData.tsx:1456
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "Å snakke med en psykolog"
@@ -10467,8 +10901,8 @@ msgstr ""
 "Strategisk handlingsplan for å adressere hull i kunnskap om "
 "frontend-arkitektur"
 
-#: src/features/RolePlay/rolePlayData.tsx:1398
-#: src/features/RolePlay/rolePlayData.tsx:1405
+#: src/features/RolePlay/rolePlayData.tsx:1627
+#: src/features/RolePlay/rolePlayData.tsx:1634
 #. js-lingui-explicit-id
 msgid "Stressful"
 msgstr "Stressende"
@@ -11291,7 +11725,7 @@ msgstr "Teknisk analyse av systemdesign og arkitektur svar"
 msgid "Technical Question"
 msgstr "Teknisk spørsmål"
 
-#: src/features/RolePlay/rolePlayData.tsx:1122
+#: src/features/RolePlay/rolePlayData.tsx:1351
 #. js-lingui-explicit-id
 msgid "Technical Support"
 msgstr "Teknisk støtte"
@@ -12244,7 +12678,7 @@ msgid "Translating..."
 msgstr "Oversetter..."
 
 #: src/features/RolePlay/rolePlayData.tsx:950
-#: src/features/RolePlay/rolePlayData.tsx:1074
+#: src/features/RolePlay/rolePlayData.tsx:1282
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "Reise"
@@ -12855,7 +13289,7 @@ msgstr "Hva får jeg med betalingstjenesten?"
 msgid "What do I need to use FluencyPal?"
 msgstr "Hva trenger jeg for å bruke FluencyPal?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1379
+#: src/features/RolePlay/rolePlayData.tsx:1608
 #. js-lingui-explicit-id
 msgid "What do you want to achieve?"
 msgstr "Hva ønsker du å oppnå?"
@@ -12922,7 +13356,7 @@ msgstr "Hva betyr \"timer med AI-bruk\"?"
 msgid "What recently made you happy?"
 msgstr "Hva gjorde deg nylig glad?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1342
+#: src/features/RolePlay/rolePlayData.tsx:1571
 #. js-lingui-explicit-id
 msgid "What situation do you want to practice?"
 msgstr "Hvilken situasjon ønsker du å praktisere?"
@@ -12937,7 +13371,7 @@ msgstr "Hva du bør fokusere på neste gang"
 msgid "What to say?"
 msgstr "Hva skal jeg si?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1390
+#: src/features/RolePlay/rolePlayData.tsx:1619
 #. js-lingui-explicit-id
 msgid "What tone should the conversation have?"
 msgstr "Hvilken tone bør samtalen ha?"
@@ -13029,12 +13463,12 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Hvor kan jeg bruke FluencyPal?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1370
+#: src/features/RolePlay/rolePlayData.tsx:1599
 #. js-lingui-explicit-id
 msgid "Who are you in this scenario?"
 msgstr "Hvem er du i dette scenarioet?"
 
-#: src/features/RolePlay/rolePlayData.tsx:1359
+#: src/features/RolePlay/rolePlayData.tsx:1588
 #. js-lingui-explicit-id
 msgid "Who should the AI be?"
 msgstr "Hvem skal AI-en være?"
@@ -13184,7 +13618,7 @@ msgstr "Ord å lære"
 msgid "Words to pay attention to:"
 msgstr "Ord å være oppmerksom på:"
 
-#: src/features/RolePlay/rolePlayData.tsx:1124
+#: src/features/RolePlay/rolePlayData.tsx:1353
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -13853,7 +14287,7 @@ msgstr "Din partner for forberedelse til jobbintervju"
 
 #: src/features/RolePlay/rolePlayData.tsx:31
 #: src/features/RolePlay/rolePlayData.tsx:1033
-#: src/features/RolePlay/rolePlayData.tsx:1238
+#: src/features/RolePlay/rolePlayData.tsx:1467
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Ditt Språknivå"
@@ -14001,6 +14435,64 @@ msgstr "{winnerName} vinner!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/RolePlay/rolePlayData.tsx:1062
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Check into a hotel and handle room arrangements in a realistic front-desk "
+#~ "setting. Perfect for practicing how to provide reservation details, inquire "
+#~ "about amenities, and address special requests.\n"
+#~ "\n"
+#~ "## Why You Should Play *Hotel Check-in*\n"
+#~ "1. Gain confidence requesting the services you need while checking into a "
+#~ "hotel.  \n"
+#~ "2. Learn to provide personal details and confirm reservations with clarity. "
+#~ " \n"
+#~ "3. Practice asking about amenities like breakfast, Wi-Fi, or late "
+#~ "check-out.  \n"
+#~ "4. Discover how to handle unexpected issues, such as room availability or "
+#~ "last-minute changes.  \n"
+#~ "5. Sharpen your ability to navigate professional, service-oriented "
+#~ "conversations.\n"
+#~ "\n"
+#~ "## How the Scenario Works\n"
+#~ "You’ll act as the guest arriving at the hotel, while our AI plays the role "
+#~ "of a receptionist. The receptionist will ask for your name, reservation "
+#~ "details, and any special requests you might have. By responding naturally, "
+#~ "you’ll build the conversational skills necessary for a smooth hotel "
+#~ "check-in experience.\n"
+#~ msgstr ""
+#~ " sjekk inn på et hotell og håndter romarrangementer i en realistisk "
+#~ "resepsjonsinnstilling. Perfekt for å øve på hvordan man gir "
+#~ "reservasjonsdetaljer, spør om fasiliteter og adresserer spesielle "
+#~ "forespørselen.\n"
+#~ "\n"
+#~ "## Hvorfor du bør spille *Hotell Innsjekking*\n"
+#~ "1. Få selvtillit til å be om tjenestene du trenger når du sjekker inn på et "
+#~ "hotell.  \n"
+#~ "2. Lær å gi personlige detaljer og bekrefte reservasjoner med klarhet.  \n"
+#~ "3. Øv på å spørre om fasiliteter som frokost, Wi-Fi eller sen utsjekking.  \n"
+#~ "4. Oppdag hvordan du håndterer uventede problemer, som romtilgjengelighet "
+#~ "eller endringer i siste liten.  \n"
+#~ "5. Skjerp evnen din til å navigere i profesjonelle, serviceorienterte "
+#~ "samtaler.\n"
+#~ "\n"
+#~ "## Hvordan scenariet fungerer\n"
+#~ "Du vil opptre som gjesten som ankommer hotellet, mens vår AI spiller rollen "
+#~ "som resepsjonist. Resepsjonisten vil be om navnet ditt, "
+#~ "reservasjonsdetaljer og eventuelle spesielle forespørsel du måtte ha. Ved å "
+#~ "svare naturlig, vil du bygge de samtaleferdighetene som er nødvendige for "
+#~ "en smidig innsjekking på hotellet."
+
+#: src/features/RolePlay/rolePlayData.tsx:1060
+#. js-lingui-explicit-id
+#~ msgid "Check-In"
+#~ msgstr "Innsjekking"
+
+#: src/features/RolePlay/rolePlayData.tsx:1077
+#. js-lingui-explicit-id
+#~ msgid "Practice booking a room, requesting amenities, and checking in"
+#~ msgstr "Øv på å bestille et rom, be om fasiliteter, og sjekke inn"
 
 #: src/features/Dashboard/GameDashboardCard.tsx:107
 #. js-lingui-explicit-id
