@@ -116,9 +116,21 @@ function useProvideDailyTasks(): DailyTaskApi {
     );
   }, [allProgressRaw, settings.languageCode]);
 
-  const previewImageUrl =
-    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1774127689670-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+  const completeImageUrl =
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783892501748-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
 
+  const incompleteImageUrl =
+    'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783892014163-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+
+  const previewImageUrl = useMemo(() => {
+    const todayProgress = allPreviousProgress.find((p) => p.dayIso === today);
+    const isCompleted = todayProgress?.completedTasks
+      ? Object.keys(todayProgress.completedTasks).length === dayPlan.tasks.length
+      : false;
+    return isCompleted ? completeImageUrl : incompleteImageUrl;
+  }, [allPreviousProgress, today]);
+
+  const bgColor = 'rgba(20, 3, 33, 0.62)';
   const dailyPlans: DayTasksMeta[] = [
     {
       tasks: ['just-talk', 'goal-lesson'],
@@ -126,7 +138,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('Start with today’s tasks and keep a gentle pace.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'grammar-improvement'],
@@ -134,7 +146,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('Continue with today’s tasks and stay consistent.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
@@ -142,7 +154,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('You’re doing well. Take a look at today’s tasks.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk'],
@@ -152,7 +164,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       ),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'grammar-improvement', 'goal-lesson'],
@@ -160,7 +172,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('You’re in a good flow. Continue with today’s tasks.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
@@ -168,7 +180,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('Your consistency is paying off. Here are today’s tasks.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk'],
@@ -176,7 +188,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('Nice work reaching a full week. Let’s continue with today’s tasks.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
@@ -184,7 +196,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('Many people stop early, but you are still here. Be proud of that.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
     {
       tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
@@ -192,10 +204,9 @@ function useProvideDailyTasks(): DailyTaskApi {
       subTitle: i18n._('A calm routine makes steady progress.'),
       imageUrl: previewImageUrl,
       itemsBackgroundColor: 'rgba(32, 32, 32, 0.6)',
-      bgColor: 'rgba(147, 7, 255, 0.7)',
+      bgColor,
     },
   ];
-
   const dayPlan: DayTasksMeta = useMemo(() => {
     const countOfActiveDays = allPreviousProgress.length;
     const tasksForToday = dailyPlans[Math.min(countOfActiveDays, dailyPlans.length - 1)];
