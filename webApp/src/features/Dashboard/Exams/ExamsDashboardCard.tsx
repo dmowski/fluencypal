@@ -11,12 +11,8 @@ import {
   isWritingExamGroup,
 } from '@/features/Quiz/exam/examCatalog';
 import { ensureManualExam } from '@/features/Quiz/exam/ensureManualExam';
-import {
-  resolvePolishB1SpeakingExam,
-} from '@/features/Quiz/exam/polishB1Speaking/polishB1SpeakingCatalog';
-import {
-  resolvePolishB1WritingExam,
-} from '@/features/Quiz/exam/polishB1Writing/polishB1WritingCatalog';
+import { resolvePolishB1SpeakingExam } from '@/features/Quiz/exam/polishB1Speaking/polishB1SpeakingCatalog';
+import { resolvePolishB1WritingExam } from '@/features/Quiz/exam/polishB1Writing/polishB1WritingCatalog';
 import { PolishB1VariantExamGroup } from '@/features/Quiz/exam/polishB1VariantExamGroup';
 import { ensureStateExam } from '@/features/Quiz/exam/statePolishB1/ensureStateExam';
 import { useQuizModal } from '@/features/Quiz/useQuizModal';
@@ -24,9 +20,6 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { SectionHeader } from '../CartsHeader';
 import { CardItem, StoreCard } from '@/features/uiKit/Card/StoreCard';
 import { ExamVariantPicker } from './ExamVariantPicker';
-
-const EXAMS_PREVIEW_IMAGE =
-  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1780773652889-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
 
 export const ExamsDashboardCard = () => {
   const { i18n } = useLingui();
@@ -110,17 +103,12 @@ export const ExamsDashboardCard = () => {
   return (
     <>
       <Stack sx={{ gap: '20px' }} data-testid="exams-dashboard-card">
-        <SectionHeader
-          title={i18n._('Exams')}
-          subTitle={i18n._(
-            'Structured practice exams with reading, listening, grammar, and speaking tasks.',
-          )}
-        />
-
         <StoreCard
           textColor={'#fff'}
-          backgroundColor={'rgba(47, 58, 102, 0.9)'}
-          previewImageUrl={EXAMS_PREVIEW_IMAGE}
+          backgroundColor={'rgba(27, 59, 88, 0.34)'}
+          previewImageUrl={
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783893599271-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+          }
           label={i18n._('PRACTICE EXAMS')}
           title={i18n._('Test your level with full exams')}
           items={items}

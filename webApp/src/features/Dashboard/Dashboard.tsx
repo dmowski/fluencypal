@@ -47,8 +47,10 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <InstallAppInstruction />
             <PlanDashboardCards lang={lang} />
             <RolePlayDashboardCard />
+
             <GameDashboardCard />
             <ExamsDashboardCard />
+
             <LinkToStatsAdmin />
           </MainDashboardContainer>
         )}

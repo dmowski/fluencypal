@@ -78,10 +78,10 @@ export const RolePlayDashboardCard = () => {
         />
 
         <StoreCard
-          textColor={'#000'}
-          backgroundColor={'rgba(227, 209, 193, 0.72)'}
+          textColor={'#fff'}
+          backgroundColor={'rgba(210, 78, 42, 0.11)'}
           previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773868292032-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783893076755-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
           label={i18n._('Get creative').toUpperCase()}
           title={i18n._('Try these role-plays')}

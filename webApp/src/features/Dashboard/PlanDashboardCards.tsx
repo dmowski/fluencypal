@@ -201,9 +201,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <StoreCard
             badge={''}
             textColor={'#fff'}
-            backgroundColor={'rgb(14, 20, 13)'}
+            backgroundColor={'rgba(7, 7, 10, 0.14)'}
             onClick={() => plan.openElementModal(nextElementId)}
-            itemsBackgroundColor={'rgb(22, 28, 20)'}
+            itemsBackgroundColor={'rgb(26, 26, 26)'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783891013640-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }

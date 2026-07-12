@@ -100,9 +100,9 @@ export const GameDashboardCard = () => {
       >
         <StoreCard
           textColor={'#fff'}
-          backgroundColor={'rgba(25, 25, 25, 1)'}
+          backgroundColor={'rgba(25, 25, 25, 0.59)'}
           previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773967504941-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783893372807-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
           title={i18n._('Test your knowledge')}
           subTitle={i18n._('Answer questions correctly to climb the leaderboard!')}
@@ -115,6 +115,8 @@ export const GameDashboardCard = () => {
             sx={{
               padding: '30px 20px 20px 20px',
               gap: '10px',
+              backgroundColor: 'rgba(25, 25, 25, 0.88)',
+              borderRadius: '0 0 16px 16px',
               alignItems: 'flex-start',
               '@media (max-width: 500px)': {
                 padding: '15px',
