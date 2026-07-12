@@ -102,7 +102,7 @@ export const GameDashboardCard = () => {
           textColor={'#fff'}
           backgroundColor={'rgba(25, 25, 25, 0.59)'}
           previewImageUrl={
-            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783893372807-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+            'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783894830179-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
           }
           title={i18n._('Test your knowledge')}
           subTitle={i18n._('Answer questions correctly to climb the leaderboard!')}

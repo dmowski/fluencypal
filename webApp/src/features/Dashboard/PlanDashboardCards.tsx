@@ -201,7 +201,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <StoreCard
             badge={''}
             textColor={'#fff'}
-            backgroundColor={'rgba(7, 7, 10, 0.14)'}
+            backgroundColor={'rgba(7, 7, 10, 0)'}
             onClick={() => plan.openElementModal(nextElementId)}
             itemsBackgroundColor={'rgb(26, 26, 26)'}
             previewImageUrl={
