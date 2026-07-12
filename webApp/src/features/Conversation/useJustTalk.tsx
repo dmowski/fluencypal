@@ -3,7 +3,8 @@ import { useSettings } from '../Settings/useSettings';
 import { useAiConversation } from './useAiConversation/useAiConversation';
 import { useState } from 'react';
 import { useConversationAudio } from '../Audio/useConversationAudio';
-import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
+import { getMediaVideoStreams } from '../webCam/mediaStream';
+import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 
 export const useJustTalk = () => {
@@ -12,6 +13,7 @@ export const useJustTalk = () => {
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
+  const { requestMicrophoneWithConsent } = useMicrophonePermission();
   const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
   const startJustTalk = async (model?: RealTimeModel) => {
     if (isCallStarting) return;
@@ -19,9 +21,10 @@ export const useJustTalk = () => {
     setIsCallStarting(true);
 
     try {
-      const mediaStream = await getMediaAudioStreams();
+      const mediaStream = await requestMicrophoneWithConsent();
       if (!mediaStream) {
-        throw new Error('Could not access microphone');
+        setIsCallStarting(false);
+        return;
       }
 
       await getMediaVideoStreams();
@@ -33,12 +36,9 @@ export const useJustTalk = () => {
 Please allow microphone permission in your browser settings, refresh the page, and try again.`,
         ),
       );
-      // window.location.reload();
       setIsCallStarting(false);
       return;
     }
-
-    //await sleep(500);
 
     await settings.setConversationMode('call');
     conversation.startConversation({

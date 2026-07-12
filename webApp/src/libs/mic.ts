@@ -1,3 +1,29 @@
+export const isMicrophoneGranted = async (): Promise<boolean> => {
+  if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
+    return false;
+  }
+
+  try {
+    const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+    return result.state === 'granted';
+  } catch {
+    return false;
+  }
+};
+
+export const isMicrophoneDenied = async (): Promise<boolean> => {
+  if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
+    return false;
+  }
+
+  try {
+    const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+    return result.state === 'denied';
+  } catch {
+    return false;
+  }
+};
+
 export const isAllowedMicrophone = async () => {
   // Detect if microphone is allowed
   return new Promise<boolean>((resolve) => {

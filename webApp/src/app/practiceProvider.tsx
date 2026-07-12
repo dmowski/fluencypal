@@ -10,6 +10,7 @@ import { TextAiProvider } from '@/features/Ai/useTextAi';
 import { AiUserInfoProvider } from '@/features/User/useAiUserInfo';
 import { AudioProvider } from '@/features/Audio/useAudio';
 import { WebCamProvider } from '@/features/webCam/useWebCam';
+import { MicrophonePermissionProvider } from '@/features/webCam/useMicrophonePermission';
 import { CorrectionsProvider } from '@/features/Corrections/useCorrections';
 import { JSX, Suspense } from 'react';
 import { NotificationsProvider } from '@toolpad/core/useNotifications';
@@ -55,7 +56,8 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                       <DailyTasksProvider>
                         <ChatListProvider>
                           <WebCamProvider>
-                            <GameProvider>
+                            <MicrophonePermissionProvider>
+                              <GameProvider>
                               <UsageProvider>
                                 <TextAiProvider>
                                   <AudioProvider>
@@ -98,7 +100,8 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                   </AudioProvider>
                                 </TextAiProvider>
                               </UsageProvider>
-                            </GameProvider>
+                              </GameProvider>
+                            </MicrophonePermissionProvider>
                           </WebCamProvider>
                         </ChatListProvider>
                       </DailyTasksProvider>

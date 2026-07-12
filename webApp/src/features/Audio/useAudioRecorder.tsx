@@ -6,10 +6,12 @@ import { isAllowedMicrophone, requestMicrophoneAccess } from '@/libs/mic';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
+import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 
 export const useAudioRecorder = () => {
   const auth = useAuth();
   const settings = useSettings();
+  const { requestMicrophoneWithConsent } = useMicrophonePermission();
   const learnLanguageCode = settings.languageCode || 'en';
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
@@ -81,28 +83,30 @@ export const useAudioRecorder = () => {
     setIsTranscribing(false);
   };
   const startRecording = async () => {
-    const isAllowed = await isAllowedMicrophone();
-    if (!isAllowed) {
-      if (isAliasGameSession()) {
-        trackAliasEvent('alias_microphone_permission_requested');
-      }
-      const requestResult = await requestMicrophoneAccess();
-      if (isAliasGameSession()) {
-        trackAliasEvent(
-          requestResult
-            ? 'alias_microphone_permission_granted'
-            : 'alias_microphone_permission_denied',
-        );
-      }
-      if (!requestResult) {
-        alert(
-          'Microphone access is denied. Please allow microphone access in your browser settings.',
-        );
+    const isAliasSession = isAliasGameSession();
+
+    if (isAliasSession) {
+      trackAliasEvent('alias_microphone_permission_requested');
+      const stream = await requestMicrophoneWithConsent();
+      trackAliasEvent(
+        stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
+      );
+      if (!stream) {
         return;
       }
-    } else if (isAliasGameSession()) {
-      trackAliasEvent('alias_microphone_permission_granted');
+    } else {
+      const isAllowed = await isAllowedMicrophone();
+      if (!isAllowed) {
+        const requestResult = await requestMicrophoneAccess();
+        if (!requestResult) {
+          alert(
+            'Microphone access is denied. Please allow microphone access in your browser settings.',
+          );
+          return;
+        }
+      }
     }
+
     recorderControls.startRecording();
     isCancel.current = false;
   };

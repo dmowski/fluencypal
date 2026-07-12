@@ -22,6 +22,7 @@ import {
   isAliasGameRolePlay,
   trackAliasEvent,
 } from '@/features/RolePlay/aliasAnalytics';
+import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -111,6 +112,7 @@ function useProvideRolePlay({
   const aiConversation = useAiConversation();
   const textAi = useTextAi();
   const settings = useSettings();
+  const { requestMicrophoneWithConsent } = useMicrophonePermission();
 
   const [isStarting, setIsStarting] = useState(false);
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
@@ -341,9 +343,25 @@ function useProvideRolePlay({
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
-    const rolePlayInputs = await prepareUserInputs();
 
+    const isAliasGame = isAliasGameRolePlay(selectedRolePlayScenario.id);
+    if (isAliasGame) {
+      trackAliasEvent('alias_microphone_permission_requested');
+    }
+    const stream = await requestMicrophoneWithConsent();
+    if (isAliasGame) {
+      trackAliasEvent(
+        stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
+      );
+    }
+    if (!stream) {
+      setIsStarting(false);
+      return;
+    }
+
+    const rolePlayInputs = await prepareUserInputs();
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
+
     if (isNeedToGenerateWords) {
       const levelInput = selectedRolePlayScenario.input.find((input) => input.id === 'languageLevel');
       const levelValue =
