@@ -27,7 +27,8 @@ export default async function RootLayout({
           defer
           data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
           data-domain="app.fluencypal.com"
-          src="https://datafa.st/js/script.cookieless.js"
+          data-disable-payments="true"
+          src="https://datafa.st/js/script.js"
           strategy="afterInteractive"
         />
       )}
