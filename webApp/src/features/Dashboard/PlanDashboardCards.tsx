@@ -201,11 +201,11 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <StoreCard
             badge={''}
             textColor={'#fff'}
-            backgroundColor={'#2e0949'}
+            backgroundColor={'rgb(14, 20, 13)'}
             onClick={() => plan.openElementModal(nextElementId)}
-            itemsBackgroundColor={'rgba(30, 30, 30, 0.6)'}
+            itemsBackgroundColor={'rgb(22, 28, 20)'}
             previewImageUrl={
-              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773861934880-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+              'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783891013640-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }
             label={i18n._('Current Lesson').toUpperCase()}
             title={plan.nextElement.title}
