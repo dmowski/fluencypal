@@ -22,6 +22,7 @@ import { ProgressDashboardCard } from '../ProgressStat/ProgressDashboardCard';
 import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
+import { LinkToStatsAdmin } from './LinkToStats';
 
 export function Dashboard({ lang }: { lang: SupportedLanguage }) {
   const appNavigation = useAppNavigation();
@@ -40,6 +41,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
         {appNavigation.currentPage === 'home' && (
           <MainDashboardContainer>
             <DailyTasksDashboardCard />
+            <LinkToStatsAdmin />
             <JustTalkCard />
             <DailyQuestionDashboardCard />
             <GrammarImprovesCard />
