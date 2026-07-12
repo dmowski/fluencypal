@@ -1,8 +1,15 @@
 # Live document with short/long term ideas
 
-## Improve UI for reply on chat
+## Writing routine
+
+Write one sentence and correct the grammar. Get the rule and correct it.
 
 ## Create a custom modal to get mic permission
+
+- Check places where we need to show that
+- Create modal/buttons to get that permissions
+
+## Add badge that you are on free plan, and it help me if you pay money for that
 
 ## Alias: Make it Call mode and show works on call canvas
 

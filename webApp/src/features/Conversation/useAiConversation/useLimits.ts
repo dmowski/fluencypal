@@ -1,7 +1,8 @@
 import { ConversationMessage } from '@/features/Conversation/conversation';
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';
+import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 
 const LIMITED_MESSAGES_COUNT = 6;
 const LIMITED_VOICE_MESSAGES_COUNT = 50;
@@ -19,10 +20,15 @@ export const useLimits = (
     : conversation.length >= LIMITED_MESSAGES_COUNT;
   const isLimitedAiVoice =
     !access.isFullAppAccess && conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
+  const hasTrackedPaywall = useRef(false);
 
   useEffect(() => {
     if (isLimitedRecording) {
       toggleMute(true);
+      if (isAliasGameSession() && !hasTrackedPaywall.current) {
+        trackAliasEvent('alias_paywall_viewed');
+        hasTrackedPaywall.current = true;
+      }
     }
   }, [isLimitedRecording]);
 

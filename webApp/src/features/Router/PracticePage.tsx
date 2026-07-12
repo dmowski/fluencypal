@@ -13,7 +13,7 @@ import { ConversationCanvas } from '../Conversation/ConversationCanvas';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import { useLingui } from '@lingui/react';
 import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { SelectLanguage } from '../Dashboard/SelectLanguage';
 import { ConversationError } from '../Conversation/ConversationError';
 import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
@@ -25,6 +25,8 @@ import { usePlan } from '../Plan/usePlan';
 import { usePageLangRedirect } from './usePageLangRedirect';
 import { CommunityDashboard } from '../Community/CommunityDashboard';
 import { BlockedAccess } from './BlockedAccess';
+import { useSearchParams } from 'next/navigation';
+import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -44,6 +46,20 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const conversationAnalysis = useConversationsAnalysis();
   const lessonPlan = useLessonPlan();
   usePageLangRedirect();
+  const searchParams = useSearchParams();
+  const rolePlayId = searchParams.get('rolePlayId');
+  const hasTrackedSignupCompleted = useRef(false);
+
+  useEffect(() => {
+    if (
+      !hasTrackedSignupCompleted.current &&
+      auth.isAuthorized &&
+      isAliasGameRolePlay(rolePlayId)
+    ) {
+      trackAliasEvent('alias_signup_completed');
+      hasTrackedSignupCompleted.current = true;
+    }
+  }, [auth.isAuthorized, rolePlayId]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) recorder.removeTranscript();

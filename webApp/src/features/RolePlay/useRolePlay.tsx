@@ -18,6 +18,10 @@ import { GuessGameStat } from '../Conversation/types';
 import { MODELS } from '@/features/Ai/ai';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { useUrlState } from '../Url/useUrlState';
+import {
+  isAliasGameRolePlay,
+  trackAliasEvent,
+} from '@/features/RolePlay/aliasAnalytics';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -178,6 +182,10 @@ function useProvideRolePlay({
       conversationMode: conversationMode,
       rolePlayId: scenario.id,
     });
+
+    if (isAliasGameRolePlay(scenario.id)) {
+      trackAliasEvent('alias_round_started');
+    }
   };
 
   const processInputWithAi = async (
@@ -337,6 +345,13 @@ function useProvideRolePlay({
 
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
     if (isNeedToGenerateWords) {
+      const levelInput = selectedRolePlayScenario.input.find((input) => input.id === 'languageLevel');
+      const levelValue =
+        userInputs?.[selectedRolePlayScenario.id + '-languageLevel'] ||
+        levelInput?.defaultValue ||
+        '';
+      trackAliasEvent('alias_level_selected', { level: String(levelValue) });
+
       const wordsInfo = await generateRandomWord(
         rolePlayInputs.map((input) => input.labelForAi + ':' + input.userValue).join(', '),
       );

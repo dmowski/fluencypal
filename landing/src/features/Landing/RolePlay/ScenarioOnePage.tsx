@@ -40,6 +40,30 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
     (scenario) => scenario.category === item.category && item.id !== scenario.id,
   );
 
+  const isAliasGame = item.id === 'alias-game';
+
+  if (isAliasGame) {
+    return (
+      <>
+        <HeaderStatic lang={lang} />
+        <div style={{ width: '100%', margin: 0 }}>
+          <Stack
+            component="main"
+            sx={{
+              alignItems: 'center',
+              width: '100%',
+              backgroundColor: '#fff',
+              paddingTop: { xs: '72px', md: '88px' },
+            }}
+          >
+            {item.contendElement}
+          </Stack>
+        </div>
+        <Footer lang={lang} />
+      </>
+    );
+  }
+
   return (
     <>
       <HeaderStatic lang={lang} />

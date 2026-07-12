@@ -5,6 +5,7 @@ import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 import { isAllowedMicrophone, requestMicrophoneAccess } from '@/libs/mic';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
+import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 
 export const useAudioRecorder = () => {
   const auth = useAuth();
@@ -31,6 +32,7 @@ export const useAudioRecorder = () => {
   }, [recorderControls.recordedBlob]);
 
   const isCancel = useRef(false);
+  const hasTrackedFirstRecording = useRef(false);
   const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
     if (format.includes('ogg')) {
       setTranscriptionError(
@@ -60,6 +62,14 @@ export const useAudioRecorder = () => {
       });
       setTranscription(transcriptResponse.transcript);
       setTranscriptionBlob(recordedAudioBlog);
+      if (
+        isAliasGameSession() &&
+        !hasTrackedFirstRecording.current &&
+        transcriptResponse.transcript
+      ) {
+        trackAliasEvent('alias_first_recording_completed');
+        hasTrackedFirstRecording.current = true;
+      }
       if (transcriptResponse.error) {
         setTranscriptionError(transcriptResponse.error);
       }
@@ -73,13 +83,25 @@ export const useAudioRecorder = () => {
   const startRecording = async () => {
     const isAllowed = await isAllowedMicrophone();
     if (!isAllowed) {
+      if (isAliasGameSession()) {
+        trackAliasEvent('alias_microphone_permission_requested');
+      }
       const requestResult = await requestMicrophoneAccess();
+      if (isAliasGameSession()) {
+        trackAliasEvent(
+          requestResult
+            ? 'alias_microphone_permission_granted'
+            : 'alias_microphone_permission_denied',
+        );
+      }
       if (!requestResult) {
         alert(
           'Microphone access is denied. Please allow microphone access in your browser settings.',
         );
         return;
       }
+    } else if (isAliasGameSession()) {
+      trackAliasEvent('alias_microphone_permission_granted');
     }
     recorderControls.startRecording();
     isCancel.current = false;
