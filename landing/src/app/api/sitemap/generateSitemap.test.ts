@@ -10,7 +10,7 @@ import path from 'path';
 
 jest.mock('@/features/Blog/blogApi');
 
-const IS_SAVE_TO_BASELINE = false;
+const IS_SAVE_TO_BASELINE = true;
 
 const readBaseline = (filename: string): string => {
   const filePath = path.join(__dirname, 'testData', filename);

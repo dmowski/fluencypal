@@ -4,7 +4,7 @@ import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
 import { getFeaturesData } from '@/features/Feature/featuresData';
 
-const updateTime = '2026-05-22T13:01:02+00:00';
+const updateTime = '2026-07-12T13:01:02+00:00';
 
 interface UrlDefinition {
   path: string;
