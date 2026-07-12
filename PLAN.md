@@ -1,8 +1,8 @@
 # Live document with short/long term ideas
 
-## Create a custom modal to get mic permission
-
 ## Improve UI for reply on chat
+
+## Create a custom modal to get mic permission
 
 ## Alias: Make it Call mode and show works on call canvas
 
