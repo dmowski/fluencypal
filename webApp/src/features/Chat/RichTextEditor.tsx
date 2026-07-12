@@ -66,6 +66,13 @@ export function RichTextEditor({ value, onChange, reloadKey }: RichTextEditorPro
           maxWidth: '140px',
           height: 'auto',
         },
+        '.mdxeditor blockquote': {
+          borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
+          marginLeft: 0,
+          paddingLeft: '10px',
+          color: 'rgba(255, 255, 255, 0.6)',
+          padding: '0 0 0 13px',
+        },
         '[aria-label="editable markdown"]': {
           paddingTop: 0,
         },
