@@ -77,9 +77,9 @@ export const GrammarImprovesCardUi = () => {
 
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={'#6A5439'}
+        backgroundColor={'rgba(11, 23, 10, 0)'}
         previewImageUrl={
-          'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+          'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783891354225-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
         }
         label={i18n._('PRACTICE, IMPROVE, REPEAT')}
         title={i18n._('Enough with speaking? Time to improve!')}
@@ -87,7 +87,7 @@ export const GrammarImprovesCardUi = () => {
         emptyItemsStateText={i18n._(
           'No grammar mistakes found. Keep practicing to see improvements here!',
         )}
-        itemsBackgroundColor={'rgba(45, 45, 46, 0.8)'}
+        itemsBackgroundColor={'rgb(33, 33, 34)'}
         onClick={showAvailable}
         itemsViewMode={'list'}
       />
