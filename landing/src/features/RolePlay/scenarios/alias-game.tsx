@@ -5,6 +5,7 @@ import { AliasRolePlay } from '../fullArticles/AliasRolePlay';
 
 export const getAliasGameScenario = (i18n: I18n, lang: SupportedLanguage): RolePlayInstruction => ({
   id: 'alias-game',
+  highlightOnLandingPage: true,
   title: i18n._('Alias Word Guessing Game'),
   shortTitle: 'Alias',
   category: { categoryTitle: i18n._('Game'), categoryId: 'game' },

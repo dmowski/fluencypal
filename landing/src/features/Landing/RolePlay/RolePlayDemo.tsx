@@ -32,7 +32,7 @@ export const RolePlayDemo = ({
   lang,
 }: RolePlayDemoProps) => {
   const { rolePlayScenarios } = getRolePlayScenarios(lang);
-  const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
+  const importantRoles = rolePlayScenarios.filter((scenario) => scenario.highlightOnLandingPage);
 
   return (
     <Stack

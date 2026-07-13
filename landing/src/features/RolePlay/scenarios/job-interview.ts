@@ -7,6 +7,7 @@ export const getJobInterviewScenario = (
   _lang: SupportedLanguage,
 ): RolePlayInstruction => ({
   id: 'job-interview',
+  highlightOnLandingPage: true,
   title: i18n._('Practice a Job Interview'),
   shortTitle: i18n._('Job Interview'),
 

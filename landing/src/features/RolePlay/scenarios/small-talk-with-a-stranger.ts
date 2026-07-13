@@ -2,8 +2,12 @@ import { I18n } from '@lingui/core';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayInstruction } from '../types';
 
-export const getSmallTalkWithAStrangerScenario = (i18n: I18n, lang: SupportedLanguage): RolePlayInstruction => ({
+export const getSmallTalkWithAStrangerScenario = (
+  i18n: I18n,
+  lang: SupportedLanguage,
+): RolePlayInstruction => ({
   id: 'small-talk-with-a-stranger',
+  highlightOnLandingPage: true,
   title: i18n._('Small Talk Practice'),
   shortTitle: i18n._('Small Talk'),
   landingHighlight: i18n._(
