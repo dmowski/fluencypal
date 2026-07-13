@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+## Fix all sentry issues
+
 ## Convert visitors to users: Start a first conversation
 
 ## Writing routine
