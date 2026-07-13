@@ -6,6 +6,8 @@
 
 ## Convert visitors to users: Start a first conversation
 
+How to connect analytics and development?
+
 ## Writing routine
 
 Write one sentence and correct the grammar. Get the rule and correct it.
