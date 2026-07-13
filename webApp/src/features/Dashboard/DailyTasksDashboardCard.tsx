@@ -156,9 +156,11 @@ export const DailyTasksDashboardCard = () => {
             ? 'rgba(8, 141, 11, 0.78)'
             : isLoading
               ? '#000000'
-              : tasks.dayTasksMeta.bgColor
+              : 'rgba(0, 0, 0, 0.3)'
         }
-        previewImageUrl={tasks.dayTasksMeta.imageUrl}
+        previewImageUrl={
+          'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783967811777-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
+        }
         borderSize={tasks.isAllTasksCompleted ? '5px' : undefined}
         title={tasks.title}
         subTitle={tasks.subTitle}
@@ -170,7 +172,7 @@ export const DailyTasksDashboardCard = () => {
             ? 'rgb(5, 29, 47)'
             : isLoading
               ? 'rgba(32, 32, 32, 0)'
-              : tasks.dayTasksMeta.itemsBackgroundColor
+              : '#1F2025'
         }
         itemsViewMode={'list'}
       />

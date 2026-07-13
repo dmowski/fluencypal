@@ -1,6 +1,6 @@
 'use client';
 import { Button, Link, Stack } from '@mui/material';
-import { LucideProps, Star, User } from 'lucide-react';
+import { LucideProps, Lock, User } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes, useEffect, useRef, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { PageType } from './types';
@@ -150,12 +150,10 @@ export const SimpleNavigationBar: React.FC = () => {
                     fontWeight: 600,
                     borderRadius: '20px',
                   }}
-                  startIcon={<Star size={20} color="#F8BCFF" />}
-                  onClick={() => {
-                    access.showPaymentModal();
-                  }}
+                  startIcon={<Lock size={20} color="#F8BCFF" />}
+                  onClick={() => access.showPaymentModal()}
                 >
-                  {i18n._('Update')}
+                  {i18n._('Full Access')}
                 </Button>
               )}
               <AppNotificationsButton />

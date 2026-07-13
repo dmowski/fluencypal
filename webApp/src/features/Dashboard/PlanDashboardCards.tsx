@@ -203,7 +203,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             textColor={'#fff'}
             backgroundColor={'rgba(7, 7, 10, 0)'}
             onClick={() => plan.openElementModal(nextElementId)}
-            itemsBackgroundColor={'rgb(26, 26, 26)'}
+            itemsBackgroundColor={'#1F2025'}
             previewImageUrl={
               'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783891013640-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
             }

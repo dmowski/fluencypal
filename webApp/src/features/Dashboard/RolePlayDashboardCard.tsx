@@ -86,7 +86,7 @@ export const RolePlayDashboardCard = () => {
           label={i18n._('Get creative').toUpperCase()}
           title={i18n._('Try these role-plays')}
           items={items}
-          itemsBackgroundColor={'rgba(32, 32, 32, 0.88)'}
+          itemsBackgroundColor={'#1F2025'}
           onClick={() => {
             setIsShowAll(true);
           }}

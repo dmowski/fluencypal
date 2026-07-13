@@ -108,14 +108,14 @@ export const GameDashboardCard = () => {
           subTitle={i18n._('Answer questions correctly to climb the leaderboard!')}
           items={[]}
           onClick={onPlayClick}
-          itemsBackgroundColor={'rgb(150, 137, 137)'}
+          itemsBackgroundColor={'#1F2025'}
           itemsViewMode={'list'}
         >
           <Stack
             sx={{
               padding: '30px 20px 20px 20px',
               gap: '10px',
-              backgroundColor: 'rgba(25, 25, 25, 0.88)',
+              backgroundColor: '#191a1e',
               borderRadius: '0 0 16px 16px',
               alignItems: 'flex-start',
               '@media (max-width: 500px)': {

@@ -87,7 +87,7 @@ export const GrammarImprovesCardUi = () => {
         emptyItemsStateText={i18n._(
           'No grammar mistakes found. Keep practicing to see improvements here!',
         )}
-        itemsBackgroundColor={'rgb(33, 33, 34)'}
+        itemsBackgroundColor={'#1F2025'}
         onClick={showAvailable}
         itemsViewMode={'list'}
       />
