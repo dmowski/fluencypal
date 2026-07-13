@@ -1,5 +1,8 @@
 import { firebaseConfig } from '@/features/Firebase/firebaseConfig';
-import firebaseAdmin from 'firebase-admin';
+import { App, AppOptions, cert, getApps, initializeApp } from 'firebase-admin/app';
+import { getAuth as getFirebaseAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
+import { getStorage } from 'firebase-admin/storage';
 import { AuthUserInfo } from './type';
 
 const isFirebaseEmulator = process.env.IS_FIREBASE_EMULATOR === 'true';
@@ -29,10 +32,11 @@ const serviceAccount = isFirebaseEmulator
       };
     })();
 
-let cacheApp: firebaseAdmin.app.App | null = null;
+let cacheApp: App | null = null;
 
-const initApp = (): firebaseAdmin.app.App => {
-  let fApp = firebaseAdmin.apps[0];
+const initApp = (): App => {
+  const existingApps = getApps();
+  const fApp = existingApps[0];
   if (fApp) {
     return fApp;
   }
@@ -41,13 +45,13 @@ const initApp = (): firebaseAdmin.app.App => {
     return cacheApp;
   }
 
-  const appOptions: firebaseAdmin.AppOptions = isFirebaseEmulator
+  const appOptions: AppOptions = isFirebaseEmulator
     ? {
         projectId: serviceAccount.project_id,
         storageBucket: firebaseConfig.storageBucket,
       }
     : {
-        credential: firebaseAdmin.credential.cert({
+        credential: cert({
           projectId: serviceAccount.project_id,
           clientEmail: serviceAccount.client_email,
           privateKey: serviceAccount.private_key,
@@ -55,7 +59,7 @@ const initApp = (): firebaseAdmin.app.App => {
         storageBucket: firebaseConfig.storageBucket,
       };
 
-  const app = firebaseAdmin.initializeApp(appOptions, firebaseConfig.projectId + Date.now());
+  const app = initializeApp(appOptions, firebaseConfig.projectId + Date.now());
 
   cacheApp = app;
 
@@ -63,25 +67,15 @@ const initApp = (): firebaseAdmin.app.App => {
 };
 
 const getBucket = () => {
-  let app = firebaseAdmin.apps[0];
-  if (app) {
-    return app.storage().bucket(firebaseConfig.storageBucket);
-  }
-
-  app = initApp();
-
-  return app.storage().bucket(firebaseConfig.storageBucket);
+  const existingApps = getApps();
+  const app = existingApps[0] ?? initApp();
+  return getStorage(app).bucket(firebaseConfig.storageBucket);
 };
 
 const getDB = () => {
-  let app = firebaseAdmin.apps[0];
-  if (app) {
-    return app.firestore();
-  }
-
-  app = initApp();
-
-  return app.firestore();
+  const existingApps = getApps();
+  const app = existingApps[0] ?? initApp();
+  return getFirestore(app);
 };
 
 const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
@@ -95,8 +89,7 @@ const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
   }
 
   try {
-    const app = initApp();
-    const decodedToken = await app.auth().verifyIdToken(token);
+    const decodedToken = await getFirebaseAuth(initApp()).verifyIdToken(token);
 
     const { uid, email } = decodedToken;
 
@@ -107,7 +100,7 @@ const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
   }
 };
 
-const getAuth = () => initApp().auth();
+const getAuth = () => getFirebaseAuth(initApp());
 
 export type UserInfo = {
   uid: string;

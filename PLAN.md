@@ -2,6 +2,8 @@
 
 ## Fix all sentry issues
 
+## Do not load all conversations on app
+
 ## Convert visitors to users: Start a first conversation
 
 ## Writing routine
@@ -28,22 +30,6 @@ Write one sentence and correct the grammar. Get the rule and correct it.
 
 ## Messages: notifications
 
-## Write review for the app: add message to chat
-
-## Integration with google search console.
-
-Load stats to code base. and ask ai to do SEO analysis
-
-## Exams/quiz
-
 ## Reader: Search feature
 
 Reader info: webApp/src/features/Reader/AGENTS.md
-
-## SEO, GEO
-
-- Hide "Cases" pages
-- Alias: remove from landing page
-  To make domain more focused? Move to a separate landing?
-
-Privacy and Security/ Two-Step Verification / Forget password>? / Having trouble accessing your email?

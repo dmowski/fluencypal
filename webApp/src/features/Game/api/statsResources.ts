@@ -7,9 +7,8 @@ import {
   GameUsersAchievements,
   GameUsersPoints,
 } from '@/features/Game/types';
+import { FieldValue } from 'firebase-admin/firestore';
 import { getDB } from '../../../app/api/config/firebase';
-
-import firebaseAdmin from 'firebase-admin';
 
 export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   const db = getDB();
@@ -93,7 +92,7 @@ export const deleteAvatarByUserId = async (userId: string) => {
     .doc('gameAvatars')
     .set(
       {
-        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: FieldValue.delete(),
       },
       { merge: true },
     );
@@ -106,7 +105,7 @@ export const deleteUserLastVisitStatByUserId = async (userId: string) => {
     .doc('gameLastVisit')
     .set(
       {
-        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: FieldValue.delete(),
       },
       { merge: true },
     );
@@ -119,7 +118,7 @@ export const deleteGamePointsStatByUserId = async (userId: string) => {
     .doc('gamePoints')
     .set(
       {
-        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: FieldValue.delete(),
       },
       { merge: true },
     );
@@ -131,7 +130,7 @@ export const deleteGameUserNameById = async (userId: string) => {
     .doc('gameUserNames')
     .set(
       {
-        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: FieldValue.delete(),
       },
       { merge: true },
     );
