@@ -27,27 +27,15 @@ export const JustTalkCard = () => {
         gap: '20px',
       }}
     >
-      <SectionHeader title={i18n._('Speaking with AI')} subTitle={footnotePhrase} />
+      <SectionHeader title={i18n._('Speaking with AI')} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={isCallStarting ? 'rgba(2, 134, 208, .54)' : 'rgba(2, 134, 208, .94)'}
+        backgroundColor={isCallStarting ? 'rgba(2, 133, 208, 0.42)' : 'rgba(2, 133, 208, 0.9)'}
         previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
         label={'JUST TALK MODE'}
         title={i18n._('Conversation with AI')}
-        subTitle={i18n._(
-          "Start a casual call to practice your communication skills. This is a no-strings-attached conversation if you'd like to chat in a casual setting.",
-        )}
-        items={[
-          {
-            title: voiceName.charAt(0).toUpperCase() + voiceName.slice(1),
-            subTitle: i18n._('Your AI Speech Partner'),
-            imageUrl: secondPhotoUrl,
-            actionButtonTitle: isCallStarting ? i18n._('Loading...') : i18n._('Open'),
-            onClick: () => {
-              startJustTalk();
-            },
-          },
-        ]}
+        subTitle={footnotePhrase}
+        items={[]}
         itemsBackgroundColor={'rgba(0, 0, 0, 0.2)'}
         onClick={() => {
           startJustTalk();
