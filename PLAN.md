@@ -1,10 +1,10 @@
 # Live document with short/long term ideas
 
+## Convert visitors to users: Start a first conversation
+
 ## Writing routine
 
 Write one sentence and correct the grammar. Get the rule and correct it.
-
-## Add badge that you are on free plan, and it help me if you pay money for that
 
 ## Alias: Make it Call mode and show works on call canvas
 
