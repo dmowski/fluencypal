@@ -152,7 +152,11 @@ export const DailyTasksDashboardCard = () => {
       <StoreCard
         textColor={'#fff'}
         backgroundColor={
-          tasks.isAllTasksCompleted ? '#0798ff' : isLoading ? '#000000' : tasks.dayTasksMeta.bgColor
+          tasks.isAllTasksCompleted
+            ? 'rgba(8, 141, 11, 0.78)'
+            : isLoading
+              ? '#000000'
+              : tasks.dayTasksMeta.bgColor
         }
         previewImageUrl={tasks.dayTasksMeta.imageUrl}
         borderSize={tasks.isAllTasksCompleted ? '5px' : undefined}
