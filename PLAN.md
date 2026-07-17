@@ -2,7 +2,17 @@
 
 ## Fix all sentry issues
 
+- Download full report
+- Create agent.md for reports
+- Try to fix
+
 ## Do not load all conversations on app
+
+# How to fix reset conversations
+
+## Missing revenue attribution
+
+https://datafa.st/docs/revenue-attribution-guide
 
 ## Convert visitors to users: Start a first conversation
 
