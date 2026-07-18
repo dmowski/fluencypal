@@ -73,6 +73,8 @@ export const AuthWallBasic = ({
   const [isValidEmailError, setIsValidEmailError] = useState(false);
   const [emailSignInError, setEmailSignInError] = useState('');
   const [isEmailSignInLoading, setIsEmailSignInLoading] = useState(false);
+  const [googleSignInError, setGoogleSignInError] = useState('');
+  const [isGoogleSignInLoading, setIsGoogleSignInLoading] = useState(false);
 
   const [email, setEmail] = useState('');
 
@@ -95,6 +97,17 @@ export const AuthWallBasic = ({
     const currentIndex = steps.indexOf(step);
     if (currentIndex < steps.length - 1) {
       setStep(steps[currentIndex + 1]);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    setGoogleSignInError('');
+    setIsGoogleSignInLoading(true);
+    onSelectAuthMethod('google');
+    const signInResult = await auth.signInWithGoogle();
+    setIsGoogleSignInLoading(false);
+    if (!signInResult.isDone && signInResult.error) {
+      setGoogleSignInError(signInResult.error);
     }
   };
 
@@ -277,7 +290,9 @@ export const AuthWallBasic = ({
             width={width}
             title={authTitle}
             subTitle={authSubTitle}
-            actionButtonTitle={i18n._('Sign in with Google')}
+            actionButtonTitle={
+              isGoogleSignInLoading ? i18n._('Signing in...') : i18n._('Sign in with Google')
+            }
             actionButtonStartIcon={<Google />}
             actionButtonBadgeText={lastAuthMethod === 'google' ? lastUsedBadgeLabel : undefined}
             secondButtonTitle={i18n._('Sign in with email')}
@@ -285,10 +300,16 @@ export const AuthWallBasic = ({
             secondButtonEndIcon={<ArrowRight />}
             secondButtonBadgeText={lastAuthMethod === 'email' ? lastUsedBadgeLabel : undefined}
             listItems={authList}
-            onClick={() => {
-              onSelectAuthMethod('google');
-              auth.signInWithGoogle();
-            }}
+            disabled={isGoogleSignInLoading}
+            isStepLoading={isGoogleSignInLoading}
+            subComponent={
+              googleSignInError ? (
+                <Typography color="error" sx={{ paddingTop: '12px' }}>
+                  {googleSignInError}
+                </Typography>
+              ) : undefined
+            }
+            onClick={() => void signInWithGoogle()}
             onSecondButtonClick={() => {
               onSelectAuthMethod('email');
               nextStep();

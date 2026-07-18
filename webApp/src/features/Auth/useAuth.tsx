@@ -8,13 +8,14 @@ import {
   signInWithEmailLink,
   ActionCodeSettings,
 } from 'firebase/auth';
-import { Context, JSX, ReactNode, createContext, useContext, useEffect } from 'react';
+import { Context, JSX, ReactNode, createContext, useContext, useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../Firebase/init';
 import * as Sentry from '@sentry/nextjs';
 import { FirebaseError } from 'firebase/app';
 import { acceptAnalytics } from '../Analytics/initGTag';
 import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
+import { shouldShowWebViewWall } from './useIsWebView';
 
 interface SignInResult {
   isDone: boolean;
@@ -66,24 +67,61 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   sendTgMessage: async () => void 0,
 });
 
+const getGoogleSignInErrorMessage = (error: unknown): string | null => {
+  if (error instanceof FirebaseError) {
+    switch (error.code) {
+      case 'auth/popup-closed-by-user':
+      case 'auth/cancelled-popup-request':
+        return null;
+      case 'auth/popup-blocked':
+        return 'Google sign-in popup was blocked. Please allow popups or use email sign-in.';
+      case 'auth/operation-not-supported-in-this-environment':
+        return 'Google sign-in is not supported in this browser. Please use email sign-in.';
+      default:
+        break;
+    }
+  }
+
+  if (error instanceof Error && error.message.includes('INTERNAL ASSERTION FAILED')) {
+    return 'Google sign-in is not supported in this browser. Please use email sign-in.';
+  }
+
+  return 'Google sign-in was unsuccessful. Please try again.';
+};
+
 function useProvideAuth(): AuthContext {
   const [userInfo, loading, errorAuth] = useAuthState(auth);
+  const googleSignInInProgress = useRef(false);
 
   const signInWithGoogle = async (): Promise<SignInResult> => {
+    if (googleSignInInProgress.current) {
+      return { isDone: false, error: '' };
+    }
+
+    if (shouldShowWebViewWall()) {
+      return {
+        isDone: false,
+        error: 'Google sign-in is not supported in this browser. Please open in Chrome or use email sign-in.',
+      };
+    }
+
+    googleSignInInProgress.current = true;
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
 
       return { isDone: true, error: '' };
     } catch (error) {
-      if (error instanceof FirebaseError && error.code === 'auth/popup-closed-by-user') {
-        return { isDone: false, error: '' };
+      const message = getGoogleSignInErrorMessage(error);
+      if (message) {
+        console.error('Google sign in error', error);
       }
-      console.error('Google sign in error', error);
       return {
         isDone: false,
-        error: `Google sign-in was unsuccessful. Please try again.`,
+        error: message || '',
       };
+    } finally {
+      googleSignInInProgress.current = false;
     }
   };
 

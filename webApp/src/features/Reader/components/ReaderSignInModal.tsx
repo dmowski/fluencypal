@@ -31,11 +31,18 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
   const [emailSent, setEmailSent] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [isEmailLoading, setIsEmailLoading] = useState(false);
+  const [googleSignInError, setGoogleSignInError] = useState('');
+  const [isGoogleSignInLoading, setIsGoogleSignInLoading] = useState(false);
 
   const handleGoogleSignIn = async () => {
+    setGoogleSignInError('');
+    setIsGoogleSignInLoading(true);
     const result = await auth.signInWithGoogle();
+    setIsGoogleSignInLoading(false);
     if (result.isDone) {
       onClose();
+    } else if (result.error) {
+      setGoogleSignInError(result.error);
     }
   };
 
@@ -149,12 +156,18 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
             {message}
           </Typography>
         )}
+        {googleSignInError && (
+          <Typography variant="body2" color="error">
+            {googleSignInError}
+          </Typography>
+        )}
         <Button
           variant="contained"
           startIcon={<Google />}
+          disabled={isGoogleSignInLoading}
           onClick={() => void handleGoogleSignIn()}
         >
-          {i18n._('Sign in with Google')}
+          {isGoogleSignInLoading ? i18n._('Signing in...') : i18n._('Sign in with Google')}
         </Button>
         <Button
           variant="outlined"
