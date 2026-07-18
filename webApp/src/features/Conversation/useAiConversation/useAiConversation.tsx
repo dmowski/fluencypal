@@ -528,13 +528,14 @@ ${voiceInstructions}
       setErrorInitiating('');
 
       firstPotentialBotMessage.current = '';
+      const isNewUser = await messages.resolveIsNewUser();
       const conversationConfig = await getConversationConfig({
         mode: input.mode,
         goal: input.goal,
         ideas: input.ideas,
         lessonPlan: input.lessonPlan,
         voice: input.voice || settingsVoice || 'shimmer',
-        isNewUser: messages.isNewUser,
+        isNewUser,
       });
 
       let instruction = conversationConfig.initInstruction;

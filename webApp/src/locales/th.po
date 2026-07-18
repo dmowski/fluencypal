@@ -1555,7 +1555,7 @@ msgstr "แชทระหว่างคุณและ {userName}"
 msgid "Chat deleted successfully."
 msgstr "แชทถูกลบเรียบร้อยแล้ว"
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "ประวัติการแชท"
@@ -2672,7 +2672,7 @@ msgstr "แก้ไขแล้ว"
 msgid "Corrected answers for remembering"
 msgstr "คำตอบที่แก้ไขเพื่อใช้ในการจดจำ"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "การแก้ไข"
@@ -3269,7 +3269,7 @@ msgstr "อธิบายสถานการณ์ที่กำหนดเ
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "คำอธิบาย:"
@@ -4248,6 +4248,11 @@ msgstr "ไม่สามารถลบบัญชีของคุณได
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "ล้มเหลวในการสร้างแบบทดสอบ"
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "ไม่สามารถโหลดประวัติการสนทนาได้"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5277,12 +5282,12 @@ msgstr "ไปที่หน้าหลัก"
 msgid "Goal"
 msgstr "เป้าหมาย"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "บทบาทสมมุติเป้าหมาย"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "พูดคุยเกี่ยวกับเป้าหมาย"
@@ -5355,13 +5360,13 @@ msgstr "ไวยากรณ์"
 msgid "Grammar Correction Preview"
 msgstr "การแสดงตัวอย่างการแก้ไขไวยากรณ์"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "การแก้ไขไวยากรณ์"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "การปรับปรุงไวยากรณ์"
@@ -5507,17 +5512,17 @@ msgstr "นี่คือกฏใหม่บางข้อสำหรับ
 msgid "Here are some new words for you to learn:"
 msgstr "นี่คือคำศัพท์ใหม่บางคำสำหรับคุณที่จะเรียนรู้:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "นี่คือการสนทนาที่คุณมีกับ FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "นี่คือการแก้ไขที่คุณมีในการสนทนาของคุณ"
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "นี่คือคำที่คุณใช้มากที่สุดในการสนทนาของคุณ"
@@ -6582,7 +6587,7 @@ msgstr "การสัมภาษณ์งานนักพัฒนาฟร
 msgid "junior frontend interview"
 msgstr "การสัมภาษณ์นักพัฒนาซอฟต์แวร์ด้านหน้าระดับจูเนียร์"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "แค่พูดคุย"
@@ -6969,6 +6974,13 @@ msgstr ""
 "ใช้ชีวิตราวกับว่าคุณจะตายในวันพรุ่งนี้ "
 "เรียนรู้ราวกับว่าคุณจะมีชีวิตอยู่ตลอดไป"
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "โหลดเพิ่มเติม"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
@@ -6976,12 +6988,6 @@ msgid "Load More"
 msgstr ""
 "\n"
 "โหลดเพิ่มเติม\n"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "โหลดเพิ่มเติม"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -7052,6 +7058,8 @@ msgstr "กำลังโหลด.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "กำลังโหลด..."
@@ -7314,7 +7322,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "การตั้งค่าไมโครโฟน"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "นาที"
@@ -7498,7 +7506,7 @@ msgstr "คำศัพท์ใหม่"
 msgid "News"
 msgstr "ข่าวสาร"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "การสนทนาข่าว"
@@ -7603,7 +7611,7 @@ msgstr "ไม่มีบทใด ๆ ให้เลือก"
 msgid "No charge will be made"
 msgstr "ไม่ได้คิดค่าใช้จ่าย"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "ยังไม่มีการสนทนา"
@@ -7613,7 +7621,7 @@ msgstr "ยังไม่มีการสนทนา"
 msgid "No correct words yet."
 msgstr "ยังไม่มีคำที่ถูกต้องเลย."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "ยังไม่มีการแก้ไข"
@@ -7764,8 +7772,8 @@ msgstr "ยังไม่มีใครเข้าชม มาเป็น�
 msgid "No voices available on your device"
 msgstr "ไม่มีเสียงที่ใช้ได้บนอุปกรณ์ของคุณ"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "ยังไม่มีคำใดๆ ถูกใช้งานเลย"
@@ -8025,7 +8033,7 @@ msgstr "เปิดแผงควบคุม"
 msgid "Open Dev Panel"
 msgstr "เปิดแผง Dev"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "เปิดประวัติ"
@@ -9953,7 +9961,7 @@ msgstr "โรบอทกำลังคิด"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "บทบาทสมมติ"
@@ -10039,7 +10047,7 @@ msgstr "ความหยาบคาย"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "กฎ"
@@ -11818,7 +11826,7 @@ msgid "Teacher Instructions"
 msgstr "คำแนะนำสำหรับครู"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "ครู:"
@@ -12748,7 +12756,7 @@ msgstr ""
 "อันดับแรกบนกระดานผู้นำจะได้รับการเข้าถึงฟีเจอร์ทั้งหมดของแอปพลิเคชันฟรี! "
 "ดังนั้นเริ่มต้นการถกเถียงและไต่ระดับบนกระดานผู้นำกันเลย!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "ทั้งหมด"
@@ -13738,7 +13746,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "เกมทายคำศัพท์"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "สถิติคำศัพท์"
@@ -13749,8 +13757,8 @@ msgstr "สถิติคำศัพท์"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "คำศัพท์"
@@ -14331,7 +14339,7 @@ msgstr ""
 "แต่การสัมภาษณ์นั้นทดสอบมากกว่าความรู้ทางด้านไวยากรณ์และบทเรียน"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "คุณ:"
@@ -14346,7 +14354,7 @@ msgstr "อีเมลบัญชีของคุณ"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "บัญชีของคุณได้ถูกลบออกเรียบร้อยแล้ว ขออภัยที่ต้องอำลาคุณ!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "ความสำเร็จของคุณ"

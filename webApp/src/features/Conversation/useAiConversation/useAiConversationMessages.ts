@@ -133,6 +133,11 @@ export const useAiConversationMessages = () => {
     });
   };
 
+  const resolveIsNewUser = async () => {
+    const hasAnyConversation = await history.hasAnyConversation();
+    return !hasAnyConversation;
+  };
+
   return {
     conversation,
     conversationId,
@@ -144,6 +149,6 @@ export const useAiConversationMessages = () => {
     resetMessageOrder: () => setMessageOrder({}),
     onAddDelta,
     onMessage,
-    isNewUser: history.conversations.length === 0,
+    resolveIsNewUser,
   };
 };

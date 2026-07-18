@@ -1556,7 +1556,7 @@ msgstr "Conversa entre você e {userName}"
 msgid "Chat deleted successfully."
 msgstr "Chat excluído com sucesso."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Histórico de chat"
@@ -2680,7 +2680,7 @@ msgstr "Corrigido"
 msgid "Corrected answers for remembering"
 msgstr "Respostas corrigidas para relembrar"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Correções"
@@ -3272,7 +3272,7 @@ msgstr "Descreva seu cenário personalizado aqui..."
 msgid "Description"
 msgstr "Descrição"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Descrição:"
@@ -4271,6 +4271,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Falha ao gerar questionário."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "Falha ao carregar o histórico da conversa"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5300,12 +5305,12 @@ msgstr "Vá para a página principal"
 msgid "Goal"
 msgstr "Meta"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "Meta Jogo de Papéis"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "Meta Fala"
@@ -5377,13 +5382,13 @@ msgstr "Gramática"
 msgid "Grammar Correction Preview"
 msgstr "Visualização de Correção Gramatical"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Correções de Gramática"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Melhoria Gramatical"
@@ -5531,17 +5536,17 @@ msgstr "Aqui estão algumas novas regras para você aprender:"
 msgid "Here are some new words for you to learn:"
 msgstr "Aqui estão algumas novas palavras para você aprender:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Aqui estão as conversas que você teve com o FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Aqui estão as correções que você teve nas suas conversas."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Aqui estão as palavras que você usou mais nas suas conversas."
@@ -6613,7 +6618,7 @@ msgstr "entrevista para desenvolvedor frontend júnior"
 msgid "junior frontend interview"
 msgstr "entrevista de frontend júnior"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Apenas converse"
@@ -6994,17 +6999,18 @@ msgstr "Prática de escuta. Você ouvirá respostas da IA"
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "Viva como se fosse morrer amanhã. Aprenda como se fosse viver para sempre."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "Carregar mais"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "Carregar Mais"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "Carregar mais"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -7075,6 +7081,8 @@ msgstr "Carregando.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Carregando..."
@@ -7340,7 +7348,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Configuração do Microfone"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Minutos"
@@ -7530,7 +7538,7 @@ msgstr "Novas Palavras"
 msgid "News"
 msgstr "Notícias"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "Discussão de Notícias"
@@ -7637,7 +7645,7 @@ msgstr "Nenhum capítulo disponível"
 msgid "No charge will be made"
 msgstr "Nenhuma cobrança será feita"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Nenhuma conversa ainda"
@@ -7647,7 +7655,7 @@ msgstr "Nenhuma conversa ainda"
 msgid "No correct words yet."
 msgstr "Nenhuma palavra correta ainda."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Ainda sem correções"
@@ -7802,8 +7810,8 @@ msgstr "Sem visualizações ainda. Seja o primeiro a visualizar esta postagem!"
 msgid "No voices available on your device"
 msgstr "Nenhuma voz disponível no seu dispositivo"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Nenhuma palavra usada ainda"
@@ -8065,7 +8073,7 @@ msgstr "Abrir Painel de Controle"
 msgid "Open Dev Panel"
 msgstr "Abrir Painel de Desenvolvimento"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Abrir histórico"
@@ -9896,7 +9904,7 @@ msgstr "Pensamento do Robô"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Role Play"
@@ -9983,7 +9991,7 @@ msgstr "Rudeza"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Regra"
@@ -11761,7 +11769,7 @@ msgid "Teacher Instructions"
 msgstr "Instruções para o Professor"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Professor:"
@@ -12706,7 +12714,7 @@ msgstr ""
 "Os 5 melhores no placar ganham acesso total a todos os recursos do "
 "aplicativo gratuitamente! Então, comece a debater e suba no placar!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Total"
@@ -13697,7 +13705,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Jogo de Adivinhação de Palavras"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Estatísticas de Palavras"
@@ -13708,8 +13716,8 @@ msgstr "Estatísticas de Palavras"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Palavras"
@@ -14299,7 +14307,7 @@ msgstr ""
 "apenas sintaxe e tutoriais."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Você:"
@@ -14314,7 +14322,7 @@ msgstr "seu email de conta"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Sua conta foi excluída com sucesso. Lamentamos vê-lo partir!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "As suas conquistas"

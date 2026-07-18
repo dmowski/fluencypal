@@ -1509,7 +1509,7 @@ msgstr ""
 msgid "Chat deleted successfully."
 msgstr "채팅이 성공적으로 삭제되었습니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "채팅 기록"
@@ -2602,7 +2602,7 @@ msgstr "수정됨"
 msgid "Corrected answers for remembering"
 msgstr "암기를 위한 정답"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "교정"
@@ -3162,7 +3162,7 @@ msgstr "당신의 맞춤 시나리오를 여기에 설명하세요..."
 msgid "Description"
 msgstr "설명"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "설명:"
@@ -4091,6 +4091,11 @@ msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "퀴즈 생성 실패."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "대화 기록 로드 실패"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5039,12 +5044,12 @@ msgstr "메인 페이지로 이동하십시오"
 msgid "Goal"
 msgstr "목표"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "목표 역할 놀이"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "목표 대화"
@@ -5108,13 +5113,13 @@ msgstr "문법"
 msgid "Grammar Correction Preview"
 msgstr "문법 수정 미리보기"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "문법 수정"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "문법 개선"
@@ -5254,17 +5259,17 @@ msgstr "여기에 배워야 할 새로운 규칙이 있습니다:"
 msgid "Here are some new words for you to learn:"
 msgstr "다음은 당신이 배워야 할 몇 가지 새로운 단어들입니다:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "다음은 FluencyPal과의 대화 내용입니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "다음은 당신이 대화에서 받았던 수정 사항들입니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "다음은 당신이 대화에서 가장 많이 사용한 단어들입니다."
@@ -6264,7 +6269,7 @@ msgstr "주니어 프론트엔드 개발자 인터뷰"
 msgid "junior frontend interview"
 msgstr "주니어 프론트엔드 인터뷰"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "그냥 말하세요"
@@ -6637,17 +6642,18 @@ msgstr "리스닝 연습. AI 응답을 들을 수 있습니다."
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "내일 죽을 것처럼 살아라. 영원히 살 것처럼 배워라."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "더 보기"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "로드 더보기"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "더 보기"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -6718,6 +6724,8 @@ msgstr "로딩 중.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "로딩 중..."
@@ -6973,7 +6981,7 @@ msgstr "통화를 시작하려면 마이크 권한이 필요합니다. 마이크
 msgid "Microphone Setup"
 msgstr "마이크 설정"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "분"
@@ -7157,7 +7165,7 @@ msgstr "새로운 단어들"
 msgid "News"
 msgstr "뉴스"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "뉴스 토론"
@@ -7260,7 +7268,7 @@ msgstr "이용 가능한 챕터가 없습니다"
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "아직 대화 없음"
@@ -7270,7 +7278,7 @@ msgstr "아직 대화 없음"
 msgid "No correct words yet."
 msgstr "아직 맞는 단어가 없습니다."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "아직 수정 사항 없음"
@@ -7419,8 +7427,8 @@ msgstr "아직 조회수 없음. 이 게시물을 처음으로 조회하세요!"
 msgid "No voices available on your device"
 msgstr "기기에서 사용 가능한 음성이 없습니다"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "아직 사용된 단어 없음"
@@ -7660,7 +7668,7 @@ msgstr "대시보드 열기"
 msgid "Open Dev Panel"
 msgstr "개발 패널 열기"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "역사 열기"
@@ -9402,7 +9410,7 @@ msgstr "로봇 생각 중"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "역할 놀이"
@@ -9486,7 +9494,7 @@ msgstr "무례함"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "룰"
@@ -11189,7 +11197,7 @@ msgid "Teacher Instructions"
 msgstr "교사 지침"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "교사:"
@@ -12064,7 +12072,7 @@ msgid ""
 "for free! So, start debating and climb the leaderboard!"
 msgstr "리더보드 상위 5위는 모든 앱 기능에 무료로 완전히 접근할 수 있습니다! 토론을 시작하고 리더보드에 올라보세요!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "총계"
@@ -13012,7 +13020,7 @@ msgstr "2주 만에 건축 결정에 대해 논의할 때 긴장에서 자신감
 msgid "Word Guessing Game"
 msgstr "단어 추측 게임"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "단어 통계"
@@ -13023,8 +13031,8 @@ msgstr "단어 통계"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "단어들"
@@ -13544,7 +13552,7 @@ msgid ""
 msgstr "당신은 코딩을 배웠지만, 면접은 단순한 문법과 튜토리얼 이상의 것을 테스트합니다."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "You:"
@@ -13559,7 +13567,7 @@ msgstr "귀하의 계정 이메일"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "당신의 계정이 성공적으로 삭제되었습니다. 안녕히 가십시오, 그동안 함께 해주셔서 감사합니다!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "당신의 성과"

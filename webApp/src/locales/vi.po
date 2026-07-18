@@ -1559,7 +1559,7 @@ msgstr "Cuộc trò chuyện giữa bạn và {userName}"
 msgid "Chat deleted successfully."
 msgstr "Đã xóa trò chuyện thành công."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Lịch sử trò chuyện"
@@ -2678,7 +2678,7 @@ msgstr "Đã sửa"
 msgid "Corrected answers for remembering"
 msgstr "Các câu trả lời đã được sửa để ghi nhớ"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Sửa chữa"
@@ -3271,7 +3271,7 @@ msgstr "Mô tả kịch bản tùy chỉnh của bạn ở đây..."
 msgid "Description"
 msgstr "Mô tả"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Mô tả:"
@@ -4277,6 +4277,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Không tạo được bài kiểm tra."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "Không tải được lịch sử hội thoại"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5308,12 +5313,12 @@ msgstr "Đi đến trang chính"
 msgid "Goal"
 msgstr "Mục tiêu"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "Mục tiêu Nhập Vai"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "Mục Tiêu Trò Chuyện"
@@ -5385,13 +5390,13 @@ msgstr "Ngữ pháp"
 msgid "Grammar Correction Preview"
 msgstr "Xem Trước Sửa Ngữ Pháp"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Sửa lỗi ngữ pháp"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Cải thiện ngữ pháp"
@@ -5537,17 +5542,17 @@ msgstr "Dưới đây là một số quy tắc mới để bạn học:"
 msgid "Here are some new words for you to learn:"
 msgstr "Dưới đây là một số từ mới để bạn học:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Dưới đây là những cuộc trò chuyện bạn đã có với FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện của mình."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
@@ -6615,7 +6620,7 @@ msgstr "phỏng vấn lập trình viên frontend junior"
 msgid "junior frontend interview"
 msgstr "phỏng vấn frontend cấp junior"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Chỉ cần nói"
@@ -6996,17 +7001,18 @@ msgstr "Luyện nghe. Bạn sẽ nghe các phản hồi của AI"
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "Sống như thể bạn sẽ chết vào ngày mai. Học như thể bạn sẽ sống mãi mãi."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "Tải thêm"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "Tải Thêm"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "Tải thêm"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -7077,6 +7083,8 @@ msgstr "Đang tải.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Đang tải..."
@@ -7343,7 +7351,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Thiết lập Microphone"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Phút"
@@ -7527,7 +7535,7 @@ msgstr "Từ mới"
 msgid "News"
 msgstr "Tin tức"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "Thảo luận Tin tức"
@@ -7634,7 +7642,7 @@ msgstr "Không có chương nào có sẵn"
 msgid "No charge will be made"
 msgstr "Không có phí nào sẽ được tính"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Chưa có cuộc trò chuyện nào"
@@ -7644,7 +7652,7 @@ msgstr "Chưa có cuộc trò chuyện nào"
 msgid "No correct words yet."
 msgstr "Chưa có từ nào đúng."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Chưa có sửa chữa nào"
@@ -7799,8 +7807,8 @@ msgstr "Chưa có lượt xem. Hãy là người đầu tiên xem bài viết n�
 msgid "No voices available on your device"
 msgstr "Không có giọng nói nào khả dụng trên thiết bị của bạn"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Chưa có từ nào được sử dụng"
@@ -8065,7 +8073,7 @@ msgstr "Mở Bảng Điều Khiển"
 msgid "Open Dev Panel"
 msgstr "Mở Bảng Điều Khiển Dev"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Mở lịch sử"
@@ -9900,7 +9908,7 @@ msgstr "Robot Đang suy nghĩ"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Vai diễn"
@@ -9987,7 +9995,7 @@ msgstr "Sự thô lỗ"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Quy tắc"
@@ -11770,7 +11778,7 @@ msgid "Teacher Instructions"
 msgstr "Hướng dẫn cho Giáo viên"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Giáo viên:"
@@ -12714,7 +12722,7 @@ msgstr ""
 "năng của ứng dụng miễn phí! Vì vậy, hãy bắt đầu tranh luận và leo lên bảng "
 "xếp hạng!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Tổng cộng"
@@ -13716,7 +13724,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Trò chơi đoán từ"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Thống kê từ vựng"
@@ -13727,8 +13735,8 @@ msgstr "Thống kê từ vựng"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Từ vựng"
@@ -14315,7 +14323,7 @@ msgstr ""
 "pháp và hướng dẫn."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Bạn:"
@@ -14330,7 +14338,7 @@ msgstr "email tài khoản của bạn"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Tài khoản của bạn đã được xóa thành công. Chúng tôi rất tiếc khi bạn ra đi!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Thành tích của bạn"

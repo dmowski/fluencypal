@@ -1551,7 +1551,7 @@ msgstr "Siz ve {userName} arasındaki sohbet"
 msgid "Chat deleted successfully."
 msgstr "Sohbet başarıyla silindi."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
@@ -2675,7 +2675,7 @@ msgstr "Düzeltildi"
 msgid "Corrected answers for remembering"
 msgstr "Ezberlemek için düzeltilmiş cevaplar"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Düzeltmeler"
@@ -3265,7 +3265,7 @@ msgstr "Kendi senaryonuzu buraya tanımlayın..."
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Açıklama:"
@@ -4261,6 +4261,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Test oluşturma başarısız oldu."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "Konuşma geçmişi yüklenemedi"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5288,12 +5293,12 @@ msgstr "Ana sayfaya git"
 msgid "Goal"
 msgstr "Hedef"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "Hedef Rol Oynama"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "Hedef Konuşması"
@@ -5367,13 +5372,13 @@ msgstr "Dilbilgisi"
 msgid "Grammar Correction Preview"
 msgstr "Dilbilgisi Düzeltme Önizlemesi"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Dilbilgisi Düzeltmeleri"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Dilbilgisi Geliştirme"
@@ -5520,17 +5525,17 @@ msgstr "Burada öğrenmeniz için bazı yeni kurallar var:"
 msgid "Here are some new words for you to learn:"
 msgstr "Öğrenmeniz için işte bazı yeni kelimeler:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "İşte FluencyPal ile yaptığınız konuşmalar."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "İşte konuşmalarınızdaki düzeltmeler."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "İşte konuşmalarınızda en çok kullandığınız kelimeler."
@@ -6599,7 +6604,7 @@ msgstr "junior frontend developer görüşmesi"
 msgid "junior frontend interview"
 msgstr "junior frontend mülakatı"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Sadece konuş"
@@ -6978,17 +6983,18 @@ msgstr "Dinleme çalışması. AI yanıtlarını duyacaksınız."
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "Yarın ölecekmiş gibi yaşa. Sonsuza dek yaşayacakmış gibi öğren."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "Daha fazla yükle"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "Daha Fazla Yükle"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "Daha fazla yükle"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -7059,6 +7065,8 @@ msgstr "Yükleniyor.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Yükleniyor..."
@@ -7320,7 +7328,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Mikrofon Kurulumu"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Dakikalar"
@@ -7504,7 +7512,7 @@ msgstr "Yeni Kelimeler"
 msgid "News"
 msgstr "Haberler"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "Haber Tartışması"
@@ -7611,7 +7619,7 @@ msgstr "Bölüm mevcut değil"
 msgid "No charge will be made"
 msgstr "Ücret alınmayacaktır"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Henüz bir konuşma yok"
@@ -7621,7 +7629,7 @@ msgstr "Henüz bir konuşma yok"
 msgid "No correct words yet."
 msgstr "Henüz doğru kelimeler yok."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Henüz bir düzeltme yok"
@@ -7776,8 +7784,8 @@ msgstr "Henüz görüntülenme yok. Bu gönderiyi ilk görüntüleyen sen ol!"
 msgid "No voices available on your device"
 msgstr "Cihazınızda kullanılabilir ses yok"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Henüz hiç kelime kullanılmadı"
@@ -8037,7 +8045,7 @@ msgstr "Gösterge Tablosunu Aç"
 msgid "Open Dev Panel"
 msgstr "Geliştirici Panelini Aç"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Geçmişi aç"
@@ -9859,7 +9867,7 @@ msgstr "Robot Düşünüyor"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rol Oynama"
@@ -9946,7 +9954,7 @@ msgstr "Kabalık"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Kural"
@@ -11730,7 +11738,7 @@ msgid "Teacher Instructions"
 msgstr "Öğretmen Talimatları"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Öğretmen:"
@@ -12672,7 +12680,7 @@ msgstr ""
 "ücretsiz tam erişim elde eder! Bu yüzden, tartışmaya başlayın ve liderlik "
 "tablosunda yükselin!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Toplam"
@@ -13654,7 +13662,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Kelime Tahmin Oyunu"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Kelime İstatistikleri"
@@ -13665,8 +13673,8 @@ msgstr "Kelime İstatistikleri"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kelimeler"
@@ -14254,7 +14262,7 @@ msgstr ""
 "sınırlı kalmaz, çok daha fazlasını test eder."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Sen:"
@@ -14269,7 +14277,7 @@ msgstr "hesap e-postanız"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Başarılarınız"

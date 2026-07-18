@@ -1,16 +1,8 @@
 # Live document with short/long term ideas
 
-## Fix all sentry issues
-
-- Download full report
-- Create agent.md for reports
-- Try to fix
-
 ## Notifications: Messages
 
 Send request to server. Check parent id of message, and send message to user: email.
-
-## Do not load all conversations on app
 
 # How to fix reset conversations
 

@@ -1,6 +1,6 @@
 'use client';
-import { createContext, useContext, ReactNode, JSX } from 'react';
-import { getDocs, limit, orderBy, query, setDoc, where } from 'firebase/firestore';
+import { createContext, useContext, ReactNode, JSX, useCallback } from 'react';
+import { getDocs, limit, orderBy, query, setDoc, startAfter, where } from 'firebase/firestore';
 import { useAuth } from '../Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { db } from '../Firebase/firebaseDb';
@@ -11,7 +11,14 @@ import {
   MessagesOrderMap,
 } from '@/features/Conversation/conversation';
 import { useSettings } from '../Settings/useSettings';
-import { useCollectionDataOnce } from 'react-firebase-hooks/firestore';
+
+export const CONVERSATION_HISTORY_PAGE_SIZE = 10;
+
+export interface ConversationsPage {
+  conversations: Conversation[];
+  hasMore: boolean;
+  nextCursor: number | null;
+}
 
 interface ChatHistoryContextType {
   createConversation: (params: {
@@ -26,8 +33,11 @@ interface ChatHistoryContextType {
     messageOrder: MessagesOrderMap,
   ) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
-  conversations: Conversation[];
-  loading: boolean;
+  getConversationsPage: (params: {
+    pageSize?: number;
+    cursor?: number | null;
+  }) => Promise<ConversationsPage>;
+  hasAnyConversation: () => Promise<boolean>;
 }
 
 const ChatHistoryContext = createContext<ChatHistoryContextType | null>(null);
@@ -37,7 +47,6 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const settings = useSettings();
   const userId = auth.uid;
   const collectionRef = db.collections.conversation(userId);
-  const [conversations, loading] = useCollectionDataOnce(collectionRef);
 
   const getConversationDoc = (conversationId: string) => {
     const docRef = db.documents.conversation(userId, conversationId);
@@ -47,24 +56,67 @@ function useProvideChatHistory(): ChatHistoryContextType {
     return docRef;
   };
 
+  const getLanguageScopedQuery = useCallback(
+    (languageCode: SupportedLanguage) => {
+      if (!collectionRef) {
+        throw new Error('❌ collectionRef is not defined');
+      }
+
+      return query(
+        collectionRef,
+        where('languageCode', '==', languageCode),
+        orderBy('updatedAt', 'desc'),
+      );
+    },
+    [collectionRef],
+  );
+
   const getLastConversations = async (count: number) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
       throw new Error('❌ languageCode is not defined | getLastConversations');
     }
 
-    if (!collectionRef) {
-      throw new Error('❌ collectionRef is not defined | getLastConversations');
-    }
-    const queryRef = query(
-      collectionRef,
-      where('languageCode', '==', languageCode),
-      orderBy('updatedAt', 'desc'),
-      limit(count),
-    );
+    const queryRef = query(getLanguageScopedQuery(languageCode), limit(count));
     const snapshot = await getDocs(queryRef);
-    const data = snapshot.docs.map((doc) => doc.data());
-    return data;
+    return snapshot.docs.map((doc) => doc.data());
+  };
+
+  const getConversationsPage = async ({
+    pageSize = CONVERSATION_HISTORY_PAGE_SIZE,
+    cursor = null,
+  }: {
+    pageSize?: number;
+    cursor?: number | null;
+  }): Promise<ConversationsPage> => {
+    const languageCode = settings.languageCode;
+    if (!languageCode) {
+      throw new Error('❌ languageCode is not defined | getConversationsPage');
+    }
+
+    const queryRef = cursor
+      ? query(getLanguageScopedQuery(languageCode), startAfter(cursor), limit(pageSize + 1))
+      : query(getLanguageScopedQuery(languageCode), limit(pageSize + 1));
+
+    const snapshot = await getDocs(queryRef);
+    const hasMore = snapshot.docs.length > pageSize;
+    const conversations = snapshot.docs.slice(0, pageSize).map((doc) => doc.data());
+    const nextCursor = conversations.at(-1)?.updatedAt ?? null;
+
+    return {
+      conversations,
+      hasMore,
+      nextCursor,
+    };
+  };
+
+  const hasAnyConversation = async () => {
+    if (!collectionRef) {
+      throw new Error('❌ collectionRef is not defined | hasAnyConversation');
+    }
+
+    const snapshot = await getDocs(query(collectionRef, limit(1)));
+    return !snapshot.empty;
   };
 
   const saveConversation = async (
@@ -122,10 +174,10 @@ function useProvideChatHistory(): ChatHistoryContextType {
   };
 
   return {
-    conversations: conversations || [],
-    loading,
     createConversation,
     getLastConversations,
+    getConversationsPage,
+    hasAnyConversation,
     saveConversation,
   };
 }

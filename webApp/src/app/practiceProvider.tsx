@@ -68,10 +68,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                             <ProgressStatsProvider>
                                               <WordsProvider>
                                                 <CorrectionsProvider>
-                                                  <ChatHistoryProvider>
-                                                    <RulesProvider>
-                                                      <TasksProvider>
-                                                        <PlanProvider>
+                                                  <TasksProvider>
+                                                    <PlanProvider>
+                                                      <ChatHistoryProvider>
+                                                        <RulesProvider>
                                                           <AiConversationProvider>
                                                             <BattleProvider>
                                                               <LessonPlanProvider>
@@ -86,10 +86,10 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                                               </LessonPlanProvider>
                                                             </BattleProvider>
                                                           </AiConversationProvider>
-                                                        </PlanProvider>
-                                                      </TasksProvider>
-                                                    </RulesProvider>
-                                                  </ChatHistoryProvider>
+                                                        </RulesProvider>
+                                                      </ChatHistoryProvider>
+                                                    </PlanProvider>
+                                                  </TasksProvider>
                                                 </CorrectionsProvider>
                                               </WordsProvider>
                                             </ProgressStatsProvider>

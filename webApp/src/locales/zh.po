@@ -1499,7 +1499,7 @@ msgstr "你和{userName}之间的聊天"
 msgid "Chat deleted successfully."
 msgstr "聊天已成功删除。"
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "聊天记录"
@@ -2587,7 +2587,7 @@ msgstr "已更正"
 msgid "Corrected answers for remembering"
 msgstr "记住的正确答案"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "更正"
@@ -3135,7 +3135,7 @@ msgstr "描述您的自定义场景..."
 msgid "Description"
 msgstr "描述"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "描述："
@@ -4058,6 +4058,11 @@ msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "无法生成测验。"
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "无法加载会话历史记录"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -4987,12 +4992,12 @@ msgstr "去主页"
 msgid "Goal"
 msgstr "目标"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "目标角色扮演"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "目标交流"
@@ -5054,13 +5059,13 @@ msgstr "语法"
 msgid "Grammar Correction Preview"
 msgstr "语法纠正预览"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "语法纠正"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "语法提升"
@@ -5198,17 +5203,17 @@ msgstr "这是一些新的规则供你学习："
 msgid "Here are some new words for you to learn:"
 msgstr "这是一些你要学习的新单词："
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "以下是你与FluencyPal的对话。"
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "以下是你在对话中的纠正内容。"
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "这些是你在对话中最常使用的词汇。"
@@ -6191,7 +6196,7 @@ msgstr "初级前端开发者面试"
 msgid "junior frontend interview"
 msgstr "初级前端面试"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "只需说话"
@@ -6566,16 +6571,17 @@ msgstr "倾听练习。您将听到AI的回答"
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "活得像是你明天就要死去一样。学习得像是你将永远活着一样。"
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "加载更多"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
-msgstr "加载更多"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
 msgstr "加载更多"
 
 #: src/features/News/NewsFeedModal.tsx:160
@@ -6647,6 +6653,8 @@ msgstr "加载中.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "加载中..."
@@ -6899,7 +6907,7 @@ msgstr "要开始通话，需要麦克风权限。请允许麦克风访问，然
 msgid "Microphone Setup"
 msgstr "麦克风设置"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "分钟"
@@ -7083,7 +7091,7 @@ msgstr "新词"
 msgid "News"
 msgstr "新闻"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "新闻讨论"
@@ -7189,7 +7197,7 @@ msgstr "没有章节可用"
 msgid "No charge will be made"
 msgstr "不会收取任何费用"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "暂无对话"
@@ -7199,7 +7207,7 @@ msgstr "暂无对话"
 msgid "No correct words yet."
 msgstr "还没有正确的词汇。"
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "暂无修正"
@@ -7348,8 +7356,8 @@ msgstr "还没有浏览记录。成为第一个查看此帖的人吧！"
 msgid "No voices available on your device"
 msgstr "您的设备上没有可用的语音"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "尚未使用任何单词"
@@ -7579,7 +7587,7 @@ msgstr "打开控制面板"
 msgid "Open Dev Panel"
 msgstr "打开开发面板"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "打开历史记录"
@@ -9310,7 +9318,7 @@ msgstr "机器人思考中"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "角色扮演"
@@ -9394,7 +9402,7 @@ msgstr "无礼"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "规则"
@@ -11086,7 +11094,7 @@ msgid "Teacher Instructions"
 msgstr "教师指导"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教师:"
@@ -11945,7 +11953,7 @@ msgid ""
 "for free! So, start debating and climb the leaderboard!"
 msgstr "排行榜前5名可免费获得应用所有功能的完整访问权限！ 所以，开始辩论并登上排行榜吧！"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "总计"
@@ -12892,7 +12900,7 @@ msgstr "在两周内，我从紧张变得自信地讨论架构决策。得到了
 msgid "Word Guessing Game"
 msgstr "单词猜谜游戏"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "单词统计"
@@ -12903,8 +12911,8 @@ msgstr "单词统计"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "单词"
@@ -13405,7 +13413,7 @@ msgid ""
 msgstr "你已经学会了编程，但面试考察的远不止语法和教程。"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "您："
@@ -13420,7 +13428,7 @@ msgstr "您的账户邮箱"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "您的账户已成功删除。我们很遗憾您的离开！"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "你的成就"

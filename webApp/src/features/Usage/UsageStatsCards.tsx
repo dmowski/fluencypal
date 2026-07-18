@@ -1,12 +1,12 @@
 'use client';
-import { Stack, Typography } from '@mui/material';
+import { Stack, Typography, Button } from '@mui/material';
 import { useUsage } from './useUsage';
 import { BicepsFlexed, BookType, Fish, MessagesSquare, Sprout } from 'lucide-react';
 import { useWords } from '../Words/useWords';
 import { useState } from 'react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { StringDiff } from 'react-string-diff';
-import { useChatHistory } from '../ConversationHistory/useChatHistory';
+import { useConversationHistoryList } from '../ConversationHistory/useConversationHistoryList';
 
 import { useLingui } from '@lingui/react';
 import { Markdown } from '../uiKit/Markdown/Markdown';
@@ -54,7 +54,7 @@ export const UsageStatsCards = () => {
     })
     .sort((a, b) => b.percentage - a.percentage);
 
-  const chatHistory = useChatHistory();
+  const historyList = useConversationHistoryList();
   const { i18n } = useLingui();
 
   const corrections = useCorrections();
@@ -66,7 +66,18 @@ export const UsageStatsCards = () => {
   });
   const correctionsCount = correctionStats.length || 0;
 
-  const chatMessages = chatHistory.conversations;
+  const chatMessages = historyList.conversations;
+
+  const openConversationHistory = () => {
+    setIsOpenConversations(true);
+    if (!historyList.isLoaded && !historyList.loading) {
+      void historyList.loadInitialPage();
+    }
+  };
+
+  const closeConversationHistory = () => {
+    setIsOpenConversations(false);
+  };
 
   const conversationModeLabel: Record<ConversationType, string> = {
     talk: i18n._('Just talk'),
@@ -183,7 +194,7 @@ export const UsageStatsCards = () => {
 
       {isOpenConversations && (
         <>
-          <CustomModal onClose={() => setIsOpenConversations(false)} isOpen={true}>
+          <CustomModal onClose={closeConversationHistory} isOpen={true}>
             <Stack
               sx={{
                 gap: '40px',
@@ -204,7 +215,19 @@ export const UsageStatsCards = () => {
                 </Typography>
               </Stack>
 
-              {chatMessages.length === 0 && (
+              {historyList.loading && (
+                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                  {i18n._('Loading...')}
+                </Typography>
+              )}
+
+              {historyList.hasError && (
+                <Typography variant="caption" sx={{ color: '#ff9494' }}>
+                  {i18n._('Failed to load conversation history')}
+                </Typography>
+              )}
+
+              {!historyList.loading && chatMessages.length === 0 && (
                 <Stack
                   sx={{
                     alignItems: 'center',
@@ -280,6 +303,19 @@ export const UsageStatsCards = () => {
                   );
                 })}
               </Stack>
+
+              {historyList.hasMore && (
+                <Button
+                  variant="outlined"
+                  disabled={historyList.loadingMore}
+                  onClick={() => {
+                    void historyList.loadMore();
+                  }}
+                  sx={{ alignSelf: 'center' }}
+                >
+                  {historyList.loadingMore ? i18n._('Loading...') : i18n._('Load more')}
+                </Button>
+              )}
             </Stack>
           </CustomModal>
         </>
@@ -595,7 +631,7 @@ export const UsageStatsCards = () => {
                 </Typography>
               </Stack>
             }
-            onClick={() => setIsOpenConversations(!isOpenConversations)}
+            onClick={openConversationHistory}
           />
         </Stack>
       </Stack>

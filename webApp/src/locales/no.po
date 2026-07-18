@@ -1553,7 +1553,7 @@ msgstr "Chat mellom deg og {userName}"
 msgid "Chat deleted successfully."
 msgstr "Chat slettet vellykket."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Chatthistorikk"
@@ -2672,7 +2672,7 @@ msgstr "Rettet"
 msgid "Corrected answers for remembering"
 msgstr "Korrigerte svar for å huske"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Korrigeringer"
@@ -3260,7 +3260,7 @@ msgstr "Beskriv ditt tilpassede scenario her..."
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Beskrivelse:"
@@ -4238,6 +4238,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Kunne ikke generere quiz."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "Kunne ikke laste samtalehistorikk"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5255,12 +5260,12 @@ msgstr "Gå til hovedsiden"
 msgid "Goal"
 msgstr "Mål"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "Mål Rollespill"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "Målsamtale"
@@ -5330,13 +5335,13 @@ msgstr "Grammatikk"
 msgid "Grammar Correction Preview"
 msgstr "Forhåndsvisning av grammatikkorreksjon"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Grammatikk Korreksjoner"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Grammatikkforbedring"
@@ -5483,17 +5488,17 @@ msgstr "Her er noen nye regler for deg å lære:"
 msgid "Here are some new words for you to learn:"
 msgstr "Her er noen nye ord for deg å lære:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Her er samtalene du hadde med FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Her er korrigeringene du hadde i samtalene dine."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "Her er ordene du brukte mest i samtalene dine."
@@ -6567,7 +6572,7 @@ msgstr "junior frontend-utvikler intervju"
 msgid "junior frontend interview"
 msgstr "junior frontend intervju"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Bare snakk"
@@ -6946,16 +6951,17 @@ msgstr "Lyttetrening. Du vil høre AI-responser"
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "Lev som om du skulle dø i morgen. Lær som om du skulle leve evig."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "Last inn mer"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
-msgstr "Last inn mer"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
 msgstr "Last inn mer"
 
 #: src/features/News/NewsFeedModal.tsx:160
@@ -7027,6 +7033,8 @@ msgstr "Laster inn.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Laster..."
@@ -7288,7 +7296,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Mikrofonoppsett"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Minutter"
@@ -7472,7 +7480,7 @@ msgstr "Nye Ord"
 msgid "News"
 msgstr "Nyheter"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "Nyhetsdiskusjon"
@@ -7577,7 +7585,7 @@ msgstr "Ingen kapitler tilgjengelig"
 msgid "No charge will be made"
 msgstr "Ingen kostnad vil bli pålagt"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Ingen samtaler ennå"
@@ -7587,7 +7595,7 @@ msgstr "Ingen samtaler ennå"
 msgid "No correct words yet."
 msgstr "Ingen korrekte ord ennå."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Ingen korreksjoner ennå"
@@ -7740,8 +7748,8 @@ msgstr "Ingen visninger ennå. Bli den første til å se dette innlegget!"
 msgid "No voices available on your device"
 msgstr "Ingen stemmer tilgjengelig på enheten din"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Ingen ord brukt ennå"
@@ -8000,7 +8008,7 @@ msgstr "Åpne Dashboard"
 msgid "Open Dev Panel"
 msgstr "Åpne Dev-panelet"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Åpne historikk"
@@ -9809,7 +9817,7 @@ msgstr "Robot Tenker"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rolle Spill"
@@ -9895,7 +9903,7 @@ msgstr "Frekkhet"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Regel"
@@ -11680,7 +11688,7 @@ msgid "Teacher Instructions"
 msgstr "Lærer Instruksjoner"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Lærer:"
@@ -12618,7 +12626,7 @@ msgstr ""
 "Topp 5 på ledertavlen får full tilgang til alle appens funksjoner gratis! "
 "Så, begynn å debattere og klatre på ledertavlen!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Totalt"
@@ -13605,7 +13613,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Ordgjettelek"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Ordstatistikk"
@@ -13616,8 +13624,8 @@ msgstr "Ordstatistikk"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Ord"
@@ -14202,7 +14210,7 @@ msgstr ""
 "syntaks og opplæringskurs."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Du:"
@@ -14217,7 +14225,7 @@ msgstr "din konto-e-postadresse"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Kontoen din er vellykket slettet. Vi beklager å se deg gå!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Dine prestasjoner"

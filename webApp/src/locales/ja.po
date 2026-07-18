@@ -1504,7 +1504,7 @@ msgstr "{userName}とのチャット"
 msgid "Chat deleted successfully."
 msgstr "チャットが正常に削除されました。"
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "チャット履歴"
@@ -2596,7 +2596,7 @@ msgstr "訂正済み"
 msgid "Corrected answers for remembering"
 msgstr "記憶に留めるための修正済みの回答"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "訂正"
@@ -3150,7 +3150,7 @@ msgstr "あなたのカスタムシナリオをここに説明してください
 msgid "Description"
 msgstr "説明"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "説明:"
@@ -4075,6 +4075,11 @@ msgstr "アカウントの削除に失敗しました。後で再試行するか
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "クイズの生成に失敗しました。"
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "会話履歴の読み込みに失敗しました"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5020,12 +5025,12 @@ msgstr "メインページに移動する"
 msgid "Goal"
 msgstr "目標"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "目標ロールプレイ"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "ゴールトーク"
@@ -5089,13 +5094,13 @@ msgstr "文法"
 msgid "Grammar Correction Preview"
 msgstr "文法訂正プレビュー"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "文法訂正"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "文法練習"
@@ -5235,17 +5240,17 @@ msgstr "以下は、学ぶべき新しいルールです："
 msgid "Here are some new words for you to learn:"
 msgstr "ここに学ぶべき新しい単語があります:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "これはFluencyPalとの会話履歴です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "これはあなたの会話で訂正が必要だった部分です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "これらは、あなたの会話で最も使用された単語です。"
@@ -6238,7 +6243,7 @@ msgstr "ジュニアフロントエンドデベロッパー面接"
 msgid "junior frontend interview"
 msgstr "ジュニアフロントエンド面接"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "ただ話す"
@@ -6611,17 +6616,18 @@ msgstr "リスニング練習。AIの応答をお聞きいただけます"
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "明日死ぬかのように生きよ。永遠に生きるかのように学べ。"
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "もっと読み込む"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "もっと読む"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "もっと読み込む"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -6692,6 +6698,8 @@ msgstr "読み込み中.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "読み込み中..."
@@ -6948,7 +6956,7 @@ msgstr "マイクのアクセス許可が必要です。マイクのアクセス
 msgid "Microphone Setup"
 msgstr "マイクのセットアップ"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "分"
@@ -7132,7 +7140,7 @@ msgstr "新しい単語"
 msgid "News"
 msgstr "ニュース"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "ニュースディスカッション"
@@ -7235,7 +7243,7 @@ msgstr "利用可能な章はありません"
 msgid "No charge will be made"
 msgstr "料金は発生しません"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "まだ会話はありません"
@@ -7245,7 +7253,7 @@ msgstr "まだ会話はありません"
 msgid "No correct words yet."
 msgstr "まだ正しい単語はありません。"
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "まだ訂正はありません"
@@ -7394,8 +7402,8 @@ msgstr "まだ閲覧されていません。この投稿を最初に閲覧する
 msgid "No voices available on your device"
 msgstr "デバイスに利用できる音声がありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "まだ使用されている単語はありません"
@@ -7631,7 +7639,7 @@ msgstr "ダッシュボードを開く"
 msgid "Open Dev Panel"
 msgstr "デベロッパーパネルを開く"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "履歴を開く"
@@ -9372,7 +9380,7 @@ msgstr "ロボット思考中"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "役割演技"
@@ -9456,7 +9464,7 @@ msgstr "失礼"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "ルール"
@@ -11154,7 +11162,7 @@ msgid "Teacher Instructions"
 msgstr "教師への指示"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
@@ -12021,7 +12029,7 @@ msgid ""
 "for free! So, start debating and climb the leaderboard!"
 msgstr "リーダーボードのトップ5に入ると、アプリのすべての機能に無料で完全アクセスできます！ だから、ディベートを始めてリーダーボードを上り詰めよう！"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "合計"
@@ -12971,7 +12979,7 @@ msgstr "2週間以内に、建築の決定についての議論において、�
 msgid "Word Guessing Game"
 msgstr "単語推測ゲーム"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "単語統計"
@@ -12982,8 +12990,8 @@ msgstr "単語統計"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "単語"
@@ -13498,7 +13506,7 @@ msgid ""
 msgstr "あなたはコーディングを学びましたが、面接では単なる構文やチュートリアル以上のことが試されます。"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "あなた:"
@@ -13513,7 +13521,7 @@ msgstr "あなたのアカウントのメールアドレス"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "あなたのアカウントは正常に削除されました。お別れするのは残念です！"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "あなたの成果"

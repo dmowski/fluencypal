@@ -1575,7 +1575,7 @@ msgstr "Sembang antara anda dan {userName}"
 msgid "Chat deleted successfully."
 msgstr "Chat berjaya dipadam."
 
-#: src/features/Usage/UsageStatsCards.tsx:200
+#: src/features/Usage/UsageStatsCards.tsx:211
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sejarah sembang"
@@ -2703,7 +2703,7 @@ msgstr "Diperbetulkan"
 msgid "Corrected answers for remembering"
 msgstr "Jawapan yang dibetulkan untuk mengingati"
 
-#: src/features/Usage/UsageStatsCards.tsx:524
+#: src/features/Usage/UsageStatsCards.tsx:560
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Pembetulan"
@@ -3300,7 +3300,7 @@ msgstr "Huraikan senario khas anda di sini..."
 msgid "Description"
 msgstr "Perihalan"
 
-#: src/features/Usage/UsageStatsCards.tsx:405
+#: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Penerangan:"
@@ -4305,6 +4305,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Failed to generate quiz."
 msgstr "Gagal menjana kuiz."
+
+#: src/features/Usage/UsageStatsCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Failed to load conversation history"
+msgstr "Gagal memuatkan sejarah perbualan"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5345,12 +5350,12 @@ msgstr "Pergi ke halaman utama"
 msgid "Goal"
 msgstr "Matlamat"
 
-#: src/features/Usage/UsageStatsCards.tsx:78
+#: src/features/Usage/UsageStatsCards.tsx:89
 #. js-lingui-explicit-id
 msgid "Goal Role Play"
 msgstr "Memainkan Peranan Matlamat"
 
-#: src/features/Usage/UsageStatsCards.tsx:79
+#: src/features/Usage/UsageStatsCards.tsx:90
 #. js-lingui-explicit-id
 msgid "Goal Talk"
 msgstr "Perbualan Matlamat"
@@ -5423,13 +5428,13 @@ msgstr "Tatabahasa"
 msgid "Grammar Correction Preview"
 msgstr "Pratonton Pembetulan Tatabahasa"
 
-#: src/features/Usage/UsageStatsCards.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:340
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Betulkanan Tatabahasa"
 
 #: src/features/Tasks/useDailyTasks.tsx:75
-#: src/features/Usage/UsageStatsCards.tsx:80
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
 msgstr "Penambahbaikan Tatabahasa"
@@ -5577,17 +5582,17 @@ msgstr "Berikut adalah beberapa peraturan baharu untuk anda belajar:"
 msgid "Here are some new words for you to learn:"
 msgstr "Berikut adalah beberapa perkataan baru untuk anda pelajari:"
 
-#: src/features/Usage/UsageStatsCards.tsx:203
+#: src/features/Usage/UsageStatsCards.tsx:214
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Berikut adalah perbualan yang anda telah lakukan bersama FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:307
+#: src/features/Usage/UsageStatsCards.tsx:343
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Berikut adalah pembetulan yang anda ada dalam perbualan anda."
 
-#: src/features/Usage/UsageStatsCards.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:116
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr ""
@@ -6699,7 +6704,7 @@ msgstr "temu duga pemaju frontend junior"
 msgid "junior frontend interview"
 msgstr "temuduga frontend junior"
 
-#: src/features/Usage/UsageStatsCards.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "Hanya bercakap"
@@ -7088,17 +7093,18 @@ msgstr ""
 "Hiduplah seolah-olah anda akan mati esok. Belajarlah seolah-olah anda akan "
 "hidup selama-lamanya."
 
+#: src/features/Chat/MessageChain.tsx:70
+#: src/features/Chat/MessageChain.tsx:108
+#: src/features/Usage/UsageStatsCards.tsx:316
+#. js-lingui-explicit-id
+msgid "Load more"
+msgstr "Muatkan lebih banyak"
+
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:67
 #: src/features/Game/GameStats.tsx:136
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "Muatkan Lagi"
-
-#: src/features/Chat/MessageChain.tsx:70
-#: src/features/Chat/MessageChain.tsx:108
-#. js-lingui-explicit-id
-msgid "Load more"
-msgstr "Muatkan lebih banyak"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -7169,6 +7175,8 @@ msgstr "Memuatkan.."
 #: src/features/Translation/useTranslate.tsx:185
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
+#: src/features/Usage/UsageStatsCards.tsx:220
+#: src/features/Usage/UsageStatsCards.tsx:316
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Memuatkan..."
@@ -7434,7 +7442,7 @@ msgstr ""
 msgid "Microphone Setup"
 msgstr "Persediaan Mikrofon"
 
-#: src/features/Usage/UsageStatsCards.tsx:570
+#: src/features/Usage/UsageStatsCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Minit"
@@ -7624,7 +7632,7 @@ msgstr "Perkataan Baru"
 msgid "News"
 msgstr "Berita"
 
-#: src/features/Usage/UsageStatsCards.tsx:81
+#: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
 msgid "News Discussion"
 msgstr "Perbincangan Berita"
@@ -7731,7 +7739,7 @@ msgstr "Tiada bab tersedia"
 msgid "No charge will be made"
 msgstr "Tiada caj akan dikenakan"
 
-#: src/features/Usage/UsageStatsCards.tsx:226
+#: src/features/Usage/UsageStatsCards.tsx:249
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Tiada perbualan lagi"
@@ -7741,7 +7749,7 @@ msgstr "Tiada perbualan lagi"
 msgid "No correct words yet."
 msgstr "Tiada perkataan yang betul lagi."
 
-#: src/features/Usage/UsageStatsCards.tsx:329
+#: src/features/Usage/UsageStatsCards.tsx:365
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Belum ada pembetulan"
@@ -7898,8 +7906,8 @@ msgstr "Belum ada tontonan. Jadilah yang pertama menonton siaran ini!"
 msgid "No voices available on your device"
 msgstr "Tiada suara tersedia pada peranti anda"
 
-#: src/features/Usage/UsageStatsCards.tsx:134
-#: src/features/Usage/UsageStatsCards.tsx:488
+#: src/features/Usage/UsageStatsCards.tsx:145
+#: src/features/Usage/UsageStatsCards.tsx:524
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Belum ada kata yang digunakan lagi"
@@ -8163,7 +8171,7 @@ msgstr "Buka Papan Pemuka"
 msgid "Open Dev Panel"
 msgstr "Buka Panel Pemaju"
 
-#: src/features/Usage/UsageStatsCards.tsx:594
+#: src/features/Usage/UsageStatsCards.tsx:630
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Buka sejarah"
@@ -10005,7 +10013,7 @@ msgstr "Robot Sedang Berfikir"
 #: src/features/Goal/Quiz/QuizPage2.tsx:412
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
-#: src/features/Usage/UsageStatsCards.tsx:77
+#: src/features/Usage/UsageStatsCards.tsx:88
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Peranan Bermain"
@@ -10092,7 +10100,7 @@ msgstr "Kekasaran"
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
-#: src/features/Usage/UsageStatsCards.tsx:75
+#: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Peraturan"
@@ -11892,7 +11900,7 @@ msgid "Teacher Instructions"
 msgstr "Arahan Guru"
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Cikgu:"
@@ -12845,7 +12853,7 @@ msgstr ""
 "dalam aplikasi ini secara percuma! Jadi, mulakan perdebatan dan panjatlah "
 "papan pendahulu!"
 
-#: src/features/Usage/UsageStatsCards.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:607
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Jumlah"
@@ -13846,7 +13854,7 @@ msgstr ""
 msgid "Word Guessing Game"
 msgstr "Permainan Meneka Perkataan"
 
-#: src/features/Usage/UsageStatsCards.tsx:102
+#: src/features/Usage/UsageStatsCards.tsx:113
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Statistik Kata"
@@ -13857,8 +13865,8 @@ msgstr "Statistik Kata"
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
-#: src/features/Usage/UsageStatsCards.tsx:74
-#: src/features/Usage/UsageStatsCards.tsx:454
+#: src/features/Usage/UsageStatsCards.tsx:85
+#: src/features/Usage/UsageStatsCards.tsx:490
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kata-kata"
@@ -14457,7 +14465,7 @@ msgstr ""
 "daripada sekadar sintaks dan tutorial."
 
 #: src/features/Conversation/Messages.tsx:190
-#: src/features/Usage/UsageStatsCards.tsx:273
+#: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Anda:"
@@ -14472,7 +14480,7 @@ msgstr "emel akaun anda"
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Akaun anda telah berjaya dihapuskan. Kami sedih untuk melihat anda pergi!"
 
-#: src/features/Usage/UsageStatsCards.tsx:442
+#: src/features/Usage/UsageStatsCards.tsx:478
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Pencapaian anda"
