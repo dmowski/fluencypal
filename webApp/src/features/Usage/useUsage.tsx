@@ -94,19 +94,33 @@ function useProvideUsage(): UsageContextType {
   }, [usageLogs, userId]);
 
   const isBalanceInit = useRef(false);
+  const isBalanceInitInProgress = useRef(false);
   const initWelcomeBalance = async () => {
-    if (!totalUsageDoc || !userId || isBalanceInit.current) {
+    if (!totalUsageDoc || !userId || isBalanceInit.current || isBalanceInitInProgress.current) {
       return;
     }
+
     const docData = await getDoc(totalUsageDoc);
     const totalData = docData.data();
-    if (!totalData) {
-      console.log('ADD START BALANCE');
-      isBalanceInit.current = true;
-      await initWelcomeBalanceRequest({}, await auth.getToken());
+    if (totalData) {
+      setIsWelcomeBalanceInitialized(true);
+      return;
     }
 
-    setIsWelcomeBalanceInitialized(true);
+    isBalanceInitInProgress.current = true;
+    try {
+      await initWelcomeBalanceRequest({}, await auth.getToken());
+      isBalanceInit.current = true;
+      setIsWelcomeBalanceInitialized(true);
+    } catch (error) {
+      console.error('Welcome balance init failed:', error);
+      await sleep(2000);
+      isBalanceInitInProgress.current = false;
+      void initWelcomeBalance();
+      return;
+    }
+
+    isBalanceInitInProgress.current = false;
   };
 
   useEffect(() => {
