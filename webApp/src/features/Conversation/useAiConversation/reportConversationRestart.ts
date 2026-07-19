@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/nextjs';
 import { ConversationType } from '@/features/Conversation/conversation';
+import { RealtimeUsageSnapshot } from './extractRealtimeUsageSnapshot';
 
 export type ConversationRestartTrigger =
   | 'message_count_threshold'
@@ -10,17 +11,16 @@ export type ConversationRestartReport = {
   conversationId: string | null;
   conversationLength: number;
   messagesToRestart: number;
+  messagesUntilCountRestart: number;
   currentMode: ConversationType;
   lastMessagePreview?: string;
-  usage?: {
-    audioTokens: number;
-    cachedAudioTokens: number;
-    rawAudioInputs: number;
-  };
+  usage?: RealtimeUsageSnapshot;
   seededMessageCount?: number;
 };
 
 export function reportConversationRestart(report: ConversationRestartReport): void {
+  const isOnMessageCountBoundary = report.conversationLength % report.messagesToRestart === 0;
+
   Sentry.addBreadcrumb({
     category: 'conversation',
     level: 'info',
@@ -28,7 +28,9 @@ export function reportConversationRestart(report: ConversationRestartReport): vo
     data: {
       trigger: report.trigger,
       conversationLength: report.conversationLength,
+      messagesUntilCountRestart: report.messagesUntilCountRestart,
       currentMode: report.currentMode,
+      usage: report.usage,
     },
   });
 
@@ -38,8 +40,13 @@ export function reportConversationRestart(report: ConversationRestartReport): vo
       area: 'conversation',
       trigger: report.trigger,
       mode: report.currentMode,
+      belowMessageCountThreshold: String(!isOnMessageCountBoundary),
     },
-    extra: report,
+    extra: {
+      ...report,
+      // Flatten usage for Sentry discover (nested objects are harder to filter).
+      ...(report.usage ?? {}),
+    },
   });
 }
 

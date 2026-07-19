@@ -19,6 +19,32 @@ Restart implementation by transport:
 
 UI: `PracticePage` renders `InfoBlockedSection` with **"Reloading conversation..."** while `isRestarting` is true (~10s + reconnect time).
 
+## Production finding — DARK-LANG-HC (2026-07-19)
+
+First Sentry event confirms the restart was **intentional**, not a mystery bug.
+
+| Field | Value | Meaning |
+|-------|-------|---------|
+| Issue | [DARK-LANG-HC](https://pikapix.sentry.io/issues/DARK-LANG-HC) | `Conversation restart triggered` |
+| **trigger** | `usage_cache_threshold` | Fired by `useConversationUsage`, not message count |
+| **conversationLength** | **101** | Well below `messagesToRestart: 130` — message-count restart did **not** apply |
+| **messagesUntilCountRestart** | 29 | Next count-based restart would be at 130 |
+| **audioInputNew** (was `rawAudioInputs`) | **5917** | Just over the **5000** threshold on a single `response.done` usage event |
+| **mode** | `talk` | WebRTC realtime (`type: realtime` usage) |
+| **device** | iPad, Chrome iOS, production | User saw reload UI mid-conversation |
+
+**Conclusion:** User hit the **realtime audio-input restart guard** after ~101 turns. One response carried ~5917 non-cached audio input units (OpenAI `input_token_details.audio_tokens - cached audio`), which triggered the 10s “Reloading conversation…” flow.
+
+**Not the primary suspect for this event:** message-count restart, text-mode summary cache, or WebSocket missing seed (usage shape is WebRTC realtime).
+
+**Sentry scrubbing note:** Original payload had `audioTokens: null`, `cachedAudioTokens: null` but `rawAudioInputs: 5917`. Sentry likely scrubbed keys containing `token`. Logging now uses scrub-safe names: `audioInputTotal`, `audioInputCached`, `audioInputNew` (flattened into event extra).
+
+**Open tuning questions:**
+
+1. Is **5000** too low if normal long sessions reach ~5917 new audio input before 130 messages?
+2. Should restart require **consecutive** over-threshold turns, not a single spike?
+3. After restart at 101 messages, user only gets ~10 seeded messages — may feel like “conversation reset” even though UI history is intact.
+
 ## User-visible symptoms vs causes
 
 | Symptom | Likely cause |
@@ -35,15 +61,17 @@ UI: `PracticePage` renders `InfoBlockedSection` with **"Reloading conversation..
 
 **What we do not know yet:**
 
-- Whether users who report "restart" hit the **message-count** threshold, the **usage/cache** threshold, or something else entirely.
 - Whether OpenAI's cached prompt state can produce **wrong** replies *before* our threshold fires (stale context without a visible reload).
-- Whether `rawAudioInputs > 5000` is the right threshold (too low → frequent restarts; too high → bad behavior before restart).
+- Whether **5000** is the right threshold for all session lengths (first prod event: restart at 101 msgs with **5917** new audio input).
+
+**Confirmed from DARK-LANG-HC:** At least one user restart was **`usage_cache_threshold`**, not message count.
 
 **Signals to compare in Sentry** (added in code):
 
 - `trigger`: `message_count_threshold` vs `usage_cache_threshold`
-- `conversationLength`, `messagesToRestart`, `currentMode`
-- Usage snapshot: `audioTokens`, `cachedAudioTokens`, `rawAudioInputs`
+- Tag `belowMessageCountThreshold`: `true` when usage trigger fired before count boundary
+- `conversationLength`, `messagesToRestart`, `messagesUntilCountRestart`, `currentMode`
+- Usage snapshot (scrub-safe): `audioInputTotal`, `audioInputCached`, `audioInputNew`, `textInputTotal`, `inputTotal`
 - `seededMessageCount` (WebRTC open handler)
 
 ## Hypothesis: truncated history after restart

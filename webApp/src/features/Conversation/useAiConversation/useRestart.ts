@@ -4,10 +4,10 @@ import { ConversationInstance } from '../ConversationInstance/types';
 import { ConversationMessage, ConversationType } from '@/features/Conversation/conversation';
 import { useAuth } from '@/features/Auth/useAuth';
 import {
-  ConversationRestartReport,
   ConversationRestartTrigger,
   reportConversationRestart,
 } from './reportConversationRestart';
+import { RealtimeUsageSnapshot } from './extractRealtimeUsageSnapshot';
 
 export const useRestart = (
   communicatorRef: RefObject<ConversationInstance | undefined>,
@@ -24,9 +24,7 @@ export const useRestart = (
   const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
 
   const pendingRestartTriggerRef = useRef<ConversationRestartTrigger | null>(null);
-  const pendingUsageSnapshotRef = useRef<
-    ConversationRestartReport['usage'] | undefined
-  >(undefined);
+  const pendingUsageSnapshotRef = useRef<RealtimeUsageSnapshot | undefined>(undefined);
 
   const restartConversation = async (trigger: ConversationRestartTrigger) => {
     if (isRestartingRef.current) {
@@ -43,6 +41,8 @@ export const useRestart = (
       conversationId,
       conversationLength,
       messagesToRestart,
+      messagesUntilCountRestart:
+        messagesToRestart - (conversationLength % messagesToRestart),
       currentMode,
       lastMessagePreview: lastMessage?.slice(0, 200),
       usage: pendingUsageSnapshotRef.current,
@@ -72,7 +72,7 @@ export const useRestart = (
 
   const requestRestart = (
     trigger: ConversationRestartTrigger,
-    usage?: ConversationRestartReport['usage'],
+    usage?: RealtimeUsageSnapshot,
   ) => {
     pendingRestartTriggerRef.current = trigger;
     pendingUsageSnapshotRef.current = usage;
