@@ -1,5 +1,13 @@
 import { IconButton, Popover, Stack, Tab, Tabs, ThemeProvider } from '@mui/material';
-import { BookOpen, CircleEllipsis, Highlighter, SlidersHorizontal, X } from 'lucide-react';
+import {
+  BookOpen,
+  CircleEllipsis,
+  Highlighter,
+  SlidersHorizontal,
+  Volume2,
+  VolumeX,
+  X,
+} from 'lucide-react';
 import {
   type MouseEvent,
   forwardRef,
@@ -85,7 +93,18 @@ export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonPro
       setAnchorEl(event.currentTarget);
     };
 
+    const handleVoiceOverToggle = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+
+      const nextEnabled = !readerSettings.voiceOverSelectedText;
+      readerSettings.setVoiceOverSelectedText(nextEnabled);
+      if (!nextEnabled) {
+        speech.stop();
+      }
+    };
+
     const closeModal = () => setAnchorEl(null);
+    const isVoiceOverSelectedTextEnabled = readerSettings.voiceOverSelectedText;
 
     return (
       <>
@@ -108,6 +127,31 @@ export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonPro
           }}
         >
           <CircleEllipsis size={18} />
+        </IconButton>
+
+        <IconButton
+          data-testid="voice-over-selected-text-toggle"
+          onClick={handleVoiceOverToggle}
+          aria-label={i18n._('Voice Over Selected Text')}
+          aria-pressed={isVoiceOverSelectedTextEnabled}
+          sx={{
+            position: 'fixed',
+            top: '59px',
+            left: '5px',
+            zIndex: 3,
+            height: '54px',
+            width: '54px',
+            backgroundColor: 'transparent',
+            color: isVoiceOverSelectedTextEnabled ? '#333' : 'rgba(51, 51, 51, 0.45)',
+            '&:hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            },
+            '@media (max-width: 700px)': {
+              display: 'none',
+            },
+          }}
+        >
+          {isVoiceOverSelectedTextEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
         </IconButton>
 
         <Popover

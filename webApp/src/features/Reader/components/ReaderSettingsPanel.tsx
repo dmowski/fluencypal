@@ -226,6 +226,10 @@ export const ReaderSettingsPanel = ({
     readerSettings.voiceOverSelectedText,
     readerSettings.setVoiceOverSelectedText,
   );
+
+  useEffect(() => {
+    setLocalVoiceOverSelectedText(readerSettings.voiceOverSelectedText);
+  }, [readerSettings.voiceOverSelectedText]);
   useDebouncedSetting(
     localTranslateToLanguage,
     readerSettings.translateToLanguage,

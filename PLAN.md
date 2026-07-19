@@ -1,18 +1,10 @@
 # Live document with short/long term ideas
 
-## Notifications: Messages
-
-Send request to server. Check parent id of message, and send message to user: email.
-
-# How to fix reset conversations
-
-## Missing revenue attribution
-
-https://datafa.st/docs/revenue-attribution-guide
-
 ## Convert visitors to users: Start a first conversation
 
 How to connect analytics and development?
+
+# How to fix reset conversations
 
 ## Writing routine
 
