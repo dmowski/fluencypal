@@ -3,25 +3,51 @@ import { useState, useRef, RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { ConversationMessage, ConversationType } from '@/features/Conversation/conversation';
 import { useAuth } from '@/features/Auth/useAuth';
+import {
+  ConversationRestartReport,
+  ConversationRestartTrigger,
+  reportConversationRestart,
+} from './reportConversationRestart';
 
 export const useRestart = (
   communicatorRef: RefObject<ConversationInstance | undefined>,
   toggleMute: (mute: boolean) => void,
   conversation: ConversationMessage[],
   currentMode: ConversationType,
+  conversationId: string | null,
 ) => {
   const auth = useAuth();
   const [isRestarting, setIsRestarting] = useState(false);
   const isRestartingRef = useRef(isRestarting);
   isRestartingRef.current = isRestarting;
+  const messagesToRestart = auth.isFounder ? 40 : 130;
+  const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
 
-  const restartConversation = async () => {
+  const pendingRestartTriggerRef = useRef<ConversationRestartTrigger | null>(null);
+  const pendingUsageSnapshotRef = useRef<
+    ConversationRestartReport['usage'] | undefined
+  >(undefined);
+
+  const restartConversation = async (trigger: ConversationRestartTrigger) => {
     if (isRestartingRef.current) {
-      console.warn('Already restarting, skipping...');
+      console.warn('Already restarting, skipping...', { trigger });
       return;
     }
     isRestartingRef.current = true;
-    // current instance of conversation will restarted
+
+    const conversationLength = conversation.length;
+    const lastMessage = conversation[conversationLength - 1]?.text;
+
+    reportConversationRestart({
+      trigger,
+      conversationId,
+      conversationLength,
+      messagesToRestart,
+      currentMode,
+      lastMessagePreview: lastMessage?.slice(0, 200),
+      usage: pendingUsageSnapshotRef.current,
+    });
+    pendingUsageSnapshotRef.current = undefined;
 
     toggleMute(true);
     await sleep(1000);
@@ -30,28 +56,37 @@ export const useRestart = (
     await sleep(10_000);
 
     await communicatorRef.current?.restartConversation();
-    const lastMessage = conversation?.[conversation.length - 1]?.text;
     await auth.sendTgMessage(
-      `Restarting conversation. Last message before restart: ${lastMessage}`,
+      `Restarting conversation (${trigger}). Last message before restart: ${lastMessage}`,
     );
 
     await sleep(500);
 
     setIsRestarting(false);
+    setIsNeedToResetNow(false);
 
     setTimeout(() => {
       isRestartingRef.current = false;
     }, 40_000);
   };
 
-  const messagesToRestart = auth.isFounder ? 40 : 130;
-  const [isNeedToResetNow, setIsNeedToResetNow] = useState(false);
+  const requestRestart = (
+    trigger: ConversationRestartTrigger,
+    usage?: ConversationRestartReport['usage'],
+  ) => {
+    pendingRestartTriggerRef.current = trigger;
+    pendingUsageSnapshotRef.current = usage;
+    setIsNeedToResetNow(true);
+  };
 
   useEffect(() => {
-    if (isNeedToResetNow) {
-      restartConversation();
+    if (!isNeedToResetNow || !pendingRestartTriggerRef.current) {
       return;
     }
+
+    const trigger = pendingRestartTriggerRef.current;
+    pendingRestartTriggerRef.current = null;
+    void restartConversation(trigger);
   }, [isNeedToResetNow]);
 
   useEffect(() => {
@@ -63,13 +98,13 @@ export const useRestart = (
       isModeForRestart
     ) {
       // To prevent memory leak in case of very long conversations
-      restartConversation();
+      requestRestart('message_count_threshold');
       return;
     }
   }, [conversation.length, messagesToRestart, currentMode]);
 
   return {
-    setIsNeedToResetNow,
+    requestRestart,
     isRestarting,
   };
 };

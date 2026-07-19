@@ -159,13 +159,14 @@ function useProvideAiConversation(): AiConversationContextType {
     isClosing,
   });
 
-  const { setIsNeedToResetNow, isRestarting } = useRestart(
+  const { requestRestart, isRestarting } = useRestart(
     communicatorRef,
     toggleMute,
     messages.conversation,
     currentMode,
+    messages.conversationId,
   );
-  const conversationUsage = useConversationUsage(setIsNeedToResetNow);
+  const conversationUsage = useConversationUsage(requestRestart);
 
   useEffect(() => {
     return () => communicatorRef.current?.closeHandler();

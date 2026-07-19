@@ -3,6 +3,7 @@ import { ConversationConfig } from '../types';
 import { seedConversationItems } from './seedConversationItems';
 import { WebRtcState } from './types';
 import { updateSessionSafe } from './updateSessionSafe';
+import { reportConversationRestartSeed } from '@/features/Conversation/useAiConversation/reportConversationRestart';
 
 export const openHandler = async (state: WebRtcState, config: ConversationConfig) => {
   const lastMessages = state.lastMessages.slice(-15);
@@ -11,6 +12,10 @@ export const openHandler = async (state: WebRtcState, config: ConversationConfig
 
   if (lastMessages.length > 0) {
     await seedConversationItems(lastMessages, state);
+    reportConversationRestartSeed({
+      conversationId: config.conversationId,
+      seededMessageCount: lastMessages.length,
+    });
   }
 
   await sleep(200);
