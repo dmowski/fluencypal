@@ -4,8 +4,8 @@ import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';
 import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 
-const LIMITED_MESSAGES_COUNT = 6;
-const LIMITED_VOICE_MESSAGES_COUNT = 50;
+const LIMITED_MESSAGES_COUNT = 600;
+const LIMITED_VOICE_MESSAGES_COUNT = 5000;
 
 export const useLimits = (
   communicatorRef: RefObject<ConversationInstance | undefined>,
