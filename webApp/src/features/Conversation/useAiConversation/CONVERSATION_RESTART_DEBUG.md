@@ -45,6 +45,101 @@ First Sentry event confirms the restart was **intentional**, not a mystery bug.
 2. Should restart require **consecutive** over-threshold turns, not a single spike?
 3. After restart at 101 messages, user only gets ~10 seeded messages — may feel like “conversation reset” even though UI history is intact.
 
+## Token mechanics — what actually triggers restart (observation reference)
+
+This section is the source of truth while we **observe only** (no fix yet). Goal: learn whether restarts correlate with token growth, and what a smooth alternative would need.
+
+### Terminology
+
+| Term | Meaning |
+|------|---------|
+| **OpenAI prompt cache** | OpenAI-side reuse of prior prompt content. Reported in usage as `cached_tokens_details.*`. Cheaper billing; we do **not** control invalidation. |
+| **Our “restart”** | Full WebRTC teardown + new session (`restartWebRtc`). This **is** our cache/context reset — not an OpenAI API call to invalidate cache. |
+| **Per-turn usage** | One `response.done` event per AI reply. Restart check runs on **each** event independently (not summed across the conversation). |
+
+### The only token-based restart rule (WebRTC realtime)
+
+Defined in `extractRealtimeUsageSnapshot.ts`:
+
+```
+audioInputNew = input_token_details.audio_tokens
+              − cached_tokens_details.audio_tokens
+
+restart if audioInputNew > 5000   (strictly greater than)
+```
+
+Constant: `REALTIME_AUDIO_INPUT_RESTART_THRESHOLD = 5000`.
+
+**Applies only when** `usageLog.type === 'realtime'` (WebRTC `response.done` in `messageHandler.ts`).
+
+**Does not apply to** experimental Realtime WebSocket (usage is mapped to `text` / `stt` / `tts`, never `realtime`).
+
+### Token fields on each `response.done` (OpenAI `UsageEvent`)
+
+**Input (can affect restart):**
+
+| Field | Used for restart? | Role |
+|-------|-------------------|------|
+| `input_token_details.audio_tokens` | **Yes** (minuend) | Total audio input in the prompt for this inference |
+| `input_token_details.cached_tokens_details.audio_tokens` | **Yes** (subtrahend) | Portion of that audio served from OpenAI prompt cache |
+| `input_token_details.text_tokens` | No (logged only) | Text input in prompt |
+| `input_token_details.cached_tokens_details.text_tokens` | No (logged only) | Cached text input |
+| `input_token_details.cached_tokens` | No | Aggregate cached count (billing uses details breakdown) |
+| `input_tokens` | No (logged only) | Total input tokens |
+
+**Output (never triggers restart):**
+
+| Field | Used for restart? | Role |
+|-------|-------------------|------|
+| `output_token_details.audio_tokens` | **No** | Audio the model generated (TTS side) |
+| `output_token_details.text_tokens` | **No** | Text the model generated |
+| `output_tokens` | No (logged only) | Total output tokens |
+
+**Summary:** Only **non-cached audio input** on a **single** `response.done` triggers restart. Audio output, text input/output, and totals do not.
+
+### Separate non-token restart (message count)
+
+| Rule | Threshold | Modes |
+|------|-----------|-------|
+| Message count | `length % 130 === 0` (40 for founders) | `talk`, `role-play` only |
+
+This is unrelated to tokens. DARK-LANG-HC fired at **101 messages** — message-count restart was **29 messages away**.
+
+### How to read Sentry during observation
+
+Filter: `Conversation restart triggered`, tag `trigger`.
+
+| `trigger` | What to inspect |
+|-----------|-----------------|
+| `usage_cache_threshold` | `audioInputNew`, `audioInputTotal`, `audioInputCached`, `conversationLength`, tag `belowMessageCountThreshold` |
+| `message_count_threshold` | `conversationLength` should equal `messagesToRestart` |
+
+**Questions we are trying to answer with more events:**
+
+1. Does `audioInputNew` grow roughly linearly with `conversationLength`, or spike on single long utterances?
+2. At restart, is `audioInputCached` usually low (cache not helping) or high (threshold still exceeded)?
+3. Do users who complain about “reset” always have `usage_cache_threshold`, or also `message_count_threshold`?
+4. Is `audioInputNew` ever high while conversation still feels fine (false positive)?
+
+### DARK-LANG-HC snapshot (first prod event)
+
+- `audioInputNew`: **5917** (threshold 5000)
+- `conversationLength`: **101** / 130
+- `trigger`: `usage_cache_threshold`
+- Interpretation: one AI turn’s usage reported ~5917 newly-billed audio input; our guard fired; user saw reload UI.
+
+### Smooth conversation — options to evaluate later (not implementing now)
+
+We do **not** yet know a reliable way to avoid restarts without regressing cost, latency, or context quality. Candidates to study after more Sentry data:
+
+1. **Trim in-session context** via Realtime API (`conversation.item.delete` / session updates) instead of full reconnect.
+2. **Raise or remove the 5000 guard** and accept higher per-turn cost until OpenAI cache catches up.
+3. **Debounce** — restart only after N consecutive turns over threshold (reduces surprise reloads).
+4. **Observe-only mode** — log over-threshold events to Sentry without calling `restartConversation` (would need a feature flag).
+5. **Better re-seed on reconnect** — does not remove restart but reduces “feels like new conversation” (last ~10 messages today).
+
+**Current stance:** keep restarts + Sentry logging; use token fields above to decide which option is justified.
+
 ## User-visible symptoms vs causes
 
 | Symptom | Likely cause |
