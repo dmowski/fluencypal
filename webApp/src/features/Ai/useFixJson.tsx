@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nextjs';
+import { extractJsonFromAiResponse } from './jsonParser';
 import { useTextAi } from './useTextAi';
 import { useSettings } from '../Settings/useSettings';
 
@@ -9,12 +10,7 @@ export const useFixJson = () => {
 
   const parseJson = async <T,>(json: string): Promise<T> => {
     try {
-      let trimmedJson = json.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith('```json') && trimmedJson.endsWith('```');
-      if (isAbleToFixWithoutAi) {
-        trimmedJson = trimmedJson.slice(7, -3).trim();
-      }
-
+      const trimmedJson = extractJsonFromAiResponse(json);
       return JSON.parse(trimmedJson);
     } catch (error) {
       console.error('Error parsing JSON. error', error);
@@ -45,12 +41,7 @@ export const useFixJson = () => {
       languageCode,
     });
     try {
-      let trimmedJson = fixJsonRes.trim();
-      const isAbleToFixWithoutAi = trimmedJson.startsWith('```json') && trimmedJson.endsWith('```');
-      if (isAbleToFixWithoutAi) {
-        trimmedJson = trimmedJson.slice(7, -3).trim();
-      }
-
+      const trimmedJson = extractJsonFromAiResponse(fixJsonRes);
       return JSON.parse(trimmedJson);
     } catch (error) {
       Sentry.captureException(error, {

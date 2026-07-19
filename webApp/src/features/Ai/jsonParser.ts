@@ -4,6 +4,22 @@ import { AiTextGenerator } from './types';
 import * as Sentry from '@sentry/nextjs';
 import z from 'zod';
 
+export const extractJsonFromAiResponse = (raw: string): string => {
+  const trimmed = raw.trim();
+
+  if (trimmed.startsWith('```')) {
+    const firstLineBreak = trimmed.indexOf('\n');
+    if (firstLineBreak !== -1) {
+      const closeFenceIndex = trimmed.indexOf('\n```', firstLineBreak);
+      if (closeFenceIndex !== -1) {
+        return trimmed.slice(firstLineBreak + 1, closeFenceIndex).trim();
+      }
+    }
+  }
+
+  return trimmed;
+};
+
 export const parseStrictJson = async <T>({
   json,
   schema,
@@ -44,12 +60,7 @@ export const fixJson = async <T>({
     languageCode,
   });
   try {
-    let trimmedJson = fixJsonRes.trim();
-    const isAbleToFixWithoutAi = trimmedJson.startsWith('```json') && trimmedJson.endsWith('```');
-    if (isAbleToFixWithoutAi) {
-      trimmedJson = trimmedJson.slice(7, -3).trim();
-    }
-
+    const trimmedJson = extractJsonFromAiResponse(fixJsonRes);
     return JSON.parse(trimmedJson);
   } catch (error) {
     Sentry.captureException(error, {
@@ -71,12 +82,7 @@ export const parseJson = async <T>({
   languageCode: SupportedLanguage;
 }): Promise<T> => {
   try {
-    let trimmedJson = json.trim();
-    const isAbleToFixWithoutAi = trimmedJson.startsWith('```json') && trimmedJson.endsWith('```');
-    if (isAbleToFixWithoutAi) {
-      trimmedJson = trimmedJson.slice(7, -3).trim();
-    }
-
+    const trimmedJson = extractJsonFromAiResponse(json);
     const repairedJson = jsonrepair(trimmedJson);
     return JSON.parse(repairedJson);
   } catch (error) {
