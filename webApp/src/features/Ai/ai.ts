@@ -4,9 +4,10 @@ export type RealTimeModel =
   | 'gpt-realtime-mini'
   | 'gpt-realtime'
   | 'gpt-realtime-1.5'
-  | 'gpt-realtime-2';
+  | 'gpt-realtime-2'
+  | 'gpt-realtime-2.1-mini';
 
-const SMALL_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime-mini';
+const SMALL_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime-2.1-mini';
 const ADVANCED_REALTIME_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime';
 
 export type TextAiModel =
@@ -183,6 +184,15 @@ export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePric
     audio_cached_input: 0.3,
     audio_output: 20,
   },
+  'gpt-realtime-2.1-mini': {
+    text_input: 0.6,
+    text_cached_input: 0.06,
+    text_output: 2.4,
+
+    audio_input: 10,
+    audio_cached_input: 0.3,
+    audio_output: 20,
+  },
 };
 // USD
 const calculateOutputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
@@ -258,7 +268,8 @@ export const calculateTextToAudioPrice = (durationSeconds: number, model: TextTo
 
 export type RealtimePipelineStage = 'stt' | 'llm' | 'tts';
 
-const isTextAiModel = (model: string): model is TextAiModel => model in textModalPricePerMillionTokens;
+const isTextAiModel = (model: string): model is TextAiModel =>
+  model in textModalPricePerMillionTokens;
 
 const isTranscriptModel = (model: string): model is TranscriptAiModel =>
   model in audioTranscriptionPricePerMinute;
