@@ -47,7 +47,6 @@ export const ReaderVoiceOverPageButton = ({
     }
 
     const pageText = getVisibleReaderPageTextFromDom();
-    console.log('pageText', pageText);
     if (!pageText.trim()) return;
 
     speech.play(pageText);
