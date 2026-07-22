@@ -46,9 +46,14 @@ export const installSpeechMock = async (page: Page, options: SpeechMockOptions =
       pause: () => undefined,
       resume: () => undefined,
       getVoices: () => voices,
-      speak: (utterance: { text?: string; onend?: (() => void) | null }) => {
+      speak: (utterance: {
+        text?: string;
+        onstart?: (() => void) | null;
+        onend?: (() => void) | null;
+      }) => {
         spokenTexts.push((utterance.text || '').trim());
         activeUtterance = utterance;
+        utterance.onstart?.();
         if (shouldAutoComplete && utterance.onend) {
           setTimeout(() => {
             if (activeUtterance === utterance) {

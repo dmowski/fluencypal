@@ -255,6 +255,10 @@ export const Reader = ({ data }: { data: Book }) => {
     readerSettings.clearResizeAnchorWord();
     goToPage(activePage + pageStep);
   };
+  const getNextActivePage = useCallback(
+    () => Math.min(activePage + pageStep, maxSpreadStartPage),
+    [activePage, maxSpreadStartPage, pageStep],
+  );
   const handleChapterSelect = (targetPage: number) => {
     readerSettings.clearResizeAnchorWord();
     goToPage(targetPage);
@@ -433,6 +437,9 @@ export const Reader = ({ data }: { data: Book }) => {
         ref={bookInfoButtonRef}
         speech={speech}
         activePage={activePage}
+        isLastPage={activePage >= maxSpreadStartPage}
+        getNextActivePage={getNextActivePage}
+        onGoToNextPage={goToNextPage}
         chapters={chapterItems}
         highlights={highlightItems}
         activeChapterId={activeChapterId}

@@ -1,7 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useReaderSettings } from './useReaderSettings';
+
+export type BrowserSpeechPlayCallbacks = {
+  onStart?: () => void;
+  onEnd?: () => void;
+};
 
 type BrowserSpeechApi = {
   isSupported: boolean;
@@ -9,7 +14,11 @@ type BrowserSpeechApi = {
   voices: SpeechSynthesisVoice[];
   language: string;
   selectedVoiceURI: string | null;
-  play: (text: string, voiceURIOverride?: string | null) => void;
+  play: (
+    text: string,
+    voiceURIOverride?: string | null,
+    callbacks?: BrowserSpeechPlayCallbacks,
+  ) => boolean;
   stop: () => void;
   pause: () => void;
   resume: () => void;
@@ -57,6 +66,7 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
   const stop = useCallback(() => {
     if (!isSupported) return;
 
+    activeUtteranceGenerationRef.current += 1;
     window.speechSynthesis.cancel();
     setIsPlaying(false);
   }, [isSupported]);
@@ -68,6 +78,7 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
   }, [isSupported]);
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const activeUtteranceGenerationRef = useRef(0);
 
   const resume = useCallback(() => {
     if (!isSupported) return;
@@ -76,11 +87,14 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
   }, [isSupported]);
 
   const play = useCallback(
-    (text: string, voiceURIOverride?: string | null) => {
-      if (!isSupported) return;
+    (text: string, voiceURIOverride?: string | null, callbacks?: BrowserSpeechPlayCallbacks) => {
+      if (!isSupported) return false;
 
       const trimmedText = text.trim();
-      if (!trimmedText) return;
+      if (!trimmedText) return false;
+
+      const utteranceGeneration = activeUtteranceGenerationRef.current + 1;
+      activeUtteranceGenerationRef.current = utteranceGeneration;
 
       const utterance = new SpeechSynthesisUtterance(trimmedText);
       utterance.lang = language;
@@ -96,11 +110,20 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
         }
       }
 
+      utterance.onstart = () => {
+        if (utteranceGeneration !== activeUtteranceGenerationRef.current) return;
+        setIsPlaying(true);
+        callbacks?.onStart?.();
+      };
+
       // Attach handlers before speak() so they are never missed.
       utterance.onend = () => {
+        if (utteranceGeneration !== activeUtteranceGenerationRef.current) return;
         setIsPlaying(false);
+        callbacks?.onEnd?.();
       };
       utterance.onerror = () => {
+        if (utteranceGeneration !== activeUtteranceGenerationRef.current) return;
         setIsPlaying(false);
       };
 
@@ -109,23 +132,38 @@ export const useBrowserSpeech = (): BrowserSpeechApi => {
       // ~15 s of idle. resume() un-stalls the synthesis queue before enqueueing
       // the new utterance so the voice actually plays.
       window.speechSynthesis.resume();
-      setIsPlaying(true);
       window.speechSynthesis.speak(utterance);
+      return true;
     },
     [isSupported, language, selectedVoiceURI, voices],
   );
 
-  return {
-    isSupported,
-    isPlaying,
-    voices,
-    language,
-    selectedVoiceURI,
-    play,
-    stop,
-    pause,
-    resume,
-    setLanguage,
-    setSelectedVoiceURI,
-  };
+  return useMemo(
+    () => ({
+      isSupported,
+      isPlaying,
+      voices,
+      language,
+      selectedVoiceURI,
+      play,
+      stop,
+      pause,
+      resume,
+      setLanguage,
+      setSelectedVoiceURI,
+    }),
+    [
+      isSupported,
+      isPlaying,
+      voices,
+      language,
+      selectedVoiceURI,
+      play,
+      stop,
+      pause,
+      resume,
+      setLanguage,
+      setSelectedVoiceURI,
+    ],
+  );
 };

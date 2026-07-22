@@ -34,6 +34,9 @@ export type BookInfoButtonHandle = {
 type BookInfoButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
   activePage: number;
+  isLastPage: boolean;
+  getNextActivePage: () => number;
+  onGoToNextPage: () => void;
   chapters: ReaderChapterItem[];
   highlights: ReaderHighlightItem[];
   activeChapterId: string | null;
@@ -52,7 +55,18 @@ const getInitialTab = (): ModalView => {
 
 export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonProps>(
   (
-    { speech, activePage, chapters, highlights, activeChapterId, onSelectChapter, onSelectHighlight },
+    {
+      speech,
+      activePage,
+      isLastPage,
+      getNextActivePage,
+      onGoToNextPage,
+      chapters,
+      highlights,
+      activeChapterId,
+      onSelectChapter,
+      onSelectHighlight,
+    },
     ref,
   ) => {
     const { i18n } = useLingui();
@@ -163,6 +177,9 @@ export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonPro
           speech={speech}
           visible={isVoiceOverSelectedTextEnabled}
           activePage={activePage}
+          isLastPage={isLastPage}
+          getNextActivePage={getNextActivePage}
+          onGoToNextPage={onGoToNextPage}
         />
 
         <Popover

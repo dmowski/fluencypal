@@ -1,56 +1,138 @@
 import { IconButton } from '@mui/material';
-import { CirclePlay, CircleStop, Pause, Play } from 'lucide-react';
-import { type MouseEvent, useEffect, useState } from 'react';
+import { Pause, Play } from 'lucide-react';
+import { type MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { useBrowserSpeech } from '../hooks/useBrowserSpeech';
-import { getVisibleReaderPageTextFromDom } from '../utils/getVisibleReaderPageTextFromDom';
+import { waitForVisibleReaderPageTextFromDom } from '../utils/getVisibleReaderPageTextFromDom';
+
+const PAGE_VOICE_OVER_ADVANCE_DELAY_MS = 1000;
 
 type ReaderVoiceOverPageButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
   visible: boolean;
   activePage: number;
+  isLastPage: boolean;
+  getNextActivePage: () => number;
+  onGoToNextPage: () => void;
 };
 
 export const ReaderVoiceOverPageButton = ({
   speech,
   visible,
   activePage,
+  isLastPage,
+  getNextActivePage,
+  onGoToNextPage,
 }: ReaderVoiceOverPageButtonProps) => {
   const { i18n } = useLingui();
   const [isPageVoiceOverPlaying, setIsPageVoiceOverPlaying] = useState(false);
+  const isAutoReadingPagesRef = useRef(false);
+  const autoAdvanceTargetPageRef = useRef<number | null>(null);
+  const previousActivePageRef = useRef(activePage);
+  const continueTimeoutRef = useRef<number | null>(null);
+  const isLastPageRef = useRef(isLastPage);
+  const speechRef = useRef(speech);
+  speechRef.current = speech;
+  isLastPageRef.current = isLastPage;
 
-  useEffect(() => {
-    if (!speech.isPlaying) {
-      setIsPageVoiceOverPlaying(false);
-    }
-  }, [speech.isPlaying]);
+  const clearContinueTimeout = useCallback(() => {
+    if (continueTimeoutRef.current == null) return;
+    window.clearTimeout(continueTimeoutRef.current);
+    continueTimeoutRef.current = null;
+  }, []);
 
-  useEffect(() => {
-    if (!isPageVoiceOverPlaying) return;
-    speech.stop();
+  const endAutoReadingSession = useCallback(() => {
+    isAutoReadingPagesRef.current = false;
+    autoAdvanceTargetPageRef.current = null;
+    clearContinueTimeout();
     setIsPageVoiceOverPlaying(false);
-  }, [activePage]);
+  }, [clearContinueTimeout]);
+
+  const handleUtteranceEndRef = useRef<() => void>(() => {});
+
+  const playCurrentPage = useCallback(async () => {
+    const pageText = await waitForVisibleReaderPageTextFromDom();
+    if (!isAutoReadingPagesRef.current) return;
+
+    if (!pageText.trim()) {
+      endAutoReadingSession();
+      return;
+    }
+
+    const didEnqueue = speechRef.current.play(pageText, null, {
+      onStart: () => {
+        setIsPageVoiceOverPlaying(true);
+      },
+      onEnd: () => {
+        handleUtteranceEndRef.current();
+      },
+    });
+
+    if (!didEnqueue) {
+      endAutoReadingSession();
+    }
+  }, [endAutoReadingSession]);
+
+  const handleUtteranceEnd = useCallback(() => {
+    if (!isAutoReadingPagesRef.current) return;
+
+    if (isLastPageRef.current) {
+      endAutoReadingSession();
+      return;
+    }
+
+    autoAdvanceTargetPageRef.current = getNextActivePage();
+    onGoToNextPage();
+
+    continueTimeoutRef.current = window.setTimeout(() => {
+      continueTimeoutRef.current = null;
+      if (!isAutoReadingPagesRef.current) return;
+      void playCurrentPage();
+    }, PAGE_VOICE_OVER_ADVANCE_DELAY_MS);
+  }, [endAutoReadingSession, getNextActivePage, onGoToNextPage, playCurrentPage]);
+
+  handleUtteranceEndRef.current = handleUtteranceEnd;
+
+  useEffect(() => {
+    const previousPage = previousActivePageRef.current;
+    previousActivePageRef.current = activePage;
+
+    if (previousPage === activePage) return;
+
+    if (
+      autoAdvanceTargetPageRef.current !== null &&
+      activePage === autoAdvanceTargetPageRef.current
+    ) {
+      autoAdvanceTargetPageRef.current = null;
+      return;
+    }
+
+    if (!isAutoReadingPagesRef.current) return;
+
+    endAutoReadingSession();
+    speechRef.current.stop();
+  }, [activePage, endAutoReadingSession]);
 
   useEffect(() => {
     if (visible) return;
-    setIsPageVoiceOverPlaying(false);
-    speech.stop();
-  }, [visible, speech]);
+    endAutoReadingSession();
+    speechRef.current.stop();
+  }, [visible, endAutoReadingSession]);
+
+  useEffect(() => () => clearContinueTimeout(), [clearContinueTimeout]);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
 
-    if (isPageVoiceOverPlaying) {
-      speech.stop();
-      setIsPageVoiceOverPlaying(false);
+    if (isAutoReadingPagesRef.current) {
+      endAutoReadingSession();
+      speechRef.current.stop();
       return;
     }
 
-    const pageText = getVisibleReaderPageTextFromDom();
-    if (!pageText.trim()) return;
-
-    speech.play(pageText);
+    isAutoReadingPagesRef.current = true;
     setIsPageVoiceOverPlaying(true);
+    void playCurrentPage();
   };
 
   if (!visible) {

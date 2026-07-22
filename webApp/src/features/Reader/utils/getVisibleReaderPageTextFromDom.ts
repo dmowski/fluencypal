@@ -9,3 +9,20 @@ export const getVisibleReaderPageTextFromDom = (): string => {
 
   return (contentEl.innerText ?? '').trim();
 };
+
+/** Waits until `.reader-content` has text or attempts are exhausted (e.g. after pagination). */
+export const waitForVisibleReaderPageTextFromDom = (
+  maxAttempts = 20,
+): Promise<string> => {
+  return new Promise((resolve) => {
+    const read = (attempt: number) => {
+      const text = getVisibleReaderPageTextFromDom();
+      if (text.length > 0 || attempt >= maxAttempts) {
+        resolve(text);
+        return;
+      }
+      requestAnimationFrame(() => read(attempt + 1));
+    };
+    read(0);
+  });
+};
