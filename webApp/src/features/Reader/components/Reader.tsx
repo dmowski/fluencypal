@@ -443,6 +443,7 @@ export const Reader = ({ data }: { data: Book }) => {
 
       <Stack
         ref={contentRef}
+        className="reader-content"
         data-testid="reader-content"
         sx={{
           width: '100%',

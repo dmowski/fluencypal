@@ -2,23 +2,18 @@
 import { getVisibleReaderPageTextFromDom } from './getVisibleReaderPageTextFromDom';
 
 describe('getVisibleReaderPageTextFromDom', () => {
-  it('joins paragraph data-words from visible page columns', () => {
-    document.body.innerHTML = `
-      <div data-testid="reader-page-column">
-        <div data-words="First paragraph."></div>
-        <div data-words="Second paragraph."></div>
-      </div>
-      <div data-testid="reader-page-column">
-        <div data-words="Third paragraph."></div>
-      </div>
-    `;
+  it('returns trimmed innerText from .reader-content', () => {
+    const content = document.createElement('div');
+    content.className = 'reader-content';
+    Object.defineProperty(content, 'innerText', {
+      value: '  First paragraph.\n\nSecond paragraph.  ',
+    });
+    document.body.appendChild(content);
 
-    expect(getVisibleReaderPageTextFromDom()).toBe(
-      'First paragraph.\n\nSecond paragraph.\n\nThird paragraph.',
-    );
+    expect(getVisibleReaderPageTextFromDom()).toBe('First paragraph.\n\nSecond paragraph.');
   });
 
-  it('returns empty string when no reader columns are mounted', () => {
+  it('returns empty string when .reader-content is missing', () => {
     document.body.innerHTML = '';
     expect(getVisibleReaderPageTextFromDom()).toBe('');
   });
