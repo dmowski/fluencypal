@@ -76,6 +76,41 @@ Same issue [DARK-LANG-HC](https://pikapix.sentry.io/issues/7620738899/), `usage_
 
 **Still unknown:** Whether `audioInputCached` stays 0 often (cache not helping for audio) or event #1 also had low cache. Log `audioInputCached / audioInputTotal` ratio on every restart going forward.
 
+## Production finding — event #3 (2026-07-22, evening)
+
+Same issue [DARK-LANG-HC](https://pikapix.sentry.io/issues/7620738899/) — third occurrence, **3 users** total on the issue.
+
+| Field | #1 Jul 19 | #2 Jul 22 | **#3 Jul 22** |
+|-------|-----------|-----------|---------------|
+| **conversationLength** | 101 | 38 | **91** |
+| **messagesUntilCountRestart** | 29 | 92 | **39** |
+| **audioInputNew** | 5917 | 5708 | **6485** |
+| **audioInputCached** | (scrubbed) | 0 | **0** |
+| **textInputTotal** | — | 1308 | **3296** |
+| **inputTotal** | — | 7016 | **9781** |
+| **outputTotal** | — | 274 | **44** |
+| **User device** | iPad | — | **Mac / Chrome** |
+
+Event ID `1082a3a620c646cc87f0d2895e2dc458`, `belowMessageCountThreshold: true`, `talk` mode.
+
+**Pattern after 3 events (observe → fairly confident):**
+
+| Claim | Evidence |
+|-------|----------|
+| Always `usage_cache_threshold` | 3/3 |
+| Always `audioInputNew > 5000` | 5708–6485 |
+| **`audioInputCached === 0` at restart** | 2/2 with full payload; likely #1 too |
+| **Not** message-count restart | All `belowMessageCountThreshold: true` |
+| Message count at restart varies | 38, 91, 101 — no fixed “turn N” |
+| Text input grows with session | 1308 @ 38 msgs → 3296 @ 91 msgs; does not trigger restart |
+| Audio “new” scales with session size | 5708 @ 38 → 6485 @ 91 (more talk time / context) |
+
+**Working root cause (for product discussion, still no fix deployed):**
+
+Our WebRTC guard treats **`audioInputNew > 5000` on a single `response.done`** as “restart session.” In production, when OpenAI reports **no cached audio input** (`audioInputCached: 0`), cumulative **audio conversation context** in the Realtime prompt eventually crosses ~5.7k–6.5k, which triggers the reload UX. This is **expected behavior of current code**, not an unknown bug — the open question is whether that guard is still worth the UX cost now that we see **cache often at zero**.
+
+**Next observe step (optional):** near-threshold breadcrumbs (`audioInputNew > 4000`) to see climb rate; otherwise **3 events may be enough** to start designing a no-restart approach (session trim vs raise threshold vs debounce).
+
 ## Token mechanics — what actually triggers restart (observation reference)
 
 This section is the source of truth while we **observe only** (no fix yet). Goal: learn whether restarts correlate with token growth, and what a smooth alternative would need.
