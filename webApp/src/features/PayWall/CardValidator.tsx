@@ -2,16 +2,15 @@
 
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useMemo, useState } from 'react';
-import { loadStripe, StripeElementLocale, StripeElementsOptions } from '@stripe/stripe-js';
+import { useEffect, useMemo, useState } from 'react';
+import { StripeElementLocale, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useAuth } from '../Auth/useAuth';
 import { stripeLocaleMap, SupportedLanguage } from '../Lang/lang';
 import { useAnalytics } from '../Analytics/useAnalytics';
 import { InterviewQuizButton } from '../Goal/Quiz/InterviewQuizButton';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import { getStripePromise } from './getStripePromise';
 
 function SetupForm({
   clientSecret,
@@ -159,6 +158,15 @@ export function VerifyCard({
   title?: string;
   subtitle?: string;
 }) {
+  const { i18n } = useLingui();
+  const [stripeLoadFailed, setStripeLoadFailed] = useState(false);
+
+  useEffect(() => {
+    void getStripePromise().then((stripe) => {
+      if (!stripe) setStripeLoadFailed(true);
+    });
+  }, []);
+
   const locale: StripeElementLocale = stripeLocaleMap[lang];
   const options: StripeElementsOptions = useMemo(
     () => ({
@@ -182,12 +190,23 @@ export function VerifyCard({
   );
 
   if (!clientSecret) return null;
+
+  if (stripeLoadFailed) {
+    return (
+      <Typography variant="body2" color="error">
+        {i18n._(
+          'Unable to load the secure payment form. Disable ad blockers for this site or try another browser, then refresh the page.',
+        )}
+      </Typography>
+    );
+  }
+
   return (
     <Stack sx={{ width: '100%' }}>
       <Elements
         key={clientSecret} // ensures fresh mount on new secret
         options={options}
-        stripe={stripePromise}
+        stripe={getStripePromise()}
       >
         <SetupForm clientSecret={clientSecret} title={title} subtitle={subtitle} />
       </Elements>
