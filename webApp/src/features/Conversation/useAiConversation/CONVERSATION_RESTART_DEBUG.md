@@ -45,6 +45,37 @@ First Sentry event confirms the restart was **intentional**, not a mystery bug.
 2. Should restart require **consecutive** over-threshold turns, not a single spike?
 3. After restart at 101 messages, user only gets ~10 seeded messages — may feel like “conversation reset” even though UI history is intact.
 
+## Production finding — event #2 (2026-07-22)
+
+Same issue [DARK-LANG-HC](https://pikapix.sentry.io/issues/7620738899/), `usage_cache_threshold` again.
+
+| Field | Event #1 (Jul 19) | Event #2 (Jul 22) |
+|-------|-------------------|-------------------|
+| **conversationLength** | 101 | **38** |
+| **messagesUntilCountRestart** | 29 | **92** |
+| **audioInputNew** | 5917 | **5708** |
+| **audioInputTotal** | (scrubbed) | **5708** |
+| **audioInputCached** | (scrubbed) | **0** |
+| **textInputTotal** | — | 1308 |
+| **textInputCached** | — | 0 |
+| **inputTotal** | — | 7016 |
+| **outputTotal** | — | 274 |
+
+**What this adds:**
+
+1. **Not a “long chat” problem in message count** — restart at **38** messages, 92 messages before the 130 count-based restart.
+2. **Same band of audio input** — both events fire just above **5000** (~5708–5917). The guard is a cliff at 5000, not gradual drift.
+3. **Zero audio cache on event #2** — `audioInputCached: 0` means OpenAI billed the full **5708** audio input as non-cached on that turn. Text cache also 0 (`textInputCached: 0`). Restart was not “stale cache”; it was **uncached audio context size** on one `response.done`.
+4. **Arithmetic check** — `audioInputTotal + textInputTotal ≈ inputTotal` (5708 + 1308 = 7016). Output (274) is separate and does **not** affect the restart rule.
+
+**Emerging pattern (2 events, still observe):**
+
+- Trigger = **one turn** where `audioInputNew > 5000`, almost always **~5.7k–5.9k**.
+- Can happen **mid-session** (38 msgs), not only near 130.
+- When `audioInputCached` is 0, the entire reported audio prompt for that inference counts as “new” — likely **cumulative conversation audio in the Realtime session context**, not a single utterance spike (needs more events to confirm).
+
+**Still unknown:** Whether `audioInputCached` stays 0 often (cache not helping for audio) or event #1 also had low cache. Log `audioInputCached / audioInputTotal` ratio on every restart going forward.
+
 ## Token mechanics — what actually triggers restart (observation reference)
 
 This section is the source of truth while we **observe only** (no fix yet). Goal: learn whether restarts correlate with token growth, and what a smooth alternative would need.
