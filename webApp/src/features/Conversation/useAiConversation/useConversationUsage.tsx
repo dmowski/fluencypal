@@ -1,32 +1,32 @@
 import { UsageLog } from '@/features/Usage/usage';
 import { useUsage } from '@/features/Usage/useUsage';
-import { useState } from 'react';
+import { useRef } from 'react';
 import {
   extractRealtimeUsageSnapshot,
-  REALTIME_AUDIO_INPUT_RESTART_THRESHOLD,
 } from './extractRealtimeUsageSnapshot';
+import { reportLegacyRealtimeAudioInputThreshold } from './reportConversationRestart';
+import { getGlobalConversationId } from '@/features/Usage/globalConversationId';
 
-export const useConversationUsage = (
-  requestRestart: (
-    trigger: 'usage_cache_threshold',
-    usage?: NonNullable<ReturnType<typeof extractRealtimeUsageSnapshot>>,
-  ) => void,
-) => {
-  const [usageInfo, setUsageInfo] = useState<string>('');
+export const useConversationUsage = (conversationLength: number) => {
   const usage = useUsage();
+  const conversationLengthRef = useRef(conversationLength);
+  conversationLengthRef.current = conversationLength;
+  const lastObservedThresholdCrossingRef = useRef<number | null>(null);
 
   const onAddUsage = (usageLog: UsageLog) => {
     if (usageLog.type === 'realtime') {
       const usageSnapshot = extractRealtimeUsageSnapshot(usageLog.usageEvent);
 
-      if (usageSnapshot?.restartThresholdExceeded) {
-        requestRestart('usage_cache_threshold', usageSnapshot);
-      }
-
-      if (usageSnapshot) {
-        setUsageInfo(
-          `$${usageLog.priceUsd.toFixed(4)} - audioIn:${usageSnapshot.audioInputTotal} (cached:${usageSnapshot.audioInputCached}) new:${usageSnapshot.audioInputNew} / limit:${REALTIME_AUDIO_INPUT_RESTART_THRESHOLD}`,
-        );
+      if (
+        usageSnapshot?.legacyThresholdExceeded &&
+        lastObservedThresholdCrossingRef.current !== usageSnapshot.audioInputNew
+      ) {
+        lastObservedThresholdCrossingRef.current = usageSnapshot.audioInputNew;
+        reportLegacyRealtimeAudioInputThreshold({
+          conversationId: usageLog.conversationId || getGlobalConversationId() || '',
+          conversationLength: conversationLengthRef.current,
+          usage: usageSnapshot,
+        });
       }
     }
     usage.setUsageLogs((prev) => [...prev, usageLog]);

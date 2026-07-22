@@ -1,6 +1,7 @@
 import { sleep } from '@/libs/sleep';
 import { ConversationConfig } from '../types';
 import { getInstruction } from './getInstruction';
+import { getRealtimeTruncationSessionPatch } from './realtimeSessionTruncation';
 import { WebRtcState } from './types';
 
 export const updateSessionSafe = async ({
@@ -32,6 +33,7 @@ export const updateSessionSafe = async ({
           voice: config.voice,
         },
       },
+      ...getRealtimeTruncationSessionPatch(),
     },
   };
 

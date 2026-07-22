@@ -1,7 +1,7 @@
 import { UsageEvent } from '@/features/Ai/ai';
 
-/** Sentry scrubs extra keys containing "token"; use *Input* names instead. */
-export const REALTIME_AUDIO_INPUT_RESTART_THRESHOLD = 5000;
+/** Legacy client-side restart threshold (removed); kept for Sentry observation breadcrumbs. */
+export const REALTIME_AUDIO_INPUT_LEGACY_THRESHOLD = 5000;
 
 export type RealtimeUsageSnapshot = {
   audioInputTotal: number;
@@ -11,8 +11,8 @@ export type RealtimeUsageSnapshot = {
   textInputCached: number;
   inputTotal: number;
   outputTotal: number;
-  restartThreshold: number;
-  restartThresholdExceeded: boolean;
+  legacyThreshold: number;
+  legacyThresholdExceeded: boolean;
 };
 
 export function extractRealtimeUsageSnapshot(
@@ -35,7 +35,7 @@ export function extractRealtimeUsageSnapshot(
     textInputCached: details.cached_tokens_details?.text_tokens ?? 0,
     inputTotal: usageEvent?.input_tokens ?? 0,
     outputTotal: usageEvent?.output_tokens ?? 0,
-    restartThreshold: REALTIME_AUDIO_INPUT_RESTART_THRESHOLD,
-    restartThresholdExceeded: audioInputNew > REALTIME_AUDIO_INPUT_RESTART_THRESHOLD,
+    legacyThreshold: REALTIME_AUDIO_INPUT_LEGACY_THRESHOLD,
+    legacyThresholdExceeded: audioInputNew > REALTIME_AUDIO_INPUT_LEGACY_THRESHOLD,
   };
 }

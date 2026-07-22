@@ -50,6 +50,19 @@ export function reportConversationRestart(report: ConversationRestartReport): vo
   });
 }
 
+export function reportLegacyRealtimeAudioInputThreshold(params: {
+  conversationId: string;
+  conversationLength: number;
+  usage: RealtimeUsageSnapshot;
+}): void {
+  Sentry.addBreadcrumb({
+    category: 'conversation',
+    level: 'info',
+    message: 'Realtime audio input exceeded legacy client threshold (no restart)',
+    data: params,
+  });
+}
+
 export function reportConversationRestartSeed(params: {
   conversationId: string;
   seededMessageCount: number;

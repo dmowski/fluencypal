@@ -35,7 +35,6 @@ import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
-import { useRestart } from './useRestart';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
@@ -159,14 +158,7 @@ function useProvideAiConversation(): AiConversationContextType {
     isClosing,
   });
 
-  const { requestRestart, isRestarting } = useRestart(
-    communicatorRef,
-    toggleMute,
-    messages.conversation,
-    currentMode,
-    messages.conversationId,
-  );
-  const conversationUsage = useConversationUsage(requestRestart);
+  const conversationUsage = useConversationUsage(messages.conversation.length);
 
   useEffect(() => {
     return () => communicatorRef.current?.closeHandler();
@@ -694,7 +686,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
     completeUserMessageDelta,
     addUserMessageDelta,
-    isRestarting,
+    isRestarting: false,
   };
 }
 

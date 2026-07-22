@@ -1,5 +1,17 @@
 # Conversation restart — debug plan
 
+## Fix applied (2026-07-22)
+
+Client-side **WebRTC restarts are disabled**:
+
+- Removed **`audioInputNew > 5000`** restart (`useConversationUsage`).
+- Removed **message-count** restart (every 130 / 40 messages).
+- **`updateSessionSafe`** now sends OpenAI **`truncation: retention_ratio`** with **`post_instructions: 12000`** so long sessions trim oldest items in-session instead of reconnecting.
+
+Observation: Sentry **breadcrumb** when audio input crosses the legacy 5000 mark (no issue / no reload).
+
+---
+
 Users report that a long conversation sometimes feels like it **restarts**: the AI re-introduces itself, loses thread, or the UI shows **"Reloading conversation..."**. This doc lists known restart paths, hypotheses (including cache), and how to narrow the root cause using Sentry + local checks.
 
 ## Known intentional restart paths (code today)
