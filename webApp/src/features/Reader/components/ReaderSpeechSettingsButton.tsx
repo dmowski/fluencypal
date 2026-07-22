@@ -23,6 +23,7 @@ import { useReaderSettings } from '../hooks/useReaderSettings';
 import { ReaderChapterItem, ReaderChaptersList } from './ReaderChaptersPopover';
 import { ReaderHighlightItem, ReaderHighlightsList } from './ReaderHighlightsPopover';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
+import { ReaderVoiceOverPageButton } from './ReaderVoiceOverPageButton';
 
 const ACTIVE_TAB_STORAGE_KEY = 'reader-book-info-active-tab';
 
@@ -32,6 +33,7 @@ export type BookInfoButtonHandle = {
 
 type BookInfoButtonProps = {
   speech: ReturnType<typeof useBrowserSpeech>;
+  activePage: number;
   chapters: ReaderChapterItem[];
   highlights: ReaderHighlightItem[];
   activeChapterId: string | null;
@@ -49,7 +51,10 @@ const getInitialTab = (): ModalView => {
 };
 
 export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonProps>(
-  ({ speech, chapters, highlights, activeChapterId, onSelectChapter, onSelectHighlight }, ref) => {
+  (
+    { speech, activePage, chapters, highlights, activeChapterId, onSelectChapter, onSelectHighlight },
+    ref,
+  ) => {
     const { i18n } = useLingui();
     const readerSettings = useReaderSettings();
     const infoButtonRef = useRef<HTMLButtonElement>(null);
@@ -153,6 +158,12 @@ export const BookInfoButton = forwardRef<BookInfoButtonHandle, BookInfoButtonPro
         >
           {isVoiceOverSelectedTextEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
         </IconButton>
+
+        <ReaderVoiceOverPageButton
+          speech={speech}
+          visible={isVoiceOverSelectedTextEnabled}
+          activePage={activePage}
+        />
 
         <Popover
           open={open}

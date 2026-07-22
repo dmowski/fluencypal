@@ -432,6 +432,7 @@ export const Reader = ({ data }: { data: Book }) => {
       <BookInfoButton
         ref={bookInfoButtonRef}
         speech={speech}
+        activePage={activePage}
         chapters={chapterItems}
         highlights={highlightItems}
         activeChapterId={activeChapterId}
