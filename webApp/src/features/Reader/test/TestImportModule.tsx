@@ -37,6 +37,11 @@ const TEST_BOOKS: TestBook[] = [
     label: 'The Secret of Chimneys',
     publicPath: '/Reader/the_secret_of_chimneys.epub',
   },
+  {
+    id: 'how-minds-change',
+    label: 'How Minds Change',
+    publicPath: '/Reader/how_minds_change.epub',
+  },
 ];
 
 const createInitialStates = (): Record<string, ParseState> =>

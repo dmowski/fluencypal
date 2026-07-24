@@ -8,6 +8,7 @@ const BOOKS = [
   { id: 'supercommunicators' },
   { id: 'ziarno-prawdy' },
   { id: 'secret-of-chimneys' },
+  { id: 'how-minds-change' },
 ] as const;
 
 const EXPECTED_PREFIX_LENGTH = 20000;
