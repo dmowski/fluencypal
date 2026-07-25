@@ -95,109 +95,113 @@ Utilize e2e tests to validate functionality. Avoid mocking something (except pai
 
 # Implementation steps
 
+Each step is a vertical feature slice: ship UI + backend + tests together. Put e2e under `webApp/e2e/voice-chat/`. Mock only paid/unpaid entitlement and Telegram sends.
+
 Research notes (do not treat existing Chat as drop-in):
 
-- Do **not** reuse `useChat` / `ThreadsMessage` as the data model: it requires `content: string`, open `chat/**` rules for any signed-in user, soft-delete without cascading Storage cleanup, and public `uploadedAudios` via `makePublic()`.
-- Reuse UX ideas only: nested `parentMessageId` chains, per-user read metadata / unread counts, `StoreCard` + dashboard card composition, `useAccess().showPaymentModal()`, `GlobalModals` + `useUrlState` modal pattern, mic + `VoiceVisualizer` (without transcription), `sentSupportTelegramMessage` from server-only paths, Vercel cron in `vercel.json`.
-- Entitlement must be server-owned snapshots (paid ∨ live top-5), not client `isFullAppAccess`.
+- Do **not** reuse `useChat` / `ThreadsMessage`: text `content`, open `chat/**` rules, soft-delete without Storage cascade, public `makePublic()` audio.
+- Reuse: nested `parentMessageId`, read/unread ideas, `StoreCard`, `showPaymentModal()`, `GlobalModals` + `useUrlState`, mic + `VoiceVisualizer` (no transcript), server Telegram helper, Vercel cron.
+- Entitlements are server snapshots (paid ∨ live top-5), not client `isFullAppAccess`.
 
-## Phase 0 — Locked product decisions
+## Locked product decisions
 
-1. **TTL:** 4 days (update root `PLAN.md` from “5 days”).
-2. **Intro audio:** ~3 min recording *is* the join request. On approve, server posts that same audio into the global chat as the user’s first message.
+1. **TTL:** 4 days (fix `PLAN.md` “5 days”).
+2. **Intro audio:** join request itself; on approve, server posts it as the user’s first chat message.
 3. **Room:** one global Voice Chat.
-4. **Replies:** nested (`parentMessageId` tree).
-5. **Paid:** any real payment (`PaymentLog.amountAdded > 0`) excluding trial (`type !== 'trial-days'`; also ignore pure welcome/trial grants). Not subscription-active-only.
-6. **Game winner:** live top-5 only (no grace).
-7. **UI entry:** `VoiceChatModal` registered in `GlobalModals.tsx` via `useGlobalModals` / `useUrlState` (same pattern as public chat).
-8. **Reject / re-request:** rejected users may re-request after **10 days** from `decidedAt`.
-9. **Approvers:** `voiceChat/config.approverIds: string[]` (seed with founder UID).
-10. **Unread:** mark listened on **any playback progress** (first `timeupdate` / progress > 0).
+4. **Replies:** nested.
+5. **Paid:** any real payment (`amountAdded > 0`), exclude `trial-days` / welcome trial grants.
+6. **Game winner:** live top-5 only.
+7. **UI entry:** `VoiceChatModal` via `GlobalModals` + `useUrlState`.
+8. **Re-request:** 10 days after reject (`decidedAt`).
+9. **Approvers:** `voiceChat/config.approverIds` (seed founder).
+10. **Unread:** mark listened on any playback progress.
 
-Constants to put in `types.ts` / backend: `VOICE_CHAT_MESSAGE_TTL_DAYS = 4`, `VOICE_CHAT_REREQUEST_COOLDOWN_DAYS = 10`.
+Constants: `VOICE_CHAT_MESSAGE_TTL_DAYS = 4`, `VOICE_CHAT_REREQUEST_COOLDOWN_DAYS = 10`.
 
-## Phase 1 — Types, data model, rules skeleton
+Friendly copy targets (i18n later):
 
-1. Fill `types.ts`: config, entitlements, member/request status, voice message (no transcript), read metadata, dashboard/checklist view-model, constants above.
-2. Firestore (dedicated tree, not `/chat`):
-   - `voiceChat/config` — `{ approverIds: string[] }`
-   - `voiceChat/entitlements/{uid}` — `{ isPaid, isGameWinner, updatedAt }`
-   - `voiceChat/members/{uid}` — `{ status: pending|approved|rejected, introAudioPath, introDurationSec?, requestedAt, decidedAt?, decidedBy?, postedIntroMessageId? }`
-   - `voiceChat/messages/{messageId}` — `{ audioPath, durationSec, senderId, parentMessageId, createdAt, isIntro? }`
-   - `users/{uid}/stats/voiceChatReadMetadata` — listened message id map
-3. Storage: private prefix `voiceChat/...` — **never** `makePublic()`. Intro audio stays private; on approve it is referenced (or copied) into a message doc.
-4. Rules: deny-by-default client writes for messages/membership/entitlements (Admin SDK via APIs). Clients may read own member doc; message/audio access only through authorized APIs + signed URLs (or rules that check entitlement + approved member docs if feasible).
-5. Keep independent from existing Chat send/delete paths.
+- Checklist: “Become a member”, “Share a short intro (~3 min)”, “Wait for approval”
+- Pending: “Thanks — we’re reviewing your intro”
+- Rejected: “Not this time. You can try again in X days”
+- Approved card CTA: “Open Voice Chat”
+- Rules note: “Messages are removed after 4 days”
+- First visit in modal: “Your intro is already in the room. Listen to others, then reply when you’re ready.”
 
-## Phase 2 — Backend entitlements + membership
+---
 
-1. `backend/entitlements.ts` + thin `/api/voice-chat/*` routes:
-   - **validate-paid:** `isPaid` if user has any non-trial payment with amount > 0 (scan `users/{uid}/payments`). Hook after `addPaymentLog` / webhooks; daily cron reconcile (batch or on-demand).
-   - **validate-game-winner:** recompute live top-5 from `game2/gamePoints`; write `isGameWinner` for all affected uids; call after point changes + daily reconcile. Dropping out of top-5 clears access unless still `isPaid`.
-2. `assertCanRequestAccess(uid)`: auth + (isPaid ∨ isGameWinner).
-3. `assertVoiceChatParticipant(uid)`: auth + entitlement + `status === 'approved'` — used by list/play/send/delete/listen.
-4. Membership APIs:
-   - **request:** upload intro audio → `status: pending` (block if pending, or if rejected and `now < decidedAt + 10d`).
-   - **list pending:** caller ∈ `approverIds`.
-   - **approve:** verify approver → `approved` → **create message** from intro audio (root message, `isIntro: true`) → set `postedIntroMessageId` → Telegram optional ack.
-   - **reject:** verify approver → `rejected` + `decidedAt` (card shows rejected + re-request countdown).
-   - Telegram on new request via server helper only (mock in e2e).
-5. Seed/ensure `voiceChat/config.approverIds` includes founder UID.
+### Step 1 — Founder-only shell
 
-## Phase 3 — Messages API (send / play / delete / cleanup)
+**Ship:** `types.ts` constants + core types; `VoiceChatDashboardCard` on `Dashboard` (`StoreCard`, preview image, `items={[]}`, placeholder children); `VoiceChatModal` shell in `GlobalModals` / `useGlobalModals`; visible only when `auth.isFounder`.
 
-1. Upload + create message (approved members only); support nested `parentMessageId`.
-2. List messages for global room (ordered for player queue: depth-first or chronological — pick chronological for auto-advance simplicity; nest visually in UI).
-3. Signed URL (or streaming) endpoint for audio; no public objects.
-4. **mark-listened:** on first playback progress from client.
-5. **delete own message:** recursively delete entire reply subtree + storage objects + read-metadata keys.
-6. Cron `GET /api/voice-chat/cleanup` (4-day TTL) in `vercel.json`, authorize with `CRON_SECRET`, cascade replies + storage, idempotent.
+**E2E:** card hidden for normal user; visible for founder; opens empty modal.
 
-## Phase 4 — Client feature module (founder-gated UI)
+---
 
-Folder: `webApp/src/features/Chat/VoiceChat/` (+ `api/`, `backend/`, components).
+### Step 2 — Access entitlements + hard gates
 
-1. Feature flag: dashboard card only if `auth.isFounder`. Server still enforces access.
-2. `VoiceChatDashboardCard` on `Dashboard.tsx`:
-   - `StoreCard` + preview image, `items={[]}`
-   - children checklist: (1) Be paid → Start → paywall (2) Record ~3 min intro / re-request if cooldown elapsed (3) Get approve — each with info why
-   - show pending / rejected(+days left) / approved states
-   - “Rules of chat” (placeholder copy ok for v1) + “messages remove after 4 days”
-   - unread badge after approved + onboarded
-   - approver UI: pending list Approve/Reject
-3. `VoiceChatModal` in `GlobalModals.tsx` + `useGlobalModals` URL flag (e.g. `voiceChat`); open from card when approved.
-4. Inside modal: nested message list, no text, no transcripts.
-5. Custom player: pause / rewind / restart / progress / visualization; end → next; mark listened on progress.
-6. VoiceChat recorder wrapper (`VoiceVisualizer`, preview, send) — **no** `/api/transcript`.
-7. “Record Reply” on any message (nested).
-8. “Remove” on own messages → cascade API.
-9. Onboarding highlight after approve: “Send your first 'Hello'” (intro may already be posted by approve — treat that as first message; prompt only if somehow missing / encourage next hello as product copy).
+**Ship:** Firestore tree + rules (deny client writes for entitlements/messages/membership decisions); private Storage prefix (never `makePublic`); `backend/entitlements.ts` + validate-paid / validate-game-winner APIs; hooks from payment + game points + daily reconcile; `assertCanRequestAccess` / `assertVoiceChatParticipant`.
 
-## Phase 5 — Wire integrations
+**Data:**
+- `voiceChat/config` — `approverIds`
+- `voiceChat/entitlements/{uid}` — `isPaid`, `isGameWinner`
+- `voiceChat/members/{uid}`, `voiceChat/messages/{messageId}`, read metadata under `users/{uid}/stats/...`
 
-1. Payment webhooks / `addPaymentLog` → validate-paid for that uid.
-2. Game points increase + daily job → validate-game-winner.
-3. i18n via `i18n._(...)`, then `pnpm lang`.
-4. Align `PLAN.md` Voice Chat bullets (4-day delete, modal, etc.).
+**Unit:** paid detector (trial vs real payment).
+**E2E:** unpaid / non-winner cannot call participant APIs (list/play/send); founder flag still required for card visibility.
 
-## Phase 6 — Testing
+---
 
-1. Unit: unread helpers, nested cascade delete, paid detector (trial vs real), re-request cooldown, approve→intro message creation.
-2. E2E `webApp/e2e/voice-chat/` (mock only paid/unpaid + Telegram):
-   - hidden for non-founder; visible for founder
-   - unpaid / unapproved cannot list or play
-   - request with intro → approve posts intro into chat; reject shows 10-day cooldown
-   - nested reply → play progress clears unread → auto-advance
-   - remove parent removes reply tree + storage
-   - cleanup cron removes >4 day messages
-3. `pnpm lint`, targeted e2e, full `pnpm test:e2e` before handoff.
+### Step 3 — Join checklist, paywall, intro request
 
-## Suggested build order (vertical slices)
+**Ship:** card checklist with info blurbs; “Start” → paywall; intro recorder (~3 min, `VoiceVisualizer`, preview, no transcript); request-access API (upload intro → `pending`); block duplicate pending; Telegram on request (server-only); “Rules of chat” + 4-day retention note.
 
-1. Types + constants + empty founder-only dashboard card + `VoiceChatModal` shell in `GlobalModals`.
-2. Entitlements (paid non-trial + live top-5) + rules deny + validate endpoints/crons.
-3. Membership request (intro upload) / approve-reject + Telegram + checklist UI + paywall Start; **approve posts intro message**.
-4. List/play with signed URLs + custom player (mark listened on progress) + unread badge.
-5. Nested reply send + preview recorder.
-6. Cascade delete + 4-day cleanup cron.
-7. E2E hardening.
+**E2E:** unpaid sees paywall path; entitled user records intro → pending state on card; Telegram mocked.
+
+---
+
+### Step 4 — Approve / reject (+ intro lands in chat)
+
+**Ship:** seed `approverIds`; approver pending list on card; approve/reject APIs; on approve → post intro as root `isIntro` message + `postedIntroMessageId`; reject → `decidedAt` + 10-day re-request UI; requester sees approved/rejected in card children.
+
+**Unit:** re-request cooldown; approve creates intro message.
+**E2E:** approver approves → requester approved + intro message exists; reject → cooldown copy; re-request blocked until 10 days (time-travel/fixture).
+
+---
+
+### Step 5 — Listen: list, player, unread badge
+
+**Ship:** list messages API + signed audio URLs; nested list UI in modal; custom player (pause, rewind, restart, progress, visualization); auto-advance to next; mark-listened on progress; dashboard unread badge after approved; first-visit friendly highlight (intro already posted).
+
+**Unit:** unread count helper.
+**E2E:** approved user opens modal, plays message → unread decreases; auto-advance to next; unapproved cannot fetch audio.
+
+---
+
+### Step 6 — Record reply (nested)
+
+**Ship:** “Record Reply” on any message; recorder preview → send; nested `parentMessageId`; chronological play queue, nested visual layout.
+
+**E2E:** reply under a message appears nested; plays in queue after parent (or in chronological order as implemented).
+
+---
+
+### Step 7 — Remove my message (cascade)
+
+**Ship:** “Remove” on own messages; recursive reply subtree delete + Storage + read-metadata cleanup.
+
+**Unit:** cascade planning for nested trees.
+**E2E:** delete parent removes replies and audio objects; other users no longer see them.
+
+---
+
+### Step 8 — 4-day cleanup cron
+
+**Ship:** `GET /api/voice-chat/cleanup` + `vercel.json` schedule; `CRON_SECRET`; delete messages older than 4 days with same cascade as Step 7; idempotent.
+
+**E2E:** seed old message(+reply) → run cleanup → docs and storage gone; recent messages kept.
+
+---
+
+### Step 9 — Polish + handoff
+
+**Ship:** i18n (`pnpm lang`); align `PLAN.md`; any remaining friendly copy; `pnpm lint`; full `pnpm test:e2e` once.
