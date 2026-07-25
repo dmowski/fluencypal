@@ -1,5 +1,17 @@
 # Live document with short/long term ideas
 
+## Voice chat
+
+webApp/src/features/Chat/VoiceChat/AGENTS.md
+Agent.md
+use useChat
+Create dashboard card: hide under feature flag
+Create Message component: reply, delete,
+Create submit form
+Integrate with database
+Create paywall
+Delete after 5 days
+
 ## Convert visitors to users: Start a first conversation
 
 How to connect analytics and development?
