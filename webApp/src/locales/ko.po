@@ -194,6 +194,13 @@ msgid ""
 "without saying the word itself!"
 msgstr "2-20명의 플레이어를 위한 재미있는 단어 추측 게임. 단어 자체를 말하지 않고 팀원들에게 단어를 설명하세요!"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
+#. js-lingui-explicit-id
+msgid ""
+"A host reviews your intro before you can listen and reply. This protects "
+"the group."
+msgstr "호스트가 당신의 소개를 검토한 후에야 들을 수 있고 답변할 수 있습니다. 이렇게 하면 그룹을 보호할 수 있습니다."
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:4
 #. js-lingui-explicit-id
 msgid "A journey of a thousand miles begins with a single step."
@@ -233,6 +240,11 @@ msgid ""
 "A small temporary authorization may appear on your statement and will be "
 "released automatically by your bank."
 msgstr "귀하의 명세서에 작은 일시적 승인 금액이 나타날 수 있으며, 귀하의 은행에 의해 자동으로 해제됩니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:145
+#. js-lingui-explicit-id
+msgid "A small, voice-only room. No transcripts."
+msgstr "음성 전용 소규모 방. 대본 없음."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:175
 #. js-lingui-explicit-id
@@ -815,6 +827,11 @@ msgstr "API 디자인 및 데이터 모델링 인사이트"
 msgid "Appointment"
 msgstr "약속"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:268
+#. js-lingui-explicit-id
+msgid "Approve"
+msgstr "승인"
+
 #: src/features/Lang/getLabels.tsx:16
 #. js-lingui-explicit-id
 msgid "Arabic Learning Plan"
@@ -1065,6 +1082,11 @@ msgid ""
 "plan just for you."
 msgstr "귀하의 온보딩을 기반으로, FluencyPal은 귀하만을 위한 맞춤형 학습 계획을 만들어 드립니다."
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:294
+#. js-lingui-explicit-id
+msgid "Be kind. This is a small voice-only space."
+msgstr "친절하세요. 이것은 작은 음성 전용 공간입니다."
+
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:71
 #. js-lingui-explicit-id
 msgid "Be prepared for your job interview"
@@ -1074,6 +1096,11 @@ msgstr "직업 면접을 준비하세요"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "당신의 역할에 대해 구체적으로 설명하세요."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:176
+#. js-lingui-explicit-id
+msgid "Become a member"
+msgstr "멤버가 되기"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:157
 #: src/features/Case/data/frontend-senior/quizData.ts:251
@@ -1407,6 +1434,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:74
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -2096,6 +2124,8 @@ msgstr "\"새로운 승인된 이메일 주소 추가\"를 클릭하고 입력�
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "브라우저에서 app.fluencypal.com 옆의 공유 버튼을 클릭하세요."
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:70
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:301
 #: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -3233,6 +3263,11 @@ msgid ""
 "for you over time."
 msgstr "다양한 모드는 다양한 방식으로 도움이 됩니다. 시간이 지나면서 당신에게 가장 잘 맞는 것을 발견하게 될 것입니다."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:93
+#. js-lingui-explicit-id
+msgid "Discard"
+msgstr "폐기"
+
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
@@ -4096,6 +4131,21 @@ msgstr "퀴즈 생성 실패."
 #. js-lingui-explicit-id
 msgid "Failed to load conversation history"
 msgstr "대화 기록 로드 실패"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:41
+#. js-lingui-explicit-id
+msgid "Failed to load messages"
+msgstr "메시지 로드에 실패했습니다"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:97
+#. js-lingui-explicit-id
+msgid "Failed to load voice chat status"
+msgstr "음성 채팅 상태를 불러오지 못했습니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:78
+#. js-lingui-explicit-id
+msgid "Failed to play"
+msgstr "재생하지 못했습니다."
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5973,6 +6023,11 @@ msgstr "단락 간격 늘리기"
 msgid "Indonesian Learning Plan"
 msgstr "인도네시아어 학습 계획"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:60
+#. js-lingui-explicit-id
+msgid "Info"
+msgstr "정보"
+
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -6085,6 +6140,11 @@ msgstr "면접 팁"
 #. js-lingui-explicit-id
 msgid "Interviewers expect **architecture thinking**, not just clean code"
 msgstr "인터뷰어는 단순히 깔끔한 코드만이 아닌 **아키텍처 사고**를 기대합니다"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+msgid "Intro"
+msgstr "소개"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:55
 #: src/features/Case/data/frontend-senior/quizData.ts:154
@@ -6607,6 +6667,7 @@ msgstr "한도에 도달했습니다"
 msgid "Line height"
 msgstr "줄 높이"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:86
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
 msgid "Listen"
@@ -6616,6 +6677,11 @@ msgstr "듣기"
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "끝까지 듣거나 퀴즈 완료"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:260
+#. js-lingui-explicit-id
+msgid "Listen intro"
+msgstr "소개 듣기"
 
 #: src/features/Dashboard/StoriesDashboardCard.tsx:24
 #. js-lingui-explicit-id
@@ -6729,6 +6795,11 @@ msgstr "로딩 중.."
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "로딩 중..."
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:136
+#. js-lingui-explicit-id
+msgid "Loading…"
+msgstr "로딩 중…"
 
 #: src/features/Community/CommunityCard.tsx:74
 #. js-lingui-explicit-id
@@ -6926,6 +6997,21 @@ msgstr "정책 위반으로 인해 메시지가 숨겨졌습니다."
 msgid "Messages"
 msgstr "메시지"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:158
+#. js-lingui-explicit-id
+msgid "Messages are removed after 4 days"
+msgstr "메시지는 4일 후에 삭제됩니다"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:296
+#. js-lingui-explicit-id
+msgid "Messages are removed after 4 days."
+msgstr "메시지는 4일 후에 삭제됩니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:132
+#. js-lingui-explicit-id
+msgid "Messages are removed after 4 days. No text — voice only."
+msgstr "메시지는 4일 후에 삭제됩니다. 텍스트 없음 — 음성만 가능합니다."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -6942,6 +7028,13 @@ msgstr "마이크 접근 권한"
 #. js-lingui-explicit-id
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
+
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:24
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access is denied. Please allow microphone access in your browser "
+"settings."
+msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 마이크 접근을 허용해 주세요."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:34
@@ -7127,6 +7220,11 @@ msgstr "고위급 보상 협상"
 #. js-lingui-explicit-id
 msgid "Negotiation practice"
 msgstr "협상 연습"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:72
+#. js-lingui-explicit-id
+msgid "new"
+msgstr "새로운"
 
 #: src/features/Case/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
@@ -7396,6 +7494,11 @@ msgstr "결과를 찾을 수 없습니다"
 msgid "No scenarios found"
 msgstr "시나리오를 찾을 수 없습니다"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:295
+#. js-lingui-explicit-id
+msgid "No text messages and no transcripts."
+msgstr "메시지 없음 및 대화 기록 없음."
+
 #: src/features/Translation/useTranslate.tsx:185
 #. js-lingui-explicit-id
 msgid "No text to translate"
@@ -7554,6 +7657,11 @@ msgstr "지원되지 않음"
 #. js-lingui-explicit-id
 msgid "Not sure what to write? Try one of these:"
 msgstr "무엇을 작성해야 할지 모르시겠나요? 아래 중 하나를 시도해보세요:"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:220
+#. js-lingui-explicit-id
+msgid "Not this time. You can try again in {days} days"
+msgstr "이번에는 안 됩니다. {days}일 후에 다시 시도할 수 있습니다."
 
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
@@ -7717,6 +7825,11 @@ msgid ""
 "debate!"
 msgstr "누군가의 프로필을 열고 \"토론 초대\" 버튼을 눌러 토론을 시작하세요!"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:227
+#. js-lingui-explicit-id
+msgid "Open Voice Chat"
+msgstr "오픈 음성 채팅"
+
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
 msgid "Open your browser menu."
@@ -7879,6 +7992,7 @@ msgid ""
 "achievements."
 msgstr "당신의 이력서를 붙여 넣거나 경험, 기술 및 성과에 대한 간략한 요약을 작성하세요."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -7924,6 +8038,16 @@ msgstr "결제 옵션"
 #. js-lingui-explicit-id
 msgid "Payment successful!"
 msgstr "결제가 완료되었습니다!"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:282
+#. js-lingui-explicit-id
+msgid "Pending intro"
+msgstr "소개 대기 중"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:247
+#. js-lingui-explicit-id
+msgid "Pending requests"
+msgstr "대기 중인 요청"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -8035,6 +8159,7 @@ msgid "Plan for"
 msgstr "Plan for"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -8158,6 +8283,11 @@ msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택�
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:36
+#. js-lingui-explicit-id
+msgid "Please record at least {minSeconds} seconds."
+msgstr "{minSeconds}초 이상 녹음해 주세요."
 
 #: src/features/Conversation/ConversationError.tsx:43
 #. js-lingui-explicit-id
@@ -8611,6 +8741,11 @@ msgstr "준비 중…"
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
 msgstr "프로덕션 배치가 추가되면 게이트 액세스에 대한 미리보기 상태."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
+#. js-lingui-explicit-id
+msgid "Preview your recording"
+msgstr "녹음을 미리보기하세요"
 
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
@@ -9125,6 +9260,7 @@ msgstr "추천해 주세요: 당신의 목표 언어로 된 팟캐스트, 노래
 msgid "Recommended"
 msgstr "추천됨"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:199
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -9144,6 +9280,19 @@ msgid ""
 "Record a message in Community Chat and get {points} points in the "
 "leaderboard"
 msgstr "Community Chat에서 메시지를 녹음하고 리더보드에서 {points} 포인트를 획득하세요"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:155
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:159
+#. js-lingui-explicit-id
+msgid "Record a new message"
+msgstr "새 메시지 녹음하기"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:192
+#. js-lingui-explicit-id
+msgid ""
+"Record a short audio about yourself so others know who is joining. About 3 "
+"minutes is ideal."
+msgstr "다른 사람들이 누가 참여하는지 알 수 있도록 자신에 대한 짧은 오디오를 녹음하세요. 약 3분 정도가 이상적입니다."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:487
 #. js-lingui-explicit-id
@@ -9197,10 +9346,30 @@ msgstr "더 녹음하기"
 msgid "Record new essay"
 msgstr "새 작문 녹음하기"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:92
+#. js-lingui-explicit-id
+msgid "Record Reply"
+msgstr "레코드 답변"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
 msgstr "당신의 설명을 녹음하세요"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:233
+#. js-lingui-explicit-id
+msgid "Record your intro"
+msgstr "인트로를 녹음하세요"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:103
+#. js-lingui-explicit-id
+msgid "Record your reply"
+msgstr "귀하의 응답을 녹음하십시오"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:68
+#. js-lingui-explicit-id
+msgid "Recording… {seconds}s"
+msgstr "녹화 중... {seconds}초"
 
 #: src/features/ProgressStat/ProgressDetailsList.tsx:26
 #. js-lingui-explicit-id
@@ -9229,6 +9398,11 @@ msgstr "새로고침"
 msgid "Refund guarantee"
 msgstr "환불 보장"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:276
+#. js-lingui-explicit-id
+msgid "Reject"
+msgstr "거절"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:421
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -9244,6 +9418,7 @@ msgstr "페이지 새로고침"
 msgid "Reloading conversation..."
 msgstr "대화를 다시 불러오는 중..."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:96
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9331,6 +9506,7 @@ msgstr "복원력 및 가시성"
 msgid "Resolving file..."
 msgstr "파일 해상 중..."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:115
 #: src/features/News/NewsPlayButton.tsx:112
 #: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
@@ -9397,6 +9573,11 @@ msgstr "AI가 기억하는 내용을 검토하고 편집하세요."
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "AI가 당신에 대해 사용하는 메모를 검토, 편집 또는 추가하세요."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:112
+#. js-lingui-explicit-id
+msgid "Rewind"
+msgstr "되감기"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:239
 #. js-lingui-explicit-id
@@ -9503,6 +9684,12 @@ msgstr "룰"
 #. js-lingui-explicit-id
 msgid "Rule of the day"
 msgstr "오늘의 규칙"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:242
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:291
+#. js-lingui-explicit-id
+msgid "Rules of chat"
+msgstr "채팅 규칙"
 
 #: src/features/Plan/LessonStartModal.tsx:397
 #. js-lingui-explicit-id
@@ -9689,6 +9876,7 @@ msgstr "독학 개발자가 HTML, CSS, JavaScript 지식을 검증하고자 함"
 msgid "Semantic HTML"
 msgstr "시맨틱 HTML"
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:160
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -9704,6 +9892,11 @@ msgstr "Just talk에서 최소 10개의 메시지를 보내세요."
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "이메일 다시 보내기"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:234
+#. js-lingui-explicit-id
+msgid "Send for approval"
+msgstr "승인 요청 보내기"
 
 #: src/features/Header/NotificationsModal.tsx:57
 #. js-lingui-explicit-id
@@ -9725,6 +9918,11 @@ msgstr "메시지 보내기"
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "커뮤니티 공간에 메시지 하나 보내기"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:104
+#. js-lingui-explicit-id
+msgid "Send reply"
+msgstr "답장 보내기"
 
 #: src/features/Game/UserProfileModal.tsx:160
 #. js-lingui-explicit-id
@@ -9755,6 +9953,11 @@ msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "보내는 중..."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:83
+#. js-lingui-explicit-id
+msgid "Sending…"
+msgstr "보내는 중…"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -9831,6 +10034,11 @@ msgstr "공유하기"
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "오늘 배운 문구(또는 당신을 혼란스럽게 했던 문구)를 공유하세요."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:191
+#. js-lingui-explicit-id
+msgid "Share a short intro (~3 min)"
+msgstr "짧은 소개를 공유하세요 (~3분)"
 
 #: src/features/Reader/components/ShareBookModal.tsx:130
 #. js-lingui-explicit-id
@@ -10208,6 +10416,7 @@ msgid "Stars"
 msgstr "별"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:184
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:125
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -10276,6 +10485,11 @@ msgstr "월간 플랜 시작"
 #. js-lingui-explicit-id
 msgid "Start Practicing"
 msgstr "연습 시작하기"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:62
+#. js-lingui-explicit-id
+msgid "Start recording"
+msgstr "녹음을 시작하세요"
 
 #: src/features/Essay/Essay.tsx:144
 #. js-lingui-explicit-id
@@ -10471,6 +10685,7 @@ msgid "Steps:"
 msgstr "단계:"
 
 #: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:71
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -11414,6 +11629,11 @@ msgid "Thank you for your purchase."
 msgstr ""
 "Thank you for your purchase.   \n"
 "→ 귀하의 구매에 감사드립니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:215
+#. js-lingui-explicit-id
+msgid "Thanks — we’re reviewing your intro"
+msgstr "감사합니다 — 우리는 귀하의 소개를 검토하고 있습니다"
 
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
@@ -12552,10 +12772,29 @@ msgstr "어휘 연습"
 msgid "Voice"
 msgstr "음성"
 
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:177
+#. js-lingui-explicit-id
+msgid ""
+"Voice chat is for paying members (or top-5 game winners). This keeps the "
+"room small and respectful."
+msgstr "음성 채팅은 유료 회원(또는 상위 5위 게임 승자)을 위한 것입니다. 이렇게 함으로써 방을 작고 존중 있게 유지합니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:144
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:157
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:122
+#. js-lingui-explicit-id
+msgid "Voice chat with people"
+msgstr "사람들과 음성 채팅"
+
 #: src/features/Usage/FeatureBlocker.tsx:74
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "음성 대화"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+msgid "Voice note"
+msgstr "음성 메모"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
@@ -12583,6 +12822,11 @@ msgstr "음성 속도"
 #. js-lingui-explicit-id
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:206
+#. js-lingui-explicit-id
+msgid "Wait for approval"
+msgstr "승인을 기다리세요"
 
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
@@ -13298,6 +13542,11 @@ msgstr "네. SQL 대 NoSQL 결정, 격리 수준, EF Core 팁, 캐싱 및 데이
 msgid "Yesterday"
 msgstr "어제"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:73
+#. js-lingui-explicit-id
+msgid "you"
+msgstr "당신"
+
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:222
 #. js-lingui-explicit-id
 msgid "You"
@@ -13392,6 +13641,11 @@ msgid ""
 msgstr ""
 "시니어 프론트엔드, 리드 및 스태프급 인터뷰를 포함하여 기술 라운드, 프론트엔드 시스템 디자인, 라이브 코딩, 행동 인터뷰를 "
 "React, Vue, Angular, TypeScript, 현대 웹 아키텍처에 중점을 두고 연습할 수 있습니다."
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:297
+#. js-lingui-explicit-id
+msgid "You can remove your own messages anytime."
+msgstr "언제든지 본인의 메시지를 삭제할 수 있습니다."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:713
 #. js-lingui-explicit-id
@@ -13662,6 +13916,14 @@ msgstr "{date}까지 전체 액세스가 활성화됩니다."
 #. js-lingui-explicit-id
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "당신의 목표는 완벽함이 아니라, 상대방을 능가하는 것입니다."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:122
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:126
+#. js-lingui-explicit-id
+msgid ""
+"Your intro is already in the room. Listen to others, then reply when you’re "
+"ready."
+msgstr "당신의 소개가 이미 방에 있습니다. 다른 사람들의 말을 듣고 준비가 되면 답장하세요."
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
