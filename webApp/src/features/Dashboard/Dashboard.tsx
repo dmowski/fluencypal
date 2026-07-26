@@ -23,6 +23,7 @@ import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
 import { LinkToStatsAdmin } from './LinkToStats';
+import { VoiceChatDashboardCard } from '../Chat/VoiceChat/VoiceChatDashboardCard';
 
 export function Dashboard({ lang }: { lang: SupportedLanguage }) {
   const appNavigation = useAppNavigation();
@@ -50,6 +51,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
 
             <GameDashboardCard />
             <ExamsDashboardCard />
+            <VoiceChatDashboardCard />
 
             <LinkToStatsAdmin />
           </MainDashboardContainer>
