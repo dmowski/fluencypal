@@ -5,6 +5,14 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || '';
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || '';
 const url = 'https://api.telegram.org/bot' + TELEGRAM_API_KEY + '/sendMessage';
 
+/**
+ * Never hit the real Telegram API from emulator / e2e.
+ * - `pnpm dev` sets IS_FIREBASE_EMULATOR=true
+ * - Playwright also sets E2E_DISABLE_TELEGRAM=true when it starts the webServer
+ */
+const isTelegramDisabledLocally = (): boolean =>
+  process.env.E2E_DISABLE_TELEGRAM === 'true' || process.env.IS_FIREBASE_EMULATOR === 'true';
+
 const TELEGRAM_ALERT_COOLDOWN_MS = 10 * 60 * 1000;
 const recentTelegramAlerts = new Map<string, number>();
 
@@ -20,6 +28,9 @@ const shouldSendTelegramAlert = (message: string): boolean => {
 };
 
 const sendTelegramMessageInternal = async (message: string, chatId: string): Promise<void> => {
+  if (isTelegramDisabledLocally()) {
+    return;
+  }
   try {
     console.log('urlForSend', url);
     const result = await fetch(url, {
@@ -54,6 +65,9 @@ export const sentSupportTelegramMessage = async ({
   message: string;
   userId?: string;
 }): Promise<void> => {
+  if (isTelegramDisabledLocally()) {
+    return;
+  }
   if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
     throw new Error('Telegram API key or chat ID is not set');
   }
@@ -79,6 +93,9 @@ export const sentSupportTelegramMessage = async ({
 };
 
 export const sendTelegramMessageServer = async (message: string): Promise<void> => {
+  if (isTelegramDisabledLocally()) {
+    return;
+  }
   if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
     return;
   }
