@@ -53,5 +53,9 @@ export default defineConfig({
     url: `${BASE_URL}/practice`,
     reuseExistingServer: true,
     timeout: 120000,
+    env: {
+      ...process.env,
+      E2E_DISABLE_TELEGRAM: 'true',
+    },
   },
 });
