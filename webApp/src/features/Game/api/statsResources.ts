@@ -7,6 +7,7 @@ import {
   GameUsersAchievements,
   GameUsersPoints,
 } from '@/features/Game/types';
+import { validateGameWinners } from '@/features/Chat/VoiceChat/backend/entitlements';
 import { FieldValue } from 'firebase-admin/firestore';
 import { getDB } from '../../../app/api/config/firebase';
 
@@ -195,5 +196,12 @@ export const increaseUserPoints = async ({
   ]);
 
   stat[userId] = newValue;
+
+  try {
+    await validateGameWinners();
+  } catch (error) {
+    console.error('Voice chat game-winner entitlement sync failed', error);
+  }
+
   return stat;
 };
