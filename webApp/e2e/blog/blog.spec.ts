@@ -61,6 +61,9 @@ test.describe('Blog admin', () => {
     // The language selector should default to English.
     // MUI Select renders as a button, check its visible text content.
     await expect(page.getByRole('combobox').first()).toContainText('English');
+
+    await page.getByRole('button', { name: 'close' }).click();
+    await expect(page.getByRole('button', { name: 'Save Draft' })).toBeHidden();
   });
 
   test('Can save draft content', async ({ page }) => {
@@ -114,13 +117,17 @@ test.describe('Blog admin', () => {
     await page.getByRole('button', { name: 'New Blog Post' }).click();
 
     await expect(page.getByRole('button', { name: 'Save Draft' })).toBeVisible();
+    // Modal opens optimistically before setDoc finishes; wait for create to complete.
+    await expect(page.getByRole('button', { name: 'Creating...' })).toBeHidden();
 
     // Close the editor and wait until the modal is gone (overlay blocks list actions).
     await page.getByRole('button', { name: 'close' }).click();
     await expect(page.getByRole('button', { name: 'Save Draft' })).toBeHidden();
 
-    // The draft should appear in the list.
-    await expect(page.getByText('Draft').first()).toBeVisible();
+    // Wait for the real-time listener to render the list row actions.
+    await expect
+      .poll(async () => page.getByRole('button', { name: 'Delete blog post' }).count())
+      .toBe(1);
 
     // Delete it.
     await page.getByRole('button', { name: 'Delete blog post' }).click();
