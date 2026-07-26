@@ -1,4 +1,6 @@
-import firebaseAdmin from "firebase-admin";
+import { App, AppOptions, cert, getApps, initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 const storageBucket = "dark-lang.firebasestorage.app";
 const projectId = "dark-lang";
@@ -15,10 +17,11 @@ const serviceAccount = (() => {
   };
 })();
 
-let cacheApp: firebaseAdmin.app.App | null = null;
+let cacheApp: App | null = null;
 
-const initApp = (): firebaseAdmin.app.App => {
-  let fApp = firebaseAdmin.apps[0];
+const initApp = (): App => {
+  const existingApps = getApps();
+  const fApp = existingApps[0];
   if (fApp) {
     return fApp;
   }
@@ -27,8 +30,8 @@ const initApp = (): firebaseAdmin.app.App => {
     return cacheApp;
   }
 
-  const appOptions: firebaseAdmin.AppOptions = {
-    credential: firebaseAdmin.credential.cert({
+  const appOptions: AppOptions = {
+    credential: cert({
       projectId: serviceAccount.project_id,
       clientEmail: serviceAccount.client_email,
       privateKey: serviceAccount.private_key,
@@ -36,7 +39,7 @@ const initApp = (): firebaseAdmin.app.App => {
     storageBucket: storageBucket,
   };
 
-  const app = firebaseAdmin.initializeApp(appOptions, projectId + Date.now());
+  const app = initializeApp(appOptions, projectId + Date.now());
 
   cacheApp = app;
 
@@ -44,23 +47,13 @@ const initApp = (): firebaseAdmin.app.App => {
 };
 
 export const getBucket = () => {
-  let app = firebaseAdmin.apps[0];
-  if (app) {
-    return app.storage().bucket(storageBucket);
-  }
-
-  app = initApp();
-
-  return app.storage().bucket(storageBucket);
+  const existingApps = getApps();
+  const app = existingApps[0] ?? initApp();
+  return getStorage(app).bucket(storageBucket);
 };
 
 export const getDB = () => {
-  let app = firebaseAdmin.apps[0];
-  if (app) {
-    return app.firestore();
-  }
-
-  app = initApp();
-
-  return app.firestore();
+  const existingApps = getApps();
+  const app = existingApps[0] ?? initApp();
+  return getFirestore(app);
 };
