@@ -33,6 +33,17 @@ webApp/src/features/Chat/VoiceChat/
 
 API route files under `webApp/src/app/api/voice-chat/*` stay thin; business logic belongs in `backend/`.
 
+### Typing (API I/O)
+
+All request/response shapes live in `types.ts` (`VoiceChat*Request`, `VoiceChat*Response`, `VoiceChat*Form`, route `*Params` / `*RouteContext`). Routes must not inline `as { … }` body casts.
+
+- JSON bodies: parse via `backend/http.ts` (`parseDecideRequest`, `parseMarkListenedRequest`, `parseValidatePaidRequest`).
+- Multipart bodies: `parseRequestAccessForm`, `parseSendMessageForm`.
+- Responses: `NextResponse.json<VoiceChat…Response>(…)`.
+- Client: `api/voiceChatClient.ts` imports the same response types.
+
+Firestore boundary reads (`snap.data()`) remain in `backend/*` and stay cast to domain types after existence checks.
+
 **Do not reuse** text-chat `useChat` / `ThreadsMessage` / public `makePublic()` audio. **Do reuse** nested replies pattern, `StoreCard`, `showPaymentModal()`, `GlobalModals` + `useUrlState`, mic + `VoiceVisualizer` (recording only), server Telegram helper, Vercel cron.
 
 ### Firestore (API-only writes)
@@ -60,8 +71,9 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | `DELETE /messages/[id]` | Cascade delete own subtree + storage |
 | `GET /messages/[id]/audio` | Signed audio stream |
 | `POST /mark-listened` | Unread decrement |
-| `POST /validate-paid` | Reconcile paid snapshot |
-| `POST /validate-game-winner` | Reconcile top-5 winners |
+| `POST /validate-paid` | Reconcile paid snapshot for one user |
+| `GET /validate-paid` | Cron: re-check paid snapshots for known voice-chat users |
+| `POST\|GET /validate-game-winner` | Reconcile top-5 winners (GET = cron) |
 | `GET /cleanup` | Cron: delete messages older than TTL |
 
 ## UI entry
