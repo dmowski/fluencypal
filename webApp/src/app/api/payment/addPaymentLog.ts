@@ -1,7 +1,7 @@
+import { validatePaidForUser } from '@/features/Chat/VoiceChat/backend/entitlements';
 import { PaymentLog, PaymentLogType } from '@/features/Usage/usage';
 import { getDB } from '../config/firebase';
 import { addToTotalBalance } from './addToTotalBalance';
-import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 
 interface AddPaymentLogParams {
   amount: number;
@@ -73,4 +73,10 @@ export const addPaymentLog = async ({
     hoursCount,
     minutesCount,
   });
+
+  try {
+    await validatePaidForUser(userId);
+  } catch (error) {
+    console.error('Voice chat paid entitlement sync failed', error);
+  }
 };
