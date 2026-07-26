@@ -21,6 +21,11 @@ service firebase.storage {
     //   - Only the owner may delete.
     //
     // Writes are capped at 25 MB to limit abuse.
+    // Voice Chat audio is private; served only via authenticated API routes.
+    match /voiceChat/{allPaths=**} {
+      allow read, write: if false;
+    }
+
     match /books/{bookId}/{fileName=**} {
       function bookDoc() {
         return firestore.get(/databases/(default)/documents/books/$(bookId)).data;

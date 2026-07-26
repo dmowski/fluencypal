@@ -2,15 +2,7 @@
 
 ## Voice chat
 
-webApp/src/features/Chat/VoiceChat/AGENTS.md
-Agent.md
-use useChat
-Create dashboard card: hide under feature flag
-Create Message component: reply, delete,
-Create submit form
-Integrate with database
-Create paywall
-Delete after 5 days
+See webApp/src/features/Chat/VoiceChat/AGENTS.md
 
 ## Convert visitors to users: Start a first conversation
 

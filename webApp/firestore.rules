@@ -323,5 +323,26 @@ service cloud.firestore {
         allow write: if isBlogAdmin();
       }
     }
+
+    // Voice Chat: all mutations go through Admin SDK APIs.
+    // Clients may only read their own membership + entitlement docs.
+    match /voiceChat/{docId} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /voiceChatEntitlements/{userId} {
+      allow read: if isUser(userId);
+      allow write: if false;
+    }
+
+    match /voiceChatMembers/{userId} {
+      allow read: if isUser(userId);
+      allow write: if false;
+    }
+
+    match /voiceChatMessages/{messageId} {
+      allow read, write: if false;
+    }
   }
 }
