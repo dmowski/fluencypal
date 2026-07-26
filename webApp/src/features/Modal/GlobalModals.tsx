@@ -13,6 +13,7 @@ import { StoriesModal } from '@/features/Sentence/StoriesModal';
 import { useBattle } from '@/features/Game/Battle/useBattle';
 import { BattleActionModal } from '@/features/Game/Battle/BattleActionModal';
 import { PublicChatModal } from '@/features/Chat/PublicChatModal';
+import { VoiceChatModal } from '@/features/Chat/VoiceChat/VoiceChatModal';
 import { useGlobalModals } from './useGlobalModals';
 import { DailyQuestionModal } from '@/features/DailyQuestion/DailyQuestionModal';
 import { GrammarImprovementModal } from '@/features/Dashboard/Grammar/GrammarImprovementModal';
@@ -51,6 +52,7 @@ export const GlobalModals: React.FC = () => {
       )}
 
       {globalModals.isShowPublicChat && <PublicChatModal onClose={globalModals.closeAllModels} />}
+      {globalModals.isShowVoiceChat && <VoiceChatModal onClose={globalModals.closeAllModels} />}
       {globalModals.isShowDailyQuestions && (
         <DailyQuestionModal onClose={globalModals.closeAllModels} />
       )}

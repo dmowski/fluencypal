@@ -16,12 +16,14 @@ export const useGlobalModals = () => {
   );
 
   const [isShowEssay, setIsShowEssay] = useUrlState('essay', false, false);
+  const [isShowVoiceChat, setIsShowVoiceChat] = useUrlState('voiceChat', false, false);
 
   const router = useRouter();
 
   const closeAllModels = async () => {
     if (isShowPublicChat) setIsShowPublicChat(false);
     if (isShowDailyQuestions) setIsShowDailyQuestions(false);
+    if (isShowVoiceChat) setIsShowVoiceChat(false);
 
     await sleep(400);
 
@@ -45,5 +47,8 @@ export const useGlobalModals = () => {
 
     openEssay: () => setIsShowEssay(true),
     isShowEssay,
+
+    openVoiceChat: () => setIsShowVoiceChat(true),
+    isShowVoiceChat,
   };
 };
