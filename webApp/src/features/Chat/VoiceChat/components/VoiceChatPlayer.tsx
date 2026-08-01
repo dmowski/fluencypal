@@ -8,6 +8,9 @@ import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
 
 interface VoiceChatPlayerProps {
   audioUrl: string | null;
+  autoPlay?: boolean;
+  isPausedExternally?: boolean;
+  onPlayStart?: () => void;
   onProgressListen?: () => void;
   onEnded?: () => void;
   label?: string;
@@ -15,6 +18,9 @@ interface VoiceChatPlayerProps {
 
 export const VoiceChatPlayer = ({
   audioUrl,
+  autoPlay = false,
+  isPausedExternally = false,
+  onPlayStart,
   onProgressListen,
   onEnded,
   label,
@@ -25,6 +31,8 @@ export const VoiceChatPlayer = ({
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const hasMarkedListen = useRef(false);
+  const onPlayStartRef = useRef(onPlayStart);
+  onPlayStartRef.current = onPlayStart;
 
   useEffect(() => {
     hasMarkedListen.current = false;
@@ -66,11 +74,31 @@ export const VoiceChatPlayer = ({
     };
   }, [audioUrl, onEnded, onProgressListen]);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!autoPlay || !audio || !audioUrl) return;
+    onPlayStartRef.current?.();
+    void audio.play();
+  }, [autoPlay, audioUrl]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!isPausedExternally || !audio || audio.paused) return;
+    audio.pause();
+  }, [isPausedExternally]);
+
+  const startPlayback = async () => {
+    const audio = audioRef.current;
+    if (!audio || !audioUrl) return;
+    onPlayStartRef.current?.();
+    await audio.play();
+  };
+
   const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio || !audioUrl) return;
     if (audio.paused) {
-      await audio.play();
+      await startPlayback();
     } else {
       audio.pause();
     }
@@ -86,7 +114,7 @@ export const VoiceChatPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
     audio.currentTime = 0;
-    void audio.play();
+    void startPlayback();
   };
 
   const percent = duration > 0 ? Math.min(100, (progress / duration) * 100) : 0;

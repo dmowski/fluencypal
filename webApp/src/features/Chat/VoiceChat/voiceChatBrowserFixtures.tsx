@@ -65,19 +65,29 @@ export function VoiceChatTestShell({
 export function VoiceChatMessageListFixture({
   messages,
   listenedIds,
-  activeMessageId,
+  playingMessageId,
+  autoPlayMessageId,
   audioUrlById,
   testId = 'voice-chat-message-list-fixture',
 }: {
   messages: VoiceChatMessage[];
   listenedIds?: Set<string>;
-  activeMessageId?: string | null;
+  playingMessageId?: string | null;
+  autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
   testId?: string;
 }) {
   return (
     <VoiceChatTestShell testId={testId}>
-      <VoiceChatMessageList {...messageListFixtureProps({ messages, listenedIds, activeMessageId, audioUrlById })} />
+      <VoiceChatMessageList
+        {...messageListFixtureProps({
+          messages,
+          listenedIds,
+          playingMessageId,
+          autoPlayMessageId,
+          audioUrlById,
+        })}
+      />
     </VoiceChatTestShell>
   );
 }
@@ -85,7 +95,8 @@ export function VoiceChatMessageListFixture({
 export function VoiceChatModalShellFixture(props: {
   messages?: VoiceChatMessage[];
   listenedIds?: Set<string>;
-  activeMessageId?: string | null;
+  playingMessageId?: string | null;
+  autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
   showRecorder?: boolean;
 }) {

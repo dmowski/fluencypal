@@ -20,6 +20,14 @@ vi.mock('@/features/Game/useGame', () => ({
   }),
 }));
 
+vi.mock('@/features/Auth/useAuth', () => ({
+  useAuth: () => ({
+    uid: 'fixture-user',
+    getToken: async () => 'fixture-token',
+    isFounder: true,
+  }),
+}));
+
 vi.mock('next/image', () => ({
   __esModule: true,
   default: function MockNextImage({
@@ -62,20 +70,6 @@ test('message list – nested conversation with unread highlights', async () => 
   await expect
     .element(page.getByTestId('voice-chat-message-list-fixture'))
     .toMatchScreenshot('message-list-conversation');
-});
-
-test('message list – active player on intro message', async () => {
-  await render(
-    <VoiceChatMessageListFixture
-      messages={FIXTURE_CONVERSATION}
-      activeMessageId="msg-bob-intro"
-      audioUrlById={{ 'msg-bob-intro': SILENT_AUDIO_DATA_URL }}
-    />,
-  );
-
-  await expect
-    .element(page.getByTestId('voice-chat-message-list-fixture'))
-    .toMatchScreenshot('message-list-active-player');
 });
 
 test('message list – reply recorder open', async () => {

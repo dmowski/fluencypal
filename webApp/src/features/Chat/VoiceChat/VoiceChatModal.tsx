@@ -19,7 +19,8 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const auth = useAuth();
   const [messages, setMessages] = useState<VoiceChatMessage[]>([]);
   const [listenedIds, setListenedIds] = useState<Set<string>>(new Set());
-  const [activeMessageId, setActiveMessageId] = useState<string | null>(null);
+  const [playingMessageId, setPlayingMessageId] = useState<string | null>(null);
+  const [autoPlayMessageId, setAutoPlayMessageId] = useState<string | null>(null);
   const [audioUrlById, setAudioUrlById] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -63,17 +64,22 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     [auth, audioUrlById],
   );
 
+  useEffect(() => {
+    if (!messages.length) return;
+    for (const message of messages) {
+      void ensureAudio(message.id);
+    }
+  }, [messages, ensureAudio]);
+
   const playQueue = useMemo(
     () => messages.map((m) => m.id),
     [messages],
   );
 
-  const onPlayMessage = async (messageId: string) => {
-    try {
-      await ensureAudio(messageId);
-      setActiveMessageId(messageId);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : i18n._('Failed to play'));
+  const onPlayStart = (messageId: string) => {
+    setPlayingMessageId(messageId);
+    if (autoPlayMessageId === messageId) {
+      setAutoPlayMessageId(null);
     }
   };
 
@@ -92,9 +98,18 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     const idx = playQueue.indexOf(messageId);
     const nextId = idx >= 0 ? playQueue[idx + 1] : undefined;
     if (nextId) {
-      await onPlayMessage(nextId);
+      try {
+        await ensureAudio(nextId);
+        setPlayingMessageId(nextId);
+        setAutoPlayMessageId(nextId);
+      } catch (e) {
+        setPlayingMessageId(null);
+        setAutoPlayMessageId(null);
+        setError(e instanceof Error ? e.message : i18n._('Failed to play'));
+      }
     } else {
-      setActiveMessageId(null);
+      setPlayingMessageId(null);
+      setAutoPlayMessageId(null);
     }
   };
 
@@ -118,11 +133,12 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         currentUserId={auth.uid || ''}
         listenedIds={listenedIds}
         audioUrlById={audioUrlById}
-        activeMessageId={activeMessageId}
+        playingMessageId={playingMessageId}
+        autoPlayMessageId={autoPlayMessageId}
         showRootRecorder={showRootRecorder}
         error={error}
         isLoading={isLoading}
-        onPlayMessage={(id) => void onPlayMessage(id)}
+        onPlayStart={onPlayStart}
         onProgressListen={(id) => void onProgressListen(id)}
         onEnded={(id) => void onEnded(id)}
         onReply={onReply}

@@ -7,7 +7,6 @@ import { useAccess } from '@/features/Usage/useAccess';
 import { useGlobalModals } from '@/features/Modal/useGlobalModals';
 import {
   decideVoiceChatMembership,
-  fetchPendingIntroAudioBlob,
   fetchVoiceChatStatus,
   requestVoiceChatAccess,
 } from './api/voiceChatClient';
@@ -27,8 +26,6 @@ export const VoiceChatDashboardCard = () => {
   const [error, setError] = useState('');
   const [rulesOpen, setRulesOpen] = useState(false);
   const [showIntroRecorder, setShowIntroRecorder] = useState(false);
-  const [previewIntroUrl, setPreviewIntroUrl] = useState<string | null>(null);
-  const [previewUserId, setPreviewUserId] = useState<string | null>(null);
   const [busyUserId, setBusyUserId] = useState('');
 
   const refresh = useCallback(async () => {
@@ -76,14 +73,6 @@ export const VoiceChatDashboardCard = () => {
     }
   };
 
-  const listenPendingIntro = async (userId: string) => {
-    const token = await auth.getToken();
-    const blob = await fetchPendingIntroAudioBlob({ token, userId });
-    if (previewIntroUrl) URL.revokeObjectURL(previewIntroUrl);
-    setPreviewIntroUrl(URL.createObjectURL(blob));
-    setPreviewUserId(userId);
-  };
-
   return (
     <VoiceChatDashboardView
       rootTestId="voice-chat-dashboard-card"
@@ -109,9 +98,6 @@ export const VoiceChatDashboardCard = () => {
       isApprover={status?.isApprover}
       pendingMembers={status?.pendingMembers}
       busyUserId={busyUserId}
-      previewUserId={previewUserId}
-      previewIntroUrl={previewIntroUrl}
-      onListenPendingIntro={(userId) => void listenPendingIntro(userId)}
       onApproveMember={(userId) => void onDecide(userId, 'approved')}
       onRejectMember={(userId) => void onDecide(userId, 'rejected')}
     />

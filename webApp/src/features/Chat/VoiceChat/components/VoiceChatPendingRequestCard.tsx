@@ -1,12 +1,14 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { Play } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useAuth } from '@/features/Auth/useAuth';
 import { useGame } from '@/features/Game/useGame';
 import { Avatar } from '@/features/User/Avatar';
 import { UserName } from '@/features/User/UserName';
+import { fetchPendingIntroAudioBlob } from '../api/voiceChatClient';
 import { VoiceChatMember } from '../types';
 import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
 import { VoiceChatPlayer } from './VoiceChatPlayer';
@@ -14,35 +16,62 @@ import { VoiceChatPlayer } from './VoiceChatPlayer';
 interface VoiceChatPendingRequestCardProps {
   member: VoiceChatMember;
   isBusy: boolean;
-  isPreviewActive: boolean;
-  previewAudioUrl: string | null;
-  onListen: () => void;
+  /** When set (e.g. browser fixtures), skips fetch and shows the player immediately. */
+  previewAudioUrl?: string | null;
   onApprove: () => void;
   onReject: () => void;
 }
 
-const playButtonSx = {
-  width: 44,
-  height: 44,
-  flexShrink: 0,
-  color: voiceChatUi.accent,
-  border: `1px solid ${voiceChatUi.borderSubtle}`,
-  borderRadius: '50%',
-  '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-};
-
 export const VoiceChatPendingRequestCard = ({
   member,
   isBusy,
-  isPreviewActive,
-  previewAudioUrl,
-  onListen,
+  previewAudioUrl: previewAudioUrlOverride,
   onApprove,
   onReject,
 }: VoiceChatPendingRequestCardProps) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const game = useGame();
-  const showPlayer = isPreviewActive && !!previewAudioUrl;
+  const [loadedAudioUrl, setLoadedAudioUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(previewAudioUrlOverride === undefined);
+
+  const audioUrl = previewAudioUrlOverride ?? loadedAudioUrl;
+
+  useEffect(() => {
+    if (previewAudioUrlOverride !== undefined) return;
+
+    let objectUrl: string | null = null;
+    let cancelled = false;
+
+    const load = async () => {
+      setIsLoading(true);
+      try {
+        const token = await auth.getToken();
+        const blob = await fetchPendingIntroAudioBlob({ token, userId: member.userId });
+        objectUrl = URL.createObjectURL(blob);
+        if (!cancelled) {
+          setLoadedAudioUrl(objectUrl);
+        }
+      } catch {
+        if (!cancelled) {
+          setLoadedAudioUrl(null);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    void load();
+
+    return () => {
+      cancelled = true;
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+      }
+    };
+  }, [auth, member.userId, previewAudioUrlOverride]);
 
   return (
     <Stack
@@ -82,18 +111,15 @@ export const VoiceChatPendingRequestCard = ({
         </Stack>
       </Stack>
 
-      {showPlayer && <VoiceChatPlayer audioUrl={previewAudioUrl} />}
+      {isLoading ? (
+        <Typography variant="caption" sx={{ color: voiceChatUi.textMuted }}>
+          {i18n._('Loading…')}
+        </Typography>
+      ) : (
+        <VoiceChatPlayer audioUrl={audioUrl} />
+      )}
 
       <Stack direction="row" alignItems="center" gap={0.75}>
-        {!showPlayer && (
-          <IconButton
-            onClick={onListen}
-            aria-label={i18n._('Listen intro')}
-            sx={playButtonSx}
-          >
-            <Play size={20} fill="currentColor" />
-          </IconButton>
-        )}
         <Button
           size="small"
           variant="contained"

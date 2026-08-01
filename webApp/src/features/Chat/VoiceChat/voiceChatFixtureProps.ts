@@ -42,23 +42,28 @@ export function dashboardFixturePanelProps(
     onOpenRules: () => {},
     isApprover: state === 'approver-pending',
     pendingMembers: state === 'approver-pending' ? [FIXTURE_PENDING_MEMBER] : [],
-    previewUserId: state === 'approver-pending' ? FIXTURE_PENDING_MEMBER.userId : null,
-    previewIntroUrl: state === 'approver-pending' ? SILENT_AUDIO_DATA_URL : null,
+    pendingPreviewAudioUrl: state === 'approver-pending' ? SILENT_AUDIO_DATA_URL : undefined,
   };
+}
+
+export function fixtureAudioUrlById(messages: VoiceChatMessage[]): Record<string, string> {
+  return Object.fromEntries(messages.map((message) => [message.id, SILENT_AUDIO_DATA_URL]));
 }
 
 export function modalFixtureContentProps(options: {
   messages?: VoiceChatMessage[];
   listenedIds?: Set<string>;
-  activeMessageId?: string | null;
+  playingMessageId?: string | null;
+  autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
   showRecorder?: boolean;
 }): VoiceChatModalContentProps {
   const {
     messages = FIXTURE_CONVERSATION,
     listenedIds = FIXTURE_LISTENED_IDS,
-    activeMessageId = null,
-    audioUrlById = {},
+    playingMessageId = null,
+    autoPlayMessageId = null,
+    audioUrlById,
     showRecorder = false,
   } = options;
 
@@ -66,10 +71,11 @@ export function modalFixtureContentProps(options: {
     messages,
     currentUserId: FIXTURE_CURRENT_USER,
     listenedIds,
-    audioUrlById,
-    activeMessageId,
+    audioUrlById: audioUrlById ?? fixtureAudioUrlById(messages),
+    playingMessageId,
+    autoPlayMessageId,
     showRootRecorder: showRecorder,
-    onPlayMessage: () => {},
+    onPlayStart: () => {},
     onProgressListen: () => {},
     onEnded: () => {},
     onReply: noopAsync,
@@ -83,23 +89,26 @@ export function modalFixtureContentProps(options: {
 export function messageListFixtureProps(options: {
   messages: VoiceChatMessage[];
   listenedIds?: Set<string>;
-  activeMessageId?: string | null;
+  playingMessageId?: string | null;
+  autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
 }) {
   const {
     messages,
     listenedIds = FIXTURE_LISTENED_IDS,
-    activeMessageId = null,
-    audioUrlById = {},
+    playingMessageId = null,
+    autoPlayMessageId = null,
+    audioUrlById,
   } = options;
 
   return {
     messages,
     currentUserId: FIXTURE_CURRENT_USER,
     listenedIds,
-    audioUrlById,
-    activeMessageId,
-    onPlayMessage: () => {},
+    audioUrlById: audioUrlById ?? fixtureAudioUrlById(messages),
+    playingMessageId,
+    autoPlayMessageId,
+    onPlayStart: () => {},
     onProgressListen: () => {},
     onEnded: () => {},
     onReply: noopAsync,

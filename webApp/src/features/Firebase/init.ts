@@ -27,7 +27,8 @@ import { getStorage } from 'firebase/storage';
 
 const isNodeEnv = typeof window === 'undefined';
 const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-const isFirebaseEmulator = process.env.NEXT_PUBLIC_IS_FIREBASE_EMULATOR === 'true';
+const isFirebaseEmulator =
+  typeof process !== 'undefined' && process.env.NEXT_PUBLIC_IS_FIREBASE_EMULATOR === 'true';
 const app = initializeApp(firebaseConfig);
 
 // Connect to Firebase Emulator if enabled

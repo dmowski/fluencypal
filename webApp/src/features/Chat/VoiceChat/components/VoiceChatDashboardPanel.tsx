@@ -23,10 +23,9 @@ export interface VoiceChatDashboardPanelProps {
   onOpenRules: () => void;
   isApprover?: boolean;
   pendingMembers?: VoiceChatMember[];
+  /** Preloaded intro audio for pending cards (browser fixtures). */
+  pendingPreviewAudioUrl?: string | null;
   busyUserId?: string;
-  previewUserId?: string | null;
-  previewIntroUrl?: string | null;
-  onListenPendingIntro?: (userId: string) => void;
   onApproveMember?: (userId: string) => void;
   onRejectMember?: (userId: string) => void;
 }
@@ -46,10 +45,8 @@ export const VoiceChatDashboardPanel = ({
   onOpenRules,
   isApprover,
   pendingMembers = [],
+  pendingPreviewAudioUrl,
   busyUserId = '',
-  previewUserId = null,
-  previewIntroUrl = null,
-  onListenPendingIntro,
   onApproveMember,
   onRejectMember,
 }: VoiceChatDashboardPanelProps) => {
@@ -117,9 +114,7 @@ export const VoiceChatDashboardPanel = ({
               key={member.userId}
               member={member}
               isBusy={busyUserId === member.userId}
-              isPreviewActive={previewUserId === member.userId}
-              previewAudioUrl={previewUserId === member.userId ? previewIntroUrl : null}
-              onListen={() => onListenPendingIntro?.(member.userId)}
+              previewAudioUrl={pendingPreviewAudioUrl}
               onApprove={() => onApproveMember?.(member.userId)}
               onReject={() => onRejectMember?.(member.userId)}
             />

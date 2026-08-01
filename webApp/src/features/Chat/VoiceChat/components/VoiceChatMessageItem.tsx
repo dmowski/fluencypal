@@ -1,26 +1,15 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { MoreVertical, Play } from 'lucide-react';
+import { Button, IconButton, Stack } from '@mui/material';
+import { MoreVertical } from 'lucide-react';
 import { useGame } from '@/features/Game/useGame';
 import { Avatar } from '@/features/User/Avatar';
 import { UserName } from '@/features/User/UserName';
 import { VoiceChatMessage } from '../types';
-import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
+import { voiceChatUi } from '../voiceChatUi';
 import { VoiceChatPlayer } from './VoiceChatPlayer';
 import { VoiceChatRecorderPanel } from './VoiceChatRecorderPanel';
-
-const playButtonSx = {
-  width: voiceChatUi.messagePlayButtonSize,
-  height: voiceChatUi.messagePlayButtonSize,
-  p: 0,
-  flexShrink: 0,
-  color: voiceChatUi.accent,
-  border: `1px solid ${voiceChatUi.borderSubtle}`,
-  borderRadius: '50%',
-  '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-};
 
 const replyButtonSx = {
   minWidth: 0,
@@ -35,10 +24,11 @@ export interface VoiceChatMessageItemProps {
   message: VoiceChatMessage;
   depth: number;
   isMine: boolean;
-  isActive: boolean;
   isReplyOpen: boolean;
   audioUrl: string | null;
-  onPlay: () => void;
+  autoPlay: boolean;
+  isPausedExternally: boolean;
+  onPlayStart: () => void;
   onProgressListen: () => void;
   onEnded: () => void;
   onReplyClick: () => void;
@@ -51,10 +41,11 @@ export const VoiceChatMessageItem = ({
   message,
   depth,
   isMine,
-  isActive,
   isReplyOpen,
   audioUrl,
-  onPlay,
+  autoPlay,
+  isPausedExternally,
+  onPlayStart,
   onProgressListen,
   onEnded,
   onReplyClick,
@@ -64,7 +55,6 @@ export const VoiceChatMessageItem = ({
 }: VoiceChatMessageItemProps) => {
   const { i18n } = useLingui();
   const game = useGame();
-  const durationLabel = formatVoiceDuration(message.durationSec);
 
   return (
     <Stack
@@ -110,47 +100,25 @@ export const VoiceChatMessageItem = ({
         )}
       </Stack>
 
-      {isActive ? (
-        <Stack gap={0.5}>
-          <VoiceChatPlayer
-            audioUrl={audioUrl}
-            onProgressListen={onProgressListen}
-            onEnded={onEnded}
-          />
-          <Button
-            size="small"
-            variant="text"
-            color="info"
-            onClick={onReplyClick}
-            sx={{ ...replyButtonSx, alignSelf: 'flex-start' }}
-          >
-            {i18n._('Reply')}
-          </Button>
-        </Stack>
-      ) : (
-        <Stack
-          direction="row"
-          alignItems="center"
-          gap={0.75}
-          sx={{ minHeight: voiceChatUi.messagePlayButtonSize }}
+      <Stack gap={0.5}>
+        <VoiceChatPlayer
+          audioUrl={audioUrl}
+          autoPlay={autoPlay}
+          isPausedExternally={isPausedExternally}
+          onPlayStart={onPlayStart}
+          onProgressListen={onProgressListen}
+          onEnded={onEnded}
+        />
+        <Button
+          size="small"
+          variant="text"
+          color="info"
+          onClick={onReplyClick}
+          sx={{ ...replyButtonSx, alignSelf: 'flex-start' }}
         >
-          <IconButton onClick={onPlay} aria-label={i18n._('Listen')} sx={playButtonSx}>
-            <Play size={voiceChatUi.messagePlayIconSize} fill="currentColor" />
-          </IconButton>
-          <Typography
-            variant="caption"
-            sx={{
-              color: voiceChatUi.textMuted,
-              fontVariantNumeric: 'tabular-nums',
-            }}
-          >
-            {durationLabel}
-          </Typography>
-          <Button size="small" variant="text" color="info" onClick={onReplyClick} sx={replyButtonSx}>
-            {i18n._('Reply')}
-          </Button>
-        </Stack>
-      )}
+          {i18n._('Reply')}
+        </Button>
+      </Stack>
 
       {isReplyOpen && (
         <VoiceChatRecorderPanel

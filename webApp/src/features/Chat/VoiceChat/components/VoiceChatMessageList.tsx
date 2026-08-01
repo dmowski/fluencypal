@@ -12,8 +12,9 @@ interface VoiceChatMessageListProps {
   currentUserId: string;
   listenedIds: Set<string>;
   audioUrlById: Record<string, string>;
-  activeMessageId: string | null;
-  onPlayMessage: (messageId: string) => void;
+  playingMessageId: string | null;
+  autoPlayMessageId: string | null;
+  onPlayStart: (messageId: string) => void;
   onProgressListen: (messageId: string) => void;
   onEnded: (messageId: string) => void;
   onReply: (parentMessageId: string, blob: Blob, durationSec: number) => Promise<void>;
@@ -36,8 +37,9 @@ export const VoiceChatMessageList = ({
   currentUserId,
   listenedIds: _listenedIds,
   audioUrlById,
-  activeMessageId,
-  onPlayMessage,
+  playingMessageId,
+  autoPlayMessageId,
+  onPlayStart,
   onProgressListen,
   onEnded,
   onReply,
@@ -63,10 +65,13 @@ export const VoiceChatMessageList = ({
           message={message}
           depth={depth}
           isMine={message.senderId === currentUserId}
-          isActive={activeMessageId === message.id}
           isReplyOpen={replyingTo === message.id}
           audioUrl={audioUrlById[message.id] || null}
-          onPlay={() => onPlayMessage(message.id)}
+          autoPlay={autoPlayMessageId === message.id}
+          isPausedExternally={
+            playingMessageId !== null && playingMessageId !== message.id
+          }
+          onPlayStart={() => onPlayStart(message.id)}
           onProgressListen={() => onProgressListen(message.id)}
           onEnded={() => onEnded(message.id)}
           onReplyClick={() => setReplyingTo(message.id)}
