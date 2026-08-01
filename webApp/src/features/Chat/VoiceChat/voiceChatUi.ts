@@ -16,9 +16,9 @@ export const voiceChatUi = {
   dashboardCardBg: 'rgba(32, 24, 18, 0.92)',
   dashboardPanelBg: 'rgba(12, 10, 8, 0.55)',
   dashboardItemsBg: 'rgba(18, 14, 10, 0.75)',
-  messageAvatarSize: '24px',
-  messageAvatarColumnWidth: 28,
+  messageAvatarSize: '16px',
   messagePlayButtonSize: 36,
+  messagePlayIconSize: 18,
   pendingAvatarSize: '28px',
 } as const;
 

@@ -120,7 +120,7 @@ Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtur
 
 | Screenshot | Covers |
 | --- | --- |
-| `message-list-*` | Empty thread, nested replies, unread borders, active player, reply recorder |
+| `message-list-*` | Empty thread, nested replies, active player, reply recorder (`VoiceChatMessageItem`: row 1 identity, row 2 play · duration · reply) |
 | `modal-shell-*` | Modal header/alert, thread + record button or root recorder |
 | `player-controls` | Audio player chrome |
 | `recorder-idle` | Intro recorder before mic start |
@@ -134,6 +134,8 @@ cd webApp && pnpm test:unit -- --testPathPattern=VoiceChat
 cd webApp && pnpm test:unit:browser -- --run --update src/features/Chat/VoiceChat/VoiceChat.browser.test.tsx
 cd webApp && pnpm exec playwright test e2e/voice-chat
 ```
+
+After changing Voice Chat layout or visual tokens, **review the updated screenshots** (`screenshots/*.png`) before finishing — check column alignment, control sizing, nested-thread spacing, and that the avatar column stays narrow while the play button can overflow it visually.
 
 ## Copy targets (i18n)
 

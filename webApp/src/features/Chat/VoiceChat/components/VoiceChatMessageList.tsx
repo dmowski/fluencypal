@@ -1,16 +1,11 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import { MoreVertical, Play } from 'lucide-react';
+import { Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
-import { useGame } from '@/features/Game/useGame';
-import { Avatar } from '@/features/User/Avatar';
-import { UserName } from '@/features/User/UserName';
 import { VoiceChatMessage } from '../types';
-import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
-import { VoiceChatPlayer } from './VoiceChatPlayer';
-import { VoiceChatRecorderPanel } from './VoiceChatRecorderPanel';
+import { voiceChatUi } from '../voiceChatUi';
+import { VoiceChatMessageItem } from './VoiceChatMessageItem';
 
 interface VoiceChatMessageListProps {
   messages: VoiceChatMessage[];
@@ -39,7 +34,7 @@ const buildTree = (messages: VoiceChatMessage[]) => {
 export const VoiceChatMessageList = ({
   messages,
   currentUserId,
-  listenedIds,
+  listenedIds: _listenedIds,
   audioUrlById,
   activeMessageId,
   onPlayMessage,
@@ -49,7 +44,6 @@ export const VoiceChatMessageList = ({
   onRemove,
 }: VoiceChatMessageListProps) => {
   const { i18n } = useLingui();
-  const game = useGame();
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [menuMessageId, setMenuMessageId] = useState<string | null>(null);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
@@ -60,129 +54,32 @@ export const VoiceChatMessageList = ({
     setMenuAnchor(null);
   };
 
-  const playButtonSx = {
-    width: voiceChatUi.messagePlayButtonSize,
-    height: voiceChatUi.messagePlayButtonSize,
-    color: voiceChatUi.accent,
-    border: `1px solid ${voiceChatUi.borderSubtle}`,
-    borderRadius: '50%',
-    '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-  };
-
   const renderNode = (message: VoiceChatMessage, depth: number) => {
     const children = byParent.get(message.id) || [];
-    const isMine = message.senderId === currentUserId;
-    const isActive = activeMessageId === message.id;
 
     return (
       <Stack key={message.id} gap={0}>
-        <Stack
-          data-testid={`voice-chat-message-${message.id}`}
-          direction="row"
-          alignItems="flex-start"
-          gap={0.75}
-          sx={{
-            py: 1,
-            ...(depth > 0 && {
-              ml: depth * 2,
-              pl: 1.25,
-              borderLeft: `1px solid ${voiceChatUi.borderThread}`,
-            }),
+        <VoiceChatMessageItem
+          message={message}
+          depth={depth}
+          isMine={message.senderId === currentUserId}
+          isActive={activeMessageId === message.id}
+          isReplyOpen={replyingTo === message.id}
+          audioUrl={audioUrlById[message.id] || null}
+          onPlay={() => onPlayMessage(message.id)}
+          onProgressListen={() => onProgressListen(message.id)}
+          onEnded={() => onEnded(message.id)}
+          onReplyClick={() => setReplyingTo(message.id)}
+          onSubmitReply={async (blob, durationSec) => {
+            await onReply(message.id, blob, durationSec);
+            setReplyingTo(null);
           }}
-        >
-          <Stack
-            alignItems="center"
-            gap={0.5}
-            sx={{ width: voiceChatUi.messageAvatarColumnWidth, flexShrink: 0 }}
-          >
-            <Avatar
-              url={game.getUserAvatarUrl(message.senderId)}
-              avatarSize={voiceChatUi.messageAvatarSize}
-            />
-            {!isActive && (
-              <IconButton
-                size="small"
-                onClick={() => onPlayMessage(message.id)}
-                aria-label={i18n._('Listen')}
-                sx={playButtonSx}
-              >
-                <Play size={16} fill="currentColor" />
-              </IconButton>
-            )}
-          </Stack>
-
-          <Stack flex={1} minWidth={0} gap={0.5}>
-            <Stack direction="row" alignItems="center" gap={0.5} minWidth={0}>
-              <UserName
-                userId={message.senderId}
-                userName={game.getUserName(message.senderId)}
-                bold
-                size="small"
-              />
-              <Stack direction="row" alignItems="center" gap={0.25} sx={{ ml: 'auto', flexShrink: 0 }}>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    color: voiceChatUi.textMuted,
-                    fontVariantNumeric: 'tabular-nums',
-                  }}
-                >
-                  {formatVoiceDuration(message.durationSec)}
-                </Typography>
-                {isMine && (
-                  <IconButton
-                    size="small"
-                    aria-label={i18n._('Message options')}
-                    data-testid={`voice-chat-message-menu-${message.id}`}
-                    onClick={(event) => {
-                      setMenuMessageId(message.id);
-                      setMenuAnchor(event.currentTarget);
-                    }}
-                    sx={{
-                      width: 26,
-                      height: 26,
-                      color: voiceChatUi.textMuted,
-                      '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-                    }}
-                  >
-                    <MoreVertical size={14} />
-                  </IconButton>
-                )}
-              </Stack>
-            </Stack>
-
-            {isActive && (
-              <VoiceChatPlayer
-                audioUrl={audioUrlById[message.id] || null}
-                onProgressListen={() => onProgressListen(message.id)}
-                onEnded={() => onEnded(message.id)}
-              />
-            )}
-
-            <Button
-              size="small"
-              variant="text"
-              color="info"
-              onClick={() => setReplyingTo(message.id)}
-              sx={{ alignSelf: 'flex-start', minWidth: 0, px: 0.5, fontSize: 13 }}
-            >
-              {i18n._('Reply')}
-            </Button>
-
-            {replyingTo === message.id && (
-              <VoiceChatRecorderPanel
-                title={i18n._('Record your reply')}
-                submitLabel={i18n._('Send reply')}
-                onSubmit={async (blob, durationSec) => {
-                  await onReply(message.id, blob, durationSec);
-                  setReplyingTo(null);
-                }}
-                onCancel={() => setReplyingTo(null)}
-              />
-            )}
-          </Stack>
-        </Stack>
-
+          onCancelReply={() => setReplyingTo(null)}
+          onOpenMenu={(anchor) => {
+            setMenuMessageId(message.id);
+            setMenuAnchor(anchor);
+          }}
+        />
         {children.map((child) => renderNode(child, depth + 1))}
       </Stack>
     );
