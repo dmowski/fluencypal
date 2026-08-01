@@ -1,5 +1,5 @@
 const SENTENCE_PART_REGEX =
-  /[^.!?]+(?:[.!?]+(?=\s|$|[\u201C\u201D\u2018\u2019"'')\]}])|$)\s*/g;
+  /[^.!?]+(?:[.!?]+(?=\s|$|[\u201C\u201D\u2018\u2019"'')\]}])[\u201C\u201D\u2018\u2019"'')\]}]*|$)\s*/g;
 
 /**
  * Splits prose into sentence-sized chunks for per-sentence UI affordances.

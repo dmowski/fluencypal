@@ -3,6 +3,11 @@
 ## Voice chat
 
 See webApp/src/features/Chat/VoiceChat/AGENTS.md
+cover pages with this features with screenshot tests
+example of screenshot tests
+webApp/src/features/Reader/components/Paragraph/ReaderParagraph.browser.test.tsx
+
+Later these screenshots will be used for UX analyzis
 
 ## Convert visitors to users: Start a first conversation
 
