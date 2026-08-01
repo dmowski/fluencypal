@@ -116,7 +116,7 @@ Specs: `webApp/e2e/voice-chat/*.spec.ts`
 
 Unit tests: `backend/paidDetector.test.ts`, `backend/messages.cascade.test.ts` (`collectSubtreeIds`).
 
-Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtures.tsx`. Fixtures render real Voice Chat components (message list, player, recorder, dashboard card shell) with realistic data for UX review. Global app styling comes from `src/test-utils/browserAppShell.tsx` (injects `globalInlineCss` + `darkTheme` like `src/app/layout.tsx`). Baselines live in `screenshots/` next to the test file at **2× device pixel ratio** (`deviceScaleFactor: 2` in `vitest.browser.config.ts`); card preview asset is `screenshots/fixture-preview.png` (copy of production art).
+Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtures.tsx` (thin wrappers only — no UI copy). Mock data lives in `voiceChatFixtureData.ts`; state → props mapping in `voiceChatFixtureProps.ts`. Fixtures compose the same views as production: `VoiceChatDashboardView`, `VoiceChatModalView`, `VoiceChatMessageList`, `VoiceChatIntroRecorderPanel`, etc.
 
 | Screenshot | Covers |
 | --- | --- |

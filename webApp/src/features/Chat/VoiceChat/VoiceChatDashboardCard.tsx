@@ -1,19 +1,7 @@
 'use client';
 
-import { useLingui } from '@lingui/react';
-import {
-  Badge,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Stack,
-  Typography,
-} from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
-import { StoreCard } from '@/features/uiKit/Card/StoreCard';
-import { SectionHeader } from '@/features/Dashboard/CartsHeader';
+import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useAccess } from '@/features/Usage/useAccess';
 import { useGlobalModals } from '@/features/Modal/useGlobalModals';
@@ -23,16 +11,12 @@ import {
   fetchVoiceChatStatus,
   requestVoiceChatAccess,
 } from './api/voiceChatClient';
+import { VoiceChatDashboardView } from './components/VoiceChatDashboardView';
 import {
-  VOICE_CHAT_INTRO_MIN_SECONDS,
   VOICE_CHAT_PREVIEW_IMAGE_URL,
   VoiceChatDecision,
   VoiceChatStatusResponse,
 } from './types';
-import { VoiceChatChecklistRow } from './components/VoiceChatChecklistRow';
-import { VoiceChatPendingRequestCard } from './components/VoiceChatPendingRequestCard';
-import { VoiceChatRecorderPanel } from './components/VoiceChatRecorderPanel';
-import { voiceChatUi } from './voiceChatUi';
 
 export const VoiceChatDashboardCard = () => {
   const { i18n } = useLingui();
@@ -101,174 +85,35 @@ export const VoiceChatDashboardCard = () => {
   };
 
   return (
-    <Stack gap="20px" data-testid="voice-chat-dashboard-card">
-      <SectionHeader
-        title={i18n._('Voice chat with people')}
-        subTitle={i18n._('A small, voice-only room. No transcripts.')}
-      />
-      <Badge
-        color="error"
-        badgeContent={status?.unreadCount || 0}
-        invisible={!status?.unreadCount}
-        sx={{ width: '100%', '& .MuiBadge-badge': { right: 16, top: 16 } }}
-      >
-        <StoreCard
-          textColor="#fff"
-          backgroundColor={voiceChatUi.dashboardCardBg}
-          previewImageUrl={VOICE_CHAT_PREVIEW_IMAGE_URL}
-          title={i18n._('Voice chat with people')}
-          subTitle={i18n._('Messages are removed after 4 days')}
-          items={[]}
-          itemsBackgroundColor={voiceChatUi.dashboardItemsBg}
-          itemsViewMode="list"
-          onClick={() => {
-            if (memberStatus === 'approved') {
-              globalModals.openVoiceChat();
-            }
-          }}
-        >
-          <Stack gap={1.25} sx={{ p: 1.25, bgcolor: voiceChatUi.dashboardPanelBg }}>
-            {error && (
-              <Typography color="error" variant="body2">
-                {error}
-              </Typography>
-            )}
-
-            <Stack sx={{ px: 0.5 }}>
-              <VoiceChatChecklistRow
-                title={i18n._('Become a member')}
-                info={i18n._(
-                  'Voice chat is for paying members. This keeps the room small and respectful.',
-                )}
-                done={!!status?.isEntitled}
-                action={
-                  !status?.isEntitled ? (
-                    <Button
-                      size="small"
-                      variant="contained"
-                      onClick={() => access.showPaymentModal()}
-                      sx={{ alignSelf: 'flex-start' }}
-                    >
-                      {i18n._('Start')}
-                    </Button>
-                  ) : undefined
-                }
-              />
-
-              <VoiceChatChecklistRow
-                title={i18n._('Share a short intro (~30 sec)')}
-                info={i18n._(
-                  'Record a short audio about yourself so others know who is joining. About 30 seconds is ideal.',
-                )}
-                done={memberStatus === 'pending' || memberStatus === 'approved'}
-                action={
-                  status?.canRequestAccess ? (
-                    <Button
-                      size="small"
-                      variant="contained"
-                      onClick={() => setShowIntroRecorder(true)}
-                      sx={{ alignSelf: 'flex-start' }}
-                    >
-                      {i18n._('Record')}
-                    </Button>
-                  ) : undefined
-                }
-              />
-
-              <VoiceChatChecklistRow
-                title={i18n._('Wait for approval')}
-                info={i18n._(
-                  'A host reviews your intro before you can listen and reply. This protects the group.',
-                )}
-                done={memberStatus === 'approved'}
-              />
-            </Stack>
-
-            {memberStatus === 'pending' && (
-              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
-                {i18n._('Thanks — we’re reviewing your intro')}
-              </Typography>
-            )}
-            {memberStatus === 'rejected' && (
-              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
-                {i18n._('Not this time. You can try again in {days} days', {
-                  days: daysLeft ?? 10,
-                })}
-              </Typography>
-            )}
-            {memberStatus === 'approved' && (
-              <Button variant="contained" onClick={() => globalModals.openVoiceChat()}>
-                {i18n._('Open Voice Chat')}
-              </Button>
-            )}
-
-            {showIntroRecorder && (
-              <VoiceChatRecorderPanel
-                title={i18n._('Record your intro')}
-                submitLabel={i18n._('Send for approval')}
-                minSeconds={VOICE_CHAT_INTRO_MIN_SECONDS}
-                onSubmit={onSubmitIntro}
-                onCancel={() => setShowIntroRecorder(false)}
-              />
-            )}
-
-            <Button
-              variant="text"
-              onClick={() => setRulesOpen(true)}
-              sx={{ color: voiceChatUi.textMuted, alignSelf: 'flex-start', px: 0.5, fontSize: 13 }}
-            >
-              {i18n._('Rules of chat')}
-            </Button>
-
-            {status?.isApprover && !!status.pendingMembers.length && (
-              <Stack
-                gap={1}
-                data-testid="voice-chat-pending-list"
-                sx={{ pt: 1.25, borderTop: `1px solid ${voiceChatUi.borderSubtle}` }}
-              >
-                <Typography variant="body2" sx={{ fontWeight: 600, letterSpacing: '-0.01em' }}>
-                  {i18n._('Pending requests')}
-                </Typography>
-                {status.pendingMembers.map((member) => (
-                  <VoiceChatPendingRequestCard
-                    key={member.userId}
-                    member={member}
-                    isBusy={busyUserId === member.userId}
-                    isPreviewActive={previewUserId === member.userId}
-                    previewAudioUrl={previewUserId === member.userId ? previewIntroUrl : null}
-                    onListen={() => void listenPendingIntro(member.userId)}
-                    onApprove={() => void onDecide(member.userId, 'approved')}
-                    onReject={() => void onDecide(member.userId, 'rejected')}
-                  />
-                ))}
-              </Stack>
-            )}
-          </Stack>
-        </StoreCard>
-      </Badge>
-
-      <Dialog open={rulesOpen} onClose={() => setRulesOpen(false)}>
-        <DialogTitle sx={{ fontWeight: 600 }}>{i18n._('Rules of chat')}</DialogTitle>
-        <DialogContent>
-          <Stack gap={1.25}>
-            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-              {i18n._('Be kind. This is a small voice-only space.')}
-            </Typography>
-            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-              {i18n._('No text messages and no transcripts.')}
-            </Typography>
-            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-              {i18n._('Messages are removed after 4 days.')}
-            </Typography>
-            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-              {i18n._('You can remove your own messages anytime.')}
-            </Typography>
-          </Stack>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setRulesOpen(false)}>{i18n._('Close')}</Button>
-        </DialogActions>
-      </Dialog>
-    </Stack>
+    <VoiceChatDashboardView
+      rootTestId="voice-chat-dashboard-card"
+      previewImageUrl={VOICE_CHAT_PREVIEW_IMAGE_URL}
+      unreadCount={status?.unreadCount || 0}
+      rulesOpen={rulesOpen}
+      onCloseRules={() => setRulesOpen(false)}
+      onCardClick={
+        memberStatus === 'approved' ? () => globalModals.openVoiceChat() : undefined
+      }
+      error={error}
+      isEntitled={!!status?.isEntitled}
+      memberStatus={memberStatus}
+      canRequestAccess={!!status?.canRequestAccess}
+      reRequestDaysLeft={daysLeft}
+      showIntroRecorder={showIntroRecorder}
+      onStartMembership={() => access.showPaymentModal()}
+      onRecordIntro={() => setShowIntroRecorder(true)}
+      onOpenVoiceChat={() => globalModals.openVoiceChat()}
+      onSubmitIntro={onSubmitIntro}
+      onCancelIntro={() => setShowIntroRecorder(false)}
+      onOpenRules={() => setRulesOpen(true)}
+      isApprover={status?.isApprover}
+      pendingMembers={status?.pendingMembers}
+      busyUserId={busyUserId}
+      previewUserId={previewUserId}
+      previewIntroUrl={previewIntroUrl}
+      onListenPendingIntro={(userId) => void listenPendingIntro(userId)}
+      onApproveMember={(userId) => void onDecide(userId, 'approved')}
+      onRejectMember={(userId) => void onDecide(userId, 'rejected')}
+    />
   );
 };
