@@ -116,11 +116,22 @@ Specs: `webApp/e2e/voice-chat/*.spec.ts`
 
 Unit tests: `backend/paidDetector.test.ts`, `backend/messages.cascade.test.ts` (`collectSubtreeIds`).
 
+Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtures.tsx`. Fixtures render real Voice Chat components (message list, player, recorder, dashboard card shell) with realistic data for UX review. Global app styling comes from `src/test-utils/browserAppShell.tsx` (injects `globalInlineCss` + `darkTheme` like `src/app/layout.tsx`). Baselines live in `screenshots/` next to the test file; card preview asset is `screenshots/fixture-preview.png` (copy of production art).
+
+| Screenshot | Covers |
+| --- | --- |
+| `message-list-*` | Empty thread, nested replies, unread borders, active player, reply recorder |
+| `modal-shell-*` | Modal header/alert, thread + record button or root recorder |
+| `player-controls` | Audio player chrome |
+| `recorder-idle` | Intro recorder before mic start |
+| `dashboard-*` | Onboarding checklist states, approver queue, rules dialog |
+
 Run:
 
 ```bash
 cd webApp && pnpm lint
 cd webApp && pnpm test:unit -- --testPathPattern=VoiceChat
+cd webApp && pnpm test:unit:browser -- --run src/features/Chat/VoiceChat/VoiceChat.browser.test.tsx
 cd webApp && pnpm exec playwright test e2e/voice-chat
 ```
 
