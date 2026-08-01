@@ -308,7 +308,7 @@ function VoiceChatDashboardContent({
               <VoiceChatChecklistRow
                 title={i18n._('Become a member')}
                 info={i18n._(
-                  'Voice chat is for paying members (or top-5 game winners). This keeps the room small and respectful.',
+                  'Voice chat is for paying members. This keeps the room small and respectful.',
                 )}
                 done={isEntitled}
                 action={

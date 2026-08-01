@@ -199,7 +199,8 @@ msgstr ""
 "2-20 oyuncu için eğlenceli bir kelime tahmin oyunu. Kelimenin kendisini "
 "söylemeden takım arkadaşlarınıza kelimeleri açıklayın!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:338
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:179
 #. js-lingui-explicit-id
 msgid ""
 "A host reviews your intro before you can listen and reply. This protects "
@@ -254,7 +255,8 @@ msgstr ""
 "Hesap özetinizde küçük bir geçici yetkilendirme görünebilir ve bankanız "
 "tarafından otomatik olarak serbest bırakılacaktır."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:145
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:288
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:106
 #. js-lingui-explicit-id
 msgid "A small, voice-only room. No transcripts."
 msgstr "Küçük, sadece sesli oda. Metin yok."
@@ -858,7 +860,7 @@ msgstr "API tasarımı ve veri modelleme içgörüleri"
 msgid "Appointment"
 msgstr "Randevu"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:268
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:104
 #. js-lingui-explicit-id
 msgid "Approve"
 msgstr "Onayla"
@@ -1117,7 +1119,8 @@ msgstr ""
 "Onboarding'inize dayanarak, FluencyPal size özel bir öğrenme planı "
 "oluşturacaktır."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:294
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:404
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:254
 #. js-lingui-explicit-id
 msgid "Be kind. This is a small voice-only space."
 msgstr "Nazik olun. Bu, yalnızca sesli küçük bir alandır."
@@ -1132,7 +1135,8 @@ msgstr "İş görüşmen için hazırlıklı ol"
 msgid "Be specific about your role"
 msgstr "Rolünüz hakkında özellikle konuşun"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:176
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:309
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:138
 #. js-lingui-explicit-id
 msgid "Become a member"
 msgstr "Üye ol"
@@ -1478,7 +1482,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:74
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -2188,8 +2192,9 @@ msgstr ""
 "Tarayıcınızda app.fluencypal.com adresinin yanındaki Paylaş düğmesine "
 "tıklayın."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:70
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:301
+#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:411
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:268
 #: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -3376,7 +3381,7 @@ msgstr ""
 "Farklı modlar, farklı şekillerde yardımcı olur. Zamanla sizin için en iyi "
 "neyin işe yaradığını keşfedeceksiniz."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "İptal et"
@@ -4304,17 +4309,17 @@ msgstr "Test oluşturma başarısız oldu."
 msgid "Failed to load conversation history"
 msgstr "Konuşma geçmişi yüklenemedi"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:41
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Mesajlar yüklenemedi"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:97
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Failed to load voice chat status"
 msgstr "Sesli sohbet durumu yüklenemedi"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:78
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Çalma başarısız oldu"
@@ -6356,7 +6361,7 @@ msgstr "Paragraf boşluğunu artır"
 msgid "Indonesian Learning Plan"
 msgstr "Endonezya Öğrenme Planı"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:60
+#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:83
 #. js-lingui-explicit-id
 msgid "Info"
 msgstr "Bilgi"
@@ -6473,11 +6478,6 @@ msgstr "Mülakat İpuçları"
 #. js-lingui-explicit-id
 msgid "Interviewers expect **architecture thinking**, not just clean code"
 msgstr "Mülakatçılar sadece temiz kod değil, **mimari düşünce** beklerler."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
-#. js-lingui-explicit-id
-msgid "Intro"
-msgstr "Giriş"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:55
 #: src/features/Case/data/frontend-senior/quizData.ts:154
@@ -7010,7 +7010,7 @@ msgstr "Limitlere ulaşıldı"
 msgid "Line height"
 msgstr "Satır yüksekliği"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:86
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:106
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
 msgid "Listen"
@@ -7021,7 +7021,7 @@ msgstr "Dinle"
 msgid "Listen in to the end or finish quiz"
 msgstr "Sona kadar dinleyin veya testi bitirin"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:260
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Listen intro"
 msgstr "Dinleme girişi"
@@ -7139,7 +7139,7 @@ msgstr "Yükleniyor.."
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:136
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Yükleniyor…"
@@ -7337,22 +7337,30 @@ msgstr "Menü"
 msgid "Message hidden due to policy violation."
 msgstr "İleti, politika ihlali nedeniyle gizlendi."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:135
+#. js-lingui-explicit-id
+msgid "Message options"
+msgstr "Mesaj seçenekleri"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:101
 #. js-lingui-explicit-id
 msgid "Messages"
 msgstr "Mesajlar"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:158
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:301
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:119
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days"
 msgstr "Mesajlar 4 gün sonra kaldırılır"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:296
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:406
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:260
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days."
 msgstr "Mesajlar 4 gün sonra kaldırılır."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:132
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:191
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days. No text — voice only."
 msgstr "Mesajlar 4 gün sonra silinir. Metin yok — sadece ses."
@@ -7571,11 +7579,6 @@ msgstr "Üst düzey tazminatı müzakere edin"
 #. js-lingui-explicit-id
 msgid "Negotiation practice"
 msgstr "Müzakere pratiği"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:72
-#. js-lingui-explicit-id
-msgid "new"
-msgstr "yeni"
 
 #: src/features/Case/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
@@ -7855,7 +7858,8 @@ msgstr "Sonuç bulunamadı"
 msgid "No scenarios found"
 msgstr "Hiç senaryo bulunamadı"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:295
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:405
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:257
 #. js-lingui-explicit-id
 msgid "No text messages and no transcripts."
 msgstr "Metin mesajları ve transkriptler yok."
@@ -8034,7 +8038,8 @@ msgstr "Desteklenmiyor"
 msgid "Not sure what to write? Try one of these:"
 msgstr "Ne yazacağınızdan emin değil misiniz? Bunlardan birini deneyin:"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:220
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:352
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Not this time. You can try again in {days} days"
 msgstr "Bu sefer değil. {days} gün sonra tekrar deneyebilirsiniz"
@@ -8208,7 +8213,8 @@ msgstr ""
 "Birinin profilini açın ve bir tartışma başlatmak için \"Tartışmaya Davet "
 "Et\" düğmesine basın!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:227
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:356
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Open Voice Chat"
 msgstr "Sesli Sohbeti Aç"
@@ -8389,7 +8395,7 @@ msgstr ""
 "CV'nizi yapıştırın veya deneyiminiz, becerileriniz ve başarılarınızın kısa "
 "bir özetini yazın."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -8438,12 +8444,8 @@ msgstr "Ödeme seçeneği"
 msgid "Payment successful!"
 msgstr "Ödeme başarılı!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:282
-#. js-lingui-explicit-id
-msgid "Pending intro"
-msgstr "Bekleyen giriş"
-
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:247
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:383
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:229
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Bekleyen istekler"
@@ -8560,7 +8562,7 @@ msgid "Plan for"
 msgstr "İçin Planla"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -8689,7 +8691,7 @@ msgstr ""
 msgid "Please record a longer message (at least a few words)."
 msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:36
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Lütfen en az {minSeconds} saniye kaydedin."
@@ -9189,7 +9191,7 @@ msgstr "Hazırlanıyor…"
 msgid "Preview state for gated access once production placement is added."
 msgstr "Üretim yerleştirmesi eklendikten sonra erişim için önizleme durumu."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "Kaydınızı önizleyin"
@@ -9713,7 +9715,8 @@ msgstr "Podcast, şarkı veya video önerin."
 msgid "Recommended"
 msgstr "Önerilen"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:199
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:331
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:171
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -9736,13 +9739,16 @@ msgstr ""
 "Topluluk Sohbetinde bir mesaj kaydedin ve liderlik tablosunda {points} puan "
 "kazanın"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:155
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:159
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:226
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:233
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:178
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:182
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Yeni bir mesaj kaydet"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:192
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159
 #. js-lingui-explicit-id
 msgid ""
 "Record a short audio about yourself so others know who is joining. About 3 "
@@ -9804,27 +9810,24 @@ msgstr "Daha Fazla Kaydet"
 msgid "Record new essay"
 msgstr "Yeni deneme kaydet"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:92
-#. js-lingui-explicit-id
-msgid "Record Reply"
-msgstr "Cevabı Kaydet"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
 msgstr "Açıklamanızı kaydedin"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:233
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:361
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:456
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:206
 #. js-lingui-explicit-id
 msgid "Record your intro"
 msgstr "İntro kaydınızı yapın"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:174
 #. js-lingui-explicit-id
 msgid "Record your reply"
 msgstr "Yanıtınızı kaydedin"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Kaydediliyor… {seconds}s"
@@ -9856,7 +9859,7 @@ msgstr "Yenile"
 msgid "Refund guarantee"
 msgstr "İade garantisi"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:276
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Reject"
 msgstr "Reddet"
@@ -9876,7 +9879,7 @@ msgstr "Sayfayı yeniden yükle"
 msgid "Reloading conversation..."
 msgstr "Sohbet yeniden yükleniyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:96
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:237
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9907,6 +9910,11 @@ msgstr "Tekrar Oyna"
 #. js-lingui-explicit-id
 msgid "Replies"
 msgstr "Yanıtlar"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:169
+#. js-lingui-explicit-id
+msgid "Reply"
+msgstr "Yanıtla"
 
 #: src/features/Chat/Message/Message.tsx:438
 #. js-lingui-explicit-id
@@ -9964,7 +9972,7 @@ msgstr "Esneklik & Gözlemlenebilirlik"
 msgid "Resolving file..."
 msgstr "Dosya çözümleniyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:149
 #: src/features/News/NewsPlayButton.tsx:112
 #: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
@@ -10037,7 +10045,7 @@ msgstr ""
 "Hakkınızda AI'nin kullandığı notları gözden geçirin, düzenleyin veya "
 "ekleyin."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
 #. js-lingui-explicit-id
 msgid "Rewind"
 msgstr "Geri sar"
@@ -10151,8 +10159,10 @@ msgstr "Kural"
 msgid "Rule of the day"
 msgstr "Günün Kuralı"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:242
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:291
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:373
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:401
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:219
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:250
 #. js-lingui-explicit-id
 msgid "Rules of chat"
 msgstr "Sohbet Kuralları"
@@ -10348,7 +10358,8 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantik HTML"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:160
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:227
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:183
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -10365,7 +10376,9 @@ msgstr "En az 10 mesaj gönder Sadece konuşmakta"
 msgid "Send email again"
 msgstr "E-postayı tekrar gönder"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:234
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:362
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:457
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
 #. js-lingui-explicit-id
 msgid "Send for approval"
 msgstr "Onaya gönder"
@@ -10391,7 +10404,7 @@ msgstr "Mesaj Gönder"
 msgid "Send one message in the community space"
 msgstr "Topluluk alanında bir mesaj gönder"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:104
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:175
 #. js-lingui-explicit-id
 msgid "Send reply"
 msgstr "Yanıtı gönder"
@@ -10426,7 +10439,7 @@ msgstr "Tam erişimin kilidini açmak için {messagesNeeded} mesaj gönderin"
 msgid "Sending..."
 msgstr "Gönderiliyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:83
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Gönderiliyor…"
@@ -10509,7 +10522,8 @@ msgstr "Paylaş"
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Bugün öğrendiğiniz bir ifadeyi (veya sizi şaşırtan bir ifadeyi) paylaşın"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:191
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:323
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Share a short intro (~3 min)"
 msgstr "Kısa bir giriş paylaş (~3 dakika)"
@@ -10905,7 +10919,8 @@ msgid "Stars"
 msgstr "Yıldızlar"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:184
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:317
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:151
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:125
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -10975,15 +10990,16 @@ msgstr "Aylık Planı Başlat"
 msgid "Start Practicing"
 msgstr "Alıştırmaya Başla"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:62
-#. js-lingui-explicit-id
-msgid "Start recording"
-msgstr "Kaydı başlat"
-
 #: src/features/Essay/Essay.tsx:144
 #. js-lingui-explicit-id
 msgid "Start Recording"
 msgstr "Kaydı Başlat"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#. js-lingui-explicit-id
+msgid "Start recording"
+msgstr "Kaydı başlat"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:456
 #. js-lingui-explicit-id
@@ -11192,7 +11208,7 @@ msgid "Steps:"
 msgstr "Adımlar:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:71
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
@@ -12188,7 +12204,8 @@ msgstr "Geri bildiriminiz için teşekkür ederiz!"
 msgid "Thank you for your purchase."
 msgstr "Satın alımınız için teşekkür ederiz."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:215
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:347
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:188
 #. js-lingui-explicit-id
 msgid "Thanks — we’re reviewing your intro"
 msgstr "Teşekkürler — tanıtımınızı inceliyoruz"
@@ -13396,18 +13413,18 @@ msgstr "Kelime Pratikleri"
 msgid "Voice"
 msgstr "Ses"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:177
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:310
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:139
 #. js-lingui-explicit-id
-msgid ""
-"Voice chat is for paying members (or top-5 game winners). This keeps the "
-"room small and respectful."
-msgstr ""
-"Sesli sohbet, ücretli üyeler (veya en iyi 5 oyun kazananı) içindir. Bu, "
-"odanın küçük ve saygın kalmasını sağlar."
+msgid "Voice chat is for paying members. This keeps the room small and respectful."
+msgstr "Sesli sohbet, ücretli üyeler içindir. Bu, odayı küçük ve saygılı tutar."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:144
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:157
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:122
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:188
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:287
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:300
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:105
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:118
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "İnsanlarla sesli sohbet edin"
@@ -13417,10 +13434,10 @@ msgstr "İnsanlarla sesli sohbet edin"
 msgid "Voice conversations"
 msgstr "Sesli konuşmalar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:440
 #. js-lingui-explicit-id
-msgid "Voice note"
-msgstr "Sesli not"
+msgid "Voice note preview"
+msgstr "Sesli not önizlemesi"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
@@ -13449,7 +13466,8 @@ msgstr "Ses hızı"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:206
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:337
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Wait for approval"
 msgstr "Onay bekleyin"
@@ -14218,11 +14236,6 @@ msgstr ""
 msgid "Yesterday"
 msgstr "Dün"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:73
-#. js-lingui-explicit-id
-msgid "you"
-msgstr "siz"
-
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:222
 #. js-lingui-explicit-id
 msgid "You"
@@ -14330,7 +14343,8 @@ msgstr ""
 "TypeScript ve modern web mimarisine odaklanmış davranışsal mülakatlar "
 "dahilinde pratik yapabilirsiniz."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:297
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:407
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:263
 #. js-lingui-explicit-id
 msgid "You can remove your own messages anytime."
 msgstr "Kendi mesajlarınızı istediğiniz zaman silebilirsiniz."
@@ -14637,8 +14651,9 @@ msgstr "Tam erişiminiz {date} tarihine kadar aktiftir"
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Amacınız mükemmel olmak değil, rakibinizi geçmektir."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:122
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:126
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:205
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:207
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:144
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
@@ -14802,3 +14817,42 @@ msgstr "{winnerName} kazandı!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| AkıcılıkPal"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+#~ msgid "Intro"
+#~ msgstr "Giriş"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "new"
+#~ msgstr "yeni"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:282
+#. js-lingui-explicit-id
+#~ msgid "Pending intro"
+#~ msgstr "Bekleyen giriş"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Record Reply"
+#~ msgstr "Cevabı Kaydet"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:177
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Voice chat is for paying members (or top-5 game winners). This keeps the "
+#~ "room small and respectful."
+#~ msgstr ""
+#~ "Sesli sohbet, ücretli üyeler (veya en iyi 5 oyun kazananı) içindir. Bu, "
+#~ "odanın küçük ve saygın kalmasını sağlar."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+#~ msgid "Voice note"
+#~ msgstr "Sesli not"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:73
+#. js-lingui-explicit-id
+#~ msgid "you"
+#~ msgstr "siz"

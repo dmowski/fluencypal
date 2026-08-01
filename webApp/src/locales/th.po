@@ -199,7 +199,8 @@ msgstr ""
 "เกมทายคำที่สนุกสนานสำหรับผู้เล่น 2-20 คน "
 "อธิบายคำให้เพื่อนในทีมของคุณโดยไม่พูดคำคำนั้นเอง!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:338
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:179
 #. js-lingui-explicit-id
 msgid ""
 "A host reviews your intro before you can listen and reply. This protects "
@@ -252,7 +253,8 @@ msgstr ""
 "อาจมีการอนุมัติชั่วคราวขนาดเล็กปรากฏในรายการเงินฝากของคุณและจะถูกปล่อยโดยอัต"
 "โนมัติโดยธนาคารของคุณ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:145
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:288
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:106
 #. js-lingui-explicit-id
 msgid "A small, voice-only room. No transcripts."
 msgstr "ห้องขนาดเล็กที่มีเฉพาะเสียง ไม่มีการบันทึกบทสนทนา"
@@ -862,7 +864,7 @@ msgstr "ข้อมูลเชิงลึกเกี่ยวกับกา
 msgid "Appointment"
 msgstr "นัดหมาย"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:268
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:104
 #. js-lingui-explicit-id
 msgid "Approve"
 msgstr "อนุมัติ"
@@ -1123,7 +1125,8 @@ msgstr ""
 "ตามข้อมูลที่คุณให้ไว้ FluencyPal "
 "จะสร้างแผนการเรียนรู้เฉพาะบุคคลสำหรับคุณโดยเฉพาะ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:294
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:404
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:254
 #. js-lingui-explicit-id
 msgid "Be kind. This is a small voice-only space."
 msgstr "โปรดมีเมตตา นี่เป็นพื้นที่เฉพาะเสียงขนาดเล็ก"
@@ -1138,7 +1141,8 @@ msgstr "เตรียมพร้อมสำหรับการสัมภ
 msgid "Be specific about your role"
 msgstr "ระบุบทบาทของคุณให้ชัดเจน"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:176
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:309
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:138
 #. js-lingui-explicit-id
 msgid "Become a member"
 msgstr "เข้าร่วมเป็นสมาชิก"
@@ -1482,7 +1486,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:74
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -2185,8 +2189,9 @@ msgstr "คลิก \"เพิ่มที่อยู่อีเมลที
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "คลิกปุ่มแชร์ถัดจาก app.fluencypal.com ในเบราว์เซอร์ของคุณ."
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:70
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:301
+#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:411
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:268
 #: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -3381,7 +3386,7 @@ msgstr ""
 "โหมดต่าง ๆ ช่วยในวิธีที่แตกต่างกัน "
 "คุณจะค้นพบว่าสิ่งใดที่เหมาะกับคุณที่สุดเมื่อเวลาผ่านไป"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "ทิ้ง"
@@ -4291,17 +4296,17 @@ msgstr "ล้มเหลวในการสร้างแบบทดสอ
 msgid "Failed to load conversation history"
 msgstr "ไม่สามารถโหลดประวัติการสนทนาได้"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:41
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "ไม่สามารถโหลดข้อความได้"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:97
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:57
 #. js-lingui-explicit-id
 msgid "Failed to load voice chat status"
 msgstr "ล้มเหลวในการโหลดสถานะการสนทนาด้วยเสียง"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:78
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:79
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "เล่นไม่สำเร็จ"
@@ -6339,7 +6344,7 @@ msgstr "เพิ่มช่องว่างย่อหน้า"
 msgid "Indonesian Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาอินโดนีเซีย"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:60
+#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:83
 #. js-lingui-explicit-id
 msgid "Info"
 msgstr "ข้อมูล"
@@ -6456,11 +6461,6 @@ msgstr "เคล็ดลับการสัมภาษณ์"
 #. js-lingui-explicit-id
 msgid "Interviewers expect **architecture thinking**, not just clean code"
 msgstr "ผู้สัมภาษณ์คาดหวัง **การคิดโครงสร้างสถาปัตยกรรม** ไม่ใช่แค่โค้ดที่สะอาด"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
-#. js-lingui-explicit-id
-msgid "Intro"
-msgstr "บทนำ"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:55
 #: src/features/Case/data/frontend-senior/quizData.ts:154
@@ -6999,7 +6999,7 @@ msgstr "ถึงขีดจำกัดแล้ว"
 msgid "Line height"
 msgstr "ความสูงของบรรทัด"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:86
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:106
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
 msgid "Listen"
@@ -7010,7 +7010,7 @@ msgstr "ฟัง"
 msgid "Listen in to the end or finish quiz"
 msgstr "รับฟังจนจบหรือทำแบบทดสอบให้เสร็จสิ้น"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:260
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
 #. js-lingui-explicit-id
 msgid "Listen intro"
 msgstr "ฟังการแนะนำตัว"
@@ -7132,7 +7132,7 @@ msgstr "กำลังโหลด.."
 msgid "Loading..."
 msgstr "กำลังโหลด..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:136
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:157
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "กำลังโหลด…"
@@ -7331,22 +7331,30 @@ msgstr "เมนู"
 msgid "Message hidden due to policy violation."
 msgstr "ข้อความถูกซ่อนเนื่องจากละเมิดนโยบาย"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:135
+#. js-lingui-explicit-id
+msgid "Message options"
+msgstr "ตัวเลือกข้อความ"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:101
 #. js-lingui-explicit-id
 msgid "Messages"
 msgstr "ข้อความ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:158
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:301
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:119
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days"
 msgstr "ข้อความจะถูกลบหลังจาก 4 วัน"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:296
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:406
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:260
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days."
 msgstr "ข้อความจะถูกลบหลังจาก 4 วัน"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:132
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:191
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days. No text — voice only."
 msgstr "ข้อความจะถูกลบหลังจาก 4 วัน ไม่มีข้อความ — เสียงเท่านั้น"
@@ -7565,11 +7573,6 @@ msgstr "เจรจาเรื่องค่าตอบแทนระดั
 #. js-lingui-explicit-id
 msgid "Negotiation practice"
 msgstr "การฝึกเจรจาต่อรอง"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:72
-#. js-lingui-explicit-id
-msgid "new"
-msgstr "ใหม่"
 
 #: src/features/Case/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
@@ -7843,7 +7846,8 @@ msgstr "ไม่พบผลลัพธ์"
 msgid "No scenarios found"
 msgstr "ไม่พบสถานการณ์ใด ๆ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:295
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:405
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:257
 #. js-lingui-explicit-id
 msgid "No text messages and no transcripts."
 msgstr "ไม่มีข้อความและไม่มีบันทึกการสนทนา."
@@ -8022,7 +8026,8 @@ msgstr "ไม่รองรับ"
 msgid "Not sure what to write? Try one of these:"
 msgstr "ไม่แน่ใจว่าจะเขียนอะไร? ลองดูตัวเลือกเหล่านี้:"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:220
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:352
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Not this time. You can try again in {days} days"
 msgstr "ไม่ใช่ครั้งนี้ คุณสามารถลองใหม่ได้อีกในอีก {days} วัน"
@@ -8194,7 +8199,8 @@ msgid ""
 "debate!"
 msgstr "เปิดโปรไฟล์ของใครสักคนและกดปุ่ม \"เชิญเข้าร่วมดีเบต\" เพื่อเริ่มการโต้วาที!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:227
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:356
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Open Voice Chat"
 msgstr "เปิดการแชทเสียง"
@@ -8374,7 +8380,7 @@ msgstr ""
 "วางประวัติส่วนตัวของคุณหรือเขียนสรุปสั้นๆ เกี่ยวกับประสบการณ์ ทักษะ "
 "และความสำเร็จของคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -8423,12 +8429,8 @@ msgstr "ตัวเลือกการชำระเงิน"
 msgid "Payment successful!"
 msgstr "การชำระเงินสำเร็จ!"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:282
-#. js-lingui-explicit-id
-msgid "Pending intro"
-msgstr "รอการแนะนำ"
-
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:247
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:383
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:229
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "คำร้องที่รอดำเนินการ"
@@ -8545,7 +8547,7 @@ msgid "Plan for"
 msgstr "\\[\\text{วางแผนสำหรับ}\\]"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:110
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -8670,7 +8672,7 @@ msgstr "กรุณากรอกรายละเอียดของผู
 msgid "Please record a longer message (at least a few words)."
 msgstr "โปรดบันทึกข้อความที่ยาวขึ้น (อย่างน้อยสองสามคำ)"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:36
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "โปรดบันทึกอย่างน้อย {minSeconds} วินาที"
@@ -9163,7 +9165,7 @@ msgstr ""
 "แสดงตัวอย่างสถานะสำหรับการเข้าถึงที่ถูกจำกัดเมื่อการวางในระบบการผลิตถูกเพิ่ม"
 "เข้าไปแล้ว"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "ดูตัวอย่างการบันทึกของคุณ"
@@ -9808,7 +9810,8 @@ msgstr "แนะนำพอดแคสต์ เพลง หรือวิ�
 msgid "Recommended"
 msgstr "แนะนำ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:199
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:331
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:171
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -9829,13 +9832,16 @@ msgid ""
 "leaderboard"
 msgstr "บันทึกข้อความในชุมชนแชทและรับ {points} คะแนนในกระดานผู้นำ"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:155
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:159
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:226
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:233
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:178
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:182
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "บันทึกข้อความใหม่"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:192
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159
 #. js-lingui-explicit-id
 msgid ""
 "Record a short audio about yourself so others know who is joining. About 3 "
@@ -9897,27 +9903,24 @@ msgstr "บันทึกเพิ่มเติม"
 msgid "Record new essay"
 msgstr "บันทึกเรียงความใหม่"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:92
-#. js-lingui-explicit-id
-msgid "Record Reply"
-msgstr "บันทึกการตอบกลับ"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
 msgstr "บันทึกคำอธิบายของคุณ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:233
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:361
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:456
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:206
 #. js-lingui-explicit-id
 msgid "Record your intro"
 msgstr "บันทึกการแนะนำตัวของคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:174
 #. js-lingui-explicit-id
 msgid "Record your reply"
 msgstr "บันทึกการตอบกลับของคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "กำลังบันทึก... {seconds}วินาที"
@@ -9949,7 +9952,7 @@ msgstr "รีเฟรช"
 msgid "Refund guarantee"
 msgstr "รับประกันการคืนเงิน"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:276
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:107
 #. js-lingui-explicit-id
 msgid "Reject"
 msgstr "ปฏิเสธ"
@@ -9969,7 +9972,7 @@ msgstr "โหลดหน้าเว็บใหม่"
 msgid "Reloading conversation..."
 msgstr "กำลังโหลดการสนทนาใหม่..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:96
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:237
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -10000,6 +10003,11 @@ msgstr "เล่นซ้ำ"
 #. js-lingui-explicit-id
 msgid "Replies"
 msgstr "การตอบกลับ"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:169
+#. js-lingui-explicit-id
+msgid "Reply"
+msgstr "ตอบกลับ"
 
 #: src/features/Chat/Message/Message.tsx:438
 #. js-lingui-explicit-id
@@ -10060,7 +10068,7 @@ msgstr "ความยืดหยุ่น & การมองเห็น"
 msgid "Resolving file..."
 msgstr "กำลังแก้ไขไฟล์..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:149
 #: src/features/News/NewsPlayButton.tsx:112
 #: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
@@ -10131,7 +10139,7 @@ msgstr "ตรวจสอบและแก้ไขสิ่งที่ AI �
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "ตรวจสอบ แก้ไข หรือเพิ่มบันทึกที่ AI ใช้เกี่ยวกับคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
 #. js-lingui-explicit-id
 msgid "Rewind"
 msgstr "ย้อนกลับ"
@@ -10244,8 +10252,10 @@ msgstr "กฎ"
 msgid "Rule of the day"
 msgstr "กฎของวัน"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:242
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:291
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:373
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:401
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:219
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:250
 #. js-lingui-explicit-id
 msgid "Rules of chat"
 msgstr "กฎของการแชท"
@@ -10437,7 +10447,8 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "HTML ความหมาย"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:160
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:227
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:183
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -10454,7 +10465,9 @@ msgstr "ส่งข้อความอย่างน้อย 10 ข้อ�
 msgid "Send email again"
 msgstr "ส่งอีเมลอีกครั้ง"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:234
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:362
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:457
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
 #. js-lingui-explicit-id
 msgid "Send for approval"
 msgstr "ส่งเพื่อขออนุมัติ"
@@ -10480,7 +10493,7 @@ msgstr "ส่งข้อความ"
 msgid "Send one message in the community space"
 msgstr "ส่งข้อความหนึ่งในพื้นที่ชุมชน"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:104
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:175
 #. js-lingui-explicit-id
 msgid "Send reply"
 msgstr "ส่งคำตอบ"
@@ -10515,7 +10528,7 @@ msgstr "ส่ง {messagesNeeded} ข้อความเพื่อปลด
 msgid "Sending..."
 msgstr "กำลังส่ง..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:83
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "กำลังส่ง…"
@@ -10598,7 +10611,8 @@ msgstr "แบ่งปัน"
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "แชร์วลีที่คุณได้เรียนรู้ในวันนี้ (หรือวลีที่ทำให้คุณสับสน)"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:191
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:323
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Share a short intro (~3 min)"
 msgstr "แบ่งปันคำแนะนำสั้น ๆ (~3 นาที)"
@@ -10995,7 +11009,8 @@ msgid "Stars"
 msgstr "ดาว"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:184
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:317
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:151
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:125
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -11065,15 +11080,16 @@ msgstr "เริ่มแผนรายเดือน"
 msgid "Start Practicing"
 msgstr "เริ่มฝึกฝน"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:62
-#. js-lingui-explicit-id
-msgid "Start recording"
-msgstr "เริ่มการบันทึก"
-
 #: src/features/Essay/Essay.tsx:144
 #. js-lingui-explicit-id
 msgid "Start Recording"
 msgstr "เริ่มบันทึก"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#. js-lingui-explicit-id
+msgid "Start recording"
+msgstr "เริ่มการบันทึก"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:456
 #. js-lingui-explicit-id
@@ -11276,7 +11292,7 @@ msgid "Steps:"
 msgstr "ขั้นตอน:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:71
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "หยุด"
@@ -12269,7 +12285,8 @@ msgstr "ขอบคุณสำหรับคำติชมของคุณ
 msgid "Thank you for your purchase."
 msgstr "ขอบคุณสำหรับการสั่งซื้อของคุณ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:215
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:347
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:188
 #. js-lingui-explicit-id
 msgid "Thanks — we’re reviewing your intro"
 msgstr "ขอบคุณ — เรากำลังตรวจสอบการแนะนำตัวของคุณ"
@@ -13475,18 +13492,20 @@ msgstr "การฝึกศัพท์"
 msgid "Voice"
 msgstr "เสียง"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:177
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:310
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:139
 #. js-lingui-explicit-id
-msgid ""
-"Voice chat is for paying members (or top-5 game winners). This keeps the "
-"room small and respectful."
+msgid "Voice chat is for paying members. This keeps the room small and respectful."
 msgstr ""
-"การสนทนาด้วยเสียงมีไว้สำหรับสมาชิกที่ชำระเงิน (หรือผู้ชนะเกม 5 อันดับแรก) "
-"สิ่งนี้ช่วยให้ห้องมีขนาดเล็กและเคารพซึ่งกันและกัน"
+"การสนทนาด้วยเสียงสงวนไว้สำหรับสมาชิกที่ชำระเงินแล้ว "
+"สิ่งนี้จะช่วยรักษาจำนวนผู้เข้าร่วมในห้องให้มีขนาดเล็กและเป็นไปอย่างสุภาพ"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:144
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:157
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:122
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:188
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:287
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:300
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:105
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:118
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "สนทนาด้วยเสียงกับผู้คน"
@@ -13496,10 +13515,10 @@ msgstr "สนทนาด้วยเสียงกับผู้คน"
 msgid "Voice conversations"
 msgstr "การสนทนาด้วยเสียง"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:440
 #. js-lingui-explicit-id
-msgid "Voice note"
-msgstr "บันทึกเสียง"
+msgid "Voice note preview"
+msgstr "ตัวอย่างบันทึกเสียง"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
@@ -13528,7 +13547,8 @@ msgstr "ความเร็วเสียง"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:206
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:337
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Wait for approval"
 msgstr "รอการอนุมัติ"
@@ -14306,11 +14326,6 @@ msgstr ""
 msgid "Yesterday"
 msgstr "เมื่อวาน"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:73
-#. js-lingui-explicit-id
-msgid "you"
-msgstr "คุณ"
-
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:222
 #. js-lingui-explicit-id
 msgid "You"
@@ -14414,7 +14429,8 @@ msgstr ""
 "และการสัมภาษณ์ทางพฤติกรรมที่เน้น React, Vue, Angular, TypeScript "
 "และสถาปัตยกรรมเว็บสมัยใหม่"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:297
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:407
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:263
 #. js-lingui-explicit-id
 msgid "You can remove your own messages anytime."
 msgstr "คุณสามารถลบข้อความของคุณเองได้ตลอดเวลา"
@@ -14717,8 +14733,9 @@ msgstr "การเข้าถึงเต็มรูปแบบของค
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "เป้าหมายของคุณไม่ใช่การเป็นที่สมบูรณ์แบบ แต่คือการเอาชนะคู่ต่อสู้ของคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:122
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:126
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:205
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:207
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:144
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
@@ -14878,3 +14895,42 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+#~ msgid "Intro"
+#~ msgstr "บทนำ"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:72
+#. js-lingui-explicit-id
+#~ msgid "new"
+#~ msgstr "ใหม่"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:282
+#. js-lingui-explicit-id
+#~ msgid "Pending intro"
+#~ msgstr "รอการแนะนำ"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:92
+#. js-lingui-explicit-id
+#~ msgid "Record Reply"
+#~ msgstr "บันทึกการตอบกลับ"
+
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:177
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Voice chat is for paying members (or top-5 game winners). This keeps the "
+#~ "room small and respectful."
+#~ msgstr ""
+#~ "การสนทนาด้วยเสียงมีไว้สำหรับสมาชิกที่ชำระเงิน (หรือผู้ชนะเกม 5 อันดับแรก) "
+#~ "สิ่งนี้ช่วยให้ห้องมีขนาดเล็กและเคารพซึ่งกันและกัน"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:71
+#. js-lingui-explicit-id
+#~ msgid "Voice note"
+#~ msgstr "บันทึกเสียง"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:73
+#. js-lingui-explicit-id
+#~ msgid "you"
+#~ msgstr "คุณ"
