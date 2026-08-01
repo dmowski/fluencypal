@@ -1,9 +1,10 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, LinearProgress, Stack, Typography } from '@mui/material';
+import { IconButton, LinearProgress, Stack, Typography } from '@mui/material';
 import { Pause, Play, RotateCcw, SkipBack } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
 
 interface VoiceChatPlayerProps {
   audioUrl: string | null;
@@ -90,33 +91,76 @@ export const VoiceChatPlayer = ({
 
   const percent = duration > 0 ? Math.min(100, (progress / duration) * 100) : 0;
 
+  const iconButtonSx = {
+    color: voiceChatUi.textSecondary,
+    border: `1px solid ${voiceChatUi.borderSubtle}`,
+    borderRadius: '8px',
+    width: 32,
+    height: 32,
+    '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
+    '&.Mui-disabled': { opacity: 0.35 },
+  };
+
   return (
-    <Stack gap={1} data-testid="voice-chat-player">
+    <Stack gap={0.75} data-testid="voice-chat-player">
       {label && (
-        <Typography variant="body2" sx={{ opacity: 0.85 }}>
+        <Typography variant="caption" sx={{ color: voiceChatUi.textMuted, letterSpacing: '0.02em' }}>
           {label}
         </Typography>
       )}
       <audio ref={audioRef} src={audioUrl || undefined} preload="metadata" />
-      <LinearProgress variant="determinate" value={percent} sx={{ height: 8, borderRadius: 4 }} />
-      <Stack direction="row" gap={1} alignItems="center">
-        <Button
+      <LinearProgress
+        variant="determinate"
+        value={percent}
+        sx={{
+          height: 3,
+          borderRadius: 2,
+          bgcolor: voiceChatUi.progressTrack,
+          '& .MuiLinearProgress-bar': { bgcolor: voiceChatUi.progressBar, borderRadius: 2 },
+        }}
+      />
+      <Stack direction="row" gap={0.5} alignItems="center">
+        <IconButton
           size="small"
-          variant="contained"
           onClick={() => void togglePlay()}
           disabled={!audioUrl}
-          startIcon={isPlaying ? <Pause size={16} /> : <Play size={16} />}
+          aria-label={isPlaying ? i18n._('Pause') : i18n._('Play')}
+          sx={{
+            ...iconButtonSx,
+            bgcolor: voiceChatUi.surfaceSubtle,
+            color: voiceChatUi.accent,
+          }}
         >
-          {isPlaying ? i18n._('Pause') : i18n._('Play')}
-        </Button>
-        <Button size="small" variant="outlined" onClick={rewind} disabled={!audioUrl} aria-label={i18n._('Rewind')}>
-          <SkipBack size={16} />
-        </Button>
-        <Button size="small" variant="outlined" onClick={restart} disabled={!audioUrl} aria-label={i18n._('Restart')}>
-          <RotateCcw size={16} />
-        </Button>
-        <Typography variant="caption" sx={{ ml: 'auto' }}>
-          {Math.floor(progress)}s / {Math.floor(duration || 0)}s
+          {isPlaying ? <Pause size={15} /> : <Play size={15} />}
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={rewind}
+          disabled={!audioUrl}
+          aria-label={i18n._('Rewind')}
+          sx={iconButtonSx}
+        >
+          <SkipBack size={15} />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={restart}
+          disabled={!audioUrl}
+          aria-label={i18n._('Restart')}
+          sx={iconButtonSx}
+        >
+          <RotateCcw size={15} />
+        </IconButton>
+        <Typography
+          variant="caption"
+          sx={{
+            ml: 'auto',
+            color: voiceChatUi.textMuted,
+            fontVariantNumeric: 'tabular-nums',
+            letterSpacing: '0.02em',
+          }}
+        >
+          {formatVoiceDuration(progress)} / {formatVoiceDuration(duration || 0)}
         </Typography>
       </Stack>
     </Stack>

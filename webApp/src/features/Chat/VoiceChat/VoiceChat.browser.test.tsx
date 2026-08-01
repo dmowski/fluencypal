@@ -4,6 +4,7 @@ import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
 import {
   FIXTURE_CONVERSATION,
+  FIXTURE_USER_PROFILES,
   SILENT_AUDIO_DATA_URL,
   VoiceChatDashboardFixture,
   VoiceChatMessageListFixture,
@@ -11,6 +12,13 @@ import {
   VoiceChatPlayerFixture,
   VoiceChatRecorderFixture,
 } from './voiceChatBrowserFixtures';
+
+vi.mock('@/features/Game/useGame', () => ({
+  useGame: () => ({
+    getUserName: (userId: string) => FIXTURE_USER_PROFILES[userId]?.name ?? 'Unknown',
+    getUserAvatarUrl: (userId: string) => FIXTURE_USER_PROFILES[userId]?.avatar ?? '',
+  }),
+}));
 
 vi.mock('next/image', () => ({
   __esModule: true,
@@ -73,7 +81,7 @@ test('message list – active player on intro message', async () => {
 test('message list – reply recorder open', async () => {
   await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
 
-  await userEvent.click(page.getByRole('button', { name: 'Record Reply' }).first());
+  await userEvent.click(page.getByRole('button', { name: 'Reply' }).first());
 
   await expect
     .element(page.getByTestId('voice-chat-message-list-fixture'))

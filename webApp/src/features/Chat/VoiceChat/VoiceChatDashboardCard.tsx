@@ -8,12 +8,10 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
   Stack,
   Typography,
 } from '@mui/material';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StoreCard } from '@/features/uiKit/Card/StoreCard';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -30,53 +28,10 @@ import {
   VoiceChatDecision,
   VoiceChatStatusResponse,
 } from './types';
+import { VoiceChatChecklistRow } from './components/VoiceChatChecklistRow';
+import { VoiceChatPendingRequestCard } from './components/VoiceChatPendingRequestCard';
 import { VoiceChatRecorderPanel } from './components/VoiceChatRecorderPanel';
-import { VoiceChatPlayer } from './components/VoiceChatPlayer';
-
-const ChecklistRow = ({
-  title,
-  info,
-  done,
-  action,
-}: {
-  title: string;
-  info: string;
-  done: boolean;
-  action?: ReactNode;
-}) => {
-  const { i18n } = useLingui();
-  const [open, setOpen] = useState(false);
-  return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      gap={1}
-      sx={{
-        p: 1.25,
-        borderRadius: 1.5,
-        bgcolor: done ? 'rgba(40,120,70,0.35)' : 'rgba(255,255,255,0.08)',
-      }}
-    >
-      <Typography sx={{ flex: 1 }} fontWeight={600}>
-        {done ? '✓ ' : ''}
-        {title}
-      </Typography>
-      <IconButton size="small" onClick={() => setOpen(true)} aria-label={i18n._('Info')}>
-        <InfoOutlined fontSize="small" sx={{ color: '#fff' }} />
-      </IconButton>
-      {action}
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>{title}</DialogTitle>
-        <DialogContent>
-          <Typography>{info}</Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)}>{i18n._('Close')}</Button>
-        </DialogActions>
-      </Dialog>
-    </Stack>
-  );
-};
+import { voiceChatUi } from './voiceChatUi';
 
 export const VoiceChatDashboardCard = () => {
   const { i18n } = useLingui();
@@ -88,6 +43,7 @@ export const VoiceChatDashboardCard = () => {
   const [rulesOpen, setRulesOpen] = useState(false);
   const [showIntroRecorder, setShowIntroRecorder] = useState(false);
   const [previewIntroUrl, setPreviewIntroUrl] = useState<string | null>(null);
+  const [previewUserId, setPreviewUserId] = useState<string | null>(null);
   const [busyUserId, setBusyUserId] = useState('');
 
   const refresh = useCallback(async () => {
@@ -140,6 +96,7 @@ export const VoiceChatDashboardCard = () => {
     const blob = await fetchPendingIntroAudioBlob({ token, userId });
     if (previewIntroUrl) URL.revokeObjectURL(previewIntroUrl);
     setPreviewIntroUrl(URL.createObjectURL(blob));
+    setPreviewUserId(userId);
   };
 
   return (
@@ -156,12 +113,12 @@ export const VoiceChatDashboardCard = () => {
       >
         <StoreCard
           textColor="#fff"
-          backgroundColor="rgba(18, 72, 92, 0.92)"
+          backgroundColor={voiceChatUi.dashboardCardBg}
           previewImageUrl={VOICE_CHAT_PREVIEW_IMAGE_URL}
           title={i18n._('Voice chat with people')}
           subTitle={i18n._('Messages are removed after 4 days')}
           items={[]}
-          itemsBackgroundColor="rgba(0,0,0,0.2)"
+          itemsBackgroundColor={voiceChatUi.dashboardItemsBg}
           itemsViewMode="list"
           onClick={() => {
             if (memberStatus === 'approved') {
@@ -169,58 +126,70 @@ export const VoiceChatDashboardCard = () => {
             }
           }}
         >
-          <Stack gap={1.25} sx={{ p: 1.5, bgcolor: 'rgba(0,0,0,0.35)' }}>
+          <Stack gap={1.25} sx={{ p: 1.25, bgcolor: voiceChatUi.dashboardPanelBg }}>
             {error && (
               <Typography color="error" variant="body2">
                 {error}
               </Typography>
             )}
 
-            <ChecklistRow
-              title={i18n._('Become a member')}
-              info={i18n._(
-                'Voice chat is for paying members (or top-5 game winners). This keeps the room small and respectful.',
-              )}
-              done={!!status?.isEntitled}
-              action={
-                !status?.isEntitled ? (
-                  <Button size="small" variant="contained" onClick={() => access.showPaymentModal()}>
-                    {i18n._('Start')}
-                  </Button>
-                ) : null
-              }
-            />
+            <Stack sx={{ px: 0.5 }}>
+              <VoiceChatChecklistRow
+                title={i18n._('Become a member')}
+                info={i18n._(
+                  'Voice chat is for paying members (or top-5 game winners). This keeps the room small and respectful.',
+                )}
+                done={!!status?.isEntitled}
+                action={
+                  !status?.isEntitled ? (
+                    <Button
+                      size="small"
+                      variant="contained"
+                      onClick={() => access.showPaymentModal()}
+                      sx={{ alignSelf: 'flex-start' }}
+                    >
+                      {i18n._('Start')}
+                    </Button>
+                  ) : undefined
+                }
+              />
 
-            <ChecklistRow
-              title={i18n._('Share a short intro (~3 min)')}
-              info={i18n._(
-                'Record a short audio about yourself so others know who is joining. About 3 minutes is ideal.',
-              )}
-              done={memberStatus === 'pending' || memberStatus === 'approved'}
-              action={
-                status?.canRequestAccess ? (
-                  <Button size="small" variant="contained" onClick={() => setShowIntroRecorder(true)}>
-                    {i18n._('Record')}
-                  </Button>
-                ) : null
-              }
-            />
+              <VoiceChatChecklistRow
+                title={i18n._('Share a short intro (~3 min)')}
+                info={i18n._(
+                  'Record a short audio about yourself so others know who is joining. About 3 minutes is ideal.',
+                )}
+                done={memberStatus === 'pending' || memberStatus === 'approved'}
+                action={
+                  status?.canRequestAccess ? (
+                    <Button
+                      size="small"
+                      variant="contained"
+                      onClick={() => setShowIntroRecorder(true)}
+                      sx={{ alignSelf: 'flex-start' }}
+                    >
+                      {i18n._('Record')}
+                    </Button>
+                  ) : undefined
+                }
+              />
 
-            <ChecklistRow
-              title={i18n._('Wait for approval')}
-              info={i18n._(
-                'A host reviews your intro before you can listen and reply. This protects the group.',
-              )}
-              done={memberStatus === 'approved'}
-            />
+              <VoiceChatChecklistRow
+                title={i18n._('Wait for approval')}
+                info={i18n._(
+                  'A host reviews your intro before you can listen and reply. This protects the group.',
+                )}
+                done={memberStatus === 'approved'}
+              />
+            </Stack>
 
             {memberStatus === 'pending' && (
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
                 {i18n._('Thanks — we’re reviewing your intro')}
               </Typography>
             )}
             {memberStatus === 'rejected' && (
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
                 {i18n._('Not this time. You can try again in {days} days', {
                   days: daysLeft ?? 10,
                 })}
@@ -242,49 +211,35 @@ export const VoiceChatDashboardCard = () => {
               />
             )}
 
-            <Button variant="text" sx={{ color: '#fff' }} onClick={() => setRulesOpen(true)}>
+            <Button
+              variant="text"
+              onClick={() => setRulesOpen(true)}
+              sx={{ color: voiceChatUi.textMuted, alignSelf: 'flex-start', px: 0.5, fontSize: 13 }}
+            >
               {i18n._('Rules of chat')}
             </Button>
 
             {status?.isApprover && !!status.pendingMembers.length && (
-              <Stack gap={1} data-testid="voice-chat-pending-list">
-                <Typography fontWeight={700}>{i18n._('Pending requests')}</Typography>
+              <Stack
+                gap={1}
+                data-testid="voice-chat-pending-list"
+                sx={{ pt: 1.25, borderTop: `1px solid ${voiceChatUi.borderSubtle}` }}
+              >
+                <Typography variant="body2" sx={{ fontWeight: 600, letterSpacing: '-0.01em' }}>
+                  {i18n._('Pending requests')}
+                </Typography>
                 {status.pendingMembers.map((member) => (
-                  <Stack
+                  <VoiceChatPendingRequestCard
                     key={member.userId}
-                    gap={1}
-                    sx={{ p: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.08)' }}
-                  >
-                    <Typography variant="body2">{member.userId}</Typography>
-                    <Typography variant="caption">
-                      Intro ~{member.introDurationSec}s · {member.requestedAtIso}
-                    </Typography>
-                    <Stack direction="row" gap={1}>
-                      <Button size="small" onClick={() => void listenPendingIntro(member.userId)}>
-                        {i18n._('Listen intro')}
-                      </Button>
-                      <Button
-                        size="small"
-                        variant="contained"
-                        disabled={busyUserId === member.userId}
-                        onClick={() => void onDecide(member.userId, 'approved')}
-                      >
-                        {i18n._('Approve')}
-                      </Button>
-                      <Button
-                        size="small"
-                        color="error"
-                        disabled={busyUserId === member.userId}
-                        onClick={() => void onDecide(member.userId, 'rejected')}
-                      >
-                        {i18n._('Reject')}
-                      </Button>
-                    </Stack>
-                  </Stack>
+                    member={member}
+                    isBusy={busyUserId === member.userId}
+                    isPreviewActive={previewUserId === member.userId}
+                    previewAudioUrl={previewUserId === member.userId ? previewIntroUrl : null}
+                    onListen={() => void listenPendingIntro(member.userId)}
+                    onApprove={() => void onDecide(member.userId, 'approved')}
+                    onReject={() => void onDecide(member.userId, 'rejected')}
+                  />
                 ))}
-                {previewIntroUrl && (
-                  <VoiceChatPlayer audioUrl={previewIntroUrl} label={i18n._('Pending intro')} />
-                )}
               </Stack>
             )}
           </Stack>
@@ -292,13 +247,21 @@ export const VoiceChatDashboardCard = () => {
       </Badge>
 
       <Dialog open={rulesOpen} onClose={() => setRulesOpen(false)}>
-        <DialogTitle>{i18n._('Rules of chat')}</DialogTitle>
+        <DialogTitle sx={{ fontWeight: 600 }}>{i18n._('Rules of chat')}</DialogTitle>
         <DialogContent>
-          <Stack gap={1}>
-            <Typography>{i18n._('Be kind. This is a small voice-only space.')}</Typography>
-            <Typography>{i18n._('No text messages and no transcripts.')}</Typography>
-            <Typography>{i18n._('Messages are removed after 4 days.')}</Typography>
-            <Typography>{i18n._('You can remove your own messages anytime.')}</Typography>
+          <Stack gap={1.25}>
+            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+              {i18n._('Be kind. This is a small voice-only space.')}
+            </Typography>
+            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+              {i18n._('No text messages and no transcripts.')}
+            </Typography>
+            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+              {i18n._('Messages are removed after 4 days.')}
+            </Typography>
+            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+              {i18n._('You can remove your own messages anytime.')}
+            </Typography>
           </Stack>
         </DialogContent>
         <DialogActions>

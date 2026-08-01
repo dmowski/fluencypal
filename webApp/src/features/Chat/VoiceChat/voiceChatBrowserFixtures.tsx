@@ -1,24 +1,25 @@
 import {
-  Alert,
   Badge,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
   Stack,
   Typography,
 } from '@mui/material';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import { useLingui } from '@lingui/react';
 import { type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { StoreCard } from '@/features/uiKit/Card/StoreCard';
+import { VoiceChatChecklistRow } from './components/VoiceChatChecklistRow';
 import { VoiceChatMessageList } from './components/VoiceChatMessageList';
+import { VoiceChatPendingRequestCard } from './components/VoiceChatPendingRequestCard';
 import { VoiceChatPlayer } from './components/VoiceChatPlayer';
 import { VoiceChatRecorderPanel } from './components/VoiceChatRecorderPanel';
+import { avatars } from '@/features/Game/avatars';
+import { voiceChatUi } from './voiceChatUi';
 import {
   type VoiceChatMember,
   type VoiceChatMessage,
@@ -37,6 +38,13 @@ export const FIXTURE_PREVIEW_IMAGE_URL = new URL(
 export const FIXTURE_CURRENT_USER = 'alice-voice-user';
 export const FIXTURE_OTHER_USER = 'bob-voice-user';
 export const FIXTURE_THIRD_USER = 'charlie-voice-user';
+
+export const FIXTURE_USER_PROFILES: Record<string, { name: string; avatar: string }> = {
+  [FIXTURE_CURRENT_USER]: { name: 'Alice', avatar: avatars[0] ?? '' },
+  [FIXTURE_OTHER_USER]: { name: 'Bob', avatar: avatars[1] ?? '' },
+  [FIXTURE_THIRD_USER]: { name: 'Charlie', avatar: avatars[2] ?? '' },
+  'pending-user-001': { name: 'Dana', avatar: avatars[3] ?? '' },
+};
 
 export const FIXTURE_CONVERSATION: VoiceChatMessage[] = [
   {
@@ -175,19 +183,32 @@ function VoiceChatModalShellContent({
 
   return (
     <>
-      <Typography variant="h3" fontWeight={800}>
-        {i18n._('Voice chat with people')}
-      </Typography>
+      <Stack gap={0.75}>
+        <Typography variant="h5" sx={{ fontWeight: 600, letterSpacing: '-0.02em' }}>
+          {i18n._('Voice chat with people')}
+        </Typography>
+        <Typography variant="body2" sx={{ color: voiceChatUi.textMuted, lineHeight: 1.5 }}>
+          {i18n._('Messages are removed after 4 days. No text — voice only.')}
+        </Typography>
+      </Stack>
       {messages.length > 0 && (
-        <Alert severity="info">
+        <Typography
+          variant="body2"
+          sx={{
+            color: voiceChatUi.textSecondary,
+            lineHeight: 1.6,
+            py: 1.25,
+            px: 1.5,
+            borderLeft: `2px solid ${voiceChatUi.accent}`,
+            bgcolor: voiceChatUi.surfaceSubtle,
+            borderRadius: '0 8px 8px 0',
+          }}
+        >
           {i18n._(
             'Your intro is already in the room. Listen to others, then reply when you’re ready.',
           )}
-        </Alert>
+        </Typography>
       )}
-      <Typography variant="body2" sx={{ opacity: 0.8 }}>
-        {i18n._('Messages are removed after 4 days. No text — voice only.')}
-      </Typography>
       <VoiceChatMessageList
         messages={messages}
         currentUserId={FIXTURE_CURRENT_USER}
@@ -208,7 +229,9 @@ function VoiceChatModalShellContent({
           onCancel={() => {}}
         />
       ) : (
-        <Button variant="contained">{i18n._('Record a new message')}</Button>
+        <Button variant="contained" fullWidth>
+          {i18n._('Record a new message')}
+        </Button>
       )}
     </>
   );
@@ -227,36 +250,6 @@ export function VoiceChatModalShellFixture(props: {
     </VoiceChatTestShell>
   );
 }
-
-const ChecklistRow = ({
-  title,
-  done,
-  action,
-}: {
-  title: string;
-  done: boolean;
-  action?: ReactNode;
-}) => (
-  <Stack
-    direction="row"
-    alignItems="center"
-    gap={1}
-    sx={{
-      p: 1.25,
-      borderRadius: 1.5,
-      bgcolor: done ? 'rgba(40,120,70,0.35)' : 'rgba(255,255,255,0.08)',
-    }}
-  >
-    <Typography sx={{ flex: 1 }} fontWeight={600}>
-      {done ? '✓ ' : ''}
-      {title}
-    </Typography>
-    <IconButton size="small" aria-label="Info">
-      <InfoOutlined fontSize="small" sx={{ color: '#fff' }} />
-    </IconButton>
-    {action}
-  </Stack>
-);
 
 export type DashboardFixtureState =
   | 'onboarding-new'
@@ -302,49 +295,60 @@ function VoiceChatDashboardContent({
       >
         <StoreCard
           textColor="#fff"
-          backgroundColor="rgba(18, 72, 92, 0.92)"
+          backgroundColor={voiceChatUi.dashboardCardBg}
           previewImageUrl={FIXTURE_PREVIEW_IMAGE_URL}
           title={i18n._('Voice chat with people')}
           subTitle={i18n._('Messages are removed after 4 days')}
           items={[]}
-          itemsBackgroundColor="rgba(0,0,0,0.2)"
+          itemsBackgroundColor={voiceChatUi.dashboardItemsBg}
           itemsViewMode="list"
         >
-          <Stack gap={1.25} sx={{ p: 1.5, bgcolor: 'rgba(0,0,0,0.35)' }}>
-            <ChecklistRow
-              title={i18n._('Become a member')}
-              done={isEntitled}
-              action={
-                !isEntitled ? (
-                  <Button size="small" variant="contained">
-                    {i18n._('Start')}
-                  </Button>
-                ) : null
-              }
-            />
-            <ChecklistRow
-              title={i18n._('Share a short intro (~3 min)')}
-              done={memberStatus === 'pending' || memberStatus === 'approved'}
-              action={
-                isEntitled && !memberStatus && !showIntroRecorder ? (
-                  <Button size="small" variant="contained">
-                    {i18n._('Record')}
-                  </Button>
-                ) : null
-              }
-            />
-            <ChecklistRow
-              title={i18n._('Wait for approval')}
-              done={memberStatus === 'approved'}
-            />
+          <Stack gap={1.25} sx={{ p: 1.25, bgcolor: voiceChatUi.dashboardPanelBg }}>
+            <Stack sx={{ px: 0.5 }}>
+              <VoiceChatChecklistRow
+                title={i18n._('Become a member')}
+                info={i18n._(
+                  'Voice chat is for paying members (or top-5 game winners). This keeps the room small and respectful.',
+                )}
+                done={isEntitled}
+                action={
+                  !isEntitled ? (
+                    <Button size="small" variant="contained" sx={{ alignSelf: 'flex-start' }}>
+                      {i18n._('Start')}
+                    </Button>
+                  ) : undefined
+                }
+              />
+              <VoiceChatChecklistRow
+                title={i18n._('Share a short intro (~3 min)')}
+                info={i18n._(
+                  'Record a short audio about yourself so others know who is joining. About 3 minutes is ideal.',
+                )}
+                done={memberStatus === 'pending' || memberStatus === 'approved'}
+                action={
+                  isEntitled && !memberStatus && !showIntroRecorder ? (
+                    <Button size="small" variant="contained" sx={{ alignSelf: 'flex-start' }}>
+                      {i18n._('Record')}
+                    </Button>
+                  ) : undefined
+                }
+              />
+              <VoiceChatChecklistRow
+                title={i18n._('Wait for approval')}
+                info={i18n._(
+                  'A host reviews your intro before you can listen and reply. This protects the group.',
+                )}
+                done={memberStatus === 'approved'}
+              />
+            </Stack>
 
             {memberStatus === 'pending' && (
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
                 {i18n._('Thanks — we’re reviewing your intro')}
               </Typography>
             )}
             {memberStatus === 'rejected' && (
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ color: voiceChatUi.textSecondary, px: 0.5 }}>
                 {i18n._('Not this time. You can try again in {days} days', { days: 7 })}
               </Typography>
             )}
@@ -362,32 +366,30 @@ function VoiceChatDashboardContent({
               />
             )}
 
-            <Button variant="text" sx={{ color: '#fff' }}>
+            <Button
+              variant="text"
+              sx={{ color: voiceChatUi.textMuted, alignSelf: 'flex-start', px: 0.5, fontSize: 13 }}
+            >
               {i18n._('Rules of chat')}
             </Button>
 
             {state === 'approver-pending' && (
-              <Stack gap={1} data-testid="voice-chat-pending-list">
-                <Typography fontWeight={700}>{i18n._('Pending requests')}</Typography>
-                <Stack gap={1} sx={{ p: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.08)' }}>
-                  <Typography variant="body2">{FIXTURE_PENDING_MEMBER.userId}</Typography>
-                  <Typography variant="caption">
-                    Intro ~{FIXTURE_PENDING_MEMBER.introDurationSec}s ·{' '}
-                    {FIXTURE_PENDING_MEMBER.requestedAtIso}
-                  </Typography>
-                  <Stack direction="row" gap={1}>
-                    <Button size="small">{i18n._('Listen intro')}</Button>
-                    <Button size="small" variant="contained">
-                      {i18n._('Approve')}
-                    </Button>
-                    <Button size="small" color="error">
-                      {i18n._('Reject')}
-                    </Button>
-                  </Stack>
-                </Stack>
-                <VoiceChatPlayer
-                  audioUrl={SILENT_AUDIO_DATA_URL}
-                  label={i18n._('Pending intro')}
+              <Stack
+                gap={1}
+                data-testid="voice-chat-pending-list"
+                sx={{ pt: 1.25, borderTop: `1px solid ${voiceChatUi.borderSubtle}` }}
+              >
+                <Typography variant="body2" sx={{ fontWeight: 600, letterSpacing: '-0.01em' }}>
+                  {i18n._('Pending requests')}
+                </Typography>
+                <VoiceChatPendingRequestCard
+                  member={FIXTURE_PENDING_MEMBER}
+                  isBusy={false}
+                  isPreviewActive={true}
+                  previewAudioUrl={SILENT_AUDIO_DATA_URL}
+                  onListen={() => {}}
+                  onApprove={() => {}}
+                  onReject={() => {}}
                 />
               </Stack>
             )}

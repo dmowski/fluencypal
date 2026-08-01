@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Button, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
@@ -15,6 +15,7 @@ import {
 import { VoiceChatMessage } from './types';
 import { VoiceChatMessageList } from './components/VoiceChatMessageList';
 import { VoiceChatRecorderPanel } from './components/VoiceChatRecorderPanel';
+import { voiceChatUi } from './voiceChatUi';
 
 export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();
@@ -116,24 +117,46 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     <CustomModal isOpen={true} onClose={onClose} mobilePadding="40px 0">
       <Stack
         data-testid="voice-chat-modal"
-        sx={{ maxWidth: 720, width: '100%', gap: 2, px: 1.5 }}
+        sx={{ maxWidth: 640, width: '100%', gap: 2.5, px: { xs: 1.5, sm: 2 }, pb: 2 }}
       >
-        <Typography variant="h3" fontWeight={800}>
-          {i18n._('Voice chat with people')}
-        </Typography>
+        <Stack gap={0.75}>
+          <Typography variant="h5" sx={{ fontWeight: 600, letterSpacing: '-0.02em' }}>
+            {i18n._('Voice chat with people')}
+          </Typography>
+          <Typography variant="body2" sx={{ color: voiceChatUi.textMuted, lineHeight: 1.5 }}>
+            {i18n._('Messages are removed after 4 days. No text — voice only.')}
+          </Typography>
+        </Stack>
+
         {messages.length > 0 && (
-          <Alert severity="info">
+          <Typography
+            variant="body2"
+            sx={{
+              color: voiceChatUi.textSecondary,
+              lineHeight: 1.6,
+              py: 1.25,
+              px: 1.5,
+              borderLeft: `2px solid ${voiceChatUi.accent}`,
+              bgcolor: voiceChatUi.surfaceSubtle,
+              borderRadius: '0 8px 8px 0',
+            }}
+          >
             {i18n._(
               'Your intro is already in the room. Listen to others, then reply when you’re ready.',
             )}
-          </Alert>
+          </Typography>
         )}
-        <Typography variant="body2" sx={{ opacity: 0.8 }}>
-          {i18n._('Messages are removed after 4 days. No text — voice only.')}
-        </Typography>
 
-        {error && <Alert severity="error">{error}</Alert>}
-        {isLoading && <Typography>{i18n._('Loading…')}</Typography>}
+        {error && (
+          <Typography variant="body2" color="error">
+            {error}
+          </Typography>
+        )}
+        {isLoading && (
+          <Typography variant="body2" sx={{ color: voiceChatUi.textMuted }}>
+            {i18n._('Loading…')}
+          </Typography>
+        )}
 
         {!isLoading && (
           <VoiceChatMessageList
@@ -151,7 +174,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         )}
 
         {!showRootRecorder ? (
-          <Button variant="contained" onClick={() => setShowRootRecorder(true)}>
+          <Button variant="contained" fullWidth onClick={() => setShowRootRecorder(true)}>
             {i18n._('Record a new message')}
           </Button>
         ) : (
