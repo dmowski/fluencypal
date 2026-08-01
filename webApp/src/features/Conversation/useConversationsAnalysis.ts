@@ -114,7 +114,7 @@ Your response will be parsed using JSON.parse().
       const aiResults = await textAi.generateJson<ConversationResult>({
         systemMessage,
         userMessage: messagesString,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         languageCode: settings.languageCode || 'en',
       });
 
@@ -165,7 +165,7 @@ Provide only potential answer, without any kind of wrapper/started/intro words. 
       const aiResults = await textAi.generate({
         systemMessage,
         userMessage: messagesString,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         languageCode: settings.languageCode || 'en',
       });
       return aiResults;

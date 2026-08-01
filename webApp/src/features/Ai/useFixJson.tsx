@@ -37,7 +37,7 @@ export const useFixJson = () => {
     const fixJsonRes = await textAi.generate({
       systemMessage,
       userMessage: badJson,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       languageCode,
     });
     try {

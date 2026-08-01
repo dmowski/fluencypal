@@ -18,10 +18,7 @@ import { GuessGameStat } from '../Conversation/types';
 import { MODELS } from '@/features/Ai/ai';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { useUrlState } from '../Url/useUrlState';
-import {
-  isAliasGameRolePlay,
-  trackAliasEvent,
-} from '@/features/RolePlay/aliasAnalytics';
+import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
@@ -319,7 +316,7 @@ function useProvideRolePlay({
     const response = await textAi.generate({
       systemMessage,
       userMessage: `Generate 18 words. Use ${settings.fullLanguageName} language. User language level: ${userLevelInfo}`,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       languageCode: settings.languageCode || 'en',
     });
     console.log('generateRandomWord:', response);
@@ -363,7 +360,9 @@ function useProvideRolePlay({
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
 
     if (isNeedToGenerateWords) {
-      const levelInput = selectedRolePlayScenario.input.find((input) => input.id === 'languageLevel');
+      const levelInput = selectedRolePlayScenario.input.find(
+        (input) => input.id === 'languageLevel',
+      );
       const levelValue =
         userInputs?.[selectedRolePlayScenario.id + '-languageLevel'] ||
         levelInput?.defaultValue ||

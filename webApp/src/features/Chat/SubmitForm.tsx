@@ -140,7 +140,7 @@ Provide only the message user can send, without any additional explanation or co
     const idea = await ai.generate({
       systemMessage: systemMessage,
       userMessage: userMessage,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
     setIdeaForMessage(idea);
     setIsGeneratingIdea(false);

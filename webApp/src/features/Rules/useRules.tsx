@@ -46,7 +46,7 @@ function useProvideRules(): RulesContextType {
       const newRuleToLearn = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: `User Messages: ${userMessage}`,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         languageCode: settings.languageCode || 'en',
       });
       return newRuleToLearn;

@@ -222,7 +222,7 @@ Please provide your decision in the following JSON format:
         systemMessage,
         userMessage: 'Decide the winner based on the provided answers.',
         attempts: 3,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
 
       const winnerUserId = result.winnerUserId || battle.usersIds[0];

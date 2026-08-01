@@ -40,7 +40,7 @@ export const StoryEditorModal = ({
         'Based on the following info, generate a concise title (max 5 words) and a subtitle (max 10 words) that captures the essence of the story. Return the result in JSON format with "title" and "subtitle" fields.',
       attempts: 3,
       userMessage: data,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     const resultedStory: Story = {
@@ -74,7 +74,7 @@ export const StoryEditorModal = ({
     const generatedText = await ai.generate({
       systemMessage,
       userMessage: data,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     const resultedStory: Story = {
@@ -102,7 +102,7 @@ export const StoryEditorModal = ({
     const generatedText = await ai.generate({
       systemMessage,
       userMessage: data,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     const resultedStory: Story = {
@@ -128,7 +128,7 @@ export const StoryEditorModal = ({
     const generatedText = await ai.generate({
       systemMessage,
       userMessage: data,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     const resultedStory: Story = {

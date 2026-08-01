@@ -4,7 +4,7 @@ import { buildNewsQuizSystemPrompt, buildNewsQuizUserPrompt } from './buildNewsQ
 import { NewsQuizDraft, newsQuizDraftSchema } from './newsQuizSchema';
 import { QuizSectionSpec } from './resolveIncludedSections';
 
-const MODEL_FOR_QUIZ_GENERATION = 'gpt-4o' as const;
+const MODEL_FOR_QUIZ_GENERATION = 'gpt-5.6-luna' as const;
 
 export const generateNewsQuizDraft = async ({
   input,

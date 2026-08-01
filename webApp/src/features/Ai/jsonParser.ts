@@ -56,9 +56,10 @@ export const fixJson = async <T>({
   const fixJsonRes = await generate({
     systemMessage,
     userMessage: badJson,
-    model: 'gpt-4o',
+    model: 'gpt-5.6-luna',
     languageCode,
   });
+  console.log('fixJsonRes', fixJsonRes);
   try {
     const trimmedJson = extractJsonFromAiResponse(fixJsonRes);
     return JSON.parse(trimmedJson);

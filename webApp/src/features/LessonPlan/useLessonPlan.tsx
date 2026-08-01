@@ -122,7 +122,7 @@ ${activePlan}
           const summaryRequest = ai.generate({
             systemMessage: summarySystemMessage,
             userMessage,
-            model: 'gpt-4o',
+            model: 'gpt-5.6-luna',
           });
           summaryMapRef.current[conversationKey] = summaryRequest;
         }
@@ -231,7 +231,7 @@ ${JSON.stringify(previousProgress, null, 2)}
           systemMessage: systemInstructions,
           userMessage: userMessage,
           attempts: 2,
-          model: 'gpt-4o',
+          model: 'gpt-5.6-luna',
         });
         const end = Date.now();
 
@@ -357,7 +357,7 @@ Return only the JSON array, do not include any additional text.
       systemMessage,
       userMessage: `Create the lesson plan as specified.`,
       attempts: 4,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     const plan: LessonPlan = { steps: response };

@@ -22,7 +22,7 @@ export const translateCategoryTitleToAllLanguages = async (
     title[lang] = await translateText({
       systemMessage: `Translate the following category label to ${langName}. Return only the translated text, no explanations.`,
       userMessage: titleEn,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
   }
 

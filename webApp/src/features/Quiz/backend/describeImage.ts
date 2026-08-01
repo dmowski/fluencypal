@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 
-const VISION_MODEL = 'gpt-4o' as const;
+const VISION_MODEL = 'gpt-5.6-luna' as const;
 
 const SYSTEM_PROMPT = `You analyze photographs for language-learning activities.
 Describe what is objectively visible in the image in 4–6 English sentences.

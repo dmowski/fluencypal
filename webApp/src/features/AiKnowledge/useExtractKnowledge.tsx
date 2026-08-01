@@ -64,7 +64,7 @@ export function useExtractKnowledge() {
       factsAiResponse = await textAi.generate({
         userMessage: context,
         systemMessage,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
     } catch (e) {
       console.error('Error extracting knowledge:', e);
@@ -202,7 +202,7 @@ If original records already look good and clean, return the word "OK".
       parsedSummary = await textAi.generate({
         userMessage: inputInFormat,
         systemMessage,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
       console.log('parsedSummary');
       console.log(parsedSummary);

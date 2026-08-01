@@ -79,7 +79,7 @@ export const Essay = () => {
         systemMessage:
           'You are a writing assistant. Based on the essay details provided, suggest one small next text that naturally continues the essay. Return only text, no explanations or labels. Add one or two sentences at most.',
         userMessage: parts,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
 
       setSuggestion(result.trim());

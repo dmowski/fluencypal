@@ -166,7 +166,7 @@ Return the list in a comma-separated format. On the next line, write a short and
 Address directly to the user.
 `,
         userMessage: newImageDescription,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         languageCode: 'en',
       });
       clearTimeout(t2);

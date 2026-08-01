@@ -226,7 +226,7 @@ function useProvideAiConversation(): AiConversationContextType {
           userMessage,
           systemMessage,
           languageCode: settings.languageCode || 'en',
-          model: 'gpt-4o',
+          model: 'gpt-5.6-luna',
         });
       },
       playAudio: async (textToPlay: string, voice: AiVoice) => {

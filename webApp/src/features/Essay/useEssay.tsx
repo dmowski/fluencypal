@@ -141,7 +141,7 @@ Evaluate how well the essay is written: clarity, structure, tone, flow, and over
 ## Grammar Mistakes
 List grammar mistakes found and explain how to fix each one. If there are no mistakes, say so.`,
         userMessage: essay.text,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
       setEssays((prev) => {
         const updated = prev.map((e) =>

@@ -58,7 +58,7 @@ export async function POST(request: Request) {
             'Return only JSON.',
           ].join('\n'),
           userMessage: previewText,
-          model: 'gpt-4o',
+          model: 'gpt-5.6-luna',
         })
       ).output,
       schema: bookMetadataSchema,

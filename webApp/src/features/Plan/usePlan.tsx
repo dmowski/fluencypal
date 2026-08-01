@@ -141,7 +141,7 @@ ${input.context}`;
     const goal = await textAi.generate({
       systemMessage,
       userMessage,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       languageCode: input.languageCode,
     });
 
@@ -224,7 +224,7 @@ ${JSON.stringify(input.progress, null, 2)}
     const parsedElements = await textAi.generateJson<AiGeneratedElement[]>({
       systemMessage: input.systemMessage,
       userMessage: input.userMessage,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       languageCode: input.languageCode,
       attempts: 4,
     });

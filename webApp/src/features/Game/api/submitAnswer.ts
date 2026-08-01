@@ -64,7 +64,7 @@ true|A group of people is seen singing a song.|Your description is correct becau
     const aiResult = await generateTextWithAi({
       systemMessage: systemMessage,
       userMessage: `User's description: "${answer}".`,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
     console.log('AI Result:', aiResult.output);
 
@@ -111,7 +111,7 @@ true|A group of people is seen singing a song.|Your speech is correct because it
     const aiResult = await generateTextWithAi({
       systemMessage: systemMessage,
       userMessage: `User's description: "${answer}".`,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
     console.log('AI Result:', aiResult.output);
 

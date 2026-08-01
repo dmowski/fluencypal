@@ -260,7 +260,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }>({
       systemMessage,
       userMessage: survey.aboutUserTranscription,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       attempts: 4,
     });
 
@@ -374,7 +374,7 @@ ${survey.aboutUserFollowUpQuestion.title} (${survey.aboutUserFollowUpQuestion.de
 
 ${survey.aboutUserFollowUpTranscription}
 `,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       attempts: 4,
     });
 
@@ -423,7 +423,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const aiResponse = await textAi.generate({
       systemMessage: systemPrompt,
       userMessage: usersInfo,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
     });
 
     return aiResponse;

@@ -18,7 +18,8 @@ export type TextAiModel =
   | 'gpt-5.4'
   | 'gpt-5.1'
   | 'gpt-5-nano'
-  | 'chatgpt-4o-latest';
+  | 'chatgpt-4o-latest'
+  | 'gpt-5.6-luna';
 
 export type TranscriptAiModel = 'gpt-4o-transcribe' | 'gpt-4o-mini-transcribe';
 
@@ -96,6 +97,11 @@ export const textModalPricePerMillionTokens: Record<TextAiModel, TextUsagePrice>
     text_input: 2.5,
     text_cached_input: 0.25,
     text_output: 15,
+  },
+  'gpt-5.6-luna': {
+    text_input: 0.2,
+    text_cached_input: 0.02,
+    text_output: 1.2,
   },
 };
 

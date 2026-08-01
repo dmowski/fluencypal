@@ -2,7 +2,7 @@ import { TextAiModel } from '../Ai/ai';
 import { ProgressEvaluationInput } from './types';
 
 export const MAX_EVALUATION_ATTEMPTS = 3;
-export const MODEL_FOR_ASSESSMENT: TextAiModel = 'gpt-4o';
+export const MODEL_FOR_ASSESSMENT: TextAiModel = 'gpt-5.6-luna';
 
 export const progressEvaluationSystemMessage = [
   'You are a language skill evaluator for FluencyPal.',

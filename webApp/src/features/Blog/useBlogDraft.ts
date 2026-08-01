@@ -223,7 +223,7 @@ export const useBlogDraft = (
       ai.generate({
         systemMessage: `Translate the following text to ${langName}. Return only the translated text, no explanations.`,
         userMessage: text,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       });
 
     const [tTitle, tSubTitle, tContent, tKeywordsResult] = await Promise.all([
@@ -233,14 +233,14 @@ export const useBlogDraft = (
         ? ai.generate({
             systemMessage: `Translate the following markdown blog post to ${langName}. Keep all markdown formatting intact. Return only the translated content.`,
             userMessage: enContent,
-            model: 'gpt-4o',
+            model: 'gpt-5.6-luna',
           })
         : Promise.resolve(''),
       enKeywords.length > 0
         ? ai.generateJson<{ keywords: string[] }>({
             systemMessage: `Translate the following JSON array of keywords to ${langName}. Return a JSON object with a "keywords" array of strings.`,
             userMessage: JSON.stringify(enKeywords),
-            model: 'gpt-4o',
+            model: 'gpt-5.6-luna',
           })
         : Promise.resolve({ keywords: [] as string[] }),
     ]);

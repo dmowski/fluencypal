@@ -148,7 +148,7 @@ Format of your response:
 Strictly follow the formate, because it will be parsed by the code.
 `,
     userMessage: userInfo,
-    model: 'gpt-4o',
+    model: 'gpt-5.6-luna',
   });
 
   console.log('Words output');
@@ -211,7 +211,7 @@ Sentences should be grammatically correct and meaningful.
 Do not wrap your answer in any intro text.
 `,
     userMessage: userInfo,
-    model: 'gpt-4o',
+    model: 'gpt-5.6-luna',
   });
   console.log('Sentences output');
   console.log(output);

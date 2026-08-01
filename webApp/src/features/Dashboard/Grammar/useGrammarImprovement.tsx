@@ -111,7 +111,7 @@ ${postfixInstruction}`;
     const data = await textAi.generateJson<TitleMetadata>({
       systemMessage: finalSystemInstruction,
       userMessage: userPrompt,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       cache: true,
     });
 

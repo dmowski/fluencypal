@@ -98,7 +98,7 @@ Format the summary as explicit facts: what user and teacher said.`;
           (previousConversationSummary
             ? `\n\nConversation history:\n${previousConversationSummary}`
             : ''),
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
       },
       token,
     );

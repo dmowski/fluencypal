@@ -108,7 +108,7 @@ Your response will be sent to JSON.parse() function.
       const response = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: knownWords.join(' '),
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         languageCode: settings.languageCode || 'en',
       });
       const newWordsToLearn = JSON.parse(response) as string[];

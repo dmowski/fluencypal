@@ -277,7 +277,7 @@ Important that your guess should be not straightforward, but interesting and fun
 ### User Info (Use this to guess the interest):
 ${advancedUserRecords}
 `,
-        model: 'gpt-4o',
+        model: 'gpt-5.6-luna',
         cache: false,
         languageCode,
       }));
@@ -304,7 +304,7 @@ ${firstMessages.length === 0 ? 'None' : firstMessages.map((msg, i) => `${i + 1}.
     const response = await textAi.generate({
       systemMessage,
       userMessage,
-      model: 'gpt-4o',
+      model: 'gpt-5.6-luna',
       cache: false,
       languageCode,
     });
