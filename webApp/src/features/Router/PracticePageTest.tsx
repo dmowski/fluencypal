@@ -25,6 +25,26 @@ for (let i = 0; i < 7; i++) {
   });
 }
 
+startTestMessages.push({
+  isBot: false,
+  text: `
+Good sentence. A more natural version is:
+
+“I didn’t use fine-tuning because I didn’t find it very useful for my project.”
+
+Use lowercase **not** unless it begins a sentence. Also, **fine-tuning** is usually written with a hyphen.
+
+Now let’s learn **tokenization**.
+
+**Tokenization** is the process of breaking text into smaller units called tokens, such as words, parts of words, or punctuation marks.
+
+Example:  
+“Tokenization helps an AI model process a sentence one token at a time.”
+
+Now, write one sentence using **tokenization**.`,
+  id: `${7}`,
+});
+
 export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) {
   const aiUserInfo = useAiUserInfo();
   const [testMessage, setTestMessage] = useState<ConversationMessage[]>(startTestMessages);
@@ -137,7 +157,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>('call');
+  const [conversationMode, setConversationMode] = useState<ConversationMode>('record');
 
   const addMessage = async (message: string) => {
     setTestMessage((prevMessages) => [

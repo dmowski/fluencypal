@@ -5,6 +5,7 @@ import { MarkdownToJSX, default as MarkdownTool } from 'markdown-to-jsx';
 import React from 'react';
 import { AttachmentImage } from '@/features/Chat/Message/AttachmentImage';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+import { splitIntoSentenceParts } from './splitIntoSentenceParts';
 
 type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat' | 'rule';
 export interface MarkdownProps {
@@ -43,7 +44,7 @@ const processStringChild = (child: string, index: number, options: WrapOptions) 
   const { onSentenceClick, sentenceIcon = 'play' } = options;
 
   // Keep trailing spaces attached to each sentence so icon placement feels natural.
-  const sentenceParts = child.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)\s*/g) || [child];
+  const sentenceParts = splitIntoSentenceParts(child);
 
   return sentenceParts.map((sentencePart, sentenceIndex) => {
     const coreSentence = sentencePart.replace(/\s+$/, '');
