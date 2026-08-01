@@ -9,11 +9,13 @@ export const useVoiceChatRecorder = () => {
   const { i18n } = useLingui();
   const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
+  const [recordedDurationSec, setRecordedDurationSec] = useState(0);
   const isCancel = useRef(false);
 
   useEffect(() => {
+    if (!recorderControls.isRecordingInProgress) return;
     setRecordingSeconds(Math.floor(recorderControls.recordingTime / 1000));
-  }, [recorderControls.recordingTime]);
+  }, [recorderControls.recordingTime, recorderControls.isRecordingInProgress]);
 
   const startRecording = async () => {
     const isAllowed = await isAllowedMicrophone();
@@ -29,6 +31,8 @@ export const useVoiceChatRecorder = () => {
       }
     }
     isCancel.current = false;
+    setRecordedDurationSec(0);
+    setRecordingSeconds(0);
     recorderControls.startRecording();
   };
 
@@ -38,6 +42,8 @@ export const useVoiceChatRecorder = () => {
       cancelRecording();
       return;
     }
+    setRecordedDurationSec(seconds);
+    setRecordingSeconds(seconds);
     recorderControls.stopRecording();
   };
 
@@ -47,6 +53,8 @@ export const useVoiceChatRecorder = () => {
       recorderControls.stopRecording();
     }
     recorderControls.clearCanvas();
+    setRecordedDurationSec(0);
+    setRecordingSeconds(0);
   };
 
   const clearRecording = () => {
@@ -55,6 +63,7 @@ export const useVoiceChatRecorder = () => {
   };
 
   const recordedBlob = isCancel.current ? null : recorderControls.recordedBlob;
+  const durationSec = recordedBlob ? recordedDurationSec : recordingSeconds;
 
   return {
     startRecording,
@@ -63,7 +72,7 @@ export const useVoiceChatRecorder = () => {
     clearRecording,
     isRecording: recorderControls.isRecordingInProgress,
     recordedBlob,
-    recordingSeconds,
+    recordingSeconds: durationSec,
     error: recorderControls.error?.message || '',
     visualizer: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer

@@ -21,6 +21,7 @@ import { VoiceChatRecorderPanel } from './components/VoiceChatRecorderPanel';
 import { avatars } from '@/features/Game/avatars';
 import { voiceChatUi } from './voiceChatUi';
 import {
+  VOICE_CHAT_INTRO_MIN_SECONDS,
   type VoiceChatMember,
   type VoiceChatMessage,
 } from './types';
@@ -320,9 +321,9 @@ function VoiceChatDashboardContent({
                 }
               />
               <VoiceChatChecklistRow
-                title={i18n._('Share a short intro (~3 min)')}
+                title={i18n._('Share a short intro (~30 sec)')}
                 info={i18n._(
-                  'Record a short audio about yourself so others know who is joining. About 3 minutes is ideal.',
+                  'Record a short audio about yourself so others know who is joining. About 30 seconds is ideal.',
                 )}
                 done={memberStatus === 'pending' || memberStatus === 'approved'}
                 action={
@@ -360,7 +361,7 @@ function VoiceChatDashboardContent({
               <VoiceChatRecorderPanel
                 title={i18n._('Record your intro')}
                 submitLabel={i18n._('Send for approval')}
-                minSeconds={5}
+                minSeconds={VOICE_CHAT_INTRO_MIN_SECONDS}
                 onSubmit={noopAsync}
                 onCancel={() => {}}
               />
@@ -455,7 +456,7 @@ function VoiceChatRecorderContent() {
     <VoiceChatRecorderPanel
       title={i18n._('Record your intro')}
       submitLabel={i18n._('Send for approval')}
-      minSeconds={5}
+      minSeconds={VOICE_CHAT_INTRO_MIN_SECONDS}
       onSubmit={noopAsync}
       onCancel={() => {}}
     />

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { VoiceChatAccessError } from './access';
 import {
+  VOICE_CHAT_INTRO_MIN_SECONDS,
   VoiceChatApiError,
   VoiceChatDecideRequest,
   VoiceChatDecision,
@@ -124,7 +125,7 @@ export const parseRequestAccessForm = async (
   const form = await request.formData();
   return {
     audio: requireAudioFile(form.get('audio')),
-    durationSec: parseDurationSec(form.get('durationSec'), 5),
+    durationSec: parseDurationSec(form.get('durationSec'), VOICE_CHAT_INTRO_MIN_SECONDS),
   };
 };
 

@@ -24,6 +24,7 @@ import {
   requestVoiceChatAccess,
 } from './api/voiceChatClient';
 import {
+  VOICE_CHAT_INTRO_MIN_SECONDS,
   VOICE_CHAT_PREVIEW_IMAGE_URL,
   VoiceChatDecision,
   VoiceChatStatusResponse,
@@ -155,9 +156,9 @@ export const VoiceChatDashboardCard = () => {
               />
 
               <VoiceChatChecklistRow
-                title={i18n._('Share a short intro (~3 min)')}
+                title={i18n._('Share a short intro (~30 sec)')}
                 info={i18n._(
-                  'Record a short audio about yourself so others know who is joining. About 3 minutes is ideal.',
+                  'Record a short audio about yourself so others know who is joining. About 30 seconds is ideal.',
                 )}
                 done={memberStatus === 'pending' || memberStatus === 'approved'}
                 action={
@@ -205,7 +206,7 @@ export const VoiceChatDashboardCard = () => {
               <VoiceChatRecorderPanel
                 title={i18n._('Record your intro')}
                 submitLabel={i18n._('Send for approval')}
-                minSeconds={5}
+                minSeconds={VOICE_CHAT_INTRO_MIN_SECONDS}
                 onSubmit={onSubmitIntro}
                 onCancel={() => setShowIntroRecorder(false)}
               />

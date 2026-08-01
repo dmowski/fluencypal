@@ -8,7 +8,7 @@ Voice-only room for a small group. No text transcripts, no typing — record, li
 | --- | --- |
 | Room | One global voice chat |
 | Access | Paid membership **or** live top-5 game winner, plus host approval |
-| Intro | ~3 min audio submitted with join request; on approve, server posts it as the user's first message (`isIntro`) |
+| Intro | ~30 sec audio submitted with join request; on approve, server posts it as the user's first message (`isIntro`) |
 | Replies | Nested (`parentMessageId`) |
 | Retention | Messages removed after **4 days** (`VOICE_CHAT_MESSAGE_TTL_DAYS`) |
 | Re-request after reject | **10 days** (`VOICE_CHAT_REREQUEST_COOLDOWN_DAYS`) |
@@ -80,7 +80,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 
 - **Dashboard:** `VoiceChatDashboardCard` on `Dashboard.tsx` (founder-only for now).
 - **Modal:** `VoiceChatModal` via `GlobalModals` / `?voiceChat=true`.
-- **Checklist copy:** Become a member → Share intro (~3 min) → Wait for approval.
+- **Checklist copy:** Become a member → Share intro (~30 sec) → Wait for approval.
 - **First visit in modal:** Friendly intro highlight when messages exist (not on empty shell).
 - **Rules dialog:** Kindness, voice-only, 4-day retention, self-remove.
 
