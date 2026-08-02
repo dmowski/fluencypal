@@ -2,7 +2,7 @@
 
 import { useLingui } from '@lingui/react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { X } from 'lucide-react';
+import { Mic, X } from 'lucide-react';
 import { useState } from 'react';
 import { VoiceChatMessage } from '../types';
 import { voiceChatUi } from '../voiceChatUi';
@@ -137,9 +137,23 @@ export const VoiceChatModalContent = ({
       )}
 
       {!showRootRecorder ? (
-        <Button variant="contained" fullWidth onClick={onShowRootRecorder}>
-          {i18n._('Record a new message')}
-        </Button>
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            paddingTop: '10px',
+          }}
+        >
+          <Button
+            startIcon={<Mic size="15px" />}
+            variant="contained"
+            color="info"
+            onClick={onShowRootRecorder}
+          >
+            {i18n._('Record a new message')}
+          </Button>
+        </Stack>
       ) : (
         <VoiceChatRecorderPanel
           title={i18n._('Record a new message')}
