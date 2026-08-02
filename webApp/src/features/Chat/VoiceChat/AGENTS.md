@@ -14,7 +14,6 @@ Voice-only room for a small group. No text transcripts, no typing — record, li
 | Re-request after reject | **10 days** (`VOICE_CHAT_REREQUEST_COOLDOWN_DAYS`) |
 | Paid detection | Real payment (`amountAdded > 0`); exclude `trial-days` / `welcome` |
 | Unread | Mark listened on any playback progress |
-| Feature flag | Dashboard card visible only when `auth.isFounder` (modal opens via URL for any signed-in user; APIs enforce access) |
 | Approvers | `voiceChat/config.approverIds` (seeded with founder UID) |
 
 Constants live in `types.ts`.
@@ -78,7 +77,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 
 ## UI entry
 
-- **Dashboard:** `VoiceChatDashboardCard` on `Dashboard.tsx` (founder-only for now).
+- **Dashboard:** `VoiceChatDashboardCard` on `Dashboard.tsx` (signed-in users; APIs enforce entitlement + approval).
 - **Modal:** `VoiceChatModal` via `GlobalModals` / `?voiceChat=true`.
 - **Checklist copy:** Become a member → Share intro (~30 sec) → Wait for approval.
 - **First visit in modal:** Friendly intro highlight when messages exist (not on empty shell).
@@ -104,7 +103,7 @@ Specs: `webApp/e2e/voice-chat/*.spec.ts`
 
 | Spec | Covers |
 | --- | --- |
-| `shell.spec.ts` | Founder-only card, modal shell |
+| `shell.spec.ts` | Dashboard card for signed-in users, modal shell |
 | `access.spec.ts` | Entitlement / approval API gates, reject cooldown |
 | `onboarding.spec.ts` | Request access, approver UI, intro posted on approve |
 | `messages.spec.ts` | Unread, listen UI, cascade delete |

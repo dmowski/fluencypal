@@ -29,7 +29,7 @@ export const VoiceChatDashboardCard = () => {
   const [busyUserId, setBusyUserId] = useState('');
 
   const refresh = useCallback(async () => {
-    if (!auth.uid || !auth.isFounder) return;
+    if (!auth.uid) return;
     try {
       const token = await auth.getToken();
       const next = await fetchVoiceChatStatus(token);
@@ -44,7 +44,7 @@ export const VoiceChatDashboardCard = () => {
     void refresh();
   }, [refresh]);
 
-  if (!auth.isFounder) {
+  if (!auth.uid) {
     return null;
   }
 

@@ -24,7 +24,6 @@ vi.mock('@/features/Auth/useAuth', () => ({
   useAuth: () => ({
     uid: 'fixture-user',
     getToken: async () => 'fixture-token',
-    isFounder: true,
   }),
 }));
 
