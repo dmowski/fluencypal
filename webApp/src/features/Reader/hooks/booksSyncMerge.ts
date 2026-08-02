@@ -1,3 +1,4 @@
+import { sanitizeForFirestore } from '@/libs/sanitizeForFirestore';
 import { Book, createEmptyConvertedFilesPathMap } from '../model/types';
 import { ReaderBookDoc, READER_BOOK_DOC_SCHEMA_VERSION } from '../server/readerBookDoc';
 
@@ -157,5 +158,5 @@ export const buildRemoteDocFromLocal = (
   if (local.ownerUserId !== undefined) {
     doc.memberIds = [local.ownerUserId, ...(local.userIds ?? [])];
   }
-  return doc;
+  return sanitizeForFirestore(doc);
 };

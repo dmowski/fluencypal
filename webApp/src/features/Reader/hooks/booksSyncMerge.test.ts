@@ -1,5 +1,5 @@
 import { Book, createEmptyConvertedFilesPathMap } from '../model/types';
-import { mergeRemoteBookIntoLocal } from './booksSyncMerge';
+import { buildRemoteDocFromLocal, mergeRemoteBookIntoLocal } from './booksSyncMerge';
 
 const baseLocal: Book = {
   id: 'b1',
@@ -118,5 +118,36 @@ describe('mergeRemoteBookIntoLocal', () => {
 
     // No remotely-driven fields changed — result is null (no merge needed).
     expect(result).toBeNull();
+  });
+});
+
+describe('buildRemoteDocFromLocal', () => {
+  it('strips undefined nested fields before Firestore write', () => {
+    const local: Book = {
+      ...baseLocal,
+      highlights: [
+        {
+          paragraphIndex: 0,
+          startIndex: 0,
+          endIndex: 5,
+          color: '#ff0',
+          note: '',
+          userId: undefined,
+        },
+      ],
+      highlightsUpdatedAtIso: '2025-06-01T00:00:00.000Z',
+      convertedFiles: { epub: '', pdf: undefined as unknown as null, docx: null },
+    };
+
+    const remoteDoc = buildRemoteDocFromLocal(local, {
+      createdAtIso: '2024-01-01T00:00:00.000Z',
+      nowIso: '2025-06-01T00:00:00.000Z',
+    });
+
+    expect(remoteDoc.highlights).toEqual([
+      { paragraphIndex: 0, startIndex: 0, endIndex: 5, color: '#ff0', note: '' },
+    ]);
+    expect(remoteDoc.convertedFiles).toEqual({ epub: '', docx: null });
+    expect(JSON.stringify(remoteDoc)).not.toContain('undefined');
   });
 });
