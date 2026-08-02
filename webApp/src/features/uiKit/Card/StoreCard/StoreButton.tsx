@@ -1,12 +1,12 @@
 import { Button } from '@mui/material';
 
-export const StoreButton = ({ title, onClick }: { title: string; onClick: () => void }) => {
+export const StoreButton = ({ title, onClick }: { title: string; onClick?: () => void }) => {
   return (
     <Button
       onClick={(e) => {
         e.stopPropagation();
         e.preventDefault();
-        onClick();
+        onClick?.();
       }}
       sx={{
         padding: '6px 20px',

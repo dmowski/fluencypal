@@ -7,6 +7,7 @@ import { voiceChatUi } from '../voiceChatUi';
 import { VoiceChatIntroRecorderPanel } from './VoiceChatIntroRecorderPanel';
 import { VoiceChatOnboardingChecklist } from './VoiceChatOnboardingChecklist';
 import { VoiceChatPendingRequestCard } from './VoiceChatPendingRequestCard';
+import { StoreButton } from '@/features/uiKit/Card/StoreCard/StoreButton';
 
 export interface VoiceChatDashboardPanelProps {
   error?: string;
@@ -83,9 +84,16 @@ export const VoiceChatDashboardPanel = ({
         </Typography>
       )}
       {memberStatus === 'approved' && (
-        <Button variant="contained" onClick={onOpenVoiceChat}>
-          {i18n._('Open Voice Chat')}
-        </Button>
+        <Stack
+          sx={{
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            paddingTop: '10px',
+          }}
+        >
+          <StoreButton onClick={onOpenVoiceChat} title={i18n._('Open Voice Chat')} />
+        </Stack>
       )}
 
       {showIntroRecorder && (
