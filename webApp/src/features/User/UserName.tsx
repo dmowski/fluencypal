@@ -11,14 +11,16 @@ export const UserName = ({
   bold,
   size,
   center,
+  hideBadge,
 }: {
   userId: string;
   userName: string;
   bold?: boolean;
   size?: Size;
   center?: boolean;
+  hideBadge?: boolean;
 }) => {
-  const isVerified = verifiedUserIds.includes(userId);
+  const isVerified = verifiedUserIds.includes(userId) && hideBadge !== true;
 
   return (
     <Stack

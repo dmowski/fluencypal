@@ -191,7 +191,13 @@ export const VoiceChatPlayer = ({
               minWidth={0}
             >
               <Avatar url={game.getUserAvatarUrl(senderId)} avatarSize={'16px'} />
-              <UserName userId={senderId} userName={game.getUserName(senderId)} bold size="small" />
+              <UserName
+                userId={senderId}
+                userName={game.getUserName(senderId)}
+                bold
+                size="small"
+                hideBadge={true}
+              />
             </Stack>
           )}
           <LinearProgress
