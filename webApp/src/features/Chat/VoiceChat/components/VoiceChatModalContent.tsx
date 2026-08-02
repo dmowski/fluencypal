@@ -69,9 +69,6 @@ export const VoiceChatModalContent = ({
         <Typography variant="h5" sx={{ fontWeight: 600, letterSpacing: '-0.02em' }}>
           {i18n._('Voice chat with people')}
         </Typography>
-        <Typography variant="body2" sx={{ color: voiceChatUi.textMuted, lineHeight: 1.5 }}>
-          {i18n._('Messages are removed after 4 days. No text — voice only.')}
-        </Typography>
       </Stack>
 
       {messages.length > 0 && !isIntroCalloutDismissed && (
@@ -93,7 +90,7 @@ export const VoiceChatModalContent = ({
             sx={{ flex: 1, color: voiceChatUi.textSecondary, lineHeight: 1.6 }}
           >
             {i18n._(
-              'Your intro is already in the room. Listen to others, then reply when you’re ready.',
+              'Your intro is already in the room. Listen to others, then reply when you’re ready. Messages are removed after 4 days. No text — voice only.',
             )}
           </Typography>
           <IconButton
