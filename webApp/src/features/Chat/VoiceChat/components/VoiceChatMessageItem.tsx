@@ -44,9 +44,11 @@ export const VoiceChatMessageItem = ({
       sx={{
         gap: '10px',
         ...(depth > 0 && {
-          ml: depth * 2,
+          ml: depth * 3,
+          paddingTop: '6px',
+          paddingBottom: '6px',
           pl: 1.25,
-          borderLeft: `1px solid ${voiceChatUi.borderThread}`,
+          borderLeft: `1px solid rgba(255, 255, 255, 0.1)`,
         }),
       }}
     >

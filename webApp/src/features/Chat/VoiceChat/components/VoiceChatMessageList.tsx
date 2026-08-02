@@ -74,9 +74,7 @@ export const VoiceChatMessageList = ({
     const messageId = menuMessageId;
     closeMessageMenu();
     if (!messageId) return;
-    const confirmed = window.confirm(
-      i18n._('Are you sure you want to remove this message?'),
-    );
+    const confirmed = window.confirm(i18n._('Are you sure you want to remove this message?'));
     if (confirmed) void onRemove(messageId);
   };
 
@@ -84,7 +82,7 @@ export const VoiceChatMessageList = ({
     const children = byParent.get(message.id) || [];
 
     return (
-      <Stack key={message.id} gap={'20px'}>
+      <Stack key={message.id} gap={'0px'}>
         <VoiceChatMessageItem
           message={message}
           depth={depth}
@@ -135,7 +133,15 @@ export const VoiceChatMessageList = ({
     <>
       <Stack
         gap={0}
-        divider={<Stack sx={{ height: '1px', bgcolor: voiceChatUi.borderSubtle, opacity: 0.5 }} />}
+        divider={
+          <Stack
+            sx={{
+              height: '1px',
+              margin: '10px 0',
+              bgcolor: 'rgba(255, 255, 255, 0.2)',
+            }}
+          />
+        }
       >
         {roots.map((root) => renderNode(root, 0))}
       </Stack>
