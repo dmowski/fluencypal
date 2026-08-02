@@ -11,6 +11,7 @@ export interface VoiceChatMessageItemProps {
   message: VoiceChatMessage;
   depth: number;
   isReplyOpen: boolean;
+  isUnRead: boolean;
   audioUrl: string | null;
   autoPlay: boolean;
   isPausedExternally: boolean;
@@ -26,6 +27,7 @@ export const VoiceChatMessageItem = ({
   message,
   depth,
   isReplyOpen,
+  isUnRead,
   audioUrl,
   autoPlay,
   isPausedExternally,
@@ -55,6 +57,7 @@ export const VoiceChatMessageItem = ({
       <VoiceChatPlayer
         messageId={message.id}
         senderId={message.senderId}
+        isUnRead={isUnRead}
         audioUrl={audioUrl}
         autoPlay={autoPlay}
         isPausedExternally={isPausedExternally}

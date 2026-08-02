@@ -35,7 +35,7 @@ const buildTree = (messages: VoiceChatMessage[]) => {
 export const VoiceChatMessageList = ({
   messages,
   currentUserId,
-  listenedIds: _listenedIds,
+  listenedIds,
   audioUrlById,
   playingMessageId,
   autoPlayMessageId,
@@ -87,6 +87,7 @@ export const VoiceChatMessageList = ({
           message={message}
           depth={depth}
           isReplyOpen={replyingTo === message.id}
+          isUnRead={message.senderId !== currentUserId && !listenedIds.has(message.id)}
           audioUrl={audioUrlById[message.id] || null}
           autoPlay={autoPlayMessageId === message.id}
           isPausedExternally={playingMessageId !== null && playingMessageId !== message.id}

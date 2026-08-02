@@ -19,6 +19,7 @@ interface VoiceChatPlayerProps {
   label?: string;
   senderId?: string;
   messageId?: string;
+  isUnRead?: boolean;
   onOpenMenu?: (anchor: HTMLElement) => void;
 }
 
@@ -32,6 +33,7 @@ export const VoiceChatPlayer = ({
   onEnded,
   label,
   messageId,
+  isUnRead = false,
   onOpenMenu,
 }: VoiceChatPlayerProps) => {
   const { i18n } = useLingui();
@@ -39,6 +41,7 @@ export const VoiceChatPlayer = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [hasStartedListening, setHasStartedListening] = useState(false);
   const hasMarkedListen = useRef(false);
   const onPlayStartRef = useRef(onPlayStart);
   onPlayStartRef.current = onPlayStart;
@@ -47,6 +50,7 @@ export const VoiceChatPlayer = ({
 
   useEffect(() => {
     hasMarkedListen.current = false;
+    setHasStartedListening(false);
     setProgress(0);
     setIsPlaying(false);
     setDuration(0);
@@ -60,6 +64,7 @@ export const VoiceChatPlayer = ({
       setProgress(audio.currentTime);
       if (!hasMarkedListen.current && audio.currentTime > 0) {
         hasMarkedListen.current = true;
+        setHasStartedListening(true);
         onProgressListen?.();
       }
     };
@@ -129,6 +134,7 @@ export const VoiceChatPlayer = ({
   };
 
   const percent = duration > 0 ? Math.min(100, (progress / duration) * 100) : 0;
+  const showAsUnread = isUnRead && !hasStartedListening;
 
   return (
     <Stack gap={0.75} data-testid="voice-chat-player">
@@ -160,7 +166,7 @@ export const VoiceChatPlayer = ({
           sx={{
             borderRadius: '50px',
             border: '1px solid #000',
-            bgcolor: '#fff',
+            bgcolor: showAsUnread ? '#fff' : 'rgba(255, 255, 255, 0.4)',
             color: '#000',
             width: '50px',
             height: '50px',
