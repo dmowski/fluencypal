@@ -1,7 +1,7 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, LinearProgress, Stack, Typography } from '@mui/material';
+import { IconButton, LinearProgress, Stack, Typography } from '@mui/material';
 import { MoreVertical, Pause, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
@@ -17,9 +17,7 @@ interface VoiceChatPlayerProps {
   onProgressListen?: () => void;
   onEnded?: () => void;
   label?: string;
-  onReplyClick?: () => void;
   senderId?: string;
-  isMine?: boolean;
   messageId?: string;
   onOpenMenu?: (anchor: HTMLElement) => void;
 }
@@ -33,8 +31,6 @@ export const VoiceChatPlayer = ({
   onProgressListen,
   onEnded,
   label,
-  onReplyClick,
-  isMine,
   messageId,
   onOpenMenu,
 }: VoiceChatPlayerProps) => {
@@ -196,24 +192,6 @@ export const VoiceChatPlayer = ({
             >
               <Avatar url={game.getUserAvatarUrl(senderId)} avatarSize={'16px'} />
               <UserName userId={senderId} userName={game.getUserName(senderId)} bold size="small" />
-              {isMine && messageId && onOpenMenu && (
-                <IconButton
-                  aria-label={i18n._('Message options')}
-                  data-testid={`voice-chat-message-menu-${messageId}`}
-                  onClick={(event) => onOpenMenu(event.currentTarget)}
-                  sx={{
-                    width: 26,
-                    height: 26,
-                    p: 0,
-                    ml: 'auto',
-                    flexShrink: 0,
-                    color: voiceChatUi.textMuted,
-                    '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-                  }}
-                >
-                  <MoreVertical size={14} />
-                </IconButton>
-              )}
             </Stack>
           )}
           <LinearProgress
@@ -237,10 +215,19 @@ export const VoiceChatPlayer = ({
             {formatVoiceDuration(progress)} / {formatVoiceDuration(duration || 0)}
           </Typography>
         </Stack>
-        {onReplyClick && (
-          <Button sx={{}} variant="outlined" color="info" onClick={onReplyClick}>
-            {i18n._('Reply')}
-          </Button>
+        {messageId && onOpenMenu && (
+          <IconButton
+            aria-label={i18n._('Message options')}
+            data-testid={`voice-chat-message-menu-${messageId}`}
+            onClick={(event) => onOpenMenu(event.currentTarget)}
+            sx={{
+              flexShrink: 0,
+              color: voiceChatUi.textMuted,
+              '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
+            }}
+          >
+            <MoreVertical size={18} />
+          </IconButton>
         )}
       </Stack>
     </Stack>

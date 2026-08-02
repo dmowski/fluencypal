@@ -203,8 +203,7 @@ msgstr ""
 "Một trò chơi đoán chữ vui nhộn dành cho 2-20 người chơi. Giải thích các từ "
 "cho đồng đội của bạn mà không nói từ đó!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:339
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:180
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
 #. js-lingui-explicit-id
 msgid ""
 "A host reviews your intro before you can listen and reply. This protects "
@@ -259,8 +258,7 @@ msgstr ""
 "Một uỷ quyền tạm thời nhỏ có thể xuất hiện trên bảng sao kê của bạn và sẽ "
 "được ngân hàng của bạn tự động giải phóng."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:289
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:107
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:38
 #. js-lingui-explicit-id
 msgid "A small, voice-only room. No transcripts."
 msgstr "Một phòng nhỏ chỉ hỗ trợ giọng nói. Không có bản chép lời."
@@ -866,7 +864,7 @@ msgstr "Các hiểu biết về thiết kế API và mô hình hóa dữ liệu"
 msgid "Appointment"
 msgstr "Lịch hẹn"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:104
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Approve"
 msgstr "Phê duyệt"
@@ -931,6 +929,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Bạn có chắc chắn muốn từ chối trận đấu này không?"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:78
+#. js-lingui-explicit-id
+msgid "Are you sure you want to remove this message?"
+msgstr "Bạn có chắc chắn muốn xóa tin nhắn này không?"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:24
 #. js-lingui-explicit-id
@@ -1125,8 +1128,7 @@ msgstr ""
 "Dựa trên quá trình hướng dẫn, FluencyPal sẽ tạo ra một kế hoạch học tập cá "
 "nhân hóa chỉ dành cho bạn."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:405
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:255
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:28
 #. js-lingui-explicit-id
 msgid "Be kind. This is a small voice-only space."
 msgstr "Hãy tử tế. Đây là một không gian nhỏ chỉ dành cho giọng nói."
@@ -1141,8 +1143,7 @@ msgstr "Hãy chuẩn bị cho buổi phỏng vấn xin việc của bạn"
 msgid "Be specific about your role"
 msgstr "Hãy xác định rõ vai trò của bạn"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:310
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
 #. js-lingui-explicit-id
 msgid "Become a member"
 msgstr "Trở thành thành viên"
@@ -2197,8 +2198,7 @@ msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "Nhấp vào nút Chia sẻ bên cạnh app.fluencypal.com trong trình duyệt của bạn."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:412
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:269
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -3554,6 +3554,11 @@ msgstr ""
 msgid "Discussions"
 msgstr "Thảo luận"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:100
+#. js-lingui-explicit-id
+msgid "Dismiss"
+msgstr "Bỏ qua"
+
 #: src/features/Landing/Price/PricePage.tsx:51
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -4325,17 +4330,17 @@ msgstr "Không tạo được bài kiểm tra."
 msgid "Failed to load conversation history"
 msgstr "Không tải được lịch sử hội thoại"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Không thể tải tin nhắn"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:58
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Failed to load voice chat status"
 msgstr "Không tải được trạng thái trò chuyện thoại"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:79
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Không thể phát"
@@ -7028,7 +7033,6 @@ msgstr "Đã đạt đến giới hạn"
 msgid "Line height"
 msgstr "Chiều cao dòng"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:106
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
 msgid "Listen"
@@ -7038,11 +7042,6 @@ msgstr "Lắng nghe"
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "Lắng nghe đến hết hoặc hoàn thành kiểm tra"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
-#. js-lingui-explicit-id
-msgid "Listen intro"
-msgstr "Nghe phần mở đầu"
 
 #: src/features/Dashboard/StoriesDashboardCard.tsx:24
 #. js-lingui-explicit-id
@@ -7157,7 +7156,8 @@ msgstr "Đang tải.."
 msgid "Loading..."
 msgstr "Đang tải..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:157
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:122
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Đang tải…"
@@ -7358,7 +7358,7 @@ msgstr "Menu"
 msgid "Message hidden due to policy violation."
 msgstr "Thông điệp bị ẩn do vi phạm chính sách."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:135
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:220
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Tùy chọn tin nhắn"
@@ -7368,20 +7368,17 @@ msgstr "Tùy chọn tin nhắn"
 msgid "Messages"
 msgstr "Tin nhắn"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:302
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:120
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:51
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days"
 msgstr "Tin nhắn sẽ bị xóa sau 4 ngày"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:407
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:261
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:34
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days."
 msgstr "Các tin nhắn sẽ bị xóa sau 4 ngày."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:192
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:73
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days. No text — voice only."
 msgstr "Các tin nhắn sẽ bị xóa sau 4 ngày. Không có văn bản — chỉ có giọng nói."
@@ -7881,8 +7878,7 @@ msgstr "Không tìm thấy kết quả"
 msgid "No scenarios found"
 msgstr "Không tìm thấy kịch bản"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:406
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:258
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:31
 #. js-lingui-explicit-id
 msgid "No text messages and no transcripts."
 msgstr "Không có tin nhắn văn bản và không có bản ghi."
@@ -8065,8 +8061,7 @@ msgstr "Không được hỗ trợ"
 msgid "Not sure what to write? Try one of these:"
 msgstr "Không chắc nên viết gì? Thử một trong số này:"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:353
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:194
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:80
 #. js-lingui-explicit-id
 msgid "Not this time. You can try again in {days} days"
 msgstr "Lần này không được. Bạn có thể thử lại sau {days} ngày"
@@ -8241,8 +8236,7 @@ msgstr ""
 "Mở hồ sơ của ai đó và nhấn nút \"Mời tranh luận\" để bắt đầu một cuộc tranh "
 "luận!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:357
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:201
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:87
 #. js-lingui-explicit-id
 msgid "Open Voice Chat"
 msgstr "Mở Trò Chuyện Bằng Giọng Nói"
@@ -8421,7 +8415,7 @@ msgstr ""
 "Dán CV của bạn hoặc viết một tóm tắt ngắn gọn về kinh nghiệm, kỹ năng và "
 "thành tựu của bạn."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:159
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -8468,8 +8462,7 @@ msgstr "Tùy chọn thanh toán"
 msgid "Payment successful!"
 msgstr "Thanh toán thành công!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:384
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:230
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:110
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Yêu cầu đang chờ xử lý"
@@ -8586,7 +8579,7 @@ msgid "Plan for"
 msgstr "Kế hoạch cho"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:159
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -9753,8 +9746,7 @@ msgstr "Đề xuất một podcast, bài hát, hoặc video bằng ngôn ngữ b
 msgid "Recommended"
 msgstr "Đề xuất"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:332
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:172
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:71
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -9777,16 +9769,13 @@ msgstr ""
 "Ghi lại một tin nhắn trong Phòng chat Cộng đồng và nhận {points} điểm trên "
 "bảng xếp hạng"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:227
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:234
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:178
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:182
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:144
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:148
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Ghi âm một tin nhắn mới"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:325
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:58
 #. js-lingui-explicit-id
 msgid ""
 "Record a short audio about yourself so others know who is joining. About 30 "
@@ -9853,14 +9842,12 @@ msgstr "Ghi lại bài luận mới"
 msgid "Record your description"
 msgstr "Ghi lại mô tả của bạn"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:362
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:457
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
+#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:20
 #. js-lingui-explicit-id
 msgid "Record your intro"
 msgstr "Ghi âm phần giới thiệu của bạn"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:174
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:67
 #. js-lingui-explicit-id
 msgid "Record your reply"
 msgstr "Ghi âm câu trả lời của bạn"
@@ -9897,7 +9884,7 @@ msgstr "Làm mới"
 msgid "Refund guarantee"
 msgstr "Đảm bảo hoàn tiền"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:107
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:133
 #. js-lingui-explicit-id
 msgid "Reject"
 msgstr "Từ chối"
@@ -9917,7 +9904,7 @@ msgstr "Tải lại trang"
 msgid "Reloading conversation..."
 msgstr "Tải lại cuộc trò chuyện..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:237
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:155
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9949,7 +9936,7 @@ msgstr "Phát lại"
 msgid "Replies"
 msgstr "Phản hồi"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:169
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:151
 #. js-lingui-explicit-id
 msgid "Reply"
 msgstr "Trả lời"
@@ -10010,7 +9997,6 @@ msgstr "Độ bền bỉ & Khả năng quan sát"
 msgid "Resolving file..."
 msgstr "Đang giải quyết tập tin..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:149
 #: src/features/News/NewsPlayButton.tsx:112
 #: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
@@ -10085,11 +10071,6 @@ msgstr "Xem lại và chỉnh sửa những gì mà trí tuệ nhân tạo ghi n
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "Xem lại, chỉnh sửa hoặc thêm ghi chú AI sử dụng về bạn."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
-#. js-lingui-explicit-id
-msgid "Rewind"
-msgstr "Tua lại"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:239
 #. js-lingui-explicit-id
@@ -10200,10 +10181,8 @@ msgstr "Quy tắc"
 msgid "Rule of the day"
 msgstr "Quy tắc của ngày"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:374
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:402
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:220
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:251
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:100
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:24
 #. js-lingui-explicit-id
 msgid "Rules of chat"
 msgstr "Quy tắc trò chuyện"
@@ -10395,8 +10374,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:228
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:183
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:149
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -10413,9 +10391,7 @@ msgstr "Gửi ít nhất 10 tin nhắn trong Chỉ nói chuyện"
 msgid "Send email again"
 msgstr "Gửi email lại"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:363
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:458
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:208
+#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:21
 #. js-lingui-explicit-id
 msgid "Send for approval"
 msgstr "Gửi để phê duyệt"
@@ -10441,7 +10417,7 @@ msgstr "Gửi Tin Nhắn"
 msgid "Send one message in the community space"
 msgstr "Gửi một tin nhắn trong không gian cộng đồng"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:175
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:68
 #. js-lingui-explicit-id
 msgid "Send reply"
 msgstr "Gửi trả lời"
@@ -10559,8 +10535,7 @@ msgstr "Chia sẻ"
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Chia sẻ một cụm từ bạn đã học hôm nay (hoặc một cụm từ khiến bạn bối rối)"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:57
 #. js-lingui-explicit-id
 msgid "Share a short intro (~30 sec)"
 msgstr "Chia sẻ một đoạn giới thiệu ngắn (~30 giây)"
@@ -10956,8 +10931,7 @@ msgid "Stars"
 msgstr "Ngôi sao"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:318
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:152
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:125
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -12245,8 +12219,7 @@ msgstr "Cảm ơn bạn đã phản hồi!"
 msgid "Thank you for your purchase."
 msgstr "Cảm ơn bạn đã mua hàng."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:348
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:189
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:75
 #. js-lingui-explicit-id
 msgid "Thanks — we’re reviewing your intro"
 msgstr "Cảm ơn — chúng tôi đang xem xét giới thiệu của bạn"
@@ -13467,20 +13440,16 @@ msgstr "Thực hành Từ vựng"
 msgid "Voice"
 msgstr "Giọng nói"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:311
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:140
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:36
 #. js-lingui-explicit-id
 msgid "Voice chat is for paying members. This keeps the room small and respectful."
 msgstr ""
 "Voice chat chỉ dành cho các thành viên trả phí. Điều này giữ cho phòng nhỏ "
 "gọn và tôn trọng."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:189
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:288
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:301
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:106
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:119
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:124
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Trò chuyện thoại với mọi người"
@@ -13489,11 +13458,6 @@ msgstr "Trò chuyện thoại với mọi người"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Cuộc hội thoại bằng giọng nói"
-
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:441
-#. js-lingui-explicit-id
-msgid "Voice note preview"
-msgstr "Xem trước ghi chú giọng nói"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
@@ -13522,8 +13486,7 @@ msgstr "Tốc độ giọng nói"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:338
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:179
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:79
 #. js-lingui-explicit-id
 msgid "Wait for approval"
 msgstr ""
@@ -14409,8 +14372,7 @@ msgstr ""
 "tiếp và phỏng vấn hành vi tập trung vào React, Vue, Angular, TypeScript và "
 "kiến trúc web hiện đại."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:408
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:37
 #. js-lingui-explicit-id
 msgid "You can remove your own messages anytime."
 msgstr "Bạn có thể xóa tin nhắn của mình bất cứ lúc nào."
@@ -14718,9 +14680,8 @@ msgstr "Quyền truy cập đầy đủ của bạn sẽ hoạt động đến {
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Mục tiêu của bạn không phải là hoàn hảo, mà là vượt qua đối thủ của bạn."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:205
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:208
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:144
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:95
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
@@ -14887,6 +14848,21 @@ msgstr "{winnerName} thắng cuộc!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Listen intro"
+#~ msgstr "Nghe phần mở đầu"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
+#. js-lingui-explicit-id
+#~ msgid "Rewind"
+#~ msgstr "Tua lại"
+
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:441
+#. js-lingui-explicit-id
+#~ msgid "Voice note preview"
+#~ msgstr "Xem trước ghi chú giọng nói"
 
 #: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
 #: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159

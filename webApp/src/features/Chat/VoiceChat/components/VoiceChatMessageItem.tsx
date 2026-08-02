@@ -1,29 +1,15 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Stack } from '@mui/material';
-import { MoreVertical } from 'lucide-react';
-import { useGame } from '@/features/Game/useGame';
-import { Avatar } from '@/features/User/Avatar';
-import { UserName } from '@/features/User/UserName';
+import { Stack } from '@mui/material';
 import { VoiceChatMessage } from '../types';
 import { voiceChatUi } from '../voiceChatUi';
 import { VoiceChatPlayer } from './VoiceChatPlayer';
 import { VoiceChatRecorderPanel } from './VoiceChatRecorderPanel';
 
-const replyButtonSx = {
-  minWidth: 0,
-  minHeight: 0,
-  px: 0.5,
-  py: 0,
-  fontSize: 13,
-  lineHeight: 1,
-};
-
 export interface VoiceChatMessageItemProps {
   message: VoiceChatMessage;
   depth: number;
-  isMine: boolean;
   isReplyOpen: boolean;
   audioUrl: string | null;
   autoPlay: boolean;
@@ -31,7 +17,6 @@ export interface VoiceChatMessageItemProps {
   onPlayStart: () => void;
   onProgressListen: () => void;
   onEnded: () => void;
-  onReplyClick: () => void;
   onSubmitReply: (blob: Blob, durationSec: number) => Promise<void>;
   onCancelReply: () => void;
   onOpenMenu: (anchor: HTMLElement) => void;
@@ -40,7 +25,6 @@ export interface VoiceChatMessageItemProps {
 export const VoiceChatMessageItem = ({
   message,
   depth,
-  isMine,
   isReplyOpen,
   audioUrl,
   autoPlay,
@@ -48,13 +32,11 @@ export const VoiceChatMessageItem = ({
   onPlayStart,
   onProgressListen,
   onEnded,
-  onReplyClick,
   onSubmitReply,
   onCancelReply,
   onOpenMenu,
 }: VoiceChatMessageItemProps) => {
   const { i18n } = useLingui();
-  const game = useGame();
 
   return (
     <Stack
@@ -69,7 +51,6 @@ export const VoiceChatMessageItem = ({
       }}
     >
       <VoiceChatPlayer
-        isMine={isMine}
         messageId={message.id}
         senderId={message.senderId}
         audioUrl={audioUrl}
@@ -79,7 +60,6 @@ export const VoiceChatMessageItem = ({
         onProgressListen={onProgressListen}
         onEnded={onEnded}
         onOpenMenu={onOpenMenu}
-        onReplyClick={onReplyClick}
       />
 
       {isReplyOpen && (

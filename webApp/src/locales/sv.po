@@ -199,8 +199,7 @@ msgstr ""
 "Ett roligt ordgissningsspel för 2-20 spelare. Förklara orden för dina "
 "lagkamrater utan att säga själva ordet!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:339
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:180
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
 #. js-lingui-explicit-id
 msgid ""
 "A host reviews your intro before you can listen and reply. This protects "
@@ -255,8 +254,7 @@ msgstr ""
 "En liten tillfällig auktorisation kan visas på ditt kontoutdrag och kommer "
 "att släppas automatiskt av din bank."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:289
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:107
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:38
 #. js-lingui-explicit-id
 msgid "A small, voice-only room. No transcripts."
 msgstr "Ett litet, endast röst-rum. Inga transkriptioner."
@@ -857,7 +855,7 @@ msgstr "API-design och insikter om datamodellering"
 msgid "Appointment"
 msgstr "Möte"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:104
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Approve"
 msgstr "Godkänn"
@@ -920,6 +918,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Är du säker på att du vill avvisa denna utmaning?"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:78
+#. js-lingui-explicit-id
+msgid "Are you sure you want to remove this message?"
+msgstr "Är du säker på att du vill ta bort detta meddelande?"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:24
 #. js-lingui-explicit-id
@@ -1116,8 +1119,7 @@ msgstr ""
 "Baserat på din introduktion kommer FluencyPal att skapa en personlig "
 "lektionsplan endast för dig."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:405
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:255
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:28
 #. js-lingui-explicit-id
 msgid "Be kind. This is a small voice-only space."
 msgstr "Var snäll. Detta är ett litet utrymme endast för röst."
@@ -1132,8 +1134,7 @@ msgstr "Var förberedd inför din arbetsintervju"
 msgid "Be specific about your role"
 msgstr "Var specifik om din roll"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:310
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
 #. js-lingui-explicit-id
 msgid "Become a member"
 msgstr "Bli medlem"
@@ -2185,8 +2186,7 @@ msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "Klicka på knappen Dela bredvid app.fluencypal.com i din webbläsare."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:412
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:269
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:765
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -3526,6 +3526,11 @@ msgstr ""
 msgid "Discussions"
 msgstr "Diskussioner"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:100
+#. js-lingui-explicit-id
+msgid "Dismiss"
+msgstr "Avfärda"
+
 #: src/features/Landing/Price/PricePage.tsx:51
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -4290,17 +4295,17 @@ msgstr "Misslyckades med att skapa frågesport."
 msgid "Failed to load conversation history"
 msgstr "Misslyckades med att ladda konversationshistorik"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Misslyckades med att ladda meddelanden"
 
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:58
+#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Failed to load voice chat status"
 msgstr "Misslyckades med att ladda röstchattstatus"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:79
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Misslyckades att spela"
@@ -6982,7 +6987,6 @@ msgstr "Gränser nådda"
 msgid "Line height"
 msgstr "Radavstånd"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:106
 #: src/features/Sentence/StoriesModal.tsx:569
 #. js-lingui-explicit-id
 msgid "Listen"
@@ -6992,11 +6996,6 @@ msgstr "Lyssna"
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "Lyssna till slutet eller avsluta quiz"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
-#. js-lingui-explicit-id
-msgid "Listen intro"
-msgstr "Lyssna på introduktion"
 
 #: src/features/Dashboard/StoriesDashboardCard.tsx:24
 #. js-lingui-explicit-id
@@ -7111,7 +7110,8 @@ msgstr "Laddar.."
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:157
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:122
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Laddar…"
@@ -7312,7 +7312,7 @@ msgstr "Meny"
 msgid "Message hidden due to policy violation."
 msgstr "Meddelandet är dolt på grund av policyöverträdelse."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:135
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:220
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Meddelandealternativ"
@@ -7322,20 +7322,17 @@ msgstr "Meddelandealternativ"
 msgid "Messages"
 msgstr "Meddelanden"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:302
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:120
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:51
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days"
 msgstr "Meddelanden tas bort efter 4 dagar"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:407
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:261
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:34
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days."
 msgstr "Meddelanden tas bort efter 4 dagar."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:192
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:73
 #. js-lingui-explicit-id
 msgid "Messages are removed after 4 days. No text — voice only."
 msgstr "Meddelanden tas bort efter 4 dagar. Ingen text — endast röst."
@@ -7829,8 +7826,7 @@ msgstr "Inga resultat funna"
 msgid "No scenarios found"
 msgstr "Inga scenarier hittades"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:406
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:258
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:31
 #. js-lingui-explicit-id
 msgid "No text messages and no transcripts."
 msgstr "Inga textmeddelanden och inga utskrifter."
@@ -8010,8 +8006,7 @@ msgstr "Inte stöds"
 msgid "Not sure what to write? Try one of these:"
 msgstr "Osäker på vad du ska skriva? Prova en av dessa:"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:353
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:194
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:80
 #. js-lingui-explicit-id
 msgid "Not this time. You can try again in {days} days"
 msgstr "Inte den här gången. Du kan försöka igen om {days} dagar"
@@ -8185,8 +8180,7 @@ msgstr ""
 "Öppna någons profil och tryck på knappen \"Bjud in till en debatt\" för att "
 "starta en debatt!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:357
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:201
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:87
 #. js-lingui-explicit-id
 msgid "Open Voice Chat"
 msgstr "Öppna röstchatt"
@@ -8369,7 +8363,7 @@ msgstr ""
 "Klistra in ditt CV eller skriv en kort sammanfattning av din erfarenhet, "
 "dina färdigheter och prestationer."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:159
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -8416,8 +8410,7 @@ msgstr "Betalningsalternativ"
 msgid "Payment successful!"
 msgstr "Betalning lyckades!"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:384
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:230
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:110
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Väntande förfrågningar"
@@ -8534,7 +8527,7 @@ msgid "Plan for"
 msgstr "Planera för"
 
 #: src/features/Audio/AudioPlayIcon.tsx:152
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:159
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -9681,8 +9674,7 @@ msgstr "Rekommendera en podcast, låt eller video på ditt målspråk"
 msgid "Recommended"
 msgstr "Rekommenderad"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:332
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:172
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:71
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -9703,16 +9695,13 @@ msgid ""
 "leaderboard"
 msgstr "Spela in ett meddelande i Community Chat och få {points} poäng på topplistan"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:227
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:234
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:178
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:182
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:144
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:148
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Spela in ett nytt meddelande"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:325
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:58
 #. js-lingui-explicit-id
 msgid ""
 "Record a short audio about yourself so others know who is joining. About 30 "
@@ -9778,14 +9767,12 @@ msgstr "Spela in nytt uppsats"
 msgid "Record your description"
 msgstr "Spela in din beskrivning"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:362
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:457
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:207
+#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:20
 #. js-lingui-explicit-id
 msgid "Record your intro"
 msgstr "Spela in din introduktion"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:174
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:67
 #. js-lingui-explicit-id
 msgid "Record your reply"
 msgstr "Spela in ditt svar"
@@ -9822,7 +9809,7 @@ msgstr "Uppdatera"
 msgid "Refund guarantee"
 msgstr "Återbetalningsgaranti"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:107
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:133
 #. js-lingui-explicit-id
 msgid "Reject"
 msgstr "Avvisa"
@@ -9842,7 +9829,7 @@ msgstr "Ladda om sidan"
 msgid "Reloading conversation..."
 msgstr "Laddar om konversation..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:237
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:155
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
@@ -9874,7 +9861,7 @@ msgstr "Spela igen"
 msgid "Replies"
 msgstr "Svar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:169
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:151
 #. js-lingui-explicit-id
 msgid "Reply"
 msgstr "Svara"
@@ -9935,7 +9922,6 @@ msgstr "Motståndskraft & Observabilitet"
 msgid "Resolving file..."
 msgstr "Löser fil..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:149
 #: src/features/News/NewsPlayButton.tsx:112
 #: src/features/Quiz/components/QuizResultsScreen.tsx:88
 #. js-lingui-explicit-id
@@ -10004,11 +9990,6 @@ msgstr "Granska och redigera vad AI:n kommer ihåg"
 #. js-lingui-explicit-id
 msgid "Review, edit, or add the notes AI uses about you."
 msgstr "Granska, redigera eller lägg till de anteckningar som AI använder om dig."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
-#. js-lingui-explicit-id
-msgid "Rewind"
-msgstr "Spola tillbaka"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:239
 #. js-lingui-explicit-id
@@ -10118,10 +10099,8 @@ msgstr "Regel"
 msgid "Rule of the day"
 msgstr "Regel för dagen"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:374
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:402
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:220
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:251
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:100
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:24
 #. js-lingui-explicit-id
 msgid "Rules of chat"
 msgstr "Chattregler"
@@ -10313,8 +10292,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantisk HTML"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:228
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:183
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:149
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -10331,9 +10309,7 @@ msgstr "Skicka minst 10 meddelanden i Bara prata"
 msgid "Send email again"
 msgstr "Skicka e-post igen"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:363
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:458
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:208
+#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:21
 #. js-lingui-explicit-id
 msgid "Send for approval"
 msgstr "Skicka för godkännande"
@@ -10359,7 +10335,7 @@ msgstr "Skicka meddelande"
 msgid "Send one message in the community space"
 msgstr "Skicka ett meddelande i gemenskapsutrymmet"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:175
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:68
 #. js-lingui-explicit-id
 msgid "Send reply"
 msgstr "Skicka svar"
@@ -10477,8 +10453,7 @@ msgstr ""
 "Dela med dig av en fras du lärde dig idag (eller en som gjorde dig "
 "förvirrad)"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:57
 #. js-lingui-explicit-id
 msgid "Share a short intro (~30 sec)"
 msgstr "Dela en kort intro (~30 sek)"
@@ -10873,8 +10848,7 @@ msgid "Stars"
 msgstr "Stjärnor"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:318
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:152
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:125
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -12157,8 +12131,7 @@ msgstr "Tack för din feedback!"
 msgid "Thank you for your purchase."
 msgstr "Tack för ditt köp."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:348
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:189
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:75
 #. js-lingui-explicit-id
 msgid "Thanks — we’re reviewing your intro"
 msgstr "Tack — vi granskar din introduktion"
@@ -13366,20 +13339,16 @@ msgstr "Ordförrådsövning"
 msgid "Voice"
 msgstr "Röst"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:311
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:140
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:36
 #. js-lingui-explicit-id
 msgid "Voice chat is for paying members. This keeps the room small and respectful."
 msgstr ""
 "Röstchatt är för betalande medlemmar. Detta håller rummet litet och "
 "respektfullt."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:189
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:288
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:301
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:106
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:119
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:124
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
+#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Röstchatt med människor"
@@ -13388,11 +13357,6 @@ msgstr "Röstchatt med människor"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Röstsamtal"
-
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:441
-#. js-lingui-explicit-id
-msgid "Voice note preview"
-msgstr "Förhandsgranskning av röstanteckning"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
@@ -13421,8 +13385,7 @@ msgstr "Rösthastighet"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:338
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:179
+#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:79
 #. js-lingui-explicit-id
 msgid "Wait for approval"
 msgstr "Vänta på godkännande"
@@ -14297,8 +14260,7 @@ msgstr ""
 "beteendeintervjuer med fokus på React, Vue, Angular, TypeScript och modern "
 "webbarkitektur."
 
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:408
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:37
 #. js-lingui-explicit-id
 msgid "You can remove your own messages anytime."
 msgstr "Du kan ta bort dina egna meddelanden när som helst."
@@ -14598,9 +14560,8 @@ msgstr "Din fullständiga åtkomst är aktiv till {date}"
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Ditt mål är inte att vara perfekt, utan att överträffa din motståndare."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:205
-#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:208
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:144
+#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:127
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:95
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
@@ -14762,6 +14723,21 @@ msgstr "{winnerName} vinner!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FlytPal"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:91
+#. js-lingui-explicit-id
+#~ msgid "Listen intro"
+#~ msgstr "Lyssna på introduktion"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:140
+#. js-lingui-explicit-id
+#~ msgid "Rewind"
+#~ msgstr "Spola tillbaka"
+
+#: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:441
+#. js-lingui-explicit-id
+#~ msgid "Voice note preview"
+#~ msgstr "Förhandsgranskning av röstanteckning"
 
 #: src/features/Chat/VoiceChat/voiceChatBrowserFixtures.tsx:324
 #: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:159

@@ -75,7 +75,8 @@ test('message list – nested conversation with unread highlights', async () => 
 test('message list – reply recorder open', async () => {
   await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
 
-  await userEvent.click(page.getByRole('button', { name: 'Reply' }).first());
+  await userEvent.click(page.getByRole('button', { name: 'Message options' }).first());
+  await userEvent.click(page.getByRole('menuitem', { name: 'Reply' }));
 
   await expect
     .element(page.getByTestId('voice-chat-message-list-fixture'))

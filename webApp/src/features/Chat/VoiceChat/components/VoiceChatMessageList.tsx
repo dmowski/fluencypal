@@ -60,6 +60,26 @@ export const VoiceChatMessageList = ({
     setMenuAnchor(null);
   };
 
+  const menuMessage = menuMessageId
+    ? messages.find((message) => message.id === menuMessageId)
+    : undefined;
+  const isMenuMessageMine = menuMessage?.senderId === currentUserId;
+
+  const handleMenuReply = () => {
+    if (menuMessageId) toggleReply(menuMessageId);
+    closeMessageMenu();
+  };
+
+  const handleMenuRemove = () => {
+    const messageId = menuMessageId;
+    closeMessageMenu();
+    if (!messageId) return;
+    const confirmed = window.confirm(
+      i18n._('Are you sure you want to remove this message?'),
+    );
+    if (confirmed) void onRemove(messageId);
+  };
+
   const renderNode = (message: VoiceChatMessage, depth: number) => {
     const children = byParent.get(message.id) || [];
 
@@ -68,7 +88,6 @@ export const VoiceChatMessageList = ({
         <VoiceChatMessageItem
           message={message}
           depth={depth}
-          isMine={message.senderId === currentUserId}
           isReplyOpen={replyingTo === message.id}
           audioUrl={audioUrlById[message.id] || null}
           autoPlay={autoPlayMessageId === message.id}
@@ -76,7 +95,6 @@ export const VoiceChatMessageList = ({
           onPlayStart={() => onPlayStart(message.id)}
           onProgressListen={() => onProgressListen(message.id)}
           onEnded={() => onEnded(message.id)}
-          onReplyClick={() => toggleReply(message.id)}
           onSubmitReply={async (blob, durationSec) => {
             await onReply(message.id, blob, durationSec);
             setReplyingTo(null);
@@ -129,15 +147,14 @@ export const VoiceChatMessageList = ({
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <MenuItem
-          onClick={() => {
-            if (menuMessageId) void onRemove(menuMessageId);
-            closeMessageMenu();
-          }}
-          sx={{ color: 'error.main', fontSize: 14 }}
-        >
-          {i18n._('Remove')}
+        <MenuItem onClick={handleMenuReply} sx={{ fontSize: 14 }}>
+          {i18n._('Reply')}
         </MenuItem>
+        {isMenuMessageMine && (
+          <MenuItem onClick={handleMenuRemove} sx={{ color: 'error.main', fontSize: 14 }}>
+            {i18n._('Remove')}
+          </MenuItem>
+        )}
       </Menu>
     </>
   );
