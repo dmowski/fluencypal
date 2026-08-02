@@ -1,10 +1,13 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { IconButton, LinearProgress, Stack, Typography } from '@mui/material';
-import { Pause, Play, RotateCcw, SkipBack } from 'lucide-react';
+import { Button, IconButton, LinearProgress, Stack, Typography } from '@mui/material';
+import { MoreVertical, Pause, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { formatVoiceDuration, voiceChatUi } from '../voiceChatUi';
+import { Avatar } from '@/features/User/Avatar';
+import { UserName } from '@/features/User/UserName';
+import { useGame } from '@/features/Game/useGame';
 
 interface VoiceChatPlayerProps {
   audioUrl: string | null;
@@ -14,9 +17,15 @@ interface VoiceChatPlayerProps {
   onProgressListen?: () => void;
   onEnded?: () => void;
   label?: string;
+  onReplyClick?: () => void;
+  senderId?: string;
+  isMine?: boolean;
+  messageId?: string;
+  onOpenMenu?: (anchor: HTMLElement) => void;
 }
 
 export const VoiceChatPlayer = ({
+  senderId,
   audioUrl,
   autoPlay = false,
   isPausedExternally = false,
@@ -24,6 +33,10 @@ export const VoiceChatPlayer = ({
   onProgressListen,
   onEnded,
   label,
+  onReplyClick,
+  isMine,
+  messageId,
+  onOpenMenu,
 }: VoiceChatPlayerProps) => {
   const { i18n } = useLingui();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -33,6 +46,8 @@ export const VoiceChatPlayer = ({
   const hasMarkedListen = useRef(false);
   const onPlayStartRef = useRef(onPlayStart);
   onPlayStartRef.current = onPlayStart;
+
+  const game = useGame();
 
   useEffect(() => {
     hasMarkedListen.current = false;
@@ -119,16 +134,6 @@ export const VoiceChatPlayer = ({
 
   const percent = duration > 0 ? Math.min(100, (progress / duration) * 100) : 0;
 
-  const iconButtonSx = {
-    color: voiceChatUi.textSecondary,
-    border: `1px solid ${voiceChatUi.borderSubtle}`,
-    borderRadius: '8px',
-    width: '40px',
-    height: '40px',
-    '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-    '&.Mui-disabled': { opacity: 0.35 },
-  };
-
   return (
     <Stack gap={0.75} data-testid="voice-chat-player">
       {label && (
@@ -140,59 +145,103 @@ export const VoiceChatPlayer = ({
         </Typography>
       )}
       <audio ref={audioRef} src={audioUrl || undefined} preload="metadata" />
-      <LinearProgress
-        variant="determinate"
-        value={percent}
+
+      <Stack
+        direction="row"
+        alignItems="center"
         sx={{
-          height: 3,
-          borderRadius: 2,
-          bgcolor: voiceChatUi.progressTrack,
-          '& .MuiLinearProgress-bar': { bgcolor: voiceChatUi.progressBar, borderRadius: 2 },
+          gap: '10px',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
-      <Stack direction="row" gap={0.5} alignItems="center">
+      >
         <IconButton
           size="small"
           onClick={() => void togglePlay()}
           disabled={!audioUrl}
           aria-label={isPlaying ? i18n._('Pause') : i18n._('Play')}
           sx={{
-            ...iconButtonSx,
-            bgcolor: voiceChatUi.surfaceSubtle,
-            color: voiceChatUi.accent,
+            borderRadius: '50px',
+            border: '1px solid #000',
+            bgcolor: '#fff',
+            color: '#000',
+            width: '50px',
+            height: '50px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            display: 'flex',
+            '&:hover': { bgcolor: '#f0f0f0' },
+            '&.Mui-disabled': { opacity: 0.35 },
           }}
         >
-          {isPlaying ? <Pause size={15} /> : <Play size={15} />}
+          {isPlaying ? <Pause size={'18px'} /> : <Play size={'18px'} />}
         </IconButton>
-        <IconButton
-          size="small"
-          onClick={rewind}
-          disabled={!audioUrl}
-          aria-label={i18n._('Rewind')}
-          sx={iconButtonSx}
-        >
-          <SkipBack size={15} />
-        </IconButton>
-        <IconButton
-          size="small"
-          onClick={restart}
-          disabled={!audioUrl}
-          aria-label={i18n._('Restart')}
-          sx={iconButtonSx}
-        >
-          <RotateCcw size={15} />
-        </IconButton>
-        <Typography
-          variant="caption"
+
+        <Stack
           sx={{
-            ml: 'auto',
-            color: voiceChatUi.textMuted,
-            fontVariantNumeric: 'tabular-nums',
-            letterSpacing: '0.02em',
+            width: '100%',
+            paddingTop: senderId ? '5px' : 0,
+            gap: '3px',
           }}
         >
-          {formatVoiceDuration(progress)} / {formatVoiceDuration(duration || 0)}
-        </Typography>
+          {senderId && (
+            <Stack
+              direction="row"
+              alignItems="center"
+              sx={{
+                gap: '7px',
+              }}
+              minWidth={0}
+            >
+              <Avatar url={game.getUserAvatarUrl(senderId)} avatarSize={'16px'} />
+              <UserName userId={senderId} userName={game.getUserName(senderId)} bold size="small" />
+              {isMine && messageId && onOpenMenu && (
+                <IconButton
+                  aria-label={i18n._('Message options')}
+                  data-testid={`voice-chat-message-menu-${messageId}`}
+                  onClick={(event) => onOpenMenu(event.currentTarget)}
+                  sx={{
+                    width: 26,
+                    height: 26,
+                    p: 0,
+                    ml: 'auto',
+                    flexShrink: 0,
+                    color: voiceChatUi.textMuted,
+                    '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
+                  }}
+                >
+                  <MoreVertical size={14} />
+                </IconButton>
+              )}
+            </Stack>
+          )}
+          <LinearProgress
+            variant="determinate"
+            value={percent}
+            sx={{
+              height: '5px',
+              borderRadius: 2,
+              bgcolor: '#f0f0f0',
+              '& .MuiLinearProgress-bar': { bgcolor: voiceChatUi.progressBar, borderRadius: 2 },
+            }}
+          />
+          <Typography
+            variant="caption"
+            sx={{
+              color: voiceChatUi.textMuted,
+              fontVariantNumeric: 'tabular-nums',
+              letterSpacing: '0.02em',
+            }}
+          >
+            {formatVoiceDuration(progress)} / {formatVoiceDuration(duration || 0)}
+          </Typography>
+        </Stack>
+        {onReplyClick && (
+          <Button sx={{}} variant="outlined" color="info" onClick={onReplyClick}>
+            {i18n._('Reply')}
+          </Button>
+        )}
       </Stack>
     </Stack>
   );

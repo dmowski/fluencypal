@@ -59,9 +59,8 @@ export const VoiceChatMessageItem = ({
   return (
     <Stack
       data-testid={`voice-chat-message-${message.id}`}
-      gap={0.375}
       sx={{
-        py: 1,
+        gap: '10px',
         ...(depth > 0 && {
           ml: depth * 2,
           pl: 1.25,
@@ -69,56 +68,19 @@ export const VoiceChatMessageItem = ({
         }),
       }}
     >
-      <Stack direction="row" alignItems="center" gap={0.375} minWidth={0}>
-        <Avatar
-          url={game.getUserAvatarUrl(message.senderId)}
-          avatarSize={voiceChatUi.messageAvatarSize}
-        />
-        <UserName
-          userId={message.senderId}
-          userName={game.getUserName(message.senderId)}
-          bold
-          size="small"
-        />
-        {isMine && (
-          <IconButton
-            aria-label={i18n._('Message options')}
-            data-testid={`voice-chat-message-menu-${message.id}`}
-            onClick={(event) => onOpenMenu(event.currentTarget)}
-            sx={{
-              width: 26,
-              height: 26,
-              p: 0,
-              ml: 'auto',
-              flexShrink: 0,
-              color: voiceChatUi.textMuted,
-              '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
-            }}
-          >
-            <MoreVertical size={14} />
-          </IconButton>
-        )}
-      </Stack>
-
-      <Stack gap={0.5}>
-        <VoiceChatPlayer
-          audioUrl={audioUrl}
-          autoPlay={autoPlay}
-          isPausedExternally={isPausedExternally}
-          onPlayStart={onPlayStart}
-          onProgressListen={onProgressListen}
-          onEnded={onEnded}
-        />
-        <Button
-          size="small"
-          variant="text"
-          color="info"
-          onClick={onReplyClick}
-          sx={{ ...replyButtonSx, alignSelf: 'flex-start' }}
-        >
-          {i18n._('Reply')}
-        </Button>
-      </Stack>
+      <VoiceChatPlayer
+        isMine={isMine}
+        messageId={message.id}
+        senderId={message.senderId}
+        audioUrl={audioUrl}
+        autoPlay={autoPlay}
+        isPausedExternally={isPausedExternally}
+        onPlayStart={onPlayStart}
+        onProgressListen={onProgressListen}
+        onEnded={onEnded}
+        onOpenMenu={onOpenMenu}
+        onReplyClick={onReplyClick}
+      />
 
       {isReplyOpen && (
         <VoiceChatRecorderPanel

@@ -51,6 +51,10 @@ export const VoiceChatMessageList = ({
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const byParent = useMemo(() => buildTree(messages), [messages]);
 
+  const toggleReply = (messageId: string) => {
+    setReplyingTo(replyingTo === messageId ? null : messageId);
+  };
+
   const closeMessageMenu = () => {
     setMenuMessageId(null);
     setMenuAnchor(null);
@@ -60,7 +64,7 @@ export const VoiceChatMessageList = ({
     const children = byParent.get(message.id) || [];
 
     return (
-      <Stack key={message.id} gap={0}>
+      <Stack key={message.id} gap={'20px'}>
         <VoiceChatMessageItem
           message={message}
           depth={depth}
@@ -68,13 +72,11 @@ export const VoiceChatMessageList = ({
           isReplyOpen={replyingTo === message.id}
           audioUrl={audioUrlById[message.id] || null}
           autoPlay={autoPlayMessageId === message.id}
-          isPausedExternally={
-            playingMessageId !== null && playingMessageId !== message.id
-          }
+          isPausedExternally={playingMessageId !== null && playingMessageId !== message.id}
           onPlayStart={() => onPlayStart(message.id)}
           onProgressListen={() => onProgressListen(message.id)}
           onEnded={() => onEnded(message.id)}
-          onReplyClick={() => setReplyingTo(message.id)}
+          onReplyClick={() => toggleReply(message.id)}
           onSubmitReply={async (blob, durationSec) => {
             await onReply(message.id, blob, durationSec);
             setReplyingTo(null);
@@ -115,9 +117,7 @@ export const VoiceChatMessageList = ({
     <>
       <Stack
         gap={0}
-        divider={
-          <Stack sx={{ height: '1px', bgcolor: voiceChatUi.borderSubtle, opacity: 0.5 }} />
-        }
+        divider={<Stack sx={{ height: '1px', bgcolor: voiceChatUi.borderSubtle, opacity: 0.5 }} />}
       >
         {roots.map((root) => renderNode(root, 0))}
       </Stack>
