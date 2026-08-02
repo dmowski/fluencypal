@@ -123,8 +123,8 @@ export const VoiceChatPlayer = ({
     color: voiceChatUi.textSecondary,
     border: `1px solid ${voiceChatUi.borderSubtle}`,
     borderRadius: '8px',
-    width: 32,
-    height: 32,
+    width: '40px',
+    height: '40px',
     '&:hover': { bgcolor: voiceChatUi.surfaceSubtle },
     '&.Mui-disabled': { opacity: 0.35 },
   };
@@ -132,7 +132,10 @@ export const VoiceChatPlayer = ({
   return (
     <Stack gap={0.75} data-testid="voice-chat-player">
       {label && (
-        <Typography variant="caption" sx={{ color: voiceChatUi.textMuted, letterSpacing: '0.02em' }}>
+        <Typography
+          variant="caption"
+          sx={{ color: voiceChatUi.textMuted, letterSpacing: '0.02em' }}
+        >
           {label}
         </Typography>
       )}
