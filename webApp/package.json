@@ -19,7 +19,8 @@
   },
   "scripts": {
     "dev": "node scripts/dev-with-emulator.js",
-    "dev:prod": "IS_FIREBASE_EMULATOR=false NEXT_PUBLIC_IS_FIREBASE_EMULATOR=false next dev --turbopack",
+    "kill-dev-port": "(lsof -ti :3000 | xargs kill -9) 2>/dev/null || true",
+    "dev:prod": "pnpm kill-dev-port && IS_FIREBASE_EMULATOR=false NEXT_PUBLIC_IS_FIREBASE_EMULATOR=false next dev --turbopack",
     "dev:only": "next dev --turbopack",
     "dev:https": "next dev --turbopack --experimental-https",
     "dev:firebase-emulator": "node scripts/start-firebase-emulator.js",
