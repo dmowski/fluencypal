@@ -2,7 +2,7 @@ import { jsonrepair } from 'jsonrepair';
 import { SupportedLanguage } from '../Lang/lang';
 import { AiTextGenerator } from './types';
 import * as Sentry from '@sentry/nextjs';
-import z from 'zod';
+import z, { ZodError } from 'zod';
 
 export const extractJsonFromAiResponse = (raw: string): string => {
   const trimmed = raw.trim();
@@ -32,7 +32,25 @@ export const parseStrictJson = async <T>({
   languageCode: SupportedLanguage;
 }): Promise<T> => {
   const parsed = await parseJson<unknown>({ json, generate, languageCode });
-  return schema.parse(parsed);
+  try {
+    return schema.parse(parsed);
+  } catch (error) {
+    if (!(error instanceof ZodError)) {
+      throw error;
+    }
+
+    try {
+      const fixed = await fixJson<unknown>({
+        badJson: JSON.stringify(parsed),
+        error: error.message,
+        generate,
+        languageCode,
+      });
+      return schema.parse(fixed);
+    } catch {
+      throw error;
+    }
+  }
 };
 
 export const fixJson = async <T>({

@@ -1,22 +1,9 @@
 import { z } from 'zod';
+import { normalizeAssessment } from './normalizeAssessment';
+import { ProgressAssessmentResult } from './types';
 
-const finiteNumber = z.number().refine(Number.isFinite, {
-  message: 'Expected a finite number',
-});
+export const progressAssessmentSchema = z
+  .record(z.string(), z.unknown())
+  .transform((data): ProgressAssessmentResult => normalizeAssessment(data));
 
-const string = z.string();
-
-export const progressAssessmentSchema = z.object({
-  grammar: finiteNumber,
-  grammarSummary: string,
-  vocabulary: finiteNumber,
-  vocabularySummary: string,
-  fluency: finiteNumber,
-  fluencySummary: string,
-  confidence: finiteNumber,
-  confidenceSummary: string,
-  assessmentConfidence: finiteNumber,
-  assessmentConfidenceSummary: string,
-});
-
-export type ProgressAssessmentSchema = z.infer<typeof progressAssessmentSchema>;
+export type ProgressAssessmentSchema = ProgressAssessmentResult;
