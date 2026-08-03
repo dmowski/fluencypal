@@ -10,6 +10,7 @@ import { addConversationUsage } from '../usage/addConversationUsage';
 import { getUserPricePerHour } from '../usage/getUserPricePerHour';
 import { TextUsageLog } from '@/features/Usage/usage';
 import { addUsage } from '../payment/addUsage';
+import { createOpenAiUnavailableResponse, isTransientOpenAiError } from './openAiErrors';
 
 export const maxDuration = 60;
 
@@ -18,11 +19,23 @@ export async function POST(request: Request) {
 
   const aiRequest = (await request.json()) as AiRequest;
   const languageCode = aiRequest.languageCode || 'en';
-  const { output, usage } = await generateTextWithAi({
-    systemMessage: aiRequest.systemMessage,
-    userMessage: aiRequest.userMessage,
-    model: aiRequest.model,
-  });
+
+  let output: string;
+  let usage: Awaited<ReturnType<typeof generateTextWithAi>>['usage'];
+
+  try {
+    ({ output, usage } = await generateTextWithAi({
+      systemMessage: aiRequest.systemMessage,
+      userMessage: aiRequest.userMessage,
+      model: aiRequest.model,
+    }));
+  } catch (error) {
+    if (isTransientOpenAiError(error)) {
+      return createOpenAiUnavailableResponse();
+    }
+    console.error('POST /api/ai failed', error);
+    return Response.json({ error: 'AI request failed' }, { status: 500 });
+  }
 
   const usageEvent: TextUsageEvent = {
     text_input: usage?.prompt_tokens || 0,

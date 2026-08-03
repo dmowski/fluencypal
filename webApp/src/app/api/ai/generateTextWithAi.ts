@@ -9,6 +9,7 @@ if (!openAIKey) {
 
 const client = new OpenAI({
   apiKey: openAIKey,
+  maxRetries: 4,
 });
 
 interface generateTextWithAiProps {

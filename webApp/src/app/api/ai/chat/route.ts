@@ -10,6 +10,7 @@ import { addConversationUsage } from '../../usage/addConversationUsage';
 import { addUsage } from '../../payment/addUsage';
 import { TextUsageLog } from '@/features/Usage/usage';
 import { getUserPricePerHour } from '../../usage/getUserPricePerHour';
+import { createOpenAiUnavailableResponse, isTransientOpenAiError } from '../openAiErrors';
 
 export const maxDuration = 60;
 
@@ -17,11 +18,23 @@ export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
 
   const aiRequest = (await request.json()) as AiChatRequest;
-  const { output, usage } = await generateChatWithAi({
-    systemMessage: aiRequest.systemMessage,
-    chatMessages: aiRequest.chatMessages,
-    model: aiRequest.model,
-  });
+
+  let output: string;
+  let usage: Awaited<ReturnType<typeof generateChatWithAi>>['usage'];
+
+  try {
+    ({ output, usage } = await generateChatWithAi({
+      systemMessage: aiRequest.systemMessage,
+      chatMessages: aiRequest.chatMessages,
+      model: aiRequest.model,
+    }));
+  } catch (error) {
+    if (isTransientOpenAiError(error)) {
+      return createOpenAiUnavailableResponse();
+    }
+    console.error('POST /api/ai/chat failed', error);
+    return Response.json({ error: 'AI request failed' }, { status: 500 });
+  }
 
   const usageEvent: TextUsageEvent = {
     text_input: usage?.prompt_tokens || 0,

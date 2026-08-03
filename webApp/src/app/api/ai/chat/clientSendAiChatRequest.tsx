@@ -1,5 +1,6 @@
 import { AiChatRequest, AiResponse } from '../aiRequest.types';
 import { getGlobalConversationId } from '@/features/Usage/globalConversationId';
+import { isRetriableAiHttpStatus } from '@/app/api/ai/openAiErrors';
 
 export const clientSendAiChatRequest = async (
   aiRequest: AiChatRequest,
@@ -17,6 +18,13 @@ export const clientSendAiChatRequest = async (
       Authorization: `Bearer ${auth}`,
     },
   });
+
+  if (!response.ok) {
+    const error = new Error(`AI chat request failed with status ${response.status}`);
+    (error as Error & { status?: number }).status = response.status;
+    throw error;
+  }
+
   const data = (await response.json()) as AiResponse;
   return data;
 };
@@ -31,11 +39,15 @@ export const clientSendAiChatRequestRetirable = async (
     try {
       return await clientSendAiChatRequest(aiRequest, auth);
     } catch (error) {
-      if (attempt < retries - 1) {
+      const status = (error as Error & { status?: number }).status;
+      const canRetry =
+        attempt < retries - 1 &&
+        (status === undefined || isRetriableAiHttpStatus(status));
+      if (canRetry) {
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
-      } else {
-        throw error;
+        continue;
       }
+      throw error;
     }
   }
   throw new Error('Failed to send AI chat request after multiple attempts');
