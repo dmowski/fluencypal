@@ -1,5 +1,10 @@
 # Live document with short/long term ideas
 
+## Blog: add author
+
+Author: Alex Dmowski. Editor and grammar corrector: Chat GPT
+Author: Chat GPT
+
 ## Voice chat
 
 See webApp/src/features/Chat/VoiceChat/AGENTS.md
