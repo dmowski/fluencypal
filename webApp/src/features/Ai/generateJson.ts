@@ -39,13 +39,18 @@ export const generateJsonResult = async <T>({
     };
   } catch (error) {
     console.error('Error generating JSON. error', error);
-    Sentry.captureException(error, {
-      extra: {
-        title: 'Error generating JSON in useTextAi',
-      },
-    });
+    const maxAttempts = conversationDate.attempts || 3;
+    const nextAttempt = (attemptInfo?.attempt || 0) + 1;
+    if (nextAttempt >= maxAttempts) {
+      Sentry.captureException(error, {
+        extra: {
+          title: 'Error generating JSON in useTextAi',
+          attempts: nextAttempt,
+        },
+      });
+    }
     await sleep(500);
-    console.log('Retrying AI JSON generation, attempt:', (attemptInfo?.attempt || 0) + 1);
+    console.log('Retrying AI JSON generation, attempt:', nextAttempt);
     return generateJsonResult({
       conversationDate: { ...conversationDate, cache: false },
       parseResponse,

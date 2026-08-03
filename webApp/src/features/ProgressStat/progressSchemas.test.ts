@@ -25,6 +25,20 @@ describe('progressAssessmentSchema', () => {
     });
   });
 
+  it('recovers swapped grammar score and summary fields', () => {
+    const result = progressAssessmentSchema.parse({
+      grammar: 'Good tense usage.',
+      grammarSummary: '72',
+      vocabulary: 65,
+      fluency: '58',
+      confidence: 70,
+      assessmentConfidence: '40',
+    });
+
+    expect(result.grammar).toBe(72);
+    expect(result.grammarSummary).toBe('Good tense usage.');
+  });
+
   it('rejects payloads missing required numeric scores', () => {
     expect(() =>
       progressAssessmentSchema.parse({
