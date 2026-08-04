@@ -14,6 +14,7 @@ import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
+import * as Sentry from '@sentry/nextjs';
 
 export const ttsVersion = 'v14';
 
@@ -129,6 +130,7 @@ class AudioQueuePlayer {
   private _speechPlaying = false;
   private _musicPlaying = false;
   private potentialSpeakUrl: string | null = null;
+  private lastStreamStoppedAt = 0;
 
   async unlockFromGesture(): Promise<void> {
     if (this.unlocked) return;
@@ -287,11 +289,26 @@ class AudioQueuePlayer {
     }
     this.potentialSpeakUrl = null;
 
+    Sentry.addBreadcrumb({
+      category: 'conversation-audio',
+      level: 'info',
+      message: 'playStreamUrl start',
+      data: summarizeTtsStreamUrl(url),
+    });
+
     // Plays as soon as buffered enough (streaming)
     try {
       await el.play();
     } catch (error) {
       if (isAbortError(error)) return;
+      logStreamAudioFailure({
+        phase: 'play',
+        url,
+        el,
+        audioContextState: ctx.state,
+        lastStreamStoppedAt: this.lastStreamStoppedAt,
+        error,
+      });
       throw error;
     }
 
@@ -303,7 +320,14 @@ class AudioQueuePlayer {
       const onError = () =>
         cleanup(() => {
           if (isAbortError(el.error)) return resolve();
-          reject(new Error('Stream audio error'));
+          const diagnostics = logStreamAudioFailure({
+            phase: 'media-element-error',
+            url,
+            el,
+            audioContextState: ctx.state,
+            lastStreamStoppedAt: this.lastStreamStoppedAt,
+          });
+          reject(new Error(`Stream audio error: ${diagnostics.label ?? 'unknown'}`));
         });
 
       const cleanup = (done: () => void) => {
@@ -320,6 +344,7 @@ class AudioQueuePlayer {
   stopStream(): void {
     const el = this.speechEl;
     if (!el) return;
+    this.lastStreamStoppedAt = Date.now();
     this._speechPlaying = false;
     try {
       el.pause();
@@ -522,6 +547,87 @@ function isAbortError(error: unknown): boolean {
   const name = (error as { name?: string }).name;
   return name === 'AbortError';
 }
+
+const MEDIA_ERROR_LABELS: Record<number, string> = {
+  1: 'MEDIA_ERR_ABORTED',
+  2: 'MEDIA_ERR_NETWORK',
+  3: 'MEDIA_ERR_DECODE',
+  4: 'MEDIA_ERR_SRC_NOT_SUPPORTED',
+};
+
+const getMediaErrorDetails = (error: MediaError | null) => ({
+  code: error?.code ?? null,
+  label: error?.code != null ? (MEDIA_ERROR_LABELS[error.code] ?? `unknown_${error.code}`) : null,
+  message: error?.message ?? null,
+});
+
+/** Log-safe TTS request metadata — never includes transcript text. */
+const summarizeTtsStreamUrl = (url: string) => {
+  try {
+    const parsed = new URL(url, window.location.origin);
+    const input = parsed.searchParams.get('input');
+    return {
+      pathname: parsed.pathname,
+      voice: parsed.searchParams.get('voice'),
+      cache: parsed.searchParams.get('cache'),
+      regenerateCache: parsed.searchParams.get('regenerateCache'),
+      version: parsed.searchParams.get('version'),
+      inputLength: input?.length ?? 0,
+    };
+  } catch {
+    return { urlPreview: url.slice(0, 120) };
+  }
+};
+
+const logStreamAudioFailure = ({
+  phase,
+  url,
+  el,
+  audioContextState,
+  lastStreamStoppedAt,
+  error,
+}: {
+  phase: 'play' | 'media-element-error';
+  url: string;
+  el: HTMLAudioElement;
+  audioContextState: AudioContextState | null;
+  lastStreamStoppedAt: number;
+  error?: unknown;
+}) => {
+  const mediaError = el.error;
+  const diagnostics = {
+    phase,
+    ...summarizeTtsStreamUrl(url),
+    ...getMediaErrorDetails(mediaError),
+    readyState: el.readyState,
+    networkState: el.networkState,
+    paused: el.paused,
+    audioContextState,
+    interruptedRecently: Date.now() - lastStreamStoppedAt < 500,
+    playErrorName: error instanceof Error ? error.name : undefined,
+    playErrorMessage: error instanceof Error ? error.message : undefined,
+  };
+
+  console.error('[conversation-audio] Stream audio failure', diagnostics);
+
+  Sentry.addBreadcrumb({
+    category: 'conversation-audio',
+    level: 'error',
+    message: `Stream audio failure (${phase})`,
+    data: diagnostics,
+  });
+
+  const label =
+    diagnostics.label ??
+    (error instanceof Error ? error.name : undefined) ??
+    'unknown';
+  Sentry.captureException(new Error(`Stream audio error: ${label}`), {
+    tags: { area: 'conversation-audio', op: 'playStreamUrl', phase },
+    extra: diagnostics,
+  });
+
+  return diagnostics;
+};
 
 function useProvideConversationAudio(): ConversationAudioContextType {
   const playerRef = useRef<AudioQueuePlayer | null>(null);
