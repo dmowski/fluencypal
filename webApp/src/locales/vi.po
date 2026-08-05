@@ -189,24 +189,25 @@ msgstr "5 giờ AI"
 msgid "5. Winners get full access for free "
 msgstr "5. Người chiến thắng sẽ được truy cập đầy đủ miễn phí "
 
-#: src/features/Tasks/useDailyTasks.tsx:369
+#: src/features/Tasks/useDailyPlans.ts:266
 #. js-lingui-explicit-id
 msgid "A bit of polish goes a long way. Focus on today’s tasks."
 msgstr ""
 "Một chút chỉnh chu có thể tạo nên sự khác biệt. Tập trung vào các nhiệm vụ "
 "hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:174
+#: src/features/Tasks/useDailyPlans.ts:71
+#: src/features/Tasks/useDailyPlans.ts:353
 #. js-lingui-explicit-id
 msgid "A calm routine makes steady progress."
 msgstr "Một thói quen bình tĩnh tạo ra tiến bộ ổn định."
 
-#: src/features/Tasks/useDailyTasks.tsx:219
+#: src/features/Tasks/useDailyPlans.ts:116
 #. js-lingui-explicit-id
 msgid "A focused day helps you improve. Here are today’s tasks."
 msgstr "Một ngày tập trung sẽ giúp bạn cải thiện. Đây là các nhiệm vụ hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:279
+#: src/features/Tasks/useDailyPlans.ts:176
 #. js-lingui-explicit-id
 msgid "A full month of learning. Remarkable — let’s keep going."
 msgstr "Một tháng học tập đầy đủ. Thật đáng kinh ngạc — hãy tiếp tục."
@@ -234,7 +235,7 @@ msgstr ""
 msgid "A journey of a thousand miles begins with a single step."
 msgstr "Một hành trình dài hàng ngàn dặm bắt đầu bằng một bước đi đầu tiên."
 
-#: src/features/Tasks/useDailyTasks.tsx:349
+#: src/features/Tasks/useDailyPlans.ts:246
 #. js-lingui-explicit-id
 msgid "A light day still counts. Complete today’s tasks."
 msgstr "Một ngày nhẹ nhàng vẫn được tính. Hoàn thành các nhiệm vụ hôm nay."
@@ -244,7 +245,7 @@ msgstr "Một ngày nhẹ nhàng vẫn được tính. Hoàn thành các nhiệm
 msgid "A little progress each day adds up to big results."
 msgstr "Một chút tiến bộ mỗi ngày cộng lại sẽ mang lại kết quả lớn."
 
-#: src/features/Tasks/useDailyTasks.tsx:189
+#: src/features/Tasks/useDailyPlans.ts:86
 #. js-lingui-explicit-id
 msgid "A little variety helps you grow. Here’s what to do today."
 msgstr ""
@@ -256,7 +257,7 @@ msgstr ""
 msgid "A method focused on clarity and reliability"
 msgstr "Một phương pháp tập trung vào sự rõ ràng và đáng tin cậy"
 
-#: src/features/Tasks/useDailyTasks.tsx:254
+#: src/features/Tasks/useDailyPlans.ts:151
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Một tháng học tập đang trong tầm tay. Hãy tiếp tục hôm nay."
@@ -749,7 +750,7 @@ msgstr "Tất cả cuộc phỏng vấn"
 msgid "All Scenarios"
 msgstr "Tất cả các kịch bản"
 
-#: src/features/Tasks/useDailyTasks.tsx:436
+#: src/features/Tasks/useDailyTasks.tsx:167
 #. js-lingui-explicit-id
 msgid "All tasks completed"
 msgstr "Tất cả các nhiệm vụ đã hoàn thành"
@@ -860,7 +861,7 @@ msgstr ""
 "Trả lời một câu hỏi mới mỗi ngày và xem phong cách của bạn được cải thiện "
 "như thế nào!"
 
-#: src/features/Tasks/useDailyTasks.tsx:92
+#: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
 msgstr "Trả lời câu hỏi hàng ngày"
@@ -1331,12 +1332,12 @@ msgstr "Kết nối não thành công!"
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "Mô tả ngắn gọn kinh nghiệm của bạn với C#, .NET và thiết kế API."
 
-#: src/features/Tasks/useDailyTasks.tsx:131
+#: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
 msgid "Build a steady learning habit"
 msgstr "Xây dựng thói quen học tập đều đặn"
 
-#: src/features/Tasks/useDailyTasks.tsx:76
+#: src/features/Tasks/useDailyTasks.tsx:72
 #. js-lingui-explicit-id
 msgid "Build at least one sentence in Grammar Improvement"
 msgstr "Xây dựng ít nhất một câu trong Cải Thiện Ngữ Pháp"
@@ -2318,7 +2319,7 @@ msgstr "Giao tiếp & Lãnh đạo"
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:28
 #: src/features/Goal/Quiz/QuizPage2.tsx:486
 #: src/features/Navigation/NavigationBar.tsx:112
-#: src/features/Tasks/useDailyTasks.tsx:83
+#: src/features/Tasks/useDailyTasks.tsx:79
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Cộng đồng"
@@ -2531,14 +2532,14 @@ msgstr ""
 "(chọn chỉ những trường cần thiết) và AsNoTracking cho EF Core. Đối với việc "
 "tuần tự hóa nặng, tối ưu hóa DTO và xem xét nén đối với các tải lớn."
 
-#: src/features/Tasks/useDailyTasks.tsx:299
+#: src/features/Tasks/useDailyPlans.ts:196
 #. js-lingui-explicit-id
 msgid "Consistency beats intensity. Continue with today’s tasks."
 msgstr ""
 "Sự nhất quán vượt trội hơn sự mãnh liệt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:147
+#: src/features/Tasks/useDailyPlans.ts:44
 #. js-lingui-explicit-id
 msgid ""
 "Consistency is key to language learning. Complete today’s tasks to keep the "
@@ -2643,7 +2644,8 @@ msgstr "Tiếp tục truy cập miễn phí"
 msgid "Continue to Next Turn"
 msgstr "Tiếp tục Tới Lượt Tiếp Theo"
 
-#: src/features/Tasks/useDailyTasks.tsx:137
+#: src/features/Tasks/useDailyPlans.ts:34
+#: src/features/Tasks/useDailyPlans.ts:351
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Tiếp tục với các nhiệm vụ hôm nay và duy trì sự nhất quán."
@@ -2953,7 +2955,7 @@ msgstr "Kiểm Tra Thẻ Tín Dụng"
 msgid "csharp developer interview"
 msgstr "phỏng vấn nhà phát triển csharp"
 
-#: src/features/Tasks/useDailyTasks.tsx:184
+#: src/features/Tasks/useDailyPlans.ts:81
 #. js-lingui-explicit-id
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "Sự tò mò khiến việc học trở nên thú vị. Khám phá các nhiệm vụ hôm nay."
@@ -3037,7 +3039,7 @@ msgstr "Giới hạn hàng ngày?"
 msgid "Daily Q&A"
 msgstr "Hỏi & Đáp Hàng Ngày"
 
-#: src/features/Tasks/useDailyTasks.tsx:91
+#: src/features/Tasks/useDailyTasks.tsx:87
 #. js-lingui-explicit-id
 msgid "Daily question"
 msgstr "Câu hỏi hàng ngày"
@@ -3099,235 +3101,330 @@ msgstr "Cơ sở dữ liệu & Giao dịch"
 msgid "Day"
 msgstr "Ngày"
 
-#: src/features/Tasks/useDailyTasks.tsx:168
+#: src/features/Tasks/useDailyPlans.ts:310
+#. js-lingui-explicit-id
+msgid "Day 100: one hundred days"
+msgstr "Ngày 100: một trăm ngày"
+
+#: src/features/Tasks/useDailyPlans.ts:315
+#. js-lingui-explicit-id
+msgid "Day 120: four months in"
+msgstr "Ngày 120: bốn tháng trôi qua rồi"
+
+#: src/features/Tasks/useDailyPlans.ts:320
+#. js-lingui-explicit-id
+msgid "Day 150: one hundred fifty days"
+msgstr "Ngày 150: một trăm năm mươi ngày"
+
+#: src/features/Tasks/useDailyPlans.ts:325
+#. js-lingui-explicit-id
+msgid "Day 180: six months strong"
+msgstr "Ngày 180: sáu tháng kiên cường"
+
+#: src/features/Tasks/useDailyPlans.ts:330
+#. js-lingui-explicit-id
+msgid "Day 200: two hundred days"
+msgstr "Ngày 200: hai trăm ngày"
+
+#: src/features/Tasks/useDailyPlans.ts:280
+#. js-lingui-explicit-id
+msgid "Day 50: fifty days strong"
+msgstr "Ngày 50: năm mươi ngày mạnh mẽ"
+
+#: src/features/Tasks/useDailyPlans.ts:285
+#. js-lingui-explicit-id
+msgid "Day 60: two months in"
+msgstr "Ngày 60: hai tháng đã qua"
+
+#: src/features/Tasks/useDailyPlans.ts:290
+#. js-lingui-explicit-id
+msgid "Day 70: keep climbing"
+msgstr "Ngày 70: tiếp tục leo lên"
+
+#: src/features/Tasks/useDailyPlans.ts:295
+#. js-lingui-explicit-id
+msgid "Day 75: past the halfway mark to 150"
+msgstr "Ngày 75: vượt qua điểm giữa để đến 150"
+
+#: src/features/Tasks/useDailyPlans.ts:300
+#. js-lingui-explicit-id
+msgid "Day 80: eighty days of progress"
+msgstr "Ngày 80: tám mươi ngày tiến bộ"
+
+#: src/features/Tasks/useDailyPlans.ts:305
+#. js-lingui-explicit-id
+msgid "Day 90: three months strong"
+msgstr "Ngày 90: Ba tháng bền vững"
+
+#: src/features/Tasks/useDailyPlans.ts:65
 #. js-lingui-explicit-id
 msgid "Day eight: keep moving forward"
 msgstr "Ngày thứ tám: tiếp tục tiến lên phía trước"
 
-#: src/features/Tasks/useDailyTasks.tsx:218
+#: src/features/Tasks/useDailyPlans.ts:115
 #. js-lingui-explicit-id
 msgid "Day eighteen: sharpen your skills"
 msgstr "Ngày mười tám: nâng cao kỹ năng của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:183
+#: src/features/Tasks/useDailyPlans.ts:80
 #. js-lingui-explicit-id
 msgid "Day eleven: stay curious"
 msgstr "Ngày thứ mười một: giữ sự tò mò"
 
-#: src/features/Tasks/useDailyTasks.tsx:203
+#: src/features/Tasks/useDailyPlans.ts:100
 #. js-lingui-explicit-id
 msgid "Day fifteen: halfway to a month"
 msgstr "Ngày thứ mười lăm: nửa chặng đường đến một tháng"
 
-#: src/features/Tasks/useDailyTasks.tsx:153
+#: src/features/Tasks/useDailyPlans.ts:50
 #. js-lingui-explicit-id
 msgid "Day five: keep the rhythm"
 msgstr "Ngày thứ năm: giữ nhịp điệu"
 
-#: src/features/Tasks/useDailyTasks.tsx:368
+#: src/features/Tasks/useDailyPlans.ts:265
 #. js-lingui-explicit-id
 msgid "Day forty-eight: polish and practice"
 msgstr "Ngày bốn mươi tám: mài giũa và thực hành"
 
-#: src/features/Tasks/useDailyTasks.tsx:353
+#: src/features/Tasks/useDailyPlans.ts:250
 #. js-lingui-explicit-id
 msgid "Day forty-five: almost seven weeks"
 msgstr "Ngày thứ bốn mươi lăm: gần bảy tuần"
 
-#: src/features/Tasks/useDailyTasks.tsx:348
+#: src/features/Tasks/useDailyPlans.ts:245
 #. js-lingui-explicit-id
 msgid "Day forty-four: keep it light"
 msgstr "Ngày bốn mươi tư: giữ cho nó nhẹ nhàng"
 
-#: src/features/Tasks/useDailyTasks.tsx:373
+#: src/features/Tasks/useDailyPlans.ts:270
 #. js-lingui-explicit-id
 msgid "Day forty-nine: seven weeks strong"
 msgstr "Ngày bốn mươi chín: bảy tuần kiên cường"
 
-#: src/features/Tasks/useDailyTasks.tsx:333
+#: src/features/Tasks/useDailyPlans.ts:230
 #. js-lingui-explicit-id
 msgid "Day forty-one: beyond forty"
 msgstr "Ngày bốn mươi mốt: vượt qua bốn mươi"
 
-#: src/features/Tasks/useDailyTasks.tsx:363
+#: src/features/Tasks/useDailyPlans.ts:260
 #. js-lingui-explicit-id
 msgid "Day forty-seven: keep practicing"
 msgstr "Ngày bốn mươi bảy: tiếp tục luyện tập"
 
-#: src/features/Tasks/useDailyTasks.tsx:358
+#: src/features/Tasks/useDailyPlans.ts:255
 #. js-lingui-explicit-id
 msgid "Day forty-six: stay motivated"
 msgstr "Ngày bốn mươi sáu: duy trì động lực"
 
-#: src/features/Tasks/useDailyTasks.tsx:343
+#: src/features/Tasks/useDailyPlans.ts:240
 #. js-lingui-explicit-id
 msgid "Day forty-three: stay the course"
 msgstr "Ngày bốn mươi ba: giữ vững lộ trình"
 
-#: src/features/Tasks/useDailyTasks.tsx:338
+#: src/features/Tasks/useDailyPlans.ts:235
 #. js-lingui-explicit-id
 msgid "Day forty-two: six weeks in"
 msgstr "Ngày thứ bốn mươi hai: sáu tuần đã qua"
 
-#: src/features/Tasks/useDailyTasks.tsx:328
+#: src/features/Tasks/useDailyPlans.ts:225
 #. js-lingui-explicit-id
 msgid "Day forty: a big milestone"
 msgstr "Ngày thứ bốn mươi: một cột mốc lớn"
 
-#: src/features/Tasks/useDailyTasks.tsx:146
+#: src/features/Tasks/useDailyPlans.ts:43
 #. js-lingui-explicit-id
 msgid "Day four: keep the habit alive"
 msgstr "Ngày thứ tư: duy trì thói quen"
 
-#: src/features/Tasks/useDailyTasks.tsx:198
+#: src/features/Tasks/useDailyPlans.ts:95
 #. js-lingui-explicit-id
 msgid "Day fourteen: two weeks in"
 msgstr "Ngày mười bốn: hai tuần rồi"
 
-#: src/features/Tasks/useDailyTasks.tsx:223
+#: src/features/Tasks/useDailyPlans.ts:120
 #. js-lingui-explicit-id
 msgid "Day nineteen: almost three weeks"
 msgstr "Ngày thứ mười chín: gần ba tuần"
 
-#: src/features/Tasks/useDailyTasks.tsx:163
+#: src/features/Tasks/useDailyPlans.ts:60
 #. js-lingui-explicit-id
 msgid "Day seven: one full week"
 msgstr "Ngày thứ bảy: tròn một tuần"
 
-#: src/features/Tasks/useDailyTasks.tsx:213
+#: src/features/Tasks/useDailyPlans.ts:110
 #. js-lingui-explicit-id
 msgid "Day seventeen: quiet progress"
 msgstr "Ngày mười bảy: tiến bộ yên lặng"
 
-#: src/features/Tasks/useDailyTasks.tsx:208
+#: src/features/Tasks/useDailyPlans.ts:105
 #. js-lingui-explicit-id
 msgid "Day sixteen: stay engaged"
 msgstr "Ngày mười sáu: duy trì sự tham gia"
 
-#: src/features/Tasks/useDailyTasks.tsx:178
+#: src/features/Tasks/useDailyPlans.ts:75
 #. js-lingui-explicit-id
 msgid "Day ten: a solid start"
 msgstr "Ngày thứ mười: một khởi đầu vững chắc"
 
-#: src/features/Tasks/useDailyTasks.tsx:193
+#: src/features/Tasks/useDailyPlans.ts:90
 #. js-lingui-explicit-id
 msgid "Day thirteen: keep showing up"
 msgstr "Ngày thứ mười ba: hãy tiếp tục xuất hiện"
 
-#: src/features/Tasks/useDailyTasks.tsx:318
+#: src/features/Tasks/useDailyPlans.ts:215
 #. js-lingui-explicit-id
 msgid "Day thirty-eight: refine your voice"
 msgstr "Ngày ba mươi tám: làm rõ giọng của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:303
+#: src/features/Tasks/useDailyPlans.ts:200
 #. js-lingui-explicit-id
 msgid "Day thirty-five: five weeks strong"
 msgstr "Ngày thứ ba mươi lăm: mạnh mẽ năm tuần"
 
-#: src/features/Tasks/useDailyTasks.tsx:298
+#: src/features/Tasks/useDailyPlans.ts:195
 #. js-lingui-explicit-id
 msgid "Day thirty-four: stay consistent"
 msgstr "Ngày thứ ba mươi tư: duy trì sự nhất quán"
 
-#: src/features/Tasks/useDailyTasks.tsx:323
+#: src/features/Tasks/useDailyPlans.ts:220
 #. js-lingui-explicit-id
 msgid "Day thirty-nine: keep climbing"
 msgstr "Ngày thứ ba mươi chín: tiếp tục leo lên"
 
-#: src/features/Tasks/useDailyTasks.tsx:283
+#: src/features/Tasks/useDailyPlans.ts:180
 #. js-lingui-explicit-id
 msgid "Day thirty-one: a new chapter"
 msgstr "Ngày ba mươi mốt: một chương mới"
 
-#: src/features/Tasks/useDailyTasks.tsx:313
+#: src/features/Tasks/useDailyPlans.ts:210
 #. js-lingui-explicit-id
 msgid "Day thirty-seven: gentle progress"
 msgstr "Ngày ba mươi bảy: tiến bộ nhẹ nhàng"
 
-#: src/features/Tasks/useDailyTasks.tsx:308
+#: src/features/Tasks/useDailyPlans.ts:205
 #. js-lingui-explicit-id
 msgid "Day thirty-six: stay connected"
 msgstr "Ngày thứ ba mươi sáu: giữ kết nối"
 
-#: src/features/Tasks/useDailyTasks.tsx:293
+#: src/features/Tasks/useDailyPlans.ts:190
 #. js-lingui-explicit-id
 msgid "Day thirty-three: trust the process"
 msgstr "Ngày thứ ba mươi ba: tin tưởng vào quá trình"
 
-#: src/features/Tasks/useDailyTasks.tsx:288
+#: src/features/Tasks/useDailyPlans.ts:185
 #. js-lingui-explicit-id
 msgid "Day thirty-two: keep exploring"
 msgstr "Ngày thứ ba mươi hai: tiếp tục khám phá"
 
-#: src/features/Tasks/useDailyTasks.tsx:278
+#: src/features/Tasks/useDailyPlans.ts:175
 #. js-lingui-explicit-id
 msgid "Day thirty: one full month"
 msgstr "Ngày thứ ba mươi: tròn một tháng"
 
-#: src/features/Tasks/useDailyTasks.tsx:141
+#: src/features/Tasks/useDailyPlans.ts:38
 #. js-lingui-explicit-id
 msgid "Day three: steady progress"
 msgstr "Ngày thứ ba: tiến bộ ổn định"
 
-#: src/features/Tasks/useDailyTasks.tsx:188
+#: src/features/Tasks/useDailyPlans.ts:85
 #. js-lingui-explicit-id
 msgid "Day twelve: mix it up"
 msgstr "Ngày mười hai: hòa trộn nó lên"
 
-#: src/features/Tasks/useDailyTasks.tsx:268
+#: src/features/Tasks/useDailyPlans.ts:165
 #. js-lingui-explicit-id
 msgid "Day twenty-eight: four weeks in"
 msgstr "Ngày hai mươi tám: bốn tuần trong"
 
-#: src/features/Tasks/useDailyTasks.tsx:253
+#: src/features/Tasks/useDailyPlans.ts:150
 #. js-lingui-explicit-id
 msgid "Day twenty-five: almost a month"
 msgstr "Ngày hai mươi lăm: gần một tháng"
 
-#: src/features/Tasks/useDailyTasks.tsx:248
+#: src/features/Tasks/useDailyPlans.ts:145
 #. js-lingui-explicit-id
 msgid "Day twenty-four: stay present"
 msgstr "Ngày hai mươi tư: duy trì sự hiện diện"
 
-#: src/features/Tasks/useDailyTasks.tsx:273
+#: src/features/Tasks/useDailyPlans.ts:170
 #. js-lingui-explicit-id
 msgid "Day twenty-nine: nearly there"
 msgstr "Ngày hai mươi chín: gần tới đích rồi"
 
-#: src/features/Tasks/useDailyTasks.tsx:233
+#: src/features/Tasks/useDailyPlans.ts:130
 #. js-lingui-explicit-id
 msgid "Day twenty-one: keep the streak"
 msgstr "Ngày hai mươi mốt: tiếp tục chuỗi"
 
-#: src/features/Tasks/useDailyTasks.tsx:263
+#: src/features/Tasks/useDailyPlans.ts:160
 #. js-lingui-explicit-id
 msgid "Day twenty-seven: keep the habit"
 msgstr "Ngày hai mươi bảy: duy trì thói quen"
 
-#: src/features/Tasks/useDailyTasks.tsx:258
+#: src/features/Tasks/useDailyPlans.ts:155
 #. js-lingui-explicit-id
 msgid "Day twenty-six: stay sharp"
 msgstr "Ngày hai mươi sáu: giữ tinh thần tỉnh táo"
 
-#: src/features/Tasks/useDailyTasks.tsx:243
+#: src/features/Tasks/useDailyPlans.ts:140
 #. js-lingui-explicit-id
 msgid "Day twenty-three: steady as ever"
 msgstr "Ngày hai mươi ba: vẫn vững vàng như mọi khi"
 
-#: src/features/Tasks/useDailyTasks.tsx:238
+#: src/features/Tasks/useDailyPlans.ts:135
 #. js-lingui-explicit-id
 msgid "Day twenty-two: enjoy the process"
 msgstr "Ngày hai mươi hai: tận hưởng quá trình"
 
-#: src/features/Tasks/useDailyTasks.tsx:228
+#: src/features/Tasks/useDailyPlans.ts:125
 #. js-lingui-explicit-id
 msgid "Day twenty: three weeks strong"
 msgstr "Ngày hai mươi: ba tuần mạnh mẽ"
 
-#: src/features/Tasks/useDailyTasks.tsx:136
+#: src/features/Tasks/useDailyPlans.ts:33
 #. js-lingui-explicit-id
 msgid "Day two: keep going"
 msgstr "Ngày thứ hai: tiếp tục nào"
+
+#: src/features/Tasks/useDailyPlans.ts:347
+#. js-lingui-explicit-id
+msgid "Day {day}: gentle progress"
+msgstr "Ngày {day}: tiến bộ nhẹ nhàng"
+
+#: src/features/Tasks/useDailyPlans.ts:346
+#. js-lingui-explicit-id
+msgid "Day {day}: keep climbing"
+msgstr "Ngày {day}: tiếp tục leo lên"
+
+#: src/features/Tasks/useDailyPlans.ts:340
+#. js-lingui-explicit-id
+msgid "Day {day}: keep going"
+msgstr "Ngày {day}: tiếp tục cố gắng"
+
+#: src/features/Tasks/useDailyPlans.ts:344
+#. js-lingui-explicit-id
+msgid "Day {day}: keep practicing"
+msgstr "Ngày {day}: tiếp tục luyện tập"
+
+#: src/features/Tasks/useDailyPlans.ts:343
+#. js-lingui-explicit-id
+msgid "Day {day}: keep the habit"
+msgstr "Ngày {day}: duy trì thói quen"
+
+#: src/features/Tasks/useDailyPlans.ts:341
+#. js-lingui-explicit-id
+msgid "Day {day}: stay consistent"
+msgstr "Ngày {day}: duy trì sự nhất quán"
+
+#: src/features/Tasks/useDailyPlans.ts:345
+#. js-lingui-explicit-id
+msgid "Day {day}: stay sharp"
+msgstr "Ngày {day}: giữ tinh thần tỉnh táo"
+
+#: src/features/Tasks/useDailyPlans.ts:342
+#. js-lingui-explicit-id
+msgid "Day {day}: steady progress"
+msgstr "Ngày {day}: tiến bộ đều đặn"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3736,7 +3833,7 @@ msgstr ""
 msgid "Discuss the topic"
 msgstr "Thảo luận về chủ đề"
 
-#: src/features/Tasks/useDailyTasks.tsx:96
+#: src/features/Tasks/useDailyTasks.tsx:92
 #. js-lingui-explicit-id
 msgid "Discuss today’s news with the AI"
 msgstr "Thảo luận về tin tức hôm nay với AI"
@@ -3856,7 +3953,7 @@ msgstr "Đừng quên thử chế độ gọi trong phần thực hành!"
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
-#: src/features/Tasks/useDailyTasks.tsx:440
+#: src/features/Tasks/useDailyTasks.tsx:171
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -4027,6 +4124,11 @@ msgstr ""
 msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core theo dõi vs. không theo dõi"
 
+#: src/features/Tasks/useDailyPlans.ts:301
+#. js-lingui-explicit-id
+msgid "Eighty days in — your consistency is paying off."
+msgstr "Tám mươi ngày trôi qua — sự kiên định của bạn đã được đền đáp."
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:43
 #. js-lingui-explicit-id
 msgid "Either you run the day, or the day runs you."
@@ -4092,7 +4194,7 @@ msgstr ""
 "Tham gia vào các cuộc trò chuyện thực tế như phỏng vấn xin việc hoặc đặt đồ "
 "ăn"
 
-#: src/features/Tasks/useDailyTasks.tsx:209
+#: src/features/Tasks/useDailyPlans.ts:106
 #. js-lingui-explicit-id
 msgid "Engagement turns practice into fluency. Try today’s tasks."
 msgstr "Biến thực hành thành thông thạo. Hãy thử các nhiệm vụ hôm nay."
@@ -4163,7 +4265,7 @@ msgstr "Nâng cao từ vựng của bạn bằng cách mô tả từ theo các c
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "Tận hưởng trò chơi và xem AI đoán mô tả của bạn!"
 
-#: src/features/Tasks/useDailyTasks.tsx:239
+#: src/features/Tasks/useDailyPlans.ts:136
 #. js-lingui-explicit-id
 msgid "Enjoyment makes habits stick. Dive into today’s tasks."
 msgstr ""
@@ -4496,7 +4598,7 @@ msgstr "Giải thích các bước của bạn (tái tạo, cách ly, sửa ch�
 msgid "Explanation"
 msgstr "Giải thích"
 
-#: src/features/Tasks/useDailyTasks.tsx:289
+#: src/features/Tasks/useDailyPlans.ts:186
 #. js-lingui-explicit-id
 msgid "Exploration keeps learning alive. Try today’s tasks."
 msgstr "Khám phá giữ cho việc học luôn sống động. Hãy thử các nhiệm vụ hôm nay."
@@ -4708,6 +4810,13 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Phản hồi có ích"
 
+#: src/features/Tasks/useDailyPlans.ts:281
+#. js-lingui-explicit-id
+msgid "Fifty active days — a real habit. Celebrate and keep going."
+msgstr ""
+"Năm mươi ngày hoạt động — một thói quen thực sự. Ăn mừng và tiếp tục tiến "
+"lên."
+
 #: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
@@ -4778,7 +4887,7 @@ msgstr ""
 msgid "Finish"
 msgstr "Kết thúc"
 
-#: src/features/Tasks/useDailyTasks.tsx:80
+#: src/features/Tasks/useDailyTasks.tsx:76
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "Hoàn thành một bài học từ Kế hoạch Học tập của bạn"
@@ -4788,7 +4897,7 @@ msgstr "Hoàn thành một bài học từ Kế hoạch Học tập của bạn"
 msgid "Finish with what you learned"
 msgstr "Hoàn thành với những gì bạn đã học được"
 
-#: src/features/Tasks/useDailyTasks.tsx:304
+#: src/features/Tasks/useDailyPlans.ts:201
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Năm tuần đã trôi qua. Hãy duy trì năng lượng đó trong ngày hôm nay."
@@ -5127,7 +5236,7 @@ msgstr "Trang trọng"
 msgid "Formal Writing Practice"
 msgstr "Luyện viết chính thức"
 
-#: src/features/Tasks/useDailyTasks.tsx:329
+#: src/features/Tasks/useDailyPlans.ts:226
 #. js-lingui-explicit-id
 msgid "Forty active days — that’s dedication. Keep the habit alive."
 msgstr "Bốn mươi ngày hoạt động — đó là sự cống hiến. Hãy duy trì thói quen này."
@@ -5137,12 +5246,17 @@ msgstr "Bốn mươi ngày hoạt động — đó là sự cống hiến. Hãy 
 msgid "Founder"
 msgstr "Người sáng lập"
 
+#: src/features/Tasks/useDailyPlans.ts:316
+#. js-lingui-explicit-id
+msgid "Four months of practice. Stay calm and keep the habit alive."
+msgstr "Bốn tháng luyện tập. Giữ bình tĩnh và giữ vững thói quen."
+
 #: src/features/Landing/LandingPage.tsx:383
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Bốn Cách FluencyPal Tăng Cường Kỹ Năng Nói Của Bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:269
+#: src/features/Tasks/useDailyPlans.ts:166
 #. js-lingui-explicit-id
 msgid "Four weeks of practice — that’s something to be proud of."
 msgstr "Bốn tuần luyện tập — đó là điều đáng tự hào."
@@ -5391,7 +5505,7 @@ msgstr "Đang tạo lời giải thích..."
 msgid "Generating..."
 msgstr "Đang tạo..."
 
-#: src/features/Tasks/useDailyTasks.tsx:314
+#: src/features/Tasks/useDailyPlans.ts:211
 #. js-lingui-explicit-id
 msgid "Gentle progress still moves you forward. Try today’s tasks."
 msgstr "Tiến bộ nhẹ nhàng vẫn giúp bạn tiến lên. Hãy thử các nhiệm vụ hôm nay."
@@ -5740,7 +5854,7 @@ msgstr "Xem Trước Sửa Ngữ Pháp"
 msgid "Grammar Corrections"
 msgstr "Sửa lỗi ngữ pháp"
 
-#: src/features/Tasks/useDailyTasks.tsx:75
+#: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
@@ -5766,7 +5880,7 @@ msgstr "Quy tắc ngữ pháp dựa trên trình độ của bạn"
 msgid "Grant microphone permission"
 msgstr "Cấp quyền truy cập micro"
 
-#: src/features/Tasks/useDailyTasks.tsx:438
+#: src/features/Tasks/useDailyTasks.tsx:169
 #. js-lingui-explicit-id
 msgid "Great job! Come back tomorrow for new tasks."
 msgstr "Làm tốt lắm! Hãy quay lại vào ngày mai để nhận nhiệm vụ mới."
@@ -5791,7 +5905,7 @@ msgstr "Mở Rộng Từ Vựng Mỗi Ngày"
 msgid "Guessed words:"
 msgstr "Từ đoán:"
 
-#: src/features/Tasks/useDailyTasks.tsx:264
+#: src/features/Tasks/useDailyPlans.ts:161
 #. js-lingui-explicit-id
 msgid "Habits are built one day at a time. Here’s today’s plan."
 msgstr "Thói quen được xây dựng từng ngày một. Đây là kế hoạch của ngày hôm nay."
@@ -6995,6 +7109,11 @@ msgstr "Chỉ cần nói (tùy chỉnh thời gian thực)"
 msgid "Justify Text"
 msgstr "Căn Justify Văn Bản"
 
+#: src/features/Tasks/useDailyPlans.ts:356
+#. js-lingui-explicit-id
+msgid "Keep a gentle pace and finish today’s tasks."
+msgstr "Duy trì nhịp độ nhẹ nhàng và hoàn thành các nhiệm vụ hôm nay."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -7210,7 +7329,7 @@ msgstr "Học tập không bao giờ làm cạn kiệt tâm trí."
 msgid "Learning path"
 msgstr "Lộ trình học tập"
 
-#: src/features/Tasks/useDailyTasks.tsx:79
+#: src/features/Tasks/useDailyTasks.tsx:75
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Kế hoạch học tập"
@@ -7326,7 +7445,7 @@ msgstr "Chiều cao dòng"
 msgid "Listen"
 msgstr "Lắng nghe"
 
-#: src/features/Tasks/useDailyTasks.tsx:88
+#: src/features/Tasks/useDailyTasks.tsx:84
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "Lắng nghe đến hết hoặc hoàn thành kiểm tra"
@@ -7532,7 +7651,7 @@ msgstr "Quản lý cài đặt thông báo của bạn"
 msgid "Manage your profile settings and check your progress"
 msgstr "Quản lý cài đặt hồ sơ của bạn và kiểm tra tiến trình của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:169
+#: src/features/Tasks/useDailyPlans.ts:66
 #. js-lingui-explicit-id
 msgid "Many people stop early, but you are still here. Be proud of that."
 msgstr "Nhiều người dừng lại sớm, nhưng bạn vẫn còn ở đây. Hãy tự hào về điều đó."
@@ -7795,7 +7914,7 @@ msgstr "Phỏng Vấn Thử Nghiệm"
 msgid "Month"
 msgstr "Tháng"
 
-#: src/features/Tasks/useDailyTasks.tsx:284
+#: src/features/Tasks/useDailyPlans.ts:181
 #. js-lingui-explicit-id
 msgid "Month two begins. Start it well with today’s tasks."
 msgstr "Tháng thứ hai bắt đầu. Hãy bắt đầu tốt với các nhiệm vụ hôm nay."
@@ -7836,7 +7955,7 @@ msgstr "Thêm nhiều bài học độc đáo"
 msgid "More..."
 msgstr "Thêm..."
 
-#: src/features/Tasks/useDailyTasks.tsx:359
+#: src/features/Tasks/useDailyPlans.ts:256
 #. js-lingui-explicit-id
 msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr "Động lực đến rồi đi — thói quen sẽ giúp bạn. Hãy thử các nhiệm vụ hôm nay."
@@ -7925,7 +8044,7 @@ msgid "New Words"
 msgstr "Từ mới"
 
 #: src/features/News/NewsFeedModal.tsx:90
-#: src/features/Tasks/useDailyTasks.tsx:95
+#: src/features/Tasks/useDailyTasks.tsx:91
 #. js-lingui-explicit-id
 msgid "News"
 msgstr "Tin tức"
@@ -7992,7 +8111,7 @@ msgstr "Câu chuyện tiếp theo"
 msgid "Next Turn"
 msgstr "Lượt Tiếp Theo"
 
-#: src/features/Tasks/useDailyTasks.tsx:164
+#: src/features/Tasks/useDailyPlans.ts:61
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
@@ -8431,10 +8550,20 @@ msgstr ""
 "đó, AI sẽ xác định người chiến thắng! {userName} cũng sẽ thấy câu trả lời "
 "của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:249
+#: src/features/Tasks/useDailyPlans.ts:146
 #. js-lingui-explicit-id
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "Một ngày một lần là đủ. Hoàn thành các công việc hôm nay."
+
+#: src/features/Tasks/useDailyPlans.ts:311
+#. js-lingui-explicit-id
+msgid "One hundred active days. An incredible milestone — keep going."
+msgstr "Một trăm ngày hoạt động. Một cột mốc đáng kinh ngạc — tiếp tục cố gắng."
+
+#: src/features/Tasks/useDailyPlans.ts:321
+#. js-lingui-explicit-id
+msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
+msgstr "Một trăm năm mươi ngày học tập. Hãy tự hào về chặng đường mà bạn đã đi đến."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9398,12 +9527,17 @@ msgstr "Luyện tập cuộc trò chuyện mà bạn đang sợ hãi"
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Thực hành khắc phục sự cố kỹ thuật qua điện thoại"
 
-#: src/features/Tasks/useDailyTasks.tsx:364
+#: src/features/Tasks/useDailyPlans.ts:261
 #. js-lingui-explicit-id
 msgid "Practice turns effort into skill. Here are today’s tasks."
 msgstr ""
 "Nỗ lực luyện tập sẽ biến thành kỹ năng. Đây là các nhiệm vụ của ngày hôm "
 "nay."
+
+#: src/features/Tasks/useDailyPlans.ts:358
+#. js-lingui-explicit-id
+msgid "Practice turns effort into skill. Here’s today’s plan."
+msgstr "Biến thực hành thành kỹ năng. Đây là kế hoạch cho ngày hôm nay."
 
 #: src/features/RolePlay/scenarios/alias-game.tsx:36
 #: src/features/SEO/metadata.ts:147
@@ -9673,7 +9807,7 @@ msgstr "Lịch Trình Tiến Trình"
 msgid "Progress insights are locked"
 msgstr "Thông tin tiến trình bị khóa"
 
-#: src/features/Tasks/useDailyTasks.tsx:214
+#: src/features/Tasks/useDailyPlans.ts:111
 #. js-lingui-explicit-id
 msgid "Progress isn’t always loud. Small steps still count today."
 msgstr ""
@@ -10179,7 +10313,7 @@ msgstr "bản ghi — mới nhất trước"
 msgid "Redis"
 msgstr "Redis"
 
-#: src/features/Tasks/useDailyTasks.tsx:319
+#: src/features/Tasks/useDailyPlans.ts:216
 #. js-lingui-explicit-id
 msgid "Refining your skills takes time. Focus on today’s tasks."
 msgstr ""
@@ -10700,7 +10834,7 @@ msgstr "Semantic HTML"
 msgid "Send"
 msgstr "Gửi"
 
-#: src/features/Tasks/useDailyTasks.tsx:72
+#: src/features/Tasks/useDailyTasks.tsx:68
 #. js-lingui-explicit-id
 msgid "Send at least 10 messages in Just talk"
 msgstr "Gửi ít nhất 10 tin nhắn trong Chỉ nói chuyện"
@@ -10731,7 +10865,7 @@ msgstr "Gửi cho tôi liên kết đăng nhập"
 msgid "Send Message"
 msgstr "Gửi Tin Nhắn"
 
-#: src/features/Tasks/useDailyTasks.tsx:84
+#: src/features/Tasks/useDailyTasks.tsx:80
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "Gửi một tin nhắn trong không gian cộng đồng"
@@ -10838,10 +10972,15 @@ msgstr "Đặt ngôn ngữ dịch trong Cài đặt"
 msgid "Settings"
 msgstr "Cài đặt"
 
-#: src/features/Tasks/useDailyTasks.tsx:374
+#: src/features/Tasks/useDailyPlans.ts:271
 #. js-lingui-explicit-id
 msgid "Seven weeks of learning. Remarkable consistency — keep going."
 msgstr "Bảy tuần học tập. Sự kiên định đáng chú ý — hãy tiếp tục."
+
+#: src/features/Tasks/useDailyPlans.ts:291
+#. js-lingui-explicit-id
+msgid "Seventy days of showing up. Take today’s tasks with pride."
+msgstr "Bảy mươi ngày chăm chỉ. Hãy thực hiện nhiệm vụ hôm nay với niềm tự hào."
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:36
 #. js-lingui-explicit-id
@@ -10963,7 +11102,8 @@ msgstr "Hiển thị các nền tảng dữ liệu vững chắc"
 msgid "Showcase system design thinking"
 msgstr "Trình bày tư duy thiết kế hệ thống"
 
-#: src/features/Tasks/useDailyTasks.tsx:194
+#: src/features/Tasks/useDailyPlans.ts:91
+#: src/features/Tasks/useDailyPlans.ts:354
 #. js-lingui-explicit-id
 msgid "Showing up is half the work. Complete today’s tasks."
 msgstr "Xuất hiện là một nửa công việc. Hoàn thành các nhiệm vụ hôm nay."
@@ -11046,7 +11186,12 @@ msgstr "Đăng nhập"
 msgid "Single player mode with AI"
 msgstr "Chế độ chơi đơn với AI"
 
-#: src/features/Tasks/useDailyTasks.tsx:339
+#: src/features/Tasks/useDailyPlans.ts:326
+#. js-lingui-explicit-id
+msgid "Six months of showing up. That’s a true learning habit."
+msgstr "Sáu tháng hiện diện. Đó là một thói quen học tập thực sự."
+
+#: src/features/Tasks/useDailyPlans.ts:236
 #. js-lingui-explicit-id
 msgid "Six weeks of learning. Be proud and keep going today."
 msgstr "Sáu tuần học tập. Hãy tự hào và tiếp tục cố gắng hôm nay."
@@ -11096,6 +11241,11 @@ msgstr "Chậm"
 #. js-lingui-explicit-id
 msgid "Small steps every day."
 msgstr "Những bước nhỏ mỗi ngày."
+
+#: src/features/Tasks/useDailyPlans.ts:352
+#. js-lingui-explicit-id
+msgid "Small steps still count. Here are today’s tasks."
+msgstr "Những bước đi nhỏ vẫn có giá trị. Dưới đây là các nhiệm vụ của hôm nay."
 
 #: src/features/RolePlay/scenarios/small-talk-with-a-stranger.ts:8
 #. js-lingui-explicit-id
@@ -11398,7 +11548,7 @@ msgstr ""
 "Bắt đầu từ nơi bạn đang đứng. Sử dụng những gì bạn có. Làm những gì bạn có "
 "thể."
 
-#: src/features/Tasks/useDailyTasks.tsx:132
+#: src/features/Tasks/useDailyPlans.ts:29
 #. js-lingui-explicit-id
 msgid "Start with today’s tasks and keep a gentle pace."
 msgstr "Bắt đầu với các nhiệm vụ hôm nay và giữ một nhịp độ nhẹ nhàng."
@@ -11455,22 +11605,27 @@ msgstr "Bắt đầu..."
 msgid "State Management"
 msgstr "Quản lý trạng thái"
 
-#: src/features/Tasks/useDailyTasks.tsx:309
+#: src/features/Tasks/useDailyPlans.ts:206
 #. js-lingui-explicit-id
 msgid "Stay connected to your goals. Here are today’s tasks."
 msgstr "Giữ kết nối với các mục tiêu của bạn. Dưới đây là các nhiệm vụ hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:259
+#: src/features/Tasks/useDailyPlans.ts:357
+#. js-lingui-explicit-id
+msgid "Stay present and take on today’s tasks."
+msgstr "Hãy hiện diện và đảm nhận các nhiệm vụ hôm nay."
+
+#: src/features/Tasks/useDailyPlans.ts:156
 #. js-lingui-explicit-id
 msgid "Stay sharp with a fresh set of tasks for today."
 msgstr "Hãy giữ tư duy sắc bén với một bộ nhiệm vụ mới cho ngày hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:344
+#: src/features/Tasks/useDailyPlans.ts:241
 #. js-lingui-explicit-id
 msgid "Staying the course is rare. Here’s what to do today."
 msgstr "Giữ vững con đường là điều hiếm có. Đây là những việc cần làm hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:244
+#: src/features/Tasks/useDailyPlans.ts:141
 #. js-lingui-explicit-id
 msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr ""
@@ -11585,7 +11740,7 @@ msgstr "Dừng"
 msgid "Stop Recording"
 msgstr "Dừng Ghi âm"
 
-#: src/features/Tasks/useDailyTasks.tsx:87
+#: src/features/Tasks/useDailyTasks.tsx:83
 #. js-lingui-explicit-id
 msgid "Story"
 msgstr "Câu chuyện"
@@ -11663,7 +11818,7 @@ msgstr ""
 msgid "Strive for progress, not perfection."
 msgstr "Phấn đấu cho sự tiến bộ, không phải cho sự hoàn hảo."
 
-#: src/features/Tasks/useDailyTasks.tsx:158
+#: src/features/Tasks/useDailyPlans.ts:55
 #. js-lingui-explicit-id
 msgid "Strong consistency"
 msgstr "Độ nhất quán mạnh mẽ"
@@ -12470,7 +12625,7 @@ msgstr ""
 "đến nay, và những gì bạn muốn cải thiện với tư cách là một Nhà phát triển "
 "Frontend Junior."
 
-#: src/features/Tasks/useDailyTasks.tsx:179
+#: src/features/Tasks/useDailyPlans.ts:76
 #. js-lingui-explicit-id
 msgid "Ten active days already. Keep the momentum with today’s tasks."
 msgstr "Mười ngày hoạt động rồi. Duy trì động lực với các nhiệm vụ của ngày hôm nay."
@@ -13184,7 +13339,12 @@ msgstr ""
 "\n"
 "Nếu có điều gì làm bạn phiền lòng, đáng để xem xét lại."
 
-#: src/features/Tasks/useDailyTasks.tsx:229
+#: src/features/Tasks/useDailyPlans.ts:306
+#. js-lingui-explicit-id
+msgid "Three months of learning. Remarkable — let’s keep going."
+msgstr "Ba tháng học tập. Đáng kinh ngạc — hãy tiếp tục nhé."
+
+#: src/features/Tasks/useDailyPlans.ts:126
 #. js-lingui-explicit-id
 msgid "Three weeks of learning — celebrate that and keep going."
 msgstr "Ba tuần học tập — hãy kỷ niệm điều đó và tiếp tục tiến lên."
@@ -13274,7 +13434,7 @@ msgstr "Câu hỏi hôm nay"
 msgid "Today's Tasks"
 msgstr "Nhiệm Vụ Hôm Nay"
 
-#: src/features/Tasks/useDailyTasks.tsx:173
+#: src/features/Tasks/useDailyPlans.ts:70
 #. js-lingui-explicit-id
 msgid "Today’s tasks"
 msgstr "Các nhiệm vụ hôm nay"
@@ -13411,7 +13571,7 @@ msgstr "Sổ cân đối thử nghiệm"
 msgid "Trial days"
 msgstr "Ngày dùng thử"
 
-#: src/features/Tasks/useDailyTasks.tsx:294
+#: src/features/Tasks/useDailyPlans.ts:191
 #. js-lingui-explicit-id
 msgid "Trust the process. Small daily steps add up."
 msgstr "Hãy tin tưởng vào quá trình. Những bước nhỏ hàng ngày sẽ tích lũy dần."
@@ -13492,7 +13652,17 @@ msgstr "Tóm tắt Lượt Chơi"
 msgid "Turn type"
 msgstr "Loại lượt"
 
-#: src/features/Tasks/useDailyTasks.tsx:199
+#: src/features/Tasks/useDailyPlans.ts:331
+#. js-lingui-explicit-id
+msgid "Two hundred active days. Extraordinary consistency — keep going."
+msgstr "Hai trăm ngày hoạt động. Sự nhất quán phi thường — tiếp tục tiến lên."
+
+#: src/features/Tasks/useDailyPlans.ts:286
+#. js-lingui-explicit-id
+msgid "Two months of practice. That’s rare dedication — keep it up."
+msgstr "Hai tháng thực hành. Đó là sự cống hiến hiếm có — hãy tiếp tục nhé."
+
+#: src/features/Tasks/useDailyPlans.ts:96
 #. js-lingui-explicit-id
 msgid "Two weeks of practice — that’s real progress. Keep going."
 msgstr "Hai tuần luyện tập — đó là tiến bộ thực sự. Tiếp tục cố gắng nhé."
@@ -15012,10 +15182,15 @@ msgstr ""
 "Thẻ của bạn chỉ được sử dụng để kích hoạt truy cập an toàn và sẽ không bị "
 "tính phí trừ khi bạn quyết định tiếp tục."
 
-#: src/features/Tasks/useDailyTasks.tsx:159
+#: src/features/Tasks/useDailyPlans.ts:56
 #. js-lingui-explicit-id
 msgid "Your consistency is paying off. Here are today’s tasks."
 msgstr "Sự kiên trì của bạn đang được đền đáp. Dưới đây là các nhiệm vụ của hôm nay."
+
+#: src/features/Tasks/useDailyPlans.ts:355
+#. js-lingui-explicit-id
+msgid "Your consistency is paying off. Try today’s tasks."
+msgstr "Sự kiên trì của bạn đang được đền đáp. Hãy thử các nhiệm vụ hôm nay."
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:58
 #. js-lingui-explicit-id
@@ -15142,7 +15317,7 @@ msgstr ""
 msgid "Your Streak"
 msgstr "Chuỗi của bạn"
 
-#: src/features/Tasks/useDailyTasks.tsx:234
+#: src/features/Tasks/useDailyPlans.ts:131
 #. js-lingui-explicit-id
 msgid "Your streak is a sign of commitment. Continue with today’s tasks."
 msgstr ""
@@ -15173,7 +15348,7 @@ msgstr ""
 "Việc rút khỏi hợp đồng của bạn đã được xác nhận. Một email xác nhận đã được "
 "gửi đến {email}."
 
-#: src/features/Tasks/useDailyTasks.tsx:354
+#: src/features/Tasks/useDailyPlans.ts:251
 #. js-lingui-explicit-id
 msgid "You’re almost at seven weeks. Finish today’s tasks strong."
 msgstr "Bạn sắp hoàn thành bảy tuần. Hoàn thành tốt các nhiệm vụ hôm nay."
@@ -15187,41 +15362,46 @@ msgstr ""
 "Bạn được yêu cầu **thiết kế hệ thống ngay lập tức**, nhưng không ai nói cho "
 "bạn biết “tốt” trông như thế nào"
 
-#: src/features/Tasks/useDailyTasks.tsx:204
+#: src/features/Tasks/useDailyPlans.ts:296
+#. js-lingui-explicit-id
+msgid "You’re building something lasting. Continue with today’s tasks."
+msgstr "Bạn đang xây dựng một thứ bền vững. Tiếp tục với nhiệm vụ hôm nay."
+
+#: src/features/Tasks/useDailyPlans.ts:101
 #. js-lingui-explicit-id
 msgid "You’re building something lasting. Take on today’s tasks."
 msgstr ""
 "Bạn đang xây dựng một điều gì đó bền vững. Hãy đảm nhận các nhiệm vụ của "
 "ngày hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:224
+#: src/features/Tasks/useDailyPlans.ts:121
 #. js-lingui-explicit-id
 msgid "You’re close to three weeks. Finish today’s tasks strong."
 msgstr "Bạn đã gần đến ba tuần. Hoàn thành tốt các nhiệm vụ hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:142
+#: src/features/Tasks/useDailyPlans.ts:39
 #. js-lingui-explicit-id
 msgid "You’re doing well. Take a look at today’s tasks."
 msgstr "Bạn đang làm tốt. Hãy xem các nhiệm vụ hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:154
+#: src/features/Tasks/useDailyPlans.ts:51
 #. js-lingui-explicit-id
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr ""
 "Bạn đang ở trong một luồng công việc tốt. Tiếp tục với các nhiệm vụ của hôm "
 "nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:274
+#: src/features/Tasks/useDailyPlans.ts:171
 #. js-lingui-explicit-id
 msgid "You’re nearly at a full month. Finish today’s tasks."
 msgstr "Bạn đã gần hoàn thành một tháng. Hoàn thành các nhiệm vụ hôm nay."
 
-#: src/features/Tasks/useDailyTasks.tsx:334
+#: src/features/Tasks/useDailyPlans.ts:231
 #. js-lingui-explicit-id
 msgid "You’re past forty days. Continue with calm, steady practice."
 msgstr "Bạn đã qua bốn mươi ngày. Tiếp tục thực hành một cách bình tĩnh, ổn định."
 
-#: src/features/Tasks/useDailyTasks.tsx:324
+#: src/features/Tasks/useDailyPlans.ts:221
 #. js-lingui-explicit-id
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "Bạn vẫn đang leo trèo. Hãy tiến thêm bước nữa với những nhiệm vụ hôm nay."

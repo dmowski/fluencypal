@@ -188,24 +188,25 @@ msgstr "5 heures d'IA"
 msgid "5. Winners get full access for free "
 msgstr "5. Les gagnants obtiennent un accès complet gratuitement"
 
-#: src/features/Tasks/useDailyTasks.tsx:369
+#: src/features/Tasks/useDailyPlans.ts:266
 #. js-lingui-explicit-id
 msgid "A bit of polish goes a long way. Focus on today’s tasks."
 msgstr "Un peu de soin va loin. Concentrez-vous sur les tâches d’aujourd’hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:174
+#: src/features/Tasks/useDailyPlans.ts:71
+#: src/features/Tasks/useDailyPlans.ts:353
 #. js-lingui-explicit-id
 msgid "A calm routine makes steady progress."
 msgstr "Une routine calme permet un progrès constant."
 
-#: src/features/Tasks/useDailyTasks.tsx:219
+#: src/features/Tasks/useDailyPlans.ts:116
 #. js-lingui-explicit-id
 msgid "A focused day helps you improve. Here are today’s tasks."
 msgstr ""
 "Une journée concentrée vous aide à vous améliorer. Voici les tâches "
 "d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:279
+#: src/features/Tasks/useDailyPlans.ts:176
 #. js-lingui-explicit-id
 msgid "A full month of learning. Remarkable — let’s keep going."
 msgstr "Un mois complet d'apprentissage. Remarquable — continuons comme ça."
@@ -233,7 +234,7 @@ msgstr ""
 msgid "A journey of a thousand miles begins with a single step."
 msgstr "Un voyage de mille lieues commence par un seul pas."
 
-#: src/features/Tasks/useDailyTasks.tsx:349
+#: src/features/Tasks/useDailyPlans.ts:246
 #. js-lingui-explicit-id
 msgid "A light day still counts. Complete today’s tasks."
 msgstr "Un jour léger compte toujours. Complétez les tâches d'aujourd'hui."
@@ -243,7 +244,7 @@ msgstr "Un jour léger compte toujours. Complétez les tâches d'aujourd'hui."
 msgid "A little progress each day adds up to big results."
 msgstr "Un peu de progrès chaque jour s'additionne pour obtenir de grands résultats."
 
-#: src/features/Tasks/useDailyTasks.tsx:189
+#: src/features/Tasks/useDailyPlans.ts:86
 #. js-lingui-explicit-id
 msgid "A little variety helps you grow. Here’s what to do today."
 msgstr ""
@@ -255,7 +256,7 @@ msgstr ""
 msgid "A method focused on clarity and reliability"
 msgstr "Une méthode axée sur la clarté et la fiabilité"
 
-#: src/features/Tasks/useDailyTasks.tsx:254
+#: src/features/Tasks/useDailyPlans.ts:151
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Un mois d'apprentissage est à portée de main. Continuez aujourd'hui."
@@ -749,7 +750,7 @@ msgstr "Toutes les interviews"
 msgid "All Scenarios"
 msgstr "Tous les scénarios"
 
-#: src/features/Tasks/useDailyTasks.tsx:436
+#: src/features/Tasks/useDailyTasks.tsx:167
 #. js-lingui-explicit-id
 msgid "All tasks completed"
 msgstr "Toutes les tâches terminées"
@@ -860,7 +861,7 @@ msgstr ""
 "Répondez à une nouvelle question chaque jour et voyez comment votre style "
 "s'améliore !"
 
-#: src/features/Tasks/useDailyTasks.tsx:92
+#: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
 msgstr "Répondre à la question quotidienne"
@@ -1339,12 +1340,12 @@ msgstr "Connexion au cerveau réussie !"
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "Décrivez brièvement votre expérience avec C#, .NET et la conception d'APIs."
 
-#: src/features/Tasks/useDailyTasks.tsx:131
+#: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
 msgid "Build a steady learning habit"
 msgstr "Construisez une habitude d'apprentissage régulière"
 
-#: src/features/Tasks/useDailyTasks.tsx:76
+#: src/features/Tasks/useDailyTasks.tsx:72
 #. js-lingui-explicit-id
 msgid "Build at least one sentence in Grammar Improvement"
 msgstr "Construisez au moins une phrase dans l'Amélioration de la Grammaire"
@@ -2344,7 +2345,7 @@ msgstr "Communication & Leadership"
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:28
 #: src/features/Goal/Quiz/QuizPage2.tsx:486
 #: src/features/Navigation/NavigationBar.tsx:112
-#: src/features/Tasks/useDailyTasks.tsx:83
+#: src/features/Tasks/useDailyTasks.tsx:79
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "Communauté"
@@ -2561,14 +2562,14 @@ msgstr ""
 "et AsNoTracking pour EF Core. Pour une sérialisation lourde, optimisez les "
 "DTO et envisagez la compression pour de grandes charges utiles."
 
-#: src/features/Tasks/useDailyTasks.tsx:299
+#: src/features/Tasks/useDailyPlans.ts:196
 #. js-lingui-explicit-id
 msgid "Consistency beats intensity. Continue with today’s tasks."
 msgstr ""
 "La cohérence l'emporte sur l'intensité. Continuez avec les tâches "
 "d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:147
+#: src/features/Tasks/useDailyPlans.ts:44
 #. js-lingui-explicit-id
 msgid ""
 "Consistency is key to language learning. Complete today’s tasks to keep the "
@@ -2673,7 +2674,8 @@ msgstr "Continuer à l'accès gratuit"
 msgid "Continue to Next Turn"
 msgstr "Continuer au tour suivant"
 
-#: src/features/Tasks/useDailyTasks.tsx:137
+#: src/features/Tasks/useDailyPlans.ts:34
+#: src/features/Tasks/useDailyPlans.ts:351
 #. js-lingui-explicit-id
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Continuez avec les tâches d'aujourd'hui et restez cohérent."
@@ -2991,7 +2993,7 @@ msgstr "Vérification de Carte de Crédit"
 msgid "csharp developer interview"
 msgstr "entretien développeur csharp"
 
-#: src/features/Tasks/useDailyTasks.tsx:184
+#: src/features/Tasks/useDailyPlans.ts:81
 #. js-lingui-explicit-id
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr ""
@@ -3079,7 +3081,7 @@ msgstr "Limites Quotidiennes ?"
 msgid "Daily Q&A"
 msgstr "Questions-Réponses Quotidiennes"
 
-#: src/features/Tasks/useDailyTasks.tsx:91
+#: src/features/Tasks/useDailyTasks.tsx:87
 #. js-lingui-explicit-id
 msgid "Daily question"
 msgstr "Question quotidienne"
@@ -3139,235 +3141,330 @@ msgstr "Bases de données & Transactions"
 msgid "Day"
 msgstr "Jour"
 
-#: src/features/Tasks/useDailyTasks.tsx:168
+#: src/features/Tasks/useDailyPlans.ts:310
+#. js-lingui-explicit-id
+msgid "Day 100: one hundred days"
+msgstr "Jour 100 : cent jours"
+
+#: src/features/Tasks/useDailyPlans.ts:315
+#. js-lingui-explicit-id
+msgid "Day 120: four months in"
+msgstr "Jour 120 : quatre mois après"
+
+#: src/features/Tasks/useDailyPlans.ts:320
+#. js-lingui-explicit-id
+msgid "Day 150: one hundred fifty days"
+msgstr "Jour 150 : cent cinquante jours"
+
+#: src/features/Tasks/useDailyPlans.ts:325
+#. js-lingui-explicit-id
+msgid "Day 180: six months strong"
+msgstr "Jour 180 : six mois forts"
+
+#: src/features/Tasks/useDailyPlans.ts:330
+#. js-lingui-explicit-id
+msgid "Day 200: two hundred days"
+msgstr "Jour 200 : deux cents jours"
+
+#: src/features/Tasks/useDailyPlans.ts:280
+#. js-lingui-explicit-id
+msgid "Day 50: fifty days strong"
+msgstr "Jour 50 : cinquante jours forts"
+
+#: src/features/Tasks/useDailyPlans.ts:285
+#. js-lingui-explicit-id
+msgid "Day 60: two months in"
+msgstr "Jour 60 : deux mois d'étude"
+
+#: src/features/Tasks/useDailyPlans.ts:290
+#. js-lingui-explicit-id
+msgid "Day 70: keep climbing"
+msgstr "Jour 70 : continue de grimper"
+
+#: src/features/Tasks/useDailyPlans.ts:295
+#. js-lingui-explicit-id
+msgid "Day 75: past the halfway mark to 150"
+msgstr "Jour 75 : passé le cap de la moitié du chemin vers 150"
+
+#: src/features/Tasks/useDailyPlans.ts:300
+#. js-lingui-explicit-id
+msgid "Day 80: eighty days of progress"
+msgstr "Jour 80 : quatre-vingts jours de progrès"
+
+#: src/features/Tasks/useDailyPlans.ts:305
+#. js-lingui-explicit-id
+msgid "Day 90: three months strong"
+msgstr "Jour 90 : trois mois solides"
+
+#: src/features/Tasks/useDailyPlans.ts:65
 #. js-lingui-explicit-id
 msgid "Day eight: keep moving forward"
 msgstr "Jour huit : continuer à avancer"
 
-#: src/features/Tasks/useDailyTasks.tsx:218
+#: src/features/Tasks/useDailyPlans.ts:115
 #. js-lingui-explicit-id
 msgid "Day eighteen: sharpen your skills"
 msgstr "Jour dix-huit : affinez vos compétences"
 
-#: src/features/Tasks/useDailyTasks.tsx:183
+#: src/features/Tasks/useDailyPlans.ts:80
 #. js-lingui-explicit-id
 msgid "Day eleven: stay curious"
 msgstr "Jour onze : restez curieux"
 
-#: src/features/Tasks/useDailyTasks.tsx:203
+#: src/features/Tasks/useDailyPlans.ts:100
 #. js-lingui-explicit-id
 msgid "Day fifteen: halfway to a month"
 msgstr "Jour quinze : à mi-chemin d'un mois"
 
-#: src/features/Tasks/useDailyTasks.tsx:153
+#: src/features/Tasks/useDailyPlans.ts:50
 #. js-lingui-explicit-id
 msgid "Day five: keep the rhythm"
 msgstr "Jour cinq : garde le rythme"
 
-#: src/features/Tasks/useDailyTasks.tsx:368
+#: src/features/Tasks/useDailyPlans.ts:265
 #. js-lingui-explicit-id
 msgid "Day forty-eight: polish and practice"
 msgstr "Jour quarante-huit : perfectionner et pratiquer"
 
-#: src/features/Tasks/useDailyTasks.tsx:353
+#: src/features/Tasks/useDailyPlans.ts:250
 #. js-lingui-explicit-id
 msgid "Day forty-five: almost seven weeks"
 msgstr "Jour quarante-cinq : presque sept semaines"
 
-#: src/features/Tasks/useDailyTasks.tsx:348
+#: src/features/Tasks/useDailyPlans.ts:245
 #. js-lingui-explicit-id
 msgid "Day forty-four: keep it light"
 msgstr "Jour quarante-quatre : gardez-le léger"
 
-#: src/features/Tasks/useDailyTasks.tsx:373
+#: src/features/Tasks/useDailyPlans.ts:270
 #. js-lingui-explicit-id
 msgid "Day forty-nine: seven weeks strong"
 msgstr "Jour quarante-neuf : sept semaines fortes"
 
-#: src/features/Tasks/useDailyTasks.tsx:333
+#: src/features/Tasks/useDailyPlans.ts:230
 #. js-lingui-explicit-id
 msgid "Day forty-one: beyond forty"
 msgstr "Jour quarante-et-un : au-delà de quarante"
 
-#: src/features/Tasks/useDailyTasks.tsx:363
+#: src/features/Tasks/useDailyPlans.ts:260
 #. js-lingui-explicit-id
 msgid "Day forty-seven: keep practicing"
 msgstr "Quarante-septième jour : continuez à pratiquer"
 
-#: src/features/Tasks/useDailyTasks.tsx:358
+#: src/features/Tasks/useDailyPlans.ts:255
 #. js-lingui-explicit-id
 msgid "Day forty-six: stay motivated"
 msgstr "Jour quarante-six : restez motivé"
 
-#: src/features/Tasks/useDailyTasks.tsx:343
+#: src/features/Tasks/useDailyPlans.ts:240
 #. js-lingui-explicit-id
 msgid "Day forty-three: stay the course"
 msgstr "Jour quarante-trois : maintenez le cap"
 
-#: src/features/Tasks/useDailyTasks.tsx:338
+#: src/features/Tasks/useDailyPlans.ts:235
 #. js-lingui-explicit-id
 msgid "Day forty-two: six weeks in"
 msgstr "Jour quarante-deux : six semaines à l'intérieur"
 
-#: src/features/Tasks/useDailyTasks.tsx:328
+#: src/features/Tasks/useDailyPlans.ts:225
 #. js-lingui-explicit-id
 msgid "Day forty: a big milestone"
 msgstr "Jour quarante : un grand jalon"
 
-#: src/features/Tasks/useDailyTasks.tsx:146
+#: src/features/Tasks/useDailyPlans.ts:43
 #. js-lingui-explicit-id
 msgid "Day four: keep the habit alive"
 msgstr "Jour quatre : maintenez l'habitude vivante"
 
-#: src/features/Tasks/useDailyTasks.tsx:198
+#: src/features/Tasks/useDailyPlans.ts:95
 #. js-lingui-explicit-id
 msgid "Day fourteen: two weeks in"
 msgstr "Jour quatorze : deux semaines dedans"
 
-#: src/features/Tasks/useDailyTasks.tsx:223
+#: src/features/Tasks/useDailyPlans.ts:120
 #. js-lingui-explicit-id
 msgid "Day nineteen: almost three weeks"
 msgstr "Jour dix-neuf : presque trois semaines"
 
-#: src/features/Tasks/useDailyTasks.tsx:163
+#: src/features/Tasks/useDailyPlans.ts:60
 #. js-lingui-explicit-id
 msgid "Day seven: one full week"
 msgstr "Jour sept : une semaine complète"
 
-#: src/features/Tasks/useDailyTasks.tsx:213
+#: src/features/Tasks/useDailyPlans.ts:110
 #. js-lingui-explicit-id
 msgid "Day seventeen: quiet progress"
 msgstr "Jour dix-sept : progrès silencieux"
 
-#: src/features/Tasks/useDailyTasks.tsx:208
+#: src/features/Tasks/useDailyPlans.ts:105
 #. js-lingui-explicit-id
 msgid "Day sixteen: stay engaged"
 msgstr "Jour seize : restez engagé"
 
-#: src/features/Tasks/useDailyTasks.tsx:178
+#: src/features/Tasks/useDailyPlans.ts:75
 #. js-lingui-explicit-id
 msgid "Day ten: a solid start"
 msgstr "Jour dix : un bon début"
 
-#: src/features/Tasks/useDailyTasks.tsx:193
+#: src/features/Tasks/useDailyPlans.ts:90
 #. js-lingui-explicit-id
 msgid "Day thirteen: keep showing up"
 msgstr "Jour treize : continuez à vous présenter"
 
-#: src/features/Tasks/useDailyTasks.tsx:318
+#: src/features/Tasks/useDailyPlans.ts:215
 #. js-lingui-explicit-id
 msgid "Day thirty-eight: refine your voice"
 msgstr "Jour trente-huit : peaufinez votre voix"
 
-#: src/features/Tasks/useDailyTasks.tsx:303
+#: src/features/Tasks/useDailyPlans.ts:200
 #. js-lingui-explicit-id
 msgid "Day thirty-five: five weeks strong"
 msgstr "Jour trente-cinq : cinq semaines solides"
 
-#: src/features/Tasks/useDailyTasks.tsx:298
+#: src/features/Tasks/useDailyPlans.ts:195
 #. js-lingui-explicit-id
 msgid "Day thirty-four: stay consistent"
 msgstr "Jour trente-quatre : restez cohérent"
 
-#: src/features/Tasks/useDailyTasks.tsx:323
+#: src/features/Tasks/useDailyPlans.ts:220
 #. js-lingui-explicit-id
 msgid "Day thirty-nine: keep climbing"
 msgstr "Jour trente-neuf : continue de grimper"
 
-#: src/features/Tasks/useDailyTasks.tsx:283
+#: src/features/Tasks/useDailyPlans.ts:180
 #. js-lingui-explicit-id
 msgid "Day thirty-one: a new chapter"
 msgstr "Jour trente et un : un nouveau chapitre"
 
-#: src/features/Tasks/useDailyTasks.tsx:313
+#: src/features/Tasks/useDailyPlans.ts:210
 #. js-lingui-explicit-id
 msgid "Day thirty-seven: gentle progress"
 msgstr "Jour trente-sept : progrès doux"
 
-#: src/features/Tasks/useDailyTasks.tsx:308
+#: src/features/Tasks/useDailyPlans.ts:205
 #. js-lingui-explicit-id
 msgid "Day thirty-six: stay connected"
 msgstr "Jour trente-six : restez connecté"
 
-#: src/features/Tasks/useDailyTasks.tsx:293
+#: src/features/Tasks/useDailyPlans.ts:190
 #. js-lingui-explicit-id
 msgid "Day thirty-three: trust the process"
 msgstr "Jour trente-trois : faites confiance au processus"
 
-#: src/features/Tasks/useDailyTasks.tsx:288
+#: src/features/Tasks/useDailyPlans.ts:185
 #. js-lingui-explicit-id
 msgid "Day thirty-two: keep exploring"
 msgstr "Jour trente-deux : continuez à explorer"
 
-#: src/features/Tasks/useDailyTasks.tsx:278
+#: src/features/Tasks/useDailyPlans.ts:175
 #. js-lingui-explicit-id
 msgid "Day thirty: one full month"
 msgstr "Jour trente : un mois complet"
 
-#: src/features/Tasks/useDailyTasks.tsx:141
+#: src/features/Tasks/useDailyPlans.ts:38
 #. js-lingui-explicit-id
 msgid "Day three: steady progress"
 msgstr "Jour trois : progrès constants"
 
-#: src/features/Tasks/useDailyTasks.tsx:188
+#: src/features/Tasks/useDailyPlans.ts:85
 #. js-lingui-explicit-id
 msgid "Day twelve: mix it up"
 msgstr "Jour douze : mélangez les choses"
 
-#: src/features/Tasks/useDailyTasks.tsx:268
+#: src/features/Tasks/useDailyPlans.ts:165
 #. js-lingui-explicit-id
 msgid "Day twenty-eight: four weeks in"
 msgstr "Jour vingt-huit : quatre semaines écoulées"
 
-#: src/features/Tasks/useDailyTasks.tsx:253
+#: src/features/Tasks/useDailyPlans.ts:150
 #. js-lingui-explicit-id
 msgid "Day twenty-five: almost a month"
 msgstr "Jour vingt-cinq : presque un mois"
 
-#: src/features/Tasks/useDailyTasks.tsx:248
+#: src/features/Tasks/useDailyPlans.ts:145
 #. js-lingui-explicit-id
 msgid "Day twenty-four: stay present"
 msgstr "Jour vingt-quatre : reste présent"
 
-#: src/features/Tasks/useDailyTasks.tsx:273
+#: src/features/Tasks/useDailyPlans.ts:170
 #. js-lingui-explicit-id
 msgid "Day twenty-nine: nearly there"
 msgstr "Jour vingt-neuf : presque arrivé"
 
-#: src/features/Tasks/useDailyTasks.tsx:233
+#: src/features/Tasks/useDailyPlans.ts:130
 #. js-lingui-explicit-id
 msgid "Day twenty-one: keep the streak"
 msgstr "Jour vingt-et-un : gardez la série"
 
-#: src/features/Tasks/useDailyTasks.tsx:263
+#: src/features/Tasks/useDailyPlans.ts:160
 #. js-lingui-explicit-id
 msgid "Day twenty-seven: keep the habit"
 msgstr "Jour vingt-sept : gardez l'habitude"
 
-#: src/features/Tasks/useDailyTasks.tsx:258
+#: src/features/Tasks/useDailyPlans.ts:155
 #. js-lingui-explicit-id
 msgid "Day twenty-six: stay sharp"
 msgstr "Jour vingt-six : restez affûté"
 
-#: src/features/Tasks/useDailyTasks.tsx:243
+#: src/features/Tasks/useDailyPlans.ts:140
 #. js-lingui-explicit-id
 msgid "Day twenty-three: steady as ever"
 msgstr "Jour vingt-trois : régulier comme toujours"
 
-#: src/features/Tasks/useDailyTasks.tsx:238
+#: src/features/Tasks/useDailyPlans.ts:135
 #. js-lingui-explicit-id
 msgid "Day twenty-two: enjoy the process"
 msgstr "Jour vingt-deux : profitez du processus"
 
-#: src/features/Tasks/useDailyTasks.tsx:228
+#: src/features/Tasks/useDailyPlans.ts:125
 #. js-lingui-explicit-id
 msgid "Day twenty: three weeks strong"
 msgstr "Jour vingt : trois semaines solides"
 
-#: src/features/Tasks/useDailyTasks.tsx:136
+#: src/features/Tasks/useDailyPlans.ts:33
 #. js-lingui-explicit-id
 msgid "Day two: keep going"
 msgstr "Jour deux : continuez"
+
+#: src/features/Tasks/useDailyPlans.ts:347
+#. js-lingui-explicit-id
+msgid "Day {day}: gentle progress"
+msgstr "Jour {day} : progrès doux"
+
+#: src/features/Tasks/useDailyPlans.ts:346
+#. js-lingui-explicit-id
+msgid "Day {day}: keep climbing"
+msgstr "Jour {day} : continuez à grimper"
+
+#: src/features/Tasks/useDailyPlans.ts:340
+#. js-lingui-explicit-id
+msgid "Day {day}: keep going"
+msgstr "Jour {day} : continuez"
+
+#: src/features/Tasks/useDailyPlans.ts:344
+#. js-lingui-explicit-id
+msgid "Day {day}: keep practicing"
+msgstr "Jour {day} : continuez à vous entraîner"
+
+#: src/features/Tasks/useDailyPlans.ts:343
+#. js-lingui-explicit-id
+msgid "Day {day}: keep the habit"
+msgstr "Jour {day} : gardez l'habitude"
+
+#: src/features/Tasks/useDailyPlans.ts:341
+#. js-lingui-explicit-id
+msgid "Day {day}: stay consistent"
+msgstr "Jour {jour} : restez cohérent"
+
+#: src/features/Tasks/useDailyPlans.ts:345
+#. js-lingui-explicit-id
+msgid "Day {day}: stay sharp"
+msgstr "Jour {day} : restez vif"
+
+#: src/features/Tasks/useDailyPlans.ts:342
+#. js-lingui-explicit-id
+msgid "Day {day}: steady progress"
+msgstr "Jour {day} : progrès constant"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -3774,7 +3871,7 @@ msgstr ""
 msgid "Discuss the topic"
 msgstr "Discutez du sujet"
 
-#: src/features/Tasks/useDailyTasks.tsx:96
+#: src/features/Tasks/useDailyTasks.tsx:92
 #. js-lingui-explicit-id
 msgid "Discuss today’s news with the AI"
 msgstr "Discutez des nouvelles d'aujourd'hui avec l'IA"
@@ -3895,7 +3992,7 @@ msgstr "N'oubliez pas d'essayer le mode appel dans la section pratique !"
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
-#: src/features/Tasks/useDailyTasks.tsx:440
+#: src/features/Tasks/useDailyTasks.tsx:171
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -4073,6 +4170,11 @@ msgstr ""
 msgid "EF Core tracked vs. no-tracking"
 msgstr "EF Core suivi vs. sans suivi"
 
+#: src/features/Tasks/useDailyPlans.ts:301
+#. js-lingui-explicit-id
+msgid "Eighty days in — your consistency is paying off."
+msgstr "Quatre-vingts jours — votre régularité porte ses fruits."
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:43
 #. js-lingui-explicit-id
 msgid "Either you run the day, or the day runs you."
@@ -4138,7 +4240,7 @@ msgstr ""
 "Participez à des conversations réelles comme des entretiens d'embauche ou "
 "des commandes de nourriture"
 
-#: src/features/Tasks/useDailyTasks.tsx:209
+#: src/features/Tasks/useDailyPlans.ts:106
 #. js-lingui-explicit-id
 msgid "Engagement turns practice into fluency. Try today’s tasks."
 msgstr ""
@@ -4213,7 +4315,7 @@ msgstr "Améliorez votre vocabulaire en décrivant les mots de manières uniques
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "Profitez du jeu et voyez comment l'IA devine votre description!"
 
-#: src/features/Tasks/useDailyTasks.tsx:239
+#: src/features/Tasks/useDailyPlans.ts:136
 #. js-lingui-explicit-id
 msgid "Enjoyment makes habits stick. Dive into today’s tasks."
 msgstr ""
@@ -4544,7 +4646,7 @@ msgstr "Expliquez vos étapes (reproduire, isoler, corriger, vérifier)"
 msgid "Explanation"
 msgstr "Explication"
 
-#: src/features/Tasks/useDailyTasks.tsx:289
+#: src/features/Tasks/useDailyPlans.ts:186
 #. js-lingui-explicit-id
 msgid "Exploration keeps learning alive. Try today’s tasks."
 msgstr ""
@@ -4758,6 +4860,11 @@ msgstr ""
 msgid "Feedback that helps"
 msgstr "Retour d'information utile"
 
+#: src/features/Tasks/useDailyPlans.ts:281
+#. js-lingui-explicit-id
+msgid "Fifty active days — a real habit. Celebrate and keep going."
+msgstr "Cinquante jours actifs — une vraie habitude. Célébrez et continuez."
+
 #: src/features/Video/UploadVideoButton.tsx:52
 #. js-lingui-explicit-id
 msgid "File size must be less than 250MB"
@@ -4828,7 +4935,7 @@ msgstr ""
 msgid "Finish"
 msgstr "Terminer"
 
-#: src/features/Tasks/useDailyTasks.tsx:80
+#: src/features/Tasks/useDailyTasks.tsx:76
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "Terminer une leçon de votre plan d'apprentissage"
@@ -4838,7 +4945,7 @@ msgstr "Terminer une leçon de votre plan d'apprentissage"
 msgid "Finish with what you learned"
 msgstr "Terminez avec ce que vous avez appris"
 
-#: src/features/Tasks/useDailyTasks.tsx:304
+#: src/features/Tasks/useDailyPlans.ts:201
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Cinq semaines de présence. Continuez avec la même énergie aujourd'hui."
@@ -5184,7 +5291,7 @@ msgstr "Formel"
 msgid "Formal Writing Practice"
 msgstr "Pratique de l'Écriture Formelle"
 
-#: src/features/Tasks/useDailyTasks.tsx:329
+#: src/features/Tasks/useDailyPlans.ts:226
 #. js-lingui-explicit-id
 msgid "Forty active days — that’s dedication. Keep the habit alive."
 msgstr "Quarante jours actifs — c'est de la dévouement. Gardez l'habitude vivante."
@@ -5194,12 +5301,17 @@ msgstr "Quarante jours actifs — c'est de la dévouement. Gardez l'habitude viv
 msgid "Founder"
 msgstr "Fondateur"
 
+#: src/features/Tasks/useDailyPlans.ts:316
+#. js-lingui-explicit-id
+msgid "Four months of practice. Stay calm and keep the habit alive."
+msgstr "Quatre mois de pratique. Restez calme et maintenez l'habitude en vie."
+
 #: src/features/Landing/LandingPage.tsx:383
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Quatre façons dont FluencyPal améliore vos compétences en expression orale"
 
-#: src/features/Tasks/useDailyTasks.tsx:269
+#: src/features/Tasks/useDailyPlans.ts:166
 #. js-lingui-explicit-id
 msgid "Four weeks of practice — that’s something to be proud of."
 msgstr "Quatre semaines de pratique — c'est quelque chose dont être fier."
@@ -5445,7 +5557,7 @@ msgstr "Génération d'explication..."
 msgid "Generating..."
 msgstr "Génération..."
 
-#: src/features/Tasks/useDailyTasks.tsx:314
+#: src/features/Tasks/useDailyPlans.ts:211
 #. js-lingui-explicit-id
 msgid "Gentle progress still moves you forward. Try today’s tasks."
 msgstr ""
@@ -5802,7 +5914,7 @@ msgstr "Aperçu de la Correction Grammaticale"
 msgid "Grammar Corrections"
 msgstr "Corrections de grammaire"
 
-#: src/features/Tasks/useDailyTasks.tsx:75
+#: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
 msgid "Grammar Improvement"
@@ -5828,7 +5940,7 @@ msgstr "Règles de grammaire basées sur votre niveau"
 msgid "Grant microphone permission"
 msgstr "Autoriser l'accès au microphone"
 
-#: src/features/Tasks/useDailyTasks.tsx:438
+#: src/features/Tasks/useDailyTasks.tsx:169
 #. js-lingui-explicit-id
 msgid "Great job! Come back tomorrow for new tasks."
 msgstr "Beau travail ! Reviens demain pour de nouvelles tâches."
@@ -5853,7 +5965,7 @@ msgstr "Développez votre vocabulaire quotidiennement"
 msgid "Guessed words:"
 msgstr "Mots supposés :"
 
-#: src/features/Tasks/useDailyTasks.tsx:264
+#: src/features/Tasks/useDailyPlans.ts:161
 #. js-lingui-explicit-id
 msgid "Habits are built one day at a time. Here’s today’s plan."
 msgstr ""
@@ -7108,6 +7220,11 @@ msgstr "Just Talk (personnalisé en temps réel)"
 msgid "Justify Text"
 msgstr "Justifier le texte"
 
+#: src/features/Tasks/useDailyPlans.ts:356
+#. js-lingui-explicit-id
+msgid "Keep a gentle pace and finish today’s tasks."
+msgstr "Gardez un rythme doux et terminez les tâches d'aujourd'hui."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:168
 #. js-lingui-explicit-id
 msgid "Keep it concise and relevant"
@@ -7331,7 +7448,7 @@ msgstr "Apprendre n'épuise jamais l'esprit."
 msgid "Learning path"
 msgstr "Parcours d'apprentissage"
 
-#: src/features/Tasks/useDailyTasks.tsx:79
+#: src/features/Tasks/useDailyTasks.tsx:75
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Plan d'apprentissage"
@@ -7449,7 +7566,7 @@ msgstr "Hauteur de ligne"
 msgid "Listen"
 msgstr "Écouter"
 
-#: src/features/Tasks/useDailyTasks.tsx:88
+#: src/features/Tasks/useDailyTasks.tsx:84
 #. js-lingui-explicit-id
 msgid "Listen in to the end or finish quiz"
 msgstr "Écoutez jusqu'à la fin ou terminez le quiz"
@@ -7659,7 +7776,7 @@ msgstr "Gérez vos paramètres de notification"
 msgid "Manage your profile settings and check your progress"
 msgstr "Gérez les paramètres de votre profil et vérifiez vos progrès"
 
-#: src/features/Tasks/useDailyTasks.tsx:169
+#: src/features/Tasks/useDailyPlans.ts:66
 #. js-lingui-explicit-id
 msgid "Many people stop early, but you are still here. Be proud of that."
 msgstr "Beaucoup de gens s'arrêtent tôt, mais vous êtes toujours là. Soyez-en fier."
@@ -7924,7 +8041,7 @@ msgstr "Entrevues simulées"
 msgid "Month"
 msgstr "Mois"
 
-#: src/features/Tasks/useDailyTasks.tsx:284
+#: src/features/Tasks/useDailyPlans.ts:181
 #. js-lingui-explicit-id
 msgid "Month two begins. Start it well with today’s tasks."
 msgstr "Le deuxième mois commence. Commencez-le bien avec les tâches d'aujourd'hui."
@@ -7965,7 +8082,7 @@ msgstr "Plus de leçons uniques"
 msgid "More..."
 msgstr "Plus..."
 
-#: src/features/Tasks/useDailyTasks.tsx:359
+#: src/features/Tasks/useDailyPlans.ts:256
 #. js-lingui-explicit-id
 msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr ""
@@ -8056,7 +8173,7 @@ msgid "New Words"
 msgstr "Nouveaux Mots"
 
 #: src/features/News/NewsFeedModal.tsx:90
-#: src/features/Tasks/useDailyTasks.tsx:95
+#: src/features/Tasks/useDailyTasks.tsx:91
 #. js-lingui-explicit-id
 msgid "News"
 msgstr "Nouvelles"
@@ -8123,7 +8240,7 @@ msgstr "Prochaine histoire"
 msgid "Next Turn"
 msgstr "Prochain Tour"
 
-#: src/features/Tasks/useDailyTasks.tsx:164
+#: src/features/Tasks/useDailyPlans.ts:61
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
@@ -8562,10 +8679,22 @@ msgstr ""
 "Une fois que le débat commence, vous devrez enregistrer vos réponses. "
 "Ensuite, l'IA déterminera le gagnant ! {userName} verra aussi vos réponses."
 
-#: src/features/Tasks/useDailyTasks.tsx:249
+#: src/features/Tasks/useDailyPlans.ts:146
 #. js-lingui-explicit-id
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "Un jour à la fois suffit. Complétez les tâches d'aujourd'hui."
+
+#: src/features/Tasks/useDailyPlans.ts:311
+#. js-lingui-explicit-id
+msgid "One hundred active days. An incredible milestone — keep going."
+msgstr "Cent jours actifs. Une étape incroyable — continuez."
+
+#: src/features/Tasks/useDailyPlans.ts:321
+#. js-lingui-explicit-id
+msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
+msgstr ""
+"Cent cinquante jours d'apprentissage. Soyez fier de tout le chemin que vous "
+"avez parcouru."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9561,12 +9690,17 @@ msgstr "Pratiquez la conversation exacte que vous redoutez"
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Pratiquez le dépannage d'un problème technique par téléphone"
 
-#: src/features/Tasks/useDailyTasks.tsx:364
+#: src/features/Tasks/useDailyPlans.ts:261
 #. js-lingui-explicit-id
 msgid "Practice turns effort into skill. Here are today’s tasks."
 msgstr ""
 "La pratique transforme l'effort en compétence. Voici les tâches "
 "d’aujourd’hui."
+
+#: src/features/Tasks/useDailyPlans.ts:358
+#. js-lingui-explicit-id
+msgid "Practice turns effort into skill. Here’s today’s plan."
+msgstr "La pratique transforme l'effort en compétence. Voici le plan d'aujourd'hui."
 
 #: src/features/RolePlay/scenarios/alias-game.tsx:36
 #: src/features/SEO/metadata.ts:147
@@ -9838,7 +9972,7 @@ msgstr "Calendrier de Progrès"
 msgid "Progress insights are locked"
 msgstr "Les informations sur les progrès sont verrouillées"
 
-#: src/features/Tasks/useDailyTasks.tsx:214
+#: src/features/Tasks/useDailyPlans.ts:111
 #. js-lingui-explicit-id
 msgid "Progress isn’t always loud. Small steps still count today."
 msgstr ""
@@ -10348,7 +10482,7 @@ msgstr "records — les plus récents d'abord"
 msgid "Redis"
 msgstr "Redis"
 
-#: src/features/Tasks/useDailyTasks.tsx:319
+#: src/features/Tasks/useDailyPlans.ts:216
 #. js-lingui-explicit-id
 msgid "Refining your skills takes time. Focus on today’s tasks."
 msgstr ""
@@ -10870,7 +11004,7 @@ msgstr "HTML sémantique"
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/features/Tasks/useDailyTasks.tsx:72
+#: src/features/Tasks/useDailyTasks.tsx:68
 #. js-lingui-explicit-id
 msgid "Send at least 10 messages in Just talk"
 msgstr "Envoyer au moins 10 messages dans Just talk"
@@ -10901,7 +11035,7 @@ msgstr "Envoyez-moi le lien de connexion"
 msgid "Send Message"
 msgstr "Envoyer un message"
 
-#: src/features/Tasks/useDailyTasks.tsx:84
+#: src/features/Tasks/useDailyTasks.tsx:80
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "Envoyez un message dans l'espace communautaire"
@@ -11010,10 +11144,17 @@ msgstr "Définir la langue de traduction dans les paramètres"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/features/Tasks/useDailyTasks.tsx:374
+#: src/features/Tasks/useDailyPlans.ts:271
 #. js-lingui-explicit-id
 msgid "Seven weeks of learning. Remarkable consistency — keep going."
 msgstr "Sept semaines d'apprentissage. Remarquable constance — continuez ainsi."
+
+#: src/features/Tasks/useDailyPlans.ts:291
+#. js-lingui-explicit-id
+msgid "Seventy days of showing up. Take today’s tasks with pride."
+msgstr ""
+"Soixante-dix jours de présence. Abordez les tâches d'aujourd'hui avec "
+"fierté."
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:36
 #. js-lingui-explicit-id
@@ -11139,7 +11280,8 @@ msgstr "Montrez de solides bases en matière de données"
 msgid "Showcase system design thinking"
 msgstr "Présenter la pensée de conception de système"
 
-#: src/features/Tasks/useDailyTasks.tsx:194
+#: src/features/Tasks/useDailyPlans.ts:91
+#: src/features/Tasks/useDailyPlans.ts:354
 #. js-lingui-explicit-id
 msgid "Showing up is half the work. Complete today’s tasks."
 msgstr "Se présenter est la moitié du travail. Terminez les tâches d'aujourd'hui."
@@ -11220,7 +11362,12 @@ msgstr "Se connecter"
 msgid "Single player mode with AI"
 msgstr "Mode solo avec IA"
 
-#: src/features/Tasks/useDailyTasks.tsx:339
+#: src/features/Tasks/useDailyPlans.ts:326
+#. js-lingui-explicit-id
+msgid "Six months of showing up. That’s a true learning habit."
+msgstr "Six mois de présence. C'est une véritable habitude d'apprentissage."
+
+#: src/features/Tasks/useDailyPlans.ts:236
 #. js-lingui-explicit-id
 msgid "Six weeks of learning. Be proud and keep going today."
 msgstr "Six semaines d'apprentissage. Soyez fier et continuez aujourd'hui."
@@ -11270,6 +11417,11 @@ msgstr "Lent"
 #. js-lingui-explicit-id
 msgid "Small steps every day."
 msgstr "Petits pas chaque jour."
+
+#: src/features/Tasks/useDailyPlans.ts:352
+#. js-lingui-explicit-id
+msgid "Small steps still count. Here are today’s tasks."
+msgstr "Les petits pas comptent toujours. Voici les tâches du jour."
 
 #: src/features/RolePlay/scenarios/small-talk-with-a-stranger.ts:8
 #. js-lingui-explicit-id
@@ -11576,7 +11728,7 @@ msgstr ""
 "Commencez là où vous êtes. Utilisez ce que vous avez. Faites ce que vous "
 "pouvez."
 
-#: src/features/Tasks/useDailyTasks.tsx:132
+#: src/features/Tasks/useDailyPlans.ts:29
 #. js-lingui-explicit-id
 msgid "Start with today’s tasks and keep a gentle pace."
 msgstr "Commencez par les tâches d'aujourd'hui et maintenez un rythme doux."
@@ -11633,22 +11785,27 @@ msgstr "Commencer..."
 msgid "State Management"
 msgstr "Gestion de l'État"
 
-#: src/features/Tasks/useDailyTasks.tsx:309
+#: src/features/Tasks/useDailyPlans.ts:206
 #. js-lingui-explicit-id
 msgid "Stay connected to your goals. Here are today’s tasks."
 msgstr "Restez connecté à vos objectifs. Voici les tâches du jour."
 
-#: src/features/Tasks/useDailyTasks.tsx:259
+#: src/features/Tasks/useDailyPlans.ts:357
+#. js-lingui-explicit-id
+msgid "Stay present and take on today’s tasks."
+msgstr "Restez présent et abordez les tâches d'aujourd'hui."
+
+#: src/features/Tasks/useDailyPlans.ts:156
 #. js-lingui-explicit-id
 msgid "Stay sharp with a fresh set of tasks for today."
 msgstr "Restez affûté avec une nouvelle série de tâches pour aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:344
+#: src/features/Tasks/useDailyPlans.ts:241
 #. js-lingui-explicit-id
 msgid "Staying the course is rare. Here’s what to do today."
 msgstr "Rester sur la voie est rare. Voici ce qu'il faut faire aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:244
+#: src/features/Tasks/useDailyPlans.ts:141
 #. js-lingui-explicit-id
 msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr ""
@@ -11764,7 +11921,7 @@ msgstr "Arrêtez"
 msgid "Stop Recording"
 msgstr "Arrêter l'enregistrement"
 
-#: src/features/Tasks/useDailyTasks.tsx:87
+#: src/features/Tasks/useDailyTasks.tsx:83
 #. js-lingui-explicit-id
 msgid "Story"
 msgstr "Histoire"
@@ -11844,7 +12001,7 @@ msgstr ""
 msgid "Strive for progress, not perfection."
 msgstr "Efforcez-vous de progresser, pas d'atteindre la perfection."
 
-#: src/features/Tasks/useDailyTasks.tsx:158
+#: src/features/Tasks/useDailyPlans.ts:55
 #. js-lingui-explicit-id
 msgid "Strong consistency"
 msgstr "Forte cohérence"
@@ -12665,7 +12822,7 @@ msgstr ""
 "et de ce que vous souhaitez améliorer en tant que développeur frontend "
 "junior."
 
-#: src/features/Tasks/useDailyTasks.tsx:179
+#: src/features/Tasks/useDailyPlans.ts:76
 #. js-lingui-explicit-id
 msgid "Ten active days already. Keep the momentum with today’s tasks."
 msgstr "Dix jours d'activité déjà. Maintenez l'élan avec les tâches d'aujourd'hui."
@@ -13389,7 +13546,12 @@ msgstr ""
 "\n"
 "Si quelque chose vous a dérangé, il vaut la peine de l'examiner."
 
-#: src/features/Tasks/useDailyTasks.tsx:229
+#: src/features/Tasks/useDailyPlans.ts:306
+#. js-lingui-explicit-id
+msgid "Three months of learning. Remarkable — let’s keep going."
+msgstr "Trois mois d'apprentissage. Remarquable, continuons ainsi."
+
+#: src/features/Tasks/useDailyPlans.ts:126
 #. js-lingui-explicit-id
 msgid "Three weeks of learning — celebrate that and keep going."
 msgstr "Trois semaines d'apprentissage — célébrez cela et continuez."
@@ -13481,7 +13643,7 @@ msgstr "Question du jour"
 msgid "Today's Tasks"
 msgstr "Tâches d'aujourd'hui"
 
-#: src/features/Tasks/useDailyTasks.tsx:173
+#: src/features/Tasks/useDailyPlans.ts:70
 #. js-lingui-explicit-id
 msgid "Today’s tasks"
 msgstr "Les tâches d'aujourd'hui"
@@ -13618,7 +13780,7 @@ msgstr "Balance de vérification"
 msgid "Trial days"
 msgstr "Jours d'essai"
 
-#: src/features/Tasks/useDailyTasks.tsx:294
+#: src/features/Tasks/useDailyPlans.ts:191
 #. js-lingui-explicit-id
 msgid "Trust the process. Small daily steps add up."
 msgstr ""
@@ -13703,7 +13865,17 @@ msgstr "Résumé du tour"
 msgid "Turn type"
 msgstr "Tourner le type"
 
-#: src/features/Tasks/useDailyTasks.tsx:199
+#: src/features/Tasks/useDailyPlans.ts:331
+#. js-lingui-explicit-id
+msgid "Two hundred active days. Extraordinary consistency — keep going."
+msgstr "Deux cents jours actifs. Une constance extraordinaire — continuez ainsi."
+
+#: src/features/Tasks/useDailyPlans.ts:286
+#. js-lingui-explicit-id
+msgid "Two months of practice. That’s rare dedication — keep it up."
+msgstr "Deux mois de pratique. C’est une dévotion rare — continuez comme ça."
+
+#: src/features/Tasks/useDailyPlans.ts:96
 #. js-lingui-explicit-id
 msgid "Two weeks of practice — that’s real progress. Keep going."
 msgstr "Deux semaines de pratique — c’est un véritable progrès. Continuez comme ça."
@@ -15250,10 +15422,15 @@ msgstr ""
 "Votre carte est utilisée uniquement pour activer l'accès sécurisé et ne "
 "sera pas facturée sauf si vous décidez de continuer."
 
-#: src/features/Tasks/useDailyTasks.tsx:159
+#: src/features/Tasks/useDailyPlans.ts:56
 #. js-lingui-explicit-id
 msgid "Your consistency is paying off. Here are today’s tasks."
 msgstr "Votre cohérence porte ses fruits. Voici les tâches d'aujourd'hui."
+
+#: src/features/Tasks/useDailyPlans.ts:355
+#. js-lingui-explicit-id
+msgid "Your consistency is paying off. Try today’s tasks."
+msgstr "Votre régularité porte ses fruits. Essayez les tâches du jour."
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:58
 #. js-lingui-explicit-id
@@ -15379,7 +15556,7 @@ msgstr ""
 msgid "Your Streak"
 msgstr "Votre Série"
 
-#: src/features/Tasks/useDailyTasks.tsx:234
+#: src/features/Tasks/useDailyPlans.ts:131
 #. js-lingui-explicit-id
 msgid "Your streak is a sign of commitment. Continue with today’s tasks."
 msgstr ""
@@ -15410,7 +15587,7 @@ msgstr ""
 "Votre désistement du contrat a été confirmé. Un email de confirmation a été "
 "envoyé à {email}."
 
-#: src/features/Tasks/useDailyTasks.tsx:354
+#: src/features/Tasks/useDailyPlans.ts:251
 #. js-lingui-explicit-id
 msgid "You’re almost at seven weeks. Finish today’s tasks strong."
 msgstr ""
@@ -15426,41 +15603,48 @@ msgstr ""
 "Vous êtes invité à **concevoir des systèmes sur-le-champ**, mais personne "
 "ne vous dit à quoi ressemble le \"bien\"."
 
-#: src/features/Tasks/useDailyTasks.tsx:204
+#: src/features/Tasks/useDailyPlans.ts:296
+#. js-lingui-explicit-id
+msgid "You’re building something lasting. Continue with today’s tasks."
+msgstr ""
+"Vous construisez quelque chose de durable. Continuez avec les tâches "
+"d'aujourd'hui."
+
+#: src/features/Tasks/useDailyPlans.ts:101
 #. js-lingui-explicit-id
 msgid "You’re building something lasting. Take on today’s tasks."
 msgstr "Vous construisez quelque chose qui dure. Relevez les tâches d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:224
+#: src/features/Tasks/useDailyPlans.ts:121
 #. js-lingui-explicit-id
 msgid "You’re close to three weeks. Finish today’s tasks strong."
 msgstr ""
 "Vous êtes proche de trois semaines. Terminez les tâches d'aujourd'hui en "
 "force."
 
-#: src/features/Tasks/useDailyTasks.tsx:142
+#: src/features/Tasks/useDailyPlans.ts:39
 #. js-lingui-explicit-id
 msgid "You’re doing well. Take a look at today’s tasks."
 msgstr "Vous vous débrouillez bien. Jetez un coup d'œil aux tâches d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:154
+#: src/features/Tasks/useDailyPlans.ts:51
 #. js-lingui-explicit-id
 msgid "You’re in a good flow. Continue with today’s tasks."
 msgstr "Vous êtes dans une bonne dynamique. Continuez avec les tâches d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:274
+#: src/features/Tasks/useDailyPlans.ts:171
 #. js-lingui-explicit-id
 msgid "You’re nearly at a full month. Finish today’s tasks."
 msgstr "Vous êtes presque à un mois complet. Terminez les tâches d'aujourd'hui."
 
-#: src/features/Tasks/useDailyTasks.tsx:334
+#: src/features/Tasks/useDailyPlans.ts:231
 #. js-lingui-explicit-id
 msgid "You’re past forty days. Continue with calm, steady practice."
 msgstr ""
 "Vous avez dépassé quarante jours. Continuez avec une pratique calme et "
 "régulière."
 
-#: src/features/Tasks/useDailyTasks.tsx:324
+#: src/features/Tasks/useDailyPlans.ts:221
 #. js-lingui-explicit-id
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr ""

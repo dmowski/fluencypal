@@ -24,6 +24,12 @@ export interface DailyTaskInfo {
   label: string; // e.g. "Send at least 10 messages in Just talk", "Finish a lesson from your Goal plan", "Send at least one message in the community space", "Watch a story and listen in to the end or finish quiz", "Answer daily question"
 }
 
+export interface DayTasksMeta {
+  tasks: DailyTaskType[];
+  title: string;
+  subTitle: string;
+}
+
 // Sync with DataBase by /users/{userId}/dailyTasks/{dayIso}_{languageCode}
 export interface DailyTaskProgress {
   languageCode: SupportedLanguage;
