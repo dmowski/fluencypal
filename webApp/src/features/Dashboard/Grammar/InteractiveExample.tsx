@@ -30,12 +30,15 @@ export const InteractiveExample = ({
   isTranslateAvailable,
   translateWithModal,
   onComplete,
+  onConstructionComplete,
 }: {
   example: string;
   translation: string;
   isTranslateAvailable: boolean;
   translateWithModal: (word: string, element: HTMLElement) => void;
   onComplete: () => void;
+  /** Fired once the user finishes building the sentence (before reading aloud). */
+  onConstructionComplete?: () => void;
 }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -103,7 +106,10 @@ export const InteractiveExample = ({
     numberOfOptions: 2,
     keyboardShortcutsEnabled: false,
     onContinue: setProgress,
-    onComplete: async () => setIsCompletedQuiz(true),
+    onComplete: async () => {
+      setIsCompletedQuiz(true);
+      onConstructionComplete?.();
+    },
     onPlayAudio: async (word) => {
       audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
       quizWordAudio.playWordAudio(word);

@@ -64,6 +64,10 @@ export const GrammarImprovementModalContent = ({ onClose }: { onClose: () => voi
     setCompletedExamples((prev) => uniq([...prev, example]));
   };
 
+  const onConstructionComplete = () => {
+    void dailyTasks.onCompleteTask('grammar-improvement');
+  };
+
   const isAllExamplesCompleted = improvement
     ? completedExamples.length === improvement.examples.length
     : false;
@@ -123,8 +127,6 @@ When user struggle with one example, try to switch to another example and come b
     });
 
     setIsCallStarting(false);
-
-    dailyTasks.onCompleteTask('grammar-improvement');
   };
 
   const isTranslateAvailable = translator.isTranslateAvailable;
@@ -265,6 +267,7 @@ When user struggle with one example, try to switch to another example and come b
                           translateWithModal={translator.translateWithModal}
                           key={index}
                           onComplete={() => onCompleteExample(example)}
+                          onConstructionComplete={onConstructionComplete}
                         />
                       ))}
                     </Stack>

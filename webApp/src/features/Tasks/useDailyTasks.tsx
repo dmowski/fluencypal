@@ -73,7 +73,7 @@ function useProvideDailyTasks(): DailyTaskApi {
       },
       'grammar-improvement': {
         title: i18n._('Grammar Improvement'),
-        label: i18n._('Correct one of your sentences in Grammar improvement'),
+        label: i18n._('Build at least one sentence in Grammar Improvement'),
       },
       'goal-lesson': {
         title: i18n._('Learning Plan'),
