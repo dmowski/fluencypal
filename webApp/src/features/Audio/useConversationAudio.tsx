@@ -131,9 +131,25 @@ class AudioQueuePlayer {
   private _musicPlaying = false;
   private potentialSpeakUrl: string | null = null;
   private lastStreamStoppedAt = 0;
+  private unlockPromise: Promise<void> | null = null;
 
   async unlockFromGesture(): Promise<void> {
-    if (this.unlocked) return;
+    if (this.isUnlocked()) return;
+    if (this.unlockPromise) {
+      await this.unlockPromise;
+      return;
+    }
+
+    this.unlockPromise = this.unlockFromGestureInternal();
+    try {
+      await this.unlockPromise;
+    } finally {
+      this.unlockPromise = null;
+    }
+  }
+
+  private async unlockFromGestureInternal(): Promise<void> {
+    if (this.isUnlocked()) return;
 
     if (!this.ctx) {
       const Ctx = (window.AudioContext ||
@@ -152,11 +168,9 @@ class AudioQueuePlayer {
       this.musicGain.connect(this.masterGain);
     }
 
-    if (this.ctx.state === 'suspended') {
-      await this.ctx.resume();
-    }
-
-    // Create speech element + connect it to gain (so fade/volume works)
+    // Create media elements before awaiting resume so concurrent play()
+    // calls (e.g. fire-and-forget initAudio + immediate speak) can pass
+    // ensureUnlocked once the graph exists, even while resume is in flight.
     if (!this.speechEl) {
       const el = new Audio();
       el.preload = 'auto';
@@ -164,7 +178,6 @@ class AudioQueuePlayer {
       this.speechNode.connect(this.speechGain!);
       this.speechEl = el;
 
-      // Listen to real speech playback events
       el.addEventListener('playing', () => {
         this._speechPlaying = true;
       });
@@ -187,7 +200,6 @@ class AudioQueuePlayer {
       this.musicNode.connect(this.musicGain!);
       this.musicEl = el;
 
-      // Listen to real music playback events
       el.addEventListener('playing', () => {
         this._musicPlaying = true;
       });
@@ -203,15 +215,41 @@ class AudioQueuePlayer {
     }
 
     this.unlocked = true;
+
+    if (this.ctx.state === 'suspended') {
+      await this.ctx.resume();
+    }
   }
 
   isUnlocked(): boolean {
     return this.unlocked && !!this.ctx && this.ctx.state !== 'closed';
   }
 
+  private getUnlockDiagnostics() {
+    return {
+      unlockedFlag: this.unlocked,
+      hasUnlockInFlight: !!this.unlockPromise,
+      hasCtx: !!this.ctx,
+      ctxState: this.ctx?.state ?? null,
+      hasSpeechGain: !!this.speechGain,
+      hasMusicGain: !!this.musicGain,
+      hasSpeechEl: !!this.speechEl,
+      hasMusicEl: !!this.musicEl,
+    };
+  }
+
   private ensureUnlocked(): void {
     if (!this.ctx || !this.speechGain || !this.musicGain || !this.speechEl || !this.musicEl) {
-      throw new Error('AudioQueuePlayer: not unlocked. Call unlockFromGesture() first.');
+      const diagnostics = this.getUnlockDiagnostics();
+      Sentry.addBreadcrumb({
+        category: 'conversation-audio',
+        level: 'error',
+        message: 'AudioQueuePlayer ensureUnlocked failed',
+        data: diagnostics,
+      });
+      throw new Error(
+        `AudioQueuePlayer: not unlocked. Call unlockFromGesture() first. ${JSON.stringify(diagnostics)}`,
+      );
     }
   }
 

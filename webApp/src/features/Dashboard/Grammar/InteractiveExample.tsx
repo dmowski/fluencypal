@@ -111,8 +111,8 @@ export const InteractiveExample = ({
       onConstructionComplete?.();
     },
     onPlayAudio: async (word) => {
-      audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
-      quizWordAudio.playWordAudio(word);
+      void audio.setTextAsPotentialSpeak(cleanedExample, quizWordAudio.speakOptions);
+      await quizWordAudio.playWordAudio(word);
     },
     onCorrectWordAvailable: (word) => {
       void quizWordAudio.preloadWordAudio(word);

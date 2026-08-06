@@ -36,6 +36,12 @@ export const useQuizWordAudio = ({ targetLanguage }: { targetLanguage: Supported
       const cleanWord = clearWordForAudio(text);
       if (!cleanWord) return;
 
+      // Word taps are user gestures; unlock here so play does not race a
+      // fire-and-forget initAudio() elsewhere (esp. Mobile Safari).
+      if (!audio.isUnlocked()) {
+        await audio.initAudio();
+      }
+
       await audio.playPotentialSpeakUrl(cleanWord, speakOptions);
     },
     [audio, speakOptions],

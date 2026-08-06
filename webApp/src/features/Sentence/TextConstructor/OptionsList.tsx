@@ -27,8 +27,10 @@ export const OptionsList = ({
         return (
           <Button
             key={word}
-            onClick={() => {
-              audio.initAudio();
+            onClick={async () => {
+              // Must finish unlock before play — initAudio awaits AudioContext.resume()
+              // on iOS Safari, and playWordAudio needs the graph ready.
+              await audio.initAudio();
               handlePick(word);
             }}
             variant={'contained'}
