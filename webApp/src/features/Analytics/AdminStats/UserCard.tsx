@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import { getFirebaseLink } from '../../Firebase/getFirebaseLink';
 import { useGame } from '../../Game/useGame';
 import { fullEnglishLanguageName, SupportedLanguage } from '../../Lang/lang';
-import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader, ListChecks } from 'lucide-react';
+import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
 import { UserSource } from '@/features/Analytics/analytics';
 import { Messages } from '../../Conversation/Messages';
@@ -23,6 +23,12 @@ import { AdvancedUserRecord } from '@/features/User/userInfo';
 import { useExtractKnowledge } from '@/features/AiKnowledge/useExtractKnowledge';
 import { ProgressViewChart } from '@/features/ProgressStat/ProgressViewChart';
 import { ProgressStatModalUI } from '@/features/ProgressStat/ProgressStatModal';
+import {
+  getActiveGoalForLanguage,
+  getDailyTasksAdminSummary,
+  getPlanElementAdminRows,
+} from './adminLearningSummary';
+import { DailyTasksAdminBlock, LearningPlanAdminBlock } from './DailyTasksAndPlanAdmin';
 
 interface UserCardProps {
   userStat: UserStat;
@@ -166,9 +172,29 @@ export function UserCard({ userStat }: UserCardProps) {
 
   const today = useMemo(() => new Date().toISOString().split('T')[0], []);
 
-  const todayProgress = userStat.dailyProgress
-    ? userStat.dailyProgress.find((d) => d.dayIso === today)
-    : null;
+  const dailyTasksSummary = useMemo(
+    () =>
+      getDailyTasksAdminSummary({
+        dailyProgress: userStat.dailyProgress || [],
+        languageCode: user.languageCode,
+        todayIso: today,
+      }),
+    [userStat.dailyProgress, user.languageCode, today],
+  );
+
+  const activeGoal = useMemo(
+    () => getActiveGoalForLanguage(userStat.goals || [], user.languageCode),
+    [userStat.goals, user.languageCode],
+  );
+
+  const planRows = useMemo(() => {
+    if (!activeGoal) return [];
+    return getPlanElementAdminRows(activeGoal).map((row) => ({
+      title: row.element.title,
+      mode: row.element.mode,
+      status: row.status,
+    }));
+  }, [activeGoal]);
 
   const progressStats = userStat.progressStats || [];
 
@@ -183,7 +209,7 @@ export function UserCard({ userStat }: UserCardProps) {
         flexDirection: 'row',
         gap: '25px',
         backgroundColor: 'rgba(17, 17, 17, 0.2)',
-        height: '500px',
+        height: '800px',
       }}
     >
       {isShowFullStatChart && (
@@ -282,26 +308,7 @@ export function UserCard({ userStat }: UserCardProps) {
               </Typography>
             </Tooltip>
 
-            <Tooltip
-              title={
-                <>
-                  <p>
-                    Completed:
-                    <br /> {Object.keys(todayProgress?.completedTasks || {}).join(', ') || '-'}
-                  </p>
-                  <p>
-                    All tasks:
-                    <br /> {todayProgress?.tasks?.join(', ') || '-'}
-                  </p>
-                </>
-              }
-            >
-              <Typography variant="body2">
-                <ListChecks className="icon" />{' '}
-                {Object.keys(todayProgress?.completedTasks || {}).length}/
-                {todayProgress?.tasks?.length || 0}
-              </Typography>
-            </Tooltip>
+            <DailyTasksAdminBlock summary={dailyTasksSummary} />
           </Stack>
         </Stack>
 
@@ -424,6 +431,8 @@ export function UserCard({ userStat }: UserCardProps) {
           gap: '10px',
         }}
       >
+        <LearningPlanAdminBlock goalTitle={activeGoal?.title ?? null} rows={planRows} />
+
         <ProgressViewChart
           progressStats={progressStats}
           loadingProgressStats={false}

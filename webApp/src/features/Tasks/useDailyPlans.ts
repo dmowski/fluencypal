@@ -384,6 +384,16 @@ export function buildDailyPlans(i18n: I18n): DayTasksMeta[] {
   return plans;
 }
 
+/** Task list for a 0-based day index (same indexing as useDailyTasks). */
+export function getDailyPlanTasksAtIndex(dayIndex: number): DailyTaskType[] {
+  const stubI18n = {
+    _: (msg: string) => msg,
+  } as unknown as I18n;
+  const plans = buildDailyPlans(stubI18n);
+  const index = Math.min(Math.max(dayIndex, 0), plans.length - 1);
+  return plans[index].tasks;
+}
+
 export function useDailyPlans(): DayTasksMeta[] {
   const { i18n } = useLingui();
   return useMemo(() => buildDailyPlans(i18n), [i18n]);

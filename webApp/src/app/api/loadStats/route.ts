@@ -6,6 +6,7 @@ import {
   getUserAiInfo,
   getUserConversationsMeta,
   getUserDailyTasksProgress,
+  getUserGoals,
   getUsersInterviewSurvey,
   getUsersQuizSurvey,
 } from '../user/getUserInfo';
@@ -43,6 +44,7 @@ export async function POST(request: Request) {
           aiUserInfo,
           dailyProgress,
           progressStats,
+          goals,
         ] = await Promise.all([
           getUserConversationsMeta(user.id),
           getUsersQuizSurvey(user.id),
@@ -51,6 +53,7 @@ export async function POST(request: Request) {
           getUserAiInfo(user.id),
           getUserDailyTasksProgress(user.id),
           getAllProgressStatsForUser(user.id),
+          getUserGoals(user.id),
         ]);
 
         const userStat: UserStat = {
@@ -63,6 +66,7 @@ export async function POST(request: Request) {
           aiUserInfo,
           dailyProgress,
           progressStats,
+          goals,
         };
         return userStat;
       }),

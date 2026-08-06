@@ -1,5 +1,18 @@
 # Live document with short/long term ideas
 
+## Daily Tasks improvement
+
+\*. Learning goal: It's difficult to finish the task. Weaken logic of finishing. And I see that one user has so many items in learning plan. That it work to adjust it somehow
+
+\*. Finish call from camera mode: we need to close it really and provide ability to change to text mode?
+How to inform users that the daily task is done
+
+## Add voice chat into daily task pipeline
+
+- Add task: Join voice chat (5th day)
+- Add task: Answer to someone (6th day)
+- Add task: Describe your day in chat
+
 ## Blog: add author
 
 Author: Alex Dmowski. Editor and grammar corrector: Chat GPT

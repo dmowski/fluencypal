@@ -5,6 +5,7 @@ import { InterviewQuizSurvey } from '@/features/Case/types';
 import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { DailyTaskProgress } from '@/features/Tasks/types';
 import { ProgressStat } from '@/features/ProgressStat/types';
+import { GoalPlan } from '@/features/Plan/types';
 
 export interface UserStat {
   userData: UserSettingsWithId;
@@ -16,6 +17,8 @@ export interface UserStat {
   aiUserInfo: AiUserInfo | null;
   dailyProgress: DailyTaskProgress[];
   progressStats: ProgressStat[];
+  /** Live learning plans from users/{id}/goals */
+  goals: GoalPlan[];
 }
 
 export interface AdminStatsRequest {

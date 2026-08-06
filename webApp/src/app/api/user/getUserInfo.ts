@@ -6,6 +6,7 @@ import { QuizSurvey2 } from '@/features/Goal/Quiz/types';
 import { InterviewQuizSurvey } from '@/features/Case/types';
 import dayjs from 'dayjs';
 import { DailyTaskProgress } from '@/features/Tasks/types';
+import { GoalPlan } from '@/features/Plan/types';
 
 export interface StripeUserInfo {
   customerId: string;
@@ -153,6 +154,16 @@ export const getUserDailyTasksProgress = async (userId: string): Promise<DailyTa
   });
 
   return data;
+};
+
+export const getUserGoals = async (userId: string): Promise<GoalPlan[]> => {
+  const db = getDB();
+  const goalsCollection = await db.collection('users').doc(userId).collection('goals').get();
+
+  return goalsCollection.docs.map((doc) => {
+    const data = doc.data() as GoalPlan;
+    return { ...data, id: data.id || doc.id };
+  });
 };
 
 export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]> => {
