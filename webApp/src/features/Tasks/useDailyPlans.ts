@@ -9,16 +9,16 @@ export const DAILY_PLAN_COUNT = 200;
 
 /** Rotating task sets. Excludes news. grammar-improvement is always last when included. */
 const TASK_CYCLES: DailyTaskType[][] = [
-  ['just-talk', 'goal-lesson'],
-  ['just-talk'],
-  ['just-talk', 'goal-lesson'],
-  ['just-talk', 'story'],
   ['just-talk', 'goal-lesson', 'grammar-improvement'],
-  ['just-talk', 'daily-question'],
-  ['just-talk', 'community'],
-  ['just-talk', 'goal-lesson'],
-  ['just-talk', 'grammar-improvement'],
-  ['just-talk', 'goal-lesson', 'community'],
+  ['just-talk', 'daily-question', 'grammar-improvement'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+  ['just-talk', 'story', 'grammar-improvement'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+  ['just-talk', 'daily-question', 'grammar-improvement'],
+  ['just-talk', 'community', 'grammar-improvement'],
+  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+  ['just-talk', 'grammar-improvement', 'grammar-improvement'],
+  ['just-talk', 'goal-lesson', 'community', 'grammar-improvement'],
 ];
 
 function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
