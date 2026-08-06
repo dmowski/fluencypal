@@ -10,7 +10,12 @@ import {
   uploadParagraphsBlob,
 } from '../../server/readerStorage';
 import { buildLocalSignature, buildSharingSignature } from './signature';
-import { errorLog, getErrorCode, getErrorMessage, log } from './log';
+import { errorLog, getErrorCode, getErrorMessage, log, warn } from './log';
+import {
+  isTransientStorageError,
+  nextTransientRetryDelayMs,
+  PUSH_TRANSIENT_RETRY_MAX_ATTEMPTS,
+} from './transientErrors';
 import { BooksSyncRefs, BooksSyncStatusSetters, PUSH_DEBOUNCE_MS } from './types';
 
 interface Args {
@@ -89,10 +94,10 @@ export const usePushSync = ({
       });
       refs.inFlightUploads.current.add(book.id);
 
-      try {
-        let paragraphsBlobPath = latestAtStart.paragraphsBlobPath;
-        let convertedFiles = latestAtStart.convertedFiles;
+      let paragraphsBlobPath = latestAtStart.paragraphsBlobPath;
+      let convertedFiles = latestAtStart.convertedFiles;
 
+      try {
         // Write the Firestore doc FIRST (without blob paths if they don't exist
         // yet). Always read the latest local copy so in-flight sharing edits
         // are not overwritten by a stale closure snapshot.
@@ -106,8 +111,32 @@ export const usePushSync = ({
           }).memberIds ?? null,
         });
 
-        // Upload blobs now that the Firestore doc exists.
-        let blobsChanged = false;
+        /**
+         * Write blob paths to Firestore as soon as each upload succeeds so a
+         * later transient failure (common on Mobile Safari for the EPUB) does
+         * not leave Storage objects without a doc pointer. Local state is
+         * patched only at the end of the push (or in the catch) to avoid
+         * echo-scheduling a follow-up while this push is still in flight.
+         */
+        const persistBlobPathsRemote = async (): Promise<void> => {
+          const stillExists = refs.usersBooks.current.some((b) => b.id === book.id);
+          if (!stillExists) {
+            log('skipping blob-path setDoc – book was deleted locally during upload', {
+              bookId: book.id,
+            });
+            return;
+          }
+          await writeRemoteDoc({
+            ...getLatest(),
+            paragraphsBlobPath,
+            convertedFiles,
+          });
+          log('Firestore doc updated with blob paths', {
+            bookId: book.id,
+            paragraphsBlobPath,
+            convertedFilesEpub: convertedFiles.epub,
+          });
+        };
 
         const latestForUpload = getLatest();
         if (!paragraphsBlobPath && latestForUpload.paragraphs.length > 0) {
@@ -120,7 +149,6 @@ export const usePushSync = ({
             paragraphs: latestForUpload.paragraphs,
           });
           paragraphsBlobPath = upload.path;
-          blobsChanged = true;
           log('paragraphs uploaded', {
             bookId: book.id,
             sizeBytes: upload.size,
@@ -132,6 +160,7 @@ export const usePushSync = ({
             message: 'paragraphs uploaded',
             data: { bookId: book.id, sizeBytes: upload.size },
           });
+          await persistBlobPathsRemote();
         }
 
         const latestForEpub = getLatest();
@@ -146,28 +175,9 @@ export const usePushSync = ({
             file: latestForEpub.epubFile,
           });
           convertedFiles = { ...convertedFiles, epub: epubPath };
-          blobsChanged = true;
           log('EPUB uploaded', { bookId: book.id, path: epubPath });
           refs.knownOriginalPaths.current.set(book.id, epubPath);
-        }
-
-        const stillExists = refs.usersBooks.current.some((b) => b.id === book.id);
-        if (blobsChanged && stillExists) {
-          const latestWithBlobs = {
-            ...getLatest(),
-            paragraphsBlobPath,
-            convertedFiles,
-          };
-          await writeRemoteDoc(latestWithBlobs);
-          log('Firestore doc updated with blob paths', {
-            bookId: book.id,
-            paragraphsBlobPath,
-            convertedFilesEpub: convertedFiles.epub,
-          });
-        } else if (blobsChanged && !stillExists) {
-          log('skipping final setDoc – book was deleted locally during blob upload', {
-            bookId: book.id,
-          });
+          await persistBlobPathsRemote();
         }
 
         refs.createdAtCache.current.set(book.id, createdAtIso);
@@ -184,6 +194,12 @@ export const usePushSync = ({
           latestFinal.highlightsUpdatedAtIso ?? null,
         );
         refs.lastPushedSharingSig.current.set(book.id, buildSharingSignature(latestFinal));
+        refs.pushTransientRetryCounts.current.delete(book.id);
+        const retryTimer = refs.pushRetryTimers.current.get(book.id);
+        if (retryTimer) {
+          clearTimeout(retryTimer);
+          refs.pushRetryTimers.current.delete(book.id);
+        }
 
         const needsLocalUpdate =
           paragraphsBlobPath !== latestFinal.paragraphsBlobPath ||
@@ -200,14 +216,64 @@ export const usePushSync = ({
 
         setters.setLastSyncIso(nowIso);
       } catch (pushError) {
+        const code = getErrorCode(pushError);
+        const transient = isTransientStorageError(pushError);
         Sentry.addBreadcrumb({
           category: 'reader-sync',
-          level: 'error',
+          level: transient ? 'warning' : 'error',
           message: 'push error',
-          data: { bookId: book.id, code: getErrorCode(pushError) },
+          data: { bookId: book.id, code, transient },
         });
-        Sentry.captureException(pushError, { tags: { area: 'reader-sync', op: 'push' } });
-        errorLog('push error', { bookId: book.id }, pushError);
+
+        // Keep local blob paths in sync with anything we already wrote remotely
+        // so a retry skips uploads that already succeeded.
+        const latestOnError = getLatest();
+        const partialBook = {
+          ...latestOnError,
+          paragraphsBlobPath: paragraphsBlobPath ?? latestOnError.paragraphsBlobPath,
+          convertedFiles,
+        };
+        const partialChanged =
+          partialBook.paragraphsBlobPath !== latestOnError.paragraphsBlobPath ||
+          JSON.stringify(partialBook.convertedFiles) !==
+            JSON.stringify(latestOnError.convertedFiles);
+        if (partialChanged) {
+          // Suppress the echo push from this merge; a transient retry (or a
+          // later real edit) is responsible for finishing the upload.
+          refs.suppressedSignatures.current.set(book.id, buildLocalSignature(partialBook));
+          applyRemoteBookMerge(book.id, partialBook);
+        }
+
+        if (transient) {
+          const attempt = (refs.pushTransientRetryCounts.current.get(book.id) ?? 0) + 1;
+          refs.pushTransientRetryCounts.current.set(book.id, attempt);
+          warn('push transient storage error', { bookId: book.id, code, attempt }, pushError);
+
+          if (attempt < PUSH_TRANSIENT_RETRY_MAX_ATTEMPTS) {
+            refs.pendingPushAfterUpload.current.delete(book.id);
+            const delayMs = nextTransientRetryDelayMs(attempt - 1);
+            log('scheduling transient push retry', { bookId: book.id, attempt, delayMs });
+            const retryTimers = refs.pushRetryTimers.current;
+            const existingRetry = retryTimers.get(book.id);
+            if (existingRetry) clearTimeout(existingRetry);
+            const handle = setTimeout(() => {
+              retryTimers.delete(book.id);
+              const latest = refs.usersBooks.current.find((entry) => entry.id === book.id);
+              if (latest) void pushBook(latest);
+            }, delayMs);
+            retryTimers.set(book.id, handle);
+            return;
+          }
+
+          Sentry.captureException(pushError, {
+            tags: { area: 'reader-sync', op: 'push', transient: 'exhausted' },
+            extra: { bookId: book.id, attempt },
+          });
+        } else {
+          Sentry.captureException(pushError, { tags: { area: 'reader-sync', op: 'push' } });
+          errorLog('push error', { bookId: book.id }, pushError);
+        }
+
         setters.setStatus('error');
         setters.setError(getErrorMessage(pushError));
       } finally {
@@ -227,6 +293,13 @@ export const usePushSync = ({
 
   const schedulePush = useCallback(
     (book: Book, options?: { immediate?: boolean }): void => {
+      // A real local edit supersedes a transient backoff retry.
+      const retryTimer = refs.pushRetryTimers.current.get(book.id);
+      if (retryTimer) {
+        clearTimeout(retryTimer);
+        refs.pushRetryTimers.current.delete(book.id);
+      }
+
       const timers = refs.pushTimers.current;
       const existing = timers.get(book.id);
       if (existing) clearTimeout(existing);
@@ -254,9 +327,17 @@ export const usePushSync = ({
       const suppressed = refs.suppressedSignatures.current.get(book.id);
       if (suppressed === signature) {
         refs.suppressedSignatures.current.delete(book.id);
-        refs.lastPushedSignatures.current.set(book.id, signature);
-        refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
-        refs.lastPushedSharingSig.current.set(book.id, buildSharingSignature(book));
+        // A transient Storage retry is still responsible for finishing blob
+        // uploads (e.g. EPUB after paragraphs already landed). Do not treat
+        // this echo merge as a completed push or the EPUB will never upload.
+        const hasTransientRetryPending =
+          (refs.pushTransientRetryCounts.current.get(book.id) ?? 0) > 0 ||
+          refs.pushRetryTimers.current.has(book.id);
+        if (!hasTransientRetryPending) {
+          refs.lastPushedSignatures.current.set(book.id, signature);
+          refs.lastPushedHighlightsIso.current.set(book.id, book.highlightsUpdatedAtIso ?? null);
+          refs.lastPushedSharingSig.current.set(book.id, buildSharingSignature(book));
+        }
         return;
       }
       const lastPushed = refs.lastPushedSignatures.current.get(book.id);

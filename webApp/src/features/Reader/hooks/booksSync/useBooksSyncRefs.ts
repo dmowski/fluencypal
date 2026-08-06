@@ -26,6 +26,8 @@ export const useBooksSyncRefs = (
       pushTimers: { current: new Map() },
       inFlightUploads: { current: new Set<string>() },
       pendingPushAfterUpload: { current: new Set<string>() },
+      pushTransientRetryCounts: { current: new Map<string, number>() },
+      pushRetryTimers: { current: new Map() },
       createdAtCache: { current: new Map<string, string>() },
       originalFileHydrations: { current: new Set<string>() },
       paragraphsHydrations: { current: new Set<string>() },

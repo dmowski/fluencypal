@@ -41,6 +41,18 @@ export interface BooksSyncRefs {
   inFlightUploads: MutableRefObject<Set<string>>;
   /** Book ids that changed while a push was in flight and need a follow-up push. */
   pendingPushAfterUpload: MutableRefObject<Set<string>>;
+  /**
+   * Consecutive transient Storage failures per book. Cleared on a successful
+   * push; used to back off retries and only escalate to Sentry after several
+   * failures (Mobile Safari network blips).
+   */
+  pushTransientRetryCounts: MutableRefObject<Map<string, number>>;
+  /**
+   * Backoff timers for transient Storage retries. Kept separate from
+   * `pushTimers` so the normal debounce path cannot clobber an in-flight
+   * backoff unless a real local edit calls `schedulePush`.
+   */
+  pushRetryTimers: MutableRefObject<Map<string, ReturnType<typeof setTimeout>>>;
   /** Cached `createdAtIso` per book to keep it stable across pushes. */
   createdAtCache: MutableRefObject<Map<string, string>>;
   /** Per-book locks for the eager EPUB hydration effect. */
