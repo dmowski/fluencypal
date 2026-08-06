@@ -13,14 +13,8 @@ import { useAuth } from '../Auth/useAuth';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/firebaseDb';
-import {
-  GoalElementProgress,
-  ConversationResult,
-  GoalPlan,
-  PlanElement,
-  PlanElementMode,
-  GoalElementInfo,
-} from './types';
+import { ConversationResult, GoalElementProgress, GoalPlan, PlanElement, PlanElementMode, GoalElementInfo } from './types';
+import { skippedGoalRolePlayResults } from './goalRolePlayCompletion';
 import { useSettings } from '../Settings/useSettings';
 import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useTextAi } from '../Ai/useTextAi';
@@ -89,6 +83,7 @@ interface PlanContextType {
   setActiveGoal: (goalId: string) => Promise<void>;
 
   finishGoalElement: (goalElementId: string, results: ConversationResult) => Promise<void>;
+  skipGoalElement: (goalElementId: string) => Promise<void>;
   startGoalElement: (goalElementId: string) => Promise<void>;
 
   generateMoreElements: () => Promise<void>;
@@ -399,6 +394,10 @@ ${JSON.stringify(input.progress, null, 2)}
     await updateActiveGoalProgress(newProgress);
   };
 
+  const skipGoalElement = async (goalElementId: string) => {
+    await finishGoalElement(goalElementId, skippedGoalRolePlayResults());
+  };
+
   const isNeededToExtendActiveGoal = useMemo(() => {
     if (!activeGoal) return false;
     const existingProgress = activeGoal.progress || [];
@@ -509,6 +508,7 @@ ${JSON.stringify(input.progress, null, 2)}
     isCraftingError,
 
     finishGoalElement,
+    skipGoalElement,
     startGoalElement,
 
     generateMoreElements,

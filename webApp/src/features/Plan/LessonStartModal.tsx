@@ -26,6 +26,11 @@ import { useAuth } from '../Auth/useAuth';
 import { useConversationAudio } from '../Audio/useConversationAudio';
 import { usePlan } from './usePlan';
 import { getMediaAudioStreams } from '../webCam/mediaStream';
+import {
+  canSkipGoalRolePlayLesson,
+  shouldRegenerateGoalRolePlayPlan,
+} from './goalRolePlayCompletion';
+import { GoalRolePlayIntroView } from './components/GoalRolePlayIntroView';
 
 type Step = 'intro' | 'mic' | 'webcam' | 'words' | 'rules' | 'start' | 'plan';
 
@@ -99,7 +104,19 @@ export const LessonStartModal = ({
     isLoadingLessonPlanRef.current = true;
     setIsLessonPlanLoading(true);
 
-    await lessonPlan.createLessonPlan({ goalInfo, skipCache, words, rule });
+    const shouldSkipCache =
+      skipCache ||
+      shouldRegenerateGoalRolePlayPlan(
+        goalInfo.goalElement.mode,
+        goalInfo.goalElement.startCount || 0,
+      );
+
+    await lessonPlan.createLessonPlan({
+      goalInfo,
+      skipCache: shouldSkipCache,
+      words,
+      rule,
+    });
 
     isLoadingLessonPlanRef.current = false;
     setIsLessonPlanLoading(false);
@@ -219,6 +236,21 @@ export const LessonStartModal = ({
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes('dmowski');
 
+  const elementProgress = plan.activeGoal?.progress?.find(
+    (entry) => entry.elementId === goalInfo.goalElement.id,
+  );
+  const isElementCompleted = elementProgress?.state === 'completed';
+  const showSkipLesson = canSkipGoalRolePlayLesson({
+    mode: goalInfo.goalElement.mode,
+    startCount: goalInfo.goalElement.startCount || 0,
+    isCompleted: isElementCompleted,
+  });
+
+  const onSkipLesson = async () => {
+    await plan.skipGoalElement(goalInfo.goalElement.id);
+    onClose();
+  };
+
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
@@ -229,7 +261,16 @@ export const LessonStartModal = ({
       >
         {translator.translateModal}
 
-        {step === 'intro' && (
+        {step === 'intro' && goalInfo.goalElement.mode === 'play' ? (
+          <GoalRolePlayIntroView
+            title={goalInfo.goalElement.title}
+            subTitle={goalInfo.goalElement.subTitle || goalInfo.goalElement.description}
+            details={goalInfo.goalElement.details}
+            showSkipLesson={showSkipLesson}
+            onContinue={onNext}
+            onSkipLesson={onSkipLesson}
+          />
+        ) : step === 'intro' ? (
           <InfoStep
             title={goalInfo.goalElement.title}
             subTitle={goalInfo.goalElement.subTitle || goalInfo.goalElement.description}
@@ -244,7 +285,7 @@ export const LessonStartModal = ({
             }
             onClick={onNext}
           />
-        )}
+        ) : null}
 
         {step === 'mic' && (
           <InfoStep

@@ -2,8 +2,6 @@
 
 ## Daily Tasks improvement
 
-\*. Learning goal: It's difficult to finish the task. Weaken logic of finishing. And I see that one user has so many items in learning plan. That it work to adjust it somehow
-
 \*. Finish call from camera mode: we need to close it really and provide ability to change to text mode?
 How to inform users that the daily task is done
 

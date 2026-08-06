@@ -305,7 +305,11 @@ ${JSON.stringify(previousProgress, null, 2)}
     words?: string[];
     rule?: string;
   }): Promise<LessonPlan> => {
-    const storagePlan = getLessonPlanFromStorage(goalInfo.goalElement.id);
+    if (skipCache && typeof localStorage !== 'undefined') {
+      localStorage.removeItem(`lessonPlan_${goalInfo.goalElement.id}`);
+    }
+
+    const storagePlan = skipCache ? null : getLessonPlanFromStorage(goalInfo.goalElement.id);
     if (storagePlan && !skipCache) {
       setActiveLessonPlan(storagePlan);
       return storagePlan;

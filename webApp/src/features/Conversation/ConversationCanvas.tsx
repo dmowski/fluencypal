@@ -317,7 +317,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           },
         }}
       >
-        <Stack id="messages-list">
+        <Stack id="messages-list" data-testid="conversation-canvas-record">
           <Stack
             sx={{
               width: '100%',
