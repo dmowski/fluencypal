@@ -2,6 +2,7 @@
 
 import { useLingui } from '@lingui/react';
 import { Menu, MenuItem, Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 import { useMemo, useState } from 'react';
 import { VoiceChatMessage } from '../types';
 import { voiceChatUi } from '../voiceChatUi';
@@ -153,7 +154,21 @@ export const VoiceChatMessageList = ({
         onClose={closeMessageMenu}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        data-testid="voice-chat-message-menu"
       >
+        {menuMessage && (
+          <MenuItem
+            disabled
+            sx={{
+              opacity: '1 !important',
+              fontSize: 13,
+              color: `${voiceChatUi.textMuted} !important`,
+              fontVariantNumeric: 'tabular-nums',
+            }}
+          >
+            {dayjs(menuMessage.createdAtIso).format('D MMM YYYY, HH:mm')}
+          </MenuItem>
+        )}
         <MenuItem onClick={handleMenuReply} sx={{ fontSize: 14 }}>
           {i18n._('Reply')}
         </MenuItem>

@@ -80,6 +80,16 @@ test('message list – nested conversation with unread highlights', async () => 
     .toMatchScreenshot('message-list-conversation');
 });
 
+test('message list – message options menu with recorded date', async () => {
+  await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
+
+  await userEvent.click(page.getByRole('button', { name: 'Message options' }).first());
+
+  await expect
+    .element(page.getByTestId('voice-chat-message-menu'))
+    .toMatchScreenshot('message-list-options-menu');
+});
+
 test('message list – reply recorder open', async () => {
   await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
 

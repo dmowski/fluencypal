@@ -97,6 +97,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | `voice-chat-members-stats` | Clickable Online/Total counts in modal header |
 | `voice-chat-members-dialog` | Members list dialog (Total / Online tabs) |
 | `voice-chat-new-badge` | “New” badge on unlistened messages |
+| `voice-chat-message-menu` | Message options menu (recorded date, reply, remove) |
 
 ## Testing
 
@@ -122,7 +123,7 @@ Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtur
 
 | Screenshot | Covers |
 | --- | --- |
-| `message-list-*` | Empty thread, nested replies, active player, reply recorder (`VoiceChatMessageItem`: row 1 identity, row 2 play · duration · reply) |
+| `message-list-*` | Empty thread, nested replies, options menu (recorded date), reply recorder (`VoiceChatMessageItem`: row 1 identity, row 2 play · duration · reply) |
 | `modal-shell-*` | Modal header/alert, thread + always-visible root recorder |
 | `modal-members-dialog` | Members list dialog opened from Online/Total |
 | `player-controls` | Audio player chrome |

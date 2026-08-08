@@ -1,12 +1,5 @@
 # Live document with short/long term ideas
 
-## Voice Chat features
-
-Status: Not started
-On player menu: show date where message was created
-
-=======
-
 ## Restore Quiz at beginning on landing
 
 ## Book Highlights: revers list
