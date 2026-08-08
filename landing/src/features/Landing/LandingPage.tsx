@@ -190,7 +190,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
   const quizLink = getAppUrlStart(lang) + 'quiz';
 
   const practiceRedirectUrl = `${getAppUrlStart(lang)}practice`;
-  const mainRedirectUrl = practiceRedirectUrl;
+  const mainRedirectUrl = quizLink;
 
   return (
     <>
