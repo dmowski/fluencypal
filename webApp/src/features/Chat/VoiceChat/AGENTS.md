@@ -96,6 +96,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | `voice-chat-empty` | Empty thread state |
 | `voice-chat-members-stats` | Clickable Online/Total counts in modal header |
 | `voice-chat-members-dialog` | Members list dialog (Total / Online tabs) |
+| `voice-chat-new-badge` | “New” badge on unlistened messages |
 
 ## Testing
 

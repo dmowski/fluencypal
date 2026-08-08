@@ -204,6 +204,27 @@ export const VoiceChatPlayer = ({
                 size="small"
                 hideBadge={true}
               />
+              {showAsUnread && (
+                <Typography
+                  component="span"
+                  data-testid="voice-chat-new-badge"
+                  sx={{
+                    flexShrink: 0,
+                    padding: '2px 5px',
+                    borderRadius: '4px',
+                    fontSize: '10px',
+                    fontWeight: 400,
+                    letterSpacing: '0.04em',
+                    lineHeight: 1.4,
+                    color: '#1a1408',
+                    bgcolor: '#58A6FF',
+                    position: 'relative',
+                    top: '-2px',
+                  }}
+                >
+                  {i18n._('New')}
+                </Typography>
+              )}
             </Stack>
           )}
           <LinearProgress

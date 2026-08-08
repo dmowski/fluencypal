@@ -83,10 +83,10 @@ export const VoiceChatPendingRequestCard = ({
         bgcolor: voiceChatUi.surfaceSubtle,
       }}
     >
-      <Stack direction="row" alignItems="center" gap={0.75} minWidth={0}>
-        <Avatar url={game.getUserAvatarUrl(member.userId)} avatarSize={voiceChatUi.pendingAvatarSize} />
-        <Stack flex={1} minWidth={0} gap={0.25}>
-          <Stack direction="row" alignItems="center" gap={0.75} minWidth={0}>
+      <Stack direction="row" alignItems="center" gap={'10px'} minWidth={0}>
+        <Avatar url={game.getUserAvatarUrl(member.userId)} avatarSize={'38px'} />
+        <Stack minWidth={0} gap={'0px'}>
+          <Stack direction="row" alignItems="center" gap={'10px'}>
             <UserName
               userId={member.userId}
               userName={game.getUserName(member.userId)}
@@ -96,8 +96,6 @@ export const VoiceChatPendingRequestCard = ({
             <Typography
               variant="caption"
               sx={{
-                ml: 'auto',
-                flexShrink: 0,
                 color: voiceChatUi.textMuted,
                 fontVariantNumeric: 'tabular-nums',
               }}

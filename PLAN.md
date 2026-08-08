@@ -3,13 +3,6 @@
 ## Voice Chat features
 
 Status: Not started
-
-- Show badge: New. On messages that are not listened.
-  Show that badge next to username
-
-======
-
-Status: Not started
 On player menu: show date where message was created
 
 =======
