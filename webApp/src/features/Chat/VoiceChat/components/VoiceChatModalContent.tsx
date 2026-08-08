@@ -1,8 +1,8 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { Mic, X } from 'lucide-react';
+import { IconButton, Stack, Typography } from '@mui/material';
+import { X } from 'lucide-react';
 import { useState } from 'react';
 import { useGame } from '@/features/Game/useGame';
 import { isVoiceChatUserOnline } from '../isVoiceChatUserOnline';
@@ -27,7 +27,6 @@ export interface VoiceChatModalContentProps {
   audioUrlById: Record<string, string>;
   playingMessageId: string | null;
   autoPlayMessageId: string | null;
-  showRootRecorder: boolean;
   error?: string;
   isLoading?: boolean;
   onPlayStart: (messageId: string) => void;
@@ -35,9 +34,7 @@ export interface VoiceChatModalContentProps {
   onEnded: (messageId: string) => void;
   onReply: (parentMessageId: string, blob: Blob, durationSec: number) => Promise<void>;
   onRemove: (messageId: string) => Promise<void>;
-  onShowRootRecorder: () => void;
   onSubmitRootMessage: (blob: Blob, durationSec: number) => Promise<void>;
-  onCancelRootRecorder: () => void;
 }
 
 export const VoiceChatModalContent = ({
@@ -48,7 +45,6 @@ export const VoiceChatModalContent = ({
   audioUrlById,
   playingMessageId,
   autoPlayMessageId,
-  showRootRecorder,
   error,
   isLoading = false,
   onPlayStart,
@@ -56,9 +52,7 @@ export const VoiceChatModalContent = ({
   onEnded,
   onReply,
   onRemove,
-  onShowRootRecorder,
   onSubmitRootMessage,
-  onCancelRootRecorder,
 }: VoiceChatModalContentProps) => {
   const { i18n } = useLingui();
   const game = useGame();
@@ -177,32 +171,11 @@ export const VoiceChatModalContent = ({
         />
       )}
 
-      {!showRootRecorder ? (
-        <Stack
-          sx={{
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
-            flexDirection: 'row',
-            paddingTop: '10px',
-          }}
-        >
-          <Button
-            startIcon={<Mic size="15px" />}
-            variant="contained"
-            color="info"
-            onClick={onShowRootRecorder}
-          >
-            {i18n._('Record a new message')}
-          </Button>
-        </Stack>
-      ) : (
-        <VoiceChatRecorderPanel
-          title={i18n._('Record a new message')}
-          submitLabel={i18n._('Send')}
-          onSubmit={onSubmitRootMessage}
-          onCancel={onCancelRootRecorder}
-        />
-      )}
+      <VoiceChatRecorderPanel
+        title={i18n._('Record a new message')}
+        submitLabel={i18n._('Send')}
+        onSubmit={onSubmitRootMessage}
+      />
 
       <VoiceChatMembersDialog
         open={isMembersOpen}

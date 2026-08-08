@@ -122,7 +122,7 @@ Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtur
 | Screenshot | Covers |
 | --- | --- |
 | `message-list-*` | Empty thread, nested replies, active player, reply recorder (`VoiceChatMessageItem`: row 1 identity, row 2 play · duration · reply) |
-| `modal-shell-*` | Modal header/alert, thread + record button or root recorder |
+| `modal-shell-*` | Modal header/alert, thread + always-visible root recorder |
 | `modal-members-dialog` | Members list dialog opened from Online/Total |
 | `player-controls` | Audio player chrome |
 | `recorder-idle` | Intro recorder before mic start |

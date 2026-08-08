@@ -25,7 +25,6 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [audioUrlById, setAudioUrlById] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [showRootRecorder, setShowRootRecorder] = useState(false);
   const objectUrlsRef = useRef<string[]>([]);
 
   const load = useCallback(async () => {
@@ -138,7 +137,6 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         audioUrlById={audioUrlById}
         playingMessageId={playingMessageId}
         autoPlayMessageId={autoPlayMessageId}
-        showRootRecorder={showRootRecorder}
         error={error}
         isLoading={isLoading}
         onPlayStart={onPlayStart}
@@ -146,12 +144,9 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         onEnded={(id) => void onEnded(id)}
         onReply={onReply}
         onRemove={onRemove}
-        onShowRootRecorder={() => setShowRootRecorder(true)}
         onSubmitRootMessage={async (blob, durationSec) => {
           await onReply('', blob, durationSec);
-          setShowRootRecorder(false);
         }}
-        onCancelRootRecorder={() => setShowRootRecorder(false)}
       />
     </CustomModal>
   );

@@ -58,7 +58,6 @@ export function modalFixtureContentProps(options: {
   playingMessageId?: string | null;
   autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
-  showRecorder?: boolean;
 }): VoiceChatModalContentProps {
   const {
     messages = FIXTURE_CONVERSATION,
@@ -67,7 +66,6 @@ export function modalFixtureContentProps(options: {
     playingMessageId = null,
     autoPlayMessageId = null,
     audioUrlById,
-    showRecorder = false,
   } = options;
 
   return {
@@ -78,15 +76,12 @@ export function modalFixtureContentProps(options: {
     audioUrlById: audioUrlById ?? fixtureAudioUrlById(messages),
     playingMessageId,
     autoPlayMessageId,
-    showRootRecorder: showRecorder,
     onPlayStart: () => {},
     onProgressListen: () => {},
     onEnded: () => {},
     onReply: noopAsync,
     onRemove: noopAsync,
-    onShowRootRecorder: () => {},
     onSubmitRootMessage: noopAsync,
-    onCancelRootRecorder: () => {},
   };
 }
 

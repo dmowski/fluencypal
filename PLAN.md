@@ -4,14 +4,6 @@
 
 Status: Not started
 
-webApp/src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx
-
-Do not show button "Record a new messages", show recording panned from start
-
-======
-
-Status: Not started
-
 - Show badge: New. On messages that are not listened.
   Show that badge next to username
 

@@ -91,22 +91,12 @@ test('message list – reply recorder open', async () => {
     .toMatchScreenshot('message-list-reply-recorder');
 });
 
-test('modal shell – conversation with record button', async () => {
+test('modal shell – conversation with root recorder', async () => {
   await render(<VoiceChatModalShellFixture messages={FIXTURE_CONVERSATION} />);
 
   await expect
     .element(page.getByTestId('voice-chat-modal-shell-fixture'))
     .toMatchScreenshot('modal-shell-conversation');
-});
-
-test('modal shell – root recorder open', async () => {
-  await render(
-    <VoiceChatModalShellFixture messages={FIXTURE_CONVERSATION} showRecorder={true} />,
-  );
-
-  await expect
-    .element(page.getByTestId('voice-chat-modal-shell-fixture'))
-    .toMatchScreenshot('modal-shell-recorder');
 });
 
 test('modal shell – members dialog with Total / Online tabs', async () => {

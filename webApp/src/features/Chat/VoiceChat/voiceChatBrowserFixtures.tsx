@@ -100,7 +100,6 @@ export function VoiceChatModalShellFixture(props: {
   playingMessageId?: string | null;
   autoPlayMessageId?: string | null;
   audioUrlById?: Record<string, string>;
-  showRecorder?: boolean;
 }) {
   return (
     <VoiceChatTestShell testId="voice-chat-modal-shell-fixture" surface="modal">
