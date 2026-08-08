@@ -1,6 +1,6 @@
 import { useLingui } from '@lingui/react';
 import { Stack, Typography } from '@mui/material';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode } from 'react';
 
 export interface ReaderHighlightItem {
   id: string;

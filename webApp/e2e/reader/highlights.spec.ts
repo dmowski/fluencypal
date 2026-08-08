@@ -59,6 +59,11 @@ test('book info highlights list shows context and jumps to selected highlight', 
   await applyYellowHighlight(page);
   await assertWheneverHighlightedYellow(page);
 
+  // Later-in-document highlight (list is reverse document order → this appears first).
+  await ensureReaderTextVisible(page, 'remember that a');
+  await hoverWordAndPressColorKey(page, /^remember$/i, 'y');
+  await assertOnlyWordHighlightedYellow(page, /^remember$/i);
+
   const pageIndicator = page.getByTestId('reader-page-indicator');
 
   await pressReaderNextPage(page);
@@ -72,9 +77,17 @@ test('book info highlights list shows context and jumps to selected highlight', 
   await expect(highlightsPopover).toBeVisible();
 
   const highlightItems = highlightsPopover.getByTestId('reader-highlight-item');
-  await expect(highlightItems).toHaveCount(1);
+  await expect(highlightItems).toHaveCount(2);
 
-  const highlightItem = highlightItems.first();
+  // Reverse document order: remember (later) first, Whenever (earlier) second.
+  await expect(highlightItems.nth(0).getByTestId('reader-highlight-selected-text')).toHaveText(
+    /remember/i,
+  );
+  await expect(highlightItems.nth(1).getByTestId('reader-highlight-selected-text')).toHaveText(
+    /whenever/i,
+  );
+
+  const highlightItem = highlightItems.nth(1);
   const highlightBeforeText = highlightItem.getByTestId('reader-highlight-before-text');
   const highlightSelectedText = highlightItem.getByTestId('reader-highlight-selected-text');
   const highlightAfterText = highlightItem.getByTestId('reader-highlight-after-text');

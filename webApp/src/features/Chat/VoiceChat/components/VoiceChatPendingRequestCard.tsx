@@ -76,6 +76,7 @@ export const VoiceChatPendingRequestCard = ({
   return (
     <Stack
       gap={1}
+      data-testid={`voice-chat-pending-${member.userId}`}
       sx={{
         p: 1.25,
         borderRadius: 1.5,

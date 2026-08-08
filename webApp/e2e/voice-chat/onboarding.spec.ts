@@ -24,10 +24,11 @@ test.describe('Voice Chat onboarding', () => {
 
     await signInFounderOnDashboard(page);
     await expect(page.getByTestId('voice-chat-pending-list')).toBeVisible();
-    await expect(page.getByText(applicant.uid)).toBeVisible();
+    const pendingCard = page.getByTestId(`voice-chat-pending-${applicant.uid}`);
+    await expect(pendingCard).toBeVisible();
 
-    await page.getByRole('button', { name: 'Approve' }).click();
-    await expect(page.getByText(applicant.uid)).toBeHidden();
+    await pendingCard.getByRole('button', { name: 'Approve' }).click();
+    await expect(pendingCard).toBeHidden();
 
     const messages = await fetchVoiceChatMessages(applicant.idToken);
     expect(messages.messages.some((m) => m.isIntro && m.senderId === applicant.uid)).toBe(true);

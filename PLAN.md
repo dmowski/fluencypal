@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Book Highlights: revers list
-
 ## Daily Tasks improvement
 
 - Connect app into single flow

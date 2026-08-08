@@ -58,6 +58,7 @@ This file applies to `webApp/src/features/Reader/**`.
 - Preserve selection stability and offset correctness when changing paragraph tokenization or DOM wrappers.
 - Treat EPUB conversion and paragraph splitting as one pipeline; validate both when touching either side.
 - Reader visual/speech settings are local preferences (`useReaderSettings` + localStorage). If you add share/export behavior, include book content and highlights, but exclude local Reader settings payload.
+- Book-info highlights list (`useReaderHighlightItems` → `ReaderHighlightsList`) is reverse document order: sort by paragraph/start/end ascending, then reverse so later highlights appear first. Do not auto-scroll the list on open.
 
 ## Book File Shape
 

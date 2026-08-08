@@ -48,10 +48,10 @@ test.describe('Voice Chat messages', () => {
     await signInUserOnDashboard(page, listener);
 
     await page.goto('/?voiceChat=true');
-    await expect(page.getByTestId(`voice-chat-message-${messageId}`)).toBeVisible();
-    await page.getByRole('button', { name: 'Listen' }).first().click();
-    await expect(page.getByTestId('voice-chat-player')).toBeVisible();
-    await page.getByRole('button', { name: 'Play' }).click();
+    const message = page.getByTestId(`voice-chat-message-${messageId}`);
+    await expect(message).toBeVisible();
+    await expect(message.getByTestId('voice-chat-player')).toBeVisible();
+    await message.getByRole('button', { name: 'Play' }).click();
   });
 
   test('delete removes nested replies', async () => {

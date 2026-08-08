@@ -89,6 +89,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | --- | --- |
 | `voice-chat-dashboard-card` | Dashboard card |
 | `voice-chat-pending-list` | Approver pending requests |
+| `voice-chat-pending-{userId}` | Single pending request card |
 | `voice-chat-modal` | Modal root |
 | `voice-chat-recorder` | Recorder panel |
 | `voice-chat-player` | Audio player |

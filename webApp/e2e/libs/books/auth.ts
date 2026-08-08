@@ -1,4 +1,5 @@
 import { Browser, BrowserContext, Page, expect } from '@playwright/test';
+import { mockStorageUploads } from './sync';
 
 const FIREBASE_API_KEY = 'fake-api-key';
 const AUTH_EMULATOR_HOST = 'http://127.0.0.1:9099';
@@ -122,6 +123,9 @@ export const openFreshReaderPageForUser = async (
 ): Promise<{ context: BrowserContext; page: Page }> => {
   const context = await browser.newContext();
   const page = await context.newPage();
+  // Avoid Firebase Storage emulator upload hangs on the second browser context
+  // (same mitigation as the primary page's beforeEach mock).
+  await mockStorageUploads(page);
   await page.addInitScript(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();

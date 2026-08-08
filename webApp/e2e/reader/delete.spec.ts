@@ -30,6 +30,11 @@ const goToBooksList = async (page: Page) => {
   await expect(page.getByRole('heading', { name: BOOK_TITLE, level: 4 })).toBeVisible();
 };
 
+const openDeleteMenu = async (page: Page) => {
+  await page.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
+  await page.getByRole('menuitem', { name: 'Delete' }).click();
+};
+
 test.describe('Reader book deletion', () => {
   test.beforeEach(async ({ page }) => {
     await resetEmulatorState();
@@ -46,11 +51,10 @@ test.describe('Reader book deletion', () => {
     await goToBooksList(page);
 
     page.once('dialog', (dialog) => void dialog.accept());
-    await page.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-    await page.getByRole('menuitem', { name: 'Delete' }).click();
+    await openDeleteMenu(page);
 
-    await waitForRemoteReaderBooksCount(userA.uid, 0);
     await expect(page.getByRole('heading', { name: BOOK_TITLE, level: 4 })).not.toBeVisible();
+    await waitForRemoteReaderBooksCount(userA.uid, 0);
   });
 
   // ------------------------------------------------------------------ //
@@ -58,10 +62,9 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('non-owner sees "leave" modal and can leave the book', async ({ page, browser }) => {
-    test.setTimeout(90_000);
-
+    const userBPromise = createEmulatorTestUser();
     const userA = await signInOwnerWithSeededBook(page);
-    const userB = await createEmulatorTestUser();
+    const userB = await userBPromise;
 
     await goToBooksList(page);
     await shareBookViaUI(page, GATSBY_BOOK_ID, userB.email, { sharedUserUid: userB.uid });
@@ -70,17 +73,16 @@ test.describe('Reader book deletion', () => {
     try {
       await expect(pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 })).toBeVisible();
 
-      await pageB.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-      await pageB.getByRole('menuitem', { name: 'Delete' }).click();
+      await openDeleteMenu(pageB);
 
       await expect(pageB.getByTestId('delete-book-modal')).toBeVisible();
       await expect(pageB.getByTestId('delete-modal-leave-btn')).toBeVisible();
       await expect(pageB.getByTestId('delete-modal-delete-for-all-btn')).not.toBeVisible();
 
       await pageB.getByTestId('delete-modal-leave-btn').click();
-
-      await waitForBookMissingForUser(userB.uid, GATSBY_BOOK_ID);
+      await expect(pageB.getByTestId('delete-book-modal')).not.toBeVisible();
       await expect(pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 })).not.toBeVisible();
+      await waitForBookMissingForUser(userB.uid, GATSBY_BOOK_ID);
     } finally {
       await contextB.close();
     }
@@ -93,14 +95,14 @@ test.describe('Reader book deletion', () => {
   // ------------------------------------------------------------------ //
 
   test('owner with collaborators sees custom delete modal', async ({ page }) => {
-    const userA = await signInOwnerWithSeededBook(page);
-    const userB = await createEmulatorTestUser();
+    const userBPromise = createEmulatorTestUser();
+    await signInOwnerWithSeededBook(page);
+    const userB = await userBPromise;
 
     await goToBooksList(page);
     await shareBookViaUI(page, GATSBY_BOOK_ID, userB.email);
 
-    await page.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-    await page.getByRole('menuitem', { name: 'Delete' }).click();
+    await openDeleteMenu(page);
 
     await expect(page.getByTestId('delete-book-modal')).toBeVisible();
     await expect(page.getByTestId('delete-modal-delete-for-all-btn')).toBeVisible();
@@ -109,33 +111,31 @@ test.describe('Reader book deletion', () => {
   });
 
   test('owner clicks "Delete for all" removes book for everyone', async ({ page }) => {
-    test.setTimeout(90_000);
-
+    const userBPromise = createEmulatorTestUser();
     const userA = await signInOwnerWithSeededBook(page);
-    const userB = await createEmulatorTestUser();
+    const userB = await userBPromise;
 
     await goToBooksList(page);
     await shareBookViaUI(page, GATSBY_BOOK_ID, userB.email, { sharedUserUid: userB.uid });
 
-    await page.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-    await page.getByRole('menuitem', { name: 'Delete' }).click();
+    await openDeleteMenu(page);
     await expect(page.getByTestId('delete-book-modal')).toBeVisible();
     await page.getByTestId('delete-modal-delete-for-all-btn').click();
 
+    await expect(page.getByRole('heading', { name: BOOK_TITLE, level: 4 })).not.toBeVisible();
     await waitForRemoteReaderBooksCount(userA.uid, 0);
     await waitForBookMissingForUser(userB.uid, GATSBY_BOOK_ID);
-    await expect(page.getByRole('heading', { name: BOOK_TITLE, level: 4 })).not.toBeVisible();
   });
 
   test('"Open sharing settings" from delete modal transitions to share modal', async ({ page }) => {
-    const userA = await signInOwnerWithSeededBook(page);
-    const userB = await createEmulatorTestUser();
+    const userBPromise = createEmulatorTestUser();
+    await signInOwnerWithSeededBook(page);
+    const userB = await userBPromise;
 
     await goToBooksList(page);
     await shareBookViaUI(page, GATSBY_BOOK_ID, userB.email);
 
-    await page.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-    await page.getByRole('menuitem', { name: 'Delete' }).click();
+    await openDeleteMenu(page);
     await expect(page.getByTestId('delete-book-modal')).toBeVisible();
 
     await page.getByTestId('delete-modal-open-sharing-btn').click();
@@ -148,11 +148,10 @@ test.describe('Reader book deletion', () => {
   // REASSIGN OWNER                                                       //
   // ------------------------------------------------------------------ //
 
-  test('owner can reassign ownership to a collaborator', async ({ page, browser }) => {
-    test.setTimeout(90_000);
-
+  test('owner can reassign ownership to a collaborator', async ({ page }) => {
+    const userBPromise = createEmulatorTestUser();
     const userA = await signInOwnerWithSeededBook(page);
-    const userB = await createEmulatorTestUser();
+    const userB = await userBPromise;
 
     await goToBooksList(page);
     await shareBookViaUI(page, GATSBY_BOOK_ID, userB.email, { sharedUserUid: userB.uid });
@@ -162,7 +161,6 @@ test.describe('Reader book deletion', () => {
     await expect(page.getByTestId('share-book-modal')).toBeVisible();
 
     await page.getByTestId(`share-modal-make-owner-${userB.uid}`).click();
-
     await expect(page.getByTestId('share-book-modal')).not.toBeVisible();
 
     await waitForRemoteBookField(
@@ -172,23 +170,16 @@ test.describe('Reader book deletion', () => {
       (value) => value === userB.uid,
     );
     await waitForRemoteBookField(
-      userB.uid,
+      userA.uid,
       GATSBY_BOOK_ID,
       'userIds',
       (value) => Array.isArray(value) && value.includes(userA.uid),
     );
 
-    const { context: contextB, page: pageB } = await openFreshReaderPageForUser(browser, userB);
-    try {
-      await expect(pageB.getByRole('heading', { name: BOOK_TITLE, level: 4 })).toBeVisible();
-
-      await pageB.getByTestId(`book-menu-${GATSBY_BOOK_ID}`).click();
-      await pageB.getByRole('menuitem', { name: 'Delete' }).click();
-
-      await expect(pageB.getByTestId('delete-book-modal')).toBeVisible();
-      await expect(pageB.getByTestId('delete-modal-delete-for-all-btn')).toBeVisible();
-    } finally {
-      await contextB.close();
-    }
+    // Former owner is now a collaborator → leave modal, not delete-for-all.
+    await openDeleteMenu(page);
+    await expect(page.getByTestId('delete-book-modal')).toBeVisible();
+    await expect(page.getByTestId('delete-modal-leave-btn')).toBeVisible();
+    await expect(page.getByTestId('delete-modal-delete-for-all-btn')).not.toBeVisible();
   });
 });
