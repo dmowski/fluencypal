@@ -18,6 +18,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const [messages, setMessages] = useState<VoiceChatMessage[]>([]);
+  const [memberUserIds, setMemberUserIds] = useState<string[]>([]);
   const [listenedIds, setListenedIds] = useState<Set<string>>(new Set());
   const [playingMessageId, setPlayingMessageId] = useState<string | null>(null);
   const [autoPlayMessageId, setAutoPlayMessageId] = useState<string | null>(null);
@@ -35,6 +36,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       const token = await auth.getToken();
       const data = await fetchVoiceChatMessages(token);
       setMessages(data.messages);
+      setMemberUserIds(data.memberUserIds);
       setListenedIds(new Set(data.listenedMessageIds));
     } catch (e) {
       setError(e instanceof Error ? e.message : i18n._('Failed to load messages'));
@@ -130,6 +132,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       <VoiceChatModalView
         shellTestId="voice-chat-modal"
         messages={messages}
+        memberUserIds={memberUserIds}
         currentUserId={auth.uid || ''}
         listenedIds={listenedIds}
         audioUrlById={audioUrlById}

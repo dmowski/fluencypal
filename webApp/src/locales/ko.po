@@ -3763,7 +3763,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "토론"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "무시"
@@ -4516,7 +4516,7 @@ msgstr "퀴즈 생성 실패."
 msgid "Failed to load conversation history"
 msgstr "대화 기록 로드 실패"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "메시지 로드에 실패했습니다"
@@ -4526,7 +4526,7 @@ msgstr "메시지 로드에 실패했습니다"
 msgid "Failed to load voice chat status"
 msgstr "음성 채팅 상태를 불러오지 못했습니다."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "재생하지 못했습니다."
@@ -7209,7 +7209,7 @@ msgstr "로딩 중.."
 msgid "Loading..."
 msgstr "로딩 중..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -7846,6 +7846,11 @@ msgstr "하이라이트 없음"
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "아직 멤버가 없습니다."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8027,6 +8032,11 @@ msgstr "번호. 표시된 가격은 전체 가격입니다. 숨겨진 수수료�
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "아니요. 결제 정보를 입력하지 않고 무료 플랜을 시작할 수 있습니다."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "지금은 온라인 상태인 사람이 없습니다."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8173,10 +8183,25 @@ msgstr "한 가지 더."
 msgid "One thing left to do"
 msgstr "해야 할 일이 하나 남았습니다"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "온라인"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "온라인 ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "온라인 영어"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "온라인: {online}, 전체: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8478,6 +8503,11 @@ msgstr "결제가 완료되었습니다!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "대기 중인 요청"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "음성 채팅의 사람들"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -9726,8 +9756,8 @@ msgid ""
 "leaderboard"
 msgstr "Community Chat에서 메시지를 녹음하고 리더보드에서 {points} 포인트를 획득하세요"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "새 메시지 녹음하기"
@@ -10320,7 +10350,7 @@ msgstr "독학 개발자가 HTML, CSS, JavaScript 지식을 검증하고자 함"
 msgid "Semantic HTML"
 msgstr "시맨틱 HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -12829,6 +12859,11 @@ msgstr "리더보드 상위 5위는 모든 앱 기능에 무료로 완전히 접
 msgid "Total"
 msgstr "총계"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "총계 ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13331,7 +13366,7 @@ msgstr "음성 채팅은 유료 회원을 위한 것입니다. 이는 방을 작
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "사람들과 음성 채팅"
@@ -14474,7 +14509,7 @@ msgid ""
 "ready."
 msgstr "당신의 소개가 이미 방에 있습니다. 다른 사람들의 말을 듣고 준비가 되면 답장하세요."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

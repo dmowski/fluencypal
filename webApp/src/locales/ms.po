@@ -3921,7 +3921,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Perbincangan"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Abaikan"
@@ -4719,7 +4719,7 @@ msgstr "Gagal menjana kuiz."
 msgid "Failed to load conversation history"
 msgstr "Gagal memuatkan sejarah perbualan"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Gagal memuat mesej"
@@ -4729,7 +4729,7 @@ msgstr "Gagal memuat mesej"
 msgid "Failed to load voice chat status"
 msgstr "Gagal memuat status sembang suara"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Gagal untuk memainkan"
@@ -7649,7 +7649,7 @@ msgstr "Memuatkan.."
 msgid "Loading..."
 msgstr "Memuatkan..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8310,6 +8310,13 @@ msgstr "Tiada sorotan tersedia"
 msgid "No interviews found"
 msgstr "Tiada temu bual ditemui"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr ""
+"\n"
+"Tiada ahli lagi.\n"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8514,6 +8521,11 @@ msgstr ""
 "Tidak. Anda boleh memulakan pelan percuma tanpa memasukkan sebarang butiran "
 "pembayaran."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Tiada sesiapa dalam talian sekarang."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8667,10 +8679,25 @@ msgstr "Satu lagi perkara."
 msgid "One thing left to do"
 msgstr "Satu perkara lagi yang perlu dilakukan"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Dalam Talian"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Dalam Talian ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Dalam Talian Bahasa Inggeris"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Dalam Talian: {online}, Jumlah: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8996,6 +9023,11 @@ msgstr "Pembayaran berjaya!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Permintaan yang tertunda"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "Orang dalam sembang suara"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10319,8 +10351,8 @@ msgstr ""
 "Rekod mesej dalam Sembang Komuniti dan dapatkan {points} mata dalam papan "
 "kedudukan"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Rakaman mesej baru"
@@ -10923,7 +10955,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "HTML Semantik"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13611,6 +13643,11 @@ msgstr ""
 msgid "Total"
 msgstr "Jumlah"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "Jumlah ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -14136,7 +14173,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Berbual suara dengan orang"
@@ -15396,7 +15433,7 @@ msgstr ""
 "Pengenalan anda sudah berada di dalam bilik. Dengar orang lain, kemudian "
 "balas apabila anda bersedia."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

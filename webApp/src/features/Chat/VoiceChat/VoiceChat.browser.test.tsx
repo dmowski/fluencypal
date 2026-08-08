@@ -4,6 +4,8 @@ import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
 import {
   FIXTURE_CONVERSATION,
+  FIXTURE_CURRENT_USER,
+  FIXTURE_OTHER_USER,
   FIXTURE_USER_PROFILES,
   SILENT_AUDIO_DATA_URL,
   VoiceChatDashboardFixture,
@@ -14,10 +16,17 @@ import {
 } from './voiceChatBrowserFixtures';
 
 vi.mock('@/features/Game/useGame', () => ({
-  useGame: () => ({
-    getUserName: (userId: string) => FIXTURE_USER_PROFILES[userId]?.name ?? 'Unknown',
-    getUserAvatarUrl: (userId: string) => FIXTURE_USER_PROFILES[userId]?.avatar ?? '',
-  }),
+  useGame: () => {
+    const now = new Date().toISOString();
+    return {
+      getUserName: (userId: string) => FIXTURE_USER_PROFILES[userId]?.name ?? 'Unknown',
+      getUserAvatarUrl: (userId: string) => FIXTURE_USER_PROFILES[userId]?.avatar ?? '',
+      gameLastVisit: {
+        [FIXTURE_CURRENT_USER]: now,
+        [FIXTURE_OTHER_USER]: now,
+      },
+    };
+  },
 }));
 
 vi.mock('@/features/Auth/useAuth', () => ({
@@ -98,6 +107,16 @@ test('modal shell – root recorder open', async () => {
   await expect
     .element(page.getByTestId('voice-chat-modal-shell-fixture'))
     .toMatchScreenshot('modal-shell-recorder');
+});
+
+test('modal shell – members dialog with Total / Online tabs', async () => {
+  await render(<VoiceChatModalShellFixture messages={FIXTURE_CONVERSATION} />);
+
+  await userEvent.click(page.getByTestId('voice-chat-members-stats'));
+
+  await expect
+    .element(page.getByTestId('voice-chat-members-dialog'))
+    .toMatchScreenshot('modal-members-dialog');
 });
 
 test('player – controls with silent audio loaded', async () => {

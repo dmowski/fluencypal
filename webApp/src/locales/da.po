@@ -3867,7 +3867,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Diskussioner"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Afvis"
@@ -4649,7 +4649,7 @@ msgstr "Mislykkedes i at generere quiz."
 msgid "Failed to load conversation history"
 msgstr "Mislykkedes med at indlæse samtalehistorik"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Kunne ikke indlæse meddelelser"
@@ -4659,7 +4659,7 @@ msgstr "Kunne ikke indlæse meddelelser"
 msgid "Failed to load voice chat status"
 msgstr "Mislykkedes med at indlæse stemmechatstatus"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Mislykkedes at afspille"
@@ -7507,7 +7507,7 @@ msgstr "Indlæser.."
 msgid "Loading..."
 msgstr "Indlæser..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8161,6 +8161,11 @@ msgstr "Ingen højdepunkter tilgængelige"
 msgid "No interviews found"
 msgstr "Ingen interviews fundet"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "Ingen medlemmer endnu."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8361,6 +8366,11 @@ msgstr ""
 "Nej. Du kan starte den gratis plan uden at indtaste nogen "
 "betalingsoplysninger."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Der er ingen online lige nu."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8514,10 +8524,25 @@ msgstr "En ting mere."
 msgid "One thing left to do"
 msgstr "En ting tilbage at gøre"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Online"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Online ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online engelsk"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Online: {online}, Total: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8833,6 +8858,11 @@ msgstr "Betaling gennemført!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Afventende anmodninger"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "Folk i stemmechat"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10137,8 +10167,8 @@ msgid ""
 "leaderboard"
 msgstr "Optag en besked i Fælleschat og få {points} point på ranglisten"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Optag en ny besked"
@@ -10741,7 +10771,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantisk HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13380,6 +13410,13 @@ msgstr ""
 msgid "Total"
 msgstr "I alt"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr ""
+"\n"
+"Total ({count})\n"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13894,7 +13931,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Voice chat med folk"
@@ -15130,7 +15167,7 @@ msgstr ""
 "Din introduktion er allerede i rummet. Lyt til andre, og svar så, når du er "
 "klar."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

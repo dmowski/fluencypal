@@ -3850,7 +3850,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Discussions"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Dismiss"
@@ -4629,7 +4629,7 @@ msgstr "Failed to generate quiz."
 msgid "Failed to load conversation history"
 msgstr "Failed to load conversation history"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Failed to load messages"
@@ -4639,7 +4639,7 @@ msgstr "Failed to load messages"
 msgid "Failed to load voice chat status"
 msgstr "Failed to load voice chat status"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Failed to play"
@@ -7461,7 +7461,7 @@ msgstr "Loading.."
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8105,6 +8105,11 @@ msgstr "No highlights available"
 msgid "No interviews found"
 msgstr "No interviews found"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "No members yet."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8301,6 +8306,11 @@ msgstr ""
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "No. You can start the free plan without entering any payment details."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Nobody is online right now."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8452,10 +8462,25 @@ msgstr "One more thing."
 msgid "One thing left to do"
 msgstr "One thing left to do"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Online"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Online ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online English"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Online: {online}, Total: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8773,6 +8798,11 @@ msgstr "Payment successful!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Pending requests"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "People in voice chat"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10064,8 +10094,8 @@ msgstr ""
 "Record a message in Community Chat and get {points} points in the "
 "leaderboard"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Record a new message"
@@ -10666,7 +10696,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13292,6 +13322,11 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "Total ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13798,7 +13833,7 @@ msgstr "Voice chat is for paying members. This keeps the room small and respectf
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Voice chat with people"
@@ -15026,7 +15061,7 @@ msgstr ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
 "ready."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

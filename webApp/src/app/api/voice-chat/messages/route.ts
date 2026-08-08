@@ -6,6 +6,7 @@ import {
   getReadMetadata,
   listVoiceChatMessages,
 } from '@/features/Chat/VoiceChat/backend/messages';
+import { listApprovedMembers } from '@/features/Chat/VoiceChat/backend/membersStore';
 import {
   parseSendMessageForm,
   voiceChatErrorResponse,
@@ -19,13 +20,15 @@ export async function GET(request: Request) {
   try {
     const user = await validateAuthToken(request);
     await assertVoiceChatParticipant(user.uid);
-    const [messages, read] = await Promise.all([
+    const [messages, read, members] = await Promise.all([
       listVoiceChatMessages(),
       getReadMetadata(user.uid),
+      listApprovedMembers(),
     ]);
     const response: VoiceChatListMessagesResponse = {
       messages,
       listenedMessageIds: Object.keys(read).filter((id) => read[id]),
+      memberUserIds: members.map((member) => member.userId),
     };
     return NextResponse.json(response);
   } catch (error) {

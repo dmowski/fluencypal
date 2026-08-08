@@ -94,6 +94,8 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | `voice-chat-player` | Audio player |
 | `voice-chat-message-{id}` | Message row |
 | `voice-chat-empty` | Empty thread state |
+| `voice-chat-members-stats` | Clickable Online/Total counts in modal header |
+| `voice-chat-members-dialog` | Members list dialog (Total / Online tabs) |
 
 ## Testing
 
@@ -121,6 +123,7 @@ Browser screenshot tests: `VoiceChat.browser.test.tsx` + `voiceChatBrowserFixtur
 | --- | --- |
 | `message-list-*` | Empty thread, nested replies, active player, reply recorder (`VoiceChatMessageItem`: row 1 identity, row 2 play · duration · reply) |
 | `modal-shell-*` | Modal header/alert, thread + record button or root recorder |
+| `modal-members-dialog` | Members list dialog opened from Online/Total |
 | `player-controls` | Audio player chrome |
 | `recorder-idle` | Intro recorder before mic start |
 | `dashboard-*` | Onboarding checklist states, approver queue, rules dialog |
@@ -130,7 +133,7 @@ Run:
 ```bash
 cd webApp && pnpm lint
 cd webApp && pnpm test:unit -- --testPathPattern=VoiceChat
-cd webApp && pnpm test:unit:browser -- --run --update src/features/Chat/VoiceChat/VoiceChat.browser.test.tsx
+cd webApp && pnpm exec vitest --config vitest.browser.config.ts --run --update src/features/Chat/VoiceChat/VoiceChat.browser.test.tsx
 cd webApp && pnpm exec playwright test e2e/voice-chat
 ```
 

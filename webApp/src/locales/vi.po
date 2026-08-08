@@ -3897,7 +3897,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Thảo luận"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Bỏ qua"
@@ -4695,7 +4695,7 @@ msgstr "Không tạo được bài kiểm tra."
 msgid "Failed to load conversation history"
 msgstr "Không tải được lịch sử hội thoại"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Không thể tải tin nhắn"
@@ -4705,7 +4705,7 @@ msgstr "Không thể tải tin nhắn"
 msgid "Failed to load voice chat status"
 msgstr "Không tải được trạng thái trò chuyện thoại"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Không thể phát"
@@ -7563,7 +7563,7 @@ msgstr "Đang tải.."
 msgid "Loading..."
 msgstr "Đang tải..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8219,6 +8219,11 @@ msgstr "Không có điểm nổi bật nào khả dụng"
 msgid "No interviews found"
 msgstr "Không tìm thấy buổi phỏng vấn nào"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "Chưa có thành viên nào."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8421,6 +8426,11 @@ msgstr ""
 "Không. Bạn có thể bắt đầu gói miễn phí mà không cần nhập bất kỳ thông tin "
 "thanh toán nào."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Không có ai trực tuyến ngay bây giờ."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8575,10 +8585,25 @@ msgstr "Một điều nữa."
 msgid "One thing left to do"
 msgstr "Chỉ còn một việc cần làm"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Trực tuyến"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Trực tuyến ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online tiếng Anh"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Trực tuyến: {online}, Tổng: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8894,6 +8919,11 @@ msgstr "Thanh toán thành công!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Yêu cầu đang chờ xử lý"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "Những người trong cuộc trò chuyện thoại"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10216,8 +10246,8 @@ msgstr ""
 "Ghi lại một tin nhắn trong Phòng chat Cộng đồng và nhận {points} điểm trên "
 "bảng xếp hạng"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Ghi âm một tin nhắn mới"
@@ -10828,7 +10858,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13488,6 +13518,11 @@ msgstr ""
 msgid "Total"
 msgstr "Tổng cộng"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "Tổng ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -14014,7 +14049,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Trò chuyện thoại với mọi người"
@@ -15264,7 +15299,7 @@ msgstr ""
 "Phần giới thiệu của bạn đã có trong phòng. Lắng nghe người khác, sau đó trả "
 "lời khi bạn đã sẵn sàng."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

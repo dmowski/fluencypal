@@ -3884,7 +3884,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Tartışmalar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Reddet"
@@ -4673,7 +4673,7 @@ msgstr "Test oluşturma başarısız oldu."
 msgid "Failed to load conversation history"
 msgstr "Konuşma geçmişi yüklenemedi"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Mesajlar yüklenemedi"
@@ -4683,7 +4683,7 @@ msgstr "Mesajlar yüklenemedi"
 msgid "Failed to load voice chat status"
 msgstr "Sesli sohbet durumu yüklenemedi"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Çalma başarısız oldu"
@@ -7537,7 +7537,7 @@ msgstr "Yükleniyor.."
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8190,6 +8190,11 @@ msgstr "Hiçbir vurgulama mevcut değil"
 msgid "No interviews found"
 msgstr "Mülakat bulunamadı"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "Henüz üye yok."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8390,6 +8395,11 @@ msgstr ""
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "Hayır. Herhangi bir ödeme bilgisi girmeden ücretsiz plana başlayabilirsiniz."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Şu anda çevrimiçi kimse yok."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8541,10 +8551,25 @@ msgstr "Bir şey daha."
 msgid "One thing left to do"
 msgstr "Yapılacak bir şey kaldı"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Çevrimiçi"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Çevrimiçi ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Çevrimiçi İngilizce"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Çevrimiçi: {online}, Toplam: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8864,6 +8889,11 @@ msgstr "Ödeme başarılı!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "Bekleyen istekler"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "Sesli sohbetteki kişiler"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10168,8 +10198,8 @@ msgstr ""
 "Topluluk Sohbetinde bir mesaj kaydedin ve liderlik tablosunda {points} puan "
 "kazanın"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Yeni bir mesaj kaydet"
@@ -10779,7 +10809,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantik HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13432,6 +13462,11 @@ msgstr ""
 msgid "Total"
 msgstr "Toplam"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "Toplam ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13944,7 +13979,7 @@ msgstr "Sesli sohbet, ücretli üyeler içindir. Bu, odayı küçük ve saygıl�
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "İnsanlarla sesli sohbet edin"
@@ -15183,7 +15218,7 @@ msgstr ""
 "Tanıtımınız zaten odada. Diğerlerini dinleyin, ardından hazır olduğunuzda "
 "yanıtlayın."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

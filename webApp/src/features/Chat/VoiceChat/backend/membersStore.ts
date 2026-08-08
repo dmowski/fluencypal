@@ -15,6 +15,12 @@ export const listPendingMembers = async (): Promise<VoiceChatMember[]> => {
   return snap.docs.map((d) => d.data() as VoiceChatMember);
 };
 
+export const listApprovedMembers = async (): Promise<VoiceChatMember[]> => {
+  const db = getDB();
+  const snap = await db.collection(MEMBERS_COLLECTION).where('status', '==', 'approved').get();
+  return snap.docs.map((d) => d.data() as VoiceChatMember);
+};
+
 export const getReRequestAvailableAtIso = (member: VoiceChatMember | null): string | null => {
   if (!member || member.status !== 'rejected' || !member.decidedAtIso) return null;
   const decidedAt = new Date(member.decidedAtIso).getTime();

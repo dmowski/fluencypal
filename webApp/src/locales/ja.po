@@ -3737,7 +3737,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "ディスカッション"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "却下"
@@ -4487,7 +4487,7 @@ msgstr "クイズの生成に失敗しました。"
 msgid "Failed to load conversation history"
 msgstr "会話履歴の読み込みに失敗しました"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "メッセージの読み込みに失敗しました"
@@ -4497,7 +4497,7 @@ msgstr "メッセージの読み込みに失敗しました"
 msgid "Failed to load voice chat status"
 msgstr "ボイスチャットステータスの読み込みに失敗しました"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "再生に失敗しました"
@@ -7170,7 +7170,7 @@ msgstr "読み込み中.."
 msgid "Loading..."
 msgstr "読み込み中..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -7808,6 +7808,11 @@ msgstr "ハイライトは利用できません"
 msgid "No interviews found"
 msgstr "該当するインタビューが見つかりませんでした"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "まだメンバーはいません。"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -7987,6 +7992,11 @@ msgstr "いいえ。表示されている価格が全価格です。隠れた料
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "いいえ。支払い情報を入力せずに無料プランを始めることができます。"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "ただいまオンラインのユーザーはいません。"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8131,10 +8141,25 @@ msgstr "もう一つ。"
 msgid "One thing left to do"
 msgstr "後に残された一つのこと"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "オンライン"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "オンライン（{count}）"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "オンライン英語"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "オンライン: {online}, 合計: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8438,6 +8463,11 @@ msgstr "支払いが成功しました！"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "保留中のリクエスト"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "ボイスチャット内の人々"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -9685,8 +9715,8 @@ msgid ""
 "leaderboard"
 msgstr "コミュニティチャットでメッセージを記録し、リーダーボードで{points}ポイントを獲得"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "新しいメッセージを記録する"
@@ -10277,7 +10307,7 @@ msgstr "HTML、CSS、JavaScriptの知識を検証したい独学の開発者向�
 msgid "Semantic HTML"
 msgstr "セマンティックHTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -12773,6 +12803,11 @@ msgstr "リーダーボードのトップ5に入ると、アプリのすべて�
 msgid "Total"
 msgstr "合計"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "合計 ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13273,7 +13308,7 @@ msgstr "音声チャットは有料会員向けです。これにより、ルー
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "人々とボイスチャット"
@@ -14413,7 +14448,7 @@ msgid ""
 "ready."
 msgstr "あなたの自己紹介はすでに部屋にあります。他の人の話を聞いてから、準備が整ったら返事をしてください。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

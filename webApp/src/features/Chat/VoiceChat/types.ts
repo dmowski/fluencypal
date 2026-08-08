@@ -125,6 +125,7 @@ export interface VoiceChatStatusResponse {
 export interface VoiceChatListMessagesResponse {
   messages: VoiceChatMessage[];
   listenedMessageIds: string[];
+  memberUserIds: string[];
 }
 
 /** POST `/messages` (multipart: audio, durationSec, parentMessageId) */

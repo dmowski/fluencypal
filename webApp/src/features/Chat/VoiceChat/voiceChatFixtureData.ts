@@ -15,6 +15,18 @@ export const FIXTURE_CURRENT_USER = 'alice-voice-user';
 export const FIXTURE_OTHER_USER = 'bob-voice-user';
 export const FIXTURE_THIRD_USER = 'charlie-voice-user';
 
+export const FIXTURE_MEMBER_USER_IDS = [
+  FIXTURE_CURRENT_USER,
+  FIXTURE_OTHER_USER,
+  FIXTURE_THIRD_USER,
+];
+
+/** Alice + Bob online (< 5 min); Charlie offline. */
+export const FIXTURE_GAME_LAST_VISIT: Record<string, string> = {
+  [FIXTURE_CURRENT_USER]: new Date().toISOString(),
+  [FIXTURE_OTHER_USER]: new Date().toISOString(),
+};
+
 export const FIXTURE_USER_PROFILES: Record<string, { name: string; avatar: string }> = {
   [FIXTURE_CURRENT_USER]: { name: 'Alice', avatar: avatars[0] ?? '' },
   [FIXTURE_OTHER_USER]: { name: 'Bob', avatar: avatars[1] ?? '' },

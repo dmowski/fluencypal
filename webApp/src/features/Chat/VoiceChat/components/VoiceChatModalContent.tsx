@@ -4,8 +4,11 @@ import { useLingui } from '@lingui/react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { Mic, X } from 'lucide-react';
 import { useState } from 'react';
+import { useGame } from '@/features/Game/useGame';
+import { isVoiceChatUserOnline } from '../isVoiceChatUserOnline';
 import { VoiceChatMessage } from '../types';
 import { voiceChatUi } from '../voiceChatUi';
+import { VoiceChatMembersDialog } from './VoiceChatMembersDialog';
 import { VoiceChatMessageList } from './VoiceChatMessageList';
 import { VoiceChatRecorderPanel } from './VoiceChatRecorderPanel';
 
@@ -18,6 +21,7 @@ const readIntroCalloutDismissed = () => {
 
 export interface VoiceChatModalContentProps {
   messages: VoiceChatMessage[];
+  memberUserIds: string[];
   currentUserId: string;
   listenedIds: Set<string>;
   audioUrlById: Record<string, string>;
@@ -38,6 +42,7 @@ export interface VoiceChatModalContentProps {
 
 export const VoiceChatModalContent = ({
   messages,
+  memberUserIds,
   currentUserId,
   listenedIds,
   audioUrlById,
@@ -56,18 +61,54 @@ export const VoiceChatModalContent = ({
   onCancelRootRecorder,
 }: VoiceChatModalContentProps) => {
   const { i18n } = useLingui();
+  const game = useGame();
   const [isIntroCalloutDismissed, setIsIntroCalloutDismissed] = useState(readIntroCalloutDismissed);
+  const [isMembersOpen, setIsMembersOpen] = useState(false);
 
   const dismissIntroCallout = () => {
     setIsIntroCalloutDismissed(true);
     window.localStorage.setItem(INTRO_CALLOUT_DISMISSED_KEY, 'true');
   };
 
+  const onlineCount = memberUserIds.filter((userId) =>
+    isVoiceChatUserOnline(game.gameLastVisit?.[userId]),
+  ).length;
+  const totalCount = memberUserIds.length;
+
   return (
     <>
-      <Stack gap={0.75}>
+      <Stack gap={'2px'} sx={{ paddingBottom: '10px' }}>
         <Typography variant="h5" sx={{ fontWeight: 600, letterSpacing: '-0.02em' }}>
           {i18n._('Voice chat with people')}
+        </Typography>
+
+        <Typography
+          component="button"
+          onClick={() => setIsMembersOpen(true)}
+          data-testid="voice-chat-members-stats"
+          sx={{
+            opacity: 0.7,
+            border: 'none',
+            background: 'none',
+            color: 'inherit',
+            font: 'inherit',
+            padding: 0,
+            margin: 0,
+            cursor: 'pointer',
+            textAlign: 'left',
+            alignSelf: 'flex-start',
+            '&:hover': { opacity: 1, textDecoration: 'underline' },
+            '&:focus-visible': {
+              outline: `2px solid ${voiceChatUi.accent}`,
+              outlineOffset: 2,
+              borderRadius: '2px',
+            },
+          }}
+        >
+          {i18n._('Online: {online}, Total: {total}', {
+            online: onlineCount,
+            total: totalCount,
+          })}
         </Typography>
       </Stack>
 
@@ -162,6 +203,12 @@ export const VoiceChatModalContent = ({
           onCancel={onCancelRootRecorder}
         />
       )}
+
+      <VoiceChatMembersDialog
+        open={isMembersOpen}
+        onClose={() => setIsMembersOpen(false)}
+        memberUserIds={memberUserIds}
+      />
     </>
   );
 };

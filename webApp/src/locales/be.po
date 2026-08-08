@@ -3897,7 +3897,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "Дыскусіі"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "Адмяніць"
@@ -4697,7 +4697,7 @@ msgstr "Не ўдалося стварыць квіз."
 msgid "Failed to load conversation history"
 msgstr "Не ўдалося загрузіць гісторыю размоў"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "Не ўдалося загрузіць паведамленні"
@@ -4707,7 +4707,7 @@ msgstr "Не ўдалося загрузіць паведамленні"
 msgid "Failed to load voice chat status"
 msgstr "Не ўдалося загрузіць статус галасавога чата"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "Не ўдалося прайграць"
@@ -7578,7 +7578,7 @@ msgstr "Загрузка.."
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8236,6 +8236,11 @@ msgstr "Адсутнічаюць даступныя асноўныя моман�
 msgid "No interviews found"
 msgstr "Интэрв'ю не знойдзеныя"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr "Яшчэ няма ўдзельнікаў."
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8437,6 +8442,11 @@ msgstr ""
 "Не. Вы можаце пачаць з бясплатнага плана без уводу якіх-небудзь плацежных "
 "рэквізітаў."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "Зараз ніхто не ў сетцы."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8589,10 +8599,25 @@ msgstr "Яшчэ адна рэч."
 msgid "One thing left to do"
 msgstr "Застаецца адно, што трэба зрабіць"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "Онлайн"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "Анлайн ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Анлайн англійская"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "Анлайн: {online}, Усяго: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8909,6 +8934,11 @@ msgstr "Аплата прайшла паспяхова!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "У чаканні запытаў"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "Людзі ў галасавым чаце"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10229,8 +10259,8 @@ msgstr ""
 "Запішыце паведамленне ў чате суполкі і атрымаеце {points} балаў у табліцы "
 "лідараў"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "Запісаць новае паведамленне"
@@ -10836,7 +10866,7 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Семантычны HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13492,6 +13522,11 @@ msgstr ""
 msgid "Total"
 msgstr "Агулам"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr "Агульная колькасць ({count})"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -14009,7 +14044,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "Гутарка з людзьмі праз голас"
@@ -15252,7 +15287,7 @@ msgstr ""
 "Ваш уводзіны ўжо ў пакоі. Паслухайце іншых, а потым адкажыце, калі будзеце "
 "гатовы."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "

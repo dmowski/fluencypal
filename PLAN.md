@@ -1,15 +1,49 @@
 # Live document with short/long term ideas
 
+## Voice Chat features
+
+Status: Not started
+
+webApp/src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx
+
+Do not show button "Record a new messages", show recording panned from start
+
+======
+
+Status: Not started
+
+- Show badge: New. On messages that are not listened.
+  Show that badge next to username
+
+======
+
+Status: Not started
+On player menu: show date where message was created
+
+=======
+
+## Restore Quiz at beginning on landing
+
+## Book Highlights: revers list
+
 ## Daily Tasks improvement
 
-\*. Finish call from camera mode: we need to close it really and provide ability to change to text mode?
-How to inform users that the daily task is done
+- Connect app into single flow
+- How to show progress of tasks
+- Finish call from camera mode: we need to close it really and provide ability to change to text mode?
+- How to inform users that the daily task is done
 
 ## Add voice chat into daily task pipeline
 
 - Add task: Join voice chat (5th day)
 - Add task: Answer to someone (6th day)
 - Add task: Describe your day in chat
+
+## Hide Alias game landing page
+
+- Add to role-play definition that it's not allowed to parsing
+- add to html structure to prevent parsing
+- Remove from sitemap
 
 ## Blog: add author
 

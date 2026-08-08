@@ -5,6 +5,7 @@ import {
   FIXTURE_CONVERSATION,
   FIXTURE_CURRENT_USER,
   FIXTURE_LISTENED_IDS,
+  FIXTURE_MEMBER_USER_IDS,
   FIXTURE_PENDING_MEMBER,
   noopAsync,
   SILENT_AUDIO_DATA_URL,
@@ -52,6 +53,7 @@ export function fixtureAudioUrlById(messages: VoiceChatMessage[]): Record<string
 
 export function modalFixtureContentProps(options: {
   messages?: VoiceChatMessage[];
+  memberUserIds?: string[];
   listenedIds?: Set<string>;
   playingMessageId?: string | null;
   autoPlayMessageId?: string | null;
@@ -60,6 +62,7 @@ export function modalFixtureContentProps(options: {
 }): VoiceChatModalContentProps {
   const {
     messages = FIXTURE_CONVERSATION,
+    memberUserIds = FIXTURE_MEMBER_USER_IDS,
     listenedIds = FIXTURE_LISTENED_IDS,
     playingMessageId = null,
     autoPlayMessageId = null,
@@ -69,6 +72,7 @@ export function modalFixtureContentProps(options: {
 
   return {
     messages,
+    memberUserIds,
     currentUserId: FIXTURE_CURRENT_USER,
     listenedIds,
     audioUrlById: audioUrlById ?? fixtureAudioUrlById(messages),

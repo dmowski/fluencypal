@@ -3849,7 +3849,7 @@ msgstr ""
 msgid "Discussions"
 msgstr "مناقشات"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:97
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:138
 #. js-lingui-explicit-id
 msgid "Dismiss"
 msgstr "رفض"
@@ -4625,7 +4625,7 @@ msgstr "فشل في إنشاء الاختبار."
 msgid "Failed to load conversation history"
 msgstr "فشل في تحميل سجل المحادثة"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:40
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:42
 #. js-lingui-explicit-id
 msgid "Failed to load messages"
 msgstr "فشل في تحميل الرسائل"
@@ -4635,7 +4635,7 @@ msgstr "فشل في تحميل الرسائل"
 msgid "Failed to load voice chat status"
 msgstr "فشل في تحميل حالة المحادثة الصوتية"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:110
 #. js-lingui-explicit-id
 msgid "Failed to play"
 msgstr "فشل في التشغيل"
@@ -7447,7 +7447,7 @@ msgstr "جارٍ التحميل.."
 msgid "Loading..."
 msgstr "جار التحميل..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:119
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:116
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8113,6 +8113,13 @@ msgstr ""
 "\n"
 "لم يتم العثور على مقابلات\n"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "No members yet."
+msgstr ""
+"\n"
+"لا يوجد أعضاء بعد.\n"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8312,6 +8319,11 @@ msgstr "لا. السعر المعروض هو السعر الكامل. لا تو�
 msgid "No. You can start the free plan without entering any payment details."
 msgstr "لا. يمكنك البدء بالخطة المجانية دون إدخال أي تفاصيل دفع."
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
+#. js-lingui-explicit-id
+msgid "Nobody is online right now."
+msgstr "لا يوجد أحد متصل حالياً."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
@@ -8464,10 +8476,25 @@ msgstr "شيء آخر."
 msgid "One thing left to do"
 msgstr "بقي شيء واحد للقيام به"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
+#. js-lingui-explicit-id
+msgid "Online"
+msgstr "عبر الإنترنت"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
+#. js-lingui-explicit-id
+msgid "Online ({count})"
+msgstr "عبر الإنترنت ({count})"
+
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "&nbsp;تعليم الإنجليزية عبر الإنترنت"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:108
+#. js-lingui-explicit-id
+msgid "Online: {online}, Total: {total}"
+msgstr "متصل: {online}، الإجمالي: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -8775,6 +8802,11 @@ msgstr "الدفعة ناجحة!"
 #. js-lingui-explicit-id
 msgid "Pending requests"
 msgstr "طلبات معلقة"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#. js-lingui-explicit-id
+msgid "People in voice chat"
+msgstr "الأشخاص في الدردشة الصوتية"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10067,8 +10099,8 @@ msgid ""
 "leaderboard"
 msgstr "سجل رسالة في الدردشة المجتمعية واحصل على {points} نقطة في لوحة المتصدرين"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:159
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:195
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "Record a new message"
 msgstr "سجل رسالة جديدة"
@@ -10679,7 +10711,7 @@ msgstr ""
 "markdown\n"
 "HTML الدلالي\n"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:160
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:201
 #: src/features/Conversation/ConversationCanvas.tsx:527
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -13275,6 +13307,13 @@ msgstr ""
 msgid "Total"
 msgstr "المجموع"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
+#. js-lingui-explicit-id
+msgid "Total ({count})"
+msgstr ""
+"\n"
+"الإجمالي ({count})\n"
+
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -13790,7 +13829,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
 #: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:82
 #. js-lingui-explicit-id
 msgid "Voice chat with people"
 msgstr "الدردشة الصوتية مع الناس"
@@ -15005,7 +15044,7 @@ msgid ""
 "ready."
 msgstr "مقدمتك جاهزة بالفعل في الغرفة. استمع للآخرين، ثم رد عندما تكون مستعدًا."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Your intro is already in the room. Listen to others, then reply when you’re "
