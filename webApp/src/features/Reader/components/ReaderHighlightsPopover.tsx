@@ -95,27 +95,9 @@ export const ReaderHighlightsList = ({
   onSelect: (targetPage: number) => void;
 }) => {
   const { i18n } = useLingui();
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (highlights.length > 0 && containerRef.current) {
-      setTimeout(() => {
-        const lastElement = containerRef.current?.querySelector(
-          '.reader-highlight-item:last-child',
-        );
-        if (lastElement) {
-          lastElement.scrollIntoView();
-        }
-      }, 30);
-    }
-  }, [highlights.length]);
 
   return (
-    <Stack
-      data-testid="reader-highlights-popover"
-      ref={containerRef}
-      className="reader-highlights-popover"
-    >
+    <Stack data-testid="reader-highlights-popover" className="reader-highlights-popover">
       {highlights.length > 0 ? (
         <HighlightList items={highlights} onSelect={onSelect} />
       ) : (

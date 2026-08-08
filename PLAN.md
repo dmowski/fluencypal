@@ -1,7 +1,5 @@
 # Live document with short/long term ideas
 
-## Restore Quiz at beginning on landing
-
 ## Book Highlights: revers list
 
 ## Daily Tasks improvement

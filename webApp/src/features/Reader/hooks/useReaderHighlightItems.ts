@@ -58,38 +58,40 @@ export const useReaderHighlightItems = ({
       return a.endIndex - b.endIndex;
     });
 
-    return sortedHighlights.map((highlight, index) => {
-      const paragraphWords = paragraphs[highlight.paragraphIndex] ?? [];
-      const paragraphText = paragraphWords.join(' ');
-      const paragraphLength = paragraphText.length;
-      const safeStart = Math.max(0, Math.min(highlight.startIndex, paragraphLength));
-      const safeEndInclusive =
-        paragraphLength > 0
-          ? Math.max(safeStart, Math.min(highlight.endIndex, paragraphLength - 1))
-          : safeStart;
-      const safeEndExclusive = Math.min(paragraphLength, safeEndInclusive + 1);
-      const contextStart = Math.max(0, safeStart - HIGHLIGHT_CONTEXT_CHARS);
-      const contextEnd = Math.min(paragraphLength, safeEndExclusive + HIGHLIGHT_CONTEXT_CHARS);
+    return sortedHighlights
+      .map((highlight, index) => {
+        const paragraphWords = paragraphs[highlight.paragraphIndex] ?? [];
+        const paragraphText = paragraphWords.join(' ');
+        const paragraphLength = paragraphText.length;
+        const safeStart = Math.max(0, Math.min(highlight.startIndex, paragraphLength));
+        const safeEndInclusive =
+          paragraphLength > 0
+            ? Math.max(safeStart, Math.min(highlight.endIndex, paragraphLength - 1))
+            : safeStart;
+        const safeEndExclusive = Math.min(paragraphLength, safeEndInclusive + 1);
+        const contextStart = Math.max(0, safeStart - HIGHLIGHT_CONTEXT_CHARS);
+        const contextEnd = Math.min(paragraphLength, safeEndExclusive + HIGHLIGHT_CONTEXT_CHARS);
 
-      const beforePrefix = contextStart > 0 ? '... ' : '';
-      const afterSuffix = contextEnd < paragraphLength ? ' ...' : '';
-      const beforeText = stripMarkdownDecorators(
-        beforePrefix + paragraphText.slice(contextStart, safeStart),
-      );
-      const highlightedText = stripMarkdownDecorators(
-        paragraphText.slice(safeStart, safeEndExclusive),
-      );
-      const afterText = stripMarkdownDecorators(
-        paragraphText.slice(safeEndExclusive, contextEnd) + afterSuffix,
-      );
+        const beforePrefix = contextStart > 0 ? '... ' : '';
+        const afterSuffix = contextEnd < paragraphLength ? ' ...' : '';
+        const beforeText = stripMarkdownDecorators(
+          beforePrefix + paragraphText.slice(contextStart, safeStart),
+        );
+        const highlightedText = stripMarkdownDecorators(
+          paragraphText.slice(safeStart, safeEndExclusive),
+        );
+        const afterText = stripMarkdownDecorators(
+          paragraphText.slice(safeEndExclusive, contextEnd) + afterSuffix,
+        );
 
-      return {
-        id: `${highlight.paragraphIndex}-${highlight.startIndex}-${highlight.endIndex}-${index}`,
-        beforeText,
-        highlightedText,
-        afterText,
-        color: highlight.color,
-        targetPage: findTargetPageForHighlight({ pages, highlight }),
-      };
-    });
+        return {
+          id: `${highlight.paragraphIndex}-${highlight.startIndex}-${highlight.endIndex}-${index}`,
+          beforeText,
+          highlightedText,
+          afterText,
+          color: highlight.color,
+          targetPage: findTargetPageForHighlight({ pages, highlight }),
+        };
+      })
+      .reverse();
   }, [highlights, paragraphs, pages]);
