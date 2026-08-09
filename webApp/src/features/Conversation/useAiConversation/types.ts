@@ -6,7 +6,7 @@ import {
 } from '@/features/Conversation/conversation';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ConversationIdea } from '@/features/User/useAiUserInfo';
-import { LessonPlan, LessonPlanAnalysis } from '@/features/LessonPlan/type';
+import { LessonPlan } from '@/features/LessonPlan/type';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';
 
@@ -63,8 +63,6 @@ export interface AiConversationContextType {
   toggleConversationMode: (mode: ConversationMode) => void;
   conversationMode: ConversationMode;
 
-  lessonPlanAnalysis: LessonPlanAnalysis | null;
-  setLessonPlanAnalysis: (analysis: LessonPlanAnalysis | null) => void;
   recordingVoiceMode: RecordingUserMessageMode;
 
   completeUserMessageDelta: (params: {

@@ -152,11 +152,7 @@ export const DailyTasksDashboardCard = () => {
       <StoreCard
         textColor={'#fff'}
         backgroundColor={
-          tasks.isAllTasksCompleted
-            ? 'rgba(8, 141, 11, 0.78)'
-            : isLoading
-              ? '#000000'
-              : 'rgba(0, 0, 0, 0.3)'
+          tasks.isAllTasksCompleted ? '#0389DD' : isLoading ? '#000000' : 'rgba(0, 0, 0, 0.3)'
         }
         previewImageUrl={
           'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783967811777-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png'
@@ -168,11 +164,7 @@ export const DailyTasksDashboardCard = () => {
         items={items}
         onClick={openCard}
         itemsBackgroundColor={
-          tasks.isAllTasksCompleted
-            ? 'rgb(5, 29, 47)'
-            : isLoading
-              ? 'rgba(32, 32, 32, 0)'
-              : '#1F2025'
+          tasks.isAllTasksCompleted ? '#0389DD' : isLoading ? 'rgba(32, 32, 32, 0)' : '#1F2025'
         }
         itemsViewMode={'list'}
       />

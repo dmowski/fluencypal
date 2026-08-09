@@ -22,6 +22,51 @@ vi.mock('@/features/Auth/useAuth', () => ({
   }),
 }));
 
+vi.mock('@/features/Game/PositionChanged', () => ({
+  PositionChanged: () => (
+    <div
+      data-testid="position-changed-mock"
+      style={{
+        width: '100%',
+        maxWidth: '420px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        padding: '12px',
+        borderRadius: '12px',
+        background: 'linear-gradient(180deg, #243044 0%, #151c28 100%)',
+        border: '1px solid rgba(255,255,255,0.2)',
+        boxSizing: 'border-box',
+      }}
+    >
+      {[
+        { place: '1', name: 'Alex Learner', points: '120' },
+        { place: '2', name: 'Sam Speaker', points: '90' },
+        { place: '3', name: 'Jordan Quiet', points: '70' },
+      ].map((row) => (
+        <div
+          key={row.place}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            padding: '8px 10px',
+            borderRadius: '8px',
+            background: 'rgba(255,255,255,0.06)',
+            color: '#fff',
+            fontSize: '14px',
+          }}
+        >
+          <span style={{ opacity: 0.7, width: '24px' }}>#{row.place}</span>
+          <span style={{ flex: 1 }}>{row.name}</span>
+          <span style={{ fontWeight: 700 }}>{row.points}</span>
+        </div>
+      ))}
+    </div>
+  ),
+}));
+
 vi.mock('@/features/Translation/useTranslate', () => ({
   useTranslate: () => ({
     translateModal: null,
@@ -84,12 +129,6 @@ vi.mock('@/features/Layout/useWindowSizes', () => ({
   useWindowSizes: () => ({
     topOffset: '0px',
     bottomOffset: '0px',
-  }),
-}));
-
-vi.mock('@/features/LessonPlan/useLessonPlan', () => ({
-  useLessonPlan: () => ({
-    generateAnalysis: async () => ({ progress: 25 }),
   }),
 }));
 
@@ -198,7 +237,6 @@ test('conversation canvas – record mode role-play in progress', async () => {
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
       conversationMode="record"
-      lessonPlanAnalysis={{ progress: 25 }}
     />,
   );
 
@@ -212,7 +250,6 @@ test('conversation canvas – record mode lesson finish ready', async () => {
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(ROLE_PLAY_FINISH_READY_USER_MESSAGES)}
       conversationMode="record"
-      lessonPlanAnalysis={{ progress: 100 }}
     />,
   );
 
@@ -226,7 +263,6 @@ test('conversation canvas – record mode role-play mid lesson', async () => {
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(1)}
       conversationMode="record"
-      lessonPlanAnalysis={{ progress: 10 }}
     />,
   );
 
@@ -267,7 +303,6 @@ test('conversation canvas – call mode role-play in progress', async () => {
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
       conversationMode="call"
-      lessonPlanAnalysis={{ progress: 25 }}
     />,
   );
 
@@ -281,7 +316,6 @@ test('conversation canvas – call mode lesson finish ready', async () => {
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(ROLE_PLAY_FINISH_READY_USER_MESSAGES)}
       conversationMode="call"
-      lessonPlanAnalysis={{ progress: 100 }}
     />,
   );
 
@@ -290,18 +324,78 @@ test('conversation canvas – call mode lesson finish ready', async () => {
     .toMatchScreenshot('conversation-canvas-call-role-play-finish-ready');
 });
 
-test('conversation canvas – call mode end-call menu', async () => {
+test('conversation canvas – call mode end-call menu (results disabled)', async () => {
   await render(
     <ConversationCanvasFixture
       conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
       conversationMode="call"
-      lessonPlanAnalysis={{ progress: 25 }}
     />,
   );
 
   await userEvent.click(page.getByTestId('call-end-button'));
+  await expect.element(page.getByRole('menuitem', { name: 'Show results' })).toBeDisabled();
 
   await expect
     .element(page.getByTestId('call-end-menu'))
     .toMatchScreenshot('conversation-canvas-call-end-menu');
+});
+
+test('conversation canvas – call mode end-call menu (results enabled)', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_FINISH_READY_USER_MESSAGES)}
+      conversationMode="call"
+    />,
+  );
+
+  await userEvent.click(page.getByTestId('call-end-button'));
+  await expect.element(page.getByRole('menuitem', { name: 'Show results' })).toBeEnabled();
+
+  await expect
+    .element(page.getByTestId('call-end-menu'))
+    .toMatchScreenshot('conversation-canvas-call-end-menu-results-ready');
+});
+
+async function openCallResultsModal() {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_FINISH_READY_USER_MESSAGES)}
+      conversationMode="call"
+    />,
+  );
+
+  await userEvent.click(page.getByTestId('call-end-button'));
+  await userEvent.click(page.getByRole('menuitem', { name: 'Show results' }));
+  await expect.element(page.getByTestId('conversation-review-modal')).toBeVisible();
+  // Allow MUI modal enter transition to finish before the stability sampler runs.
+  await new Promise((resolve) => setTimeout(resolve, 400));
+}
+
+async function screenshotResultsStep(name: string, heading: string, nextButtonName = 'Next') {
+  await expect.element(page.getByRole('heading', { name: heading })).toBeVisible();
+  await expect.element(page.getByRole('button', { name: nextButtonName })).toBeVisible();
+  await expect
+    .element(page.getByTestId('conversation-review-modal'))
+    .toMatchScreenshot(`conversation-canvas-call-results-${name}`);
+}
+
+test('conversation canvas – call mode results steps', async () => {
+  await openCallResultsModal();
+
+  await screenshotResultsStep('leaderboard', 'Leaderboard');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
+  await screenshotResultsStep('summary', 'Summary');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
+  await screenshotResultsStep('focus-next', 'What to focus on next time');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
+  await screenshotResultsStep('improve', 'What you can improve');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
+  await screenshotResultsStep('did-well', 'What you did well');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
+  await screenshotResultsStep('next-lesson', 'Next Step', 'Next Lesson');
 });

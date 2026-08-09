@@ -2,8 +2,6 @@ import { Stack } from '@mui/material';
 import { type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { GoalRolePlayIntroView } from './components/GoalRolePlayIntroView';
-import { GoalRolePlayLessonFooterView } from './components/GoalRolePlayLessonFooterView';
-import { ConversationType } from '@/features/Conversation/conversation';
 
 export const FIXTURE_ROLE_PLAY_LESSON = {
   title: 'Job interview',
@@ -55,33 +53,6 @@ export function GoalRolePlayIntroFixture({
         details={FIXTURE_ROLE_PLAY_LESSON.details}
         showSkipLesson={showSkipLesson}
         onContinue={() => undefined}
-        onSkipLesson={() => undefined}
-      />
-    </GoalRolePlayTestShell>
-  );
-}
-
-export function GoalRolePlayLessonFooterFixture({
-  currentMode = 'goal-role-play' as ConversationType,
-  userMessageCount = 2,
-  canFinishLesson = false,
-  showSkipLesson = false,
-  testId = 'goal-role-play-footer-fixture-shell',
-}: {
-  currentMode?: ConversationType;
-  userMessageCount?: number;
-  canFinishLesson?: boolean;
-  showSkipLesson?: boolean;
-  testId?: string;
-}) {
-  return (
-    <GoalRolePlayTestShell testId={testId}>
-      <GoalRolePlayLessonFooterView
-        currentMode={currentMode}
-        userMessageCount={userMessageCount}
-        canFinishLesson={canFinishLesson}
-        onFinishLesson={() => undefined}
-        showSkipLesson={showSkipLesson}
         onSkipLesson={() => undefined}
       />
     </GoalRolePlayTestShell>

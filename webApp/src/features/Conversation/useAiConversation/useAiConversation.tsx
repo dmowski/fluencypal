@@ -24,10 +24,9 @@ import { firstAiMessage } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { useAccess } from '../../Usage/useAccess';
-import { LessonPlan, LessonPlanAnalysis, LessonPlanStep } from '../../LessonPlan/type';
+import { LessonPlan, LessonPlanStep } from '../../LessonPlan/type';
 import { ConversationConfig, ConversationInstance } from '../ConversationInstance/types';
 import { useTextAi } from '../../Ai/useTextAi';
-import { initTextConversation } from '../ConversationInstance/textConversation';
 import { SpeakOptions, useConversationAudio } from '../../Audio/useConversationAudio';
 import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
@@ -42,9 +41,6 @@ import { useAliasConversationAnalytics } from './useAliasConversationAnalytics';
 import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
-
-const modesToUseRrc: ConversationType[] = ['talk', 'role-play', 'news-discussion'];
-//const aiModal = MODELS.REALTIME_CONVERSATION;
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
@@ -61,8 +57,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const languageCode = settings.languageCode || 'en';
   const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [voice, setVoice] = useState<AiVoice | null>(null);
-  const [lessonPlanAnalysis, setLessonPlanAnalysis] = useState<LessonPlanAnalysis | null>(null);
-  const [lessonPlan, setLessonPlan] = useState<LessonPlan | null>(null);
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
   const voiceSpeed = settings.aiVoiceSpeed;
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
@@ -76,7 +70,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const messages = useAiConversationMessages();
   const [recordingVoiceMode, setRecordingVoiceMode] =
-    useState<RecordingUserMessageMode>('PushToTalk');
+    useState<RecordingUserMessageMode>('RealTimeConversation');
 
   const communicatorRef = useRef<ConversationInstance | undefined>(undefined);
   const experimentalRealtimeWsActiveRef = useRef(false);
@@ -92,15 +86,6 @@ function useProvideAiConversation(): AiConversationContextType {
     appMode === 'learning'
       ? `You are an ${fullLanguageName} teacher.`
       : `You are an job interview coach.`;
-
-  const updateLessonPlanAnalysis = async (analysis: LessonPlanAnalysis | null) => {
-    setLessonPlanAnalysis(analysis);
-    if (analysis?.teacherResponse) {
-      communicatorRef.current?.sendCorrectionInstruction(analysis.teacherResponse);
-    } else {
-      await communicatorRef.current?.triggerAiResponse();
-    }
-  };
 
   const completeUserMessageDelta = async ({
     triggerResponse,
@@ -165,31 +150,21 @@ function useProvideAiConversation(): AiConversationContextType {
   }, []);
 
   const onOpen = async () => {
-    const isUseRealtime = modesToUseRrc.includes(currentMode);
     const isExperimentalWs = experimentalRealtimeWsActiveRef.current;
 
-    if (isUseRealtime && !isExperimentalWs) {
+    if (!isExperimentalWs) {
       await sleep(300);
       console.log('Sleep before triggering');
       setIsInitializing('');
       setIsStarted(true);
       await sleep(1000);
-      //audio.music.setVolume(0);
       await sleep(600);
-    } else if (isUseRealtime) {
-      setIsInitializing('');
-      setIsStarted(true);
-    }
-
-    if (!isExperimentalWs) {
       await communicatorRef.current?.triggerAiResponse();
+      return;
     }
 
-    if (!isUseRealtime) {
-      await sleep(700);
-      setIsInitializing('');
-      setIsStarted(true);
-    }
+    setIsInitializing('');
+    setIsStarted(true);
   };
 
   const toggleConversationMode = (mode: ConversationMode) => {
@@ -482,8 +457,6 @@ ${voiceInstructions}
     const newConversationId = messages.newConversation(input.mode, input.rolePlayId || null);
     messages.resetMessageOrder();
 
-    setLessonPlan(input.lessonPlan || null);
-
     let isMutedInternal = true;
     const isRecordingNeedMute = !isMuted && input.conversationMode === 'record';
 
@@ -557,14 +530,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 `;
       }
 
-      const isUseRealtime = modesToUseRrc.includes(input.mode);
-      const isUseVad = !isUseRealtime;
-
-      const newRecordingMode: RecordingUserMessageMode = isUseRealtime
-        ? 'RealTimeConversation'
-        : isUseVad
-          ? 'VAD'
-          : 'PushToTalk';
+      const newRecordingMode: RecordingUserMessageMode = 'RealTimeConversation';
       console.log('newRecordingMode', newRecordingMode);
       setRecordingVoiceMode(newRecordingMode);
 
@@ -572,9 +538,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
       const initConversation = input.experimentalRealtimeWs
         ? initRealtimeWsConversation
-        : isUseRealtime
-          ? initWebRtcConversation
-          : initTextConversation;
+        : initWebRtcConversation;
 
       const model = input.model || MODELS.REALTIME_CONVERSATION;
 
@@ -632,7 +596,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     setIsInitializing('');
     experimentalRealtimeWsActiveRef.current = false;
     communicatorRef.current?.closeHandler();
-    setLessonPlanAnalysis(null);
 
     messages.setConversationId(null);
     messages.setConversation([]);
@@ -644,10 +607,8 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
   const addUserMessage = async (message: string) => {
     communicatorRef.current?.addThreadsMessage(message);
-    if (!lessonPlan) {
-      await sleep(100);
-      await communicatorRef.current?.triggerAiResponse();
-    }
+    await sleep(100);
+    await communicatorRef.current?.triggerAiResponse();
   };
 
   return {
@@ -678,9 +639,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     closeConversation,
     toggleConversationMode,
     conversationMode: settings.conversationMode,
-
-    lessonPlanAnalysis,
-    setLessonPlanAnalysis: updateLessonPlanAnalysis,
 
     recordingVoiceMode,
 

@@ -7,24 +7,23 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/ma
 import { useLingui } from '@lingui/react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { ChevronRight, Trophy } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
 import ClosedCaptionDisabledIcon from '@mui/icons-material/ClosedCaptionDisabled';
-import { LessonPlanAnalysis } from '@/features/LessonPlan/type';
 import { sleep } from '@/libs/sleep';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
-import { useLessonPlan } from '@/features/LessonPlan/useLessonPlan';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
 import { CallEndMenu } from './CallEndMenu';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 import { ConversationMessage } from '@/features/Conversation/conversation';
+import { getConversationProgressPercent } from '@/features/Conversation/conversationProgress';
 import { useAccess } from '@/features/Usage/useAccess';
 
 export const CallButtons = ({
@@ -45,7 +44,6 @@ export const CallButtons = ({
   isSubtitlesEnabled,
   toggleSubtitles,
 
-  lessonPlanAnalysis,
   onShowAnalyzeConversationModal,
 
   addTranscriptDelta,
@@ -71,7 +69,6 @@ export const CallButtons = ({
   isSubtitlesEnabled: boolean;
   toggleSubtitles: (isToggleOn: boolean) => void;
 
-  lessonPlanAnalysis: LessonPlanAnalysis | null;
   onShowAnalyzeConversationModal: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
@@ -84,7 +81,8 @@ export const CallButtons = ({
 }) => {
   const { i18n } = useLingui();
 
-  const progress = lessonPlanAnalysis?.progress || 1;
+  const progress = getConversationProgressPercent(messages.length);
+  const isProgressDone = progress >= 100;
 
   const ai = useTextAi();
 
@@ -108,8 +106,6 @@ export const CallButtons = ({
 
   const isSubmittingRef = useRef(false);
 
-  const lessonPlan = useLessonPlan();
-
   const [isProcessingTranscription, setIsProcessingTranscription] = useState(false);
 
   const submitTranscription = async () => {
@@ -120,8 +116,6 @@ export const CallButtons = ({
 
     isSubmittingRef.current = true;
     setIsProcessingTranscription(true);
-
-    await lessonPlan.generateAnalysis(transcription);
 
     onSubmitTranscription(transcription);
     recorder.removeTranscript();
@@ -264,6 +258,11 @@ Return ONLY the number.
     exit();
   };
 
+  const onShowResults = () => {
+    closeEndCallMenu();
+    onShowAnalyzeConversationModal();
+  };
+
   const processVadTranscript = async (transcript: string | null) => {
     if (!transcript) return;
 
@@ -278,8 +277,6 @@ Return ONLY the number.
       const newTranscript = prev + ' ' + transcript;
       return newTranscript;
     });
-
-    await lessonPlan.generateAnalysis(updatedTranscript);
   };
 
   useEffect(() => {
@@ -490,20 +487,22 @@ Return ONLY the number.
       }}
     >
       <Stack
+        data-testid="call-progress-bar"
         sx={{
           position: 'absolute',
           bottom: '0px',
           left: '0px',
           width: 'calc(100% - 0px)',
-          height: '9px',
+          height: isProgressDone ? '16px' : '9px',
           borderRadius: '0',
           overflow: 'hidden',
-          opacity: lessonPlanAnalysis ? 1 : 0,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Stack
           sx={{
-            width: `${progress}%`,
+            width: `${Math.max(progress, 2)}%`,
             height: '100%',
             position: 'absolute',
             top: 0,
@@ -512,27 +511,24 @@ Return ONLY the number.
             transition: 'width 0.3s ease-in-out',
           }}
         />
+        {isProgressDone && (
+          <Typography
+            sx={{
+              position: 'relative',
+              zIndex: 1,
+              fontSize: '10px',
+              fontWeight: 700,
+              lineHeight: 1,
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+            }}
+          >
+            {i18n._('Done')}
+          </Typography>
+        )}
       </Stack>
 
-      {progress > 99 ? (
-        <Button
-          startIcon={<Trophy />}
-          size="large"
-          color="info"
-          variant="contained"
-          sx={{
-            height: '48px',
-            minWidth: '250px',
-          }}
-          onClick={() => {
-            vadAudioRecorder.stop();
-            onShowAnalyzeConversationModal();
-          }}
-        >
-          {i18n._('Open results')}
-        </Button>
-      ) : (
-        <>
+      <>
           {isRecordingByButton || isProcessingTranscription ? (
             <>
               <FooterButton
@@ -731,6 +727,8 @@ Return ONLY the number.
                 onClose={closeEndCallMenu}
                 onCloseConversation={onCloseConversation}
                 onSwitchToVoiceRecords={onSwitchToVoiceRecords}
+                onShowResults={onShowResults}
+                canShowResults={isProgressDone}
               />
             </>
           )}
@@ -789,8 +787,7 @@ Return ONLY the number.
               </Stack>
             </CustomModal>
           )}
-        </>
-      )}
+      </>
     </Stack>
   );
 };

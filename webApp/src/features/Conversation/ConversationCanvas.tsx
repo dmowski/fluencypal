@@ -39,8 +39,11 @@ import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
 import { ConversationReviewModal } from './ConversationReviewModal';
-import { LessonPlanAnalysis } from '../LessonPlan/type';
 import { RecordingCanvasMenu } from './RecordingCanvasMenu';
+import {
+  getConversationProgressPercent,
+  isConversationProgressComplete,
+} from './conversationProgress';
 
 interface ConversationCanvasProps {
   conversation: ConversationMessage[];
@@ -84,8 +87,6 @@ interface ConversationCanvasProps {
   onLimitedClick: () => void;
   pointsEarned: number;
   openCommunityPage: () => void;
-
-  lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   openNextLesson: () => void;
 
@@ -133,7 +134,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   pointsEarned,
   openCommunityPage,
 
-  lessonPlanAnalysis,
   openNextLesson,
 
   completeUserMessageDelta,
@@ -223,6 +223,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
       {translator.translateModal}
       {isShowAnalyzeConversationModal && (
         <ConversationReviewModal
+          variant={isCallMode ? 'overlay' : 'page'}
           setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
           conversationAnalysisResult={conversationAnalysisResult}
           openNextLesson={() => {
@@ -243,60 +244,58 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   );
 
   const isCompletedLesson =
-    !isConversationContinueAfterAnalyze &&
-    (lessonPlanAnalysis ? (lessonPlanAnalysis.progress || 0) > 99 : false);
+    !isConversationContinueAfterAnalyze && isConversationProgressComplete(conversation.length);
 
   if (isCallMode) {
     return (
-      <Modal
-        open={true}
-        sx={{
-          height: '100dvh',
-          width: '100%',
-          overflow: 'auto',
-          zIndex: 992,
-        }}
-        slotProps={{
-          backdrop: {
-            sx: {
-              backgroundColor: 'rgba(0, 0, 0, 0)',
+      <>
+        {modals}
+        <Modal
+          open={true}
+          sx={{
+            height: '100dvh',
+            width: '100%',
+            overflow: 'auto',
+            zIndex: 992,
+          }}
+          slotProps={{
+            backdrop: {
+              sx: {
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+              },
             },
-          },
-        }}
-      >
-        <CameraCanvas
-          lessonPlanAnalysis={lessonPlanAnalysis}
-          messageOrder={messageOrder}
-          isMuted={isMuted}
-          setIsMuted={setIsMuted}
-          isAiSpeaking={isAiSpeaking}
-          voice={voice}
-          conversation={conversation}
-          stopCallMode={() => toggleConversationMode('record')}
-          onWebCamDescription={onWebCamDescription}
-          isVolumeOn={isVolumeOn}
-          setIsVolumeOn={setIsVolumeOn}
-          isLimitedVoice={isLimitedVoice}
-          onLimitedClick={onLimitedClick}
-          onSubmitTranscription={addUserMessage}
-          isCompletedLesson={isCompletedLesson}
-          recordingVoiceMode={recordingVoiceMode}
-          onShowAnalyzeConversationModal={() => {
-            toggleConversationMode('record');
-            showAnalyzeConversationModal();
           }}
-          addTranscriptDelta={addTranscriptDelta}
-          completeUserMessageDelta={completeUserMessageDelta}
-          isSendMessagesBlocked={isSendMessagesBlocked}
-          fullExit={() => {
-            closeConversation();
-          }}
-        />
-      </Modal>
+        >
+          <CameraCanvas
+            messageOrder={messageOrder}
+            isMuted={isMuted}
+            setIsMuted={setIsMuted}
+            isAiSpeaking={isAiSpeaking}
+            voice={voice}
+            conversation={conversation}
+            stopCallMode={() => toggleConversationMode('record')}
+            onWebCamDescription={onWebCamDescription}
+            isVolumeOn={isVolumeOn}
+            setIsVolumeOn={setIsVolumeOn}
+            isLimitedVoice={isLimitedVoice}
+            onLimitedClick={onLimitedClick}
+            onSubmitTranscription={addUserMessage}
+            isCompletedLesson={isCompletedLesson}
+            recordingVoiceMode={recordingVoiceMode}
+            onShowAnalyzeConversationModal={showAnalyzeConversationModal}
+            addTranscriptDelta={addTranscriptDelta}
+            completeUserMessageDelta={completeUserMessageDelta}
+            isSendMessagesBlocked={isSendMessagesBlocked}
+            fullExit={() => {
+              closeConversation();
+            }}
+          />
+        </Modal>
+      </>
     );
   }
 
-  const progress = lessonPlanAnalysis ? lessonPlanAnalysis.progress || 0 : 0;
+  const progress = getConversationProgressPercent(conversation.length);
 
   return (
     <>

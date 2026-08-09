@@ -25,6 +25,7 @@ export const ConversationReviewModal = ({
   pointsEarned,
 
   openNextLesson,
+  variant = 'page',
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: ConversationResult | null;
@@ -34,6 +35,7 @@ export const ConversationReviewModal = ({
 
   openNextLesson: () => void;
   openCommunityPage: () => void;
+  variant?: 'page' | 'overlay';
 }) => {
   const { i18n } = useLingui();
 
@@ -69,13 +71,27 @@ export const ConversationReviewModal = ({
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
+    <CustomModal
+      isOpen={true}
+      onClose={() => setIsShowAnalyzeConversationModal(false)}
+      variant={variant}
+      data-testid="conversation-review-modal"
+    >
       {translator.translateModal}
 
       <Stack
         sx={{
           maxWidth: '700px',
           width: '100%',
+          ...(variant === 'overlay'
+            ? {
+                backgroundColor: 'rgba(24, 24, 24, 0.96)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                padding: '24px',
+                boxSizing: 'border-box',
+              }
+            : {}),
         }}
       >
         {step == 'game' && (

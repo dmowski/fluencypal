@@ -3,7 +3,7 @@ import { type ComponentProps, type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { ConversationCanvas } from './ConversationCanvas';
 import { ConversationMessage } from '@/features/Conversation/conversation';
-import { GOAL_ROLE_PLAY_EARLY_FINISH_USER_MESSAGES } from '@/features/Plan/goalRolePlayCompletion';
+import { CONVERSATION_DONE_MESSAGE_COUNT } from '@/features/Conversation/conversationProgress';
 
 const BOT_OPENING =
   'Welcome to the job interview role-play. Tell me about yourself and why you want this role.';
@@ -95,11 +95,10 @@ export const DEFAULT_CONVERSATION_CANVAS_PROPS: ComponentProps<typeof Conversati
   onLimitedClick: () => undefined,
   pointsEarned: 12,
   openCommunityPage: () => undefined,
-  lessonPlanAnalysis: { progress: 25 },
   openNextLesson: () => undefined,
   addTranscriptDelta: () => undefined,
   completeUserMessageDelta: async () => undefined,
-  recordingVoiceMode: 'VAD',
+  recordingVoiceMode: 'RealTimeConversation',
   isSendMessagesBlocked: false,
 };
 
@@ -116,4 +115,5 @@ export function ConversationCanvasFixture({
 }
 
 export const ROLE_PLAY_EARLY_HINT_USER_MESSAGES = 2;
-export const ROLE_PLAY_FINISH_READY_USER_MESSAGES = GOAL_ROLE_PLAY_EARLY_FINISH_USER_MESSAGES;
+/** User turns that yield `CONVERSATION_DONE_MESSAGE_COUNT` total messages (bot + user). */
+export const ROLE_PLAY_FINISH_READY_USER_MESSAGES = Math.ceil(CONVERSATION_DONE_MESSAGE_COUNT / 2);

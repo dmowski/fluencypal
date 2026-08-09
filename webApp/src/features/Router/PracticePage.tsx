@@ -69,10 +69,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     if (aiConversation.isClosing) recorder.cancelRecording();
   }, [aiConversation.isClosing]);
 
-  useEffect(() => {
-    if (recorder.transcription) lessonPlan.generateAnalysis(recorder.transcription);
-  }, [recorder.transcription]);
-
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
@@ -119,7 +115,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         addTranscriptDelta={aiConversation.addUserMessageDelta}
         completeUserMessageDelta={({ removeMessage }: { removeMessage?: boolean }) => {
           aiConversation.completeUserMessageDelta({
-            triggerResponse: !lessonPlan.activeLessonPlan,
+            triggerResponse: true,
             removeMessage,
           });
         }}
@@ -128,7 +124,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         pointsEarned={conversationAnalysis.gamePointsEarned}
         analyzeConversation={conversationAnalysis.analyzeConversation}
         conversationAnalysisResult={conversationAnalysis.conversationAnalysis}
-        lessonPlanAnalysis={aiConversation.lessonPlanAnalysis}
         openCommunityPage={() => appNavigation.setCurrentPage('community')}
         conversation={aiConversation.conversation}
         isAiSpeaking={aiConversation.isAiSpeaking}

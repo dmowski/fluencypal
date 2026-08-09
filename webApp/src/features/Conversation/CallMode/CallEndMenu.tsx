@@ -1,17 +1,21 @@
 import { useLingui } from '@lingui/react';
 import { ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
-import { LogOut, Mic } from 'lucide-react';
+import { LogOut, Mic, Trophy } from 'lucide-react';
 
 export const CallEndMenu = ({
   anchorEl,
   onClose,
   onCloseConversation,
   onSwitchToVoiceRecords,
+  onShowResults,
+  canShowResults,
 }: {
   anchorEl: HTMLElement | null;
   onClose: () => void;
   onCloseConversation: () => void;
   onSwitchToVoiceRecords: () => void;
+  onShowResults: () => void;
+  canShowResults: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -76,6 +80,21 @@ export const CallEndMenu = ({
         </ListItemIcon>
         <ListItemText>
           <Typography>{i18n._('Switch to voice records')}</Typography>
+        </ListItemText>
+      </MenuItem>
+
+      <MenuItem
+        disabled={!canShowResults}
+        sx={{
+          padding: 'var(--item-padding)',
+        }}
+        onClick={onShowResults}
+      >
+        <ListItemIcon>
+          <Trophy />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography>{i18n._('Show results')}</Typography>
         </ListItemText>
       </MenuItem>
     </Menu>

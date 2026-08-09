@@ -239,9 +239,6 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={''}
         isShowMessageProgress={true}
-        lessonPlanAnalysis={{
-          progress: 99,
-        }}
         conversationAnalysisResult={{
           whatToFocusOnNextTime: 'Try to use more complex sentences.',
           whatUserDidWell: 'You spoke clearly and confidently.',

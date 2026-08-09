@@ -84,18 +84,21 @@ export const useConversationsAnalysis = () => {
       ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`
       : '';
 
-    const systemMessage = `You are a language teacher/analyzer.
-You are analyzing the conversation between the user and AI.
-The user is learning ${settings.fullLanguageName}.
+    const systemMessage = `You are a language teacher giving feedback directly to the learner.
+You are analyzing the conversation between the learner and the AI teacher.
+The learner is learning ${settings.fullLanguageName}.
+
+Write every feedback field in second person, addressing the learner as "You" / "your".
+Never refer to the learner as "the user", "the student", or in third person.
 
 Use the "${fullNativeLanguage}" language for analysis.
 
-The user has the following goal: ${aiConversation.goalInfo?.goalPlan.title}.
+The learner has the following goal: ${aiConversation.goalInfo?.goalPlan.title}.
 
-The user is using the following lesson: ${goalElementDescription}.
+The learner is using the following lesson: ${goalElementDescription}.
 
 ${lessonPlan.activeLessonPlan ? `Lesson plan: ${JSON.stringify(lessonPlan.activeLessonPlan)}` : ''}
-    
+
 Answer in the following format (Results object in JSON):
 {
 shortSummaryOfLesson: string;
@@ -105,6 +108,13 @@ whatUserCanImprove: string;
 
 whatToFocusOnNextTime: string;
 }
+
+Field style examples (second person only):
+- whatUserDidWell: "You communicated several connected ideas clearly."
+- whatUserCanImprove: "You can pause less between sentences next time."
+- whatToFocusOnNextTime: "You should practice expanding short answers with one concrete example."
+- shortSummaryOfLesson: "You practiced answering interview questions with confidence."
+
 Use ${settings.fullLanguageName} language for all answers.
 Your output must be in valid JSON format with no additional text or explanation.
 Your response will be parsed using JSON.parse().

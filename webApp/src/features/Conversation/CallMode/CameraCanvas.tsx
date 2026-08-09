@@ -15,7 +15,6 @@ import { WebCamView } from '@/features/webCam/WebCamView';
 import { useEffect, useState } from 'react';
 import { ScanLine } from 'lucide-react';
 import { sleep } from '@/libs/sleep';
-import { LessonPlanAnalysis } from '@/features/LessonPlan/type';
 import { getAiVoiceByVoice } from './voiceAvatar';
 import { RecordingUserMessageMode } from '../types';
 
@@ -38,7 +37,6 @@ export const CameraCanvas = ({
 
   isCompletedLesson,
   onShowAnalyzeConversationModal,
-  lessonPlanAnalysis,
 
   addTranscriptDelta,
   completeUserMessageDelta,
@@ -64,8 +62,6 @@ export const CameraCanvas = ({
 
   isCompletedLesson: boolean;
   onShowAnalyzeConversationModal: () => void;
-
-  lessonPlanAnalysis: LessonPlanAnalysis | null;
 
   addTranscriptDelta: (transcripts: string) => void;
   completeUserMessageDelta: ({ removeMessage }: { removeMessage?: boolean }) => void;
@@ -293,7 +289,6 @@ export const CameraCanvas = ({
             isSubtitlesEnabled={isSubtitlesEnabled}
             toggleSubtitles={(isToggleOn) => setIsSubtitlesEnabled(isToggleOn)}
             onShowAnalyzeConversationModal={onShowAnalyzeConversationModal}
-            lessonPlanAnalysis={lessonPlanAnalysis}
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
             fullExit={fullExit}
