@@ -1,5 +1,7 @@
 # Live document with short/long term ideas
 
+When I submit my messages using Recoding mode, i don't see it appears on conversation history. You need to fix it
+
 ## How to show progress of tasks
 
 - Conversation with AI

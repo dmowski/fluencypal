@@ -98,11 +98,7 @@ export const messageHandlerCreator = (state: WebRtcState, config: ConversationCo
     }
 
     if (type === 'conversation.item.created') {
-      if (
-        event.item.role === 'user' &&
-        event.item.status === 'completed' &&
-        event.item.type === 'message'
-      ) {
+      if (event.item?.role === 'user' && event.item?.type === 'message') {
         const id = event.item.id as string;
         const content = event.item.content || [];
         const userMessage = content
@@ -110,9 +106,15 @@ export const messageHandlerCreator = (state: WebRtcState, config: ConversationCo
           .join(' ')
           .trim();
 
+        // status is optional on Realtime items; do not require "completed".
         if (userMessage && id) {
           config.onMessage({ isBot: false, text: userMessage, id });
-          state.lastMessages.push({ isBot: false, text: userMessage });
+          const alreadyTracked = state.lastMessages.some(
+            (entry) => !entry.isBot && entry.text === userMessage,
+          );
+          if (!alreadyTracked) {
+            state.lastMessages.push({ isBot: false, text: userMessage });
+          }
         }
       }
     }

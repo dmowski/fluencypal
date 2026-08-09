@@ -51,7 +51,7 @@ export const initWebRtcConversation = async (
 
   return {
     closeHandler: () => closeHandler(state, eventHandlers),
-    addThreadsMessage: (message: string) => addThreadsMessage(message, state),
+    addThreadsMessage: (message: string) => addThreadsMessage(message, state, config),
     triggerAiResponse: async () => await triggerAiResponse(state),
     toggleMute: (mute: boolean) => toggleMute(mute, state),
     toggleVolume: async (isVolumeOn: boolean) => await toggleVolume(isVolumeOn, state),

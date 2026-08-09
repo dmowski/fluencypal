@@ -12,7 +12,11 @@ Applies to `webApp/src/features/Conversation/**`.
 | `chat` | Same canvas, keyboard input | Text |
 | `call` | Full-screen `CameraCanvas` + `CallButtons` | Realtime mic (`RealTimeConversation`) |
 
-Every started conversation sets `recordingVoiceMode` to **`RealTimeConversation`** and uses the WebRTC (or experimental WS) transport. Record-mode overflow menu: `RecordingCanvasMenu` (Exit / Voice records / Keyboard / Call).
+Every started conversation sets `recordingVoiceMode` to **`RealTimeConversation`** and uses **`initWebRtcConversation`** (or experimental WS). `initTextConversation` is deprecated.
+
+Record/chat still use local recorders/keyboard; submitted text is sent via WebRTC `conversation.item.create` and **optimistically** appended to local history in `webRtc/addThreadsMessage`.
+
+Record-mode overflow menu: `RecordingCanvasMenu` (Exit / Voice records / Keyboard / Call).
 
 ## Progress
 
