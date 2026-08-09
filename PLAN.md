@@ -1,10 +1,10 @@
 # Live document with short/long term ideas
 
-## Add voice chat into daily task pipeline
+## Voice chat
 
-- Add task: Join voice chat (5th day)
-- Add task: Answer to someone (6th day)
-- Add task: Describe your day in chat
+- Create daily task: Intro
+- Create daily task: Reply
+- Create daily task: Describe your day
 
 ## Alias
 
