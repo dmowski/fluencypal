@@ -12,7 +12,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { Check, Mic, Settings, Square } from 'lucide-react';
+import { Check, Mic, Send, Settings, Square } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { isMicrophoneGranted, listAudioInputDevices, type AudioInputDevice } from '@/libs/mic';
 import { useVoiceChatRecorder } from '../useVoiceChatRecorder';
@@ -252,9 +252,15 @@ export const VoiceChatRecorderPanel = ({
 
       {recorder.recordedBlob && !recorder.isRecording && (
         <Stack gap={1.25}>
-          <VoiceChatPlayer audioUrl={previewUrl} label={i18n._('Preview your recording')} />
+          <VoiceChatPlayer audioUrl={previewUrl} />
           <Stack direction="row" gap={0.75}>
-            <Button variant="contained" disabled={isSubmitting} onClick={() => void handleSubmit()}>
+            <Button
+              startIcon={<Send size={14} fill="currentColor" />}
+              color="info"
+              variant="contained"
+              disabled={isSubmitting}
+              onClick={() => void handleSubmit()}
+            >
               {isSubmitting ? i18n._('Sending…') : submitLabel}
             </Button>
             <Button
