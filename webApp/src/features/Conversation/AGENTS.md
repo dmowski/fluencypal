@@ -47,7 +47,8 @@ Conversation/
 ```
 
 - **Canvas props in, side effects out:** `ConversationCanvas` / `CameraCanvas` receive callbacks (`closeConversation`, `toggleConversationMode`, `addUserMessage`, …). Do not reach into route code from here.
-- **Call end menu:** Red `CallEndIcon` opens `CallEndMenu` — **Close** (`fullExit`), **Switch to voice records** (`exit` → record mode), **Show results** (opens `ConversationReviewModal` over call; disabled until progress is 100%). Do not wire the end button to exit immediately.
+- **Results entry:** **Show results** lives only in menus (`CallEndMenu` / `RecordingCanvasMenu`), disabled until progress is 100%. Do **not** replace record/chat controls with “Mission complete / Open results” — users can keep talking after the bar hits Done.
+- **Call end menu:** Red `CallEndIcon` opens `CallEndMenu` — **Close**, **Switch to voice records**, **Show results**.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `webApp/AGENTS.md` → Daily Tasks).
 
@@ -59,6 +60,7 @@ Conversation/
 | `conversation-canvas-call` | Call canvas root |
 | `call-end-button` | Red end-call control in `CallButtons` |
 | `call-end-menu` | `CallEndMenu` options |
+| `recording-canvas-menu` | Record/chat overflow menu (Exit / Show results / modes) |
 | `call-progress-bar` | Message-count progress strip on call footer |
 | `conversation-review-modal` | Post-call / Show results review steps |
 
@@ -68,7 +70,8 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 
 | Screenshot | Covers |
 | --- | --- |
-| `conversation-canvas-record-*` | Goal-talk default, role-play states, chat input, recording |
+| `conversation-canvas-record-*` | Goal-talk default, role-play states (still recordable at 100%), chat, recording |
+| `conversation-canvas-record-menu-results-ready` | Record overflow menu with Show results enabled |
 | `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar) |
 | `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |

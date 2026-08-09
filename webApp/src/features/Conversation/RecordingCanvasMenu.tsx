@@ -8,7 +8,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { Check, Gem, Keyboard, Lightbulb, LogOut } from 'lucide-react';
+import { Gem, LogOut, Trophy } from 'lucide-react';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
@@ -30,6 +30,8 @@ export const RecordingCanvasMenu = ({
   closeMenus,
   isLimited,
   onOpenPaywall,
+  canShowResults,
+  onShowResults,
 }: {
   anchorElUser: HTMLElement | null;
   setAnchorElUser: (el: HTMLElement | null) => void;
@@ -44,11 +46,14 @@ export const RecordingCanvasMenu = ({
   closeMenus: () => void;
   isLimited: boolean;
   onOpenPaywall: () => void;
+  canShowResults: boolean;
+  onShowResults: () => void;
 }) => {
   const { i18n } = useLingui();
 
   return (
     <Menu
+      data-testid="recording-canvas-menu"
       sx={{
         marginBottom: '130px',
         '--item-padding': '9px 10px 9px 20px',
@@ -95,6 +100,24 @@ export const RecordingCanvasMenu = ({
           >
             {i18n._('Exit')}
           </Typography>
+        </ListItemText>
+      </MenuItem>
+
+      <MenuItem
+        disabled={!canShowResults}
+        sx={{
+          padding: 'var(--item-padding)',
+        }}
+        onClick={() => {
+          onShowResults();
+          closeMenus();
+        }}
+      >
+        <ListItemIcon>
+          <Trophy />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography>{i18n._('Show results')}</Typography>
         </ListItemText>
       </MenuItem>
 

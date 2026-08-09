@@ -22,7 +22,6 @@ import {
   Mic,
   Send,
   Trash2,
-  Trophy,
 } from 'lucide-react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import { AliasGamePanel } from './AliasGamePanel';
@@ -545,7 +544,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         !isRecording &&
                         !isAnalyzingResponse &&
                         !isCallMode &&
-                        !isCompletedLesson &&
                         !isChatMode && (
                           <Stack
                             sx={{
@@ -575,7 +573,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               {i18n._('Record Message')}
                             </Button>
 
-                            <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                            <IconButton
+                              aria-label={i18n._('Conversation options')}
+                              onClick={(e) => setAnchorElUser(e.currentTarget)}
+                            >
                               <CircleEllipsis />
                             </IconButton>
                           </Stack>
@@ -594,12 +595,13 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                         closeMenus={closeMenus}
                         isLimited={isLimitedVoice || isSendMessagesBlocked}
                         onOpenPaywall={() => togglePaymentModal(true)}
+                        canShowResults={isConversationProgressComplete(conversation.length)}
+                        onShowResults={showAnalyzeConversationModal}
                       />
 
                       {!confirmedUserInput &&
                         !isRecording &&
                         !isAnalyzingResponse &&
-                        !isCompletedLesson &&
                         isChatMode && (
                           <Stack
                             sx={{
@@ -654,31 +656,14 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               <Send size={'20px'} />
                             </IconButton>
 
-                            <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                            <IconButton
+                              aria-label={i18n._('Conversation options')}
+                              onClick={(e) => setAnchorElUser(e.currentTarget)}
+                            >
                               <CircleEllipsis />
                             </IconButton>
                           </Stack>
                         )}
-
-                      {isCompletedLesson && (
-                        <Stack
-                          sx={{
-                            alignItems: 'flex-start',
-                            gap: '5px',
-                          }}
-                        >
-                          <Typography>{i18n._('Mission complete')}</Typography>
-                          <Button
-                            startIcon={<Trophy />}
-                            size="large"
-                            color="info"
-                            variant="contained"
-                            onClick={async () => showAnalyzeConversationModal()}
-                          >
-                            {i18n._('Open results')}
-                          </Button>
-                        </Stack>
-                      )}
 
                       {transcriptMessage && !isRecording && !isAnalyzingResponse && (
                         <Button

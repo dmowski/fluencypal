@@ -253,9 +253,27 @@ test('conversation canvas – record mode lesson finish ready', async () => {
     />,
   );
 
+  await expect.element(page.getByRole('button', { name: 'Record Message' })).toBeVisible();
+
   await expect
     .element(page.getByTestId('conversation-canvas-record'))
     .toMatchScreenshot('conversation-canvas-record-role-play-finish-ready');
+});
+
+test('conversation canvas – record mode menu show results enabled', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_FINISH_READY_USER_MESSAGES)}
+      conversationMode="record"
+    />,
+  );
+
+  await userEvent.click(page.getByRole('button', { name: 'Conversation options' }));
+  await expect.element(page.getByRole('menuitem', { name: 'Show results' })).toBeEnabled();
+
+  await expect
+    .element(page.getByTestId('recording-canvas-menu'))
+    .toMatchScreenshot('conversation-canvas-record-menu-results-ready');
 });
 
 test('conversation canvas – record mode role-play mid lesson', async () => {
