@@ -2,8 +2,7 @@
 
 ## How to show progress of tasks
 
-- Grammar improvements
-- goal-lesson
+- grammar improvements
 - community
 - daily-question
 

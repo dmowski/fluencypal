@@ -3,6 +3,7 @@ import {
   ConversationType,
   MessagesOrderMap,
 } from '@/features/Conversation/conversation';
+import { CONVERSATION_DONE_MESSAGE_COUNT } from '@/features/Conversation/conversationProgress';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { GoalElementInfo } from '@/features/Plan/types';
 import { usePlan } from '@/features/Plan/usePlan';
@@ -33,8 +34,6 @@ export const useConversationStat = (
   const dailyTasks = useDailyTasks();
   const aiUserInfo = useAiUserInfo();
 
-  const planMessageCount = 10;
-
   const isLearningPlanMode = learningPlanModes.includes(currentMode);
 
   useEffect(() => {
@@ -50,11 +49,11 @@ export const useConversationStat = (
       }
     }
 
-    if (conversation.length === 10 && currentMode === 'talk') {
+    if (conversation.length === CONVERSATION_DONE_MESSAGE_COUNT && currentMode === 'talk') {
       dailyTasks.onCompleteTask('just-talk');
     }
 
-    if (conversation.length === 6 && isLearningPlanMode) {
+    if (conversation.length === CONVERSATION_DONE_MESSAGE_COUNT && isLearningPlanMode) {
       dailyTasks.onCompleteTask('goal-lesson');
     }
 
@@ -95,7 +94,7 @@ export const useConversationStat = (
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
-    if (usersMessagesCount === planMessageCount && goalInfo) {
+    if (usersMessagesCount === CONVERSATION_DONE_MESSAGE_COUNT && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
   }, [conversation.length]);
