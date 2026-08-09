@@ -7,7 +7,7 @@ import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/ma
 import { useLingui } from '@lingui/react';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { ChevronRight, LockKeyholeOpen, Star, Trophy, Undo2, X } from 'lucide-react';
+import { ChevronRight, Trophy } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -21,6 +21,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import { useLessonPlan } from '@/features/LessonPlan/useLessonPlan';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
+import { CallEndMenu } from './CallEndMenu';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 import { ConversationMessage } from '@/features/Conversation/conversation';
@@ -88,7 +89,10 @@ export const CallButtons = ({
   const ai = useTextAi();
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
+  const [endCallMenuAnchor, setEndCallMenuAnchor] = useState<null | HTMLElement>(null);
   const access = useAccess();
+
+  const closeEndCallMenu = () => setEndCallMenuAnchor(null);
 
   const toggleVolume = () => {
     if (isLimitedVoice) {
@@ -247,6 +251,18 @@ Return ONLY the number.
     onTranscriptionStart: () => addTranscriptDelta(' '),
     silenceMs: 1000,
   });
+
+  const onCloseConversation = () => {
+    vadAudioRecorder.stop();
+    closeEndCallMenu();
+    fullExit();
+  };
+
+  const onSwitchToVoiceRecords = () => {
+    vadAudioRecorder.stop();
+    closeEndCallMenu();
+    exit();
+  };
 
   const processVadTranscript = async (transcript: string | null) => {
     if (!transcript) return;
@@ -697,10 +713,9 @@ Return ONLY the number.
 
               <IconButton
                 size="large"
-                onClick={() => {
-                  vadAudioRecorder.stop();
-                  exit();
-                }}
+                aria-label={i18n._('End call')}
+                data-testid="call-end-button"
+                onClick={(event) => setEndCallMenuAnchor(event.currentTarget)}
                 sx={{
                   width: '70px',
                   borderRadius: '30px',
@@ -710,6 +725,13 @@ Return ONLY the number.
               >
                 <CallEndIcon />
               </IconButton>
+
+              <CallEndMenu
+                anchorEl={endCallMenuAnchor}
+                onClose={closeEndCallMenu}
+                onCloseConversation={onCloseConversation}
+                onSwitchToVoiceRecords={onSwitchToVoiceRecords}
+              />
             </>
           )}
 

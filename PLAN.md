@@ -1,11 +1,19 @@
 # Live document with short/long term ideas
 
-## Daily Tasks improvement
+## Call mode UX
 
-- Connect app into single flow
-- How to show progress of tasks
-- Finish call from camera mode: we need to close it really and provide ability to change to text mode?
-- How to inform users that the daily task is done
+Finish call from camera mode: we need to close it really and provide ability to change to text mode?
+
+- When press on red close button: Show modal: Close, analysis, back to Recording mode
+
+## How to show progress of tasks
+
+- Conversation with AI
+- Grammar improvements
+- Just talk
+- goal-lesson
+- community
+- daily-question
 
 ## Add voice chat into daily task pipeline
 

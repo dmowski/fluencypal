@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
-import { page } from 'vitest/browser';
+import { page, userEvent } from 'vitest/browser';
 import {
   buildRolePlayConversation,
   ConversationCanvasFixture,
@@ -288,4 +288,20 @@ test('conversation canvas – call mode lesson finish ready', async () => {
   await expect
     .element(page.getByTestId('conversation-canvas-call'))
     .toMatchScreenshot('conversation-canvas-call-role-play-finish-ready');
+});
+
+test('conversation canvas – call mode end-call menu', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
+      conversationMode="call"
+      lessonPlanAnalysis={{ progress: 25 }}
+    />,
+  );
+
+  await userEvent.click(page.getByTestId('call-end-button'));
+
+  await expect
+    .element(page.getByTestId('call-end-menu'))
+    .toMatchScreenshot('conversation-canvas-call-end-menu');
 });
