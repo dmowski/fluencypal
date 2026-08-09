@@ -1,22 +1,15 @@
 # Live document with short/long term ideas
 
-## How to show progress of tasks
-
-- grammar improvements
-- community
-- daily-question
-
 ## Add voice chat into daily task pipeline
 
 - Add task: Join voice chat (5th day)
 - Add task: Answer to someone (6th day)
 - Add task: Describe your day in chat
 
-## Hide Alias game landing page
+## Alias
 
-- Add to role-play definition that it's not allowed to parsing
-- add to html structure to prevent parsing
-- Remove from sitemap
+- Use call mode by default
+- Add list of words on call mode
 
 ## Blog: add author
 
