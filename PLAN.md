@@ -1,11 +1,5 @@
 # Live document with short/long term ideas
 
-## Call mode UX
-
-Finish call from camera mode: we need to close it really and provide ability to change to text mode?
-
-- When press on red close button: Show modal: Close, analysis, back to Recording mode
-
 ## How to show progress of tasks
 
 - Conversation with AI
