@@ -19,7 +19,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
-import { CallEndMenu } from './CallEndMenu';
+import { CallEndMenu } from '../CallEndMenu';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 import { ConversationMessage } from '@/features/Conversation/conversation';
@@ -246,7 +246,7 @@ Return ONLY the number.
     silenceMs: 1000,
   });
 
-  const onCloseConversation = () => {
+  const onExit = () => {
     vadAudioRecorder.stop();
     closeEndCallMenu();
     fullExit();
@@ -725,10 +725,11 @@ Return ONLY the number.
               </IconButton>
 
               <CallEndMenu
+                mode="call"
                 anchorEl={endCallMenuAnchor}
                 onClose={closeEndCallMenu}
-                onCloseConversation={onCloseConversation}
-                onSwitchToVoiceRecords={onSwitchToVoiceRecords}
+                onExit={onExit}
+                onSwitchMode={onSwitchToVoiceRecords}
                 onShowResults={onShowResults}
                 canShowResults={isProgressDone}
               />

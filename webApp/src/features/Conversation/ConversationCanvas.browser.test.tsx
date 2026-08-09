@@ -268,11 +268,11 @@ test('conversation canvas – record mode menu show results enabled', async () =
     />,
   );
 
-  await userEvent.click(page.getByRole('button', { name: 'Conversation options' }));
+  await userEvent.click(page.getByTestId('call-end-button'));
   await expect.element(page.getByRole('menuitem', { name: 'Show results' })).toBeEnabled();
 
   await expect
-    .element(page.getByTestId('recording-canvas-menu'))
+    .element(page.getByTestId('call-end-menu'))
     .toMatchScreenshot('conversation-canvas-record-menu-results-ready');
 });
 

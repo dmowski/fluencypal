@@ -16,7 +16,7 @@ Every started conversation sets `recordingVoiceMode` to **`RealTimeConversation`
 
 Record/chat still use local recorders/keyboard; submitted text is sent via WebRTC `conversation.item.create` and **optimistically** appended to local history in `webRtc/addThreadsMessage`.
 
-Record-mode overflow menu: `RecordingCanvasMenu` (Exit / Voice records / Keyboard / Call).
+Record and call share `CallEndMenu` (Exit / switch mode / Show results).
 
 ## Progress
 
@@ -32,12 +32,11 @@ Progress is **message-count based**, not AI-analyzed:
 ```
 Conversation/
 ├── ConversationCanvas.tsx          # Record + chat shell; switches to call modal
-├── RecordingCanvasMenu.tsx         # Mode switcher + exit (record/chat)
+├── CallEndMenu.tsx                 # Shared end menu (Exit / switch mode / Show results)
 ├── conversationProgress.ts         # Message-count → progress %
 ├── CallMode/
 │   ├── CameraCanvas.tsx            # Call layout (avatar, webcam, subtitles)
 │   ├── CallButtons.tsx             # Call footer controls + progress bar
-│   ├── CallEndMenu.tsx             # End-call menu (Close / Voice records / Show results)
 │   └── …
 ├── ConversationInstance/           # WebRTC / realtime WS session clients
 ├── useAiConversation/              # Orchestration, limits, stats, prompts
@@ -47,8 +46,10 @@ Conversation/
 ```
 
 - **Canvas props in, side effects out:** `ConversationCanvas` / `CameraCanvas` receive callbacks (`closeConversation`, `toggleConversationMode`, `addUserMessage`, …). Do not reach into route code from here.
-- **Results entry:** **Show results** lives only in menus (`CallEndMenu` / `RecordingCanvasMenu`), disabled until progress is 100%. Do **not** replace record/chat controls with “Mission complete / Open results” — users can keep talking after the bar hits Done.
-- **Call end menu:** Red `CallEndIcon` opens `CallEndMenu` — **Close**, **Switch to voice records**, **Show results**.
+- **Results entry:** **Show results** lives only in `CallEndMenu`, disabled until progress is 100%. Do **not** replace record/chat controls with “Mission complete / Open results” — users can keep talking after the bar hits Done.
+- **End menu:** Red `CallEndIcon` opens shared `CallEndMenu`:
+  - Call: **Exit**, **Switch to voice records**, **Show results**
+  - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `webApp/AGENTS.md` → Daily Tasks).
 
@@ -59,8 +60,7 @@ Conversation/
 | `conversation-canvas-record` | Record/chat canvas root |
 | `conversation-canvas-call` | Call canvas root |
 | `call-end-button` | Red end-call control in `CallButtons` |
-| `call-end-menu` | `CallEndMenu` options |
-| `recording-canvas-menu` | Record/chat overflow menu (Exit / Show results / modes) |
+| `call-end-menu` | Shared `CallEndMenu` options (call + record) |
 | `call-progress-bar` | Message-count progress strip on call footer |
 | `conversation-review-modal` | Post-call / Show results review steps |
 
@@ -71,7 +71,7 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 | Screenshot | Covers |
 | --- | --- |
 | `conversation-canvas-record-*` | Goal-talk default, role-play states (still recordable at 100%), chat, recording |
-| `conversation-canvas-record-menu-results-ready` | Record overflow menu with Show results enabled |
+| `conversation-canvas-record-menu-results-ready` | Record `CallEndMenu` with Show results enabled |
 | `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar) |
 | `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |

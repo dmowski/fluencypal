@@ -1,21 +1,24 @@
 import { useLingui } from '@lingui/react';
 import { ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
+import VideocamIcon from '@mui/icons-material/Videocam';
 import { LogOut, Mic, Trophy } from 'lucide-react';
 
 export const CallEndMenu = ({
   anchorEl,
   onClose,
-  onCloseConversation,
-  onSwitchToVoiceRecords,
+  onExit,
+  onSwitchMode,
   onShowResults,
   canShowResults,
+  mode,
 }: {
   anchorEl: HTMLElement | null;
   onClose: () => void;
-  onCloseConversation: () => void;
-  onSwitchToVoiceRecords: () => void;
+  onExit: () => void;
+  onSwitchMode: () => void;
   onShowResults: () => void;
   canShowResults: boolean;
+  mode: 'call' | 'record';
 }) => {
   const { i18n } = useLingui();
 
@@ -53,7 +56,7 @@ export const CallEndMenu = ({
           '--color': '#fb8874',
           padding: 'var(--item-padding)',
         }}
-        onClick={onCloseConversation}
+        onClick={onExit}
       >
         <ListItemIcon>
           <LogOut color="var(--color)" />
@@ -64,7 +67,7 @@ export const CallEndMenu = ({
               color: 'var(--color)',
             }}
           >
-            {i18n._('Close')}
+            {i18n._('Exit')}
           </Typography>
         </ListItemText>
       </MenuItem>
@@ -73,13 +76,13 @@ export const CallEndMenu = ({
         sx={{
           padding: 'var(--item-padding)',
         }}
-        onClick={onSwitchToVoiceRecords}
+        onClick={onSwitchMode}
       >
-        <ListItemIcon>
-          <Mic />
-        </ListItemIcon>
+        <ListItemIcon>{mode === 'call' ? <Mic /> : <VideocamIcon />}</ListItemIcon>
         <ListItemText>
-          <Typography>{i18n._('Switch to voice records')}</Typography>
+          <Typography>
+            {mode === 'call' ? i18n._('Switch to voice records') : i18n._('Switch to Call mode')}
+          </Typography>
         </ListItemText>
       </MenuItem>
 

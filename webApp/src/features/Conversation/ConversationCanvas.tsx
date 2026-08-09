@@ -23,6 +23,7 @@ import {
   Send,
   Trash2,
 } from 'lucide-react';
+import CallEndIcon from '@mui/icons-material/CallEnd';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import { AliasGamePanel } from './AliasGamePanel';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
@@ -38,7 +39,7 @@ import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
 import { ConversationReviewModal } from './ConversationReviewModal';
-import { RecordingCanvasMenu } from './RecordingCanvasMenu';
+import { CallEndMenu } from './CallEndMenu';
 import {
   getConversationProgressPercent,
   isConversationProgressComplete,
@@ -575,29 +576,36 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                             </Button>
 
                             <IconButton
-                              aria-label={i18n._('Conversation options')}
+                              aria-label={i18n._('End call')}
+                              data-testid="call-end-button"
                               onClick={(e) => setAnchorElUser(e.currentTarget)}
+                              sx={{
+                                backgroundColor: '#dc362e',
+                                ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
+                              }}
                             >
-                              <CircleEllipsis />
+                              <CallEndIcon />
                             </IconButton>
                           </Stack>
                         )}
 
-                      <RecordingCanvasMenu
-                        anchorElUser={anchorElUser}
-                        setAnchorElUser={setAnchorElUser}
-                        isFinishingProcess={isFinishingProcess}
-                        isRecording={isRecording}
-                        isAnalyzingResponse={isAnalyzingResponse}
-                        isCallMode={isCallMode}
-                        isChatMode={isChatMode}
-                        toggleConversationMode={toggleConversationMode}
-                        closeConversation={closeConversation}
-                        closeMenus={closeMenus}
-                        isLimited={isLimitedVoice || isSendMessagesBlocked}
-                        onOpenPaywall={() => togglePaymentModal(true)}
+                      <CallEndMenu
+                        mode="record"
+                        anchorEl={anchorElUser}
+                        onClose={closeMenus}
+                        onExit={() => {
+                          closeConversation();
+                          closeMenus();
+                        }}
+                        onSwitchMode={() => {
+                          toggleConversationMode('call');
+                          closeMenus();
+                        }}
+                        onShowResults={() => {
+                          showAnalyzeConversationModal();
+                          closeMenus();
+                        }}
                         canShowResults={isConversationProgressComplete(conversation.length)}
-                        onShowResults={showAnalyzeConversationModal}
                       />
 
                       {!confirmedUserInput &&
