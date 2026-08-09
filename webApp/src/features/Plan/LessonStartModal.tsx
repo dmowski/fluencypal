@@ -505,7 +505,7 @@ export const LessonStartModal = ({
                     }}
                   >
                     <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                      {index + 1}. {planStep.stepTitle}
+                      {planStep.stepTitle}
                     </Typography>
                     <Typography sx={{ marginTop: '5px' }}>
                       {planStep.stepDescriptionForStudent}
