@@ -1475,7 +1475,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -3622,7 +3622,7 @@ msgid ""
 "for you over time."
 msgstr "다양한 모드는 다양한 방식으로 도움이 됩니다. 시간이 지나면서 당신에게 가장 잘 맞는 것을 발견하게 될 것입니다."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:268
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "폐기"
@@ -7211,6 +7211,7 @@ msgstr "로딩 중..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "로딩 중…"
@@ -7432,6 +7433,11 @@ msgstr "메시지는 4일 후에 삭제됩니다."
 msgid "Micro-frontends"
 msgstr "마이크로 프론트엔드"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#. js-lingui-explicit-id
+msgid "Microphone"
+msgstr "마이크로폰"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:44
 #: src/features/Case/data/frontend-senior/quizData.ts:143
 #. js-lingui-explicit-id
@@ -7443,7 +7449,7 @@ msgstr "마이크 접근 권한"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:26
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7865,6 +7871,11 @@ msgstr "메시지가 아직 없습니다"
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#. js-lingui-explicit-id
+msgid "No microphones found. Allow microphone access and try again."
+msgstr "마이크가 발견되지 않았습니다. 마이크 접근을 허용하고 다시 시도하세요."
 
 #: src/features/News/NewsFeedModal.tsx:121
 #. js-lingui-explicit-id
@@ -8749,7 +8760,7 @@ msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택�
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "{minSeconds}초 이상 녹음해 주세요."
@@ -9217,7 +9228,7 @@ msgstr "준비 중…"
 msgid "Preview state for gated access once production placement is added."
 msgstr "프로덕션 배치가 추가되면 게이트 액세스에 대한 미리보기 상태."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "녹음을 미리보기하세요"
@@ -9840,7 +9851,12 @@ msgstr "인트로를 녹음하세요"
 msgid "Record your reply"
 msgstr "귀하의 응답을 녹음하십시오"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#. js-lingui-explicit-id
+msgid "Recording settings"
+msgstr "녹음 설정"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "녹화 중... {seconds}초"
@@ -10437,7 +10453,7 @@ msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보
 msgid "Sending..."
 msgstr "보내는 중..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:258
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "보내는 중…"
@@ -11011,8 +11027,8 @@ msgstr "연습 시작하기"
 msgid "Start Recording"
 msgstr "녹음 시작"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "녹음을 시작하세요"
@@ -11231,7 +11247,7 @@ msgid "Steps:"
 msgstr "단계:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -11443,6 +11459,11 @@ msgstr "스웨덴어 학습 계획"
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "당신의 라이브러리를 동기화 중…"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#. js-lingui-explicit-id
+msgid "System default"
+msgstr "시스템 기본값"
 
 #: src/features/Case/data/backendCSharp/techData.ts:48
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:42

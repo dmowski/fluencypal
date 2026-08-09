@@ -1525,7 +1525,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -3727,7 +3727,7 @@ msgstr ""
 "โหมดต่าง ๆ ช่วยในวิธีที่แตกต่างกัน "
 "คุณจะค้นพบว่าสิ่งใดที่เหมาะกับคุณที่สุดเมื่อเวลาผ่านไป"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:268
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "ทิ้ง"
@@ -7536,6 +7536,7 @@ msgstr "กำลังโหลด..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "กำลังโหลด…"
@@ -7760,6 +7761,11 @@ msgstr "ข้อความจะถูกลบหลังจาก 4 วั
 msgid "Micro-frontends"
 msgstr "ไมโครฟรอนต์เอนด์"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#. js-lingui-explicit-id
+msgid "Microphone"
+msgstr "ไมโครโฟน"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:44
 #: src/features/Case/data/frontend-senior/quizData.ts:143
 #. js-lingui-explicit-id
@@ -7771,7 +7777,7 @@ msgstr "การเข้าถึงไมโครโฟน"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "การเข้าถึงไมโครโฟนถูกปฏิเสธ กรุณาเปิดการใช้งานในการตั้งค่าเบราว์เซอร์ของคุณ"
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:26
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8203,6 +8209,11 @@ msgstr "ยังไม่มีข้อความ"
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "ยังไม่มีข้อความใดๆ เป็นคนแรกที่แบ่งปันความคิดของคุณ!"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#. js-lingui-explicit-id
+msgid "No microphones found. Allow microphone access and try again."
+msgstr "ไม่พบไมโครโฟน อนุญาตการเข้าถึงไมโครโฟนและลองอีกครั้ง"
 
 #: src/features/News/NewsFeedModal.tsx:121
 #. js-lingui-explicit-id
@@ -9126,7 +9137,7 @@ msgstr "กรุณากรอกรายละเอียดของผู
 msgid "Please record a longer message (at least a few words)."
 msgstr "โปรดบันทึกข้อความที่ยาวขึ้น (อย่างน้อยสองสามคำ)"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "โปรดบันทึกอย่างน้อย {minSeconds} วินาที"
@@ -9629,7 +9640,7 @@ msgstr ""
 "แสดงตัวอย่างสถานะสำหรับการเข้าถึงที่ถูกจำกัดเมื่อการวางในระบบการผลิตถูกเพิ่ม"
 "เข้าไปแล้ว"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "ดูตัวอย่างการบันทึกของคุณ"
@@ -10382,7 +10393,12 @@ msgstr "บันทึกการแนะนำตัวของคุณ"
 msgid "Record your reply"
 msgstr "บันทึกการตอบกลับของคุณ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#. js-lingui-explicit-id
+msgid "Recording settings"
+msgstr "การตั้งค่าการบันทึก"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "กำลังบันทึก... {seconds}วินาที"
@@ -10989,7 +11005,7 @@ msgstr "ส่ง {messagesNeeded} ข้อความเพื่อปลด
 msgid "Sending..."
 msgstr "กำลังส่ง..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:258
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "กำลังส่ง…"
@@ -11581,8 +11597,8 @@ msgstr "เริ่มฝึกฝน"
 msgid "Start Recording"
 msgstr "เริ่มบันทึก"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "เริ่มการบันทึก"
@@ -11813,7 +11829,7 @@ msgid "Steps:"
 msgstr "ขั้นตอน:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "หยุด"
@@ -12046,6 +12062,11 @@ msgstr "แผนการเรียนรู้ภาษาสวีเดน
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "กำลังซิงค์ไลบรารีของคุณ…"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#. js-lingui-explicit-id
+msgid "System default"
+msgstr "ระบบเริ่มต้น"
 
 #: src/features/Case/data/backendCSharp/techData.ts:48
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:42

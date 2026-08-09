@@ -1472,7 +1472,7 @@ msgstr "スマートフォンで使用できますか？"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -3597,7 +3597,7 @@ msgid ""
 "for you over time."
 msgstr "異なるモードは、さまざまな方法で役立ちます。時間が経つにつれて、自分に最適なものが見つかるでしょう。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:268
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "破棄"
@@ -7172,6 +7172,7 @@ msgstr "読み込み中..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "ロード中…"
@@ -7394,6 +7395,11 @@ msgstr "メッセージは4日後に削除されます。"
 msgid "Micro-frontends"
 msgstr "マイクロフロントエンド"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#. js-lingui-explicit-id
+msgid "Microphone"
+msgstr "マイクロフォン"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:44
 #: src/features/Case/data/frontend-senior/quizData.ts:143
 #. js-lingui-explicit-id
@@ -7405,7 +7411,7 @@ msgstr "マイクアクセス"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "マイクへのアクセスが拒否されました。ブラウザの設定で有効にしてください。"
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:26
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7827,6 +7833,11 @@ msgstr "まだメッセージはありません"
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "まだメッセージはありません。最初にあなたの考えを共有しましょう！"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#. js-lingui-explicit-id
+msgid "No microphones found. Allow microphone access and try again."
+msgstr "マイクが見つかりませんでした。マイクへのアクセスを許可して、再試行してください。"
 
 #: src/features/News/NewsFeedModal.tsx:121
 #. js-lingui-explicit-id
@@ -8709,7 +8720,7 @@ msgstr "ステップ1で親の詳細を記入し、すべてのチェックボ�
 msgid "Please record a longer message (at least a few words)."
 msgstr "長めのメッセージ（少なくとも数単語）を記録してください。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "少なくとも {minSeconds} 秒間記録してください。"
@@ -9176,7 +9187,7 @@ msgstr "準備中…"
 msgid "Preview state for gated access once production placement is added."
 msgstr "プロダクション配置が追加された後のゲートアクセス用プレビューステート。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "録音をプレビューする"
@@ -9797,7 +9808,12 @@ msgstr "紹介を記録する"
 msgid "Record your reply"
 msgstr "あなたの返答を録音してください"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#. js-lingui-explicit-id
+msgid "Recording settings"
+msgstr "録音設定"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "録音中… {seconds}秒"
@@ -10394,7 +10410,7 @@ msgstr "{messagesNeeded} 件のメッセージを送信して、完全なアク�
 msgid "Sending..."
 msgstr "送信中..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:258
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "送信中…"
@@ -10966,8 +10982,8 @@ msgstr "練習を始める"
 msgid "Start Recording"
 msgstr "録音開始"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "録音開始"
@@ -11186,7 +11202,7 @@ msgid "Steps:"
 msgstr "手順:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "ストップ"
@@ -11397,6 +11413,11 @@ msgstr "スウェーデン語学習計画"
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "ライブラリを同期しています…"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#. js-lingui-explicit-id
+msgid "System default"
+msgstr "システムデフォルト"
 
 #: src/features/Case/data/backendCSharp/techData.ts:48
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:42

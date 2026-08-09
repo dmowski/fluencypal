@@ -92,6 +92,8 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 | `voice-chat-pending-{userId}` | Single pending request card |
 | `voice-chat-modal` | Modal root |
 | `voice-chat-recorder` | Recorder panel |
+| `voice-chat-recorder-settings` | Recorder settings (microphone picker) button |
+| `voice-chat-recorder-mic-menu` | Microphone selection menu |
 | `voice-chat-player` | Audio player |
 | `voice-chat-message-{id}` | Message row |
 | `voice-chat-empty` | Empty thread state |

@@ -1543,7 +1543,7 @@ msgstr "Puis-je l'utiliser sur un smartphone ?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -3769,7 +3769,7 @@ msgstr ""
 "Différents modes vous aident de différentes manières. Vous découvrirez ce "
 "qui fonctionne le mieux pour vous au fil du temps."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:268
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Jeter"
@@ -7688,6 +7688,7 @@ msgstr "Chargement..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Chargement…"
@@ -7914,6 +7915,11 @@ msgstr "Les messages sont supprimés après 4 jours."
 msgid "Micro-frontends"
 msgstr "Micro-frontend"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#. js-lingui-explicit-id
+msgid "Microphone"
+msgstr "Microphone"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:44
 #: src/features/Case/data/frontend-senior/quizData.ts:143
 #. js-lingui-explicit-id
@@ -7927,7 +7933,7 @@ msgstr ""
 "L'accès au microphone refusé. Veuillez l'activer dans les paramètres de "
 "votre navigateur."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:26
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8371,6 +8377,11 @@ msgstr "Pas encore de messages"
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Aucun message pour le moment. Soyez le premier à partager vos idées !"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#. js-lingui-explicit-id
+msgid "No microphones found. Allow microphone access and try again."
+msgstr "Aucun microphone trouvé. Autorisez l'accès au microphone et réessayez."
 
 #: src/features/News/NewsFeedModal.tsx:121
 #. js-lingui-explicit-id
@@ -9315,7 +9326,7 @@ msgstr ""
 msgid "Please record a longer message (at least a few words)."
 msgstr "Veuillez enregistrer un message plus long (au moins quelques mots)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Veuillez enregistrer au moins {minSeconds} secondes."
@@ -9856,7 +9867,7 @@ msgstr ""
 "Aperçu de l'état pour l'accès restreint une fois le placement en production "
 "ajouté."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "Prévisualisez votre enregistrement"
@@ -10504,7 +10515,12 @@ msgstr "Enregistrez votre introduction"
 msgid "Record your reply"
 msgstr "Enregistrez votre réponse"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#. js-lingui-explicit-id
+msgid "Recording settings"
+msgstr "Paramètres d'enregistrement"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Enregistrement… {seconds}s"
@@ -11119,7 +11135,7 @@ msgstr "Envoyez {messagesNeeded} messages pour débloquer l'accès complet"
 msgid "Sending..."
 msgstr "Envoi..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:258
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr ""
@@ -11720,8 +11736,8 @@ msgstr ""
 msgid "Start Recording"
 msgstr "Démarrer l'enregistrement"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Commencer l'enregistrement"
@@ -11961,7 +11977,7 @@ msgid "Steps:"
 msgstr "Étapes :"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Arrêtez"
@@ -12191,6 +12207,11 @@ msgstr "Plan d'Apprentissage Suédois"
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Synchronisation de votre bibliothèque…"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#. js-lingui-explicit-id
+msgid "System default"
+msgstr "Paramètre par défaut du système"
 
 #: src/features/Case/data/backendCSharp/techData.ts:48
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:42

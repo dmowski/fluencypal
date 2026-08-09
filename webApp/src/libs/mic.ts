@@ -53,3 +53,63 @@ export const requestMicrophoneAccess = async () => {
     return false;
   }
 };
+
+export type AudioInputDevice = {
+  deviceId: string;
+  label: string;
+};
+
+/** List available microphones. Labels are empty until mic permission has been granted. */
+export const listAudioInputDevices = async (): Promise<AudioInputDevice[]> => {
+  if (typeof navigator === 'undefined' || !navigator.mediaDevices?.enumerateDevices) {
+    return [];
+  }
+
+  const devices = await navigator.mediaDevices.enumerateDevices();
+  return devices
+    .filter((device) => device.kind === 'audioinput' && device.deviceId)
+    .map((device, index) => ({
+      deviceId: device.deviceId,
+      label: device.label.trim() || `Microphone ${index + 1}`,
+    }));
+};
+
+/**
+ * Temporarily routes the next `getUserMedia` audio capture to `deviceId`.
+ * Call the returned restore function immediately after kicking off recording
+ * (libraries that call `getUserMedia` synchronously inside `startRecording`).
+ */
+export const beginPreferredAudioInputCapture = (deviceId: string | null | undefined) => {
+  if (
+    !deviceId ||
+    typeof navigator === 'undefined' ||
+    !navigator.mediaDevices?.getUserMedia
+  ) {
+    return () => {};
+  }
+
+  const mediaDevices = navigator.mediaDevices;
+  const originalGetUserMedia = mediaDevices.getUserMedia.bind(mediaDevices);
+
+  mediaDevices.getUserMedia = ((constraints?: MediaStreamConstraints) => {
+    const base: MediaStreamConstraints =
+      typeof constraints === 'object' && constraints !== null
+        ? { ...constraints }
+        : { audio: true };
+
+    if (base.audio === false) {
+      return originalGetUserMedia(base);
+    }
+
+    const audioConstraints =
+      typeof base.audio === 'object' && base.audio !== null
+        ? { ...base.audio, deviceId: { ideal: deviceId } }
+        : { deviceId: { ideal: deviceId } };
+
+    return originalGetUserMedia({ ...base, audio: audioConstraints });
+  }) as typeof mediaDevices.getUserMedia;
+
+  return () => {
+    mediaDevices.getUserMedia = originalGetUserMedia;
+  };
+};

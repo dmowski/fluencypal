@@ -1535,7 +1535,7 @@ msgstr "Bisakah saya menggunakannya di smartphone?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:128
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -3738,7 +3738,7 @@ msgstr ""
 "Mode yang berbeda membantu dengan cara yang berbeda. Anda akan menemukan "
 "apa yang paling cocok untuk Anda seiring waktu."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:149
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:268
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Buang"
@@ -7631,6 +7631,7 @@ msgstr "Memuat..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Memuat…"
@@ -7857,6 +7858,11 @@ msgstr "Pesan dihapus setelah 4 hari."
 msgid "Micro-frontends"
 msgstr "Mikro-antarmuka depan"
 
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#. js-lingui-explicit-id
+msgid "Microphone"
+msgstr "Mikrofon"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:44
 #: src/features/Case/data/frontend-senior/quizData.ts:143
 #. js-lingui-explicit-id
@@ -7868,7 +7874,7 @@ msgstr "Akses Mikrofon"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Akses mikrofon ditolak. Silakan aktifkan di pengaturan browser Anda."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:26
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8309,6 +8315,11 @@ msgstr "Belum ada pesan"
 #. js-lingui-explicit-id
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Belum ada pesan. Jadilah yang pertama berbagi pemikiran Anda!"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#. js-lingui-explicit-id
+msgid "No microphones found. Allow microphone access and try again."
+msgstr "Tidak ada mikrofon yang ditemukan. Izinkan akses mikrofon dan coba lagi."
 
 #: src/features/News/NewsFeedModal.tsx:121
 #. js-lingui-explicit-id
@@ -9252,7 +9263,7 @@ msgstr "Silakan isi detail orang tua dan centang semua kotak di Langkah 1."
 msgid "Please record a longer message (at least a few words)."
 msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:38
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Silakan rekam setidaknya {minSeconds} detik."
@@ -9777,7 +9788,7 @@ msgstr ""
 "Pratinjau status untuk akses terbatas setelah penempatan produksi "
 "ditambahkan."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:136
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Preview your recording"
 msgstr "Pratinjau rekaman Anda"
@@ -10422,7 +10433,12 @@ msgstr "Rekam perkenalan Anda"
 msgid "Record your reply"
 msgstr "Rekam balasan Anda"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:114
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#. js-lingui-explicit-id
+msgid "Recording settings"
+msgstr "Pengaturan perekaman"
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Merekam… {detik}s"
@@ -11031,7 +11047,7 @@ msgstr "Kirim {messagesNeeded} pesan untuk membuka akses penuh"
 msgid "Sending..."
 msgstr "Mengirim..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:258
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Mengirim…"
@@ -11627,8 +11643,8 @@ msgstr "Mulai Berlatih"
 msgid "Start Recording"
 msgstr "Mulai Merekam"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:80
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:92
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Mulai merekam"
@@ -11865,7 +11881,7 @@ msgid "Steps:"
 msgstr "Langkah-langkah:"
 
 #: src/features/Chat/SubmitForm.tsx:335
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:125
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -12095,6 +12111,11 @@ msgstr "Rencana Belajar Swedia"
 #. js-lingui-explicit-id
 msgid "Syncing your library…"
 msgstr "Sinkronisasi perpustakaan Anda..."
+
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#. js-lingui-explicit-id
+msgid "System default"
+msgstr "Pengaturan sistem default"
 
 #: src/features/Case/data/backendCSharp/techData.ts:48
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:42
