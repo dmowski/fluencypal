@@ -75,7 +75,7 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 | `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar) |
 | `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |
-| `conversation-canvas-call-results-*` | Review modal steps over call (leaderboard → summary → focus → improve → did-well → next-lesson) |
+| `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → next-lesson) |
 
 Run:
 

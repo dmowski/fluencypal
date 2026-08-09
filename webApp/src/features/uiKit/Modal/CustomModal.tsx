@@ -10,8 +10,6 @@ interface CustomModalProps {
   mobilePadding?: string;
   desktopPadding?: string;
   zIndex?: number;
-  /** `overlay` keeps the surface under the modal visible (e.g. call canvas behind results). */
-  variant?: 'page' | 'overlay';
   'data-testid'?: string;
 }
 
@@ -22,12 +20,10 @@ export const CustomModal = ({
   mobilePadding,
   desktopPadding,
   zIndex = 999,
-  variant = 'page',
   'data-testid': dataTestId,
 }: CustomModalProps): JSX.Element => {
   const sizes = useWindowSizes();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const isOverlay = variant === 'overlay';
 
   if (!isOpen) return <></>;
 
@@ -41,7 +37,7 @@ export const CustomModal = ({
       slotProps={{
         backdrop: {
           sx: {
-            backgroundColor: isOverlay ? 'rgba(0, 0, 0, 0.55)' : 'rgba(0, 0, 0, 0.9)',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
           },
         },
       }}
@@ -54,7 +50,7 @@ export const CustomModal = ({
           left: '0',
           width: '100dvw',
           maxWidth: '100vw',
-          backgroundColor: isOverlay ? 'transparent' : '#181818',
+          backgroundColor: '#181818',
           height: '100dvh',
           maxHeight: '100dvh',
           boxSizing: 'border-box',

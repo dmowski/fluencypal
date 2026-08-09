@@ -222,7 +222,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
       {translator.translateModal}
       {isShowAnalyzeConversationModal && (
         <ConversationReviewModal
-          variant={isCallMode ? 'overlay' : 'page'}
           setIsShowAnalyzeConversationModal={setIsShowAnalyzeConversationModal}
           conversationAnalysisResult={conversationAnalysisResult}
           openNextLesson={() => {
@@ -295,6 +294,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   }
 
   const progress = getConversationProgressPercent(conversation.length);
+  const isProgressDone = progress >= 100;
 
   return (
     <>
@@ -395,9 +395,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                     position: 'absolute',
                     top: 0,
                     left: '0px',
-                    background:
-                      'linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))',
-                    transition: 'width 0.3s ease-in-out',
+                    background: isProgressDone
+                      ? 'linear-gradient(90deg, rgba(52, 199, 89, 1), rgba(34, 170, 70, 1))'
+                      : 'linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))',
+                    transition: 'width 0.3s ease-in-out, background 0.3s ease-in-out',
                   }}
                 />
               </Stack>

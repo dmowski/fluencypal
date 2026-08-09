@@ -507,8 +507,10 @@ Return ONLY the number.
             position: 'absolute',
             top: 0,
             left: '0px',
-            background: 'linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))',
-            transition: 'width 0.3s ease-in-out',
+            background: isProgressDone
+              ? 'linear-gradient(90deg, rgba(52, 199, 89, 1), rgba(34, 170, 70, 1))'
+              : 'linear-gradient(90deg, rgba(46, 193, 233, 1), rgba(0, 166, 255, 1))',
+            transition: 'width 0.3s ease-in-out, background 0.3s ease-in-out',
           }}
         />
         {isProgressDone && (
