@@ -197,8 +197,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   }, [conversation, isAnalyzingResponse, isRecording, isCallMode]);
 
   const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
-  const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
-    useState(false);
 
   const showAnalyzeConversationModal = () => {
     analyzeConversation();
@@ -230,7 +228,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
             openNextLesson();
           }}
-          setIsConversationContinueAfterAnalyze={setIsConversationContinueAfterAnalyze}
           pointsEarned={pointsEarned}
           openCommunityPage={() => {
             setIsShowAnalyzeConversationModal(false);
@@ -241,9 +238,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
       )}
     </>
   );
-
-  const isCompletedLesson =
-    !isConversationContinueAfterAnalyze && isConversationProgressComplete(conversation.length);
 
   if (isCallMode) {
     return (
@@ -279,7 +273,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             isLimitedVoice={isLimitedVoice}
             onLimitedClick={onLimitedClick}
             onSubmitTranscription={addUserMessage}
-            isCompletedLesson={isCompletedLesson}
             recordingVoiceMode={recordingVoiceMode}
             onShowAnalyzeConversationModal={showAnalyzeConversationModal}
             addTranscriptDelta={addTranscriptDelta}

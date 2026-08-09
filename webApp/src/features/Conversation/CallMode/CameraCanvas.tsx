@@ -35,7 +35,6 @@ export const CameraCanvas = ({
 
   onSubmitTranscription,
 
-  isCompletedLesson,
   onShowAnalyzeConversationModal,
 
   addTranscriptDelta,
@@ -60,7 +59,6 @@ export const CameraCanvas = ({
 
   onSubmitTranscription: (userMessage: string) => void;
 
-  isCompletedLesson: boolean;
   onShowAnalyzeConversationModal: () => void;
 
   addTranscriptDelta: (transcripts: string) => void;
@@ -122,10 +120,6 @@ export const CameraCanvas = ({
     if (!isTimeToScreenshots) return;
     // analyzeWebcam();
   }, [isTimeToScreenshots, screenshotTimer]);
-
-  useEffect(() => {
-    if (isCompletedLesson) setIsMuted(true);
-  }, [isCompletedLesson]);
 
   return (
     <>

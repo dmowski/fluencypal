@@ -21,7 +21,6 @@ export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal,
   conversationAnalysisResult,
 
-  setIsConversationContinueAfterAnalyze,
   pointsEarned,
 
   openNextLesson,
@@ -29,7 +28,6 @@ export const ConversationReviewModal = ({
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: ConversationResult | null;
 
-  setIsConversationContinueAfterAnalyze: (value: boolean) => void;
   pointsEarned: number;
 
   openNextLesson: () => void;
@@ -41,7 +39,6 @@ export const ConversationReviewModal = ({
 
   const onDone = () => {
     setIsShowAnalyzeConversationModal(false);
-    setIsConversationContinueAfterAnalyze(true);
     openNextLesson();
   };
 
