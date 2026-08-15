@@ -9,6 +9,7 @@ import { getWordsFromText } from '@/libs/getWordsFromText';
 import { useSettings } from '../Settings/useSettings';
 import { useTextAi } from '../Ai/useTextAi';
 import { GoalElementInfo } from '../Plan/types';
+import { normalizeWordsToLearn } from './normalizeWordsToLearn';
 
 interface WordsContextType {
   wordsStats: WordsStats | null;
@@ -111,8 +112,8 @@ Your response will be sent to JSON.parse() function.
         model: 'gpt-5.6-luna',
         languageCode: settings.languageCode || 'en',
       });
-      const newWordsToLearn = JSON.parse(response) as string[];
-      setWordsToLearn(newWordsToLearn.map((word) => word.toLowerCase()));
+      const newWordsToLearn = normalizeWordsToLearn(JSON.parse(response));
+      setWordsToLearn(newWordsToLearn);
 
       return newWordsToLearn;
     } catch (error) {

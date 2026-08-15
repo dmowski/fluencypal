@@ -13,7 +13,7 @@ describe('getRscRequestKey', () => {
 });
 
 describe('createRscNPlusOneTracker', () => {
-  it('ignores prefetch+navigate doubles and reports once at the default threshold of 3', () => {
+  it('ignores mild duplicates and reports once at the default threshold of 4', () => {
     const reports: Array<{ key: string; count: number }> = [];
     let now = 1_000;
     const tracker = createRscNPlusOneTracker({
@@ -25,11 +25,12 @@ describe('createRscNPlusOneTracker', () => {
     const url = 'https://app.example.com/es/practice?_rsc=abc';
     tracker.track(url);
     tracker.track(url);
+    tracker.track(url);
     expect(reports).toHaveLength(0);
 
     tracker.track(url);
     expect(reports).toEqual([
-      { key: 'https://app.example.com/es/practice?_rsc=abc', count: 3 },
+      { key: 'https://app.example.com/es/practice?_rsc=abc', count: 4 },
     ]);
 
     tracker.track(url);
@@ -46,6 +47,7 @@ describe('createRscNPlusOneTracker', () => {
     });
 
     const url = 'https://app.example.com/es/practice?_rsc=abc';
+    tracker.track(url);
     tracker.track(url);
     tracker.track(url);
     now += 3_000;

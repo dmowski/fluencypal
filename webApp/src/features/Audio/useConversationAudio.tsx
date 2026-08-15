@@ -702,13 +702,38 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   };
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
-    const url = generateTtsStreamUrl(text, opts);
+    const play = async (playOpts: SpeakOptions) => {
+      const url = generateTtsStreamUrl(text, playOpts);
+      await playerRef.current!.playStreamUrl(url, () => {
+        setLastPlayedText(text);
+      });
+    };
 
     setLastPlayedText('');
 
-    await playerRef.current!.playStreamUrl(url, () => {
-      setLastPlayedText(text);
-    });
+    try {
+      await play(opts);
+    } catch (error) {
+      // Bad/corrupt cached MP3s show up as NotSupportedError — regenerate once.
+      const shouldRetryCache =
+        opts.cache &&
+        !opts.regenerateCache &&
+        error instanceof Error &&
+        (error.name === 'NotSupportedError' ||
+          error.message.includes('NotSupportedError') ||
+          error.message.includes('MEDIA_ERR_SRC_NOT_SUPPORTED') ||
+          error.message.includes('no supported source'));
+
+      if (!shouldRetryCache) throw error;
+
+      Sentry.addBreadcrumb({
+        category: 'conversation-audio',
+        level: 'warning',
+        message: 'Retrying TTS with regenerateCache after NotSupportedError',
+        data: { voice: opts.voice, inputLength: text.length },
+      });
+      await play({ ...opts, regenerateCache: true });
+    }
   }, []);
 
   const setTextAsPotentialSpeak = useCallback(async (text: string, opts: SpeakOptions) => {

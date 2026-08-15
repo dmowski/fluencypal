@@ -135,7 +135,7 @@ true|A group of people is seen singing a song.|Your speech is correct because it
       gameAchievement: question.type,
     });
 
-    setQuestion({
+    await setQuestion({
       userId: userInfo.uid,
       question: {
         ...question,

@@ -12,7 +12,7 @@ const saveAudioToStorage = async (audioId: string, audioData: Buffer<ArrayBuffer
   await file.save(audioData);
 };
 
-const getAudioFromStorage = async (audioId: string): Promise<ArrayBufferLike | null> => {
+const getAudioFromStorage = async (audioId: string): Promise<Buffer | null> => {
   const bucket = getBucket();
   const filePath = `ttsAudio/${audioId}.mp3`;
   const file = bucket.file(filePath);
@@ -20,7 +20,9 @@ const getAudioFromStorage = async (audioId: string): Promise<ArrayBufferLike | n
   const [exists] = await file.exists();
   if (exists) {
     const [contents] = await file.download();
-    return contents.buffer;
+    // Use the Buffer itself — `contents.buffer` is the backing ArrayBuffer and can
+    // include unrelated bytes outside the Buffer window (corrupt MP3 in the browser).
+    return contents;
   }
 
   return null; // Return null if not found
@@ -46,9 +48,9 @@ export async function GET(req: Request) {
 
   if (!isRegenerate) {
     const cachedAudio = await getAudioFromStorage(audioId);
-    if (cachedAudio) {
+    if (cachedAudio && cachedAudio.byteLength > 0) {
       console.log('From cache', input);
-      return new Response(cachedAudio as any, {
+      return new Response(new Uint8Array(cachedAudio), {
         headers: {
           'Content-Type': 'audio/mpeg',
           //'Cache-Control': 'no-store',

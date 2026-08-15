@@ -26,8 +26,8 @@ type InFlightBucket = {
 };
 
 const DEFAULT_WINDOW_MS = 2_000;
-/** Prefetch + navigate commonly hits 2; alert only on pathological bursts (e.g. DARK-LANG-HQ had 4). */
-const DEFAULT_THRESHOLD = 3;
+/** Prefetch+navigate often hits 2–3; only alert on pathological bursts (DARK-LANG-HQ had 4). */
+const DEFAULT_THRESHOLD = 4;
 
 /**
  * Detects duplicate identical Next.js RSC (`?_rsc=`) fetches in a short window.

@@ -82,32 +82,37 @@ export const AudioPlayIcon = ({
 
     let processedText: string | null = text.trim();
 
-    if (customInstructions && customVoice) {
-      await audio.speak(processedText, {
-        voice: customVoice,
-        instructions: customInstructions,
-        cache: cache ?? false,
-      });
-    } else {
-      const isSingleWord = !processedText.includes(' ');
-      if (isSingleWord) {
-        processedText = clearWordForAudio(processedText);
-      }
-      if (processedText) {
-        const isNeedToRegenerate = countOfClick >= 2 && isSingleWord;
-        if (isNeedToRegenerate) {
-          console.log(`Regenerating audio for "${processedText}" after ${countOfClick} clicks`);
-          setCountOfClick(0);
-        }
+    try {
+      if (customInstructions && customVoice) {
         await audio.speak(processedText, {
-          ...speakOptionsMain,
-          cache: isSingleWord || (cache ?? false),
-          regenerateCache: isNeedToRegenerate,
+          voice: customVoice,
+          instructions: customInstructions,
+          cache: cache ?? false,
         });
+      } else {
+        const isSingleWord = !processedText.includes(' ');
+        if (isSingleWord) {
+          processedText = clearWordForAudio(processedText);
+        }
+        if (processedText) {
+          const isNeedToRegenerate = countOfClick >= 2 && isSingleWord;
+          if (isNeedToRegenerate) {
+            console.log(`Regenerating audio for "${processedText}" after ${countOfClick} clicks`);
+            setCountOfClick(0);
+          }
+          await audio.speak(processedText, {
+            ...speakOptionsMain,
+            cache: isSingleWord || (cache ?? false),
+            regenerateCache: isNeedToRegenerate,
+          });
+        }
       }
+    } catch (error) {
+      console.error('[AudioPlayIcon] speak failed', error);
+    } finally {
+      setIsPlaying(false);
+      onChangeState?.(false);
     }
-    setIsPlaying(false);
-    onChangeState?.(false);
   };
 
   const icon = isLoading ? (
