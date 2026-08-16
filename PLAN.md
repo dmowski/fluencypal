@@ -1,9 +1,6 @@
 # Live document with short/long term ideas
 
-## Pricing
-
-Add custom pricing on price
-Add Advanced AI models price page
+========
 
 ## Voice chat
 

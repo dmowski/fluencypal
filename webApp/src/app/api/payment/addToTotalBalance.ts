@@ -1,4 +1,5 @@
 import { TotalUsageInfo } from '@/features/Usage/usage';
+import { applyAdvancedBalanceChange } from '@/features/Usage/advancedUsage';
 import { getDB } from '../config/firebase';
 import { getUserBalance } from './getUserBalance';
 import dayjs from 'dayjs';
@@ -12,6 +13,7 @@ interface AddToTotalBalanceProps {
   minutesCount?: number;
   monthsCount?: number;
   daysCount?: number;
+  isAdvanced?: boolean;
 }
 
 export const addToTotalBalance = async ({
@@ -22,12 +24,26 @@ export const addToTotalBalance = async ({
   daysCount,
   hoursCount,
   minutesCount,
+  isAdvanced,
 }: AddToTotalBalanceProps) => {
   const db = getDB();
   const balance = await getUserBalance(userId);
   const newTotalUsage: Partial<TotalUsageInfo> = {
     lastUpdatedAt: Date.now(),
   };
+
+  if (isAdvanced) {
+    const nextAdvanced = applyAdvancedBalanceChange(balance, amountToAddHours);
+    newTotalUsage.advancedBalanceHours = nextAdvanced.advancedBalanceHours;
+    newTotalUsage.advancedUsedHours = nextAdvanced.advancedUsedHours;
+    await db
+      .collection('users')
+      .doc(userId)
+      .collection('usage')
+      .doc('totalUsage')
+      .set(newTotalUsage, { merge: true });
+    return;
+  }
 
   if (
     monthsCount !== undefined ||

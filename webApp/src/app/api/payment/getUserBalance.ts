@@ -13,6 +13,8 @@ export const getUserBalance = async (userId: string) => {
   const totalUsageData = doc.data() as TotalUsageInfo | undefined;
   const balanceHours: number = totalUsageData?.balanceHours || 0;
   const usedBalanceHours: number = totalUsageData?.usedHours || 0;
+  const advancedBalanceHours: number = totalUsageData?.advancedBalanceHours || 0;
+  const advancedUsedHours: number = totalUsageData?.advancedUsedHours || 0;
   const isGameWinner = await isGameWinnerRequest;
 
   const activeSubscription = totalUsageData?.activeSubscriptionTill
@@ -24,6 +26,8 @@ export const getUserBalance = async (userId: string) => {
   return {
     balanceHours,
     usedBalanceHours,
+    advancedBalanceHours,
+    advancedUsedHours,
     isGameWinner,
     isFullAccess,
     isSubscriber: activeSubscription,

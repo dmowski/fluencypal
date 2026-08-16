@@ -41,12 +41,16 @@ Please allow microphone permission in your browser settings, refresh the page, a
     }
 
     await settings.setConversationMode('call');
-    conversation.startConversation({
-      conversationMode: 'call',
-      mode: 'talk',
-      voice: voiceName,
-      model,
-    });
+    try {
+      await conversation.startConversation({
+        conversationMode: 'call',
+        mode: 'talk',
+        voice: voiceName,
+        model,
+      });
+    } finally {
+      setIsCallStarting(false);
+    }
   };
 
   return {

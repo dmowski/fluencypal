@@ -5,6 +5,7 @@ export type RealTimeModel =
   | 'gpt-realtime'
   | 'gpt-realtime-1.5'
   | 'gpt-realtime-2'
+  | 'gpt-realtime-2.1'
   | 'gpt-realtime-2.1-mini';
 
 const SMALL_CONVERSATION_MODEL: RealTimeModel = 'gpt-realtime-2.1-mini';
@@ -164,6 +165,15 @@ export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePric
     audio_output: 64,
   },
   'gpt-realtime-2': {
+    text_input: 4,
+    text_cached_input: 0.4,
+    text_output: 24,
+    audio_input: 32,
+    audio_cached_input: 0.4,
+    audio_output: 64,
+  },
+
+  'gpt-realtime-2.1': {
     text_input: 4,
     text_cached_input: 0.4,
     text_output: 24,

@@ -21,6 +21,7 @@ import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { CurrencyToDisplay, PriceDisplay } from './PriceDisplay';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import {
+  ADVANCED_PRICE_PER_HOUR_USD,
   PRICE_PER_MONTH_USD,
   PRICE_PER_WEEK_USD,
   PRICE_PER_YEAR_USD,
@@ -90,6 +91,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
       question: i18n._(`Can I do a refund after purchase?`),
       answer: i18n._(
         `Yes. If you’re not satisfied with the service, on "Profile/Payment history" page you can request a refund and we will discuss the details and return the amount paid.`,
+      ),
+    },
+    {
+      question: i18n._(`Do you offer custom pricing?`),
+      answer: i18n._(
+        `Yes. Custom advanced AI talking is available at {price} per hour for learners who want a more capable realtime conversation model.`,
+        { price: `$${ADVANCED_PRICE_PER_HOUR_USD}` },
       ),
     },
   ];

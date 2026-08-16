@@ -6,8 +6,11 @@ export interface StripeCreateCheckoutRequestBase {
   userId: string;
 }
 
+export type StripeCheckoutProduct = 'hours' | 'advanced-hours';
+
 export interface StripeCreateCheckoutRequestHours extends StripeCreateCheckoutRequestBase {
   amountOfHours: number;
+  product?: StripeCheckoutProduct;
 }
 
 export interface StripeCreateCheckoutSubscription extends StripeCreateCheckoutRequestBase {

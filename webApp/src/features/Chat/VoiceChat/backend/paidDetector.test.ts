@@ -18,6 +18,7 @@ describe('paidDetector', () => {
   it('accepts real paid payments', () => {
     expect(isRealPaidPayment(base({ type: 'user', amountAdded: 5 }))).toBe(true);
     expect(isRealPaidPayment(base({ type: 'subscription-full-v1', amountAdded: 20 }))).toBe(true);
+    expect(isRealPaidPayment(base({ type: 'advanced-hours', amountAdded: 50 }))).toBe(true);
   });
 
   it('rejects trial and welcome grants', () => {

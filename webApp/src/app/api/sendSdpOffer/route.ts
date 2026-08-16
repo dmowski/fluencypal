@@ -3,11 +3,14 @@ import { getEphemeralToken } from '../token/getEphemeralToken';
 import { validateAuthToken } from '../config/firebase';
 import { rateLimitRealtimeInit } from '../usage/rateLimitRealtimeInit';
 import { RealTimeModel } from '@/features/Ai/ai';
+import { hasAdvancedTalkAccess, isAdvancedRealtimeModel } from '@/features/Usage/advancedUsage';
+import { getUserBalance } from '../payment/getUserBalance';
 
 const ALLOWED_MODELS: RealTimeModel[] = [
   'gpt-realtime-mini',
   'gpt-realtime',
   'gpt-realtime-1.5',
+  'gpt-realtime-2.1',
   'gpt-realtime-2.1-mini',
 ];
 
@@ -28,6 +31,13 @@ export async function POST(request: Request) {
     // Validate model
     if (!body?.model || !ALLOWED_MODELS.includes(model)) {
       return new Response('Invalid model', { status: 400 });
+    }
+
+    if (isAdvancedRealtimeModel(model)) {
+      const balance = await getUserBalance(userInfo.uid);
+      if (!hasAdvancedTalkAccess(balance.advancedBalanceHours)) {
+        return new Response('Advanced balance required', { status: 402 });
+      }
     }
 
     // Validate SDP

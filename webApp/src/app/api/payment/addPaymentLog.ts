@@ -72,6 +72,7 @@ export const addPaymentLog = async ({
     daysCount,
     hoursCount,
     minutesCount,
+    isAdvanced: type === 'advanced-hours',
   });
 
   try {

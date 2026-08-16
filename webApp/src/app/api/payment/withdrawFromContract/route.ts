@@ -17,7 +17,11 @@ import { refundPayment } from '../refund';
 import { sentSupportTelegramMessage } from '../../telegram/sendTelegramMessage';
 import { appName } from '@/features/SEO/appInfo';
 
-const WITHDRAWABLE_TYPES = new Set<PaymentLog['type']>(['user', 'subscription-full-v1']);
+const WITHDRAWABLE_TYPES = new Set<PaymentLog['type']>([
+  'user',
+  'subscription-full-v1',
+  'advanced-hours',
+]);
 
 export async function POST(request: NextRequest) {
   const user = await validateAuthToken(request);

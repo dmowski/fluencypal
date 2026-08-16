@@ -26,6 +26,7 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     gift: i18n._(`Gift`),
     'subscription-full-v1': i18n._(`Subscription (1 month)`),
     'trial-days': i18n._(`Trial days`),
+    'advanced-hours': i18n._(`Advanced AI hours`),
   };
 
   const paidLogs = useMemo(() => {
@@ -77,9 +78,7 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           {!!log.amountOfHours && (
             <Typography variant="body2">{convertHoursToHumanFormat(log.amountOfHours)}</Typography>
           )}
-          {!!log.amountOfDays && (
-            <Typography variant="body2">{log.amountOfDays} days</Typography>
-          )}
+          {!!log.amountOfDays && <Typography variant="body2">{log.amountOfDays} days</Typography>}
           {!!log.amountOfMonth && (
             <Typography variant="body2">{log.amountOfMonth} months</Typography>
           )}

@@ -1,13 +1,16 @@
 import { UsageLog } from '@/features/Usage/usage';
+import { isAdvancedRealtimeModel } from '@/features/Usage/advancedUsage';
 import { addToTotalBalance } from './addToTotalBalance';
 import { getDB } from '../config/firebase';
 import { getUserBalance } from './getUserBalance';
 
 export const addUsage = async (userId: string, usage: UsageLog) => {
+  const isAdvanced = usage.type === 'realtime' && isAdvancedRealtimeModel(usage.model);
   const balance = await getUserBalance(userId);
   await addToTotalBalance({
     userId,
-    amountToAddHours: balance.isGameWinner ? 0 : -usage.priceHours,
+    amountToAddHours: !isAdvanced && balance.isGameWinner ? 0 : -usage.priceHours,
+    isAdvanced,
   });
 
   const db = getDB();

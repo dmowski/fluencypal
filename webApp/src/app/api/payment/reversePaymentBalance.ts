@@ -39,6 +39,7 @@ export const reversePaymentBalance = async (userId: string, payment: PaymentLog)
     await addToTotalBalance({
       userId,
       amountToAddHours: -payment.amountOfHours,
+      isAdvanced: payment.type === 'advanced-hours',
     });
   }
 };

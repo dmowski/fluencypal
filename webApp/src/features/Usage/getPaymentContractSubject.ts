@@ -1,6 +1,9 @@
 import { PaymentLog } from '@/features/Usage/usage';
 
 export const getPaymentContractSubject = (payment: PaymentLog): string => {
+  if (payment.type === 'advanced-hours') {
+    return `${payment.amountOfHours} hour(s) of Advanced AI talking on FluencyPal`;
+  }
   if (payment.amountOfHours > 0) {
     return `${payment.amountOfHours} hour(s) of AI language tutoring on FluencyPal`;
   }
@@ -17,5 +20,9 @@ export const isWithdrawablePayment = (payment: PaymentLog): boolean => {
   if (payment.withdrawnAtIso) {
     return false;
   }
-  return payment.type === 'user' || payment.type === 'subscription-full-v1';
+  return (
+    payment.type === 'user' ||
+    payment.type === 'subscription-full-v1' ||
+    payment.type === 'advanced-hours'
+  );
 };

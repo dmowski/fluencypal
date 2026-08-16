@@ -142,6 +142,8 @@ function useProvideUsage(): UsageContextType {
       : undefined,
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,
+    advancedBalanceHours: totalUsage?.advancedBalanceHours || 0,
+    advancedUsedHours: totalUsage?.advancedUsedHours || 0,
     isWelcomeBalanceInitialized,
 
     loading: loadingTotalUsage || !totalUsage,

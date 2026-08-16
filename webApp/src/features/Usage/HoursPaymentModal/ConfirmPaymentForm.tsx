@@ -1,6 +1,7 @@
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
+import { formatAdvancedUsd } from '@/features/Usage/advancedUsage';
 import { useLingui } from '@lingui/react';
 import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
 import { ChevronRight, ShieldCheck } from 'lucide-react';
@@ -10,10 +11,12 @@ export const ConfirmPaymentForm = ({
   onConfirmRequest,
   amountInUsd,
   isRedirecting,
+  forceUsd = false,
 }: {
   onConfirmRequest: () => void;
   amountInUsd: number;
   isRedirecting: boolean;
+  forceUsd?: boolean;
 }) => {
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const { i18n } = useLingui();
@@ -112,7 +115,9 @@ export const ConfirmPaymentForm = ({
           }}
         >
           {i18n._(`Order with obligation to pay {amount}`, {
-            amount: currency.convertUsdToCurrency(amountInUsd),
+            amount: forceUsd
+              ? formatAdvancedUsd(amountInUsd)
+              : currency.convertUsdToCurrency(amountInUsd),
           })}
         </Button>
         <Stack

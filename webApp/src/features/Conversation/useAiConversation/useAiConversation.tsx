@@ -10,7 +10,11 @@ import {
   useState,
   useMemo,
 } from 'react';
-import { AiVoice, MODELS, pricePerHourUsd } from '@/features/Ai/ai';
+import { AiVoice, MODELS, pricePerHourUsd, RealTimeModel } from '@/features/Ai/ai';
+import {
+  ADVANCED_PRICE_PER_HOUR_USD,
+  isAdvancedRealtimeModel,
+} from '@/features/Usage/advancedUsage';
 import { initWebRtcConversation } from '../ConversationInstance/webRtc';
 import { initRealtimeWsConversation } from '../ConversationInstance/realtimeWs/initRealtimeWsConversation';
 import { RealtimeWsAuthError } from '../ConversationInstance/realtimeWs/resolveRealtimeWsAuthToken';
@@ -76,6 +80,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const experimentalRealtimeWsActiveRef = useRef(false);
 
   const [isMuted, setIsMuted] = useState(true);
+  const [activeRealtimeModel, setActiveRealtimeModel] = useState<RealTimeModel | null>(null);
   const access = useAccess();
   const audio = useConversationAudio();
   const [isAiSpeakingStartedFromConversation, setIsAiSpeakingStartedFromConversation] =
@@ -134,7 +139,13 @@ function useProvideAiConversation(): AiConversationContextType {
     setIsMuted(isMute);
   };
 
-  const limits = useLimits(communicatorRef, messages.conversation, toggleMute, toggleVolume);
+  const limits = useLimits(
+    communicatorRef,
+    messages.conversation,
+    toggleMute,
+    toggleVolume,
+    isAdvancedRealtimeModel(activeRealtimeModel),
+  );
 
   const { resetAliasAnalytics } = useAliasConversationAnalytics({
     activeRolePlayId,
@@ -541,12 +552,16 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
         : initWebRtcConversation;
 
       const model = input.model || MODELS.REALTIME_CONVERSATION;
+      setActiveRealtimeModel(model);
 
       // audio.music.stop();
 
       const conversation = await initConversation({
         ...conversationConfig,
         model: model,
+        userPricePerHourUsd: isAdvancedRealtimeModel(model)
+          ? ADVANCED_PRICE_PER_HOUR_USD
+          : pricePerHourUsd,
         initInstruction: instruction,
         voice: conversationConfig.voice || input.voice || settingsVoice || 'shimmer',
         isMuted: isMutedInternal,
@@ -571,6 +586,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       conversation.flushSessionReady?.();
     } catch (e) {
       console.error(e);
+      setActiveRealtimeModel(null);
       experimentalRealtimeWsActiveRef.current = false;
       if (e instanceof RealtimeWsAuthError) {
         setErrorInitiating(e.message);
@@ -599,6 +615,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
     messages.setConversationId(null);
     messages.setConversation([]);
+    setActiveRealtimeModel(null);
     audio.setVolume(1);
 
     closeVideoMediaStream();

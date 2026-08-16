@@ -124,8 +124,25 @@ export async function POST(request: Request) {
 
       const months = session.metadata?.amountOfMonths;
       const days = session.metadata?.amountOfDays;
+      const product = session.metadata?.product;
 
-      if (days && days !== '0') {
+      if (product === 'advanced-hours') {
+        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0');
+        if (amountOfHours <= 0) throw new Error('Amount of advanced hours is not set');
+
+        const tgMessage = `🤑 User ${userEmail} purchased ${amountOfHours} advanced AI hours.`;
+        sentSupportTelegramMessage({ message: tgMessage, userId });
+        await addPaymentLog({
+          amount: amountPaid,
+          userId: userId,
+          paymentId,
+          currency: currency || 'usd',
+          amountOfHours,
+          type: 'advanced-hours',
+          receiptUrl,
+          chargeId,
+        });
+      } else if (days && days !== '0') {
         const daysCount = parseInt(days, 10);
         if (daysCount <= 0) throw new Error('Amount of days is not set');
 

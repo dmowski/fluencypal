@@ -13,6 +13,8 @@ export interface TotalUsageInfo {
   balanceHours: number; // hours
   usedHours: number; // hours
   activeSubscriptionTill?: string; // ISO date string: Last date of subscription YYYY-MM-DDTH:mm:ss.sssZ
+  advancedBalanceHours?: number;
+  advancedUsedHours?: number;
 }
 
 interface BaseUsageLog {
@@ -62,7 +64,13 @@ export type UsageLog =
   | TranscriptUsageLog
   | TextToAudioUsageLog;
 
-export type PaymentLogType = 'welcome' | 'user' | 'gift' | 'subscription-full-v1' | 'trial-days';
+export type PaymentLogType =
+  | 'welcome'
+  | 'user'
+  | 'gift'
+  | 'subscription-full-v1'
+  | 'trial-days'
+  | 'advanced-hours';
 
 export const WELCOME_BONUS = 6;
 export interface PaymentLog {
