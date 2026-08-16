@@ -6,7 +6,7 @@ export const PRICE_PER_DAY_USD = 1.1;
 
 export const PRICE_PER_YEAR_USD = 75;
 
-export const ADVANCED_PRICE_PER_HOUR_USD = 2;
+export const ADVANCED_PRICE_PER_HOUR_USD = 50;
 
 export const TRIAL_DAYS = 1;
 
