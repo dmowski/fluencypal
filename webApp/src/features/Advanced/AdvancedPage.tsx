@@ -17,6 +17,7 @@ import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
 import { SupportedLanguage } from '../Lang/lang';
 import { useLessonPlan } from '../LessonPlan/useLessonPlan';
+import { AdvancedHeader } from './AdvancedHeader';
 import { useAppNavigation } from '../Navigation/useAppNavigation';
 import { usePlan } from '../Plan/usePlan';
 import { useSettings } from '../Settings/useSettings';
@@ -98,7 +99,22 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
     window.location.href = checkoutInfo.sessionUrl;
   };
 
-  if (auth.loading || settings.loading || !usage.isWelcomeBalanceInitialized) {
+  if (auth.loading) {
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
+
+  if (!auth.isAuthorized) {
+    return (
+      <AuthWall
+        signInTitle={i18n._('Advanced AI talking')}
+        singInSubTitle={i18n._('Sign in to buy hours and start a high-quality conversation')}
+      >
+        {null}
+      </AuthWall>
+    );
+  }
+
+  if (settings.loading || !usage.isWelcomeBalanceInitialized) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
@@ -205,13 +221,14 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '760px',
+          maxWidth: '720px',
           margin: '0 auto',
           padding: '40px 20px 80px 20px',
           boxSizing: 'border-box',
           gap: '28px',
         }}
       >
+        <AdvancedHeader />
         <Stack sx={{ gap: '8px' }}>
           <Typography variant="h3" sx={{ fontWeight: 800 }}>
             {i18n._('Advanced AI')}
