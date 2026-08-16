@@ -495,7 +495,7 @@ msgstr "Sử dụng Học thuật Nâng cao"
 msgid "Advanced AI"
 msgstr "AI Tiên Tiến"
 
-#: src/features/Advanced/AdvancedPage.tsx:426
+#: src/features/Advanced/AdvancedPage.tsx:467
 #: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Advanced AI hours"
@@ -1428,7 +1428,7 @@ msgstr "Mua token AI và sử dụng chúng bất cứ khi nào bạn muốn."
 msgid "Buy hours"
 msgstr "Mua giờ"
 
-#: src/features/Advanced/AdvancedPage.tsx:329
+#: src/features/Advanced/AdvancedPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Buy hours to start"
 msgstr "Mua giờ để bắt đầu"
@@ -1443,7 +1443,7 @@ msgstr "Mua Thêm"
 msgid "Buying a Train Ticket"
 msgstr "Mua Vé Tàu"
 
-#: src/features/Advanced/AdvancedPage.tsx:390
+#: src/features/Advanced/AdvancedPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of advanced AI talking"
 msgstr "Mua {hours} giờ nói chuyện AI nâng cao"
@@ -2482,7 +2482,7 @@ msgstr "Theo dõi điểm số tự tin"
 msgid "Confirm Credit Card"
 msgstr "Xác nhận Thẻ Tín Dụng"
 
-#: src/features/Advanced/AdvancedPage.tsx:388
+#: src/features/Advanced/AdvancedPage.tsx:429
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -3513,7 +3513,7 @@ msgstr "Tranh luận"
 msgid "Decrease font size"
 msgstr "Giảm kích thước phông chữ"
 
-#: src/features/Advanced/AdvancedPage.tsx:298
+#: src/features/Advanced/AdvancedPage.tsx:259
 #. js-lingui-explicit-id
 msgid "Decrease hours"
 msgstr "Giảm giờ"
@@ -6817,7 +6817,7 @@ msgstr "Không chính xác"
 msgid "Increase font size"
 msgstr "Tăng kích thước chữ"
 
-#: src/features/Advanced/AdvancedPage.tsx:259
+#: src/features/Advanced/AdvancedPage.tsx:299
 #. js-lingui-explicit-id
 msgid "Increase hours"
 msgstr "Tăng thời gian học"
@@ -7163,6 +7163,11 @@ msgstr "Chỉ cần nói (tùy chỉnh thời gian thực)"
 #. js-lingui-explicit-id
 msgid "Just talk with the advanced realtime model. {price} per hour."
 msgstr "Chỉ cần nói chuyện với mô hình thời gian thực nâng cao. {price} mỗi giờ."
+
+#: src/features/Advanced/AdvancedPage.tsx:380
+#. js-lingui-explicit-id
+msgid "Just talk with the latest realtime model"
+msgstr "Chỉ cần nói chuyện với mô hình thời gian thực mới nhất"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:366
 #. js-lingui-explicit-id
@@ -7590,7 +7595,7 @@ msgid "Loading.."
 msgstr "Đang tải.."
 
 #: src/features/Advanced/AdvancedPage.tsx:102
-#: src/features/Advanced/AdvancedPage.tsx:336
+#: src/features/Advanced/AdvancedPage.tsx:345
 #: src/features/Chat/SubmitForm.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:208
@@ -8193,7 +8198,7 @@ msgstr ""
 msgid "No ads, no spam"
 msgstr "Không quảng cáo, không thư rác"
 
-#: src/features/Advanced/AdvancedPage.tsx:341
+#: src/features/Advanced/AdvancedPage.tsx:350
 #. js-lingui-explicit-id
 msgid "No advanced payments yet"
 msgstr "Chưa có thanh toán trước"
@@ -8638,6 +8643,22 @@ msgstr ""
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "Một ngày một lần là đủ. Hoàn thành các công việc hôm nay."
 
+#: src/features/Advanced/AdvancedPage.tsx:400
+#. js-lingui-explicit-id
+msgid ""
+"One hour is based on the time you or the AI is actively speaking. If you "
+"talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. "
+"If the AI thinks for a long time before answering, usage can be a bit "
+"higher than the time you hear. An hour is an approximate measure of talking "
+"cost, and actual usage can vary."
+msgstr ""
+"Một giờ được dựa trên thời gian bạn hoặc AI đang tích cực nói chuyện. Nếu "
+"bạn nói chuyện trong 10 phút và sau đó chờ đợi 20 phút, bạn sử dụng khoảng "
+"10 phút. Nếu AI suy nghĩ trong một thời gian dài trước khi trả lời, mức sử "
+"dụng có thể cao hơn một chút so với thời gian bạn nghe. Một giờ là đơn vị "
+"đo lường ước chừng cho chi phí nói chuyện, và mức sử dụng thực tế có thể "
+"thay đổi."
+
 #: src/features/Tasks/useDailyPlans.ts:311
 #. js-lingui-explicit-id
 msgid "One hundred active days. An incredible milestone — keep going."
@@ -8960,7 +8981,7 @@ msgstr "Thanh toán bằng tiền điện tử"
 msgid "Pay with Stars"
 msgstr "Trả bằng Sao"
 
-#: src/features/Advanced/AdvancedPage.tsx:313
+#: src/features/Advanced/AdvancedPage.tsx:321
 #. js-lingui-explicit-id
 msgid "Pay {amount}"
 msgstr "Trả {amount}"
@@ -8981,7 +9002,7 @@ msgstr "Thanh toán không thành công! Vui lòng thử lại."
 msgid "Payment History"
 msgstr "Lịch sử Thanh toán"
 
-#: src/features/Advanced/AdvancedPage.tsx:333
+#: src/features/Advanced/AdvancedPage.tsx:342
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "Lịch sử thanh toán"
@@ -11569,7 +11590,7 @@ msgstr "Bắt đầu một buổi phỏng vấn giả định"
 msgid "Start Call"
 msgstr "Bắt đầu cuộc gọi"
 
-#: src/features/Advanced/AdvancedPage.tsx:328
+#: src/features/Advanced/AdvancedPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "Bắt đầu cuộc trò chuyện"
@@ -11722,7 +11743,7 @@ msgstr "Bắt đầu | 5 phút"
 msgid "Starting webcam... "
 msgstr "Bắt đầu webcam..."
 
-#: src/features/Advanced/AdvancedPage.tsx:326
+#: src/features/Advanced/AdvancedPage.tsx:335
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15007,6 +15028,11 @@ msgstr ""
 msgid "You are already the owner of this book."
 msgstr "Bạn đã là chủ sở hữu của cuốn sách này."
 
+#: src/features/Advanced/AdvancedPage.tsx:381
+#. js-lingui-explicit-id
+msgid "You are charged for speaking time, not waiting time"
+msgstr "Bạn sẽ bị tính phí cho thời gian nói chuyện, không phải thời gian chờ"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -15595,6 +15621,11 @@ msgstr "{durationInSecond}s mỗi lượt"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration} giây"
+
+#: src/features/Advanced/AdvancedPage.tsx:379
+#. js-lingui-explicit-id
+msgid "{hours} hour(s) of advanced AI talking"
+msgstr "{hours} giờ đàm thoại AI nâng cao"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

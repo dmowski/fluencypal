@@ -5,7 +5,7 @@ import { Button, IconButton, Stack, TextField, Typography } from '@mui/material'
 import { useState } from 'react';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import dayjs from 'dayjs';
-import { Minus, Plus } from 'lucide-react';
+import { Check, Minus, Plus } from 'lucide-react';
 import { AuthWall } from '../Auth/AuthWall';
 import { useAuth } from '../Auth/useAuth';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
@@ -256,15 +256,15 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
             }}
           >
             <IconButton
-              aria-label={i18n._('Increase hours')}
-              disabled={hoursToBuy >= ADVANCED_MAX_HOURS}
+              aria-label={i18n._('Decrease hours')}
+              disabled={hoursToBuy <= ADVANCED_MIN_HOURS}
               onClick={() => {
-                const next = clampAdvancedHours(hoursToBuy + 1);
+                const next = clampAdvancedHours(hoursToBuy - 1);
                 setHoursToBuy(next);
                 setHoursInput(String(next));
               }}
             >
-              <Plus />
+              <Minus />
             </IconButton>
             <TextField
               type="number"
@@ -294,26 +294,35 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
                 },
               }}
             />
+
             <IconButton
-              aria-label={i18n._('Decrease hours')}
-              disabled={hoursToBuy <= ADVANCED_MIN_HOURS}
+              aria-label={i18n._('Increase hours')}
+              disabled={hoursToBuy >= ADVANCED_MAX_HOURS}
               onClick={() => {
-                const next = clampAdvancedHours(hoursToBuy - 1);
+                const next = clampAdvancedHours(hoursToBuy + 1);
                 setHoursToBuy(next);
                 setHoursInput(String(next));
               }}
             >
-              <Minus />
+              <Plus />
             </IconButton>
           </Stack>
-          <Typography sx={{ opacity: 0.75 }}>
-            {formatAdvancedUsd(hoursToBuy * ADVANCED_PRICE_PER_HOUR_USD)}
-          </Typography>
-          <Button variant="contained" color="info" size="large" onClick={() => setIsPayOpen(true)}>
+
+          <Button
+            variant="contained"
+            sx={{
+              fontSize: '24px',
+              fontWeight: 600,
+            }}
+            color="info"
+            size="large"
+            onClick={() => setIsPayOpen(true)}
+          >
             {i18n._('Pay {amount}', {
               amount: formatAdvancedUsd(hoursToBuy * ADVANCED_PRICE_PER_HOUR_USD),
             })}
           </Button>
+          <AdvancedPurchaseDetails hoursToBuy={hoursToBuy} />
         </Stack>
 
         <Button
@@ -361,6 +370,38 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
         </CustomModal>
       )}
     </AuthWall>
+  );
+};
+
+const AdvancedPurchaseDetails = ({ hoursToBuy }: { hoursToBuy: number }) => {
+  const { i18n } = useLingui();
+  const items = [
+    i18n._('{hours} hour(s) of advanced AI talking', { hours: hoursToBuy }),
+    i18n._('Just talk with the latest realtime model'),
+    i18n._('You are charged for speaking time, not waiting time'),
+  ];
+
+  return (
+    <Stack sx={{ gap: '12px', paddingTop: '4px' }}>
+      {items.map((item) => (
+        <Stack
+          key={item}
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            gap: '10px',
+          }}
+        >
+          <Check size={18} color="#8bc34a" style={{ marginTop: '2px', flexShrink: 0 }} />
+          <Typography>{item}</Typography>
+        </Stack>
+      ))}
+      <Typography variant="body2" sx={{ opacity: 0.7, lineHeight: 1.6 }}>
+        {i18n._(
+          `One hour is based on the time you or the AI is actively speaking. If you talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. If the AI thinks for a long time before answering, usage can be a bit higher than the time you hear. An hour is an approximate measure of talking cost, and actual usage can vary.`,
+        )}
+      </Typography>
+    </Stack>
   );
 };
 

@@ -489,7 +489,7 @@ msgstr "การใช้งานทางวิชาการขั้นส
 msgid "Advanced AI"
 msgstr "ปัญญาประดิษฐ์ขั้นสูง"
 
-#: src/features/Advanced/AdvancedPage.tsx:426
+#: src/features/Advanced/AdvancedPage.tsx:467
 #: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Advanced AI hours"
@@ -1422,7 +1422,7 @@ msgstr "ซื้อโทเค็น AI และใช้งานได้�
 msgid "Buy hours"
 msgstr "ซื้อชั่วโมง"
 
-#: src/features/Advanced/AdvancedPage.tsx:329
+#: src/features/Advanced/AdvancedPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Buy hours to start"
 msgstr "ซื้อชั่วโมงเพื่อเริ่มต้น"
@@ -1437,7 +1437,7 @@ msgstr "ซื้อเพิ่มเติม"
 msgid "Buying a Train Ticket"
 msgstr "การซื้อบัตรรถไฟ"
 
-#: src/features/Advanced/AdvancedPage.tsx:390
+#: src/features/Advanced/AdvancedPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of advanced AI talking"
 msgstr "การซื้อการพูดคุย AI ขั้นสูงเป็นเวลา {hours} ชั่วโมง"
@@ -2473,7 +2473,7 @@ msgstr "การติดตามคะแนนความมั่นใจ
 msgid "Confirm Credit Card"
 msgstr "ยืนยันบัตรเครดิต"
 
-#: src/features/Advanced/AdvancedPage.tsx:388
+#: src/features/Advanced/AdvancedPage.tsx:429
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -3510,7 +3510,7 @@ msgstr "การโต้วาที"
 msgid "Decrease font size"
 msgstr "ลดขนาดตัวอักษร"
 
-#: src/features/Advanced/AdvancedPage.tsx:298
+#: src/features/Advanced/AdvancedPage.tsx:259
 #. js-lingui-explicit-id
 msgid "Decrease hours"
 msgstr "ลดชั่วโมง"
@@ -6782,7 +6782,7 @@ msgstr "ไม่ถูกต้อง"
 msgid "Increase font size"
 msgstr "เพิ่มขนาดตัวอักษร"
 
-#: src/features/Advanced/AdvancedPage.tsx:259
+#: src/features/Advanced/AdvancedPage.tsx:299
 #. js-lingui-explicit-id
 msgid "Increase hours"
 msgstr "เพิ่มชั่วโมง"
@@ -7126,6 +7126,11 @@ msgstr "เพียงพูดคุย (แบบกำหนดเองเ�
 #. js-lingui-explicit-id
 msgid "Just talk with the advanced realtime model. {price} per hour."
 msgstr "พูดคุยกับโมเดลเรียลไทม์ขั้นสูง ราคา {price} ต่อชั่วโมง"
+
+#: src/features/Advanced/AdvancedPage.tsx:380
+#. js-lingui-explicit-id
+msgid "Just talk with the latest realtime model"
+msgstr "เพียงแค่พูดคุยกับโมเดลเรียลไทม์ล่าสุด"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:366
 #. js-lingui-explicit-id
@@ -7561,7 +7566,7 @@ msgid "Loading.."
 msgstr "กำลังโหลด.."
 
 #: src/features/Advanced/AdvancedPage.tsx:102
-#: src/features/Advanced/AdvancedPage.tsx:336
+#: src/features/Advanced/AdvancedPage.tsx:345
 #: src/features/Chat/SubmitForm.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:208
@@ -8160,7 +8165,7 @@ msgstr "ไม่พบบัญชีสำหรับอีเมลนี้
 msgid "No ads, no spam"
 msgstr "ไม่มีโฆษณา, ไม่มีสแปม"
 
-#: src/features/Advanced/AdvancedPage.tsx:341
+#: src/features/Advanced/AdvancedPage.tsx:350
 #. js-lingui-explicit-id
 msgid "No advanced payments yet"
 msgstr "ยังไม่มีการชำระเงินล่วงหน้า"
@@ -8596,6 +8601,21 @@ msgstr ""
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "หนึ่งวันในแต่ละครั้งก็เพียงพอแล้ว จงทำงานของวันนี้ให้สำเร็จ"
 
+#: src/features/Advanced/AdvancedPage.tsx:400
+#. js-lingui-explicit-id
+msgid ""
+"One hour is based on the time you or the AI is actively speaking. If you "
+"talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. "
+"If the AI thinks for a long time before answering, usage can be a bit "
+"higher than the time you hear. An hour is an approximate measure of talking "
+"cost, and actual usage can vary."
+msgstr ""
+"ระยะเวลาหนึ่งชั่วโมงจะขึ้นอยู่กับเวลาที่คุณหรือ AI กำลังพูดอยู่ "
+"ถ้าคุณพูดเป็นเวลา 10 นาทีแล้วรออีก 20 นาที คุณจะใช้ไปประมาณ 10 นาที ถ้า AI "
+"คิดนานก่อนตอบ การใช้งานอาจจะสูงกว่าที่คุณได้ยินเล็กน้อย "
+"ชั่วโมงหนึ่งเป็นการประมาณการค่าใช้จ่ายในการพูด "
+"และการใช้งานจริงอาจจะแตกต่างกันได้"
+
 #: src/features/Tasks/useDailyPlans.ts:311
 #. js-lingui-explicit-id
 msgid "One hundred active days. An incredible milestone — keep going."
@@ -8919,7 +8939,7 @@ msgstr "ชำระเงินด้วยคริปโต"
 msgid "Pay with Stars"
 msgstr "จ่ายด้วยดาว"
 
-#: src/features/Advanced/AdvancedPage.tsx:313
+#: src/features/Advanced/AdvancedPage.tsx:321
 #. js-lingui-explicit-id
 msgid "Pay {amount}"
 msgstr "ชำระเงิน {amount}"
@@ -8940,7 +8960,7 @@ msgstr "การชำระเงินล้มเหลว! โปรดล�
 msgid "Payment History"
 msgstr "ประวัติการชำระเงิน"
 
-#: src/features/Advanced/AdvancedPage.tsx:333
+#: src/features/Advanced/AdvancedPage.tsx:342
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "ประวัติการชำระเงิน"
@@ -11614,7 +11634,7 @@ msgstr "เริ่มสัมภาษณ์จำลอง"
 msgid "Start Call"
 msgstr "เริ่มการโทร"
 
-#: src/features/Advanced/AdvancedPage.tsx:328
+#: src/features/Advanced/AdvancedPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "เริ่มสนทนา"
@@ -11761,7 +11781,7 @@ msgstr "เริ่ม | 5 นาที"
 msgid "Starting webcam... "
 msgstr "กำลังเริ่มกล้องเว็บแคม... "
 
-#: src/features/Advanced/AdvancedPage.tsx:326
+#: src/features/Advanced/AdvancedPage.tsx:335
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15020,6 +15040,11 @@ msgstr ""
 msgid "You are already the owner of this book."
 msgstr "คุณเป็นเจ้าของหนังสือเล่มนี้อยู่แล้ว"
 
+#: src/features/Advanced/AdvancedPage.tsx:381
+#. js-lingui-explicit-id
+msgid "You are charged for speaking time, not waiting time"
+msgstr "คุณถูกคิดค่าบริการตามเวลาที่ใช้ในการพูด ไม่ใช่เวลาที่รอ"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -15589,6 +15614,11 @@ msgstr "{durationInSecond}s ต่อรอบ"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}วินาที"
+
+#: src/features/Advanced/AdvancedPage.tsx:379
+#. js-lingui-explicit-id
+msgid "{hours} hour(s) of advanced AI talking"
+msgstr "{hours} ชั่วโมงของการสนทนา AI ขั้นสูง"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

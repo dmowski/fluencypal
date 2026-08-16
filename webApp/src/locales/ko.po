@@ -470,7 +470,7 @@ msgstr "고급 학문적 사용법"
 msgid "Advanced AI"
 msgstr "고급 AI"
 
-#: src/features/Advanced/AdvancedPage.tsx:426
+#: src/features/Advanced/AdvancedPage.tsx:467
 #: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Advanced AI hours"
@@ -1372,7 +1372,7 @@ msgstr "AI 토큰을 구입하고 원할 때마다 사용하세요."
 msgid "Buy hours"
 msgstr "시간 구매"
 
-#: src/features/Advanced/AdvancedPage.tsx:329
+#: src/features/Advanced/AdvancedPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Buy hours to start"
 msgstr "시작하려면 시간을 구매하십시오"
@@ -1387,7 +1387,7 @@ msgstr "더 구매하기"
 msgid "Buying a Train Ticket"
 msgstr "기차 티켓 구매하기"
 
-#: src/features/Advanced/AdvancedPage.tsx:390
+#: src/features/Advanced/AdvancedPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of advanced AI talking"
 msgstr "{hours} 시간의 고급 AI 대화 구매"
@@ -2408,7 +2408,7 @@ msgstr "신뢰 점수 추적"
 msgid "Confirm Credit Card"
 msgstr "신용 카드 확인"
 
-#: src/features/Advanced/AdvancedPage.tsx:388
+#: src/features/Advanced/AdvancedPage.tsx:429
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -3425,7 +3425,7 @@ msgstr "토론"
 msgid "Decrease font size"
 msgstr "글꼴 크기 줄이기"
 
-#: src/features/Advanced/AdvancedPage.tsx:298
+#: src/features/Advanced/AdvancedPage.tsx:259
 #. js-lingui-explicit-id
 msgid "Decrease hours"
 msgstr "근무 시간 줄이기"
@@ -6477,7 +6477,7 @@ msgstr "부정확함"
 msgid "Increase font size"
 msgstr "폰트 크기 증가"
 
-#: src/features/Advanced/AdvancedPage.tsx:259
+#: src/features/Advanced/AdvancedPage.tsx:299
 #. js-lingui-explicit-id
 msgid "Increase hours"
 msgstr "작업 시간 증가"
@@ -6817,6 +6817,11 @@ msgstr "그냥 말해 (맞춤형 실시간)"
 #. js-lingui-explicit-id
 msgid "Just talk with the advanced realtime model. {price} per hour."
 msgstr "고급 실시간 모델과 대화하세요. 시간당 {price}."
+
+#: src/features/Advanced/AdvancedPage.tsx:380
+#. js-lingui-explicit-id
+msgid "Just talk with the latest realtime model"
+msgstr "최신 실시간 모델과 이야기를 나누세요"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:366
 #. js-lingui-explicit-id
@@ -7236,7 +7241,7 @@ msgid "Loading.."
 msgstr "로딩 중.."
 
 #: src/features/Advanced/AdvancedPage.tsx:102
-#: src/features/Advanced/AdvancedPage.tsx:336
+#: src/features/Advanced/AdvancedPage.tsx:345
 #: src/features/Chat/SubmitForm.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:208
@@ -7822,7 +7827,7 @@ msgstr "해당 이메일에 대한 계정을 찾을 수 없습니다. 먼저 가
 msgid "No ads, no spam"
 msgstr "광고 없음, 스팸 없음"
 
-#: src/features/Advanced/AdvancedPage.tsx:341
+#: src/features/Advanced/AdvancedPage.tsx:350
 #. js-lingui-explicit-id
 msgid "No advanced payments yet"
 msgstr ""
@@ -8238,6 +8243,19 @@ msgstr ""
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "하루하루가 충분합니다. 오늘의 작업을 완료하세요."
 
+#: src/features/Advanced/AdvancedPage.tsx:400
+#. js-lingui-explicit-id
+msgid ""
+"One hour is based on the time you or the AI is actively speaking. If you "
+"talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. "
+"If the AI thinks for a long time before answering, usage can be a bit "
+"higher than the time you hear. An hour is an approximate measure of talking "
+"cost, and actual usage can vary."
+msgstr ""
+"1시간은 당신이나 AI가 활발하게 말하는 시간에 기반합니다. 당신이 10분 동안 말하고 20분 동안 기다린다면, 약 10분을 사용한 "
+"것입니다. 만약 AI가 대답하기 전에 오랜 시간 생각한다면, 사용량이 들리는 시간보다 약간 높을 수 있습니다. 1시간은 대화 비용의 "
+"대략적인 측정치이며, 실제 사용량은 다를 수 있습니다."
+
 #: src/features/Tasks/useDailyPlans.ts:311
 #. js-lingui-explicit-id
 msgid "One hundred active days. An incredible milestone — keep going."
@@ -8546,7 +8564,7 @@ msgstr "암호화폐로 결제하기"
 msgid "Pay with Stars"
 msgstr "스타로 결제하기"
 
-#: src/features/Advanced/AdvancedPage.tsx:313
+#: src/features/Advanced/AdvancedPage.tsx:321
 #. js-lingui-explicit-id
 msgid "Pay {amount}"
 msgstr "{amount} 지불"
@@ -8567,7 +8585,7 @@ msgstr "결제 실패! 다시 시도해 주세요."
 msgid "Payment History"
 msgstr "결제 내역"
 
-#: src/features/Advanced/AdvancedPage.tsx:333
+#: src/features/Advanced/AdvancedPage.tsx:342
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "결제 내역"
@@ -11046,7 +11064,7 @@ msgstr "모의 면접 시작"
 msgid "Start Call"
 msgstr "통화 시작"
 
-#: src/features/Advanced/AdvancedPage.tsx:328
+#: src/features/Advanced/AdvancedPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "대화를 시작하세요"
@@ -11193,7 +11211,7 @@ msgstr "시작 | 5분"
 msgid "Starting webcam... "
 msgstr "웹캠 시작 중... "
 
-#: src/features/Advanced/AdvancedPage.tsx:326
+#: src/features/Advanced/AdvancedPage.tsx:335
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -14261,6 +14279,11 @@ msgstr "당신은 리더보드에서 선두주자입니다! 상위 5위에 있�
 msgid "You are already the owner of this book."
 msgstr "당신은 이미 이 책의 소유자입니다."
 
+#: src/features/Advanced/AdvancedPage.tsx:381
+#. js-lingui-explicit-id
+msgid "You are charged for speaking time, not waiting time"
+msgstr "당신은 대기시간이 아닌, 발화시간에 대해 요금을 부과받습니다"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -14788,6 +14811,11 @@ msgstr "턴당 {durationInSecond}초"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}초"
+
+#: src/features/Advanced/AdvancedPage.tsx:379
+#. js-lingui-explicit-id
+msgid "{hours} hour(s) of advanced AI talking"
+msgstr "{hours} 시간의 고급 AI 대화"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

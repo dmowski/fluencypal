@@ -493,7 +493,7 @@ msgstr "Пашыранае акадэмічнае выкарыстанне"
 msgid "Advanced AI"
 msgstr "Прасунутая ІІ"
 
-#: src/features/Advanced/AdvancedPage.tsx:426
+#: src/features/Advanced/AdvancedPage.tsx:467
 #: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Advanced AI hours"
@@ -1429,7 +1429,7 @@ msgstr "Купляйце AI токены і выкарыстоўвайце іх,
 msgid "Buy hours"
 msgstr "Купіць гадзіны"
 
-#: src/features/Advanced/AdvancedPage.tsx:329
+#: src/features/Advanced/AdvancedPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Buy hours to start"
 msgstr "Купіць гадзіны, каб пачаць"
@@ -1444,7 +1444,7 @@ msgstr "Купіць больш"
 msgid "Buying a Train Ticket"
 msgstr "Купля квітка на поезд"
 
-#: src/features/Advanced/AdvancedPage.tsx:390
+#: src/features/Advanced/AdvancedPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of advanced AI talking"
 msgstr "Купля {hours} гадзіны(гадзін) размовы з прасунутым AI"
@@ -2486,7 +2486,7 @@ msgstr "Адсочванне паказчыка ўпэўненасці"
 msgid "Confirm Credit Card"
 msgstr "Пацвердзіць крэдытную карту"
 
-#: src/features/Advanced/AdvancedPage.tsx:388
+#: src/features/Advanced/AdvancedPage.tsx:429
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -3517,7 +3517,7 @@ msgstr "Дэбаты"
 msgid "Decrease font size"
 msgstr "Зменшыць памер шрыфту"
 
-#: src/features/Advanced/AdvancedPage.tsx:298
+#: src/features/Advanced/AdvancedPage.tsx:259
 #. js-lingui-explicit-id
 msgid "Decrease hours"
 msgstr "Зменшыць гадзіны"
@@ -6829,7 +6829,7 @@ msgstr "Няправільна"
 msgid "Increase font size"
 msgstr "Павялічыць памер шрыфта"
 
-#: src/features/Advanced/AdvancedPage.tsx:259
+#: src/features/Advanced/AdvancedPage.tsx:299
 #. js-lingui-explicit-id
 msgid "Increase hours"
 msgstr "Павялічыць колькасць гадзін"
@@ -7180,6 +7180,11 @@ msgid "Just talk with the advanced realtime model. {price} per hour."
 msgstr ""
 "Проста пагаварыце з прасунутай мадэллю ў рэжыме рэальнага часу. {price} за "
 "гадзіну."
+
+#: src/features/Advanced/AdvancedPage.tsx:380
+#. js-lingui-explicit-id
+msgid "Just talk with the latest realtime model"
+msgstr "Проста пагаварыце з апошняй мадэллю ў рэжыме рэальнага часу"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:366
 #. js-lingui-explicit-id
@@ -7607,7 +7612,7 @@ msgid "Loading.."
 msgstr "Загрузка.."
 
 #: src/features/Advanced/AdvancedPage.tsx:102
-#: src/features/Advanced/AdvancedPage.tsx:336
+#: src/features/Advanced/AdvancedPage.tsx:345
 #: src/features/Chat/SubmitForm.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:208
@@ -8212,7 +8217,7 @@ msgstr ""
 msgid "No ads, no spam"
 msgstr "Ніякай рэкламы, ніякага спаму"
 
-#: src/features/Advanced/AdvancedPage.tsx:341
+#: src/features/Advanced/AdvancedPage.tsx:350
 #. js-lingui-explicit-id
 msgid "No advanced payments yet"
 msgstr "Яшчэ няма авансавых плацяжоў"
@@ -8656,6 +8661,21 @@ msgstr ""
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "Адзін дзень за раз - гэтага дастаткова. Выканай сённяшнія задачы."
 
+#: src/features/Advanced/AdvancedPage.tsx:400
+#. js-lingui-explicit-id
+msgid ""
+"One hour is based on the time you or the AI is actively speaking. If you "
+"talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. "
+"If the AI thinks for a long time before answering, usage can be a bit "
+"higher than the time you hear. An hour is an approximate measure of talking "
+"cost, and actual usage can vary."
+msgstr ""
+"Адна гадзіна заснавана на часе, калі вы ці AI актыўна размаўляеце. Калі вы "
+"размаўляеце 10 хвілін, а потым чакаеце 20 хвілін, вы выкарыстоўваеце каля "
+"10 хвілін. Калі AI думае доўга перад тым, як адказаць, выкарыстанне можа "
+"быць крыху большым за час, які вы чуеце. Гадзіна з'яўляецца прыблізнай "
+"мерай кошту размовы, і фактычнае выкарыстанне можа адрознівацца."
+
 #: src/features/Tasks/useDailyPlans.ts:311
 #. js-lingui-explicit-id
 msgid "One hundred active days. An incredible milestone — keep going."
@@ -8979,7 +8999,7 @@ msgstr "Аплаціць крыптавалютаю"
 msgid "Pay with Stars"
 msgstr "Аплаціць зоркамі"
 
-#: src/features/Advanced/AdvancedPage.tsx:313
+#: src/features/Advanced/AdvancedPage.tsx:321
 #. js-lingui-explicit-id
 msgid "Pay {amount}"
 msgstr "Аплаціць {amount}"
@@ -9000,7 +9020,7 @@ msgstr "Аплата не выканана! Калі ласка, паспраб�
 msgid "Payment History"
 msgstr "Гісторыя плацяжоў"
 
-#: src/features/Advanced/AdvancedPage.tsx:333
+#: src/features/Advanced/AdvancedPage.tsx:342
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "Гісторыя аплат"
@@ -11581,7 +11601,7 @@ msgstr "Пачаць імітацыйнае сумоўе"
 msgid "Start Call"
 msgstr "Пачаць званок"
 
-#: src/features/Advanced/AdvancedPage.tsx:328
+#: src/features/Advanced/AdvancedPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "Пачаць размову"
@@ -11732,7 +11752,7 @@ msgstr "Пачаць | 5 хв"
 msgid "Starting webcam... "
 msgstr "Пачатак працы вэб-камеры... "
 
-#: src/features/Advanced/AdvancedPage.tsx:326
+#: src/features/Advanced/AdvancedPage.tsx:335
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15005,6 +15025,11 @@ msgstr ""
 msgid "You are already the owner of this book."
 msgstr "Вы ўжо з'яўляецеся ўладальнікам гэтай кнігі."
 
+#: src/features/Advanced/AdvancedPage.tsx:381
+#. js-lingui-explicit-id
+msgid "You are charged for speaking time, not waiting time"
+msgstr "Вы плаціце за час размовы, а не за час чакання"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -15578,6 +15603,11 @@ msgstr "{durationInSecond} с за ход"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{працягласць}с"
+
+#: src/features/Advanced/AdvancedPage.tsx:379
+#. js-lingui-explicit-id
+msgid "{hours} hour(s) of advanced AI talking"
+msgstr "{hours} гадзіна(ы) прасунутага размовы з AI"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

@@ -470,7 +470,7 @@ msgstr "高度な学術的利用"
 msgid "Advanced AI"
 msgstr "高度なAI"
 
-#: src/features/Advanced/AdvancedPage.tsx:426
+#: src/features/Advanced/AdvancedPage.tsx:467
 #: src/features/Header/PaymentHistoryModal.tsx:29
 #. js-lingui-explicit-id
 msgid "Advanced AI hours"
@@ -1369,7 +1369,7 @@ msgstr "AI トークンを購入して、好きなときに使ってみよう。
 msgid "Buy hours"
 msgstr "時間を購入"
 
-#: src/features/Advanced/AdvancedPage.tsx:329
+#: src/features/Advanced/AdvancedPage.tsx:338
 #. js-lingui-explicit-id
 msgid "Buy hours to start"
 msgstr "スタートするために時間を購入する"
@@ -1384,7 +1384,7 @@ msgstr "もっと買う"
 msgid "Buying a Train Ticket"
 msgstr "列車の切符を購入する"
 
-#: src/features/Advanced/AdvancedPage.tsx:390
+#: src/features/Advanced/AdvancedPage.tsx:431
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of advanced AI talking"
 msgstr "{hours}時間の高度なAI会話の購入"
@@ -2402,7 +2402,7 @@ msgstr "信頼度スコアの追跡"
 msgid "Confirm Credit Card"
 msgstr "クレジットカードを確認する"
 
-#: src/features/Advanced/AdvancedPage.tsx:388
+#: src/features/Advanced/AdvancedPage.tsx:429
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -3400,7 +3400,7 @@ msgstr "ディベート"
 msgid "Decrease font size"
 msgstr "フォントサイズを小さくする"
 
-#: src/features/Advanced/AdvancedPage.tsx:298
+#: src/features/Advanced/AdvancedPage.tsx:259
 #. js-lingui-explicit-id
 msgid "Decrease hours"
 msgstr "時間を減らす"
@@ -6440,7 +6440,7 @@ msgstr "不正解"
 msgid "Increase font size"
 msgstr "フォントサイズを増やす"
 
-#: src/features/Advanced/AdvancedPage.tsx:259
+#: src/features/Advanced/AdvancedPage.tsx:299
 #. js-lingui-explicit-id
 msgid "Increase hours"
 msgstr "稼働時間を増やす"
@@ -6778,6 +6778,11 @@ msgstr "Just Talk（カスタムリアルタイム）"
 #. js-lingui-explicit-id
 msgid "Just talk with the advanced realtime model. {price} per hour."
 msgstr "高度なリアルタイムモデルに話しかけてください。{price}／時間。"
+
+#: src/features/Advanced/AdvancedPage.tsx:380
+#. js-lingui-explicit-id
+msgid "Just talk with the latest realtime model"
+msgstr "最新のリアルタイムモデルで話してみましょう"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:366
 #. js-lingui-explicit-id
@@ -7197,7 +7202,7 @@ msgid "Loading.."
 msgstr "読み込み中.."
 
 #: src/features/Advanced/AdvancedPage.tsx:102
-#: src/features/Advanced/AdvancedPage.tsx:336
+#: src/features/Advanced/AdvancedPage.tsx:345
 #: src/features/Chat/SubmitForm.tsx:127
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:208
@@ -7784,7 +7789,7 @@ msgstr "そのメールアドレスに対するアカウントが見つかりま
 msgid "No ads, no spam"
 msgstr "広告なし、スパムなし"
 
-#: src/features/Advanced/AdvancedPage.tsx:341
+#: src/features/Advanced/AdvancedPage.tsx:350
 #. js-lingui-explicit-id
 msgid "No advanced payments yet"
 msgstr "まだ前払いはありません"
@@ -8194,6 +8199,19 @@ msgstr "論戦が始まったら、答えを記録する必要があります。
 msgid "One day at a time is enough. Complete today’s tasks."
 msgstr "1日1日が大切です。今日のタスクを完了させましょう。"
 
+#: src/features/Advanced/AdvancedPage.tsx:400
+#. js-lingui-explicit-id
+msgid ""
+"One hour is based on the time you or the AI is actively speaking. If you "
+"talk for 10 minutes and then wait for 20 minutes, you use about 10 minutes. "
+"If the AI thinks for a long time before answering, usage can be a bit "
+"higher than the time you hear. An hour is an approximate measure of talking "
+"cost, and actual usage can vary."
+msgstr ""
+"1時間は、あなたやAIが積極的に話す時間に基づいています。あなたが10分間話し、その後20分待機した場合、使用時間は約10"
+"分です。AIが回答する前に長時間考える場合、実際に聞く時間よりも使用量が少し高くなることがあります。1"
+"時間は話すコストのおおよその尺度であり、実際の使用量は変動する可能性があります。"
+
 #: src/features/Tasks/useDailyPlans.ts:311
 #. js-lingui-explicit-id
 msgid "One hundred active days. An incredible milestone — keep going."
@@ -8504,7 +8522,7 @@ msgstr "暗号通貨で支払う"
 msgid "Pay with Stars"
 msgstr "スターで支払う"
 
-#: src/features/Advanced/AdvancedPage.tsx:313
+#: src/features/Advanced/AdvancedPage.tsx:321
 #. js-lingui-explicit-id
 msgid "Pay {amount}"
 msgstr "支払う {amount}"
@@ -8525,7 +8543,7 @@ msgstr "支払いに失敗しました！もう一度お試しください。"
 msgid "Payment History"
 msgstr "支払い履歴"
 
-#: src/features/Advanced/AdvancedPage.tsx:333
+#: src/features/Advanced/AdvancedPage.tsx:342
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "支払い履歴"
@@ -10999,7 +11017,7 @@ msgstr "模擬面接を開始する"
 msgid "Start Call"
 msgstr "通話開始"
 
-#: src/features/Advanced/AdvancedPage.tsx:328
+#: src/features/Advanced/AdvancedPage.tsx:337
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "会話を始める"
@@ -11146,7 +11164,7 @@ msgstr "スタート | 5分"
 msgid "Starting webcam... "
 msgstr "ウェブカメラを起動しています..."
 
-#: src/features/Advanced/AdvancedPage.tsx:326
+#: src/features/Advanced/AdvancedPage.tsx:335
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -14200,6 +14218,11 @@ msgstr "あなたはリーダーボードのリーダーです！トップ5に�
 msgid "You are already the owner of this book."
 msgstr "この本の所有者はすでにあなたです。"
 
+#: src/features/Advanced/AdvancedPage.tsx:381
+#. js-lingui-explicit-id
+msgid "You are charged for speaking time, not waiting time"
+msgstr "話している時間に対してのみ請求され、待機時間には課金されません"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:242
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
@@ -14725,6 +14748,11 @@ msgstr "{durationInSecond}秒ごとに順番"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}秒"
+
+#: src/features/Advanced/AdvancedPage.tsx:379
+#. js-lingui-explicit-id
+msgid "{hours} hour(s) of advanced AI talking"
+msgstr "{hours} 時間 の高度なAI会話"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
