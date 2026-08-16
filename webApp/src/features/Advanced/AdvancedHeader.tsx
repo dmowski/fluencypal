@@ -31,16 +31,6 @@ export const AdvancedHeader = () => {
         gap: '12px',
       }}
     >
-      <LanguageSwitcher
-        isAuth={auth.isAuthorized}
-        langToLearn={settings.languageCode || 'en'}
-        setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
-        recentLearnLanguages={settings.recentLearnLanguages}
-        setPageLanguage={settings.setPageLanguage}
-        nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
-        setNativeLanguage={settings.setNativeLanguage}
-        isHidden
-      />
       <Button
         variant="outlined"
         color="info"
@@ -52,6 +42,16 @@ export const AdvancedHeader = () => {
       >
         {nativeLanguageLabel} {'→'} {targetLanguageLabel}
       </Button>
+      <LanguageSwitcher
+        isAuth={auth.isAuthorized}
+        langToLearn={settings.languageCode || 'en'}
+        setLanguageToLearn={settings.appMode === 'learning' ? settings.setLanguage : undefined}
+        recentLearnLanguages={settings.recentLearnLanguages}
+        setPageLanguage={settings.setPageLanguage}
+        nativeLang={settings.userSettings?.nativeLanguageCode || 'en'}
+        setNativeLanguage={settings.setNativeLanguage}
+        isHidden
+      />
       <Button
         variant="text"
         endIcon={<LogOut size={16} />}
