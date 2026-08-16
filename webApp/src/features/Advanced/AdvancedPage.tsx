@@ -1,7 +1,7 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
-import { Button, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Button, IconButton, Link, Stack, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import dayjs from 'dayjs';
@@ -493,6 +493,11 @@ const AdvancedPaymentRow = ({ log }: { log: PaymentLog }) => {
       <Stack sx={{ alignItems: 'flex-end' }}>
         <Typography variant="caption">{dayjs(log.createdAt).format('HH:mm')}</Typography>
         <Typography variant="body2">{dayjs(log.createdAt).format('DD MMM YYYY')}</Typography>
+        {log.receiptUrl && (
+          <Link href={log.receiptUrl} target="_blank">
+            <Typography variant="body2">{i18n._('Receipt')}</Typography>
+          </Link>
+        )}
       </Stack>
     </Stack>
   );
