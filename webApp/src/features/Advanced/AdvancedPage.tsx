@@ -5,7 +5,7 @@ import { Button, IconButton, Stack, TextField, Typography } from '@mui/material'
 import { useState } from 'react';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import dayjs from 'dayjs';
-import { Check, Minus, Plus } from 'lucide-react';
+import { Check, Mic, Minus, Plus } from 'lucide-react';
 import { AuthWall } from '../Auth/AuthWall';
 import { useAuth } from '../Auth/useAuth';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
@@ -346,7 +346,13 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
           variant="contained"
           size="large"
           disabled={!canStartTalk || isCallStarting}
+          startIcon={<Mic size={24} />}
           onClick={() => void startAdvancedTalk()}
+          sx={{
+            fontSize: '24px',
+            fontWeight: 600,
+          }}
+          color={canStartTalk ? 'secondary' : 'info'}
         >
           {isCallStarting
             ? i18n._('Starting...')
