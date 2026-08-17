@@ -3,9 +3,13 @@ import { getCommonMessageTemplate } from '../../email/templates/commonMessage';
 export const getConfirmEmailTemplate = ({
   receiptUrl,
   receiptId,
+  callbackUrl = 'https://app.fluencypal.com/practice',
+  callToAction = 'Start Learning',
 }: {
   receiptUrl: string;
   receiptId?: string;
+  callbackUrl?: string;
+  callToAction?: string;
 }) => {
   return getCommonMessageTemplate({
     title: 'Payment Confirmation',
@@ -16,8 +20,8 @@ We are pleased to confirm that your payment has been successfully processed. You
 </p>
 
 `,
-    callToAction: 'Start Learning',
-    callbackUrl: 'https://app.fluencypal.com/practice',
+    callToAction,
+    callbackUrl,
 
     afterButtonContent: `<p style="margin: 0; padding-bottom: 12px; color: #111111; font-size: 13px; line-height: 16px;">
 Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" within 14 days of contract conclusion, you do not have the right to terminate the contract.

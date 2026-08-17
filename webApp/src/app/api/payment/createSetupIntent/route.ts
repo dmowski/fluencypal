@@ -1,45 +1,13 @@
 import Stripe from 'stripe';
 import { SetupIntentResponse } from '../type';
 import { validateAuthToken } from '../../config/firebase';
-import {
-  getStripeUserInfo,
-  getUserInfo,
-  setStripeUserInfo,
-  StripeUserInfo,
-} from '../../user/getUserInfo';
+import { getOrCreateCustomerId } from '../getOrCreateCustomerId';
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
 if (!STRIPE_SECRET_KEY) {
   throw new Error('Missing STRIPE_SECRET_KEY environment variable');
 }
 const stripe = new Stripe(STRIPE_SECRET_KEY);
-
-const getOrCreateCustomerId = async (userId: string): Promise<string> => {
-  // 1) check cached mapping
-  const existing = await getStripeUserInfo(userId);
-  if (existing?.customerId) {
-    return existing.customerId;
-  }
-
-  // 2) get profile
-  const profile = await getUserInfo(userId);
-  const email: string | undefined = profile?.email || undefined;
-
-  // 4) Create with idempotency key to guard races
-  const customer = await stripe.customers.create(
-    {
-      email, // may be undefined, Stripe accepts that
-      metadata: { firebaseUid: userId },
-    },
-    {
-      idempotencyKey: `customer_${userId}`, // same uid → same customer
-    },
-  );
-
-  const newInfo: StripeUserInfo = { customerId: customer.id };
-  await setStripeUserInfo(userId, newInfo);
-  return customer.id;
-};
 
 export async function POST(request: Request) {
   try {
@@ -51,7 +19,7 @@ export async function POST(request: Request) {
     }
 
     const userId = authed.uid;
-    const customerId = await getOrCreateCustomerId(userId);
+    const customerId = await getOrCreateCustomerId(userId, stripe);
 
     const setupIntent = await stripe.setupIntents.create(
       {

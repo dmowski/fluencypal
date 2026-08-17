@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import { PaymentLog } from '@/features/Usage/usage';
 import { stripeConfig } from './config';
+import { getChargeIdFromInvoice } from './getChargeIdFromInvoice';
 
 export const getChargeIdFromPayment = async (payment: PaymentLog): Promise<string | null> => {
   if (payment.chargeId) {
@@ -8,11 +9,25 @@ export const getChargeIdFromPayment = async (payment: PaymentLog): Promise<strin
   }
 
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
-  if (!stripeKey || !payment.id.startsWith('cs_')) {
+  if (!stripeKey) {
     return null;
   }
 
   const stripe = new Stripe(stripeKey);
+
+  if (payment.id.startsWith('in_')) {
+    try {
+      const chargeId = await getChargeIdFromInvoice(stripe, payment.id);
+      return chargeId || null;
+    } catch {
+      return null;
+    }
+  }
+
+  if (!payment.id.startsWith('cs_')) {
+    return null;
+  }
+
   try {
     const session = await stripe.checkout.sessions.retrieve(payment.id);
     const paymentIntentId = session.payment_intent;

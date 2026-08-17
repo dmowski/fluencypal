@@ -26,3 +26,14 @@ export interface StripeCreateCheckoutResponse {
   sessionUrl: string | null;
   error: string | null;
 }
+
+export interface StripeCreateInvoiceRequest {
+  languageCode: SupportedLanguage;
+  userId: string;
+  amountOfHours: number;
+}
+
+export interface StripeCreateInvoiceResponse {
+  invoiceUrl: string | null;
+  error: string | null;
+}

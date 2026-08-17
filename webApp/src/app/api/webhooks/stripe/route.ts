@@ -7,6 +7,9 @@ import { appName } from '@/features/SEO/appInfo';
 import { getUserInfo, updateUserInfo } from '../../user/getUserInfo';
 import { refundPayment } from '../../payment/refund';
 import { getConfirmEmailTemplate } from './getConfirmEmailTemplate';
+import { parsePaidAdvancedInvoice } from '@/features/Usage/advancedInvoice';
+import { getChargeIdFromInvoice } from '../../payment/getChargeIdFromInvoice';
+import { recordAdvancedHoursPayment } from './recordAdvancedHoursPayment';
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
@@ -100,6 +103,18 @@ export async function POST(request: Request) {
       await refundPayment(chargeId);
     }
 
+    if (event.type === 'invoice.paid') {
+      const invoice = event.data.object as Stripe.Invoice;
+      const credit = parsePaidAdvancedInvoice(invoice);
+      if (credit) {
+        const chargeId = await getChargeIdFromInvoice(stripe, invoice.id);
+        await recordAdvancedHoursPayment({
+          ...credit,
+          chargeId,
+        });
+      }
+    }
+
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object as Stripe.Checkout.Session;
       const paymentId = session.id;
@@ -130,17 +145,15 @@ export async function POST(request: Request) {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0');
         if (amountOfHours <= 0) throw new Error('Amount of advanced hours is not set');
 
-        const tgMessage = `🤑 User ${userEmail} purchased ${amountOfHours} advanced AI hours.`;
-        sentSupportTelegramMessage({ message: tgMessage, userId });
-        await addPaymentLog({
-          amount: amountPaid,
-          userId: userId,
+        await recordAdvancedHoursPayment({
+          userId,
+          amountPaid,
           paymentId,
           currency: currency || 'usd',
           amountOfHours,
-          type: 'advanced-hours',
           receiptUrl,
           chargeId,
+          receiptId,
         });
       } else if (days && days !== '0') {
         const daysCount = parseInt(days, 10);
@@ -193,22 +206,24 @@ export async function POST(request: Request) {
         });
       }
 
-      await markUserAsCreditCardConfirmed(userId, true);
+      if (product !== 'advanced-hours') {
+        await markUserAsCreditCardConfirmed(userId, true);
 
-      if (stripeConfig.isStripeLive && userInfo.email) {
-        const emailToSend = userInfo.email;
-        const shortId = receiptId || paymentId.slice(paymentId.length - 8);
-        const emailUi = getConfirmEmailTemplate({
-          receiptUrl,
-          receiptId,
-        });
+        if (stripeConfig.isStripeLive && userInfo.email) {
+          const emailToSend = userInfo.email;
+          const shortId = receiptId || paymentId.slice(paymentId.length - 8);
+          const emailUi = getConfirmEmailTemplate({
+            receiptUrl,
+            receiptId,
+          });
 
-        await sendEmail({
-          emailTo: emailToSend,
-          messageText: emailUi.text,
-          messageHtml: emailUi.html,
-          title: `Your receipt from ${appName}. #${shortId}`,
-        });
+          await sendEmail({
+            emailTo: emailToSend,
+            messageText: emailUi.text,
+            messageHtml: emailUi.html,
+            title: `Your receipt from ${appName}. #${shortId}`,
+          });
+        }
       }
     }
   } catch (error: any) {

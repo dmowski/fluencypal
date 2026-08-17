@@ -32,7 +32,7 @@ import {
   formatAdvancedUsd,
   hasAdvancedTalkAccess,
 } from '../Usage/advancedUsage';
-import { createStripeCheckout } from '../Usage/createStripeCheckout';
+import { createStripeInvoice } from '../Usage/createStripeInvoice';
 import { ConfirmPaymentForm } from '../Usage/HoursPaymentModal/ConfirmPaymentForm';
 import { PaymentSuccess } from '../Usage/HoursPaymentModal/PaymentSuccess';
 import { PaymentLog } from '../Usage/usage';
@@ -77,18 +77,16 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
 
   const clickOnConfirmRequest = async () => {
     setIsRedirecting(true);
-    const checkoutInfo = await createStripeCheckout(
+    const invoiceInfo = await createStripeInvoice(
       {
         userId: auth.uid,
         amountOfHours: hoursToBuy,
         languageCode: lang,
-        currency: 'USD',
-        product: 'advanced-hours',
       },
       await auth.getToken(),
     );
 
-    if (!checkoutInfo.sessionUrl) {
+    if (!invoiceInfo.invoiceUrl) {
       notifications.show(i18n._('Error creating payment session'), {
         severity: 'error',
       });
@@ -96,7 +94,7 @@ export const AdvancedPage = ({ lang }: { lang: SupportedLanguage }) => {
       return;
     }
 
-    window.location.href = checkoutInfo.sessionUrl;
+    window.location.href = invoiceInfo.invoiceUrl;
   };
 
   if (auth.loading) {
