@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import { supportedLanguages } from '@/features/Lang/lang';
 import {
   StripeCreateInvoiceRequest,
   StripeCreateInvoiceResponse,
@@ -9,7 +8,6 @@ import {
   getAdvancedInvoiceMetadata,
   isValidAdvancedHoursPurchase,
 } from '@/features/Usage/advancedInvoice';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
 import Stripe from 'stripe';
 import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
@@ -53,8 +51,6 @@ export async function POST(request: Request) {
     }
 
     const userId = userInfo.uid;
-    const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || 'en';
-    const returnUrl = `${siteUrl}${getUrlStart(supportedLang)}advanced?paymentSuccess=true`;
     const customerId = await getOrCreateCustomerId(userId, stripe);
     const profile = await getUserInfo(userId);
 
@@ -74,7 +70,6 @@ export async function POST(request: Request) {
       auto_advance: false,
       pending_invoice_items_behavior: 'exclude',
       description,
-      footer: `After paying, return to FluencyPal: ${returnUrl}`,
       metadata: getAdvancedInvoiceMetadata({
         userId,
         amountOfHours,
