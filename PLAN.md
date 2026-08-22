@@ -1,5 +1,10 @@
 # Live document with ideas
 
+## Issue
+
+The biggest problem is how to return user. Engagements. People don't use it daily.
+How they return to it - When we remember this. Ideal solution - is someone who can notify it.
+
 ## Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
 - How to foster communication?
