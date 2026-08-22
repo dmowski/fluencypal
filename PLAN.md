@@ -1,38 +1,24 @@
-# Live document with short/long term ideas
+# Live document with ideas
 
-========
+## Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
-## Voice chat
-
+- How to foster communication?
 - Create daily task: Intro
 - Create daily task: Reply
 - Create daily task: Describe your day
 
-## Alias
+## Alias - webApp/src/features/Alias/AGENTS.md
 
 - Use call mode by default
 - Add list of words on call mode
 
-## Blog: add author
+## Blog: webApp/src/features/Blog/AGENTS.md
 
-Author: Alex Dmowski. Editor and grammar corrector: Chat GPT
-Author: Chat GPT
+add author field: string
 
-## Voice chat
+## Daily Tasks webApp/src/features/Tasks/AGENTS.md
 
-See webApp/src/features/Chat/VoiceChat/AGENTS.md
-
-## Convert visitors to users: Start a first conversation
-
-How to connect analytics and development?
-
-# How to fix reset conversations
-
-## Writing routine
-
-Write one sentence and correct the grammar. Get the rule and correct it.
-
-## Alias: Make it Call mode and show works on call canvas
+- Add new task. Translate one sentence. Use voice. Get improved version and quality
 
 ## Goal: Arrange calls with peoples
 
@@ -41,17 +27,4 @@ Write one sentence and correct the grammar. Get the rule and correct it.
 - Create a good topics to discuss
 - Review UI of daily questions
 
-## Reduce free plan
-
-- Add "Full Access" badge on exams feature
-- Add "Full Access" badge on grammar improvements
-- Add "Full Access" badge on "Progress"
-- Remove full access from game top rated gamers
-
-## Alias game: think about serious
-
 ## Messages: notifications
-
-## Reader: Search feature
-
-Reader info: webApp/src/features/Reader/AGENTS.md

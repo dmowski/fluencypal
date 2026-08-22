@@ -102,13 +102,7 @@ News-linked quizzes in `src/features/Quiz/`:
 
 ## Daily Tasks
 
-The daily-tasks feature lives in `src/features/Tasks/`:
-
-- `types.ts` — `DailyTaskType` union (e.g. `'just-talk' | 'goal-lesson' | 'community' | 'story' | 'grammar-improvement' | 'news' | 'daily-question'`) and `DailyTaskProgress` shape persisted at `/users/{userId}/dailyTasks/{dayIso}_{languageCode}`.
-- `useDailyTasks.tsx` — provider that exposes `todaysActualTasks`, `tasksInfo`, `todayTaskProgress`, `onCompleteTask`, and the active `dayTasksMeta`. The day's plan is picked from `dailyPlans` indexed by the count of previous completed days for the current learning language. Every entry must list the `DailyTaskType` values shown on the dashboard for that day.
-- `DailyTasksDashboardCard.tsx` (in `src/features/Dashboard/`) renders the card. Adding a new task type means: (1) extend `DailyTaskType`, (2) add an entry to `tasksInfo` and to relevant `dailyPlans`, (3) map an icon URL in `taskIconMap`, (4) wire an `onStartTask` handler, (5) emit `onCompleteTask(taskType)` from the place that detects completion.
-- Completion is centralized in `src/features/Conversation/useAiConversation/useConversationStat.ts` for conversation-driven tasks (`just-talk`, `goal-lesson`, `news`). News uses the `news-discussion` conversation mode and completes after 6 messages.
-- The News task surfaces the first item from `useNews().items`; while news are still loading the card shows a "Loading..." action button and falls back to an empty image URL.
+Daily and legacy user tasks live in `src/features/Tasks/`. Full architecture (plans, completion wiring, Firestore, access unlock): `src/features/Tasks/AGENTS.md`.
 
 ## Reader Highlight / Selection
 

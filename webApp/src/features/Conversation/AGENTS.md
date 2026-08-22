@@ -51,7 +51,7 @@ Conversation/
   - Call: **Exit**, **Switch to voice records**, **Show results**
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
-- **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `webApp/AGENTS.md` → Daily Tasks).
+- **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 
 ## `data-testid` hooks
 
