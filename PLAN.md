@@ -1,6 +1,6 @@
 # Live document with ideas
 
-## Redesign Daily questions/Chat submit form
+## Redesign Daily questions/Chat - Foster community
 
 - Hide options under menu
 - Make audio records more appealing
@@ -13,11 +13,9 @@
 - Weekly question: Who are you?
 - Add post on global chat about updates
 
-## Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
+## Hide Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
-- Hide feature
-
-## Issue
+## Main Issue
 
 The biggest problem is how to return user. Engagements. People don't use it daily.
 How they return to it - When we remember this. Ideal solution - is someone who can notify it.
