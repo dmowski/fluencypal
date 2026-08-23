@@ -59,7 +59,7 @@ export function UserBadges({
 
       {isActiveSubscriber && activeSubscriptionTill && (
         <Tooltip
-          title={`Subscriber till: ${dayjs(activeSubscriptionTill).format('DD MMMM HH:mm')}`}
+          title={`Subscriber till: ${dayjs(activeSubscriptionTill).format('DD MMMM YYYY HH:mm')}`}
         >
           <Stack
             sx={{
