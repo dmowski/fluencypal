@@ -1,10 +1,5 @@
 # Live document with ideas
 
-## Blog: webApp/src/features/Blog/AGENTS.md
-
-- Update my blog: AI anxiety - add authors
-- Move author to the bottom
-
 ## Alias - webApp/src/features/Alias/AGENTS.md
 
 - Add list of words on call mode
