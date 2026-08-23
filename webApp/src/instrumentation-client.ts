@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nextjs';
+import { sentryIgnoreErrors } from '@/libs/sentry/ignoreErrors';
 import { sentryIgnoreSpans } from '@/libs/sentry/ignoreSpans';
 import { installRscNPlusOneDiagnostics } from '@/libs/sentry/rscNPlusOneDiagnostics';
 
@@ -11,6 +12,7 @@ Sentry.init({
   enabled: !isDev,
   enableLogs: true,
   ignoreSpans: [...sentryIgnoreSpans],
+  ignoreErrors: sentryIgnoreErrors,
 });
 
 // Diagnose Sentry N+1 on identical Next.js RSC flights (e.g. DARK-LANG-HQ).

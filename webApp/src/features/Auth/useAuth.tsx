@@ -152,15 +152,24 @@ function useProvideAuth(): AuthContext {
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
       cleanEmailSignInUrl();
     } catch (error) {
-      alert('Failed to sign in with email link. Please try again.');
+      window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
+      cleanEmailSignInUrl();
 
+      const code = error instanceof FirebaseError ? error.code : '';
+      if (code === 'auth/invalid-action-code' || code === 'auth/expired-action-code') {
+        alert('This sign-in link is invalid or has expired. Please request a new one.');
+        console.warn('Email link sign-in failed', code);
+        return;
+      }
+
+      alert('Failed to sign in with email link. Please try again.');
       console.error('Error confirming email link sign-in', error);
-      throw error;
+      Sentry.captureException(error);
     }
   };
 
   useEffect(() => {
-    confirmEmailLinkSignIn();
+    void confirmEmailLinkSignIn();
   }, []);
 
   const signInWithEmail = async (email: string): Promise<SignInResult> => {

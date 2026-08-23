@@ -1,6 +1,7 @@
 'use client';
 
 import * as Sentry from '@sentry/nextjs';
+import { sentryIgnoreErrors } from '@/libs/sentry/ignoreErrors';
 import { sentryIgnoreSpans } from '@/libs/sentry/ignoreSpans';
 
 export const initSentry = () => {
@@ -17,6 +18,9 @@ export const initSentry = () => {
 
     // Drop Firestore WebChannel long-polls + GA beacons (false-positive N+1 issues).
     ignoreSpans: [...sentryIgnoreSpans],
+
+    // Drop IndexedDB/offline/expired-link noise that is not actionable in app code.
+    ignoreErrors: sentryIgnoreErrors,
 
     // Define how likely Replay events are sampled.
     // This sets the sample rate to be 10%. You may want this to be 100% while
