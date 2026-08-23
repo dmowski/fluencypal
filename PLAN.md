@@ -7,6 +7,8 @@
 - Create daily task: Reply
 - Create daily task: Describe your day
 
+## Alias - Panel is jumping during talking
+
 ## Issue
 
 The biggest problem is how to return user. Engagements. People don't use it daily.

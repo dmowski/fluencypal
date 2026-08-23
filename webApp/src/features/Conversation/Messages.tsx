@@ -75,6 +75,9 @@ export const Messages = ({
               borderRadius: '10px',
               padding: '15px',
               boxSizing: 'border-box',
+              position: 'sticky',
+              bottom: '30px',
+              backgroundColor: '#0A121E',
             }}
           >
             <AliasGamePanel gameWords={gameWords} conversation={conversation} />
