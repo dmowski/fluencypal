@@ -1,20 +1,26 @@
 # Live document with ideas
 
+## Redesign Daily questions/Chat submit form
+
+- Hide options under menu
+- Make audio records more appealing
+- Show better audio player rather then default
+- https://app.fluencypal.com/ru/practice?inbox=true&userId=Mq2HfU3KrXTjNyOpPXqHSPg5izV2 allow to change my name from that screen and change photo
+- PayWall: Limit access only for Paid users, give 2 years to top-5 gamers, Show paywall blocker on daily cards
+- Limit firestore access to daily/public chat section - but not DM - important for support
+- Remove old messages after 4 days
+- Weekly question: How are you? - Update daily question to repeat it
+- Weekly question: Who are you?
+- Add post on global chat about updates
+
 ## Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
-- How to foster communication?
-- Create daily task: Intro
-- Create daily task: Reply
-- Create daily task: Describe your day
-
-## Alias - Panel is jumping during talking
+- Hide feature
 
 ## Issue
 
 The biggest problem is how to return user. Engagements. People don't use it daily.
 How they return to it - When we remember this. Ideal solution - is someone who can notify it.
 
-Make badge "How to improve your daily: tips"
--> Add your contact details: WhatsApp, Telegram, Facebook, Instagram
--> Alex: Ask time for pings
--> Alex: Motivate for learnings
+Tech solution:
+Sophisticated Daily Tasks that analyze you progress and propose what is good for you dynamically
