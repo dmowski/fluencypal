@@ -45,9 +45,9 @@ export function DailyTasksAdminBlock({ summary }: DailyTasksAdminBlockProps) {
           </Typography>
           {hasTodayTasks && (
             <Stack sx={{ gap: '2px', pl: '20px' }}>
-              {summary.todayTasks.map((task) => (
+              {summary.todayTasks.map((task, index) => (
                 <Stack
-                  key={task}
+                  key={`${task}-${index}`}
                   direction="row"
                   alignItems="center"
                   gap="6px"
@@ -68,8 +68,8 @@ export function DailyTasksAdminBlock({ summary }: DailyTasksAdminBlockProps) {
               : `Next · Day ${summary.nextDayNumber}`}
           </Typography>
           <Stack sx={{ gap: '2px', pl: '20px' }}>
-            {summary.nextDayTasks.map((task) => (
-              <Stack key={`next-${task}`} direction="row" alignItems="center" gap="6px">
+            {summary.nextDayTasks.map((task, index) => (
+              <Stack key={`next-${task}-${index}`} direction="row" alignItems="center" gap="6px">
                 <Circle size={12} color="rgba(255,255,255,0.25)" />
                 <Typography variant="caption">{task}</Typography>
               </Stack>
