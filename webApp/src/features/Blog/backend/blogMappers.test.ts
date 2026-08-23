@@ -17,6 +17,10 @@ const version = {
   subTitle: { en: 'Sub', fr: 'Sous-titre' },
   content: { en: 'Body', fr: 'Corps' },
   keywords: { en: ['ai'], fr: ['ia'] },
+  authors: [
+    { role: 'author', name: 'Alex Dmowski' },
+    { role: 'coAuthor', name: 'Chat GPT 5.1', note: 'Grammar correction and editing' },
+  ],
   createdAtIso: '2026-01-01T00:00:00.000Z',
 } as BlogVersionDoc;
 
@@ -39,11 +43,22 @@ describe('toBlogPost', () => {
     expect(fr.content).toBe('Corps');
     expect(fr.keywords).toEqual(['ia']);
     expect(fr.category.categoryTitle).toBe('Technologie');
+    expect(fr.authors).toEqual([
+      { role: 'author', name: 'Alex Dmowski' },
+      { role: 'coAuthor', name: 'Chat GPT 5.1', note: 'Grammar correction and editing' },
+    ]);
   });
 
   it('falls back to English when the requested language is missing', () => {
     const de = toBlogPost(meta, version, 'de', categories);
     expect(de.title).toBe('Hello');
     expect(de.keywords).toEqual(['ai']);
+  });
+
+  it('returns an empty authors list when the version has none', () => {
+    const versionWithoutAuthors = { ...version };
+    delete versionWithoutAuthors.authors;
+    const post = toBlogPost(meta, versionWithoutAuthors, 'en', categories);
+    expect(post.authors).toEqual([]);
   });
 });

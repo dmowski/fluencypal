@@ -9,7 +9,8 @@ Provides the dynamic blog post editor for the admin panel, and a public API for 
 ```
 webApp/src/features/Blog/
   AGENTS.md                  — this file
-  types.ts                   — source of truth for all data shapes (BlogDocMeta, BlogVersionDoc, BlogCategoryDocument, BlogPost)
+  types.ts                   — source of truth for all data shapes (BlogDocMeta, BlogVersionDoc, BlogAuthor, BlogCategoryDocument, BlogPost)
+  blogAuthors.ts             — empty/sanitize/format helpers for the authors byline
   backend/blogMappers.ts       — localize Firestore docs to a single `lang` for the public API
   BlogAdmin.tsx              — admin list UI (embedded in AdminStats)
   BlogEditorModal.tsx        — thin orchestrator: full-width split layout (editor left, preview right)
@@ -31,6 +32,7 @@ See `types.ts` for the authoritative TypeScript interfaces:
 
 - `BlogDocMeta` — metadata stored at `blogs/{blogId}`
 - `BlogVersionDoc` — localised content at `blogs/{blogId}/versions/{versionId}`
+- `BlogAuthor` — one byline entry (`role`: `author` | `coAuthor`, `name`, optional `note`)
 - `BlogMetadataCategoryDoc` — parent doc at `blogMetadata/category`
 - `BlogCategoryDocument` — category at `blogMetadata/category/categories/{categoryId}`
 - `BlogPost` — single-locale shape returned by the public API (matches landing `BlogPost`)
@@ -60,11 +62,19 @@ its `categoryId` is cleared locally if the delete succeeds.
 On create/update, the English title is translated to all `supportedLanguages` via `useTextAi`
 before the `BlogCategoryDocument` is written to Firestore.
 
+### Authors
+
+Each `BlogVersionDoc` stores `authors: BlogAuthor[]` (language-agnostic). The editor can add
+several rows; a new draft starts with one Author row. Empty names are dropped in `toBlogPost`
+and the preview. Public display is `Author: Name` or `Co-Author: Name (note)`, e.g.
+`Co-Author: Chat GPT 5.1 (Grammar correction and editing)`.
+Role labels are translated on the landing page; names and notes are stored as entered.
+
 ## Public API
 
 Both endpoints read via the Admin SDK (bypassing Firestore rules). Require `lang`
 (`SupportedLanguage` code). Responses use the landing-aligned `BlogPost` shape (one locale per
-field, plus resolved `category`).
+field, plus resolved `category` and `authors`).
 
 - `GET|POST /api/blog/getBlogs?lang={code}` — `{ blogs: BlogPost[], categories: BlogCategorySummary[] }`
 - `GET|POST /api/blog/getBlog?blogId={id}&lang={code}` — `{ blog: BlogPost | null }`

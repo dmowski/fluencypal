@@ -12,7 +12,8 @@ import {
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { BlogAuthors } from './BlogAuthors';
 import { getBlogs } from './blogData';
 import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
 import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
@@ -38,6 +39,8 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
   const relatedCards = rolePlayScenarios.filter((scenario) =>
     item.relatedRolePlays.includes(scenario.id),
   );
+
+  console.log(item.authors, item);
 
   return (
     <>
@@ -244,19 +247,21 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
                     </Stack>
                   )}
                 </Stack>
-                <Stack
-                  sx={{
-                    flexDirection: 'row',
-                    display: 'flex',
-                    gap: '10px',
-                    alignItems: 'center',
-                    color: '#666',
-                    paddingTop: '30px',
-                  }}
-                >
-                  <Typography>
-                    {i18n._('Published on')}: {dayjs(item.publishedAtIso).format('MMMM D, YYYY')}
-                  </Typography>
+                <Stack sx={{ gap: '10px' }}>
+                  <BlogAuthors authors={item.authors} lang={lang} />
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      display: 'flex',
+                      gap: '10px',
+                      alignItems: 'center',
+                      color: '#666',
+                    }}
+                  >
+                    <Typography>
+                      {i18n._('Published on')}: {dayjs(item.publishedAtIso).format('MMMM D, YYYY')}
+                    </Typography>
+                  </Stack>
                 </Stack>
               </Stack>
             </Stack>

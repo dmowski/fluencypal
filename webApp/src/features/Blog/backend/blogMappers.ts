@@ -1,16 +1,10 @@
 import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
-import {
-  BlogCategoryDocument,
-  BlogDocMeta,
-  BlogPost,
-  BlogVersionDoc,
-} from '../types';
+import { sanitizeBlogAuthors } from '../blogAuthors';
+import { BlogCategoryDocument, BlogDocMeta, BlogPost, BlogVersionDoc } from '../types';
 
 export const parseBlogLang = (raw: string | null | undefined): SupportedLanguage | null => {
   if (!raw) return null;
-  return supportedLanguages.includes(raw as SupportedLanguage)
-    ? (raw as SupportedLanguage)
-    : null;
+  return supportedLanguages.includes(raw as SupportedLanguage) ? (raw as SupportedLanguage) : null;
 };
 
 const pickLocalizedString = (
@@ -57,5 +51,6 @@ export const toBlogPost = (
       categoryTitle: categoryTitle || version.categoryId,
     },
     relatedRolePlays: [],
+    authors: sanitizeBlogAuthors(version.authors),
   };
 };

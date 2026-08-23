@@ -163,6 +163,7 @@ export const BlogEditorModal = ({ blog, onClose, onUpdate, onRenameId }: BlogEdi
                 isPublished={isPublished}
                 categoryTitle={categoryTitle}
                 onOpenCategoryPicker={() => setIsCategoryModalOpen(true)}
+                onAuthorsChange={(authors) => setLocalDraft((prev) => ({ ...prev, authors }))}
                 onImagePreviewUrlChange={(v) =>
                   setLocalDraft((prev) => ({ ...prev, imagePreviewUrl: v }))
                 }

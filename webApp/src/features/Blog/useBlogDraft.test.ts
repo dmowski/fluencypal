@@ -1,5 +1,11 @@
 import { applyLocalizedPatch, makeEmptyDraft } from './useBlogDraft';
 
+describe('makeEmptyDraft', () => {
+  it('starts with one empty author row', () => {
+    expect(makeEmptyDraft().authors).toEqual([{ role: 'author', name: '', note: '' }]);
+  });
+});
+
 describe('applyLocalizedPatch', () => {
   it('keeps translations from earlier languages when merging a new one', () => {
     const draft = makeEmptyDraft();

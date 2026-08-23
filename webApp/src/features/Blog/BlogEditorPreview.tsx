@@ -3,6 +3,7 @@
 import { Stack, Typography } from '@mui/material';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { formatBlogAuthorLine, sanitizeBlogAuthors } from './blogAuthors';
 import { BlogVersionDoc } from './types';
 
 interface BlogEditorPreviewProps {
@@ -14,6 +15,7 @@ export const BlogEditorPreview = ({ draft, activeLang }: BlogEditorPreviewProps)
   const titleValue = draft.title[activeLang];
   const subTitleValue = draft.subTitle[activeLang];
   const contentValue = draft.content[activeLang];
+  const authors = sanitizeBlogAuthors(draft.authors);
 
   return (
     <Stack
@@ -42,6 +44,19 @@ export const BlogEditorPreview = ({ draft, activeLang }: BlogEditorPreviewProps)
       <Typography variant="subtitle1" sx={{ color: '#666' }}>
         {subTitleValue}
       </Typography>
+      {authors.length > 0 && (
+        <Stack gap="2px">
+          {authors.map((author, index) => (
+            <Typography
+              key={`${author.role}-${author.name}-${index}`}
+              variant="body2"
+              sx={{ color: '#555' }}
+            >
+              {formatBlogAuthorLine(author)}
+            </Typography>
+          ))}
+        </Stack>
+      )}
       <Markdown variant="blog">{contentValue || '_No content yet_'}</Markdown>
     </Stack>
   );

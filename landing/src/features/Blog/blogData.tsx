@@ -1,5 +1,5 @@
 import { SupportedLanguage } from '@/features/Lang/lang';
-import { BlogPost } from './types';
+import { BlogAuthor, BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
 import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
@@ -13,6 +13,12 @@ export interface BlogInfo {
 
 const getStaticBlogPosts = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
+
+  const defaultAuthors: BlogAuthor[] = [
+    { role: 'author', name: 'Alex Dmowski' },
+    { role: 'coAuthor', name: 'Chat GPT 5.1', note: 'Grammar correction and editing' },
+  ];
+
   const blogs: BlogPost[] = [
     {
       id: 'the-stranger-in-my-house',
@@ -33,7 +39,9 @@ const getStaticBlogPosts = (lang: SupportedLanguage): BlogInfo => {
         categoryTitle: i18n._('Literature & Fiction'),
         categoryId: 'literature_fiction',
       },
+      authors: defaultAuthors,
       relatedRolePlays: [],
+
       content:
         i18n._(`We’ve been living with a stranger for three years now.
 
@@ -128,6 +136,7 @@ And I am starting to see where a significant risk may lie: in the quiet second w
         categoryTitle: i18n._('Literature & Fiction'),
         categoryId: 'literature_fiction',
       },
+      authors: defaultAuthors,
       relatedRolePlays: [],
       content:
         i18n._(`I am not a talented software developer. I'm not the fastest one — and definitely not the best. But when the company where I work struggles with something important and urgent, they ask for my help and pay me a lot. No clue why.
@@ -253,6 +262,7 @@ And for the first time in weeks, I didn’t want to be anywhere else.
         categoryTitle: i18n._('Interview Tips'),
         categoryId: 'interview_tips',
       },
+      authors: defaultAuthors,
       relatedRolePlays: ['job-interview'],
     },
     {
@@ -316,6 +326,7 @@ The best way to master these phrases is by practicing them in realistic scenario
         categoryTitle: i18n._('Business English'),
         categoryId: 'business_english',
       },
+      authors: defaultAuthors,
       relatedRolePlays: ['job-interview'],
     },
 
@@ -342,6 +353,7 @@ The best way to master these phrases is by practicing them in realistic scenario
         categoryTitle: i18n._('Business English'),
         categoryId: 'business_english',
       },
+      authors: defaultAuthors,
       relatedRolePlays: [
         'job-interview',
         'instant-correction',
@@ -446,6 +458,7 @@ Simulate the real experience with a **free mock interview on FluencyPal**—your
         i18n._('Interview vocabulary for intermediate learners'),
         i18n._('How to prepare for an interview in English'),
       ],
+      authors: defaultAuthors,
       relatedRolePlays: [
         'job-interview',
         'instant-correction',
@@ -521,6 +534,7 @@ To put these fixes into practice, consider using FluencyPal for your next mock i
         categoryTitle: i18n._('Interview Tips'),
         categoryId: 'interview_tips',
       },
+      authors: defaultAuthors,
       relatedRolePlays: ['job-interview', 'instant-correction', 'alias-game'],
     },
     {
@@ -618,6 +632,7 @@ Begin your journey toward more fluent interviews by trying FluencyPal for free. 
         categoryTitle: i18n._('Professional Development'),
         categoryId: 'professional_development',
       },
+      authors: defaultAuthors,
       relatedRolePlays: ['job-interview', 'instant-correction', 'small-talk-with-a-stranger'],
     },
   ];

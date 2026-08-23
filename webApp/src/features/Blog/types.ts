@@ -27,12 +27,25 @@ export interface BlogCategoryDocument {
   updatedAtIso: string;
 }
 
+export const BLOG_AUTHOR_ROLES = ['author', 'coAuthor'] as const;
+export type BlogAuthorRole = (typeof BLOG_AUTHOR_ROLES)[number];
+
+/** One byline entry. Posts can have several (author + co-authors). */
+export interface BlogAuthor {
+  role: BlogAuthorRole;
+  name: string;
+  /** Optional contribution, e.g. "Grammar correction and editing". */
+  note?: string;
+}
+
 /** Content document stored in `blogs/{blogId}/versions/{versionId}` */
 export interface BlogVersionDoc {
   id: string;
   imagePreviewUrl: string;
   /** References `blogMetadata/category/categories/{categoryId}`. */
   categoryId: string;
+  /** Absent on posts written before authors existed. */
+  authors?: BlogAuthor[];
   content: Record<SupportedLanguage, string>;
   title: Record<SupportedLanguage, string>;
   subTitle: Record<SupportedLanguage, string>;
@@ -57,6 +70,7 @@ export interface BlogPost {
   publishedAtIso: string;
   category: ResourceCategory;
   relatedRolePlays: string[];
+  authors: BlogAuthor[];
 }
 
 export interface BlogCategorySummary {

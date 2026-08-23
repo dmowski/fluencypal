@@ -1,10 +1,11 @@
 'use client';
 
-import { Button, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
-import { Globe, Loader } from 'lucide-react';
+import { Button, MenuItem, Select, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
+import { Globe, Loader, Trash2 } from 'lucide-react';
 import { RichTextEditor } from '@/features/Chat/RichTextEditor';
 import { SupportedLanguage, fullEnglishLanguageName } from '@/features/Lang/lang';
-import { BlogVersionDoc } from './types';
+import { blogAuthorRoleLabel, makeEmptyAuthor } from './blogAuthors';
+import { BlogAuthor, BlogAuthorRole, BlogVersionDoc } from './types';
 import { useEffect, useRef, useState } from 'react';
 import { UploadImageButton } from '@/features/Game/UploadImageButton';
 
@@ -19,6 +20,7 @@ interface BlogEditorFormProps {
   isPublished: boolean;
   categoryTitle: string | null;
   onOpenCategoryPicker: () => void;
+  onAuthorsChange: (authors: BlogAuthor[]) => void;
   onImagePreviewUrlChange: (value: string) => void;
   onTitleChange: (value: string) => void;
   onSubTitleChange: (value: string) => void;
@@ -46,6 +48,7 @@ export const BlogEditorForm = ({
   isPublished,
   categoryTitle,
   onOpenCategoryPicker,
+  onAuthorsChange,
   onImagePreviewUrlChange,
   onTitleChange,
   onSubTitleChange,
@@ -64,6 +67,7 @@ export const BlogEditorForm = ({
   const titleValue = draft.title[activeLang];
   const subTitleValue = draft.subTitle[activeLang];
   const contentValue = draft.content[activeLang];
+  const authors = draft.authors ?? [];
 
   const [idDraft, setIdDraft] = useState(blogId);
   const [isRenamingId, setIsRenamingId] = useState(false);
@@ -185,6 +189,92 @@ export const BlogEditorForm = ({
               Select category
             </Button>
           )}
+        </Stack>
+        <Stack gap="8px">
+          <Typography variant="caption" sx={{ opacity: 0.7 }}>
+            Authors
+          </Typography>
+          {authors.map((author, index) => (
+            <Stack
+              key={index}
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                gap: '8px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Select
+                size="small"
+                value={author.role}
+                onChange={(e) =>
+                  onAuthorsChange(
+                    authors.map((item, itemIndex) =>
+                      itemIndex === index
+                        ? { ...item, role: e.target.value as BlogAuthorRole }
+                        : item,
+                    ),
+                  )
+                }
+                sx={{ minWidth: '140px' }}
+              >
+                <MenuItem value="author">{blogAuthorRoleLabel.author}</MenuItem>
+                <MenuItem value="coAuthor">{blogAuthorRoleLabel.coAuthor}</MenuItem>
+              </Select>
+              <TextField
+                label="Name"
+                value={author.name}
+                onChange={(e) =>
+                  onAuthorsChange(
+                    authors.map((item, itemIndex) =>
+                      itemIndex === index ? { ...item, name: e.target.value } : item,
+                    ),
+                  )
+                }
+                size="small"
+                sx={{ flex: 1, minWidth: '160px' }}
+              />
+              <TextField
+                label="Note (optional)"
+                value={author.note ?? ''}
+                onChange={(e) =>
+                  onAuthorsChange(
+                    authors.map((item, itemIndex) =>
+                      itemIndex === index ? { ...item, note: e.target.value } : item,
+                    ),
+                  )
+                }
+                size="small"
+                placeholder="Grammar correction and editing"
+                sx={{ flex: 1, minWidth: '200px' }}
+              />
+              <Button
+                variant="outlined"
+                color="error"
+                size="small"
+                onClick={() =>
+                  onAuthorsChange(authors.filter((_, itemIndex) => itemIndex !== index))
+                }
+                aria-label="Remove author"
+                sx={{ minWidth: '40px', height: '40px' }}
+              >
+                <Trash2 size="14px" />
+              </Button>
+            </Stack>
+          ))}
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => {
+              const nextRole = authors.some((item) => item.role === 'author')
+                ? 'coAuthor'
+                : 'author';
+              onAuthorsChange([...authors, makeEmptyAuthor(nextRole)]);
+            }}
+            sx={{ alignSelf: 'flex-start' }}
+          >
+            Add author
+          </Button>
         </Stack>
       </Stack>
 

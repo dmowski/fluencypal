@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { makeEmptyAuthor } from './blogAuthors';
 import { BlogDocMeta, BlogVersionDoc } from './types';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import {
@@ -31,6 +32,7 @@ export const makeEmptyDraft = (): BlogVersionDoc => ({
   id: DRAFT_VERSION_ID,
   imagePreviewUrl: '',
   categoryId: '',
+  authors: [makeEmptyAuthor('author')],
   content: makeEmptyLocaleString(),
   title: makeEmptyLocaleString(),
   subTitle: makeEmptyLocaleString(),
@@ -65,6 +67,7 @@ const mergeDraftWithDefaults = (
   title: { ...defaults.title, ...loaded.title } as Record<SupportedLanguage, string>,
   subTitle: { ...defaults.subTitle, ...loaded.subTitle } as Record<SupportedLanguage, string>,
   keywords: { ...defaults.keywords, ...loaded.keywords } as Record<SupportedLanguage, string[]>,
+  authors: Array.isArray(loaded.authors) ? loaded.authors : defaults.authors,
 });
 
 export interface UseBlogDraftResult {
