@@ -474,28 +474,284 @@ Return ONLY the number.
     <Stack
       sx={{
         backgroundColor: 'rgba(10, 18, 30, 1)',
-        borderRadius: '20px 20px 0 0 ',
+        borderRadius: '30px 30px 0 0 ',
         boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.3)',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '10px',
+        flexDirection: 'column',
+
         width: 'max-content',
-        padding: '10px 10px 21px 10px',
         position: 'relative',
         bottom: '-1px',
       }}
     >
       <Stack
+        sx={{
+          gap: '10px',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '10px 10px 10px 10px',
+          paddingTop: '10px',
+        }}
+      >
+        {isRecordingByButton || isProcessingTranscription ? (
+          <>
+            <FooterButton
+              activeButton={
+                recorder.isTranscribing || isProcessingTranscription ? (
+                  <CircularProgress size={'24px'} />
+                ) : (
+                  <DoneIcon />
+                )
+              }
+              inactiveButton={
+                recorder.isTranscribing || isProcessingTranscription ? (
+                  <CircularProgress size={'24px'} />
+                ) : (
+                  <DoneIcon />
+                )
+              }
+              isActive={recorder.isTranscribing || isProcessingTranscription}
+              label={i18n._('Done recording')}
+              onClick={onDoneRecordingUsingButton}
+            />
+
+            <Stack
+              sx={{
+                width: '185px',
+              }}
+            >
+              {recorder.visualizerComponent}
+            </Stack>
+
+            <FooterButton
+              activeButton={
+                recorder.isTranscribing || isProcessingTranscription ? (
+                  <CloseIcon style={{ opacity: 0.2 }} />
+                ) : (
+                  <CloseIcon />
+                )
+              }
+              inactiveButton={
+                recorder.isTranscribing || isProcessingTranscription ? (
+                  <CloseIcon style={{ opacity: 0.2 }} />
+                ) : (
+                  <CloseIcon />
+                )
+              }
+              isActive={true}
+              label={i18n._('Cancel recording')}
+              onClick={cancelRecordingUsingButton}
+            />
+          </>
+        ) : (
+          <>
+            {recordingVoiceMode === 'VAD' && (
+              <FooterButton
+                activeButton={
+                  <Stack
+                    sx={{
+                      position: 'relative',
+                    }}
+                  >
+                    <MicIcon
+                      sx={{
+                        fontWeight: 'bold',
+                        color: '#ff3d3d',
+                      }}
+                    />
+
+                    <Stack
+                      sx={{
+                        opacity: waitingPercent > 0 ? 0.6 : 0,
+                        position: 'absolute',
+                        top: '-13px',
+                        left: '-13px',
+                        height: '50px',
+                        width: '50px',
+                      }}
+                    >
+                      <CircularProgress
+                        size={'50px'}
+                        thickness={1}
+                        value={waitingPercent}
+                        variant="determinate"
+                      />
+                    </Stack>
+
+                    <Stack
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        overflow: 'hidden',
+                        height: inActivePercent + '%',
+                        width: '100%',
+                      }}
+                    >
+                      <MicIcon
+                        sx={{
+                          fontWeight: 'bold',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          color: '#fff',
+                        }}
+                      />
+                    </Stack>
+                  </Stack>
+                }
+                inactiveButton={<MicOffIcon />}
+                isActive={vadAudioRecorder.isEnabled}
+                label={i18n._('Enable Microphone')}
+                onClick={isSendMessagesBlocked ? access.showPaymentModal : toggleVad}
+                isLocked={isSendMessagesBlocked}
+              />
+            )}
+
+            {recordingVoiceMode === 'RealTimeConversation' && (
+              <FooterButton
+                activeButton={<MicIcon />}
+                inactiveButton={<MicOffIcon />}
+                isActive={isMuted === false}
+                label={i18n._('Enable microphone')}
+                onClick={
+                  isSendMessagesBlocked ? access.showPaymentModal : () => setIsMuted(!isMuted)
+                }
+                isLocked={isSendMessagesBlocked}
+              />
+            )}
+
+            {recordingVoiceMode === 'PushToTalk' && (
+              <FooterButton
+                activeButton={<MicIcon />}
+                inactiveButton={<MicOffIcon />}
+                isActive={false}
+                label={i18n._('Record Message')}
+                onClick={
+                  isSendMessagesBlocked ? access.showPaymentModal : startRecordingUsingButton
+                }
+                isLocked={isSendMessagesBlocked}
+              />
+            )}
+
+            <FooterButton
+              activeButton={<VolumeUpIcon />}
+              inactiveButton={<VolumeOffIcon />}
+              isActive={isVolumeOnToDisplay}
+              label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
+              onClick={toggleVolume}
+              isLocked={isLimitedVoice}
+            />
+
+            <FooterButton
+              activeButton={<ClosedCaptionIcon />}
+              inactiveButton={<ClosedCaptionDisabledIcon />}
+              isActive={isSubtitlesEnabled}
+              label={
+                isSubtitlesEnabled ? i18n._('Turn off subtitles') : i18n._('Turn on subtitles')
+              }
+              onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
+            />
+
+            <FooterButton
+              activeButton={<VideocamIcon />}
+              inactiveButton={<VideocamOffIcon />}
+              isActive={isWebCamEnabled}
+              label={isWebCamEnabled ? i18n._('Turn off video') : i18n._('Turn on video')}
+              onClick={() => toggleWebCam(!isWebCamEnabled)}
+            />
+
+            <IconButton
+              size="large"
+              aria-label={i18n._('End call')}
+              data-testid="call-end-button"
+              onClick={(event) => setEndCallMenuAnchor(event.currentTarget)}
+              sx={{
+                width: '70px',
+                borderRadius: '30px',
+                backgroundColor: '#dc362e',
+                ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
+              }}
+            >
+              <CallEndIcon />
+            </IconButton>
+
+            <CallEndMenu
+              mode="call"
+              anchorEl={endCallMenuAnchor}
+              onClose={closeEndCallMenu}
+              onExit={onExit}
+              onSwitchMode={onSwitchToVoiceRecords}
+              onShowResults={onShowResults}
+              canShowResults={isProgressDone}
+            />
+          </>
+        )}
+
+        {isShowVolumeWarning && (
+          <CustomModal
+            isOpen={true}
+            onClose={() => {
+              setIsShowVolumeWarning(false);
+              recorder.cancelRecording();
+              recorder.removeTranscript();
+            }}
+          >
+            <Stack
+              sx={{
+                maxWidth: '600px',
+                gap: '40px',
+                alignItems: 'center',
+                paddingTop: '25px',
+              }}
+            >
+              <Stack
+                sx={{
+                  maxWidth: '600px',
+                  gap: '0px',
+                }}
+              >
+                <Typography variant="h5">
+                  {isShowVolumeWarning ? i18n._('AI voice') : i18n._('Real-time conversation')}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {isShowVolumeWarning
+                    ? i18n._(
+                        'Enabling ai voice is a premium feature. Please upgrade your balance to access this feature.',
+                      )
+                    : i18n._(
+                        'Using real-time microphone is a premium feature. Please upgrade your balance to access this feature or use recorded audio.',
+                      )}
+                </Typography>
+              </Stack>
+
+              <FeatureBlocker onLimitedClick={onLimitedClick} />
+              <Button
+                fullWidth
+                onClick={() => {
+                  setIsShowVolumeWarning(false);
+                }}
+              >
+                {i18n._('Close')}
+              </Button>
+            </Stack>
+          </CustomModal>
+        )}
+      </Stack>
+
+      <Stack
         data-testid="call-progress-bar"
         sx={{
-          position: 'absolute',
-          bottom: '0px',
-          left: '0px',
           width: 'calc(100% - 0px)',
           height: isProgressDone ? '16px' : '9px',
           borderRadius: '0',
           overflow: 'hidden',
+          position: 'relative',
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -529,268 +785,6 @@ Return ONLY the number.
           </Typography>
         )}
       </Stack>
-
-      <>
-          {isRecordingByButton || isProcessingTranscription ? (
-            <>
-              <FooterButton
-                activeButton={
-                  recorder.isTranscribing || isProcessingTranscription ? (
-                    <CircularProgress size={'24px'} />
-                  ) : (
-                    <DoneIcon />
-                  )
-                }
-                inactiveButton={
-                  recorder.isTranscribing || isProcessingTranscription ? (
-                    <CircularProgress size={'24px'} />
-                  ) : (
-                    <DoneIcon />
-                  )
-                }
-                isActive={recorder.isTranscribing || isProcessingTranscription}
-                label={i18n._('Done recording')}
-                onClick={onDoneRecordingUsingButton}
-              />
-
-              <Stack
-                sx={{
-                  width: '185px',
-                }}
-              >
-                {recorder.visualizerComponent}
-              </Stack>
-
-              <FooterButton
-                activeButton={
-                  recorder.isTranscribing || isProcessingTranscription ? (
-                    <CloseIcon style={{ opacity: 0.2 }} />
-                  ) : (
-                    <CloseIcon />
-                  )
-                }
-                inactiveButton={
-                  recorder.isTranscribing || isProcessingTranscription ? (
-                    <CloseIcon style={{ opacity: 0.2 }} />
-                  ) : (
-                    <CloseIcon />
-                  )
-                }
-                isActive={true}
-                label={i18n._('Cancel recording')}
-                onClick={cancelRecordingUsingButton}
-              />
-            </>
-          ) : (
-            <>
-              {recordingVoiceMode === 'VAD' && (
-                <FooterButton
-                  activeButton={
-                    <Stack
-                      sx={{
-                        position: 'relative',
-                      }}
-                    >
-                      <MicIcon
-                        sx={{
-                          fontWeight: 'bold',
-                          color: '#ff3d3d',
-                        }}
-                      />
-
-                      <Stack
-                        sx={{
-                          opacity: waitingPercent > 0 ? 0.6 : 0,
-                          position: 'absolute',
-                          top: '-13px',
-                          left: '-13px',
-                          height: '50px',
-                          width: '50px',
-                        }}
-                      >
-                        <CircularProgress
-                          size={'50px'}
-                          thickness={1}
-                          value={waitingPercent}
-                          variant="determinate"
-                        />
-                      </Stack>
-
-                      <Stack
-                        sx={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          overflow: 'hidden',
-                          height: inActivePercent + '%',
-                          width: '100%',
-                        }}
-                      >
-                        <MicIcon
-                          sx={{
-                            fontWeight: 'bold',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            color: '#fff',
-                          }}
-                        />
-                      </Stack>
-                    </Stack>
-                  }
-                  inactiveButton={<MicOffIcon />}
-                  isActive={vadAudioRecorder.isEnabled}
-                  label={i18n._('Enable Microphone')}
-                  onClick={isSendMessagesBlocked ? access.showPaymentModal : toggleVad}
-                  isLocked={isSendMessagesBlocked}
-                />
-              )}
-
-              {/*
-              <FooterButton
-                activeButton={<Undo2 />}
-                inactiveButton={<Undo2 />}
-                isActive={true}
-                label={i18n._('Undo active message')}
-                onClick={isShowUndo ? cancelActiveMessage : () => {}}
-              />
-              */}
-
-              {recordingVoiceMode === 'RealTimeConversation' && (
-                <FooterButton
-                  activeButton={<MicIcon />}
-                  inactiveButton={<MicOffIcon />}
-                  isActive={isMuted === false}
-                  label={i18n._('Enable microphone')}
-                  onClick={
-                    isSendMessagesBlocked ? access.showPaymentModal : () => setIsMuted(!isMuted)
-                  }
-                  isLocked={isSendMessagesBlocked}
-                />
-              )}
-
-              {recordingVoiceMode === 'PushToTalk' && (
-                <FooterButton
-                  activeButton={<MicIcon />}
-                  inactiveButton={<MicOffIcon />}
-                  isActive={false}
-                  label={i18n._('Record Message')}
-                  onClick={
-                    isSendMessagesBlocked ? access.showPaymentModal : startRecordingUsingButton
-                  }
-                  isLocked={isSendMessagesBlocked}
-                />
-              )}
-
-              <FooterButton
-                activeButton={<VolumeUpIcon />}
-                inactiveButton={<VolumeOffIcon />}
-                isActive={isVolumeOnToDisplay}
-                label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
-                onClick={toggleVolume}
-                isLocked={isLimitedVoice}
-              />
-
-              <FooterButton
-                activeButton={<ClosedCaptionIcon />}
-                inactiveButton={<ClosedCaptionDisabledIcon />}
-                isActive={isSubtitlesEnabled}
-                label={
-                  isSubtitlesEnabled ? i18n._('Turn off subtitles') : i18n._('Turn on subtitles')
-                }
-                onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
-              />
-
-              <FooterButton
-                activeButton={<VideocamIcon />}
-                inactiveButton={<VideocamOffIcon />}
-                isActive={isWebCamEnabled}
-                label={isWebCamEnabled ? i18n._('Turn off video') : i18n._('Turn on video')}
-                onClick={() => toggleWebCam(!isWebCamEnabled)}
-              />
-
-              <IconButton
-                size="large"
-                aria-label={i18n._('End call')}
-                data-testid="call-end-button"
-                onClick={(event) => setEndCallMenuAnchor(event.currentTarget)}
-                sx={{
-                  width: '70px',
-                  borderRadius: '30px',
-                  backgroundColor: '#dc362e',
-                  ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
-                }}
-              >
-                <CallEndIcon />
-              </IconButton>
-
-              <CallEndMenu
-                mode="call"
-                anchorEl={endCallMenuAnchor}
-                onClose={closeEndCallMenu}
-                onExit={onExit}
-                onSwitchMode={onSwitchToVoiceRecords}
-                onShowResults={onShowResults}
-                canShowResults={isProgressDone}
-              />
-            </>
-          )}
-
-          {isShowVolumeWarning && (
-            <CustomModal
-              isOpen={true}
-              onClose={() => {
-                setIsShowVolumeWarning(false);
-                recorder.cancelRecording();
-                recorder.removeTranscript();
-              }}
-            >
-              <Stack
-                sx={{
-                  maxWidth: '600px',
-                  gap: '40px',
-                  alignItems: 'center',
-                  paddingTop: '25px',
-                }}
-              >
-                <Stack
-                  sx={{
-                    maxWidth: '600px',
-                    gap: '0px',
-                  }}
-                >
-                  <Typography variant="h5">
-                    {isShowVolumeWarning ? i18n._('AI voice') : i18n._('Real-time conversation')}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      opacity: 0.7,
-                    }}
-                  >
-                    {isShowVolumeWarning
-                      ? i18n._(
-                          'Enabling ai voice is a premium feature. Please upgrade your balance to access this feature.',
-                        )
-                      : i18n._(
-                          'Using real-time microphone is a premium feature. Please upgrade your balance to access this feature or use recorded audio.',
-                        )}
-                  </Typography>
-                </Stack>
-
-                <FeatureBlocker onLimitedClick={onLimitedClick} />
-                <Button
-                  fullWidth
-                  onClick={() => {
-                    setIsShowVolumeWarning(false);
-                  }}
-                >
-                  {i18n._('Close')}
-                </Button>
-              </Stack>
-            </CustomModal>
-          )}
-      </>
     </Stack>
   );
 };

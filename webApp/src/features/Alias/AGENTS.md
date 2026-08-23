@@ -105,7 +105,7 @@ Not this folder. User describes words to the AI on Practice:
 | `GuessGameStat` | `Conversation/types.ts` |
 | Analytics | `RolePlay/aliasAnalytics.ts` |
 
-`AliasGamePanel` is currently mounted on the record/chat canvas in `ConversationCanvas`, not on call (`CameraCanvas`). Call-mode word list work belongs in Conversation.
+`AliasGamePanel` is mounted from `Messages`, so the word list appears in both record/chat (`ConversationCanvas`) and call (`CameraCanvas`). Alias starts in **call** mode (`useRolePlay` `conversationMode: 'call'`). Call-mode / word-list work belongs in Conversation.
 
 ## Validation
 

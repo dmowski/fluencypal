@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 import { ScanLine } from 'lucide-react';
 import { sleep } from '@/libs/sleep';
 import { getAiVoiceByVoice } from './voiceAvatar';
-import { RecordingUserMessageMode } from '../types';
+import { GuessGameStat, RecordingUserMessageMode } from '../types';
 
 export const CameraCanvas = ({
   conversation,
@@ -42,6 +42,7 @@ export const CameraCanvas = ({
   recordingVoiceMode,
   isSendMessagesBlocked,
   fullExit,
+  gameWords,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -67,6 +68,7 @@ export const CameraCanvas = ({
   recordingVoiceMode: RecordingUserMessageMode;
   isSendMessagesBlocked: boolean;
   fullExit: () => void;
+  gameWords: GuessGameStat | null;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -243,6 +245,7 @@ export const CameraCanvas = ({
             <Messages
               conversation={conversation}
               messageOrder={messageOrder}
+              gameWords={gameWords}
               isAiSpeaking={isAiSpeaking}
               voice={voice}
               isLocked={isLimitedVoice || isSendMessagesBlocked}

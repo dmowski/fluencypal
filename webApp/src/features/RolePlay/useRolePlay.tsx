@@ -377,7 +377,7 @@ function useProvideRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
         gameStat: wordsInfo,
-        conversationMode: 'record',
+        conversationMode: 'call',
       });
     } else {
       onStartRolePlay({

@@ -93,7 +93,7 @@ export const AliasGamePanelUI = ({
 }: AliasGamePanelUIProps) => {
   const translator = useTranslate();
   const { i18n } = useLingui();
-  const [isShowAll, setIsShowAll] = useState(false);
+  const [isShowAll, setIsShowAll] = useState(true);
   const showAll = () => setIsShowAll(true);
   const limit = isShowAll ? wordsUserToDescribe.length + 1 : 2;
 
@@ -101,7 +101,6 @@ export const AliasGamePanelUI = ({
     <Stack
       sx={{
         gap: '20px',
-        padding: '10px',
         maxWidth: '100dvw',
         overflowX: 'auto',
       }}
@@ -109,19 +108,24 @@ export const AliasGamePanelUI = ({
       {translator.translateModal}
       <Stack
         sx={{
-          flexDirection: 'row',
-          gap: '10px',
-          alignItems: 'center',
-          '@media (max-width:600px)': {
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          },
+          gap: '5px',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
         }}
       >
-        <Typography variant="caption" sx={{ opacity: 1, color: '#ddd' }}>
-          {i18n._(`Describe these words:`)}
+        <Typography
+          variant="caption"
+          sx={{
+            opacity: 1,
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            color: '#eee',
+            paddingLeft: '3px',
+          }}
+        >
+          {i18n._(`Words to describe:`)}
         </Typography>
-        <Stack sx={{ flexDirection: 'row', gap: '5px', flexWrap: 'wrap' }}>
+        <Stack sx={{ flexDirection: 'row', gap: '5px 10px', flexWrap: 'wrap' }}>
           {wordsUserToDescribe
             .filter((_, index) => index < limit)
             .map((word, index, list) => {
@@ -140,7 +144,7 @@ export const AliasGamePanelUI = ({
                     opacity: isDone ? 0.3 : 1,
                     borderRadius: '4px',
                     cursor: 'pointer',
-                    padding: '3px 8px 3px 10px',
+                    padding: '3px 8px 3px 3px',
                     ':hover': {
                       backgroundColor: isDone
                         ? 'rgba(255, 255, 70, 0.1)'

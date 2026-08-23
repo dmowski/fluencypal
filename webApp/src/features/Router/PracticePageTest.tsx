@@ -49,7 +49,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   const aiUserInfo = useAiUserInfo();
   const [testMessage, setTestMessage] = useState<ConversationMessage[]>(startTestMessages);
 
-  const showGame = false;
+  const showGame = true;
   const gameStat: GuessGameStat | null = showGame
     ? {
         wordsUserToDescribe: [
@@ -157,7 +157,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   };
 
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
-  const [conversationMode, setConversationMode] = useState<ConversationMode>('record');
+  const [conversationMode, setConversationMode] = useState<ConversationMode>('call');
 
   const addMessage = async (message: string) => {
     setTestMessage((prevMessages) => [
@@ -225,7 +225,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         isClosed={false}
         isClosing={false}
         addUserMessage={addMessage}
-        balanceHours={0.2}
+        balanceHours={0.8}
         togglePaymentModal={() => alert('Payment modal toggled')}
         isLimitedVoice={false}
         onLimitedClick={() => {}}
@@ -257,8 +257,8 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         voice="shimmer"
         toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
         openNextLesson={() => {}}
-        recordingVoiceMode="VAD"
-        isSendMessagesBlocked
+        recordingVoiceMode="RealTimeConversation"
+        isSendMessagesBlocked={false}
       />
     </Stack>
   );

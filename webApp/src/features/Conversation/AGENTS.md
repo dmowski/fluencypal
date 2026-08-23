@@ -52,6 +52,7 @@ Conversation/
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
+- **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
 ## `data-testid` hooks
 
@@ -71,8 +72,10 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 | Screenshot | Covers |
 | --- | --- |
 | `conversation-canvas-record-*` | Goal-talk default, role-play states (still recordable at 100%), chat, recording |
+| `conversation-canvas-record-alias-word-list` | Record canvas with Alias `AliasGamePanel` in `Messages` |
 | `conversation-canvas-record-menu-results-ready` | Record `CallEndMenu` with Show results enabled |
-| `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar) |
+| `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar, strip under footer controls) |
+| `conversation-canvas-call-alias-word-list` | Call canvas with Alias word list in `Messages` |
 | `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |
 | `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → next-lesson) |

@@ -3,6 +3,7 @@ import { type ComponentProps, type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { ConversationCanvas } from './ConversationCanvas';
 import { ConversationMessage } from '@/features/Conversation/conversation';
+import { GuessGameStat } from './types';
 import { CONVERSATION_DONE_MESSAGE_COUNT } from '@/features/Conversation/conversationProgress';
 
 const BOT_OPENING =
@@ -32,6 +33,11 @@ export function buildRolePlayConversation(userMessageCount: number): Conversatio
 
   return messages;
 }
+
+export const FIXTURE_ALIAS_GAME_WORDS: GuessGameStat = {
+  wordsUserToDescribe: ['Dog', 'Cat', 'Elephant', 'Metal', 'Wood', 'Plastic', 'Paper', 'Rock'],
+  wordsAiToDescribe: ['polite', 'sunny'],
+};
 
 export const FIXTURE_GOAL_TALK_CONVERSATION: ConversationMessage[] = [
   {

@@ -1,10 +1,5 @@
 # Live document with ideas
 
-## Alias - webApp/src/features/Alias/AGENTS.md
-
-- Add list of words on call mode
-- Use call mode by default
-
 ## Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
 - How to foster communication?

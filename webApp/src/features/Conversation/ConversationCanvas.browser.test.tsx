@@ -5,6 +5,7 @@ import { page, userEvent } from 'vitest/browser';
 import {
   buildRolePlayConversation,
   ConversationCanvasFixture,
+  FIXTURE_ALIAS_GAME_WORDS,
   FIXTURE_GOAL_TALK_CONVERSATION,
   ROLE_PLAY_EARLY_HINT_USER_MESSAGES,
   ROLE_PLAY_FINISH_READY_USER_MESSAGES,
@@ -314,6 +315,34 @@ test('conversation canvas – record mode while recording', async () => {
   await expect
     .element(page.getByTestId('conversation-canvas-record'))
     .toMatchScreenshot('conversation-canvas-record-recording');
+});
+
+test('conversation canvas – record mode alias word list', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={FIXTURE_GOAL_TALK_CONVERSATION}
+      conversationMode="record"
+      gameWords={FIXTURE_ALIAS_GAME_WORDS}
+    />,
+  );
+
+  await expect
+    .element(page.getByTestId('conversation-canvas-record'))
+    .toMatchScreenshot('conversation-canvas-record-alias-word-list');
+});
+
+test('conversation canvas – call mode alias word list', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={FIXTURE_GOAL_TALK_CONVERSATION}
+      conversationMode="call"
+      gameWords={FIXTURE_ALIAS_GAME_WORDS}
+    />,
+  );
+
+  await expect
+    .element(page.getByTestId('conversation-canvas-call'))
+    .toMatchScreenshot('conversation-canvas-call-alias-word-list');
 });
 
 test('conversation canvas – call mode role-play in progress', async () => {

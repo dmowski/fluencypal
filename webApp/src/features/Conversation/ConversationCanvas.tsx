@@ -25,7 +25,6 @@ import {
 } from 'lucide-react';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import { AliasGamePanel } from './AliasGamePanel';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { GuessGameStat, RecordingUserMessageMode } from './types';
 import dayjs from 'dayjs';
@@ -263,6 +262,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             messageOrder={messageOrder}
             isMuted={isMuted}
             setIsMuted={setIsMuted}
+            gameWords={gameWords}
             isAiSpeaking={isAiSpeaking}
             voice={voice}
             conversation={conversation}
@@ -339,6 +339,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
               <Messages
                 conversation={conversation}
                 messageOrder={messageOrder}
+                gameWords={gameWords}
                 isAiSpeaking={isAiSpeaking}
                 voice={voice}
                 isLocked={isLimitedVoice || isSendMessagesBlocked}
@@ -396,28 +397,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                   }}
                 />
               </Stack>
-
-              {gameWords?.wordsUserToDescribe && (
-                <Stack
-                  sx={{
-                    width: '100%',
-                    alignItems: 'center',
-                    padding: '10px',
-                    boxSizing: 'border-box',
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      width: '100%',
-                      maxWidth: '900px',
-                      maxHeight: '40vh',
-                      overflowY: 'auto',
-                    }}
-                  >
-                    <AliasGamePanel gameWords={gameWords} conversation={conversation} />
-                  </Stack>
-                </Stack>
-              )}
 
               <Stack
                 sx={{

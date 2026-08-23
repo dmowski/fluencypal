@@ -15,6 +15,8 @@ import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
 import { useAccess } from '../Usage/useAccess';
 import { useConversationsAnalysis } from './useConversationsAnalysis';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
+import { GuessGameStat } from './types';
+import { AliasGamePanel } from './AliasGamePanel';
 
 export const Messages = ({
   conversation,
@@ -22,12 +24,14 @@ export const Messages = ({
   isAiSpeaking,
   voice,
   isLocked,
+  gameWords,
 }: {
   conversation: ConversationMessage[];
   messageOrder: MessagesOrderMap;
   isAiSpeaking?: boolean;
   voice: AiVoice;
   isLocked?: boolean;
+  gameWords?: GuessGameStat | null;
 }) => {
   const translator = useTranslate();
 
@@ -61,6 +65,21 @@ export const Messages = ({
             />
           );
         })}
+
+        {gameWords?.wordsUserToDescribe && (
+          <Stack
+            sx={{
+              width: 'calc(100% - 10px)',
+              marginLeft: '5px',
+              border: '3px solid #19B4F5',
+              borderRadius: '10px',
+              padding: '15px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <AliasGamePanel gameWords={gameWords} conversation={conversation} />
+          </Stack>
+        )}
       </Stack>
     </>
   );
