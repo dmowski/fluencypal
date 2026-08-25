@@ -2,9 +2,7 @@
 
 ## Redesign Daily questions/Chat - Foster community
 
-- Make audio records more appealing
-- Show better audio player rather then default
-- Allow to change my username from profile page userId=
+- Give 2 years to top-5 gamers
 - PayWall: Limit access only for Paid users, give 2 years to top-5 gamers, Show paywall blocker on daily cards
 - Limit firestore access to daily/public chat section - but not DM - important for support
 - Remove old messages after 4 days

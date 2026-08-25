@@ -80,6 +80,7 @@ export const GameMyUsername = ({ align }: { align: 'flex-start' | 'center' }) =>
             <IconButton
               onClick={() => saveUsername()}
               disabled={internalUsername.length < 3 || isAlreadyTaken}
+              aria-label={i18n._('Save username')}
             >
               <CheckIcon size={'18px'} />
             </IconButton>
@@ -91,6 +92,7 @@ export const GameMyUsername = ({ align }: { align: 'flex-start' | 'center' }) =>
               disabled={game.isLoading}
               size="small"
               onClick={() => setIsEditUsername(!isEditUsername)}
+              aria-label={i18n._('Edit username')}
             >
               <PencilIcon size={'11px'} />
             </IconButton>

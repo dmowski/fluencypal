@@ -17,8 +17,8 @@ import { InfoStep } from '../Survey/InfoStep';
 import { useBattle } from './Battle/useBattle';
 import { BATTLE_WIN_POINTS } from './Battle/data';
 import { useAccess } from '../Usage/useAccess';
-import { UserMenu } from '../User/UserMenu';
 import { UsersPrivateChat } from '../Chat/UsersPrivateChat';
+import { GameMyIdentity } from './GameMyIdentity';
 
 interface IconColor {
   iconColor: string;
@@ -211,36 +211,54 @@ export const UserProfileModal = ({ stat, onClose }: { stat: UsersStat; onClose: 
                 alignItems: 'center',
               }}
             >
-              <Stack
-                component="img"
-                src={avatar}
-                sx={{
-                  width: '100px',
-                  height: '100px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              />
-              <Stack
-                sx={{
-                  width: '100%',
-                  padding: '5px 0',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography variant="h5">{userName}</Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {lastVisitAgo}
-                </Typography>
-              </Stack>
+              {isMe ? (
+                <>
+                  <GameMyIdentity avatarSize="100px" />
+                  {lastVisitAgo && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
+                      }}
+                    >
+                      {lastVisitAgo}
+                    </Typography>
+                  )}
+                </>
+              ) : (
+                <>
+                  <Stack
+                    component="img"
+                    src={avatar}
+                    sx={{
+                      width: '100px',
+                      height: '100px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                  />
+                  <Stack
+                    sx={{
+                      width: '100%',
+                      padding: '5px 0',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Typography variant="h5">{userName}</Typography>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
+                      }}
+                    >
+                      {lastVisitAgo}
+                    </Typography>
+                  </Stack>
+                </>
+              )}
             </Stack>
 
             <Stack

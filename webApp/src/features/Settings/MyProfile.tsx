@@ -30,8 +30,7 @@ import { WithdrawFromContractModal } from '../Header/WithdrawFromContractModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
-import { GameMyAvatar } from '../Game/GameMyAvatar';
-import { GameMyUsername } from '../Game/GameMyUsername';
+import { GameMyIdentity } from '../Game/GameMyIdentity';
 import { AiKnowledgeModal } from '../User/AiKnowledgeModal';
 import { NotificationsModal } from '../Header/NotificationsModal';
 
@@ -58,8 +57,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam('refund');
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam('paymentHistory');
   const searchParams = useSearchParams();
-  const shouldShowWithdrawModal =
-    searchParams.get('withdraw') === 'true' || isShowRefundModal;
+  const shouldShowWithdrawModal = searchParams.get('withdraw') === 'true' || isShowRefundModal;
   const shouldShowPaymentHistory = isShowPaymentHistoryModal;
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
   const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
@@ -161,16 +159,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
             gap: '10px',
           }}
         >
-          <Stack
-            sx={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '20px',
-            }}
-          >
-            <GameMyAvatar />
-            <GameMyUsername align="center" />
-          </Stack>
+          <GameMyIdentity />
 
           <Typography
             variant="caption"
