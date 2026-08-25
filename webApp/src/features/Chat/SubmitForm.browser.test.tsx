@@ -33,19 +33,19 @@ test('voice menu hides extra actions behind more options', async () => {
 
   await expect.element(page.getByRole('button', { name: 'More options' })).toBeVisible();
   await expect
-    .element(page.getByRole('menuitem', { name: 'Type a message' }))
+    .element(page.getByRole('menuitem', { name: 'Text message' }))
     .not.toBeInTheDocument();
 
   await userEvent.click(page.getByRole('button', { name: 'More options' }));
 
-  await expect.element(page.getByRole('menuitem', { name: 'Type a message' })).toBeVisible();
+  await expect.element(page.getByRole('menuitem', { name: 'Text message' })).toBeVisible();
   await expect.element(page.getByRole('menuitem', { name: 'Upload image' })).toBeVisible();
   await expect.element(page.getByRole('menuitem', { name: 'Upload video' })).toBeVisible();
   await expect
     .element(page.getByRole('menuitem', { name: 'Suggest an idea' }))
     .not.toBeInTheDocument();
 
-  await userEvent.click(page.getByRole('menuitem', { name: 'Type a message' }));
+  await userEvent.click(page.getByRole('menuitem', { name: 'Text message' }));
   expect(onSwitchMode).toHaveBeenCalledOnce();
 });
 

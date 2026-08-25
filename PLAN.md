@@ -2,16 +2,15 @@
 
 ## Redesign Daily questions/Chat - Foster community
 
-- Give 2 years to top-5 gamers
-
-- PayWall: Limit access only for Paid users, give 2 years to top-5 gamers, Show paywall blocker on daily cards
-
-- Limit firestore access to daily/public chat section - but not DM - important for support
+- Show paywall blocker on daily chat cards and public.
+  Check that messages in not marked as read when user does not have access
 
 - Remove old messages after 4 days
 - Weekly question: How are you? - Update daily question to repeat it
 - Weekly question: Who are you?
 - Add post on global chat about updates
+
+## Show trial notification/modal on page - one time with "ok"
 
 ## Hide Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
 
