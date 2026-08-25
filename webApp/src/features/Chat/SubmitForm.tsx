@@ -8,17 +8,16 @@ import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 import { useEffect, useState } from 'react';
 import { ProcessUserInput } from '../Conversation/ProcessUserInput';
-import { CircleEllipsis, Keyboard, Lightbulb, Mic, TextSearch, Trash } from 'lucide-react';
+import { Mic, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
 import { ThreadsMessageAttachment } from './type';
-import { UploadImageButton } from '../Game/UploadImageButton';
-import { UploadVideoButton } from '../Video/UploadVideoButton';
 import { AttachmentVideo } from './Message/AttachmentVideo';
 import { AttachmentImage } from './Message/AttachmentImage';
 import { RichTextEditor } from './RichTextEditor';
 import { sleep } from '@/libs/sleep';
 import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
+import { SubmitFormMoreOptions } from './SubmitFormMoreOptions';
 
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
@@ -94,8 +93,6 @@ export function SubmitForm({
   const [isTextMode, setIsTextMode] = useState(false);
   const [textMessage, setTextMessage] = useState('');
   const [preSubmitTextMessage, setPreSubmitTextMessage] = useState('');
-
-  const [isShowMoreOptions, setIsShowMoreOptions] = useState(false);
 
   const onPreSubmitTextMessage = async () => {
     setPreSubmitTextMessage(textMessage.trim());
@@ -249,53 +246,18 @@ Provide only the message user can send, without any additional explanation or co
               {i18n._('Send Message')}
             </Button>
 
-            <Stack
-              sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'row',
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <IconButton
-                  onClick={() => setIsTextMode(!isTextMode)}
-                  disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
-                >
-                  <Mic size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-                </IconButton>
-              </Stack>
-
-              {!isShowMoreOptions && (
-                <IconButton onClick={() => setIsShowMoreOptions(true)} sx={{}}>
-                  <CircleEllipsis size={'18px'} color="rgba(255, 255, 255, 0.5)" />
-                </IconButton>
-              )}
-
-              {isShowMoreOptions && (
-                <>
-                  <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
-                  <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
-
-                  <IconButton
-                    onClick={generateIdeasForMessage}
-                    disabled={isGeneratingIdea || !previousBotMessage}
-                  >
-                    <Lightbulb size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-                  </IconButton>
-                  <IconButton
-                    onClick={async () => onPreSubmitTextMessage()}
-                    disabled={textMessage.trim() === ''}
-                  >
-                    <TextSearch size={'18px'} color={'rgba(200, 200, 200, 1)'} />
-                  </IconButton>
-                </>
-              )}
-            </Stack>
+            <SubmitFormMoreOptions
+              isTextMode={isTextMode}
+              onSwitchMode={() => setIsTextMode(false)}
+              onAddImage={addImage}
+              onAddVideo={addVideo}
+              onGenerateIdea={generateIdeasForMessage}
+              onCheckMessage={onPreSubmitTextMessage}
+              isModeSwitchDisabled={recorder.isRecording || recorder.isTranscribing || isLoading}
+              isGeneratingIdea={isGeneratingIdea}
+              canGenerateIdea={!!previousBotMessage}
+              canCheckMessage={textMessage.trim() !== ''}
+            />
           </Stack>
         </Stack>
       )}
@@ -420,29 +382,15 @@ Provide only the message user can send, without any additional explanation or co
                   }}
                 >
                   {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
-                    <IconButton
-                      onClick={() => setIsTextMode(!isTextMode)}
-                      disabled={recorder.isRecording || recorder.isTranscribing || isLoading}
-                      sx={{}}
-                    >
-                      <Keyboard
-                        size={'18px'}
-                        color={isTextMode ? 'rgba(0, 150, 255, 1)' : 'rgba(255, 255, 255, 1)'}
-                      />
-                    </IconButton>
-                  )}
-
-                  {!isShowMoreOptions && (
-                    <IconButton onClick={() => setIsShowMoreOptions(true)} sx={{}}>
-                      <CircleEllipsis size={'18px'} color="rgba(255, 255, 255, 0.5)" />
-                    </IconButton>
-                  )}
-
-                  {isShowMoreOptions && (
-                    <UploadImageButton type="icon" onNewUploadUrl={(url) => addImage(url)} />
-                  )}
-                  {isShowMoreOptions && (
-                    <UploadVideoButton type="icon" onNewUploadUrl={(url) => addVideo(url)} />
+                    <SubmitFormMoreOptions
+                      isTextMode={isTextMode}
+                      onSwitchMode={() => setIsTextMode(true)}
+                      onAddImage={addImage}
+                      onAddVideo={addVideo}
+                      isModeSwitchDisabled={
+                        recorder.isRecording || recorder.isTranscribing || isLoading
+                      }
+                    />
                   )}
                 </Stack>
               )}
@@ -452,6 +400,8 @@ Provide only the message user can send, without any additional explanation or co
                   sx={{
                     width: '100%',
                     paddingLeft: '20px',
+                    flexDirection: 'row',
+                    alignItems: 'center',
                   }}
                 >
                   <IconButton
@@ -464,6 +414,12 @@ Provide only the message user can send, without any additional explanation or co
                   >
                     <Trash size={'18px'} color="rgba(200, 200, 200, 1)" />
                   </IconButton>
+                  <SubmitFormMoreOptions
+                    isTextMode={isTextMode}
+                    onAddImage={addImage}
+                    onAddVideo={addVideo}
+                    showModeSwitch={false}
+                  />
                 </Stack>
               )}
             </Stack>

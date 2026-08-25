@@ -2,10 +2,9 @@
 
 ## Redesign Daily questions/Chat - Foster community
 
-- Hide options under menu
 - Make audio records more appealing
 - Show better audio player rather then default
-- https://app.fluencypal.com/ru/practice?inbox=true&userId=Mq2HfU3KrXTjNyOpPXqHSPg5izV2 allow to change my name from that screen and change photo
+- Allow to change my username from profile page userId=
 - PayWall: Limit access only for Paid users, give 2 years to top-5 gamers, Show paywall blocker on daily cards
 - Limit firestore access to daily/public chat section - but not DM - important for support
 - Remove old messages after 4 days

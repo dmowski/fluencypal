@@ -1048,7 +1048,7 @@ msgstr "Asisten"
 msgid "At least {minWords} words required"
 msgstr "Diperlukan setidaknya {minWords} kata"
 
-#: src/features/Chat/SubmitForm.tsx:389
+#: src/features/Chat/SubmitForm.tsx:351
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Lampirkan rekaman suara saya"
@@ -1680,6 +1680,11 @@ msgstr "Obrolan tidak ditemukan atau Anda tidak memiliki akses ke dalamnya."
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Berbincang dengan Pemilik Anjing Lain"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#. js-lingui-explicit-id
+msgid "Check my message"
+msgstr "Periksa pesan saya"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:366
 #. js-lingui-explicit-id
@@ -6565,7 +6570,7 @@ msgstr ""
 msgid "I've done this — continue"
 msgstr "Saya telah melakukan ini — lanjutkan"
 
-#: src/features/Chat/SubmitForm.tsx:221
+#: src/features/Chat/SubmitForm.tsx:218
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ide untuk pesan Anda:"
@@ -7659,7 +7664,7 @@ msgstr "Memuat.."
 #: src/features/Advanced/AdvancedPage.tsx:101
 #: src/features/Advanced/AdvancedPage.tsx:116
 #: src/features/Advanced/AdvancedPage.tsx:366
-#: src/features/Chat/SubmitForm.tsx:127
+#: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:207
 #: src/features/Conversation/ConversationReviewModal.tsx:102
@@ -8066,6 +8071,7 @@ msgstr "Lebih"
 msgid "More improvements"
 msgstr "Lebih banyak peningkatan"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:59
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -9333,7 +9339,7 @@ msgstr "Silakan masukkan alamat email yang valid"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Silakan isi detail orang tua dan centang semua kotak di Langkah 1."
 
-#: src/features/Chat/SubmitForm.tsx:483
+#: src/features/Chat/SubmitForm.tsx:439
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Silakan rekam pesan yang lebih panjang (setidaknya beberapa kata)."
@@ -10168,7 +10174,7 @@ msgstr "Penilaian"
 msgid "Raw"
 msgstr "Mentah"
 
-#: src/features/Chat/SubmitForm.tsx:361
+#: src/features/Chat/SubmitForm.tsx:323
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -11067,8 +11073,8 @@ msgstr "Kirimkan saya notifikasi email"
 msgid "Send me sign-in link"
 msgstr "Kirimkan saya tautan masuk"
 
-#: src/features/Chat/SubmitForm.tsx:249
-#: src/features/Chat/SubmitForm.tsx:378
+#: src/features/Chat/SubmitForm.tsx:246
+#: src/features/Chat/SubmitForm.tsx:340
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Kirim Pesan"
@@ -11106,7 +11112,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Kirim {messagesNeeded} pesan untuk membuka akses penuh"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:378
+#: src/features/Chat/SubmitForm.tsx:340
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
@@ -11962,7 +11968,7 @@ msgstr ""
 msgid "Steps:"
 msgstr "Langkah-langkah:"
 
-#: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/SubmitForm.tsx:297
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -12163,6 +12169,11 @@ msgstr "Tingkat keberhasilan:"
 #. js-lingui-explicit-id
 msgid "Success stories"
 msgstr "Kisah sukses"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#. js-lingui-explicit-id
+msgid "Suggest an idea"
+msgstr "Sarankan sebuah ide"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:98
 #. js-lingui-explicit-id
@@ -12959,6 +12970,11 @@ msgstr "Pengujian & Kualitas"
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Teks"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#. js-lingui-explicit-id
+msgid "Text message"
+msgstr "Pesan teks"
 
 #: src/features/News/NewsPlayButton.tsx:136
 #. js-lingui-explicit-id
@@ -14090,6 +14106,7 @@ msgstr "Unggah foto dan AI akan memberitahumu apa yang kamu inginkan."
 msgid "Upload audio"
 msgstr "Unggah audio"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:100
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -14101,6 +14118,7 @@ msgstr "Unggah gambar"
 msgid "Upload language skills directly to your brain"
 msgstr "Unggah keterampilan bahasa langsung ke otak Anda"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:112
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14287,6 +14305,11 @@ msgstr "Obrolan suara dengan orang-orang"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Percakapan suara"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#. js-lingui-explicit-id
+msgid "Voice message"
+msgstr "Pesan suara"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id

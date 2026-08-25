@@ -1034,7 +1034,7 @@ msgstr "Assistent"
 msgid "At least {minWords} words required"
 msgstr "Minst {minWords} ord kreves"
 
-#: src/features/Chat/SubmitForm.tsx:389
+#: src/features/Chat/SubmitForm.tsx:351
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Legg ved stemmeopptaket mitt"
@@ -1666,6 +1666,11 @@ msgstr "Chat ikke funnet, eller du har ikke tilgang til det."
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Chat med en medhundeeier"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#. js-lingui-explicit-id
+msgid "Check my message"
+msgstr "Sjekk meldingen min"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:366
 #. js-lingui-explicit-id
@@ -6469,7 +6474,7 @@ msgstr ""
 msgid "I've done this — continue"
 msgstr "Jeg har gjort dette — fortsett"
 
-#: src/features/Chat/SubmitForm.tsx:221
+#: src/features/Chat/SubmitForm.tsx:218
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Idé for meldingen din:"
@@ -7535,7 +7540,7 @@ msgstr "Laster inn.."
 #: src/features/Advanced/AdvancedPage.tsx:101
 #: src/features/Advanced/AdvancedPage.tsx:116
 #: src/features/Advanced/AdvancedPage.tsx:366
-#: src/features/Chat/SubmitForm.tsx:127
+#: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:207
 #: src/features/Conversation/ConversationReviewModal.tsx:102
@@ -7938,6 +7943,7 @@ msgstr "Mer"
 msgid "More improvements"
 msgstr "Flere forbedringer"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:59
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -9174,7 +9180,7 @@ msgstr "Vennligst skriv inn en gyldig e-postadresse"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Vennligst fyll ut foreldreopplysninger og kryss av i alle bokser i trinn 1."
 
-#: src/features/Chat/SubmitForm.tsx:483
+#: src/features/Chat/SubmitForm.tsx:439
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vennligst ta opp en lengre melding (minst noen få ord)."
@@ -9985,7 +9991,7 @@ msgstr "Vurdering"
 msgid "Raw"
 msgstr "Rå"
 
-#: src/features/Chat/SubmitForm.tsx:361
+#: src/features/Chat/SubmitForm.tsx:323
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10874,8 +10880,8 @@ msgstr "Send meg e-postvarsler"
 msgid "Send me sign-in link"
 msgstr "Send meg påloggingslenke"
 
-#: src/features/Chat/SubmitForm.tsx:249
-#: src/features/Chat/SubmitForm.tsx:378
+#: src/features/Chat/SubmitForm.tsx:246
+#: src/features/Chat/SubmitForm.tsx:340
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send melding"
@@ -10915,7 +10921,7 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Send {messagesNeeded} meldinger for å låse opp full tilgang"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:378
+#: src/features/Chat/SubmitForm.tsx:340
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
@@ -11768,7 +11774,7 @@ msgstr ""
 msgid "Steps:"
 msgstr "Trinn:"
 
-#: src/features/Chat/SubmitForm.tsx:335
+#: src/features/Chat/SubmitForm.tsx:297
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -11969,6 +11975,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Success stories"
 msgstr "Suksesshistorier"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#. js-lingui-explicit-id
+msgid "Suggest an idea"
+msgstr "Foreslå en idé"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:98
 #. js-lingui-explicit-id
@@ -12751,6 +12762,11 @@ msgstr "Testing & Kvalitet"
 #. js-lingui-explicit-id
 msgid "Text"
 msgstr "Tekst"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#. js-lingui-explicit-id
+msgid "Text message"
+msgstr "Tekstmelding"
 
 #: src/features/News/NewsPlayButton.tsx:136
 #. js-lingui-explicit-id
@@ -13863,6 +13879,7 @@ msgstr "Last opp et bilde, og AI vil fortelle deg hva du vil."
 msgid "Upload audio"
 msgstr "Last opp lyd"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:100
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -13874,6 +13891,7 @@ msgstr "Last opp bilde"
 msgid "Upload language skills directly to your brain"
 msgstr "Last opp språkferdigheter direkte til hjernen din"
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:112
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14051,6 +14069,11 @@ msgstr "Voice chat med folk"
 #. js-lingui-explicit-id
 msgid "Voice conversations"
 msgstr "Samtaler med stemme"
+
+#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#. js-lingui-explicit-id
+msgid "Voice message"
+msgstr "Talemelding"
 
 #: src/features/Reader/components/ReaderVoiceOverPageButton.tsx:146
 #. js-lingui-explicit-id
