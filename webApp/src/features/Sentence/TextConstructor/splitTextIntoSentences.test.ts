@@ -1,7 +1,14 @@
 import '@testing-library/jest-dom';
+import fs from 'fs';
+import path from 'path';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 
 describe('splitTextIntoSentences', () => {
+  it('does not use lookbehind so Safari 15.4–16.3 can parse the module', () => {
+    const source = fs.readFileSync(path.join(__dirname, 'splitTextIntoSentences.ts'), 'utf8');
+    expect(source).not.toMatch(/\(\?<=/);
+    expect(source).not.toMatch(/\(\?<!/);
+  });
   it('splits provided example into two full sentences without standalone punctuation token', () => {
     const text =
       'In a quiet corner of a great city, there was a library unlike any other. Inside, there was a magnificent ceiling painted with beautiful images.';

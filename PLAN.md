@@ -3,8 +3,11 @@
 ## Redesign Daily questions/Chat - Foster community
 
 - Give 2 years to top-5 gamers
+
 - PayWall: Limit access only for Paid users, give 2 years to top-5 gamers, Show paywall blocker on daily cards
+
 - Limit firestore access to daily/public chat section - but not DM - important for support
+
 - Remove old messages after 4 days
 - Weekly question: How are you? - Update daily question to repeat it
 - Weekly question: Who are you?

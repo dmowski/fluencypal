@@ -20,6 +20,7 @@ import {
   UserSettings,
 } from '@/features/Settings/userSettings';
 import { initUserSettingsRequest } from '@/app/api/initUserSettings/initUserSettingsRequest';
+import { isFetchNetworkError } from '@/libs/sentry/isFetchNetworkError';
 import { NativeLangCode } from '@/libs/language/type';
 import { useUserSource } from '../Analytics/useUserSource';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
@@ -170,28 +171,35 @@ function useProvideSettings(): SettingsContextType {
   const initUserSettings = async () => {
     if (!userId) return;
 
-    const country = await getCountryByIP();
-    const countryName = country
-      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
-      : null;
+    try {
+      const country = await getCountryByIP();
+      const countryName = country
+        ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
+        : null;
 
-    const token = await auth.getToken();
-    const result = await initUserSettingsRequest(
-      {
-        currency: currency.currency || null,
-        country: country || null,
-        countryName: countryName || null,
-        userSource: userSource.userSource,
-        photoUrl: auth.userInfo?.photoURL || '',
-        displayName: auth.userInfo?.displayName || '',
-      },
-      token,
-    );
-    if (result.status === 'initialized' && auth.userInfo?.email === 'dmowski.alex@gmail.com') {
-      alert('Creating settings for user ' + auth.userInfo.email);
-      Sentry.captureException('Create settings AGAIN (2) for ' + auth.userInfo.email, {
-        extra: { email: auth.userInfo.email },
-      });
+      const token = await auth.getToken();
+      const result = await initUserSettingsRequest(
+        {
+          currency: currency.currency || null,
+          country: country || null,
+          countryName: countryName || null,
+          userSource: userSource.userSource,
+          photoUrl: auth.userInfo?.photoURL || '',
+          displayName: auth.userInfo?.displayName || '',
+        },
+        token,
+      );
+      if (result.status === 'initialized' && auth.userInfo?.email === 'dmowski.alex@gmail.com') {
+        alert('Creating settings for user ' + auth.userInfo.email);
+        Sentry.captureException('Create settings AGAIN (2) for ' + auth.userInfo.email, {
+          extra: { email: auth.userInfo.email },
+        });
+      }
+    } catch (error) {
+      if (isFetchNetworkError(error)) {
+        return;
+      }
+      Sentry.captureException(error);
     }
   };
 

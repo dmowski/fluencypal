@@ -36,7 +36,8 @@ const getUserInfoForAi = ({
 };
 
 const splitTextIntoSentences = (text: string): string[] => {
-  const sentences = text.split(/(?<=[.!?])\s+/);
+  // Avoid lookbehind: Safari 15.4–16.3 throws SyntaxError on those assertions.
+  const sentences = text.replace(/([.!?])\s+/g, '$1\n').split('\n');
   return sentences.map((sentence) => sentence.trim());
 };
 
