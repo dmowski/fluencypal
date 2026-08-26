@@ -58,6 +58,7 @@ type QuizStep =
   | 'paidVsFree'
   | 'writeWelcomeMessageInChat'
   | 'teacherSelection'
+  | 'trialPrice'
   | 'accessPlan'
   | 'magicFlow'
   | 'goalReview';
@@ -70,6 +71,7 @@ const stepsViews: QuizStep[] = [
   'before_pageLanguage',
   'pageLanguage',
   'teacherSelection',
+  'trialPrice',
   'before_recordAbout',
   'recordAbout',
 

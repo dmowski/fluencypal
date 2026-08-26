@@ -39,6 +39,7 @@ import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
 import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
 import { useAccess } from '@/features/Usage/useAccess';
 import { AccessQuizStep } from './AccessQuizStep';
+import { TrialPriceQuizStep } from './TrialPriceQuizStep';
 
 const QuizQuestions = () => {
   const {
@@ -195,6 +196,12 @@ const QuizQuestions = () => {
                 disabled={isStepLoading || !settings.userSettings?.teacherVoice}
                 isStepLoading={isStepLoading}
               />
+            </AuthWall>
+          )}
+
+          {currentStep === 'trialPrice' && (
+            <AuthWall>
+              <TrialPriceQuizStep next={next} isStepLoading={isStepLoading} />
             </AuthWall>
           )}
 
