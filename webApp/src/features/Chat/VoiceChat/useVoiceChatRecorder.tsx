@@ -6,15 +6,10 @@ import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 import {
   beginPreferredAudioInputCapture,
   isAllowedMicrophone,
+  readPreferredMicrophoneId,
   requestMicrophoneAccess,
+  writePreferredMicrophoneId,
 } from '@/libs/mic';
-
-const PREFERRED_MICROPHONE_KEY = 'voiceChatPreferredMicrophoneId';
-
-const readPreferredMicrophoneId = (): string | null => {
-  if (typeof window === 'undefined') return null;
-  return window.localStorage.getItem(PREFERRED_MICROPHONE_KEY);
-};
 
 export const useVoiceChatRecorder = () => {
   const { i18n } = useLingui();
@@ -33,32 +28,28 @@ export const useVoiceChatRecorder = () => {
 
   const setMicrophoneDeviceId = (deviceId: string | null) => {
     setMicrophoneDeviceIdState(deviceId);
-    if (typeof window === 'undefined') return;
-    if (deviceId) {
-      window.localStorage.setItem(PREFERRED_MICROPHONE_KEY, deviceId);
-    } else {
-      window.localStorage.removeItem(PREFERRED_MICROPHONE_KEY);
-    }
+    writePreferredMicrophoneId(deviceId);
   };
 
   const startRecording = async () => {
-    const isAllowed = await isAllowedMicrophone();
-    if (!isAllowed) {
-      const requestResult = await requestMicrophoneAccess();
-      if (!requestResult) {
-        alert(
-          i18n._(
-            'Microphone access is denied. Please allow microphone access in your browser settings.',
-          ),
-        );
-        return;
-      }
-    }
-    isCancel.current = false;
-    setRecordedDurationSec(0);
-    setRecordingSeconds(0);
-    const restoreGetUserMedia = beginPreferredAudioInputCapture(microphoneDeviceId);
+    const deviceId = microphoneDeviceId || readPreferredMicrophoneId();
+    const restoreGetUserMedia = beginPreferredAudioInputCapture(deviceId);
     try {
+      const isAllowed = await isAllowedMicrophone();
+      if (!isAllowed) {
+        const requestResult = await requestMicrophoneAccess(deviceId);
+        if (!requestResult) {
+          alert(
+            i18n._(
+              'Microphone access is denied. Please allow microphone access in your browser settings.',
+            ),
+          );
+          return;
+        }
+      }
+      isCancel.current = false;
+      setRecordedDurationSec(0);
+      setRecordingSeconds(0);
       recorderControls.startRecording();
     } finally {
       restoreGetUserMedia();

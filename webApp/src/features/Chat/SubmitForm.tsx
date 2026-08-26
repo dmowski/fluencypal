@@ -257,6 +257,8 @@ Provide only the message user can send, without any additional explanation or co
               isGeneratingIdea={isGeneratingIdea}
               canGenerateIdea={!!previousBotMessage}
               canCheckMessage={textMessage.trim() !== ''}
+              microphoneDeviceId={recorder.microphoneDeviceId}
+              onSelectMicrophone={recorder.setMicrophoneDeviceId}
             />
           </Stack>
         </Stack>
@@ -309,21 +311,6 @@ Provide only the message user can send, without any additional explanation or co
                   }}
                 >
                   <Button
-                    variant="outlined"
-                    color="info"
-                    size="large"
-                    disabled={
-                      needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
-                    }
-                    onClick={async () => {
-                      recorder.startRecording();
-                    }}
-                    endIcon={<Mic />}
-                  >
-                    {i18n._('Re-record')}
-                  </Button>
-
-                  <Button
                     variant="contained"
                     color="info"
                     size="large"
@@ -338,6 +325,20 @@ Provide only the message user can send, without any additional explanation or co
                     endIcon={<SendIcon />}
                   >
                     {isSending ? i18n._('Sending...') : i18n._('Send Message')}
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="info"
+                    size="large"
+                    disabled={
+                      needMoreText || recorder.isTranscribing || recorder.isRecording || isLoading
+                    }
+                    onClick={async () => {
+                      recorder.startRecording();
+                    }}
+                    endIcon={<Mic />}
+                  >
+                    {i18n._('Re-record')}
                   </Button>
                 </Stack>
                 <Stack>
@@ -390,6 +391,8 @@ Provide only the message user can send, without any additional explanation or co
                       isModeSwitchDisabled={
                         recorder.isRecording || recorder.isTranscribing || isLoading
                       }
+                      microphoneDeviceId={recorder.microphoneDeviceId}
+                      onSelectMicrophone={recorder.setMicrophoneDeviceId}
                     />
                   )}
                 </Stack>
@@ -419,6 +422,8 @@ Provide only the message user can send, without any additional explanation or co
                     onAddImage={addImage}
                     onAddVideo={addVideo}
                     showModeSwitch={false}
+                    microphoneDeviceId={recorder.microphoneDeviceId}
+                    onSelectMicrophone={recorder.setMicrophoneDeviceId}
                   />
                 </Stack>
               )}

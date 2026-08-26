@@ -3,7 +3,9 @@
 ## Landing
 
 Update "Practice Speaking with AI",
-place canvas element that shows real UI of app.
+Place canvas element that shows real UI of app.
+We can do emulation of it.
+With emulation of conversation.
 
 ## Redesign Daily questions/Chat - Foster community
 

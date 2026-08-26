@@ -2,7 +2,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { sendTranscriptRequest } from '@/app/api/transcript/sendTranscriptRequest';
 import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
-import { isAllowedMicrophone, requestMicrophoneAccess } from '@/libs/mic';
+import {
+  beginPreferredAudioInputCapture,
+  isAllowedMicrophone,
+  readPreferredMicrophoneId,
+  requestMicrophoneAccess,
+  writePreferredMicrophoneId,
+} from '@/libs/mic';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
@@ -17,6 +23,11 @@ export const useAudioRecorder = () => {
   const [transcription, setTranscription] = useState<string | null>(null);
   const [transcriptionBlob, setTranscriptionBlob] = useState<Blob | null>(null);
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
+  const [microphoneDeviceId, setMicrophoneDeviceIdState] = useState<string | null>(
+    readPreferredMicrophoneId,
+  );
+  const microphoneDeviceIdRef = useRef(microphoneDeviceId);
+  microphoneDeviceIdRef.current = microphoneDeviceId;
   const recorderControls = useVoiceVisualizer();
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const recordingMilliSeconds = recorderControls.recordingTime;
@@ -83,32 +94,43 @@ export const useAudioRecorder = () => {
     setIsTranscribing(false);
   };
   const startRecording = async () => {
-    const isAliasSession = isAliasGameSession();
+    const deviceId = microphoneDeviceIdRef.current || readPreferredMicrophoneId();
+    const restoreGetUserMedia = beginPreferredAudioInputCapture(deviceId);
+    try {
+      const isAliasSession = isAliasGameSession();
 
-    if (isAliasSession) {
-      trackAliasEvent('alias_microphone_permission_requested');
-      const stream = await requestMicrophoneWithConsent();
-      trackAliasEvent(
-        stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
-      );
-      if (!stream) {
-        return;
-      }
-    } else {
-      const isAllowed = await isAllowedMicrophone();
-      if (!isAllowed) {
-        const requestResult = await requestMicrophoneAccess();
-        if (!requestResult) {
-          alert(
-            'Microphone access is denied. Please allow microphone access in your browser settings.',
-          );
+      if (isAliasSession) {
+        trackAliasEvent('alias_microphone_permission_requested');
+        const stream = await requestMicrophoneWithConsent();
+        trackAliasEvent(
+          stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
+        );
+        if (!stream) {
           return;
         }
+      } else {
+        const isAllowed = await isAllowedMicrophone();
+        if (!isAllowed) {
+          const requestResult = await requestMicrophoneAccess(deviceId);
+          if (!requestResult) {
+            alert(
+              'Microphone access is denied. Please allow microphone access in your browser settings.',
+            );
+            return;
+          }
+        }
       }
-    }
 
-    recorderControls.startRecording();
-    isCancel.current = false;
+      recorderControls.startRecording();
+      isCancel.current = false;
+    } finally {
+      restoreGetUserMedia();
+    }
+  };
+
+  const setMicrophoneDeviceId = (deviceId: string | null) => {
+    setMicrophoneDeviceIdState(deviceId);
+    writePreferredMicrophoneId(deviceId);
   };
   const stopRecording = async () => {
     const seconds = Math.floor(recorderControls.recordingTime / 1000);
@@ -146,6 +168,8 @@ export const useAudioRecorder = () => {
     error: recorderControls.error?.message || transcriptionError || '',
     recordingMilliSeconds: recordingSeconds * 1000,
     removeTranscript,
+    microphoneDeviceId,
+    setMicrophoneDeviceId,
     visualizerComponent: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer
         controls={recorderControls}

@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { Check, Mic, Send, Settings, Square } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { isMicrophoneGranted, listAudioInputDevices, type AudioInputDevice } from '@/libs/mic';
+import { loadAudioInputDevices, type AudioInputDevice } from '@/libs/mic';
 import { useVoiceChatRecorder } from '../useVoiceChatRecorder';
 import { voiceChatUi } from '../voiceChatUi';
 import { VoiceChatPlayer } from './VoiceChatPlayer';
@@ -51,16 +51,7 @@ export const VoiceChatRecorderPanel = ({
     setSettingsAnchor(anchor);
     setIsLoadingMicrophones(true);
     try {
-      const granted = await isMicrophoneGranted();
-      if (!granted && typeof navigator !== 'undefined' && navigator.mediaDevices?.getUserMedia) {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          stream.getTracks().forEach((track) => track.stop());
-        } catch {
-          // Permission denied — menu still offers system default.
-        }
-      }
-      setMicrophones(await listAudioInputDevices());
+      setMicrophones(await loadAudioInputDevices());
     } finally {
       setIsLoadingMicrophones(false);
     }

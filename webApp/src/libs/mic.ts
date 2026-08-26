@@ -25,30 +25,52 @@ export const isMicrophoneDenied = async (): Promise<boolean> => {
 };
 
 export const isAllowedMicrophone = async () => {
-  // Detect if microphone is allowed
-  return new Promise<boolean>((resolve) => {
-    navigator.permissions.query({ name: 'microphone' as PermissionName }).then(function (result) {
-      //console.log('Microphone permission state:', result.state);
-      if (result.state === 'granted') {
-        resolve(true);
-      } else if (result.state === 'prompt') {
-        resolve(true);
-      } else if (result.state === 'denied') {
-        return resolve(false);
-      }
-      return resolve(false);
-    });
-    return resolve(false);
-  });
+  if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
+    return true;
+  }
+
+  try {
+    const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+    return result.state !== 'denied';
+  } catch {
+    return true;
+  }
 };
 
-export const requestMicrophoneAccess = async () => {
+const audioConstraintsForDevice = (
+  deviceId?: string | null,
+  baseAudio?: boolean | MediaTrackConstraints,
+): boolean | MediaTrackConstraints => {
+  if (baseAudio === false) {
+    return false;
+  }
+
+  const base = typeof baseAudio === 'object' && baseAudio !== null ? { ...baseAudio } : {};
+  if (!deviceId) {
+    return Object.keys(base).length > 0 ? base : true;
+  }
+
+  return { ...base, deviceId: { exact: deviceId } };
+};
+
+export const requestMicrophoneAccess = async (deviceId?: string | null) => {
   try {
-    //console.log('Requesting microphone access');
-    await navigator.mediaDevices.getUserMedia({ audio: true });
-    //console.log('Microphone access granted');
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: audioConstraintsForDevice(deviceId),
+    });
+    stream.getTracks().forEach((track) => track.stop());
     return true;
   } catch (err) {
+    if (deviceId) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach((track) => track.stop());
+        return true;
+      } catch (fallbackErr) {
+        console.error('Microphone access denied', fallbackErr);
+        return false;
+      }
+    }
     console.error('Microphone access denied', err);
     return false;
   }
@@ -57,6 +79,28 @@ export const requestMicrophoneAccess = async () => {
 export type AudioInputDevice = {
   deviceId: string;
   label: string;
+};
+
+const PREFERRED_MICROPHONE_KEY = 'preferredMicrophoneId';
+const LEGACY_PREFERRED_MICROPHONE_KEY = 'voiceChatPreferredMicrophoneId';
+
+export const readPreferredMicrophoneId = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  return (
+    window.localStorage.getItem(PREFERRED_MICROPHONE_KEY) ||
+    window.localStorage.getItem(LEGACY_PREFERRED_MICROPHONE_KEY)
+  );
+};
+
+export const writePreferredMicrophoneId = (deviceId: string | null) => {
+  if (typeof window === 'undefined') return;
+  if (deviceId) {
+    window.localStorage.setItem(PREFERRED_MICROPHONE_KEY, deviceId);
+    window.localStorage.removeItem(LEGACY_PREFERRED_MICROPHONE_KEY);
+  } else {
+    window.localStorage.removeItem(PREFERRED_MICROPHONE_KEY);
+    window.localStorage.removeItem(LEGACY_PREFERRED_MICROPHONE_KEY);
+  }
 };
 
 /** List available microphones. Labels are empty until mic permission has been granted. */
@@ -74,17 +118,32 @@ export const listAudioInputDevices = async (): Promise<AudioInputDevice[]> => {
     }));
 };
 
+/** Request mic access if needed, then list devices with labels. */
+export const loadAudioInputDevices = async (): Promise<AudioInputDevice[]> => {
+  if (typeof navigator === 'undefined' || !navigator.mediaDevices) {
+    return [];
+  }
+
+  const granted = await isMicrophoneGranted();
+  if (!granted && navigator.mediaDevices.getUserMedia) {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((track) => track.stop());
+    } catch {
+      // Permission denied — labels stay empty until access is granted.
+    }
+  }
+
+  return listAudioInputDevices();
+};
+
 /**
- * Temporarily routes the next `getUserMedia` audio capture to `deviceId`.
- * Call the returned restore function immediately after kicking off recording
- * (libraries that call `getUserMedia` synchronously inside `startRecording`).
+ * Routes `getUserMedia` audio capture to `deviceId` until the returned restore runs.
+ * Keep the patch installed until recording's `getUserMedia` has actually been invoked
+ * (including any permission request that happens first).
  */
 export const beginPreferredAudioInputCapture = (deviceId: string | null | undefined) => {
-  if (
-    !deviceId ||
-    typeof navigator === 'undefined' ||
-    !navigator.mediaDevices?.getUserMedia
-  ) {
+  if (!deviceId || typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
     return () => {};
   }
 
@@ -101,12 +160,14 @@ export const beginPreferredAudioInputCapture = (deviceId: string | null | undefi
       return originalGetUserMedia(base);
     }
 
-    const audioConstraints =
-      typeof base.audio === 'object' && base.audio !== null
-        ? { ...base.audio, deviceId: { ideal: deviceId } }
-        : { deviceId: { ideal: deviceId } };
-
-    return originalGetUserMedia({ ...base, audio: audioConstraints });
+    const preferred = { ...base, audio: audioConstraintsForDevice(deviceId, base.audio) };
+    return originalGetUserMedia(preferred).catch((error: unknown) => {
+      const name = error instanceof Error ? error.name : '';
+      if (name === 'OverconstrainedError' || name === 'NotFoundError') {
+        return originalGetUserMedia(base.audio === false ? base : { ...base, audio: true });
+      }
+      throw error;
+    });
   }) as typeof mediaDevices.getUserMedia;
 
   return () => {
