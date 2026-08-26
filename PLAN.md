@@ -1,6 +1,14 @@
 # Live document with ideas
 
+## Landing
+
+Update "Practice Speaking with AI",
+place canvas element that shows real UI of app.
+
 ## Participate in chats
+
+- Add new comments on daily chats
+- Add message on public chat
 
 ## Redesign Daily questions/Chat - Foster community
 

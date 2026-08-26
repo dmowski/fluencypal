@@ -229,18 +229,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
             ]}
           />
 
-          <ReviewsSection
-            title={i18n._(`What learners are saying`)}
-            subTitle={i18n._(
-              `Real reviews from people using FluencyPal to practice speaking and prepare for language exams.`,
-            )}
-            reviews={landingReviews}
-            startPracticeButtonTitle={i18n._(`Start Practice`)}
-            startPracticeButtonHref={mainRedirectUrl}
-            checkReviewsButtonTitle={i18n._(`Check other reviews`)}
-            checkReviewsButtonHref="https://www.trustpilot.com/review/www.fluencypal.com"
-          />
-
           <Stack
             sx={{
               width: '100%',
@@ -459,6 +447,19 @@ export default function LandingPage({ lang }: LandingPageProps) {
             importantRolesTitleAfterFooter={i18n._(`Master English Fluency`)}
             lang={lang}
           />
+
+          <ReviewsSection
+            title={i18n._(`What learners are saying`)}
+            subTitle={i18n._(
+              `Real reviews from people using FluencyPal to practice speaking and prepare for language exams.`,
+            )}
+            reviews={landingReviews}
+            startPracticeButtonTitle={i18n._(`Start Practice`)}
+            startPracticeButtonHref={mainRedirectUrl}
+            checkReviewsButtonTitle={i18n._(`Check other reviews`)}
+            checkReviewsButtonHref="https://www.trustpilot.com/review/www.fluencypal.com"
+          />
+
           <GeneralFaqBlock
             title={i18n._(`FAQ`)}
             items={[
