@@ -23,7 +23,6 @@ import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
 import { LinkToStatsAdmin } from './LinkToStats';
-import { VoiceChatDashboardCard } from '../Chat/VoiceChat/VoiceChatDashboardCard';
 import { NewPrivateMessageCard } from './NewPrivateMessageCard';
 
 export function Dashboard({ lang }: { lang: SupportedLanguage }) {
@@ -53,7 +52,6 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
 
             <GameDashboardCard />
             <ExamsDashboardCard />
-            <VoiceChatDashboardCard />
 
             <LinkToStatsAdmin />
           </MainDashboardContainer>

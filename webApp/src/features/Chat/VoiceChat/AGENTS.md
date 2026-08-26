@@ -77,7 +77,7 @@ Entitlement hooks: `addPaymentLog.ts` → `validatePaidForUser`; game points upd
 
 ## UI entry
 
-- **Dashboard:** `VoiceChatDashboardCard` on `Dashboard.tsx` (signed-in users; APIs enforce entitlement + approval).
+- **Dashboard:** Hidden. `VoiceChatDashboardCard` still exists (screenshots / re-enable) but is not mounted on `Dashboard.tsx`.
 - **Modal:** `VoiceChatModal` via `GlobalModals` / `?voiceChat=true`.
 - **Checklist copy:** Become a member → Share intro (~30 sec) → Wait for approval.
 - **First visit in modal:** Friendly intro highlight when messages exist (not on empty shell).
@@ -110,9 +110,9 @@ Specs: `webApp/e2e/voice-chat/*.spec.ts`
 
 | Spec | Covers |
 | --- | --- |
-| `shell.spec.ts` | Dashboard card for signed-in users, modal shell |
+| `shell.spec.ts` | Dashboard card hidden, modal shell via URL |
 | `access.spec.ts` | Entitlement / approval API gates, reject cooldown |
-| `onboarding.spec.ts` | Request access, approver UI, intro posted on approve |
+| `onboarding.spec.ts` | Request access, API approve, intro posted on approve |
 | `messages.spec.ts` | Unread, listen UI, cascade delete |
 | `cleanup.spec.ts` | TTL cron |
 

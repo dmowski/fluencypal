@@ -1,10 +1,19 @@
 # Live document with ideas
 
-## Hide Voice chat - webApp/src/features/Chat/VoiceChat/AGENTS.md
-
 ## Show trial notification/modal on page - one time with "ok"
 
 Only for conversation with AI
+
+webApp/src/features/Goal/Quiz/QuizPage2.tsx
+webApp/src/features/Goal/Quiz/useQuiz.tsx
+webApp/src/features/Price/price.ts
+
+Add dynamic step with info about trial and prices
+
+That step should include:
+Price per month,
+if TRIAL_DAYS is more than zero, show badge that user has one day trial access with full access.
+And info that
 
 ## Redesign Daily questions/Chat - Foster community
 

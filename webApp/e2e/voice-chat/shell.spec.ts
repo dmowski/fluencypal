@@ -7,13 +7,11 @@ test.describe('Voice Chat shell', () => {
     await resetEmulatorState();
   });
 
-  test('shows dashboard card for signed-in users and opens modal shell', async ({ page }) => {
+  test('hides dashboard card and opens modal shell from URL', async ({ page }) => {
     const user = await createEmulatorTestUser();
     await signInUserOnDashboard(page, user);
 
-    await expect(page.getByTestId('voice-chat-dashboard-card')).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Rules of chat' })).toBeVisible();
-    await expect(page.getByText('Become a member')).toBeVisible();
+    await expect(page.getByTestId('voice-chat-dashboard-card')).toHaveCount(0);
 
     await page.goto('/?voiceChat=true');
     await expect(page.getByTestId('voice-chat-modal')).toBeVisible();

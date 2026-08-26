@@ -3,10 +3,9 @@ import { resetEmulatorState } from '../libs/books/auth';
 import {
   createFounderUser,
   createPaidTestUser,
-  signInFounderOnDashboard,
 } from '../libs/voice-chat/auth';
 import {
-  approvePaidUser,
+  decideVoiceChatMembership,
   fetchVoiceChatMessages,
   fetchVoiceChatStatus,
   requestVoiceChatAccess,
@@ -17,18 +16,16 @@ test.describe('Voice Chat onboarding', () => {
     await resetEmulatorState();
   });
 
-  test('founder approves pending request from dashboard', async ({ page }) => {
+  test('founder approves pending request', async () => {
     const founder = await createFounderUser();
     const applicant = await createPaidTestUser();
     await requestVoiceChatAccess(applicant);
 
-    await signInFounderOnDashboard(page);
-    await expect(page.getByTestId('voice-chat-pending-list')).toBeVisible();
-    const pendingCard = page.getByTestId(`voice-chat-pending-${applicant.uid}`);
-    await expect(pendingCard).toBeVisible();
-
-    await pendingCard.getByRole('button', { name: 'Approve' }).click();
-    await expect(pendingCard).toBeHidden();
+    await decideVoiceChatMembership({
+      approverToken: founder.idToken,
+      targetUserId: applicant.uid,
+      decision: 'approved',
+    });
 
     const messages = await fetchVoiceChatMessages(applicant.idToken);
     expect(messages.messages.some((m) => m.isIntro && m.senderId === applicant.uid)).toBe(true);
