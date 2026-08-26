@@ -1052,7 +1052,7 @@ msgstr "Pembantu"
 msgid "At least {minWords} words required"
 msgstr "Sekurang-kurangnya {minWords} perkataan diperlukan"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Lampirkan rakaman suara saya"
@@ -1573,7 +1573,7 @@ msgstr "Bolehkah saya menggunakannya pada telefon pintar?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1693,7 +1693,7 @@ msgstr "Chat tidak dijumpai atau anda tidak mempunyai akses kepadanya."
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Bersihkan dengan Pemilik Anjing Lain"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "Periksa mesej saya"
@@ -3796,7 +3796,7 @@ msgstr ""
 "Pelbagai mod membantu dengan cara yang berbeza. Anda akan menemui apa yang "
 "terbaik untuk anda dari masa ke masa."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Tolak"
@@ -7718,9 +7718,10 @@ msgstr "Memuatkan.."
 msgid "Loading..."
 msgstr "Memuatkan..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Memuat…"
@@ -7947,7 +7948,9 @@ msgstr "Mesej akan dipadam selepas 4 hari."
 msgid "Micro-frontends"
 msgstr "Mikro-frontend"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -7965,7 +7968,7 @@ msgstr ""
 "Akses mikrofon dinafikan. Sila aktifkannya dalam tetapan penyemak imbas "
 "anda."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8100,7 +8103,7 @@ msgstr "Lebih"
 msgid "More improvements"
 msgstr "Lebih banyak penambahbaikan"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -8409,7 +8412,8 @@ msgstr "Tiada mesej lagi"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Tiada mesej lagi. Jadilah yang pertama berkongsi pendapat anda!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Tiada mikrofon ditemui. Benarkan akses mikrofon dan cuba lagi."
@@ -9373,12 +9377,12 @@ msgstr "Sila masukkan alamat emel yang sah"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Sila isi butiran ibu bapa dan tandakan semua kotak dalam Langkah 1."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Sila rakam mesej yang lebih panjang (sekurang-kurangnya beberapa perkataan)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Sila rakam sekurang-kurangnya {minSeconds} saat."
@@ -10207,7 +10211,7 @@ msgstr "Penilaian"
 msgid "Raw"
 msgstr "Mentah"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10539,12 +10543,12 @@ msgstr "Rakam pengenalan anda"
 msgid "Record your reply"
 msgstr "Rakam jawapan anda"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Tetapan rakaman"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Merakam… {seconds}s"
@@ -11108,7 +11112,7 @@ msgid "Send me sign-in link"
 msgstr "Hantar saya pautan log masuk"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Hantar Mesej"
@@ -11146,14 +11150,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Hantar {messagesNeeded} mesej untuk membuka kunci akses penuh"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Menghantar..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Menghantar…"
@@ -11771,8 +11775,8 @@ msgstr "Mula Berlatih"
 msgid "Start Recording"
 msgstr "Mula Merakam"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Mula rakaman"
@@ -12011,8 +12015,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "Langkah-langkah:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -12212,7 +12216,7 @@ msgstr "Kadar kejayaan:"
 msgid "Success stories"
 msgstr "Kisah kejayaan"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "Cadangkan satu idea"
@@ -12259,7 +12263,8 @@ msgstr ""
 "\n"
 "Menyegerakkan perpustakaan anda…\n"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Lalai sistem"
@@ -13013,7 +13018,7 @@ msgstr "Pengujian & Kualiti"
 msgid "Text"
 msgstr "Teks"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "Mesej teks"
@@ -14145,7 +14150,7 @@ msgstr ""
 "\n"
 "Muat naik audio\n"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -14157,7 +14162,7 @@ msgstr "Muat naik imej"
 msgid "Upload language skills directly to your brain"
 msgstr "Muat naik kemahiran bahasa terus ke otak anda"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14344,7 +14349,7 @@ msgstr "Berbual suara dengan orang"
 msgid "Voice conversations"
 msgstr "Perbualan suara"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "Mesej suara"

@@ -997,7 +997,7 @@ msgstr "助手"
 msgid "At least {minWords} words required"
 msgstr "至少需要 {minWords} 个单词"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "附加我的语音录音"
@@ -1495,7 +1495,7 @@ msgstr "我可以在智能手机上使用吗？"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1611,7 +1611,7 @@ msgstr "未找到聊天记录或您无权访问。"
 msgid "Chat with a Fellow Dog Owner"
 msgstr "与其他狗主人聊天"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "检查我的消息"
@@ -3617,7 +3617,7 @@ msgid ""
 "for you over time."
 msgstr "不同的模式以不同的方式提供帮助。随着时间的推移，你会发现最适合自己的方法。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "丢弃"
@@ -7190,9 +7190,10 @@ msgstr "加载中.."
 msgid "Loading..."
 msgstr "加载中..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "加载中…"
@@ -7414,7 +7415,9 @@ msgstr "消息将在4天后删除。"
 msgid "Micro-frontends"
 msgstr "微前端"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "麦克风"
@@ -7430,7 +7433,7 @@ msgstr "麦克风访问"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "麦克风访问被拒绝。请在您的浏览器设置中启用它。"
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7553,7 +7556,7 @@ msgstr "更多"
 msgid "More improvements"
 msgstr "更多改进"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -7855,7 +7858,8 @@ msgstr "尚无消息"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "暂无消息。快来分享你的想法吧！"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "未发现麦克风。请允许访问麦克风并重试。"
@@ -8746,12 +8750,12 @@ msgstr "请输入有效的电子邮件地址"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "请填写家长信息，并勾选第1步中的所有选项。"
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "请录制一条较长的信息（至少几个字）。"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "请至少录制 {minSeconds} 秒。"
@@ -9518,7 +9522,7 @@ msgstr "评分"
 msgid "Raw"
 msgstr "生动"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9833,12 +9837,12 @@ msgstr "录制你的介绍"
 msgid "Record your reply"
 msgstr "记录您的回复"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "录音设置"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "录音中… {seconds}秒"
@@ -10393,7 +10397,7 @@ msgid "Send me sign-in link"
 msgstr "发送登录链接"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "发送消息"
@@ -10431,14 +10435,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "发送 {messagesNeeded} 条消息以解锁完整访问权限"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "正在发送..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "发送中…"
@@ -11030,8 +11034,8 @@ msgstr "开始练习"
 msgid "Start Recording"
 msgstr "开始录音"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "开始录音"
@@ -11246,8 +11250,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "步骤:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "停止"
@@ -11428,7 +11432,7 @@ msgstr "成功率："
 msgid "Success stories"
 msgstr "成功案例"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "提出一个想法"
@@ -11473,7 +11477,8 @@ msgstr "切换到语音记录"
 msgid "Syncing your library…"
 msgstr "正在同步您的资料库…"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "系统默认"
@@ -12174,7 +12179,7 @@ msgstr "测试与质量"
 msgid "Text"
 msgstr "文字"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "文本消息"
@@ -13215,7 +13220,7 @@ msgstr "上传照片，AI将告诉你你想知道的内容。"
 msgid "Upload audio"
 msgstr "上传音频"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -13227,7 +13232,7 @@ msgstr "上传图片"
 msgid "Upload language skills directly to your brain"
 msgstr "将语言技能直接上传到你的大脑"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -13400,7 +13405,7 @@ msgstr "与人语音聊天"
 msgid "Voice conversations"
 msgstr "语音对话"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "语音消息"

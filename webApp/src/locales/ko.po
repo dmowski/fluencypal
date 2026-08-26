@@ -1001,7 +1001,7 @@ msgstr "어시스턴트"
 msgid "At least {minWords} words required"
 msgstr "최소 {minWords} 단어가 필요합니다"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "음성 녹음을 첨부하십시오."
@@ -1503,7 +1503,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1621,7 +1621,7 @@ msgstr "채팅을 찾을 수 없거나 접근 권한이 없습니다."
 msgid "Chat with a Fellow Dog Owner"
 msgstr "갓 사람과 채팅하기"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "내 메시지 확인하기"
@@ -3661,7 +3661,7 @@ msgid ""
 "for you over time."
 msgstr "다양한 모드는 다양한 방식으로 도움이 됩니다. 시간이 지나면서 당신에게 가장 잘 맞는 것을 발견하게 될 것입니다."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "폐기"
@@ -7278,9 +7278,10 @@ msgstr "로딩 중.."
 msgid "Loading..."
 msgstr "로딩 중..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "로딩 중…"
@@ -7503,7 +7504,9 @@ msgstr "메시지는 4일 후에 삭제됩니다."
 msgid "Micro-frontends"
 msgstr "마이크로 프론트엔드"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "마이크로폰"
@@ -7519,7 +7522,7 @@ msgstr "마이크 접근 권한"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 이를 활성화해 주세요."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7644,7 +7647,7 @@ msgstr "더 보기"
 msgid "More improvements"
 msgstr "더 많은 개선사항"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -7945,7 +7948,8 @@ msgstr "메시지가 아직 없습니다"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "마이크가 발견되지 않았습니다. 마이크 접근을 허용하고 다시 시도하세요."
@@ -8849,12 +8853,12 @@ msgstr "유효한 이메일 주소를 입력하세요"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택하세요."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "좀 더 긴 메시지를 녹음해 주세요(적어도 몇 단어 이상)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "{minSeconds}초 이상 녹음해 주세요."
@@ -9624,7 +9628,7 @@ msgstr "평가"
 msgid "Raw"
 msgstr "생으로"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -9941,12 +9945,12 @@ msgstr "인트로를 녹음하세요"
 msgid "Record your reply"
 msgstr "귀하의 응답을 녹음하십시오"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "녹음 설정"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "녹화 중... {seconds}초"
@@ -10503,7 +10507,7 @@ msgid "Send me sign-in link"
 msgstr "로그인 링크 보내기"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "메시지 보내기"
@@ -10541,14 +10545,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보내세요"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "보내는 중..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "보내는 중…"
@@ -11142,8 +11146,8 @@ msgstr "연습 시작하기"
 msgid "Start Recording"
 msgstr "녹음 시작"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "녹음을 시작하세요"
@@ -11362,8 +11366,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "단계:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -11546,7 +11550,7 @@ msgstr "성공률:"
 msgid "Success stories"
 msgstr "성공 사례"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "아이디어를 제시하세요"
@@ -11591,7 +11595,8 @@ msgstr "음성 녹음으로 전환"
 msgid "Syncing your library…"
 msgstr "당신의 라이브러리를 동기화 중…"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "시스템 기본값"
@@ -12297,7 +12302,7 @@ msgstr "테스트 및 품질"
 msgid "Text"
 msgstr "텍스트"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "텍스트 메시지"
@@ -13354,7 +13359,7 @@ msgstr "사진을 업로드하면 AI가 원하는 것을 알려줍니다."
 msgid "Upload audio"
 msgstr "오디오 업로드"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -13366,7 +13371,7 @@ msgstr "이미지 업로드"
 msgid "Upload language skills directly to your brain"
 msgstr "당신의 두뇌에 직접 언어 능력을 업로드하세요"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -13539,7 +13544,7 @@ msgstr "사람들과 음성 채팅"
 msgid "Voice conversations"
 msgstr "음성 대화"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "음성 메시지"

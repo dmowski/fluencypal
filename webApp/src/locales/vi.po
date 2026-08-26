@@ -1046,7 +1046,7 @@ msgstr "Trợ lý"
 msgid "At least {minWords} words required"
 msgstr "Ít nhất {minWords} từ được yêu cầu"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Đính kèm bản ghi âm giọng nói của tôi"
@@ -1559,7 +1559,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1677,7 +1677,7 @@ msgstr "Cuộc trò chuyện không được tìm thấy hoặc bạn không có
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Chat với một Chủ Sở Hữu Chó Khác"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "Kiểm tra tin nhắn của tôi"
@@ -3771,7 +3771,7 @@ msgstr ""
 "Các chế độ khác nhau giúp theo những cách khác nhau. Bạn sẽ khám phá những "
 "gì hoạt động tốt nhất cho bạn theo thời gian."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Loại bỏ"
@@ -7632,9 +7632,10 @@ msgstr "Đang tải.."
 msgid "Loading..."
 msgstr "Đang tải..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Đang tải…"
@@ -7862,7 +7863,9 @@ msgstr "Các tin nhắn sẽ bị xóa sau 4 ngày."
 msgid "Micro-frontends"
 msgstr "Micro-frontends"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Micro\t"
@@ -7880,7 +7883,7 @@ msgstr ""
 "Quyền truy cập micro đã bị từ chối. Vui lòng bật nó trong cài đặt trình "
 "duyệt của bạn."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8011,7 +8014,7 @@ msgstr "Thêm nữa"
 msgid "More improvements"
 msgstr "Nhiều cải tiến hơn nữa"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -8316,7 +8319,8 @@ msgstr "Chưa có tin nhắn nào"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Chưa có tin nhắn nào. Hãy là người đầu tiên chia sẻ suy nghĩ của bạn!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Không tìm thấy micro. Cho phép truy cập micro và thử lại."
@@ -9269,12 +9273,12 @@ msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Vui lòng điền thông tin bố mẹ và đánh dấu vào tất cả các ô trong Bước 1."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Vui lòng ghi lại một thông điệp dài hơn (ít nhất vài từ)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Vui lòng ghi lại ít nhất {minSeconds} giây."
@@ -10100,7 +10104,7 @@ msgstr "Đánh giá"
 msgid "Raw"
 msgstr "Thô"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10434,12 +10438,12 @@ msgstr "Ghi âm phần giới thiệu của bạn"
 msgid "Record your reply"
 msgstr "Ghi âm câu trả lời của bạn"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Cài đặt ghi âm"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Đang ghi âm… {seconds}s"
@@ -11011,7 +11015,7 @@ msgid "Send me sign-in link"
 msgstr "Gửi cho tôi liên kết đăng nhập"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Gửi Tin Nhắn"
@@ -11049,14 +11053,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Gửi {messagesNeeded} tin nhắn để mở khóa truy cập đầy đủ"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Đang gửi..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Đang gửi…"
@@ -11667,8 +11671,8 @@ msgstr "Bắt đầu Luyện tập"
 msgid "Start Recording"
 msgstr "Bắt đầu ghi âm"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Bắt đầu ghi âm"
@@ -11907,8 +11911,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "Các bước:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dừng"
@@ -12107,7 +12111,7 @@ msgstr "Tỷ lệ thành công:"
 msgid "Success stories"
 msgstr "Câu chuyện thành công"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "Đề nghị một ý tưởng"
@@ -12152,7 +12156,8 @@ msgstr "Chuyển sang ghi âm giọng nói"
 msgid "Syncing your library…"
 msgstr "Đang đồng bộ thư viện của bạn…"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Mặc định hệ thống"
@@ -12899,7 +12904,7 @@ msgstr "Kiểm tra & Chất lượng"
 msgid "Text"
 msgstr "Văn bản"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "Tin nhắn văn bản"
@@ -14021,7 +14026,7 @@ msgstr "Tải lên một bức ảnh và AI sẽ cho bạn biết điều bạn 
 msgid "Upload audio"
 msgstr "Tải lên âm thanh"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -14033,7 +14038,7 @@ msgstr "Tải lên hình ảnh"
 msgid "Upload language skills directly to your brain"
 msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14222,7 +14227,7 @@ msgstr "Trò chuyện thoại với mọi người"
 msgid "Voice conversations"
 msgstr "Cuộc hội thoại bằng giọng nói"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "Tin nhắn thoại"

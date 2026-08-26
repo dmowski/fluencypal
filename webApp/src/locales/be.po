@@ -1044,7 +1044,7 @@ msgstr "Асістэнт"
 msgid "At least {minWords} words required"
 msgstr "Патрабуецца не менш за {minWords} слоў"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Прыкласці мой галасавы запіс"
@@ -1560,7 +1560,7 @@ msgstr "Ці магу я выкарыстоўваць гэта на смартф
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1678,7 +1678,7 @@ msgstr "Чат не знойдзены або ў вас няма доступу 
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Пагутарайце з уладальнікам сабакі"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "Праверце маё паведамленне"
@@ -3774,7 +3774,7 @@ msgstr ""
 "Розныя рэжымы дапамагаюць па-рознаму. З цягам часу вы выявіце, што найлепш "
 "падыходзіць для вас."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Адмяніць"
@@ -7649,9 +7649,10 @@ msgstr "Загрузка.."
 msgid "Loading..."
 msgstr "Загрузка..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Загрузка…"
@@ -7877,7 +7878,9 @@ msgstr "Паведамленні выдаляюцца праз 4 дні."
 msgid "Micro-frontends"
 msgstr "Мікра-фронтэнды"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Мікрафон"
@@ -7895,7 +7898,7 @@ msgstr ""
 "Доступ да мікрафона забаронены. Калі ласка, уключыце яго ў наладах вашага "
 "браўзера."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -8028,7 +8031,7 @@ msgstr "Болей"
 msgid "More improvements"
 msgstr "Больш праўдкаранняў"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -8335,7 +8338,8 @@ msgstr "Яшчэ няма паведамленняў"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Яшчэ няма паведамленняў. Станьце першым, хто падзеліцца сваімі думкамі!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr ""
@@ -9289,12 +9293,12 @@ msgstr "Калі ласка, увядзіце сапраўдны адрас эл
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Калі ласка, запоўніце дадзеныя бацькоў і пастаўце ўсе галачкі ў Кроку 1."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Калі ласка, запішыце больш доўгае паведамленне (хаця б некалькі слоў)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Калі ласка, запішыце прынамсі {minSeconds} секунд."
@@ -10116,7 +10120,7 @@ msgstr "Ацэнка"
 msgid "Raw"
 msgstr "Сырае"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10450,12 +10454,12 @@ msgstr "Запішыце ваша ўвядзенне"
 msgid "Record your reply"
 msgstr "Запішыце свой адказ"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Налады запісу"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Запіс… {seconds}с"
@@ -11022,7 +11026,7 @@ msgid "Send me sign-in link"
 msgstr "Дашліце мне спасылку для ўваходу"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Адправіць паведамленне"
@@ -11060,14 +11064,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Адпраўце {messagesNeeded} паведамленняў, каб разблакаваць поўны доступ"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Адпраўка..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Адпраўка…"
@@ -11678,8 +11682,8 @@ msgstr "Пачаць практыкавацца"
 msgid "Start Recording"
 msgstr "Пачаць Запіс"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Пачаць запіс"
@@ -11914,8 +11918,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "Крокі:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Стоп"
@@ -12112,7 +12116,7 @@ msgstr "% поспеху:"
 msgid "Success stories"
 msgstr "Гісторыі поспеху"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "Прапанаваць ідэю"
@@ -12157,7 +12161,8 @@ msgstr "Пераключыць на галасавыя запісы"
 msgid "Syncing your library…"
 msgstr "Сінхранізацыя вашай бібліятэкі…"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Сістэма па змаўчанні"
@@ -12904,7 +12909,7 @@ msgstr "Тэставанне і якасць"
 msgid "Text"
 msgstr "Тэкст"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "Тэкставае паведамленне"
@@ -14022,7 +14027,7 @@ msgstr "Загрузіце фота, і AI скажа вам, што вы хоч
 msgid "Upload audio"
 msgstr "Загрузіць аўдыё"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -14034,7 +14039,7 @@ msgstr "Загрузіць малюнак"
 msgid "Upload language skills directly to your brain"
 msgstr "Загрузіце веданні мовы напрыцямую ў свой мозг"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14218,7 +14223,7 @@ msgstr "Гутарка з людзьмі праз голас"
 msgid "Voice conversations"
 msgstr "Гутаркі з голасам"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "Галасавое паведамленне"

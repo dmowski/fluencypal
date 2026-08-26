@@ -1037,7 +1037,7 @@ msgstr "Assistent"
 msgid "At least {minWords} words required"
 msgstr "Mindst {minWords} ord krævet"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Vedhæft min stemmeoptagelse"
@@ -1548,7 +1548,7 @@ msgstr "Kan jeg bruge den på smartphone?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1668,7 +1668,7 @@ msgstr "Chat ikke fundet, eller du har ikke adgang til det."
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Chat med en Medhundeejer"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "Kontroller min besked"
@@ -3749,7 +3749,7 @@ msgstr ""
 "Forskellige tilstande hjælper på forskellige måder. Du vil opdage, hvad der "
 "fungerer bedst for dig over tid."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "Kassér"
@@ -7576,9 +7576,10 @@ msgstr "Indlæser.."
 msgid "Loading..."
 msgstr "Indlæser..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Indlæser…"
@@ -7806,7 +7807,9 @@ msgstr "Beskeder fjernes efter 4 dage."
 msgid "Micro-frontends"
 msgstr "Mikro-frontends"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -7822,7 +7825,7 @@ msgstr "Microfontilgang"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Mikrofonadgang nægtet. Aktiver den venligst i dine browserindstillinger."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7955,7 +7958,7 @@ msgstr "Mere"
 msgid "More improvements"
 msgstr "Flere forbedringer"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -8258,7 +8261,8 @@ msgstr "Ingen beskeder endnu"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Ingen beskeder endnu. Vær den første til at dele dine tanker!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Ingen mikrofoner fundet. Tillad mikrofonadgang og prøv igen."
@@ -9207,12 +9211,12 @@ msgstr "Indtast venligst en gyldig e-mailadresse"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Udfyld venligst forældredetaljer og marker alle felter i Trin 1."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Venligst optag en længere besked (mindst nogle få ord)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Venligst optag mindst {minSeconds} sekunder."
@@ -10024,7 +10028,7 @@ msgstr "Bedømmelse"
 msgid "Raw"
 msgstr "Rå"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10353,12 +10357,12 @@ msgstr "Optag din introduktion"
 msgid "Record your reply"
 msgstr "Optag dit svar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Indstillinger for optagelse"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Optager... {seconds}s"
@@ -10923,7 +10927,7 @@ msgid "Send me sign-in link"
 msgstr "Send mig tilmeldingslink"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Send besked"
@@ -10961,14 +10965,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Send {messagesNeeded} beskeder for at låse op for fuld adgang"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Afsender..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Sender…"
@@ -11578,8 +11582,8 @@ msgstr "Begynd at Øve"
 msgid "Start Recording"
 msgstr "Start optagelse"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Start optagelse"
@@ -11812,8 +11816,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "Trin:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stop"
@@ -12011,7 +12015,7 @@ msgstr "Succesrate:"
 msgid "Success stories"
 msgstr "Succes historier"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "Foreslå en idé"
@@ -12056,7 +12060,8 @@ msgstr "Skift til stemmeoptagelser"
 msgid "Syncing your library…"
 msgstr "Synkroniserer dit bibliotek…"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Systemstandard"
@@ -12796,7 +12801,7 @@ msgstr "Testning & Kvalitet"
 msgid "Text"
 msgstr "Tekst"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "Sms-besked"
@@ -13912,7 +13917,7 @@ msgstr "Upload et billede, og AI vil fortælle dig, hvad du vil vide."
 msgid "Upload audio"
 msgstr "Upload lyd"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -13924,7 +13929,7 @@ msgstr "Upload billede"
 msgid "Upload language skills directly to your brain"
 msgstr "Upload sprogfærdigheder direkte til din hjerne"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14103,7 +14108,7 @@ msgstr "Voice chat med folk"
 msgid "Voice conversations"
 msgstr "Stemmesamtaler"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "Talebesked"

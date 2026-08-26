@@ -1036,7 +1036,7 @@ msgstr "Asistan"
 msgid "At least {minWords} words required"
 msgstr "En az {minWords} kelime gereklidir"
 
-#: src/features/Chat/SubmitForm.tsx:351
+#: src/features/Chat/SubmitForm.tsx:352
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Ses kaydımı ekle"
@@ -1549,7 +1549,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 
 #: src/features/Chat/Message/Message.tsx:284
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:247
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -1667,7 +1667,7 @@ msgstr "Sohbet bulunamadı veya bu sohbete erişiminiz yok."
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Diğer Bir Köpek Sahibiyle Sohbet Et"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
 msgid "Check my message"
 msgstr "Mesajımı kontrol et"
@@ -3759,7 +3759,7 @@ msgstr ""
 "Farklı modlar, farklı şekillerde yardımcı olur. Zamanla sizin için en iyi "
 "neyin işe yaradığını keşfedeceksiniz."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:274
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
 msgstr "İptal et"
@@ -7606,9 +7606,10 @@ msgstr "Yükleniyor.."
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
+#: src/features/Chat/SubmitFormMoreOptions.tsx:231
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:148
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Yükleniyor…"
@@ -7833,7 +7834,9 @@ msgstr "Mesajlar 4 gün sonra kaldırılır."
 msgid "Micro-frontends"
 msgstr "Mikro-ön uçlar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:141
+#: src/features/Chat/SubmitFormMoreOptions.tsx:151
+#: src/features/Chat/SubmitFormMoreOptions.tsx:224
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -7849,7 +7852,7 @@ msgstr "Mikrofon Erişimi"
 msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr "Mikrofon erişimi reddedildi. Lütfen tarayıcı ayarlarından etkinleştirin."
 
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:50
+#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is denied. Please allow microphone access in your browser "
@@ -7980,7 +7983,7 @@ msgstr "Daha Fazla"
 msgid "More improvements"
 msgstr "Daha fazla iyileştirme"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:59
+#: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
 #. js-lingui-explicit-id
 msgid "More options"
@@ -8287,7 +8290,8 @@ msgstr "Henüz mesaj yok"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:182
+#: src/features/Chat/SubmitFormMoreOptions.tsx:265
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Mikrofon bulunamadı. Mikrofon erişimine izin verin ve tekrar deneyin."
@@ -9241,12 +9245,12 @@ msgstr ""
 "Lütfen ebeveyn bilgilerini doldurun ve 1. Adım'daki tüm kutucukları "
 "işaretleyin."
 
-#: src/features/Chat/SubmitForm.tsx:439
+#: src/features/Chat/SubmitForm.tsx:444
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Lütfen daha uzun bir mesaj kaydedin (en az birkaç kelime)."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:78
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
 #. js-lingui-explicit-id
 msgid "Please record at least {minSeconds} seconds."
 msgstr "Lütfen en az {minSeconds} saniye kaydedin."
@@ -10058,7 +10062,7 @@ msgstr "Değerlendirme"
 msgid "Raw"
 msgstr "Ham"
 
-#: src/features/Chat/SubmitForm.tsx:323
+#: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:655
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -10386,12 +10390,12 @@ msgstr "İntro kaydınızı yapın"
 msgid "Record your reply"
 msgstr "Yanıtınızı kaydedin"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Kayıt ayarları"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:233
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
 msgid "Recording… {seconds}s"
 msgstr "Kaydediliyor… {seconds}s"
@@ -10962,7 +10966,7 @@ msgid "Send me sign-in link"
 msgstr "Bana giriş bağlantısını gönder"
 
 #: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Mesaj Gönder"
@@ -11000,14 +11004,14 @@ msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Tam erişimin kilidini açmak için {messagesNeeded} mesaj gönderin"
 
 #: src/features/Auth/AuthWallBasic.tsx:194
-#: src/features/Chat/SubmitForm.tsx:340
+#: src/features/Chat/SubmitForm.tsx:327
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Gönderiliyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:264
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
 #. js-lingui-explicit-id
 msgid "Sending…"
 msgstr "Gönderiliyor…"
@@ -11618,8 +11622,8 @@ msgstr "Alıştırmaya Başla"
 msgid "Start Recording"
 msgstr "Kaydı Başlat"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:199
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:211
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Start recording"
 msgstr "Kaydı başlat"
@@ -11856,8 +11860,8 @@ msgstr ""
 msgid "Steps:"
 msgstr "Adımlar:"
 
-#: src/features/Chat/SubmitForm.tsx:297
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:244
+#: src/features/Chat/SubmitForm.tsx:299
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dur"
@@ -12054,7 +12058,7 @@ msgstr "Başarı oranı:"
 msgid "Success stories"
 msgstr "Başarı hikayeleri"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:126
+#: src/features/Chat/SubmitFormMoreOptions.tsx:191
 #. js-lingui-explicit-id
 msgid "Suggest an idea"
 msgstr "Bir fikir öner"
@@ -12099,7 +12103,8 @@ msgstr "Ses kayıtlarına geçiş yap"
 msgid "Syncing your library…"
 msgstr "Kitaplığınız senkronize ediliyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:160
+#: src/features/Chat/SubmitFormMoreOptions.tsx:243
+#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Sistem varsayılanı"
@@ -12844,7 +12849,7 @@ msgstr "Test Etme & Kalite"
 msgid "Text"
 msgstr "Metin"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Text message"
 msgstr "Metin mesajı"
@@ -13961,7 +13966,7 @@ msgstr "Bir fotoğraf yükleyin ve yapay zeka size ne istediğinizi söyleyecek.
 msgid "Upload audio"
 msgstr "Ses yükle"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:100
+#: src/features/Chat/SubmitFormMoreOptions.tsx:165
 #: src/features/Game/UploadImageButton.tsx:96
 #. js-lingui-explicit-id
 msgid "Upload image"
@@ -13973,7 +13978,7 @@ msgstr "Görüntü yükle"
 msgid "Upload language skills directly to your brain"
 msgstr "Dil becerilerini doğrudan beynine yükle"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:112
+#: src/features/Chat/SubmitFormMoreOptions.tsx:177
 #: src/features/Video/UploadVideoButton.tsx:213
 #. js-lingui-explicit-id
 msgid "Upload video"
@@ -14152,7 +14157,7 @@ msgstr "İnsanlarla sesli sohbet edin"
 msgid "Voice conversations"
 msgstr "Sesli konuşmalar"
 
-#: src/features/Chat/SubmitFormMoreOptions.tsx:86
+#: src/features/Chat/SubmitFormMoreOptions.tsx:134
 #. js-lingui-explicit-id
 msgid "Voice message"
 msgstr "Sesli mesaj"
