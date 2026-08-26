@@ -1,10 +1,5 @@
 # Live document with ideas
 
-## Participate in chats
-
-- Add new comments on daily chats
-- Add message on public chat
-
 ## Landing
 
 Update "Practice Speaking with AI",
