@@ -24,8 +24,11 @@ export function MicrophonePermissionProvider({ children }: { children: ReactNode
   const finishRequest = useCallback((stream: MediaStream | null) => {
     pendingResolveRef.current?.(stream);
     pendingResolveRef.current = null;
-    setIsModalOpen(false);
-    setIsRequesting(false);
+    const timeout = stream ? 2000 : 0;
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setIsRequesting(false);
+    }, timeout);
   }, []);
 
   const requestBrowserMicrophone = useCallback(async () => {
