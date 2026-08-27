@@ -1,11 +1,10 @@
 # Live document with ideas
 
-## Landing
+## Landing: Show real demo
 
-Update "Practice Speaking with AI",
-Place canvas element that shows real UI of app.
-We can do emulation of it.
-With emulation of conversation.
+- Record video with me how I talk with it
+- Call mode, Record mode, Help with answers, show results, grammar improvements
+- Insert video on landing page
 
 ## Redesign Daily questions/Chat - Foster community
 
