@@ -83,7 +83,6 @@ const stepsViews: QuizStep[] = [
 
   'before_goalReview',
   'goalReview',
-  'trialPrice',
   //'magicFlow',
   //'accessPlan',
   //'writeWelcomeMessageInChat',
