@@ -470,12 +470,14 @@ Return ONLY the number.
     );
   }
 
+  const containerColor = isProgressDone ? 'rgba(52, 199, 89, 1)' : 'rgba(255, 255, 255, 0.3)';
+
   return (
     <Stack
       sx={{
         backgroundColor: 'rgba(10, 18, 30, 1)',
         borderRadius: '30px 30px 0 0 ',
-        boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.3)',
+        boxShadow: `0 0 0 1px ${containerColor}`,
         flexDirection: 'column',
 
         width: 'max-content',
@@ -768,10 +770,11 @@ Return ONLY the number.
             sx={{
               position: 'relative',
               zIndex: 1,
-              fontSize: '10px',
+              top: '-1px',
+              fontSize: '9px',
               fontWeight: 700,
               lineHeight: 1,
-              letterSpacing: '0.04em',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
             }}
           >
