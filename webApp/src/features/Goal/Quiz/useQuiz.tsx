@@ -71,7 +71,7 @@ const stepsViews: QuizStep[] = [
   'before_pageLanguage',
   'pageLanguage',
   'teacherSelection',
-  'trialPrice',
+
   'before_recordAbout',
   'recordAbout',
 
@@ -83,6 +83,7 @@ const stepsViews: QuizStep[] = [
 
   'before_goalReview',
   'goalReview',
+  'trialPrice',
   //'magicFlow',
   //'accessPlan',
   //'writeWelcomeMessageInChat',
