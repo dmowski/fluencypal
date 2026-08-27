@@ -43,6 +43,7 @@ export interface AiConversationContextType {
   isUserSpeaking: boolean;
   toggleMute: (isMute: boolean) => void;
   isMuted: boolean;
+  switchMicrophone: (deviceId: string | null) => Promise<void>;
   addUserMessage: (message: string) => Promise<void>;
   currentMode: ConversationType;
   gameWords: GuessGameStat | null;

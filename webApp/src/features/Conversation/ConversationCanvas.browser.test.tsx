@@ -194,6 +194,17 @@ vi.mock('@/features/webCam/WebCamView', () => ({
   ),
 }));
 
+vi.mock('@/libs/mic', async () => {
+  const actual = await vi.importActual<typeof import('@/libs/mic')>('@/libs/mic');
+  return {
+    ...actual,
+    loadAudioInputDevices: vi.fn(async () => [
+      { deviceId: 'mic-1', label: 'Built-in Microphone' },
+      { deviceId: 'mic-2', label: 'USB Headset' },
+    ]),
+  };
+});
+
 vi.mock('next/image', () => ({
   __esModule: true,
   default: function MockNextImage({
@@ -369,6 +380,80 @@ test('conversation canvas – call mode lesson finish ready', async () => {
   await expect
     .element(page.getByTestId('conversation-canvas-call'))
     .toMatchScreenshot('conversation-canvas-call-role-play-finish-ready');
+});
+
+test('conversation canvas – call mode settings menu', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
+      conversationMode="call"
+    />,
+  );
+
+  await expect.element(page.getByRole('button', { name: 'Settings' })).toBeVisible();
+  await expect
+    .element(page.getByRole('button', { name: 'Turn off volume' }))
+    .not.toBeInTheDocument();
+  await expect
+    .element(page.getByRole('button', { name: 'Turn off video' }))
+    .not.toBeInTheDocument();
+
+  await userEvent.click(page.getByTestId('call-settings-button'));
+  await expect.element(page.getByRole('menuitem', { name: 'Turn off video' })).toBeVisible();
+  await expect.element(page.getByRole('menuitem', { name: 'Mute' })).toBeVisible();
+  await expect.element(page.getByRole('menuitem', { name: 'Turn off captions' })).toBeVisible();
+  await expect.element(page.getByRole('menuitem', { name: 'Select microphone' })).toBeVisible();
+  await expect
+    .element(page.getByRole('menuitem', { name: 'Hide webcam preview' }))
+    .not.toBeInTheDocument();
+
+  await expect
+    .element(page.getByTestId('call-settings-menu'))
+    .toMatchScreenshot('conversation-canvas-call-settings-menu');
+});
+
+test('conversation canvas – call mode video off shows captions only', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
+      conversationMode="call"
+    />,
+  );
+
+  await expect.element(page.getByTestId('call-video-preview')).toBeVisible();
+  await expect.element(page.getByTestId('call-user-preview')).toBeVisible();
+  await userEvent.click(page.getByTestId('call-settings-button'));
+  await userEvent.click(page.getByTestId('call-settings-webcam'));
+  await expect.element(page.getByTestId('call-video-preview')).not.toBeInTheDocument();
+  await expect.element(page.getByTestId('call-user-preview')).not.toBeInTheDocument();
+  await expect.element(page.getByText('That is a strong start', { exact: false })).toBeVisible();
+
+  await userEvent.keyboard('{Escape}');
+
+  await expect
+    .element(page.getByTestId('conversation-canvas-call'))
+    .toMatchScreenshot('conversation-canvas-call-video-off');
+});
+
+test('conversation canvas – call mode can select a microphone', async () => {
+  const onSelectMicrophone = vi.fn();
+  window.localStorage.removeItem('preferredMicrophoneId');
+
+  await render(
+    <ConversationCanvasFixture
+      conversation={buildRolePlayConversation(ROLE_PLAY_EARLY_HINT_USER_MESSAGES)}
+      conversationMode="call"
+      onSelectMicrophone={onSelectMicrophone}
+    />,
+  );
+
+  await userEvent.click(page.getByTestId('call-settings-button'));
+  await userEvent.click(page.getByRole('menuitem', { name: 'Select microphone' }));
+  await expect.element(page.getByRole('menuitem', { name: 'USB Headset' })).toBeVisible();
+  await userEvent.click(page.getByRole('menuitem', { name: 'USB Headset' }));
+
+  expect(onSelectMicrophone).toHaveBeenCalledWith('mic-2');
+  expect(window.localStorage.getItem('preferredMicrophoneId')).toBe('mic-2');
 });
 
 test('conversation canvas – call mode end-call menu (results disabled)', async () => {

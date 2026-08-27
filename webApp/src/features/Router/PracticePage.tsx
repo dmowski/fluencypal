@@ -170,6 +170,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         toggleConversationMode={aiConversation.toggleConversationMode}
         isMuted={aiConversation.isMuted}
         setIsMuted={(isMuted) => aiConversation.toggleMute(isMuted)}
+        onSelectMicrophone={aiConversation.switchMicrophone}
         isVolumeOn={aiConversation.isVolumeOn}
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}

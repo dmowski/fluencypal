@@ -14,6 +14,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  optimizeDeps: {
+    // Prebundling @mdxeditor/editor pulls js-yaml ESM without a default export.
+    exclude: ['@mdxeditor/editor'],
+  },
   test: {
     name: 'browser',
     include: ['src/**/*.browser.test.{ts,tsx}'],

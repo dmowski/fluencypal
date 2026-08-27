@@ -49,7 +49,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
   const aiUserInfo = useAiUserInfo();
   const [testMessage, setTestMessage] = useState<ConversationMessage[]>(startTestMessages);
 
-  const showGame = true;
+  const showGame = false;
   const gameStat: GuessGameStat | null = showGame
     ? {
         wordsUserToDescribe: [

@@ -95,6 +95,7 @@ interface ConversationCanvasProps {
   recordingVoiceMode: RecordingUserMessageMode;
 
   isSendMessagesBlocked: boolean;
+  onSelectMicrophone?: (deviceId: string | null) => void;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -141,6 +142,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   recordingVoiceMode,
   isSendMessagesBlocked,
   transcriptionBlob,
+  onSelectMicrophone,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -281,6 +283,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             fullExit={() => {
               closeConversation();
             }}
+            onSelectMicrophone={onSelectMicrophone}
           />
         </Modal>
       </>

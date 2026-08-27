@@ -37,6 +37,7 @@ Conversation/
 ├── CallMode/
 │   ├── CameraCanvas.tsx            # Call layout (avatar, webcam, subtitles)
 │   ├── CallButtons.tsx             # Call footer controls + progress bar
+│   ├── CallSettingsMenu.tsx        # Video on/off, mute, captions, mic picker
 │   └── …
 ├── ConversationInstance/           # WebRTC / realtime WS session clients
 ├── useAiConversation/              # Orchestration, limits, stats, prompts
@@ -50,6 +51,7 @@ Conversation/
 - **End menu:** Red `CallEndIcon` opens shared `CallEndMenu`:
   - Call: **Exit**, **Switch to voice records**, **Show results**
   - Record: **Exit**, **Switch to Call mode**, **Show results**
+- **Call settings:** Settings control opens `CallSettingsMenu` (video on/off for both camera tiles, mute AI voice, captions, select microphone). Mic on/off and end-call stay on the footer. Turning video off hides the teacher and learner tiles so captions can fill the call. Selected microphone is persisted in `localStorage` (`preferredMicrophoneId`) and applied live via `ConversationInstance.switchMicrophone`.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
@@ -62,6 +64,11 @@ Conversation/
 | `conversation-canvas-call` | Call canvas root |
 | `call-end-button` | Red end-call control in `CallButtons` |
 | `call-end-menu` | Shared `CallEndMenu` options (call + record) |
+| `call-settings-button` | Call footer Settings control |
+| `call-settings-menu` | Call settings: video, mute, captions, select mic |
+| `call-microphone-menu` | Nested microphone picker from call settings |
+| `call-video-preview` | Teacher + learner camera tiles in call layout |
+| `call-user-preview` | User webcam tile in call layout |
 | `call-progress-bar` | Message-count progress strip on call footer |
 | `conversation-review-modal` | Post-call / Show results review steps |
 
@@ -78,6 +85,8 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 | `conversation-canvas-call-alias-word-list` | Call canvas with Alias word list in `Messages` |
 | `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |
+| `conversation-canvas-call-settings-menu` | Settings menu (video, mute, captions, select mic) |
+| `conversation-canvas-call-video-off` | Call layout with both camera tiles hidden (captions only) |
 | `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → next-lesson) |
 
 Run:

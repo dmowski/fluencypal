@@ -14,6 +14,7 @@ import { updateInstruction } from './webRtc/updateInstruction';
 import { sendWebCamDescription } from './webRtc/sendWebCamDescription';
 import { initConnection } from './webRtc/initConnection';
 import { getMediaAudioStreams } from '@/features/webCam/mediaStream';
+import { switchMicrophone } from './webRtc/switchMicrophone';
 
 export const initWebRtcConversation = async (
   config: ConversationConfig,
@@ -55,6 +56,7 @@ export const initWebRtcConversation = async (
     triggerAiResponse: async () => await triggerAiResponse(state),
     toggleMute: (mute: boolean) => toggleMute(mute, state),
     toggleVolume: async (isVolumeOn: boolean) => await toggleVolume(isVolumeOn, state),
+    switchMicrophone: (deviceId: string | null) => switchMicrophone(deviceId, state),
 
     sendWebCamDescription: async (description: string) => {
       sendWebCamDescription(description, state, config);

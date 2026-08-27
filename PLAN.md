@@ -2,6 +2,9 @@
 
 ## Landing: Show real demo
 
+Check eagerness: 'low' how work
+webApp/src/features/Conversation/ConversationInstance/webRtc/updateSessionSafe.ts
+
 - Record video with me how I talk with it
 - Call mode, Record mode, Help with answers, show results, grammar improvements
 - Insert video on landing page

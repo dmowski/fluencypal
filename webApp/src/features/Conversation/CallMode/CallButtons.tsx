@@ -1,25 +1,21 @@
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
-import VideocamIcon from '@mui/icons-material/Videocam';
-import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { ChevronRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
-import ClosedCaptionIcon from '@mui/icons-material/ClosedCaption';
-import ClosedCaptionDisabledIcon from '@mui/icons-material/ClosedCaptionDisabled';
 import { sleep } from '@/libs/sleep';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { useVadAudioRecorder } from '@/features/Audio/useVadAudioRecorder';
 import { FooterButton } from './FooterButton';
 import { CallEndMenu } from '../CallEndMenu';
+import { CallSettingsMenu } from './CallSettingsMenu';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { RecordingUserMessageMode } from '../types';
 import { ConversationMessage } from '@/features/Conversation/conversation';
@@ -31,6 +27,7 @@ export const CallButtons = ({
   setIsMuted,
   isWebCamEnabled,
   toggleWebCam,
+  onSelectMicrophone,
 
   exit,
 
@@ -57,6 +54,7 @@ export const CallButtons = ({
   setIsMuted: (value: boolean) => void;
   isWebCamEnabled: boolean;
   toggleWebCam: (isToggleOn: boolean) => void;
+  onSelectMicrophone?: (deviceId: string | null) => void;
   exit: () => void;
 
   isVolumeOn: boolean;
@@ -88,9 +86,11 @@ export const CallButtons = ({
 
   const [isShowVolumeWarning, setIsShowVolumeWarning] = useState(false);
   const [endCallMenuAnchor, setEndCallMenuAnchor] = useState<null | HTMLElement>(null);
+  const [settingsAnchor, setSettingsAnchor] = useState<null | HTMLElement>(null);
   const access = useAccess();
 
   const closeEndCallMenu = () => setEndCallMenuAnchor(null);
+  const closeSettingsMenu = () => setSettingsAnchor(null);
 
   const toggleVolume = () => {
     if (isLimitedVoice) {
@@ -635,30 +635,12 @@ Return ONLY the number.
             )}
 
             <FooterButton
-              activeButton={<VolumeUpIcon />}
-              inactiveButton={<VolumeOffIcon />}
-              isActive={isVolumeOnToDisplay}
-              label={isVolumeOnToDisplay ? i18n._('Turn off volume') : i18n._('Turn on volume')}
-              onClick={toggleVolume}
-              isLocked={isLimitedVoice}
-            />
-
-            <FooterButton
-              activeButton={<ClosedCaptionIcon />}
-              inactiveButton={<ClosedCaptionDisabledIcon />}
-              isActive={isSubtitlesEnabled}
-              label={
-                isSubtitlesEnabled ? i18n._('Turn off subtitles') : i18n._('Turn on subtitles')
-              }
-              onClick={() => toggleSubtitles(!isSubtitlesEnabled)}
-            />
-
-            <FooterButton
-              activeButton={<VideocamIcon />}
-              inactiveButton={<VideocamOffIcon />}
-              isActive={isWebCamEnabled}
-              label={isWebCamEnabled ? i18n._('Turn off video') : i18n._('Turn on video')}
-              onClick={() => toggleWebCam(!isWebCamEnabled)}
+              activeButton={<SettingsIcon />}
+              inactiveButton={<SettingsIcon />}
+              isActive={true}
+              label={i18n._('Settings')}
+              testId="call-settings-button"
+              onClick={(event) => setSettingsAnchor(event.currentTarget)}
             />
 
             <IconButton
@@ -684,6 +666,18 @@ Return ONLY the number.
               onSwitchMode={onSwitchToVoiceRecords}
               onShowResults={onShowResults}
               canShowResults={isProgressDone}
+            />
+
+            <CallSettingsMenu
+              anchorEl={settingsAnchor}
+              onClose={closeSettingsMenu}
+              isWebCamEnabled={isWebCamEnabled}
+              onToggleWebCam={() => toggleWebCam(!isWebCamEnabled)}
+              isVolumeOn={isVolumeOnToDisplay}
+              onToggleVolume={toggleVolume}
+              isSubtitlesEnabled={isSubtitlesEnabled}
+              onToggleSubtitles={() => toggleSubtitles(!isSubtitlesEnabled)}
+              onSelectMicrophone={onSelectMicrophone}
             />
           </>
         )}

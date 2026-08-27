@@ -43,6 +43,7 @@ import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
 import { useAliasConversationAnalytics } from './useAliasConversationAnalytics';
 import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
+import { writePreferredMicrophoneId } from '@/libs/mic';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
 
@@ -137,6 +138,11 @@ function useProvideAiConversation(): AiConversationContextType {
   const toggleMute = (isMute: boolean) => {
     communicatorRef.current?.toggleMute(isMute);
     setIsMuted(isMute);
+  };
+
+  const switchMicrophone = async (deviceId: string | null) => {
+    writePreferredMicrophoneId(deviceId);
+    await communicatorRef.current?.switchMicrophone(deviceId);
   };
 
   const limits = useLimits(
@@ -644,6 +650,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     isClosed,
     isUserSpeaking,
     toggleMute,
+    switchMicrophone,
     isMuted,
     addUserMessage,
     gameWords: gameStat,

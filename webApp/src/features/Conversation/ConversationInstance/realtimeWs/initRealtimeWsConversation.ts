@@ -10,6 +10,8 @@ import { mapWsUsageToLog } from './mapWsUsageToLog';
 import { RealtimeWsSessionClient } from './RealtimeWsSessionClient';
 import { getRealtimeWsUrl } from './getRealtimeWsUrl';
 import { resolveRealtimeWsAuthToken } from './resolveRealtimeWsAuthToken';
+import { createMediaAudioStream, setCachedAudioStream } from '@/features/webCam/mediaStream';
+import { writePreferredMicrophoneId } from '@/libs/mic';
 
 type RealtimeWsState = {
   client: RealtimeWsSessionClient;
@@ -229,6 +231,37 @@ export const initRealtimeWsConversation = async (
 
       if (client.isConnected) {
         client.updateSession({ micMuted: mute });
+      }
+    },
+
+    switchMicrophone: async (deviceId: string | null) => {
+      writePreferredMicrophoneId(deviceId);
+      const newStream = await createMediaAudioStream(deviceId);
+      const newTrack = newStream?.getAudioTracks()[0];
+      if (!newStream || !newTrack) {
+        newStream?.getTracks().forEach((track) => track.stop());
+        return;
+      }
+
+      stopCapture();
+
+      const previousStream = state.userMedia;
+      state.userMedia = newStream;
+      setCachedAudioStream(newStream);
+      if (previousStream && previousStream !== newStream) {
+        previousStream.getTracks().forEach((track) => {
+          if (track !== newTrack) {
+            track.stop();
+          }
+        });
+      }
+
+      newStream.getTracks().forEach((track) => {
+        track.enabled = !state.currentMuted;
+      });
+
+      if (!state.currentMuted) {
+        await startCaptureIfNeeded();
       }
     },
 

@@ -460,6 +460,7 @@ Format the summary as explicit facts: what user and teacher said.`;
     triggerAiResponse,
     toggleMute,
     toggleVolume,
+    switchMicrophone: async () => {},
     sendWebCamDescription,
     sendCorrectionInstruction,
     addUserMessageDelta,

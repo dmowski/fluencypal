@@ -1,3 +1,4 @@
+import { getMediaAudioStreams } from '@/features/webCam/mediaStream';
 import { sleep } from '@/libs/sleep';
 import { ConversationConfig } from '../types';
 import { EventHandlers, WebRtcState } from './types';
@@ -14,7 +15,11 @@ export const startWebRtc = async (
 ) => {
   await sleep(2000); // your existing mobile warmup
 
-  state.userMedia = await navigator.mediaDevices.getUserMedia({ audio: true });
+  state.userMedia =
+    (await getMediaAudioStreams()) ||
+    (await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    }));
   await sleep(1000);
 
   state.peerConnection = new RTCPeerConnection();

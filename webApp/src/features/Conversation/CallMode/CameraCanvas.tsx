@@ -43,6 +43,7 @@ export const CameraCanvas = ({
   isSendMessagesBlocked,
   fullExit,
   gameWords,
+  onSelectMicrophone,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -69,6 +70,7 @@ export const CameraCanvas = ({
   isSendMessagesBlocked: boolean;
   fullExit: () => void;
   gameWords: GuessGameStat | null;
+  onSelectMicrophone?: (deviceId: string | null) => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -81,13 +83,22 @@ export const CameraCanvas = ({
   }, [isLimitedVoice]);
 
   const auth = useAuth();
-  const userPhoto = auth.userInfo?.photoURL || '';
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || 'You';
   const aiVideo: AiAvatar | null = getAiVoiceByVoice(voice);
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
 
-  const topHeight = isSubtitlesEnabled ? `50dvh` : `calc(97dvh - ${footerHeight})`;
-  const topHeightMobile = isSubtitlesEnabled ? `22dvh` : `calc(95dvh - ${footerHeight})`;
+  const topHeight = isWebCamEnabled
+    ? isSubtitlesEnabled
+      ? `50dvh`
+      : `calc(97dvh - ${footerHeight})`
+    : '0px';
+  const topHeightMobile = isWebCamEnabled
+    ? isSubtitlesEnabled
+      ? `22dvh`
+      : `calc(95dvh - ${footerHeight})`
+    : '0px';
+  const captionsTopPadding = isWebCamEnabled ? topHeight : '16px';
+  const captionsTopPaddingMobile = isWebCamEnabled ? topHeightMobile : '16px';
 
   const isTimeToScreenshots =
     isWebCamEnabled &&
@@ -134,87 +145,88 @@ export const CameraCanvas = ({
           overflow: 'hidden',
         }}
       >
-        <Stack
-          sx={{
-            width: '100%',
-            maxWidth: '100%',
-            overflow: 'hidden',
-            padding: '10px 10px 0px 10px',
-            boxShadow: '0 14px 20px 5px rgba(10, 18, 30, 1)',
-            backgroundColor: 'rgba(10, 18, 30, 0.91)',
-            borderRadius: '0px',
-            gap: '10px',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            position: 'fixed',
-            top: 0,
-
-            pointerEvents: 'none',
-            zIndex: 1,
-            height: topHeight,
-            '@media (max-width: 800px)': {
-              height: topHeightMobile,
-              gridTemplateColumns: isSubtitlesEnabled ? '1fr 1fr' : '1fr',
-            },
-          }}
-        >
+        {isWebCamEnabled && (
           <Stack
+            data-testid="call-video-preview"
             sx={{
               width: '100%',
-              height: '100%',
-              borderRadius: '20px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+              maxWidth: '100%',
               overflow: 'hidden',
-            }}
-          >
-            {aiVideo ? (
-              <AiAvatarVideo aiVideo={aiVideo} isSpeaking={isAiSpeaking} />
-            ) : (
-              <UserPreviewStatic
-                bgUrl={'/blur/2.jpg'}
-                isSpeaking={isAiSpeaking}
-                avatarUrl={'/blog/whippet-prediction.png'}
-              />
-            )}
+              padding: '10px 10px 0px 10px',
+              boxShadow: '0 14px 20px 5px rgba(10, 18, 30, 1)',
+              backgroundColor: 'rgba(10, 18, 30, 0.91)',
+              borderRadius: '0px',
+              gap: '10px',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              position: 'fixed',
+              top: 0,
 
-            <WebCamFooter name={i18n._('Teacher')} />
-          </Stack>
-
-          <Stack
-            sx={{
-              width: '100%',
-              height: '100%',
-              borderRadius: '20px',
-              backgroundColor: 'rgba(0, 0, 0, 0.3)',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+              pointerEvents: 'none',
+              zIndex: 1,
+              height: topHeight,
+              '@media (max-width: 800px)': {
+                height: topHeightMobile,
+                gridTemplateColumns: isSubtitlesEnabled ? '1fr 1fr' : '1fr',
+              },
             }}
           >
             <Stack
               sx={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                zIndex: 2,
-                opacity: isAnalyzing ? 1 : 0,
+                width: '100%',
+                height: '100%',
+                borderRadius: '20px',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                overflow: 'hidden',
               }}
             >
-              <ScanLine size={'13px'} color="#fff" strokeWidth={'3px'} />
-            </Stack>
-            {isWebCamEnabled && <WebCamView />}
-            {!isWebCamEnabled && (
-              <UserPreviewStatic bgUrl={'/blur/5.jpg'} avatarUrl={userPhoto} isSpeaking={false} />
-            )}
+              {aiVideo ? (
+                <AiAvatarVideo aiVideo={aiVideo} isSpeaking={isAiSpeaking} />
+              ) : (
+                <UserPreviewStatic
+                  bgUrl={'/blur/2.jpg'}
+                  isSpeaking={isAiSpeaking}
+                  avatarUrl={'/blog/whippet-prediction.png'}
+                />
+              )}
 
-            <WebCamFooter name={myUserName || i18n._('You')} />
+              <WebCamFooter name={i18n._('Teacher')} />
+            </Stack>
+
+            <Stack
+              data-testid="call-user-preview"
+              sx={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '20px',
+                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              <Stack
+                sx={{
+                  position: 'absolute',
+                  top: '20px',
+                  left: '20px',
+                  zIndex: 2,
+                  opacity: isAnalyzing ? 1 : 0,
+                }}
+              >
+                <ScanLine size={'13px'} color="#fff" strokeWidth={'3px'} />
+              </Stack>
+              <WebCamView />
+
+              <WebCamFooter name={myUserName || i18n._('You')} />
+            </Stack>
           </Stack>
-        </Stack>
+        )}
 
         <Stack
           id="messages-call-mode"
@@ -227,10 +239,10 @@ export const CameraCanvas = ({
             top: 0,
             left: 0,
             display: isSubtitlesEnabled ? 'flex' : 'none',
-            paddingTop: topHeight,
+            paddingTop: captionsTopPadding,
             paddingBottom: footerHeight,
             '@media (max-width: 800px)': {
-              paddingTop: topHeightMobile,
+              paddingTop: captionsTopPaddingMobile,
             },
           }}
         >
@@ -271,12 +283,9 @@ export const CameraCanvas = ({
             recordingVoiceMode={recordingVoiceMode}
             isWebCamEnabled={isWebCamEnabled}
             toggleWebCam={(isToggleOn: boolean) => {
-              if (isToggleOn) {
-                setIsWebCamEnabled(true);
-              } else {
-                setIsWebCamEnabled(false);
-              }
+              setIsWebCamEnabled(isToggleOn);
             }}
+            onSelectMicrophone={onSelectMicrophone}
             exit={stopCallMode}
             isVolumeOn={isVolumeOn}
             setIsVolumeOn={setIsVolumeOn}
