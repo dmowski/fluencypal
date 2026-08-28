@@ -70,3 +70,6 @@ When changing one area, run checks for that area first. Avoid running full Playw
 - Firebase emulator workflow: `webApp/FIREBASE_EMULATOR_SETUP.md`
 - Security reporting: `webApp/SECURITY.md`
 - Web-specific coding guidance: `webApp/AGENTS.md`
+- Custom analytics (daily report, funnel, interventions): `webApp/src/features/Analytics/Custom/AGENTS.md`
+
+When asked what happened today / “what's going today”, follow that analytics guide: export with `cd webApp && pnpm analytics:export`, then write the short report. Do not skip `INTERVENTIONS.md`.

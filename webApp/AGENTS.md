@@ -106,7 +106,12 @@ Daily and legacy user tasks live in `src/features/Tasks/`. Full architecture (pl
 
 ## Custom Analytics
 
-First-party iframe journey tracking lives in `src/features/Analytics/Custom/`. Architecture, security, and how to read the data: `src/features/Analytics/Custom/AGENTS.md`. Admin UI: `/staats/journey`.
+First-party iframe journey tracking: `src/features/Analytics/Custom/`.
+
+- Guide + **“What's going today?”** report format: `src/features/Analytics/Custom/AGENTS.md`
+- Intervention log (do not repeat experiments): `src/features/Analytics/Custom/INTERVENTIONS.md`
+- Admin UI: `/staats/journey`
+- Export: `cd webApp && pnpm analytics:export`
 
 ## Reader Highlight / Selection
 

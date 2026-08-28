@@ -12,6 +12,7 @@ export interface HeaderButton {
   title: string;
   href: string;
   isSolid: boolean;
+  analyticsId?: string;
 }
 
 export interface HeaderUIProps {

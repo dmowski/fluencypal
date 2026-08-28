@@ -58,6 +58,7 @@ export function HeaderComponentStatic({
           title: signInTitle,
           href: getAppUrlStart(lang) + 'practice',
           isSolid: true,
+          analyticsId: 'header-sign-in',
         },
       ]}
       logoHref={`${getUrlStartWithoutLastSlash(lang)}`}

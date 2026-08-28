@@ -53,6 +53,17 @@ i18n._('Speaking');
 - Emulator usage requires Java 11+.
 - Production Sentry upload paths require Sentry env vars; do not treat missing vars as code regressions in local-only tasks.
 
+## Custom Analytics
+
+Landing embed only (`src/features/Analytics/Custom/`). Do not import from `webApp/`.
+
+Schema, daily report, SEO/GEO reading, and intervention log live in:
+
+- `../webApp/src/features/Analytics/Custom/AGENTS.md`
+- `../webApp/src/features/Analytics/Custom/INTERVENTIONS.md`
+
+When asked “what's going today?”, follow that guide (`cd webApp && pnpm analytics:export`). Keep landing `protocol.ts` event fields in sync with webApp ingest (`page_view`, `click`, `scroll_depth`, `page_leave` plus CTA/UTM/scroll).
+
 ## Additional References
 
 - `../README.md`

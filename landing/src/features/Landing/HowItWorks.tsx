@@ -224,6 +224,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
           variant="contained"
           size="large"
           color="info"
+          data-analytics="how-it-works-quiz"
           sx={{
             marginTop: '32px',
             padding: '14px 45px 14px 48px',

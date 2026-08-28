@@ -319,6 +319,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                           variant="contained"
                           size="large"
                           color="info"
+                          data-analytics="how-it-works-quiz"
                           sx={{
                             padding: '10px 30px',
                             backgroundColor: '#ffffff',

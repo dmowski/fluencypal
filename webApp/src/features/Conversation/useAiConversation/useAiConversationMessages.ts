@@ -5,6 +5,7 @@ import {
   ConversationType,
 } from '@/features/Conversation/conversation';
 import { activateAnalyticUser, conversationStarted } from '@/features/Analytics/activationTracker';
+import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
 import { useSettings } from '@/features/Settings/useSettings';
 import { setGlobalConversationId } from '@/features/Usage/globalConversationId';
@@ -31,6 +32,10 @@ export const useAiConversationMessages = () => {
     activateAnalyticUser();
     if (conversation.length === 1 && conversationId && isStartedAnalyticLogged.current === false) {
       conversationStarted(conversationId);
+      sendAnalyticsEvent({
+        name: 'conversation_start',
+        conversationId,
+      });
       isStartedAnalyticLogged.current = true;
     }
   }, [conversation, conversationId]);

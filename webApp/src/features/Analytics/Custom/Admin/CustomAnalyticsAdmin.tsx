@@ -12,7 +12,7 @@ import {
   AnalyticsVisitorDoc,
   JourneySummary,
 } from '@/features/Analytics/Custom/types';
-import { dropOffStepLabel } from '@/features/Analytics/Custom/classifyFunnel';
+import { dropOffStepLabel, visitorFunnelFlags } from '@/features/Analytics/Custom/classifyFunnel';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { useSettings } from '@/features/Settings/useSettings';
 import { StatCard } from '@/features/Analytics/AdminStats/StatCard';
@@ -59,7 +59,7 @@ export function CustomAnalyticsAdmin() {
       }
     } catch (loadError) {
       console.error(loadError);
-      setError('Failed to load journey analytics');
+      setError(loadError instanceof Error ? loadError.message : 'Failed to load journey analytics');
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +80,7 @@ export function CustomAnalyticsAdmin() {
       }
     } catch (loadError) {
       console.error(loadError);
-      setError('Failed to load visitor journey');
+      setError(loadError instanceof Error ? loadError.message : 'Failed to load visitor journey');
     } finally {
       setIsLoading(false);
     }
@@ -148,7 +148,10 @@ export function CustomAnalyticsAdmin() {
             <StatCard value={summary.funnel.app} label="Opened app" />
             <StatCard value={summary.funnel.auth} label="Signed in" />
             <StatCard value={summary.funnel.quiz} label="Opened quiz" />
-            <StatCard value={summary.funnel.practice} label="First conversation" />
+            <StatCard value={summary.funnel.practice} label="Practice page" />
+            <StatCard value={summary.funnel.conversation} label="Spoke" />
+            <StatCard value={summary.funnel.paywall} label="Paywall" />
+            <StatCard value={summary.funnel.checkout} label="Checkout" />
           </Stack>
 
           <Stack sx={{ gap: '8px' }}>
@@ -188,12 +191,13 @@ export function CustomAnalyticsAdmin() {
               >
                 <Stack sx={{ alignItems: 'flex-start', gap: '2px', width: '100%' }}>
                   <Typography variant="body2">
-                    {formatTime(visitor.lastSeenAtIso)} · {dropOffStepLabel(visitor)} ·{' '}
-                    {visitor.lastPath}
+                    {formatTime(visitor.lastSeenAtIso)} ·{' '}
+                    {dropOffStepLabel(visitorFunnelFlags(visitor))} · {visitor.lastPath}
                   </Typography>
                   <Typography variant="caption" sx={{ opacity: 0.8 }}>
                     {visitor.os} · {visitor.browser} · {formatScreen(visitor)} ·{' '}
                     {visitor.eventCount} events
+                    {visitor.country ? ` · ${visitor.country}` : ''}
                     {visitor.authUserId ? ` · uid ${visitor.authUserId.slice(0, 8)}` : ''}
                   </Typography>
                 </Stack>
@@ -228,7 +232,23 @@ export function CustomAnalyticsAdmin() {
               </Typography>
               {event.name === 'click' && (
                 <Typography variant="caption" sx={{ opacity: 0.85 }}>
-                  {event.tagName} {event.buttonText || event.buttonId || event.buttonHref}
+                  {event.ctaIntent || event.tagName} {event.ctaId || event.buttonId}{' '}
+                  {event.buttonText || event.buttonHref}
+                </Typography>
+              )}
+              {event.name === 'scroll_depth' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.scrollPct}%
+                </Typography>
+              )}
+              {event.name === 'page_leave' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {Math.round((event.durationMs || 0) / 1000)}s · scroll {event.maxScrollPct ?? 0}%
+                </Typography>
+              )}
+              {event.name === 'conversation_start' && event.conversationId && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.conversationId}
                 </Typography>
               )}
             </Stack>

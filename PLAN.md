@@ -2,23 +2,6 @@
 
 ## Analytics
 
-How deep people scroll on main landing page
-What the button they click to open Quiz or sign in
-How much they spend on landing page.
-What the path to first conversation.
-Skip bots from analytics.
-
-What can be improved to make user start conversation.
-Why user exit the app.
-What to do so they continue using the app.
-What to do so they pay subscription
-
-Update events logs to extract all necessary information to answer these questions and provide meaningful suggestions.
-
-Do SEO/GEO analysis. What can be improved?
-
-How to keep track of changes so we won't end up in loop.
-
 ## Landing: Show real demo
 
 Check eagerness: 'low' how work

@@ -33,6 +33,9 @@ export const summarizeJourneys = (
     auth: 0,
     quiz: 0,
     practice: 0,
+    conversation: 0,
+    paywall: 0,
+    checkout: 0,
   };
   for (const visitor of visitors) {
     if (visitor.reachedLanding) funnel.landing += 1;
@@ -40,6 +43,9 @@ export const summarizeJourneys = (
     if (visitor.reachedAuth) funnel.auth += 1;
     if (visitor.reachedQuiz) funnel.quiz += 1;
     if (visitor.reachedPractice) funnel.practice += 1;
+    if (visitor.reachedConversation) funnel.conversation += 1;
+    if (visitor.reachedPaywall) funnel.paywall += 1;
+    if (visitor.reachedCheckout) funnel.checkout += 1;
   }
 
   const os: JourneyOsRow[] = countBy(visitors.map((visitor) => visitor.os || 'Unknown OS')).map(

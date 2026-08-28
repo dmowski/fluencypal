@@ -2,6 +2,9 @@ import { ANALYTICS_MESSAGE_SOURCE, PRODUCTION_APP_ORIGIN } from './constants';
 import { buildEventMessage, getTrackerOrigin } from './protocol';
 import { AnalyticsClientEvent, AnalyticsSourceApp } from './types';
 import { validateClientEvent } from './validateEvent';
+import { classifyCta } from './classifyCta';
+import { parseTraffic } from './parseTraffic';
+import { isBotBrowser } from './isBotUserAgent';
 
 type QueuedMessage = ReturnType<typeof buildEventMessage>;
 
@@ -62,14 +65,27 @@ export const sendAnalyticsEvent = (
   partial: Partial<AnalyticsClientEvent> & Pick<AnalyticsClientEvent, 'name'>,
 ): void => {
   if (typeof window === 'undefined') return;
+  if (isBotBrowser()) return;
+
+  const href = partial.href || window.location.href;
+  const referrer = partial.referrer ?? document.referrer;
+  const traffic = parseTraffic(href, referrer);
+  const cta =
+    partial.name === 'click'
+      ? classifyCta({
+          href: partial.buttonHref || href,
+          buttonId: partial.buttonId,
+          buttonText: partial.buttonText,
+        })
+      : null;
 
   const event = validateClientEvent({
     name: partial.name,
     sourceApp: partial.sourceApp || sourceApp,
     path: partial.path || `${window.location.pathname}${window.location.search}`,
-    href: partial.href || window.location.href,
+    href,
     title: partial.title || document.title,
-    referrer: partial.referrer ?? document.referrer,
+    referrer,
     language: partial.language || navigator.language,
     screen: partial.screen || {
       width: window.screen.width,
@@ -80,6 +96,17 @@ export const sendAnalyticsEvent = (
     buttonText: partial.buttonText,
     buttonHref: partial.buttonHref,
     tagName: partial.tagName,
+    ctaId: partial.ctaId || cta?.ctaId,
+    ctaIntent: partial.ctaIntent || cta?.ctaIntent,
+    scrollPct: partial.scrollPct,
+    durationMs: partial.durationMs,
+    maxScrollPct: partial.maxScrollPct,
+    utmSource: partial.utmSource || traffic.utmSource,
+    utmMedium: partial.utmMedium || traffic.utmMedium,
+    utmCampaign: partial.utmCampaign || traffic.utmCampaign,
+    gclid: partial.gclid || traffic.gclid,
+    referrerHost: partial.referrerHost || traffic.referrerHost,
+    conversationId: partial.conversationId,
   });
 
   if (!event) return;

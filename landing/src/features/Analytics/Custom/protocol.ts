@@ -3,7 +3,7 @@ export const ANALYTICS_TRACKER_PATH = '/analytics/tracker';
 export const PRODUCTION_APP_ORIGIN = 'https://app.fluencypal.com';
 export const LOCAL_APP_ORIGIN = 'http://localhost:3000';
 
-export type LandingAnalyticsEventName = 'page_view' | 'click';
+export type LandingAnalyticsEventName = 'page_view' | 'click' | 'scroll_depth' | 'page_leave';
 
 export type LandingAnalyticsEvent = {
   name: LandingAnalyticsEventName;
@@ -18,6 +18,16 @@ export type LandingAnalyticsEvent = {
   buttonText?: string;
   buttonHref?: string;
   tagName?: string;
+  ctaId?: string;
+  ctaIntent?: 'quiz' | 'signin' | 'practice' | 'pricing' | 'other';
+  scrollPct?: number;
+  durationMs?: number;
+  maxScrollPct?: number;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  gclid?: string;
+  referrerHost?: string;
 };
 
 export type LandingParentToIframeMessage =
@@ -80,4 +90,75 @@ export const isAllowedAnalyticsOrigin = (origin: string): boolean => {
     return false;
   }
   return false;
+};
+
+const BOT_PATTERN =
+  /bot|crawler|spider|crawling|preview|headless|slurp|bingpreview|facebookexternalhit|whatsapp|telegram|discord|slackbot|twitterbot|linkedinbot|semrush|ahrefs|gptbot|claudebot|bytespider|lighthouse|playwright|puppeteer|cypress|wget|curl|python-requests/i;
+
+export const isBotBrowser = (): boolean => {
+  if (typeof navigator === 'undefined') return false;
+  if (navigator.webdriver) return true;
+  return BOT_PATTERN.test(navigator.userAgent || '');
+};
+
+export const classifyCta = (input: { href?: string; buttonId?: string; buttonText?: string }) => {
+  const buttonId = (input.buttonId || '').trim();
+  const href = (input.href || '').toLowerCase();
+  const id = buttonId.toLowerCase();
+  if (id.includes('sign-in') || id.includes('signin') || id === 'header-sign-in') {
+    return { ctaId: buttonId || 'header-sign-in', ctaIntent: 'signin' as const };
+  }
+  if (id.includes('returning') || id === 'returning-practice') {
+    return { ctaId: buttonId || 'returning-practice', ctaIntent: 'signin' as const };
+  }
+  if (id.includes('quiz') || href.includes('/quiz')) {
+    return { ctaId: buttonId || 'quiz', ctaIntent: 'quiz' as const };
+  }
+  if (href.includes('/pricing') || href.includes('/price')) {
+    return { ctaId: buttonId || 'pricing', ctaIntent: 'pricing' as const };
+  }
+  if (href.includes('/practice')) {
+    return { ctaId: buttonId || 'practice', ctaIntent: 'practice' as const };
+  }
+  return { ctaId: buttonId || 'other', ctaIntent: 'other' as const };
+};
+
+export const parseTraffic = (href: string, referrer: string) => {
+  let utmSource = '';
+  let utmMedium = '';
+  let utmCampaign = '';
+  let gclid = '';
+  let referrerHost = '';
+  try {
+    const url = new URL(href);
+    utmSource = url.searchParams.get('utm_source') || '';
+    utmMedium = url.searchParams.get('utm_medium') || '';
+    utmCampaign = url.searchParams.get('utm_campaign') || '';
+    gclid = url.searchParams.get('gclid') || '';
+  } catch {
+    // ignore
+  }
+  try {
+    if (referrer) referrerHost = new URL(referrer).host;
+  } catch {
+    referrerHost = '';
+  }
+  return { utmSource, utmMedium, utmCampaign, gclid, referrerHost };
+};
+
+export const currentScrollPercent = (): number => {
+  if (typeof window === 'undefined') return 0;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  if (max <= 0) return 100;
+  return Math.max(0, Math.min(100, Math.round((window.scrollY / max) * 100)));
+};
+
+export const nextScrollBucket = (
+  previousMax: number,
+  current: number,
+): 25 | 50 | 75 | 100 | null => {
+  for (const bucket of [25, 50, 75, 100] as const) {
+    if (current >= bucket && previousMax < bucket) return bucket;
+  }
+  return null;
 };

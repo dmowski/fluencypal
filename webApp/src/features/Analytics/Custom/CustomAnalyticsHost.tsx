@@ -14,6 +14,8 @@ import {
 import { buildHelloMessage, getTrackerOrigin, getTrackerUrl } from './protocol';
 import { AnalyticsSourceApp } from './types';
 import { isAllowedAnalyticsOrigin } from './allowedOrigins';
+import { isBotBrowser } from './isBotUserAgent';
+import { currentScrollPercent, nextScrollBucket } from './pageEngagement';
 
 const iframeStyle: React.CSSProperties = {
   position: 'absolute',
@@ -50,8 +52,11 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
   const pathname = usePathname() || '';
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const lastPathRef = useRef('');
-  const skip = shouldSkipPath(pathname);
+  const skip = shouldSkipPath(pathname) || isBotBrowser();
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
+  const maxScrollRef = useRef(0);
+  const pageStartedAtRef = useRef(Date.now());
+  const leaveSentAtRef = useRef(0);
 
   useEffect(() => {
     setMountNode(document.body);
@@ -85,7 +90,18 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
         ? pathname
         : `${window.location.pathname}${window.location.search}`;
     if (!path || path === lastPathRef.current) return;
+    if (lastPathRef.current) {
+      sendAnalyticsEvent({
+        name: 'page_leave',
+        sourceApp,
+        path: lastPathRef.current,
+        durationMs: Date.now() - pageStartedAtRef.current,
+        maxScrollPct: maxScrollRef.current,
+      });
+    }
     lastPathRef.current = path;
+    maxScrollRef.current = currentScrollPercent();
+    pageStartedAtRef.current = Date.now();
     sendAnalyticsEvent({
       name: 'page_view',
       sourceApp,
@@ -106,6 +122,47 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
     };
     document.addEventListener('click', onClick, true);
     return () => document.removeEventListener('click', onClick, true);
+  }, [sourceApp, skip]);
+
+  useEffect(() => {
+    if (skip) return;
+    const emitLeave = () => {
+      const now = Date.now();
+      if (now - leaveSentAtRef.current < 2000) return;
+      leaveSentAtRef.current = now;
+      sendAnalyticsEvent({
+        name: 'page_leave',
+        sourceApp,
+        durationMs: now - pageStartedAtRef.current,
+        maxScrollPct: maxScrollRef.current,
+      });
+    };
+    const onScroll = () => {
+      const current = currentScrollPercent();
+      let bucket = nextScrollBucket(maxScrollRef.current, current);
+      while (bucket) {
+        maxScrollRef.current = bucket;
+        sendAnalyticsEvent({
+          name: 'scroll_depth',
+          sourceApp,
+          scrollPct: bucket,
+          maxScrollPct: maxScrollRef.current,
+        });
+        bucket = nextScrollBucket(maxScrollRef.current, current);
+      }
+      maxScrollRef.current = Math.max(maxScrollRef.current, current);
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') emitLeave();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('pagehide', emitLeave);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('pagehide', emitLeave);
+    };
   }, [sourceApp, skip]);
 
   if (skip || !mountNode) return null;

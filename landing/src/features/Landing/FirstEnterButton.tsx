@@ -55,6 +55,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
         variant="contained"
         size="large"
         href={openMyPracticeLink || practiceLink}
+        data-analytics={openMyPracticeLink ? 'returning-practice' : 'hero-cta'}
         endIcon={endIcon}
         startIcon={startIcon}
       >
@@ -107,6 +108,7 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
         variant="contained"
         size="large"
         href={openMyPracticeLink || practiceLink}
+        data-analytics={openMyPracticeLink ? 'returning-practice' : 'hero-cta'}
         endIcon={endIcon}
         startIcon={startIcon}
       >

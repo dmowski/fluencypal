@@ -1,102 +1,117 @@
 # Custom Analytics
 
 Applies to `webApp/src/features/Analytics/Custom/**`.
-Landing embed lives in `landing/src/features/Analytics/Custom/`.
+Landing embed: `landing/src/features/Analytics/Custom/`.
+Intervention log: `INTERVENTIONS.md` (same folder).
 
 ## Purpose
 
-First-party journey tracking from landing → auth / quiz / first conversation.
+Answer: where people drop from landing → quiz/sign-in → first **spoken** conversation → pay, and what to change — without repeating the same experiment.
 
-Goals this data should serve:
+Goals:
 
-1. More active AI conversation (where people drop before speaking)
-2. More subscriptions (which landing/app paths convert)
+1. More people start an AI conversation
+2. More subscriptions
+
+## "What's going today?"
+
+When the user asks what happened today (or similar):
+
+1. `cd webApp && pnpm analytics:export`
+2. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `dropOff`, then sample a few visitor timelines. Do not paste raw user agents or emails.
+3. Read `INTERVENTIONS.md` so suggestions are not a loop.
+4. Reply with this short report:
+
+```
+Today (YYYY-MM-DD)
+- Visitors: N (bots excluded)
+- Funnel: landing → app → quiz → practice → spoke → paywall → checkout
+- Landing: avg time, scroll 25/50/75/100, first paths
+- Time on pages: insights.durationByPath
+- CTAs: quiz vs sign-in (quizCtaIds / signInCtaIds)
+- Path to first speak: pathBeforeSpeak + conversationStartPaths
+- GEO/SEO: countries, languages, referrers, UTM, firstPaths
+- Where they stop: top last paths
+- Spoke / paywallViews / checkoutStarts
+
+Why they leave: …
+What to do next (one change): …  [must be new vs INTERVENTIONS.md]
+```
+
+If the export is empty, say so; do not invent traffic.
+
+## Events
+
+| Event                | When                                | Answers                                                               |
+| -------------------- | ----------------------------------- | --------------------------------------------------------------------- |
+| `page_view`          | Route change                        | Path, UTM, referrer host                                              |
+| `click`              | `a` / `button` / `[data-analytics]` | `ctaId` + `ctaIntent` (`quiz` \| `signin` \| `practice` \| `pricing`) |
+| `scroll_depth`       | 25 / 50 / 75 / 100 on a page        | How deep they scroll                                                  |
+| `page_leave`         | hide / pagehide                     | Time on page (`durationMs`), `maxScrollPct`                           |
+| `identify`           | Signed-in uid                       | Auth                                                                  |
+| `conversation_start` | First message in a conversation     | Real speak, not just /practice                                        |
+| `paywall_view`       | Subscription modal opens            | Saw paywall                                                           |
+| `checkout_start`     | Stripe checkout created             | Tried to pay                                                          |
+
+Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation`.
+
+Country comes from `x-vercel-ip-country` / `cf-ipcountry` on ingest (not stored IP).
+
+Bots (UA + `navigator.webdriver`) are dropped and never written.
+
+CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-works-quiz`. Href still classifies `/quiz` vs `/practice`.
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  L[Landing page]
-  W[webApp page]
-  I[iframe /analytics/tracker]
-  API["POST /api/analytics/ingest"]
-  DB[(customAnalyticsVisitors + customAnalyticsEvents)]
-  ADM["/staats/journey"]
-  JAPI["POST /api/analytics/journey"]
+Parent → iframe `/analytics/tracker` → `POST /api/analytics/ingest` → Admin SDK → `customAnalyticsVisitors` + `customAnalyticsEvents`. Client Firestore: deny all.
 
-  L -->|postMessage event| I
-  W -->|postMessage event| I
-  I -->|same-origin fetch| API
-  API --> DB
-  ADM --> JAPI
-  JAPI --> DB
+## Local commands
+
+```bash
+cd webApp && pnpm firestore:indexes
+cd webApp && pnpm analytics:export
+cd webApp && pnpm analytics:export -- --day 2026-08-28
 ```
 
-- Parent page never writes to Firestore.
-- The iframe is hosted on `app.fluencypal.com`, so `localStorage` visitor ids are shared across `www` and `app` (same eTLD+1, iframe origin is the app).
-- If no visitor id exists, the iframe creates `fpv_<uuid>` and stores it in `localStorage`.
+Admin UI: `/staats/journey`
 
-## Core events (v1)
+## How to read for product questions
 
-| Event       | When                                                 |
-| ----------- | ---------------------------------------------------- |
-| `page_view` | Path change on landing or webApp                     |
-| `click`     | `a`, `button`, `[data-analytics]`, `[role="button"]` |
-| `identify`  | Signed-in `auth.uid` becomes available               |
+**Start a conversation:** compare `clickedQuizCta` / `clickedSignInCta` vs `reachedQuiz` vs `reachedPractice` vs `reachedConversation`. If they open practice but do not speak, the blocker is in-app (auth, mic, empty canvas), not the landing CTA. If they bounce with low scroll and short `landingDurationMs`, the hero/CTA is the problem.
 
-Each event includes path, href, title, referrer, language, screen size, source app (`landing` | `webapp`), and optional auth uid.
+**Why they exit:** last path + last event + time on that page. Landing leave at <25% scroll = did not see How it works. App leave on quiz = onboarding friction. Practice without `conversation_start` = they never pressed talk.
 
-## Firestore
+**Keep them using the app:** people who spoke once but have no day-2 `page_view` — that is a return problem (tasks, reminder), not acquisition. Do not “fix” the landing hero for that.
 
-Client rules: **deny all**. Admin SDK only.
+**Subscriptions:** `paywall_view` without `checkout_start` = price/copy. `checkout_start` without payment in Stripe = checkout drop. No paywall after speaking = they never hit the limiter; do not push paywall earlier unless data shows they would still speak.
 
-| Collection                            | Doc                                                   | Role                |
-| ------------------------------------- | ----------------------------------------------------- | ------------------- |
-| `customAnalyticsVisitors/{visitorId}` | Summary: last path, device, funnel flags, event count | Today / drop-off    |
-| `customAnalyticsEvents/{eventId}`     | Full event timeline                                   | One visitor's route |
+## SEO / GEO
 
-Funnel flags on the visitor (sticky true): `reachedLanding`, `reachedApp`, `reachedAuth`, `reachedQuiz`, `reachedPractice`.
+From export `insights.countries`, `referrers`, `utmSources`, plus first path:
 
-## Admin UI
+- Empty referrer + no UTM = direct, PWA, or privacy-stripped search. Do not treat as “SEO is zero”.
+- Search/social referrer hosts with high bounce and low scroll → title/snippet vs page mismatch; check that language landing (`/es`, `/pt`) matches the query language.
+- Country vs visitor `language` / firstPath lang: if `BR` lands on `/` English, add clearer language switch or geo landing.
+- `gclid` / `utm_source=google` vs organic referrers: paid vs organic mix.
+- Landing paths other than `/` (blog, scenarios, pricing): which acquire speakers (`reachedConversation` and `pathBeforeSpeak`).
+- `insights.languages` vs `insights.countries`: browser language ≠ country; treat as GEO hint, not identity.
 
-`/staats/journey` (admin email only, same `DEV_EMAILS` gate as `/staats`).
+Do not change meta tags from a single day’s sample. Pair with Search Console if suggesting SEO copy.
 
-Shows users today, funnel, last path (drop-off), OS, and the full event route for a selected visitor.
+## Avoid looping
 
-## Security — keep this off the public internet
+Before suggesting a UI/copy change:
 
-Writes
+1. Check `INTERVENTIONS.md` for the same hypothesis.
+2. If already shipped and not measured, report data only.
+3. If you ship a change, append a row: date, hypothesis, change, metric, `shipped`.
+4. After a day of traffic, set `measured` and `keep` or `reverted`.
 
-- Browser clients cannot read or write these collections (`firestore.rules` deny).
-- Ingest is same-origin from the tracker iframe (`Origin` allowlist + `X-Fp-Analytics: tracker`).
-- Payload is schema-clipped; unknown fields are dropped.
-- Rate limits: ~4 events/sec/visitor, 180/hour/visitor, 40/10s/IP.
-- Tracker page: `frame-ancestors` allowlist, `noindex`, no UI.
+One change at a time.
 
-Reads
+## Security
 
-- `/api/analytics/journey` requires Firebase ID token and `DEV_EMAILS`.
-- Do not add client Firestore listeners for these collections.
-- Do not enable CORS on ingest for arbitrary origins.
-
-Iframe
-
-- `Content-Security-Policy: frame-ancestors` on `/analytics/tracker` allows only FluencyPal hosts + localhost.
-- Parent `postMessage` is ignored unless `event.origin` is allowlisted.
-
-## How to extract data later
-
-1. **Admin page** — `/staats/journey` for daily ops.
-2. **Admin API** — `POST /api/analytics/journey` with a Firebase bearer token (admin email). Types: `summary` (date range) and `visitor` (full timeline).
-3. **Agent / analysis access** — use the Firebase Admin SDK (service account already used by webApp API). Never ship that key to the browser. A future read-only analysis endpoint can take a server secret and return aggregates, not raw dumps, if an agent should query it.
-4. **Export** — query `customAnalyticsEvents` by `dayKey` and `customAnalyticsVisitors` by `lastSeenAtIso`. Optional later: scheduled export to BigQuery or a JSON dump in Storage for longer-range funnel work.
-5. **Join to product data** — `authUserId` on the visitor doc links to `users/{uid}` (conversations, payments) once they sign in.
-
-Do not grant the public Firebase client SDK access to these collections. If an agent needs data, give it a server-side admin query, not a Firestore rule exception.
-
-## Local
-
-Tracker URL is `http://localhost:3000/analytics/tracker`. Landing on another port still points at port 3000, so run webApp for local ingest.
+Deny-all Firestore. Ingest: origin allowlist + bot skip + schema clip + rate limit. Journey API: admin email. Agent reads via local `pnpm analytics:export` only.
 
 ## Validation
 

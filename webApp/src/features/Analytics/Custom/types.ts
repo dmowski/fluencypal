@@ -1,4 +1,15 @@
-export const ANALYTICS_EVENT_NAMES = ['page_view', 'identify', 'click'] as const;
+import { CtaIntent } from './classifyCta';
+
+export const ANALYTICS_EVENT_NAMES = [
+  'page_view',
+  'identify',
+  'click',
+  'scroll_depth',
+  'page_leave',
+  'conversation_start',
+  'paywall_view',
+  'checkout_start',
+] as const;
 export type AnalyticsEventName = (typeof ANALYTICS_EVENT_NAMES)[number];
 
 export const ANALYTICS_SOURCE_APPS = ['landing', 'webapp'] as const;
@@ -23,6 +34,17 @@ export type AnalyticsClientEvent = {
   buttonText?: string;
   buttonHref?: string;
   tagName?: string;
+  ctaId?: string;
+  ctaIntent?: CtaIntent;
+  scrollPct?: number;
+  durationMs?: number;
+  maxScrollPct?: number;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  gclid?: string;
+  referrerHost?: string;
+  conversationId?: string;
 };
 
 export type AnalyticsDeviceInfo = {
@@ -54,6 +76,18 @@ export type AnalyticsEventDoc = {
   buttonText: string | null;
   buttonHref: string | null;
   tagName: string | null;
+  ctaId: string | null;
+  ctaIntent: string | null;
+  scrollPct: number | null;
+  durationMs: number | null;
+  maxScrollPct: number | null;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  gclid: string | null;
+  referrerHost: string | null;
+  country: string | null;
+  conversationId: string | null;
 };
 
 export type AnalyticsVisitorDoc = {
@@ -81,6 +115,18 @@ export type AnalyticsVisitorDoc = {
   reachedAuth: boolean;
   reachedQuiz: boolean;
   reachedPractice: boolean;
+  reachedConversation?: boolean;
+  reachedPaywall?: boolean;
+  reachedCheckout?: boolean;
+  clickedQuizCta?: boolean;
+  clickedSignInCta?: boolean;
+  maxScrollPct?: number;
+  landingDurationMs?: number;
+  country?: string | null;
+  utmSource?: string | null;
+  utmMedium?: string | null;
+  utmCampaign?: string | null;
+  referrerHost?: string | null;
 };
 
 export type JourneyDropOffRow = {
@@ -94,6 +140,9 @@ export type JourneyFunnel = {
   auth: number;
   quiz: number;
   practice: number;
+  conversation: number;
+  paywall: number;
+  checkout: number;
 };
 
 export type JourneyOsRow = {

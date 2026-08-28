@@ -3,7 +3,7 @@ import { Box, Button, ButtonGroup, Link, Stack, Typography } from '@mui/material
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
 import { useLingui } from '@lingui/react';
@@ -13,6 +13,7 @@ import { useSettings } from '../../Settings/useSettings';
 import { StripeCreateCheckoutRequest } from '../stripe.types';
 import { sleep } from '@/libs/sleep';
 import { useAnalytics } from '../../Analytics/useAnalytics';
+import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
 import { ConfirmPayment } from './ConfirmPayment';
@@ -44,6 +45,10 @@ export const SubscriptionPaymentModal = () => {
   const supportedLang = settings.pageLanguageCode || 'en';
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [amountHoursToAdd, setAmountHoursToAdd] = useState<0 | HoursPackage>(0);
+
+  useEffect(() => {
+    sendAnalyticsEvent({ name: 'paywall_view' });
+  }, []);
 
   const scrollTop = () => {
     containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
@@ -107,6 +112,10 @@ export const SubscriptionPaymentModal = () => {
             };
 
       setIsRedirecting(true);
+      sendAnalyticsEvent({
+        name: 'checkout_start',
+        ctaId: 'selectedSubscriptionDuration' in props ? 'subscription' : 'hours',
+      });
 
       const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
 

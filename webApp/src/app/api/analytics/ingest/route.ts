@@ -9,6 +9,8 @@ import {
   isRateLimited,
 } from '@/features/Analytics/Custom/backend/ingestEvent';
 import { IngestEventRequest, IngestEventResponse } from '@/features/Analytics/Custom/types';
+import { countryFromHeaders } from '@/features/Analytics/Custom/countryFromHeaders';
+import { isBotUserAgent } from '@/features/Analytics/Custom/isBotUserAgent';
 import { validateClientEvent, validateVisitorId } from '@/features/Analytics/Custom/validateEvent';
 
 const json = (body: IngestEventResponse, status: number) => Response.json(body, { status });
@@ -38,6 +40,10 @@ export async function POST(request: NextRequest) {
     }
 
     const ip = clientIpFromHeaders(request);
+    const userAgent = (request.headers.get('user-agent') || '').slice(0, 500);
+    if (isBotUserAgent(userAgent)) {
+      return json({ ok: true }, 200);
+    }
     if (isRateLimited(visitorId, ip)) {
       return json({ ok: false, error: 'Rate limited' }, 429);
     }
@@ -45,7 +51,8 @@ export async function POST(request: NextRequest) {
     await ingestAnalyticsEvent({
       visitorId,
       event,
-      userAgent: (request.headers.get('user-agent') || '').slice(0, 500),
+      userAgent,
+      country: countryFromHeaders(request),
     });
 
     return json({ ok: true }, 200);

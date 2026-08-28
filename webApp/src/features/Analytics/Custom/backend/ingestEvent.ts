@@ -1,7 +1,7 @@
 import { FieldValue } from 'firebase-admin/firestore';
 import { getDB } from '@/app/api/config/firebase';
 import { parseBrowserInfo } from '@/features/Analytics/AdminStats/parseBrowserInfo';
-import { classifyFunnelFlags, mergeFunnelFlags } from '../classifyFunnel';
+import { classifyFunnelFlags, mergeFunnelFlags, visitorFunnelFlags } from '../classifyFunnel';
 import { AnalyticsClientEvent, AnalyticsEventDoc, AnalyticsVisitorDoc } from '../types';
 import { eventsCollectionName, visitorsCollectionName } from './collections';
 import { isValidVisitorId } from '../visitorId';
@@ -56,6 +56,7 @@ export const ingestAnalyticsEvent = async (input: {
   visitorId: string;
   event: AnalyticsClientEvent;
   userAgent: string;
+  country: string;
 }): Promise<void> => {
   if (!isValidVisitorId(input.visitorId)) {
     throw new Error('Invalid visitor id');
@@ -68,6 +69,7 @@ export const ingestAnalyticsEvent = async (input: {
   const host = hostFromHref(input.event.href);
   const flags = classifyFunnelFlags(input.event);
   const eventId = `${input.visitorId}_${createdAtMs}_${Math.random().toString(36).slice(2, 8)}`;
+  const country = input.country || null;
 
   const eventDoc: AnalyticsEventDoc = {
     visitorId: input.visitorId,
@@ -92,6 +94,18 @@ export const ingestAnalyticsEvent = async (input: {
     buttonText: input.event.buttonText || null,
     buttonHref: input.event.buttonHref || null,
     tagName: input.event.tagName || null,
+    ctaId: input.event.ctaId || null,
+    ctaIntent: input.event.ctaIntent || null,
+    scrollPct: input.event.scrollPct ?? null,
+    durationMs: input.event.durationMs ?? null,
+    maxScrollPct: input.event.maxScrollPct ?? null,
+    utmSource: input.event.utmSource || null,
+    utmMedium: input.event.utmMedium || null,
+    utmCampaign: input.event.utmCampaign || null,
+    gclid: input.event.gclid || null,
+    referrerHost: input.event.referrerHost || null,
+    country,
+    conversationId: input.event.conversationId || null,
   };
 
   const db = getDB();
@@ -101,6 +115,12 @@ export const ingestAnalyticsEvent = async (input: {
 
   const batch = db.batch();
   batch.set(eventRef, eventDoc);
+
+  const landingDurationMs =
+    input.event.sourceApp === 'landing' && input.event.name === 'page_leave'
+      ? input.event.durationMs || 0
+      : 0;
+  const maxScrollPct = Math.max(input.event.maxScrollPct || 0, input.event.scrollPct || 0);
 
   if (!existing.exists) {
     const visitor: AnalyticsVisitorDoc = {
@@ -123,12 +143,19 @@ export const ingestAnalyticsEvent = async (input: {
       language: input.event.language,
       authUserId: input.event.authUserId || null,
       lastReferrer: input.event.referrer,
+      maxScrollPct,
+      landingDurationMs,
+      country,
+      utmSource: input.event.utmSource || null,
+      utmMedium: input.event.utmMedium || null,
+      utmCampaign: input.event.utmCampaign || null,
+      referrerHost: input.event.referrerHost || null,
       ...flags,
     };
     batch.set(visitorRef, visitor);
   } else {
     const previous = existing.data() as AnalyticsVisitorDoc;
-    const merged = mergeFunnelFlags(previous, flags);
+    const merged = mergeFunnelFlags(visitorFunnelFlags(previous), flags);
     batch.update(visitorRef, {
       lastSeenAtIso: createdAtIso,
       lastPath: input.event.path,
@@ -144,6 +171,13 @@ export const ingestAnalyticsEvent = async (input: {
       language: input.event.language,
       authUserId: input.event.authUserId || previous.authUserId || null,
       lastReferrer: input.event.referrer,
+      maxScrollPct: Math.max(previous.maxScrollPct || 0, maxScrollPct),
+      landingDurationMs: (previous.landingDurationMs || 0) + landingDurationMs,
+      country: previous.country || country,
+      utmSource: previous.utmSource || input.event.utmSource || null,
+      utmMedium: previous.utmMedium || input.event.utmMedium || null,
+      utmCampaign: previous.utmCampaign || input.event.utmCampaign || null,
+      referrerHost: previous.referrerHost || input.event.referrerHost || null,
       ...merged,
     });
   }

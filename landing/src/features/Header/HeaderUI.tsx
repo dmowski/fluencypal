@@ -201,6 +201,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                 variant={'contained'}
                 color="info"
                 className={button.isSolid ? '' : 'hideOnMobile'}
+                data-analytics={button.analyticsId || 'header-cta'}
                 sx={{
                   minWidth: 'max-content',
                 }}
@@ -289,6 +290,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                 }}
                 variant="contained"
                 color="info"
+                data-analytics={button.analyticsId || 'header-cta'}
               >
                 {button.title}
               </Button>

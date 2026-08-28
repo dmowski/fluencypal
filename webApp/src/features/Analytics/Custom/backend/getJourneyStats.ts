@@ -33,13 +33,16 @@ export const getVisitorJourney = async (visitorId: string): Promise<JourneyRespo
   const eventsSnap = await db
     .collection(eventsCollectionName)
     .where('visitorId', '==', visitorId)
-    .orderBy('createdAtMs', 'asc')
     .limit(MAX_EVENTS_PER_VISITOR)
     .get();
+
+  const events = eventsSnap.docs
+    .map((doc) => doc.data() as AnalyticsEventDoc)
+    .sort((a, b) => a.createdAtMs - b.createdAtMs);
 
   return {
     type: 'visitor',
     visitor: visitorSnap.exists ? (visitorSnap.data() as AnalyticsVisitorDoc) : null,
-    events: eventsSnap.docs.map((doc) => doc.data() as AnalyticsEventDoc),
+    events,
   };
 };

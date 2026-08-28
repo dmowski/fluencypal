@@ -10,7 +10,8 @@ export const loadJourneyRequest = async (request: JourneyRequest, auth: string) 
     body: JSON.stringify(request),
   });
   if (!response.ok) {
-    throw new Error('Failed to load journey analytics');
+    const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+    throw new Error(payload?.error || 'Failed to load journey analytics');
   }
   return (await response.json()) as JourneyResponse;
 };

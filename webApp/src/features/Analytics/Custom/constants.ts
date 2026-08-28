@@ -19,4 +19,10 @@ export const MAX_EVENT_STRING = {
   buttonHref: 500,
   tagName: 32,
   visitorId: 64,
+  ctaId: 80,
+  ctaIntent: 32,
+  utm: 80,
+  referrerHost: 120,
+  country: 8,
+  conversationId: 80,
 } as const;
