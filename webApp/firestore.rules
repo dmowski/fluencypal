@@ -341,6 +341,16 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Custom analytics: client SDK has no access. Writes go through Admin SDK
+    // ingest; reads go through the admin journey API (DEV_EMAILS).
+    match /customAnalyticsVisitors/{visitorId} {
+      allow read, write: if false;
+    }
+
+    match /customAnalyticsEvents/{eventId} {
+      allow read, write: if false;
+    }
+
     match /voiceChatMessages/{messageId} {
       allow read, write: if false;
     }

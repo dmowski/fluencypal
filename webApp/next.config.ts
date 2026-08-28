@@ -164,6 +164,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: '/analytics/tracker',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value:
+              "frame-ancestors 'self' https://www.fluencypal.com https://app.fluencypal.com https://book.fluencypal.com https://fluencypal.com http://localhost:3000 http://localhost:3001 http://127.0.0.1:3000 http://127.0.0.1:3001",
+          },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Cache-Control', value: 'no-store' },
+        ],
+      },
+    ];
+  },
 };
 export default withSentryConfig(nextConfig, {
   // For all available options, see:

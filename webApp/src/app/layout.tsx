@@ -9,6 +9,7 @@ import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
 import Script from 'next/script';
+import { CustomAnalyticsHost } from '@/features/Analytics/Custom/CustomAnalyticsHost';
 
 export default async function RootLayout({
   children,
@@ -45,7 +46,10 @@ export default async function RootLayout({
                 initialLocale={supportedLang}
                 initialMessages={allMessages[supportedLang]!}
               >
-                <UrlStateProvider>{children}</UrlStateProvider>
+                <UrlStateProvider>
+                  {children}
+                  <CustomAnalyticsHost sourceApp="webapp" />
+                </UrlStateProvider>
               </LinguiClientProvider>
             </AppRouterCacheProvider>
           </WindowSizesProvider>

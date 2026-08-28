@@ -7,6 +7,7 @@ import { initHotjar } from './initHotjar';
 import { initSentry } from './initSentry';
 import { initGTag } from './initGTag';
 import { confirmGtag } from './confirmGtag';
+import { sendAnalyticsEvent, setAnalyticsAuthUserId } from './Custom/sendAnalyticsEvent';
 
 const RUN_ON_DEV_ENV = false;
 
@@ -36,6 +37,15 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
     initSentry();
     initHotjar();
     setIsInitialized(true);
+  }, [auth.uid]);
+
+  useEffect(() => {
+    if (!auth.uid) return;
+    setAnalyticsAuthUserId(auth.uid);
+    sendAnalyticsEvent({
+      name: 'identify',
+      authUserId: auth.uid,
+    });
   }, [auth.uid]);
 
   const data: AnalyticsContextType = {

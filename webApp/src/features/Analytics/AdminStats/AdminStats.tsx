@@ -240,6 +240,19 @@ export function AdminStats() {
         >
           Blog
         </Button>
+
+        <Button
+          href="/staats/journey"
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant="outlined"
+        >
+          Journey
+        </Button>
       </Stack>
 
       {isEmails ? (

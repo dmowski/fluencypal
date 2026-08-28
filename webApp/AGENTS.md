@@ -104,6 +104,10 @@ News-linked quizzes in `src/features/Quiz/`:
 
 Daily and legacy user tasks live in `src/features/Tasks/`. Full architecture (plans, completion wiring, Firestore, access unlock): `src/features/Tasks/AGENTS.md`.
 
+## Custom Analytics
+
+First-party iframe journey tracking lives in `src/features/Analytics/Custom/`. Architecture, security, and how to read the data: `src/features/Analytics/Custom/AGENTS.md`. Admin UI: `/staats/journey`.
+
 ## Reader Highlight / Selection
 
 When modifying `src/features/Reader/components/Paragraph/`, `useReaderHighlightPopover`, or related e2e helpers under `e2e/libs/books/`:

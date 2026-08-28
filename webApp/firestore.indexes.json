@@ -8,6 +8,27 @@
         { "fieldPath": "languageCode", "order": "ASCENDING" },
         { "fieldPath": "dayKey", "order": "ASCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "customAnalyticsVisitors",
+      "queryScope": "COLLECTION",
+      "fields": [{ "fieldPath": "lastSeenAtIso", "order": "DESCENDING" }]
+    },
+    {
+      "collectionGroup": "customAnalyticsEvents",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "visitorId", "order": "ASCENDING" },
+        { "fieldPath": "createdAtMs", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "customAnalyticsEvents",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "dayKey", "order": "ASCENDING" },
+        { "fieldPath": "createdAtMs", "order": "DESCENDING" }
+      ]
     }
   ]
 }
