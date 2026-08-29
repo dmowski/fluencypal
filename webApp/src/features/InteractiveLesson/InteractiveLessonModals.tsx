@@ -41,6 +41,10 @@ export const InteractiveLessonModals = () => {
         onClose={lesson.closeProgress}
         audioProgress={lesson.audioProgress}
         lessons={lesson.history}
+        onContinueLesson={() => {
+          lesson.closeProgress();
+          lesson.openLesson();
+        }}
       />
     </>
   );

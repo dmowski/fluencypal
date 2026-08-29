@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
+import { OPEN_TALK_MIN_CHARS } from './constants';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 
 export { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
@@ -12,19 +13,22 @@ export const SpeechAnswerPanel = ({
   part,
   partIndex,
   isEvaluating,
+  isOpenTalk = false,
   onAudioReady,
   onSubmit,
 }: {
   part: LessonPartState;
   partIndex: number;
   isEvaluating: boolean;
+  isOpenTalk?: boolean;
   onAudioReady: (blob: Blob) => void;
   onSubmit: (transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   const recorder = useAudioRecorder();
   const submittedRef = useRef('');
   const cancelledRef = useRef(false);
-  const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < 4;
+  const minChars = isOpenTalk ? OPEN_TALK_MIN_CHARS : 4;
+  const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < minChars;
 
   useEffect(() => {
     if (!recorder.recordedBlob || recorder.isRecording) return;
@@ -38,7 +42,7 @@ export const SpeechAnswerPanel = ({
   useEffect(() => {
     const text = recorder.transcription?.trim() || '';
     if (recorder.isRecording || recorder.isTranscribing || isEvaluating) return;
-    if (text.length < 4) return;
+    if (text.length < minChars) return;
     if (submittedRef.current === text) return;
     submittedRef.current = text;
     void onSubmit(text, recorder.transcriptionBlob).then(() => {
@@ -52,6 +56,7 @@ export const SpeechAnswerPanel = ({
     recorder.removeTranscript,
     recorder.transcription,
     recorder.transcriptionBlob,
+    minChars,
   ]);
 
   return (
@@ -67,6 +72,7 @@ export const SpeechAnswerPanel = ({
       error={recorder.error}
       visualizer={recorder.visualizerComponent}
       needMoreText={needMoreText}
+      isOpenTalk={isOpenTalk}
       onToggleRecord={() => {
         if (recorder.isRecording) {
           void recorder.stopRecording();

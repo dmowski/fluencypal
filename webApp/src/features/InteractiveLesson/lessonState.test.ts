@@ -6,6 +6,7 @@ import {
   isLessonFinished,
   isSameLocalDay,
   promoteFinishedLesson,
+  summarizeOpenTalks,
 } from './lessonState';
 import { InteractiveLesson } from './types';
 
@@ -89,6 +90,38 @@ describe('lessonState', () => {
     expect(discarded.nextLesson).toBeNull();
     expect(discarded.lastCompletedAtIso).toBeNull();
     expect(discarded.history).toEqual([]);
+  });
+
+  it('summarizes long open talks and skips thin quiz answers', () => {
+    const thin = makeLesson({
+      title: 'Articles',
+      parts: [
+        {
+          type: 'speech',
+          contentMD: 'Say one sentence.',
+          userVoiceTranscript: 'I walked.',
+          aiResultToUser: 'Good.',
+        },
+      ],
+    });
+    const open = makeLesson({
+      title: 'Past stories',
+      parts: [
+        { type: 'read', contentMD: 'Rule' },
+        {
+          type: 'speech',
+          contentMD: 'Tell me about a weekend you remember.',
+          userVoiceTranscript:
+            'Last Saturday I woke up late and then I walked to the market with my sister. We bought fruit and talked about a trip.',
+          aiResultToUser: 'Watch past simple.',
+        },
+      ],
+    });
+
+    const summary = summarizeOpenTalks([thin, open]);
+    expect(summary).toContain('Past stories');
+    expect(summary).toContain('Last Saturday');
+    expect(summary).not.toContain('Articles');
   });
 
   it('does not promote an unfinished lesson', () => {

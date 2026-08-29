@@ -12,9 +12,10 @@ import { LessonPartSection } from './LessonPartSection';
 import { LessonResultsView } from './LessonResultsView';
 import { LessonScrollProgress } from './LessonScrollProgress';
 import { ThinkingProgress } from './ThinkingProgress';
-import { InteractiveLesson } from './types';
+import { InteractiveLesson, isOpenTalkPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
+import { findScrollParent } from './findScrollParent';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -77,6 +78,15 @@ export const InteractiveLessonModalContent = ({
     if (!lesson?.lessonResults || !resultsRef.current) return;
     resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [lesson?.lessonResults]);
+
+  const scrollLessonToTop = () => {
+    const scrollEl = findScrollParent(contentRef.current);
+    if (scrollEl) {
+      scrollEl.scrollTo({ top: 0 });
+      return;
+    }
+    contentRef.current?.scrollIntoView({ block: 'start' });
+  };
 
   const handleContinueLanguages = () => {
     ensuredRef.current = false;
@@ -158,6 +168,7 @@ export const InteractiveLessonModalContent = ({
                 part={part}
                 partIndex={index}
                 isEvaluating={evaluatingPartIndex === index}
+                isOpenTalk={isOpenTalkPart(lesson.parts, index)}
                 onPrepareSpeechAudio={onPrepareSpeechAudio}
                 onSubmitSpeech={onSubmitSpeech}
               />
@@ -215,6 +226,7 @@ export const InteractiveLessonModalContent = ({
                 isGeneratingNext={isGeneratingNext}
                 onNextLesson={() => {
                   void onNextLesson();
+                  scrollLessonToTop();
                 }}
                 onFinish={onClose}
               />

@@ -9,12 +9,14 @@ export const LessonPartSection = ({
   part,
   partIndex,
   isEvaluating,
+  isOpenTalk,
   onPrepareSpeechAudio,
   onSubmitSpeech,
 }: {
   part: LessonPartState;
   partIndex: number;
   isEvaluating: boolean;
+  isOpenTalk: boolean;
   onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
@@ -27,6 +29,7 @@ export const LessonPartSection = ({
           part={part}
           partIndex={partIndex}
           isEvaluating={isEvaluating}
+          isOpenTalk={isOpenTalk}
           onAudioReady={(blob) => onPrepareSpeechAudio(partIndex, blob)}
           onSubmit={(transcript, blob) => onSubmitSpeech(partIndex, transcript, blob)}
         />

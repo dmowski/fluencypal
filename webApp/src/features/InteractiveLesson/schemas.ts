@@ -11,7 +11,10 @@ export const generatedLessonSchema = z.object({
       }),
     )
     .min(3)
-    .max(12),
+    .max(12)
+    .refine((parts) => parts[parts.length - 1]?.type === 'speech', {
+      message: 'The last part must be an open speech task',
+    }),
 });
 
 export const speechFeedbackSchema = z.object({

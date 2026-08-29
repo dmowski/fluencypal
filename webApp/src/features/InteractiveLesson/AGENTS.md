@@ -83,10 +83,12 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 
 Each lesson trains **one checkable language form** (article, tense, chunk, contrast). Not “talk clearly” / “present better”.
 
+The **last part is always a 2–3 minute open talk** on a concrete topic. Short quiz-like speech items stay earlier. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
+
 | When | Context |
 | --- | --- |
-| First lesson | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a B1 lesson on one form. |
-| Later lessons | Previous lesson results and spoken answers. |
+| First lesson | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a B1 lesson on one form. Last part: open talk. |
+| Later lessons | Open talks first, then previous results and short answers. |
 
 In-flight generation is deduped per storage key so Strict Mode remounts do not double-call AI.
 
