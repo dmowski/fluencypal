@@ -1,5 +1,13 @@
+import { ensureAudioProgress } from './audioProgress';
 import { emptyLessonStore } from './lessonState';
-import { InteractiveLesson, InteractiveLessonStore, LessonPartState, LessonResults } from './types';
+import {
+  InteractiveLesson,
+  InteractiveLessonStore,
+  LessonAudioProgress,
+  LessonAudioRecord,
+  LessonPartState,
+  LessonResults,
+} from './types';
 
 const isRecord = (value: unknown): value is Record<string, unknown> => {
   return !!value && typeof value === 'object' && !Array.isArray(value);
@@ -61,6 +69,27 @@ export const parseInteractiveLesson = (value: unknown): InteractiveLesson | null
   };
 };
 
+const parseAudioRecord = (value: unknown): LessonAudioRecord | null => {
+  if (!isRecord(value)) return null;
+  if (typeof value.id !== 'string' || typeof value.audioUrl !== 'string') return null;
+  if (typeof value.transcript !== 'string' || typeof value.recordedAtIso !== 'string') return null;
+  return {
+    id: value.id,
+    audioUrl: value.audioUrl,
+    transcript: value.transcript,
+    recordedAtIso: value.recordedAtIso,
+  };
+};
+
+const parseAudioProgress = (value: unknown): LessonAudioProgress | null => {
+  if (!isRecord(value)) return null;
+  if (typeof value.totalCount !== 'number' || value.totalCount < 0) return null;
+  if (!Array.isArray(value.first) || !Array.isArray(value.last)) return null;
+  const first = value.first.map(parseAudioRecord).filter((record): record is LessonAudioRecord => !!record);
+  const last = value.last.map(parseAudioRecord).filter((record): record is LessonAudioRecord => !!record);
+  return { first, last, totalCount: value.totalCount };
+};
+
 export const parseInteractiveLessonStore = (value: unknown): InteractiveLessonStore => {
   if (!isRecord(value)) return emptyLessonStore();
 
@@ -70,11 +99,16 @@ export const parseInteractiveLessonStore = (value: unknown): InteractiveLessonSt
         .filter((lesson): lesson is InteractiveLesson => !!lesson)
     : [];
 
+  const currentLesson = parseInteractiveLesson(value.currentLesson);
+  const nextLesson = parseInteractiveLesson(value.nextLesson);
+  const oldestFirst = [...history].reverse().concat(currentLesson || [], nextLesson || []);
+
   return {
-    currentLesson: parseInteractiveLesson(value.currentLesson),
-    nextLesson: parseInteractiveLesson(value.nextLesson),
+    currentLesson,
+    nextLesson,
     history,
     lastCompletedAtIso:
       typeof value.lastCompletedAtIso === 'string' ? value.lastCompletedAtIso : null,
+    audioProgress: ensureAudioProgress(parseAudioProgress(value.audioProgress), oldestFirst),
   };
 };

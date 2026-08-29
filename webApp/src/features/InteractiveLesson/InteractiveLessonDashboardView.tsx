@@ -8,21 +8,21 @@ export const InteractiveLessonDashboardView = ({
   subTitle,
   cardTitle,
   cardSubTitle,
-  historyButtonTitle,
+  progressButtonTitle,
   badge,
   isDoneToday,
   onOpen,
-  onHistoryClick,
+  onProgressClick,
 }: {
   title: string;
   subTitle?: string;
   cardTitle: string;
   cardSubTitle: string;
-  historyButtonTitle: string;
+  progressButtonTitle: string;
   badge?: string;
   isDoneToday: boolean;
   onOpen: () => void;
-  onHistoryClick: () => void;
+  onProgressClick: () => void;
 }) => {
   return (
     <Stack
@@ -32,8 +32,8 @@ export const InteractiveLessonDashboardView = ({
       <SectionHeader
         title={title}
         subTitle={subTitle}
-        buttonTitle={historyButtonTitle}
-        onButtonClick={onHistoryClick}
+        buttonTitle={progressButtonTitle}
+        onButtonClick={onProgressClick}
       />
       <StoreCard
         textColor="#fff"

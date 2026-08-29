@@ -23,10 +23,15 @@ export const SpeechAnswerPanel = ({
 }) => {
   const recorder = useAudioRecorder();
   const submittedRef = useRef('');
+  const cancelledRef = useRef(false);
   const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < 4;
 
   useEffect(() => {
     if (!recorder.recordedBlob || recorder.isRecording) return;
+    if (cancelledRef.current) {
+      cancelledRef.current = false;
+      return;
+    }
     onAudioReady(recorder.recordedBlob);
   }, [onAudioReady, recorder.isRecording, recorder.recordedBlob]);
 
@@ -67,8 +72,13 @@ export const SpeechAnswerPanel = ({
           void recorder.stopRecording();
         } else {
           submittedRef.current = '';
+          cancelledRef.current = false;
           void recorder.startRecording();
         }
+      }}
+      onCancelRecord={() => {
+        cancelledRef.current = true;
+        void recorder.cancelRecording();
       }}
     />
   );

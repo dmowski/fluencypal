@@ -30,6 +30,9 @@ InteractiveLesson/
   InteractiveLessonModalContent.tsx
   SpeechAnswerPanel.tsx            — recorder hook + SpeechAnswerPanelView
   LessonHistoryView.tsx
+  LessonProgressView.tsx
+  LessonProgressModal.tsx
+  audioProgress.ts                 — first 10 / last 10 spoken answers
 ```
 
 Generation and UI run in the browser. Persistence is Firestore; spoken answers upload privately through `/api/uploadFile?visibility=private` and play back through an authenticated GET.
@@ -38,8 +41,8 @@ Generation and UI run in the browser. Persistence is Firestore; spoken answers u
 
 - Dashboard card **under Just Talk** (`InteractiveLessonDashboardCard`)
 - Modals live in `GlobalModals` via `InteractiveLessonModals`
-- Section header **History** opens previous finished lessons
-- Modal URL: `interactiveLesson=open`, history: `interactiveLessonHistory=open`
+- Section header **Progress** opens first/last spoken answers and previous finished lessons
+- Modal URL: `interactiveLesson=open`, progress: `interactiveLessonProgress=open`
 
 ## Data
 
@@ -53,6 +56,7 @@ Owner read/write in `firestore.rules` (`match /interactiveLessons/{languageCode}
   nextLesson,          // pre-generated after "I am done"
   history[],           // finished lessons, newest first
   lastCompletedAtIso,
+  audioProgress,       // first 10 + last 10 spoken answers, totalCount (compare after 110)
   languageCode,
   updatedAtIso
 }

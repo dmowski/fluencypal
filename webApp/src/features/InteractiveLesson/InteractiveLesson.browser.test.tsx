@@ -6,7 +6,8 @@ import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { InteractiveLessonDashboardView } from './InteractiveLessonDashboardView';
 import { InteractiveLessonModalContent } from './InteractiveLessonModalContent';
 import { LanguageSetupView } from './LanguageSetupView';
-import { LessonHistoryView } from './LessonHistoryView';
+import { LessonProgressView } from './LessonProgressView';
+import { emptyAudioProgress, recordLessonAudio } from './audioProgress';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import {
   FIXTURE_FINISHED_LESSON,
@@ -111,6 +112,7 @@ vi.mock('@/features/Goal/useLanguageGroup', () => ({
 const resetRecorder = () => {
   recorderMock.startRecording.mockReset();
   recorderMock.stopRecording.mockReset();
+  recorderMock.cancelRecording.mockReset();
   recorderMock.isRecording = false;
   recorderMock.isTranscribing = false;
   recorderMock.transcription = null;
@@ -160,15 +162,16 @@ test('dashboard card – today’s lesson', async () => {
         subTitle="Read, speak, and build a daily speaking habit."
         cardTitle={FIXTURE_LESSON.title}
         cardSubTitle={FIXTURE_LESSON.subTitle}
-        historyButtonTitle="History"
+        progressButtonTitle="Progress"
         isDoneToday={false}
         onOpen={noop}
-        onHistoryClick={noop}
+        onProgressClick={noop}
       />
     </div>,
   );
 
   await expect.element(page.getByText('Past Simple')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Progress' })).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-dashboard-card'))
     .toMatchScreenshot('dashboard-idle');
@@ -182,11 +185,11 @@ test('dashboard card – done today', async () => {
         subTitle="Read, speak, and build a daily speaking habit."
         cardTitle={FIXTURE_FINISHED_LESSON.title}
         cardSubTitle={FIXTURE_FINISHED_LESSON.subTitle}
-        historyButtonTitle="History"
+        progressButtonTitle="Progress"
         badge="Done today"
         isDoneToday={true}
         onOpen={noop}
-        onHistoryClick={noop}
+        onProgressClick={noop}
       />
     </div>,
   );
@@ -302,9 +305,12 @@ test('speech panel – recording', async () => {
   );
 
   await expect.element(page.getByRole('button', { name: 'Stop' })).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-cancel-recording')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-speech-1'))
     .toMatchScreenshot('speech-recording');
+  await userEvent.click(page.getByTestId('interactive-lesson-cancel-recording'));
+  expect(recorderMock.cancelRecording).toHaveBeenCalledOnce();
 });
 
 test('speech panel – thinking', async () => {
@@ -354,15 +360,35 @@ test('speech panel – answered uses a text Answer again button', async () => {
     .toMatchScreenshot('speech-answered');
 });
 
-test('history list', async () => {
+test('progress asks for more recordings before comparing', async () => {
   await renderInShell(
     <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
-      <LessonHistoryView lessons={[FIXTURE_FINISHED_LESSON]} />
+      <LessonProgressView audioProgress={emptyAudioProgress()} lessons={[]} />
     </div>,
   );
 
+  await expect.element(page.getByTestId('interactive-lesson-progress-needed')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-progress-before')).not.toBeInTheDocument();
+});
+
+test('progress shows before and after after 110 recordings', async () => {
+  const audioProgress = Array.from({ length: 110 }, (_, index) => ({
+    id: `audio-${index}`,
+    audioUrl: `/api/uploadFile?path=audio-${index}`,
+    transcript: `Answer ${index + 1}`,
+    recordedAtIso: '2026-08-29T10:00:00.000Z',
+  })).reduce(recordLessonAudio, emptyAudioProgress());
+
+  await renderInShell(
+    <div style={{ width: 800, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+      <LessonProgressView audioProgress={audioProgress} lessons={[FIXTURE_FINISHED_LESSON]} />
+    </div>,
+  );
+
+  await expect.element(page.getByTestId('interactive-lesson-progress-before')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-progress-after')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-history-list')).toBeVisible();
   await expect
-    .element(page.getByTestId('interactive-lesson-history-list'))
-    .toMatchScreenshot('history-list');
+    .element(page.getByTestId('interactive-lesson-progress'))
+    .toMatchScreenshot('progress-comparison');
 });

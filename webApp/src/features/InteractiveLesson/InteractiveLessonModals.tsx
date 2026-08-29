@@ -1,7 +1,7 @@
 'use client';
 
 import { InteractiveLessonModal } from './InteractiveLessonModal';
-import { LessonHistoryModal } from './LessonHistoryModal';
+import { LessonProgressModal } from './LessonProgressModal';
 import { useInteractiveLesson } from './useInteractiveLesson';
 
 export const InteractiveLessonModals = () => {
@@ -36,9 +36,10 @@ export const InteractiveLessonModals = () => {
         onNextLesson={lesson.goToNextLesson}
       />
 
-      <LessonHistoryModal
-        isOpen={lesson.isHistoryOpen && lesson.isUserReady}
-        onClose={lesson.closeHistory}
+      <LessonProgressModal
+        isOpen={lesson.isProgressOpen && lesson.isUserReady}
+        onClose={lesson.closeProgress}
+        audioProgress={lesson.audioProgress}
         lessons={lesson.history}
       />
     </>

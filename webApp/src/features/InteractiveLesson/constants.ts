@@ -8,6 +8,8 @@ export const TARGET_CONTEXT_MESSAGES = 30;
 export const MIN_USEFUL_CONTEXT_MESSAGES = 8;
 export const MAX_CONVERSATIONS_TO_SCAN = 8;
 export const MAX_HISTORY_LESSONS = 40;
+export const PROGRESS_AUDIO_SAMPLE = 10;
+export const PROGRESS_MIN_AUDIO_COUNT = 110;
 
 export const THINKING_LABELS = ['Thinking', 'Understanding...', 'Analyzing'] as const;
 

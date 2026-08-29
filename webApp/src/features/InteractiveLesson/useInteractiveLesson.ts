@@ -22,6 +22,7 @@ import { collectConversationContext } from './collectConversationContext';
 import { generateInteractiveLesson } from './generateLesson';
 import { generateSpeechAnswerFeedback } from './generateAnswerFeedback';
 import { generateLessonResults } from './generateLessonResults';
+import { recordLessonAudio } from './audioProgress';
 import {
   applyLessonResults,
   applySpeechAnswer,
@@ -67,7 +68,7 @@ const useProvideInteractiveLesson = () => {
   const plan = usePlan();
 
   const [isOpen, setIsOpen] = useUrlState('interactiveLesson', '', false);
-  const [isHistoryOpen, setIsHistoryOpen] = useUrlState('interactiveLessonHistory', '', false);
+  const [isProgressOpen, setIsProgressOpen] = useUrlState('interactiveLessonProgress', '', false);
 
   const userId = auth.uid || '';
   const languageCode = settings.languageCode || 'en';
@@ -290,6 +291,14 @@ const useProvideInteractiveLesson = () => {
               userAudioUrl,
             })
           : prev.currentLesson,
+        audioProgress: userAudioUrl
+          ? recordLessonAudio(prev.audioProgress, {
+              id: `${lesson.id}-${partIndex}-${Date.now()}`,
+              audioUrl: userAudioUrl,
+              transcript,
+              recordedAtIso: new Date().toISOString(),
+            })
+          : prev.audioProgress,
       }));
     } catch (error) {
       logLessonError('submitSpeechAnswer', error, { lessonId: lesson.id, partIndex });
@@ -421,11 +430,12 @@ const useProvideInteractiveLesson = () => {
     currentLesson: store.currentLesson,
     nextLesson: store.nextLesson,
     history: store.history,
+    audioProgress: store.audioProgress,
     isDoneToday: isLessonCompletedToday(store),
     isStoreReady,
     isUserReady,
     isOpen: isOpen === 'open',
-    isHistoryOpen: isHistoryOpen === 'open',
+    isProgressOpen: isProgressOpen === 'open',
     needsLanguageSetup,
     nativeLanguageCode,
     targetLanguageCode,
@@ -436,8 +446,8 @@ const useProvideInteractiveLesson = () => {
     errorMessage,
     openLesson,
     closeLesson,
-    openHistory: () => setIsHistoryOpen('open'),
-    closeHistory: () => setIsHistoryOpen(''),
+    openProgress: () => setIsProgressOpen('open'),
+    closeProgress: () => setIsProgressOpen(''),
     ensureCurrentLesson,
     prepareSpeechAudio,
     submitSpeechAnswer,
