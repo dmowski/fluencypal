@@ -3,7 +3,6 @@
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
-import { SupportedLanguage } from '@/features/Lang/lang';
 import { LessonHistoryView } from './LessonHistoryView';
 import { InteractiveLesson } from './types';
 
@@ -11,12 +10,10 @@ export const LessonHistoryModal = ({
   isOpen,
   onClose,
   lessons,
-  languageCode,
 }: {
   isOpen: boolean;
   onClose: () => void;
   lessons: InteractiveLesson[];
-  languageCode: SupportedLanguage;
 }) => {
   const { i18n } = useLingui();
   if (!isOpen) return null;
@@ -27,7 +24,7 @@ export const LessonHistoryModal = ({
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
           {i18n._('Lesson history')}
         </Typography>
-        <LessonHistoryView lessons={lessons} languageCode={languageCode} />
+        <LessonHistoryView lessons={lessons} />
       </Stack>
     </CustomModal>
   );

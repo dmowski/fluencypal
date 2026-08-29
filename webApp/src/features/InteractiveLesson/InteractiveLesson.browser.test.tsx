@@ -34,9 +34,17 @@ vi.mock('@/features/Layout/useWindowSizes', () => ({
   }),
 }));
 
-vi.mock('@/features/News/NewsContentWithParagraphs', () => ({
-  NewsContentWithParagraphs: ({ content }: { content: string }) => (
-    <p data-testid="news-content-mock" style={{ fontSize: '20px', lineHeight: 1.5, margin: 0 }}>
+vi.mock('@/features/uiKit/Markdown/Markdown', () => ({
+  Markdown: ({ children }: { children: string }) => (
+    <div data-testid="markdown-mock" style={{ fontSize: '20px', lineHeight: 1.5 }}>
+      {children}
+    </div>
+  ),
+}));
+
+vi.mock('./LessonMarkdown', () => ({
+  LessonMarkdown: ({ content }: { content: string }) => (
+    <p data-testid="lesson-markdown-mock" style={{ fontSize: '20px', lineHeight: 1.5, margin: 0 }}>
       {content}
     </p>
   ),

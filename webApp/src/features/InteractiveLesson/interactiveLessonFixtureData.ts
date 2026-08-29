@@ -14,7 +14,7 @@ export const FIXTURE_ANSWERED_SPEECH_PART: LessonPartWithUserAnswer = {
   type: 'speech',
   contentMD: 'Translate to English: Wczoraj spacerowałem w parku.',
   userVoiceTranscript: 'Yesterday I walked in the park.',
-  aiResultToUser: 'Correct. Natural word order. You can also say "I went for a walk in the park."',
+  aiResultToUser: 'Correct. You can also say **I went for a walk in the park**.',
 };
 
 export const FIXTURE_LESSON: InteractiveLesson = {

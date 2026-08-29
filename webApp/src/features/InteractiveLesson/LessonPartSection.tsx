@@ -1,39 +1,27 @@
 'use client';
 
-import { Divider, Stack, Typography } from '@mui/material';
-import { useLingui } from '@lingui/react';
-import { SupportedLanguage } from '@/features/Lang/lang';
-import { NewsContentWithParagraphs } from '@/features/News/NewsContentWithParagraphs';
+import { Divider, Stack } from '@mui/material';
+import { LessonMarkdown } from './LessonMarkdown';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
 
 export const LessonPartSection = ({
   part,
   partIndex,
-  languageCode,
   isEvaluating,
   onPrepareSpeechAudio,
   onSubmitSpeech,
 }: {
   part: LessonPartState;
   partIndex: number;
-  languageCode: SupportedLanguage;
   isEvaluating: boolean;
   onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
-  const { i18n } = useLingui();
-
   return (
     <Stack sx={{ gap: '16px', width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
       {partIndex > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }} />}
-      <Typography
-        variant="caption"
-        sx={{ textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7 }}
-      >
-        {part.type === 'read' ? i18n._('Read') : i18n._('Speak')}
-      </Typography>
-      <NewsContentWithParagraphs content={part.contentMD} languageCode={languageCode} />
+      <LessonMarkdown content={part.contentMD} />
       {part.type === 'speech' && (
         <SpeechAnswerPanel
           part={part}

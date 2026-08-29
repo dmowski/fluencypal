@@ -3,17 +3,14 @@
 import { useState } from 'react';
 import { Button, Divider, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { SupportedLanguage } from '@/features/Lang/lang';
-import { NewsContentWithParagraphs } from '@/features/News/NewsContentWithParagraphs';
+import { LessonMarkdown } from './LessonMarkdown';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { InteractiveLesson, isLessonPartWithAnswer } from './types';
 
 export const LessonHistoryView = ({
   lessons,
-  languageCode,
 }: {
   lessons: InteractiveLesson[];
-  languageCode: SupportedLanguage;
 }) => {
   const { i18n } = useLingui();
   const [openId, setOpenId] = useState<string | null>(lessons[0]?.id || null);
@@ -66,28 +63,20 @@ export const LessonHistoryView = ({
                 {lesson.parts.map((part, index) => (
                   <Stack key={`${lesson.id}-${index}`} sx={{ gap: '8px' }}>
                     {index > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)' }} />}
-                    <NewsContentWithParagraphs content={part.contentMD} languageCode={languageCode} />
+                    <LessonMarkdown content={part.contentMD} />
                     {isLessonPartWithAnswer(part) && (
                       <Stack sx={{ gap: '6px' }}>
                         <Typography variant="body2">{part.userVoiceTranscript}</Typography>
                         {part.userAudioUrl && <UserAudioPlayer audioUrl={part.userAudioUrl} />}
-                        <Typography variant="body2" sx={{ opacity: 0.85 }}>
-                          {part.aiResultToUser}
-                        </Typography>
+                        <LessonMarkdown content={part.aiResultToUser} />
                       </Stack>
                     )}
                   </Stack>
                 ))}
                 {lesson.lessonResults && (
                   <Stack sx={{ gap: '10px' }}>
-                    <NewsContentWithParagraphs
-                      content={lesson.lessonResults.motivationTextToUserMD}
-                      languageCode={languageCode}
-                    />
-                    <NewsContentWithParagraphs
-                      content={lesson.lessonResults.whatWentWellMD}
-                      languageCode={languageCode}
-                    />
+                    <LessonMarkdown content={lesson.lessonResults.motivationTextToUserMD} />
+                    <LessonMarkdown content={lesson.lessonResults.whatWentWellMD} />
                   </Stack>
                 )}
               </Stack>

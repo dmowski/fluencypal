@@ -1,4 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
+import { Check } from 'lucide-react';
 import { type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { InteractiveLessonDashboardView } from './InteractiveLessonDashboardView';
@@ -132,12 +133,6 @@ export function LessonModalFixture({ finished = false }: { finished?: boolean })
             {index > 0 && (
               <Stack sx={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.12)' }} />
             )}
-            <Typography
-              variant="caption"
-              sx={{ textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7 }}
-            >
-              {part.type === 'read' ? 'Read' : 'Speak'}
-            </Typography>
             <Typography sx={{ fontSize: '20px', lineHeight: 1.5 }}>{part.contentMD}</Typography>
             {part.type === 'speech' && (
               <SpeechAnswerPanelView
@@ -155,13 +150,19 @@ export function LessonModalFixture({ finished = false }: { finished?: boolean })
             )}
           </Stack>
         ))}
-        <Button variant="contained" color="info" disabled={finished} sx={{ alignSelf: 'flex-start' }}>
+        <Button
+          variant="contained"
+          color="info"
+          size="large"
+          startIcon={<Check size={20} />}
+          disabled={finished}
+          sx={{ alignSelf: 'flex-start', marginTop: '24px' }}
+        >
           I'm done
         </Button>
         {finished && (
           <LessonResultsView
             results={lesson.lessonResults}
-            languageCode="en"
             isGeneratingResults={false}
             isGeneratingNext={false}
             onNextLesson={noop}
@@ -223,7 +224,6 @@ export function LessonResultsFixture() {
     <InteractiveLessonTestShell testId="interactive-lesson-results-fixture">
       <LessonResultsView
         results={FIXTURE_FINISHED_LESSON.lessonResults}
-        languageCode="en"
         isGeneratingResults={false}
         isGeneratingNext={false}
         onNextLesson={noop}
@@ -236,7 +236,7 @@ export function LessonResultsFixture() {
 export function LessonHistoryFixture() {
   return (
     <InteractiveLessonTestShell testId="interactive-lesson-history-fixture">
-      <LessonHistoryView lessons={[FIXTURE_FINISHED_LESSON]} languageCode="en" />
+      <LessonHistoryView lessons={[FIXTURE_FINISHED_LESSON]} />
     </InteractiveLessonTestShell>
   );
 }

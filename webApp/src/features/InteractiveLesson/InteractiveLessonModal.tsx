@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { Alert, Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { Check } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
@@ -18,7 +19,6 @@ import { isLessonUserError } from './useInteractiveLesson';
 
 export const InteractiveLessonModalContent = ({
   lesson,
-  languageCode,
   needsLanguageSetup,
   nativeLanguageCode,
   targetLanguageCode,
@@ -38,7 +38,6 @@ export const InteractiveLessonModalContent = ({
   onNextLesson,
 }: {
   lesson: InteractiveLesson | null;
-  languageCode: SupportedLanguage;
   needsLanguageSetup: boolean;
   nativeLanguageCode: NativeLangCode | null;
   targetLanguageCode: SupportedLanguage | null;
@@ -157,7 +156,6 @@ export const InteractiveLessonModalContent = ({
                 key={`${lesson.id}-${index}`}
                 part={part}
                 partIndex={index}
-                languageCode={languageCode}
                 isEvaluating={evaluatingPartIndex === index}
                 onPrepareSpeechAudio={onPrepareSpeechAudio}
                 onSubmitSpeech={onSubmitSpeech}
@@ -169,12 +167,14 @@ export const InteractiveLessonModalContent = ({
             <Button
               variant="contained"
               color="info"
+              size="large"
+              startIcon={<Check size={20} />}
               onClick={() => {
                 void onFinishLesson();
               }}
               disabled={!!lesson.lessonResults || isGeneratingResults}
               data-testid="interactive-lesson-done"
-              sx={{ padding: '12px 28px', alignSelf: 'flex-start' }}
+              sx={{ padding: '12px 28px', alignSelf: 'flex-start', marginTop: '24px' }}
             >
               {i18n._("I'm done")}
             </Button>
@@ -184,7 +184,6 @@ export const InteractiveLessonModalContent = ({
             <Stack ref={resultsRef}>
               <LessonResultsView
                 results={lesson.lessonResults}
-                languageCode={languageCode}
                 isGeneratingResults={isGeneratingResults}
                 isGeneratingNext={isGeneratingNext}
                 onNextLesson={() => {
