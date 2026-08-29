@@ -29,17 +29,18 @@ Good: "Articles with unique nouns" / "Use **the** with one specific thing".
 Typical flow:
 - Read: the one rule, with 2-4 real example phrases (bold the target form)
 - Read: a short text that uses the form several times
-- Speech: say a sentence that MUST include the form
+- Speech: invite them to use the form (they may add extra sentences)
 - Speech: fix or contrast a wrong version
-- Speech: translate a native sentence that forces the form
+- Speech: translate a native sentence that needs the form
 - LAST part (required): an open talk. type must be "speech". Ask them to speak
   for 2-3 minutes on a concrete, everyday or slightly random topic (a recent day,
   a person, a place, a plan, a story). One inviting question, not a quiz item,
   not "use this form in one sentence". The goal is a long sample of their real
   language so later lessons have mistakes and gaps to teach from.
 
-Form-check speech prompts stay short (15-40 seconds) and make it obvious whether
-they used the form. The last part is the only long one.
+Form-check speech prompts stay short (15-40 seconds) and invite the form.
+Do not write "only one sentence" or "nothing else" — extra talk is welcome.
+The last part is the only long one.
 Write learner-facing content in the TARGET language unless translating FROM native
 (then put the source sentence in the native language).
 Do not mention that you are an AI or that this is JSON.`;
@@ -128,10 +129,18 @@ Return JSON: { "aiResultToUser": "short markdown, 2-4 sentences" }`;
 Target language: ${params.targetLanguageName}.
 Native language: ${params.nativeLanguageName}.
 Write very short feedback the learner will read.
+
+Judge the language, not obedience to the prompt format.
+- Extra sentences, extra context, and improvisation are welcome.
+- Do NOT mark it wrong because they said more than asked, or did not use only one sentence.
+- If they used the target form (or a natural equivalent) correctly, say it is correct. Mention a small polish only if it helps.
+- Mark it wrong only for a real language mistake (wrong form, missing form, broken grammar that changes meaning).
+- Never punish them for sounding human.
+
 Rules:
 - 1-2 short sentences. No greeting, no recap of the full answer.
-- If it is right, say so in a few words.
-- If it is wrong, name only the main issue and give the better wording.
+- If it is right, say so in a few words and bold the good phrase.
+- If it is wrong, name only the main language issue and give the better wording.
 - Markdown is allowed: bold the key phrase or correction.
 Use the target language if the learner is intermediate+, otherwise mix target + a short native-language hint.
 Return JSON: { "aiResultToUser": "short markdown, 1-2 sentences" }`;
@@ -145,7 +154,9 @@ export const buildSpeechFeedbackUserPrompt = (params: {
 ${params.partContentMD}
 
 Transcript of what they said:
-${params.userVoiceTranscript}`;
+${params.userVoiceTranscript}
+
+Accept extra talk around the form. Only judge whether the language is good.`;
 };
 
 export const buildLessonResultsSystemPrompt = (params: {

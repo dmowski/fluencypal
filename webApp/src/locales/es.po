@@ -521,6 +521,11 @@ msgstr "Personalización Avanzada"
 msgid "Advanced Plan"
 msgstr "Plan Avanzado"
 
+#: src/features/InteractiveLesson/LessonProgressView.tsx:80
+#. js-lingui-explicit-id
+msgid "After"
+msgstr "Después de"
+
 #: src/features/Router/BlockedAccess.tsx:400
 #. js-lingui-explicit-id
 msgid ""
@@ -872,7 +877,7 @@ msgstr "Angular & RxJS"
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "¡Responde una nueva pregunta cada día y observa cómo mejora tu estilo!"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:133
 #. js-lingui-explicit-id
 msgid "Answer again"
 msgstr "Responde de nuevo"
@@ -1203,6 +1208,11 @@ msgstr "Sea específico acerca de su rol"
 #. js-lingui-explicit-id
 msgid "Become a member"
 msgstr "Conviértete en miembro"
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:75
+#. js-lingui-explicit-id
+msgid "Before"
+msgstr "Antes de"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:157
 #: src/features/Case/data/frontend-senior/quizData.ts:251
@@ -1579,6 +1589,7 @@ msgstr "Cancelar"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:544
 #: src/features/Conversation/ConversationCanvas.tsx:741
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:154
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Cancelar grabación"
@@ -2838,7 +2849,7 @@ msgstr "No se pudo encontrar la página"
 msgid "Could not load article"
 msgstr "No se pudo cargar el artículo"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:194
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:236
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "No se pudo cargar la lección."
@@ -4880,7 +4891,7 @@ msgid "Fast Answer Practice"
 msgstr "Práctica de Respuesta Rápida"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:64
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:72
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -4985,6 +4996,11 @@ msgstr "Termina una lección de tu Plan de Aprendizaje"
 #. js-lingui-explicit-id
 msgid "Finish with what you learned"
 msgstr "Finaliza con lo que has aprendido"
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:134
+#. js-lingui-explicit-id
+msgid "Finished lessons. Open one to hear your answers again."
+msgstr "Lecciones terminadas. Abre una para escuchar tus respuestas de nuevo."
 
 #: src/features/Tasks/useDailyPlans.ts:201
 #. js-lingui-explicit-id
@@ -6082,6 +6098,11 @@ msgstr "¡Diviértete!"
 msgid "Health"
 msgstr "Salud"
 
+#: src/features/InteractiveLesson/LessonProgressView.tsx:97
+#. js-lingui-explicit-id
+msgid "Hear how your English changes"
+msgstr "Escucha cómo cambia tu inglés"
+
 #: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
 #. js-lingui-explicit-id
 msgid "Hear your voice"
@@ -6216,7 +6237,7 @@ msgstr "Pista:"
 msgid "Hints to boost your confidence"
 msgstr "Consejos para aumentar tu confianza"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
+#: src/features/InteractiveLesson/LessonProgressView.tsx:133
 #. js-lingui-explicit-id
 msgid "History"
 msgstr "Historia"
@@ -6562,7 +6583,7 @@ msgstr ""
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Voy a hacerte dos preguntas más antes de elaborar tu plan."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:176
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:200
 #. js-lingui-explicit-id
 msgid "I'm done"
 msgstr "He terminado"
@@ -7257,6 +7278,11 @@ msgstr "Mantén un ritmo suave y termina las tareas de hoy."
 msgid "Keep it concise and relevant"
 msgstr "Manténgalo conciso y relevante"
 
+#: src/features/InteractiveLesson/LessonProgressView.tsx:126
+#. js-lingui-explicit-id
+msgid "Keep practicing"
+msgstr "Sigue practicando"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7502,11 +7528,6 @@ msgstr "Longitud"
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Menos"
-
-#: src/features/InteractiveLesson/LessonHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Lesson history"
-msgstr "Historial de lecciones"
 
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
@@ -8300,6 +8321,15 @@ msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
 msgstr ""
 "Buen trabajo al alcanzar una semana completa. Continuemos con las tareas de "
 "hoy."
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Nice work — {done} spoken answers so far. {count} more unlocks a Before / "
+"After of your voice."
+msgstr ""
+"Buen trabajo — {done} respuestas habladas hasta ahora. {count} más "
+"desbloquean un Antes / Después de tu voz."
 
 #: src/features/Reader/components/ShareBookModal.tsx:94
 #. js-lingui-explicit-id
@@ -9399,7 +9429,7 @@ msgstr ""
 "Por favor, complete los detalles de los padres y marque todas las casillas "
 "en el Paso 1."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:134
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:172
 #. js-lingui-explicit-id
 msgid "Please record a longer answer — a few words is enough."
 msgstr ""
@@ -9451,6 +9481,11 @@ msgstr "Por favor, seleccione al menos una categoría."
 #. js-lingui-explicit-id
 msgid "Please stop the recording before closing the window."
 msgstr "Por favor detén la grabación antes de cerrar la ventana."
+
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:171
+#. js-lingui-explicit-id
+msgid "Please talk a bit longer — aim for about two minutes."
+msgstr "Por favor, habla un poco más largo, intenta hablar durante unos dos minutos."
 
 #: src/features/Auth/WebViewWall.tsx:84
 #. js-lingui-explicit-id
@@ -10027,7 +10062,7 @@ msgstr "Procesando el conocimiento existente en ese cerebro..."
 msgid "Processing latest session"
 msgstr "Procesando la última sesión"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:111
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:100
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10067,6 +10102,8 @@ msgstr ""
 msgid "Profile"
 msgstr "Perfil"
 
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
+#: src/features/InteractiveLesson/LessonProgressModal.tsx:29
 #: src/features/ProgressStat/ProgressDashboardCard.tsx:26
 #. js-lingui-explicit-id
 msgid "Progress"
@@ -10535,7 +10572,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:134
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Grabar respuesta"
@@ -10595,11 +10632,6 @@ msgstr "Graba tu respuesta"
 #. js-lingui-explicit-id
 msgid "Recording settings"
 msgstr "Configuración de grabación"
-
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:89
-#. js-lingui-explicit-id
-msgid "Recording..."
-msgstr "Grabando..."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
 #. js-lingui-explicit-id
@@ -10798,7 +10830,7 @@ msgstr ""
 "contexto estructurado (IDs de correlación) y emite métricas para observar "
 "tasas de error y latencia."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:135
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:147
 #: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
@@ -11560,10 +11592,16 @@ msgstr "Saltar todo"
 msgid "Skip for now"
 msgstr "Saltar por ahora"
 
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:216
 #: src/features/Plan/components/GoalRolePlayIntroView.tsx:47
 #. js-lingui-explicit-id
 msgid "Skip this lesson"
 msgstr "Saltar esta lección"
+
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:208
+#. js-lingui-explicit-id
+msgid "Skip this lesson and generate a new one?"
+msgstr "¿Omitir esta lección y generar una nueva?"
 
 #: src/features/Alias/components/TurnSummary.tsx:150
 #. js-lingui-explicit-id
@@ -11661,7 +11699,7 @@ msgstr ""
 "Algo salió mal mientras se generaban más lecciones. Por favor, inténtelo de "
 "nuevo más tarde."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:88
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:100
 #. js-lingui-explicit-id
 msgid ""
 "Something went wrong. Alex is notified. If he doesn't fix it, please write "
@@ -11706,6 +11744,22 @@ msgstr "Correo no deseado"
 #. js-lingui-explicit-id
 msgid "Spanish Learning Plan"
 msgstr "Plan de Aprendizaje de Español"
+
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:106
+#. js-lingui-explicit-id
+msgid "Speak for about 2–3 minutes. This talk helps us pick your next lesson."
+msgstr ""
+"Habla durante unos 2–3 minutos. Esta charla nos ayudará a elegir tu próxima "
+"lección."
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:101
+#. js-lingui-explicit-id
+msgid ""
+"Speak in today’s lesson. We save your first answers, then compare them with "
+"your newest ones."
+msgstr ""
+"Habla en la lección de hoy. Guardamos tus primeras respuestas y luego las "
+"comparamos con las más recientes."
 
 #: src/features/Landing/LandingPage.tsx:247
 #. js-lingui-explicit-id
@@ -11884,6 +11938,11 @@ msgstr "Comenzar la Práctica de Habla"
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Iniciar prueba"
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:126
+#. js-lingui-explicit-id
+msgid "Start today’s lesson"
+msgstr "Inicia la lección de hoy"
 
 #: src/features/Alias/components/TurnStart.tsx:125
 #. js-lingui-explicit-id
@@ -12082,7 +12141,7 @@ msgstr "Pasos:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:125
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:131
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Detener"
@@ -15600,8 +15659,8 @@ msgid "Your AI teacher voice:"
 msgstr "Tu voz de profesor de IA:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:57
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:102
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:65
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:91
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -15866,6 +15925,11 @@ msgstr "{count} palabras"
 #. js-lingui-explicit-id
 msgid "{days}-day trial with full access"
 msgstr "Prueba de {days} días con acceso completo"
+
+#: src/features/InteractiveLesson/LessonProgressView.tsx:112
+#. js-lingui-explicit-id
+msgid "{done} of {goal} answers"
+msgstr "{hecho} de {objetivo} respuestas"
 
 #: src/features/Alias/components/RoundSettings.tsx:40
 #. js-lingui-explicit-id
