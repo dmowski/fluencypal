@@ -96,6 +96,23 @@ export const promoteFinishedLesson = (store: InteractiveLessonStore): Interactiv
   };
 };
 
+export const listRecentLessonForms = (
+  lessons: Array<Pick<InteractiveLesson, 'title' | 'subTitle'>>,
+  limit = 10,
+): string => {
+  const seen = new Set<string>();
+  return lessons
+    .filter((lesson) => {
+      const key = `${lesson.title}\0${lesson.subTitle}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit)
+    .map((lesson) => `- ${lesson.title} — ${lesson.subTitle}`)
+    .join('\n');
+};
+
 export const summarizeOpenTalks = (lessons: InteractiveLesson[], limit = 5): string => {
   return lessons
     .map((lesson) => {

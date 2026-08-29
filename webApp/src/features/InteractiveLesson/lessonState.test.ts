@@ -4,6 +4,7 @@ import {
   emptyLessonStore,
   isLessonCompletedToday,
   isLessonFinished,
+  listRecentLessonForms,
   isSameLocalDay,
   promoteFinishedLesson,
   summarizeOpenTalks,
@@ -122,6 +123,18 @@ describe('lessonState', () => {
     expect(summary).toContain('Past stories');
     expect(summary).toContain('Last Saturday');
     expect(summary).not.toContain('Articles');
+  });
+
+  it('lists recent forms and drops duplicate titles', () => {
+    const summary = listRecentLessonForms([
+      { title: 'This week: present continuous', subTitle: 'Use I’m ...-ing for now' },
+      { title: 'This week: present continuous', subTitle: 'Use I’m ...-ing for now' },
+      { title: 'Articles with unique nouns', subTitle: 'Use the with one specific thing' },
+    ]);
+
+    expect(summary).toContain('This week: present continuous');
+    expect(summary).toContain('Articles with unique nouns');
+    expect(summary.match(/present continuous/g)).toHaveLength(1);
   });
 
   it('does not promote an unfinished lesson', () => {

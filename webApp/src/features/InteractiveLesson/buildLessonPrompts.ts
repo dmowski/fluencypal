@@ -56,15 +56,28 @@ ${lessonDesignRules}
 ${lessonShape}`;
 };
 
+const bannedRecentFormsBlock = (context: LessonGenerationContext): string => {
+  return `Do NOT repeat a recent form or a close variant. If they just did present continuous / -ing,
+do not teach "this week I'm ...-ing" or any other -ing lesson. Change category
+(articles, past simple, used to, so that, prepositions, countable, word order, comparatives).
+A tighter version of the same form still counts as a repeat.
+
+Already covered (banned):
+${context.recentFormsSummary || 'None listed.'}`;
+};
+
 export const buildFirstLessonUserPrompt = (context: LessonGenerationContext): string => {
   const hasConversation = context.conversationMessageCount >= MIN_USEFUL_CONTEXT_MESSAGES;
   const hasGoal = !!context.userGoalText.trim();
+  const banned = bannedRecentFormsBlock(context);
 
   if (hasConversation) {
     return `Create the learner's next lesson from their recent conversations.
 Pick ONE language form they actually used wrong or avoided. Build the whole lesson around that form.
 Do not write a vague communication tip. Topics (demo, project, history) are only the example world.
 The last part must be a 2-3 minute open talk on a fresh topic.
+
+${banned}
 
 Recent conversation (most recent first, up to 30 messages; older chats included if the latest one was short):
 ${context.conversationText}
@@ -78,6 +91,8 @@ Create a lesson from their goal and notes. Pick ONE concrete language form they 
 Do not teach "speak clearly" or "present better". Aim at a useful next form, not a review of unknown mistakes.
 The last part must be a 2-3 minute open talk on a fresh topic.
 
+${banned}
+
 Learner goal / notes:
 ${context.userGoalText}`;
   }
@@ -85,7 +100,9 @@ ${context.userGoalText}`;
   return `The learner has no conversation history and no saved goal.
 Create a solid middle-level (CEFR B1) lesson for the target language around ONE form
 (e.g. past simple + time phrase, or a/the with unique nouns): short rule, example text, then voice tasks that force that form.
-The last part must be a 2-3 minute open talk on a simple everyday topic.`;
+The last part must be a 2-3 minute open talk on a simple everyday topic.
+
+${banned}`;
 };
 
 export const buildNextLessonUserPrompt = (context: LessonGenerationContext): string => {
@@ -95,6 +112,8 @@ The 2-3 minute open talks are the main evidence. Short form-check answers are to
 to find what to teach next. Read the open talks first. Pick ONE specific form they
 used wrongly, avoided, or overused there. Build the whole lesson around that form.
 Do not invent a new "speak clearly" lesson.
+
+${bannedRecentFormsBlock(context)}
 
 Open talks (most recent first):
 ${context.openTalkSummary || 'No open talks yet. Use the short answers and results below.'}

@@ -70,7 +70,7 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 2. If no current lesson → generate (loader: *We are preparing a lesson for you, based on your previous practice.*).
 3. Render parts. `read` = read only. `speech` = record → stop → auto-check (upload in parallel) → thinking bar → AI feedback. **Answer again** replaces the previous take.
 4. **I'm done** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
-4b. **Skip this lesson** asks for confirmation, drops the current lesson (not marked done), and generates a different one.
+4b. **Skip this lesson** immediately drops the current lesson (not marked done) and generates a completely different language form. No confirmation.
 5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
 6. **Next lesson** opens the pre-generated lesson, or the preparing state if that request is still running.
 7. **Finish** or closing a finished modal archives the lesson and makes `nextLesson` current.
@@ -88,7 +88,7 @@ The **last part is always a 2–3 minute open talk** on a concrete topic. Short 
 | When | Context |
 | --- | --- |
 | First lesson | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a B1 lesson on one form. Last part: open talk. |
-| Later lessons | Open talks first, then previous results and short answers. |
+| Later lessons | Open talks first, then previous results and short answers. Recent titles/subtitles are banned so the next lesson changes category instead of looping (e.g. another -ing variant). |
 
 In-flight generation is deduped per storage key so Strict Mode remounts do not double-call AI.
 

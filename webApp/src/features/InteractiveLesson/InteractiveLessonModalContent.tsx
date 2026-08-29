@@ -204,10 +204,6 @@ export const InteractiveLessonModalContent = ({
                 color="error"
                 startIcon={<SkipForward size={20} />}
                 onClick={() => {
-                  const confirmed = window.confirm(
-                    i18n._('Skip this lesson and generate a new one?'),
-                  );
-                  if (!confirmed) return;
                   void onSkipLesson();
                 }}
                 disabled={!!lesson.lessonResults || isGeneratingResults || isGeneratingLesson}
