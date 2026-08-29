@@ -207,6 +207,10 @@ service cloud.firestore {
         allow read, write: if isUser(userId);
       }
 
+      match /interactiveLessons/{languageCode} {
+        allow read, write: if isUser(userId);
+      }
+
       // Allow read-write for usage document
       match /usage {
         allow read, write: if isUser(userId);

@@ -100,6 +100,10 @@ News-linked quizzes in `src/features/Quiz/`:
 - Generation: AI for MC/reading sections; OpenAI vision via `POST /api/quiz/describeImage` for the single speaking question
 - Full architecture: `src/features/Quiz/AGENTS.md`
 
+## Interactive Lesson
+
+Daily speaking lesson on the dashboard (under Just Talk). Firestore: `users/{userId}/interactiveLessons/{languageCode}`. Architecture: `src/features/InteractiveLesson/AGENTS.md`.
+
 ## Daily Tasks
 
 Daily and legacy user tasks live in `src/features/Tasks/`. Full architecture (plans, completion wiring, Firestore, access unlock): `src/features/Tasks/AGENTS.md`.

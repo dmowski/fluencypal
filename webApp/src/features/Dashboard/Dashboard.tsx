@@ -11,6 +11,7 @@ import { RolePlayModal } from '../RolePlay/RolePlayModal';
 import { usePlan } from '../Plan/usePlan';
 import { LessonStartModal } from '../Plan/LessonStartModal';
 import { JustTalkCard } from './JustTalkCard';
+import { InteractiveLessonDashboardCard } from '../InteractiveLesson/InteractiveLessonDashboardCard';
 import { GrammarImprovesCard } from './Grammar/GrammarImprovesCard';
 import { RolePlayDashboardCard } from './RolePlayDashboardCard';
 import { SimpleNavigationBar } from '../Navigation/SimpleNavigationBar';
@@ -44,6 +45,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <NewPrivateMessageCard />
             <DailyTasksDashboardCard />
             <JustTalkCard />
+            <InteractiveLessonDashboardCard />
             <DailyQuestionDashboardCard />
             <GrammarImprovesCard />
             <InstallAppInstruction />

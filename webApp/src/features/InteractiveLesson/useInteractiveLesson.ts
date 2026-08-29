@@ -1,0 +1,371 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import { useAuth } from '@/features/Auth/useAuth';
+import { useSettings } from '@/features/Settings/useSettings';
+import { useTextAi } from '@/features/Ai/useTextAi';
+import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
+import { useAiUserInfo } from '@/features/User/useAiUserInfo';
+import { usePlan } from '@/features/Plan/usePlan';
+import { useUrlState } from '@/features/Url/useUrlState';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { NativeLangCode } from '@/libs/language/type';
+import { MAX_CONVERSATIONS_TO_SCAN } from './constants';
+import { collectConversationContext } from './collectConversationContext';
+import { generateInteractiveLesson } from './generateLesson';
+import { generateSpeechAnswerFeedback } from './generateAnswerFeedback';
+import { generateLessonResults } from './generateLessonResults';
+import {
+  applyLessonResults,
+  applySpeechAnswer,
+  emptyLessonStore,
+  isLessonCompletedToday,
+  isLessonFinished,
+  promoteFinishedLesson,
+  summarizeFinishedLessons,
+} from './lessonState';
+import { loadInteractiveLessonStore, saveInteractiveLessonStore } from './interactiveLessonFirestore';
+import { uploadLessonAudio } from './uploadLessonAudio';
+import { InteractiveLesson, InteractiveLessonStore, LessonGenerationContext } from './types';
+
+const inFlightLessonByKey = new Map<string, Promise<InteractiveLesson>>();
+
+const buildGoalText = (params: {
+  goalTitle?: string;
+  goalElementsText?: string;
+  advancedUserRecords?: string;
+}): string => {
+  return [params.goalTitle, params.goalElementsText, params.advancedUserRecords]
+    .map((value) => value?.trim() || '')
+    .filter(Boolean)
+    .join('\n\n');
+};
+
+export const useInteractiveLesson = () => {
+  const auth = useAuth();
+  const settings = useSettings();
+  const textAi = useTextAi();
+  const chatHistory = useChatHistory();
+  const aiUserInfo = useAiUserInfo();
+  const plan = usePlan();
+
+  const [isOpen, setIsOpen] = useUrlState('interactiveLesson', '', false);
+  const [isHistoryOpen, setIsHistoryOpen] = useUrlState('interactiveLessonHistory', '', false);
+
+  const userId = auth.uid || '';
+  const languageCode = (settings.languageCode || 'en') as SupportedLanguage;
+
+  const [store, setStore] = useState<InteractiveLessonStore>(emptyLessonStore);
+  const [isStoreReady, setIsStoreReady] = useState(false);
+  const [isGeneratingLesson, setIsGeneratingLesson] = useState(false);
+  const [isGeneratingNext, setIsGeneratingNext] = useState(false);
+  const [isGeneratingResults, setIsGeneratingResults] = useState(false);
+  const [evaluatingPartIndex, setEvaluatingPartIndex] = useState<number | null>(null);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const storeRef = useRef(store);
+  storeRef.current = store;
+
+  useEffect(() => {
+    if (!userId) {
+      setStore(emptyLessonStore());
+      setIsStoreReady(false);
+      return;
+    }
+
+    let cancelled = false;
+    setIsStoreReady(false);
+    void loadInteractiveLessonStore(userId, languageCode)
+      .then((loaded) => {
+        if (cancelled) return;
+        storeRef.current = loaded;
+        setStore(loaded);
+        setIsStoreReady(true);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error('Failed to load interactive lesson', error);
+        storeRef.current = emptyLessonStore();
+        setStore(emptyLessonStore());
+        setIsStoreReady(true);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, languageCode]);
+
+  const nativeLanguageCode = (settings.userSettings?.nativeLanguageCode ||
+    null) as NativeLangCode | null;
+  const targetLanguageCode = (settings.languageCode || null) as SupportedLanguage | null;
+  const needsLanguageSetup =
+    !nativeLanguageCode || !targetLanguageCode || nativeLanguageCode === targetLanguageCode;
+
+  const persistUpdate = (updater: (prev: InteractiveLessonStore) => InteractiveLessonStore) => {
+    const next = updater(storeRef.current);
+    storeRef.current = next;
+    setStore(next);
+    if (userId && isStoreReady) {
+      void saveInteractiveLessonStore(userId, languageCode, next).catch((error) => {
+        console.error('Failed to save interactive lesson', error);
+      });
+    }
+    return next;
+  };
+
+  const gatherContext = async (
+    currentStore: InteractiveLessonStore,
+  ): Promise<LessonGenerationContext> => {
+    let conversationText = '';
+    let conversationMessageCount = 0;
+
+    try {
+      const conversations = await chatHistory.getLastConversations(MAX_CONVERSATIONS_TO_SCAN);
+      const collected = collectConversationContext(conversations);
+      conversationText = collected.text;
+      conversationMessageCount = collected.messageCount;
+    } catch {
+      conversationText = '';
+      conversationMessageCount = 0;
+    }
+
+    const goalElementsText = plan.activeGoal?.elements
+      ?.map((element) => `${element.title}: ${element.description}`)
+      .join('\n');
+
+    const finished = [
+      ...(currentStore.currentLesson?.lessonResults ? [currentStore.currentLesson] : []),
+      ...currentStore.history,
+    ];
+
+    return {
+      conversationText,
+      conversationMessageCount,
+      userGoalText: buildGoalText({
+        goalTitle: plan.activeGoal?.title,
+        goalElementsText,
+        advancedUserRecords: aiUserInfo.advancedUserRecords,
+      }),
+      previousLessonsSummary: summarizeFinishedLessons(finished),
+    };
+  };
+
+  const runLessonGeneration = async (
+    key: string,
+    mode: 'first' | 'next',
+    currentStore: InteractiveLessonStore,
+  ): Promise<InteractiveLesson> => {
+    const existing = inFlightLessonByKey.get(key);
+    if (existing) return existing;
+
+    if (!targetLanguageCode || !nativeLanguageCode) {
+      throw new Error('Languages are not set');
+    }
+
+    const promise = (async () => {
+      const context = await gatherContext(currentStore);
+      return generateInteractiveLesson({
+        textAi,
+        mode,
+        context,
+        targetLanguageCode,
+        nativeLanguageCode,
+      });
+    })();
+
+    inFlightLessonByKey.set(key, promise);
+    try {
+      return await promise;
+    } finally {
+      inFlightLessonByKey.delete(key);
+    }
+  };
+
+  const upcomingKey = `${userId}:${languageCode}:upcoming`;
+
+  const ensureCurrentLesson = async () => {
+    if (!isStoreReady || needsLanguageSetup) return;
+
+    let currentStore = storeRef.current;
+    if (isLessonFinished(currentStore.currentLesson)) {
+      currentStore = persistUpdate(promoteFinishedLesson);
+    }
+    if (currentStore.currentLesson) return;
+
+    setErrorMessage('');
+    setIsGeneratingLesson(true);
+    try {
+      const hasPreviousResults = currentStore.history.some((lesson) => !!lesson.lessonResults);
+      const lesson = await runLessonGeneration(
+        hasPreviousResults ? upcomingKey : `${userId}:${languageCode}:first`,
+        hasPreviousResults ? 'next' : 'first',
+        currentStore,
+      );
+      persistUpdate((prev) => ({
+        ...prev,
+        currentLesson: prev.currentLesson || lesson,
+        nextLesson: prev.nextLesson?.id === lesson.id ? null : prev.nextLesson,
+      }));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setErrorMessage(message || 'Could not prepare the lesson.');
+    } finally {
+      setIsGeneratingLesson(false);
+    }
+  };
+
+  const submitSpeechAnswer = async (partIndex: number, transcript: string, audioBlob: Blob | null) => {
+    const lesson = store.currentLesson;
+    if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
+
+    setErrorMessage('');
+    setEvaluatingPartIndex(partIndex);
+
+    let userAudioUrl: string | undefined;
+    if (audioBlob) {
+      const token = await auth.getToken();
+      userAudioUrl = (await uploadLessonAudio({
+        blob: audioBlob,
+        lessonId: lesson.id,
+        partIndex,
+        token: token || '',
+      })) || undefined;
+    }
+
+    try {
+      const aiResultToUser = await generateSpeechAnswerFeedback({
+        textAi,
+        partContentMD: lesson.parts[partIndex]?.contentMD || '',
+        userVoiceTranscript: transcript,
+        targetLanguageCode,
+        nativeLanguageCode,
+      });
+      persistUpdate((prev) => ({
+        ...prev,
+        currentLesson: prev.currentLesson
+          ? applySpeechAnswer(prev.currentLesson, partIndex, {
+              userVoiceTranscript: transcript,
+              aiResultToUser,
+              userAudioUrl,
+            })
+          : prev.currentLesson,
+      }));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setErrorMessage(message || 'Could not check your answer.');
+    } finally {
+      setEvaluatingPartIndex(null);
+    }
+  };
+
+  const finishCurrentLesson = async () => {
+    const lesson = store.currentLesson;
+    if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
+    if (lesson.lessonResults) return;
+
+    setErrorMessage('');
+    setIsGeneratingResults(true);
+    setIsGeneratingNext(true);
+
+    const completedAtIso = new Date().toISOString();
+
+    const resultsPromise = generateLessonResults({
+      textAi,
+      lesson,
+      targetLanguageCode,
+    })
+      .then((lessonResults) => {
+        persistUpdate((prev) => ({
+          ...prev,
+          lastCompletedAtIso: completedAtIso,
+          currentLesson: prev.currentLesson
+            ? applyLessonResults(prev.currentLesson, lessonResults, completedAtIso)
+            : prev.currentLesson,
+        }));
+      })
+      .finally(() => setIsGeneratingResults(false));
+
+    const nextPromise = runLessonGeneration(upcomingKey, 'next', storeRef.current)
+      .then((nextLesson) => {
+        persistUpdate((prev) => {
+          if (!prev.currentLesson) {
+            return { ...prev, currentLesson: nextLesson, nextLesson: null };
+          }
+          if (prev.currentLesson.id === nextLesson.id) return prev;
+          return { ...prev, nextLesson };
+        });
+      })
+      .finally(() => setIsGeneratingNext(false));
+
+    try {
+      await Promise.all([resultsPromise, nextPromise]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setErrorMessage(message || 'Could not finish the lesson.');
+    }
+  };
+
+  const goToNextLesson = async () => {
+    const promoted = persistUpdate(promoteFinishedLesson);
+    if (promoted.currentLesson) return;
+
+    setErrorMessage('');
+    setIsGeneratingLesson(true);
+    try {
+      const lesson = await runLessonGeneration(upcomingKey, 'next', promoted);
+      persistUpdate((prev) => ({
+        ...prev,
+        currentLesson: prev.currentLesson || lesson,
+        nextLesson: prev.nextLesson?.id === lesson.id ? null : prev.nextLesson,
+      }));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setErrorMessage(message || 'Could not prepare the next lesson.');
+    } finally {
+      setIsGeneratingLesson(false);
+    }
+  };
+
+  const openLesson = () => {
+    if (isLessonFinished(storeRef.current.currentLesson)) {
+      persistUpdate(promoteFinishedLesson);
+    }
+    setIsOpen('open');
+  };
+
+  const closeLesson = () => {
+    if (isLessonFinished(storeRef.current.currentLesson)) {
+      persistUpdate(promoteFinishedLesson);
+    }
+    setIsOpen('');
+  };
+
+  return {
+    store,
+    currentLesson: store.currentLesson,
+    nextLesson: store.nextLesson,
+    history: store.history,
+    isDoneToday: isLessonCompletedToday(store),
+    isStoreReady,
+    isOpen: isOpen === 'open',
+    isHistoryOpen: isHistoryOpen === 'open',
+    needsLanguageSetup,
+    nativeLanguageCode,
+    targetLanguageCode,
+    isGeneratingLesson,
+    isGeneratingNext,
+    isGeneratingResults,
+    evaluatingPartIndex,
+    errorMessage,
+    openLesson,
+    closeLesson,
+    openHistory: () => setIsHistoryOpen('open'),
+    closeHistory: () => setIsHistoryOpen(''),
+    ensureCurrentLesson,
+    submitSpeechAnswer,
+    finishCurrentLesson,
+    goToNextLesson,
+    setLanguage: settings.setLanguage,
+    setNativeLanguage: settings.setNativeLanguage,
+  };
+};

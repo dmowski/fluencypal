@@ -46,6 +46,7 @@ import {
 } from '@/features/Blog/types';
 import { NewsStat } from '@/features/News/types';
 import { QuizStat, UserQuizRecord } from '@/features/Quiz/types';
+import { InteractiveLessonFirestoreDoc } from '@/features/InteractiveLesson/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -253,6 +254,13 @@ export const db = {
     quiz: (userId?: string, quizId?: string) =>
       userId && quizId
         ? dataPointDoc<UserQuizRecord>(`users/${userId}/quizzes/${quizId}`)
+        : null,
+
+    interactiveLessonState: (userId?: string, languageCode?: SupportedLanguage) =>
+      userId && languageCode
+        ? dataPointDoc<InteractiveLessonFirestoreDoc>(
+            `users/${userId}/interactiveLessons/${languageCode}`,
+          )
         : null,
   },
 };
