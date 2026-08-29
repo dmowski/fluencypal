@@ -64,10 +64,15 @@ export interface LessonGenerationContext {
   conversationMessageCount: number;
   userGoalText: string;
   previousLessonsSummary: string;
+  openTalkSummary: string;
 }
 
 export const isLessonPartWithAnswer = (
   part: LessonPartState,
 ): part is LessonPartWithUserAnswer => {
   return 'userVoiceTranscript' in part;
+};
+
+export const isOpenTalkPart = (parts: LessonPartState[], partIndex: number): boolean => {
+  return parts[partIndex]?.type === 'speech' && partIndex === parts.length - 1;
 };

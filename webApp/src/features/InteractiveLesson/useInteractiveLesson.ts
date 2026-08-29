@@ -32,10 +32,16 @@ import {
   isLessonFinished,
   promoteFinishedLesson,
   summarizeFinishedLessons,
+  summarizeOpenTalks,
 } from './lessonState';
 import { loadInteractiveLessonStore, saveInteractiveLessonStore } from './interactiveLessonFirestore';
 import { uploadLessonAudio } from './uploadLessonAudio';
-import { InteractiveLesson, InteractiveLessonStore, LessonGenerationContext } from './types';
+import {
+  InteractiveLesson,
+  InteractiveLessonStore,
+  isOpenTalkPart,
+  LessonGenerationContext,
+} from './types';
 import { USER_LESSON_ERROR } from './lessonErrors';
 const inFlightLessonByKey = new Map<string, Promise<InteractiveLesson>>();
 const logLessonError = (phase: string, error: unknown, extra?: Record<string, unknown>) => {
@@ -169,6 +175,7 @@ const useProvideInteractiveLesson = () => {
         advancedUserRecords: aiUserInfo.advancedUserRecords,
       }),
       previousLessonsSummary: summarizeFinishedLessons(finished),
+      openTalkSummary: summarizeOpenTalks(finished),
     };
   };
 
@@ -279,6 +286,7 @@ const useProvideInteractiveLesson = () => {
           userVoiceTranscript: transcript,
           targetLanguageCode,
           nativeLanguageCode,
+          isOpenTalk: isOpenTalkPart(lesson.parts, partIndex),
         }),
       ]);
       pendingAudioUploads.current.delete(partIndex);
