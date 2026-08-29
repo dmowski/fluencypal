@@ -23,6 +23,7 @@ export interface SpeechAnswerPanelViewProps {
   error: string;
   visualizer: ReactNode;
   needMoreText: boolean;
+  isOpenTalk?: boolean;
   onToggleRecord: () => void;
   onCancelRecord: () => void;
 }
@@ -39,6 +40,7 @@ export const SpeechAnswerPanelView = ({
   error,
   visualizer,
   needMoreText,
+  isOpenTalk,
   onToggleRecord,
   onCancelRecord,
 }: SpeechAnswerPanelViewProps) => {
@@ -96,6 +98,12 @@ export const SpeechAnswerPanelView = ({
           {isTranscribing && (
             <Typography variant="body2" className="loading-shimmer">
               {i18n._('Processing...')}
+            </Typography>
+          )}
+
+          {isOpenTalk && !answered && (
+            <Typography variant="body2" sx={{ opacity: 0.8 }}>
+              {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
             </Typography>
           )}
 
@@ -159,7 +167,9 @@ export const SpeechAnswerPanelView = ({
 
           {needMoreText && (
             <Typography variant="caption" sx={{ color: '#ff8e86' }}>
-              {i18n._('Please record a longer answer — a few words is enough.')}
+              {isOpenTalk
+                ? i18n._('Please talk a bit longer — aim for about two minutes.')
+                : i18n._('Please record a longer answer — a few words is enough.')}
             </Typography>
           )}
         </Stack>

@@ -96,6 +96,25 @@ export const promoteFinishedLesson = (store: InteractiveLessonStore): Interactiv
   };
 };
 
+export const summarizeOpenTalks = (lessons: InteractiveLesson[], limit = 5): string => {
+  return lessons
+    .map((lesson) => {
+      const lastPart = lesson.parts[lesson.parts.length - 1];
+      if (!lastPart || lastPart.type !== 'speech' || !isLessonPartWithAnswer(lastPart)) {
+        return '';
+      }
+      if (lastPart.userVoiceTranscript.trim().length < 40) return '';
+      return [
+        `Lesson: ${lesson.title}`,
+        `Prompt: ${lastPart.contentMD}`,
+        `Open talk:\n${lastPart.userVoiceTranscript}`,
+      ].join('\n');
+    })
+    .filter(Boolean)
+    .slice(0, limit)
+    .join('\n\n---\n\n');
+};
+
 export const summarizeFinishedLessons = (lessons: InteractiveLesson[], limit = 5): string => {
   return lessons
     .filter((lesson) => lesson.lessonResults)

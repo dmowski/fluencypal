@@ -11,11 +11,13 @@ export const LessonProgressModal = ({
   onClose,
   audioProgress,
   lessons,
+  onContinueLesson,
 }: {
   isOpen: boolean;
   onClose: () => void;
   audioProgress: LessonAudioProgress;
   lessons: InteractiveLesson[];
+  onContinueLesson: () => void;
 }) => {
   const { i18n } = useLingui();
   if (!isOpen) return null;
@@ -26,7 +28,11 @@ export const LessonProgressModal = ({
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
           {i18n._('Progress')}
         </Typography>
-        <LessonProgressView audioProgress={audioProgress} lessons={lessons} />
+        <LessonProgressView
+          audioProgress={audioProgress}
+          lessons={lessons}
+          onContinueLesson={onContinueLesson}
+        />
       </Stack>
     </CustomModal>
   );

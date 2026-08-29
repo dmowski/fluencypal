@@ -363,11 +363,17 @@ test('speech panel – answered uses a text Answer again button', async () => {
 test('progress asks for more recordings before comparing', async () => {
   await renderInShell(
     <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
-      <LessonProgressView audioProgress={emptyAudioProgress()} lessons={[]} />
+      <LessonProgressView
+          audioProgress={emptyAudioProgress()}
+          lessons={[]}
+          onContinueLesson={noop}
+        />
     </div>,
   );
 
   await expect.element(page.getByTestId('interactive-lesson-progress-needed')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-progress-continue')).toBeVisible();
+  await expect.element(page.getByText('History')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-progress-before')).not.toBeInTheDocument();
 });
 
@@ -381,7 +387,11 @@ test('progress shows before and after after 110 recordings', async () => {
 
   await renderInShell(
     <div style={{ width: 800, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
-      <LessonProgressView audioProgress={audioProgress} lessons={[FIXTURE_FINISHED_LESSON]} />
+      <LessonProgressView
+          audioProgress={audioProgress}
+          lessons={[FIXTURE_FINISHED_LESSON]}
+          onContinueLesson={noop}
+        />
     </div>,
   );
 
