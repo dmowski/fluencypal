@@ -106,7 +106,7 @@ test('speech panel – recording', async () => {
     .toMatchScreenshot('speech-recording');
 });
 
-test('speech panel – ready to submit', async () => {
+test('speech panel – recorded', async () => {
   await render(<SpeechPanelFixture state="ready" />);
 
   await expect

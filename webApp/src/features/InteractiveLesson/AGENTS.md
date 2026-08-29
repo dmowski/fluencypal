@@ -24,16 +24,18 @@ InteractiveLesson/
   generateLessonResults.ts         — generateStrictJson → closing
   useInteractiveLesson.ts          — session, persist, URL, generation
   InteractiveLessonDashboardCard.tsx
+  InteractiveLessonModals.tsx      — lesson + history, mounted in GlobalModals
   InteractiveLessonModal.tsx
   SpeechAnswerPanelView.tsx        — presentational recorder UI (screenshot-friendly)
   LessonHistoryView.tsx
 ```
 
-Generation and UI run in the browser. Persistence is Firestore; recordings are uploaded through `/api/uploadFile` and stored as URLs on the lesson parts.
+Generation and UI run in the browser. Persistence is Firestore; spoken answers upload privately through `/api/uploadFile?visibility=private` and play back through an authenticated GET.
 
 ## Entry
 
 - Dashboard card **under Just Talk** (`InteractiveLessonDashboardCard`)
+- Modals live in `GlobalModals` via `InteractiveLessonModals`
 - Section header **History** opens previous finished lessons
 - Modal URL: `interactiveLesson=open`, history: `interactiveLessonHistory=open`
 
@@ -59,9 +61,9 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 ## Flow
 
 1. Open card. If native language equals target language (or either is missing) → language setup + **Continue**.
-2. If no current lesson → generate (loader: *We are preparing a lesson for you. Based on your previous interaction.*).
-3. Render parts. `read` = read only. `speech` = record → submit → thinking bar → AI feedback. Keep the recording for playback and history.
-4. **I am done** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
+2. If no current lesson → generate (loader: *We are preparing a lesson for you, based on your previous practice.*).
+3. Render parts. `read` = read only. `speech` = record → stop → auto-check (upload in parallel) → thinking bar → AI feedback. **Answer again** replaces the previous take.
+4. **I'm done** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
 5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
 6. **Next lesson** opens the pre-generated lesson, or the preparing state if that request is still running.
 7. **Finish** or closing a finished modal archives the lesson and makes `nextLesson` current.

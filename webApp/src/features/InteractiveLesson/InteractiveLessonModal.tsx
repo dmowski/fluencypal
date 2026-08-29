@@ -14,6 +14,7 @@ import { LessonScrollProgress } from './LessonScrollProgress';
 import { ThinkingProgress } from './ThinkingProgress';
 import { InteractiveLesson } from './types';
 import { NativeLangCode } from '@/libs/language/type';
+import { isLessonUserError } from './useInteractiveLesson';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -31,6 +32,7 @@ export const InteractiveLessonModalContent = ({
   onEnsureLesson,
   onChangeNative,
   onChangeTarget,
+  onPrepareSpeechAudio,
   onSubmitSpeech,
   onFinishLesson,
   onNextLesson,
@@ -50,6 +52,7 @@ export const InteractiveLessonModalContent = ({
   onEnsureLesson: () => Promise<void>;
   onChangeNative: (languageCode: NativeLangCode) => void;
   onChangeTarget: (languageCode: SupportedLanguage) => void;
+  onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
   onFinishLesson: () => Promise<void>;
   onNextLesson: () => Promise<void>;
@@ -83,6 +86,11 @@ export const InteractiveLessonModalContent = ({
   const showPreparing =
     !needsLanguageSetup && !lesson && (isGeneratingLesson || !isStoreReady || !errorMessage);
   const showLoadError = !needsLanguageSetup && !lesson && !!errorMessage && !isGeneratingLesson;
+  const visibleError = isLessonUserError(errorMessage)
+    ? i18n._(
+        "Something went wrong. Alex is notified. If he doesn't fix it, please write in the global chat.",
+      )
+    : errorMessage;
 
   return (
     <Stack
@@ -117,7 +125,7 @@ export const InteractiveLessonModalContent = ({
           <LessonPreparingView />
         ) : showLoadError ? (
           <Stack sx={{ gap: '16px' }} data-testid="interactive-lesson-load-error">
-            <Alert severity="error">{errorMessage}</Alert>
+            <Alert severity="error">{visibleError}</Alert>
             <Button
               variant="contained"
               color="info"
@@ -151,11 +159,12 @@ export const InteractiveLessonModalContent = ({
                 partIndex={index}
                 languageCode={languageCode}
                 isEvaluating={evaluatingPartIndex === index}
+                onPrepareSpeechAudio={onPrepareSpeechAudio}
                 onSubmitSpeech={onSubmitSpeech}
               />
             ))}
 
-            {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+            {errorMessage && <Alert severity="error">{visibleError}</Alert>}
 
             <Button
               variant="contained"
@@ -167,7 +176,7 @@ export const InteractiveLessonModalContent = ({
               data-testid="interactive-lesson-done"
               sx={{ padding: '12px 28px', alignSelf: 'flex-start' }}
             >
-              {i18n._('I am done')}
+              {i18n._("I'm done")}
             </Button>
 
             {isGeneratingResults && !lesson.lessonResults && <ThinkingProgress />}

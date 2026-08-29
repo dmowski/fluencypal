@@ -4,7 +4,8 @@ export const sendUploadFileRequest = async (data: UploadFileRequest, auth: strin
   const formData = new FormData();
   formData.append('file', data.file);
 
-  const response = await fetch(`/api/uploadFile?type=${data.type}`, {
+  const visibility = data.visibility === 'private' ? 'private' : 'public';
+  const response = await fetch(`/api/uploadFile?type=${data.type}&visibility=${visibility}`, {
     method: 'POST',
     body: formData,
     headers: {

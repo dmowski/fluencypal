@@ -19,7 +19,16 @@ const sendTextAiRequestRaw = async (conversationDate: AiRequest, auth: string) =
   });
 
   if (!response.ok) {
-    const error = new Error(`AI request failed with status ${response.status}`);
+    const body = await response.text();
+    console.error('[sendTextAiRequest] request failed', {
+      status: response.status,
+      model: conversationDate.model,
+      languageCode: conversationDate.languageCode,
+      body: body.slice(0, 1000),
+    });
+    const error = new Error(
+      `AI request failed with status ${response.status}${body ? `: ${body.slice(0, 200)}` : ''}`,
+    );
     (error as Error & { status?: number }).status = response.status;
     throw error;
   }

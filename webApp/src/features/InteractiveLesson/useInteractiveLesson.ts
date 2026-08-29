@@ -1,6 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  createElement,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  ReactNode,
+  JSX,
+} from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useTextAi } from '@/features/Ai/useTextAi';
@@ -8,9 +17,7 @@ import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { SupportedLanguage } from '@/features/Lang/lang';
-import { NativeLangCode } from '@/libs/language/type';
-import { MAX_CONVERSATIONS_TO_SCAN } from './constants';
+import { MAX_CONVERSATIONS_TO_SCAN, LESSON_AI_MODEL } from './constants';
 import { collectConversationContext } from './collectConversationContext';
 import { generateInteractiveLesson } from './generateLesson';
 import { generateSpeechAnswerFeedback } from './generateAnswerFeedback';
@@ -28,7 +35,17 @@ import { loadInteractiveLessonStore, saveInteractiveLessonStore } from './intera
 import { uploadLessonAudio } from './uploadLessonAudio';
 import { InteractiveLesson, InteractiveLessonStore, LessonGenerationContext } from './types';
 
+const USER_LESSON_ERROR = 'LESSON_FAILED';
 const inFlightLessonByKey = new Map<string, Promise<InteractiveLesson>>();
+const logLessonError = (phase: string, error: unknown, extra?: Record<string, unknown>) => {
+  console.error('[interactiveLesson] failed', {
+    phase,
+    model: LESSON_AI_MODEL,
+    message: error instanceof Error ? error.message : String(error),
+    cause: error instanceof Error ? error.cause : undefined,
+    ...extra,
+  });
+};
 
 const buildGoalText = (params: {
   goalTitle?: string;
@@ -41,7 +58,7 @@ const buildGoalText = (params: {
     .join('\n\n');
 };
 
-export const useInteractiveLesson = () => {
+const useProvideInteractiveLesson = () => {
   const auth = useAuth();
   const settings = useSettings();
   const textAi = useTextAi();
@@ -53,7 +70,8 @@ export const useInteractiveLesson = () => {
   const [isHistoryOpen, setIsHistoryOpen] = useUrlState('interactiveLessonHistory', '', false);
 
   const userId = auth.uid || '';
-  const languageCode = (settings.languageCode || 'en') as SupportedLanguage;
+  const languageCode = settings.languageCode || 'en';
+  const pendingAudioUploads = useRef(new Map<number, Promise<string | undefined>>());
 
   const [store, setStore] = useState<InteractiveLessonStore>(emptyLessonStore);
   const [isStoreReady, setIsStoreReady] = useState(false);
@@ -95,9 +113,8 @@ export const useInteractiveLesson = () => {
     };
   }, [userId, languageCode]);
 
-  const nativeLanguageCode = (settings.userSettings?.nativeLanguageCode ||
-    null) as NativeLangCode | null;
-  const targetLanguageCode = (settings.languageCode || null) as SupportedLanguage | null;
+  const nativeLanguageCode = settings.userSettings?.nativeLanguageCode ?? null;
+  const targetLanguageCode = settings.languageCode;
   const needsLanguageSetup =
     !nativeLanguageCode || !targetLanguageCode || nativeLanguageCode === targetLanguageCode;
 
@@ -207,11 +224,31 @@ export const useInteractiveLesson = () => {
         nextLesson: prev.nextLesson?.id === lesson.id ? null : prev.nextLesson,
       }));
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      setErrorMessage(message || 'Could not prepare the lesson.');
+      logLessonError('ensureCurrentLesson', error, { userId, languageCode });
+      setErrorMessage(USER_LESSON_ERROR);
     } finally {
       setIsGeneratingLesson(false);
     }
+  };
+
+  const prepareSpeechAudio = (partIndex: number, blob: Blob) => {
+    const lesson = storeRef.current.currentLesson;
+    if (!lesson || pendingAudioUploads.current.has(partIndex)) return;
+
+    pendingAudioUploads.current.set(
+      partIndex,
+      (async () => {
+        const token = await auth.getToken();
+        return (
+          (await uploadLessonAudio({
+            blob,
+            lessonId: lesson.id,
+            partIndex,
+            token: token || '',
+          })) || undefined
+        );
+      })(),
+    );
   };
 
   const submitSpeechAnswer = async (partIndex: number, transcript: string, audioBlob: Blob | null) => {
@@ -220,26 +257,20 @@ export const useInteractiveLesson = () => {
 
     setErrorMessage('');
     setEvaluatingPartIndex(partIndex);
-
-    let userAudioUrl: string | undefined;
-    if (audioBlob) {
-      const token = await auth.getToken();
-      userAudioUrl = (await uploadLessonAudio({
-        blob: audioBlob,
-        lessonId: lesson.id,
-        partIndex,
-        token: token || '',
-      })) || undefined;
-    }
+    if (audioBlob) prepareSpeechAudio(partIndex, audioBlob);
 
     try {
-      const aiResultToUser = await generateSpeechAnswerFeedback({
-        textAi,
-        partContentMD: lesson.parts[partIndex]?.contentMD || '',
-        userVoiceTranscript: transcript,
-        targetLanguageCode,
-        nativeLanguageCode,
-      });
+      const [userAudioUrl, aiResultToUser] = await Promise.all([
+        pendingAudioUploads.current.get(partIndex) ?? Promise.resolve(undefined),
+        generateSpeechAnswerFeedback({
+          textAi,
+          partContentMD: lesson.parts[partIndex]?.contentMD || '',
+          userVoiceTranscript: transcript,
+          targetLanguageCode,
+          nativeLanguageCode,
+        }),
+      ]);
+      pendingAudioUploads.current.delete(partIndex);
       persistUpdate((prev) => ({
         ...prev,
         currentLesson: prev.currentLesson
@@ -251,8 +282,8 @@ export const useInteractiveLesson = () => {
           : prev.currentLesson,
       }));
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      setErrorMessage(message || 'Could not check your answer.');
+      logLessonError('submitSpeechAnswer', error, { lessonId: lesson.id, partIndex });
+      setErrorMessage(USER_LESSON_ERROR);
     } finally {
       setEvaluatingPartIndex(null);
     }
@@ -300,8 +331,8 @@ export const useInteractiveLesson = () => {
     try {
       await Promise.all([resultsPromise, nextPromise]);
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      setErrorMessage(message || 'Could not finish the lesson.');
+      logLessonError('finishCurrentLesson', error, { lessonId: lesson.id });
+      setErrorMessage(USER_LESSON_ERROR);
     }
   };
 
@@ -319,8 +350,8 @@ export const useInteractiveLesson = () => {
         nextLesson: prev.nextLesson?.id === lesson.id ? null : prev.nextLesson,
       }));
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      setErrorMessage(message || 'Could not prepare the next lesson.');
+      logLessonError('goToNextLesson', error, { userId, languageCode });
+      setErrorMessage(USER_LESSON_ERROR);
     } finally {
       setIsGeneratingLesson(false);
     }
@@ -362,6 +393,7 @@ export const useInteractiveLesson = () => {
     openHistory: () => setIsHistoryOpen('open'),
     closeHistory: () => setIsHistoryOpen(''),
     ensureCurrentLesson,
+    prepareSpeechAudio,
     submitSpeechAnswer,
     finishCurrentLesson,
     goToNextLesson,
@@ -369,3 +401,21 @@ export const useInteractiveLesson = () => {
     setNativeLanguage: settings.setNativeLanguage,
   };
 };
+
+type InteractiveLessonApi = ReturnType<typeof useProvideInteractiveLesson>;
+const InteractiveLessonContext = createContext<InteractiveLessonApi | null>(null);
+
+export function InteractiveLessonProvider({ children }: { children: ReactNode }): JSX.Element {
+  const value = useProvideInteractiveLesson();
+  return createElement(InteractiveLessonContext.Provider, { value }, children);
+}
+
+export const useInteractiveLesson = (): InteractiveLessonApi => {
+  const context = useContext(InteractiveLessonContext);
+  if (!context) {
+    throw new Error('useInteractiveLesson must be used within InteractiveLessonProvider');
+  }
+  return context;
+};
+
+export const isLessonUserError = (message: string) => message === USER_LESSON_ERROR;

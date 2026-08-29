@@ -168,6 +168,7 @@ export const useAudioRecorder = () => {
     error: recorderControls.error?.message || transcriptionError || '',
     recordingMilliSeconds: recordingSeconds * 1000,
     removeTranscript,
+    recordedBlob: recorderControls.recordedBlob,
     microphoneDeviceId,
     setMicrophoneDeviceId,
     visualizerComponent: recorderControls.isRecordingInProgress ? (

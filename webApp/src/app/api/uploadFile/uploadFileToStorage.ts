@@ -3,6 +3,7 @@ interface UploadFileOptions {
   file: File;
   userId: string;
   type: 'image' | 'video' | 'audio';
+  isPublic?: boolean;
 }
 
 interface UploadFileResult {
@@ -15,6 +16,7 @@ export const uploadFileToStorage = async ({
   file,
   userId,
   type,
+  isPublic = true,
 }: UploadFileOptions): Promise<UploadFileResult> => {
   try {
     const timestamp = Date.now();
@@ -43,12 +45,17 @@ export const uploadFileToStorage = async ({
       },
     });
 
-    await storageFile.makePublic();
-    const url = storageFile.publicUrl();
+    if (isPublic) {
+      await storageFile.makePublic();
+      return {
+        success: true,
+        uploadUrl: storageFile.publicUrl(),
+      };
+    }
 
     return {
       success: true,
-      uploadUrl: url,
+      uploadUrl: `/api/uploadFile?path=${encodeURIComponent(filePath)}`,
     };
   } catch (error) {
     console.error('Error during file upload:', error);

@@ -1,12 +1,10 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import SendIcon from '@mui/icons-material/Send';
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
-import { Mic, Trash } from 'lucide-react';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
@@ -24,8 +22,6 @@ export interface SpeechAnswerPanelViewProps {
   visualizer: ReactNode;
   needMoreText: boolean;
   onToggleRecord: () => void;
-  onSubmit: () => void;
-  onClear: () => void;
 }
 
 export const SpeechAnswerPanelView = ({
@@ -41,8 +37,6 @@ export const SpeechAnswerPanelView = ({
   visualizer,
   needMoreText,
   onToggleRecord,
-  onSubmit,
-  onClear,
 }: SpeechAnswerPanelViewProps) => {
   const { i18n } = useLingui();
   const answered = isLessonPartWithAnswer(part);
@@ -62,7 +56,7 @@ export const SpeechAnswerPanelView = ({
             {i18n._('Your answer')}
           </Typography>
           <Typography variant="body2">{part.userVoiceTranscript}</Typography>
-          {(audioUrl || (answered && part.userAudioUrl)) && (
+          {(audioUrl || part.userAudioUrl) && (
             <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
           )}
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
@@ -74,7 +68,7 @@ export const SpeechAnswerPanelView = ({
 
       {isEvaluating && <ThinkingProgress />}
 
-      {!answered && !isEvaluating && (
+      {!isEvaluating && (
         <Stack sx={{ gap: '10px', width: '100%' }}>
           {(isRecording || visualizer) && (
             <Stack
@@ -118,50 +112,25 @@ export const SpeechAnswerPanelView = ({
           )}
 
           <Stack sx={{ flexDirection: 'row', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-            {(!transcription || isTranscribing || isRecording) && (
-              <Button
-                disabled={isTranscribing}
-                variant="contained"
-                color={isRecording ? 'error' : 'info'}
-                size="large"
-                startIcon={isRecording ? <StopIcon /> : <MicIcon />}
-                onClick={onToggleRecord}
-              >
-                {isRecording ? i18n._('Stop') : i18n._('Record answer')}
-              </Button>
-            )}
-
-            {transcription && !isRecording && !isTranscribing && (
-              <>
-                <Button
-                  variant="contained"
-                  color="info"
-                  size="large"
-                  disabled={needMoreText}
-                  endIcon={<SendIcon />}
-                  onClick={onSubmit}
-                >
-                  {i18n._('Submit')}
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="info"
-                  size="large"
-                  endIcon={<Mic />}
-                  onClick={onToggleRecord}
-                >
-                  {i18n._('Re-record')}
-                </Button>
-                <IconButton size="small" onClick={onClear}>
-                  <Trash size={18} color="rgba(200, 200, 200, 1)" />
-                </IconButton>
-              </>
-            )}
+            <Button
+              disabled={isTranscribing}
+              variant="contained"
+              color={isRecording ? 'error' : 'info'}
+              size="large"
+              startIcon={isRecording ? <StopIcon /> : <MicIcon />}
+              onClick={onToggleRecord}
+            >
+              {isRecording
+                ? i18n._('Stop')
+                : answered
+                  ? i18n._('Answer again')
+                  : i18n._('Record answer')}
+            </Button>
           </Stack>
 
           {needMoreText && (
             <Typography variant="caption" sx={{ color: '#ff8e86' }}>
-              {i18n._('Please record a longer message (at least a few words).')}
+              {i18n._('Please record a longer answer — a few words is enough.')}
             </Typography>
           )}
         </Stack>

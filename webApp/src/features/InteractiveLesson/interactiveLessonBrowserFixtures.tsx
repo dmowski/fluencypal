@@ -68,7 +68,7 @@ export function LanguageSetupFixture() {
     <InteractiveLessonTestShell testId="interactive-lesson-language-fixture">
       <Stack sx={{ gap: '20px' }} data-testid="interactive-lesson-language-setup">
         <Typography variant="h5" sx={{ fontWeight: 700 }}>
-          Set native and target languages
+          Choose your languages
         </Typography>
         <Typography variant="body1" sx={{ opacity: 0.85 }}>
           This lesson needs two different languages: the one you already speak, and the one you want
@@ -151,14 +151,12 @@ export function LessonModalFixture({ finished = false }: { finished?: boolean })
                 visualizer={null}
                 needMoreText={false}
                 onToggleRecord={noop}
-                onSubmit={noop}
-                onClear={noop}
               />
             )}
           </Stack>
         ))}
         <Button variant="contained" color="info" disabled={finished} sx={{ alignSelf: 'flex-start' }}>
-          I am done
+          I'm done
         </Button>
         {finished && (
           <LessonResultsView
@@ -215,8 +213,6 @@ export function SpeechPanelFixture({
         }
         needMoreText={false}
         onToggleRecord={noop}
-        onSubmit={noop}
-        onClear={noop}
       />
     </InteractiveLessonTestShell>
   );

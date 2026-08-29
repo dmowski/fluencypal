@@ -880,6 +880,11 @@ msgstr ""
 "Jawab satu soalan baru setiap hari dan lihat bagaimana gaya anda bertambah "
 "baik!"
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:126
+#. js-lingui-explicit-id
+msgid "Answer again"
+msgstr "Jawab semula"
+
 #: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
@@ -2265,6 +2270,11 @@ msgstr "Pilih pelan persediaan temu duga anda"
 msgid "Choose Your Language Level"
 msgstr "Pilih Tahap Bahasa Anda"
 
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+msgid "Choose your languages"
+msgstr "Pilih bahasa anda"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -2843,7 +2853,7 @@ msgstr "Tidak dapat mencari halaman"
 msgid "Could not load article"
 msgstr "Tidak dapat memuat artikel"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:187
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:198
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "Tidak dapat memuatkan pelajaran."
@@ -4039,7 +4049,7 @@ msgstr "Siap"
 msgid "Done recording"
 msgstr "Selesai merakam"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:27
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:24
 #. js-lingui-explicit-id
 msgid "Done today"
 msgstr "Sudah selesai hari ini"
@@ -4883,7 +4893,7 @@ msgid "Fast Answer Practice"
 msgstr "Latihan Jawapan Pantas"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:67
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:63
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -6094,7 +6104,7 @@ msgstr "Selamat berseronok!"
 msgid "Health"
 msgstr "Kesihatan"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:87
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
 #. js-lingui-explicit-id
 msgid "Hear your voice"
 msgstr "Dengar suara anda"
@@ -6195,7 +6205,7 @@ msgstr ""
 "negatif, atau campuran."
 
 #: src/features/InstallApp/InstallAppInstruction.tsx:103
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Sembunyi"
@@ -6230,7 +6240,7 @@ msgstr "Petunjuk:"
 msgid "Hints to boost your confidence"
 msgstr "Petunjuk untuk meningkatkan keyakinan anda"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:26
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
 #. js-lingui-explicit-id
 msgid "History"
 msgstr "Sejarah"
@@ -6435,11 +6445,6 @@ msgstr "Saya setuju"
 msgid "I agree to the Terms of Use and Privacy Policy."
 msgstr "Saya bersetuju dengan Terma Penggunaan dan Dasar Privasi."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
-#. js-lingui-explicit-id
-msgid "I am done"
-msgstr "Saya sudah selesai"
-
 #: src/features/RolePlay/scenarios/workplace-discrimination-check.ts:58
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real legal consultation."
@@ -6599,6 +6604,11 @@ msgid "I'll ask you two more questions before I make your plan."
 msgstr ""
 "Saya akan bertanya kepada anda dua soalan lagi sebelum saya membuat pelan "
 "anda."
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:179
+#. js-lingui-explicit-id
+msgid "I'm done"
+msgstr "Saya sudah selesai"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -7018,7 +7028,7 @@ msgstr "Ujian Integrasi"
 msgid "Interactive examples:"
 msgstr "Contoh interaktif:"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:22
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:19
 #. js-lingui-explicit-id
 msgid "Interactive Lesson"
 msgstr "Pelajaran Interaktif"
@@ -7552,7 +7562,7 @@ msgstr "Panjang"
 msgid "Less"
 msgstr "Kurang"
 
-#: src/features/InteractiveLesson/LessonHistoryModal.tsx:30
+#: src/features/InteractiveLesson/LessonHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Lesson history"
 msgstr "Sejarah pelajaran"
@@ -8518,7 +8528,7 @@ msgstr ""
 "\n"
 "Tiada data terdahulu untuk dibandingkan\n"
 
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:26
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:24
 #. js-lingui-explicit-id
 msgid "No previous lessons yet. Finish one to see it here."
 msgstr "Tiada pelajaran terdahulu lagi. Selesaikan satu untuk melihatnya di sini."
@@ -8895,7 +8905,7 @@ msgstr "Oops! Ada yang tidak kena"
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #: src/features/Landing/Price/PricePage.tsx:207
 #: src/features/Sentence/Stories.tsx:256
 #. js-lingui-explicit-id
@@ -9144,7 +9154,7 @@ msgstr ""
 msgid "Pause"
 msgstr "Jeda"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "Jeda rakaman"
@@ -9348,7 +9358,7 @@ msgstr "Main Lagi"
 msgid "Play and Learn"
 msgstr "Main dan Belajar"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Play recording"
 msgstr "Mainkan rakaman"
@@ -9456,8 +9466,12 @@ msgstr "Sila masukkan alamat emel yang sah"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Sila isi butiran ibu bapa dan tandakan semua kotak dalam Langkah 1."
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:133
+#. js-lingui-explicit-id
+msgid "Please record a longer answer — a few words is enough."
+msgstr "Sila rakam jawapan yang lebih panjang — beberapa perkataan sudah mencukupi."
+
 #: src/features/Chat/SubmitForm.tsx:444
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:162
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Sila rakam mesej yang lebih panjang (sekurang-kurangnya beberapa perkataan)."
@@ -10083,7 +10097,7 @@ msgstr "Memproses pengetahuan yang ada di dalam otak itu..."
 msgid "Processing latest session"
 msgstr "Memproses sesi terkini"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:114
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:110
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10300,7 +10314,6 @@ msgstr "Mentah"
 #: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:658
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:151
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Rakam semula"
@@ -10338,13 +10351,13 @@ msgstr ""
 "dan sistem"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:286
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #: src/features/Reader/components/Reader.tsx:412
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Baca"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:17
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Read a rule, then speak your answers."
 msgstr "Baca satu peraturan, kemudian nyatakan jawapan anda."
@@ -10364,7 +10377,7 @@ msgstr "Baca lebih lanjut"
 msgid "Read the text"
 msgstr "Baca teks"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:20
 #. js-lingui-explicit-id
 msgid "Read, speak, and build a daily speaking habit."
 msgstr "Baca, bertutur, dan bina tabiat bertutur harian."
@@ -10586,7 +10599,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Rekod jawapan"
@@ -10647,7 +10660,7 @@ msgstr "Rakam jawapan anda"
 msgid "Recording settings"
 msgstr "Tetapan rakaman"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:92
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:88
 #. js-lingui-explicit-id
 msgid "Recording..."
 msgstr "Merakam..."
@@ -10846,7 +10859,7 @@ msgstr ""
 "Gabungkan dengan had masa dan laluan gantian. Log konteks berstruktur (ID "
 "korelasi) dan emisikan metrik untuk memerhati kadar ralat dan kependaman."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:125
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:137
 #: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
@@ -11312,11 +11325,6 @@ msgstr "Ayat-ayat"
 msgid "Set My Language"
 msgstr "Tetapkan Bahasa Saya"
 
-#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
-#. js-lingui-explicit-id
-msgid "Set native and target languages"
-msgstr "Tetapkan bahasa asal dan bahasa sasaran"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
 msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
@@ -11715,6 +11723,15 @@ msgstr ""
 "Sesuatu telah berlaku salah semasa menjana lebih banyak pelajaran. Sila "
 "cuba lagi kemudian."
 
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:90
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong. Alex is notified. If he doesn't fix it, please write "
+"in the global chat."
+msgstr ""
+"Sesuatu telah berlaku kesilapan. Alex telah diberitahu. Jika dia tidak "
+"membetulkannya, sila tulis dalam sembang global."
+
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:57
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -11754,7 +11771,7 @@ msgstr "Spam"
 msgid "Spanish Learning Plan"
 msgstr "Pelan Pembelajaran Bahasa Sepanyol"
 
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #. js-lingui-explicit-id
 msgid "Speak"
 msgstr "Bercakap"
@@ -12138,7 +12155,7 @@ msgstr "Langkah-langkah:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:124
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
@@ -12270,7 +12287,6 @@ msgid "Subject:"
 msgstr "Subjek:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:142
 #: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
@@ -13906,12 +13922,12 @@ msgstr "Soalan Hari Ini"
 msgid "Today's Tasks"
 msgstr "Tugasan Hari Ini"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:16
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:14
 #. js-lingui-explicit-id
 msgid "Today’s lesson"
 msgstr "Pelajaran hari ini"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:13
 #. js-lingui-explicit-id
 msgid "Today’s lesson is done"
 msgstr "Berakhirnya pelajaran hari ini"
@@ -14571,10 +14587,10 @@ msgstr "Kami menghargai maklum balas anda!"
 
 #: src/features/InteractiveLesson/LessonPreparingView.tsx:16
 #. js-lingui-explicit-id
-msgid "We are preparing a lesson for you. Based on your previous interaction."
+msgid "We are preparing a lesson for you, based on your previous practice."
 msgstr ""
-"Kami sedang menyediakan satu pelajaran untuk anda. Berdasarkan interaksi "
-"anda sebelum ini."
+"Kami sedang menyediakan pelajaran untuk anda, berdasarkan latihan sebelum "
+"ini."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:353
 #. js-lingui-explicit-id
@@ -15681,8 +15697,8 @@ msgid "Your AI teacher voice:"
 msgstr "Suara guru AI anda:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:62
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:105
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:56
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:101
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -15995,3 +16011,20 @@ msgstr "{winnerName} menang!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "I am done"
+#~ msgstr "Saya sudah selesai"
+
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Set native and target languages"
+#~ msgstr "Tetapkan bahasa asal dan bahasa sasaran"
+
+#: src/features/InteractiveLesson/LessonPreparingView.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "We are preparing a lesson for you. Based on your previous interaction."
+#~ msgstr ""
+#~ "Kami sedang menyediakan satu pelajaran untuk anda. Berdasarkan interaksi "
+#~ "anda sebelum ini."

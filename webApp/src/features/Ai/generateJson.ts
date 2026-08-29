@@ -38,14 +38,26 @@ export const generateJsonResult = async <T>({
       rawOutput: response,
     };
   } catch (error) {
-    console.error('Error generating JSON. error', error);
     const maxAttempts = conversationDate.attempts || 3;
     const nextAttempt = (attemptInfo?.attempt || 0) + 1;
+    const status = (error as Error & { status?: number }).status;
+    console.error('[generateJson] failed', {
+      model: conversationDate.model,
+      attempt: nextAttempt,
+      maxAttempts,
+      status,
+      message: error instanceof Error ? error.message : String(error),
+      cause: error instanceof Error ? error.cause : undefined,
+      rawOutputPreview: response.slice(0, 500),
+    });
     if (nextAttempt >= maxAttempts) {
       Sentry.captureException(error, {
         extra: {
           title: 'Error generating JSON in useTextAi',
           attempts: nextAttempt,
+          model: conversationDate.model,
+          status,
+          rawOutput: response.slice(0, 2000),
         },
       });
     }

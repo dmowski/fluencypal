@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
@@ -11,15 +12,42 @@ export const SpeechAnswerPanel = ({
   part,
   partIndex,
   isEvaluating,
+  onAudioReady,
   onSubmit,
 }: {
   part: LessonPartState;
   partIndex: number;
   isEvaluating: boolean;
+  onAudioReady: (blob: Blob) => void;
   onSubmit: (transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   const recorder = useAudioRecorder();
+  const submittedRef = useRef('');
   const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < 4;
+
+  useEffect(() => {
+    if (!recorder.recordedBlob || recorder.isRecording) return;
+    onAudioReady(recorder.recordedBlob);
+  }, [onAudioReady, recorder.isRecording, recorder.recordedBlob]);
+
+  useEffect(() => {
+    const text = recorder.transcription?.trim() || '';
+    if (recorder.isRecording || recorder.isTranscribing || isEvaluating) return;
+    if (text.length < 4) return;
+    if (submittedRef.current === text) return;
+    submittedRef.current = text;
+    void onSubmit(text, recorder.transcriptionBlob).then(() => {
+      recorder.removeTranscript();
+    });
+  }, [
+    isEvaluating,
+    onSubmit,
+    recorder.isRecording,
+    recorder.isTranscribing,
+    recorder.removeTranscript,
+    recorder.transcription,
+    recorder.transcriptionBlob,
+  ]);
 
   return (
     <SpeechAnswerPanelView
@@ -38,19 +66,9 @@ export const SpeechAnswerPanel = ({
         if (recorder.isRecording) {
           void recorder.stopRecording();
         } else {
+          submittedRef.current = '';
           void recorder.startRecording();
         }
-      }}
-      onSubmit={() => {
-        const transcript = recorder.transcription?.trim();
-        if (!transcript) return;
-        void onSubmit(transcript, recorder.transcriptionBlob).then(() => {
-          recorder.removeTranscript();
-        });
-      }}
-      onClear={() => {
-        recorder.removeTranscript();
-        void recorder.cancelRecording();
       }}
     />
   );

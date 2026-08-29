@@ -21,6 +21,7 @@ import { ProgressStatModal } from '@/features/ProgressStat/ProgressStatModal';
 import { EssayModal } from '../Essay/EssayModal';
 import { QuizModal } from '@/features/Quiz/components/QuizModal';
 import { useAiConversation } from '../Conversation/useAiConversation/useAiConversation';
+import { InteractiveLessonModals } from '@/features/InteractiveLesson/InteractiveLessonModals';
 
 export const GlobalModals: React.FC = () => {
   const game = useGame();
@@ -82,6 +83,8 @@ export const GlobalModals: React.FC = () => {
           <QuizModal />
         </>
       )}
+
+      <InteractiveLessonModals />
     </>
   );
 };

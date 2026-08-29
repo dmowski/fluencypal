@@ -876,6 +876,11 @@ msgstr "แองกูลาร์ & RxJS"
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "ตอบคำถามใหม่ทุกวันและดูว่ารูปแบบของคุณพัฒนาขึ้นอย่างไร!"
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:126
+#. js-lingui-explicit-id
+msgid "Answer again"
+msgstr "ตอบอีกครั้ง"
+
 #: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
@@ -2234,6 +2239,11 @@ msgstr "เลือกแผนการเตรียมตัวสำหร
 msgid "Choose Your Language Level"
 msgstr "เลือกระดับภาษาของคุณ"
 
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+msgid "Choose your languages"
+msgstr "เลือกภาษาของคุณ"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -2808,7 +2818,7 @@ msgstr "ไม่พบหน้าที่ต้องการ"
 msgid "Could not load article"
 msgstr "ไม่สามารถโหลดบทความได้"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:187
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:198
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "ไม่สามารถโหลดบทเรียนได้"
@@ -4004,7 +4014,7 @@ msgstr "เสร็จแล้ว"
 msgid "Done recording"
 msgstr "บันทึกเสร็จสิ้น"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:27
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:24
 #. js-lingui-explicit-id
 msgid "Done today"
 msgstr "เสร็จสิ้นวันนี้"
@@ -4827,7 +4837,7 @@ msgid "Fast Answer Practice"
 msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:67
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:63
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -6026,7 +6036,7 @@ msgstr "สนุกสนานนะ!"
 msgid "Health"
 msgstr "สุขภาพ"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:87
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
 #. js-lingui-explicit-id
 msgid "Hear your voice"
 msgstr "ได้ยินเสียงของคุณ"
@@ -6126,7 +6136,7 @@ msgstr ""
 "ไม่ว่าจะเป็นแง่บวก แง่ลบ หรือผสมกัน"
 
 #: src/features/InstallApp/InstallAppInstruction.tsx:103
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "ซ่อน"
@@ -6161,7 +6171,7 @@ msgstr "คำแนะนำ:"
 msgid "Hints to boost your confidence"
 msgstr "คำแนะนำเพื่อเพิ่มความมั่นใจของคุณ"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:26
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
 #. js-lingui-explicit-id
 msgid "History"
 msgstr "ประวัติศาสตร์"
@@ -6358,11 +6368,6 @@ msgstr "ฉันยอมรับ"
 msgid "I agree to the Terms of Use and Privacy Policy."
 msgstr "ฉันยอมรับ ข้อกำหนดการใช้งาน และ นโยบายความเป็นส่วนตัว"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
-#. js-lingui-explicit-id
-msgid "I am done"
-msgstr "ฉันทำเสร็จแล้ว"
-
 #: src/features/RolePlay/scenarios/workplace-discrimination-check.ts:58
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real legal consultation."
@@ -6506,6 +6511,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "ฉันจะถามคุณอีกสองคำถามก่อนที่จะสร้างแผนของคุณ"
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:179
+#. js-lingui-explicit-id
+msgid "I'm done"
+msgstr "ฉันเสร็จแล้ว"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -6908,7 +6918,7 @@ msgstr "การทดสอบการรวมระบบ"
 msgid "Interactive examples:"
 msgstr "Interactive examples: โต้ตอบตัวอย่าง:"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:22
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:19
 #. js-lingui-explicit-id
 msgid "Interactive Lesson"
 msgstr "บทเรียนแบบโต้ตอบ"
@@ -7433,7 +7443,7 @@ msgstr "ความยาว"
 msgid "Less"
 msgstr "น้อยลง"
 
-#: src/features/InteractiveLesson/LessonHistoryModal.tsx:30
+#: src/features/InteractiveLesson/LessonHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Lesson history"
 msgstr "ประวัติการเรียน"
@@ -8386,7 +8396,7 @@ msgstr "ไม่มีการชำระเงิน..."
 msgid "No previous data to compare"
 msgstr "ไม่มีข้อมูลก่อนหน้าให้เปรียบเทียบ"
 
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:26
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:24
 #. js-lingui-explicit-id
 msgid "No previous lessons yet. Finish one to see it here."
 msgstr "ยังไม่มีบทเรียนก่อนหน้านี้ โปรดทำบทเรียนให้เสร็จเพื่อแสดงที่นี่"
@@ -8756,7 +8766,7 @@ msgstr "โอ๊ะ! มีบางอย่างผิดพลาด"
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #: src/features/Landing/Price/PricePage.tsx:207
 #: src/features/Sentence/Stories.tsx:256
 #. js-lingui-explicit-id
@@ -8998,7 +9008,7 @@ msgstr ""
 msgid "Pause"
 msgstr "หยุดชั่วคราว"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "หยุดการบันทึก"
@@ -9202,7 +9212,7 @@ msgstr "เล่นอีกครั้ง"
 msgid "Play and Learn"
 msgstr "เล่นและเรียนรู้"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Play recording"
 msgstr "เล่นการบันทึก"
@@ -9308,8 +9318,12 @@ msgstr "กรุณาใส่ที่อยู่อีเมลที่ถ
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "กรุณากรอกรายละเอียดของผู้ปกครองและตรวจสอบทุกช่องในขั้นตอนที่ 1"
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:133
+#. js-lingui-explicit-id
+msgid "Please record a longer answer — a few words is enough."
+msgstr "โปรดบันทึกคำตอบที่ยาวขึ้น — เพียงไม่กี่คำก็พอ."
+
 #: src/features/Chat/SubmitForm.tsx:444
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:162
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "โปรดบันทึกข้อความที่ยาวขึ้น (อย่างน้อยสองสามคำ)"
@@ -9917,7 +9931,7 @@ msgstr "กำลังประมวลผลความรู้ที่ม
 msgid "Processing latest session"
 msgstr "กำลังประมวลผลเซสชันล่าสุด"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:114
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:110
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10247,7 +10261,6 @@ msgstr "ดิบ"
 #: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:658
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:151
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
@@ -10285,7 +10298,7 @@ msgstr ""
 "ที่ต้องเผชิญกับรอบการออกแบบสถาปัตยกรรมและระบบ"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:286
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #: src/features/Reader/components/Reader.tsx:412
 #. js-lingui-explicit-id
 msgid "Read"
@@ -10293,7 +10306,7 @@ msgstr ""
 "\n"
 "อ่าน\n"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:17
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Read a rule, then speak your answers."
 msgstr "อ่านกฎ แล้วพูดคำตอบของคุณ"
@@ -10313,7 +10326,7 @@ msgstr "อ่านเพิ่มเติม"
 msgid "Read the text"
 msgstr "อ่านข้อความ"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:20
 #. js-lingui-explicit-id
 msgid "Read, speak, and build a daily speaking habit."
 msgstr "อ่าน พูด และสร้างนิสัยการพูดในทุกวัน"
@@ -10529,7 +10542,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "บันทึกคำตอบ"
@@ -10590,7 +10603,7 @@ msgstr "บันทึกการตอบกลับของคุณ"
 msgid "Recording settings"
 msgstr "การตั้งค่าการบันทึก"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:92
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:88
 #. js-lingui-explicit-id
 msgid "Recording..."
 msgstr "กำลังบันทึก..."
@@ -10793,7 +10806,7 @@ msgstr ""
 "รวมเข้ากับการหมดเวลาและเส้นทางสำรอง บันทึกบริบทโครงสร้าง (ID ความสัมพันธ์) "
 "และปล่อยเมตริกเพื่อสังเกตอัตราความผิดพลาดและเวลาแฝง"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:125
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:137
 #: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
@@ -11260,11 +11273,6 @@ msgstr "ประโยค"
 msgid "Set My Language"
 msgstr "ตั้งค่าภาษาของฉัน"
 
-#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
-#. js-lingui-explicit-id
-msgid "Set native and target languages"
-msgstr "กำหนดภาษาต้นฉบับและภาษาที่ต้องการ"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
 msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
@@ -11657,6 +11665,15 @@ msgstr ""
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "เกิดข้อผิดพลาดขณะสร้างบทเรียนเพิ่มเติม กรุณาลองใหม่ภายหลัง"
 
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:90
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong. Alex is notified. If he doesn't fix it, please write "
+"in the global chat."
+msgstr ""
+"มีบางอย่างผิดพลาด อเล็กซ์ได้รับการแจ้งเตือนแล้ว หากเขาไม่แก้ไข "
+"โปรดเขียนในแชททั่วไป"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:57
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -11694,7 +11711,7 @@ msgstr "สแปม"
 msgid "Spanish Learning Plan"
 msgstr "แผนการเรียนภาษาสเปน"
 
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #. js-lingui-explicit-id
 msgid "Speak"
 msgstr "พูดคุย"
@@ -12070,7 +12087,7 @@ msgstr "ขั้นตอน:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:124
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "หยุด"
@@ -12202,7 +12219,6 @@ msgid "Subject:"
 msgstr "เรื่อง:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:142
 #: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
@@ -13804,12 +13820,12 @@ msgstr "คำถามของวันนี้"
 msgid "Today's Tasks"
 msgstr "งานของวันนี้"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:16
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:14
 #. js-lingui-explicit-id
 msgid "Today’s lesson"
 msgstr "บทเรียนของวันนี้"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:13
 #. js-lingui-explicit-id
 msgid "Today’s lesson is done"
 msgstr "บทเรียนวันนี้เสร็จสิ้นแล้ว"
@@ -14463,8 +14479,8 @@ msgstr "เราขอขอบคุณสำหรับคำติชมข
 
 #: src/features/InteractiveLesson/LessonPreparingView.tsx:16
 #. js-lingui-explicit-id
-msgid "We are preparing a lesson for you. Based on your previous interaction."
-msgstr "เรากำลังเตรียมบทเรียนสำหรับคุณ ตามการโต้ตอบครั้งก่อนของคุณ"
+msgid "We are preparing a lesson for you, based on your previous practice."
+msgstr "เรากำลังเตรียมบทเรียนสำหรับคุณ โดยอิงจากการฝึกฝนก่อนหน้านี้ของคุณ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:353
 #. js-lingui-explicit-id
@@ -15551,8 +15567,8 @@ msgid "Your AI teacher voice:"
 msgstr "เสียงครู AI ของคุณ:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:62
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:105
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:56
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:101
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -15853,3 +15869,18 @@ msgstr "{winnerName} ชนะ!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "I am done"
+#~ msgstr "ฉันทำเสร็จแล้ว"
+
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Set native and target languages"
+#~ msgstr "กำหนดภาษาต้นฉบับและภาษาที่ต้องการ"
+
+#: src/features/InteractiveLesson/LessonPreparingView.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "We are preparing a lesson for you. Based on your previous interaction."
+#~ msgstr "เรากำลังเตรียมบทเรียนสำหรับคุณ ตามการโต้ตอบครั้งก่อนของคุณ"
