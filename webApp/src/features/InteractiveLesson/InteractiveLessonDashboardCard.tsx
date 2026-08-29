@@ -1,0 +1,67 @@
+'use client';
+
+import { useLingui } from '@lingui/react';
+import { InteractiveLessonDashboardView } from './InteractiveLessonDashboardView';
+import { InteractiveLessonModal } from './InteractiveLessonModal';
+import { LessonHistoryModal } from './LessonHistoryModal';
+import { useInteractiveLesson } from './useInteractiveLesson';
+
+export const InteractiveLessonDashboardCard = () => {
+  const { i18n } = useLingui();
+  const lesson = useInteractiveLesson();
+
+  const current = lesson.currentLesson;
+  const cardTitle = lesson.isDoneToday
+    ? current?.title || i18n._('Today’s lesson is done')
+    : current?.title || i18n._('Today’s lesson');
+  const cardSubTitle = current?.subTitle || i18n._('Read a rule, then speak your answers.');
+
+  return (
+    <>
+      <InteractiveLessonDashboardView
+        title={i18n._('Interactive Lesson')}
+        subTitle={i18n._('Read, speak, and build a daily speaking habit.')}
+        cardTitle={cardTitle}
+        cardSubTitle={cardSubTitle}
+        historyButtonTitle={i18n._('History')}
+        badge={lesson.isDoneToday ? i18n._('Done today') : undefined}
+        isDoneToday={lesson.isDoneToday}
+        onOpen={lesson.openLesson}
+        onHistoryClick={lesson.openHistory}
+      />
+
+      <InteractiveLessonModal
+        isOpen={lesson.isOpen}
+        onClose={lesson.closeLesson}
+        lesson={lesson.currentLesson}
+        languageCode={lesson.targetLanguageCode || 'en'}
+        needsLanguageSetup={lesson.needsLanguageSetup}
+        nativeLanguageCode={lesson.nativeLanguageCode}
+        targetLanguageCode={lesson.targetLanguageCode}
+        isStoreReady={lesson.isStoreReady}
+        isGeneratingLesson={lesson.isGeneratingLesson}
+        isGeneratingNext={lesson.isGeneratingNext}
+        isGeneratingResults={lesson.isGeneratingResults}
+        evaluatingPartIndex={lesson.evaluatingPartIndex}
+        errorMessage={lesson.errorMessage}
+        onEnsureLesson={lesson.ensureCurrentLesson}
+        onChangeNative={(code) => {
+          void lesson.setNativeLanguage(code);
+        }}
+        onChangeTarget={(code) => {
+          void lesson.setLanguage(code);
+        }}
+        onSubmitSpeech={lesson.submitSpeechAnswer}
+        onFinishLesson={lesson.finishCurrentLesson}
+        onNextLesson={lesson.goToNextLesson}
+      />
+
+      <LessonHistoryModal
+        isOpen={lesson.isHistoryOpen}
+        onClose={lesson.closeHistory}
+        lessons={lesson.history}
+        languageCode={lesson.targetLanguageCode || 'en'}
+      />
+    </>
+  );
+};
