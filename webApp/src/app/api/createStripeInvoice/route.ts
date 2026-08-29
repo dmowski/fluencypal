@@ -15,6 +15,12 @@ import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { toStripeUnit } from 'zero-decimal-currencies';
 import { getOrCreateCustomerId } from '../payment/getOrCreateCustomerId';
 import { getUserInfo } from '../user/getUserInfo';
+import {
+  finalizeInvoiceWithAutomaticTax,
+  getCustomerTaxLocationUpdate,
+  stripeAutomaticTax,
+  stripeInclusivePriceData,
+} from '../payment/stripeTax';
 
 export async function POST(request: Request) {
   let draftInvoiceId: string | undefined;
@@ -54,8 +60,12 @@ export async function POST(request: Request) {
     const customerId = await getOrCreateCustomerId(userId, stripe);
     const profile = await getUserInfo(userId);
 
-    if (profile.email) {
-      await stripe.customers.update(customerId, { email: profile.email });
+    const taxLocation = getCustomerTaxLocationUpdate(request);
+    if (profile.email || taxLocation) {
+      await stripe.customers.update(customerId, {
+        ...(profile.email ? { email: profile.email } : {}),
+        ...taxLocation,
+      });
     }
 
     const amountUsd = getAdvancedInvoiceAmountUsd(amountOfHours);
@@ -69,6 +79,8 @@ export async function POST(request: Request) {
       days_until_due: 1,
       auto_advance: false,
       pending_invoice_items_behavior: 'exclude',
+      automatic_tax: stripeAutomaticTax,
+      rendering: { amount_tax_display: 'include_inclusive_tax' },
       description,
       metadata: getAdvancedInvoiceMetadata({
         userId,
@@ -83,12 +95,23 @@ export async function POST(request: Request) {
       lines: [
         {
           description,
-          amount: stripeMoney,
+          quantity: 1,
+          price_data: stripeInclusivePriceData({
+            currency: 'usd',
+            unitAmount: stripeMoney,
+            name: description,
+          }),
         },
       ],
     });
 
-    const finalized = await stripe.invoices.finalizeInvoice(invoice.id);
+    const finalized = await finalizeInvoiceWithAutomaticTax(stripe, invoice.id);
+    if (!finalized.automatic_tax.enabled) {
+      sentSupportTelegramMessage({
+        message: `Advanced invoice ${invoice.id} finalized without VAT because Stripe could not determine the customer location`,
+        userId,
+      });
+    }
     if (!finalized.hosted_invoice_url) {
       throw new Error('Stripe did not return a hosted invoice URL');
     }

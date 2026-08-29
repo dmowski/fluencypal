@@ -19,6 +19,7 @@ import {
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { toStripeUnit } from 'zero-decimal-currencies';
 import { getConversionRate } from '../currency/getConversionRate';
+import { stripeCheckoutTaxCollection, stripeInclusivePriceData } from '../payment/stripeTax';
 
 export async function POST(request: Request) {
   try {
@@ -90,18 +91,17 @@ export async function POST(request: Request) {
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            price_data: {
+            price_data: stripeInclusivePriceData({
               currency: hoursCheckout.currency,
-              product_data: {
-                name: hoursCheckout.name,
-                description: hoursCheckout.description,
-              },
-              unit_amount: stripeMoney,
-            },
+              unitAmount: stripeMoney,
+              name: hoursCheckout.name,
+              description: hoursCheckout.description,
+            }),
             quantity: 1,
           },
         ],
         mode: 'payment',
+        ...stripeCheckoutTaxCollection,
         success_url: hoursCheckout.successUrl,
         cancel_url: hoursCheckout.cancelUrl,
         metadata: {
@@ -159,18 +159,17 @@ export async function POST(request: Request) {
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            price_data: {
+            price_data: stripeInclusivePriceData({
               currency: stripeCurrency,
-              product_data: {
-                name: getSubscriptionProductName(months, days),
-                description: getSubscriptionProductDescription(months, days),
-              },
-              unit_amount: stripeMoney,
-            },
+              unitAmount: stripeMoney,
+              name: getSubscriptionProductName(months, days),
+              description: getSubscriptionProductDescription(months, days),
+            }),
             quantity: 1,
           },
         ],
         mode: 'payment',
+        ...stripeCheckoutTaxCollection,
         success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true`,
         cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true`,
         metadata: {
