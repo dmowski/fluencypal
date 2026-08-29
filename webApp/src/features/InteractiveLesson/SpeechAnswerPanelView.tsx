@@ -5,6 +5,7 @@ import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
+import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
@@ -62,7 +63,7 @@ export const SpeechAnswerPanelView = ({
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
             {i18n._('Feedback')}
           </Typography>
-          <Typography variant="body2">{part.aiResultToUser}</Typography>
+          <LessonMarkdown content={part.aiResultToUser} />
         </Stack>
       )}
 

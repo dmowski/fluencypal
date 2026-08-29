@@ -2,21 +2,18 @@
 
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { SupportedLanguage } from '@/features/Lang/lang';
-import { NewsContentWithParagraphs } from '@/features/News/NewsContentWithParagraphs';
+import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
 
 export const LessonResultsView = ({
   results,
-  languageCode,
   isGeneratingResults,
   isGeneratingNext,
   onNextLesson,
   onFinish,
 }: {
   results: LessonResults | null;
-  languageCode: SupportedLanguage;
   isGeneratingResults: boolean;
   isGeneratingNext: boolean;
   onNextLesson: () => void;
@@ -33,11 +30,8 @@ export const LessonResultsView = ({
           <Typography variant="h6" sx={{ fontWeight: 700 }}>
             {i18n._('Your results')}
           </Typography>
-          <NewsContentWithParagraphs
-            content={results.motivationTextToUserMD}
-            languageCode={languageCode}
-          />
-          <NewsContentWithParagraphs content={results.whatWentWellMD} languageCode={languageCode} />
+          <LessonMarkdown content={results.motivationTextToUserMD} />
+          <LessonMarkdown content={results.whatWentWellMD} />
           <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap' }}>
             <Button
               variant="contained"

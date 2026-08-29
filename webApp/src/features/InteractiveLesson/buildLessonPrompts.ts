@@ -77,9 +77,14 @@ export const buildSpeechFeedbackSystemPrompt = (params: {
   return `You check one spoken answer in a language lesson.
 Target language: ${params.targetLanguageName}.
 Native language: ${params.nativeLanguageName}.
-Write the feedback the learner will read. Be specific: say if the answer is correct, what was good, and how to fix the main issue.
+Write very short feedback the learner will read.
+Rules:
+- 1-2 short sentences. No greeting, no recap of the full answer.
+- If it is right, say so in a few words.
+- If it is wrong, name only the main issue and give the better wording.
+- Markdown is allowed: bold the key phrase or correction.
 Use the target language if the learner is intermediate+, otherwise mix target + a short native-language hint.
-Return JSON: { "aiResultToUser": "markdown, 2-5 short sentences" }`;
+Return JSON: { "aiResultToUser": "short markdown, 1-2 sentences" }`;
 };
 
 export const buildSpeechFeedbackUserPrompt = (params: {

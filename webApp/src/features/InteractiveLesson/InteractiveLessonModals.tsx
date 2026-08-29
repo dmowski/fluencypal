@@ -13,7 +13,6 @@ export const InteractiveLessonModals = () => {
         isOpen={lesson.isOpen}
         onClose={lesson.closeLesson}
         lesson={lesson.currentLesson}
-        languageCode={lesson.targetLanguageCode || 'en'}
         needsLanguageSetup={lesson.needsLanguageSetup}
         nativeLanguageCode={lesson.nativeLanguageCode}
         targetLanguageCode={lesson.targetLanguageCode}
@@ -40,7 +39,6 @@ export const InteractiveLessonModals = () => {
         isOpen={lesson.isHistoryOpen}
         onClose={lesson.closeHistory}
         lessons={lesson.history}
-        languageCode={lesson.targetLanguageCode || 'en'}
       />
     </>
   );

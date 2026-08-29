@@ -84,7 +84,7 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 ## UI
 
 - Modal chrome follows `NewsModal` (full-screen `CustomModal`, `#37373a`).
-- Lesson markdown uses `NewsContentWithParagraphs` (voiceover + selection translate).
+- Lesson and feedback markdown use `Markdown` (`variant="rule"`). Tapping a word plays it immediately, then opens translate if available.
 - Recording UI follows `SubmitForm` (mic / stop / visualizer / submit).
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
 - Speech check uses the cycling *Thinking / Understanding... / Analyzing* bar.
