@@ -12,12 +12,14 @@ export const LessonPartSection = ({
   partIndex,
   languageCode,
   isEvaluating,
+  onPrepareSpeechAudio,
   onSubmitSpeech,
 }: {
   part: LessonPartState;
   partIndex: number;
   languageCode: SupportedLanguage;
   isEvaluating: boolean;
+  onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   const { i18n } = useLingui();
@@ -37,6 +39,7 @@ export const LessonPartSection = ({
           part={part}
           partIndex={partIndex}
           isEvaluating={isEvaluating}
+          onAudioReady={(blob) => onPrepareSpeechAudio(partIndex, blob)}
           onSubmit={(transcript, blob) => onSubmitSpeech(partIndex, transcript, blob)}
         />
       )}

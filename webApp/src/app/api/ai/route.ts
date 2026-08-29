@@ -33,7 +33,11 @@ export async function POST(request: Request) {
     if (isTransientOpenAiError(error)) {
       return createOpenAiUnavailableResponse();
     }
-    console.error('POST /api/ai failed', error);
+    console.error('POST /api/ai failed', {
+      model: aiRequest.model,
+      languageCode,
+      error,
+    });
     return Response.json({ error: 'AI request failed' }, { status: 500 });
   }
 

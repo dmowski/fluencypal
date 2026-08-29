@@ -39,7 +39,7 @@ export const LanguageSetupView = ({
   return (
     <Stack sx={{ gap: '20px' }} data-testid="interactive-lesson-language-setup">
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
-        {i18n._('Set native and target languages')}
+        {i18n._('Choose your languages')}
       </Typography>
       <Typography variant="body1" sx={{ opacity: 0.85 }}>
         {i18n._(

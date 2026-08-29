@@ -1,4 +1,4 @@
-import { validateAuthToken } from '../config/firebase';
+import { getBucket, validateAuthToken } from '../config/firebase';
 import { UploadFileResponse } from './types';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { validateUploadFile } from './validateUploadFile';
@@ -20,6 +20,7 @@ export async function POST(request: Request) {
   const urlQueryParams = request.url.split('?')[1];
   const urlParams = new URLSearchParams(urlQueryParams);
   const type = (urlParams.get('type') || 'image') as 'image' | 'video' | 'audio';
+  const isPublic = urlParams.get('visibility') !== 'private';
 
   // Validate file
   const validation = validateUploadFile(file, type);
@@ -54,6 +55,7 @@ export async function POST(request: Request) {
     file,
     userId,
     type,
+    isPublic,
   });
 
   if (!uploadResult.success) {
@@ -78,4 +80,44 @@ export async function POST(request: Request) {
   };
 
   return Response.json(response);
+}
+
+const isOwnedUploadPath = (filePath: string, userId: string) => {
+  if (!filePath || filePath.includes('..') || filePath.includes('\\')) return false;
+  return (
+    filePath.startsWith(`uploadedAudios/${userId}/`) ||
+    filePath.startsWith(`uploadedImages/${userId}/`) ||
+    filePath.startsWith(`uploadedVideos/${userId}/`)
+  );
+};
+
+export async function GET(request: Request) {
+  const userInfo = await validateAuthToken(request);
+  const userId = userInfo.uid || '';
+  const filePath = new URL(request.url).searchParams.get('path') || '';
+
+  if (!isOwnedUploadPath(filePath, userId)) {
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  try {
+    const storageFile = getBucket().file(filePath);
+    const [exists] = await storageFile.exists();
+    if (!exists) {
+      return Response.json({ error: 'Not found' }, { status: 404 });
+    }
+
+    const [buffer] = await storageFile.download();
+    const [metadata] = await storageFile.getMetadata();
+    return new Response(new Uint8Array(buffer), {
+      status: 200,
+      headers: {
+        'Content-Type': metadata.contentType || 'application/octet-stream',
+        'Cache-Control': 'private, max-age=300',
+      },
+    });
+  } catch (error) {
+    console.error('[uploadFile] GET failed', { userId, filePath, error });
+    return Response.json({ error: 'Failed to read file' }, { status: 500 });
+  }
 }

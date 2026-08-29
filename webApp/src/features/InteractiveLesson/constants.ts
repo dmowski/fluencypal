@@ -11,4 +11,4 @@ export const MAX_HISTORY_LESSONS = 40;
 
 export const THINKING_LABELS = ['Thinking', 'Understanding...', 'Analyzing'] as const;
 
-export const LESSON_AI_MODEL = 'gpt-5.6-luna' as const;
+export const LESSON_AI_MODEL = 'gpt-5.4' as const;

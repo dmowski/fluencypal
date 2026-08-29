@@ -16,7 +16,7 @@ export const uploadLessonAudio = async ({
   const file = new File([blob], `interactive-lesson-${lessonId}-${partIndex}.${extension}`, {
     type: mimeType,
   });
-  const result = await sendUploadFileRequest({ file, type: 'audio' }, token);
+  const result = await sendUploadFileRequest({ file, type: 'audio', visibility: 'private' }, token);
   if (result.error || !result.uploadUrl) return null;
   return result.uploadUrl;
 };

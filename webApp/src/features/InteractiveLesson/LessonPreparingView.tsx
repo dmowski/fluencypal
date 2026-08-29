@@ -13,7 +13,7 @@ export const LessonPreparingView = () => {
         variant="caption"
         sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
       >
-        {i18n._('We are preparing a lesson for you. Based on your previous interaction.')}
+        {i18n._('We are preparing a lesson for you, based on your previous practice.')}
       </Typography>
       <LoadingShapes sizes={['30px', '200px', '30px', '140px', '200px']} />
     </Stack>

@@ -871,6 +871,11 @@ msgstr "Angular та RxJS"
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Відповідайте на нове запитання щодня і побачте, як ваш стиль покращується!"
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:126
+#. js-lingui-explicit-id
+msgid "Answer again"
+msgstr "Відповісти знову"
+
 #: src/features/Tasks/useDailyTasks.tsx:88
 #. js-lingui-explicit-id
 msgid "Answer daily question"
@@ -2239,6 +2244,11 @@ msgstr "Виберіть свій план підготовки до співб�
 msgid "Choose Your Language Level"
 msgstr "Оберіть свій рівень мови"
 
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+msgid "Choose your languages"
+msgstr "Виберіть ваші мови"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -2812,7 +2822,7 @@ msgstr "Не вдалося знайти сторінку"
 msgid "Could not load article"
 msgstr "Не вдалося завантажити статтю"
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:187
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:198
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "Не вдалося завантажити урок."
@@ -4008,7 +4018,7 @@ msgstr "Виконано"
 msgid "Done recording"
 msgstr "Готово записано"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:27
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:24
 #. js-lingui-explicit-id
 msgid "Done today"
 msgstr "Зроблено сьогодні"
@@ -4848,7 +4858,7 @@ msgid "Fast Answer Practice"
 msgstr "Практика Швидкої Відповіді"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:67
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:63
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -6048,7 +6058,7 @@ msgstr "Насолоджуйтесь!"
 msgid "Health"
 msgstr "Здоров'я"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:87
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
 #. js-lingui-explicit-id
 msgid "Hear your voice"
 msgstr "Почути свій голос"
@@ -6147,7 +6157,7 @@ msgstr ""
 "негативним, або мішаним."
 
 #: src/features/InstallApp/InstallAppInstruction.tsx:103
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #. js-lingui-explicit-id
 msgid "Hide"
 msgstr "Сховати"
@@ -6182,7 +6192,7 @@ msgstr "Підказка:"
 msgid "Hints to boost your confidence"
 msgstr "Поради для підвищення вашої впевненості в собі"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:26
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
 #. js-lingui-explicit-id
 msgid "History"
 msgstr "Історія"
@@ -6381,11 +6391,6 @@ msgstr "Я згоден"
 msgid "I agree to the Terms of Use and Privacy Policy."
 msgstr "Я погоджуюсь з Умовами використання та Політикою конфіденційності."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
-#. js-lingui-explicit-id
-msgid "I am done"
-msgstr "Я закінчив"
-
 #: src/features/RolePlay/scenarios/workplace-discrimination-check.ts:58
 #. js-lingui-explicit-id
 msgid "I aware that this is a simulation and not a real legal consultation."
@@ -6535,6 +6540,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Я задам вам ще два запитання, перш ніж підготую ваш план."
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:179
+#. js-lingui-explicit-id
+msgid "I'm done"
+msgstr "Я закінчив"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -6937,7 +6947,7 @@ msgstr "Тести інтеграції"
 msgid "Interactive examples:"
 msgstr "Інтерактивні приклади:"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:22
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:19
 #. js-lingui-explicit-id
 msgid "Interactive Lesson"
 msgstr "Інтерактивний урок"
@@ -7468,7 +7478,7 @@ msgstr "Довжина"
 msgid "Less"
 msgstr "Менше"
 
-#: src/features/InteractiveLesson/LessonHistoryModal.tsx:30
+#: src/features/InteractiveLesson/LessonHistoryModal.tsx:28
 #. js-lingui-explicit-id
 msgid "Lesson history"
 msgstr "Історія уроків"
@@ -8425,7 +8435,7 @@ msgstr "Без платежів..."
 msgid "No previous data to compare"
 msgstr "Немає попередніх даних для порівняння"
 
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:26
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:24
 #. js-lingui-explicit-id
 msgid "No previous lessons yet. Finish one to see it here."
 msgstr "Ще немає попередніх уроків. Завершіть один, щоб побачити його тут."
@@ -8801,7 +8811,7 @@ msgstr "Ой! Щось пішло не так"
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
-#: src/features/InteractiveLesson/LessonHistoryView.tsx:62
+#: src/features/InteractiveLesson/LessonHistoryView.tsx:60
 #: src/features/Landing/Price/PricePage.tsx:207
 #: src/features/Sentence/Stories.tsx:256
 #. js-lingui-explicit-id
@@ -9044,7 +9054,7 @@ msgstr ""
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "Призупинити запис"
@@ -9248,7 +9258,7 @@ msgstr "Грати ще раз"
 msgid "Play and Learn"
 msgstr "Грай та Вчись"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:82
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
 #. js-lingui-explicit-id
 msgid "Play recording"
 msgstr "Відтворити запис"
@@ -9360,8 +9370,12 @@ msgstr "Будь ласка, введіть дійсну електронну а
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Будь ласка, заповніть дані батьків та відмітьте всі поля в Кроці 1."
 
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:133
+#. js-lingui-explicit-id
+msgid "Please record a longer answer — a few words is enough."
+msgstr "Будь ласка, запишіть довшу відповідь — кілька слів буде достатньо."
+
 #: src/features/Chat/SubmitForm.tsx:444
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:162
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Будь ласка, запишіть довше повідомлення (щонайменше кілька слів)."
@@ -9980,7 +9994,7 @@ msgstr "Обробка існуючих знань в цьому мозку..."
 msgid "Processing latest session"
 msgstr "Обробка останньої сесії"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:114
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:110
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10191,7 +10205,6 @@ msgstr "Сирий"
 #: src/features/Chat/SubmitForm.tsx:341
 #: src/features/Conversation/ConversationCanvas.tsx:658
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:151
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перезаписати"
@@ -10229,13 +10242,13 @@ msgstr ""
 "та проектування систем"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:286
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #: src/features/Reader/components/Reader.tsx:412
 #. js-lingui-explicit-id
 msgid "Read"
 msgstr "Читати"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:17
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Read a rule, then speak your answers."
 msgstr "Прочитайте правило, потім висловте свої відповіді."
@@ -10255,7 +10268,7 @@ msgstr "Читати більше"
 msgid "Read the text"
 msgstr "Прочитайте текст"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:23
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:20
 #. js-lingui-explicit-id
 msgid "Read, speak, and build a daily speaking habit."
 msgstr "Читай, говори та формуй щоденну звичку спілкування."
@@ -10479,7 +10492,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Записати відповідь"
@@ -10540,7 +10553,7 @@ msgstr "Запишіть вашу відповідь"
 msgid "Recording settings"
 msgstr "Налаштування запису"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:92
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:88
 #. js-lingui-explicit-id
 msgid "Recording..."
 msgstr "Запис..."
@@ -10744,7 +10757,7 @@ msgstr ""
 "структурований контекст (ідентифікатори кореляції) та передавайте метрики "
 "для спостереження за рівнями помилок і затримками."
 
-#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:125
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:137
 #: src/features/News/NewsModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Retry"
@@ -11214,11 +11227,6 @@ msgstr "Речення"
 msgid "Set My Language"
 msgstr "Встановити Мою Мову"
 
-#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
-#. js-lingui-explicit-id
-msgid "Set native and target languages"
-msgstr "Встановити рідну та цільову мови"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:60
 #. js-lingui-explicit-id
 msgid "Set NEXT_PUBLIC_REALTIME_WS_URL_PROD or _DEV in .env.local."
@@ -11613,6 +11621,15 @@ msgstr ""
 "Сталася помилка під час генерації додаткових уроків. Будь ласка, спробуйте "
 "ще раз пізніше."
 
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:90
+#. js-lingui-explicit-id
+msgid ""
+"Something went wrong. Alex is notified. If he doesn't fix it, please write "
+"in the global chat."
+msgstr ""
+"Щось пішло не так. Алексу надіслано сповіщення. Якщо він не виправить це, "
+"будь ласка, напишіть у глобальний чат."
+
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:57
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -11650,7 +11667,7 @@ msgstr "Спам"
 msgid "Spanish Learning Plan"
 msgstr "План навчання іспанської"
 
-#: src/features/InteractiveLesson/LessonPartSection.tsx:36
+#: src/features/InteractiveLesson/LessonPartSection.tsx:34
 #. js-lingui-explicit-id
 msgid "Speak"
 msgstr "Говорити"
@@ -12032,7 +12049,7 @@ msgstr "Кроки:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:128
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:124
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Стоп"
@@ -12161,7 +12178,6 @@ msgid "Subject:"
 msgstr "Тема:"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:242
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:142
 #: src/features/Quiz/components/QuizModal.tsx:342
 #. js-lingui-explicit-id
 msgid "Submit"
@@ -13772,12 +13788,12 @@ msgstr "Сьогоднішнє Запитання"
 msgid "Today's Tasks"
 msgstr "Завдання на сьогодні"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:16
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:14
 #. js-lingui-explicit-id
 msgid "Today’s lesson"
 msgstr "Сьогоднішній урок"
 
-#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:15
+#: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:13
 #. js-lingui-explicit-id
 msgid "Today’s lesson is done"
 msgstr "Сьогоднішній урок завершено"
@@ -14430,8 +14446,8 @@ msgstr "Ми цінуємо ваш відгук!"
 
 #: src/features/InteractiveLesson/LessonPreparingView.tsx:16
 #. js-lingui-explicit-id
-msgid "We are preparing a lesson for you. Based on your previous interaction."
-msgstr "Ми готуємо урок для вас. На основі вашої попередньої взаємодії."
+msgid "We are preparing a lesson for you, based on your previous practice."
+msgstr "Ми готуємо урок для вас, заснований на вашій попередній практиці."
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:353
 #. js-lingui-explicit-id
@@ -15525,8 +15541,8 @@ msgid "Your AI teacher voice:"
 msgstr "Голос вашого AI вчителя:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:62
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:105
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:56
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:101
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -15839,3 +15855,18 @@ msgstr "{winnerName} перемагає!"
 #. js-lingui-explicit-id
 msgid "| FluencyPal"
 msgstr "| FluencyPal"
+
+#: src/features/InteractiveLesson/InteractiveLessonModal.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "I am done"
+#~ msgstr "Я закінчив"
+
+#: src/features/InteractiveLesson/LanguageSetupView.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Set native and target languages"
+#~ msgstr "Встановити рідну та цільову мови"
+
+#: src/features/InteractiveLesson/LessonPreparingView.tsx:16
+#. js-lingui-explicit-id
+#~ msgid "We are preparing a lesson for you. Based on your previous interaction."
+#~ msgstr "Ми готуємо урок для вас. На основі вашої попередньої взаємодії."
