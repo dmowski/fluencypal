@@ -1,5 +1,6 @@
 import {
   applySpeechAnswer,
+  discardCurrentLesson,
   emptyLessonStore,
   isLessonCompletedToday,
   isLessonFinished,
@@ -73,6 +74,21 @@ describe('lessonState', () => {
     expect(promoted.history[0]?.id).toBe('lesson-1');
     expect(promoted.currentLesson?.id).toBe('lesson-2');
     expect(promoted.nextLesson).toBeNull();
+  });
+
+  it('discards the current lesson without marking it done', () => {
+    const current = makeLesson();
+    const next = makeLesson({ id: 'lesson-2', title: 'Questions' });
+    const discarded = discardCurrentLesson({
+      ...emptyLessonStore(),
+      currentLesson: current,
+      nextLesson: next,
+      lastCompletedAtIso: null,
+    });
+    expect(discarded.currentLesson).toBeNull();
+    expect(discarded.nextLesson).toBeNull();
+    expect(discarded.lastCompletedAtIso).toBeNull();
+    expect(discarded.history).toEqual([]);
   });
 
   it('does not promote an unfinished lesson', () => {

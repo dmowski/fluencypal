@@ -23,10 +23,12 @@ InteractiveLesson/
   generateAnswerFeedback.ts        — generateStrictJson → speech check
   generateLessonResults.ts         — generateStrictJson → closing
   useInteractiveLesson.ts          — session, persist, URL, generation
+  lessonErrors.ts                  — user-facing lesson error token
   InteractiveLessonDashboardCard.tsx
   InteractiveLessonModals.tsx      — lesson + history, mounted in GlobalModals
   InteractiveLessonModal.tsx
-  SpeechAnswerPanelView.tsx        — presentational recorder UI (screenshot-friendly)
+  InteractiveLessonModalContent.tsx
+  SpeechAnswerPanel.tsx            — recorder hook + SpeechAnswerPanelView
   LessonHistoryView.tsx
 ```
 
@@ -64,6 +66,7 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 2. If no current lesson → generate (loader: *We are preparing a lesson for you, based on your previous practice.*).
 3. Render parts. `read` = read only. `speech` = record → stop → auto-check (upload in parallel) → thinking bar → AI feedback. **Answer again** replaces the previous take.
 4. **I'm done** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
+4b. **Skip this lesson** asks for confirmation, drops the current lesson (not marked done), and generates a different one.
 5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
 6. **Next lesson** opens the pre-generated lesson, or the preparing state if that request is still running.
 7. **Finish** or closing a finished modal archives the lesson and makes `nextLesson` current.
@@ -72,11 +75,13 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 
 ## Generation
 
-`useTextAi.generateStrictJson`, model `gpt-5.6-luna`.
+`useTextAi.generateStrictJson`, model `gpt-5.4`.
+
+Each lesson trains **one checkable language form** (article, tense, chunk, contrast). Not “talk clearly” / “present better”.
 
 | When | Context |
 | --- | --- |
-| First lesson | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a generic B1 lesson. |
+| First lesson | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a B1 lesson on one form. |
 | Later lessons | Previous lesson results and spoken answers. |
 
 In-flight generation is deduped per storage key so Strict Mode remounts do not double-call AI.
@@ -94,6 +99,8 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 See `types.ts`. `LessonPart.type` is `"read" | "speech"`. A speech part becomes `LessonPartWithUserAnswer` after submit (`userVoiceTranscript`, `aiResultToUser`).
 
 ## Testing
+
+Browser tests render the same components the app mounts (`InteractiveLessonModalContent`, `LanguageSetupView`, `SpeechAnswerPanel`, dashboard card, history). Do not rebuild that UI in a fixture file.
 
 ```bash
 cd webApp && pnpm lint

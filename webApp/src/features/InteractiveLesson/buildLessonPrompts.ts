@@ -3,26 +3,41 @@ import { LessonGenerationContext } from './types';
 
 const lessonShape = `Return JSON:
 {
-  "title": "3-5 words",
-  "subTitle": "5-7 words",
+  "title": "3-5 words that name the language point, not the topic",
+  "subTitle": "5-7 words: the form they must use",
   "parts": [
     { "contentMD": "markdown the learner reads", "type": "read" | "speech" }
   ]
 }`;
 
-const lessonDesignRules = `Design a 10-15 minute speaking lesson.
-Mix "read" parts (rule, short text, example) and "speech" parts (learner answers by voice).
-Typical flow:
-- Read a rule
-- Read a short text that uses the rule
-- Speech: explain a word meaning
-- Speech: answer a question about the rule
-- Speech: translate from native to target
-- Speech: translate from target to native
-- Speech: finish a sentence or share a short thought
+const lessonDesignRules = `Design a 10-15 minute speaking lesson around ONE specific, checkable language point.
 
-Write learner-facing content in the TARGET language unless the task is a translation FROM the native language (then put the source sentence in the native language and ask them to speak the target version).
-Keep "read" parts useful and concrete. Keep "speech" prompts short and doable in 15-40 seconds.
+This product already trains speaking clearly. Do NOT make the lesson about
+clarity, fluency, confidence, "talking better", "presenting clearly",
+"sounding natural", or "explaining your project". Those are the course, not today.
+
+The focus must be a form the learner can reuse in a sentence, for example:
+- articles: a demo video / the landing page
+- a tense or aspect: I'm recording vs I recorded
+- a chunk: the reign of X; so that; used to
+- a contrast they mix up: try to vs I'm [doing]
+- countable/uncountable, prepositions, word order, one word family
+
+Title and first read part must name that form. Bad: "Talk about your project clearly".
+Good: "Articles with unique nouns" / "Use **the** with one specific thing".
+
+Typical flow:
+- Read: the one rule, with 2-4 real example phrases (bold the target form)
+- Read: a short text that uses the form several times
+- Speech: say a sentence that MUST include the form
+- Speech: fix or contrast a wrong version
+- Speech: translate a native sentence that forces the form
+- Speech: finish a starter that already contains the form
+
+Every speech task should make it obvious whether they used the form.
+Keep speech prompts doable in 15-40 seconds.
+Write learner-facing content in the TARGET language unless translating FROM native
+(then put the source sentence in the native language).
 Do not mention that you are an AI or that this is JSON.`;
 
 export const buildLessonSystemPrompt = (params: {
@@ -42,7 +57,8 @@ export const buildFirstLessonUserPrompt = (context: LessonGenerationContext): st
 
   if (hasConversation) {
     return `Create the learner's next lesson from their recent conversations.
-Personalize the rule and speaking tasks to mistakes, topics, and vocabulary you can infer.
+Pick ONE language form they actually used wrong or avoided. Build the whole lesson around that form.
+Do not write a vague communication tip. Topics (demo, project, history) are only the example world.
 
 Recent conversation (most recent first, up to 30 messages; older chats included if the latest one was short):
 ${context.conversationText}
@@ -52,19 +68,22 @@ ${hasGoal ? `Learner goal / notes:\n${context.userGoalText}` : ''}`;
 
   if (hasGoal) {
     return `The learner has little or no recent conversation history.
-Create a lesson from their goal and notes. Aim at a useful next step, not a review of unknown mistakes.
+Create a lesson from their goal and notes. Pick ONE concrete language form they will need for that goal.
+Do not teach "speak clearly" or "present better". Aim at a useful next form, not a review of unknown mistakes.
 
 Learner goal / notes:
 ${context.userGoalText}`;
   }
 
   return `The learner has no conversation history and no saved goal.
-Create a solid middle-level (CEFR B1) lesson for the target language: one practical speaking rule, a short readable example, then several voice tasks.`;
+Create a solid middle-level (CEFR B1) lesson for the target language around ONE form
+(e.g. past simple + time phrase, or a/the with unique nouns): short rule, example text, then voice tasks that force that form.`;
 };
 
 export const buildNextLessonUserPrompt = (context: LessonGenerationContext): string => {
   return `Create the next lesson based on what the learner just practiced and how they did.
-Move one step forward: keep what they did well, and target the weakest pattern.
+Move one step forward to a NEW specific form (or a tighter version of the weakest form).
+Do not repeat a vague "speak clearly / present better" lesson.
 
 Previous lesson results and answers:
 ${context.previousLessonsSummary || 'No previous results.'}`;

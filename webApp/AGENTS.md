@@ -87,6 +87,11 @@ full Playwright e2e is overkill.
   catch via Playwright.
 - Keep them deterministic and isolated: render the component directly, do not
   spin up the app router, do not import e2e helpers.
+- Never copy production markup into a test fixture. Render the same component
+  the app mounts (or a thin wrapper that only supplies props / BrowserAppShell).
+  A fixture that rebuilds buttons, layout, or copy will pass while the live UI
+  drifts. If a hook or recorder makes the real component hard to render, mock
+  that dependency or accept props — do not redraw the screen in the test file.
 - A passing browser test is NOT a substitute for an e2e regression test when
   the bug only reproduces against real markdown/EPUB input — add coverage at
   the layer where the bug actually lives.

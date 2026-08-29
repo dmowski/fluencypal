@@ -25,6 +25,7 @@ import { generateLessonResults } from './generateLessonResults';
 import {
   applyLessonResults,
   applySpeechAnswer,
+  discardCurrentLesson,
   emptyLessonStore,
   isLessonCompletedToday,
   isLessonFinished,
@@ -34,8 +35,7 @@ import {
 import { loadInteractiveLessonStore, saveInteractiveLessonStore } from './interactiveLessonFirestore';
 import { uploadLessonAudio } from './uploadLessonAudio';
 import { InteractiveLesson, InteractiveLessonStore, LessonGenerationContext } from './types';
-
-const USER_LESSON_ERROR = 'LESSON_FAILED';
+import { USER_LESSON_ERROR } from './lessonErrors';
 const inFlightLessonByKey = new Map<string, Promise<InteractiveLesson>>();
 const logLessonError = (phase: string, error: unknown, extra?: Record<string, unknown>) => {
   console.error('[interactiveLesson] failed', {
@@ -175,6 +175,7 @@ const useProvideInteractiveLesson = () => {
     key: string,
     mode: 'first' | 'next',
     currentStore: InteractiveLessonStore,
+    extraPreviousSummary = '',
   ): Promise<InteractiveLesson> => {
     const existing = inFlightLessonByKey.get(key);
     if (existing) return existing;
@@ -188,7 +189,12 @@ const useProvideInteractiveLesson = () => {
       return generateInteractiveLesson({
         textAi,
         mode,
-        context,
+        context: {
+          ...context,
+          previousLessonsSummary: [extraPreviousSummary, context.previousLessonsSummary]
+            .filter(Boolean)
+            .join('\n\n'),
+        },
         targetLanguageCode,
         nativeLanguageCode,
       });
@@ -340,6 +346,41 @@ const useProvideInteractiveLesson = () => {
     }
   };
 
+  const skipCurrentLesson = async () => {
+    const lesson = storeRef.current.currentLesson;
+    if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
+    if (lesson.lessonResults) return;
+
+    const skippedNote = [
+      'The learner skipped this unfinished lesson. Generate a different form. Do not repeat it.',
+      `Skipped title: ${lesson.title}`,
+      `Skipped subtitle: ${lesson.subTitle}`,
+    ].join('\n');
+
+    pendingAudioUploads.current.clear();
+    setErrorMessage('');
+    setIsGeneratingLesson(true);
+    const discarded = persistUpdate(discardCurrentLesson);
+    try {
+      const generated = await runLessonGeneration(
+        `${userId}:${languageCode}:after-skip:${lesson.id}`,
+        'next',
+        discarded,
+        skippedNote,
+      );
+      persistUpdate((prev) => ({
+        ...prev,
+        currentLesson: prev.currentLesson || generated,
+        nextLesson: null,
+      }));
+    } catch (error) {
+      logLessonError('skipCurrentLesson', error, { skippedLessonId: lesson.id });
+      setErrorMessage(USER_LESSON_ERROR);
+    } finally {
+      setIsGeneratingLesson(false);
+    }
+  };
+
   const goToNextLesson = async () => {
     const promoted = persistUpdate(promoteFinishedLesson);
     if (promoted.currentLesson) return;
@@ -401,6 +442,7 @@ const useProvideInteractiveLesson = () => {
     prepareSpeechAudio,
     submitSpeechAnswer,
     finishCurrentLesson,
+    skipCurrentLesson,
     goToNextLesson,
     setLanguage: settings.setLanguage,
     setNativeLanguage: settings.setNativeLanguage,
@@ -423,4 +465,4 @@ export const useInteractiveLesson = (): InteractiveLessonApi => {
   return context;
 };
 
-export const isLessonUserError = (message: string) => message === USER_LESSON_ERROR;
+export { isLessonUserError } from './lessonErrors';
