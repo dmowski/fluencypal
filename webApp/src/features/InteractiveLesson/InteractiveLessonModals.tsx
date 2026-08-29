@@ -10,7 +10,7 @@ export const InteractiveLessonModals = () => {
   return (
     <>
       <InteractiveLessonModal
-        isOpen={lesson.isOpen}
+        isOpen={lesson.isOpen && lesson.isUserReady}
         onClose={lesson.closeLesson}
         lesson={lesson.currentLesson}
         needsLanguageSetup={lesson.needsLanguageSetup}
@@ -36,7 +36,7 @@ export const InteractiveLessonModals = () => {
       />
 
       <LessonHistoryModal
-        isOpen={lesson.isHistoryOpen}
+        isOpen={lesson.isHistoryOpen && lesson.isUserReady}
         onClose={lesson.closeHistory}
         lessons={lesson.history}
       />

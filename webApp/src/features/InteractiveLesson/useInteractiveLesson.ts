@@ -84,8 +84,10 @@ const useProvideInteractiveLesson = () => {
   const storeRef = useRef(store);
   storeRef.current = store;
 
+  const isSettingsReady = !settings.loading && !!userId;
+
   useEffect(() => {
-    if (!userId) {
+    if (!isSettingsReady) {
       setStore(emptyLessonStore());
       setIsStoreReady(false);
       return;
@@ -111,12 +113,14 @@ const useProvideInteractiveLesson = () => {
     return () => {
       cancelled = true;
     };
-  }, [userId, languageCode]);
+  }, [isSettingsReady, userId, languageCode]);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode ?? null;
   const targetLanguageCode = settings.languageCode;
+  const isUserReady = isSettingsReady && isStoreReady;
   const needsLanguageSetup =
-    !nativeLanguageCode || !targetLanguageCode || nativeLanguageCode === targetLanguageCode;
+    isUserReady &&
+    (!nativeLanguageCode || !targetLanguageCode || nativeLanguageCode === targetLanguageCode);
 
   const persistUpdate = (updater: (prev: InteractiveLessonStore) => InteractiveLessonStore) => {
     const next = updater(storeRef.current);
@@ -378,6 +382,7 @@ const useProvideInteractiveLesson = () => {
     history: store.history,
     isDoneToday: isLessonCompletedToday(store),
     isStoreReady,
+    isUserReady,
     isOpen: isOpen === 'open',
     isHistoryOpen: isHistoryOpen === 'open',
     needsLanguageSetup,
