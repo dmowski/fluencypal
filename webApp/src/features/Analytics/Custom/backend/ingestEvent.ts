@@ -2,9 +2,10 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { getDB } from '@/app/api/config/firebase';
 import { parseBrowserInfo } from '@/features/Analytics/AdminStats/parseBrowserInfo';
 import { classifyFunnelFlags, mergeFunnelFlags, visitorFunnelFlags } from '../classifyFunnel';
+import { shouldPersistAnalyticsEvent } from '../isReportableVisitor';
 import { AnalyticsClientEvent, AnalyticsEventDoc, AnalyticsVisitorDoc } from '../types';
-import { eventsCollectionName, visitorsCollectionName } from './collections';
 import { isValidVisitorId } from '../visitorId';
+import { eventsCollectionName, visitorsCollectionName } from './collections';
 
 const HOUR_MS = 60 * 60 * 1000;
 const MAX_EVENTS_PER_HOUR = 180;
@@ -110,9 +111,12 @@ export const ingestAnalyticsEvent = async (input: {
 
   const db = getDB();
   const visitorRef = db.collection(visitorsCollectionName).doc(input.visitorId);
-  const eventRef = db.collection(eventsCollectionName).doc(eventId);
   const existing = await visitorRef.get();
+  if (!shouldPersistAnalyticsEvent(input.event.name, existing.exists)) {
+    return;
+  }
 
+  const eventRef = db.collection(eventsCollectionName).doc(eventId);
   const batch = db.batch();
   batch.set(eventRef, eventDoc);
 

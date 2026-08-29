@@ -5,6 +5,7 @@ import {
   JourneyOsRow,
   JourneySummary,
 } from '../types';
+import { isReportableVisitor } from '../isReportableVisitor';
 
 const countBy = (items: string[]): { key: string; count: number }[] => {
   const map = new Map<string, number>();
@@ -20,8 +21,9 @@ export const summarizeJourneys = (
   dayKey: string,
   visitors: AnalyticsVisitorDoc[],
 ): JourneySummary => {
+  const counted = visitors.filter(isReportableVisitor);
   const dropOff: JourneyDropOffRow[] = countBy(
-    visitors.map((visitor) => visitor.lastPath || '(unknown)'),
+    counted.map((visitor) => visitor.lastPath || '(unknown)'),
   ).map((row) => ({
     path: row.key,
     count: row.count,
@@ -37,7 +39,7 @@ export const summarizeJourneys = (
     paywall: 0,
     checkout: 0,
   };
-  for (const visitor of visitors) {
+  for (const visitor of counted) {
     if (visitor.reachedLanding) funnel.landing += 1;
     if (visitor.reachedApp) funnel.app += 1;
     if (visitor.reachedAuth) funnel.auth += 1;
@@ -48,22 +50,22 @@ export const summarizeJourneys = (
     if (visitor.reachedCheckout) funnel.checkout += 1;
   }
 
-  const os: JourneyOsRow[] = countBy(visitors.map((visitor) => visitor.os || 'Unknown OS')).map(
+  const os: JourneyOsRow[] = countBy(counted.map((visitor) => visitor.os || 'Unknown OS')).map(
     (row) => ({
       os: row.key,
       count: row.count,
     }),
   );
 
-  const eventCount = visitors.reduce((sum, visitor) => sum + (visitor.eventCount || 0), 0);
+  const eventCount = counted.reduce((sum, visitor) => sum + (visitor.eventCount || 0), 0);
 
   return {
     dayKey,
-    visitorCount: visitors.length,
+    visitorCount: counted.length,
     eventCount,
     dropOff,
     funnel,
     os,
-    visitors: visitors.slice().sort((a, b) => b.lastSeenAtIso.localeCompare(a.lastSeenAtIso)),
+    visitors: counted.slice().sort((a, b) => b.lastSeenAtIso.localeCompare(a.lastSeenAtIso)),
   };
 };

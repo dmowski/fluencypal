@@ -5,6 +5,7 @@ import { createVisitorId, isValidVisitorId } from './visitorId';
 import { validateClientEvent, validateVisitorId } from './validateEvent';
 import { summarizeJourneys } from './backend/summarizeJourneys';
 import { isBotUserAgent } from './isBotUserAgent';
+import { isReportableVisitor, shouldPersistAnalyticsEvent } from './isReportableVisitor';
 import { classifyCta } from './classifyCta';
 import { nextScrollBucket } from './pageEngagement';
 import { parseTraffic } from './parseTraffic';
@@ -66,6 +67,26 @@ describe('isBotUserAgent', () => {
     expect(isBotUserAgent('')).toBe(true);
     expect(isBotUserAgent('Mozilla/5.0 (compatible; Googlebot/2.1)')).toBe(true);
     expect(isBotUserAgent('Mozilla/5.0 Chrome/120.0.0.0')).toBe(false);
+  });
+});
+
+describe('shouldPersistAnalyticsEvent', () => {
+  it('skips the first page_view until the visitor has engaged', () => {
+    expect(shouldPersistAnalyticsEvent('page_view', false)).toBe(false);
+    expect(shouldPersistAnalyticsEvent('page_view', true)).toBe(true);
+    expect(shouldPersistAnalyticsEvent('page_leave', false)).toBe(true);
+    expect(shouldPersistAnalyticsEvent('scroll_depth', false)).toBe(true);
+    expect(shouldPersistAnalyticsEvent('click', false)).toBe(true);
+    expect(shouldPersistAnalyticsEvent('identify', false)).toBe(true);
+  });
+});
+
+describe('isReportableVisitor', () => {
+  it('drops lone page_view sessions and keeps bounces that left or scrolled', () => {
+    expect(isReportableVisitor({ eventCount: 1, lastEventName: 'page_view' })).toBe(false);
+    expect(isReportableVisitor({ eventCount: 2, lastEventName: 'page_view' })).toBe(true);
+    expect(isReportableVisitor({ eventCount: 1, lastEventName: 'page_leave' })).toBe(true);
+    expect(isReportableVisitor({ eventCount: 1, lastEventName: 'scroll_depth' })).toBe(true);
   });
 });
 
@@ -183,6 +204,32 @@ describe('summarizeJourneys', () => {
         reachedPaywall: false,
         reachedCheckout: false,
       },
+      {
+        visitorId: 'fpv_crawler',
+        createdAtIso: '2026-08-28T12:00:00.000Z',
+        lastSeenAtIso: '2026-08-28T12:00:01.000Z',
+        firstPath: '/zh/practice?rolePlayId=talking-to-a-doctor',
+        lastPath: '/zh/practice?rolePlayId=talking-to-a-doctor',
+        lastEventName: 'page_view',
+        lastHost: 'app.fluencypal.com',
+        firstHost: 'app.fluencypal.com',
+        firstSourceApp: 'webapp',
+        lastSourceApp: 'webapp',
+        eventCount: 1,
+        userAgent: 'Mozilla',
+        os: 'Linux',
+        browser: 'Chrome',
+        screenWidth: 1536,
+        screenHeight: 864,
+        language: 'en-US',
+        authUserId: null,
+        lastReferrer: '',
+        reachedLanding: false,
+        reachedApp: true,
+        reachedAuth: false,
+        reachedQuiz: false,
+        reachedPractice: true,
+      },
     ]);
 
     expect(summary.visitorCount).toBe(2);
@@ -193,5 +240,6 @@ describe('summarizeJourneys', () => {
     expect(summary.funnel.paywall).toBe(0);
     expect(summary.funnel.checkout).toBe(0);
     expect(summary.dropOff.map((row) => row.path).sort()).toEqual(['/', '/practice']);
+    expect(summary.visitors.map((visitor) => visitor.visitorId)).not.toContain('fpv_crawler');
   });
 });

@@ -57,7 +57,7 @@ Visitor summary also stores first-touch UTM/referrer/country, max scroll, landin
 
 Country comes from `x-vercel-ip-country` / `cf-ipcountry` on ingest (not stored IP).
 
-Bots (UA + `navigator.webdriver`) are dropped and never written.
+Bots (UA + `navigator.webdriver`) are dropped and never written. A lone `page_view` with no click, scroll, leave, or identify is not persisted (and is excluded from reports if already stored).
 
 CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-works-quiz`. Href still classifies `/quiz` vs `/practice`.
 

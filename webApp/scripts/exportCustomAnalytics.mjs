@@ -60,7 +60,13 @@ const visitorsSnap = await db
   .limit(MAX_VISITORS)
   .get();
 
-const visitors = visitorsSnap.docs.map((doc) => doc.data());
+// Keep in sync with isReportableVisitor.ts
+const isReportableVisitor = (visitor) =>
+  !(visitor.eventCount <= 1 && visitor.lastEventName === 'page_view');
+
+const rawVisitors = visitorsSnap.docs.map((doc) => doc.data());
+const skippedCount = rawVisitors.length - rawVisitors.filter(isReportableVisitor).length;
+const visitors = rawVisitors.filter(isReportableVisitor);
 
 const eventsByVisitorId = {};
 for (const visitor of visitors) {
@@ -209,5 +215,6 @@ const payload = {
 
 fs.writeFileSync(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`);
 console.log(
-  `Wrote ${visitors.length} visitors for ${dayKey} to ${path.relative(webAppRoot, OUTPUT)}`,
+  `Wrote ${visitors.length} visitors for ${dayKey} to ${path.relative(webAppRoot, OUTPUT)}` +
+    (skippedCount ? ` (${skippedCount} unengaged page_view-only dropped)` : ''),
 );
