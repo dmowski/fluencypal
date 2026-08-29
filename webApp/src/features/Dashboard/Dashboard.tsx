@@ -45,7 +45,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <NewPrivateMessageCard />
             <DailyTasksDashboardCard />
             <JustTalkCard />
-            <InteractiveLessonDashboardCard />
+
             <DailyQuestionDashboardCard />
             <GrammarImprovesCard />
             <InstallAppInstruction />
@@ -54,6 +54,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
 
             <GameDashboardCard />
             <ExamsDashboardCard />
+            <InteractiveLessonDashboardCard />
 
             <LinkToStatsAdmin />
           </MainDashboardContainer>
