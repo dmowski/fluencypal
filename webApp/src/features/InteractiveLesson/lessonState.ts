@@ -73,6 +73,15 @@ export const applyLessonResults = (
   };
 };
 
+export const discardCurrentLesson = (store: InteractiveLessonStore): InteractiveLessonStore => {
+  if (!store.currentLesson) return store;
+  return {
+    ...store,
+    currentLesson: null,
+    nextLesson: null,
+  };
+};
+
 export const promoteFinishedLesson = (store: InteractiveLessonStore): InteractiveLessonStore => {
   const current = store.currentLesson;
   if (!current?.lessonResults) return store;

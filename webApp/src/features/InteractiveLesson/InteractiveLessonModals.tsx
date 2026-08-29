@@ -32,6 +32,7 @@ export const InteractiveLessonModals = () => {
         onPrepareSpeechAudio={lesson.prepareSpeechAudio}
         onSubmitSpeech={lesson.submitSpeechAnswer}
         onFinishLesson={lesson.finishCurrentLesson}
+        onSkipLesson={lesson.skipCurrentLesson}
         onNextLesson={lesson.goToNextLesson}
       />
 

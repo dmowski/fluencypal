@@ -71,25 +71,6 @@ export const SpeechAnswerPanelView = ({
 
       {!isEvaluating && (
         <Stack sx={{ gap: '10px', width: '100%' }}>
-          {(isRecording || visualizer) && (
-            <Stack
-              sx={{
-                width: '100%',
-                minHeight: '40px',
-                justifyContent: 'center',
-              }}
-              data-testid="interactive-lesson-recording-visualizer"
-            >
-              {visualizer}
-            </Stack>
-          )}
-
-          {isRecording && (
-            <Typography variant="caption" sx={{ color: '#ff8e86' }}>
-              {i18n._('Recording...')}
-            </Typography>
-          )}
-
           {error && (
             <Typography variant="caption" color="error">
               {error}
@@ -112,14 +93,27 @@ export const SpeechAnswerPanelView = ({
             </Typography>
           )}
 
-          <Stack sx={{ flexDirection: 'row', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: 0,
+              alignItems: 'stretch',
+              width: '100%',
+            }}
+          >
             <Button
               disabled={isTranscribing}
-              variant="contained"
+              variant={answered && !isRecording ? 'text' : 'contained'}
               color={isRecording ? 'error' : 'info'}
               size="large"
               startIcon={isRecording ? <StopIcon /> : <MicIcon />}
               onClick={onToggleRecord}
+              sx={{
+                flexShrink: 0,
+                ...(isRecording
+                  ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
+                  : {}),
+              }}
             >
               {isRecording
                 ? i18n._('Stop')
@@ -127,6 +121,18 @@ export const SpeechAnswerPanelView = ({
                   ? i18n._('Answer again')
                   : i18n._('Record answer')}
             </Button>
+            {(isRecording || visualizer) && (
+              <Stack
+                sx={{
+                  flex: 1,
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}
+                data-testid="interactive-lesson-recording-visualizer"
+              >
+                {visualizer}
+              </Stack>
+            )}
           </Stack>
 
           {needMoreText && (

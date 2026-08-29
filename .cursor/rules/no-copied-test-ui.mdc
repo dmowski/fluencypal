@@ -1,0 +1,13 @@
+---
+description: Browser and component tests must render the app UI, not a copied fixture.
+globs: webApp/**/*.{browser.test.tsx,browser.test.ts,*Fixtures.tsx,*Fixture.tsx}
+alwaysApply: false
+---
+
+# No copied test UI
+
+Do not rebuild production markup in a test or fixture. Render the component the app mounts. Supply props, `BrowserAppShell`, and mocks for hooks or browser APIs.
+
+A duplicated button row, layout, or copy will pass while the live screen drifts.
+
+If the real component is hard to render, mock the dependency or make the component accept props. Do not redraw the screen in the test file.
