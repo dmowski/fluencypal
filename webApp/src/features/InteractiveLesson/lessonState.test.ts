@@ -64,9 +64,9 @@ describe('lessonState', () => {
     const next = makeLesson({ id: 'lesson-2', title: 'Questions' });
 
     const promoted = promoteFinishedLesson({
+      ...emptyLessonStore(),
       currentLesson: finished,
       nextLesson: next,
-      history: [],
       lastCompletedAtIso: finished.completedAtIso,
     });
 

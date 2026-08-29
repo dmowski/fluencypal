@@ -31,6 +31,36 @@ describe('interactive lesson storage', () => {
     });
   });
 
+  it('backfills audio progress from stored lesson answers', () => {
+    const store = parseInteractiveLessonStore({
+      currentLesson: null,
+      nextLesson: null,
+      lastCompletedAtIso: null,
+      history: [
+        {
+          id: 'abc',
+          title: 'Articles',
+          subTitle: 'A vs the',
+          createdAtIso: '2026-08-29T10:00:00.000Z',
+          completedAtIso: '2026-08-29T11:00:00.000Z',
+          lessonResults: null,
+          parts: [
+            {
+              type: 'speech',
+              contentMD: 'Describe your room.',
+              userVoiceTranscript: 'It is small.',
+              aiResultToUser: 'Good.',
+              userAudioUrl: 'https://example.com/voice.webm',
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(store.audioProgress.totalCount).toBe(1);
+    expect(store.audioProgress.first[0]?.audioUrl).toBe('https://example.com/voice.webm');
+  });
+
   it('returns an empty store for invalid payloads', () => {
     expect(parseInteractiveLessonStore(null)).toEqual(emptyLessonStore());
     expect(parseInteractiveLessonStore({ currentLesson: { title: 'x' } })).toEqual({

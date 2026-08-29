@@ -1,10 +1,11 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
+import { X } from 'lucide-react';
 import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
@@ -23,6 +24,7 @@ export interface SpeechAnswerPanelViewProps {
   visualizer: ReactNode;
   needMoreText: boolean;
   onToggleRecord: () => void;
+  onCancelRecord: () => void;
 }
 
 export const SpeechAnswerPanelView = ({
@@ -38,12 +40,16 @@ export const SpeechAnswerPanelView = ({
   visualizer,
   needMoreText,
   onToggleRecord,
+  onCancelRecord,
 }: SpeechAnswerPanelViewProps) => {
   const { i18n } = useLingui();
   const answered = isLessonPartWithAnswer(part);
 
   return (
-    <Stack sx={{ gap: '12px', width: '100%' }} data-testid={`interactive-lesson-speech-${partIndex}`}>
+    <Stack
+      sx={{ gap: '12px', width: '100%' }}
+      data-testid={`interactive-lesson-speech-${partIndex}`}
+    >
       {answered && (
         <Stack
           sx={{
@@ -110,9 +116,7 @@ export const SpeechAnswerPanelView = ({
               onClick={onToggleRecord}
               sx={{
                 flexShrink: 0,
-                ...(isRecording
-                  ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
-                  : {}),
+                ...(isRecording ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 } : {}),
               }}
             >
               {isRecording
@@ -127,11 +131,29 @@ export const SpeechAnswerPanelView = ({
                   flex: 1,
                   justifyContent: 'center',
                   overflow: 'hidden',
+                  boxShadow: 'inset 0 0 0 1px #F44336',
+                  borderRadius: '0 10px 10px 0',
                 }}
                 data-testid="interactive-lesson-recording-visualizer"
               >
                 {visualizer}
               </Stack>
+            )}
+            {isRecording && (
+              <IconButton
+                color="error"
+                onClick={onCancelRecord}
+                aria-label={i18n._('Cancel recording')}
+                data-testid="interactive-lesson-cancel-recording"
+                sx={{
+                  flexShrink: 0,
+                  alignSelf: 'stretch',
+                  width: '42px',
+                  marginLeft: '5px',
+                }}
+              >
+                <X size={20} />
+              </IconButton>
             )}
           </Stack>
 

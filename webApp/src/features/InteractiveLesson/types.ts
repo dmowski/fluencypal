@@ -28,11 +28,25 @@ export interface InteractiveLesson {
   lessonResults: LessonResults | null;
 }
 
+export interface LessonAudioRecord {
+  id: string;
+  audioUrl: string;
+  transcript: string;
+  recordedAtIso: string;
+}
+
+export interface LessonAudioProgress {
+  first: LessonAudioRecord[];
+  last: LessonAudioRecord[];
+  totalCount: number;
+}
+
 export interface InteractiveLessonStore {
   currentLesson: InteractiveLesson | null;
   nextLesson: InteractiveLesson | null;
   history: InteractiveLesson[];
   lastCompletedAtIso: string | null;
+  audioProgress: LessonAudioProgress;
 }
 
 export interface InteractiveLessonFirestoreDoc extends InteractiveLessonStore {

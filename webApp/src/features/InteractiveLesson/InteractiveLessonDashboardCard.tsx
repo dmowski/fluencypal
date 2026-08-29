@@ -20,11 +20,11 @@ export const InteractiveLessonDashboardCard = () => {
       subTitle={i18n._('Read, speak, and build a daily speaking habit.')}
       cardTitle={cardTitle}
       cardSubTitle={cardSubTitle}
-      historyButtonTitle={i18n._('History')}
+      progressButtonTitle={i18n._('Progress')}
       badge={lesson.isDoneToday ? i18n._('Done today') : undefined}
       isDoneToday={lesson.isDoneToday}
       onOpen={lesson.openLesson}
-      onHistoryClick={lesson.openHistory}
+      onProgressClick={lesson.openProgress}
     />
   );
 };

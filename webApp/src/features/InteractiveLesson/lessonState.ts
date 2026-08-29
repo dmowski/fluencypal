@@ -1,3 +1,4 @@
+import { emptyAudioProgress } from './audioProgress';
 import { MAX_HISTORY_LESSONS } from './constants';
 import {
   InteractiveLesson,
@@ -13,6 +14,7 @@ export const emptyLessonStore = (): InteractiveLessonStore => ({
   nextLesson: null,
   history: [],
   lastCompletedAtIso: null,
+  audioProgress: emptyAudioProgress(),
 });
 
 export const isSameLocalDay = (iso: string, now = new Date()): boolean => {
