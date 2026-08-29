@@ -59,7 +59,7 @@ export const LangSelector = ({
       }}
     >
       <Select
-        value={value}
+        value={value ?? ''}
         variant="outlined"
         onChange={(e) => onChangeLanguage(e.target.value || '')}
       >
