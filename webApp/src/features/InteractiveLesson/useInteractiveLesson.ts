@@ -31,6 +31,7 @@ import {
   isLessonCompletedToday,
   isLessonFinished,
   promoteFinishedLesson,
+  listRecentLessonForms,
   summarizeFinishedLessons,
   summarizeOpenTalks,
 } from './lessonState';
@@ -90,6 +91,7 @@ const useProvideInteractiveLesson = () => {
 
   const storeRef = useRef(store);
   storeRef.current = store;
+  const bannedFormsRef = useRef<Array<Pick<InteractiveLesson, 'title' | 'subTitle'>>>([]);
 
   const isSettingsReady = !settings.loading && !!userId;
 
@@ -165,6 +167,12 @@ const useProvideInteractiveLesson = () => {
       ...(currentStore.currentLesson?.lessonResults ? [currentStore.currentLesson] : []),
       ...currentStore.history,
     ];
+    const recentForms = [
+      ...bannedFormsRef.current,
+      currentStore.currentLesson,
+      currentStore.nextLesson,
+      ...currentStore.history,
+    ].filter((lesson): lesson is NonNullable<typeof lesson> => !!lesson);
 
     return {
       conversationText,
@@ -176,6 +184,7 @@ const useProvideInteractiveLesson = () => {
       }),
       previousLessonsSummary: summarizeFinishedLessons(finished),
       openTalkSummary: summarizeOpenTalks(finished),
+      recentFormsSummary: listRecentLessonForms(recentForms),
     };
   };
 
@@ -184,6 +193,7 @@ const useProvideInteractiveLesson = () => {
     mode: 'first' | 'next',
     currentStore: InteractiveLessonStore,
     extraPreviousSummary = '',
+    extraRecentForms = '',
   ): Promise<InteractiveLesson> => {
     const existing = inFlightLessonByKey.get(key);
     if (existing) return existing;
@@ -202,6 +212,9 @@ const useProvideInteractiveLesson = () => {
           previousLessonsSummary: [extraPreviousSummary, context.previousLessonsSummary]
             .filter(Boolean)
             .join('\n\n'),
+          recentFormsSummary: [extraRecentForms, context.recentFormsSummary]
+            .filter(Boolean)
+            .join('\n'),
         },
         targetLanguageCode,
         nativeLanguageCode,
@@ -369,10 +382,19 @@ const useProvideInteractiveLesson = () => {
     if (lesson.lessonResults) return;
 
     const skippedNote = [
-      'The learner skipped this unfinished lesson. Generate a different form. Do not repeat it.',
-      `Skipped title: ${lesson.title}`,
-      `Skipped subtitle: ${lesson.subTitle}`,
+      'The learner skipped this lesson because they are tired of it.',
+      'Generate something COMPLETELY new. Change the language category.',
+      'A tighter or themed variant of the same form is a failure (e.g. another -ing / present continuous lesson).',
+      `Banned title: ${lesson.title}`,
+      `Banned subtitle: ${lesson.subTitle}`,
     ].join('\n');
+
+    const alsoBan = storeRef.current.nextLesson;
+    bannedFormsRef.current = [
+      { title: lesson.title, subTitle: lesson.subTitle },
+      ...(alsoBan ? [{ title: alsoBan.title, subTitle: alsoBan.subTitle }] : []),
+      ...bannedFormsRef.current,
+    ].slice(0, 10);
 
     pendingAudioUploads.current.clear();
     setErrorMessage('');
@@ -384,6 +406,10 @@ const useProvideInteractiveLesson = () => {
         'next',
         discarded,
         skippedNote,
+        listRecentLessonForms([
+          lesson,
+          ...(alsoBan ? [alsoBan] : []),
+        ]),
       );
       persistUpdate((prev) => ({
         ...prev,

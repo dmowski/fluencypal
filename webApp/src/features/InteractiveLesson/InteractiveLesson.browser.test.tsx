@@ -239,15 +239,15 @@ test('lesson modal shows done and skip for an in-progress lesson', async () => {
     .toMatchScreenshot('modal-in-progress');
 });
 
-test('skip asks for confirmation before generating a new lesson', async () => {
+test('skip generates a new lesson without confirmation', async () => {
   resetRecorder();
   const onSkipLesson = vi.fn(noopAsync);
-  const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+  const confirm = vi.spyOn(window, 'confirm');
 
   await renderInShell(lessonModal({ lesson: FIXTURE_LESSON, onSkipLesson }));
   await userEvent.click(page.getByTestId('interactive-lesson-skip'));
 
-  expect(confirm).toHaveBeenCalledOnce();
+  expect(confirm).not.toHaveBeenCalled();
   expect(onSkipLesson).toHaveBeenCalledOnce();
   confirm.mockRestore();
 });

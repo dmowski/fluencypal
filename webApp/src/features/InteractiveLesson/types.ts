@@ -65,6 +65,7 @@ export interface LessonGenerationContext {
   userGoalText: string;
   previousLessonsSummary: string;
   openTalkSummary: string;
+  recentFormsSummary: string;
 }
 
 export const isLessonPartWithAnswer = (
