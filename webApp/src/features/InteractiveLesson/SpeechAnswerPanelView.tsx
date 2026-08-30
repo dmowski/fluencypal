@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import StopIcon from '@mui/icons-material/Stop';
@@ -25,6 +25,7 @@ export interface SpeechAnswerPanelViewProps {
   visualizer: ReactNode;
   needMoreText: boolean;
   isOpenTalk?: boolean;
+  autoPlayFeedback?: boolean;
   onToggleRecord: () => void;
   onCancelRecord: () => void;
 }
@@ -42,11 +43,13 @@ export const SpeechAnswerPanelView = ({
   visualizer,
   needMoreText,
   isOpenTalk,
+  autoPlayFeedback = false,
   onToggleRecord,
   onCancelRecord,
 }: SpeechAnswerPanelViewProps) => {
   const { i18n } = useLingui();
   const answered = isLessonPartWithAnswer(part);
+  const [isFeedbackPlaying, setIsFeedbackPlaying] = useState(false);
 
   return (
     <Stack
@@ -234,18 +237,32 @@ export const SpeechAnswerPanelView = ({
             >
               <Stack>
                 <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                  {i18n._('Feedback')}
+                  {isFeedbackPlaying ? i18n._('Playing') : i18n._('Feedback')}
                 </Typography>
                 <LessonMarkdown content={part.aiResultToUser} />
               </Stack>
               <Stack
+                data-testid="interactive-lesson-feedback-play"
                 sx={{
-                  backgroundColor: '#111827',
+                  backgroundColor: isFeedbackPlaying ? '#1d4ed8' : '#111827',
                   borderRadius: '40px',
                   padding: '0px',
+                  '@keyframes lessonFeedbackPulse': {
+                    '0%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0.7)' },
+                    '70%': { boxShadow: '0 0 0 10px rgba(37, 99, 235, 0)' },
+                    '100%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0)' },
+                  },
+                  animation: isFeedbackPlaying ? 'lessonFeedbackPulse 1.4s ease-out infinite' : 'none',
                 }}
               >
-                <AudioPlayIcon text={part.aiResultToUser} cache color="#fff" opacity={1} />
+                <AudioPlayIcon
+                  text={part.aiResultToUser}
+                  cache
+                  color="#fff"
+                  opacity={1}
+                  autoPlay={autoPlayFeedback}
+                  onChangeState={setIsFeedbackPlaying}
+                />
               </Stack>
             </Stack>
           </Stack>

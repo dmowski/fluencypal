@@ -9,11 +9,14 @@ General strategy:
 
 ## Advanced Practice
 
-Play audi feedback
+- Working: Play feedback automatically
+- Add Feature to daily tasks: instead of community
 
 ## Analytics
 
-Keep analyzing
+Keep analyzing.
+Connect google search console.
+Connect data fast
 
 ## Landing: Show real demo
 

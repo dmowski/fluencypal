@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
 import { SpeakOptions, useConversationAudio } from './useConversationAudio';
@@ -21,6 +21,7 @@ export interface AudioPlayIconProps {
   cache?: boolean;
   color?: string;
   opacity?: number;
+  autoPlay?: boolean;
 }
 
 export const AudioPlayIcon = ({
@@ -34,6 +35,7 @@ export const AudioPlayIcon = ({
   cache,
   color,
   opacity = 0.7,
+  autoPlay = false,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +52,7 @@ export const AudioPlayIcon = ({
   const audio = useConversationAudio();
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const autoPlayedTextRef = useRef('');
 
   useEffect(() => {
     if (!audio.isPlaying && isPlaying) {
@@ -118,6 +121,13 @@ export const AudioPlayIcon = ({
       onChangeState?.(false);
     }
   };
+
+  useEffect(() => {
+    const key = text.trim();
+    if (!autoPlay || !key || autoPlayedTextRef.current === key) return;
+    autoPlayedTextRef.current = key;
+    void togglePlay();
+  }, [autoPlay, text]);
 
   const icon = isLoading ? (
     <Loader size={'18px'} color={color} />

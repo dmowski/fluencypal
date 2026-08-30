@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
 import { OPEN_TALK_MIN_CHARS } from './constants';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
@@ -25,8 +26,10 @@ export const SpeechAnswerPanel = ({
   onSubmit: (transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   const recorder = useAudioRecorder();
+  const conversationAudio = useConversationAudio();
   const submittedRef = useRef('');
   const cancelledRef = useRef(false);
+  const [autoPlayFeedback, setAutoPlayFeedback] = useState(false);
   const minChars = isOpenTalk ? OPEN_TALK_MIN_CHARS : 4;
   const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < minChars;
 
@@ -45,8 +48,10 @@ export const SpeechAnswerPanel = ({
     if (text.length < minChars) return;
     if (submittedRef.current === text) return;
     submittedRef.current = text;
+    setAutoPlayFeedback(false);
     void onSubmit(text, recorder.transcriptionBlob).then(() => {
       recorder.removeTranscript();
+      setAutoPlayFeedback(true);
     });
   }, [
     isEvaluating,
@@ -73,12 +78,15 @@ export const SpeechAnswerPanel = ({
       visualizer={recorder.visualizerComponent}
       needMoreText={needMoreText}
       isOpenTalk={isOpenTalk}
+      autoPlayFeedback={autoPlayFeedback}
       onToggleRecord={() => {
+        void conversationAudio.initAudio();
         if (recorder.isRecording) {
           void recorder.stopRecording();
         } else {
           submittedRef.current = '';
           cancelledRef.current = false;
+          setAutoPlayFeedback(false);
           void recorder.startRecording();
         }
       }}

@@ -8,7 +8,7 @@ import { InteractiveLessonModalContent } from './InteractiveLessonModalContent';
 import { LanguageSetupView } from './LanguageSetupView';
 import { LessonProgressView } from './LessonProgressView';
 import { emptyAudioProgress, recordLessonAudio } from './audioProgress';
-import { SpeechAnswerPanel } from './SpeechAnswerPanel';
+import { SpeechAnswerPanel, SpeechAnswerPanelView } from './SpeechAnswerPanel';
 import {
   FIXTURE_FINISHED_LESSON,
   FIXTURE_LESSON,
@@ -17,7 +17,14 @@ import {
   noopAsync,
 } from './interactiveLessonFixtureData';
 
-const { recorderMock } = vi.hoisted(() => ({
+const { recorderMock, conversationAudioMock } = vi.hoisted(() => ({
+  conversationAudioMock: {
+    isPlaying: false,
+    isUnlocked: () => true,
+    initAudio: vi.fn(async () => undefined),
+    speak: vi.fn(async () => undefined),
+    interrupt: vi.fn(),
+  },
   recorderMock: {
     startRecording: vi.fn(),
     stopRecording: vi.fn(),
@@ -83,13 +90,7 @@ vi.mock('@/features/Audio/useQuizWordAudio', () => ({
 }));
 
 vi.mock('@/features/Audio/useConversationAudio', () => ({
-  useConversationAudio: () => ({
-    isPlaying: false,
-    isUnlocked: () => true,
-    initAudio: async () => undefined,
-    speak: async () => undefined,
-    interrupt: () => undefined,
-  }),
+  useConversationAudio: () => conversationAudioMock,
 }));
 
 vi.mock('@/features/Audio/useAudioRecorder', () => ({
@@ -129,6 +130,10 @@ const resetRecorder = () => {
   recorderMock.transcriptionBlob = null;
   recorderMock.error = '';
   recorderMock.visualizerComponent = null;
+  conversationAudioMock.speak.mockReset();
+  conversationAudioMock.speak.mockImplementation(async () => undefined);
+  conversationAudioMock.initAudio.mockReset();
+  conversationAudioMock.initAudio.mockImplementation(async () => undefined);
 };
 
 const renderInShell = (ui: React.ReactNode) => {
@@ -379,6 +384,39 @@ test('speech panel – answered uses a text Answer again button', async () => {
   await expect
     .element(page.getByTestId('interactive-lesson-speech-1'))
     .toMatchScreenshot('speech-answered');
+});
+
+test('speech panel – auto-plays feedback and shows it is playing', async () => {
+  resetRecorder();
+  conversationAudioMock.speak.mockImplementation(() => new Promise(() => undefined));
+
+  await renderInShell(
+    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+      <SpeechAnswerPanelView
+        part={{
+          ...FIXTURE_SPEECH_PART,
+          userVoiceTranscript: 'Yesterday I walked in the park.',
+          aiResultToUser: 'Correct. Natural word order.',
+          userAudioUrl: '/api/uploadFile?path=uploadedAudios/fixture/answer.webm',
+        }}
+        partIndex={1}
+        isEvaluating={false}
+        isRecording={false}
+        isTranscribing={false}
+        transcription={null}
+        error=""
+        visualizer={null}
+        needMoreText={false}
+        autoPlayFeedback
+        onToggleRecord={noop}
+        onCancelRecord={noop}
+      />
+    </div>,
+  );
+
+  await expect.element(page.getByText('Playing')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-feedback-play')).toBeVisible();
+  expect(conversationAudioMock.speak).toHaveBeenCalled();
 });
 
 test('progress asks for more recordings before comparing', async () => {

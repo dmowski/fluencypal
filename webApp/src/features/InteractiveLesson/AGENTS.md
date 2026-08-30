@@ -68,7 +68,7 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 
 1. Open card. If native language equals target language (or either is missing) → language setup + **Continue**.
 2. If no current lesson → generate (loader: *We are preparing a lesson for you, based on your previous practice.*).
-3. Render parts. `read` = read, with a play control for the passage. `speech` = record → stop → auto-check (upload in parallel) → thinking bar beside the record button → AI feedback. **Answer again** replaces the previous take.
+3. Render parts. `read` = read, with a play control for the passage. `speech` = record → stop → auto-check (upload in parallel) → thinking bar beside the record button → AI feedback, which is spoken automatically. **Answer again** replaces the previous take.
 4. **Finish lesson** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
 4b. **Skip this lesson** immediately drops the current lesson (not marked done) and generates a completely different language form. No confirmation.
 5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
