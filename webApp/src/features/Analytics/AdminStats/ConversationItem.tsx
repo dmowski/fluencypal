@@ -30,7 +30,7 @@ export function ConversationItem({ conversation, onClick }: ConversationItemProp
         cursor: 'pointer',
         borderRadius: '8px',
         display: 'grid',
-        gridTemplateColumns: '80px 250px 220px 1fr 1fr',
+        gridTemplateColumns: '80px 150px 220px 1fr 1fr',
         gap: '10px',
         ':hover': { backgroundColor: 'rgba(229, 229, 229, 0.35)' },
       }}

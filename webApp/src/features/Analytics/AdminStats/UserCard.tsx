@@ -267,6 +267,7 @@ export function UserCard({ userStat }: UserCardProps) {
         sx={{
           alignItems: 'center',
           gap: '10px',
+          width: '70px',
         }}
       >
         <Avatar url={photoUrl || '/logo192.png'} avatarSize="50px" />
@@ -281,7 +282,7 @@ export function UserCard({ userStat }: UserCardProps) {
 
       <Stack
         sx={{
-          width: '600px',
+          width: 'calc(50% - 70px)',
           gap: '10px',
           '.icon': {
             width: '16px',
@@ -426,7 +427,7 @@ export function UserCard({ userStat }: UserCardProps) {
 
       <Stack
         sx={{
-          width: '100%',
+          width: '50%',
           height: '100%',
           overflow: 'auto',
           gap: '10px',
