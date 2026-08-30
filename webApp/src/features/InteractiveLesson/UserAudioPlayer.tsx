@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { IconButton, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { Pause, Play } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -83,22 +83,13 @@ export const UserAudioPlayer = ({
   };
 
   return (
-    <Stack
-      sx={{ flexDirection: 'row', alignItems: 'center', gap: '6px' }}
+    <IconButton
       data-testid="interactive-lesson-audio-player"
+      size="large"
+      onClick={toggle}
+      aria-label={isPlaying ? i18n._('Pause recording') : i18n._('Play recording')}
     >
-      <IconButton
-        size="small"
-        onClick={() => {
-          void toggle();
-        }}
-        aria-label={isPlaying ? i18n._('Pause recording') : i18n._('Play recording')}
-      >
-        {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-      </IconButton>
-      <Typography variant="caption" sx={{ opacity: 0.75 }}>
-        {i18n._('Hear your voice')}
-      </Typography>
-    </Stack>
+      {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+    </IconButton>
   );
 };

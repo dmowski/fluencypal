@@ -52,44 +52,11 @@ export const SpeechAnswerPanelView = ({
       sx={{ gap: '12px', width: '100%' }}
       data-testid={`interactive-lesson-speech-${partIndex}`}
     >
-      {answered && (
-        <Stack
-          sx={{
-            gap: '8px',
-            padding: '12px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(255, 255, 255, 0.06)',
-          }}
-        >
-          <Typography variant="caption" sx={{ opacity: 0.7 }}>
-            {i18n._('Your answer')}
-          </Typography>
-          <Typography variant="body2">{part.userVoiceTranscript}</Typography>
-          {(audioUrl || part.userAudioUrl) && (
-            <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
-          )}
-          <Typography variant="caption" sx={{ opacity: 0.7 }}>
-            {i18n._('Feedback')}
-          </Typography>
-          <LessonMarkdown content={part.aiResultToUser} />
-        </Stack>
-      )}
-
       <Stack sx={{ gap: '10px', width: '100%' }}>
         {error && (
           <Typography variant="caption" color="error">
             {error}
           </Typography>
-        )}
-
-        {transcription && !isRecording && !isTranscribing && (
-          <Stack sx={{ gap: '8px' }}>
-            <Typography variant="caption" sx={{ opacity: 0.7 }}>
-              {i18n._('Your answer')}
-            </Typography>
-            <Typography variant="body2">{transcription}</Typography>
-            {previewBlob && <UserAudioPlayer audioBlob={previewBlob} />}
-          </Stack>
         )}
 
         {isOpenTalk && !answered && (
@@ -193,6 +160,40 @@ export const SpeechAnswerPanelView = ({
           </Typography>
         )}
       </Stack>
+
+      {answered && (
+        <Stack
+          sx={{
+            gap: '19px',
+            padding: '16px 12px 16px 12px',
+            borderRadius: '10px',
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            position: 'relative',
+          }}
+        >
+          <Stack>
+            <Typography variant="caption" sx={{ opacity: 0.8 }}>
+              {i18n._('Your answer')}
+            </Typography>
+
+            <Stack sx={{ flexDirection: 'row', gap: '2px', alignItems: 'center' }}>
+              {(audioUrl || part.userAudioUrl) && (
+                <Stack sx={{ position: 'absolute', top: '5px', right: '5px' }}>
+                  <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
+                </Stack>
+              )}
+              <Typography variant="body2">{part.userVoiceTranscript}</Typography>
+            </Stack>
+          </Stack>
+
+          <Stack>
+            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+              {i18n._('Feedback')}
+            </Typography>
+            <LessonMarkdown content={part.aiResultToUser} />
+          </Stack>
+        </Stack>
+      )}
     </Stack>
   );
 };

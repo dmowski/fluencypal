@@ -162,17 +162,19 @@ export const InteractiveLessonModalContent = ({
               <Markdown variant="rule">{`\n # ${lesson.title} \n\n ${lesson.subTitle}`}</Markdown>
             </Stack>
 
-            {lesson.parts.map((part, index) => (
-              <LessonPartSection
-                key={`${lesson.id}-${index}`}
-                part={part}
-                partIndex={index}
-                isEvaluating={evaluatingPartIndex === index}
-                isOpenTalk={isOpenTalkPart(lesson.parts, index)}
-                onPrepareSpeechAudio={onPrepareSpeechAudio}
-                onSubmitSpeech={onSubmitSpeech}
-              />
-            ))}
+            <Stack sx={{ gap: '44px' }}>
+              {lesson.parts.map((part, index) => (
+                <LessonPartSection
+                  key={`${lesson.id}-${index}`}
+                  part={part}
+                  partIndex={index}
+                  isEvaluating={evaluatingPartIndex === index}
+                  isOpenTalk={isOpenTalkPart(lesson.parts, index)}
+                  onPrepareSpeechAudio={onPrepareSpeechAudio}
+                  onSubmitSpeech={onSubmitSpeech}
+                />
+              ))}
+            </Stack>
 
             {errorMessage && <Alert severity="error">{visibleError}</Alert>}
 

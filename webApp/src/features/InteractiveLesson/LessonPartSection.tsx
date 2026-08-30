@@ -22,11 +22,12 @@ export const LessonPartSection = ({
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   return (
-    <Stack sx={{ gap: '16px', width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
+    <Stack sx={{ width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
       {partIndex > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }} />}
       <Stack
         sx={{
           gap: '4px',
+          paddingTop: '36px',
           width: '100%',
         }}
       >
@@ -37,7 +38,6 @@ export const LessonPartSection = ({
           <Stack
             data-testid="interactive-lesson-read-play"
             sx={{
-              //border: '1px solid red',
               alignItems: 'flex-start',
             }}
           >
