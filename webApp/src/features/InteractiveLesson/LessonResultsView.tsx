@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
+import { ArrowRight } from 'lucide-react';
 
 export const LessonResultsView = ({
   results,
@@ -26,33 +27,50 @@ export const LessonResultsView = ({
       {isGeneratingResults && !results && <ThinkingProgress />}
 
       {results && (
-        <>
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>
-            {i18n._('Your results')}
-          </Typography>
-          <LessonMarkdown content={results.motivationTextToUserMD} />
-          <LessonMarkdown content={results.whatWentWellMD} />
-          <Stack sx={{ flexDirection: 'row', gap: '12px', flexWrap: 'wrap' }}>
+        <Stack
+          sx={{
+            color: 'rgba(0, 0, 0, 0.87)',
+          }}
+        >
+          <Stack
+            sx={{
+              padding: '20px',
+              gap: '20px',
+              backgroundColor: 'rgb(240, 248, 253)',
+              borderRadius: '10px 10px 0 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+            }}
+          >
+            <Typography variant="h3" sx={{ fontWeight: 800 }}>
+              {i18n._('Your results')}
+            </Typography>
+            <LessonMarkdown content={results.motivationTextToUserMD} />
+            <LessonMarkdown content={results.whatWentWellMD} />
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              gap: '12px',
+              flexWrap: 'wrap',
+              padding: '20px',
+              borderRadius: '0 0 10px 10px',
+              backgroundColor: 'rgba(240, 245, 241)',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <Button
               variant="contained"
               color="info"
               onClick={onNextLesson}
               data-testid="interactive-lesson-next"
               sx={{ padding: '10px 24px' }}
+              endIcon={<ArrowRight size={20} />}
             >
               {isGeneratingNext ? i18n._('Preparing next lesson...') : i18n._('Next lesson')}
             </Button>
-            <Button
-              variant="outlined"
-              color="info"
-              onClick={onFinish}
-              data-testid="interactive-lesson-finish"
-              sx={{ padding: '10px 24px' }}
-            >
-              {i18n._('Finish')}
-            </Button>
           </Stack>
-        </>
+        </Stack>
       )}
     </Stack>
   );

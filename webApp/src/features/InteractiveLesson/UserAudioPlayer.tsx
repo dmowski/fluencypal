@@ -85,7 +85,6 @@ export const UserAudioPlayer = ({
   return (
     <IconButton
       data-testid="interactive-lesson-audio-player"
-      size="large"
       onClick={toggle}
       aria-label={isPlaying ? i18n._('Pause recording') : i18n._('Play recording')}
     >

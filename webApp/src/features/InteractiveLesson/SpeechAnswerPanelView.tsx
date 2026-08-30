@@ -10,6 +10,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
+import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -71,11 +72,12 @@ export const SpeechAnswerPanelView = ({
             gap: 0,
             alignItems: 'stretch',
             width: '100%',
+            paddingTop: '10px',
           }}
         >
           <Button
             disabled={isTranscribing || isEvaluating}
-            variant={answered && !isRecording ? 'text' : 'contained'}
+            variant={answered && !isRecording ? 'text' : isRecording ? 'contained' : 'outlined'}
             color={isRecording ? 'error' : 'info'}
             size="large"
             startIcon={isRecording ? <StopIcon /> : <MicIcon />}
@@ -164,33 +166,88 @@ export const SpeechAnswerPanelView = ({
       {answered && (
         <Stack
           sx={{
-            gap: '19px',
-            padding: '16px 12px 16px 12px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
             position: 'relative',
           }}
         >
-          <Stack>
-            <Typography variant="caption" sx={{ opacity: 0.8 }}>
-              {i18n._('Your answer')}
-            </Typography>
+          <Stack
+            sx={{
+              padding: '10px 12px 15px 12px',
+              borderRadius: '10px 10px 0 0',
+              backgroundColor: 'rgb(240, 248, 253)',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+              color: 'rgba(0, 0, 0, 0.87)',
+            }}
+          >
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                width: '100%',
+                gap: '2px',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Stack>
+                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                  {i18n._('Your answer')}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontWeight: 500,
+                  }}
+                >
+                  {part.userVoiceTranscript}
+                </Typography>
+              </Stack>
 
-            <Stack sx={{ flexDirection: 'row', gap: '2px', alignItems: 'center' }}>
               {(audioUrl || part.userAudioUrl) && (
-                <Stack sx={{ position: 'absolute', top: '5px', right: '5px' }}>
+                <Stack
+                  sx={{
+                    backgroundColor: '#111827',
+                    borderRadius: '40px',
+                    padding: '0px',
+                  }}
+                >
                   <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
                 </Stack>
               )}
-              <Typography variant="body2">{part.userVoiceTranscript}</Typography>
             </Stack>
           </Stack>
 
-          <Stack>
-            <Typography variant="caption" sx={{ opacity: 0.7 }}>
-              {i18n._('Feedback')}
-            </Typography>
-            <LessonMarkdown content={part.aiResultToUser} />
+          <Stack
+            sx={{
+              backgroundColor: 'rgba(240, 245, 241)',
+              padding: '13px 12px',
+              borderRadius: '0 0 10px 10px',
+              color: 'rgba(0, 0, 0, 0.87)',
+            }}
+          >
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                width: '100%',
+                gap: '10px',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Stack>
+                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                  {i18n._('Feedback')}
+                </Typography>
+                <LessonMarkdown content={part.aiResultToUser} />
+              </Stack>
+              <Stack
+                sx={{
+                  backgroundColor: '#111827',
+                  borderRadius: '40px',
+                  padding: '0px',
+                }}
+              >
+                <AudioPlayIcon text={part.aiResultToUser} cache color="#fff" opacity={1} />
+              </Stack>
+            </Stack>
           </Stack>
         </Stack>
       )}

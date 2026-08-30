@@ -19,6 +19,8 @@ export interface AudioPlayIconProps {
   type?: 'icon' | 'button';
   buttonLabel?: string;
   cache?: boolean;
+  color?: string;
+  opacity?: number;
 }
 
 export const AudioPlayIcon = ({
@@ -30,6 +32,8 @@ export const AudioPlayIcon = ({
   type = 'icon',
   buttonLabel,
   cache,
+  color,
+  opacity = 0.7,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -116,11 +120,11 @@ export const AudioPlayIcon = ({
   };
 
   const icon = isLoading ? (
-    <Loader size={'18px'} />
+    <Loader size={'18px'} color={color} />
   ) : isPlaying ? (
-    <Pause size={'18px'} />
+    <Pause size={'18px'} color={color} />
   ) : (
-    <Volume2 size={'18px'} />
+    <Volume2 size={'18px'} color={color} />
   );
 
   if (type === 'icon') {
@@ -129,7 +133,7 @@ export const AudioPlayIcon = ({
         disabled={isLoading}
         onClick={togglePlay}
         sx={{
-          opacity: 0.7,
+          opacity: opacity,
           border: borderColor ? `1px solid ${borderColor}` : 'none',
         }}
       >
