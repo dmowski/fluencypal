@@ -18,14 +18,14 @@ import { fileURLToPath } from 'node:url';
 const webAppRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const SAFE_CACHE_PATHS = [
-  '.next',
+  //'.next',
   path.join('.vercel', 'output'),
   '.vitest-attachments',
   'playwright-report',
   'test-results',
   'coverage',
   'out',
-  path.join('node_modules', '.vite'),
+  //path.join('node_modules', '.vite'),
 ];
 
 const isInsideWebApp = (absPath) => {
