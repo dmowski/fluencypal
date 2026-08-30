@@ -872,7 +872,7 @@ msgstr "Angular & RxJS"
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "Svara på en ny fråga varje dag och se hur din stil förbättras!"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:126
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:95
 #. js-lingui-explicit-id
 msgid "Answer again"
 msgstr "Svara igen"
@@ -1576,7 +1576,7 @@ msgstr "Avbryt"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:544
 #: src/features/Conversation/ConversationCanvas.tsx:741
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:174
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:143
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Avbryt inspelning"
@@ -2822,7 +2822,7 @@ msgstr "Kunde inte hitta sidan"
 msgid "Could not load article"
 msgstr "Kunde inte ladda artikel"
 
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:232
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:229
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "Kunde inte ladda lektionen."
@@ -4837,7 +4837,7 @@ msgid "Fast Answer Practice"
 msgstr "Snabbt Svarsövning"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:72
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:237
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -4927,7 +4927,6 @@ msgstr ""
 "personliga dokument e-post\""
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:270
-#: src/features/InteractiveLesson/LessonResultsView.tsx:52
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Avsluta"
@@ -4936,6 +4935,11 @@ msgstr "Avsluta"
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "Avsluta en lektion från din inlärningsplan"
+
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:201
+#. js-lingui-explicit-id
+msgid "Finish lesson"
+msgstr "Avsluta lektion"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -6030,11 +6034,6 @@ msgstr "Hälsa"
 msgid "Hear how your English changes"
 msgstr "Hör hur din engelska förändras"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
-#. js-lingui-explicit-id
-msgid "Hear your voice"
-msgstr "Hör din röst"
-
 #: src/features/Settings/MyProfile.tsx:111
 #. js-lingui-explicit-id
 msgid "Help"
@@ -6509,11 +6508,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "Jag kommer att ställa ytterligare två frågor innan jag gör din plan."
-
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:200
-#. js-lingui-explicit-id
-msgid "I'm done"
-msgstr "Jag är klar"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -8188,7 +8182,7 @@ msgstr "Nästa"
 msgid "Next article"
 msgstr "Nästa artikel"
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:43
+#: src/features/InteractiveLesson/LessonResultsView.tsx:70
 #. js-lingui-explicit-id
 msgid "Next lesson"
 msgstr "Nästa lektion"
@@ -9019,7 +9013,7 @@ msgstr ""
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:89
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "Pausa inspelning"
@@ -9201,7 +9195,7 @@ msgstr "Plats att dela dina tankar"
 msgid "Plan for"
 msgstr "Planera för"
 
-#: src/features/Audio/AudioPlayIcon.tsx:157
+#: src/features/Audio/AudioPlayIcon.tsx:161
 #: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
@@ -9221,7 +9215,7 @@ msgstr "Spela igen"
 msgid "Play and Learn"
 msgstr "Spela och Lär"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:89
 #. js-lingui-explicit-id
 msgid "Play recording"
 msgstr "Spela inspelning"
@@ -9329,7 +9323,7 @@ msgstr "Vänligen ange en giltig e-postadress"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Var god fyll i föräldradetaljer och markera alla rutor i Steg 1."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:192
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:161
 #. js-lingui-explicit-id
 msgid "Please record a longer answer — a few words is enough."
 msgstr "Var god och spela in ett längre svar – några ord räcker."
@@ -9380,7 +9374,7 @@ msgstr "Vänligen välj minst en kategori."
 msgid "Please stop the recording before closing the window."
 msgstr "Vänligen stoppa inspelningen innan du stänger fönstret."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:191
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:160
 #. js-lingui-explicit-id
 msgid "Please talk a bit longer — aim for about two minutes."
 msgstr "Vänligen prata lite längre — satsa på ungefär två minuter."
@@ -9824,7 +9818,7 @@ msgstr ""
 msgid "Preparing book..."
 msgstr "Förbereder bok..."
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:43
+#: src/features/InteractiveLesson/LessonResultsView.tsx:70
 #. js-lingui-explicit-id
 msgid "Preparing next lesson..."
 msgstr "Förbereder nästa lektion..."
@@ -9946,7 +9940,7 @@ msgstr "Bearbetar befintlig kunskap i den hjärnan..."
 msgid "Processing latest session"
 msgstr "Bearbetar senaste session"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:140
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:109
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10440,7 +10434,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:96
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Spela in svar"
@@ -11452,7 +11446,7 @@ msgstr "Hoppa över alla"
 msgid "Skip for now"
 msgstr "Hoppa över för nuvarande"
 
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:212
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:211
 #: src/features/Plan/components/GoalRolePlayIntroView.tsx:47
 #. js-lingui-explicit-id
 msgid "Skip this lesson"
@@ -11599,7 +11593,7 @@ msgstr "Skräppost"
 msgid "Spanish Learning Plan"
 msgstr "Spanska inlärningsplan"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:65
 #. js-lingui-explicit-id
 msgid "Speak for about 2–3 minutes. This talk helps us pick your next lesson."
 msgstr ""
@@ -11995,7 +11989,7 @@ msgstr "Steg:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:124
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:93
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Stopp"
@@ -15474,8 +15468,7 @@ msgid "Your AI teacher voice:"
 msgstr "Din AI-lärarröst:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:65
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:88
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:192
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -15625,7 +15618,7 @@ msgstr ""
 "Din begäran om återbetalning har mottagits och kommer att behandlas inom "
 "1–5 arbetsdagar. Om du inte ser det då, vänligen kontakta support."
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:31
+#: src/features/InteractiveLesson/LessonResultsView.tsx:45
 #. js-lingui-explicit-id
 msgid "Your results"
 msgstr "Dina resultat"

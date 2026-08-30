@@ -844,7 +844,7 @@ msgstr "Angular & RxJS"
 msgid "Answer a new question every day and see how your style improves!"
 msgstr "매일 새 질문에 답해보세요, 그리고 당신의 스타일이 어떻게 향상되는지 확인하세요!"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:126
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:95
 #. js-lingui-explicit-id
 msgid "Answer again"
 msgstr "다시 답변하기"
@@ -1535,7 +1535,7 @@ msgstr "취소"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:544
 #: src/features/Conversation/ConversationCanvas.tsx:741
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:174
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:143
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "녹음 취소"
@@ -2755,7 +2755,7 @@ msgstr "페이지를 찾을 수 없습니다"
 msgid "Could not load article"
 msgstr "기사를 불러올 수 없습니다."
 
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:232
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:229
 #. js-lingui-explicit-id
 msgid "Could not load the lesson."
 msgstr "수업을 불러올 수 없습니다."
@@ -4699,7 +4699,7 @@ msgid "Fast Answer Practice"
 msgstr "빠른 답변 연습"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:72
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:237
 #: src/features/Settings/MyProfile.tsx:265
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -4781,7 +4781,6 @@ msgid ""
 msgstr "\"개인 문서 설정\" → \"승인된 개인 문서 이메일 목록\""
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:270
-#: src/features/InteractiveLesson/LessonResultsView.tsx:52
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "완료"
@@ -4790,6 +4789,11 @@ msgstr "완료"
 #. js-lingui-explicit-id
 msgid "Finish a lesson from your Learning Plan"
 msgstr "학습 계획에서 수업 완료하기"
+
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:201
+#. js-lingui-explicit-id
+msgid "Finish lesson"
+msgstr "레슨 완료"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:118
 #. js-lingui-explicit-id
@@ -5813,11 +5817,6 @@ msgstr "건강"
 msgid "Hear how your English changes"
 msgstr "당신의 영어가 어떻게 변하는지 들어보세요"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:100
-#. js-lingui-explicit-id
-msgid "Hear your voice"
-msgstr "당신의 목소리를 들어보세요"
-
 #: src/features/Settings/MyProfile.tsx:111
 #. js-lingui-explicit-id
 msgid "Help"
@@ -6258,11 +6257,6 @@ msgstr "당신을 알기 위해 몇 가지 질문을 하겠습니다. 당신의 
 #. js-lingui-explicit-id
 msgid "I'll ask you two more questions before I make your plan."
 msgstr "당신의 계획을 세우기 전에 두 가지 질문을 더 드리겠습니다."
-
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:200
-#. js-lingui-explicit-id
-msgid "I'm done"
-msgstr "제가 끝났어요"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -7881,7 +7875,7 @@ msgstr "다음"
 msgid "Next article"
 msgstr "다음 기사"
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:43
+#: src/features/InteractiveLesson/LessonResultsView.tsx:70
 #. js-lingui-explicit-id
 msgid "Next lesson"
 msgstr "다음 강의"
@@ -8666,7 +8660,7 @@ msgstr "당신의 이력서를 붙여 넣거나 경험, 기술 및 성과에 대
 msgid "Pause"
 msgstr "일시 중지"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:89
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "녹음 일시 중지"
@@ -8846,7 +8840,7 @@ msgstr "생각을 공유할 수 있는 공간"
 msgid "Plan for"
 msgstr "Plan for"
 
-#: src/features/Audio/AudioPlayIcon.tsx:157
+#: src/features/Audio/AudioPlayIcon.tsx:161
 #: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
@@ -8866,7 +8860,7 @@ msgstr "다시 재생"
 msgid "Play and Learn"
 msgstr "플레이와 학습"
 
-#: src/features/InteractiveLesson/UserAudioPlayer.tsx:95
+#: src/features/InteractiveLesson/UserAudioPlayer.tsx:89
 #. js-lingui-explicit-id
 msgid "Play recording"
 msgstr "녹음 재생"
@@ -8972,7 +8966,7 @@ msgstr "유효한 이메일 주소를 입력하세요"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "부모 세부 정보를 입력하고 1단계의 모든 항목을 선택하세요."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:192
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:161
 #. js-lingui-explicit-id
 msgid "Please record a longer answer — a few words is enough."
 msgstr "긴 답변을 기록해 주세요 — 몇 마디면 충분합니다."
@@ -9023,7 +9017,7 @@ msgstr "카테고리를 최소 하나 선택하세요."
 msgid "Please stop the recording before closing the window."
 msgstr "창을 닫기 전에 녹음을 중지해 주세요."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:191
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:160
 #. js-lingui-explicit-id
 msgid "Please talk a bit longer — aim for about two minutes."
 msgstr "2분 정도 더 길게 말해주세요."
@@ -9435,7 +9429,7 @@ msgstr "포트폴리오를 준비하고, 학습 여정을 논의하며 첫 전�
 msgid "Preparing book..."
 msgstr "책 준비 중..."
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:43
+#: src/features/InteractiveLesson/LessonResultsView.tsx:70
 #. js-lingui-explicit-id
 msgid "Preparing next lesson..."
 msgstr "다음 수업 준비 중..."
@@ -9555,7 +9549,7 @@ msgstr "그 두뇌에 존재하는 지식을 처리 중..."
 msgid "Processing latest session"
 msgstr "최신 세션 처리 중"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:140
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:109
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -10037,7 +10031,7 @@ msgstr ""
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:127
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:96
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "기록된 답변"
@@ -11033,7 +11027,7 @@ msgstr "모두 건너뛰기"
 msgid "Skip for now"
 msgstr "지금은 건너뛰기"
 
-#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:212
+#: src/features/InteractiveLesson/InteractiveLessonModalContent.tsx:211
 #: src/features/Plan/components/GoalRolePlayIntroView.tsx:47
 #. js-lingui-explicit-id
 msgid "Skip this lesson"
@@ -11172,7 +11166,7 @@ msgstr "스팸"
 msgid "Spanish Learning Plan"
 msgstr "스페인어 학습 계획"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:65
 #. js-lingui-explicit-id
 msgid "Speak for about 2–3 minutes. This talk helps us pick your next lesson."
 msgstr "약 2-3분 동안 이야기하십시오. 이 대화는 다음 수업을 선택하는 데 도움이 됩니다."
@@ -11548,7 +11542,7 @@ msgstr "단계:"
 
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:124
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:93
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "정지"
@@ -14817,8 +14811,7 @@ msgid "Your AI teacher voice:"
 msgstr "당신의 AI 선생님 목소리:"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:65
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:88
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:192
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -14962,7 +14955,7 @@ msgid ""
 "business days. If you do not see it by then, please contact support."
 msgstr "환불 요청이 접수되었으며 1-5 영업일 이내에 처리될 예정입니다. 그때까지 환불이 완료되지 않으면 고객 지원팀에 문의해 주세요."
 
-#: src/features/InteractiveLesson/LessonResultsView.tsx:31
+#: src/features/InteractiveLesson/LessonResultsView.tsx:45
 #. js-lingui-explicit-id
 msgid "Your results"
 msgstr "귀하의 결과"

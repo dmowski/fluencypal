@@ -243,6 +243,7 @@ test('lesson modal shows done and skip for an in-progress lesson', async () => {
   await renderInShell(lessonModal({ lesson: FIXTURE_LESSON }));
 
   await expect.element(page.getByTestId('interactive-lesson-done')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Finish lesson' })).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-skip')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-read-play')).toBeVisible();
   await expect
@@ -268,6 +269,7 @@ test('lesson modal – results', async () => {
   await renderInShell(lessonModal({ lesson: FIXTURE_FINISHED_LESSON }));
 
   await expect.element(page.getByTestId('interactive-lesson-next')).toBeVisible();
+  await expect.element(page.getByText('Your results')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-modal'))
     .toMatchScreenshot('modal-results');
@@ -288,6 +290,9 @@ test('speech panel – idle', async () => {
   );
 
   await expect.element(page.getByRole('button', { name: 'Record answer' })).toBeVisible();
+  expect((await page.getByRole('button', { name: 'Record answer' }).element()).className).toContain(
+    'MuiButton-outlined',
+  );
   await expect
     .element(page.getByTestId('interactive-lesson-speech-1'))
     .toMatchScreenshot('speech-idle');
@@ -355,6 +360,7 @@ test('speech panel – answered uses a text Answer again button', async () => {
           ...FIXTURE_SPEECH_PART,
           userVoiceTranscript: 'Yesterday I walked in the park.',
           aiResultToUser: 'Correct. Natural word order.',
+          userAudioUrl: '/api/uploadFile?path=uploadedAudios/fixture/answer.webm',
         }}
         partIndex={1}
         isEvaluating={false}
@@ -368,6 +374,8 @@ test('speech panel – answered uses a text Answer again button', async () => {
   await expect.element(answerAgain).toBeVisible();
   expect((await answerAgain.element()).className).toContain('MuiButton-text');
   expect((await answerAgain.element()).className).not.toContain('MuiButton-contained');
+  await expect.element(page.getByTestId('interactive-lesson-audio-player')).toBeVisible();
+  await expect.element(page.getByText('Feedback')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-speech-1'))
     .toMatchScreenshot('speech-answered');
