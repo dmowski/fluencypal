@@ -75,105 +75,124 @@ export const SpeechAnswerPanelView = ({
         </Stack>
       )}
 
-      {isEvaluating && <ThinkingProgress />}
+      <Stack sx={{ gap: '10px', width: '100%' }}>
+        {error && (
+          <Typography variant="caption" color="error">
+            {error}
+          </Typography>
+        )}
 
-      {!isEvaluating && (
-        <Stack sx={{ gap: '10px', width: '100%' }}>
-          {error && (
-            <Typography variant="caption" color="error">
-              {error}
+        {transcription && !isRecording && !isTranscribing && (
+          <Stack sx={{ gap: '8px' }}>
+            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+              {i18n._('Your answer')}
             </Typography>
-          )}
+            <Typography variant="body2">{transcription}</Typography>
+            {previewBlob && <UserAudioPlayer audioBlob={previewBlob} />}
+          </Stack>
+        )}
 
-          {transcription && !isRecording && !isTranscribing && (
-            <Stack sx={{ gap: '8px' }}>
-              <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                {i18n._('Your answer')}
-              </Typography>
-              <Typography variant="body2">{transcription}</Typography>
-              {previewBlob && <UserAudioPlayer audioBlob={previewBlob} />}
-            </Stack>
-          )}
+        {isOpenTalk && !answered && (
+          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+            {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
+          </Typography>
+        )}
 
-          {isTranscribing && (
-            <Typography variant="body2" className="loading-shimmer">
-              {i18n._('Processing...')}
-            </Typography>
-          )}
-
-          {isOpenTalk && !answered && (
-            <Typography variant="body2" sx={{ opacity: 0.8 }}>
-              {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
-            </Typography>
-          )}
-
-          <Stack
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            gap: 0,
+            alignItems: 'stretch',
+            width: '100%',
+          }}
+        >
+          <Button
+            disabled={isTranscribing || isEvaluating}
+            variant={answered && !isRecording ? 'text' : 'contained'}
+            color={isRecording ? 'error' : 'info'}
+            size="large"
+            startIcon={isRecording ? <StopIcon /> : <MicIcon />}
+            onClick={onToggleRecord}
             sx={{
-              flexDirection: 'row',
-              gap: 0,
-              alignItems: 'stretch',
-              width: '100%',
+              flexShrink: 0,
+              ...(isRecording && visualizer
+                ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
+                : {}),
             }}
           >
-            <Button
-              disabled={isTranscribing}
-              variant={answered && !isRecording ? 'text' : 'contained'}
-              color={isRecording ? 'error' : 'info'}
-              size="large"
-              startIcon={isRecording ? <StopIcon /> : <MicIcon />}
-              onClick={onToggleRecord}
+            {isRecording
+              ? i18n._('Stop')
+              : answered
+                ? i18n._('Answer again')
+                : i18n._('Record answer')}
+          </Button>
+
+          {isTranscribing && (
+            <Stack
               sx={{
-                flexShrink: 0,
-                ...(isRecording ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 } : {}),
+                flex: 1,
+                minWidth: 0,
+                justifyContent: 'center',
+                padding: '0 12px',
               }}
             >
-              {isRecording
-                ? i18n._('Stop')
-                : answered
-                  ? i18n._('Answer again')
-                  : i18n._('Record answer')}
-            </Button>
-            {(isRecording || visualizer) && (
-              <Stack
-                sx={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  overflow: 'hidden',
-                  boxShadow: 'inset 0 0 0 1px #F44336',
-                  borderRadius: '0 10px 10px 0',
-                }}
-                data-testid="interactive-lesson-recording-visualizer"
-              >
-                {visualizer}
-              </Stack>
-            )}
-            {isRecording && (
-              <IconButton
-                color="error"
-                onClick={onCancelRecord}
-                aria-label={i18n._('Cancel recording')}
-                data-testid="interactive-lesson-cancel-recording"
-                sx={{
-                  flexShrink: 0,
-                  alignSelf: 'stretch',
-                  width: '42px',
-                  marginLeft: '5px',
-                }}
-              >
-                <X size={20} />
-              </IconButton>
-            )}
-          </Stack>
-
-          {needMoreText && (
-            <Typography variant="caption" sx={{ color: '#ff8e86' }}>
-              {isOpenTalk
-                ? i18n._('Please talk a bit longer — aim for about two minutes.')
-                : i18n._('Please record a longer answer — a few words is enough.')}
-            </Typography>
+              <Typography variant="body2" className="loading-shimmer">
+                {i18n._('Processing...')}
+              </Typography>
+            </Stack>
+          )}
+          {isEvaluating && (
+            <Stack
+              sx={{
+                flex: 1,
+                minWidth: 0,
+                justifyContent: 'center',
+                padding: '0 12px',
+              }}
+            >
+              <ThinkingProgress variant="inline" />
+            </Stack>
+          )}
+          {(isRecording || visualizer) && !isEvaluating && (
+            <Stack
+              sx={{
+                flex: 1,
+                justifyContent: 'center',
+                overflow: 'hidden',
+                boxShadow: 'inset 0 0 0 1px #F44336',
+                borderRadius: '0 10px 10px 0',
+              }}
+              data-testid="interactive-lesson-recording-visualizer"
+            >
+              {visualizer}
+            </Stack>
+          )}
+          {isRecording && (
+            <IconButton
+              color="error"
+              onClick={onCancelRecord}
+              aria-label={i18n._('Cancel recording')}
+              data-testid="interactive-lesson-cancel-recording"
+              sx={{
+                flexShrink: 0,
+                alignSelf: 'stretch',
+                width: '42px',
+                marginLeft: '5px',
+              }}
+            >
+              <X size={20} />
+            </IconButton>
           )}
         </Stack>
-      )}
+
+        {needMoreText && (
+          <Typography variant="caption" sx={{ color: '#ff8e86' }}>
+            {isOpenTalk
+              ? i18n._('Please talk a bit longer — aim for about two minutes.')
+              : i18n._('Please record a longer answer — a few words is enough.')}
+          </Typography>
+        )}
+      </Stack>
     </Stack>
   );
 };

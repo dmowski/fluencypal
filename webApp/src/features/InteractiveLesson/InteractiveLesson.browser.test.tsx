@@ -82,6 +82,16 @@ vi.mock('@/features/Audio/useQuizWordAudio', () => ({
   useQuizWordAudio: () => ({ playWordAudio: vi.fn() }),
 }));
 
+vi.mock('@/features/Audio/useConversationAudio', () => ({
+  useConversationAudio: () => ({
+    isPlaying: false,
+    isUnlocked: () => true,
+    initAudio: async () => undefined,
+    speak: async () => undefined,
+    interrupt: () => undefined,
+  }),
+}));
+
 vi.mock('@/features/Audio/useAudioRecorder', () => ({
   useAudioRecorder: () => recorderMock,
 }));
@@ -234,6 +244,7 @@ test('lesson modal shows done and skip for an in-progress lesson', async () => {
 
   await expect.element(page.getByTestId('interactive-lesson-done')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-skip')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-read-play')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-modal'))
     .toMatchScreenshot('modal-in-progress');
@@ -327,6 +338,8 @@ test('speech panel – thinking', async () => {
     </div>,
   );
 
+  await expect.element(page.getByRole('button', { name: 'Record answer' })).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Record answer' })).toBeDisabled();
   await expect.element(page.getByTestId('interactive-lesson-thinking')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-speech-1'))

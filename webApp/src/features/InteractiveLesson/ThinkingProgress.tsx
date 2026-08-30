@@ -4,7 +4,13 @@ import { useEffect, useState } from 'react';
 import { LinearProgress, Stack, Typography } from '@mui/material';
 import { THINKING_LABELS } from './constants';
 
-export const ThinkingProgress = ({ labels = THINKING_LABELS }: { labels?: readonly string[] }) => {
+export const ThinkingProgress = ({
+  labels = THINKING_LABELS,
+  variant = 'block',
+}: {
+  labels?: readonly string[];
+  variant?: 'block' | 'inline';
+}) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -15,11 +21,12 @@ export const ThinkingProgress = ({ labels = THINKING_LABELS }: { labels?: readon
   }, [labels]);
 
   return (
-    <Stack sx={{ gap: '8px', width: '100%' }} data-testid="interactive-lesson-thinking">
-      <Typography variant="body2" sx={{ opacity: 0.85 }} className="loading-shimmer">
-        {labels[index]}
-      </Typography>
-      <LinearProgress color="info" />
-    </Stack>
+    <Typography
+      variant="body2"
+      className="loading-shimmer"
+      data-testid="interactive-lesson-thinking"
+    >
+      {labels[index]}
+    </Typography>
   );
 };

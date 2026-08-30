@@ -68,7 +68,7 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 
 1. Open card. If native language equals target language (or either is missing) → language setup + **Continue**.
 2. If no current lesson → generate (loader: *We are preparing a lesson for you, based on your previous practice.*).
-3. Render parts. `read` = read only. `speech` = record → stop → auto-check (upload in parallel) → thinking bar → AI feedback. **Answer again** replaces the previous take.
+3. Render parts. `read` = read, with a play control for the passage. `speech` = record → stop → auto-check (upload in parallel) → thinking bar beside the record button → AI feedback. **Answer again** replaces the previous take.
 4. **I'm done** starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
 4b. **Skip this lesson** immediately drops the current lesson (not marked done) and generates a completely different language form. No confirmation.
 5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
@@ -97,8 +97,9 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 - Modal chrome follows `NewsModal` (full-screen `CustomModal`, `#37373a`).
 - Lesson and feedback markdown use `Markdown` (`variant="rule"`). Tapping a word plays it immediately, then opens translate if available.
 - Recording UI follows `SubmitForm` (mic / stop / visualizer / submit).
+- Speech check keeps the record button in place and shows the cycling *Thinking / Understanding... / Analyzing* bar beside it.
+- Read parts have a small play control at the end of the text (`AudioPlayIcon` → streaming TTS).
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
-- Speech check uses the cycling *Thinking / Understanding... / Analyzing* bar.
 
 ## Types
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { Divider, Stack } from '@mui/material';
+import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { LessonMarkdown } from './LessonMarkdown';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
@@ -23,7 +24,27 @@ export const LessonPartSection = ({
   return (
     <Stack sx={{ gap: '16px', width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
       {partIndex > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }} />}
-      <LessonMarkdown content={part.contentMD} />
+      <Stack
+        sx={{
+          gap: '4px',
+          width: '100%',
+        }}
+      >
+        <Stack sx={{}}>
+          <LessonMarkdown content={part.contentMD} />
+        </Stack>
+        {part.type === 'read' && (
+          <Stack
+            data-testid="interactive-lesson-read-play"
+            sx={{
+              //border: '1px solid red',
+              alignItems: 'flex-start',
+            }}
+          >
+            <AudioPlayIcon text={part.contentMD} cache />
+          </Stack>
+        )}
+      </Stack>
       {part.type === 'speech' && (
         <SpeechAnswerPanel
           part={part}
