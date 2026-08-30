@@ -46,7 +46,7 @@ flowchart TD
   P --> Plans
   P -->|read collection + today doc| FS
   P -->|todaysActualTasks / title / progress| Dash
-  Dash -->|onStartTask| Features[JustTalk / Plan / Chat / Grammar / DailyQuestion]
+  Dash -->|onStartTask| Features[JustTalk / Plan / Chat / Grammar / InteractiveLesson / DailyQuestion]
   Features -->|completion side effect| Complete
   Complete -->|merge setDoc| FS
   P -->|isAllTasksCompleted| Access[useAccess isFullAppAccess]
@@ -87,11 +87,11 @@ Owner read/write: `firestore.rules` `match /dailyTasks/{taskId}` under `users/{u
 
 `useDailyPlans` builds `DAILY_PLAN_COUNT` (200) `DayTasksMeta` entries:
 
-1. **Days 1–49** — hand-authored `buildEarlyPlans` (onboarding copy + lighter task sets)
+1. **Days 1–49** — hand-authored `buildEarlyPlans` (onboarding copy + lighter task sets). Day 1 includes `interactive-lesson` with `just-talk` and `goal-lesson`.
 2. **Milestone days** (50, 60, 70, 75, 80, 90, 100, 120, 150, 180, 200) — `milestonePlan`
 3. **Everything else** — `generatedPlan`: rotating `TASK_CYCLES` + templated title/subtitle
 
-`TASK_CYCLES` excludes `news` and `story`. When `grammar-improvement` is included it is last in the list.
+`TASK_CYCLES` excludes `news`, `story`, and `community`. `grammar-improvement` and `interactive-lesson` alternate across days and are never on the same day. When `grammar-improvement` is included it is last in the list.
 
 After day 200 the index clamps to the last plan (`Math.min(..., length - 1)`). Admin UI labels that as plan end.
 
@@ -103,9 +103,10 @@ After day 200 the index clamps to the last plan (`Math.min(..., length - 1)`). A
 | --- | --- | --- |
 | `just-talk` | `useJustTalk().startJustTalk` | Conversation mode `talk` reaches `CONVERSATION_DONE_MESSAGE_COUNT` (10) — `useConversationStat` |
 | `goal-lesson` | Open next learning-plan element, or prompt to create a plan | Any learning-plan conversation mode (`words`, `rule`, `goal-role-play`, `goal-talk`, `grammar-improvement`) reaches 10 messages |
-| `community` | `globalModals.openPublicChat` | First message in a non-`dailyQuestion` chat space — `useChat.addMessage` |
+| `community` | `globalModals.openPublicChat` | First message in a non-`dailyQuestion` chat space — `useChat.addMessage`. **Not assigned** in current plans |
 | `daily-question` | `globalModals.openDailyQuestions` | First message in a `dailyQuestion` chat — `useChat.addMessage` |
-| `grammar-improvement` | `useGrammarImprovement().showAvailable` | First interactive example sentence is constructed — `GrammarImprovementModal` → `InteractiveExample.onConstructionComplete` |
+| `grammar-improvement` | `useGrammarImprovement().showAvailable` | First interactive example sentence is constructed — `GrammarImprovementModal` → `InteractiveExample.onConstructionComplete`. Mixed with `interactive-lesson` (never both the same day) |
+| `interactive-lesson` | `useInteractiveLesson().openLesson` | User clicks **Finish lesson** — `useInteractiveLesson.finishCurrentLesson`. Skip does not complete |
 | `story` | Open/rotate a story with video | **Deprecated** — still completed by `useStories.onFinishStory`; not assigned in current plans |
 | `news` | no-op | **Deprecated** — still completed by `news-discussion` at 6 messages, or passing a news-sourced quiz; not assigned in current plans |
 
@@ -163,7 +164,11 @@ Consumers: `ProgressBoard` (dashboard). `TasksCard` and `StreaksDaysBadge` exist
 cd webApp && pnpm lint
 ```
 
-There are no Tasks-only unit tests today. If you change `buildDailyPlans` / `getDailyPlanTasksAtIndex` / `getDailyTasksAdminSummary`, add unit tests under `src/features/Tasks` or next to `adminLearningSummary.ts` and run `cd webApp && pnpm test:unit`.
+```bash
+cd webApp && pnpm test:unit -- src/features/Tasks
+```
+
+If you change `buildDailyPlans` / `getDailyPlanTasksAtIndex` / `getDailyTasksAdminSummary`, keep tests under `src/features/Tasks` or next to `adminLearningSummary.ts`.
 
 ## Keeping this file current
 

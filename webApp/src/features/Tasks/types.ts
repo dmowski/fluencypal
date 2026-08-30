@@ -16,6 +16,7 @@ export type DailyTaskType =
   | 'community' // Send at least one message in the community space
   | 'story' //Deprecated: Watch a story and listen in to the end or finish quiz
   | 'grammar-improvement' // Build at least one interactive example sentence
+  | 'interactive-lesson' // Finish today’s Interactive Lesson
   | 'news' //Deprecated: Discuss today's news with the AI (news-discussion conversation)
   | 'daily-question'; // Answer daily question
 

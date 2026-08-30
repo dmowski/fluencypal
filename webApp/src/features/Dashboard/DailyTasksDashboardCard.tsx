@@ -16,6 +16,11 @@ import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
 import { getUrlStart } from '../Lang/getUrlStart';
 import { useRouter } from 'next/navigation';
 import { getHourlyDailyTasksQuote } from './dailyTasksQuotes';
+import { useInteractiveLesson } from '../InteractiveLesson/useInteractiveLesson';
+import {
+  INTERACTIVE_LESSON_CARD_IMAGE,
+  INTERACTIVE_LESSON_DONE_CARD_IMAGE,
+} from '../InteractiveLesson/constants';
 
 export const DailyTasksDashboardCard = () => {
   const { i18n } = useLingui();
@@ -33,6 +38,7 @@ export const DailyTasksDashboardCard = () => {
 
   const grammarImprovement = useGrammarImprovement();
   const dailyQuestion = useDailyQuestion();
+  const interactiveLesson = useInteractiveLesson();
 
   const taskIconMap: Record<DailyTaskType, string> = useMemo(
     () => ({
@@ -44,6 +50,7 @@ export const DailyTasksDashboardCard = () => {
       story: stories.randomStoryWithVideo?.imageUrl || '',
       'grammar-improvement':
         'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1773858639762-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png',
+      'interactive-lesson': INTERACTIVE_LESSON_CARD_IMAGE,
       'daily-question': dailyQuestion.todaysQuestionImage || '',
       news: '',
     }),
@@ -77,6 +84,7 @@ export const DailyTasksDashboardCard = () => {
       },
       'daily-question': globalModals.openDailyQuestions,
       'grammar-improvement': grammarImprovement.showAvailable,
+      'interactive-lesson': interactiveLesson.openLesson,
       news: () => {},
     };
 
@@ -116,7 +124,12 @@ export const DailyTasksDashboardCard = () => {
       const isCompleted = tasks.todayTaskProgress
         ? !!tasks.todayTaskProgress.completedTasks[taskType]
         : false;
-      const image = taskIconMap[taskType];
+      const image =
+        taskType === 'interactive-lesson'
+          ? isCompleted
+            ? INTERACTIVE_LESSON_DONE_CARD_IMAGE
+            : INTERACTIVE_LESSON_CARD_IMAGE
+          : taskIconMap[taskType];
 
       const actionButtonTitle = isLoadingItem
         ? i18n._('Loading...')

@@ -7,24 +7,24 @@ import { DailyTaskType, DayTasksMeta } from '@/features/Tasks/types';
 
 export const DAILY_PLAN_COUNT = 200;
 
-/** Rotating task sets. Excludes news. grammar-improvement is always last when included. */
+/** Rotating task sets. Excludes news and community. grammar-improvement and interactive-lesson alternate; never both on the same day. */
 const TASK_CYCLES: DailyTaskType[][] = [
   ['just-talk', 'goal-lesson', 'grammar-improvement'],
-  ['just-talk', 'daily-question', 'grammar-improvement'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+  ['just-talk', 'daily-question', 'interactive-lesson'],
+  ['just-talk', 'goal-lesson', 'interactive-lesson'],
   ['just-talk', 'grammar-improvement'],
-  ['just-talk', 'goal-lesson', 'grammar-improvement'],
+  ['just-talk', 'goal-lesson', 'interactive-lesson'],
   ['just-talk', 'daily-question', 'grammar-improvement'],
-  ['just-talk', 'community', 'grammar-improvement'],
+  ['just-talk', 'interactive-lesson'],
   ['just-talk', 'goal-lesson', 'grammar-improvement'],
-  ['just-talk', 'grammar-improvement', 'grammar-improvement'],
-  ['just-talk', 'goal-lesson', 'community', 'grammar-improvement'],
+  ['just-talk', 'interactive-lesson'],
+  ['just-talk', 'goal-lesson', 'interactive-lesson'],
 ];
 
 function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
   return [
     {
-      tasks: ['just-talk', 'goal-lesson'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Build a steady learning habit'),
       subTitle: i18n._('Start with today’s tasks and keep a gentle pace.'),
     },
@@ -81,7 +81,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('Curiosity keeps learning fun. Explore today’s tasks.'),
     },
     {
-      tasks: ['just-talk'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day twelve: mix it up'),
       subTitle: i18n._('A little variety helps you grow. Here’s what to do today.'),
     },
@@ -121,7 +121,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('You’re close to three weeks. Finish today’s tasks strong.'),
     },
     {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day twenty: three weeks strong'),
       subTitle: i18n._('Three weeks of learning — celebrate that and keep going.'),
     },
@@ -151,7 +151,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('A month of learning is within reach. Keep going today.'),
     },
     {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'grammar-improvement'],
       title: i18n._('Day twenty-six: stay sharp'),
       subTitle: i18n._('Stay sharp with a fresh set of tasks for today.'),
     },
@@ -161,7 +161,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('Habits are built one day at a time. Here’s today’s plan.'),
     },
     {
-      tasks: ['just-talk', 'grammar-improvement'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day twenty-eight: four weeks in'),
       subTitle: i18n._('Four weeks of practice — that’s something to be proud of.'),
     },
@@ -171,7 +171,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('You’re nearly at a full month. Finish today’s tasks.'),
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'community'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Day thirty: one full month'),
       subTitle: i18n._('A full month of learning. Remarkable — let’s keep going.'),
     },
@@ -221,7 +221,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('You’re still climbing. Take the next step with today’s tasks.'),
     },
     {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day forty: a big milestone'),
       subTitle: i18n._('Forty active days — that’s dedication. Keep the habit alive.'),
     },
@@ -251,7 +251,7 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('You’re almost at seven weeks. Finish today’s tasks strong.'),
     },
     {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'grammar-improvement'],
       title: i18n._('Day forty-six: stay motivated'),
       subTitle: i18n._('Motivation comes and goes — habits carry you. Try today’s tasks.'),
     },
@@ -261,12 +261,12 @@ function buildEarlyPlans(i18n: I18n): DayTasksMeta[] {
       subTitle: i18n._('Practice turns effort into skill. Here are today’s tasks.'),
     },
     {
-      tasks: ['just-talk', 'grammar-improvement'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day forty-eight: polish and practice'),
       subTitle: i18n._('A bit of polish goes a long way. Focus on today’s tasks.'),
     },
     {
-      tasks: ['just-talk', 'goal-lesson', 'community'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Day forty-nine: seven weeks strong'),
       subTitle: i18n._('Seven weeks of learning. Remarkable consistency — keep going.'),
     },
@@ -281,7 +281,7 @@ function milestonePlan(i18n: I18n, day: number): DayTasksMeta | null {
       subTitle: i18n._('Fifty active days — a real habit. Celebrate and keep going.'),
     },
     60: {
-      tasks: ['just-talk', 'goal-lesson', 'community'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Day 60: two months in'),
       subTitle: i18n._('Two months of practice. That’s rare dedication — keep it up.'),
     },
@@ -291,7 +291,7 @@ function milestonePlan(i18n: I18n, day: number): DayTasksMeta | null {
       subTitle: i18n._('Seventy days of showing up. Take today’s tasks with pride.'),
     },
     75: {
-      tasks: ['just-talk', 'community'],
+      tasks: ['just-talk', 'interactive-lesson'],
       title: i18n._('Day 75: past the halfway mark to 150'),
       subTitle: i18n._('You’re building something lasting. Continue with today’s tasks.'),
     },
@@ -301,12 +301,12 @@ function milestonePlan(i18n: I18n, day: number): DayTasksMeta | null {
       subTitle: i18n._('Eighty days in — your consistency is paying off.'),
     },
     90: {
-      tasks: ['just-talk', 'goal-lesson', 'community'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Day 90: three months strong'),
       subTitle: i18n._('Three months of learning. Remarkable — let’s keep going.'),
     },
     100: {
-      tasks: ['just-talk', 'goal-lesson', 'community', 'grammar-improvement'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Day 100: one hundred days'),
       subTitle: i18n._('One hundred active days. An incredible milestone — keep going.'),
     },
@@ -316,17 +316,17 @@ function milestonePlan(i18n: I18n, day: number): DayTasksMeta | null {
       subTitle: i18n._('Four months of practice. Stay calm and keep the habit alive.'),
     },
     150: {
-      tasks: ['just-talk', 'goal-lesson', 'community', 'grammar-improvement'],
+      tasks: ['just-talk', 'goal-lesson', 'grammar-improvement'],
       title: i18n._('Day 150: one hundred fifty days'),
       subTitle: i18n._('One hundred fifty days of learning. Be proud of how far you’ve come.'),
     },
     180: {
-      tasks: ['just-talk', 'goal-lesson', 'community'],
+      tasks: ['just-talk', 'goal-lesson', 'interactive-lesson'],
       title: i18n._('Day 180: six months strong'),
       subTitle: i18n._('Six months of showing up. That’s a true learning habit.'),
     },
     200: {
-      tasks: ['just-talk', 'goal-lesson', 'community', 'daily-question', 'grammar-improvement'],
+      tasks: ['just-talk', 'goal-lesson', 'daily-question', 'grammar-improvement'],
       title: i18n._('Day 200: two hundred days'),
       subTitle: i18n._('Two hundred active days. Extraordinary consistency — keep going.'),
     },

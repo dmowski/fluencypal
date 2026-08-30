@@ -44,6 +44,7 @@ import {
   LessonGenerationContext,
 } from './types';
 import { USER_LESSON_ERROR } from './lessonErrors';
+import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 const inFlightLessonByKey = new Map<string, Promise<InteractiveLesson>>();
 const logLessonError = (phase: string, error: unknown, extra?: Record<string, unknown>) => {
   console.error('[interactiveLesson] failed', {
@@ -73,6 +74,7 @@ const useProvideInteractiveLesson = () => {
   const chatHistory = useChatHistory();
   const aiUserInfo = useAiUserInfo();
   const plan = usePlan();
+  const dailyTasks = useDailyTasks();
 
   const [isOpen, setIsOpen] = useUrlState('interactiveLesson', '', false);
   const [isProgressOpen, setIsProgressOpen] = useUrlState('interactiveLessonProgress', '', false);
@@ -333,6 +335,10 @@ const useProvideInteractiveLesson = () => {
     const lesson = store.currentLesson;
     if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
     if (lesson.lessonResults) return;
+
+    void dailyTasks.onCompleteTask('interactive-lesson').catch((error) => {
+      logLessonError('markDailyTask', error, { lessonId: lesson.id });
+    });
 
     setErrorMessage('');
     setIsGeneratingResults(true);

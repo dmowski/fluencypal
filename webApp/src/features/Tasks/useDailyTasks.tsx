@@ -71,6 +71,10 @@ function useProvideDailyTasks(): DailyTaskApi {
         title: i18n._('Grammar Improvement'),
         label: i18n._('Build at least one sentence in Grammar Improvement'),
       },
+      'interactive-lesson': {
+        title: i18n._('Interactive Lesson'),
+        label: i18n._('Read, speak, and finish today’s lesson'),
+      },
       'goal-lesson': {
         title: i18n._('Learning Plan'),
         label: i18n._('Finish a lesson from your Learning Plan'),
