@@ -7,6 +7,8 @@ import { InterviewQuizSurvey } from '@/features/Case/types';
 import dayjs from 'dayjs';
 import { DailyTaskProgress } from '@/features/Tasks/types';
 import { GoalPlan } from '@/features/Plan/types';
+import { parseInteractiveLessonStore } from '@/features/InteractiveLesson/storage';
+import { InteractiveLessonStore } from '@/features/InteractiveLesson/types';
 
 export interface StripeUserInfo {
   customerId: string;
@@ -154,6 +156,19 @@ export const getUserDailyTasksProgress = async (userId: string): Promise<DailyTa
   });
 
   return data;
+};
+
+export const getUserInteractiveLessonStores = async (
+  userId: string,
+): Promise<InteractiveLessonStore[]> => {
+  const db = getDB();
+  const lessonsCollection = await db
+    .collection('users')
+    .doc(userId)
+    .collection('interactiveLessons')
+    .get();
+
+  return lessonsCollection.docs.map((doc) => parseInteractiveLessonStore(doc.data()));
 };
 
 export const getUserGoals = async (userId: string): Promise<GoalPlan[]> => {

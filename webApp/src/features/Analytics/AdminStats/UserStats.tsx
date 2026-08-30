@@ -7,6 +7,7 @@ interface UserStatsProps {
   totalMessages: number;
   conversationCount: number;
   lastConversationAgo: string;
+  lessonsLast24h: number;
 }
 
 export function UserStats({
@@ -15,6 +16,7 @@ export function UserStats({
   totalMessages,
   conversationCount,
   lastConversationAgo,
+  lessonsLast24h,
 }: UserStatsProps) {
   return (
     <Stack
@@ -44,9 +46,15 @@ export function UserStats({
           },
         },
         flexDirection: 'row',
+        flexWrap: 'wrap',
         alignItems: 'center',
       }}
     >
+      <StatCard
+        value={lessonsLast24h}
+        label="Lessons - 24h"
+        isHighlighted={lessonsLast24h > 0}
+      />
       <StatCard value={lastHourMessages} label="Last Hour" isHighlighted={lastHourMessages > 0} />
       <StatCard
         value={todaysConversationsMessages}

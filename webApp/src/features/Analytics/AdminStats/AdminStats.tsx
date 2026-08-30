@@ -32,7 +32,8 @@ export function AdminStats() {
     if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
       const isHasConversations = (user.conversationMeta.conversationCount || 0) > 0;
-      return isHasConversations;
+      const hasRecentLessons = (user.lessonsLast24h || 0) > 0;
+      return isHasConversations || hasRecentLessons;
     });
     return { ...sourceData, users: cleanUsers || [] };
   }, [sourceData]);
@@ -162,6 +163,9 @@ export function AdminStats() {
     return acc + lastDayMessages;
   }, 0);
 
+  const lessonsLast24h =
+    sourceData?.users.reduce((acc, user) => acc + (user.lessonsLast24h || 0), 0) || 0;
+
   const usersToShowMap: Record<UserMode, typeof users> = {
     all: users,
     lastDay: lastDayUsers,
@@ -276,6 +280,7 @@ export function AdminStats() {
                   lastDayMessagesCount={lastDayMessagesCount}
                   newsReadsLast24h={data.newsReadsLast24h}
                   quizCompletionsLast24h={data.quizCompletionsLast24h}
+                  lessonsLast24h={lessonsLast24h}
                   todayUsersCount={todayUsers.length}
                   secondDayVisitorsCount={secondDayVisitors.length}
                   thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}

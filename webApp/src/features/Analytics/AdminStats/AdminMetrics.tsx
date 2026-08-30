@@ -7,6 +7,7 @@ interface AdminMetricsProps {
   lastDayMessagesCount: number;
   newsReadsLast24h: number;
   quizCompletionsLast24h: number;
+  lessonsLast24h: number;
   lastDayUsersCount: number;
   todayUsersCount: number;
 
@@ -22,6 +23,7 @@ export function AdminMetrics({
   lastDayMessagesCount,
   newsReadsLast24h,
   quizCompletionsLast24h,
+  lessonsLast24h,
   lastDayUsersCount,
   secondDayVisitorsCount,
   thirdAndMoreDayVisitorsCount,
@@ -78,6 +80,7 @@ export function AdminMetrics({
       />
 
       <StatCard value={quizCompletionsLast24h} label="Quiz Done - 24h" />
+      <StatCard value={lessonsLast24h} label="Lessons - 24h" />
 
       <StatCard
         label="Users - Today"

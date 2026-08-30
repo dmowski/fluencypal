@@ -19,6 +19,7 @@ export interface UserStat {
   progressStats: ProgressStat[];
   /** Live learning plans from users/{id}/goals */
   goals: GoalPlan[];
+  lessonsLast24h: number;
 }
 
 export interface AdminStatsRequest {

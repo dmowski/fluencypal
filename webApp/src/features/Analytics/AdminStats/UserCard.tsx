@@ -318,6 +318,7 @@ export function UserCard({ userStat }: UserCardProps) {
           totalMessages={totalMessages}
           conversationCount={conversationCount}
           lastConversationAgo={lastConversationAgo}
+          lessonsLast24h={userStat.lessonsLast24h || 0}
         />
 
         <Stack

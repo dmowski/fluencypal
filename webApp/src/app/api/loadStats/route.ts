@@ -7,9 +7,11 @@ import {
   getUserConversationsMeta,
   getUserDailyTasksProgress,
   getUserGoals,
+  getUserInteractiveLessonStores,
   getUsersInterviewSurvey,
   getUsersQuizSurvey,
 } from '../user/getUserInfo';
+import { countLessonsCompletedSince } from '@/features/InteractiveLesson/countLessonsCompletedSince';
 import { getUserBalance } from '../payment/getUserBalance';
 import { getAllProgressStatsForUser } from '@/features/ProgressStat/backend/processAssessment';
 import { getAllNewsStats } from '@/features/News/backend/getAllNewsStats';
@@ -45,6 +47,7 @@ export async function POST(request: Request) {
           dailyProgress,
           progressStats,
           goals,
+          lessonStores,
         ] = await Promise.all([
           getUserConversationsMeta(user.id),
           getUsersQuizSurvey(user.id),
@@ -54,6 +57,7 @@ export async function POST(request: Request) {
           getUserDailyTasksProgress(user.id),
           getAllProgressStatsForUser(user.id),
           getUserGoals(user.id),
+          getUserInteractiveLessonStores(user.id),
         ]);
 
         const userStat: UserStat = {
@@ -67,6 +71,7 @@ export async function POST(request: Request) {
           dailyProgress,
           progressStats,
           goals,
+          lessonsLast24h: countLessonsCompletedSince(lessonStores),
         };
         return userStat;
       }),
