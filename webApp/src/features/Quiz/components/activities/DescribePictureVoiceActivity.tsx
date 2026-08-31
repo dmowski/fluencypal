@@ -5,6 +5,7 @@ import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { RecordUserAudioAnswer } from '@/features/Survey/RecordUserAudioAnswer';
 import { DescribePictureVoiceQuestion } from '../../types';
 import { SubmittedAnswerPreview } from '../SubmittedAnswerPreview';
+import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import { useEffect } from 'react';
 
 export const DescribePictureVoiceActivity = ({
@@ -23,6 +24,7 @@ export const DescribePictureVoiceActivity = ({
 
   const handleTranscriptUpdate = () => {
     if (!recorder.transcription) return;
+    sendSpeechStart('quiz');
     const combined = [transcription, recorder.transcription].filter(Boolean).join(' ').trim();
     onTranscriptionChange(combined);
     recorder.removeTranscript();

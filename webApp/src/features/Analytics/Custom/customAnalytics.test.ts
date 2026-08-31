@@ -69,6 +69,19 @@ describe('validateClientEvent', () => {
     expect(validateClientEvent({ ...baseEvent(), name: 'hack' } as unknown)).toBeNull();
     expect(validateClientEvent(baseEvent({ path: '   ' }))).toBeNull();
   });
+
+  it('accepts speech_start with a known surface', () => {
+    const event = validateClientEvent(
+      baseEvent({ name: 'speech_start', speechSurface: 'quiz', path: '/quiz' }),
+    );
+    expect(event?.name).toBe('speech_start');
+    expect(event?.speechSurface).toBe('quiz');
+    expect(
+      validateClientEvent(
+        baseEvent({ name: 'speech_start', path: '/quiz', speechSurface: 'nope' as never }),
+      )?.speechSurface,
+    ).toBeUndefined();
+  });
 });
 
 describe('isBotUserAgent', () => {
@@ -183,6 +196,20 @@ describe('classifyFunnel', () => {
     expect(landingQuiz.clickedQuizCta).toBe(true);
     expect(appQuiz.clickedQuizCta).toBe(false);
   });
+
+  it('marks used voice without treating it as an AI conversation', () => {
+    const quizSpeech = classifyFunnelFlags(
+      baseEvent({
+        name: 'speech_start',
+        speechSurface: 'quiz',
+        path: '/th/quiz',
+        sourceApp: 'webapp',
+      }),
+    );
+    expect(quizSpeech.reachedSpeech).toBe(true);
+    expect(quizSpeech.reachedConversation).toBe(false);
+    expect(lastFunnelStep(quizSpeech)).toBe('reachedQuiz');
+  });
 });
 
 describe('summarizeJourneys', () => {
@@ -276,6 +303,7 @@ describe('summarizeJourneys', () => {
     expect(summary.funnel.landing).toBe(2);
     expect(summary.funnel.practice).toBe(1);
     expect(summary.funnel.conversation).toBe(1);
+    expect(summary.funnel.speech).toBe(0);
     expect(summary.funnel.paywall).toBe(0);
     expect(summary.funnel.checkout).toBe(0);
     expect(summary.dropOff.map((row) => row.path).sort()).toEqual(['/', '/practice']);

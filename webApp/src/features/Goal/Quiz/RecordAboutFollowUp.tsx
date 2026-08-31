@@ -31,6 +31,7 @@ export const RecordAboutFollowUp = ({
       title={loading ? i18n._('Loading...') : question?.title || i18n._('Loading...')}
       isLoading={!question?.title || loading}
       subTitle={question?.subtitle || ''}
+      analyticsSurface="quiz"
       nextStep={nextStep}
       subTitleComponent={
         <>

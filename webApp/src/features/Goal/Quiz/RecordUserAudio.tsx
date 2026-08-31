@@ -8,6 +8,8 @@ import { getWordsCount } from '@/libs/words';
 import { RecordUserAudioAnswer } from '../../Survey/RecordUserAudioAnswer';
 import { ColorIconTextList, ColorIconTextListItem } from '@/features/Survey/ColorIconTextList';
 import { InterviewQuizButton } from './InterviewQuizButton';
+import { SpeechSurface } from '@/features/Analytics/Custom/types';
+import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 
 export const RecordUserAudio = ({
   transcript,
@@ -20,6 +22,7 @@ export const RecordUserAudio = ({
   isLoading,
   nextStep,
   listItems,
+  analyticsSurface,
 }: {
   transcript: string;
   minWords: number;
@@ -31,12 +34,14 @@ export const RecordUserAudio = ({
   isLoading?: boolean;
   nextStep: () => void;
   listItems?: ColorIconTextListItem[];
+  analyticsSurface?: SpeechSurface;
 }) => {
   const { i18n } = useLingui();
   const recorder = useAudioRecorder();
 
   useEffect(() => {
     if (recorder.transcription) {
+      if (analyticsSurface) sendSpeechStart(analyticsSurface);
       const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(' ');
       updateTranscript(combinedTranscript);
     }

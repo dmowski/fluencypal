@@ -36,6 +36,7 @@ export const summarizeJourneys = (
     quiz: 0,
     practice: 0,
     conversation: 0,
+    speech: 0,
     paywall: 0,
     checkout: 0,
   };
@@ -46,6 +47,7 @@ export const summarizeJourneys = (
     if (visitor.reachedQuiz) funnel.quiz += 1;
     if (visitor.reachedPractice) funnel.practice += 1;
     if (visitor.reachedConversation) funnel.conversation += 1;
+    if (visitor.reachedSpeech) funnel.speech += 1;
     if (visitor.reachedPaywall) funnel.paywall += 1;
     if (visitor.reachedCheckout) funnel.checkout += 1;
   }

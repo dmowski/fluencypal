@@ -7,6 +7,7 @@ export type FunnelFlags = {
   reachedQuiz: boolean;
   reachedPractice: boolean;
   reachedConversation: boolean;
+  reachedSpeech: boolean;
   reachedPaywall: boolean;
   reachedCheckout: boolean;
   clickedQuizCta: boolean;
@@ -30,6 +31,7 @@ export const classifyFunnelFlags = (event: AnalyticsClientEvent): FunnelFlags =>
     reachedQuiz: pathLooksLikeQuiz(path),
     reachedPractice: pathLooksLikePractice(path),
     reachedConversation: event.name === 'conversation_start',
+    reachedSpeech: event.name === 'speech_start' || event.name === 'conversation_start',
     reachedPaywall: event.name === 'paywall_view' || event.name === 'checkout_start',
     reachedCheckout: event.name === 'checkout_start',
     clickedQuizCta: event.sourceApp === 'landing' && event.ctaIntent === 'quiz',
@@ -45,6 +47,7 @@ export const mergeFunnelFlags = (current: FunnelFlags, next: FunnelFlags): Funne
     reachedQuiz: current.reachedQuiz || next.reachedQuiz,
     reachedPractice: current.reachedPractice || next.reachedPractice,
     reachedConversation: current.reachedConversation || next.reachedConversation,
+    reachedSpeech: current.reachedSpeech || next.reachedSpeech,
     reachedPaywall: current.reachedPaywall || next.reachedPaywall,
     reachedCheckout: current.reachedCheckout || next.reachedCheckout,
     clickedQuizCta: current.clickedQuizCta || next.clickedQuizCta,
@@ -60,6 +63,7 @@ export const visitorFunnelFlags = (visitor: Partial<FunnelFlags>): FunnelFlags =
     reachedQuiz: Boolean(visitor.reachedQuiz),
     reachedPractice: Boolean(visitor.reachedPractice),
     reachedConversation: Boolean(visitor.reachedConversation),
+    reachedSpeech: Boolean(visitor.reachedSpeech),
     reachedPaywall: Boolean(visitor.reachedPaywall),
     reachedCheckout: Boolean(visitor.reachedCheckout),
     clickedQuizCta: Boolean(visitor.clickedQuizCta),

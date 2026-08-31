@@ -114,6 +114,7 @@ export const sendAnalyticsEvent = (
     gclid: partial.gclid || traffic.gclid,
     referrerHost: partial.referrerHost || traffic.referrerHost,
     conversationId: partial.conversationId,
+    speechSurface: partial.speechSurface,
   });
 
   if (!event) return;

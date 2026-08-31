@@ -149,7 +149,8 @@ export function CustomAnalyticsAdmin() {
             <StatCard value={summary.funnel.auth} label="Signed in" />
             <StatCard value={summary.funnel.quiz} label="Opened quiz" />
             <StatCard value={summary.funnel.practice} label="Practice page" />
-            <StatCard value={summary.funnel.conversation} label="Spoke" />
+            <StatCard value={summary.funnel.speech} label="Used voice" />
+            <StatCard value={summary.funnel.conversation} label="AI conversation" />
             <StatCard value={summary.funnel.paywall} label="Paywall" />
             <StatCard value={summary.funnel.checkout} label="Checkout" />
           </Stack>

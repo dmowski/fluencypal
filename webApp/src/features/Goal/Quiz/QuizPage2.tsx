@@ -257,6 +257,7 @@ const QuizQuestions = () => {
                 subTitle={`${i18n._(`Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`)}`}
                 transcript={survey?.aboutUserTranscription || ''}
                 minWords={MIN_WORDS_FOR_ANSWER}
+                analyticsSurface="quiz"
                 nextStep={next}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {

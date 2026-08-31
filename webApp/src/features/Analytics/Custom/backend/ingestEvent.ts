@@ -111,6 +111,7 @@ export const ingestAnalyticsEvent = async (input: {
     referrerHost: input.event.referrerHost || null,
     country,
     conversationId: input.event.conversationId || null,
+    speechSurface: input.event.speechSurface || null,
   };
 
   const db = getDB();

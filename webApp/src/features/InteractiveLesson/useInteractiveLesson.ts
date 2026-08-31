@@ -23,6 +23,7 @@ import { generateInteractiveLesson } from './generateLesson';
 import { generateSpeechAnswerFeedback } from './generateAnswerFeedback';
 import { generateLessonResults } from './generateLessonResults';
 import { recordLessonAudio } from './audioProgress';
+import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import {
   applyLessonResults,
   applySpeechAnswer,
@@ -292,6 +293,7 @@ const useProvideInteractiveLesson = () => {
     setErrorMessage('');
     setEvaluatingPartIndex(partIndex);
     if (audioBlob) prepareSpeechAudio(partIndex, audioBlob);
+    sendSpeechStart('lesson');
 
     try {
       const [userAudioUrl, aiResultToUser] = await Promise.all([

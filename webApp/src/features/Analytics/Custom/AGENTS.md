@@ -18,7 +18,7 @@ Goals:
 When the user asks what happened today (or similar):
 
 1. `cd webApp && pnpm analytics:export`
-2. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `dropOff`, then sample a few visitor timelines. Do not paste raw user agents or emails.
+2. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `funnelNew`, `dropOff`, `searchConsole`, then sample a few visitor timelines. Do not paste raw user agents or emails.
 3. Read `INTERVENTIONS.md` so suggestions are not a loop.
 4. Reply with this short report:
 
@@ -30,7 +30,8 @@ Today (YYYY-MM-DD)  [UTC]
 - Time on pages: insights.durationByPath
 - CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds)
 - Path to first speak: pathBeforeSpeak + conversationStartPaths
-- GEO/SEO: countries, languages, referrers, UTM, firstPaths
+- Voice: funnel.speech vs funnel.conversation; insights.speechSurfaces (quiz / lesson / conversation)
+- GEO/SEO: countries, languages, referrers, UTM, firstPaths, plus `searchConsole` (queries/pages; data lags 2–3 days)
 - Where they stop: top last paths
 - Spoke / paywallViews / checkoutStarts
 
@@ -49,11 +50,12 @@ If the export is empty, say so; do not invent traffic.
 | `scroll_depth`       | 25 / 50 / 75 / 100 on a page              | How deep they scroll                                                  |
 | `page_leave`         | hide / pagehide                           | Visible time on page (`durationMs`), `maxScrollPct`                   |
 | `identify`           | Signed-in uid (once per uid)              | Auth                                                                  |
-| `conversation_start` | First **user** message in a conversation  | Real speak, not the AI greeting and not just /practice                |
+| `conversation_start` | First **user** message in a conversation  | Real AI talk, not the greeting and not just /practice                 |
+| `speech_start`       | First accepted voice on quiz / lesson / conversation | They used a mic. `speechSurface`: `quiz` \| `lesson` \| `conversation`. Once per surface per tab. `reachedSpeech` is any surface; `reachedConversation` stays AI talk only. |
 | `paywall_view`       | Subscription modal opens                  | Saw paywall                                                           |
 | `checkout_start`     | Stripe checkout created                   | Tried to pay                                                          |
 
-Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation`. CTA flags are set only from **landing** clicks.
+Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation` / `reachedSpeech`. CTA flags are set only from **landing** clicks.
 
 Country comes from `x-vercel-ip-country` / `cf-ipcountry` on ingest (not stored IP).
 
@@ -65,7 +67,9 @@ Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and 
 
 Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions` and drop UTM, inbox ids, and `fpv`.
 
-Export (`pnpm analytics:export`) is a **UTC day**. Funnel and CTAs are computed from that day's events (not lifetime visitor flags). Use `funnelNew` for first-seen-today visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped.
+Export (`pnpm analytics:export`) is a **UTC day**. Funnel and CTAs are computed from that day's events (not lifetime visitor flags). Use `funnelNew` for first-seen-today visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
+
+Optional: `GSC_SITE_URL` in `webApp/.env` (`sc-domain:fluencypal.com` or `https://www.fluencypal.com/`).
 
 ## Architecture
 
@@ -96,6 +100,7 @@ Admin UI: `/staats/journey`
 From export `insights.countries`, `referrers`, `utmSources`, plus first path:
 
 - Empty referrer + no UTM = direct, PWA, or privacy-stripped search. Do not treat as “SEO is zero”.
+- Pair `searchConsole.queries` / `searchConsole.pages` with firstPaths and referrers. GSC is delayed; do not treat a missing today-row as zero SEO.
 - Search/social referrer hosts with high bounce and low scroll → title/snippet vs page mismatch; check that language landing (`/es`, `/pt`) matches the query language.
 - Country vs visitor `language` / firstPath lang: if `BR` lands on `/` English, add clearer language switch or geo landing.
 - `gclid` / `utm_source=google` vs organic referrers: paid vs organic mix.

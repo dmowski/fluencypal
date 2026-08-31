@@ -27,4 +27,5 @@ export const MAX_EVENT_STRING = {
   referrerHost: 120,
   country: 8,
   conversationId: 80,
+  speechSurface: 32,
 } as const;

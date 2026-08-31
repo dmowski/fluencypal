@@ -7,10 +7,14 @@ export const ANALYTICS_EVENT_NAMES = [
   'scroll_depth',
   'page_leave',
   'conversation_start',
+  'speech_start',
   'paywall_view',
   'checkout_start',
 ] as const;
 export type AnalyticsEventName = (typeof ANALYTICS_EVENT_NAMES)[number];
+
+export const SPEECH_SURFACES = ['quiz', 'lesson', 'conversation'] as const;
+export type SpeechSurface = (typeof SPEECH_SURFACES)[number];
 
 export const ANALYTICS_SOURCE_APPS = ['landing', 'webapp'] as const;
 export type AnalyticsSourceApp = (typeof ANALYTICS_SOURCE_APPS)[number];
@@ -45,6 +49,7 @@ export type AnalyticsClientEvent = {
   gclid?: string;
   referrerHost?: string;
   conversationId?: string;
+  speechSurface?: SpeechSurface;
 };
 
 export type AnalyticsDeviceInfo = {
@@ -88,6 +93,7 @@ export type AnalyticsEventDoc = {
   referrerHost: string | null;
   country: string | null;
   conversationId: string | null;
+  speechSurface: string | null;
 };
 
 export type AnalyticsVisitorDoc = {
@@ -116,6 +122,7 @@ export type AnalyticsVisitorDoc = {
   reachedQuiz: boolean;
   reachedPractice: boolean;
   reachedConversation?: boolean;
+  reachedSpeech?: boolean;
   reachedPaywall?: boolean;
   reachedCheckout?: boolean;
   clickedQuizCta?: boolean;
@@ -141,6 +148,7 @@ export type JourneyFunnel = {
   quiz: number;
   practice: number;
   conversation: number;
+  speech: number;
   paywall: number;
   checkout: number;
 };

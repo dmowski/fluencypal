@@ -3,16 +3,19 @@ import { MAX_EVENT_STRING } from './constants';
 import {
   ANALYTICS_EVENT_NAMES,
   ANALYTICS_SOURCE_APPS,
+  SPEECH_SURFACES,
   AnalyticsClientEvent,
   AnalyticsEventName,
   AnalyticsScreen,
   AnalyticsSourceApp,
+  SpeechSurface,
 } from './types';
 import { isValidVisitorId } from './visitorId';
 
 const EVENT_NAME_SET = new Set<string>(ANALYTICS_EVENT_NAMES);
 const SOURCE_APP_SET = new Set<string>(ANALYTICS_SOURCE_APPS);
 const CTA_INTENT_SET = new Set<string>(CTA_INTENTS);
+const SPEECH_SURFACE_SET = new Set<string>(SPEECH_SURFACES);
 
 const clip = (value: unknown, max: number): string => {
   if (typeof value !== 'string') return '';
@@ -113,6 +116,9 @@ export const validateClientEvent = (input: unknown): AnalyticsClientEvent | null
   if (referrerHost) event.referrerHost = referrerHost;
   const conversationId = clip(record.conversationId, MAX_EVENT_STRING.conversationId);
   if (conversationId) event.conversationId = conversationId;
+
+  const speechSurface = clip(record.speechSurface, MAX_EVENT_STRING.speechSurface);
+  if (SPEECH_SURFACE_SET.has(speechSurface)) event.speechSurface = speechSurface as SpeechSurface;
 
   return event;
 };

@@ -12,6 +12,7 @@ import path from 'node:path';
 import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PROJECT_ID, readServiceAccount, webAppRoot } from './firebaseEnv.mjs';
+import { fetchSearchConsoleInsights } from './fetchSearchConsole.mjs';
 
 const VISITORS = 'customAnalyticsVisitors';
 const EVENTS = 'customAnalyticsEvents';
@@ -87,6 +88,7 @@ const flagsFromEvents = (events) => {
     quiz: false,
     practice: false,
     conversation: false,
+    speech: false,
     paywall: false,
     checkout: false,
     clickedQuizCta: false,
@@ -99,6 +101,7 @@ const flagsFromEvents = (events) => {
     if (pathLooksLikeQuiz(event.path)) flags.quiz = true;
     if (pathLooksLikePractice(event.path)) flags.practice = true;
     if (event.name === 'conversation_start') flags.conversation = true;
+    if (event.name === 'speech_start' || event.name === 'conversation_start') flags.speech = true;
     if (event.name === 'paywall_view' || event.name === 'checkout_start') flags.paywall = true;
     if (event.name === 'checkout_start') flags.checkout = true;
     if (event.sourceApp === 'landing' && event.ctaIntent === 'quiz') flags.clickedQuizCta = true;
@@ -114,6 +117,7 @@ const emptyFunnel = () => ({
   quiz: 0,
   practice: 0,
   conversation: 0,
+  speech: 0,
   paywall: 0,
   checkout: 0,
 });
@@ -125,29 +129,10 @@ const addFlagsToFunnel = (funnel, flags) => {
   if (flags.quiz) funnel.quiz += 1;
   if (flags.practice) funnel.practice += 1;
   if (flags.conversation) funnel.conversation += 1;
+  if (flags.speech) funnel.speech += 1;
   if (flags.paywall) funnel.paywall += 1;
   if (flags.checkout) funnel.checkout += 1;
 };
-
-const argValue = (flag) => {
-  const args = process.argv.slice(2);
-  const eq = args.find((arg) => arg.startsWith(`${flag}=`));
-  if (eq) return eq.slice(flag.length + 1);
-  const index = args.indexOf(flag);
-  if (index >= 0) return args[index + 1];
-  return null;
-};
-
-const dayKey = argValue('--day') || new Date().toISOString().slice(0, 10);
-
-const start = new Date(`${dayKey}T00:00:00.000Z`);
-const end = new Date(`${dayKey}T23:59:59.999Z`);
-if (Number.isNaN(start.getTime())) {
-  throw new Error(`Invalid --day ${dayKey}. Use YYYY-MM-DD.`);
-}
-
-const fromIso = start.toISOString();
-const toIso = end.toISOString();
 
 const serviceAccount = readServiceAccount();
 const app = initializeApp(
@@ -237,6 +222,7 @@ const quizCtaIds = [];
 const signInCtaIds = [];
 const conversationStartPaths = [];
 const pathBeforeSpeak = [];
+const speechSurfaces = [];
 const durationMaxByVisitorPath = new Map();
 let paywallViews = 0;
 let checkoutStarts = 0;
@@ -303,6 +289,9 @@ for (const events of Object.values(eventsByVisitorId)) {
       conversationStartPaths.push(eventPath || '(unknown)');
       pathBeforeSpeak.push(lastPagePath || eventPath || '(unknown)');
     }
+    if (event.name === 'speech_start') {
+      speechSurfaces.push(event.speechSurface || 'unknown');
+    }
   }
   for (const [eventPath, durationMs] of maxDuration) {
     const current = durationMaxByVisitorPath.get(eventPath) || { sum: 0, count: 0 };
@@ -347,6 +336,7 @@ const payload = {
     checkoutStarts,
     conversationStartPaths: countBy(conversationStartPaths),
     pathBeforeSpeak: countBy(pathBeforeSpeak),
+    speechSurfaces: countBy(speechSurfaces),
     durationByPath: [...durationMaxByVisitorPath.entries()]
       .map(([eventPath, value]) => ({
         path: eventPath,
@@ -366,6 +356,7 @@ const payload = {
   })),
   visitors,
   eventsByVisitorId,
+  searchConsole: await fetchSearchConsoleInsights(serviceAccount),
 };
 
 fs.writeFileSync(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`);
