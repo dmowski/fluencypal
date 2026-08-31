@@ -22,6 +22,7 @@ export interface AudioPlayIconProps {
   color?: string;
   opacity?: number;
   autoPlay?: boolean;
+  maxInputLength?: number;
 }
 
 export const AudioPlayIcon = ({
@@ -36,6 +37,7 @@ export const AudioPlayIcon = ({
   color,
   opacity = 0.7,
   autoPlay = false,
+  maxInputLength,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -95,6 +97,7 @@ export const AudioPlayIcon = ({
           voice: customVoice,
           instructions: customInstructions,
           cache: cache ?? false,
+          maxInputLength,
         });
       } else {
         const isSingleWord = !processedText.includes(' ');
@@ -111,6 +114,7 @@ export const AudioPlayIcon = ({
             ...speakOptionsMain,
             cache: isSingleWord || (cache ?? false),
             regenerateCache: isNeedToRegenerate,
+            maxInputLength,
           });
         }
       }

@@ -41,7 +41,12 @@ export type SpeakOptions = {
   audioUrl?: string;
   cache?: boolean;
   regenerateCache?: boolean;
+  /** Defaults to 600. Lesson playback uses the OpenAI cap (4096). */
+  maxInputLength?: number;
 };
+
+export const TTS_DEFAULT_MAX_INPUT_CHARS = 600;
+export const OPENAI_TTS_MAX_INPUT_CHARS = 4096;
 
 interface ConversationAudioContextType {
   /** Call from the user's "Start Conversation" button click. */
@@ -685,7 +690,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
   }, []);
 
   const generateTtsStreamUrl = (text: string, opts: SpeakOptions) => {
-    const maxLength = 600;
+    const maxLength = opts.maxInputLength ?? TTS_DEFAULT_MAX_INPUT_CHARS;
     text = text.trim();
     const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
 

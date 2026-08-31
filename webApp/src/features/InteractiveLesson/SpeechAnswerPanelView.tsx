@@ -11,6 +11,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
+import { OPENAI_TTS_MAX_INPUT_CHARS } from '../Audio/useConversationAudio';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -265,7 +266,9 @@ export const SpeechAnswerPanelView = ({
                     '70%': { boxShadow: '0 0 0 10px rgba(37, 99, 235, 0)' },
                     '100%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0)' },
                   },
-                  animation: isFeedbackPlaying ? 'lessonFeedbackPulse 1.4s ease-out infinite' : 'none',
+                  animation: isFeedbackPlaying
+                    ? 'lessonFeedbackPulse 1.4s ease-out infinite'
+                    : 'none',
                 }}
               >
                 <AudioPlayIcon
@@ -273,6 +276,7 @@ export const SpeechAnswerPanelView = ({
                   color="#fff"
                   opacity={1}
                   autoPlay={autoPlayFeedback}
+                  maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}
                   onChangeState={setIsFeedbackPlaying}
                 />
               </Stack>

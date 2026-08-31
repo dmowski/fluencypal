@@ -2,6 +2,7 @@
 
 import { Divider, Stack } from '@mui/material';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
+import { OPENAI_TTS_MAX_INPUT_CHARS } from '@/features/Audio/useConversationAudio';
 import { LessonMarkdown } from './LessonMarkdown';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
@@ -42,7 +43,7 @@ export const LessonPartSection = ({
             alignItems: 'flex-start',
           }}
         >
-          <AudioPlayIcon text={part.contentMD} />
+          <AudioPlayIcon text={part.contentMD} maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS} />
         </Stack>
       </Stack>
       {part.type === 'speech' && (
