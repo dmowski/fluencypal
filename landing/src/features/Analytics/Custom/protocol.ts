@@ -35,10 +35,12 @@ export type LandingParentToIframeMessage =
       source: typeof ANALYTICS_MESSAGE_SOURCE;
       type: 'event';
       event: LandingAnalyticsEvent;
+      visitorId?: string;
     }
   | {
       source: typeof ANALYTICS_MESSAGE_SOURCE;
       type: 'hello';
+      visitorId?: string;
     };
 
 export const getTrackerOrigin = (): string => {
@@ -62,18 +64,23 @@ export const isReadyMessage = (data: unknown): boolean => {
   return record.source === ANALYTICS_MESSAGE_SOURCE && record.type === 'ready';
 };
 
-export const buildEventMessage = (event: LandingAnalyticsEvent): LandingParentToIframeMessage => {
+export const buildEventMessage = (
+  event: LandingAnalyticsEvent,
+  visitorId?: string,
+): LandingParentToIframeMessage => {
   return {
     source: ANALYTICS_MESSAGE_SOURCE,
     type: 'event',
     event,
+    ...(visitorId ? { visitorId } : {}),
   };
 };
 
-export const buildHelloMessage = (): LandingParentToIframeMessage => {
+export const buildHelloMessage = (visitorId?: string): LandingParentToIframeMessage => {
   return {
     source: ANALYTICS_MESSAGE_SOURCE,
     type: 'hello',
+    ...(visitorId ? { visitorId } : {}),
   };
 };
 
@@ -101,9 +108,20 @@ export const isBotBrowser = (): boolean => {
   return BOT_PATTERN.test(navigator.userAgent || '');
 };
 
-export const classifyCta = (input: { href?: string; buttonId?: string; buttonText?: string }) => {
+export const classifyCta = (input: { href?: string; buttonId?: string }) => {
   const buttonId = (input.buttonId || '').trim();
-  const href = (input.href || '').toLowerCase();
+  const rawHref = (input.href || '').trim();
+  let path = '';
+  try {
+    path = rawHref
+      ? /^https?:\/\//i.test(rawHref)
+        ? new URL(rawHref).pathname.toLowerCase()
+        : rawHref.split('?')[0].toLowerCase()
+      : '';
+  } catch {
+    path = rawHref.split('?')[0].toLowerCase();
+  }
+  const hasSegment = (segment: string) => new RegExp(`(^|/)${segment}(/|$)`, 'i').test(path);
   const id = buttonId.toLowerCase();
   if (id.includes('sign-in') || id.includes('signin') || id === 'header-sign-in') {
     return { ctaId: buttonId || 'header-sign-in', ctaIntent: 'signin' as const };
@@ -111,13 +129,13 @@ export const classifyCta = (input: { href?: string; buttonId?: string; buttonTex
   if (id.includes('returning') || id === 'returning-practice') {
     return { ctaId: buttonId || 'returning-practice', ctaIntent: 'signin' as const };
   }
-  if (id.includes('quiz') || href.includes('/quiz')) {
+  if (id.includes('quiz') || hasSegment('quiz')) {
     return { ctaId: buttonId || 'quiz', ctaIntent: 'quiz' as const };
   }
-  if (href.includes('/pricing') || href.includes('/price')) {
+  if (hasSegment('pricing') || hasSegment('price')) {
     return { ctaId: buttonId || 'pricing', ctaIntent: 'pricing' as const };
   }
-  if (href.includes('/practice')) {
+  if (hasSegment('practice')) {
     return { ctaId: buttonId || 'practice', ctaIntent: 'practice' as const };
   }
   return { ctaId: buttonId || 'other', ctaIntent: 'other' as const };

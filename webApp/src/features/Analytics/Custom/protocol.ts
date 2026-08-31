@@ -11,10 +11,12 @@ export type AnalyticsParentToIframeMessage =
       source: typeof ANALYTICS_MESSAGE_SOURCE;
       type: 'event';
       event: AnalyticsClientEvent;
+      visitorId?: string;
     }
   | {
       source: typeof ANALYTICS_MESSAGE_SOURCE;
       type: 'hello';
+      visitorId?: string;
     };
 
 export type AnalyticsIframeToParentMessage = {
@@ -45,18 +47,23 @@ export const isAnalyticsMessage = (
   return record.source === ANALYTICS_MESSAGE_SOURCE && typeof record.type === 'string';
 };
 
-export const buildEventMessage = (event: AnalyticsClientEvent): AnalyticsParentToIframeMessage => {
+export const buildEventMessage = (
+  event: AnalyticsClientEvent,
+  visitorId?: string,
+): AnalyticsParentToIframeMessage => {
   return {
     source: ANALYTICS_MESSAGE_SOURCE,
     type: 'event',
     event,
+    ...(visitorId ? { visitorId } : {}),
   };
 };
 
-export const buildHelloMessage = (): AnalyticsParentToIframeMessage => {
+export const buildHelloMessage = (visitorId?: string): AnalyticsParentToIframeMessage => {
   return {
     source: ANALYTICS_MESSAGE_SOURCE,
     type: 'hello',
+    ...(visitorId ? { visitorId } : {}),
   };
 };
 

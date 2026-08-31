@@ -6,7 +6,7 @@ import { isAllowedAnalyticsOrigin } from './allowedOrigins';
 import { buildReadyMessage, isAnalyticsMessage } from './protocol';
 import { AnalyticsClientEvent, IngestEventRequest, IngestEventResponse } from './types';
 import { createVisitorId, isValidVisitorId } from './visitorId';
-import { validateClientEvent } from './validateEvent';
+import { validateClientEvent, validateVisitorId } from './validateEvent';
 
 const readStoredVisitorId = (): string | null => {
   try {
@@ -58,7 +58,7 @@ const ingestEvent = async (visitorId: string, event: AnalyticsClientEvent): Prom
 
 export function TrackerPage() {
   useEffect(() => {
-    const visitorId = getOrCreateVisitorId();
+    let visitorId = getOrCreateVisitorId();
     const knownParents = new Set<string>();
 
     const replyReady = (origin: string) => {
@@ -80,6 +80,15 @@ export function TrackerPage() {
       if (!isAnalyticsMessage(event.data)) return;
 
       replyReady(event.origin);
+
+      const fromParent =
+        event.data.type === 'event' || event.data.type === 'hello'
+          ? validateVisitorId(event.data.visitorId)
+          : null;
+      if (fromParent) {
+        persistVisitorId(fromParent);
+        visitorId = fromParent;
+      }
 
       if (event.data.type !== 'event') return;
       const validated = validateClientEvent(event.data.event);

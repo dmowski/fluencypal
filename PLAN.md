@@ -2,10 +2,8 @@
 
 General strategy:
 
-- Make my activity daily on FL
-- Post on reddit
-- Redesign landing page
-- Write on twitter
+⭐️ Use app daily.
+⭐️ Build trust. If you have thoughts, write it, post it. Once you have 10 posts, share link on FluencyPal page. Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 ## Advanced Practice
 

@@ -9,6 +9,15 @@ import { isReportableVisitor, shouldPersistAnalyticsEvent } from './isReportable
 import { classifyCta } from './classifyCta';
 import { nextScrollBucket } from './pageEngagement';
 import { parseTraffic } from './parseTraffic';
+import { normalizeAnalyticsPath, stripVisitorIdFromHref, isInternalAnalyticsHost, isInternalAnalyticsPath } from './analyticsPath';
+import {
+  cookieDomainForHost,
+  decorateAppHref,
+  serializeVisitorCookie,
+  visitorIdFromCookieString,
+  visitorIdFromSearch,
+} from './parentVisitorId';
+import { ANALYTICS_VISITOR_QUERY } from './constants';
 
 const baseEvent = (overrides: Partial<AnalyticsClientEvent> = {}): AnalyticsClientEvent => ({
   name: 'page_view',
@@ -91,7 +100,7 @@ describe('isReportableVisitor', () => {
 });
 
 describe('classifyCta', () => {
-  it('maps quiz and header sign-in', () => {
+  it('maps quiz and header sign-in from the element href and id', () => {
     expect(
       classifyCta({ href: 'https://app.fluencypal.com/quiz', buttonId: 'hero-cta' }).ctaIntent,
     ).toBe('quiz');
@@ -99,6 +108,20 @@ describe('classifyCta', () => {
       classifyCta({ href: 'https://app.fluencypal.com/practice', buttonId: 'header-sign-in' })
         .ctaIntent,
     ).toBe('signin');
+  });
+
+  it('does not treat the current page URL or button text as a CTA', () => {
+    expect(classifyCta({ href: '', buttonId: '' }).ctaIntent).toBe('other');
+    expect(
+      classifyCta({
+        href: '',
+        buttonId: '',
+      }).ctaId,
+    ).toBe('other');
+    expect(classifyCta({ href: 'https://app.fluencypal.com/th/quiz' }).ctaIntent).toBe('quiz');
+    expect(classifyCta({ href: 'https://www.fluencypal.com/vi/features/ai-speaking-practice' }).ctaIntent).toBe(
+      'other',
+    );
   });
 });
 
@@ -143,6 +166,22 @@ describe('classifyFunnel', () => {
     expect(lastFunnelStep(spoke)).toBe('reachedConversation');
     expect(lastFunnelStep(paywall)).toBe('reachedPaywall');
     expect(lastFunnelStep(checkout)).toBe('reachedCheckout');
+  });
+
+  it('counts quiz and sign-in CTAs only on landing', () => {
+    const landingQuiz = classifyFunnelFlags(
+      baseEvent({ name: 'click', sourceApp: 'landing', ctaIntent: 'quiz', path: '/' }),
+    );
+    const appQuiz = classifyFunnelFlags(
+      baseEvent({
+        name: 'click',
+        sourceApp: 'webapp' as AnalyticsSourceApp,
+        ctaIntent: 'quiz',
+        path: '/quiz',
+      }),
+    );
+    expect(landingQuiz.clickedQuizCta).toBe(true);
+    expect(appQuiz.clickedQuizCta).toBe(false);
   });
 });
 
@@ -241,5 +280,52 @@ describe('summarizeJourneys', () => {
     expect(summary.funnel.checkout).toBe(0);
     expect(summary.dropOff.map((row) => row.path).sort()).toEqual(['/', '/practice']);
     expect(summary.visitors.map((visitor) => visitor.visitorId)).not.toContain('fpv_crawler');
+  });
+});
+
+describe('normalizeAnalyticsPath', () => {
+  it('keeps quiz step and role play, drops utm and inbox ids', () => {
+    expect(normalizeAnalyticsPath('/th/quiz?currentStep=recordAbout&nativeLang=th')).toBe(
+      '/th/quiz?currentStep=recordAbout',
+    );
+    expect(normalizeAnalyticsPath('/practice?rolePlayId=custom&utm_source=chatgpt.com')).toBe(
+      '/practice?rolePlayId=custom',
+    );
+    expect(normalizeAnalyticsPath('/practice?inbox=true&inboxType=chat')).toBe('/practice');
+    expect(normalizeAnalyticsPath('/?fpv=fpv_11111111-1111-4111-8111-111111111111')).toBe('/');
+  });
+
+  it('flags localhost and testUi as internal', () => {
+    expect(isInternalAnalyticsHost('localhost:3000')).toBe(true);
+    expect(isInternalAnalyticsHost('www.fluencypal.com')).toBe(false);
+    expect(isInternalAnalyticsPath('/testUi')).toBe(true);
+    expect(isInternalAnalyticsPath('/practice')).toBe(false);
+  });
+});
+
+describe('parentVisitorId', () => {
+  const visitorId = 'fpv_11111111-1111-4111-8111-111111111111';
+
+  it('reads the fpv query and first-party cookie', () => {
+    expect(visitorIdFromSearch(`?${ANALYTICS_VISITOR_QUERY}=${visitorId}`)).toBe(visitorId);
+    expect(visitorIdFromCookieString(`fp_vid=${visitorId}; other=1`)).toBe(visitorId);
+    expect(visitorIdFromSearch('?fpv=nope')).toBeNull();
+  });
+
+  it('sets a shared cookie on fluencypal.com and decorates app hrefs only', () => {
+    expect(cookieDomainForHost('www.fluencypal.com')).toBe('.fluencypal.com');
+    expect(cookieDomainForHost('localhost')).toBeNull();
+    expect(serializeVisitorCookie(visitorId, 'www.fluencypal.com', true)).toContain(
+      'Domain=.fluencypal.com',
+    );
+    expect(
+      decorateAppHref('https://app.fluencypal.com/quiz', visitorId),
+    ).toBe(`https://app.fluencypal.com/quiz?fpv=${visitorId}`);
+    expect(decorateAppHref('https://www.fluencypal.com/th', visitorId)).toBe(
+      'https://www.fluencypal.com/th',
+    );
+    expect(
+      stripVisitorIdFromHref(`https://app.fluencypal.com/quiz?fpv=${visitorId}`, ANALYTICS_VISITOR_QUERY),
+    ).toBe('https://app.fluencypal.com/quiz');
   });
 });

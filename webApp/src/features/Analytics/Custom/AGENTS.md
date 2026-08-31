@@ -23,12 +23,12 @@ When the user asks what happened today (or similar):
 4. Reply with this short report:
 
 ```
-Today (YYYY-MM-DD)
-- Visitors: N (bots excluded)
-- Funnel: landing → app → quiz → practice → spoke → paywall → checkout
-- Landing: avg time, scroll 25/50/75/100, first paths
+Today (YYYY-MM-DD)  [UTC]
+- Visitors: N (new / returning; bots + internal excluded)
+- Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-today)
+- Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: quiz vs sign-in (quizCtaIds / signInCtaIds)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds)
 - Path to first speak: pathBeforeSpeak + conversationStartPaths
 - GEO/SEO: countries, languages, referrers, UTM, firstPaths
 - Where they stop: top last paths
@@ -42,24 +42,30 @@ If the export is empty, say so; do not invent traffic.
 
 ## Events
 
-| Event                | When                                | Answers                                                               |
-| -------------------- | ----------------------------------- | --------------------------------------------------------------------- |
-| `page_view`          | Route change                        | Path, UTM, referrer host                                              |
-| `click`              | `a` / `button` / `[data-analytics]` | `ctaId` + `ctaIntent` (`quiz` \| `signin` \| `practice` \| `pricing`) |
-| `scroll_depth`       | 25 / 50 / 75 / 100 on a page        | How deep they scroll                                                  |
-| `page_leave`         | hide / pagehide                     | Time on page (`durationMs`), `maxScrollPct`                           |
-| `identify`           | Signed-in uid                       | Auth                                                                  |
-| `conversation_start` | First message in a conversation     | Real speak, not just /practice                                        |
-| `paywall_view`       | Subscription modal opens            | Saw paywall                                                           |
-| `checkout_start`     | Stripe checkout created             | Tried to pay                                                          |
+| Event                | When                                      | Answers                                                               |
+| -------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
+| `page_view`          | Route change                              | Path, UTM, referrer host                                              |
+| `click`              | `a` / `button` / `[data-analytics]`       | `ctaId` + `ctaIntent` from **element id/href only** (never page URL)  |
+| `scroll_depth`       | 25 / 50 / 75 / 100 on a page              | How deep they scroll                                                  |
+| `page_leave`         | hide / pagehide                           | Visible time on page (`durationMs`), `maxScrollPct`                   |
+| `identify`           | Signed-in uid (once per uid)              | Auth                                                                  |
+| `conversation_start` | First **user** message in a conversation  | Real speak, not the AI greeting and not just /practice                |
+| `paywall_view`       | Subscription modal opens                  | Saw paywall                                                           |
+| `checkout_start`     | Stripe checkout created                   | Tried to pay                                                          |
 
-Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation`.
+Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation`. CTA flags are set only from **landing** clicks.
 
 Country comes from `x-vercel-ip-country` / `cf-ipcountry` on ingest (not stored IP).
 
 Bots (UA + `navigator.webdriver`) are dropped and never written. A lone `page_view` with no click, scroll, leave, or identify is not persisted (and is excluded from reports if already stored).
 
-CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-works-quiz`. Href still classifies `/quiz` vs `/practice`.
+CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-works-quiz`. Href still classifies `/quiz` vs `/practice` **on the clicked element**, not the current page.
+
+Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and appends `?fpv=` on app links so landing → app is one visitor (iframe storage is partitioned). The tracker prefers the parent visitor id.
+
+Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions` and drop UTM, inbox ids, and `fpv`.
+
+Export (`pnpm analytics:export`) is a **UTC day**. Funnel and CTAs are computed from that day's events (not lifetime visitor flags). Use `funnelNew` for first-seen-today visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped.
 
 ## Architecture
 

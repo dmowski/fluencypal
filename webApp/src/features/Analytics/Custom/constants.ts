@@ -1,5 +1,7 @@
 export const ANALYTICS_MESSAGE_SOURCE = 'fp-custom-analytics';
 export const ANALYTICS_VISITOR_STORAGE_KEY = 'fp_custom_analytics_visitor_id';
+export const ANALYTICS_VISITOR_COOKIE = 'fp_vid';
+export const ANALYTICS_VISITOR_QUERY = 'fpv';
 export const ANALYTICS_TRACKER_PATH = '/analytics/tracker';
 export const PRODUCTION_APP_ORIGIN = 'https://app.fluencypal.com';
 export const LOCAL_APP_ORIGIN = 'http://localhost:3000';

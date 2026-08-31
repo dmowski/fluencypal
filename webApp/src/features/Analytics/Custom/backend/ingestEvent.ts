@@ -1,6 +1,8 @@
 import { FieldValue } from 'firebase-admin/firestore';
 import { getDB } from '@/app/api/config/firebase';
 import { parseBrowserInfo } from '@/features/Analytics/AdminStats/parseBrowserInfo';
+import { ANALYTICS_VISITOR_QUERY } from '../constants';
+import { normalizeAnalyticsPath, stripVisitorIdFromHref } from '../analyticsPath';
 import { classifyFunnelFlags, mergeFunnelFlags, visitorFunnelFlags } from '../classifyFunnel';
 import { shouldPersistAnalyticsEvent } from '../isReportableVisitor';
 import { AnalyticsClientEvent, AnalyticsEventDoc, AnalyticsVisitorDoc } from '../types';
@@ -67,8 +69,10 @@ export const ingestAnalyticsEvent = async (input: {
   const createdAtIso = now.toISOString();
   const createdAtMs = now.getTime();
   const { browserName, os } = parseBrowserInfo(input.userAgent);
-  const host = hostFromHref(input.event.href);
-  const flags = classifyFunnelFlags(input.event);
+  const path = normalizeAnalyticsPath(input.event.path);
+  const href = stripVisitorIdFromHref(input.event.href, ANALYTICS_VISITOR_QUERY);
+  const host = hostFromHref(href);
+  const flags = classifyFunnelFlags({ ...input.event, path });
   const eventId = `${input.visitorId}_${createdAtMs}_${Math.random().toString(36).slice(2, 8)}`;
   const country = input.country || null;
 
@@ -77,8 +81,8 @@ export const ingestAnalyticsEvent = async (input: {
     authUserId: input.event.authUserId || null,
     name: input.event.name,
     sourceApp: input.event.sourceApp,
-    path: input.event.path,
-    href: input.event.href,
+    path,
+    href,
     title: input.event.title,
     referrer: input.event.referrer,
     host,
@@ -131,8 +135,8 @@ export const ingestAnalyticsEvent = async (input: {
       visitorId: input.visitorId,
       createdAtIso,
       lastSeenAtIso: createdAtIso,
-      firstPath: input.event.path,
-      lastPath: input.event.path,
+      firstPath: path,
+      lastPath: path,
       lastEventName: input.event.name,
       lastHost: host,
       firstHost: host,
@@ -162,7 +166,7 @@ export const ingestAnalyticsEvent = async (input: {
     const merged = mergeFunnelFlags(visitorFunnelFlags(previous), flags);
     batch.update(visitorRef, {
       lastSeenAtIso: createdAtIso,
-      lastPath: input.event.path,
+      lastPath: path,
       lastEventName: input.event.name,
       lastHost: host,
       lastSourceApp: input.event.sourceApp,

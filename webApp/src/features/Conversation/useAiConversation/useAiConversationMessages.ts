@@ -26,18 +26,20 @@ export const useAiConversationMessages = () => {
 
   const isStartedAnalyticLogged = useRef(false);
 
-  // Analytics
+  // Analytics: first user message, not the AI greeting.
   useEffect(() => {
-    if (!conversationId || conversation.length === 0) return;
+    if (!conversationId || isStartedAnalyticLogged.current) return;
+    const hasUserSpeech = conversation.some(
+      (message) => !message.isBot && Boolean(message.text?.trim()),
+    );
+    if (!hasUserSpeech) return;
     activateAnalyticUser();
-    if (conversation.length === 1 && conversationId && isStartedAnalyticLogged.current === false) {
-      conversationStarted(conversationId);
-      sendAnalyticsEvent({
-        name: 'conversation_start',
-        conversationId,
-      });
-      isStartedAnalyticLogged.current = true;
-    }
+    conversationStarted(conversationId);
+    sendAnalyticsEvent({
+      name: 'conversation_start',
+      conversationId,
+    });
+    isStartedAnalyticLogged.current = true;
   }, [conversation, conversationId]);
 
   // Sync with DB

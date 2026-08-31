@@ -32,8 +32,8 @@ export const classifyFunnelFlags = (event: AnalyticsClientEvent): FunnelFlags =>
     reachedConversation: event.name === 'conversation_start',
     reachedPaywall: event.name === 'paywall_view' || event.name === 'checkout_start',
     reachedCheckout: event.name === 'checkout_start',
-    clickedQuizCta: event.ctaIntent === 'quiz',
-    clickedSignInCta: event.ctaIntent === 'signin',
+    clickedQuizCta: event.sourceApp === 'landing' && event.ctaIntent === 'quiz',
+    clickedSignInCta: event.sourceApp === 'landing' && event.ctaIntent === 'signin',
   };
 };
 

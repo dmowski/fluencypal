@@ -17,6 +17,7 @@ import {
   nextScrollBucket,
   parseTraffic,
 } from './protocol';
+import { decorateAppHref, getOrCreateParentVisitorId } from './parentVisitorId';
 
 const iframeStyle: React.CSSProperties = {
   position: 'absolute',
@@ -67,31 +68,42 @@ export function CustomAnalyticsHost() {
   const maxScrollRef = useRef(0);
   const pageStartedAtRef = useRef(Date.now());
   const leaveSentAtRef = useRef(0);
+  const visitorIdRef = useRef('');
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
   const skip = isBotBrowser();
 
+  const ensureVisitorId = (): string => {
+    if (!visitorIdRef.current) {
+      visitorIdRef.current = getOrCreateParentVisitorId();
+    }
+    return visitorIdRef.current;
+  };
+
   useEffect(() => {
     if (skip) return;
+    ensureVisitorId();
     setMountNode(document.body);
   }, [skip]);
 
   const postEvent = (event: LandingAnalyticsEvent) => {
     if (skip) return;
+    const visitorId = ensureVisitorId();
     const frame = iframeRef.current?.contentWindow;
     if (!frame || !readyRef.current) {
       queueRef.current.push(event);
       return;
     }
-    frame.postMessage(buildEventMessage(event), getTrackerOrigin());
+    frame.postMessage(buildEventMessage(event, visitorId), getTrackerOrigin());
   };
 
   const flush = () => {
     const frame = iframeRef.current?.contentWindow;
     if (!frame || !readyRef.current) return;
+    const visitorId = ensureVisitorId();
     while (queueRef.current.length > 0) {
       const next = queueRef.current.shift();
       if (next) {
-        frame.postMessage(buildEventMessage(next), getTrackerOrigin());
+        frame.postMessage(buildEventMessage(next, visitorId), getTrackerOrigin());
       }
     }
   };
@@ -134,13 +146,20 @@ export function CustomAnalyticsHost() {
 
   useEffect(() => {
     if (skip) return;
+    const decorateIfAppLink = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return;
+      const anchor = target.closest('a');
+      if (!(anchor instanceof HTMLAnchorElement) || !anchor.href) return;
+      const decorated = decorateAppHref(anchor.href, ensureVisitorId(), window.location.href);
+      if (decorated !== anchor.href) anchor.setAttribute('href', decorated);
+    };
     const onClick = (event: MouseEvent) => {
+      decorateIfAppLink(event.target);
       const meta = readClickMeta(event.target);
       if (!meta) return;
       const cta = classifyCta({
         href: meta.buttonHref,
         buttonId: meta.buttonId,
-        buttonText: meta.buttonText,
       });
       postEvent({
         name: 'click',
@@ -151,7 +170,12 @@ export function CustomAnalyticsHost() {
       });
     };
     document.addEventListener('click', onClick, true);
-    return () => document.removeEventListener('click', onClick, true);
+    const onPointerDown = (event: PointerEvent) => decorateIfAppLink(event.target);
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => {
+      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('pointerdown', onPointerDown, true);
+    };
   }, [skip]);
 
   useEffect(() => {
@@ -185,7 +209,11 @@ export function CustomAnalyticsHost() {
       maxScrollRef.current = Math.max(maxScrollRef.current, current);
     };
     const onVisibility = () => {
-      if (document.visibilityState === 'hidden') emitLeave();
+      if (document.visibilityState === 'hidden') {
+        emitLeave();
+        return;
+      }
+      pageStartedAtRef.current = Date.now();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('visibilitychange', onVisibility);
@@ -200,7 +228,10 @@ export function CustomAnalyticsHost() {
   if (skip || !mountNode) return null;
 
   const onLoad = () => {
-    iframeRef.current?.contentWindow?.postMessage(buildHelloMessage(), getTrackerOrigin());
+    iframeRef.current?.contentWindow?.postMessage(
+      buildHelloMessage(ensureVisitorId()),
+      getTrackerOrigin(),
+    );
   };
 
   return createPortal(

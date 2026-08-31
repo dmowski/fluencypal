@@ -12,6 +12,7 @@ let iframeWindow: Window | null = null;
 let trackerOrigin = PRODUCTION_APP_ORIGIN;
 let isReady = false;
 let authUserId = '';
+let visitorId = '';
 let sourceApp: AnalyticsSourceApp = 'webapp';
 const queue: QueuedMessage[] = [];
 
@@ -24,6 +25,12 @@ export const getAnalyticsAuthUserId = (): string => authUserId;
 export const setAnalyticsSourceApp = (app: AnalyticsSourceApp): void => {
   sourceApp = app;
 };
+
+export const setAnalyticsVisitorId = (id: string): void => {
+  visitorId = id;
+};
+
+export const getAnalyticsVisitorId = (): string => visitorId;
 
 export const attachAnalyticsIframe = (contentWindow: Window | null): void => {
   iframeWindow = contentWindow;
@@ -39,6 +46,7 @@ export const resetAnalyticsBridgeForTests = (): void => {
   iframeWindow = null;
   isReady = false;
   authUserId = '';
+  visitorId = '';
   sourceApp = 'webapp';
   queue.length = 0;
 };
@@ -73,9 +81,8 @@ export const sendAnalyticsEvent = (
   const cta =
     partial.name === 'click'
       ? classifyCta({
-          href: partial.buttonHref || href,
+          href: partial.buttonHref || '',
           buttonId: partial.buttonId,
-          buttonText: partial.buttonText,
         })
       : null;
 
@@ -110,7 +117,7 @@ export const sendAnalyticsEvent = (
   });
 
   if (!event) return;
-  postToIframe(buildEventMessage(event));
+  postToIframe(buildEventMessage(event, visitorId || undefined));
 };
 
 export const isCustomAnalyticsReadyMessage = (data: unknown): boolean => {

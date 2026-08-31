@@ -9,6 +9,7 @@ import {
   markAnalyticsIframeReady,
   sendAnalyticsEvent,
   setAnalyticsSourceApp,
+  setAnalyticsVisitorId,
   isCustomAnalyticsReadyMessage,
 } from './sendAnalyticsEvent';
 import { buildHelloMessage, getTrackerOrigin, getTrackerUrl } from './protocol';
@@ -16,6 +17,7 @@ import { AnalyticsSourceApp } from './types';
 import { isAllowedAnalyticsOrigin } from './allowedOrigins';
 import { isBotBrowser } from './isBotUserAgent';
 import { currentScrollPercent, nextScrollBucket } from './pageEngagement';
+import { getOrCreateParentVisitorId } from './parentVisitorId';
 
 const iframeStyle: React.CSSProperties = {
   position: 'absolute',
@@ -57,10 +59,18 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
   const maxScrollRef = useRef(0);
   const pageStartedAtRef = useRef(Date.now());
   const leaveSentAtRef = useRef(0);
+  const visitorIdRef = useRef('');
 
   useEffect(() => {
     setMountNode(document.body);
   }, []);
+
+  useEffect(() => {
+    if (skip) return;
+    const visitorId = getOrCreateParentVisitorId();
+    visitorIdRef.current = visitorId;
+    setAnalyticsVisitorId(visitorId);
+  }, [skip]);
 
   useEffect(() => {
     setAnalyticsSourceApp(sourceApp);
@@ -153,7 +163,11 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
       maxScrollRef.current = Math.max(maxScrollRef.current, current);
     };
     const onVisibility = () => {
-      if (document.visibilityState === 'hidden') emitLeave();
+      if (document.visibilityState === 'hidden') {
+        emitLeave();
+        return;
+      }
+      pageStartedAtRef.current = Date.now();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('visibilitychange', onVisibility);
@@ -169,7 +183,10 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
 
   const onLoad = () => {
     attachAnalyticsIframe(iframeRef.current?.contentWindow || null);
-    iframeRef.current?.contentWindow?.postMessage(buildHelloMessage(), getTrackerOrigin());
+    iframeRef.current?.contentWindow?.postMessage(
+      buildHelloMessage(visitorIdRef.current),
+      getTrackerOrigin(),
+    );
   };
 
   return createPortal(

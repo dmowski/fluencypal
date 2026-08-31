@@ -6,6 +6,7 @@ Log every product change made because of custom analytics. This stops repeating 
 | ---------- | ------------------------ | ------------------------------------------------------------------------------------- | -------------------------------------- | ------- | ------ |
 | 2026-08-28 | Baseline instrumentation | Scroll, time-on-landing, CTA intent, conversation_start, paywall, bot filter, GEO/UTM | Funnel + landing duration + CTA clicks | shipped | —      |
 | 2026-08-29 | Crawler page_views look like Chrome and poison practice→speak | Do not persist first `page_view` until click/scroll/leave/identify; hide lone page_view visitors from reports | Share of practice visitors with eventCount=1 | shipped | —      |
+| 2026-08-31 | Landing→app visits split; CTA counts were every in-app click; duration/scroll/funnel mixed lifetime data | First-party visitor id + `fpv` handoff; CTA from element only; visible-time leaves; UTC day-scoped export | Share of landing visitors who also `reachedApp` on the same id; landing CTA counts | shipped | —      |
 
 Status: `proposed` → `shipped` → `measured` → `keep` / `reverted`.
 

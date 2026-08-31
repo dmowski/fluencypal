@@ -39,8 +39,12 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
     setIsInitialized(true);
   }, [auth.uid]);
 
+  const identifiedUidRef = useRef('');
+
   useEffect(() => {
     if (!auth.uid) return;
+    if (identifiedUidRef.current === auth.uid) return;
+    identifiedUidRef.current = auth.uid;
     setAnalyticsAuthUserId(auth.uid);
     sendAnalyticsEvent({
       name: 'identify',
