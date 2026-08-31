@@ -11,6 +11,7 @@ export const LessonPartSection = ({
   partIndex,
   isEvaluating,
   isOpenTalk,
+  isReadAloud,
   onPrepareSpeechAudio,
   onSubmitSpeech,
 }: {
@@ -18,6 +19,7 @@ export const LessonPartSection = ({
   partIndex: number;
   isEvaluating: boolean;
   isOpenTalk: boolean;
+  isReadAloud?: boolean;
   onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
@@ -34,16 +36,14 @@ export const LessonPartSection = ({
         <Stack sx={{}}>
           <LessonMarkdown content={part.contentMD} />
         </Stack>
-        {part.type === 'read' && (
-          <Stack
-            data-testid="interactive-lesson-read-play"
-            sx={{
-              alignItems: 'flex-start',
-            }}
-          >
-            <AudioPlayIcon text={part.contentMD} cache />
-          </Stack>
-        )}
+        <Stack
+          data-testid="interactive-lesson-read-play"
+          sx={{
+            alignItems: 'flex-start',
+          }}
+        >
+          <AudioPlayIcon text={part.contentMD} cache />
+        </Stack>
       </Stack>
       {part.type === 'speech' && (
         <SpeechAnswerPanel
@@ -51,6 +51,7 @@ export const LessonPartSection = ({
           partIndex={partIndex}
           isEvaluating={isEvaluating}
           isOpenTalk={isOpenTalk}
+          isReadAloud={isReadAloud}
           onAudioReady={(blob) => onPrepareSpeechAudio(partIndex, blob)}
           onSubmit={(transcript, blob) => onSubmitSpeech(partIndex, transcript, blob)}
         />

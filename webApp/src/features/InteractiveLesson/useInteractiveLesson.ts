@@ -41,6 +41,7 @@ import {
   InteractiveLesson,
   InteractiveLessonStore,
   isOpenTalkPart,
+  isReadAloudPart,
   LessonGenerationContext,
 } from './types';
 import { USER_LESSON_ERROR } from './lessonErrors';
@@ -302,6 +303,7 @@ const useProvideInteractiveLesson = () => {
           targetLanguageCode,
           nativeLanguageCode,
           isOpenTalk: isOpenTalkPart(lesson.parts, partIndex),
+          isReadAloud: isReadAloudPart(lesson.parts, partIndex),
         }),
       ]);
       pendingAudioUploads.current.delete(partIndex);

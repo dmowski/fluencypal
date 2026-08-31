@@ -25,6 +25,7 @@ export interface SpeechAnswerPanelViewProps {
   visualizer: ReactNode;
   needMoreText: boolean;
   isOpenTalk?: boolean;
+  isReadAloud?: boolean;
   autoPlayFeedback?: boolean;
   onToggleRecord: () => void;
   onCancelRecord: () => void;
@@ -43,6 +44,7 @@ export const SpeechAnswerPanelView = ({
   visualizer,
   needMoreText,
   isOpenTalk,
+  isReadAloud,
   autoPlayFeedback = false,
   onToggleRecord,
   onCancelRecord,
@@ -63,6 +65,11 @@ export const SpeechAnswerPanelView = ({
           </Typography>
         )}
 
+        {isReadAloud && !answered && (
+          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+            {i18n._('Read the text aloud. You can play it first.')}
+          </Typography>
+        )}
         {isOpenTalk && !answered && (
           <Typography variant="body2" sx={{ opacity: 0.8 }}>
             {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
@@ -95,8 +102,12 @@ export const SpeechAnswerPanelView = ({
             {isRecording
               ? i18n._('Stop')
               : answered
-                ? i18n._('Answer again')
-                : i18n._('Record answer')}
+                ? isReadAloud
+                  ? i18n._('Read again')
+                  : i18n._('Answer again')
+                : isReadAloud
+                  ? i18n._('Read aloud')
+                  : i18n._('Record answer')}
           </Button>
 
           {isTranscribing && (
@@ -161,7 +172,9 @@ export const SpeechAnswerPanelView = ({
           <Typography variant="caption" sx={{ color: '#ff8e86' }}>
             {isOpenTalk
               ? i18n._('Please talk a bit longer — aim for about two minutes.')
-              : i18n._('Please record a longer answer — a few words is enough.')}
+              : isReadAloud
+                ? i18n._('Please read more of the text.')
+                : i18n._('Please record a longer answer — a few words is enough.')}
           </Typography>
         )}
       </Stack>
@@ -192,7 +205,7 @@ export const SpeechAnswerPanelView = ({
             >
               <Stack>
                 <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                  {i18n._('Your answer')}
+                  {isReadAloud ? i18n._('Your reading') : i18n._('Your answer')}
                 </Typography>
                 <Typography
                   variant="body1"

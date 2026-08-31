@@ -5,6 +5,12 @@ export const FIXTURE_READ_PART = {
   contentMD: 'Use the past simple for finished actions. Example: I visited my friend yesterday.',
 };
 
+export const FIXTURE_READ_ALOUD_PART = {
+  type: 'speech' as const,
+  contentMD:
+    'Read this text aloud.\n\nYesterday I visited my friend. We walked in the park and talked about work.',
+};
+
 export const FIXTURE_SPEECH_PART = {
   type: 'speech' as const,
   contentMD: 'Say what you did yesterday in two sentences.',
@@ -23,7 +29,7 @@ export const FIXTURE_LESSON: InteractiveLesson = {
   subTitle: 'Talk about yesterday',
   createdAtIso: '2026-08-29T10:00:00.000Z',
   completedAtIso: null,
-  parts: [FIXTURE_READ_PART, FIXTURE_SPEECH_PART, FIXTURE_ANSWERED_SPEECH_PART],
+  parts: [FIXTURE_READ_PART, FIXTURE_READ_ALOUD_PART, FIXTURE_ANSWERED_SPEECH_PART],
   lessonResults: null,
 };
 

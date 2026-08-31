@@ -77,3 +77,8 @@ export const isLessonPartWithAnswer = (
 export const isOpenTalkPart = (parts: LessonPartState[], partIndex: number): boolean => {
   return parts[partIndex]?.type === 'speech' && partIndex === parts.length - 1;
 };
+
+export const isReadAloudPart = (parts: LessonPartState[], partIndex: number): boolean => {
+  if (isOpenTalkPart(parts, partIndex)) return false;
+  return partIndex === 1 && parts[1]?.type === 'speech';
+};

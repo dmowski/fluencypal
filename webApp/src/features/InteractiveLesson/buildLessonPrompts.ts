@@ -6,7 +6,7 @@ const lessonShape = `Return JSON:
   "title": "3-5 words that name the language point, not the topic",
   "subTitle": "5-7 words: the form they must use",
   "parts": [
-    { "contentMD": "markdown the learner reads", "type": "read" | "speech" }
+    { "contentMD": "markdown the learner reads or reads aloud", "type": "read" | "speech" }
   ]
 }`;
 
@@ -27,11 +27,20 @@ Title and first read part must name that form. Bad: "Talk about your project cle
 Good: "Articles with unique nouns" / "Use **the** with one specific thing".
 
 Typical flow:
-- Read: the one rule, with 2-4 real example phrases (bold the target form)
-- Read: a short text that uses the form several times
-- Speech: invite them to use the form (they may add extra sentences)
-- Speech: fix or contrast a wrong version
-- Speech: translate a native sentence that needs the form
+- FIRST part (required): type "read". Teach HOW to use the form in real speech.
+  Write 4-5 short paragraphs (not 1-2). Simple words. Each paragraph 2-4 sentences.
+  Cover: what the form does, when to use it, when not to, then 3-5 real example
+  phrases with the form in **bold**. Walk through at least one example like a
+  teacher: "If you say X, it means … If you say Y, it means …".
+  You MAY add a short native-language gloss or comparison when it makes the rule
+  clearer (one line or a short sentence, not a full translation of the lesson).
+  Most of the text stays in the TARGET language.
+- SECOND part (required): type "speech". A short text the learner must READ ALOUD
+  (about 6-10 sentences, or 2 short paragraphs). Use the form several times.
+  Start with one line: tell them to read the text aloud. Then the text itself.
+  No question, no "say one sentence of your own" here.
+- Then more speech: invite them to use the form (they may add extra sentences);
+  fix or contrast a wrong version; translate a native sentence that needs the form.
 - LAST part (required): an open talk. type must be "speech". Ask them to speak
   for 2-3 minutes on a concrete, everyday or slightly random topic (a recent day,
   a person, a place, a plan, a story). One inviting question, not a quiz item,
@@ -40,9 +49,10 @@ Typical flow:
 
 Form-check speech prompts stay short (15-40 seconds) and invite the form.
 Do not write "only one sentence" or "nothing else" — extra talk is welcome.
-The last part is the only long one.
-Write learner-facing content in the TARGET language unless translating FROM native
-(then put the source sentence in the native language).
+The last part is the only long free-talk. The second part is read-aloud, not free talk.
+Write learner-facing content in the TARGET language unless a native-language hint
+helps the rule, or you are translating FROM native (then put the source sentence
+in the native language).
 Do not mention that you are an AI or that this is JSON.`;
 
 export const buildLessonSystemPrompt = (params: {
@@ -99,7 +109,8 @@ ${context.userGoalText}`;
 
   return `The learner has no conversation history and no saved goal.
 Create a solid middle-level (CEFR B1) lesson for the target language around ONE form
-(e.g. past simple + time phrase, or a/the with unique nouns): short rule, example text, then voice tasks that force that form.
+(e.g. past simple + time phrase, or a/the with unique nouns): a 4-5 paragraph how-to
+explanation, a short text to read aloud, then voice tasks that force that form.
 The last part must be a 2-3 minute open talk on a simple everyday topic.
 
 ${banned}`;
@@ -128,6 +139,7 @@ export const buildSpeechFeedbackSystemPrompt = (params: {
   targetLanguageName: string;
   nativeLanguageName: string;
   isOpenTalk?: boolean;
+  isReadAloud?: boolean;
 }): string => {
   if (params.isOpenTalk) {
     return `You react to a 2-3 minute open talk in a language lesson.
@@ -142,6 +154,22 @@ Rules:
 - Markdown is allowed: bold the key phrase or correction.
 Use the target language if the learner is intermediate+, otherwise mix target + a short native-language hint.
 Return JSON: { "aiResultToUser": "short markdown, 2-4 sentences" }`;
+  }
+
+  if (params.isReadAloud) {
+    return `You check a read-aloud in a language lesson.
+Target language: ${params.targetLanguageName}.
+Native language: ${params.nativeLanguageName}.
+The learner had to read the given text aloud, not invent a new answer.
+Write short feedback the learner will read.
+Rules:
+- 1-3 short sentences. No greeting, no recap of the whole passage.
+- If they read most of the text, treat it as done. Small slips are OK.
+- Comment on whether they said the target form clearly. Bold one good phrase.
+- If they skipped a large part of the text, ask them to read the full passage.
+- Do NOT mark it wrong because they did not add extra sentences of their own.
+Use the target language if the learner is intermediate+, otherwise mix target + a short native-language hint.
+Return JSON: { "aiResultToUser": "short markdown, 1-3 sentences" }`;
   }
 
   return `You check one spoken answer in a language lesson.
@@ -168,7 +196,18 @@ Return JSON: { "aiResultToUser": "short markdown, 1-2 sentences" }`;
 export const buildSpeechFeedbackUserPrompt = (params: {
   partContentMD: string;
   userVoiceTranscript: string;
+  isReadAloud?: boolean;
 }): string => {
+  if (params.isReadAloud) {
+    return `The learner was asked to read this text aloud:
+${params.partContentMD}
+
+Transcript of what they said:
+${params.userVoiceTranscript}
+
+Compare the transcript to the passage. They should read it, not invent a new answer.`;
+  }
+
   return `Task shown to the learner:
 ${params.partContentMD}
 

@@ -12,6 +12,12 @@ export const generatedLessonSchema = z.object({
     )
     .min(3)
     .max(12)
+    .refine((parts) => parts[0]?.type === 'read', {
+      message: 'The first part must be a read explanation',
+    })
+    .refine((parts) => parts[1]?.type === 'speech', {
+      message: 'The second part must be a read-aloud speech task',
+    })
     .refine((parts) => parts[parts.length - 1]?.type === 'speech', {
       message: 'The last part must be an open speech task',
     }),

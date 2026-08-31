@@ -250,7 +250,11 @@ test('lesson modal shows done and skip for an in-progress lesson', async () => {
   await expect.element(page.getByTestId('interactive-lesson-done')).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Finish lesson' })).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-skip')).toBeVisible();
-  await expect.element(page.getByTestId('interactive-lesson-read-play')).toBeVisible();
+  await expect
+    .element(page.getByTestId('interactive-lesson-part-0').getByTestId('interactive-lesson-read-play'))
+    .toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Read aloud' })).toBeVisible();
+  await expect.element(page.getByText('Read the text aloud. You can play it first.')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-modal'))
     .toMatchScreenshot('modal-in-progress');

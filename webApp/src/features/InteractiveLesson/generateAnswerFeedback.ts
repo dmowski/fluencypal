@@ -12,16 +12,19 @@ export const generateSpeechAnswerFeedback = async (params: {
   targetLanguageCode: SupportedLanguage;
   nativeLanguageCode: NativeLangCode;
   isOpenTalk?: boolean;
+  isReadAloud?: boolean;
 }): Promise<string> => {
   const { parsed } = await params.textAi.generateStrictJson({
     systemMessage: buildSpeechFeedbackSystemPrompt({
       targetLanguageName: fullEnglishLanguageName[params.targetLanguageCode] || 'English',
       nativeLanguageName: params.nativeLanguageCode,
       isOpenTalk: params.isOpenTalk,
+      isReadAloud: params.isReadAloud,
     }),
     userMessage: buildSpeechFeedbackUserPrompt({
       partContentMD: params.partContentMD,
       userVoiceTranscript: params.userVoiceTranscript,
+      isReadAloud: params.isReadAloud,
     }),
     model: LESSON_AI_MODEL,
     cache: false,

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
-import { OPEN_TALK_MIN_CHARS } from './constants';
+import { OPEN_TALK_MIN_CHARS, READ_ALOUD_MIN_CHARS } from './constants';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 
 export { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
@@ -15,6 +15,7 @@ export const SpeechAnswerPanel = ({
   partIndex,
   isEvaluating,
   isOpenTalk = false,
+  isReadAloud = false,
   onAudioReady,
   onSubmit,
 }: {
@@ -22,6 +23,7 @@ export const SpeechAnswerPanel = ({
   partIndex: number;
   isEvaluating: boolean;
   isOpenTalk?: boolean;
+  isReadAloud?: boolean;
   onAudioReady: (blob: Blob) => void;
   onSubmit: (transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
@@ -30,7 +32,7 @@ export const SpeechAnswerPanel = ({
   const submittedRef = useRef('');
   const cancelledRef = useRef(false);
   const [autoPlayFeedback, setAutoPlayFeedback] = useState(false);
-  const minChars = isOpenTalk ? OPEN_TALK_MIN_CHARS : 4;
+  const minChars = isOpenTalk ? OPEN_TALK_MIN_CHARS : isReadAloud ? READ_ALOUD_MIN_CHARS : 4;
   const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < minChars;
 
   useEffect(() => {
@@ -78,6 +80,7 @@ export const SpeechAnswerPanel = ({
       visualizer={recorder.visualizerComponent}
       needMoreText={needMoreText}
       isOpenTalk={isOpenTalk}
+      isReadAloud={isReadAloud}
       autoPlayFeedback={autoPlayFeedback}
       onToggleRecord={() => {
         void conversationAudio.initAudio();
