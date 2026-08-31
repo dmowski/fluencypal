@@ -33,7 +33,7 @@ import { MessageFooter } from './MessageFooter';
 import { ReportMessageModal } from './ReportMessageModal';
 import { ViewsContent } from '../MessageViewsIcon';
 
-const limitMessages = 300;
+const limitMessages = 900;
 
 interface MessageProps {
   message: ThreadsMessage;
