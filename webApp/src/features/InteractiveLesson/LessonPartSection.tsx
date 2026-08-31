@@ -42,7 +42,7 @@ export const LessonPartSection = ({
             alignItems: 'flex-start',
           }}
         >
-          <AudioPlayIcon text={part.contentMD} cache />
+          <AudioPlayIcon text={part.contentMD} />
         </Stack>
       </Stack>
       {part.type === 'speech' && (

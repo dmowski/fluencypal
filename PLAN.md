@@ -21,7 +21,7 @@ Does it uses stream? please check how it works, and try to use stream, even we l
 and here as well
 webApp/src/features/InteractiveLesson/SpeechAnswerPanelView.tsx
 
-I want to hear feadback faster
+I want to hear feadback faster. If it already uses stream and nothing could be improved just tell me
 
 ## Analytics
 

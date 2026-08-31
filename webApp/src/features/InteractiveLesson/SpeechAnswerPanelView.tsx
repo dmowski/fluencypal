@@ -270,7 +270,6 @@ export const SpeechAnswerPanelView = ({
               >
                 <AudioPlayIcon
                   text={part.aiResultToUser}
-                  cache
                   color="#fff"
                   opacity={1}
                   autoPlay={autoPlayFeedback}

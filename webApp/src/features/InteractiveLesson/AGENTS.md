@@ -103,7 +103,7 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 - Lesson and feedback markdown use `Markdown` (`variant="rule"`). Tapping a word plays it immediately, then opens translate if available.
 - Recording UI follows `SubmitForm` (mic / stop / visualizer / submit).
 - Speech check keeps the record button in place and shows the cycling *Thinking / Understanding... / Analyzing* bar beside it.
-- Every part has a small play control at the end of the text (`AudioPlayIcon` → streaming TTS).
+- Every part has a small play control at the end of the text (`AudioPlayIcon` → `/api/ttsStream` without cache so the MP3 can start streaming).
 - The second part shows **Read aloud** (not **Record answer**). The play control stays so they can listen first.
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
 
