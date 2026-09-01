@@ -34,8 +34,9 @@ overrides:
   # Security patches - scoped to only override vulnerable version ranges
   '@tootallnate/once@<3.0.1': ^3.0.1
   postcss@<=8.5.17: ^8.5.18
-  valibot@>=0.31.0 <1.2.0: ^1.2.0
-  valibot@<=1.4.1: ^1.4.2
+  # Prereleases (e.g. 1.0.0-beta.14) do not match numeric ranges, so pin all valibot.
+  valibot: ^1.4.2
+  browserslist@<=4.28.6: ^4.28.8
   yaml@>=2.0.0 <2.8.3: ^2.8.3
   esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
   ws@>=8.0.0 <8.21.0: '>=8.21.0'
