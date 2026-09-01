@@ -1,8 +1,4 @@
-import {
-  createCorruptIndexedDbRecovery,
-  isCorruptIndexedDbError,
-  resetCorruptIndexedDbRecoveryForTests,
-} from './corruptIndexedDb';
+import { createCorruptIndexedDbRecovery, isCorruptIndexedDbError } from './corruptIndexedDb';
 
 describe('isCorruptIndexedDbError', () => {
   it('matches Chrome IndexedDB missing-file DOMExceptions', () => {
@@ -31,10 +27,6 @@ describe('isCorruptIndexedDbError', () => {
 });
 
 describe('createCorruptIndexedDbRecovery', () => {
-  beforeEach(() => {
-    resetCorruptIndexedDbRecoveryForTests();
-  });
-
   const missingFileError = new Error(
     'NotReadableError: Data lost due to missing file. Affected record should be considered irrecoverable',
   );
@@ -61,27 +53,32 @@ describe('createCorruptIndexedDbRecovery', () => {
     expect(reload).toHaveBeenCalledTimes(1);
   });
 
+  it('does not recover again when a previous attempt already flagged the session', async () => {
+    const terminateAndClear = jest.fn();
+    const reload = jest.fn();
+    const recover = createCorruptIndexedDbRecovery({
+      terminateAndClear,
+      reload,
+      getFlag: () => true,
+      setFlag: () => undefined,
+    });
+
+    await expect(recover(missingFileError)).resolves.toBe(false);
+    expect(terminateAndClear).not.toHaveBeenCalled();
+    expect(reload).not.toHaveBeenCalled();
+  });
+
   it('still reloads when clearing persistence fails', async () => {
+    const reload = jest.fn();
     const recover = createCorruptIndexedDbRecovery({
       terminateAndClear: jest.fn().mockRejectedValue(new Error('failed-precondition')),
-      reload: jest.fn(),
+      reload,
       getFlag: () => false,
       setFlag: () => undefined,
     });
 
-    const reload = (recover as unknown as { reload?: unknown }).reload;
-    void reload;
-
-    const reloadFn = jest.fn();
-    const recoverWithReload = createCorruptIndexedDbRecovery({
-      terminateAndClear: jest.fn().mockRejectedValue(new Error('failed-precondition')),
-      reload: reloadFn,
-      getFlag: () => false,
-      setFlag: () => undefined,
-    });
-
-    await expect(recoverWithReload(missingFileError)).resolves.toBe(true);
-    expect(reloadFn).toHaveBeenCalledTimes(1);
+    await expect(recover(missingFileError)).resolves.toBe(true);
+    expect(reload).toHaveBeenCalledTimes(1);
   });
 
   it('ignores unrelated rejections', async () => {

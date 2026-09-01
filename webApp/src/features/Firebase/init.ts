@@ -22,9 +22,9 @@ import {
   persistentMultipleTabManager,
   setDoc,
 } from 'firebase/firestore';
-import { installCorruptFirestorePersistenceRecovery } from './corruptIndexedDb';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
+import { installCorruptFirestorePersistenceRecovery } from './corruptIndexedDb';
 
 const isNodeEnv = typeof window === 'undefined';
 const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -55,6 +55,10 @@ const firestore =
           throw error;
         }
       })();
+
+if (!isNodeEnv && !isFirebaseEmulator) {
+  installCorruptFirestorePersistenceRecovery(firestore);
+}
 
 const auth =
   isSafari || isNodeEnv

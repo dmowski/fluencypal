@@ -2,9 +2,7 @@ import { Firestore, clearIndexedDbPersistence, terminate } from 'firebase/firest
 
 const RECOVERY_FLAG = 'fp.firestore.idb.recovery';
 
-let recoveryInFlight = false;
-
-export const getErrorText = (reason: unknown): string => {
+const getErrorText = (reason: unknown): string => {
   if (typeof reason === 'string') return reason;
   if (reason instanceof Error) return `${reason.name} ${reason.message}`;
   if (reason && typeof reason === 'object') {
@@ -32,6 +30,8 @@ export type CorruptIndexedDbRecoveryDeps = {
 };
 
 export const createCorruptIndexedDbRecovery = (deps: CorruptIndexedDbRecoveryDeps) => {
+  let recoveryInFlight = false;
+
   return async (reason: unknown): Promise<boolean> => {
     if (!isCorruptIndexedDbError(reason)) return false;
     if (recoveryInFlight || deps.getFlag()) return false;
@@ -48,11 +48,6 @@ export const createCorruptIndexedDbRecovery = (deps: CorruptIndexedDbRecoveryDep
     deps.reload();
     return true;
   };
-};
-
-/** Test-only: reset the in-memory loop guard between cases. */
-export const resetCorruptIndexedDbRecoveryForTests = (): void => {
-  recoveryInFlight = false;
 };
 
 const readSessionFlag = (): boolean => {
