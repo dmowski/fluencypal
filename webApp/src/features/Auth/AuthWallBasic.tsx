@@ -8,6 +8,7 @@ import { InfoStep } from '../Survey/InfoStep';
 import { ListItem } from '../Survey/IconTextList';
 import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
+import { resolveAuthWallStartStep } from './practiceAuthWall';
 
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,6 +52,7 @@ interface AuthWallBasicProps {
   agreementImageUrl?: string;
   authImageUrl?: string;
   width?: string;
+  startOnAuth?: boolean;
 }
 
 export const AuthWallBasic = ({
@@ -65,6 +67,7 @@ export const AuthWallBasic = ({
   agreementImageUrl,
   authImageUrl,
   width,
+  startOnAuth = false,
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -90,7 +93,10 @@ export const AuthWallBasic = ({
 
   const steps = ['features', 'agreement', 'auth', 'email', 'email-send'] as const;
   const [step, setStep] = useState<(typeof steps)[number]>(() =>
-    getStoredAuthMethod() ? 'auth' : steps[0],
+    resolveAuthWallStartStep({
+      startOnAuth,
+      lastAuthMethod: getStoredAuthMethod(),
+    }),
   );
 
   const nextStep = () => {

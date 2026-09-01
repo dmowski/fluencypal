@@ -9,6 +9,8 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   /Failed to persist write: IndexedDbTransactionError/,
   /IndexedDB transaction .* failed/,
   /AbortError: The transaction was aborted/,
+  // Chrome deleted IndexedDB LevelDB files (common on Android storage pressure)
+  /Data lost due to missing file/,
   // Expected when the browser is offline
   /Failed to get document because the client is offline/,
 ];

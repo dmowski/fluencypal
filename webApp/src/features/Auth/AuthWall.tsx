@@ -12,6 +12,7 @@ export const AuthWall = ({
   featuresTitle,
   featuresSubTitle,
   width,
+  startOnAuth,
 }: {
   children: ReactNode;
   signInTitle?: string;
@@ -19,11 +20,13 @@ export const AuthWall = ({
   featuresTitle?: string;
   featuresSubTitle?: string;
   width?: string;
+  startOnAuth?: boolean;
 }) => {
   const { i18n } = useLingui();
   return (
     <AuthWallBasic
       width={width}
+      startOnAuth={startOnAuth}
       featuresTitle={featuresTitle || 'FluencyPal'}
       featuresSubTitle={featuresSubTitle || i18n._('Your AI speaking partner')}
       featuresList={[

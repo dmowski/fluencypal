@@ -22,6 +22,7 @@ import {
   persistentMultipleTabManager,
   setDoc,
 } from 'firebase/firestore';
+import { installCorruptFirestorePersistenceRecovery } from './corruptIndexedDb';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
 
