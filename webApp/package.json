@@ -50,7 +50,7 @@
     "create-git-build": "git tag -a build-app-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
     "firestore:indexes": "node scripts/deployFirestoreIndexes.mjs",
     "analytics:export": "node scripts/exportCustomAnalytics.mjs",
-    "prod": "SENTRY_LOAD_DOTENV=0 SENTRY_RELEASE=$(git rev-parse HEAD) vercel build --prod && pnpm run create-git-build && vercel deploy --prebuilt --prod --archive=tgz"
+    "prod": "node scripts/prod.mjs"
   },
   "dependencies": {
     "@datafast/ai-crawl": "^1.0.7",
