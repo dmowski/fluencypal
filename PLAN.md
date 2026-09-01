@@ -7,20 +7,6 @@ General strategy:
 
 ## Advanced Practice
 
-Let's improve speed of playing text.
-
-For example here:
-webApp/src/features/InteractiveLesson/LessonPartSection.tsx
-AudioPlayIcon
-
-when I click on that button i wait for couple of seconds untill it starts reading.
-Does it uses stream? please check how it works, and try to use stream, even we loose cache, ok. I want to make it faster.
-
-and here as well
-webApp/src/features/InteractiveLesson/SpeechAnswerPanelView.tsx
-
-I want to hear feadback faster. If it already uses stream and nothing could be improved just tell me
-
 ## Analytics
 
 Keep analyzing.

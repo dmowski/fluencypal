@@ -22,6 +22,9 @@ export interface ConversationResult {
   whatUserCanImprove: string;
 
   whatToFocusOnNextTime: string;
+
+  /** Markdown list of 5 collocations; italic marks the word to remember. */
+  phrasesToRemember: string;
 }
 
 export interface GoalElementProgress {

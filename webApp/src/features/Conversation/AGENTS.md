@@ -87,7 +87,7 @@ Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationC
 | `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |
 | `conversation-canvas-call-settings-menu` | Settings menu (video, mute, captions, select mic) |
 | `conversation-canvas-call-video-off` | Call layout with both camera tiles hidden (captions only) |
-| `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → next-lesson) |
+| `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → phrases-to-remember → next-lesson) |
 
 Run:
 

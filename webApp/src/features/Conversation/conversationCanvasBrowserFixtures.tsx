@@ -88,6 +88,8 @@ export const DEFAULT_CONVERSATION_CANVAS_PROPS: ComponentProps<typeof Conversati
     whatUserDidWell: 'You spoke clearly and stayed on topic.',
     shortSummaryOfLesson: 'You practiced answering interview questions with confidence.',
     whatUserCanImprove: 'Try expanding answers with one specific example each time.',
+    phrasesToRemember:
+      "- fine _with_ me\n- it's up _to_ you\n- look _forward_ to\n- interested _in_ this\n- responsible _for_ it",
   },
   analyzeConversation: async () => undefined,
   toggleConversationMode: () => undefined,

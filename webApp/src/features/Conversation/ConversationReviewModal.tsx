@@ -15,6 +15,7 @@ type Step =
   | 'whatToFocusOnNextTime'
   | 'whatUserCanImprove'
   | 'whatUserDidWell'
+  | 'phrasesToRemember'
   | 'finish';
 
 export const ConversationReviewModal = ({
@@ -48,6 +49,7 @@ export const ConversationReviewModal = ({
     'whatToFocusOnNextTime',
     'whatUserCanImprove',
     'whatUserDidWell',
+    'phrasesToRemember',
     'finish',
   ];
   const [step, setStep] = useState<Step>(steps[0]);
@@ -153,6 +155,26 @@ export const ConversationReviewModal = ({
           />
         )}
 
+        {step == 'phrasesToRemember' && (
+          <InfoStep
+            title={i18n._('Phrases to remember')}
+            isStepLoading={!conversationAnalysisResult}
+            subComponent={
+              <TranslatableComponent
+                message={
+                  conversationAnalysisResult
+                    ? conversationAnalysisResult.phrasesToRemember || ''
+                    : i18n._('Loading...')
+                }
+                isLoading={!conversationAnalysisResult}
+                emphasizeKeyWords
+              />
+            }
+            disabled={!conversationAnalysisResult}
+            onClick={onNext}
+          />
+        )}
+
         {step == 'finish' && (
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
@@ -178,10 +200,12 @@ const TranslatableComponent = ({
   message,
   isLoading,
   skipTranslation,
+  emphasizeKeyWords,
 }: {
   message: string;
   isLoading?: boolean;
   skipTranslation?: boolean;
+  emphasizeKeyWords?: boolean;
 }) => {
   const translator = useTranslate();
 
@@ -207,6 +231,19 @@ const TranslatableComponent = ({
       sx={{
         gap: '0px',
         alignItems: 'flex-start',
+        ...(emphasizeKeyWords
+          ? {
+              '& li': {
+                paddingBottom: '14px',
+              },
+              '& em': {
+                fontWeight: 700,
+                fontStyle: 'italic',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+              },
+            }
+          : {}),
       }}
       className={`${isLoading ? 'loading-shimmer' : ''}`}
     >

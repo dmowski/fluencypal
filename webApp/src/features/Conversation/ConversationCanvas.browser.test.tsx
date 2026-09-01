@@ -529,5 +529,8 @@ test('conversation canvas – call mode results steps', async () => {
   await screenshotResultsStep('did-well', 'What you did well');
   await userEvent.click(page.getByRole('button', { name: 'Next' }));
 
+  await screenshotResultsStep('phrases-to-remember', 'Phrases to remember');
+  await userEvent.click(page.getByRole('button', { name: 'Next' }));
+
   await screenshotResultsStep('next-lesson', 'Next Step', 'Next Lesson');
 });

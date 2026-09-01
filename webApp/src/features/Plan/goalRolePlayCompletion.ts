@@ -37,5 +37,6 @@ export function skippedGoalRolePlayResults() {
     whatUserDidWell: '',
     whatUserCanImprove: '',
     whatToFocusOnNextTime: '',
+    phrasesToRemember: '',
   };
 }

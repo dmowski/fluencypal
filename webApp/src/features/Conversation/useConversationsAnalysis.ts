@@ -107,6 +107,8 @@ whatUserDidWell: string;
 whatUserCanImprove: string;
 
 whatToFocusOnNextTime: string;
+
+phrasesToRemember: string;
 }
 
 Field style examples (second person only):
@@ -114,6 +116,15 @@ Field style examples (second person only):
 - whatUserCanImprove: "You can pause less between sentences next time."
 - whatToFocusOnNextTime: "You should practice expanding short answers with one concrete example."
 - shortSummaryOfLesson: "You practiced answering interview questions with confidence."
+- phrasesToRemember: "- fine _with_ me\\n- it's up _to_ you\\n- look _forward_ to\\n- interested _in_ this\\n- responsible _for_ it"
+
+phrasesToRemember rules:
+- Exactly 5 markdown list items, one collocation per line.
+- Write the phrases in ${settings.fullLanguageName} (the language being learned), not the native language.
+- Prefer corrections of the learner's real mistakes (e.g. they said "fine for me" → "fine _with_ me").
+- If there are fewer than 5 mistakes, fill remaining lines with useful collocations from this conversation.
+- Keep each line short (about 2–6 words). No numbering, no extra commentary.
+- Italic only the key/corrected word with markdown underscores so it is memorable.
 
 Use ${settings.fullLanguageName} language for all answers.
 Your output must be in valid JSON format with no additional text or explanation.

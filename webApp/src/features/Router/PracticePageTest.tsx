@@ -245,6 +245,8 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
           shortSummaryOfLesson:
             'In this lesson, we discussed the importance of clear communication and practiced speaking on various topics.',
           whatUserCanImprove: 'Work on expanding your vocabulary and using idiomatic expressions.',
+          phrasesToRemember:
+            "- fine _with_ me\n- it's up _to_ you\n- look _forward_ to\n- interested _in_ this\n- responsible _for_ it",
         }}
         closeConversation={async () => alert('Close conversation')}
         analyzeConversation={async () => {}}
