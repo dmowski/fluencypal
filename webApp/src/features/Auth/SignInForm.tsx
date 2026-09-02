@@ -1,5 +1,5 @@
 'use client';
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { useLingui } from '@lingui/react';
 import { useEffect } from 'react';
@@ -9,6 +9,8 @@ import { WebViewWall } from './WebViewWall';
 import { AuthWall } from './AuthWall';
 import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { shouldStartPracticeAuthOnGoogle } from './practiceAuthWall';
+import { getRolePlayOpeningLine } from './rolePlayOpeningLine';
+import { RolePlayOpeningPreview } from './RolePlayOpeningPreview';
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -31,22 +33,19 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   }, [rolePlayId]);
 
   const startOnAuth = shouldStartPracticeAuthOnGoogle(rolePlayId);
+  const openingLine = getRolePlayOpeningLine(scenario);
 
   const pageTitle = goalId
     ? i18n._(`Open personal plan`)
-    : isAliasGameRolePlay(rolePlayId)
-      ? i18n._(`Sign in to play Alias`)
-      : scenario
-        ? i18n._(`Sign in to start {scenario}`, { scenario: scenario.shortTitle })
-        : i18n._(`Let's create an account`);
+    : scenario
+      ? scenario.shortTitle
+      : i18n._(`Let's create an account`);
 
   const singInSubTitle = goalId
     ? i18n._(`So you can keep your progress`)
-    : isAliasGameRolePlay(rolePlayId)
-      ? i18n._(`You'll return to this game after you sign in`)
-      : scenario
-        ? i18n._(`You'll return to this session after you sign in`)
-        : i18n._(`So you can save your progress`);
+    : scenario
+      ? scenario.subTitle
+      : i18n._(`So you can save your progress`);
 
   return (
     <WebViewWall>
@@ -64,6 +63,11 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           featuresSubTitle={scenario ? scenario.subTitle : undefined}
           signInTitle={pageTitle}
           singInSubTitle={singInSubTitle}
+          authSubComponent={
+            openingLine ? (
+              <RolePlayOpeningPreview text={openingLine.text} audioSrc={openingLine.audioSrc} />
+            ) : undefined
+          }
         >
           <></>
         </AuthWall>

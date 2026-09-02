@@ -53,6 +53,7 @@ interface AuthWallBasicProps {
   authImageUrl?: string;
   width?: string;
   startOnAuth?: boolean;
+  authSubComponent?: ReactNode;
 }
 
 export const AuthWallBasic = ({
@@ -68,6 +69,7 @@ export const AuthWallBasic = ({
   authImageUrl,
   width,
   startOnAuth = false,
+  authSubComponent,
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -309,10 +311,15 @@ export const AuthWallBasic = ({
             disabled={isGoogleSignInLoading}
             isStepLoading={isGoogleSignInLoading}
             subComponent={
-              googleSignInError ? (
-                <Typography color="error" sx={{ paddingTop: '12px' }}>
-                  {googleSignInError}
-                </Typography>
+              authSubComponent || googleSignInError ? (
+                <Stack>
+                  {authSubComponent}
+                  {googleSignInError ? (
+                    <Typography color="error" sx={{ paddingTop: '12px' }}>
+                      {googleSignInError}
+                    </Typography>
+                  ) : null}
+                </Stack>
               ) : undefined
             }
             onClick={() => void signInWithGoogle()}

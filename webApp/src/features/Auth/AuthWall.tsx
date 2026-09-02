@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { useLingui } from '@lingui/react';
 import { AuthWallBasic } from './AuthWallBasic';
-import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
+import { getLandingUrlStart } from '../Lang/getUrlStart';
 
 export const AuthWall = ({
   children,
@@ -13,6 +13,7 @@ export const AuthWall = ({
   featuresSubTitle,
   width,
   startOnAuth,
+  authSubComponent,
 }: {
   children: ReactNode;
   signInTitle?: string;
@@ -21,12 +22,14 @@ export const AuthWall = ({
   featuresSubTitle?: string;
   width?: string;
   startOnAuth?: boolean;
+  authSubComponent?: ReactNode;
 }) => {
   const { i18n } = useLingui();
   return (
     <AuthWallBasic
       width={width}
       startOnAuth={startOnAuth}
+      authSubComponent={authSubComponent}
       featuresTitle={featuresTitle || 'FluencyPal'}
       featuresSubTitle={featuresSubTitle || i18n._('Your AI speaking partner')}
       featuresList={[
@@ -48,7 +51,7 @@ export const AuthWall = ({
         },
       ]}
       authTitle={signInTitle || i18n._("Let's create an account")}
-      authSubTitle={singInSubTitle || i18n._('So you can keep your progress')}
+      authSubTitle={singInSubTitle ?? i18n._('So you can keep your progress')}
       authList={[
         {
           title: i18n._('Privacy Policy'),

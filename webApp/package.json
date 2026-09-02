@@ -41,6 +41,7 @@
     "test:e2e:headed": "playwright test --headed",
     "generate:exam-quiz-images": "node --env-file=.env src/features/Quiz/Polish/scripts/generate-exam-quiz-images.mjs",
     "ai-translate": "node --env-file=.env updateLanguage.mjs",
+    "audio:role-openings": "node --env-file=.env scripts/generateRolePlayOpeningAudio.mjs",
     "lang": "pnpm kill-dev-port && pnpm clean:cache && lingui extract && pnpm run ai-translate && lingui compile",
     "lang-clean": "pnpm kill-dev-port && pnpm clean:cache && lingui extract --clean && pnpm run ai-translate && lingui compile",
     "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
