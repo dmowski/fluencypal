@@ -38,7 +38,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "create-git-build": "git tag -a build-landing-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
-    "prod": "node scripts/prod.mjs"
+    "prod": "pnpm lang-clean && node scripts/prod.mjs"
   },
   "dependencies": {
     "@datafast/ai-crawl": "^1.0.7",
