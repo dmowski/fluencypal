@@ -10,8 +10,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
-import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
-import { OPENAI_TTS_MAX_INPUT_CHARS } from '../Audio/useConversationAudio';
+import { PlayButton } from './PlayButton';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -255,31 +254,12 @@ export const SpeechAnswerPanelView = ({
                 </Typography>
                 <LessonMarkdown content={part.aiResultToUser} />
               </Stack>
-              <Stack
-                data-testid="interactive-lesson-feedback-play"
-                sx={{
-                  backgroundColor: isFeedbackPlaying ? '#1d4ed8' : '#111827',
-                  borderRadius: '40px',
-                  padding: '0px',
-                  '@keyframes lessonFeedbackPulse': {
-                    '0%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0.7)' },
-                    '70%': { boxShadow: '0 0 0 10px rgba(37, 99, 235, 0)' },
-                    '100%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0)' },
-                  },
-                  animation: isFeedbackPlaying
-                    ? 'lessonFeedbackPulse 1.4s ease-out infinite'
-                    : 'none',
-                }}
-              >
-                <AudioPlayIcon
-                  text={part.aiResultToUser}
-                  color="#fff"
-                  opacity={1}
-                  autoPlay={autoPlayFeedback}
-                  maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}
-                  onChangeState={setIsFeedbackPlaying}
-                />
-              </Stack>
+              <PlayButton
+                text={part.aiResultToUser}
+                autoPlay={autoPlayFeedback}
+                testId="interactive-lesson-feedback-play"
+                onChangeState={setIsFeedbackPlaying}
+              />
             </Stack>
           </Stack>
         </Stack>

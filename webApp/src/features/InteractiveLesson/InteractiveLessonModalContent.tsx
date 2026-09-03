@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Check, SkipForward } from 'lucide-react';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { LanguageSetupView } from './LanguageSetupView';
 import { LessonPreparingView } from './LessonPreparingView';
 import { LessonPartSection } from './LessonPartSection';
@@ -59,9 +60,11 @@ export const InteractiveLessonModalContent = ({
   onNextLesson: () => Promise<void>;
 }) => {
   const { i18n } = useLingui();
+  const conversationAudio = useConversationAudio();
   const contentRef = useRef<HTMLDivElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   const ensuredRef = useRef(false);
+  const [autoPlayResults, setAutoPlayResults] = useState(false);
 
   useEffect(() => {
     if (!isStoreReady) {
@@ -195,7 +198,11 @@ export const InteractiveLessonModalContent = ({
                 color="info"
                 size="large"
                 startIcon={<Check size={20} />}
-                onClick={onFinishLesson}
+                onClick={() => {
+                  void conversationAudio.initAudio();
+                  setAutoPlayResults(true);
+                  void onFinishLesson();
+                }}
                 disabled={!!lesson.lessonResults || isGeneratingResults}
                 data-testid="interactive-lesson-done"
               >
@@ -218,6 +225,7 @@ export const InteractiveLessonModalContent = ({
                 results={lesson.lessonResults}
                 isGeneratingResults={isGeneratingResults}
                 isGeneratingNext={isGeneratingNext}
+                autoPlay={autoPlayResults}
                 onNextLesson={() => {
                   void onNextLesson();
                   scrollLessonToTop();

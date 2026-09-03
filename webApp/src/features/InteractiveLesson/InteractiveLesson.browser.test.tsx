@@ -54,7 +54,13 @@ vi.mock('next/image', () => ({
     alt: string;
     style?: React.CSSProperties;
   }) {
-    return <img src={src} alt={alt} style={{ ...style, width: '100%', height: '100%', objectFit: 'cover' }} />;
+    return (
+      <img
+        src={src}
+        alt={alt}
+        style={{ ...style, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    );
   },
 }));
 
@@ -91,6 +97,8 @@ vi.mock('@/features/Audio/useQuizWordAudio', () => ({
 
 vi.mock('@/features/Audio/useConversationAudio', () => ({
   useConversationAudio: () => conversationAudioMock,
+  OPENAI_TTS_MAX_INPUT_CHARS: 4096,
+  TTS_DEFAULT_MAX_INPUT_CHARS: 600,
 }));
 
 vi.mock('@/features/Audio/useAudioRecorder', () => ({
@@ -238,9 +246,7 @@ test('preparing lesson loader', async () => {
   await renderInShell(lessonModal({ isGeneratingLesson: true }));
 
   await expect.element(page.getByTestId('interactive-lesson-preparing')).toBeVisible();
-  await expect
-    .element(page.getByTestId('interactive-lesson-modal'))
-    .toMatchScreenshot('preparing');
+  await expect.element(page.getByTestId('interactive-lesson-modal')).toMatchScreenshot('preparing');
 });
 
 test('lesson modal shows done and skip for an in-progress lesson', async () => {
@@ -251,7 +257,9 @@ test('lesson modal shows done and skip for an in-progress lesson', async () => {
   await expect.element(page.getByRole('button', { name: 'Finish lesson' })).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-skip')).toBeVisible();
   await expect
-    .element(page.getByTestId('interactive-lesson-part-0').getByTestId('interactive-lesson-read-play'))
+    .element(
+      page.getByTestId('interactive-lesson-part-0').getByTestId('interactive-lesson-read-play'),
+    )
     .toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Read aloud' })).toBeVisible();
   await expect.element(page.getByText('Read the text aloud. You can play it first.')).toBeVisible();
@@ -279,9 +287,37 @@ test('lesson modal – results', async () => {
 
   await expect.element(page.getByTestId('interactive-lesson-next')).toBeVisible();
   await expect.element(page.getByText('Your results')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-results-play')).toBeVisible();
+  expect(conversationAudioMock.speak).not.toHaveBeenCalled();
   await expect
     .element(page.getByTestId('interactive-lesson-modal'))
     .toMatchScreenshot('modal-results');
+});
+
+test('finish lesson auto-plays results and shows it is playing', async () => {
+  resetRecorder();
+  conversationAudioMock.speak.mockImplementation(() => new Promise(() => undefined));
+
+  const FinishThenShowResults = () => {
+    const [lesson, setLesson] = React.useState(FIXTURE_LESSON);
+    return lessonModal({
+      lesson,
+      onFinishLesson: async () => {
+        setLesson(FIXTURE_FINISHED_LESSON);
+      },
+    });
+  };
+
+  await renderInShell(<FinishThenShowResults />);
+  await userEvent.click(page.getByTestId('interactive-lesson-done'));
+
+  await expect.element(page.getByText('Playing')).toBeVisible();
+  await expect.element(page.getByTestId('interactive-lesson-results-play')).toBeVisible();
+  expect(conversationAudioMock.initAudio).toHaveBeenCalled();
+  expect(conversationAudioMock.speak).toHaveBeenCalledWith(
+    expect.stringContaining('You showed up and spoke in full sentences'),
+    expect.objectContaining({ maxInputLength: 4096 }),
+  );
 });
 
 test('speech panel – idle', async () => {
@@ -427,17 +463,19 @@ test('progress asks for more recordings before comparing', async () => {
   await renderInShell(
     <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
       <LessonProgressView
-          audioProgress={emptyAudioProgress()}
-          lessons={[]}
-          onContinueLesson={noop}
-        />
+        audioProgress={emptyAudioProgress()}
+        lessons={[]}
+        onContinueLesson={noop}
+      />
     </div>,
   );
 
   await expect.element(page.getByTestId('interactive-lesson-progress-needed')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-progress-continue')).toBeVisible();
   await expect.element(page.getByText('History')).toBeVisible();
-  await expect.element(page.getByTestId('interactive-lesson-progress-before')).not.toBeInTheDocument();
+  await expect
+    .element(page.getByTestId('interactive-lesson-progress-before'))
+    .not.toBeInTheDocument();
 });
 
 test('progress shows before and after after 110 recordings', async () => {
@@ -451,10 +489,10 @@ test('progress shows before and after after 110 recordings', async () => {
   await renderInShell(
     <div style={{ width: 800, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
       <LessonProgressView
-          audioProgress={audioProgress}
-          lessons={[FIXTURE_FINISHED_LESSON]}
-          onContinueLesson={noop}
-        />
+        audioProgress={audioProgress}
+        lessons={[FIXTURE_FINISHED_LESSON]}
+        onContinueLesson={noop}
+      />
     </div>,
   );
 

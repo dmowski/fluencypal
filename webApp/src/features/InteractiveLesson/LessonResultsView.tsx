@@ -1,26 +1,34 @@
 'use client';
 
+import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
 import { ArrowRight } from 'lucide-react';
+import { PlayButton } from './PlayButton';
 
 export const LessonResultsView = ({
   results,
   isGeneratingResults,
   isGeneratingNext,
+  autoPlay = false,
   onNextLesson,
   onFinish,
 }: {
   results: LessonResults | null;
   isGeneratingResults: boolean;
   isGeneratingNext: boolean;
+  autoPlay?: boolean;
   onNextLesson: () => void;
   onFinish: () => void;
 }) => {
   const { i18n } = useLingui();
+  const [isResultsPlaying, setIsResultsPlaying] = useState(false);
+  const resultsSpeakText = results
+    ? `${results.motivationTextToUserMD}\n\n${results.whatWentWellMD}`
+    : '';
 
   return (
     <Stack sx={{ gap: '16px', width: '100%' }} data-testid="interactive-lesson-results">
@@ -41,9 +49,25 @@ export const LessonResultsView = ({
               borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
             }}
           >
-            <Typography variant="h3" sx={{ fontWeight: 800 }}>
-              {i18n._('Your results')}
-            </Typography>
+            <Stack
+              sx={{
+                flexDirection: 'row',
+                width: '100%',
+                gap: '10px',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h3" sx={{ fontWeight: 800 }}>
+                {i18n._('Your results')}
+              </Typography>
+              <PlayButton
+                text={resultsSpeakText}
+                autoPlay={autoPlay}
+                testId="interactive-lesson-results-play"
+                onChangeState={setIsResultsPlaying}
+              />
+            </Stack>
             <LessonMarkdown content={results.motivationTextToUserMD} />
             <LessonMarkdown content={results.whatWentWellMD} />
           </Stack>

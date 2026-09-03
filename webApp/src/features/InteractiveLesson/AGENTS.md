@@ -29,6 +29,7 @@ InteractiveLesson/
   InteractiveLessonModal.tsx
   InteractiveLessonModalContent.tsx
   SpeechAnswerPanel.tsx            — recorder hook + SpeechAnswerPanelView
+  PlayButton.tsx                   — animated TTS play control (feedback + results)
   LessonHistoryView.tsx
   LessonProgressView.tsx
   LessonProgressModal.tsx
@@ -72,7 +73,7 @@ Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson 
 3. Render parts. First `read` = a 4-5 paragraph how-to (simple words, examples, optional native-language gloss). Second `speech` = **read this text aloud** (play control still available). Later `speech` = record → stop → auto-check. Last `speech` = 2-3 minute open talk. Feedback is spoken automatically. **Answer again** / **Read again** replaces the previous take.
 4. **Finish lesson** marks today’s `interactive-lesson` daily task done, then starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
 4b. **Skip this lesson** immediately drops the current lesson (not marked done, daily task stays open) and generates a completely different language form. No confirmation.
-5. When results are ready, show them under the button and scroll there. **Next lesson** / **Finish**.
+5. When results are ready, show them under the button, scroll there, and speak them automatically (same play control as speech feedback). **Next lesson** / **Finish**. Reopening a finished lesson does not auto-play.
 6. **Next lesson** opens the pre-generated lesson, or the preparing state if that request is still running.
 7. **Finish** or closing a finished modal archives the lesson and makes `nextLesson` current.
 8. Opening the card again after finish shows the new lesson (generates it if missing).
@@ -105,6 +106,7 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 - Speech check keeps the record button in place and shows the cycling *Thinking / Understanding... / Analyzing* bar beside it.
 - Every part has a small play control at the end of the text (`AudioPlayIcon` → `/api/ttsStream` without cache so the MP3 can start streaming). Lesson playback uses the OpenAI 4096-character cap, not the default 600-character TTS trim.
 - The second part shows **Read aloud** (not **Record answer**). The play control stays so they can listen first.
+- Lesson results use the same play control as speech feedback and auto-play after **Finish lesson**.
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
 
 ## Types
