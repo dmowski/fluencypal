@@ -108,7 +108,8 @@ describe('SignInForm', () => {
       '/audio/role-openings/alias-game.mp3',
     );
     expect(screen.getByRole('button', { name: 'Hear the first line' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Sign in with Google' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
   });
@@ -125,7 +126,7 @@ describe('SignInForm', () => {
     expect(screen.getByText('Hotel Check-In')).toBeInTheDocument();
     expect(screen.getByText('Practice checking in at a hotel')).toBeInTheDocument();
     expect(screen.getByText(hotelOpening)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Sign in with Google' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
   });
 

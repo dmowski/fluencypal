@@ -63,6 +63,8 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           featuresSubTitle={scenario ? scenario.subTitle : undefined}
           signInTitle={pageTitle}
           singInSubTitle={singInSubTitle}
+          authActionTitle={startOnAuth ? i18n._('Continue to talk') : undefined}
+          authListAfterActions={startOnAuth}
           authSubComponent={
             openingLine ? (
               <RolePlayOpeningPreview text={openingLine.text} audioSrc={openingLine.audioSrc} />

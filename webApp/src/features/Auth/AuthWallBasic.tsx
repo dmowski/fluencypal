@@ -54,6 +54,8 @@ interface AuthWallBasicProps {
   width?: string;
   startOnAuth?: boolean;
   authSubComponent?: ReactNode;
+  authActionTitle?: string;
+  authListAfterActions?: boolean;
 }
 
 export const AuthWallBasic = ({
@@ -70,6 +72,8 @@ export const AuthWallBasic = ({
   width,
   startOnAuth = false,
   authSubComponent,
+  authActionTitle,
+  authListAfterActions = false,
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -299,7 +303,9 @@ export const AuthWallBasic = ({
             title={authTitle}
             subTitle={authSubTitle}
             actionButtonTitle={
-              isGoogleSignInLoading ? i18n._('Signing in...') : i18n._('Sign in with Google')
+              isGoogleSignInLoading
+                ? i18n._('Signing in...')
+                : authActionTitle || i18n._('Sign in with Google')
             }
             actionButtonStartIcon={<Google />}
             actionButtonBadgeText={lastAuthMethod === 'google' ? lastUsedBadgeLabel : undefined}
@@ -308,6 +314,7 @@ export const AuthWallBasic = ({
             secondButtonEndIcon={<ArrowRight />}
             secondButtonBadgeText={lastAuthMethod === 'email' ? lastUsedBadgeLabel : undefined}
             listItems={authList}
+            listItemsAfterActions={authListAfterActions}
             disabled={isGoogleSignInLoading}
             isStepLoading={isGoogleSignInLoading}
             subComponent={

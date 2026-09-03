@@ -43,6 +43,7 @@ export const InfoStep = ({
   onSecondButtonClick,
   secondButtonStartIcon,
   secondButtonDisabled,
+  listItemsAfterActions,
 }: {
   title?: string;
   subTitle?: string;
@@ -69,6 +70,7 @@ export const InfoStep = ({
   onSecondButtonClick?: () => void;
   secondButtonEndIcon?: ReactNode;
   secondButtonStartIcon?: React.ReactNode;
+  listItemsAfterActions?: boolean;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -130,7 +132,7 @@ export const InfoStep = ({
 
           {subComponent}
 
-          {!!listItems?.length && (
+          {!!listItems?.length && !listItemsAfterActions && (
             <Stack
               sx={{
                 paddingTop: '30px',
@@ -286,6 +288,16 @@ export const InfoStep = ({
           actionButtonBadgeText={actionButtonBadgeText}
           secondButtonBadgeText={secondButtonBadgeText}
         />
+
+        {!!listItems?.length && listItemsAfterActions && (
+          <Stack
+            sx={{
+              paddingTop: '16px',
+            }}
+          >
+            <ColorIconTextList listItems={listItems} iconSize="26px" gap="23px" />
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
