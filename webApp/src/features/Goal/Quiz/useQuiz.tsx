@@ -38,6 +38,7 @@ import { getWordsCount } from '@/libs/words';
 import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 import { useAccess } from '@/features/Usage/useAccess';
+import { useFlushPendingTeacherVoice } from './useFlushPendingTeacherVoice';
 
 type QuizStep =
   | 'before_nativeLanguage'
@@ -930,6 +931,7 @@ export function QuizProvider({
   pageLang: SupportedLanguage;
   defaultLangToLearn: SupportedLanguage;
 }): JSX.Element {
+  useFlushPendingTeacherVoice();
   const hook = useProvideQuizContext({ pageLang, defaultLangToLearn });
   return <QuizContext.Provider value={hook}>{children}</QuizContext.Provider>;
 }

@@ -18,6 +18,15 @@ Before final handoff for webApp changes, run full e2e once:
 
 Prefer targeted tests first. Run full `pnpm test` only when cross-cutting behavior changed.
 
+## Implementation Completeness
+
+Do not report a UI change complete until the changed flow has been opened in the browser and checked for real behavior:
+
+1. Use `pnpm dev` (emulator) when the flow touches Firebase, auth, or settings. `pnpm dev:only` will show connection errors that are not product bugs.
+2. Confirm there is no Next.js / React error overlay and no uncaught console errors caused by the change.
+3. Exercise the main interaction end to end the way a user would (click, type, continue). A screenshot of first paint is not enough.
+4. If verification finds a problem, fix it and re-check. Page errors mean the work is not done.
+
 ## Build And Runtime
 
 - Local dev entrypoint: `pnpm dev` (uses Firebase emulator helper script)

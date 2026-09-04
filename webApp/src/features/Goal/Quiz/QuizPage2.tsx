@@ -33,13 +33,10 @@ import {
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { WelcomeChatMessage } from './WelcomeChatMessage';
 import { useSettings } from '@/features/Settings/useSettings';
-import { VoiceSpeedSelector } from '@/features/Settings/VoiceSpeedSelector';
-import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
-import { AiAvatarVideo } from '@/features/Conversation/CallMode/AiAvatarVideo';
-import { getAiVoiceByVoice } from '@/features/Conversation/CallMode/voiceAvatar';
 import { useAccess } from '@/features/Usage/useAccess';
 import { AccessQuizStep } from './AccessQuizStep';
 import { TrialPriceQuizStep } from './TrialPriceQuizStep';
+import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 
 const QuizQuestions = () => {
   const {
@@ -170,33 +167,7 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'teacherSelection' && (
-            <AuthWall>
-              <InfoStep
-                title={i18n._(`Choose your interlocutor`)}
-                subTitle={i18n._(`A voice and style that suits you`)}
-                actionButtonTitle={i18n._(`Continue`)}
-                subComponent={
-                  <Stack
-                    sx={{
-                      paddingTop: '20px',
-                      gap: '20px',
-                      alignItems: 'flex-start',
-                    }}
-                  >
-                    <SelectTeacher
-                      selectedVoice={settings.userSettings?.teacherVoice}
-                      onSelectVoice={settings.setVoice}
-                      voiceSpeed={settings.aiVoiceSpeed}
-                    />
-
-                    <VoiceSpeedSelector />
-                  </Stack>
-                }
-                onClick={next}
-                disabled={isStepLoading || !settings.userSettings?.teacherVoice}
-                isStepLoading={isStepLoading}
-              />
-            </AuthWall>
+            <TeacherSelectionQuizStep onContinue={next} isStepLoading={isStepLoading} />
           )}
 
           {currentStep === 'trialPrice' && (
