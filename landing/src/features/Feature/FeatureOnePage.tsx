@@ -26,6 +26,10 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
   const contactLink = `${urlStart}contacts`;
 
   const isRemoved = feature.removed;
+  const appHref =
+    id === 'interactive-lesson'
+      ? `${getAppUrlStart(lang)}?interactiveLesson=open`
+      : `${getAppUrlStart(lang)}quiz`;
 
   return (
     <>
@@ -60,7 +64,7 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
 
             {!isRemoved && (
               <Button
-                href={`${getAppUrlStart(lang)}quiz`}
+                href={appHref}
                 variant="contained"
                 size="large"
                 data-analytics="feature-cta"
@@ -139,7 +143,7 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
       <CtaBlock
         title={i18n._('Practice This Skill with FluencyPal')}
         actionButtonTitle={i18n._('Start Practice')}
-        actionButtonLink={`${getAppUrlStart(lang)}quiz`}
+        actionButtonLink={appHref}
       />
       <Footer lang={lang} />
     </>
