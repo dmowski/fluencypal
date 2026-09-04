@@ -50,7 +50,7 @@ export const FeaturesPage = ({ lang }: FeaturesPageProps) => {
             }}
           >
             {i18n._(
-              'Explore FluencyPal features for AI English speaking practice, personalized grammar, vocabulary lessons, role plays, stories',
+              'Explore FluencyPal features for AI English speaking practice, personalized grammar, daily interactive lessons, vocabulary lessons, role plays, stories',
             )}
           </Typography>
         </Stack>

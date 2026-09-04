@@ -127,6 +127,59 @@ This approach makes grammar practice more personal and more practical. Instead o
       ),
     },
     {
+      id: 'interactive-lesson',
+      title: i18n._('Daily Interactive English Lessons You Speak Out Loud'),
+      subTitle: i18n._(
+        'Learn one grammar form a day: read it, say it, get feedback, then talk for two minutes.',
+      ),
+      metaTitle: i18n._('Daily Interactive English Speaking Lessons | FluencyPal'),
+      metaDescription: i18n._(
+        'Practice one English grammar form a day by speaking. FluencyPal teaches the rule, you read it aloud, record answers, and get instant AI feedback.',
+      ),
+      keywords: [
+        'interactive English lessons',
+        'daily English speaking lesson',
+        'grammar speaking practice',
+        'AI English lessons',
+        'present perfect vs past simple practice',
+      ],
+      content: i18n._(
+        `## What it does
+
+Interactive Lessons are a daily speaking lesson on your FluencyPal dashboard. Each lesson trains **one checkable English form** — articles, a tense contrast, a verb pattern, a chunk — not vague advice like “speak more clearly.”
+
+You read a short how-to, read a text that uses the form aloud, answer by voice, get feedback, then finish with a two-to-three-minute open talk. Tomorrow’s lesson is generated from what you actually said.
+
+## How it works
+
+1. Open today’s lesson (from the dashboard card or your daily tasks).
+2. Read a 4–5 paragraph how-to: when to use the form, when not to, with bolded examples.
+3. **Read a short text aloud** that uses the form several times. You can listen first.
+4. Record spoken answers to short prompts. FluencyPal checks whether you used the form.
+5. Finish with an open talk on a concrete topic. This long sample is what the next lesson is built from.
+6. After you finish, you get spoken results. The next lesson is prepared in the background.
+
+You can skip a lesson if the form is not useful today. The replacement teaches a different category instead of repeating a close variant.
+
+## What you practice
+
+Lessons stay on one form so you can hear yourself get it right. Typical contrasts include:
+
+- [present perfect vs past simple](/blog/present-perfect-vs-past-simple) — *I have sent* vs *I sent yesterday*
+- [a, an, and the](/blog/english-articles-a-an-the) — *a demo video* vs *the landing page*
+- [gerund vs infinitive](/blog/gerund-vs-infinitive) — *stop doing* vs *stop to do*
+- [second vs third conditional](/blog/second-vs-third-conditional) — *if I were* vs *if I had known*
+
+The first lesson uses your recent conversations or your goal. Later lessons use your open talks, so the grammar stays connected to how you actually speak.
+
+## Why it helps
+
+Grammar quizzes test recognition. Speaking tests retrieval. Interactive Lessons close that gap: you learn the rule, you say it, you get feedback on that form, and the next day you get a new form instead of looping the same *-ing* lesson.
+
+It is built for a daily habit. One finished lesson marks the day done. Open it again tomorrow and the next form is waiting.`,
+      ),
+    },
+    {
       id: 'vocabulary-practice',
       title: i18n._('AI Vocabulary Practice for Real Conversations'),
       subTitle: i18n._(

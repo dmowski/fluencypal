@@ -4,7 +4,7 @@ import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
-import { titleFontStyle } from '@/features/Landing/landingSettings';
+import { buttonStyle, titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeatureById } from './featuresData';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Button, Link, Stack, Typography } from '@mui/material';
@@ -57,6 +57,25 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
             <Typography sx={{ fontSize: '1.1rem', color: '#555', maxWidth: '900px' }}>
               {feature.subTitle}
             </Typography>
+
+            {!isRemoved && (
+              <Button
+                href={`${getAppUrlStart(lang)}quiz`}
+                variant="contained"
+                size="large"
+                data-analytics="feature-cta"
+                sx={{
+                  ...buttonStyle,
+                  marginTop: '8px',
+                  padding: '12px 36px',
+                  color: '#000',
+                  backgroundColor: '#05acff',
+                  alignSelf: 'flex-start',
+                }}
+              >
+                {i18n._('Get Started')}
+              </Button>
+            )}
 
             {isRemoved && (
               <Stack

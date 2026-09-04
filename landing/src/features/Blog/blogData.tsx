@@ -3,6 +3,7 @@ import { BlogAuthor, BlogPost } from './types';
 import { getI18nInstance } from '@/appRouterI18n';
 import { ResourceCategory } from '@/features/Blog/category';
 import { PhrasesArticles } from './Articles/phrases-for-an-interview';
+import { getGrammarSpeakingPracticePosts } from './Articles/grammarSpeakingPracticePosts';
 import { fetchBlogsFromApp } from './blogApi';
 
 export interface BlogInfo {
@@ -20,6 +21,7 @@ const getStaticBlogPosts = (lang: SupportedLanguage): BlogInfo => {
   ];
 
   const blogs: BlogPost[] = [
+    ...getGrammarSpeakingPracticePosts(lang),
     {
       id: 'the-stranger-in-my-house',
       title: i18n._('The stranger in my house'),

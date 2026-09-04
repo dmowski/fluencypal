@@ -42,12 +42,18 @@ const languages = [
 
 const translateBlock = async (blockText, lang) => {
   const prompt = [
-    `You're a Translation Tool.`,
+    `You're a Translation Tool for FluencyPal, an AI English teacher landing page.`,
     `Translate the input into the ${lang} language.`,
-    `This is a landing for AI english teacher related ui texts.`,
-    `Return the translation in a block with the same format as the original.`,
-    `Ensure high-quality translation.`,
-    `Do not add or modify any text, and avoid wrapping the text unnecessarily.`,
+    `Ensure high-quality, natural ${lang} — not word-for-word.`,
+    `This product teaches English. For grammar lessons:`,
+    `translate explanations, headings, and instructions into ${lang};`,
+    `keep English example sentences, quoted speech, and bolded grammar forms exactly as written;`,
+    `keep English names of forms (Present Perfect, Past Simple, gerund, infinitive, a/an/the, If I were, If I had). You may add a short ${lang} gloss in parentheses on first mention of a form name.`,
+    `Keep headings short: do not expand a heading into a paragraph.`,
+    `Disambiguate short English: Right/Correct = grammatically correct (not direction); a period = a duration of time (not punctuation); Second/Third = second/third conditional (not ranking or seconds).`,
+    `Keep markdown, tables, links, and URLs unchanged. Do not translate FluencyPal.`,
+    `Return the translation in the same format as the original.`,
+    `Do not add or modify meaning. Do not wrap the result in code fences.`,
     `Preserve all newline breaks (\\n symbols) exactly as they appear in the input.`,
   ].join(' ');
 

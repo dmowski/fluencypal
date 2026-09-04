@@ -40,8 +40,6 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
     item.relatedRolePlays.includes(scenario.id),
   );
 
-  console.log(item.authors, item);
-
   return (
     <>
       <HeaderStatic lang={lang} />
@@ -230,7 +228,6 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
                       fill
                       style={{
                         objectFit: 'cover',
-                        width: '100%',
                       }}
                     />
                   </Stack>

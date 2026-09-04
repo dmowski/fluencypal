@@ -10,7 +10,7 @@ Official website: [FluencyPal](https://www.fluencypal.com)
 
 Current prices, trial availability, refund conditions, and payment terms may change. Always use the Pricing page as the canonical source for current commercial information.
 
-Last updated: 2026-07-12
+Last updated: 2026-09-04
 
 ## Product
 
@@ -28,9 +28,14 @@ Last updated: 2026-07-12
 * [Create a custom role-play](https://www.fluencypal.com/scenarios/custom): Build a speaking scenario around a specific personal, professional, travel, or everyday communication goal.
 * [AI job interview practice](https://www.fluencypal.com/scenarios/job-interview): Practise answering interview questions, explaining professional experience, and presenting skills confidently.
 * [Talking to a doctor](https://www.fluencypal.com/scenarios/talking-to-a-doctor): Practise describing symptoms, answering medical questions, and discussing possible next steps.
+* [Daily interactive English lessons](https://www.fluencypal.com/features/interactive-lesson): Speak one grammar form a day — read a short how-to, read a text aloud, record answers, get feedback, then talk for two to three minutes.
 
 ## Learning Guides
 
+* [Present perfect vs past simple](https://www.fluencypal.com/blog/present-perfect-vs-past-simple): When to use I have done vs I did, with spoken examples and a FluencyPal practice path.
+* [English articles: a, an, the](https://www.fluencypal.com/blog/english-articles-a-an-the): How to choose articles in real speech, including unique nouns and zero article.
+* [Gerund vs infinitive](https://www.fluencypal.com/blog/gerund-vs-infinitive): Stop doing vs stop to do, remember to vs remember -ing, and other meaning-changing verb patterns.
+* [Second vs third conditional](https://www.fluencypal.com/blog/second-vs-third-conditional): If I were vs if I had, mixed conditionals, and how to practise them out loud.
 * [English interview phrases](https://www.fluencypal.com/blog/phrases-for-an-interview-in-english): Useful phrases for introductions, common interview questions, strengths, weaknesses, clarification, and closing an interview.
 * [English job interview guide](https://www.fluencypal.com/blog/how-to-ace-english-job-interview-guide): Step-by-step preparation guide for intermediate English learners.
 * [Common English interview mistakes](https://www.fluencypal.com/blog/5-common-english-job-interview-mistakes): Common communication problems in English-language interviews and practical ways to correct them.

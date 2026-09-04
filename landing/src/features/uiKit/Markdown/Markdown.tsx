@@ -154,9 +154,37 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr>{children}</tr>,
-  th: ({ children }) => <th>{children}</th>,
-  td: ({ children }) => <td>{children}</td>,
-  table: ({ children }) => <table>{children}</table>,
+  th: ({ children }) => (
+    <th
+      style={{
+        textAlign: 'left',
+        padding: '8px 10px',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.15)',
+        fontWeight: 650,
+      }}
+    >
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td
+      style={{
+        textAlign: 'left',
+        padding: '8px 10px',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+        verticalAlign: 'top',
+      }}
+    >
+      {children}
+    </td>
+  ),
+  table: ({ children }) => (
+    <div style={{ overflowX: 'auto', width: '100%', margin: '12px 0 20px' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1rem' }}>
+        {children}
+      </table>
+    </div>
+  ),
   img: (props) => <img {...props} style={{ maxWidth: '90%' }} />,
 };
 
