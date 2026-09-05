@@ -2,7 +2,6 @@ import { Button, Stack, Typography } from '@mui/material';
 
 import { Footer } from '../Landing/Footer';
 
-import { CtaBlock } from '../Landing/ctaBlock';
 import {
   buttonStyle,
   maxLandingWidth,
@@ -12,7 +11,7 @@ import {
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { BlogAuthors } from './BlogAuthors';
 import { getBlogs } from './blogData';
 import { getRolePlayScenarios } from '../RolePlay/rolePlayData';
@@ -20,6 +19,14 @@ import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
 import { HeaderStatic } from '../Header/HeaderStatic';
 import Image from 'next/image';
 import dayjs from 'dayjs';
+
+const INTERVIEW_PHRASE_POST_IDS = new Set([
+  'phrases-for-an-interview-in-english',
+  '15-business-english-phrases-interview',
+]);
+
+const INTERVIEW_PRACTICE_HREF = 'practice?rolePlayId=job-interview';
+const INTERVIEW_BLOG_CTA_ID = 'blog-interview-cta';
 
 interface BlogOnePageProps {
   id?: string;
@@ -241,6 +248,47 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
                       }}
                     >
                       {item.contendElement}
+                    </Stack>
+                  )}
+                  {INTERVIEW_PHRASE_POST_IDS.has(item.id) && (
+                    <Stack
+                      sx={{
+                        width: '100%',
+                        maxWidth: '800px',
+                        gap: '12px',
+                        padding: '24px',
+                        borderRadius: '16px',
+                        backgroundColor: 'rgba(43, 35, 88, 0.06)',
+                        border: '1px solid rgba(43, 35, 88, 0.15)',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: '#222',
+                          fontWeight: 600,
+                          fontSize: '1.15rem',
+                        }}
+                      >
+                        {i18n._('Practice these phrases out loud')}
+                      </Typography>
+                      <Typography sx={{ color: '#444' }}>
+                        {i18n._(
+                          'Try a mock interview with AI using the phrases from this article.',
+                        )}
+                      </Typography>
+                      <Button
+                        href={`${getAppUrlStart(lang)}${INTERVIEW_PRACTICE_HREF}`}
+                        id={INTERVIEW_BLOG_CTA_ID}
+                        data-analytics={INTERVIEW_BLOG_CTA_ID}
+                        variant="contained"
+                        sx={{
+                          ...buttonStyle,
+                          alignSelf: 'flex-start',
+                          height: '3rem',
+                        }}
+                      >
+                        {i18n._('Start the interview')}
+                      </Button>
                     </Stack>
                   )}
                 </Stack>
