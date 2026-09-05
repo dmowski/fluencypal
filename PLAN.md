@@ -8,3 +8,7 @@ General strategy:
 ## Advanced Practice
 
 webApp/src/features/InteractiveLesson/AGENTS.md
+
+Make more speech tasks +1
+
+Record reals about Dublin
