@@ -6,7 +6,7 @@ const lessonShape = `Return JSON:
   "title": "3-5 words that name the language point, not the topic",
   "subTitle": "5-7 words: the form they must use",
   "parts": [
-    { "contentMD": "markdown the learner reads or reads aloud", "type": "read" | "speech" }
+    { "type": "read" | "speech", "contentMD": "markdown the learner reads or reads aloud" }
   ]
 }`;
 
@@ -35,8 +35,10 @@ Typical flow:
   You MAY add a short native-language gloss or comparison when it makes the rule
   clearer (one line or a short sentence, not a full translation of the lesson).
   Most of the text stays in the TARGET language.
-- SECOND part (required): type "speech". A short text the learner must READ ALOUD
-  (about 6-10 sentences, or 2 short paragraphs). Use the form several times.
+- SECOND part (required): type "speech". A longer text the learner must READ ALOUD
+  (4-5 short paragraphs, about 15-22 sentences / 200-320 words — not 2 short
+  paragraphs). A small story or everyday scene that uses the form many times.
+  Keep the whole part under 3500 characters so playback still works.
   Start with one line: tell them to read the text aloud. Then the text itself.
   No question, no "say one sentence of your own" here.
 - Then more speech: invite them to use the form (they may add extra sentences);
@@ -110,7 +112,7 @@ ${context.userGoalText}`;
   return `The learner has no conversation history and no saved goal.
 Create a solid middle-level (CEFR B1) lesson for the target language around ONE form
 (e.g. past simple + time phrase, or a/the with unique nouns): a 4-5 paragraph how-to
-explanation, a short text to read aloud, then voice tasks that force that form.
+explanation, a longer 4-5 paragraph text to read aloud, then voice tasks that force that form.
 The last part must be a 2-3 minute open talk on a simple everyday topic.
 
 ${banned}`;
@@ -217,9 +219,7 @@ ${params.userVoiceTranscript}
 Accept extra talk around the form. Only judge whether the language is good.`;
 };
 
-export const buildLessonResultsSystemPrompt = (params: {
-  targetLanguageName: string;
-}): string => {
+export const buildLessonResultsSystemPrompt = (params: { targetLanguageName: string }): string => {
   return `You write a short closing for one completed speaking lesson.
 Language for the text: ${params.targetLanguageName} (keep it readable).
 Return JSON:

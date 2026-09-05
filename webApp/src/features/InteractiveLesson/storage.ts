@@ -85,8 +85,12 @@ const parseAudioProgress = (value: unknown): LessonAudioProgress | null => {
   if (!isRecord(value)) return null;
   if (typeof value.totalCount !== 'number' || value.totalCount < 0) return null;
   if (!Array.isArray(value.first) || !Array.isArray(value.last)) return null;
-  const first = value.first.map(parseAudioRecord).filter((record): record is LessonAudioRecord => !!record);
-  const last = value.last.map(parseAudioRecord).filter((record): record is LessonAudioRecord => !!record);
+  const first = value.first
+    .map(parseAudioRecord)
+    .filter((record): record is LessonAudioRecord => !!record);
+  const last = value.last
+    .map(parseAudioRecord)
+    .filter((record): record is LessonAudioRecord => !!record);
   return { first, last, totalCount: value.totalCount };
 };
 

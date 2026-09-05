@@ -41,6 +41,7 @@ describe('buildLessonPrompts', () => {
 
     expect(prompt).toContain('4-5 short paragraphs');
     expect(prompt).toContain('READ ALOUD');
+    expect(prompt).toContain('200-320 words');
     expect(prompt).toContain('native-language');
     expect(prompt).toContain('SECOND part');
   });

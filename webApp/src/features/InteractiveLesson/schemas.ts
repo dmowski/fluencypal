@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
 
 export const generatedLessonSchema = z.object({
   title: z.string().min(1),
@@ -17,6 +18,9 @@ export const generatedLessonSchema = z.object({
     })
     .refine((parts) => parts[1]?.type === 'speech', {
       message: 'The second part must be a read-aloud speech task',
+    })
+    .refine((parts) => (parts[1]?.contentMD.trim().length ?? 0) >= READ_ALOUD_MIN_CONTENT_CHARS, {
+      message: 'The read-aloud text must be a longer passage',
     })
     .refine((parts) => parts[parts.length - 1]?.type === 'speech', {
       message: 'The last part must be an open speech task',
