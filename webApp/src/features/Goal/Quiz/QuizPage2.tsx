@@ -37,6 +37,7 @@ import { useAccess } from '@/features/Usage/useAccess';
 import { AccessQuizStep } from './AccessQuizStep';
 import { TrialPriceQuizStep } from './TrialPriceQuizStep';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
+import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 
 const QuizQuestions = () => {
   const {
@@ -67,6 +68,11 @@ const QuizQuestions = () => {
     defaultGroupTitle: i18n._(`Other languages`),
     systemLanguagesTitle: i18n._(`System languages`),
   });
+
+  const recordAboutQuestion = i18n._(
+    `Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`,
+  );
+  const recordAboutTitle = i18n._('Tell me about yourself');
 
   const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
   const nativeLanguageName =
@@ -224,8 +230,11 @@ const QuizQuestions = () => {
           {currentStep === 'recordAbout' && (
             <AuthWall>
               <RecordUserAudio
-                title={i18n._('Tell me about yourself')}
-                subTitle={`${i18n._(`Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`)}`}
+                title={recordAboutTitle}
+                subTitle={recordAboutQuestion}
+                subTitleComponent={
+                  <QuizRecordAboutPrompt text={`${recordAboutTitle}. ${recordAboutQuestion}`} />
+                }
                 transcript={survey?.aboutUserTranscription || ''}
                 minWords={MIN_WORDS_FOR_ANSWER}
                 analyticsSurface="quiz"

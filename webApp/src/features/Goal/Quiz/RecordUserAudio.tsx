@@ -10,6 +10,7 @@ import { ColorIconTextList, ColorIconTextListItem } from '@/features/Survey/Colo
 import { InterviewQuizButton } from './InterviewQuizButton';
 import { SpeechSurface } from '@/features/Analytics/Custom/types';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
+import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 
 export const RecordUserAudio = ({
   transcript,
@@ -38,6 +39,12 @@ export const RecordUserAudio = ({
 }) => {
   const { i18n } = useLingui();
   const recorder = useAudioRecorder();
+  const conversationAudio = useConversationAudio();
+
+  const startRecording = async () => {
+    conversationAudio.interrupt();
+    return recorder.startRecording();
+  };
 
   useEffect(() => {
     if (recorder.transcription) {
@@ -126,7 +133,7 @@ export const RecordUserAudio = ({
             visualizerComponent={recorder.visualizerComponent}
             isRecording={recorder.isRecording}
             stopRecording={recorder.stopRecording}
-            startRecording={recorder.startRecording}
+            startRecording={startRecording}
             clearTranscript={clearTranscript}
             error={recorder.error}
           />
