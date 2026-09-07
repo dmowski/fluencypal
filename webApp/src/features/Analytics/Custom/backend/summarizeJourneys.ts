@@ -5,6 +5,7 @@ import {
   JourneyOsRow,
   JourneySummary,
 } from '../types';
+import { isInternalAnalyticsAuthUserId } from '../analyticsPath';
 import { isReportableVisitor } from '../isReportableVisitor';
 
 const countBy = (items: string[]): { key: string; count: number }[] => {
@@ -21,7 +22,9 @@ export const summarizeJourneys = (
   dayKey: string,
   visitors: AnalyticsVisitorDoc[],
 ): JourneySummary => {
-  const counted = visitors.filter(isReportableVisitor);
+  const counted = visitors.filter(
+    (visitor) => isReportableVisitor(visitor) && !isInternalAnalyticsAuthUserId(visitor.authUserId),
+  );
   const dropOff: JourneyDropOffRow[] = countBy(
     counted.map((visitor) => visitor.lastPath || '(unknown)'),
   ).map((row) => ({

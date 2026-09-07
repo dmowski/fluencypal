@@ -12,6 +12,7 @@ import {
 } from '../landingSettings';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { RolePlayCard } from './RolePlayCard';
+import { SCENARIO_FOOTER_CTA_ID, SCENARIO_HERO_CTA_ID, ScenarioPlayCta } from './ScenarioPlayCta';
 import {
   fullEnglishLanguageName,
   SupportedLanguage,
@@ -174,6 +175,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 </Button>
                 <Button
                   href={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                  id={SCENARIO_HERO_CTA_ID}
+                  data-analytics={SCENARIO_HERO_CTA_ID}
                   sx={{
                     ...buttonStyle,
                     height: '3rem',
@@ -293,58 +296,14 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     ></iframe>
                   )}
-                </Stack>
 
-                {item.exampleOfFirstMessageFromAi && (
-                  <Stack
-                    sx={{
-                      maxWidth: '800px',
-                      boxSizing: 'border-box',
-                      width: '100%',
-                      alignItems: 'flex-start',
-                      gap: '15px',
-                    }}
-                  >
-                    <Stack>
-                      <Typography
-                        variant="h6"
-                        component={'h2'}
-                        sx={{
-                          fontWeight: 600,
-                          fontSize: '1.2rem',
-                        }}
-                      >
-                        {i18n._(`Ready to play?`)}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                        }}
-                      >
-                        {item.exampleOfFirstMessageFromAi}
-                      </Typography>
-                    </Stack>
-                    <Stack
-                      sx={{
-                        flexDirection: 'column',
-                        gap: '5px 20px',
-                        flexWrap: 'wrap',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Button
-                        variant="outlined"
-                        sx={{
-                          ...buttonStyle,
-                          minWidth: '300px',
-                        }}
-                        href={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
-                      >
-                        {i18n._(`Start`)} "{item.shortTitle}"
-                      </Button>
-                    </Stack>
-                  </Stack>
-                )}
+                  <ScenarioPlayCta
+                    i18n={i18n}
+                    href={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                    shortTitle={item.shortTitle}
+                    openingLine={item.exampleOfFirstMessageFromAi}
+                  />
+                </Stack>
 
                 <Stack
                   sx={{
@@ -473,9 +432,10 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
         </Stack>
 
         <CtaBlock
-          title={i18n._(`Ready to Become Fluent in English?`)}
-          actionButtonTitle={i18n._(`Start Learning Now`)}
-          actionButtonLink={`${getAppUrlStart(lang)}quiz`}
+          title={i18n._(`Ready to play?`)}
+          actionButtonTitle={`${i18n._(`Start`)} "${item.shortTitle}"`}
+          actionButtonLink={`${getAppUrlStart(lang)}practice?rolePlayId=${item.id}`}
+          actionButtonId={SCENARIO_FOOTER_CTA_ID}
         />
       </div>
       <Footer lang={lang} />

@@ -27,6 +27,8 @@ export const stripVisitorIdFromHref = (href: string, queryKey: string): string =
   }
 };
 
+export const INTERNAL_ANALYTICS_AUTH_USER_IDS = ['Mq2HfU3KrXTjNyOpPXqHSPg5izV2'] as const;
+
 export const isInternalAnalyticsHost = (host: string | null | undefined): boolean => {
   if (!host) return false;
   return host.includes('localhost') || host.includes('127.0.0.1');
@@ -35,4 +37,9 @@ export const isInternalAnalyticsHost = (host: string | null | undefined): boolea
 export const isInternalAnalyticsPath = (path: string | null | undefined): boolean => {
   if (!path) return false;
   return path === '/testUi' || path.startsWith('/testUi/') || path.startsWith('/testUi?');
+};
+
+export const isInternalAnalyticsAuthUserId = (uid: string | null | undefined): boolean => {
+  if (!uid) return false;
+  return (INTERNAL_ANALYTICS_AUTH_USER_IDS as readonly string[]).includes(uid);
 };

@@ -9,7 +9,13 @@ import { isReportableVisitor, shouldPersistAnalyticsEvent } from './isReportable
 import { classifyCta } from './classifyCta';
 import { nextScrollBucket } from './pageEngagement';
 import { parseTraffic } from './parseTraffic';
-import { normalizeAnalyticsPath, stripVisitorIdFromHref, isInternalAnalyticsHost, isInternalAnalyticsPath } from './analyticsPath';
+import {
+  normalizeAnalyticsPath,
+  stripVisitorIdFromHref,
+  isInternalAnalyticsAuthUserId,
+  isInternalAnalyticsHost,
+  isInternalAnalyticsPath,
+} from './analyticsPath';
 import {
   cookieDomainForHost,
   decorateAppHref,
@@ -296,6 +302,36 @@ describe('summarizeJourneys', () => {
         reachedQuiz: false,
         reachedPractice: true,
       },
+      {
+        visitorId: 'fpv_founder',
+        createdAtIso: '2026-08-28T13:00:00.000Z',
+        lastSeenAtIso: '2026-08-28T13:10:00.000Z',
+        firstPath: '/practice',
+        lastPath: '/practice',
+        lastEventName: 'conversation_start',
+        lastHost: 'app.fluencypal.com',
+        firstHost: 'app.fluencypal.com',
+        firstSourceApp: 'webapp',
+        lastSourceApp: 'webapp',
+        eventCount: 12,
+        userAgent: 'Mozilla',
+        os: 'macOS 14.0',
+        browser: 'Chrome',
+        screenWidth: 1440,
+        screenHeight: 900,
+        language: 'en',
+        authUserId: 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2',
+        lastReferrer: '',
+        reachedLanding: true,
+        reachedApp: true,
+        reachedAuth: true,
+        reachedQuiz: true,
+        reachedPractice: true,
+        reachedConversation: true,
+        reachedSpeech: true,
+        reachedPaywall: true,
+        reachedCheckout: true,
+      },
     ]);
 
     expect(summary.visitorCount).toBe(2);
@@ -308,6 +344,7 @@ describe('summarizeJourneys', () => {
     expect(summary.funnel.checkout).toBe(0);
     expect(summary.dropOff.map((row) => row.path).sort()).toEqual(['/', '/practice']);
     expect(summary.visitors.map((visitor) => visitor.visitorId)).not.toContain('fpv_crawler');
+    expect(summary.visitors.map((visitor) => visitor.visitorId)).not.toContain('fpv_founder');
   });
 });
 
@@ -328,6 +365,12 @@ describe('normalizeAnalyticsPath', () => {
     expect(isInternalAnalyticsHost('www.fluencypal.com')).toBe(false);
     expect(isInternalAnalyticsPath('/testUi')).toBe(true);
     expect(isInternalAnalyticsPath('/practice')).toBe(false);
+  });
+
+  it('excludes the founder firebase uid from reports', () => {
+    expect(isInternalAnalyticsAuthUserId('Mq2HfU3KrXTjNyOpPXqHSPg5izV2')).toBe(true);
+    expect(isInternalAnalyticsAuthUserId('uid-1')).toBe(false);
+    expect(isInternalAnalyticsAuthUserId(null)).toBe(false);
   });
 });
 

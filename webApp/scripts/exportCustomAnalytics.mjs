@@ -66,7 +66,12 @@ const isInternalPath = (value) => {
   return value === '/testUi' || String(value).startsWith('/testUi/') || String(value).startsWith('/testUi?');
 };
 
+// Keep in sync with INTERNAL_ANALYTICS_AUTH_USER_IDS in analyticsPath.ts
+const INTERNAL_AUTH_USER_IDS = new Set(['Mq2HfU3KrXTjNyOpPXqHSPg5izV2']);
+
 const isInternalVisitor = (visitor, events) => {
+  if (INTERNAL_AUTH_USER_IDS.has(visitor.authUserId)) return true;
+  if (events.some((event) => INTERNAL_AUTH_USER_IDS.has(event.authUserId))) return true;
   if (
     [visitor.referrerHost, visitor.firstHost, visitor.lastHost].some((host) => isInternalHost(host))
   ) {

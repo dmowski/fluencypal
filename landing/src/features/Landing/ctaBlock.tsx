@@ -6,11 +6,13 @@ interface CtaBlockProps {
   title: string;
   actionButtonTitle: string;
   actionButtonLink: string;
+  actionButtonId?: string;
 }
 export const CtaBlock: React.FC<CtaBlockProps> = ({
   title,
   actionButtonLink,
   actionButtonTitle,
+  actionButtonId,
 }) => {
   return (
     <Stack
@@ -57,6 +59,8 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
         </Stack>
         <Button
           href={actionButtonLink}
+          id={actionButtonId}
+          data-analytics={actionButtonId}
           variant="contained"
           size="large"
           sx={{
