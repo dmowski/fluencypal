@@ -18,6 +18,7 @@ import {
   parseTraffic,
 } from './protocol';
 import { decorateAppHref, getOrCreateParentVisitorId } from './parentVisitorId';
+import { useCookieConsent } from '@/features/Legal/cookieConsent';
 
 const iframeStyle: React.CSSProperties = {
   position: 'absolute',
@@ -70,7 +71,8 @@ export function CustomAnalyticsHost() {
   const leaveSentAtRef = useRef(0);
   const visitorIdRef = useRef('');
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
-  const skip = isBotBrowser();
+  const cookieConsent = useCookieConsent();
+  const skip = isBotBrowser() || cookieConsent !== 'accepted';
 
   const ensureVisitorId = (): string => {
     if (!visitorIdRef.current) {
