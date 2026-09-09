@@ -34,6 +34,8 @@ import { avatars } from './avatars';
 import { generateRandomUsername } from './userNames';
 import { useUrlState } from '../Url/useUrlState';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
+import { isFetchNetworkError } from '@/libs/sentry/isFetchNetworkError';
+import * as Sentry from '@sentry/nextjs';
 
 interface GameContextType {
   stats: UsersStat[];
@@ -218,7 +220,13 @@ function useProvideGame(): GameContextType {
   const resetPointsIfNeeded = async () => {
     if (!userId || isLoading || !gameAvatars) return;
     if (myStats) return; // Avatar already set
-    await resetGamePointsRequest();
+    try {
+      await resetGamePointsRequest();
+    } catch (error) {
+      // Interval + tab backgrounding: fetch fails as TypeError Failed to fetch (DARK-LANG-J1).
+      if (isFetchNetworkError(error)) return;
+      Sentry.captureException(error);
+    }
   };
 
   const setDefaultAvatarIfNeeded = async () => {

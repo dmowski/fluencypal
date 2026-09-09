@@ -17,4 +17,10 @@ describe('sentryIgnoreErrors', () => {
   it('still reports unrelated app errors', () => {
     expect(matchesIgnore('TypeError: Cannot read properties of undefined')).toBe(false);
   });
+
+  it('drops browser-extension M_ID injectors', () => {
+    expect(matchesIgnore("TypeError: Cannot read properties of undefined (reading 'M_ID')")).toBe(
+      true,
+    );
+  });
 });

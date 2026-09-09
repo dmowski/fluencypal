@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { ANALYTICS_VISITOR_STORAGE_KEY } from './constants';
 import { isAllowedAnalyticsOrigin } from './allowedOrigins';
 import { buildReadyMessage, isAnalyticsMessage } from './protocol';
-import { AnalyticsClientEvent, IngestEventRequest, IngestEventResponse } from './types';
+import { ingestClientEvent } from './ingestClientEvent';
 import { createVisitorId, isValidVisitorId } from './visitorId';
 import { validateClientEvent, validateVisitorId } from './validateEvent';
 
@@ -37,23 +37,6 @@ const getOrCreateVisitorId = (): string => {
 const notifyParentReady = (parentOrigin: string): void => {
   if (window.parent === window) return;
   window.parent.postMessage(buildReadyMessage(), parentOrigin);
-};
-
-const ingestEvent = async (visitorId: string, event: AnalyticsClientEvent): Promise<void> => {
-  const body: IngestEventRequest = { visitorId, event };
-  const response = await fetch('/api/analytics/ingest', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Fp-Analytics': 'tracker',
-    },
-    body: JSON.stringify(body),
-    keepalive: true,
-  });
-  if (!response.ok) {
-    const payload = (await response.json().catch(() => null)) as IngestEventResponse | null;
-    console.warn('Custom analytics ingest failed', payload?.error || response.status);
-  }
 };
 
 export function TrackerPage() {
@@ -93,7 +76,7 @@ export function TrackerPage() {
       if (event.data.type !== 'event') return;
       const validated = validateClientEvent(event.data.event);
       if (!validated) return;
-      void ingestEvent(visitorId, validated);
+      void ingestClientEvent(visitorId, validated);
     };
 
     window.addEventListener('message', onMessage);

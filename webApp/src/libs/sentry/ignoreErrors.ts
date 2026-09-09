@@ -13,4 +13,6 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   /Data lost due to missing file/,
   // Expected when the browser is offline
   /Failed to get document because the client is offline/,
+  // Browser-extension injectors (DARK-LANG-HZ / DARK-LANG-J0); no first-party frames
+  /Cannot read properties of undefined \(reading 'M_ID'\)/,
 ];

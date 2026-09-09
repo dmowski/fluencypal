@@ -1,6 +1,7 @@
 'use client';
 
 import * as Sentry from '@sentry/nextjs';
+import { sentryDenyUrls } from '@/libs/sentry/denyUrls';
 import { sentryIgnoreErrors } from '@/libs/sentry/ignoreErrors';
 import { sentryIgnoreSpans } from '@/libs/sentry/ignoreSpans';
 
@@ -21,6 +22,9 @@ export const initSentry = () => {
 
     // Drop IndexedDB/offline/expired-link noise that is not actionable in app code.
     ignoreErrors: sentryIgnoreErrors,
+
+    // Drop Chrome/Edge extension injectors (no first-party frames).
+    denyUrls: sentryDenyUrls,
 
     // Define how likely Replay events are sampled.
     // This sets the sample rate to be 10%. You may want this to be 100% while
