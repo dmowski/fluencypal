@@ -58,6 +58,43 @@ const normalizePath = (rawPath) => {
   }
 };
 
+// Keep in sync with quizStepFromAnalyticsPath / entryKindFromAnalyticsPath in analyticsPath.ts
+const quizStepFromPath = (eventPath) => {
+  const normalized = normalizePath(eventPath);
+  if (!/(^|\/)quiz(\/|$|\?)/i.test(normalized)) return null;
+  try {
+    const url = new URL(normalized, 'https://app.fluencypal.com');
+    return url.searchParams.get('currentStep') || 'start';
+  } catch {
+    return 'start';
+  }
+};
+
+const entryKindFromPath = (eventPath) => {
+  const normalized = normalizePath(eventPath);
+  let pathname = '/';
+  try {
+    pathname = new URL(normalized, 'https://app.fluencypal.com').pathname || '/';
+  } catch {
+    pathname = normalized.split('?')[0] || '/';
+  }
+  const withoutLang = (pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/').toLowerCase();
+  if (
+    /\/scenarios(\/|$)/.test(withoutLang) ||
+    withoutLang === '/alias' ||
+    withoutLang.startsWith('/alias/')
+  ) {
+    return 'scenario';
+  }
+  if (/\/blog(\/|$)/.test(withoutLang)) return 'blog';
+  if (/\/quiz(\/|$)/.test(withoutLang)) return 'quiz';
+  if (/\/practice(\/|$)/.test(withoutLang)) return 'practice';
+  if (/\/pricing(\/|$)/.test(withoutLang) || /\/price(\/|$)/.test(withoutLang)) return 'pricing';
+  if (/\/features(\/|$)/.test(withoutLang)) return 'features';
+  if (withoutLang === '/') return 'home';
+  return 'other';
+};
+
 const isInternalHost = (host) =>
   Boolean(host && (String(host).includes('localhost') || String(host).includes('127.0.0.1')));
 
@@ -225,13 +262,31 @@ const firstPaths = [];
 const lastPaths = [];
 const quizCtaIds = [];
 const signInCtaIds = [];
+const quizSteps = [];
+const identifyPaths = [];
+const appCtaIds = [];
 const conversationStartPaths = [];
 const pathBeforeSpeak = [];
 const speechSurfaces = [];
 const durationMaxByVisitorPath = new Map();
+const entryByKind = new Map();
 let paywallViews = 0;
 let checkoutStarts = 0;
 let newVisitorCount = 0;
+
+const bumpEntry = (kind, flags) => {
+  const row = entryByKind.get(kind) || {
+    visitors: 0,
+    reachedApp: 0,
+    speech: 0,
+    conversation: 0,
+  };
+  row.visitors += 1;
+  if (flags.app) row.reachedApp += 1;
+  if (flags.speech) row.speech += 1;
+  if (flags.conversation) row.conversation += 1;
+  entryByKind.set(kind, row);
+};
 
 for (const visitor of visitors) {
   const events = eventsByVisitorId[visitor.visitorId] || [];
@@ -240,6 +295,18 @@ for (const visitor of visitors) {
   if (isNew) newVisitorCount += 1;
   addFlagsToFunnel(funnel, flags);
   if (isNew) addFlagsToFunnel(funnelNew, flags);
+
+  const firstPath = normalizePath(events[0]?.path || visitor.firstPath || '(unknown)');
+  bumpEntry(entryKindFromPath(firstPath), flags);
+  const seenQuizSteps = new Set();
+  for (const event of events) {
+    const step = quizStepFromPath(event.path);
+    if (step) seenQuizSteps.add(step);
+    if (event.name === 'speech_start' && event.speechSurface === 'quiz') {
+      seenQuizSteps.add('quizSpeech');
+    }
+  }
+  for (const step of seenQuizSteps) quizSteps.push(step);
 
   let landingMaxScroll = 0;
   let landingMaxDuration = 0;
@@ -288,6 +355,17 @@ for (const events of Object.values(eventsByVisitorId)) {
       if (ctaClicks[event.ctaIntent] !== undefined) ctaClicks[event.ctaIntent] += 1;
       if (event.ctaIntent === 'quiz') quizCtaIds.push(event.ctaId || 'quiz');
       if (event.ctaIntent === 'signin') signInCtaIds.push(event.ctaId || 'signin');
+    }
+    if (
+      event.name === 'click' &&
+      event.sourceApp === 'webapp' &&
+      event.ctaId &&
+      event.ctaId !== 'other'
+    ) {
+      appCtaIds.push(event.ctaId);
+    }
+    if (event.name === 'identify') {
+      identifyPaths.push(eventPath || '(unknown)');
     }
     if (event.name === 'conversation_start' && !recordedSpeak) {
       recordedSpeak = true;
@@ -342,6 +420,12 @@ const payload = {
     conversationStartPaths: countBy(conversationStartPaths),
     pathBeforeSpeak: countBy(pathBeforeSpeak),
     speechSurfaces: countBy(speechSurfaces),
+    quizSteps: countBy(quizSteps),
+    identifyPaths: countBy(identifyPaths),
+    appCtaIds: countBy(appCtaIds),
+    entry: [...entryByKind.entries()]
+      .map(([key, value]) => ({ key, ...value }))
+      .sort((a, b) => b.visitors - a.visitors),
     durationByPath: [...durationMaxByVisitorPath.entries()]
       .map(([eventPath, value]) => ({
         path: eventPath,

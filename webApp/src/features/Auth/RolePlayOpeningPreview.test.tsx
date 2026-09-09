@@ -49,6 +49,10 @@ describe('RolePlayOpeningPreview', () => {
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Hear the first line' }));
+    expect(screen.getByRole('button', { name: 'Hear the first line' })).toHaveAttribute(
+      'data-analytics',
+      'hear-first-line',
+    );
     expect(play).toHaveBeenCalled();
   });
 });

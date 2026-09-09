@@ -18,6 +18,8 @@ export const InterviewQuizButton: React.FC<{
   secondButtonDisabled?: boolean;
   actionButtonBadgeText?: string;
   secondButtonBadgeText?: string;
+  actionButtonAnalyticsId?: string;
+  secondButtonAnalyticsId?: string;
 }> = ({
   onClick,
   color,
@@ -33,6 +35,8 @@ export const InterviewQuizButton: React.FC<{
   secondButtonDisabled,
   actionButtonBadgeText,
   secondButtonBadgeText,
+  actionButtonAnalyticsId,
+  secondButtonAnalyticsId,
 }) => {
   return (
     <Stack
@@ -72,6 +76,7 @@ export const InterviewQuizButton: React.FC<{
           disabled={disabled}
           type={type}
           size="large"
+          {...(actionButtonAnalyticsId ? { 'data-analytics': actionButtonAnalyticsId } : {})}
           sx={{
             width: `max-content`,
             minWidth: '200px',
@@ -115,6 +120,7 @@ export const InterviewQuizButton: React.FC<{
             type={type}
             size="large"
             disabled={secondButtonDisabled}
+            {...(secondButtonAnalyticsId ? { 'data-analytics': secondButtonAnalyticsId } : {})}
             sx={{
               width: `max-content`,
               paddingTop: '12px',

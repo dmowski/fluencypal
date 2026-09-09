@@ -34,6 +34,7 @@ export const QuizRecordAboutPrompt = ({ text }: { text: string }) => {
         customInstructions={instructions}
         cache
         autoPlay
+        analyticsId="hear-question"
       />
     </Stack>
   );

@@ -15,6 +15,8 @@ import {
   isInternalAnalyticsAuthUserId,
   isInternalAnalyticsHost,
   isInternalAnalyticsPath,
+  quizStepFromAnalyticsPath,
+  entryKindFromAnalyticsPath,
 } from './analyticsPath';
 import {
   cookieDomainForHost,
@@ -141,6 +143,15 @@ describe('classifyCta', () => {
     expect(classifyCta({ href: 'https://www.fluencypal.com/vi/features/ai-speaking-practice' }).ctaIntent).toBe(
       'other',
     );
+  });
+
+  it('keeps in-app hear and Google ids as named other CTAs', () => {
+    expect(classifyCta({ href: '', buttonId: 'auth-google' })).toEqual({
+      ctaId: 'auth-google',
+      ctaIntent: 'other',
+    });
+    expect(classifyCta({ href: '', buttonId: 'hear-question' }).ctaId).toBe('hear-question');
+    expect(classifyCta({ href: '', buttonId: 'hear-first-line' }).ctaId).toBe('hear-first-line');
   });
 });
 
@@ -358,6 +369,28 @@ describe('normalizeAnalyticsPath', () => {
     );
     expect(normalizeAnalyticsPath('/practice?inbox=true&inboxType=chat')).toBe('/practice');
     expect(normalizeAnalyticsPath('/?fpv=fpv_11111111-1111-4111-8111-111111111111')).toBe('/');
+  });
+
+  it('reads the quiz onboarding step from the stored path', () => {
+    expect(quizStepFromAnalyticsPath('/ar/quiz?currentStep=before_recordAbout')).toBe(
+      'before_recordAbout',
+    );
+    expect(quizStepFromAnalyticsPath('/quiz')).toBe('start');
+    expect(quizStepFromAnalyticsPath('/practice?rolePlayId=alias-game')).toBeNull();
+  });
+
+  it('groups first paths into entry kinds for the daily report', () => {
+    expect(entryKindFromAnalyticsPath('/')).toBe('home');
+    expect(entryKindFromAnalyticsPath('/ms')).toBe('home');
+    expect(entryKindFromAnalyticsPath('/scenarios/hotel-check-in')).toBe('scenario');
+    expect(entryKindFromAnalyticsPath('/da/scenarios/alias-game')).toBe('scenario');
+    expect(entryKindFromAnalyticsPath('/fr/alias')).toBe('scenario');
+    expect(entryKindFromAnalyticsPath('/ar/blog/phrases-for-an-interview-in-english')).toBe('blog');
+    expect(entryKindFromAnalyticsPath('/pt/quiz?currentStep=before_recordAbout')).toBe('quiz');
+    expect(entryKindFromAnalyticsPath('/practice?rolePlayId=small-talk-with-a-stranger')).toBe(
+      'practice',
+    );
+    expect(entryKindFromAnalyticsPath('/es/features/role-play')).toBe('features');
   });
 
   it('flags localhost and testUi as internal', () => {

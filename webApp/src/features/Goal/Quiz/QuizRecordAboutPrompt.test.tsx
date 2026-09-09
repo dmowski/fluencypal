@@ -53,6 +53,10 @@ describe('QuizRecordAboutPrompt', () => {
 
     expect(screen.getByTestId('quiz-record-about-prompt')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Hear the question' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Hear the question' })).toHaveAttribute(
+      'data-analytics',
+      'hear-question',
+    );
 
     await waitFor(() => {
       expect(mockSpeak).toHaveBeenCalledWith(

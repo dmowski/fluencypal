@@ -109,6 +109,10 @@ describe('SignInForm', () => {
     );
     expect(screen.getByRole('button', { name: 'Hear the first line' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
+      'data-analytics',
+      'auth-google',
+    );
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();

@@ -231,6 +231,7 @@ export const AuthWallBasic = ({
             onClick={signInWithEmail}
             disabled={isValidEmailError || isEmailSignInLoading}
             width={width}
+            actionButtonAnalyticsId="auth-email-send"
           />
         )}
 
@@ -317,6 +318,8 @@ export const AuthWallBasic = ({
             listItemsAfterActions={authListAfterActions}
             disabled={isGoogleSignInLoading}
             isStepLoading={isGoogleSignInLoading}
+            actionButtonAnalyticsId="auth-google"
+            secondButtonAnalyticsId="auth-email"
             subComponent={
               authSubComponent || googleSignInError ? (
                 <Stack>

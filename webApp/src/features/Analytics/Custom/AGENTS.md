@@ -26,10 +26,12 @@ When the user asks what happened today (or similar):
 Today (YYYY-MM-DD)  [UTC]
 - Visitors: N (new / returning; bots + internal excluded)
 - Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-today)
+- Quiz steps: insights.quizSteps (teacherSelection / before_recordAbout / recordAbout / quizSpeech)
+- Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds)
-- Path to first speak: pathBeforeSpeak + conversationStartPaths
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line)
+- Path to first speak: pathBeforeSpeak + conversationStartPaths; identifyPaths for where they signed in
 - Voice: funnel.speech vs funnel.conversation; insights.speechSurfaces (quiz / lesson / conversation)
 - GEO/SEO: countries, languages, referrers, UTM, firstPaths, plus `searchConsole` (queries/pages; data lags 2–3 days)
 - Where they stop: top last paths
@@ -67,6 +69,10 @@ Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and 
 
 Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions` and drop UTM, inbox ids, and `fpv`.
 
+Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
+
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`.
+
 Export (`pnpm analytics:export`) is a **UTC day**. Funnel and CTAs are computed from that day's events (not lifetime visitor flags). Use `funnelNew` for first-seen-today visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 
 Optional: `GSC_SITE_URL` in `webApp/.env` (`sc-domain:fluencypal.com` or `https://www.fluencypal.com/`).
@@ -88,6 +94,12 @@ Admin UI: `/staats/journey`
 ## How to read for product questions
 
 **Start a conversation:** compare `clickedQuizCta` / `clickedSignInCta` vs `reachedQuiz` vs `reachedPractice` vs `reachedConversation`. If they open practice but do not speak, the blocker is in-app (auth, mic, empty canvas), not the landing CTA. If they bounce with low scroll and short `landingDurationMs`, the hero/CTA is the problem.
+
+**Quiz auth vs mic:** `insights.quizSteps` — `before_recordAbout` without `recordAbout` is Google/email. `recordAbout` without `quizSpeech` is they never pressed the mic. Pair with `appCtaIds` (`hear-question`, `auth-google`) and `identifyPaths`.
+
+**Scenario SEO:** `insights.entry` row `scenario` — visitors vs `reachedApp` vs speech. High scroll on `/scenarios/*` with low `reachedApp` means they read and did not Play.
+
+**Hear then leave:** `appCtaIds` `hear-first-line` / `hear-question` without a matching `identify` on that path. Do not treat landing CTA as the fix.
 
 **Why they exit:** last path + last event + time on that page. Landing leave at <25% scroll = did not see How it works. App leave on quiz = onboarding friction. Practice without `conversation_start` = they never pressed talk.
 

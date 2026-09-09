@@ -44,6 +44,8 @@ export const InfoStep = ({
   secondButtonStartIcon,
   secondButtonDisabled,
   listItemsAfterActions,
+  actionButtonAnalyticsId,
+  secondButtonAnalyticsId,
 }: {
   title?: string;
   subTitle?: string;
@@ -71,6 +73,8 @@ export const InfoStep = ({
   secondButtonEndIcon?: ReactNode;
   secondButtonStartIcon?: React.ReactNode;
   listItemsAfterActions?: boolean;
+  actionButtonAnalyticsId?: string;
+  secondButtonAnalyticsId?: string;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -287,6 +291,8 @@ export const InfoStep = ({
           secondButtonDisabled={secondButtonDisabled}
           actionButtonBadgeText={actionButtonBadgeText}
           secondButtonBadgeText={secondButtonBadgeText}
+          actionButtonAnalyticsId={actionButtonAnalyticsId}
+          secondButtonAnalyticsId={secondButtonAnalyticsId}
         />
 
         {!!listItems?.length && listItemsAfterActions && (

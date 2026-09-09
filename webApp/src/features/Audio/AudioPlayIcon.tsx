@@ -23,6 +23,7 @@ export interface AudioPlayIconProps {
   opacity?: number;
   autoPlay?: boolean;
   maxInputLength?: number;
+  analyticsId?: string;
 }
 
 export const AudioPlayIcon = ({
@@ -38,6 +39,7 @@ export const AudioPlayIcon = ({
   opacity = 0.7,
   autoPlay = false,
   maxInputLength,
+  analyticsId,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -146,6 +148,7 @@ export const AudioPlayIcon = ({
       <IconButton
         disabled={isLoading}
         onClick={togglePlay}
+        {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
         sx={{
           opacity: opacity,
           border: borderColor ? `1px solid ${borderColor}` : 'none',
@@ -163,6 +166,7 @@ export const AudioPlayIcon = ({
       startIcon={icon}
       variant="outlined"
       color="info"
+      {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
       sx={{
         fontWeight: 500,
         textTransform: 'none',

@@ -76,6 +76,7 @@ export const RolePlayOpeningPreview = ({
         startIcon={isPlaying ? <Pause size={'18px'} /> : <Volume2 size={'18px'} />}
         variant="outlined"
         color="info"
+        data-analytics="hear-first-line"
         sx={{
           fontWeight: 500,
           textTransform: 'none',

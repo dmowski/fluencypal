@@ -17,6 +17,53 @@ export const normalizeAnalyticsPath = (path: string): string => {
   }
 };
 
+const pathnameOf = (path: string): string => {
+  try {
+    return new URL(normalizeAnalyticsPath(path), 'https://app.fluencypal.com').pathname || '/';
+  } catch {
+    return path.split('?')[0] || '/';
+  }
+};
+
+const pathnameWithoutLang = (pathname: string): string => {
+  return pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+};
+
+export const quizStepFromAnalyticsPath = (path: string): string | null => {
+  const normalized = normalizeAnalyticsPath(path);
+  if (!/(^|\/)quiz(\/|$|\?)/i.test(normalized)) return null;
+  try {
+    const url = new URL(normalized, 'https://app.fluencypal.com');
+    return url.searchParams.get('currentStep') || 'start';
+  } catch {
+    return 'start';
+  }
+};
+
+export type AnalyticsEntryKind =
+  | 'home'
+  | 'scenario'
+  | 'blog'
+  | 'quiz'
+  | 'practice'
+  | 'pricing'
+  | 'features'
+  | 'other';
+
+export const entryKindFromAnalyticsPath = (path: string): AnalyticsEntryKind => {
+  const withoutLang = pathnameWithoutLang(pathnameOf(path)).toLowerCase();
+  if (/\/scenarios(\/|$)/.test(withoutLang) || withoutLang === '/alias' || withoutLang.startsWith('/alias/')) {
+    return 'scenario';
+  }
+  if (/\/blog(\/|$)/.test(withoutLang)) return 'blog';
+  if (/\/quiz(\/|$)/.test(withoutLang)) return 'quiz';
+  if (/\/practice(\/|$)/.test(withoutLang)) return 'practice';
+  if (/\/pricing(\/|$)/.test(withoutLang) || /\/price(\/|$)/.test(withoutLang)) return 'pricing';
+  if (/\/features(\/|$)/.test(withoutLang)) return 'features';
+  if (withoutLang === '/') return 'home';
+  return 'other';
+};
+
 export const stripVisitorIdFromHref = (href: string, queryKey: string): string => {
   try {
     const url = new URL(href);
