@@ -38,6 +38,7 @@ import { AccessQuizStep } from './AccessQuizStep';
 import { TrialPriceQuizStep } from './TrialPriceQuizStep';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
+import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 
 const QuizQuestions = () => {
   const {
@@ -124,6 +125,13 @@ const QuizQuestions = () => {
     } else {
       nextStep();
     }
+  };
+
+  const goToRecordAbout = () => {
+    if (currentStep !== 'before_recordAbout') {
+      return;
+    }
+    next();
   };
 
   if (redirecting) {
@@ -214,17 +222,10 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'before_recordAbout' && (
-            <AuthWall>
-              <InfoStep
-                title={i18n._(`Practice plan`)}
-                subTitle={i18n._(
-                  `I'll ask you a few questions to get to know you. Based on your answers, I'll create a personalized practice plan for you.`,
-                )}
-                onClick={next}
-                disabled={isStepLoading}
-                isStepLoading={isStepLoading}
-              />
-            </AuthWall>
+            <QuizBeforeRecordAboutGate
+              promptText={`${recordAboutTitle}. ${recordAboutQuestion}`}
+              onSignedIn={goToRecordAbout}
+            />
           )}
 
           {currentStep === 'recordAbout' && (
