@@ -148,7 +148,7 @@ describe('SEO Metadata', () => {
     test('generates metadata for ru language homepage', async () => {
       const meta = await generateMetadataInfo({ lang: 'ru', currentPath: '' });
 
-      expect(meta.title).toBe(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
+      expect(meta.title).toBe(`English Speaking Practice | FluencyPal`);
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/ru`);
     });
 

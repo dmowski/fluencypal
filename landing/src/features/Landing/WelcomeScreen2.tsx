@@ -14,8 +14,9 @@ interface PreviewCard {
 interface WelcomeScreenProps {
   label: string;
   title: string;
+  title2?: string;
   subTitle1: string;
-  subTitle2: string;
+  subTitle2?: string;
   buttonTitle: string;
   buttonHref: string;
   buttonSubtitle?: string;
@@ -26,6 +27,7 @@ interface WelcomeScreenProps {
 export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   label,
   title,
+  title2,
   subTitle1,
   subTitle2,
   buttonTitle,
@@ -205,21 +207,42 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
               component={'h1'}
               sx={{
                 fontWeight: 900,
-                fontSize: '96px',
-                lineHeight: '100px',
-                maxWidth: '800px',
+                fontSize: title2 ? '64px' : '96px',
+                lineHeight: title2 ? '72px' : '100px',
+                maxWidth: title2 ? '100%' : '800px',
+                '& .hero-title-line': title2
+                  ? {
+                      display: 'block',
+                    }
+                  : undefined,
+                '@media (min-width: 1101px)': title2
+                  ? {
+                      fontSize: '48px',
+                      lineHeight: '56px',
+                      '& .hero-title-line': {
+                        whiteSpace: 'nowrap',
+                      },
+                    }
+                  : {},
                 '@media (max-width: 1100px)': {
                   textAlign: 'center',
                   maxWidth: '100%',
                 },
                 '@media (max-width: 800px)': {
-                  fontSize: '64px',
-                  lineHeight: '70px',
+                  fontSize: title2 ? '36px' : '64px',
+                  lineHeight: title2 ? '42px' : '70px',
                   padding: '0 20px',
                 },
               }}
             >
-              {title}
+              <span className="hero-title-line" style={{ display: 'block' }}>
+                {title}
+              </span>
+              {title2 ? (
+                <span className="hero-title-line" style={{ display: 'block' }}>
+                  {title2}
+                </span>
+              ) : null}
             </Typography>
             <Stack
               sx={{
@@ -228,7 +251,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             >
               <Typography
                 sx={{
-                  maxWidth: '500px',
+                  maxWidth: '560px',
                   padding: '10px 10px 0 0',
                   fontSize: '1.1rem',
                   textShadow: '0 0 5px rgba(0, 0, 0, 0.71)',
@@ -244,7 +267,13 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   },
                 }}
               >
-                <b>{subTitle1}</b> {subTitle2}
+                {subTitle2 ? (
+                  <>
+                    <b>{subTitle1}</b> {subTitle2}
+                  </>
+                ) : (
+                  subTitle1
+                )}
               </Typography>
             </Stack>
 

@@ -380,19 +380,19 @@ export const generateMetadataInfo = async ({
   }
 
   if (currentPath === '') {
-    title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
+    title = i18n._(`English Speaking Practice | FluencyPal`);
     description = i18n._(
-      `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
+      `You already know English. Now start speaking it. Practice realistic conversations with AI, get feedback, and build the confidence to speak in real life.`,
     );
     keywords = [
-      i18n._(`ai English tutor`),
-      i18n._(`English speaking practice app`),
-      i18n._(`improve English fluency`),
-      i18n._(`advanced English conversation`),
-      i18n._(`English speaking coach`),
-      i18n._(`conversational English practice`),
-      i18n._(`language immersion app`),
-      i18n._(`English speaking partner`),
+      i18n._(`English speaking practice`),
+      i18n._(`practice speaking English`),
+      i18n._(`English conversation practice`),
+      i18n._(`AI English conversation`),
+      i18n._(`English speaking app`),
+      i18n._(`practice English online`),
+      i18n._(`improve English speaking`),
+      i18n._(`English conversation app`),
     ];
   }
 

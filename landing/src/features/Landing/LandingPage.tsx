@@ -35,7 +35,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What is FluencyPal?`),
       answer: i18n._(
-        `FluencyPal is an AI-powered conversation practice app designed for intermediate and advanced learners. It helps you improve speaking fluency, pronunciation, and confidence through realistic conversations and instant feedback.`,
+        `FluencyPal is English speaking practice with AI. It is for people who already know English and want to start using it in real conversations — with realistic practice, instant feedback, and more confidence.`,
       ),
     },
 
@@ -204,10 +204,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
         <Stack sx={{ alignItems: 'center' }}>
           {/*<WelcomeScreenMinimal />*/}
           <WelcomeScreen2
-            label={i18n._(`Conversation with AI`)}
-            title={i18n._(`Speak English without fear`)}
-            subTitle1={i18n._(`Don’t let mistakes stop you.`)}
-            subTitle2={i18n._(`Practice the exact conversation you're afraid of.`)}
+            label={i18n._(`English Speaking Practice`)}
+            title={i18n._(`You already know English.`)}
+            title2={i18n._(`Now start speaking it.`)}
+            subTitle1={i18n._(
+              `Practice realistic conversations with AI, get feedback and build the confidence to speak in real life.`,
+            )}
             buttonTitle={i18n._(`Start Speaking`)}
             openMyPracticeLinkTitle={i18n._(`Start Speaking`)}
             buttonHref={mainRedirectUrl}
@@ -240,10 +242,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
               buttonHref={mainRedirectUrl}
               data={{
                 type: 'webcamDemo',
-                title: i18n._('Practice Speaking with AI'),
-                subTitle: i18n._('Confidence in a safe and calm environment.'),
+                title: i18n._('Real Conversation Practice'),
+                subTitle: i18n._('You know English. Now speak it.'),
                 content: i18n._(
-                  'Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes.',
+                  'Practice speaking for work, travel, and everyday life. Get feedback and build the confidence to speak without hesitation.',
                 ),
                 infoList: [
                   {
@@ -273,7 +275,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   afterSectionTitle: i18n._('Free Conversation'),
                   afterSectionSubTitle: i18n._('Next'),
                 },
-                buttonTitle: i18n._('Start speaking practice'),
+                buttonTitle: i18n._('Start Speaking'),
               }}
             />
 
@@ -283,7 +285,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               allFeaturesTitle={i18n._(`Explore All Features`)}
               allFeaturesHref={`${getUrlStart(lang)}features`}
               subTitle={i18n._(
-                'Improving your English speaking skills takes time and consistent practice. FluencyPal is designed for learners who can already communicate at least a little and want to become more fluent, confident, and accurate through regular speaking practice.',
+                'You already know English. FluencyPal helps you start using it — with realistic conversation practice, instant feedback, and a plan that builds fluency through speaking, not more studying.',
               )}
               cards={[
                 {
@@ -354,7 +356,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleBgColor: '#fff',
 
                   subTitle: i18n._(
-                    'Based on your onboarding, FluencyPal will create a personalized learning plan just for you.',
+                    'Based on your onboarding, FluencyPal will create a personalized speaking plan just for you.',
                   ),
                   subTitleColor: '#111',
                 },
@@ -370,13 +372,13 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   titleBgColor: '#fff',
 
                   subTitle: i18n._(
-                    'Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.',
+                    'Jump into speaking practice and build fluency through real conversations with AI.',
                   ),
                   subTitleColor: '#fff',
                   footerButton: <WebCamButtons />,
                 },
               ]}
-              buttonTitle={i18n._(`Start Practicing`)}
+              buttonTitle={i18n._(`Start Speaking`)}
               buttonHref={mainRedirectUrl}
               theme={'dark-red'}
               id={'how-it-works'}
@@ -386,7 +388,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <ProposalCards
             title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}
             subTitle={i18n._(
-              `Target the specific skills you need—speaking, grammar, vocabulary, and progress tracking—to achieve online English fluency faster.`,
+              `Stop studying in silence. Practice speaking, fix grammar in conversation, grow vocabulary you can actually use, and see your fluency improve.`,
             )}
             infoCards={[
               {
@@ -438,9 +440,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
             ]}
           />
           <RolePlayDemo
-            title={i18n._(`Real-Life Role-Play for Advanced English Practice`)}
+            title={i18n._(`Turn English Into Conversation`)}
             subTitle={i18n._(
-              `Practice speaking fluently in real-world scenarios like job interviews, business meetings, and everyday conversations.`,
+              `Practice speaking for work, travel, and everyday life — job interviews, meetings, and the conversations you actually need.`,
             )}
             actionButtonTitle={i18n._(`Explore Role-Play Scenarios`)}
             footerLabel={i18n._(`Looking for something specific?`)}
@@ -452,10 +454,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <ReviewsSection
             title={i18n._(`What learners are saying`)}
             subTitle={i18n._(
-              `Real reviews from people using FluencyPal to practice speaking and prepare for language exams.`,
+              `Real reviews from people using FluencyPal to practice speaking and build confidence in real conversations.`,
             )}
             reviews={landingReviews}
-            startPracticeButtonTitle={i18n._(`Start Practice`)}
+            startPracticeButtonTitle={i18n._(`Start Speaking`)}
             startPracticeButtonHref={mainRedirectUrl}
             checkReviewsButtonTitle={i18n._(`Check other reviews`)}
             checkReviewsButtonHref="https://www.trustpilot.com/review/www.fluencypal.com"
@@ -473,8 +475,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
             ]}
           />
           <CtaBlock
-            title={i18n._(`Learn anywhere, anytime`)}
-            actionButtonTitle={i18n._(`Start Learning Now`)}
+            title={i18n._(`Stop Studying. Start Speaking.`)}
+            actionButtonTitle={i18n._(`Start Speaking`)}
             actionButtonLink={mainRedirectUrl}
           />
         </Stack>

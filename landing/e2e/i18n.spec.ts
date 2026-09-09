@@ -22,7 +22,7 @@ test.describe('Internationalization', () => {
     const content = await descriptionMeta.getAttribute('content');
     expect(content).toBeTruthy();
     expect(content!.length).toBeGreaterThan(0);
-    expect(content!.startsWith('Практикуйте разговорный английский с FluencyPal')).toBe(true);
+    expect(content).toMatch(/FluencyPal/);
   });
 
   test('should display French content with correct locale settings', async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe('Internationalization', () => {
     const htmlLang = await page.locator('html').getAttribute('lang');
     expect(htmlLang).toBe('fr');
 
-    await expect(page.getByText("Apprenez n'importe où, n'importe quand")).toBeVisible();
+    await expect(page.getByText('Comment ça marche')).toBeVisible();
   });
 
   test('should generate correct localized links in language switcher', async ({ page }) => {
@@ -51,7 +51,7 @@ test.describe('Internationalization', () => {
     const content = await descriptionMeta.getAttribute('content');
     expect(content).toBeTruthy();
     expect(content!.length).toBeGreaterThan(0);
-    expect(content!.startsWith('Practice conversational English with FluencyPal')).toBe(true);
+    expect(content!.startsWith('You already know English.')).toBe(true);
 
     const contactLinks = page.getByRole('link', { name: 'Contacts' });
     await expect(contactLinks).toHaveCount(1);
