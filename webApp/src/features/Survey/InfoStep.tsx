@@ -46,6 +46,8 @@ export const InfoStep = ({
   listItemsAfterActions,
   actionButtonAnalyticsId,
   secondButtonAnalyticsId,
+  quietActions = false,
+  hideActions = false,
 }: {
   title?: string;
   subTitle?: string;
@@ -75,6 +77,8 @@ export const InfoStep = ({
   listItemsAfterActions?: boolean;
   actionButtonAnalyticsId?: string;
   secondButtonAnalyticsId?: string;
+  quietActions?: boolean;
+  hideActions?: boolean;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -274,6 +278,7 @@ export const InfoStep = ({
           )}
         </Stack>
 
+        {!hideActions && (
         <InterviewQuizButton
           onClick={() => {
             !isStepLoading && onClick();
@@ -293,9 +298,11 @@ export const InfoStep = ({
           secondButtonBadgeText={secondButtonBadgeText}
           actionButtonAnalyticsId={actionButtonAnalyticsId}
           secondButtonAnalyticsId={secondButtonAnalyticsId}
+          quiet={quietActions}
         />
+        )}
 
-        {!!listItems?.length && listItemsAfterActions && (
+        {!hideActions && !!listItems?.length && listItemsAfterActions && (
           <Stack
             sx={{
               paddingTop: '16px',

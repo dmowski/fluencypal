@@ -56,6 +56,8 @@ interface AuthWallBasicProps {
   authSubComponent?: ReactNode;
   authActionTitle?: string;
   authListAfterActions?: boolean;
+  authActionsQuiet?: boolean;
+  hideAuthActions?: boolean;
 }
 
 export const AuthWallBasic = ({
@@ -74,6 +76,8 @@ export const AuthWallBasic = ({
   authSubComponent,
   authActionTitle,
   authListAfterActions = false,
+  authActionsQuiet = false,
+  hideAuthActions = false,
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -320,6 +324,8 @@ export const AuthWallBasic = ({
             isStepLoading={isGoogleSignInLoading}
             actionButtonAnalyticsId="auth-google"
             secondButtonAnalyticsId="auth-email"
+            quietActions={authActionsQuiet}
+            hideActions={hideAuthActions}
             subComponent={
               authSubComponent || googleSignInError ? (
                 <Stack>

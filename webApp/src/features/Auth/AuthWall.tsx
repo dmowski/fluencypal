@@ -16,6 +16,8 @@ export const AuthWall = ({
   authSubComponent,
   authActionTitle,
   authListAfterActions,
+  authActionsQuiet,
+  hideAuthActions,
 }: {
   children: ReactNode;
   signInTitle?: string;
@@ -27,6 +29,8 @@ export const AuthWall = ({
   authSubComponent?: ReactNode;
   authActionTitle?: string;
   authListAfterActions?: boolean;
+  authActionsQuiet?: boolean;
+  hideAuthActions?: boolean;
 }) => {
   const { i18n } = useLingui();
   return (
@@ -36,6 +40,8 @@ export const AuthWall = ({
       authSubComponent={authSubComponent}
       authActionTitle={authActionTitle}
       authListAfterActions={authListAfterActions}
+      authActionsQuiet={authActionsQuiet}
+      hideAuthActions={hideAuthActions}
       featuresTitle={featuresTitle || 'FluencyPal'}
       featuresSubTitle={featuresSubTitle || i18n._('Your AI speaking partner')}
       featuresList={[

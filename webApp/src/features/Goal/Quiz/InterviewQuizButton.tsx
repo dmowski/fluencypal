@@ -20,6 +20,7 @@ export const InterviewQuizButton: React.FC<{
   secondButtonBadgeText?: string;
   actionButtonAnalyticsId?: string;
   secondButtonAnalyticsId?: string;
+  quiet?: boolean;
 }> = ({
   onClick,
   color,
@@ -37,12 +38,13 @@ export const InterviewQuizButton: React.FC<{
   secondButtonBadgeText,
   actionButtonAnalyticsId,
   secondButtonAnalyticsId,
+  quiet = false,
 }) => {
   return (
     <Stack
       sx={{
-        paddingTop: '20px',
-        paddingBottom: '40px',
+        paddingTop: quiet ? '8px' : '20px',
+        paddingBottom: quiet ? '8px' : '40px',
         flexDirection: 'row',
         gap: '10px',
         justifyContent: 'flex-start',
@@ -51,7 +53,7 @@ export const InterviewQuizButton: React.FC<{
     >
       <Badge
         badgeContent={
-          actionButtonBadgeText ? (
+          !quiet && actionButtonBadgeText ? (
             <span data-testid="auth-wall-last-method-badge">{actionButtonBadgeText}</span>
           ) : undefined
         }
@@ -71,22 +73,24 @@ export const InterviewQuizButton: React.FC<{
       >
         <Button
           onClick={onClick}
-          variant="contained"
+          variant={quiet ? 'text' : 'contained'}
           color={color}
           disabled={disabled}
           type={type}
-          size="large"
+          size={quiet ? 'medium' : 'large'}
           {...(actionButtonAnalyticsId ? { 'data-analytics': actionButtonAnalyticsId } : {})}
           sx={{
             width: `max-content`,
-            minWidth: '200px',
-            paddingTop: '12px',
-            paddingBottom: '12px',
+            minWidth: quiet ? 'auto' : '200px',
+            paddingTop: quiet ? '6px' : '12px',
+            paddingBottom: quiet ? '6px' : '12px',
             borderRadius: '128px',
             textAlign: 'left',
+            textTransform: quiet ? 'none' : undefined,
+            opacity: quiet ? 0.8 : 1,
           }}
           fullWidth
-          endIcon={endIcon || <ArrowRight />}
+          endIcon={quiet ? undefined : endIcon || <ArrowRight />}
           startIcon={startIcon}
         >
           {title}
@@ -95,7 +99,7 @@ export const InterviewQuizButton: React.FC<{
       {secondButtonTitle && onSecondButtonClick && (
         <Badge
           badgeContent={
-            secondButtonBadgeText ? (
+            !quiet && secondButtonBadgeText ? (
               <span data-testid="auth-wall-last-method-badge">{secondButtonBadgeText}</span>
             ) : undefined
           }
@@ -115,23 +119,25 @@ export const InterviewQuizButton: React.FC<{
         >
           <Button
             onClick={onSecondButtonClick}
-            variant="outlined"
+            variant={quiet ? 'text' : 'outlined'}
             color={color}
             type={type}
-            size="large"
+            size={quiet ? 'medium' : 'large'}
             disabled={secondButtonDisabled}
             {...(secondButtonAnalyticsId ? { 'data-analytics': secondButtonAnalyticsId } : {})}
             sx={{
               width: `max-content`,
-              paddingTop: '12px',
-              paddingLeft: '24px',
-              paddingRight: '24px',
-              paddingBottom: '12px',
+              paddingTop: quiet ? '6px' : '12px',
+              paddingLeft: quiet ? '10px' : '24px',
+              paddingRight: quiet ? '10px' : '24px',
+              paddingBottom: quiet ? '6px' : '12px',
               borderRadius: '128px',
               textAlign: 'left',
+              textTransform: quiet ? 'none' : undefined,
+              opacity: quiet ? 0.8 : 1,
             }}
             fullWidth
-            endIcon={secondButtonEndIcon}
+            endIcon={quiet ? undefined : secondButtonEndIcon}
             startIcon={secondButtonStartIcon}
           >
             {secondButtonTitle}

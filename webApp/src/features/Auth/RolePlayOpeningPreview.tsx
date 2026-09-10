@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Pause, Volume2 } from 'lucide-react';
 
@@ -67,12 +67,24 @@ export const RolePlayOpeningPreview = ({
   return (
     <Stack
       data-testid="roleplay-opening-preview"
+      direction="row"
       sx={{
-        paddingTop: '16px',
-        gap: '12px',
+        alignItems: 'flex-start',
+        gap: '10px',
+        padding: '12px 10px 12px 14px',
+        borderRadius: '16px 16px 16px 4px',
+        backgroundColor: 'rgba(255, 255, 255, 0.07)',
       }}
     >
-      <Typography variant="body1">{text}</Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          flex: 1,
+          lineHeight: 1.45,
+        }}
+      >
+        {text}
+      </Typography>
       <audio
         ref={audioRef}
         src={audioSrc}
@@ -80,22 +92,19 @@ export const RolePlayOpeningPreview = ({
         playsInline
         data-testid="roleplay-opening-audio"
       />
-      <Button
+      <IconButton
         onClick={togglePlay}
-        startIcon={isPlaying ? <Pause size={'18px'} /> : <Volume2 size={'18px'} />}
-        variant="outlined"
-        color="info"
+        aria-label={i18n._('Hear the first line')}
         data-analytics="hear-first-line"
+        size="small"
         sx={{
-          fontWeight: 500,
-          textTransform: 'none',
-          minHeight: '24px',
-          fontSize: '17px',
-          padding: '5px 15px',
+          flexShrink: 0,
+          marginTop: '-2px',
+          color: 'inherit',
         }}
       >
-        {i18n._('Hear the first line')}
-      </Button>
+        {isPlaying ? <Pause size={'20px'} /> : <Volume2 size={'20px'} />}
+      </IconButton>
     </Stack>
   );
 };

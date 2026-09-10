@@ -8,6 +8,7 @@ import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { RolePlayInstruction } from '@/features/RolePlay/types';
 import { RolePlayScenariosInfo } from '@/features/RolePlay/rolePlayData';
 import { SignInForm } from './SignInForm';
+import { resetGuestReplyForTests, saveGuestReplyRecording } from './rolePlayGuestReplyStorage';
 
 const searchParams: Record<string, string | null> = {
   rolePlayId: null,
@@ -90,6 +91,7 @@ describe('SignInForm', () => {
     searchParams.rolePlayId = null;
     searchParams.goalId = null;
     window.localStorage.clear();
+    resetGuestReplyForTests();
     Object.defineProperty(HTMLMediaElement.prototype, 'play', {
       configurable: true,
       value: jest.fn().mockResolvedValue(undefined),
@@ -111,9 +113,10 @@ describe('SignInForm', () => {
 
     expect(screen.getByText('Alias')).toBeInTheDocument();
     expect(
-      screen.getByText('Practice vocabulary by creatively describing and guessing words'),
-    ).toBeInTheDocument();
+      screen.queryByText('Practice vocabulary by creatively describing and guessing words'),
+    ).not.toBeInTheDocument();
     expect(screen.queryByText('Teacher:')).not.toBeInTheDocument();
+    expect(screen.getByTestId('roleplay-guest-start')).toBeInTheDocument();
     expect(screen.getByTestId('roleplay-opening-preview')).toBeInTheDocument();
     expect(screen.getByText(aliasOpening)).toBeInTheDocument();
     expect(screen.getByTestId('roleplay-opening-audio')).toHaveAttribute(
@@ -121,16 +124,15 @@ describe('SignInForm', () => {
       '/audio/role-openings/alias-game.mp3',
     );
     expect(screen.getByRole('button', { name: 'Hear the first line' })).toBeInTheDocument();
+    expect(screen.getByText('Your turn')).toBeInTheDocument();
     expect(screen.getByTestId('roleplay-guest-reply-button')).toHaveAttribute(
       'data-analytics',
       'reply-first-line',
     );
     expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
-      'data-analytics',
-      'auth-google',
-    );
+    expect(screen.queryByRole('button', { name: 'Sign in instead' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Sign in with email' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
@@ -146,11 +148,38 @@ describe('SignInForm', () => {
     );
 
     expect(screen.getByText('Hotel Check-In')).toBeInTheDocument();
-    expect(screen.getByText('Practice checking in at a hotel')).toBeInTheDocument();
+    expect(screen.queryByText('Practice checking in at a hotel')).not.toBeInTheDocument();
     expect(screen.getByText(hotelOpening)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Sign in with email' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
+  });
+
+  it('shows Google and email after the guest records a reply', () => {
+    searchParams.rolePlayId = 'hotel-check-in';
+    saveGuestReplyRecording({
+      rolePlayId: 'hotel-check-in',
+      blob: new Blob(['audio'], { type: 'audio/webm' }),
+      format: 'audio/webm',
+      durationSec: 3,
+    });
+
+    render(
+      <I18nWrapper>
+        <SignInForm rolePlayInfo={rolePlayInfo} lang="en" />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByText('Sign in to keep talking')).toBeInTheDocument();
+    expect(screen.getByTestId('roleplay-guest-reply-skeleton')).toBeInTheDocument();
+    expect(screen.getByLabelText('You:')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
+      'data-analytics',
+      'auth-google',
+    );
+    expect(screen.getByRole('button', { name: 'Sign in with email' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Reply' })).not.toBeInTheDocument();
   });
 
   it('keeps the features intro on generic practice', () => {

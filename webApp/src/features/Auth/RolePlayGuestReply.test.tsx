@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import type { ReactNode } from 'react';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
@@ -16,7 +17,7 @@ const recorder = {
   isTranscribing: false,
   transcriptionBlob: null as Blob | null,
   error: '',
-  visualizerComponent: null as null,
+  visualizerComponent: null as ReactNode,
   recordingMilliSeconds: 0,
 };
 
@@ -37,6 +38,7 @@ describe('RolePlayGuestReply', () => {
     recorder.transcriptionBlob = null;
     recorder.error = '';
     recorder.recordingMilliSeconds = 0;
+    recorder.visualizerComponent = null;
     (sendSpeechStart as jest.Mock).mockClear();
   });
 
@@ -61,8 +63,10 @@ describe('RolePlayGuestReply', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Got it. Sign in to continue the scene.')).toBeInTheDocument();
+      expect(screen.getByText('Sign in to keep talking')).toBeInTheDocument();
     });
+    expect(screen.getByTestId('roleplay-guest-reply-skeleton')).toBeInTheDocument();
+    expect(screen.getByLabelText('You:')).toBeInTheDocument();
     expect(sendSpeechStart).toHaveBeenCalledWith('conversation');
     expect(hasGuestReply('hotel-check-in')).toBe(true);
     expect(screen.queryByTestId('roleplay-guest-reply-button')).not.toBeInTheDocument();
@@ -70,12 +74,15 @@ describe('RolePlayGuestReply', () => {
 
   it('stops an in-progress recording', () => {
     recorder.isRecording = true;
+    recorder.visualizerComponent = <div data-testid="voice-visualizer" />;
     render(
       <I18nWrapper>
         <RolePlayGuestReply rolePlayId="alias-game" />
       </I18nWrapper>,
     );
 
+    expect(screen.getByTestId('roleplay-guest-reply-visualizer')).toBeInTheDocument();
+    expect(screen.getByTestId('voice-visualizer')).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Stop' }));
     expect(recorder.stopRecording).toHaveBeenCalled();
   });

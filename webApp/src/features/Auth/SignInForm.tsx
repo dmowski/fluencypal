@@ -12,6 +12,7 @@ import { shouldStartPracticeAuthOnGoogle } from './practiceAuthWall';
 import { getRolePlayOpeningLine } from './rolePlayOpeningLine';
 import { RolePlayOpeningPreview } from './RolePlayOpeningPreview';
 import { RolePlayGuestReply } from './RolePlayGuestReply';
+import { hasGuestReply } from './rolePlayGuestReplyStorage';
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -36,6 +37,9 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const startOnAuth = shouldStartPracticeAuthOnGoogle(rolePlayId);
   const openingLine = getRolePlayOpeningLine(scenario);
   const [isGuestRecording, setIsGuestRecording] = useState(false);
+  const [hasGuestReplied, setHasGuestReplied] = useState(() =>
+    Boolean(rolePlayId && hasGuestReply(rolePlayId)),
+  );
 
   const pageTitle = goalId
     ? i18n._(`Open personal plan`)
@@ -45,9 +49,11 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   const singInSubTitle = goalId
     ? i18n._(`So you can keep your progress`)
-    : scenario
-      ? scenario.subTitle
-      : i18n._(`So you can save your progress`);
+    : openingLine
+      ? ''
+      : scenario
+        ? scenario.subTitle
+        : i18n._(`So you can save your progress`);
 
   return (
     <WebViewWall>
@@ -67,9 +73,16 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           singInSubTitle={singInSubTitle}
           authActionTitle={startOnAuth ? i18n._('Continue to talk') : undefined}
           authListAfterActions={startOnAuth}
+          hideAuthActions={startOnAuth && !hasGuestReplied}
           authSubComponent={
             openingLine && rolePlayId ? (
-              <Stack sx={{ gap: '12px' }}>
+              <Stack
+                data-testid="roleplay-guest-start"
+                sx={{
+                  gap: '16px',
+                  marginTop: '8px',
+                }}
+              >
                 <RolePlayOpeningPreview
                   text={openingLine.text}
                   audioSrc={openingLine.audioSrc}
@@ -78,6 +91,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
                 <RolePlayGuestReply
                   rolePlayId={rolePlayId}
                   onRecordingChange={setIsGuestRecording}
+                  onHasReplied={setHasGuestReplied}
                 />
               </Stack>
             ) : undefined
