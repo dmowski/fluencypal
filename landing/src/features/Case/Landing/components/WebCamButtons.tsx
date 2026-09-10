@@ -22,7 +22,7 @@ export const WebCamButtons = ({
         bottom: '0px',
         alignItems: 'center',
         width: '100%',
-        padding: '10px 0 15px 0',
+        padding: isPlaying ? '10px 0 5px 0' : '10px 0 15px 0',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '10px',
@@ -34,16 +34,17 @@ export const WebCamButtons = ({
         data-testid="webcam-play-button"
         data-analytics={isPlaying ? 'webcam-pause' : 'webcam-play'}
         sx={{
-          width: 76,
-          height: 76,
+          width: isPlaying ? 38 : 76,
+          height: isPlaying ? 38 : 76,
           padding: 0,
           backgroundColor: '#1E88FF',
           color: '#fff',
-          boxShadow: '0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(255, 255, 255, 1)',
+          transition: 'all 0.2s ease-in-out',
+          boxShadow: isPlaying
+            ? '0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 1)'
+            : '0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(255, 255, 255, 1)',
           ':hover': {
             backgroundColor: '#3A98FF',
-            transform: 'scale(1.08)',
-            boxShadow: '0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 8px rgba(255, 255, 255, 1)',
           },
           '& .MuiSvgIcon-root': {
             display: 'block',
@@ -51,7 +52,7 @@ export const WebCamButtons = ({
         }}
       >
         {isPlaying ? (
-          <PauseIcon sx={{ fontSize: 40 }} />
+          <PauseIcon sx={{ fontSize: 20 }} />
         ) : (
           <PlayArrowIcon sx={{ fontSize: 40, transform: 'translateX(0px)' }} />
         )}
