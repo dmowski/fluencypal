@@ -55,9 +55,9 @@ export const WebCamButtons = ({ audioSrc }: { audioSrc?: string }) => {
         <audio
           ref={audioRef}
           src={audioSrc}
-          loop
           preload="auto"
           playsInline
+          onEnded={() => setIsMuted(true)}
           data-testid="webcam-preview-audio"
         />
       )}

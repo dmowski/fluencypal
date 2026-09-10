@@ -54,4 +54,18 @@ describe('WebCamButtons', () => {
     expect(pause).toHaveBeenCalled();
     expect(button).toHaveAttribute('aria-label', 'Unmute');
   });
+
+  it('stops after the clip ends and does not loop', () => {
+    render(<WebCamButtons audioSrc="/call/marin/talk.mp3" />);
+
+    const button = screen.getByTestId('webcam-mute-button');
+    const audio = screen.getByTestId('webcam-preview-audio');
+
+    expect(audio).not.toHaveAttribute('loop');
+
+    fireEvent.click(button);
+    fireEvent.ended(audio);
+
+    expect(button).toHaveAttribute('aria-label', 'Unmute');
+  });
 });
