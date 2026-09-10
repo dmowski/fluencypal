@@ -13,7 +13,8 @@ import { getI18nInstance } from '@/appRouterI18n';
 import { getAppUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import Script from 'next/script';
 import { HeaderStatic } from '../Header/HeaderStatic';
-import { WebCamButtons, WebcamSection } from '../Case/Landing/components/WebcamSection';
+import { WebcamSection } from '../Case/Landing/components/WebcamSection';
+import { MARIN_TALK_AUDIO_SRC, WebCamButtons } from '../Case/Landing/components/WebCamButtons';
 import { HowItWorks } from './HowItWorks';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { WelcomeScreen2 } from './WelcomeScreen2';
@@ -266,6 +267,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ],
                 webCamPreview: {
                   videoUrl: '/call/marin/talk.webm',
+                  audioUrl: '/call/marin/talk.mp3',
                   title: '',
                   participants: 'Marin - AI Teacher',
 
@@ -375,7 +377,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                     'Jump into speaking practice and build fluency through real conversations with AI.',
                   ),
                   subTitleColor: '#fff',
-                  footerButton: <WebCamButtons />,
+                  footerButton: <WebCamButtons audioSrc={MARIN_TALK_AUDIO_SRC} />,
                 },
               ]}
               buttonTitle={i18n._(`Start Speaking`)}

@@ -1,67 +1,11 @@
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { WebcamDemoSection } from '../../types';
 import { Theme, themeMap } from './theme';
 import { H2, SubTitle } from './Typography';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
-import { CircleArrowRight, CircleCheckBig, MoveRight, Users } from 'lucide-react';
-
-import CallEndIcon from '@mui/icons-material/CallEnd';
-import MicOffIcon from '@mui/icons-material/MicOff';
-
+import { CircleArrowRight, CircleCheckBig, MoveRight } from 'lucide-react';
 import VideocamIcon from '@mui/icons-material/Videocam';
-
-export const WebCamButtons = () => {
-  return (
-    <Stack
-      sx={{
-        position: 'absolute',
-        left: '0px',
-        bottom: '0px',
-        alignItems: 'center',
-        width: '100%',
-        padding: '10px 0',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        gap: '10px',
-      }}
-    >
-      <IconButton
-        aria-label="Turn microphone"
-        sx={{
-          backgroundColor: 'rgba(100, 100, 100, 0.4)',
-          color: '#fff',
-        }}
-        size="large"
-      >
-        <MicOffIcon />
-      </IconButton>
-
-      <IconButton
-        size="large"
-        aria-label="End call"
-        sx={{
-          width: '70px',
-          borderRadius: '30px',
-          backgroundColor: '#dc362e',
-          ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
-        }}
-      >
-        <CallEndIcon />
-      </IconButton>
-
-      <IconButton
-        aria-label="Turn camera"
-        sx={{
-          backgroundColor: 'rgba(100, 100, 100, 0.4)',
-          color: '#fff',
-        }}
-        size="large"
-      >
-        <VideocamIcon />
-      </IconButton>
-    </Stack>
-  );
-};
+import { WebCamButtons } from './WebCamButtons';
 
 export interface WebcamSectionProps {
   data: WebcamDemoSection;
@@ -178,7 +122,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 }}
                 src={props.data.webCamPreview.videoUrl}
               />
-              <WebCamButtons />
+              <WebCamButtons audioSrc={props.data.webCamPreview.audioUrl} />
             </Stack>
 
             <Stack

@@ -140,6 +140,7 @@ export interface DemoSnippetSection {
 
 export interface WebCamPreview {
   videoUrl: string;
+  audioUrl?: string;
   title: string;
   participants: string;
 

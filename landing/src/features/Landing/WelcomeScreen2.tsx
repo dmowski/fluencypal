@@ -44,11 +44,17 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '800px',
+        height: '100vh',
+        minHeight: '700px',
+        boxSizing: 'border-box',
         padding: '30px 0 20px 0',
         backgroundColor: '#10131a',
         '@media (max-width: 1100px)': {
+          height: 'auto',
           paddingBottom: '10px',
+        },
+        '@media (max-width: 600px)': {
+          paddingTop: '0',
         },
       }}
     >
@@ -92,22 +98,24 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
       <Stack
         sx={{
           maxWidth: maxLandingWidth,
-          padding: '120px 10px 0px 10px',
-          height: 'max-content',
+          padding: '10px 10px 0px 10px',
+          height: '100%',
           width: '100%',
 
           boxSizing: 'border-box',
           alignItems: 'center',
+          justifyContent: 'center',
 
           gap: '100px',
           position: 'relative',
           zIndex: 2,
+          '@media (max-width: 1100px)': {
+            paddingTop: '100px',
+            justifyContent: 'flex-start',
+          },
           '@media (max-width: 600px)': {
             gap: '20px',
-            padding: '90px 0px 0 0px',
-          },
-          '@media (max-width: 500px)': {
-            padding: '50px 0px 0 0px',
+            padding: '96px 0px 0 0px',
           },
         }}
       >
@@ -118,10 +126,10 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             width: '100%',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingBottom: '100px',
             '@media (max-width: 1100px)': {
               flexDirection: 'column',
               gap: '150px',
+              paddingBottom: '100px',
             },
           }}
         >
