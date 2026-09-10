@@ -128,8 +128,9 @@ First-party iframe journey tracking: `src/features/Analytics/Custom/`.
 
 - Guide + **“What's going today?”** report format: `src/features/Analytics/Custom/AGENTS.md`
 - Intervention log (do not repeat experiments): `src/features/Analytics/Custom/INTERVENTIONS.md`
+- Last report window: `src/features/Analytics/Custom/LAST_REPORT.md`
 - Admin UI: `/staats/journey`
-- Export: `cd webApp && pnpm analytics:export`
+- Export: `cd webApp && pnpm analytics:export` (add `-- --from YYYY-MM-DD` when covering a skipped-day gap)
 
 ## Reader Highlight / Selection
 

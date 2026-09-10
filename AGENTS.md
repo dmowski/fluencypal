@@ -72,4 +72,4 @@ When changing one area, run checks for that area first. Avoid running full Playw
 - Web-specific coding guidance: `webApp/AGENTS.md`
 - Custom analytics (daily report, funnel, interventions): `webApp/src/features/Analytics/Custom/AGENTS.md`
 
-When asked what happened today / “what's going today”, follow that analytics guide: export with `cd webApp && pnpm analytics:export`, then write the short report. Do not skip `INTERVENTIONS.md`.
+When asked what happened today / “what's going today”, follow that analytics guide: export from the last report through now (usually one UTC day; the full gap if a day was skipped), then write the short report. Do not skip `INTERVENTIONS.md` or `LAST_REPORT.md`.

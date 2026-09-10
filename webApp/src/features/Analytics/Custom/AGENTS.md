@@ -3,6 +3,7 @@
 Applies to `webApp/src/features/Analytics/Custom/**`.
 Landing embed: `landing/src/features/Analytics/Custom/`.
 Intervention log: `INTERVENTIONS.md` (same folder).
+Last report window: `LAST_REPORT.md` (same folder).
 
 ## Purpose
 
@@ -15,17 +16,26 @@ Goals:
 
 ## "What's going today?"
 
-When the user asks what happened today (or similar):
+When the user asks what happened today (or similar), report **from the last extraction through now**, not always “today only”. The usual window is the last ~24 hours (one UTC day). If a day was skipped, cover the whole gap (two UTC days after one missed day, three after two, and so on) so nothing important is dropped.
 
-1. `cd webApp && pnpm analytics:export`
-2. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `funnelNew`, `dropOff`, `searchConsole`, then sample a few visitor timelines. Do not paste raw user agents or emails.
-3. Read `INTERVENTIONS.md` so suggestions are not a loop.
-4. Reply with this short report:
+1. Find the last extraction **before** exporting (export overwrites `webApp/.analytics-export.json`):
+   - Read `LAST_REPORT.md` `Analyzed through: YYYY-MM-DD`.
+   - If that is missing, read `webApp/.analytics-export.json` `toDayKey` or `dayKey`.
+   - If neither exists, use the latest date in `INTERVENTIONS.md` and say the window may have a gap.
+2. Window end = today UTC. Window start = the UTC day **after** last `Analyzed through`. If last extraction is today, window is today only (refresh).
+3. Export that window:
+   - One UTC day: `cd webApp && pnpm analytics:export`
+   - More than one UTC day: `cd webApp && pnpm analytics:export -- --from YYYY-MM-DD`  
+     `--from` is the first missed UTC day; end defaults to today. Example: last analyzed through `2026-09-09`, today is `2026-09-11` → `--from 2026-09-10` (covers the 10th and 11th).
+4. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `funnelNew`, `dropOff`, `searchConsole`, then sample a few visitor timelines. Do not paste raw user agents or emails.
+5. Read `INTERVENTIONS.md` so suggestions are not a loop.
+6. Reply with this short report. If the window is more than one UTC day, title it as a range, not “Today”:
 
 ```
 Today (YYYY-MM-DD)  [UTC]
+  or  Since last report (YYYY-MM-DD → YYYY-MM-DD)  [UTC]
 - Visitors: N (new / returning; bots + internal excluded)
-- Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-today)
+- Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-in-window)
 - Quiz steps: insights.quizSteps (teacherSelection / before_recordAbout / recordAbout / quizSpeech)
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
@@ -40,6 +50,8 @@ Today (YYYY-MM-DD)  [UTC]
 Why they leave: …
 What to do next (one change): …  [must be new vs INTERVENTIONS.md]
 ```
+
+7. Update `LAST_REPORT.md` `Analyzed through` to the window end (today UTC). Do not commit unless asked.
 
 If the export is empty, say so; do not invent traffic.
 
@@ -73,7 +85,7 @@ Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entr
 
 In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`.
 
-Export (`pnpm analytics:export`) is a **UTC day**. Funnel and CTAs are computed from that day's events (not lifetime visitor flags). Use `funnelNew` for first-seen-today visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
+Export (`pnpm analytics:export`) is a **UTC day**, or a UTC day range with `--from`. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 
 Optional: `GSC_SITE_URL` in `webApp/.env` (`sc-domain:fluencypal.com` or `https://www.fluencypal.com/`).
 
@@ -87,6 +99,7 @@ Parent → iframe `/analytics/tracker` → `POST /api/analytics/ingest` → Admi
 cd webApp && pnpm firestore:indexes
 cd webApp && pnpm analytics:export
 cd webApp && pnpm analytics:export -- --day 2026-08-28
+cd webApp && pnpm analytics:export -- --from 2026-09-10
 ```
 
 Admin UI: `/staats/journey`

@@ -61,8 +61,9 @@ Schema, daily report, SEO/GEO reading, and intervention log live in:
 
 - `../webApp/src/features/Analytics/Custom/AGENTS.md`
 - `../webApp/src/features/Analytics/Custom/INTERVENTIONS.md`
+- `../webApp/src/features/Analytics/Custom/LAST_REPORT.md`
 
-When asked “what's going today?”, follow that guide (`cd webApp && pnpm analytics:export`). Keep landing `protocol.ts` event fields in sync with webApp ingest (`page_view`, `click`, `scroll_depth`, `page_leave` plus CTA/UTM/scroll). Landing owns the visitor id (cookie + `?fpv=` on app links); do not import from `webApp/`.
+When asked “what's going today?”, follow that guide (export from the last report through now; not always today-only). Keep landing `protocol.ts` event fields in sync with webApp ingest (`page_view`, `click`, `scroll_depth`, `page_leave` plus CTA/UTM/scroll). Landing owns the visitor id (cookie + `?fpv=` on app links); do not import from `webApp/`.
 
 ## Additional References
 

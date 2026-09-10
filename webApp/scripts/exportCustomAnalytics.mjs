@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * Export custom analytics for a UTC day using Admin SDK credentials
- * from webApp/.env. Writes gitignored JSON for agent analysis.
+ * Export custom analytics for a UTC day or day range using Admin SDK
+ * credentials from webApp/.env. Writes gitignored JSON for agent analysis.
  *
  * Usage (from webApp/):
  *   pnpm analytics:export
  *   pnpm analytics:export -- --day 2026-08-28
+ *   pnpm analytics:export -- --from 2026-09-10
+ *   pnpm analytics:export -- --from 2026-09-10 --day 2026-09-11
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,13 +32,28 @@ const argValue = (flag) => {
   return null;
 };
 
-const dayKey = argValue('--day') || new Date().toISOString().slice(0, 10);
+const parseDayKey = (value, flag) => {
+  if (!value) return null;
+  const day = String(value).slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) {
+    throw new Error(`Invalid ${flag} ${value}. Use YYYY-MM-DD.`);
+  }
+  const parsed = new Date(`${day}T00:00:00.000Z`);
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error(`Invalid ${flag} ${value}. Use YYYY-MM-DD.`);
+  }
+  return day;
+};
 
-const start = new Date(`${dayKey}T00:00:00.000Z`);
-const end = new Date(`${dayKey}T23:59:59.999Z`);
-if (Number.isNaN(start.getTime())) {
-  throw new Error(`Invalid --day ${dayKey}. Use YYYY-MM-DD.`);
+const toDayKey = parseDayKey(argValue('--day'), '--day') || new Date().toISOString().slice(0, 10);
+const fromDayKey = parseDayKey(argValue('--from'), '--from') || toDayKey;
+if (fromDayKey > toDayKey) {
+  throw new Error(`--from ${fromDayKey} is after --day ${toDayKey}.`);
 }
+
+const start = new Date(`${fromDayKey}T00:00:00.000Z`);
+const end = new Date(`${toDayKey}T23:59:59.999Z`);
+const dayKey = fromDayKey === toDayKey ? toDayKey : `${fromDayKey}..${toDayKey}`;
 
 const fromIso = start.toISOString();
 const toIso = end.toISOString();
@@ -216,7 +233,8 @@ for (const visitor of rawVisitors.filter(isReportableVisitor)) {
     .sort((a, b) => (a.createdAtMs || 0) - (b.createdAtMs || 0));
 }
 
-const todayOf = (events) => events.filter((event) => event.dayKey === dayKey);
+const inWindow = (events) =>
+  events.filter((event) => event.dayKey >= fromDayKey && event.dayKey <= toDayKey);
 
 let skippedInternal = 0;
 let skippedNoTodayEvents = 0;
@@ -228,13 +246,13 @@ for (const visitor of rawVisitors.filter(isReportableVisitor)) {
     skippedInternal += 1;
     continue;
   }
-  const todayEvents = todayOf(allEvents);
-  if (todayEvents.length === 0) {
+  const windowEvents = inWindow(allEvents);
+  if (windowEvents.length === 0) {
     skippedNoTodayEvents += 1;
     continue;
   }
   visitors.push(visitor);
-  eventsByVisitorId[visitor.visitorId] = todayEvents;
+  eventsByVisitorId[visitor.visitorId] = windowEvents;
 }
 
 const countBy = (values) => {
@@ -291,7 +309,8 @@ const bumpEntry = (kind, flags) => {
 for (const visitor of visitors) {
   const events = eventsByVisitorId[visitor.visitorId] || [];
   const flags = flagsFromEvents(events);
-  const isNew = String(visitor.createdAtIso || '').startsWith(dayKey);
+  const createdDay = String(visitor.createdAtIso || '').slice(0, 10);
+  const isNew = createdDay >= fromDayKey && createdDay <= toDayKey;
   if (isNew) newVisitorCount += 1;
   addFlagsToFunnel(funnel, flags);
   if (isNew) addFlagsToFunnel(funnelNew, flags);
@@ -392,6 +411,8 @@ const todayEventCount = visitors.reduce(
 const payload = {
   exportedAtIso: new Date().toISOString(),
   dayKey,
+  fromDayKey,
+  toDayKey,
   fromIso,
   toIso,
   timezone: 'UTC',
@@ -452,7 +473,7 @@ fs.writeFileSync(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`);
 const skippedParts = [];
 if (skippedUnengaged) skippedParts.push(`${skippedUnengaged} unengaged page_view-only`);
 if (skippedInternal) skippedParts.push(`${skippedInternal} internal`);
-if (skippedNoTodayEvents) skippedParts.push(`${skippedNoTodayEvents} no events on this UTC day`);
+if (skippedNoTodayEvents) skippedParts.push(`${skippedNoTodayEvents} no events in this UTC window`);
 console.log(
   `Wrote ${visitors.length} visitors (${newVisitorCount} new) for ${dayKey} UTC to ${path.relative(webAppRoot, OUTPUT)}` +
     (skippedParts.length ? ` (${skippedParts.join(', ')} dropped)` : ''),
