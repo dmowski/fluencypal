@@ -22,7 +22,7 @@ export const WebCamButtons = ({
         bottom: '0px',
         alignItems: 'center',
         width: '100%',
-        padding: isPlaying ? '10px 0 5px 0' : '10px 0 15px 0',
+        padding: isPlaying ? '10px 0 10px 0' : '10px 0 15px 0',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '10px',
@@ -37,7 +37,7 @@ export const WebCamButtons = ({
           width: isPlaying ? 38 : 76,
           height: isPlaying ? 38 : 76,
           padding: 0,
-          backgroundColor: '#1E88FF',
+          backgroundColor: isPlaying ? 'rgba(255, 255, 255, 0.3)' : '#1E88FF',
           color: '#fff',
           transition: 'all 0.2s ease-in-out',
           boxShadow: isPlaying
