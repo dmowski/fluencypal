@@ -4,6 +4,7 @@ import { PageLabel2 } from '../Case/Landing/components/Typography';
 import { MoveRight } from 'lucide-react';
 import { maxLandingWidth } from './landingSettings';
 import Image from 'next/image';
+import { StarFieldBackground } from './StarField/StarFieldBackground';
 
 interface PreviewCard {
   imageUrl?: string;
@@ -36,7 +37,6 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   openMyPracticeLinkTitle,
   buttonSubtitle,
 }) => {
-  const showBgImage = true;
   return (
     <Stack
       sx={{
@@ -46,114 +46,48 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         overflow: 'hidden',
         minHeight: '800px',
         padding: '30px 0 20px 0',
+        backgroundColor: '#10131a',
         '@media (max-width: 1100px)': {
           paddingBottom: '10px',
         },
       }}
     >
-      {!showBgImage && (
-        <>
-          <Stack
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: '0px',
-              width: '100%',
-              height: '100%',
-              background: `radial-gradient(circle at top, rgba(9,105,218,0.1), transparent 40%), linear-gradient(180deg, #0d1117 0%, #161b22 100%)`,
-              zIndex: 0,
-            }}
-          />
-          <Stack
-            sx={{
-              position: 'absolute',
-              bottom: 0,
-              width: '100vw',
-              left: 0,
-              height: '170px',
-              background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
-              zIndex: 1,
-              opacity: 1,
-              '@media (max-width: 600px)': {
-                height: '100px',
-              },
-            }}
-          />
-        </>
-      )}
-
-      {showBgImage && (
-        <>
-          <Stack
-            sx={{
-              position: 'absolute',
-              backgroundColor: `#10131a`,
-              top: 0,
-              left: '0px',
-              margin: '0 auto',
-              width: '100vw',
-              overflow: 'hidden',
-              height: '100%',
-              zIndex: -2,
-              backgroundSize: 'cover',
-              opacity: 0.5,
-              '@media (max-width: 600px)': {
-                display: 'none',
-                background: 'none',
-              },
-            }}
-          >
-            <Image
-              src={'/landing/preview/space2.webp'}
-              alt={'Space background'}
-              fill
-              fetchPriority="high"
-              loading="eager"
-              sizes="100vw"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
-            />
-          </Stack>
-
-          <Stack
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: '0px',
-              margin: '0 auto',
-              width: '100vw',
-              overflow: 'hidden',
-              height: '100%',
-              zIndex: -2,
-              backgroundSize: 'cover',
-              opacity: 0.5,
-              display: 'none',
-              '@media (max-width: 600px)': {
-                display: 'flex',
-              },
-            }}
-          >
-            <Image
-              src={'/landing/preview/space2Mobile.jpg'}
-              alt={'Page background'}
-              fetchPriority="high"
-              loading="eager"
-              width={600}
-              height={1072}
-              quality={90}
-              style={{
-                width: '100%',
-                aspectRatio: '600 / 1072',
-                height: '100%',
-                objectFit: 'cover',
-              }}
-            />
-          </Stack>
-        </>
-      )}
+      <Stack
+        aria-hidden
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          backgroundColor: '#10131a',
+          backgroundImage: `
+            radial-gradient(ellipse at 72% 46%, rgba(80, 120, 180, 0.16), transparent 42%),
+            radial-gradient(ellipse at 28% 18%, rgba(50, 70, 120, 0.1), transparent 38%)
+          `,
+        }}
+      >
+        <StarFieldBackground />
+      </Stack>
+      <Stack
+        aria-hidden
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          pointerEvents: 'none',
+          background: `
+            linear-gradient(90deg, rgba(16, 19, 26, 0.72) 0%, rgba(16, 19, 26, 0.38) 34%, rgba(16, 19, 26, 0.08) 58%, transparent 72%),
+            radial-gradient(ellipse at 18% 36%, rgba(16, 19, 26, 0.5) 0%, transparent 48%),
+            linear-gradient(180deg, rgba(16, 19, 26, 0.22) 0%, rgba(16, 19, 26, 0) 18%, rgba(17, 19, 26, 0.14) 78%, #11131a 100%)
+          `,
+          '@media (max-width: 1100px)': {
+            background: `
+              linear-gradient(180deg, rgba(16, 19, 26, 0.7) 0%, rgba(16, 19, 26, 0.32) 30%, rgba(16, 19, 26, 0.06) 52%, transparent 64%),
+              linear-gradient(180deg, rgba(16, 19, 26, 0.18) 0%, rgba(16, 19, 26, 0) 16%, rgba(17, 19, 26, 0.16) 80%, #11131a 100%)
+            `,
+          },
+        }}
+      />
 
       <Stack
         sx={{
@@ -167,6 +101,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
 
           gap: '100px',
           position: 'relative',
+          zIndex: 2,
           '@media (max-width: 600px)': {
             gap: '20px',
             padding: '90px 0px 0 0px',
