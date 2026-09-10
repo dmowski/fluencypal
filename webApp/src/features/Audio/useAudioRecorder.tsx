@@ -63,6 +63,13 @@ export const useAudioRecorder = () => {
       recorderControls.clearCanvas();
       return;
     }
+    if (!auth.uid) {
+      setTranscription('');
+      setTranscriptionBlob(recordedAudioBlog);
+      setIsTranscribing(false);
+      recorderControls.clearCanvas();
+      return;
+    }
     setIsTranscribing(true);
     const token = await auth.getToken();
     try {
@@ -138,7 +145,9 @@ export const useAudioRecorder = () => {
       cancelRecording();
       return;
     }
-    setIsTranscribing(true);
+    if (auth.uid) {
+      setIsTranscribing(true);
+    }
     recorderControls.stopRecording();
   };
   const isRecording = recorderControls.isRecordingInProgress;

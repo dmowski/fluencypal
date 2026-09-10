@@ -30,6 +30,19 @@ jest.mock('@/features/Auth/useAuth', () => ({
   }),
 }));
 
+jest.mock('@/features/Audio/useAudioRecorder', () => ({
+  useAudioRecorder: () => ({
+    startRecording: jest.fn(),
+    stopRecording: jest.fn(),
+    isRecording: false,
+    isTranscribing: false,
+    transcriptionBlob: null,
+    error: '',
+    visualizerComponent: null,
+    recordingMilliSeconds: 0,
+  }),
+}));
+
 jest.mock('@/features/Auth/useIsWebView', () => ({
   useIsWebView: () => ({
     inWebView: false,
@@ -108,6 +121,11 @@ describe('SignInForm', () => {
       '/audio/role-openings/alias-game.mp3',
     );
     expect(screen.getByRole('button', { name: 'Hear the first line' })).toBeInTheDocument();
+    expect(screen.getByTestId('roleplay-guest-reply-button')).toHaveAttribute(
+      'data-analytics',
+      'reply-first-line',
+    );
+    expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
       'data-analytics',
@@ -130,6 +148,7 @@ describe('SignInForm', () => {
     expect(screen.getByText('Hotel Check-In')).toBeInTheDocument();
     expect(screen.getByText('Practice checking in at a hotel')).toBeInTheDocument();
     expect(screen.getByText(hotelOpening)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
   });

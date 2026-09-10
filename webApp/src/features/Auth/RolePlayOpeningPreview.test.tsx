@@ -55,4 +55,27 @@ describe('RolePlayOpeningPreview', () => {
     );
     expect(play).toHaveBeenCalled();
   });
+
+  it('pauses the clip when the guest starts recording', () => {
+    const { rerender } = render(
+      <I18nWrapper>
+        <RolePlayOpeningPreview
+          text="Hello, I'm your AI partner for the Alias game."
+          audioSrc="/audio/role-openings/alias-game.mp3"
+        />
+      </I18nWrapper>,
+    );
+
+    rerender(
+      <I18nWrapper>
+        <RolePlayOpeningPreview
+          text="Hello, I'm your AI partner for the Alias game."
+          audioSrc="/audio/role-openings/alias-game.mp3"
+          pausePlayback
+        />
+      </I18nWrapper>,
+    );
+
+    expect(pause).toHaveBeenCalled();
+  });
 });

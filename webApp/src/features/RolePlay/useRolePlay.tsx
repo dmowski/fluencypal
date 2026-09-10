@@ -20,6 +20,13 @@ import { ConversationMode } from '@/features/Settings/userSettings';
 import { useUrlState } from '../Url/useUrlState';
 import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
+import { useAuth } from '../Auth/useAuth';
+import {
+  appendGuestReplyToInstruction,
+  clearGuestReply,
+  consumeGuestReplyTranscript,
+  shouldInjectGuestReply,
+} from '../Auth/rolePlayGuestReplyStorage';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -93,6 +100,7 @@ function useProvideRolePlay({
   rolePlayInfo: RolePlayScenariosInfo;
 }): RolePlayContextType {
   const userInfo = useAiUserInfo();
+  const auth = useAuth();
 
   const [rolePlayId, setRolePlayId] = useUrlState('rolePlayId', '', false);
   const [selectedCategoryId, setSelectedCategoryId] = useUrlState(
@@ -153,7 +161,7 @@ function useProvideRolePlay({
     {},
   );
 
-  const onStartRolePlay = ({
+  const onStartRolePlay = async ({
     scenario,
     rolePlayInputs,
     gameStat,
@@ -168,9 +176,22 @@ function useProvideRolePlay({
       settings.setConversationMode(conversationMode);
     }
 
-    const instruction = scenario.useInstructionOnly
+    let instruction = scenario.useInstructionOnly
       ? scenario.instructionToAi
       : getDefaultInstruction(scenario, settings.fullLanguageName || 'English', rolePlayInputs);
+
+    if (shouldInjectGuestReply(scenario.id)) {
+      const guestReply = await consumeGuestReplyTranscript({
+        rolePlayId: scenario.id,
+        getToken: auth.getToken,
+        languageCode: settings.languageCode || 'en',
+      });
+      if (guestReply) {
+        instruction = appendGuestReplyToInstruction(instruction, guestReply);
+      }
+    } else {
+      clearGuestReply(scenario.id);
+    }
 
     aiConversation.startConversation({
       mode: 'role-play',
@@ -373,14 +394,14 @@ function useProvideRolePlay({
         rolePlayInputs.map((input) => input.labelForAi + ':' + input.userValue).join(', '),
       );
 
-      onStartRolePlay({
+      await onStartRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
         gameStat: wordsInfo,
         conversationMode: 'call',
       });
     } else {
-      onStartRolePlay({
+      await onStartRolePlay({
         scenario: selectedRolePlayScenario,
         rolePlayInputs,
         conversationMode: 'call',

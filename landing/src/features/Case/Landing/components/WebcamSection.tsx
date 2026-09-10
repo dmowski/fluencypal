@@ -5,7 +5,7 @@ import { H2, SubTitle } from './Typography';
 import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
 import { CircleArrowRight, CircleCheckBig, MoveRight } from 'lucide-react';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import { WebCamButtons } from './WebCamButtons';
+import { WebcamPreviewPlayer } from './WebcamPreviewPlayer';
 
 export interface WebcamSectionProps {
   data: WebcamDemoSection;
@@ -97,33 +97,10 @@ export const WebcamSection = (props: WebcamSectionProps) => {
               position: 'relative',
             }}
           >
-            <Stack
-              sx={{
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              <Stack
-                component={'video'}
-                autoPlay
-                loop
-                playsInline
-                controls={false}
-                muted
-                sx={{
-                  aspectRatio: '16/10',
-                  maxWidth: '100%',
-                  objectFit: 'cover',
-                  boxShadow: '0 0 20px rgba(0, 0, 0, 0.21)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-
-                  width: '100%',
-                  borderRadius: '12px 12px 0 0',
-                }}
-                src={props.data.webCamPreview.videoUrl}
-              />
-              <WebCamButtons audioSrc={props.data.webCamPreview.audioUrl} />
-            </Stack>
+            <WebcamPreviewPlayer
+              idleVideoUrl={props.data.webCamPreview.videoUrl}
+              talkingVideoUrl={props.data.webCamPreview.talkingVideoUrl}
+            />
 
             <Stack
               sx={{

@@ -8,9 +8,11 @@ import { Pause, Volume2 } from 'lucide-react';
 export const RolePlayOpeningPreview = ({
   text,
   audioSrc,
+  pausePlayback = false,
 }: {
   text: string;
   audioSrc: string;
+  pausePlayback?: boolean;
 }) => {
   const { i18n } = useLingui();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -39,6 +41,13 @@ export const RolePlayOpeningPreview = ({
       el.removeEventListener('ended', onPauseOrEnd);
     };
   }, [audioSrc]);
+
+  useEffect(() => {
+    if (!pausePlayback) {
+      return;
+    }
+    audioRef.current?.pause();
+  }, [pausePlayback]);
 
   const togglePlay = () => {
     const el = audioRef.current;

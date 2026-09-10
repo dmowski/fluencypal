@@ -1,42 +1,19 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { IconButton, Stack } from '@mui/material';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
-export const MARIN_TALK_AUDIO_SRC = '/call/marin/talk.mp3';
+export const MARIN_IDLE_VIDEO_SRC = '/call/marin/sit.webm';
+export const MARIN_TALKING_VIDEO_SRC = '/call/marin/marin_talking.webm';
 
-export const WebCamButtons = ({ audioSrc }: { audioSrc?: string }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    return () => {
-      audio?.pause();
-    };
-  }, []);
-
-  const toggleMute = () => {
-    const audio = audioRef.current;
-
-    if (isMuted) {
-      setIsMuted(false);
-      if (!audio) {
-        return;
-      }
-      audio.currentTime = 0;
-      void audio.play().catch(() => {
-        setIsMuted(true);
-      });
-      return;
-    }
-
-    audio?.pause();
-    setIsMuted(true);
-  };
-
+export const WebCamButtons = ({
+  isPlaying,
+  onToggle,
+}: {
+  isPlaying?: boolean;
+  onToggle?: () => void;
+}) => {
   return (
     <Stack
       sx={{
@@ -45,35 +22,39 @@ export const WebCamButtons = ({ audioSrc }: { audioSrc?: string }) => {
         bottom: '0px',
         alignItems: 'center',
         width: '100%',
-        padding: '10px 0',
+        padding: '10px 0 15px 0',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '10px',
       }}
     >
-      {audioSrc && (
-        <audio
-          ref={audioRef}
-          src={audioSrc}
-          preload="auto"
-          playsInline
-          onEnded={() => setIsMuted(true)}
-          data-testid="webcam-preview-audio"
-        />
-      )}
       <IconButton
-        aria-label={isMuted ? 'Unmute' : 'Mute'}
-        onClick={toggleMute}
-        data-testid="webcam-mute-button"
-        data-analytics={isMuted ? 'webcam-unmute' : 'webcam-mute'}
+        aria-label={isPlaying ? 'Pause' : 'Play'}
+        onClick={onToggle}
+        data-testid="webcam-play-button"
+        data-analytics={isPlaying ? 'webcam-pause' : 'webcam-play'}
         sx={{
-          backgroundColor: 'rgba(100, 100, 100, 0.4)',
+          width: 76,
+          height: 76,
+          padding: 0,
+          backgroundColor: '#1E88FF',
           color: '#fff',
-          ':hover': { backgroundColor: 'rgba(100, 100, 100, 0.6)' },
+          boxShadow: '0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(255, 255, 255, 1)',
+          ':hover': {
+            backgroundColor: '#3A98FF',
+            transform: 'scale(1.08)',
+            boxShadow: '0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 8px rgba(255, 255, 255, 1)',
+          },
+          '& .MuiSvgIcon-root': {
+            display: 'block',
+          },
         }}
-        size="large"
       >
-        {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+        {isPlaying ? (
+          <PauseIcon sx={{ fontSize: 40 }} />
+        ) : (
+          <PlayArrowIcon sx={{ fontSize: 40, transform: 'translateX(0px)' }} />
+        )}
       </IconButton>
     </Stack>
   );

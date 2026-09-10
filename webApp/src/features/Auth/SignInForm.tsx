@@ -2,7 +2,7 @@
 import { Stack } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { useLingui } from '@lingui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
 import { WebViewWall } from './WebViewWall';
@@ -11,6 +11,7 @@ import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasA
 import { shouldStartPracticeAuthOnGoogle } from './practiceAuthWall';
 import { getRolePlayOpeningLine } from './rolePlayOpeningLine';
 import { RolePlayOpeningPreview } from './RolePlayOpeningPreview';
+import { RolePlayGuestReply } from './RolePlayGuestReply';
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -34,6 +35,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   const startOnAuth = shouldStartPracticeAuthOnGoogle(rolePlayId);
   const openingLine = getRolePlayOpeningLine(scenario);
+  const [isGuestRecording, setIsGuestRecording] = useState(false);
 
   const pageTitle = goalId
     ? i18n._(`Open personal plan`)
@@ -66,8 +68,18 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           authActionTitle={startOnAuth ? i18n._('Continue to talk') : undefined}
           authListAfterActions={startOnAuth}
           authSubComponent={
-            openingLine ? (
-              <RolePlayOpeningPreview text={openingLine.text} audioSrc={openingLine.audioSrc} />
+            openingLine && rolePlayId ? (
+              <Stack sx={{ gap: '12px' }}>
+                <RolePlayOpeningPreview
+                  text={openingLine.text}
+                  audioSrc={openingLine.audioSrc}
+                  pausePlayback={isGuestRecording}
+                />
+                <RolePlayGuestReply
+                  rolePlayId={rolePlayId}
+                  onRecordingChange={setIsGuestRecording}
+                />
+              </Stack>
             ) : undefined
           }
         >
