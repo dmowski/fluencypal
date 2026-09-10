@@ -627,7 +627,7 @@ msgstr "Pelatih Wawancara AI"
 msgid "AI Interview Practice"
 msgstr "Latihan Wawancara AI"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -663,7 +663,7 @@ msgstr "Latihan Berbicara AI"
 msgid "AI tokens"
 msgstr "Token AI"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI Suara"
@@ -2244,7 +2244,13 @@ msgstr "Pilih Tingkat Bahasa"
 msgid "Choose Site Language"
 msgstr "Pilih Bahasa Situs"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "Pilih mikrofon yang digunakan untuk latihan berbicara"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Pilih suara untuk guru AI Anda"
@@ -4036,6 +4042,7 @@ msgstr "Jangan lupa untuk mencoba mode panggilan di bagian latihan!"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4904,7 +4911,7 @@ msgstr "Latihan Jawaban Cepat"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Umpan Balik"
@@ -5487,7 +5494,7 @@ msgstr "wawancara desain sistem frontend"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6139,7 +6146,7 @@ msgstr "Dengarkan baris pertama"
 msgid "Hear the question"
 msgstr "Dengarkan pertanyaannya"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Bantuan"
@@ -7350,7 +7357,7 @@ msgstr "Mendapatkan Pekerjaan Dev Pertama Anda Lebih Sulit Daripada Seharusnya"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Bahasa"
@@ -7551,7 +7558,7 @@ msgid "Leave shared book"
 msgstr "Tinggalkan buku bersama"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Tinggalkan pesan Anda"
@@ -7782,6 +7789,7 @@ msgstr "Memuat..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Memuat…"
@@ -7793,12 +7801,12 @@ msgstr "Terkunci"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Keluar"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Log keluar dari akun Anda"
@@ -7853,18 +7861,18 @@ msgstr "Pastikan webcam Anda berfungsi dengan baik."
 msgid "Malay Learning Plan"
 msgstr "Rencana Belajar Bahasa Melayu"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Kelola pengaturan akses penuh Anda"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Kelola pengaturan notifikasi Anda"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Kelola pengaturan profil Anda dan periksa kemajuan Anda"
@@ -8013,6 +8021,8 @@ msgstr "Mikro-antarmuka depan"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -8225,7 +8235,7 @@ msgid "Native language"
 msgstr "Bahasa asli"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Butuh bantuan?"
@@ -8500,6 +8510,7 @@ msgstr "Belum ada pesan. Jadilah yang pertama berbagi pemikiran Anda!"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Tidak ada mikrofon yang ditemukan. Izinkan akses mikrofon dan coba lagi."
@@ -8772,7 +8783,7 @@ msgstr "Notifikasi telah dikirim ke tim pengembang. Maaf atas hal ini..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Notifikasi"
@@ -9205,7 +9216,7 @@ msgid "Payment failed! Please try again."
 msgstr "Pembayaran gagal! Silakan coba lagi."
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Riwayat Pembayaran"
@@ -10930,7 +10941,7 @@ msgstr "Kembali"
 msgid "Returning an Item to a Store"
 msgstr "Mengembalikan Barang ke Toko"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Tinjau dan edit apa yang diingat oleh AI"
@@ -11229,7 +11240,7 @@ msgstr "Pilih suara yang akan digunakan oleh guru AI Anda selama percakapan."
 msgid "Select your game avatar"
 msgstr "Pilih avatar permainan Anda"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Pilih bahasa yang Anda inginkan"
@@ -12464,6 +12475,7 @@ msgstr "Sinkronisasi perpustakaan Anda..."
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Pengaturan sistem default"
@@ -14147,6 +14159,7 @@ msgid "Try"
 msgstr "Coba"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Coba lagi"
@@ -14498,7 +14511,7 @@ msgstr "Rencana Belajar Bahasa Vietnam"
 msgid "View all"
 msgstr "Lihat semuanya"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "Lihat pembayaran dan tarik dari kontrak"
@@ -14648,7 +14661,7 @@ msgstr "Pemanasan"
 msgid "WCAG Standards"
 msgstr "Standar WCAG"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Kami menghargai umpan balik Anda!"

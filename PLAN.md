@@ -8,8 +8,3 @@ General strategy:
 ## Advanced Practice
 
 webApp/src/features/InteractiveLesson/AGENTS.md
-
-## Promo
-
-Record reals about Dublin
-Record reals about Route

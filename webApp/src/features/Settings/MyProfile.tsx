@@ -12,6 +12,7 @@ import {
   LogOut,
   LucideProps,
   MessageCircleQuestionMark,
+  Mic,
   Speech,
   Star,
   Wallet,
@@ -33,6 +34,7 @@ import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
 import { GameMyIdentity } from '../Game/GameMyIdentity';
 import { AiKnowledgeModal } from '../User/AiKnowledgeModal';
 import { NotificationsModal } from '../Header/NotificationsModal';
+import { MicrophoneSettingsModal } from './MicrophoneSettingsModal';
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -61,6 +63,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const shouldShowPaymentHistory = isShowPaymentHistoryModal;
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam('feedback');
   const [isShowAiKnowledgeModal, setIsShowAiKnowledgeModal] = useUrlParam('ai-knowledge');
+  const [isShowMicrophoneModal, setIsShowMicrophoneModal] = useUrlParam('microphone');
 
   const usage = useUsage();
   const [_, setIsShowLanguageModal] = useUrlParam('lang-selection');
@@ -92,6 +95,12 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       subTitle: i18n._(`Choose the voice for your AI teacher`),
       icon: Speech,
       onClick: () => teacherSettings.openSettingsModal(),
+    },
+    {
+      title: i18n._(`Microphone`),
+      subTitle: i18n._(`Choose the microphone used for speaking practice`),
+      icon: Mic,
+      onClick: () => setIsShowMicrophoneModal(true),
     },
 
     {
@@ -271,6 +280,10 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
       {isShowAiKnowledgeModal && (
         <AiKnowledgeModal onClose={() => setIsShowAiKnowledgeModal(false)} />
+      )}
+
+      {isShowMicrophoneModal && (
+        <MicrophoneSettingsModal onClose={() => setIsShowMicrophoneModal(false)} />
       )}
 
       <LanguageSwitcher

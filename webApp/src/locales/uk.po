@@ -622,7 +622,7 @@ msgstr "Коуч зі співбесід на основі ШІ"
 msgid "AI Interview Practice"
 msgstr "Практика співбесід з AI"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -658,7 +658,7 @@ msgstr "Практика мовлення з AI"
 msgid "AI tokens"
 msgstr "Токени AI"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "Голос AI"
@@ -2230,7 +2230,13 @@ msgstr "Виберіть рівень мови"
 msgid "Choose Site Language"
 msgstr "Виберіть мову сайту"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "Виберіть мікрофон для практики мовлення"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Виберіть голос для свого AI вчителя"
@@ -4023,6 +4029,7 @@ msgstr "Не забудьте спробувати режим дзвінка в 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4876,7 +4883,7 @@ msgstr "Практика Швидкої Відповіді"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Відгук"
@@ -5457,7 +5464,7 @@ msgstr "інтерв’ю з проектування систем фронте�
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6099,7 +6106,7 @@ msgstr "Почуйте перший рядок"
 msgid "Hear the question"
 msgstr "Почуйте питання"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Допомога"
@@ -7285,7 +7292,7 @@ msgstr "Отримати свою першу роботу розробника �
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Мова"
@@ -7486,7 +7493,7 @@ msgid "Leave shared book"
 msgstr "Залишити спільну книгу"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Залиште своє повідомлення"
@@ -7715,6 +7722,7 @@ msgstr "Завантаження..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Завантаження…"
@@ -7726,12 +7734,12 @@ msgstr "Заблоковано"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Вийти"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Вийти з вашого облікового запису"
@@ -7788,18 +7796,18 @@ msgstr "Переконайтеся, що ваша веб-камера працю
 msgid "Malay Learning Plan"
 msgstr "План вивчення малайської"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Керуйте налаштуваннями повного доступу"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Керуйте налаштуваннями сповіщень"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Керуйте налаштуваннями свого профілю та перевіряйте свій прогрес"
@@ -7946,6 +7954,8 @@ msgstr "Мікро-фронтенди"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Мікрофон"
@@ -8161,7 +8171,7 @@ msgid "Native language"
 msgstr "Рідна мова"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Потрібна допомога?"
@@ -8430,6 +8440,7 @@ msgstr "Наразі повідомлень немає. Будьте перши�
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Мікрофонів не знайдено. Дозвольте доступ до мікрофона і спробуйте ще раз."
@@ -8702,7 +8713,7 @@ msgstr "Повідомлення було відправлено команді 
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Сповіщення"
@@ -9127,7 +9138,7 @@ msgid "Payment failed! Please try again."
 msgstr "Оплата не пройшла! Спробуйте ще раз."
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Історія платежів"
@@ -10842,7 +10853,7 @@ msgstr "Повернення"
 msgid "Returning an Item to a Store"
 msgstr "Повернення товару в магазин"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Перегляньте та відредагуйте те, що AI запам’ятовує"
@@ -11143,7 +11154,7 @@ msgstr "Виберіть голос, який ваш AI-вчитель вико�
 msgid "Select your game avatar"
 msgstr "Виберіть свій аватар у грі"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Виберіть вашу бажану мову"
@@ -12368,6 +12379,7 @@ msgstr "Синхронізація вашої бібліотеки…"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Системний стандарт"
@@ -14021,6 +14033,7 @@ msgid "Try"
 msgstr "Спробуйте"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Спробуйте ще раз"
@@ -14366,7 +14379,7 @@ msgstr "План вивчення в'єтнамської"
 msgid "View all"
 msgstr "Переглянути все"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "Переглянути платежі та зняти з контракту"
@@ -14514,7 +14527,7 @@ msgstr "Розминка"
 msgid "WCAG Standards"
 msgstr "Стандарти WCAG"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Ми цінуємо ваш відгук!"

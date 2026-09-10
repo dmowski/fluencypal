@@ -619,7 +619,7 @@ msgstr "AI Intervju Coach"
 msgid "AI Interview Practice"
 msgstr "AI-intervjupraksis"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -655,7 +655,7 @@ msgstr "AI Speaking Practice"
 msgid "AI tokens"
 msgstr "AI-tokens"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI-stemme"
@@ -2226,7 +2226,13 @@ msgstr "Velg språknivå"
 msgid "Choose Site Language"
 msgstr "Velg nettstedsspråk"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "Velg mikrofonen som skal brukes til taleøving"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "Velg stemmen til din AI-lærer"
@@ -4001,6 +4007,7 @@ msgstr "Glem ikke å prøve samtalemodus i praksisdelen!"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4842,7 +4849,7 @@ msgstr "Rask Svar Praksis"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Tilbakemelding"
@@ -5408,7 +5415,7 @@ msgstr "frontend system design intervju"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6049,7 +6056,7 @@ msgstr "Hør den første linjen"
 msgid "Hear the question"
 msgstr "Hør spørsmålet"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Hjelp"
@@ -7233,7 +7240,7 @@ msgstr "Å Få Din Første Utviklerjobb Er Vanskeligere Enn Det Burde Være"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Språk"
@@ -7430,7 +7437,7 @@ msgid "Leave shared book"
 msgstr "Forlat delt bok"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Legg igjen meldingen din"
@@ -7659,6 +7666,7 @@ msgstr "Laster..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Laster..."
@@ -7670,12 +7678,12 @@ msgstr "Låst"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Logg ut"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Logg ut av kontoen din"
@@ -7730,18 +7738,18 @@ msgstr "Sørg for at webkameraet ditt fungerer som det skal."
 msgid "Malay Learning Plan"
 msgstr "Malay-læringsplan"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Administrer innstillingene for full tilgang"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Administrer dine varslingsinnstillinger"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Administrer profilinnstillingene dine og sjekk fremgangen din"
@@ -7887,6 +7895,8 @@ msgstr "Mikro-frontends"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -8096,7 +8106,7 @@ msgid "Native language"
 msgstr "Modersmål"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Trenger du hjelp?"
@@ -8361,6 +8371,7 @@ msgstr "Ingen meldinger ennå. Vær den første til å dele dine tanker!"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Ingen mikrofoner funnet. Tillat mikrofontilgang og prøv igjen."
@@ -8626,7 +8637,7 @@ msgstr "Varsel ble sendt til utviklingsteamet. Beklager det..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Varsler"
@@ -9049,7 +9060,7 @@ msgid "Payment failed! Please try again."
 msgstr "Betaling mislyktes! Vennligst prøv igjen."
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Betalingshistorikk"
@@ -10739,7 +10750,7 @@ msgstr "Returnere"
 msgid "Returning an Item to a Store"
 msgstr "Returning an Item to a Store"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "Gjennomgå og rediger det AI-en husker"
@@ -11035,7 +11046,7 @@ msgstr "Velg stemmen som AI-læreren din vil bruke under samtaler."
 msgid "Select your game avatar"
 msgstr "Velg din spilleavatar"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Velg ditt foretrukne språk"
@@ -12269,6 +12280,7 @@ msgstr "Synkroniserer biblioteket ditt…"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Systemstandard"
@@ -13922,6 +13934,7 @@ msgid "Try"
 msgstr "Prøv"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Prøv igjen"
@@ -14263,7 +14276,7 @@ msgstr "Vietnamesisk Læreplan"
 msgid "View all"
 msgstr "Vis alle"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "Se betalinger og trekk fra kontrakt"
@@ -14409,7 +14422,7 @@ msgstr "Oppvarming"
 msgid "WCAG Standards"
 msgstr "WCAG-standarder"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Vi setter pris på tilbakemeldingen din!"

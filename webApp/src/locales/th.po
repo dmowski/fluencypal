@@ -623,7 +623,7 @@ msgstr "โค้ชสัมภาษณ์งาน AI"
 msgid "AI Interview Practice"
 msgstr "ฝึกสัมภาษณ์ด้วย AI"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -662,7 +662,7 @@ msgstr "การฝึกพูดด้วย AI"
 msgid "AI tokens"
 msgstr "โทเค็น AI"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "เสียง AI"
@@ -2225,7 +2225,13 @@ msgstr "เลือกระดับภาษา"
 msgid "Choose Site Language"
 msgstr "เลือกภาษาของเว็บไซต์"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "เลือกไมโครโฟนที่ใช้สำหรับการฝึกพูด"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "เลือกเสียงสำหรับครู AI ของคุณ"
@@ -4021,6 +4027,7 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4857,7 +4864,7 @@ msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "คำติชม"
@@ -5428,7 +5435,7 @@ msgstr "การสัมภาษณ์ออกแบบระบบส่ว
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6079,7 +6086,7 @@ msgstr "ฟังบรรทัดแรก"
 msgid "Hear the question"
 msgstr "ฟังคำถาม"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "ขอความช่วยเหลือ"
@@ -7254,7 +7261,7 @@ msgstr "การได้งานนักพัฒนาแรกของค
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "ภาษา"
@@ -7453,7 +7460,7 @@ msgid "Leave shared book"
 msgstr "ออกจากหนังสือที่แชร์"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "ฝากข้อความของคุณ"
@@ -7690,6 +7697,7 @@ msgstr "กำลังโหลด..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "กำลังโหลด…"
@@ -7701,12 +7709,12 @@ msgstr "ล็อก"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "ออกจากระบบ"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "ออกจากบัญชีของคุณ"
@@ -7761,18 +7769,18 @@ msgstr "ตรวจสอบให้แน่ใจว่าเว็บแค
 msgid "Malay Learning Plan"
 msgstr "แผนการเรียนรู้ภาษามาเลย์"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "จัดการการตั้งค่าการเข้าถึงเต็มรูปแบบของคุณ"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "จัดการการตั้งค่าการแจ้งเตือนของคุณ"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "จัดการการตั้งค่าโปรไฟล์ของคุณและตรวจสอบความก้าวหน้าของคุณ"
@@ -7919,6 +7927,8 @@ msgstr "ไมโครฟรอนต์เอนด์"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "ไมโครโฟน"
@@ -8130,7 +8140,7 @@ msgid "Native language"
 msgstr "ภาษาแม่"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "ต้องการความช่วยเหลือ?"
@@ -8395,6 +8405,7 @@ msgstr "ยังไม่มีข้อความใดๆ เป็นค�
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "ไม่พบไมโครโฟน อนุญาตการเข้าถึงไมโครโฟนและลองอีกครั้ง"
@@ -8659,7 +8670,7 @@ msgstr "การแจ้งเตือนถูกส่งไปยังท
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "การแจ้งเตือน"
@@ -9083,7 +9094,7 @@ msgid "Payment failed! Please try again."
 msgstr "การชำระเงินล้มเหลว! โปรดลองอีกครั้ง"
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "ประวัติการชำระเงิน"
@@ -10891,7 +10902,7 @@ msgstr "คืน"
 msgid "Returning an Item to a Store"
 msgstr "การคืนสินค้ากลับไปยังร้านค้า"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "ตรวจสอบและแก้ไขสิ่งที่ AI จำได้"
@@ -11187,7 +11198,7 @@ msgstr "เลือกเสียงที่ครู AI ของคุณ�
 msgid "Select your game avatar"
 msgstr "เลือกอวาตาร์เกมของคุณ"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "เลือกภาษาที่คุณต้องการ"
@@ -12411,6 +12422,7 @@ msgstr "กำลังซิงค์ไลบรารีของคุณ…
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "ระบบเริ่มต้น"
@@ -14052,6 +14064,7 @@ msgid "Try"
 msgstr "ลอง"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "ลองอีกครั้ง"
@@ -14397,7 +14410,7 @@ msgstr "แผนการเรียนรู้ภาษาเวียดน
 msgid "View all"
 msgstr "ดูทั้งหมด"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "ดูการชำระเงินและถอนตัวจากสัญญา"
@@ -14545,7 +14558,7 @@ msgstr "วอร์มอัพ"
 msgid "WCAG Standards"
 msgstr "มาตรฐาน WCAG"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "เราขอขอบคุณสำหรับคำติชมของคุณ!"

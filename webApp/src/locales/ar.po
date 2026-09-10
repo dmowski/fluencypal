@@ -618,7 +618,7 @@ msgstr "مدرب مقابلات الذكاء الاصطناعي"
 msgid "AI Interview Practice"
 msgstr "ممارسة المقابلات بالذكاء الاصطناعي"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -654,7 +654,7 @@ msgstr "ممارسة التحدث مع الذكاء الاصطناعي"
 msgid "AI tokens"
 msgstr "الرموز التوضيحية للذكاء الاصطناعي"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "الصوت الذكي"
@@ -2217,7 +2217,13 @@ msgstr "اختر مستوى اللغة"
 msgid "Choose Site Language"
 msgstr "اختر لغة الموقع"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "اختر الميكروفون المستخدم لممارسة التحدث"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "اختر الصوت لمعلم الذكاء الاصطناعي الخاص بك"
@@ -3986,6 +3992,7 @@ msgstr ""
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4819,7 +4826,7 @@ msgstr "تدريب على الإجابة السريعة"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "الملاحظات"
@@ -5376,7 +5383,7 @@ msgstr "مقابلة التصميم الأمامي لنظام"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6015,7 +6022,7 @@ msgstr "استمع إلى السطر الأول"
 msgid "Hear the question"
 msgstr "استمع للسؤال"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "مساعدة"
@@ -7175,7 +7182,7 @@ msgstr "النجاح في الحصول على أول وظيفة تطوير أص�
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "لغة"
@@ -7374,7 +7381,7 @@ msgid "Leave shared book"
 msgstr "اترك الكتاب المشترك"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "اترك رسالتك"
@@ -7603,6 +7610,7 @@ msgstr "جار التحميل..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "جارٍ التحميل…"
@@ -7614,12 +7622,12 @@ msgstr "مغلق"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "تسجيل الخروج"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "تسجيل الخروج من حسابك"
@@ -7674,18 +7682,18 @@ msgstr "تأكد من أن كاميرا الويب تعمل بشكل صحيح."
 msgid "Malay Learning Plan"
 msgstr "خطة التعلم للغة الملايوية"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "إدارة إعدادات الوصول الكامل الخاصة بك"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "ضبط إعدادات الإشعارات الخاصة بك"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "إدارة إعدادات ملفك الشخصي وتحقق من تقدمك"
@@ -7832,6 +7840,8 @@ msgstr "واجهات مصغرة"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "ميكروفون"
@@ -8047,7 +8057,7 @@ msgid "Native language"
 msgstr "اللغة الأم"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "تحتاج إلى مساعدة؟"
@@ -8326,6 +8336,7 @@ msgstr "لا توجد رسائل بعد. كن الأول في مشاركة أف�
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "لا توجد ميكروفونات. اسمح بالوصول إلى الميكروفون وحاول مرة أخرى."
@@ -8593,7 +8604,7 @@ msgstr "تم إرسال الإشعار إلى فريق التطوير. عذرً�
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "إشعارات"
@@ -9008,7 +9019,7 @@ msgid "Payment failed! Please try again."
 msgstr "فشل الدفع! يرجى المحاولة مرة أخرى."
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "تاريخ الدفع"
@@ -10697,7 +10708,7 @@ msgstr "عودة"
 msgid "Returning an Item to a Store"
 msgstr "إرجاع عنصر إلى المتجر"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "راجع وعدّل ما تتذكره الذكاء الاصطناعي"
@@ -10995,7 +11006,7 @@ msgstr "اختر الصوت الذي سيستخدمه معلمك الذكاء ا
 msgid "Select your game avatar"
 msgstr "اختر صورة شخصية للعبة الخاصة بك"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "حدد لغتك المفضلة"
@@ -12199,6 +12210,7 @@ msgstr "جارٍ مزامنة مكتبتك..."
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "افتراضي النظام"
@@ -13820,6 +13832,7 @@ msgid "Try"
 msgstr "حاول"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "حاول مرة أخرى"
@@ -14167,7 +14180,7 @@ msgstr "خطة التعلم الفيتنامية"
 msgid "View all"
 msgstr "عرض الكل"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "عرض الدفعات وسحب من العقد"
@@ -14315,7 +14328,7 @@ msgstr "إحماء"
 msgid "WCAG Standards"
 msgstr "معايير WCAG"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "نحن نقدر ملاحظاتك!"

@@ -621,7 +621,7 @@ msgstr "AI Görüşme Antrenörü"
 msgid "AI Interview Practice"
 msgstr "AI Mülakat Pratiği"
 
-#: src/features/Settings/MyProfile.tsx:98
+#: src/features/Settings/MyProfile.tsx:107
 #: src/features/User/AiKnowledgeModal.tsx:82
 #. js-lingui-explicit-id
 msgid "AI knowledge about you"
@@ -657,7 +657,7 @@ msgstr "AI Konuşma Pratiği"
 msgid "AI tokens"
 msgstr "AI jetonları"
 
-#: src/features/Settings/MyProfile.tsx:91
+#: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
 msgstr "AI Ses"
@@ -2229,7 +2229,13 @@ msgstr "Dil Seviyesini Seçin"
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
 
-#: src/features/Settings/MyProfile.tsx:92
+#: src/features/Settings/MicrophoneSettingsModal.tsx:71
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "Choose the microphone used for speaking practice"
+msgstr "Konuşma pratiği için kullanılan mikrofonu seçin"
+
+#: src/features/Settings/MyProfile.tsx:95
 #. js-lingui-explicit-id
 msgid "Choose the voice for your AI teacher"
 msgstr "AI öğretmeniniz için bir ses seçin"
@@ -4017,6 +4023,7 @@ msgstr "Unutmayın, pratik bölümündeki arama modunu da deneyin!"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:183
 #: src/features/Landing/LandingPage.tsx:268
 #: src/features/Modal/TeacherVoiceModal.tsx:60
+#: src/features/Settings/MicrophoneSettingsModal.tsx:143
 #: src/features/Survey/RecordUserAudioAnswer.tsx:159
 #: src/features/Tasks/useDailyTasks.tsx:175
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -4865,7 +4872,7 @@ msgstr "Hızlı Yanıt Pratiği"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:253
-#: src/features/Settings/MyProfile.tsx:265
+#: src/features/Settings/MyProfile.tsx:274
 #. js-lingui-explicit-id
 msgid "Feedback"
 msgstr "Geri Bildirim"
@@ -5439,7 +5446,7 @@ msgstr "frontend system tasarım mülakatı"
 
 #: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:78
+#: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
 #: src/features/Usage/Subscription/BalanceStatus.tsx:37
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
@@ -6086,7 +6093,7 @@ msgstr "İlk satırı dinleyin"
 msgid "Hear the question"
 msgstr "Soruyu dinle"
 
-#: src/features/Settings/MyProfile.tsx:111
+#: src/features/Settings/MyProfile.tsx:120
 #. js-lingui-explicit-id
 msgid "Help"
 msgstr "Yardım"
@@ -7265,7 +7272,7 @@ msgstr "İlk Geliştirici İşinizi Bulmak Gerektiğinden Daha Zor"
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
-#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:87
 #. js-lingui-explicit-id
 msgid "Language"
 msgstr "Dil"
@@ -7462,7 +7469,7 @@ msgid "Leave shared book"
 msgstr "Paylaşılan kitabı bırak"
 
 #: src/features/Header/ContactMessageModal.tsx:95
-#: src/features/Settings/MyProfile.tsx:267
+#: src/features/Settings/MyProfile.tsx:276
 #. js-lingui-explicit-id
 msgid "Leave your message"
 msgstr "Mesajınızı bırakın"
@@ -7691,6 +7698,7 @@ msgstr "Yükleniyor..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/Settings/MicrophoneSettingsModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Loading…"
 msgstr "Yükleniyor…"
@@ -7702,12 +7710,12 @@ msgstr "Kilitli"
 
 #: src/features/Advanced/AdvancedHeader.tsx:65
 #: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:132
+#: src/features/Settings/MyProfile.tsx:141
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Oturumu Kapat"
 
-#: src/features/Settings/MyProfile.tsx:133
+#: src/features/Settings/MyProfile.tsx:142
 #. js-lingui-explicit-id
 msgid "Log out of your account"
 msgstr "Hesabınızdan çıkış yapın"
@@ -7762,18 +7770,18 @@ msgstr "Web kameranızın düzgün çalıştığından emin olun."
 msgid "Malay Learning Plan"
 msgstr "Malay Öğrenme Planı"
 
-#: src/features/Settings/MyProfile.tsx:79
+#: src/features/Settings/MyProfile.tsx:82
 #. js-lingui-explicit-id
 msgid "Manage your full access settings"
 msgstr "Tam erişim ayarlarınızı yönetin"
 
 #: src/features/Header/NotificationsModal.tsx:35
-#: src/features/Settings/MyProfile.tsx:118
+#: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Bildirim ayarlarınızı yönetin"
 
-#: src/features/Settings/MyProfile.tsx:172
+#: src/features/Settings/MyProfile.tsx:181
 #. js-lingui-explicit-id
 msgid "Manage your profile settings and check your progress"
 msgstr "Profil ayarlarınızı yönetin ve ilerlemenizi kontrol edin"
@@ -7919,6 +7927,8 @@ msgstr "Mikro-ön uçlar"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
+#: src/features/Settings/MicrophoneSettingsModal.tsx:63
+#: src/features/Settings/MyProfile.tsx:100
 #. js-lingui-explicit-id
 msgid "Microphone"
 msgstr "Mikrofon"
@@ -8130,7 +8140,7 @@ msgid "Native language"
 msgstr "Ana dil"
 
 #: src/features/Community/SupportPage.tsx:34
-#: src/features/Settings/MyProfile.tsx:112
+#: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Yardıma mı ihtiyacınız var?"
@@ -8399,6 +8409,7 @@ msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
+#: src/features/Settings/MicrophoneSettingsModal.tsx:125
 #. js-lingui-explicit-id
 msgid "No microphones found. Allow microphone access and try again."
 msgstr "Mikrofon bulunamadı. Mikrofon erişimine izin verin ve tekrar deneyin."
@@ -8665,7 +8676,7 @@ msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
 
 #: src/features/Header/NotificationsModal.tsx:33
 #: src/features/Navigation/AppNotificationsButton.tsx:62
-#: src/features/Settings/MyProfile.tsx:117
+#: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Bildirimler"
@@ -9093,7 +9104,7 @@ msgid "Payment failed! Please try again."
 msgstr "Ödeme başarısız oldu! Lütfen tekrar deneyin."
 
 #: src/features/Header/PaymentHistoryModal.tsx:121
-#: src/features/Settings/MyProfile.tsx:123
+#: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Ödeme Geçmişi"
@@ -10790,7 +10801,7 @@ msgstr "Geri dön"
 msgid "Returning an Item to a Store"
 msgstr "Bir Ürünü Mağazaya İade Etmek"
 
-#: src/features/Settings/MyProfile.tsx:99
+#: src/features/Settings/MyProfile.tsx:108
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "AI'nin hatırladıklarını gözden geçirin ve düzenleyin"
@@ -11093,7 +11104,7 @@ msgstr "AI öğretmeninizin sohbetler sırasında kullanacağı sesi seçin."
 msgid "Select your game avatar"
 msgstr "Oyun avatarınızı seçin"
 
-#: src/features/Settings/MyProfile.tsx:85
+#: src/features/Settings/MyProfile.tsx:88
 #. js-lingui-explicit-id
 msgid "Select your preferred language"
 msgstr "Tercih ettiğiniz dili seçin"
@@ -12317,6 +12328,7 @@ msgstr "Kitaplığınız senkronize ediliyor..."
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
+#: src/features/Settings/MicrophoneSettingsModal.tsx:97
 #. js-lingui-explicit-id
 msgid "System default"
 msgstr "Sistem varsayılanı"
@@ -13975,6 +13987,7 @@ msgid "Try"
 msgstr "Denemek"
 
 #: src/features/Quiz/components/QuizModal.tsx:281
+#: src/features/Settings/MicrophoneSettingsModal.tsx:132
 #. js-lingui-explicit-id
 msgid "Try again"
 msgstr "Tekrar dene"
@@ -14317,7 +14330,7 @@ msgstr "Vietnamca Öğrenme Planı"
 msgid "View all"
 msgstr "Tümünü Görüntüle"
 
-#: src/features/Settings/MyProfile.tsx:124
+#: src/features/Settings/MyProfile.tsx:133
 #. js-lingui-explicit-id
 msgid "View payments and withdraw from contract"
 msgstr "Ödemeleri görüntüle ve sözleşmeden çekil"
@@ -14461,7 +14474,7 @@ msgstr "Isınma"
 msgid "WCAG Standards"
 msgstr "WCAG Standartları"
 
-#: src/features/Settings/MyProfile.tsx:266
+#: src/features/Settings/MyProfile.tsx:275
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Geri bildiriminizi takdir ediyoruz!"
