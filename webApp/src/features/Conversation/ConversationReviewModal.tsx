@@ -215,13 +215,19 @@ const TranslatableComponent = ({
   const toggleTranslation = async () => {
     if (isLoading) return;
     setIsTranslating(true);
-    if (translatedText) {
-      setTranslatedText('');
-    } else {
-      const result = await translator.translateText({ text: message || '' });
-      setTranslatedText('\n' + result.trim());
+    try {
+      if (translatedText) {
+        setTranslatedText('');
+      } else {
+        const result = await translator.translateText({ text: message || '' });
+        const trimmed = result.trim();
+        if (trimmed) {
+          setTranslatedText('\n' + trimmed);
+        }
+      }
+    } finally {
+      setIsTranslating(false);
     }
-    setIsTranslating(false);
   };
 
   const text = translatedText || '\n' + (message || '').trim();

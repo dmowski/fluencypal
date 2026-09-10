@@ -100,11 +100,14 @@ export const ProcessUserInput = ({
       return;
     }
     setIsTranslatingCorrectedMessage(true);
-    const translated = await translator.translateText({
-      text: actualResult.analysis?.correctedMessage || '',
-    });
-    setTranslatedCorrectedMessage(translated);
-    setIsTranslatingCorrectedMessage(false);
+    try {
+      const translated = await translator.translateText({
+        text: actualResult.analysis?.correctedMessage || '',
+      });
+      setTranslatedCorrectedMessage(translated || null);
+    } finally {
+      setIsTranslatingCorrectedMessage(false);
+    }
   };
 
   const transcribingLabel = i18n._('Transcribing...');

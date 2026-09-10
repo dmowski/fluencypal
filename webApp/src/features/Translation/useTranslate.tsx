@@ -96,9 +96,8 @@ export const useTranslate = (options?: UseTranslateOptions) => {
         translated: translatedText,
       });
       setIsTranslating(false);
-    } catch (error) {
+    } catch {
       setIsTranslating(false);
-      throw error;
     }
   };
 

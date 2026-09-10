@@ -107,19 +107,24 @@ export const getTranslation = async ({
     return cache[normalizedText];
   }
 
-  const response = await translateRequest({
-    text: normalizedText,
-    sourceLanguage: sourceLanguage || null,
-    targetLanguage,
-  });
+  try {
+    const response = await translateRequest({
+      text: normalizedText,
+      sourceLanguage: sourceLanguage || null,
+      targetLanguage,
+    });
 
-  if (isUseCache) {
-    cache = getTranslatorCache(sourceLanguage || null, targetLanguage);
-    cache[normalizedText] = response.translatedText;
-    setTranslatorCache(sourceLanguage || null, targetLanguage, cache);
+    if (isUseCache) {
+      cache = getTranslatorCache(sourceLanguage || null, targetLanguage);
+      cache[normalizedText] = response.translatedText;
+      setTranslatorCache(sourceLanguage || null, targetLanguage, cache);
+    }
+
+    return response.translatedText;
+  } catch (error) {
+    console.error('Translation request failed', error);
+    return '';
   }
-
-  return response.translatedText;
 };
 
 export const getBatchTranslation = async ({
@@ -135,11 +140,16 @@ export const getBatchTranslation = async ({
     return [];
   }
 
-  const response = await translateBatchRequest({
-    texts,
-    sourceLanguage: sourceLanguage || null,
-    targetLanguage,
-  });
+  try {
+    const response = await translateBatchRequest({
+      texts,
+      sourceLanguage: sourceLanguage || null,
+      targetLanguage,
+    });
 
-  return response.translatedTexts;
+    return response.translatedTexts;
+  } catch (error) {
+    console.error('Translation batch request failed', error);
+    return texts.map(() => '');
+  }
 };

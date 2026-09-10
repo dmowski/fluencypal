@@ -145,13 +145,19 @@ export function Message({
     }
 
     setIsTranslating(true);
-    const translatedText = await translator.translateText({
-      text: message.content,
-    });
-    setIsShowFullContent(true);
-    setTranslation(translatedText);
-    setIsShowTranslation(true);
-    setIsTranslating(false);
+    try {
+      const translatedText = await translator.translateText({
+        text: message.content,
+      });
+      if (!translatedText.trim()) {
+        return;
+      }
+      setIsShowFullContent(true);
+      setTranslation(translatedText);
+      setIsShowTranslation(true);
+    } finally {
+      setIsTranslating(false);
+    }
   };
 
   const contentToShow = isShowTranslation && translation ? translation : message.content;

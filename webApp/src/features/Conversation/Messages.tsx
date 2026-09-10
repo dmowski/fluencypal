@@ -113,15 +113,21 @@ export const Message = ({
 
   const toggleTranslation = async () => {
     setIsTranslating(true);
-    if (translatedText) {
-      setTranslatedText('');
-    } else {
-      const result = await translator.translateText({
-        text: message?.text || '',
-      });
-      setTranslatedText('\n' + result.trim());
+    try {
+      if (translatedText) {
+        setTranslatedText('');
+      } else {
+        const result = await translator.translateText({
+          text: message?.text || '',
+        });
+        const trimmed = result.trim();
+        if (trimmed) {
+          setTranslatedText('\n' + trimmed);
+        }
+      }
+    } finally {
+      setIsTranslating(false);
     }
-    setIsTranslating(false);
   };
 
   const text = translatedText || '\n' + (message.text || '').trim();
@@ -145,19 +151,21 @@ export const Message = ({
 
   const generateProposedAnswer = async () => {
     setIsProposedAnswerLoading(true);
+    try {
+      const nextAnswer = await conversationAnalysis.generateNextUserMessage();
+      const translatedAnswer =
+        translator.isTranslateAvailable && nextAnswer
+          ? await translator.translateText({
+              text: nextAnswer,
+            })
+          : '';
 
-    const nextAnswer = await conversationAnalysis.generateNextUserMessage();
-    const translatedAnswer =
-      translator.isTranslateAvailable && nextAnswer
-        ? await translator.translateText({
-            text: nextAnswer,
-          })
-        : '';
-
-    setProposedAnswer('\n' + nextAnswer);
-    setProposedAnswerTranslation(translatedAnswer ? '\n' + translatedAnswer.trim() : null);
-    setIsProposedAnswerLoading(false);
-    scrollToBottom();
+      setProposedAnswer('\n' + nextAnswer);
+      setProposedAnswerTranslation(translatedAnswer ? '\n' + translatedAnswer.trim() : null);
+      scrollToBottom();
+    } finally {
+      setIsProposedAnswerLoading(false);
+    }
   };
 
   const isUserIsRecordingStart = isLastMessage && !message.isBot && message.text === ' ';

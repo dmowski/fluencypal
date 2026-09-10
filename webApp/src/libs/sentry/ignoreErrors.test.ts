@@ -14,6 +14,14 @@ describe('sentryIgnoreErrors', () => {
     ).toBe(true);
   });
 
+  it('drops Safari IndexedDB connection-lost errors', () => {
+    expect(
+      matchesIgnore(
+        'UnknownError: Connection to Indexed Database server lost. Refresh the page to try again',
+      ),
+    ).toBe(true);
+  });
+
   it('still reports unrelated app errors', () => {
     expect(matchesIgnore('TypeError: Cannot read properties of undefined')).toBe(false);
   });

@@ -22,6 +22,11 @@ export const isCorruptIndexedDbError = (reason: unknown): boolean => {
   return /Data lost due to missing file/i.test(getErrorText(reason));
 };
 
+/** Safari/WebKit dropped the IndexedDB process; a reload reconnects it. */
+export const isIndexedDbConnectionLostError = (reason: unknown): boolean => {
+  return /Connection to Indexed Database server lost/i.test(getErrorText(reason));
+};
+
 export type CorruptIndexedDbRecoveryDeps = {
   terminateAndClear: () => Promise<void>;
   reload: () => void;
@@ -50,6 +55,28 @@ export const createCorruptIndexedDbRecovery = (deps: CorruptIndexedDbRecoveryDep
   };
 };
 
+export type IndexedDbConnectionLostRecoveryDeps = {
+  reload: () => void;
+  getFlag: () => boolean;
+  setFlag: () => void;
+};
+
+export const createIndexedDbConnectionLostRecovery = (
+  deps: IndexedDbConnectionLostRecoveryDeps,
+) => {
+  let recoveryInFlight = false;
+
+  return async (reason: unknown): Promise<boolean> => {
+    if (!isIndexedDbConnectionLostError(reason)) return false;
+    if (recoveryInFlight || deps.getFlag()) return false;
+
+    recoveryInFlight = true;
+    deps.setFlag();
+    deps.reload();
+    return true;
+  };
+};
+
 const readSessionFlag = (): boolean => {
   try {
     return sessionStorage.getItem(RECOVERY_FLAG) === '1';
@@ -69,7 +96,7 @@ const writeSessionFlag = (): void => {
 export const installCorruptFirestorePersistenceRecovery = (firestore: Firestore): void => {
   if (typeof window === 'undefined') return;
 
-  const recover = createCorruptIndexedDbRecovery({
+  const recoverCorrupt = createCorruptIndexedDbRecovery({
     terminateAndClear: async () => {
       await terminate(firestore);
       await clearIndexedDbPersistence(firestore);
@@ -81,9 +108,23 @@ export const installCorruptFirestorePersistenceRecovery = (firestore: Firestore)
     setFlag: writeSessionFlag,
   });
 
+  const recoverConnectionLost = createIndexedDbConnectionLostRecovery({
+    reload: () => {
+      window.location.reload();
+    },
+    getFlag: readSessionFlag,
+    setFlag: writeSessionFlag,
+  });
+
   window.addEventListener('unhandledrejection', (event) => {
-    if (!isCorruptIndexedDbError(event.reason)) return;
-    event.preventDefault();
-    void recover(event.reason);
+    if (isCorruptIndexedDbError(event.reason)) {
+      event.preventDefault();
+      void recoverCorrupt(event.reason);
+      return;
+    }
+    if (isIndexedDbConnectionLostError(event.reason)) {
+      event.preventDefault();
+      void recoverConnectionLost(event.reason);
+    }
   });
 };

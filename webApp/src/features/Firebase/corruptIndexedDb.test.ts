@@ -1,4 +1,9 @@
-import { createCorruptIndexedDbRecovery, isCorruptIndexedDbError } from './corruptIndexedDb';
+import {
+  createCorruptIndexedDbRecovery,
+  createIndexedDbConnectionLostRecovery,
+  isCorruptIndexedDbError,
+  isIndexedDbConnectionLostError,
+} from './corruptIndexedDb';
 
 describe('isCorruptIndexedDbError', () => {
   it('matches Chrome IndexedDB missing-file DOMExceptions', () => {
@@ -23,6 +28,31 @@ describe('isCorruptIndexedDbError', () => {
     expect(isCorruptIndexedDbError(new Error('Failed to persist write'))).toBe(false);
     expect(isCorruptIndexedDbError(new TypeError('Failed to fetch'))).toBe(false);
     expect(isCorruptIndexedDbError(null)).toBe(false);
+  });
+});
+
+describe('isIndexedDbConnectionLostError', () => {
+  it('matches Safari IndexedDB connection-lost DOMExceptions', () => {
+    const error = new DOMException(
+      'Connection to Indexed Database server lost. Refresh the page to try again',
+      'UnknownError',
+    );
+    expect(isIndexedDbConnectionLostError(error)).toBe(true);
+  });
+
+  it('matches wrapped Error messages', () => {
+    expect(
+      isIndexedDbConnectionLostError(
+        new Error(
+          'UnknownError: Connection to Indexed Database server lost. Refresh the page to try again',
+        ),
+      ),
+    ).toBe(true);
+  });
+
+  it('rejects unrelated failures', () => {
+    expect(isIndexedDbConnectionLostError(new Error('Failed to persist write'))).toBe(false);
+    expect(isIndexedDbConnectionLostError(null)).toBe(false);
   });
 });
 
@@ -93,6 +123,42 @@ describe('createCorruptIndexedDbRecovery', () => {
 
     await expect(recover(new Error('permission-denied'))).resolves.toBe(false);
     expect(terminateAndClear).not.toHaveBeenCalled();
+    expect(reload).not.toHaveBeenCalled();
+  });
+});
+
+describe('createIndexedDbConnectionLostRecovery', () => {
+  const connectionLostError = new Error(
+    'UnknownError: Connection to Indexed Database server lost. Refresh the page to try again',
+  );
+
+  it('reloads once without clearing persistence', async () => {
+    const reload = jest.fn();
+    let flagged = false;
+    const recover = createIndexedDbConnectionLostRecovery({
+      reload,
+      getFlag: () => flagged,
+      setFlag: () => {
+        flagged = true;
+      },
+    });
+
+    await expect(recover(connectionLostError)).resolves.toBe(true);
+    expect(reload).toHaveBeenCalledTimes(1);
+
+    await expect(recover(connectionLostError)).resolves.toBe(false);
+    expect(reload).toHaveBeenCalledTimes(1);
+  });
+
+  it('ignores unrelated rejections', async () => {
+    const reload = jest.fn();
+    const recover = createIndexedDbConnectionLostRecovery({
+      reload,
+      getFlag: () => false,
+      setFlag: () => undefined,
+    });
+
+    await expect(recover(new Error('permission-denied'))).resolves.toBe(false);
     expect(reload).not.toHaveBeenCalled();
   });
 });

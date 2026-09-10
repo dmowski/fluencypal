@@ -2,8 +2,22 @@ import { NativeLangCode } from '@/libs/language/type';
 import { TranslationServiceClient } from '@google-cloud/translate';
 import { TranslateRequest, TranslateResponse } from './types';
 import { getTranslateCache, saveTranslateCache } from './cache';
+import { retryTransientTranslate } from './transientTranslateError';
 
 let cacheClient: TranslationServiceClient | null = null;
+
+const resetTranslateClient = () => {
+  const previous = cacheClient;
+  cacheClient = null;
+  if (previous) {
+    try {
+      void previous.close();
+    } catch {
+      // Next attempt opens a fresh client.
+    }
+  }
+};
+
 const getTranslateClient = () => {
   const serviceAccount = JSON.parse(process.env.GOOGLE_TRANSlATE_SERVICE_ACCOUNT_CREDS as string);
 
@@ -27,16 +41,12 @@ interface TranslateTextProps {
   sourceLanguage: NativeLangCode | null;
   targetLanguage: NativeLangCode;
 }
-export const translateText = async ({
-  text,
-  sourceLanguage,
-  targetLanguage,
-}: TranslateTextProps) => {
+const translateTextOnce = async ({ text, sourceLanguage, targetLanguage }: TranslateTextProps) => {
   const client = getTranslateClient();
   const projectId = 'dark-lang';
   const location = 'global';
 
-  const [translatedTextResponse, translateRequest] = await client.translateText({
+  const [translatedTextResponse] = await client.translateText({
     parent: `projects/${projectId}/locations/${location}`,
     contents: [text],
     mimeType: 'text/plain',
@@ -44,13 +54,19 @@ export const translateText = async ({
     targetLanguageCode: targetLanguage,
   });
 
-  const translatedText =
+  return (
     translatedTextResponse.translations
       ?.map((t) => {
         return t.translatedText;
       })
-      .join('') || 'Translation failed';
-  return translatedText;
+      .join('') || 'Translation failed'
+  );
+};
+
+export const translateText = async (props: TranslateTextProps) => {
+  return retryTransientTranslate(() => translateTextOnce(props), {
+    reset: resetTranslateClient,
+  });
 };
 
 export const getTranslatedResponse = async (data: TranslateRequest): Promise<TranslateResponse> => {
