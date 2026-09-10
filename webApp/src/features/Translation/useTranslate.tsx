@@ -8,6 +8,7 @@ import { ArrowDown, X } from 'lucide-react';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { NativeLangCode } from '@/libs/language/type';
+import * as Sentry from '@sentry/nextjs';
 import {
   getBatchTranslation,
   getTranslation,
@@ -96,8 +97,9 @@ export const useTranslate = (options?: UseTranslateOptions) => {
         translated: translatedText,
       });
       setIsTranslating(false);
-    } catch {
+    } catch (error) {
       setIsTranslating(false);
+      Sentry.captureException(error, { tags: { area: 'translate' } });
     }
   };
 

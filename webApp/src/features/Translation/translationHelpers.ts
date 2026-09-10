@@ -1,6 +1,7 @@
 import { translateBatchRequest, translateRequest } from '@/app/api/translate/translateRequest';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
+import * as Sentry from '@sentry/nextjs';
 
 const localStoragePrefix = 'translate_';
 const isUseCache = true;
@@ -123,6 +124,7 @@ export const getTranslation = async ({
     return response.translatedText;
   } catch (error) {
     console.error('Translation request failed', error);
+    Sentry.captureException(error, { tags: { area: 'translate' } });
     return '';
   }
 };
@@ -150,6 +152,7 @@ export const getBatchTranslation = async ({
     return response.translatedTexts;
   } catch (error) {
     console.error('Translation batch request failed', error);
+    Sentry.captureException(error, { tags: { area: 'translate' } });
     return texts.map(() => '');
   }
 };
