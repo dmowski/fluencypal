@@ -5,9 +5,11 @@
  *
  * Usage (from webApp/):
  *   pnpm analytics:export
+ *   pnpm analytics:export -- --from 2026-09-11T20:32:29Z
  *   pnpm analytics:export -- --day 2026-08-28
  *   pnpm analytics:export -- --from 2026-09-10
  *   pnpm analytics:export -- --from 2026-09-10 --day 2026-09-11
+ *   pnpm analytics:export -- --from 2026-09-10T18:00:00Z --to 2026-09-11T20:32:29Z
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,13 +17,20 @@ import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PROJECT_ID, readServiceAccount, webAppRoot } from './firebaseEnv.mjs';
 import { fetchSearchConsoleInsights } from './fetchSearchConsole.mjs';
+import { eventIsInWindow, resolveExportWindow } from './analyticsExportWindow.mjs';
 
 const VISITORS = 'customAnalyticsVisitors';
 const EVENTS = 'customAnalyticsEvents';
 const MAX_VISITORS = 400;
 const MAX_EVENTS_PER_VISITOR = 300;
 const OUTPUT = path.join(webAppRoot, '.analytics-export.json');
-const KEEP_QUERY = new Set(['currentStep', 'rolePlayId', 'interactiveLesson', 'dailyQuestions']);
+const KEEP_QUERY = new Set([
+  'currentStep',
+  'rolePlayId',
+  'interactiveLesson',
+  'dailyQuestions',
+  'justTalk',
+]);
 
 const argValue = (flag) => {
   const args = process.argv.slice(2);
@@ -32,31 +41,11 @@ const argValue = (flag) => {
   return null;
 };
 
-const parseDayKey = (value, flag) => {
-  if (!value) return null;
-  const day = String(value).slice(0, 10);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) {
-    throw new Error(`Invalid ${flag} ${value}. Use YYYY-MM-DD.`);
-  }
-  const parsed = new Date(`${day}T00:00:00.000Z`);
-  if (Number.isNaN(parsed.getTime())) {
-    throw new Error(`Invalid ${flag} ${value}. Use YYYY-MM-DD.`);
-  }
-  return day;
-};
-
-const toDayKey = parseDayKey(argValue('--day'), '--day') || new Date().toISOString().slice(0, 10);
-const fromDayKey = parseDayKey(argValue('--from'), '--from') || toDayKey;
-if (fromDayKey > toDayKey) {
-  throw new Error(`--from ${fromDayKey} is after --day ${toDayKey}.`);
-}
-
-const start = new Date(`${fromDayKey}T00:00:00.000Z`);
-const end = new Date(`${toDayKey}T23:59:59.999Z`);
-const dayKey = fromDayKey === toDayKey ? toDayKey : `${fromDayKey}..${toDayKey}`;
-
-const fromIso = start.toISOString();
-const toIso = end.toISOString();
+const { fromIso, toIso, fromDayKey, toDayKey, dayKey } = resolveExportWindow({
+  from: argValue('--from'),
+  to: argValue('--to'),
+  day: argValue('--day'),
+});
 
 const normalizePath = (rawPath) => {
   const raw = String(rawPath || '').trim() || '/';
@@ -234,7 +223,7 @@ for (const visitor of rawVisitors.filter(isReportableVisitor)) {
 }
 
 const inWindow = (events) =>
-  events.filter((event) => event.dayKey >= fromDayKey && event.dayKey <= toDayKey);
+  events.filter((event) => eventIsInWindow(event, fromIso, toIso, fromDayKey, toDayKey));
 
 let skippedInternal = 0;
 let skippedNoTodayEvents = 0;
@@ -309,8 +298,8 @@ const bumpEntry = (kind, flags) => {
 for (const visitor of visitors) {
   const events = eventsByVisitorId[visitor.visitorId] || [];
   const flags = flagsFromEvents(events);
-  const createdDay = String(visitor.createdAtIso || '').slice(0, 10);
-  const isNew = createdDay >= fromDayKey && createdDay <= toDayKey;
+  const createdAt = String(visitor.createdAtIso || '');
+  const isNew = Boolean(createdAt) && createdAt >= fromIso && createdAt <= toIso;
   if (isNew) newVisitorCount += 1;
   addFlagsToFunnel(funnel, flags);
   if (isNew) addFlagsToFunnel(funnelNew, flags);
@@ -475,6 +464,6 @@ if (skippedUnengaged) skippedParts.push(`${skippedUnengaged} unengaged page_view
 if (skippedInternal) skippedParts.push(`${skippedInternal} internal`);
 if (skippedNoTodayEvents) skippedParts.push(`${skippedNoTodayEvents} no events in this UTC window`);
 console.log(
-  `Wrote ${visitors.length} visitors (${newVisitorCount} new) for ${dayKey} UTC to ${path.relative(webAppRoot, OUTPUT)}` +
+  `Wrote ${visitors.length} visitors (${newVisitorCount} new) for ${fromIso} → ${toIso} UTC to ${path.relative(webAppRoot, OUTPUT)}` +
     (skippedParts.length ? ` (${skippedParts.join(', ')} dropped)` : ''),
 );

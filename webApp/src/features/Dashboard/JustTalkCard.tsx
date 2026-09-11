@@ -6,11 +6,13 @@ import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useJustTalk } from '../Conversation/useJustTalk';
+import { useAutoStartJustTalk } from '../Conversation/useAutoStartJustTalk';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
 
   const { startJustTalk, isCallStarting } = useJustTalk();
+  useAutoStartJustTalk(startJustTalk);
   const [footnotePhraseIndex] = useState(new Date().getDate());
 
   const settings = useSettings();

@@ -19,6 +19,7 @@ import { GoalReview } from './GoalReview';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { buildJustTalkPracticeUrl } from '@/features/Conversation/justTalkHandoff';
 import { sleep } from '@/libs/sleep';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import {
@@ -95,23 +96,14 @@ const QuizQuestions = () => {
 
     const isAccessStep = path.includes('accessPlan');
 
-    const queryParams =
-      isAccessStep && isFullAccessRedirect && !access.isFullAppAccess ? '?paymentModal=true' : '';
-
     try {
       await confirmPlan();
-      const goalTalkModeElement = survey?.goalData?.elements.find(
-        (el) => el.mode === 'conversation',
+      router.push(
+        buildJustTalkPracticeUrl({
+          pageLanguage,
+          paymentModal: isAccessStep && isFullAccessRedirect && !access.isFullAppAccess,
+        }),
       );
-      if (goalTalkModeElement) {
-        //const url = `${getUrlStart(pageLanguage)}practice?plan-id=${goalTalkModeElement.id}`;
-        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
-        router.push(url);
-      } else {
-        const url = `${getUrlStart(pageLanguage)}practice${queryParams}`;
-        console.log('url', url);
-        router.push(url);
-      }
     } catch (e) {
       alert(i18n._('Error creating plan. Please try again.'));
     }
@@ -358,7 +350,7 @@ const QuizQuestions = () => {
                 onClick={next}
                 isLoading={isGoalGenerating || survey?.goalData === null}
                 goalData={survey?.goalData}
-                actionButtonLabel={i18n._('Next')}
+                actionButtonLabel={i18n._('Start Speaking')}
               />
             </AuthWall>
           )}

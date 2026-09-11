@@ -63,6 +63,26 @@ Visit http://localhost:4000 to access the web UI where you can:
 - **`.firebaserc`** - Firebase project settings
 - **`src/libs/firebaseEmulator.ts`** - Node.js utility for connecting to emulators
 
+## Test user (agents / local UI)
+
+`pnpm dev` already starts this emulator suite. The in-app sign-in wall is Google or a magic-link email — use a password user instead.
+
+```bash
+cd webApp && pnpm emulator:test-user
+```
+
+Then on `http://localhost:3000/practice` (emulator builds only):
+
+```js
+await window.__darkEngTest.signInWithEmailAndPassword(
+  window.__darkEngTest.auth,
+  'agent-test@example.com',
+  'TestPassword123!',
+);
+```
+
+Full agent steps: `webApp/AGENTS.md` → **Local emulator + test user**.
+
 ## Common Tasks
 
 ### Export Emulator Data

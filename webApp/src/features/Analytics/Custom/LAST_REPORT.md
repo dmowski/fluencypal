@@ -1,5 +1,7 @@
 # Last analytics report
 
-`Analyzed through` is the last UTC day already included in a “what's going today” report. The next report starts the **day after** this. Update this line after every report.
+`Analyzed through` is the last UTC instant already included in a “what's going today” report. Prefer an ISO timestamp (`YYYY-MM-DDTHH:mm:ssZ`). Date-only (`YYYY-MM-DD`) means through the **end** of that UTC day.
 
-Analyzed through: 2026-09-10
+The next report starts at this timestamp (or the next UTC day if the value is date-only). Update this line after every report to the export `toIso`.
+
+Analyzed through: 2026-09-11T20:32:29Z

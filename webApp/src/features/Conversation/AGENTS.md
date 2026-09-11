@@ -6,11 +6,11 @@ Applies to `webApp/src/features/Conversation/**`.
 
 ## Modes
 
-| Mode | UI | Input |
-| --- | --- | --- |
-| `record` | Message list + footer recorder (`ConversationCanvas`) | Push-to-talk / recorded audio |
-| `chat` | Same canvas, keyboard input | Text |
-| `call` | Full-screen `CameraCanvas` + `CallButtons` | Realtime mic (`RealTimeConversation`) |
+| Mode     | UI                                                    | Input                                 |
+| -------- | ----------------------------------------------------- | ------------------------------------- |
+| `record` | Message list + footer recorder (`ConversationCanvas`) | Push-to-talk / recorded audio         |
+| `chat`   | Same canvas, keyboard input                           | Text                                  |
+| `call`   | Full-screen `CameraCanvas` + `CallButtons`            | Realtime mic (`RealTimeConversation`) |
 
 Every started conversation sets `recordingVoiceMode` to **`RealTimeConversation`** and uses **`initWebRtcConversation`** (or experimental WS). `initTextConversation` is deprecated.
 
@@ -53,41 +53,42 @@ Conversation/
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Call settings:** Settings control opens `CallSettingsMenu` (video on/off for both camera tiles, mute AI voice, captions, select microphone). Mic on/off and end-call stay on the footer. Turning video off hides the teacher and learner tiles so captions can fill the call. Selected microphone is persisted in `localStorage` (`preferredMicrophoneId`) and applied live via `ConversationInstance.switchMicrophone`.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
+- **Quiz handoff:** `/practice?justTalk=open` auto-starts Just Talk (`useAutoStartJustTalk` on `JustTalkCard`) after quiz `goalReview`. Skip-all still goes to empty `/practice`. To verify locally: `pnpm dev` → `pnpm emulator:test-user` → sign in with `window.__darkEngTest` (see `webApp/AGENTS.md`) → open `/practice?justTalk=open` and confirm the query is cleared.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
 ## `data-testid` hooks
 
-| ID | Component |
-| --- | --- |
-| `conversation-canvas-record` | Record/chat canvas root |
-| `conversation-canvas-call` | Call canvas root |
-| `call-end-button` | Red end-call control in `CallButtons` |
-| `call-end-menu` | Shared `CallEndMenu` options (call + record) |
-| `call-settings-button` | Call footer Settings control |
-| `call-settings-menu` | Call settings: video, mute, captions, select mic |
-| `call-microphone-menu` | Nested microphone picker from call settings |
-| `call-video-preview` | Teacher + learner camera tiles in call layout |
-| `call-user-preview` | User webcam tile in call layout |
-| `call-progress-bar` | Message-count progress strip on call footer |
-| `conversation-review-modal` | Post-call / Show results review steps |
+| ID                           | Component                                        |
+| ---------------------------- | ------------------------------------------------ |
+| `conversation-canvas-record` | Record/chat canvas root                          |
+| `conversation-canvas-call`   | Call canvas root                                 |
+| `call-end-button`            | Red end-call control in `CallButtons`            |
+| `call-end-menu`              | Shared `CallEndMenu` options (call + record)     |
+| `call-settings-button`       | Call footer Settings control                     |
+| `call-settings-menu`         | Call settings: video, mute, captions, select mic |
+| `call-microphone-menu`       | Nested microphone picker from call settings      |
+| `call-video-preview`         | Teacher + learner camera tiles in call layout    |
+| `call-user-preview`          | User webcam tile in call layout                  |
+| `call-progress-bar`          | Message-count progress strip on call footer      |
+| `conversation-review-modal`  | Post-call / Show results review steps            |
 
 ## Testing
 
 Browser screenshot tests: `ConversationCanvas.browser.test.tsx` + `conversationCanvasBrowserFixtures.tsx`.
 
-| Screenshot | Covers |
-| --- | --- |
-| `conversation-canvas-record-*` | Goal-talk default, role-play states (still recordable at 100%), chat, recording |
-| `conversation-canvas-record-alias-word-list` | Record canvas with Alias `AliasGamePanel` in `Messages` |
-| `conversation-canvas-record-menu-results-ready` | Record `CallEndMenu` with Show results enabled |
-| `conversation-canvas-call-*` | Call in progress / finish ready (Done on progress bar, strip under footer controls) |
-| `conversation-canvas-call-alias-word-list` | Call canvas with Alias word list in `Messages` |
-| `conversation-canvas-call-end-menu` | End-call menu while progress incomplete (Show results disabled) |
-| `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled) |
-| `conversation-canvas-call-settings-menu` | Settings menu (video, mute, captions, select mic) |
-| `conversation-canvas-call-video-off` | Call layout with both camera tiles hidden (captions only) |
-| `conversation-canvas-call-results-*` | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → phrases-to-remember → next-lesson) |
+| Screenshot                                        | Covers                                                                                                                |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `conversation-canvas-record-*`                    | Goal-talk default, role-play states (still recordable at 100%), chat, recording                                       |
+| `conversation-canvas-record-alias-word-list`      | Record canvas with Alias `AliasGamePanel` in `Messages`                                                               |
+| `conversation-canvas-record-menu-results-ready`   | Record `CallEndMenu` with Show results enabled                                                                        |
+| `conversation-canvas-call-*`                      | Call in progress / finish ready (Done on progress bar, strip under footer controls)                                   |
+| `conversation-canvas-call-alias-word-list`        | Call canvas with Alias word list in `Messages`                                                                        |
+| `conversation-canvas-call-end-menu`               | End-call menu while progress incomplete (Show results disabled)                                                       |
+| `conversation-canvas-call-end-menu-results-ready` | End-call menu at 100% (Show results enabled)                                                                          |
+| `conversation-canvas-call-settings-menu`          | Settings menu (video, mute, captions, select mic)                                                                     |
+| `conversation-canvas-call-video-off`              | Call layout with both camera tiles hidden (captions only)                                                             |
+| `conversation-canvas-call-results-*`              | Full-size review modal steps (leaderboard → summary → focus → improve → did-well → phrases-to-remember → next-lesson) |
 
 Run:
 

@@ -51,6 +51,7 @@
     "create-git-build": "git tag -a build-app-$(date +%Y-%m-%d--%H-%M-%S) -m 'Build at $(date)'",
     "firestore:indexes": "node scripts/deployFirestoreIndexes.mjs",
     "analytics:export": "node scripts/exportCustomAnalytics.mjs",
+    "emulator:test-user": "node scripts/createEmulatorTestUser.mjs",
     "prod": "pnpm lang-clean && node scripts/prod.mjs"
   },
   "dependencies": {

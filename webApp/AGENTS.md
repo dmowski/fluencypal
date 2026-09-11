@@ -27,6 +27,39 @@ Do not report a UI change complete until the changed flow has been opened in the
 3. Exercise the main interaction end to end the way a user would (click, type, continue). A screenshot of first paint is not enough.
 4. If verification finds a problem, fix it and re-check. Page errors mean the work is not done.
 
+### Local emulator + test user (agent browser)
+
+`pnpm dev` starts Auth/Firestore/Storage emulators, then Next. Wait for both:
+
+- Emulator UI: `http://127.0.0.1:4000/` (Auth `9099`, Firestore `8080`, Storage `9199`)
+- App: `http://localhost:3000` (`✓ Ready` / `Local:`)
+
+Needs Java 11+. `pnpm dev` clears ports `3000`, `3001`, `4000`, `4400`, `8080`, `9099`, `9199`.
+
+The sign-in UI is **Google popup** or **email magic link**. Neither works in the agent browser. Do not try to complete Google/email there.
+
+Use a password user on the Auth emulator (same path as Playwright `e2e/libs/books/auth.ts`):
+
+```bash
+cd webApp && pnpm emulator:test-user
+```
+
+Default: `agent-test@example.com` / `TestPassword123!`. The script seeds `users/{uid}` (`languageCode: en`, `teacherVoice: marin`) so `/practice` skips the language picker.
+
+Then open `/practice` and sign in in page JS (only exists when `NEXT_PUBLIC_IS_FIREBASE_EMULATOR=true`):
+
+```js
+await window.__darkEngTest.signInWithEmailAndPassword(
+  window.__darkEngTest.auth,
+  'agent-test@example.com',
+  'TestPassword123!',
+);
+```
+
+Reload `/practice`. Success: dashboard shows **JUST TALK MODE** (not “Let's create an account”). Emulator data is in-memory; recreate the user after a restart.
+
+**Quiz → Just Talk:** after sign-in, open `/practice?justTalk=open`. The param must disappear and Just Talk must start (mic/camera prompts may block automation — that still proves the handoff ran). Walking all of `/quiz` also needs 30+ word voice answers and AI plan generation; use `justTalk=open` to verify the post-`goalReview` destination without finishing the quiz.
+
 ## Build And Runtime
 
 - Local dev entrypoint: `pnpm dev` (uses Firebase emulator helper script)
@@ -130,7 +163,7 @@ First-party iframe journey tracking: `src/features/Analytics/Custom/`.
 - Intervention log (do not repeat experiments): `src/features/Analytics/Custom/INTERVENTIONS.md`
 - Last report window: `src/features/Analytics/Custom/LAST_REPORT.md`
 - Admin UI: `/staats/journey`
-- Export: `cd webApp && pnpm analytics:export` (add `-- --from YYYY-MM-DD` when covering a skipped-day gap)
+- Export: `cd webApp && pnpm analytics:export` (add `-- --from YYYY-MM-DDTHH:mm:ssZ` from `LAST_REPORT.md`, or `-- --from YYYY-MM-DD` for a skipped-day gap)
 
 ## Reader Highlight / Selection
 
@@ -146,3 +179,13 @@ When modifying `src/features/Reader/components/Paragraph/`, `useReaderHighlightP
 - `../README.md`
 - `FIREBASE_EMULATOR_SETUP.md`
 - `src/features/Reader/AGENTS.md` — Reader-specific coding rules, e2e helper structure, and targeted test commands
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

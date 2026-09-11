@@ -1,4 +1,10 @@
-const KEPT_QUERY_KEYS = ['currentStep', 'rolePlayId', 'interactiveLesson', 'dailyQuestions'] as const;
+const KEPT_QUERY_KEYS = [
+  'currentStep',
+  'rolePlayId',
+  'interactiveLesson',
+  'dailyQuestions',
+  'justTalk',
+] as const;
 
 export const normalizeAnalyticsPath = (path: string): string => {
   const raw = path.trim() || '/';
@@ -52,7 +58,11 @@ export type AnalyticsEntryKind =
 
 export const entryKindFromAnalyticsPath = (path: string): AnalyticsEntryKind => {
   const withoutLang = pathnameWithoutLang(pathnameOf(path)).toLowerCase();
-  if (/\/scenarios(\/|$)/.test(withoutLang) || withoutLang === '/alias' || withoutLang.startsWith('/alias/')) {
+  if (
+    /\/scenarios(\/|$)/.test(withoutLang) ||
+    withoutLang === '/alias' ||
+    withoutLang.startsWith('/alias/')
+  ) {
     return 'scenario';
   }
   if (/\/blog(\/|$)/.test(withoutLang)) return 'blog';

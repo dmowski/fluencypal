@@ -19,21 +19,26 @@ Goals:
 When the user asks what happened today (or similar), report **from the last extraction through now**, not always “today only”. The usual window is the last ~24 hours (one UTC day). If a day was skipped, cover the whole gap (two UTC days after one missed day, three after two, and so on) so nothing important is dropped.
 
 1. Find the last extraction **before** exporting (export overwrites `webApp/.analytics-export.json`):
-   - Read `LAST_REPORT.md` `Analyzed through: YYYY-MM-DD`.
-   - If that is missing, read `webApp/.analytics-export.json` `toDayKey` or `dayKey`.
+   - Read `LAST_REPORT.md` `Analyzed through:` — ISO timestamp (`YYYY-MM-DDTHH:mm:ssZ`) or date-only (`YYYY-MM-DD`).
+   - If that is missing, read `webApp/.analytics-export.json` `toIso`, else `toDayKey` / `dayKey`.
    - If neither exists, use the latest date in `INTERVENTIONS.md` and say the window may have a gap.
-2. Window end = today UTC. Window start = the UTC day **after** last `Analyzed through`. If last extraction is today, window is today only (refresh).
-3. Export that window:
-   - One UTC day: `cd webApp && pnpm analytics:export`
-   - More than one UTC day: `cd webApp && pnpm analytics:export -- --from YYYY-MM-DD`  
-     `--from` is the first missed UTC day; end defaults to today. Example: last analyzed through `2026-09-09`, today is `2026-09-11` → `--from 2026-09-10` (covers the 10th and 11th).
+2. Window end = **now** UTC (`toIso`). Window start:
+   - Timestamp: that exact instant (do not skip to the next day).
+   - Date-only before today: the next UTC day `00:00:00Z`.
+   - Date-only equal to today: refresh from today `00:00:00Z`.
+3. Export that window (`--from` / `--to` accept a day or an ISO time; end defaults to now). `nextExportFromLastReport` in `exportWindow.ts` is the same rule:
+   - Since last timestamp: `cd webApp && pnpm analytics:export -- --from 2026-09-11T20:32:29Z`
+   - One UTC day so far today: `cd webApp && pnpm analytics:export`
+   - More than one UTC day (date-only last report): `cd webApp && pnpm analytics:export -- --from YYYY-MM-DD`  
+     Example: last analyzed through `2026-09-09`, now is `2026-09-11T20:32Z` → `--from 2026-09-10` (10th 00:00 through now).
+   - Historical full day: `cd webApp && pnpm analytics:export -- --day 2026-08-28`
 4. Read `webApp/.analytics-export.json` (gitignored). Use `insights`, `funnel`, `funnelNew`, `dropOff`, `searchConsole`, then sample a few visitor timelines. Do not paste raw user agents or emails.
 5. Read `INTERVENTIONS.md` so suggestions are not a loop.
 6. Reply with this short report. If the window is more than one UTC day, title it as a range, not “Today”:
 
 ```
 Today (YYYY-MM-DD)  [UTC]
-  or  Since last report (YYYY-MM-DD → YYYY-MM-DD)  [UTC]
+  or  Since last report (YYYY-MM-DDTHH:mmZ → YYYY-MM-DDTHH:mmZ)  [UTC]
 - Visitors: N (new / returning; bots + internal excluded)
 - Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-in-window)
 - Quiz steps: insights.quizSteps (teacherSelection / before_recordAbout / recordAbout / quizSpeech)
@@ -51,23 +56,23 @@ Why they leave: …
 What to do next (one change): …  [must be new vs INTERVENTIONS.md]
 ```
 
-7. Update `LAST_REPORT.md` `Analyzed through` to the window end (today UTC). Do not commit unless asked.
+7. Update `LAST_REPORT.md` `Analyzed through` to the export `toIso` (now UTC). Do not commit unless asked.
 
 If the export is empty, say so; do not invent traffic.
 
 ## Events
 
-| Event                | When                                      | Answers                                                               |
-| -------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| `page_view`          | Route change                              | Path, UTM, referrer host                                              |
-| `click`              | `a` / `button` / `[data-analytics]`       | `ctaId` + `ctaIntent` from **element id/href only** (never page URL)  |
-| `scroll_depth`       | 25 / 50 / 75 / 100 on a page              | How deep they scroll                                                  |
-| `page_leave`         | hide / pagehide                           | Visible time on page (`durationMs`), `maxScrollPct`                   |
-| `identify`           | Signed-in uid (once per uid)              | Auth                                                                  |
-| `conversation_start` | First **user** message in a conversation  | Real AI talk, not the greeting and not just /practice                 |
+| Event                | When                                                 | Answers                                                                                                                                                                     |
+| -------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `page_view`          | Route change                                         | Path, UTM, referrer host                                                                                                                                                    |
+| `click`              | `a` / `button` / `[data-analytics]`                  | `ctaId` + `ctaIntent` from **element id/href only** (never page URL)                                                                                                        |
+| `scroll_depth`       | 25 / 50 / 75 / 100 on a page                         | How deep they scroll                                                                                                                                                        |
+| `page_leave`         | hide / pagehide                                      | Visible time on page (`durationMs`), `maxScrollPct`                                                                                                                         |
+| `identify`           | Signed-in uid (once per uid)                         | Auth                                                                                                                                                                        |
+| `conversation_start` | First **user** message in a conversation             | Real AI talk, not the greeting and not just /practice                                                                                                                       |
 | `speech_start`       | First accepted voice on quiz / lesson / conversation | They used a mic. `speechSurface`: `quiz` \| `lesson` \| `conversation`. Once per surface per tab. `reachedSpeech` is any surface; `reachedConversation` stays AI talk only. |
-| `paywall_view`       | Subscription modal opens                  | Saw paywall                                                           |
-| `checkout_start`     | Stripe checkout created                   | Tried to pay                                                          |
+| `paywall_view`       | Subscription modal opens                             | Saw paywall                                                                                                                                                                 |
+| `checkout_start`     | Stripe checkout created                              | Tried to pay                                                                                                                                                                |
 
 Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation` / `reachedSpeech`. CTA flags are set only from **landing** clicks.
 
@@ -79,13 +84,13 @@ CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-
 
 Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and appends `?fpv=` on app links so landing → app is one visitor (iframe storage is partitioned). The tracker prefers the parent visitor id.
 
-Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions` and drop UTM, inbox ids, and `fpv`.
+Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions`, `justTalk` and drop UTM, inbox ids, and `fpv`.
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
 In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`.
 
-Export (`pnpm analytics:export`) is a **UTC day**, or a UTC day range with `--from`. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
+Export (`pnpm analytics:export`) is a UTC instant range (`fromIso` → `toIso`). `--from` / `--to` accept `YYYY-MM-DD` or `YYYY-MM-DDTHH:mm:ssZ`; `--day` is one full UTC day. Default with no flags is today `00:00Z` through now. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 
 Optional: `GSC_SITE_URL` in `webApp/.env` (`sc-domain:fluencypal.com` or `https://www.fluencypal.com/`).
 
@@ -98,6 +103,7 @@ Parent → iframe `/analytics/tracker` → `POST /api/analytics/ingest` → Admi
 ```bash
 cd webApp && pnpm firestore:indexes
 cd webApp && pnpm analytics:export
+cd webApp && pnpm analytics:export -- --from 2026-09-11T20:32:29Z
 cd webApp && pnpm analytics:export -- --day 2026-08-28
 cd webApp && pnpm analytics:export -- --from 2026-09-10
 ```
