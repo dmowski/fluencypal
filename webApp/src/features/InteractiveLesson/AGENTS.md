@@ -33,7 +33,7 @@ InteractiveLesson/
   LessonHistoryView.tsx
   LessonProgressView.tsx
   LessonProgressModal.tsx
-  audioProgress.ts                 — first 10 / last 10 spoken answers
+  audioProgress.ts                 — first 10 / last 10 open talks (last speech part)
 ```
 
 Generation and UI run in the browser. Persistence is Firestore; spoken answers upload privately through `/api/uploadFile?visibility=private` and play back through an authenticated GET.
@@ -43,7 +43,7 @@ Generation and UI run in the browser. Persistence is Firestore; spoken answers u
 - Dashboard card **under Just Talk** (`InteractiveLessonDashboardCard`)
 - Daily tasks row (`DailyTasksDashboardCard`) — mixed with `grammar-improvement`, never both the same day; start opens the lesson modal
 - Modals live in `GlobalModals` via `InteractiveLessonModals`
-- Section header **Progress** opens first/last spoken answers and previous finished lessons
+- Section header **Progress** opens first/last free-speech recordings (last task of each lesson) and previous finished lessons
 - Modal URL: `interactiveLesson=open`, progress: `interactiveLessonProgress=open`
 
 ## Data
@@ -58,13 +58,15 @@ Owner read/write in `firestore.rules` (`match /interactiveLessons/{languageCode}
   nextLesson,          // pre-generated after "I am done"
   history[],           // finished lessons, newest first
   lastCompletedAtIso,
-  audioProgress,       // first 10 + last 10 spoken answers, totalCount (compare after 110)
+  audioProgress,       // first 10 + last 10 open talks only, totalCount (compare after 100)
   languageCode,
   updatedAtIso
 }
 ```
 
 Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson reloads `currentLesson` from Firestore.
+
+Progress stores only the last speech part of each lesson (the 2–3 minute open talk). Read-aloud and short quiz answers are not sampled.
 
 ## Flow
 

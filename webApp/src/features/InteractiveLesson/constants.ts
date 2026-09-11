@@ -9,7 +9,7 @@ export const MIN_USEFUL_CONTEXT_MESSAGES = 8;
 export const MAX_CONVERSATIONS_TO_SCAN = 8;
 export const MAX_HISTORY_LESSONS = 40;
 export const PROGRESS_AUDIO_SAMPLE = 10;
-export const PROGRESS_MIN_AUDIO_COUNT = 110;
+export const PROGRESS_MIN_AUDIO_COUNT = 100;
 export const OPEN_TALK_MIN_CHARS = 80;
 export const READ_ALOUD_MIN_CHARS = 50;
 /** Generated read-aloud passage (second part), not the spoken-transcript floor. */

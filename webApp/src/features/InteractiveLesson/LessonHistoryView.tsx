@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { Button, Divider, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { LessonMarkdown } from './LessonMarkdown';
 import { UserAudioPlayer } from './UserAudioPlayer';
+import { scrollElementToStart } from './findScrollParent';
 import { InteractiveLesson, isLessonPartWithAnswer } from './types';
 
 export const LessonHistoryView = ({
@@ -14,6 +16,7 @@ export const LessonHistoryView = ({
 }) => {
   const { i18n } = useLingui();
   const [openId, setOpenId] = useState<string | null>(lessons[0]?.id || null);
+  const titleRefs = useRef(new Map<string, HTMLElement>());
 
   if (lessons.length === 0) {
     return (
@@ -39,7 +42,15 @@ export const LessonHistoryView = ({
           >
             <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between', gap: '12px' }}>
               <Stack>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 700 }}
+                  data-testid={`interactive-lesson-history-title-${lesson.id}`}
+                  ref={(node) => {
+                    if (node) titleRefs.current.set(lesson.id, node);
+                    else titleRefs.current.delete(lesson.id);
+                  }}
+                >
                   {lesson.title}
                 </Typography>
                 <Typography variant="body2" sx={{ opacity: 0.75 }}>
@@ -52,7 +63,17 @@ export const LessonHistoryView = ({
               <Button
                 variant="text"
                 color="info"
-                onClick={() => setOpenId(isOpen ? null : lesson.id)}
+                data-testid={`interactive-lesson-history-open-${lesson.id}`}
+                onClick={() => {
+                  if (isOpen) {
+                    setOpenId(null);
+                    return;
+                  }
+                  flushSync(() => {
+                    setOpenId(lesson.id);
+                  });
+                  scrollElementToStart(titleRefs.current.get(lesson.id) ?? null);
+                }}
               >
                 {isOpen ? i18n._('Hide') : i18n._('Open')}
               </Button>

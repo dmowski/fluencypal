@@ -91,7 +91,12 @@ const parseAudioProgress = (value: unknown): LessonAudioProgress | null => {
   const last = value.last
     .map(parseAudioRecord)
     .filter((record): record is LessonAudioRecord => !!record);
-  return { first, last, totalCount: value.totalCount };
+  return {
+    first,
+    last,
+    totalCount: value.totalCount,
+    ...(value.openTalkOnly === true ? { openTalkOnly: true } : {}),
+  };
 };
 
 export const parseInteractiveLessonStore = (value: unknown): InteractiveLessonStore => {

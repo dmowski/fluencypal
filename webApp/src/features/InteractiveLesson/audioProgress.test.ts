@@ -4,15 +4,28 @@ import {
   emptyAudioProgress,
   ensureAudioProgress,
   recordLessonAudio,
+  recordOpenTalkAudio,
   remainingAudiosForProgress,
 } from './audioProgress';
-import { InteractiveLesson } from './types';
+import { InteractiveLesson, LessonPartState } from './types';
 
 const makeRecord = (index: number) => ({
   id: `audio-${index}`,
   audioUrl: `/api/uploadFile?path=audio-${index}`,
   transcript: `Answer ${index}`,
   recordedAtIso: '2026-08-29T10:00:00.000Z',
+});
+
+const makeAnsweredSpeech = (
+  contentMD: string,
+  transcript: string,
+  audioPath: string,
+): LessonPartState => ({
+  type: 'speech',
+  contentMD,
+  userVoiceTranscript: transcript,
+  aiResultToUser: 'Good.',
+  userAudioUrl: `/api/uploadFile?path=${audioPath}`,
 });
 
 describe('audioProgress', () => {
@@ -31,14 +44,32 @@ describe('audioProgress', () => {
     );
   });
 
-  it('unlocks comparison when the last 10 sit 100 recordings after the first 10', () => {
-    expect(canShowAudioProgress(109)).toBe(false);
-    expect(remainingAudiosForProgress(109)).toBe(1);
-    expect(canShowAudioProgress(110)).toBe(true);
-    expect(remainingAudiosForProgress(110)).toBe(0);
+  it('unlocks comparison after 100 open talks', () => {
+    expect(canShowAudioProgress(99)).toBe(false);
+    expect(remainingAudiosForProgress(99)).toBe(1);
+    expect(canShowAudioProgress(100)).toBe(true);
+    expect(remainingAudiosForProgress(100)).toBe(0);
   });
 
-  it('backfills from existing lessons when progress was never stored', () => {
+  it('records only the last open-talk part, not read-aloud or short answers', () => {
+    const parts: LessonPartState[] = [
+      { type: 'read', contentMD: 'How to use the past simple.' },
+      makeAnsweredSpeech('Read this text aloud.', 'I read it.', 'read-aloud'),
+      makeAnsweredSpeech('Say what you did yesterday.', 'I walked.', 'short'),
+      makeAnsweredSpeech('Talk for two minutes.', 'Yesterday I walked to the park.', 'open-talk'),
+    ];
+
+    const afterReadAloud = recordOpenTalkAudio(emptyAudioProgress(), parts, 1, makeRecord(1));
+    const afterShort = recordOpenTalkAudio(afterReadAloud, parts, 2, makeRecord(2));
+    const afterOpenTalk = recordOpenTalkAudio(afterShort, parts, 3, makeRecord(3));
+
+    expect(afterReadAloud.totalCount).toBe(0);
+    expect(afterShort.totalCount).toBe(0);
+    expect(afterOpenTalk.totalCount).toBe(1);
+    expect(afterOpenTalk.first[0]?.id).toBe('audio-3');
+  });
+
+  it('backfills only open talks from existing lessons', () => {
     const lesson: InteractiveLesson = {
       id: 'lesson-1',
       title: 'Past Simple',
@@ -46,20 +77,54 @@ describe('audioProgress', () => {
       createdAtIso: '2026-08-29T10:00:00.000Z',
       completedAtIso: '2026-08-29T11:00:00.000Z',
       parts: [
-        {
-          type: 'speech',
-          contentMD: 'Say what you did.',
-          userVoiceTranscript: 'I walked.',
-          aiResultToUser: 'Good.',
-          userAudioUrl: '/api/uploadFile?path=old',
-        },
+        { type: 'read', contentMD: 'How to use the past simple.' },
+        makeAnsweredSpeech('Read this text aloud.', 'I read it.', 'read-aloud'),
+        makeAnsweredSpeech('Say what you did yesterday.', 'I walked.', 'short'),
+        makeAnsweredSpeech('Talk for two minutes.', 'Yesterday I walked to the park.', 'open-talk'),
       ],
       lessonResults: null,
     };
 
-    expect(collectLessonAudios([lesson])).toHaveLength(1);
+    expect(collectLessonAudios([lesson])).toEqual([
+      {
+        id: 'lesson-1-3',
+        audioUrl: '/api/uploadFile?path=open-talk',
+        transcript: 'Yesterday I walked to the park.',
+        recordedAtIso: '2026-08-29T11:00:00.000Z',
+      },
+    ]);
     const backfilled = ensureAudioProgress(null, [lesson]);
     expect(backfilled.totalCount).toBe(1);
-    expect(backfilled.first[0]?.audioUrl).toBe('/api/uploadFile?path=old');
+    expect(backfilled.first[0]?.audioUrl).toBe('/api/uploadFile?path=open-talk');
+    expect(backfilled.openTalkOnly).toBe(true);
+  });
+
+  it('rebuilds mixed stored progress that is not open-talk-only', () => {
+    const lesson: InteractiveLesson = {
+      id: 'lesson-1',
+      title: 'Past Simple',
+      subTitle: 'Talk about yesterday',
+      createdAtIso: '2026-08-29T10:00:00.000Z',
+      completedAtIso: '2026-08-29T11:00:00.000Z',
+      parts: [
+        { type: 'read', contentMD: 'How to use the past simple.' },
+        makeAnsweredSpeech('Read this text aloud.', 'I read it.', 'read-aloud'),
+        makeAnsweredSpeech('Talk for two minutes.', 'Yesterday I walked to the park.', 'open-talk'),
+      ],
+      lessonResults: null,
+    };
+
+    const rebuilt = ensureAudioProgress(
+      {
+        first: [makeRecord(0), makeRecord(1)],
+        last: [makeRecord(0), makeRecord(1)],
+        totalCount: 2,
+      },
+      [lesson],
+    );
+
+    expect(rebuilt.totalCount).toBe(1);
+    expect(rebuilt.first[0]?.audioUrl).toBe('/api/uploadFile?path=open-talk');
+    expect(rebuilt.openTalkOnly).toBe(true);
   });
 });

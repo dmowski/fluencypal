@@ -472,14 +472,17 @@ test('progress asks for more recordings before comparing', async () => {
 
   await expect.element(page.getByTestId('interactive-lesson-progress-needed')).toBeVisible();
   await expect.element(page.getByTestId('interactive-lesson-progress-continue')).toBeVisible();
+  await expect
+    .element(page.getByText('Finish the last speaking task in today’s lesson', { exact: false }))
+    .toBeVisible();
   await expect.element(page.getByText('History')).toBeVisible();
   await expect
     .element(page.getByTestId('interactive-lesson-progress-before'))
     .not.toBeInTheDocument();
 });
 
-test('progress shows before and after after 110 recordings', async () => {
-  const audioProgress = Array.from({ length: 110 }, (_, index) => ({
+test('progress shows before and after after 100 recordings', async () => {
+  const audioProgress = Array.from({ length: 100 }, (_, index) => ({
     id: `audio-${index}`,
     audioUrl: `/api/uploadFile?path=audio-${index}`,
     transcript: `Answer ${index + 1}`,
@@ -502,4 +505,58 @@ test('progress shows before and after after 110 recordings', async () => {
   await expect
     .element(page.getByTestId('interactive-lesson-progress'))
     .toMatchScreenshot('progress-comparison');
+});
+
+test('opening a history lesson scrolls to its title', async () => {
+  const firstLesson = {
+    ...FIXTURE_FINISHED_LESSON,
+    id: 'lesson-a',
+    title: 'First history lesson',
+    parts: [
+      {
+        type: 'read' as const,
+        contentMD: Array.from(
+          { length: 18 },
+          (_, index) => `Paragraph ${index + 1} of the first finished lesson.`,
+        ).join('\n\n'),
+      },
+      ...FIXTURE_FINISHED_LESSON.parts.slice(1),
+    ],
+  };
+  const secondLesson = {
+    ...FIXTURE_FINISHED_LESSON,
+    id: 'lesson-b',
+    title: 'Second history lesson',
+    subTitle: 'Another form to practice',
+  };
+
+  await renderInShell(
+    <div
+      data-testid="progress-scroll-fixture"
+      style={{
+        width: 720,
+        height: 360,
+        overflowY: 'auto',
+        background: '#37373a',
+        color: '#EBEBF5',
+      }}
+    >
+      <LessonProgressView
+        audioProgress={emptyAudioProgress()}
+        lessons={[firstLesson, secondLesson]}
+        onContinueLesson={noop}
+      />
+    </div>,
+  );
+
+  await userEvent.click(page.getByTestId('interactive-lesson-history-open-lesson-b'));
+  await expect.element(page.getByTestId('interactive-lesson-history-open-lesson-b')).toHaveTextContent('Hide');
+
+  await expect
+    .poll(async () => {
+      const title = await page.getByTestId('interactive-lesson-history-title-lesson-b').element();
+      const scroller = await page.getByTestId('progress-scroll-fixture').element();
+      return Math.abs(title.getBoundingClientRect().top - scroller.getBoundingClientRect().top);
+    })
+    .toBeLessThan(56);
 });

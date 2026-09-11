@@ -45,9 +45,17 @@ describe('interactive lesson storage', () => {
           completedAtIso: '2026-08-29T11:00:00.000Z',
           lessonResults: null,
           parts: [
+            { type: 'read', contentMD: 'Use a before a new noun.' },
             {
               type: 'speech',
-              contentMD: 'Describe your room.',
+              contentMD: 'Read this text aloud.',
+              userVoiceTranscript: 'A cat sat on the mat.',
+              aiResultToUser: 'Good.',
+              userAudioUrl: 'https://example.com/read-aloud.webm',
+            },
+            {
+              type: 'speech',
+              contentMD: 'Talk for two minutes about your room.',
               userVoiceTranscript: 'It is small.',
               aiResultToUser: 'Good.',
               userAudioUrl: 'https://example.com/voice.webm',

@@ -22,7 +22,7 @@ import { collectConversationContext } from './collectConversationContext';
 import { generateInteractiveLesson } from './generateLesson';
 import { generateSpeechAnswerFeedback } from './generateAnswerFeedback';
 import { generateLessonResults } from './generateLessonResults';
-import { recordLessonAudio } from './audioProgress';
+import { recordOpenTalkAudio } from './audioProgress';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import {
   applyLessonResults,
@@ -36,7 +36,10 @@ import {
   summarizeFinishedLessons,
   summarizeOpenTalks,
 } from './lessonState';
-import { loadInteractiveLessonStore, saveInteractiveLessonStore } from './interactiveLessonFirestore';
+import {
+  loadInteractiveLessonStore,
+  saveInteractiveLessonStore,
+} from './interactiveLessonFirestore';
 import { uploadLessonAudio } from './uploadLessonAudio';
 import {
   InteractiveLesson,
@@ -286,7 +289,11 @@ const useProvideInteractiveLesson = () => {
     );
   };
 
-  const submitSpeechAnswer = async (partIndex: number, transcript: string, audioBlob: Blob | null) => {
+  const submitSpeechAnswer = async (
+    partIndex: number,
+    transcript: string,
+    audioBlob: Blob | null,
+  ) => {
     const lesson = store.currentLesson;
     if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
 
@@ -319,7 +326,7 @@ const useProvideInteractiveLesson = () => {
             })
           : prev.currentLesson,
         audioProgress: userAudioUrl
-          ? recordLessonAudio(prev.audioProgress, {
+          ? recordOpenTalkAudio(prev.audioProgress, lesson.parts, partIndex, {
               id: `${lesson.id}-${partIndex}-${Date.now()}`,
               audioUrl: userAudioUrl,
               transcript,
@@ -416,10 +423,7 @@ const useProvideInteractiveLesson = () => {
         'next',
         discarded,
         skippedNote,
-        listRecentLessonForms([
-          lesson,
-          ...(alsoBan ? [alsoBan] : []),
-        ]),
+        listRecentLessonForms([lesson, ...(alsoBan ? [alsoBan] : [])]),
       );
       persistUpdate((prev) => ({
         ...prev,

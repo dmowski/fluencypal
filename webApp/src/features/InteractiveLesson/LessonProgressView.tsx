@@ -99,17 +99,17 @@ export const LessonProgressView = ({
             <Typography variant="body1" sx={{ opacity: 0.85 }}>
               {recorded === 0
                 ? i18n._(
-                    'Speak in today’s lesson. We save your first answers, then compare them with your newest ones.',
+                    'Finish the last speaking task in today’s lesson. We save those free talks, then compare them with your newest ones.',
                   )
                 : i18n._(
-                    'Nice work — {done} spoken answers so far. {count} more unlocks a Before / After of your voice.',
+                    'Nice work — {done} free talks so far. {count} more unlocks a Before / After of your voice.',
                     { done: recorded, count: remaining },
                   )}
             </Typography>
           </Stack>
           <Stack sx={{ gap: '8px' }}>
             <Typography variant="caption" sx={{ opacity: 0.75 }}>
-              {i18n._('{done} of {goal} answers', {
+              {i18n._('{done} of {goal} free talks', {
                 done: recorded,
                 goal: PROGRESS_MIN_AUDIO_COUNT,
               })}

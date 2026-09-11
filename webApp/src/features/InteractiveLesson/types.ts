@@ -39,6 +39,8 @@ export interface LessonAudioProgress {
   first: LessonAudioRecord[];
   last: LessonAudioRecord[];
   totalCount: number;
+  /** False/absent on older stores that mixed read-aloud and short answers. */
+  openTalkOnly?: boolean;
 }
 
 export interface InteractiveLessonStore {
@@ -68,9 +70,7 @@ export interface LessonGenerationContext {
   recentFormsSummary: string;
 }
 
-export const isLessonPartWithAnswer = (
-  part: LessonPartState,
-): part is LessonPartWithUserAnswer => {
+export const isLessonPartWithAnswer = (part: LessonPartState): part is LessonPartWithUserAnswer => {
   return 'userVoiceTranscript' in part;
 };
 

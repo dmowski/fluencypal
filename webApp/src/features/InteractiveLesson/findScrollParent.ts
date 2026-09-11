@@ -9,3 +9,17 @@ export const findScrollParent = (anchor: HTMLElement | null): HTMLElement | null
   }
   return null;
 };
+
+export const scrollElementToStart = (element: HTMLElement | null): void => {
+  if (!element) return;
+  const scrollEl = findScrollParent(element);
+  if (scrollEl) {
+    const offset = element.getBoundingClientRect().top - scrollEl.getBoundingClientRect().top;
+    scrollEl.scrollTo({
+      top: scrollEl.scrollTop + offset,
+      behavior: 'smooth',
+    });
+    return;
+  }
+  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
