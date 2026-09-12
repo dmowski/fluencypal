@@ -29,8 +29,9 @@ import { NeedHelpModal } from '../Header/NeedHelpModal';
 import { PaymentHistoryModal } from '../Header/PaymentHistoryModal';
 import { WithdrawFromContractModal } from '../Header/WithdrawFromContractModal';
 import { ContactMessageModal } from '../Header/ContactMessageModal';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { getLandingUrlStart, getUrlStart } from '../Lang/getUrlStart';
+import { useSearchParams } from 'next/navigation';
+import { logoutThenGoToLanding } from '../Auth/logoutThenGoToLanding';
+import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { GameMyIdentity } from '../Game/GameMyIdentity';
 import { AiKnowledgeModal } from '../User/AiKnowledgeModal';
 import { NotificationsModal } from '../Header/NotificationsModal';
@@ -67,7 +68,6 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const usage = useUsage();
   const [_, setIsShowLanguageModal] = useUrlParam('lang-selection');
-  const router = useRouter();
 
   interface MenuItem {
     title: string;
@@ -142,10 +142,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       subTitle: i18n._(`Log out of your account`),
       icon: LogOut,
       onClick: async () => {
-        router.push(getLandingUrlStart(lang));
-        setTimeout(async () => {
-          await auth.logout();
-        }, 300);
+        await logoutThenGoToLanding(auth.logout, getLandingUrlStart(lang));
       },
     });
   }
