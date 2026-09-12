@@ -1,9 +1,11 @@
 'use client';
 
 import { useAuth } from '@/features/Auth/useAuth';
+import { runWithFirestoreAuth } from '@/features/Firebase/runWithFirestoreAuth';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useEffect, useRef } from 'react';
 import { DocumentReference, getDoc, setDoc } from 'firebase/firestore';
+import * as Sentry from '@sentry/nextjs';
 
 interface CoreSurveyData {
   createdAtIso: string;
@@ -44,7 +46,10 @@ export function useQuizSurveyData<T extends CoreSurveyData>({
   };
 
   useEffect(() => {
-    if (auth.uid) ensureSurveyDocExists();
+    if (!auth.uid) return;
+    void runWithFirestoreAuth(auth.getToken, ensureSurveyDocExists).catch((error) => {
+      Sentry.captureException(error);
+    });
   }, [auth.uid]);
 
   return {

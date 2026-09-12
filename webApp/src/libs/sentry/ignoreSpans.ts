@@ -2,6 +2,7 @@
  * Spans that look like N+1 to Sentry but are normal long-poll / beacon traffic.
  * - Firestore Listen/Write channels: WebChannel long-polling (DARK-LANG-AX / DARK-LANG-AW)
  * - GA collect: analytics beacons grouped under navigation transactions
+ * - Next.js `?_rsc=` flight/prefetch requests (DARK-LANG-CX)
  *
  * @see https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#ignoreSpans
  */
@@ -13,5 +14,10 @@ export const sentryIgnoreSpans = [
   {
     op: 'http.client',
     name: /google-analytics\.com\/g\/collect/,
+  },
+  // Next.js RSC flight/prefetch requests (DARK-LANG-CX)
+  {
+    op: 'http.client',
+    name: /[?&]_rsc=/,
   },
 ] as const;

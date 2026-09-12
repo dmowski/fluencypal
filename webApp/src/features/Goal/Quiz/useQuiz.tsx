@@ -24,6 +24,7 @@ import { scrollToLangButton } from '@/libs/scroll';
 import { sleep } from '@/libs/sleep';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
+import { runWithFirestoreAuth } from '@/features/Firebase/runWithFirestoreAuth';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from './types';
@@ -615,6 +616,10 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   };
 
   const ensureSurveyDocExists = async () => {
+    await runWithFirestoreAuth(auth.getToken, writeSurveyDocIfNeeded);
+  };
+
+  const writeSurveyDocIfNeeded = async () => {
     if (surveyDoc) {
       if (
         surveyDoc.learningLanguageCode !== languageToLearn ||
@@ -832,12 +837,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       // confirmGtag();
     }
 
-    if (currentStep === 'before_recordAbout') {
-      ensureSurveyDocExists();
-    }
-
-    if (currentStep === 'recordAbout') {
-      ensureSurveyDocExists();
+    if (currentStep === 'before_recordAbout' || currentStep === 'recordAbout') {
+      try {
+        await ensureSurveyDocExists();
+      } catch (error) {
+        Sentry.captureException(error);
+        return;
+      }
     }
 
     let newStatePatch: Partial<QuizUrlState> = {

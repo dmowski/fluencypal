@@ -17,4 +17,7 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   /Failed to get document because the client is offline/,
   // Browser-extension injectors (DARK-LANG-HZ / DARK-LANG-J0); no first-party frames
   /Cannot read properties of undefined \(reading 'M_ID'\)/,
+  // Zalo in-app browser injects this global (DARK-LANG-HP); not app code
+  /Can't find variable: zaloJSV2/,
+  /zaloJSV2 is not defined/,
 ];

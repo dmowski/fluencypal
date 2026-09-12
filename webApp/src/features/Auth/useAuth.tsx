@@ -101,7 +101,8 @@ function useProvideAuth(): AuthContext {
     if (shouldShowWebViewWall()) {
       return {
         isDone: false,
-        error: 'Google sign-in is not supported in this browser. Please open in Chrome or use email sign-in.',
+        error:
+          'Google sign-in is not supported in this browser. Please open in Chrome or use email sign-in.',
       };
     }
 
@@ -148,7 +149,8 @@ function useProvideAuth(): AuthContext {
     }
 
     try {
-      await signInWithEmailLink(auth, email, window.location.href);
+      const credential = await signInWithEmailLink(auth, email, window.location.href);
+      await credential.user.getIdToken(true);
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
       cleanEmailSignInUrl();
     } catch (error) {

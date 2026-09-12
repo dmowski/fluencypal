@@ -31,4 +31,9 @@ describe('sentryIgnoreErrors', () => {
       true,
     );
   });
+
+  it('drops Zalo in-app browser injectors', () => {
+    expect(matchesIgnore("ReferenceError: Can't find variable: zaloJSV2")).toBe(true);
+    expect(matchesIgnore('ReferenceError: zaloJSV2 is not defined')).toBe(true);
+  });
 });
