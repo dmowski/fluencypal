@@ -8,6 +8,7 @@ import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
 import Script from 'next/script';
 import { CustomAnalyticsHost } from '@/features/Analytics/Custom/CustomAnalyticsHost';
+import { GoogleAdsHost } from '@/features/Analytics/GoogleAds/GoogleAdsHost';
 import { CookieBanner } from '@/features/Legal/CookieBanner';
 
 export default async function RootLayout({
@@ -45,6 +46,7 @@ export default async function RootLayout({
             <UrlStateProvider>
               {children}
               <CookieBanner />
+              <GoogleAdsHost />
               <CustomAnalyticsHost />
             </UrlStateProvider>
           </LinguiClientProvider>
