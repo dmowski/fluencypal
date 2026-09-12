@@ -4,10 +4,11 @@ import path from 'path';
 import { splitTextIntoSentences } from './splitTextIntoSentences';
 
 describe('splitTextIntoSentences', () => {
-  it('does not use lookbehind so Safari 15.4–16.3 can parse the module', () => {
+  it('does not use lookbehind or Unicode property classes so Safari 15.4–16.3 can parse the module', () => {
     const source = fs.readFileSync(path.join(__dirname, 'splitTextIntoSentences.ts'), 'utf8');
     expect(source).not.toMatch(/\(\?<=/);
     expect(source).not.toMatch(/\(\?<!/);
+    expect(source).not.toMatch(/\\p\{/);
   });
   it('splits provided example into two full sentences without standalone punctuation token', () => {
     const text =

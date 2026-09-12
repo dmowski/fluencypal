@@ -13,12 +13,21 @@ interface UserSourceContextType {
 export const getParamsFromStorage = (): UserSource | null => {
   if (typeof window === 'undefined') return null;
 
-  const stored = window.localStorage.getItem(SOURCE_STORAGE_KEY);
-  if (!stored) return null;
   try {
+    const stored = window.localStorage.getItem(SOURCE_STORAGE_KEY);
+    if (!stored) return null;
     return JSON.parse(stored) as UserSource;
   } catch {
+    // Third-party iframes and some privacy modes deny localStorage.
     return null;
+  }
+};
+
+const persistUserSource = (source: UserSource): void => {
+  try {
+    window.localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(source));
+  } catch {
+    // Keep the in-memory source even when storage is blocked.
   }
 };
 
@@ -66,7 +75,7 @@ function useProvideUserSource(): UserSourceContextType {
 
     const fromUrl = getSourceFromUrl();
     if (fromUrl) {
-      localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(fromUrl));
+      persistUserSource(fromUrl);
       setUserSource(fromUrl);
     }
   };
