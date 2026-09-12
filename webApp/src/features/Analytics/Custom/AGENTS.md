@@ -88,7 +88,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`.
 
 Export (`pnpm analytics:export`) is a UTC instant range (`fromIso` → `toIso`). `--from` / `--to` accept `YYYY-MM-DD` or `YYYY-MM-DDTHH:mm:ssZ`; `--day` is one full UTC day. Default with no flags is today `00:00Z` through now. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 

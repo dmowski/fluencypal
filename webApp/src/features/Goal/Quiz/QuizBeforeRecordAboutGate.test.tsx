@@ -6,6 +6,7 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
+import { resetGuestAboutForTests, saveGuestAboutRecording } from './quizGuestAboutStorage';
 
 const authState = {
   uid: '',
@@ -17,6 +18,19 @@ const authState = {
 
 jest.mock('@/features/Auth/useAuth', () => ({
   useAuth: () => authState,
+}));
+
+jest.mock('@/features/Audio/useAudioRecorder', () => ({
+  useAudioRecorder: () => ({
+    startRecording: jest.fn(),
+    stopRecording: jest.fn(),
+    isRecording: false,
+    isTranscribing: false,
+    transcriptionBlob: null,
+    error: '',
+    visualizerComponent: null,
+    recordingMilliSeconds: 0,
+  }),
 }));
 
 jest.mock('@/features/Auth/useIsWebView', () => ({
@@ -42,12 +56,14 @@ describe('QuizBeforeRecordAboutGate', () => {
     authState.uid = '';
     authState.loading = false;
     window.localStorage.clear();
+    resetGuestAboutForTests();
   });
 
-  it('opens on Google with the teacher clip and Continue to talk', () => {
+  it('asks the guest to record before showing Google', () => {
     render(
       <I18nWrapper>
         <QuizBeforeRecordAboutGate
+          languageCode="en"
           promptText="Tell me about yourself. Why do you want to practice speaking?"
           onSignedIn={jest.fn()}
         />
@@ -58,14 +74,41 @@ describe('QuizBeforeRecordAboutGate', () => {
     expect(screen.getByTestId('quiz-record-about-prompt')).toHaveTextContent(
       'Tell me about yourself. Why do you want to practice speaking?',
     );
-    expect(screen.getByRole('button', { name: 'Continue to talk' })).toBeInTheDocument();
+    expect(screen.getByTestId('quiz-guest-about-button')).toHaveAttribute(
+      'data-analytics',
+      'record-about-guest',
+    );
+    expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
+  });
+
+  it('shows Continue to talk after the guest records', () => {
+    saveGuestAboutRecording({
+      languageCode: 'en',
+      blob: new Blob(['audio'], { type: 'audio/webm' }),
+      format: 'audio/webm',
+      durationSec: 4,
+    });
+
+    render(
+      <I18nWrapper>
+        <QuizBeforeRecordAboutGate
+          languageCode="en"
+          promptText="Tell me about yourself."
+          onSignedIn={jest.fn()}
+        />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByText('Sign in to get your personal plan')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
       'data-analytics',
       'auth-google',
     );
-    expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Sign in with email' })).toBeInTheDocument();
+    expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();
   });
 
   it('does not advance while auth is still loading', () => {
@@ -74,7 +117,11 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate promptText="Tell me about yourself." onSignedIn={onSignedIn} />
+        <QuizBeforeRecordAboutGate
+          languageCode="en"
+          promptText="Tell me about yourself."
+          onSignedIn={onSignedIn}
+        />
       </I18nWrapper>,
     );
 
@@ -87,7 +134,11 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate promptText="Tell me about yourself." onSignedIn={onSignedIn} />
+        <QuizBeforeRecordAboutGate
+          languageCode="en"
+          promptText="Tell me about yourself."
+          onSignedIn={onSignedIn}
+        />
       </I18nWrapper>,
     );
 

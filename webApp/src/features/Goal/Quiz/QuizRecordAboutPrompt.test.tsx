@@ -93,4 +93,22 @@ describe('QuizRecordAboutPrompt', () => {
       );
     });
   });
+
+  it('stops the teacher clip when the guest starts recording', () => {
+    const { rerender } = render(
+      <I18nWrapper>
+        <QuizRecordAboutPrompt text="Tell me about yourself." />
+      </I18nWrapper>,
+    );
+
+    expect(mockInterrupt).not.toHaveBeenCalled();
+
+    rerender(
+      <I18nWrapper>
+        <QuizRecordAboutPrompt text="Tell me about yourself." pausePlayback />
+      </I18nWrapper>,
+    );
+
+    expect(mockInterrupt).toHaveBeenCalled();
+  });
 });

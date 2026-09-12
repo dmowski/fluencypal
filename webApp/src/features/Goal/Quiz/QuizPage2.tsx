@@ -40,6 +40,7 @@ import { TrialPriceQuizStep } from './TrialPriceQuizStep';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
+import { peekGuestAboutTranscript } from './quizGuestAboutStorage';
 
 const QuizQuestions = () => {
   const {
@@ -119,11 +120,11 @@ const QuizQuestions = () => {
     }
   };
 
-  const goToRecordAbout = () => {
+  const goToRecordAbout = async () => {
     if (currentStep !== 'before_recordAbout') {
       return;
     }
-    next();
+    await nextStep();
   };
 
   if (redirecting) {
@@ -215,6 +216,7 @@ const QuizQuestions = () => {
 
           {currentStep === 'before_recordAbout' && (
             <QuizBeforeRecordAboutGate
+              languageCode={languageToLearn}
               promptText={`${recordAboutTitle}. ${recordAboutQuestion}`}
               onSignedIn={goToRecordAbout}
             />
@@ -228,7 +230,9 @@ const QuizQuestions = () => {
                 subTitleComponent={
                   <QuizRecordAboutPrompt text={`${recordAboutTitle}. ${recordAboutQuestion}`} />
                 }
-                transcript={survey?.aboutUserTranscription || ''}
+                transcript={
+                  survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn) || ''
+                }
                 minWords={MIN_WORDS_FOR_ANSWER}
                 analyticsSurface="quiz"
                 nextStep={next}
