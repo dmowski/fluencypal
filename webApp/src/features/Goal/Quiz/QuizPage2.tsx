@@ -72,10 +72,9 @@ const QuizQuestions = () => {
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const recordAboutQuestion = i18n._(
-    `Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`,
-  );
-  const recordAboutTitle = i18n._('Tell me about yourself');
+  const recordAboutTitle = i18n._('Why do you want to practice speaking?');
+  const recordAboutQuestion = i18n._(`I'll use your answer to make your personal plan.`);
+  const recordAboutPrompt = `${recordAboutTitle} ${recordAboutQuestion}`;
 
   const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
   const nativeLanguageName =
@@ -217,7 +216,9 @@ const QuizQuestions = () => {
           {currentStep === 'before_recordAbout' && (
             <QuizBeforeRecordAboutGate
               languageCode={languageToLearn}
-              promptText={`${recordAboutTitle}. ${recordAboutQuestion}`}
+              title={recordAboutTitle}
+              subTitle={recordAboutQuestion}
+              promptText={recordAboutPrompt}
               onSignedIn={goToRecordAbout}
             />
           )}
@@ -229,7 +230,7 @@ const QuizQuestions = () => {
                 subTitle={recordAboutQuestion}
                 subTitleComponent={
                   <QuizRecordAboutPrompt
-                    text={`${recordAboutTitle}. ${recordAboutQuestion}`}
+                    text={recordAboutPrompt}
                     autoPlay={
                       !(
                         survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn)

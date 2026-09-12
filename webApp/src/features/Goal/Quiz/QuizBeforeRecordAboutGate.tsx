@@ -43,10 +43,14 @@ const AdvanceWhenSignedIn = ({
 
 export const QuizBeforeRecordAboutGate = ({
   languageCode,
+  title,
+  subTitle,
   promptText,
   onSignedIn,
 }: {
   languageCode: string;
+  title: string;
+  subTitle: string;
   promptText: string;
   onSignedIn: () => void | Promise<void>;
 }) => {
@@ -59,10 +63,8 @@ export const QuizBeforeRecordAboutGate = ({
     <AuthWall
       startOnAuth
       authListAfterActions
-      signInTitle={i18n._('Tell me about yourself')}
-      singInSubTitle={i18n._(
-        `Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`,
-      )}
+      signInTitle={title}
+      singInSubTitle={subTitle}
       authActionTitle={i18n._('Continue to talk')}
       hideAuthActions={!readyForSignIn}
       authSubComponent={

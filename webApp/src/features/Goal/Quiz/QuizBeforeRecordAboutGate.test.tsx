@@ -64,15 +64,18 @@ describe('QuizBeforeRecordAboutGate', () => {
       <I18nWrapper>
         <QuizBeforeRecordAboutGate
           languageCode="en"
-          promptText="Tell me about yourself. Why do you want to practice speaking?"
+          title="Why do you want to practice speaking?"
+          subTitle="I'll use your answer to make your personal plan."
+          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
           onSignedIn={jest.fn()}
         />
       </I18nWrapper>,
     );
 
-    expect(screen.getByText('Tell me about yourself')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Why do you want to practice speaking?' })).toBeInTheDocument();
+    expect(screen.getByText("I'll use your answer to make your personal plan.")).toBeInTheDocument();
     expect(screen.getByTestId('quiz-record-about-prompt')).toHaveTextContent(
-      'Tell me about yourself. Why do you want to practice speaking?',
+      "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
     );
     expect(screen.getByTestId('quiz-guest-about-button')).toHaveAttribute(
       'data-analytics',
@@ -96,7 +99,9 @@ describe('QuizBeforeRecordAboutGate', () => {
       <I18nWrapper>
         <QuizBeforeRecordAboutGate
           languageCode="en"
-          promptText="Tell me about yourself."
+          title="Why do you want to practice speaking?"
+          subTitle="I'll use your answer to make your personal plan."
+          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
           onSignedIn={jest.fn()}
         />
       </I18nWrapper>,
@@ -119,7 +124,9 @@ describe('QuizBeforeRecordAboutGate', () => {
       <I18nWrapper>
         <QuizBeforeRecordAboutGate
           languageCode="en"
-          promptText="Tell me about yourself."
+          title="Why do you want to practice speaking?"
+          subTitle="I'll use your answer to make your personal plan."
+          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
           onSignedIn={onSignedIn}
         />
       </I18nWrapper>,
@@ -136,7 +143,9 @@ describe('QuizBeforeRecordAboutGate', () => {
       <I18nWrapper>
         <QuizBeforeRecordAboutGate
           languageCode="en"
-          promptText="Tell me about yourself."
+          title="Why do you want to practice speaking?"
+          subTitle="I'll use your answer to make your personal plan."
+          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
           onSignedIn={onSignedIn}
         />
       </I18nWrapper>,
