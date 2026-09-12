@@ -53,6 +53,7 @@ export const QuizBeforeRecordAboutGate = ({
   const { i18n } = useLingui();
   const [isGuestRecording, setIsGuestRecording] = useState(false);
   const [hasGuestRecorded, setHasGuestRecorded] = useState(() => hasGuestAbout(languageCode));
+  const [readyForSignIn, setReadyForSignIn] = useState(() => hasGuestAbout(languageCode));
 
   return (
     <AuthWall
@@ -63,7 +64,7 @@ export const QuizBeforeRecordAboutGate = ({
         `Let's talk a little about you. This will help me to create a practice plan. Why do you want to practice speaking?`,
       )}
       authActionTitle={i18n._('Continue to talk')}
-      hideAuthActions={!hasGuestRecorded}
+      hideAuthActions={!readyForSignIn}
       authSubComponent={
         <Stack
           data-testid="quiz-guest-about-start"
@@ -72,11 +73,16 @@ export const QuizBeforeRecordAboutGate = ({
             marginTop: '8px',
           }}
         >
-          <QuizRecordAboutPrompt text={promptText} pausePlayback={isGuestRecording} />
+          <QuizRecordAboutPrompt
+            text={promptText}
+            pausePlayback={isGuestRecording}
+            autoPlay={!hasGuestRecorded}
+          />
           <QuizGuestRecordAbout
             languageCode={languageCode}
             onRecordingChange={setIsGuestRecording}
             onHasRecorded={setHasGuestRecorded}
+            onReadyForSignIn={setReadyForSignIn}
           />
         </Stack>
       }

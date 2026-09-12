@@ -111,4 +111,17 @@ describe('QuizRecordAboutPrompt', () => {
 
     expect(mockInterrupt).toHaveBeenCalled();
   });
+
+  it('does not autoplay when the guest already answered', async () => {
+    render(
+      <I18nWrapper>
+        <QuizRecordAboutPrompt text="Tell me about yourself." autoPlay={false} />
+      </I18nWrapper>,
+    );
+
+    await waitFor(() => {
+      expect(mockInterrupt).toHaveBeenCalled();
+    });
+    expect(mockSpeak).not.toHaveBeenCalled();
+  });
 });

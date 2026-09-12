@@ -228,7 +228,14 @@ const QuizQuestions = () => {
                 title={recordAboutTitle}
                 subTitle={recordAboutQuestion}
                 subTitleComponent={
-                  <QuizRecordAboutPrompt text={`${recordAboutTitle}. ${recordAboutQuestion}`} />
+                  <QuizRecordAboutPrompt
+                    text={`${recordAboutTitle}. ${recordAboutQuestion}`}
+                    autoPlay={
+                      !(
+                        survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn)
+                      )
+                    }
+                  />
                 }
                 transcript={
                   survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn) || ''

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Box, IconButton, Stack, Typography } from '@mui/material';
+import { Box, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Mic, Square } from 'lucide-react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
@@ -11,6 +11,8 @@ import {
   peekGuestAboutRecording,
   saveGuestAboutRecording,
 } from './quizGuestAboutStorage';
+
+export const QUIZ_GUEST_SIGN_IN_DELAY_MS = 1500;
 
 const blobFormat = (blob: Blob): string => blob.type || 'audio/webm';
 
@@ -88,14 +90,18 @@ export const QuizGuestRecordAbout = ({
   languageCode,
   onRecordingChange,
   onHasRecorded,
+  onReadyForSignIn,
 }: {
   languageCode: string;
   onRecordingChange?: (isRecording: boolean) => void;
   onHasRecorded?: (hasRecorded: boolean) => void;
+  onReadyForSignIn?: (isReady: boolean) => void;
 }) => {
   const { i18n } = useLingui();
   const recorder = useAudioRecorder();
-  const [hasRecorded, setHasRecorded] = useState(() => hasGuestAbout(languageCode));
+  const alreadyHadRecording = hasGuestAbout(languageCode);
+  const [hasRecorded, setHasRecorded] = useState(() => alreadyHadRecording);
+  const [readyForSignIn, setReadyForSignIn] = useState(() => alreadyHadRecording);
 
   useEffect(() => {
     onRecordingChange?.(recorder.isRecording);
@@ -104,6 +110,10 @@ export const QuizGuestRecordAbout = ({
   useEffect(() => {
     onHasRecorded?.(hasRecorded);
   }, [hasRecorded, onHasRecorded]);
+
+  useEffect(() => {
+    onReadyForSignIn?.(readyForSignIn);
+  }, [onReadyForSignIn, readyForSignIn]);
 
   useEffect(() => {
     if (hasRecorded || !recorder.transcriptionBlob) {
@@ -120,6 +130,20 @@ export const QuizGuestRecordAbout = ({
     sendSpeechStart('quiz');
     setHasRecorded(true);
   }, [hasRecorded, languageCode, recorder.recordingMilliSeconds, recorder.transcriptionBlob]);
+
+  useEffect(() => {
+    if (!hasRecorded || readyForSignIn) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setReadyForSignIn(true);
+    }, QUIZ_GUEST_SIGN_IN_DELAY_MS);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [hasRecorded, readyForSignIn]);
 
   const onToggleRecording = async () => {
     if (recorder.isRecording) {
@@ -145,15 +169,26 @@ export const QuizGuestRecordAbout = ({
       {hasRecorded ? (
         <>
           <GuestAboutSkeleton durationSec={replyDurationSec} />
-          <Typography
-            variant="body1"
-            sx={{
-              textAlign: 'center',
-              paddingTop: '4px',
-            }}
-          >
-            {i18n._('Sign in to get your personal plan')}
-          </Typography>
+          {readyForSignIn ? (
+            <Typography
+              variant="body1"
+              sx={{
+                textAlign: 'center',
+                paddingTop: '4px',
+              }}
+            >
+              {i18n._('Sign in to get your personal plan')}
+            </Typography>
+          ) : (
+            <CircularProgress
+              data-testid="quiz-guest-about-loader"
+              size={28}
+              sx={{
+                alignSelf: 'center',
+                color: 'primary.main',
+              }}
+            />
+          )}
         </>
       ) : (
         <>

@@ -16,9 +16,11 @@ const FALLBACK_VOICE: AiVoice = 'shimmer';
 export const QuizRecordAboutPrompt = ({
   text,
   pausePlayback = false,
+  autoPlay = true,
 }: {
   text: string;
   pausePlayback?: boolean;
+  autoPlay?: boolean;
 }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -29,11 +31,11 @@ export const QuizRecordAboutPrompt = ({
   const instructions = `${getVoiceSpeedInstruction(settings.aiVoiceSpeed)} ${avatar.voiceInstruction}`.trim();
 
   useEffect(() => {
-    if (!pausePlayback) {
+    if (!pausePlayback && autoPlay) {
       return;
     }
     conversationAudio.interrupt();
-  }, [pausePlayback]);
+  }, [autoPlay, pausePlayback]);
 
   return (
     <Stack
@@ -49,7 +51,7 @@ export const QuizRecordAboutPrompt = ({
         customVoice={voice}
         customInstructions={instructions}
         cache
-        autoPlay
+        autoPlay={autoPlay}
         analyticsId="hear-question"
       />
     </Stack>
