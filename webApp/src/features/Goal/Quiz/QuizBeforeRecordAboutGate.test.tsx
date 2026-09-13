@@ -46,8 +46,16 @@ jest.mock('@/features/Survey/ColorIconTextList', () => ({
 }));
 
 jest.mock('./QuizRecordAboutPrompt', () => ({
-  QuizRecordAboutPrompt: ({ text }: { text: string }) => (
-    <div data-testid="quiz-record-about-prompt">{text}</div>
+  QuizRecordAboutPrompt: ({
+    text,
+    variant = 'question',
+  }: {
+    text: string;
+    variant?: 'question' | 'reaction';
+  }) => (
+    <div data-testid="quiz-record-about-prompt" data-variant={variant}>
+      {text}
+    </div>
   ),
 }));
 
@@ -108,6 +116,12 @@ describe('QuizBeforeRecordAboutGate', () => {
     expect(
       screen.getByText("Thanks — I'll use that to make your plan. Let's keep going."),
     ).toBeInTheDocument();
+    expect(screen.getByTestId('quiz-record-about-prompt')).toHaveAttribute('data-variant', 'reaction');
+    expect(
+      screen.queryByText(
+        "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
+      ),
+    ).not.toBeInTheDocument();
     const continueButton = screen.getByRole('button', { name: 'Continue' });
     expect(continueButton).toHaveAttribute('data-analytics', 'quiz-guest-continue');
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();

@@ -1,4 +1,5 @@
 import { translateBatchRequest, translateRequest } from '@/app/api/translate/translateRequest';
+import { areTranslateLanguagesEqual } from '@/app/api/translate/sameLanguageTranslate';
 import { fullLanguagesMap } from '@/libs/language/languages';
 import { NativeLangCode } from '@/libs/language/type';
 import * as Sentry from '@sentry/nextjs';
@@ -101,6 +102,10 @@ export const getTranslation = async ({
   const normalizedText = normalizeTranslationKey(text);
   if (!normalizedText) {
     return '';
+  }
+
+  if (areTranslateLanguagesEqual(sourceLanguage, targetLanguage)) {
+    return normalizedText;
   }
 
   let cache = isUseCache ? getTranslatorCache(sourceLanguage || null, targetLanguage) : {};

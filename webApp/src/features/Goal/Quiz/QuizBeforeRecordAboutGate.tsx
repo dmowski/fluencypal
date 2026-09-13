@@ -83,18 +83,22 @@ export const QuizBeforeRecordAboutGate = ({
             marginTop: '8px',
           }}
         >
-          <QuizRecordAboutPrompt
-            text={promptText}
-            pausePlayback={isGuestRecording}
-            autoPlay={!hasGuestRecorded}
-          />
+          {!hasGuestRecorded ? (
+            <QuizRecordAboutPrompt
+              text={promptText}
+              pausePlayback={isGuestRecording}
+              autoPlay
+            />
+          ) : null}
           <QuizGuestRecordAbout
             languageCode={languageCode}
             onRecordingChange={setIsGuestRecording}
             onHasRecorded={setHasGuestRecorded}
             onReadyToContinue={setReadyToContinue}
           />
-          {readyToContinue ? <QuizRecordAboutPrompt text={reactionText} autoPlay /> : null}
+          {readyToContinue ? (
+            <QuizRecordAboutPrompt text={reactionText} autoPlay variant="reaction" />
+          ) : null}
         </Stack>
       }
     />

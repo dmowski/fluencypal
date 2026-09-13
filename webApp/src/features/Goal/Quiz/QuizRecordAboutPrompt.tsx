@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
@@ -17,10 +17,14 @@ export const QuizRecordAboutPrompt = ({
   text,
   pausePlayback = false,
   autoPlay = true,
+  buttonLabel,
+  variant = 'question',
 }: {
   text: string;
   pausePlayback?: boolean;
   autoPlay?: boolean;
+  buttonLabel?: string;
+  variant?: 'question' | 'reaction';
 }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -40,20 +44,41 @@ export const QuizRecordAboutPrompt = ({
   return (
     <Stack
       data-testid="quiz-record-about-prompt"
+      data-variant={variant}
       sx={{
         gap: '8px',
       }}
     >
-      <AudioPlayIcon
-        type="button"
-        buttonLabel={i18n._('Hear the question')}
-        text={text}
-        customVoice={voice}
-        customInstructions={instructions}
-        cache
-        autoPlay={autoPlay}
-        analyticsId="hear-question"
-      />
+      {variant === 'reaction' ? (
+        <Stack
+          direction="row"
+          sx={{
+            alignItems: 'flex-start',
+            gap: '4px',
+          }}
+        >
+          <AudioPlayIcon
+            type="icon"
+            text={text}
+            customVoice={voice}
+            customInstructions={instructions}
+            cache
+            autoPlay={autoPlay}
+          />
+          <Typography variant="body1">{text}</Typography>
+        </Stack>
+      ) : (
+        <AudioPlayIcon
+          type="button"
+          buttonLabel={buttonLabel ?? i18n._('Hear the question')}
+          text={text}
+          customVoice={voice}
+          customInstructions={instructions}
+          cache
+          autoPlay={autoPlay}
+          analyticsId="hear-question"
+        />
+      )}
     </Stack>
   );
 };

@@ -909,7 +909,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       // confirmGtag();
     }
 
-    if (currentStep === 'before_recordAbout' || currentStep === 'recordAbout') {
+    if (auth.uid && (currentStep === 'before_recordAbout' || currentStep === 'recordAbout')) {
       try {
         await ensureSurveyDocExists();
       } catch (error) {

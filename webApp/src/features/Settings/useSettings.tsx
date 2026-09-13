@@ -9,6 +9,10 @@ import {
   supportedLanguages,
 } from '@/features/Lang/lang';
 import { db } from '../Firebase/firebaseDb';
+import {
+  isFirebasePermissionDenied,
+  runWithFirestoreAuth,
+} from '../Firebase/runWithFirestoreAuth';
 import { useCurrency } from '../User/useCurrency';
 import { getCountryByIP } from '../User/getCountry';
 import { countries } from '@/libs/countries';
@@ -214,7 +218,13 @@ function useProvideSettings(): SettingsContextType {
       browserInfo,
     };
 
-    await setDoc(userSettingsDoc, partialData, { merge: true });
+    try {
+      await runWithFirestoreAuth(auth.getToken, () =>
+        setDoc(userSettingsDoc, partialData, { merge: true }),
+      );
+    } catch {
+      // Email-link sign-in can race Firestore auth; the next interval retries.
+    }
   };
 
   useEffect(() => {
@@ -274,7 +284,16 @@ function useProvideSettings(): SettingsContextType {
     console.log('setVoice', voice);
 
     if (!userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true });
+    try {
+      await runWithFirestoreAuth(auth.getToken, () =>
+        setDoc(userSettingsDoc, { teacherVoice: voice }, { merge: true }),
+      );
+    } catch (error) {
+      if (isFirebasePermissionDenied(error)) {
+        return;
+      }
+      throw error;
+    }
   };
 
   const confirmAge18Plus = async () => {

@@ -3,6 +3,7 @@ import { TranslationServiceClient } from '@google-cloud/translate';
 import { TranslateRequest, TranslateResponse } from './types';
 import { getTranslateCache, saveTranslateCache } from './cache';
 import { retryTransientTranslate } from './transientTranslateError';
+import { areTranslateLanguagesEqual, isSameLanguageTranslateError } from './sameLanguageTranslate';
 
 let cacheClient: TranslationServiceClient | null = null;
 
@@ -89,6 +90,15 @@ export const getTranslatedResponse = async (data: TranslateRequest): Promise<Tra
     };
   }
 
+  if (areTranslateLanguagesEqual(data.sourceLanguage, data.targetLanguage)) {
+    return {
+      originalText: data.text,
+      translatedText: data.text,
+      sourceLanguage: data.sourceLanguage,
+      targetLanguage: data.targetLanguage,
+    };
+  }
+
   const cache = await getTranslateCache(data);
   if (cache) {
     return cache;
@@ -110,6 +120,14 @@ export const getTranslatedResponse = async (data: TranslateRequest): Promise<Tra
     await saveTranslateCache(data, response);
     return response;
   } catch (error) {
+    if (isSameLanguageTranslateError(error)) {
+      return {
+        originalText: data.text,
+        translatedText: data.text,
+        sourceLanguage: data.sourceLanguage,
+        targetLanguage: data.targetLanguage,
+      };
+    }
     console.error('Translation error:');
     console.error(error);
     throw error;

@@ -112,6 +112,30 @@ describe('QuizRecordAboutPrompt', () => {
     expect(mockInterrupt).toHaveBeenCalled();
   });
 
+  it('plays a reaction without a second Hear the question button', async () => {
+    render(
+      <I18nWrapper>
+        <QuizRecordAboutPrompt
+          text="Thanks — I'll use that to make your plan. Let's keep going."
+          variant="reaction"
+        />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByTestId('quiz-record-about-prompt')).toHaveAttribute('data-variant', 'reaction');
+    expect(
+      screen.getByText("Thanks — I'll use that to make your plan. Let's keep going."),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Hear the question' })).not.toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(mockSpeak).toHaveBeenCalledWith(
+        "Thanks — I'll use that to make your plan. Let's keep going.",
+        expect.objectContaining({ voice: 'ash' }),
+      );
+    });
+  });
+
   it('does not autoplay when the guest already answered', async () => {
     render(
       <I18nWrapper>
