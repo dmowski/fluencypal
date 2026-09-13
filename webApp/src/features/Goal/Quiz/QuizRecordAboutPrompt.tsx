@@ -53,8 +53,12 @@ export const QuizRecordAboutPrompt = ({
         <Stack
           direction="row"
           sx={{
-            alignItems: 'flex-start',
+            alignItems: 'center',
             gap: '4px',
+            '& .MuiIconButton-root': {
+              padding: '4px',
+              flexShrink: 0,
+            },
           }}
         >
           <AudioPlayIcon
