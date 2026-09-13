@@ -10,371 +10,431 @@ export const getFeaturesData = (lang: SupportedLanguage): FeaturesInfo => {
   const features: FeatureData[] = [
     {
       id: 'learning-plan',
-      title: i18n._('Personalized Learning Plan for English Practice'),
-      subTitle: i18n._('Set goals with a guided survey and keep your plan updated as you improve.'),
-      metaTitle: i18n._('Personalized Learning Plan for English Practice | FluencyPal'),
+      title: i18n._('Personalized English Learning Plan with AI'),
+      subTitle: i18n._(
+        'Build an English study plan around your level, goals, and the conversations you want to have.',
+      ),
+      metaTitle: i18n._('Personalized English Learning Plan | FluencyPal'),
       metaDescription: i18n._(
-        'Build a personalized English learning plan with AI. FluencyPal creates lessons and practice based on your goals, strengths, and weak areas.',
+        'Create a personalized English study plan with AI. Focus your speaking practice on your goals, current level, and the skills you need to improve.',
       ),
       keywords: [
-        'personalized learning plan',
+        'personalized English learning plan',
+        'English study plan',
         'AI English learning plan',
-        'English practice goals',
       ],
       content: i18n._(
-        `## What it does
+        `## Build an English study plan for your goals
 
-FluencyPal starts with a guided survey that helps create your personalized English learning plan. This is not a marketing form. It is a practical step that helps the AI understand your goal, your current level, and the areas where you need the most support.
+Want to improve your English but unsure what to practice next? FluencyPal creates a personalized English learning plan based on your current level, strengths, and the situations you want to handle. A guided survey helps the AI understand what matters to you before it builds your plan.
 
-## How it works
+## How your personalized learning plan works
 
-You describe:
-- what you want to achieve
-- where you feel confident
-- where you struggle
-- what kind of English practice you need most
+1. Describe your goal, such as preparing for a job interview or feeling more comfortable in everyday conversations.
+2. Share what feels easy and where you struggle with English.
+3. Answer follow-up questions so the AI can focus your practice.
+4. Use your plan to guide your English learning routine.
 
-Based on your answers, the AI asks follow-up questions and builds a plan around your real goal.
+For example, someone preparing for interviews needs different speaking practice from someone learning English for travel. Your answers help shape that focus.
 
-## Why it helps
+## A study plan that changes as you practice
 
-Your plan is not static. As you keep practicing, FluencyPal updates it to reflect your progress, new weak points, and changing priorities.
+FluencyPal updates your plan as you improve, reveal new areas to work on, or change your priorities. This keeps your practice connected to your current needs.
 
-This makes your English conversation practice more focused, more practical, and easier to apply in real conversations.`,
+### Can I use a learning plan if I already know some English?
+
+Yes. The survey considers both your strengths and your difficulties, so your plan can focus on the gaps between what you know and what you can comfortably say.
+
+Start with your learning goal to give your next English practice session a clear direction.`,
       ),
     },
     {
       id: 'ai-speaking-practice',
-      title: i18n._('AI Speaking Practice for English Learners'),
+      title: i18n._('Practice Speaking English with AI'),
       subTitle: i18n._(
-        'Practice spoken English with AI calls, voice messages, and chat in one flow.',
+        'Talk to an AI English tutor, send voice messages, or switch to text when you need to.',
       ),
-      metaTitle: i18n._('AI Speaking Practice for English Learners | FluencyPal'),
+      metaTitle: i18n._('Practice Speaking English with AI | FluencyPal'),
       metaDescription: i18n._(
-        'Practice speaking English with AI through live calls, voice messages, and chat. Improve fluency, confidence, and communication skills.',
+        'Practice speaking English with an AI tutor through live calls and voice messages. Follow transcripts, adjust speaking speed, and learn from your mistakes.',
       ),
-      keywords: ['AI speaking practice', 'English speaking with AI', 'voice English practice'],
+      keywords: [
+        'practice speaking English with AI',
+        'AI English conversation practice',
+        'AI English speaking partner',
+      ],
       content: i18n._(
-        `## Practice spoken English in different ways
+        `## English conversation practice with an AI tutor
 
-FluencyPal gives you several ways to practice speaking English with AI, so you can choose the format that fits your day, your confidence level, and your learning style.
+Practice speaking English with AI when you want a conversation partner for your own learning routine. FluencyPal lets you talk through live AI calls, record voice messages, or type your responses in chat. You can choose the format that fits your surroundings and how ready you feel to speak.
 
-## Available speaking modes
+## Choose how you practice English
 
-### Call Mode
-Talk naturally with an AI English tutor and follow the transcript during the conversation.
+### Live AI calls
 
-### Voice Message Mode
-Record your answer, review AI suggestions, improve your response, and send it when ready.
+Talk naturally with an AI English tutor and follow the conversation transcript. Use this mode to practice responding as the conversation unfolds.
 
-### Chat Mode
-Type your reply when speaking out loud is not convenient.
+### Voice messages
 
-## Extra support during conversation
+Record an answer, review AI suggestions, and improve your response before sending it. This gives you time to think about your wording and try again.
 
-You can:
-- adjust AI speaking speed
-- use transcripts to follow the conversation
-- get help when you do not know what to say next
+### Text chat
 
-## Why it helps
+Continue the conversation by typing when speaking out loud is inconvenient. Text chat keeps you practicing how to express your ideas, although it does not replace speaking aloud.
 
-While you practice, FluencyPal tracks mistakes and turns them into targeted improvement tasks. This helps you improve English speaking confidence, fluency, and speaking accuracy over time.`,
+## Get support when you get stuck
+
+Adjust the AI speaking speed, follow transcripts, and ask for help when you do not know what to say next. As you practice, FluencyPal tracks mistakes and turns them into focused improvement tasks.
+
+### How can I practice English speaking without a partner?
+
+Use an AI call for a back-and-forth conversation, or start with voice messages if you want more preparation time. Both let you practice saying your own ideas aloud without arranging a session with another person.
+
+Choose a speaking mode and start your next English conversation.`,
       ),
     },
     {
       id: 'personalized-grammar-rules',
-      title: i18n._('Personalized English Grammar Practice with AI'),
+      title: i18n._('English Grammar Practice Based on Your Mistakes'),
       subTitle: i18n._(
-        'Get grammar practice based on your real mistakes and your communication goals.',
+        'Understand the grammar you struggle with, test it in a quiz, and use it in conversation.',
       ),
-      metaTitle: i18n._('Personalized English Grammar Practice with AI | FluencyPal'),
+      metaTitle: i18n._('Personalized English Grammar Practice | FluencyPal'),
       metaDescription: i18n._(
-        'Get personalized grammar rules based on your mistakes. Practice English grammar with explanations, quizzes, and AI conversation.',
+        'Practice English grammar based on your speaking and writing mistakes. Learn with clear explanations, examples, short quizzes, and AI conversations.',
       ),
-      keywords: ['personalized grammar', 'English grammar with AI', 'grammar quiz practice'],
+      keywords: [
+        'English grammar practice',
+        'personalized grammar exercises',
+        'English grammar quizzes',
+      ],
       content: i18n._(
-        `## Grammar practice based on your real mistakes
+        `## Turn your English mistakes into grammar practice
 
-After conversations, FluencyPal creates a personalized grammar list based on the errors you actually make while speaking or writing.
+FluencyPal creates personalized English grammar practice from the mistakes you make while speaking or writing. After conversations, you get a grammar list that helps you understand what went wrong and practice the rules you need.
 
-## What each rule includes
+## Learn a rule, test it, and use it aloud
 
 Each grammar item includes:
-- a simple explanation
-- clear examples
-- a short quiz
-- AI conversation practice for the same rule
 
-## Goal-aligned preparation
+- A simple explanation of the rule.
+- Examples that show how it works in a sentence.
+- A short grammar quiz to check your understanding.
+- AI conversation practice where you can apply the same rule.
 
-FluencyPal can also prioritize grammar patterns based on the kind of English you need to use, such as:
-- job interviews
-- travel communication
-- everyday conversations
-- formal speaking
+This connects grammar study to the task of forming your own sentences in conversation.
 
-## How the learning loop works
+## Focus on grammar that supports your goals
 
-You improve grammar in three steps:
-1. understand the rule
-2. practice it in a quiz
-3. apply it in real conversation
+Your practice can prioritize patterns relevant to job interviews, travel, everyday conversations, or formal speaking. You work on both recurring mistakes and the grammar you are likely to need next.
 
-## Why it helps
+### How can I stop making the same grammar mistakes?
 
-This approach makes grammar practice more personal and more practical. Instead of reviewing random rules, you focus on the patterns that are slowing down your real English communication and the rules you are most likely to need next.`,
+Start by noticing a recurring error, reviewing the rule, and practicing it in your own sentences. FluencyPal supports that process with explanations, quizzes, and conversations based on your actual mistakes.
+
+Review your personalized grammar list to choose a rule for your next practice session.`,
       ),
     },
     {
       id: 'interactive-lesson',
-      title: i18n._('Daily Interactive English Lessons You Speak Out Loud'),
+      title: i18n._('Daily English Speaking Lessons with AI Feedback'),
       subTitle: i18n._(
-        'Learn one grammar form a day: read it, say it, get feedback, then talk for two minutes.',
+        'Learn one grammar pattern, read aloud, and practice using it in your own spoken answers.',
       ),
-      metaTitle: i18n._('Daily Interactive English Speaking Lessons | FluencyPal'),
+      metaTitle: i18n._('Daily English Speaking Lessons | FluencyPal'),
       metaDescription: i18n._(
-        'Practice one English grammar form a day by speaking. FluencyPal teaches the rule, you read it aloud, record answers, and get instant AI feedback.',
+        'Build a daily English speaking habit with interactive lessons. Read aloud, answer voice prompts, and get AI feedback on one grammar pattern at a time.',
       ),
       keywords: [
+        'daily English speaking lessons',
         'interactive English lessons',
-        'daily English speaking lesson',
-        'grammar speaking practice',
-        'AI English lessons',
-        'present perfect vs past simple practice',
+        'English grammar speaking practice',
       ],
       content: i18n._(
-        `## What it does
+        `## Practice English speaking with a daily lesson
 
-Interactive Lessons are a daily speaking lesson on your FluencyPal dashboard. Each lesson trains **one checkable English form** — articles, a tense contrast, a verb pattern, a chunk — not vague advice like “speak more clearly.”
+FluencyPal Interactive Lessons help you use English grammar in speech. Each daily lesson focuses on one specific pattern, such as articles, a tense contrast, or a verb pattern. You learn how it works, read it aloud, and use it in spoken answers with AI feedback.
 
-You read a short how-to, read a text that uses the form aloud, answer by voice, get feedback, then finish with a two-to-three-minute open talk. Tomorrow’s lesson is generated from what you actually said.
+The first lesson draws on your recent conversations or learning goal. Later lessons use your open-talk responses to keep the practice connected to how you actually speak.
 
-## How it works
+## What happens in an interactive English lesson?
 
-1. Open today’s lesson (from the dashboard card or your daily tasks).
-2. Read a 4–5 paragraph how-to: when to use the form, when not to, with bolded examples.
-3. **Read a short text aloud** that uses the form several times. You can listen first.
-4. Record spoken answers to short prompts. FluencyPal checks whether you used the form.
-5. Finish with an open talk on a concrete topic. This long sample is what the next lesson is built from.
-6. After you finish, you get spoken results. The next lesson is prepared in the background.
+1. Open the lesson from your dashboard or daily tasks.
+2. Read a short explanation with examples of when to use the pattern.
+3. Read a short text aloud. You can listen to it first.
+4. Record answers to prompts and get feedback on your use of the pattern.
+5. Finish with a two-to-three-minute open talk on a specific topic.
+6. Listen to your results while the next lesson is prepared.
 
-You can skip a lesson if the form is not useful today. The replacement teaches a different category instead of repeating a close variant.
+You can skip a lesson if its focus is not useful today. The replacement covers a different category.
 
-## What you practice
+## English grammar you can practice aloud
 
-Lessons stay on one form so you can hear yourself get it right. Typical contrasts include:
+Lesson topics include:
 
-- [present perfect vs past simple](/blog/present-perfect-vs-past-simple) — *I have sent* vs *I sent yesterday*
-- [a, an, and the](/blog/english-articles-a-an-the) — *a demo video* vs *the landing page*
-- [gerund vs infinitive](/blog/gerund-vs-infinitive) — *stop doing* vs *stop to do*
-- [second vs third conditional](/blog/second-vs-third-conditional) — *if I were* vs *if I had known*
+- [Present perfect vs past simple](/blog/present-perfect-vs-past-simple): choosing between “I have sent it” and “I sent it yesterday.”
+- [English articles: a, an, and the](/blog/english-articles-a-an-the): introducing something and referring to something already known.
+- [Gerund vs infinitive](/blog/gerund-vs-infinitive): understanding the difference between “stop doing” and “stop to do.”
+- [Second vs third conditional](/blog/second-vs-third-conditional): talking about imagined situations and different past outcomes.
 
-The first lesson uses your recent conversations or your goal. Later lessons use your open talks, so the grammar stays connected to how you actually speak.
+### How is this different from a grammar quiz?
 
-## Why it helps
+A quiz checks whether you can recognize or select an answer. These lessons also ask you to produce the pattern aloud, first with prompts and then in a longer response.
 
-Grammar quizzes test recognition. Speaking tests retrieval. Interactive Lessons close that gap: you learn the rule, you say it, you get feedback on that form, and the next day you get a new form instead of looping the same *-ing* lesson.
-
-It is built for a daily habit. One finished lesson marks the day done. Open it again tomorrow and the next form is waiting.`,
+Open your daily lesson to practice one pattern from explanation to conversation.`,
       ),
     },
     {
       id: 'vocabulary-practice',
-      title: i18n._('AI Vocabulary Practice for Real Conversations'),
+      title: i18n._('English Vocabulary Practice for Speaking'),
       subTitle: i18n._(
-        'Learn goal-based vocabulary and use it in guided English conversation practice.',
+        'Learn useful English words for your goals and practice using them in AI conversations.',
       ),
-      metaTitle: i18n._('AI Vocabulary Practice for Real Conversations | FluencyPal'),
+      metaTitle: i18n._('English Vocabulary Practice with AI | FluencyPal'),
       metaDescription: i18n._(
-        'Learn useful English words based on your goals. Practice vocabulary in context with AI lessons and guided conversation.',
+        'Build English vocabulary for real conversations. Learn words matched to your level and goals, then use them in guided speaking practice with an AI tutor.',
       ),
       keywords: [
-        'AI vocabulary practice',
-        'context vocabulary learning',
-        'English words for speaking',
+        'English vocabulary practice',
+        'learn English words in context',
+        'English vocabulary for speaking',
       ],
       content: i18n._(
-        `## Learn vocabulary that matches your goals
+        `## Learn English vocabulary you can use in conversation
 
-FluencyPal builds vocabulary lessons around the words that are most useful for your personal goal and current level.
+FluencyPal helps you build English vocabulary around your learning goals and current level. Each lesson introduces relevant words and gives you guided conversation practice, so you can work on using new vocabulary in your own sentences.
 
-## How it works
+## How AI vocabulary practice works
 
-At the start of each lesson, the system selects words that match:
-- your learning objective
-- your current vocabulary level
-- the situations you want to handle in English
+1. The lesson selects words based on your objective, vocabulary level, and the situations you want to handle.
+2. The AI teacher explains the words.
+3. You practice using them in a guided conversation.
 
-Then the AI teacher explains the words and helps you use them in guided conversation.
+If your goal involves work or travel, that context helps shape the vocabulary you study. Your grammar guidance continues to develop alongside your vocabulary practice.
 
-## Why it helps
+## Move from recognizing words to using them
 
-You do not just memorize isolated vocabulary. You practice words in context, which makes them easier to remember and easier to use in real speech.
+Knowing the meaning of a word is one step. Finding it when you are speaking is another. Practicing vocabulary in context gives you opportunities to choose words, form sentences, and connect them to ideas you want to express.
 
-At the same time, FluencyPal continues improving your grammar guidance in parallel.`,
+### How can I improve my English vocabulary for speaking?
+
+Focus on words relevant to your life, learn how they work in a sentence, and use them in conversation. FluencyPal brings those steps together in a guided vocabulary lesson.
+
+Start a vocabulary lesson to put useful English words into practice.`,
       ),
     },
     {
       id: 'role-play',
-      title: i18n._('English Role Play Practice with AI'),
-      subTitle: i18n._('Practice realistic scenarios connected to your goals.'),
+      title: i18n._('English Role Play: Practice Real-Life Conversations'),
+      subTitle: i18n._(
+        'Rehearse job interviews, shopping conversations, and support calls with an AI speaking partner.',
+      ),
       metaTitle: i18n._('English Role Play Practice with AI | FluencyPal'),
       metaDescription: i18n._(
-        'Practice real-life English conversations with AI role plays. Prepare for job interviews, daily situations, and goal-based speaking tasks.',
+        'Practice real-life English conversations with AI role play. Rehearse job interviews, recruiter calls, shopping situations, and customer support conversations.',
       ),
-      keywords: ['English role play', 'job interview role play', 'real-life speaking scenarios'],
+      keywords: [
+        'English role play',
+        'English conversation scenarios',
+        'English job interview practice',
+      ],
       content: i18n._(
-        `## Practice real-life English scenarios
+        `## Practice real-life English conversations before they happen
 
-FluencyPal uses AI role plays to help you practice conversations that match your real needs.
+FluencyPal offers English role play with AI so you can rehearse situations you expect to face. Choose a ready-made scenario or practice one connected to your learning goals. Each role play gives your conversation a purpose, helping you work on what you need to say in that situation.
 
-## Goal-based role plays
+## English role play for job interviews and work
 
-If your goal is related to work, your role plays may include:
-- recruiter screening
-- job interviews
-- technical interviews
-- salary discussions
+Depending on your goal, work-related scenarios may include:
 
-## Everyday speaking scenarios
+- Recruiter screening calls.
+- Job interviews.
+- Technical interviews.
+- Salary discussions.
 
-You also get ready-made role plays for practical communication, such as:
-- shop conversations
-- support calls
-- everyday speaking situations
+Use these conversations to practice explaining your experience, answering questions, and discussing your expectations in English.
 
-## Why it helps
+## Everyday English conversation scenarios
 
-Role play practice helps you prepare for real conversations before they happen. It makes English speaking practice more realistic, more useful, and easier to transfer into everyday life.`,
+Ready-made role plays also cover shop conversations, support calls, and everyday situations. Practice asking for help, explaining a problem, or making a request before you need to do it in real life.
+
+### What is English role play practice?
+
+Role play means practicing a conversation as if you were in a specific situation. In FluencyPal, the AI takes part in the scenario so you can respond in English and rehearse the exchange.
+
+Choose a scenario that matches an upcoming conversation and practice what you want to say.`,
       ),
     },
     {
       id: 'custom-role-play',
-      title: i18n._('Create Custom English Role Plays with AI'),
-      subTitle: i18n._('Build your own speaking scenario for specific needs.'),
-      metaTitle: i18n._('Create Custom English Role Plays with AI | FluencyPal'),
-      metaDescription: i18n._(
-        'Build your own English role play scenario with AI. Practice speaking in situations that match your personal or professional needs.',
+      title: i18n._('Create Your Own English Role Play Scenario'),
+      subTitle: i18n._(
+        'Build an AI conversation around a meeting, trip, or personal situation you want to prepare for.',
       ),
-      keywords: ['custom role play', 'custom English scenarios', 'personalized speaking practice'],
+      metaTitle: i18n._('Custom English Role Play Generator | FluencyPal'),
+      metaDescription: i18n._(
+        'Create a custom English role play with AI. Build speaking scenarios for work meetings, travel, customer conversations, and situations from your own life.',
+      ),
+      keywords: [
+        'custom English role play',
+        'English role play generator',
+        'create English conversation scenarios',
+      ],
       content: i18n._(
-        `## Create your own speaking scenario
+        `## Create an English speaking scenario for your own situation
 
-Custom Role Play lets you build a conversation around your own situation instead of choosing only from predefined options.
+FluencyPal Custom Role Play lets you build your own English conversation scenario. Use it when you have a specific situation to prepare for and want practice that reflects your personal or professional context.
 
-## What you can customize
+## Ideas for custom English role plays
 
-You can create role plays for:
-- work meetings
-- travel situations
-- customer communication
-- personal speaking challenges
-- any specific English scenario you want to practice
+You could create a scenario around:
 
-## Why it helps
+- A work meeting where you need to explain an idea.
+- A travel situation where you need to ask for information.
+- A customer conversation about a request or problem.
+- A personal speaking challenge you want to rehearse.
 
-This gives you more control over your learning and makes speaking practice highly relevant to your real life.
+These are examples of situations you can use as the basis for your own practice.
 
-The result is personalized AI conversation practice that matches your exact context.`,
+## Make your practice relevant to the conversation ahead
+
+When planning your scenario, think about who you will speak to, what you need to communicate, and what would make the exchange difficult. A concrete situation gives you a clearer purpose for practicing than a broad topic alone.
+
+### How is custom role play different from ready-made scenarios?
+
+Ready-made role plays give you a situation to start with. Custom Role Play lets you create the situation yourself, so the conversation can focus on your own needs.
+
+Create a scenario around a conversation you want to feel more prepared for.`,
       ),
     },
     {
       id: 'interactive-stories',
-      title: i18n._('Interactive English Stories with Quiz Practice'),
-      subTitle: i18n._('Improve reading, listening, and sentence structure.'),
-      metaTitle: i18n._('Interactive English Stories with Quiz Practice | FluencyPal'),
+      title: i18n._('Learn English with Stories, Audio, and Quizzes'),
+      subTitle: i18n._(
+        'Read and listen to English stories with translations, then practice sentence structure in a quiz.',
+      ),
+      metaTitle: i18n._('Learn English with Stories and Audio | FluencyPal'),
       metaDescription: i18n._(
-        'Improve reading, listening, and sentence structure with interactive English stories, translations, and word-by-word quizzes.',
+        'Learn English with interactive stories, audio, and side-by-side translations. Practice listening, reading, and word order with sentence-building quizzes.',
       ),
       keywords: [
-        'interactive stories',
-        'story-based English learning',
-        'reading and listening practice',
+        'learn English with stories',
+        'English stories with audio',
+        'English reading and listening practice',
       ],
       content: i18n._(
-        `## Improve English through interactive stories
+        `## Practice English reading and listening with stories
 
-With Stories, you listen to English content while reading the original text and translation side by side.
+FluencyPal Stories combines English audio, written text, and translation in one activity. Listen while following the original text and its translation side by side, then complete a quiz based on what you heard.
 
-## How the quiz works
+## Read, listen, and rebuild sentences
 
-After listening, you complete a quiz where you rebuild parts of the text word by word. This helps you notice:
-- sentence structure
-- word order
-- common language patterns
+The story quiz asks you to reconstruct parts of the text word by word. This gives you a way to practice:
 
-## Why it helps
+- English word order.
+- Sentence structure.
+- Common phrases and language patterns.
 
-Stories combine reading, listening, and active reconstruction. This makes them a practical alternative to passive content consumption and a useful way to practice during commutes or short breaks.`,
+You move from following the story to actively working with its sentences.
+
+## Use translation to follow the meaning
+
+Seeing the original text next to a translation helps you connect English wording with its meaning. Listening at the same time lets you follow how the written language sounds.
+
+### Can I practice reading and listening together?
+
+Yes. Stories lets you listen to the audio while reading the English text. The quiz then adds sentence-building practice to the same activity.
+
+Choose a story for an English practice session during a break or commute.`,
       ),
     },
     {
       id: 'books-reader',
-      title: i18n._('FluencyPal Books — Read and Learn English'),
+      title: i18n._('English EPUB Reader with Translation and Audio'),
       subTitle: i18n._(
-        'Upload EPUBs, translate words while you read, highlight passages, and listen with text-to-speech.',
+        'Read English books, translate unfamiliar words, and listen aloud while keeping your place.',
       ),
-      metaTitle: i18n._('FluencyPal Books — Read and Learn English | FluencyPal'),
+      metaTitle: i18n._('EPUB Reader with Translation for English | FluencyPal'),
       metaDescription: i18n._(
-        'Read books in English with instant word translation, highlights, text-to-speech, and a synced library. Upload EPUBs or browse free classics.',
+        'Read English books with instant word translation and text-to-speech. Upload EPUBs, highlight passages, and sync reading progress with FluencyPal Books.',
       ),
       keywords: [
-        'English reading practice',
+        'EPUB reader with translation',
+        'English reading app',
         'read books to learn English',
-        'EPUB reader for language learners',
         'FluencyPal Books',
       ],
       content: i18n._(
-        `## Read real books while you learn English
+        `## Read English books with built-in word translation
 
-FluencyPal Books is a focused reading app for language learners. It is separate from the main practice dashboard so you can stay in the book while you study vocabulary, grammar in context, and listening skills.
+FluencyPal Books is an English reading app for language learners. Upload an EPUB, open a book, and translate unfamiliar words as you read. You can also highlight passages and listen with browser text-to-speech.
 
-Learn more on the [FluencyPal Books landing page](https://book.fluencypal.com/landing).
+The reader is separate from the main FluencyPal practice dashboard, with tools focused on reading books and exploring language in context.
 
-## What you can do
+## Reading tools for English learners
 
-- upload your own EPUB files, or convert PDF and DOCX
-- click any word for an instant translation, or enable hover translation
-- highlight passages and jump back to them later
-- listen with browser text-to-speech while you read
-- browse free public-domain classics from the Gutenberg library
-- sync your library, highlights, and reading progress across devices
+- **Word translation:** click a word for an instant translation, or enable hover translation.
+- **Read aloud:** listen with browser text-to-speech while following the text.
+- **Highlights:** mark useful passages and return to them later.
+- **Synced reading:** keep your library, highlights, and reading progress across devices.
 
-## Why it helps
+## Upload EPUB books or explore free classics
 
-Reading long-form English connects vocabulary and grammar to real stories and ideas. FluencyPal Books keeps that experience calm and book-first, with learning tools one tap away instead of breaking your flow.
+Upload your own EPUB files, or convert PDF and DOCX files for reading. You can also browse free public-domain classics from the Gutenberg library.
 
-Open the [Books landing page](https://book.fluencypal.com/landing) to try a live demo of the reader and start reading.`,
+A familiar story or an interesting subject gives you a reason to keep reading while encountering vocabulary and grammar in context.
+
+### Can I translate words without leaving the book?
+
+Yes. Click a word or use hover translation to look up its meaning while you read.
+
+### Can I listen to the books?
+
+Yes. The reader uses browser text-to-speech to read the text aloud.
+
+[Try the FluencyPal Books live demo](https://book.fluencypal.com/landing) to explore the reader and start reading in English.`,
       ),
     },
     {
       id: 'daily-questions',
-      title: i18n._('Daily English Speaking Questions'),
-      subTitle: i18n._('Answer one new prompt every day and build confidence.'),
+      title: i18n._('Daily English Speaking Questions and Prompts'),
+      subTitle: i18n._(
+        'Practice expressing your ideas with a new English conversation question each day.',
+      ),
       metaTitle: i18n._('Daily English Speaking Questions | FluencyPal'),
       metaDescription: i18n._(
-        'Practice answering a new English question every day. Build confidence, express ideas, and improve speaking with daily prompts.',
+        'Practice English with a new speaking question every day. Build answers, express opinions, and explore other learners’ responses with FluencyPal.',
       ),
-      keywords: ['daily speaking questions', 'daily English prompts', 'express ideas in English'],
+      keywords: [
+        'daily English speaking questions',
+        'English speaking prompts',
+        'daily English conversation practice',
+      ],
       content: i18n._(
-        `## Practice speaking every day
+        `## A new English speaking question every day
 
-Daily Questions gives you one new English speaking prompt each day.
+FluencyPal Daily Questions gives you one new prompt each day, so you have something to talk about when you want to practice English. Use the question to work on turning your thoughts into a spoken answer.
 
-## What you practice
+## Practice giving clear, complete answers
 
-This feature helps you practice:
-- expressing opinions
-- organizing thoughts
-- answering unexpected questions
-- speaking with more confidence
+Daily speaking prompts give you opportunities to:
 
-## Extra value
+- Express an opinion and explain your reasons.
+- Organize your thoughts before answering.
+- Respond to an unexpected question.
+- Practice speaking about your own ideas.
 
-You can also see answers from other learners, compare ideas, and discover new ways to respond.
+For a simple practice routine, answer the question directly, add a reason, and give an example. This is a way to structure your response when you are unsure how to begin.
 
-This makes daily practice simple, consistent, and useful for real spoken English.`,
+## See how other learners answer
+
+You can also read or explore answers from other learners, compare perspectives, and discover different ways to approach the same question.
+
+### What should I talk about when practicing English alone?
+
+A daily speaking prompt gives you a starting point. Focus on explaining your own answer clearly, then add details to make it more complete.
+
+Open today’s question and use it for your next speaking practice session.`,
       ),
     },
     {
@@ -456,143 +516,171 @@ This format makes speaking with other people less stressful while still helping 
     },
     {
       id: 'language-games',
-      title: i18n._('English Learning Games for Vocabulary and Speaking'),
+      title: i18n._('English Learning Games for Vocabulary and Sentences'),
       subTitle: i18n._(
-        'Use gamified tasks to practice vocabulary, sentence building, and spoken English.',
+        'Practice words, build sentences, and answer speaking questions while earning points.',
       ),
-      metaTitle: i18n._('English Learning Games for Vocabulary and Speaking | FluencyPal'),
+      metaTitle: i18n._('English Learning Games Online | FluencyPal'),
       metaDescription: i18n._(
-        'Improve English through interactive games for vocabulary, sentence building, reading, and speaking while earning points.',
+        'Practice English with games for vocabulary, sentence building, reading, and speaking. Complete interactive challenges and earn points for correct answers.',
       ),
-      keywords: ['English learning games', 'gamified language practice', 'vocabulary games'],
+      keywords: [
+        'English learning games',
+        'English vocabulary games',
+        'English sentence building games',
+      ],
       content: i18n._(
-        `## Gamified English practice
+        `## Practice English with interactive learning games
 
-Game mode turns language learning into a set of interactive challenges that reward regular practice.
+FluencyPal Game Mode turns English practice into interactive challenges. Work on vocabulary, sentence building, reading, and speaking while earning points for correct answers.
 
-## Types of activities
+## English vocabulary and sentence-building activities
 
-You can practice through tasks such as:
-- translating words
-- building sentences
-- reading short texts
-- answering speaking questions
+Game tasks include:
 
-## Why it helps
+- Translating words to practice vocabulary.
+- Building sentences to work on word order.
+- Reading short texts.
+- Answering speaking questions.
 
-You earn points for correct answers, which adds motivation and makes it easier to stay consistent.
+The mix of activities gives you different ways to use English within a game-based practice session.
 
-Gamified learning helps improve vocabulary, reading, sentence building, and speaking in a more engaging format.`,
+## Add variety to your English learning routine
+
+Use games when you want a change from a lesson or a longer conversation. Points give you an immediate goal as you work through the questions, while the activities keep the focus on language practice.
+
+### Can I practice speaking through English games?
+
+Yes. Game Mode includes speaking questions alongside vocabulary, sentence-building, and reading tasks.
+
+Open Game Mode to try an English learning challenge.`,
       ),
     },
     {
       id: 'progress-chart',
-      title: i18n._('English Progress Chart and Skill Tracking'),
+      title: i18n._('Track Your English Learning Progress'),
       subTitle: i18n._(
-        'See how your grammar, vocabulary, fluency, and confidence improve over time.',
+        'Follow AI-assessed trends in grammar, vocabulary, fluency, and speaking confidence.',
       ),
-      metaTitle: i18n._('English Progress Chart and Skill Tracking | FluencyPal'),
+      metaTitle: i18n._('English Learning Progress Tracker | FluencyPal'),
       metaDescription: i18n._(
-        'Track your English improvement with FluencyPal progress charts. See trends in grammar, vocabulary, fluency, and confidence after every practice session.',
+        'Track your English learning progress with AI-assessed charts for grammar, vocabulary, fluency, and confidence. Compare skill trends over weeks and months.',
       ),
       keywords: [
-        'English progress tracking',
-        'language learning chart',
-        'fluency improvement stats',
+        'English learning progress tracker',
+        'track English speaking progress',
+        'English fluency progress chart',
       ],
       content:
-        '![Progress Chart](/landing/progressChart.webp)\n\n' +
+        '![English learning progress chart showing skill trends](/landing/progressChart.webp)\n\n' +
         i18n._(
-          `\n## See your English improvement over time
+          `## See how your English practice changes over time
 
-FluencyPal automatically tracks your performance after every conversation, role play, and daily question answer. The Progress Chart turns that data into a clear visual timeline so you can see where you started and how far you have come.
+FluencyPal tracks your performance after conversations, role plays, and daily question answers. The English learning progress chart turns AI assessments into a timeline, helping you follow individual skills across your practice sessions.
 
-## What is measured
+## What does the English progress tracker measure?
 
-After each practice session, the AI evaluates your response across four metrics:
+The AI assesses four areas separately:
 
-- **Grammar** — accuracy of sentence structure and grammar rules
-- **Vocabulary** — range and appropriateness of the words you use
-- **Fluency** — how naturally and smoothly you express yourself
-- **Confidence** — how assertive and clear your communication sounds
+- **Grammar:** accuracy of your sentence structure and grammar use.
+- **Vocabulary:** the range of words you use and how well they fit the context.
+- **Fluency:** how smoothly you express your ideas.
+- **Confidence:** how clear and assertive your communication sounds to the AI.
 
-Each metric is scored independently, so you get a detailed picture of your strengths and the areas that still need work.
+These are AI assessments of your practice responses. The confidence score describes how your communication comes across, rather than measuring how you feel.
 
-## How the chart works
+## Compare your progress over weeks and months
 
-The chart shows your scores on a daily timeline. You can:
-- switch between metrics to focus on one skill at a time
-- view different time periods: last 30 days, last 3 months, last 6 months, or all time
-- see a smoothed trend line that filters out day-to-day variation and highlights your real direction of improvement
+Switch between skills and choose the last 30 days, three months, six months, or all time. A smoothed trend line makes it easier to look beyond individual sessions and see longer-term patterns.
 
-## What the data shows
+Use these patterns to decide what to practice next. For example, if your grammar trend is improving but your vocabulary scores remain steady, you may want to spend more time using new words in conversation.
 
-FluencyPal users who practice daily see an average increase of **5% per month across all metrics**. That includes grammar accuracy, vocabulary range, fluency, and speaking confidence.
+### How can I track my English speaking progress?
 
-The chart makes that growth visible. Even small improvements become easy to recognize when you can see the trend over weeks and months.
+Compare several sessions over time and look at specific skills, rather than judging your English from a single answer. FluencyPal brings those session assessments together in one chart.
 
-## Why it helps
-
-Progress tracking does more than record what happened. It shows you what is working, keeps you motivated during slow periods, and helps you decide where to focus next. When your chart shows momentum, it becomes easier to keep the habit going.`,
+Open your progress chart to review your recent practice and choose your next focus.`,
         ),
     },
     {
       id: 'community',
-      title: i18n._('English Learning Community and Progress Sharing'),
-      subTitle: i18n._('Ask questions, share progress, and stay motivated together.'),
-      metaTitle: i18n._('English Learning Community and Progress Sharing | FluencyPal'),
-      metaDescription: i18n._(
-        'Join the FluencyPal community to ask questions, share progress, discuss learning challenges, and stay motivated.',
+      title: i18n._('English Learning Community: Connect with Learners'),
+      subTitle: i18n._(
+        'Ask questions, share your progress, and talk about learning English with other people.',
       ),
-      keywords: ['English learning community', 'language learning support', 'progress sharing'],
+      metaTitle: i18n._('English Learning Community Online | FluencyPal'),
+      metaDescription: i18n._(
+        'Connect with other English learners in the FluencyPal community. Ask questions, share progress, and discuss learning challenges in community chats.',
+      ),
+      keywords: [
+        'English learning community',
+        'online English learner community',
+        'English learning support',
+      ],
       content: i18n._(
-        `## Learn with other people
+        `## Join a community of English learners
 
-FluencyPal includes community chats where learners can interact beyond one-on-one AI practice.
+The FluencyPal English learning community gives you a place to interact with other learners alongside your AI practice. Use community chats to ask questions, share progress, and discuss the challenges of learning a language.
 
-## What you can do
+## Share your English learning experience
 
-In the community, you can:
-- ask questions
-- share progress
-- discuss learning challenges
-- stay motivated with other learners
+In community chats, you can:
 
-## Why it helps
+- Ask questions about learning English.
+- Share progress and personal milestones.
+- Discuss difficulties with other learners.
+- Encourage each other to keep practicing.
 
-This adds a social layer to language learning and gives you more opportunities to use English in meaningful ways.
+Writing about your experiences also gives you a meaningful reason to use English beyond a lesson.
 
-Some community functions may require age verification depending on the feature.`,
+### How can I connect with other English learners?
+
+Open the FluencyPal community chats to join discussions, ask a question, or share what you are working on. Some community functions may require age verification, depending on the feature.
+
+Join a conversation about your learning goals or your latest practice session.`,
       ),
     },
     {
       id: 'leaderboard',
-      title: i18n._('English Learning Leaderboard and Rewards'),
-      subTitle: i18n._('Earn points across the platform and unlock rewards.'),
+      title: i18n._('English Learning Leaderboard: Earn Practice Points'),
+      subTitle: i18n._(
+        'Earn points from your learning activities and work toward leaderboard rewards.',
+      ),
       metaTitle: i18n._('English Learning Leaderboard and Rewards | FluencyPal'),
       metaDescription: i18n._(
-        'Earn points for practice and climb the FluencyPal leaderboard. Top users unlock rewards through active English learning.',
+        'Earn points for English conversations, story quizzes, daily questions, and games. Follow your place on the FluencyPal leaderboard and work toward rewards.',
       ),
-      keywords: ['English leaderboard', 'language learning rewards', 'practice points'],
+      keywords: [
+        'English learning leaderboard',
+        'language learning rewards',
+        'English practice points',
+      ],
       content: i18n._(
-        `## Earn points and stay motivated
+        `## Turn regular English practice into leaderboard points
 
-FluencyPal tracks your activity across the platform and rewards regular practice with points.
+The FluencyPal leaderboard gives you an extra reason to keep practicing. Earn points through activities across the platform and follow your position as you learn.
 
-## How points are earned
+## How to earn English practice points
 
-You can earn points through:
-- AI conversations
-- stories quizzes
-- daily questions
-- community activity
-- game mode
+Activities that earn points include:
 
-## Why it helps
+- AI conversations.
+- Story quizzes.
+- Daily questions.
+- Community activity.
+- Game Mode.
 
-The leaderboard creates a clear motivation loop for long-term consistency. Top users can unlock rewards while they remain at the top.
+This lets you work toward leaderboard points through different parts of your learning routine.
 
-This makes progress more visible and practice more engaging.`,
+## Work toward rewards through regular practice
+
+Top users can unlock rewards while they remain at the top. The leaderboard adds a shared goal to your personal study routine and gives your activity a visible place in the community.
+
+### Does the leaderboard measure my English level?
+
+The leaderboard tracks activity points. Use it as motivation to practice; use your skill progress charts to review AI assessments of your English performance.
+
+Complete a learning activity and check your place on the leaderboard.`,
       ),
     },
   ];
