@@ -41,6 +41,12 @@ import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 import { useAccess } from '@/features/Usage/useAccess';
 import { useFlushPendingTeacherVoice } from './useFlushPendingTeacherVoice';
 import { flushGuestAboutToSurvey, hasGuestAbout } from './quizGuestAboutStorage';
+import {
+  quizGuestAboutStep,
+  quizGuestPlanIntroStep,
+  shouldReturnToGuestAboutFromPlanIntro,
+  shouldSkipToPlanIntroAfterGuestAbout,
+} from './quizGuestPath';
 
 type QuizStep =
   | 'before_nativeLanguage'
@@ -509,13 +515,19 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
 
-    const isReadyToGenerateGoal = isGoalIsRecorded(survey);
+    const skippedFollowUps = !(survey.aboutUserFollowUpQuestion?.title || '').trim();
+    const onPlanStep = currentStep === 'before_goalReview' || currentStep === 'goalReview';
+    const isReadyToGenerateGoal =
+      isGoalIsRecorded(survey) ||
+      (onPlanStep && skippedFollowUps && !!(survey.aboutUserTranscription || '').trim());
     if (!isReadyToGenerateGoal) {
       console.log('⏩ generateGoal | not ready');
       return;
     }
 
-    const initialSurveyHash = getHash(survey.goalUserTranscription || '');
+    const initialSurveyHash = getHash(
+      survey.goalUserTranscription || survey.aboutUserTranscription || '',
+    );
     if (initialSurveyHash === survey.goalHash) {
       console.log('⏩ generateGoal | Survey not changed');
       return;
@@ -569,7 +581,9 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getHash(surveyRef.current?.goalUserTranscription || '');
+    const finalSurveyHash = getHash(
+      surveyRef.current?.goalUserTranscription || surveyRef.current?.aboutUserTranscription || '',
+    );
     if (initialSurveyHash !== finalSurveyHash) {
       console.log('🦄 generateGoal | Survey changed during goal generation, skipping update');
       return;
@@ -847,7 +861,13 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     if (!auth.uid) {
       return;
     }
-    if (currentStep !== 'before_recordAbout' && currentStep !== 'recordAbout') {
+    const flushSteps: QuizStep[] = [
+      'before_recordAbout',
+      'recordAbout',
+      'before_goalReview',
+      'goalReview',
+    ];
+    if (!flushSteps.includes(currentStep)) {
       return;
     }
     if (!hasGuestAbout(languageToLearn)) {
@@ -866,7 +886,16 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
-    const nextStep = path[nextStepIndex];
+    let nextStep = path[nextStepIndex];
+    if (
+      shouldSkipToPlanIntroAfterGuestAbout({
+        currentStep,
+        isSignedIn: Boolean(auth.uid),
+        hasGuestAbout: hasGuestAbout(languageToLearn),
+      })
+    ) {
+      nextStep = quizGuestPlanIntroStep;
+    }
 
     const confirmGTagSteps: QuizStep[] = [
       'recordAboutFollowUp',
@@ -921,10 +950,20 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   };
 
   const prevStep = useCallback(() => {
+    if (
+      shouldReturnToGuestAboutFromPlanIntro({
+        currentStep,
+        isSignedIn: Boolean(auth.uid),
+        hasGuestAbout: hasGuestAbout(languageToLearn),
+      })
+    ) {
+      void setState({ currentStep: quizGuestAboutStep });
+      return;
+    }
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
-    setState({ currentStep: prevStep });
-  }, [currentStepIndex, path, setState]);
+    void setState({ currentStep: prevStep });
+  }, [auth.uid, currentStep, currentStepIndex, languageToLearn, path, setState]);
 
   const navigateToMainPage = () => {
     const newPath = `${getLandingUrlStart(pageLanguage)}`;

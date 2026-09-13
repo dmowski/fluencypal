@@ -153,6 +153,9 @@ describe('classifyCta', () => {
     expect(classifyCta({ href: '', buttonId: 'hear-question' }).ctaId).toBe('hear-question');
     expect(classifyCta({ href: '', buttonId: 'hear-first-line' }).ctaId).toBe('hear-first-line');
     expect(classifyCta({ href: '', buttonId: 'reply-first-line' }).ctaId).toBe('reply-first-line');
+    expect(classifyCta({ href: '', buttonId: 'quiz-guest-continue' }).ctaId).toBe(
+      'quiz-guest-continue',
+    );
   });
 });
 

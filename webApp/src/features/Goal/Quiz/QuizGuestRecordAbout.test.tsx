@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
-import { QUIZ_GUEST_SIGN_IN_DELAY_MS, QuizGuestRecordAbout } from './QuizGuestRecordAbout';
+import { QUIZ_GUEST_CONTINUE_DELAY_MS, QuizGuestRecordAbout } from './QuizGuestRecordAbout';
 import { hasGuestAbout, resetGuestAboutForTests } from './quizGuestAboutStorage';
 
 const recorder = {
@@ -47,11 +47,11 @@ describe('QuizGuestRecordAbout', () => {
     jest.useRealTimers();
   });
 
-  it('lets a guest record one answer and then asks them to sign in', async () => {
-    const onReadyForSignIn = jest.fn();
+  it('lets a guest record one answer and then marks them ready to continue', async () => {
+    const onReadyToContinue = jest.fn();
     const { rerender } = render(
       <I18nWrapper>
-        <QuizGuestRecordAbout languageCode="en" onReadyForSignIn={onReadyForSignIn} />
+        <QuizGuestRecordAbout languageCode="en" onReadyToContinue={onReadyToContinue} />
       </I18nWrapper>,
     );
 
@@ -64,23 +64,23 @@ describe('QuizGuestRecordAbout', () => {
     recorder.recordingMilliSeconds = 4000;
     rerender(
       <I18nWrapper>
-        <QuizGuestRecordAbout languageCode="en" onReadyForSignIn={onReadyForSignIn} />
+        <QuizGuestRecordAbout languageCode="en" onReadyToContinue={onReadyToContinue} />
       </I18nWrapper>,
     );
 
     expect(screen.getByTestId('quiz-guest-about-loader')).toBeInTheDocument();
     expect(screen.queryByText('Sign in to get your personal plan')).not.toBeInTheDocument();
-    expect(onReadyForSignIn).not.toHaveBeenCalledWith(true);
+    expect(onReadyToContinue).not.toHaveBeenCalledWith(true);
 
     act(() => {
-      jest.advanceTimersByTime(QUIZ_GUEST_SIGN_IN_DELAY_MS);
+      jest.advanceTimersByTime(QUIZ_GUEST_CONTINUE_DELAY_MS);
     });
 
-    expect(screen.getByText('Sign in to get your personal plan')).toBeInTheDocument();
     expect(screen.getByTestId('quiz-guest-about-skeleton')).toBeInTheDocument();
     expect(screen.getByLabelText('You:')).toBeInTheDocument();
     expect(screen.queryByTestId('quiz-guest-about-loader')).not.toBeInTheDocument();
-    expect(onReadyForSignIn).toHaveBeenCalledWith(true);
+    expect(screen.queryByText('Sign in to get your personal plan')).not.toBeInTheDocument();
+    expect(onReadyToContinue).toHaveBeenCalledWith(true);
     expect(sendSpeechStart).toHaveBeenCalledWith('quiz');
     expect(hasGuestAbout('en')).toBe(true);
     expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();

@@ -119,7 +119,7 @@ const QuizQuestions = () => {
     }
   };
 
-  const goToRecordAbout = async () => {
+  const continueFromAboutGate = async () => {
     if (currentStep !== 'before_recordAbout') {
       return;
     }
@@ -219,7 +219,7 @@ const QuizQuestions = () => {
               title={recordAboutTitle}
               subTitle={recordAboutQuestion}
               promptText={recordAboutPrompt}
-              onSignedIn={goToRecordAbout}
+              onContinue={continueFromAboutGate}
             />
           )}
 
@@ -334,15 +334,13 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'before_goalReview' && (
-            <AuthWall>
-              <InfoStep
-                title={i18n._(`We are ready to craft your plan.`)}
-                subTitle={i18n._(`It might take up to a minute.`)}
-                onClick={next}
-                disabled={isStepLoading}
-                isStepLoading={isStepLoading}
-              />
-            </AuthWall>
+            <InfoStep
+              title={i18n._(`We are ready to craft your plan.`)}
+              subTitle={i18n._(`It might take up to a minute.`)}
+              onClick={next}
+              disabled={isStepLoading}
+              isStepLoading={isStepLoading}
+            />
           )}
 
           {currentStep === 'accessPlan' && (
@@ -357,7 +355,12 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'goalReview' && (
-            <AuthWall>
+            <AuthWall
+              startOnAuth
+              signInTitle={i18n._('Your plan is ready')}
+              singInSubTitle={i18n._('Sign in to save it and start speaking')}
+              authActionTitle={i18n._('Start Speaking')}
+            >
               <GoalReview
                 onClick={next}
                 isLoading={isGoalGenerating || survey?.goalData === null}

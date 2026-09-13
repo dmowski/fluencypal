@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { AuthWall } from '@/features/Auth/AuthWall';
 import { useAuth } from '@/features/Auth/useAuth';
+import { InfoStep } from '../../Survey/InfoStep';
 import { QuizGuestRecordAbout } from './QuizGuestRecordAbout';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 import { hasGuestAbout } from './quizGuestAboutStorage';
@@ -46,28 +46,36 @@ export const QuizBeforeRecordAboutGate = ({
   title,
   subTitle,
   promptText,
-  onSignedIn,
+  onContinue,
 }: {
   languageCode: string;
   title: string;
   subTitle: string;
   promptText: string;
-  onSignedIn: () => void | Promise<void>;
+  onContinue: () => void | Promise<void>;
 }) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const [isGuestRecording, setIsGuestRecording] = useState(false);
   const [hasGuestRecorded, setHasGuestRecorded] = useState(() => hasGuestAbout(languageCode));
-  const [readyForSignIn, setReadyForSignIn] = useState(() => hasGuestAbout(languageCode));
+  const [readyToContinue, setReadyToContinue] = useState(() => hasGuestAbout(languageCode));
+  const reactionText = i18n._("Thanks — I'll use that to make your plan. Let's keep going.");
+
+  if (!auth.loading && auth.uid) {
+    return <AdvanceWhenSignedIn onAdvance={onContinue} />;
+  }
 
   return (
-    <AuthWall
-      startOnAuth
-      authListAfterActions
-      signInTitle={title}
-      singInSubTitle={subTitle}
-      authActionTitle={i18n._('Continue to talk')}
-      hideAuthActions={!readyForSignIn}
-      authSubComponent={
+    <InfoStep
+      title={title}
+      subTitle={hasGuestRecorded ? undefined : subTitle}
+      hideActions={!readyToContinue}
+      actionButtonTitle={i18n._('Continue')}
+      actionButtonAnalyticsId="quiz-guest-continue"
+      onClick={() => {
+        void onContinue();
+      }}
+      subComponent={
         <Stack
           data-testid="quiz-guest-about-start"
           sx={{
@@ -84,12 +92,11 @@ export const QuizBeforeRecordAboutGate = ({
             languageCode={languageCode}
             onRecordingChange={setIsGuestRecording}
             onHasRecorded={setHasGuestRecorded}
-            onReadyForSignIn={setReadyForSignIn}
+            onReadyToContinue={setReadyToContinue}
           />
+          {readyToContinue ? <QuizRecordAboutPrompt text={reactionText} autoPlay /> : null}
         </Stack>
       }
-    >
-      <AdvanceWhenSignedIn onAdvance={onSignedIn} />
-    </AuthWall>
+    />
   );
 };

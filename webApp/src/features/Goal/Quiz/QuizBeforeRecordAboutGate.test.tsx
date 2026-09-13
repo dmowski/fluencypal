@@ -3,7 +3,7 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { resetGuestAboutForTests, saveGuestAboutRecording } from './quizGuestAboutStorage';
@@ -51,6 +51,14 @@ jest.mock('./QuizRecordAboutPrompt', () => ({
   ),
 }));
 
+const gateProps = {
+  languageCode: 'en',
+  title: 'Why do you want to practice speaking?',
+  subTitle: "I'll use your answer to make your personal plan.",
+  promptText:
+    "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
+};
+
 describe('QuizBeforeRecordAboutGate', () => {
   beforeEach(() => {
     authState.uid = '';
@@ -59,16 +67,10 @@ describe('QuizBeforeRecordAboutGate', () => {
     resetGuestAboutForTests();
   });
 
-  it('asks the guest to record before showing Google', () => {
+  it('asks the guest to record before showing Continue', () => {
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate
-          languageCode="en"
-          title="Why do you want to practice speaking?"
-          subTitle="I'll use your answer to make your personal plan."
-          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
-          onSignedIn={jest.fn()}
-        />
+        <QuizBeforeRecordAboutGate {...gateProps} onContinue={jest.fn()} />
       </I18nWrapper>,
     );
 
@@ -81,13 +83,15 @@ describe('QuizBeforeRecordAboutGate', () => {
       'data-analytics',
       'record-about-guest',
     );
+    expect(screen.queryByRole('button', { name: 'Continue' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
   });
 
-  it('shows Continue to talk after the guest records', () => {
+  it('plays a teacher reaction and Continue after the guest records', () => {
+    const onContinue = jest.fn();
     saveGuestAboutRecording({
       languageCode: 'en',
       blob: new Blob(['audio'], { type: 'audio/webm' }),
@@ -97,63 +101,49 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate
-          languageCode="en"
-          title="Why do you want to practice speaking?"
-          subTitle="I'll use your answer to make your personal plan."
-          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
-          onSignedIn={jest.fn()}
-        />
+        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
       </I18nWrapper>,
     );
 
-    expect(screen.getByText('Sign in to get your personal plan')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
-      'data-analytics',
-      'auth-google',
-    );
-    expect(screen.getByRole('button', { name: 'Sign in with email' })).toBeInTheDocument();
+    expect(
+      screen.getByText("Thanks — I'll use that to make your plan. Let's keep going."),
+    ).toBeInTheDocument();
+    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    expect(continueButton).toHaveAttribute('data-analytics', 'quiz-guest-continue');
+    expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Sign in to get your personal plan')).not.toBeInTheDocument();
     expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();
+
+    fireEvent.click(continueButton);
+    expect(onContinue).toHaveBeenCalledTimes(1);
   });
 
   it('does not advance while auth is still loading', () => {
     authState.loading = true;
-    const onSignedIn = jest.fn();
+    const onContinue = jest.fn();
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate
-          languageCode="en"
-          title="Why do you want to practice speaking?"
-          subTitle="I'll use your answer to make your personal plan."
-          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
-          onSignedIn={onSignedIn}
-        />
+        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
       </I18nWrapper>,
     );
 
-    expect(onSignedIn).not.toHaveBeenCalled();
+    expect(onContinue).not.toHaveBeenCalled();
   });
 
-  it('advances to recordAbout after identify', async () => {
+  it('advances after identify', async () => {
     authState.uid = 'user-1';
-    const onSignedIn = jest.fn();
+    const onContinue = jest.fn();
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate
-          languageCode="en"
-          title="Why do you want to practice speaking?"
-          subTitle="I'll use your answer to make your personal plan."
-          promptText="Why do you want to practice speaking? I'll use your answer to make your personal plan."
-          onSignedIn={onSignedIn}
-        />
+        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
       </I18nWrapper>,
     );
 
     await waitFor(() => {
-      expect(onSignedIn).toHaveBeenCalledTimes(1);
+      expect(onContinue).toHaveBeenCalledTimes(1);
     });
-    expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Continue' })).not.toBeInTheDocument();
   });
 });
