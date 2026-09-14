@@ -2678,7 +2678,7 @@ msgstr "대화 옵션"
 msgid "Conversation practice"
 msgstr "대화 연습"
 
-#: src/features/Dashboard/JustTalkCard.tsx:38
+#: src/features/Dashboard/JustTalkCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "AI와의 대화"
@@ -4112,6 +4112,12 @@ msgstr "마이크 사용 설정"
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "마이크 사용 설정"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:95
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
+#. js-lingui-explicit-id
+msgid "Enable microphone to start talking"
+msgstr "마이크를 활성화하여 말하기 시작하세요"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:720
 #. js-lingui-explicit-id
@@ -7359,8 +7365,8 @@ msgstr "로딩 중.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:72
-#: src/features/Router/PracticePage.tsx:76
+#: src/features/Router/PracticePage.tsx:87
+#: src/features/Router/PracticePage.tsx:91
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7628,7 +7634,7 @@ msgid ""
 msgstr "마이크 접근이 거부되었습니다. 브라우저 설정에서 마이크 접근을 허용해 주세요."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:34
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -7651,6 +7657,13 @@ msgid ""
 msgstr ""
 "마이크 접근이 차단되었습니다. 브라우저 설정을 열고 이 사이트에 대한 마이크 접근을 허용한 다음, \"마이크 권한 부여\"를 다시 "
 "누르세요."
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Enable microphone again."
+msgstr "마이크 접근이 차단되었습니다. 브라우저 설정을 열고 이 사이트에 대한 마이크 접근을 허용한 후, 다시 마이크 활성화를 누르세요."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:98
 #: src/features/News/NewsModal.tsx:247
@@ -10206,7 +10219,7 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Router/PracticePage.tsx:107
+#: src/features/Router/PracticePage.tsx:139
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "대화를 다시 불러오는 중..."
@@ -11264,7 +11277,7 @@ msgstr "스피킹 연습"
 msgid "Speaking with a Psychologist"
 msgstr "심리학자와의 대화"
 
-#: src/features/Dashboard/JustTalkCard.tsx:32
+#: src/features/Dashboard/JustTalkCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Speaking with AI"
 msgstr "AI와 대화하기"
@@ -11478,6 +11491,7 @@ msgid "Starting webcam... "
 msgstr "웹캠 시작 중... "
 
 #: src/features/Advanced/AdvancedPage.tsx:357
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15064,6 +15078,13 @@ msgstr "귀하의 구독이 성공적으로 변경되었습니다."
 #. js-lingui-explicit-id
 msgid "Your Supportive Friend"
 msgstr "당신의 지원자 친구"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Your teacher is ready. Allow the microphone so you can start the "
+"conversation — we only use it for this practice session."
+msgstr "당신의 선생님이 준비되었습니다. 대화를 시작할 수 있도록 마이크를 허용하세요. — 우리는 이 연습 세션에서만 마이크를 사용합니다."
 
 #: src/features/Auth/AuthWallBasic.tsx:273
 #. js-lingui-explicit-id

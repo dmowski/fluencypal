@@ -1,4 +1,9 @@
-import { buildJustTalkPracticeUrl, isJustTalkHandoff } from './justTalkHandoff';
+import {
+  buildJustTalkPracticeUrl,
+  getPracticeIdleSurface,
+  hasUserSpokenInConversation,
+  isJustTalkHandoff,
+} from './justTalkHandoff';
 
 describe('justTalkHandoff', () => {
   it('treats open and true as a handoff', () => {
@@ -14,5 +19,56 @@ describe('justTalkHandoff', () => {
     expect(buildJustTalkPracticeUrl({ pageLanguage: 'ja', paymentModal: true })).toBe(
       '/ja/practice?justTalk=open&paymentModal=true',
     );
+  });
+
+  it('counts a non-empty user message as spoken', () => {
+    expect(hasUserSpokenInConversation([{ isBot: true, text: 'Hello' }])).toBe(false);
+    expect(hasUserSpokenInConversation([{ isBot: false, text: '   ' }])).toBe(false);
+    expect(
+      hasUserSpokenInConversation([
+        { isBot: true, text: 'Hello' },
+        { isBot: false, text: 'Hi' },
+      ]),
+    ).toBe(true);
+  });
+
+  it('keeps the handoff screen when Just Talk is open and the call is not started', () => {
+    expect(
+      getPracticeIdleSurface({
+        isStarted: false,
+        isHandoff: true,
+        isInitializing: '',
+      }),
+    ).toBe('handoff');
+    expect(
+      getPracticeIdleSurface({
+        isStarted: false,
+        isHandoff: true,
+        errorInitiating: 'Please enable microphone',
+        isInitializing: '',
+      }),
+    ).toBe('handoff');
+    expect(
+      getPracticeIdleSurface({
+        isStarted: false,
+        isHandoff: false,
+        errorInitiating: 'boom',
+        isInitializing: '',
+      }),
+    ).toBe('error');
+    expect(
+      getPracticeIdleSurface({
+        isStarted: true,
+        isHandoff: true,
+        isInitializing: '',
+      }),
+    ).toBe('conversation');
+    expect(
+      getPracticeIdleSurface({
+        isStarted: false,
+        isHandoff: false,
+        isInitializing: '',
+      }),
+    ).toBe('dashboard');
   });
 });

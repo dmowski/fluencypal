@@ -10,6 +10,7 @@ import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
 import { useSettings } from '@/features/Settings/useSettings';
 import { setGlobalConversationId } from '@/features/Usage/globalConversationId';
+import { hasUserSpokenInConversation } from '@/features/Conversation/justTalkHandoff';
 import { useState, useRef, useEffect } from 'react';
 
 export const useAiConversationMessages = () => {
@@ -30,9 +31,7 @@ export const useAiConversationMessages = () => {
   // Analytics: first user message, not the AI greeting.
   useEffect(() => {
     if (!conversationId || isStartedAnalyticLogged.current) return;
-    const hasUserSpeech = conversation.some(
-      (message) => !message.isBot && Boolean(message.text?.trim()),
-    );
+    const hasUserSpeech = hasUserSpokenInConversation(conversation);
     if (!hasUserSpeech) return;
     activateAnalyticUser();
     conversationStarted(conversationId);

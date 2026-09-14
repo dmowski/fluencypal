@@ -156,6 +156,9 @@ describe('classifyCta', () => {
     expect(classifyCta({ href: '', buttonId: 'quiz-guest-continue' }).ctaId).toBe(
       'quiz-guest-continue',
     );
+    expect(classifyCta({ href: '', buttonId: 'enable-mic-just-talk' }).ctaId).toBe(
+      'enable-mic-just-talk',
+    );
   });
 });
 

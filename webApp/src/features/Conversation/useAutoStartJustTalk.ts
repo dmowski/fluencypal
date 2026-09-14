@@ -1,16 +1,25 @@
 import { useEffect, useRef } from 'react';
-import { useUrlState } from '@/features/Url/useUrlState';
-import { isJustTalkHandoff, JUST_TALK_HANDOFF_PARAM } from './justTalkHandoff';
+import { isMicrophoneGranted } from '@/libs/mic';
 
-export const useAutoStartJustTalk = (startJustTalk: () => Promise<void>) => {
-  const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
+export const useAutoStartJustTalk = (
+  isHandoff: boolean,
+  startJustTalk: () => Promise<unknown>,
+) => {
   const startedRef = useRef(false);
 
   useEffect(() => {
-    if (!isJustTalkHandoff(justTalk) || startedRef.current) {
+    if (!isHandoff) {
+      startedRef.current = false;
+      return;
+    }
+    if (startedRef.current) {
       return;
     }
     startedRef.current = true;
-    void setJustTalk('').then(() => startJustTalk());
-  }, [justTalk, setJustTalk, startJustTalk]);
+    void isMicrophoneGranted().then((granted) => {
+      if (granted) {
+        void startJustTalk();
+      }
+    });
+  }, [isHandoff, startJustTalk]);
 };

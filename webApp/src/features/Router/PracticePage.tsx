@@ -27,6 +27,16 @@ import { CommunityDashboard } from '../Community/CommunityDashboard';
 import { BlockedAccess } from './BlockedAccess';
 import { useSearchParams } from 'next/navigation';
 import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
+import { useUrlState } from '@/features/Url/useUrlState';
+import { useJustTalk } from '@/features/Conversation/useJustTalk';
+import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTalk';
+import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
+import {
+  getPracticeIdleSurface,
+  hasUserSpokenInConversation,
+  isJustTalkHandoff,
+  JUST_TALK_HANDOFF_PARAM,
+} from '@/features/Conversation/justTalkHandoff';
 
 interface PracticePageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -49,6 +59,11 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const searchParams = useSearchParams();
   const rolePlayId = searchParams.get('rolePlayId');
   const hasTrackedSignupCompleted = useRef(false);
+  const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
+  const { startJustTalk, isCallStarting } = useJustTalk();
+  const isHandoff = isJustTalkHandoff(justTalk);
+  const startHandoffJustTalk = () => startJustTalk(undefined, { skipConsentUi: true });
+  useAutoStartJustTalk(isHandoff, startHandoffJustTalk);
 
   useEffect(() => {
     if (
@@ -80,7 +95,20 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
 
   if (appNavigation.currentPage === 'community') return <CommunityDashboard />;
 
-  if (aiConversation.errorInitiating) {
+  if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
+
+  const idleSurface = getPracticeIdleSurface({
+    isStarted: aiConversation.isStarted,
+    isHandoff,
+    errorInitiating: aiConversation.errorInitiating,
+    isInitializing: aiConversation.isInitializing,
+  });
+
+  if (idleSurface === 'loading') {
+    return <InfoBlockedSection title={aiConversation.isInitializing} />;
+  }
+
+  if (idleSurface === 'error') {
     return (
       <ConversationError
         errorMessage={aiConversation.errorInitiating || ''}
@@ -89,13 +117,17 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     );
   }
 
-  if (aiConversation.isInitializing) {
-    return <InfoBlockedSection title={aiConversation.isInitializing} />;
+  if (idleSurface === 'handoff') {
+    return (
+      <JustTalkHandoffScreen
+        onEnableMic={startHandoffJustTalk}
+        isStarting={isCallStarting}
+        wasDenied={Boolean(aiConversation.errorInitiating)}
+      />
+    );
   }
 
-  if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
-
-  if (!aiConversation.isStarted) {
+  if (idleSurface === 'dashboard') {
     return (
       <RolePlayProvider rolePlayInfo={rolePlayInfo}>
         <Dashboard lang={lang} />
@@ -158,8 +190,12 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         recordVisualizerComponent={recorder.visualizerComponent}
         recordingError={recorder.error}
         closeConversation={async () => {
+          const spoken = hasUserSpokenInConversation(aiConversation.conversation);
           lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
+          if (spoken) {
+            await setJustTalk('');
+          }
           window.scrollTo({
             top: 0,
             behavior: 'smooth',

@@ -53,7 +53,7 @@ Conversation/
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Call settings:** Settings control opens `CallSettingsMenu` (video on/off for both camera tiles, mute AI voice, captions, select microphone). Mic on/off and end-call stay on the footer. Turning video off hides the teacher and learner tiles so captions can fill the call. Selected microphone is persisted in `localStorage` (`preferredMicrophoneId`) and applied live via `ConversationInstance.switchMicrophone`.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
-- **Quiz handoff:** `/practice?justTalk=open` auto-starts Just Talk (`useAutoStartJustTalk` on `JustTalkCard`) after quiz `goalReview`. Skip-all still goes to empty `/practice`. To verify locally: `pnpm dev` → `pnpm emulator:test-user` → sign in with `window.__darkEngTest` (see `webApp/AGENTS.md`) → open `/practice?justTalk=open` and confirm the query is cleared.
+- **Quiz handoff:** `/practice?justTalk=open` shows `JustTalkHandoffScreen` (`just-talk-handoff`) instead of the empty dashboard. Auto-start only if the mic is already granted; otherwise they tap **Enable microphone to start talking** (`enable-mic-just-talk`). Keep `justTalk=open` until the first user message; End call without speech returns to the same panel. Skip-all still goes to empty `/practice`. To verify locally: `pnpm dev` → `pnpm emulator:test-user` → sign in with `window.__darkEngTest` (see `webApp/AGENTS.md`) → open `/practice?justTalk=open` and confirm the panel (query stays until they speak).
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
@@ -72,6 +72,7 @@ Conversation/
 | `call-user-preview`          | User webcam tile in call layout                  |
 | `call-progress-bar`          | Message-count progress strip on call footer      |
 | `conversation-review-modal`  | Post-call / Show results review steps            |
+| `just-talk-handoff`          | Persistent Enable-mic screen after quiz `justTalk=open` |
 
 ## Testing
 

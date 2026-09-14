@@ -45,7 +45,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, enable-mic-just-talk)
 - Path to first speak: pathBeforeSpeak + conversationStartPaths; identifyPaths for where they signed in
 - Voice: funnel.speech vs funnel.conversation; insights.speechSurfaces (quiz / lesson / conversation)
 - GEO/SEO: countries, languages, referrers, UTM, firstPaths, plus `searchConsole` (queries/pages; data lags 2–3 days)
@@ -88,7 +88,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `enable-mic-just-talk`.
 
 Export (`pnpm analytics:export`) is a UTC instant range (`fromIso` → `toIso`). `--from` / `--to` accept `YYYY-MM-DD` or `YYYY-MM-DDTHH:mm:ssZ`; `--day` is one full UTC day. Default with no flags is today `00:00Z` through now. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 

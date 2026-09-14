@@ -2734,7 +2734,7 @@ msgstr "خيارات المحادثة"
 msgid "Conversation practice"
 msgstr "ممارسة المحادثة"
 
-#: src/features/Dashboard/JustTalkCard.tsx:38
+#: src/features/Dashboard/JustTalkCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "محادثة مع الذكاء الاصطناعي"
@@ -4208,6 +4208,12 @@ msgstr "تمكين الميكروفون"
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "تمكين الميكروفون"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:95
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
+#. js-lingui-explicit-id
+msgid "Enable microphone to start talking"
+msgstr "قم بتمكين الميكروفون للبدء في التحدث"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:720
 #. js-lingui-explicit-id
@@ -7597,8 +7603,8 @@ msgstr "جارٍ التحميل.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:72
-#: src/features/Router/PracticePage.tsx:76
+#: src/features/Router/PracticePage.tsx:87
+#: src/features/Router/PracticePage.tsx:91
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7871,7 +7877,7 @@ msgstr ""
 "إعدادات المتصفح الخاص بك."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:34
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -7896,6 +7902,15 @@ msgstr ""
 "تم حظر الوصول إلى الميكروفون. افتح إعدادات المتصفح الخاصة بك، واسمح بالوصول "
 "إلى الميكروفون لهذا الموقع، ثم اضغط على \"السماح بالوصول إلى الميكروفون\" "
 "مرة أخرى."
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Enable microphone again."
+msgstr ""
+"تم حظر الوصول إلى الميكروفون. افتح إعدادات المتصفح الخاص بك، واسمح بالوصول "
+"إلى الميكروفون لهذا الموقع، ثم اضغط على تمكين الميكروفون مرة أخرى."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:98
 #: src/features/News/NewsModal.tsx:247
@@ -10557,7 +10572,7 @@ msgstr "سيناريوهات ذات صلة"
 msgid "Reload page"
 msgstr "إعادة تحميل الصفحة"
 
-#: src/features/Router/PracticePage.tsx:107
+#: src/features/Router/PracticePage.tsx:139
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "إعادة تحميل المحادثة..."
@@ -11645,7 +11660,7 @@ msgstr "ممارسة التحدث"
 msgid "Speaking with a Psychologist"
 msgstr "التحدث مع طبيب نفسي"
 
-#: src/features/Dashboard/JustTalkCard.tsx:32
+#: src/features/Dashboard/JustTalkCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Speaking with AI"
 msgstr "التحدث مع الذكاء الاصطناعي"
@@ -11859,6 +11874,7 @@ msgid "Starting webcam... "
 msgstr "يتم تشغيل كاميرا الويب... "
 
 #: src/features/Advanced/AdvancedPage.tsx:357
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15617,6 +15633,15 @@ msgstr "لقد تم تغيير اشتراكك بنجاح."
 #. js-lingui-explicit-id
 msgid "Your Supportive Friend"
 msgstr "صديقك المساند"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Your teacher is ready. Allow the microphone so you can start the "
+"conversation — we only use it for this practice session."
+msgstr ""
+"معلمك جاهز. اسمح باستخدام الميكروفون كي تتمكن من بدء المحادثة — نستخدمه فقط "
+"لهذه الجلسة التدريبية."
 
 #: src/features/Auth/AuthWallBasic.tsx:273
 #. js-lingui-explicit-id

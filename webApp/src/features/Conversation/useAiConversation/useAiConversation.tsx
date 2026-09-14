@@ -597,6 +597,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       if (e instanceof RealtimeWsAuthError) {
         setErrorInitiating(e.message);
         setIsInitializing('');
+        setIsStarted(false);
         throw e;
       }
       const isNotAllowedError = (e as Error).toString().includes('NotAllowedError');
@@ -607,6 +608,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
           : 'Please check you microphone access and try to refresh page. Error code:' + `${e}`,
       );
       setIsInitializing('');
+      setIsStarted(false);
       throw e;
     }
   };

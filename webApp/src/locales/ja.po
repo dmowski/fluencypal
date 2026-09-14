@@ -2672,7 +2672,7 @@ msgstr "会話オプション"
 msgid "Conversation practice"
 msgstr "会話練習"
 
-#: src/features/Dashboard/JustTalkCard.tsx:38
+#: src/features/Dashboard/JustTalkCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "AIとの会話"
@@ -4085,6 +4085,12 @@ msgstr "マイクを有効にする"
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "マイクを有効にする"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:95
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
+#. js-lingui-explicit-id
+msgid "Enable microphone to start talking"
+msgstr "マイクを有効にして話し始める"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:720
 #. js-lingui-explicit-id
@@ -7320,8 +7326,8 @@ msgstr "読み込み中.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:72
-#: src/features/Router/PracticePage.tsx:76
+#: src/features/Router/PracticePage.tsx:87
+#: src/features/Router/PracticePage.tsx:91
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7590,7 +7596,7 @@ msgid ""
 msgstr "マイクのアクセスが拒否されました。ブラウザの設定でマイクのアクセスを許可してください。"
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:34
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -7612,6 +7618,15 @@ msgid ""
 "access for this site, then tap \"Grant microphone permission\" again."
 msgstr ""
 "マイクへのアクセスがブロックされました。ブラウザの設定を開いて、このサイトにマイクへのアクセスを許可し、「マイクの許可を与える」をもう一度タップしてくだ"
+"さい。"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Enable microphone again."
+msgstr ""
+"マイクへのアクセスがブロックされました。ブラウザの設定を開き、このサイトに対してマイクアクセスを許可してから、再度「マイクを有効にする」をタップしてくだ"
 "さい。"
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:98
@@ -10162,7 +10177,7 @@ msgstr "関連シナリオ"
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: src/features/Router/PracticePage.tsx:107
+#: src/features/Router/PracticePage.tsx:139
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "会話を再読み込みしています..."
@@ -11218,7 +11233,7 @@ msgstr "スピーキング練習"
 msgid "Speaking with a Psychologist"
 msgstr "心理学者との対話"
 
-#: src/features/Dashboard/JustTalkCard.tsx:32
+#: src/features/Dashboard/JustTalkCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Speaking with AI"
 msgstr "AIとの会話"
@@ -11432,6 +11447,7 @@ msgid "Starting webcam... "
 msgstr "ウェブカメラを起動しています..."
 
 #: src/features/Advanced/AdvancedPage.tsx:357
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15002,6 +15018,13 @@ msgstr "サブスクリプションが正常に変更されました。"
 #. js-lingui-explicit-id
 msgid "Your Supportive Friend"
 msgstr "あなたのサポート役"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Your teacher is ready. Allow the microphone so you can start the "
+"conversation — we only use it for this practice session."
+msgstr "あなたの教師の準備が整いました。会話を始めるためにマイクを許可してください — この練習セッションにのみ使用します。"
 
 #: src/features/Auth/AuthWallBasic.tsx:273
 #. js-lingui-explicit-id

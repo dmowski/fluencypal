@@ -2762,7 +2762,7 @@ msgstr "Tùy chọn hội thoại"
 msgid "Conversation practice"
 msgstr "Thực hành hội thoại"
 
-#: src/features/Dashboard/JustTalkCard.tsx:38
+#: src/features/Dashboard/JustTalkCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Cuộc trò chuyện với AI"
@@ -4254,6 +4254,12 @@ msgstr "Bật Microphone"
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Bật micro"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:95
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
+#. js-lingui-explicit-id
+msgid "Enable microphone to start talking"
+msgstr "Bật micro để bắt đầu nói chuyện"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:720
 #. js-lingui-explicit-id
@@ -7712,8 +7718,8 @@ msgstr "Đang tải.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:72
-#: src/features/Router/PracticePage.tsx:76
+#: src/features/Router/PracticePage.tsx:87
+#: src/features/Router/PracticePage.tsx:91
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7990,7 +7996,7 @@ msgstr ""
 "microphone trong cài đặt trình duyệt của bạn."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:34
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8015,6 +8021,16 @@ msgstr ""
 "Quyền truy cập micro đã bị chặn. Mở cài đặt trình duyệt của bạn, cho phép "
 "truy cập micro cho trang web này, sau đó nhấn \"Cấp quyền truy cập micro\" "
 "lần nữa."
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Enable microphone again."
+msgstr ""
+"Quyền truy cập microphone đã bị chặn. Mở cài đặt trình duyệt của bạn, cho "
+"phép truy cập microphone cho trang web này, sau đó nhấn Kích hoạt "
+"microphone lại."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:98
 #: src/features/News/NewsModal.tsx:247
@@ -10702,7 +10718,7 @@ msgstr "Cảnh liên quan"
 msgid "Reload page"
 msgstr "Tải lại trang"
 
-#: src/features/Router/PracticePage.tsx:107
+#: src/features/Router/PracticePage.tsx:139
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Tải lại cuộc trò chuyện..."
@@ -11794,7 +11810,7 @@ msgstr "Luyện nói"
 msgid "Speaking with a Psychologist"
 msgstr "Nói chuyện với một Nhà tâm lý học"
 
-#: src/features/Dashboard/JustTalkCard.tsx:32
+#: src/features/Dashboard/JustTalkCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Speaking with AI"
 msgstr "Nói chuyện với AI"
@@ -12014,6 +12030,7 @@ msgid "Starting webcam... "
 msgstr "Bắt đầu webcam..."
 
 #: src/features/Advanced/AdvancedPage.tsx:357
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15874,6 +15891,15 @@ msgstr "Gói đăng ký của bạn đã được thay đổi thành công."
 #. js-lingui-explicit-id
 msgid "Your Supportive Friend"
 msgstr "Người Bạn Ủng Hộ Của Bạn"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Your teacher is ready. Allow the microphone so you can start the "
+"conversation — we only use it for this practice session."
+msgstr ""
+"Giáo viên của bạn đã sẵn sàng. Cho phép sử dụng micro để bạn có thể bắt đầu "
+"cuộc hội thoại — chúng tôi chỉ sử dụng nó cho buổi thực hành này."
 
 #: src/features/Auth/AuthWallBasic.tsx:273
 #. js-lingui-explicit-id

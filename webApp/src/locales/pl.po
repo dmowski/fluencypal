@@ -2760,7 +2760,7 @@ msgstr "Opcje rozmowy"
 msgid "Conversation practice"
 msgstr "Praktyka rozmowy"
 
-#: src/features/Dashboard/JustTalkCard.tsx:38
+#: src/features/Dashboard/JustTalkCard.tsx:36
 #. js-lingui-explicit-id
 msgid "Conversation with AI"
 msgstr "Rozmowa z AI"
@@ -4250,6 +4250,12 @@ msgstr "Włącz Mikrofon"
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Włącz mikrofon"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:95
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
+#. js-lingui-explicit-id
+msgid "Enable microphone to start talking"
+msgstr "Włącz mikrofon, aby rozpocząć rozmowę"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:720
 #. js-lingui-explicit-id
@@ -7721,8 +7727,8 @@ msgstr "Ładowanie.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:72
-#: src/features/Router/PracticePage.tsx:76
+#: src/features/Router/PracticePage.tsx:87
+#: src/features/Router/PracticePage.tsx:91
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7998,7 +8004,7 @@ msgstr ""
 "ustawieniach przeglądarki."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:34
+#: src/features/Conversation/useJustTalk.tsx:49
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -8023,6 +8029,16 @@ msgstr ""
 "Dostęp do mikrofonu został zablokowany. Otwórz ustawienia przeglądarki, "
 "zezwól na dostęp do mikrofonu dla tej strony, a następnie ponownie naciśnij "
 "„Przyznaj pozwolenie na mikrofon”."
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Enable microphone again."
+msgstr ""
+"Dostęp do mikrofonu został zablokowany. Otwórz ustawienia przeglądarki, "
+"zezwól na dostęp do mikrofonu dla tej strony, a następnie dotknij ponownie "
+"Włącz mikrofon."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:98
 #: src/features/News/NewsModal.tsx:247
@@ -10720,7 +10736,7 @@ msgstr "Powiązane scenariusze"
 msgid "Reload page"
 msgstr "Odśwież stronę"
 
-#: src/features/Router/PracticePage.tsx:107
+#: src/features/Router/PracticePage.tsx:139
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Ładowanie rozmowy ponownie..."
@@ -11813,7 +11829,7 @@ msgstr "Ćwiczenie mówienia"
 msgid "Speaking with a Psychologist"
 msgstr "Rozmowa z psychologiem"
 
-#: src/features/Dashboard/JustTalkCard.tsx:32
+#: src/features/Dashboard/JustTalkCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Speaking with AI"
 msgstr "Mówienie z AI"
@@ -12031,6 +12047,7 @@ msgid "Starting webcam... "
 msgstr "Uruchamianie kamery... "
 
 #: src/features/Advanced/AdvancedPage.tsx:357
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:148
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:58
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:89
@@ -15881,6 +15898,15 @@ msgstr "Twoja subskrypcja została pomyślnie zmieniona."
 #. js-lingui-explicit-id
 msgid "Your Supportive Friend"
 msgstr "Twój Wspierający Przyjaciel"
+
+#: src/features/Conversation/JustTalkHandoffScreen.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Your teacher is ready. Allow the microphone so you can start the "
+"conversation — we only use it for this practice session."
+msgstr ""
+"Twój nauczyciel jest gotowy. Zezwól na użycie mikrofonu, abyś mógł "
+"rozpocząć rozmowę — używamy go tylko na potrzeby tej sesji ćwiczeniowej."
 
 #: src/features/Auth/AuthWallBasic.tsx:273
 #. js-lingui-explicit-id
