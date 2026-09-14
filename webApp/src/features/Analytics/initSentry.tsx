@@ -3,14 +3,21 @@
 import * as Sentry from '@sentry/nextjs';
 import { sentryDenyUrls } from '@/libs/sentry/denyUrls';
 import { sentryIgnoreErrors } from '@/libs/sentry/ignoreErrors';
-import { sentryIgnoreSpans } from '@/libs/sentry/ignoreSpans';
+import {
+  sentryIgnoreSpans,
+  shouldCreateSentrySpanForRequest,
+} from '@/libs/sentry/ignoreSpans';
 
 export const initSentry = () => {
   Sentry.init({
     dsn: 'https://f683d729da9d8855c7742f03c0caaf55@o4506187426103296.ingest.us.sentry.io/4508885116452864',
 
     // Add optional integrations for additional features
-    integrations: [],
+    integrations: [
+      Sentry.browserTracingIntegration({
+        shouldCreateSpanForRequest: shouldCreateSentrySpanForRequest,
+      }),
+    ],
 
     enableLogs: true,
 

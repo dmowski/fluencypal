@@ -14,6 +14,7 @@ import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
+import { isRecoverableTtsFormatError } from './isRecoverableTtsFormatError';
 import * as Sentry from '@sentry/nextjs';
 
 export const ttsVersion = 'v14';
@@ -664,10 +665,20 @@ const logStreamAudioFailure = ({
     diagnostics.label ??
     (error instanceof Error ? error.name : undefined) ??
     'unknown';
-  Sentry.captureException(new Error(`Stream audio error: ${label}`), {
-    tags: { area: 'conversation-audio', op: 'playStreamUrl', phase },
-    extra: diagnostics,
-  });
+  if (
+    !isRecoverableTtsFormatError({
+      url,
+      mediaErrorCode: diagnostics.code,
+      mediaErrorLabel: diagnostics.label,
+      playErrorName: diagnostics.playErrorName,
+      playErrorMessage: diagnostics.playErrorMessage,
+    })
+  ) {
+    Sentry.captureException(new Error(`Stream audio error: ${label}`), {
+      tags: { area: 'conversation-audio', op: 'playStreamUrl', phase },
+      extra: diagnostics,
+    });
+  }
 
   return diagnostics;
 };

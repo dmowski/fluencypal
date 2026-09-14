@@ -31,8 +31,8 @@ const DEFAULT_THRESHOLD = 4;
 
 /**
  * Detects duplicate identical Next.js RSC (`?_rsc=`) fetches in a short window.
- * Used to diagnose Sentry performance_n_plus_one_api_calls on App Router navigations
- * when the app cannot see Next internals that issue the requests.
+ * Next App Router issues these flights; we only breadcrumb (DARK-LANG-HR was
+ * created by captureMessage on this path).
  */
 export function createRscNPlusOneTracker(options?: {
   windowMs?: number;
@@ -61,22 +61,6 @@ export function createRscNPlusOneTracker(options?: {
           key: payload.key,
           count: payload.count,
           pathname: payload.pathname,
-        },
-      });
-
-      Sentry.captureMessage('Duplicate Next.js RSC fetch (possible N+1)', {
-        level: 'warning',
-        tags: {
-          area: 'navigation',
-          issue: 'rsc-n-plus-one',
-        },
-        extra: {
-          rscKey: payload.key,
-          duplicateCount: payload.count,
-          pathname: payload.pathname,
-          fetchStacks: payload.stacks.slice(0, 4),
-          href: typeof window !== 'undefined' ? window.location.href : null,
-          referrer: typeof document !== 'undefined' ? document.referrer : null,
         },
       });
     });

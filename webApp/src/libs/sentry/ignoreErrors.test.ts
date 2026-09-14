@@ -36,4 +36,12 @@ describe('sentryIgnoreErrors', () => {
     expect(matchesIgnore("ReferenceError: Can't find variable: zaloJSV2")).toBe(true);
     expect(matchesIgnore('ReferenceError: zaloJSV2 is not defined')).toBe(true);
   });
+
+  it('drops cross-origin Location.hostname sniffers in iframes', () => {
+    expect(
+      matchesIgnore(
+        `SecurityError: Failed to read a named property 'hostname' from 'Location': Blocked a frame with origin "https://app.example.com" from accessing a cross-origin frame.`,
+      ),
+    ).toBe(true);
+  });
 });

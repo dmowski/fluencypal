@@ -20,4 +20,7 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   // Zalo in-app browser injects this global (DARK-LANG-HP); not app code
   /Can't find variable: zaloJSV2/,
   /zaloJSV2 is not defined/,
+  // UC Browser / in-app injectors sniff parent.location from the analytics iframe (DARK-LANG-J7)
+  /Failed to read a named property 'hostname' from 'Location'/,
+  /Blocked a frame with origin .* from accessing a cross-origin frame/,
 ];

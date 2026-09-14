@@ -1,7 +1,10 @@
 import * as Sentry from '@sentry/nextjs';
 import { sentryDenyUrls } from '@/libs/sentry/denyUrls';
 import { sentryIgnoreErrors } from '@/libs/sentry/ignoreErrors';
-import { sentryIgnoreSpans } from '@/libs/sentry/ignoreSpans';
+import {
+  sentryIgnoreSpans,
+  shouldCreateSentrySpanForRequest,
+} from '@/libs/sentry/ignoreSpans';
 import { installRscNPlusOneDiagnostics } from '@/libs/sentry/rscNPlusOneDiagnostics';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -15,10 +18,15 @@ Sentry.init({
   ignoreSpans: [...sentryIgnoreSpans],
   ignoreErrors: sentryIgnoreErrors,
   denyUrls: sentryDenyUrls,
+  integrations: [
+    Sentry.browserTracingIntegration({
+      shouldCreateSpanForRequest: shouldCreateSentrySpanForRequest,
+    }),
+  ],
 });
 
-// Diagnose Sentry N+1 on identical Next.js RSC flights (e.g. DARK-LANG-HQ).
-// Framework issues the duplicate ?_rsc= fetches; this captures stacks/context next time.
+// Breadcrumb-only: Next.js issues duplicate ?_rsc= flights on App Router navigations
+// (DARK-LANG-HQ / DARK-LANG-HR). Do not captureMessage — it created new issues.
 installRscNPlusOneDiagnostics();
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
