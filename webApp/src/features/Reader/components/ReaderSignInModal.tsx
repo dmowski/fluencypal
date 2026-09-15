@@ -38,6 +38,9 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
     setGoogleSignInError('');
     setIsGoogleSignInLoading(true);
     const result = await auth.signInWithGoogle();
+    if (result.isRedirecting) {
+      return;
+    }
     setIsGoogleSignInLoading(false);
     if (result.isDone) {
       onClose();

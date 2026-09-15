@@ -121,6 +121,9 @@ export const AuthWallBasic = ({
     setIsGoogleSignInLoading(true);
     onSelectAuthMethod('google');
     const signInResult = await auth.signInWithGoogle();
+    if (signInResult.isRedirecting) {
+      return;
+    }
     setIsGoogleSignInLoading(false);
     if (!signInResult.isDone && signInResult.error) {
       setGoogleSignInError(signInResult.error);

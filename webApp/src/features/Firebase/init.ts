@@ -24,6 +24,7 @@ import {
 } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
+import { installFirebaseAuthPendingPromiseGuard } from '@/features/Auth/googleSignIn';
 import { installCorruptFirestorePersistenceRecovery } from './corruptIndexedDb';
 
 const isNodeEnv = typeof window === 'undefined';
@@ -58,6 +59,7 @@ const firestore =
 
 if (!isNodeEnv && !isFirebaseEmulator) {
   installCorruptFirestorePersistenceRecovery(firestore);
+  installFirebaseAuthPendingPromiseGuard();
 }
 
 const auth =

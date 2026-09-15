@@ -1,7 +1,5 @@
 'use client';
 import {
-  GoogleAuthProvider,
-  signInWithPopup,
   signInWithCustomToken as firebaseSignInWithCustomToken,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
@@ -15,12 +13,11 @@ import * as Sentry from '@sentry/nextjs';
 import { FirebaseError } from 'firebase/app';
 import { acceptAnalytics } from '../Analytics/initGTag';
 import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
-import { shouldShowWebViewWall } from './useIsWebView';
-
-interface SignInResult {
-  isDone: boolean;
-  error: string;
-}
+import {
+  completeGoogleRedirectSignIn,
+  signInWithGoogleAccount,
+  SignInResult,
+} from './googleSignIn';
 
 export interface UserInfo {
   displayName: string | null;
@@ -67,28 +64,6 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   sendTgMessage: async () => void 0,
 });
 
-const getGoogleSignInErrorMessage = (error: unknown): string | null => {
-  if (error instanceof FirebaseError) {
-    switch (error.code) {
-      case 'auth/popup-closed-by-user':
-      case 'auth/cancelled-popup-request':
-        return null;
-      case 'auth/popup-blocked':
-        return 'Google sign-in popup was blocked. Please allow popups or use email sign-in.';
-      case 'auth/operation-not-supported-in-this-environment':
-        return 'Google sign-in is not supported in this browser. Please use email sign-in.';
-      default:
-        break;
-    }
-  }
-
-  if (error instanceof Error && error.message.includes('INTERNAL ASSERTION FAILED')) {
-    return 'Google sign-in is not supported in this browser. Please use email sign-in.';
-  }
-
-  return 'Google sign-in was unsuccessful. Please try again.';
-};
-
 function useProvideAuth(): AuthContext {
   const [userInfo, loading, errorAuth] = useAuthState(auth);
   const googleSignInInProgress = useRef(false);
@@ -98,31 +73,16 @@ function useProvideAuth(): AuthContext {
       return { isDone: false, error: '' };
     }
 
-    if (shouldShowWebViewWall()) {
-      return {
-        isDone: false,
-        error:
-          'Google sign-in is not supported in this browser. Please open in Chrome or use email sign-in.',
-      };
-    }
-
     googleSignInInProgress.current = true;
-    const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
-
-      return { isDone: true, error: '' };
-    } catch (error) {
-      const message = getGoogleSignInErrorMessage(error);
-      if (message) {
-        console.error('Google sign in error', error);
+      const result = await signInWithGoogleAccount(auth);
+      if (!result.isRedirecting) {
+        googleSignInInProgress.current = false;
       }
-      return {
-        isDone: false,
-        error: message || '',
-      };
-    } finally {
+      return result;
+    } catch (error) {
       googleSignInInProgress.current = false;
+      throw error;
     }
   };
 
@@ -171,7 +131,15 @@ function useProvideAuth(): AuthContext {
   };
 
   useEffect(() => {
-    void confirmEmailLinkSignIn();
+    void (async () => {
+      await confirmEmailLinkSignIn();
+      try {
+        await completeGoogleRedirectSignIn(auth);
+      } catch (error) {
+        console.error('Google redirect sign-in error', error);
+        Sentry.captureException(error);
+      }
+    })();
   }, []);
 
   const signInWithEmail = async (email: string): Promise<SignInResult> => {

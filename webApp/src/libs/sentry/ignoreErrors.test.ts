@@ -14,6 +14,12 @@ describe('sentryIgnoreErrors', () => {
     ).toBe(true);
   });
 
+  it('still reports the Firebase Auth pending-promise assertion', () => {
+    expect(matchesIgnore('Error: INTERNAL ASSERTION FAILED: Pending promise was never set')).toBe(
+      false,
+    );
+  });
+
   it('drops Safari IndexedDB connection-lost errors', () => {
     expect(
       matchesIgnore(
