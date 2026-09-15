@@ -20,7 +20,7 @@ const AdvanceWhenSignedIn = ({
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    if (didAdvance.current || auth.loading || !auth.uid) {
+    if (didAdvance.current || auth.loading || !auth.isIdentified) {
       return;
     }
     didAdvance.current = true;
@@ -28,7 +28,7 @@ const AdvanceWhenSignedIn = ({
     void Promise.resolve(onAdvance()).finally(() => {
       setIsSaving(false);
     });
-  }, [auth.loading, auth.uid, onAdvance]);
+  }, [auth.loading, auth.isIdentified, onAdvance]);
 
   if (!isSaving) {
     return null;
@@ -61,7 +61,7 @@ export const QuizBeforeRecordAboutGate = ({
   const [readyToContinue, setReadyToContinue] = useState(() => hasGuestAbout(languageCode));
   const reactionText = i18n._("Thanks — I'll use that to make your plan. Let's keep going.");
 
-  if (!auth.loading && auth.uid) {
+  if (!auth.loading && auth.isIdentified) {
     return <AdvanceWhenSignedIn onAdvance={onContinue} />;
   }
 

@@ -3,20 +3,20 @@ export const quizGuestAboutStep = 'before_recordAbout' as const;
 
 export const shouldSkipToPlanIntroAfterGuestAbout = ({
   currentStep,
-  isSignedIn,
+  isIdentified,
   hasGuestAbout,
 }: {
   currentStep: string;
-  isSignedIn: boolean;
+  isIdentified: boolean;
   hasGuestAbout: boolean;
-}): boolean => currentStep === quizGuestAboutStep && !isSignedIn && hasGuestAbout;
+}): boolean => currentStep === quizGuestAboutStep && !isIdentified && hasGuestAbout;
 
 export const shouldReturnToGuestAboutFromPlanIntro = ({
   currentStep,
-  isSignedIn,
+  isIdentified,
   hasGuestAbout,
 }: {
   currentStep: string;
-  isSignedIn: boolean;
+  isIdentified: boolean;
   hasGuestAbout: boolean;
-}): boolean => currentStep === quizGuestPlanIntroStep && !isSignedIn && hasGuestAbout;
+}): boolean => currentStep === quizGuestPlanIntroStep && !isIdentified && hasGuestAbout;

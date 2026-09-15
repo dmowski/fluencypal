@@ -172,8 +172,10 @@ function useProvideRolePlay({
     gameStat?: GuessGameStat;
     conversationMode: ConversationMode;
   }) => {
-    if (settings.conversationMode !== conversationMode) {
-      settings.setConversationMode(conversationMode);
+    await auth.ensureAnonymousAuth();
+
+    if (auth.isIdentified && settings.conversationMode !== conversationMode) {
+      await settings.setConversationMode(conversationMode);
     }
 
     let instruction = scenario.useInstructionOnly

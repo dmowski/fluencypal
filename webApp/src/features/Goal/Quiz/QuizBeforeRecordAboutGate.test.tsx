@@ -11,6 +11,7 @@ import { resetGuestAboutForTests, saveGuestAboutRecording } from './quizGuestAbo
 const authState = {
   uid: '',
   loading: false,
+  isIdentified: false,
   userInfo: null,
   signInWithGoogle: jest.fn(),
   signInWithEmail: jest.fn(),
@@ -70,6 +71,7 @@ const gateProps = {
 describe('QuizBeforeRecordAboutGate', () => {
   beforeEach(() => {
     authState.uid = '';
+    authState.isIdentified = false;
     authState.loading = false;
     window.localStorage.clear();
     resetGuestAboutForTests();
@@ -147,6 +149,7 @@ describe('QuizBeforeRecordAboutGate', () => {
 
   it('advances after identify', async () => {
     authState.uid = 'user-1';
+    authState.isIdentified = true;
     const onContinue = jest.fn();
 
     render(
@@ -159,5 +162,19 @@ describe('QuizBeforeRecordAboutGate', () => {
       expect(onContinue).toHaveBeenCalledTimes(1);
     });
     expect(screen.queryByRole('button', { name: 'Continue' })).not.toBeInTheDocument();
+  });
+
+  it('keeps the guest recorder for anonymous Firebase users', () => {
+    authState.uid = 'anon-1';
+    authState.isIdentified = false;
+
+    render(
+      <I18nWrapper>
+        <QuizBeforeRecordAboutGate {...gateProps} onContinue={jest.fn()} />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByTestId('quiz-guest-about-button')).toBeInTheDocument();
+    expect(screen.queryByTestId('quiz-guest-about-saving')).not.toBeInTheDocument();
   });
 });

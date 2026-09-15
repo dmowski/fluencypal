@@ -24,7 +24,8 @@ import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../User/useAiUserInfo';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
-import { firstAiMessage } from '@/features/Lang/lang';
+import { firstAiMessage, fullEnglishLanguageName } from '@/features/Lang/lang';
+import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
 import { GoalElementInfo } from '../../Plan/types';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { useAccess } from '../../Usage/useAccess';
@@ -58,8 +59,10 @@ function useProvideAiConversation(): AiConversationContextType {
   const firstPotentialBotMessage = useRef('');
   const userInfo = aiUserInfo.advancedUserRecords;
 
-  const fullLanguageName = settings.fullLanguageName || 'English';
-  const languageCode = settings.languageCode || 'en';
+  const pendingPracticeLanguage = readPendingPracticeLanguage();
+  const languageCode = settings.languageCode || pendingPracticeLanguage || 'en';
+  const fullLanguageName =
+    settings.fullLanguageName || fullEnglishLanguageName[languageCode] || 'English';
   const [isVolumeOn, setIsVolumeOn] = useState(true);
   const [voice, setVoice] = useState<AiVoice | null>(null);
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
@@ -639,6 +642,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   return {
     isLimitedAiVoice: limits.isLimitedAiVoice,
     isLimitedRecording: limits.isLimitedRecording,
+    isGuestConversationLimited: limits.isGuestConversationLimited,
     currentMode,
     voice: voice || 'shimmer',
     conversationId: messages.conversationId,

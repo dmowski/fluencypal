@@ -42,7 +42,7 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const identifiedUidRef = useRef('');
 
   useEffect(() => {
-    if (!auth.uid) return;
+    if (!auth.isIdentified) return;
     if (identifiedUidRef.current === auth.uid) return;
     identifiedUidRef.current = auth.uid;
     setAnalyticsAuthUserId(auth.uid);
@@ -50,7 +50,7 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
       name: 'identify',
       authUserId: auth.uid,
     });
-  }, [auth.uid]);
+  }, [auth.isIdentified, auth.uid]);
 
   const data: AnalyticsContextType = {
     isInitialized: isInitialized,

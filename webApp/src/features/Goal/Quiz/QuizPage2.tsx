@@ -6,7 +6,6 @@ import { useLingui } from '@lingui/react';
 import { MIN_WORDS_FOR_ANSWER, QuizProvider, useQuiz } from './useQuiz';
 import { useLanguageGroup } from '../useLanguageGroup';
 import { Trans } from '@lingui/react/macro';
-import { WebViewWall } from '@/features/Auth/WebViewWall';
 import { AuthWall } from '@/features/Auth/AuthWall';
 import { ProgressBar } from './ProgressBar';
 import { LanguageToLearnSelector, LanguageToLearnShortSelector } from './LanguageToLearnSelector';
@@ -41,6 +40,7 @@ import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { peekGuestAboutTranscript } from './quizGuestAboutStorage';
+import { writePendingPracticeLanguage } from './pendingPracticeLanguage';
 
 const QuizQuestions = () => {
   const {
@@ -97,6 +97,7 @@ const QuizQuestions = () => {
     const isAccessStep = path.includes('accessPlan');
 
     try {
+      writePendingPracticeLanguage(languageToLearn);
       await confirmPlan();
       router.push(
         buildJustTalkPracticeUrl({
@@ -355,19 +356,12 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'goalReview' && (
-            <AuthWall
-              startOnAuth
-              signInTitle={i18n._('Your plan is ready')}
-              singInSubTitle={i18n._('Sign in to save it and start speaking')}
-              authActionTitle={i18n._('Start Speaking')}
-            >
-              <GoalReview
-                onClick={next}
-                isLoading={isGoalGenerating || survey?.goalData === null}
-                goalData={survey?.goalData}
-                actionButtonLabel={i18n._('Start Speaking')}
-              />
-            </AuthWall>
+            <GoalReview
+              onClick={next}
+              isLoading={isGoalGenerating || survey?.goalData === null}
+              goalData={survey?.goalData}
+              actionButtonLabel={i18n._('Start Speaking')}
+            />
           )}
 
           {currentStep === 'magicFlow' && (
@@ -587,9 +581,7 @@ interface QuizPageProps {
 export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   return (
     <QuizProvider pageLang={lang} defaultLangToLearn={defaultLangToLearn}>
-      <WebViewWall>
-        <QuizQuestions />
-      </WebViewWall>
+      <QuizQuestions />
     </QuizProvider>
   );
 };

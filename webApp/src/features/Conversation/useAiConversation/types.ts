@@ -74,5 +74,6 @@ export interface AiConversationContextType {
 
   isLimitedAiVoice: boolean;
   isLimitedRecording: boolean;
+  isGuestConversationLimited: boolean;
   isRestarting: boolean;
 }

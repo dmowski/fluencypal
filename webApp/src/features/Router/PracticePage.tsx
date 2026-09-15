@@ -31,6 +31,9 @@ import { useUrlState } from '@/features/Url/useUrlState';
 import { useJustTalk } from '@/features/Conversation/useJustTalk';
 import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTalk';
 import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
+import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
+import { canEnterPracticeAsGuest } from '@/features/Conversation/guestPracticeEntry';
+import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
 import {
   getPracticeIdleSurface,
   hasUserSpokenInConversation,
@@ -62,19 +65,30 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
   const { startJustTalk, isCallStarting } = useJustTalk();
   const isHandoff = isJustTalkHandoff(justTalk);
+  const canGuestPractice = canEnterPracticeAsGuest({ justTalk, rolePlayId });
+  const pendingPracticeLanguage = readPendingPracticeLanguage();
+  const practiceLanguageCode =
+    settings.languageCode || pendingPracticeLanguage || (canGuestPractice ? lang : null);
   const startHandoffJustTalk = () => startJustTalk(undefined, { skipConsentUi: true });
   useAutoStartJustTalk(isHandoff, startHandoffJustTalk);
 
   useEffect(() => {
+    if (auth.loading || auth.isIdentified || !canGuestPractice) {
+      return;
+    }
+    void auth.ensureAnonymousAuth();
+  }, [auth.loading, auth.isIdentified, canGuestPractice, auth.ensureAnonymousAuth]);
+
+  useEffect(() => {
     if (
       !hasTrackedSignupCompleted.current &&
-      auth.isAuthorized &&
+      auth.isIdentified &&
       isAliasGameRolePlay(rolePlayId)
     ) {
       trackAliasEvent('alias_signup_completed');
       hasTrackedSignupCompleted.current = true;
     }
-  }, [auth.isAuthorized, rolePlayId]);
+  }, [auth.isIdentified, rolePlayId]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) recorder.removeTranscript();
@@ -85,9 +99,22 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }, [aiConversation.isClosing]);
 
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
-  if (settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized) {
+  if (!auth.isIdentified && !canGuestPractice) {
+    return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
+  }
+
+  if (!auth.isAuthorized && canGuestPractice) {
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
+
+  const settingsReady = canGuestPractice
+    ? Boolean(practiceLanguageCode)
+    : !settings.loading && Boolean(auth.uid) && Boolean(settings.languageCode);
+
+  const usageReady = canGuestPractice || usage.isWelcomeBalanceInitialized;
+
+  if (!settingsReady || !usageReady) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
@@ -95,7 +122,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
 
   if (appNavigation.currentPage === 'community') return <CommunityDashboard />;
 
-  if (!settings.languageCode) return <SelectLanguage pageLang={lang} />;
+  if (!practiceLanguageCode) return <SelectLanguage pageLang={lang} />;
 
   const idleSurface = getPracticeIdleSurface({
     isStarted: aiConversation.isStarted,
@@ -211,8 +238,14 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
-        onLimitedClick={() => usage.togglePaymentModal(true)}
+        onLimitedClick={() => {
+          if (aiConversation.isGuestConversationLimited) {
+            return;
+          }
+          usage.togglePaymentModal(true);
+        }}
       />
+      {aiConversation.isGuestConversationLimited ? <ConversationGuestAuthWall /> : null}
     </Stack>
   );
 }

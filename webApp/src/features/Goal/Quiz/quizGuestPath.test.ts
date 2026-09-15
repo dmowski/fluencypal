@@ -8,17 +8,27 @@ describe('quizGuestPath', () => {
     expect(
       shouldSkipToPlanIntroAfterGuestAbout({
         currentStep: 'before_recordAbout',
-        isSignedIn: false,
+        isIdentified: false,
         hasGuestAbout: true,
       }),
     ).toBe(true);
   });
 
-  it('keeps the signed-in path on recordAbout', () => {
+  it('keeps anonymous Firebase guests on the guest skip path', () => {
     expect(
       shouldSkipToPlanIntroAfterGuestAbout({
         currentStep: 'before_recordAbout',
-        isSignedIn: true,
+        isIdentified: false,
+        hasGuestAbout: true,
+      }),
+    ).toBe(true);
+  });
+
+  it('keeps the identified path on recordAbout', () => {
+    expect(
+      shouldSkipToPlanIntroAfterGuestAbout({
+        currentStep: 'before_recordAbout',
+        isIdentified: true,
         hasGuestAbout: true,
       }),
     ).toBe(false);
@@ -28,7 +38,7 @@ describe('quizGuestPath', () => {
     expect(
       shouldSkipToPlanIntroAfterGuestAbout({
         currentStep: 'before_recordAbout',
-        isSignedIn: false,
+        isIdentified: false,
         hasGuestAbout: false,
       }),
     ).toBe(false);
@@ -38,7 +48,7 @@ describe('quizGuestPath', () => {
     expect(
       shouldReturnToGuestAboutFromPlanIntro({
         currentStep: 'before_goalReview',
-        isSignedIn: false,
+        isIdentified: false,
         hasGuestAbout: true,
       }),
     ).toBe(true);

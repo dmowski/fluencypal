@@ -81,7 +81,7 @@ export const AuthWallBasic = ({
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
-  const isShowAuthWall = !auth.uid && !auth.loading;
+  const isShowAuthWall = !auth.isIdentified && !auth.loading;
 
   const [isValidEmailError, setIsValidEmailError] = useState(false);
   const [emailSignInError, setEmailSignInError] = useState('');

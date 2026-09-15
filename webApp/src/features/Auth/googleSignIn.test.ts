@@ -13,9 +13,16 @@ import {
 } from './googleSignIn';
 
 jest.mock('firebase/auth', () => ({
-  GoogleAuthProvider: class GoogleAuthProvider {},
+  GoogleAuthProvider: class GoogleAuthProvider {
+    static credentialFromError() {
+      return null;
+    }
+  },
   signInWithPopup: jest.fn(),
   signInWithRedirect: jest.fn(),
+  linkWithPopup: jest.fn(),
+  linkWithRedirect: jest.fn(),
+  signInWithCredential: jest.fn(),
   getRedirectResult: jest.fn(),
 }));
 

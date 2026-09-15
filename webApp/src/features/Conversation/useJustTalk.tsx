@@ -6,17 +6,21 @@ import { useConversationAudio } from '../Audio/useConversationAudio';
 import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStream';
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
+import { useAuth } from '../Auth/useAuth';
+import { readPendingTeacherVoice } from '@/features/Goal/Quiz/pendingTeacherVoice';
 
 export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy';
 
 export const useJustTalk = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
+  const auth = useAuth();
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
   const { requestMicrophoneWithConsent } = useMicrophonePermission();
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName =
+    settings.userSettings?.teacherVoice || readPendingTeacherVoice() || 'shimmer';
   const startJustTalk = async (
     model?: RealTimeModel,
     options?: { skipConsentUi?: boolean },
@@ -25,6 +29,7 @@ export const useJustTalk = () => {
     setIsCallStarting(true);
 
     try {
+      await auth.ensureAnonymousAuth();
       await audio.initAudio();
       const mediaStream = options?.skipConsentUi
         ? await getMediaAudioStreams()
@@ -34,7 +39,9 @@ export const useJustTalk = () => {
       }
 
       await getMediaVideoStreams();
-      await settings.setConversationMode('call');
+      if (auth.isIdentified) {
+        await settings.setConversationMode('call');
+      }
       await conversation.startConversation({
         conversationMode: 'call',
         mode: 'talk',

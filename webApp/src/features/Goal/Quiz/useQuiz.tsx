@@ -40,6 +40,7 @@ import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 import { useAccess } from '@/features/Usage/useAccess';
 import { useFlushPendingTeacherVoice } from './useFlushPendingTeacherVoice';
+import { useFlushPendingPracticeLanguage } from './useFlushPendingPracticeLanguage';
 import { flushGuestAboutToSurvey, hasGuestAbout } from './quizGuestAboutStorage';
 import {
   quizGuestAboutStep,
@@ -858,6 +859,18 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   };
 
   useEffect(() => {
+    if (auth.loading || auth.isIdentified) {
+      return;
+    }
+    if (currentStep !== 'before_goalReview' && currentStep !== 'goalReview') {
+      return;
+    }
+    void auth.ensureAnonymousAuth().catch((error) => {
+      Sentry.captureException(error);
+    });
+  }, [auth.loading, auth.isIdentified, auth.ensureAnonymousAuth, currentStep]);
+
+  useEffect(() => {
     if (!auth.uid) {
       return;
     }
@@ -890,7 +903,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     if (
       shouldSkipToPlanIntroAfterGuestAbout({
         currentStep,
-        isSignedIn: Boolean(auth.uid),
+        isIdentified: auth.isIdentified,
         hasGuestAbout: hasGuestAbout(languageToLearn),
       })
     ) {
@@ -953,7 +966,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     if (
       shouldReturnToGuestAboutFromPlanIntro({
         currentStep,
-        isSignedIn: Boolean(auth.uid),
+        isIdentified: auth.isIdentified,
         hasGuestAbout: hasGuestAbout(languageToLearn),
       })
     ) {
@@ -963,7 +976,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
     void setState({ currentStep: prevStep });
-  }, [auth.uid, currentStep, currentStepIndex, languageToLearn, path, setState]);
+  }, [auth.isIdentified, currentStep, currentStepIndex, languageToLearn, path, setState]);
 
   const navigateToMainPage = () => {
     const newPath = `${getLandingUrlStart(pageLanguage)}`;
@@ -1025,6 +1038,7 @@ export function QuizProvider({
   defaultLangToLearn: SupportedLanguage;
 }): JSX.Element {
   useFlushPendingTeacherVoice();
+  useFlushPendingPracticeLanguage();
   const hook = useProvideQuizContext({ pageLang, defaultLangToLearn });
   return <QuizContext.Provider value={hook}>{children}</QuizContext.Provider>;
 }

@@ -6,6 +6,8 @@ import {
   signInWithEmailLink,
   ActionCodeSettings,
 } from 'firebase/auth';
+import { ensureAnonymousAuth } from './anonymousAuth';
+import { isIdentifiedAuthUser } from './identifiedAuth';
 import { Context, JSX, ReactNode, createContext, useContext, useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../Firebase/init';
@@ -30,9 +32,12 @@ export interface AuthContext {
   uid: string;
   userInfo: UserInfo | null;
   isAuthorized: boolean;
+  isAnonymous: boolean;
+  isIdentified: boolean;
   logout: () => Promise<void>;
   signInWithGoogle: () => Promise<SignInResult>;
   signInWithCustomToken: (backendToken: string) => Promise<SignInResult>;
+  ensureAnonymousAuth: () => Promise<string>;
   getToken: (forceRefresh?: boolean) => Promise<string>;
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
@@ -47,6 +52,8 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   loading: true,
   uid: '',
   isAuthorized: false,
+  isAnonymous: false,
+  isIdentified: false,
   userInfo: null,
   logout: async () => void 0,
   signInWithGoogle: async () => {
@@ -55,6 +62,7 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   signInWithCustomToken: async () => {
     throw new Error('signInWithCustomToken not implemented');
   },
+  ensureAnonymousAuth: async () => '',
   getToken: async () => '',
   signInWithEmail: async () => {
     throw new Error('signInWithEmail not implemented');
@@ -232,6 +240,8 @@ function useProvideAuth(): AuthContext {
   };
 
   const isAuthorized = !!userInfo?.uid && !errorAuth;
+  const isAnonymous = Boolean(userInfo?.isAnonymous);
+  const isIdentified = isIdentifiedAuthUser(userInfo) && !errorAuth;
 
   const isDev = userInfo?.email?.includes('dmowski') || false;
 
@@ -273,10 +283,13 @@ function useProvideAuth(): AuthContext {
 
   return {
     isAuthorized,
+    isAnonymous,
+    isIdentified,
     loading,
 
     signInWithGoogle,
     signInWithCustomToken,
+    ensureAnonymousAuth: () => ensureAnonymousAuth(auth),
 
     userInfo: userInfo || null,
     uid: userId,
