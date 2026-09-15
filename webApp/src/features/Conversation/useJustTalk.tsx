@@ -8,6 +8,7 @@ import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 import { useAuth } from '../Auth/useAuth';
 import { readPendingTeacherVoice } from '@/features/Goal/Quiz/pendingTeacherVoice';
+import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
 
 export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy';
 
@@ -30,6 +31,10 @@ export const useJustTalk = () => {
 
     try {
       await auth.ensureAnonymousAuth();
+      const pendingLanguage = readPendingPracticeLanguage();
+      if (pendingLanguage && !settings.languageCode) {
+        await settings.setLanguage(pendingLanguage);
+      }
       await audio.initAudio();
       const mediaStream = options?.skipConsentUi
         ? await getMediaAudioStreams()
@@ -39,9 +44,7 @@ export const useJustTalk = () => {
       }
 
       await getMediaVideoStreams();
-      if (auth.isIdentified) {
-        await settings.setConversationMode('call');
-      }
+      await settings.setConversationMode('call');
       await conversation.startConversation({
         conversationMode: 'call',
         mode: 'talk',
