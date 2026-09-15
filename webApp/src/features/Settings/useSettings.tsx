@@ -187,7 +187,7 @@ function useProvideSettings(): SettingsContextType {
           currency: currency.currency || null,
           country: country || null,
           countryName: countryName || null,
-          userSource: userSource.userSource,
+          userSource: userSource.userSource || userSource.getParamsFromStorage(),
           photoUrl: auth.userInfo?.photoURL || '',
           displayName: auth.userInfo?.displayName || '',
         },

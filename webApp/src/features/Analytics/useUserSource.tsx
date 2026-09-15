@@ -2,86 +2,35 @@
 
 import { UserSource } from '@/features/Analytics/analytics';
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
+import {
+  buildUserSource,
+  captureUserSourceFromTrackerSearch,
+  getParamsFromStorage,
+  persistUserSourceIfAbsent,
+} from './userSourceCapture';
 
-const SOURCE_STORAGE_KEY = 'user_source_info';
+export { getParamsFromStorage } from './userSourceCapture';
 
 interface UserSourceContextType {
   userSource: UserSource | null;
   getParamsFromStorage: () => UserSource | null;
 }
 
-export const getParamsFromStorage = (): UserSource | null => {
-  if (typeof window === 'undefined') return null;
-
-  try {
-    const stored = window.localStorage.getItem(SOURCE_STORAGE_KEY);
-    if (!stored) return null;
-    return JSON.parse(stored) as UserSource;
-  } catch {
-    // Third-party iframes and some privacy modes deny localStorage.
-    return null;
-  }
-};
-
-const persistUserSource = (source: UserSource): void => {
-  try {
-    window.localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(source));
-  } catch {
-    // Keep the in-memory source even when storage is blocked.
-  }
-};
-
 const UserSourceContext = createContext<UserSourceContextType | null>(null);
 
 function useProvideUserSource(): UserSourceContextType {
-  const [userSource, setUserSource] = useState<UserSource | null>(null);
-  const isWindow = typeof window !== 'undefined';
+  const [userSource, setUserSource] = useState<UserSource | null>(() => getParamsFromStorage());
 
-  const getUrlParam = (param: string): string | null => {
-    if (!isWindow) return null;
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param) ?? null;
-  };
-
-  const getSourceFromUrl = (): UserSource | null => {
-    if (!isWindow) return null;
-
-    const url = new URL(window.location.href);
-    const referrer = document.referrer || '';
-
-    return {
-      urlPath: url.pathname + url.search,
-      referrer,
-
-      utmSource: getUrlParam('utm_source'),
-      utmMedium: getUrlParam('utm_medium'),
-      utmCampaign: getUrlParam('utm_campaign'),
-      utmTerm: getUrlParam('utm_term'),
-      utmContent: getUrlParam('utm_content'),
-
-      // New Google Ads params
-      gclid: getUrlParam('gclid'),
-      gbraid: getUrlParam('gbraid'),
-      wbraid: getUrlParam('wbraid'),
-    };
-  };
-
-  const initUserSource = () => {
-    const existing = getParamsFromStorage();
-    if (existing) {
-      setUserSource(existing);
-      return;
-    }
-
-    const fromUrl = getSourceFromUrl();
-    if (fromUrl) {
-      persistUserSource(fromUrl);
-      setUserSource(fromUrl);
-    }
+  const captureFromCurrentPage = (): UserSource | null => {
+    if (typeof window === 'undefined') return null;
+    const fromUrl = buildUserSource(window.location.href, document.referrer || '');
+    if (fromUrl) return fromUrl;
+    return captureUserSourceFromTrackerSearch(window.location.search);
   };
 
   useEffect(() => {
-    initUserSource();
+    const captured = persistUserSourceIfAbsent(captureFromCurrentPage());
+    if (captured) setUserSource(captured);
   }, []);
 
   return {

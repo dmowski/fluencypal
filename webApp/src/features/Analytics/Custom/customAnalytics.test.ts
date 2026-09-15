@@ -435,6 +435,15 @@ describe('parentVisitorId', () => {
     expect(
       decorateAppHref('https://app.fluencypal.com/quiz', visitorId),
     ).toBe(`https://app.fluencypal.com/quiz?fpv=${visitorId}`);
+    expect(
+      decorateAppHref(
+        'https://app.fluencypal.com/quiz',
+        visitorId,
+        'https://www.fluencypal.com/es?utm_source=google&utm_medium=cpc',
+      ),
+    ).toBe(
+      `https://app.fluencypal.com/quiz?fpv=${visitorId}&utm_source=google&utm_medium=cpc`,
+    );
     expect(decorateAppHref('https://www.fluencypal.com/th', visitorId)).toBe(
       'https://www.fluencypal.com/th',
     );

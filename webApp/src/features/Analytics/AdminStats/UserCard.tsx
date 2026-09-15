@@ -8,6 +8,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from '../../Lang/lang';
 import { LogIn, UserPlus, BadgeCheck, Gem, Axe, Loader } from 'lucide-react';
 import { defaultAvatar } from '../../Game/avatars';
 import { UserSource } from '@/features/Analytics/analytics';
+import { formatUserSourceLabel } from '@/features/Analytics/userSourceCapture';
 import { Messages } from '../../Conversation/Messages';
 import { Conversation } from '@/features/Conversation/conversation';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
@@ -66,6 +67,7 @@ export function UserCard({ userStat }: UserCardProps) {
   const pageLanguageCode = user.pageLanguageCode || 'en';
 
   const userSource: UserSource | null = userStat.userData.userSource || null;
+  const userSourceLabel = formatUserSourceLabel(userSource);
   const isFromChatGpt =
     userSource?.referrer?.toLowerCase().includes('chatgpt') ||
     userSource?.utmSource?.toLowerCase().includes('chatgpt');
@@ -396,14 +398,20 @@ export function UserCard({ userStat }: UserCardProps) {
           </Stack>
         )}
 
-        {userSource?.urlPath && (
+        {userSourceLabel && (
           <Stack
             sx={{
               width: '100%',
               wordBreak: 'break-all',
             }}
           >
-            <Typography variant="caption">{userSource?.urlPath || ''}</Typography>
+            <Tooltip
+              title={[userSource?.referrer, userSource ? JSON.stringify(userSource, null, 2) : '']
+                .filter(Boolean)
+                .join('\n')}
+            >
+              <Typography variant="caption">{userSourceLabel}</Typography>
+            </Tooltip>
           </Stack>
         )}
 

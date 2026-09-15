@@ -1,5 +1,7 @@
 import {
   ANALYTICS_MESSAGE_SOURCE,
+  ANALYTICS_SOURCE_HREF_QUERY,
+  ANALYTICS_SOURCE_REFERRER_QUERY,
   ANALYTICS_TRACKER_PATH,
   LOCAL_APP_ORIGIN,
   PRODUCTION_APP_ORIGIN,
@@ -35,8 +37,11 @@ export const getTrackerOrigin = (): string => {
   return PRODUCTION_APP_ORIGIN;
 };
 
-export const getTrackerUrl = (): string => {
-  return `${getTrackerOrigin()}${ANALYTICS_TRACKER_PATH}`;
+export const getTrackerUrl = (pageHref?: string, referrer?: string): string => {
+  const url = new URL(`${getTrackerOrigin()}${ANALYTICS_TRACKER_PATH}`);
+  if (pageHref) url.searchParams.set(ANALYTICS_SOURCE_HREF_QUERY, pageHref);
+  if (referrer) url.searchParams.set(ANALYTICS_SOURCE_REFERRER_QUERY, referrer);
+  return url.toString();
 };
 
 export const isAnalyticsMessage = (

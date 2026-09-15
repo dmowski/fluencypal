@@ -7,6 +7,7 @@ import { buildReadyMessage, isAnalyticsMessage } from './protocol';
 import { ingestClientEvent } from './ingestClientEvent';
 import { createVisitorId, isValidVisitorId } from './visitorId';
 import { validateClientEvent, validateVisitorId } from './validateEvent';
+import { buildUserSource, persistUserSourceIfAbsent } from '@/features/Analytics/userSourceCapture';
 
 const readStoredVisitorId = (): string | null => {
   try {
@@ -76,6 +77,7 @@ export function TrackerPage() {
       if (event.data.type !== 'event') return;
       const validated = validateClientEvent(event.data.event);
       if (!validated) return;
+      persistUserSourceIfAbsent(buildUserSource(validated.href, validated.referrer || ''));
       void ingestClientEvent(visitorId, validated);
     };
 

@@ -53,13 +53,41 @@ export const serializeVisitorCookie = (
   return pieces.join('; ');
 };
 
+const ATTRIBUTION_QUERY_KEYS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'gclid',
+  'gbraid',
+  'wbraid',
+] as const;
+
+const copyAttributionParams = (fromHref: string | undefined, toUrl: URL): void => {
+  if (!fromHref) return;
+  try {
+    const source = new URL(fromHref);
+    for (const key of ATTRIBUTION_QUERY_KEYS) {
+      const value = source.searchParams.get(key);
+      if (value && !toUrl.searchParams.get(key)) {
+        toUrl.searchParams.set(key, value);
+      }
+    }
+  } catch {
+    // ignore invalid source URLs
+  }
+};
+
 export const decorateAppHref = (href: string, visitorId: string, baseHref?: string): string => {
   if (!href || !isValidVisitorId(visitorId)) return href;
   try {
     const url = new URL(href, baseHref || 'https://www.fluencypal.com');
     if (!isFluencyPalAppHost(url.hostname)) return href;
-    if (url.searchParams.get(ANALYTICS_VISITOR_QUERY)) return url.toString();
-    url.searchParams.set(ANALYTICS_VISITOR_QUERY, visitorId);
+    if (!url.searchParams.get(ANALYTICS_VISITOR_QUERY)) {
+      url.searchParams.set(ANALYTICS_VISITOR_QUERY, visitorId);
+    }
+    copyAttributionParams(baseHref, url);
     return url.toString();
   } catch {
     return href;

@@ -237,7 +237,7 @@ export function CustomAnalyticsHost() {
   return createPortal(
     <iframe
       ref={iframeRef}
-      src={getTrackerUrl()}
+      src={getTrackerUrl(window.location.href, document.referrer)}
       title="Custom analytics"
       aria-hidden="true"
       tabIndex={-1}

@@ -1,5 +1,7 @@
 export const ANALYTICS_MESSAGE_SOURCE = 'fp-custom-analytics';
 export const ANALYTICS_TRACKER_PATH = '/analytics/tracker';
+export const ANALYTICS_SOURCE_HREF_QUERY = 'fp_src';
+export const ANALYTICS_SOURCE_REFERRER_QUERY = 'fp_ref';
 export const PRODUCTION_APP_ORIGIN = 'https://app.fluencypal.com';
 export const LOCAL_APP_ORIGIN = 'http://localhost:3000';
 
@@ -54,8 +56,11 @@ export const getTrackerOrigin = (): string => {
   return PRODUCTION_APP_ORIGIN;
 };
 
-export const getTrackerUrl = (): string => {
-  return `${getTrackerOrigin()}${ANALYTICS_TRACKER_PATH}`;
+export const getTrackerUrl = (pageHref?: string, referrer?: string): string => {
+  const url = new URL(`${getTrackerOrigin()}${ANALYTICS_TRACKER_PATH}`);
+  if (pageHref) url.searchParams.set(ANALYTICS_SOURCE_HREF_QUERY, pageHref);
+  if (referrer) url.searchParams.set(ANALYTICS_SOURCE_REFERRER_QUERY, referrer);
+  return url.toString();
 };
 
 export const isReadyMessage = (data: unknown): boolean => {

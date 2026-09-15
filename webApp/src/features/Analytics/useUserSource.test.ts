@@ -23,6 +23,15 @@ describe('getParamsFromStorage', () => {
     expect(getParamsFromStorage()).toEqual({ urlPath: '/practice', referrer: '' });
   });
 
+  it('returns null when the stored path is the analytics tracker iframe', () => {
+    window.localStorage.setItem(
+      SOURCE_STORAGE_KEY,
+      JSON.stringify({ urlPath: '/analytics/tracker', referrer: '' }),
+    );
+
+    expect(getParamsFromStorage()).toBeNull();
+  });
+
   it('returns null when reading localStorage is denied', () => {
     Object.defineProperty(window, 'localStorage', {
       configurable: true,
