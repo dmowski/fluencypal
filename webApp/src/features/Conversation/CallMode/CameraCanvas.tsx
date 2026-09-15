@@ -44,6 +44,7 @@ export const CameraCanvas = ({
   fullExit,
   gameWords,
   onSelectMicrophone,
+  isGuestConversationLimited = false,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -71,6 +72,7 @@ export const CameraCanvas = ({
   fullExit: () => void;
   gameWords: GuessGameStat | null;
   onSelectMicrophone?: (deviceId: string | null) => void;
+  isGuestConversationLimited?: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -298,6 +300,7 @@ export const CameraCanvas = ({
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
             fullExit={fullExit}
+            isGuestConversationLimited={isGuestConversationLimited}
           />
         </Stack>
       </Stack>

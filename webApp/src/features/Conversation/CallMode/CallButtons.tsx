@@ -49,6 +49,7 @@ export const CallButtons = ({
   messages,
   isSendMessagesBlocked,
   fullExit,
+  isGuestConversationLimited = false,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -76,6 +77,7 @@ export const CallButtons = ({
   messages: ConversationMessage[];
   isSendMessagesBlocked: boolean;
   fullExit: () => void;
+  isGuestConversationLimited?: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -372,6 +374,10 @@ Return ONLY the number.
   }, [isSendMessagesBlocked]);
 
   const isLimited = isLimitedVoice || isSendMessagesBlocked;
+
+  if (isLimited && isGuestConversationLimited) {
+    return null;
+  }
 
   if (isLimited) {
     return (

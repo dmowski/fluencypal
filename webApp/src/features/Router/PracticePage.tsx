@@ -236,6 +236,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
         onWebCamDescription={aiConversation.setWebCamDescription}
+        isGuestConversationLimited={aiConversation.isGuestConversationLimited}
         onLimitedClick={() => {
           if (aiConversation.isGuestConversationLimited) {
             return;

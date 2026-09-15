@@ -1,5 +1,10 @@
-import { hasUserSpokenInConversation } from './justTalkHandoff';
 import { ConversationMessage } from './conversation';
+
+export const GUEST_CONVERSATION_USER_MESSAGE_LIMIT = 3;
+
+export const countUserMessages = (
+  conversation: Pick<ConversationMessage, 'isBot' | 'text'>[],
+): number => conversation.filter((message) => !message.isBot && Boolean(message.text?.trim())).length;
 
 export const isGuestConversationLimited = ({
   isIdentified,
@@ -11,5 +16,5 @@ export const isGuestConversationLimited = ({
   if (isIdentified) {
     return false;
   }
-  return hasUserSpokenInConversation(conversation);
+  return countUserMessages(conversation) >= GUEST_CONVERSATION_USER_MESSAGE_LIMIT;
 };

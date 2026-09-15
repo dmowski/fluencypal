@@ -15,7 +15,7 @@ export const ConversationGuestAuthWall = () => {
       sx={{
         position: 'fixed',
         inset: 0,
-        zIndex: 30,
+        zIndex: 1400,
         alignItems: 'center',
         justifyContent: 'flex-start',
         overflow: 'auto',

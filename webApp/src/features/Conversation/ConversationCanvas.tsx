@@ -96,6 +96,7 @@ interface ConversationCanvasProps {
 
   isSendMessagesBlocked: boolean;
   onSelectMicrophone?: (deviceId: string | null) => void;
+  isGuestConversationLimited?: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -143,6 +144,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   isSendMessagesBlocked,
   transcriptionBlob,
   onSelectMicrophone,
+  isGuestConversationLimited = false,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -284,6 +286,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
               closeConversation();
             }}
             onSelectMicrophone={onSelectMicrophone}
+            isGuestConversationLimited={isGuestConversationLimited}
           />
         </Modal>
       </>
