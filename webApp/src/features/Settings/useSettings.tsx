@@ -230,6 +230,7 @@ function useProvideSettings(): SettingsContextType {
   useEffect(() => {
     if (!userId || !userSettingsDoc) return;
 
+    // Re-run after anonymous → Google link: same uid, but Auth now has email/photo/name.
     initUserSettings();
 
     const timeout = setTimeout(() => {
@@ -244,7 +245,7 @@ function useProvideSettings(): SettingsContextType {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, [userId, userSettingsDoc]);
+  }, [userId, userSettingsDoc, auth.isIdentified]);
 
   const userCreatedAt = userSettings?.createdAtIso || null;
 

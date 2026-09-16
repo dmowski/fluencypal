@@ -1,5 +1,6 @@
 import { validateAuthToken, getDB } from '../config/firebase';
 import { InitUserSettings } from '@/features/Settings/userSettings';
+import { getIdentifiedProfileUpdates } from '@/features/Settings/identifiedProfileUpdates';
 import { InitUserSettingsRequest, InitUserSettingsResponse } from './types';
 
 export async function POST(request: Request): Promise<Response> {
@@ -13,16 +14,25 @@ export async function POST(request: Request): Promise<Response> {
   const userDoc = db.collection('users').doc(userId);
   const snapshot = await userDoc.get();
   const data = snapshot.data();
+  const body = (await request.json()) as InitUserSettingsRequest;
 
   const isNoCreatedAt = !data?.createdAt;
   const isNew = !snapshot.exists || isNoCreatedAt;
 
   if (!isNew) {
+    const profileUpdates = getIdentifiedProfileUpdates({
+      existing: data,
+      authEmail: userInfo.email || null,
+      photoUrl: body.photoUrl,
+      displayName: body.displayName,
+    });
+    if (Object.keys(profileUpdates).length > 0) {
+      await userDoc.set(profileUpdates, { merge: true });
+    }
+
     const response: InitUserSettingsResponse = { status: 'already_initialized' };
     return new Response(JSON.stringify(response), { status: 200 });
   }
-
-  const body = (await request.json()) as InitUserSettingsRequest;
 
   const settingsData: InitUserSettings = {
     createdAt: Date.now(),
