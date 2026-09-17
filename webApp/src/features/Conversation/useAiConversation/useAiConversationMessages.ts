@@ -11,6 +11,7 @@ import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
 import { useSettings } from '@/features/Settings/useSettings';
 import { setGlobalConversationId } from '@/features/Usage/globalConversationId';
 import { hasUserSpokenInConversation } from '@/features/Conversation/justTalkHandoff';
+import { SupportedLanguage } from '@/features/Lang/lang';
 import { useState, useRef, useEffect } from 'react';
 
 export const useAiConversationMessages = () => {
@@ -55,14 +56,18 @@ export const useAiConversationMessages = () => {
     };
   }, [conversationId, conversation, messageOrder]);
 
-  const newConversation = (mode: ConversationType, rolePlayId: string | null) => {
+  const newConversation = (
+    mode: ConversationType,
+    rolePlayId: string | null,
+    languageCode: SupportedLanguage = settings.languageCode || 'en',
+  ) => {
     const newConversationId = `${Date.now()}`;
     setConversationId(newConversationId);
     isStartedAnalyticLogged.current = false;
 
     history.createConversation({
       conversationId: newConversationId,
-      languageCode: settings.languageCode || 'en',
+      languageCode,
       mode: mode,
       rolePlayId,
     });

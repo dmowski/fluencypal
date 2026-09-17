@@ -1,15 +1,6 @@
 'use client';
 
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  JSX,
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-} from 'react';
+import { createContext, useContext, ReactNode, JSX, useEffect, useRef, useState } from 'react';
 import { AiVoice, MODELS, pricePerHourUsd, RealTimeModel } from '@/features/Ai/ai';
 import {
   ADVANCED_PRICE_PER_HOUR_USD,
@@ -24,14 +15,14 @@ import { sleep } from '@/libs/sleep';
 import { ConversationIdea, useAiUserInfo } from '../../User/useAiUserInfo';
 import { GuessGameStat, RecordingUserMessageMode } from '../types';
 import { useAuth } from '../../Auth/useAuth';
-import { firstAiMessage } from '@/features/Lang/lang';
+import { firstAiMessage, fullEnglishLanguageName, getPageLangCode } from '@/features/Lang/lang';
 import { GoalElementInfo } from '../../Plan/types';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { useAccess } from '../../Usage/useAccess';
 import { LessonPlan, LessonPlanStep } from '../../LessonPlan/type';
 import { ConversationConfig, ConversationInstance } from '../ConversationInstance/types';
 import { useTextAi } from '../../Ai/useTextAi';
-import { SpeakOptions, useConversationAudio } from '../../Audio/useConversationAudio';
+import { useConversationAudio } from '../../Audio/useConversationAudio';
 import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
@@ -39,6 +30,7 @@ import { getConversationStarterMessagePrompt } from './getConversationStarterMes
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
 import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
+import { resolvePracticeLanguage } from '@/features/Goal/Quiz/resolvePracticeLanguage';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
@@ -191,14 +183,8 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleMute(true);
     toggleVolume(isLimited ? false : true);
   };
-  const targetLanguage = settings.languageCode || 'en';
 
-  const speakOptionsMain: SpeakOptions = useMemo(
-    () => getVoiceOverSpeakOptions(targetLanguage),
-    [targetLanguage],
-  );
-
-  const getBaseRtcConfig = () => {
+  const getBaseRtcConfig = (activeLanguageCode: typeof languageCode) => {
     const baseConfig: ConversationConfig = {
       model: MODELS.REALTIME_CONVERSATION,
       initInstruction: '',
@@ -211,14 +197,14 @@ function useProvideAiConversation(): AiConversationContextType {
       isMuted,
       isVolumeOn,
       onAddUsage: conversationUsage.onAddUsage,
-      languageCode: settings.languageCode || 'en',
+      languageCode: activeLanguageCode,
       getAuthToken: () => auth.getToken(),
       onMessageOrder: messages.updateMessageOrder,
       generateTextWithAi: async ({ userMessage, systemMessage }) => {
         return await ai.generate({
           userMessage,
           systemMessage,
-          languageCode: settings.languageCode || 'en',
+          languageCode: activeLanguageCode,
           model: 'gpt-5.6-luna',
         });
       },
@@ -228,7 +214,8 @@ function useProvideAiConversation(): AiConversationContextType {
         console.log('Start speaking', textToPlay);
 
         const speedInstruction = getVoiceSpeedInstruction(voiceSpeed);
-        const finalInstruction = `${speakOptionsMain.instructions} ${speedInstruction}`;
+        const languageInstruction = getVoiceOverSpeakOptions(activeLanguageCode).instructions;
+        const finalInstruction = `${languageInstruction} ${speedInstruction}`;
         await audio.speak(textToPlay, { instructions: finalInstruction, voice });
         setIsAiSpeakingStartedFromConversation(false);
       },
@@ -245,6 +232,7 @@ function useProvideAiConversation(): AiConversationContextType {
     lessonPlan,
     voice,
     isNewUser,
+    activeLanguageCode,
   }: {
     mode: ConversationType;
     goal?: GoalElementInfo | null;
@@ -252,8 +240,10 @@ function useProvideAiConversation(): AiConversationContextType {
     lessonPlan?: LessonPlan;
     voice: AiVoice;
     isNewUser: boolean;
+    activeLanguageCode: typeof languageCode;
   }): Promise<ConversationConfig> => {
-    const baseConfig = getBaseRtcConfig();
+    const baseConfig = getBaseRtcConfig(activeLanguageCode);
+    const activeFullLanguageName = fullEnglishLanguageName[activeLanguageCode] || fullLanguageName;
 
     const voiceInstructions = getVoiceInstructions(voice, voiceSpeed);
 
@@ -292,7 +282,7 @@ ${lessonPlan.steps
         ...baseConfig,
         voice,
         initInstruction: `# Overview
-You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
+You are an ${activeFullLanguageName} speaking teacher. Your name is "${voice}".
 Your role is to make user talks on a topic: ${elementTitle}. ${elementDescription}. (${elementDetails}).
 You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
         
@@ -304,7 +294,7 @@ ${userInfoPrompt}
 
 ${voiceInstructions}
 
-Use ${fullLanguageName} language in conversation.
+Use ${activeFullLanguageName} language in conversation.
 
 Start the first message slowly and simply.
 `,
@@ -319,7 +309,7 @@ Start the first message slowly and simply.
         ...baseConfig,
         voice,
         initInstruction: `# Overview
-You are an ${fullLanguageName} speaking teacher. Your name is "${voice}".
+You are an ${activeFullLanguageName} speaking teacher. Your name is "${voice}".
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 You win the goal if user will talk with you. Keep in mind to change topic if user stuck at some point
 
@@ -338,7 +328,7 @@ ${voiceInstructions}
 
     if (mode === 'talk') {
       // todo: Adjust to more creative
-      let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
+      let startFirstMessage = `"${firstAiMessage[activeLanguageCode]}"`;
 
       let openerInfoPrompt = 'Ask the student to describe their day.';
       if (userInfo && userInfo.length > 0) {
@@ -353,7 +343,7 @@ ${voiceInstructions}
 
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
 Don't focus solely on one topic. Try to cover a variety of topics (Example\n${potentialTopics}).
-Use ${fullLanguageName} language in conversation.
+Use ${activeFullLanguageName} language in conversation.
   `;
 
         setIsInitializing(`Starting conversation...`);
@@ -363,7 +353,11 @@ Use ${fullLanguageName} language in conversation.
       return {
         ...baseConfig,
         voice,
-        initInstruction: `${aiPersona} Your name is ${voice}. Your role is to make user talks.
+        initInstruction: `${
+          appMode === 'learning'
+            ? `You are an ${activeFullLanguageName} teacher.`
+            : `You are an job interview coach.`
+        } Your name is ${voice}. Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -470,11 +464,21 @@ ${voiceInstructions}
 
   const settingsVoice = settings.userSettings?.teacherVoice;
   const startConversation = async (input: StartConversationProps) => {
-    if (!settings.languageCode && !readPendingPracticeLanguage()) {
-      throw new Error('Language is not set | startConversation');
+    const pendingLanguage = readPendingPracticeLanguage();
+    const activeLanguageCode = resolvePracticeLanguage({
+      settingsLanguage: settings.languageCode,
+      pendingLanguage,
+      pageLanguage: getPageLangCode(),
+    });
+    if (!settings.languageCode) {
+      await settings.setLanguage(activeLanguageCode);
     }
 
-    const newConversationId = messages.newConversation(input.mode, input.rolePlayId || null);
+    const newConversationId = messages.newConversation(
+      input.mode,
+      input.rolePlayId || null,
+      activeLanguageCode,
+    );
     messages.resetMessageOrder();
 
     let isMutedInternal = true;
@@ -522,6 +526,7 @@ ${voiceInstructions}
         lessonPlan: input.lessonPlan,
         voice: input.voice || settingsVoice || 'shimmer',
         isNewUser,
+        activeLanguageCode,
       });
 
       let instruction = conversationConfig.initInstruction;
@@ -654,8 +659,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
     if (!testHandle) {
       return;
     }
-    testHandle.addConversationUserMessage = (message: string) =>
-      addUserMessageRef.current(message);
+    testHandle.addConversationUserMessage = (message: string) => addUserMessageRef.current(message);
     testHandle.isConversationStarted = () => isStarted;
     return () => {
       delete testHandle.addConversationUserMessage;

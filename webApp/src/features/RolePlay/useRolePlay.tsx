@@ -195,15 +195,19 @@ function useProvideRolePlay({
       clearGuestReply(scenario.id);
     }
 
-    aiConversation.startConversation({
-      mode: 'role-play',
-      customInstruction: instruction,
-      voice: scenario.voice || 'shimmer',
-      gameWords: gameStat,
-      analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
-      conversationMode: conversationMode,
-      rolePlayId: scenario.id,
-    });
+    try {
+      await aiConversation.startConversation({
+        mode: 'role-play',
+        customInstruction: instruction,
+        voice: scenario.voice || 'shimmer',
+        gameWords: gameStat,
+        analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
+        conversationMode: conversationMode,
+        rolePlayId: scenario.id,
+      });
+    } catch (error) {
+      console.error('Failed to start role play', error);
+    }
 
     if (isAliasGameRolePlay(scenario.id)) {
       trackAliasEvent('alias_round_started');
@@ -364,52 +368,54 @@ function useProvideRolePlay({
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
 
-    const isAliasGame = isAliasGameRolePlay(selectedRolePlayScenario.id);
-    if (isAliasGame) {
-      trackAliasEvent('alias_microphone_permission_requested');
-    }
-    const stream = await requestMicrophoneWithConsent();
-    if (isAliasGame) {
-      trackAliasEvent(
-        stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
-      );
-    }
-    if (!stream) {
+    try {
+      const isAliasGame = isAliasGameRolePlay(selectedRolePlayScenario.id);
+      if (isAliasGame) {
+        trackAliasEvent('alias_microphone_permission_requested');
+      }
+      const stream = await requestMicrophoneWithConsent();
+      if (isAliasGame) {
+        trackAliasEvent(
+          stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
+        );
+      }
+      if (!stream) {
+        return;
+      }
+
+      const rolePlayInputs = await prepareUserInputs();
+      const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
+
+      if (isNeedToGenerateWords) {
+        const levelInput = selectedRolePlayScenario.input.find(
+          (input) => input.id === 'languageLevel',
+        );
+        const levelValue =
+          userInputs?.[selectedRolePlayScenario.id + '-languageLevel'] ||
+          levelInput?.defaultValue ||
+          '';
+        trackAliasEvent('alias_level_selected', { level: String(levelValue) });
+
+        const wordsInfo = await generateRandomWord(
+          rolePlayInputs.map((input) => input.labelForAi + ':' + input.userValue).join(', '),
+        );
+
+        await onStartRolePlay({
+          scenario: selectedRolePlayScenario,
+          rolePlayInputs,
+          gameStat: wordsInfo,
+          conversationMode: 'call',
+        });
+      } else {
+        await onStartRolePlay({
+          scenario: selectedRolePlayScenario,
+          rolePlayInputs,
+          conversationMode: 'call',
+        });
+      }
+    } finally {
       setIsStarting(false);
-      return;
     }
-
-    const rolePlayInputs = await prepareUserInputs();
-    const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === 'alias';
-
-    if (isNeedToGenerateWords) {
-      const levelInput = selectedRolePlayScenario.input.find(
-        (input) => input.id === 'languageLevel',
-      );
-      const levelValue =
-        userInputs?.[selectedRolePlayScenario.id + '-languageLevel'] ||
-        levelInput?.defaultValue ||
-        '';
-      trackAliasEvent('alias_level_selected', { level: String(levelValue) });
-
-      const wordsInfo = await generateRandomWord(
-        rolePlayInputs.map((input) => input.labelForAi + ':' + input.userValue).join(', '),
-      );
-
-      await onStartRolePlay({
-        scenario: selectedRolePlayScenario,
-        rolePlayInputs,
-        gameStat: wordsInfo,
-        conversationMode: 'call',
-      });
-    } else {
-      await onStartRolePlay({
-        scenario: selectedRolePlayScenario,
-        rolePlayInputs,
-        conversationMode: 'call',
-      });
-    }
-    setIsStarting(false);
   };
 
   return {

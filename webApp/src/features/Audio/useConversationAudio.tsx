@@ -15,6 +15,7 @@ import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
 import { isRecoverableTtsFormatError } from './isRecoverableTtsFormatError';
+import { resetHtmlAudioElement, shouldRetryPlayOnFreshElement } from './htmlAudioElement';
 import * as Sentry from '@sentry/nextjs';
 
 export const ttsVersion = 'v14';
@@ -177,25 +178,8 @@ class AudioQueuePlayer {
     // Create media elements before awaiting resume so concurrent play()
     // calls (e.g. fire-and-forget initAudio + immediate speak) can pass
     // ensureUnlocked once the graph exists, even while resume is in flight.
-    if (!this.speechEl) {
-      const el = new Audio();
-      el.preload = 'auto';
-      this.speechNode = this.ctx!.createMediaElementSource(el);
-      this.speechNode.connect(this.speechGain!);
-      this.speechEl = el;
-
-      el.addEventListener('playing', () => {
-        this._speechPlaying = true;
-      });
-      el.addEventListener('waiting', () => {
-        this._speechPlaying = false;
-      });
-      el.addEventListener('pause', () => {
-        this._speechPlaying = false;
-      });
-      el.addEventListener('ended', () => {
-        this._speechPlaying = false;
-      });
+    if (!this.speechEl && this.ctx && this.speechGain) {
+      this.createSpeechElement();
     }
 
     if (!this.musicEl) {
@@ -229,6 +213,44 @@ class AudioQueuePlayer {
 
   isUnlocked(): boolean {
     return this.unlocked && !!this.ctx && this.ctx.state !== 'closed';
+  }
+
+  private attachSpeechListeners(el: HTMLAudioElement): void {
+    el.addEventListener('playing', () => {
+      this._speechPlaying = true;
+    });
+    el.addEventListener('waiting', () => {
+      this._speechPlaying = false;
+    });
+    el.addEventListener('pause', () => {
+      this._speechPlaying = false;
+    });
+    el.addEventListener('ended', () => {
+      this._speechPlaying = false;
+    });
+  }
+
+  private createSpeechElement(): void {
+    const el = new Audio();
+    el.preload = 'auto';
+    this.speechNode = this.ctx!.createMediaElementSource(el);
+    this.speechNode.connect(this.speechGain!);
+    this.speechEl = el;
+    this.attachSpeechListeners(el);
+  }
+
+  private recreateSpeechElement(): HTMLAudioElement {
+    this.speechNode?.disconnect();
+    const previous = this.speechEl;
+    if (previous) {
+      resetHtmlAudioElement(previous);
+      try {
+        previous.removeAttribute('src');
+      } catch {}
+    }
+    this._speechPlaying = false;
+    this.createSpeechElement();
+    return this.speechEl!;
   }
 
   private getUnlockDiagnostics() {
@@ -322,7 +344,7 @@ class AudioQueuePlayer {
   async playStreamUrl(url: string, onEndedCallback?: () => void): Promise<void> {
     this.ensureUnlocked();
     const ctx = this.ctx!;
-    const el = this.speechEl!;
+    let el = this.speechEl!;
 
     if (ctx.state === 'suspended') await ctx.resume();
 
@@ -340,21 +362,52 @@ class AudioQueuePlayer {
       data: summarizeTtsStreamUrl(url),
     });
 
-    // Plays as soon as buffered enough (streaming)
-    try {
-      await el.play();
-    } catch (error) {
-      if (isAbortError(error)) return;
-      logStreamAudioFailure({
-        phase: 'play',
-        url,
-        el,
-        audioContextState: ctx.state,
-        lastStreamStoppedAt: this.lastStreamStoppedAt,
-        error,
-      });
-      throw error;
-    }
+    const playWithElement = async (mediaEl: HTMLAudioElement) => {
+      try {
+        await mediaEl.play();
+        return true;
+      } catch (error) {
+        if (isAbortError(error)) return false;
+        if (!shouldRetryPlayOnFreshElement(error)) {
+          logStreamAudioFailure({
+            phase: 'play',
+            url,
+            el: mediaEl,
+            audioContextState: ctx.state,
+            lastStreamStoppedAt: this.lastStreamStoppedAt,
+            error,
+          });
+          throw error;
+        }
+
+        Sentry.addBreadcrumb({
+          category: 'conversation-audio',
+          level: 'warning',
+          message: 'Retrying stream play on a fresh audio element',
+          data: summarizeTtsStreamUrl(url),
+        });
+        el = this.recreateSpeechElement();
+        el.src = url;
+        try {
+          await el.play();
+          return true;
+        } catch (retryError) {
+          if (isAbortError(retryError)) return false;
+          logStreamAudioFailure({
+            phase: 'play',
+            url,
+            el,
+            audioContextState: ctx.state,
+            lastStreamStoppedAt: this.lastStreamStoppedAt,
+            error: retryError,
+          });
+          throw retryError;
+        }
+      }
+    };
+
+    const started = await playWithElement(el);
+    if (!started) return;
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => {
@@ -390,22 +443,13 @@ class AudioQueuePlayer {
     if (!el) return;
     this.lastStreamStoppedAt = Date.now();
     this._speechPlaying = false;
-    try {
-      el.pause();
-      el.currentTime = 0;
-      el.removeAttribute('src');
-      el.load();
-    } catch {}
+    // Do not remove src + load() here: an empty load() puts WebKit into
+    // MEDIA_ERR_SRC_NOT_SUPPORTED, and the next play() then fails.
+    resetHtmlAudioElement(el);
 
-    // check cached audios and stop them too, just in case
     Object.keys(this.cachedSpeech).forEach((key) => {
-      const { el } = this.cachedSpeech[key];
-      try {
-        el.pause();
-        el.currentTime = 0;
-        el.removeAttribute('src');
-        el.load();
-      } catch {}
+      const { el: cachedEl } = this.cachedSpeech[key];
+      resetHtmlAudioElement(cachedEl);
       delete this.cachedSpeech[key];
     });
   }
@@ -509,11 +553,9 @@ class AudioQueuePlayer {
     }
     this.currentMusicUrl = null;
 
+    resetHtmlAudioElement(el);
     try {
-      el.pause();
-      el.currentTime = 0;
       el.removeAttribute('src');
-      el.load();
     } catch {}
   }
 
@@ -661,10 +703,7 @@ const logStreamAudioFailure = ({
     data: diagnostics,
   });
 
-  const label =
-    diagnostics.label ??
-    (error instanceof Error ? error.name : undefined) ??
-    'unknown';
+  const label = diagnostics.label ?? (error instanceof Error ? error.name : undefined) ?? 'unknown';
   if (
     !isRecoverableTtsFormatError({
       url,

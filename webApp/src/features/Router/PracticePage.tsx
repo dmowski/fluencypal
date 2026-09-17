@@ -34,6 +34,7 @@ import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffSc
 import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
 import { canEnterPracticeAsGuest } from '@/features/Conversation/guestPracticeEntry';
 import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
+import { useFlushPendingPracticeLanguage } from '@/features/Goal/Quiz/useFlushPendingPracticeLanguage';
 import {
   getPracticeIdleSurface,
   hasUserSpokenInConversation,
@@ -59,6 +60,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const conversationAnalysis = useConversationsAnalysis();
   const lessonPlan = useLessonPlan();
   usePageLangRedirect();
+  useFlushPendingPracticeLanguage();
   const searchParams = useSearchParams();
   const rolePlayId = searchParams.get('rolePlayId');
   const hasTrackedSignupCompleted = useRef(false);
@@ -147,7 +149,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
 
   const settingsReady = canGuestPractice
     ? Boolean(practiceLanguageCode)
-    : !settings.loading && Boolean(auth.uid) && Boolean(settings.languageCode);
+    : !settings.loading && Boolean(auth.uid);
 
   const usageReady = canGuestPractice || usage.isWelcomeBalanceInitialized;
 
