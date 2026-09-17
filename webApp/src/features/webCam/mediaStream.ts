@@ -1,4 +1,5 @@
 import { beginPreferredAudioInputCapture, readPreferredMicrophoneId } from '@/libs/mic';
+import { sendPermission } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 type AudioStreamWindow = Window & { singleMediaStreamAudio?: MediaStream | null };
 
@@ -20,12 +21,14 @@ export const getMediaVideoStreams = async (): Promise<MediaStream | null> => {
     const mediaStream = await navigator.mediaDevices.getUserMedia({
       video: true,
     });
+    sendPermission({ kind: 'camera', state: 'granted' });
     console.log('mediaStream', mediaStream);
     (window as any).singleMediaStreamVideo = mediaStream;
 
     return mediaStream;
   } catch (err) {
     console.log('Error accessing webcam:', err);
+    sendPermission({ kind: 'camera', state: 'denied' });
     return null;
   }
 };
@@ -72,14 +75,17 @@ export const createMediaAudioStream = async (
     const preferredId = deviceId === undefined ? readPreferredMicrophoneId() : deviceId;
     const restore = beginPreferredAudioInputCapture(preferredId);
     try {
-      return await navigator.mediaDevices.getUserMedia({
+      const stream = await navigator.mediaDevices.getUserMedia({
         audio: DEFAULT_AUDIO_CONSTRAINTS,
       });
+      sendPermission({ kind: 'mic', state: 'granted' });
+      return stream;
     } finally {
       restore();
     }
   } catch (err) {
     console.log('Error accessing audio:', err);
+    sendPermission({ kind: 'mic', state: 'denied' });
     return null;
   }
 };

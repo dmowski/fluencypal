@@ -39,6 +39,7 @@ import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/
 import { writePreferredMicrophoneId } from '@/libs/mic';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
 import { getVoiceSpeedInstruction } from '../CallMode/voiceSpeed';
+import { sendCallState, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
@@ -511,6 +512,7 @@ ${voiceInstructions}
     try {
       setIsStarted(true);
       setIsInitializing(`Calling...`);
+      sendCallState({ state: 'connecting', conversationId: newConversationId });
       setCurrentMode(input.mode);
       messages.setConversation([]);
       setIsClosing(false);
@@ -590,6 +592,12 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
                 setIsStarted(false);
                 communicatorRef.current?.closeHandler();
                 communicatorRef.current = undefined;
+                sendCallState({
+                  state: 'failed',
+                  conversationId: newConversationId,
+                  reason: 'transport',
+                });
+                sendUiError('call_transport_failed');
               },
             }
           : {}),
@@ -598,6 +606,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
 
       communicatorRef.current = conversation;
       conversation.flushSessionReady?.();
+      sendCallState({ state: 'connected', conversationId: newConversationId });
     } catch (e) {
       console.error(e);
       setActiveRealtimeModel(null);
@@ -610,6 +619,12 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
       }
       const isNotAllowedError = (e as Error).toString().includes('NotAllowedError');
       console.log('isNotAllowedError', isNotAllowedError);
+      sendCallState({
+        state: 'failed',
+        conversationId: newConversationId,
+        reason: isNotAllowedError ? 'mic' : 'init',
+      });
+      sendUiError(isNotAllowedError ? 'mic_denied' : 'call_init_failed');
       setErrorInitiating(
         isNotAllowedError
           ? 'Please enable microphone access to start the conversation. Error code:' + `${e}`
@@ -622,6 +637,14 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   };
 
   const closeConversation = async () => {
+    const userMessageCount = messages.conversation.filter(
+      (message) => !message.isBot && Boolean(message.text?.trim()),
+    ).length;
+    sendCallState({
+      state: 'ended',
+      conversationId: messages.conversationId,
+      userMessageCount,
+    });
     await audio.interruptWithFade(120);
     setIsClosing(true);
     setIsStarted(false);

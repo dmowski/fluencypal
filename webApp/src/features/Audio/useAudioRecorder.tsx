@@ -13,6 +13,7 @@ import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
 import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
+import { sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 export const useAudioRecorder = () => {
   const auth = useAuth();
@@ -120,6 +121,7 @@ export const useAudioRecorder = () => {
         if (!isAllowed) {
           const requestResult = await requestMicrophoneAccess(deviceId);
           if (!requestResult) {
+            sendUiError('mic_denied');
             alert(
               'Microphone access is denied. Please allow microphone access in your browser settings.',
             );

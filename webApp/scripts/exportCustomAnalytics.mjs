@@ -275,6 +275,13 @@ const appCtaIds = [];
 const conversationStartPaths = [];
 const pathBeforeSpeak = [];
 const speechSurfaces = [];
+const permissionOutcomes = [];
+const callStates = [];
+const authAttempts = [];
+const uiErrors = [];
+const uiScreens = [];
+const deadClicks = [];
+let rageClickVisitors = 0;
 const durationMaxByVisitorPath = new Map();
 const entryByKind = new Map();
 let paywallViews = 0;
@@ -383,7 +390,56 @@ for (const events of Object.values(eventsByVisitorId)) {
     if (event.name === 'speech_start') {
       speechSurfaces.push(event.speechSurface || 'unknown');
     }
+    if (event.name === 'permission') {
+      permissionOutcomes.push(
+        `${event.permissionKind || 'mic'}:${event.permissionState || 'unknown'}`,
+      );
+    }
+    if (event.name === 'call_state') {
+      callStates.push(event.callState || 'unknown');
+    }
+    if (event.name === 'auth_attempt') {
+      authAttempts.push(`${event.authProvider || 'unknown'}:${event.authResult || 'unknown'}`);
+    }
+    if (event.name === 'ui_error') {
+      uiErrors.push(event.errorCode || 'unknown');
+    }
+    if (event.uiContext?.screenId) {
+      uiScreens.push(event.uiContext.screenId);
+    }
+    if (event.name === 'dead_click') {
+      deadClicks.push(event.buttonText || event.tagName || '(empty)');
+    }
   }
+
+  let rageForVisitor = 0;
+  for (let i = 0; i < events.length; i += 1) {
+    const event = events[i];
+    if (event.name !== 'click') continue;
+    const key = event.ctaId && event.ctaId !== 'other' ? event.ctaId : event.buttonText || '';
+    if (!key) continue;
+    const start = event.createdAtMs || 0;
+    let same = 1;
+    for (let j = i + 1; j < events.length; j += 1) {
+      const next = events[j];
+      const at = next.createdAtMs || 0;
+      if (at - start > 10_000) break;
+      if (
+        next.name === 'speech_start' ||
+        next.name === 'conversation_start' ||
+        next.name === 'identify' ||
+        next.name === 'call_state' ||
+        (next.name === 'permission' && next.permissionState === 'granted')
+      ) {
+        break;
+      }
+      if (next.name !== 'click') continue;
+      const nextKey = next.ctaId && next.ctaId !== 'other' ? next.ctaId : next.buttonText || '';
+      if (nextKey === key) same += 1;
+    }
+    if (same >= 3) rageForVisitor += 1;
+  }
+  if (rageForVisitor > 0) rageClickVisitors += 1;
   for (const [eventPath, durationMs] of maxDuration) {
     const current = durationMaxByVisitorPath.get(eventPath) || { sum: 0, count: 0 };
     current.sum += durationMs;
@@ -433,6 +489,13 @@ const payload = {
     quizSteps: countBy(quizSteps),
     identifyPaths: countBy(identifyPaths),
     appCtaIds: countBy(appCtaIds),
+    permissions: countBy(permissionOutcomes),
+    callStates: countBy(callStates),
+    authAttempts: countBy(authAttempts),
+    uiErrors: countBy(uiErrors),
+    uiScreens: countBy(uiScreens),
+    deadClicks: countBy(deadClicks),
+    rageClickVisitors,
     entry: [...entryByKind.entries()]
       .map(([key, value]) => ({ key, ...value }))
       .sort((a, b) => b.visitors - a.visitors),

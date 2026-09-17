@@ -30,6 +30,15 @@ export type LandingAnalyticsEvent = {
   utmCampaign?: string;
   gclid?: string;
   referrerHost?: string;
+  uiContext?: {
+    screenId: string;
+    heading: string;
+    dialog: string;
+    alerts: string[];
+    primary: string;
+    actions: { role: string; name: string; disabled: boolean }[];
+  };
+  uiContextHash?: string;
 };
 
 export type LandingParentToIframeMessage =
@@ -184,4 +193,71 @@ export const nextScrollBucket = (
     if (current >= bucket && previousMax < bucket) return bucket;
   }
   return null;
+};
+
+const clipName = (value: string): string => value.replace(/\s+/g, ' ').trim().slice(0, 40);
+
+const landingScreenId = (path: string, dialog: string): string => {
+  const pathname = (path.split('?')[0] || '/').replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+  let id = 'other';
+  if (pathname.includes('/scenarios')) id = 'scenario';
+  else if (pathname.includes('/blog')) id = 'blog';
+  else if (pathname.includes('/pricing') || pathname.includes('/price')) id = 'pricing';
+  else if (pathname.includes('/features')) id = 'features';
+  else if (pathname.includes('/quiz')) id = 'quiz';
+  else if (pathname === '/') id = 'home';
+  return (dialog ? `${id}.dialog` : id).slice(0, 80);
+};
+
+const firstVisibleText = (selector: string): string => {
+  if (typeof document === 'undefined') return '';
+  for (const node of document.querySelectorAll(selector)) {
+    if (!(node instanceof HTMLElement) || node.hidden) continue;
+    const text = clipName(node.textContent || '');
+    if (text) return text;
+  }
+  return '';
+};
+
+export const captureLandingUiContext = (
+  path: string,
+): NonNullable<LandingAnalyticsEvent['uiContext']> => {
+  const dialog = firstVisibleText('[role="dialog"] h2, [aria-modal="true"] h2');
+  const heading = firstVisibleText('h1, h2, h3');
+  const actions: NonNullable<LandingAnalyticsEvent['uiContext']>['actions'] = [];
+  if (typeof document !== 'undefined') {
+    for (const node of document.querySelectorAll('a, button, [data-analytics], [role="button"]')) {
+      if (!(node instanceof HTMLElement) || node.hidden) continue;
+      const name =
+        clipName(node.getAttribute('data-analytics') || '') ||
+        clipName(node.getAttribute('aria-label') || node.innerText || '') ||
+        '(unnamed)';
+      actions.push({
+        role: node.tagName.toLowerCase(),
+        name,
+        disabled: node instanceof HTMLButtonElement ? node.disabled : false,
+      });
+      if (actions.length >= 20) break;
+    }
+  }
+  const primary = actions.find((action) => action.name !== '(unnamed)')?.name || '';
+  return {
+    screenId: landingScreenId(path, dialog),
+    heading,
+    dialog,
+    alerts: [],
+    primary,
+    actions,
+  };
+};
+
+export const hashLandingUiContext = (
+  ctx: NonNullable<LandingAnalyticsEvent['uiContext']>,
+): string => {
+  const key = `${ctx.screenId}~${ctx.heading}~${ctx.dialog}~${ctx.primary}`;
+  let hash = 5381;
+  for (let i = 0; i < key.length; i += 1) {
+    hash = (hash * 33) ^ key.charCodeAt(i);
+  }
+  return (hash >>> 0).toString(16);
 };

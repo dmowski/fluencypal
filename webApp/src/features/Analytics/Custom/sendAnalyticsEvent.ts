@@ -5,6 +5,18 @@ import { validateClientEvent } from './validateEvent';
 import { classifyCta } from './classifyCta';
 import { parseTraffic } from './parseTraffic';
 import { isBotBrowser } from './isBotUserAgent';
+import { captureUiContext, hashUiContext } from './captureUiContext';
+
+const UI_CONTEXT_EVENTS = new Set([
+  'page_view',
+  'click',
+  'page_leave',
+  'dead_click',
+  'permission',
+  'call_state',
+  'auth_attempt',
+  'ui_error',
+]);
 
 type QueuedMessage = ReturnType<typeof buildEventMessage>;
 
@@ -79,17 +91,23 @@ export const sendAnalyticsEvent = (
   const referrer = partial.referrer ?? document.referrer;
   const traffic = parseTraffic(href, referrer);
   const cta =
-    partial.name === 'click'
+    partial.name === 'click' || partial.name === 'dead_click'
       ? classifyCta({
           href: partial.buttonHref || '',
           buttonId: partial.buttonId,
         })
       : null;
 
+  const path = partial.path || `${window.location.pathname}${window.location.search}`;
+  const captured =
+    partial.uiContext ||
+    (UI_CONTEXT_EVENTS.has(partial.name) ? captureUiContext(path) : undefined);
+  const uiContextHash = partial.uiContextHash || (captured ? hashUiContext(captured) : undefined);
+
   const event = validateClientEvent({
     name: partial.name,
     sourceApp: partial.sourceApp || sourceApp,
-    path: partial.path || `${window.location.pathname}${window.location.search}`,
+    path,
     href,
     title: partial.title || document.title,
     referrer,
@@ -115,6 +133,16 @@ export const sendAnalyticsEvent = (
     referrerHost: partial.referrerHost || traffic.referrerHost,
     conversationId: partial.conversationId,
     speechSurface: partial.speechSurface,
+    uiContext: captured,
+    uiContextHash,
+    permissionKind: partial.permissionKind,
+    permissionState: partial.permissionState,
+    callState: partial.callState,
+    callReason: partial.callReason,
+    userMessageCount: partial.userMessageCount,
+    authProvider: partial.authProvider,
+    authResult: partial.authResult,
+    errorCode: partial.errorCode,
   });
 
   if (!event) return;

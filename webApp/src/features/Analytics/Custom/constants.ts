@@ -30,4 +30,20 @@ export const MAX_EVENT_STRING = {
   country: 8,
   conversationId: 80,
   speechSurface: 32,
+  uiContextHash: 32,
+  screenId: 80,
+  heading: 80,
+  dialog: 80,
+  actionRole: 24,
+  actionName: 40,
+  callState: 32,
+  callReason: 80,
+  permissionKind: 16,
+  permissionState: 16,
+  authProvider: 16,
+  authResult: 16,
+  errorCode: 48,
 } as const;
+
+export const UI_CONTEXT_MAX_ACTIONS = 20;
+export const UI_CONTEXT_MAX_ALERTS = 3;

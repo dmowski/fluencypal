@@ -148,6 +148,7 @@ export const AudioPlayIcon = ({
       <IconButton
         disabled={isLoading}
         onClick={togglePlay}
+        aria-label={buttonLabel || i18n._('Play')}
         {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
         sx={{
           opacity: opacity,

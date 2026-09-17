@@ -10,11 +10,46 @@ export const ANALYTICS_EVENT_NAMES = [
   'speech_start',
   'paywall_view',
   'checkout_start',
+  'permission',
+  'call_state',
+  'auth_attempt',
+  'ui_error',
+  'dead_click',
 ] as const;
 export type AnalyticsEventName = (typeof ANALYTICS_EVENT_NAMES)[number];
 
 export const SPEECH_SURFACES = ['quiz', 'lesson', 'conversation'] as const;
 export type SpeechSurface = (typeof SPEECH_SURFACES)[number];
+
+export const PERMISSION_KINDS = ['mic', 'camera'] as const;
+export type PermissionKind = (typeof PERMISSION_KINDS)[number];
+
+export const PERMISSION_STATES = ['prompt', 'granted', 'denied', 'dismissed'] as const;
+export type PermissionState = (typeof PERMISSION_STATES)[number];
+
+export const CALL_STATES = ['connecting', 'connected', 'failed', 'ended'] as const;
+export type CallState = (typeof CALL_STATES)[number];
+
+export const AUTH_PROVIDERS = ['google', 'email'] as const;
+export type AuthProvider = (typeof AUTH_PROVIDERS)[number];
+
+export const AUTH_RESULTS = ['opened', 'cancelled', 'error', 'success'] as const;
+export type AuthResult = (typeof AUTH_RESULTS)[number];
+
+export type AnalyticsUiAction = {
+  role: string;
+  name: string;
+  disabled: boolean;
+};
+
+export type AnalyticsUiContext = {
+  screenId: string;
+  heading: string;
+  dialog: string;
+  alerts: string[];
+  primary: string;
+  actions: AnalyticsUiAction[];
+};
 
 export const ANALYTICS_SOURCE_APPS = ['landing', 'webapp'] as const;
 export type AnalyticsSourceApp = (typeof ANALYTICS_SOURCE_APPS)[number];
@@ -50,6 +85,16 @@ export type AnalyticsClientEvent = {
   referrerHost?: string;
   conversationId?: string;
   speechSurface?: SpeechSurface;
+  uiContext?: AnalyticsUiContext;
+  uiContextHash?: string;
+  permissionKind?: PermissionKind;
+  permissionState?: PermissionState;
+  callState?: CallState;
+  callReason?: string;
+  userMessageCount?: number;
+  authProvider?: AuthProvider;
+  authResult?: AuthResult;
+  errorCode?: string;
 };
 
 export type AnalyticsDeviceInfo = {
@@ -94,6 +139,16 @@ export type AnalyticsEventDoc = {
   country: string | null;
   conversationId: string | null;
   speechSurface: string | null;
+  uiContext: AnalyticsUiContext | null;
+  uiContextHash: string | null;
+  permissionKind: string | null;
+  permissionState: string | null;
+  callState: string | null;
+  callReason: string | null;
+  userMessageCount: number | null;
+  authProvider: string | null;
+  authResult: string | null;
+  errorCode: string | null;
 };
 
 export type AnalyticsVisitorDoc = {

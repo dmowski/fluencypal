@@ -90,6 +90,9 @@ export const AvatarCard = ({
           border: 'none',
         }}
         component={'button'}
+        type="button"
+        aria-label={voice}
+        data-analytics="teacher-select"
         onClick={onToggle}
       >
         <Stack
@@ -130,6 +133,8 @@ export const AvatarCard = ({
           text={aiAvatar.helloPhrases[0]}
           customVoice={voice}
           cache
+          analyticsId="teacher-preview-play"
+          buttonLabel={voice}
           customInstructions={voiceInstructionWithSpeed}
           onChangeState={(isPlaying) => {
             setIsPlayingThisVoice(isPlaying);

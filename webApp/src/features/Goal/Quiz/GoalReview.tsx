@@ -216,6 +216,7 @@ export const GoalReview = ({
         onClick={onClickHandler}
         title={actionButtonLabel || i18n._('Start')}
         endIcon={actionButtonIcon || <ArrowRight />}
+        analyticsId="quiz-start-speaking"
       />
     </Stack>
   );

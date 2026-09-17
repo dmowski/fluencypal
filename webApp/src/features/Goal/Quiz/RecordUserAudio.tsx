@@ -144,6 +144,7 @@ export const RecordUserAudio = ({
           color={recorder.isRecording && !isInLimits ? 'error' : isInLimits ? 'success' : 'primary'}
           disabled={isLoading || !isInLimits || recorder.isTranscribing}
           title={i18n._('Next')}
+          actionButtonAnalyticsId="quiz-next"
         />
       </Stack>
     </Stack>

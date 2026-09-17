@@ -16,6 +16,8 @@ import {
   LandingAnalyticsEvent,
   nextScrollBucket,
   parseTraffic,
+  captureLandingUiContext,
+  hashLandingUiContext,
 } from './protocol';
 import { decorateAppHref, getOrCreateParentVisitorId } from './parentVisitorId';
 
@@ -56,6 +58,16 @@ const pageContext = () => {
     language: navigator.language,
     screen: { width: window.screen.width, height: window.screen.height },
     ...traffic,
+  };
+};
+
+const pageContextWithUi = () => {
+  const base = pageContext();
+  const uiContext = captureLandingUiContext(base.path);
+  return {
+    ...base,
+    uiContext,
+    uiContextHash: hashLandingUiContext(uiContext),
   };
 };
 
@@ -128,7 +140,7 @@ export function CustomAnalyticsHost() {
       postEvent({
         name: 'page_leave',
         sourceApp: 'landing',
-        ...pageContext(),
+        ...pageContextWithUi(),
         path: lastPathRef.current,
         durationMs: Date.now() - pageStartedAtRef.current,
         maxScrollPct: maxScrollRef.current,
@@ -140,7 +152,7 @@ export function CustomAnalyticsHost() {
     postEvent({
       name: 'page_view',
       sourceApp: 'landing',
-      ...pageContext(),
+      ...pageContextWithUi(),
     });
   }, [pathname, skip]);
 
@@ -164,7 +176,7 @@ export function CustomAnalyticsHost() {
       postEvent({
         name: 'click',
         sourceApp: 'landing',
-        ...pageContext(),
+        ...pageContextWithUi(),
         ...meta,
         ...cta,
       });
@@ -187,7 +199,7 @@ export function CustomAnalyticsHost() {
       postEvent({
         name: 'page_leave',
         sourceApp: 'landing',
-        ...pageContext(),
+        ...pageContextWithUi(),
         durationMs: now - pageStartedAtRef.current,
         maxScrollPct: maxScrollRef.current,
       });

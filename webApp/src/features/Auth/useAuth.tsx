@@ -21,6 +21,7 @@ import {
   signInWithGoogleAccount,
   SignInResult,
 } from './googleSignIn';
+import { sendAuthAttempt, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 export interface UserInfo {
   displayName: string | null;
@@ -83,10 +84,21 @@ function useProvideAuth(): AuthContext {
     }
 
     googleSignInInProgress.current = true;
+    sendAuthAttempt({ provider: 'google', result: 'opened' });
     try {
       const result = await signInWithGoogleAccount(auth);
       if (!result.isRedirecting) {
         googleSignInInProgress.current = false;
+      }
+      if (result.isDone) {
+        sendAuthAttempt({ provider: 'google', result: 'success' });
+      } else if (result.isRedirecting) {
+        // Keep "opened"; success lands after redirect.
+      } else if (result.error) {
+        sendAuthAttempt({ provider: 'google', result: 'error' });
+        sendUiError('auth_google_error');
+      } else {
+        sendAuthAttempt({ provider: 'google', result: 'cancelled' });
       }
       return result;
     } catch (error) {
@@ -94,6 +106,10 @@ function useProvideAuth(): AuthContext {
       const message = getGoogleSignInErrorMessage(error);
       if (message) {
         console.error('Google sign in error', error);
+        sendAuthAttempt({ provider: 'google', result: 'error' });
+        sendUiError('auth_google_error');
+      } else {
+        sendAuthAttempt({ provider: 'google', result: 'cancelled' });
       }
       return { isDone: false, error: message || '' };
     }
@@ -147,7 +163,8 @@ function useProvideAuth(): AuthContext {
     void (async () => {
       await confirmEmailLinkSignIn();
       try {
-        await completeGoogleRedirectSignIn(auth);
+        const redirected = await completeGoogleRedirectSignIn(auth);
+        if (redirected) sendAuthAttempt({ provider: 'google', result: 'success' });
       } catch (error) {
         const isNetworkFailure =
           error instanceof FirebaseError && error.code === 'auth/network-request-failed';
@@ -174,12 +191,16 @@ function useProvideAuth(): AuthContext {
 
     try {
       console.log('actionCodeSettings', actionCodeSettings);
+      sendAuthAttempt({ provider: 'email', result: 'opened' });
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
       window.localStorage.setItem(LOCALSTORAGE_EMAIL_KEY, email);
+      sendAuthAttempt({ provider: 'email', result: 'success' });
       return { isDone: true, error: '' };
     } catch (error: any) {
       const errorCode = error.code;
       console.error('Email sign in error', error);
+      sendAuthAttempt({ provider: 'email', result: 'error' });
+      sendUiError('auth_email_error');
       if (errorCode === 'auth/invalid-email') {
         return { isDone: false, error: 'The email address is not valid.' };
       } else if (

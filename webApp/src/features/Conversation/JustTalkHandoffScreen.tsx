@@ -8,6 +8,7 @@ import { useSettings } from '../Settings/useSettings';
 import { isMicrophoneDenied } from '@/libs/mic';
 import { voiceAvatarMap } from './CallMode/voiceAvatar';
 import { ENABLE_MIC_JUST_TALK_ANALYTICS_ID } from './justTalkHandoff';
+import { sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 export const JustTalkHandoffScreen = ({
   onEnableMic,
@@ -27,16 +28,21 @@ export const JustTalkHandoffScreen = ({
   useEffect(() => {
     if (wasDenied) {
       setPermissionDenied(true);
+      sendUiError('mic_denied');
       return;
     }
     void isMicrophoneDenied().then((denied) => {
-      if (denied) setPermissionDenied(true);
+      if (denied) {
+        setPermissionDenied(true);
+        sendUiError('mic_denied');
+      }
     });
   }, [wasDenied]);
 
   return (
     <Stack
       data-testid="just-talk-handoff"
+      data-analytics-screen="practice.justTalkHandoff"
       sx={{
         width: '100%',
         minHeight: '100vh',
@@ -136,8 +142,11 @@ export const JustTalkHandoffScreen = ({
           startIcon={isStarting ? <CircularProgress size={18} color="inherit" /> : <Mic size={18} />}
           onClick={() => {
             void Promise.resolve(onEnableMic()).then((result) => {
-              if (result === 'mic-denied') setPermissionDenied(true);
-            });
+            if (result === 'mic-denied') {
+              setPermissionDenied(true);
+              sendUiError('mic_denied');
+            }
+          });
           }}
           sx={{
             padding: '14px 20px',

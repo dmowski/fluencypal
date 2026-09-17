@@ -56,6 +56,7 @@ export const CallEndMenu = ({
           '--color': '#fb8874',
           padding: 'var(--item-padding)',
         }}
+        data-analytics="call-end-exit"
         onClick={onExit}
       >
         <ListItemIcon>

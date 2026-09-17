@@ -112,6 +112,16 @@ export const ingestAnalyticsEvent = async (input: {
     country,
     conversationId: input.event.conversationId || null,
     speechSurface: input.event.speechSurface || null,
+    uiContext: input.event.uiContext || null,
+    uiContextHash: input.event.uiContextHash || null,
+    permissionKind: input.event.permissionKind || null,
+    permissionState: input.event.permissionState || null,
+    callState: input.event.callState || null,
+    callReason: input.event.callReason || null,
+    userMessageCount: input.event.userMessageCount ?? null,
+    authProvider: input.event.authProvider || null,
+    authResult: input.event.authResult || null,
+    errorCode: input.event.errorCode || null,
   };
 
   const db = getDB();

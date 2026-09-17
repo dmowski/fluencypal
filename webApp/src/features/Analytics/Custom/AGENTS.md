@@ -45,7 +45,8 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, enable-mic-just-talk)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, quiz-next, quiz-start-speaking, enable-mic-just-talk, call-enable-mic, call-end, call-what-to-say, mic-permission-grant, teacher-preview-play)
+- Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Path to first speak: pathBeforeSpeak + conversationStartPaths; identifyPaths for where they signed in
 - Voice: funnel.speech vs funnel.conversation; insights.speechSurfaces (quiz / lesson / conversation)
 - GEO/SEO: countries, languages, referrers, UTM, firstPaths, plus `searchConsole` (queries/pages; data lags 2–3 days)
@@ -64,13 +65,18 @@ If the export is empty, say so; do not invent traffic.
 
 | Event                | When                                                 | Answers                                                                                                                                                                     |
 | -------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `page_view`          | Route change                                         | Path, UTM, referrer host                                                                                                                                                    |
-| `click`              | `a` / `button` / `[data-analytics]`                  | `ctaId` + `ctaIntent` from **element id/href only** (never page URL)                                                                                                        |
+| `page_view`          | Route change                                         | Path, UTM, referrer host, compact `uiContext` digest                                                                                                                        |
+| `click`              | `a` / `button` / `[data-analytics]`                  | `ctaId` + `ctaIntent` from **element id/href only** (never page URL). `uiContext` on the same event.                                                                        |
+| `dead_click`         | Pointer-cursor click that missed a control           | Missed target (throttled 2s). Derive rage clicks in export (same CTA 3× in 10s with no next step).                                                                          |
 | `scroll_depth`       | 25 / 50 / 75 / 100 on a page                         | How deep they scroll                                                                                                                                                        |
-| `page_leave`         | hide / pagehide                                      | Visible time on page (`durationMs`), `maxScrollPct`                                                                                                                         |
+| `page_leave`         | hide / pagehide                                      | Visible time on page (`durationMs`), `maxScrollPct`, `uiContext`                                                                                                            |
 | `identify`           | Signed-in uid (once per uid)                         | Auth                                                                                                                                                                        |
 | `conversation_start` | First **user** message in a conversation             | Real AI talk, not the greeting and not just /practice                                                                                                                       |
 | `speech_start`       | First accepted voice on quiz / lesson / conversation | They used a mic. `speechSurface`: `quiz` \| `lesson` \| `conversation`. Once per surface per tab. `reachedSpeech` is any surface; `reachedConversation` stays AI talk only. |
+| `permission`         | Mic/camera prompt outcome                            | `permissionKind` `mic` \| `camera`; `permissionState` `prompt` \| `granted` \| `denied` \| `dismissed`                                                                      |
+| `call_state`         | WebRTC / realtime session                            | `connecting` \| `connected` \| `failed` \| `ended` + `callReason` + `userMessageCount` on end                                                                               |
+| `auth_attempt`       | Google/email sign-in                                 | `authProvider` + `authResult` `opened` \| `cancelled` \| `error` \| `success`                                                                                               |
+| `ui_error`           | Visible failure banner / blocked mic / init error    | Short `errorCode` (`mic_denied`, `call_init_failed`, `auth_google_error`, …)                                                                                                |
 | `paywall_view`       | Subscription modal opens                             | Saw paywall                                                                                                                                                                 |
 | `checkout_start`     | Stripe checkout created                              | Tried to pay                                                                                                                                                                |
 
@@ -88,7 +94,9 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `enable-mic-just-talk`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-start-speaking`, `enable-mic-just-talk`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `call-record-message`, `mic-permission-grant`, `mic-permission-dismiss`, `teacher-preview-play`, `teacher-select`.
+
+`uiContext` is a clipped a11y digest (screenId, heading, open dialog, alerts, ~20 named controls). Do not store a full accessibility tree. Group screens with `uiContextHash`. Export also rolls `permissions`, `callStates`, `authAttempts`, `uiErrors`, `uiScreens`, `deadClicks`, `rageClickVisitors`.
 
 Export (`pnpm analytics:export`) is a UTC instant range (`fromIso` → `toIso`). `--from` / `--to` accept `YYYY-MM-DD` or `YYYY-MM-DDTHH:mm:ssZ`; `--day` is one full UTC day. Default with no flags is today `00:00Z` through now. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 
@@ -118,9 +126,11 @@ Admin UI: `/staats/journey`
 
 **Scenario SEO:** `insights.entry` row `scenario` — visitors vs `reachedApp` vs speech. High scroll on `/scenarios/*` with low `reachedApp` means they read and did not Play.
 
+**Why they exit:** last path + last event + time on that page + `uiContext.screenId` / dialog / alerts. `permission` denied vs dismissed vs `call_state` failed vs `auth_attempt` cancelled. Landing leave at <25% scroll = did not see How it works. App leave on quiz = onboarding friction. Practice without `conversation_start` = they never pressed talk. `enable-mic-just-talk` / `call-enable-mic` without `permission:granted` is the mic prompt, not empty practice.
+
 **Hear then leave:** `appCtaIds` `hear-first-line` / `hear-question` without a matching `identify` on that path. Do not treat landing CTA as the fix.
 
-**Why they exit:** last path + last event + time on that page. Landing leave at <25% scroll = did not see How it works. App leave on quiz = onboarding friction. Practice without `conversation_start` = they never pressed talk.
+**Rage / confusion:** `rageClickVisitors` and `insights.deadClicks`. Same named CTA 3+ times in 10s with no speech/call/auth success is a stuck control, not extra engagement.
 
 **Keep them using the app:** people who spoke once but have no day-2 `page_view` — that is a return problem (tasks, reminder), not acquisition. Do not “fix” the landing hero for that.
 

@@ -23,6 +23,7 @@ export const NextStepButton = ({
       }}
       title={actionButtonTitle || i18n._('Next')}
       endIcon={<ArrowRight />}
+      analyticsId="quiz-next"
     />
   );
 };

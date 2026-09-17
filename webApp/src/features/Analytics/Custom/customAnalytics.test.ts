@@ -90,6 +90,45 @@ describe('validateClientEvent', () => {
       )?.speechSurface,
     ).toBeUndefined();
   });
+
+  it('accepts permission, call_state, auth_attempt, ui_error and clips uiContext', () => {
+    const event = validateClientEvent(
+      baseEvent({
+        name: 'permission',
+        permissionKind: 'mic',
+        permissionState: 'denied',
+        uiContext: {
+          screenId: 'practice.justTalkHandoff',
+          heading: 'Your teacher is ready',
+          dialog: '',
+          alerts: ['Microphone access was blocked'],
+          primary: 'enable-mic-just-talk',
+          actions: [{ role: 'button', name: 'Enable microphone', disabled: false }],
+        },
+        uiContextHash: 'abc123',
+      }),
+    );
+    expect(event?.name).toBe('permission');
+    expect(event?.permissionKind).toBe('mic');
+    expect(event?.permissionState).toBe('denied');
+    expect(event?.uiContext?.screenId).toBe('practice.justTalkHandoff');
+    expect(event?.uiContext?.alerts).toEqual(['Microphone access was blocked']);
+    expect(
+      validateClientEvent(baseEvent({ name: 'call_state', callState: 'failed', callReason: 'mic' }))
+        ?.callState,
+    ).toBe('failed');
+    expect(
+      validateClientEvent(
+        baseEvent({ name: 'auth_attempt', authProvider: 'google', authResult: 'cancelled' }),
+      )?.authResult,
+    ).toBe('cancelled');
+    expect(
+      validateClientEvent(baseEvent({ name: 'ui_error', errorCode: 'mic_denied' }))?.errorCode,
+    ).toBe('mic_denied');
+    expect(validateClientEvent(baseEvent({ name: 'dead_click', tagName: 'div' }))?.name).toBe(
+      'dead_click',
+    );
+  });
 });
 
 describe('isBotUserAgent', () => {
@@ -158,6 +197,19 @@ describe('classifyCta', () => {
     );
     expect(classifyCta({ href: '', buttonId: 'enable-mic-just-talk' }).ctaId).toBe(
       'enable-mic-just-talk',
+    );
+    expect(classifyCta({ href: '', buttonId: 'quiz-next' }).ctaId).toBe('quiz-next');
+    expect(classifyCta({ href: '', buttonId: 'quiz-start-speaking' }).ctaId).toBe(
+      'quiz-start-speaking',
+    );
+    expect(classifyCta({ href: '', buttonId: 'call-enable-mic' }).ctaId).toBe('call-enable-mic');
+    expect(classifyCta({ href: '', buttonId: 'call-end' }).ctaId).toBe('call-end');
+    expect(classifyCta({ href: '', buttonId: 'call-what-to-say' }).ctaId).toBe('call-what-to-say');
+    expect(classifyCta({ href: '', buttonId: 'mic-permission-grant' }).ctaId).toBe(
+      'mic-permission-grant',
+    );
+    expect(classifyCta({ href: '', buttonId: 'teacher-preview-play' }).ctaId).toBe(
+      'teacher-preview-play',
     );
   });
 });

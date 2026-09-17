@@ -12,6 +12,7 @@ export const FooterButton = ({
   color,
   aboveButtonComponent,
   width,
+  analyticsId,
 }: {
   disabled?: boolean;
   title: string;
@@ -21,6 +22,7 @@ export const FooterButton = ({
   color?: 'primary' | 'success' | 'error';
   aboveButtonComponent?: ReactNode;
   width?: string;
+  analyticsId?: string;
 }) => {
   const { bottomOffset } = useWindowSizes();
   return (
@@ -68,6 +70,7 @@ export const FooterButton = ({
           color={color || 'primary'}
           disabled={disabled}
           size="large"
+          {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
           sx={{
             width: `min(${width || '600px'}, calc(100dvw - 20px))`,
             paddingTop: '12px',

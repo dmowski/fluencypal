@@ -1,13 +1,25 @@
 import { CTA_INTENTS, CtaIntent } from './classifyCta';
-import { MAX_EVENT_STRING } from './constants';
+import { MAX_EVENT_STRING, UI_CONTEXT_MAX_ACTIONS, UI_CONTEXT_MAX_ALERTS } from './constants';
 import {
   ANALYTICS_EVENT_NAMES,
   ANALYTICS_SOURCE_APPS,
+  AUTH_PROVIDERS,
+  AUTH_RESULTS,
+  CALL_STATES,
+  PERMISSION_KINDS,
+  PERMISSION_STATES,
   SPEECH_SURFACES,
   AnalyticsClientEvent,
   AnalyticsEventName,
   AnalyticsScreen,
   AnalyticsSourceApp,
+  AnalyticsUiAction,
+  AnalyticsUiContext,
+  AuthProvider,
+  AuthResult,
+  CallState,
+  PermissionKind,
+  PermissionState,
   SpeechSurface,
 } from './types';
 import { isValidVisitorId } from './visitorId';
@@ -16,6 +28,11 @@ const EVENT_NAME_SET = new Set<string>(ANALYTICS_EVENT_NAMES);
 const SOURCE_APP_SET = new Set<string>(ANALYTICS_SOURCE_APPS);
 const CTA_INTENT_SET = new Set<string>(CTA_INTENTS);
 const SPEECH_SURFACE_SET = new Set<string>(SPEECH_SURFACES);
+const PERMISSION_KIND_SET = new Set<string>(PERMISSION_KINDS);
+const PERMISSION_STATE_SET = new Set<string>(PERMISSION_STATES);
+const CALL_STATE_SET = new Set<string>(CALL_STATES);
+const AUTH_PROVIDER_SET = new Set<string>(AUTH_PROVIDERS);
+const AUTH_RESULT_SET = new Set<string>(AUTH_RESULTS);
 
 const clip = (value: unknown, max: number): string => {
   if (typeof value !== 'string') return '';
@@ -42,6 +59,46 @@ const toPct = (value: unknown): number | undefined => {
 const toDuration = (value: unknown): number | undefined => {
   if (typeof value !== 'number' || !Number.isFinite(value)) return undefined;
   return Math.max(0, Math.min(86_400_000, Math.round(value)));
+};
+
+const toCount = (value: unknown): number | undefined => {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return undefined;
+  return Math.max(0, Math.min(10_000, Math.round(value)));
+};
+
+const toUiAction = (value: unknown): AnalyticsUiAction | null => {
+  if (!value || typeof value !== 'object') return null;
+  const record = value as Record<string, unknown>;
+  const role = clip(record.role, MAX_EVENT_STRING.actionRole) || 'button';
+  const name = clip(record.name, MAX_EVENT_STRING.actionName) || '(unnamed)';
+  return { role, name, disabled: record.disabled === true };
+};
+
+const toUiContext = (value: unknown): AnalyticsUiContext | undefined => {
+  if (!value || typeof value !== 'object') return undefined;
+  const record = value as Record<string, unknown>;
+  const rawActions = Array.isArray(record.actions) ? record.actions : [];
+  const rawAlerts = Array.isArray(record.alerts) ? record.alerts : [];
+  const actions: AnalyticsUiAction[] = [];
+  for (const item of rawActions) {
+    const action = toUiAction(item);
+    if (action) actions.push(action);
+    if (actions.length >= UI_CONTEXT_MAX_ACTIONS) break;
+  }
+  const alerts: string[] = [];
+  for (const item of rawAlerts) {
+    const text = clip(item, MAX_EVENT_STRING.heading);
+    if (text) alerts.push(text);
+    if (alerts.length >= UI_CONTEXT_MAX_ALERTS) break;
+  }
+  return {
+    screenId: clip(record.screenId, MAX_EVENT_STRING.screenId),
+    heading: clip(record.heading, MAX_EVENT_STRING.heading),
+    dialog: clip(record.dialog, MAX_EVENT_STRING.dialog),
+    alerts,
+    primary: clip(record.primary, MAX_EVENT_STRING.actionName),
+    actions,
+  };
 };
 
 export const validateVisitorId = (visitorId: unknown): string | null => {
@@ -119,6 +176,38 @@ export const validateClientEvent = (input: unknown): AnalyticsClientEvent | null
 
   const speechSurface = clip(record.speechSurface, MAX_EVENT_STRING.speechSurface);
   if (SPEECH_SURFACE_SET.has(speechSurface)) event.speechSurface = speechSurface as SpeechSurface;
+
+  const uiContext = toUiContext(record.uiContext);
+  if (uiContext) event.uiContext = uiContext;
+
+  const uiContextHash = clip(record.uiContextHash, MAX_EVENT_STRING.uiContextHash);
+  if (uiContextHash) event.uiContextHash = uiContextHash;
+
+  const permissionKind = clip(record.permissionKind, MAX_EVENT_STRING.permissionKind);
+  if (PERMISSION_KIND_SET.has(permissionKind)) event.permissionKind = permissionKind as PermissionKind;
+
+  const permissionState = clip(record.permissionState, MAX_EVENT_STRING.permissionState);
+  if (PERMISSION_STATE_SET.has(permissionState)) {
+    event.permissionState = permissionState as PermissionState;
+  }
+
+  const callState = clip(record.callState, MAX_EVENT_STRING.callState);
+  if (CALL_STATE_SET.has(callState)) event.callState = callState as CallState;
+
+  const callReason = clip(record.callReason, MAX_EVENT_STRING.callReason);
+  if (callReason) event.callReason = callReason;
+
+  const userMessageCount = toCount(record.userMessageCount);
+  if (userMessageCount !== undefined) event.userMessageCount = userMessageCount;
+
+  const authProvider = clip(record.authProvider, MAX_EVENT_STRING.authProvider);
+  if (AUTH_PROVIDER_SET.has(authProvider)) event.authProvider = authProvider as AuthProvider;
+
+  const authResult = clip(record.authResult, MAX_EVENT_STRING.authResult);
+  if (AUTH_RESULT_SET.has(authResult)) event.authResult = authResult as AuthResult;
+
+  const errorCode = clip(record.errorCode, MAX_EVENT_STRING.errorCode);
+  if (errorCode) event.errorCode = errorCode;
 
   return event;
 };

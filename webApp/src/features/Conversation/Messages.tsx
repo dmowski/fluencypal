@@ -289,6 +289,7 @@ export const Message = ({
               variant="text"
               disabled={isProposedAnswerLoading || proposedAnswer !== null}
               onClick={generateProposedAnswer}
+              data-analytics="call-what-to-say"
               startIcon={
                 isProposedAnswerLoading ? <Loader size={'12px'} /> : <Sparkles size={'12px'} />
               }

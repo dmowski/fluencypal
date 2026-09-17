@@ -1,3 +1,5 @@
+import { sendPermission } from '@/features/Analytics/Custom/sendOutcomeEvents';
+
 export const isMicrophoneGranted = async (): Promise<boolean> => {
   if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
     return false;
@@ -59,19 +61,23 @@ export const requestMicrophoneAccess = async (deviceId?: string | null) => {
       audio: audioConstraintsForDevice(deviceId),
     });
     stream.getTracks().forEach((track) => track.stop());
+    sendPermission({ kind: 'mic', state: 'granted' });
     return true;
   } catch (err) {
     if (deviceId) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         stream.getTracks().forEach((track) => track.stop());
+        sendPermission({ kind: 'mic', state: 'granted' });
         return true;
       } catch (fallbackErr) {
         console.error('Microphone access denied', fallbackErr);
+        sendPermission({ kind: 'mic', state: 'denied' });
         return false;
       }
     }
     console.error('Microphone access denied', err);
+    sendPermission({ kind: 'mic', state: 'denied' });
     return false;
   }
 };

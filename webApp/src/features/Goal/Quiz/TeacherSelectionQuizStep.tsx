@@ -27,6 +27,7 @@ export const TeacherSelectionQuizStep = ({
       subComponent={
         <Stack
           data-testid="quiz-teacher-selection"
+          data-analytics-screen="quiz.teacherSelection"
           sx={{
             paddingTop: '20px',
             gap: '20px',

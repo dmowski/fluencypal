@@ -11,6 +11,7 @@ export const FooterButton = ({
   isActive,
   isLocked,
   testId,
+  analyticsId,
 }: {
   label: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -19,6 +20,7 @@ export const FooterButton = ({
   isActive: boolean;
   isLocked?: boolean;
   testId?: string;
+  analyticsId?: string;
 }) => {
   const { i18n } = useLingui();
   return (
@@ -90,6 +92,7 @@ export const FooterButton = ({
             size="large"
             aria-label={label}
             data-testid={testId}
+            {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
             onClick={(event) => onClick(event)}
             title={label}
           >

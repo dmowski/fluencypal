@@ -315,7 +315,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           },
         }}
       >
-        <Stack id="messages-list" data-testid="conversation-canvas-record">
+        <Stack id="messages-list" data-testid="conversation-canvas-record" data-analytics-screen="practice.record">
           <Stack
             sx={{
               width: '100%',
@@ -539,6 +539,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                               size="large"
                               color={isSendMessagesBlocked ? 'secondary' : 'primary'}
                               variant="contained"
+                              data-analytics="call-record-message"
                               sx={{
                                 minWidth: '200px',
                               }}
@@ -556,6 +557,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                             <IconButton
                               aria-label={i18n._('End call')}
                               data-testid="call-end-button"
+                              data-analytics="call-end"
                               onClick={(e) => setAnchorElUser(e.currentTarget)}
                               sx={{
                                 backgroundColor: '#dc362e',

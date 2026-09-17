@@ -140,6 +140,7 @@ export const CameraCanvas = ({
     <>
       <Stack
         data-testid="conversation-canvas-call"
+        data-analytics-screen="practice.call"
         sx={{
           gap: '0px',
           width: '100%',

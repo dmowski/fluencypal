@@ -612,6 +612,7 @@ Return ONLY the number.
                 inactiveButton={<MicOffIcon />}
                 isActive={vadAudioRecorder.isEnabled}
                 label={i18n._('Enable Microphone')}
+                analyticsId="call-enable-mic"
                 onClick={isSendMessagesBlocked ? access.showPaymentModal : toggleVad}
                 isLocked={isSendMessagesBlocked}
               />
@@ -623,6 +624,7 @@ Return ONLY the number.
                 inactiveButton={<MicOffIcon />}
                 isActive={isMuted === false}
                 label={i18n._('Enable microphone')}
+                analyticsId="call-enable-mic"
                 onClick={
                   isSendMessagesBlocked ? access.showPaymentModal : () => setIsMuted(!isMuted)
                 }
@@ -656,6 +658,7 @@ Return ONLY the number.
               size="large"
               aria-label={i18n._('End call')}
               data-testid="call-end-button"
+              data-analytics="call-end"
               onClick={(event) => setEndCallMenuAnchor(event.currentTarget)}
               sx={{
                 width: '70px',

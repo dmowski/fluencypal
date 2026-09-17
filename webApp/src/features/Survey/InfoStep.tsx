@@ -44,7 +44,7 @@ export const InfoStep = ({
   secondButtonStartIcon,
   secondButtonDisabled,
   listItemsAfterActions,
-  actionButtonAnalyticsId,
+  actionButtonAnalyticsId = 'quiz-next',
   secondButtonAnalyticsId,
   quietActions = false,
   hideActions = false,

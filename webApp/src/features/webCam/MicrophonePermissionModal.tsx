@@ -33,6 +33,7 @@ export const MicrophonePermissionModal = ({
       zIndex={1100}
     >
       <Stack
+        data-analytics-screen="mic.permission"
         sx={{
           width: '100%',
           maxWidth: '520px',
@@ -131,6 +132,7 @@ export const MicrophonePermissionModal = ({
             size="large"
             fullWidth
             disabled={isRequesting}
+            data-analytics="mic-permission-grant"
             startIcon={isRequesting ? <CircularProgress size={18} color="inherit" /> : <Mic size={18} />}
             onClick={onGrant}
             sx={{
@@ -143,7 +145,13 @@ export const MicrophonePermissionModal = ({
               ? i18n._('Requesting access...')
               : i18n._('Grant microphone permission')}
           </Button>
-          <Button variant="text" color="inherit" onClick={onClose} disabled={isRequesting}>
+          <Button
+            variant="text"
+            color="inherit"
+            onClick={onClose}
+            disabled={isRequesting}
+            data-analytics="mic-permission-dismiss"
+          >
             {i18n._('Not now')}
           </Button>
         </Stack>

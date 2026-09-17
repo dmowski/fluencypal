@@ -252,6 +252,35 @@ export function CustomAnalyticsAdmin() {
                   {event.conversationId}
                 </Typography>
               )}
+              {event.name === 'permission' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.permissionKind} {event.permissionState}
+                </Typography>
+              )}
+              {event.name === 'call_state' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.callState}
+                  {event.callReason ? ` · ${event.callReason}` : ''}
+                  {event.userMessageCount != null ? ` · ${event.userMessageCount} user msgs` : ''}
+                </Typography>
+              )}
+              {event.name === 'auth_attempt' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.authProvider} {event.authResult}
+                </Typography>
+              )}
+              {event.name === 'ui_error' && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.errorCode}
+                </Typography>
+              )}
+              {event.uiContext?.screenId && (
+                <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                  {event.uiContext.screenId}
+                  {event.uiContext.dialog ? ` · dialog ${event.uiContext.dialog}` : ''}
+                  {event.uiContext.heading ? ` · ${event.uiContext.heading}` : ''}
+                </Typography>
+              )}
             </Stack>
           ))}
           {events.length === 0 && (

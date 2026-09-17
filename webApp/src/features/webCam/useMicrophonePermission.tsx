@@ -5,6 +5,7 @@ import { useLocalStorage } from 'react-use';
 import { getMediaAudioStreams } from './mediaStream';
 import { isMicrophoneDenied, isMicrophoneGranted } from '@/libs/mic';
 import { MicrophonePermissionModal } from './MicrophonePermissionModal';
+import { sendPermission, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 const PREP_MODAL_SEEN_KEY = 'microphone-prep-modal-seen-v2';
 
@@ -60,6 +61,8 @@ export function MicrophonePermissionProvider({ children }: { children: ReactNode
       return new Promise<MediaStream | null>((resolve) => {
         pendingResolveRef.current = resolve;
         setWasDenied(isDenied);
+        if (isDenied) sendUiError('mic_denied');
+        sendPermission({ kind: 'mic', state: 'prompt' });
         setIsModalOpen(true);
       });
     }
@@ -76,6 +79,7 @@ export function MicrophonePermissionProvider({ children }: { children: ReactNode
   }, [finishRequest, requestBrowserMicrophone, setHasSeenPrepModal]);
 
   const onClose = useCallback(() => {
+    sendPermission({ kind: 'mic', state: 'dismissed' });
     finishRequest(null);
   }, [finishRequest]);
 

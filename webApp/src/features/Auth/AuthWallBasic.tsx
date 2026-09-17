@@ -251,6 +251,7 @@ export const AuthWallBasic = ({
             listItems={featuresList}
             onClick={nextStep}
             width={width}
+            actionButtonAnalyticsId="auth-continue"
           />
         )}
 
@@ -301,6 +302,7 @@ export const AuthWallBasic = ({
               },
             ]}
             onClick={nextStep}
+            actionButtonAnalyticsId="auth-continue"
           />
         )}
 

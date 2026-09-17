@@ -18,6 +18,7 @@ import { isAllowedAnalyticsOrigin } from './allowedOrigins';
 import { isBotBrowser } from './isBotUserAgent';
 import { currentScrollPercent, nextScrollBucket } from './pageEngagement';
 import { getOrCreateParentVisitorId } from './parentVisitorId';
+import { accessibleName } from './captureUiContext';
 
 const iframeStyle: React.CSSProperties = {
   position: 'absolute',
@@ -39,7 +40,7 @@ const readClickMeta = (target: EventTarget | null) => {
   const el = target.closest(clickTargetSelector);
   if (!(el instanceof HTMLElement)) return null;
 
-  const text = (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+  const text = accessibleName(el);
   const href = el instanceof HTMLAnchorElement ? el.href : el.getAttribute('href') || '';
 
   return {
@@ -121,13 +122,30 @@ export function CustomAnalyticsHost({ sourceApp }: { sourceApp: AnalyticsSourceA
 
   useEffect(() => {
     if (skip) return;
+    let lastDeadClickAt = 0;
     const onClick = (event: MouseEvent) => {
       const meta = readClickMeta(event.target);
-      if (!meta) return;
+      if (meta) {
+        sendAnalyticsEvent({
+          name: 'click',
+          sourceApp,
+          ...meta,
+        });
+        return;
+      }
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest('iframe')) return;
+      const el = event.target instanceof HTMLElement ? event.target : event.target.parentElement;
+      if (!el) return;
+      const pointer = window.getComputedStyle(el).cursor === 'pointer';
+      const now = Date.now();
+      if (!pointer || now - lastDeadClickAt < 2000) return;
+      lastDeadClickAt = now;
       sendAnalyticsEvent({
-        name: 'click',
+        name: 'dead_click',
         sourceApp,
-        ...meta,
+        tagName: el.tagName.toLowerCase(),
+        buttonText: accessibleName(el),
       });
     };
     document.addEventListener('click', onClick, true);
