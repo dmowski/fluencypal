@@ -275,7 +275,7 @@ msgstr "您的账单上可能会出现一个小额临时授权，它将由您的
 msgid "A small, voice-only room. No transcripts."
 msgstr "一个小型、仅语音的房间。无文字记录。"
 
-#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:25
+#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:29
 #. js-lingui-explicit-id
 msgid "A voice and style that suits you"
 msgstr "一种适合您的声音和风格"
@@ -312,11 +312,6 @@ msgstr "访问和管理您的个人书籍库，使用FluencyPal的阅读器功�
 #. js-lingui-explicit-id
 msgid "Access Blocked"
 msgstr "访问被阻止"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:192
-#. js-lingui-explicit-id
-msgid "Access to the community"
-msgstr "访问社区"
 
 #: src/features/Reader/components/ReaderAuthButton.tsx:29
 #. js-lingui-explicit-id
@@ -608,11 +603,6 @@ msgstr "AI语言导师"
 msgid "AI language tutor pricing"
 msgstr "AI语言辅导价格"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:533
-#. js-lingui-explicit-id
-msgid "AI responses are text-only"
-msgstr "AI 的回复仅为文本"
-
 #: src/features/Auth/WebViewWall.tsx:191
 #. js-lingui-explicit-id
 msgid "AI speaking partner"
@@ -633,15 +623,10 @@ msgstr "AI 代币"
 msgid "AI Voice"
 msgstr "AI 语音"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:721
+#: src/features/Conversation/CallMode/CallButtons.tsx:722
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI 语音"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:528
-#. js-lingui-explicit-id
-msgid "AI voice is disabled"
-msgstr "AI 语音已禁用"
 
 #: src/features/Goal/Quiz/GoalReview.tsx:192
 #. js-lingui-explicit-id
@@ -1337,13 +1322,6 @@ msgstr "建立自信，讨论符合您经验的股权、福利和薪酬方案。
 msgid "Build fluency and confidence with daily speaking practice."
 msgstr "通过每天的口语练习来建立流利度和自信。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:394
-#. js-lingui-explicit-id
-msgid ""
-"Build speaking confidence, fluency, and listening through natural "
-"conversation."
-msgstr "通过自然对话建立口语信心、流利度和听力。"
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:9
 #. js-lingui-explicit-id
 msgid "Build your own role-play with more guidance"
@@ -1458,11 +1436,6 @@ msgstr "缓存策略"
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
 msgstr "通话时长限制？"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:469
-#. js-lingui-explicit-id
-msgid "Call mode"
-msgstr "通话模式"
 
 #: src/features/RolePlay/scenarios/calling-technical-support.ts:7
 #. js-lingui-explicit-id
@@ -2148,7 +2121,7 @@ msgstr "选择隔离级别、建模聚合并编写高效查询。"
 msgid "Choose Language Level"
 msgstr "选择语言水平"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:199
+#: src/features/Goal/Quiz/QuizPage2.tsx:136
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "选择网站语言"
@@ -2169,7 +2142,7 @@ msgstr "选择您的AI老师的声音"
 msgid "Choose your game mode"
 msgstr "选择您的游戏模式"
 
-#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:24
+#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:28
 #. js-lingui-explicit-id
 msgid "Choose your interlocutor"
 msgstr "选择您的对话者"
@@ -2213,7 +2186,7 @@ msgstr "在您的浏览器中，点击 app.fluencypal.com 旁边的分享按钮�
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:746
+#: src/features/Conversation/CallMode/CallButtons.tsx:747
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2289,7 +2262,6 @@ msgstr "沟通与领导力"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:118
 #: src/features/Dashboard/CommunityDashboardCard.tsx:130
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:28
-#: src/features/Goal/Quiz/QuizPage2.tsx:485
 #: src/features/Navigation/NavigationBar.tsx:112
 #: src/features/Tasks/useDailyTasks.tsx:83
 #. js-lingui-explicit-id
@@ -2573,8 +2545,8 @@ msgstr "背景（主题、受众、目标...）"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:73
-#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:26
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:41
+#: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:30
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:80
 #: src/features/News/NewsPlayButton.tsx:103
 #: src/features/PayWall/CardValidator.tsx:141
@@ -2764,6 +2736,11 @@ msgstr "无法加载课程。"
 msgid "Could not start the exam. Please try again."
 msgstr "无法开始考试。请重试。"
 
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:151
+#. js-lingui-explicit-id
+msgid "Couldn't save your answer. Try recording again."
+msgstr "无法保存您的答案。请重试录制。"
+
 #: src/features/News/NewsSettingsMenu.tsx:72
 #. js-lingui-explicit-id
 msgid "Country"
@@ -2785,7 +2762,6 @@ msgid ""
 "track your progress to master English effectively."
 msgstr "使用FluencyPal创建个性化语言学习计划。设定你的流利目标，专注于特定的技能如口语或听力，并跟踪你的进度以有效掌握英语。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:216
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3650,13 +3626,6 @@ msgstr "面向拥有复杂前端和高性能要求的产品公司的开发人员
 msgid "Diagnosis"
 msgstr "诊断"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:380
-#. js-lingui-explicit-id
-msgid ""
-"Different modes help in different ways. You will discover what works best "
-"for you over time."
-msgstr "不同的模式以不同的方式提供帮助。随着时间的推移，你会发现最适合自己的方法。"
-
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
 #. js-lingui-explicit-id
 msgid "Discard"
@@ -3822,11 +3791,6 @@ msgstr "不要看钟；做它做的事。继续前进。"
 msgid "Do you cover databases and transactions?"
 msgstr "你们涉及数据库和事务吗？"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:212
-#. js-lingui-explicit-id
-msgid "Do you need a personalized plan?"
-msgstr "你需要一个个性化的计划吗？"
-
 #: src/features/Landing/Price/PricePage.tsx:97
 #. js-lingui-explicit-id
 msgid "Do you offer custom pricing?"
@@ -3842,14 +3806,9 @@ msgstr "博士"
 msgid "Dog Owner"
 msgstr "狗主人"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:470
-#. js-lingui-explicit-id
-msgid "Don't forget to try call mode in the practice section!"
-msgstr "别忘了在练习部分尝试通话模式！"
-
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:791
+#: src/features/Conversation/CallMode/CallButtons.tsx:792
 #: src/features/Conversation/ConversationCanvas.tsx:519
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4072,14 +4031,14 @@ msgstr "启用麦克风"
 msgid "Enable microphone to start talking"
 msgstr "启用麦克风开始讲话"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:730
+#: src/features/Conversation/CallMode/CallButtons.tsx:731
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
 "access this feature."
 msgstr "启用 AI 语音是高级功能。请升级余额以访问此功能。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:659
+#: src/features/Conversation/CallMode/CallButtons.tsx:660
 #: src/features/Conversation/ConversationCanvas.tsx:558
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4228,7 +4187,7 @@ msgstr "创建支付会话时出错。通知已发送给支持团队。请稍后
 msgid "Error creating payment session. Try again later."
 msgstr "创建支付会话时出错。请稍后再试。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:118
+#: src/features/Goal/Quiz/QuizPage2.tsx:68
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "创建计划时出错。请重试。"
@@ -4785,13 +4744,6 @@ msgstr "完成的课程。打开一个以再次听取您的答案。"
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "五周的坚持出席。今天继续保持这种能量。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:400
-#. js-lingui-explicit-id
-msgid ""
-"Fix repeated mistakes with clear explanations, quizzes, and focused "
-"practice."
-msgstr "修正重复的错误，并提供清晰的解释、测验和有针对性的练习。"
-
 #: src/features/Alias/components/RoundSettings.tsx:140
 #. js-lingui-explicit-id
 msgid "Fixed words"
@@ -4808,11 +4760,6 @@ msgid ""
 "FluencyPal does not use your personal data or conversations to train AI "
 "models."
 msgstr "FluencyPal 不会使用您的个人数据或对话来训练 AI 模型。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:379
-#. js-lingui-explicit-id
-msgid "FluencyPal gets stronger as you use it"
-msgstr "FluencyPal 会随着您的使用而变得更加强大"
 
 #: src/features/Landing/LandingPage.tsx:113
 #. js-lingui-explicit-id
@@ -5012,11 +4959,6 @@ msgid ""
 "delay in a work meeting"
 msgstr "例如：退回损坏的笔记本电脑，要求退款，解释工作会议的延误"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:143
-#. js-lingui-explicit-id
-msgid "For focused, uninterrupted learning."
-msgstr "专注且不间断的学习。"
-
 #: src/features/Landing/Price/PricePage.tsx:565
 #. js-lingui-explicit-id
 msgid "For learners committed to fluency"
@@ -5107,23 +5049,6 @@ msgstr "框架与库"
 msgid "Free Conversation"
 msgstr "自由对话"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:565
-#. js-lingui-explicit-id
-msgid ""
-"Free plan is for speaking and writing practice. Paid plan unlocks listening "
-"and real-time conversations with AI"
-msgstr "免费计划用于口语和写作练习。付费计划解锁听力和与AI的实时对话。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:516
-#. js-lingui-explicit-id
-msgid "Free plan:"
-msgstr "免费计划："
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:501
-#. js-lingui-explicit-id
-msgid "Free vs Paid Plan"
-msgstr "免费版与付费版"
-
 #: src/features/Alias/components/ModeSelection.tsx:65
 #. js-lingui-explicit-id
 msgid "Free-for-All"
@@ -5180,7 +5105,6 @@ msgstr "前端系统设计"
 msgid "frontend system design interview"
 msgstr "前端系统设计面试"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:134
 #: src/features/Navigation/SimpleNavigationBar.tsx:156
 #: src/features/Settings/MyProfile.tsx:81
 #: src/features/Usage/FeatureBlocker.tsx:51
@@ -5264,16 +5188,6 @@ msgstr "全名"
 #. js-lingui-explicit-id
 msgid "Full story:"
 msgstr "完整故事："
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:188
-#. js-lingui-explicit-id
-msgid "Full voice features"
-msgstr "全语音功能"
-
-#: src/features/Goal/Quiz/WelcomeChatMessage.tsx:62
-#. js-lingui-explicit-id
-msgid "Fun facts about yourself"
-msgstr "关于你自己的趣事"
 
 #: src/features/Community/CommunityPage.tsx:27
 #: src/features/Community/GamePage.tsx:72
@@ -5542,17 +5456,6 @@ msgstr "全球聊天"
 msgid "Go to"
 msgstr "去到"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:473
-#: src/features/Goal/Quiz/QuizPage2.tsx:573
-#. js-lingui-explicit-id
-msgid "Go to Practice"
-msgstr "去练习"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:492
-#. js-lingui-explicit-id
-msgid "Go to Practice with AI"
-msgstr "去和AI练习"
-
 #: src/features/NotFound/NotFoundPage.tsx:37
 #. js-lingui-explicit-id
 msgid "Go to the main page"
@@ -5647,11 +5550,6 @@ msgstr "语法提升"
 #. js-lingui-explicit-id
 msgid "Grammar Improvements"
 msgstr "语法改进"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:399
-#. js-lingui-explicit-id
-msgid "Grammar Rules"
-msgstr "语法规则"
 
 #: src/features/Auth/AuthWall.tsx:57
 #. js-lingui-explicit-id
@@ -5887,11 +5785,6 @@ msgstr "突出您的领导和解决问题的能力"
 msgid "Highlights"
 msgstr "亮点"
 
-#: src/features/Goal/Quiz/WelcomeChatMessage.tsx:50
-#. js-lingui-explicit-id
-msgid "Hint:"
-msgstr "提示:"
-
 #: src/features/Auth/InterviewAuthWall.tsx:27
 #. js-lingui-explicit-id
 msgid "Hints to boost your confidence"
@@ -6053,11 +5946,6 @@ msgstr "如何提高以读取为主的端点的性能？"
 msgid "How would you improve the performance of a React app that feels slow?"
 msgstr "如何提高运行缓慢的 React 应用程序的性能？"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:29
-#. js-lingui-explicit-id
-msgid "How would you like to practice?"
-msgstr "你想如何练习？"
-
 #: src/features/Case/data/frontend-senior/exampleQuestionsSection.ts:32
 #. js-lingui-explicit-id
 msgid ""
@@ -6158,7 +6046,7 @@ msgstr ""
 "StartUp\"提供了服务，我将失去终止合同的权利。"
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
-#: src/features/Goal/Quiz/QuizPage2.tsx:165
+#: src/features/Goal/Quiz/QuizPage2.tsx:108
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "我想学习："
@@ -6203,12 +6091,7 @@ msgstr "我会添加内存缓存并增加数据库资源。"
 msgid "I'd add retries with a longer timeout."
 msgstr "我会添加重试功能，并延长超时时间。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:278
-#. js-lingui-explicit-id
-msgid "I'll ask you two more questions before I make your plan."
-msgstr "我会在制定你的计划之前再问你两个问题。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:80
+#: src/features/Goal/Quiz/QuizPage2.tsx:47
 #. js-lingui-explicit-id
 msgid "I'll use your answer to make your personal plan."
 msgstr "我会使用您的答案来制定您的个人计划。"
@@ -6240,13 +6123,6 @@ msgstr "您的消息创意："
 msgid "Ideal for focused practice or preparing for an exam."
 msgstr "非常适合专注练习或准备考试。"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:256
-#. js-lingui-explicit-id
-msgid ""
-"If it doesn’t feel like the right fit for you, you can request a refund "
-"from your Profile → Payment history. No stress, no complicated steps."
-msgstr "如果您觉得这不适合您，可以从您的个人资料 → 支付历史请求退款。无需担心，无须繁琐步骤。"
-
 #: src/features/Community/SupportPage.tsx:37
 #. js-lingui-explicit-id
 msgid ""
@@ -6265,18 +6141,6 @@ msgid ""
 "If you want to remove all information, including your balance, please "
 "contact us."
 msgstr "如果您想删除所有信息，包括您的余额，请联系我们。"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:144
-#. js-lingui-explicit-id
-msgid "If you want to try before you buy."
-msgstr "如果您想在购买前试用。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:213
-#. js-lingui-explicit-id
-msgid ""
-"If you'd like a more personalized practice, I can create a plan based on "
-"your goals. Or you can skip this step and start practicing right now!"
-msgstr "如果您想要更个性化的练习，我可以根据您的目标制定计划。或者您可以跳过这一步，立即开始练习！"
 
 #: src/features/Landing/LandingPage.tsx:406
 #. js-lingui-explicit-id
@@ -6358,11 +6222,6 @@ msgid ""
 "dynamic word-guessing game where you'll practice explaining and guessing "
 "words creatively, expanding your linguistic confidence."
 msgstr "提高你的词汇量和口语技巧，同时享受乐趣！Alias是一个充满活力的猜词游戏，在这里你将通过创造性地解释和猜测单词来练习，从而提升语言自信。"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:197
-#. js-lingui-explicit-id
-msgid "Improvements to your grammar"
-msgstr "改善您的语法"
 
 #: src/features/Landing/LandingPage.tsx:282
 #. js-lingui-explicit-id
@@ -6713,7 +6572,7 @@ msgid ""
 "conversation. Please wait."
 msgstr "根据您的对话，准备规则和示例可能需要大约一分钟。请稍候。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:349
+#: src/features/Goal/Quiz/QuizPage2.tsx:164
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "可能需要长达一分钟。"
@@ -6813,11 +6672,6 @@ msgstr "初级前端面试"
 #. js-lingui-explicit-id
 msgid "Just talk"
 msgstr "只需说话"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:393
-#. js-lingui-explicit-id
-msgid "Just Talk"
-msgstr "只需说"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:57
 #. js-lingui-explicit-id
@@ -7038,11 +6892,6 @@ msgstr "学习如何有效沟通，提出聪明的问题，并展示你对前端
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "学习有效地描述症状并请求医疗建议"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:406
-#. js-lingui-explicit-id
-msgid "Learn vocabulary that matches your goals and use it in context."
-msgstr "学习符合您目标的词汇并在上下文中使用它。"
-
 #: src/features/Dashboard/CommunityDashboardCard.tsx:131
 #. js-lingui-explicit-id
 msgid "Learn with the community"
@@ -7099,11 +6948,6 @@ msgstr "更少"
 msgid "Lesson Plan"
 msgstr "课程计划"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:277
-#. js-lingui-explicit-id
-msgid "Let's continue..."
-msgstr "让我们继续..."
-
 #: src/features/Auth/AuthWall.tsx:65
 #: src/features/Auth/InterviewAuthWall.tsx:35
 #: src/features/Auth/SignInForm.tsx:48
@@ -7131,25 +6975,10 @@ msgstr "图书馆"
 msgid "Like"
 msgstr "喜欢"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:134
-#. js-lingui-explicit-id
-msgid "Limited Access"
-msgstr "有限访问"
-
 #: src/features/Conversation/ConversationCanvas.tsx:610
 #. js-lingui-explicit-id
 msgid "Limited access..."
 msgstr "有限访问..."
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:203
-#. js-lingui-explicit-id
-msgid "Limited messages"
-msgstr "有限信息"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:207
-#. js-lingui-explicit-id
-msgid "Limited voice features"
-msgstr "有限的语音功能"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:420
 #. js-lingui-explicit-id
@@ -7182,11 +7011,6 @@ msgstr "聆听、阅读并通过故事学习"
 #. js-lingui-explicit-id
 msgid "Listening Practice"
 msgstr "聆听练习"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:552
-#. js-lingui-explicit-id
-msgid "Listening practice. You can hear AI responses"
-msgstr "听力练习。您可以听到AI的回答"
 
 #: src/features/Usage/FeatureBlocker.tsx:70
 #. js-lingui-explicit-id
@@ -7271,17 +7095,15 @@ msgstr "加载中.."
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
-#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
-#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:31
 #: src/features/Header/PaymentHistoryModal.tsx:129
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:136
-#: src/features/Router/PracticePage.tsx:147
-#: src/features/Router/PracticePage.tsx:157
-#: src/features/Router/PracticePage.tsx:188
+#: src/features/Router/PracticePage.tsx:132
+#: src/features/Router/PracticePage.tsx:143
+#: src/features/Router/PracticePage.tsx:153
+#: src/features/Router/PracticePage.tsx:184
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7548,7 +7370,7 @@ msgid ""
 msgstr "麦克风访问被拒绝。请在您的浏览器设置中允许麦克风访问。"
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
-#: src/features/Conversation/useJustTalk.tsx:59
+#: src/features/Conversation/useJustTalk.tsx:67
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access is required to start the call.\n"
@@ -7810,7 +7632,7 @@ msgstr "新闻讨论"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPage2.tsx:110
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -7840,11 +7662,6 @@ msgstr "下一课"
 #. js-lingui-explicit-id
 msgid "Next plan"
 msgstr "下一个计划"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:313
-#. js-lingui-explicit-id
-msgid "Next question"
-msgstr "下一个问题"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:181
 #. js-lingui-explicit-id
@@ -8271,11 +8088,6 @@ msgstr "关"
 msgid "Off-topic"
 msgstr "离题"
 
-#: src/features/Goal/Quiz/TrialPriceQuizStep.tsx:76
-#. js-lingui-explicit-id
-msgid "OK"
-msgstr "好的"
-
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
 #. js-lingui-explicit-id
@@ -8479,8 +8291,7 @@ msgstr "订单，付款金额为 {amount}"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:178
-#: src/features/Goal/Quiz/QuizPage2.tsx:75
-#: src/features/Goal/Quiz/useQuiz.tsx:725
+#: src/features/Goal/Quiz/useQuiz.tsx:326
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:27
 #: src/features/Lang/LanguageSwitcher.tsx:107
 #. js-lingui-explicit-id
@@ -8524,11 +8335,6 @@ msgstr "页面"
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "页面语言"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:545
-#. js-lingui-explicit-id
-msgid "Paid plan:"
-msgstr "付费计划："
 
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:403
 #. js-lingui-explicit-id
@@ -8663,11 +8469,6 @@ msgstr "待处理请求"
 #. js-lingui-explicit-id
 msgid "People in voice chat"
 msgstr "语音聊天中的人"
-
-#: src/features/Goal/Quiz/TrialPriceQuizStep.tsx:58
-#. js-lingui-explicit-id
-msgid "per month"
-msgstr "每月"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -9345,11 +9146,6 @@ msgid ""
 "questions."
 msgstr "为 .NET、API、数据库、多线程和系统设计问题做好准备。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:412
-#. js-lingui-explicit-id
-msgid "Prepare for interviews, daily situations, and real-life conversations."
-msgstr "为面试、日常情景和真实对话做好准备。"
-
 #: src/features/SEO/metadata.ts:176
 #: src/features/SEO/metadata.ts:184
 #. js-lingui-explicit-id
@@ -9894,15 +9690,10 @@ msgstr "实时与AI对话"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "真实生活角色扮演以进行高级英语练习"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:721
+#: src/features/Conversation/CallMode/CallButtons.tsx:722
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "实时对话"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:557
-#. js-lingui-explicit-id
-msgid "Real-time conversations with AI using voice"
-msgstr "使用语音与AI进行实时对话"
 
 #: src/features/Case/data/backendCSharp/techStackSection.ts:16
 #. js-lingui-explicit-id
@@ -9981,13 +9772,6 @@ msgid ""
 "seconds is ideal."
 msgstr "录制一段简短的自我介绍音频，让其他人知道你是谁。大约30秒最佳。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:486
-#. js-lingui-explicit-id
-msgid ""
-"Record a welcome message to our community of learners. It can be a great "
-"way to practice your speaking skills and introduce yourself to others!"
-msgstr "录制一条欢迎信息给我们的学习者社区。这是一个练习口语技能和向他人介绍自己的好方法！"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
@@ -10006,7 +9790,7 @@ msgstr "记录答案"
 msgid "Record Answer"
 msgstr "记录答案"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:640
+#: src/features/Conversation/CallMode/CallButtons.tsx:641
 #: src/features/Conversation/ConversationCanvas.tsx:554
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10053,7 +9837,7 @@ msgid "Recording settings"
 msgstr "录音设置"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:168
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:192
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:209
 #. js-lingui-explicit-id
 msgid "Recording…"
 msgstr "录音中…"
@@ -10090,16 +9874,6 @@ msgstr "反射"
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/features/Goal/Quiz/TrialPriceQuizStep.tsx:71
-#. js-lingui-explicit-id
-msgid "Refund anytime from Profile. Automatic, no time limit."
-msgstr "从个人资料中随时申请退款。自动处理，无时间限制。"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:244
-#. js-lingui-explicit-id
-msgid "Refund guarantee"
-msgstr "退款保证"
-
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:132
 #. js-lingui-explicit-id
 msgid "Reject"
@@ -10115,7 +9889,7 @@ msgstr "相关场景"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Router/PracticePage.tsx:208
+#: src/features/Router/PracticePage.tsx:204
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "重新加载对话..."
@@ -10154,7 +9928,7 @@ msgstr "回复"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:173
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:211
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:228
 #. js-lingui-explicit-id
 msgid "Reply"
 msgstr "回复"
@@ -10290,7 +10064,6 @@ msgstr "机器人思考中"
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
-#: src/features/Goal/Quiz/QuizPage2.tsx:411
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:118
 #: src/features/Usage/UsageStatsCards.tsx:88
@@ -10454,11 +10227,6 @@ msgstr "保存图书..."
 #. js-lingui-explicit-id
 msgid "Saving book…"
 msgstr "正在保存书籍…"
-
-#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:39
-#. js-lingui-explicit-id
-msgid "Saving your answer…"
-msgstr "正在保存您的答案…"
 
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
@@ -10709,7 +10477,7 @@ msgstr "高级前端面试"
 msgid "Sentences"
 msgstr "句子"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:121
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "设置我的语言"
@@ -10729,7 +10497,7 @@ msgstr "设置你的学习目标"
 msgid "Set translate language in Settings"
 msgstr "在设置中设置翻译语言"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:652
+#: src/features/Conversation/CallMode/CallButtons.tsx:653
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -10918,11 +10686,6 @@ msgstr "正在登录..."
 msgid "Simple"
 msgstr "简单"
 
-#: src/features/Goal/Quiz/TrialPriceQuizStep.tsx:27
-#. js-lingui-explicit-id
-msgid "Simple pricing"
-msgstr "简单定价"
-
 #: src/features/PayWall/CardValidatorWall.tsx:116
 #. js-lingui-explicit-id
 msgid "Simple steps to get the app for free."
@@ -10986,11 +10749,6 @@ msgstr "技能涵盖：{skills}"
 msgid "Skip"
 msgstr "跳过"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:220
-#. js-lingui-explicit-id
-msgid "Skip all"
-msgstr "跳过全部"
-
 #: src/features/Plan/LessonStartModal.tsx:388
 #. js-lingui-explicit-id
 msgid "Skip for now"
@@ -11043,7 +10801,7 @@ msgstr "智能启动"
 msgid "Smoothed"
 msgstr "平滑的"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:120
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "因此，我可以为您翻译单词"
@@ -11150,11 +10908,6 @@ msgstr "自然地说话，不要过度思考"
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "说话"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:523
-#. js-lingui-explicit-id
-msgid "Speaking and writing practice"
-msgstr "讲话和写作练习"
 
 #: src/features/Landing/LandingPage.tsx:205
 #. js-lingui-explicit-id
@@ -11283,12 +11036,7 @@ msgstr "开始录音"
 msgid "Start recording"
 msgstr "开始录音"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:455
-#. js-lingui-explicit-id
-msgid "Start simple, stay consistent, and let the system adapt as you go."
-msgstr "开始简单，保持一致，并让系统在你前进的过程中自行适应。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:372
+#: src/features/Goal/Quiz/QuizPage2.tsx:176
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
 #. js-lingui-explicit-id
@@ -11503,7 +11251,7 @@ msgstr "步骤:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:211
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:228
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:103
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -11754,8 +11502,7 @@ msgstr "顶级产品公司使用的系统设计场景"
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:76
-#: src/features/Goal/Quiz/useQuiz.tsx:726
+#: src/features/Goal/Quiz/useQuiz.tsx:327
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:28
 #: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
@@ -12470,7 +12217,7 @@ msgstr "感谢您的反馈！"
 msgid "Thank you for your purchase."
 msgstr "感谢您的购买。"
 
-#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:62
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:32
 #. js-lingui-explicit-id
 msgid "Thanks — I'll use that to make your plan. Let's keep going."
 msgstr "感谢——我将使用它来制定您的计划。让我们继续。"
@@ -12534,20 +12281,10 @@ msgid ""
 "achieve it."
 msgstr "你为某件事情付出的努力越多，当你实现它时的成就感就越大。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:502
-#. js-lingui-explicit-id
-msgid "The key differences between them."
-msgstr "它们之间的关键区别。"
-
 #: src/features/Dashboard/MessagesToWinBadge.tsx:139
 #. js-lingui-explicit-id
 msgid "The key: small posts are valid. One sentence is enough."
 msgstr "关键：小的帖子是有效的。一句话就足够了。"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:314
-#. js-lingui-explicit-id
-msgid "The last question before we create your plan"
-msgstr "在我们创建您的计划之前的最后一个问题"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -12857,7 +12594,7 @@ msgstr ""
 "\n"
 "深吸一口气。这将会很愚蠢。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:200
+#: src/features/Goal/Quiz/QuizPage2.tsx:137
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "这是您在按钮和菜单上看到的文本"
@@ -13418,11 +13155,6 @@ msgstr "无限次答案审查"
 msgid "Unlimited conversations and all practice modes!"
 msgstr "无限对话和所有练习模式！"
 
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:184
-#. js-lingui-explicit-id
-msgid "Unlimited messages"
-msgstr "无限消息"
-
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:40
 #. js-lingui-explicit-id
 msgid "Unlock for 1 day"
@@ -13452,11 +13184,6 @@ msgstr "解锁完整访问以继续"
 #. js-lingui-explicit-id
 msgid "Unlock full interview preparation"
 msgstr "解锁完整面试准备"
-
-#: src/features/Goal/Quiz/AccessQuizStep.tsx:30
-#. js-lingui-explicit-id
-msgid "Unlock unlimited access to all features"
-msgstr "解锁所有功能的无限访问权限"
 
 #: src/features/Usage/Subscription/BalanceStatus.tsx:64
 #. js-lingui-explicit-id
@@ -13554,7 +13281,7 @@ msgstr "用户名必须至少为3个字符长。"
 msgid "Username:"
 msgstr "用户名:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:733
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -13756,7 +13483,7 @@ msgstr "我们非常感谢您的反馈！"
 msgid "We are preparing a lesson for you, based on your previous practice."
 msgstr "我们正在根据您之前的练习为您准备一节课。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:348
+#: src/features/Goal/Quiz/QuizPage2.tsx:163
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "我们准备好为您制定计划。"
@@ -13927,7 +13654,7 @@ msgstr "FluencyPal 的主要重点是什么？"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "我可以练习哪种类型的后台面试？"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:119
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "你说哪种语言"
@@ -13946,11 +13673,6 @@ msgstr "我应该具备什么水平的口语能力？"
 #. js-lingui-explicit-id
 msgid "What means \"hours of AI usage\"?"
 msgstr "\"AI 使用时间小时数\" 是什么意思？"
-
-#: src/features/Goal/Quiz/WelcomeChatMessage.tsx:67
-#. js-lingui-explicit-id
-msgid "What recently made you happy?"
-msgstr "最近有什么事情让你感到开心？"
 
 #: src/features/RolePlay/scenarios/custom-conversation.ts:13
 #. js-lingui-explicit-id
@@ -14094,7 +13816,7 @@ msgstr "为什么后端候选人进步快"
 msgid "Why candidates improve so quickly"
 msgstr "为什么候选人进步得如此之快"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:79
+#: src/features/Goal/Quiz/QuizPage2.tsx:46
 #. js-lingui-explicit-id
 msgid "Why do you want to practice speaking?"
 msgstr "你为什么想练习口语？"
@@ -14197,11 +13919,6 @@ msgstr "每轮单词数"
 #. js-lingui-explicit-id
 msgid "Words per turn"
 msgstr "每回合字数"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:405
-#. js-lingui-explicit-id
-msgid "Words Practice"
-msgstr "词汇练习"
 
 #: src/features/Conversation/AliasGamePanel.tsx:126
 #. js-lingui-explicit-id
@@ -14541,11 +14258,6 @@ msgstr "您可以在到期之前随时续订您的完整访问权限，以避免
 msgid "You can track the progress on the main page."
 msgstr "您可以在主页上跟踪进度。"
 
-#: src/features/Goal/Quiz/WelcomeChatMessage.tsx:57
-#. js-lingui-explicit-id
-msgid "You can use any language you like"
-msgstr "你可以使用任何你喜欢的语言"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:368
 #. js-lingui-explicit-id
 msgid "You can use text to answer if you prefer."
@@ -14708,8 +14420,8 @@ msgstr "你已经学会了编程，但面试考察的远不止语法和教程。
 #: src/features/Auth/RolePlayGuestReply.tsx:34
 #: src/features/Auth/RolePlayGuestReply.tsx:49
 #: src/features/Conversation/Messages.tsx:220
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:36
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:51
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:30
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:45
 #: src/features/Usage/UsageStatsCards.tsx:296
 #. js-lingui-explicit-id
 msgid "You:"
@@ -14926,7 +14638,7 @@ msgid "Your transcripts are securely stored in our service"
 msgstr "您的成绩单被安全地存储在我们的服务中"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:168
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:192
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:209
 #. js-lingui-explicit-id
 msgid "Your turn"
 msgstr "你的回合"
