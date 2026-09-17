@@ -41,7 +41,7 @@ Today (YYYY-MM-DD)  [UTC]
   or  Since last report (YYYY-MM-DDTHH:mmZ → YYYY-MM-DDTHH:mmZ)  [UTC]
 - Visitors: N (new / returning; bots + internal excluded)
 - Funnel: landing → app → quiz → practice → spoke → paywall → checkout  (use funnelNew for first-seen-in-window)
-- Quiz steps: insights.quizSteps (teacherSelection / before_recordAbout / recordAbout / quizSpeech)
+- Quiz steps: insights.quizSteps (teacherSelection / before_recordAbout / quizSpeech)
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
@@ -122,7 +122,7 @@ Admin UI: `/staats/journey`
 
 **Start a conversation:** compare `clickedQuizCta` / `clickedSignInCta` vs `reachedQuiz` vs `reachedPractice` vs `reachedConversation`. If they open practice but do not speak, the blocker is in-app (auth, mic, empty canvas), not the landing CTA. If they bounce with low scroll and short `landingDurationMs`, the hero/CTA is the problem.
 
-**Quiz auth vs mic:** `insights.quizSteps` — `before_recordAbout` without `recordAbout` is Google/email. `recordAbout` without `quizSpeech` is they never pressed the mic. Pair with `appCtaIds` (`hear-question`, `auth-google`) and `identifyPaths`.
+**Quiz auth vs mic:** `insights.quizSteps` — `before_recordAbout` without `quizSpeech` is they never pressed the mic. Pair with `appCtaIds` (`hear-question`, `record-about-guest`, `quiz-guest-continue`) and `identifyPaths`. The old `recordAbout` interview step is gone; leftover `recordAbout` in history is the signed-in follow-up path.
 
 **Scenario SEO:** `insights.entry` row `scenario` — visitors vs `reachedApp` vs speech. High scroll on `/scenarios/*` with low `reachedApp` means they read and did not Play.
 

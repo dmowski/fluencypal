@@ -1,6 +1,6 @@
 'use client';
 import { getLandingUrlStart } from '@/features/Lang/getUrlStart';
-import { fullLanguageName, SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { SetUrlStateOptions, useUrlMapState } from '@/features/Url/useUrlParam';
 
 import { useRouter } from 'next/navigation';
@@ -30,102 +30,23 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { getDoc, setDoc } from 'firebase/firestore';
 import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from './types';
 import * as Sentry from '@sentry/nextjs';
-import { useTextAi } from '@/features/Ai/useTextAi';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
-import { ConversationMessage } from '@/features/Conversation/conversation';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { fnv1aHash } from '@/libs/hash';
-import { getWordsCount } from '@/libs/words';
 import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
-import { useAccess } from '@/features/Usage/useAccess';
 import {
-  hasAboutTranscription,
   QuizGuestAboutRecording,
   transcribeAboutRecording,
   writeAboutTranscriptionToSurvey,
 } from './quizGuestAboutStorage';
-import {
-  quizGuestAboutStep,
-  quizGuestPlanIntroStep,
-  shouldReturnToGuestAboutFromPlanIntro,
-  shouldSkipToPlanIntroAfterGuestAbout,
-} from './quizGuestPath';
-
-type QuizStep =
-  | 'before_nativeLanguage'
-  | 'learnLanguage'
-  | 'quizOrSkip'
-  | 'nativeLanguage'
-  | 'before_pageLanguage'
-  | 'pageLanguage'
-  | 'before_recordAbout'
-  | 'recordAbout'
-  | 'before_recordAboutFollowUp'
-  | 'recordAboutFollowUp'
-  | 'before_recordAboutFollowUp2'
-  | 'recordAboutFollowUp2'
-  | 'reviewAbout'
-  | 'before_goalReview'
-  | 'callMode'
-  | 'paidVsFree'
-  | 'writeWelcomeMessageInChat'
-  | 'teacherSelection'
-  | 'trialPrice'
-  | 'accessPlan'
-  | 'magicFlow'
-  | 'goalReview';
-
-const stepsViews: QuizStep[] = [
-  'learnLanguage',
-  'before_nativeLanguage',
-  'nativeLanguage',
-
-  'before_pageLanguage',
-  'pageLanguage',
-  'teacherSelection',
-
-  'before_recordAbout',
-  'recordAbout',
-
-  'before_recordAboutFollowUp',
-  'recordAboutFollowUp',
-
-  'before_recordAboutFollowUp2',
-  'recordAboutFollowUp2',
-
-  'before_goalReview',
-  'goalReview',
-  //'magicFlow',
-  //'accessPlan',
-  //'writeWelcomeMessageInChat',
-];
-
-export const MIN_WORDS_FOR_ANSWER = 30;
+import { QuizStep, quizSteps, resolveQuizStep } from './quizSteps';
 
 const getHash = (input: string) => {
   if (!input) return '';
 
   return fnv1aHash(input);
-};
-
-const isAboutRecorded = (survey: QuizSurvey2) => {
-  const transcript = survey.aboutUserTranscription || '';
-  const wordsCount = getWordsCount(transcript);
-  return wordsCount >= MIN_WORDS_FOR_ANSWER;
-};
-
-const isAboutFollowUpRecord = (survey: QuizSurvey2) => {
-  const transcript = survey.aboutUserFollowUpTranscription || '';
-  const wordsCount = getWordsCount(transcript);
-  return wordsCount >= MIN_WORDS_FOR_ANSWER;
-};
-
-const isGoalIsRecorded = (survey: QuizSurvey2) => {
-  const transcript = survey.goalUserTranscription || '';
-  const wordsCount = getWordsCount(transcript);
-  return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
 interface QuizContextType {
@@ -150,12 +71,10 @@ interface QuizContextType {
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
-  saveGuestAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
+  saveAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
-  isFollowUpGenerating: boolean;
-  isGoalQuestionGenerating: boolean;
   isGoalGenerating: boolean;
   path: QuizStep[];
 }
@@ -175,7 +94,6 @@ interface QuizUrlState {
 
 function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const auth = useAuth();
-  const textAi = useTextAi();
   const settings = useSettings();
   const plan = usePlan();
   const userInfo = useAiUserInfo();
@@ -186,7 +104,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       learn: 'en',
       nativeLang: pageLang,
       pageLang,
-      currentStep: stepsViews[0],
+      currentStep: quizSteps[0],
     }),
     [],
   );
@@ -241,277 +159,6 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
   const test = async () => {};
 
-  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
-    {},
-  );
-  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some((v) => v);
-
-  const processAbout = async (
-    survey: QuizSurvey2,
-    hash: string,
-  ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
-    const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
-The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses.
-
-Provide a brief explanation of why this question is important for understanding the user's motivations and goals.
-Use user's language in needed, because sometime user cannot understand ${learningLanguageFullName} well.
-
-Respond in JSON format with the following structure:
-{
-  "question": "A concise follow-up question to user. 1 short sentence using user's language. Less than 8 words",
-  "subTitle": "A brief subtitle that provides context for user using user's language. 1 sentence",
-  "description": "A short description explaining user the importance of the question using user's language. 2 sentences"
-}
-
-Ensure that the JSON is properly formatted and can be easily parsed.
-Do not include any additional text outside of the JSON structure. 
-
-Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
-`;
-
-    const parsedResult = await textAi.generateJson<{
-      question: string;
-      subTitle: string;
-      description?: string;
-    }>({
-      systemMessage,
-      userMessage: survey.aboutUserTranscription,
-      model: 'gpt-5.6-luna',
-      attempts: 4,
-    });
-
-    const newAnswer: QuizSurvey2FollowUpQuestion = {
-      sourceTranscription: survey.aboutUserTranscription,
-      title: parsedResult.question,
-      subtitle: parsedResult.subTitle,
-      description: parsedResult.description || '',
-      hash,
-    };
-
-    return newAnswer;
-  };
-
-  const generatingFollowUp = async () => {
-    const survey = surveyDoc;
-    if (!survey) {
-      return;
-    }
-    if (!isAboutRecorded(survey)) {
-      return;
-    }
-
-    const initHash = getHash(survey.aboutUserTranscription || '');
-
-    if (initHash === survey.aboutUserFollowUpQuestion.hash) {
-      console.log('⏩ generatingFollowUp | Already generated, skipping');
-      return;
-    }
-
-    if (isGeneratingFollowUpMap[initHash]) {
-      console.log('⏩ generatingFollowUp | In progress, skipping');
-      return;
-    }
-
-    setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
-
-    try {
-      console.log('🦄 generatingFollowUp ');
-      const newAnswer = await processAbout(survey, initHash);
-
-      const afterHash = getHash(surveyRef.current?.aboutUserTranscription || '');
-
-      if (afterHash !== initHash) {
-        console.log('⏩ generatingFollowUp | User about changed, skipping analysis');
-        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
-        return;
-      }
-
-      await updateSurvey(
-        {
-          ...survey,
-          aboutUserFollowUpQuestion: newAnswer,
-        },
-        'generatingFollowUp',
-      );
-      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
-    } catch (e) {
-      console.error('❌ generatingFollowUp | Error during analysis', e);
-      Sentry.captureException(e, {
-        extra: {
-          title: 'Error in generatingFollowUp',
-          text: survey.aboutUserFollowUpTranscription,
-          survey,
-        },
-      });
-      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
-    }
-  };
-
-  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
-    Record<string, boolean>
-  >({});
-  const isGoalQuestionGenerating = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
-
-  const createGoalQuestion = async (
-    survey: QuizSurvey2,
-    hash: string,
-  ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
-    const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
-The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
-
-Respond in JSON format with the following structure:
-{
-  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
-  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
-  "description": "A short description explaining user the importance of the question. 2 sentences"
-}
-
-Ensure that the JSON is properly formatted and can be easily parsed.
-Do not include any additional text outside of the JSON structure. 
-
-Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
-`;
-
-    const parsedResult = await textAi.generateJson<{
-      question: string;
-      subTitle: string;
-      description?: string;
-    }>({
-      systemMessage,
-      userMessage: `
-About User:
-${survey.aboutUserTranscription}
-
----
-
-Follow-up question to user:
-${survey.aboutUserFollowUpQuestion.title} (${survey.aboutUserFollowUpQuestion.description})
-
-${survey.aboutUserFollowUpTranscription}
-`,
-      model: 'gpt-5.6-luna',
-      attempts: 4,
-    });
-
-    const newAnswer: QuizSurvey2FollowUpQuestion = {
-      sourceTranscription: survey.aboutUserFollowUpTranscription,
-      title: parsedResult.question,
-      subtitle: parsedResult.subTitle,
-      description: parsedResult.description || '',
-      hash,
-    };
-
-    return newAnswer;
-  };
-
-  const generateWelcomeMessage = async () => {
-    const survey = surveyDoc;
-    if (!survey) {
-      return;
-    }
-
-    const systemPrompt = `Your goal is to create a user's welcome message they can send to chat of language learning community in ${
-      fullLanguageName[languageToLearn]
-    } language. The welcome message should be friendly, engaging, and reflect the user's personality based on their self-description.
-
-The welcome message should be concise, ideally between 20 to 40 words, and should include:
-1. A brief introduction of the user.
-2. Their motivation for learning ${fullLanguageName[languageToLearn]}.
-3. What they hope to achieve.
-
-Example of your response (Use for inspiration only, do not copy):
-Hello everyone! I'm excited to join this community as I embark on my journey to learn ${fullLanguageName[languageToLearn]}. I'm passionate about [Your Interests] and look forward to connecting with fellow learners. My goal is to become fluent and immerse myself in the culture. Let's learn together!
-`;
-
-    const usersInfo = [
-      'AboutUser:',
-      survey.aboutUserTranscription,
-      survey.aboutUserFollowUpQuestion.title,
-      survey.aboutUserFollowUpTranscription,
-      survey.goalFollowUpQuestion.title,
-      survey.goalUserTranscription,
-    ]
-      .map((text) => text.trim())
-      .filter((text) => text.length > 0)
-      .join(' ');
-
-    const aiResponse = await textAi.generate({
-      systemMessage: systemPrompt,
-      userMessage: usersInfo,
-      model: 'gpt-5.6-luna',
-    });
-
-    return aiResponse;
-  };
-
-  const generatingGoalQuestion = async () => {
-    const survey = surveyDoc;
-    if (!survey) {
-      return;
-    }
-    if (!isAboutRecorded(survey) || !isAboutFollowUpRecord(survey)) {
-      return;
-    }
-
-    const initHash = getHash(survey.aboutUserFollowUpTranscription || '');
-
-    if (initHash === survey.goalFollowUpQuestion.hash) {
-      console.log(`⏩ generatingGoalQuestion | Goal followup already generated, skipping`);
-      return;
-    }
-
-    if (isGeneratingGoalFollowUpMap[initHash]) {
-      console.log(`⏩ generatingGoalQuestion | Goal followup already in progress, skipping`);
-      return;
-    }
-
-    console.log(`🦄 generatingGoalQuestion | Starting analysis for text length`);
-    setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
-
-    try {
-      const newGoalQuestion = await createGoalQuestion(survey, initHash);
-
-      const afterHash = getHash(surveyRef.current?.aboutUserFollowUpTranscription || '');
-
-      if (afterHash !== initHash) {
-        console.log(`⏩ generatingGoalQuestion | User about followup changed, skipping analysis`);
-        setIsGeneratingGoalFollowUpMap((prev) => ({
-          ...prev,
-          [initHash]: false,
-        }));
-        return;
-      }
-
-      await updateSurvey(
-        {
-          ...(surveyRef.current || survey),
-          goalFollowUpQuestion: newGoalQuestion,
-        },
-        'generatingGoalQuestion',
-      );
-      setIsGeneratingGoalFollowUpMap((prev) => ({
-        ...prev,
-        [initHash]: false,
-      }));
-      return;
-    } catch (e) {
-      console.error('❌ generatingGoalQuestion | Error during analysis', e);
-      Sentry.captureException(e, {
-        extra: {
-          title: 'Error in generatingGoalQuestion',
-          text: survey.aboutUserFollowUpTranscription,
-          survey,
-        },
-      });
-      setIsGeneratingGoalFollowUpMap((prev) => ({
-        ...prev,
-        [initHash]: false,
-      }));
-    }
-  };
-
   const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
   const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
 
@@ -520,99 +167,48 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     if (!survey) {
       return;
     }
-
-    const skippedFollowUps = !(survey.aboutUserFollowUpQuestion?.title || '').trim();
-    const onPlanStep = currentStep === 'before_goalReview' || currentStep === 'goalReview';
-    const isReadyToGenerateGoal =
-      isGoalIsRecorded(survey) ||
-      (onPlanStep && skippedFollowUps && !!(survey.aboutUserTranscription || '').trim());
-    if (!isReadyToGenerateGoal) {
-      console.log('⏩ generateGoal | not ready');
+    const about = (survey.aboutUserTranscription || '').trim();
+    if (!about) {
       return;
     }
 
-    const initialSurveyHash = getHash(
-      survey.goalUserTranscription || survey.aboutUserTranscription || '',
-    );
+    const initialSurveyHash = getHash(about);
     if (initialSurveyHash === survey.goalHash) {
       console.log('⏩ generateGoal | Survey not changed');
       return;
     }
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
-    const conversationMessages: ConversationMessage[] = [
-      {
-        id: `about_user`,
-        isBot: false,
-        text: `${survey.aboutUserTranscription}`,
-      },
-      {
-        id: `about_user_followup_question`,
-        isBot: true,
-        text: `${survey.aboutUserFollowUpQuestion.title}\n${
-          survey.aboutUserFollowUpQuestion.description || ''
-        }`,
-      },
-      {
-        id: `about_user_followup_answer`,
-        isBot: false,
-        text: `${survey.aboutUserFollowUpTranscription || 'No answer provided'}`,
-      },
-      {
-        id: `goal_followup_question`,
-        isBot: true,
-        text: `${survey.goalFollowUpQuestion.title}\n${
-          survey.goalFollowUpQuestion.description || ''
-        }`,
-      },
-      {
-        id: `goal_followup_answer`,
-        isBot: false,
-        text: `${survey.goalUserTranscription || 'No answer provided'}`,
-      },
-    ];
-
-    console.log('🦄 generateGoal | Starting goal generation.');
-    const generateExampleRequest = generateWelcomeMessage();
-
-    const conversationText = conversationMessages
-      .map((message) => `${message.isBot ? 'Ai' : 'User'}: ${message.text}`)
-      .join('\n');
-    const extractedRecordsRequest = userInfo.extractUserRecordsFromText?.(conversationText);
-    const goal = await plan.generateGoal({
-      languageCode: languageToLearn,
-      context: conversationText,
-    });
-    const exampleOfWelcomeMessage = await generateExampleRequest;
-
-    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
-
-    const finalSurveyHash = getHash(
-      surveyRef.current?.goalUserTranscription || surveyRef.current?.aboutUserTranscription || '',
-    );
-    if (initialSurveyHash !== finalSurveyHash) {
-      console.log('🦄 generateGoal | Survey changed during goal generation, skipping update');
-      return;
+    try {
+      const extractedRecordsRequest = userInfo.extractUserRecordsFromText?.(about);
+      const goal = await plan.generateGoal({
+        languageCode: languageToLearn,
+        context: about,
+      });
+      const finalAbout = (surveyRef.current?.aboutUserTranscription || '').trim();
+      const finalSurveyHash = getHash(finalAbout);
+      if (initialSurveyHash !== finalSurveyHash) {
+        console.log('🦄 generateGoal | Survey changed during goal generation, skipping update');
+        return;
+      }
+      if (!surveyRef.current) {
+        return;
+      }
+      await updateSurvey(
+        {
+          ...surveyRef.current,
+          goalData: goal,
+          goalHash: finalSurveyHash,
+          advancedUserRecords: (await extractedRecordsRequest) || [],
+        },
+        'generateGoal',
+      );
+    } catch (error) {
+      Sentry.captureException(error);
+    } finally {
+      setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
     }
-    if (!surveyRef.current) return;
-    await updateSurvey(
-      {
-        ...surveyRef.current,
-        goalData: goal,
-        goalHash: finalSurveyHash,
-        advancedUserRecords: (await extractedRecordsRequest) || [],
-        exampleOfWelcomeMessage:
-          exampleOfWelcomeMessage || (surveyRef.current || survey).exampleOfWelcomeMessage || '',
-      },
-      'generateGoal',
-    );
   };
-
-  useEffect(() => {
-    generatingFollowUp();
-    generatingGoalQuestion();
-    generateGoal();
-  }, [surveyDoc]);
 
   const syncWithSettings = async (survey: QuizSurvey2) => {
     if (
@@ -815,36 +411,22 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
   };
 
-  const access = useAccess();
-  const isFullAppAccess = access.isFullAppAccess;
   const path = useMemo(() => {
     const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
       nativeLanguage,
     );
 
-    const path = stepsViews.filter((viewStep) => {
-      if (isFullAppAccess && viewStep === 'accessPlan') {
-        return false;
-      }
-
+    return quizSteps.filter((viewStep) => {
       if (viewStep === 'pageLanguage' || viewStep === 'before_pageLanguage') {
-        if (isNativeLanguageIsSupportedLanguage) {
-          return false;
-        } else {
-          return true;
-        }
+        return !isNativeLanguageIsSupportedLanguage;
       }
-
       return true;
     });
+  }, [nativeLanguage]);
+  const activeStep = resolveQuizStep(currentStep, path);
+  const currentStepIndex = path.indexOf(activeStep);
 
-    return path;
-  }, [nativeLanguage, isFullAppAccess]);
-  const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
-
-  const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
-
-  const saveGuestAboutClip = async (recording: QuizGuestAboutRecording) => {
+  const saveAboutClip = async (recording: QuizGuestAboutRecording) => {
     await ensureSurveyDocExists();
     const transcript = await transcribeAboutRecording({
       recording,
@@ -882,7 +464,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
   }, [auth.loading, auth.isIdentified, auth.ensureAnonymousAuth]);
 
   useEffect(() => {
-    if (!auth.uid || auth.isIdentified || !languageToLearn) {
+    if (!auth.uid || !languageToLearn) {
       return;
     }
     if (settings.userSettings?.languageCode === languageToLearn) {
@@ -891,53 +473,40 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     void settings.setLanguage(languageToLearn).catch((error) => {
       Sentry.captureException(error);
     });
-  }, [
-    auth.uid,
-    auth.isIdentified,
-    languageToLearn,
-    settings.userSettings?.languageCode,
-    settings.setLanguage,
-  ]);
+  }, [auth.uid, languageToLearn, settings.userSettings?.languageCode, settings.setLanguage]);
 
   useEffect(() => {
     if (!auth.uid) {
       return;
     }
-    if (currentStep !== 'before_recordAbout' && currentStep !== 'recordAbout') {
+    if (activeStep !== 'before_recordAbout') {
       return;
     }
 
     void ensureSurveyDocExists().catch((error) => {
       Sentry.captureException(error);
     });
-  }, [auth.uid, currentStep]);
+  }, [auth.uid, activeStep]);
+
+  useEffect(() => {
+    if (activeStep !== 'before_goalReview' && activeStep !== 'goalReview') {
+      return;
+    }
+    void generateGoal();
+  }, [surveyDoc, activeStep]);
+
+  useEffect(() => {
+    if (currentStep === activeStep) {
+      return;
+    }
+    void setState({ currentStep: activeStep });
+  }, [activeStep, currentStep, setState]);
 
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
-    let nextStep = path[nextStepIndex];
-    if (
-      shouldSkipToPlanIntroAfterGuestAbout({
-        currentStep,
-        isIdentified: auth.isIdentified,
-        hasGuestAbout: hasAboutTranscription(surveyRef.current),
-      })
-    ) {
-      nextStep = quizGuestPlanIntroStep;
-    }
+    const nextStep = path[nextStepIndex];
 
-    const confirmGTagSteps: QuizStep[] = [
-      'recordAboutFollowUp',
-      'before_recordAboutFollowUp2',
-      'recordAboutFollowUp2',
-      'before_goalReview',
-      'goalReview',
-    ];
-    if (!isGTagConfirmed && confirmGTagSteps.includes(currentStep)) {
-      setIsGTagConfirmed(true);
-      // confirmGtag();
-    }
-
-    if (auth.uid && (currentStep === 'before_recordAbout' || currentStep === 'recordAbout')) {
+    if (auth.uid && activeStep === 'before_recordAbout') {
       try {
         await ensureSurveyDocExists();
       } catch (error) {
@@ -950,7 +519,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       currentStep: nextStep,
     };
 
-    if (currentStep === 'learnLanguage') {
+    if (activeStep === 'learnLanguage') {
       const langPatch = await preFindNativeLanguage(languageToLearn);
       newStatePatch = {
         ...newStatePatch,
@@ -959,7 +528,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     }
 
     const localeRedirectUrl = getNativeLanguageQuizNextUrl({
-      currentStep,
+      currentStep: activeStep,
       nativeLanguage,
       currentPageLang: pageLang,
       nextState: { ...state, ...newStatePatch } as unknown as Record<string, string>,
@@ -972,27 +541,17 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       return;
     }
 
-    let url = await setState(newStatePatch, {
+    const url = await setState(newStatePatch, {
       redirect: false,
     });
     router.push(url || '', { scroll: false });
   };
 
   const prevStep = useCallback(() => {
-    if (
-      shouldReturnToGuestAboutFromPlanIntro({
-        currentStep,
-        isIdentified: auth.isIdentified,
-        hasGuestAbout: hasAboutTranscription(surveyRef.current),
-      })
-    ) {
-      void setState({ currentStep: quizGuestAboutStep });
-      return;
-    }
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
     void setState({ currentStep: prevStep });
-  }, [auth.isIdentified, currentStep, currentStepIndex, path, setState]);
+  }, [currentStepIndex, path, setState]);
 
   const navigateToMainPage = () => {
     const newPath = `${getLandingUrlStart(pageLanguage)}`;
@@ -1027,7 +586,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
     isCanGoToMainPage,
 
-    currentStep,
+    currentStep: activeStep,
     isStepLoading: isStateLoading,
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === path.length - 1,
@@ -1036,10 +595,8 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     progress,
     isFirstLoading,
     updateSurvey,
-    saveGuestAboutClip,
+    saveAboutClip,
     test,
-    isFollowUpGenerating,
-    isGoalQuestionGenerating,
     isGoalGenerating,
     path,
   };

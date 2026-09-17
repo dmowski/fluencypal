@@ -69,7 +69,7 @@ export const writeAboutTranscriptionToSurvey = async (input: {
       ...survey,
       aboutUserTranscription: combined,
     },
-    'guest recordAbout',
+    'recordAbout',
   );
   return transcript;
 };

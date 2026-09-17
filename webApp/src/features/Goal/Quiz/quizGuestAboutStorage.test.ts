@@ -98,7 +98,7 @@ describe('quizGuestAboutStorage', () => {
     expect(transcript).toBe('I want to speak at work.');
     expect(updateSurvey).toHaveBeenCalledWith(
       expect.objectContaining({ aboutUserTranscription: 'I want to speak at work.' }),
-      'guest recordAbout',
+      'recordAbout',
     );
 
     const saved = surveyFixture('I want to speak at work.');
@@ -137,7 +137,7 @@ describe('quizGuestAboutStorage', () => {
     expect(second).toBe('I need English for travel.');
     expect(updateSurvey).toHaveBeenCalledWith(
       expect.objectContaining({ aboutUserTranscription: 'I need English for travel.' }),
-      'guest recordAbout',
+      'recordAbout',
     );
   });
 
