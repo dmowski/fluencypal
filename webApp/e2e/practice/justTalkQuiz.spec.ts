@@ -18,7 +18,6 @@ import {
   waitForDarkEngTest,
 } from '../libs/practice/justTalkQuiz';
 import { FREE_TIER_USER_MESSAGE_LIMIT } from '../../src/features/Conversation/guestConversationLimit';
-import { PENDING_PRACTICE_LANGUAGE_KEY } from '../../src/features/Goal/Quiz/pendingPracticeLanguage';
 
 test.describe('Quiz → Just Talk guest flow', () => {
   test.beforeEach(async ({ context }) => {
@@ -78,6 +77,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page).toHaveURL(/\/practice\?justTalk=open/);
     await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
     await expect(page.getByTestId('just-talk-handoff')).toHaveCount(0);
+    await expect(page.getByTestId('call-mic-toggle')).toHaveAttribute('aria-pressed', 'true');
     await expectAnonymousCurrentUser(page);
 
     await expect
@@ -146,9 +146,6 @@ test.describe('Quiz → Just Talk guest flow', () => {
 
     // Open handoff without auto-start so we can re-assert identified auth after
     // navigation (guest ensureAnonymousAuth must not replace this session).
-    await page.evaluate((langKey) => {
-      window.localStorage.setItem(langKey, 'en');
-    }, PENDING_PRACTICE_LANGUAGE_KEY);
     await page.goto('/practice?justTalk=open');
     await waitForDarkEngTest(page);
     await signInTestUserOnPage(page, user);

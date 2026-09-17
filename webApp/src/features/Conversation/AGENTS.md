@@ -53,7 +53,7 @@ Conversation/
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Call settings:** Settings control opens `CallSettingsMenu` (video on/off for both camera tiles, mute AI voice, captions, select microphone). Mic on/off and end-call stay on the footer. Turning video off hides the teacher and learner tiles so captions can fill the call. Selected microphone is persisted in `localStorage` (`preferredMicrophoneId`) and applied live via `ConversationInstance.switchMicrophone`.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
-- **Quiz handoff:** `/practice?justTalk=open` auto-starts Just Talk only when mic was primed on quiz **Start Speaking** (`fp_justTalkAutoStart` session flag). Cold opens always show `JustTalkHandoffScreen` (`just-talk-handoff`) until **Enable microphone to start talking** (`enable-mic-just-talk`). Keep `justTalk=open` until the first user message; End call without speech returns to the same panel. Skip-all still goes to empty `/practice`. Start in **call** mode. To verify locally: finish quiz `goalReview` with mic allowed → call should start without a second tap; open `/practice?justTalk=open` cold → handoff panel only (no browser permission dialog until Enable mic).
+- **Quiz handoff:** `/practice?justTalk=open` auto-starts Just Talk only when mic was primed on quiz **Start Speaking** (`fp_justTalkAutoStart` session flag: start unmuted). Teacher voice and learn language come from Firestore user settings (anonymous auth starts at quiz entry, before teacher selection). Cold opens always show `JustTalkHandoffScreen` (`just-talk-handoff`) until **Enable microphone to start talking** (`enable-mic-just-talk`) and stay muted until that tap. Keep `justTalk=open` until the first user message; End call without speech returns to the same panel. Skip-all still goes to empty `/practice`. Start in **call** mode. To verify locally: finish quiz `goalReview` with mic allowed → call should start unmuted with the chosen teacher/learn language, no second tap; open `/practice?justTalk=open` cold → handoff panel only (no browser permission dialog until Enable mic).
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
@@ -71,6 +71,7 @@ Conversation/
 | `call-video-preview`         | Teacher + learner camera tiles in call layout    |
 | `call-user-preview`          | User webcam tile in call layout                  |
 | `call-progress-bar`          | Message-count progress strip on call footer      |
+| `call-mic-toggle`            | Call footer mic on/off (`aria-pressed` = unmuted) |
 | `conversation-review-modal`  | Post-call / Show results review steps            |
 | `just-talk-handoff`          | Persistent Enable-mic screen after quiz `justTalk=open` |
 

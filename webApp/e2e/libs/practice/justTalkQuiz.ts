@@ -2,7 +2,6 @@ import type { BrowserContext, Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { fnv1aHash } from '../../../src/libs/hash';
 import { JUST_TALK_AUTO_START_KEY } from '../../../src/features/Conversation/justTalkHandoff';
-import { PENDING_PRACTICE_LANGUAGE_KEY } from '../../../src/features/Goal/Quiz/pendingPracticeLanguage';
 
 const ABOUT_TRANSCRIPT =
   'I want to practice speaking English every day so I can feel confident in meetings at work and when I travel abroad with my friends and family members around the world together.';
@@ -182,9 +181,6 @@ export const startJustTalkCallAsGuest = async (page: Page) => {
   await page.goto('/practice?justTalk=open');
   await waitForDarkEngTest(page);
   await expectAnonymousCurrentUser(page);
-  await page.evaluate((key) => {
-    window.localStorage.setItem(key, 'en');
-  }, PENDING_PRACTICE_LANGUAGE_KEY);
 
   const handoff = page.getByTestId('just-talk-handoff');
   if (await handoff.isVisible().catch(() => false)) {
@@ -199,4 +195,4 @@ export const startJustTalkCallAsGuest = async (page: Page) => {
     .toBe(true);
 };
 
-export { JUST_TALK_AUTO_START_KEY, PENDING_PRACTICE_LANGUAGE_KEY };
+export { JUST_TALK_AUTO_START_KEY };

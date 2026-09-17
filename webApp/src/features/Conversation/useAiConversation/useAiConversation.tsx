@@ -29,7 +29,6 @@ import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
-import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
 import { resolvePracticeLanguage } from '@/features/Goal/Quiz/resolvePracticeLanguage';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
@@ -365,6 +364,10 @@ You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid. Ask only one question at a time or even without questions.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
+Stay in character as ${voice}. Do not introduce yourself as a different teacher.
+If the student asks whether you can hear them, answer that directly once, then wait.
+If they say they cannot hear you, tell them to raise device volume; do not assume their microphone is broken or keep asking about their day.
+If they ask for a different teacher or a male/female voice, acknowledge the request and keep talking as ${voice}.
 
 ${isNewUser ? 'Introduce yourself, and ask user to describe their day.' : ''}
 
@@ -465,13 +468,16 @@ ${voiceInstructions}
 
   const settingsVoice = settings.userSettings?.teacherVoice;
   const startConversation = async (input: StartConversationProps) => {
-    const pendingLanguage = readPendingPracticeLanguage();
     const activeLanguageCode = resolvePracticeLanguage({
+      explicitLanguage: input.languageCode,
       settingsLanguage: settings.languageCode,
-      pendingLanguage,
+      pendingLanguage: null,
       pageLanguage: getPageLangCode(),
     });
-    if (!settings.languageCode) {
+    if (
+      !settings.languageCode ||
+      (input.languageCode && settings.languageCode !== input.languageCode)
+    ) {
       await settings.setLanguage(activeLanguageCode);
     }
 
@@ -483,11 +489,15 @@ ${voiceInstructions}
     messages.resetMessageOrder();
 
     let isMutedInternal = true;
+    const startUnmuted = Boolean(input.startUnmuted) && input.conversationMode === 'call';
     const isRecordingNeedMute = !isMuted && input.conversationMode === 'record';
 
     if (isRecordingNeedMute) {
       toggleMute(true);
       isMutedInternal = true;
+    } else if (startUnmuted) {
+      toggleMute(false);
+      isMutedInternal = false;
     }
 
     toggleVolume(true);

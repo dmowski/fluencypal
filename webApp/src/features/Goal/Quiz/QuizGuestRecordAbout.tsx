@@ -1,18 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Mic, Square } from 'lucide-react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
-import {
-  hasGuestAbout,
-  peekGuestAboutRecording,
-  saveGuestAboutRecording,
-} from './quizGuestAboutStorage';
-
-export const QUIZ_GUEST_CONTINUE_DELAY_MS = 1500;
+import { QuizGuestAboutRecording } from './quizGuestAboutStorage';
 
 const blobFormat = (blob: Blob): string => blob.type || 'audio/webm';
 
@@ -88,20 +82,35 @@ const GuestAboutSkeleton = ({ durationSec }: { durationSec: number }) => {
 
 export const QuizGuestRecordAbout = ({
   languageCode,
+  alreadySaved = false,
+  onSaveRecording,
   onRecordingChange,
   onHasRecorded,
   onReadyToContinue,
 }: {
   languageCode: string;
+  alreadySaved?: boolean;
+  onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
   onRecordingChange?: (isRecording: boolean) => void;
   onHasRecorded?: (hasRecorded: boolean) => void;
   onReadyToContinue?: (isReady: boolean) => void;
 }) => {
   const { i18n } = useLingui();
   const recorder = useAudioRecorder();
-  const alreadyHadRecording = hasGuestAbout(languageCode);
-  const [hasRecorded, setHasRecorded] = useState(() => alreadyHadRecording);
-  const [readyToContinue, setReadyToContinue] = useState(() => alreadyHadRecording);
+  const attemptedBlobRef = useRef<Blob | null>(null);
+  const [hasRecorded, setHasRecorded] = useState(alreadySaved);
+  const [readyToContinue, setReadyToContinue] = useState(alreadySaved);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState('');
+  const [replyDurationSec, setReplyDurationSec] = useState(3);
+
+  useEffect(() => {
+    if (!alreadySaved) {
+      return;
+    }
+    setHasRecorded(true);
+    setReadyToContinue(true);
+  }, [alreadySaved]);
 
   useEffect(() => {
     onRecordingChange?.(recorder.isRecording);
@@ -116,34 +125,43 @@ export const QuizGuestRecordAbout = ({
   }, [onReadyToContinue, readyToContinue]);
 
   useEffect(() => {
-    if (hasRecorded || !recorder.transcriptionBlob) {
+    const blob = recorder.transcriptionBlob;
+    if (hasRecorded || isSaving || !blob || attemptedBlobRef.current === blob) {
       return;
     }
 
+    attemptedBlobRef.current = blob;
     const durationSec = Math.max(1, Math.round(recorder.recordingMilliSeconds / 1000) || 1);
-    saveGuestAboutRecording({
-      languageCode,
-      blob: recorder.transcriptionBlob,
-      format: blobFormat(recorder.transcriptionBlob),
-      durationSec,
-    });
-    sendSpeechStart('quiz');
-    setHasRecorded(true);
-  }, [hasRecorded, languageCode, recorder.recordingMilliSeconds, recorder.transcriptionBlob]);
+    setReplyDurationSec(durationSec);
+    setIsSaving(true);
+    setSaveError('');
 
-  useEffect(() => {
-    if (!hasRecorded || readyToContinue) {
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      setReadyToContinue(true);
-    }, QUIZ_GUEST_CONTINUE_DELAY_MS);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [hasRecorded, readyToContinue]);
+    void (async () => {
+      try {
+        await onSaveRecording({
+          languageCode,
+          blob,
+          format: blobFormat(blob),
+          durationSec,
+        });
+        sendSpeechStart('quiz');
+        setHasRecorded(true);
+        setReadyToContinue(true);
+      } catch {
+        setSaveError(i18n._("Couldn't save your answer. Try recording again."));
+      } finally {
+        setIsSaving(false);
+      }
+    })();
+  }, [
+    hasRecorded,
+    i18n,
+    isSaving,
+    languageCode,
+    onSaveRecording,
+    recorder.recordingMilliSeconds,
+    recorder.transcriptionBlob,
+  ]);
 
   const onToggleRecording = async () => {
     if (recorder.isRecording) {
@@ -153,20 +171,19 @@ export const QuizGuestRecordAbout = ({
     await recorder.startRecording();
   };
 
-  const recording = peekGuestAboutRecording();
-  const replyDurationSec = recording?.languageCode === languageCode ? recording.durationSec : 3;
+  const showSavedAnswer = hasRecorded || isSaving;
 
   return (
     <Stack
       data-testid="quiz-guest-about"
       sx={{
-        alignItems: hasRecorded ? 'stretch' : 'center',
+        alignItems: showSavedAnswer ? 'stretch' : 'center',
         width: '100%',
-        gap: hasRecorded ? '16px' : '8px',
+        gap: showSavedAnswer ? '16px' : '8px',
         paddingTop: '4px',
       }}
     >
-      {hasRecorded ? (
+      {showSavedAnswer ? (
         <>
           <GuestAboutSkeleton durationSec={replyDurationSec} />
           {readyToContinue ? null : (
@@ -226,9 +243,9 @@ export const QuizGuestRecordAbout = ({
         </>
       )}
 
-      {recorder.error ? (
+      {recorder.error || saveError ? (
         <Typography color="error" variant="body2">
-          {recorder.error}
+          {recorder.error || saveError}
         </Typography>
       ) : null}
     </Stack>

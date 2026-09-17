@@ -26,6 +26,11 @@ export type TranscriptAiModel = 'gpt-4o-transcribe' | 'gpt-4o-mini-transcribe';
 
 export type AiVoice = 'ash' | 'shimmer' | 'marin' | 'verse';
 
+export const AI_VOICES: readonly AiVoice[] = ['ash', 'shimmer', 'marin', 'verse'];
+
+export const isAiVoice = (value: string | null | undefined): value is AiVoice =>
+  Boolean(value && (AI_VOICES as readonly string[]).includes(value));
+
 export type TextToAudioModal = 'gpt-4o-mini-tts';
 
 export const MODELS = {

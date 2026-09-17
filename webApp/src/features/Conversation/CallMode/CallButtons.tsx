@@ -624,6 +624,7 @@ Return ONLY the number.
                 inactiveButton={<MicOffIcon />}
                 isActive={isMuted === false}
                 label={i18n._('Enable microphone')}
+                testId="call-mic-toggle"
                 analyticsId="call-enable-mic"
                 onClick={
                   isSendMessagesBlocked ? access.showPaymentModal : () => setIsMuted(!isMuted)

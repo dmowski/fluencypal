@@ -1,27 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiVoice } from '@/features/Ai/ai';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
-import { readPendingTeacherVoice, writePendingTeacherVoice } from './pendingTeacherVoice';
 
 export const useQuizTeacherVoice = () => {
   const auth = useAuth();
   const settings = useSettings();
   const savedVoice = settings.userSettings?.teacherVoice || null;
-  const [pendingVoice, setPendingVoice] = useState<AiVoice | null>(readPendingTeacherVoice);
+  const [optimisticVoice, setOptimisticVoice] = useState<AiVoice | null>(null);
 
-  const selectedVoice = savedVoice || pendingVoice;
+  const selectedVoice = savedVoice || optimisticVoice;
+
+  useEffect(() => {
+    if (!auth.uid || !optimisticVoice) {
+      return;
+    }
+    if (savedVoice === optimisticVoice) {
+      return;
+    }
+    void settings.setVoice(optimisticVoice);
+  }, [auth.uid, optimisticVoice, savedVoice, settings.setVoice]);
 
   const selectVoice = async (voice: AiVoice) => {
-    setPendingVoice(voice);
-    writePendingTeacherVoice(voice);
-    if (!auth.uid) return;
-    try {
-      await settings.setVoice(voice);
-    } catch {
-      // Settings write can fail before the user document exists; pending voice is enough.
+    setOptimisticVoice(voice);
+    if (!auth.uid) {
+      return;
     }
+    await settings.setVoice(voice);
   };
 
-  return { selectedVoice, selectVoice };
+  return { selectedVoice, savedVoice, selectVoice };
 };

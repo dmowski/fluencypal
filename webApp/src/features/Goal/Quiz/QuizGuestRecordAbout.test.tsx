@@ -4,11 +4,10 @@
 
 import type { ReactNode } from 'react';
 import '@testing-library/jest-dom';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
-import { QUIZ_GUEST_CONTINUE_DELAY_MS, QuizGuestRecordAbout } from './QuizGuestRecordAbout';
-import { hasGuestAbout, resetGuestAboutForTests } from './quizGuestAboutStorage';
+import { QuizGuestRecordAbout } from './QuizGuestRecordAbout';
 
 const recorder = {
   startRecording: jest.fn(),
@@ -31,8 +30,6 @@ jest.mock('@/features/Analytics/Custom/sendSpeechStart', () => ({
 
 describe('QuizGuestRecordAbout', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
-    resetGuestAboutForTests();
     recorder.startRecording.mockReset();
     recorder.stopRecording.mockReset();
     recorder.isRecording = false;
@@ -43,15 +40,16 @@ describe('QuizGuestRecordAbout', () => {
     (sendSpeechStart as jest.Mock).mockClear();
   });
 
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it('lets a guest record one answer and then marks them ready to continue', async () => {
+  it('lets a guest record one answer and then marks them ready after it is saved', async () => {
     const onReadyToContinue = jest.fn();
+    const onSaveRecording = jest.fn().mockResolvedValue(undefined);
     const { rerender } = render(
       <I18nWrapper>
-        <QuizGuestRecordAbout languageCode="en" onReadyToContinue={onReadyToContinue} />
+        <QuizGuestRecordAbout
+          languageCode="en"
+          onSaveRecording={onSaveRecording}
+          onReadyToContinue={onReadyToContinue}
+        />
       </I18nWrapper>,
     );
 
@@ -64,7 +62,11 @@ describe('QuizGuestRecordAbout', () => {
     recorder.recordingMilliSeconds = 4000;
     rerender(
       <I18nWrapper>
-        <QuizGuestRecordAbout languageCode="en" onReadyToContinue={onReadyToContinue} />
+        <QuizGuestRecordAbout
+          languageCode="en"
+          onSaveRecording={onSaveRecording}
+          onReadyToContinue={onReadyToContinue}
+        />
       </I18nWrapper>,
     );
 
@@ -72,18 +74,57 @@ describe('QuizGuestRecordAbout', () => {
     expect(screen.queryByText('Sign in to get your personal plan')).not.toBeInTheDocument();
     expect(onReadyToContinue).not.toHaveBeenCalledWith(true);
 
-    act(() => {
-      jest.advanceTimersByTime(QUIZ_GUEST_CONTINUE_DELAY_MS);
+    await waitFor(() => {
+      expect(onSaveRecording).toHaveBeenCalledWith({
+        languageCode: 'en',
+        blob: recorder.transcriptionBlob,
+        format: 'audio/webm',
+        durationSec: 4,
+      });
+      expect(onReadyToContinue).toHaveBeenCalledWith(true);
     });
 
     expect(screen.getByTestId('quiz-guest-about-skeleton')).toBeInTheDocument();
     expect(screen.getByLabelText('You:')).toBeInTheDocument();
     expect(screen.queryByTestId('quiz-guest-about-loader')).not.toBeInTheDocument();
     expect(screen.queryByText('Sign in to get your personal plan')).not.toBeInTheDocument();
-    expect(onReadyToContinue).toHaveBeenCalledWith(true);
     expect(sendSpeechStart).toHaveBeenCalledWith('quiz');
-    expect(hasGuestAbout('en')).toBe(true);
     expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();
+  });
+
+  it('lets the guest retry when saving the answer fails', async () => {
+    const onReadyToContinue = jest.fn();
+    const onSaveRecording = jest.fn().mockRejectedValue(new Error('offline'));
+    const { rerender } = render(
+      <I18nWrapper>
+        <QuizGuestRecordAbout
+          languageCode="en"
+          onSaveRecording={onSaveRecording}
+          onReadyToContinue={onReadyToContinue}
+        />
+      </I18nWrapper>,
+    );
+
+    recorder.transcriptionBlob = new Blob(['audio'], { type: 'audio/webm' });
+    recorder.recordingMilliSeconds = 4000;
+    rerender(
+      <I18nWrapper>
+        <QuizGuestRecordAbout
+          languageCode="en"
+          onSaveRecording={onSaveRecording}
+          onReadyToContinue={onReadyToContinue}
+        />
+      </I18nWrapper>,
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("Couldn't save your answer. Try recording again."),
+      ).toBeInTheDocument();
+    });
+    expect(onReadyToContinue).not.toHaveBeenCalledWith(true);
+    expect(screen.getByTestId('quiz-guest-about-button')).toBeInTheDocument();
+    expect(sendSpeechStart).not.toHaveBeenCalled();
   });
 
   it('stops an in-progress recording', () => {
@@ -91,7 +132,7 @@ describe('QuizGuestRecordAbout', () => {
     recorder.visualizerComponent = <div data-testid="voice-visualizer" />;
     render(
       <I18nWrapper>
-        <QuizGuestRecordAbout languageCode="en" />
+        <QuizGuestRecordAbout languageCode="en" onSaveRecording={jest.fn()} />
       </I18nWrapper>,
     );
 

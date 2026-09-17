@@ -1,35 +1,80 @@
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { ConversationMessage } from './conversation';
+import { AiVoice } from '@/features/Ai/ai';
+import { SupportedLanguage } from '@/features/Lang/lang';
 
 export const JUST_TALK_HANDOFF_PARAM = 'justTalk';
 export const JUST_TALK_HANDOFF_VALUE = 'open';
 export const ENABLE_MIC_JUST_TALK_ANALYTICS_ID = 'enable-mic-just-talk';
-/** Set on quiz goalReview confirm after mic prime; consumed once on /practice. */
+/** Set on quiz goalReview confirm after mic prime; consumed once the call starts. */
 export const JUST_TALK_AUTO_START_KEY = 'fp_justTalkAutoStart';
+
+export type JustTalkAutoStartPrefs = {
+  startUnmuted: boolean;
+};
 
 export const isJustTalkHandoff = (value: string | null | undefined): boolean =>
   value === JUST_TALK_HANDOFF_VALUE || value === 'true';
 
+const parseJustTalkAutoStart = (raw: string | null): JustTalkAutoStartPrefs | null => {
+  if (!raw) return null;
+  if (raw === '1') {
+    return { startUnmuted: true };
+  }
+  try {
+    const parsed = JSON.parse(raw) as { v?: number; startUnmuted?: boolean };
+    if (parsed?.v === 1) {
+      return { startUnmuted: parsed.startUnmuted !== false };
+    }
+  } catch {
+    return null;
+  }
+  return null;
+};
+
+export const readJustTalkAutoStart = (): JustTalkAutoStartPrefs | null => {
+  if (typeof window === 'undefined') return null;
+  return parseJustTalkAutoStart(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY));
+};
+
 /** Mark that Start Speaking already primed the mic in the same user gesture. */
 export const markJustTalkAutoStart = (): void => {
   if (typeof window === 'undefined') return;
-  window.sessionStorage.setItem(JUST_TALK_AUTO_START_KEY, '1');
+  window.sessionStorage.setItem(
+    JUST_TALK_AUTO_START_KEY,
+    JSON.stringify({ v: 1, startUnmuted: true }),
+  );
 };
 
-export const peekJustTalkAutoStart = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  return window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY) === '1';
-};
+export const peekJustTalkAutoStart = (): boolean => readJustTalkAutoStart() !== null;
 
-/** Consume the quiz mic-prime flag (one-shot). */
-export const consumeJustTalkAutoStart = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  const marked = peekJustTalkAutoStart();
-  if (marked) {
+/** Consume the quiz mic-prime flag (one-shot after the call starts). */
+export const consumeJustTalkAutoStart = (): JustTalkAutoStartPrefs | null => {
+  if (typeof window === 'undefined') return null;
+  const prefs = readJustTalkAutoStart();
+  if (prefs) {
     window.sessionStorage.removeItem(JUST_TALK_AUTO_START_KEY);
   }
-  return marked;
+  return prefs;
 };
+
+export const resolveJustTalkCallSetup = ({
+  prefs,
+  settingsVoice,
+  settingsLanguage,
+}: {
+  prefs: JustTalkAutoStartPrefs | null;
+  settingsVoice?: AiVoice | null;
+  settingsLanguage?: SupportedLanguage | null;
+}): {
+  voice: AiVoice;
+  language: SupportedLanguage | null;
+  startUnmuted: boolean;
+} => ({
+  voice: settingsVoice || 'shimmer',
+  language: settingsLanguage || null,
+  startUnmuted: Boolean(prefs?.startUnmuted),
+});
 
 export const hasUserSpokenInConversation = (
   messages: Pick<ConversationMessage, 'isBot' | 'text'>[],

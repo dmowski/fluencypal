@@ -7,8 +7,11 @@ import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStrea
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 import { useAuth } from '../Auth/useAuth';
-import { readPendingTeacherVoice } from '@/features/Goal/Quiz/pendingTeacherVoice';
-import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
+import {
+  consumeJustTalkAutoStart,
+  readJustTalkAutoStart,
+  resolveJustTalkCallSetup,
+} from './justTalkHandoff';
 
 export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy';
 
@@ -20,21 +23,21 @@ export const useJustTalk = () => {
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
   const { requestMicrophoneWithConsent } = useMicrophonePermission();
-  const voiceName =
-    settings.userSettings?.teacherVoice || readPendingTeacherVoice() || 'shimmer';
   const startJustTalk = async (
     model?: RealTimeModel,
     options?: { skipConsentUi?: boolean },
   ): Promise<StartJustTalkResult> => {
     if (isCallStarting) return 'busy';
     setIsCallStarting(true);
+    const autoStartPrefs = readJustTalkAutoStart();
+    const setup = resolveJustTalkCallSetup({
+      prefs: autoStartPrefs,
+      settingsVoice: settings.userSettings?.teacherVoice,
+      settingsLanguage: settings.languageCode,
+    });
 
     try {
       await auth.ensureAnonymousAuth();
-      const pendingLanguage = readPendingPracticeLanguage();
-      if (pendingLanguage && !settings.languageCode) {
-        await settings.setLanguage(pendingLanguage);
-      }
       await audio.initAudio();
       const mediaStream = options?.skipConsentUi
         ? await getMediaAudioStreams()
@@ -48,9 +51,14 @@ export const useJustTalk = () => {
       await conversation.startConversation({
         conversationMode: 'call',
         mode: 'talk',
-        voice: voiceName,
+        voice: setup.voice,
+        languageCode: setup.language || undefined,
+        startUnmuted: setup.startUnmuted,
         model,
       });
+      if (autoStartPrefs) {
+        consumeJustTalkAutoStart();
+      }
       return 'started';
     } catch (e) {
       console.warn('Microphone permission denied. error', e);

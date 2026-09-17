@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { consumeJustTalkAutoStart, peekJustTalkAutoStart } from './justTalkHandoff';
+import { peekJustTalkAutoStart } from './justTalkHandoff';
 
 /**
  * After quiz → `/practice?justTalk=open`, start Just Talk only when mic was
@@ -39,7 +39,6 @@ export const useAutoStartJustTalk = (
       if (cancelled) {
         return;
       }
-      consumeJustTalkAutoStart();
       try {
         await startRef.current();
       } finally {

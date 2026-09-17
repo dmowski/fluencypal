@@ -7,13 +7,9 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { InfoStep } from '../../Survey/InfoStep';
 import { QuizGuestRecordAbout } from './QuizGuestRecordAbout';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
-import { hasGuestAbout } from './quizGuestAboutStorage';
+import { QuizGuestAboutRecording } from './quizGuestAboutStorage';
 
-const AdvanceWhenSignedIn = ({
-  onAdvance,
-}: {
-  onAdvance: () => void | Promise<void>;
-}) => {
+const AdvanceWhenSignedIn = ({ onAdvance }: { onAdvance: () => void | Promise<void> }) => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const didAdvance = useRef(false);
@@ -46,20 +42,26 @@ export const QuizBeforeRecordAboutGate = ({
   title,
   subTitle,
   promptText,
+  alreadySaved = false,
+  onSaveRecording,
   onContinue,
 }: {
   languageCode: string;
   title: string;
   subTitle: string;
   promptText: string;
+  alreadySaved?: boolean;
+  onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
   onContinue: () => void | Promise<void>;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const [isGuestRecording, setIsGuestRecording] = useState(false);
-  const [hasGuestRecorded, setHasGuestRecorded] = useState(() => hasGuestAbout(languageCode));
-  const [readyToContinue, setReadyToContinue] = useState(() => hasGuestAbout(languageCode));
+  const [hasGuestRecorded, setHasGuestRecorded] = useState(alreadySaved);
+  const [readyToContinue, setReadyToContinue] = useState(alreadySaved);
   const reactionText = i18n._("Thanks — I'll use that to make your plan. Let's keep going.");
+  const recorded = alreadySaved || hasGuestRecorded;
+  const ready = alreadySaved || readyToContinue;
 
   if (!auth.loading && auth.isIdentified) {
     return <AdvanceWhenSignedIn onAdvance={onContinue} />;
@@ -68,8 +70,8 @@ export const QuizBeforeRecordAboutGate = ({
   return (
     <InfoStep
       title={title}
-      subTitle={hasGuestRecorded ? undefined : subTitle}
-      hideActions={!readyToContinue}
+      subTitle={recorded ? undefined : subTitle}
+      hideActions={!ready}
       actionButtonTitle={i18n._('Continue')}
       actionButtonAnalyticsId="quiz-guest-continue"
       onClick={() => {
@@ -83,22 +85,18 @@ export const QuizBeforeRecordAboutGate = ({
             marginTop: '8px',
           }}
         >
-          {!hasGuestRecorded ? (
-            <QuizRecordAboutPrompt
-              text={promptText}
-              pausePlayback={isGuestRecording}
-              autoPlay
-            />
+          {!recorded ? (
+            <QuizRecordAboutPrompt text={promptText} pausePlayback={isGuestRecording} autoPlay />
           ) : null}
           <QuizGuestRecordAbout
             languageCode={languageCode}
+            alreadySaved={alreadySaved}
+            onSaveRecording={onSaveRecording}
             onRecordingChange={setIsGuestRecording}
             onHasRecorded={setHasGuestRecorded}
             onReadyToContinue={setReadyToContinue}
           />
-          {readyToContinue ? (
-            <QuizRecordAboutPrompt text={reactionText} autoPlay variant="reaction" />
-          ) : null}
+          {ready ? <QuizRecordAboutPrompt text={reactionText} autoPlay variant="reaction" /> : null}
         </Stack>
       }
     />

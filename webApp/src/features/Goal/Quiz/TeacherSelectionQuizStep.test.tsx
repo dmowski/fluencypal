@@ -11,8 +11,12 @@ import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 const mockSelectVoice = jest.fn(async () => undefined);
 const mockUseQuizTeacherVoice = jest.fn(() => ({
   selectedVoice: null as string | null,
+  savedVoice: null as string | null,
   selectVoice: mockSelectVoice,
 }));
+const mockAuth = {
+  uid: '',
+};
 
 jest.mock('../../Survey/InfoStep', () => ({
   InfoStep: ({
@@ -65,17 +69,16 @@ jest.mock('@/features/Conversation/CallMode/SelectTeacher', () => ({
 }));
 
 jest.mock('@/features/Auth/useAuth', () => ({
-  useAuth: () => ({
-    userInfo: null,
-    uid: null,
-  }),
+  useAuth: () => mockAuth,
 }));
 
 describe('TeacherSelectionQuizStep', () => {
   beforeEach(() => {
     mockSelectVoice.mockClear();
+    mockAuth.uid = '';
     mockUseQuizTeacherVoice.mockReturnValue({
       selectedVoice: null,
+      savedVoice: null,
       selectVoice: mockSelectVoice,
     });
   });
@@ -93,10 +96,28 @@ describe('TeacherSelectionQuizStep', () => {
     expect(screen.getByRole('button', { name: 'Continue' })).toBeDisabled();
   });
 
-  it('enables Continue after a voice is chosen', () => {
-    const onContinue = jest.fn();
+  it('keeps Continue disabled until anonymous auth is ready', () => {
     mockUseQuizTeacherVoice.mockReturnValue({
       selectedVoice: 'ash',
+      savedVoice: 'ash',
+      selectVoice: mockSelectVoice,
+    });
+
+    render(
+      <I18nWrapper>
+        <TeacherSelectionQuizStep onContinue={() => undefined} isStepLoading={false} />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Continue' })).toBeDisabled();
+  });
+
+  it('enables Continue after auth is ready and a voice is chosen', () => {
+    const onContinue = jest.fn();
+    mockAuth.uid = 'anon-1';
+    mockUseQuizTeacherVoice.mockReturnValue({
+      selectedVoice: 'ash',
+      savedVoice: 'ash',
       selectVoice: mockSelectVoice,
     });
 

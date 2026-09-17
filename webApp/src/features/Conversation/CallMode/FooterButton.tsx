@@ -91,6 +91,7 @@ export const FooterButton = ({
             }}
             size="large"
             aria-label={label}
+            aria-pressed={isActive}
             data-testid={testId}
             {...(analyticsId ? { 'data-analytics': analyticsId } : {})}
             onClick={(event) => onClick(event)}

@@ -10,6 +10,8 @@ import {
   JUST_TALK_AUTO_START_KEY,
   markJustTalkAutoStart,
   peekJustTalkAutoStart,
+  readJustTalkAutoStart,
+  resolveJustTalkCallSetup,
 } from './justTalkHandoff';
 
 describe('justTalkHandoff', () => {
@@ -34,14 +36,47 @@ describe('justTalkHandoff', () => {
 
   it('marks and consumes quiz mic-prime auto-start once', () => {
     expect(peekJustTalkAutoStart()).toBe(false);
-    expect(consumeJustTalkAutoStart()).toBe(false);
+    expect(consumeJustTalkAutoStart()).toBeNull();
     markJustTalkAutoStart();
     expect(peekJustTalkAutoStart()).toBe(true);
-    expect(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY)).toBe('1');
-    expect(consumeJustTalkAutoStart()).toBe(true);
+    expect(readJustTalkAutoStart()).toEqual({ startUnmuted: true });
+    expect(consumeJustTalkAutoStart()).toEqual({ startUnmuted: true });
     expect(peekJustTalkAutoStart()).toBe(false);
-    expect(consumeJustTalkAutoStart()).toBe(false);
+    expect(consumeJustTalkAutoStart()).toBeNull();
     expect(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY)).toBeNull();
+  });
+
+  it('still treats the legacy auto-start flag as primed and unmuted', () => {
+    window.sessionStorage.setItem(JUST_TALK_AUTO_START_KEY, '1');
+    expect(readJustTalkAutoStart()).toEqual({ startUnmuted: true });
+  });
+
+  it('uses saved Firestore settings for voice and language', () => {
+    expect(
+      resolveJustTalkCallSetup({
+        prefs: { startUnmuted: true },
+        settingsVoice: 'verse',
+        settingsLanguage: 'en',
+      }),
+    ).toEqual({
+      voice: 'verse',
+      language: 'en',
+      startUnmuted: true,
+    });
+  });
+
+  it('keeps the call muted without a quiz mic-prime', () => {
+    expect(
+      resolveJustTalkCallSetup({
+        prefs: null,
+        settingsVoice: 'marin',
+        settingsLanguage: 'es',
+      }),
+    ).toEqual({
+      voice: 'marin',
+      language: 'es',
+      startUnmuted: false,
+    });
   });
 
   it('counts a non-empty user message as spoken', () => {

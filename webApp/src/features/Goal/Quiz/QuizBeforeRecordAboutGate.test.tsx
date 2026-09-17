@@ -6,7 +6,6 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
-import { resetGuestAboutForTests, saveGuestAboutRecording } from './quizGuestAboutStorage';
 
 const authState = {
   uid: '',
@@ -73,19 +72,25 @@ describe('QuizBeforeRecordAboutGate', () => {
     authState.uid = '';
     authState.isIdentified = false;
     authState.loading = false;
-    window.localStorage.clear();
-    resetGuestAboutForTests();
   });
 
   it('asks the guest to record before showing Continue', () => {
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate {...gateProps} onContinue={jest.fn()} />
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          onSaveRecording={jest.fn()}
+          onContinue={jest.fn()}
+        />
       </I18nWrapper>,
     );
 
-    expect(screen.getByRole('heading', { name: 'Why do you want to practice speaking?' })).toBeInTheDocument();
-    expect(screen.getByText("I'll use your answer to make your personal plan.")).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Why do you want to practice speaking?' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("I'll use your answer to make your personal plan."),
+    ).toBeInTheDocument();
     expect(screen.getByTestId('quiz-record-about-prompt')).toHaveTextContent(
       "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
     );
@@ -102,23 +107,25 @@ describe('QuizBeforeRecordAboutGate', () => {
 
   it('plays a teacher reaction and Continue after the guest records', () => {
     const onContinue = jest.fn();
-    saveGuestAboutRecording({
-      languageCode: 'en',
-      blob: new Blob(['audio'], { type: 'audio/webm' }),
-      format: 'audio/webm',
-      durationSec: 4,
-    });
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          alreadySaved
+          onSaveRecording={jest.fn()}
+          onContinue={onContinue}
+        />
       </I18nWrapper>,
     );
 
     expect(
       screen.getByText("Thanks — I'll use that to make your plan. Let's keep going."),
     ).toBeInTheDocument();
-    expect(screen.getByTestId('quiz-record-about-prompt')).toHaveAttribute('data-variant', 'reaction');
+    expect(screen.getByTestId('quiz-record-about-prompt')).toHaveAttribute(
+      'data-variant',
+      'reaction',
+    );
     expect(
       screen.queryByText(
         "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
@@ -140,7 +147,11 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          onSaveRecording={jest.fn()}
+          onContinue={onContinue}
+        />
       </I18nWrapper>,
     );
 
@@ -154,7 +165,11 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate {...gateProps} onContinue={onContinue} />
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          onSaveRecording={jest.fn()}
+          onContinue={onContinue}
+        />
       </I18nWrapper>,
     );
 
@@ -170,7 +185,11 @@ describe('QuizBeforeRecordAboutGate', () => {
 
     render(
       <I18nWrapper>
-        <QuizBeforeRecordAboutGate {...gateProps} onContinue={jest.fn()} />
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          onSaveRecording={jest.fn()}
+          onContinue={jest.fn()}
+        />
       </I18nWrapper>,
     );
 

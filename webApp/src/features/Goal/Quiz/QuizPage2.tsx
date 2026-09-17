@@ -43,8 +43,7 @@ import { TrialPriceQuizStep } from './TrialPriceQuizStep';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
-import { peekGuestAboutTranscript } from './quizGuestAboutStorage';
-import { writePendingPracticeLanguage } from './pendingPracticeLanguage';
+import { hasAboutTranscription } from './quizGuestAboutStorage';
 
 const QuizQuestions = () => {
   const {
@@ -53,6 +52,7 @@ const QuizQuestions = () => {
     survey,
     nativeLanguage,
     updateSurvey,
+    saveGuestAboutClip,
     languageToLearn,
     isFollowUpGenerating,
     isGoalQuestionGenerating,
@@ -101,7 +101,9 @@ const QuizQuestions = () => {
     const isAccessStep = path.includes('accessPlan');
 
     try {
-      writePendingPracticeLanguage(languageToLearn);
+      if (languageToLearn && settings.userSettings?.languageCode !== languageToLearn) {
+        await settings.setLanguage(languageToLearn);
+      }
       // Start mic in the same user gesture as Start Speaking (before await confirmPlan).
       const micOkPromise = requestMicrophoneAccess();
       await confirmPlan();
@@ -229,6 +231,10 @@ const QuizQuestions = () => {
               title={recordAboutTitle}
               subTitle={recordAboutQuestion}
               promptText={recordAboutPrompt}
+              alreadySaved={hasAboutTranscription(survey)}
+              onSaveRecording={async (recording) => {
+                await saveGuestAboutClip(recording);
+              }}
               onContinue={continueFromAboutGate}
             />
           )}
@@ -241,16 +247,10 @@ const QuizQuestions = () => {
                 subTitleComponent={
                   <QuizRecordAboutPrompt
                     text={recordAboutPrompt}
-                    autoPlay={
-                      !(
-                        survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn)
-                      )
-                    }
+                    autoPlay={!hasAboutTranscription(survey)}
                   />
                 }
-                transcript={
-                  survey?.aboutUserTranscription || peekGuestAboutTranscript(languageToLearn) || ''
-                }
+                transcript={survey?.aboutUserTranscription || ''}
                 minWords={MIN_WORDS_FOR_ANSWER}
                 analyticsSurface="quiz"
                 nextStep={next}

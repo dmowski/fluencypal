@@ -1,4 +1,5 @@
 import { AiVoice, RealTimeModel } from '@/features/Ai/ai';
+import { SupportedLanguage } from '@/features/Lang/lang';
 import {
   ConversationType,
   ConversationMessage,
@@ -21,6 +22,10 @@ export interface StartConversationProps {
   goal?: GoalElementInfo | null;
   webCamDescription?: string;
   conversationMode: ConversationMode;
+  /** Quiz learn-language snapshot; wins over hydrated settings / page locale. */
+  languageCode?: SupportedLanguage;
+  /** Quiz mic-prime: start the WebRTC call with the mic live. */
+  startUnmuted?: boolean;
   ideas?: ConversationIdea;
   lessonPlan?: LessonPlan;
   rolePlayId?: string;

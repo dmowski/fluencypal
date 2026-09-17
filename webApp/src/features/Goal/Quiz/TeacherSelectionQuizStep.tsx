@@ -3,6 +3,7 @@
 import { Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { InfoStep } from '../../Survey/InfoStep';
+import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
 import { VoiceSpeedSelector } from '@/features/Settings/VoiceSpeedSelector';
 import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
@@ -16,8 +17,11 @@ export const TeacherSelectionQuizStep = ({
   isStepLoading: boolean;
 }) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const settings = useSettings();
-  const { selectedVoice, selectVoice } = useQuizTeacherVoice();
+  const { selectedVoice, savedVoice, selectVoice } = useQuizTeacherVoice();
+  const isAuthReady = Boolean(auth.uid);
+  const canContinue = isAuthReady && Boolean(savedVoice);
 
   return (
     <InfoStep
@@ -44,8 +48,8 @@ export const TeacherSelectionQuizStep = ({
         </Stack>
       }
       onClick={onContinue}
-      disabled={isStepLoading || !selectedVoice}
-      isStepLoading={isStepLoading}
+      disabled={isStepLoading || !canContinue}
+      isStepLoading={isStepLoading || !isAuthReady}
     />
   );
 };

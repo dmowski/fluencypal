@@ -40,9 +40,12 @@ import { getWordsCount } from '@/libs/words';
 import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 import { useAccess } from '@/features/Usage/useAccess';
-import { useFlushPendingTeacherVoice } from './useFlushPendingTeacherVoice';
-import { useFlushPendingPracticeLanguage } from './useFlushPendingPracticeLanguage';
-import { flushGuestAboutToSurvey, hasGuestAbout } from './quizGuestAboutStorage';
+import {
+  hasAboutTranscription,
+  QuizGuestAboutRecording,
+  transcribeAboutRecording,
+  writeAboutTranscriptionToSurvey,
+} from './quizGuestAboutStorage';
 import {
   quizGuestAboutStep,
   quizGuestPlanIntroStep,
@@ -147,6 +150,7 @@ interface QuizContextType {
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
+  saveGuestAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
@@ -704,6 +708,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         createdAtIso: new Date().toISOString(),
       };
       await setDoc(surveyDocRef, initSurvey);
+      surveyRef.current = initSurvey;
       await syncWithSettings(initSurvey);
       console.log('✅ Survey doc created', initSurvey);
     } else {
@@ -839,14 +844,18 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
 
   const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
 
-  const applyGuestAboutRecording = async () => {
-    if (!auth.uid || !hasGuestAbout(languageToLearn)) {
-      return;
+  const saveGuestAboutClip = async (recording: QuizGuestAboutRecording) => {
+    await ensureSurveyDocExists();
+    const transcript = await transcribeAboutRecording({
+      recording,
+      getToken: auth.getToken,
+    });
+    if (!transcript) {
+      throw new Error('Could not transcribe about recording');
     }
 
-    await flushGuestAboutToSurvey({
-      languageCode: languageToLearn,
-      getToken: auth.getToken,
+    const written = await writeAboutTranscriptionToSurvey({
+      transcript,
       getSurvey: () => surveyRef.current,
       loadSurvey: async () => {
         if (!surveyDocRef) {
@@ -857,46 +866,51 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       },
       updateSurvey,
     });
+    if (!written) {
+      throw new Error('Could not save about recording');
+    }
+    return written;
   };
 
   useEffect(() => {
     if (auth.loading || auth.isIdentified) {
       return;
     }
-    if (currentStep !== 'before_goalReview' && currentStep !== 'goalReview') {
-      return;
-    }
     void auth.ensureAnonymousAuth().catch((error) => {
       Sentry.captureException(error);
     });
-  }, [auth.loading, auth.isIdentified, auth.ensureAnonymousAuth, currentStep]);
+  }, [auth.loading, auth.isIdentified, auth.ensureAnonymousAuth]);
+
+  useEffect(() => {
+    if (!auth.uid || auth.isIdentified || !languageToLearn) {
+      return;
+    }
+    if (settings.userSettings?.languageCode === languageToLearn) {
+      return;
+    }
+    void settings.setLanguage(languageToLearn).catch((error) => {
+      Sentry.captureException(error);
+    });
+  }, [
+    auth.uid,
+    auth.isIdentified,
+    languageToLearn,
+    settings.userSettings?.languageCode,
+    settings.setLanguage,
+  ]);
 
   useEffect(() => {
     if (!auth.uid) {
       return;
     }
-    const flushSteps: QuizStep[] = [
-      'before_recordAbout',
-      'recordAbout',
-      'before_goalReview',
-      'goalReview',
-    ];
-    if (!flushSteps.includes(currentStep)) {
-      return;
-    }
-    if (!hasGuestAbout(languageToLearn)) {
+    if (currentStep !== 'before_recordAbout' && currentStep !== 'recordAbout') {
       return;
     }
 
-    void (async () => {
-      try {
-        await ensureSurveyDocExists();
-        await applyGuestAboutRecording();
-      } catch (error) {
-        Sentry.captureException(error);
-      }
-    })();
-  }, [auth.uid, currentStep, languageToLearn]);
+    void ensureSurveyDocExists().catch((error) => {
+      Sentry.captureException(error);
+    });
+  }, [auth.uid, currentStep]);
 
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
@@ -905,7 +919,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       shouldSkipToPlanIntroAfterGuestAbout({
         currentStep,
         isIdentified: auth.isIdentified,
-        hasGuestAbout: hasGuestAbout(languageToLearn),
+        hasGuestAbout: hasAboutTranscription(surveyRef.current),
       })
     ) {
       nextStep = quizGuestPlanIntroStep;
@@ -929,11 +943,6 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       } catch (error) {
         Sentry.captureException(error);
         return;
-      }
-      try {
-        await applyGuestAboutRecording();
-      } catch (error) {
-        Sentry.captureException(error);
       }
     }
 
@@ -974,7 +983,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
       shouldReturnToGuestAboutFromPlanIntro({
         currentStep,
         isIdentified: auth.isIdentified,
-        hasGuestAbout: hasGuestAbout(languageToLearn),
+        hasGuestAbout: hasAboutTranscription(surveyRef.current),
       })
     ) {
       void setState({ currentStep: quizGuestAboutStep });
@@ -983,7 +992,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
     void setState({ currentStep: prevStep });
-  }, [auth.isIdentified, currentStep, currentStepIndex, languageToLearn, path, setState]);
+  }, [auth.isIdentified, currentStep, currentStepIndex, path, setState]);
 
   const navigateToMainPage = () => {
     const newPath = `${getLandingUrlStart(pageLanguage)}`;
@@ -1027,6 +1036,7 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
     progress,
     isFirstLoading,
     updateSurvey,
+    saveGuestAboutClip,
     test,
     isFollowUpGenerating,
     isGoalQuestionGenerating,
@@ -1044,8 +1054,6 @@ export function QuizProvider({
   pageLang: SupportedLanguage;
   defaultLangToLearn: SupportedLanguage;
 }): JSX.Element {
-  useFlushPendingTeacherVoice();
-  useFlushPendingPracticeLanguage();
   const hook = useProvideQuizContext({ pageLang, defaultLangToLearn });
   return <QuizContext.Provider value={hook}>{children}</QuizContext.Provider>;
 }
