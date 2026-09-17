@@ -58,7 +58,7 @@ await window.__darkEngTest.signInWithEmailAndPassword(
 
 Reload `/practice`. Success: dashboard shows **JUST TALK MODE** (not “Let's create an account”). Emulator data is in-memory; recreate the user after a restart.
 
-**Quiz → Just Talk:** after the quiz (guest or signed-in), `goalReview` **Start Speaking** primes the mic in that click and navigates to `/practice?justTalk=open`. Practice auto-starts the call when mic was primed or already granted; otherwise the Enable-mic panel (`just-talk-handoff`) is the fallback. `justTalk=open` stays until the first spoken user message. The call must start in **call** mode, not record. Mic/camera prompts may block automation — open `/practice?justTalk=open` without a mic prime to confirm the handoff panel still appears. Walking all of `/quiz` also needs 30+ word voice answers and AI plan generation; use `justTalk=open` to verify the post-`goalReview` destination without finishing the quiz.
+**Quiz → Just Talk:** after the quiz (guest or signed-in), `goalReview` **Start Speaking** primes the mic in that click and navigates to `/practice?justTalk=open`. Practice auto-starts the call only when that mic-prime session flag is set; cold `/practice?justTalk=open` always shows the Enable-mic panel (`just-talk-handoff`) until the user taps. `justTalk=open` stays until the first spoken user message. The call must start in **call** mode, not record. Mic/camera prompts may block automation — open `/practice?justTalk=open` without a mic prime to confirm the handoff panel still appears. Walking all of `/quiz` also needs 30+ word voice answers and AI plan generation; use `justTalk=open` to verify the post-`goalReview` destination without finishing the quiz.
 
 ## Build And Runtime
 

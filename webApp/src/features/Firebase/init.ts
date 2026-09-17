@@ -8,6 +8,7 @@ import {
   browserPopupRedirectResolver,
   getAuth,
   initializeAuth,
+  signInAnonymously,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
@@ -96,6 +97,7 @@ if (!isNodeEnv && isFirebaseEmulator) {
     firestore,
     storage,
     signInWithEmailAndPassword,
+    signInAnonymously,
     signOut,
     doc,
     setDoc,

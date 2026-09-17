@@ -38,7 +38,11 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         launchOptions: {
-          args: ['--remote-debugging-port=9222'],
+          args: [
+            '--remote-debugging-port=9222',
+            '--use-fake-ui-for-media-stream',
+            '--use-fake-device-for-media-stream',
+          ],
         },
       },
       testMatch: /e2e\/.*spec\.ts/,

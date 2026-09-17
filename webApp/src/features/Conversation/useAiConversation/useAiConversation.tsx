@@ -633,8 +633,32 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(', ')}
   const addUserMessage = async (message: string) => {
     communicatorRef.current?.addThreadsMessage(message);
     await sleep(100);
-    await communicatorRef.current?.triggerAiResponse();
+    try {
+      await communicatorRef.current?.triggerAiResponse();
+    } catch (error) {
+      console.warn('triggerAiResponse after user message failed', error);
+    }
   };
+  const addUserMessageRef = useRef(addUserMessage);
+  addUserMessageRef.current = addUserMessage;
+
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_IS_FIREBASE_EMULATOR !== 'true') {
+      return;
+    }
+    const testHandle = (window as unknown as { __darkEngTest?: Record<string, unknown> })
+      .__darkEngTest;
+    if (!testHandle) {
+      return;
+    }
+    testHandle.addConversationUserMessage = (message: string) =>
+      addUserMessageRef.current(message);
+    testHandle.isConversationStarted = () => isStarted;
+    return () => {
+      delete testHandle.addConversationUserMessage;
+      delete testHandle.isConversationStarted;
+    };
+  }, [isStarted]);
 
   return {
     isLimitedAiVoice: limits.isLimitedAiVoice,

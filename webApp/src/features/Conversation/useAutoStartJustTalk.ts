@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { isMicrophoneGranted } from '@/libs/mic';
 import { consumeJustTalkAutoStart, peekJustTalkAutoStart } from './justTalkHandoff';
 
 /**
- * After quiz → `/practice?justTalk=open`, start Just Talk when mic was primed
- * on the confirm click (session flag) or the Permissions API already says granted.
- * Handoff Enable-mic stays as the fallback when neither applies.
+ * After quiz → `/practice?justTalk=open`, start Just Talk only when mic was
+ * primed on the confirm click (`fp_justTalkAutoStart`). Cold visits and
+ * sticky browser grants alone do not auto-start — handoff Enable-mic is the
+ * fallback so `/practice?justTalk=open` does not pop a permission dialog.
  */
 export const useAutoStartJustTalk = (
   isHandoff: boolean,
@@ -14,7 +14,7 @@ export const useAutoStartJustTalk = (
   const startedRef = useRef(false);
   const startRef = useRef(startJustTalk);
   startRef.current = startJustTalk;
-  const [isResolvingAutoStart, setIsResolvingAutoStart] = useState(isHandoff);
+  const [isResolvingAutoStart, setIsResolvingAutoStart] = useState(false);
 
   useEffect(() => {
     if (!isHandoff) {
@@ -26,22 +26,20 @@ export const useAutoStartJustTalk = (
       return;
     }
     startedRef.current = true;
+
+    if (!peekJustTalkAutoStart()) {
+      setIsResolvingAutoStart(false);
+      return;
+    }
+
     setIsResolvingAutoStart(true);
 
     let cancelled = false;
     void (async () => {
-      const fromQuizPrime = peekJustTalkAutoStart();
-      const shouldStart = fromQuizPrime || (await isMicrophoneGranted());
       if (cancelled) {
         return;
       }
-      if (!shouldStart) {
-        setIsResolvingAutoStart(false);
-        return;
-      }
-      if (fromQuizPrime) {
-        consumeJustTalkAutoStart();
-      }
+      consumeJustTalkAutoStart();
       try {
         await startRef.current();
       } finally {
