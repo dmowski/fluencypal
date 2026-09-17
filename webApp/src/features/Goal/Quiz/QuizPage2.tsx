@@ -18,8 +18,12 @@ import { GoalReview } from './GoalReview';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
-import { buildJustTalkPracticeUrl } from '@/features/Conversation/justTalkHandoff';
+import {
+  buildJustTalkPracticeUrl,
+  markJustTalkAutoStart,
+} from '@/features/Conversation/justTalkHandoff';
 import { sleep } from '@/libs/sleep';
+import { requestMicrophoneAccess } from '@/libs/mic';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import {
   BotOff,
@@ -98,7 +102,12 @@ const QuizQuestions = () => {
 
     try {
       writePendingPracticeLanguage(languageToLearn);
+      // Start mic in the same user gesture as Start Speaking (before await confirmPlan).
+      const micOkPromise = requestMicrophoneAccess();
       await confirmPlan();
+      if (await micOkPromise) {
+        markJustTalkAutoStart();
+      }
       router.push(
         buildJustTalkPracticeUrl({
           pageLanguage,

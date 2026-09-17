@@ -29,6 +29,7 @@ import { useSearchParams } from 'next/navigation';
 import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useJustTalk } from '@/features/Conversation/useJustTalk';
+import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTalk';
 import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
 import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
 import { canEnterPracticeAsGuest } from '@/features/Conversation/guestPracticeEntry';
@@ -69,6 +70,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const practiceLanguageCode =
     settings.languageCode || pendingPracticeLanguage || (canGuestPractice ? lang : null);
   const startHandoffJustTalk = () => startJustTalk(undefined, { skipConsentUi: true });
+  const { isResolvingAutoStart } = useAutoStartJustTalk(isHandoff, startHandoffJustTalk);
 
   useEffect(() => {
     if (auth.loading || auth.isIdentified || !canGuestPractice) {
@@ -143,6 +145,9 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }
 
   if (idleSurface === 'handoff') {
+    if (isResolvingAutoStart || isCallStarting) {
+      return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+    }
     return (
       <JustTalkHandoffScreen
         onEnableMic={startHandoffJustTalk}

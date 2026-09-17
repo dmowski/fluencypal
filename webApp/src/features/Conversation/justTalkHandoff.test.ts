@@ -1,11 +1,22 @@
+/**
+ * @jest-environment jsdom
+ */
 import {
   buildJustTalkPracticeUrl,
+  consumeJustTalkAutoStart,
   getPracticeIdleSurface,
   hasUserSpokenInConversation,
   isJustTalkHandoff,
+  JUST_TALK_AUTO_START_KEY,
+  markJustTalkAutoStart,
+  peekJustTalkAutoStart,
 } from './justTalkHandoff';
 
 describe('justTalkHandoff', () => {
+  beforeEach(() => {
+    window.sessionStorage.clear();
+  });
+
   it('treats open and true as a handoff', () => {
     expect(isJustTalkHandoff('open')).toBe(true);
     expect(isJustTalkHandoff('true')).toBe(true);
@@ -19,6 +30,18 @@ describe('justTalkHandoff', () => {
     expect(buildJustTalkPracticeUrl({ pageLanguage: 'ja', paymentModal: true })).toBe(
       '/ja/practice?justTalk=open&paymentModal=true',
     );
+  });
+
+  it('marks and consumes quiz mic-prime auto-start once', () => {
+    expect(peekJustTalkAutoStart()).toBe(false);
+    expect(consumeJustTalkAutoStart()).toBe(false);
+    markJustTalkAutoStart();
+    expect(peekJustTalkAutoStart()).toBe(true);
+    expect(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY)).toBe('1');
+    expect(consumeJustTalkAutoStart()).toBe(true);
+    expect(peekJustTalkAutoStart()).toBe(false);
+    expect(consumeJustTalkAutoStart()).toBe(false);
+    expect(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY)).toBeNull();
   });
 
   it('counts a non-empty user message as spoken', () => {
