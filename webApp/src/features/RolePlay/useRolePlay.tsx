@@ -27,6 +27,7 @@ import {
   consumeGuestReplyTranscript,
   shouldInjectGuestReply,
 } from '../Auth/rolePlayGuestReplyStorage';
+import * as Sentry from '@sentry/nextjs';
 
 const getStartDefaultInstruction = (fullLanguageName: string) => {
   return `You are playing role-play conversation with user.
@@ -207,6 +208,8 @@ function useProvideRolePlay({
       });
     } catch (error) {
       console.error('Failed to start role play', error);
+      Sentry.captureException(error);
+      return;
     }
 
     if (isAliasGameRolePlay(scenario.id)) {
