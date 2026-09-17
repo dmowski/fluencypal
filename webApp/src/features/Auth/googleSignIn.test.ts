@@ -57,6 +57,17 @@ describe('getGoogleSignInErrorMessage', () => {
       ),
     ).toBe('Google sign-in is not supported in this browser. Please use email sign-in.');
   });
+
+  it('asks to retry when Google redirect cannot reach Firebase', () => {
+    expect(
+      getGoogleSignInErrorMessage(
+        new FirebaseError(
+          'auth/network-request-failed',
+          'Firebase: Error (auth/network-request-failed).',
+        ),
+      ),
+    ).toBe('Network error during Google sign-in. Please check your connection and try again.');
+  });
 });
 
 describe('signInWithGoogleAccount', () => {
@@ -89,6 +100,56 @@ describe('signInWithGoogleAccount', () => {
     expect(result).toEqual({ isDone: false, error: '', isRedirecting: true });
     expect(signInWithRedirect).toHaveBeenCalledTimes(1);
     expect(signInWithPopup).not.toHaveBeenCalled();
+  });
+
+  it('returns a retry message when redirect sign-in fails on the network', async () => {
+    const signInWithPopup = jest.fn();
+    const signInWithRedirect = jest
+      .fn()
+      .mockRejectedValue(
+        new FirebaseError(
+          'auth/network-request-failed',
+          'Firebase: Error (auth/network-request-failed).',
+        ),
+      );
+
+    const result = await signInWithGoogleAccount(
+      auth,
+      { isEmulator: false, isWebView: false, shouldRedirect: true },
+      { signInWithPopup, signInWithRedirect },
+    );
+
+    expect(result).toEqual({
+      isDone: false,
+      error: 'Network error during Google sign-in. Please check your connection and try again.',
+    });
+    expect(signInWithPopup).not.toHaveBeenCalled();
+  });
+
+  it('returns a retry message when popup fallback redirect fails on the network', async () => {
+    const signInWithPopup = jest
+      .fn()
+      .mockRejectedValue(new FirebaseError('auth/popup-blocked', 'blocked'));
+    const signInWithRedirect = jest
+      .fn()
+      .mockRejectedValue(
+        new FirebaseError(
+          'auth/network-request-failed',
+          'Firebase: Error (auth/network-request-failed).',
+        ),
+      );
+
+    const result = await signInWithGoogleAccount(
+      auth,
+      { isEmulator: false, isWebView: false, shouldRedirect: false },
+      { signInWithPopup, signInWithRedirect },
+    );
+
+    expect(result).toEqual({
+      isDone: false,
+      error: 'Network error during Google sign-in. Please check your connection and try again.',
+    });
+    expect(signInWithRedirect).toHaveBeenCalledTimes(1);
   });
 
   it('keeps popup on desktop Chrome', async () => {

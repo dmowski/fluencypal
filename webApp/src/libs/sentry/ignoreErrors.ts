@@ -15,6 +15,8 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   /Connection to Indexed Database server lost/,
   // Expected when the browser is offline
   /Failed to get document because the client is offline/,
+  // Firebase Auth timeout / fetch failure on flaky mobile networks (DARK-LANG-J9 / DARK-LANG-GR)
+  /auth\/network-request-failed/,
   // Browser-extension injectors (DARK-LANG-HZ / DARK-LANG-J0); no first-party frames
   /Cannot read properties of undefined \(reading 'M_ID'\)/,
   // Zalo in-app browser injects this global (DARK-LANG-HP); not app code

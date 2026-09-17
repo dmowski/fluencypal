@@ -17,6 +17,7 @@ import { acceptAnalytics } from '../Analytics/initGTag';
 import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
 import {
   completeGoogleRedirectSignIn,
+  getGoogleSignInErrorMessage,
   signInWithGoogleAccount,
   SignInResult,
 } from './googleSignIn';
@@ -90,7 +91,11 @@ function useProvideAuth(): AuthContext {
       return result;
     } catch (error) {
       googleSignInInProgress.current = false;
-      throw error;
+      const message = getGoogleSignInErrorMessage(error);
+      if (message) {
+        console.error('Google sign in error', error);
+      }
+      return { isDone: false, error: message || '' };
     }
   };
 
@@ -144,6 +149,12 @@ function useProvideAuth(): AuthContext {
       try {
         await completeGoogleRedirectSignIn(auth);
       } catch (error) {
+        const isNetworkFailure =
+          error instanceof FirebaseError && error.code === 'auth/network-request-failed';
+        if (isNetworkFailure) {
+          console.warn('Google redirect sign-in network error', error);
+          return;
+        }
         console.error('Google redirect sign-in error', error);
         Sentry.captureException(error);
       }

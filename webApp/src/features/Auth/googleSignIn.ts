@@ -43,6 +43,8 @@ export const getGoogleSignInErrorMessage = (error: unknown): string | null => {
         return 'Google sign-in popup was blocked. Please allow popups or use email sign-in.';
       case 'auth/operation-not-supported-in-this-environment':
         return 'Google sign-in is not supported in this browser. Please use email sign-in.';
+      case 'auth/network-request-failed':
+        return 'Network error during Google sign-in. Please check your connection and try again.';
       default:
         break;
     }
@@ -123,6 +125,30 @@ const signInOrLinkGoogle = async (
   }
 };
 
+const startGoogleRedirect = async (
+  auth: Auth,
+  provider: GoogleAuthProvider,
+  currentUser: User | null,
+  deps: GoogleSignInDeps,
+): Promise<void> => {
+  if (currentUser?.isAnonymous) {
+    await deps.linkWithRedirect(currentUser, provider);
+    return;
+  }
+  await deps.signInWithRedirect(auth, provider);
+};
+
+const toGoogleSignInFailure = (error: unknown): SignInResult => {
+  const message = getGoogleSignInErrorMessage(error);
+  if (message) {
+    console.error('Google sign in error', error);
+  }
+  return {
+    isDone: false,
+    error: message || '',
+  };
+};
+
 export const signInWithGoogleAccount = async (
   auth: Auth,
   env: GoogleSignInEnv = resolveGoogleSignInEnv(),
@@ -140,36 +166,25 @@ export const signInWithGoogleAccount = async (
   const provider = new GoogleAuthProvider();
   const currentUser = auth.currentUser;
 
-  if (!env.isEmulator && env.shouldRedirect) {
-    if (currentUser?.isAnonymous) {
-      await signInDeps.linkWithRedirect(currentUser, provider);
-    } else {
-      await signInDeps.signInWithRedirect(auth, provider);
-    }
-    return { isDone: false, error: '', isRedirecting: true };
-  }
-
   try {
-    await signInOrLinkGoogle(auth, provider, currentUser, signInDeps);
-    return { isDone: true, error: '' };
-  } catch (error) {
-    if (!env.isEmulator && shouldFallbackPopupToRedirect(error)) {
-      if (auth.currentUser?.isAnonymous) {
-        await signInDeps.linkWithRedirect(auth.currentUser, provider);
-      } else {
-        await signInDeps.signInWithRedirect(auth, provider);
-      }
+    if (!env.isEmulator && env.shouldRedirect) {
+      await startGoogleRedirect(auth, provider, currentUser, signInDeps);
       return { isDone: false, error: '', isRedirecting: true };
     }
 
-    const message = getGoogleSignInErrorMessage(error);
-    if (message) {
-      console.error('Google sign in error', error);
+    await signInOrLinkGoogle(auth, provider, currentUser, signInDeps);
+    return { isDone: true, error: '' };
+  } catch (error) {
+    if (!env.isEmulator && !env.shouldRedirect && shouldFallbackPopupToRedirect(error)) {
+      try {
+        await startGoogleRedirect(auth, provider, auth.currentUser, signInDeps);
+        return { isDone: false, error: '', isRedirecting: true };
+      } catch (redirectError) {
+        return toGoogleSignInFailure(redirectError);
+      }
     }
-    return {
-      isDone: false,
-      error: message || '',
-    };
+
+    return toGoogleSignInFailure(error);
   }
 };
 

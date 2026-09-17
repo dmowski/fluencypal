@@ -6,6 +6,12 @@ const matchesIgnore = (message: string) =>
   );
 
 describe('sentryIgnoreErrors', () => {
+  it('drops Firebase Auth client network failures', () => {
+    expect(matchesIgnore('FirebaseError: Firebase: Error (auth/network-request-failed).')).toBe(
+      true,
+    );
+  });
+
   it('drops Chrome IndexedDB missing-file errors from Firestore', () => {
     expect(
       matchesIgnore(
