@@ -20,13 +20,13 @@ vi.mock('@/features/User/useCurrency', () => ({
   }),
 }));
 
-test('shows monthly price, trial badge, refund info, and continues on OK', async () => {
+test('shows monthly price, refund info, and continues on OK', async () => {
   const next = vi.fn();
 
   await render(
     <BrowserAppShell>
       <div style={{ padding: 24, maxWidth: 600 }}>
-        <TrialPriceQuizStep next={next} trialDays={1} pricePerMonthUsd={8} />
+        <TrialPriceQuizStep next={next} pricePerMonthUsd={8} />
       </div>
     </BrowserAppShell>,
   );
@@ -34,24 +34,11 @@ test('shows monthly price, trial badge, refund info, and continues on OK', async
   await expect.element(page.getByText('Simple pricing')).toBeVisible();
   await expect.element(page.getByText('$8')).toBeVisible();
   await expect.element(page.getByText('per month')).toBeVisible();
-  await expect.element(page.getByText('1-day trial with full access')).toBeVisible();
+  await expect.element(page.getByText('1-day trial with full access')).not.toBeInTheDocument();
   await expect
     .element(page.getByText('Refund anytime from Profile. Automatic, no time limit.'))
     .toBeVisible();
 
   await userEvent.click(page.getByRole('button', { name: 'OK' }));
   expect(next).toHaveBeenCalledOnce();
-});
-
-test('hides the trial badge when trial days are zero', async () => {
-  await render(
-    <BrowserAppShell>
-      <div style={{ padding: 24, maxWidth: 600 }}>
-        <TrialPriceQuizStep next={() => undefined} trialDays={0} pricePerMonthUsd={8} />
-      </div>
-    </BrowserAppShell>,
-  );
-
-  await expect.element(page.getByText('$8')).toBeVisible();
-  await expect.element(page.getByText('1-day trial with full access')).not.toBeInTheDocument();
 });

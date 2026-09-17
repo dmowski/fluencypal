@@ -8,6 +8,6 @@ export const PRICE_PER_YEAR_USD = 65;
 
 export const ADVANCED_PRICE_PER_HOUR_USD = 50;
 
-export const TRIAL_DAYS = 1;
+export const TRIAL_DAYS = 0;
 
-export const TRIAL_MINUTES = 0; //60 * 30; // 30 hours
+export const TRIAL_MINUTES = 0;

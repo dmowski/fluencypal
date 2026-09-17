@@ -38,6 +38,7 @@ import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
+import { readPendingPracticeLanguage } from '@/features/Goal/Quiz/pendingPracticeLanguage';
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
@@ -469,7 +470,9 @@ ${voiceInstructions}
 
   const settingsVoice = settings.userSettings?.teacherVoice;
   const startConversation = async (input: StartConversationProps) => {
-    if (!settings.languageCode) throw new Error('Language is not set | startConversation');
+    if (!settings.languageCode && !readPendingPracticeLanguage()) {
+      throw new Error('Language is not set | startConversation');
+    }
 
     const newConversationId = messages.newConversation(input.mode, input.rolePlayId || null);
     messages.resetMessageOrder();

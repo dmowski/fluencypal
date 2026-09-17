@@ -6,10 +6,10 @@ import { useUsage } from '@/features/Usage/useUsage';
 import { hasAdvancedTalkAccess } from '@/features/Usage/advancedUsage';
 import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useAuth } from '@/features/Auth/useAuth';
-import { isGuestConversationLimited as shouldLimitGuestConversation } from '../guestConversationLimit';
-
-const LIMITED_MESSAGES_COUNT = 12;
-const LIMITED_VOICE_MESSAGES_COUNT = 12;
+import {
+  isFreeTierUserMessageLimited,
+  isGuestConversationLimited as shouldLimitGuestConversation,
+} from '../guestConversationLimit';
 
 export const useLimits = (
   communicatorRef: RefObject<ConversationInstance | undefined>,
@@ -30,13 +30,13 @@ export const useLimits = (
     conversation,
   });
 
-  const isFreeTierMessageLimited =
-    !hasAccess && conversation.length >= LIMITED_MESSAGES_COUNT;
-  const isFreeTierVoiceLimited =
-    !hasAccess && conversation.length >= LIMITED_VOICE_MESSAGES_COUNT;
+  const isFreeTierLimited = isFreeTierUserMessageLimited({
+    hasAccess,
+    conversation,
+  });
 
-  const isLimitedRecording = isGuestConversationLimited || isFreeTierMessageLimited;
-  const isLimitedAiVoice = isGuestConversationLimited || isFreeTierVoiceLimited;
+  const isLimitedRecording = isGuestConversationLimited || isFreeTierLimited;
+  const isLimitedAiVoice = isGuestConversationLimited || isFreeTierLimited;
   const hasTrackedPaywall = useRef(false);
 
   useEffect(() => {

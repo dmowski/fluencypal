@@ -27,31 +27,18 @@ jest.mock('@/features/User/useCurrency', () => ({
 }));
 
 describe('TrialPriceQuizStep', () => {
-  it('shows monthly price, trial badge, and refund info when trial days are set', () => {
+  it('shows monthly price and refund info without a trial badge', () => {
     render(
       <I18nWrapper>
-        <TrialPriceQuizStep next={() => undefined} trialDays={1} pricePerMonthUsd={8} />
+        <TrialPriceQuizStep next={() => undefined} pricePerMonthUsd={8} />
       </I18nWrapper>,
     );
 
     expect(screen.getByText('$8')).toBeInTheDocument();
     expect(screen.getByText('per month')).toBeInTheDocument();
-    expect(screen.getByTestId('trial-price-badge')).toHaveTextContent(
-      '1-day trial with full access',
-    );
+    expect(screen.queryByTestId('trial-price-badge')).not.toBeInTheDocument();
     expect(
       screen.getByText('Refund anytime from Profile. Automatic, no time limit.'),
     ).toBeInTheDocument();
-  });
-
-  it('hides the trial badge when trial days are zero', () => {
-    render(
-      <I18nWrapper>
-        <TrialPriceQuizStep next={() => undefined} trialDays={0} pricePerMonthUsd={8} />
-      </I18nWrapper>,
-    );
-
-    expect(screen.queryByTestId('trial-price-badge')).not.toBeInTheDocument();
-    expect(screen.getByText('$8')).toBeInTheDocument();
   });
 });

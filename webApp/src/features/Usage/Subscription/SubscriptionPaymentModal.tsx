@@ -239,6 +239,7 @@ export const SubscriptionPaymentModal = () => {
   return (
     <CustomModal
       isOpen={true && auth.isAuthorized}
+      data-testid="subscription-payment-modal"
       onClose={() => {
         if (isShowConfirmPayments) {
           openMainSubscriptionPage();

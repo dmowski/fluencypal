@@ -1,14 +1,16 @@
 import { InitBalanceResponse } from '../addUsageLog/usageRequest.types';
 import { getDB, validateAuthToken } from '../config/firebase';
-import { WELCOME_BONUS } from '@/features/Usage/usage';
 import { addPaymentLog } from '../payment/addPaymentLog';
-import { TRIAL_DAYS } from '@/features/Price/price';
 
+/**
+ * Bootstraps usage/totalUsage for new accounts without granting trial days.
+ * Free users practice with the message limit, then see the paywall.
+ */
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const userId = userInfo.uid;
   const db = getDB();
-  const [logsHours, logsDays] = await Promise.all([
+  const [logsWelcome, logsTrial] = await Promise.all([
     db.collection('users').doc(userId).collection('payments').where('type', '==', 'welcome').get(),
     db
       .collection('users')
@@ -18,18 +20,17 @@ export async function POST(request: Request) {
       .get(),
   ]);
 
-  if (logsHours.docs.length > 0 || logsDays.docs.length > 0) {
+  if (logsWelcome.docs.length > 0 || logsTrial.docs.length > 0) {
     return Response.json(response);
   }
 
   await addPaymentLog({
-    type: 'trial-days',
-    amount: WELCOME_BONUS,
+    type: 'welcome',
+    amount: 0,
     userId: userInfo.uid,
     currency: 'usd',
     amountOfHours: 0,
-    paymentId: 'trial-days',
-    daysCount: TRIAL_DAYS,
+    paymentId: 'welcome',
   });
 
   return Response.json(response);

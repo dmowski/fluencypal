@@ -74,12 +74,12 @@ export const AliasLandingPage = ({ lang }: AliasLandingPageProps) => {
       question: i18n._('Is the game free?'),
       answer: (
         <Typography>
-          {i18n._('FluencyPal offers a ')}
+          {i18n._('You can start on FluencyPal’s ')}
           <Link href={pricingUrl} underline="hover" color="inherit">
-            {i18n._('1-day free trial')}
+            {i18n._('free plan')}
           </Link>
           {i18n._(
-            ' without a credit card so you can explore features before deciding whether to upgrade.',
+            ' with limited speaking messages. Unlimited practice and full features require a paid subscription.',
           )}
         </Typography>
       ),

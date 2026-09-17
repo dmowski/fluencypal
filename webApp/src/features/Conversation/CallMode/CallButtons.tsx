@@ -382,6 +382,7 @@ Return ONLY the number.
   if (isLimited) {
     return (
       <Stack
+        data-testid="conversation-limits-reached"
         sx={{
           backgroundColor: 'rgba(15, 24, 37, 1)',
           padding: '30px 20px 40px 20px',

@@ -10,24 +10,50 @@ jest.mock('firebase/auth', () => ({
   signInAnonymously: (...args: unknown[]) => signInAnonymously(...args),
 }));
 
+const authWith = (currentUser: { uid: string } | null) =>
+  ({
+    currentUser,
+    authStateReady: () => Promise.resolve(),
+  }) as never;
+
 describe('ensureAnonymousAuth', () => {
   beforeEach(() => {
     signInAnonymously.mockReset();
   });
 
   it('returns the existing uid without signing in again', async () => {
-    const firebaseAuth = { currentUser: { uid: 'already' } } as never;
-    await expect(ensureAnonymousAuth(firebaseAuth)).resolves.toBe('already');
+    await expect(ensureAnonymousAuth(authWith({ uid: 'already' }))).resolves.toBe('already');
+    expect(signInAnonymously).not.toHaveBeenCalled();
+  });
+
+  it('waits for authStateReady before creating an anonymous user', async () => {
+    let resolveReady: () => void = () => undefined;
+    const ready = new Promise<void>((resolve) => {
+      resolveReady = resolve;
+    });
+    const firebaseAuth = {
+      currentUser: null as { uid: string } | null,
+      authStateReady: () => ready,
+    };
+    signInAnonymously.mockImplementation(async () => {
+      expect(firebaseAuth.currentUser).toEqual({ uid: 'restored' });
+      return { user: { uid: 'should-not-run' } };
+    });
+
+    const pending = ensureAnonymousAuth(firebaseAuth as never);
+    firebaseAuth.currentUser = { uid: 'restored' };
+    resolveReady();
+
+    await expect(pending).resolves.toBe('restored');
     expect(signInAnonymously).not.toHaveBeenCalled();
   });
 
   it('signs in anonymously once when there is no user', async () => {
     signInAnonymously.mockResolvedValue({ user: { uid: 'anon-1' } });
-    const firebaseAuth = { currentUser: null } as never;
 
     const [first, second] = await Promise.all([
-      ensureAnonymousAuth(firebaseAuth),
-      ensureAnonymousAuth(firebaseAuth),
+      ensureAnonymousAuth(authWith(null)),
+      ensureAnonymousAuth(authWith(null)),
     ]);
 
     expect(first).toBe('anon-1');

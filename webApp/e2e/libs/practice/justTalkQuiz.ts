@@ -177,4 +177,26 @@ export const expectNoJustTalkAutoStartFlag = async (page: Page) => {
     .toBeNull();
 };
 
+/** Open Just Talk as a guest and wait until the call canvas is ready. */
+export const startJustTalkCallAsGuest = async (page: Page) => {
+  await page.goto('/practice?justTalk=open');
+  await waitForDarkEngTest(page);
+  await expectAnonymousCurrentUser(page);
+  await page.evaluate((key) => {
+    window.localStorage.setItem(key, 'en');
+  }, PENDING_PRACTICE_LANGUAGE_KEY);
+
+  const handoff = page.getByTestId('just-talk-handoff');
+  if (await handoff.isVisible().catch(() => false)) {
+    await page.getByRole('button', { name: /Enable microphone/i }).click();
+  }
+
+  await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
+  await expect
+    .poll(async () =>
+      page.evaluate(() => Boolean((window as any).__darkEngTest?.addConversationUserMessage)),
+    )
+    .toBe(true);
+};
+
 export { JUST_TALK_AUTO_START_KEY, PENDING_PRACTICE_LANGUAGE_KEY };

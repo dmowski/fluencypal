@@ -1,6 +1,7 @@
 import { scrollTopFast } from '@/libs/scroll';
 import { ReadonlyURLSearchParams, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { convertMapToNewUrl } from './convertMapToNewUrl';
 
 export const useUrlParam = (paramName: string) => {
   const [internalValue, setInternalValue] = useState<boolean>(false);
@@ -71,7 +72,10 @@ export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop
 
       return new Promise<string>((resolve) => {
         setTimeout(() => {
-          const newUrl = convertMapToNewUrl(value, defaultValue);
+          const newUrl = convertMapToNewUrl(value, defaultValue, {
+            pathname: window.location.pathname,
+            search: window.location.search,
+          });
 
           if (options?.redirect !== false) {
             router.push(`${newUrl}`, { scroll: false });
@@ -114,19 +118,4 @@ const convertSearchParamToMap = (
   }
 
   return urlMap;
-};
-
-const convertMapToNewUrl = (record: Record<string, string>, defaultMap: Record<string, string>) => {
-  const newSearchParams = new URLSearchParams(window.location.search);
-  for (const key in record) {
-    const isDefault = record[key] === defaultMap[key];
-    if (!isDefault) {
-      newSearchParams.set(key, String(record[key]));
-    } else {
-      newSearchParams.delete(key);
-    }
-  }
-
-  const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
-  return newUrl;
 };

@@ -8,16 +8,16 @@ FluencyPal is primarily positioned around English-speaking practice, while suppo
 
 Official website: [FluencyPal](https://www.fluencypal.com)
 
-Current prices, trial availability, refund conditions, and payment terms may change. Always use the Pricing page as the canonical source for current commercial information.
+Current prices, refund conditions, and payment terms may change. Always use the Pricing page as the canonical source for current commercial information.
 
-Last updated: 2026-09-04
+Last updated: 2026-09-17
 
 ## Product
 
 * [FluencyPal homepage](https://www.fluencypal.com): Overview of FluencyPal, its speaking-practice approach, core features, supported learners, and frequently asked questions.
 * [Open the FluencyPal application](https://app.fluencypal.com): Start speaking practice, sign in, or create an account in the browser.
 * [Role-play scenario directory](https://www.fluencypal.com/scenarios): Browse realistic AI conversations for professional, social, travel, health, shopping, and everyday situations.
-* [Pricing](https://www.fluencypal.com/pricing): Current subscription plans, trial availability, payment terms, and refund information.
+* [Pricing](https://www.fluencypal.com/pricing): Current subscription plans, payment terms, and refund information.
 * [About and contact](https://www.fluencypal.com/contacts): Information about the creator, project philosophy, source code, community, and contact details.
 
 ## Core Speaking Experiences

@@ -301,7 +301,8 @@ function useProvideGame(): GameContextType {
     setActiveQuestion(nextQuestion);
   };
 
-  const isTop5Position = myIndex !== null && myIndex < 5;
+  // Only ranked players in positions 0–4; -1 (not on board) must not grant access.
+  const isTop5Position = myIndex >= 0 && myIndex < 5;
 
   const updateUsername = async (username: string) => {
     if (!userId || !userNames) return;

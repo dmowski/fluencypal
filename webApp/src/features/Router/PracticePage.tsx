@@ -13,7 +13,7 @@ import { ConversationCanvas } from '../Conversation/ConversationCanvas';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import { useLingui } from '@lingui/react';
 import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SelectLanguage } from '../Dashboard/SelectLanguage';
 import { ConversationError } from '../Conversation/ConversationError';
 import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
@@ -70,7 +70,40 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const practiceLanguageCode =
     settings.languageCode || pendingPracticeLanguage || (canGuestPractice ? lang : null);
   const startHandoffJustTalk = () => startJustTalk(undefined, { skipConsentUi: true });
-  const { isResolvingAutoStart } = useAutoStartJustTalk(isHandoff, startHandoffJustTalk);
+  // Wait for auth (and guest anonymous ensure) before auto-start so we do not
+  // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
+  const { isResolvingAutoStart } = useAutoStartJustTalk(
+    isHandoff && !auth.loading && auth.isAuthorized,
+    startHandoffJustTalk,
+  );
+  const [showGuestAuthWall, setShowGuestAuthWall] = useState(false);
+  const hasAutoOpenedPaywallRef = useRef(false);
+
+  useEffect(() => {
+    if (auth.isIdentified) {
+      setShowGuestAuthWall(false);
+    }
+  }, [auth.isIdentified]);
+
+  useEffect(() => {
+    if (!aiConversation.isStarted) {
+      hasAutoOpenedPaywallRef.current = false;
+      return;
+    }
+    if (
+      aiConversation.isLimitedRecording &&
+      auth.isIdentified &&
+      !hasAutoOpenedPaywallRef.current
+    ) {
+      hasAutoOpenedPaywallRef.current = true;
+      usage.togglePaymentModal(true);
+    }
+  }, [
+    aiConversation.isLimitedRecording,
+    aiConversation.isStarted,
+    auth.isIdentified,
+    usage.togglePaymentModal,
+  ]);
 
   useEffect(() => {
     if (auth.loading || auth.isIdentified || !canGuestPractice) {
@@ -99,6 +132,10 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }, [aiConversation.isClosing]);
 
   if (auth.loading) return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+
+  if (showGuestAuthWall && !auth.isIdentified) {
+    return <ConversationGuestAuthWall />;
+  }
 
   if (!auth.isIdentified && !canGuestPractice) {
     return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
@@ -221,10 +258,14 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         recordingError={recorder.error}
         closeConversation={async () => {
           const spoken = hasUserSpokenInConversation(aiConversation.conversation);
+          const wasGuest = !auth.isIdentified;
           lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
           if (spoken) {
             await setJustTalk('');
+          }
+          if (wasGuest) {
+            setShowGuestAuthWall(true);
           }
           window.scrollTo({
             top: 0,
@@ -243,13 +284,9 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         onWebCamDescription={aiConversation.setWebCamDescription}
         isGuestConversationLimited={aiConversation.isGuestConversationLimited}
         onLimitedClick={() => {
-          if (aiConversation.isGuestConversationLimited) {
-            return;
-          }
           usage.togglePaymentModal(true);
         }}
       />
-      {aiConversation.isGuestConversationLimited ? <ConversationGuestAuthWall /> : null}
     </Stack>
   );
 }

@@ -6,12 +6,12 @@ import { BadgeQuestionMark, Gem, Pickaxe, Send } from 'lucide-react';
 
 export interface HeaderProps {
   lang: SupportedLanguage;
-  startTrialHref: string;
+  startHref: string;
   pageUrl: string;
 }
 
 /** Interview Landing Header */
-export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) {
+export function InterviewHeader({ lang, startHref, pageUrl }: HeaderProps) {
   const { i18n } = useLingui();
 
   return (
@@ -39,7 +39,7 @@ export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) 
       buttons={[
         {
           title: i18n._('Join'),
-          href: startTrialHref,
+          href: startHref,
           isSolid: true,
         },
       ]}

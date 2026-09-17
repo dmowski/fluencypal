@@ -203,3 +203,16 @@ export const seedPracticeUserSettings = async (
     },
   );
 };
+
+/**
+ * Place `uid` below game top-5 so `useAccess.isFullAppAccess` is not granted
+ * via `isGameWinner` in an empty emulator leaderboard.
+ */
+export const seedGamePointsBelowTopFive = async (uid: string): Promise<void> => {
+  const { adminFirestore } = await import('../voice-chat/admin');
+  const points: Record<string, number> = { [uid]: 1 };
+  for (let i = 0; i < 5; i++) {
+    points[`e2e-filler-${i}`] = 1000 - i;
+  }
+  await adminFirestore().collection('game2').doc('gamePoints').set(points, { merge: true });
+};

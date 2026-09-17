@@ -19,6 +19,7 @@ import { useLanguageGroup } from '../useLanguageGroup';
 import { useLingui } from '@lingui/react';
 import { getCountryByIP } from '@/features/User/getCountry';
 import { replaceUrlToLang } from '@/features/Lang/replaceLangInUrl';
+import { getNativeLanguageQuizNextUrl } from './quizLocaleUrl';
 import { isTMA } from '@telegram-apps/sdk-react';
 import { scrollToLangButton } from '@/libs/scroll';
 import { sleep } from '@/libs/sleep';
@@ -947,18 +948,24 @@ Hello everyone! I'm excited to join this community as I embark on my journey to 
         ...langPatch,
       };
     }
+
+    const localeRedirectUrl = getNativeLanguageQuizNextUrl({
+      currentStep,
+      nativeLanguage,
+      currentPageLang: pageLang,
+      nextState: { ...state, ...newStatePatch } as unknown as Record<string, string>,
+      defaultState: defaultState as unknown as Record<string, string>,
+      pathname: window.location.pathname,
+      search: window.location.search,
+    });
+    if (localeRedirectUrl) {
+      window.location.assign(localeRedirectUrl);
+      return;
+    }
+
     let url = await setState(newStatePatch, {
       redirect: false,
     });
-
-    if (url && currentStep === 'nativeLanguage') {
-      const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-        nativeLanguage,
-      );
-      if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
-        url = replaceUrlToLang(nativeLanguage, url);
-      }
-    }
     router.push(url || '', { scroll: false });
   };
 

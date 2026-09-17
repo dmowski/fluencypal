@@ -1,20 +1,30 @@
 import { ConversationMessage } from './conversation';
 
-export const GUEST_CONVERSATION_USER_MESSAGE_LIMIT = 3;
+/** Signed-in free users (no subscription) hit paywall after this many user messages. */
+export const FREE_TIER_USER_MESSAGE_LIMIT = 10;
 
 export const countUserMessages = (
   conversation: Pick<ConversationMessage, 'isBot' | 'text'>[],
 ): number => conversation.filter((message) => !message.isBot && Boolean(message.text?.trim())).length;
 
-export const isGuestConversationLimited = ({
-  isIdentified,
-  conversation,
-}: {
+/**
+ * Mid-call guest message limits were removed: anonymous users talk freely and
+ * see the sign-in wall on Exit instead.
+ */
+export const isGuestConversationLimited = (_args: {
   isIdentified: boolean;
   conversation: Pick<ConversationMessage, 'isBot' | 'text'>[];
+}): boolean => false;
+
+export const isFreeTierUserMessageLimited = ({
+  hasAccess,
+  conversation,
+}: {
+  hasAccess: boolean;
+  conversation: Pick<ConversationMessage, 'isBot' | 'text'>[];
 }): boolean => {
-  if (isIdentified) {
+  if (hasAccess) {
     return false;
   }
-  return countUserMessages(conversation) >= GUEST_CONVERSATION_USER_MESSAGE_LIMIT;
+  return countUserMessages(conversation) >= FREE_TIER_USER_MESSAGE_LIMIT;
 };
