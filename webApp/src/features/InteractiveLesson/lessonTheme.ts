@@ -29,13 +29,19 @@ export const lessonColor = {
   controlNeutral: '#B7BAC2',
   controlNeutralHover: '#E3E5E9',
   controlNeutralDark: '#747983',
-  controlNeutralOnLight: '#6F747D',
-  controlNeutralOnLightHover: '#343840',
+  controlNeutralOnLight: '#626770',
+  controlNeutralOnLightHover: '#2F3339',
 
   // Semantic
-  dangerMuted: '#9FA3AB',
+  dangerMuted: '#B0B3BA',
   dangerHover: '#E56B64',
   recording: '#EF5350',
+  recordingHover: '#E04845',
+  recordingBorder: 'rgba(239, 83, 80, 0.65)',
+  recordingSoft: 'rgba(239, 83, 80, 0.10)',
+  recordingWave: '#D9DCE2',
+  recordingCancel: '#9FA3AB',
+  recordingCancelHover: '#EF5350',
   warning: '#F09A91',
 
   // Disabled
@@ -119,7 +125,9 @@ export const lessonSx = {
   },
 
   recordingVisualizer: {
-    boxShadow: `inset 0 0 0 1px ${lessonColor.recording}`,
+    backgroundColor: 'transparent',
+    border: `1px solid ${lessonColor.recordingBorder}`,
+    color: lessonColor.recordingWave,
   },
 
   warningText: {
@@ -195,6 +203,30 @@ export const lessonSkipButtonSx = {
 
   '&.Mui-disabled': {
     color: lessonColor.disabledText,
+  },
+} as const;
+
+export const lessonRecordingButtonSx = {
+  backgroundColor: lessonColor.recording,
+  color: lessonColor.onAccent,
+
+  '&:hover': {
+    backgroundColor: lessonColor.recordingHover,
+  },
+} as const;
+
+export const lessonRecordingVisualizerSx = {
+  backgroundColor: 'transparent',
+  border: `1px solid ${lessonColor.recordingBorder}`,
+  color: lessonColor.recordingWave,
+} as const;
+
+export const lessonRecordingCancelSx = {
+  color: lessonColor.recordingCancel,
+
+  '&:hover': {
+    color: lessonColor.recordingCancelHover,
+    backgroundColor: 'transparent',
   },
 } as const;
 

@@ -11,7 +11,14 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { PlayButton } from './PlayButton';
-import { lessonGhostButtonSx, lessonRecordButtonSx, lessonSx } from './lessonTheme';
+import {
+  lessonGhostButtonSx,
+  lessonRecordButtonSx,
+  lessonRecordingButtonSx,
+  lessonRecordingCancelSx,
+  lessonRecordingVisualizerSx,
+  lessonSx,
+} from './lessonTheme';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -89,14 +96,14 @@ export const SpeechAnswerPanelView = ({
           <Button
             disabled={isTranscribing || isEvaluating}
             variant={answered && !isRecording ? 'text' : isRecording ? 'contained' : 'outlined'}
-            color={isRecording ? 'error' : 'inherit'}
+            color="inherit"
             size="large"
             startIcon={isRecording ? <StopIcon /> : <MicIcon />}
             onClick={onToggleRecord}
             sx={{
               flexShrink: 0,
               ...(isRecording
-                ? {}
+                ? lessonRecordingButtonSx
                 : answered
                   ? lessonGhostButtonSx
                   : lessonRecordButtonSx),
@@ -148,7 +155,7 @@ export const SpeechAnswerPanelView = ({
                 flex: 1,
                 justifyContent: 'center',
                 overflow: 'hidden',
-                ...lessonSx.recordingVisualizer,
+                ...lessonRecordingVisualizerSx,
                 borderRadius: '0 10px 10px 0',
               }}
               data-testid="interactive-lesson-recording-visualizer"
@@ -158,11 +165,11 @@ export const SpeechAnswerPanelView = ({
           )}
           {isRecording && (
             <IconButton
-              color="error"
               onClick={onCancelRecord}
               aria-label={i18n._('Cancel recording')}
               data-testid="interactive-lesson-cancel-recording"
               sx={{
+                ...lessonRecordingCancelSx,
                 flexShrink: 0,
                 alignSelf: 'stretch',
                 width: '42px',
