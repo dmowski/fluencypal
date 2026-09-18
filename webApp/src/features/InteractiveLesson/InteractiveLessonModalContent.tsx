@@ -17,12 +17,7 @@ import { InteractiveLesson, isOpenTalkPart, isReadAloudPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
 import { findScrollParent } from './findScrollParent';
-import {
-  LESSON_DIVIDER_COLOR,
-  lessonPrimaryButtonSx,
-  lessonSkipButtonSx,
-  lessonThemeSx,
-} from './lessonTheme';
+import { lessonPrimaryButtonSx, lessonSkipButtonSx, lessonSx, lessonThemeSx } from './lessonTheme';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -160,14 +155,13 @@ export const InteractiveLessonModalContent = ({
           <>
             <Stack
               sx={{
+                ...lessonSx.title,
                 paddingTop: '40px',
-                color: 'var(--text-primary)',
                 h1: {
                   fontSize: '54px',
                   fontWeight: 800,
                   '@media (max-width:600px)': { fontSize: '32px' },
                 },
-                '& p': { color: 'var(--text-secondary)' },
               }}
             >
               <Markdown variant="rule">{`\n # ${lesson.title} \n\n ${lesson.subTitle}`}</Markdown>
@@ -197,7 +191,7 @@ export const InteractiveLessonModalContent = ({
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 marginTop: '34px',
-                borderTop: `1px solid ${LESSON_DIVIDER_COLOR}`,
+                ...lessonSx.dividerTop,
                 paddingTop: '24px',
               }}
             >

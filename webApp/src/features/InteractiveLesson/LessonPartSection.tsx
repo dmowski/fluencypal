@@ -5,7 +5,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { PlayButton } from './PlayButton';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
-import { LESSON_DIVIDER_COLOR } from './lessonTheme';
+import { lessonSx } from './lessonTheme';
 
 export const LessonPartSection = ({
   part,
@@ -27,7 +27,7 @@ export const LessonPartSection = ({
   return (
     <Stack sx={{ width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
       {partIndex > 0 && (
-        <Divider sx={{ borderColor: LESSON_DIVIDER_COLOR }} />
+        <Divider sx={lessonSx.divider} />
       )}
       <Stack
         sx={{

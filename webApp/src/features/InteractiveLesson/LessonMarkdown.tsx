@@ -5,6 +5,7 @@ import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { useTranslate } from '@/features/Translation/useTranslate';
 import { useQuizWordAudio } from '@/features/Audio/useQuizWordAudio';
 import { useSettings } from '@/features/Settings/useSettings';
+import { lessonSx } from './lessonTheme';
 
 export const LessonMarkdown = ({
   content,
@@ -22,16 +23,7 @@ export const LessonMarkdown = ({
   return (
     <>
       <Stack
-        sx={
-          size === 'feedback'
-            ? {
-                '& .MuiTypography-root': {
-                  fontSize: '18px !important',
-                  fontWeight: 400,
-                },
-              }
-            : undefined
-        }
+        sx={size === 'feedback' ? lessonSx.feedbackMarkdown : undefined}
       >
         <Markdown
           variant="rule"

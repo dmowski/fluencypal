@@ -11,7 +11,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { PlayButton } from './PlayButton';
-import { LESSON_THEME_VARS, lessonGhostButtonSx, lessonRecordButtonSx } from './lessonTheme';
+import { lessonGhostButtonSx, lessonRecordButtonSx, lessonSx } from './lessonTheme';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -56,7 +56,7 @@ export const SpeechAnswerPanelView = ({
 
   return (
     <Stack
-      sx={{ ...LESSON_THEME_VARS, gap: '12px', width: '100%' }}
+      sx={{ gap: '12px', width: '100%' }}
       data-testid={`interactive-lesson-speech-${partIndex}`}
     >
       <Stack sx={{ gap: '10px', width: '100%' }}>
@@ -67,12 +67,12 @@ export const SpeechAnswerPanelView = ({
         )}
 
         {isReadAloud && !answered && (
-          <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
+          <Typography variant="body2" sx={lessonSx.textSecondary}>
             {i18n._('Read the text aloud. You can play it first.')}
           </Typography>
         )}
         {isOpenTalk && !answered && (
-          <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
+          <Typography variant="body2" sx={lessonSx.textSecondary}>
             {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
           </Typography>
         )}
@@ -148,7 +148,7 @@ export const SpeechAnswerPanelView = ({
                 flex: 1,
                 justifyContent: 'center',
                 overflow: 'hidden',
-                boxShadow: 'inset 0 0 0 1px #F44336',
+                ...lessonSx.recordingVisualizer,
                 borderRadius: '0 10px 10px 0',
               }}
               data-testid="interactive-lesson-recording-visualizer"
@@ -175,7 +175,7 @@ export const SpeechAnswerPanelView = ({
         </Stack>
 
         {needMoreText && (
-          <Typography variant="caption" sx={{ color: '#ff8e86' }}>
+          <Typography variant="caption" sx={lessonSx.warningText}>
             {isOpenTalk
               ? i18n._('Please talk a bit longer — aim for about two minutes.')
               : isReadAloud
@@ -193,11 +193,9 @@ export const SpeechAnswerPanelView = ({
         >
           <Stack
             sx={{
+              ...lessonSx.answerCard,
               padding: '6px 12px 8px',
               borderRadius: '10px 10px 0 0',
-              backgroundColor: 'var(--card-bg)',
-              borderBottom: '1px solid var(--card-border)',
-              color: 'var(--card-text)',
             }}
           >
             <Stack
@@ -210,7 +208,7 @@ export const SpeechAnswerPanelView = ({
               }}
             >
               <Stack>
-                <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
+                <Typography variant="caption" sx={lessonSx.cardCaption}>
                   {isReadAloud ? i18n._('Your reading') : i18n._('Your answer')}
                 </Typography>
                 <Typography
@@ -231,10 +229,9 @@ export const SpeechAnswerPanelView = ({
 
           <Stack
             sx={{
-              backgroundColor: 'var(--card-bg-secondary)',
+              ...lessonSx.feedbackCard,
               padding: '13px 12px',
               borderRadius: '0 0 10px 10px',
-              color: 'var(--card-text)',
             }}
           >
             <Stack
@@ -247,7 +244,7 @@ export const SpeechAnswerPanelView = ({
               }}
             >
               <Stack>
-                <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
+                <Typography variant="caption" sx={lessonSx.cardCaption}>
                   {isFeedbackPlaying ? i18n._('Playing') : i18n._('Feedback')}
                 </Typography>
                 <LessonMarkdown content={part.aiResultToUser} size="feedback" />

@@ -8,7 +8,7 @@ import { UserAudioPlayer } from './UserAudioPlayer';
 import { canShowAudioProgress, remainingAudiosForProgress } from './audioProgress';
 import { PROGRESS_MIN_AUDIO_COUNT } from './constants';
 import { InteractiveLesson, LessonAudioProgress, LessonAudioRecord } from './types';
-import { LESSON_THEME_VARS, lessonPrimaryButtonSx } from './lessonTheme';
+import { lessonPrimaryButtonSx, lessonSx } from './lessonTheme';
 
 const AudioColumn = ({
   title,
@@ -31,12 +31,12 @@ const AudioColumn = ({
             gap: '6px',
             padding: '10px',
             borderRadius: '10px',
-            backgroundColor: 'var(--bg-elevated)',
+            ...lessonSx.elevated,
           }}
         >
           <UserAudioPlayer audioUrl={record.audioUrl} />
           {record.transcript && (
-            <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
+            <Typography variant="body2" sx={lessonSx.textSecondary}>
               {record.transcript}
             </Typography>
           )}
@@ -63,7 +63,7 @@ export const LessonProgressView = ({
 
   return (
     <Stack
-      sx={{ ...LESSON_THEME_VARS, gap: '28px' }}
+      sx={{ gap: '28px' }}
       data-testid="interactive-lesson-progress"
     >
       {showComparison ? (
@@ -92,7 +92,7 @@ export const LessonProgressView = ({
             gap: '16px',
             padding: '18px',
             borderRadius: '14px',
-            backgroundColor: 'var(--accent-soft)',
+            ...lessonSx.accentSoft,
           }}
           data-testid="interactive-lesson-progress-needed"
         >
@@ -100,7 +100,7 @@ export const LessonProgressView = ({
             <Typography variant="h6" sx={{ fontWeight: 700 }}>
               {i18n._('Hear how your English changes')}
             </Typography>
-            <Typography variant="body1" sx={{ color: 'var(--text-secondary)' }}>
+            <Typography variant="body1" sx={lessonSx.textSecondary}>
               {recorded === 0
                 ? i18n._(
                     'Finish the last speaking task in today’s lesson. We save those free talks, then compare them with your newest ones.',
@@ -112,7 +112,7 @@ export const LessonProgressView = ({
             </Typography>
           </Stack>
           <Stack sx={{ gap: '8px' }}>
-            <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
+            <Typography variant="caption" sx={lessonSx.textMuted}>
               {i18n._('{done} of {goal} free talks', {
                 done: recorded,
                 goal: PROGRESS_MIN_AUDIO_COUNT,
@@ -121,10 +121,7 @@ export const LessonProgressView = ({
             <LinearProgress
               variant="determinate"
               value={progressValue}
-              sx={{
-                backgroundColor: 'var(--accent-soft)',
-                '& .MuiLinearProgress-bar': { backgroundColor: 'var(--accent)' },
-              }}
+              sx={lessonSx.progressBar}
             />
           </Stack>
           <Button

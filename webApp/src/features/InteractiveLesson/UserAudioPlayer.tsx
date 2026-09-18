@@ -5,6 +5,7 @@ import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { Pause, Play } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { lessonPlaySx } from './lessonTheme';
 
 const isPrivateAudioUrl = (url: string) => url.startsWith('/api/');
 
@@ -87,7 +88,7 @@ export const UserAudioPlayer = ({
       data-testid="interactive-lesson-audio-player"
       onClick={toggle}
       aria-label={isPlaying ? i18n._('Pause recording') : i18n._('Play recording')}
-      sx={{ color: isPlaying ? 'var(--accent)' : 'var(--control-neutral)' }}
+      sx={lessonPlaySx(isPlaying)}
     >
       {isPlaying ? <Pause size={16} /> : <Play size={16} />}
     </IconButton>

@@ -8,7 +8,7 @@ import LanguageAutocomplete from '@/features/Lang/LanguageAutocomplete';
 import { useLanguageGroup } from '@/features/Goal/useLanguageGroup';
 import { SupportedLanguage, supportedLanguagesToLearn } from '@/features/Lang/lang';
 import { NativeLangCode } from '@/libs/language/type';
-import { LESSON_THEME_VARS, lessonPrimaryButtonSx } from './lessonTheme';
+import { lessonPrimaryButtonSx, lessonSx } from './lessonTheme';
 
 export const LanguageSetupView = ({
   nativeLanguageCode,
@@ -39,20 +39,20 @@ export const LanguageSetupView = ({
 
   return (
     <Stack
-      sx={{ ...LESSON_THEME_VARS, gap: '20px' }}
+      sx={{ gap: '20px' }}
       data-testid="interactive-lesson-language-setup"
     >
-      <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>
+      <Typography variant="h5" sx={{ fontWeight: 700, ...lessonSx.textPrimary }}>
         {i18n._('Choose your languages')}
       </Typography>
-      <Typography variant="body1" sx={{ color: 'var(--text-secondary)' }}>
+      <Typography variant="body1" sx={lessonSx.textSecondary}>
         {i18n._(
           'This lesson needs two different languages: the one you already speak, and the one you want to practice.',
         )}
       </Typography>
 
       <Stack sx={{ gap: '8px' }}>
-        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+        <Typography variant="body2" sx={{ fontWeight: 600, ...lessonSx.textPrimary }}>
           {i18n._('Native language')}
         </Typography>
         <LanguageAutocomplete
@@ -63,7 +63,7 @@ export const LanguageSetupView = ({
       </Stack>
 
       <Stack sx={{ gap: '8px' }}>
-        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+        <Typography variant="body2" sx={{ fontWeight: 600, ...lessonSx.textPrimary }}>
           {i18n._('Language to learn')}
         </Typography>
         <LangSelector

@@ -3,6 +3,7 @@
 import { useEffect, useState, type RefObject } from 'react';
 import { LinearProgress, Stack } from '@mui/material';
 import { findScrollParent } from './findScrollParent';
+import { lessonSx } from './lessonTheme';
 
 export const LessonScrollProgress = ({
   anchorRef,
@@ -44,9 +45,8 @@ export const LessonScrollProgress = ({
         variant="determinate"
         value={progress * 100}
         sx={{
+          ...lessonSx.progressBar,
           height: '4px',
-          backgroundColor: 'var(--accent-soft)',
-          '& .MuiLinearProgress-bar': { backgroundColor: 'var(--accent)' },
         }}
       />
     </Stack>

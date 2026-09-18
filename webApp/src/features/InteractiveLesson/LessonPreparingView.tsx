@@ -3,6 +3,7 @@
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
+import { lessonSx } from './lessonTheme';
 
 export const LessonPreparingView = () => {
   const { i18n } = useLingui();
@@ -14,7 +15,7 @@ export const LessonPreparingView = () => {
         sx={{
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          color: 'var(--text-muted)',
+          ...lessonSx.textMuted,
         }}
       >
         {i18n._('We are preparing a lesson for you, based on your previous practice.')}

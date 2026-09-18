@@ -16,13 +16,7 @@ import {
   noop,
   noopAsync,
 } from './interactiveLessonFixtureData';
-import { LESSON_THEME_VARS } from './lessonTheme';
-
-const lessonSurfaceStyle = {
-  ...LESSON_THEME_VARS,
-  background: LESSON_THEME_VARS['--bg'],
-  color: LESSON_THEME_VARS['--text-primary'],
-} as const;
+import { lessonSurfaceStyle } from './lessonTheme';
 
 const { recorderMock, conversationAudioMock } = vi.hoisted(() => ({
   conversationAudioMock: {

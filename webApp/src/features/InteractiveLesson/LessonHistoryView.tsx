@@ -8,7 +8,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { scrollElementToStart } from './findScrollParent';
 import { InteractiveLesson, isLessonPartWithAnswer } from './types';
-import { LESSON_DIVIDER_COLOR, LESSON_THEME_VARS, lessonGhostButtonSx } from './lessonTheme';
+import { lessonGhostButtonSx, lessonSx } from './lessonTheme';
 
 export const LessonHistoryView = ({
   lessons,
@@ -23,7 +23,7 @@ export const LessonHistoryView = ({
     return (
       <Typography
         variant="body2"
-        sx={{ color: 'var(--text-secondary)' }}
+        sx={lessonSx.textSecondary}
         data-testid="interactive-lesson-history-empty"
       >
         {i18n._('No previous lessons yet. Finish one to see it here.')}
@@ -33,7 +33,7 @@ export const LessonHistoryView = ({
 
   return (
     <Stack
-      sx={{ ...LESSON_THEME_VARS, gap: '16px' }}
+      sx={{ gap: '16px' }}
       data-testid="interactive-lesson-history-list"
     >
       {lessons.map((lesson) => {
@@ -45,7 +45,7 @@ export const LessonHistoryView = ({
               gap: '10px',
               padding: '14px',
               borderRadius: '12px',
-              backgroundColor: 'var(--bg-elevated)',
+              ...lessonSx.elevated,
             }}
           >
             <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between', gap: '12px' }}>
@@ -61,10 +61,10 @@ export const LessonHistoryView = ({
                 >
                   {lesson.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
+                <Typography variant="body2" sx={lessonSx.textSecondary}>
                   {lesson.subTitle}
                 </Typography>
-                <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
+                <Typography variant="caption" sx={lessonSx.textMuted}>
                   {new Date(lesson.completedAtIso || lesson.createdAtIso).toLocaleString()}
                 </Typography>
               </Stack>
@@ -93,7 +93,7 @@ export const LessonHistoryView = ({
                 {lesson.parts.map((part, index) => (
                   <Stack key={`${lesson.id}-${index}`} sx={{ gap: '8px' }}>
                     {index > 0 && (
-                      <Divider sx={{ borderColor: LESSON_DIVIDER_COLOR }} />
+                      <Divider sx={lessonSx.divider} />
                     )}
                     <LessonMarkdown content={part.contentMD} />
                     {isLessonPartWithAnswer(part) && (

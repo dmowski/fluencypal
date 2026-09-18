@@ -8,7 +8,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
 import { ArrowRight } from 'lucide-react';
 import { PlayButton } from './PlayButton';
-import { lessonPrimaryButtonSx } from './lessonTheme';
+import { lessonPrimaryButtonSx, lessonSx } from './lessonTheme';
 
 export const LessonResultsView = ({
   results,
@@ -36,18 +36,13 @@ export const LessonResultsView = ({
       {isGeneratingResults && !results && <ThinkingProgress />}
 
       {results && (
-        <Stack
-          sx={{
-            color: 'var(--card-text)',
-          }}
-        >
+        <Stack sx={lessonSx.cardText}>
           <Stack
             sx={{
+              ...lessonSx.answerCard,
               padding: '20px',
               gap: '20px',
-              backgroundColor: 'var(--card-bg)',
               borderRadius: '10px 10px 0 0',
-              borderBottom: '1px solid var(--card-border)',
             }}
           >
             <Stack
@@ -61,7 +56,7 @@ export const LessonResultsView = ({
             >
               <Stack>
                 {isResultsPlaying && (
-                  <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
+                  <Typography variant="caption" sx={lessonSx.cardCaption}>
                     {i18n._('Playing')}
                   </Typography>
                 )}
@@ -86,7 +81,7 @@ export const LessonResultsView = ({
               flexWrap: 'wrap',
               padding: '20px',
               borderRadius: '0 0 10px 10px',
-              backgroundColor: 'var(--card-bg-secondary)',
+              ...lessonSx.feedbackCard,
               justifyContent: 'space-between',
               alignItems: 'center',
             }}
