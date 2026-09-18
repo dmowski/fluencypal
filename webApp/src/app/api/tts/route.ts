@@ -2,6 +2,7 @@
 import OpenAI from 'openai';
 
 export const runtime = 'nodejs'; // important: Buffer / node APIs are OK
+export const maxDuration = 60;
 
 type Body = {
   input: string;

@@ -11,6 +11,7 @@ import { getUserPricePerHour } from '../usage/getUserPricePerHour';
 import { TextUsageLog } from '@/features/Usage/usage';
 import { addUsage } from '../payment/addUsage';
 import { createOpenAiUnavailableResponse, isTransientOpenAiError } from './openAiErrors';
+import { captureServerException } from '@/libs/sentry/captureServerException';
 
 export const maxDuration = 60;
 
@@ -37,6 +38,9 @@ export async function POST(request: Request) {
       model: aiRequest.model,
       languageCode,
       error,
+    });
+    await captureServerException(error, {
+      tags: { area: 'api', route: '/api/ai', method: 'POST' },
     });
     return Response.json({ error: 'AI request failed' }, { status: 500 });
   }

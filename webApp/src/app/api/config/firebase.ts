@@ -3,6 +3,7 @@ import { App, AppOptions, cert, getApps, initializeApp } from 'firebase-admin/ap
 import { getAuth as getFirebaseAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
+import { isAnonymousSignInProvider } from '@/features/Auth/identifiedAuth';
 import { AuthUserInfo } from './type';
 
 const isFirebaseEmulator = process.env.IS_FIREBASE_EMULATOR === 'true';
@@ -91,9 +92,13 @@ const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
   try {
     const decodedToken = await getFirebaseAuth(initApp()).verifyIdToken(token);
 
-    const { uid, email } = decodedToken;
+    const { uid, email, firebase } = decodedToken;
 
-    return { uid, email: email || '' };
+    return {
+      uid,
+      email: email || '',
+      isAnonymous: isAnonymousSignInProvider(firebase?.sign_in_provider),
+    };
   } catch (error) {
     console.error('Error validating token', error);
     throw new Error('Invalid token');

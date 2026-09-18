@@ -17,6 +17,7 @@ export const ActivePlanSelector = ({
 
   return (
     <Stack
+      data-testid="subscription-plan-selector"
       sx={{
         gap: '25px',
         width: '100%',

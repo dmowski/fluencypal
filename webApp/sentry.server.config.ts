@@ -3,6 +3,8 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from '@sentry/nextjs';
+import { installVercelRuntimeErrorReporter } from '@/libs/sentry/vercelRuntimeErrorReporter';
+
 const isDev = process.env.NODE_ENV === 'development';
 
 Sentry.init({
@@ -11,8 +13,14 @@ Sentry.init({
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
 
+  includeLocalVariables: true,
+  shutdownTimeout: 2000,
+
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 
   enabled: !isDev,
 });
+
+// Vercel SIGKILL after maxDuration is not a JS exception — capture it on SIGTERM.
+installVercelRuntimeErrorReporter();

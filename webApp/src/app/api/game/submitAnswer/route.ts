@@ -1,7 +1,7 @@
 import { SubmitAnswerRequest } from '@/features/Game/types';
 import { validateAuthToken } from '../../config/firebase';
 import { submitAnswer } from '@/features/Game/api/submitAnswer';
-import * as Sentry from '@sentry/nextjs';
+import { captureServerException } from '@/libs/sentry/captureServerException';
 
 export async function POST(request: Request) {
   try {
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const response = await submitAnswer({ data, userInfo });
     return Response.json(response);
   } catch (error) {
-    Sentry.captureException(error, {
+    await captureServerException(error, {
       tags: { area: 'game', op: 'submitAnswer' },
     });
     const message = error instanceof Error ? error.message : 'Failed to submit answer';

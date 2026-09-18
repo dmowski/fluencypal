@@ -13,6 +13,8 @@ const getHash = (text: string) => {
   return hash.slice(0, 20); // return only first 20 characters
 };
 
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   const start1 = Date.now();
   const openAIKey = process.env.OPENAI_API_KEY;

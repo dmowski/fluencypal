@@ -34,8 +34,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
       if (!media?.getUserMedia) return;
       const original = media.getUserMedia.bind(media);
       media.getUserMedia = async (constraints) => {
-        (window as any).__e2eGetUserMediaCalls =
-          ((window as any).__e2eGetUserMediaCalls || 0) + 1;
+        (window as any).__e2eGetUserMediaCalls = ((window as any).__e2eGetUserMediaCalls || 0) + 1;
         return original(constraints);
       };
     });
@@ -188,5 +187,30 @@ test.describe('Quiz → Just Talk guest flow', () => {
 
     await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
     await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
+    await expect(page.getByTestId('subscription-plan-selector')).toBeVisible();
+    await expect(page.getByText('Sign in to subscribe')).toHaveCount(0);
+  });
+
+  test('guest Upgrade opens sign-in, not Stripe plans', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await installRealtimeConversationMock(page);
+    await startJustTalkCallAsGuest(page);
+
+    for (let i = 1; i <= FREE_TIER_USER_MESSAGE_LIMIT; i++) {
+      await page.evaluate(async (n) => {
+        await (window as any).__darkEngTest.addConversationUserMessage(`Guest message ${n}`);
+      }, i);
+    }
+
+    await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
+    await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
+
+    await page.getByRole('button', { name: 'Upgrade', exact: true }).click();
+
+    await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
+    await expect(page.getByTestId('payment-auth-gate')).toBeVisible();
+    await expect(page.getByText('Sign in to subscribe')).toBeVisible();
+    await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
+    await expectAnonymousCurrentUser(page);
   });
 });

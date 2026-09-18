@@ -6,6 +6,7 @@ import {
 } from '@/features/Usage/stripe.types';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import Stripe from 'stripe';
+import { isIdentifiedAuthUser } from '@/features/Auth/identifiedAuth';
 import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
 import { pricePerHourUsd } from '@/features/Ai/ai';
@@ -27,8 +28,8 @@ export async function POST(request: Request) {
     const siteUrl = request.headers.get('origin');
 
     const userInfo = await validateAuthToken(request);
-    if (!userInfo.uid) {
-      throw new Error('User is not authenticated');
+    if (!userInfo.uid || !isIdentifiedAuthUser(userInfo)) {
+      throw new Error('User must sign in to start checkout');
     }
 
     if (!siteUrl) {
@@ -42,7 +43,8 @@ export async function POST(request: Request) {
     const datafastVisitorId = cookieStore.get('datafast_visitor_id')?.value;
     const datafastSessionId = cookieStore.get('datafast_session_id')?.value;
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
-    const { userId, currency } = requestData;
+    const { currency } = requestData;
+    const userId = userInfo.uid;
 
     if (!currency.toLowerCase()) {
       await sentSupportTelegramMessage({

@@ -11,6 +11,7 @@ import { addUsage } from '../../payment/addUsage';
 import { TextUsageLog } from '@/features/Usage/usage';
 import { getUserPricePerHour } from '../../usage/getUserPricePerHour';
 import { createOpenAiUnavailableResponse, isTransientOpenAiError } from '../openAiErrors';
+import { captureServerException } from '@/libs/sentry/captureServerException';
 
 export const maxDuration = 60;
 
@@ -33,6 +34,9 @@ export async function POST(request: Request) {
       return createOpenAiUnavailableResponse();
     }
     console.error('POST /api/ai/chat failed', error);
+    await captureServerException(error, {
+      tags: { area: 'api', route: '/api/ai/chat', method: 'POST' },
+    });
     return Response.json({ error: 'AI request failed' }, { status: 500 });
   }
 

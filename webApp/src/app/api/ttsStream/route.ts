@@ -3,7 +3,10 @@ import OpenAI from 'openai';
 import { getBucket } from '../config/firebase';
 import { SpeechCreateParams } from 'openai/resources/audio/speech.mjs';
 import { getAudioHash } from '@/features/Audio/audioHash';
+import { captureServerException } from '@/libs/sentry/captureServerException';
+
 export const runtime = 'nodejs';
+export const maxDuration = 60;
 
 const saveAudioToStorage = async (audioId: string, audioData: Buffer<ArrayBufferLike>) => {
   const bucket = getBucket();
@@ -32,6 +35,17 @@ const apiKey = process.env.OPENAI_API_KEY!;
 const client = new OpenAI({ apiKey });
 
 export async function GET(req: Request) {
+  try {
+    return await getTtsStream(req);
+  } catch (error) {
+    await captureServerException(error, {
+      tags: { area: 'api', route: '/api/ttsStream', method: 'GET' },
+    });
+    return new Response('TTS failed', { status: 500 });
+  }
+}
+
+async function getTtsStream(req: Request) {
   const u = new URL(req.url);
 
   const input = (u.searchParams.get('input') ?? '').trim();
