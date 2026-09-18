@@ -2,12 +2,14 @@
  * @jest-environment jsdom
  */
 
-import { ensureAnonymousAuth } from './anonymousAuth';
+import { ensureAnonymousAuth, shouldDeferAnonymousAuth } from './anonymousAuth';
 
 const signInAnonymously = jest.fn();
+const isSignInWithEmailLink = jest.fn();
 
 jest.mock('firebase/auth', () => ({
   signInAnonymously: (...args: unknown[]) => signInAnonymously(...args),
+  isSignInWithEmailLink: (...args: unknown[]) => isSignInWithEmailLink(...args),
 }));
 
 const authWith = (currentUser: { uid: string } | null) =>
@@ -16,9 +18,16 @@ const authWith = (currentUser: { uid: string } | null) =>
     authStateReady: () => Promise.resolve(),
   }) as never;
 
+const anonymousUser = (uid: string) => ({
+  uid,
+  getIdToken: jest.fn().mockResolvedValue('id-token'),
+});
+
 describe('ensureAnonymousAuth', () => {
   beforeEach(() => {
     signInAnonymously.mockReset();
+    isSignInWithEmailLink.mockReset();
+    isSignInWithEmailLink.mockReturnValue(false);
   });
 
   it('returns the existing uid without signing in again', async () => {
@@ -37,7 +46,7 @@ describe('ensureAnonymousAuth', () => {
     };
     signInAnonymously.mockImplementation(async () => {
       expect(firebaseAuth.currentUser).toEqual({ uid: 'restored' });
-      return { user: { uid: 'should-not-run' } };
+      return { user: { uid: 'should-not-run', getIdToken: jest.fn() } };
     });
 
     const pending = ensureAnonymousAuth(firebaseAuth as never);
@@ -49,7 +58,8 @@ describe('ensureAnonymousAuth', () => {
   });
 
   it('signs in anonymously once when there is no user', async () => {
-    signInAnonymously.mockResolvedValue({ user: { uid: 'anon-1' } });
+    const user = anonymousUser('anon-1');
+    signInAnonymously.mockResolvedValue({ user });
 
     const [first, second] = await Promise.all([
       ensureAnonymousAuth(authWith(null)),
@@ -59,5 +69,14 @@ describe('ensureAnonymousAuth', () => {
     expect(first).toBe('anon-1');
     expect(second).toBe('anon-1');
     expect(signInAnonymously).toHaveBeenCalledTimes(1);
+    expect(user.getIdToken).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not create an anonymous user on an email sign-in link', async () => {
+    isSignInWithEmailLink.mockReturnValue(true);
+
+    await expect(ensureAnonymousAuth(authWith(null))).resolves.toBe('');
+    expect(shouldDeferAnonymousAuth(authWith(null))).toBe(true);
+    expect(signInAnonymously).not.toHaveBeenCalled();
   });
 });

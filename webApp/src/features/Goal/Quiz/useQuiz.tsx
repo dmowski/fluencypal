@@ -455,13 +455,13 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   };
 
   useEffect(() => {
-    if (auth.loading || auth.isIdentified) {
+    if (auth.isIdentified) {
       return;
     }
     void auth.ensureAnonymousAuth().catch((error) => {
       Sentry.captureException(error);
     });
-  }, [auth.loading, auth.isIdentified, auth.ensureAnonymousAuth]);
+  }, [auth.isIdentified, auth.ensureAnonymousAuth]);
 
   useEffect(() => {
     if (!auth.uid || !languageToLearn) {

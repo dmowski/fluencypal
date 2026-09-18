@@ -25,6 +25,7 @@ import {
 } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
+import { ensureAnonymousAuth } from '@/features/Auth/anonymousAuth';
 import { installFirebaseAuthPendingPromiseGuard } from '@/features/Auth/googleSignIn';
 import { installCorruptFirestorePersistenceRecovery } from './corruptIndexedDb';
 
@@ -80,6 +81,12 @@ const auth =
           throw error;
         }
       })();
+
+if (!isNodeEnv) {
+  // Start after authStateReady inside ensureAnonymousAuth — do not wait for React
+  // auth.loading, or quiz teacher Continue sits disabled through the first steps.
+  void ensureAnonymousAuth(auth);
+}
 
 const storage = getStorage(app);
 const functions = getFunctions(app);

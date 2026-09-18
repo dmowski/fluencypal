@@ -8,7 +8,16 @@ import {
 } from 'firebase/auth';
 import { ensureAnonymousAuth } from './anonymousAuth';
 import { isIdentifiedAuthUser } from './identifiedAuth';
-import { Context, JSX, ReactNode, createContext, useContext, useEffect, useRef } from 'react';
+import {
+  Context,
+  JSX,
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../Firebase/init';
 import * as Sentry from '@sentry/nextjs';
@@ -163,6 +172,13 @@ function useProvideAuth(): AuthContext {
     void (async () => {
       await confirmEmailLinkSignIn();
       try {
+        await ensureAnonymousAuth(auth);
+      } catch (error) {
+        Sentry.captureException(error);
+      }
+    })();
+    void (async () => {
+      try {
         const redirected = await completeGoogleRedirectSignIn(auth);
         if (redirected) sendAuthAttempt({ provider: 'google', result: 'success' });
       } catch (error) {
@@ -303,6 +319,7 @@ function useProvideAuth(): AuthContext {
 
   const userId = userInfo?.uid || '';
   const isFounder = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+  const ensureAnonymousUser = useCallback(() => ensureAnonymousAuth(auth), []);
 
   const sendTgMessage = async (message: string) => {
     await sendTelegramRequest(
@@ -321,7 +338,7 @@ function useProvideAuth(): AuthContext {
 
     signInWithGoogle,
     signInWithCustomToken,
-    ensureAnonymousAuth: () => ensureAnonymousAuth(auth),
+    ensureAnonymousAuth: ensureAnonymousUser,
 
     userInfo: userInfo || null,
     uid: userId,
