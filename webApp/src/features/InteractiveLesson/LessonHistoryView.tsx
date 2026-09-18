@@ -8,7 +8,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { scrollElementToStart } from './findScrollParent';
 import { InteractiveLesson, isLessonPartWithAnswer } from './types';
-import { LESSON_THEME_VARS } from './lessonTheme';
+import { LESSON_DIVIDER_COLOR, LESSON_THEME_VARS } from './lessonTheme';
 
 export const LessonHistoryView = ({
   lessons,
@@ -93,18 +93,17 @@ export const LessonHistoryView = ({
                 {lesson.parts.map((part, index) => (
                   <Stack key={`${lesson.id}-${index}`} sx={{ gap: '8px' }}>
                     {index > 0 && (
-                      <Divider
-                        sx={{
-                          borderColor:
-                            'color-mix(in srgb, var(--text-secondary-dark) 30%, transparent)',
-                        }}
-                      />
+                      <Divider sx={{ borderColor: LESSON_DIVIDER_COLOR }} />
                     )}
                     <LessonMarkdown content={part.contentMD} />
                     {isLessonPartWithAnswer(part) && (
                       <Stack sx={{ gap: '6px' }}>
                         <Typography variant="body2">{part.userVoiceTranscript}</Typography>
-                        {part.userAudioUrl && <UserAudioPlayer audioUrl={part.userAudioUrl} />}
+                        {part.userAudioUrl && (
+                          <Stack sx={{ color: 'var(--accent)', alignItems: 'flex-start' }}>
+                            <UserAudioPlayer audioUrl={part.userAudioUrl} />
+                          </Stack>
+                        )}
                         <LessonMarkdown content={part.aiResultToUser} />
                       </Stack>
                     )}

@@ -32,6 +32,7 @@ const AudioColumn = ({
             padding: '10px',
             borderRadius: '10px',
             backgroundColor: 'color-mix(in srgb, var(--text-primary-dark) 5%, transparent)',
+            color: 'var(--accent)',
           }}
         >
           <UserAudioPlayer audioUrl={record.audioUrl} />

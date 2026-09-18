@@ -17,7 +17,7 @@ import { InteractiveLesson, isOpenTalkPart, isReadAloudPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
 import { findScrollParent } from './findScrollParent';
-import { lessonAccentButtonSx, lessonThemeSx } from './lessonTheme';
+import { LESSON_DIVIDER_COLOR, lessonAccentButtonSx, lessonThemeSx } from './lessonTheme';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -190,7 +190,7 @@ export const InteractiveLessonModalContent = ({
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 marginTop: '34px',
-                borderTop: '1px solid color-mix(in srgb, var(--text-secondary-dark) 40%, transparent)',
+                borderTop: `1px solid ${LESSON_DIVIDER_COLOR}`,
                 paddingTop: '24px',
               }}
             >

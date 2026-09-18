@@ -194,7 +194,7 @@ export const SpeechAnswerPanelView = ({
         >
           <Stack
             sx={{
-              padding: '10px 12px 15px 12px',
+              padding: '6px 12px 8px',
               borderRadius: '10px 10px 0 0',
               backgroundColor: 'var(--card-bg)',
               borderBottom: '1px solid color-mix(in srgb, var(--card-text) 12%, transparent)',
@@ -227,7 +227,7 @@ export const SpeechAnswerPanelView = ({
               {(audioUrl || part.userAudioUrl) && (
                 <Stack
                   sx={{
-                    backgroundColor: 'var(--page-bg)',
+                    backgroundColor: 'var(--accent)',
                     color: 'var(--text-primary-dark)',
                     borderRadius: '40px',
                     padding: '0px',
@@ -260,7 +260,7 @@ export const SpeechAnswerPanelView = ({
                 <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
                   {isFeedbackPlaying ? i18n._('Playing') : i18n._('Feedback')}
                 </Typography>
-                <LessonMarkdown content={part.aiResultToUser} />
+                <LessonMarkdown content={part.aiResultToUser} size="feedback" />
               </Stack>
               <PlayButton
                 text={part.aiResultToUser}

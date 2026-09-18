@@ -76,8 +76,8 @@ export const LessonResultsView = ({
                 onChangeState={setIsResultsPlaying}
               />
             </Stack>
-            <LessonMarkdown content={results.motivationTextToUserMD} />
-            <LessonMarkdown content={results.whatWentWellMD} />
+            <LessonMarkdown content={results.motivationTextToUserMD} size="feedback" />
+            <LessonMarkdown content={results.whatWentWellMD} size="feedback" />
           </Stack>
           <Stack
             sx={{

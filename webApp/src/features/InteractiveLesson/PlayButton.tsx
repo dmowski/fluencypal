@@ -22,7 +22,7 @@ export const PlayButton = ({
     <Stack
       data-testid={testId}
       sx={{
-        backgroundColor: isPlaying ? 'var(--accent)' : 'var(--page-bg)',
+        backgroundColor: 'var(--accent)',
         borderRadius: '40px',
         padding: '0px',
         '@keyframes lessonPlayButtonPulse': {

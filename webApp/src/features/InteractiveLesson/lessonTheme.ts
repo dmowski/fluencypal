@@ -5,9 +5,11 @@ export const LESSON_THEME_VARS = {
   '--card-bg': '#F5F7F8',
   '--card-text': '#1D1E22',
   '--card-text-secondary': '#555860',
-  '--feedback-bg': '#EFF4F1',
+  '--feedback-bg': '#F1F4F3',
   '--accent': '#2DAEF3',
 } as const;
+
+export const LESSON_DIVIDER_COLOR = 'rgba(255, 255, 255, 0.15)';
 
 export const lessonThemeSx = {
   ...LESSON_THEME_VARS,

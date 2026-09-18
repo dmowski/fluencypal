@@ -6,6 +6,7 @@ import { OPENAI_TTS_MAX_INPUT_CHARS } from '@/features/Audio/useConversationAudi
 import { LessonMarkdown } from './LessonMarkdown';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
+import { LESSON_DIVIDER_COLOR } from './lessonTheme';
 
 export const LessonPartSection = ({
   part,
@@ -27,11 +28,7 @@ export const LessonPartSection = ({
   return (
     <Stack sx={{ width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
       {partIndex > 0 && (
-        <Divider
-          sx={{
-            borderColor: 'color-mix(in srgb, var(--text-secondary-dark) 35%, transparent)',
-          }}
-        />
+        <Divider sx={{ borderColor: LESSON_DIVIDER_COLOR }} />
       )}
       <Stack
         sx={{
@@ -49,7 +46,12 @@ export const LessonPartSection = ({
             alignItems: 'flex-start',
           }}
         >
-          <AudioPlayIcon text={part.contentMD} maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS} />
+          <AudioPlayIcon
+            text={part.contentMD}
+            color="var(--accent)"
+            opacity={1}
+            maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}
+          />
         </Stack>
       </Stack>
       {part.type === 'speech' && (
