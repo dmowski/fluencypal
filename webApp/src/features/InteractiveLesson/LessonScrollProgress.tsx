@@ -45,7 +45,7 @@ export const LessonScrollProgress = ({
         value={progress * 100}
         sx={{
           height: '4px',
-          backgroundColor: 'color-mix(in srgb, var(--accent) 20%, transparent)',
+          backgroundColor: 'var(--accent-soft)',
           '& .MuiLinearProgress-bar': { backgroundColor: 'var(--accent)' },
         }}
       />

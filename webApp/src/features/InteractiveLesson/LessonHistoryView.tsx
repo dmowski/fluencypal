@@ -8,7 +8,7 @@ import { LessonMarkdown } from './LessonMarkdown';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { scrollElementToStart } from './findScrollParent';
 import { InteractiveLesson, isLessonPartWithAnswer } from './types';
-import { LESSON_DIVIDER_COLOR, LESSON_THEME_VARS } from './lessonTheme';
+import { LESSON_DIVIDER_COLOR, LESSON_THEME_VARS, lessonGhostButtonSx } from './lessonTheme';
 
 export const LessonHistoryView = ({
   lessons,
@@ -23,7 +23,7 @@ export const LessonHistoryView = ({
     return (
       <Typography
         variant="body2"
-        sx={{ color: 'var(--text-secondary-dark)' }}
+        sx={{ color: 'var(--text-secondary)' }}
         data-testid="interactive-lesson-history-empty"
       >
         {i18n._('No previous lessons yet. Finish one to see it here.')}
@@ -45,7 +45,7 @@ export const LessonHistoryView = ({
               gap: '10px',
               padding: '14px',
               borderRadius: '12px',
-              backgroundColor: 'color-mix(in srgb, var(--text-primary-dark) 5%, transparent)',
+              backgroundColor: 'var(--bg-elevated)',
             }}
           >
             <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between', gap: '12px' }}>
@@ -61,10 +61,10 @@ export const LessonHistoryView = ({
                 >
                   {lesson.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'var(--text-secondary-dark)' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
                   {lesson.subTitle}
                 </Typography>
-                <Typography variant="caption" sx={{ color: 'var(--text-secondary-dark)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                   {new Date(lesson.completedAtIso || lesson.createdAtIso).toLocaleString()}
                 </Typography>
               </Stack>
@@ -72,7 +72,7 @@ export const LessonHistoryView = ({
                 variant="text"
                 color="info"
                 data-testid={`interactive-lesson-history-open-${lesson.id}`}
-                sx={{ color: 'var(--accent)' }}
+                sx={lessonGhostButtonSx}
                 onClick={() => {
                   if (isOpen) {
                     setOpenId(null);
@@ -99,11 +99,7 @@ export const LessonHistoryView = ({
                     {isLessonPartWithAnswer(part) && (
                       <Stack sx={{ gap: '6px' }}>
                         <Typography variant="body2">{part.userVoiceTranscript}</Typography>
-                        {part.userAudioUrl && (
-                          <Stack sx={{ color: 'var(--accent)', alignItems: 'flex-start' }}>
-                            <UserAudioPlayer audioUrl={part.userAudioUrl} />
-                          </Stack>
-                        )}
+                        {part.userAudioUrl && <UserAudioPlayer audioUrl={part.userAudioUrl} />}
                         <LessonMarkdown content={part.aiResultToUser} />
                       </Stack>
                     )}

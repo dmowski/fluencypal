@@ -8,7 +8,7 @@ import LanguageAutocomplete from '@/features/Lang/LanguageAutocomplete';
 import { useLanguageGroup } from '@/features/Goal/useLanguageGroup';
 import { SupportedLanguage, supportedLanguagesToLearn } from '@/features/Lang/lang';
 import { NativeLangCode } from '@/libs/language/type';
-import { LESSON_THEME_VARS, lessonAccentButtonSx } from './lessonTheme';
+import { LESSON_THEME_VARS, lessonPrimaryButtonSx } from './lessonTheme';
 
 export const LanguageSetupView = ({
   nativeLanguageCode,
@@ -42,17 +42,17 @@ export const LanguageSetupView = ({
       sx={{ ...LESSON_THEME_VARS, gap: '20px' }}
       data-testid="interactive-lesson-language-setup"
     >
-      <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary-dark)' }}>
+      <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>
         {i18n._('Choose your languages')}
       </Typography>
-      <Typography variant="body1" sx={{ color: 'var(--text-secondary-dark)' }}>
+      <Typography variant="body1" sx={{ color: 'var(--text-secondary)' }}>
         {i18n._(
           'This lesson needs two different languages: the one you already speak, and the one you want to practice.',
         )}
       </Typography>
 
       <Stack sx={{ gap: '8px' }}>
-        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary-dark)' }}>
+        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
           {i18n._('Native language')}
         </Typography>
         <LanguageAutocomplete
@@ -63,7 +63,7 @@ export const LanguageSetupView = ({
       </Stack>
 
       <Stack sx={{ gap: '8px' }}>
-        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary-dark)' }}>
+        <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
           {i18n._('Language to learn')}
         </Typography>
         <LangSelector
@@ -79,7 +79,7 @@ export const LanguageSetupView = ({
         disabled={!canContinue}
         onClick={onContinue}
         data-testid="interactive-lesson-language-continue"
-        sx={{ ...lessonAccentButtonSx, padding: '12px 24px', alignSelf: 'flex-start' }}
+        sx={{ ...lessonPrimaryButtonSx, padding: '12px 24px', alignSelf: 'flex-start' }}
       >
         {i18n._('Continue')}
       </Button>

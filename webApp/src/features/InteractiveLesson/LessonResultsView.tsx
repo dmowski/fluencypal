@@ -8,7 +8,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
 import { ArrowRight } from 'lucide-react';
 import { PlayButton } from './PlayButton';
-import { lessonAccentButtonSx } from './lessonTheme';
+import { lessonPrimaryButtonSx } from './lessonTheme';
 
 export const LessonResultsView = ({
   results,
@@ -47,7 +47,7 @@ export const LessonResultsView = ({
               gap: '20px',
               backgroundColor: 'var(--card-bg)',
               borderRadius: '10px 10px 0 0',
-              borderBottom: '1px solid color-mix(in srgb, var(--card-text) 12%, transparent)',
+              borderBottom: '1px solid var(--card-border)',
             }}
           >
             <Stack
@@ -86,7 +86,7 @@ export const LessonResultsView = ({
               flexWrap: 'wrap',
               padding: '20px',
               borderRadius: '0 0 10px 10px',
-              backgroundColor: 'var(--feedback-bg)',
+              backgroundColor: 'var(--card-bg-secondary)',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}
@@ -96,7 +96,7 @@ export const LessonResultsView = ({
               color="info"
               onClick={onNextLesson}
               data-testid="interactive-lesson-next"
-              sx={{ ...lessonAccentButtonSx, padding: '10px 24px' }}
+              sx={{ ...lessonPrimaryButtonSx, padding: '10px 24px' }}
               endIcon={<ArrowRight size={20} />}
             >
               {isGeneratingNext ? i18n._('Preparing next lesson...') : i18n._('Next lesson')}

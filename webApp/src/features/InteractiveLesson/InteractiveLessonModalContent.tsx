@@ -17,7 +17,12 @@ import { InteractiveLesson, isOpenTalkPart, isReadAloudPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
 import { findScrollParent } from './findScrollParent';
-import { LESSON_DIVIDER_COLOR, lessonAccentButtonSx, lessonThemeSx } from './lessonTheme';
+import {
+  LESSON_DIVIDER_COLOR,
+  lessonPrimaryButtonSx,
+  lessonSkipButtonSx,
+  lessonThemeSx,
+} from './lessonTheme';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -146,7 +151,7 @@ export const InteractiveLessonModalContent = ({
                 ensuredRef.current = false;
                 void onEnsureLesson();
               }}
-              sx={lessonAccentButtonSx}
+              sx={lessonPrimaryButtonSx}
             >
               {i18n._('Retry')}
             </Button>
@@ -156,11 +161,13 @@ export const InteractiveLessonModalContent = ({
             <Stack
               sx={{
                 paddingTop: '40px',
+                color: 'var(--text-primary)',
                 h1: {
                   fontSize: '54px',
                   fontWeight: 800,
                   '@media (max-width:600px)': { fontSize: '32px' },
                 },
+                '& p': { color: 'var(--text-secondary)' },
               }}
             >
               <Markdown variant="rule">{`\n # ${lesson.title} \n\n ${lesson.subTitle}`}</Markdown>
@@ -206,17 +213,17 @@ export const InteractiveLessonModalContent = ({
                 }}
                 disabled={!!lesson.lessonResults || isGeneratingResults}
                 data-testid="interactive-lesson-done"
-                sx={lessonAccentButtonSx}
+                sx={lessonPrimaryButtonSx}
               >
                 {i18n._('Finish lesson')}
               </Button>
               <Button
                 variant="text"
-                color="error"
                 startIcon={<SkipForward size={20} />}
                 onClick={onSkipLesson}
                 disabled={!!lesson.lessonResults || isGeneratingResults || isGeneratingLesson}
                 data-testid="interactive-lesson-skip"
+                sx={lessonSkipButtonSx}
               >
                 {i18n._('Skip this lesson')}
               </Button>

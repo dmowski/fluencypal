@@ -1,9 +1,8 @@
 'use client';
 
 import { Divider, Stack } from '@mui/material';
-import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
-import { OPENAI_TTS_MAX_INPUT_CHARS } from '@/features/Audio/useConversationAudio';
 import { LessonMarkdown } from './LessonMarkdown';
+import { PlayButton } from './PlayButton';
 import { SpeechAnswerPanel } from './SpeechAnswerPanel';
 import { LessonPartState } from './types';
 import { LESSON_DIVIDER_COLOR } from './lessonTheme';
@@ -40,18 +39,8 @@ export const LessonPartSection = ({
         <Stack sx={{}}>
           <LessonMarkdown content={part.contentMD} />
         </Stack>
-        <Stack
-          data-testid="interactive-lesson-read-play"
-          sx={{
-            alignItems: 'flex-start',
-          }}
-        >
-          <AudioPlayIcon
-            text={part.contentMD}
-            color="var(--accent)"
-            opacity={1}
-            maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}
-          />
+        <Stack sx={{ alignItems: 'flex-start' }}>
+          <PlayButton text={part.contentMD} testId="interactive-lesson-read-play" />
         </Stack>
       </Stack>
       {part.type === 'speech' && (

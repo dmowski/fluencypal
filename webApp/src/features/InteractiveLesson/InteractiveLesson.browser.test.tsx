@@ -20,8 +20,8 @@ import { LESSON_THEME_VARS } from './lessonTheme';
 
 const lessonSurfaceStyle = {
   ...LESSON_THEME_VARS,
-  background: LESSON_THEME_VARS['--page-bg'],
-  color: LESSON_THEME_VARS['--text-primary-dark'],
+  background: LESSON_THEME_VARS['--bg'],
+  color: LESSON_THEME_VARS['--text-primary'],
 } as const;
 
 const { recorderMock, conversationAudioMock } = vi.hoisted(() => ({

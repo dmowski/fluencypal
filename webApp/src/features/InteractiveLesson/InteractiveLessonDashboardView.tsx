@@ -37,7 +37,7 @@ export const InteractiveLessonDashboardView = ({
         onButtonClick={onProgressClick}
       />
       <StoreCard
-        textColor={LESSON_THEME_VARS['--text-primary-dark']}
+        textColor={LESSON_THEME_VARS['--text-primary']}
         backgroundColor={isDoneToday ? 'rgba(16, 92, 46, 0.72)' : 'rgba(18, 32, 54, 0.72)'}
         previewImageUrl={isDoneToday ? INTERACTIVE_LESSON_DONE_CARD_IMAGE : INTERACTIVE_LESSON_CARD_IMAGE}
         title={cardTitle}

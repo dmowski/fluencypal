@@ -14,7 +14,7 @@ export const LessonPreparingView = () => {
         sx={{
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          color: 'var(--text-secondary-dark)',
+          color: 'var(--text-muted)',
         }}
       >
         {i18n._('We are preparing a lesson for you, based on your previous practice.')}

@@ -22,7 +22,7 @@ export const PlayButton = ({
     <Stack
       data-testid={testId}
       sx={{
-        backgroundColor: 'var(--accent)',
+        color: isPlaying ? 'var(--accent)' : 'var(--control-neutral)',
         borderRadius: '40px',
         padding: '0px',
         '@keyframes lessonPlayButtonPulse': {
@@ -35,7 +35,7 @@ export const PlayButton = ({
     >
       <AudioPlayIcon
         text={text}
-        color="var(--text-primary-dark)"
+        color="currentColor"
         opacity={1}
         autoPlay={autoPlay}
         maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}

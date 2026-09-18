@@ -11,7 +11,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { PlayButton } from './PlayButton';
-import { LESSON_THEME_VARS } from './lessonTheme';
+import { LESSON_THEME_VARS, lessonGhostButtonSx, lessonRecordButtonSx } from './lessonTheme';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -67,12 +67,12 @@ export const SpeechAnswerPanelView = ({
         )}
 
         {isReadAloud && !answered && (
-          <Typography variant="body2" sx={{ color: 'var(--text-secondary-dark)' }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
             {i18n._('Read the text aloud. You can play it first.')}
           </Typography>
         )}
         {isOpenTalk && !answered && (
-          <Typography variant="body2" sx={{ color: 'var(--text-secondary-dark)' }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
             {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
           </Typography>
         )}
@@ -89,18 +89,17 @@ export const SpeechAnswerPanelView = ({
           <Button
             disabled={isTranscribing || isEvaluating}
             variant={answered && !isRecording ? 'text' : isRecording ? 'contained' : 'outlined'}
-            color={isRecording ? 'error' : 'info'}
+            color={isRecording ? 'error' : 'inherit'}
             size="large"
             startIcon={isRecording ? <StopIcon /> : <MicIcon />}
             onClick={onToggleRecord}
             sx={{
               flexShrink: 0,
-              ...(!isRecording
-                ? {
-                    color: 'var(--accent)',
-                    borderColor: 'var(--accent)',
-                  }
-                : {}),
+              ...(isRecording
+                ? {}
+                : answered
+                  ? lessonGhostButtonSx
+                  : lessonRecordButtonSx),
               ...(isRecording && visualizer
                 ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
                 : {}),
@@ -197,7 +196,7 @@ export const SpeechAnswerPanelView = ({
               padding: '6px 12px 8px',
               borderRadius: '10px 10px 0 0',
               backgroundColor: 'var(--card-bg)',
-              borderBottom: '1px solid color-mix(in srgb, var(--card-text) 12%, transparent)',
+              borderBottom: '1px solid var(--card-border)',
               color: 'var(--card-text)',
             }}
           >
@@ -225,23 +224,14 @@ export const SpeechAnswerPanelView = ({
               </Stack>
 
               {(audioUrl || part.userAudioUrl) && (
-                <Stack
-                  sx={{
-                    backgroundColor: 'var(--accent)',
-                    color: 'var(--text-primary-dark)',
-                    borderRadius: '40px',
-                    padding: '0px',
-                  }}
-                >
-                  <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
-                </Stack>
+                <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
               )}
             </Stack>
           </Stack>
 
           <Stack
             sx={{
-              backgroundColor: 'var(--feedback-bg)',
+              backgroundColor: 'var(--card-bg-secondary)',
               padding: '13px 12px',
               borderRadius: '0 0 10px 10px',
               color: 'var(--card-text)',
