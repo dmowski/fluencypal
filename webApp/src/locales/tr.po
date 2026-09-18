@@ -770,6 +770,11 @@ msgstr ""
 msgid "All time"
 msgstr "Tüm zamanlar"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
+#. js-lingui-explicit-id
+msgid "Allow microphone"
+msgstr "Mikrofonu etkinleştir"
+
 #: src/features/Plan/LessonStartModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
@@ -779,6 +784,11 @@ msgstr "Mikrofona Erişime İzin Ver"
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "WebCam'e İzin Ver"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:40
+#. js-lingui-explicit-id
+msgid "Allow your microphone"
+msgstr "Mikrofonunuza izin verin"
 
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
@@ -2195,7 +2205,7 @@ msgstr ""
 msgid "Choose Language Level"
 msgstr "Dil Seviyesini Seçin"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:136
+#: src/features/Goal/Quiz/QuizPage2.tsx:137
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
@@ -4377,7 +4387,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Ödeme oturumu oluşturulurken hata oluştu. Lütfen daha sonra tekrar deneyin."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:68
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Plan oluşturulurken hata oluştu. Lütfen tekrar deneyin."
@@ -6397,7 +6407,7 @@ msgstr ""
 "feshetme hakkımı kaybedeceğimi kabul ediyorum."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
-#: src/features/Goal/Quiz/QuizPage2.tsx:108
+#: src/features/Goal/Quiz/QuizPage2.tsx:109
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Öğrenmek istiyorum:"
@@ -6447,7 +6457,7 @@ msgstr "Bellek içi önbellekleme ekler ve veritabanı kaynaklarını artırır�
 msgid "I'd add retries with a longer timeout."
 msgstr "Tekrar denemeler ve daha uzun bir zaman aşımı süresi eklerdim."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:47
+#: src/features/Goal/Quiz/QuizPage2.tsx:48
 #. js-lingui-explicit-id
 msgid "I'll use your answer to make your personal plan."
 msgstr "Cevabınızı kişisel planınızı oluşturmak için kullanacağım."
@@ -6968,7 +6978,7 @@ msgstr ""
 "Sohbetinize dayalı kurallar ve örnekleri hazırlamak yaklaşık bir dakika "
 "sürebilir. Lütfen bekleyin."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:169
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "Bir dakika kadar sürebilir."
@@ -7799,6 +7809,15 @@ msgstr ""
 "mikrofon erişimine izin verin, ardından \"Mikrofon izni ver\" butonuna "
 "tekrar tıklayın."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Allow microphone again."
+msgstr ""
+"Mikrofon erişimi engellendi. Tarayıcı ayarlarınızı açın, bu site için "
+"mikrofon erişimine izin verin, ardından tekrar Mikrofon izni ver'e dokunun."
+
 #: src/features/Conversation/JustTalkHandoffScreen.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -8046,7 +8065,7 @@ msgstr "Haber Tartışması"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:110
+#: src/features/Goal/Quiz/QuizPage2.tsx:111
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -10506,6 +10525,7 @@ msgstr "Kullanıcıyı şikayet et"
 msgid "Request failed. Please try again."
 msgstr "İstek başarısız oldu. Lütfen tekrar deneyin."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
 #: src/features/webCam/MicrophonePermissionModal.tsx:145
 #. js-lingui-explicit-id
 msgid "Requesting access..."
@@ -11032,7 +11052,7 @@ msgstr "kıdemli ön uç görüşmesi"
 msgid "Sentences"
 msgstr "Cümleler"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:121
+#: src/features/Goal/Quiz/QuizPage2.tsx:122
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Dilimi Ayarla"
@@ -11366,7 +11386,7 @@ msgstr "Akıllı Başlangıç"
 msgid "Smoothed"
 msgstr "Yumuşatıldı"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:120
+#: src/features/Goal/Quiz/QuizPage2.tsx:121
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Bu yüzden sizin için kelimeleri çevirebilirim"
@@ -11388,6 +11408,13 @@ msgstr "Böylece ilerlemenizi sürdürebilirsiniz."
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr "Böylece ilerlemenizi kaydedebilirsiniz"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:41
+#. js-lingui-explicit-id
+msgid "So you can speak your answer and talk with the teacher"
+msgstr ""
+"Bu yüzden cevabınızı sesli olarak söyleyebilir ve öğretmenle "
+"konuşabilirsiniz"
 
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:9
 #: src/features/RolePlay/scenarios/meeting-dog-owners-in-the-park.ts:22
@@ -11612,7 +11639,7 @@ msgstr "Kaydı Başlat"
 msgid "Start recording"
 msgstr "Kaydı başlat"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:181
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
 #. js-lingui-explicit-id
@@ -13301,7 +13328,7 @@ msgstr ""
 "\n"
 "Derin bir nefes alın. Aptalca olacak."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Bu, butonlarda ve menülerde gördüğünüz metindir."
@@ -14227,7 +14254,7 @@ msgstr "Geri bildiriminizi takdir ediyoruz!"
 msgid "We are preparing a lesson for you, based on your previous practice."
 msgstr "Önceki pratiğinize dayanarak sizin için bir ders hazırlıyoruz."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:163
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "Planınızı oluşturmaya hazırız."
@@ -14267,6 +14294,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Deneyiminizi geliştirmek için çerezleri kullanıyoruz"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:52
+#. js-lingui-explicit-id
+msgid "We use the microphone only to hear you in this session"
+msgstr "Bu oturumda sizi duymak için sadece mikrofonu kullanıyoruz."
 
 #: src/features/Header/NeedHelpModal.tsx:54
 #. js-lingui-explicit-id
@@ -14404,7 +14436,7 @@ msgstr "FluencyPal'in ana odak noktası nedir?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Ne tür backend görüşmeleri için alıştırma yapabilirim?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:119
+#: src/features/Goal/Quiz/QuizPage2.tsx:120
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Hangi dili konuşuyorsun?"
@@ -14573,7 +14605,7 @@ msgstr "Neden backend adayları hızlı gelişir?"
 msgid "Why candidates improve so quickly"
 msgstr "Neden adaylar bu kadar hızlı gelişiyor?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/QuizPage2.tsx:47
 #. js-lingui-explicit-id
 msgid "Why do you want to practice speaking?"
 msgstr "Neden konuşma pratiği yapmak istiyorsun?"
@@ -15241,6 +15273,11 @@ msgstr ""
 ".NET, API'ler, veritabanları, eşzamanlılık ve sistem tasarımı hakkında kısa "
 "soruları yanıtlayacaksınız."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:44
+#. js-lingui-explicit-id
+msgid "You will record a short answer about why you want to practice"
+msgstr "Neden pratik yapmak istediğinizle ilgili kısa bir cevap kaydedeceksiniz."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
 #: src/features/Case/data/frontend-senior/quizData.ts:343
@@ -15323,6 +15360,11 @@ msgstr "Cevaplarınız gönderdikten sonra rakibiniz tarafından görülecektir.
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Senin Avatarın:"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:48
+#. js-lingui-explicit-id
+msgid "Your browser will ask for permission. Tap Allow"
+msgstr "Tarayıcınız izin isteyecek. İzin Ver'e dokunun"
 
 #: src/features/PayWall/CardValidator.tsx:87
 #. js-lingui-explicit-id

@@ -773,6 +773,11 @@ msgstr ""
 msgid "All time"
 msgstr "ทุกเวลา"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
+#. js-lingui-explicit-id
+msgid "Allow microphone"
+msgstr "อนุญาตไมโครโฟน"
+
 #: src/features/Plan/LessonStartModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
@@ -782,6 +787,11 @@ msgstr "อนุญาตการเข้าถึงไมโครโฟน
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "อนุญาตกล้องเว็บแคม"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:40
+#. js-lingui-explicit-id
+msgid "Allow your microphone"
+msgstr "อนุญาตให้ใช้ไมโครโฟนของคุณ"
 
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
@@ -2190,7 +2200,7 @@ msgstr "เลือกระดับการแยก, สร้างรู�
 msgid "Choose Language Level"
 msgstr "เลือกระดับภาษา"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:136
+#: src/features/Goal/Quiz/QuizPage2.tsx:137
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "เลือกภาษาของเว็บไซต์"
@@ -4373,7 +4383,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "เกิดข้อผิดพลาดในการสร้างเซสชันการชำระเงิน กรุณาลองใหม่ภายหลัง"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:68
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "ข้อผิดพลาดในการสร้างแผน กรุณาลองใหม่อีกครั้ง"
@@ -6387,7 +6397,7 @@ msgstr ""
 "ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
-#: src/features/Goal/Quiz/QuizPage2.tsx:108
+#: src/features/Goal/Quiz/QuizPage2.tsx:109
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "ฉันต้องการเรียนรู้:"
@@ -6438,7 +6448,7 @@ msgstr "ฉันจะเพิ่มการแคชในหน่วยค
 msgid "I'd add retries with a longer timeout."
 msgstr "ฉันจะเพิ่มการลองใหม่พร้อมกับการหมดเวลาที่ยาวนานขึ้น"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:47
+#: src/features/Goal/Quiz/QuizPage2.tsx:48
 #. js-lingui-explicit-id
 msgid "I'll use your answer to make your personal plan."
 msgstr "ฉันจะใช้คำตอบของคุณในการสร้างแผนส่วนตัวของคุณ"
@@ -6955,7 +6965,7 @@ msgid ""
 "conversation. Please wait."
 msgstr "อาจใช้เวลาประมาณหนึ่งนาทีในการเตรียมกฎและตัวอย่างตามการสนทนาของคุณ โปรดรอ"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:169
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "อาจใช้เวลาถึงหนึ่งนาที"
@@ -7799,6 +7809,15 @@ msgstr ""
 "อนุญาตให้เข้าถึงไมโครโฟนสำหรับไซต์นี้ แล้วแตะ "
 "\"ให้สิทธิ์การเข้าถึงไมโครโฟน\" อีกครั้ง"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Allow microphone again."
+msgstr ""
+"การเข้าถึงไมโครโฟนถูกบล็อก เปิดการตั้งค่าเบราว์เซอร์ของคุณ "
+"อนุญาตการเข้าถึงไมโครโฟนสำหรับเว็บไซต์นี้ แล้วแตะอนุญาตไมโครโฟนอีกครั้ง"
+
 #: src/features/Conversation/JustTalkHandoffScreen.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -8046,7 +8065,7 @@ msgstr "การสนทนาข่าว"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:110
+#: src/features/Goal/Quiz/QuizPage2.tsx:111
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -10607,6 +10626,7 @@ msgstr ""
 "\n"
 "คำขอล้มเหลว กรุณาลองอีกครั้ง"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
 #: src/features/webCam/MicrophonePermissionModal.tsx:145
 #. js-lingui-explicit-id
 msgid "Requesting access..."
@@ -11128,7 +11148,7 @@ msgstr "การสัมภาษณ์ Frontend อาวุโส"
 msgid "Sentences"
 msgstr "ประโยค"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:121
+#: src/features/Goal/Quiz/QuizPage2.tsx:122
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "ตั้งค่าภาษาของฉัน"
@@ -11462,7 +11482,7 @@ msgstr "เริ่มต้นอย่างฉลาด"
 msgid "Smoothed"
 msgstr "เรียบเนียน"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:120
+#: src/features/Goal/Quiz/QuizPage2.tsx:121
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "ดังนั้นฉันสามารถแปลคำศัพท์ให้คุณได้"
@@ -11484,6 +11504,11 @@ msgstr "ดังนั้นคุณจึงสามารถรักษา
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr "เพื่อให้คุณสามารถบันทึกความก้าวหน้าได้"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:41
+#. js-lingui-explicit-id
+msgid "So you can speak your answer and talk with the teacher"
+msgstr "ดังนั้นคุณสามารถพูดคำตอบของคุณและพูดคุยกับครูได้"
 
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:9
 #: src/features/RolePlay/scenarios/meeting-dog-owners-in-the-park.ts:22
@@ -11705,7 +11730,7 @@ msgstr "เริ่มบันทึก"
 msgid "Start recording"
 msgstr "เริ่มการบันทึก"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:181
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
 #. js-lingui-explicit-id
@@ -13381,7 +13406,7 @@ msgstr ""
 "\n"
 "หายใจลึก ๆ บทนี้จะโง่แน่นอน"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "นี่คือข้อความที่คุณเห็นบนปุ่มและเมนู"
@@ -14313,7 +14338,7 @@ msgstr "เราขอขอบคุณสำหรับคำติชมข
 msgid "We are preparing a lesson for you, based on your previous practice."
 msgstr "เรากำลังเตรียมบทเรียนสำหรับคุณ โดยอิงจากการฝึกฝนก่อนหน้านี้ของคุณ"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:163
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "พร้อมที่จะสร้างแผนของคุณแล้ว"
@@ -14353,6 +14378,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "เราใช้คุกกี้เพื่อเพิ่มประสบการณ์ของคุณ"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:52
+#. js-lingui-explicit-id
+msgid "We use the microphone only to hear you in this session"
+msgstr "เราใช้ไมโครโฟนเพื่อฟังเสียงของคุณในเซสชั่นนี้เท่านั้น"
 
 #: src/features/Header/NeedHelpModal.tsx:54
 #. js-lingui-explicit-id
@@ -14491,7 +14521,7 @@ msgstr "FluencyPal มีจุดมุ่งหมายหลักคือ�
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "ฉันสามารถฝึกสัมภาษณ์ประเภทใดได้บ้างสำหรับทางด้านแบ็กเอนด์?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:119
+#: src/features/Goal/Quiz/QuizPage2.tsx:120
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "คุณพูดภาษาอะไร"
@@ -14661,7 +14691,7 @@ msgstr "ทำไมผู้สมัครฝ่ายหลังถึงพ
 msgid "Why candidates improve so quickly"
 msgstr "ทำไมนักเรียนถึงพัฒนาได้เร็ว"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/QuizPage2.tsx:47
 #. js-lingui-explicit-id
 msgid "Why do you want to practice speaking?"
 msgstr "ทำไมคุณถึงต้องการฝึกฝนการพูด?"
@@ -15330,6 +15360,11 @@ msgstr ""
 "คุณจะตอบคำถามสั้นเกี่ยวกับ .NET, APIs, ฐานข้อมูล, การดำเนินการพร้อมกัน "
 "และการออกแบบระบบ"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:44
+#. js-lingui-explicit-id
+msgid "You will record a short answer about why you want to practice"
+msgstr "คุณจะบันทึกคำตอบสั้น ๆ ว่าทำไมคุณถึงอยากฝึกฝน"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
 #: src/features/Case/data/frontend-senior/quizData.ts:343
@@ -15408,6 +15443,11 @@ msgstr "คำตอบของคุณจะถูกมองเห็นโ
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "อวตารของคุณ:"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:48
+#. js-lingui-explicit-id
+msgid "Your browser will ask for permission. Tap Allow"
+msgstr "เบราว์เซอร์ของคุณจะขออนุญาต แตะ อนุญาต"
 
 #: src/features/PayWall/CardValidator.tsx:87
 #. js-lingui-explicit-id

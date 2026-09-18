@@ -739,6 +739,11 @@ msgstr "모든 소스 코드는 공개되어 있으며 누구나 이용할 수 �
 msgid "All time"
 msgstr "항상"
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
+#. js-lingui-explicit-id
+msgid "Allow microphone"
+msgstr "마이크 허용"
+
 #: src/features/Plan/LessonStartModal.tsx:323
 #. js-lingui-explicit-id
 msgid "Allow Microphone Access"
@@ -748,6 +753,11 @@ msgstr "마이크 액세스 허용"
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "웹캠 허용"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:40
+#. js-lingui-explicit-id
+msgid "Allow your microphone"
+msgstr "마이크 사용을 허용하십시오"
 
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
@@ -2135,7 +2145,7 @@ msgstr "격리 수준 선택, 모델 집계 및 효율적인 쿼리 작성."
 msgid "Choose Language Level"
 msgstr "언어 수준 선택"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:136
+#: src/features/Goal/Quiz/QuizPage2.tsx:137
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "사이트 언어 선택"
@@ -4235,7 +4245,7 @@ msgstr "결제 세션 생성 오류. 지원팀에 알림이 전송되었습니�
 msgid "Error creating payment session. Try again later."
 msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 시도하세요."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:68
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "플랜 생성 오류. 다시 시도해 주세요."
@@ -6122,7 +6132,7 @@ msgstr ""
 "서비스를 제공하는 즉시 계약을 해지할 권리를 상실한다는 것을 인정합니다."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
-#: src/features/Goal/Quiz/QuizPage2.tsx:108
+#: src/features/Goal/Quiz/QuizPage2.tsx:109
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "배우고 싶어요:"
@@ -6169,7 +6179,7 @@ msgstr "메모리 내 캐싱을 추가하고 데이터베이스 리소스를 증
 msgid "I'd add retries with a longer timeout."
 msgstr "재시도를 추가하고 더 긴 시간 제한을 설정하겠습니다."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:47
+#: src/features/Goal/Quiz/QuizPage2.tsx:48
 #. js-lingui-explicit-id
 msgid "I'll use your answer to make your personal plan."
 msgstr "당신의 답변을 사용하여 개인 계획을 만들겠습니다."
@@ -6658,7 +6668,7 @@ msgid ""
 "conversation. Please wait."
 msgstr "당신의 대화를 기반으로 규칙과 예시를 준비하는 데 약 1분 정도 걸릴 수 있습니다. 잠시만 기다려 주세요."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:169
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "최대 1분 정도 걸릴 수 있습니다."
@@ -7479,6 +7489,13 @@ msgstr ""
 "마이크 접근이 차단되었습니다. 브라우저 설정을 열고 이 사이트에 대한 마이크 접근을 허용한 다음, \"마이크 권한 부여\"를 다시 "
 "누르세요."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:80
+#. js-lingui-explicit-id
+msgid ""
+"Microphone access was blocked. Open your browser settings, allow microphone "
+"access for this site, then tap Allow microphone again."
+msgstr "마이크 접근이 차단되었습니다. 브라우저 설정을 열어 이 사이트에 대한 마이크 접근을 허용한 후, 다시 마이크 허용을 탭하세요."
+
 #: src/features/Conversation/JustTalkHandoffScreen.tsx:128
 #. js-lingui-explicit-id
 msgid ""
@@ -7719,7 +7736,7 @@ msgstr "뉴스 토론"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:110
+#: src/features/Goal/Quiz/QuizPage2.tsx:111
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -10071,6 +10088,7 @@ msgstr "사용자 신고"
 msgid "Request failed. Please try again."
 msgstr "요청이 실패했습니다. 다시 시도해 주세요."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
 #: src/features/webCam/MicrophonePermissionModal.tsx:145
 #. js-lingui-explicit-id
 msgid "Requesting access..."
@@ -10581,7 +10599,7 @@ msgstr "시니어 프론트엔드 인터뷰"
 msgid "Sentences"
 msgstr "문장"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:121
+#: src/features/Goal/Quiz/QuizPage2.tsx:122
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "내 언어 설정"
@@ -10907,7 +10925,7 @@ msgstr "스마트 스타트"
 msgid "Smoothed"
 msgstr "부드럽게 함"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:120
+#: src/features/Goal/Quiz/QuizPage2.tsx:121
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "그래서 저는 단어를 번역해드릴 수 있습니다"
@@ -10929,6 +10947,11 @@ msgstr "그래서 당신의 진행 상황을 유지할 수 있습니다."
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr "따라서 진행 상황을 저장할 수 있습니다"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:41
+#. js-lingui-explicit-id
+msgid "So you can speak your answer and talk with the teacher"
+msgstr "그래서 당신은 대답을 말하고 선생님과 대화할 수 있습니다."
 
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:9
 #: src/features/RolePlay/scenarios/meeting-dog-owners-in-the-park.ts:22
@@ -11142,7 +11165,7 @@ msgstr "녹음 시작"
 msgid "Start recording"
 msgstr "녹음을 시작하세요"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:181
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
 #. js-lingui-explicit-id
@@ -12723,7 +12746,7 @@ msgstr ""
 "\n"
 "심호흡을 하세요. 엉뚱할 겁니다."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:137
+#: src/features/Goal/Quiz/QuizPage2.tsx:138
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "이것은 버튼과 메뉴에서 볼 수 있는 텍스트입니다"
@@ -13616,7 +13639,7 @@ msgstr "우리는 귀하의 피드백에 감사드립니다!"
 msgid "We are preparing a lesson for you, based on your previous practice."
 msgstr "당신의 이전 연습을 바탕으로 레슨을 준비하고 있습니다."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:163
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "귀하의 계획을 설계할 준비가 되었습니다."
@@ -13652,6 +13675,11 @@ msgstr "당신의 이메일로 로그인 링크를 보냈습니다. 받은 편�
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "사용자 경험을 향상시키기 위해 쿠키를 사용합니다"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:52
+#. js-lingui-explicit-id
+msgid "We use the microphone only to hear you in this session"
+msgstr "이번 세션에서 우리는 당신의 목소리를 듣기 위해서만 마이크를 사용합니다"
 
 #: src/features/Header/NeedHelpModal.tsx:54
 #. js-lingui-explicit-id
@@ -13787,7 +13815,7 @@ msgstr "FluencyPal의 주요 초점은 무엇인가요?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "어떤 종류의 백엔드 인터뷰를 연습할 수 있나요?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:119
+#: src/features/Goal/Quiz/QuizPage2.tsx:120
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "어떤 언어를 사용하시나요?"
@@ -13950,7 +13978,7 @@ msgstr "백엔드 후보자가 빠르게 향상되는 이유"
 msgid "Why candidates improve so quickly"
 msgstr "후보자들이 왜 그렇게 빨리 향상되는가"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:46
+#: src/features/Goal/Quiz/QuizPage2.tsx:47
 #. js-lingui-explicit-id
 msgid "Why do you want to practice speaking?"
 msgstr "왜 말하기 연습을 하고 싶으신가요?"
@@ -14546,6 +14574,11 @@ msgid ""
 "and system design."
 msgstr ".NET, API, 데이터베이스, 동시성 및 시스템 설계에 대한 짧은 질문에 답변합니다."
 
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:44
+#. js-lingui-explicit-id
+msgid "You will record a short answer about why you want to practice"
+msgstr "왜 연습하고 싶은지에 대한 짧은 답변을 녹음할 것입니다."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
 #: src/features/Case/data/frontend-senior/quizData.ts:343
@@ -14622,6 +14655,11 @@ msgstr "당신의 답변은 제출 후 상대방에게 보이게 됩니다."
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "당신의 아바타:"
+
+#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:48
+#. js-lingui-explicit-id
+msgid "Your browser will ask for permission. Tap Allow"
+msgstr "귀하의 브라우저에서 권한을 요청할 것입니다. 허용을 탭하세요."
 
 #: src/features/PayWall/CardValidator.tsx:87
 #. js-lingui-explicit-id
