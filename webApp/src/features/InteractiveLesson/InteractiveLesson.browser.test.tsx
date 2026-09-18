@@ -16,6 +16,13 @@ import {
   noop,
   noopAsync,
 } from './interactiveLessonFixtureData';
+import { LESSON_THEME_VARS } from './lessonTheme';
+
+const lessonSurfaceStyle = {
+  ...LESSON_THEME_VARS,
+  background: LESSON_THEME_VARS['--page-bg'],
+  color: LESSON_THEME_VARS['--text-primary-dark'],
+} as const;
 
 const { recorderMock, conversationAudioMock } = vi.hoisted(() => ({
   conversationAudioMock: {
@@ -225,7 +232,7 @@ test('dashboard card – done today', async () => {
 
 test('language setup disables continue when native equals target', async () => {
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <LanguageSetupView
         nativeLanguageCode="en"
         targetLanguageCode="en"
@@ -323,7 +330,7 @@ test('finish lesson auto-plays results and shows it is playing', async () => {
 test('speech panel – idle', async () => {
   resetRecorder();
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <SpeechAnswerPanel
         part={FIXTURE_SPEECH_PART}
         partIndex={1}
@@ -354,7 +361,7 @@ test('speech panel – recording', async () => {
   );
 
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <SpeechAnswerPanel
         part={FIXTURE_SPEECH_PART}
         partIndex={1}
@@ -377,7 +384,7 @@ test('speech panel – recording', async () => {
 test('speech panel – thinking', async () => {
   resetRecorder();
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <SpeechAnswerPanel
         part={FIXTURE_SPEECH_PART}
         partIndex={1}
@@ -399,7 +406,7 @@ test('speech panel – thinking', async () => {
 test('speech panel – answered uses a text Answer again button', async () => {
   resetRecorder();
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <SpeechAnswerPanel
         part={{
           ...FIXTURE_SPEECH_PART,
@@ -431,7 +438,7 @@ test('speech panel – auto-plays feedback and shows it is playing', async () =>
   conversationAudioMock.speak.mockImplementation(() => new Promise(() => undefined));
 
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <SpeechAnswerPanelView
         part={{
           ...FIXTURE_SPEECH_PART,
@@ -461,7 +468,7 @@ test('speech panel – auto-plays feedback and shows it is playing', async () =>
 
 test('progress asks for more recordings before comparing', async () => {
   await renderInShell(
-    <div style={{ width: 720, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
       <LessonProgressView
         audioProgress={emptyAudioProgress()}
         lessons={[]}
@@ -490,7 +497,7 @@ test('progress shows before and after after 100 recordings', async () => {
   })).reduce(recordLessonAudio, emptyAudioProgress());
 
   await renderInShell(
-    <div style={{ width: 800, padding: 16, background: '#37373a', color: '#EBEBF5' }}>
+    <div style={{ width: 800, padding: 16, ...lessonSurfaceStyle }}>
       <LessonProgressView
         audioProgress={audioProgress}
         lessons={[FIXTURE_FINISHED_LESSON]}
@@ -537,8 +544,7 @@ test('opening a history lesson scrolls to its title', async () => {
         width: 720,
         height: 360,
         overflowY: 'auto',
-        background: '#37373a',
-        color: '#EBEBF5',
+        ...lessonSurfaceStyle,
       }}
     >
       <LessonProgressView

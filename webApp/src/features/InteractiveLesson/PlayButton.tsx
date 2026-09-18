@@ -22,20 +22,20 @@ export const PlayButton = ({
     <Stack
       data-testid={testId}
       sx={{
-        backgroundColor: isPlaying ? '#1d4ed8' : '#111827',
+        backgroundColor: isPlaying ? 'var(--accent)' : 'var(--page-bg)',
         borderRadius: '40px',
         padding: '0px',
         '@keyframes lessonPlayButtonPulse': {
-          '0%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0.7)' },
-          '70%': { boxShadow: '0 0 0 10px rgba(37, 99, 235, 0)' },
-          '100%': { boxShadow: '0 0 0 0 rgba(37, 99, 235, 0)' },
+          '0%': { boxShadow: '0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent)' },
+          '70%': { boxShadow: '0 0 0 10px color-mix(in srgb, var(--accent) 0%, transparent)' },
+          '100%': { boxShadow: '0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent)' },
         },
         animation: isPlaying ? 'lessonPlayButtonPulse 1.4s ease-out infinite' : 'none',
       }}
     >
       <AudioPlayIcon
         text={text}
-        color="#fff"
+        color="var(--text-primary-dark)"
         opacity={1}
         autoPlay={autoPlay}
         maxInputLength={OPENAI_TTS_MAX_INPUT_CHARS}

@@ -17,6 +17,7 @@ import { InteractiveLesson, isOpenTalkPart, isReadAloudPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
 import { findScrollParent } from './findScrollParent';
+import { lessonAccentButtonSx, lessonThemeSx } from './lessonTheme';
 
 export const InteractiveLessonModalContent = ({
   lesson,
@@ -108,8 +109,7 @@ export const InteractiveLessonModalContent = ({
   return (
     <Stack
       sx={{
-        backgroundColor: '#37373a',
-        color: '#EBEBF5',
+        ...lessonThemeSx,
         width: '100%',
         height: '100%',
         padding: '0 10px',
@@ -146,6 +146,7 @@ export const InteractiveLessonModalContent = ({
                 ensuredRef.current = false;
                 void onEnsureLesson();
               }}
+              sx={lessonAccentButtonSx}
             >
               {i18n._('Retry')}
             </Button>
@@ -189,7 +190,7 @@ export const InteractiveLessonModalContent = ({
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 marginTop: '34px',
-                borderTop: '1px solid #444447',
+                borderTop: '1px solid color-mix(in srgb, var(--text-secondary-dark) 40%, transparent)',
                 paddingTop: '24px',
               }}
             >
@@ -205,6 +206,7 @@ export const InteractiveLessonModalContent = ({
                 }}
                 disabled={!!lesson.lessonResults || isGeneratingResults}
                 data-testid="interactive-lesson-done"
+                sx={lessonAccentButtonSx}
               >
                 {i18n._('Finish lesson')}
               </Button>

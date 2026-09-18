@@ -11,6 +11,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { PlayButton } from './PlayButton';
+import { LESSON_THEME_VARS } from './lessonTheme';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -55,7 +56,7 @@ export const SpeechAnswerPanelView = ({
 
   return (
     <Stack
-      sx={{ gap: '12px', width: '100%' }}
+      sx={{ ...LESSON_THEME_VARS, gap: '12px', width: '100%' }}
       data-testid={`interactive-lesson-speech-${partIndex}`}
     >
       <Stack sx={{ gap: '10px', width: '100%' }}>
@@ -66,12 +67,12 @@ export const SpeechAnswerPanelView = ({
         )}
 
         {isReadAloud && !answered && (
-          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary-dark)' }}>
             {i18n._('Read the text aloud. You can play it first.')}
           </Typography>
         )}
         {isOpenTalk && !answered && (
-          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary-dark)' }}>
             {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
           </Typography>
         )}
@@ -94,6 +95,12 @@ export const SpeechAnswerPanelView = ({
             onClick={onToggleRecord}
             sx={{
               flexShrink: 0,
+              ...(!isRecording
+                ? {
+                    color: 'var(--accent)',
+                    borderColor: 'var(--accent)',
+                  }
+                : {}),
               ...(isRecording && visualizer
                 ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
                 : {}),
@@ -189,9 +196,9 @@ export const SpeechAnswerPanelView = ({
             sx={{
               padding: '10px 12px 15px 12px',
               borderRadius: '10px 10px 0 0',
-              backgroundColor: 'rgb(240, 248, 253)',
-              borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-              color: 'rgba(0, 0, 0, 0.87)',
+              backgroundColor: 'var(--card-bg)',
+              borderBottom: '1px solid color-mix(in srgb, var(--card-text) 12%, transparent)',
+              color: 'var(--card-text)',
             }}
           >
             <Stack
@@ -204,7 +211,7 @@ export const SpeechAnswerPanelView = ({
               }}
             >
               <Stack>
-                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
                   {isReadAloud ? i18n._('Your reading') : i18n._('Your answer')}
                 </Typography>
                 <Typography
@@ -220,7 +227,8 @@ export const SpeechAnswerPanelView = ({
               {(audioUrl || part.userAudioUrl) && (
                 <Stack
                   sx={{
-                    backgroundColor: '#111827',
+                    backgroundColor: 'var(--page-bg)',
+                    color: 'var(--text-primary-dark)',
                     borderRadius: '40px',
                     padding: '0px',
                   }}
@@ -233,10 +241,10 @@ export const SpeechAnswerPanelView = ({
 
           <Stack
             sx={{
-              backgroundColor: 'rgba(240, 245, 241)',
+              backgroundColor: 'var(--feedback-bg)',
               padding: '13px 12px',
               borderRadius: '0 0 10px 10px',
-              color: 'rgba(0, 0, 0, 0.87)',
+              color: 'var(--card-text)',
             }}
           >
             <Stack
@@ -249,7 +257,7 @@ export const SpeechAnswerPanelView = ({
               }}
             >
               <Stack>
-                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
                   {isFeedbackPlaying ? i18n._('Playing') : i18n._('Feedback')}
                 </Typography>
                 <LessonMarkdown content={part.aiResultToUser} />

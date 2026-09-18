@@ -8,6 +8,7 @@ import { ThinkingProgress } from './ThinkingProgress';
 import { LessonResults } from './types';
 import { ArrowRight } from 'lucide-react';
 import { PlayButton } from './PlayButton';
+import { lessonAccentButtonSx } from './lessonTheme';
 
 export const LessonResultsView = ({
   results,
@@ -37,16 +38,16 @@ export const LessonResultsView = ({
       {results && (
         <Stack
           sx={{
-            color: 'rgba(0, 0, 0, 0.87)',
+            color: 'var(--card-text)',
           }}
         >
           <Stack
             sx={{
               padding: '20px',
               gap: '20px',
-              backgroundColor: 'rgb(240, 248, 253)',
+              backgroundColor: 'var(--card-bg)',
               borderRadius: '10px 10px 0 0',
-              borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+              borderBottom: '1px solid color-mix(in srgb, var(--card-text) 12%, transparent)',
             }}
           >
             <Stack
@@ -58,9 +59,16 @@ export const LessonResultsView = ({
                 justifyContent: 'space-between',
               }}
             >
-              <Typography variant="h3" sx={{ fontWeight: 800 }}>
-                {i18n._('Your results')}
-              </Typography>
+              <Stack>
+                {isResultsPlaying && (
+                  <Typography variant="caption" sx={{ color: 'var(--card-text-secondary)' }}>
+                    {i18n._('Playing')}
+                  </Typography>
+                )}
+                <Typography variant="h3" sx={{ fontWeight: 800 }}>
+                  {i18n._('Your results')}
+                </Typography>
+              </Stack>
               <PlayButton
                 text={resultsSpeakText}
                 autoPlay={autoPlay}
@@ -78,7 +86,7 @@ export const LessonResultsView = ({
               flexWrap: 'wrap',
               padding: '20px',
               borderRadius: '0 0 10px 10px',
-              backgroundColor: 'rgba(240, 245, 241)',
+              backgroundColor: 'var(--feedback-bg)',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}
@@ -88,7 +96,7 @@ export const LessonResultsView = ({
               color="info"
               onClick={onNextLesson}
               data-testid="interactive-lesson-next"
-              sx={{ padding: '10px 24px' }}
+              sx={{ ...lessonAccentButtonSx, padding: '10px 24px' }}
               endIcon={<ArrowRight size={20} />}
             >
               {isGeneratingNext ? i18n._('Preparing next lesson...') : i18n._('Next lesson')}

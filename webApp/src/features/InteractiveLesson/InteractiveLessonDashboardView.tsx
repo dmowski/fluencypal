@@ -2,6 +2,7 @@ import { Stack } from '@mui/material';
 import { StoreCard } from '@/features/uiKit/Card/StoreCard';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { INTERACTIVE_LESSON_CARD_IMAGE, INTERACTIVE_LESSON_DONE_CARD_IMAGE } from './constants';
+import { LESSON_THEME_VARS } from './lessonTheme';
 
 export const InteractiveLessonDashboardView = ({
   title,
@@ -26,7 +27,7 @@ export const InteractiveLessonDashboardView = ({
 }) => {
   return (
     <Stack
-      sx={{ gap: '20px' }}
+      sx={{ ...LESSON_THEME_VARS, gap: '20px' }}
       data-testid="interactive-lesson-dashboard-card"
     >
       <SectionHeader
@@ -36,7 +37,7 @@ export const InteractiveLessonDashboardView = ({
         onButtonClick={onProgressClick}
       />
       <StoreCard
-        textColor="#fff"
+        textColor={LESSON_THEME_VARS['--text-primary-dark']}
         backgroundColor={isDoneToday ? 'rgba(16, 92, 46, 0.72)' : 'rgba(18, 32, 54, 0.72)'}
         previewImageUrl={isDoneToday ? INTERACTIVE_LESSON_DONE_CARD_IMAGE : INTERACTIVE_LESSON_CARD_IMAGE}
         title={cardTitle}

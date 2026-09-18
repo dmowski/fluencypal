@@ -43,8 +43,11 @@ export const LessonScrollProgress = ({
       <LinearProgress
         variant="determinate"
         value={progress * 100}
-        color="info"
-        sx={{ height: '4px' }}
+        sx={{
+          height: '4px',
+          backgroundColor: 'color-mix(in srgb, var(--accent) 20%, transparent)',
+          '& .MuiLinearProgress-bar': { backgroundColor: 'var(--accent)' },
+        }}
       />
     </Stack>
   );

@@ -26,7 +26,13 @@ export const LessonPartSection = ({
 }) => {
   return (
     <Stack sx={{ width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
-      {partIndex > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }} />}
+      {partIndex > 0 && (
+        <Divider
+          sx={{
+            borderColor: 'color-mix(in srgb, var(--text-secondary-dark) 35%, transparent)',
+          }}
+        />
+      )}
       <Stack
         sx={{
           gap: '4px',

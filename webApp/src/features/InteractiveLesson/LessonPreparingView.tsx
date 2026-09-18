@@ -11,7 +11,11 @@ export const LessonPreparingView = () => {
     <Stack sx={{ gap: '20px' }} data-testid="interactive-lesson-preparing">
       <Typography
         variant="caption"
-        sx={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
+        sx={{
+          textTransform: 'uppercase',
+          letterSpacing: '0.1em',
+          color: 'var(--text-secondary-dark)',
+        }}
       >
         {i18n._('We are preparing a lesson for you, based on your previous practice.')}
       </Typography>
