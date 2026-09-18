@@ -159,7 +159,7 @@ Daily and legacy user tasks live in `src/features/Tasks/`. Full architecture (pl
 
 First-party iframe journey tracking: `src/features/Analytics/Custom/`.
 
-- Guide + **“What's going today?”** report format: `src/features/Analytics/Custom/AGENTS.md`
+- Guide + **“What's going today?”** report format: `src/features/Analytics/Custom/AGENTS.md` (also the `analyze-analytics-report` skill; include Sentry for the same window)
 - Intervention log (do not repeat experiments): `src/features/Analytics/Custom/INTERVENTIONS.md`
 - Last report window: `src/features/Analytics/Custom/LAST_REPORT.md`
 - Admin UI: `/staats/journey`
