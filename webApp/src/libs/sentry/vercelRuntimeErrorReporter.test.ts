@@ -1,13 +1,9 @@
 import { EventEmitter } from 'node:events';
-import http from 'node:http';
 import {
   createVercelRuntimeTimeoutError,
-  getTrackedInFlightRequests,
   InFlightHttpTracker,
-  installVercelRuntimeErrorReporter,
   reportVercelRuntimeTermination,
   requestPathWithoutQuery,
-  uninstallVercelRuntimeErrorReporter,
 } from './vercelRuntimeErrorReporter';
 
 describe('requestPathWithoutQuery', () => {
@@ -106,43 +102,5 @@ describe('createVercelRuntimeTimeoutError', () => {
     expect(error.message).toBe(
       'Vercel Runtime Timeout Error: Task timed out while handling GET /api/ttsStream',
     );
-  });
-});
-
-describe('installVercelRuntimeErrorReporter', () => {
-  afterEach(() => {
-    uninstallVercelRuntimeErrorReporter();
-  });
-
-  it('tracks in-flight Node HTTP requests', async () => {
-    installVercelRuntimeErrorReporter({ force: true });
-
-    const server = http.createServer((req, res) => {
-      expect(getTrackedInFlightRequests().map((request) => request.path)).toEqual([
-        '/api/ttsStream',
-      ]);
-      res.end('ok');
-    });
-
-    await new Promise<void>((resolve, reject) => {
-      server.listen(0, '127.0.0.1', () => {
-        const address = server.address();
-        if (!address || typeof address === 'string') {
-          reject(new Error('Missing listen address'));
-          return;
-        }
-        http
-          .get(
-            { host: '127.0.0.1', port: address.port, path: '/api/ttsStream?input=secret' },
-            (res) => {
-              res.resume();
-              res.on('end', () => server.close(() => resolve()));
-            },
-          )
-          .on('error', reject);
-      });
-    });
-
-    expect(getTrackedInFlightRequests()).toEqual([]);
   });
 });

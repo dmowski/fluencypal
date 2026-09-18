@@ -1,6 +1,5 @@
 import { EventEmitter } from 'node:events';
-import http from 'node:http';
-import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { IncomingMessage } from 'node:http';
 import * as Sentry from '@sentry/nextjs';
 
 const SIGTERM_FLUSH_MS = 1000;
@@ -103,78 +102,3 @@ export const reportVercelRuntimeTermination = async (options: {
   await flush(SIGTERM_FLUSH_MS);
   return true;
 };
-
-type InstalledReporter = {
-  tracker: InFlightHttpTracker;
-  restore: () => void;
-};
-
-let installed: InstalledReporter | undefined;
-
-const getInstalled = (): InstalledReporter | undefined => installed;
-
-const setInstalled = (value: InstalledReporter | undefined) => {
-  installed = value;
-};
-
-const patchHttpServerEmit = (tracker: InFlightHttpTracker): (() => void) => {
-  const originalEmit = http.Server.prototype.emit;
-  function patchedEmit(this: http.Server, event: string | symbol, ...args: unknown[]): boolean {
-    if (event === 'request') {
-      const req = args[0] as IncomingMessage;
-      const res = args[1] as ServerResponse;
-      tracker.track(req, res);
-    }
-    return originalEmit.apply(this, [event, ...args] as Parameters<typeof originalEmit>);
-  }
-  http.Server.prototype.emit = patchedEmit;
-  return () => {
-    http.Server.prototype.emit = originalEmit;
-  };
-};
-
-/**
- * Vercel kills the isolate on maxDuration (SIGTERM, then SIGKILL). That is not a
- * JavaScript exception, so Sentry never sees it unless we capture during SIGTERM
- * while the HTTP request is still open.
- */
-export const installVercelRuntimeErrorReporter = (options?: { force?: boolean }): void => {
-  if (!options?.force && process.env.VERCEL !== '1') {
-    return;
-  }
-  if (getInstalled()) {
-    return;
-  }
-
-  const tracker = new InFlightHttpTracker();
-  const restoreEmit = patchHttpServerEmit(tracker);
-  let reported = false;
-
-  const onSignal = (signal: NodeJS.Signals) => {
-    if (reported) {
-      return;
-    }
-    reported = true;
-    void reportVercelRuntimeTermination({
-      signal,
-      requests: tracker.snapshot(),
-    });
-  };
-
-  process.on('SIGTERM', onSignal);
-
-  setInstalled({
-    tracker,
-    restore: () => {
-      restoreEmit();
-      process.off('SIGTERM', onSignal);
-      setInstalled(undefined);
-    },
-  });
-};
-
-export const uninstallVercelRuntimeErrorReporter = (): void => {
-  getInstalled()?.restore();
-};
-
-export const getTrackedInFlightRequests = () => getInstalled()?.tracker.snapshot() ?? [];
