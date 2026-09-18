@@ -42,8 +42,7 @@
     "generate:exam-quiz-images": "node --env-file=.env src/features/Quiz/Polish/scripts/generate-exam-quiz-images.mjs",
     "ai-translate": "node --env-file=.env updateLanguage.mjs",
     "audio:role-openings": "node --env-file=.env scripts/generateRolePlayOpeningAudio.mjs",
-    "lang": "pnpm kill-dev-port && pnpm clean:cache && lingui extract && pnpm run ai-translate && lingui compile",
-    "lang-clean": "pnpm kill-dev-port && pnpm clean:cache && lingui extract --clean && pnpm run ai-translate && lingui compile",
+    "lang": "pnpm kill-dev-port && pnpm clean:cache && lingui extract --clean && pnpm run ai-translate && lingui compile",
     "stripe-hook": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "fix-prettier": "prettier --write .",
     "format": "prettier --write .",
@@ -52,7 +51,7 @@
     "firestore:indexes": "node scripts/deployFirestoreIndexes.mjs",
     "analytics:export": "node scripts/exportCustomAnalytics.mjs",
     "emulator:test-user": "node scripts/createEmulatorTestUser.mjs",
-    "prod": "pnpm lang-clean && node scripts/prod.mjs"
+    "prod": "pnpm lang && node scripts/prod.mjs"
   },
   "dependencies": {
     "@datafast/ai-crawl": "^1.0.7",

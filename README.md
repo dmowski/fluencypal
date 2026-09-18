@@ -144,7 +144,6 @@ pnpm test:e2e:headed    # Run Playwright in headed mode
 
 ```bash
 pnpm lang               # Extract, translate, and compile language files
-pnpm lang-clean         # Clean and regenerate language files
 pnpm ai-translate       # AI-powered translation of new strings
 ```
 

@@ -2,7 +2,7 @@
 /**
  * Remove gitignored caches that are safe to regenerate.
  *
- * Used as a pre-step for `pnpm dev:prod`, `pnpm lang`, and `pnpm lang-clean`.
+ * Used as a pre-step for `pnpm dev:prod`, `pnpm lang`.
  * Does not touch source, public assets, locale catalogs, node_modules
  * (except the Vite cache inside it), or Vercel project link files
  * (`.vercel/project.json`, `.vercel/.env.production`).
