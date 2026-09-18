@@ -437,6 +437,7 @@ describe('normalizeAnalyticsPath', () => {
     expect(quizStepFromAnalyticsPath('/ar/quiz?currentStep=before_recordAbout')).toBe(
       'before_recordAbout',
     );
+    expect(quizStepFromAnalyticsPath('/quiz?currentStep=micPermission')).toBe('micPermission');
     expect(quizStepFromAnalyticsPath('/quiz')).toBe('start');
     expect(quizStepFromAnalyticsPath('/practice?rolePlayId=alias-game')).toBeNull();
   });

@@ -1,7 +1,13 @@
 import { quizSteps, resolveQuizStep } from './quizSteps';
 
 describe('resolveQuizStep', () => {
+  it('asks for the microphone after teacher selection and before the about clip', () => {
+    expect(quizSteps.indexOf('micPermission')).toBe(quizSteps.indexOf('teacherSelection') + 1);
+    expect(quizSteps.indexOf('before_recordAbout')).toBe(quizSteps.indexOf('micPermission') + 1);
+  });
+
   it('keeps an active step', () => {
+    expect(resolveQuizStep('micPermission', quizSteps)).toBe('micPermission');
     expect(resolveQuizStep('before_recordAbout', quizSteps)).toBe('before_recordAbout');
     expect(resolveQuizStep('goalReview', quizSteps)).toBe('goalReview');
   });

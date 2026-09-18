@@ -22,6 +22,7 @@ import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
+import { QuizMicPermissionStep } from './QuizMicPermissionStep';
 import { hasAboutTranscription } from './quizGuestAboutStorage';
 
 const QuizQuestions = () => {
@@ -143,6 +144,10 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'pageLanguage' && <PageLanguageSelector />}
+
+          {currentStep === 'micPermission' && (
+            <QuizMicPermissionStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
 
           {currentStep === 'before_recordAbout' && (
             <QuizBeforeRecordAboutGate

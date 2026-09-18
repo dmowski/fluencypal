@@ -7,6 +7,7 @@ import { captureUiContext, hashUiContext, screenIdFromPath } from './captureUiCo
 describe('screenIdFromPath', () => {
   it('maps quiz steps, just talk and role play', () => {
     expect(screenIdFromPath('/quiz?currentStep=goalReview', '')).toBe('quiz.goalReview');
+    expect(screenIdFromPath('/quiz?currentStep=micPermission', '')).toBe('quiz.micPermission');
     expect(screenIdFromPath('/ar/practice?justTalk=open', '')).toBe('practice.justTalk');
     expect(screenIdFromPath('/practice?rolePlayId=alias-game', '')).toBe('practice.rolePlay');
     expect(screenIdFromPath('/es/scenarios/job-interview', 'Sign in')).toBe('scenario.dialog');
