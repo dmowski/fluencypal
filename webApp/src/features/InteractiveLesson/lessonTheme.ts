@@ -1,32 +1,54 @@
 export const lessonColor = {
+  // Main surfaces
   bg: '#343438',
   bgElevated: '#3A3A3F',
+
+  // Text on dark background
   textPrimary: '#F4F4F6',
-  textSecondary: '#C7C7CD',
-  textMuted: '#9A9EA6',
-  divider: 'rgba(255, 255, 255, 0.14)',
-  cardBg: '#F5F7F8',
-  cardBgSecondary: '#F1F4F3',
-  cardText: '#1D1E22',
-  cardTextSecondary: '#555A62',
-  cardBorder: '#D9DDE1',
+  textSecondary: '#C9CBD1',
+  textMuted: '#A3A6AE',
+
+  // Structure
+  divider: 'rgba(255, 255, 255, 0.12)',
+
+  // Light cards
+  cardBg: '#F5F6F7',
+  cardBgSecondary: '#F0F2F2',
+  cardText: '#1F2024',
+  cardTextSecondary: '#5C6068',
+  cardBorder: '#D8DBDF',
+
+  // Accent
   accent: '#2AA6E8',
-  accentHover: '#238FC9',
-  accentSoft: 'rgba(42, 166, 232, 0.12)',
-  accentPulse: 'rgba(42, 166, 232, 0.7)',
+  accentHover: '#218FC9',
+  accentSoft: 'rgba(42, 166, 232, 0.10)',
+  accentPulse: 'rgba(42, 166, 232, 0.55)',
   accentPulseEnd: 'rgba(42, 166, 232, 0)',
-  controlNeutral: '#B8BCC4',
-  controlNeutralHover: '#E7E9ED',
-  dangerMuted: '#A9ADB5',
-  dangerHover: '#F06A61',
-  disabledBg: '#55565C',
-  disabledText: '#8E9198',
-  onAccent: '#fff',
-  recording: '#F44336',
-  warning: '#ff8e86',
+
+  // Neutral interactive controls
+  controlNeutral: '#B7BAC2',
+  controlNeutralHover: '#E3E5E9',
+  controlNeutralDark: '#747983',
+  controlNeutralOnLight: '#6F747D',
+  controlNeutralOnLightHover: '#343840',
+
+  // Semantic
+  dangerMuted: '#9FA3AB',
+  dangerHover: '#E56B64',
+  recording: '#EF5350',
+  warning: '#F09A91',
+
+  // Disabled
+  disabledBg: '#505158',
+  disabledText: '#8D9098',
+
+  // Contrast text
+  onAccent: '#FFFFFF',
+
+  // Dashboard
   dashboardDone: 'rgba(16, 92, 46, 0.72)',
   dashboardIdle: 'rgba(18, 32, 54, 0.72)',
-  dashboardItems: 'rgba(0, 0, 0, 0.2)',
+  dashboardItems: 'rgba(0, 0, 0, 0.20)',
 } as const;
 
 export const lessonSx = {
@@ -34,36 +56,76 @@ export const lessonSx = {
     backgroundColor: lessonColor.bg,
     color: lessonColor.textPrimary,
   },
-  textPrimary: { color: lessonColor.textPrimary },
-  textSecondary: { color: lessonColor.textSecondary },
-  textMuted: { color: lessonColor.textMuted },
-  cardText: { color: lessonColor.cardText },
-  cardCaption: { color: lessonColor.cardTextSecondary },
-  elevated: { backgroundColor: lessonColor.bgElevated },
-  divider: { borderColor: lessonColor.divider },
-  dividerTop: { borderTop: `1px solid ${lessonColor.divider}` },
+
+  textPrimary: {
+    color: lessonColor.textPrimary,
+  },
+
+  textSecondary: {
+    color: lessonColor.textSecondary,
+  },
+
+  textMuted: {
+    color: lessonColor.textMuted,
+  },
+
+  cardText: {
+    color: lessonColor.cardText,
+  },
+
+  cardCaption: {
+    color: lessonColor.cardTextSecondary,
+  },
+
+  elevated: {
+    backgroundColor: lessonColor.bgElevated,
+  },
+
+  divider: {
+    borderColor: lessonColor.divider,
+  },
+
+  dividerTop: {
+    borderTop: `1px solid ${lessonColor.divider}`,
+  },
+
   title: {
     color: lessonColor.textPrimary,
-    '& p': { color: lessonColor.textSecondary },
+    '& p': {
+      color: lessonColor.textSecondary,
+    },
   },
+
   answerCard: {
     backgroundColor: lessonColor.cardBg,
     borderBottom: `1px solid ${lessonColor.cardBorder}`,
     color: lessonColor.cardText,
   },
+
   feedbackCard: {
     backgroundColor: lessonColor.cardBgSecondary,
     color: lessonColor.cardText,
   },
-  accentSoft: { backgroundColor: lessonColor.accentSoft },
+
+  accentSoft: {
+    backgroundColor: lessonColor.accentSoft,
+  },
+
   progressBar: {
     backgroundColor: lessonColor.accentSoft,
-    '& .MuiLinearProgress-bar': { backgroundColor: lessonColor.accent },
+    '& .MuiLinearProgress-bar': {
+      backgroundColor: lessonColor.accent,
+    },
   },
+
   recordingVisualizer: {
     boxShadow: `inset 0 0 0 1px ${lessonColor.recording}`,
   },
-  warningText: { color: lessonColor.warning },
+
+  warningText: {
+    color: lessonColor.warning,
+  },
+
   feedbackMarkdown: {
     '& .MuiTypography-root': {
       fontSize: '18px !important',
@@ -82,9 +144,11 @@ export const lessonSurfaceStyle = {
 export const lessonPrimaryButtonSx = {
   backgroundColor: lessonColor.accent,
   color: lessonColor.onAccent,
+
   '&:hover': {
     backgroundColor: lessonColor.accentHover,
   },
+
   '&.Mui-disabled': {
     backgroundColor: lessonColor.disabledBg,
     color: lessonColor.disabledText,
@@ -93,40 +157,99 @@ export const lessonPrimaryButtonSx = {
 
 export const lessonRecordButtonSx = {
   color: lessonColor.controlNeutral,
-  borderColor: lessonColor.controlNeutral,
+  borderColor: lessonColor.controlNeutralDark,
   backgroundColor: 'transparent',
+
   '&:hover': {
     color: lessonColor.accent,
     borderColor: lessonColor.accent,
     backgroundColor: lessonColor.accentSoft,
   },
+
+  '&.Mui-disabled': {
+    color: lessonColor.disabledText,
+    borderColor: lessonColor.disabledBg,
+  },
 } as const;
 
 export const lessonGhostButtonSx = {
   color: lessonColor.controlNeutral,
-  '&:hover': {
-    color: lessonColor.accent,
-    backgroundColor: 'transparent',
-  },
-} as const;
 
-export const lessonSkipButtonSx = {
-  color: lessonColor.dangerMuted,
   '&:hover': {
-    color: lessonColor.dangerHover,
+    color: lessonColor.textPrimary,
     backgroundColor: 'transparent',
   },
+
   '&.Mui-disabled': {
     color: lessonColor.disabledText,
   },
 } as const;
 
+export const lessonSkipButtonSx = {
+  color: lessonColor.dangerMuted,
+
+  '&:hover': {
+    color: lessonColor.dangerHover,
+    backgroundColor: 'transparent',
+  },
+
+  '&.Mui-disabled': {
+    color: lessonColor.disabledText,
+  },
+} as const;
+
+export const lessonPlayIconColor = (
+  isPlaying: boolean,
+  surface: 'dark' | 'light' = 'dark',
+  isHover = false,
+) => {
+  if (isPlaying) return isHover ? lessonColor.accentHover : lessonColor.accent;
+  if (surface === 'light') {
+    return isHover ? lessonColor.controlNeutralOnLightHover : lessonColor.controlNeutralOnLight;
+  }
+  return isHover ? lessonColor.textPrimary : lessonColor.controlNeutral;
+};
+
 export const lessonPlaySx = (isPlaying: boolean) => ({
   color: isPlaying ? lessonColor.accent : lessonColor.controlNeutral,
-  '@keyframes lessonPlayButtonPulse': {
-    '0%': { boxShadow: `0 0 0 0 ${lessonColor.accentPulse}` },
-    '70%': { boxShadow: `0 0 0 10px ${lessonColor.accentPulseEnd}` },
-    '100%': { boxShadow: `0 0 0 0 ${lessonColor.accentPulseEnd}` },
+
+  '&:hover': {
+    color: isPlaying ? lessonColor.accentHover : lessonColor.textPrimary,
   },
+
+  '@keyframes lessonPlayButtonPulse': {
+    '0%': {
+      boxShadow: `0 0 0 0 ${lessonColor.accentPulse}`,
+    },
+    '70%': {
+      boxShadow: `0 0 0 10px ${lessonColor.accentPulseEnd}`,
+    },
+    '100%': {
+      boxShadow: `0 0 0 0 ${lessonColor.accentPulseEnd}`,
+    },
+  },
+
+  animation: isPlaying ? 'lessonPlayButtonPulse 1.4s ease-out infinite' : 'none',
+});
+
+export const lessonCardPlaySx = (isPlaying: boolean) => ({
+  color: isPlaying ? lessonColor.accent : lessonColor.controlNeutralOnLight,
+
+  '&:hover': {
+    color: isPlaying ? lessonColor.accentHover : lessonColor.controlNeutralOnLightHover,
+  },
+
+  '@keyframes lessonPlayButtonPulse': {
+    '0%': {
+      boxShadow: `0 0 0 0 ${lessonColor.accentPulse}`,
+    },
+    '70%': {
+      boxShadow: `0 0 0 10px ${lessonColor.accentPulseEnd}`,
+    },
+    '100%': {
+      boxShadow: `0 0 0 0 ${lessonColor.accentPulseEnd}`,
+    },
+  },
+
   animation: isPlaying ? 'lessonPlayButtonPulse 1.4s ease-out infinite' : 'none',
 });

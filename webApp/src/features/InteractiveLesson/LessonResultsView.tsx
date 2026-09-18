@@ -69,6 +69,7 @@ export const LessonResultsView = ({
                 autoPlay={autoPlay}
                 testId="interactive-lesson-results-play"
                 onChangeState={setIsResultsPlaying}
+                surface="light"
               />
             </Stack>
             <LessonMarkdown content={results.motivationTextToUserMD} size="feedback" />

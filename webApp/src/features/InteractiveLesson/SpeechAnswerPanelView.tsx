@@ -222,7 +222,7 @@ export const SpeechAnswerPanelView = ({
               </Stack>
 
               {(audioUrl || part.userAudioUrl) && (
-                <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} />
+                <UserAudioPlayer audioUrl={audioUrl || part.userAudioUrl} surface="light" />
               )}
             </Stack>
           </Stack>
@@ -254,6 +254,7 @@ export const SpeechAnswerPanelView = ({
                 autoPlay={autoPlayFeedback}
                 testId="interactive-lesson-feedback-play"
                 onChangeState={setIsFeedbackPlaying}
+                surface="light"
               />
             </Stack>
           </Stack>
