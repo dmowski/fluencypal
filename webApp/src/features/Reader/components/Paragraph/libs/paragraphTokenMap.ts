@@ -1,3 +1,5 @@
+import { LETTER_OR_NUMBER_CHAR_REGEX, NON_WORD_NON_DECORATOR_CHAR_REGEX } from '@/libs/unicodeRegex';
+
 /**
  * Pure builder for the per-paragraph rendered token map (Phase 1, read-only).
  *
@@ -53,8 +55,8 @@ export interface ParagraphTokenMap {
 }
 
 const DECORATOR_CHAR_REGEX = /[*_]/;
-const WORD_CHAR_REGEX = /[\p{L}\p{N}]/u;
-const NON_WORD_NON_DECORATOR_REGEX = /[^\p{L}\p{N}*_]/u;
+const WORD_CHAR_REGEX = LETTER_OR_NUMBER_CHAR_REGEX;
+const NON_WORD_NON_DECORATOR_REGEX = NON_WORD_NON_DECORATOR_CHAR_REGEX;
 
 const LINK_OR_IMAGE_REGEX = /^(!?)\[([^\]]*)\]\(([^)]*)\)$/u;
 

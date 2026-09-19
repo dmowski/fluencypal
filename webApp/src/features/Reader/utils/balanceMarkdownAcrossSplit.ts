@@ -1,3 +1,5 @@
+import { MARKDOWN_EMPHASIS_SPAN_REGEX } from './markdownEmphasis';
+
 /**
  * When `splitIntoPages` slices a single source paragraph into multiple page
  * chunks, a markdown emphasis span (e.g. `_word word_` or `**word**`) can be
@@ -13,8 +15,8 @@
  *
  * Care: a bare `_` between alphanumerics (`foo_bar`) is intraword and is
  * NOT an emphasis delimiter in CommonMark; we mirror the same word-boundary
- * gating that `ReaderParagraph` already uses for the
- * `hasMarkdownEmphasis` flag so literal underscores are never miscounted.
+ * gating that `hasMarkdownEmphasis` uses so literal underscores are never
+ * miscounted.
  */
 
 export interface EmphasisSpan {
@@ -28,15 +30,6 @@ export interface MarkdownChunkWrappers {
   markdownSuffix: string;
 }
 
-// Matches a complete, well-formed emphasis span with the same word-boundary
-// gating as the `hasMarkdownEmphasis` regex in `ReaderParagraph.tsx`:
-//   - the character before the opener must be string-start or a non-word /
-//     non-decorator character (so `foo_bar_baz` is NOT an emphasis pair)
-//   - the character after the closer must be string-end or a non-word /
-//     non-decorator character
-const EMPHASIS_SPAN_REGEX =
-  /(^|[^\p{L}\p{N}_*])((\*\*[^*\n](?:[^*\n]*[^*\n])?\*\*)|(\*[^*\n]+\*)|(__[^_\n](?:[^_\n]*[^_\n])?__)|(_[^_\n]+_))(?=$|[^\p{L}\p{N}_*])/gu;
-
 const detectMarker = (matchedSpan: string): EmphasisSpan['marker'] => {
   if (matchedSpan.startsWith('**')) return '**';
   if (matchedSpan.startsWith('__')) return '__';
@@ -46,10 +39,10 @@ const detectMarker = (matchedSpan: string): EmphasisSpan['marker'] => {
 
 export const findEmphasisSpans = (text: string): EmphasisSpan[] => {
   const spans: EmphasisSpan[] = [];
-  EMPHASIS_SPAN_REGEX.lastIndex = 0;
+  MARKDOWN_EMPHASIS_SPAN_REGEX.lastIndex = 0;
   let match: RegExpExecArray | null;
 
-  while ((match = EMPHASIS_SPAN_REGEX.exec(text)) !== null) {
+  while ((match = MARKDOWN_EMPHASIS_SPAN_REGEX.exec(text)) !== null) {
     const leadingContextLength = match[1].length;
     const spanText = match[2];
     const openStart = match.index + leadingContextLength;
@@ -62,7 +55,7 @@ export const findEmphasisSpans = (text: string): EmphasisSpan[] => {
     // Resume scanning AFTER the matched span (the regex consumed the trailing
     // context via look-ahead so `lastIndex` is already at `closeEndExclusive`,
     // but we set it explicitly to make the contract clear).
-    EMPHASIS_SPAN_REGEX.lastIndex = closeEndExclusive;
+    MARKDOWN_EMPHASIS_SPAN_REGEX.lastIndex = closeEndExclusive;
   }
 
   return spans;

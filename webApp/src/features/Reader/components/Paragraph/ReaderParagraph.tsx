@@ -12,6 +12,7 @@ import {
   getReaderParagraphTextIndent,
   hasBlockMarkdownFormatting,
 } from '../../utils/readerParagraphFormatting';
+import { hasMarkdownEmphasis } from '../../utils/markdownEmphasis';
 import {
   applySelection,
   captureCurrentSelection,
@@ -118,11 +119,8 @@ const ReaderParagraphBase = ({
   const hasMarkdownLinkOrImage = /(!\[[^\]]*\]\([^\)]*\)|\[[^\]]+\]\([^\)]*\))/u.test(
     paragraphText,
   );
-  const hasMarkdownEmphasis =
-    /(^|[^\p{L}\p{N}_*])((\*\*[^*\n](?:[^*\n]*[^*\n])?\*\*)|(\*[^*\n]+\*)|(__[^_\n](?:[^_\n]*[^_\n])?__)|(_[^_\n]+_))(?=$|[^\p{L}\p{N}_*])/u.test(
-      paragraphText,
-    );
-  const hasInlineMarkdownFormatting = hasMarkdownLinkOrImage || hasMarkdownEmphasis;
+  const hasInlineMarkdownFormatting =
+    hasMarkdownLinkOrImage || hasMarkdownEmphasis(paragraphText);
   const hasBlockMarkdown = hasBlockMarkdownFormatting(paragraphText);
   const hasCrossPageEmphasisWrappers = Boolean(markdownPrefix) || Boolean(markdownSuffix);
   const shouldRenderMarkdown =

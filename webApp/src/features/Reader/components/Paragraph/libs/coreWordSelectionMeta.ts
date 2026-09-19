@@ -1,3 +1,5 @@
+import { LETTER_OR_NUMBER_CHAR_REGEX } from '@/libs/unicodeRegex';
+
 /**
  * Returns the alphanumeric "core" of a rendered word along with the offsets
  * (within the raw word) where the core starts and ends. Used to trim leading
@@ -13,13 +15,16 @@ export const getCoreWordSelectionMeta = (
   let startOffset = 0;
   let endOffsetExclusive = rawWord.length;
 
-  while (startOffset < endOffsetExclusive && !/[\p{L}\p{N}]/u.test(rawWord[startOffset])) {
+  while (
+    startOffset < endOffsetExclusive &&
+    !LETTER_OR_NUMBER_CHAR_REGEX.test(rawWord[startOffset])
+  ) {
     startOffset += 1;
   }
 
   while (
     endOffsetExclusive > startOffset &&
-    !/[\p{L}\p{N}]/u.test(rawWord[endOffsetExclusive - 1])
+    !LETTER_OR_NUMBER_CHAR_REGEX.test(rawWord[endOffsetExclusive - 1])
   ) {
     endOffsetExclusive -= 1;
   }

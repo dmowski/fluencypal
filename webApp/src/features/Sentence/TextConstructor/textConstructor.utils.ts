@@ -1,3 +1,9 @@
+import {
+  LEADING_NON_LETTER_OR_NUMBER_REGEX,
+  TRAILING_NON_LETTER_OR_NUMBER_REGEX,
+  matchLetterOrNumberRuns,
+} from '@/libs/unicodeRegex';
+
 export type ActiveSentencePart = {
   sentenceIndex: number;
   activeSentence: string;
@@ -38,14 +44,14 @@ export const splitWords = (text: string): string[] => {
     }
   }
 
-  return trimmedText.match(/[\p{L}\p{N}]+/gu) ?? [trimmedText];
+  return matchLetterOrNumberRuns(trimmedText) ?? [trimmedText];
 };
 
 const normalizeWord = (word: string): string => {
   return word
     .toLocaleLowerCase()
-    .replace(/^[^\p{L}\p{N}]+/u, '')
-    .replace(/[^\p{L}\p{N}]+$/u, '');
+    .replace(LEADING_NON_LETTER_OR_NUMBER_REGEX, '')
+    .replace(TRAILING_NON_LETTER_OR_NUMBER_REGEX, '');
 };
 
 export const getActiveSentencePart = ({
