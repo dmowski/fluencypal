@@ -52,8 +52,8 @@ export const lessonColor = {
   onAccent: '#FFFFFF',
 
   // Dashboard
-  dashboardDone: 'rgba(16, 92, 46, 0.72)',
-  dashboardIdle: 'rgba(18, 32, 54, 0.72)',
+  dashboardDone: 'rgba(6, 21, 77, 0.3)',
+  dashboardIdle: 'rgba(18, 32, 54, 0.3)',
   dashboardItems: 'rgba(0, 0, 0, 0.20)',
 } as const;
 

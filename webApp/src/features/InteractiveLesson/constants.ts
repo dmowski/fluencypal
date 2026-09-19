@@ -1,8 +1,9 @@
 export const INTERACTIVE_LESSON_CARD_IMAGE =
-  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1788035064139-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1789848137744-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
 
-export const INTERACTIVE_LESSON_DONE_CARD_IMAGE =
-  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1788035150977-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+// crow: white bg: 'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1789847063127-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+
+export const INTERACTIVE_LESSON_DONE_CARD_IMAGE = INTERACTIVE_LESSON_CARD_IMAGE;
 
 export const TARGET_CONTEXT_MESSAGES = 30;
 export const MIN_USEFUL_CONTEXT_MESSAGES = 8;

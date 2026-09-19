@@ -9,11 +9,18 @@ export const InteractiveLessonDashboardCard = () => {
   const lesson = useInteractiveLesson();
 
   const current = lesson.currentLesson;
+  const isDefaultMessages = false;
+  const defaultCardTitle = i18n._('One pattern. Real speaking practice.');
+  const defaultCardSubTitle = i18n._('Learn it, say it, and get feedback.');
 
-  const cardTitle = lesson.isDoneToday
-    ? current?.title || i18n._('One pattern. Real speaking practice.')
-    : current?.title || i18n._('One pattern. Real speaking practice.');
-  const cardSubTitle = current?.subTitle || i18n._('Learn it, say it, and get feedback.');
+  const cardTitle = isDefaultMessages
+    ? defaultCardTitle
+    : lesson.isDoneToday
+      ? current?.title || defaultCardTitle
+      : current?.title || defaultCardTitle;
+  const cardSubTitle = isDefaultMessages
+    ? defaultCardSubTitle
+    : current?.subTitle || defaultCardSubTitle;
 
   return (
     <InteractiveLessonDashboardView
@@ -22,7 +29,7 @@ export const InteractiveLessonDashboardCard = () => {
       cardTitle={cardTitle}
       cardSubTitle={cardSubTitle}
       progressButtonTitle={i18n._('Progress')}
-      badge={lesson.isDoneToday ? i18n._('Done today') : undefined}
+      badge={lesson.isDoneToday ? i18n._('Done today') : i18n._('Recommended')}
       isDoneToday={lesson.isDoneToday}
       onOpen={lesson.openLesson}
       onProgressClick={lesson.openProgress}

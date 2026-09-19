@@ -6,6 +6,7 @@ import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { StoreCard } from '../uiKit/Card/StoreCard';
 import { SectionHeader } from './CartsHeader';
 import { useJustTalk } from '../Conversation/useJustTalk';
+import { AiVoice } from '../Ai/ai';
 
 export const JustTalkCard = () => {
   const { i18n } = useLingui();
@@ -21,6 +22,14 @@ export const JustTalkCard = () => {
   const funnyPhrases = aiAvatar.funnyPhrases;
   const footnotePhrase = funnyPhrases[footnotePhraseIndex % funnyPhrases.length];
 
+  const bgColorsMap: Record<AiVoice, string> = {
+    ash: 'rgba(6, 54, 49, 0.28)',
+    shimmer: 'rgba(12, 71, 103, 0.29)',
+    marin: 'rgba(36, 53, 3, 0.28)',
+    verse: 'rgba(2, 42, 22, 0.59)',
+  };
+  const bgColor = bgColorsMap[voiceName];
+
   return (
     <Stack
       sx={{
@@ -30,7 +39,7 @@ export const JustTalkCard = () => {
       <SectionHeader title={i18n._('Speaking with AI')} />
       <StoreCard
         textColor={'#fff'}
-        backgroundColor={isCallStarting ? 'rgba(2, 133, 208, 0.42)' : 'rgba(2, 133, 208, 0.9)'}
+        backgroundColor={isCallStarting ? 'rgba(2, 133, 208, 0.42)' : bgColor}
         previewImageUrl={aiAvatar.photoUrls?.[0] || ''}
         label={'JUST TALK MODE'}
         title={i18n._('Conversation with AI')}
