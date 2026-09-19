@@ -9,15 +9,16 @@ export const InteractiveLessonDashboardCard = () => {
   const lesson = useInteractiveLesson();
 
   const current = lesson.currentLesson;
+
   const cardTitle = lesson.isDoneToday
-    ? current?.title || i18n._('Today’s lesson is done')
-    : current?.title || i18n._('Today’s lesson');
-  const cardSubTitle = current?.subTitle || i18n._('Read a rule, then speak your answers.');
+    ? current?.title || i18n._('One pattern. Real speaking practice.')
+    : current?.title || i18n._('One pattern. Real speaking practice.');
+  const cardSubTitle = current?.subTitle || i18n._('Learn it, say it, and get feedback.');
 
   return (
     <InteractiveLessonDashboardView
-      title={i18n._('Interactive Lesson')}
-      subTitle={i18n._('Read, speak, and build a daily speaking habit.')}
+      title={i18n._('Daily speaking lesson')}
+      subTitle={i18n._('Practice grammar in real speech.')}
       cardTitle={cardTitle}
       cardSubTitle={cardSubTitle}
       progressButtonTitle={i18n._('Progress')}

@@ -52,6 +52,10 @@ export const SectionHeader = ({
           sx={{
             whiteSpace: 'nowrap',
             width: 'max-content',
+            color: '#A3A6AE',
+            '&:hover': {
+              color: '#F4F4F6',
+            },
           }}
         >
           {buttonTitle}
