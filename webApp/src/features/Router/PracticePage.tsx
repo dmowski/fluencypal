@@ -67,7 +67,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const canGuestPractice = canEnterPracticeAsGuest({ justTalk, rolePlayId });
   const practiceLanguageCode =
     settings.languageCode || (canGuestPractice ? lang : null);
-  const startHandoffJustTalk = () => startJustTalk(undefined, { skipConsentUi: true });
+  const startHandoffJustTalk = () =>
+    startJustTalk(undefined, { skipConsentUi: true, mode: 'quiz-talk' });
   // Wait for auth (and guest anonymous ensure) before auto-start so we do not
   // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
   const { isResolvingAutoStart } = useAutoStartJustTalk(

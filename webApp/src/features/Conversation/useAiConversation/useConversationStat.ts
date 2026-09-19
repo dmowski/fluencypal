@@ -11,7 +11,7 @@ import { useTasks } from '@/features/Tasks/useTasks';
 import { useEffect } from 'react';
 import { useDailyTasks } from '@/features/Tasks/useDailyTasks';
 
-const modesToExtractUserInfo: ConversationType[] = ['talk', 'goal-talk'];
+const modesToExtractUserInfo: ConversationType[] = ['talk', 'quiz-talk', 'goal-talk'];
 const modesToNotExtractGrammar: ConversationType[] = ['grammar-improvement', 'news-discussion'];
 
 const learningPlanModes: ConversationType[] = [
@@ -44,7 +44,7 @@ export const useConversationStat = (
         tasks.completeTask('words');
       } else if (currentMode === 'rule') {
         tasks.completeTask('rule');
-      } else {
+      } else if (currentMode !== 'quiz-talk') {
         tasks.completeTask('lesson');
       }
     }

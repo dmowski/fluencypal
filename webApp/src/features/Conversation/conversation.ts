@@ -2,6 +2,7 @@ import { SupportedLanguage } from '../Lang/lang';
 
 export type ConversationType =
   | 'talk'
+  | 'quiz-talk'
   | 'words'
   | 'rule'
   | 'role-play'

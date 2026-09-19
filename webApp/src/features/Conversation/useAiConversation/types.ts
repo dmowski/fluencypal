@@ -26,6 +26,8 @@ export interface StartConversationProps {
   languageCode?: SupportedLanguage;
   /** Quiz mic-prime: start the WebRTC call with the mic live. */
   startUnmuted?: boolean;
+  /** Quiz about-you clip for `quiz-talk` only. Ignored by `talk`. */
+  aboutUserTranscription?: string;
   ideas?: ConversationIdea;
   lessonPlan?: LessonPlan;
   rolePlayId?: string;

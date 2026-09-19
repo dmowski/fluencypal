@@ -16,6 +16,7 @@ import {
   buildJustTalkPracticeUrl,
   markJustTalkAutoStart,
 } from '@/features/Conversation/justTalkHandoff';
+import { markQuizTalkAbout } from '@/features/Conversation/quizTalk';
 import { sleep } from '@/libs/sleep';
 import { requestMicrophoneAccess } from '@/libs/mic';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
@@ -60,6 +61,7 @@ const QuizQuestions = () => {
       if (await micOkPromise) {
         markJustTalkAutoStart();
       }
+      markQuizTalkAbout(survey?.aboutUserTranscription);
       router.push(
         buildJustTalkPracticeUrl({
           pageLanguage,

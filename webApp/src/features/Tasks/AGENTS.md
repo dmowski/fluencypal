@@ -101,7 +101,7 @@ After day 200 the index clamps to the last plan (`Math.min(..., length - 1)`). A
 
 | Type | Dashboard start | Completes when |
 | --- | --- | --- |
-| `just-talk` | `useJustTalk().startJustTalk` | Conversation mode `talk` reaches `CONVERSATION_DONE_MESSAGE_COUNT` (10) — `useConversationStat` |
+| `just-talk` | `useJustTalk().startJustTalk` | Conversation mode `talk` reaches `CONVERSATION_DONE_MESSAGE_COUNT` (10) — `useConversationStat`. Quiz handoff `quiz-talk` does not complete this task. |
 | `goal-lesson` | Open next learning-plan element, or prompt to create a plan | Any learning-plan conversation mode (`words`, `rule`, `goal-role-play`, `goal-talk`, `grammar-improvement`) reaches 10 messages |
 | `community` | `globalModals.openPublicChat` | First message in a non-`dailyQuestion` chat space — `useChat.addMessage`. **Not assigned** in current plans |
 | `daily-question` | `globalModals.openDailyQuestions` | First message in a `dailyQuestion` chat — `useChat.addMessage` |

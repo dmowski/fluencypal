@@ -81,6 +81,7 @@ export const UsageStatsCards = () => {
 
   const conversationModeLabel: Record<ConversationType, string> = {
     talk: i18n._('Just talk'),
+    'quiz-talk': i18n._('First talk'),
 
     words: i18n._('Words'),
     rule: i18n._('Rule'),

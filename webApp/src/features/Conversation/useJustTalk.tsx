@@ -7,6 +7,11 @@ import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStrea
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 import { useAuth } from '../Auth/useAuth';
+import { getDoc } from 'firebase/firestore';
+import { db } from '@/features/Firebase/firebaseDb';
+import { ConversationType } from './conversation';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { clipQuizTalkAbout, markQuizTalkAbout, readQuizTalkAbout } from './quizTalk';
 import {
   consumeJustTalkAutoStart,
   readJustTalkAutoStart,
@@ -14,6 +19,33 @@ import {
 } from './justTalkHandoff';
 
 export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy';
+
+export type StartJustTalkOptions = {
+  skipConsentUi?: boolean;
+  /** Quiz handoff only. Dashboard Just Talk stays `talk`. */
+  mode?: Extract<ConversationType, 'talk' | 'quiz-talk'>;
+};
+
+const loadQuizTalkAbout = async ({
+  uid,
+  languageCode,
+}: {
+  uid?: string;
+  languageCode?: SupportedLanguage | null;
+}): Promise<string> => {
+  const fromSession = readQuizTalkAbout();
+  if (fromSession) return fromSession;
+  const ref = db.documents.quizSurvey2(uid, languageCode || undefined);
+  if (!ref) return '';
+  try {
+    const snap = await getDoc(ref);
+    const about = clipQuizTalkAbout(snap.data()?.aboutUserTranscription);
+    if (about) markQuizTalkAbout(about);
+    return about;
+  } catch {
+    return '';
+  }
+};
 
 export const useJustTalk = () => {
   const { i18n } = useLingui();
@@ -25,7 +57,7 @@ export const useJustTalk = () => {
   const { requestMicrophoneWithConsent } = useMicrophonePermission();
   const startJustTalk = async (
     model?: RealTimeModel,
-    options?: { skipConsentUi?: boolean },
+    options?: StartJustTalkOptions,
   ): Promise<StartJustTalkResult> => {
     if (isCallStarting) return 'busy';
     setIsCallStarting(true);
@@ -35,9 +67,10 @@ export const useJustTalk = () => {
       settingsVoice: settings.userSettings?.teacherVoice,
       settingsLanguage: settings.languageCode,
     });
+    const mode = options?.mode || 'talk';
 
     try {
-      await auth.ensureAnonymousAuth();
+      const uid = await auth.ensureAnonymousAuth();
       await audio.initAudio();
       const mediaStream = options?.skipConsentUi
         ? await getMediaAudioStreams()
@@ -48,13 +81,21 @@ export const useJustTalk = () => {
 
       await getMediaVideoStreams();
       await settings.setConversationMode('call');
+      const aboutUserTranscription =
+        mode === 'quiz-talk'
+          ? await loadQuizTalkAbout({
+              uid,
+              languageCode: setup.language,
+            })
+          : undefined;
       await conversation.startConversation({
         conversationMode: 'call',
-        mode: 'talk',
+        mode,
         voice: setup.voice,
         languageCode: setup.language || undefined,
         startUnmuted: setup.startUnmuted,
         model,
+        aboutUserTranscription,
       });
       if (autoStartPrefs) {
         consumeJustTalkAutoStart();
