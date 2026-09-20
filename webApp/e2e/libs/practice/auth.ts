@@ -1,6 +1,7 @@
 import { Page, expect } from '@playwright/test';
 
 import { mockExternalIpServices } from './network';
+import { waitForAnonymousAuthReady } from '../books/auth';
 
 const FIREBASE_API_KEY = 'fake-api-key';
 const AUTH_EMULATOR_HOST = 'http://127.0.0.1:9099';
@@ -79,11 +80,7 @@ export const signInPracticeWithStepper = async (
 
   await page.goto(startUrl);
 
-  // Wait for test handle to be available.
-  await page.waitForFunction(() => {
-    const handle = (window as any).__darkEngTest;
-    return Boolean(handle && handle.auth);
-  });
+  await waitForAnonymousAuthReady(page);
 
   const nextButton = page.getByRole('button', { name: 'Next', exact: true });
   const googleSignInButton = page.getByRole('button', { name: 'Sign in with Google', exact: true });

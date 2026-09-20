@@ -35,7 +35,9 @@ const BooksSyncContext = createContext<BooksSyncContextValue>({
 const useBooksSyncState = (): BooksSyncContextValue => {
   const auth = useAuth();
   const books = useBooks();
-  const userId = auth.uid || null;
+  // Guest/anonymous sessions keep books local. Syncing under an anonymous uid
+  // creates a remote doc the later identified sign-in cannot take over.
+  const userId = auth.isIdentified ? auth.uid : null;
 
   const [status, setStatus] = useState<BooksSyncStatus>('idle');
   const [lastSyncIso, setLastSyncIso] = useState<string | null>(null);

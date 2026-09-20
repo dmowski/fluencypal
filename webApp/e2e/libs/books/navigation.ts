@@ -26,8 +26,12 @@ export const openSeededGatsbyBook = async (page: Page) => {
   await gatsbyCardTitle.click();
 
   await expect(page.getByText(BOOK_SUBTITLE, { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Read' }).click();
-  await expect(page.getByRole('button', { name: 'Book info' })).toBeVisible();
+  const readButton = page.getByRole('button', { name: 'Read' });
+  const bookInfo = page.getByRole('button', { name: 'Book info' });
+  if (!(await bookInfo.isVisible().catch(() => false))) {
+    await readButton.click();
+  }
+  await expect(bookInfo).toBeVisible();
 };
 
 export const pressReaderNextPage = async (page: Page) => {

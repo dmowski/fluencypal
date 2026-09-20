@@ -82,10 +82,11 @@ const auth =
         }
       })();
 
+const anonymousAuthReady = !isNodeEnv ? ensureAnonymousAuth(auth) : Promise.resolve('');
 if (!isNodeEnv) {
   // Start after authStateReady inside ensureAnonymousAuth — do not wait for React
   // auth.loading, or quiz teacher Continue sits disabled through the first steps.
-  void ensureAnonymousAuth(auth);
+  void anonymousAuthReady;
 }
 
 const storage = getStorage(app);
@@ -108,6 +109,9 @@ if (!isNodeEnv && isFirebaseEmulator) {
     signOut,
     doc,
     setDoc,
+    // Same promise init.ts already started. E2E waits on this so a password
+    // sign-in is not overwritten by the in-flight anonymous sign-in.
+    anonymousAuthReady,
   };
 }
 

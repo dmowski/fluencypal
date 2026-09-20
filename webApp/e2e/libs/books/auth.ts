@@ -50,6 +50,34 @@ export const createEmulatorTestUser = async (): Promise<EmulatorTestUser> => {
   };
 };
 
+export const waitForDarkEngTest = async (page: Page) => {
+  await page.waitForFunction(() => {
+    const handle = (window as any).__darkEngTest;
+    return Boolean(handle && handle.auth);
+  });
+};
+
+/**
+ * Wait until the app's boot-time `ensureAnonymousAuth` has settled.
+ * Password / extra anonymous sign-ins that race that in-flight call get
+ * overwritten, which looks like AuthWall never dismissing in e2e.
+ */
+export const waitForAnonymousAuthReady = async (page: Page) => {
+  await waitForDarkEngTest(page);
+  await page.evaluate(async () => {
+    const handle = (window as any).__darkEngTest;
+    const ready = handle?.anonymousAuthReady;
+    if (!ready || typeof ready.then !== 'function') {
+      return;
+    }
+    try {
+      await ready;
+    } catch {
+      // Boot anonymous auth can fail after emulator reset; callers may still sign in.
+    }
+  });
+};
+
 /**
  * Sign in to an existing emulator user from inside the page context using the
  * test-only `window.__darkEngTest` Firebase handle exposed by init.ts when the
@@ -59,10 +87,7 @@ export const signInTestUserOnPage = async (
   page: Page,
   user: Pick<EmulatorTestUser, 'email' | 'password'>,
 ): Promise<string> => {
-  await page.waitForFunction(() => {
-    const handle = (window as any).__darkEngTest;
-    return Boolean(handle && handle.auth);
-  });
+  await waitForAnonymousAuthReady(page);
 
   const uid = await page.evaluate(
     async ({ email, password }) => {

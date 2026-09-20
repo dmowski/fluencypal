@@ -2,6 +2,7 @@ import type { BrowserContext, Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { fnv1aHash } from '../../../src/libs/hash';
 import { JUST_TALK_AUTO_START_KEY } from '../../../src/features/Conversation/justTalkHandoff';
+import { waitForAnonymousAuthReady } from '../books/auth';
 
 const ABOUT_TRANSCRIPT =
   'I want to practice speaking English every day so I can feel confident in meetings at work and when I travel abroad with my friends and family members around the world together.';
@@ -38,15 +39,18 @@ export const mockQuizAiApis = async (page: Page) => {
   });
 };
 
-export const waitForDarkEngTest = async (page: Page) => {
-  await page.waitForFunction(() => {
-    const handle = (window as unknown as { __darkEngTest?: { auth?: unknown } }).__darkEngTest;
-    return Boolean(handle?.auth);
-  });
-};
+export const waitForDarkEngTest = waitForAnonymousAuthReady;
 
 export const signInAnonymouslyForQuiz = async (page: Page): Promise<string> => {
-  await waitForDarkEngTest(page);
+  await waitForAnonymousAuthReady(page);
+  const existingUid = await page.evaluate(() => {
+    const user = (window as any).__darkEngTest?.auth?.currentUser;
+    return (user?.uid as string | undefined) || '';
+  });
+  if (existingUid) {
+    return existingUid;
+  }
+
   const uid = await page.evaluate(async () => {
     const handle = (window as any).__darkEngTest;
     if (!handle?.signInAnonymously || !handle.auth) {
@@ -179,7 +183,7 @@ export const expectNoJustTalkAutoStartFlag = async (page: Page) => {
 /** Open Just Talk as a guest and wait until the call canvas is ready. */
 export const startJustTalkCallAsGuest = async (page: Page) => {
   await page.goto('/practice?justTalk=open');
-  await waitForDarkEngTest(page);
+  await waitForAnonymousAuthReady(page);
   await expectAnonymousCurrentUser(page);
 
   const handoff = page.getByTestId('just-talk-handoff');

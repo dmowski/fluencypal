@@ -39,7 +39,7 @@ export const signInAsAdmin = async (page: Page): Promise<string> => {
   await ensureAdminUserExists();
   await mockExternalIpServices(page);
 
-  await page.goto('/staats');
+  await page.goto('/staats', { waitUntil: 'domcontentloaded' });
 
   const uid = await signInTestUserOnPage(page, {
     email: ADMIN_EMAIL,

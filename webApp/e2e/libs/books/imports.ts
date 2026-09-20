@@ -28,8 +28,10 @@ export const openBooksPageWithCleanStorage = async (page: Page) => {
 };
 
 export const openAddBookFileChooser = async (page: Page) => {
+  const addBookCard = page.getByTestId('add-new-book-card');
+  await expect(addBookCard).toBeVisible();
   const fileChooserPromise = page.waitForEvent('filechooser');
-  await page.getByTestId('add-new-book-card').click();
+  await addBookCard.click();
   return fileChooserPromise;
 };
 
