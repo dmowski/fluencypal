@@ -84,7 +84,8 @@ const useProvideInteractiveLesson = () => {
   const [isOpen, setIsOpen] = useUrlState('interactiveLesson', '', false);
   const [isProgressOpen, setIsProgressOpen] = useUrlState('interactiveLessonProgress', '', false);
 
-  const userId = auth.uid || '';
+  const canOpen = !!auth.isIdentified;
+  const userId = canOpen ? auth.uid || '' : '';
   const languageCode = settings.languageCode || 'en';
   const pendingAudioUploads = useRef(new Map<number, Promise<string | undefined>>());
 
@@ -482,8 +483,8 @@ const useProvideInteractiveLesson = () => {
     isDoneToday: isLessonCompletedToday(store),
     isStoreReady,
     isUserReady,
-    isOpen: isOpen === 'open',
-    isProgressOpen: isProgressOpen === 'open',
+    isOpen: isOpen === 'open' && canOpen,
+    isProgressOpen: isProgressOpen === 'open' && canOpen,
     needsLanguageSetup,
     nativeLanguageCode,
     targetLanguageCode,
