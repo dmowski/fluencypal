@@ -5,7 +5,10 @@ import {
   clipQuizTalkAbout,
   markQuizTalkAbout,
   MAX_QUIZ_TALK_ABOUT_CHARS,
+  MIN_QUIZ_TALK_CHOICE_WORDS,
   QUIZ_TALK_ABOUT_KEY,
+  quizTalkAboutHasChoiceMaterial,
+  quizTalkAboutWordCount,
   readQuizTalkAbout,
 } from './quizTalk';
 
@@ -34,5 +37,13 @@ describe('quizTalk about snapshot', () => {
     markQuizTalkAbout('   ');
     expect(readQuizTalkAbout()).toBe('');
     expect(window.sessionStorage.getItem(QUIZ_TALK_ABOUT_KEY)).toBeNull();
+  });
+
+  it('needs five words before a closed first-question choice', () => {
+    expect(MIN_QUIZ_TALK_CHOICE_WORDS).toBe(5);
+    expect(quizTalkAboutWordCount('I want English')).toBe(3);
+    expect(quizTalkAboutHasChoiceMaterial('I want English')).toBe(false);
+    expect(quizTalkAboutHasChoiceMaterial('I want to speak English at work.')).toBe(true);
+    expect(quizTalkAboutHasChoiceMaterial('   ')).toBe(false);
   });
 });

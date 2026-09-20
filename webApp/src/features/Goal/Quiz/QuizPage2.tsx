@@ -46,7 +46,9 @@ const QuizQuestions = () => {
   const [redirecting, setRedirecting] = useState(false);
 
   const recordAboutTitle = i18n._('Why do you want to practice speaking?');
-  const recordAboutQuestion = i18n._(`I'll use your answer to make your personal plan.`);
+  const recordAboutQuestion = i18n._(
+    `I'll use your answer to make your personal plan. Please say two or three sentences.`,
+  );
   const recordAboutPrompt = `${recordAboutTitle} ${recordAboutQuestion}`;
 
   const doneQuiz = async () => {

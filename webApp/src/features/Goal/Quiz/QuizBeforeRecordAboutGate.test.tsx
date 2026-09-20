@@ -57,12 +57,14 @@ jest.mock('./QuizRecordAboutPrompt', () => ({
   ),
 }));
 
+const recordAboutSubTitle =
+  "I'll use your answer to make your personal plan. Please say two or three sentences, not just that you want to get better. Who do you talk to, and what feels hard when you speak?";
+
 const gateProps = {
   languageCode: 'en',
   title: 'Why do you want to practice speaking?',
-  subTitle: "I'll use your answer to make your personal plan.",
-  promptText:
-    "Why do you want to practice speaking? I'll use your answer to make your personal plan.",
+  subTitle: recordAboutSubTitle,
+  promptText: `Why do you want to practice speaking? ${recordAboutSubTitle}`,
 };
 
 describe('QuizBeforeRecordAboutGate', () => {
@@ -80,9 +82,7 @@ describe('QuizBeforeRecordAboutGate', () => {
     expect(
       screen.getByRole('heading', { name: 'Why do you want to practice speaking?' }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText("I'll use your answer to make your personal plan."),
-    ).toBeInTheDocument();
+    expect(screen.getByText(recordAboutSubTitle)).toBeInTheDocument();
     expect(screen.getByTestId('quiz-guest-about-button')).toHaveAttribute(
       'data-analytics',
       'record-about-guest',
