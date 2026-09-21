@@ -2,18 +2,20 @@ import { useLingui } from '@lingui/react';
 import { Button, Stack } from '@mui/material';
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
+import { useEscapeHomeFromProfile } from './useEscapeHomeFromProfile';
 
 export const BackHomeNavButton = () => {
   const { i18n } = useLingui();
 
   const router = useRouter();
-  const close = async () => {
-    const searchParams = new URLSearchParams();
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-    router.push(newUrl, {
+  const close = useCallback(() => {
+    router.push(window.location.pathname, {
       scroll: true,
     });
-  };
+  }, [router]);
+
+  useEscapeHomeFromProfile(close);
 
   return (
     <Stack
