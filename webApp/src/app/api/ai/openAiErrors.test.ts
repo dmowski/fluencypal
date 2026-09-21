@@ -1,9 +1,6 @@
 import { InternalServerError, RateLimitError } from 'openai';
-import {
-  createOpenAiUnavailableResponse,
-  isRetriableAiHttpStatus,
-  isTransientOpenAiError,
-} from './openAiErrors';
+import { isRetriableAiHttpStatus } from './isRetriableAiHttpStatus';
+import { createOpenAiUnavailableResponse, isTransientOpenAiError } from './openAiErrors';
 
 describe('openAiErrors', () => {
   it('treats OpenAI 500 and 429 responses as transient', () => {

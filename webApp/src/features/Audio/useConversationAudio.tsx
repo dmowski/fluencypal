@@ -15,7 +15,12 @@ import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
 import { isRecoverableTtsFormatError } from './isRecoverableTtsFormatError';
-import { resetHtmlAudioElement, shouldRetryPlayOnFreshElement } from './htmlAudioElement';
+import { isUserGesturePlayError } from './isUserGesturePlayError';
+import {
+  resetHtmlAudioElement,
+  shouldRetryPlayOnFreshElement,
+  startHtmlAudioPrimeFromGesture,
+} from './htmlAudioElement';
 import * as Sentry from '@sentry/nextjs';
 
 export const ttsVersion = 'v14';
@@ -206,9 +211,13 @@ class AudioQueuePlayer {
 
     this.unlocked = true;
 
-    if (this.ctx.state === 'suspended') {
-      await this.ctx.resume();
-    }
+    // Start HTMLAudioElement.play() in this turn, before any await, so later
+    // TTS play() after initAudio() still counts as unlocked on strict browsers.
+    const primeSpeech = this.speechEl
+      ? startHtmlAudioPrimeFromGesture(this.speechEl)
+      : Promise.resolve();
+    const resumeContext = this.ctx?.state === 'suspended' ? this.ctx.resume() : Promise.resolve();
+    await Promise.all([resumeContext, primeSpeech]);
   }
 
   isUnlocked(): boolean {
@@ -704,13 +713,17 @@ const logStreamAudioFailure = ({
   });
 
   const label = diagnostics.label ?? (error instanceof Error ? error.name : undefined) ?? 'unknown';
+  const playPolicy = {
+    playErrorName: diagnostics.playErrorName,
+    playErrorMessage: diagnostics.playErrorMessage,
+  };
   if (
+    !isUserGesturePlayError(playPolicy) &&
     !isRecoverableTtsFormatError({
       url,
       mediaErrorCode: diagnostics.code,
       mediaErrorLabel: diagnostics.label,
-      playErrorName: diagnostics.playErrorName,
-      playErrorMessage: diagnostics.playErrorMessage,
+      ...playPolicy,
     })
   ) {
     Sentry.captureException(new Error(`Stream audio error: ${label}`), {

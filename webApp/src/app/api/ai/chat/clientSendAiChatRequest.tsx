@@ -1,6 +1,6 @@
 import { AiChatRequest, AiResponse } from '../aiRequest.types';
 import { getGlobalConversationId } from '@/features/Usage/globalConversationId';
-import { isRetriableAiHttpStatus } from '@/app/api/ai/openAiErrors';
+import { isRetriableAiHttpStatus } from '@/app/api/ai/isRetriableAiHttpStatus';
 
 export const clientSendAiChatRequest = async (
   aiRequest: AiChatRequest,
@@ -41,8 +41,7 @@ export const clientSendAiChatRequestRetirable = async (
     } catch (error) {
       const status = (error as Error & { status?: number }).status;
       const canRetry =
-        attempt < retries - 1 &&
-        (status === undefined || isRetriableAiHttpStatus(status));
+        attempt < retries - 1 && (status === undefined || isRetriableAiHttpStatus(status));
       if (canRetry) {
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
         continue;

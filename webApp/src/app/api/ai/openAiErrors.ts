@@ -18,6 +18,3 @@ export const createOpenAiUnavailableResponse = (): Response =>
     { error: 'AI service temporarily unavailable. Please try again.' },
     { status: 503, headers: { 'Retry-After': '2' } },
   );
-
-export const isRetriableAiHttpStatus = (status: number): boolean =>
-  status === 429 || status === 500 || status === 502 || status === 503 || status === 504;

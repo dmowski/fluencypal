@@ -2,7 +2,11 @@
  * @jest-environment jsdom
  */
 
-import { resetHtmlAudioElement, shouldRetryPlayOnFreshElement } from './htmlAudioElement';
+import {
+  resetHtmlAudioElement,
+  shouldRetryPlayOnFreshElement,
+  startHtmlAudioPrimeFromGesture,
+} from './htmlAudioElement';
 
 describe('resetHtmlAudioElement', () => {
   it('pauses and rewinds without calling load() on an empty source', () => {
@@ -29,5 +33,26 @@ describe('shouldRetryPlayOnFreshElement', () => {
     const error = new Error('play() was interrupted');
     error.name = 'AbortError';
     expect(shouldRetryPlayOnFreshElement(error)).toBe(false);
+  });
+});
+
+describe('startHtmlAudioPrimeFromGesture', () => {
+  it('calls play() before the returned promise settles', async () => {
+    const el = document.createElement('audio');
+    let playCalled = false;
+    const play = jest.spyOn(el, 'play').mockImplementation(() => {
+      playCalled = true;
+      return Promise.resolve();
+    });
+    const pause = jest.spyOn(el, 'pause').mockImplementation(() => {});
+
+    const pending = startHtmlAudioPrimeFromGesture(el);
+    expect(playCalled).toBe(true);
+
+    await pending;
+
+    expect(play).toHaveBeenCalledTimes(1);
+    expect(pause).toHaveBeenCalled();
+    expect(el.getAttribute('src')).toBeNull();
   });
 });

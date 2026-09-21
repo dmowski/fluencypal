@@ -1,7 +1,7 @@
 import { AiResponse, AiRequest } from '@/app/api/ai/aiRequest.types';
 import { getGlobalConversationId } from '../Usage/globalConversationId';
 import { sleep } from '@/libs/sleep';
-import { isRetriableAiHttpStatus } from '@/app/api/ai/openAiErrors';
+import { isRetriableAiHttpStatus } from '@/app/api/ai/isRetriableAiHttpStatus';
 
 const sendTextAiRequestRaw = async (conversationDate: AiRequest, auth: string) => {
   const updateRequest: AiRequest = {
