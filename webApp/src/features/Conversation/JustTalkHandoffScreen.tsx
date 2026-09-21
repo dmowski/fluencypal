@@ -22,7 +22,7 @@ export const JustTalkHandoffScreen = ({
   const { i18n } = useLingui();
   const settings = useSettings();
   const [permissionDenied, setPermissionDenied] = useState(wasDenied);
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
   const photoUrl = voiceAvatarMap[voiceName]?.photoUrls?.[0] || '';
 
   useEffect(() => {
@@ -139,14 +139,16 @@ export const JustTalkHandoffScreen = ({
           fullWidth
           disabled={isStarting}
           data-analytics={ENABLE_MIC_JUST_TALK_ANALYTICS_ID}
-          startIcon={isStarting ? <CircularProgress size={18} color="inherit" /> : <Mic size={18} />}
+          startIcon={
+            isStarting ? <CircularProgress size={18} color="inherit" /> : <Mic size={18} />
+          }
           onClick={() => {
             void Promise.resolve(onEnableMic()).then((result) => {
-            if (result === 'mic-denied') {
-              setPermissionDenied(true);
-              sendUiError('mic_denied');
-            }
-          });
+              if (result === 'mic-denied') {
+                setPermissionDenied(true);
+                sendUiError('mic_denied');
+              }
+            });
           }}
           sx={{
             padding: '14px 20px',

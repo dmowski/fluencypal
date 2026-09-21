@@ -13,7 +13,7 @@ export const useExperimentalJustTalk = () => {
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const audio = useConversationAudio();
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
 
   const startExperimentalJustTalk = async () => {
     if (isCallStarting) return;

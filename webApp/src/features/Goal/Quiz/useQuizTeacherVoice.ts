@@ -6,7 +6,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 export const useQuizTeacherVoice = () => {
   const auth = useAuth();
   const settings = useSettings();
-  const savedVoice = settings.userSettings?.teacherVoice || null;
+  const savedVoice = settings.voice;
   const [optimisticVoice, setOptimisticVoice] = useState<AiVoice | null>(null);
 
   const selectedVoice = savedVoice || optimisticVoice;

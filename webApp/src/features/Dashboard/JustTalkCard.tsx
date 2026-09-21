@@ -15,7 +15,7 @@ export const JustTalkCard = () => {
   const [footnotePhraseIndex] = useState(new Date().getDate());
 
   const settings = useSettings();
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
   const aiAvatar = voiceAvatarMap[voiceName];
   const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 

@@ -113,7 +113,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     .sort((a, b) => b.createdAt - a.createdAt);
 
   const nextElementId = plan.nextElement?.id;
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
   const aiAvatar = voiceAvatarMap[voiceName];
 
   return (

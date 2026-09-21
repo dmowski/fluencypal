@@ -32,7 +32,7 @@ export const DailyTasksDashboardCard = () => {
   const globalModals = useGlobalModals();
 
   const settings = useSettings();
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
   const aiAvatar = voiceAvatarMap[voiceName];
   const secondPhotoUrl = aiAvatar.photoUrls?.[1] || aiAvatar.photoUrls?.[0] || '';
 

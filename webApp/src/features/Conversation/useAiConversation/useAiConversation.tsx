@@ -482,7 +482,7 @@ ${voiceInstructions}
     throw new Error(`Unknown mode: ${mode}`);
   };
 
-  const settingsVoice = settings.userSettings?.teacherVoice;
+  const settingsVoice = settings.voice;
   const startConversation = async (input: StartConversationProps) => {
     const activeLanguageCode = resolvePracticeLanguage({
       explicitLanguage: input.languageCode,

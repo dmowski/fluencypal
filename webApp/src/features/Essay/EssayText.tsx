@@ -87,7 +87,7 @@ export const EssayText = ({
   const settings = useSettings();
 
   const conversation = useAiConversation();
-  const voiceName = settings.userSettings?.teacherVoice || 'shimmer';
+  const voiceName = settings.voice;
   const globalModal = useGlobalModals();
 
   const targetLanguage = settings.userSettings?.languageCode || 'en';

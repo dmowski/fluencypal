@@ -9,10 +9,7 @@ import {
   supportedLanguages,
 } from '@/features/Lang/lang';
 import { db } from '../Firebase/firebaseDb';
-import {
-  isFirebasePermissionDenied,
-  runWithFirestoreAuth,
-} from '../Firebase/runWithFirestoreAuth';
+import { isFirebasePermissionDenied, runWithFirestoreAuth } from '../Firebase/runWithFirestoreAuth';
 import { useCurrency } from '../User/useCurrency';
 import { getCountryByIP } from '../User/getCountry';
 import { countries } from '@/libs/countries';
@@ -53,6 +50,7 @@ interface SettingsContextType {
   conversationMode: ConversationMode;
   setConversationMode: (mode: ConversationMode) => Promise<void>;
 
+  voice: AiVoice;
   setVoice: (voice: AiVoice) => Promise<void>;
 
   aiVoiceSpeed: AiVoiceSpeed;
@@ -92,6 +90,7 @@ export const settingsContext = createContext<SettingsContextType>({
 
   conversationMode: 'record',
   setConversationMode: async () => {},
+  voice: 'shimmer',
   setVoice: async () => {},
 
   aiVoiceSpeed: 'slow',
@@ -331,7 +330,7 @@ function useProvideSettings(): SettingsContextType {
     conversationMode: userSettings?.conversationMode || 'record',
     setConversationMode,
     setVoice,
-
+    voice: userSettings?.teacherVoice || 'shimmer',
     aiVoiceSpeed: userSettings?.teacherVoiceSpeed || 'normal',
     setAiVoiceSpeed: async (speed: AiVoiceSpeed) => {
       if (!userSettingsDoc) return;

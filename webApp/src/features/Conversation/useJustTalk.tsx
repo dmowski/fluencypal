@@ -64,7 +64,7 @@ export const useJustTalk = () => {
     const autoStartPrefs = readJustTalkAutoStart();
     const setup = resolveJustTalkCallSetup({
       prefs: autoStartPrefs,
-      settingsVoice: settings.userSettings?.teacherVoice,
+      settingsVoice: settings.voice,
       settingsLanguage: settings.languageCode,
     });
     const mode = options?.mode || 'talk';

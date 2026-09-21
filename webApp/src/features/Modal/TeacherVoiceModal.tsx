@@ -46,7 +46,7 @@ export const TeacherVoiceModal: React.FC = () => {
             </Stack>
             <VoiceSpeedSelector />
             <SelectTeacher
-              selectedVoice={settings.userSettings?.teacherVoice}
+              selectedVoice={settings.voice}
               onSelectVoice={settings.setVoice}
               voiceSpeed={voiceSpeed}
             />
