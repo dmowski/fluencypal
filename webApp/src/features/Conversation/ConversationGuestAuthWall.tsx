@@ -25,8 +25,10 @@ export const ConversationGuestAuthWall = () => {
     >
       <AuthWall
         startOnAuth
-        signInTitle={i18n._('Sign in to keep talking')}
-        singInSubTitle={i18n._('So you can save your progress')}
+        signInTitle={i18n._('Sign in to unlock more features')}
+        singInSubTitle={i18n._(
+          'Personalized plan, community, daily questions, grammar rules, and much more.',
+        )}
         authActionTitle={i18n._('Continue to talk')}
         authListAfterActions
       >
