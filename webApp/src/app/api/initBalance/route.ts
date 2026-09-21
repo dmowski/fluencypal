@@ -7,7 +7,12 @@ import { addPaymentLog } from '../payment/addPaymentLog';
  * Free users practice with the message limit, then see the paywall.
  */
 export async function POST(request: Request) {
-  const userInfo = await validateAuthToken(request);
+  let userInfo: Awaited<ReturnType<typeof validateAuthToken>>;
+  try {
+    userInfo = await validateAuthToken(request);
+  } catch {
+    return new Response('Unauthorized', { status: 401 });
+  }
   const userId = userInfo.uid;
   const db = getDB();
   const [logsWelcome, logsTrial] = await Promise.all([

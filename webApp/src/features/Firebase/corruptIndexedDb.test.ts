@@ -2,6 +2,7 @@ import {
   createCorruptIndexedDbRecovery,
   createIndexedDbConnectionLostRecovery,
   isCorruptIndexedDbError,
+  isIndexedDbClosingError,
   isIndexedDbConnectionLostError,
 } from './corruptIndexedDb';
 
@@ -53,6 +54,23 @@ describe('isIndexedDbConnectionLostError', () => {
   it('rejects unrelated failures', () => {
     expect(isIndexedDbConnectionLostError(new Error('Failed to persist write'))).toBe(false);
     expect(isIndexedDbConnectionLostError(null)).toBe(false);
+  });
+});
+
+describe('isIndexedDbClosingError', () => {
+  it('matches Firebase Auth IndexedDB closing DOMExceptions', () => {
+    const error = new DOMException(
+      "Failed to execute 'transaction' on 'IDBDatabase': The database connection is closing.",
+      'InvalidStateError',
+    );
+    expect(isIndexedDbClosingError(error)).toBe(true);
+  });
+
+  it('rejects unrelated failures', () => {
+    expect(isIndexedDbClosingError(new Error('Connection to Indexed Database server lost'))).toBe(
+      false,
+    );
+    expect(isIndexedDbClosingError(null)).toBe(false);
   });
 });
 

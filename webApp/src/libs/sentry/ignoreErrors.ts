@@ -13,6 +13,8 @@ export const sentryIgnoreErrors: Array<string | RegExp> = [
   /Data lost due to missing file/,
   // Safari/WebKit killed the IndexedDB process (DARK-LANG-J2); reload recovers
   /Connection to Indexed Database server lost/,
+  // Firebase Auth persistence during iOS WebKit tab close (DARK-LANG-JG)
+  /The database connection is closing/,
   // Expected when the browser is offline
   /Failed to get document because the client is offline/,
   // Firebase Auth timeout / fetch failure on flaky mobile networks (DARK-LANG-J9 / DARK-LANG-GR)

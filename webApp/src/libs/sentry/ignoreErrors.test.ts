@@ -34,6 +34,14 @@ describe('sentryIgnoreErrors', () => {
     ).toBe(true);
   });
 
+  it('drops Firebase Auth IndexedDB closing errors', () => {
+    expect(
+      matchesIgnore(
+        "InvalidStateError: Failed to execute 'transaction' on 'IDBDatabase': The database connection is closing.",
+      ),
+    ).toBe(true);
+  });
+
   it('still reports unrelated app errors', () => {
     expect(matchesIgnore('TypeError: Cannot read properties of undefined')).toBe(false);
   });

@@ -27,6 +27,11 @@ export const isIndexedDbConnectionLostError = (reason: unknown): boolean => {
   return /Connection to Indexed Database server lost/i.test(getErrorText(reason));
 };
 
+/** Firebase Auth / WebKit closing IndexedDB on tab hide — not recoverable here. */
+export const isIndexedDbClosingError = (reason: unknown): boolean => {
+  return /The database connection is closing/i.test(getErrorText(reason));
+};
+
 export type CorruptIndexedDbRecoveryDeps = {
   terminateAndClear: () => Promise<void>;
   reload: () => void;
@@ -125,6 +130,10 @@ export const installCorruptFirestorePersistenceRecovery = (firestore: Firestore)
     if (isIndexedDbConnectionLostError(event.reason)) {
       event.preventDefault();
       void recoverConnectionLost(event.reason);
+      return;
+    }
+    if (isIndexedDbClosingError(event.reason)) {
+      event.preventDefault();
     }
   });
 };

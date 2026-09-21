@@ -15,7 +15,10 @@ import { getDoc } from 'firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
 import { PaymentLog, TotalUsageInfo, UsageLog } from '@/features/Usage/usage';
 import { db } from '../Firebase/firebaseDb';
-import { initWelcomeBalanceRequest } from './initWelcomeBalanceRequest';
+import {
+  initWelcomeBalanceRequest,
+  isInitBalanceUnauthorizedError,
+} from './initWelcomeBalanceRequest';
 import { createUsageLog } from './createUsageLog';
 import dayjs from 'dayjs';
 import { useUrlState } from '../Url/useUrlState';
@@ -109,11 +112,16 @@ function useProvideUsage(): UsageContextType {
 
     isBalanceInitInProgress.current = true;
     try {
-      await initWelcomeBalanceRequest({}, await auth.getToken());
+      // Force-refresh so we do not retry an expired ID token (DARK-LANG-JH).
+      await initWelcomeBalanceRequest({}, await auth.getToken(true));
       isBalanceInit.current = true;
       setIsWelcomeBalanceInitialized(true);
     } catch (error) {
       console.error('Welcome balance init failed:', error);
+      if (isInitBalanceUnauthorizedError(error)) {
+        isBalanceInitInProgress.current = false;
+        return;
+      }
       await sleep(2000);
       isBalanceInitInProgress.current = false;
       void initWelcomeBalance();
