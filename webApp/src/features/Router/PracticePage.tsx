@@ -65,8 +65,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const { startJustTalk, isCallStarting } = useJustTalk();
   const isHandoff = isJustTalkHandoff(justTalk);
   const canGuestPractice = canEnterPracticeAsGuest({ justTalk, rolePlayId });
-  const practiceLanguageCode =
-    settings.languageCode || (canGuestPractice ? lang : null);
+  const practiceLanguageCode = settings.languageCode || (canGuestPractice ? lang : null);
   const startHandoffJustTalk = () =>
     startJustTalk(undefined, { skipConsentUi: true, mode: 'quiz-talk' });
   // Wait for auth (and guest anonymous ensure) before auto-start so we do not
@@ -285,6 +284,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         onLimitedClick={() => {
           usage.togglePaymentModal(true);
         }}
+        autoProposeFirstReply={aiConversation.currentMode === 'quiz-talk'}
       />
     </Stack>
   );

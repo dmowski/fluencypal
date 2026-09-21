@@ -8,3 +8,7 @@ General strategy:
 ## Advanced Practice
 
 webApp/src/features/InteractiveLesson/AGENTS.md
+
+## Translation page
+
+## Write twit post about FluencyPal

@@ -3,6 +3,7 @@
  */
 import {
   clipQuizTalkAbout,
+  isFirstQuizTalkTeacherTurn,
   markQuizTalkAbout,
   MAX_QUIZ_TALK_ABOUT_CHARS,
   MIN_QUIZ_TALK_CHOICE_WORDS,
@@ -45,5 +46,22 @@ describe('quizTalk about snapshot', () => {
     expect(quizTalkAboutHasChoiceMaterial('I want English')).toBe(false);
     expect(quizTalkAboutHasChoiceMaterial('I want to speak English at work.')).toBe(true);
     expect(quizTalkAboutHasChoiceMaterial('   ')).toBe(false);
+  });
+
+  it('is the first teacher turn only before the learner speaks', () => {
+    expect(isFirstQuizTalkTeacherTurn([])).toBe(false);
+    expect(isFirstQuizTalkTeacherTurn([{ isBot: true, text: 'Do you talk at work?' }])).toBe(true);
+    expect(
+      isFirstQuizTalkTeacherTurn([
+        { isBot: true, text: 'Do you talk at work?' },
+        { isBot: false, text: 'Yes' },
+      ]),
+    ).toBe(false);
+    expect(
+      isFirstQuizTalkTeacherTurn([
+        { isBot: true, text: 'Do you talk at work?' },
+        { isBot: false, text: '   ' },
+      ]),
+    ).toBe(true);
   });
 });

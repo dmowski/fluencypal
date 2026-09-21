@@ -21,6 +21,14 @@ export const quizTalkAboutWordCount = (raw: string | null | undefined): number =
 export const quizTalkAboutHasChoiceMaterial = (raw: string | null | undefined): boolean =>
   quizTalkAboutWordCount(raw) >= MIN_QUIZ_TALK_CHOICE_WORDS;
 
+export const isFirstQuizTalkTeacherTurn = (
+  messages: Array<{ isBot: boolean; text?: string | null }>,
+): boolean => {
+  const spoken = messages.filter((message) => Boolean(message.text?.trim()));
+  if (spoken.length !== 1) return false;
+  return spoken[0].isBot === true;
+};
+
 export const markQuizTalkAbout = (about: string | null | undefined): void => {
   if (typeof window === 'undefined') return;
   const clipped = clipQuizTalkAbout(about);

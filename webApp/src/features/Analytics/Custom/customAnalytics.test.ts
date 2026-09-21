@@ -179,9 +179,10 @@ describe('classifyCta', () => {
       }).ctaId,
     ).toBe('other');
     expect(classifyCta({ href: 'https://app.fluencypal.com/th/quiz' }).ctaIntent).toBe('quiz');
-    expect(classifyCta({ href: 'https://www.fluencypal.com/vi/features/ai-speaking-practice' }).ctaIntent).toBe(
-      'other',
-    );
+    expect(
+      classifyCta({ href: 'https://www.fluencypal.com/vi/features/ai-speaking-practice' })
+        .ctaIntent,
+    ).toBe('other');
   });
 
   it('keeps in-app hear and Google ids as named other CTAs', () => {
@@ -205,6 +206,9 @@ describe('classifyCta', () => {
     expect(classifyCta({ href: '', buttonId: 'call-enable-mic' }).ctaId).toBe('call-enable-mic');
     expect(classifyCta({ href: '', buttonId: 'call-end' }).ctaId).toBe('call-end');
     expect(classifyCta({ href: '', buttonId: 'call-what-to-say' }).ctaId).toBe('call-what-to-say');
+    expect(classifyCta({ href: '', buttonId: 'quiz-talk-suggested-reply' }).ctaId).toBe(
+      'quiz-talk-suggested-reply',
+    );
     expect(classifyCta({ href: '', buttonId: 'mic-permission-grant' }).ctaId).toBe(
       'mic-permission-grant',
     );
@@ -485,23 +489,24 @@ describe('parentVisitorId', () => {
     expect(serializeVisitorCookie(visitorId, 'www.fluencypal.com', true)).toContain(
       'Domain=.fluencypal.com',
     );
-    expect(
-      decorateAppHref('https://app.fluencypal.com/quiz', visitorId),
-    ).toBe(`https://app.fluencypal.com/quiz?fpv=${visitorId}`);
+    expect(decorateAppHref('https://app.fluencypal.com/quiz', visitorId)).toBe(
+      `https://app.fluencypal.com/quiz?fpv=${visitorId}`,
+    );
     expect(
       decorateAppHref(
         'https://app.fluencypal.com/quiz',
         visitorId,
         'https://www.fluencypal.com/es?utm_source=google&utm_medium=cpc',
       ),
-    ).toBe(
-      `https://app.fluencypal.com/quiz?fpv=${visitorId}&utm_source=google&utm_medium=cpc`,
-    );
+    ).toBe(`https://app.fluencypal.com/quiz?fpv=${visitorId}&utm_source=google&utm_medium=cpc`);
     expect(decorateAppHref('https://www.fluencypal.com/th', visitorId)).toBe(
       'https://www.fluencypal.com/th',
     );
     expect(
-      stripVisitorIdFromHref(`https://app.fluencypal.com/quiz?fpv=${visitorId}`, ANALYTICS_VISITOR_QUERY),
+      stripVisitorIdFromHref(
+        `https://app.fluencypal.com/quiz?fpv=${visitorId}`,
+        ANALYTICS_VISITOR_QUERY,
+      ),
     ).toBe('https://app.fluencypal.com/quiz');
   });
 });

@@ -97,6 +97,7 @@ interface ConversationCanvasProps {
   isSendMessagesBlocked: boolean;
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
+  autoProposeFirstReply?: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -145,6 +146,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   transcriptionBlob,
   onSelectMicrophone,
   isGuestConversationLimited = false,
+  autoProposeFirstReply = false,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -287,6 +289,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             }}
             onSelectMicrophone={onSelectMicrophone}
             isGuestConversationLimited={isGuestConversationLimited}
+            autoProposeFirstReply={autoProposeFirstReply}
+            onSendProposedAnswer={addUserMessage}
           />
         </Modal>
       </>
@@ -315,7 +319,11 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
           },
         }}
       >
-        <Stack id="messages-list" data-testid="conversation-canvas-record" data-analytics-screen="practice.record">
+        <Stack
+          id="messages-list"
+          data-testid="conversation-canvas-record"
+          data-analytics-screen="practice.record"
+        >
           <Stack
             sx={{
               width: '100%',
@@ -349,6 +357,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 isAiSpeaking={isAiSpeaking}
                 voice={voice}
                 isLocked={isLimitedVoice || isSendMessagesBlocked}
+                autoProposeFirstReply={autoProposeFirstReply}
+                onSendProposedAnswer={addUserMessage}
               />
               <Stack
                 sx={{

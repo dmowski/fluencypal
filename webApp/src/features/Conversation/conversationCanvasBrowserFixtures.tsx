@@ -47,6 +47,14 @@ export const FIXTURE_GOAL_TALK_CONVERSATION: ConversationMessage[] = [
   },
 ];
 
+export const FIXTURE_QUIZ_TALK_CONVERSATION: ConversationMessage[] = [
+  {
+    id: 'bot-0',
+    isBot: true,
+    text: 'You said work English feels hard. Do you talk more with coworkers, or with clients?',
+  },
+];
+
 const recordVisualizerComponent = (
   <Stack
     sx={{

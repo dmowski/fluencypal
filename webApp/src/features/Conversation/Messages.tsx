@@ -7,8 +7,9 @@ import { AudioLines, Languages, Loader, Sparkles } from 'lucide-react';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { useLingui } from '@lingui/react';
 import { useTranslate } from '../Translation/useTranslate';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getSortedMessages } from './getSortedMessages';
+import { isFirstQuizTalkTeacherTurn } from './quizTalk';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { AiVoice } from '@/features/Ai/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
@@ -18,6 +19,8 @@ import { LoadingShapes } from '../uiKit/Loading/LoadingShapes';
 import { GuessGameStat } from './types';
 import { AliasGamePanel } from './AliasGamePanel';
 
+export const QUIZ_TALK_SUGGESTED_REPLY_ANALYTICS_ID = 'quiz-talk-suggested-reply';
+
 export const Messages = ({
   conversation,
   messageOrder,
@@ -25,6 +28,8 @@ export const Messages = ({
   voice,
   isLocked,
   gameWords,
+  autoProposeFirstReply = false,
+  onSendProposedAnswer,
 }: {
   conversation: ConversationMessage[];
   messageOrder: MessagesOrderMap;
@@ -32,6 +37,8 @@ export const Messages = ({
   voice: AiVoice;
   isLocked?: boolean;
   gameWords?: GuessGameStat | null;
+  autoProposeFirstReply?: boolean;
+  onSendProposedAnswer?: (text: string) => void;
 }) => {
   const translator = useTranslate();
 
@@ -39,6 +46,8 @@ export const Messages = ({
     () => getSortedMessages({ conversation, messageOrder }),
     [conversation, messageOrder, isAiSpeaking],
   );
+  const shouldAutoProposeFirstReply =
+    autoProposeFirstReply && isFirstQuizTalkTeacherTurn(sortedMessages);
 
   const messages = (
     <>
@@ -62,6 +71,9 @@ export const Messages = ({
               voice={voice}
               isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
               isLastMessage={isThisIsLast}
+              autoProposeFirstReply={shouldAutoProposeFirstReply && isThisIsLast}
+              onSendProposedAnswer={onSendProposedAnswer}
+              isLocked={isLocked}
             />
           );
         })}
@@ -95,11 +107,17 @@ export const Message = ({
   isAiSpeaking,
   voice,
   isLastMessage,
+  autoProposeFirstReply = false,
+  onSendProposedAnswer,
+  isLocked = false,
 }: {
   message: ConversationMessage;
   isAiSpeaking?: boolean;
   voice: AiVoice;
   isLastMessage: boolean;
+  autoProposeFirstReply?: boolean;
+  onSendProposedAnswer?: (text: string) => void;
+  isLocked?: boolean;
 }) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
@@ -138,6 +156,10 @@ export const Message = ({
   const [proposedAnswer, setProposedAnswer] = useState<string | null>(null);
   const [proposedAnswerTranslation, setProposedAnswerTranslation] = useState<string | null>(null);
   const [isProposedAnswerLoading, setIsProposedAnswerLoading] = useState(false);
+  const [didAutoProposeFail, setDidAutoProposeFail] = useState(false);
+  const [isSendingProposedAnswer, setIsSendingProposedAnswer] = useState(false);
+  const autoProposeStartedForId = useRef<string | null>(null);
+  const didSendProposedAnswer = useRef(false);
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -153,20 +175,49 @@ export const Message = ({
     setIsProposedAnswerLoading(true);
     try {
       const nextAnswer = await conversationAnalysis.generateNextUserMessage();
+      const trimmed = String(nextAnswer || '').trim();
+      if (!trimmed || trimmed.startsWith('Error.')) {
+        setDidAutoProposeFail(true);
+        return false;
+      }
       const translatedAnswer =
-        translator.isTranslateAvailable && nextAnswer
+        translator.isTranslateAvailable && trimmed
           ? await translator.translateText({
-              text: nextAnswer,
+              text: trimmed,
             })
           : '';
 
-      setProposedAnswer('\n' + nextAnswer);
+      setProposedAnswer('\n' + trimmed);
       setProposedAnswerTranslation(translatedAnswer ? '\n' + translatedAnswer.trim() : null);
+      setDidAutoProposeFail(false);
       scrollToBottom();
+      return true;
     } finally {
       setIsProposedAnswerLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!autoProposeFirstReply || isAiSpeaking || !message.isBot) return;
+    if (!(message.text || '').trim()) return;
+    if (autoProposeStartedForId.current === message.id) return;
+    autoProposeStartedForId.current = message.id;
+    void generateProposedAnswer();
+  }, [autoProposeFirstReply, isAiSpeaking, message.id, message.isBot, message.text]);
+
+  const sendProposedAnswer = () => {
+    const text = (proposedAnswer || '').trim();
+    if (!text || !onSendProposedAnswer || isLocked || didSendProposedAnswer.current) return;
+    didSendProposedAnswer.current = true;
+    setIsSendingProposedAnswer(true);
+    onSendProposedAnswer(text);
+  };
+
+  const showWhatToSayButton =
+    isAbleToGenerateHelpAnswer &&
+    !proposedAnswer &&
+    !isProposedAnswerLoading &&
+    (!autoProposeFirstReply || didAutoProposeFail);
 
   const isUserIsRecordingStart = isLastMessage && !message.isBot && message.text === ' ';
   const isMessageInProgress = isLastMessage && !message.isBot && message.isInProgress;
@@ -284,11 +335,13 @@ export const Message = ({
             <AudioPlayIcon text={text} />
           </Stack>
 
-          {isAbleToGenerateHelpAnswer && !proposedAnswer && (
+          {showWhatToSayButton && (
             <Button
               variant="text"
               disabled={isProposedAnswerLoading || proposedAnswer !== null}
-              onClick={generateProposedAnswer}
+              onClick={() => {
+                void generateProposedAnswer();
+              }}
               data-analytics="call-what-to-say"
               startIcon={
                 isProposedAnswerLoading ? <Loader size={'12px'} /> : <Sparkles size={'12px'} />
@@ -304,7 +357,7 @@ export const Message = ({
         </Stack>
       </Stack>
 
-      {proposedAnswer && (
+      {(proposedAnswer || (autoProposeFirstReply && isProposedAnswerLoading)) && (
         <Stack
           sx={{
             marginTop: '30px',
@@ -334,33 +387,56 @@ export const Message = ({
               {i18n._('What you can say:')}
             </Typography>
           </Stack>
-          <Stack
-            sx={{
-              gap: '5px',
-              width: '100%',
-            }}
-          >
+          {isProposedAnswerLoading && !proposedAnswer ? (
+            <Loader size={'16px'} />
+          ) : (
             <Stack
               sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
+                gap: '5px',
+                width: '100%',
               }}
             >
-              <Markdown>{proposedAnswer}</Markdown>
-              <AudioPlayIcon text={proposedAnswer} />
-            </Stack>
-            {proposedAnswerTranslation && <Divider />}
-            {proposedAnswerTranslation && (
               <Stack
                 sx={{
-                  opacity: 0.7,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  gap: '8px',
                 }}
               >
-                <Markdown variant="small">{proposedAnswerTranslation}</Markdown>
+                {onSendProposedAnswer ? (
+                  <Button
+                    variant="contained"
+                    onClick={sendProposedAnswer}
+                    color="info"
+                    //disabled={isLocked || isSendingProposedAnswer}
+                    data-analytics={QUIZ_TALK_SUGGESTED_REPLY_ANALYTICS_ID}
+                    data-testid="quiz-talk-suggested-reply"
+                    sx={{
+                      textTransform: 'none',
+                      textAlign: 'left',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {(proposedAnswer || '').trim()}
+                  </Button>
+                ) : (
+                  <Markdown>{proposedAnswer || ''}</Markdown>
+                )}
+                <AudioPlayIcon text={proposedAnswer || ''} />
               </Stack>
-            )}
-          </Stack>
+              {proposedAnswerTranslation && <Divider />}
+              {proposedAnswerTranslation && (
+                <Stack
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  <Markdown variant="small">{proposedAnswerTranslation}</Markdown>
+                </Stack>
+              )}
+            </Stack>
+          )}
         </Stack>
       )}
 

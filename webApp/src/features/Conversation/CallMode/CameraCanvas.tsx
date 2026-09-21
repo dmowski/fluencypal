@@ -45,6 +45,8 @@ export const CameraCanvas = ({
   gameWords,
   onSelectMicrophone,
   isGuestConversationLimited = false,
+  autoProposeFirstReply = false,
+  onSendProposedAnswer,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -73,6 +75,8 @@ export const CameraCanvas = ({
   gameWords: GuessGameStat | null;
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
+  autoProposeFirstReply?: boolean;
+  onSendProposedAnswer?: (text: string) => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -264,6 +268,8 @@ export const CameraCanvas = ({
               isAiSpeaking={isAiSpeaking}
               voice={voice}
               isLocked={isLimitedVoice || isSendMessagesBlocked}
+              autoProposeFirstReply={autoProposeFirstReply}
+              onSendProposedAnswer={onSendProposedAnswer}
             />
           </Stack>
         </Stack>

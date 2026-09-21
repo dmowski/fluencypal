@@ -7,6 +7,7 @@ import {
   ConversationCanvasFixture,
   FIXTURE_ALIAS_GAME_WORDS,
   FIXTURE_GOAL_TALK_CONVERSATION,
+  FIXTURE_QUIZ_TALK_CONVERSATION,
   ROLE_PLAY_EARLY_HINT_USER_MESSAGES,
   ROLE_PLAY_FINISH_READY_USER_MESSAGES,
 } from './conversationCanvasBrowserFixtures';
@@ -486,6 +487,50 @@ test('conversation canvas – call mode end-call menu (results enabled)', async 
   await expect
     .element(page.getByTestId('call-end-menu'))
     .toMatchScreenshot('conversation-canvas-call-end-menu-results-ready');
+});
+
+test('conversation canvas – call mode quiz-talk auto-shows a tappable first reply', async () => {
+  const addUserMessage = vi.fn(async () => undefined);
+
+  await render(
+    <ConversationCanvasFixture
+      conversation={FIXTURE_QUIZ_TALK_CONVERSATION}
+      conversationMode="call"
+      isAiSpeaking={false}
+      autoProposeFirstReply
+      addUserMessage={addUserMessage}
+    />,
+  );
+
+  await expect.element(page.getByText('What you can say:')).toBeVisible();
+  const chip = page.getByTestId('quiz-talk-suggested-reply');
+  await expect.element(chip).toBeVisible();
+  await expect
+    .element(chip)
+    .toHaveTextContent('I would describe myself as a motivated team player.');
+  await expect.element(page.getByRole('button', { name: 'What to say?' })).not.toBeInTheDocument();
+  await expect.element(chip).toBeEnabled();
+
+  await expect
+    .element(page.getByTestId('conversation-canvas-call'))
+    .toMatchScreenshot('conversation-canvas-call-quiz-talk-suggested-reply');
+
+  await userEvent.click(chip);
+  expect(addUserMessage).toHaveBeenCalledTimes(1);
+  await expect.element(chip).toBeDisabled();
+});
+
+test('conversation canvas – call mode does not auto-show a reply on dashboard talk', async () => {
+  await render(
+    <ConversationCanvasFixture
+      conversation={FIXTURE_GOAL_TALK_CONVERSATION}
+      conversationMode="call"
+      isAiSpeaking={false}
+    />,
+  );
+
+  await expect.element(page.getByRole('button', { name: 'What to say?' })).toBeVisible();
+  await expect.element(page.getByTestId('quiz-talk-suggested-reply')).not.toBeInTheDocument();
 });
 
 async function openCallResultsModal() {

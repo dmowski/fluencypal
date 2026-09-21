@@ -59,7 +59,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, quiz-next, quiz-start-speaking, enable-mic-just-talk, call-enable-mic, call-end, call-what-to-say, mic-permission-grant, teacher-preview-play)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, quiz-next, quiz-start-speaking, enable-mic-just-talk, call-enable-mic, call-end, call-what-to-say, quiz-talk-suggested-reply, mic-permission-grant, teacher-preview-play)
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
 - Path to first speak: pathBeforeSpeak + conversationStartPaths; identifyPaths for where they signed in
@@ -110,7 +110,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-start-speaking`, `enable-mic-just-talk`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `call-record-message`, `mic-permission-grant`, `mic-permission-dismiss`, `teacher-preview-play`, `teacher-select`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-start-speaking`, `enable-mic-just-talk`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `mic-permission-grant`, `mic-permission-dismiss`, `teacher-preview-play`, `teacher-select`.
 
 `uiContext` is a clipped a11y digest (screenId, heading, open dialog, alerts, ~20 named controls). Do not store a full accessibility tree. Group screens with `uiContextHash`. Export also rolls `permissions`, `callStates`, `authAttempts`, `uiErrors`, `uiScreens`, `deadClicks`, `rageClickVisitors`.
 
