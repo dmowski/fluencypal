@@ -60,13 +60,15 @@ const QuizQuestions = () => {
       }
       const micOkPromise = requestMicrophoneAccess();
       await confirmPlan();
-      if (await micOkPromise) {
+      const micOk = await micOkPromise;
+      if (micOk) {
         markJustTalkAutoStart();
       }
       markQuizTalkAbout(survey?.aboutUserTranscription);
       router.push(
         buildJustTalkPracticeUrl({
           pageLanguage,
+          autoStart: micOk,
         }),
       );
     } catch (e) {

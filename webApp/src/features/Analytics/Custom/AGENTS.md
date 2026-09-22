@@ -106,7 +106,7 @@ CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-
 
 Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and appends `?fpv=` on app links so landing → app is one visitor (iframe storage is partitioned). The tracker prefers the parent visitor id.
 
-Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions`, `justTalk` and drop UTM, inbox ids, and `fpv`.
+Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuestions`, `justTalk` and drop UTM, inbox ids, `fpv`, and `autoStart`.
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 

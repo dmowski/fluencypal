@@ -25,6 +25,27 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await grantPracticeMediaPermissions(context);
   });
 
+  test('justTalk=open&autoStart=1 auto-starts without sessionStorage', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await installRealtimeConversationMock(page);
+
+    await page.addInitScript(() => {
+      window.sessionStorage.clear();
+    });
+
+    await page.goto('/practice');
+    const uid = await signInAnonymouslyForQuiz(page);
+    await seedAnonymousPracticeSettings(page, uid, 'en');
+    await page.goto('/practice?justTalk=open&autoStart=1');
+
+    await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
+    await expect(page.getByTestId('just-talk-handoff')).toHaveCount(0);
+    await expect(page.getByTestId('call-mic-toggle')).toHaveAttribute('aria-pressed', 'true');
+    await expect(page).toHaveURL(/justTalk=open/);
+    await expect(page).not.toHaveURL(/autoStart=/);
+    await expectAnonymousCurrentUser(page);
+  });
+
   test('cold justTalk=open shows handoff and does not auto-request mic', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
@@ -73,8 +94,10 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(startSpeaking).toBeEnabled();
     await startSpeaking.click();
 
-    await expect(page).toHaveURL(/\/practice\?justTalk=open/);
+    await expect(page).toHaveURL(/justTalk=open/);
+    await expect(page).toHaveURL(/autoStart=1/);
     await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
+    await expect(page).not.toHaveURL(/autoStart=/);
     await expect(page.getByTestId('just-talk-handoff')).toHaveCount(0);
     await expect(page.getByTestId('call-mic-toggle')).toHaveAttribute('aria-pressed', 'true');
     await expectAnonymousCurrentUser(page);

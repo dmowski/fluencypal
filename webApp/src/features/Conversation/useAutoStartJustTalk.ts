@@ -3,9 +3,10 @@ import { peekJustTalkAutoStart } from './justTalkHandoff';
 
 /**
  * After quiz → `/practice?justTalk=open`, start Just Talk only when mic was
- * primed on the confirm click (`fp_justTalkAutoStart`). Cold visits and
- * sticky browser grants alone do not auto-start — handoff Enable-mic is the
- * fallback so `/practice?justTalk=open` does not pop a permission dialog.
+ * primed on the confirm click (`fp_justTalkAutoStart` or consume-once
+ * `autoStart=1` on the practice URL). Cold visits and sticky browser grants
+ * alone do not auto-start — handoff Enable-mic is the fallback so
+ * `/practice?justTalk=open` does not pop a permission dialog.
  */
 export const useAutoStartJustTalk = (
   isHandoff: boolean,

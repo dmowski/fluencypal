@@ -8,6 +8,9 @@ export const JUST_TALK_HANDOFF_VALUE = 'open';
 export const ENABLE_MIC_JUST_TALK_ANALYTICS_ID = 'enable-mic-just-talk';
 /** Set on quiz goalReview confirm after mic prime; consumed once the call starts. */
 export const JUST_TALK_AUTO_START_KEY = 'fp_justTalkAutoStart';
+/** Quiz Start Speaking also puts this on the practice URL so iOS still auto-starts if sessionStorage is dropped. */
+export const JUST_TALK_AUTO_START_PARAM = 'autoStart';
+export const JUST_TALK_AUTO_START_PARAM_VALUE = '1';
 
 export type JustTalkAutoStartPrefs = {
   startUnmuted: boolean;
@@ -32,9 +35,28 @@ const parseJustTalkAutoStart = (raw: string | null): JustTalkAutoStartPrefs | nu
   return null;
 };
 
+const readJustTalkAutoStartFromUrl = (): JustTalkAutoStartPrefs | null => {
+  if (typeof window === 'undefined') return null;
+  const params = new URLSearchParams(window.location.search);
+  if (!isJustTalkHandoff(params.get(JUST_TALK_HANDOFF_PARAM))) return null;
+  if (params.get(JUST_TALK_AUTO_START_PARAM) !== JUST_TALK_AUTO_START_PARAM_VALUE) return null;
+  return { startUnmuted: true };
+};
+
+const clearJustTalkAutoStartUrl = (): void => {
+  if (typeof window === 'undefined') return;
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has(JUST_TALK_AUTO_START_PARAM)) return;
+  url.searchParams.delete(JUST_TALK_AUTO_START_PARAM);
+  window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+};
+
 export const readJustTalkAutoStart = (): JustTalkAutoStartPrefs | null => {
   if (typeof window === 'undefined') return null;
-  return parseJustTalkAutoStart(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY));
+  return (
+    readJustTalkAutoStartFromUrl() ||
+    parseJustTalkAutoStart(window.sessionStorage.getItem(JUST_TALK_AUTO_START_KEY))
+  );
 };
 
 /** Mark that Start Speaking already primed the mic in the same user gesture. */
@@ -54,6 +76,7 @@ export const consumeJustTalkAutoStart = (): JustTalkAutoStartPrefs | null => {
   const prefs = readJustTalkAutoStart();
   if (prefs) {
     window.sessionStorage.removeItem(JUST_TALK_AUTO_START_KEY);
+    clearJustTalkAutoStartUrl();
   }
   return prefs;
 };
@@ -103,12 +126,17 @@ export const getPracticeIdleSurface = ({
 export const buildJustTalkPracticeUrl = ({
   pageLanguage,
   paymentModal = false,
+  autoStart = false,
 }: {
   pageLanguage: string;
   paymentModal?: boolean;
+  autoStart?: boolean;
 }): string => {
   const params = new URLSearchParams();
   params.set(JUST_TALK_HANDOFF_PARAM, JUST_TALK_HANDOFF_VALUE);
+  if (autoStart) {
+    params.set(JUST_TALK_AUTO_START_PARAM, JUST_TALK_AUTO_START_PARAM_VALUE);
+  }
   if (paymentModal) {
     params.set('paymentModal', 'true');
   }

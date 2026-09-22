@@ -433,6 +433,9 @@ describe('normalizeAnalyticsPath', () => {
     expect(normalizeAnalyticsPath('/id/practice?justTalk=open&fpv=fpv_1')).toBe(
       '/id/practice?justTalk=open',
     );
+    expect(normalizeAnalyticsPath('/practice?justTalk=open&autoStart=1')).toBe(
+      '/practice?justTalk=open',
+    );
     expect(normalizeAnalyticsPath('/practice?inbox=true&inboxType=chat')).toBe('/practice');
     expect(normalizeAnalyticsPath('/?fpv=fpv_11111111-1111-4111-8111-111111111111')).toBe('/');
   });
