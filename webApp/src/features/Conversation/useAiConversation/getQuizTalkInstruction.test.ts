@@ -17,6 +17,8 @@ describe('getQuizTalkInstruction', () => {
     expect(prompt).toContain('yes/no, or a two-choice A/B');
     expect(prompt).toContain('Do not ask an open "tell me more"');
     expect(prompt).toContain('Do not lecture, list vocabulary, describe personalities, or ask about their whole day.');
+    expect(prompt).toContain('Never ask them to say the same sentence again.');
+    expect(prompt).not.toContain('they can repeat');
     expect(prompt).toContain('Use English.');
     expect(prompt).toContain('Your name is "marin"');
     expect(prompt).not.toContain('fake A/B choice');
@@ -34,6 +36,8 @@ describe('getQuizTalkInstruction', () => {
 
     expect(prompt).toContain('empty or could not be transcribed');
     expect(prompt).toContain('Do not invent a biography or a fake A/B choice');
+    expect(prompt).toContain('Never ask them to say the same sentence again.');
+    expect(prompt).not.toContain('they can repeat');
     expect(prompt).not.toContain('"""');
     expect(prompt).not.toContain('ONE closed follow-up');
     expect(prompt).toContain('Use Spanish.');
@@ -49,6 +53,9 @@ describe('getQuizTalkInstruction', () => {
 
     expect(prompt).toContain('I want English');
     expect(prompt).toContain('Do not invent a biography or a fake A/B choice');
+    expect(prompt).toContain('Do not hand them a sentence to recite.');
+    expect(prompt).toContain('Never ask them to say the same sentence again.');
+    expect(prompt).not.toContain('they can repeat');
     expect(prompt).not.toContain('ONE closed follow-up');
   });
 });

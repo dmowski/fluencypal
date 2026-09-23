@@ -537,7 +537,8 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       search: window.location.search,
     });
     if (localeRedirectUrl) {
-      window.location.assign(localeRedirectUrl);
+      // Client navigation. A full document load here dies on iOS with no JS exception, so Sentry stays empty.
+      router.push(localeRedirectUrl, { scroll: false });
       return;
     }
 

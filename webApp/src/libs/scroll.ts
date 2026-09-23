@@ -14,7 +14,10 @@ export const scrollToLangButton = async (langCode: string) => {
   if (!isWindow) return;
 
   const element = document.querySelector(`button[aria-label='${langCode}']`);
-  if (element) {
-    element.scrollIntoView({ behavior: 'instant', block: 'center' });
+  if (!element) return;
+  try {
+    element.scrollIntoView({ block: 'center' });
+  } catch {
+    // iOS WebKit can kill the tab on scrollIntoView options. A failed scroll is not worth a crash.
   }
 };

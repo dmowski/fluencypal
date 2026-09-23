@@ -6,9 +6,8 @@ import { Search, X } from 'lucide-react';
 import { LanguageButton } from '@/features/Lang/LangSelector';
 import { useQuiz } from './useQuiz';
 import { useLanguageGroup } from '../useLanguageGroup';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { scrollToLangButton } from '@/libs/scroll';
-import { sleep } from '@/libs/sleep';
 import { NextStepButton } from './NextStepButton';
 
 export const NativeLanguageSelector = () => {
@@ -24,20 +23,6 @@ export const NativeLanguageSelector = () => {
     defaultGroupTitle: i18n._(`Other languages`),
     systemLanguagesTitle: i18n._(`System languages`),
   });
-
-  const isScrolledRef = useRef(false);
-
-  useEffect(() => {
-    if (nativeLanguage && !isScrolledRef.current) {
-      isScrolledRef.current = true;
-      (async () => {
-        await sleep(1000);
-        scrollToLangButton(nativeLanguage);
-        await sleep(100);
-        scrollToLangButton(nativeLanguage);
-      })();
-    }
-  }, []);
 
   const filterByInput = ({
     englishName,
