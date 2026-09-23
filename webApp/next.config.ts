@@ -1,5 +1,6 @@
 import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
+import { FIREBASE_PROJECT_AUTH_DOMAIN } from './src/features/Firebase/firebaseAuthDomain';
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
 const isDev = process.env.NODE_ENV === 'development';
@@ -119,6 +120,22 @@ const nextConfig: NextConfig = {
     });
 
     return config;
+  },
+  async rewrites() {
+    const authOrigin = `https://${FIREBASE_PROJECT_AUTH_DOMAIN}`;
+    return {
+      beforeFiles: [
+        // Same-origin auth helper. A 302 would not work; this proxy is transparent.
+        {
+          source: '/__/auth/:path*',
+          destination: `${authOrigin}/__/auth/:path*`,
+        },
+        {
+          source: '/__/firebase/:path*',
+          destination: `${authOrigin}/__/firebase/:path*`,
+        },
+      ],
+    };
   },
   async redirects() {
     return [

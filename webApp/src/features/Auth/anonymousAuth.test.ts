@@ -3,6 +3,7 @@
  */
 
 import { ensureAnonymousAuth, shouldDeferAnonymousAuth } from './anonymousAuth';
+import { completeGoogleRedirectSignIn } from './googleSignIn';
 
 const signInAnonymously = jest.fn();
 const isSignInWithEmailLink = jest.fn();
@@ -10,6 +11,10 @@ const isSignInWithEmailLink = jest.fn();
 jest.mock('firebase/auth', () => ({
   signInAnonymously: (...args: unknown[]) => signInAnonymously(...args),
   isSignInWithEmailLink: (...args: unknown[]) => isSignInWithEmailLink(...args),
+}));
+
+jest.mock('./googleSignIn', () => ({
+  completeGoogleRedirectSignIn: jest.fn().mockResolvedValue(null),
 }));
 
 const authWith = (currentUser: { uid: string } | null) =>
@@ -28,6 +33,22 @@ describe('ensureAnonymousAuth', () => {
     signInAnonymously.mockReset();
     isSignInWithEmailLink.mockReset();
     isSignInWithEmailLink.mockReturnValue(false);
+    jest.mocked(completeGoogleRedirectSignIn).mockReset();
+    jest.mocked(completeGoogleRedirectSignIn).mockResolvedValue(null);
+  });
+
+  it('finishes a Google redirect before creating an anonymous user', async () => {
+    const firebaseAuth = {
+      currentUser: null as { uid: string } | null,
+      authStateReady: () => Promise.resolve(),
+    };
+    jest.mocked(completeGoogleRedirectSignIn).mockImplementation(async () => {
+      firebaseAuth.currentUser = { uid: 'google-user' };
+      return { user: firebaseAuth.currentUser } as never;
+    });
+
+    await expect(ensureAnonymousAuth(firebaseAuth as never)).resolves.toBe('google-user');
+    expect(signInAnonymously).not.toHaveBeenCalled();
   });
 
   it('returns the existing uid without signing in again', async () => {

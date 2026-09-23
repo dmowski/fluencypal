@@ -84,8 +84,8 @@ const auth =
 
 const anonymousAuthReady = !isNodeEnv ? ensureAnonymousAuth(auth) : Promise.resolve('');
 if (!isNodeEnv) {
-  // Start after authStateReady inside ensureAnonymousAuth — do not wait for React
-  // auth.loading, or quiz teacher Continue sits disabled through the first steps.
+  // ensureAnonymousAuth finishes getRedirectResult before any anonymous sign-in.
+  // Do not wait for React auth.loading, or quiz teacher Continue sits disabled.
   void anonymousAuthReady;
 }
 

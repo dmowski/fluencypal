@@ -1,6 +1,8 @@
+import { resolveFirebaseAuthDomain } from './firebaseAuthDomain';
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyD3bNY55votFEehrHs8dAlJuDCf6Chu2IQ',
-  authDomain: 'dark-lang.firebaseapp.com',
+  authDomain: resolveFirebaseAuthDomain(),
   projectId: 'dark-lang',
   storageBucket: 'dark-lang.firebasestorage.app',
   messagingSenderId: '815064634206',
