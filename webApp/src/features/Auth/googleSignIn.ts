@@ -128,13 +128,10 @@ const signInOrLinkGoogle = async (
 const startGoogleRedirect = async (
   auth: Auth,
   provider: GoogleAuthProvider,
-  currentUser: User | null,
+  _currentUser: User | null,
   deps: GoogleSignInDeps,
 ): Promise<void> => {
-  if (currentUser?.isAnonymous) {
-    await deps.linkWithRedirect(currentUser, provider);
-    return;
-  }
+  // linkWithRedirect drops the anonymous session on iOS and returns to this screen still signed out.
   await deps.signInWithRedirect(auth, provider);
 };
 
@@ -196,8 +193,14 @@ export const completeGoogleRedirectSignIn = async (auth: Auth): Promise<UserCred
   }
 
   if (!redirectResultPromise) {
-    redirectResultPromise = getRedirectResult(auth).catch((error: unknown) => {
+    redirectResultPromise = getRedirectResult(auth).catch(async (error: unknown) => {
       redirectResultPromise = null;
+      if (isGoogleCredentialAlreadyInUse(error)) {
+        const credential = GoogleAuthProvider.credentialFromError(error as FirebaseError);
+        if (credential) {
+          return signInWithCredential(auth, credential);
+        }
+      }
       if (getGoogleSignInErrorMessage(error) === null || isFirebaseAuthPendingPromiseError(error)) {
         return null;
       }

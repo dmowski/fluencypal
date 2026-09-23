@@ -102,6 +102,26 @@ describe('signInWithGoogleAccount', () => {
     expect(signInWithPopup).not.toHaveBeenCalled();
   });
 
+  it('signs an anonymous iOS session in with redirect instead of linking it', async () => {
+    const signInWithPopup = jest.fn();
+    const signInWithRedirect = jest.fn().mockResolvedValue(undefined);
+    const linkWithRedirect = jest.fn();
+    const anonymousAuth = {
+      currentUser: { isAnonymous: true },
+    } as Auth;
+
+    const result = await signInWithGoogleAccount(
+      anonymousAuth,
+      { isEmulator: false, isWebView: false, shouldRedirect: true },
+      { signInWithPopup, signInWithRedirect, linkWithRedirect },
+    );
+
+    expect(result.isRedirecting).toBe(true);
+    expect(signInWithRedirect).toHaveBeenCalledTimes(1);
+    expect(linkWithRedirect).not.toHaveBeenCalled();
+    expect(signInWithPopup).not.toHaveBeenCalled();
+  });
+
   it('returns a retry message when redirect sign-in fails on the network', async () => {
     const signInWithPopup = jest.fn();
     const signInWithRedirect = jest

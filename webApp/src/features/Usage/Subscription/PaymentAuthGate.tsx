@@ -22,7 +22,6 @@ export const PaymentAuthGate = ({ children }: { children: ReactNode }) => {
         startOnAuth
         signInTitle={i18n._('Sign in to subscribe')}
         singInSubTitle={i18n._('So we can save your purchase to your account')}
-        authActionTitle={i18n._('Continue to payment')}
         authListAfterActions
       >
         {children}

@@ -170,14 +170,6 @@ function useProvideAuth(): AuthContext {
 
   useEffect(() => {
     void (async () => {
-      await confirmEmailLinkSignIn();
-      try {
-        await ensureAnonymousAuth(auth);
-      } catch (error) {
-        Sentry.captureException(error);
-      }
-    })();
-    void (async () => {
       try {
         const redirected = await completeGoogleRedirectSignIn(auth);
         if (redirected) sendAuthAttempt({ provider: 'google', result: 'success' });
@@ -186,9 +178,16 @@ function useProvideAuth(): AuthContext {
           error instanceof FirebaseError && error.code === 'auth/network-request-failed';
         if (isNetworkFailure) {
           console.warn('Google redirect sign-in network error', error);
-          return;
+        } else {
+          console.error('Google redirect sign-in error', error);
+          Sentry.captureException(error);
         }
-        console.error('Google redirect sign-in error', error);
+      }
+
+      await confirmEmailLinkSignIn();
+      try {
+        await ensureAnonymousAuth(auth);
+      } catch (error) {
         Sentry.captureException(error);
       }
     })();
