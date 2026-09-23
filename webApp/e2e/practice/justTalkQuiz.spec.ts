@@ -46,6 +46,30 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expectAnonymousCurrentUser(page);
   });
 
+  test('autoStart keeps Enable mic visible when the call has not connected', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await installRealtimeConversationMock(page);
+
+    await page.addInitScript(() => {
+      window.sessionStorage.clear();
+      const media = navigator.mediaDevices;
+      if (!media?.getUserMedia) return;
+      media.getUserMedia = () => new Promise(() => {});
+    });
+
+    await page.goto('/practice');
+    const uid = await signInAnonymouslyForQuiz(page);
+    await seedAnonymousPracticeSettings(page, uid, 'en');
+    await page.goto('/practice?justTalk=open&autoStart=1');
+
+    const handoff = page.getByTestId('just-talk-handoff');
+    await expect(handoff).toBeVisible();
+    await expect(
+      handoff.getByRole('button', { name: 'Enable microphone to start talking' }),
+    ).toBeEnabled();
+    await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
+  });
+
   test('cold justTalk=open shows handoff and does not auto-request mic', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);

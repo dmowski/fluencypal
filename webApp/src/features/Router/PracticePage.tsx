@@ -63,16 +63,26 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const hasTrackedSignupCompleted = useRef(false);
   const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
   const { startJustTalk, isCallStarting } = useJustTalk();
+  const [handoffTapStarting, setHandoffTapStarting] = useState(false);
   const isHandoff = isJustTalkHandoff(justTalk);
   const canGuestPractice = canEnterPracticeAsGuest({ justTalk, rolePlayId });
   const practiceLanguageCode = settings.languageCode || (canGuestPractice ? lang : null);
-  const startHandoffJustTalk = () =>
+  const startAutoJustTalk = () =>
     startJustTalk(undefined, { skipConsentUi: true, mode: 'quiz-talk' });
+  const startHandoffFromTap = () => {
+    setHandoffTapStarting(true);
+    return startJustTalk(undefined, {
+      skipConsentUi: true,
+      mode: 'quiz-talk',
+      supersede: true,
+    });
+  };
   // Wait for auth (and guest anonymous ensure) before auto-start so we do not
   // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
-  const { isResolvingAutoStart } = useAutoStartJustTalk(
+  // The handoff stays on screen until the call connects; the tap supersedes a hung auto-start.
+  useAutoStartJustTalk(
     isHandoff && !auth.loading && auth.isAuthorized && Boolean(settings.userSettings),
-    startHandoffJustTalk,
+    startAutoJustTalk,
   );
   const [showGuestAuthWall, setShowGuestAuthWall] = useState(false);
   const hasAutoOpenedPaywallRef = useRef(false);
@@ -180,13 +190,14 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   }
 
   if (idleSurface === 'handoff') {
-    if (isResolvingAutoStart || isCallStarting) {
-      return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-    }
     return (
       <JustTalkHandoffScreen
-        onEnableMic={startHandoffJustTalk}
-        isStarting={isCallStarting}
+        onEnableMic={async () => {
+          const result = await startHandoffFromTap();
+          if (result !== 'started') setHandoffTapStarting(false);
+          return result;
+        }}
+        isStarting={handoffTapStarting && isCallStarting}
         wasDenied={Boolean(aiConversation.errorInitiating)}
       />
     );

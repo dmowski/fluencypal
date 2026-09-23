@@ -7,6 +7,8 @@ import { peekJustTalkAutoStart } from './justTalkHandoff';
  * `autoStart=1` on the practice URL). Cold visits and sticky browser grants
  * alone do not auto-start — handoff Enable-mic is the fallback so
  * `/practice?justTalk=open` does not pop a permission dialog.
+ * The handoff stays visible until the call connects. A hung effect start must
+ * not cover Enable microphone; the tap supersedes it.
  */
 export const useAutoStartJustTalk = (
   isHandoff: boolean,
