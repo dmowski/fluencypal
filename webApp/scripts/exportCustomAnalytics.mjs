@@ -287,6 +287,35 @@ const entryByKind = new Map();
 let paywallViews = 0;
 let checkoutStarts = 0;
 let newVisitorCount = 0;
+const teacherContinue = {
+  visitors: 0,
+  enabledInView: 0,
+  enabledOffscreen: 0,
+  enabledUnknown: 0,
+  disabledInView: 0,
+  disabledOffscreen: 0,
+  disabledUnknown: 0,
+  missing: 0,
+  clicked: 0,
+};
+const teacherContinueRank = {
+  missing: 0,
+  'disabled:unknown': 1,
+  'disabled:offscreen': 2,
+  'disabled:inView': 3,
+  'enabled:unknown': 4,
+  'enabled:offscreen': 5,
+  'enabled:inView': 6,
+};
+const teacherContinueField = {
+  missing: 'missing',
+  'disabled:unknown': 'disabledUnknown',
+  'disabled:offscreen': 'disabledOffscreen',
+  'disabled:inView': 'disabledInView',
+  'enabled:unknown': 'enabledUnknown',
+  'enabled:offscreen': 'enabledOffscreen',
+  'enabled:inView': 'enabledInView',
+};
 
 const bumpEntry = (kind, flags) => {
   const row = entryByKind.get(kind) || {
@@ -358,6 +387,9 @@ for (const events of Object.values(eventsByVisitorId)) {
   let lastPagePath = '';
   let recordedSpeak = false;
   const maxDuration = new Map();
+  let sawTeacher = false;
+  let teacherContinueState = 'missing';
+  let clickedTeacherContinue = false;
   for (const event of events) {
     const eventPath = normalizePath(event.path || '');
     if (event.name === 'page_view') lastPagePath = eventPath;
@@ -407,6 +439,19 @@ for (const events of Object.values(eventsByVisitorId)) {
     if (event.uiContext?.screenId) {
       uiScreens.push(event.uiContext.screenId);
     }
+    if (event.uiContext?.screenId === 'quiz.teacherSelection') {
+      sawTeacher = true;
+      if (event.name === 'click' && event.ctaId === 'quiz-next') clickedTeacherContinue = true;
+      for (const action of event.uiContext.actions || []) {
+        if (action?.name !== 'quiz-next') continue;
+        const view =
+          action.inView === true ? 'inView' : action.inView === false ? 'offscreen' : 'unknown';
+        const state = `${action.disabled ? 'disabled' : 'enabled'}:${view}`;
+        if (teacherContinueRank[state] > teacherContinueRank[teacherContinueState]) {
+          teacherContinueState = state;
+        }
+      }
+    }
     if (event.name === 'dead_click') {
       deadClicks.push(event.buttonText || event.tagName || '(empty)');
     }
@@ -438,6 +483,11 @@ for (const events of Object.values(eventsByVisitorId)) {
       if (nextKey === key) same += 1;
     }
     if (same >= 3) rageForVisitor += 1;
+  }
+  if (sawTeacher) {
+    teacherContinue.visitors += 1;
+    teacherContinue[teacherContinueField[teacherContinueState]] += 1;
+    if (clickedTeacherContinue) teacherContinue.clicked += 1;
   }
   if (rageForVisitor > 0) rageClickVisitors += 1;
   for (const [eventPath, durationMs] of maxDuration) {
@@ -496,6 +546,7 @@ const payload = {
     uiScreens: countBy(uiScreens),
     deadClicks: countBy(deadClicks),
     rageClickVisitors,
+    teacherContinue,
     entry: [...entryByKind.entries()]
       .map(([key, value]) => ({ key, ...value }))
       .sort((a, b) => b.visitors - a.visitors),

@@ -71,7 +71,9 @@ const toUiAction = (value: unknown): AnalyticsUiAction | null => {
   const record = value as Record<string, unknown>;
   const role = clip(record.role, MAX_EVENT_STRING.actionRole) || 'button';
   const name = clip(record.name, MAX_EVENT_STRING.actionName) || '(unnamed)';
-  return { role, name, disabled: record.disabled === true };
+  const action: AnalyticsUiAction = { role, name, disabled: record.disabled === true };
+  if (record.inView === true || record.inView === false) action.inView = record.inView;
+  return action;
 };
 
 const toUiContext = (value: unknown): AnalyticsUiContext | undefined => {

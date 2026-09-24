@@ -22,23 +22,35 @@ jest.mock('../../Survey/InfoStep', () => ({
   InfoStep: ({
     title,
     subComponent,
-    onClick,
-    disabled,
-    actionButtonTitle,
+    hideActions,
   }: {
     title?: string;
     subComponent?: ReactNode;
-    onClick: () => void;
-    disabled?: boolean;
-    actionButtonTitle?: string;
+    hideActions?: boolean;
   }) => (
     <div>
       <h4>{title}</h4>
       {subComponent}
-      <button type="button" disabled={disabled} onClick={onClick}>
-        {actionButtonTitle}
-      </button>
+      {hideActions ? null : <button type="button">Next</button>}
     </div>
+  ),
+}));
+
+jest.mock('../../Survey/FooterButton', () => ({
+  FooterButton: ({
+    title,
+    disabled,
+    onClick,
+    analyticsId,
+  }: {
+    title: string;
+    disabled?: boolean;
+    onClick: () => void;
+    analyticsId?: string;
+  }) => (
+    <button type="button" disabled={disabled} onClick={onClick} data-analytics={analyticsId}>
+      {title}
+    </button>
   ),
 }));
 

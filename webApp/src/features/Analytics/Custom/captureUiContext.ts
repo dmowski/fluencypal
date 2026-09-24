@@ -19,6 +19,14 @@ const clipName = (value: string): string => {
   return value.replace(/\s+/g, ' ').replace(/\S+@\S+/g, '').trim().slice(0, NAME_MAX);
 };
 
+const elementInView = (el: HTMLElement): boolean => {
+  const rect = el.getBoundingClientRect();
+  if (rect.width <= 0 || rect.height <= 0) return false;
+  const height = window.innerHeight || document.documentElement.clientHeight;
+  const width = window.innerWidth || document.documentElement.clientWidth;
+  return rect.bottom > 0 && rect.right > 0 && rect.top < height && rect.left < width;
+};
+
 export const accessibleName = (el: Element): string => {
   if (!(el instanceof HTMLElement)) return '';
   const labelled = clipName(el.getAttribute('aria-label') || el.getAttribute('title') || '');
@@ -60,7 +68,10 @@ export const hashUiContext = (ctx: AnalyticsUiContext): string => {
     ctx.dialog,
     ctx.primary,
     ctx.actions
-      .map((action) => `${action.role}:${action.name}:${action.disabled ? 1 : 0}`)
+      .map(
+        (action) =>
+          `${action.role}:${action.name}:${action.disabled ? 1 : 0}:${action.inView === true ? 1 : action.inView === false ? 0 : ''}`,
+      )
       .join('|'),
   ].join('~');
   let hash = 5381;
@@ -100,23 +111,28 @@ export const captureUiContext = (path?: string): AnalyticsUiContext | undefined 
   }
 
   const seen = new Set<Element>();
-  const actions: AnalyticsUiAction[] = [];
+  const namedActions: AnalyticsUiAction[] = [];
+  const rest: AnalyticsUiAction[] = [];
   const nodes = document.querySelectorAll(INTERACTIVE_SELECTOR);
   for (const node of nodes) {
     if (!(node instanceof HTMLElement) || seen.has(node) || !isVisible(node)) continue;
     seen.add(node);
+    const analyticsId = clipName(node.getAttribute('data-analytics') || '');
     const role = (node.getAttribute('role') || node.tagName.toLowerCase()).slice(0, 24);
-    const name =
-      clipName(node.getAttribute('data-analytics') || '') ||
-      accessibleName(node) ||
-      '(unnamed)';
+    const name = analyticsId || accessibleName(node) || '(unnamed)';
     const disabled =
       node.hasAttribute('disabled') ||
       node.getAttribute('aria-disabled') === 'true' ||
       (node instanceof HTMLButtonElement && node.disabled);
-    actions.push({ role, name, disabled });
-    if (actions.length >= UI_CONTEXT_MAX_ACTIONS) break;
+    const action: AnalyticsUiAction = { role, name, disabled };
+    if (analyticsId) {
+      action.inView = elementInView(node);
+      namedActions.push(action);
+    } else {
+      rest.push(action);
+    }
   }
+  const actions = [...namedActions, ...rest].slice(0, UI_CONTEXT_MAX_ACTIONS);
 
   const named = actions.find((action) => action.name && action.name !== '(unnamed)' && !action.disabled);
   const primary = named?.name || '';

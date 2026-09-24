@@ -61,6 +61,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Time on pages: insights.durationByPath
 - CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: auth-google, hear-question, hear-first-line, reply-first-line, record-about-guest, quiz-guest-continue, quiz-next, quiz-start-speaking, enable-mic-just-talk, call-enable-mic, call-end, call-what-to-say, quiz-talk-suggested-reply, mic-permission-grant, teacher-preview-play)
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
+- Teacher Continue: insights.teacherContinue (visitors on `quiz.teacherSelection`; best sighting of `quiz-next` as enabled/disabled × inView/offscreen/unknown; clicked). Events from before in-view was stored land in enabledUnknown or disabledUnknown.
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
 - Path to first speak: pathBeforeSpeak + conversationStartPaths; identifyPaths for where they signed in
 - Voice: funnel.speech vs funnel.conversation; insights.speechSurfaces (quiz / lesson / conversation)
@@ -112,7 +113,7 @@ Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entr
 
 In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `hear-question`, `hear-first-line`, `reply-first-line`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-start-speaking`, `enable-mic-just-talk`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `mic-permission-grant`, `mic-permission-dismiss`, `teacher-preview-play`, `teacher-select`.
 
-`uiContext` is a clipped a11y digest (screenId, heading, open dialog, alerts, ~20 named controls). Do not store a full accessibility tree. Group screens with `uiContextHash`. Export also rolls `permissions`, `callStates`, `authAttempts`, `uiErrors`, `uiScreens`, `deadClicks`, `rageClickVisitors`.
+`uiContext` is a clipped a11y digest (screenId, heading, open dialog, alerts, ~20 controls). Named `[data-analytics]` controls are kept ahead of other buttons so `quiz-next` is not dropped when a long list is open. Those named controls also store `inView` (intersects the viewport). Do not store a full accessibility tree. Group screens with `uiContextHash`. Export also rolls `permissions`, `callStates`, `authAttempts`, `uiErrors`, `uiScreens`, `deadClicks`, `rageClickVisitors`, and `teacherContinue`.
 
 Export (`pnpm analytics:export`) is a UTC instant range (`fromIso` → `toIso`). `--from` / `--to` accept `YYYY-MM-DD` or `YYYY-MM-DDTHH:mm:ssZ`; `--day` is one full UTC day. Default with no flags is today `00:00Z` through now. Funnel and CTAs are computed from events in that window (not lifetime visitor flags). Use `funnelNew` for first-seen-in-window visitors. Landing scroll/duration ignore in-app pages. Localhost and `/testUi` are dropped. `searchConsole` is a 7-day window ending 3 days ago (GSC lag). If `available` is false, add the service account email as a Search Console user on the fluencypal.com property and enable the Search Console API.
 
@@ -139,6 +140,8 @@ Admin UI: `/staats/journey`
 **Start a conversation:** compare `clickedQuizCta` / `clickedSignInCta` vs `reachedQuiz` vs `reachedPractice` vs `reachedConversation`. If they open practice but do not speak, the blocker is in-app (auth, mic, empty canvas), not the landing CTA. If they bounce with low scroll and short `landingDurationMs`, the hero/CTA is the problem.
 
 **Quiz auth vs mic:** `insights.quizSteps` — `micPermission` without `permission:granted` is they never allowed the browser prompt (pair with `appCtaIds` `mic-permission-grant` and `uiErrors` `mic_denied`). `before_recordAbout` without `quizSpeech` is they reached the clip and never pressed Reply. Pair with `hear-question`, `record-about-guest`, `quiz-guest-continue`. The old `recordAbout` interview step is gone; leftover `recordAbout` in history is the signed-in follow-up path.
+
+**Teacher Continue:** `insights.teacherContinue`. `enabledOffscreen` means the button was enabled and below the fold. `disabledInView` means they could see it and it was disabled (auth or saved voice not ready). `missing` means the screen was open and `quiz-next` was not in the digest. A missing click is not evidence the button was disabled.
 
 **First speech struggle:** counts say they spoke or dropped; the transcript says how. Empty or garbled `aboutUserTranscription` after `quizSpeech` is a transcription or mic-quality problem, not a CTA. One-word or native-language answers mean the prompt is too hard or unclear. A fluent about-you clip then a dead Just Talk session is a handoff/mic problem, not onboarding copy. Short or confused first conversation user turns (or only the teacher greeting) mean they froze after the teacher started talking.
 

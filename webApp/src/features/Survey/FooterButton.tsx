@@ -42,6 +42,7 @@ export const FooterButton = ({
           alignItems: 'center',
           justifyContent: 'center',
           position: 'fixed',
+          zIndex: 5,
           width: '100dvw',
           left: '0',
 

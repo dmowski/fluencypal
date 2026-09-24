@@ -103,7 +103,10 @@ describe('validateClientEvent', () => {
           dialog: '',
           alerts: ['Microphone access was blocked'],
           primary: 'enable-mic-just-talk',
-          actions: [{ role: 'button', name: 'Enable microphone', disabled: false }],
+          actions: [
+            { role: 'button', name: 'quiz-next', disabled: false, inView: false },
+            { role: 'button', name: 'Enable microphone', disabled: false, inView: 'nope' as never },
+          ],
         },
         uiContextHash: 'abc123',
       }),
@@ -113,6 +116,13 @@ describe('validateClientEvent', () => {
     expect(event?.permissionState).toBe('denied');
     expect(event?.uiContext?.screenId).toBe('practice.justTalkHandoff');
     expect(event?.uiContext?.alerts).toEqual(['Microphone access was blocked']);
+    expect(event?.uiContext?.actions[0]).toEqual({
+      role: 'button',
+      name: 'quiz-next',
+      disabled: false,
+      inView: false,
+    });
+    expect(event?.uiContext?.actions[1]?.inView).toBeUndefined();
     expect(
       validateClientEvent(baseEvent({ name: 'call_state', callState: 'failed', callReason: 'mic' }))
         ?.callState,

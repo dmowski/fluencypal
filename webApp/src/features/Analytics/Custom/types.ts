@@ -40,6 +40,7 @@ export type AnalyticsUiAction = {
   role: string;
   name: string;
   disabled: boolean;
+  inView?: boolean;
 };
 
 export type AnalyticsUiContext = {
