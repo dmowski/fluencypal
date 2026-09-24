@@ -260,7 +260,7 @@ export function PracticePageTest({ rolePlayInfo, lang }: PracticePageTestProps) 
         toggleConversationMode={(mode: ConversationMode): void => setConversationMode(mode)}
         openNextLesson={() => {}}
         recordingVoiceMode="RealTimeConversation"
-        isSendMessagesBlocked={false}
+        isSendMessagesBlocked={true}
       />
     </Stack>
   );
