@@ -233,12 +233,13 @@ test.describe('Quiz → Just Talk guest flow', () => {
     }, FREE_TIER_USER_MESSAGE_LIMIT);
 
     await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
-    await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
-    await expect(page.getByTestId('subscription-plan-selector')).toBeVisible();
-    await expect(page.getByText('Sign in to subscribe')).toHaveCount(0);
+    await expect(page.getByTestId('day-pass-checkout')).toBeVisible();
+    await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
+    await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
+    await expect(page.getByTestId('day-pass-offer')).toContainText(/for today/);
   });
 
-  test('guest Upgrade opens sign-in, not Stripe plans', async ({ page }) => {
+  test('guest limit shows Google and the day price, not Stripe plans', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
     await startJustTalkCallAsGuest(page);
@@ -250,13 +251,9 @@ test.describe('Quiz → Just Talk guest flow', () => {
     }
 
     await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
+    await expect(page.getByTestId('day-pass-google')).toBeVisible();
+    await expect(page.getByTestId('day-pass-offer')).toContainText(/for today/);
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
-
-    await page.getByRole('button', { name: 'Upgrade', exact: true }).click();
-
-    await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
-    await expect(page.getByTestId('payment-auth-gate')).toBeVisible();
-    await expect(page.getByText('Sign in to subscribe')).toBeVisible();
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
   });

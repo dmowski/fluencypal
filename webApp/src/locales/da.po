@@ -659,7 +659,7 @@ msgstr "AI-tokens"
 msgid "AI Voice"
 msgstr "AI-stemme"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI stemme"
@@ -1572,7 +1572,7 @@ msgstr "Kan jeg bruge den på smartphone?"
 msgid "Cancel"
 msgstr "Annuller"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2283,7 +2283,7 @@ msgstr "Klik på deleknappen ved siden af app.fluencypal.com i din browser."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -3987,7 +3987,7 @@ msgstr "Hundeejer"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4003,7 +4003,7 @@ msgstr "Hundeejer"
 msgid "Done"
 msgstr "Færdig"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Færdig med optagelse"
@@ -4201,12 +4201,12 @@ msgstr "E-mailadresse"
 msgid "Enable Access"
 msgstr "Aktivér adgang"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Aktivér mikrofon"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Aktivér mikrofon"
@@ -4217,7 +4217,7 @@ msgstr "Aktivér mikrofon"
 msgid "Enable microphone to start talking"
 msgstr "Aktivér mikrofonen for at begynde at tale"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4226,7 +4226,8 @@ msgstr ""
 "Aktivering af AI-stemme er en premium funktion. Opgrader venligst din saldo "
 "for at få adgang til denne funktion."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4373,6 +4374,7 @@ msgstr "Fejl ved analyse af samtale"
 msgid "Error creating payment session"
 msgstr "Fejl ved oprettelse af betalingssession"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -7124,6 +7126,11 @@ msgstr "Hold det kort og relevant"
 msgid "Keep practicing"
 msgstr "Bliv ved med at øve dig"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "Bliv ved med at tale — {price} for i dag"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7407,11 +7414,6 @@ msgstr "Kan lide"
 msgid "Limited access..."
 msgstr "Begrænset adgang..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "Grænser nået"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7511,6 +7513,7 @@ msgstr "Indlæser.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7525,9 +7528,9 @@ msgstr "Indlæser.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -10272,7 +10275,7 @@ msgstr "Realtidskonversation med AI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Real-Life Rollespil for Avanceret Engelsk Øvelse"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Real-tids samtale"
@@ -10377,7 +10380,7 @@ msgstr "Optag svar"
 msgid "Record Answer"
 msgstr "Optag Svar"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10476,7 +10479,7 @@ msgstr "Relaterede scenarier"
 msgid "Reload page"
 msgstr "Genindlæs side"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Genindlæser samtale..."
@@ -11104,7 +11107,7 @@ msgstr "Indstil målet for din læring"
 msgid "Set translate language in Settings"
 msgstr "Sæt oversæt sprog i Indstillinger"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11293,12 +11296,14 @@ msgid "Sign in with email"
 msgstr "Log ind med e-mail"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Log ind med Google"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -13989,11 +13994,6 @@ msgstr "Lås op for ubegrænsede AI-samtaler og alle træningsmetoder"
 msgid "Unmute"
 msgstr "Slå lyd til"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "Opgrader"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -14075,7 +14075,7 @@ msgstr "Brugernavn skal være mindst 3 tegn langt."
 msgid "Username:"
 msgstr "Brugernavn:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14674,17 +14674,6 @@ msgid ""
 msgstr ""
 "Med FluencyPal kan du forbedre din læringsoplevelse med personlig feedback, "
 "korrektioner i realtid, og et støttende fællesskab."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr ""
-"Med den gratis plan kan du kun sende et begrænset antal beskeder pr. "
-"samtale. Du kan enten afslutte samtalen eller låse op for fuld, ubegrænset "
-"adgang."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -15441,6 +15430,11 @@ msgstr "Din Cyniske Ven"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Din oplevelse"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "Dine gratis svar i denne samtale er brugt."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

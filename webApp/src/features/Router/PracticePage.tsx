@@ -33,6 +33,7 @@ import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTa
 import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
 import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
 import { canEnterPracticeAsGuest } from '@/features/Conversation/guestPracticeEntry';
+import { useResumeDayPassCheckout } from '@/features/Usage/useResumeDayPassCheckout';
 import {
   getPracticeIdleSurface,
   hasUserSpokenInConversation,
@@ -85,33 +86,13 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     startAutoJustTalk,
   );
   const [showGuestAuthWall, setShowGuestAuthWall] = useState(false);
-  const hasAutoOpenedPaywallRef = useRef(false);
+  useResumeDayPassCheckout();
 
   useEffect(() => {
     if (auth.isIdentified) {
       setShowGuestAuthWall(false);
     }
   }, [auth.isIdentified]);
-
-  useEffect(() => {
-    if (!aiConversation.isStarted) {
-      hasAutoOpenedPaywallRef.current = false;
-      return;
-    }
-    if (
-      aiConversation.isLimitedRecording &&
-      auth.isIdentified &&
-      !hasAutoOpenedPaywallRef.current
-    ) {
-      hasAutoOpenedPaywallRef.current = true;
-      usage.togglePaymentModal(true);
-    }
-  }, [
-    aiConversation.isLimitedRecording,
-    aiConversation.isStarted,
-    auth.isIdentified,
-    usage.togglePaymentModal,
-  ]);
 
   useEffect(() => {
     if (auth.loading || auth.isIdentified || !canGuestPractice) {

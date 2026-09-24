@@ -663,7 +663,7 @@ msgstr "AI токены"
 msgid "AI Voice"
 msgstr "Голос ИИ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Голос ИИ"
@@ -1584,7 +1584,7 @@ msgstr "Могу ли я использовать его на смартфоне
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2295,7 +2295,7 @@ msgstr "Щёлкните кнопку «Поделиться» рядом с app
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -4018,7 +4018,7 @@ msgstr "Владелец собаки"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4034,7 +4034,7 @@ msgstr "Владелец собаки"
 msgid "Done"
 msgstr "Выполнено"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Готово, запись завершена"
@@ -4238,12 +4238,12 @@ msgstr "Адрес электронной почты"
 msgid "Enable Access"
 msgstr "Включить доступ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Включить микрофон"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Включить микрофон"
@@ -4254,7 +4254,7 @@ msgstr "Включить микрофон"
 msgid "Enable microphone to start talking"
 msgstr "Включите микрофон, чтобы начать разговор"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4263,7 +4263,8 @@ msgstr ""
 "Включение голосового помощника ИИ - премиум функция. Пожалуйста, пополните "
 "ваш баланс, чтобы получить доступ к этой функции."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4412,6 +4413,7 @@ msgstr "Ошибка анализа беседы"
 msgid "Error creating payment session"
 msgstr "Ошибка создания сессии оплаты"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -7194,6 +7196,11 @@ msgstr "Держите это кратко и по делу"
 msgid "Keep practicing"
 msgstr "Продолжайте практиковаться"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "Продолжайте говорить — {price} на сегодня"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7479,11 +7486,6 @@ msgstr "Нравится"
 msgid "Limited access..."
 msgstr "Ограниченный доступ..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "Достигнуты пределы"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7583,6 +7585,7 @@ msgstr "Загрузка.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7597,9 +7600,9 @@ msgstr "Загрузка.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -10361,7 +10364,7 @@ msgstr "Разговор в реальном времени с ИИ"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Ролевая игра в реальной жизни для углубленной практики английского языка"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Разговор в реальном времени"
@@ -10473,7 +10476,7 @@ msgstr "Записать ответ"
 msgid "Record Answer"
 msgstr "Записать ответ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10574,7 +10577,7 @@ msgstr "Связанные сценарии"
 msgid "Reload page"
 msgstr "Перезагрузить страницу"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Перезагрузка разговора..."
@@ -11206,7 +11209,7 @@ msgstr "Установите цель вашего обучения"
 msgid "Set translate language in Settings"
 msgstr "Установите язык перевода в Настройках"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11397,12 +11400,14 @@ msgid "Sign in with email"
 msgstr "Войти с помощью электронной почты"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Войти через Google"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -14113,11 +14118,6 @@ msgstr "Откройте безлимитные AI разговоры и все 
 msgid "Unmute"
 msgstr "Включить звук"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "Обновление"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -14201,7 +14201,7 @@ msgstr "Имя пользователя должно содержать не м�
 msgid "Username:"
 msgstr "Имя пользователя:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14809,17 +14809,6 @@ msgstr ""
 "С FluencyPal вы можете улучшить свой опыт обучения с помощью "
 "персонализированной обратной связи, корректировок в реальном времени и "
 "поддерживающего сообщества."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr ""
-"С бесплатным планом вы можете отправлять ограниченное количество сообщений "
-"за разговор. Вы можете либо завершить разговор, либо разблокировать полный, "
-"неограниченный доступ."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -15582,6 +15571,11 @@ msgstr "Ваш циничный друг"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Ваш опыт"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "Ваши бесплатные ответы в этом разговоре использованы."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

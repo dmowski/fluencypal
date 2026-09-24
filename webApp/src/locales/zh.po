@@ -629,7 +629,7 @@ msgstr "AI 代币"
 msgid "AI Voice"
 msgstr "AI 语音"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI 语音"
@@ -1519,7 +1519,7 @@ msgstr "我可以在智能手机上使用吗？"
 msgid "Cancel"
 msgstr "取消"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2207,7 +2207,7 @@ msgstr "在您的浏览器中，点击 app.fluencypal.com 旁边的分享按钮�
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -3839,7 +3839,7 @@ msgstr "狗主人"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -3855,7 +3855,7 @@ msgstr "狗主人"
 msgid "Done"
 msgstr "完成"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "完成录音"
@@ -4046,12 +4046,12 @@ msgstr "电子邮件地址"
 msgid "Enable Access"
 msgstr "启用访问"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "启用麦克风"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "启用麦克风"
@@ -4062,14 +4062,15 @@ msgstr "启用麦克风"
 msgid "Enable microphone to start talking"
 msgstr "启用麦克风开始讲话"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
 "access this feature."
 msgstr "启用 AI 语音是高级功能。请升级余额以访问此功能。"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4205,6 +4206,7 @@ msgstr "分析对话时出现错误"
 msgid "Error creating payment session"
 msgstr "创建付款会话时出错"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -6750,6 +6752,11 @@ msgstr "保持简明扼要和相关性"
 msgid "Keep practicing"
 msgstr "继续练习"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "继续讲话 — 今天仅需{price}"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7029,11 +7036,6 @@ msgstr "喜欢"
 msgid "Limited access..."
 msgstr "有限访问..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "已达限额"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7135,6 +7137,7 @@ msgstr "加载中.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7149,9 +7152,9 @@ msgstr "加载中.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -9762,7 +9765,7 @@ msgstr "实时与AI对话"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "真实生活角色扮演以进行高级英语练习"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "实时对话"
@@ -9863,7 +9866,7 @@ msgstr "记录答案"
 msgid "Record Answer"
 msgstr "记录答案"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -9962,7 +9965,7 @@ msgstr "相关场景"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "重新加载对话..."
@@ -10576,7 +10579,7 @@ msgstr "设置你的学习目标"
 msgid "Set translate language in Settings"
 msgstr "在设置中设置翻译语言"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -10763,12 +10766,14 @@ msgid "Sign in with email"
 msgstr "使用邮箱登录"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "使用 Google 登录"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -13294,11 +13299,6 @@ msgstr "解锁无限制的AI对话和所有练习模式"
 msgid "Unmute"
 msgstr "解除静音"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "升级"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -13380,7 +13380,7 @@ msgstr "用户名必须至少为3个字符长。"
 msgid "Username:"
 msgstr "用户名:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -13951,14 +13951,6 @@ msgid ""
 "With FluencyPal, you can improve your learning experience with personalized "
 "feedback, real-time corrections, and a supportive community."
 msgstr "通过FluencyPal，您可以通过个性化反馈，实时纠错以及支持性社区改善您的学习体验。"
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr "在免费计划中，您每次对话只能发送有限数量的消息。您可以选择结束对话或解锁完整的无限访问。"
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -14627,6 +14619,11 @@ msgstr "你的愤世嫉俗的朋友"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "您的经验"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "您在此次对话中的免费回复已用完。"
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

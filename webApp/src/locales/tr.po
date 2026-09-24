@@ -658,7 +658,7 @@ msgstr "AI jetonları"
 msgid "AI Voice"
 msgstr "AI Ses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI sesi"
@@ -1571,7 +1571,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2285,7 +2285,7 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -4002,7 +4002,7 @@ msgstr "Köpek Sahibi"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4018,7 +4018,7 @@ msgstr "Köpek Sahibi"
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Kaydı bitir"
@@ -4219,12 +4219,12 @@ msgstr "E-posta adresi"
 msgid "Enable Access"
 msgstr "Erişimi Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Mikrofonu Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Mikrofonu etkinleştir"
@@ -4235,7 +4235,7 @@ msgstr "Mikrofonu etkinleştir"
 msgid "Enable microphone to start talking"
 msgstr "Mikrofonu etkinleştirerek konuşmaya başla"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4244,7 +4244,8 @@ msgstr ""
 "AI sesini etkinleştirmek bir premium özelliktir. Bu özelliğe erişmek için "
 "bakiyenizi yükseltin."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4393,6 +4394,7 @@ msgstr "Konuşma analizinde hata"
 msgid "Error creating payment session"
 msgstr "Ödeme oturumu oluşturma hatası"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -7150,6 +7152,11 @@ msgstr "Kısa ve ilgili tutun"
 msgid "Keep practicing"
 msgstr "Uygulamaya devam et"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "Konuşmaya devam et — Bugün için {price}"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7431,11 +7438,6 @@ msgstr "Beğen"
 msgid "Limited access..."
 msgstr "Sınırlı erişim..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "Limitlere ulaşıldı"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7535,6 +7537,7 @@ msgstr "Yükleniyor.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7549,9 +7552,9 @@ msgstr "Yükleniyor.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -10297,7 +10300,7 @@ msgstr "Gerçek zamanlı sohbet yapay zeka ile"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Gerçek Hayat Rol Oynama ile İleri Düzey İngilizce Pratiği"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Gerçek zamanlı konuşma"
@@ -10406,7 +10409,7 @@ msgstr "Cevabı kaydet"
 msgid "Record Answer"
 msgstr "Cevabı Kaydet"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10505,7 +10508,7 @@ msgstr "İlgili Senaryolar"
 msgid "Reload page"
 msgstr "Sayfayı yeniden yükle"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Sohbet yeniden yükleniyor..."
@@ -11139,7 +11142,7 @@ msgstr "Öğrenme hedefinizi belirleyin"
 msgid "Set translate language in Settings"
 msgstr "Ayarlar'dan çeviri dilini ayarla"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11328,12 +11331,14 @@ msgid "Sign in with email"
 msgstr "E-posta ile giriş yap"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Google ile giriş yap"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -14036,11 +14041,6 @@ msgstr "Sınırsız AI konuşmalarının ve tüm pratik modlarının kilidini a�
 msgid "Unmute"
 msgstr "Sesi Aç"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "Yükseltme"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -14124,7 +14124,7 @@ msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 msgid "Username:"
 msgstr "Kullanıcı Adı:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14719,17 +14719,6 @@ msgstr ""
 "FluencyPal ile kişiselleştirilmiş geri bildirimler, gerçek zamanlı "
 "düzeltmeler ve destekleyici bir toplulukla öğrenme deneyiminizi "
 "geliştirebilirsiniz."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr ""
-"Ücretsiz planla, bir konuşma başına yalnızca sınırlı sayıda mesaj "
-"gönderebilirsiniz. Konuşmayı sonlandırabilir veya tam sınırsız erişimi "
-"açabilirsiniz."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -15491,6 +15480,11 @@ msgstr "Sinik Arkadaşın"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Deneyiminiz"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "Bu konuşmada ücretsiz yanıtlarınız kullanıldı."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

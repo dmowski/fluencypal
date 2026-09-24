@@ -664,7 +664,7 @@ msgstr "Token AI"
 msgid "AI Voice"
 msgstr "AI Suara"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Suara AI"
@@ -1585,7 +1585,7 @@ msgstr "Bisakah saya menggunakannya di smartphone?"
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2298,7 +2298,7 @@ msgstr "Klik tombol Bagikan di sebelah app.fluencypal.com di browser Anda."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -4021,7 +4021,7 @@ msgstr "Pemilik Anjing"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4037,7 +4037,7 @@ msgstr "Pemilik Anjing"
 msgid "Done"
 msgstr "Selesai"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Selesai merekam"
@@ -4249,12 +4249,12 @@ msgstr "Alamat email"
 msgid "Enable Access"
 msgstr "Aktifkan Akses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Aktifkan Mikrofon"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Aktifkan mikrofon"
@@ -4265,7 +4265,7 @@ msgstr "Aktifkan mikrofon"
 msgid "Enable microphone to start talking"
 msgstr "Aktifkan mikrofon untuk mulai berbicara"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4274,7 +4274,8 @@ msgstr ""
 "Mengaktifkan suara AI adalah fitur premium. Silakan tingkatkan saldo Anda "
 "untuk mengakses fitur ini."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4425,6 +4426,7 @@ msgstr "Kesalahan dalam menganalisis percakapan"
 msgid "Error creating payment session"
 msgstr "Kesalahan dalam membuat sesi pembayaran"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -7233,6 +7235,11 @@ msgstr "Jaga agar tetap singkat dan relevan"
 msgid "Keep practicing"
 msgstr "Terus berlatih"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "Terus bicara — {price} untuk hari ini"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7523,11 +7530,6 @@ msgstr "Suka"
 msgid "Limited access..."
 msgstr "Akses terbatas..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "Batas tercapai"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7629,6 +7631,7 @@ msgstr "Memuat.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7643,9 +7646,9 @@ msgstr "Memuat.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -10435,7 +10438,7 @@ msgstr "Percakapan waktu nyata dengan AI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr ""
@@ -10544,7 +10547,7 @@ msgstr "Rekam jawaban"
 msgid "Record Answer"
 msgstr "Rekam Jawaban"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10645,7 +10648,7 @@ msgstr "Terkait Skenario"
 msgid "Reload page"
 msgstr "Muat ulang halaman"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Memuat ulang percakapan..."
@@ -11275,7 +11278,7 @@ msgstr "Tetapkan tujuan pembelajaran Anda"
 msgid "Set translate language in Settings"
 msgstr "Atur bahasa terjemahan di Pengaturan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11466,12 +11469,14 @@ msgid "Sign in with email"
 msgstr "Masuk dengan email"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Masuk dengan Google"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -14213,11 +14218,6 @@ msgstr ""
 "\n"
 "Suara Aktif\n"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "Tingkatkan"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -14303,7 +14303,7 @@ msgstr "Nama pengguna harus setidaknya 3 karakter."
 msgid "Username:"
 msgstr "Nama Pengguna:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14913,17 +14913,6 @@ msgstr ""
 "Dengan FluencyPal, anda dapat meningkatkan pengalaman belajar anda dengan "
 "umpan balik yang dipersonalisasi, koreksi real-time, dan komunitas yang "
 "mendukung."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr ""
-"Dengan paket gratis, Anda hanya dapat mengirim sejumlah pesan terbatas per "
-"percakapan. Anda dapat mengakhiri percakapan atau membuka akses penuh tak "
-"terbatas."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -15706,6 +15695,11 @@ msgstr "Teman Sinismu"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Pengalaman Anda"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "Balasan gratis Anda dalam percakapan ini telah digunakan."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

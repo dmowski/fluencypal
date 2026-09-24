@@ -664,7 +664,7 @@ msgstr "Mã thông báo AI"
 msgid "AI Voice"
 msgstr "Giọng nói AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Giọng nói AI"
@@ -1581,7 +1581,7 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2291,7 +2291,7 @@ msgstr "Nhấp vào nút Chia sẻ bên cạnh app.fluencypal.com trong trình d
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -4015,7 +4015,7 @@ msgstr "Chủ chó"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4031,7 +4031,7 @@ msgstr "Chủ chó"
 msgid "Done"
 msgstr "Hoàn thành"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Hoàn tất ghi âm"
@@ -4232,12 +4232,12 @@ msgstr "Địa chỉ email"
 msgid "Enable Access"
 msgstr "Kích hoạt Truy cập"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Bật Microphone"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Bật micro"
@@ -4248,7 +4248,7 @@ msgstr "Bật micro"
 msgid "Enable microphone to start talking"
 msgstr "Bật micro để bắt đầu nói chuyện"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4257,7 +4257,8 @@ msgstr ""
 "Kích hoạt giọng nói AI là một tính năng cao cấp. Vui lòng nâng cấp số dư "
 "của bạn để có quyền truy cập vào tính năng này.\n"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4408,6 +4409,7 @@ msgstr "Lỗi phân tích cuộc trò chuyện"
 msgid "Error creating payment session"
 msgstr "Lỗi khi tạo phiên thanh toán"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -7176,6 +7178,11 @@ msgstr "Giữ cho nó ngắn gọn và phù hợp"
 msgid "Keep practicing"
 msgstr "Tiếp tục thực hành"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "Tiếp tục nói — {price} cho ngày hôm nay"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7461,11 +7468,6 @@ msgstr "Thích"
 msgid "Limited access..."
 msgstr "Quyền truy cập hạn chế..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "Đã đạt đến giới hạn"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7565,6 +7567,7 @@ msgstr "Đang tải.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7579,9 +7582,9 @@ msgstr "Đang tải.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -10347,7 +10350,7 @@ msgstr "Cuộc trò chuyện thời gian thực với AI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Thực Hành Đóng Vai Thực Tế Để Nâng Cao Kỹ Năng Tiếng Anh"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Hội thoại theo thời gian thực"
@@ -10456,7 +10459,7 @@ msgstr "Ghi âm câu trả lời"
 msgid "Record Answer"
 msgstr "Ghi âm câu trả lời"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10557,7 +10560,7 @@ msgstr "Cảnh liên quan"
 msgid "Reload page"
 msgstr "Tải lại trang"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Tải lại cuộc trò chuyện..."
@@ -11190,7 +11193,7 @@ msgstr "Đặt mục tiêu cho việc học của bạn"
 msgid "Set translate language in Settings"
 msgstr "Đặt ngôn ngữ dịch trong Cài đặt"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11379,12 +11382,14 @@ msgid "Sign in with email"
 msgstr "Đăng nhập bằng email"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Đăng nhập bằng Google"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -14096,11 +14101,6 @@ msgstr "Mở khóa trò chuyện AI không giới hạn và tất cả các ch�
 msgid "Unmute"
 msgstr "Bật âm thanh"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "Nâng cấp"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -14186,7 +14186,7 @@ msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
 msgid "Username:"
 msgstr "Tên người dùng:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14799,17 +14799,6 @@ msgid ""
 msgstr ""
 "Với FluencyPal, bạn có thể cải thiện trải nghiệm học của mình với phản hồi "
 "cá nhân hóa, sửa lỗi thời gian thực, và một cộng đồng hỗ trợ."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr ""
-"Với gói miễn phí, bạn chỉ có thể gửi một số lượng tin nhắn giới hạn cho mỗi "
-"cuộc trò chuyện. Bạn có thể kết thúc cuộc trò chuyện hoặc mở khóa quyền "
-"truy cập đầy đủ, không giới hạn."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -15575,6 +15564,11 @@ msgstr "Người Bạn Yếm Thế Của Bạn"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Kinh nghiệm của bạn"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "Bạn đã sử dụng hết các phản hồi miễn phí trong cuộc trò chuyện này."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

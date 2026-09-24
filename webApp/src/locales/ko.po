@@ -633,7 +633,7 @@ msgstr "AI 토큰"
 msgid "AI Voice"
 msgstr "AI 음성"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI 음성"
@@ -1527,7 +1527,7 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:551
+#: src/features/Conversation/CallMode/CallButtons.tsx:493
 #: src/features/Conversation/ConversationCanvas.tsx:756
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -2221,7 +2221,7 @@ msgstr "브라우저에서 app.fluencypal.com 옆의 공유 버튼을 클릭하�
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:747
+#: src/features/Conversation/CallMode/CallButtons.tsx:689
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -3885,7 +3885,7 @@ msgstr "개 주인"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:792
+#: src/features/Conversation/CallMode/CallButtons.tsx:734
 #: src/features/Conversation/ConversationCanvas.tsx:529
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -3901,7 +3901,7 @@ msgstr "개 주인"
 msgid "Done"
 msgstr "완료"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:523
+#: src/features/Conversation/CallMode/CallButtons.tsx:465
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "녹음 완료"
@@ -4094,12 +4094,12 @@ msgstr "이메일 주소"
 msgid "Enable Access"
 msgstr "액세스 활성화"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:614
+#: src/features/Conversation/CallMode/CallButtons.tsx:556
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "마이크 사용 설정"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:626
+#: src/features/Conversation/CallMode/CallButtons.tsx:568
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "마이크 사용 설정"
@@ -4110,14 +4110,15 @@ msgstr "마이크 사용 설정"
 msgid "Enable microphone to start talking"
 msgstr "마이크를 활성화하여 말하기 시작하세요"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
 "access this feature."
 msgstr "AI 음성 기능 활성화는 프리미엄 기능입니다. 이 기능에 액세스하시려면 잔액을 업그레이드하세요."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:660
+#: src/features/Conversation/CallMode/CallButtons.tsx:402
+#: src/features/Conversation/CallMode/CallButtons.tsx:602
 #: src/features/Conversation/ConversationCanvas.tsx:568
 #. js-lingui-explicit-id
 msgid "End call"
@@ -4253,6 +4254,7 @@ msgstr "대화 분석 오류"
 msgid "Error creating payment session"
 msgstr "결제 세션 생성 오류"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:50
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:145
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
@@ -6836,6 +6838,11 @@ msgstr "간결하고 관련성을 유지하세요"
 msgid "Keep practicing"
 msgstr "계속 연습하세요"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:30
+#. js-lingui-explicit-id
+msgid "Keep talking — {price} for today"
+msgstr "계속 이야기하세요 — 오늘 {price}"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7115,11 +7122,6 @@ msgstr "좋아요"
 msgid "Limited access..."
 msgstr "제한된 액세스..."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:420
-#. js-lingui-explicit-id
-msgid "Limits reached"
-msgstr "한도에 도달했습니다"
-
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:413
 #. js-lingui-explicit-id
 msgid "Line height"
@@ -7219,6 +7221,7 @@ msgstr "로딩 중.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:122
 #: src/features/Conversation/ConversationCanvas.tsx:213
 #: src/features/Conversation/ConversationReviewModal.tsx:104
 #: src/features/Conversation/ConversationReviewModal.tsx:119
@@ -7233,9 +7236,9 @@ msgstr "로딩 중.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:142
-#: src/features/Router/PracticePage.tsx:153
-#: src/features/Router/PracticePage.tsx:163
+#: src/features/Router/PracticePage.tsx:123
+#: src/features/Router/PracticePage.tsx:134
+#: src/features/Router/PracticePage.tsx:144
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -9864,7 +9867,7 @@ msgstr "실시간으로 AI와 대화"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "실생활 역할극을 통한 고급 영어 연습"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:722
+#: src/features/Conversation/CallMode/CallButtons.tsx:664
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "실시간 대화"
@@ -9965,7 +9968,7 @@ msgstr "기록된 답변"
 msgid "Record Answer"
 msgstr "답변 녹음"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:641
+#: src/features/Conversation/CallMode/CallButtons.tsx:583
 #: src/features/Conversation/ConversationCanvas.tsx:564
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -10064,7 +10067,7 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Router/PracticePage.tsx:215
+#: src/features/Router/PracticePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "대화를 다시 불러오는 중..."
@@ -10682,7 +10685,7 @@ msgstr "학습의 목표를 설정하십시오"
 msgid "Set translate language in Settings"
 msgstr "설정에서 번역 언어 설정"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:653
+#: src/features/Conversation/CallMode/CallButtons.tsx:595
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -10869,12 +10872,14 @@ msgid "Sign in with email"
 msgstr "이메일로 로그인"
 
 #: src/features/Auth/AuthWallBasic.tsx:318
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Google로 로그인하기"
 
 #: src/features/Auth/AuthWallBasic.tsx:317
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:143
 #: src/features/Reader/components/ReaderSignInModal.tsx:173
 #. js-lingui-explicit-id
 msgid "Signing in..."
@@ -13427,11 +13432,6 @@ msgstr "무제한 AI 대화 및 모든 연습 모드를 잠금 해제하세요."
 msgid "Unmute"
 msgstr "음소거 해제"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:456
-#. js-lingui-explicit-id
-msgid "Upgrade"
-msgstr "업그레이드"
-
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
 #. js-lingui-explicit-id
@@ -13513,7 +13513,7 @@ msgstr "사용자 이름은 최소 3자 이상이어야 합니다."
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:734
+#: src/features/Conversation/CallMode/CallButtons.tsx:676
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14085,14 +14085,6 @@ msgid ""
 "With FluencyPal, you can improve your learning experience with personalized "
 "feedback, real-time corrections, and a supportive community."
 msgstr "FluencyPal을 이용하면 개인 맞춤 피드백, 실시간 수정, 그리고 지원이 있는 커뮤니티를 통해 학습 경험을 향상시킬 수 있습니다."
-
-#: src/features/Conversation/CallMode/CallButtons.tsx:427
-#. js-lingui-explicit-id
-msgid ""
-"With the free plan, you can only send a limited number of messages per "
-"conversation. You can either end the conversation or unlock full, unlimited "
-"access."
-msgstr "무료 플랜에서는 대화당 제한된 수의 메시지만 보낼 수 있습니다. 대화를 종료하거나 전체 무제한 액세스를 잠금 해제할 수 있습니다."
 
 #: src/features/Landing/Price/PricePage.tsx:470
 #: src/features/Landing/Price/PricePage.tsx:553
@@ -14780,6 +14772,11 @@ msgstr "당신의 냉소적인 친구"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "당신의 경험"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:92
+#. js-lingui-explicit-id
+msgid "Your free replies in this conversation are used."
+msgstr "이 대화에서 무료 응답이 사용되었습니다."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

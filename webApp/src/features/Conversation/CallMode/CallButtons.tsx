@@ -3,7 +3,7 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
 import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { ChevronRight } from 'lucide-react';
+import { DayPassLimitOffer } from './DayPassLimitOffer';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -395,69 +395,11 @@ Return ONLY the number.
           justifyContent: 'center',
         }}
       >
-        <Stack
-          sx={{
-            width: '100%',
-            maxWidth: '970px',
-            gap: '25px',
-          }}
-        >
-          <Stack
-            sx={{
-              gap: '5px',
-            }}
-          >
-            <Typography
-              sx={{
-                fontWeight: 800,
-                fontSize: '2.5rem',
-                lineHeight: '120%',
-                '@media (max-width: 400px)': {
-                  fontSize: '2rem',
-                },
-              }}
-            >
-              {i18n._('Limits reached')}
-            </Typography>
-            <Typography
-              sx={{
-                textWrap: 'balance',
-              }}
-            >
-              {i18n._(
-                `With the free plan, you can only send a limited number of messages per conversation. You can either end the conversation or unlock full, unlimited access.`,
-              )}
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              width: '100%',
-              flexDirection: 'row',
-              gap: '10px 25px',
-              flexWrap: 'wrap',
-            }}
-          >
-            <Button
-              size="large"
-              color="success"
-              variant="contained"
-              endIcon={<ChevronRight />}
-              sx={{
-                //textAlign: 'left',
-                backgroundColor: 'rgba(28, 212, 108, 0.78)',
-                color: '#ddfff8',
-                fontWeight: 600,
-                borderRadius: '30px',
-                height: '48px',
-                lineHeight: '16px',
-              }}
-              onClick={() => access.showPaymentModal()}
-            >
-              {i18n._('Upgrade')}
-            </Button>
-
+        <DayPassLimitOffer
+          endAction={
             <IconButton
               size="large"
+              aria-label={i18n._('End call')}
               onClick={() => {
                 vadAudioRecorder.stop();
                 fullExit();
@@ -471,8 +413,8 @@ Return ONLY the number.
             >
               <CallEndIcon />
             </IconButton>
-          </Stack>
-        </Stack>
+          }
+        />
       </Stack>
     );
   }
