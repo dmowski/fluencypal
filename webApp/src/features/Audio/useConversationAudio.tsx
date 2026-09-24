@@ -17,8 +17,10 @@ import { toMusicProxyUrl } from './toMusicProxyUrl';
 import { isRecoverableTtsFormatError } from './isRecoverableTtsFormatError';
 import { isUserGesturePlayError } from './isUserGesturePlayError';
 import {
+  assignHtmlAudioSource,
+  ensureHtmlAudioElementHasSource,
+  isUnsupportedSourcePlayError,
   resetHtmlAudioElement,
-  shouldRetryPlayOnFreshElement,
   startHtmlAudioPrimeFromGesture,
 } from './htmlAudioElement';
 import * as Sentry from '@sentry/nextjs';
@@ -191,6 +193,7 @@ class AudioQueuePlayer {
       const el = new Audio();
       el.preload = 'auto';
       el.loop = true;
+      ensureHtmlAudioElementHasSource(el);
       this.musicNode = this.ctx!.createMediaElementSource(el);
       this.musicNode.connect(this.musicGain!);
       this.musicEl = el;
@@ -242,24 +245,11 @@ class AudioQueuePlayer {
   private createSpeechElement(): void {
     const el = new Audio();
     el.preload = 'auto';
+    ensureHtmlAudioElementHasSource(el);
     this.speechNode = this.ctx!.createMediaElementSource(el);
     this.speechNode.connect(this.speechGain!);
     this.speechEl = el;
     this.attachSpeechListeners(el);
-  }
-
-  private recreateSpeechElement(): HTMLAudioElement {
-    this.speechNode?.disconnect();
-    const previous = this.speechEl;
-    if (previous) {
-      resetHtmlAudioElement(previous);
-      try {
-        previous.removeAttribute('src');
-      } catch {}
-    }
-    this._speechPlaying = false;
-    this.createSpeechElement();
-    return this.speechEl!;
   }
 
   private getUnlockDiagnostics() {
@@ -314,6 +304,7 @@ class AudioQueuePlayer {
 
     const el = new Audio();
     el.preload = 'auto';
+    el.src = url;
     const speechNode = this.ctx!.createMediaElementSource(el);
     speechNode.connect(this.speechGain!);
     const speechEl = el;
@@ -323,7 +314,6 @@ class AudioQueuePlayer {
 
     el.pause();
     el.currentTime = 0;
-    el.src = url;
     el.load();
 
     const cachedAudio: CachedAudio = {
@@ -353,14 +343,14 @@ class AudioQueuePlayer {
   async playStreamUrl(url: string, onEndedCallback?: () => void): Promise<void> {
     this.ensureUnlocked();
     const ctx = this.ctx!;
-    let el = this.speechEl!;
+    const el = this.speechEl!;
 
     if (ctx.state === 'suspended') await ctx.resume();
 
     // Stop previous audio instantly
     if (!this.potentialSpeakUrl || this.potentialSpeakUrl !== url) {
       this.stopStream();
-      el.src = url;
+      assignHtmlAudioSource(el, url);
     }
     this.potentialSpeakUrl = null;
 
@@ -377,7 +367,7 @@ class AudioQueuePlayer {
         return true;
       } catch (error) {
         if (isAbortError(error)) return false;
-        if (!shouldRetryPlayOnFreshElement(error)) {
+        if (!isUnsupportedSourcePlayError(error)) {
           logStreamAudioFailure({
             phase: 'play',
             url,
@@ -392,20 +382,20 @@ class AudioQueuePlayer {
         Sentry.addBreadcrumb({
           category: 'conversation-audio',
           level: 'warning',
-          message: 'Retrying stream play on a fresh audio element',
+          message: 'Retrying stream play after reloading the same audio element',
           data: summarizeTtsStreamUrl(url),
         });
-        el = this.recreateSpeechElement();
-        el.src = url;
+        // A second MediaElementSource on iOS fails the same way. Reload this one.
+        assignHtmlAudioSource(mediaEl, url);
         try {
-          await el.play();
+          await mediaEl.play();
           return true;
         } catch (retryError) {
           if (isAbortError(retryError)) return false;
           logStreamAudioFailure({
             phase: 'play',
             url,
-            el,
+            el: mediaEl,
             audioContextState: ctx.state,
             lastStreamStoppedAt: this.lastStreamStoppedAt,
             error: retryError,
@@ -450,7 +440,6 @@ class AudioQueuePlayer {
   stopStream(): void {
     const el = this.speechEl;
     if (!el) return;
-    this.lastStreamStoppedAt = Date.now();
     this._speechPlaying = false;
     // Do not remove src + load() here: an empty load() puts WebKit into
     // MEDIA_ERR_SRC_NOT_SUPPORTED, and the next play() then fails.
@@ -477,6 +466,7 @@ class AudioQueuePlayer {
   }
 
   interrupt(): void {
+    this.lastStreamStoppedAt = Date.now();
     this.stopStream();
   }
 
@@ -496,6 +486,7 @@ class AudioQueuePlayer {
 
     await new Promise<void>((r) => setTimeout(r, ms + 20));
 
+    this.lastStreamStoppedAt = Date.now();
     this.stopStream();
 
     const t = this.ctx.currentTime;
@@ -563,9 +554,6 @@ class AudioQueuePlayer {
     this.currentMusicUrl = null;
 
     resetHtmlAudioElement(el);
-    try {
-      el.removeAttribute('src');
-    } catch {}
   }
 
   setMusicVolume(value01: number): void {

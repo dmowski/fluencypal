@@ -3,8 +3,11 @@
  */
 
 import {
+  assignHtmlAudioSource,
+  ensureHtmlAudioElementHasSource,
+  isUnsupportedSourcePlayError,
   resetHtmlAudioElement,
-  shouldRetryPlayOnFreshElement,
+  SILENT_WAV_DATA_URI,
   startHtmlAudioPrimeFromGesture,
 } from './htmlAudioElement';
 
@@ -22,17 +25,48 @@ describe('resetHtmlAudioElement', () => {
   });
 });
 
-describe('shouldRetryPlayOnFreshElement', () => {
+describe('ensureHtmlAudioElementHasSource', () => {
+  it('sets a decodable src before Web Audio wraps an empty element', () => {
+    const el = document.createElement('audio');
+
+    ensureHtmlAudioElementHasSource(el);
+
+    expect(el.getAttribute('src')).toBe(SILENT_WAV_DATA_URI);
+  });
+
+  it('does not replace a source that is already set', () => {
+    const el = document.createElement('audio');
+    el.src = '/api/ttsStream?cache=true';
+
+    ensureHtmlAudioElementHasSource(el);
+
+    expect(el.getAttribute('src')).toBe('/api/ttsStream?cache=true');
+  });
+});
+
+describe('assignHtmlAudioSource', () => {
+  it('loads the new URL so WebKit drops a previous unsupported-source error', () => {
+    const el = document.createElement('audio');
+    const load = jest.spyOn(el, 'load');
+
+    assignHtmlAudioSource(el, '/api/ttsStream?cache=true');
+
+    expect(el.getAttribute('src')).toBe('/api/ttsStream?cache=true');
+    expect(load).toHaveBeenCalled();
+  });
+});
+
+describe('isUnsupportedSourcePlayError', () => {
   it('retries iOS NotSupportedError from a reused media element', () => {
     const error = new Error('The operation is not supported.');
     error.name = 'NotSupportedError';
-    expect(shouldRetryPlayOnFreshElement(error)).toBe(true);
+    expect(isUnsupportedSourcePlayError(error)).toBe(true);
   });
 
   it('does not retry user-gesture aborts', () => {
     const error = new Error('play() was interrupted');
     error.name = 'AbortError';
-    expect(shouldRetryPlayOnFreshElement(error)).toBe(false);
+    expect(isUnsupportedSourcePlayError(error)).toBe(false);
   });
 });
 
@@ -53,6 +87,6 @@ describe('startHtmlAudioPrimeFromGesture', () => {
 
     expect(play).toHaveBeenCalledTimes(1);
     expect(pause).toHaveBeenCalled();
-    expect(el.getAttribute('src')).toBeNull();
+    expect(el.getAttribute('src')).toBe(SILENT_WAV_DATA_URI);
   });
 });

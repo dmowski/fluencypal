@@ -2,6 +2,21 @@ import { useEffect, useState } from 'react';
 import { AiAvatar } from './types';
 import { Stack } from '@mui/material';
 
+/** iOS WebKit cannot decode webm, so teacher cards stay on photos there. */
+export const shouldUseAvatarPhoto = ({
+  isUsePhoto,
+  canPlayWebm,
+  hasPhotos,
+}: {
+  isUsePhoto?: boolean;
+  canPlayWebm: boolean | null;
+  hasPhotos: boolean;
+}): boolean => {
+  if (!hasPhotos) return false;
+  if (isUsePhoto) return true;
+  return canPlayWebm !== true;
+};
+
 export const AiAvatarVideo = ({
   aiVideo,
   isSpeaking,
@@ -15,6 +30,12 @@ export const AiAvatarVideo = ({
 }) => {
   const [sitIndex, setSitIndex] = useState(0);
   const [talkIndex, setTalkIndex] = useState(0);
+  const [canPlayWebm, setCanPlayWebm] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const probe = document.createElement('video');
+    setCanPlayWebm(probe.canPlayType('video/webm') !== '');
+  }, []);
 
   useEffect(() => {
     if (isSpeaking) {
@@ -26,7 +47,11 @@ export const AiAvatarVideo = ({
     }
   }, [isSpeaking]);
 
-  const isPhotoMode = isUsePhoto && aiVideo.photoUrls && aiVideo.photoUrls.length > 0;
+  const isPhotoMode = shouldUseAvatarPhoto({
+    isUsePhoto,
+    canPlayWebm,
+    hasPhotos: Boolean(aiVideo.photoUrls && aiVideo.photoUrls.length > 0),
+  });
 
   const activePhotoIndex = photoIndex
     ? photoIndex % (aiVideo.photoUrls ? aiVideo.photoUrls.length : 1)

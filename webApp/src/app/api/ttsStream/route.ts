@@ -4,6 +4,7 @@ import { getBucket } from '../config/firebase';
 import { SpeechCreateParams } from 'openai/resources/audio/speech.mjs';
 import { getAudioHash } from '@/features/Audio/audioHash';
 import { captureServerException } from '@/libs/sentry/captureServerException';
+import { mpegResponse } from './mpegResponse';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -64,13 +65,11 @@ async function getTtsStream(req: Request) {
     const cachedAudio = await getAudioFromStorage(audioId);
     if (cachedAudio && cachedAudio.byteLength > 0) {
       console.log('From cache', input);
-      return new Response(new Uint8Array(cachedAudio), {
-        headers: {
-          'Content-Type': 'audio/mpeg',
-          //'Cache-Control': 'no-store',
-          'Cache-Control': 'public, max-age=31536000, immutable',
-        },
-      });
+      return mpegResponse(
+        new Uint8Array(cachedAudio),
+        req.headers.get('range'),
+        'public, max-age=31536000, immutable',
+      );
     }
   }
 
@@ -99,14 +98,15 @@ async function getTtsStream(req: Request) {
   }
 
   const audioBuffer = Buffer.from(await resp.arrayBuffer());
+  if (audioBuffer.byteLength === 0) {
+    return new Response('Empty TTS audio', { status: 502 });
+  }
 
   await saveAudioToStorage(audioId, audioBuffer);
 
-  return new Response(audioBuffer, {
-    headers: {
-      'Content-Type': 'audio/mpeg',
-      //'Cache-Control': 'no-store',
-      'Cache-Control': 'public, max-age=31536000, immutable',
-    },
-  });
+  return mpegResponse(
+    new Uint8Array(audioBuffer),
+    req.headers.get('range'),
+    'public, max-age=31536000, immutable',
+  );
 }

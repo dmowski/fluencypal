@@ -1,5 +1,5 @@
 /** Tiny silent WAV so HTMLAudioElement.play() can run inside a user gesture. */
-const SILENT_WAV_DATA_URI =
+export const SILENT_WAV_DATA_URI =
   'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
 
 export const resetHtmlAudioElement = (el: HTMLAudioElement): void => {
@@ -11,7 +11,24 @@ export const resetHtmlAudioElement = (el: HTMLAudioElement): void => {
   } catch {}
 };
 
-export const shouldRetryPlayOnFreshElement = (error: unknown): boolean => {
+/**
+ * iOS rejects play() with NotSupportedError when createMediaElementSource runs
+ * on an element that has no src yet. Give it a decodable source first.
+ */
+export const ensureHtmlAudioElementHasSource = (el: HTMLAudioElement): void => {
+  if (el.getAttribute('src')) return;
+  el.src = SILENT_WAV_DATA_URI;
+};
+
+/** Replace src and clear a stuck MEDIA_ERR_SRC_NOT_SUPPORTED without an empty load(). */
+export const assignHtmlAudioSource = (el: HTMLAudioElement, url: string): void => {
+  el.src = url;
+  try {
+    el.load();
+  } catch {}
+};
+
+export const isUnsupportedSourcePlayError = (error: unknown): boolean => {
   if (!error) return false;
   const name = (error as { name?: string }).name;
   if (name === 'AbortError') return false;
@@ -44,9 +61,6 @@ export const startHtmlAudioPrimeFromGesture = (el: HTMLAudioElement): Promise<vo
       try {
         el.pause();
         el.currentTime = 0;
-      } catch {}
-      try {
-        el.removeAttribute('src');
       } catch {}
     },
     () => {},

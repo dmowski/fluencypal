@@ -9,15 +9,15 @@ export const scrollTop = () => {
   });
 };
 
-export const scrollToLangButton = async (langCode: string) => {
+export const scrollToLangButton = (langCode: string) => {
   const isWindow = typeof window !== 'undefined';
   if (!isWindow) return;
 
   const element = document.querySelector(`button[aria-label='${langCode}']`);
-  if (!element) return;
-  try {
-    element.scrollIntoView({ block: 'center' });
-  } catch {
-    // iOS WebKit can kill the tab on scrollIntoView options. A failed scroll is not worth a crash.
-  }
+  if (!(element instanceof HTMLElement)) return;
+
+  // scrollIntoView recurses until iOS WebKit throws Maximum call stack size exceeded.
+  const rect = element.getBoundingClientRect();
+  const top = rect.top + window.scrollY - window.innerHeight / 2 + rect.height / 2;
+  window.scrollTo(0, Math.max(0, top));
 };

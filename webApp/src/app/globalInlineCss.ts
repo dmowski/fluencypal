@@ -30,6 +30,8 @@ body,
 html {
   padding: 0;
   margin: 0;
+  /* iOS scroll anchoring loops into Maximum call stack size exceeded when the quiz header shifts. */
+  overflow-anchor: none;
 }
 
 * {
