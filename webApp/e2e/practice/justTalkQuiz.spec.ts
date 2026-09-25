@@ -241,16 +241,15 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await page.getByTestId('day-pass-checkout').click();
     await expect(page).toHaveURL(/paymentModal=true/);
     await expect(page).toHaveURL(/paymentDuration=day/);
+    await expect(page).toHaveURL(/paymentConfirm=true/);
     await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
-    await expect(page.getByTestId('subscription-duration-day')).toHaveAttribute(
-      'aria-pressed',
-      'true',
-    );
-    await page.getByRole('button', { name: 'Unlock for 1 day', exact: true }).click();
+    await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expect(page.getByText('Confirm payment')).toBeVisible();
+    await expect(page.getByText(/request a refund on the Profile/)).toBeVisible();
+    await expect(page.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
   });
 
-  test('guest limit shows the day price and signs in before plans', async ({ page }) => {
+  test('guest limit shows the day price and signs in before payment confirmation', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
     await startJustTalkCallAsGuest(page);
@@ -271,6 +270,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await page.getByTestId('day-pass-checkout').click();
     await expect(page.getByTestId('payment-auth-gate')).toBeVisible();
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
+    await expect(page.getByText('Confirm payment')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
   });
 });

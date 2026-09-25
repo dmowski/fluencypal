@@ -26,6 +26,7 @@ export const DayPassLimitOffer = ({ endAction }: { endAction: ReactNode }) => {
     const params = new URLSearchParams(window.location.search);
     params.set('paymentModal', 'true');
     params.set('paymentDuration', 'day');
+    params.set('paymentConfirm', 'true');
     router.push(`${window.location.pathname}?${params.toString()}`, { scroll: false });
   };
 
@@ -79,7 +80,7 @@ export const DayPassLimitOffer = ({ endAction }: { endAction: ReactNode }) => {
           }}
           onClick={openDayPassPayment}
         >
-          {title}
+          {i18n._('Pay {price}', { price })}
         </Button>
         {endAction}
       </Stack>

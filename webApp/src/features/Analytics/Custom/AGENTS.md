@@ -72,7 +72,10 @@ Today (YYYY-MM-DD)  [UTC]
 
 Why they leave: …
 What to do next (one change): …  [must be new vs INTERVENTIONS.md]
+How does this proposal influence checkout? …  [Required. The change must improve first payment: more `checkout_start`, or a paid session, among people who hit the free cap. Speech or conversation alone is not enough. If this answer is that checkout does not move, pick a different change.]
 ```
+
+The one change is for the first payment. Say, in that checkout line, who reaches the paywall today, who starts checkout, and what this change does to that step. A clearer first question, a landing CTA, or another onboarding tweak is not the next change when people already speak to the cap and then leave the offer.
 
 9. Update `LAST_REPORT.md` `Analyzed through` to the export `toIso` (now UTC). Do not commit unless asked.
 
@@ -157,7 +160,7 @@ Admin UI: `/staats/journey`
 
 **Keep them using the app:** people who spoke once but have no day-2 `page_view` — that is a return problem (tasks, reminder), not acquisition. Do not “fix” the landing hero for that.
 
-**Subscriptions:** `paywall_view` without `checkout_start` = price/copy. `checkout_start` without payment in Stripe = checkout drop. No paywall after speaking = they never hit the limiter; do not push paywall earlier unless data shows they would still speak.
+**Subscriptions:** `paywall_view` without `checkout_start` = they saw the offer and did not start payment (price, copy, or the tap does not start checkout). `checkout_start` without payment in Stripe = checkout drop. No paywall after speaking = they never hit the limiter; do not push the paywall earlier unless data shows they would still speak. The report’s one change has to move this step.
 
 ## SEO / GEO
 

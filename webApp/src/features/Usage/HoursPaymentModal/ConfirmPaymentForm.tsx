@@ -86,6 +86,11 @@ export const ConfirmPaymentForm = ({
             `You have the right to withdraw from the contract within 14 days. The withdrawal function is available at Profile → Payment History → "Withdraw from contract here".`,
           )}
         </Typography>
+        <Typography variant="caption" sx={{ opacity: 0.85 }}>
+          {i18n._(
+            'If you are not satisfied with the service, you can request a refund on the Profile → Payment History page, and we will process it.',
+          )}
+        </Typography>
       </Stack>
 
       <Stack

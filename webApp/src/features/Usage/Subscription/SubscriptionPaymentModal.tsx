@@ -3,6 +3,7 @@ import { Box, Button, ButtonGroup, Link, Stack, Typography } from '@mui/material
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
 import { useNotifications } from '@toolpad/core/useNotifications';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { createStripeCheckout } from '../createStripeCheckout';
@@ -32,6 +33,7 @@ import { useAccess } from '../useAccess';
 import { ContactList } from '@/features/Landing/Contact/ContactList';
 import { PaymentAuthGate } from './PaymentAuthGate';
 import { useUrlState } from '@/features/Url/useUrlState';
+import { startDayPassCheckout } from '../dayPassCheckout';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -42,6 +44,7 @@ export const SubscriptionPaymentModal = () => {
   const settings = useSettings();
   const appMode = settings.appMode;
   const notifications = useNotifications();
+  const router = useRouter();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
 
   const supportedLang = settings.pageLanguageCode || 'en';
@@ -72,6 +75,8 @@ export const SubscriptionPaymentModal = () => {
     'month',
     false,
   );
+  const [paymentConfirm] = useUrlState('paymentConfirm', false, false);
+  const isDirectDayPass = Boolean(paymentConfirm);
   const price = usePrices();
 
   const analytics = useAnalytics();
@@ -207,9 +212,11 @@ export const SubscriptionPaymentModal = () => {
     showConfirmPage();
   };
 
+  const pricedDuration: SubscriptionDuration = isDirectDayPass ? 'day' : subscriptionDuration;
+
   const confirmAmountUsd = amountHoursToAdd
     ? amountHoursToAdd * pricePerHourUsd
-    : price.subscriptionPrices[subscriptionDuration].usdPrice;
+    : price.subscriptionPrices[pricedDuration].usdPrice;
 
   const hoursLabels: Record<HoursPackage, string> = {
     1: i18n._('Buy 1 AI hour'),
@@ -217,7 +224,7 @@ export const SubscriptionPaymentModal = () => {
     5: i18n._('Buy 5 AI hours'),
   };
 
-  const expiring = price.subscriptionPrices[subscriptionDuration].expiringDateIso;
+  const expiring = price.subscriptionPrices[pricedDuration].expiringDateIso;
   const expiringFormatted = dayjs(expiring).locale(supportedLang).format('D MMMM');
 
   const durationLabels: Record<SubscriptionDuration, string> = {
@@ -226,18 +233,73 @@ export const SubscriptionPaymentModal = () => {
     month: i18n._('1 month'),
     year: i18n._('1 year'),
   };
-  const label = subscriptionDuration ? durationLabels[subscriptionDuration] : '';
+  const label = pricedDuration ? durationLabels[pricedDuration] : '';
 
   const confirmationSubTitle = amountHoursToAdd
     ? hoursLabels[amountHoursToAdd]
     : i18n._(`Full access until {tillDate}`, { tillDate: expiringFormatted }) + '. (' + label + ')';
 
+  const closePaymentModal = () => {
+    setIsShowConfirmPayments(false);
+    if (!isDirectDayPass) {
+      usage.togglePaymentModal(false);
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    params.delete('paymentModal');
+    params.delete('paymentConfirm');
+    if (params.get('paymentDuration') === 'day') {
+      params.delete('paymentDuration');
+    }
+    const search = params.toString();
+    router.push(`${window.location.pathname}${search ? `?${search}` : ''}`, { scroll: false });
+  };
+
+  const confirmDayPass = async () => {
+    if (!auth.isIdentified || !auth.uid) return;
+
+    const token = await auth.getToken();
+
+    try {
+      setIsRedirecting(true);
+      const sessionUrl = await startDayPassCheckout({
+        userId: auth.uid,
+        token,
+        languageCode: supportedLang,
+        currency: currency.currency,
+        email: auth.userInfo?.email,
+      });
+      analytics.confirmGtag();
+
+      if (!sessionUrl) {
+        setIsRedirecting(false);
+        notifications.show(
+          i18n._('Error creating payment session. Notification sent to support. Try again later.'),
+          { severity: 'error' },
+        );
+        return;
+      }
+
+      window.location.href = sessionUrl;
+    } catch (error) {
+      console.error('Error during payment process:', error);
+      setIsRedirecting(false);
+      notifications.show(i18n._('Error during payment process'), {
+        severity: 'error',
+      });
+    }
+  };
+
   const onConfirm = () => {
     if (amountHoursToAdd) {
       confirmSubscription({ amountHoursToAdd });
-    } else {
-      confirmSubscription({ selectedSubscriptionDuration: subscriptionDuration });
+      return;
     }
+    if (subscriptionDuration === 'day' || isDirectDayPass) {
+      void confirmDayPass();
+      return;
+    }
+    confirmSubscription({ selectedSubscriptionDuration: subscriptionDuration });
   };
 
   if (usage.isSuccessPayment) {
@@ -253,6 +315,10 @@ export const SubscriptionPaymentModal = () => {
       isOpen={true && auth.isAuthorized}
       data-testid="subscription-payment-modal"
       onClose={() => {
+        if (isDirectDayPass) {
+          closePaymentModal();
+          return;
+        }
         if (isShowConfirmPayments) {
           openMainSubscriptionPage();
           return;
@@ -270,7 +336,7 @@ export const SubscriptionPaymentModal = () => {
           }}
           ref={containerRef}
         >
-          {isShowConfirmPayments ? (
+          {isShowConfirmPayments || isDirectDayPass ? (
             <ConfirmPayment
               amountInUsd={confirmAmountUsd}
               subTitle={confirmationSubTitle}

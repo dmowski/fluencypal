@@ -37,8 +37,8 @@ describe('DayPassLimitOffer', () => {
       </I18nWrapper>,
     );
 
-    expect(screen.getAllByText('Keep talking — $1.00 for the next 24 hours')).toHaveLength(2);
-    expect(screen.getByTestId('day-pass-checkout')).toBeInTheDocument();
+    expect(screen.getByText('Keep talking — $1.00 for the next 24 hours')).toBeInTheDocument();
+    expect(screen.getByTestId('day-pass-checkout')).toHaveTextContent('Pay $1.00');
   });
 
   it('adds the day-pass payment query params', () => {
@@ -50,7 +50,7 @@ describe('DayPassLimitOffer', () => {
 
     fireEvent.click(screen.getByTestId('day-pass-checkout'));
     expect(push).toHaveBeenCalledWith(
-      '/practice?justTalk=open&paymentModal=true&paymentDuration=day',
+      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true',
       { scroll: false },
     );
   });
