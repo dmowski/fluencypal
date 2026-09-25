@@ -31,6 +31,7 @@ import { FeatureItem } from './FeatureItem';
 import { useAccess } from '../useAccess';
 import { ContactList } from '@/features/Landing/Contact/ContactList';
 import { PaymentAuthGate } from './PaymentAuthGate';
+import { useUrlState } from '@/features/Url/useUrlState';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -66,7 +67,11 @@ export const SubscriptionPaymentModal = () => {
     scrollTop();
   };
 
-  const [subscriptionDuration, setSubscriptionDuration] = useState<SubscriptionDuration>('week');
+  const [subscriptionDuration, setSubscriptionDuration] = useUrlState<SubscriptionDuration>(
+    'paymentDuration',
+    'month',
+    false,
+  );
   const price = usePrices();
 
   const analytics = useAnalytics();
@@ -196,8 +201,7 @@ export const SubscriptionPaymentModal = () => {
     usage.togglePaymentModal(false);
   };
 
-  const onSelectDuration = async (selectedDuration: SubscriptionDuration) => {
-    setSubscriptionDuration(selectedDuration);
+  const onSelectDuration = async () => {
     setAmountHoursToAdd(0);
     await sleep(100);
     showConfirmPage();
@@ -324,7 +328,11 @@ export const SubscriptionPaymentModal = () => {
                       </Stack>
                       {usageType === 'subscription' ? (
                         <Stack sx={{}}>
-                          <ActivePlanSelector onSelectDuration={onSelectDuration} />
+                          <ActivePlanSelector
+                            selectedDuration={subscriptionDuration}
+                            setSelectedDuration={setSubscriptionDuration}
+                            onSelectDuration={onSelectDuration}
+                          />
                         </Stack>
                       ) : usageType === 'hours' ? (
                         <Stack

@@ -3,26 +3,14 @@
  */
 
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
-import { startDayPassCheckout } from '@/features/Usage/dayPassCheckout';
 import { DayPassLimitOffer } from './DayPassLimitOffer';
 
-const mockSignInWithGoogle = jest.fn();
-const mockAuth = {
-  uid: '',
-  isIdentified: false,
-  userInfo: null as { email: string | null } | null,
-  signInWithGoogle: mockSignInWithGoogle,
-  getToken: jest.fn(async () => 'token'),
-};
+const push = jest.fn();
 
-jest.mock('@/features/Auth/useAuth', () => ({
-  useAuth: () => mockAuth,
-}));
-
-jest.mock('@/features/Settings/useSettings', () => ({
-  useSettings: () => ({ pageLanguageCode: 'en' }),
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({ push }),
 }));
 
 jest.mock('@/features/User/useCurrency', () => ({
@@ -36,37 +24,24 @@ jest.mock('@/features/Analytics/Custom/sendAnalyticsEvent', () => ({
   sendAnalyticsEvent: jest.fn(),
 }));
 
-jest.mock('@/features/Usage/dayPassCheckout', () => ({
-  markDayPassCheckout: jest.fn(),
-  clearDayPassCheckout: jest.fn(),
-  startDayPassCheckout: jest.fn(),
-}));
-
 describe('DayPassLimitOffer', () => {
   beforeEach(() => {
-    mockSignInWithGoogle.mockReset();
-    mockAuth.uid = '';
-    mockAuth.isIdentified = false;
-    mockAuth.userInfo = null;
+    push.mockReset();
+    window.history.replaceState({}, '', '/practice?justTalk=open');
   });
 
-  it('shows the day price and Google while the visitor is a guest', () => {
+  it('shows the day price for the next 24 hours', () => {
     render(
       <I18nWrapper>
         <DayPassLimitOffer endAction={null} />
       </I18nWrapper>,
     );
 
-    expect(screen.getByText('Keep talking — $1.00 for today')).toBeInTheDocument();
-    expect(screen.getByTestId('day-pass-google')).toBeInTheDocument();
-    expect(screen.queryByTestId('day-pass-checkout')).not.toBeInTheDocument();
+    expect(screen.getAllByText('Keep talking — $1.00 for the next 24 hours')).toHaveLength(2);
+    expect(screen.getByTestId('day-pass-checkout')).toBeInTheDocument();
   });
 
-  it('starts checkout from the same screen after the visitor is signed in', async () => {
-    mockAuth.isIdentified = true;
-    mockAuth.uid = 'user-1';
-    (startDayPassCheckout as jest.Mock).mockResolvedValue(null);
-
+  it('adds the day-pass payment query params', () => {
     render(
       <I18nWrapper>
         <DayPassLimitOffer endAction={null} />
@@ -74,10 +49,9 @@ describe('DayPassLimitOffer', () => {
     );
 
     fireEvent.click(screen.getByTestId('day-pass-checkout'));
-    await waitFor(() => {
-      expect(startDayPassCheckout).toHaveBeenCalledWith(
-        expect.objectContaining({ userId: 'user-1', currency: 'USD', languageCode: 'en' }),
-      );
-    });
+    expect(push).toHaveBeenCalledWith(
+      '/practice?justTalk=open&paymentModal=true&paymentDuration=day',
+      { scroll: false },
+    );
   });
 });
