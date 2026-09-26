@@ -3,7 +3,7 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
 import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { DayPassLimitOffer } from './DayPassLimitOffer';
+import { DayPassLimitOffer, DayPassNextLesson } from './DayPassLimitOffer';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -50,6 +50,7 @@ export const CallButtons = ({
   isSendMessagesBlocked,
   fullExit,
   isGuestConversationLimited = false,
+  nextPlanLesson = null,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -78,6 +79,8 @@ export const CallButtons = ({
   isSendMessagesBlocked: boolean;
   fullExit: () => void;
   isGuestConversationLimited?: boolean;
+  /** First plan lesson is over. The offer is the next lesson, and the review opens once. */
+  nextPlanLesson?: DayPassNextLesson | null;
 }) => {
   const { i18n } = useLingui();
 
@@ -90,6 +93,13 @@ export const CallButtons = ({
   const [endCallMenuAnchor, setEndCallMenuAnchor] = useState<null | HTMLElement>(null);
   const [settingsAnchor, setSettingsAnchor] = useState<null | HTMLElement>(null);
   const access = useAccess();
+  const openedLessonReview = useRef(false);
+
+  useEffect(() => {
+    if (!isSendMessagesBlocked || !nextPlanLesson || openedLessonReview.current) return;
+    openedLessonReview.current = true;
+    onShowAnalyzeConversationModal();
+  }, [isSendMessagesBlocked, nextPlanLesson, onShowAnalyzeConversationModal]);
 
   const closeEndCallMenu = () => setEndCallMenuAnchor(null);
   const closeSettingsMenu = () => setSettingsAnchor(null);
@@ -396,6 +406,7 @@ Return ONLY the number.
         }}
       >
         <DayPassLimitOffer
+          nextLesson={nextPlanLesson}
           endAction={
             <IconButton
               size="large"

@@ -3,6 +3,7 @@ import { CustomModal } from '../uiKit/Modal/CustomModal';
 import { useLingui } from '@lingui/react';
 import { PositionChanged } from '../Game/PositionChanged';
 import { ConversationResult } from '../Plan/types';
+import { DayPassLimitOffer, DayPassNextLesson } from './CallMode/DayPassLimitOffer';
 import { useState } from 'react';
 import { InfoStep } from '../Survey/InfoStep';
 import { useTranslate } from '../Translation/useTranslate';
@@ -25,6 +26,7 @@ export const ConversationReviewModal = ({
   pointsEarned,
 
   openNextLesson,
+  nextPlanLesson = null,
 }: {
   setIsShowAnalyzeConversationModal: (value: boolean) => void;
   conversationAnalysisResult: ConversationResult | null;
@@ -33,6 +35,7 @@ export const ConversationReviewModal = ({
 
   openNextLesson: () => void;
   openCommunityPage: () => void;
+  nextPlanLesson?: DayPassNextLesson | null;
 }) => {
   const { i18n } = useLingui();
 
@@ -175,7 +178,13 @@ export const ConversationReviewModal = ({
           />
         )}
 
-        {step == 'finish' && (
+        {step == 'finish' && nextPlanLesson && (
+          <Stack sx={{ width: '100%', padding: '20px 0' }}>
+            <DayPassLimitOffer endAction={null} nextLesson={nextPlanLesson} />
+          </Stack>
+        )}
+
+        {step == 'finish' && !nextPlanLesson && (
           <InfoStep
             isStepLoading={!conversationAnalysisResult}
             title={i18n._('Next Step')}

@@ -29,6 +29,13 @@ import { useSearchParams } from 'next/navigation';
 import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useJustTalk } from '@/features/Conversation/useJustTalk';
+import { NextPlanLessonScreen } from '@/features/Conversation/CallMode/DayPassLimitOffer';
+import {
+  isFirstPlanLessonUsed,
+  markFirstLessonUsed,
+  nextPlanLessonCard,
+  readFirstLessonUsed,
+} from '@/features/Conversation/firstPlanLesson';
 import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTalk';
 import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
 import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
@@ -81,8 +88,40 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   // Wait for auth (and guest anonymous ensure) before auto-start so we do not
   // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
   // The handoff stays on screen until the call connects; the tap supersedes a hung auto-start.
+  const lessonLocked =
+    !access.isFullAppAccess &&
+    (readFirstLessonUsed() || isFirstPlanLessonUsed(plan.activeGoal));
+  const nextLesson = nextPlanLessonCard(plan.activeGoal) || {
+    title: i18n._('The rest of your plan'),
+    details: i18n._('Lesson 1 is done. This is the next part of your plan.'),
+  };
+  const markedFreeLesson = useRef(false);
+  useEffect(() => {
+    if (!aiConversation.isLimitedRecording || aiConversation.currentMode !== 'quiz-talk') return;
+    markFirstLessonUsed();
+    const firstLessonId = aiConversation.goalInfo?.goalElement.id;
+    if (!firstLessonId || markedFreeLesson.current) return;
+    if (!plan.activeGoal?.elements.some((element) => element.id === firstLessonId)) return;
+    if (plan.activeGoal.progress?.some((entry) => entry.elementId === firstLessonId)) {
+      markedFreeLesson.current = true;
+      return;
+    }
+    markedFreeLesson.current = true;
+    void plan.startGoalElement(firstLessonId).catch(() => {
+      markedFreeLesson.current = false;
+    });
+  }, [
+    aiConversation.isLimitedRecording,
+    aiConversation.currentMode,
+    aiConversation.goalInfo,
+    plan,
+  ]);
   useAutoStartJustTalk(
-    isHandoff && !auth.loading && auth.isAuthorized && Boolean(settings.userSettings),
+    isHandoff &&
+      !lessonLocked &&
+      !auth.loading &&
+      auth.isAuthorized &&
+      Boolean(settings.userSettings),
     startAutoJustTalk,
   );
   const [showGuestAuthWall, setShowGuestAuthWall] = useState(false);
@@ -168,6 +207,10 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         onRetry={() => window.location.reload()}
       />
     );
+  }
+
+  if (idleSurface === 'handoff' && lessonLocked) {
+    return <NextPlanLessonScreen nextLesson={nextLesson} onNotNow={() => setJustTalk('')} />;
   }
 
   if (idleSurface === 'handoff') {
@@ -277,6 +320,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
           usage.togglePaymentModal(true);
         }}
         autoProposeFirstReply={aiConversation.currentMode === 'quiz-talk'}
+        nextPlanLesson={aiConversation.currentMode === 'quiz-talk' ? nextLesson : null}
       />
     </Stack>
   );

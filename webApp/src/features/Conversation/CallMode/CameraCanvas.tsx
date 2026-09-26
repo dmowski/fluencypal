@@ -11,6 +11,7 @@ import { UserPreviewStatic } from './UserPreviewStatic';
 import { AiAvatar } from './types';
 import { AiAvatarVideo } from './AiAvatarVideo';
 import { CallButtons } from './CallButtons';
+import { DayPassNextLesson } from './DayPassLimitOffer';
 import { WebCamView } from '@/features/webCam/WebCamView';
 import { useEffect, useState } from 'react';
 import { ScanLine } from 'lucide-react';
@@ -47,6 +48,7 @@ export const CameraCanvas = ({
   isGuestConversationLimited = false,
   autoProposeFirstReply = false,
   onSendProposedAnswer,
+  nextPlanLesson = null,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -77,6 +79,7 @@ export const CameraCanvas = ({
   isGuestConversationLimited?: boolean;
   autoProposeFirstReply?: boolean;
   onSendProposedAnswer?: (text: string) => void;
+  nextPlanLesson?: DayPassNextLesson | null;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -308,6 +311,7 @@ export const CameraCanvas = ({
             completeUserMessageDelta={completeUserMessageDelta}
             fullExit={fullExit}
             isGuestConversationLimited={isGuestConversationLimited}
+            nextPlanLesson={nextPlanLesson}
           />
         </Stack>
       </Stack>

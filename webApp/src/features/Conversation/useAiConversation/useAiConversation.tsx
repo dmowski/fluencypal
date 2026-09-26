@@ -338,6 +338,13 @@ ${voiceInstructions}
           voice,
           aboutUserTranscription: aboutUserTranscription || '',
           voiceInstructions,
+          firstLesson: goal?.goalElement
+            ? {
+                planTitle: goal.goalPlan.title,
+                title: goal.goalElement.title,
+                details: goal.goalElement.details || goal.goalElement.description,
+              }
+            : null,
         }),
       };
     }

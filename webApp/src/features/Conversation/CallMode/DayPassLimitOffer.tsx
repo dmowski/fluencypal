@@ -11,12 +11,32 @@ import { useCurrency } from '@/features/User/useCurrency';
 export const DAY_PASS_OFFER_TEST_ID = 'day-pass-offer';
 export const DAY_PASS_CHECKOUT_TEST_ID = 'day-pass-checkout';
 
-export const DayPassLimitOffer = ({ endAction }: { endAction: ReactNode }) => {
+export type DayPassNextLesson = {
+  title: string;
+  details: string;
+};
+
+export const DayPassLimitOffer = ({
+  endAction,
+  nextLesson,
+}: {
+  endAction: ReactNode;
+  /** When set, the offer is the next plan lesson. Confirmation still opens before Stripe. */
+  nextLesson?: DayPassNextLesson | null;
+}) => {
   const { i18n } = useLingui();
   const currency = useCurrency();
   const router = useRouter();
   const price = currency.convertUsdToCurrency(PRICE_PER_DAY_USD);
-  const title = i18n._('Keep talking — {price} for the next 24 hours', { price });
+  const title = nextLesson
+    ? i18n._('Next: {title}', { title: nextLesson.title })
+    : i18n._('Keep talking — {price} for the next 24 hours', { price });
+  const subtitle = nextLesson
+    ? nextLesson.details || i18n._('Lesson 1 is done. This is the next part of your plan.')
+    : i18n._('Your free replies in this conversation are used.');
+  const payLabel = nextLesson
+    ? i18n._('Continue your plan — {price}', { price })
+    : i18n._('Pay {price}', { price });
 
   useEffect(() => {
     sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'day-pass' });
@@ -48,9 +68,7 @@ export const DayPassLimitOffer = ({ endAction }: { endAction: ReactNode }) => {
         >
           {title}
         </Typography>
-        <Typography sx={{ textWrap: 'balance' }}>
-          {i18n._('Your free replies in this conversation are used.')}
-        </Typography>
+        <Typography sx={{ textWrap: 'balance' }}>{subtitle}</Typography>
       </Stack>
       <Stack
         sx={{
@@ -80,10 +98,42 @@ export const DayPassLimitOffer = ({ endAction }: { endAction: ReactNode }) => {
           }}
           onClick={openDayPassPayment}
         >
-          {i18n._('Pay {price}', { price })}
+          {payLabel}
         </Button>
         {endAction}
       </Stack>
+    </Stack>
+  );
+};
+
+export const NextPlanLessonScreen = ({
+  nextLesson,
+  onNotNow,
+}: {
+  nextLesson: DayPassNextLesson;
+  onNotNow: () => void;
+}) => {
+  const { i18n } = useLingui();
+
+  return (
+    <Stack
+      sx={{
+        minHeight: '100dvh',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+        boxSizing: 'border-box',
+      }}
+    >
+      <DayPassLimitOffer
+        nextLesson={nextLesson}
+        endAction={
+          <Button color="inherit" onClick={onNotNow}>
+            {i18n._('Not now')}
+          </Button>
+        }
+      />
     </Stack>
   );
 };

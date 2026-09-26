@@ -54,4 +54,24 @@ describe('DayPassLimitOffer', () => {
       { scroll: false },
     );
   });
+
+  it('offers the next plan lesson and still opens the confirmation screen', () => {
+    render(
+      <I18nWrapper>
+        <DayPassLimitOffer
+          endAction={null}
+          nextLesson={{ title: 'Greetings', details: 'Words for saying hello.' }}
+        />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByText('Next: Greetings')).toBeInTheDocument();
+    expect(screen.getByText('Words for saying hello.')).toBeInTheDocument();
+    expect(screen.getByTestId('day-pass-checkout')).toHaveTextContent('Continue your plan — $1.00');
+    fireEvent.click(screen.getByTestId('day-pass-checkout'));
+    expect(push).toHaveBeenCalledWith(
+      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true',
+      { scroll: false },
+    );
+  });
 });

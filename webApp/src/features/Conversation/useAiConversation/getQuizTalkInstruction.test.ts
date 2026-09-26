@@ -58,4 +58,24 @@ describe('getQuizTalkInstruction', () => {
     expect(prompt).not.toContain('they can repeat');
     expect(prompt).not.toContain('ONE closed follow-up');
   });
+
+  it('teaches the first plan lesson instead of skipping the plan', () => {
+    const prompt = getQuizTalkInstruction({
+      languageName: 'English',
+      voice: 'marin',
+      aboutUserTranscription: 'I want to speak English at work.',
+      voiceInstructions,
+      firstLesson: {
+        planTitle: 'Work calls',
+        title: 'Clients',
+        details: 'Practice a short client call.',
+      },
+    });
+
+    expect(prompt).toContain('lesson 1 of their plan "Work calls": "Clients"');
+    expect(prompt).toContain('Practice a short client call.');
+    expect(prompt).toContain('Do not preview later lessons.');
+    expect(prompt).not.toContain('Do not say "today we will practice" or open a lesson plan.');
+    expect(prompt).toContain('ONE closed follow-up');
+  });
 });

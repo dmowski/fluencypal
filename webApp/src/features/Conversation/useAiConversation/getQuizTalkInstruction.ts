@@ -1,6 +1,14 @@
 import { AiVoice } from '@/features/Ai/ai';
 import { clipQuizTalkAbout, quizTalkAboutHasChoiceMaterial } from '../quizTalk';
 
+export type QuizTalkFirstLesson = {
+  planTitle: string;
+  title: string;
+  details: string;
+};
+
+const SKIP_LESSON = 'Do not say "today we will practice" or open a lesson plan.';
+
 const firstTurnWithClip = `## First turn (strict)
 - Speak slowly. Keep the first turn to one or two short sentences.
 - React to what they said (acknowledge the meaning). Do not start a new topic.
@@ -8,7 +16,7 @@ const firstTurnWithClip = `## First turn (strict)
 - Do not ask an open "tell me more", "why", or "describe" question. They already spoke in the quiz.
 - A one-word answer (yes, work, travel) is a successful start.
 - Do not lecture, list vocabulary, describe personalities, or ask about their whole day.
-- Do not say "today we will practice" or open a lesson plan.
+- ${SKIP_LESSON}
 - Do not introduce a long greeting.
 - Do not ask them to repeat, recite, or say a sentence after you.`;
 
@@ -17,7 +25,7 @@ const firstTurnWithoutClip = `## First turn (strict)
 - Do not invent a biography or a fake A/B choice. Their quiz clip was too short or empty.
 - Ask ONE easy yes/no. Do not hand them a sentence to recite.
 - Do not lecture, list vocabulary, describe personalities, or ask about their whole day.
-- Do not say "today we will practice" or open a lesson plan.
+- ${SKIP_LESSON}
 - Do not introduce a long greeting.
 - Do not ask them to repeat, recite, or say a sentence after you.`;
 
@@ -30,16 +38,23 @@ const afterTheyReply = `## After they reply (strict)
 - Do not drill. Do not stay on the same prompt.
 - If they go quiet, ask a different easy yes/no. Do not recite a line for them to copy.`;
 
+const lessonRule = (lesson: QuizTalkFirstLesson): string =>
+  `This call is lesson 1 of their plan "${lesson.planTitle}": "${lesson.title}". ${lesson.details}
+In the first turn, name this lesson in one short sentence, then ask ONE closed question about it.
+Tie that question to their recording when it fits this lesson. Stay on this lesson. Do not preview later lessons.`;
+
 export const getQuizTalkInstruction = ({
   languageName,
   voice,
   aboutUserTranscription,
   voiceInstructions,
+  firstLesson,
 }: {
   languageName: string;
   voice: AiVoice;
   aboutUserTranscription: string;
   voiceInstructions: string;
+  firstLesson?: QuizTalkFirstLesson | null;
 }): string => {
   const about = clipQuizTalkAbout(aboutUserTranscription);
   const hasChoiceMaterial = quizTalkAboutHasChoiceMaterial(about);
@@ -47,7 +62,12 @@ export const getQuizTalkInstruction = ({
     ? `They just recorded why they want to practice. Transcript (may be messy, short, or in another language):
 """${about}"""`
     : `Their quiz recording was empty or could not be transcribed. Do not invent a biography.`;
-  const firstTurn = hasChoiceMaterial ? firstTurnWithClip : firstTurnWithoutClip;
+  const firstTurn = (hasChoiceMaterial ? firstTurnWithClip : firstTurnWithoutClip)
+    .replace(SKIP_LESSON, firstLesson ? lessonRule(firstLesson) : SKIP_LESSON)
+    .replace(
+      'Do not start a new topic.',
+      firstLesson ? 'The lesson above is the topic.' : 'Do not start a new topic.',
+    );
 
   return `You are a ${languageName} speaking teacher. Your name is "${voice}".
 The student just finished a short onboarding quiz and this is their first live call.

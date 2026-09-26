@@ -38,6 +38,7 @@ import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
 import { ConversationReviewModal } from './ConversationReviewModal';
+import { DayPassNextLesson } from './CallMode/DayPassLimitOffer';
 import { CallEndMenu } from './CallEndMenu';
 import {
   getConversationProgressPercent,
@@ -98,6 +99,7 @@ interface ConversationCanvasProps {
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
   autoProposeFirstReply?: boolean;
+  nextPlanLesson?: DayPassNextLesson | null;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -147,6 +149,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   onSelectMicrophone,
   isGuestConversationLimited = false,
   autoProposeFirstReply = false,
+  nextPlanLesson = null,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -239,6 +242,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
             openCommunityPage();
           }}
+          nextPlanLesson={nextPlanLesson}
         />
       )}
     </>
@@ -284,6 +288,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
             isSendMessagesBlocked={isSendMessagesBlocked}
+            nextPlanLesson={nextPlanLesson}
             fullExit={() => {
               closeConversation();
             }}
