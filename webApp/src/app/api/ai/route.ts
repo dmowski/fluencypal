@@ -4,6 +4,7 @@ import {
   convertUsageUsdToBalanceHours,
   TextUsageEvent,
 } from '@/features/Ai/ai';
+import { jsonIfAuthTokenError } from '../config/authTokenError';
 import { validateAuthToken } from '../config/firebase';
 import { generateTextWithAi } from './generateTextWithAi';
 import { addConversationUsage } from '../usage/addConversationUsage';
@@ -16,7 +17,14 @@ import { captureServerException } from '@/libs/sentry/captureServerException';
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
-  const userInfo = await validateAuthToken(request);
+  let userInfo: Awaited<ReturnType<typeof validateAuthToken>>;
+  try {
+    userInfo = await validateAuthToken(request);
+  } catch (error) {
+    const unauthorized = jsonIfAuthTokenError(error);
+    if (unauthorized) return unauthorized;
+    throw error;
+  }
 
   const aiRequest = (await request.json()) as AiRequest;
   const languageCode = aiRequest.languageCode || 'en';

@@ -3,9 +3,10 @@ import {
   signInWithCustomToken as firebaseSignInWithCustomToken,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
-  signInWithEmailLink,
   ActionCodeSettings,
 } from 'firebase/auth';
+import { completeEmailLinkSignIn } from './emailLinkSignIn';
+import { isWaitingForFirestoreToken, publishedAuthUid } from './firestoreAuthReady';
 import { ensureAnonymousAuth } from './anonymousAuth';
 import { isIdentifiedAuthUser } from './identifiedAuth';
 import {
@@ -17,6 +18,7 @@ import {
   useContext,
   useEffect,
   useRef,
+  useState,
 } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../Firebase/init';
@@ -84,8 +86,31 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
 });
 
 function useProvideAuth(): AuthContext {
-  const [userInfo, loading, errorAuth] = useAuthState(auth);
+  const [userInfo, authLoading, errorAuth] = useAuthState(auth);
+  const [tokenReadyUid, setTokenReadyUid] = useState<string | null>(null);
   const googleSignInInProgress = useRef(false);
+
+  useEffect(() => {
+    const uid = userInfo?.uid;
+    if (!uid) {
+      setTokenReadyUid(null);
+      return;
+    }
+
+    let cancelled = false;
+    void userInfo.getIdToken().then(
+      () => {
+        if (!cancelled) setTokenReadyUid(uid);
+      },
+      () => {
+        if (!cancelled) setTokenReadyUid(uid);
+      },
+    );
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userInfo]);
 
   const signInWithGoogle = async (): Promise<SignInResult> => {
     if (googleSignInInProgress.current) {
@@ -147,7 +172,7 @@ function useProvideAuth(): AuthContext {
     }
 
     try {
-      const credential = await signInWithEmailLink(auth, email, window.location.href);
+      const credential = await completeEmailLinkSignIn(auth, email, window.location.href);
       await credential.user.getIdToken(true);
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
       cleanEmailSignInUrl();
@@ -286,9 +311,11 @@ function useProvideAuth(): AuthContext {
     }
   };
 
-  const isAuthorized = !!userInfo?.uid && !errorAuth;
-  const isAnonymous = Boolean(userInfo?.isAnonymous);
-  const isIdentified = isIdentifiedAuthUser(userInfo) && !errorAuth;
+  const userId = publishedAuthUid(userInfo?.uid, tokenReadyUid);
+  const loading = authLoading || isWaitingForFirestoreToken(userInfo?.uid, tokenReadyUid);
+  const isAuthorized = !!userId && !errorAuth;
+  const isAnonymous = Boolean(userInfo?.isAnonymous) && userId === userInfo?.uid;
+  const isIdentified = isIdentifiedAuthUser(userInfo) && !errorAuth && Boolean(userId);
 
   const isDev = userInfo?.email?.includes('dmowski') || false;
 
@@ -316,7 +343,6 @@ function useProvideAuth(): AuthContext {
     return token || '';
   };
 
-  const userId = userInfo?.uid || '';
   const isFounder = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
   const ensureAnonymousUser = useCallback(() => ensureAnonymousAuth(auth), []);
 

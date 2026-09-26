@@ -4,6 +4,7 @@ import { getAuth as getFirebaseAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
 import { isAnonymousSignInProvider } from '@/features/Auth/identifiedAuth';
+import { AuthTokenError } from './authTokenError';
 import { AuthUserInfo } from './type';
 
 const isFirebaseEmulator = process.env.IS_FIREBASE_EMULATOR === 'true';
@@ -79,14 +80,22 @@ const getDB = () => {
   return getFirestore(app);
 };
 
+const authErrorCode = (error: unknown): string => {
+  if (error && typeof error === 'object' && 'code' in error) {
+    const code = (error as { code: unknown }).code;
+    if (typeof code === 'string' && code) return code;
+  }
+  return 'unknown';
+};
+
 const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
   const authHeader = req.headers.get('authorization');
   if (!authHeader) {
-    throw new Error('Authorization header is required');
+    throw new AuthTokenError('Authorization header is required');
   }
   const token = authHeader.split('Bearer ')[1];
   if (!token) {
-    throw new Error('Token is required');
+    throw new AuthTokenError('Token is required');
   }
 
   try {
@@ -100,8 +109,9 @@ const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
       isAnonymous: isAnonymousSignInProvider(firebase?.sign_in_provider),
     };
   } catch (error) {
-    console.error('Error validating token', error);
-    throw new Error('Invalid token');
+    // Log the code only. verifyIdToken messages can echo the bearer token.
+    console.warn('Rejected auth token', authErrorCode(error));
+    throw new AuthTokenError('Invalid token');
   }
 };
 

@@ -35,6 +35,7 @@ import { generateRandomUsername } from './userNames';
 import { useUrlState } from '../Url/useUrlState';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { isFetchNetworkError } from '@/libs/sentry/isFetchNetworkError';
+import { isFirebasePermissionDenied, runWithFirestoreAuth } from '../Firebase/runWithFirestoreAuth';
 import * as Sentry from '@sentry/nextjs';
 
 interface GameContextType {
@@ -168,14 +169,21 @@ function useProvideGame(): GameContextType {
 
   const updateLastVisit = async () => {
     if (!userId || !isActiveBrowserTab()) return;
-    const doc = db.documents.gameLastVisit2;
-    setDoc(
-      doc,
-      {
-        [userId]: new Date().toISOString(),
-      },
-      { merge: true },
-    );
+    const visitDoc = db.documents.gameLastVisit2;
+    try {
+      await runWithFirestoreAuth(auth.getToken, () =>
+        setDoc(
+          visitDoc,
+          {
+            [userId]: new Date().toISOString(),
+          },
+          { merge: true },
+        ),
+      );
+    } catch (error) {
+      if (isFirebasePermissionDenied(error)) return;
+      Sentry.captureException(error);
+    }
     resetPointsIfNeeded();
   };
 
@@ -193,9 +201,13 @@ function useProvideGame(): GameContextType {
 
   useEffect(() => {
     if (!userId) return;
-    updateLastVisit();
-    setDefaultAvatarIfNeeded();
-    setDefaultUsernameIfNeeded();
+    const ignorePermissionDenied = (error: unknown) => {
+      if (isFirebasePermissionDenied(error)) return;
+      Sentry.captureException(error);
+    };
+    void updateLastVisit();
+    void setDefaultAvatarIfNeeded().catch(ignorePermissionDenied);
+    void setDefaultUsernameIfNeeded().catch(ignorePermissionDenied);
   }, [userId, isLoading]);
 
   useEffect(() => {

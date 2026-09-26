@@ -44,6 +44,8 @@ function useProvideTextAi(): TextAiContextType {
         languageCode: conversationDate.languageCode || languageCode,
       },
       await auth.getToken(),
+      3,
+      () => auth.getToken(true),
     );
 
     const responseString = response.aiResponse || '';

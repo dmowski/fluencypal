@@ -41,11 +41,18 @@ export const sendTextAiRequest = async (
   conversationDate: AiRequest,
   auth: string,
   retries = 3,
+  refreshAuth?: () => Promise<string>,
 ): Promise<AiResponse> => {
   try {
     return await sendTextAiRequestRaw(conversationDate, auth);
   } catch (error) {
     const status = (error as Error & { status?: number }).status;
+    if (status === 401 && refreshAuth) {
+      const refreshed = await refreshAuth();
+      if (refreshed && refreshed !== auth) {
+        return sendTextAiRequest(conversationDate, refreshed, retries);
+      }
+    }
     if (retries > 0 && status !== undefined && isRetriableAiHttpStatus(status)) {
       console.warn(`sendTextAiRequest failed. Retrying... (${retries} attempts left)`, error);
       await sleep(1000);

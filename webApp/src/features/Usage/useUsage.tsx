@@ -23,6 +23,7 @@ import { createUsageLog } from './createUsageLog';
 import dayjs from 'dayjs';
 import { useUrlState } from '../Url/useUrlState';
 import { sleep } from '@/libs/sleep';
+import { isFirebasePermissionDenied, runWithFirestoreAuth } from '../Firebase/runWithFirestoreAuth';
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -103,8 +104,15 @@ function useProvideUsage(): UsageContextType {
       return;
     }
 
-    const docData = await getDoc(totalUsageDoc);
-    const totalData = docData.data();
+    let totalData: TotalUsageInfo | undefined;
+    try {
+      const docData = await runWithFirestoreAuth(auth.getToken, () => getDoc(totalUsageDoc));
+      totalData = docData.data();
+    } catch (error) {
+      if (isFirebasePermissionDenied(error)) return;
+      console.error('Welcome balance read failed:', error);
+      return;
+    }
     if (totalData) {
       setIsWelcomeBalanceInitialized(true);
       return;
