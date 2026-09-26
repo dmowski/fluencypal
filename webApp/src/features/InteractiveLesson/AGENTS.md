@@ -91,7 +91,7 @@ The **first part** is a longer how-to (4-5 short paragraphs): when to use the fo
 
 The **second part is always speech**: a longer passage (4-5 short paragraphs, about 200-320 words) that uses the form, which the learner reads aloud (they can play it first). Feedback checks they read the passage, not a free answer.
 
-The **last part is always a 2–3 minute open talk** on a concrete topic. Short quiz-like speech items stay in the middle. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
+The **last part is always a 2–3 minute open talk** on a concrete topic. One middle speech task is a translation from the native language into the target language: about 5 connected sentences, not one short sentence. Other quiz-like speech items stay short. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
 
 | When          | Context                                                                                                                                                                                              |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

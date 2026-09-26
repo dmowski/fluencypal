@@ -44,6 +44,18 @@ describe('buildLessonPrompts', () => {
     expect(prompt).toContain('200-320 words');
     expect(prompt).toContain('native-language');
     expect(prompt).toContain('SECOND part');
+    expect(prompt).toContain('5 connected sentences');
+    expect(prompt).toContain('not one short sentence');
+  });
+
+  it('checks a native-to-target translation against the whole passage', () => {
+    const system = buildSpeechFeedbackSystemPrompt({
+      targetLanguageName: 'English',
+      nativeLanguageName: 'Polish',
+    });
+
+    expect(system).toContain('about 5 sentences');
+    expect(system).toContain('Skipping most of it is a miss');
   });
 
   it('checks read-aloud answers against the passage', () => {

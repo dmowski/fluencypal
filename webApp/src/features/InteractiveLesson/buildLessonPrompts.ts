@@ -42,19 +42,27 @@ Typical flow:
   Start with one line: tell them to read the text aloud. Then the text itself.
   No question, no "say one sentence of your own" here.
 - Then more speech: invite them to use the form (they may add extra sentences);
-  fix or contrast a wrong version; translate a native sentence that needs the form.
+  fix or contrast a wrong version; translate FROM the native language into the
+  target language.
+  The translation task is a short passage, not one short sentence. Write about
+  5 connected sentences in the native language (one everyday scene). The day's
+  form should be needed more than once. Start with one line in the target
+  language telling them to say the passage in the target language, then the
+  native passage itself.
 - LAST part (required): an open talk. type must be "speech". Ask them to speak
   for 2-3 minutes on a concrete, everyday or slightly random topic (a recent day,
   a person, a place, a plan, a story). One inviting question, not a quiz item,
   not "use this form in one sentence". The goal is a long sample of their real
   language so later lessons have mistakes and gaps to teach from.
 
-Form-check speech prompts stay short (15-40 seconds) and invite the form.
+Form-check speech prompts other than the translation stay short (15-40 seconds)
+and invite the form. The translation is longer: about 5 native sentences to say
+in the target language.
 Do not write "only one sentence" or "nothing else" — extra talk is welcome.
 The last part is the only long free-talk. The second part is read-aloud, not free talk.
 Write learner-facing content in the TARGET language unless a native-language hint
-helps the rule, or you are translating FROM native (then put the source sentence
-in the native language).
+helps the rule, or you are translating FROM native (then put the source passage —
+about 5 sentences — in the native language).
 Do not mention that you are an AI or that this is JSON.`;
 
 export const buildLessonSystemPrompt = (params: {
@@ -182,8 +190,9 @@ Write very short feedback the learner will read.
 Judge the language, not obedience to the prompt format.
 - Extra sentences, extra context, and improvisation are welcome.
 - Do NOT mark it wrong because they said more than asked, or did not use only one sentence.
+- If the task is to translate a native passage, they should cover the passage (about 5 sentences), not only the first line. Skipping most of it is a miss. Close wording is fine when the meaning and the target form are right.
 - If they used the target form (or a natural equivalent) correctly, say it is correct. Mention a small polish only if it helps.
-- Mark it wrong only for a real language mistake (wrong form, missing form, broken grammar that changes meaning).
+- Mark it wrong only for a real language mistake (wrong form, missing form, broken grammar that changes meaning), or for leaving out most of a translation passage.
 - Never punish them for sounding human.
 
 Rules:
