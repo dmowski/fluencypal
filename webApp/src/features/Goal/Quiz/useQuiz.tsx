@@ -33,7 +33,7 @@ import * as Sentry from '@sentry/nextjs';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
-import { fnv1aHash } from '@/libs/hash';
+import { claimGoalGeneration, goalAboutHash, releaseGoalGeneration } from './goalGeneration';
 import { NativeLangCode } from '@/libs/language/type';
 import { guessLanguagesByCountry } from '@/libs/language/languageByCountry';
 import {
@@ -42,12 +42,6 @@ import {
   writeAboutTranscriptionToSurvey,
 } from './quizGuestAboutStorage';
 import { QuizStep, quizSteps, resolveQuizStep } from './quizSteps';
-
-const getHash = (input: string) => {
-  if (!input) return '';
-
-  return fnv1aHash(input);
-};
 
 interface QuizContextType {
   languageToLearn: SupportedLanguage;
@@ -172,9 +166,8 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       return;
     }
 
-    const initialSurveyHash = getHash(about);
-    if (initialSurveyHash === survey.goalHash) {
-      console.log('⏩ generateGoal | Survey not changed');
+    const initialSurveyHash = claimGoalGeneration(about, survey.goalHash);
+    if (!initialSurveyHash) {
       return;
     }
 
@@ -186,12 +179,14 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
         context: about,
       });
       const finalAbout = (surveyRef.current?.aboutUserTranscription || '').trim();
-      const finalSurveyHash = getHash(finalAbout);
+      const finalSurveyHash = goalAboutHash(finalAbout);
       if (initialSurveyHash !== finalSurveyHash) {
+        releaseGoalGeneration(initialSurveyHash);
         console.log('🦄 generateGoal | Survey changed during goal generation, skipping update');
         return;
       }
       if (!surveyRef.current) {
+        releaseGoalGeneration(initialSurveyHash);
         return;
       }
       await updateSurvey(
@@ -203,7 +198,9 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
         },
         'generateGoal',
       );
+      releaseGoalGeneration(initialSurveyHash);
     } catch (error) {
+      releaseGoalGeneration(initialSurveyHash);
       Sentry.captureException(error);
     } finally {
       setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
