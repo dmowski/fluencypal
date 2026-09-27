@@ -313,7 +313,7 @@ export const SubscriptionPaymentModal = () => {
 
   if (usage.isSuccessPayment) {
     return (
-      <CustomModal isOpen={true} onClose={closePaymentSuccessModal}>
+      <CustomModal isOpen={true} onClose={closePaymentSuccessModal} zIndex={1400}>
         <PaymentSuccess onClose={closePaymentSuccessModal} />
       </CustomModal>
     );
@@ -322,6 +322,7 @@ export const SubscriptionPaymentModal = () => {
   return (
     <CustomModal
       isOpen={true && auth.isAuthorized}
+      zIndex={1400}
       data-testid="subscription-payment-modal"
       onClose={() => {
         if (isDirectDayPass) {

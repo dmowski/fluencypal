@@ -50,19 +50,15 @@ const checkBothBoxes = () => {
 };
 
 describe('DayPassConfirm', () => {
-  it('shows the next lesson and sign-in together, and does not start checkout for a guest', () => {
-    const onConfirm = renderConfirm(false);
+  it('shows only sign-in for a guest', () => {
+    renderConfirm(false);
 
-    expect(screen.getByRole('heading', { name: 'Greetings' })).toBeInTheDocument();
-    expect(screen.getByText('Words for saying hello.')).toBeInTheDocument();
-    expect(screen.getByText('Full access until 28 September. (1 day)')).toBeInTheDocument();
     expect(screen.getByText('Sign in to continue this lesson')).toBeInTheDocument();
-
-    checkBothBoxes();
-    const order = screen.getByRole('button', { name: /Order with obligation to pay/ });
-    expect(order).toBeDisabled();
-    fireEvent.click(order);
-    expect(onConfirm).not.toHaveBeenCalled();
+    expect(screen.queryByRole('heading', { name: 'Greetings' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: /Order with obligation to pay/ }),
+    ).not.toBeInTheDocument();
   });
 
   it('starts checkout only after the checkboxes when they are already signed in', () => {

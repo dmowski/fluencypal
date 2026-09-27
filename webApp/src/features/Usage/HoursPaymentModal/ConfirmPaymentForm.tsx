@@ -5,22 +5,18 @@ import { formatAdvancedUsd } from '@/features/Usage/advancedUsage';
 import { useLingui } from '@lingui/react';
 import { Stack, FormControlLabel, Checkbox, Typography, Button, Link } from '@mui/material';
 import { ChevronRight, ShieldCheck } from 'lucide-react';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 
 export const ConfirmPaymentForm = ({
   onConfirmRequest,
   amountInUsd,
   isRedirecting,
   forceUsd = false,
-  beforeSubmit = null,
-  submitDisabled = false,
 }: {
   onConfirmRequest: () => void;
   amountInUsd: number;
   isRedirecting: boolean;
   forceUsd?: boolean;
-  beforeSubmit?: ReactNode;
-  submitDisabled?: boolean;
 }) => {
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const { i18n } = useLingui();
@@ -28,7 +24,7 @@ export const ConfirmPaymentForm = ({
   const settings = useSettings();
   const pageLang = settings.userSettings?.pageLanguageCode || 'en';
   const currency = useCurrency();
-  const canSubmit = looseRightChecked && isTermsChecked && !isRedirecting && !submitDisabled;
+  const canSubmit = looseRightChecked && isTermsChecked && !isRedirecting;
 
   return (
     <Stack
@@ -45,8 +41,6 @@ export const ConfirmPaymentForm = ({
         onConfirmRequest();
       }}
     >
-      {beforeSubmit}
-
       <Stack gap={'12px'}>
         <FormControlLabel
           required

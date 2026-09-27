@@ -1,6 +1,5 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { AuthWall } from '@/features/Auth/AuthWall';
@@ -31,17 +30,30 @@ export const DayPassConfirm = ({
   onConfirm: () => void;
 }) => {
   const { i18n } = useLingui();
-  const signIn: ReactNode =
-    isIdentified || isAuthLoading ? null : (
-      <AuthWall
-        startOnAuth
-        signInTitle={i18n._('Sign in to continue this lesson')}
-        singInSubTitle={i18n._('So we can save your purchase to your account')}
-        authListAfterActions
+
+  if (!isIdentified) {
+    return (
+      <Stack
+        data-testid={DAY_PASS_CONFIRM_TEST_ID}
+        sx={{
+          width: '100%',
+          alignItems: 'center',
+          paddingTop: '30px',
+        }}
       >
-        {null}
-      </AuthWall>
+        {isAuthLoading ? null : (
+          <AuthWall
+            startOnAuth
+            signInTitle={i18n._('Sign in to continue this lesson')}
+            singInSubTitle={i18n._('So we can save your purchase to your account')}
+            authListAfterActions
+          >
+            {null}
+          </AuthWall>
+        )}
+      </Stack>
     );
+  }
 
   return (
     <Stack
@@ -68,12 +80,7 @@ export const DayPassConfirm = ({
       <ConfirmPaymentForm
         amountInUsd={amountInUsd}
         isRedirecting={isRedirecting}
-        submitDisabled={!isIdentified}
-        beforeSubmit={signIn}
-        onConfirmRequest={() => {
-          if (!isIdentified) return;
-          onConfirm();
-        }}
+        onConfirmRequest={onConfirm}
       />
     </Stack>
   );

@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
+import { useUrlStateContext } from '@/features/Url/UrlStateContext';
 import { PRICE_PER_DAY_USD } from '@/features/Price/price';
 import { useCurrency } from '@/features/User/useCurrency';
 
@@ -19,14 +20,18 @@ export type DayPassNextLesson = {
 export const DayPassLimitOffer = ({
   endAction,
   nextLesson,
+  onCheckoutOpen,
 }: {
   endAction: ReactNode;
   /** When set, the offer is the next plan lesson. Confirmation still opens before Stripe. */
   nextLesson?: DayPassNextLesson | null;
+  /** Close whatever is covering the page, such as the lesson review. */
+  onCheckoutOpen?: () => void;
 }) => {
   const { i18n } = useLingui();
   const currency = useCurrency();
   const router = useRouter();
+  const { setUrlState } = useUrlStateContext();
   const price = currency.convertUsdToCurrency(PRICE_PER_DAY_USD);
   const title = nextLesson
     ? i18n._('Next: {title}', { title: nextLesson.title })
@@ -58,7 +63,21 @@ export const DayPassLimitOffer = ({
       params.delete('planLesson');
       params.delete('planLessonDetails');
     }
-    router.push(`${window.location.pathname}?${params.toString()}`, { scroll: false });
+    const nextUrl = `${window.location.pathname}?${params.toString()}`;
+    const currentUrl = window.location.pathname + window.location.search;
+    if (currentUrl !== nextUrl) {
+      router.push(nextUrl, { scroll: false });
+    } else {
+      // The confirmation is already in the address bar. A second tap must still open it.
+      setUrlState('paymentModal', 'true');
+      setUrlState('paymentConfirm', 'true');
+      setUrlState('paymentDuration', 'day');
+      if (nextLesson) {
+        setUrlState('planLesson', nextLesson.title);
+        setUrlState('planLessonDetails', nextLesson.details || '');
+      }
+    }
+    onCheckoutOpen?.();
   };
 
   return (

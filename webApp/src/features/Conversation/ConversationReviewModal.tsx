@@ -180,7 +180,11 @@ export const ConversationReviewModal = ({
 
         {step == 'finish' && nextPlanLesson && (
           <Stack sx={{ width: '100%', padding: '20px 0' }}>
-            <DayPassLimitOffer endAction={null} nextLesson={nextPlanLesson} />
+            <DayPassLimitOffer
+              endAction={null}
+              nextLesson={nextPlanLesson}
+              onCheckoutOpen={() => setIsShowAnalyzeConversationModal(false)}
+            />
           </Stack>
         )}
 

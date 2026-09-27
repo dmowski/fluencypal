@@ -8,9 +8,14 @@ import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
 import { DayPassLimitOffer } from './DayPassLimitOffer';
 
 const push = jest.fn();
+const setUrlState = jest.fn();
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({ push }),
+}));
+
+jest.mock('@/features/Url/UrlStateContext', () => ({
+  useUrlStateContext: () => ({ urlStateMap: {}, setUrlState }),
 }));
 
 jest.mock('@/features/User/useCurrency', () => ({
@@ -27,6 +32,7 @@ jest.mock('@/features/Analytics/Custom/sendAnalyticsEvent', () => ({
 describe('DayPassLimitOffer', () => {
   beforeEach(() => {
     push.mockReset();
+    setUrlState.mockReset();
     window.history.replaceState({}, '', '/practice?justTalk=open');
   });
 
@@ -73,5 +79,31 @@ describe('DayPassLimitOffer', () => {
       '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true&planLesson=Greetings&planLessonDetails=Words+for+saying+hello.',
       { scroll: false },
     );
+  });
+
+  it('opens the confirmation again when that address is already open', () => {
+    const onCheckoutOpen = jest.fn();
+    window.history.replaceState(
+      {},
+      '',
+      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true&planLesson=Greetings&planLessonDetails=Words+for+saying+hello.',
+    );
+
+    render(
+      <I18nWrapper>
+        <DayPassLimitOffer
+          endAction={null}
+          nextLesson={{ title: 'Greetings', details: 'Words for saying hello.' }}
+          onCheckoutOpen={onCheckoutOpen}
+        />
+      </I18nWrapper>,
+    );
+
+    fireEvent.click(screen.getByTestId('day-pass-checkout'));
+    expect(push).not.toHaveBeenCalled();
+    expect(setUrlState).toHaveBeenCalledWith('paymentModal', 'true');
+    expect(setUrlState).toHaveBeenCalledWith('paymentConfirm', 'true');
+    expect(setUrlState).toHaveBeenCalledWith('planLesson', 'Greetings');
+    expect(onCheckoutOpen).toHaveBeenCalledTimes(1);
   });
 });

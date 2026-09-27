@@ -251,7 +251,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
   });
 
-  test('guest limit shows the next lesson and signs in on that confirmation', async ({ page }) => {
+  test('guest limit shows sign-in before the day-pass confirmation', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
     await startJustTalkCallAsGuest(page);
@@ -272,10 +272,10 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await page.getByTestId('day-pass-checkout').click();
     const confirm = page.getByTestId('day-pass-confirm');
     await expect(confirm).toBeVisible();
-    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
     await expect(confirm.getByText('Sign in to continue this lesson')).toBeVisible();
+    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toHaveCount(0);
+    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toHaveCount(0);
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
     await expectAnonymousCurrentUser(page);
   });
 });
