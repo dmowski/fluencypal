@@ -32,6 +32,7 @@ import { FeatureItem } from './FeatureItem';
 import { useAccess } from '../useAccess';
 import { ContactList } from '@/features/Landing/Contact/ContactList';
 import { PaymentAuthGate } from './PaymentAuthGate';
+import { DayPassConfirm } from './DayPassConfirm';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { startDayPassCheckout } from '../dayPassCheckout';
 
@@ -76,7 +77,13 @@ export const SubscriptionPaymentModal = () => {
     false,
   );
   const [paymentConfirm] = useUrlState('paymentConfirm', false, false);
+  const [planLessonTitle] = useUrlState('planLesson', '', false);
+  const [planLessonDetails] = useUrlState('planLessonDetails', '', false);
   const isDirectDayPass = Boolean(paymentConfirm);
+  const pendingLesson =
+    isDirectDayPass && planLessonTitle
+      ? { title: planLessonTitle, details: planLessonDetails }
+      : null;
   const price = usePrices();
 
   const analytics = useAnalytics();
@@ -248,6 +255,8 @@ export const SubscriptionPaymentModal = () => {
     const params = new URLSearchParams(window.location.search);
     params.delete('paymentModal');
     params.delete('paymentConfirm');
+    params.delete('planLesson');
+    params.delete('planLessonDetails');
     if (params.get('paymentDuration') === 'day') {
       params.delete('paymentDuration');
     }
@@ -326,157 +335,169 @@ export const SubscriptionPaymentModal = () => {
         usage.togglePaymentModal(false);
       }}
     >
-      <PaymentAuthGate>
-        <Stack
-          sx={{
-            width: '100%',
-            maxWidth: '700px',
-            paddingTop: '30px',
-            alignItems: 'center',
-          }}
-          ref={containerRef}
-        >
-          {isShowConfirmPayments || isDirectDayPass ? (
-            <ConfirmPayment
-              amountInUsd={confirmAmountUsd}
-              subTitle={confirmationSubTitle}
-              clickOnConfirmRequest={onConfirm}
-              isRedirecting={isRedirecting}
-            />
-          ) : (
-            <Stack
-              sx={{
-                width: '100%',
-                boxSizing: 'border-box',
-                gap: '40px',
-                maxWidth: '380px',
-                alignItems: 'center',
-              }}
-            >
+      {pendingLesson ? (
+        <DayPassConfirm
+          lesson={pendingLesson}
+          accessLine={confirmationSubTitle}
+          amountInUsd={confirmAmountUsd}
+          isIdentified={Boolean(auth.isIdentified)}
+          isAuthLoading={Boolean(auth.loading)}
+          isRedirecting={isRedirecting}
+          onConfirm={onConfirm}
+        />
+      ) : (
+        <PaymentAuthGate>
+          <Stack
+            sx={{
+              width: '100%',
+              maxWidth: '700px',
+              paddingTop: '30px',
+              alignItems: 'center',
+            }}
+            ref={containerRef}
+          >
+            {isShowConfirmPayments || isDirectDayPass ? (
+              <ConfirmPayment
+                amountInUsd={confirmAmountUsd}
+                subTitle={confirmationSubTitle}
+                clickOnConfirmRequest={onConfirm}
+                isRedirecting={isRedirecting}
+              />
+            ) : (
               <Stack
                 sx={{
-                  gap: '20px',
                   width: '100%',
+                  boxSizing: 'border-box',
+                  gap: '40px',
+                  maxWidth: '380px',
+                  alignItems: 'center',
                 }}
               >
-                <BalanceStatus />
+                <Stack
+                  sx={{
+                    gap: '20px',
+                    width: '100%',
+                  }}
+                >
+                  <BalanceStatus />
 
-                {access.isFullAppAccess ? (
-                  <></>
-                ) : (
-                  <>
-                    <Stack
-                      sx={{
-                        gap: '20px',
-                        width: '100%',
-                      }}
-                    >
+                  {access.isFullAppAccess ? (
+                    <></>
+                  ) : (
+                    <>
                       <Stack
                         sx={{
+                          gap: '20px',
                           width: '100%',
-                          display: 'none',
                         }}
                       >
-                        <ButtonGroup>
-                          <Button
-                            onClick={() => setUsageType('subscription')}
-                            variant={usageType === 'subscription' ? 'contained' : 'outlined'}
-                          >
-                            {i18n._('Non-renewing subscription')}
-                          </Button>
-                          <Button
-                            onClick={() => setUsageType('hours')}
-                            variant={usageType === 'hours' ? 'contained' : 'outlined'}
-                          >
-                            {i18n._('AI tokens')}
-                          </Button>
-                        </ButtonGroup>
-                      </Stack>
-                      {usageType === 'subscription' ? (
-                        <Stack sx={{}}>
-                          <ActivePlanSelector
-                            selectedDuration={subscriptionDuration}
-                            setSelectedDuration={setSubscriptionDuration}
-                            onSelectDuration={onSelectDuration}
-                          />
-                        </Stack>
-                      ) : usageType === 'hours' ? (
-                        <Stack
-                          sx={{
-                            gap: '25px',
-                          }}
-                        >
-                          <Stack>
-                            <ColorIconTextList
-                              gap="12px"
-                              iconSize="18px"
-                              listItems={[
-                                {
-                                  title: i18n._(`Buy AI tokens and use them whenever you want.`),
-                                  iconName: 'star',
-                                },
-                                {
-                                  title: i18n._(
-                                    `1 AI hour ≈ 1 hour of active conversation with the AI.`,
-                                  ),
-                                  iconName: 'hourglass',
-                                },
-                                {
-                                  title: i18n._(
-                                    `You get full access, just like a subscription — but with complete flexibility.`,
-                                  ),
-                                  iconName: 'biceps-flexed',
-                                },
-                                {
-                                  title: i18n._(
-                                    `Use it on weekends, for a short project, or whenever it fits you.`,
-                                  ),
-                                  iconName: 'sprout',
-                                },
-                                {
-                                  title: i18n._(
-                                    `Tokens don’t expire, so you can save them for later.`,
-                                  ),
-                                  iconName: 'landmark',
-                                },
-                              ]}
-                            />
-                          </Stack>
-                          <HoursSelector onSelectHourPackage={onSelectHourPackage} />
-                        </Stack>
-                      ) : (
                         <Stack
                           sx={{
                             width: '100%',
+                            display: 'none',
                           }}
                         >
-                          <Typography>
-                            {i18n._(
-                              'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
-                            )}
-                          </Typography>
+                          <ButtonGroup>
+                            <Button
+                              onClick={() => setUsageType('subscription')}
+                              variant={usageType === 'subscription' ? 'contained' : 'outlined'}
+                            >
+                              {i18n._('Non-renewing subscription')}
+                            </Button>
+                            <Button
+                              onClick={() => setUsageType('hours')}
+                              variant={usageType === 'hours' ? 'contained' : 'outlined'}
+                            >
+                              {i18n._('AI tokens')}
+                            </Button>
+                          </ButtonGroup>
                         </Stack>
-                      )}
-                    </Stack>
-                  </>
-                )}
-              </Stack>
+                        {usageType === 'subscription' ? (
+                          <Stack sx={{}}>
+                            <ActivePlanSelector
+                              selectedDuration={subscriptionDuration}
+                              setSelectedDuration={setSubscriptionDuration}
+                              onSelectDuration={onSelectDuration}
+                            />
+                          </Stack>
+                        ) : usageType === 'hours' ? (
+                          <Stack
+                            sx={{
+                              gap: '25px',
+                            }}
+                          >
+                            <Stack>
+                              <ColorIconTextList
+                                gap="12px"
+                                iconSize="18px"
+                                listItems={[
+                                  {
+                                    title: i18n._(`Buy AI tokens and use them whenever you want.`),
+                                    iconName: 'star',
+                                  },
+                                  {
+                                    title: i18n._(
+                                      `1 AI hour ≈ 1 hour of active conversation with the AI.`,
+                                    ),
+                                    iconName: 'hourglass',
+                                  },
+                                  {
+                                    title: i18n._(
+                                      `You get full access, just like a subscription — but with complete flexibility.`,
+                                    ),
+                                    iconName: 'biceps-flexed',
+                                  },
+                                  {
+                                    title: i18n._(
+                                      `Use it on weekends, for a short project, or whenever it fits you.`,
+                                    ),
+                                    iconName: 'sprout',
+                                  },
+                                  {
+                                    title: i18n._(
+                                      `Tokens don’t expire, so you can save them for later.`,
+                                    ),
+                                    iconName: 'landmark',
+                                  },
+                                ]}
+                              />
+                            </Stack>
+                            <HoursSelector onSelectHourPackage={onSelectHourPackage} />
+                          </Stack>
+                        ) : (
+                          <Stack
+                            sx={{
+                              width: '100%',
+                            }}
+                          >
+                            <Typography>
+                              {i18n._(
+                                'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
+                              )}
+                            </Typography>
+                          </Stack>
+                        )}
+                      </Stack>
+                    </>
+                  )}
+                </Stack>
 
-              <Stack
-                sx={{
-                  width: '100%',
-                  paddingBottom: '30px',
-                }}
-              >
-                <Typography sx={{ marginBottom: '10px', fontWeight: 400 }}>
-                  {i18n._('Contacts:')}
-                </Typography>
-                <ContactList />
+                <Stack
+                  sx={{
+                    width: '100%',
+                    paddingBottom: '30px',
+                  }}
+                >
+                  <Typography sx={{ marginBottom: '10px', fontWeight: 400 }}>
+                    {i18n._('Contacts:')}
+                  </Typography>
+                  <ContactList />
+                </Stack>
               </Stack>
-            </Stack>
-          )}
-        </Stack>
-      </PaymentAuthGate>
+            )}
+          </Stack>
+        </PaymentAuthGate>
+      )}
     </CustomModal>
   );
 };

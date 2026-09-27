@@ -47,6 +47,17 @@ export const DayPassLimitOffer = ({
     params.set('paymentModal', 'true');
     params.set('paymentDuration', 'day');
     params.set('paymentConfirm', 'true');
+    if (nextLesson) {
+      params.set('planLesson', nextLesson.title);
+      if (nextLesson.details) {
+        params.set('planLessonDetails', nextLesson.details);
+      } else {
+        params.delete('planLessonDetails');
+      }
+    } else {
+      params.delete('planLesson');
+      params.delete('planLessonDetails');
+    }
     router.push(`${window.location.pathname}?${params.toString()}`, { scroll: false });
   };
 

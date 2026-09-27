@@ -236,20 +236,22 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page.getByTestId('day-pass-checkout')).toBeVisible();
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(page.getByTestId('day-pass-offer')).toContainText(/next 24 hours/);
+    await expect(page.getByTestId('day-pass-offer')).toContainText(/Continue your plan/);
 
     await page.getByTestId('day-pass-checkout').click();
     await expect(page).toHaveURL(/paymentModal=true/);
     await expect(page).toHaveURL(/paymentDuration=day/);
     await expect(page).toHaveURL(/paymentConfirm=true/);
-    await expect(page.getByTestId('subscription-payment-modal')).toBeVisible();
+    await expect(page).toHaveURL(/planLesson=/);
+    const confirm = page.getByTestId('day-pass-confirm');
+    await expect(confirm).toBeVisible();
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(page.getByText('Confirm payment')).toBeVisible();
-    await expect(page.getByText(/request a refund on the Profile/)).toBeVisible();
-    await expect(page.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
+    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
+    await expect(confirm.getByText(/request a refund on the Profile/)).toBeVisible();
+    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
   });
 
-  test('guest limit shows the day price and signs in before payment confirmation', async ({ page }) => {
+  test('guest limit shows the next lesson and signs in on that confirmation', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
     await startJustTalkCallAsGuest(page);
@@ -262,15 +264,18 @@ test.describe('Quiz → Just Talk guest flow', () => {
 
     await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
     await expect(page.getByTestId('day-pass-checkout')).toBeVisible();
-    await expect(page.getByTestId('day-pass-offer')).toContainText(/next 24 hours/);
+    await expect(page.getByTestId('day-pass-offer')).toContainText(/Continue your plan/);
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
 
     await page.getByTestId('day-pass-checkout').click();
-    await expect(page.getByTestId('payment-auth-gate')).toBeVisible();
+    const confirm = page.getByTestId('day-pass-confirm');
+    await expect(confirm).toBeVisible();
+    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
+    await expect(confirm.getByText('Sign in to continue this lesson')).toBeVisible();
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(page.getByText('Confirm payment')).toHaveCount(0);
+    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
     await expectAnonymousCurrentUser(page);
   });
 });

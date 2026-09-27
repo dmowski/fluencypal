@@ -70,7 +70,7 @@ describe('DayPassLimitOffer', () => {
     expect(screen.getByTestId('day-pass-checkout')).toHaveTextContent('Continue your plan — $1.00');
     fireEvent.click(screen.getByTestId('day-pass-checkout'));
     expect(push).toHaveBeenCalledWith(
-      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true',
+      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true&planLesson=Greetings&planLessonDetails=Words+for+saying+hello.',
       { scroll: false },
     );
   });
