@@ -2,12 +2,11 @@
 import { Stack } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { useLingui } from '@lingui/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { RolePlayScenariosInfo } from '../RolePlay/rolePlayData';
 import { WebViewWall } from './WebViewWall';
 import { AuthWall } from './AuthWall';
-import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { shouldStartPracticeAuthOnGoogle } from './practiceAuthWall';
 import { getRolePlayOpeningLine } from './rolePlayOpeningLine';
 import { RolePlayOpeningPreview } from './RolePlayOpeningPreview';
@@ -27,12 +26,6 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const scenario = rolePlayId
     ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
     : null;
-
-  useEffect(() => {
-    if (isAliasGameRolePlay(rolePlayId)) {
-      trackAliasEvent('alias_signup_started');
-    }
-  }, [rolePlayId]);
 
   const startOnAuth = shouldStartPracticeAuthOnGoogle(rolePlayId);
   const openingLine = getRolePlayOpeningLine(scenario);

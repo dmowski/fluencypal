@@ -26,7 +26,6 @@ import { usePageLangRedirect } from './usePageLangRedirect';
 import { CommunityDashboard } from '../Community/CommunityDashboard';
 import { BlockedAccess } from './BlockedAccess';
 import { useSearchParams } from 'next/navigation';
-import { isAliasGameRolePlay, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useJustTalk } from '@/features/Conversation/useJustTalk';
 import { NextPlanLessonScreen } from '@/features/Conversation/CallMode/DayPassLimitOffer';
@@ -68,7 +67,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   usePageLangRedirect();
   const searchParams = useSearchParams();
   const rolePlayId = searchParams.get('rolePlayId');
-  const hasTrackedSignupCompleted = useRef(false);
   const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
   const { startJustTalk, isCallStarting } = useJustTalk();
   const [handoffTapStarting, setHandoffTapStarting] = useState(false);
@@ -89,8 +87,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
   // The handoff stays on screen until the call connects; the tap supersedes a hung auto-start.
   const lessonLocked =
-    !access.isFullAppAccess &&
-    (readFirstLessonUsed() || isFirstPlanLessonUsed(plan.activeGoal));
+    !access.isFullAppAccess && (readFirstLessonUsed() || isFirstPlanLessonUsed(plan.activeGoal));
   const nextLesson = nextPlanLessonCard(plan.activeGoal) || {
     title: i18n._('The rest of your plan'),
     details: i18n._('Lesson 1 is done. This is the next part of your plan.'),
@@ -139,17 +136,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
     }
     void auth.ensureAnonymousAuth();
   }, [auth.loading, auth.isIdentified, canGuestPractice, auth.ensureAnonymousAuth]);
-
-  useEffect(() => {
-    if (
-      !hasTrackedSignupCompleted.current &&
-      auth.isIdentified &&
-      isAliasGameRolePlay(rolePlayId)
-    ) {
-      trackAliasEvent('alias_signup_completed');
-      hasTrackedSignupCompleted.current = true;
-    }
-  }, [auth.isIdentified, rolePlayId]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) recorder.removeTranscript();

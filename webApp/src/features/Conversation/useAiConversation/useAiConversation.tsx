@@ -34,7 +34,6 @@ import { resolvePracticeLanguage } from '@/features/Goal/Quiz/resolvePracticeLan
 import { useConversationStat } from './useConversationStat';
 import { useLimits } from './useLimits';
 import { useConversationUsage } from './useConversationUsage';
-import { useAliasConversationAnalytics } from './useAliasConversationAnalytics';
 import { closeAudioMediaStream, closeVideoMediaStream } from '@/features/webCam/mediaStream';
 import { writePreferredMicrophoneId } from '@/libs/mic';
 import { getVoiceOverSpeakOptions } from '@/features/Audio/getVoiceOverSpeakOptions';
@@ -59,7 +58,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const [currentMode, setCurrentMode] = useState<ConversationType>('talk');
   const voiceSpeed = settings.aiVoiceSpeed;
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
-  const [activeRolePlayId, setActiveRolePlayId] = useState<string | null>(null);
   const [isStarted, setIsStarted] = useState(false);
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
   const [errorInitiating, setErrorInitiating] = useState<string>();
@@ -146,13 +144,6 @@ function useProvideAiConversation(): AiConversationContextType {
     toggleVolume,
     isAdvancedRealtimeModel(activeRealtimeModel),
   );
-
-  const { resetAliasAnalytics } = useAliasConversationAnalytics({
-    activeRolePlayId,
-    gameStat,
-    conversation: messages.conversation,
-    isClosing,
-  });
 
   const conversationUsage = useConversationUsage(messages.conversation.length);
 
@@ -538,8 +529,6 @@ ${voiceInstructions}
     }
 
     setGameStat(input.gameWords ? input.gameWords : null);
-    setActiveRolePlayId(input.rolePlayId || null);
-    resetAliasAnalytics();
     setGoalInfo(input.goal || null);
 
     try {

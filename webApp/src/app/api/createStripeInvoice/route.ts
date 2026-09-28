@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import {
   StripeCreateInvoiceRequest,
   StripeCreateInvoiceResponse,
@@ -42,9 +41,6 @@ export async function POST(request: Request) {
     }
 
     const stripe = new Stripe(stripeKey);
-    const cookieStore = await cookies();
-    const datafastVisitorId = cookieStore.get('datafast_visitor_id')?.value;
-    const datafastSessionId = cookieStore.get('datafast_session_id')?.value;
     const requestData = (await request.json()) as StripeCreateInvoiceRequest;
     const amountOfHours = requestData.amountOfHours;
 
@@ -85,8 +81,6 @@ export async function POST(request: Request) {
       metadata: getAdvancedInvoiceMetadata({
         userId,
         amountOfHours,
-        datafastVisitorId,
-        datafastSessionId,
       }),
     });
     draftInvoiceId = invoice.id;

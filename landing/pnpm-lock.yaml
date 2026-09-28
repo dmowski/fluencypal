@@ -40,9 +40,6 @@ importers:
 
   .:
     dependencies:
-      '@datafast/ai-crawl':
-        specifier: ^1.0.7
-        version: 1.0.7
       '@emotion/cache':
         specifier: ^11.14.0
         version: 11.14.0
@@ -392,9 +389,6 @@ packages:
   '@csstools/css-tokenizer@3.0.4':
     resolution: {integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==}
     engines: {node: '>=18'}
-
-  '@datafast/ai-crawl@1.0.7':
-    resolution: {integrity: sha512-lsW0UsJgiasTmqofyROBJEa0UiXHIRt5jsjugRNdYnbHDEJ7t2MI9uCvMrPFTR93U1MMuGuxQbMXZSnu/yTE4A==}
 
   '@dimforge/rapier3d-compat@0.12.0':
     resolution: {integrity: sha512-uekIGetywIgopfD97oDL5PfeezkFpNhwlzlaEYNOA0N6ghdsOvh/HYjSMek5Q2O1PYvRSDFcqFVJl4r4ZBwOow==}
@@ -3593,6 +3587,9 @@ packages:
   third-party-web@0.29.2:
     resolution: {integrity: sha512-fegtha91tq2DHphyoiBXVHjVi2YG9zFaRnboT9C28tO1en9Y3wJsfspuy40F+u5wl3hHVbw7cnd1b67kEGHb8g==}
 
+  third-party-web@0.30.0:
+    resolution: {integrity: sha512-p+PfyL5U0ediGzvwPzMSdD9MnC8rHW6nWJJVLIQvqN7RsSqfaZ+7n4c9GILqH36EYR0eXB9CzAeCRnKFr/9uJg==}
+
   threads@1.7.0:
     resolution: {integrity: sha512-Mx5NBSHX3sQYR6iI9VYbgHKBLisyB+xROCBGjjWm1O9wb9vfLxdaGtmT/KCjUqMsSNW6nERzCW3T6H43LqjDZQ==}
 
@@ -4112,8 +4109,6 @@ snapshots:
       '@csstools/css-tokenizer': 3.0.4
 
   '@csstools/css-tokenizer@3.0.4': {}
-
-  '@datafast/ai-crawl@1.0.7': {}
 
   '@dimforge/rapier3d-compat@0.12.0': {}
 
@@ -5171,7 +5166,7 @@ snapshots:
   '@paulirish/trace_engine@0.0.65':
     dependencies:
       legacy-javascript: 0.0.1
-      third-party-web: 0.29.2
+      third-party-web: 0.30.0
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -7553,6 +7548,8 @@ snapshots:
       minimatch: 3.1.5
 
   third-party-web@0.29.2: {}
+
+  third-party-web@0.30.0: {}
 
   threads@1.7.0:
     dependencies:

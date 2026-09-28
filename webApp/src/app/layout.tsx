@@ -8,7 +8,6 @@ import { allMessages } from '@/appRouterI18n';
 import { UserSourceProvider } from '@/features/Analytics/useUserSource';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
-import Script from 'next/script';
 import { CustomAnalyticsHost } from '@/features/Analytics/Custom/CustomAnalyticsHost';
 
 export default async function RootLayout({
@@ -19,20 +18,8 @@ export default async function RootLayout({
   const supportedLang = 'en';
   initLingui(supportedLang);
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
   return (
     <>
-      {isProduction && (
-        <Script
-          defer
-          data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
-          data-domain="app.fluencypal.com"
-          data-disable-payments="true"
-          src="https://datafa.st/js/script.js"
-          strategy="afterInteractive"
-        />
-      )}
       <style
         href="app-global-inline-css"
         precedence="default"

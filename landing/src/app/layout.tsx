@@ -6,7 +6,6 @@ import { LinguiClientProvider } from '@/features/Lang/LinguiClientProvider';
 import { allMessages } from '@/appRouterI18n';
 import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { globalInlineCss } from './globalInlineCss';
-import Script from 'next/script';
 import { CustomAnalyticsHost } from '@/features/Analytics/Custom/CustomAnalyticsHost';
 import { GoogleAdsHost } from '@/features/Analytics/GoogleAds/GoogleAdsHost';
 import { CookieBanner } from '@/features/Legal/CookieBanner';
@@ -19,19 +18,8 @@ export default async function RootLayout({
   const supportedLang = 'en';
   initLingui(supportedLang);
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
   return (
     <>
-      {isProduction && (
-        <Script
-          defer
-          data-website-id="dfid_JALSs2b1efMpdYSaxDEAE"
-          data-domain="www.fluencypal.com"
-          src="https://datafa.st/js/script.cookieless.js"
-          strategy="afterInteractive"
-        />
-      )}
       <style
         href="app-global-inline-css"
         precedence="default"

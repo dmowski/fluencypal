@@ -77,7 +77,7 @@ export const AliasStickyCta = ({ sentinelRef, practiceUrl, label }: AliasStickyC
         boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.08)',
       }}
     >
-      <AliasCtaButton href={practiceUrl} placement="sticky" fullWidth>
+      <AliasCtaButton href={practiceUrl} fullWidth>
         {label}
       </AliasCtaButton>
     </Stack>,

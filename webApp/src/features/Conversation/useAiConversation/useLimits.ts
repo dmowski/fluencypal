@@ -1,10 +1,9 @@
 import { ConversationMessage } from '@/features/Conversation/conversation';
-import { RefObject, useEffect, useRef } from 'react';
+import { RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
 import { useAccess } from '@/features/Usage/useAccess';
 import { useUsage } from '@/features/Usage/useUsage';
 import { hasAdvancedTalkAccess } from '@/features/Usage/advancedUsage';
-import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
 import { useAuth } from '@/features/Auth/useAuth';
 import {
   isFreeTierUserMessageLimited,
@@ -37,15 +36,10 @@ export const useLimits = (
 
   const isLimitedRecording = isGuestConversationLimited || isFreeTierLimited;
   const isLimitedAiVoice = isGuestConversationLimited || isFreeTierLimited;
-  const hasTrackedPaywall = useRef(false);
 
   useEffect(() => {
     if (isLimitedRecording) {
       toggleMute(true);
-      if (isAliasGameSession() && !hasTrackedPaywall.current) {
-        trackAliasEvent('alias_paywall_viewed');
-        hasTrackedPaywall.current = true;
-      }
     }
   }, [isLimitedRecording]);
 

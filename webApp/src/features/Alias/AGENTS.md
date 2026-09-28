@@ -31,13 +31,13 @@ flowchart TD
   UG --> CAT
 ```
 
-| Layer | Responsibility |
-| --- | --- |
+| Layer     | Responsibility                                                      |
+| --------- | ------------------------------------------------------------------- |
 | **Types** | `types.ts` — `GameState`, `GameSettings`, `GameScreen`, `TurnState` |
-| **State** | `context/GameContext.tsx` — reducer + `localStorage` persist |
-| **API** | `hooks/useGameState.ts` — dispatch helpers and derived getters |
-| **Logic** | `utils/` — word pool, next-word pick, scores |
-| **UI** | `components/*` + `AliasPage` — one screen per `GameScreen` |
+| **State** | `context/GameContext.tsx` — reducer + `localStorage` persist        |
+| **API**   | `hooks/useGameState.ts` — dispatch helpers and derived getters      |
+| **Logic** | `utils/` — word pool, next-word pick, scores                        |
+| **UI**    | `components/*` + `AliasPage` — one screen per `GameScreen`          |
 
 Components call `useGameState`; they do not dispatch reducer actions directly.
 
@@ -97,13 +97,13 @@ Round complete = every player (free-for-all) or every team (teams) has a turn in
 
 Not this folder. User describes words to the AI on Practice:
 
-| Piece | Location |
-| --- | --- |
-| Scenario `id: 'alias-game'`, `gameMode: 'alias'` | `RolePlay/scenarios/alias-game.tsx` |
-| Word generation (18 words, split user/AI) | `RolePlay/useRolePlay.tsx` → `generateRandomWord` |
-| Word checklist UI | `Conversation/AliasGamePanel.tsx` |
-| `GuessGameStat` | `Conversation/types.ts` |
-| Analytics | `RolePlay/aliasAnalytics.ts` |
+| Piece                                            | Location                                          |
+| ------------------------------------------------ | ------------------------------------------------- |
+| Scenario `id: 'alias-game'`, `gameMode: 'alias'` | `RolePlay/scenarios/alias-game.tsx`               |
+| Word generation (18 words, split user/AI)        | `RolePlay/useRolePlay.tsx` → `generateRandomWord` |
+| Word checklist UI                                | `Conversation/AliasGamePanel.tsx`                 |
+| `GuessGameStat`                                  | `Conversation/types.ts`                           |
+| Alias session check (`isAliasGameRolePlay`)      | `RolePlay/aliasAnalytics.ts`                      |
 
 `AliasGamePanel` is mounted from `Messages`, so the word list appears in both record/chat (`ConversationCanvas`) and call (`CameraCanvas`). Alias starts in **call** mode (`useRolePlay` `conversationMode: 'call'`). Call-mode / word-list work belongs in Conversation.
 

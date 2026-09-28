@@ -17,19 +17,13 @@ export const getAdvancedInvoiceAmountUsd = (amountOfHours: number): number =>
 export const getAdvancedInvoiceMetadata = ({
   userId,
   amountOfHours,
-  datafastVisitorId,
-  datafastSessionId,
 }: {
   userId: string;
   amountOfHours: number;
-  datafastVisitorId?: string;
-  datafastSessionId?: string;
 }): Record<string, string> => ({
   userId,
   amountOfHours: String(amountOfHours),
   product: ADVANCED_HOURS_PRODUCT,
-  ...(datafastVisitorId ? { datafast_visitor_id: datafastVisitorId } : {}),
-  ...(datafastSessionId ? { datafast_session_id: datafastSessionId } : {}),
 });
 
 export const parsePaidAdvancedInvoice = (invoice: {

@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import { supportedLanguages } from '@/features/Lang/lang';
 import {
   StripeCreateCheckoutRequest,
@@ -39,9 +38,6 @@ export async function POST(request: Request) {
       throw new Error('Stripe API key is not set');
     }
     const stripe = new Stripe(stripeKey);
-    const cookieStore = await cookies();
-    const datafastVisitorId = cookieStore.get('datafast_visitor_id')?.value;
-    const datafastSessionId = cookieStore.get('datafast_session_id')?.value;
     const requestData = (await request.json()) as StripeCreateCheckoutRequest;
     const { currency } = requestData;
     const userId = userInfo.uid;
@@ -112,8 +108,6 @@ export async function POST(request: Request) {
           immediateServiceConsent: 'true',
           amountOfHours,
           product: hoursCheckout.product,
-          ...(datafastVisitorId ? { datafast_visitor_id: datafastVisitorId } : {}),
-          ...(datafastSessionId ? { datafast_session_id: datafastSessionId } : {}),
         },
       });
 
@@ -181,8 +175,6 @@ export async function POST(request: Request) {
           amountOfHours: 0,
           amountOfMonths: months,
           amountOfDays: days,
-          ...(datafastVisitorId ? { datafast_visitor_id: datafastVisitorId } : {}),
-          ...(datafastSessionId ? { datafast_session_id: datafastSessionId } : {}),
         },
       });
 

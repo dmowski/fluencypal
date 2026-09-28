@@ -17,12 +17,11 @@ import {
 import { GeneralFaqBlock } from '@/features/Landing/FAQ/GeneralFaqBlock';
 import { FaqItemInfo } from '@/features/Landing/FAQ/FaqItem';
 import { Languages, MessageCircle, Mic, Sparkles, Zap } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { AliasCtaButton } from './AliasCtaButton';
 import { AliasHeroDemo } from './AliasHeroDemo';
 import { AliasResultPreview } from './AliasResultPreview';
 import { AliasStickyCta } from './AliasStickyCta';
-import { trackAliasEvent } from './aliasAnalytics';
 
 const HERO_CTA_ID = 'alias-hero-cta';
 const PRACTICE_PATH = 'practice?rolePlayId=alias-game';
@@ -44,10 +43,6 @@ export const AliasLandingPage = ({ lang }: AliasLandingPageProps) => {
   const learnableLanguages = supportedLanguagesToLearn
     .map((code) => fullEnglishLanguageName[code])
     .join(', ');
-
-  useEffect(() => {
-    trackAliasEvent('alias_landing_view');
-  }, []);
 
   const faqItems: FaqItemInfo[] = [
     {
@@ -242,9 +237,7 @@ export const AliasLandingPage = ({ lang }: AliasLandingPageProps) => {
                   width: { xs: '100%', sm: 'auto' },
                 }}
               >
-                <AliasCtaButton href={practiceUrl} placement="hero">
-                  {primaryCtaLabel}
-                </AliasCtaButton>
+                <AliasCtaButton href={practiceUrl}>{primaryCtaLabel}</AliasCtaButton>
                 <Button
                   href="#how-it-works"
                   variant="outlined"
@@ -353,9 +346,7 @@ export const AliasLandingPage = ({ lang }: AliasLandingPageProps) => {
             })}
           </Stack>
 
-          <AliasCtaButton href={practiceUrl} placement="steps">
-            {i18n._('Start My First Round')}
-          </AliasCtaButton>
+          <AliasCtaButton href={practiceUrl}>{i18n._('Start My First Round')}</AliasCtaButton>
         </Stack>
       </Stack>
 
@@ -511,9 +502,7 @@ export const AliasLandingPage = ({ lang }: AliasLandingPageProps) => {
             {i18n._('Choose your level and start your first Alias round.')}
           </Typography>
 
-          <AliasCtaButton href={practiceUrl} placement="final">
-            {primaryCtaLabel}
-          </AliasCtaButton>
+          <AliasCtaButton href={practiceUrl}>{primaryCtaLabel}</AliasCtaButton>
 
           <Link
             href={friendsUrl}

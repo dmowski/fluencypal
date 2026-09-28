@@ -11,7 +11,7 @@ import {
 } from '@/libs/mic';
 import { useAuth } from '../Auth/useAuth';
 import { useSettings } from '../Settings/useSettings';
-import { isAliasGameSession, trackAliasEvent } from '@/features/RolePlay/aliasAnalytics';
+import { isAliasGameSession } from '@/features/RolePlay/aliasAnalytics';
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
@@ -46,7 +46,6 @@ export const useAudioRecorder = () => {
   }, [recorderControls.recordedBlob]);
 
   const isCancel = useRef(false);
-  const hasTrackedFirstRecording = useRef(false);
   const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
     if (format.includes('ogg')) {
       setTranscriptionError(
@@ -83,14 +82,6 @@ export const useAudioRecorder = () => {
       });
       setTranscription(transcriptResponse.transcript);
       setTranscriptionBlob(recordedAudioBlog);
-      if (
-        isAliasGameSession() &&
-        !hasTrackedFirstRecording.current &&
-        transcriptResponse.transcript
-      ) {
-        trackAliasEvent('alias_first_recording_completed');
-        hasTrackedFirstRecording.current = true;
-      }
       if (transcriptResponse.error) {
         setTranscriptionError(transcriptResponse.error);
       }
@@ -108,11 +99,7 @@ export const useAudioRecorder = () => {
       const isAliasSession = isAliasGameSession();
 
       if (isAliasSession) {
-        trackAliasEvent('alias_microphone_permission_requested');
         const stream = await requestMicrophoneWithConsent();
-        trackAliasEvent(
-          stream ? 'alias_microphone_permission_granted' : 'alias_microphone_permission_denied',
-        );
         if (!stream) {
           return;
         }
