@@ -11,20 +11,69 @@ import { NativeLanguageSelector } from './NativeLanguageSelector';
 import { PageLanguageSelector } from './PageLanguageSelector';
 import { GoalReview } from './GoalReview';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   buildJustTalkPracticeUrl,
   markJustTalkAutoStart,
 } from '@/features/Conversation/justTalkHandoff';
 import { markQuizTalkAbout } from '@/features/Conversation/quizTalk';
-import { sleep } from '@/libs/sleep';
 import { requestMicrophoneAccess } from '@/libs/mic';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
-import { QuizMicPermissionStep } from './QuizMicPermissionStep';
-import { hasAboutTranscription } from './quizGuestAboutStorage';
+import { QuizMicPermissionStep, QuizRecordingConsentStep } from './QuizRecordingConsentStep';
+import { hasAboutTranscription, hasFollowUpTranscription } from './quizGuestAboutStorage';
+import {
+  followUpKindFromTranscript,
+  followUpSubtitle,
+  followUpTitleForKind,
+  practiceReasonExamples,
+} from './onboardingContent';
+import {
+  QuizActivityChoiceStep,
+  QuizFeatureAiTalkStep,
+  QuizFeatureDailyLessonStep,
+  QuizFeatureGameStep,
+  QuizFeaturePersonalPlanStep,
+} from './QuizActivitySteps';
+import {
+  QuizAuthWallStep,
+  QuizDailyPracticeStep,
+  QuizLimitedAccessStep,
+  QuizNoRemindersStep,
+  QuizPreAuthStep,
+  QuizReviewsStep,
+  QuizTalkWithPeopleStep,
+} from './QuizExpectationSteps';
+
+const QuizSignedInHandoff = ({ start }: { start: () => Promise<void> }) => {
+  const startRef = useRef(start);
+  startRef.current = start;
+  const [failed, setFailed] = useState(false);
+  const { i18n } = useLingui();
+
+  const run = useCallback(() => {
+    setFailed(false);
+    void startRef.current().catch(() => setFailed(true));
+  }, []);
+
+  useEffect(() => {
+    run();
+  }, [run]);
+
+  if (failed) {
+    return (
+      <InfoStep
+        title={i18n._('Error creating plan. Please try again.')}
+        actionButtonTitle={i18n._('Try again')}
+        onClick={run}
+      />
+    );
+  }
+
+  return <QuizPageLoader />;
+};
 
 const QuizQuestions = () => {
   const {
@@ -32,6 +81,9 @@ const QuizQuestions = () => {
     isFirstLoading,
     survey,
     saveAboutClip,
+    saveFollowUpClip,
+    saveWantsRealPeople,
+    continueWithActivities,
     languageToLearn,
     isStepLoading,
     nextStep,
@@ -43,16 +95,23 @@ const QuizQuestions = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
   const router = useRouter();
-  const [redirecting, setRedirecting] = useState(false);
+  const startLock = useRef(false);
 
-  const recordAboutTitle = i18n._('Why do you want to practice speaking?');
+  const recordAboutTitle = i18n._('Why do you want to practice?');
   const recordAboutQuestion = i18n._(
-    `I will use your answer to create your personalized plan. Please say two or three sentences.`,
+    'Say a few sentences in your own words. The examples below are only ideas.',
   );
   const recordAboutPrompt = `${recordAboutTitle} ${recordAboutQuestion}`;
+  const followUp = followUpTitleForKind(
+    followUpKindFromTranscript(survey?.aboutUserTranscription || ''),
+    i18n,
+  );
+  const reasonExamples = practiceReasonExamples(i18n);
+  const followUpHint = followUpSubtitle(i18n);
 
-  const doneQuiz = async () => {
-    setRedirecting(true);
+  const startFirstCall = useCallback(async () => {
+    if (startLock.current) return;
+    startLock.current = true;
 
     try {
       if (languageToLearn && settings.userSettings?.languageCode !== languageToLearn) {
@@ -72,23 +131,26 @@ const QuizQuestions = () => {
         }),
       );
     } catch (e) {
-      alert(i18n._('Error creating plan. Please try again.'));
+      console.error(e);
+      startLock.current = false;
+      throw e;
     }
-    await sleep(4000);
-    setRedirecting(false);
-  };
+  }, [
+    confirmPlan,
+    languageToLearn,
+    pageLanguage,
+    router,
+    settings,
+    survey?.aboutUserTranscription,
+  ]);
 
   const next = () => {
     if (isLastStep) {
-      void doneQuiz();
+      void startFirstCall().catch(() => undefined);
     } else {
       void nextStep();
     }
   };
-
-  if (redirecting) {
-    return <QuizPageLoader />;
-  }
 
   return (
     <Stack
@@ -151,6 +213,14 @@ const QuizQuestions = () => {
 
           {currentStep === 'pageLanguage' && <PageLanguageSelector />}
 
+          {currentStep === 'recordingConsent' && (
+            <QuizRecordingConsentStep
+              pageLanguage={pageLanguage}
+              onContinue={next}
+              isStepLoading={isStepLoading}
+            />
+          )}
+
           {currentStep === 'micPermission' && (
             <QuizMicPermissionStep onContinue={next} isStepLoading={isStepLoading} />
           )}
@@ -161,12 +231,84 @@ const QuizQuestions = () => {
               title={recordAboutTitle}
               subTitle={recordAboutQuestion}
               promptText={recordAboutPrompt}
+              examples={reasonExamples}
               alreadySaved={hasAboutTranscription(survey)}
+              savedTranscript={survey?.aboutUserTranscription}
               onSaveRecording={async (recording) => {
                 await saveAboutClip(recording);
               }}
               onContinue={next}
             />
+          )}
+
+          {currentStep === 'recordAboutFollowUp' && (
+            <QuizBeforeRecordAboutGate
+              languageCode={languageToLearn}
+              title={followUp}
+              subTitle={followUpHint}
+              promptText={`${followUp} ${followUpHint}`}
+              contextMessage={survey?.aboutUserTranscription}
+              alreadySaved={hasFollowUpTranscription(survey)}
+              savedTranscript={survey?.aboutUserFollowUpTranscription}
+              onSaveRecording={async (recording) => {
+                await saveFollowUpClip(recording);
+              }}
+              onContinue={next}
+            />
+          )}
+
+          {currentStep === 'talkWithPeople' && (
+            <QuizTalkWithPeopleStep
+              onChoose={(value) => {
+                void saveWantsRealPeople(value).then(() => next());
+              }}
+              isStepLoading={isStepLoading}
+            />
+          )}
+
+          {currentStep === 'dailyPractice' && (
+            <QuizDailyPracticeStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'noReminders' && (
+            <QuizNoRemindersStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'limitedAccess' && (
+            <QuizLimitedAccessStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'reviews' && (
+            <QuizReviewsStep
+              pageLanguage={pageLanguage}
+              onContinue={next}
+              isStepLoading={isStepLoading}
+            />
+          )}
+
+          {currentStep === 'activityChoice' && (
+            <QuizActivityChoiceStep
+              onContinue={(activities) => {
+                void continueWithActivities(activities);
+              }}
+              isStepLoading={isStepLoading}
+            />
+          )}
+
+          {currentStep === 'featureDailyLesson' && (
+            <QuizFeatureDailyLessonStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'featureGame' && (
+            <QuizFeatureGameStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'featureAiTalk' && (
+            <QuizFeatureAiTalkStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'featurePersonalPlan' && (
+            <QuizFeaturePersonalPlanStep onContinue={next} isStepLoading={isStepLoading} />
           )}
 
           {currentStep === 'before_goalReview' && (
@@ -184,8 +326,22 @@ const QuizQuestions = () => {
               onClick={next}
               isLoading={isGoalGenerating || survey?.goalData === null}
               goalData={survey?.goalData}
-              actionButtonLabel={i18n._('Start Speaking')}
+              actionButtonLabel={i18n._('Continue')}
             />
+          )}
+
+          {currentStep === 'preAuth' && (
+            <QuizPreAuthStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'authWall' && (
+            <QuizAuthWallStep>
+              {survey?.goalData ? (
+                <QuizSignedInHandoff start={startFirstCall} />
+              ) : (
+                <QuizPageLoader />
+              )}
+            </QuizAuthWallStep>
           )}
         </Stack>
       )}

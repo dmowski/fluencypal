@@ -198,6 +198,13 @@ msgstr "Sedikit kilauan boleh pergi jauh. Fokus pada tugas hari ini."
 msgid "A calm routine makes steady progress."
 msgstr "Rutinkan tenang membawa kemajuan yang berterusan."
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:36
+#. js-lingui-explicit-id
+msgid "A daily lesson with a lot of reading"
+msgstr ""
+"\n"
+"Pelajaran harian dengan banyak bacaan\n"
+
 #: src/features/Tasks/useDailyPlans.ts:116
 #. js-lingui-explicit-id
 msgid "A focused day helps you improve. Here are today’s tasks."
@@ -281,6 +288,22 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "A proven method that delivers measurable results"
 msgstr "Satu kaedah yang terbukti yang memberikan hasil yang boleh diukur"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:151
+#. js-lingui-explicit-id
+msgid ""
+"A real conversation, with a limit on messages. Use it to build confidence "
+"and try the phrases you need for exams and interviews."
+msgstr ""
+"Satu perbualan sebenar, dengan had pada mesej. Gunakannya untuk membina "
+"keyakinan dan cuba frasa yang anda perlukan untuk peperiksaan dan temuduga."
+
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:24
+#. js-lingui-explicit-id
+msgid "A short session today, and again tomorrow"
+msgstr ""
+"\n"
+"Sesi pendek hari ini, dan sekali lagi esok\n"
 
 #: src/features/PayWall/CardValidator.tsx:102
 #. js-lingui-explicit-id
@@ -663,7 +686,7 @@ msgstr "Token AI"
 msgid "AI Voice"
 msgstr "Suara AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:706
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "Suara AI"
@@ -781,7 +804,7 @@ msgstr ""
 msgid "All time"
 msgstr "Sepanjang masa"
 
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:94
 #. js-lingui-explicit-id
 msgid "Allow microphone"
 msgstr "Benarkan mikrofon"
@@ -791,15 +814,15 @@ msgstr "Benarkan mikrofon"
 msgid "Allow Microphone Access"
 msgstr "Benarkan Akses Mikrofon"
 
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:85
+#. js-lingui-explicit-id
+msgid "Allow the microphone"
+msgstr "Benarkan mikrofon"
+
 #: src/features/Plan/LessonStartModal.tsx:380
 #. js-lingui-explicit-id
 msgid "Allow WebCam"
 msgstr "Benarkan Kamera Web"
-
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:40
-#. js-lingui-explicit-id
-msgid "Allow your microphone"
-msgstr "Benarkan mikrofon anda"
 
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:35
 #. js-lingui-explicit-id
@@ -847,7 +870,7 @@ msgstr "Titik analisis"
 msgid "Analyze"
 msgstr "Analisis"
 
-#: src/features/Conversation/ConversationCanvas.tsx:502
+#: src/features/Conversation/ConversationCanvas.tsx:505
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Menganalisis"
@@ -909,6 +932,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Answer questions correctly to climb the leaderboard!"
 msgstr "Jawab soalan dengan betul untuk mendaki papan pendahulu!"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:118
+#. js-lingui-explicit-id
+msgid ""
+"Answer questions out loud. It builds confidence, and the grammar you need "
+"when you prepare for an exam, one round at a time."
+msgstr ""
+"Jawab soalan dengan suara kuat. Ia membina keyakinan, dan tatabahasa yang "
+"anda perlukan apabila anda bersedia untuk peperiksaan, satu pusingan pada "
+"satu masa."
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:359
 #. js-lingui-explicit-id
@@ -1235,6 +1268,11 @@ msgstr "Sebelum"
 msgid "Before we start"
 msgstr "Sebelum kita mula"
 
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:27
+#. js-lingui-explicit-id
+msgid "Before you record your voice"
+msgstr "Sebelum anda merakam suara anda"
+
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:33
 #. js-lingui-explicit-id
 msgid ""
@@ -1423,6 +1461,11 @@ msgstr "Bina kefasihan dan keyakinan dengan latihan bercakap harian."
 msgid "Build your own role-play with more guidance"
 msgstr "Bina permainan peranan anda sendiri dengan lebih banyak panduan"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:94
+#. js-lingui-explicit-id
+msgid "Built for grammar and exam answers"
+msgstr "Dibina untuk tatabahasa dan jawapan peperiksaan"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:54
 #: src/features/Case/data/frontend-senior/techData.tsx:54
 #. js-lingui-explicit-id
@@ -1596,8 +1639,8 @@ msgstr "Bolehkah saya menggunakannya pada telefon pintar?"
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:504
-#: src/features/Conversation/ConversationCanvas.tsx:761
+#: src/features/Conversation/CallMode/CallButtons.tsx:535
+#: src/features/Conversation/ConversationCanvas.tsx:764
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
 msgid "Cancel recording"
@@ -2244,7 +2287,8 @@ msgstr "Pilih tahap pengasingan, model agregat, dan tulis pertanyaan yang cekap.
 msgid "Choose Language Level"
 msgstr "Pilih Tahap Bahasa"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:143
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
+#: src/features/Goal/Quiz/QuizPage2.tsx:205
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Pilih Bahasa Tapak"
@@ -2311,7 +2355,8 @@ msgstr "Klik butang Kongsi di sebelah app.fluencypal.com dalam pelayar anda."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:700
+#: src/features/Conversation/CallMode/CallButtons.tsx:731
+#: src/features/Conversation/CallMode/FirstCallFinishedNotice.tsx:41
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2339,6 +2384,15 @@ msgstr "Tutup tetapan"
 msgid "Close the book?"
 msgstr "Tutup buku?"
 
+#: src/features/Conversation/CallMode/FirstCallFinishedNotice.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"Close to open your practice home. You can buy full access later, or keep "
+"going with reading, quizzes, and the game."
+msgstr ""
+"Tutup untuk membuka rumah amalan anda. Anda boleh membeli akses penuh "
+"kemudian, atau teruskan dengan membaca, kuiz, dan permainan."
+
 #: src/features/Case/data/frontend-junior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -2353,6 +2407,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Coding Skills"
 msgstr "Kemahiran Pengekodan"
+
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:18
+#. js-lingui-explicit-id
+msgid "Come back every day"
+msgstr "Datang setiap hari"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:196
+#. js-lingui-explicit-id
+msgid "Come back to the next lesson on your own schedule"
+msgstr "Datang semula ke pelajaran seterusnya mengikut jadual anda sendiri"
 
 #: src/features/Chat/Message/MessageFooter.tsx:57
 #. js-lingui-explicit-id
@@ -2687,7 +2751,11 @@ msgstr "Konteks (topik, audiens, tujuan...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:41
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:63
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
+#: src/features/Goal/Quiz/QuizPage2.tsx:329
+#: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:91
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
 #: src/features/News/NewsPlayButton.tsx:103
@@ -2722,7 +2790,7 @@ msgstr "Teruskan ke akses percuma"
 msgid "Continue to Next Turn"
 msgstr "Teruskan ke Pusingan Seterusnya"
 
-#: src/features/Auth/SignInForm.tsx:74
+#: src/features/Auth/SignInForm.tsx:67
 #: src/features/Conversation/ConversationGuestAuthWall.tsx:32
 #. js-lingui-explicit-id
 msgid "Continue to talk"
@@ -2771,7 +2839,7 @@ msgstr "Ujian Kontrak"
 msgid "Conversation"
 msgstr "Perbualan"
 
-#: src/features/Conversation/ConversationCanvas.tsx:664
+#: src/features/Conversation/ConversationCanvas.tsx:667
 #. js-lingui-explicit-id
 msgid "Conversation options"
 msgstr "Pilihan perbualan"
@@ -2891,7 +2959,7 @@ msgstr "Tidak dapat memuatkan pelajaran."
 msgid "Could not start the exam. Please try again."
 msgstr "Tidak dapat memulakan peperiksaan. Sila cuba lagi."
 
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:151
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:154
 #. js-lingui-explicit-id
 msgid "Couldn't save your answer. Try recording again."
 msgstr "Tidak dapat menyimpan jawapan anda. Cuba rakam semula."
@@ -3171,6 +3239,7 @@ msgstr "Sembang Soalan Harian"
 msgid "Daily Questions"
 msgstr "Soalan Harian"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:84
 #: src/features/InteractiveLesson/InteractiveLessonDashboardCard.tsx:27
 #. js-lingui-explicit-id
 msgid "Daily speaking lesson"
@@ -4010,6 +4079,11 @@ msgstr "Perbincangan"
 msgid "Dismiss"
 msgstr "Abaikan"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:31
+#. js-lingui-explicit-id
+msgid "Do a quiz"
+msgstr "Lakukan kuiz"
+
 #: src/features/Landing/Price/PricePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
@@ -4036,6 +4110,11 @@ msgstr "Adakah anda merangkumi pangkalan data dan transaksi?"
 msgid "Do you offer custom pricing?"
 msgstr "Adakah anda menawarkan harga khusus?"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:38
+#. js-lingui-explicit-id
+msgid "Do you want to talk with real people?"
+msgstr "Adakah anda ingin bercakap dengan orang sebenar?"
+
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:8
 #. js-lingui-explicit-id
 msgid "Doctor"
@@ -4048,8 +4127,8 @@ msgstr "Pemilik Anjing"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
-#: src/features/Conversation/ConversationCanvas.tsx:534
+#: src/features/Conversation/CallMode/CallButtons.tsx:776
+#: src/features/Conversation/ConversationCanvas.tsx:537
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:250
@@ -4064,7 +4143,7 @@ msgstr "Pemilik Anjing"
 msgid "Done"
 msgstr "Siap"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:476
+#: src/features/Conversation/CallMode/CallButtons.tsx:507
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Selesai merakam"
@@ -4166,6 +4245,17 @@ msgstr ""
 "atau corak ungkapan tertentu yang menyebabkan anda paling sukar, mengubah "
 "kesilapan anda menjadi latihan bercakap yang disasarkan."
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Each day you get a short lesson. It includes a lot of reading, then you say "
+"what you read. That is how grammar, confidence, and exam answers get "
+"stronger."
+msgstr ""
+"Setiap hari anda akan mendapat pelajaran ringkas. Ia termasuk banyak "
+"membaca, kemudian anda sebut apa yang anda baca. Begitulah cara tatabahasa, "
+"keyakinan, dan jawapan peperiksaan menjadi lebih kuat."
+
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:17
 #. js-lingui-explicit-id
 msgid ""
@@ -4255,6 +4345,7 @@ msgid "Either you run the day, or the day runs you."
 msgstr "Sama ada anda mengendalikan hari itu, atau hari itu yang mengendalikan anda."
 
 #: src/features/Auth/AuthWallBasic.tsx:227
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:246
 #: src/features/Reader/components/ReaderSignInModal.tsx:134
 #. js-lingui-explicit-id
 msgid "Email"
@@ -4270,12 +4361,12 @@ msgstr "Alamat e-mel"
 msgid "Enable Access"
 msgstr "Aktifkan Akses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:567
+#: src/features/Conversation/CallMode/CallButtons.tsx:598
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Benarkan Mikrofon"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:579
+#: src/features/Conversation/CallMode/CallButtons.tsx:610
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Benarkan mikrofon"
@@ -4286,7 +4377,7 @@ msgstr "Benarkan mikrofon"
 msgid "Enable microphone to start talking"
 msgstr "Aktifkan mikrofon untuk mula bercakap"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:684
+#: src/features/Conversation/CallMode/CallButtons.tsx:715
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4295,9 +4386,9 @@ msgstr ""
 "Mengaktifkan suara ai adalah ciri premium. Sila tingkatkan baki anda untuk "
 "mengakses ciri ini."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:413
-#: src/features/Conversation/CallMode/CallButtons.tsx:613
-#: src/features/Conversation/ConversationCanvas.tsx:573
+#: src/features/Conversation/CallMode/CallButtons.tsx:444
+#: src/features/Conversation/CallMode/CallButtons.tsx:644
+#: src/features/Conversation/ConversationCanvas.tsx:576
 #. js-lingui-explicit-id
 msgid "End call"
 msgstr "Akhiri panggilan"
@@ -4459,12 +4550,12 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Ralat semasa mencipta sesi pembayaran. Cuba lagi nanti."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:75
+#: src/features/Goal/Quiz/QuizPage2.tsx:68
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Ralat membuat pelan. Sila cuba lagi."
 
-#: src/features/Conversation/ConversationCanvas.tsx:450
+#: src/features/Conversation/ConversationCanvas.tsx:453
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Ralat semasa menganalisis mesej"
@@ -5067,6 +5158,13 @@ msgstr "Perkataan tetap"
 msgid "Fluency"
 msgstr "Fasih"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:67
+#. js-lingui-explicit-id
+msgid "FluencyPal does not send reminders or notifications. That is intentional."
+msgstr ""
+"FluencyPal tidak menghantar peringatan atau pemberitahuan. Itu adalah "
+"sengaja."
+
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
 msgid ""
@@ -5286,6 +5384,11 @@ msgstr ""
 msgid "For active speaking"
 msgstr "Untuk bercakap secara aktif"
 
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:65
+#. js-lingui-explicit-id
+msgid "For example"
+msgstr "Sebagai contoh"
+
 #: src/features/RolePlay/scenarios/job-interview.ts:102
 #. js-lingui-explicit-id
 msgid ""
@@ -5421,6 +5524,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Free Conversation"
 msgstr "Percakapan Percuma"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:160
+#. js-lingui-explicit-id
+msgid "Free conversations stop after a limited number of messages"
+msgstr "Perbualan percuma berhenti selepas sejumlah mesej yang terhad"
+
+#: src/features/Conversation/CallMode/FirstCallFinishedNotice.tsx:22
+#. js-lingui-explicit-id
+msgid "Free messages in this conversation are used"
+msgstr "Mesej percuma dalam perbualan ini telah digunakan"
 
 #: src/features/Alias/components/ModeSelection.tsx:65
 #. js-lingui-explicit-id
@@ -5856,6 +5969,11 @@ msgstr "Berikan contoh"
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Berikan beberapa minggu. Itulah ketika keyakinan sebenar terbangun."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:216
+#. js-lingui-explicit-id
+msgid "Global chat"
+msgstr "Sembang global"
+
 #: src/features/Chat/ChatHeaderFull.tsx:93
 #: src/features/Chat/ChatPage.tsx:379
 #. js-lingui-explicit-id
@@ -5939,11 +6057,21 @@ msgstr ""
 "JavaScript moden. Ini menunjukkan anda memahami bukan sahaja apa, tetapi "
 "mengapa dan bila untuk menggunakan setiap satu."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:242
+#. js-lingui-explicit-id
+msgid "Google"
+msgstr "Google"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:176
 #: src/features/Case/data/frontend-senior/quizData.ts:274
 #. js-lingui-explicit-id
 msgid "Google Calls emulator"
 msgstr "Google Calls emulator"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:270
+#. js-lingui-explicit-id
+msgid "Google or email. No spam."
+msgstr "Google atau emel. Tiada spam."
 
 #: src/features/Landing/LandingPage.tsx:400
 #: src/features/Landing/PlanLandingBlock.tsx:249
@@ -5977,6 +6105,11 @@ msgstr "Penambahbaikan Tatabahasa"
 #. js-lingui-explicit-id
 msgid "Grammar rules based on your level"
 msgstr "Peraturan tatabahasa berdasarkan tahap anda"
+
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:32
+#. js-lingui-explicit-id
+msgid "Grammar, confidence, and exam skills grow from repetition"
+msgstr "Tatabahasa, keyakinan, dan kemahiran peperiksaan berkembang dari pengulangan"
 
 #: src/features/webCam/MicrophonePermissionModal.tsx:146
 #. js-lingui-explicit-id
@@ -6232,6 +6365,11 @@ msgstr "Serlahkan kemahiran kepimpinan dan penyelesaian masalah anda"
 msgid "Highlights"
 msgstr "Sorotan"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:152
+#. js-lingui-explicit-id
+msgid "Highly recommended"
+msgstr "Sangat disyorkan"
+
 #: src/features/Auth/InterviewAuthWall.tsx:27
 #. js-lingui-explicit-id
 msgid "Hints to boost your confidence"
@@ -6428,6 +6566,7 @@ msgid "I accept the"
 msgstr "Saya terima"
 
 #: src/features/Auth/AuthWallBasic.tsx:260
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:47
 #. js-lingui-explicit-id
 msgid "I agree"
 msgstr "Saya setuju"
@@ -6452,6 +6591,22 @@ msgid "I aware that this is a simulation and not a real medical consultation."
 msgstr ""
 "Saya sedar bahawa ini adalah simulasi dan bukan konsultasi perubatan "
 "sebenar."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:145
+#. js-lingui-explicit-id
+msgid ""
+"I can practice my English speaking, get help whenever I get stuck, and "
+"never feel rushed. I also like the exam preparation and the grammar "
+"feedback."
+msgstr ""
+"Saya boleh berlatih bercakap bahasa Inggeris, mendapatkan bantuan apabila "
+"saya tersekat, dan tidak pernah rasa tergesa-gesa. Saya juga suka persiapan "
+"peperiksaan dan maklum balas tatabahasa."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:144
+#. js-lingui-explicit-id
+msgid "I can practice speaking"
+msgstr "Saya boleh berlatih bercakap"
 
 #: src/features/Router/BlockedAccess.tsx:262
 #. js-lingui-explicit-id
@@ -6506,6 +6661,11 @@ msgstr "Saya tahu ini"
 msgid "I paid, but I still don’t have access."
 msgstr "Saya sudah membayar, tetapi saya masih tidak mempunyai akses."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:84
+#. js-lingui-explicit-id
+msgid "I understand"
+msgstr "Saya faham"
+
 #: src/features/SEO/metadata.ts:53
 #. js-lingui-explicit-id
 msgid "I Want"
@@ -6528,11 +6688,61 @@ msgstr ""
 "                                  perkhidmatan, saya akan kehilangan hak "
 "untuk menamatkan kontrak."
 
+#: src/features/Goal/Quiz/onboardingContent.ts:18
+#. js-lingui-explicit-id
+msgid ""
+"I want to find more English-speaking friends. I want to start a "
+"conversation and keep it going without switching back to my language."
+msgstr ""
+"Saya mahu mencari lebih ramai kawan yang bercakap Bahasa Inggeris. Saya "
+"mahu memulakan perbualan dan mengekalkannya tanpa beralih kembali kepada "
+"bahasa saya."
+
+#: src/features/Goal/Quiz/onboardingContent.ts:6
+#. js-lingui-explicit-id
+msgid ""
+"I want to learn English so I can pass a job interview. I am a doctor, and I "
+"need to explain my experience and answer questions about my work."
+msgstr ""
+"Saya mahu belajar Bahasa Inggeris supaya saya boleh lulus temuduga kerja. "
+"Saya seorang doktor, dan saya perlu menjelaskan pengalaman saya dan "
+"menjawab soalan tentang kerja saya."
+
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
-#: src/features/Goal/Quiz/QuizPage2.tsx:115
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Saya ingin belajar:"
+
+#: src/features/Goal/Quiz/onboardingContent.ts:9
+#. js-lingui-explicit-id
+msgid ""
+"I want to practice English to pass an exam. I need to speak and write "
+"clearly on the test, and I want to feel ready on the day."
+msgstr ""
+"Saya ingin berlatih Bahasa Inggeris untuk lulus peperiksaan. Saya perlu "
+"bercakap dan menulis dengan jelas semasa ujian, dan saya mahu merasa "
+"bersedia pada hari berkenaan."
+
+#: src/features/Goal/Quiz/onboardingContent.ts:12
+#. js-lingui-explicit-id
+msgid ""
+"I want to prepare for a trip to the USA. I need to order food, ask for "
+"directions, and talk with the people I meet there."
+msgstr ""
+"Saya ingin bersiap untuk perjalanan ke USA. Saya perlu memesan makanan, "
+"meminta arah, dan bercakap dengan orang yang saya temui di sana."
+
+#: src/features/Goal/Quiz/onboardingContent.ts:15
+#. js-lingui-explicit-id
+msgid ""
+"I want to talk with my friends from Canada. They are mostly musicians, and "
+"I want to follow their conversations and join in."
+msgstr ""
+"Saya ingin berbual dengan kawan-kawan saya dari Kanada. Mereka "
+"kebanyakannya pemuzik, dan saya ingin mengikuti perbualan mereka dan turut "
+"serta."
 
 #: src/features/Experiments/IWant.tsx:180
 #. js-lingui-explicit-id
@@ -6549,14 +6759,12 @@ msgstr ""
 "Saya yakin dan jelas — FluencyPal mempersiapkan saya lebih baik daripada "
 "mana-mana jurulatih untuk perbincangan teknikal mengenai pengurusan negeri."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:49
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:36
 #. js-lingui-explicit-id
-msgid ""
-"I will use your answer to create your personalized plan. Please say two or "
-"three sentences."
+msgid "I will practice daily"
 msgstr ""
-"Saya akan menggunakan jawapan anda untuk mencipta pelan peribadi anda. Sila "
-"berikan dua atau tiga ayat."
+"\n"
+"Saya akan berlatih setiap hari\n"
 
 #: src/features/Case/data/frontend-senior/demoSnippetSection.ts:26
 #. js-lingui-explicit-id
@@ -6632,6 +6840,16 @@ msgstr ""
 "bayaran balik pada halaman Profil → Sejarah Pembayaran, dan kami akan "
 "memprosesnya."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:39
+#. js-lingui-explicit-id
+msgid ""
+"If you are ready to talk with other people, we can arrange a group call "
+"where you practice speaking in a comfortable setting."
+msgstr ""
+"Jika anda bersedia untuk bercakap dengan orang lain, kami boleh mengatur "
+"panggilan berkumpulan di mana anda boleh berlatih bercakap dalam suasana "
+"yang selesa."
+
 #: src/features/Community/SupportPage.tsx:37
 #. js-lingui-explicit-id
 msgid ""
@@ -6640,6 +6858,20 @@ msgid ""
 msgstr ""
 "Jika anda mempunyai sebarang pertanyaan, anda boleh menulis mesej di sini. "
 "Saya akan menjawab anda secepat mungkin."
+
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:28
+#. js-lingui-explicit-id
+msgid "If you only practice once a week, you stay where you are"
+msgstr "Jika anda hanya berlatih sekali seminggu, anda kekal di tempat anda berada."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"If you want to leave a comment or a review, you can do it on Trustpilot or "
+"in Global chat."
+msgstr ""
+"Jika anda ingin meninggalkan komen atau ulasan, anda boleh melakukannya di "
+"Trustpilot atau dalam sembang Global."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:174
 #. js-lingui-explicit-id
@@ -7119,6 +7351,26 @@ msgstr ""
 "Ia membantu saya menjawab soalan mengenai kebolehaksesan dan pengoptimuman "
 "prestasi tanpa panik."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:136
+#. js-lingui-explicit-id
+msgid "It helped me prepare for the exam"
+msgstr "Ia membantu saya bersedia untuk peperiksaan."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:137
+#. js-lingui-explicit-id
+msgid ""
+"It helped me prepare for the speaking part of my exam. After each task it "
+"explains what I did wrong and how I can improve."
+msgstr ""
+"Ia membantu saya bersedia untuk bahagian bercakap dalam peperiksaan saya. "
+"Selepas setiap tugasan, ia menerangkan apa yang saya lakukan salah dan "
+"bagaimana saya boleh memperbaiki."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:118
+#. js-lingui-explicit-id
+msgid "It is up to you"
+msgstr "Ini terpulang kepada anda"
+
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:185
 #. js-lingui-explicit-id
 msgid ""
@@ -7128,7 +7380,8 @@ msgstr ""
 "Ia mungkin mengambil masa kira-kira satu minit untuk menyediakan peraturan "
 "dan contoh berdasarkan perbualan anda. Sila tunggu."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:175
+#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:78
 #. js-lingui-explicit-id
 msgid "It might take up to a minute."
 msgstr "Ia mungkin mengambil masa sehingga satu minit."
@@ -7527,7 +7780,7 @@ msgid "Less"
 msgstr "Kurang"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:40
-#: src/features/Router/PracticePage.tsx:96
+#: src/features/Router/PracticePage.tsx:94
 #. js-lingui-explicit-id
 msgid "Lesson 1 is done. This is the next part of your plan."
 msgstr "Pelajaran 1 telah selesai. Ini adalah bahagian seterusnya dalam pelan anda."
@@ -7537,9 +7790,19 @@ msgstr "Pelajaran 1 telah selesai. Ini adalah bahagian seterusnya dalam pelan an
 msgid "Lesson Plan"
 msgstr "Pelan Pembelajaran"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:187
+#. js-lingui-explicit-id
+msgid ""
+"Lessons built from what you told us. Each one practices the grammar and the "
+"situations you actually need, including exams."
+msgstr ""
+"Pelajaran dibina berdasarkan apa yang anda beritahu kami. Setiap satu "
+"berlatih tatabahasa dan situasi yang sebenarnya anda perlukan, termasuk "
+"peperiksaan."
+
 #: src/features/Auth/AuthWall.tsx:65
 #: src/features/Auth/InterviewAuthWall.tsx:35
-#: src/features/Auth/SignInForm.tsx:48
+#: src/features/Auth/SignInForm.tsx:41
 #. js-lingui-explicit-id
 msgid "Let's create an account"
 msgstr "Mari buat akaun"
@@ -7564,7 +7827,12 @@ msgstr "Perpustakaan"
 msgid "Like"
 msgstr "Suka"
 
-#: src/features/Conversation/ConversationCanvas.tsx:625
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:104
+#. js-lingui-explicit-id
+msgid "Limited access from the start"
+msgstr "Akses terhad dari permulaan"
+
+#: src/features/Conversation/ConversationCanvas.tsx:628
 #. js-lingui-explicit-id
 msgid "Limited access..."
 msgstr "Akses terhad..."
@@ -7672,7 +7940,7 @@ msgstr "Memuatkan.."
 #: src/features/Advanced/AdvancedPage.tsx:367
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
-#: src/features/Conversation/ConversationCanvas.tsx:216
+#: src/features/Conversation/ConversationCanvas.tsx:218
 #: src/features/Conversation/ConversationReviewModal.tsx:107
 #: src/features/Conversation/ConversationReviewModal.tsx:122
 #: src/features/Conversation/ConversationReviewModal.tsx:137
@@ -7686,9 +7954,9 @@ msgstr "Memuatkan.."
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
 #: src/features/RolePlay/RolePlayModal.tsx:283
-#: src/features/Router/PracticePage.tsx:162
-#: src/features/Router/PracticePage.tsx:173
-#: src/features/Router/PracticePage.tsx:183
+#: src/features/Router/PracticePage.tsx:149
+#: src/features/Router/PracticePage.tsx:160
+#: src/features/Router/PracticePage.tsx:170
 #: src/features/Telegram/TgAppPage.tsx:171
 #: src/features/Translation/useTranslate.tsx:186
 #: src/features/Usage/Subscription/BalanceStatus.tsx:61
@@ -7990,7 +8258,7 @@ msgstr ""
 "mikrofon untuk laman ini, kemudian ketik \"Beri kebenaran mikrofon\" sekali "
 "lagi."
 
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:80
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:118
 #. js-lingui-explicit-id
 msgid ""
 "Microphone access was blocked. Open your browser settings, allow microphone "
@@ -8249,7 +8517,9 @@ msgstr "Perbincangan Berita"
 #: src/features/Game/GameOnboarding.tsx:138
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:147
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:117
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:179
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -8315,6 +8585,11 @@ msgid ""
 msgstr ""
 "Kerja yang bagus — {done} ceramah percuma setakat ini. {count} lagi membuka "
 "kunci Sebelum / Selepas suara anda."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:44
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "Tidak"
 
 #: src/features/Reader/components/ShareBookModal.tsx:94
 #. js-lingui-explicit-id
@@ -8505,6 +8780,11 @@ msgstr "Tiada sembang peribadi lagi"
 msgid "No reason provided."
 msgstr "Tiada sebab diberikan."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:66
+#. js-lingui-explicit-id
+msgid "No reminders"
+msgstr "Tiada peringatan"
+
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:131
 #. js-lingui-explicit-id
 msgid "No results found"
@@ -8514,6 +8794,11 @@ msgstr "Tiada hasil ditemui"
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "Tiada senario dijumpai"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:273
+#. js-lingui-explicit-id
+msgid "No spam"
+msgstr "Tiada spam"
 
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:31
 #. js-lingui-explicit-id
@@ -8902,7 +9187,7 @@ msgstr "Buka dalam Telegram"
 msgid "Open news settings"
 msgstr "Buka tetapan berita"
 
-#: src/features/Auth/SignInForm.tsx:45
+#: src/features/Auth/SignInForm.tsx:38
 #. js-lingui-explicit-id
 msgid "Open personal plan"
 msgstr "Buka pelan peribadi"
@@ -8950,6 +9235,11 @@ msgstr ""
 "Pilihan: perbendaharaan kata khusus, butiran latar belakang, bantahan, "
 "soalan, atau tingkah laku"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:114
+#. js-lingui-explicit-id
+msgid "Or use reading, quizzes, and the game, which stay available"
+msgstr "Atau gunakan bacaan, kuiz, dan permainan, yang kekal tersedia"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:234
 #. js-lingui-explicit-id
 msgid "Order / contract number:"
@@ -8978,7 +9268,7 @@ msgstr "Pesanan dengan kewajipan untuk membayar {amount}"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
-#: src/features/Goal/Quiz/useQuiz.tsx:323
+#: src/features/Goal/Quiz/useQuiz.tsx:351
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:28
 #: src/features/Lang/LanguageSwitcher.tsx:107
 #. js-lingui-explicit-id
@@ -9286,6 +9576,15 @@ msgstr "Pilih tahap untuk mula bermain!"
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
 msgstr "Pilih satu atau lebih kategori untuk membina senarai perkataan anda."
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:56
+#. js-lingui-explicit-id
+msgid ""
+"Pick one or more. Next you will see the practice that matches: grammar, "
+"confidence, and exam preparation."
+msgstr ""
+"Pilih satu atau lebih. Seterusnya anda akan melihat latihan yang sepadan: "
+"tatabahasa, keyakinan, dan persediaan peperiksaan."
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:146
 #. js-lingui-explicit-id
@@ -10035,6 +10334,8 @@ msgstr "Sokongan keutamaan"
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Community/SupportPage.tsx:142
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:277
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:37
 #: src/features/Landing/Footer.tsx:189
 #: src/features/PayWall/CardValidator.tsx:121
 #: src/features/Router/BlockedAccess.tsx:169
@@ -10301,13 +10602,13 @@ msgid "Raw"
 msgstr "Mentah"
 
 #: src/features/Chat/SubmitForm.tsx:341
-#: src/features/Conversation/ConversationCanvas.tsx:678
+#: src/features/Conversation/ConversationCanvas.tsx:681
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Rakam semula"
 
-#: src/features/Conversation/ConversationCanvas.tsx:691
+#: src/features/Conversation/ConversationCanvas.tsx:694
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Tulis semula"
@@ -10340,6 +10641,7 @@ msgstr ""
 "dan sistem"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:286
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:29
 #: src/features/Reader/components/Reader.tsx:412
 #. js-lingui-explicit-id
 msgid "Read"
@@ -10360,6 +10662,11 @@ msgstr "Baca dengan kuat"
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "Baca lebih lanjut"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:90
+#. js-lingui-explicit-id
+msgid "Read the lesson, then speak it"
+msgstr "Baca pelajaran, kemudian ucapkannya"
 
 #: src/features/Game/gameQuestionScreens/gameCoreUI.tsx:73
 #. js-lingui-explicit-id
@@ -10489,7 +10796,7 @@ msgstr "Perbualan masa nyata dengan AI"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Real-Life Role-Play untuk Latihan Bahasa Inggeris Lanjutan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:706
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Perbualan masa nyata"
@@ -10596,8 +10903,8 @@ msgstr "Rekod jawapan"
 msgid "Record Answer"
 msgstr "Rakaman Jawapan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:594
-#: src/features/Conversation/ConversationCanvas.tsx:569
+#: src/features/Conversation/CallMode/CallButtons.tsx:625
+#: src/features/Conversation/ConversationCanvas.tsx:572
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Rakam Mesej"
@@ -10643,7 +10950,7 @@ msgid "Recording settings"
 msgstr "Tetapan rakaman"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:168
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:209
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:216
 #. js-lingui-explicit-id
 msgid "Recording…"
 msgstr "Merakam…"
@@ -10695,7 +11002,7 @@ msgstr "Situasi Berkaitan"
 msgid "Reload page"
 msgstr "Muat semula halaman"
 
-#: src/features/Router/PracticePage.tsx:239
+#: src/features/Router/PracticePage.tsx:226
 #. js-lingui-explicit-id
 msgid "Reloading conversation..."
 msgstr "Memuat semula perbualan..."
@@ -10739,7 +11046,7 @@ msgstr "Balasan"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:173
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:228
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:235
 #. js-lingui-explicit-id
 msgid "Reply"
 msgstr "Balas"
@@ -10780,7 +11087,7 @@ msgstr "Laporkan pengguna"
 msgid "Request failed. Please try again."
 msgstr "Permintaan gagal. Sila cuba lagi."
 
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:56
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:94
 #: src/features/webCam/MicrophonePermissionModal.tsx:145
 #. js-lingui-explicit-id
 msgid "Requesting access..."
@@ -11047,6 +11354,14 @@ msgstr "Menyimpan buku..."
 msgid "Saving book…"
 msgstr "Menyimpan buku…"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:101
+#: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:60
+#. js-lingui-explicit-id
+msgid "Say a few sentences in your own words. The examples below are only ideas."
+msgstr ""
+"Katakan beberapa ayat dengan kata-kata anda sendiri. Contoh di bawah "
+"hanyalah idea."
+
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -11183,7 +11498,7 @@ msgid "Semantic HTML"
 msgstr "HTML Semantik"
 
 #: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:176
-#: src/features/Conversation/ConversationCanvas.tsx:520
+#: src/features/Conversation/ConversationCanvas.tsx:523
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
 msgid "Send"
@@ -11300,7 +11615,8 @@ msgstr "temuduga frontend senior"
 msgid "Sentences"
 msgstr "Ayat-ayat"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:128
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:190
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Tetapkan Bahasa Saya"
@@ -11320,7 +11636,7 @@ msgstr "Tetapkan matlamat pembelajaran anda"
 msgid "Set translate language in Settings"
 msgstr "Tetapkan bahasa terjemahan dalam Tetapan"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:606
+#: src/features/Conversation/CallMode/CallButtons.tsx:637
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -11414,6 +11730,11 @@ msgstr "Pembelian"
 msgid "Shopping at the Grocery Store"
 msgstr "Membeli-belah di Kedai Runcit"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:123
+#. js-lingui-explicit-id
+msgid "Short questions, spoken answers"
+msgstr "Soalan pendek, jawapan lisan"
+
 #: src/features/Alias/components/LanguageLevel.tsx:62
 #. js-lingui-explicit-id
 msgid "Shorter words and familiar vocabulary"
@@ -11497,6 +11818,11 @@ msgstr "Daftar masuk untuk menjana contoh-contoh"
 msgid "Sign in to keep talking"
 msgstr "Log masuk untuk terus bercakap"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:269
+#. js-lingui-explicit-id
+msgid "Sign in to start"
+msgstr "Log masuk untuk memulakan"
+
 #: src/features/Usage/Subscription/PaymentAuthGate.tsx:23
 #. js-lingui-explicit-id
 msgid "Sign in to subscribe"
@@ -11506,6 +11832,11 @@ msgstr "Log masuk untuk melanggan"
 #. js-lingui-explicit-id
 msgid "Sign in to unlock more features"
 msgstr "Log masuk untuk membuka lebih banyak ciri"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:236
+#. js-lingui-explicit-id
+msgid "Sign in to use FluencyPal"
+msgstr "Daftar masuk untuk menggunakan FluencyPal"
 
 #: src/features/Auth/AuthWallBasic.tsx:215
 #: src/features/Auth/AuthWallBasic.tsx:322
@@ -11656,7 +11987,8 @@ msgstr "Permulaan Pintar"
 msgid "Smoothed"
 msgstr "Dilancarkan semula"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:127
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:189
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Jadi saya boleh menterjemahkan kata-kata untuk anda"
@@ -11674,22 +12006,17 @@ msgstr "Jadi kami memerlukan persetujuan anda dengan perkara itu dan polisi kami
 
 #: src/features/Auth/AuthWall.tsx:66
 #: src/features/Auth/InterviewAuthWall.tsx:36
-#: src/features/Auth/SignInForm.tsx:51
+#: src/features/Auth/SignInForm.tsx:44
 #. js-lingui-explicit-id
 msgid "So you can keep your progress"
 msgstr "Supaya anda dapat menyimpan kemajuan anda"
 
-#: src/features/Auth/SignInForm.tsx:56
+#: src/features/Auth/SignInForm.tsx:49
 #. js-lingui-explicit-id
 msgid "So you can save your progress"
 msgstr ""
 "\n"
 "Jadi anda boleh menyimpan kemajuan anda\n"
-
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:41
-#. js-lingui-explicit-id
-msgid "So you can speak your answer and talk with the teacher"
-msgstr "Jadi anda boleh bercakap jawapan anda dan berbual dengan guru"
 
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:9
 #: src/features/RolePlay/scenarios/meeting-dog-owners-in-the-park.ts:22
@@ -11770,6 +12097,11 @@ msgstr "Spam"
 #. js-lingui-explicit-id
 msgid "Spanish Learning Plan"
 msgstr "Pelan Pembelajaran Bahasa Sepanyol"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:30
+#. js-lingui-explicit-id
+msgid "Speak"
+msgstr "Bercakap"
 
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:83
 #. js-lingui-explicit-id
@@ -11873,6 +12205,11 @@ msgstr "Mulakan Perdebatan"
 msgid "Start exam"
 msgstr "Mulakan peperiksaan"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:122
+#. js-lingui-explicit-id
+msgid "Start Free"
+msgstr "Mula Percuma"
+
 #: src/features/Alias/components/RoundSettings.tsx:224
 #. js-lingui-explicit-id
 msgid "Start game"
@@ -11916,7 +12253,6 @@ msgstr "Mula Merakam"
 msgid "Start recording"
 msgstr "Mula rakaman"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:187
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
 #. js-lingui-explicit-id
@@ -12153,7 +12489,7 @@ msgstr "Langkah-langkah:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:228
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:235
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -12425,7 +12761,7 @@ msgstr "Senario reka bentuk sistem yang digunakan oleh syarikat produk terkemuka
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/useQuiz.tsx:324
+#: src/features/Goal/Quiz/useQuiz.tsx:352
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:29
 #: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
@@ -12479,6 +12815,16 @@ msgid "Talk as much as you want — role-plays, assistants, and real conversatio
 msgstr ""
 "Bercakap sebanyak yang anda mahu — lakonan peranan, pembantu, dan perbualan "
 "sebenar."
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:150
+#. js-lingui-explicit-id
+msgid "Talk with the AI teacher"
+msgstr "Berbual dengan guru AI"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:40
+#. js-lingui-explicit-id
+msgid "Talk with the AI teacher, on your personal plan"
+msgstr "Bercakap dengan guru AI, mengikut pelan peribadi anda"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -12928,6 +13274,15 @@ msgstr ""
 "Jangan risau tentang mencipta perbualan yang sempurna. Tumpukan pada "
 "menjadi ingin tahu, memberi perhatian, dan mudah berbual."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:105
+#. js-lingui-explicit-id
+msgid ""
+"Talking with the AI teacher has a limited number of messages in each "
+"conversation. We cannot make that unlimited for everyone."
+msgstr ""
+"Berbicara dengan guru AI mempunyai bilangan mesej yang terhad dalam setiap "
+"perbualan. Kami tidak dapat menjadikannya tanpa had untuk semua orang."
+
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:99
 #. js-lingui-explicit-id
 msgid "Tap \"Add\" in the top-right corner."
@@ -12953,7 +13308,7 @@ msgstr ""
 "perbendaharaan kata, dan pemantauan kemajuan—untuk mencapai kefasihan "
 "bahasa Inggeris dalam talian dengan lebih cepat."
 
-#: src/features/Conversation/CallMode/CameraCanvas.tsx:206
+#: src/features/Conversation/CallMode/CameraCanvas.tsx:208
 #. js-lingui-explicit-id
 msgid "Teacher"
 msgstr "Guru"
@@ -13104,6 +13459,8 @@ msgstr "Terma Perkhidmatan"
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Community/SupportPage.tsx:129
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:282
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:42
 #: src/features/Landing/Footer.tsx:179
 #: src/features/Router/BlockedAccess.tsx:173
 #: src/features/Router/BlockedAccess.tsx:326
@@ -13199,7 +13556,7 @@ msgstr "Terima kasih atas maklum balas anda!"
 msgid "Thank you for your purchase."
 msgstr "Terima kasih atas pembelian anda."
 
-#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:32
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:39
 #. js-lingui-explicit-id
 msgid "Thanks — I'll use that to make your plan. Let's keep going."
 msgstr ""
@@ -13263,10 +13620,20 @@ msgstr ""
 msgid "The expert in anything was once a beginner."
 msgstr "Pakar dalam apa-apa bidang dulunya adalah seorang pemula."
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:192
+#. js-lingui-explicit-id
+msgid "The first call is lesson 1 of this plan"
+msgstr "Panggilan pertama adalah pelajaran 1 bagi rancangan ini"
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:9
 #. js-lingui-explicit-id
 msgid "The future belongs to those who believe in the beauty of their dreams."
 msgstr "Masa depan adalah milik mereka yang percaya pada keindahan impian mereka."
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:117
+#. js-lingui-explicit-id
+msgid "The game"
+msgstr "Permainan"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:30
 #. js-lingui-explicit-id
@@ -13336,7 +13703,7 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "Permintaan akan dihantar kepada pengguna {userName}."
 
-#: src/features/Router/PracticePage.tsx:95
+#: src/features/Router/PracticePage.tsx:93
 #. js-lingui-explicit-id
 msgid "The rest of your plan"
 msgstr "Baki pelan anda"
@@ -13350,6 +13717,16 @@ msgstr "Rahsia untuk maju ke hadapan adalah dengan memulakan langkah."
 #. js-lingui-explicit-id
 msgid "The sign you've been waiting for"
 msgstr "Tanda yang anda nantikan"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:44
+#. js-lingui-explicit-id
+msgid "The speaking game"
+msgstr "Permainan bercakap"
+
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:156
+#. js-lingui-explicit-id
+msgid "The teacher asks, you answer"
+msgstr "Guru bertanya, anda menjawab"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:403
 #. js-lingui-explicit-id
@@ -13472,6 +13849,11 @@ msgid ""
 msgstr ""
 "Peperiksaan ini mengikut format rasmi B1. Anda boleh berhenti sebentar "
 "antara modul dan meneruskan kemudian."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:76
+#. js-lingui-explicit-id
+msgid "This has to be your goal"
+msgstr "Ini harus menjadi matlamat anda"
 
 #: src/features/RolePlay/scenarios/assistant-chat.ts:9
 #. js-lingui-explicit-id
@@ -13636,7 +14018,17 @@ msgstr ""
 "\n"
 "Tarik nafas. Ia akan menjadi bodoh."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:144
+#: src/features/Goal/Quiz/onboardingContent.ts:40
+#. js-lingui-explicit-id
+msgid ""
+"This is an important step. Your answer is what we use to create your "
+"personal plan."
+msgstr ""
+"Ini adalah langkah yang penting. Jawapan anda adalah apa yang kami gunakan "
+"untuk mencipta pelan peribadi anda."
+
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
+#: src/features/Goal/Quiz/QuizPage2.tsx:206
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Ini adalah teks yang anda lihat pada butang dan menu"
@@ -13903,6 +14295,15 @@ msgstr ""
 "mikrofon. Webcam adalah pilihan dan hanya digunakan jika anda mengaktifkan "
 "maklum balas webcam. Tiada pemasangan diperlukan."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:237
+#. js-lingui-explicit-id
+msgid ""
+"To use the app, sign in with Google or with email. Your practice stays on "
+"that account."
+msgstr ""
+"Untuk menggunakan aplikasi, log masuk dengan Google atau dengan e-mel. "
+"Latihan anda akan disimpan pada akaun tersebut."
+
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14066,11 +14467,17 @@ msgstr "Hari percubaan"
 msgid "Trust the process. Small daily steps add up."
 msgstr "Percayai proses itu. Langkah kecil harian memberikan impak yang besar."
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:214
+#. js-lingui-explicit-id
+msgid "Trustpilot"
+msgstr "Trustpilot"
+
 #: src/features/Landing/RolePlay/RolePlayCard.tsx:154
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Cuba"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -14338,6 +14745,11 @@ msgstr "Gunakan kaedah STAR (Situasi, Tugas, Tindakan, Hasil)"
 msgid "Use your learning language ({lang})"
 msgstr "Gunakan bahasa pembelajaran anda ({lang})"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:127
+#. js-lingui-explicit-id
+msgid "Useful when a full conversation feels like too much"
+msgstr "Berguna apabila perbualan penuh terasa seperti terlalu banyak"
+
 #: src/features/Game/GameMyUsername.tsx:78
 #. js-lingui-explicit-id
 msgid "Username is already taken"
@@ -14353,7 +14765,7 @@ msgstr "Nama pengguna mesti sekurang-kurangnya 3 aksara."
 msgid "Username:"
 msgstr "Nama pengguna:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:687
+#: src/features/Conversation/CallMode/CallButtons.tsx:718
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -14581,7 +14993,8 @@ msgstr ""
 "Kami sedang menyediakan pelajaran untuk anda, berdasarkan latihan sebelum "
 "ini."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:174
+#: src/features/Goal/Quiz/QuizPage2.tsx:316
+#: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:77
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "Kami bersedia untuk merangka pelan anda."
@@ -14598,10 +15011,26 @@ msgstr ""
 msgid "We can send you marketing emails"
 msgstr "Kami boleh menghantar e-mel pemasaran kepada anda"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:72
+#. js-lingui-explicit-id
+msgid "We do not chase you to learn English"
+msgstr ""
+"\n"
+"Kami tidak mengejar anda untuk belajar Bahasa Inggeris\n"
+
 #: src/features/Auth/AuthWallBasic.tsx:268
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Kami memproses suara anda menggunakan AI"
+
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:28
+#. js-lingui-explicit-id
+msgid ""
+"We record your voice so the teacher can hear you. You need to be at least "
+"13 years old to use FluencyPal."
+msgstr ""
+"Kami merakam suara anda supaya guru dapat mendengar anda. Anda perlu "
+"berumur sekurang-kurangnya 13 tahun untuk menggunakan FluencyPal."
 
 #: src/features/Reader/components/ReaderSignInModal.tsx:117
 #. js-lingui-explicit-id
@@ -14622,10 +15051,10 @@ msgstr ""
 msgid "We use cookies to enhance your experience"
 msgstr "Kami menggunakan kuki untuk meningkatkan pengalaman anda"
 
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:52
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:89
 #. js-lingui-explicit-id
-msgid "We use the microphone only to hear you in this session"
-msgstr "Kami menggunakan mikrofon hanya untuk mendengar anda dalam sesi ini"
+msgid "We use the microphone only to hear you practice"
+msgstr "Kami menggunakan mikrofon hanya untuk mendengar anda berlatih"
 
 #: src/features/Header/NeedHelpModal.tsx:54
 #. js-lingui-explicit-id
@@ -14731,6 +15160,11 @@ msgstr "Apakah yang saya perlukan untuk menggunakan FluencyPal?"
 msgid "What do you want to achieve?"
 msgstr "Apakah yang anda ingin capai?"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:55
+#. js-lingui-explicit-id
+msgid "What feels most comfortable right now?"
+msgstr "Apa yang paling selesa sekarang?"
+
 #: src/features/Landing/LandingPage.tsx:34
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
@@ -14768,10 +15202,16 @@ msgstr "Apakah fokus utama FluencyPal?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Apakah jenis temu bual backend yang boleh saya latih?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:126
+#: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:188
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Bahasa apa yang anda tuturkan"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:175
+#. js-lingui-explicit-id
+msgid "What learners say"
+msgstr "Apa kata pelajar"
 
 #: src/features/Landing/LandingPage.tsx:98
 #. js-lingui-explicit-id
@@ -14818,6 +15258,20 @@ msgstr "Apakah jenis temu duga frontend yang boleh saya berlatih?"
 #. js-lingui-explicit-id
 msgid "What we learn with pleasure we never forget."
 msgstr "Apa yang kita pelajari dengan keseronokan kita tidak pernah lupa."
+
+#: src/features/Goal/Quiz/onboardingContent.ts:25
+#. js-lingui-explicit-id
+msgid "What work do you do, and what do you need to say in that interview?"
+msgstr ""
+"Apa kerja yang anda lakukan, dan apa yang anda perlu katakan dalam temu "
+"duga itu?"
+
+#: src/features/Goal/Quiz/onboardingContent.ts:36
+#. js-lingui-explicit-id
+msgid "What would change for you if you could do this in English?"
+msgstr ""
+"Apakah yang akan berubah untuk anda jika anda boleh melakukan ini dalam "
+"Bahasa Inggeris?"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:134
 #. js-lingui-explicit-id
@@ -14900,15 +15354,32 @@ msgstr ""
 "Apabila anda mengetik butang di bawah, penyemak imbas anda akan meminta "
 "kebenaran. Pilih \"Benarkan\" supaya perbualan dapat dimulakan."
 
+#: src/features/Goal/Quiz/onboardingContent.ts:31
+#. js-lingui-explicit-id
+msgid "Where are you going, and what do you want to handle there in English?"
+msgstr ""
+"Di mana anda pergi, dan apa yang anda ingin uruskan di sana dalam Bahasa "
+"Inggeris?"
+
 #: src/features/Landing/LandingPage.tsx:112
 #. js-lingui-explicit-id
 msgid "Where can I use FluencyPal?"
 msgstr "Di mana saya boleh menggunakan FluencyPal?"
 
+#: src/features/Goal/Quiz/onboardingContent.ts:28
+#. js-lingui-explicit-id
+msgid "Which exam is it, and when do you need to be ready?"
+msgstr "Yang mana satu peperiksaan itu, dan bila anda perlu bersedia?"
+
 #: src/features/RolePlay/scenarios/custom-conversation.ts:41
 #. js-lingui-explicit-id
 msgid "Who are you in this scenario?"
 msgstr "Siapakah anda dalam senario ini?"
+
+#: src/features/Goal/Quiz/onboardingContent.ts:34
+#. js-lingui-explicit-id
+msgid "Who do you want to talk with, and what do you usually talk about?"
+msgstr "Dengan siapa anda ingin bercakap, dan apakah yang biasanya anda bicarakan?"
 
 #: src/features/RolePlay/scenarios/custom-conversation.ts:30
 #. js-lingui-explicit-id
@@ -14938,10 +15409,12 @@ msgstr "Mengapa calon backend memperbaiki dengan cepat"
 msgid "Why candidates improve so quickly"
 msgstr "Mengapa calon-calon bertambah baik dengan begitu cepat"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:48
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:59
+#: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:78
 #. js-lingui-explicit-id
-msgid "Why do you want to practice speaking?"
-msgstr "Mengapa anda ingin berlatih bercakap?"
+msgid "Why do you want to practice?"
+msgstr "Kenapa anda mahu berlatih?"
 
 #: src/features/Game/Battle/BattleCard.tsx:272
 #. js-lingui-explicit-id
@@ -15003,6 +15476,15 @@ msgid ""
 msgstr ""
 "Dalam masa 2 minggu, saya berubah dari berasa gugup kepada yakin "
 "membincangkan keputusan seni bina. Mendapat pekerjaan yang saya inginkan."
+
+#: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:19
+#. js-lingui-explicit-id
+msgid ""
+"Without daily practice there is no growth. You cannot succeed by practicing "
+"only once a week."
+msgstr ""
+"Tanpa latihan harian tiada pertumbuhan. Anda tidak boleh berjaya dengan "
+"berlatih hanya sekali seminggu."
 
 #: src/features/SEO/metadata.ts:151
 #. js-lingui-explicit-id
@@ -15133,6 +15615,11 @@ msgstr "Tahun"
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "tahun"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:42
+#. js-lingui-explicit-id
+msgid "Yes"
+msgstr "Ya"
 
 #: src/features/Chat/AgeConfirmation.tsx:80
 #. js-lingui-explicit-id
@@ -15314,7 +15801,7 @@ msgstr ""
 msgid "Yesterday"
 msgstr "Semalam"
 
-#: src/features/Conversation/CallMode/CameraCanvas.tsx:236
+#: src/features/Conversation/CallMode/CameraCanvas.tsx:238
 #. js-lingui-explicit-id
 msgid "You"
 msgstr "Anda"
@@ -15377,6 +15864,11 @@ msgstr ""
 "Anda boleh membina projek, tetapi **tidak tahu apa yang penemuduga "
 "sebenarnya ingin lihat**"
 
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:110
+#. js-lingui-explicit-id
+msgid "You can buy full access if you want to remove that limit"
+msgstr "Anda boleh membeli akses penuh jika anda mahu menghapuskan had tersebut."
+
 #: src/features/Auth/AuthWallBasic.tsx:281
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -15402,6 +15894,15 @@ msgid ""
 msgstr ""
 "Anda boleh menekankan API, pangkalan data, atau reka bentuk sistem, dan "
 "mengulangi jawapan dengan maklum balas AI serta-merta pada bila-bila masa."
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:153
+#. js-lingui-explicit-id
+msgid ""
+"You can make conversations with AI without looking at the screen. I do it "
+"while doing household chores."
+msgstr ""
+"Anda boleh berbual dengan AI tanpa melihat skrin. Saya melakukannya ketika "
+"melakukan kerja-kerja rumah."
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -15454,9 +15955,15 @@ msgid "You can use text to answer if you prefer."
 msgstr "Anda boleh menggunakan teks untuk menjawab jika anda lebih suka."
 
 #: src/features/Auth/AuthWallBasic.tsx:272
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:33
 #. js-lingui-explicit-id
 msgid "You confirm that you are at least 13 years old"
 msgstr "Anda mengesahkan bahawa anda berumur sekurang-kurangnya 13 tahun"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:80
+#. js-lingui-explicit-id
+msgid "You decide how often you practice"
+msgstr "Anda tentukan seberapa kerap anda berlatih"
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:460
 #. js-lingui-explicit-id
@@ -15601,6 +16108,11 @@ msgstr "Anda terlepas seratus peratus peluang yang tidak anda ambil."
 msgid "You need between {min} and {max} players."
 msgstr "Anda memerlukan antara {min} dan {max} pemain."
 
+#: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:62
+#. js-lingui-explicit-id
+msgid "You said"
+msgstr "Anda berkata"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
 msgid ""
@@ -15609,11 +16121,6 @@ msgid ""
 msgstr ""
 "Anda akan menjawab soalan-soalan pendek tentang .NET, API, pangkalan data, "
 "kebersamaan, dan reka bentuk sistem."
-
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:44
-#. js-lingui-explicit-id
-msgid "You will record a short answer about why you want to practice"
-msgstr "Anda akan merekodkan jawapan ringkas tentang mengapa anda ingin berlatih"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
@@ -15646,8 +16153,9 @@ msgstr ""
 #: src/features/Auth/RolePlayGuestReply.tsx:34
 #: src/features/Auth/RolePlayGuestReply.tsx:49
 #: src/features/Conversation/Messages.tsx:271
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:30
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:45
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:31
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:46
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:192
 #: src/features/Usage/UsageStatsCards.tsx:297
 #. js-lingui-explicit-id
 msgid "You:"
@@ -15696,10 +16204,10 @@ msgstr "Jawapan anda akan dapat dilihat oleh lawan anda selepas anda menyerahkan
 msgid "Your Avatar:"
 msgstr "Avatar Anda:"
 
-#: src/features/Goal/Quiz/QuizMicPermissionStep.tsx:48
+#: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:86
 #. js-lingui-explicit-id
-msgid "Your browser will ask for permission. Tap Allow"
-msgstr "Pelayar anda akan meminta kebenaran. Ketik Benarkan"
+msgid "Your browser will ask for the microphone. Tap Allow."
+msgstr "Pelayar anda akan meminta mikrofon. Ketik Benarkan."
 
 #: src/features/PayWall/CardValidator.tsx:87
 #. js-lingui-explicit-id
@@ -15805,7 +16313,7 @@ msgstr "Batasan anda hanyalah imaginasi anda."
 msgid "Your Message"
 msgstr "Mesej Anda"
 
-#: src/features/Conversation/ConversationCanvas.tsx:626
+#: src/features/Conversation/ConversationCanvas.tsx:629
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Mesej anda..."
@@ -15815,10 +16323,20 @@ msgstr "Mesej anda..."
 msgid "Your Native Language:"
 msgstr "Bahasa Ibu Anda:"
 
+#: src/features/Goal/Quiz/QuizActivitySteps.tsx:186
+#. js-lingui-explicit-id
+msgid "Your personal plan"
+msgstr "Pelan peribadi anda"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
 msgid "Your practice plan"
 msgstr "Pelan latihan anda"
+
+#: src/features/Goal/Quiz/QuizExpectationSteps.tsx:267
+#. js-lingui-explicit-id
+msgid "Your practice stays on your account"
+msgstr "Latihan anda kekal pada akaun anda"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:11
 #: src/features/Case/data/frontend-senior/faqSection.ts:11
@@ -15892,7 +16410,7 @@ msgid "Your transcripts are securely stored in our service"
 msgstr "Transkrip anda disimpan dengan selamat dalam perkhidmatan kami"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:168
-#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:209
+#: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:216
 #. js-lingui-explicit-id
 msgid "Your turn"
 msgstr "Giliran anda"

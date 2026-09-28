@@ -40,8 +40,17 @@ import {
   QuizGuestAboutRecording,
   transcribeAboutRecording,
   writeAboutTranscriptionToSurvey,
+  writeFollowUpTranscriptionToSurvey,
 } from './quizGuestAboutStorage';
-import { QuizStep, quizSteps, resolveQuizStep } from './quizSteps';
+import {
+  PracticeActivity,
+  QuizStep,
+  parsePracticeActivities,
+  quizPath,
+  quizSteps,
+  resolveQuizStep,
+} from './quizSteps';
+import { personalizedPlanContext } from './onboardingContent';
 
 interface QuizContextType {
   languageToLearn: SupportedLanguage;
@@ -66,6 +75,9 @@ interface QuizContextType {
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
   saveAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
+  saveFollowUpClip: (recording: QuizGuestAboutRecording) => Promise<string>;
+  saveWantsRealPeople: (value: boolean) => Promise<void>;
+  continueWithActivities: (activities: PracticeActivity[]) => Promise<void>;
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
@@ -84,6 +96,7 @@ interface QuizUrlState {
   nativeLang: NativeLangCode;
   pageLang: SupportedLanguage;
   currentStep: QuizStep;
+  activities: string;
 }
 
 function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
@@ -99,6 +112,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       nativeLang: pageLang,
       pageLang,
       currentStep: quizSteps[0],
+      activities: '',
     }),
     [],
   );
@@ -161,7 +175,12 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     if (!survey) {
       return;
     }
-    const about = (survey.aboutUserTranscription || '').trim();
+    const about = personalizedPlanContext({
+      ...survey,
+      comfortableActivities: survey.comfortableActivities?.length
+        ? survey.comfortableActivities
+        : parsePracticeActivities(state.activities),
+    });
     if (!about) {
       return;
     }
@@ -178,7 +197,14 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
         languageCode: languageToLearn,
         context: about,
       });
-      const finalAbout = (surveyRef.current?.aboutUserTranscription || '').trim();
+      const finalAbout = surveyRef.current
+        ? personalizedPlanContext({
+            ...surveyRef.current,
+            comfortableActivities: surveyRef.current.comfortableActivities?.length
+              ? surveyRef.current.comfortableActivities
+              : parsePracticeActivities(state.activities),
+          })
+        : '';
       const finalSurveyHash = goalAboutHash(finalAbout);
       if (initialSurveyHash !== finalSurveyHash) {
         releaseGoalGeneration(initialSurveyHash);
@@ -283,6 +309,8 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
           hash: '',
         },
         aboutUserFollowUpTranscription: '',
+        wantsToTalkWithRealPeople: null,
+        comfortableActivities: [],
 
         goalUserTranscription: '',
         goalFollowUpQuestion: {
@@ -413,13 +441,11 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       nativeLanguage,
     );
 
-    return quizSteps.filter((viewStep) => {
-      if (viewStep === 'pageLanguage' || viewStep === 'before_pageLanguage') {
-        return !isNativeLanguageIsSupportedLanguage;
-      }
-      return true;
+    return quizPath({
+      includePageLanguage: !isNativeLanguageIsSupportedLanguage,
+      activities: parsePracticeActivities(state.activities),
     });
-  }, [nativeLanguage]);
+  }, [nativeLanguage, state.activities]);
   const activeStep = resolveQuizStep(currentStep, path);
   const currentStepIndex = path.indexOf(activeStep);
 
@@ -451,6 +477,70 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     return written;
   };
 
+  const saveFollowUpClip = async (recording: QuizGuestAboutRecording) => {
+    await ensureSurveyDocExists();
+    const transcript = await transcribeAboutRecording({
+      recording,
+      getToken: auth.getToken,
+    });
+    if (!transcript) {
+      throw new Error('Could not transcribe follow-up recording');
+    }
+
+    const written = await writeFollowUpTranscriptionToSurvey({
+      transcript,
+      getSurvey: () => surveyRef.current,
+      loadSurvey: async () => {
+        if (!surveyDocRef) {
+          return null;
+        }
+        const snap = await getDoc(surveyDocRef);
+        return snap.data() ?? null;
+      },
+      updateSurvey,
+    });
+    if (!written) {
+      throw new Error('Could not save follow-up recording');
+    }
+    return written;
+  };
+
+  const saveWantsRealPeople = async (value: boolean) => {
+    try {
+      await ensureSurveyDocExists();
+      const current = surveyRef.current;
+      if (current) {
+        await updateSurvey({ ...current, wantsToTalkWithRealPeople: value }, 'talkWithPeople');
+      }
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+  };
+
+  const continueWithActivities = async (activities: PracticeActivity[]) => {
+    try {
+      await ensureSurveyDocExists();
+      const current = surveyRef.current;
+      if (current) {
+        await updateSurvey({ ...current, comfortableActivities: activities }, 'activities');
+      }
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+
+    const nextPath = quizPath({
+      includePageLanguage: !(supportedLanguages as string[]).includes(nativeLanguage),
+      activities,
+    });
+    const activityIndex = nextPath.indexOf('activityChoice');
+    const next = nextPath[activityIndex + 1] || 'before_goalReview';
+    const url = await setState(
+      { activities: activities.join(','), currentStep: next },
+      { redirect: false },
+    );
+    router.push(url || '', { scroll: false });
+  };
+
   useEffect(() => {
     if (auth.isIdentified) {
       return;
@@ -476,7 +566,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     if (!auth.uid) {
       return;
     }
-    if (activeStep !== 'before_recordAbout') {
+    if (activeStep !== 'before_recordAbout' && activeStep !== 'recordAboutFollowUp') {
       return;
     }
 
@@ -594,6 +684,9 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     isFirstLoading,
     updateSurvey,
     saveAboutClip,
+    saveFollowUpClip,
+    saveWantsRealPeople,
+    continueWithActivities,
     test,
     isGoalGenerating,
     path,

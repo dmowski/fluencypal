@@ -21,6 +21,11 @@ export interface QuizSurvey2 {
   aboutUserFollowUpQuestion: QuizSurvey2FollowUpQuestion;
   aboutUserFollowUpTranscription: string;
 
+  /** Whether the learner wants practice with other people. */
+  wantsToTalkWithRealPeople?: boolean | null;
+  /** Activities they chose as comfortable: read, speak, quiz. */
+  comfortableActivities?: Array<'read' | 'speak' | 'quiz'>;
+
   goalFollowUpQuestion: QuizSurvey2FollowUpQuestion;
   goalUserTranscription: string;
 

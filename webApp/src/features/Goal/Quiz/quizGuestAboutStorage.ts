@@ -73,3 +73,36 @@ export const writeAboutTranscriptionToSurvey = async (input: {
   );
   return transcript;
 };
+
+export const hasFollowUpTranscription = (
+  survey: Pick<QuizSurvey2, 'aboutUserFollowUpTranscription'> | null | undefined,
+): boolean => Boolean(survey?.aboutUserFollowUpTranscription?.trim());
+
+export const writeFollowUpTranscriptionToSurvey = async (input: {
+  transcript: string;
+  getSurvey: () => QuizSurvey2 | null;
+  loadSurvey: () => Promise<QuizSurvey2 | null>;
+  updateSurvey: (survey: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
+}): Promise<string | null> => {
+  const transcript = input.transcript.trim();
+  if (!transcript) {
+    return null;
+  }
+
+  let survey = input.getSurvey();
+  if (!survey) {
+    survey = await input.loadSurvey();
+  }
+  if (!survey) {
+    return null;
+  }
+
+  await input.updateSurvey(
+    {
+      ...survey,
+      aboutUserFollowUpTranscription: transcript,
+    },
+    'recordAboutFollowUp',
+  );
+  return transcript;
+};

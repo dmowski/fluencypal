@@ -7,6 +7,7 @@ import { Mic, Square } from 'lucide-react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import { QuizGuestAboutRecording } from './quizGuestAboutStorage';
+import { QuizSpokenMessage } from './QuizSpokenMessage';
 
 const blobFormat = (blob: Blob): string => blob.type || 'audio/webm';
 
@@ -83,6 +84,7 @@ const GuestAboutSkeleton = ({ durationSec }: { durationSec: number }) => {
 export const QuizGuestRecordAbout = ({
   languageCode,
   alreadySaved = false,
+  savedTranscript = '',
   onSaveRecording,
   onRecordingChange,
   onHasRecorded,
@@ -90,6 +92,7 @@ export const QuizGuestRecordAbout = ({
 }: {
   languageCode: string;
   alreadySaved?: boolean;
+  savedTranscript?: string;
   onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
   onRecordingChange?: (isRecording: boolean) => void;
   onHasRecorded?: (hasRecorded: boolean) => void;
@@ -185,7 +188,11 @@ export const QuizGuestRecordAbout = ({
     >
       {showSavedAnswer ? (
         <>
-          <GuestAboutSkeleton durationSec={replyDurationSec} />
+          {readyToContinue && savedTranscript.trim() ? (
+            <QuizSpokenMessage label={i18n._('You:')} text={savedTranscript.trim()} />
+          ) : (
+            <GuestAboutSkeleton durationSec={replyDurationSec} />
+          )}
           {readyToContinue ? null : (
             <CircularProgress
               data-testid="quiz-guest-about-loader"

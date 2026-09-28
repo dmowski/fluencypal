@@ -86,6 +86,7 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   // Wait for auth (and guest anonymous ensure) before auto-start so we do not
   // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
   // The handoff stays on screen until the call connects; the tap supersedes a hung auto-start.
+  const isOnboardingFirstCall = aiConversation.currentMode === 'quiz-talk' && auth.isIdentified;
   const lessonLocked =
     !access.isFullAppAccess && (readFirstLessonUsed() || isFirstPlanLessonUsed(plan.activeGoal));
   const nextLesson = nextPlanLessonCard(plan.activeGoal) || {
@@ -280,10 +281,10 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
           const wasGuest = !auth.isIdentified;
           lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
-          if (spoken) {
+          if (spoken || isOnboardingFirstCall) {
             await setJustTalk('');
           }
-          if (wasGuest) {
+          if (wasGuest && !isOnboardingFirstCall) {
             setShowGuestAuthWall(true);
           }
           window.scrollTo({
@@ -306,7 +307,10 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
           usage.togglePaymentModal(true);
         }}
         autoProposeFirstReply={aiConversation.currentMode === 'quiz-talk'}
-        nextPlanLesson={aiConversation.currentMode === 'quiz-talk' ? nextLesson : null}
+        nextPlanLesson={
+          aiConversation.currentMode === 'quiz-talk' && !isOnboardingFirstCall ? nextLesson : null
+        }
+        suppressPaywall={isOnboardingFirstCall}
       />
     </Stack>
   );

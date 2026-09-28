@@ -7,6 +7,7 @@ import { InfoStep } from '../../Survey/InfoStep';
 import { QuizGuestRecordAbout } from './QuizGuestRecordAbout';
 import { QuizRecordAboutPrompt } from './QuizRecordAboutPrompt';
 import { QuizGuestAboutRecording } from './quizGuestAboutStorage';
+import { PracticeReasonExampleList, QuizSpokenMessage } from './QuizSpokenMessage';
 
 export const QuizBeforeRecordAboutGate = ({
   languageCode,
@@ -14,6 +15,9 @@ export const QuizBeforeRecordAboutGate = ({
   subTitle,
   promptText,
   alreadySaved = false,
+  examples = [],
+  contextMessage = '',
+  savedTranscript = '',
   onSaveRecording,
   onContinue,
 }: {
@@ -22,6 +26,9 @@ export const QuizBeforeRecordAboutGate = ({
   subTitle: string;
   promptText: string;
   alreadySaved?: boolean;
+  examples?: string[];
+  contextMessage?: string;
+  savedTranscript?: string;
   onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
   onContinue: () => void | Promise<void>;
 }) => {
@@ -51,12 +58,19 @@ export const QuizBeforeRecordAboutGate = ({
             marginTop: '8px',
           }}
         >
+          {contextMessage.trim() ? (
+            <QuizSpokenMessage label={i18n._('You said')} text={contextMessage.trim()} />
+          ) : null}
+          {!recorded && examples.length ? (
+            <PracticeReasonExampleList heading={i18n._('For example')} examples={examples} />
+          ) : null}
           {!recorded ? (
             <QuizRecordAboutPrompt text={promptText} pausePlayback={isGuestRecording} autoPlay />
           ) : null}
           <QuizGuestRecordAbout
             languageCode={languageCode}
             alreadySaved={alreadySaved}
+            savedTranscript={savedTranscript}
             onSaveRecording={onSaveRecording}
             onRecordingChange={setIsGuestRecording}
             onHasRecorded={setHasGuestRecorded}

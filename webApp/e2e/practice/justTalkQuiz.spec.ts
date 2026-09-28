@@ -105,7 +105,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expectAnonymousCurrentUser(page);
   });
 
-  test('goalReview Start Speaking primes mic, anonymous auth, auto-starts call, first user message', async ({
+  test('goalReview continues to sign-in and does not start the call while anonymous', async ({
     page,
   }) => {
     await mockExternalIpServices(page);
@@ -121,17 +121,45 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expectAnonymousCurrentUser(page);
     await expect(page.getByText('Speak Confidently')).toBeVisible();
 
-    const startSpeaking = page.getByRole('button', { name: 'Start Speaking', exact: true });
-    await expect(startSpeaking).toBeEnabled();
-    await startSpeaking.click();
+    await page.getByRole('button', { name: 'Continue', exact: true }).click();
+    await expect(page.getByTestId('quiz-pre-auth')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Sign in to use FluencyPal' })).toBeVisible();
+
+    await page.getByTestId('quiz-pre-auth').getByRole('button', { name: 'Continue' }).click();
+    await expect(page.getByTestId('quiz-auth-wall')).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Sign in with Google', exact: true }),
+    ).toBeVisible();
+    await expect(page.getByText('No spam', { exact: true })).toBeVisible();
+    await expect(page.getByText('Google or email. No spam.')).toBeVisible();
+    await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
+    await expectAnonymousCurrentUser(page);
+  });
+
+  test('signed-in auth wall starts the first call', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await mockQuizAiApis(page);
+    await installRealtimeConversationMock(page);
+
+    const user = await createEmulatorTestUser();
+    await page.goto('/quiz');
+    await signInTestUserOnPage(page, user);
+    await seedPracticeUserSettings(page, {
+      uid: user.uid,
+      email: user.email,
+      languageCode: 'en',
+      pageLanguageCode: 'en',
+      nativeLanguageCode: 'en',
+    });
+    await seedQuizGoalReviewSurvey(page, user.uid, 'en');
+
+    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
 
     await expect(page).toHaveURL(/justTalk=open/);
     await expect(page).toHaveURL(/autoStart=1/);
     await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
     await expect(page).not.toHaveURL(/autoStart=/);
-    await expect(page.getByTestId('just-talk-handoff')).toHaveCount(0);
     await expect(page.getByTestId('call-mic-toggle')).toHaveAttribute('aria-pressed', 'true');
-    await expectAnonymousCurrentUser(page);
 
     await expect
       .poll(async () =>
@@ -171,7 +199,9 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
   });
 
-  test('signed-in free user hits paywall after 10 user messages', async ({ page }) => {
+  test('signed-in first call closes to the practice dashboard without a paywall', async ({
+    page,
+  }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
 
@@ -239,26 +269,17 @@ test.describe('Quiz → Just Talk guest flow', () => {
       await (window as any).__darkEngTest.addConversationUserMessage(`Free message ${n}`);
     }, FREE_TIER_USER_MESSAGE_LIMIT);
 
-    await expect(page.getByTestId('conversation-limits-reached')).toBeVisible();
-    await expect(page.getByTestId('day-pass-checkout')).toBeVisible();
+    await expect(page.getByTestId('onboarding-call-finished')).toBeVisible();
+    await expect(page.getByTestId('day-pass-checkout')).toHaveCount(0);
+    await expect(page.getByTestId('day-pass-offer')).toHaveCount(0);
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
-    await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(page.getByTestId('day-pass-offer')).toContainText(/Continue your plan/);
     await dismissLessonReviewIfOpen(page);
 
-    await page.getByTestId('day-pass-checkout').click();
-    await expect(page).toHaveURL(/paymentModal=true/);
-    await expect(page).toHaveURL(/paymentDuration=day/);
-    await expect(page).toHaveURL(/paymentConfirm=true/);
-    await expect(page).toHaveURL(/planLesson=/);
-    const confirm = page.getByTestId('day-pass-confirm');
-    await expect(confirm).toBeVisible();
-    await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
-    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
-    await expect(confirm.getByText(/request a refund on the Profile/)).toBeVisible();
-    await expect(
-      confirm.getByRole('button', { name: /Order with obligation to pay/ }),
-    ).toBeDisabled();
+    await page.getByTestId('onboarding-call-close').click();
+    await expect(page.getByText('JUST TALK MODE')).toBeVisible();
+    await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
+    await expect(page.getByTestId('day-pass-offer')).toHaveCount(0);
+    await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
   });
 
   test('guest limit shows sign-in before the day-pass confirmation', async ({ page }) => {

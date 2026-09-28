@@ -49,6 +49,7 @@ export const CameraCanvas = ({
   autoProposeFirstReply = false,
   onSendProposedAnswer,
   nextPlanLesson = null,
+  suppressPaywall = false,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -80,6 +81,7 @@ export const CameraCanvas = ({
   autoProposeFirstReply?: boolean;
   onSendProposedAnswer?: (text: string) => void;
   nextPlanLesson?: DayPassNextLesson | null;
+  suppressPaywall?: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -312,6 +314,7 @@ export const CameraCanvas = ({
             fullExit={fullExit}
             isGuestConversationLimited={isGuestConversationLimited}
             nextPlanLesson={nextPlanLesson}
+            suppressPaywall={suppressPaywall}
           />
         </Stack>
       </Stack>

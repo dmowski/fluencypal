@@ -100,6 +100,7 @@ interface ConversationCanvasProps {
   isGuestConversationLimited?: boolean;
   autoProposeFirstReply?: boolean;
   nextPlanLesson?: DayPassNextLesson | null;
+  suppressPaywall?: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -150,6 +151,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   isGuestConversationLimited = false,
   autoProposeFirstReply = false,
   nextPlanLesson = null,
+  suppressPaywall = false,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -242,7 +244,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
             openCommunityPage();
           }}
-          nextPlanLesson={nextPlanLesson}
+          nextPlanLesson={suppressPaywall ? null : nextPlanLesson}
         />
       )}
     </>
@@ -288,7 +290,8 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
             isSendMessagesBlocked={isSendMessagesBlocked}
-            nextPlanLesson={nextPlanLesson}
+            nextPlanLesson={suppressPaywall ? null : nextPlanLesson}
+            suppressPaywall={suppressPaywall}
             fullExit={() => {
               closeConversation();
             }}
