@@ -3,8 +3,8 @@ import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page } from 'vitest/browser';
 import { useLingui } from '@lingui/react';
-import { InfoStep } from '../../Survey/InfoStep';
 import { GoalPlan } from '@/features/Plan/types';
+import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
 import { GoalReview } from './GoalReview';
 import { FirstCallFinishedNotice } from '@/features/Conversation/CallMode/FirstCallFinishedNotice';
 import { expectQuizScreenshot, QuizShotFrame } from './quizBrowserFrame';
@@ -70,17 +70,6 @@ const goalData: GoalPlan = {
   ],
 };
 
-const BeforeGoalReview = () => {
-  const { i18n } = useLingui();
-  return (
-    <InfoStep
-      title={i18n._('We are ready to craft your plan.')}
-      subTitle={i18n._('It might take up to a minute.')}
-      onClick={() => undefined}
-    />
-  );
-};
-
 const PracticePlan = () => {
   const { i18n } = useLingui();
   return (
@@ -96,7 +85,7 @@ const PracticePlan = () => {
 test('ready to craft the plan', async () => {
   await render(
     <QuizShotFrame>
-      <BeforeGoalReview />
+      <QuizBeforeGoalReviewStep onContinue={() => undefined} isStepLoading={false} />
     </QuizShotFrame>,
   );
   await expectQuizScreenshot('onboarding-before-goal-review');

@@ -21,6 +21,7 @@ import { requestMicrophoneAccess } from '@/libs/mic';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
+import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { QuizMicPermissionStep, QuizRecordingConsentStep } from './QuizRecordingConsentStep';
 import { hasAboutTranscription, hasFollowUpTranscription } from './quizGuestAboutStorage';
@@ -312,13 +313,7 @@ const QuizQuestions = () => {
           )}
 
           {currentStep === 'before_goalReview' && (
-            <InfoStep
-              title={i18n._(`We are ready to craft your plan.`)}
-              subTitle={i18n._(`It might take up to a minute.`)}
-              onClick={next}
-              disabled={isStepLoading}
-              isStepLoading={isStepLoading}
-            />
+            <QuizBeforeGoalReviewStep onContinue={next} isStepLoading={isStepLoading} />
           )}
 
           {currentStep === 'goalReview' && (
