@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import { createEmulatorTestUser, signInTestUserOnPage } from '../libs/books/auth';
 import { installRealtimeConversationMock } from '../libs/conversation';
 import {
@@ -18,6 +18,13 @@ import {
   waitForDarkEngTest,
 } from '../libs/practice/justTalkQuiz';
 import { FREE_TIER_USER_MESSAGE_LIMIT } from '../../src/features/Conversation/guestConversationLimit';
+
+const dismissLessonReviewIfOpen = async (page: Page) => {
+  const review = page.getByTestId('conversation-review-modal');
+  if (await review.isVisible().catch(() => false)) {
+    await review.getByRole('button', { name: 'close' }).click();
+  }
+};
 
 test.describe('Quiz → Just Talk guest flow', () => {
   test.beforeEach(async ({ context }) => {
@@ -237,6 +244,7 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expect(page.getByTestId('day-pass-offer')).toContainText(/Continue your plan/);
+    await dismissLessonReviewIfOpen(page);
 
     await page.getByTestId('day-pass-checkout').click();
     await expect(page).toHaveURL(/paymentModal=true/);
@@ -248,7 +256,9 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
     await expect(confirm.getByText(/request a refund on the Profile/)).toBeVisible();
-    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toBeDisabled();
+    await expect(
+      confirm.getByRole('button', { name: /Order with obligation to pay/ }),
+    ).toBeDisabled();
   });
 
   test('guest limit shows sign-in before the day-pass confirmation', async ({ page }) => {
@@ -268,13 +278,23 @@ test.describe('Quiz → Just Talk guest flow', () => {
     await expect(page.getByTestId('subscription-payment-modal')).toHaveCount(0);
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
+    await dismissLessonReviewIfOpen(page);
 
     await page.getByTestId('day-pass-checkout').click();
     const confirm = page.getByTestId('day-pass-confirm');
     await expect(confirm).toBeVisible();
+    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toBeVisible();
+    await expect(
+      confirm.getByText('Lesson 1 is done. This is the next part of your plan.'),
+    ).toBeVisible();
+    await expect(confirm.getByText(/Continue your plan —/)).toBeVisible();
+    await expect(
+      confirm.getByRole('button', { name: 'Sign in with Google', exact: true }),
+    ).toBeVisible();
     await expect(confirm.getByText('Sign in to continue this lesson')).toBeVisible();
-    await expect(confirm.getByRole('heading', { name: 'The rest of your plan' })).toHaveCount(0);
-    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toHaveCount(0);
+    await expect(confirm.getByRole('button', { name: /Order with obligation to pay/ })).toHaveCount(
+      0,
+    );
     await expect(page.getByTestId('subscription-plan-selector')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
   });

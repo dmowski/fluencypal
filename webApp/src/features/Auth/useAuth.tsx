@@ -6,6 +6,10 @@ import {
   ActionCodeSettings,
 } from 'firebase/auth';
 import { completeEmailLinkSignIn } from './emailLinkSignIn';
+import {
+  dayPassEmailReturnTarget,
+  rememberDayPassEmailReturn,
+} from '@/features/Usage/dayPassEmailReturn';
 import { isWaitingForFirestoreToken, publishedAuthUid } from './firestoreAuthReady';
 import { ensureAnonymousAuth } from './anonymousAuth';
 import { isIdentifiedAuthUser } from './identifiedAuth';
@@ -168,6 +172,8 @@ function useProvideAuth(): AuthContext {
     const email = window.localStorage.getItem(LOCALSTORAGE_EMAIL_KEY);
     if (!email) {
       cleanEmailSignInUrl();
+      const confirmUrl = dayPassEmailReturnTarget(window.location.href);
+      if (confirmUrl) window.location.replace(confirmUrl);
       return;
     }
 
@@ -175,6 +181,11 @@ function useProvideAuth(): AuthContext {
       const credential = await completeEmailLinkSignIn(auth, email, window.location.href);
       await credential.user.getIdToken(true);
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
+      const confirmUrl = dayPassEmailReturnTarget(window.location.href);
+      if (confirmUrl) {
+        window.location.replace(confirmUrl);
+        return;
+      }
       cleanEmailSignInUrl();
     } catch (error) {
       window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
@@ -219,7 +230,7 @@ function useProvideAuth(): AuthContext {
   }, []);
 
   const signInWithEmail = async (email: string): Promise<SignInResult> => {
-    const url = window.location.href;
+    const url = rememberDayPassEmailReturn(window.location.href) ?? window.location.href;
     const actionCodeSettings: ActionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be in the authorized domains list in the Firebase Console.

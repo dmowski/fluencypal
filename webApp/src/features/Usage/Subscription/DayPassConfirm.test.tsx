@@ -50,11 +50,13 @@ const checkBothBoxes = () => {
 };
 
 describe('DayPassConfirm', () => {
-  it('shows only sign-in for a guest', () => {
+  it('shows the next lesson and day price before sign-in', () => {
     renderConfirm(false);
 
+    expect(screen.getByRole('heading', { name: 'Greetings' })).toBeInTheDocument();
+    expect(screen.getByText('Words for saying hello.')).toBeInTheDocument();
+    expect(screen.getByText('Continue your plan — $1.10')).toBeInTheDocument();
     expect(screen.getByText('Sign in to continue this lesson')).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'Greetings' })).not.toBeInTheDocument();
     expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
     expect(
       screen.queryByRole('button', { name: /Order with obligation to pay/ }),

@@ -3,6 +3,7 @@
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { AuthWall } from '@/features/Auth/AuthWall';
+import { useCurrency } from '@/features/User/useCurrency';
 import { ConfirmPaymentForm } from '../HoursPaymentModal/ConfirmPaymentForm';
 
 export const DAY_PASS_CONFIRM_TEST_ID = 'day-pass-confirm';
@@ -30,17 +31,33 @@ export const DayPassConfirm = ({
   onConfirm: () => void;
 }) => {
   const { i18n } = useLingui();
+  const currency = useCurrency();
 
   if (!isIdentified) {
+    const price = currency.convertUsdToCurrency(amountInUsd);
     return (
       <Stack
         data-testid={DAY_PASS_CONFIRM_TEST_ID}
         sx={{
+          maxWidth: '700px',
           width: '100%',
+          boxSizing: 'border-box',
+          gap: '24px',
           alignItems: 'center',
           paddingTop: '30px',
         }}
       >
+        <Stack sx={{ width: '100%', gap: '8px' }}>
+          <Typography sx={{ width: '100%', fontWeight: 800 }} variant="h3" component="h2">
+            {lesson.title}
+          </Typography>
+          {lesson.details ? (
+            <Typography sx={{ width: '100%', fontSize: '22px' }}>{lesson.details}</Typography>
+          ) : null}
+          <Typography sx={{ width: '100%', fontSize: '18px' }}>
+            {i18n._('Continue your plan — {price}', { price })}
+          </Typography>
+        </Stack>
         {isAuthLoading ? null : (
           <AuthWall
             startOnAuth
