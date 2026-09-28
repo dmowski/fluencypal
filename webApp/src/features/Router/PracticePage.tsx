@@ -13,7 +13,7 @@ import { ConversationCanvas } from '../Conversation/ConversationCanvas';
 import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import { useLingui } from '@lingui/react';
 import { InfoBlockedSection } from '../Dashboard/InfoBlockedSection';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SelectLanguage } from '../Dashboard/SelectLanguage';
 import { ConversationError } from '../Conversation/ConversationError';
 import { useConversationsAnalysis } from '../Conversation/useConversationsAnalysis';
@@ -27,23 +27,11 @@ import { CommunityDashboard } from '../Community/CommunityDashboard';
 import { BlockedAccess } from './BlockedAccess';
 import { useSearchParams } from 'next/navigation';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { useJustTalk } from '@/features/Conversation/useJustTalk';
-import { NextPlanLessonScreen } from '@/features/Conversation/CallMode/DayPassLimitOffer';
-import {
-  isFirstPlanLessonUsed,
-  markFirstLessonUsed,
-  nextPlanLessonCard,
-  readFirstLessonUsed,
-} from '@/features/Conversation/firstPlanLesson';
-import { useAutoStartJustTalk } from '@/features/Conversation/useAutoStartJustTalk';
-import { JustTalkHandoffScreen } from '@/features/Conversation/JustTalkHandoffScreen';
 import { ConversationGuestAuthWall } from '@/features/Conversation/ConversationGuestAuthWall';
 import { canEnterPracticeAsGuest } from '@/features/Conversation/guestPracticeEntry';
 import { useResumeDayPassCheckout } from '@/features/Usage/useResumeDayPassCheckout';
 import {
-  getPracticeIdleSurface,
   hasUserSpokenInConversation,
-  isJustTalkHandoff,
   JUST_TALK_HANDOFF_PARAM,
 } from '@/features/Conversation/justTalkHandoff';
 
@@ -68,60 +56,8 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
   const searchParams = useSearchParams();
   const rolePlayId = searchParams.get('rolePlayId');
   const [justTalk, setJustTalk] = useUrlState(JUST_TALK_HANDOFF_PARAM, '', false);
-  const { startJustTalk, isCallStarting } = useJustTalk();
-  const [handoffTapStarting, setHandoffTapStarting] = useState(false);
-  const isHandoff = isJustTalkHandoff(justTalk);
   const canGuestPractice = canEnterPracticeAsGuest({ justTalk, rolePlayId });
   const practiceLanguageCode = settings.languageCode || (canGuestPractice ? lang : null);
-  const startAutoJustTalk = () =>
-    startJustTalk(undefined, { skipConsentUi: true, mode: 'quiz-talk' });
-  const startHandoffFromTap = () => {
-    setHandoffTapStarting(true);
-    return startJustTalk(undefined, {
-      skipConsentUi: true,
-      mode: 'quiz-talk',
-      supersede: true,
-    });
-  };
-  // Wait for auth (and guest anonymous ensure) before auto-start so we do not
-  // call ensureAnonymousAuth while persistence is still restoring a signed-in user.
-  // The handoff stays on screen until the call connects; the tap supersedes a hung auto-start.
-  const isOnboardingFirstCall = aiConversation.currentMode === 'quiz-talk' && auth.isIdentified;
-  const lessonLocked =
-    !access.isFullAppAccess && (readFirstLessonUsed() || isFirstPlanLessonUsed(plan.activeGoal));
-  const nextLesson = nextPlanLessonCard(plan.activeGoal) || {
-    title: i18n._('The rest of your plan'),
-    details: i18n._('Lesson 1 is done. This is the next part of your plan.'),
-  };
-  const markedFreeLesson = useRef(false);
-  useEffect(() => {
-    if (!aiConversation.isLimitedRecording || aiConversation.currentMode !== 'quiz-talk') return;
-    markFirstLessonUsed();
-    const firstLessonId = aiConversation.goalInfo?.goalElement.id;
-    if (!firstLessonId || markedFreeLesson.current) return;
-    if (!plan.activeGoal?.elements.some((element) => element.id === firstLessonId)) return;
-    if (plan.activeGoal.progress?.some((entry) => entry.elementId === firstLessonId)) {
-      markedFreeLesson.current = true;
-      return;
-    }
-    markedFreeLesson.current = true;
-    void plan.startGoalElement(firstLessonId).catch(() => {
-      markedFreeLesson.current = false;
-    });
-  }, [
-    aiConversation.isLimitedRecording,
-    aiConversation.currentMode,
-    aiConversation.goalInfo,
-    plan,
-  ]);
-  useAutoStartJustTalk(
-    isHandoff &&
-      !lessonLocked &&
-      !auth.loading &&
-      auth.isAuthorized &&
-      Boolean(settings.userSettings),
-    startAutoJustTalk,
-  );
   const [showGuestAuthWall, setShowGuestAuthWall] = useState(false);
   useResumeDayPassCheckout();
 
@@ -176,45 +112,20 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
 
   if (!practiceLanguageCode) return <SelectLanguage pageLang={lang} />;
 
-  const idleSurface = getPracticeIdleSurface({
-    isStarted: aiConversation.isStarted,
-    isHandoff,
-    errorInitiating: aiConversation.errorInitiating,
-    isInitializing: aiConversation.isInitializing,
-  });
-
-  if (idleSurface === 'loading') {
+  if (aiConversation.isInitializing) {
     return <InfoBlockedSection title={aiConversation.isInitializing} />;
   }
 
-  if (idleSurface === 'error') {
+  if (aiConversation.errorInitiating) {
     return (
       <ConversationError
-        errorMessage={aiConversation.errorInitiating || ''}
+        errorMessage={aiConversation.errorInitiating}
         onRetry={() => window.location.reload()}
       />
     );
   }
 
-  if (idleSurface === 'handoff' && lessonLocked) {
-    return <NextPlanLessonScreen nextLesson={nextLesson} onNotNow={() => setJustTalk('')} />;
-  }
-
-  if (idleSurface === 'handoff') {
-    return (
-      <JustTalkHandoffScreen
-        onEnableMic={async () => {
-          const result = await startHandoffFromTap();
-          if (result !== 'started') setHandoffTapStarting(false);
-          return result;
-        }}
-        isStarting={handoffTapStarting && isCallStarting}
-        wasDenied={Boolean(aiConversation.errorInitiating)}
-      />
-    );
-  }
-
-  if (idleSurface === 'dashboard') {
+  if (!aiConversation.isStarted) {
     return (
       <RolePlayProvider rolePlayInfo={rolePlayInfo}>
         <Dashboard lang={lang} />
@@ -281,10 +192,10 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
           const wasGuest = !auth.isIdentified;
           lessonPlan.setActiveLessonPlan(null);
           await aiConversation.closeConversation();
-          if (spoken || isOnboardingFirstCall) {
+          if (spoken) {
             await setJustTalk('');
           }
-          if (wasGuest && !isOnboardingFirstCall) {
+          if (wasGuest) {
             setShowGuestAuthWall(true);
           }
           window.scrollTo({
@@ -306,11 +217,6 @@ export function PracticePage({ rolePlayInfo, lang }: PracticePageProps) {
         onLimitedClick={() => {
           usage.togglePaymentModal(true);
         }}
-        autoProposeFirstReply={aiConversation.currentMode === 'quiz-talk'}
-        nextPlanLesson={
-          aiConversation.currentMode === 'quiz-talk' && !isOnboardingFirstCall ? nextLesson : null
-        }
-        suppressPaywall={isOnboardingFirstCall}
       />
     </Stack>
   );

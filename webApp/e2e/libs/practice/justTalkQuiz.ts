@@ -1,7 +1,6 @@
 import type { BrowserContext, Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { fnv1aHash } from '../../../src/libs/hash';
-import { JUST_TALK_AUTO_START_KEY } from '../../../src/features/Conversation/justTalkHandoff';
 import { waitForAnonymousAuthReady } from '../books/auth';
 
 const ABOUT_TRANSCRIPT =
@@ -172,31 +171,3 @@ export const expectAnonymousCurrentUser = async (page: Page) => {
     .toBe(true);
 };
 
-export const expectNoJustTalkAutoStartFlag = async (page: Page) => {
-  await expect
-    .poll(async () =>
-      page.evaluate((key) => window.sessionStorage.getItem(key), JUST_TALK_AUTO_START_KEY),
-    )
-    .toBeNull();
-};
-
-/** Open Just Talk as a guest and wait until the call canvas is ready. */
-export const startJustTalkCallAsGuest = async (page: Page) => {
-  await page.goto('/practice?justTalk=open');
-  await waitForAnonymousAuthReady(page);
-  await expectAnonymousCurrentUser(page);
-
-  const handoff = page.getByTestId('just-talk-handoff');
-  if (await handoff.isVisible().catch(() => false)) {
-    await page.getByRole('button', { name: /Enable microphone/i }).click();
-  }
-
-  await expect(page.getByTestId('conversation-canvas-call')).toBeVisible();
-  await expect
-    .poll(async () =>
-      page.evaluate(() => Boolean((window as any).__darkEngTest?.addConversationUserMessage)),
-    )
-    .toBe(true);
-};
-
-export { JUST_TALK_AUTO_START_KEY };

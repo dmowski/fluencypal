@@ -27,7 +27,6 @@ import { AiConversationContextType, StartConversationProps } from './types';
 import { getVoiceInstructions } from './getVoiceInstructions';
 import { teacherRules } from './teacherRules';
 import { getConversationStarterMessagePrompt } from './getConversationStarterMessagePrompt';
-import { getQuizTalkInstruction } from './getQuizTalkInstruction';
 import { getWebCamDescriptionInstruction } from './getWebCamDescriptionInstruction';
 import { useAiConversationMessages } from './useAiConversationMessages';
 import { resolvePracticeLanguage } from '@/features/Goal/Quiz/resolvePracticeLanguage';
@@ -225,7 +224,6 @@ function useProvideAiConversation(): AiConversationContextType {
     voice,
     isNewUser,
     activeLanguageCode,
-    aboutUserTranscription,
   }: {
     mode: ConversationType;
     goal?: GoalElementInfo | null;
@@ -234,7 +232,6 @@ function useProvideAiConversation(): AiConversationContextType {
     voice: AiVoice;
     isNewUser: boolean;
     activeLanguageCode: typeof languageCode;
-    aboutUserTranscription?: string;
   }): Promise<ConversationConfig> => {
     const baseConfig = getBaseRtcConfig(activeLanguageCode);
     const activeFullLanguageName = fullEnglishLanguageName[activeLanguageCode] || fullLanguageName;
@@ -320,27 +317,7 @@ ${voiceInstructions}
       };
     }
 
-    if (mode === 'quiz-talk') {
-      return {
-        ...baseConfig,
-        voice,
-        initInstruction: getQuizTalkInstruction({
-          languageName: activeFullLanguageName,
-          voice,
-          aboutUserTranscription: aboutUserTranscription || '',
-          voiceInstructions,
-          firstLesson: goal?.goalElement
-            ? {
-                planTitle: goal.goalPlan.title,
-                title: goal.goalElement.title,
-                details: goal.goalElement.details || goal.goalElement.description,
-              }
-            : null,
-        }),
-      };
-    }
-
-    if (mode === 'talk') {
+    if (mode === 'talk' || mode === 'quiz-talk') {
       // todo: Adjust to more creative
       let startFirstMessage = `"${firstAiMessage[activeLanguageCode]}"`;
 
@@ -551,7 +528,6 @@ ${voiceInstructions}
         voice: input.voice || settingsVoice || 'shimmer',
         isNewUser,
         activeLanguageCode,
-        aboutUserTranscription: input.aboutUserTranscription,
       });
 
       let instruction = conversationConfig.initInstruction;

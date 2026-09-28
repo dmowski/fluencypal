@@ -4,7 +4,6 @@ import MicIcon from '@mui/icons-material/Mic';
 import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { DayPassLimitOffer, DayPassNextLesson } from './DayPassLimitOffer';
-import { FirstCallFinishedNotice } from './FirstCallFinishedNotice';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -52,7 +51,6 @@ export const CallButtons = ({
   fullExit,
   isGuestConversationLimited = false,
   nextPlanLesson = null,
-  suppressPaywall = false,
 }: {
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
@@ -83,8 +81,6 @@ export const CallButtons = ({
   isGuestConversationLimited?: boolean;
   /** First plan lesson is over. The offer is the next lesson, and the review opens once. */
   nextPlanLesson?: DayPassNextLesson | null;
-  /** Onboarding first call closes to the practice home instead of a payment offer. */
-  suppressPaywall?: boolean;
 }) => {
   const { i18n } = useLingui();
 
@@ -100,11 +96,10 @@ export const CallButtons = ({
   const openedLessonReview = useRef(false);
 
   useEffect(() => {
-    if (suppressPaywall) return;
     if (!isSendMessagesBlocked || !nextPlanLesson || openedLessonReview.current) return;
     openedLessonReview.current = true;
     onShowAnalyzeConversationModal();
-  }, [isSendMessagesBlocked, nextPlanLesson, onShowAnalyzeConversationModal, suppressPaywall]);
+  }, [isSendMessagesBlocked, nextPlanLesson, onShowAnalyzeConversationModal]);
 
   const closeEndCallMenu = () => setEndCallMenuAnchor(null);
   const closeSettingsMenu = () => setSettingsAnchor(null);
@@ -392,32 +387,6 @@ Return ONLY the number.
 
   if (isLimited && isGuestConversationLimited) {
     return null;
-  }
-
-  if (isLimited && suppressPaywall) {
-    return (
-      <Stack
-        data-testid="conversation-limits-reached"
-        sx={{
-          backgroundColor: 'rgba(15, 24, 37, 1)',
-          padding: '30px 20px 40px 20px',
-          position: 'fixed',
-          bottom: '0px',
-          left: '0px',
-          width: '100%',
-          alignItems: 'center',
-          boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 90px 60px rgba(0, 0, 0, 1)',
-          justifyContent: 'center',
-        }}
-      >
-        <FirstCallFinishedNotice
-          onClose={() => {
-            vadAudioRecorder.stop();
-            fullExit();
-          }}
-        />
-      </Stack>
-    );
   }
 
   if (isLimited) {

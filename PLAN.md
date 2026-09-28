@@ -8,3 +8,5 @@ General strategy:
 ## Advanced Practice
 
 webApp/src/features/InteractiveLesson/AGENTS.md
+
+## Propose your Daily Question

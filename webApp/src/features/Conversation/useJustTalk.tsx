@@ -7,25 +7,14 @@ import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStrea
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 import { useAuth } from '../Auth/useAuth';
-import { getDoc, getDocs } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { db } from '@/features/Firebase/firebaseDb';
-import { ConversationType } from './conversation';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { GoalPlan } from '@/features/Plan/types';
 import { useAccess } from '@/features/Usage/useAccess';
-import {
-  firstPlanElement,
-  isFirstPlanLessonUsed,
-  readFirstLessonUsed,
-} from './firstPlanLesson';
+import { isFirstPlanLessonUsed, readFirstLessonUsed } from './firstPlanLesson';
 import { JUST_TALK_HANDOFF_PARAM, JUST_TALK_HANDOFF_VALUE } from './justTalkHandoff';
-import { clipQuizTalkAbout, markQuizTalkAbout, readQuizTalkAbout } from './quizTalk';
-import {
-  consumeJustTalkAutoStart,
-  readJustTalkAutoStart,
-  resolveJustTalkCallSetup,
-} from './justTalkHandoff';
 import {
   beginJustTalkStart,
   finishJustTalkStart,
@@ -64,34 +53,11 @@ const openPlanLessonOffer = (router: ReturnType<typeof useRouter>) => {
 
 export type StartJustTalkOptions = {
   skipConsentUi?: boolean;
-  /** Quiz handoff only. Dashboard Just Talk stays `talk`. */
-  mode?: Extract<ConversationType, 'talk' | 'quiz-talk'>;
   /**
    * Enable-mic tap. Replaces an in-flight auto-start that has not reached the call,
    * so getUserMedia runs inside the user gesture.
    */
   supersede?: boolean;
-};
-
-const loadQuizTalkAbout = async ({
-  uid,
-  languageCode,
-}: {
-  uid?: string;
-  languageCode?: SupportedLanguage | null;
-}): Promise<string> => {
-  const fromSession = readQuizTalkAbout();
-  if (fromSession) return fromSession;
-  const ref = db.documents.quizSurvey2(uid, languageCode || undefined);
-  if (!ref) return '';
-  try {
-    const snap = await getDoc(ref);
-    const about = clipQuizTalkAbout(snap.data()?.aboutUserTranscription);
-    if (about) markQuizTalkAbout(about);
-    return about;
-  } catch {
-    return '';
-  }
 };
 
 export const useJustTalk = () => {
@@ -112,21 +78,15 @@ export const useJustTalk = () => {
     const attempt = beginJustTalkStart(startGateRef.current, Boolean(options?.supersede));
     if (attempt === null) return 'busy';
     setIsCallStarting(true);
-    const autoStartPrefs = readJustTalkAutoStart();
-    const setup = resolveJustTalkCallSetup({
-      prefs: autoStartPrefs,
-      settingsVoice: settings.voice,
-      settingsLanguage: settings.languageCode,
-    });
-    const mode = options?.mode || 'talk';
+    const voice = settings.voice || 'shimmer';
+    const language = settings.languageCode || null;
     const stillCurrent = () => isJustTalkStartCurrent(startGateRef.current, attempt);
 
     try {
       const uid = await auth.ensureAnonymousAuth();
       if (!stillCurrent()) return 'busy';
-      const goalPlan = await loadLatestGoal(uid, setup.language);
+      const goalPlan = await loadLatestGoal(uid, language);
       if (!stillCurrent()) return 'busy';
-      const firstLesson = firstPlanElement(goalPlan);
       if (!access.isFullAppAccess && (readFirstLessonUsed() || isFirstPlanLessonUsed(goalPlan))) {
         openPlanLessonOffer(router);
         return 'plan-locked';
@@ -145,31 +105,14 @@ export const useJustTalk = () => {
       if (!stillCurrent()) return 'busy';
       await settings.setConversationMode('call');
       if (!stillCurrent()) return 'busy';
-      const aboutUserTranscription =
-        mode === 'quiz-talk'
-          ? await loadQuizTalkAbout({
-              uid,
-              languageCode: setup.language,
-            })
-          : undefined;
-      if (!stillCurrent()) return 'busy';
       await conversation.startConversation({
         conversationMode: 'call',
-        mode,
-        voice: setup.voice,
-        languageCode: setup.language || undefined,
-        startUnmuted: setup.startUnmuted,
+        mode: 'talk',
+        voice,
+        languageCode: language || undefined,
         model,
-        aboutUserTranscription,
-        goal:
-          mode === 'quiz-talk' && goalPlan && firstLesson
-            ? { goalPlan, goalElement: firstLesson }
-            : undefined,
       });
       if (!stillCurrent()) return 'busy';
-      if (autoStartPrefs) {
-        consumeJustTalkAutoStart();
-      }
       return 'started';
     } catch (e) {
       if (!stillCurrent()) return 'busy';

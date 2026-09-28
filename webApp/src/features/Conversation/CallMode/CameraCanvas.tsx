@@ -46,10 +46,8 @@ export const CameraCanvas = ({
   gameWords,
   onSelectMicrophone,
   isGuestConversationLimited = false,
-  autoProposeFirstReply = false,
   onSendProposedAnswer,
   nextPlanLesson = null,
-  suppressPaywall = false,
 }: {
   conversation: ConversationMessage[];
   stopCallMode: () => void;
@@ -78,10 +76,8 @@ export const CameraCanvas = ({
   gameWords: GuessGameStat | null;
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
-  autoProposeFirstReply?: boolean;
   onSendProposedAnswer?: (text: string) => void;
   nextPlanLesson?: DayPassNextLesson | null;
-  suppressPaywall?: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -273,7 +269,6 @@ export const CameraCanvas = ({
               isAiSpeaking={isAiSpeaking}
               voice={voice}
               isLocked={isLimitedVoice || isSendMessagesBlocked}
-              autoProposeFirstReply={autoProposeFirstReply}
               onSendProposedAnswer={onSendProposedAnswer}
             />
           </Stack>
@@ -314,7 +309,6 @@ export const CameraCanvas = ({
             fullExit={fullExit}
             isGuestConversationLimited={isGuestConversationLimited}
             nextPlanLesson={nextPlanLesson}
-            suppressPaywall={suppressPaywall}
           />
         </Stack>
       </Stack>

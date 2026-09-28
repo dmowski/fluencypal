@@ -98,9 +98,7 @@ interface ConversationCanvasProps {
   isSendMessagesBlocked: boolean;
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
-  autoProposeFirstReply?: boolean;
   nextPlanLesson?: DayPassNextLesson | null;
-  suppressPaywall?: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,
@@ -149,9 +147,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   transcriptionBlob,
   onSelectMicrophone,
   isGuestConversationLimited = false,
-  autoProposeFirstReply = false,
   nextPlanLesson = null,
-  suppressPaywall = false,
 }) => {
   const { i18n } = useLingui();
   const isChatMode = conversationMode === 'chat';
@@ -244,7 +240,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             closeConversation();
             openCommunityPage();
           }}
-          nextPlanLesson={suppressPaywall ? null : nextPlanLesson}
+          nextPlanLesson={nextPlanLesson}
         />
       )}
     </>
@@ -290,14 +286,12 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
             addTranscriptDelta={addTranscriptDelta}
             completeUserMessageDelta={completeUserMessageDelta}
             isSendMessagesBlocked={isSendMessagesBlocked}
-            nextPlanLesson={suppressPaywall ? null : nextPlanLesson}
-            suppressPaywall={suppressPaywall}
+            nextPlanLesson={nextPlanLesson}
             fullExit={() => {
               closeConversation();
             }}
             onSelectMicrophone={onSelectMicrophone}
             isGuestConversationLimited={isGuestConversationLimited}
-            autoProposeFirstReply={autoProposeFirstReply}
             onSendProposedAnswer={addUserMessage}
           />
         </Modal>
@@ -365,7 +359,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
                 isAiSpeaking={isAiSpeaking}
                 voice={voice}
                 isLocked={isLimitedVoice || isSendMessagesBlocked}
-                autoProposeFirstReply={autoProposeFirstReply}
                 onSendProposedAnswer={addUserMessage}
               />
               <Stack

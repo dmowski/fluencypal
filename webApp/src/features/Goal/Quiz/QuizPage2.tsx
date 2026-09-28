@@ -12,12 +12,8 @@ import { PageLanguageSelector } from './PageLanguageSelector';
 import { GoalReview } from './GoalReview';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  buildJustTalkPracticeUrl,
-  markJustTalkAutoStart,
-} from '@/features/Conversation/justTalkHandoff';
-import { markQuizTalkAbout } from '@/features/Conversation/quizTalk';
-import { requestMicrophoneAccess } from '@/libs/mic';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { useAuth } from '@/features/Auth/useAuth';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
@@ -48,16 +44,23 @@ import {
   QuizTalkWithPeopleStep,
 } from './QuizExpectationSteps';
 
-const QuizSignedInHandoff = ({ start }: { start: () => Promise<void> }) => {
+const QuizSignedInHandoff = ({
+  start,
+  ready,
+}: {
+  start: () => Promise<void>;
+  ready: boolean;
+}) => {
   const startRef = useRef(start);
   startRef.current = start;
   const [failed, setFailed] = useState(false);
   const { i18n } = useLingui();
 
   const run = useCallback(() => {
+    if (!ready) return;
     setFailed(false);
     void startRef.current().catch(() => setFailed(true));
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
     run();
@@ -94,6 +97,7 @@ const QuizQuestions = () => {
     isLastStep,
   } = useQuiz();
   const { i18n } = useLingui();
+  const auth = useAuth();
   const settings = useSettings();
   const router = useRouter();
   const startLock = useRef(false);
@@ -110,7 +114,7 @@ const QuizQuestions = () => {
   const reasonExamples = practiceReasonExamples(i18n);
   const followUpHint = followUpSubtitle(i18n);
 
-  const startFirstCall = useCallback(async () => {
+  const startFirstLesson = useCallback(async () => {
     if (startLock.current) return;
     startLock.current = true;
 
@@ -118,36 +122,24 @@ const QuizQuestions = () => {
       if (languageToLearn && settings.userSettings?.languageCode !== languageToLearn) {
         await settings.setLanguage(languageToLearn);
       }
-      const micOkPromise = requestMicrophoneAccess();
       await confirmPlan();
-      const micOk = await micOkPromise;
-      if (micOk) {
-        markJustTalkAutoStart();
+      const firstLessonId = survey?.goalData?.elements[0]?.id;
+      if (!firstLessonId) {
+        throw new Error('Plan has no lesson to open');
       }
-      markQuizTalkAbout(survey?.aboutUserTranscription);
       router.push(
-        buildJustTalkPracticeUrl({
-          pageLanguage,
-          autoStart: micOk,
-        }),
+        `${getUrlStart(pageLanguage)}practice?plan-id=${encodeURIComponent(firstLessonId)}`,
       );
     } catch (e) {
       console.error(e);
       startLock.current = false;
       throw e;
     }
-  }, [
-    confirmPlan,
-    languageToLearn,
-    pageLanguage,
-    router,
-    settings,
-    survey?.aboutUserTranscription,
-  ]);
+  }, [confirmPlan, languageToLearn, pageLanguage, router, settings, survey?.goalData]);
 
   const next = () => {
     if (isLastStep) {
-      void startFirstCall().catch(() => undefined);
+      void startFirstLesson().catch(() => undefined);
     } else {
       void nextStep();
     }
@@ -332,7 +324,7 @@ const QuizQuestions = () => {
           {currentStep === 'authWall' && (
             <QuizAuthWallStep>
               {survey?.goalData ? (
-                <QuizSignedInHandoff start={startFirstCall} />
+                <QuizSignedInHandoff start={startFirstLesson} ready={Boolean(auth.uid)} />
               ) : (
                 <QuizPageLoader />
               )}

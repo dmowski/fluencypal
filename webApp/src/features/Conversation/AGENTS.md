@@ -40,8 +40,7 @@ Conversation/
 │   ├── CallSettingsMenu.tsx        # Video on/off, mute, captions, mic picker
 │   └── …
 ├── ConversationInstance/           # WebRTC / realtime WS session clients
-├── quizTalk.ts                     # First quiz call (`quiz-talk`) about-you snapshot
-├── useAiConversation/              # Orchestration, limits, stats, prompts (`getQuizTalkInstruction`)
+├── useAiConversation/              # Orchestration, limits, stats, prompts
 ├── ProcessUserInput/               # Corrections UX after user speech
 ├── conversationCanvasBrowserFixtures.tsx
 └── ConversationCanvas.browser.test.tsx
@@ -54,7 +53,7 @@ Conversation/
   - Record: **Exit**, **Switch to Call mode**, **Show results**
 - **Call settings:** Settings control opens `CallSettingsMenu` (video on/off for both camera tiles, mute AI voice, captions, select microphone). Mic on/off and end-call stay on the footer. Turning video off hides the teacher and learner tiles so captions can fill the call. Selected microphone is persisted in `localStorage` (`preferredMicrophoneId`) and applied live via `ConversationInstance.switchMicrophone`.
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
-- **Quiz handoff:** `/practice?justTalk=open` auto-starts only when mic was primed as the signed-in quiz auth wall starts the call (`fp_justTalkAutoStart` session flag **or** consume-once `autoStart=1` on the practice URL: start unmuted). That first call uses conversation mode **`quiz-talk`**, not `talk`. It is lesson 1 of the plan they just accepted (`users/{uid}/goals`, first element passed as `goal`). The prompt names that lesson, then asks a closed question tied to `aboutUserTranscription` (session `fp_quizTalkAbout`, else `users/{uid}/quiz2/{lang}`) when the clip fits. If the clip has 5+ words, the follow-up is a yes/no or A/B (not an open “tell me more”). Short or empty clips ask one easy yes/no — do not invent a choice, and do not ask them to repeat a sentence. Do not preview later lessons. When a guest hits the free reply cap, the review opens and the offer is the next plan card (`Continue your plan`). That tap closes the review and opens confirmation before Stripe, naming the next lesson (`planLesson` on the URL). Guests see sign-in only. After they are signed in, the screen is the lesson plus the checkboxes, and Stripe starts only after those boxes. The onboarding first call (signed-in `quiz-talk`) does not show that offer: the cap explains the free messages are used, and Close returns to the `/practice` dashboard. Another `talk` / `quiz-talk` call stays locked until they have access (`fp_firstLessonUsed` plus goal progress). After any reply, ask a new short question in different words. After the first teacher line, auto-show a tappable **What you can say** chip (`quiz-talk-suggested-reply`) so they do not have to find **What to say?**. Dashboard Just Talk stays `talk` and does not auto-show this. Quiz asks for the browser mic on `micPermission` (`mic-permission-grant`) before the about clip; Start Speaking primes again for auto-start. Teacher voice and learn language come from Firestore user settings (anonymous auth starts at quiz entry, before teacher selection). Cold opens always show `JustTalkHandoffScreen` (`just-talk-handoff`) until **Enable microphone to start talking** (`enable-mic-just-talk`) and stay muted until that tap. Auto-start keeps that same screen up until the call is connecting; it does not cover the button with a Loading state. An Enable-mic tap supersedes an in-flight auto-start so the mic request runs in that gesture. Keep `justTalk=open` until the first user message; End call without speech returns to the same panel. Skip-all still goes to empty `/practice`. Start in **call** mode. To verify locally: finish quiz `goalReview` with mic allowed → URL includes `autoStart=1`, `quiz-talk` call should start unmuted with the chosen teacher/learn language, no second tap, first-reply chip after the teacher line, then `autoStart` is stripped; open `/practice?justTalk=open` cold → handoff panel only (no browser permission dialog until Enable mic).
+- **Quiz finish:** After the signed-in auth wall, the quiz opens the first lesson of the saved plan at `/practice?plan-id=<lesson id>`. It does not auto-start a Just Talk call. Dashboard Just Talk stays a normal `talk` call started from the card.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
@@ -74,8 +73,6 @@ Conversation/
 | `call-progress-bar`          | Message-count progress strip on call footer      |
 | `call-mic-toggle`            | Call footer mic on/off (`aria-pressed` = unmuted) |
 | `conversation-review-modal`  | Post-call / Show results review steps            |
-| `just-talk-handoff`          | Persistent Enable-mic screen after quiz `justTalk=open` |
-| `quiz-talk-suggested-reply`  | Auto-shown first quiz-talk reply chip                     |
 
 ## Testing
 

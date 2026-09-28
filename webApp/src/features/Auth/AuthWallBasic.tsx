@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { ArrowRight, Check, Mail } from 'lucide-react';
 import { scrollTopFast } from '@/libs/scroll';
 import { InfoStep } from '../Survey/InfoStep';
+import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
 import { ListItem } from '../Survey/IconTextList';
 import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
@@ -160,6 +161,21 @@ export const AuthWallBasic = ({
     setStoredAuthMethod(method);
     setLastAuthMethod(method);
   };
+
+  if (auth.loading) {
+    return (
+      <Stack
+        sx={{
+          paddingTop: '50px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+        }}
+      >
+        <LoadingShapes sizes={['120px', '30px', '40px']} />
+      </Stack>
+    );
+  }
 
   if (!isShowAuthWall) {
     return children;

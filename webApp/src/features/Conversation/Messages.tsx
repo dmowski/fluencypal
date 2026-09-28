@@ -7,9 +7,8 @@ import { AudioLines, Languages, Loader, Sparkles } from 'lucide-react';
 import { ConversationMessage, MessagesOrderMap } from '@/features/Conversation/conversation';
 import { useLingui } from '@lingui/react';
 import { useTranslate } from '../Translation/useTranslate';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { getSortedMessages } from './getSortedMessages';
-import { isFirstQuizTalkTeacherTurn } from './quizTalk';
 import { AudioPlayIcon } from '../Audio/AudioPlayIcon';
 import { AiVoice } from '@/features/Ai/ai';
 import { getAiVoiceByVoice } from './CallMode/voiceAvatar';
@@ -28,7 +27,6 @@ export const Messages = ({
   voice,
   isLocked,
   gameWords,
-  autoProposeFirstReply = false,
   onSendProposedAnswer,
 }: {
   conversation: ConversationMessage[];
@@ -37,7 +35,6 @@ export const Messages = ({
   voice: AiVoice;
   isLocked?: boolean;
   gameWords?: GuessGameStat | null;
-  autoProposeFirstReply?: boolean;
   onSendProposedAnswer?: (text: string) => void;
 }) => {
   const translator = useTranslate();
@@ -46,9 +43,6 @@ export const Messages = ({
     () => getSortedMessages({ conversation, messageOrder }),
     [conversation, messageOrder, isAiSpeaking],
   );
-  const shouldAutoProposeFirstReply =
-    autoProposeFirstReply && isFirstQuizTalkTeacherTurn(sortedMessages);
-
   const messages = (
     <>
       {translator.translateModal}
@@ -71,7 +65,6 @@ export const Messages = ({
               voice={voice}
               isAiSpeaking={isThisIsLast && isLastIsBot && isAiSpeaking}
               isLastMessage={isThisIsLast}
-              autoProposeFirstReply={shouldAutoProposeFirstReply && isThisIsLast}
               onSendProposedAnswer={onSendProposedAnswer}
               isLocked={isLocked}
             />
@@ -107,7 +100,6 @@ export const Message = ({
   isAiSpeaking,
   voice,
   isLastMessage,
-  autoProposeFirstReply = false,
   onSendProposedAnswer,
   isLocked = false,
 }: {
@@ -115,7 +107,6 @@ export const Message = ({
   isAiSpeaking?: boolean;
   voice: AiVoice;
   isLastMessage: boolean;
-  autoProposeFirstReply?: boolean;
   onSendProposedAnswer?: (text: string) => void;
   isLocked?: boolean;
 }) => {
@@ -156,9 +147,7 @@ export const Message = ({
   const [proposedAnswer, setProposedAnswer] = useState<string | null>(null);
   const [proposedAnswerTranslation, setProposedAnswerTranslation] = useState<string | null>(null);
   const [isProposedAnswerLoading, setIsProposedAnswerLoading] = useState(false);
-  const [didAutoProposeFail, setDidAutoProposeFail] = useState(false);
   const [isSendingProposedAnswer, setIsSendingProposedAnswer] = useState(false);
-  const autoProposeStartedForId = useRef<string | null>(null);
   const didSendProposedAnswer = useRef(false);
 
   const scrollToBottom = () => {
@@ -177,7 +166,6 @@ export const Message = ({
       const nextAnswer = await conversationAnalysis.generateNextUserMessage();
       const trimmed = String(nextAnswer || '').trim();
       if (!trimmed || trimmed.startsWith('Error.')) {
-        setDidAutoProposeFail(true);
         return false;
       }
       const translatedAnswer =
@@ -189,21 +177,12 @@ export const Message = ({
 
       setProposedAnswer('\n' + trimmed);
       setProposedAnswerTranslation(translatedAnswer ? '\n' + translatedAnswer.trim() : null);
-      setDidAutoProposeFail(false);
       scrollToBottom();
       return true;
     } finally {
       setIsProposedAnswerLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (!autoProposeFirstReply || isAiSpeaking || !message.isBot) return;
-    if (!(message.text || '').trim()) return;
-    if (autoProposeStartedForId.current === message.id) return;
-    autoProposeStartedForId.current = message.id;
-    void generateProposedAnswer();
-  }, [autoProposeFirstReply, isAiSpeaking, message.id, message.isBot, message.text]);
 
   const sendProposedAnswer = () => {
     const text = (proposedAnswer || '').trim();
@@ -214,10 +193,7 @@ export const Message = ({
   };
 
   const showWhatToSayButton =
-    isAbleToGenerateHelpAnswer &&
-    !proposedAnswer &&
-    !isProposedAnswerLoading &&
-    (!autoProposeFirstReply || didAutoProposeFail);
+    isAbleToGenerateHelpAnswer && !proposedAnswer && !isProposedAnswerLoading;
 
   const isUserIsRecordingStart = isLastMessage && !message.isBot && message.text === ' ';
   const isMessageInProgress = isLastMessage && !message.isBot && message.isInProgress;
@@ -357,7 +333,7 @@ export const Message = ({
         </Stack>
       </Stack>
 
-      {(proposedAnswer || (autoProposeFirstReply && isProposedAnswerLoading)) && (
+      {(proposedAnswer || isProposedAnswerLoading) && (
         <Stack
           sx={{
             marginTop: '30px',

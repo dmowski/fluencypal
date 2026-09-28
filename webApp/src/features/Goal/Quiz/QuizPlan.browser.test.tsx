@@ -6,7 +6,6 @@ import { useLingui } from '@lingui/react';
 import { GoalPlan } from '@/features/Plan/types';
 import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
 import { GoalReview } from './GoalReview';
-import { FirstCallFinishedNotice } from '@/features/Conversation/CallMode/FirstCallFinishedNotice';
 import { expectQuizScreenshot, QuizShotFrame } from './quizBrowserFrame';
 
 vi.mock('@/features/Layout/useWindowSizes', () => ({
@@ -100,15 +99,4 @@ test('practice plan', async () => {
   await expect.element(page.getByText('Assessing your progress')).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Continue' })).toBeVisible();
   await expectQuizScreenshot('onboarding-goal-review');
-});
-
-test('first call finished without a paywall', async () => {
-  await render(
-    <QuizShotFrame>
-      <FirstCallFinishedNotice onClose={() => undefined} />
-    </QuizShotFrame>,
-  );
-  await expect.element(page.getByTestId('onboarding-call-finished')).toBeVisible();
-  await expect.element(page.getByTestId('onboarding-call-close')).toBeVisible();
-  await expectQuizScreenshot('onboarding-first-call-finished');
 });
