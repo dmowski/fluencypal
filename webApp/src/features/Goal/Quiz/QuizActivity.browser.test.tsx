@@ -1,3 +1,4 @@
+import React from 'react';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page } from 'vitest/browser';
@@ -9,6 +10,34 @@ import {
   QuizFeaturePersonalPlanStep,
 } from './QuizActivitySteps';
 import { expectQuizScreenshot, QuizShotFrame } from './quizBrowserFrame';
+
+const setVoice = async () => undefined;
+
+vi.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt }: { src: string; alt?: string }) =>
+    React.createElement('img', {
+      src,
+      alt: alt || '',
+      style: {
+        position: 'absolute',
+        inset: '0',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      },
+    }),
+}));
+
+vi.mock('@/features/Settings/useSettings', () => ({
+  useSettings: () => ({
+    aiVoiceSpeed: 'slow',
+    voice: 'shimmer',
+    languageCode: 'en',
+    userSettings: { languageCode: 'en' },
+    setVoice,
+  }),
+}));
 
 vi.mock('@/features/Auth/useAuth', () => ({
   useAuth: () => ({
@@ -45,6 +74,15 @@ test('activity choice with a selection', async () => {
   await expectQuizScreenshot('onboarding-activity-choice-selected');
 });
 
+const waitForCardImage = async () => {
+  await expect
+    .poll(async () => {
+      const img = page.getByRole('img', { name: 'Preview' }).element() as HTMLImageElement;
+      return img.complete && img.naturalWidth > 0;
+    })
+    .toBe(true);
+};
+
 test('daily speaking lesson', async () => {
   await render(
     <QuizShotFrame>
@@ -52,6 +90,7 @@ test('daily speaking lesson', async () => {
     </QuizShotFrame>,
   );
   await expect.element(page.getByText('Daily speaking lesson')).toBeVisible();
+  await waitForCardImage();
   await expectQuizScreenshot('onboarding-feature-daily-lesson');
 });
 
@@ -62,6 +101,7 @@ test('game', async () => {
     </QuizShotFrame>,
   );
   await expect.element(page.getByText('The game')).toBeVisible();
+  await waitForCardImage();
   await expectQuizScreenshot('onboarding-feature-game');
 });
 
@@ -72,6 +112,7 @@ test('AI talking', async () => {
     </QuizShotFrame>,
   );
   await expect.element(page.getByText('Talk with the AI teacher')).toBeVisible();
+  await waitForCardImage();
   await expectQuizScreenshot('onboarding-feature-ai-talk');
 });
 
@@ -81,6 +122,7 @@ test('personal plan feature', async () => {
       <QuizFeaturePersonalPlanStep {...idle} />
     </QuizShotFrame>,
   );
-  await expect.element(page.getByText('Your personal plan')).toBeVisible();
+  await expect.element(page.getByTestId('quiz-feature-personal-plan')).toBeVisible();
+  await waitForCardImage();
   await expectQuizScreenshot('onboarding-feature-personal-plan');
 });

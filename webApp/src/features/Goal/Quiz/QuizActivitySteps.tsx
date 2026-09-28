@@ -5,7 +5,57 @@ import { Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { InfoStep } from '../../Survey/InfoStep';
 import { QuizOption } from '@/features/Case/types';
+import { StoreCard } from '@/features/uiKit/Card/StoreCard';
+import { INTERACTIVE_LESSON_CARD_IMAGE } from '@/features/InteractiveLesson/constants';
+import { lessonColor } from '@/features/InteractiveLesson/lessonTheme';
+import { voiceAvatarMap } from '@/features/Conversation/CallMode/voiceAvatar';
+import { AiVoice } from '@/features/Ai/ai';
+import { useQuizTeacherVoice } from './useQuizTeacherVoice';
 import { PracticeActivity } from './quizSteps';
+
+const GAME_DASHBOARD_CARD_IMAGE =
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783894830179-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+
+const PLAN_DASHBOARD_CARD_IMAGE =
+  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1783891013640-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+
+const talkCardBackground: Record<AiVoice, string> = {
+  ash: 'rgba(6, 54, 49, 0.28)',
+  shimmer: 'rgba(12, 71, 103, 0.29)',
+  marin: 'rgba(36, 53, 3, 0.28)',
+  verse: 'rgba(2, 42, 22, 0.59)',
+};
+
+const DashboardPreviewCard = ({
+  imageUrl,
+  title,
+  subTitle,
+  backgroundColor,
+  badge,
+  label,
+}: {
+  imageUrl: string;
+  title: string;
+  subTitle?: string;
+  backgroundColor: string;
+  badge?: string;
+  label?: string;
+}) => (
+  <Stack sx={{ paddingTop: '16px', width: '100%' }}>
+    <StoreCard
+      textColor="#fff"
+      backgroundColor={backgroundColor}
+      previewImageUrl={imageUrl}
+      title={title}
+      subTitle={subTitle}
+      badge={badge}
+      label={label}
+      items={[]}
+      itemsBackgroundColor="rgba(0, 0, 0, 0.2)"
+      itemsViewMode="list"
+    />
+  </Stack>
+);
 
 const activityFromLabel = (
   label: string,
@@ -95,6 +145,15 @@ export const QuizFeatureDailyLessonStep = ({
             iconName: 'graduation-cap',
           },
         ]}
+        subComponent={
+          <DashboardPreviewCard
+            imageUrl={INTERACTIVE_LESSON_CARD_IMAGE}
+            backgroundColor={lessonColor.dashboardIdle}
+            badge={i18n._('Recommended')}
+            title={i18n._('One pattern. Real speaking practice.')}
+            subTitle={i18n._('Learn it, say it, and get feedback.')}
+          />
+        }
         onClick={onContinue}
         disabled={isStepLoading}
         isStepLoading={isStepLoading}
@@ -128,6 +187,14 @@ export const QuizFeatureGameStep = ({
             iconName: 'shield-check',
           },
         ]}
+        subComponent={
+          <DashboardPreviewCard
+            imageUrl={GAME_DASHBOARD_CARD_IMAGE}
+            backgroundColor="rgba(25, 25, 25, 0.59)"
+            title={i18n._('Test your knowledge')}
+            subTitle={i18n._('Answer questions correctly to climb the leaderboard!')}
+          />
+        }
         onClick={onContinue}
         disabled={isStepLoading}
         isStepLoading={isStepLoading}
@@ -144,6 +211,9 @@ export const QuizFeatureAiTalkStep = ({
   isStepLoading: boolean;
 }) => {
   const { i18n } = useLingui();
+  const { selectedVoice } = useQuizTeacherVoice();
+  const voice = selectedVoice || 'shimmer';
+  const teacherPhoto = voiceAvatarMap[voice].photoUrls[0];
   return (
     <Stack data-testid="quiz-feature-ai-talk" data-analytics-screen="quiz.featureAiTalk">
       <InfoStep
@@ -161,6 +231,14 @@ export const QuizFeatureAiTalkStep = ({
             iconName: 'shield-check',
           },
         ]}
+        subComponent={
+          <DashboardPreviewCard
+            imageUrl={teacherPhoto}
+            backgroundColor={talkCardBackground[voice]}
+            label="JUST TALK MODE"
+            title={i18n._('Conversation with AI')}
+          />
+        }
         onClick={onContinue}
         disabled={isStepLoading}
         isStepLoading={isStepLoading}
@@ -197,6 +275,15 @@ export const QuizFeaturePersonalPlanStep = ({
             iconName: 'graduation-cap',
           },
         ]}
+        subComponent={
+          <DashboardPreviewCard
+            imageUrl={PLAN_DASHBOARD_CARD_IMAGE}
+            backgroundColor="rgba(7, 7, 10, 0)"
+            label={i18n._('Current Lesson').toUpperCase()}
+            title={i18n._('Your personal plan')}
+            subTitle={i18n._('The first call is lesson 1 of this plan')}
+          />
+        }
         onClick={onContinue}
         disabled={isStepLoading}
         isStepLoading={isStepLoading}
