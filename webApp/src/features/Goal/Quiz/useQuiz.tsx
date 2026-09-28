@@ -32,6 +32,7 @@ import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from './types';
 import * as Sentry from '@sentry/nextjs';
 import { useSettings } from '@/features/Settings/useSettings';
 import { usePlan } from '@/features/Plan/usePlan';
+import { useTextAi } from '@/features/Ai/useTextAi';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { claimGoalGeneration, goalAboutHash, releaseGoalGeneration } from './goalGeneration';
 import { NativeLangCode } from '@/libs/language/type';
@@ -51,6 +52,11 @@ import {
   resolveQuizStep,
 } from './quizSteps';
 import { personalizedPlanContext } from './onboardingContent';
+import {
+  claimFollowUpQuestion,
+  generateFollowUpQuestion,
+  releaseFollowUpQuestion,
+} from './followUpQuestion';
 
 interface QuizContextType {
   languageToLearn: SupportedLanguage;
@@ -76,6 +82,8 @@ interface QuizContextType {
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
   saveAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
   saveFollowUpClip: (recording: QuizGuestAboutRecording) => Promise<string>;
+  followUpQuestionError: boolean;
+  retryFollowUpQuestion: () => void;
   saveWantsRealPeople: (value: boolean) => Promise<void>;
   continueWithActivities: (activities: PracticeActivity[]) => Promise<void>;
 
@@ -103,7 +111,9 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const auth = useAuth();
   const settings = useSettings();
   const plan = usePlan();
+  const textAi = useTextAi();
   const userInfo = useAiUserInfo();
+  const [followUpQuestionError, setFollowUpQuestionError] = useState(false);
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
@@ -145,6 +155,8 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const currentStep = state.currentStep;
   const languageToLearn = state.learn;
   const pageLanguage = state.pageLang;
+  const pageLanguageRef = useRef(pageLanguage);
+  pageLanguageRef.current = pageLanguage;
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
   const [surveyDoc] = useDocumentData(surveyDocRef);
@@ -449,6 +461,43 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const activeStep = resolveQuizStep(currentStep, path);
   const currentStepIndex = path.indexOf(activeStep);
 
+  const ensureFollowUpQuestion = async () => {
+    const survey = surveyRef.current;
+    const transcript = survey?.aboutUserTranscription?.trim() || '';
+    const languageCode = pageLanguage;
+    const hash = claimFollowUpQuestion(transcript, languageCode, survey?.aboutUserFollowUpQuestion);
+    if (!hash) return;
+
+    setFollowUpQuestionError(false);
+    try {
+      const title = await generateFollowUpQuestion({
+        textAi,
+        transcript,
+        languageCode,
+      });
+      const current = surveyRef.current;
+      if (!current || current.aboutUserTranscription.trim() !== transcript) return;
+      if (pageLanguageRef.current !== languageCode) return;
+      await updateSurvey(
+        {
+          ...current,
+          aboutUserFollowUpQuestion: {
+            sourceTranscription: transcript,
+            title,
+            subtitle: '',
+            hash,
+          },
+        },
+        'followUpQuestion',
+      );
+    } catch (error) {
+      setFollowUpQuestionError(true);
+      Sentry.captureException(error);
+    } finally {
+      releaseFollowUpQuestion(hash);
+    }
+  };
+
   const saveAboutClip = async (recording: QuizGuestAboutRecording) => {
     await ensureSurveyDocExists();
     const transcript = await transcribeAboutRecording({
@@ -474,6 +523,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     if (!written) {
       throw new Error('Could not save about recording');
     }
+    void ensureFollowUpQuestion();
     return written;
   };
 
@@ -570,10 +620,16 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       return;
     }
 
-    void ensureSurveyDocExists().catch((error) => {
-      Sentry.captureException(error);
-    });
-  }, [auth.uid, activeStep]);
+    void ensureSurveyDocExists()
+      .then(() => {
+        if (activeStep === 'recordAboutFollowUp') {
+          return ensureFollowUpQuestion();
+        }
+      })
+      .catch((error) => {
+        Sentry.captureException(error);
+      });
+  }, [auth.uid, activeStep, surveyDoc?.aboutUserTranscription, pageLanguage]);
 
   useEffect(() => {
     if (activeStep !== 'before_goalReview' && activeStep !== 'goalReview') {
@@ -685,6 +741,10 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     updateSurvey,
     saveAboutClip,
     saveFollowUpClip,
+    followUpQuestionError,
+    retryFollowUpQuestion: () => {
+      void ensureFollowUpQuestion();
+    },
     saveWantsRealPeople,
     continueWithActivities,
     test,

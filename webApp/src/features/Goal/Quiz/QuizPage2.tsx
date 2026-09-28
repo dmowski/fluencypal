@@ -21,12 +21,8 @@ import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { QuizMicPermissionStep, QuizRecordingConsentStep } from './QuizRecordingConsentStep';
 import { hasAboutTranscription, hasFollowUpTranscription } from './quizGuestAboutStorage';
-import {
-  followUpKindFromTranscript,
-  followUpSubtitle,
-  followUpTitleForKind,
-  practiceReasonExamples,
-} from './onboardingContent';
+import { isFollowUpQuestionReady } from './followUpQuestion';
+import { followUpSubtitle, practiceReasonExamples } from './onboardingContent';
 import {
   QuizActivityChoiceStep,
   QuizFeatureAiTalkStep,
@@ -44,13 +40,7 @@ import {
   QuizTalkWithPeopleStep,
 } from './QuizExpectationSteps';
 
-const QuizSignedInHandoff = ({
-  start,
-  ready,
-}: {
-  start: () => Promise<void>;
-  ready: boolean;
-}) => {
+const QuizSignedInHandoff = ({ start, ready }: { start: () => Promise<void>; ready: boolean }) => {
   const startRef = useRef(start);
   startRef.current = start;
   const [failed, setFailed] = useState(false);
@@ -86,6 +76,8 @@ const QuizQuestions = () => {
     survey,
     saveAboutClip,
     saveFollowUpClip,
+    followUpQuestionError,
+    retryFollowUpQuestion,
     saveWantsRealPeople,
     continueWithActivities,
     languageToLearn,
@@ -107,12 +99,14 @@ const QuizQuestions = () => {
     'Say a few sentences in your own words. The examples below are only ideas.',
   );
   const recordAboutPrompt = `${recordAboutTitle} ${recordAboutQuestion}`;
-  const followUp = followUpTitleForKind(
-    followUpKindFromTranscript(survey?.aboutUserTranscription || ''),
-    i18n,
-  );
   const reasonExamples = practiceReasonExamples(i18n);
   const followUpHint = followUpSubtitle(i18n);
+  const followUpReady = isFollowUpQuestionReady(
+    survey?.aboutUserFollowUpQuestion,
+    survey?.aboutUserTranscription || '',
+    pageLanguage,
+  );
+  const followUp = survey?.aboutUserFollowUpQuestion.title.trim() || '';
 
   const startFirstLesson = useCallback(async () => {
     if (startLock.current) return;
@@ -234,21 +228,30 @@ const QuizQuestions = () => {
             />
           )}
 
-          {currentStep === 'recordAboutFollowUp' && (
-            <QuizBeforeRecordAboutGate
-              languageCode={languageToLearn}
-              title={followUp}
-              subTitle={followUpHint}
-              promptText={`${followUp} ${followUpHint}`}
-              contextMessage={survey?.aboutUserTranscription}
-              alreadySaved={hasFollowUpTranscription(survey)}
-              savedTranscript={survey?.aboutUserFollowUpTranscription}
-              onSaveRecording={async (recording) => {
-                await saveFollowUpClip(recording);
-              }}
-              onContinue={next}
-            />
-          )}
+          {currentStep === 'recordAboutFollowUp' &&
+            (followUpReady ? (
+              <QuizBeforeRecordAboutGate
+                languageCode={languageToLearn}
+                title={followUp}
+                subTitle={followUpHint}
+                promptText={`${followUp} ${followUpHint}`}
+                contextMessage={survey?.aboutUserTranscription}
+                alreadySaved={hasFollowUpTranscription(survey)}
+                savedTranscript={survey?.aboutUserFollowUpTranscription}
+                onSaveRecording={async (recording) => {
+                  await saveFollowUpClip(recording);
+                }}
+                onContinue={next}
+              />
+            ) : followUpQuestionError ? (
+              <InfoStep
+                title={i18n._('Could not write your next question. Please try again.')}
+                actionButtonTitle={i18n._('Try again')}
+                onClick={retryFollowUpQuestion}
+              />
+            ) : (
+              <QuizPageLoader />
+            ))}
 
           {currentStep === 'talkWithPeople' && (
             <QuizTalkWithPeopleStep

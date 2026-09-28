@@ -1,23 +1,6 @@
-import {
-  followUpKindFromTranscript,
-  followUpTitleForKind,
-  personalizedPlanContext,
-  practiceReasonExamples,
-} from './onboardingContent';
+import { personalizedPlanContext, practiceReasonExamples } from './onboardingContent';
 
 const identityI18n = { _: (text: string) => text };
-
-describe('followUpKindFromTranscript', () => {
-  it('picks a follow-up from the most common reasons', () => {
-    expect(followUpKindFromTranscript('I want to pass a job interview. I am a doctor.')).toBe(
-      'interview',
-    );
-    expect(followUpKindFromTranscript('I need to pass the IELTS exam')).toBe('exam');
-    expect(followUpKindFromTranscript('I am preparing for a trip to the USA')).toBe('travel');
-    expect(followUpKindFromTranscript('My friends in Canada are musicians')).toBe('friends');
-    expect(followUpKindFromTranscript('I just want to feel more confident')).toBe('general');
-  });
-});
 
 describe('practiceReasonExamples', () => {
   it('lists the most common reasons first, as full sentences', () => {
@@ -28,13 +11,6 @@ describe('practiceReasonExamples', () => {
     expect(examples[2]).toContain('USA');
     expect(examples[3]).toContain('Canada');
     expect(examples[4]).toContain('English-speaking friends');
-  });
-});
-
-describe('followUpTitleForKind', () => {
-  it('asks one plan question for the detected reason', () => {
-    expect(followUpTitleForKind('interview', identityI18n)).toContain('interview');
-    expect(followUpTitleForKind('general', identityI18n)).toContain('English');
   });
 });
 

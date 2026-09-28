@@ -2,11 +2,7 @@ import { test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { useLingui } from '@lingui/react';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
-import {
-  followUpSubtitle,
-  followUpTitleForKind,
-  practiceReasonExamples,
-} from './onboardingContent';
+import { followUpSubtitle, practiceReasonExamples } from './onboardingContent';
 import { expectQuizScreenshot, QuizShotFrame } from './quizBrowserFrame';
 
 const setVoice = async () => undefined;
@@ -92,7 +88,7 @@ const RecordAboutSaved = () => {
 
 const RecordAboutFollowUp = () => {
   const { i18n } = useLingui();
-  const title = followUpTitleForKind('interview', i18n);
+  const title = i18n._('What work do you do, and what do you need to say in that interview?');
   const subTitle = followUpSubtitle(i18n);
   return (
     <QuizBeforeRecordAboutGate
