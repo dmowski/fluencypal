@@ -3,7 +3,8 @@ const KEPT_QUERY_KEYS = [
   'rolePlayId',
   'interactiveLesson',
   'dailyQuestions',
-  'justTalk',
+  'page',
+  'section',
 ] as const;
 
 export const normalizeAnalyticsPath = (path: string): string => {

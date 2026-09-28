@@ -44,12 +44,13 @@ export const screenIdFromPath = (path: string, dialog: string): string => {
   const query = path.includes('?') ? path.slice(path.indexOf('?') + 1) : '';
   const params = new URLSearchParams(query);
   const step = params.get('currentStep');
-  const justTalk = params.get('justTalk');
+  const page = params.get('page');
+  const section = params.get('section');
   const rolePlay = params.get('rolePlayId');
   let id = 'other';
   if (pathname.includes('/quiz')) id = step ? `quiz.${step}` : 'quiz.start';
   else if (pathname.includes('/practice')) {
-    if (justTalk === 'open' || justTalk === 'true') id = 'practice.justTalk';
+    if (page === 'community') id = section ? `practice.community.${section}` : 'practice.community';
     else if (rolePlay) id = 'practice.rolePlay';
     else id = 'practice';
   } else if (pathname.includes('/scenarios')) id = 'scenario';

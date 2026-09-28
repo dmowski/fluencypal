@@ -440,12 +440,13 @@ describe('normalizeAnalyticsPath', () => {
     expect(normalizeAnalyticsPath('/practice?rolePlayId=custom&utm_source=chatgpt.com')).toBe(
       '/practice?rolePlayId=custom',
     );
-    expect(normalizeAnalyticsPath('/id/practice?justTalk=open&fpv=fpv_1')).toBe(
-      '/id/practice?justTalk=open',
+    expect(normalizeAnalyticsPath('/id/practice?page=community&fpv=fpv_1')).toBe(
+      '/id/practice?page=community',
     );
-    expect(normalizeAnalyticsPath('/practice?justTalk=open&autoStart=1')).toBe(
-      '/practice?justTalk=open',
+    expect(normalizeAnalyticsPath('/practice?page=community&section=chat&justTalk=open')).toBe(
+      '/practice?page=community&section=chat',
     );
+    expect(normalizeAnalyticsPath('/practice?justTalk=open&autoStart=1')).toBe('/practice');
     expect(normalizeAnalyticsPath('/practice?inbox=true&inboxType=chat')).toBe('/practice');
     expect(normalizeAnalyticsPath('/?fpv=fpv_11111111-1111-4111-8111-111111111111')).toBe('/');
   });

@@ -20,7 +20,7 @@ Read and follow `webApp/src/features/Analytics/Custom/AGENTS.md` immediately. Th
 2. Read `webApp/src/features/Analytics/Custom/LAST_REPORT.md` and `webApp/src/features/Analytics/Custom/INTERVENTIONS.md`.
 3. Export the window in `webApp/` with `pnpm analytics:export` as the guide specifies (`--from` last `Analyzed through` timestamp, or a skipped-day gap).
 4. Read `webApp/.analytics-export.json`. Do not paste raw user agents or emails.
-5. Sample first-speech transcripts as the guide specifies (`aboutUserTranscription` on `users/{uid}/quiz2`, plus first conversation user turns). Summarize struggle themes; do not paste emails, uids, or full transcripts.
+5. Sample first-speech transcripts as the guide specifies (`aboutUserTranscription`, the generated follow-up question, and `aboutUserFollowUpTranscription` on `users/{uid}/quiz2`, plus first conversation user turns only after they start a call). Summarize struggle themes; do not paste emails, uids, or full transcripts. A quiz speaker with no conversation has not started lesson 1; that is not a missed Just Talk auto-start.
 6. Pull Sentry **before** “why they leave” / “what to do next” (errors can look like funnel drop):
    - Org `pikapix`, project `4508885116452864`, region `https://us.sentry.io`
    - [Unresolved issues](https://pikapix.sentry.io/issues/?project=4508885116452864&query=is%3Aunresolved&referrer=issue-list&statsPeriod=14d)

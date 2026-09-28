@@ -29,7 +29,8 @@ const KEEP_QUERY = new Set([
   'rolePlayId',
   'interactiveLesson',
   'dailyQuestions',
-  'justTalk',
+  'page',
+  'section',
 ]);
 
 const argValue = (flag) => {
