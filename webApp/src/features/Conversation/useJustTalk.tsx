@@ -7,14 +7,6 @@ import { getMediaAudioStreams, getMediaVideoStreams } from '../webCam/mediaStrea
 import { useMicrophonePermission } from '../webCam/useMicrophonePermission';
 import { RealTimeModel } from '../Ai/ai';
 import { useAuth } from '../Auth/useAuth';
-import { getDocs } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
-import { db } from '@/features/Firebase/firebaseDb';
-import { SupportedLanguage } from '@/features/Lang/lang';
-import { GoalPlan } from '@/features/Plan/types';
-import { useAccess } from '@/features/Usage/useAccess';
-import { isFirstPlanLessonUsed, readFirstLessonUsed } from './firstPlanLesson';
-import { JUST_TALK_HANDOFF_PARAM, JUST_TALK_HANDOFF_VALUE } from './justTalkHandoff';
 import {
   beginJustTalkStart,
   finishJustTalkStart,
@@ -22,33 +14,20 @@ import {
   JustTalkStartGate,
 } from './justTalkStartGate';
 
-export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy' | 'plan-locked';
+export type StartJustTalkResult = 'started' | 'mic-denied' | 'busy';
 
-const loadLatestGoal = async (
-  uid: string | undefined,
-  languageCode: SupportedLanguage | null | undefined,
-): Promise<GoalPlan | null> => {
-  const ref = db.collections.goals(uid);
-  if (!ref) return null;
-  try {
-    const snap = await getDocs(ref);
-    const goals = snap.docs.map((entry) => entry.data());
-    const matching = languageCode
-      ? goals.filter((item) => item.languageCode === languageCode)
-      : goals;
-    const pool = matching.length ? matching : goals;
-    pool.sort((a, b) => (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0));
-    return pool[0] || null;
-  } catch {
-    return null;
-  }
+const logJustTalk = (step: string, details?: Record<string, unknown>) => {
+  console.log('[just-talk]', step, {
+    href: typeof window === 'undefined' ? '' : window.location.href,
+    ...details,
+  });
 };
 
-const openPlanLessonOffer = (router: ReturnType<typeof useRouter>) => {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get(JUST_TALK_HANDOFF_PARAM) === JUST_TALK_HANDOFF_VALUE) return;
-  params.set(JUST_TALK_HANDOFF_PARAM, JUST_TALK_HANDOFF_VALUE);
-  router.push(`${window.location.pathname}?${params.toString()}`, { scroll: false });
+const errorDetails = (error: unknown) => {
+  if (error instanceof Error) {
+    return { name: error.name, message: error.message };
+  }
+  return { message: String(error) };
 };
 
 export type StartJustTalkOptions = {
@@ -64,8 +43,6 @@ export const useJustTalk = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
   const auth = useAuth();
-  const access = useAccess();
-  const router = useRouter();
   const conversation = useAiConversation();
   const [isCallStarting, setIsCallStarting] = useState(false);
   const startGateRef = useRef<JustTalkStartGate>({ attempt: 0 });
@@ -75,36 +52,79 @@ export const useJustTalk = () => {
     model?: RealTimeModel,
     options?: StartJustTalkOptions,
   ): Promise<StartJustTalkResult> => {
-    const attempt = beginJustTalkStart(startGateRef.current, Boolean(options?.supersede));
-    if (attempt === null) return 'busy';
+    const supersede = Boolean(options?.supersede);
+    const attempt = beginJustTalkStart(startGateRef.current, supersede);
+    logJustTalk('start', {
+      attempt,
+      gate: startGateRef.current.attempt,
+      supersede,
+      skipConsentUi: Boolean(options?.skipConsentUi),
+      model: model || null,
+      voice: settings.voice || null,
+      language: settings.languageCode || null,
+      uid: auth.uid || null,
+      isIdentified: auth.isIdentified,
+      isAuthorized: auth.isAuthorized,
+    });
+    if (attempt === null) {
+      logJustTalk('busy', { reason: 'start-already-in-flight' });
+      return 'busy';
+    }
     setIsCallStarting(true);
     const voice = settings.voice || 'shimmer';
     const language = settings.languageCode || null;
-    const stillCurrent = () => isJustTalkStartCurrent(startGateRef.current, attempt);
+    const stillCurrent = (step: string) => {
+      const current = isJustTalkStartCurrent(startGateRef.current, attempt);
+      if (!current) {
+        logJustTalk('busy', {
+          reason: 'superseded',
+          step,
+          attempt,
+          gate: startGateRef.current.attempt,
+        });
+      }
+      return current;
+    };
 
     try {
+      logJustTalk('auth');
       const uid = await auth.ensureAnonymousAuth();
-      if (!stillCurrent()) return 'busy';
-      const goalPlan = await loadLatestGoal(uid, language);
-      if (!stillCurrent()) return 'busy';
-      if (!access.isFullAppAccess && (readFirstLessonUsed() || isFirstPlanLessonUsed(goalPlan))) {
-        openPlanLessonOffer(router);
-        return 'plan-locked';
-      }
+      logJustTalk('auth-ready', {
+        uid: uid || null,
+        isIdentified: auth.isIdentified,
+        isAnonymous: auth.isAnonymous,
+      });
+      if (!stillCurrent('auth')) return 'busy';
+      logJustTalk('audio-init');
       await audio.initAudio();
-      if (!stillCurrent()) return 'busy';
+      logJustTalk('audio-ready');
+      if (!stillCurrent('audio')) return 'busy';
+      logJustTalk('mic-request', { skipConsentUi: Boolean(options?.skipConsentUi) });
       const mediaStream = options?.skipConsentUi
         ? await getMediaAudioStreams()
         : await requestMicrophoneWithConsent();
-      if (!stillCurrent()) return 'busy';
+      logJustTalk('mic-result', {
+        hasStream: Boolean(mediaStream),
+        active: Boolean(mediaStream?.active),
+        audioTracks: mediaStream?.getAudioTracks().length ?? 0,
+      });
+      if (!stillCurrent('mic')) return 'busy';
       if (!mediaStream) {
+        logJustTalk('mic-denied', { reason: 'empty-stream' });
         return 'mic-denied';
       }
 
-      await getMediaVideoStreams();
-      if (!stillCurrent()) return 'busy';
+      logJustTalk('video-request');
+      const videoStream = await getMediaVideoStreams();
+      logJustTalk('video-result', {
+        hasStream: Boolean(videoStream),
+        active: Boolean(videoStream?.active),
+      });
+      if (!stillCurrent('video')) return 'busy';
+      logJustTalk('mode-call');
       await settings.setConversationMode('call');
-      if (!stillCurrent()) return 'busy';
+      if (!stillCurrent('mode')) return 'busy';
+      logJustTalk('conversation-start', { voice, language, model: model || null });
       await conversation.startConversation({
         conversationMode: 'call',
         mode: 'talk',
@@ -112,11 +132,13 @@ export const useJustTalk = () => {
         languageCode: language || undefined,
         model,
       });
-      if (!stillCurrent()) return 'busy';
+      if (!stillCurrent('conversation')) return 'busy';
+      logJustTalk('started', { attempt });
       return 'started';
     } catch (e) {
-      if (!stillCurrent()) return 'busy';
-      console.warn('Microphone permission denied. error', e);
+      logJustTalk('error', { attempt, ...errorDetails(e) });
+      console.warn('[just-talk] failed', e);
+      if (!stillCurrent('error')) return 'busy';
       if (!options?.skipConsentUi) {
         alert(
           i18n._(
@@ -128,7 +150,9 @@ Please allow microphone permission in your browser settings, refresh the page, a
       conversation.setIsStarted(false);
       return 'mic-denied';
     } finally {
-      if (finishJustTalkStart(startGateRef.current, attempt)) {
+      const finished = finishJustTalkStart(startGateRef.current, attempt);
+      logJustTalk('finish', { attempt, clearedGate: finished });
+      if (finished) {
         setIsCallStarting(false);
       }
     }
