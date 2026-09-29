@@ -14,6 +14,7 @@ import Google from '@mui/icons-material/Google';
 import { Mail } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { normalizeEmail } from '@/features/Auth/normalizeEmail';
 
 interface Props {
   open: boolean;
@@ -129,7 +130,7 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
           <Typography variant="h6">{i18n._('Sign in with email')}</Typography>
           <TextField
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(normalizeEmail(e.target.value))}
             fullWidth
             label={i18n._('Email')}
             type="email"

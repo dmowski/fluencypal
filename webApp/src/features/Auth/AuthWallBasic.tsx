@@ -9,6 +9,7 @@ import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
 import { ListItem } from '../Survey/IconTextList';
 import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
+import { normalizeEmail } from './normalizeEmail';
 import { resolveAuthWallStartStep } from './practiceAuthWall';
 
 const isValidEmail = (email: string) => {
@@ -238,7 +239,7 @@ export const AuthWallBasic = ({
               >
                 <TextField
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(normalizeEmail(e.target.value))}
                   fullWidth
                   label={i18n._('Email')}
                   type="email"

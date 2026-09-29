@@ -80,8 +80,11 @@ test('auth wall', async () => {
       <QuizAuthWallStep>{null}</QuizAuthWallStep>
     </QuizShotFrame>,
   );
-  await expect.element(page.getByRole('button', { name: 'Sign in with Google' })).toBeVisible();
-  await expect.element(page.getByText('No spam', { exact: true })).toBeVisible();
-  await expect.element(page.getByText('Google or email. No spam.')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Create account' })).toBeVisible();
+  await expect.element(page.getByRole('textbox', { name: 'Email' })).toBeVisible();
+  await expect.element(page.getByRole('textbox', { name: 'Password' })).toBeVisible();
+  await expect
+    .element(page.getByText('Email and password. Your practice stays on this account.'))
+    .toBeVisible();
   await expectQuizScreenshot('onboarding-auth-wall');
 });

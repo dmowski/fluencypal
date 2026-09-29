@@ -14,6 +14,7 @@ import { useAccess } from '../Usage/useAccess';
 import { LanguageSwitcher } from '../Lang/LanguageSwitcher';
 import { useState } from 'react';
 import { useAuth } from '../Auth/useAuth';
+import { normalizeEmail } from '../Auth/normalizeEmail';
 import { createSetupIntentRequest } from '../PayWall/createSetupIntentRequest';
 import { VerifyCard } from '../PayWall/CardValidator';
 import { ParentConsent } from '@/features/Settings/userSettings';
@@ -231,7 +232,9 @@ export const BlockedAccess = () => {
                   </Typography>
                   <TextField
                     value={consent.parentEmail}
-                    onChange={(e) => setConsent((p) => ({ ...p, parentEmail: e.target.value }))}
+                    onChange={(e) =>
+                      setConsent((p) => ({ ...p, parentEmail: normalizeEmail(e.target.value) }))
+                    }
                     fullWidth
                     type="email"
                     error={consent.parentEmail.length > 0 && !isEmailValid}

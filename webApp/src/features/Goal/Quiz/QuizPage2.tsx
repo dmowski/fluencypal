@@ -327,7 +327,7 @@ const QuizQuestions = () => {
           {currentStep === 'authWall' && (
             <QuizAuthWallStep>
               {survey?.goalData ? (
-                <QuizSignedInHandoff start={startFirstLesson} ready={Boolean(auth.uid)} />
+                <QuizSignedInHandoff start={startFirstLesson} ready={auth.isIdentified} />
               ) : (
                 <QuizPageLoader />
               )}

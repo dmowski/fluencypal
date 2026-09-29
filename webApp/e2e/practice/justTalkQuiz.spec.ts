@@ -22,9 +22,7 @@ test.describe('Quiz finish', () => {
     await grantPracticeMediaPermissions(context);
   });
 
-  test('cold justTalk=open shows the dashboard and does not auto-request mic', async ({
-    page,
-  }) => {
+  test('cold justTalk=open shows the dashboard and does not auto-request mic', async ({ page }) => {
     await mockExternalIpServices(page);
     await installRealtimeConversationMock(page);
 
@@ -74,13 +72,64 @@ test.describe('Quiz finish', () => {
 
     await page.getByTestId('quiz-pre-auth').getByRole('button', { name: 'Continue' }).click();
     await expect(page.getByTestId('quiz-auth-wall')).toBeVisible();
-    await expect(
-      page.getByRole('button', { name: 'Sign in with Google', exact: true }),
-    ).toBeVisible();
-    await expect(page.getByText('No spam', { exact: true })).toBeVisible();
-    await expect(page.getByText('Google or email. No spam.')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Create account', exact: true })).toBeVisible();
+    await expect(page.getByLabel('Email')).toBeVisible();
+    await expect(page.getByLabel('Password')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Sign in with Google' })).toHaveCount(0);
     await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
     await expectAnonymousCurrentUser(page);
+  });
+
+  test('create account links the anonymous quiz user and opens the lesson', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await mockQuizAiApis(page);
+    await installRealtimeConversationMock(page);
+
+    await page.goto('/quiz');
+    const uid = await signInAnonymouslyForQuiz(page);
+    await seedAnonymousPracticeSettings(page, uid, 'en');
+    await seedQuizGoalReviewSurvey(page, uid, 'en');
+
+    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
+    await expect(page.getByRole('button', { name: 'Create account', exact: true })).toBeVisible();
+
+    const email = `quiz-${Date.now()}@example.com`;
+    await page.getByLabel('Email').fill(email);
+    await page.getByLabel('Password').fill('TestPassword123!');
+    await page.getByRole('button', { name: 'Create account', exact: true }).click();
+
+    await expect(page).toHaveURL(/plan-id=e2e-el-1/);
+    await expect(page.getByRole('heading', { name: 'Talk', exact: true }).first()).toBeVisible();
+    const after = await page.evaluate(() => {
+      const user = (window as any).__darkEngTest?.auth?.currentUser;
+      return { uid: user?.uid as string, anonymous: Boolean(user?.isAnonymous) };
+    });
+    expect(after.uid).toBe(uid);
+    expect(after.anonymous).toBe(false);
+  });
+
+  test('signing in with an existing password keeps the quiz plan', async ({ page }) => {
+    await mockExternalIpServices(page);
+    await mockQuizAiApis(page);
+    await installRealtimeConversationMock(page);
+
+    const existing = await createEmulatorTestUser();
+    await page.goto('/quiz');
+    const anonUid = await signInAnonymouslyForQuiz(page);
+    await seedAnonymousPracticeSettings(page, anonUid, 'en');
+    await seedQuizGoalReviewSurvey(page, anonUid, 'en');
+
+    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
+    await page.getByRole('button', { name: 'I already have an account' }).click();
+    await page.getByLabel('Email').fill(existing.email);
+    await page.getByLabel('Password').fill(existing.password);
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+
+    await expect(page).toHaveURL(/plan-id=e2e-el-1/);
+    const afterUid = await page.evaluate(
+      () => (window as any).__darkEngTest?.auth?.currentUser?.uid as string,
+    );
+    expect(afterUid).toBe(existing.uid);
   });
 
   test('signed-in auth wall opens the first plan lesson', async ({ page }) => {
@@ -103,7 +152,7 @@ test.describe('Quiz finish', () => {
     await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
 
     await expect(page).toHaveURL(/plan-id=e2e-el-1/);
-    await expect(page.getByText('Talk')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Talk', exact: true }).first()).toBeVisible();
     await expect(page.getByTestId('conversation-canvas-call')).toHaveCount(0);
   });
 });

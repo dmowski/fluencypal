@@ -37,6 +37,15 @@ import {
   SignInResult,
 } from './googleSignIn';
 import { sendAuthAttempt, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
+import {
+  QuizPasswordMode,
+  QuizPasswordResetResult,
+  QuizPasswordResult,
+  sendQuizPasswordReset,
+  submitQuizPasswordAccount,
+} from './quizPasswordAccount';
+import { quizPasswordDeps } from './quizPasswordAccountStore';
+import { normalizeEmail } from './normalizeEmail';
 
 export interface UserInfo {
   displayName: string | null;
@@ -58,6 +67,12 @@ export interface AuthContext {
   getToken: (forceRefresh?: boolean) => Promise<string>;
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
+  submitQuizPassword: (
+    email: string,
+    password: string,
+    mode: QuizPasswordMode,
+  ) => Promise<QuizPasswordResult>;
+  sendQuizPasswordReset: (email: string) => Promise<QuizPasswordResetResult>;
   isDev: boolean;
   isFounder: boolean;
   sendTgMessage: (message: string) => Promise<void>;
@@ -84,6 +99,12 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   signInWithEmail: async () => {
     throw new Error('signInWithEmail not implemented');
   },
+  submitQuizPassword: async () => {
+    throw new Error('submitQuizPassword not implemented');
+  },
+  sendQuizPasswordReset: async () => {
+    throw new Error('sendQuizPasswordReset not implemented');
+  },
   isDev: false,
   isFounder: false,
   sendTgMessage: async () => void 0,
@@ -92,6 +113,8 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
 function useProvideAuth(): AuthContext {
   const [userInfo, authLoading, errorAuth] = useAuthState(auth);
   const [tokenReadyUid, setTokenReadyUid] = useState<string | null>(null);
+  // linkWithCredential keeps the same uid, so useAuthState does not re-render.
+  const [passwordLinkedUid, setPasswordLinkedUid] = useState('');
   const googleSignInInProgress = useRef(false);
 
   useEffect(() => {
@@ -106,7 +129,12 @@ function useProvideAuth(): AuthContext {
       () => {
         if (!cancelled) setTokenReadyUid(uid);
       },
-      () => {
+      async () => {
+        try {
+          await userInfo.getIdToken(true);
+        } catch {
+          // The anonymous token is revoked when a password is linked onto it.
+        }
         if (!cancelled) setTokenReadyUid(uid);
       },
     );
@@ -229,6 +257,37 @@ function useProvideAuth(): AuthContext {
     })();
   }, []);
 
+  const submitQuizPassword = async (
+    email: string,
+    password: string,
+    mode: QuizPasswordMode,
+  ): Promise<QuizPasswordResult> => {
+    sendAuthAttempt({ provider: 'email', result: 'opened' });
+    try {
+      await ensureAnonymousAuth(auth);
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+    const result = await submitQuizPasswordAccount(
+      auth,
+      { email, password, mode },
+      quizPasswordDeps,
+    );
+    if (result.status === 'linked' || result.status === 'signed-in') {
+      if (auth.currentUser && !auth.currentUser.isAnonymous) {
+        setPasswordLinkedUid(auth.currentUser.uid);
+      }
+      sendAuthAttempt({ provider: 'email', result: 'success' });
+    } else {
+      sendAuthAttempt({ provider: 'email', result: 'error' });
+    }
+    return result;
+  };
+
+  const sendQuizPasswordResetEmail = async (email: string): Promise<QuizPasswordResetResult> => {
+    return sendQuizPasswordReset(auth, email, quizPasswordDeps);
+  };
+
   const signInWithEmail = async (email: string): Promise<SignInResult> => {
     const url = rememberDayPassEmailReturn(window.location.href) ?? window.location.href;
     const actionCodeSettings: ActionCodeSettings = {
@@ -243,8 +302,9 @@ function useProvideAuth(): AuthContext {
     try {
       console.log('actionCodeSettings', actionCodeSettings);
       sendAuthAttempt({ provider: 'email', result: 'opened' });
-      await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-      window.localStorage.setItem(LOCALSTORAGE_EMAIL_KEY, email);
+      const normalizedEmail = normalizeEmail(email);
+      await sendSignInLinkToEmail(auth, normalizedEmail, actionCodeSettings);
+      window.localStorage.setItem(LOCALSTORAGE_EMAIL_KEY, normalizedEmail);
       sendAuthAttempt({ provider: 'email', result: 'success' });
       return { isDone: true, error: '' };
     } catch (error: any) {
@@ -325,8 +385,11 @@ function useProvideAuth(): AuthContext {
   const userId = publishedAuthUid(userInfo?.uid, tokenReadyUid);
   const loading = authLoading || isWaitingForFirestoreToken(userInfo?.uid, tokenReadyUid);
   const isAuthorized = !!userId && !errorAuth;
-  const isAnonymous = Boolean(userInfo?.isAnonymous) && userId === userInfo?.uid;
-  const isIdentified = isIdentifiedAuthUser(userInfo) && !errorAuth && Boolean(userId);
+  const passwordLinkSettled = Boolean(userInfo?.uid) && passwordLinkedUid === userInfo?.uid;
+  const isAnonymous =
+    Boolean(userInfo?.isAnonymous) && userId === userInfo?.uid && !passwordLinkSettled;
+  const isIdentified =
+    (isIdentifiedAuthUser(userInfo) || passwordLinkSettled) && !errorAuth && Boolean(userId);
 
   const isDev = userInfo?.email?.includes('dmowski') || false;
 
@@ -382,6 +445,8 @@ function useProvideAuth(): AuthContext {
     logout,
     getToken,
     signInWithEmail,
+    submitQuizPassword,
+    sendQuizPasswordReset: sendQuizPasswordResetEmail,
 
     isDev,
     isFounder,

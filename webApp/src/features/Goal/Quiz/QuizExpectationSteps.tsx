@@ -4,8 +4,10 @@ import { ReactNode } from 'react';
 import { Link, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { InfoStep } from '../../Survey/InfoStep';
-import { getLandingUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
-import { AuthWallBasic } from '@/features/Auth/AuthWallBasic';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
+import { useAuth } from '@/features/Auth/useAuth';
+import { QuizPasswordAccountForm } from './QuizPasswordAccount';
 import { QuizDailyPracticeStep } from './QuizDailyPracticeStep';
 
 export { QuizDailyPracticeStep };
@@ -237,15 +239,11 @@ export const QuizPreAuthStep = ({
       <InfoStep
         title={i18n._('Sign in to use FluencyPal')}
         subTitle={i18n._(
-          'To use the app, sign in with Google or with email. Your practice stays on that account.',
+          'Create an account with your email and a password. Your practice stays on that account.',
         )}
         listItems={[
           {
-            title: i18n._('Google'),
-            iconName: 'shield-check',
-          },
-          {
-            title: i18n._('Email'),
+            title: i18n._('Email and password'),
             iconName: 'mail',
           },
         ]}
@@ -260,36 +258,16 @@ export const QuizPreAuthStep = ({
 };
 
 export const QuizAuthWallStep = ({ children }: { children: ReactNode }) => {
-  const { i18n } = useLingui();
+  const auth = useAuth();
   return (
     <Stack data-testid="quiz-auth-wall" data-analytics-screen="quiz.authWall">
-      <AuthWallBasic
-        startOnAuth
-        featuresTitle="FluencyPal"
-        featuresSubTitle={i18n._('Your practice stays on your account')}
-        featuresList={[]}
-        authTitle={i18n._('Sign in to start')}
-        authSubTitle={i18n._('Google or email. No spam.')}
-        authList={[
-          {
-            title: i18n._('No spam'),
-            iconName: 'mail',
-          },
-          {
-            title: i18n._('Privacy Policy'),
-            iconName: 'scroll-text',
-            href: `${getLandingUrlStart('en')}privacy`,
-          },
-          {
-            title: i18n._('Terms of Use'),
-            iconName: 'pencil-ruler',
-            href: `${getLandingUrlStart('en')}terms`,
-          },
-        ]}
-        authListAfterActions
-      >
-        {children}
-      </AuthWallBasic>
+      {auth.loading ? (
+        <QuizPageLoader />
+      ) : auth.isIdentified ? (
+        children
+      ) : (
+        <QuizPasswordAccountForm />
+      )}
     </Stack>
   );
 };
