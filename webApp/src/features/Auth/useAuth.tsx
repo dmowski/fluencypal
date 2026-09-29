@@ -46,6 +46,7 @@ import {
 } from './quizPasswordAccount';
 import { quizPasswordDeps } from './quizPasswordAccountStore';
 import { normalizeEmail } from './normalizeEmail';
+import { sendAccountLinkEmailRequest } from '@/app/api/email/accountLink/sendAccountLinkEmailRequest';
 
 export interface UserInfo {
   displayName: string | null;
@@ -257,6 +258,17 @@ function useProvideAuth(): AuthContext {
     })();
   }, []);
 
+  const sendAccountCreatedEmail = async () => {
+    const user = auth.currentUser;
+    if (!user || user.isAnonymous) return;
+    try {
+      const token = await user.getIdToken();
+      await sendAccountLinkEmailRequest(token);
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+  };
+
   const submitQuizPassword = async (
     email: string,
     password: string,
@@ -278,6 +290,9 @@ function useProvideAuth(): AuthContext {
         setPasswordLinkedUid(auth.currentUser.uid);
       }
       sendAuthAttempt({ provider: 'email', result: 'success' });
+      if (result.status === 'linked') {
+        void sendAccountCreatedEmail();
+      }
     } else {
       sendAuthAttempt({ provider: 'email', result: 'error' });
     }

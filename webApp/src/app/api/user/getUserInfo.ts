@@ -113,6 +113,7 @@ export const isEmailNotificationsEnabled = async (userId: string): Promise<boole
 
 interface UserEmailLogs {
   isWelcomeMessageSent?: boolean;
+  isAccountLinkSent?: boolean;
 }
 
 export const getEmailLogs = async (userId: string): Promise<UserEmailLogs | null> => {

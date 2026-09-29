@@ -2,6 +2,10 @@ import { appName } from '@/features/SEO/appInfo';
 import { sendEmail } from './sendEmail';
 import { getConfirmEmailTemplate } from '../webhooks/stripe/getConfirmEmailTemplate';
 import { getWelcomeEmailTemplate } from './getWelcomeEmailTemplate';
+import {
+  accountLinkEmailSubject,
+  getAccountLinkEmailTemplate,
+} from './getAccountLinkEmailTemplate';
 
 const IS_SEND_REAL_EMAIL = false;
 
@@ -15,7 +19,12 @@ export async function GET(request: Request) {
     receiptId: '1234567890',
   });
 
-  const emailUi = type === 'welcome' ? getWelcomeEmailTemplate() : confirmEmailUi;
+  const emailUi =
+    type === 'account'
+      ? getAccountLinkEmailTemplate()
+      : type === 'welcome'
+        ? getWelcomeEmailTemplate()
+        : confirmEmailUi;
 
   if (isSendEmailFromUrl && IS_SEND_REAL_EMAIL) {
     const randomId = Math.floor(Math.random() * 10000);
@@ -25,9 +34,11 @@ export async function GET(request: Request) {
       messageText: emailUi.text,
       messageHtml: emailUi.html,
       title:
-        type === 'welcome'
-          ? `Welcome to ${appName} #${randomId} - test`
-          : `Your receipt from ${appName} #${randomId} - test`,
+        type === 'account'
+          ? `${accountLinkEmailSubject} #${randomId} - test`
+          : type === 'welcome'
+            ? `Welcome to ${appName} #${randomId} - test`
+            : `Your receipt from ${appName} #${randomId} - test`,
     });
   }
 
