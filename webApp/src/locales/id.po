@@ -1132,9 +1132,15 @@ msgid "Available languages:"
 msgstr "Bahasa yang tersedia:"
 
 #: src/features/Game/GameMyAvatar.tsx:42
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:91
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:119
+#. js-lingui-explicit-id
+msgid "Avatar {number}"
+msgstr "Avatar {number}"
 
 #: src/features/ProgressStat/ProgressViewChart.tsx:232
 #. js-lingui-explicit-id
@@ -2251,6 +2257,11 @@ msgstr ""
 msgid "Choose a word for the blank"
 msgstr "Pilih kata untuk diisi pada bagian yang kosong"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:96
+#. js-lingui-explicit-id
+msgid "Choose an avatar"
+msgstr "Pilih avatar"
+
 #: src/features/Reader/components/TextPopover.tsx:55
 #. js-lingui-explicit-id
 msgid "Choose another language in Settings"
@@ -2274,7 +2285,7 @@ msgid "Choose Language Level"
 msgstr "Pilih Tingkat Bahasa"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:192
+#: src/features/Goal/Quiz/QuizPage2.tsx:197
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Pilih Bahasa Situs"
@@ -2314,6 +2325,11 @@ msgstr "Pilih Tingkat Bahasa Anda"
 #. js-lingui-explicit-id
 msgid "Choose your languages"
 msgstr "Pilih bahasa Anda"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:68
+#. js-lingui-explicit-id
+msgid "Choose your name"
+msgstr "Pilih nama Anda"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2727,7 +2743,7 @@ msgstr "Konteks (topik, audiens, tujuan...)"
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:319
+#: src/features/Goal/Quiz/QuizPage2.tsx:324
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2946,7 +2962,7 @@ msgstr "Tidak dapat memulai ujian. Silakan coba lagi."
 msgid "Could not start your account. Please try again."
 msgstr "Tidak dapat memulai akun Anda. Silakan coba lagi."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:248
+#: src/features/Goal/Quiz/QuizPage2.tsx:253
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "Tidak dapat menulis pertanyaan Anda selanjutnya. Silakan coba lagi."
@@ -4581,7 +4597,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Terjadi kesalahan saat membuat sesi pembayaran. Coba lagi nanti."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:62
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Galat membuat rencana. Silakan coba lagi."
@@ -6737,7 +6753,7 @@ msgstr ""
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:165
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Saya ingin belajar:"
@@ -8538,7 +8554,8 @@ msgstr "Diskusi Berita"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:166
+#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -9599,6 +9616,11 @@ msgstr "Pilih tingkat kesulitan yang sesuai dengan kelompok Anda."
 #. js-lingui-explicit-id
 msgid "Pick a level to start playing!"
 msgstr "Pilih level untuk mulai bermain!"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:69
+#. js-lingui-explicit-id
+msgid "Pick a username and an avatar. Other people will see them."
+msgstr "Pilih nama pengguna dan avatar. Orang lain akan melihatnya."
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -11392,7 +11414,7 @@ msgstr "Menyimpan buku..."
 msgid "Saving book…"
 msgstr "Menyimpan buku…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -11656,7 +11678,7 @@ msgstr ""
 "Kalimat\n"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Atur Bahasa Saya"
@@ -12028,7 +12050,7 @@ msgid "Smoothed"
 msgstr "Dihaluskan"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Jadi saya dapat menerjemahkan kata-kata untukmu"
@@ -14070,7 +14092,7 @@ msgstr ""
 "membuat rencana pribadi Anda."
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:193
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Ini adalah teks yang Anda lihat pada tombol dan menu"
@@ -14515,8 +14537,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Coba"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -14803,12 +14825,20 @@ msgstr "Gunakan bahasa belajar Anda ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "Berguna ketika percakapan penuh terasa seperti terlalu banyak"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:82
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:83
+#. js-lingui-explicit-id
+msgid "Username"
+msgstr "Nama Pengguna"
+
 #: src/features/Game/GameMyUsername.tsx:78
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:60
 #. js-lingui-explicit-id
 msgid "Username is already taken"
 msgstr "Nama pengguna sudah digunakan"
 
 #: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:62
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Nama pengguna harus setidaknya 3 karakter."
@@ -15261,7 +15291,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "Jenis wawancara backend apa yang bisa saya latih?"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:175
+#: src/features/Goal/Quiz/QuizPage2.tsx:176
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Bahasa apa yang Anda bicarakan"
@@ -15443,7 +15473,7 @@ msgstr "Mengapa kandidat backend berkembang pesat"
 msgid "Why candidates improve so quickly"
 msgstr "Mengapa kandidat meningkat begitu cepat"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:97
+#: src/features/Goal/Quiz/QuizPage2.tsx:98
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id

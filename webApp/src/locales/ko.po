@@ -1081,9 +1081,15 @@ msgid "Available languages:"
 msgstr "사용 가능한 언어:"
 
 #: src/features/Game/GameMyAvatar.tsx:42
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:91
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "아바타"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:119
+#. js-lingui-explicit-id
+msgid "Avatar {number}"
+msgstr "아바타 {number}"
 
 #: src/features/ProgressStat/ProgressViewChart.tsx:232
 #. js-lingui-explicit-id
@@ -2172,6 +2178,11 @@ msgstr "변형을 선택하거나 임의로 선택하세요. 각 변형에는 {t
 msgid "Choose a word for the blank"
 msgstr "빈칸에 들어갈 단어를 선택하세요."
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:96
+#. js-lingui-explicit-id
+msgid "Choose an avatar"
+msgstr "아바타를 선택하세요"
+
 #: src/features/Reader/components/TextPopover.tsx:55
 #. js-lingui-explicit-id
 msgid "Choose another language in Settings"
@@ -2193,7 +2204,7 @@ msgid "Choose Language Level"
 msgstr "언어 수준 선택"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:192
+#: src/features/Goal/Quiz/QuizPage2.tsx:197
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "사이트 언어 선택"
@@ -2233,6 +2244,11 @@ msgstr "당신의 언어 레벨을 선택하세요"
 #. js-lingui-explicit-id
 msgid "Choose your languages"
 msgstr "언어를 선택하세요"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:68
+#. js-lingui-explicit-id
+msgid "Choose your name"
+msgstr "이름을 선택하세요"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2631,7 +2647,7 @@ msgstr "문맥 (주제, 대상, 목표...)"
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:319
+#: src/features/Goal/Quiz/QuizPage2.tsx:324
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2850,7 +2866,7 @@ msgstr "시험을 시작할 수 없습니다. 다시 시도해 주세요."
 msgid "Could not start your account. Please try again."
 msgstr "계정을 시작할 수 없습니다. 다시 시도해 보십시오."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:248
+#: src/features/Goal/Quiz/QuizPage2.tsx:253
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "다음 질문을 작성할 수 없습니다. 다시 시도하세요."
@@ -4396,7 +4412,7 @@ msgstr "결제 세션 생성 오류. 지원팀에 알림이 전송되었습니�
 msgid "Error creating payment session. Try again later."
 msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 시도하세요."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:62
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "플랜 생성 오류. 다시 시도해 주세요."
@@ -6375,7 +6391,7 @@ msgstr "저는 취업 면접을 통과하기 위해 영어를 배우고 싶습�
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:165
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "배우고 싶어요:"
@@ -8072,7 +8088,8 @@ msgstr "뉴스 토론"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:166
+#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -9062,6 +9079,11 @@ msgstr "귀하의 그룹에 맞는 난이도를 선택하세요."
 #. js-lingui-explicit-id
 msgid "Pick a level to start playing!"
 msgstr "게임을 시작하려면 레벨을 선택하세요!"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:69
+#. js-lingui-explicit-id
+msgid "Pick a username and an avatar. Other people will see them."
+msgstr "사용자 이름과 아바타를 선택하세요. 다른 사람들이 그것들을 볼 것입니다."
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -10763,7 +10785,7 @@ msgstr "책 저장 중..."
 msgid "Saving book…"
 msgstr "책 저장 중…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -11019,7 +11041,7 @@ msgid "Sentences"
 msgstr "문장"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "내 언어 설정"
@@ -11382,7 +11404,7 @@ msgid "Smoothed"
 msgstr "부드럽게 함"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "그래서 저는 단어를 번역해드릴 수 있습니다"
@@ -13270,7 +13292,7 @@ msgid ""
 msgstr "이것은 중요한 단계입니다. 귀하의 답변은 귀하의 개인 계획을 생성하는 데 사용됩니다."
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:193
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "이것은 버튼과 메뉴에서 볼 수 있는 텍스트입니다"
@@ -13687,8 +13709,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "시도하다"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -13965,12 +13987,20 @@ msgstr "당신의 학습 언어를 사용하세요 ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "전체 대화가 너무 많다고 느껴질 때 유용합니다"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:82
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:83
+#. js-lingui-explicit-id
+msgid "Username"
+msgstr "사용자 이름"
+
 #: src/features/Game/GameMyUsername.tsx:78
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:60
 #. js-lingui-explicit-id
 msgid "Username is already taken"
 msgstr "사용자 이름이 이미 사용 중입니다"
 
 #: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:62
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "사용자 이름은 최소 3자 이상이어야 합니다."
@@ -14391,7 +14421,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "어떤 종류의 백엔드 인터뷰를 연습할 수 있나요?"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:175
+#: src/features/Goal/Quiz/QuizPage2.tsx:176
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "어떤 언어를 사용하시나요?"
@@ -14564,7 +14594,7 @@ msgstr "백엔드 후보자가 빠르게 향상되는 이유"
 msgid "Why candidates improve so quickly"
 msgstr "후보자들이 왜 그렇게 빨리 향상되는가"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:97
+#: src/features/Goal/Quiz/QuizPage2.tsx:98
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id

@@ -1116,9 +1116,15 @@ msgid "Available languages:"
 msgstr "Tilgjengelige språk:"
 
 #: src/features/Game/GameMyAvatar.tsx:42
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:91
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Avatar"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:119
+#. js-lingui-explicit-id
+msgid "Avatar {number}"
+msgstr "Avatar {nummer}"
 
 #: src/features/ProgressStat/ProgressViewChart.tsx:232
 #. js-lingui-explicit-id
@@ -2233,6 +2239,11 @@ msgstr "Velg en variant eller velg en tilfeldig. Hver variant har {taskSummary}.
 msgid "Choose a word for the blank"
 msgstr "Velg et ord for blanketten"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:96
+#. js-lingui-explicit-id
+msgid "Choose an avatar"
+msgstr "Velg en avatar"
+
 #: src/features/Reader/components/TextPopover.tsx:55
 #. js-lingui-explicit-id
 msgid "Choose another language in Settings"
@@ -2256,7 +2267,7 @@ msgid "Choose Language Level"
 msgstr "Velg språknivå"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:192
+#: src/features/Goal/Quiz/QuizPage2.tsx:197
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Velg nettstedsspråk"
@@ -2296,6 +2307,11 @@ msgstr "Velg språknivået ditt"
 #. js-lingui-explicit-id
 msgid "Choose your languages"
 msgstr "Velg dine språk"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:68
+#. js-lingui-explicit-id
+msgid "Choose your name"
+msgstr "Velg navnet ditt"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2707,7 +2723,7 @@ msgstr "Kontekst (emne, publikum, mål...)"
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:319
+#: src/features/Goal/Quiz/QuizPage2.tsx:324
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2926,7 +2942,7 @@ msgstr "Kunne ikke starte eksamen. Vennligst prøv igjen."
 msgid "Could not start your account. Please try again."
 msgstr "Kunne ikke starte kontoen din. Vennligst prøv igjen."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:248
+#: src/features/Goal/Quiz/QuizPage2.tsx:253
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "Kunne ikke skrive ditt neste spørsmål. Vennligst prøv igjen."
@@ -4526,7 +4542,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Feil ved opprettelse av betalingsøkt. Prøv igjen senere."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:62
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Feil ved oppretting av plan. Vennligst prøv igjen."
@@ -6632,7 +6648,7 @@ msgstr ""
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:165
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Jeg vil lære:"
@@ -8394,7 +8410,8 @@ msgstr "Nyhetsdiskusjon"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:166
+#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -9426,6 +9443,11 @@ msgstr "Velg en vanskelighetsgrad som passer for din gruppe."
 #. js-lingui-explicit-id
 msgid "Pick a level to start playing!"
 msgstr "Velg et nivå for å starte spillingen!"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:69
+#. js-lingui-explicit-id
+msgid "Pick a username and an avatar. Other people will see them."
+msgstr "Velg et brukernavn og en avatar. Andre vil se dem."
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -11182,7 +11204,7 @@ msgstr "Lagrer bok..."
 msgid "Saving book…"
 msgstr "Lagrer bok…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -11448,7 +11470,7 @@ msgid "Sentences"
 msgstr "Setninger"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Sett Mitt Språk"
@@ -11819,7 +11841,7 @@ msgid "Smoothed"
 msgstr "Glattet"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Så jeg kan oversette ord for deg"
@@ -13830,7 +13852,7 @@ msgstr ""
 "personlige plan."
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:193
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Dette er tekst du ser på knapper og menyer"
@@ -14269,8 +14291,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Prøv"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -14548,12 +14570,20 @@ msgstr "Bruk læringsspråket ditt ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "Nyttig når en full samtale føles som for mye"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:82
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:83
+#. js-lingui-explicit-id
+msgid "Username"
+msgstr "Brukernavn"
+
 #: src/features/Game/GameMyUsername.tsx:78
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:60
 #. js-lingui-explicit-id
 msgid "Username is already taken"
 msgstr "Brukernavnet er allerede tatt"
 
 #: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:62
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Brukernavnet må være minst 3 tegn langt."
@@ -14997,7 +15027,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "Hvilke typer backend-intervjuer kan jeg øve på?"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:175
+#: src/features/Goal/Quiz/QuizPage2.tsx:176
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Hvilket språk snakker du"
@@ -15176,7 +15206,7 @@ msgstr "Hvorfor backendkandidater forbedrer seg raskt"
 msgid "Why candidates improve so quickly"
 msgstr "Hvorfor kandidater forbedrer seg så raskt"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:97
+#: src/features/Goal/Quiz/QuizPage2.tsx:98
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id

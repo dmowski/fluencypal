@@ -1075,9 +1075,15 @@ msgid "Available languages:"
 msgstr "可用语言："
 
 #: src/features/Game/GameMyAvatar.tsx:42
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:91
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "阿凡达"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:119
+#. js-lingui-explicit-id
+msgid "Avatar {number}"
+msgstr "头像 {number}"
 
 #: src/features/ProgressStat/ProgressViewChart.tsx:232
 #. js-lingui-explicit-id
@@ -2158,6 +2164,11 @@ msgstr "选择一个变体或随机选择一个。每个变体都有{taskSummary
 msgid "Choose a word for the blank"
 msgstr "选择一个词填空"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:96
+#. js-lingui-explicit-id
+msgid "Choose an avatar"
+msgstr "选择一个头像"
+
 #: src/features/Reader/components/TextPopover.tsx:55
 #. js-lingui-explicit-id
 msgid "Choose another language in Settings"
@@ -2179,7 +2190,7 @@ msgid "Choose Language Level"
 msgstr "选择语言水平"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:192
+#: src/features/Goal/Quiz/QuizPage2.tsx:197
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "选择网站语言"
@@ -2219,6 +2230,11 @@ msgstr "选择你的语言水平"
 #. js-lingui-explicit-id
 msgid "Choose your languages"
 msgstr "选择您的语言"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:68
+#. js-lingui-explicit-id
+msgid "Choose your name"
+msgstr "选择您的姓名"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2616,7 +2632,7 @@ msgstr "背景（主题、受众、目标...）"
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:319
+#: src/features/Goal/Quiz/QuizPage2.tsx:324
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2835,7 +2851,7 @@ msgstr "无法开始考试。请重试。"
 msgid "Could not start your account. Please try again."
 msgstr "无法启动您的帐户。请再试一次。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:248
+#: src/features/Goal/Quiz/QuizPage2.tsx:253
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "无法编写下一个问题。请再试一次。"
@@ -4346,7 +4362,7 @@ msgstr "创建支付会话时出错。通知已发送给支持团队。请稍后
 msgid "Error creating payment session. Try again later."
 msgstr "创建支付会话时出错。请稍后再试。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:62
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "创建计划时出错。请重试。"
@@ -6295,7 +6311,7 @@ msgstr "我想学英语，这样我就可以通过工作面试。我是一名医
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:165
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "我想学习："
@@ -7977,7 +7993,8 @@ msgstr "新闻讨论"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:166
+#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
 #: src/features/Quiz/components/QuestionFeedback.tsx:72
@@ -8955,6 +8972,11 @@ msgstr "选择一个与您的团队相匹配的难度级别。"
 #. js-lingui-explicit-id
 msgid "Pick a level to start playing!"
 msgstr "选择一个级别开始玩吧！"
+
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:69
+#. js-lingui-explicit-id
+msgid "Pick a username and an avatar. Other people will see them."
+msgstr "选择一个用户名和头像。其他人将会看到它们。"
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -10651,7 +10673,7 @@ msgstr "保存图书..."
 msgid "Saving book…"
 msgstr "正在保存书籍…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -10907,7 +10929,7 @@ msgid "Sentences"
 msgstr "句子"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "设置我的语言"
@@ -11268,7 +11290,7 @@ msgid "Smoothed"
 msgstr "平滑的"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "因此，我可以为您翻译单词"
@@ -13133,7 +13155,7 @@ msgid ""
 msgstr "这是一个重要的步骤。您的答案将用于创建您的个人计划。"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:193
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "这是您在按钮和菜单上看到的文本"
@@ -13548,8 +13570,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "尝试"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -13824,12 +13846,20 @@ msgstr "使用您正在学习的语言 ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "当进行完整的对话感觉过于繁重时，这很有用"
 
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:82
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:83
+#. js-lingui-explicit-id
+msgid "Username"
+msgstr "用户名"
+
 #: src/features/Game/GameMyUsername.tsx:78
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:60
 #. js-lingui-explicit-id
 msgid "Username is already taken"
 msgstr "用户名已被占用"
 
 #: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:62
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "用户名必须至少为3个字符长。"
@@ -14250,7 +14280,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "我可以练习哪种类型的后台面试？"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:175
+#: src/features/Goal/Quiz/QuizPage2.tsx:176
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "你说哪种语言"
@@ -14422,7 +14452,7 @@ msgstr "为什么后端候选人进步快"
 msgid "Why candidates improve so quickly"
 msgstr "为什么候选人进步得如此之快"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:97
+#: src/features/Goal/Quiz/QuizPage2.tsx:98
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id
