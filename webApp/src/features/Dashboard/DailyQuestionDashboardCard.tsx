@@ -4,11 +4,16 @@ import { Stack } from '@mui/material';
 import { SectionHeader } from './CartsHeader';
 import { useGlobalModals } from '@/features//Modal/useGlobalModals';
 import { DailyQuestionFullCard } from '../DailyQuestion/DailyQuestionFullCard';
+import {
+  AddMyDailyQuestionButton,
+  UserDailyQuestionCard,
+} from '../DailyQuestion/UserDailyQuestionCard';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
-import { useSettings } from '../Settings/useSettings';
+import { useUserDailyQuestions } from '../DailyQuestion/useUserDailyQuestions';
 
 export const DailyQuestionDashboardCard = () => {
   const question = useDailyQuestion();
+  const userQuestions = useUserDailyQuestions();
   const { i18n } = useLingui();
   const globalModals = useGlobalModals();
 
@@ -30,11 +35,18 @@ export const DailyQuestionDashboardCard = () => {
         onButtonClick={globalModals.openDailyQuestions}
       />
 
-      <DailyQuestionFullCard
-        question={question.todaysQuestion}
-        badge={i18n._('Today').toUpperCase()}
-        onClick={globalModals.openDailyQuestions}
-      />
+      <Stack sx={{ gap: '30px' }}>
+        <DailyQuestionFullCard
+          question={question.todaysQuestion}
+          badge={i18n._('Today').toUpperCase()}
+          onClick={globalModals.openDailyQuestions}
+        />
+
+        {userQuestions.todays.map((userQuestion) => (
+          <UserDailyQuestionCard key={userQuestion.id} question={userQuestion} />
+        ))}
+      </Stack>
+      {userQuestions.myToday ? null : <AddMyDailyQuestionButton />}
     </Stack>
   );
 };

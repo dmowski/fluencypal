@@ -7,9 +7,21 @@ export interface DailyQuestion {
   exampleAnswer: string;
   hints: string[];
   minWords: number;
+  imageUrl?: string;
 }
 
 export type DailyQuestions = Record<string, DailyQuestion>;
+
+export interface UserDailyQuestion {
+  id: string;
+  authorUserId: string;
+  title: string;
+  description: string;
+  dayKey: string;
+  imageUrl: string;
+  createdAtIso: string;
+  updatedAtIso: string;
+}
 
 export interface DailyQuestionAnswer {
   authorUserId: string;

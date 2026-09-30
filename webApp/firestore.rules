@@ -130,6 +130,50 @@ service cloud.firestore {
       allow delete: if isOwner();
     }
 
+    match /userDailyQuestions/{questionId} {
+      function isOwner() {
+        return isSignedIn() && resource.data.authorUserId == request.auth.uid;
+      }
+
+      function isCreator() {
+        return isSignedIn() && request.resource.data.authorUserId == request.auth.uid;
+      }
+
+      function isText(value, max) {
+        return value is string && value.size() > 0 && value.size() <= max;
+      }
+
+      function isValidUserDailyQuestion(d) {
+        return d.keys().hasOnly([
+            'id',
+            'authorUserId',
+            'title',
+            'description',
+            'dayKey',
+            'imageUrl',
+            'createdAtIso',
+            'updatedAtIso',
+          ])
+          && d.id == questionId
+          && d.authorUserId is string
+          && isText(d.title, 180)
+          && isText(d.description, 1500)
+          && d.createdAtIso is string
+          && d.updatedAtIso is string;
+      }
+
+      allow get, list: if isSignedIn();
+
+      allow create: if isCreator() && isValidUserDailyQuestion(request.resource.data);
+
+      allow update: if isBlogAdmin()
+        && isValidUserDailyQuestion(request.resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['title', 'description', 'imageUrl', 'updatedAtIso']);
+
+      allow delete: if isOwner() || isBlogAdmin();
+    }
+
     match /game/gameAvatars {
     	allow read: if true;
       allow write: if isSignedIn();

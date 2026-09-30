@@ -47,6 +47,7 @@ import {
 import { NewsStat } from '@/features/News/types';
 import { QuizStat, UserQuizRecord } from '@/features/Quiz/types';
 import { InteractiveLessonFirestoreDoc } from '@/features/InteractiveLesson/types';
+import { UserDailyQuestion } from '@/features/DailyQuestion/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -144,6 +145,8 @@ export const db = {
 
     quizzes: (userId?: string) =>
       userId ? dataPointCollection<UserQuizRecord>(`users/${userId}/quizzes`) : null,
+
+    userDailyQuestions: () => dataPointCollection<UserDailyQuestion>(`userDailyQuestions`),
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -255,6 +258,9 @@ export const db = {
       userId && quizId
         ? dataPointDoc<UserQuizRecord>(`users/${userId}/quizzes/${quizId}`)
         : null,
+
+    userDailyQuestion: (questionId?: string) =>
+      questionId ? dataPointDoc<UserDailyQuestion>(`userDailyQuestions/${questionId}`) : null,
 
     interactiveLessonState: (userId?: string, languageCode?: SupportedLanguage) =>
       userId && languageCode

@@ -24,6 +24,10 @@ export const DailyQuestionFullCard = ({
   const spaceId = getDailyQuestionSpaceId(question, languageToLearn);
   const { i18n } = useLingui();
   const questionIndex = Object.values(dailyQuestions).findIndex((q) => q.id === question.id);
+  const label =
+    questionIndex >= 0
+      ? i18n._('Question') + ' #' + (questionIndex + 1)
+      : i18n._('From a learner');
 
   if (settings.loading) {
     return <></>;
@@ -42,7 +46,7 @@ export const DailyQuestionFullCard = ({
         badge={badge}
         textColor={'#fff'}
         backgroundColor={'rgba(0, 0, 0, 0.5)'}
-        label={i18n._('Question') + ' #' + (questionIndex + 1)}
+        label={label}
         previewImageUrl={previewImageUrl}
         title={question.title}
         subTitle={question.description}

@@ -1,0 +1,91 @@
+'use client';
+
+import { Button, Stack, Typography } from '@mui/material';
+import { useLingui } from '@lingui/react';
+import { useState } from 'react';
+import { useAuth } from '@/features/Auth/useAuth';
+import { useGame } from '@/features/Game/useGame';
+import { DailyQuestionFullCard } from './DailyQuestionFullCard';
+import { UserDailyQuestion } from './types';
+import {
+  canDeleteUserDailyQuestion,
+  canEditUserDailyQuestion,
+  toCommunityDailyQuestion,
+} from './userDailyQuestion';
+import { deleteUserDailyQuestion, UserDailyQuestionFormModal } from './UserDailyQuestionFormModal';
+
+export const UserDailyQuestionCard = ({ question }: { question: UserDailyQuestion }) => {
+  const { i18n } = useLingui();
+  const auth = useAuth();
+  const game = useGame();
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const canDelete = canDeleteUserDailyQuestion(question, auth.uid, auth.isFounder);
+  const canEdit = canEditUserDailyQuestion(auth.isFounder);
+
+  const onDelete = async () => {
+    if (!canDelete || isDeleting) return;
+    const confirmed = window.confirm(i18n._('Remove this question?'));
+    if (!confirmed) return;
+    setIsDeleting(true);
+    try {
+      await deleteUserDailyQuestion(question.id);
+    } catch (error) {
+      console.error(error);
+      alert(i18n._('Could not remove this question. Please try again.'));
+      setIsDeleting(false);
+    }
+  };
+
+  return (
+    <Stack sx={{ gap: '10px' }}>
+      <DailyQuestionFullCard
+        question={toCommunityDailyQuestion(question)}
+        badge={'By: ' + game.getUserName(question.authorUserId)}
+      />
+      {(canEdit || canDelete) && (
+        <Stack sx={{ flexDirection: 'row', gap: '10px' }}>
+          {canEdit && (
+            <Button variant="text" onClick={() => setIsEditing(true)}>
+              {i18n._('Edit')}
+            </Button>
+          )}
+          {canDelete && (
+            <Button
+              variant="text"
+              color="error"
+              disabled={isDeleting}
+              onClick={() => void onDelete()}
+            >
+              {i18n._('Remove')}
+            </Button>
+          )}
+        </Stack>
+      )}
+      {isEditing && (
+        <UserDailyQuestionFormModal existing={question} onClose={() => setIsEditing(false)} />
+      )}
+    </Stack>
+  );
+};
+
+export const AddMyDailyQuestionButton = () => {
+  const { i18n } = useLingui();
+  const auth = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  if (!auth.uid) return null;
+
+  return (
+    <>
+      <Button
+        variant="outlined"
+        data-testid="add-my-daily-question"
+        onClick={() => setIsOpen(true)}
+        sx={{ width: 'max-content' }}
+      >
+        {i18n._('Add my question')}
+      </Button>
+      {isOpen && <UserDailyQuestionFormModal onClose={() => setIsOpen(false)} />}
+    </>
+  );
+};
