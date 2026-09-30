@@ -66,7 +66,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout, chat-with-people, buy-access, limit-close)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-daily-question-continue, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout, chat-with-people, buy-access, limit-close)
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Teacher Continue: insights.teacherContinue (visitors on `quiz.teacherSelection`; best sighting of `quiz-next` as enabled/disabled × inView/offscreen/unknown; clicked). Events from before in-view was stored land in enabledUnknown or disabledUnknown.
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
@@ -123,7 +123,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-player-identity`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`, `chat-with-people`, `buy-access`, `limit-close`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-player-identity`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-daily-question-continue`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`, `chat-with-people`, `buy-access`, `limit-close`.
 
 `enable-mic-just-talk` and `autoStart` are old events only. `quiz-start-speaking` is the plan **Continue** button on `goalReview`, not a call. `quiz-talk-suggested-reply` is the manual “what you can say” send inside a call, not an automatic first reply. `hear-first-line` / `reply-first-line` are role-play guest, not the quiz.
 
@@ -164,7 +164,8 @@ Admin UI: `/staats/journey`
 7. `dailyPractice` → `noReminders` → `limitedAccess` (`quiz-start-free`) → `reviews`.
 8. `activityChoice` — `quiz-activity-continue`. Then only the matching cards: `featureDailyLesson` (read), `featureGame` (quiz), `featureAiTalk` and `featurePersonalPlan` (speak). A feature step that was not on their path resolves back to `activityChoice`; do not count that URL as a visit.
 9. `before_goalReview` (Generate plan) → `goalReview`. `quiz-start-speaking` here is **Continue**. It saves the plan. It does not start a call.
-10. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call.
+10. `dailyQuestion` only if survey `wantsToTalkWithRealPeople` is true (the yes on `talkWithPeople`). It is not read from the URL. Continue is `quiz-daily-question-continue` and stays disabled until they send an answer in today's question. A `dailyQuestion` URL that is not on their path resolves like any other missing step.
+11. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call.
 
 `before_recordAbout` without `quizSpeech` is they reached the clip and never pressed Reply. Leftover `recordAbout` in old paths is the previous signed-in follow-up, not this step.
 

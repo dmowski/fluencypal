@@ -944,6 +944,11 @@ msgstr ""
 "Grammatik, die Sie benötigen, wenn Sie sich auf eine Prüfung vorbereiten, "
 "eine Runde nach der anderen."
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:66
+#. js-lingui-explicit-id
+msgid "Answer today's question"
+msgstr "Beantworten Sie die heutige Frage"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:359
 #. js-lingui-explicit-id
 msgid "Anything else?"
@@ -2323,7 +2328,7 @@ msgid "Choose Language Level"
 msgstr "Sprachebene wählen"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:197
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Wählen Sie die Sprache der Website"
@@ -2786,8 +2791,9 @@ msgstr "Kontext (Thema, Publikum, Ziel...)"
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:325
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -3007,7 +3013,7 @@ msgstr "Konnte die Prüfung nicht starten. Bitte versuchen Sie es erneut."
 msgid "Could not start your account. Please try again."
 msgstr "Konnte Ihr Konto nicht starten. Bitte versuchen Sie es erneut."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:253
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "Konnte Ihre nächste Frage nicht schreiben. Bitte versuchen Sie es erneut."
@@ -4656,7 +4662,7 @@ msgstr ""
 "Fehler beim Erstellen der Zahlungssitzung. Bitte versuchen Sie es später "
 "erneut."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Fehler beim Erstellen des Plans. Bitte versuchen Sie es erneut."
@@ -6829,7 +6835,7 @@ msgstr ""
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:165
+#: src/features/Goal/Quiz/QuizPage2.tsx:166
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Ich möchte lernen:"
@@ -8633,7 +8639,7 @@ msgstr "Nachrichtendiskussion"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
@@ -9374,7 +9380,7 @@ msgstr "Bestellung mit Zahlungspflicht {amount}"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
-#: src/features/Goal/Quiz/useQuiz.tsx:363
+#: src/features/Goal/Quiz/useQuiz.tsx:378
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:28
 #: src/features/Lang/LanguageSwitcher.tsx:107
 #. js-lingui-explicit-id
@@ -9577,6 +9583,15 @@ msgstr "Ausstehende Anfragen"
 #. js-lingui-explicit-id
 msgid "People in voice chat"
 msgstr "Personen im Sprachchat"
+
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:67
+#. js-lingui-explicit-id
+msgid ""
+"People who practice together answer a new question every day. Send yours to "
+"continue."
+msgstr ""
+"Personen, die zusammen üben, beantworten jeden Tag eine neue Frage. "
+"Schicken Sie Ihre, um fortzufahren."
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -11476,7 +11491,7 @@ msgstr "Buch wird gespeichert..."
 msgid "Saving book…"
 msgstr "Speichern des Buches…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -11688,6 +11703,11 @@ msgstr "Sende Anmelde-Link"
 msgid "Send to Kindle"
 msgstr "An Kindle senden"
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:32
+#. js-lingui-explicit-id
+msgid "Send your answer to continue."
+msgstr "Senden Sie Ihre Antwort, um fortzufahren."
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -11746,7 +11766,7 @@ msgid "Sentences"
 msgstr "Sätze"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Meine Sprache festlegen"
@@ -12120,7 +12140,7 @@ msgid "Smoothed"
 msgstr "Geglättet"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "So kann ich Wörter für dich übersetzen"
@@ -12888,7 +12908,7 @@ msgstr ""
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/useQuiz.tsx:364
+#: src/features/Goal/Quiz/useQuiz.tsx:379
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:29
 #: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
@@ -14161,7 +14181,7 @@ msgstr ""
 "persönlichen Plan zu erstellen."
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:198
+#: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Dies ist der Text, den Sie auf Schaltflächen und Menüs sehen"
@@ -14433,6 +14453,7 @@ msgstr ""
 "das Webcam-Feedback aktivieren. Es ist keine Installation erforderlich."
 
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Heute"
@@ -14610,8 +14631,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Versuchen"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:64
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:65
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -15359,7 +15380,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "Welche Arten von Backend-Interviews kann ich üben?"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Welche Sprache sprichst du?"
@@ -15540,7 +15561,7 @@ msgstr "Warum sich Backend-Kandidaten schnell verbessern"
 msgid "Why candidates improve so quickly"
 msgstr "Warum sich Kandidaten so schnell verbessern"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id

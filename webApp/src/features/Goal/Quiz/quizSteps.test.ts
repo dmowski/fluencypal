@@ -32,9 +32,21 @@ describe('quizPath', () => {
     const selected = quizPath({ includePageLanguage: false, activities: ['quiz'] });
     expect(selected.indexOf('before_goalReview')).toBe(selected.indexOf('featureGame') + 1);
     expect(selected.indexOf('goalReview')).toBe(selected.indexOf('before_goalReview') + 1);
+    expect(selected.includes('dailyQuestion')).toBe(false);
     expect(selected.indexOf('preAuth')).toBe(selected.indexOf('goalReview') + 1);
     expect(selected.indexOf('authWall')).toBe(selected.indexOf('preAuth') + 1);
     expect(selected[selected.length - 1]).toBe('authWall');
+  });
+
+  it('asks them to answer today only after the plan, and only if they want real people', () => {
+    const selected = quizPath({
+      includePageLanguage: false,
+      activities: ['quiz'],
+      includeDailyQuestion: true,
+    });
+    expect(selected.indexOf('dailyQuestion')).toBe(selected.indexOf('goalReview') + 1);
+    expect(selected.indexOf('preAuth')).toBe(selected.indexOf('dailyQuestion') + 1);
+    expect(selected.indexOf('talkWithPeople')).toBeLessThan(selected.indexOf('dailyQuestion'));
   });
 
   it('keeps page language when the native language is not a site language', () => {
@@ -54,6 +66,8 @@ describe('resolveQuizStep', () => {
 
   it('starts over when the step is not on the path', () => {
     expect(resolveQuizStep('recordAbout', quizSteps)).toBe('learnLanguage');
+    const withoutQuestion = quizPath({ includePageLanguage: false, activities: [] });
+    expect(resolveQuizStep('dailyQuestion', withoutQuestion)).toBe('learnLanguage');
   });
 
   it('sends a hidden feature step back to the activity choice', () => {

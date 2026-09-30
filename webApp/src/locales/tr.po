@@ -929,6 +929,11 @@ msgstr ""
 "Soruları yüksek sesle cevaplayın. Sınava hazırlanırken, bir seferde bir tur "
 "şeklinde gerekli olan güveni ve grameri oluşturur."
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:66
+#. js-lingui-explicit-id
+msgid "Answer today's question"
+msgstr "Bugünün sorusunu yanıtlayın"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:359
 #. js-lingui-explicit-id
 msgid "Anything else?"
@@ -2285,7 +2290,7 @@ msgid "Choose Language Level"
 msgstr "Dil Seviyesini Seçin"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:197
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
@@ -2742,8 +2747,9 @@ msgstr "Kapsam (konu, hedef kitle, hedef...)"
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:325
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2961,7 +2967,7 @@ msgstr "Sınav başlatılamadı. Lütfen tekrar deneyin."
 msgid "Could not start your account. Please try again."
 msgstr "Hesabınızı başlatamadı. Lütfen tekrar deneyin."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:253
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "Bir sonraki sorunuzu yazamadık. Lütfen tekrar deneyin."
@@ -4577,7 +4583,7 @@ msgstr ""
 msgid "Error creating payment session. Try again later."
 msgstr "Ödeme oturumu oluşturulurken hata oluştu. Lütfen daha sonra tekrar deneyin."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Plan oluşturulurken hata oluştu. Lütfen tekrar deneyin."
@@ -6699,7 +6705,7 @@ msgstr ""
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:165
+#: src/features/Goal/Quiz/QuizPage2.tsx:166
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "Öğrenmek istiyorum:"
@@ -8450,7 +8456,7 @@ msgstr "Haber Tartışması"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
@@ -9180,7 +9186,7 @@ msgstr "Ödemesi zorunlu {amount} tutarında sipariş"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
-#: src/features/Goal/Quiz/useQuiz.tsx:363
+#: src/features/Goal/Quiz/useQuiz.tsx:378
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:28
 #: src/features/Lang/LanguageSwitcher.tsx:107
 #. js-lingui-explicit-id
@@ -9381,6 +9387,15 @@ msgstr "Bekleyen istekler"
 #. js-lingui-explicit-id
 msgid "People in voice chat"
 msgstr "Sesli sohbetteki kişiler"
+
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:67
+#. js-lingui-explicit-id
+msgid ""
+"People who practice together answer a new question every day. Send yours to "
+"continue."
+msgstr ""
+"Birlikte pratik yapan insanlar her gün yeni bir soruyu yanıtlar. Devam "
+"etmek için kendi sorunuzu gönderin."
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -11258,7 +11273,7 @@ msgstr "Kitap kaydediliyor..."
 msgid "Saving book…"
 msgstr "Kitap kaydediliyor..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -11466,6 +11481,11 @@ msgstr "Oturum açma bağlantısını gönder"
 msgid "Send to Kindle"
 msgstr "Kindle'a Gönder"
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:32
+#. js-lingui-explicit-id
+msgid "Send your answer to continue."
+msgstr "Devam etmek için cevabınızı gönderin."
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -11520,7 +11540,7 @@ msgid "Sentences"
 msgstr "Cümleler"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Dilimi Ayarla"
@@ -11891,7 +11911,7 @@ msgid "Smoothed"
 msgstr "Yumuşatıldı"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Bu yüzden sizin için kelimeleri çevirebilirim"
@@ -12652,7 +12672,7 @@ msgstr "Ürün şirketlerinde üst düzeyde kullanılan sistem tasarım senaryol
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/useQuiz.tsx:364
+#: src/features/Goal/Quiz/useQuiz.tsx:379
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:29
 #: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
@@ -13902,7 +13922,7 @@ msgstr ""
 "kullanıyoruz."
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:198
+#: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Bu, butonlarda ve menülerde gördüğünüz metindir."
@@ -14166,6 +14186,7 @@ msgstr ""
 "bildirimini etkinleştirirseniz kullanılır. Kurulum gerekmez."
 
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Bugün"
@@ -14342,8 +14363,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Denemek"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:64
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:65
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -15072,7 +15093,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "Ne tür backend görüşmeleri için alıştırma yapabilirim?"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Hangi dili konuşuyorsun?"
@@ -15251,7 +15272,7 @@ msgstr "Neden backend adayları hızlı gelişir?"
 msgid "Why candidates improve so quickly"
 msgstr "Neden adaylar bu kadar hızlı gelişiyor?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id

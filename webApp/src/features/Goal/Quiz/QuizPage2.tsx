@@ -19,6 +19,7 @@ import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
 import { QuizPlayerIdentityStep } from './QuizPlayerIdentityStep';
 import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
+import { QuizDailyQuestionStep } from './QuizDailyQuestionStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { QuizMicPermissionStep, QuizRecordingConsentStep } from './QuizRecordingConsentStep';
 import { hasAboutTranscription, hasFollowUpTranscription } from './quizGuestAboutStorage';
@@ -322,6 +323,14 @@ const QuizQuestions = () => {
               isLoading={isGoalGenerating || survey?.goalData === null}
               goalData={survey?.goalData}
               actionButtonLabel={i18n._('Continue')}
+            />
+          )}
+
+          {currentStep === 'dailyQuestion' && (
+            <QuizDailyQuestionStep
+              languageCode={languageToLearn}
+              onContinue={next}
+              isStepLoading={isStepLoading}
             />
           )}
 

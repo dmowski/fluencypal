@@ -159,9 +159,24 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   pageLanguageRef.current = pageLanguage;
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
-  const [surveyDoc] = useDocumentData(surveyDocRef);
+  const [surveyDoc, surveyLoading] = useDocumentData(surveyDocRef);
   const surveyRef = useRef<QuizSurvey2 | null>(surveyDoc || null);
   surveyRef.current = surveyDoc || null;
+  const [surveyReadyUid, setSurveyReadyUid] = useState<string | null>(null);
+  const surveyLoadSeenForUid = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (auth.loading || !auth.uid) {
+      return;
+    }
+    if (surveyLoading) {
+      surveyLoadSeenForUid.current = auth.uid;
+      return;
+    }
+    if (surveyLoadSeenForUid.current === auth.uid) {
+      setSurveyReadyUid((current) => (current === auth.uid ? current : auth.uid));
+    }
+  }, [auth.loading, auth.uid, surveyLoading]);
 
   const updateSurvey = async (surveyDoc: QuizSurvey2, label: string) => {
     if (!surveyDocRef) {
@@ -453,11 +468,24 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
       nativeLanguage,
     );
 
+    const realPeopleChoiceKnown = surveyReadyUid === auth.uid;
+    const includeDailyQuestion =
+      surveyDoc?.wantsToTalkWithRealPeople === true ||
+      (!realPeopleChoiceKnown && currentStep === 'dailyQuestion');
+
     return quizPath({
       includePageLanguage: !isNativeLanguageIsSupportedLanguage,
       activities: parsePracticeActivities(state.activities),
+      includeDailyQuestion,
     });
-  }, [nativeLanguage, state.activities]);
+  }, [
+    nativeLanguage,
+    state.activities,
+    currentStep,
+    surveyDoc?.wantsToTalkWithRealPeople,
+    surveyReadyUid,
+    auth.uid,
+  ]);
   const activeStep = resolveQuizStep(currentStep, path);
   const currentStepIndex = path.indexOf(activeStep);
 

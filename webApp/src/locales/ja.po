@@ -893,6 +893,11 @@ msgid ""
 "when you prepare for an exam, one round at a time."
 msgstr "声に出して質問に答えましょう。それは自信を築き、試験の準備をするときに必要な文法を、1ラウンドずつ鍛えます。"
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:66
+#. js-lingui-explicit-id
+msgid "Answer today's question"
+msgstr "今日の質問に答える"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:359
 #. js-lingui-explicit-id
 msgid "Anything else?"
@@ -2213,7 +2218,7 @@ msgid "Choose Language Level"
 msgstr "言語レベルを選択"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
-#: src/features/Goal/Quiz/QuizPage2.tsx:197
+#: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "サイトの言語を選択"
@@ -2655,8 +2660,9 @@ msgstr "コンテキスト (トピック、対象者、目標...)"
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:250
-#: src/features/Goal/Quiz/QuizPage2.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:325
 #: src/features/Goal/Quiz/QuizPlan.browser.test.tsx:79
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
@@ -2876,7 +2882,7 @@ msgstr "試験を開始できませんでした。もう一度お試しくださ
 msgid "Could not start your account. Please try again."
 msgstr "アカウントを開始できませんでした。もう一度お試しください。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:253
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "次の質問を作成できませんでした。もう一度お試しください。"
@@ -4399,7 +4405,7 @@ msgstr "支払いセッションの作成中にエラーが発生しました。
 msgid "Error creating payment session. Try again later."
 msgstr "支払いセッションの作成中にエラーが発生しました。後でもう一度お試しください。"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:63
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "プランの作成中にエラーが発生しました。もう一度お試しください。"
@@ -6376,7 +6382,7 @@ msgstr "私は仕事の面接に合格するために英語を学びたいです
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
-#: src/features/Goal/Quiz/QuizPage2.tsx:165
+#: src/features/Goal/Quiz/QuizPage2.tsx:166
 #. js-lingui-explicit-id
 msgid "I want to learn:"
 msgstr "学びたい内容:"
@@ -8059,7 +8065,7 @@ msgstr "ニュースディスカッション"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:89
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:181
-#: src/features/Goal/Quiz/QuizPage2.tsx:167
+#: src/features/Goal/Quiz/QuizPage2.tsx:168
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:70
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:146
 #: src/features/Landing/LandingPage.tsx:271
@@ -8746,7 +8752,7 @@ msgstr "支払い義務のある注文 {amount}"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
-#: src/features/Goal/Quiz/useQuiz.tsx:363
+#: src/features/Goal/Quiz/useQuiz.tsx:378
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:28
 #: src/features/Lang/LanguageSwitcher.tsx:107
 #. js-lingui-explicit-id
@@ -8937,6 +8943,13 @@ msgstr "保留中のリクエスト"
 #. js-lingui-explicit-id
 msgid "People in voice chat"
 msgstr "ボイスチャット内の人々"
+
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:67
+#. js-lingui-explicit-id
+msgid ""
+"People who practice together answer a new question every day. Send yours to "
+"continue."
+msgstr "一緒に練習する人々は、毎日新しい質問に答えます。続けるにはあなたの質問を送信してください。"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:47
 #. js-lingui-explicit-id
@@ -10741,7 +10754,7 @@ msgstr "ブックを保存中..."
 msgid "Saving book…"
 msgstr "ブックを保存中…"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
 msgid "Say a few sentences in your own words. The examples below are only ideas."
@@ -10945,6 +10958,11 @@ msgstr "サインインリンクを送信"
 msgid "Send to Kindle"
 msgstr "Kindleに送信"
 
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:32
+#. js-lingui-explicit-id
+msgid "Send your answer to continue."
+msgstr "送信して次へ進む。"
+
 #: src/features/Dashboard/MessagesToWinBadge.tsx:62
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
@@ -10997,7 +11015,7 @@ msgid "Sentences"
 msgstr "文"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:178
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "私の言語を設定する"
@@ -11358,7 +11376,7 @@ msgid "Smoothed"
 msgstr "スムーズにしました"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:177
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "そのため、私はあなたのために単語を翻訳できます。"
@@ -12077,7 +12095,7 @@ msgstr "トップ製品企業が使用するシステムデザインシナリオ
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/useQuiz.tsx:364
+#: src/features/Goal/Quiz/useQuiz.tsx:379
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:29
 #: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
@@ -13235,7 +13253,7 @@ msgid ""
 msgstr "これは重要なステップです。あなたの回答は、あなたの個人プランを作成するために使用されます。"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:198
+#: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "これはボタンやメニューに表示されるテキストです"
@@ -13485,6 +13503,7 @@ msgstr ""
 "合のみ使用されます。インストールは不要です。"
 
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:35
+#: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "今日"
@@ -13652,8 +13671,8 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "試してみてください"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:64
-#: src/features/Goal/Quiz/QuizPage2.tsx:254
+#: src/features/Goal/Quiz/QuizPage2.tsx:65
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
 #: src/features/Settings/MicrophoneSettingsModal.tsx:152
 #. js-lingui-explicit-id
@@ -14362,7 +14381,7 @@ msgid "What kinds of backend interviews can I practice for?"
 msgstr "どのようなバックエンド面接の練習ができますか？"
 
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "何語を話しますか"
@@ -14535,7 +14554,7 @@ msgstr "なぜバックエンド候補者は速く成長するのか"
 msgid "Why candidates improve so quickly"
 msgstr "なぜ候補者はこんなに早く上達するのか"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
 #. js-lingui-explicit-id
