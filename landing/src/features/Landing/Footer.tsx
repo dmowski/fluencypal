@@ -198,6 +198,16 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
             >
               {i18n._(`Cookies Policy`)}
             </Link>
+            <Link
+              href={`${getUrlStart(lang)}community-rules`}
+              variant="body1"
+              align="right"
+              sx={{
+                color: '#fff',
+              }}
+            >
+              {i18n._(`Community rules`)}
+            </Link>
           </Stack>
         </Stack>
       </Stack>

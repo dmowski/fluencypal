@@ -34,6 +34,7 @@ import {
 } from './QuizActivitySteps';
 import {
   QuizAuthWallStep,
+  QuizCommunityRulesStep,
   QuizDailyPracticeStep,
   QuizLimitedAccessStep,
   QuizNoRemindersStep,
@@ -264,6 +265,14 @@ const QuizQuestions = () => {
               onChoose={(value) => {
                 void saveWantsRealPeople(value).then(() => next());
               }}
+              isStepLoading={isStepLoading}
+            />
+          )}
+
+          {currentStep === 'communityRules' && (
+            <QuizCommunityRulesStep
+              pageLanguage={pageLanguage}
+              onContinue={next}
               isStepLoading={isStepLoading}
             />
           )}

@@ -5,7 +5,7 @@ import { getI18nInstance } from '@/appRouterI18n';
 
 interface LegalContainerProps {
   children: React.ReactNode;
-  page: 'privacy' | 'terms' | 'cookies';
+  page: 'privacy' | 'terms' | 'cookies' | 'community';
   lang: SupportedLanguage;
 }
 
@@ -13,6 +13,7 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
   const isCookies = page === 'cookies';
   const isTerms = page === 'terms';
   const isPrivacy = page === 'privacy';
+  const isCommunity = page === 'community';
   const i18n = getI18nInstance(lang);
 
   const switcher = (
@@ -30,6 +31,12 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
       </Button>
       <Button variant={isCookies ? 'contained' : 'outlined'} href={`${getUrlStart(lang)}cookies`}>
         {i18n._(`Cookies Policy`)}
+      </Button>
+      <Button
+        variant={isCommunity ? 'contained' : 'outlined'}
+        href={`${getUrlStart(lang)}community-rules`}
+      >
+        {i18n._(`Community rules`)}
       </Button>
     </ButtonGroup>
   );

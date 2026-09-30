@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Link, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { InfoStep } from '../../Survey/InfoStep';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useAuth } from '@/features/Auth/useAuth';
 import { QuizPasswordAccountForm } from './QuizPasswordAccount';
@@ -49,6 +49,44 @@ export const QuizTalkWithPeopleStep = ({
         isStepLoading={isStepLoading}
         actionButtonAnalyticsId="quiz-talk-with-people-yes"
         secondButtonAnalyticsId="quiz-talk-with-people-no"
+      />
+    </StepFrame>
+  );
+};
+
+export const QuizCommunityRulesStep = ({
+  pageLanguage,
+  onContinue,
+  isStepLoading,
+}: {
+  pageLanguage: string;
+  onContinue: () => void;
+  isStepLoading: boolean;
+}) => {
+  const { i18n } = useLingui();
+  return (
+    <StepFrame testId="quiz-community-rules" screen="quiz.communityRules">
+      <InfoStep
+        title={i18n._('Community rules')}
+        subTitle={i18n._(
+          'When you send a message, remember that we are all learners. We make a lot of mistakes, and each of us has a different level. Be patient with that.',
+        )}
+        listItems={[
+          {
+            title: i18n._('A mistake is part of practice, not a reason to judge'),
+            iconName: 'heart',
+          },
+          {
+            title: i18n._('Read the community rules'),
+            iconName: 'scroll-text',
+            href: `${getLandingUrlStart(pageLanguage)}community-rules`,
+          },
+        ]}
+        actionButtonTitle={i18n._('I agree')}
+        actionButtonAnalyticsId="quiz-community-rules-agree"
+        onClick={onContinue}
+        disabled={isStepLoading}
+        isStepLoading={isStepLoading}
       />
     </StepFrame>
   );

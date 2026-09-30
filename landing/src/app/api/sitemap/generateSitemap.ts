@@ -156,6 +156,10 @@ export async function generateSitemap(): Promise<string> {
       path: 'cookies',
       priority: '0.6000',
     },
+    {
+      path: 'community-rules',
+      priority: '0.6000',
+    },
 
     ...localeLinks,
     ...casesUrls,

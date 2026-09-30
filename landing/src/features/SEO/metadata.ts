@@ -21,6 +21,7 @@ type Page =
   | 'privacy'
   | 'cookies'
   | 'terms'
+  | 'community'
   | 'scenarios'
   | 'blog'
   | 'features'
@@ -199,6 +200,14 @@ export const generateMetadataInfo = async ({
     title = i18n._(`Cookies Policy`) + ' | ' + APP_NAME;
     description = i18n._(
       `Practice conversational English with FluencyPal, your 24/7 AI tutor. Improve fluency, pronunciation, and confidence.`,
+    );
+    keywords = [];
+  }
+
+  if (currentPath === 'community') {
+    title = i18n._(`Community rules`) + ' | ' + APP_NAME;
+    description = i18n._(
+      `We are all learners. Be patient with mistakes and with different levels when you send a message.`,
     );
     keywords = [];
   }

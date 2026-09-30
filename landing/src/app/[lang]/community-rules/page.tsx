@@ -1,0 +1,29 @@
+import { supportedLanguages } from '@/features/Lang/lang';
+import { CommunityRules } from '@/features/Legal/CommunityRules';
+import { Metadata } from 'next';
+import { generateMetadataInfo } from '@/features/SEO/metadata';
+import { Footer } from '@/features/Landing/Footer';
+import { HeaderStatic } from '@/features/Header/HeaderStatic';
+
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  return generateMetadataInfo({
+    lang: (await props.params).lang,
+    currentPath: 'community',
+  });
+}
+
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || 'en';
+  return (
+    <>
+      <HeaderStatic lang={supportedLang} />
+      <CommunityRules lang={supportedLang} />
+      <Footer lang={supportedLang} />
+    </>
+  );
+};

@@ -11,6 +11,7 @@ export const quizSteps = [
   'before_recordAbout',
   'recordAboutFollowUp',
   'talkWithPeople',
+  'communityRules',
   'dailyPractice',
   'noReminders',
   'limitedAccess',

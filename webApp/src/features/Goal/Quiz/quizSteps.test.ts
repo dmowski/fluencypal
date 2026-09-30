@@ -10,7 +10,8 @@ describe('quizPath', () => {
     expect(path.indexOf('before_recordAbout')).toBe(path.indexOf('micPermission') + 1);
     expect(path.indexOf('recordAboutFollowUp')).toBe(path.indexOf('before_recordAbout') + 1);
     expect(path.indexOf('talkWithPeople')).toBe(path.indexOf('recordAboutFollowUp') + 1);
-    expect(path.indexOf('dailyPractice')).toBe(path.indexOf('talkWithPeople') + 1);
+    expect(path.indexOf('communityRules')).toBe(path.indexOf('talkWithPeople') + 1);
+    expect(path.indexOf('dailyPractice')).toBe(path.indexOf('communityRules') + 1);
     expect(path.indexOf('noReminders')).toBe(path.indexOf('dailyPractice') + 1);
     expect(path.indexOf('limitedAccess')).toBe(path.indexOf('noReminders') + 1);
     expect(path.indexOf('reviews')).toBe(path.indexOf('limitedAccess') + 1);
