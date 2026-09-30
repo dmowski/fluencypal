@@ -28,6 +28,11 @@ export const assignHtmlAudioSource = (el: HTMLAudioElement, url: string): void =
   } catch {}
 };
 
+const isAbortError = (error: unknown): boolean => {
+  if (!error) return false;
+  return (error as { name?: string }).name === 'AbortError';
+};
+
 export const isUnsupportedSourcePlayError = (error: unknown): boolean => {
   if (!error) return false;
   const name = (error as { name?: string }).name;
@@ -39,6 +44,46 @@ export const isUnsupportedSourcePlayError = (error: unknown): boolean => {
     message.includes('The operation is not supported') ||
     message.includes('no supported source')
   );
+};
+
+export type StreamPlayAttempt =
+  | { outcome: 'playing'; el: HTMLAudioElement }
+  | { outcome: 'aborted' }
+  | { outcome: 'failed'; el: HTMLAudioElement; error: unknown };
+
+/**
+ * play() on an element stuck in MEDIA_ERR_SRC_NOT_SUPPORTED rejects before the
+ * next URL is requested. Retry on the element from replaceElement, which must
+ * already have a decodable source before createMediaElementSource.
+ */
+export const playStreamOrRecover = async ({
+  el,
+  url,
+  replaceElement,
+}: {
+  el: HTMLAudioElement;
+  url: string;
+  replaceElement: () => HTMLAudioElement;
+}): Promise<StreamPlayAttempt> => {
+  try {
+    await el.play();
+    return { outcome: 'playing', el };
+  } catch (error) {
+    if (isAbortError(error)) return { outcome: 'aborted' };
+    if (!isUnsupportedSourcePlayError(error)) {
+      return { outcome: 'failed', el, error };
+    }
+  }
+
+  const fresh = replaceElement();
+  assignHtmlAudioSource(fresh, url);
+  try {
+    await fresh.play();
+    return { outcome: 'playing', el: fresh };
+  } catch (error) {
+    if (isAbortError(error)) return { outcome: 'aborted' };
+    return { outcome: 'failed', el: fresh, error };
+  }
 };
 
 /**

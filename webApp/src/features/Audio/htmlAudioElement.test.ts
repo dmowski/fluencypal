@@ -6,6 +6,7 @@ import {
   assignHtmlAudioSource,
   ensureHtmlAudioElementHasSource,
   isUnsupportedSourcePlayError,
+  playStreamOrRecover,
   resetHtmlAudioElement,
   SILENT_WAV_DATA_URI,
   startHtmlAudioPrimeFromGesture,
@@ -53,6 +54,53 @@ describe('assignHtmlAudioSource', () => {
 
     expect(el.getAttribute('src')).toBe('/api/ttsStream?cache=true');
     expect(load).toHaveBeenCalled();
+  });
+});
+
+describe('playStreamOrRecover', () => {
+  const unsupported = () => {
+    const error = new Error('The operation is not supported.');
+    error.name = 'NotSupportedError';
+    return error;
+  };
+
+  it('plays the same URL on a new element after the current one rejects the source', async () => {
+    const stuck = document.createElement('audio');
+    const playStuck = jest.spyOn(stuck, 'play').mockRejectedValue(unsupported());
+    const fresh = document.createElement('audio');
+    fresh.src = SILENT_WAV_DATA_URI;
+    const playFresh = jest.spyOn(fresh, 'play').mockResolvedValue(undefined);
+    const load = jest.spyOn(fresh, 'load').mockImplementation(() => {});
+
+    const attempt = await playStreamOrRecover({
+      el: stuck,
+      url: '/api/ttsStream?cache=true',
+      replaceElement: () => fresh,
+    });
+
+    expect(attempt).toEqual({ outcome: 'playing', el: fresh });
+    expect(playStuck).toHaveBeenCalledTimes(1);
+    expect(playFresh).toHaveBeenCalledTimes(1);
+    expect(load).toHaveBeenCalledTimes(1);
+    expect(fresh.getAttribute('src')).toBe('/api/ttsStream?cache=true');
+    expect(stuck.getAttribute('src')).toBeNull();
+  });
+
+  it('reports the fresh element when that play fails too', async () => {
+    const stuck = document.createElement('audio');
+    jest.spyOn(stuck, 'play').mockRejectedValue(unsupported());
+    const fresh = document.createElement('audio');
+    const retryError = unsupported();
+    jest.spyOn(fresh, 'play').mockRejectedValue(retryError);
+    jest.spyOn(fresh, 'load').mockImplementation(() => {});
+
+    const attempt = await playStreamOrRecover({
+      el: stuck,
+      url: '/api/ttsStream?cache=true',
+      replaceElement: () => fresh,
+    });
+
+    expect(attempt).toEqual({ outcome: 'failed', el: fresh, error: retryError });
   });
 });
 

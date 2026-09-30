@@ -14,12 +14,15 @@ import { isSilentAudio } from './isSilentAudio';
 import { isDev } from '../Analytics/isDev';
 import { showDebugInfoBadgeOnTopWindow } from '../Conversation/useAiConversation/showDebugInfoBadgeOnTopWindow';
 import { toMusicProxyUrl } from './toMusicProxyUrl';
-import { isRecoverableTtsFormatError } from './isRecoverableTtsFormatError';
+import {
+  isRecoverableTtsFormatError,
+  isUnloadedUnsupportedSource,
+} from './isRecoverableTtsFormatError';
 import { isUserGesturePlayError } from './isUserGesturePlayError';
 import {
   assignHtmlAudioSource,
   ensureHtmlAudioElementHasSource,
-  isUnsupportedSourcePlayError,
+  playStreamOrRecover,
   resetHtmlAudioElement,
   startHtmlAudioPrimeFromGesture,
 } from './htmlAudioElement';
@@ -252,6 +255,23 @@ class AudioQueuePlayer {
     this.attachSpeechListeners(el);
   }
 
+  /**
+   * After MEDIA_ERR_SRC_NOT_SUPPORTED, play() on the same element rejects
+   * immediately and never requests the URL. A new element can play once it
+   * has a decodable source before createMediaElementSource.
+   */
+  private replaceSpeechElement(): HTMLAudioElement {
+    this.speechNode?.disconnect();
+    this.speechNode = null;
+    if (this.speechEl) {
+      resetHtmlAudioElement(this.speechEl);
+    }
+    this.speechEl = null;
+    this._speechPlaying = false;
+    this.createSpeechElement();
+    return this.speechEl!;
+  }
+
   private getUnlockDiagnostics() {
     return {
       unlockedFlag: this.unlocked,
@@ -361,52 +381,37 @@ class AudioQueuePlayer {
       data: summarizeTtsStreamUrl(url),
     });
 
-    const playWithElement = async (mediaEl: HTMLAudioElement) => {
-      try {
-        await mediaEl.play();
-        return true;
-      } catch (error) {
-        if (isAbortError(error)) return false;
-        if (!isUnsupportedSourcePlayError(error)) {
-          logStreamAudioFailure({
-            phase: 'play',
-            url,
-            el: mediaEl,
-            audioContextState: ctx.state,
-            lastStreamStoppedAt: this.lastStreamStoppedAt,
-            error,
+    const playWithElement = async (mediaEl: HTMLAudioElement): Promise<HTMLAudioElement | null> => {
+      const attempt = await playStreamOrRecover({
+        el: mediaEl,
+        url,
+        replaceElement: () => {
+          Sentry.addBreadcrumb({
+            category: 'conversation-audio',
+            level: 'warning',
+            message: 'Retrying stream play on a fresh audio element',
+            data: summarizeTtsStreamUrl(url),
           });
-          throw error;
-        }
-
-        Sentry.addBreadcrumb({
-          category: 'conversation-audio',
-          level: 'warning',
-          message: 'Retrying stream play after reloading the same audio element',
-          data: summarizeTtsStreamUrl(url),
+          return this.replaceSpeechElement();
+        },
+      });
+      if (attempt.outcome === 'aborted') return null;
+      if (attempt.outcome === 'failed') {
+        logStreamAudioFailure({
+          phase: 'play',
+          url,
+          el: attempt.el,
+          audioContextState: ctx.state,
+          lastStreamStoppedAt: this.lastStreamStoppedAt,
+          error: attempt.error,
         });
-        // A second MediaElementSource on iOS fails the same way. Reload this one.
-        assignHtmlAudioSource(mediaEl, url);
-        try {
-          await mediaEl.play();
-          return true;
-        } catch (retryError) {
-          if (isAbortError(retryError)) return false;
-          logStreamAudioFailure({
-            phase: 'play',
-            url,
-            el: mediaEl,
-            audioContextState: ctx.state,
-            lastStreamStoppedAt: this.lastStreamStoppedAt,
-            error: retryError,
-          });
-          throw retryError;
-        }
+        throw attempt.error;
       }
+      return attempt.el;
     };
 
-    const started = await playWithElement(el);
-    if (!started) return;
+    const playingEl = await playWithElement(el);
+    if (!playingEl) return;
 
     await new Promise<void>((resolve, reject) => {
       const onEnded = () => {
@@ -415,11 +420,11 @@ class AudioQueuePlayer {
       };
       const onError = () =>
         cleanup(() => {
-          if (isAbortError(el.error)) return resolve();
+          if (isAbortError(playingEl.error)) return resolve();
           const diagnostics = logStreamAudioFailure({
             phase: 'media-element-error',
             url,
-            el,
+            el: playingEl,
             audioContextState: ctx.state,
             lastStreamStoppedAt: this.lastStreamStoppedAt,
           });
@@ -427,13 +432,13 @@ class AudioQueuePlayer {
         });
 
       const cleanup = (done: () => void) => {
-        el.removeEventListener('ended', onEnded);
-        el.removeEventListener('error', onError);
+        playingEl.removeEventListener('ended', onEnded);
+        playingEl.removeEventListener('error', onError);
         done();
       };
 
-      el.addEventListener('ended', onEnded);
-      el.addEventListener('error', onError);
+      playingEl.addEventListener('ended', onEnded);
+      playingEl.addEventListener('error', onError);
     });
   }
 
@@ -712,6 +717,11 @@ const logStreamAudioFailure = ({
       mediaErrorCode: diagnostics.code,
       mediaErrorLabel: diagnostics.label,
       ...playPolicy,
+    }) &&
+    !isUnloadedUnsupportedSource({
+      mediaErrorCode: diagnostics.code,
+      readyState: diagnostics.readyState,
+      networkState: diagnostics.networkState,
     })
   ) {
     Sentry.captureException(new Error(`Stream audio error: ${label}`), {

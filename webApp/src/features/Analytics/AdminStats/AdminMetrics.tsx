@@ -10,6 +10,10 @@ interface AdminMetricsProps {
   lessonsLast24h: number;
   lastDayUsersCount: number;
   todayUsersCount: number;
+  signedInLastDayCount: number;
+  signedInTodayCount: number;
+  signedInSecondDayCount: number;
+  signedInOldCount: number;
 
   secondDayVisitorsCount: number;
   thirdAndMoreDayVisitorsCount: number;
@@ -29,6 +33,10 @@ export function AdminMetrics({
   thirdAndMoreDayVisitorsCount,
   usersToShowMode,
   todayUsersCount,
+  signedInLastDayCount,
+  signedInTodayCount,
+  signedInSecondDayCount,
+  signedInOldCount,
   onModeChange,
 }: AdminMetricsProps) {
   return (
@@ -46,7 +54,7 @@ export function AdminMetrics({
           gap: '0px',
           padding: '17px 12px 8px 12px',
           borderRadius: '8px',
-          height: '120px',
+          height: '140px',
           '&.active': {
             backgroundColor: 'rgba(255, 255, 255, 0.06)',
           },
@@ -64,6 +72,7 @@ export function AdminMetrics({
 
       <StatCard
         label="Users - 24h"
+        sublabel={`${signedInLastDayCount} signed in`}
         value={lastDayUsersCount}
         isActive={usersToShowMode === 'lastDay'}
         onClick={() => onModeChange('lastDay')}
@@ -75,6 +84,7 @@ export function AdminMetrics({
       <StatCard
         value={secondDayVisitorsCount}
         label="Second Day Users (today)"
+        sublabel={`${signedInSecondDayCount} signed in`}
         isActive={usersToShowMode === 'secondDay'}
         onClick={() => onModeChange('secondDay')}
       />
@@ -84,12 +94,14 @@ export function AdminMetrics({
 
       <StatCard
         label="Users - Today"
+        sublabel={`${signedInTodayCount} signed in`}
         value={todayUsersCount}
         isActive={usersToShowMode === 'todayDay'}
         onClick={() => onModeChange('todayDay')}
       />
       <StatCard
         label="Old Users - Today"
+        sublabel={`${signedInOldCount} signed in`}
         value={thirdAndMoreDayVisitorsCount}
         isActive={usersToShowMode === 'old'}
         onClick={() => onModeChange('old')}

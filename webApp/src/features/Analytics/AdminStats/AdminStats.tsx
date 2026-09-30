@@ -166,6 +166,9 @@ export function AdminStats() {
   const lessonsLast24h =
     sourceData?.users.reduce((acc, user) => acc + (user.lessonsLast24h || 0), 0) || 0;
 
+  const countSignedIn = (list: typeof users) =>
+    list.filter((user) => Boolean(user.userData.email)).length;
+
   const usersToShowMap: Record<UserMode, typeof users> = {
     all: users,
     lastDay: lastDayUsers,
@@ -282,6 +285,10 @@ export function AdminStats() {
                   quizCompletionsLast24h={data.quizCompletionsLast24h}
                   lessonsLast24h={lessonsLast24h}
                   todayUsersCount={todayUsers.length}
+                  signedInLastDayCount={countSignedIn(lastDayUsers)}
+                  signedInTodayCount={countSignedIn(todayUsers)}
+                  signedInSecondDayCount={countSignedIn(secondDayVisitors)}
+                  signedInOldCount={countSignedIn(thirdAndMoreDayVisitors)}
                   secondDayVisitorsCount={secondDayVisitors.length}
                   thirdAndMoreDayVisitorsCount={thirdAndMoreDayVisitors.length}
                   usersToShowMode={usersToShowMode}
