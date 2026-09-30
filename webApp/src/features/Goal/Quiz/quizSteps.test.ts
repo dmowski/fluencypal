@@ -4,7 +4,8 @@ describe('quizPath', () => {
   const path = quizPath({ includePageLanguage: false, activities: [] });
 
   it('asks for recording consent after the teacher, then the reason and a follow-up', () => {
-    expect(path.indexOf('recordingConsent')).toBe(path.indexOf('teacherSelection') + 1);
+    expect(path.indexOf('playerIdentity')).toBe(path.indexOf('teacherSelection') + 1);
+    expect(path.indexOf('recordingConsent')).toBe(path.indexOf('playerIdentity') + 1);
     expect(path.indexOf('micPermission')).toBe(path.indexOf('recordingConsent') + 1);
     expect(path.indexOf('before_recordAbout')).toBe(path.indexOf('micPermission') + 1);
     expect(path.indexOf('recordAboutFollowUp')).toBe(path.indexOf('before_recordAbout') + 1);

@@ -109,6 +109,8 @@ function useProvideGame(): GameContextType {
   const myAvatar = gameAvatars?.[userId || ''] || '';
 
   const playGame = () => {
+    void setDefaultAvatarIfNeeded().catch(ignorePermissionDenied);
+    void setDefaultUsernameIfNeeded().catch(ignorePermissionDenied);
     generateQuestions();
     setIsGamePlaying(true);
   };
@@ -187,27 +189,28 @@ function useProvideGame(): GameContextType {
     resetPointsIfNeeded();
   };
 
+  const ignorePermissionDenied = (error: unknown) => {
+    if (isFirebasePermissionDenied(error)) return;
+    Sentry.captureException(error);
+  };
+
   const setAvatar = async (avatarUrl: string) => {
     if (!userId) return;
     const doc = db.documents.gameAvatars2;
-    await setDoc(
-      doc,
-      {
-        [userId]: avatarUrl,
-      },
-      { merge: true },
+    await runWithFirestoreAuth(auth.getToken, () =>
+      setDoc(
+        doc,
+        {
+          [userId]: avatarUrl,
+        },
+        { merge: true },
+      ),
     );
   };
 
   useEffect(() => {
     if (!userId) return;
-    const ignorePermissionDenied = (error: unknown) => {
-      if (isFirebasePermissionDenied(error)) return;
-      Sentry.captureException(error);
-    };
     void updateLastVisit();
-    void setDefaultAvatarIfNeeded().catch(ignorePermissionDenied);
-    void setDefaultUsernameIfNeeded().catch(ignorePermissionDenied);
   }, [userId, isLoading]);
 
   useEffect(() => {
@@ -219,10 +222,8 @@ function useProvideGame(): GameContextType {
   }, [userId]);
 
   const setDefaultUsernameIfNeeded = async () => {
-    if (!userId || isLoading || !userNames) return;
-
-    const userName = userNames[userId];
-    if (userName) return; // Username already set
+    if (!userId || isLoading) return;
+    if (userNames?.[userId]) return;
 
     const randomUsername = generateRandomUsername();
     if (!randomUsername) return;
@@ -242,11 +243,10 @@ function useProvideGame(): GameContextType {
   };
 
   const setDefaultAvatarIfNeeded = async () => {
-    if (!userId || isLoading || !gameAvatars) return;
-    if (myAvatar) return; // Avatar already set
+    if (!userId || isLoading) return;
+    if (myAvatar) return;
 
-    const randomAvatars = shuffleArray(avatars);
-    const randomAvatar = randomAvatars[0];
+    const randomAvatar = shuffleArray(avatars)[0];
     if (!randomAvatar) return;
     await setAvatar(randomAvatar);
   };
@@ -317,15 +317,17 @@ function useProvideGame(): GameContextType {
   const isTop5Position = myIndex >= 0 && myIndex < 5;
 
   const updateUsername = async (username: string) => {
-    if (!userId || !userNames) return;
+    if (!userId) return;
 
     const doc = db.documents.gameUserNames2;
-    await setDoc(
-      doc,
-      {
-        [userId]: username,
-      },
-      { merge: true },
+    await runWithFirestoreAuth(auth.getToken, () =>
+      setDoc(
+        doc,
+        {
+          [userId]: username,
+        },
+        { merge: true },
+      ),
     );
   };
 

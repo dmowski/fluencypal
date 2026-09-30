@@ -66,7 +66,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout)
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Teacher Continue: insights.teacherContinue (visitors on `quiz.teacherSelection`; best sighting of `quiz-next` as enabled/disabled × inView/offscreen/unknown; clicked). Events from before in-view was stored land in enabledUnknown or disabledUnknown.
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
@@ -123,7 +123,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-player-identity`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`.
 
 `enable-mic-just-talk` and `autoStart` are old events only. `quiz-start-speaking` is the plan **Continue** button on `goalReview`, not a call. `quiz-talk-suggested-reply` is the manual “what you can say” send inside a call, not an automatic first reply. `hear-first-line` / `reply-first-line` are role-play guest, not the quiz.
 
@@ -156,7 +156,7 @@ Admin UI: `/staats/journey`
 **Onboarding order** (`insights.quizSteps` is the `currentStep` value; feature steps appear only for the activities they picked):
 
 1. `learnLanguage` → native language. `before_pageLanguage` / `pageLanguage` only when native is not a site language. Absence of those two is normal.
-2. `teacherSelection` — Continue is `quiz-next` (`insights.teacherContinue`).
+2. `teacherSelection` — Continue is `quiz-next` (`insights.teacherContinue`). Then `playerIdentity` — empty username plus an avatar. Continue is `quiz-player-identity`.
 3. `recordingConsent` — `quiz-voice-consent` (age, privacy, terms). Then `micPermission` — `mic-permission-grant`. No grant plus `uiErrors` `mic_denied` is the browser prompt, not the later clip.
 4. `before_recordAbout` — why they practice. `hear-question`, `record-about-guest`, then `quiz-guest-continue`. This is the only quiz `speech_start` (`quizSpeech`); the follow-up clip does not emit a second one.
 5. `recordAboutFollowUp` — AI question from the first clip. Same recorder ids. Drop here with a saved first clip and no `aboutUserFollowUpTranscription` means they did not answer the generated question.

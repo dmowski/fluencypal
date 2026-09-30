@@ -5,6 +5,7 @@ export const quizSteps = [
   'before_pageLanguage',
   'pageLanguage',
   'teacherSelection',
+  'playerIdentity',
   'recordingConsent',
   'micPermission',
   'before_recordAbout',

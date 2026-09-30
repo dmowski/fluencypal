@@ -17,6 +17,7 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useSettings } from '@/features/Settings/useSettings';
 import { TeacherSelectionQuizStep } from './TeacherSelectionQuizStep';
+import { QuizPlayerIdentityStep } from './QuizPlayerIdentityStep';
 import { QuizBeforeGoalReviewStep } from './QuizBeforeGoalReviewStep';
 import { QuizBeforeRecordAboutGate } from './QuizBeforeRecordAboutGate';
 import { QuizMicPermissionStep, QuizRecordingConsentStep } from './QuizRecordingConsentStep';
@@ -183,6 +184,10 @@ const QuizQuestions = () => {
 
           {currentStep === 'teacherSelection' && (
             <TeacherSelectionQuizStep onContinue={next} isStepLoading={isStepLoading} />
+          )}
+
+          {currentStep === 'playerIdentity' && (
+            <QuizPlayerIdentityStep onContinue={next} isStepLoading={isStepLoading} />
           )}
 
           {currentStep === 'nativeLanguage' && <NativeLanguageSelector />}
