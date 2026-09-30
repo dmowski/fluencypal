@@ -678,7 +678,7 @@ msgstr "AI jetonları"
 msgid "AI Voice"
 msgstr "AI Ses"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:661
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "AI sesi"
@@ -1452,6 +1452,13 @@ msgstr "Dilbilgisi ve sınav cevapları için tasarlandı"
 msgid "Bundling & Code Splitting"
 msgstr "Paketleme ve Kod Ayrıştırma"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:87
+#. js-lingui-explicit-id
+msgid "But there is a solution: chat with real people or buy unlimited access."
+msgstr ""
+"Ama bir çözüm var: gerçek insanlarla sohbet edin veya sınırsız erişim satın "
+"alın."
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:229
 #. js-lingui-explicit-id
 msgid "Buy 1 AI hour"
@@ -1466,6 +1473,11 @@ msgstr "3 AI saati satın al"
 #. js-lingui-explicit-id
 msgid "Buy 5 AI hours"
 msgstr "5 AI saati satın al"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:128
+#. js-lingui-explicit-id
+msgid "Buy access"
+msgstr "Erişim satın al"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
@@ -1617,7 +1629,7 @@ msgstr "Akıllı telefonda kullanabilir miyim?"
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:504
+#: src/features/Conversation/CallMode/CallButtons.tsx:490
 #: src/features/Conversation/ConversationCanvas.tsx:757
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -1720,6 +1732,11 @@ msgstr "Sohbet bulunamadı veya bu sohbete erişiminiz yok."
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Diğer Bir Köpek Sahibiyle Sohbet Et"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:111
+#. js-lingui-explicit-id
+msgid "Chat with people"
+msgstr "İnsanlarla sohbet et"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
@@ -2342,7 +2359,8 @@ msgstr ""
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:700
+#: src/features/Conversation/CallMode/CallButtons.tsx:686
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:139
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2774,7 +2792,6 @@ msgstr "Konuşmaya devam et"
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "Bugünün görevlerine devam edin ve tutarlılığı koruyun."
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:43
 #: src/features/Usage/Subscription/DayPassConfirm.tsx:58
 #. js-lingui-explicit-id
 msgid "Continue your plan — {price}"
@@ -4137,7 +4154,7 @@ msgstr "Köpek Sahibi"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:731
 #: src/features/Conversation/ConversationCanvas.tsx:530
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4153,7 +4170,7 @@ msgstr "Köpek Sahibi"
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:476
+#: src/features/Conversation/CallMode/CallButtons.tsx:462
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "Kaydı bitir"
@@ -4376,17 +4393,17 @@ msgstr "E-posta ve şifre. Uygulamanız bu hesapta kalır."
 msgid "Enable Access"
 msgstr "Erişimi Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:567
+#: src/features/Conversation/CallMode/CallButtons.tsx:553
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "Mikrofonu Etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:579
+#: src/features/Conversation/CallMode/CallButtons.tsx:565
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "Mikrofonu etkinleştir"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:684
+#: src/features/Conversation/CallMode/CallButtons.tsx:670
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4395,8 +4412,7 @@ msgstr ""
 "AI sesini etkinleştirmek bir premium özelliktir. Bu özelliğe erişmek için "
 "bakiyenizi yükseltin."
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:413
-#: src/features/Conversation/CallMode/CallButtons.tsx:613
+#: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/ConversationCanvas.tsx:569
 #. js-lingui-explicit-id
 msgid "End call"
@@ -5520,6 +5536,11 @@ msgstr "Framework'e özgü içgörüler (React, Vue, Angular)"
 #. js-lingui-explicit-id
 msgid "Frameworks & Libraries"
 msgstr "Frameworkler ve Kütüphaneler"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:84
+#. js-lingui-explicit-id
+msgid "Free answers have run out"
+msgstr "Ücretsiz yanıtlar tükendi"
 
 #: src/features/Landing/LandingPage.tsx:270
 #. js-lingui-explicit-id
@@ -7466,11 +7487,6 @@ msgstr "Kısa ve ilgili tutun"
 msgid "Keep practicing"
 msgstr "Uygulamaya devam et"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:38
-#. js-lingui-explicit-id
-msgid "Keep talking — {price} for the next 24 hours"
-msgstr "Konuşmaya devam edin — {price} önümüzdeki 24 saat boyunca"
-
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7589,7 +7605,7 @@ msgstr "Ön Uç Kariyerinize Başlayın"
 msgid "Lazy Loading"
 msgstr "Tembel Yükleme"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:89
+#: src/features/Conversation/ConversationReviewModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "Lider Tablosu"
@@ -7715,11 +7731,6 @@ msgstr "Uzunluk"
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Daha az"
-
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:40
-#. js-lingui-explicit-id
-msgid "Lesson 1 is done. This is the next part of your plan."
-msgstr "Ders 1 tamamlandı. Bu senin planının bir sonraki bölümü."
 
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
@@ -7873,11 +7884,11 @@ msgstr "Yükleniyor.."
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:214
-#: src/features/Conversation/ConversationReviewModal.tsx:107
-#: src/features/Conversation/ConversationReviewModal.tsx:122
-#: src/features/Conversation/ConversationReviewModal.tsx:137
-#: src/features/Conversation/ConversationReviewModal.tsx:152
-#: src/features/Conversation/ConversationReviewModal.tsx:170
+#: src/features/Conversation/ConversationReviewModal.tsx:108
+#: src/features/Conversation/ConversationReviewModal.tsx:123
+#: src/features/Conversation/ConversationReviewModal.tsx:138
+#: src/features/Conversation/ConversationReviewModal.tsx:153
+#: src/features/Conversation/ConversationReviewModal.tsx:171
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
@@ -8486,11 +8497,6 @@ msgstr "Sonraki hikaye"
 msgid "Next Turn"
 msgstr "Sıradaki Tur"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:37
-#. js-lingui-explicit-id
-msgid "Next: {title}"
-msgstr "Sonraki: {title}"
-
 #: src/features/Tasks/useDailyPlans.ts:61
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
@@ -8876,7 +8882,6 @@ msgstr "Gerçek bir ilerleme hissetmiyor musunuz?"
 msgid "Not Found"
 msgstr "Bulunamadı"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:163
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -9336,11 +9341,6 @@ msgstr "Yıldızlarla Öde"
 msgid "Pay {amount}"
 msgstr "{amount} öde"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:44
-#. js-lingui-explicit-id
-msgid "Pay {price}"
-msgstr "Öde {price}"
-
 #: src/features/Header/PaymentHistoryModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Payment"
@@ -9470,7 +9470,7 @@ msgstr ""
 msgid "Personalized scripts"
 msgstr "Kişiselleştirilmiş senaryolar"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:163
+#: src/features/Conversation/ConversationReviewModal.tsx:164
 #. js-lingui-explicit-id
 msgid "Phrases to remember"
 msgstr "Hatırlanması gereken ifadeler"
@@ -9744,7 +9744,7 @@ msgstr "Ödemenizi işlerken lütfen bekleyin."
 msgid "Points"
 msgstr "Puanlar"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr ""
@@ -10692,7 +10692,7 @@ msgstr "Gerçek zamanlı sohbet yapay zeka ile"
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Gerçek Hayat Rol Oynama ile İleri Düzey İngilizce Pratiği"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:661
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "Gerçek zamanlı konuşma"
@@ -10802,7 +10802,7 @@ msgstr "Cevabı kaydet"
 msgid "Record Answer"
 msgstr "Cevabı Kaydet"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:594
+#: src/features/Conversation/CallMode/CallButtons.tsx:580
 #: src/features/Conversation/ConversationCanvas.tsx:565
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -11542,7 +11542,7 @@ msgstr "Öğrenme hedefinizi belirleyin"
 msgid "Set translate language in Settings"
 msgstr "Ayarlar'dan çeviri dilini ayarla"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:606
+#: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -12588,7 +12588,7 @@ msgstr "Başarı hikayeleri"
 msgid "Suggest an idea"
 msgstr "Bir fikir öner"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:103
+#: src/features/Conversation/ConversationReviewModal.tsx:104
 #. js-lingui-explicit-id
 msgid "Summary"
 msgstr "Özet"
@@ -14645,7 +14645,7 @@ msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 msgid "Username:"
 msgstr "Kullanıcı Adı:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:687
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -15102,7 +15102,7 @@ msgstr "\"AI kullanım saatleri\" ne anlama geliyor?"
 msgid "What situation do you want to practice?"
 msgstr "Hangi durumu pratiğe dökmek istersiniz?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:119
+#: src/features/Conversation/ConversationReviewModal.tsx:120
 #. js-lingui-explicit-id
 msgid "What to focus on next time"
 msgstr "Bir sonraki sefere nelere odaklanmalı"
@@ -15133,7 +15133,7 @@ msgstr "Zevkle öğrendiğimiz şeyi asla unutmamız."
 msgid "What work do you do, and what do you need to say in that interview?"
 msgstr "Ne iş yapıyorsunuz ve o görüşmede ne söylemeniz gerekiyor?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:135
 #. js-lingui-explicit-id
 msgid "What you can improve"
 msgstr "Geliştirebileceğiniz şeyler"
@@ -15143,7 +15143,7 @@ msgstr "Geliştirebileceğiniz şeyler"
 msgid "What you can say:"
 msgstr "Ne söyleyebilirsin:"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:148
+#: src/features/Conversation/ConversationReviewModal.tsx:149
 #. js-lingui-explicit-id
 msgid "What you did well"
 msgstr "Ne yaptınız iyi"
@@ -16078,11 +16078,6 @@ msgstr "Sinik Arkadaşın"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Deneyiminiz"
-
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:41
-#. js-lingui-explicit-id
-msgid "Your free replies in this conversation are used."
-msgstr "Bu konuşmada ücretsiz yanıtlarınız kullanıldı."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

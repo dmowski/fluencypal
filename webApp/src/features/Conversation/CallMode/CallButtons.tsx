@@ -3,7 +3,8 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
 import { Button, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { DayPassLimitOffer, DayPassNextLesson } from './DayPassLimitOffer';
+import { DayPassLimitOffer } from './DayPassLimitOffer';
+import { PlanLessonCard } from '../firstPlanLesson';
 import { useEffect, useRef, useState } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { FeatureBlocker } from '@/features/Usage/FeatureBlocker';
@@ -79,8 +80,8 @@ export const CallButtons = ({
   isSendMessagesBlocked: boolean;
   fullExit: () => void;
   isGuestConversationLimited?: boolean;
-  /** First plan lesson is over. The offer is the next lesson, and the review opens once. */
-  nextPlanLesson?: DayPassNextLesson | null;
+  /** When the free lesson is over, open the review once. */
+  nextPlanLesson?: PlanLessonCard | null;
 }) => {
   const { i18n } = useLingui();
 
@@ -406,25 +407,10 @@ Return ONLY the number.
         }}
       >
         <DayPassLimitOffer
-          nextLesson={nextPlanLesson}
-          endAction={
-            <IconButton
-              size="large"
-              aria-label={i18n._('End call')}
-              onClick={() => {
-                vadAudioRecorder.stop();
-                fullExit();
-              }}
-              sx={{
-                width: '70px',
-                borderRadius: '30px',
-                backgroundColor: '#dc362e',
-                ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
-              }}
-            >
-              <CallEndIcon />
-            </IconButton>
-          }
+          onClose={() => {
+            vadAudioRecorder.stop();
+            fullExit();
+          }}
         />
       </Stack>
     );

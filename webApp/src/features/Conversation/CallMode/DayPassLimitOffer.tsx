@@ -1,81 +1,67 @@
 'use client';
 
-import { Button, Stack, Typography } from '@mui/material';
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { useUrlStateContext } from '@/features/Url/UrlStateContext';
-import { PRICE_PER_DAY_USD } from '@/features/Price/price';
-import { useCurrency } from '@/features/User/useCurrency';
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 
 export const DAY_PASS_OFFER_TEST_ID = 'day-pass-offer';
-export const DAY_PASS_CHECKOUT_TEST_ID = 'day-pass-checkout';
+export const CHAT_WITH_PEOPLE_TEST_ID = 'chat-with-people';
+export const BUY_ACCESS_TEST_ID = 'buy-access';
+export const LIMIT_CLOSE_TEST_ID = 'limit-close';
 
-export type DayPassNextLesson = {
-  title: string;
-  details: string;
+/** Practice path for today's question, keeping a locale prefix such as `/ar`. */
+export const practiceDailyQuestionsPath = (pathname: string) => {
+  const first = pathname.split('/').filter(Boolean)[0];
+  const langPrefix =
+    first && first !== 'practice' && supportedLanguages.includes(first as SupportedLanguage)
+      ? `/${first}`
+      : '';
+  return `${langPrefix}/practice?dailyQuestions=true`;
 };
 
 export const DayPassLimitOffer = ({
-  endAction,
-  nextLesson,
+  onClose,
   onCheckoutOpen,
 }: {
-  endAction: ReactNode;
-  /** When set, the offer is the next plan lesson. Confirmation still opens before Stripe. */
-  nextLesson?: DayPassNextLesson | null;
+  onClose: () => void;
   /** Close whatever is covering the page, such as the lesson review. */
   onCheckoutOpen?: () => void;
 }) => {
   const { i18n } = useLingui();
-  const currency = useCurrency();
   const router = useRouter();
   const { setUrlState } = useUrlStateContext();
-  const price = currency.convertUsdToCurrency(PRICE_PER_DAY_USD);
-  const title = nextLesson
-    ? i18n._('Next: {title}', { title: nextLesson.title })
-    : i18n._('Keep talking — {price} for the next 24 hours', { price });
-  const subtitle = nextLesson
-    ? nextLesson.details || i18n._('Lesson 1 is done. This is the next part of your plan.')
-    : i18n._('Your free replies in this conversation are used.');
-  const payLabel = nextLesson
-    ? i18n._('Continue your plan — {price}', { price })
-    : i18n._('Pay {price}', { price });
 
   useEffect(() => {
     sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'day-pass' });
   }, []);
 
-  const openDayPassPayment = () => {
+  const openDailyQuestions = () => {
+    const nextUrl = practiceDailyQuestionsPath(window.location.pathname);
+    router.push(nextUrl, { scroll: false });
+  };
+
+  const openPlansModal = () => {
     const params = new URLSearchParams(window.location.search);
     params.set('paymentModal', 'true');
-    params.set('paymentDuration', 'day');
-    params.set('paymentConfirm', 'true');
-    if (nextLesson) {
-      params.set('planLesson', nextLesson.title);
-      if (nextLesson.details) {
-        params.set('planLessonDetails', nextLesson.details);
-      } else {
-        params.delete('planLessonDetails');
-      }
-    } else {
-      params.delete('planLesson');
-      params.delete('planLessonDetails');
+    params.delete('paymentConfirm');
+    params.delete('planLesson');
+    params.delete('planLessonDetails');
+    if (params.get('paymentDuration') === 'day') {
+      params.delete('paymentDuration');
     }
     const nextUrl = `${window.location.pathname}?${params.toString()}`;
     const currentUrl = window.location.pathname + window.location.search;
     if (currentUrl !== nextUrl) {
       router.push(nextUrl, { scroll: false });
     } else {
-      // The confirmation is already in the address bar. A second tap must still open it.
       setUrlState('paymentModal', 'true');
-      setUrlState('paymentConfirm', 'true');
-      setUrlState('paymentDuration', 'day');
-      if (nextLesson) {
-        setUrlState('planLesson', nextLesson.title);
-        setUrlState('planLessonDetails', nextLesson.details || '');
-      }
+      setUrlState('paymentConfirm', '');
+      setUrlState('paymentDuration', '');
     }
     onCheckoutOpen?.();
   };
@@ -96,9 +82,11 @@ export const DayPassLimitOffer = ({
             },
           }}
         >
-          {title}
+          {i18n._('Free answers have run out')}
         </Typography>
-        <Typography sx={{ textWrap: 'balance' }}>{subtitle}</Typography>
+        <Typography sx={{ textWrap: 'balance' }}>
+          {i18n._('But there is a solution: chat with real people or buy unlimited access.')}
+        </Typography>
       </Stack>
       <Stack
         sx={{
@@ -111,59 +99,52 @@ export const DayPassLimitOffer = ({
       >
         <Button
           size="large"
+          color="info"
+          variant="contained"
+          data-testid={CHAT_WITH_PEOPLE_TEST_ID}
+          data-analytics="chat-with-people"
+          sx={{
+            fontWeight: 600,
+            borderRadius: '30px',
+            minHeight: '48px',
+          }}
+          onClick={openDailyQuestions}
+        >
+          {i18n._('Chat with people')}
+        </Button>
+        <Button
+          size="large"
           color="success"
           variant="contained"
-          data-testid={DAY_PASS_CHECKOUT_TEST_ID}
-          data-analytics="day-pass-checkout"
+          data-testid={BUY_ACCESS_TEST_ID}
+          data-analytics="buy-access"
           sx={{
             backgroundColor: 'rgba(28, 212, 108, 0.78)',
             color: '#ddfff8',
             fontWeight: 600,
             borderRadius: '30px',
             minHeight: '48px',
-            height: 'auto',
-            lineHeight: '16px',
-            whiteSpace: 'normal',
-            textAlign: 'left',
           }}
-          onClick={openDayPassPayment}
+          onClick={openPlansModal}
         >
-          {payLabel}
+          {i18n._('Buy access')}
         </Button>
-        {endAction}
+        <IconButton
+          size="large"
+          aria-label={i18n._('End call')}
+          data-testid={LIMIT_CLOSE_TEST_ID}
+          data-analytics="limit-close"
+          onClick={onClose}
+          sx={{
+            width: '70px',
+            borderRadius: '30px',
+            backgroundColor: '#dc362e',
+            ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
+          }}
+        >
+          <CallEndIcon />
+        </IconButton>
       </Stack>
-    </Stack>
-  );
-};
-
-export const NextPlanLessonScreen = ({
-  nextLesson,
-  onNotNow,
-}: {
-  nextLesson: DayPassNextLesson;
-  onNotNow: () => void;
-}) => {
-  const { i18n } = useLingui();
-
-  return (
-    <Stack
-      sx={{
-        minHeight: '100dvh',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '24px',
-        boxSizing: 'border-box',
-      }}
-    >
-      <DayPassLimitOffer
-        nextLesson={nextLesson}
-        endAction={
-          <Button color="inherit" onClick={onNotNow}>
-            {i18n._('Not now')}
-          </Button>
-        }
-      />
     </Stack>
   );
 };

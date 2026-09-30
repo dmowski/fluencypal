@@ -1,5 +1,21 @@
 import React from 'react';
 import { expect, test, vi } from 'vitest';
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: () => undefined }),
+}));
+
+vi.mock('@/features/User/useCurrency', () => ({
+  useCurrency: () => ({
+    currency: 'USD',
+    convertUsdToCurrency: (amountInUsd: number) =>
+      new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 2,
+      }).format(Math.round(amountInUsd)),
+  }),
+}));
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
 import {
@@ -354,6 +370,38 @@ test('conversation canvas – call mode alias word list', async () => {
   await expect
     .element(page.getByTestId('conversation-canvas-call'))
     .toMatchScreenshot('conversation-canvas-call-alias-word-list');
+});
+
+async function settleLimitScreenshot() {
+  await document.fonts.ready;
+  const style = document.createElement('style');
+  style.textContent =
+    '*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }';
+  document.head.appendChild(style);
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+}
+
+test('conversation canvas – call mode daily limit', async () => {
+  window.localStorage.setItem('currency_ipapi', 'USD');
+
+  await render(
+    <ConversationCanvasFixture
+      conversation={FIXTURE_GOAL_TALK_CONVERSATION}
+      conversationMode="call"
+      isSendMessagesBlocked
+    />,
+  );
+
+  await expect.element(page.getByRole('button', { name: 'Chat with people' })).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Buy access' })).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'End call' })).toBeVisible();
+  await settleLimitScreenshot();
+
+  await expect
+    .element(page.getByTestId('day-pass-offer'))
+    .toMatchScreenshot('conversation-canvas-call-daily-limit');
 });
 
 test('conversation canvas – call mode role-play in progress', async () => {

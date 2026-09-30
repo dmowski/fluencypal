@@ -38,7 +38,7 @@ import { CameraCanvas } from './CallMode/CameraCanvas';
 import { ConversationMode } from '@/features/Settings/userSettings';
 import { ProcessUserInput } from './ProcessUserInput';
 import { ConversationReviewModal } from './ConversationReviewModal';
-import { DayPassNextLesson } from './CallMode/DayPassLimitOffer';
+import { PlanLessonCard } from './firstPlanLesson';
 import { CallEndMenu } from './CallEndMenu';
 import {
   getConversationProgressPercent,
@@ -98,7 +98,7 @@ interface ConversationCanvasProps {
   isSendMessagesBlocked: boolean;
   onSelectMicrophone?: (deviceId: string | null) => void;
   isGuestConversationLimited?: boolean;
-  nextPlanLesson?: DayPassNextLesson | null;
+  nextPlanLesson?: PlanLessonCard | null;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   toggleConversationMode,

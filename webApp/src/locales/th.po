@@ -681,7 +681,7 @@ msgstr "โทเค็น AI"
 msgid "AI Voice"
 msgstr "เสียง AI"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:661
 #. js-lingui-explicit-id
 msgid "AI voice"
 msgstr "เสียง AI"
@@ -1457,6 +1457,11 @@ msgstr "สร้างขึ้นเพื่อการไวยากรณ
 msgid "Bundling & Code Splitting"
 msgstr "การรวมกลุ่ม & การแยกโค้ด"
 
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:87
+#. js-lingui-explicit-id
+msgid "But there is a solution: chat with real people or buy unlimited access."
+msgstr "แต่ก็มีทางแก้ไข: พูดคุยกับคนจริง ๆ หรือซื้อการเข้าถึงแบบไม่จำกัด"
+
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:229
 #. js-lingui-explicit-id
 msgid "Buy 1 AI hour"
@@ -1471,6 +1476,11 @@ msgstr "ซื้อเวลา AI 3 ชั่วโมง"
 #. js-lingui-explicit-id
 msgid "Buy 5 AI hours"
 msgstr "ซื้อเวลา AI จำนวน 5 ชั่วโมง"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:128
+#. js-lingui-explicit-id
+msgid "Buy access"
+msgstr "ซื้อการเข้าถึง"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
 #. js-lingui-explicit-id
@@ -1622,7 +1632,7 @@ msgstr "ฉันสามารถใช้บนสมาร์ทโฟนไ
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:504
+#: src/features/Conversation/CallMode/CallButtons.tsx:490
 #: src/features/Conversation/ConversationCanvas.tsx:757
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
@@ -1725,6 +1735,11 @@ msgstr "ไม่พบการสนทนาหรือคุณไม่ม
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "แชทกับเจ้าของสุนัขคนอื่น"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:111
+#. js-lingui-explicit-id
+msgid "Chat with people"
+msgstr "พูดคุยกับผู้คน"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:206
 #. js-lingui-explicit-id
@@ -2340,7 +2355,8 @@ msgstr "คลิกปุ่มแชร์ถัดจาก app.fluencypal.co
 
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
-#: src/features/Conversation/CallMode/CallButtons.tsx:700
+#: src/features/Conversation/CallMode/CallButtons.tsx:686
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:139
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2772,7 +2788,6 @@ msgstr ""
 msgid "Continue with today’s tasks and stay consistent."
 msgstr "ดำเนินการตามงานของคุณในวันนี้ต่อไปและรักษาความเสมอต้นเสมอปลาย"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:43
 #: src/features/Usage/Subscription/DayPassConfirm.tsx:58
 #. js-lingui-explicit-id
 msgid "Continue your plan — {price}"
@@ -4140,7 +4155,7 @@ msgstr "เจ้าของสุนัข"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
-#: src/features/Conversation/CallMode/CallButtons.tsx:745
+#: src/features/Conversation/CallMode/CallButtons.tsx:731
 #: src/features/Conversation/ConversationCanvas.tsx:530
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:173
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:160
@@ -4156,7 +4171,7 @@ msgstr "เจ้าของสุนัข"
 msgid "Done"
 msgstr "เสร็จแล้ว"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:476
+#: src/features/Conversation/CallMode/CallButtons.tsx:462
 #. js-lingui-explicit-id
 msgid "Done recording"
 msgstr "บันทึกเสร็จสิ้น"
@@ -4378,17 +4393,17 @@ msgstr "อีเมลและรหัสผ่าน การฝึกฝ�
 msgid "Enable Access"
 msgstr "เปิดใช้งานการเข้าถึง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:567
+#: src/features/Conversation/CallMode/CallButtons.tsx:553
 #. js-lingui-explicit-id
 msgid "Enable Microphone"
 msgstr "เปิดการใช้งานไมโครโฟน"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:579
+#: src/features/Conversation/CallMode/CallButtons.tsx:565
 #. js-lingui-explicit-id
 msgid "Enable microphone"
 msgstr "เปิดใช้งานไมโครโฟน"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:684
+#: src/features/Conversation/CallMode/CallButtons.tsx:670
 #. js-lingui-explicit-id
 msgid ""
 "Enabling ai voice is a premium feature. Please upgrade your balance to "
@@ -4397,8 +4412,7 @@ msgstr ""
 "การเปิดใช้งานเสียง AI เป็นฟีเจอร์พรีเมียม "
 "กรุณาอัปเกรดยอดเงินของคุณเพื่อเข้าถึงฟีเจอร์นี้"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:413
-#: src/features/Conversation/CallMode/CallButtons.tsx:613
+#: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/ConversationCanvas.tsx:569
 #. js-lingui-explicit-id
 msgid "End call"
@@ -5508,6 +5522,11 @@ msgstr "ข้อมูลเชิงลึกเฉพาะของเฟร
 #. js-lingui-explicit-id
 msgid "Frameworks & Libraries"
 msgstr "เฟรมเวิร์กและไลบรารี"
+
+#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:84
+#. js-lingui-explicit-id
+msgid "Free answers have run out"
+msgstr "ตอบฟรีหมดแล้ว"
 
 #: src/features/Landing/LandingPage.tsx:270
 #. js-lingui-explicit-id
@@ -7455,11 +7474,6 @@ msgstr "เก็บให้กระชับและเกี่ยวข้
 msgid "Keep practicing"
 msgstr "ฝึกฝนอย่างต่อเนื่อง"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:38
-#. js-lingui-explicit-id
-msgid "Keep talking — {price} for the next 24 hours"
-msgstr "รักษาการสนทนา — {price} สำหรับ 24 ชั่วโมงถัดไป"
-
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
 msgid "Keep visible until review"
@@ -7580,7 +7594,7 @@ msgstr "เริ่มต้นอาชีพของคุณในสาย
 msgid "Lazy Loading"
 msgstr "การโหลดแบบขี้เกียจ"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:89
+#: src/features/Conversation/ConversationReviewModal.tsx:90
 #. js-lingui-explicit-id
 msgid "Leaderboard"
 msgstr "ลีดเดอร์บอร์ด"
@@ -7708,13 +7722,6 @@ msgstr "ความยาว"
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "น้อยลง"
-
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:40
-#. js-lingui-explicit-id
-msgid "Lesson 1 is done. This is the next part of your plan."
-msgstr ""
-"Lesson 1 is done. This is the next part of your plan.\n"
-"บทเรียนที่ 1 เสร็จสมบูรณ์แล้ว นี่คือส่วนถัดไปของแผนการของคุณ"
 
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
@@ -7873,11 +7880,11 @@ msgstr "กำลังโหลด.."
 #: src/features/Chat/SubmitForm.tsx:124
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:214
-#: src/features/Conversation/ConversationReviewModal.tsx:107
-#: src/features/Conversation/ConversationReviewModal.tsx:122
-#: src/features/Conversation/ConversationReviewModal.tsx:137
-#: src/features/Conversation/ConversationReviewModal.tsx:152
-#: src/features/Conversation/ConversationReviewModal.tsx:170
+#: src/features/Conversation/ConversationReviewModal.tsx:108
+#: src/features/Conversation/ConversationReviewModal.tsx:123
+#: src/features/Conversation/ConversationReviewModal.tsx:138
+#: src/features/Conversation/ConversationReviewModal.tsx:153
+#: src/features/Conversation/ConversationReviewModal.tsx:171
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
@@ -8487,11 +8494,6 @@ msgstr "เรื่องถัดไป"
 msgid "Next Turn"
 msgstr "ตาถัดไป"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:37
-#. js-lingui-explicit-id
-msgid "Next: {title}"
-msgstr "ถัดไป: {title}"
-
 #: src/features/Tasks/useDailyPlans.ts:61
 #. js-lingui-explicit-id
 msgid "Nice work reaching a full week. Let’s continue with today’s tasks."
@@ -8871,7 +8873,6 @@ msgstr "ไม่รู้สึกถึงความก้าวหน้า
 msgid "Not Found"
 msgstr "ไม่พบ"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:163
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -9327,11 +9328,6 @@ msgstr "จ่ายด้วยดาว"
 msgid "Pay {amount}"
 msgstr "ชำระเงิน {amount}"
 
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:44
-#. js-lingui-explicit-id
-msgid "Pay {price}"
-msgstr "ชำระเงิน {price}"
-
 #: src/features/Header/PaymentHistoryModal.tsx:25
 #. js-lingui-explicit-id
 msgid "Payment"
@@ -9459,7 +9455,7 @@ msgstr "แผนการส่วนบุคคล, ชุมชน, คำ�
 msgid "Personalized scripts"
 msgstr "สคริปต์ที่กำหนดเอง"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:163
+#: src/features/Conversation/ConversationReviewModal.tsx:164
 #. js-lingui-explicit-id
 msgid "Phrases to remember"
 msgstr "วลีที่ควรจำ"
@@ -9729,7 +9725,7 @@ msgstr "โปรดรอในขณะที่เราดำเนินก
 msgid "Points"
 msgstr "คะแนน"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:90
+#: src/features/Conversation/ConversationReviewModal.tsx:91
 #. js-lingui-explicit-id
 msgid "Points earned: {pointsEarned}. Keep practicing to improve your score!"
 msgstr "คะแนนที่ได้รับ: {pointsEarned} เก็บฝึกฝนต่อไปเพื่อเพิ่มคะแนนของคุณ!"
@@ -10793,7 +10789,7 @@ msgstr "การสนทนาแบบเรียลไทม์กับ AI
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "การเล่นบทบาทจริงสำหรับการฝึกภาษาอังกฤษขั้นสูง"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:675
+#: src/features/Conversation/CallMode/CallButtons.tsx:661
 #. js-lingui-explicit-id
 msgid "Real-time conversation"
 msgstr "การสนทนาแบบเรียลไทม์"
@@ -10899,7 +10895,7 @@ msgstr "บันทึกคำตอบ"
 msgid "Record Answer"
 msgstr "บันทึกคำตอบ"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:594
+#: src/features/Conversation/CallMode/CallButtons.tsx:580
 #: src/features/Conversation/ConversationCanvas.tsx:565
 #. js-lingui-explicit-id
 msgid "Record Message"
@@ -11637,7 +11633,7 @@ msgstr "ตั้งเป้าหมายของการเรียนร
 msgid "Set translate language in Settings"
 msgstr "ตั้งค่าภาษาแปลในการตั้งค่า"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:606
+#: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
 msgid "Settings"
@@ -12685,7 +12681,7 @@ msgstr ""
 msgid "Suggest an idea"
 msgstr "เสนอแนวคิด"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:103
+#: src/features/Conversation/ConversationReviewModal.tsx:104
 #. js-lingui-explicit-id
 msgid "Summary"
 msgstr "สรุป"
@@ -14724,7 +14720,7 @@ msgstr "ชื่อผู้ใช้ต้องมีอักขระอย
 msgid "Username:"
 msgstr "ชื่อผู้ใช้:"
 
-#: src/features/Conversation/CallMode/CallButtons.tsx:687
+#: src/features/Conversation/CallMode/CallButtons.tsx:673
 #. js-lingui-explicit-id
 msgid ""
 "Using real-time microphone is a premium feature. Please upgrade your "
@@ -15188,7 +15184,7 @@ msgstr "\"ชั่วโมงการใช้งาน AI\" หมายค�
 msgid "What situation do you want to practice?"
 msgstr "คุณต้องการฝึกฝนสถานการณ์แบบไหน?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:119
+#: src/features/Conversation/ConversationReviewModal.tsx:120
 #. js-lingui-explicit-id
 msgid "What to focus on next time"
 msgstr "ควรเน้นอะไรในครั้งถัดไป"
@@ -15219,7 +15215,7 @@ msgstr "สิ่งที่เราเรียนรู้ด้วยคว
 msgid "What work do you do, and what do you need to say in that interview?"
 msgstr "คุณทำงานอะไรและคุณต้องพูดอะไรในสัมภาษณ์นั้น?"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:134
+#: src/features/Conversation/ConversationReviewModal.tsx:135
 #. js-lingui-explicit-id
 msgid "What you can improve"
 msgstr "สิ่งที่คุณสามารถปรับปรุงได้"
@@ -15229,7 +15225,7 @@ msgstr "สิ่งที่คุณสามารถปรับปรุง
 msgid "What you can say:"
 msgstr "สิ่งที่คุณสามารถพูด:"
 
-#: src/features/Conversation/ConversationReviewModal.tsx:148
+#: src/features/Conversation/ConversationReviewModal.tsx:149
 #. js-lingui-explicit-id
 msgid "What you did well"
 msgstr "สิ่งที่คุณทำได้ดี"
@@ -16162,11 +16158,6 @@ msgstr "เพื่อนเหยียดหยามของคุณ"
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "ประสบการณ์ของคุณ"
-
-#: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:41
-#. js-lingui-explicit-id
-msgid "Your free replies in this conversation are used."
-msgstr "คุณได้ใช้การตอบกลับฟรีในบทสนทนานี้แล้ว"
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
 #. js-lingui-explicit-id

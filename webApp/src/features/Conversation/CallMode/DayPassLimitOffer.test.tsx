@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
-import { DayPassLimitOffer } from './DayPassLimitOffer';
+import { DayPassLimitOffer, practiceDailyQuestionsPath } from './DayPassLimitOffer';
 
 const push = jest.fn();
 const setUrlState = jest.fn();
@@ -16,13 +16,6 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('@/features/Url/UrlStateContext', () => ({
   useUrlStateContext: () => ({ urlStateMap: {}, setUrlState }),
-}));
-
-jest.mock('@/features/User/useCurrency', () => ({
-  useCurrency: () => ({
-    currency: 'USD',
-    convertUsdToCurrency: () => '$1.00',
-  }),
 }));
 
 jest.mock('@/features/Analytics/Custom/sendAnalyticsEvent', () => ({
@@ -36,74 +29,61 @@ describe('DayPassLimitOffer', () => {
     window.history.replaceState({}, '', '/practice?justTalk=open');
   });
 
-  it('shows the day price for the next 24 hours', () => {
+  it('says the free answers are used and offers chat, access, or close', () => {
+    const onClose = jest.fn();
     render(
       <I18nWrapper>
-        <DayPassLimitOffer endAction={null} />
+        <DayPassLimitOffer onClose={onClose} />
       </I18nWrapper>,
     );
 
-    expect(screen.getByText('Keep talking — $1.00 for the next 24 hours')).toBeInTheDocument();
-    expect(screen.getByTestId('day-pass-checkout')).toHaveTextContent('Pay $1.00');
+    expect(screen.getByText('Free answers have run out')).toBeInTheDocument();
+    expect(
+      screen.getByText('But there is a solution: chat with real people or buy unlimited access.'),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('chat-with-people')).toHaveTextContent('Chat with people');
+    expect(screen.getByTestId('buy-access')).toHaveTextContent('Buy access');
+    expect(screen.getByRole('button', { name: 'End call' })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId('limit-close'));
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('adds the day-pass payment query params', () => {
+  it('opens daily questions on the current locale for every user', () => {
+    window.history.replaceState({}, '', '/ar/practice?justTalk=open');
     render(
       <I18nWrapper>
-        <DayPassLimitOffer endAction={null} />
+        <DayPassLimitOffer onClose={jest.fn()} />
       </I18nWrapper>,
     );
 
-    fireEvent.click(screen.getByTestId('day-pass-checkout'));
-    expect(push).toHaveBeenCalledWith(
-      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true',
-      { scroll: false },
-    );
+    fireEvent.click(screen.getByTestId('chat-with-people'));
+    expect(push).toHaveBeenCalledWith('/ar/practice?dailyQuestions=true', { scroll: false });
   });
 
-  it('offers the next plan lesson and still opens the confirmation screen', () => {
-    render(
-      <I18nWrapper>
-        <DayPassLimitOffer
-          endAction={null}
-          nextLesson={{ title: 'Greetings', details: 'Words for saying hello.' }}
-        />
-      </I18nWrapper>,
-    );
-
-    expect(screen.getByText('Next: Greetings')).toBeInTheDocument();
-    expect(screen.getByText('Words for saying hello.')).toBeInTheDocument();
-    expect(screen.getByTestId('day-pass-checkout')).toHaveTextContent('Continue your plan — $1.00');
-    fireEvent.click(screen.getByTestId('day-pass-checkout'));
-    expect(push).toHaveBeenCalledWith(
-      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true&planLesson=Greetings&planLessonDetails=Words+for+saying+hello.',
-      { scroll: false },
-    );
-  });
-
-  it('opens the confirmation again when that address is already open', () => {
+  it('opens the plans modal from Buy access', () => {
     const onCheckoutOpen = jest.fn();
     window.history.replaceState(
       {},
       '',
-      '/practice?justTalk=open&paymentModal=true&paymentDuration=day&paymentConfirm=true&planLesson=Greetings&planLessonDetails=Words+for+saying+hello.',
+      '/practice?justTalk=open&paymentDuration=day&paymentConfirm=true',
     );
-
     render(
       <I18nWrapper>
-        <DayPassLimitOffer
-          endAction={null}
-          nextLesson={{ title: 'Greetings', details: 'Words for saying hello.' }}
-          onCheckoutOpen={onCheckoutOpen}
-        />
+        <DayPassLimitOffer onClose={jest.fn()} onCheckoutOpen={onCheckoutOpen} />
       </I18nWrapper>,
     );
 
-    fireEvent.click(screen.getByTestId('day-pass-checkout'));
-    expect(push).not.toHaveBeenCalled();
-    expect(setUrlState).toHaveBeenCalledWith('paymentModal', 'true');
-    expect(setUrlState).toHaveBeenCalledWith('paymentConfirm', 'true');
-    expect(setUrlState).toHaveBeenCalledWith('planLesson', 'Greetings');
+    fireEvent.click(screen.getByTestId('buy-access'));
+    expect(push).toHaveBeenCalledWith('/practice?justTalk=open&paymentModal=true', {
+      scroll: false,
+    });
     expect(onCheckoutOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('builds the daily questions path', () => {
+    expect(practiceDailyQuestionsPath('/practice')).toBe('/practice?dailyQuestions=true');
+    expect(practiceDailyQuestionsPath('/ru/practice')).toBe('/ru/practice?dailyQuestions=true');
+    expect(practiceDailyQuestionsPath('/practice-ui')).toBe('/practice?dailyQuestions=true');
   });
 });

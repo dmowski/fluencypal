@@ -1,6 +1,7 @@
 import { Divider, Stack } from '@mui/material';
 import { type ComponentProps, type ReactNode } from 'react';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
+import { UrlStateProvider } from '@/features/Url/UrlStateContext';
 import { ConversationCanvas } from './ConversationCanvas';
 import { ConversationMessage } from '@/features/Conversation/conversation';
 import { GuessGameStat } from './types';
@@ -116,8 +117,10 @@ export function ConversationCanvasFixture({
 }: Partial<ComponentProps<typeof ConversationCanvas>> & { children?: ReactNode }) {
   return (
     <BrowserAppShell>
-      <ConversationCanvas {...DEFAULT_CONVERSATION_CANVAS_PROPS} {...overrides} />
-      {children}
+      <UrlStateProvider>
+        <ConversationCanvas {...DEFAULT_CONVERSATION_CANVAS_PROPS} {...overrides} />
+        {children}
+      </UrlStateProvider>
     </BrowserAppShell>
   );
 }

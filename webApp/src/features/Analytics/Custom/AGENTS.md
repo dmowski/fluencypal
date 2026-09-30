@@ -66,7 +66,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Entry: insights.entry (home / scenario / blog / quiz / practice → reachedApp / speech / conversation)
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
-- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout)
+- CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout, chat-with-people, buy-access, limit-close)
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Teacher Continue: insights.teacherContinue (visitors on `quiz.teacherSelection`; best sighting of `quiz-next` as enabled/disabled × inView/offscreen/unknown; clicked). Events from before in-view was stored land in enabledUnknown or disabledUnknown.
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
@@ -123,7 +123,7 @@ Stored paths keep `currentStep`, `rolePlayId`, `interactiveLesson`, `dailyQuesti
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/… with reachedApp/speech/conversation), `identifyPaths`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
-In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-player-identity`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`.
+In-app ids: `auth-google`, `auth-email`, `auth-email-send`, `auth-continue`, `quiz-voice-consent`, `mic-permission-grant`, `mic-permission-dismiss`, `hear-question`, `record-about-guest`, `quiz-guest-continue`, `quiz-next`, `quiz-player-identity`, `teacher-preview-play`, `teacher-select`, `quiz-talk-with-people-yes`, `quiz-talk-with-people-no`, `quiz-start-free`, `quiz-activity-continue`, `quiz-start-speaking`, `quiz-pre-auth-continue`, `hear-first-line`, `reply-first-line`, `call-enable-mic`, `call-end`, `call-end-exit`, `call-what-to-say`, `quiz-talk-suggested-reply`, `call-record-message`, `day-pass-checkout`, `chat-with-people`, `buy-access`, `limit-close`.
 
 `enable-mic-just-talk` and `autoStart` are old events only. `quiz-start-speaking` is the plan **Continue** button on `goalReview`, not a call. `quiz-talk-suggested-reply` is the manual “what you can say” send inside a call, not an automatic first reply. `hear-first-line` / `reply-first-line` are role-play guest, not the quiz.
 
@@ -186,7 +186,7 @@ Admin UI: `/staats/journey`
 
 **Community chat (goal 2):** Global chat is `/practice?page=community&section=chat` (also linked from the quiz reviews step). Count visitors whose path or `uiContext.screenId` is `page=community` / `practice.community`. `section=chat` (`practice.community.chat`) is Global chat; `page=community` with no section is the community home. A plain `/practice` view is the practice dashboard.
 
-**Subscriptions (goal 3):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. `day-pass-checkout` is the lesson cap offer (“Continue your plan”). `checkout_start` without payment in Stripe = checkout drop. Same-day checkout is not the target to push. No paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment.
+**Subscriptions (goal 3):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. The free-answer screen offers `chat-with-people` (today’s question) and `buy-access` (plans modal). Older `day-pass-checkout` taps are the previous day-price button on that same screen. `checkout_start` without payment in Stripe = checkout drop. Same-day checkout is not the target to push. No paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment.
 
 ## SEO / GEO
 
