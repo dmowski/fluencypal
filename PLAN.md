@@ -25,3 +25,5 @@ When new question is created, send tg notification.
 Don't forget to update webApp/firestore.rules
 
 Also show user's question on http://localhost:3000/?dailyQuestions=true. Order: todays question (system), today's users question, previous user's question, previous questions (system)
+
+## Community rules
