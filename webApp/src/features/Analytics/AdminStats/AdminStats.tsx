@@ -16,8 +16,10 @@ import { BlogAdmin } from '@/features/Blog/BlogAdmin';
 import { useUrlState } from '@/features/Url/useUrlState';
 import { useSettings } from '@/features/Settings/useSettings';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { CallsAdmin } from '@/features/FluencyCall/CallsAdmin';
 
 type UserMode = 'all' | 'lastDay' | 'todayDay' | 'secondDay' | 'old';
+type AdminPage = 'stats' | 'story' | 'emails' | 'blog' | 'calls';
 
 export function AdminStats() {
   const auth = useAuth();
@@ -179,9 +181,10 @@ export function AdminStats() {
 
   const usersToShow = usersToShowMap[usersToShowMode];
 
-  const [isStoryCreator, setIsStoryCreator] = useUrlState('storyCreator', false, false);
-  const [isEmails, setIsEmails] = useUrlState('emails', false, false);
-  const [isBlog, setIsBlog] = useUrlState('blog', false, false);
+  const [adminPage, setAdminPage] = useUrlState<AdminPage>('adminPage', 'stats', false);
+  const toggleAdminPage = (page: Exclude<AdminPage, 'stats'>) => {
+    setAdminPage(adminPage === page ? 'stats' : page);
+  };
   const settings = useSettings();
   const pageLanguage = settings.pageLanguageCode || 'en';
 
@@ -210,42 +213,55 @@ export function AdminStats() {
         </Button>
 
         <Button
-          onClick={() => setIsStoryCreator(!isStoryCreator)}
+          onClick={() => toggleAdminPage('story')}
           sx={{
             width: 'max-content',
             padding: '10px 50px',
             margin: '20px 0',
             borderRadius: '210px',
           }}
-          variant={isStoryCreator ? 'contained' : 'outlined'}
+          variant={adminPage === 'story' ? 'contained' : 'outlined'}
         >
           Open Story Creator
         </Button>
 
         <Button
-          onClick={() => setIsEmails(!isEmails)}
+          onClick={() => toggleAdminPage('emails')}
           sx={{
             width: 'max-content',
             padding: '10px 50px',
             margin: '20px 0',
             borderRadius: '210px',
           }}
-          variant={isEmails ? 'contained' : 'outlined'}
+          variant={adminPage === 'emails' ? 'contained' : 'outlined'}
         >
           Emails
         </Button>
 
         <Button
-          onClick={() => setIsBlog(!isBlog)}
+          onClick={() => toggleAdminPage('blog')}
           sx={{
             width: 'max-content',
             padding: '10px 50px',
             margin: '20px 0',
             borderRadius: '210px',
           }}
-          variant={isBlog ? 'contained' : 'outlined'}
+          variant={adminPage === 'blog' ? 'contained' : 'outlined'}
         >
           Blog
+        </Button>
+
+        <Button
+          onClick={() => toggleAdminPage('calls')}
+          sx={{
+            width: 'max-content',
+            padding: '10px 50px',
+            margin: '20px 0',
+            borderRadius: '210px',
+          }}
+          variant={adminPage === 'calls' ? 'contained' : 'outlined'}
+        >
+          Calls
         </Button>
 
         <Button
@@ -262,11 +278,13 @@ export function AdminStats() {
         </Button>
       </Stack>
 
-      {isEmails ? (
+      {adminPage === 'calls' ? (
+        <CallsAdmin />
+      ) : adminPage === 'emails' ? (
         <EmailsAdmin />
-      ) : isStoryCreator ? (
+      ) : adminPage === 'story' ? (
         <StoryCreator />
-      ) : isBlog ? (
+      ) : adminPage === 'blog' ? (
         <BlogAdmin />
       ) : (
         <>

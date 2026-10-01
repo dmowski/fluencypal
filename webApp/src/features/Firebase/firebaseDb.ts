@@ -48,6 +48,7 @@ import { NewsStat } from '@/features/News/types';
 import { QuizStat, UserQuizRecord } from '@/features/Quiz/types';
 import { InteractiveLessonFirestoreDoc } from '@/features/InteractiveLesson/types';
 import { UserDailyQuestion } from '@/features/DailyQuestion/types';
+import { FluencyCall, FluencyCallRequest, FluencyCallRsvp } from '@/features/FluencyCall/types';
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -147,6 +148,13 @@ export const db = {
       userId ? dataPointCollection<UserQuizRecord>(`users/${userId}/quizzes`) : null,
 
     userDailyQuestions: () => dataPointCollection<UserDailyQuestion>(`userDailyQuestions`),
+
+    fluencyCalls: () => dataPointCollection<FluencyCall>(`fluencyCalls`),
+
+    fluencyCallRequests: () => dataPointCollection<FluencyCallRequest>(`fluencyCallRequests`),
+
+    fluencyCallRsvps: (callId: string) =>
+      dataPointCollection<FluencyCallRsvp>(`fluencyCalls/${callId}/rsvps`),
   },
   documents: {
     chat: (userId: string, space: string) =>
@@ -246,8 +254,7 @@ export const db = {
         ? dataPointDoc<BlogVersionDoc>(`blogs/${blogId}/versions/${versionId}`)
         : null,
 
-    blogMetadataCategory: () =>
-      dataPointDoc<BlogMetadataCategoryDoc>(`blogMetadata/category`),
+    blogMetadataCategory: () => dataPointDoc<BlogMetadataCategoryDoc>(`blogMetadata/category`),
 
     blogCategory: (categoryId?: string) =>
       categoryId
@@ -255,12 +262,21 @@ export const db = {
         : null,
 
     quiz: (userId?: string, quizId?: string) =>
-      userId && quizId
-        ? dataPointDoc<UserQuizRecord>(`users/${userId}/quizzes/${quizId}`)
-        : null,
+      userId && quizId ? dataPointDoc<UserQuizRecord>(`users/${userId}/quizzes/${quizId}`) : null,
 
     userDailyQuestion: (questionId?: string) =>
       questionId ? dataPointDoc<UserDailyQuestion>(`userDailyQuestions/${questionId}`) : null,
+
+    fluencyCall: (callId?: string) =>
+      callId ? dataPointDoc<FluencyCall>(`fluencyCalls/${callId}`) : null,
+
+    fluencyCallRsvp: (callId?: string, userId?: string) =>
+      callId && userId
+        ? dataPointDoc<FluencyCallRsvp>(`fluencyCalls/${callId}/rsvps/${userId}`)
+        : null,
+
+    fluencyCallRequest: (userId?: string) =>
+      userId ? dataPointDoc<FluencyCallRequest>(`fluencyCallRequests/${userId}`) : null,
 
     interactiveLessonState: (userId?: string, languageCode?: SupportedLanguage) =>
       userId && languageCode

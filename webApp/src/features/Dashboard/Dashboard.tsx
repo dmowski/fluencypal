@@ -25,6 +25,7 @@ import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
 import { LinkToStatsAdmin } from './LinkToStats';
 import { NewPrivateMessageCard } from './NewPrivateMessageCard';
+import { FluencyCallDashboardCard } from '../FluencyCall/FluencyCallDashboardCard';
 
 export function Dashboard({ lang }: { lang: SupportedLanguage }) {
   const appNavigation = useAppNavigation();
@@ -42,8 +43,10 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
       <DashboardSectionContainer>
         {appNavigation.currentPage === 'home' && (
           <MainDashboardContainer>
+            <FluencyCallDashboardCard />
             <NewPrivateMessageCard />
             <DailyTasksDashboardCard />
+
             <JustTalkCard />
             <InteractiveLessonDashboardCard />
 

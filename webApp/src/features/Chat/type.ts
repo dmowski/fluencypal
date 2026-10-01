@@ -21,7 +21,8 @@ export interface UserChatMetadataStatic {
     | 'dailyQuestion'
     | 'space'
     | 'experimental'
-    | 'newsComment';
+    | 'newsComment'
+    | 'fluencyCall';
 
   debateId?: string;
 }

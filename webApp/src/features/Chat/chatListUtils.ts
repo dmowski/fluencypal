@@ -6,6 +6,14 @@ export interface MyDailyQuestionNotification {
   unreadCount: number;
 }
 
+export function countUnreadChatMessages(
+  allMessagesIds: Record<string, string> | null | undefined,
+  readMessages: Record<string, boolean> | undefined,
+): number {
+  const allIds = Object.keys(allMessagesIds || {});
+  return allIds.filter((id) => !readMessages?.[id]).length;
+}
+
 export function calculateUnreadPersonalMessages(
   myChats: UserChatMetadata[] | undefined,
   myReadStatsData: ChatSpaceUserReadMetadata | undefined,

@@ -12,7 +12,10 @@ service cloud.firestore {
     }
 
     function isBlogAdmin() {
-      return isSignedIn() && request.auth.token.email == 'dmowski.alex@gmail.com';
+      return isSignedIn() && (
+        request.auth.token.email == 'dmowski.alex@gmail.com'
+        || request.auth.uid == 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2'
+      );
     }
 
     // Deny everything by default
@@ -370,6 +373,63 @@ service cloud.firestore {
         allow read: if isBlogAdmin();
         allow write: if isBlogAdmin();
       }
+    }
+
+    // FluencyPal Calls. Admins schedule the meeting. Members RSVP as themselves.
+    match /fluencyCalls/{callId} {
+      function isText(value, min, max) {
+        return value is string && value.size() >= min && value.size() <= max;
+      }
+
+      function isValidCall(d) {
+        return d.keys().hasOnly([
+            'id',
+            'startsAtIso',
+            'link',
+            'status',
+            'createdAtIso',
+            'updatedAtIso',
+            'stoppedAtIso',
+          ])
+          && d.id == callId
+          && isText(d.startsAtIso, 20, 40)
+          && isText(d.link, 1, 2000)
+          && (d.status == 'scheduled' || d.status == 'stopped')
+          && isText(d.createdAtIso, 20, 40)
+          && isText(d.updatedAtIso, 20, 40)
+          && (d.stoppedAtIso == null || isText(d.stoppedAtIso, 20, 40));
+      }
+
+      allow read: if isSignedIn();
+      allow create: if isBlogAdmin() && isValidCall(request.resource.data);
+      allow update: if isBlogAdmin()
+        && isValidCall(request.resource.data)
+        && request.resource.data.id == resource.data.id
+        && request.resource.data.createdAtIso == resource.data.createdAtIso;
+      allow delete: if isBlogAdmin();
+
+      match /rsvps/{userId} {
+        function isValidRsvp(d) {
+          return d.keys().hasOnly(['userId', 'createdAtIso'])
+            && d.userId == userId
+            && d.userId == request.auth.uid
+            && isText(d.createdAtIso, 20, 40);
+        }
+
+        allow read: if isSignedIn();
+        allow create: if isUser(userId) && isValidRsvp(request.resource.data);
+        allow update: if isUser(userId)
+          && isValidRsvp(request.resource.data)
+          && request.resource.data.userId == resource.data.userId;
+        allow delete: if isUser(userId);
+      }
+    }
+
+    // A member's request for the next call. The API creates it. An admin can accept or reject it.
+    match /fluencyCallRequests/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isBlogAdmin());
+      allow create: if false;
+      allow update, delete: if isBlogAdmin();
     }
 
     // Voice Chat: all mutations go through Admin SDK APIs.

@@ -2,6 +2,7 @@ import {
   calculateUnreadPersonalMessages,
   calculateDailyQuestionsNotifications,
   calculateGlobalChatUnreadCount,
+  countUnreadChatMessages,
 } from './chatListUtils';
 import { ChatSpaceUserReadMetadata, ThreadsMessage, UserChatMetadata } from './type';
 
@@ -25,6 +26,22 @@ function makeChat(
 }
 
 // ─── calculateUnreadPersonalMessages ───────────────────────────────────────────────────
+
+describe('countUnreadChatMessages', () => {
+  it('counts messages the user has not opened', () => {
+    expect(
+      countUnreadChatMessages(
+        { a: '2026-10-01T10:00:00.000Z', b: '2026-10-01T11:00:00.000Z' },
+        { a: true },
+      ),
+    ).toBe(1);
+  });
+
+  it('is zero when every message is read or the chat is empty', () => {
+    expect(countUnreadChatMessages({ a: '2026-10-01T10:00:00.000Z' }, { a: true })).toBe(0);
+    expect(countUnreadChatMessages(null, undefined)).toBe(0);
+  });
+});
 
 describe('calculateUnreadPersonalMessages', () => {
   it('returns empty results when myChats is undefined', () => {
