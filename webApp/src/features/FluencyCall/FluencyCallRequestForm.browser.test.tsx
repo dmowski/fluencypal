@@ -8,7 +8,7 @@ import { FluencyCallRequestForm, FluencyCallRequestFormProps } from './FluencyCa
 const baseProps: FluencyCallRequestFormProps = {
   date: '2026-10-03',
   time: '18:00',
-  previewLabel: 'Sat, 3 Oct, 18:00',
+  previewLabel: 'Saturday, 3 Oct, 18:00',
   error: '',
   isSending: false,
   isSent: false,
@@ -40,7 +40,7 @@ test('request form shows the local time before sending', async () => {
 });
 
 test('after sending, the form says the request is on its way', async () => {
-  await renderForm({ isSent: true, sentLabel: 'Sat, 3 Oct, 18:00' });
+  await renderForm({ isSent: true, sentLabel: 'Saturday, 3 Oct, 18:00' });
 
   await expect
     .element(page.getByTestId('fluency-call-shot'))

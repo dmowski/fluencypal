@@ -1,6 +1,7 @@
 import { FluencyCall } from './types';
 import {
   buildCallRequestTelegramMessage,
+  formatCallStartLabel,
   formatWarsawDateTime,
   buildMonthGrid,
   fromDatetimeLocalValue,
@@ -23,6 +24,13 @@ const call = (
   updatedAtIso: '2026-10-01T00:00:00.000Z',
   stoppedAtIso: null,
   ...overrides,
+});
+
+describe('formatCallStartLabel', () => {
+  it('uses the full weekday in local time', () => {
+    const iso = new Date(2026, 9, 3, 18, 0, 0, 0).toISOString();
+    expect(formatCallStartLabel(iso)).toBe('Saturday, 3 Oct, 18:00');
+  });
 });
 
 describe('getCallCountdown', () => {

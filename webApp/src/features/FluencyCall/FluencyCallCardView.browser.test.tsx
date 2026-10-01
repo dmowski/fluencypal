@@ -6,7 +6,7 @@ import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import { FluencyCallCardView, FluencyCallCardViewProps } from './FluencyCallCardView';
 
 const baseProps: FluencyCallCardViewProps = {
-  startsAtLabel: 'Sat, 3 Oct, 18:00',
+  startsAtLabel: 'Saturday, 3 Oct, 18:00',
   countdown: { days: 1, hours: 4, minutes: 12, seconds: 0, isLive: false },
   isMember: true,
   membershipReady: true,
@@ -28,6 +28,7 @@ function renderCard(overrides: Partial<FluencyCallCardViewProps> = {}) {
         data-testid="fluency-call-shot"
         style={{ width: 640, background: 'rgb(10, 18, 30)', padding: 16 }}
       >
+        <style>{'[data-testid="fluency-call-shot"] * { animation: none !important; }'}</style>
         <FluencyCallCardView {...baseProps} {...overrides} />
       </div>
     </BrowserAppShell>,

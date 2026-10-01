@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import { useLingui } from '@lingui/react/macro';
+import { useLingui } from '@lingui/react';
 import { Typography } from '@mui/material';
 import { GoogleMeetIcon } from './GoogleMeetIcon';
 

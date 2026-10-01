@@ -33,7 +33,7 @@ test('no call offers initiate call', async () => {
 });
 
 test('a sent request shows the local time and a reply note', async () => {
-  await renderCard({ requestedAtLabel: 'Sat, 3 Oct, 18:00' });
+  await renderCard({ requestedAtLabel: 'Saturday, 3 Oct, 18:00' });
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('request-sent');
 });
@@ -48,7 +48,12 @@ test('a non-member is asked to join instead of initiating', async () => {
 
 test('initiate and change time notify the card', async () => {
   const onInitiateCall = vi.fn();
-  await renderCard({ onInitiateCall });
+  const proposed = await renderCard({ onInitiateCall });
   await userEvent.click(page.getByTestId('fluency-call-initiate'));
   expect(onInitiateCall).toHaveBeenCalledTimes(1);
+
+  proposed.unmount();
+  await renderCard({ onInitiateCall, requestedAtLabel: 'Saturday, 3 Oct, 18:00' });
+  await userEvent.click(page.getByTestId('fluency-call-change-time'));
+  expect(onInitiateCall).toHaveBeenCalledTimes(2);
 });
