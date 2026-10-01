@@ -29,7 +29,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 ## § 1 General provisions
 
 1. The **FluencyPal** Internet site operating at [www.fluencypal.com](http://www.fluencypal.com) (hereinafter: **Service**) is run by: Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” (Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”), based in Warsaw at ul. Żurawia 6/12 lok. 766, 00-503 Warsaw, address for delivery: Atlas Tower, Al. Jerozolimskie 123a, 18th floor, 02-017 Warsaw, entered into the National Court Register kept by the District Court for Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register (KRS) no. 0000442857, Tax Identification Number (NIP): 521-364-12-11 Business Registry No. (REGON).: 146433467, Business Registry (BDO) number 000460502\.  
-2. The provisions of these Terms and Conditions (T\&C) apply to activities performed for the benefit of the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” by the organized part of the enterprise named **FluencyPal** operating at the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” Branch, represented by Aliaksandr Dmouski (e-mail address: contact@fluencypal.com, tel.: \+48510260193). The person indicated in this paragraph is designated by the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”to contact with regards the implementation of the provisions of these T\&C.
+2. The provisions of these Terms and Conditions (T\&C) apply to activities performed for the benefit of the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” by the organized part of the enterprise named **FluencyPal** operating at the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” Branch, represented by Aliaksandr Dmouski (e-mail address: contact@fluencypal.com). The person indicated in this paragraph is designated by the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”to contact with regards the implementation of the provisions of these T\&C.
 
 3. These Terms and Conditions specify in particular:  
   
@@ -492,8 +492,7 @@ StartUp will refund the money, within 14 (in words: fourteen) calendar days, usi
 
 The Customer can contact Startup:
 
-1. by phone at: \+48510260193
-2. via email, to the following email address: contact@fluencypal.com
+1. via email, to the following email address: contact@fluencypal.com
 
 
 ## § 15 Final provisions

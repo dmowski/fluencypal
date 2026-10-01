@@ -39,7 +39,7 @@ export const CommunityRules = ({ lang }: PageProps) => {
 ## § 2 Who operates the Community
 
 1. The Community is operated for Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”, based in Warsaw, as described in § 1 of the Terms of Use, through the organized part of the enterprise named **FluencyPal**.
-2. Contact for these Rules: contact@fluencypal.com, telephone +48510260193.
+2. Contact for these Rules: contact@fluencypal.com.
 3. The full name, address, and register details of the operator are in the Terms of Use. Those details are part of these Rules by reference.
 
 ## § 3 Be patient. We are all learners

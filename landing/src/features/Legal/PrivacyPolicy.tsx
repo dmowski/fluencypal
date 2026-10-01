@@ -33,7 +33,7 @@ export const PrivacyPolicy = ({ lang }: PageProps) => {
 
 The Controller of your personal data is Fundacja Rozwoju Przedsiębiorczości "Twój STartup" with its registered office in Warsaw (registered office address: ul. Żurawia 6/12, lok. 766, 00-503 Warsaw).
 
-The above privacy policy applies to the Foundation's services provided by the organized part of the enterprise FluencyPal. contact details: telephone number \+48510260193., e-mail address: contact@fluencypal.com. carried out by Aliaksandr Dmouski.
+The above privacy policy applies to the Foundation's services provided by the organized part of the enterprise FluencyPal. contact details: e-mail address: contact@fluencypal.com. carried out by Aliaksandr Dmouski.
 
 2. **Why do we process your data?**
 

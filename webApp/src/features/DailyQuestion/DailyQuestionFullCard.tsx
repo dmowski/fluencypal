@@ -8,6 +8,7 @@ import { useLingui } from '@lingui/react';
 import { dailyQuestions } from './dailyQuestions';
 import { useSettings } from '../Settings/useSettings';
 import { getDailyQuestionSpaceId } from './getDailyQuestionSpaceId';
+import { CommunityMessagesGate } from '../Community/CommunityPaywall';
 
 export const DailyQuestionFullCard = ({
   question,
@@ -34,36 +35,38 @@ export const DailyQuestionFullCard = ({
   }
 
   return (
-    <ChatProvider
-      metadata={{
-        spaceId: spaceId,
-        allowedUserIds: null,
-        isPrivate: false,
-        type: 'dailyQuestion',
-      }}
+    <StoreCard
+      badge={badge}
+      textColor={'#fff'}
+      backgroundColor={'rgba(0, 0, 0, 0.5)'}
+      label={label}
+      previewImageUrl={previewImageUrl}
+      title={question.title}
+      subTitle={question.description}
+      items={[]}
+      onClick={onClick}
+      itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
+      itemsViewMode={'list'}
     >
-      <StoreCard
-        badge={badge}
-        textColor={'#fff'}
-        backgroundColor={'rgba(0, 0, 0, 0.5)'}
-        label={label}
-        previewImageUrl={previewImageUrl}
-        title={question.title}
-        subTitle={question.description}
-        items={[]}
-        onClick={onClick}
-        itemsBackgroundColor={'rgba(32, 32, 32, 0.98)'}
-        itemsViewMode={'list'}
+      <Stack
+        sx={{
+          backgroundColor: 'rgba(32, 32, 32, 0.98)',
+          borderRadius: '0 0 16px 16px',
+        }}
       >
-        <Stack
-          sx={{
-            backgroundColor: 'rgba(32, 32, 32, 0.98)',
-            borderRadius: '0 0 16px 16px',
-          }}
-        >
-          <FlatChat />
-        </Stack>
-      </StoreCard>
-    </ChatProvider>
+        <CommunityMessagesGate>
+          <ChatProvider
+            metadata={{
+              spaceId: spaceId,
+              allowedUserIds: null,
+              isPrivate: false,
+              type: 'dailyQuestion',
+            }}
+          >
+            <FlatChat />
+          </ChatProvider>
+        </CommunityMessagesGate>
+      </Stack>
+    </StoreCard>
   );
 };

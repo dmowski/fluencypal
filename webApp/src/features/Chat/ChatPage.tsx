@@ -19,6 +19,7 @@ import { PageContainer } from '../Community/PageContainer';
 import { UsersPrivateChat } from './UsersPrivateChat';
 import { SupportPage } from '../Community/SupportPage';
 import { useState } from 'react';
+import { CommunityMessagesGate } from '../Community/CommunityPaywall';
 
 export const ChatPage = ({
   type,
@@ -72,28 +73,30 @@ export const ChatPage = ({
   return (
     <Stack>
       {type === 'public' ? (
-        <ChatProvider
-          metadata={{
-            spaceId: 'global',
-            allowedUserIds: null,
-            isPrivate: false,
-            type: 'global',
-          }}
-        >
-          <Stack
-            sx={{
-              width: '100%',
+        <CommunityMessagesGate>
+          <ChatProvider
+            metadata={{
+              spaceId: 'global',
+              allowedUserIds: null,
+              isPrivate: false,
+              type: 'global',
             }}
           >
-            {/*!activeChatId && !activePost && <MessagesToWinBadge />*/}
-            <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
-            <ChatSection
-              contextForAiAnalysis=""
-              isFullContentByDefault={isFullContentByDefault}
-              sortMode={sortMode}
-            />
-          </Stack>
-        </ChatProvider>
+            <Stack
+              sx={{
+                width: '100%',
+              }}
+            >
+              {/*!activeChatId && !activePost && <MessagesToWinBadge />*/}
+              <GlobalChatTabs sortMode={sortMode} setSortMode={changePage} />
+              <ChatSection
+                contextForAiAnalysis=""
+                isFullContentByDefault={isFullContentByDefault}
+                sortMode={sortMode}
+              />
+            </Stack>
+          </ChatProvider>
+        </CommunityMessagesGate>
       ) : (
         <>
           {activeChatId ? (

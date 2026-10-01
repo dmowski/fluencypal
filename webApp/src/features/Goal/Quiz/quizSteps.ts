@@ -23,7 +23,6 @@ export const quizSteps = [
   'featurePersonalPlan',
   'before_goalReview',
   'goalReview',
-  'dailyQuestion',
   'preAuth',
   'authWall',
 ] as const;
@@ -55,18 +54,15 @@ export const parsePracticeActivities = (value: string | null | undefined): Pract
 export const quizPath = ({
   includePageLanguage,
   activities,
-  includeDailyQuestion = false,
 }: {
   includePageLanguage: boolean;
   activities: readonly string[];
-  includeDailyQuestion?: boolean;
 }): QuizStep[] => {
   const selected = new Set(activities);
   return quizSteps.filter((step) => {
     if (step === 'pageLanguage' || step === 'before_pageLanguage') {
       return includePageLanguage;
     }
-    if (step === 'dailyQuestion') return includeDailyQuestion;
     if (step === 'featureDailyLesson') return selected.has('read');
     if (step === 'featureGame') return selected.has('quiz');
     if (step === 'featureAiTalk' || step === 'featurePersonalPlan') return selected.has('speak');
@@ -77,6 +73,9 @@ export const quizPath = ({
 export const resolveQuizStep = (step: string, path: readonly string[]): QuizStep => {
   if (path.includes(step)) {
     return step as QuizStep;
+  }
+  if (step === 'dailyQuestion') {
+    return path.includes('preAuth') ? 'preAuth' : (path[0] as QuizStep) || 'learnLanguage';
   }
   if (step === 'pageLanguage' || step === 'before_pageLanguage') {
     return path.includes('teacherSelection') ? 'teacherSelection' : (path[0] as QuizStep);

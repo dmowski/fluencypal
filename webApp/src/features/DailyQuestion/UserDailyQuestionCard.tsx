@@ -5,6 +5,7 @@ import { useLingui } from '@lingui/react';
 import { useState } from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useGame } from '@/features/Game/useGame';
+import { useAccess } from '@/features/Usage/useAccess';
 import { DailyQuestionFullCard } from './DailyQuestionFullCard';
 import { UserDailyQuestion } from './types';
 import {
@@ -79,8 +80,9 @@ export const UserDailyQuestionCard = ({
 export const AddMyDailyQuestionButton = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const access = useAccess();
   const [isOpen, setIsOpen] = useState(false);
-  if (!auth.uid) return null;
+  if (!auth.uid || access.communityAccessLoading || !access.canReadCommunity) return null;
 
   return (
     <>

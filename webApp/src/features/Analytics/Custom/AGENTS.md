@@ -165,8 +165,7 @@ Admin UI: `/staats/journey`
 8. `dailyPractice` → `noReminders` → `limitedAccess` (`quiz-start-free`) → `reviews`.
 9. `activityChoice` — `quiz-activity-continue`. Then only the matching cards: `featureDailyLesson` (read), `featureGame` (quiz), `featureAiTalk` and `featurePersonalPlan` (speak). A feature step that was not on their path resolves back to `activityChoice`; do not count that URL as a visit.
 10. `before_goalReview` (Generate plan) → `goalReview`. `quiz-start-speaking` here is **Continue**. It saves the plan. It does not start a call.
-11. `dailyQuestion` only if survey `wantsToTalkWithRealPeople` is true (the yes on `talkWithPeople`). It is not read from the URL. Continue is `quiz-daily-question-continue` and stays disabled until they send an answer in today's question. A `dailyQuestion` URL that is not on their path resolves like any other missing step.
-12. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call.
+11. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call. A leftover `dailyQuestion` URL resolves to `preAuth`.
 
 `before_recordAbout` without `quizSpeech` is they reached the clip and never pressed Reply. Leftover `recordAbout` in old paths is the previous signed-in follow-up, not this step.
 

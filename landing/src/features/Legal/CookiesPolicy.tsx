@@ -32,7 +32,7 @@ Cookies are text files and are created automatically by web browsers when you vi
 
 **Data Controller**
 
-The Data Controller is Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" with its registered office in Warsaw (registered office address: ul. Żurawia 6/12, office 766, 00-503 Warsaw), entered into the Register of Entrepreneurs of the National Court Register by the District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register under the number 0000442857; NIP: 5213641211; REGON: 146433467, contact details: telephone number \+48510260193, e-mail address: contact@fluencypal.com in connection with the organized part of the enterprise run by Aliaksandr Dmouski named FluencyPal.
+The Data Controller is Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" with its registered office in Warsaw (registered office address: ul. Żurawia 6/12, office 766, 00-503 Warsaw), entered into the Register of Entrepreneurs of the National Court Register by the District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register under the number 0000442857; NIP: 5213641211; REGON: 146433467, contact details: e-mail address: contact@fluencypal.com in connection with the organized part of the enterprise run by Aliaksandr Dmouski named FluencyPal.
 
 **Types of cookies**
 
