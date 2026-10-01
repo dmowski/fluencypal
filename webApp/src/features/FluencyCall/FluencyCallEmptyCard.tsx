@@ -35,33 +35,35 @@ export const FluencyCallEmptyCard = ({
         }}
       >
         <CommunityCallsHeader />
-        <Stack
-          direction="row"
-          sx={{
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          {hasRequest ? (
-            <Stack data-testid="fluency-call-request-sent" sx={{ gap: '6px' }}>
-              <Typography variant="h5" sx={{ fontWeight: 800, color: '#7DDEAA' }}>
-                {i18n._('Request sent')}
-              </Typography>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {requestedAtLabel}
-              </Typography>
-              <Typography sx={{ opacity: 0.8 }}>{i18n._("We'll reply soon.")}</Typography>
-            </Stack>
-          ) : (
-            <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {i18n._('No call scheduled yet.')}
-              </Typography>
-              <Typography>{i18n._("Pick a time and we'll set one up.")}</Typography>
-            </Stack>
-          )}
-        </Stack>
+        {membershipReady && isMember && (
+          <Stack
+            direction="row"
+            sx={{
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              gap: '12px',
+            }}
+          >
+            {hasRequest ? (
+              <Stack data-testid="fluency-call-request-sent" sx={{ gap: '6px' }}>
+                <Typography variant="h5" sx={{ fontWeight: 800, color: '#7DDEAA' }}>
+                  {i18n._('Request sent')}
+                </Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  {requestedAtLabel}
+                </Typography>
+                <Typography sx={{ opacity: 0.8 }}>{i18n._("We'll reply soon.")}</Typography>
+              </Stack>
+            ) : (
+              <Stack sx={{ gap: '6px' }}>
+                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  {i18n._('No call scheduled yet.')}
+                </Typography>
+                <Typography>{i18n._("Pick a time and we'll set one up.")}</Typography>
+              </Stack>
+            )}
+          </Stack>
+        )}
 
         {membershipReady && isMember && !hasRequest && (
           <Button
@@ -72,7 +74,7 @@ export const FluencyCallEmptyCard = ({
             startIcon={<CirclePlus size={18} />}
             sx={{ alignSelf: 'flex-start' }}
           >
-            {i18n._('Initiate Call')}
+            {i18n._('Propose a call')}
           </Button>
         )}
 

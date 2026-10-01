@@ -16,7 +16,7 @@ export const CommunityCallsHeader = () => {
     >
       <Stack>
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
-          {i18n._('Community call')}
+          {i18n._('Community call on Google Meet')}
         </Typography>
         <Typography variant="body2" sx={{ fontWeight: 400, opacity: 0.7 }}>
           {i18n._('We meet at a set time and just talk.')}
