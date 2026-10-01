@@ -40,13 +40,14 @@ export const DailyQuestionDashboardCard = () => {
           question={question.todaysQuestion}
           badge={i18n._('Today').toUpperCase()}
           onClick={globalModals.openDailyQuestions}
+          skipPaywall
         />
 
         {userQuestions.todays.map((userQuestion) => (
-          <UserDailyQuestionCard key={userQuestion.id} question={userQuestion} />
+          <UserDailyQuestionCard key={userQuestion.id} question={userQuestion} skipPaywall />
         ))}
       </Stack>
-      {userQuestions.myToday ? null : <AddMyDailyQuestionButton />}
+      {userQuestions.myToday ? null : <AddMyDailyQuestionButton requireMembership={false} />}
     </Stack>
   );
 };

@@ -14,10 +14,13 @@ export const DailyQuestionFullCard = ({
   question,
   badge,
   onClick,
+  skipPaywall = false,
 }: {
   question: DailyQuestion;
   badge?: string;
   onClick?: () => void;
+  /** Dashboard only, until the daily-question paywall returns. */
+  skipPaywall?: boolean;
 }) => {
   const previewImageUrl = getDailyQuestionImage(question);
   const settings = useSettings();
@@ -33,6 +36,19 @@ export const DailyQuestionFullCard = ({
   if (settings.loading) {
     return <></>;
   }
+
+  const thread = (
+    <ChatProvider
+      metadata={{
+        spaceId: spaceId,
+        allowedUserIds: null,
+        isPrivate: false,
+        type: 'dailyQuestion',
+      }}
+    >
+      <FlatChat />
+    </ChatProvider>
+  );
 
   return (
     <StoreCard
@@ -54,18 +70,7 @@ export const DailyQuestionFullCard = ({
           borderRadius: '0 0 16px 16px',
         }}
       >
-        <CommunityMessagesGate>
-          <ChatProvider
-            metadata={{
-              spaceId: spaceId,
-              allowedUserIds: null,
-              isPrivate: false,
-              type: 'dailyQuestion',
-            }}
-          >
-            <FlatChat />
-          </ChatProvider>
-        </CommunityMessagesGate>
+        {skipPaywall ? thread : <CommunityMessagesGate>{thread}</CommunityMessagesGate>}
       </Stack>
     </StoreCard>
   );

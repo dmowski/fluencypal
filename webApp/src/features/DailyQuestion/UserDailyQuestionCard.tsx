@@ -18,9 +18,11 @@ import { deleteUserDailyQuestion, UserDailyQuestionFormModal } from './UserDaily
 export const UserDailyQuestionCard = ({
   question,
   badge,
+  skipPaywall = false,
 }: {
   question: UserDailyQuestion;
   badge?: string;
+  skipPaywall?: boolean;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -50,6 +52,7 @@ export const UserDailyQuestionCard = ({
       <DailyQuestionFullCard
         question={toCommunityDailyQuestion(question)}
         badge={badge ? badge + ' · ' + authorBadge : authorBadge}
+        skipPaywall={skipPaywall}
       />
       {(canEdit || canDelete) && (
         <Stack sx={{ flexDirection: 'row', gap: '10px' }}>
@@ -77,12 +80,17 @@ export const UserDailyQuestionCard = ({
   );
 };
 
-export const AddMyDailyQuestionButton = () => {
+export const AddMyDailyQuestionButton = ({
+  requireMembership = true,
+}: {
+  requireMembership?: boolean;
+}) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const access = useAccess();
   const [isOpen, setIsOpen] = useState(false);
-  if (!auth.uid || access.communityAccessLoading || !access.canReadCommunity) return null;
+  if (!auth.uid) return null;
+  if (requireMembership && (access.communityAccessLoading || !access.canReadCommunity)) return null;
 
   return (
     <>
