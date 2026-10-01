@@ -43,9 +43,9 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
       <DashboardSectionContainer>
         {appNavigation.currentPage === 'home' && (
           <MainDashboardContainer>
-            <FluencyCallDashboardCard />
             <NewPrivateMessageCard />
             <DailyTasksDashboardCard />
+            <FluencyCallDashboardCard />
 
             <JustTalkCard />
             <InteractiveLessonDashboardCard />
