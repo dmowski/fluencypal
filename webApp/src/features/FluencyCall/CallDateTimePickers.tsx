@@ -7,9 +7,27 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { buildMonthGrid, isLocalDayBefore, localDateKey } from './callTime';
 
-const MINUTE_OPTIONS = [0, 15, 30, 45];
+const DEFAULT_MINUTE_STEP = 15;
 
 const pad = (value: number) => String(value).padStart(2, '0');
+
+const minuteOptions = (step: number, currentMinute: number) => {
+  const safeStep = step >= 1 && step <= 60 ? Math.floor(step) : DEFAULT_MINUTE_STEP;
+  const options: number[] = [];
+  for (let value = 0; value < 60; value += safeStep) {
+    options.push(value);
+  }
+  if (
+    Number.isInteger(currentMinute) &&
+    currentMinute >= 0 &&
+    currentMinute <= 59 &&
+    !options.includes(currentMinute)
+  ) {
+    options.push(currentMinute);
+    options.sort((a, b) => a - b);
+  }
+  return options;
+};
 
 const dateKey = (year: number, monthIndex: number, day: number) =>
   `${year}-${pad(monthIndex + 1)}-${pad(day)}`;
@@ -123,19 +141,20 @@ export const CallTimePicker = ({
   time,
   now,
   onChange,
+  minuteStep = DEFAULT_MINUTE_STEP,
 }: {
   date: string;
   time: string;
   now: Date;
   onChange: (time: string) => void;
+  minuteStep?: number;
 }) => {
   const { i18n } = useLingui();
   const [hourText, minuteText] = time.split(':');
   const hour = Number(hourText);
   const minute = Number(minuteText);
-  const minutes = MINUTE_OPTIONS.includes(minute)
-    ? MINUTE_OPTIONS
-    : [...MINUTE_OPTIONS, minute].sort((a, b) => a - b);
+  const minutes = minuteOptions(minuteStep, minute);
+  const minuteColumns = minutes.length > 8 ? 10 : minutes.length;
   const today = localDateKey(now);
   const isToday = date === today;
 
@@ -146,6 +165,14 @@ export const CallTimePicker = ({
     return slot.getTime() < now.getTime() - 60 * 1000;
   };
 
+  const firstOpenMinute = (nextHour: number) => {
+    const start = isToday && nextHour === now.getHours() ? now.getMinutes() : 0;
+    return (
+      minutes.find((nextMinute) => nextMinute >= start && !isPastSlot(nextHour, nextMinute)) ??
+      minutes.find((nextMinute) => !isPastSlot(nextHour, nextMinute))
+    );
+  };
+
   return (
     <Stack data-testid="fluency-call-time-picker" sx={{ gap: '10px' }}>
       <Typography variant="caption" sx={{ fontWeight: 700, opacity: 0.7 }}>
@@ -153,16 +180,22 @@ export const CallTimePicker = ({
       </Typography>
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: '6px' }}>
         {Array.from({ length: 24 }, (_, nextHour) => {
-          const disabled = isPastSlot(nextHour, minute);
+          const openMinute = firstOpenMinute(nextHour);
+          const disabled = openMinute == null;
           const selected = nextHour === hour;
           return (
             <Box
               key={nextHour}
               component="button"
               type="button"
+              data-testid={`fluency-call-hour-${pad(nextHour)}`}
               disabled={disabled}
               aria-pressed={selected}
-              onClick={() => onChange(`${pad(nextHour)}:${pad(minute)}`)}
+              onClick={() => {
+                const nextMinute = isPastSlot(nextHour, minute) ? openMinute : minute;
+                if (nextMinute == null) return;
+                onChange(`${pad(nextHour)}:${pad(nextMinute)}`);
+              }}
               sx={{
                 height: 36,
                 border: 'none',
@@ -182,7 +215,11 @@ export const CallTimePicker = ({
         })}
       </Box>
       <Box
-        sx={{ display: 'grid', gridTemplateColumns: `repeat(${minutes.length}, 1fr)`, gap: '6px' }}
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${minuteColumns}, 1fr)`,
+          gap: '6px',
+        }}
       >
         {minutes.map((nextMinute) => {
           const disabled = isPastSlot(hour, nextMinute);
@@ -192,6 +229,7 @@ export const CallTimePicker = ({
               key={nextMinute}
               component="button"
               type="button"
+              data-testid={`fluency-call-minute-${pad(nextMinute)}`}
               disabled={disabled}
               aria-pressed={selected}
               onClick={() => onChange(`${pad(hour)}:${pad(nextMinute)}`)}

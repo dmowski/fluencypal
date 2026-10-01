@@ -357,6 +357,7 @@ export const CallsAdmin = () => {
             date={date}
             time={time}
             now={now}
+            minuteStep={1}
             onChange={(nextTime) => edit({ startsAtLocal: `${date}T${nextTime}` })}
           />
           {previewLabel ? <Typography sx={{ fontWeight: 700 }}>{previewLabel}</Typography> : null}
