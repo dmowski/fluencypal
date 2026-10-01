@@ -14,7 +14,13 @@ import {
 } from './userDailyQuestion';
 import { deleteUserDailyQuestion, UserDailyQuestionFormModal } from './UserDailyQuestionFormModal';
 
-export const UserDailyQuestionCard = ({ question }: { question: UserDailyQuestion }) => {
+export const UserDailyQuestionCard = ({
+  question,
+  badge,
+}: {
+  question: UserDailyQuestion;
+  badge?: string;
+}) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const game = useGame();
@@ -22,6 +28,7 @@ export const UserDailyQuestionCard = ({ question }: { question: UserDailyQuestio
   const [isDeleting, setIsDeleting] = useState(false);
   const canDelete = canDeleteUserDailyQuestion(question, auth.uid, auth.isFounder);
   const canEdit = canEditUserDailyQuestion(auth.isFounder);
+  const authorBadge = 'By: ' + game.getUserName(question.authorUserId);
 
   const onDelete = async () => {
     if (!canDelete || isDeleting) return;
@@ -41,7 +48,7 @@ export const UserDailyQuestionCard = ({ question }: { question: UserDailyQuestio
     <Stack sx={{ gap: '10px' }}>
       <DailyQuestionFullCard
         question={toCommunityDailyQuestion(question)}
-        badge={'By: ' + game.getUserName(question.authorUserId)}
+        badge={badge ? badge + ' · ' + authorBadge : authorBadge}
       />
       {(canEdit || canDelete) && (
         <Stack sx={{ flexDirection: 'row', gap: '10px' }}>

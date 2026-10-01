@@ -7,6 +7,15 @@ General strategy:
 
 # Hide community functionality under paywall
 
-Onboarding? Just mention that it's exist. Keep username/avatar picker as before
-Dashboard? hide under paywall scree that hides content
-Private DM? Keep as is
+## Onboarding?
+
+Just mention that it's exist. Keep username/avatar picker as before.
+Remove daily question step?
+
+## Dashboard?
+
+Hide under paywall scree that hides content
+
+## Private DM?
+
+Keep as is
