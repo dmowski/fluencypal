@@ -107,29 +107,6 @@ export const OpenAiLiveCall = ({
           gap: '16px',
         }}
       >
-        <Stack direction="row" sx={{ justifyContent: 'space-between', gap: '16px' }}>
-          <Stack>
-            <Typography sx={{ fontSize: '14px', opacity: 0.65 }}>{title}</Typography>
-            <Typography
-              data-testid="open-ai-live-elapsed"
-              sx={{ opacity: 1, fontSize: '16px', fontWeight: 700 }}
-            >
-              {elapsedLabel || formatElapsedMs(0)}
-            </Typography>
-          </Stack>
-          <Stack sx={{ alignItems: 'flex-end' }}>
-            <Typography sx={{ fontSize: '14px', opacity: 0.65 }}>{i18n._('Balance')}</Typography>
-            <OpenAiLiveBalanceText
-              testId="open-ai-live-call-balance"
-              usd={balanceUsd}
-              local={balanceLocal}
-              talkTime={talkTime}
-              usdFontSize="16px"
-              localFontSize="16px"
-            />
-          </Stack>
-        </Stack>
-
         <Stack
           ref={listRef}
           data-testid="open-ai-live-transcripts"
