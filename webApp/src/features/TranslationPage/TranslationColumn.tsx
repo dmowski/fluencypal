@@ -75,6 +75,7 @@ export const TranslationColumn = ({
         sx={{
           flexDirection: 'row',
           alignItems: 'center',
+          justifyContent: 'space-between',
           gap: '8px',
         }}
       >
@@ -99,27 +100,28 @@ export const TranslationColumn = ({
             />
           </Stack>
 
-          {canRemove && (
-            <IconButton
-              aria-label={i18n._('Remove language')}
-              onClick={onRemove}
-              disabled={!canRemove}
-              data-testid={`translation-remove-${language}`}
-            >
-              <X size={18} />
-            </IconButton>
-          )}
+          <IconButton
+            aria-label={i18n._('Play')}
+            onClick={onPlay}
+            size="large"
+            disabled={!text.trim()}
+            color={isSpeaking ? 'info' : 'default'}
+            data-testid={`translation-play-${language}`}
+          >
+            <Volume2 size={18} />
+          </IconButton>
         </Stack>
-        <IconButton
-          aria-label={i18n._('Play')}
-          onClick={onPlay}
-          size="large"
-          disabled={!text.trim()}
-          color={isSpeaking ? 'info' : 'default'}
-          data-testid={`translation-play-${language}`}
-        >
-          <Volume2 size={18} />
-        </IconButton>
+
+        {canRemove && (
+          <IconButton
+            aria-label={i18n._('Remove language')}
+            onClick={onRemove}
+            disabled={!canRemove}
+            data-testid={`translation-remove-${language}`}
+          >
+            <X size={18} />
+          </IconButton>
+        )}
       </Stack>
 
       <TextField
@@ -152,8 +154,6 @@ export const TranslationColumn = ({
         }}
       />
 
-      {isTranslating && <LoadingShapes sizes={['18px']} />}
-
       <Button
         variant="outlined"
         color="info"
@@ -162,7 +162,7 @@ export const TranslationColumn = ({
         data-testid={`translation-examples-${language}`}
         sx={{ textTransform: 'none', alignSelf: 'flex-start' }}
       >
-        {i18n._('Give examples')}
+        {i18n._('Examples')}
       </Button>
 
       {examples?.loading && <LoadingShapes sizes={['16px', '16px', '16px']} />}
@@ -172,9 +172,15 @@ export const TranslationColumn = ({
         </Typography>
       )}
       {examples?.examples && examples.examples.length > 0 && (
-        <Stack component="ol" sx={{ gap: '8px', paddingLeft: '18px', margin: 0 }}>
+        <Stack sx={{ gap: '22px', padding: '20px 20px 0 0' }}>
           {examples.examples.map((example) => (
-            <Typography key={example} component="li" variant="body2">
+            <Typography
+              key={example}
+              variant="body1"
+              sx={{
+                fontSize: '20px',
+              }}
+            >
               {example}
             </Typography>
           ))}

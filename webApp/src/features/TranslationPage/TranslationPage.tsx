@@ -327,13 +327,10 @@ export const TranslationPage = ({ lang }: { lang: SupportedLanguage }) => {
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '1400px',
+          maxWidth: '1900px',
           gap: '20px',
         }}
       >
-        <Link href={homeHref} underline="hover" color="inherit">
-          {i18n._('Back to practice')}
-        </Link>
         <TranslationSettingsBar
           languages={settings.languages}
           voiceOverEnabled={settings.voiceOverEnabled}
