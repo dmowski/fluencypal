@@ -4,10 +4,15 @@ import { useEffect } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useGame } from '@/features/Game/useGame';
+import { defaultAvatar } from '@/features/Game/avatars';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { ChatProvider } from '@/features/Chat/useChat';
 import { ChatSection } from '@/features/Chat/ChatSection';
+import { FluencyCallChatTabs } from './FluencyCallChatTabs';
+import { FluencyCallParticipants } from './FluencyCallParticipants';
 import { ensureFluencyCallChat, fluencyCallChatSpaceId } from './fluencyCallChat';
+import { useFluencyCallRsvps } from './useFluencyCalls';
 
 export const FluencyCallChatModal = ({
   callId,
@@ -20,6 +25,13 @@ export const FluencyCallChatModal = ({
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const game = useGame();
+  const { rsvps, loading: participantsLoading } = useFluencyCallRsvps(callId);
+  const participants = rsvps.map((rsvp) => ({
+    userId: rsvp.userId,
+    userName: game.getUserName(rsvp.userId),
+    avatarUrl: game.gameAvatars[rsvp.userId] || defaultAvatar,
+  }));
 
   useEffect(() => {
     if (!auth.uid) return;
@@ -55,20 +67,31 @@ export const FluencyCallChatModal = ({
           </Typography>
         </Stack>
 
-        <ChatProvider
-          metadata={{
-            spaceId: fluencyCallChatSpaceId(callId),
-            allowedUserIds: null,
-            isPrivate: false,
-            type: 'fluencyCall',
-          }}
-        >
-          <ChatSection
-            contextForAiAnalysis=""
-            placeholder={i18n._('What should we talk about?')}
-            noMessagesPlaceholder={i18n._('No messages yet. Start the conversation.')}
-          />
-        </ChatProvider>
+        <FluencyCallChatTabs
+          chat={
+            <ChatProvider
+              metadata={{
+                spaceId: fluencyCallChatSpaceId(callId),
+                allowedUserIds: null,
+                isPrivate: false,
+                type: 'fluencyCall',
+              }}
+            >
+              <ChatSection
+                contextForAiAnalysis=""
+                placeholder={i18n._('What should we talk about?')}
+                noMessagesPlaceholder={i18n._('No messages yet. Start the conversation.')}
+              />
+            </ChatProvider>
+          }
+          participants={
+            <FluencyCallParticipants
+              participants={participants}
+              loading={participantsLoading}
+              onOpenParticipant={(userId) => game.showUserInModal(userId)}
+            />
+          }
+        />
       </Stack>
     </CustomModal>
   );
