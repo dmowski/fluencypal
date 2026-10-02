@@ -355,7 +355,7 @@ export const TranslationPage = ({ lang }: { lang: SupportedLanguage }) => {
           sx={{
             flexDirection: 'row',
             alignItems: 'stretch',
-            gap: '12px',
+            gap: '20px',
             overflowX: 'auto',
             '@media (max-width: 800px)': {
               flexDirection: 'column',

@@ -67,44 +67,58 @@ export const TranslationColumn = ({
         flex: '1 1 280px',
         minWidth: '260px',
         gap: '10px',
-        padding: '12px',
-        borderRadius: '12px',
-        border: isSpeaking
-          ? '1px solid rgba(41, 182, 246, 0.8)'
-          : '1px solid rgba(255,255,255,0.12)',
-        backgroundColor: 'rgba(255,255,255,0.03)',
+
         minHeight: '100%',
       }}
     >
       <Stack
         sx={{
           flexDirection: 'row',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           gap: '8px',
         }}
       >
-        <LanguageAutocomplete
-          id={`translation-language-${language}`}
-          options={languageOptions}
-          value={selectedLanguage}
-          onChange={onChangeLanguage}
-        />
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '8px',
+            width: 'max-content',
+          }}
+        >
+          <Stack
+            sx={{
+              width: '210px',
+            }}
+          >
+            <LanguageAutocomplete
+              id={`translation-language-${language}`}
+              options={languageOptions}
+              value={selectedLanguage}
+              onChange={onChangeLanguage}
+            />
+          </Stack>
+
+          {canRemove && (
+            <IconButton
+              aria-label={i18n._('Remove language')}
+              onClick={onRemove}
+              disabled={!canRemove}
+              data-testid={`translation-remove-${language}`}
+            >
+              <X size={18} />
+            </IconButton>
+          )}
+        </Stack>
         <IconButton
           aria-label={i18n._('Play')}
           onClick={onPlay}
+          size="large"
           disabled={!text.trim()}
           color={isSpeaking ? 'info' : 'default'}
           data-testid={`translation-play-${language}`}
         >
           <Volume2 size={18} />
-        </IconButton>
-        <IconButton
-          aria-label={i18n._('Remove language')}
-          onClick={onRemove}
-          disabled={!canRemove}
-          data-testid={`translation-remove-${language}`}
-        >
-          <X size={18} />
         </IconButton>
       </Stack>
 
@@ -124,10 +138,17 @@ export const TranslationColumn = ({
         }}
         onFocus={onFocus}
         onBlur={onBlur}
+        sx={{
+          border: isSpeaking
+            ? '1px solid rgba(41, 182, 246, 0.8)'
+            : '1px solid rgba(255,255,255,0)',
+        }}
         placeholder={i18n._('Type or paste text')}
-        inputProps={{
-          'data-testid': `translation-textarea-${language}`,
-          'data-translation-column': 'true',
+        slotProps={{
+          htmlInput: {
+            'data-testid': `translation-textarea-${language}`,
+            'data-translation-column': 'true',
+          },
         }}
       />
 
