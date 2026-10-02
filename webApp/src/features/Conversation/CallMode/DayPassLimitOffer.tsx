@@ -7,22 +7,10 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { useUrlStateContext } from '@/features/Url/UrlStateContext';
-import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 
 export const DAY_PASS_OFFER_TEST_ID = 'day-pass-offer';
-export const CHAT_WITH_PEOPLE_TEST_ID = 'chat-with-people';
 export const BUY_ACCESS_TEST_ID = 'buy-access';
 export const LIMIT_CLOSE_TEST_ID = 'limit-close';
-
-/** Practice path for today's question, keeping a locale prefix such as `/ar`. */
-export const practiceDailyQuestionsPath = (pathname: string) => {
-  const first = pathname.split('/').filter(Boolean)[0];
-  const langPrefix =
-    first && first !== 'practice' && supportedLanguages.includes(first as SupportedLanguage)
-      ? `/${first}`
-      : '';
-  return `${langPrefix}/practice?dailyQuestions=true`;
-};
 
 export const DayPassLimitOffer = ({
   onClose,
@@ -39,11 +27,6 @@ export const DayPassLimitOffer = ({
   useEffect(() => {
     sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'day-pass' });
   }, []);
-
-  const openDailyQuestions = () => {
-    const nextUrl = practiceDailyQuestionsPath(window.location.pathname);
-    router.push(nextUrl, { scroll: false });
-  };
 
   const openPlansModal = () => {
     const params = new URLSearchParams(window.location.search);
@@ -85,7 +68,7 @@ export const DayPassLimitOffer = ({
           {i18n._('Free answers have run out')}
         </Typography>
         <Typography sx={{ textWrap: 'balance' }}>
-          {i18n._('But there is a solution: chat with real people or buy unlimited access.')}
+          {i18n._('Buy unlimited access to keep talking.')}
         </Typography>
       </Stack>
       <Stack
@@ -97,21 +80,6 @@ export const DayPassLimitOffer = ({
           alignItems: 'center',
         }}
       >
-        <Button
-          size="large"
-          color="info"
-          variant="contained"
-          data-testid={CHAT_WITH_PEOPLE_TEST_ID}
-          data-analytics="chat-with-people"
-          sx={{
-            fontWeight: 600,
-            borderRadius: '30px',
-            minHeight: '48px',
-          }}
-          onClick={openDailyQuestions}
-        >
-          {i18n._('Chat with people')}
-        </Button>
         <Button
           size="large"
           color="success"

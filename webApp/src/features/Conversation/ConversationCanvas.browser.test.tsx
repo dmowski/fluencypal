@@ -376,8 +376,14 @@ async function settleLimitScreenshot() {
   await document.fonts.ready;
   const style = document.createElement('style');
   style.textContent =
-    '*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }';
+    '*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; } [data-testid="day-pass-offer"] { background-color: rgb(15, 24, 37); }';
   document.head.appendChild(style);
+  document.querySelectorAll('video').forEach((video) => {
+    video.pause();
+  });
+  await Promise.all(
+    [...document.images].map((img) => (img.complete ? undefined : img.decode().catch(() => undefined))),
+  );
   if (document.activeElement instanceof HTMLElement) {
     document.activeElement.blur();
   }
@@ -394,14 +400,15 @@ test('conversation canvas – call mode daily limit', async () => {
     />,
   );
 
-  await expect.element(page.getByRole('button', { name: 'Chat with people' })).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Buy access' })).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'End call' })).toBeVisible();
   await settleLimitScreenshot();
 
   await expect
     .element(page.getByTestId('day-pass-offer'))
-    .toMatchScreenshot('conversation-canvas-call-daily-limit');
+    .toMatchScreenshot('conversation-canvas-call-daily-limit', {
+      screenshotOptions: { animations: 'disabled', caret: 'hide' },
+    });
 });
 
 test('conversation canvas – call mode role-play in progress', async () => {

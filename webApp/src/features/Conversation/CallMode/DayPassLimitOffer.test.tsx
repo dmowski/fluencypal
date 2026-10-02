@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
-import { DayPassLimitOffer, practiceDailyQuestionsPath } from './DayPassLimitOffer';
+import { DayPassLimitOffer } from './DayPassLimitOffer';
 
 const push = jest.fn();
 const setUrlState = jest.fn();
@@ -29,7 +29,7 @@ describe('DayPassLimitOffer', () => {
     window.history.replaceState({}, '', '/practice?justTalk=open');
   });
 
-  it('says the free answers are used and offers chat, access, or close', () => {
+  it('says the free answers are used and offers buy access or close', () => {
     const onClose = jest.fn();
     render(
       <I18nWrapper>
@@ -38,27 +38,13 @@ describe('DayPassLimitOffer', () => {
     );
 
     expect(screen.getByText('Free answers have run out')).toBeInTheDocument();
-    expect(
-      screen.getByText('But there is a solution: chat with real people or buy unlimited access.'),
-    ).toBeInTheDocument();
-    expect(screen.getByTestId('chat-with-people')).toHaveTextContent('Chat with people');
+    expect(screen.getByText('Buy unlimited access to keep talking.')).toBeInTheDocument();
+    expect(screen.queryByTestId('chat-with-people')).not.toBeInTheDocument();
     expect(screen.getByTestId('buy-access')).toHaveTextContent('Buy access');
     expect(screen.getByRole('button', { name: 'End call' })).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('limit-close'));
     expect(onClose).toHaveBeenCalledTimes(1);
-  });
-
-  it('opens daily questions on the current locale for every user', () => {
-    window.history.replaceState({}, '', '/ar/practice?justTalk=open');
-    render(
-      <I18nWrapper>
-        <DayPassLimitOffer onClose={jest.fn()} />
-      </I18nWrapper>,
-    );
-
-    fireEvent.click(screen.getByTestId('chat-with-people'));
-    expect(push).toHaveBeenCalledWith('/ar/practice?dailyQuestions=true', { scroll: false });
   });
 
   it('opens the plans modal from Buy access', () => {
@@ -79,11 +65,5 @@ describe('DayPassLimitOffer', () => {
       scroll: false,
     });
     expect(onCheckoutOpen).toHaveBeenCalledTimes(1);
-  });
-
-  it('builds the daily questions path', () => {
-    expect(practiceDailyQuestionsPath('/practice')).toBe('/practice?dailyQuestions=true');
-    expect(practiceDailyQuestionsPath('/ru/practice')).toBe('/ru/practice?dailyQuestions=true');
-    expect(practiceDailyQuestionsPath('/practice-ui')).toBe('/practice?dailyQuestions=true');
   });
 });

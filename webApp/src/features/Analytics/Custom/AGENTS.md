@@ -7,13 +7,14 @@ Last report window: `LAST_REPORT.md` (same folder).
 
 ## Purpose
 
-Answer: who comes back, who uses community chat, and who subscribes after a few days of use — and what to change — without repeating the same experiment.
+Answer: who comes back, and who subscribes after a few days of use — and what to change — without repeating the same experiment.
 
 Goals:
 
 1. More returned users
-2. More activity on community chat
-3. More subscriptions in general, ideally after 2–3 days of usage
+2. More subscriptions in general, ideally after 2–3 days of usage
+
+Community is paid-only. Do not treat Global chat as a goal, and do not add a free path into it from the conversation limit screen.
 
 Onboarding is how they get into the product, not the goal. It does not auto-start a call. Quiz speech is the material for the plan. The live conversation starts only when they start lesson 1 (or Just Talk from the dashboard). Do not read a missing `conversation_start` right after `goalReview` as a broken handoff, and do not propose bringing back quiz-talk, the Enable-mic handoff, or `autoStart`. Those are closed (`INTERVENTIONS.md`). `justTalk` is dropped from stored paths. Do not pull the paywall forward to create a same-day subscription.
 
@@ -76,15 +77,14 @@ Today (YYYY-MM-DD)  [UTC]
 - GEO/SEO: countries, languages, referrers, UTM, firstPaths, plus `searchConsole` (queries/pages; data lags 2–3 days)
 - Where they stop: top last paths
 - Return: visitorCountReturning, and whether people first seen 2–3 days ago show up again
-- Community: paths with `page=community` (`practice.community`, or `practice.community.chat` when `section=chat`). A plain `/practice` view is the dashboard, not chat.
 - Spoke / paywallViews / checkoutStarts. Split checkout into same-day (first seen in this window) vs people who already had 2–3 days of use. The second group is the subscription goal.
 
 Why they leave: …
-What to do next (one change): …  [must be new vs INTERVENTIONS.md, and must serve goal 1, 2, or 3]
-Which goal does this move, and how will the next report see it? …  [Required. Return = more visitorCountReturning, or more of an earlier day’s new visitors with a later page_view. Chat = more real Global chat activity, not every /practice view. Subscriptions = more checkout_start or paid sessions among people who already used the app for about 2–3 days. If this answer is that none of the three move, pick a different change.]
+What to do next (one change): …  [must be new vs INTERVENTIONS.md, and must serve goal 1 or 2]
+Which goal does this move, and how will the next report see it? …  [Required. Return = more visitorCountReturning, or more of an earlier day’s new visitors with a later page_view. Subscriptions = more checkout_start or paid sessions among people who already used the app for about 2–3 days. If this answer is that neither goal moves, pick a different change.]
 ```
 
-The one change serves one of those three goals. Name the goal and the count that should move. A clearer quiz question is not the next change when the gap is people who finished once and did not come back. Do not spend the change on restoring an automatic first call, and do not move the paywall earlier to force a day-1 subscription.
+The one change serves one of those two goals. Name the goal and the count that should move. A clearer quiz question is not the next change when the gap is people who finished once and did not come back. Do not spend the change on restoring an automatic first call, and do not move the paywall earlier to force a day-1 subscription.
 
 9. Update `LAST_REPORT.md` `Analyzed through` to the export `toIso` (now UTC). Do not commit unless asked.
 
@@ -185,9 +185,7 @@ Admin UI: `/staats/journey`
 
 **Returned users (goal 1):** `visitorCountReturning` is people created before this window who were active in it. A one-day export cannot show whether yesterday’s new visitors came back; for that, compare an earlier day’s `visitorCountNew` with later `page_view`s from the same visitors. People who finished onboarding or spoke once and have no later `page_view` are a return problem, not an acquisition problem. Do not “fix” the landing hero for that.
 
-**Community chat (goal 2):** Global chat is `/practice?page=community&section=chat` (also linked from the quiz reviews step). Count visitors whose path or `uiContext.screenId` is `page=community` / `practice.community`. `section=chat` (`practice.community.chat`) is Global chat; `page=community` with no section is the community home. A plain `/practice` view is the practice dashboard.
-
-**Subscriptions (goal 3):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. The free-answer screen offers `chat-with-people` (today’s question) and `buy-access` (plans modal). Older `day-pass-checkout` taps are the previous day-price button on that same screen. `checkout_start` without payment in Stripe = checkout drop. Same-day checkout is not the target to push. No paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment.
+**Subscriptions (goal 2):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. The free-answer screen offers `buy-access` (plans modal) and `limit-close` (leave the call). `chat-with-people` is an old event from when that screen also opened today’s question. Older `day-pass-checkout` taps are the previous day-price button on that same screen. `checkout_start` without payment in Stripe = checkout drop. Same-day checkout is not the target to push. No paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment. Community stays paid-only, so this screen does not link to it.
 
 ## SEO / GEO
 
