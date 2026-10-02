@@ -32,6 +32,7 @@ import {
   updateFluencyCallSchedule,
 } from './fluencyCallStore';
 import { FluencyCall, FluencyCallRequest } from './types';
+import { useCallJoinerEmails } from './useCallJoinerEmails';
 import { useFluencyCallRequests, useFluencyCallRsvps, useFluencyCalls } from './useFluencyCalls';
 import { useNow } from './useNow';
 
@@ -306,7 +307,7 @@ export const CallsAdmin = () => {
                 <Typography sx={{ opacity: 0.8, color: isLive ? '#7DDEAA' : undefined }}>
                   {statusLabel}
                 </Typography>
-                <CallJoinCount callId={item.id} />
+                <CallJoiners callId={item.id} />
                 {isHttpUrl(item.link) ? (
                   <Link href={item.link} target="_blank" rel="noreferrer">
                     Join
@@ -433,9 +434,41 @@ export const CallsAdmin = () => {
   );
 };
 
-const CallJoinCount = ({ callId }: { callId: string }) => {
-  const { joinCount } = useFluencyCallRsvps(callId);
-  return <Typography sx={{ fontWeight: 700 }}>{joinCount} will join</Typography>;
+const CallJoiners = ({ callId }: { callId: string }) => {
+  const game = useGame();
+  const { rsvps, joinCount } = useFluencyCallRsvps(callId);
+  const { emails, status } = useCallJoinerEmails(rsvps.map((rsvp) => rsvp.userId));
+  const joiners = [...rsvps].sort((a, b) =>
+    game.getUserName(a.userId).localeCompare(game.getUserName(b.userId)),
+  );
+
+  return (
+    <Stack sx={{ gap: '4px' }}>
+      <Typography sx={{ fontWeight: 700 }}>{joinCount} will join</Typography>
+      {status === 'error' ? (
+        <Typography color="error" sx={{ fontSize: '13px' }}>
+          Could not load emails.
+        </Typography>
+      ) : null}
+      {joiners.map((rsvp) => {
+        const email = emails[rsvp.userId];
+        const emailLabel =
+          status === 'ready' ? email || 'No email' : status === 'error' ? 'Email unavailable' : '…';
+        return (
+          <Typography
+            key={rsvp.userId}
+            data-testid="fluency-call-admin-joiner"
+            sx={{ fontSize: '14px' }}
+          >
+            {emailLabel}{' '}
+            <Link href={`/practice?userId=${rsvp.userId}`} target="_blank">
+              {game.getUserName(rsvp.userId)}
+            </Link>
+          </Typography>
+        );
+      })}
+    </Stack>
+  );
 };
 
 const cardSx = {

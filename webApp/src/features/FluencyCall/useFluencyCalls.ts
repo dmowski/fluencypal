@@ -79,6 +79,7 @@ export function useFluencyCallRsvps(callId: string | null) {
   const list = rsvps ?? [];
 
   return {
+    rsvps: list,
     joinCount: list.length,
     isJoining: list.some((rsvp) => rsvp.userId === auth.uid),
     loading,
