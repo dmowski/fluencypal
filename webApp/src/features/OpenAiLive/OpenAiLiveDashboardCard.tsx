@@ -163,8 +163,10 @@ export const OpenAiLiveDashboardCard = () => {
       ) : null}
       <Stack data-testid="open-ai-live-card" sx={{ gap: '16px' }}>
         <SectionHeader
-          title={i18n._('Experimental feature: AI voice call')}
-          subTitle={i18n._('Better quality, but more expensive.')}
+          title={i18n._('Experimental feature: AI voice call (version 2)')}
+          subTitle={i18n._(
+            'Better quality and a higher price. It feels like a real human teacher.',
+          )}
         />
         <Stack
           sx={{
