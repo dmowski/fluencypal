@@ -21,8 +21,8 @@ TranslationPage/
   resolvePasteTarget.ts            — focus > hover > first column; document-paste gate
   speechVoices.ts                  — BCP-47 + best matching browser voice
   buildAutoSpeechQueue.ts          — source then other columns after paste
-  generateUsageExamples.ts         — useTextAi.generateStrictJson → 5 sentences
-  schemas.ts                       — zod schema for examples
+  generateUsageExamples.ts         — 4× useTextAi.generate, one sentence each
+  selectUsageExamples.ts           — drop copies and unusable sentences before UI
   isNativeLangCode.ts
   types.ts
   constants.ts
@@ -62,7 +62,7 @@ Read settings in `useEffect` after mount (start from `DEFAULT_TRANSLATION_PAGE_S
 2. Typing in a column debounces `TRANSLATION_DEBOUNCE_MS` (400), then `getTranslation` to every other column. A generation counter drops stale responses.
 3. Paste into a column (or document paste when the target is not an input) translates immediately. After paste, if voice over is on, play `buildAutoSpeechQueue` (source, then other columns in order).
 4. Document paste target: focused column, else hovered column, else first column. Do not steal paste from `input` / `textarea` / `select` / `contenteditable`.
-5. **Give examples** needs `auth.isAuthorized`. Then `generateUsageExamples` (`gpt-4o-mini`, 5 sentences in that column’s language). Failures stay in that column; do not throw through to the page.
+5. **Give examples** needs `auth.isAuthorized`. Then `generateUsageExamples` calls `gpt-4o-mini` four times, each for one plain-text sentence in that column’s language (daily life, a conversation, work or study, free time). `selectUsageExamples` drops empty text, JSON, copies of the source, duplicate sentences, and short words or phrases that do not appear in the sentence. Only the sentences that pass are shown. Failures stay in that column; do not throw through to the page.
 6. Per-column play uses the matching browser voice for that language (Google / remote / Enhanced preferred, same scoring idea as News). Chrome: `cancel()` then `resume()` before `speak()`, as in Reader.
 
 ## Conventions
