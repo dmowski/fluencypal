@@ -12,6 +12,79 @@ type ScoreField = (typeof SCORE_FIELDS)[number];
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
+const ONES: Record<string, number> = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+  thirteen: 13,
+  fourteen: 14,
+  fifteen: 15,
+  sixteen: 16,
+  seventeen: 17,
+  eighteen: 18,
+  nineteen: 19,
+};
+
+const TENS: Record<string, number> = {
+  twenty: 20,
+  thirty: 30,
+  forty: 40,
+  fifty: 50,
+  sixty: 60,
+  seventy: 70,
+  eighty: 80,
+  ninety: 90,
+};
+
+/** Whole-string English integers from 0 to 100, including "thirtyfive" and "forty-five". */
+const parseEnglishNumberWord = (raw: string): number | null => {
+  const normalized = raw
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!normalized) return null;
+
+  if (normalized === 'hundred' || normalized === 'a hundred' || normalized === 'one hundred') {
+    return 100;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(ONES, normalized)) return ONES[normalized];
+  if (Object.prototype.hasOwnProperty.call(TENS, normalized)) return TENS[normalized];
+
+  const parts = normalized.split(/[\s-]+/).filter(Boolean);
+  if (
+    parts.length === 2 &&
+    Object.prototype.hasOwnProperty.call(TENS, parts[0]) &&
+    Object.prototype.hasOwnProperty.call(ONES, parts[1]) &&
+    ONES[parts[1]] < 10
+  ) {
+    return TENS[parts[0]] + ONES[parts[1]];
+  }
+
+  if (parts.length === 1) {
+    for (const [tensWord, tensValue] of Object.entries(TENS)) {
+      if (!normalized.startsWith(tensWord) || normalized.length === tensWord.length) continue;
+      const rest = normalized.slice(tensWord.length);
+      if (Object.prototype.hasOwnProperty.call(ONES, rest) && ONES[rest] < 10) {
+        return tensValue + ONES[rest];
+      }
+    }
+  }
+
+  return null;
+};
+
 export const parseScoreValue = (value: unknown): number | null => {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return value;
@@ -23,6 +96,9 @@ export const parseScoreValue = (value: unknown): number | null => {
 
     const direct = Number(trimmed);
     if (Number.isFinite(direct)) return direct;
+
+    const word = parseEnglishNumberWord(trimmed);
+    if (word !== null) return word;
 
     const match = trimmed.match(/\b(\d{1,3})\b/);
     if (match) {
