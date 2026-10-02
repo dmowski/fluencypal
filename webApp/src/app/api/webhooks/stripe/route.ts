@@ -10,6 +10,11 @@ import { getConfirmEmailTemplate } from './getConfirmEmailTemplate';
 import { parsePaidAdvancedInvoice } from '@/features/Usage/advancedInvoice';
 import { getChargeIdFromInvoice } from '../../payment/getChargeIdFromInvoice';
 import { recordAdvancedHoursPayment } from './recordAdvancedHoursPayment';
+import {
+  OPEN_AI_LIVE_STRIPE_PRODUCT,
+  openAiLiveHoursFromMetadata,
+} from '@/features/OpenAiLive/pricing';
+import { recordOpenAiLivePayment } from '@/features/OpenAiLive/backend/recordPayment';
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
@@ -141,7 +146,19 @@ export async function POST(request: Request) {
       const days = session.metadata?.amountOfDays;
       const product = session.metadata?.product;
 
-      if (product === 'advanced-hours') {
+      if (product === OPEN_AI_LIVE_STRIPE_PRODUCT) {
+        const hours = openAiLiveHoursFromMetadata(session.metadata);
+        if (!hours) throw new Error('OpenAI Live pack is not set');
+        await recordOpenAiLivePayment({
+          userId,
+          paymentId,
+          hours,
+          amountPaid,
+          currency: currency || 'usd',
+          chargeId,
+          receiptUrl,
+        });
+      } else if (product === 'advanced-hours') {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0');
         if (amountOfHours <= 0) throw new Error('Amount of advanced hours is not set');
 

@@ -280,6 +280,11 @@ service cloud.firestore {
         allow read: if isUser(userId);
         allow write: if false;
       }
+
+      match /openAiLive/{docId} {
+        allow read: if isUser(userId);
+        allow write: if false;
+      }
       
       // Allow read-write for quizSurvey
       match /quiz2/{id} {

@@ -13,6 +13,7 @@ import {
 import { isWaitingForFirestoreToken, publishedAuthUid } from './firestoreAuthReady';
 import { ensureAnonymousAuth } from './anonymousAuth';
 import { isIdentifiedAuthUser } from './identifiedAuth';
+import { isFounderUserId } from './founder';
 import {
   Context,
   JSX,
@@ -432,7 +433,7 @@ function useProvideAuth(): AuthContext {
     return token || '';
   };
 
-  const isFounder = userId === 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+  const isFounder = isFounderUserId(userId);
   const ensureAnonymousUser = useCallback(() => ensureAnonymousAuth(auth), []);
 
   const sendTgMessage = async (message: string) => {

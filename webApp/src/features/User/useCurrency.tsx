@@ -123,6 +123,7 @@ export const useCurrency = () => {
 
   return {
     currency: `${currency || 'USD'}`.toUpperCase(),
+    rate,
     convertUsdToCurrency,
     convertPrice,
   };
