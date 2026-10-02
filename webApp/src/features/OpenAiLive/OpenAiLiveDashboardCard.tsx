@@ -60,8 +60,6 @@ export const OpenAiLiveDashboardCard = () => {
   const [buyingHours, setBuyingHours] = useState<number | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
 
-  if (!auth.isFounder) return null;
-
   const balanceUsd =
     account.balanceUsdMicros === null ? '…' : formatUsdFromMicros(account.balanceUsdMicros);
   const balanceLocal =

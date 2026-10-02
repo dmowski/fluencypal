@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useCanUseOpenAiLive } from './useCanUseOpenAiLive';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useSettings } from '@/features/Settings/useSettings';
 import { OpenAiLiveApiError, requestOpenAiLiveCheckout } from './api';
@@ -37,6 +38,7 @@ const sampleLines: LiveTranscriptLine[] = [
 export const OpenAiLiveCallPreview = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const access = useCanUseOpenAiLive();
   const currency = useCurrency();
   const settings = useSettings();
   const [scene, setScene] = useState<'connecting' | 'live'>('live');
@@ -70,7 +72,7 @@ export const OpenAiLiveCallPreview = () => {
     }
   };
 
-  if (auth.loading) {
+  if (auth.loading || access.loading) {
     return (
       <Stack sx={{ minHeight: '100dvh', color: '#fff', padding: '24px' }}>
         <Typography>{i18n._('Loading…')}</Typography>
@@ -78,7 +80,7 @@ export const OpenAiLiveCallPreview = () => {
     );
   }
 
-  if (!auth.isFounder) {
+  if (!access.canUse) {
     return (
       <Stack sx={{ minHeight: '100dvh', color: '#fff', padding: '24px', gap: '8px' }}>
         <Typography sx={{ fontWeight: 700 }}>{i18n._('This preview is not available.')}</Typography>

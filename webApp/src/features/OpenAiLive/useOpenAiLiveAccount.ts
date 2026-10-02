@@ -9,7 +9,7 @@ import { OpenAiLiveAccount } from './types';
 
 export const useOpenAiLiveAccount = () => {
   const auth = useAuth();
-  const accountRef = auth.isFounder && auth.uid ? db.documents.openAiLiveAccount(auth.uid) : null;
+  const accountRef = auth.uid ? db.documents.openAiLiveAccount(auth.uid) : null;
   const [account, loadingDoc, docError] = useDocumentData(accountRef);
   const liveAccount = account as OpenAiLiveAccount | undefined;
   const [balanceUsdMicros, setBalanceUsdMicros] = useState<number | null>(null);
@@ -25,7 +25,7 @@ export const useOpenAiLiveAccount = () => {
   }, [liveAccount?.balanceUsdMicros]);
 
   useEffect(() => {
-    if (!auth.isFounder || !auth.uid || loadingDoc || liveAccount?.welcomeGrantedAt) return;
+    if (!auth.uid || loadingDoc || liveAccount?.welcomeGrantedAt) return;
     if (welcomeStarted.current) return;
     welcomeStarted.current = true;
     void (async () => {
@@ -40,12 +40,12 @@ export const useOpenAiLiveAccount = () => {
         );
       }
     })();
-  }, [auth.isFounder, auth.uid, liveAccount?.welcomeGrantedAt, loadingDoc]);
+  }, [auth.uid, liveAccount?.welcomeGrantedAt, loadingDoc]);
 
   return {
     balanceUsdMicros,
     setBalanceUsdMicros,
-    loading: Boolean(auth.isFounder && auth.uid) && loadingDoc && balanceUsdMicros === null,
+    loading: Boolean(auth.uid) && loadingDoc && balanceUsdMicros === null,
     error: error || (docError ? 'Could not load the live conversation balance' : null),
   };
 };

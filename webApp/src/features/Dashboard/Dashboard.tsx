@@ -27,12 +27,12 @@ import { LinkToStatsAdmin } from './LinkToStats';
 import { NewPrivateMessageCard } from './NewPrivateMessageCard';
 import { FluencyCallDashboardCard } from '../FluencyCall/FluencyCallDashboardCard';
 import { OpenAiLiveDashboardCard } from '../OpenAiLive/OpenAiLiveDashboardCard';
-import { useAuth } from '../Auth/useAuth';
+import { useCanUseOpenAiLive } from '../OpenAiLive/useCanUseOpenAiLive';
 
 export function Dashboard({ lang }: { lang: SupportedLanguage }) {
   const appNavigation = useAppNavigation();
   const plan = usePlan();
-  const auth = useAuth();
+  const openAiLive = useCanUseOpenAiLive();
 
   return (
     <>
@@ -50,7 +50,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <DailyTasksDashboardCard />
             <FluencyCallDashboardCard />
             <JustTalkCard />
-            {auth.isFounder ? <OpenAiLiveDashboardCard /> : null}
+            {openAiLive.canUse ? <OpenAiLiveDashboardCard /> : null}
             <InteractiveLessonDashboardCard />
 
             <DailyQuestionDashboardCard />
