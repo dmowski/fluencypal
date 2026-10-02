@@ -89,7 +89,7 @@ export const OpenAiLiveCall = ({
         zIndex: overlay ? 1500 : undefined,
         flex: overlay ? undefined : 1,
         minHeight: overlay ? undefined : 0,
-        background: 'linear-gradient(180deg, rgba(20, 10, 40, 0.98) 0%, rgba(8, 8, 12, 0.98) 100%)',
+        background: 'linear-gradient(180deg, rgb(20, 10, 40) 0%, rgb(8, 8, 12) 100%)',
         color: '#fff',
         padding: '24px 16px 0',
         overflow: 'hidden',
