@@ -52,6 +52,32 @@ export const OpenAiLiveCall = ({
     list.scrollTop = list.scrollHeight;
   }, [lines]);
 
+  useEffect(() => {
+    if (!overlay) return;
+    const scrollY = window.scrollY;
+    const { body, documentElement: html } = document;
+    const previous = {
+      bodyOverflow: body.style.overflow,
+      htmlOverflow: html.style.overflow,
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyWidth: body.style.width,
+    };
+    body.style.overflow = 'hidden';
+    html.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.width = '100%';
+    return () => {
+      body.style.overflow = previous.bodyOverflow;
+      html.style.overflow = previous.htmlOverflow;
+      body.style.position = previous.bodyPosition;
+      body.style.top = previous.bodyTop;
+      body.style.width = previous.bodyWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, [overlay]);
+
   return (
     <Stack
       data-testid="open-ai-live-call"
@@ -66,6 +92,9 @@ export const OpenAiLiveCall = ({
         background: 'linear-gradient(180deg, rgba(20, 10, 40, 0.98) 0%, rgba(8, 8, 12, 0.98) 100%)',
         color: '#fff',
         padding: '24px 16px 0',
+        overflow: 'hidden',
+        overscrollBehavior: 'none',
+        height: overlay ? '100dvh' : undefined,
       }}
     >
       <Stack
@@ -108,6 +137,7 @@ export const OpenAiLiveCall = ({
             flex: 1,
             minHeight: 0,
             overflow: 'auto',
+            overscrollBehavior: 'contain',
             gap: '38px',
             padding: '38px 0 120px',
           }}

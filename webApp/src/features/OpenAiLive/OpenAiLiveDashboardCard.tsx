@@ -31,6 +31,7 @@ import { OpenAiLiveCall } from './OpenAiLiveCall';
 import { OpenAiLiveHoursModal } from './OpenAiLiveHoursModal';
 import { OpenAiLiveStartModal } from './OpenAiLiveStartModal';
 import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
+import { unlockTeacherAudio } from './teacherPlayback';
 
 const modeTitle = (mode: OpenAiLiveMode, i18n: { _: (text: string) => string }) =>
   mode === 'grammar' ? i18n._('Fix my grammar') : i18n._('Just talk');
@@ -142,6 +143,7 @@ export const OpenAiLiveDashboardCard = () => {
           onMode={setMode}
           onVoice={setVoice}
           onStart={() => {
+            unlockTeacherAudio();
             setStartOpen(false);
             void call.start(mode, voice);
           }}
@@ -207,7 +209,10 @@ export const OpenAiLiveDashboardCard = () => {
             variant="outlined"
             color="info"
             disabled={account.loading || call.phase !== 'idle'}
-            onClick={openStart}
+            onClick={() => {
+              unlockTeacherAudio();
+              openStart();
+            }}
             startIcon={<Phone size={16} />}
             sx={{
               alignSelf: 'flex-start',

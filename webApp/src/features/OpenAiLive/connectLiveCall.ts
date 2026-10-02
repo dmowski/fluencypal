@@ -1,4 +1,5 @@
 import { buildOpenAiLiveGreeting } from './instructions';
+import { playTeacherStream, stopTeacherAudio, unlockTeacherAudio } from './teacherPlayback';
 import { OpenAiLiveMode } from './types';
 
 export type LiveSocket = {
@@ -66,31 +67,34 @@ export const connectOpenAiLiveCall = async ({
   onNeedsUnlock: () => void;
 }): Promise<LiveSocket> => {
   const connection = new RTCPeerConnection();
-  const playback = audioContext();
-  const silenceContext = audioContext();
-  const silence = silentMicTrack(silenceContext);
+  let silenceContext: AudioContext | null = null;
+  let silence: MediaStreamTrack | null = null;
   let microphone: MediaStream | null = null;
   let micTrack: MediaStreamTrack | null = null;
-  let playbackSource: MediaStreamAudioSourceNode | null = null;
+  let remoteStream: MediaStream | null = null;
   let events: RTCDataChannel | null = null;
   let destroyed = false;
   let started = false;
 
-  // Resume during the start click, before any await, so the teacher plays without a second tap.
-  const resumeTeacher = () => playback.resume();
-  void resumeTeacher();
-  void silenceContext.resume();
+  unlockTeacherAudio();
+
+  const silenceTrack = (): MediaStreamTrack | null => {
+    if (silence) return silence;
+    silenceContext = audioContext();
+    silence = silentMicTrack(silenceContext);
+    void silenceContext.resume();
+    return silence;
+  };
 
   const destroy = () => {
     if (destroyed) return;
     destroyed = true;
-    playbackSource?.disconnect();
     microphone?.getTracks().forEach((track) => track.stop());
     silence?.stop();
+    stopTeacherAudio();
     if (events && events.readyState !== 'closed') events.close();
     connection.close();
-    void playback.close();
-    void silenceContext.close();
+    void silenceContext?.close();
   };
 
   const send = (event: Record<string, unknown>) => {
@@ -103,10 +107,10 @@ export const connectOpenAiLiveCall = async ({
     send,
     setMuted: (muted: boolean) => {
       const sender = connection.getSenders().find((item) => item.track?.kind === 'audio');
-      const nextTrack = muted ? silence : micTrack;
+      const nextTrack = muted ? silenceTrack() : micTrack;
       if (sender && nextTrack) void sender.replaceTrack(nextTrack);
       if (micTrack) micTrack.enabled = true;
-      void resumeTeacher();
+      if (remoteStream) void playTeacherStream(remoteStream).catch(() => undefined);
       send({
         type: muted ? 'session.input_audio.mute' : 'session.input_audio.unmute',
         event_id: crypto.randomUUID(),
@@ -117,22 +121,18 @@ export const connectOpenAiLiveCall = async ({
     },
     destroy,
     playAudio: async () => {
-      await resumeTeacher();
-      if (playback.state !== 'running') throw new Error('Playback is blocked');
+      if (!remoteStream) {
+        unlockTeacherAudio();
+        return;
+      }
+      await playTeacherStream(remoteStream);
     },
   };
 
   try {
     connection.addEventListener('track', (event) => {
-      playbackSource?.disconnect();
-      playbackSource = playback.createMediaStreamSource(new MediaStream([event.track]));
-      playbackSource.connect(playback.destination);
-      void resumeTeacher().then(
-        () => {
-          if (playback.state !== 'running') onNeedsUnlock();
-        },
-        () => onNeedsUnlock(),
-      );
+      remoteStream = new MediaStream([event.track]);
+      void playTeacherStream(remoteStream).catch(() => onNeedsUnlock());
     });
 
     microphone = await navigator.mediaDevices.getUserMedia({ audio: true });

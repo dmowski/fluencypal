@@ -9,6 +9,7 @@ import {
   requestOpenAiLiveUsage,
 } from './api';
 import { connectOpenAiLiveCall, LiveSocket } from './connectLiveCall';
+import { unlockTeacherAudio } from './teacherPlayback';
 import { appendLiveTranscript, LiveTranscriptLine } from './transcripts';
 import { OpenAiLiveMode } from './types';
 
@@ -109,6 +110,7 @@ export const useOpenAiLiveCall = ({
 
   const start = async (mode: OpenAiLiveMode, voice: string) => {
     if (phase !== 'idle') return;
+    unlockTeacherAudio();
     endingRef.current = false;
     setError(null);
     setLines([]);

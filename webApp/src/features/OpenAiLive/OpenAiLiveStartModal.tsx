@@ -78,24 +78,10 @@ export const OpenAiLiveStartModal = ({
   return (
     <CustomModal isOpen onClose={onClose} data-testid="open-ai-live-start-modal">
       <Stack sx={{ width: '100%', maxWidth: '700px', gap: '40px' }}>
-        <Stepper activeStep={step} sx={{ width: '100%' }}>
-          {steps.map((label, index) => (
-            <Step key={label} completed={step > index}>
-              <StepButton
-                onClick={() => {
-                  if (index < step) setStep(index);
-                }}
-              >
-                {label}
-              </StepButton>
-            </Step>
-          ))}
-        </Stepper>
-
         {step === 0 ? (
           <Stack sx={{ gap: '24px', width: '100%' }}>
             <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h5" component="h2">
+              <Typography variant="h3" component="h2" sx={{ fontWeight: 700 }}>
                 {i18n._('Choose a teacher')}
               </Typography>
               <Typography sx={{ opacity: 0.7 }}>
@@ -158,21 +144,41 @@ export const OpenAiLiveStartModal = ({
               })}
             </Stack>
             {hearError ? <Typography sx={{ color: '#ffb4b4' }}>{hearError}</Typography> : null}
-            <Button
-              color="info"
-              variant="contained"
-              size="large"
-              endIcon={<ArrowRight />}
-              onClick={() => setStep(1)}
-              sx={{ alignSelf: 'flex-start', padding: '12px 40px', fontWeight: 600 }}
+            <Stack sx={{ height: '88px' }} />
+            <Stack
+              sx={{
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 5,
+                alignItems: 'center',
+                pointerEvents: 'none',
+                padding: '28px 40px 24px',
+                background: 'linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, #181818 36%)',
+                '@media (max-width: 600px)': {
+                  padding: '28px 10px 16px',
+                },
+              }}
             >
-              {i18n._('Continue')}
-            </Button>
+              <Stack sx={{ width: '100%', maxWidth: '700px', pointerEvents: 'auto' }}>
+                <Button
+                  color="info"
+                  variant="contained"
+                  size="large"
+                  endIcon={<ArrowRight />}
+                  onClick={() => setStep(1)}
+                  sx={{ alignSelf: 'flex-start', padding: '12px 40px', fontWeight: 600 }}
+                >
+                  {i18n._('Continue')}
+                </Button>
+              </Stack>
+            </Stack>
           </Stack>
         ) : (
           <Stack sx={{ gap: '24px', width: '100%' }}>
             <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h5" component="h2">
+              <Typography variant="h3" component="h2" sx={{ fontWeight: 700 }}>
                 {i18n._('Choose a lesson')}
               </Typography>
               <Typography sx={{ opacity: 0.7 }}>
