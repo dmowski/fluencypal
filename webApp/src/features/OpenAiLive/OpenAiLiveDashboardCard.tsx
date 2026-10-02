@@ -29,6 +29,7 @@ import { useOpenAiLiveAccount } from './useOpenAiLiveAccount';
 import { useOpenAiLiveCall } from './useOpenAiLiveCall';
 import { OpenAiLiveCall } from './OpenAiLiveCall';
 import { OpenAiLiveHoursModal } from './OpenAiLiveHoursModal';
+import { OpenAiLiveBalanceEndedModal } from './OpenAiLiveBalanceEndedModal';
 import { OpenAiLiveStartModal } from './OpenAiLiveStartModal';
 import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
 import { unlockTeacherAudio } from './teacherPlayback';
@@ -44,13 +45,14 @@ export const OpenAiLiveDashboardCard = () => {
   const searchParams = useSearchParams();
   const paymentState = searchParams.get('openAiLive');
   const [hoursOpen, setHoursOpen] = useState(paymentState === 'buy');
+  const [balanceEndedOpen, setBalanceEndedOpen] = useState(false);
   const [startOpen, setStartOpen] = useState(false);
   const account = useOpenAiLiveAccount();
   const call = useOpenAiLiveCall({
     onBalance: account.setBalanceUsdMicros,
     onPaywall: () => {
       setStartOpen(false);
-      setHoursOpen(true);
+      setBalanceEndedOpen(true);
     },
   });
   const [mode, setMode] = useState<OpenAiLiveMode>('talk');
@@ -122,6 +124,15 @@ export const OpenAiLiveDashboardCard = () => {
             void call.end();
           }}
           onUnlockAudio={call.unlockAudio}
+        />
+      ) : null}
+      {balanceEndedOpen ? (
+        <OpenAiLiveBalanceEndedModal
+          onBuyHours={() => {
+            setBalanceEndedOpen(false);
+            setHoursOpen(true);
+          }}
+          onClose={() => setBalanceEndedOpen(false)}
         />
       ) : null}
       {hoursOpen ? (

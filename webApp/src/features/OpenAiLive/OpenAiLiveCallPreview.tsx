@@ -4,8 +4,14 @@ import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useCurrency } from '@/features/User/useCurrency';
+import { useSettings } from '@/features/Settings/useSettings';
+import { OpenAiLiveApiError, requestOpenAiLiveCheckout } from './api';
 import { OpenAiLiveCall } from './OpenAiLiveCall';
+import { OpenAiLiveBalanceEndedModal } from './OpenAiLiveBalanceEndedModal';
+import { OpenAiLiveHoursModal } from './OpenAiLiveHoursModal';
 import { LiveTranscriptLine } from './transcripts';
+import { OpenAiLiveHourPack } from './pricing';
 
 const sampleLines: LiveTranscriptLine[] = [
   {
@@ -31,11 +37,38 @@ const sampleLines: LiveTranscriptLine[] = [
 export const OpenAiLiveCallPreview = () => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const currency = useCurrency();
+  const settings = useSettings();
   const [scene, setScene] = useState<'connecting' | 'live'>('live');
   const [ended, setEnded] = useState(false);
   const [muted, setMuted] = useState(false);
   const [needsUnlock, setNeedsUnlock] = useState(false);
   const [lines, setLines] = useState<LiveTranscriptLine[]>(sampleLines);
+  const [balanceEnded, setBalanceEnded] = useState(false);
+  const [hoursOpen, setHoursOpen] = useState(false);
+  const [buyingHours, setBuyingHours] = useState<number | null>(null);
+  const [buyError, setBuyError] = useState<string | null>(null);
+
+  const buy = async (hours: OpenAiLiveHourPack) => {
+    setBuyingHours(hours);
+    setBuyError(null);
+    try {
+      const result = await requestOpenAiLiveCheckout(await auth.getToken(), {
+        hours,
+        currency: currency.currency,
+        languageCode: settings.languageCode || 'en',
+      });
+      if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
+      window.location.href = result.sessionUrl;
+    } catch (error) {
+      const message =
+        error instanceof OpenAiLiveApiError || error instanceof Error
+          ? error.message
+          : 'Could not start checkout';
+      setBuyError(message);
+      setBuyingHours(null);
+    }
+  };
 
   if (auth.loading) {
     return (
@@ -66,6 +99,7 @@ export const OpenAiLiveCallPreview = () => {
           variant="outlined"
           onClick={() => {
             setEnded(false);
+            setBalanceEnded(false);
             setScene('connecting');
             setLines([]);
           }}
@@ -77,6 +111,7 @@ export const OpenAiLiveCallPreview = () => {
           variant="outlined"
           onClick={() => {
             setEnded(false);
+            setBalanceEnded(false);
             setScene('live');
             setLines(sampleLines);
           }}
@@ -110,6 +145,17 @@ export const OpenAiLiveCallPreview = () => {
         >
           {i18n._('Hear button')}
         </Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setEnded(false);
+            setScene('live');
+            setBalanceEnded(true);
+          }}
+          sx={{ textTransform: 'none', color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}
+        >
+          {i18n._('Balance ran out')}
+        </Button>
       </Stack>
 
       {ended ? (
@@ -140,7 +186,8 @@ export const OpenAiLiveCallPreview = () => {
           muted={muted}
           lines={scene === 'connecting' ? [] : lines}
           elapsedLabel={scene === 'connecting' ? '0:00' : '1:24'}
-          balanceUsd="$0.86"
+          balanceUsd={balanceEnded ? '$0.00' : '$0.86'}
+          talkTime={balanceEnded ? { hours: 0, minutes: 0 } : { hours: 0, minutes: 8 }}
           error={null}
           phase={scene}
           needsUnlock={needsUnlock}
@@ -149,6 +196,27 @@ export const OpenAiLiveCallPreview = () => {
           onUnlockAudio={() => setNeedsUnlock(false)}
         />
       )}
+      {balanceEnded ? (
+        <OpenAiLiveBalanceEndedModal
+          onBuyHours={() => {
+            setBalanceEnded(false);
+            setHoursOpen(true);
+          }}
+          onClose={() => setBalanceEnded(false)}
+        />
+      ) : null}
+      {hoursOpen ? (
+        <OpenAiLiveHoursModal
+          currency={currency.currency}
+          rate={currency.rate}
+          buyingHours={buyingHours}
+          error={buyError}
+          onBuy={(hours) => {
+            void buy(hours);
+          }}
+          onClose={() => setHoursOpen(false)}
+        />
+      ) : null}
     </Stack>
   );
 };
