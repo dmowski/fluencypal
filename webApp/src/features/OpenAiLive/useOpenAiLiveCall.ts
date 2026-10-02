@@ -107,7 +107,7 @@ export const useOpenAiLiveCall = ({
     };
   }, [phase]);
 
-  const start = async (mode: OpenAiLiveMode) => {
+  const start = async (mode: OpenAiLiveMode, voice: string) => {
     if (phase !== 'idle') return;
     endingRef.current = false;
     setError(null);
@@ -122,6 +122,7 @@ export const useOpenAiLiveCall = ({
           const created = await requestOpenAiLiveSession(await getTokenRef.current(), {
             sdp,
             mode,
+            voice,
           });
           if (endingRef.current) {
             await requestOpenAiLiveClose(await getTokenRef.current(), created.sessionId);

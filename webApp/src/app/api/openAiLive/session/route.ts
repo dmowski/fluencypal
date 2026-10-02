@@ -1,4 +1,5 @@
 import { isOpenAiLiveMode } from '@/features/OpenAiLive/types';
+import { isOpenAiLiveVoice } from '@/features/OpenAiLive/voices';
 import { openAiLiveMinimumStartUsdMicros } from '@/features/OpenAiLive/pricing';
 import {
   beginOpenAiLiveBilling,
@@ -17,12 +18,16 @@ import {
 export async function POST(request: Request) {
   try {
     const user = await requireOpenAiLiveUser(request);
-    const body = (await request.json()) as { sdp?: unknown; mode?: unknown };
+    const body = (await request.json()) as { sdp?: unknown; mode?: unknown; voice?: unknown };
     if (typeof body.sdp !== 'string' || body.sdp.trim().length < 10 || body.sdp.length > 200_000) {
       throw new Error('An SDP offer is required');
     }
     if (!isOpenAiLiveMode(body.mode)) {
-      throw new Error('Choose a conversation mode');
+      throw new Error('Choose how you want to talk');
+    }
+    const voice = typeof body.voice === 'string' ? body.voice : '';
+    if (!isOpenAiLiveVoice(voice)) {
+      throw new Error('Choose a voice');
     }
 
     await ensureOpenAiLiveWelcomeBalance(user.uid);
@@ -32,7 +37,7 @@ export async function POST(request: Request) {
       throw new OpenAiLiveNoBalanceError();
     }
 
-    const prompt = await loadOpenAiLivePrompt(user.uid, body.mode);
+    const prompt = await loadOpenAiLivePrompt(user.uid, body.mode, voice);
     const created = await createOpenAiLiveSession({
       userId: user.uid,
       sdp: body.sdp,

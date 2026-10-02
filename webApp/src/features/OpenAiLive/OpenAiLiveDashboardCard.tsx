@@ -1,28 +1,38 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useSearchParams } from 'next/navigation';
+import { CreditCard, Phone } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useSettings } from '@/features/Settings/useSettings';
 import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { OpenAiLiveApiError, requestOpenAiLiveCheckout } from './api';
-import { formatLocalFromUsd, formatUsdFromMicros, formatElapsedMs } from './formatBalance';
+import {
+  formatBalanceLabel,
+  formatElapsedMs,
+  formatLocalFromUsd,
+  formatUsdFromMicros,
+} from './formatBalance';
 import {
   OpenAiLiveHourPack,
-  creditUsdMicrosForHours,
   microsToUsd,
   openAiLiveMinimumStartUsdMicros,
   openAiLivePricePerMinuteUsdMicros,
 } from './pricing';
-import { resolveOpenAiLiveVoice } from './voices';
+import { OPEN_AI_LIVE_DEFAULT_VOICE, OpenAiLiveVoiceId } from './voices';
 import { OpenAiLiveMode } from './types';
 import { useOpenAiLiveAccount } from './useOpenAiLiveAccount';
 import { useOpenAiLiveCall } from './useOpenAiLiveCall';
 import { OpenAiLiveCall } from './OpenAiLiveCall';
-import { OpenAiLivePaywall } from './OpenAiLivePaywall';
+import { OpenAiLiveHoursModal } from './OpenAiLiveHoursModal';
+import { OpenAiLiveStartModal } from './OpenAiLiveStartModal';
+import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
+
+const modeTitle = (mode: OpenAiLiveMode, i18n: { _: (text: string) => string }) =>
+  mode === 'grammar' ? i18n._('Fix my grammar') : i18n._('Just talk');
 
 export const OpenAiLiveDashboardCard = () => {
   const { i18n } = useLingui();
@@ -31,39 +41,41 @@ export const OpenAiLiveDashboardCard = () => {
   const currency = useCurrency();
   const searchParams = useSearchParams();
   const paymentState = searchParams.get('openAiLive');
-  const [paywallOpen, setPaywallOpen] = useState(paymentState === 'buy' || paymentState === 'paid');
+  const [hoursOpen, setHoursOpen] = useState(paymentState === 'buy');
+  const [startOpen, setStartOpen] = useState(false);
   const account = useOpenAiLiveAccount();
   const call = useOpenAiLiveCall({
     onBalance: account.setBalanceUsdMicros,
-    onPaywall: () => setPaywallOpen(true),
+    onPaywall: () => {
+      setStartOpen(false);
+      setHoursOpen(true);
+    },
   });
   const [mode, setMode] = useState<OpenAiLiveMode>('talk');
+  const [voice, setVoice] = useState<OpenAiLiveVoiceId>(OPEN_AI_LIVE_DEFAULT_VOICE);
   const [buyingHours, setBuyingHours] = useState<number | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
 
   if (!auth.isFounder) return null;
 
-  const balanceLabel =
+  const balanceUsd =
     account.balanceUsdMicros === null ? '…' : formatUsdFromMicros(account.balanceUsdMicros);
-  const localBalance =
+  const balanceLocal =
     account.balanceUsdMicros === null
       ? ''
       : formatLocalFromUsd(microsToUsd(account.balanceUsdMicros), currency.currency, currency.rate);
-  const hourUsd = formatUsdFromMicros(openAiLivePricePerMinuteUsdMicros * 60);
-  const hourLocal = formatLocalFromUsd(
-    microsToUsd(openAiLivePricePerMinuteUsdMicros * 60),
+  const hourPrice = formatBalanceLabel(
+    openAiLivePricePerMinuteUsdMicros * 60,
     currency.currency,
     currency.rate,
   );
-  const savedVoice = settings.voice;
-  const showVoiceNote = resolveOpenAiLiveVoice(savedVoice) !== savedVoice;
 
-  const start = () => {
+  const openStart = () => {
     if ((account.balanceUsdMicros ?? 0) < openAiLiveMinimumStartUsdMicros) {
-      setPaywallOpen(true);
+      setHoursOpen(true);
       return;
     }
-    void call.start(mode);
+    setStartOpen(true);
   };
 
   const buy = async (hours: OpenAiLiveHourPack) => {
@@ -91,10 +103,12 @@ export const OpenAiLiveDashboardCard = () => {
     <>
       {call.phase !== 'idle' ? (
         <OpenAiLiveCall
+          title={modeTitle(mode, i18n)}
           muted={call.muted}
           lines={call.lines}
           elapsedLabel={formatElapsedMs(call.elapsedMs)}
-          balanceLabel={localBalance ? `${balanceLabel} · ${localBalance}` : balanceLabel}
+          balanceUsd={balanceUsd}
+          balanceLocal={balanceLocal}
           error={call.error}
           phase={call.phase}
           needsUnlock={call.needsUnlock}
@@ -105,10 +119,37 @@ export const OpenAiLiveDashboardCard = () => {
           onUnlockAudio={call.unlockAudio}
         />
       ) : null}
-      <Stack data-testid="open-ai-live-card" sx={{ gap: '20px' }}>
+      {hoursOpen ? (
+        <OpenAiLiveHoursModal
+          currency={currency.currency}
+          rate={currency.rate}
+          buyingHours={buyingHours}
+          error={actionError}
+          onBuy={(hours) => {
+            void buy(hours);
+          }}
+          onClose={() => setHoursOpen(false)}
+        />
+      ) : null}
+      {startOpen ? (
+        <OpenAiLiveStartModal
+          mode={mode}
+          voice={voice}
+          onMode={setMode}
+          onVoice={setVoice}
+          onStart={() => {
+            setStartOpen(false);
+            void call.start(mode, voice);
+          }}
+          onClose={() => setStartOpen(false)}
+        />
+      ) : null}
+      <Stack data-testid="open-ai-live-card" sx={{ gap: '16px' }}>
         <SectionHeader
-          title={i18n._('Live conversation')}
-          subTitle={i18n._('Experimental. A separate balance, billed while the call is active.')}
+          title={i18n._('Talk with AI. Experimental feature.')}
+          subTitle={i18n._(
+            'A voice call to practice speaking. Better quality, but more expensive.',
+          )}
         />
         <Stack
           sx={{
@@ -116,43 +157,37 @@ export const OpenAiLiveDashboardCard = () => {
             padding: '20px',
             borderRadius: '16px',
             color: '#fff',
-            backgroundColor: 'rgba(73, 13, 192, 0.45)',
-            border: '1px solid rgba(255,255,255,0.16)',
+            backgroundColor: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.12)',
           }}
         >
-          <Typography
-            sx={{
-              alignSelf: 'flex-start',
-              padding: '2px 8px',
-              borderRadius: '999px',
-              backgroundColor: 'rgba(255,255,255,0.16)',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.04em',
-            }}
-          >
-            {i18n._('EXPERIMENTAL')}
-          </Typography>
-          <Stack sx={{ gap: '4px' }}>
-            <Typography
-              data-testid="open-ai-live-balance"
-              sx={{ fontSize: '28px', fontWeight: 700 }}
+          <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+            <Stack sx={{ gap: '2px' }}>
+              <Typography sx={{ opacity: 0.7 }}>{i18n._('Balance')}</Typography>
+              <OpenAiLiveBalanceText
+                testId="open-ai-live-balance"
+                usd={balanceUsd}
+                local={balanceLocal}
+              />
+            </Stack>
+            <IconButton
+              data-testid="open-ai-live-add"
+              aria-label={i18n._('Buy more hours')}
+              onClick={() => setHoursOpen(true)}
+              sx={{
+                width: 44,
+                height: 44,
+                color: '#1b1033',
+                backgroundColor: '#fff',
+                '&:hover': { backgroundColor: '#f2f2f2' },
+              }}
             >
-              {localBalance ? `${balanceLabel} · ${localBalance}` : balanceLabel}
-            </Typography>
-            <Typography data-testid="open-ai-live-price" sx={{ opacity: 0.85 }}>
-              {hourLocal
-                ? i18n._('{usd} per hour · {local}', { usd: hourUsd, local: hourLocal })
-                : i18n._('{usd} per hour', { usd: hourUsd })}
-            </Typography>
+              <CreditCard size={22} />
+            </IconButton>
           </Stack>
+
           {paymentState === 'paid' ? (
-            <Typography>
-              {i18n._('Payment received. The balance updates after Stripe confirms it.')}
-            </Typography>
-          ) : null}
-          {showVoiceNote ? (
-            <Typography>{i18n._('This model uses the Marin voice.')}</Typography>
+            <Typography>{i18n._('Payment received. Your balance updates in a moment.')}</Typography>
           ) : null}
           {account.error ? (
             <Typography sx={{ color: '#ffb4b4' }}>{account.error}</Typography>
@@ -162,72 +197,20 @@ export const OpenAiLiveDashboardCard = () => {
             <Typography sx={{ color: '#ffb4b4' }}>{call.error}</Typography>
           ) : null}
 
-          <Stack direction="row" sx={{ gap: '8px' }}>
-            <Button
-              data-testid="open-ai-live-mode-talk"
-              aria-pressed={mode === 'talk'}
-              variant={mode === 'talk' ? 'contained' : 'outlined'}
-              onClick={() => setMode('talk')}
-              sx={{
-                textTransform: 'none',
-                color: mode === 'talk' ? '#1b1033' : '#fff',
-                borderColor: 'rgba(255,255,255,0.4)',
-                backgroundColor: mode === 'talk' ? '#fff' : 'transparent',
-              }}
-            >
-              {i18n._('Just talk')}
-            </Button>
-            <Button
-              data-testid="open-ai-live-mode-grammar"
-              aria-pressed={mode === 'grammar'}
-              variant={mode === 'grammar' ? 'contained' : 'outlined'}
-              onClick={() => setMode('grammar')}
-              sx={{
-                textTransform: 'none',
-                color: mode === 'grammar' ? '#1b1033' : '#fff',
-                borderColor: 'rgba(255,255,255,0.4)',
-                backgroundColor: mode === 'grammar' ? '#fff' : 'transparent',
-              }}
-            >
-              {i18n._('Grammar from mistakes')}
-            </Button>
-          </Stack>
-
-          <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
-            <Button
-              data-testid="open-ai-live-start"
-              variant="contained"
-              disabled={account.loading || call.phase !== 'idle'}
-              onClick={start}
-              sx={{
-                textTransform: 'none',
-                fontWeight: 700,
-                backgroundColor: '#fff',
-                color: '#1b1033',
-              }}
-            >
-              {call.phase === 'connecting' ? i18n._('Connecting…') : i18n._('Start conversation')}
-            </Button>
-            <Button
-              data-testid="open-ai-live-buy"
-              variant="outlined"
-              onClick={() => setPaywallOpen((open) => !open)}
-              sx={{ textTransform: 'none', color: '#fff', borderColor: 'rgba(255,255,255,0.45)' }}
-            >
-              {i18n._('Buy more')}
-            </Button>
-          </Stack>
-
-          {paywallOpen ? (
-            <OpenAiLivePaywall
-              currency={currency.currency}
-              rate={currency.rate}
-              buyingHours={buyingHours}
-              onBuy={(hours) => {
-                void buy(hours);
-              }}
-            />
-          ) : null}
+          <Button
+            data-testid="open-ai-live-start"
+            variant="outlined"
+            color="info"
+            disabled={account.loading || call.phase !== 'idle'}
+            onClick={openStart}
+            startIcon={<Phone size={16} />}
+            sx={{
+              alignSelf: 'flex-start',
+              padding: '12px 30px',
+            }}
+          >
+            {i18n._('Start conversation')}
+          </Button>
         </Stack>
       </Stack>
     </>

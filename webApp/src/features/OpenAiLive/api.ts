@@ -36,7 +36,7 @@ export const requestOpenAiLiveWelcome = (token: string) =>
 
 export const requestOpenAiLiveSession = (
   token: string,
-  body: { sdp: string; mode: 'talk' | 'grammar' },
+  body: { sdp: string; mode: 'talk' | 'grammar'; voice: string },
 ) => postOpenAiLive<OpenAiLiveSessionResponse>('/api/openAiLive/session', token, body);
 
 export const requestOpenAiLiveUsage = (token: string, sessionId: string) =>

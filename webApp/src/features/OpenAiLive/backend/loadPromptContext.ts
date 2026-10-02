@@ -5,7 +5,7 @@ import {
 } from '@/features/Lang/lang';
 import { OpenAiLiveMode } from '../types';
 import { buildOpenAiLiveInstructions, OpenAiLivePromptContext } from '../instructions';
-import { resolveOpenAiLiveVoice } from '../voices';
+import { isOpenAiLiveVoice, openAiLiveVoiceName, resolveOpenAiLiveVoice } from '../voices';
 import { getDB } from '@/app/api/config/firebase';
 
 type RecordNote = { value?: string; createdAtDayIso?: string };
@@ -35,6 +35,7 @@ const paceForSpeed = (speed: unknown): string => {
 export const loadOpenAiLivePrompt = async (
   userId: string,
   mode: OpenAiLiveMode,
+  voice: string,
 ): Promise<{ instructions: string; voice: string }> => {
   const db = getDB();
   const [userSnap, infoSnap] = await Promise.all([
@@ -48,12 +49,15 @@ export const loadOpenAiLivePrompt = async (
   const nativeCode = isLanguage(rawNative) ? rawNative : null;
   const info = infoSnap.data() || {};
   const grammarMap = info.grammarRecordsMap as Record<string, unknown> | undefined;
+  const selectedVoice = isOpenAiLiveVoice(voice)
+    ? voice
+    : resolveOpenAiLiveVoice(userSnap.get('teacherVoice'));
 
   const context: OpenAiLivePromptContext = {
     mode,
     languageName: fullEnglishLanguageName[languageCode],
     nativeLanguageName: nativeCode ? fullEnglishLanguageName[nativeCode] : null,
-    voiceName: resolveOpenAiLiveVoice(userSnap.get('teacherVoice')),
+    voiceName: openAiLiveVoiceName(selectedVoice),
     pace: paceForSpeed(userSnap.get('teacherVoiceSpeed')),
     userInfo: notesFromRecords(info.advancedRecords),
     grammarNotes: notesFromRecords(grammarMap?.[languageCode]),
@@ -61,6 +65,6 @@ export const loadOpenAiLivePrompt = async (
 
   return {
     instructions: buildOpenAiLiveInstructions(context),
-    voice: resolveOpenAiLiveVoice(userSnap.get('teacherVoice')),
+    voice: selectedVoice,
   };
 };

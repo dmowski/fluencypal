@@ -3,14 +3,19 @@
 import { useEffect, useRef } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { Mic, MicOff, PhoneOff } from 'lucide-react';
 import { formatElapsedMs } from './formatBalance';
 import { LiveTranscriptLine } from './transcripts';
+import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
 
 export const OpenAiLiveCall = ({
+  title,
+  variant = 'overlay',
   muted,
   lines,
   elapsedLabel,
-  balanceLabel,
+  balanceUsd,
+  balanceLocal,
   error,
   phase,
   needsUnlock,
@@ -18,10 +23,13 @@ export const OpenAiLiveCall = ({
   onClose,
   onUnlockAudio,
 }: {
+  title: string;
+  variant?: 'overlay' | 'fill';
   muted: boolean;
   lines: LiveTranscriptLine[];
   elapsedLabel: string;
-  balanceLabel: string;
+  balanceUsd: string;
+  balanceLocal?: string;
   error: string | null;
   phase: 'connecting' | 'live';
   needsUnlock: boolean;
@@ -31,6 +39,7 @@ export const OpenAiLiveCall = ({
 }) => {
   const { i18n } = useLingui();
   const listRef = useRef<HTMLDivElement | null>(null);
+  const overlay = variant === 'overlay';
 
   useEffect(() => {
     const list = listRef.current;
@@ -41,12 +50,14 @@ export const OpenAiLiveCall = ({
   return (
     <Stack
       data-testid="open-ai-live-call"
-      role="dialog"
-      aria-modal="true"
+      role={overlay ? 'dialog' : undefined}
+      aria-modal={overlay ? true : undefined}
       sx={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 1500,
+        position: overlay ? 'fixed' : 'relative',
+        inset: overlay ? 0 : undefined,
+        zIndex: overlay ? 1500 : undefined,
+        flex: overlay ? undefined : 1,
+        minHeight: overlay ? undefined : 0,
         background: 'linear-gradient(180deg, rgba(20, 10, 40, 0.98) 0%, rgba(8, 8, 12, 0.98) 100%)',
         color: '#fff',
         padding: '24px 16px 32px',
@@ -62,16 +73,25 @@ export const OpenAiLiveCall = ({
           gap: '16px',
         }}
       >
-        <Stack direction="row" sx={{ justifyContent: 'space-between', gap: '12px' }}>
+        <Stack direction="row" sx={{ justifyContent: 'space-between', gap: '16px' }}>
           <Stack>
-            <Typography sx={{ fontWeight: 700 }}>{i18n._('Live conversation')}</Typography>
-            <Typography data-testid="open-ai-live-elapsed" sx={{ opacity: 0.75 }}>
+            <Typography sx={{ fontWeight: 700, fontSize: '20px', lineHeight: 1.15 }}>
+              {title}
+            </Typography>
+            <Typography data-testid="open-ai-live-elapsed" sx={{ opacity: 0.75, fontSize: '16px' }}>
               {elapsedLabel || formatElapsedMs(0)}
             </Typography>
           </Stack>
-          <Typography data-testid="open-ai-live-call-balance" sx={{ fontWeight: 700 }}>
-            {balanceLabel}
-          </Typography>
+          <Stack sx={{ alignItems: 'flex-end' }}>
+            <Typography sx={{ fontSize: '20px', opacity: 0.65 }}>{i18n._('Balance')}</Typography>
+            <OpenAiLiveBalanceText
+              testId="open-ai-live-call-balance"
+              usd={balanceUsd}
+              local={balanceLocal}
+              usdFontSize="20px"
+              localFontSize="16px"
+            />
+          </Stack>
         </Stack>
 
         <Stack
@@ -81,35 +101,38 @@ export const OpenAiLiveCall = ({
             flex: 1,
             minHeight: 0,
             overflow: 'auto',
-            gap: '12px',
+            gap: '38px',
             padding: '8px 0',
           }}
         >
           {lines.length === 0 ? (
-            <Typography sx={{ opacity: 0.7 }}>
+            <Typography sx={{ opacity: 0.7, fontSize: '20px', lineHeight: 1.25 }}>
               {phase === 'connecting'
                 ? i18n._('Connecting…')
-                : i18n._('Transcripts show up here as you talk.')}
+                : i18n._('Say something. The words will show up here.')}
             </Typography>
           ) : (
             lines.map((line) => (
-              <Stack key={line.id} sx={{ gap: '2px' }}>
+              <Stack key={line.id} sx={{ gap: '4px' }}>
                 <Typography sx={{ fontSize: '12px', opacity: 0.6, textTransform: 'uppercase' }}>
                   {line.role === 'assistant' ? i18n._('Teacher') : i18n._('You')}
                 </Typography>
-                <Typography>{line.text}</Typography>
+                <Typography sx={{ fontSize: '24px', lineHeight: 1.25 }}>{line.text}</Typography>
               </Stack>
             ))
           )}
         </Stack>
 
-        {error ? <Typography sx={{ color: '#ffb4b4' }}>{error}</Typography> : null}
+        {error ? (
+          <Typography sx={{ color: '#ffb4b4', fontSize: '36px' }}>{error}</Typography>
+        ) : null}
 
-        <Stack direction="row" sx={{ gap: '10px', flexWrap: 'wrap' }}>
+        <Stack direction="row" sx={{ gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
           <Button
             data-testid="open-ai-live-mute"
             aria-pressed={!muted}
             variant="contained"
+            startIcon={muted ? <MicOff size={18} /> : <Mic size={18} />}
             onClick={onToggleMute}
             sx={{
               textTransform: 'none',
@@ -125,19 +148,29 @@ export const OpenAiLiveCall = ({
               data-testid="open-ai-live-hear"
               variant="outlined"
               onClick={onUnlockAudio}
-              sx={{ textTransform: 'none', color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}
+              sx={{
+                textTransform: 'none',
+                color: '#fff',
+                borderColor: 'rgba(255,255,255,0.4)',
+                fontSize: '36px',
+              }}
             >
-              {i18n._('Tap to hear')}
+              {i18n._('Tap to hear the teacher')}
             </Button>
           ) : null}
           <Button
             data-testid="open-ai-live-close"
             variant="contained"
             color="error"
+            startIcon={<PhoneOff size={18} />}
             onClick={onClose}
-            sx={{ textTransform: 'none', fontWeight: 700, marginLeft: 'auto' }}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 700,
+              marginLeft: 'auto',
+            }}
           >
-            {i18n._('End')}
+            {i18n._('End call')}
           </Button>
         </Stack>
       </Stack>

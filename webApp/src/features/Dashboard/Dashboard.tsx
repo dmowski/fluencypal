@@ -49,9 +49,8 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <NewPrivateMessageCard />
             <DailyTasksDashboardCard />
             <FluencyCallDashboardCard />
-
-            {auth.isFounder ? <OpenAiLiveDashboardCard /> : null}
             <JustTalkCard />
+            {auth.isFounder ? <OpenAiLiveDashboardCard /> : null}
             <InteractiveLessonDashboardCard />
 
             <DailyQuestionDashboardCard />

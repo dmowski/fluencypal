@@ -19,6 +19,12 @@ export const formatLocalFromUsd = (usd: number, currency: string, rate: number):
   }).format(usd * rate);
 };
 
+export const formatBalanceLabel = (micros: number, currency: string, rate: number): string => {
+  const usd = formatUsdFromMicros(micros);
+  const local = formatLocalFromUsd(microsToUsd(micros), currency, rate);
+  return local ? `${usd} · ${local}` : usd;
+};
+
 export const formatElapsedMs = (elapsedMs: number): string => {
   const totalSeconds = Math.max(0, Math.floor(elapsedMs / 1000));
   const minutes = Math.floor(totalSeconds / 60);
