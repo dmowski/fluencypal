@@ -15,6 +15,7 @@ import {
   formatElapsedMs,
   formatLocalFromUsd,
   formatUsdFromMicros,
+  talkTimeFromBalance,
 } from './formatBalance';
 import {
   OpenAiLiveHourPack,
@@ -64,6 +65,8 @@ export const OpenAiLiveDashboardCard = () => {
     account.balanceUsdMicros === null
       ? ''
       : formatLocalFromUsd(microsToUsd(account.balanceUsdMicros), currency.currency, currency.rate);
+  const talkTime =
+    account.balanceUsdMicros === null ? null : talkTimeFromBalance(account.balanceUsdMicros);
   const hourPrice = formatBalanceLabel(
     openAiLivePricePerMinuteUsdMicros * 60,
     currency.currency,
@@ -109,6 +112,7 @@ export const OpenAiLiveDashboardCard = () => {
           elapsedLabel={formatElapsedMs(call.elapsedMs)}
           balanceUsd={balanceUsd}
           balanceLocal={balanceLocal}
+          talkTime={talkTime}
           error={call.error}
           phase={call.phase}
           needsUnlock={call.needsUnlock}
@@ -168,6 +172,7 @@ export const OpenAiLiveDashboardCard = () => {
                 testId="open-ai-live-balance"
                 usd={balanceUsd}
                 local={balanceLocal}
+                talkTime={talkTime}
               />
             </Stack>
             <IconButton

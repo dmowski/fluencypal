@@ -10,6 +10,25 @@ export type LiveSocket = {
   playAudio: () => Promise<void>;
 };
 
+const audioContext = (): AudioContext => {
+  const Ctor =
+    window.AudioContext ??
+    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!Ctor) throw new Error('This browser cannot play the teacher');
+  return new Ctor();
+};
+
+const silentMicTrack = (context: AudioContext): MediaStreamTrack | null => {
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+  const destination = context.createMediaStreamDestination();
+  gain.gain.value = 0;
+  oscillator.connect(gain);
+  gain.connect(destination);
+  oscillator.start();
+  return destination.stream.getAudioTracks()[0] ?? null;
+};
+
 const waitForIce = (connection: RTCPeerConnection) =>
   new Promise<void>((resolve, reject) => {
     if (connection.iceGatheringState === 'complete') {
@@ -47,20 +66,31 @@ export const connectOpenAiLiveCall = async ({
   onNeedsUnlock: () => void;
 }): Promise<LiveSocket> => {
   const connection = new RTCPeerConnection();
-  const audio = new Audio();
-  audio.autoplay = true;
+  const playback = audioContext();
+  const silenceContext = audioContext();
+  const silence = silentMicTrack(silenceContext);
   let microphone: MediaStream | null = null;
+  let micTrack: MediaStreamTrack | null = null;
+  let playbackSource: MediaStreamAudioSourceNode | null = null;
   let events: RTCDataChannel | null = null;
   let destroyed = false;
   let started = false;
 
+  // Resume during the start click, before any await, so the teacher plays without a second tap.
+  const resumeTeacher = () => playback.resume();
+  void resumeTeacher();
+  void silenceContext.resume();
+
   const destroy = () => {
     if (destroyed) return;
     destroyed = true;
+    playbackSource?.disconnect();
     microphone?.getTracks().forEach((track) => track.stop());
+    silence?.stop();
     if (events && events.readyState !== 'closed') events.close();
     connection.close();
-    audio.srcObject = null;
+    void playback.close();
+    void silenceContext.close();
   };
 
   const send = (event: Record<string, unknown>) => {
@@ -72,9 +102,11 @@ export const connectOpenAiLiveCall = async ({
     sessionId: '',
     send,
     setMuted: (muted: boolean) => {
-      microphone?.getAudioTracks().forEach((track) => {
-        track.enabled = !muted;
-      });
+      const sender = connection.getSenders().find((item) => item.track?.kind === 'audio');
+      const nextTrack = muted ? silence : micTrack;
+      if (sender && nextTrack) void sender.replaceTrack(nextTrack);
+      if (micTrack) micTrack.enabled = true;
+      void resumeTeacher();
       send({
         type: muted ? 'session.input_audio.mute' : 'session.input_audio.unmute',
         event_id: crypto.randomUUID(),
@@ -84,19 +116,28 @@ export const connectOpenAiLiveCall = async ({
       send({ type: 'session.close', event_id: 'close' });
     },
     destroy,
-    playAudio: () => audio.play(),
+    playAudio: async () => {
+      await resumeTeacher();
+      if (playback.state !== 'running') throw new Error('Playback is blocked');
+    },
   };
 
   try {
     connection.addEventListener('track', (event) => {
-      audio.srcObject = new MediaStream([event.track]);
-      void audio.play().catch(() => onNeedsUnlock());
+      playbackSource?.disconnect();
+      playbackSource = playback.createMediaStreamSource(new MediaStream([event.track]));
+      playbackSource.connect(playback.destination);
+      void resumeTeacher().then(
+        () => {
+          if (playback.state !== 'running') onNeedsUnlock();
+        },
+        () => onNeedsUnlock(),
+      );
     });
 
     microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
-    for (const track of microphone.getAudioTracks()) {
-      connection.addTrack(track, microphone);
-    }
+    micTrack = microphone.getAudioTracks()[0] ?? null;
+    if (micTrack) connection.addTrack(micTrack, microphone);
 
     events = connection.createDataChannel('oai-events');
     events.addEventListener('message', (message) => {

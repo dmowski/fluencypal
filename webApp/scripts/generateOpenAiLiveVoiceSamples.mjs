@@ -55,6 +55,32 @@ const writeWav = (pcm, filePath) => {
   fs.writeFileSync(filePath, Buffer.concat([header, pcm]));
 };
 
+const TAIL_SECONDS = 3;
+const BYTES_PER_SECOND = 24000 * 2;
+const SPEECH_PEAK = 2000;
+
+const saidLine = (transcript, name) => {
+  const text = transcript.toLowerCase();
+  return text.includes(name.toLowerCase()) && text.includes('speaking');
+};
+
+const endingPeak = (pcm) => {
+  let end = pcm.length - 2;
+  while (end > 0 && Math.abs(pcm.readInt16LE(end)) < 300) end -= 2;
+  const from = Math.max(0, end - 3840);
+  let peak = 0;
+  for (let i = from; i <= end; i += 2) peak = Math.max(peak, Math.abs(pcm.readInt16LE(i)));
+  return peak;
+};
+
+const sampleLine = (name) => {
+  const extra = process.env.SPEAK_AFTER ? ` ${process.env.SPEAK_AFTER}` : '';
+  return `Hi, I'm ${name}. Let's practice speaking.${extra}`;
+};
+
+const finishedCleanly = (pcm, transcript, name) =>
+  saidLine(transcript, name) && endingPeak(pcm) < Number(process.env.ENDING_PEAK || 900);
+
 const recordVoice = (voiceId, name) =>
   new Promise((resolve, reject) => {
     const ws = new WebSocket('wss://api.openai.com/v1/live/sessions', {
@@ -64,12 +90,21 @@ const recordVoice = (voiceId, name) =>
     const types = new Set();
     let transcript = '';
     let settled = false;
-    let idle;
+    let speechDoneTimer;
+    let tailTimer;
+    let total = 0;
+    let lastLoudEnd = 0;
     const finish = (error) => {
       if (settled) return;
       settled = true;
       clearTimeout(hardStop);
-      clearTimeout(idle);
+      clearTimeout(speechDoneTimer);
+      clearTimeout(tailTimer);
+      if (!error && lastLoudEnd > 0) {
+        const tailBytes = total - lastLoudEnd;
+        const needed = TAIL_SECONDS * BYTES_PER_SECOND;
+        if (tailBytes < needed) chunks.push(Buffer.alloc(needed - tailBytes));
+      }
       try {
         if (ws.readyState === WebSocket.OPEN) {
           ws.send(JSON.stringify({ type: 'session.close', event_id: 'close' }));
@@ -87,12 +122,16 @@ const recordVoice = (voiceId, name) =>
       if (error) reject(error);
       else resolve({ pcm: Buffer.concat(chunks), types: [...types], transcript });
     };
-    const hardStop = setTimeout(() => finish(), 16_000);
-    const armIdle = () => {
-      if (!transcript.toLowerCase().includes(name.toLowerCase())) return;
-      clearTimeout(idle);
-      idle = setTimeout(() => finish(), 1000);
+    const beginTail = () => {
+      if (tailTimer || !saidLine(transcript, name)) return;
+      tailTimer = setTimeout(() => finish(), TAIL_SECONDS * 1000);
     };
+    const scheduleQuietCheck = () => {
+      clearTimeout(speechDoneTimer);
+      if (tailTimer) return;
+      speechDoneTimer = setTimeout(beginTail, 800);
+    };
+    const hardStop = setTimeout(() => finish(), 28_000);
 
     ws.addEventListener('error', () => finish(new Error(`${voiceId}: websocket failed`)));
     ws.addEventListener('open', () => {
@@ -102,7 +141,7 @@ const recordVoice = (voiceId, name) =>
           event_id: 'start',
           session: {
             model: 'gpt-live-1',
-            instructions: `Your name is ${name}. Immediately say exactly this sentence, then stop: Hi, I'm ${name}. Let's practice speaking.`,
+            instructions: `Your name is ${name}. Immediately say exactly this sentence, then stop: ${sampleLine(name)}`,
             audio: {
               format: { type: 'audio/pcm', rate: 24000 },
               output: { voice: voiceId },
@@ -130,7 +169,7 @@ const recordVoice = (voiceId, name) =>
               type: 'session.commentary.append',
               event_id: 'sample',
               delegation_id: null,
-              content: `Hi, I'm ${name}. Let's practice speaking.`,
+              content: sampleLine(name),
             }),
           );
           const noise = Buffer.alloc(12_000);
@@ -148,11 +187,23 @@ const recordVoice = (voiceId, name) =>
       }
       if (type === 'session.output_transcript.delta' && typeof message.delta === 'string') {
         transcript += message.delta;
-        armIdle();
+        if (saidLine(transcript, name) && !tailTimer && !speechDoneTimer) beginTail();
       }
       if (type === 'session.output_audio.delta' && typeof message.delta === 'string') {
-        chunks.push(Buffer.from(message.delta, 'base64'));
-        armIdle();
+        const pcm = Buffer.from(message.delta, 'base64');
+        chunks.push(pcm);
+        total += pcm.length;
+        let peak = 0;
+        for (let i = 0; i < pcm.length; i += 2) {
+          const sample = Math.abs(pcm.readInt16LE(i));
+          if (sample > peak) peak = sample;
+        }
+        if (peak > SPEECH_PEAK) {
+          lastLoudEnd = total;
+          clearTimeout(tailTimer);
+          tailTimer = null;
+          scheduleQuietCheck();
+        }
       }
     });
     ws.addEventListener('close', () => finish());
@@ -167,22 +218,19 @@ for (const [voiceId, name] of selected) {
   console.log(`Recording ${voiceId}...`);
   let pcm = Buffer.alloc(0);
   let transcript = '';
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
     const recorded = await recordVoice(voiceId, name);
     pcm = recorded.pcm;
     transcript = recorded.transcript;
     console.log(`  events: ${recorded.types.join(', ')}`);
     if (transcript) console.log(`  said: ${transcript}`);
-    if (transcript.includes(name)) break;
-    let peak = 0;
-    for (let i = 0; i < pcm.length; i += 2) {
-      const sample = Math.abs(pcm.readInt16LE(i));
-      if (sample > peak) peak = sample;
-    }
-    console.error(`  attempt ${attempt} missed the sample line (${pcm.length} bytes, peak ${peak})`);
+    if (saidLine(transcript, name) && finishedCleanly(pcm, transcript, name)) break;
+    console.error(
+      `  attempt ${attempt} missed a clean ending (${transcript || 'no transcript'}, ending peak ${endingPeak(pcm)})`,
+    );
   }
-  if (!transcript.includes(name)) {
-    console.error(`  ${voiceId} did not say the sample`);
+  if (!finishedCleanly(pcm, transcript, name)) {
+    console.error(`  ${voiceId} ended while the voice was still going`);
     continue;
   }
   const wavPath = path.join(outDir, `${voiceId}.wav`);

@@ -1,10 +1,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import CallEndIcon from '@mui/icons-material/CallEnd';
+import MicOffIcon from '@mui/icons-material/MicOff';
+import MicIcon from '@mui/icons-material/Mic';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Mic, MicOff, PhoneOff } from 'lucide-react';
-import { formatElapsedMs } from './formatBalance';
+import { FooterButton } from '@/features/Conversation/CallMode/FooterButton';
+import { formatElapsedMs, TalkTime } from './formatBalance';
 import { LiveTranscriptLine } from './transcripts';
 import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
 
@@ -16,6 +19,7 @@ export const OpenAiLiveCall = ({
   elapsedLabel,
   balanceUsd,
   balanceLocal,
+  talkTime,
   error,
   phase,
   needsUnlock,
@@ -30,6 +34,7 @@ export const OpenAiLiveCall = ({
   elapsedLabel: string;
   balanceUsd: string;
   balanceLocal?: string;
+  talkTime?: TalkTime | null;
   error: string | null;
   phase: 'connecting' | 'live';
   needsUnlock: boolean;
@@ -60,7 +65,7 @@ export const OpenAiLiveCall = ({
         minHeight: overlay ? undefined : 0,
         background: 'linear-gradient(180deg, rgba(20, 10, 40, 0.98) 0%, rgba(8, 8, 12, 0.98) 100%)',
         color: '#fff',
-        padding: '24px 16px 32px',
+        padding: '24px 16px 0',
       }}
     >
       <Stack
@@ -75,20 +80,22 @@ export const OpenAiLiveCall = ({
       >
         <Stack direction="row" sx={{ justifyContent: 'space-between', gap: '16px' }}>
           <Stack>
-            <Typography sx={{ fontWeight: 700, fontSize: '20px', lineHeight: 1.15 }}>
-              {title}
-            </Typography>
-            <Typography data-testid="open-ai-live-elapsed" sx={{ opacity: 0.75, fontSize: '16px' }}>
+            <Typography sx={{ fontSize: '14px', opacity: 0.65 }}>{title}</Typography>
+            <Typography
+              data-testid="open-ai-live-elapsed"
+              sx={{ opacity: 1, fontSize: '16px', fontWeight: 700 }}
+            >
               {elapsedLabel || formatElapsedMs(0)}
             </Typography>
           </Stack>
           <Stack sx={{ alignItems: 'flex-end' }}>
-            <Typography sx={{ fontSize: '20px', opacity: 0.65 }}>{i18n._('Balance')}</Typography>
+            <Typography sx={{ fontSize: '14px', opacity: 0.65 }}>{i18n._('Balance')}</Typography>
             <OpenAiLiveBalanceText
               testId="open-ai-live-call-balance"
               usd={balanceUsd}
               local={balanceLocal}
-              usdFontSize="20px"
+              talkTime={talkTime}
+              usdFontSize="16px"
               localFontSize="16px"
             />
           </Stack>
@@ -102,7 +109,7 @@ export const OpenAiLiveCall = ({
             minHeight: 0,
             overflow: 'auto',
             gap: '38px',
-            padding: '8px 0',
+            padding: '38px 0 120px',
           }}
         >
           {lines.length === 0 ? (
@@ -124,54 +131,76 @@ export const OpenAiLiveCall = ({
         </Stack>
 
         {error ? (
-          <Typography sx={{ color: '#ffb4b4', fontSize: '36px' }}>{error}</Typography>
+          <Typography sx={{ color: '#ffb4b4', fontSize: '16px' }}>{error}</Typography>
         ) : null}
 
-        <Stack direction="row" sx={{ gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+        {needsUnlock ? (
           <Button
-            data-testid="open-ai-live-mute"
-            aria-pressed={!muted}
-            variant="contained"
-            startIcon={muted ? <MicOff size={18} /> : <Mic size={18} />}
-            onClick={onToggleMute}
+            data-testid="open-ai-live-hear"
+            variant="outlined"
+            onClick={onUnlockAudio}
             sx={{
+              alignSelf: 'center',
               textTransform: 'none',
-              fontWeight: 700,
-              backgroundColor: '#fff',
-              color: '#1b1033',
+              color: '#fff',
+              borderColor: 'rgba(255,255,255,0.4)',
             }}
           >
-            {muted ? i18n._('Unmute') : i18n._('Mute')}
+            {i18n._('Tap to hear the teacher')}
           </Button>
-          {needsUnlock ? (
-            <Button
-              data-testid="open-ai-live-hear"
-              variant="outlined"
-              onClick={onUnlockAudio}
+        ) : null}
+      </Stack>
+
+      <Stack
+        sx={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          alignItems: 'center',
+          zIndex: 2,
+        }}
+      >
+        <Stack
+          sx={{
+            backgroundColor: 'rgba(10, 18, 30, 1)',
+            borderRadius: '30px 30px 0 0',
+            boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.3)',
+            width: 'max-content',
+          }}
+        >
+          <Stack
+            direction="row"
+            sx={{
+              gap: '10px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '10px',
+            }}
+          >
+            <FooterButton
+              activeButton={<MicIcon />}
+              inactiveButton={<MicOffIcon />}
+              isActive={!muted}
+              label={i18n._('My mic')}
+              testId="open-ai-live-mute"
+              onClick={onToggleMute}
+            />
+            <IconButton
+              size="large"
+              aria-label={i18n._('End call')}
+              data-testid="open-ai-live-close"
+              onClick={onClose}
               sx={{
-                textTransform: 'none',
-                color: '#fff',
-                borderColor: 'rgba(255,255,255,0.4)',
-                fontSize: '36px',
+                width: '70px',
+                borderRadius: '30px',
+                backgroundColor: '#dc362e',
+                ':hover': { backgroundColor: 'rgba(255, 0, 0, 0.7)' },
               }}
             >
-              {i18n._('Tap to hear the teacher')}
-            </Button>
-          ) : null}
-          <Button
-            data-testid="open-ai-live-close"
-            variant="contained"
-            color="error"
-            startIcon={<PhoneOff size={18} />}
-            onClick={onClose}
-            sx={{
-              textTransform: 'none',
-              fontWeight: 700,
-              marginLeft: 'auto',
-            }}
-          >
-            {i18n._('End call')}
-          </Button>
+              <CallEndIcon />
+            </IconButton>
+          </Stack>
         </Stack>
       </Stack>
     </Stack>

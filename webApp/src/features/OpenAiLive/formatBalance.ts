@@ -1,4 +1,4 @@
-import { microsToUsd } from './pricing';
+import { microsToUsd, openAiLivePricePerMinuteUsdMicros } from './pricing';
 
 export const formatUsdFromMicros = (micros: number): string =>
   new Intl.NumberFormat('en-US', {
@@ -23,6 +23,23 @@ export const formatBalanceLabel = (micros: number, currency: string, rate: numbe
   const usd = formatUsdFromMicros(micros);
   const local = formatLocalFromUsd(microsToUsd(micros), currency, rate);
   return local ? `${usd} · ${local}` : usd;
+};
+
+export type TalkTime = {
+  hours: number;
+  minutes: number;
+};
+
+/** Whole hours and minutes of talking. Leftover seconds are dropped. */
+export const talkTimeFromBalance = (balanceUsdMicros: number): TalkTime => {
+  const totalMinutes =
+    !Number.isFinite(balanceUsdMicros) || balanceUsdMicros <= 0
+      ? 0
+      : Math.floor(balanceUsdMicros / openAiLivePricePerMinuteUsdMicros);
+  return {
+    hours: Math.floor(totalMinutes / 60),
+    minutes: totalMinutes % 60,
+  };
 };
 
 export const formatElapsedMs = (elapsedMs: number): string => {

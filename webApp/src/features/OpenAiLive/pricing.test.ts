@@ -1,4 +1,5 @@
 import * as pricing from './pricing';
+import { talkTimeFromBalance } from './formatBalance';
 import {
   OPEN_AI_LIVE_MAX_BILLING_GAP_MS,
   OPEN_AI_LIVE_STRIPE_PRODUCT,
@@ -19,6 +20,16 @@ describe('openAi live user price', () => {
     expect(openAiLivePricePerMinuteUsd).toBe(0.1);
     expect(openAiLivePricePerMinuteUsdMicros).toBe(100_000);
     expect(openAiLivePricePerMinuteUsdMicros * 60).toBe(6_000_000);
+  });
+
+  it('turns a balance into whole hours and minutes of talking', () => {
+    expect(talkTimeFromBalance(28_000_000)).toEqual({ hours: 4, minutes: 40 });
+    expect(talkTimeFromBalance(6_000_000)).toEqual({ hours: 1, minutes: 0 });
+    expect(talkTimeFromBalance(300_000)).toEqual({ hours: 0, minutes: 3 });
+    expect(talkTimeFromBalance(100_000)).toEqual({ hours: 0, minutes: 1 });
+    expect(talkTimeFromBalance(6_100_000)).toEqual({ hours: 1, minutes: 1 });
+    expect(talkTimeFromBalance(50_000)).toEqual({ hours: 0, minutes: 0 });
+    expect(talkTimeFromBalance(0)).toEqual({ hours: 0, minutes: 0 });
   });
 
   it('grants a one dollar welcome balance once', () => {
