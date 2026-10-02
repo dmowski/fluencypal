@@ -104,7 +104,7 @@ msgstr "1 AI時間 ≈ AIとのアクティブな会話の1時間。"
 msgid "1 day"
 msgstr "1日"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:58
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1時間"
@@ -263,6 +263,11 @@ msgstr "失敗は練習の一部であり、判断の理由ではありません
 msgid "A month of learning is within reach. Keep going today."
 msgstr "学習の一ヶ月は手の届くところにあります。今日も頑張って続けましょう。"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:191
+#. js-lingui-explicit-id
+msgid "A normal chat. I will not stop you to teach."
+msgstr "通常のチャットです。私はあなたの指導を止めません。"
+
 #: src/features/Router/BlockedAccess.tsx:163
 #. js-lingui-explicit-id
 msgid "A parent or guardian can withdraw consent later by contacting support."
@@ -406,11 +411,6 @@ msgstr "本を追加"
 msgid "Add a reply"
 msgstr "返信を追加"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:28
-#. js-lingui-explicit-id
-msgid "Add balance to keep talking"
-msgstr "話し続けるためにバランスを追加する"
-
 #: src/features/Alias/components/PlayersSetup.tsx:191
 #. js-lingui-explicit-id
 msgid "Add between 2 and 20 players. Tap a name to edit it."
@@ -431,6 +431,11 @@ msgstr "コンテキストを追加..."
 #. js-lingui-explicit-id
 msgid "Add language"
 msgstr "言語を追加"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Add more hours"
+msgstr "時間を追加する"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:103
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
@@ -467,6 +472,11 @@ msgstr "プレイヤーを追加"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "投稿を追加"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Add talking time"
+msgstr "話す時間を追加"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -1075,6 +1085,11 @@ msgstr "少なくとも{minWords}語が必要です"
 msgid "Attach my voice recording"
 msgstr "音声録音を添付"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Australian"
+msgstr "オーストラリア人"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:40
 #. js-lingui-explicit-id
 msgid "Auth"
@@ -1177,10 +1192,16 @@ msgstr "バックエンドに焦点を当てた回答"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "バランス"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:159
+#. js-lingui-explicit-id
+msgid "Balance ran out"
+msgstr "バランスがなくなりました"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:29
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:29
@@ -1291,6 +1312,11 @@ msgstr "ほとんどの求職者に最適"
 msgid "Best value for consistent improvement."
 msgstr "一貫した改善に最適な価値。"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Better quality and a higher price. It feels like a real human teacher."
+msgstr "品質が向上し、価格も高くなっています。まるで本物の人間の教師のように感じられます。"
+
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
 #. js-lingui-explicit-id
@@ -1374,10 +1400,20 @@ msgstr "脳の接続に失敗しました。"
 msgid "Brain connection successful!"
 msgstr "脳との接続に成功しました！"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Brazilian Portuguese"
+msgstr "ブラジルポルトガル語"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:28
 #. js-lingui-explicit-id
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "C#、.NET、APIの設計に関するあなたの経験を簡単に説明してください。"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:21
+#. js-lingui-explicit-id
+msgid "British"
+msgstr "イギリス英語"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1463,20 +1499,25 @@ msgstr "時間を購入"
 msgid "Buy hours to start"
 msgstr "スタートするために時間を購入する"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Buy more"
-msgstr "もっと買う"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "もっと買う"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy more hours"
+msgstr "追加で時間を購入"
+
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
 msgid "Buy unlimited access to keep talking."
 msgstr "無制限アクセスを購入して、会話を続けましょう。"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Buying 1 hour of talking time"
+msgstr "1時間の会話時間を購入する"
 
 #: src/features/RolePlay/scenarios/buying-a-train-ticket.ts:7
 #. js-lingui-explicit-id
@@ -1492,6 +1533,11 @@ msgstr "{hours}時間の高度なAI会話の購入"
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "AI使用{hours}時間の購入"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#. js-lingui-explicit-id
+msgid "Buying {hours} hours of talking time"
+msgstr "トーク時間{hours}時間を購入"
 
 #: src/features/PayWall/CardValidator.tsx:105
 #. js-lingui-explicit-id
@@ -1551,6 +1597,11 @@ msgstr "チャットを呼び出す"
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
 msgstr "通話時間の制限は？"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:165
+#. js-lingui-explicit-id
+msgid "Call ended"
+msgstr "通話終了"
 
 #: src/features/RolePlay/scenarios/calling-technical-support.ts:7
 #. js-lingui-explicit-id
@@ -2215,10 +2266,25 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "中国語学習計画"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
+#. js-lingui-explicit-id
+msgid "Choose 1 hour"
+msgstr "1時間を選択"
+
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
 msgstr "日付と時刻を選択してください。"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Choose a lesson"
+msgstr "レッスンを選択する"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Choose a teacher"
+msgstr "教師を選ぶ"
 
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
@@ -2307,10 +2373,20 @@ msgstr "言語を選択してください"
 msgid "Choose your name"
 msgstr "名前を選んでください"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
+#. js-lingui-explicit-id
+msgid "Choose {hours} hours"
+msgstr "{hours} 時間を選択"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "サーキットブレーカー"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:18
+#. js-lingui-explicit-id
+msgid "Clear and calm"
+msgstr "明確で冷静"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:25
 #. js-lingui-explicit-id
@@ -2571,6 +2647,7 @@ msgid "Confirm Credit Card"
 msgstr "クレジットカードを確認する"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2616,6 +2693,11 @@ msgstr "確認は以下に送信されます:"
 msgid "Connected..."
 msgstr "接続中..."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:110
+#. js-lingui-explicit-id
+msgid "Connecting"
+msgstr "接続中"
+
 #: src/features/Dashboard/BrainCard.tsx:139
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
@@ -2626,8 +2708,7 @@ msgstr "脳への接続中..."
 msgid "Connecting..."
 msgstr "接続中..."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:91
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:125
 #. js-lingui-explicit-id
 msgid "Connecting…"
 msgstr "接続中…"
@@ -2732,6 +2813,7 @@ msgstr "コンテキスト (トピック、対象者、目標...)"
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
 #: src/features/News/NewsPlayButton.tsx:103
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:173
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
@@ -2966,6 +3048,11 @@ msgstr "アカウントを開始できませんでした。もう一度お試し
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "次の質問を作成できませんでした。もう一度お試しください。"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:71
+#. js-lingui-explicit-id
+msgid "Couldn't play that voice."
+msgstr "その音声を再生できませんでした。"
 
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:154
 #. js-lingui-explicit-id
@@ -4351,14 +4438,10 @@ msgid ""
 "access this feature."
 msgstr "AI音声の有効化はプレミアム機能です。この機能にアクセスするには、残高をアップグレードしてください。"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:140
-#. js-lingui-explicit-id
-msgid "End"
-msgstr "終了"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:102
 #: src/features/Conversation/ConversationCanvas.tsx:569
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:198
 #. js-lingui-explicit-id
 msgid "End call"
 msgstr "通話終了"
@@ -4699,10 +4782,10 @@ msgid ""
 "trade-offs, and communication."
 msgstr "経験だけでは、不十分です。面接は論理的思考、トレードオフ、そしてコミュニケーションに重点を置くからです。"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:134
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
 #. js-lingui-explicit-id
-msgid "EXPERIMENTAL"
-msgstr "実験的"
+msgid "Experimental feature: AI voice call (version 2)"
+msgstr "実験的な機能: AIボイスコール (バージョン2)"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -4713,11 +4796,6 @@ msgstr "実験的な機能"
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "実験室"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Experimental. A separate balance, billed while the call is active."
-msgstr "実験的。通話中に別個の残高が請求されます。"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:163
 #. js-lingui-explicit-id
@@ -4999,6 +5077,11 @@ msgstr "ファイルサイズは250MB未満である必要があります"
 msgid "File size must be less than 50MB"
 msgstr "ファイルサイズは50MB未満でなければなりません"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Filipino English"
+msgstr "フィリピン英語"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:97
 #. js-lingui-explicit-id
 msgid ""
@@ -5086,6 +5169,13 @@ msgstr "最初の会話"
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "出席し続けて5週間。今日もそのエネルギーを保ち続けてください。"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Fix my grammar"
+msgstr "文法を直してください"
 
 #: src/features/Alias/components/RoundSettings.tsx:140
 #. js-lingui-explicit-id
@@ -5944,11 +6034,6 @@ msgstr "文法訂正プレビュー"
 msgid "Grammar Corrections"
 msgstr "文法訂正"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:192
-#. js-lingui-explicit-id
-msgid "Grammar from mistakes"
-msgstr "ミスから学ぶ文法"
-
 #: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
@@ -6084,6 +6169,16 @@ msgstr "楽しんでください！"
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "健康"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
+#. js-lingui-explicit-id
+msgid "Hear"
+msgstr "聞く"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:148
+#. js-lingui-explicit-id
+msgid "Hear button"
+msgstr "ヒアボタン"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:101
 #. js-lingui-explicit-id
@@ -6242,6 +6337,11 @@ msgstr "ホテルチェックイン"
 msgid "Hotel Check-In Conversation"
 msgstr "ホテルチェックインの会話"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Hours"
+msgstr "時間"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:43
 #: src/features/FluencyCall/FluencyCallCardView.tsx:49
 #. js-lingui-explicit-id
@@ -6334,6 +6434,11 @@ msgstr "それがどのように機能するか"
 #. js-lingui-explicit-id
 msgid "How it Works"
 msgstr "仕組み"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "How should the teacher help while you talk?"
+msgstr "話している間、先生はどのように助けるべきですか？"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:130
 #. js-lingui-explicit-id
@@ -6791,6 +6896,11 @@ msgid ""
 "example."
 msgstr "Reactでは、stateとpropsの違いは何ですか？ 簡単な例を挙げてください。"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:122
+#. js-lingui-explicit-id
+msgid "In the call"
+msgstr "通話中"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:144
 #. js-lingui-explicit-id
 msgid ""
@@ -7051,6 +7161,11 @@ msgstr "招待リンク送信先："
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Irish"
+msgstr "アイルランド語"
+
 #: src/features/Landing/LandingPage.tsx:126
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
@@ -7241,7 +7356,8 @@ msgstr "ジュニアフロントエンドデベロッパー面接"
 msgid "junior frontend interview"
 msgstr "ジュニアフロントエンド面接"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:178
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
@@ -7525,6 +7641,11 @@ msgstr "長さ"
 msgid "Less"
 msgstr "少ない"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
+#. js-lingui-explicit-id
+msgid "Lesson"
+msgstr "レッスン"
+
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
@@ -7608,17 +7729,6 @@ msgstr "リスニング練習。AIの応答をお聞きいただけます"
 #. js-lingui-explicit-id
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "明日死ぬかのように生きよ。永遠に生きるかのように学べ。"
-
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:67
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Live conversation"
-msgstr "ライブ会話"
-
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:30
-#. js-lingui-explicit-id
-msgid "Live conversation stops when the balance reaches zero."
-msgstr "残高がゼロになるとライブ会話は停止します。"
 
 #: src/features/Chat/MessageChain.tsx:70
 #: src/features/Chat/MessageChain.tsx:108
@@ -7717,6 +7827,7 @@ msgstr "読み込み中..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8124,7 +8235,6 @@ msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr "モチベーションは来たり去ったりしますが、習慣はあなたを支えます。今日のタスクに挑戦しましょう。"
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Mute"
 msgstr "ミュート"
@@ -8138,6 +8248,11 @@ msgstr "私の本"
 #. js-lingui-explicit-id
 msgid "My Language is..."
 msgstr "私の言語は..."
+
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:192
+#. js-lingui-explicit-id
+msgid "My mic"
+msgstr "私のマイク"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
@@ -8675,6 +8790,7 @@ msgstr "実際の進歩を感じていませんか？"
 msgid "Not Found"
 msgstr "見つかりません"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -8919,11 +9035,6 @@ msgstr "ボイスチャットを開く"
 msgid "Open your browser menu."
 msgstr "ブラウザメニューを開いてください。"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:56
-#. js-lingui-explicit-id
-msgid "Opening checkout…"
-msgstr "チェックアウトを開いています…"
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -9124,6 +9235,7 @@ msgid "Pay {amount}"
 msgstr "支払う {amount}"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "支払い"
@@ -9149,10 +9261,10 @@ msgstr "支払い履歴"
 msgid "Payment option"
 msgstr "支払いオプション"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:151
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
 #. js-lingui-explicit-id
-msgid "Payment received. The balance updates after Stripe confirms it."
-msgstr "支払いが受け付けられました。残高はStripeが確認した後に更新されます。"
+msgid "Payment received. Your balance updates in a moment."
+msgstr "支払いが受け付けられました。残高はまもなく更新されます。"
 
 #: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
@@ -9285,6 +9397,16 @@ msgstr "時間を選んでいただければ、設定いたします。"
 msgid "Pick a username and an avatar. Other people will see them."
 msgstr "ユーザー名とアバターを選択してください。他の人がそれらを目にします。"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:88
+#. js-lingui-explicit-id
+msgid "Pick a voice. You can hear a short sample first."
+msgstr "声を選んでください。最初に短いサンプルを聞くことができます。"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
+#. js-lingui-explicit-id
+msgid "Pick how many hours to add. The call ends when the balance runs out."
+msgstr "追加する時間を選択してください。残高が無くなると通話は終了します。"
+
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
@@ -9397,6 +9519,7 @@ msgstr "プレイヤー："
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "プレイ中"
@@ -9933,6 +10056,11 @@ msgstr "準備中…"
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
 msgstr "プロダクション配置が追加された後のゲートアクセス用プレビューステート。"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:98
+#. js-lingui-explicit-id
+msgid "Preview. This does not start a real call."
+msgstr "プレビューです。これは実際の通話は開始しません。"
 
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
@@ -11024,6 +11152,11 @@ msgstr "ブックを保存中…"
 msgid "Say a few sentences in your own words. The examples below are only ideas."
 msgstr "自分の言葉でいくつか文章を作成してみましょう。以下の例はあくまでもアイデアです。"
 
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:126
+#. js-lingui-explicit-id
+msgid "Say something. The words will show up here."
+msgstr "何かを言ってください。ここに言葉が表示されます。"
+
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -11459,6 +11592,11 @@ msgstr "結果を表示"
 msgid "Show strong data fundamentals"
 msgstr "データ基盤を強化することを示す"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:181
+#. js-lingui-explicit-id
+msgid "Show the call again"
+msgstr "コールを再表示"
+
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
@@ -11748,6 +11886,11 @@ msgstr "ソースID"
 msgid "Source text:"
 msgstr "ソーステキスト:"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Southern U.S."
+msgstr "南部アメリカ合衆国"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:43
 #. js-lingui-explicit-id
 msgid "Spam"
@@ -11849,7 +11992,8 @@ msgid "Start Call"
 msgstr "通話開始"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "会話を始める"
@@ -12040,6 +12184,11 @@ msgstr "コースを維持することは稀です。さて、今日何をする
 #. js-lingui-explicit-id
 msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr "着実な練習が積み重なります。今日はここに集中しましょう。"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:20
+#. js-lingui-explicit-id
+msgid "Steady, North American"
+msgstr "安定した、北アメリカの"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -12446,6 +12595,11 @@ msgstr "AI教師と話す"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "パーソナルプランでAI教師と話す"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
+#. js-lingui-explicit-id
+msgid "Talking time"
+msgstr "おしゃべりタイム"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -12886,10 +13040,10 @@ msgstr "「アプリをインストール」または「ホーム画面に追加
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome の右上隅にあるメニューボタンをタップします。"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:130
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:156
 #. js-lingui-explicit-id
-msgid "Tap to hear"
-msgstr "聞いてタップ"
+msgid "Tap to hear the teacher"
+msgstr "先生の声を聞くにはタップしてください"
 
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
@@ -12899,7 +13053,8 @@ msgid ""
 msgstr "特定のスキルをターゲットにしましょう—スピーキング、文法、語彙、進捗追跡—オンラインでの英語流暢さをより早く達成するために。"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:204
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Teacher"
 msgstr "先生"
@@ -13145,6 +13300,11 @@ msgstr "ありがとうございます — 私たちはあなたの紹介を確�
 msgid "That time has already passed."
 msgstr "その時は既に過ぎ去りました。"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:21
+#. js-lingui-explicit-id
+msgid "That's all the time for now"
+msgstr "それでは、今回はここまでです。"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -13174,6 +13334,13 @@ msgstr "アプリは音声録音を処理し、トランスクリプトとフィ
 #. js-lingui-explicit-id
 msgid "The beautiful thing about learning is that nobody can take it away from you."
 msgstr "学ぶことの素晴らしい点は、誰もそれをあなたから奪うことはできないということです。"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:24
+#. js-lingui-explicit-id
+msgid ""
+"The call paused because the balance is empty. Add more hours if you want to "
+"keep talking"
+msgstr "通話は残高不足のため一時停止しました。話を続けたい場合は、時間を追加してください。"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:16
 #. js-lingui-explicit-id
@@ -13634,10 +13801,10 @@ msgid ""
 "the one you want to practice."
 msgstr "このレッスンには、あなたがすでに話している言語と、練習したい言語の2つが必要です。"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:155
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:86
 #. js-lingui-explicit-id
-msgid "This model uses the Marin voice."
-msgstr "このモデルはマリンの声を使用しています。"
+msgid "This preview is not available."
+msgstr "このプレビューは表示できません。"
 
 #: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
@@ -13918,11 +14085,6 @@ msgstr "文字起こし"
 msgid "Transcripts may be stored in the account to help track progress over time."
 msgstr "アカウント内にトランスクリプトが保存され、時間経過に伴う進捗を追跡するのに役立ちます。"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:92
-#. js-lingui-explicit-id
-msgid "Transcripts show up here as you talk."
-msgstr "話すとこちらに書き起こしが表示されます。"
-
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
@@ -14180,7 +14342,6 @@ msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "無制限のAI会話とすべての練習モードをアンロック"
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "ミュート解除"
@@ -14479,6 +14640,11 @@ msgid ""
 "Walk through middleware ordering (Authentication → Authorization → Routing "
 "→ Endpoint) and why it matters."
 msgstr "ミドルウェアの順序とその重要性を解説します（認証 → 認可 → ルーティング → エンドポイント）。"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:19
+#. js-lingui-explicit-id
+msgid "Warm, North American"
+msgstr "暖かい、北アメリカ"
 
 #: src/features/Landing/LandingPage.tsx:267
 #. js-lingui-explicit-id
@@ -14832,6 +14998,11 @@ msgstr "価格はいくらですか？"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "AsNoTrackingを使用するのはいつで、どのようなトレードオフがありますか？"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:198
+#. js-lingui-explicit-id
+msgid "When you make a mistake, I explain the rule and you try the sentence again."
+msgstr "間違えた場合、私はルールを説明し、あなたはもう一度その文を試してみます。"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:71
 #. js-lingui-explicit-id
@@ -15256,7 +15427,7 @@ msgid "Yesterday"
 msgstr "昨日"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
 #. js-lingui-explicit-id
 msgid "You"
 msgstr "あなた"
@@ -15522,6 +15693,11 @@ msgstr "{min}人から{max}人までのプレイヤーが必要です。"
 #. js-lingui-explicit-id
 msgid "You said"
 msgstr "あなたが言った"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:141
+#. js-lingui-explicit-id
+msgid "You speak"
+msgstr "あなたは話す"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
@@ -15851,6 +16027,26 @@ msgstr "あなたはまだ登っている途中です。今日のタスクで次
 msgid "{count} downloads"
 msgstr "{count} ダウンロード"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:25
+#. js-lingui-explicit-id
+msgid "{count} hour"
+msgstr "{count} 時間"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
+#. js-lingui-explicit-id
+msgid "{count} hours"
+msgstr "{count} 時間"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
+#. js-lingui-explicit-id
+msgid "{count} minute"
+msgstr "{count} 分"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:30
+#. js-lingui-explicit-id
+msgid "{count} minutes"
+msgstr "{count} 分"
+
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
@@ -15877,7 +16073,7 @@ msgstr "{duration}秒"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} 時間 の高度なAI会話"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:59
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} 時間"
@@ -15891,16 +16087,6 @@ msgstr "{numberOfRounds} ラウンド"
 #. js-lingui-explicit-id
 msgid "{seconds}s"
 msgstr "{seconds}秒"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:146
-#. js-lingui-explicit-id
-msgid "{usd} per hour"
-msgstr "1時間あたり{usd}"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:145
-#. js-lingui-explicit-id
-msgid "{usd} per hour · {local}"
-msgstr "{usd} USD/時 · {local}"
 
 #: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id

@@ -105,7 +105,7 @@ msgstr "1 ชั่วโมง AI ≈ 1 ชั่วโมงของการ
 msgid "1 day"
 msgstr "1 วัน"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:58
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 ชั่วโมง"
@@ -272,6 +272,11 @@ msgstr "ความผิดพลาดเป็นส่วนหนึ่ง
 msgid "A month of learning is within reach. Keep going today."
 msgstr "เดือนแห่งการเรียนรู้ใกล้เข้ามาแล้ว ไปต่อกันเถอะวันนี้"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:191
+#. js-lingui-explicit-id
+msgid "A normal chat. I will not stop you to teach."
+msgstr "การสนทนาปกติ ฉันจะไม่หยุดคุณจากการสอน"
+
 #: src/features/Router/BlockedAccess.tsx:163
 #. js-lingui-explicit-id
 msgid "A parent or guardian can withdraw consent later by contacting support."
@@ -426,11 +431,6 @@ msgstr "เพิ่มหนังสือ"
 msgid "Add a reply"
 msgstr "เพิ่มการตอบกลับ"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:28
-#. js-lingui-explicit-id
-msgid "Add balance to keep talking"
-msgstr "เพิ่มยอดเงินคงเหลือเพื่อสนทนาต่อ"
-
 #: src/features/Alias/components/PlayersSetup.tsx:191
 #. js-lingui-explicit-id
 msgid "Add between 2 and 20 players. Tap a name to edit it."
@@ -451,6 +451,11 @@ msgstr "เพิ่มบริบท..."
 #. js-lingui-explicit-id
 msgid "Add language"
 msgstr "เพิ่มภาษา"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Add more hours"
+msgstr "เพิ่มชั่วโมงให้มากขึ้น"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:103
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
@@ -487,6 +492,11 @@ msgstr "เพิ่มผู้เล่น"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "เพิ่มโพสต์"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Add talking time"
+msgstr "เพิ่มเวลาสนทนา"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -1118,6 +1128,11 @@ msgstr "ต้องการคำอย่างน้อย {minWords} คำ
 msgid "Attach my voice recording"
 msgstr "แนบการบันทึกเสียงของฉัน"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Australian"
+msgstr "ออสเตรเลีย"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:40
 #. js-lingui-explicit-id
 msgid "Auth"
@@ -1222,10 +1237,16 @@ msgstr "คำตอบที่เน้นด้านเบื้องหล
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "การทรงตัว"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:159
+#. js-lingui-explicit-id
+msgid "Balance ran out"
+msgstr "ยอดเงินหมด"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:29
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:29
@@ -1342,6 +1363,11 @@ msgstr "ดีที่สุดสำหรับผู้หางานส่
 msgid "Best value for consistent improvement."
 msgstr "คุ้มค่าที่สุดสำหรับการพัฒนาอย่างต่อเนื่อง."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Better quality and a higher price. It feels like a real human teacher."
+msgstr "คุณภาพที่ดีกว่าและราคาที่สูงขึ้น มันให้ความรู้สึกเหมือนครูมนุษย์จริงๆ"
+
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
 #. js-lingui-explicit-id
@@ -1428,10 +1454,20 @@ msgstr "การเชื่อมต่อสมองล้มเหลว."
 msgid "Brain connection successful!"
 msgstr "การเชื่อมต่อสมองสำเร็จ!"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Brazilian Portuguese"
+msgstr "ภาษาโปรตุเกสของบราซิล"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:28
 #. js-lingui-explicit-id
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "โปรดอธิบายประสบการณ์ของคุณเกี่ยวกับ C#, .NET และการออกแบบ API อย่างสั้น ๆ"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:21
+#. js-lingui-explicit-id
+msgid "British"
+msgstr "บริติช"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1519,20 +1555,25 @@ msgstr "ซื้อชั่วโมง"
 msgid "Buy hours to start"
 msgstr "ซื้อชั่วโมงเพื่อเริ่มต้น"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Buy more"
-msgstr "ซื้อเพิ่ม"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "ซื้อเพิ่มเติม"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy more hours"
+msgstr "ซื้อมากขึ้นอีกชั่วโมง"
+
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
 msgid "Buy unlimited access to keep talking."
 msgstr "ซื้อไม่จำกัดเพื่อคุยต่อไปไม่หยุด"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Buying 1 hour of talking time"
+msgstr "ซื้อเวลาพูดคุย 1 ชั่วโมง"
 
 #: src/features/RolePlay/scenarios/buying-a-train-ticket.ts:7
 #. js-lingui-explicit-id
@@ -1548,6 +1589,11 @@ msgstr "การซื้อการพูดคุย AI ขั้นสู�
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "การซื้อการใช้งาน AI จำนวน {hours} ชั่วโมง"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#. js-lingui-explicit-id
+msgid "Buying {hours} hours of talking time"
+msgstr "ซื้อเวลาพูดคุย {hours} ชั่วโมง"
 
 #: src/features/PayWall/CardValidator.tsx:105
 #. js-lingui-explicit-id
@@ -1607,6 +1653,11 @@ msgstr "โทรแชท"
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
 msgstr "ขีดจำกัดระยะเวลาการโทร?"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:165
+#. js-lingui-explicit-id
+msgid "Call ended"
+msgstr "การโทรสิ้นสุดลงแล้ว"
 
 #: src/features/RolePlay/scenarios/calling-technical-support.ts:7
 #. js-lingui-explicit-id
@@ -2282,10 +2333,25 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "แผนการเรียนภาษาจีน"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
+#. js-lingui-explicit-id
+msgid "Choose 1 hour"
+msgstr "เลือก 1 ชั่วโมง"
+
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
 msgstr "เลือกวันที่และเวลา"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Choose a lesson"
+msgstr "เลือกบทเรียน"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Choose a teacher"
+msgstr "เลือกครู"
 
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
@@ -2374,6 +2440,11 @@ msgstr "เลือกภาษาของคุณ"
 msgid "Choose your name"
 msgstr "เลือกชื่อของคุณ"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
+#. js-lingui-explicit-id
+msgid "Choose {hours} hours"
+msgstr "เลือก {hours} ชั่วโมง"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -2381,6 +2452,11 @@ msgstr ""
 "Circuit Breaker\n"
 "\n"
 "เซอร์กิตเบรกเกอร์"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:18
+#. js-lingui-explicit-id
+msgid "Clear and calm"
+msgstr "ชัดเจนและสงบ"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:25
 #. js-lingui-explicit-id
@@ -2647,6 +2723,7 @@ msgid "Confirm Credit Card"
 msgstr "ยืนยันบัตรเครดิต"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2692,6 +2769,11 @@ msgstr "การยืนยันจะถูกส่งไปที่:"
 msgid "Connected..."
 msgstr "เชื่อมต่อแล้ว..."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:110
+#. js-lingui-explicit-id
+msgid "Connecting"
+msgstr "กำลังเชื่อมต่อ"
+
 #: src/features/Dashboard/BrainCard.tsx:139
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
@@ -2702,8 +2784,7 @@ msgstr "เชื่อมต่อกับสมอง..."
 msgid "Connecting..."
 msgstr "กำลังเชื่อมต่อ..."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:91
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:125
 #. js-lingui-explicit-id
 msgid "Connecting…"
 msgstr "กำลังเชื่อมต่อ…"
@@ -2815,6 +2896,7 @@ msgstr "บริบท (หัวข้อ, ผู้ชม, เป้าหม
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
 #: src/features/News/NewsPlayButton.tsx:103
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:173
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
@@ -3051,6 +3133,13 @@ msgstr "ไม่สามารถเริ่มบัญชีของคุ
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "ไม่สามารถเขียนคำถามถัดไปของคุณได้ กรุณาลองใหม่อีกครั้ง"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:71
+#. js-lingui-explicit-id
+msgid "Couldn't play that voice."
+msgstr ""
+"\n"
+"ไม่สามารถเล่นเสียงนั้นได้\n"
 
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:154
 #. js-lingui-explicit-id
@@ -4518,14 +4607,10 @@ msgstr ""
 "การเปิดใช้งานเสียง AI เป็นฟีเจอร์พรีเมียม "
 "กรุณาอัปเกรดยอดเงินของคุณเพื่อเข้าถึงฟีเจอร์นี้"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:140
-#. js-lingui-explicit-id
-msgid "End"
-msgstr "จบ"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:102
 #: src/features/Conversation/ConversationCanvas.tsx:569
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:198
 #. js-lingui-explicit-id
 msgid "End call"
 msgstr "สิ้นสุดการโทร"
@@ -4878,10 +4963,10 @@ msgstr ""
 "ประสบการณ์เพียงอย่างเดียวไม่เพียงพอ "
 "เมื่อการสัมภาษณ์มุ่งเน้นไปที่การใช้เหตุผล ข้อแลกเปลี่ยน และการสื่อสาร"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:134
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
 #. js-lingui-explicit-id
-msgid "EXPERIMENTAL"
-msgstr "ทดลอง"
+msgid "Experimental feature: AI voice call (version 2)"
+msgstr "คุณลักษณะทดลอง: การโทรด้วยเสียงผ่าน AI (เวอร์ชัน 2)"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -4892,13 +4977,6 @@ msgstr "คุณลักษณะทดลอง"
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "ห้องปฏิบัติการทดลอง"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Experimental. A separate balance, billed while the call is active."
-msgstr ""
-"ทดลองใช้. ยอดคงเหลือแยกต่างหาก "
-"จะถูกเรียกเก็บเงินในขณะที่สายยังเชื่อมต่ออยู่."
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:163
 #. js-lingui-explicit-id
@@ -5189,6 +5267,11 @@ msgstr "ขนาดไฟล์ต้องน้อยกว่า 250MB"
 msgid "File size must be less than 50MB"
 msgstr "ขนาดไฟล์ต้องน้อยกว่า 50MB"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Filipino English"
+msgstr "ภาษาอังกฤษของฟิลิปปินส์"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:97
 #. js-lingui-explicit-id
 msgid ""
@@ -5284,6 +5367,13 @@ msgstr "การพูดคุยครั้งแรก"
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "ห้าสัปดาห์ของการเข้าร่วมงาน รักษาพลังงานนั้นไว้ให้ได้ในวันนี้"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Fix my grammar"
+msgstr "แก้ไขไวยากรณ์ของฉัน"
 
 #: src/features/Alias/components/RoundSettings.tsx:140
 #. js-lingui-explicit-id
@@ -6222,11 +6312,6 @@ msgstr "การแสดงตัวอย่างการแก้ไขไ
 msgid "Grammar Corrections"
 msgstr "การแก้ไขไวยากรณ์"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:192
-#. js-lingui-explicit-id
-msgid "Grammar from mistakes"
-msgstr "ไวยากรณ์จากข้อผิดพลาด"
-
 #: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
@@ -6368,6 +6453,16 @@ msgstr "สนุกสนานนะ!"
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "สุขภาพ"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
+#. js-lingui-explicit-id
+msgid "Hear"
+msgstr "ได้ยิน"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:148
+#. js-lingui-explicit-id
+msgid "Hear button"
+msgstr "ปุ่มฟัง"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:101
 #. js-lingui-explicit-id
@@ -6535,6 +6630,11 @@ msgstr "เช็คอินโรงแรม"
 msgid "Hotel Check-In Conversation"
 msgstr "การสนทนาเช็คอินโรงแรม"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Hours"
+msgstr "ชั่วโมง"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:43
 #: src/features/FluencyCall/FluencyCallCardView.tsx:49
 #. js-lingui-explicit-id
@@ -6635,6 +6735,11 @@ msgid "How it Works"
 msgstr ""
 "\n"
 "วิธีการทำงาน\n"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "How should the teacher help while you talk?"
+msgstr "ครูควรช่วยอย่างไรในขณะที่คุณพูด?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:130
 #. js-lingui-explicit-id
@@ -7132,6 +7237,11 @@ msgid ""
 "example."
 msgstr "ใน React ความแตกต่างระหว่าง state กับ props คืออะไร? ยกตัวอย่างง่ายๆ"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:122
+#. js-lingui-explicit-id
+msgid "In the call"
+msgstr "ในการโทร"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:144
 #. js-lingui-explicit-id
 msgid ""
@@ -7413,6 +7523,11 @@ msgstr "ลิงก์เชิญถูกส่งไปยัง:"
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Irish"
+msgstr "ไอริช"
+
 #: src/features/Landing/LandingPage.tsx:126
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
@@ -7611,7 +7726,8 @@ msgstr "การสัมภาษณ์งานนักพัฒนาฟร
 msgid "junior frontend interview"
 msgstr "การสัมภาษณ์นักพัฒนาซอฟต์แวร์ด้านหน้าระดับจูเนียร์"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:178
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
@@ -7901,6 +8017,13 @@ msgstr "ความยาว"
 msgid "Less"
 msgstr "น้อยลง"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
+#. js-lingui-explicit-id
+msgid "Lesson"
+msgstr ""
+"Lesson  \n"
+"บทเรียน"
+
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
@@ -7990,17 +8113,6 @@ msgid "Live as if you were to die tomorrow. Learn as if you were to live forever
 msgstr ""
 "ใช้ชีวิตราวกับว่าคุณจะตายในวันพรุ่งนี้ "
 "เรียนรู้ราวกับว่าคุณจะมีชีวิตอยู่ตลอดไป"
-
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:67
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Live conversation"
-msgstr "การสนทนาสด"
-
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:30
-#. js-lingui-explicit-id
-msgid "Live conversation stops when the balance reaches zero."
-msgstr "การสนทนาสดจะหยุดเมื่อยอดเงินคงเหลือถึงศูนย์"
 
 #: src/features/Chat/MessageChain.tsx:70
 #: src/features/Chat/MessageChain.tsx:108
@@ -8101,6 +8213,7 @@ msgstr "กำลังโหลด..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8518,7 +8631,6 @@ msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr "แรงจูงใจมาแล้วก็ไป — นิสัยจะนำพาคุณไป ลองทำภารกิจของวันนี้ดูสิ "
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Mute"
 msgstr "ปิดเสียง"
@@ -8532,6 +8644,11 @@ msgstr "หนังสือของฉัน"
 #. js-lingui-explicit-id
 msgid "My Language is..."
 msgstr "ภาษาของฉันคือ..."
+
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:192
+#. js-lingui-explicit-id
+msgid "My mic"
+msgstr "ไมโครโฟนของฉัน"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
@@ -9090,6 +9207,7 @@ msgstr "ไม่รู้สึกถึงความก้าวหน้า
 msgid "Not Found"
 msgstr "ไม่พบ"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -9343,11 +9461,6 @@ msgstr "เปิดการแชทเสียง"
 msgid "Open your browser menu."
 msgstr "เปิดเมนูเบราว์เซอร์ของคุณ"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:56
-#. js-lingui-explicit-id
-msgid "Opening checkout…"
-msgstr "กำลังเปิดการชำระเงิน…"
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -9561,6 +9674,7 @@ msgid "Pay {amount}"
 msgstr "ชำระเงิน {amount}"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "การชำระเงิน"
@@ -9586,10 +9700,10 @@ msgstr "ประวัติการชำระเงิน"
 msgid "Payment option"
 msgstr "ตัวเลือกการชำระเงิน"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:151
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
 #. js-lingui-explicit-id
-msgid "Payment received. The balance updates after Stripe confirms it."
-msgstr "รับชำระเงินแล้ว ยอดคงเหลือจะอัปเดตหลังจากที่ Stripe ยืนยันแล้ว"
+msgid "Payment received. Your balance updates in a moment."
+msgstr "ได้รับการชำระเงินแล้ว ยอดคงเหลือของคุณจะอัปเดตในอีกสักครู่"
 
 #: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
@@ -9724,6 +9838,16 @@ msgstr "เลือกเวลาที่สะดวก แล้วเร�
 msgid "Pick a username and an avatar. Other people will see them."
 msgstr "เลือกชื่อผู้ใช้และรูปโปรไฟล์ คนอื่นจะเห็นข้อมูลเหล่านี้"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:88
+#. js-lingui-explicit-id
+msgid "Pick a voice. You can hear a short sample first."
+msgstr "เลือกเสียง คุณสามารถฟังตัวอย่างสั้นๆ ก่อน"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
+#. js-lingui-explicit-id
+msgid "Pick how many hours to add. The call ends when the balance runs out."
+msgstr "เลือกจำนวนชั่วโมงที่จะเพิ่ม การโทรจะสิ้นสุดลงเมื่อยอดเงินคงเหลือหมด"
+
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
@@ -9838,6 +9962,7 @@ msgstr "ผู้เล่น:"
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "กำลังเล่น"
@@ -10410,6 +10535,11 @@ msgid "Preview state for gated access once production placement is added."
 msgstr ""
 "แสดงตัวอย่างสถานะสำหรับการเข้าถึงที่ถูกจำกัดเมื่อการวางในระบบการผลิตถูกเพิ่ม"
 "เข้าไปแล้ว"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:98
+#. js-lingui-explicit-id
+msgid "Preview. This does not start a real call."
+msgstr "การแสดงตัวอย่าง นี่ไม่ใช่การเริ่มต้นการโทรที่แท้จริง"
 
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
@@ -11642,6 +11772,11 @@ msgstr ""
 "พูดประโยคสั้นๆ ในคำพูดของคุณเอง "
 "ตัวอย่างที่ให้ไว้ด้านล่างเป็นเพียงแนวคิดเท่านั้น"
 
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:126
+#. js-lingui-explicit-id
+msgid "Say something. The words will show up here."
+msgstr "พูดอะไรสักอย่าง คำพูดจะแสดงขึ้นที่นี่"
+
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -12087,6 +12222,11 @@ msgstr "แสดงผลลัพธ์"
 msgid "Show strong data fundamentals"
 msgstr "แสดงพื้นฐานข้อมูลที่แข็งแกร่ง"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:181
+#. js-lingui-explicit-id
+msgid "Show the call again"
+msgstr "แสดงการโทรอีกครั้ง"
+
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
@@ -12390,6 +12530,11 @@ msgstr "รหัสแหล่งที่มา"
 msgid "Source text:"
 msgstr "แหล่งที่มา:"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Southern U.S."
+msgstr "ตอนใต้ของสหรัฐอเมริกา"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:43
 #. js-lingui-explicit-id
 msgid "Spam"
@@ -12491,7 +12636,8 @@ msgid "Start Call"
 msgstr "เริ่มการโทร"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "เริ่มสนทนา"
@@ -12682,6 +12828,11 @@ msgstr "การยืนหยัดในเส้นทางเดิมน
 #. js-lingui-explicit-id
 msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr "การฝึกฝนอย่างสม่ำเสมอสะสมไปเรื่อย ๆ นี่คือสิ่งที่ควรให้ความสำคัญในวันนี้"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:20
+#. js-lingui-explicit-id
+msgid "Steady, North American"
+msgstr "มั่นคง, อเมริกาเหนือ"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -13124,6 +13275,11 @@ msgstr "พูดคุยกับครู AI"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "พูดคุยกับครู AI ในแผนแสดงผลส่วนตัวของคุณ"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
+#. js-lingui-explicit-id
+msgid "Talking time"
+msgstr "เวลาพูดคุย"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -13586,10 +13742,10 @@ msgstr "แตะ \"ติดตั้งแอป\" หรือ \"เพิ่
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "แตะที่ปุ่มเมนูด้านขวาบนของ Chrome"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:130
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:156
 #. js-lingui-explicit-id
-msgid "Tap to hear"
-msgstr "แตะเพื่อฟัง"
+msgid "Tap to hear the teacher"
+msgstr "แตะเพื่อฟังครู"
 
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
@@ -13602,7 +13758,8 @@ msgstr ""
 "เร็วขึ้น."
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:204
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Teacher"
 msgstr "ครู"
@@ -13858,6 +14015,11 @@ msgstr "ขอบคุณ — เรากำลังตรวจสอบก�
 msgid "That time has already passed."
 msgstr "เวลานั้นได้ผ่านไปแล้ว"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:21
+#. js-lingui-explicit-id
+msgid "That's all the time for now"
+msgstr "นั่นคือเวลาทั้งหมดสำหรับตอนนี้"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -13892,6 +14054,15 @@ msgstr "แอปสามารถประมวลผลการบันท
 #. js-lingui-explicit-id
 msgid "The beautiful thing about learning is that nobody can take it away from you."
 msgstr "สิ่งสวยงามเกี่ยวกับการเรียนรู้คือไม่มีใครสามารถพรากมันไปจากคุณได้"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:24
+#. js-lingui-explicit-id
+msgid ""
+"The call paused because the balance is empty. Add more hours if you want to "
+"keep talking"
+msgstr ""
+"การโทรถูกหยุดชั่วคราวเนื่องจากยอดเงินหมด "
+"เพิ่มชั่วโมงเพิ่มเติมหากคุณต้องการพูดคุยต่อ"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:16
 #. js-lingui-explicit-id
@@ -14387,10 +14558,10 @@ msgstr ""
 "บทเรียนนี้ต้องใช้สองภาษาที่แตกต่างกัน: ภาษาที่คุณพูดอยู่แล้ว "
 "และภาษาที่คุณต้องการฝึกฝน"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:155
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:86
 #. js-lingui-explicit-id
-msgid "This model uses the Marin voice."
-msgstr "โมเดลนี้ใช้เสียง Marin."
+msgid "This preview is not available."
+msgstr "ไม่สามารถแสดงตัวอย่างนี้ได้"
 
 #: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
@@ -14690,11 +14861,6 @@ msgstr "ถอดเสียง"
 msgid "Transcripts may be stored in the account to help track progress over time."
 msgstr "Transcripts อาจถูกจัดเก็บในบัญชีเพื่อช่วยติดตามความก้าวหน้าเมื่อเวลาผ่านไป"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:92
-#. js-lingui-explicit-id
-msgid "Transcripts show up here as you talk."
-msgstr "บันทึกการสนทนาจะแสดงขึ้นที่นี่ในขณะที่คุณพูด"
-
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
@@ -14955,7 +15121,6 @@ msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "ปลดล็อคการสนทนา AI ไม่จำกัดและโหมดการฝึกฝนทั้งหมด"
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "เปิดเสียง"
@@ -15270,6 +15435,11 @@ msgid ""
 msgstr ""
 "เดินผ่านลำดับการทำงานของมิดเดิลแวร์ (การยืนยันตัวตน → การอนุญาต → "
 "การกำหนดเส้นทาง → จุดสิ้นสุด) และเหตุผลที่สำคัญ"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:19
+#. js-lingui-explicit-id
+msgid "Warm, North American"
+msgstr "อบอุ่น, อเมริกาเหนือ"
 
 #: src/features/Landing/LandingPage.tsx:267
 #. js-lingui-explicit-id
@@ -15632,6 +15802,11 @@ msgstr "ราคาคือเท่าไหร่?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "เมื่อใดที่คุณใช้ AsNoTracking และมีการแลกเปลี่ยนอะไรบ้าง?"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:198
+#. js-lingui-explicit-id
+msgid "When you make a mistake, I explain the rule and you try the sentence again."
+msgstr "เมื่อคุณทำผิด ฉันจะอธิบายกฎและคุณลองประโยคอีกครั้ง"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:71
 #. js-lingui-explicit-id
@@ -16105,7 +16280,7 @@ msgid "Yesterday"
 msgstr "เมื่อวาน"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
 #. js-lingui-explicit-id
 msgid "You"
 msgstr "คุณ"
@@ -16401,6 +16576,11 @@ msgstr "คุณต้องการผู้เล่นระหว่าง
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:62
 #. js-lingui-explicit-id
 msgid "You said"
+msgstr "คุณพูด"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:141
+#. js-lingui-explicit-id
+msgid "You speak"
 msgstr "คุณพูด"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:14
@@ -16747,6 +16927,26 @@ msgstr "คุณยังคงปีนขึ้นไปอยู่ เต�
 msgid "{count} downloads"
 msgstr "{count} ดาวน์โหลด"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:25
+#. js-lingui-explicit-id
+msgid "{count} hour"
+msgstr "{count} ชั่วโมง"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
+#. js-lingui-explicit-id
+msgid "{count} hours"
+msgstr "{count} ชั่วโมง"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
+#. js-lingui-explicit-id
+msgid "{count} minute"
+msgstr "{count} นาที"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:30
+#. js-lingui-explicit-id
+msgid "{count} minutes"
+msgstr "{count} นาที"
+
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
@@ -16773,7 +16973,7 @@ msgstr "{duration}วินาที"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} ชั่วโมงของการสนทนา AI ขั้นสูง"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:59
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} ชั่วโมง"
@@ -16787,16 +16987,6 @@ msgstr "{numberOfRounds} รอบ"
 #. js-lingui-explicit-id
 msgid "{seconds}s"
 msgstr "{seconds}วินาที"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:146
-#. js-lingui-explicit-id
-msgid "{usd} per hour"
-msgstr "{usd} ต่อชั่วโมง"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:145
-#. js-lingui-explicit-id
-msgid "{usd} per hour · {local}"
-msgstr "{usd} ต่อชั่วโมง · {local}"
 
 #: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id

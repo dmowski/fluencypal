@@ -104,7 +104,7 @@ msgstr "1 AI 시간 ≈ AI와의 적극적인 대화 1시간."
 msgid "1 day"
 msgstr "1일"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:58
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1시간"
@@ -263,6 +263,11 @@ msgstr "실수는 연습의 일환이며, 판단의 이유가 아닙니다."
 msgid "A month of learning is within reach. Keep going today."
 msgstr "한 달간의 학습이 손 닿는 곳에 있습니다. 오늘도 계속하세요."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:191
+#. js-lingui-explicit-id
+msgid "A normal chat. I will not stop you to teach."
+msgstr "일반적인 채팅입니다. 제가 당신의 가르침을 막지 않을 것입니다."
+
 #: src/features/Router/BlockedAccess.tsx:163
 #. js-lingui-explicit-id
 msgid "A parent or guardian can withdraw consent later by contacting support."
@@ -406,11 +411,6 @@ msgstr "책 추가"
 msgid "Add a reply"
 msgstr "답글 추가"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:28
-#. js-lingui-explicit-id
-msgid "Add balance to keep talking"
-msgstr "계속 말하기 위해 잔액 추가"
-
 #: src/features/Alias/components/PlayersSetup.tsx:191
 #. js-lingui-explicit-id
 msgid "Add between 2 and 20 players. Tap a name to edit it."
@@ -431,6 +431,11 @@ msgstr "맥락 추가..."
 #. js-lingui-explicit-id
 msgid "Add language"
 msgstr "언어 추가"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Add more hours"
+msgstr "시간 추가하기"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:103
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
@@ -467,6 +472,11 @@ msgstr "플레이어 추가"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "게시물 추가"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Add talking time"
+msgstr "대화 시간 추가"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -1074,6 +1084,11 @@ msgstr "최소 {minWords} 단어가 필요합니다"
 msgid "Attach my voice recording"
 msgstr "음성 녹음을 첨부하십시오."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Australian"
+msgstr "오스트레일리아인"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:40
 #. js-lingui-explicit-id
 msgid "Auth"
@@ -1180,10 +1195,18 @@ msgstr "백엔드 중심의 답변"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "균형"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:159
+#. js-lingui-explicit-id
+msgid "Balance ran out"
+msgstr ""
+"Balance ran out\n"
+"잔액이 부족합니다"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:29
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:29
@@ -1294,6 +1317,11 @@ msgstr "대부분의 구직자에게 가장 적합"
 msgid "Best value for consistent improvement."
 msgstr "일관된 향상에 대한 최고의 가치."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Better quality and a higher price. It feels like a real human teacher."
+msgstr "더 나은 품질과 더 높은 가격. 실제 인간 교사처럼 느껴집니다."
+
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
 #. js-lingui-explicit-id
@@ -1377,10 +1405,20 @@ msgstr "뇌 연결 실패."
 msgid "Brain connection successful!"
 msgstr "두뇌 연결 성공적!"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Brazilian Portuguese"
+msgstr "브라질 포르투갈어"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:28
 #. js-lingui-explicit-id
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "C#, .NET, 및 API 설계 경험을 간략하게 설명하십시오."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:21
+#. js-lingui-explicit-id
+msgid "British"
+msgstr "영국인"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1466,20 +1504,25 @@ msgstr "시간 구매"
 msgid "Buy hours to start"
 msgstr "시작하려면 시간을 구매하십시오"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Buy more"
-msgstr "더 구매하기"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "더 구매하기"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy more hours"
+msgstr "더 많은 시간 구매"
+
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
 msgid "Buy unlimited access to keep talking."
 msgstr "계속 대화를 이어가기 위해 무제한 접근권을 구매하세요."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Buying 1 hour of talking time"
+msgstr "1시간 대화 시간 구매"
 
 #: src/features/RolePlay/scenarios/buying-a-train-ticket.ts:7
 #. js-lingui-explicit-id
@@ -1495,6 +1538,11 @@ msgstr "{hours} 시간의 고급 AI 대화 구매"
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "{hours}시간의 AI 사용 구매"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#. js-lingui-explicit-id
+msgid "Buying {hours} hours of talking time"
+msgstr "{hours} 시간의 대화 시간을 구매합니다."
 
 #: src/features/PayWall/CardValidator.tsx:105
 #. js-lingui-explicit-id
@@ -1554,6 +1602,11 @@ msgstr "채팅 호출"
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
 msgstr "통화 시간 제한?"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:165
+#. js-lingui-explicit-id
+msgid "Call ended"
+msgstr "호출 종료"
 
 #: src/features/RolePlay/scenarios/calling-technical-support.ts:7
 #. js-lingui-explicit-id
@@ -2221,10 +2274,25 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
+#. js-lingui-explicit-id
+msgid "Choose 1 hour"
+msgstr "1시간 선택"
+
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
 msgstr "날짜와 시간을 선택하세요."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Choose a lesson"
+msgstr "수업을 선택하세요"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Choose a teacher"
+msgstr "교사를 선택하세요"
 
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
@@ -2313,10 +2381,20 @@ msgstr "언어를 선택하세요"
 msgid "Choose your name"
 msgstr "이름을 선택하세요"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
+#. js-lingui-explicit-id
+msgid "Choose {hours} hours"
+msgstr "{hours} 시간을 선택하세요"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "회로 차단기"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:18
+#. js-lingui-explicit-id
+msgid "Clear and calm"
+msgstr "명확하고 차분한"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:25
 #. js-lingui-explicit-id
@@ -2577,6 +2655,7 @@ msgid "Confirm Credit Card"
 msgstr "신용 카드 확인"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2622,6 +2701,11 @@ msgstr "확인 사항이 다음으로 전송됩니다:"
 msgid "Connected..."
 msgstr "연결됨..."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:110
+#. js-lingui-explicit-id
+msgid "Connecting"
+msgstr "연결 중"
+
 #: src/features/Dashboard/BrainCard.tsx:139
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
@@ -2632,8 +2716,7 @@ msgstr "두뇌에 연결 중..."
 msgid "Connecting..."
 msgstr "연결 중..."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:91
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:125
 #. js-lingui-explicit-id
 msgid "Connecting…"
 msgstr "연결 중…"
@@ -2738,6 +2821,7 @@ msgstr "문맥 (주제, 대상, 목표...)"
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
 #: src/features/News/NewsPlayButton.tsx:103
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:173
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
@@ -2970,6 +3054,11 @@ msgstr "계정을 시작할 수 없습니다. 다시 시도해 보십시오."
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "다음 질문을 작성할 수 없습니다. 다시 시도하세요."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:71
+#. js-lingui-explicit-id
+msgid "Couldn't play that voice."
+msgstr "그 음성을 재생할 수 없습니다."
 
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:154
 #. js-lingui-explicit-id
@@ -4378,14 +4467,10 @@ msgid ""
 "access this feature."
 msgstr "AI 음성 기능 활성화는 프리미엄 기능입니다. 이 기능에 액세스하시려면 잔액을 업그레이드하세요."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:140
-#. js-lingui-explicit-id
-msgid "End"
-msgstr "종료"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:102
 #: src/features/Conversation/ConversationCanvas.tsx:569
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:198
 #. js-lingui-explicit-id
 msgid "End call"
 msgstr "통화 종료"
@@ -4726,10 +4811,10 @@ msgid ""
 "trade-offs, and communication."
 msgstr "인터뷰가 추론, 절충안, 그리고 의사소통에 중점을 둘 때에는 경험만으로는 충분하지 않습니다."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:134
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
 #. js-lingui-explicit-id
-msgid "EXPERIMENTAL"
-msgstr "실험적인"
+msgid "Experimental feature: AI voice call (version 2)"
+msgstr "실험적 기능: AI 음성 통화 (버전 2)"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -4740,11 +4825,6 @@ msgstr "실험 기능"
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "실험실"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Experimental. A separate balance, billed while the call is active."
-msgstr "실험적인. 통화가 활성 상태인 동안 별도로 청구됩니다."
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:163
 #. js-lingui-explicit-id
@@ -5028,6 +5108,11 @@ msgstr "파일 크기는 250MB 미만이어야 합니다"
 msgid "File size must be less than 50MB"
 msgstr "파일 크기는 50MB 미만이어야 합니다."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Filipino English"
+msgstr "필리핀 영어"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:97
 #. js-lingui-explicit-id
 msgid ""
@@ -5115,6 +5200,13 @@ msgstr "첫 대화"
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "다섯 주 동안 출석했습니다. 오늘도 그 에너지를 이어가세요."
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Fix my grammar"
+msgstr "내 문법 고쳐줘"
 
 #: src/features/Alias/components/RoundSettings.tsx:140
 #. js-lingui-explicit-id
@@ -5974,11 +6066,6 @@ msgstr "문법 수정 미리보기"
 msgid "Grammar Corrections"
 msgstr "문법 수정"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:192
-#. js-lingui-explicit-id
-msgid "Grammar from mistakes"
-msgstr "실수에서 배우는 문법"
-
 #: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
@@ -6114,6 +6201,16 @@ msgstr "즐겨보세요!"
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "건강"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
+#. js-lingui-explicit-id
+msgid "Hear"
+msgstr "듣기"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:148
+#. js-lingui-explicit-id
+msgid "Hear button"
+msgstr "듣기 버튼"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:101
 #. js-lingui-explicit-id
@@ -6272,6 +6369,11 @@ msgstr "호텔 체크인"
 msgid "Hotel Check-In Conversation"
 msgstr "호텔 체크인 대화"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Hours"
+msgstr "영업 시간"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:43
 #: src/features/FluencyCall/FluencyCallCardView.tsx:49
 #. js-lingui-explicit-id
@@ -6364,6 +6466,11 @@ msgstr "작동 원리"
 #. js-lingui-explicit-id
 msgid "How it Works"
 msgstr "작동 원리"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "How should the teacher help while you talk?"
+msgstr "선생님은 당신이 말할 때 어떻게 도와야 하나요?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:130
 #. js-lingui-explicit-id
@@ -6826,6 +6933,11 @@ msgid ""
 "example."
 msgstr "리액트에서 state와 props의 차이점은 무엇인가요? 간단한 예를 들어 설명해주세요."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:122
+#. js-lingui-explicit-id
+msgid "In the call"
+msgstr "통화 중"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:144
 #. js-lingui-explicit-id
 msgid ""
@@ -7088,6 +7200,11 @@ msgstr ""
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Irish"
+msgstr "아이리시"
+
 #: src/features/Landing/LandingPage.tsx:126
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
@@ -7280,7 +7397,8 @@ msgstr "주니어 프론트엔드 개발자 인터뷰"
 msgid "junior frontend interview"
 msgstr "주니어 프론트엔드 인터뷰"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:178
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
@@ -7564,6 +7682,11 @@ msgstr "길이"
 msgid "Less"
 msgstr "덜"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
+#. js-lingui-explicit-id
+msgid "Lesson"
+msgstr "수업"
+
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
@@ -7647,17 +7770,6 @@ msgstr "리스닝 연습. AI 응답을 들을 수 있습니다."
 #. js-lingui-explicit-id
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "내일 죽을 것처럼 살아라. 영원히 살 것처럼 배워라."
-
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:67
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Live conversation"
-msgstr "실시간 대화"
-
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:30
-#. js-lingui-explicit-id
-msgid "Live conversation stops when the balance reaches zero."
-msgstr "잔액이 0이 되면 라이브 대화가 중단됩니다."
 
 #: src/features/Chat/MessageChain.tsx:70
 #: src/features/Chat/MessageChain.tsx:108
@@ -7756,6 +7868,7 @@ msgstr "로딩 중..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8160,7 +8273,6 @@ msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr "동기부여는 오고 가지만 습관은 당신을 이끕니다. 오늘의 과제를 시도해보세요."
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Mute"
 msgstr "음소거"
@@ -8174,6 +8286,11 @@ msgstr "나의 책"
 #. js-lingui-explicit-id
 msgid "My Language is..."
 msgstr "내 언어는..."
+
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:192
+#. js-lingui-explicit-id
+msgid "My mic"
+msgstr "내 마이크"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
@@ -8713,6 +8830,7 @@ msgstr "실질적인 진전을 느끼지 못하고 계신가요?"
 msgid "Not Found"
 msgstr "찾을 수 없음"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -8959,11 +9077,6 @@ msgstr "오픈 음성 채팅"
 msgid "Open your browser menu."
 msgstr "브라우저 메뉴를 엽니다."
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:56
-#. js-lingui-explicit-id
-msgid "Opening checkout…"
-msgstr "결제 페이지 열기…"
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -9163,6 +9276,7 @@ msgid "Pay {amount}"
 msgstr "{amount} 지불"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "결제"
@@ -9188,10 +9302,10 @@ msgstr "결제 내역"
 msgid "Payment option"
 msgstr "결제 옵션"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:151
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
 #. js-lingui-explicit-id
-msgid "Payment received. The balance updates after Stripe confirms it."
-msgstr "결제가 접수되었습니다. 잔액은 Stripe가 이를 확인한 후 업데이트됩니다."
+msgid "Payment received. Your balance updates in a moment."
+msgstr "결제가 접수되었습니다. 잔액이 곧 업데이트됩니다."
 
 #: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
@@ -9324,6 +9438,16 @@ msgstr "시간을 선택하면 저희가 설정해드리겠습니다."
 msgid "Pick a username and an avatar. Other people will see them."
 msgstr "사용자 이름과 아바타를 선택하세요. 다른 사람들이 그것들을 볼 것입니다."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:88
+#. js-lingui-explicit-id
+msgid "Pick a voice. You can hear a short sample first."
+msgstr "목소리를 선택하세요. 짧은 샘플을 먼저 들을 수 있습니다."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
+#. js-lingui-explicit-id
+msgid "Pick how many hours to add. The call ends when the balance runs out."
+msgstr "몇 시간을 추가할지 선택하세요. 잔액이 소진되면 통화가 종료됩니다."
+
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
@@ -9436,6 +9560,7 @@ msgstr "플레이어:"
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "놀이"
@@ -9973,6 +10098,11 @@ msgstr "준비 중…"
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
 msgstr "프로덕션 배치가 추가되면 게이트 액세스에 대한 미리보기 상태."
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:98
+#. js-lingui-explicit-id
+msgid "Preview. This does not start a real call."
+msgstr "미리 보기. 이것은 실제 통화를 시작하지 않습니다."
 
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
@@ -11064,6 +11194,11 @@ msgstr "책 저장 중…"
 msgid "Say a few sentences in your own words. The examples below are only ideas."
 msgstr "자신의 말로 몇 문장을 말해보세요. 아래 예시는 아이디어로만 사용하세요."
 
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:126
+#. js-lingui-explicit-id
+msgid "Say something. The words will show up here."
+msgstr "무언가를 말하세요. 단어가 여기에 표시됩니다."
+
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -11501,6 +11636,11 @@ msgstr "결과 표시"
 msgid "Show strong data fundamentals"
 msgstr "견고한 데이터 기반을 보여주세요"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:181
+#. js-lingui-explicit-id
+msgid "Show the call again"
+msgstr "다시 전화 걸기 표시"
+
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
@@ -11790,6 +11930,11 @@ msgstr "소스 ID"
 msgid "Source text:"
 msgstr "출처 텍스트:"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Southern U.S."
+msgstr "남부 미국."
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:43
 #. js-lingui-explicit-id
 msgid "Spam"
@@ -11891,7 +12036,8 @@ msgid "Start Call"
 msgstr "통화 시작"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "대화를 시작하세요"
@@ -12082,6 +12228,11 @@ msgstr "자신의 길을 지키는 건 드뭅니다. 오늘 해야 할 일은 �
 #. js-lingui-explicit-id
 msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr "꾸준한 연습이 쌓입니다. 오늘은 여기에 집중하세요."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:20
+#. js-lingui-explicit-id
+msgid "Steady, North American"
+msgstr "꾸준히, 북미"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -12489,6 +12640,11 @@ msgstr "AI 선생님과 대화하기"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "AI 선생님과 개인 계획에 대해 이야기하세요"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
+#. js-lingui-explicit-id
+msgid "Talking time"
+msgstr "말하기 시간"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -12931,10 +13087,10 @@ msgstr "앱 설치하기\" 또는 \"홈 화면에 추가하기\"를 누르세요
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Chrome의 오른쪽 상단에 있는 메뉴 버튼을 탭하세요."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:130
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:156
 #. js-lingui-explicit-id
-msgid "Tap to hear"
-msgstr "탭하여 듣기"
+msgid "Tap to hear the teacher"
+msgstr "탭하여 선생님의 말을 들어보세요"
 
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
@@ -12944,7 +13100,8 @@ msgid ""
 msgstr "특정 기술에 집중하세요—말하기, 문법, 어휘 및 진행 추적—온라인 영어 유창성을 더 빠르게 달성합니다."
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:204
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Teacher"
 msgstr "선생님"
@@ -13196,6 +13353,11 @@ msgstr "감사합니다 — 우리는 귀하의 소개를 검토하고 있습니
 msgid "That time has already passed."
 msgstr "그 시간은 이미 지났습니다."
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:21
+#. js-lingui-explicit-id
+msgid "That's all the time for now"
+msgstr "지금은 시간이 다 됐습니다."
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -13225,6 +13387,13 @@ msgstr "앱은 음성 녹음을 처리하여 필사본과 피드백을 생성할
 #. js-lingui-explicit-id
 msgid "The beautiful thing about learning is that nobody can take it away from you."
 msgstr "배움의 아름다움은 아무도 당신에게서 그것을 빼앗아 갈 수 없다는 점입니다."
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:24
+#. js-lingui-explicit-id
+msgid ""
+"The call paused because the balance is empty. Add more hours if you want to "
+"keep talking"
+msgstr "통화가 일시 중지되었습니다. 이유는 잔액이 없기 때문입니다. 계속 대화를 원하신다면 시간을 더 추가하세요."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:16
 #. js-lingui-explicit-id
@@ -13687,10 +13856,10 @@ msgid ""
 "the one you want to practice."
 msgstr "이 레슨은 두 가지 다른 언어가 필요합니다: 이미 사용하시는 언어와 연습하고 싶은 언어."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:155
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:86
 #. js-lingui-explicit-id
-msgid "This model uses the Marin voice."
-msgstr "이 모델은 마린 음성을 사용합니다."
+msgid "This preview is not available."
+msgstr "이 미리보기를 사용할 수 없습니다."
 
 #: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
@@ -13971,11 +14140,6 @@ msgstr "트랜스크립트"
 msgid "Transcripts may be stored in the account to help track progress over time."
 msgstr "로그는 시간이 지남에 따라 학습 진척도를 추적하는 데 도움이 되도록 계정에 저장될 수 있습니다."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:92
-#. js-lingui-explicit-id
-msgid "Transcripts show up here as you talk."
-msgstr "말씀하시는 동안 대본이 여기에 표시됩니다."
-
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
@@ -14235,7 +14399,6 @@ msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "무제한 AI 대화 및 모든 연습 모드를 잠금 해제하세요."
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "음소거 해제"
@@ -14534,6 +14697,11 @@ msgid ""
 "Walk through middleware ordering (Authentication → Authorization → Routing "
 "→ Endpoint) and why it matters."
 msgstr "미들웨어 순서에 대한 설명 (인증 → 인가 → 라우팅 → 엔드포인트) 및 중요성."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:19
+#. js-lingui-explicit-id
+msgid "Warm, North American"
+msgstr "따뜻한, 북아메리카"
 
 #: src/features/Landing/LandingPage.tsx:267
 #. js-lingui-explicit-id
@@ -14887,6 +15055,11 @@ msgstr "가격이 얼마인가요?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "AsNoTracking을 언제 사용하고 어떤 장단점이 있는가?"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:198
+#. js-lingui-explicit-id
+msgid "When you make a mistake, I explain the rule and you try the sentence again."
+msgstr "당신이 실수를 하면, 제가 규칙을 설명하고 당신은 그 문장을 다시 시도합니다."
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:71
 #. js-lingui-explicit-id
@@ -15311,7 +15484,7 @@ msgid "Yesterday"
 msgstr "어제"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
 #. js-lingui-explicit-id
 msgid "You"
 msgstr "당신"
@@ -15580,6 +15753,11 @@ msgstr "{min}명에서 {max}명 사이의 플레이어가 필요합니다."
 #. js-lingui-explicit-id
 msgid "You said"
 msgstr "당신은 말했다"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:141
+#. js-lingui-explicit-id
+msgid "You speak"
+msgstr "당신은 말합니다"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
@@ -15909,6 +16087,26 @@ msgstr "당신은 여전히 ​​오르고 있습니다. 오늘의 작업으로
 msgid "{count} downloads"
 msgstr "{count} 다운로드 "
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:25
+#. js-lingui-explicit-id
+msgid "{count} hour"
+msgstr "{count} 시간"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
+#. js-lingui-explicit-id
+msgid "{count} hours"
+msgstr "{count} 시간"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
+#. js-lingui-explicit-id
+msgid "{count} minute"
+msgstr "{count} 분"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:30
+#. js-lingui-explicit-id
+msgid "{count} minutes"
+msgstr "{count} 분"
+
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
@@ -15935,7 +16133,7 @@ msgstr "{duration}초"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} 시간의 고급 AI 대화"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:59
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} 시간"
@@ -15949,16 +16147,6 @@ msgstr "{numberOfRounds} 라운드"
 #. js-lingui-explicit-id
 msgid "{seconds}s"
 msgstr "{seconds}초"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:146
-#. js-lingui-explicit-id
-msgid "{usd} per hour"
-msgstr "{usd} 시간당"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:145
-#. js-lingui-explicit-id
-msgid "{usd} per hour · {local}"
-msgstr "{usd} 시간당 · {local}"
 
 #: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id

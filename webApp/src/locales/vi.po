@@ -109,7 +109,7 @@ msgstr "1 giờ AI ≈ 1 giờ trò chuyện tích cực với AI."
 msgid "1 day"
 msgstr "1 ngày"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:58
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 giờ"
@@ -278,6 +278,11 @@ msgstr "Một lỗi sai là một phần của việc thực hành, không phả
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Một tháng học tập đang trong tầm tay. Hãy tiếp tục hôm nay."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:191
+#. js-lingui-explicit-id
+msgid "A normal chat. I will not stop you to teach."
+msgstr "Một cuộc trò chuyện bình thường. Tôi sẽ không ngăn bạn dạy."
+
 #: src/features/Router/BlockedAccess.tsx:163
 #. js-lingui-explicit-id
 msgid "A parent or guardian can withdraw consent later by contacting support."
@@ -431,11 +436,6 @@ msgstr "Thêm một cuốn sách"
 msgid "Add a reply"
 msgstr "Thêm trả lời"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:28
-#. js-lingui-explicit-id
-msgid "Add balance to keep talking"
-msgstr "Thêm số dư để tiếp tục nói chuyện"
-
 #: src/features/Alias/components/PlayersSetup.tsx:191
 #. js-lingui-explicit-id
 msgid "Add between 2 and 20 players. Tap a name to edit it."
@@ -456,6 +456,11 @@ msgstr "Thêm ngữ cảnh..."
 #. js-lingui-explicit-id
 msgid "Add language"
 msgstr "Thêm ngôn ngữ"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Add more hours"
+msgstr "Thêm giờ học"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:103
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
@@ -492,6 +497,11 @@ msgstr "Thêm người chơi"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Thêm Bài Viết"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
+#. js-lingui-explicit-id
+msgid "Add talking time"
+msgstr "Thêm thời gian nói chuyện"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -1123,6 +1133,11 @@ msgstr "Ít nhất {minWords} từ được yêu cầu"
 msgid "Attach my voice recording"
 msgstr "Đính kèm bản ghi âm giọng nói của tôi"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Australian"
+msgstr "Úc"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:40
 #. js-lingui-explicit-id
 msgid "Auth"
@@ -1225,10 +1240,16 @@ msgstr "Các câu trả lời tập trung vào phần backend"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Cân bằng"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:159
+#. js-lingui-explicit-id
+msgid "Balance ran out"
+msgstr "Hết số dư"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:29
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:29
@@ -1345,6 +1366,13 @@ msgstr "Phù hợp nhất cho hầu hết người tìm việc"
 msgid "Best value for consistent improvement."
 msgstr "Giá trị tốt nhất cho sự cải thiện liên tục."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Better quality and a higher price. It feels like a real human teacher."
+msgstr ""
+"Chất lượng tốt hơn và giá cao hơn. Nó mang lại cảm giác như một giáo viên "
+"thực sự."
+
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
 #. js-lingui-explicit-id
@@ -1433,10 +1461,20 @@ msgstr "Kết nối não bị lỗi."
 msgid "Brain connection successful!"
 msgstr "Kết nối não thành công!"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Brazilian Portuguese"
+msgstr "Tiếng Brazil - Bồ Đào Nha"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:28
 #. js-lingui-explicit-id
 msgid "Briefly describe your experience with C#, .NET, and designing APIs."
 msgstr "Mô tả ngắn gọn kinh nghiệm của bạn với C#, .NET và thiết kế API."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:21
+#. js-lingui-explicit-id
+msgid "British"
+msgstr "British"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1524,20 +1562,25 @@ msgstr "Mua giờ"
 msgid "Buy hours to start"
 msgstr "Mua giờ để bắt đầu"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:217
-#. js-lingui-explicit-id
-msgid "Buy more"
-msgstr "Mua thêm"
-
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:695
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Mua Thêm"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Buy more hours"
+msgstr "Mua thêm giờ"
+
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
 msgid "Buy unlimited access to keep talking."
 msgstr "Mua quyền truy cập không giới hạn để tiếp tục trò chuyện."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#. js-lingui-explicit-id
+msgid "Buying 1 hour of talking time"
+msgstr "Mua 1 giờ thời gian nói chuyện"
 
 #: src/features/RolePlay/scenarios/buying-a-train-ticket.ts:7
 #. js-lingui-explicit-id
@@ -1553,6 +1596,11 @@ msgstr "Mua {hours} giờ nói chuyện AI nâng cao"
 #. js-lingui-explicit-id
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "Mua {hours} giờ sử dụng AI"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#. js-lingui-explicit-id
+msgid "Buying {hours} hours of talking time"
+msgstr "Mua {hours} giờ thời gian nói chuyện"
 
 #: src/features/PayWall/CardValidator.tsx:105
 #. js-lingui-explicit-id
@@ -1612,6 +1660,11 @@ msgstr "Gọi trò chuyện"
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
 msgstr "Giới hạn thời gian gọi?"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:165
+#. js-lingui-explicit-id
+msgid "Call ended"
+msgstr "Cuộc gọi đã kết thúc"
 
 #: src/features/RolePlay/scenarios/calling-technical-support.ts:7
 #. js-lingui-explicit-id
@@ -2293,10 +2346,25 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Trung"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
+#. js-lingui-explicit-id
+msgid "Choose 1 hour"
+msgstr "Chọn 1 giờ"
+
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
 msgstr "Chọn ngày và giờ."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:182
+#. js-lingui-explicit-id
+msgid "Choose a lesson"
+msgstr "Chọn một bài học"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:85
+#. js-lingui-explicit-id
+msgid "Choose a teacher"
+msgstr "Chọn một giáo viên"
 
 #: src/features/Dashboard/Exams/ExamVariantPicker.tsx:38
 #. js-lingui-explicit-id
@@ -2385,10 +2453,20 @@ msgstr "Chọn ngôn ngữ của bạn"
 msgid "Choose your name"
 msgstr "Chọn tên của bạn"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
+#. js-lingui-explicit-id
+msgid "Choose {hours} hours"
+msgstr "Chọn {hours} giờ"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "Bộ Ngắt Mạch"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:18
+#. js-lingui-explicit-id
+msgid "Clear and calm"
+msgstr "Rõ ràng và điềm tĩnh"
 
 #: src/features/Case/data/backendCSharp/reviewSection.ts:25
 #. js-lingui-explicit-id
@@ -2653,6 +2731,7 @@ msgid "Confirm Credit Card"
 msgstr "Xác nhận Thẻ Tín Dụng"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2700,6 +2779,11 @@ msgstr "Xác nhận sẽ được gửi đến:"
 msgid "Connected..."
 msgstr "Đã kết nối..."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:110
+#. js-lingui-explicit-id
+msgid "Connecting"
+msgstr "Kết nối"
+
 #: src/features/Dashboard/BrainCard.tsx:139
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
@@ -2710,8 +2794,7 @@ msgstr "Đang kết nối với bộ não..."
 msgid "Connecting..."
 msgstr "Đang kết nối..."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:91
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:125
 #. js-lingui-explicit-id
 msgid "Connecting…"
 msgstr "Kết nối…"
@@ -2824,6 +2907,7 @@ msgstr "Ngữ cảnh (chủ đề, đối tượng, mục tiêu...)"
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:61
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:84
 #: src/features/News/NewsPlayButton.tsx:103
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:173
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
 #. js-lingui-explicit-id
@@ -3056,6 +3140,11 @@ msgstr "Không thể khởi động tài khoản của bạn. Vui lòng thử l�
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
 msgstr "Không thể viết câu hỏi tiếp theo của bạn. Vui lòng thử lại."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:71
+#. js-lingui-explicit-id
+msgid "Couldn't play that voice."
+msgstr "Không thể phát giọng đó."
 
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:154
 #. js-lingui-explicit-id
@@ -4525,14 +4614,10 @@ msgstr ""
 "Kích hoạt giọng nói AI là một tính năng cao cấp. Vui lòng nâng cấp số dư "
 "của bạn để có quyền truy cập vào tính năng này.\n"
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:140
-#. js-lingui-explicit-id
-msgid "End"
-msgstr "Kết thúc"
-
 #: src/features/Conversation/CallMode/CallButtons.tsx:599
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:102
 #: src/features/Conversation/ConversationCanvas.tsx:569
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:198
 #. js-lingui-explicit-id
 msgid "End call"
 msgstr "Kết thúc cuộc gọi"
@@ -4898,10 +4983,10 @@ msgstr ""
 "Kinh nghiệm đơn thuần không đủ khi các cuộc phỏng vấn tập trung vào lập "
 "luận, đánh đổi, và giao tiếp."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:134
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
 #. js-lingui-explicit-id
-msgid "EXPERIMENTAL"
-msgstr "THỰC NGHIỆM"
+msgid "Experimental feature: AI voice call (version 2)"
+msgstr "Tính năng thử nghiệm: Gọi thoại AI (phiên bản 2)"
 
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
@@ -4912,11 +4997,6 @@ msgstr "Tính năng thử nghiệm"
 #. js-lingui-explicit-id
 msgid "Experimental Lab"
 msgstr "Phòng Thí nghiệm Thử nghiệm"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Experimental. A separate balance, billed while the call is active."
-msgstr "Thử nghiệm. Một khoản phí riêng, được tính khi cuộc gọi đang hoạt động."
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:163
 #. js-lingui-explicit-id
@@ -5216,6 +5296,11 @@ msgstr "Kích thước tệp phải nhỏ hơn 250MB"
 msgid "File size must be less than 50MB"
 msgstr "Kích thước tệp phải nhỏ hơn 50MB"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Filipino English"
+msgstr "Tiếng Anh Philippines"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:97
 #. js-lingui-explicit-id
 msgid ""
@@ -5313,6 +5398,13 @@ msgstr "Cuộc trò chuyện đầu tiên"
 #. js-lingui-explicit-id
 msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Năm tuần đã trôi qua. Hãy duy trì năng lượng đó trong ngày hôm nay."
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Fix my grammar"
+msgstr "Sửa ngữ pháp của tôi"
 
 #: src/features/Alias/components/RoundSettings.tsx:140
 #. js-lingui-explicit-id
@@ -6250,11 +6342,6 @@ msgstr "Xem Trước Sửa Ngữ Pháp"
 msgid "Grammar Corrections"
 msgstr "Sửa lỗi ngữ pháp"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:192
-#. js-lingui-explicit-id
-msgid "Grammar from mistakes"
-msgstr "Ngữ pháp từ lỗi sai"
-
 #: src/features/Tasks/useDailyTasks.tsx:71
 #: src/features/Usage/UsageStatsCards.tsx:92
 #. js-lingui-explicit-id
@@ -6396,6 +6483,16 @@ msgstr "Vui vẻ!"
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Sức khỏe"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
+#. js-lingui-explicit-id
+msgid "Hear"
+msgstr "Nghe"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:148
+#. js-lingui-explicit-id
+msgid "Hear button"
+msgstr "Nút nghe"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:101
 #. js-lingui-explicit-id
@@ -6560,6 +6657,11 @@ msgstr "Nhận Phòng Khách Sạn"
 msgid "Hotel Check-In Conversation"
 msgstr "Cuộc trò chuyện khi nhận phòng khách sạn"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#. js-lingui-explicit-id
+msgid "Hours"
+msgstr "Giờ"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:43
 #: src/features/FluencyCall/FluencyCallCardView.tsx:49
 #. js-lingui-explicit-id
@@ -6658,6 +6760,11 @@ msgstr "Cách Nó Hoạt Động"
 #. js-lingui-explicit-id
 msgid "How it Works"
 msgstr "Cách Thức Hoạt Động"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:185
+#. js-lingui-explicit-id
+msgid "How should the teacher help while you talk?"
+msgstr "Giáo viên nên giúp đỡ bạn như thế nào khi bạn nói?"
 
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:130
 #. js-lingui-explicit-id
@@ -7168,6 +7275,11 @@ msgid ""
 "example."
 msgstr "Trong React, sự khác biệt giữa state và props là gì? Cho một ví dụ đơn giản."
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:122
+#. js-lingui-explicit-id
+msgid "In the call"
+msgstr "Trong cuộc gọi"
+
 #: src/features/Case/data/frontend-senior/quizData.ts:144
 #. js-lingui-explicit-id
 msgid ""
@@ -7444,6 +7556,11 @@ msgstr "Liên kết mời đã được gửi tới:"
 msgid "iPhone / iPad"
 msgstr "iPhone / iPad"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Irish"
+msgstr "Ai-len"
+
 #: src/features/Landing/LandingPage.tsx:126
 #. js-lingui-explicit-id
 msgid "Is FluencyPal a replacement for a human teacher?"
@@ -7646,7 +7763,8 @@ msgstr "phỏng vấn lập trình viên frontend junior"
 msgid "junior frontend interview"
 msgstr "phỏng vấn frontend cấp junior"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:178
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Just talk"
@@ -7936,6 +8054,11 @@ msgstr "Độ dài"
 msgid "Less"
 msgstr "Ít hơn"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
+#. js-lingui-explicit-id
+msgid "Lesson"
+msgstr "Bài học"
+
 #: src/features/Plan/LessonStartModal.tsx:474
 #. js-lingui-explicit-id
 msgid "Lesson Plan"
@@ -8022,17 +8145,6 @@ msgstr "Luyện nghe. Bạn sẽ nghe các phản hồi của AI"
 #. js-lingui-explicit-id
 msgid "Live as if you were to die tomorrow. Learn as if you were to live forever."
 msgstr "Sống như thể bạn sẽ chết vào ngày mai. Học như thể bạn sẽ sống mãi mãi."
-
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:67
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Live conversation"
-msgstr "Cuộc hội thoại trực tiếp"
-
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:30
-#. js-lingui-explicit-id
-msgid "Live conversation stops when the balance reaches zero."
-msgstr "Cuộc trò chuyện trực tiếp dừng lại khi số dư đạt đến không."
 
 #: src/features/Chat/MessageChain.tsx:70
 #: src/features/Chat/MessageChain.tsx:108
@@ -8131,6 +8243,7 @@ msgstr "Đang tải..."
 #: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Loading…"
@@ -8550,7 +8663,6 @@ msgid "Motivation comes and goes — habits carry you. Try today’s tasks."
 msgstr "Động lực đến rồi đi — thói quen sẽ giúp bạn. Hãy thử các nhiệm vụ hôm nay."
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Mute"
 msgstr "Tắt tiếng"
@@ -8564,6 +8676,11 @@ msgstr "My Books -> Sách Của Tôi"
 #. js-lingui-explicit-id
 msgid "My Language is..."
 msgstr "Ngôn ngữ của tôi là..."
+
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:192
+#. js-lingui-explicit-id
+msgid "My mic"
+msgstr "Mic của tôi"
 
 #: src/features/Sentence/TextConstructor/TextConstructorStats.tsx:27
 #. js-lingui-explicit-id
@@ -9132,6 +9249,7 @@ msgstr "Không cảm thấy tiến bộ thực sự?"
 msgid "Not Found"
 msgstr "Không tìm thấy"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
 msgid "Not now"
@@ -9389,11 +9507,6 @@ msgstr "Mở Trò Chuyện Bằng Giọng Nói"
 msgid "Open your browser menu."
 msgstr "Mở menu trình duyệt của bạn."
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:56
-#. js-lingui-explicit-id
-msgid "Opening checkout…"
-msgstr "Mở thanh toán…"
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -9604,6 +9717,7 @@ msgid "Pay {amount}"
 msgstr "Trả {amount}"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Thanh toán"
@@ -9629,10 +9743,10 @@ msgstr "Lịch sử thanh toán"
 msgid "Payment option"
 msgstr "Tùy chọn thanh toán"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:151
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
 #. js-lingui-explicit-id
-msgid "Payment received. The balance updates after Stripe confirms it."
-msgstr "Đã nhận thanh toán. Số dư sẽ được cập nhật sau khi Stripe xác nhận."
+msgid "Payment received. Your balance updates in a moment."
+msgstr "Đã nhận thanh toán. Số dư của bạn sẽ được cập nhật trong giây lát."
 
 #: src/features/Usage/HoursPaymentModal/PaymentSuccess.tsx:32
 #. js-lingui-explicit-id
@@ -9773,6 +9887,16 @@ msgstr ""
 "Chọn một tên người dùng và một hình đại diện. Những người khác sẽ nhìn thấy "
 "chúng."
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:88
+#. js-lingui-explicit-id
+msgid "Pick a voice. You can hear a short sample first."
+msgstr "Chọn một giọng nói. Bạn có thể nghe một đoạn mẫu ngắn trước."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
+#. js-lingui-explicit-id
+msgid "Pick how many hours to add. The call ends when the balance runs out."
+msgstr "Chọn số giờ để thêm. Cuộc gọi kết thúc khi số dư hết."
+
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
 msgid "Pick one or more categories to build your word list."
@@ -9887,6 +10011,7 @@ msgstr "Người chơi:"
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "Chơi"
@@ -10478,6 +10603,11 @@ msgid "Preview state for gated access once production placement is added."
 msgstr ""
 "Xem trước trạng thái cho quyền truy cập có kiểm soát khi đã thêm vị trí sản "
 "xuất."
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:98
+#. js-lingui-explicit-id
+msgid "Preview. This does not start a real call."
+msgstr "Xem trước. Điều này không bắt đầu một cuộc gọi thực sự."
 
 #: src/features/Sentence/StoriesModal.tsx:652
 #. js-lingui-explicit-id
@@ -11600,6 +11730,11 @@ msgstr "Đang lưu sách…"
 msgid "Say a few sentences in your own words. The examples below are only ideas."
 msgstr "Nói vài câu bằng lời của bạn. Các ví dụ dưới đây chỉ là ý tưởng."
 
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:126
+#. js-lingui-explicit-id
+msgid "Say something. The words will show up here."
+msgstr "Hãy nói điều gì đó. Các từ sẽ xuất hiện ở đây."
+
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
 msgid "Scenario Description"
@@ -12045,6 +12180,11 @@ msgstr "Hiển thị kết quả"
 msgid "Show strong data fundamentals"
 msgstr "Hiển thị các nền tảng dữ liệu vững chắc"
 
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:181
+#. js-lingui-explicit-id
+msgid "Show the call again"
+msgstr "Hiện lại cuộc gọi"
+
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
@@ -12349,6 +12489,11 @@ msgstr "ID nguồn"
 msgid "Source text:"
 msgstr "Văn bản nguồn:"
 
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Southern U.S."
+msgstr "Miền Nam Hoa Kỳ."
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:43
 #. js-lingui-explicit-id
 msgid "Spam"
@@ -12452,7 +12597,8 @@ msgid "Start Call"
 msgstr "Bắt đầu cuộc gọi"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:209
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
 msgstr "Bắt đầu cuộc trò chuyện"
@@ -12649,6 +12795,11 @@ msgid "Steady practice compounds. Here’s what to focus on today."
 msgstr ""
 "Thực hành kiên trì sẽ mang lại kết quả tích lũy. Đây là những điều cần tập "
 "trung vào hôm nay."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:20
+#. js-lingui-explicit-id
+msgid "Steady, North American"
+msgstr "Vững Vàng, Bắc Mỹ"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:15
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:15
@@ -13088,6 +13239,11 @@ msgstr "Nói chuyện với giáo viên AI"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "Nói chuyện với giáo viên AI, theo kế hoạch cá nhân của bạn"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
+#. js-lingui-explicit-id
+msgid "Talking time"
+msgstr "Thời gian nói chuyện"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -13556,10 +13712,10 @@ msgstr "Nhấn \"Cài đặt ứng dụng\" hoặc \"Thêm vào Màn hình chín
 msgid "Tap the menu button in the top-right corner of Chrome."
 msgstr "Nhấn vào nút menu ở góc trên cùng bên phải của Chrome."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:130
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:156
 #. js-lingui-explicit-id
-msgid "Tap to hear"
-msgstr "Nhấn để nghe"
+msgid "Tap to hear the teacher"
+msgstr "Nhấn để nghe giáo viên"
 
 #: src/features/Landing/LandingPage.tsx:384
 #. js-lingui-explicit-id
@@ -13571,7 +13727,8 @@ msgstr ""
 "tiến độ—để đạt được khả năng nói tiếng Anh trực tuyến nhanh hơn."
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:204
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Teacher"
 msgstr "Giáo viên"
@@ -13835,6 +13992,11 @@ msgstr "Cảm ơn — chúng tôi đang xem xét giới thiệu của bạn"
 msgid "That time has already passed."
 msgstr "Thời gian đó đã qua rồi."
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:21
+#. js-lingui-explicit-id
+msgid "That's all the time for now"
+msgstr "Đó là tất cả thời gian cho đến bây giờ"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:57
 #: src/features/Case/data/frontend-senior/reviewSection.ts:57
 #. js-lingui-explicit-id
@@ -13868,6 +14030,15 @@ msgstr "Ứng dụng có thể xử lý các bản ghi âm để tạo ra bản 
 #. js-lingui-explicit-id
 msgid "The beautiful thing about learning is that nobody can take it away from you."
 msgstr "Điều tuyệt vời về việc học là không ai có thể lấy nó đi khỏi bạn."
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:24
+#. js-lingui-explicit-id
+msgid ""
+"The call paused because the balance is empty. Add more hours if you want to "
+"keep talking"
+msgstr ""
+"Cuộc gọi bị tạm dừng vì số dư đã hết. Thêm giờ nếu bạn muốn tiếp tục nói "
+"chuyện."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:16
 #. js-lingui-explicit-id
@@ -14375,10 +14546,10 @@ msgstr ""
 "Bài học này cần hai ngôn ngữ khác nhau: ngôn ngữ mà bạn đã nói và ngôn ngữ "
 "mà bạn muốn thực hành."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:155
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:86
 #. js-lingui-explicit-id
-msgid "This model uses the Marin voice."
-msgstr "Mô hình này sử dụng giọng nói của Marin."
+msgid "This preview is not available."
+msgstr "Bản xem trước này không khả dụng."
 
 #: src/features/Quiz/components/QuizModal.tsx:289
 #. js-lingui-explicit-id
@@ -14677,11 +14848,6 @@ msgstr ""
 "Bảng điểm có thể được lưu trữ trong tài khoản để giúp theo dõi tiến trình "
 "theo thời gian."
 
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:92
-#. js-lingui-explicit-id
-msgid "Transcripts show up here as you talk."
-msgstr "Bảng phiên âm sẽ hiển thị ở đây khi bạn nói."
-
 #: src/features/Chat/Message/MessageFooter.tsx:68
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
@@ -14945,7 +15111,6 @@ msgid "Unlock unlimited AI conversations and all practice modes"
 msgstr "Mở khóa trò chuyện AI không giới hạn và tất cả các chế độ thực hành"
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:129
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:121
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "Bật âm thanh"
@@ -15266,6 +15431,11 @@ msgid ""
 msgstr ""
 "Đi qua thứ tự của middleware (Xác thực → Ủy quyền → Định tuyến → Điểm kết) "
 "và tại sao nó quan trọng."
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:19
+#. js-lingui-explicit-id
+msgid "Warm, North American"
+msgstr "Ấm áp, Bắc Mỹ"
 
 #: src/features/Landing/LandingPage.tsx:267
 #. js-lingui-explicit-id
@@ -15638,6 +15808,11 @@ msgstr "Giá bao nhiêu?"
 #. js-lingui-explicit-id
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Khi nào bạn sử dụng AsNoTracking và các đánh đổi là gì?"
+
+#: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:198
+#. js-lingui-explicit-id
+msgid "When you make a mistake, I explain the rule and you try the sentence again."
+msgstr "Khi bạn mắc lỗi, tôi sẽ giải thích quy tắc và bạn thử lại câu đó."
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:71
 #. js-lingui-explicit-id
@@ -16105,7 +16280,7 @@ msgid "Yesterday"
 msgstr "Hôm qua"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/OpenAiLiveCall.tsx:98
+#: src/features/OpenAiLive/OpenAiLiveCall.tsx:132
 #. js-lingui-explicit-id
 msgid "You"
 msgstr "Bạn"
@@ -16412,6 +16587,11 @@ msgstr "Bạn cần từ {min} đến {max} người chơi."
 #. js-lingui-explicit-id
 msgid "You said"
 msgstr "Bạn đã nói"
+
+#: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:141
+#. js-lingui-explicit-id
+msgid "You speak"
+msgstr "Bạn nói"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
@@ -16769,6 +16949,26 @@ msgstr "Bạn vẫn đang leo trèo. Hãy tiến thêm bước nữa với nhữ
 msgid "{count} downloads"
 msgstr "{count} lượt tải xuống"
 
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:25
+#. js-lingui-explicit-id
+msgid "{count} hour"
+msgstr "{count} giờ"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
+#. js-lingui-explicit-id
+msgid "{count} hours"
+msgstr "{count} giờ"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
+#. js-lingui-explicit-id
+msgid "{count} minute"
+msgstr "{count} phút"
+
+#: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:30
+#. js-lingui-explicit-id
+msgid "{count} minutes"
+msgstr "{khoảng} phút"
+
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
 #. js-lingui-explicit-id
@@ -16795,7 +16995,7 @@ msgstr "{duration} giây"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} giờ đàm thoại AI nâng cao"
 
-#: src/features/OpenAiLive/OpenAiLivePaywall.tsx:59
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} giờ"
@@ -16809,16 +17009,6 @@ msgstr "{sốVòng} vòng"
 #. js-lingui-explicit-id
 msgid "{seconds}s"
 msgstr "{seconds}s"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:146
-#. js-lingui-explicit-id
-msgid "{usd} per hour"
-msgstr "{usd} mỗi giờ"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:145
-#. js-lingui-explicit-id
-msgid "{usd} per hour · {local}"
-msgstr "{usd} mỗi giờ · {local}"
 
 #: src/features/Game/Battle/BattleCard.tsx:144
 #. js-lingui-explicit-id
