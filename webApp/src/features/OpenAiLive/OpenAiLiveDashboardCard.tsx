@@ -163,10 +163,8 @@ export const OpenAiLiveDashboardCard = () => {
       ) : null}
       <Stack data-testid="open-ai-live-card" sx={{ gap: '16px' }}>
         <SectionHeader
-          title={i18n._('Talk with AI. Experimental feature.')}
-          subTitle={i18n._(
-            'A voice call to practice speaking. Better quality, but more expensive.',
-          )}
+          title={i18n._('Experimental feature: AI voice call')}
+          subTitle={i18n._('Better quality, but more expensive.')}
         />
         <Stack
           sx={{
@@ -176,6 +174,7 @@ export const OpenAiLiveDashboardCard = () => {
             color: '#fff',
             backgroundColor: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.12)',
+            position: 'relative',
           }}
         >
           <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -189,18 +188,19 @@ export const OpenAiLiveDashboardCard = () => {
               />
             </Stack>
             <IconButton
+              color="info"
               data-testid="open-ai-live-add"
               aria-label={i18n._('Buy more hours')}
               onClick={() => setHoursOpen(true)}
               sx={{
                 width: 44,
                 height: 44,
-                color: '#1b1033',
-                backgroundColor: '#fff',
-                '&:hover': { backgroundColor: '#f2f2f2' },
+                position: 'absolute',
+                right: '10px',
+                top: '10px',
               }}
             >
-              <CreditCard size={22} />
+              <CreditCard size={18} />
             </IconButton>
           </Stack>
 
