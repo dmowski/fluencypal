@@ -51,6 +51,9 @@ export interface UserSettings extends InitUserSettings {
 
   age18PlusConfirmedAtIso?: string | null;
 
+  /** Set once, the first time they agree to the group-call rules. */
+  fluencyCallConductAgreedAtIso?: string | null;
+
   isSendEmailNotifications?: boolean | null;
   teacherVoice: AiVoice | null;
   recentLearnLanguages?: SupportedLanguage[] | null;

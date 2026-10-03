@@ -1,12 +1,12 @@
-export const GoogleMeetIcon = () => (
+export const GoogleMeetIcon = ({ size = 36 }: { size?: number }) => (
   <svg
-    width="36"
-    height="28"
+    width={size}
+    height={Math.round((size * 28) / 36)}
     viewBox="0 0 176 138"
     fill="none"
     aria-hidden
     data-testid="fluency-call-meet-icon"
-    style={{ width: 36, height: 28, flexShrink: 0 }}
+    style={{ width: size, height: Math.round((size * 28) / 36), flexShrink: 0 }}
   >
     <path
       fill="url(#fluency-meet-lens)"

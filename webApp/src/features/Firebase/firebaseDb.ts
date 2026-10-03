@@ -48,7 +48,12 @@ import { NewsStat } from '@/features/News/types';
 import { QuizStat, UserQuizRecord } from '@/features/Quiz/types';
 import { InteractiveLessonFirestoreDoc } from '@/features/InteractiveLesson/types';
 import { UserDailyQuestion } from '@/features/DailyQuestion/types';
-import { FluencyCall, FluencyCallRequest, FluencyCallRsvp } from '@/features/FluencyCall/types';
+import {
+  FluencyCall,
+  FluencyCallAccount,
+  FluencyCallRequest,
+  FluencyCallRsvp,
+} from '@/features/FluencyCall/types';
 import { OpenAiLiveAccount } from '@/features/OpenAiLive/types';
 
 interface FirestoreDataConverter<T> {
@@ -281,6 +286,9 @@ export const db = {
 
     openAiLiveAccount: (userId?: string) =>
       userId ? dataPointDoc<OpenAiLiveAccount>(`users/${userId}/openAiLive/account`) : null,
+
+    fluencyCallAccount: (userId?: string) =>
+      userId ? dataPointDoc<FluencyCallAccount>(`users/${userId}/fluencyCall/account`) : null,
 
     interactiveLessonState: (userId?: string, languageCode?: SupportedLanguage) =>
       userId && languageCode

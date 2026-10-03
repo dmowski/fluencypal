@@ -1,7 +1,10 @@
 import { FluencyCall } from './types';
 import {
   buildCallRequestTelegramMessage,
+  fluencyCallRowTitle,
   formatCallStartLabel,
+  formatCallLabel,
+  timeZoneCity,
   formatWarsawDateTime,
   buildMonthGrid,
   fromDatetimeLocalValue,
@@ -10,6 +13,7 @@ import {
   isHttpUrl,
   isUpcomingCallInstant,
   localDateTimeToUtcIso,
+  selectListedCalls,
   selectVisibleCall,
   suggestedCallSlot,
   toDatetimeLocalValue,
@@ -63,6 +67,69 @@ describe('getCallCountdown', () => {
 
   it('returns null for an invalid time', () => {
     expect(getCallCountdown('not-a-date', now)).toBeNull();
+  });
+});
+
+describe('selectListedCalls', () => {
+  const now = new Date('2026-10-03T12:00:00.000Z');
+
+  it('lists upcoming calls in start order and hides stopped ones', () => {
+    const later = call({ id: 'later', startsAtIso: '2026-10-08T17:00:00.000Z' });
+    const sooner = call({ id: 'sooner', startsAtIso: '2026-10-04T17:00:00.000Z' });
+    const stopped = call({
+      id: 'stopped',
+      startsAtIso: '2026-10-06T16:00:00.000Z',
+      status: 'stopped',
+    });
+    expect(selectListedCalls([later, stopped, sooner], now).map((item) => item.id)).toEqual([
+      'sooner',
+      'later',
+    ]);
+  });
+
+  it('keeps a call that started recently and drops one from yesterday', () => {
+    const recent = call({ id: 'recent', startsAtIso: '2026-10-03T11:00:00.000Z' });
+    const stale = call({ id: 'stale', startsAtIso: '2026-10-02T20:00:00.000Z' });
+    expect(selectListedCalls([stale, recent], now).map((item) => item.id)).toEqual(['recent']);
+  });
+});
+
+describe('call labels in a timezone', () => {
+  const words = { today: 'Today', tomorrow: 'Tomorrow', now: 'Now' };
+  const warsaw = 'Europe/Warsaw';
+
+  it('uses tomorrow and the clock in that zone', () => {
+    const now = new Date('2026-10-03T16:00:00.000Z');
+    const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);
+    expect(label).toMatchObject({ month: 'OCT', day: '4', time: '19:00', relative: 'tomorrow' });
+    expect(label && fluencyCallRowTitle(label, false, words)).toBe('Tomorrow · 19:00');
+  });
+
+  it('shifts the same instant for a viewer further west', () => {
+    const now = new Date('2026-10-03T16:00:00.000Z');
+    const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', 'America/New_York');
+    expect(label).toMatchObject({ month: 'OCT', day: '4', time: '13:00', relative: 'tomorrow' });
+    expect(timeZoneCity('America/New_York')).toBe('New York');
+  });
+
+  it('calls the same local day today after UTC midnight', () => {
+    const now = new Date('2026-10-03T22:30:00.000Z');
+    const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);
+    expect(label?.relative).toBe('today');
+    expect(label && fluencyCallRowTitle(label, false, words)).toBe('Today · 19:00');
+  });
+
+  it('uses the weekday when the call is further out', () => {
+    const now = new Date('2026-10-03T16:00:00.000Z');
+    const label = formatCallLabel('2026-10-06T16:00:00.000Z', now, 'en', warsaw);
+    expect(label).toMatchObject({ month: 'OCT', day: '6', time: '18:00', relative: 'weekday' });
+    expect(label?.weekday).toBe('Tuesday');
+  });
+
+  it('labels a started call as now', () => {
+    const now = new Date('2026-10-04T17:30:00.000Z');
+    const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);
+    expect(label && fluencyCallRowTitle(label, true, words)).toBe('Now · 19:00');
   });
 });
 

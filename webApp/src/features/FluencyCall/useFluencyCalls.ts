@@ -5,7 +5,7 @@ import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firesto
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
 import { countUnreadChatMessages } from '@/features/Chat/chatListUtils';
-import { selectVisibleCall } from './callTime';
+import { selectListedCalls } from './callTime';
 import { fluencyCallChatSpaceId } from './fluencyCallChat';
 import { FluencyCallRequest } from './types';
 
@@ -20,10 +20,10 @@ export function useFluencyCalls() {
   };
 }
 
-export function useVisibleFluencyCall(now: Date) {
+export function useListedFluencyCalls(now: Date) {
   const { calls, loading } = useFluencyCalls();
-  const call = useMemo(() => selectVisibleCall(calls, now), [calls, now]);
-  return { call, loading };
+  const listed = useMemo(() => selectListedCalls(calls, now), [calls, now]);
+  return { calls: listed, loading };
 }
 
 export function isPendingCallRequest(

@@ -15,6 +15,8 @@ import {
   openAiLiveHoursFromMetadata,
 } from '@/features/OpenAiLive/pricing';
 import { recordOpenAiLivePayment } from '@/features/OpenAiLive/backend/recordPayment';
+import { FLUENCY_CALL_STRIPE_PRODUCT } from '@/features/FluencyCall/pricing';
+import { recordFluencyCallPayment } from '@/features/FluencyCall/backend/recordPayment';
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
@@ -153,6 +155,15 @@ export async function POST(request: Request) {
           userId,
           paymentId,
           hours,
+          amountPaid,
+          currency: currency || 'usd',
+          chargeId,
+          receiptUrl,
+        });
+      } else if (product === FLUENCY_CALL_STRIPE_PRODUCT) {
+        await recordFluencyCallPayment({
+          userId,
+          paymentId,
           amountPaid,
           currency: currency || 'usd',
           chargeId,

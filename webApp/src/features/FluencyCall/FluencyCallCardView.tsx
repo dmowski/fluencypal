@@ -1,266 +1,336 @@
 'use client';
-import { Lock, Square, SquareCheck, MessageSquare, ArrowRight } from 'lucide-react';
+
+import { ReactNode } from 'react';
+import { Check, MessageSquare, Plus, Users } from 'lucide-react';
 import { Badge, Box, Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { CallCountdown } from './types';
-import { CommunityCallsHeader } from './CommunityCallsHeader';
+import { GoogleMeetIcon } from './GoogleMeetIcon';
 
-export type FluencyCallCardViewProps = {
-  startsAtLabel: string;
-  countdown: CallCountdown;
-  isMember: boolean;
-  membershipReady: boolean;
-  isJoining: boolean;
+const cardSx = {
+  gap: '16px',
+  padding: '20px',
+  borderRadius: '16px',
+  backgroundColor: '#1c1e24',
+  border: '1px solid rgba(255, 255, 255, 0.08)',
+};
+
+const outlineButtonSx = {
+  minHeight: '40px',
+  padding: '8px 14px',
+  borderRadius: '10px',
+  borderColor: 'rgba(255, 255, 255, 0.16)',
+  color: '#b7d4e8',
+  fontWeight: 600,
+  textTransform: 'none',
+  flexShrink: 0,
+  '&:hover': {
+    borderColor: 'rgba(183, 212, 232, 0.45)',
+    backgroundColor: 'rgba(183, 212, 232, 0.08)',
+  },
+};
+
+export type FluencyCallRowViewProps = {
+  callId: string;
+  month: string;
+  day: string;
+  title: string;
   joinCount: number;
+  isJoining: boolean;
+  isLive: boolean;
   canOpenCall: boolean;
+  unreadCount: number;
   isJoinPending: boolean;
   onToggleJoin: () => void;
   onShowChat: () => void;
-  unreadCount: number;
-  onJoinMembership: () => void;
   onOpenCall: () => void;
 };
 
-export const FluencyCallCardView = ({
-  startsAtLabel,
-  countdown,
-  isMember,
-  membershipReady,
-  isJoining,
+export const FluencyCallRowView = ({
+  callId,
+  month,
+  day,
+  title,
   joinCount,
+  isJoining,
+  isLive,
   canOpenCall,
+  unreadCount,
   isJoinPending,
   onToggleJoin,
   onShowChat,
-  unreadCount,
-  onJoinMembership,
   onOpenCall,
-}: FluencyCallCardViewProps) => {
+}: FluencyCallRowViewProps) => {
   const { i18n } = useLingui();
-  const underAMinute = countdown.days === 0 && countdown.hours === 0 && countdown.minutes === 0;
-  const units = underAMinute
-    ? [
-        { value: countdown.hours, label: i18n._('hours') },
-        { value: countdown.minutes, label: i18n._('minutes') },
-        { value: countdown.seconds, label: i18n._('seconds') },
-      ]
-    : [
-        { value: countdown.days, label: i18n._('days') },
-        { value: countdown.hours, label: i18n._('hours') },
-        { value: countdown.minutes, label: i18n._('minutes') },
-      ];
 
   return (
     <Stack
-      data-testid="fluency-call-card"
+      data-testid={`fluency-call-row-${callId}`}
+      direction="row"
       sx={{
-        gap: '16px',
-        padding: '20px',
-        borderRadius: '16px',
-        backgroundColor: '#1c1e24',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        alignItems: 'center',
+        gap: '12px',
+        padding: '14px 0',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        flexWrap: 'wrap',
       }}
     >
-      <CommunityCallsHeader />
       <Stack
-        direction="row"
         sx={{
+          width: 52,
+          height: 52,
+          flexShrink: 0,
           alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '12px',
+          justifyContent: 'center',
+          borderRadius: '12px',
+          backgroundColor: 'rgba(255, 255, 255, 0.06)',
+          gap: '1px',
         }}
       >
-        {startsAtLabel && (
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>
-            {startsAtLabel}
-          </Typography>
-        )}
+        <Typography
+          sx={{
+            fontSize: '10px',
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            opacity: 0.6,
+            lineHeight: 1,
+          }}
+        >
+          {month}
+        </Typography>
+        <Typography sx={{ fontSize: '22px', fontWeight: 700, lineHeight: 1 }}>{day}</Typography>
       </Stack>
 
-      {countdown.isLive ? (
-        <Stack
-          data-testid="fluency-call-live"
-          direction="row"
-          sx={{
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
+      <Stack sx={{ flex: '1 1 140px', minWidth: 0, gap: '4px' }}>
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
+          <Typography sx={{ fontWeight: 700 }}>{title}</Typography>
+          {isLive ? (
+            <Box
+              data-testid={`fluency-call-live-${callId}`}
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                backgroundColor: '#7DDEAA',
+                flexShrink: 0,
+              }}
+            />
+          ) : null}
+        </Stack>
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '6px', opacity: 0.7 }}>
+          <Users size={14} />
           <Typography
-            variant="h6"
+            component="span"
+            data-testid={`fluency-call-join-count-${callId}`}
+            variant="body2"
+          >
+            {i18n._('{count} joining', { count: joinCount })}
+          </Typography>
+        </Stack>
+      </Stack>
+
+      <Stack direction="row" sx={{ alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+        <Badge
+          color="error"
+          badgeContent={unreadCount > 0 ? unreadCount : undefined}
+          invisible={unreadCount < 1}
+          data-testid={`fluency-call-unread-${callId}`}
+        >
+          <Button
+            variant="outlined"
+            data-testid={`fluency-call-show-chat-${callId}`}
+            onClick={onShowChat}
+            aria-label={i18n._('Show chat')}
             sx={{
-              fontWeight: 700,
-              color: '#7DDEAA',
+              ...outlineButtonSx,
+              minWidth: '40px',
+              width: '40px',
+              padding: 0,
             }}
           >
-            {i18n._('Happening now')}
-          </Typography>
-          <Box
+            <MessageSquare size={18} />
+          </Button>
+        </Badge>
+
+        {canOpenCall ? (
+          <Button
+            variant="outlined"
+            data-testid={`fluency-call-open-${callId}`}
+            onClick={onOpenCall}
+            sx={outlineButtonSx}
+          >
+            {i18n._('Join')}
+          </Button>
+        ) : (
+          <Button
+            variant="outlined"
+            data-testid={`fluency-call-join-${callId}`}
+            aria-pressed={isJoining}
+            disabled={isJoinPending}
+            onClick={onToggleJoin}
+            startIcon={isJoining ? <Check size={16} /> : <Plus size={16} />}
             sx={{
-              width: 8,
-              height: 8,
-              marginTop: '3px',
-              borderRadius: '50%',
-              backgroundColor: '#7DDEAA',
-              flexShrink: 0,
-              animation: 'fluencyCallLivePulse 1.4s ease-in-out infinite',
-              '@keyframes fluencyCallLivePulse': {
-                '0%, 100%': { opacity: 1, transform: 'scale(1)' },
-                '50%': { opacity: 0.8, transform: 'scale(0.9)' },
-              },
+              ...outlineButtonSx,
+              ...(isJoining ? { backgroundColor: 'rgba(183, 212, 232, 0.12)' } : {}),
             }}
-          />
+          >
+            {isJoining ? i18n._('Joined') : i18n._("I'll join")}
+          </Button>
+        )}
+      </Stack>
+    </Stack>
+  );
+};
+
+export type FluencyCallCardViewProps = {
+  hasCalls: boolean;
+  canJoin: boolean;
+  requestedAtLabel: string | null;
+  paidNotice: boolean;
+  accessUntilLabel: string | null;
+  timeZoneLabel: string;
+  onInitiateCall: () => void;
+  onGetAccess: () => void;
+  children?: ReactNode;
+};
+
+export const FluencyCallCardView = ({
+  hasCalls,
+  canJoin,
+  requestedAtLabel,
+  paidNotice,
+  accessUntilLabel,
+  timeZoneLabel,
+  onInitiateCall,
+  onGetAccess,
+  children,
+}: FluencyCallCardViewProps) => {
+  const { i18n } = useLingui();
+  const hasRequest = Boolean(requestedAtLabel);
+
+  return (
+    <Stack data-testid="fluency-call-card" sx={cardSx}>
+      <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '12px' }}>
+        <Stack
+          sx={{
+            width: '52px',
+            height: '52px',
+            flexShrink: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '12px',
+            border: '1px solid rgba(255, 255, 255, 0.04)',
+            backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          }}
+        >
+          <GoogleMeetIcon size={28} />
+        </Stack>
+        <Stack sx={{ gap: '2px' }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+            {i18n._('Group conversations')}
+          </Typography>
+          <Typography variant="body2" sx={{ opacity: 0.7 }}>
+            {i18n._('On Google Meet')}
+          </Typography>
+        </Stack>
+      </Stack>
+
+      <Typography sx={{ opacity: 0.75, padding: '14px 0' }}>
+        {i18n._('Practise speaking with other learners.')}
+        <br />
+        {i18n._('Join the conversations that fit your week.')}
+      </Typography>
+
+      {paidNotice ? (
+        <Typography data-testid="fluency-call-paid" sx={{ color: '#7DDEAA', fontWeight: 700 }}>
+          {canJoin
+            ? i18n._('Payment received. You can join the calls.')
+            : i18n._('Payment received. Access shows up in a moment.')}
+        </Typography>
+      ) : null}
+
+      {accessUntilLabel ? (
+        <Typography data-testid="fluency-call-access-until" variant="body2" sx={{ opacity: 0.7 }}>
+          {accessUntilLabel}
+        </Typography>
+      ) : null}
+
+      {hasCalls ? (
+        <Stack>
+          <Stack
+            direction="row"
+            sx={{
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              gap: '12px',
+              paddingTop: '4px',
+            }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {i18n._('Upcoming calls')}
+            </Typography>
+            <Typography variant="caption" sx={{ opacity: 0.55 }}>
+              {i18n._('All times in {zone}', { zone: timeZoneLabel })}
+            </Typography>
+          </Stack>
+          {children}
+          <Typography variant="body2" sx={{ opacity: 0.5, paddingTop: '8px' }}>
+            {i18n._('You can join more than one call.')}
+          </Typography>
         </Stack>
       ) : (
-        <Stack
-          data-testid="fluency-call-countdown"
-          direction="row"
-          sx={{
-            gap: '10px',
-          }}
-        >
-          {units.map((unit) => (
-            <Stack
-              key={unit.label}
-              sx={{
-                flex: 1,
-                alignItems: 'center',
-                gap: '4px',
-                padding: '14px 8px',
-                borderRadius: '12px',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 700,
-                  lineHeight: 1,
-                }}
-              >
-                {unit.value}
+        <Stack sx={{ gap: '12px' }}>
+          {canJoin && hasRequest ? (
+            <Stack data-testid="fluency-call-request-sent" sx={{ gap: '6px' }}>
+              <Typography sx={{ fontWeight: 800, color: '#7DDEAA' }}>
+                {i18n._('Request sent')}
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {unit.label}
-              </Typography>
+              <Typography sx={{ fontWeight: 700 }}>{requestedAtLabel}</Typography>
+              <Typography sx={{ opacity: 0.8 }}>{i18n._("We'll reply soon.")}</Typography>
             </Stack>
-          ))}
-        </Stack>
-      )}
-
-      {membershipReady && !isMember && (
-        <Typography
-          data-testid="fluency-call-members-label"
-          variant="body2"
-          sx={{
-            fontWeight: 700,
-            color: '#E7C27D',
-          }}
-        >
-          {i18n._('FluencyPal Calls are only for members')}
-        </Typography>
-      )}
-
-      {membershipReady && isMember ? (
-        <Stack
-          direction="row"
-          sx={{
-            gap: '10px',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          {membershipReady && isMember && canOpenCall ? (
-            <Button
-              variant="contained"
-              size="large"
-              color="success"
-              data-testid="fluency-call-open"
-              onClick={onOpenCall}
-              endIcon={<ArrowRight size={20} />}
-            >
-              {i18n._('Join the call')}
-            </Button>
           ) : (
-            <Stack
-              sx={{
-                gap: '10px',
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <Button
-                variant={isJoining ? 'contained' : 'outlined'}
-                color={'info'}
-                data-testid="fluency-call-join"
-                aria-pressed={isJoining}
-                disabled={isJoinPending}
-                onClick={onToggleJoin}
-                startIcon={isJoining ? <SquareCheck size={20} /> : <Square size={20} />}
-              >
-                {i18n._('I will join')}
-              </Button>
-
-              <Typography
-                component="span"
-                data-testid="fluency-call-join-count"
-                sx={{
-                  fontWeight: 400,
-                  opacity: 0.7,
-                  textAlign: 'center',
-                  color: '#fff',
-                  fontSize: '14px',
-                  fontVariantNumeric: 'tabular-nums',
-                }}
-              >
-                +{joinCount}
-              </Typography>
+            <Stack sx={{ gap: '6px' }}>
+              <Typography sx={{ fontWeight: 700 }}>{i18n._('No call scheduled yet.')}</Typography>
+              {canJoin ? (
+                <Typography>{i18n._("Pick a time and we'll set one up.")}</Typography>
+              ) : null}
             </Stack>
           )}
 
-          <Badge
-            color="error"
-            badgeContent={unreadCount > 0 ? unreadCount : undefined}
-            invisible={unreadCount < 1}
-            data-testid="fluency-call-unread"
-          >
+          {canJoin && !hasRequest ? (
             <Button
-              variant="text"
-              color={'info'}
-              data-testid="fluency-call-show-chat"
-              onClick={onShowChat}
-              startIcon={<MessageSquare size={20} />}
+              variant="outlined"
+              data-testid="fluency-call-initiate"
+              onClick={onInitiateCall}
+              startIcon={<Plus size={16} />}
+              sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
             >
-              {i18n._('Show chat')}
+              {i18n._('Propose a call')}
             </Button>
-          </Badge>
-        </Stack>
-      ) : null}
+          ) : null}
 
-      {membershipReady && !isMember && (
-        <Button
-          variant="contained"
-          color="success"
-          data-testid="fluency-call-join-membership"
-          data-analytics="buy-access"
-          onClick={onJoinMembership}
-          sx={{
-            backgroundColor: 'rgba(135, 31, 156, 0.53)',
-            color: '#fad2fe',
-            fontWeight: 600,
-            borderRadius: '20px',
-          }}
-          startIcon={<Lock size={20} color="#F8BCFF" />}
-        >
-          {i18n._('Join membership')}
-        </Button>
+          {canJoin && hasRequest ? (
+            <Button
+              variant="outlined"
+              data-testid="fluency-call-change-time"
+              onClick={onInitiateCall}
+              sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
+            >
+              {i18n._('Change time')}
+            </Button>
+          ) : null}
+
+          {!canJoin ? (
+            <Button
+              variant="outlined"
+              data-testid="fluency-call-get-access"
+              data-analytics="buy-access"
+              onClick={onGetAccess}
+              sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
+            >
+              {i18n._('$2 per month')}
+            </Button>
+          ) : null}
+        </Stack>
       )}
     </Stack>
   );

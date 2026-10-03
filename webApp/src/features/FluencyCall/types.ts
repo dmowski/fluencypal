@@ -33,3 +33,19 @@ export interface CallCountdown {
   seconds: number;
   isLive: boolean;
 }
+
+/** One month of group calls, bought separately from practice hours. */
+export interface FluencyCallAccount {
+  activeUntilIso: string | null;
+  updatedAt?: string;
+}
+
+export type CallClockRelative = 'today' | 'tomorrow' | 'weekday';
+
+export interface CallClockLabel {
+  month: string;
+  day: string;
+  time: string;
+  relative: CallClockRelative;
+  weekday: string;
+}

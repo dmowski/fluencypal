@@ -1,7 +1,7 @@
 import { jsonIfAuthTokenError } from '@/app/api/config/authTokenError';
 import { getDB, validateAuthToken } from '@/app/api/config/firebase';
-import { getUserBalance } from '@/app/api/payment/getUserBalance';
 import { sentSupportTelegramMessage } from '@/app/api/telegram/sendTelegramMessage';
+import { hasFluencyCallAccess } from '@/features/FluencyCall/backend/access';
 import {
   buildCallRequestTelegramMessage,
   isUpcomingCallInstant,
@@ -26,9 +26,12 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Pick a future date and time.' }, { status: 400 });
   }
 
-  const balance = await getUserBalance(userInfo.uid);
-  if (!balance.isFullAccess) {
-    return Response.json({ error: 'FluencyPal Calls are only for members.' }, { status: 403 });
+  const canRequest = await hasFluencyCallAccess(userInfo.uid);
+  if (!canRequest) {
+    return Response.json(
+      { error: 'Group conversations are not included in this account.' },
+      { status: 403 },
+    );
   }
 
   const message = buildCallRequestTelegramMessage(startsAtIso);

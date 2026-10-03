@@ -285,6 +285,17 @@ service cloud.firestore {
         allow read: if isUser(userId);
         allow write: if false;
       }
+
+      // Group-call month pass. The Stripe webhook writes it. The owner can read it.
+      match /fluencyCall/{docId} {
+        allow read: if isUser(userId);
+        allow write: if false;
+      }
+
+      match /fluencyCallPayments/{paymentId} {
+        allow read: if isUser(userId);
+        allow write: if false;
+      }
       
       // Allow read-write for quizSurvey
       match /quiz2/{id} {

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { CallCountdown, FluencyCall } from './types';
+import { CallClockLabel, CallCountdown, FluencyCall } from './types';
 
 const SECOND_MS = 1000;
 const MINUTE_MS = 60 * SECOND_MS;
@@ -21,6 +21,21 @@ export function getCallCountdown(startsAtIso: string, now: Date): CallCountdown 
   const seconds = Math.floor((diff % MINUTE_MS) / SECOND_MS);
 
   return { days, hours, minutes, seconds, isLive: false };
+}
+
+/** Scheduled calls that started longer ago than this stay off the card. */
+export const FLUENCY_CALL_LIST_LOOKBACK_MS = 12 * 60 * 60 * 1000;
+
+/** Scheduled calls that are upcoming, or that started within the lookback window. */
+export function selectListedCalls(calls: FluencyCall[], now: Date): FluencyCall[] {
+  const cutoff = now.getTime() - FLUENCY_CALL_LIST_LOOKBACK_MS;
+  return calls
+    .filter((call) => call.status === 'scheduled')
+    .filter((call) => {
+      const start = new Date(call.startsAtIso).getTime();
+      return Number.isFinite(start) && start >= cutoff;
+    })
+    .sort((a, b) => a.startsAtIso.localeCompare(b.startsAtIso));
 }
 
 export function selectVisibleCall(calls: FluencyCall[], now: Date): FluencyCall | null {
@@ -118,6 +133,105 @@ export function isUpcomingCallInstant(iso: string, now: Date): boolean {
   const startMs = new Date(iso).getTime();
   if (Number.isNaN(startMs)) return false;
   return startMs >= now.getTime() - 60 * 1000;
+}
+
+export function viewerTimeZone(): string {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  } catch {
+    return 'UTC';
+  }
+}
+
+/** "America/New_York" becomes "New York". */
+export function timeZoneCity(timeZone: string): string {
+  const city = timeZone.split('/').pop() || timeZone;
+  return city.replace(/_/g, ' ');
+}
+
+function zonedPart(
+  date: Date,
+  type: Intl.DateTimeFormatPartTypes,
+  locale: string,
+  timeZone: string,
+): string {
+  const parts = new Intl.DateTimeFormat(locale, {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(date);
+  return parts.find((part) => part.type === type)?.value ?? '';
+}
+
+function zonedDateKey(date: Date, timeZone: string): string {
+  const year = zonedPart(date, 'year', 'en-US', timeZone);
+  const month = zonedPart(date, 'month', 'en-US', timeZone);
+  const day = zonedPart(date, 'day', 'en-US', timeZone);
+  return `${year}-${month}-${day}`;
+}
+
+function addCalendarDays(dateKey: string, days: number): string {
+  const [year, month, day] = dateKey.split('-').map(Number);
+  const utc = new Date(Date.UTC(year, month - 1, day + days));
+  const pad = (value: number) => String(value).padStart(2, '0');
+  return `${utc.getUTCFullYear()}-${pad(utc.getUTCMonth() + 1)}-${pad(utc.getUTCDate())}`;
+}
+
+/** Month badge, day number, and clock time in the given zone. Today and tomorrow stay as codes. */
+export function formatCallLabel(
+  iso: string,
+  now: Date,
+  locale = 'en',
+  timeZone = viewerTimeZone(),
+): CallClockLabel | null {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+
+  const safeLocale = locale || 'en';
+  const monthShort = new Intl.DateTimeFormat(safeLocale, {
+    timeZone,
+    month: 'short',
+  })
+    .format(date)
+    .toUpperCase();
+  const dayNumeric = String(Number(zonedPart(date, 'day', 'en-US', timeZone)));
+  const time = `${zonedPart(date, 'hour', 'en-GB', timeZone)}:${zonedPart(date, 'minute', 'en-GB', timeZone)}`;
+  const callKey = zonedDateKey(date, timeZone);
+  const todayKey = zonedDateKey(now, timeZone);
+  const relative =
+    callKey === todayKey
+      ? 'today'
+      : callKey === addCalendarDays(todayKey, 1)
+        ? 'tomorrow'
+        : 'weekday';
+
+  return {
+    month: monthShort,
+    day: dayNumeric,
+    time,
+    relative,
+    weekday: zonedPart(date, 'weekday', safeLocale, timeZone),
+  };
+}
+
+export function fluencyCallRowTitle(
+  label: CallClockLabel,
+  isLive: boolean,
+  words: { today: string; tomorrow: string; now: string },
+): string {
+  if (isLive) return `${words.now} · ${label.time}`;
+  const when =
+    label.relative === 'today'
+      ? words.today
+      : label.relative === 'tomorrow'
+        ? words.tomorrow
+        : label.weekday;
+  return `${when} · ${label.time}`;
 }
 
 export function formatWarsawDateTime(iso: string): string {
