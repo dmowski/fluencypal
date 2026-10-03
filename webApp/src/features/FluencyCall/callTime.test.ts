@@ -126,6 +126,13 @@ describe('call labels in a timezone', () => {
     expect(label?.weekday).toBe('Tuesday');
   });
 
+  it('drops the trailing dot from a short month name', () => {
+    const now = new Date('2026-10-03T16:00:00.000Z');
+    expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'ru', warsaw)?.month).toBe('ОКТ');
+    expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'uk', warsaw)?.month).toBe('ЖОВТ');
+    expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'fr', warsaw)?.month).toBe('OCT');
+  });
+
   it('labels a started call as now', () => {
     const now = new Date('2026-10-04T17:30:00.000Z');
     const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);

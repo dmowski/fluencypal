@@ -1,4 +1,6 @@
 import React from 'react';
+import { setupI18n } from '@lingui/core';
+import { I18nProvider } from '@lingui/react';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
@@ -49,13 +51,14 @@ const cardProps: FluencyCallCardViewProps = {
 function renderCard(
   overrides: Partial<FluencyCallCardViewProps> = {},
   rows: FluencyCallRowViewProps[] = upcomingRows,
+  width = 640,
 ) {
   const props = { ...cardProps, ...overrides };
   return render(
     <BrowserAppShell>
       <div
         data-testid="fluency-call-shot"
-        style={{ width: 640, background: 'rgb(10, 18, 30)', padding: 16 }}
+        style={{ width, background: 'rgb(10, 18, 30)', padding: 16 }}
       >
         <FluencyCallCardView {...props}>
           {props.hasCalls
@@ -67,10 +70,66 @@ function renderCard(
   );
 }
 
+const ruCallCopy = setupI18n({
+  locale: 'ru',
+  messages: {
+    ru: {
+      "I'll join": ['Я присоединюсь'],
+      '{count} joining': [['count'], ' присоединяется'],
+      'Show chat': ['Показать чат'],
+    },
+  },
+});
+
+async function box(testId: string) {
+  const element = await page.getByTestId(testId).element();
+  return element.getBoundingClientRect();
+}
+
 test('upcoming calls list the week in Warsaw', async () => {
   await renderCard();
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-calls');
+});
+
+test('a narrow card stacks the join actions under the call', async () => {
+  await render(
+    <BrowserAppShell>
+      <I18nProvider i18n={ruCallCopy}>
+        <div
+          data-testid="fluency-call-shot"
+          style={{ width: 340, background: 'rgb(10, 18, 30)', padding: 0 }}
+        >
+          <FluencyCallCardView {...cardProps} timeZoneLabel="Europe/Warsaw">
+            <FluencyCallRowView
+              {...row({
+                callId: 'tue',
+                month: 'ОКТ',
+                day: '4',
+                title: 'Сегодня · 19:00',
+                joinCount: 0,
+              })}
+            />
+          </FluencyCallCardView>
+        </div>
+      </I18nProvider>
+    </BrowserAppShell>,
+  );
+
+  const card = await box('fluency-call-card');
+  const title = (await page.getByText('Сегодня · 19:00').element()).getBoundingClientRect();
+  const count = await box('fluency-call-join-count-tue');
+  const join = await box('fluency-call-join-tue');
+  const chat = await box('fluency-call-show-chat-tue');
+
+  expect(join.right).toBeLessThanOrEqual(card.right + 1);
+  expect(join.left).toBeGreaterThanOrEqual(card.left);
+  expect(chat.left).toBeGreaterThanOrEqual(card.left);
+  expect(join.top).toBeGreaterThanOrEqual(title.bottom - 1);
+  expect(join.top).toBeGreaterThanOrEqual(count.bottom - 1);
+  expect(Math.abs(chat.top - join.top)).toBeLessThan(4);
+
+  await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-narrow');
 });
 
 test('a joined call stays on the list', async () => {

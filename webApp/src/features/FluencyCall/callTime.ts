@@ -198,6 +198,7 @@ export function formatCallLabel(
     month: 'short',
   })
     .format(date)
+    .replace(/\.$/u, '')
     .toUpperCase();
   const dayNumeric = String(Number(zonedPart(date, 'day', 'en-US', timeZone)));
   const time = `${zonedPart(date, 'hour', 'en-GB', timeZone)}:${zonedPart(date, 'minute', 'en-GB', timeZone)}`;

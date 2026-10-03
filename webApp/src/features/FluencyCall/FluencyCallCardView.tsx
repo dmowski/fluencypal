@@ -46,6 +46,17 @@ const outlineButtonSx = {
   },
 };
 
+const narrowButtonSx = {
+  maxWidth: '100%',
+  minWidth: 0,
+  flexShrink: 1,
+  whiteSpace: 'normal',
+  textAlign: 'left',
+  height: 'auto',
+};
+
+const narrowCall = '@container fluency-call (max-width: 520px)';
+
 export type FluencyCallRowViewProps = {
   callId: string;
   month: string;
@@ -86,9 +97,15 @@ export const FluencyCallRowView = ({
       sx={{
         alignItems: 'center',
         gap: '12px',
+        minWidth: 0,
         padding: '14px 0',
         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        flexWrap: 'wrap',
+        [narrowCall]: {
+          display: 'grid',
+          gridTemplateColumns: '52px minmax(0, 1fr)',
+          columnGap: '12px',
+          rowGap: '12px',
+        },
       }}
     >
       <Stack
@@ -118,8 +135,8 @@ export const FluencyCallRowView = ({
       </Stack>
 
       <Stack sx={{ flex: '1 1 140px', minWidth: 0, gap: '4px' }}>
-        <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
-          <Typography sx={{ fontWeight: 700 }}>{title}</Typography>
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '8px', minWidth: 0 }}>
+          <Typography sx={{ fontWeight: 700, minWidth: 0 }}>{title}</Typography>
           {isLive ? (
             <Box
               data-testid={`fluency-call-live-${callId}`}
@@ -133,7 +150,7 @@ export const FluencyCallRowView = ({
             />
           ) : null}
         </Stack>
-        <Stack direction="row" sx={{ alignItems: 'center', gap: '6px', opacity: 0.7 }}>
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '6px', minWidth: 0, opacity: 0.7 }}>
           <Users size={14} />
           <Typography
             component="span"
@@ -145,7 +162,23 @@ export const FluencyCallRowView = ({
         </Stack>
       </Stack>
 
-      <Stack direction="row" sx={{ alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          gap: '8px',
+          marginLeft: 'auto',
+          flexShrink: 0,
+          [narrowCall]: {
+            gridColumn: '1 / -1',
+            gridRow: 2,
+            marginLeft: 0,
+            minWidth: 0,
+            maxWidth: '100%',
+            flexWrap: 'wrap',
+          },
+        }}
+      >
         <Badge
           color="error"
           badgeContent={unreadCount > 0 ? unreadCount : undefined}
@@ -173,7 +206,7 @@ export const FluencyCallRowView = ({
             variant="outlined"
             data-testid={`fluency-call-open-${callId}`}
             onClick={onOpenCall}
-            sx={outlineButtonSx}
+            sx={{ ...outlineButtonSx, [narrowCall]: narrowButtonSx }}
           >
             {i18n._('Join')}
           </Button>
@@ -188,6 +221,7 @@ export const FluencyCallRowView = ({
             sx={{
               ...outlineButtonSx,
               ...(isJoining ? { backgroundColor: 'rgba(183, 212, 232, 0.12)' } : {}),
+              [narrowCall]: narrowButtonSx,
             }}
           >
             {isJoining ? i18n._('Joined') : i18n._("I'll join")}
@@ -246,7 +280,7 @@ export const FluencyCallCardView = ({
             {i18n._('Group conversations')}
           </Typography>
           <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            {i18n._('On Google Meet')}
+            Google Meet
           </Typography>
         </Stack>
       </Stack>
@@ -272,7 +306,7 @@ export const FluencyCallCardView = ({
       ) : null}
 
       {hasCalls ? (
-        <Stack>
+        <Stack sx={{ containerType: 'inline-size', containerName: 'fluency-call', minWidth: 0 }}>
           <Stack
             direction="row"
             sx={{
@@ -280,12 +314,22 @@ export const FluencyCallCardView = ({
               justifyContent: 'space-between',
               gap: '12px',
               paddingTop: '4px',
+              [narrowCall]: {
+                flexWrap: 'wrap',
+                gap: '4px 12px',
+              },
             }}
           >
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
               {i18n._('Upcoming calls')}
             </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.55 }}>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.55,
+                [narrowCall]: { marginLeft: 'auto', textAlign: 'right' },
+              }}
+            >
               {i18n._('All times in {zone}', { zone: timeZoneLabel })}
             </Typography>
           </Stack>
