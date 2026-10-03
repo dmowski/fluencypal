@@ -453,6 +453,12 @@ msgstr "Kommentar hinzufügen"
 msgid "Add context..."
 msgstr "Kontext hinzufügen..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Guthaben hinzufügen"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -550,6 +556,7 @@ msgid "Advanced Academic Usage"
 msgstr "Fortgeschrittene akademische Nutzung"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "Fortschrittliche KI"
@@ -1255,7 +1262,7 @@ msgstr "Backend-fokussierte Antworten"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1383,12 +1390,10 @@ msgstr "Am besten für die meisten Arbeitssuchenden"
 msgid "Best value for consistent improvement."
 msgstr "Bester Wert für konsistente Verbesserung."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr ""
-"Bessere Qualität und ein höherer Preis. Es fühlt sich an wie ein echter "
-"menschlicher Lehrer."
+msgid "Beta"
+msgstr "Beta"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1585,11 +1590,6 @@ msgstr "Kaufen Sie Stunden, um zu beginnen"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Kaufe Mehr"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Kaufen Sie mehr Stunden"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -3013,6 +3013,11 @@ msgstr "Vertragsdetails"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Vertragstests"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "Konversation"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -5047,11 +5052,6 @@ msgstr ""
 "Erfahrung allein reicht nicht aus, wenn sich Interviews auf Argumentation, "
 "Abwägungen und Kommunikation konzentrieren."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Experimentelles Feature: KI-Sprachanruf (Version 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5468,7 +5468,7 @@ msgstr ""
 "aufrecht."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7894,7 +7894,7 @@ msgstr "Junior Frontend-Entwickler-Interview"
 msgid "junior frontend interview"
 msgstr "Junior Frontend-Interview"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8784,6 +8784,15 @@ msgstr "More"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Weitere Verbesserungen"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Mehr natürliches Hin und Her. Mehr Raum, sich auszudrücken. Treffen Sie "
+"Ihren nächsten KI-Lehrer."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9901,7 +9910,7 @@ msgstr "Zahlungsverlauf"
 msgid "Payment option"
 msgstr "Zahlungsmethode"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Zahlung erhalten. Ihr Kontostand wird in Kürze aktualisiert."
@@ -12175,6 +12184,11 @@ msgstr "Senior Frontend-Interview"
 msgid "Sentences"
 msgstr "Sätze"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Getrennte Abrechnung"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12771,7 +12785,7 @@ msgid "Start Call"
 msgstr "Anruf starten"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14299,6 +14313,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Je mehr du liest, desto mehr Dinge wirst du wissen."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "DIE NÄCHSTE STUFE"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -17221,6 +17240,11 @@ msgstr "{hours} Stunden"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} Runden"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{preis} / Stunde"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

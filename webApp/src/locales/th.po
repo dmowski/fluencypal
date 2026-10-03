@@ -446,6 +446,12 @@ msgstr "เพิ่มความคิดเห็น"
 msgid "Add context..."
 msgstr "เพิ่มบริบท..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "เพิ่มเครดิต"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -543,6 +549,7 @@ msgid "Advanced Academic Usage"
 msgstr "การใช้งานทางวิชาการขั้นสูง"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "ปัญญาประดิษฐ์ขั้นสูง"
@@ -1237,7 +1244,7 @@ msgstr "คำตอบที่เน้นด้านเบื้องหล
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1363,10 +1370,10 @@ msgstr "ดีที่สุดสำหรับผู้หางานส่
 msgid "Best value for consistent improvement."
 msgstr "คุ้มค่าที่สุดสำหรับการพัฒนาอย่างต่อเนื่อง."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "คุณภาพที่ดีกว่าและราคาที่สูงขึ้น มันให้ความรู้สึกเหมือนครูมนุษย์จริงๆ"
+msgid "Beta"
+msgstr "เบต้า"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1559,11 +1566,6 @@ msgstr "ซื้อชั่วโมงเพื่อเริ่มต้น
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "ซื้อเพิ่มเติม"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "ซื้อมากขึ้นอีกชั่วโมง"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2967,6 +2969,11 @@ msgstr "รายละเอียดสัญญา"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "ทดสอบสัญญา"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "การสนทนา"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4963,11 +4970,6 @@ msgstr ""
 "ประสบการณ์เพียงอย่างเดียวไม่เพียงพอ "
 "เมื่อการสัมภาษณ์มุ่งเน้นไปที่การใช้เหตุผล ข้อแลกเปลี่ยน และการสื่อสาร"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "คุณลักษณะทดลอง: การโทรด้วยเสียงผ่าน AI (เวอร์ชัน 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5369,7 +5371,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "ห้าสัปดาห์ของการเข้าร่วมงาน รักษาพลังงานนั้นไว้ให้ได้ในวันนี้"
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7726,7 +7728,7 @@ msgstr "การสัมภาษณ์งานนักพัฒนาฟร
 msgid "junior frontend interview"
 msgstr "การสัมภาษณ์นักพัฒนาซอฟต์แวร์ด้านหน้าระดับจูเนียร์"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8608,6 +8610,15 @@ msgstr "เพิ่มเติม"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "การปรับปรุงเพิ่มเติม"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"การโต้ตอบที่เป็นธรรมชาติมากขึ้น พื้นที่มากขึ้นสำหรับการแสดงความคิดเห็น "
+"พบกับครู AI คนต่อไปของคุณ"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9700,7 +9711,7 @@ msgstr "ประวัติการชำระเงิน"
 msgid "Payment option"
 msgstr "ตัวเลือกการชำระเงิน"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "ได้รับการชำระเงินแล้ว ยอดคงเหลือของคุณจะอัปเดตในอีกสักครู่"
@@ -12048,6 +12059,11 @@ msgstr "การสัมภาษณ์ Frontend อาวุโส"
 msgid "Sentences"
 msgstr "ประโยค"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "แยกบิล"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12636,7 +12652,7 @@ msgid "Start Call"
 msgstr "เริ่มการโทร"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14128,6 +14144,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "ยิ่งคุณอ่านมากเท่าไหร่ คุณก็จะรู้มากเท่านั้น"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "ระดับถัดไป"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16987,6 +17008,11 @@ msgstr "{hours} ชั่วโมง"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} รอบ"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / ชั่วโมง"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

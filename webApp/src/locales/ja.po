@@ -426,6 +426,12 @@ msgstr "コメントを追加"
 msgid "Add context..."
 msgstr "コンテキストを追加..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "クレジットを追加"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -521,6 +527,7 @@ msgid "Advanced Academic Usage"
 msgstr "高度な学術的利用"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "高度なAI"
@@ -1192,7 +1199,7 @@ msgstr "バックエンドに焦点を当てた回答"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1312,10 +1319,10 @@ msgstr "ほとんどの求職者に最適"
 msgid "Best value for consistent improvement."
 msgstr "一貫した改善に最適な価値。"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "品質が向上し、価格も高くなっています。まるで本物の人間の教師のように感じられます。"
+msgid "Beta"
+msgstr "ベータ"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1503,11 +1510,6 @@ msgstr "スタートするために時間を購入する"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "もっと買う"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "追加で時間を購入"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2882,6 +2884,11 @@ msgstr "契約の詳細"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "契約テスト"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "会話"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4782,11 +4789,6 @@ msgid ""
 "trade-offs, and communication."
 msgstr "経験だけでは、不十分です。面接は論理的思考、トレードオフ、そしてコミュニケーションに重点を置くからです。"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "実験的な機能: AIボイスコール (バージョン2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5171,7 +5173,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "出席し続けて5週間。今日もそのエネルギーを保ち続けてください。"
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7356,7 +7358,7 @@ msgstr "ジュニアフロントエンドデベロッパー面接"
 msgid "junior frontend interview"
 msgstr "ジュニアフロントエンド面接"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8212,6 +8214,13 @@ msgstr "もっと"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "さらなる改善点"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr "より自然なやり取り。 自分を表現するためのより多くの余地。 次のAI教師に会いましょう。"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9261,7 +9270,7 @@ msgstr "支払い履歴"
 msgid "Payment option"
 msgstr "支払いオプション"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "支払いが受け付けられました。残高はまもなく更新されます。"
@@ -11422,6 +11431,11 @@ msgstr "シニアフロントエンド面接"
 msgid "Sentences"
 msgstr "文"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "個別請求"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -11992,7 +12006,7 @@ msgid "Start Call"
 msgstr "通話開始"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -13399,6 +13413,11 @@ msgstr "基本的なアイデアは、長い間続く楽しいサービスを作
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "読むほどに、より多くのことを知るようになります。"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "次のレベル"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16087,6 +16106,11 @@ msgstr "{hours} 時間"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} ラウンド"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / 時間"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

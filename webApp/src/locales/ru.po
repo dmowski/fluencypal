@@ -448,6 +448,12 @@ msgstr "Добавить комментарий"
 msgid "Add context..."
 msgstr "Добавить контекст..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Добавить кредит"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -545,6 +551,7 @@ msgid "Advanced Academic Usage"
 msgstr "Продвинутое академическое использование"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "Продвинутый ИИ"
@@ -1244,7 +1251,7 @@ msgstr "Ответы, ориентированные на бэкенд"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1370,12 +1377,10 @@ msgstr "Подходит для большинства соискателей"
 msgid "Best value for consistent improvement."
 msgstr "Лучшее соотношение цены и качества для стабильного улучшения."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr ""
-"Лучшее качество и более высокая цена. По ощущениям, как настоящий "
-"учитель-человек."
+msgid "Beta"
+msgstr "Бета"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1570,11 +1575,6 @@ msgstr "Купите часы, чтобы начать"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Купить Больше"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Купить больше часов"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2983,6 +2983,11 @@ msgstr "Детали контракта"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Тесты Контрактов"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "разговор"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4987,11 +4992,6 @@ msgstr ""
 "Опыт сам по себе недостаточен, когда в интервью акцентируется внимание на "
 "логике, компромиссах и общении."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Экспериментальная функция: AI голосовой вызов (версия 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5404,7 +5404,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Пять недель посещений. Продолжайте в том же духе сегодня."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7786,7 +7786,7 @@ msgstr "младший фронтенд-разработчик собеседо�
 msgid "junior frontend interview"
 msgstr "интервью на позицию младшего фронтенд-разработчика"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8666,6 +8666,15 @@ msgstr "Больше"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Больше улучшений"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Более естественное взаимодействие. Больше возможностей для самовыражения. "
+"Знакомьтесь с вашим новым учителем AI."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9766,7 +9775,7 @@ msgstr "История платежей"
 msgid "Payment option"
 msgstr "Способ оплаты"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Платеж получен. Баланс обновится через момент."
@@ -12029,6 +12038,11 @@ msgstr "интервью на должность старшего фронтен
 msgid "Sentences"
 msgstr "Предложения"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Отдельный счет"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12621,7 +12635,7 @@ msgid "Start Call"
 msgstr "Начать звонок"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14127,6 +14141,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Чем больше вы читаете, тем больше вещей вы узнаете."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "СЛЕДУЮЩИЙ УРОВЕНЬ"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -17014,6 +17033,11 @@ msgstr "{hours} часов"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} раундов"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / час"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

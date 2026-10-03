@@ -450,6 +450,12 @@ msgstr "Дадаць каментарый"
 msgid "Add context..."
 msgstr "Дадаць кантэкст..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Дадаць крэдыт"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -547,6 +553,7 @@ msgid "Advanced Academic Usage"
 msgstr "Пашыранае акадэмічнае выкарыстанне"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "Прасунутая ІІ"
@@ -1239,7 +1246,7 @@ msgstr "Адказы, арыентаваныя на бэкэнд"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1365,10 +1372,10 @@ msgstr "Найлепшы для большасці суіскальнікаў п
 msgid "Best value for consistent improvement."
 msgstr "Лепшае значэнне для паслядоўнага паляпшэння."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "Лепшая якасць і вышэйшая цана. Адчуваецца, як сапраўдны настаўнік-чалавек."
+msgid "Beta"
+msgstr "Бэта"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1566,11 +1573,6 @@ msgstr "Купіць гадзіны, каб пачаць"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Купіць больш"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Купіць больш гадзін"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2978,6 +2980,11 @@ msgstr "Дэталі кантракта"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Тэсты Дагавора"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "размова"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4990,11 +4997,6 @@ msgstr ""
 "Вопыту аднаго недастаткова, калі інтэрв’ю сфакусаваны на мысленні, "
 "кампрамісах і камунікацыі."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Эксперыментальная функцыя: AI голасавы званок (версія 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5405,7 +5407,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Пяць тыдняў наведвальнасці. Падтрымайце гэтую энергію сёння."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7781,7 +7783,7 @@ msgstr "сабяседа па прыёме на працу малодшага ф
 msgid "junior frontend interview"
 msgstr "малодшы інтэрв'ю на пазіцыю фронтэнд распрацоўшчыка"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8657,6 +8659,15 @@ msgstr "Болей"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Больш праўдкаранняў"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Больш больш натуральных дыялогаў. Больш месца для самавыяўлення. "
+"Пазнаёмцеся з вашым наступным настаўнікам AI."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9761,7 +9772,7 @@ msgstr "Гісторыя аплат"
 msgid "Payment option"
 msgstr "Варыянт аплаты"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Плацеж атрыманы. Ваш баланс будзе абноўлены праз момант."
@@ -12020,6 +12031,11 @@ msgstr "старэйшы інтэрв’ю для frontend распрацоўн�
 msgid "Sentences"
 msgstr "Сказы"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Асобны разлік"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12608,7 +12624,7 @@ msgid "Start Call"
 msgstr "Пачаць званок"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14112,6 +14128,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Чым больш вы чытаеце, тым больш рэчаў вы будзеце ведаць."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "НАСТУПНЫ ЎЗРОВЕНЬ"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16988,6 +17009,11 @@ msgstr "{hours} гадзін"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} раўнды"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{цана} / гадзіна"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

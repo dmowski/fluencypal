@@ -443,6 +443,12 @@ msgstr "Legg til kommentar"
 msgid "Add context..."
 msgstr "Legg til kontekst..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Legg til kreditt"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -540,6 +546,7 @@ msgid "Advanced Academic Usage"
 msgstr "Avansert Akademisk Bruk"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "Avansert KI"
@@ -1230,7 +1237,7 @@ msgstr "Backend-fokuserte svar"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1358,10 +1365,10 @@ msgstr "Best for most job seekers på norsk: \"Best for de fleste jobbsøkere\""
 msgid "Best value for consistent improvement."
 msgstr "Beste verdi for jevn forbedring."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "Bedre kvalitet og en høyere pris. Det føles som en ekte menneskelig lærer."
+msgid "Beta"
+msgstr "Beta"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1554,11 +1561,6 @@ msgstr "Kjøp timer for å starte"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Kjøp Mer"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Kjøp flere timer"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2964,6 +2966,11 @@ msgstr "Kontraktdetaljer"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Kontrakttester"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "samtale"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4944,11 +4951,6 @@ msgstr ""
 "Erfaring alene er ikke nok når intervjuer fokuserer på resonnement, "
 "avveininger og kommunikasjon."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Eksperimentell funksjon: AI taleanrop (versjon 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5352,7 +5354,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Fem uker med oppmøte. Hold på den energien i dag."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7709,7 +7711,7 @@ msgstr "junior frontend-utvikler intervju"
 msgid "junior frontend interview"
 msgstr "junior frontend intervju"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8579,6 +8581,15 @@ msgstr "Mer"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Flere forbedringer"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Mer naturlig frem og tilbake. Mer rom for å uttrykke deg selv. Møt din "
+"neste AI-lærer."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9671,7 +9682,7 @@ msgstr "Betalingshistorikk"
 msgid "Payment option"
 msgstr "Betalingsalternativ"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Betaling mottatt. Saldoen din oppdateres om et øyeblikk."
@@ -11904,6 +11915,11 @@ msgstr "senior frontend-intervju"
 msgid "Sentences"
 msgstr "Setninger"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Separat fakturering"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12494,7 +12510,7 @@ msgid "Start Call"
 msgstr "Start samtale"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -13997,6 +14013,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Jo mer du leser, jo mer vil du vite."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "DEN NESTE NIVÅ"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16864,6 +16885,11 @@ msgstr "{hours} timer"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} runder"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{pris} / time"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

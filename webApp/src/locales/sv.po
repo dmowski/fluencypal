@@ -444,6 +444,12 @@ msgstr "Lägg till kommentar"
 msgid "Add context..."
 msgstr "Lägg till kontext..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Lägg till kredit"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -541,6 +547,7 @@ msgid "Advanced Academic Usage"
 msgstr "Avancerad Akademisk Användning"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "Avancerad AI"
@@ -1228,7 +1235,7 @@ msgstr "Backend-fokuserade svar"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1356,10 +1363,10 @@ msgstr "Bäst för de flesta arbetssökande"
 msgid "Best value for consistent improvement."
 msgstr "Bästa värde för konsekvent förbättring."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "Bättre kvalitet och ett högre pris. Det känns som en riktig mänsklig lärare."
+msgid "Beta"
+msgstr "Beta"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1552,11 +1559,6 @@ msgstr "Köp timmar för att börja"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Köp Mer"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Köp fler timmar"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2960,6 +2962,11 @@ msgstr "Kontraktsdetaljer"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Kontraktstester"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "konversation"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4945,11 +4952,6 @@ msgstr ""
 "Erfarenhet ensam räcker inte när intervjuer fokuserar på resonemang, "
 "kompromisser och kommunikation."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Experimentell funktion: AI-röstsamtal (version 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5356,7 +5358,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Fem veckor av att dyka upp. Håll den energin igång idag."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7707,7 +7709,7 @@ msgstr "junior frontend utvecklare intervju"
 msgid "junior frontend interview"
 msgstr "junior frontend-intervju"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8580,6 +8582,15 @@ msgstr "Mer"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Fler förbättringar"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Mer naturlig fram-och-tillbaka. Mer utrymme att uttrycka dig. Möt din nästa "
+"AI-lärare."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9680,7 +9691,7 @@ msgstr "Betalningshistorik"
 msgid "Payment option"
 msgstr "Betalningsalternativ"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Betalning mottagen. Din saldo uppdateras om ett ögonblick."
@@ -11906,6 +11917,11 @@ msgstr "senior frontend-intervju"
 msgid "Sentences"
 msgstr "Meningar"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Separat fakturering"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12498,7 +12514,7 @@ msgid "Start Call"
 msgstr "Starta samtal"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -13999,6 +14015,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Ju mer du läser, desto mer kommer du att veta."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "NÄSTA NIVÅ"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16857,6 +16878,11 @@ msgstr "{hours} timmar"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} omgångar"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / timme"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

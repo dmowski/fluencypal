@@ -426,6 +426,12 @@ msgstr "주석 추가"
 msgid "Add context..."
 msgstr "맥락 추가..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "크레딧 추가"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -521,6 +527,7 @@ msgid "Advanced Academic Usage"
 msgstr "고급 학문적 사용법"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "고급 AI"
@@ -1195,7 +1202,7 @@ msgstr "백엔드 중심의 답변"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1317,10 +1324,10 @@ msgstr "대부분의 구직자에게 가장 적합"
 msgid "Best value for consistent improvement."
 msgstr "일관된 향상에 대한 최고의 가치."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr "더 나은 품질과 더 높은 가격. 실제 인간 교사처럼 느껴집니다."
+msgid "Beta"
+msgstr "베타"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1508,11 +1515,6 @@ msgstr "시작하려면 시간을 구매하십시오"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "더 구매하기"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "더 많은 시간 구매"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2890,6 +2892,11 @@ msgstr "계약 세부사항"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "계약 테스트"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "대화"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4811,11 +4818,6 @@ msgid ""
 "trade-offs, and communication."
 msgstr "인터뷰가 추론, 절충안, 그리고 의사소통에 중점을 둘 때에는 경험만으로는 충분하지 않습니다."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "실험적 기능: AI 음성 통화 (버전 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5202,7 +5204,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "다섯 주 동안 출석했습니다. 오늘도 그 에너지를 이어가세요."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7397,7 +7399,7 @@ msgstr "주니어 프론트엔드 개발자 인터뷰"
 msgid "junior frontend interview"
 msgstr "주니어 프론트엔드 인터뷰"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8250,6 +8252,13 @@ msgstr "더 보기"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "더 많은 개선사항"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr "더 자연스러운 대화. 자신의 의견을 표현할 더 많은 공간. 당신의 다음 AI 선생님을 만나보세요."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9302,7 +9311,7 @@ msgstr "결제 내역"
 msgid "Payment option"
 msgstr "결제 옵션"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "결제가 접수되었습니다. 잔액이 곧 업데이트됩니다."
@@ -11464,6 +11473,11 @@ msgstr "시니어 프론트엔드 인터뷰"
 msgid "Sentences"
 msgstr "문장"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "각자 계산"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12036,7 +12050,7 @@ msgid "Start Call"
 msgstr "통화 시작"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -13454,6 +13468,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "당신이 더 많이 읽을수록, 더 많은 것을 알게 될 것입니다."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "다음 단계"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -16147,6 +16166,11 @@ msgstr "{hours} 시간"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} 라운드"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / 시간"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

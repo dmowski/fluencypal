@@ -451,6 +451,12 @@ msgstr "Tambahkan Komentar"
 msgid "Add context..."
 msgstr "Tambahkan konteks..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Tambahkan kredit"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -548,6 +554,7 @@ msgid "Advanced Academic Usage"
 msgstr "Penggunaan Akademik Lanjutan"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "AI Canggih"
@@ -1244,7 +1251,7 @@ msgstr "Jawaban berfokus pada backend"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1372,12 +1379,10 @@ msgstr "Terbaik untuk sebagian besar pencari kerja"
 msgid "Best value for consistent improvement."
 msgstr "Nilai terbaik untuk peningkatan yang konsisten."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr ""
-"Lebih berkualitas dan dengan harga yang lebih tinggi. Rasanya seperti guru "
-"manusia yang sesungguhnya."
+msgid "Beta"
+msgstr "Beta"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1572,11 +1577,6 @@ msgstr "Beli jam untuk memulai"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Beli Lebih Banyak"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Beli lebih banyak jam"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2986,6 +2986,11 @@ msgstr "Detail kontrak"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Tes Kontrak"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "percakapan"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -5008,11 +5013,6 @@ msgstr ""
 "Pengalaman saja tidak cukup ketika wawancara berfokus pada penalaran, "
 "pertimbangan, dan komunikasi."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Fitur eksperimental: Panggilan suara AI (versi 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5425,7 +5425,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Lima minggu telah hadir. Pertahankan semangat itu hari ini."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7838,7 +7838,7 @@ msgstr "wawancara pengembang frontend junior"
 msgid "junior frontend interview"
 msgstr "wawancara frontend junior"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8720,6 +8720,15 @@ msgstr "Lebih"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Lebih banyak peningkatan"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Lebih banyak percakapan alami. Lebih banyak ruang untuk mengekspresikan "
+"diri. Temui guru AI Anda berikutnya."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9841,7 +9850,7 @@ msgstr "Riwayat pembayaran"
 msgid "Payment option"
 msgstr "Opsi pembayaran"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Pembayaran diterima. Saldo Anda akan diperbarui sebentar lagi."
@@ -12109,6 +12118,11 @@ msgstr ""
 "\n"
 "Kalimat\n"
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Pemilihan tagihan terpisah"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12705,7 +12719,7 @@ msgid "Start Call"
 msgstr "Mulai Panggilan"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14230,6 +14244,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Semakin banyak kamu membaca, semakin banyak hal yang akan kamu ketahui."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "TINGKAT BERIKUTNYA"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -17164,6 +17183,11 @@ msgstr "{hours} jam"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} putaran"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / jam"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

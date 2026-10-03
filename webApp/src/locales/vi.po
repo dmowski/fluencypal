@@ -451,6 +451,12 @@ msgstr "Thêm bình luận"
 msgid "Add context..."
 msgstr "Thêm ngữ cảnh..."
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
+#. js-lingui-explicit-id
+msgid "Add credit"
+msgstr "Thêm tín dụng"
+
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:118
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:128
 #. js-lingui-explicit-id
@@ -548,6 +554,7 @@ msgid "Advanced Academic Usage"
 msgstr "Sử dụng Học thuật Nâng cao"
 
 #: src/features/Advanced/AdvancedPage.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:108
 #. js-lingui-explicit-id
 msgid "Advanced AI"
 msgstr "AI Tiên Tiến"
@@ -1240,7 +1247,7 @@ msgstr "Các câu trả lời tập trung vào phần backend"
 
 #: src/features/Advanced/AdvancedPage.tsx:251
 #: src/features/Header/HeaderStatic.tsx:21
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:182
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:224
 #: src/features/Usage/HoursPaymentModal/BalanceHeader.tsx:20
 #. js-lingui-explicit-id
 msgid "Balance"
@@ -1366,12 +1373,10 @@ msgstr "Phù hợp nhất cho hầu hết người tìm việc"
 msgid "Best value for consistent improvement."
 msgstr "Giá trị tốt nhất cho sự cải thiện liên tục."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:165
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:81
 #. js-lingui-explicit-id
-msgid "Better quality and a higher price. It feels like a real human teacher."
-msgstr ""
-"Chất lượng tốt hơn và giá cao hơn. Nó mang lại cảm giác như một giáo viên "
-"thực sự."
+msgid "Beta"
+msgstr "Beta"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -1566,11 +1571,6 @@ msgstr "Mua giờ để bắt đầu"
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Mua Thêm"
-
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:193
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Mua thêm giờ"
 
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:71
 #. js-lingui-explicit-id
@@ -2976,6 +2976,11 @@ msgstr "Chi tiết hợp đồng"
 #. js-lingui-explicit-id
 msgid "Contract Tests"
 msgstr "Kiểm Tra Hợp Đồng"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:110
+#. js-lingui-explicit-id
+msgid "conversation"
+msgstr "hội thoại"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:55
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
@@ -4983,11 +4988,6 @@ msgstr ""
 "Kinh nghiệm đơn thuần không đủ khi các cuộc phỏng vấn tập trung vào lập "
 "luận, đánh đổi, và giao tiếp."
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Experimental feature: AI voice call (version 2)"
-msgstr "Tính năng thử nghiệm: Gọi thoại AI (phiên bản 2)"
-
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:54
 #. js-lingui-explicit-id
 msgid "Experimental features"
@@ -5400,7 +5400,7 @@ msgid "Five weeks of showing up. Keep that energy going today."
 msgstr "Năm tuần đã trôi qua. Hãy duy trì năng lượng đó trong ngày hôm nay."
 
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:187
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:197
 #. js-lingui-explicit-id
 msgid "Fix my grammar"
@@ -7763,7 +7763,7 @@ msgstr "phỏng vấn lập trình viên frontend junior"
 msgid "junior frontend interview"
 msgstr "phỏng vấn frontend cấp junior"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:38
+#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:34
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:190
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -8640,6 +8640,15 @@ msgstr "Thêm nữa"
 #. js-lingui-explicit-id
 msgid "More improvements"
 msgstr "Nhiều cải tiến hơn nữa"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:122
+#. js-lingui-explicit-id
+msgid ""
+"More natural back-and-forth. More room to express yourself. Meet your next "
+"AI teacher."
+msgstr ""
+"Trao đổi qua lại tự nhiên hơn. Nhiều chỗ hơn để bạn thể hiện bản thân. Hãy "
+"gặp gỡ giáo viên AI tiếp theo của bạn."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
@@ -9743,7 +9752,7 @@ msgstr "Lịch sử thanh toán"
 msgid "Payment option"
 msgstr "Tùy chọn thanh toán"
 
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:208
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
 msgstr "Đã nhận thanh toán. Số dư của bạn sẽ được cập nhật trong giây lát."
@@ -12006,6 +12015,11 @@ msgstr "phỏng vấn frontend cấp cao"
 msgid "Sentences"
 msgstr "Câu "
 
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:206
+#. js-lingui-explicit-id
+msgid "Separate billing"
+msgstr "Tách hóa đơn"
+
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:104
 #. js-lingui-explicit-id
 msgid "Set a time and send a request. We'll get back to you with a confirmation."
@@ -12597,7 +12611,7 @@ msgid "Start Call"
 msgstr "Bắt đầu cuộc gọi"
 
 #: src/features/Advanced/AdvancedPage.tsx:359
-#: src/features/OpenAiLive/OpenAiLiveDashboardCard.tsx:233
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:182
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:213
 #. js-lingui-explicit-id
 msgid "Start conversation"
@@ -14104,6 +14118,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "The more that you read, the more things you will know."
 msgstr "Càng đọc nhiều, bạn càng biết nhiều điều hơn."
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:67
+#. js-lingui-explicit-id
+msgid "THE NEXT LEVEL"
+msgstr "CẤP ĐỘ TIẾP THEO"
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:37
 #. js-lingui-explicit-id
@@ -17009,6 +17028,11 @@ msgstr "{hours} giờ"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{sốVòng} vòng"
+
+#: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
+#. js-lingui-explicit-id
+msgid "{price} / hour"
+msgstr "{price} / giờ"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

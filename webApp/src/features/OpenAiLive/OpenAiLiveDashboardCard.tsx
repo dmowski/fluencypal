@@ -1,17 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useSearchParams } from 'next/navigation';
-import { CreditCard, Phone } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useSettings } from '@/features/Settings/useSettings';
-import { SectionHeader } from '@/features/Dashboard/CartsHeader';
 import { OpenAiLiveApiError, requestOpenAiLiveCheckout } from './api';
 import {
-  formatBalanceLabel,
   formatElapsedMs,
   formatLocalFromUsd,
   formatUsdFromMicros,
@@ -31,7 +27,7 @@ import { OpenAiLiveCall } from './OpenAiLiveCall';
 import { OpenAiLiveHoursModal } from './OpenAiLiveHoursModal';
 import { OpenAiLiveBalanceEndedModal } from './OpenAiLiveBalanceEndedModal';
 import { OpenAiLiveStartModal } from './OpenAiLiveStartModal';
-import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
+import { OpenAiLiveDashboardCardView } from './OpenAiLiveDashboardCardView';
 import { unlockTeacherAudio } from './teacherPlayback';
 
 const modeTitle = (mode: OpenAiLiveMode, i18n: { _: (text: string) => string }) =>
@@ -68,11 +64,8 @@ export const OpenAiLiveDashboardCard = () => {
       : formatLocalFromUsd(microsToUsd(account.balanceUsdMicros), currency.currency, currency.rate);
   const talkTime =
     account.balanceUsdMicros === null ? null : talkTimeFromBalance(account.balanceUsdMicros);
-  const hourPrice = formatBalanceLabel(
-    openAiLivePricePerMinuteUsdMicros * 60,
-    currency.currency,
-    currency.rate,
-  );
+  const hourPrice = formatUsdFromMicros(openAiLivePricePerMinuteUsdMicros * 60);
+  const error = account.error || actionError || (call.phase === 'idle' ? call.error : null);
 
   const openStart = () => {
     if ((account.balanceUsdMicros ?? 0) < openAiLiveMinimumStartUsdMicros) {
@@ -93,10 +86,10 @@ export const OpenAiLiveDashboardCard = () => {
       });
       if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
       window.location.href = result.sessionUrl;
-    } catch (error) {
+    } catch (checkoutError) {
       const message =
-        error instanceof OpenAiLiveApiError || error instanceof Error
-          ? error.message
+        checkoutError instanceof OpenAiLiveApiError || checkoutError instanceof Error
+          ? checkoutError.message
           : 'Could not start checkout';
       setActionError(message);
       setBuyingHours(null);
@@ -159,81 +152,20 @@ export const OpenAiLiveDashboardCard = () => {
           onClose={() => setStartOpen(false)}
         />
       ) : null}
-      <Stack data-testid="open-ai-live-card" sx={{ gap: '16px' }}>
-        <SectionHeader
-          title={i18n._('Experimental feature: AI voice call (version 2)')}
-          subTitle={i18n._(
-            'Better quality and a higher price. It feels like a real human teacher.',
-          )}
-        />
-        <Stack
-          sx={{
-            gap: '16px',
-            padding: '20px',
-            borderRadius: '16px',
-            color: '#fff',
-            backgroundColor: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.12)',
-            position: 'relative',
-          }}
-        >
-          <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-            <Stack sx={{ gap: '2px' }}>
-              <Typography sx={{ opacity: 0.7 }}>{i18n._('Balance')}</Typography>
-              <OpenAiLiveBalanceText
-                testId="open-ai-live-balance"
-                usd={balanceUsd}
-                local={balanceLocal}
-                talkTime={talkTime}
-              />
-            </Stack>
-            <IconButton
-              color="info"
-              data-testid="open-ai-live-add"
-              aria-label={i18n._('Buy more hours')}
-              onClick={() => setHoursOpen(true)}
-              sx={{
-                width: 44,
-                height: 44,
-                position: 'absolute',
-                right: '10px',
-                top: '10px',
-              }}
-            >
-              <CreditCard size={18} />
-            </IconButton>
-          </Stack>
-
-          {paymentState === 'paid' ? (
-            <Typography>{i18n._('Payment received. Your balance updates in a moment.')}</Typography>
-          ) : null}
-          {account.error ? (
-            <Typography sx={{ color: '#ffb4b4' }}>{account.error}</Typography>
-          ) : null}
-          {actionError ? <Typography sx={{ color: '#ffb4b4' }}>{actionError}</Typography> : null}
-          {call.phase === 'idle' && call.error ? (
-            <Typography sx={{ color: '#ffb4b4' }}>{call.error}</Typography>
-          ) : null}
-
-          <Button
-            data-testid="open-ai-live-start"
-            variant="outlined"
-            color="info"
-            disabled={account.loading || call.phase !== 'idle'}
-            onClick={() => {
-              unlockTeacherAudio();
-              openStart();
-            }}
-            startIcon={<Phone size={16} />}
-            sx={{
-              alignSelf: 'flex-start',
-              padding: '12px 30px',
-            }}
-          >
-            {i18n._('Start conversation')}
-          </Button>
-        </Stack>
-      </Stack>
+      <OpenAiLiveDashboardCardView
+        hourPrice={hourPrice}
+        balanceUsd={balanceUsd}
+        balanceLocal={balanceLocal}
+        talkTime={talkTime}
+        paidNotice={paymentState === 'paid'}
+        error={error}
+        startDisabled={account.loading || call.phase !== 'idle'}
+        onStart={() => {
+          unlockTeacherAudio();
+          openStart();
+        }}
+        onAddCredit={() => setHoursOpen(true)}
+      />
     </>
   );
 };
