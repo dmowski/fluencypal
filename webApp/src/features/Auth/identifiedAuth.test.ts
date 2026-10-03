@@ -3,6 +3,8 @@ import {
   isIdentifiedAuthUser,
   isSessionAnonymous,
   isSessionIdentified,
+  linkedUidFromAuthChange,
+  shouldReportUnchangedGoogleSignIn,
 } from './identifiedAuth';
 
 describe('isIdentifiedAuthUser', () => {
@@ -61,6 +63,71 @@ describe('isSessionIdentified', () => {
         hasAuthError: false,
       }),
     ).toBe(false);
+  });
+});
+
+describe('shouldReportUnchangedGoogleSignIn', () => {
+  const anonymous = { uid: 'anon-1', isAnonymous: true };
+  const google = { uid: 'anon-1', isAnonymous: false };
+
+  it('reports when Google finished and the live user is still anonymous', () => {
+    expect(
+      shouldReportUnchangedGoogleSignIn({
+        liveUser: anonymous,
+        reactUser: anonymous,
+        linkedUid: '',
+        tokenReadyUid: 'anon-1',
+      }),
+    ).toBe(true);
+    expect(
+      shouldReportUnchangedGoogleSignIn({
+        liveUser: null,
+        reactUser: anonymous,
+        linkedUid: '',
+        tokenReadyUid: 'anon-1',
+      }),
+    ).toBe(true);
+  });
+
+  it('stays quiet when the linked uid is published or the new token is still minting', () => {
+    expect(
+      shouldReportUnchangedGoogleSignIn({
+        liveUser: google,
+        reactUser: anonymous,
+        linkedUid: 'anon-1',
+        tokenReadyUid: 'anon-1',
+      }),
+    ).toBe(false);
+    expect(
+      shouldReportUnchangedGoogleSignIn({
+        liveUser: { uid: 'google-2', isAnonymous: false },
+        reactUser: anonymous,
+        linkedUid: '',
+        tokenReadyUid: 'anon-1',
+      }),
+    ).toBe(false);
+  });
+
+  it('reports when the token is ready and React never left the guest snapshot', () => {
+    expect(
+      shouldReportUnchangedGoogleSignIn({
+        liveUser: google,
+        reactUser: anonymous,
+        linkedUid: '',
+        tokenReadyUid: 'anon-1',
+      }),
+    ).toBe(true);
+  });
+});
+
+describe('linkedUidFromAuthChange', () => {
+  it('publishes a Google user and ignores a still-anonymous token', () => {
+    expect(linkedUidFromAuthChange({ uid: 'anon-1', isAnonymous: false })).toBe('anon-1');
+    expect(linkedUidFromAuthChange({ uid: 'anon-1', isAnonymous: true })).toBeUndefined();
+  });
+
+  it('clears the flag when the session is gone', () => {
+    expect(linkedUidFromAuthChange(null)).toBeNull();
   });
 });
 

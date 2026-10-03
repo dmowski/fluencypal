@@ -3,6 +3,7 @@ import {
   signInWithCustomToken as firebaseSignInWithCustomToken,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
+  onIdTokenChanged,
   ActionCodeSettings,
 } from 'firebase/auth';
 import { completeEmailLinkSignIn } from './emailLinkSignIn';
@@ -12,7 +13,12 @@ import {
 } from '@/features/Usage/dayPassEmailReturn';
 import { isWaitingForFirestoreToken, publishedAuthUid } from './firestoreAuthReady';
 import { ensureAnonymousAuth } from './anonymousAuth';
-import { isSessionAnonymous, isSessionIdentified } from './identifiedAuth';
+import {
+  isSessionAnonymous,
+  isSessionIdentified,
+  linkedUidFromAuthChange,
+  shouldReportUnchangedGoogleSignIn,
+} from './identifiedAuth';
 import { isFounderUserId } from './founder';
 import {
   Context,
@@ -117,6 +123,8 @@ function useProvideAuth(): AuthContext {
   const [tokenReadyUid, setTokenReadyUid] = useState<string | null>(null);
   // linkWithPopup and linkWithCredential keep the same uid, so useAuthState does not re-render.
   const [linkedAuthUid, setLinkedAuthUid] = useState('');
+  const [googleSignInSettled, setGoogleSignInSettled] = useState(0);
+  const reportedGoogleSignIn = useRef(0);
   const googleSignInInProgress = useRef(false);
 
   const publishLinkedAuthUser = async () => {
@@ -131,6 +139,31 @@ function useProvideAuth(): AuthContext {
       setLinkedAuthUid(auth.currentUser.uid);
     }
   };
+
+  useEffect(() => {
+    if (googleSignInSettled === 0 || reportedGoogleSignIn.current === googleSignInSettled) return;
+    if (
+      !shouldReportUnchangedGoogleSignIn({
+        liveUser: auth.currentUser,
+        reactUser: userInfo ?? null,
+        linkedUid: linkedAuthUid,
+        tokenReadyUid,
+      })
+    ) {
+      return;
+    }
+    reportedGoogleSignIn.current = googleSignInSettled;
+    Sentry.captureException(new Error('Google sign-in finished but the session stayed anonymous'));
+    sendUiError('auth_google_state_unchanged');
+  }, [googleSignInSettled, linkedAuthUid, tokenReadyUid, userInfo]);
+
+  useEffect(() => {
+    return onIdTokenChanged(auth, (user) => {
+      const update = linkedUidFromAuthChange(user);
+      if (update === undefined) return;
+      setLinkedAuthUid(update ?? '');
+    });
+  }, []);
 
   useEffect(() => {
     const uid = userInfo?.uid;
@@ -173,6 +206,7 @@ function useProvideAuth(): AuthContext {
       }
       if (result.isDone) {
         await publishLinkedAuthUser();
+        setGoogleSignInSettled((count) => count + 1);
         sendAuthAttempt({ provider: 'google', result: 'success' });
       } else if (result.isRedirecting) {
         // Keep "opened"; success lands after redirect.
@@ -254,6 +288,7 @@ function useProvideAuth(): AuthContext {
         const redirected = await completeGoogleRedirectSignIn(auth);
         if (redirected) {
           await publishLinkedAuthUser();
+          setGoogleSignInSettled((count) => count + 1);
           sendAuthAttempt({ provider: 'google', result: 'success' });
         }
       } catch (error) {
