@@ -8,6 +8,28 @@ export const formatUsdFromMicros = (micros: number): string =>
     maximumFractionDigits: 2,
   }).format(microsToUsd(micros));
 
+/** Whole-dollar packs render as "$6". Amounts with cents keep two places. */
+export const formatCompactUsd = (usd: number): string => {
+  const whole = Number.isInteger(usd);
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
+  }).format(usd);
+};
+
+/** Local estimate shown under a pack, like "≈ PLN 23.29". Empty when the currency is USD. */
+export const formatApproxLocalFromUsd = (usd: number, currency: string, rate: number): string => {
+  const code = currency.toUpperCase();
+  if (!code || code === 'USD' || !Number.isFinite(rate) || rate <= 0) return '';
+  const amount = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(usd * rate);
+  return `≈ ${code} ${amount}`;
+};
+
 export const formatLocalFromUsd = (usd: number, currency: string, rate: number): string => {
   const code = currency.toUpperCase();
   if (!code || code === 'USD' || !Number.isFinite(rate) || rate <= 0) return '';

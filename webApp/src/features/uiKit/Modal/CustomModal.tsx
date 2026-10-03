@@ -9,6 +9,7 @@ interface CustomModalProps {
   children: React.ReactNode;
   mobilePadding?: string;
   desktopPadding?: string;
+  backgroundColor?: string;
   zIndex?: number;
   'data-testid'?: string;
 }
@@ -19,6 +20,7 @@ export const CustomModal = ({
   children,
   mobilePadding,
   desktopPadding,
+  backgroundColor = '#181818',
   zIndex = 999,
   'data-testid': dataTestId,
 }: CustomModalProps): JSX.Element => {
@@ -50,7 +52,7 @@ export const CustomModal = ({
           left: '0',
           width: '100dvw',
           maxWidth: '100vw',
-          backgroundColor: '#181818',
+          backgroundColor,
           height: '100dvh',
           maxHeight: '100dvh',
           boxSizing: 'border-box',

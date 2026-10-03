@@ -8,7 +8,6 @@ General strategy:
 
 ## Advanced AI talk
 
-- Redesign payment forms
 - Redesign Start call modals
 
 ## Update payments plan

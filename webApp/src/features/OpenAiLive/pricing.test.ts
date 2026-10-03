@@ -1,5 +1,5 @@
 import * as pricing from './pricing';
-import { talkTimeFromBalance } from './formatBalance';
+import { formatApproxLocalFromUsd, formatCompactUsd, talkTimeFromBalance } from './formatBalance';
 import {
   OPEN_AI_LIVE_MAX_BILLING_GAP_MS,
   OPEN_AI_LIVE_STRIPE_PRODUCT,
@@ -20,6 +20,14 @@ describe('openAi live user price', () => {
     expect(openAiLivePricePerMinuteUsd).toBe(0.1);
     expect(openAiLivePricePerMinuteUsdMicros).toBe(100_000);
     expect(openAiLivePricePerMinuteUsdMicros * 60).toBe(6_000_000);
+  });
+
+  it('formats pack prices and a local estimate', () => {
+    expect(formatCompactUsd(6)).toBe('$6');
+    expect(formatCompactUsd(6.5)).toBe('$6.50');
+    expect(formatApproxLocalFromUsd(6, 'pln', 23.29 / 6)).toBe('≈ PLN 23.29');
+    expect(formatApproxLocalFromUsd(6, 'usd', 1)).toBe('');
+    expect(formatApproxLocalFromUsd(6, 'eur', 0)).toBe('');
   });
 
   it('turns a balance into whole hours and minutes of talking', () => {

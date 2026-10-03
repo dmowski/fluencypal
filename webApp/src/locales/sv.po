@@ -30,7 +30,7 @@ msgstr ""
 "du inte gillar vår tjänst eller något annat, låt mig bara veta så "
 "återbetalar jag dina pengar utan några frågor.\""
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:330
+#: src/features/FluencyCall/FluencyCallCardView.tsx:344
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
 #. js-lingui-explicit-id
 msgid "$2 per month"
@@ -111,10 +111,15 @@ msgstr "1 AI-timme ≈ 1 timme av aktiv konversation med AI:n."
 msgid "1 day"
 msgstr "1 dag"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:121
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 timme"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:237
+#. js-lingui-explicit-id
+msgid "1 hour of conversation"
+msgstr "1 timme av konversation"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:78
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:122
@@ -455,6 +460,11 @@ msgstr "Lägg till kommentar"
 msgid "Add context..."
 msgstr "Lägg till kontext..."
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:95
+#. js-lingui-explicit-id
+msgid "Add conversation time"
+msgstr "Lägg till konversationstid"
+
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
 #. js-lingui-explicit-id
@@ -507,11 +517,6 @@ msgstr "Lägg till spelare"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Lägg till inlägg"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
-#. js-lingui-explicit-id
-msgid "Add talking time"
-msgstr "Lägg till samtalstid"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -853,7 +858,7 @@ msgstr ""
 msgid "All time"
 msgstr "Alla gånger"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:272
+#: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Alla tider i {zone}"
@@ -1591,7 +1596,7 @@ msgstr "Köp Mer"
 msgid "Buy unlimited access to keep talking."
 msgstr "Köp obegränsad tillgång för att fortsätta prata."
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:289
 #. js-lingui-explicit-id
 msgid "Buying 1 hour of talking time"
 msgstr "Köper 1 timme samtalstid"
@@ -1611,7 +1616,7 @@ msgstr "Köper {hours} timme/timmar av avancerad AI-talande"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "Köper {hours} timme(ar) av AI-användning"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:290
 #. js-lingui-explicit-id
 msgid "Buying {hours} hours of talking time"
 msgstr "Köper {hours} timmars pratstund"
@@ -1797,7 +1802,7 @@ msgstr "Karriärutveckling"
 msgid "Challenging"
 msgstr "Utmanande"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:318
+#: src/features/FluencyCall/FluencyCallCardView.tsx:332
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Ändra tid"
@@ -2359,11 +2364,6 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Kinesisk Läroplan"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
-#. js-lingui-explicit-id
-msgid "Choose 1 hour"
-msgstr "Välj 1 timme"
-
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
@@ -2408,6 +2408,11 @@ msgstr "Välj ett annat språk i Inställningar"
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr "Välj hur länge varje omgång ska pågå och hur många rundor du vill spela."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:98
+#. js-lingui-explicit-id
+msgid "Choose how much time you'd like to add."
+msgstr "Välj hur mycket tid du vill lägga till."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
@@ -2465,11 +2470,6 @@ msgstr "Välj dina språk"
 #. js-lingui-explicit-id
 msgid "Choose your name"
 msgstr "Välj ditt namn"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Choose {hours} hours"
-msgstr "Välj {hours} timmar"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2740,7 +2740,7 @@ msgid "Confirm Credit Card"
 msgstr "Bekräfta kreditkort"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:285
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2947,6 +2947,11 @@ msgstr "Fortsätt till fri åtkomst"
 msgid "Continue to Next Turn"
 msgstr "Fortsätt till nästa omgång"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:266
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Fortsätt till betalning"
+
 #: src/features/Auth/SignInForm.tsx:67
 #: src/features/Conversation/ConversationGuestAuthWall.tsx:32
 #. js-lingui-explicit-id
@@ -3012,6 +3017,11 @@ msgstr "Samtalsalternativ"
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Konversationspraktik"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation time"
+msgstr "Konversationstid"
 
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:239
@@ -5609,6 +5619,15 @@ msgstr ""
 msgid "For active speaking"
 msgstr "För aktivt talande"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:213
+#. js-lingui-explicit-id
+msgid ""
+"For Advanced AI conversations only. This balance is separate from other "
+"balances."
+msgstr ""
+"För avancerade AI-konversationer endast. Denna balans är separat från andra "
+"balanser."
+
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:65
 #. js-lingui-explicit-id
 msgid "For example"
@@ -6337,7 +6356,7 @@ msgstr "Bra!"
 msgid "Grocery Store"
 msgstr "Livsmedelsbutik"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:229
+#: src/features/FluencyCall/FluencyCallCardView.tsx:246
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #. js-lingui-explicit-id
 msgid "Group conversations"
@@ -6613,7 +6632,7 @@ msgstr "Hotellincheckning"
 msgid "Hotel Check-In Conversation"
 msgstr "Hotel Check-In Samtal"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Hours"
 msgstr "Timmar"
@@ -7011,7 +7030,7 @@ msgstr "Jag skulle lägga till caching i minnet och öka DB-resurserna."
 msgid "I'd add retries with a longer timeout."
 msgstr "Jag skulle lägga till omförsök med en längre timeout."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#: src/features/FluencyCall/FluencyCallCardView.tsx:193
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "Jag kommer att gå med"
@@ -7647,7 +7666,7 @@ msgid "Job Interview Skills"
 msgstr "Jobbintervju Färdigheter"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/FluencyCall/FluencyCallCardView.tsx:161
+#: src/features/FluencyCall/FluencyCallCardView.tsx:178
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Gå med"
@@ -7673,12 +7692,12 @@ msgstr "Gå med kandidater som förändrade sin intervjuprestation"
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Gå med i rum för att diskutera specifika ämnen med andra medlemmar"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:240
+#: src/features/FluencyCall/FluencyCallCardView.tsx:257
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Gå med i samtalen som passar din vecka."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#: src/features/FluencyCall/FluencyCallCardView.tsx:193
 #. js-lingui-explicit-id
 msgid "Joined"
 msgstr "Gått med"
@@ -8856,7 +8875,7 @@ msgstr "Ingen automatisk förnyelse. Du behåller kontrollen"
 msgid "No automatic payment"
 msgstr "Ingen automatisk betalning"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:292
+#: src/features/FluencyCall/FluencyCallCardView.tsx:306
 #. js-lingui-explicit-id
 msgid "No call scheduled yet."
 msgstr "Ingen samtal är schemalagt ännu."
@@ -9272,7 +9291,7 @@ msgstr "Av"
 msgid "Off-topic"
 msgstr "Utanför ämnet"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:232
+#: src/features/FluencyCall/FluencyCallCardView.tsx:249
 #. js-lingui-explicit-id
 msgid "On Google Meet"
 msgstr "På Google Meet"
@@ -9687,7 +9706,7 @@ msgid "Pay {amount}"
 msgstr "Betala {amount}"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Betalning"
@@ -9713,12 +9732,12 @@ msgstr "Betalningshistorik"
 msgid "Payment option"
 msgstr "Betalningsalternativ"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:247
+#: src/features/FluencyCall/FluencyCallCardView.tsx:264
 #. js-lingui-explicit-id
 msgid "Payment received. Access shows up in a moment."
 msgstr "Betalning mottagen. Tillgång visas om ett ögonblick."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:246
+#: src/features/FluencyCall/FluencyCallCardView.tsx:263
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the calls."
 msgstr "Betalning mottagen. Du kan delta i samtalen."
@@ -9853,7 +9872,7 @@ msgstr "Välj en svårighetsgrad som matchar din grupp."
 msgid "Pick a level to start playing!"
 msgstr "Välj en nivå för att börja spela!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:294
+#: src/features/FluencyCall/FluencyCallCardView.tsx:308
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Välj en tid så bokar vi in det."
@@ -9867,13 +9886,6 @@ msgstr "Välj ett användarnamn och en avatar. Andra personer kommer att se dem.
 #. js-lingui-explicit-id
 msgid "Pick a voice. You can hear a short sample first."
 msgstr "Välj en röst. Du kan höra ett kort exempel först."
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
-#. js-lingui-explicit-id
-msgid "Pick how many hours to add. The call ends when the balance runs out."
-msgstr ""
-"Välj hur många timmar du vill lägga till. Samtalet avslutas när saldot tar "
-"slut."
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -10477,7 +10489,7 @@ msgstr ""
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "ÖVA, FÖRBÄTTRA, UPPREPA"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:238
+#: src/features/FluencyCall/FluencyCallCardView.tsx:255
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Öva på att tala med andra elever."
@@ -10781,7 +10793,7 @@ msgstr "Uttala källkälla"
 msgid "Pronounce translations"
 msgstr "Uttala översättningar"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:307
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Propose a call"
 msgstr "Föreslå ett samtal"
@@ -11401,7 +11413,7 @@ msgstr "Anmäl användare"
 msgid "Request failed. Please try again."
 msgstr "Begäran misslyckades. Försök igen."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:285
+#: src/features/FluencyCall/FluencyCallCardView.tsx:299
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:62
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -12091,7 +12103,7 @@ msgstr "Kortare ord och bekant ordförråd"
 msgid "Show all your grammar improvements."
 msgstr "Visa alla dina grammatikförbättringar."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:142
+#: src/features/FluencyCall/FluencyCallCardView.tsx:159
 #. js-lingui-explicit-id
 msgid "Show chat"
 msgstr "Visa chatt"
@@ -13189,11 +13201,6 @@ msgstr "Prata med AI-läraren"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "Prata med AI-läraren, på din personliga plan"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
-#. js-lingui-explicit-id
-msgid "Talking time"
-msgstr "Prattidags"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -15077,7 +15084,7 @@ msgstr "Lås upp obegränsade AI-konversationer och alla övningslägen"
 msgid "Unmute"
 msgstr "Avsluta tyst läge"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:269
+#: src/features/FluencyCall/FluencyCallCardView.tsx:286
 #. js-lingui-explicit-id
 msgid "Upcoming calls"
 msgstr "Kommande samtal"
@@ -15524,7 +15531,7 @@ msgstr "Vi kommer att tala fritt"
 msgid "We'll get back to you with a confirmation."
 msgstr "Vi återkommer till dig med en bekräftelse."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:288
+#: src/features/FluencyCall/FluencyCallCardView.tsx:302
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Vi svarar snart."
@@ -16333,11 +16340,6 @@ msgstr ""
 "Du kan betona API:er, databaser eller systemdesign och repetera svar med "
 "omedelbar AI-feedback när som helst."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:277
-#. js-lingui-explicit-id
-msgid "You can join more than one call."
-msgstr "Du kan delta i mer än ett samtal."
-
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:193
 #. js-lingui-explicit-id
 msgid ""
@@ -16563,6 +16565,11 @@ msgid ""
 msgstr ""
 "Du kommer att svara på korta frågor om .NET, API:er, databaser, samtidig "
 "bearbetning och systemdesign."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:233
+#. js-lingui-explicit-id
+msgid "You're adding"
+msgstr "Du lägger till"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
@@ -16909,7 +16916,7 @@ msgstr "{count} timme"
 msgid "{count} hours"
 msgstr "{count} timmar"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:126
+#: src/features/FluencyCall/FluencyCallCardView.tsx:143
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{count} går med"
@@ -16950,10 +16957,15 @@ msgstr "{duration}s"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} timme(ar) av avancerad AI-konversation"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:121
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} timmar"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:238
+#. js-lingui-explicit-id
+msgid "{hours} hours of conversation"
+msgstr "{hours} timmars konversation"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
@@ -16964,6 +16976,11 @@ msgstr "{numberOfRounds} omgångar"
 #. js-lingui-explicit-id
 msgid "{price} / hour"
 msgstr "{price} / timme"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:198
+#. js-lingui-explicit-id
+msgid "{price} per minute · Same rate for every pack"
+msgstr "{price} per minut · Samma pris för varje paket"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id

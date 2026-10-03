@@ -31,7 +31,7 @@ msgstr ""
 "lain, beritahu saya dan saya akan memulangkan wang anda tanpa sebarang "
 "soalan.\""
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:330
+#: src/features/FluencyCall/FluencyCallCardView.tsx:344
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
 #. js-lingui-explicit-id
 msgid "$2 per month"
@@ -112,10 +112,15 @@ msgstr "1 jam AI ≈ 1 jam perbualan aktif dengan AI."
 msgid "1 day"
 msgstr "1 hari"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:121
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 jam"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:237
+#. js-lingui-explicit-id
+msgid "1 hour of conversation"
+msgstr "1 jam perbualan"
 
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:78
 #: src/features/Usage/Subscription/ActivePlanSelector.tsx:122
@@ -463,6 +468,11 @@ msgstr "Tambah Komen"
 msgid "Add context..."
 msgstr "Tambah konteks..."
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:95
+#. js-lingui-explicit-id
+msgid "Add conversation time"
+msgstr "Tambah masa perbualan"
+
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:238
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:252
 #. js-lingui-explicit-id
@@ -515,11 +525,6 @@ msgstr "Tambah pemain"
 #. js-lingui-explicit-id
 msgid "Add Post"
 msgstr "Tambah Siaran"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:64
-#. js-lingui-explicit-id
-msgid "Add talking time"
-msgstr "Tambah masa bercakap"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:389
 #. js-lingui-explicit-id
@@ -863,7 +868,7 @@ msgstr ""
 msgid "All time"
 msgstr "Sepanjang masa"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:272
+#: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr ""
@@ -1622,7 +1627,7 @@ msgstr "Beli Lebih Banyak"
 msgid "Buy unlimited access to keep talking."
 msgstr "Beli akses tanpa had untuk terus bercakap."
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:112
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:289
 #. js-lingui-explicit-id
 msgid "Buying 1 hour of talking time"
 msgstr "Membeli 1 jam masa bercakap"
@@ -1642,7 +1647,7 @@ msgstr "Membeli {hours} jam perbualan AI lanjutan"
 msgid "Buying {hours} hour(s) of AI usage"
 msgstr "Membeli penggunaan AI selama {hours} jam"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:113
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:290
 #. js-lingui-explicit-id
 msgid "Buying {hours} hours of talking time"
 msgstr "Membeli {hours} jam masa bercakap"
@@ -1830,7 +1835,7 @@ msgstr "Peningkatan Kerjaya"
 msgid "Challenging"
 msgstr "Mencabar"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:318
+#: src/features/FluencyCall/FluencyCallCardView.tsx:332
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Tukar masa"
@@ -2394,11 +2399,6 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Rancangan Pembelajaran Bahasa Cina"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:93
-#. js-lingui-explicit-id
-msgid "Choose 1 hour"
-msgstr "Pilih 1 jam"
-
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:41
 #. js-lingui-explicit-id
 msgid "Choose a date and time."
@@ -2447,6 +2447,11 @@ msgid "Choose how long each turn lasts and how many rounds to play."
 msgstr ""
 "Pilih berapa lama setiap pusingan berlangsung dan berapa banyak pusingan "
 "untuk dimainkan."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:98
+#. js-lingui-explicit-id
+msgid "Choose how much time you'd like to add."
+msgstr "Pilih berapa banyak masa yang anda ingin tambah."
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:24
 #. js-lingui-explicit-id
@@ -2504,11 +2509,6 @@ msgstr "Pilih bahasa anda"
 #. js-lingui-explicit-id
 msgid "Choose your name"
 msgstr "Pilih nama anda"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Choose {hours} hours"
-msgstr "Pilih {hours} jam"
 
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
@@ -2782,7 +2782,7 @@ msgid "Confirm Credit Card"
 msgstr "Sahkan Kad Kredit"
 
 #: src/features/Advanced/AdvancedPage.tsx:451
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:108
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:285
 #: src/features/Usage/HoursPaymentModal/HoursPaymentModal.tsx:111
 #: src/features/Usage/Subscription/ConfirmPayment.tsx:42
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:409
@@ -2991,6 +2991,11 @@ msgstr "Teruskan ke akses percuma"
 msgid "Continue to Next Turn"
 msgstr "Teruskan ke Pusingan Seterusnya"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:266
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Teruskan ke pembayaran"
+
 #: src/features/Auth/SignInForm.tsx:67
 #: src/features/Conversation/ConversationGuestAuthWall.tsx:32
 #. js-lingui-explicit-id
@@ -3056,6 +3061,11 @@ msgstr "Pilihan perbualan"
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Amalan perbualan"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation time"
+msgstr "Masa perbualan"
 
 #: src/features/Dashboard/JustTalkCard.tsx:45
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:239
@@ -5694,6 +5704,15 @@ msgstr ""
 msgid "For active speaking"
 msgstr "Untuk bercakap secara aktif"
 
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:213
+#. js-lingui-explicit-id
+msgid ""
+"For Advanced AI conversations only. This balance is separate from other "
+"balances."
+msgstr ""
+"Untuk perbualan AI Lanjutan sahaja. Baki ini berasingan daripada baki-baki "
+"lain."
+
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:65
 #. js-lingui-explicit-id
 msgid "For example"
@@ -6441,7 +6460,7 @@ msgstr "Hebat!"
 msgid "Grocery Store"
 msgstr "Kedai Runcit"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:229
+#: src/features/FluencyCall/FluencyCallCardView.tsx:246
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #. js-lingui-explicit-id
 msgid "Group conversations"
@@ -6722,7 +6741,7 @@ msgstr "Hotel Daftar Masuk"
 msgid "Hotel Check-In Conversation"
 msgstr "Perbualan Daftar Masuk Hotel"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Hours"
 msgstr "Jam"
@@ -7139,7 +7158,7 @@ msgstr "Saya akan menambah penampanan dalam memori dan meningkatkan sumber DB."
 msgid "I'd add retries with a longer timeout."
 msgstr "Saya akan menambah percubaan semula dengan tempoh tamat yang lebih lama."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#: src/features/FluencyCall/FluencyCallCardView.tsx:193
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "Saya akan sertai"
@@ -7793,7 +7812,7 @@ msgid "Job Interview Skills"
 msgstr "Kemahiran Temuduga Pekerjaan"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/FluencyCall/FluencyCallCardView.tsx:161
+#: src/features/FluencyCall/FluencyCallCardView.tsx:178
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Sertai"
@@ -7821,12 +7840,12 @@ msgstr "Sertai calon-calon yang telah mengubah prestasi temuduga mereka"
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Sertai bilik untuk membincangkan topik tertentu dengan ahli lain"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:240
+#: src/features/FluencyCall/FluencyCallCardView.tsx:257
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Bergabunglah dengan perbualan yang sesuai dengan minggu anda."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#: src/features/FluencyCall/FluencyCallCardView.tsx:193
 #. js-lingui-explicit-id
 msgid "Joined"
 msgstr "Disertai"
@@ -9022,7 +9041,7 @@ msgstr "Tiada pembaharuan automatik. Anda berkuasa mengawal."
 msgid "No automatic payment"
 msgstr "Tiada pembayaran automatik"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:292
+#: src/features/FluencyCall/FluencyCallCardView.tsx:306
 #. js-lingui-explicit-id
 msgid "No call scheduled yet."
 msgstr "Tiada panggilan yang dijadualkan lagi."
@@ -9444,7 +9463,7 @@ msgstr "Mati"
 msgid "Off-topic"
 msgstr "Di luar topik"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:232
+#: src/features/FluencyCall/FluencyCallCardView.tsx:249
 #. js-lingui-explicit-id
 msgid "On Google Meet"
 msgstr "Di Google Meet"
@@ -9869,7 +9888,7 @@ msgid "Pay {amount}"
 msgstr "Bayar {amount}"
 
 #: src/features/Header/PaymentHistoryModal.tsx:25
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:35
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:60
 #. js-lingui-explicit-id
 msgid "Payment"
 msgstr "Pembayaran"
@@ -9895,12 +9914,12 @@ msgstr "Sejarah pembayaran"
 msgid "Payment option"
 msgstr "Pilihan pembayaran"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:247
+#: src/features/FluencyCall/FluencyCallCardView.tsx:264
 #. js-lingui-explicit-id
 msgid "Payment received. Access shows up in a moment."
 msgstr "Pembayaran diterima. Akses akan muncul seketika."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:246
+#: src/features/FluencyCall/FluencyCallCardView.tsx:263
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the calls."
 msgstr "Pembayaran diterima. Anda boleh menyertai panggilan."
@@ -10037,7 +10056,7 @@ msgstr "Pilih tahap kesukaran yang sesuai dengan kumpulan anda."
 msgid "Pick a level to start playing!"
 msgstr "Pilih tahap untuk mula bermain!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:294
+#: src/features/FluencyCall/FluencyCallCardView.tsx:308
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Pilih masa dan kami akan menyediakannya."
@@ -10051,13 +10070,6 @@ msgstr "Pilih nama pengguna dan avatar. Orang lain akan melihatnya."
 #. js-lingui-explicit-id
 msgid "Pick a voice. You can hear a short sample first."
 msgstr "Pilih suara. Anda boleh mendengar sampel pendek terlebih dahulu."
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:67
-#. js-lingui-explicit-id
-msgid "Pick how many hours to add. The call ends when the balance runs out."
-msgstr ""
-"Pilih berapa jam untuk ditambah. Panggilan akan tamat apabila baki "
-"kehabisan."
 
 #: src/features/Alias/components/CategorySelection.tsx:56
 #. js-lingui-explicit-id
@@ -10678,7 +10690,7 @@ msgstr ""
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "LATIH, PERBAIKI, ULANGI"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:238
+#: src/features/FluencyCall/FluencyCallCardView.tsx:255
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Berlatih bercakap dengan pelajar lain."
@@ -10988,7 +11000,7 @@ msgstr "Sebutkan sumber"
 msgid "Pronounce translations"
 msgstr "Sebutan terjemahan"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:307
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Propose a call"
 msgstr "Cadangkan panggilan"
@@ -11614,7 +11626,7 @@ msgstr "Laporkan pengguna"
 msgid "Request failed. Please try again."
 msgstr "Permintaan gagal. Sila cuba lagi."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:285
+#: src/features/FluencyCall/FluencyCallCardView.tsx:299
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:62
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -12307,7 +12319,7 @@ msgstr "Perkataan yang lebih pendek dan kosa kata biasa"
 msgid "Show all your grammar improvements."
 msgstr "Tunjukkan semua penambahbaikan tatabahasa anda."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:142
+#: src/features/FluencyCall/FluencyCallCardView.tsx:159
 #. js-lingui-explicit-id
 msgid "Show chat"
 msgstr "Tunjukkan sembang"
@@ -13420,11 +13432,6 @@ msgstr "Berbual dengan guru AI"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "Bercakap dengan guru AI, mengikut pelan peribadi anda"
-
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:97
-#. js-lingui-explicit-id
-msgid "Talking time"
-msgstr "Masa bercakap"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -15332,7 +15339,7 @@ msgstr "Buka kunci perbualan AI yang tidak terhad dan semua mod latihan"
 msgid "Unmute"
 msgstr "Nyahsenyap"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:269
+#: src/features/FluencyCall/FluencyCallCardView.tsx:286
 #. js-lingui-explicit-id
 msgid "Upcoming calls"
 msgstr "Panggilan akan datang"
@@ -15796,7 +15803,7 @@ msgstr "Kami akan bercakap dengan bebas"
 msgid "We'll get back to you with a confirmation."
 msgstr "Kami akan menghubungi anda semula dengan pengesahan."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:288
+#: src/features/FluencyCall/FluencyCallCardView.tsx:302
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Kami akan membalas tidak lama lagi."
@@ -16628,11 +16635,6 @@ msgstr ""
 "Anda boleh menekankan API, pangkalan data, atau reka bentuk sistem, dan "
 "mengulangi jawapan dengan maklum balas AI serta-merta pada bila-bila masa."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:277
-#. js-lingui-explicit-id
-msgid "You can join more than one call."
-msgstr "Anda boleh menyertai lebih daripada satu panggilan."
-
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:193
 #. js-lingui-explicit-id
 msgid ""
@@ -16864,6 +16866,11 @@ msgid ""
 msgstr ""
 "Anda akan menjawab soalan-soalan pendek tentang .NET, API, pangkalan data, "
 "kebersamaan, dan reka bentuk sistem."
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:233
+#. js-lingui-explicit-id
+msgid "You're adding"
+msgstr "Anda menambah"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:254
@@ -17224,7 +17231,7 @@ msgstr "{count} jam"
 msgid "{count} hours"
 msgstr "{count} jam"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:126
+#: src/features/FluencyCall/FluencyCallCardView.tsx:143
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{count} menyertai"
@@ -17265,10 +17272,15 @@ msgstr "{duration}s"
 msgid "{hours} hour(s) of advanced AI talking"
 msgstr "{hours} jam perbualan AI lanjutan"
 
-#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:89
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:121
 #. js-lingui-explicit-id
 msgid "{hours} hours"
 msgstr "{hours} jam"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:238
+#. js-lingui-explicit-id
+msgid "{hours} hours of conversation"
+msgstr "{hours} jam perbualan"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id
@@ -17279,6 +17291,11 @@ msgstr "{numberOfRounds} pusingan"
 #. js-lingui-explicit-id
 msgid "{price} / hour"
 msgstr "{price} / jam"
+
+#: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:198
+#. js-lingui-explicit-id
+msgid "{price} per minute · Same rate for every pack"
+msgstr "{price} seminit · Kadar yang sama untuk setiap pek"
 
 #: src/features/Alias/components/Timer.tsx:18
 #. js-lingui-explicit-id
