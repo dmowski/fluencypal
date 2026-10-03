@@ -7,11 +7,28 @@ import { useLingui } from '@lingui/react';
 import { GoogleMeetIcon } from './GoogleMeetIcon';
 
 const cardSx = {
+  position: 'relative',
+  isolation: 'isolate',
+  overflow: 'hidden',
   gap: '16px',
   padding: '20px',
-  borderRadius: '16px',
-  backgroundColor: '#1c1e24',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  borderRadius: '20px',
+  border: '1px solid rgba(148, 145, 255, 0.22)',
+  backgroundColor: '#16181e',
+  boxShadow: '0 12px 45px #00000020',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    zIndex: -1,
+    top: '-172px',
+    left: '-128px',
+    width: '360px',
+    height: '320px',
+    borderRadius: '50%',
+    background: 'rgba(58, 40, 255, 0.3)',
+    filter: 'blur(152px)',
+    pointerEvents: 'none',
+  },
 };
 
 const outlineButtonSx = {
@@ -218,8 +235,8 @@ export const FluencyCallCardView = ({
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.04)',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#252631',
           }}
         >
           <GoogleMeetIcon size={28} />
