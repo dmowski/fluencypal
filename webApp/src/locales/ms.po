@@ -31,6 +31,12 @@ msgstr ""
 "lain, beritahu saya dan saya akan memulangkan wang anda tanpa sebarang "
 "soalan.\""
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
+#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
+#. js-lingui-explicit-id
+msgid "$2 per month"
+msgstr "$2 sebulan"
+
 #: src/features/Auth/WebViewWall.tsx:80
 #. js-lingui-explicit-id
 msgid "'Open in Chrome' to continue."
@@ -381,6 +387,11 @@ msgstr ""
 msgid "Access Blocked"
 msgstr "Akses Dihalang"
 
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:81
+#. js-lingui-explicit-id
+msgid "Access until {date}"
+msgstr "Akses sehingga {date}"
+
 #: src/features/Reader/components/ReaderAuthButton.tsx:29
 #. js-lingui-explicit-id
 msgid "Account"
@@ -633,6 +644,11 @@ msgstr ""
 msgid "Age Confirmation Required"
 msgstr "Pengesahan Umur Diperlukan"
 
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:84
+#. js-lingui-explicit-id
+msgid "Agree"
+msgstr "Setuju"
+
 #: src/features/Game/UserProfileModal.tsx:100
 #. js-lingui-explicit-id
 msgid "AI"
@@ -846,6 +862,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "All time"
 msgstr "Sepanjang masa"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:272
+#. js-lingui-explicit-id
+msgid "All times in {zone}"
+msgstr ""
+"\n"
+"Semua waktu dalam {zone}\n"
 
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:94
 #. js-lingui-explicit-id
@@ -1329,6 +1352,11 @@ msgstr "Sebelum"
 msgid "Before we start"
 msgstr "Sebelum kita mula"
 
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:48
+#. js-lingui-explicit-id
+msgid "Before you join"
+msgstr "Sebelum anda menyertai"
+
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:27
 #. js-lingui-explicit-id
 msgid "Before you record your voice"
@@ -1802,7 +1830,7 @@ msgstr "Peningkatan Kerjaya"
 msgid "Challenging"
 msgstr "Mencabar"
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:88
+#: src/features/FluencyCall/FluencyCallCardView.tsx:318
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Tukar masa"
@@ -2514,6 +2542,7 @@ msgstr "Klik butang Kongsi di sebelah app.fluencypal.com dalam pelayar anda."
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:686
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:75
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:82
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
@@ -2631,11 +2660,6 @@ msgstr "Pusat Komuniti"
 #. js-lingui-explicit-id
 msgid "Community is for members"
 msgstr "Komuniti adalah untuk ahli"
-
-#: src/features/FluencyCall/CommunityCallsHeader.tsx:28
-#. js-lingui-explicit-id
-msgid "Community meeting on Google Meet"
-msgstr "Mesyuarat komuniti di Google Meet"
 
 #: src/features/Dashboard/CommunityDashboardCard.tsx:91
 #. js-lingui-explicit-id
@@ -3867,13 +3891,6 @@ msgstr "Hari {day}: kekal cerdas"
 #. js-lingui-explicit-id
 msgid "Day {day}: steady progress"
 msgstr "Hari {day}: kemajuan yang mantap"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:48
-#. js-lingui-explicit-id
-msgid "days"
-msgstr ""
-"\n"
-"hari\n"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:88
 #. js-lingui-explicit-id
@@ -5451,11 +5468,6 @@ msgstr "Perkataan tetap"
 msgid "Fluency"
 msgstr "Fasih"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:165
-#. js-lingui-explicit-id
-msgid "FluencyPal Calls are only for members"
-msgstr "Panggilan FluencyPal hanya untuk ahli sahaja"
-
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:107
 #. js-lingui-explicit-id
 msgid "FluencyPal does not send reminders or notifications. That is intentional."
@@ -6429,6 +6441,12 @@ msgstr "Hebat!"
 msgid "Grocery Store"
 msgstr "Kedai Runcit"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:229
+#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#. js-lingui-explicit-id
+msgid "Group conversations"
+msgstr "Perbualan kumpulan"
+
 #: src/features/Landing/LandingPage.tsx:412
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
@@ -6489,13 +6507,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Handle concurrency confidently"
 msgstr "Kendalikan keserentakan dengan yakin"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:96
-#. js-lingui-explicit-id
-msgid "Happening now"
-msgstr ""
-"\n"
-"Sedang berlaku sekarang\n"
 
 #: src/features/Dashboard/BrainCard.tsx:450
 #. js-lingui-explicit-id
@@ -6715,12 +6726,6 @@ msgstr "Perbualan Daftar Masuk Hotel"
 #. js-lingui-explicit-id
 msgid "Hours"
 msgstr "Jam"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:43
-#: src/features/FluencyCall/FluencyCallCardView.tsx:49
-#. js-lingui-explicit-id
-msgid "hours"
-msgstr "jam"
 
 #: src/features/Landing/LandingPage.tsx:133
 #. js-lingui-explicit-id
@@ -7096,11 +7101,6 @@ msgstr ""
 "Saya yakin dan jelas — FluencyPal mempersiapkan saya lebih baik daripada "
 "mana-mana jurulatih untuk perbincangan teknikal mengenai pengurusan negeri."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:208
-#. js-lingui-explicit-id
-msgid "I will join"
-msgstr "Saya akan sertai"
-
 #: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:36
 #. js-lingui-explicit-id
 msgid "I will practice daily"
@@ -7138,6 +7138,11 @@ msgstr "Saya akan menambah penampanan dalam memori dan meningkatkan sumber DB."
 #. js-lingui-explicit-id
 msgid "I'd add retries with a longer timeout."
 msgstr "Saya akan menambah percubaan semula dengan tempoh tamat yang lebih lama."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#. js-lingui-explicit-id
+msgid "I'll join"
+msgstr "Saya akan sertai"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -7788,6 +7793,7 @@ msgid "Job Interview Skills"
 msgstr "Kemahiran Temuduga Pekerjaan"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
+#: src/features/FluencyCall/FluencyCallCardView.tsx:161
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Sertai"
@@ -7810,21 +7816,20 @@ msgstr "Sertai panggilan dengan tutor AI kami untuk berlatih peraturan ini."
 msgid "Join candidates who transformed their interview performance"
 msgstr "Sertai calon-calon yang telah mengubah prestasi temuduga mereka"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:262
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:106
-#. js-lingui-explicit-id
-msgid "Join membership"
-msgstr "Sertai keahlian"
-
 #: src/features/Dashboard/CommunityDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Sertai bilik untuk membincangkan topik tertentu dengan ahli lain"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:189
+#: src/features/FluencyCall/FluencyCallCardView.tsx:240
 #. js-lingui-explicit-id
-msgid "Join the call"
-msgstr "Sertai panggilan"
+msgid "Join the conversations that fit your week."
+msgstr "Bergabunglah dengan perbualan yang sesuai dengan minggu anda."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:176
+#. js-lingui-explicit-id
+msgid "Joined"
+msgstr "Disertai"
 
 #: src/features/Landing/LandingPage.tsx:368
 #: src/features/Landing/PlanLandingBlock.tsx:585
@@ -8662,16 +8667,17 @@ msgstr "Persediaan Mikrofon"
 msgid "Minutes"
 msgstr "Minit"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:44
-#: src/features/FluencyCall/FluencyCallCardView.tsx:50
-#. js-lingui-explicit-id
-msgid "minutes"
-msgstr "minit"
-
 #: src/features/Dashboard/dailyTasksQuotes.ts:32
 #. js-lingui-explicit-id
 msgid "Mistakes are proof that you are trying."
 msgstr "Kesilapan adalah bukti bahawa anda sedang mencuba."
+
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:59
+#. js-lingui-explicit-id
+msgid "Mistakes are welcome. We offer a correction only if someone asks."
+msgstr ""
+"Kesilapan dialu-alukan. Kami menawarkan pembetulan hanya jika seseorang "
+"bertanya."
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:143
 #. js-lingui-explicit-id
@@ -9016,7 +9022,7 @@ msgstr "Tiada pembaharuan automatik. Anda berkuasa mengawal."
 msgid "No automatic payment"
 msgstr "Tiada pembayaran automatik"
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:60
+#: src/features/FluencyCall/FluencyCallCardView.tsx:292
 #. js-lingui-explicit-id
 msgid "No call scheduled yet."
 msgstr "Tiada panggilan yang dijadualkan lagi."
@@ -9407,6 +9413,8 @@ msgid "Notifications"
 msgstr "Pemberitahuan"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:77
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Sekarang"
@@ -9435,6 +9443,11 @@ msgstr "Mati"
 #. js-lingui-explicit-id
 msgid "Off-topic"
 msgstr "Di luar topik"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:232
+#. js-lingui-explicit-id
+msgid "On Google Meet"
+msgstr "Di Google Meet"
 
 #: src/features/Case/data/frontend-junior/quizData.ts:158
 #: src/features/Case/data/frontend-senior/quizData.ts:252
@@ -9497,6 +9510,15 @@ msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
 msgstr ""
 "Seratus lima puluh hari pembelajaran. Berbanggalah dengan seberapa jauh "
 "anda telah melangkah."
+
+#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"One month of group calls on Google Meet. Full access and a top-5 game win "
+"already include this."
+msgstr ""
+"Satu bulan panggilan berkumpulan di Google Meet. Akses penuh dan kemenangan "
+"permainan lima teratas sudah termasuk ini."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9873,6 +9895,16 @@ msgstr "Sejarah pembayaran"
 msgid "Payment option"
 msgstr "Pilihan pembayaran"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:247
+#. js-lingui-explicit-id
+msgid "Payment received. Access shows up in a moment."
+msgstr "Pembayaran diterima. Akses akan muncul seketika."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:246
+#. js-lingui-explicit-id
+msgid "Payment received. You can join the calls."
+msgstr "Pembayaran diterima. Anda boleh menyertai panggilan."
+
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment received. Your balance updates in a moment."
@@ -10005,7 +10037,7 @@ msgstr "Pilih tahap kesukaran yang sesuai dengan kumpulan anda."
 msgid "Pick a level to start playing!"
 msgstr "Pilih tahap untuk mula bermain!"
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:62
+#: src/features/FluencyCall/FluencyCallCardView.tsx:294
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Pilih masa dan kami akan menyediakannya."
@@ -10646,6 +10678,11 @@ msgstr ""
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "LATIH, PERBAIKI, ULANGI"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:238
+#. js-lingui-explicit-id
+msgid "Practise speaking with other learners."
+msgstr "Berlatih bercakap dengan pelajar lain."
+
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
 msgid "Precise, actionable insights about APIs, data, and resiliency"
@@ -10951,7 +10988,7 @@ msgstr "Sebutkan sumber"
 msgid "Pronounce translations"
 msgstr "Sebutan terjemahan"
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:77
+#: src/features/FluencyCall/FluencyCallCardView.tsx:307
 #. js-lingui-explicit-id
 msgid "Propose a call"
 msgstr "Cadangkan panggilan"
@@ -11577,7 +11614,7 @@ msgstr "Laporkan pengguna"
 msgid "Request failed. Please try again."
 msgstr "Permintaan gagal. Sila cuba lagi."
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:50
+#: src/features/FluencyCall/FluencyCallCardView.tsx:285
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:62
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11903,11 +11940,6 @@ msgstr "Tatal ke bawah dan ketik \"Tambah ke Skrin Utama\"."
 #. js-lingui-explicit-id
 msgid "Second Place"
 msgstr "Tempat Kedua"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:45
-#. js-lingui-explicit-id
-msgid "seconds"
-msgstr "saat"
 
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:34
 #: src/features/ProgressStat/ProgressDashboardCard.tsx:28
@@ -12275,7 +12307,7 @@ msgstr "Perkataan yang lebih pendek dan kosa kata biasa"
 msgid "Show all your grammar improvements."
 msgstr "Tunjukkan semua penambahbaikan tatabahasa anda."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:241
+#: src/features/FluencyCall/FluencyCallCardView.tsx:142
 #. js-lingui-explicit-id
 msgid "Show chat"
 msgstr "Tunjukkan sembang"
@@ -14371,6 +14403,15 @@ msgstr ""
 "Terdapat sebuah komuniti di sini di mana anda boleh berbincang mengenai "
 "pelbagai topik dan berkongsi apa yang ada dalam fikiran anda."
 
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:51
+#. js-lingui-explicit-id
+msgid ""
+"These calls are a chance to practice with other learners. A few habits make "
+"them easier for everyone."
+msgstr ""
+"Panggilan-panggilan ini adalah peluang untuk berlatih bersama pelajar lain. "
+"Beberapa tabiat dapat memudahkan semua orang."
+
 #: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
@@ -14908,6 +14949,8 @@ msgstr ""
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:75
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14942,6 +14985,12 @@ msgstr "Tugas-tugas Bertutur TOEFL"
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "Token tidak tamat tempoh, jadi anda boleh menyimpannya untuk kemudian."
+
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:76
+#. js-lingui-explicit-id
+msgid "Tomorrow"
+msgstr "Esok"
 
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:24
 #. js-lingui-explicit-id
@@ -15282,6 +15331,11 @@ msgstr "Buka kunci perbualan AI yang tidak terhad dan semua mod latihan"
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "Nyahsenyap"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:269
+#. js-lingui-explicit-id
+msgid "Upcoming calls"
+msgstr "Panggilan akan datang"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15650,10 +15704,17 @@ msgstr ""
 "\n"
 "Kami tidak mengejar anda untuk belajar Bahasa Inggeris\n"
 
-#: src/features/FluencyCall/CommunityCallsHeader.tsx:31
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:58
 #. js-lingui-explicit-id
-msgid "We meet at a set time and just talk."
-msgstr "Kami bertemu pada masa yang ditetapkan dan hanya berbual."
+msgid "We give each other time to finish."
+msgstr "Kami memberi ruang kepada satu sama lain untuk menyelesaikan."
+
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:61
+#. js-lingui-explicit-id
+msgid "We join the Meet on time, and leave whenever we need to."
+msgstr ""
+"Kami menyertai Meet tepat pada masanya, dan meninggalkannya bila-bila "
+"diperlukan."
 
 #: src/features/Auth/AuthWallBasic.tsx:285
 #. js-lingui-explicit-id
@@ -15690,6 +15751,20 @@ msgstr ""
 "Kami telah menghantar pautan log masuk ke emel anda. Sila periksa peti "
 "masuk anda dan klik pautan tersebut untuk log masuk."
 
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:57
+#. js-lingui-explicit-id
+msgid "We speak English, even when the words come slowly."
+msgstr ""
+"Kami bercakap bahasa Inggeris, walaupun apabila kata-kata datang dengan "
+"perlahan."
+
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:60
+#. js-lingui-explicit-id
+msgid "We stay kind. Insults, flirting, and selling stay off the call."
+msgstr ""
+"Kami kekal beradab. Penghinaan, menggoda, dan menjual tidak dibenarkan "
+"semasa panggilan."
+
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
@@ -15721,7 +15796,7 @@ msgstr "Kami akan bercakap dengan bebas"
 msgid "We'll get back to you with a confirmation."
 msgstr "Kami akan menghubungi anda semula dengan pengesahan."
 
-#: src/features/FluencyCall/FluencyCallEmptyCard.tsx:55
+#: src/features/FluencyCall/FluencyCallCardView.tsx:288
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Kami akan membalas tidak lama lagi."
@@ -16553,6 +16628,11 @@ msgstr ""
 "Anda boleh menekankan API, pangkalan data, atau reka bentuk sistem, dan "
 "mengulangi jawapan dengan maklum balas AI serta-merta pada bila-bila masa."
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:277
+#. js-lingui-explicit-id
+msgid "You can join more than one call."
+msgstr "Anda boleh menyertai lebih daripada satu panggilan."
+
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:193
 #. js-lingui-explicit-id
 msgid ""
@@ -17143,6 +17223,11 @@ msgstr "{count} jam"
 #. js-lingui-explicit-id
 msgid "{count} hours"
 msgstr "{count} jam"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:126
+#. js-lingui-explicit-id
+msgid "{count} joining"
+msgstr "{count} menyertai"
 
 #: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
 #. js-lingui-explicit-id
