@@ -5,6 +5,7 @@ import { Box, Button, Stack, Step, StepButton, Stepper, Typography } from '@mui/
 import { useLingui } from '@lingui/react';
 import { ArrowRight, Info } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { ModalHeader } from '@/features/uiKit/Modal/ModalHeader';
 import { ConfirmPaymentForm } from '@/features/Usage/HoursPaymentModal/ConfirmPaymentForm';
 import {
   OPEN_AI_LIVE_HOUR_PACKS,
@@ -79,25 +80,10 @@ export const OpenAiLiveHoursModal = ({
       >
         {step === 0 ? (
           <Stack sx={{ width: '100%' }}>
-            <Stack sx={{ gap: '10px' }}>
-              <Typography
-                component="h3"
-                variant="h3"
-                sx={{
-                  fontWeight: 700,
-                  color: text,
-                  '@media (max-width: 750px)': {
-                    fontSize: '1.5rem',
-                    lineHeight: '1.9rem',
-                  },
-                }}
-              >
-                {i18n._('Add conversation time')}
-              </Typography>
-              <Typography sx={{ color: muted }}>
-                {i18n._("Choose how much time you'd like to add.")}
-              </Typography>
-            </Stack>
+            <ModalHeader
+              title={i18n._('Add conversation time')}
+              subtitle={i18n._("Choose how much time you'd like to add.")}
+            />
 
             <Typography sx={{ marginTop: '28px', color: meta }}>
               {i18n._('Conversation time')}
@@ -269,27 +255,14 @@ export const OpenAiLiveHoursModal = ({
           </Stack>
         ) : (
           <Stack sx={{ gap: '24px', width: '100%', alignItems: 'flex-start' }}>
-            <Stack sx={{ width: '100%', gap: '6px' }}>
-              <Typography
-                component="h3"
-                variant="h3"
-                sx={{
-                  fontWeight: 700,
-                  color: text,
-                  '@media (max-width: 750px)': {
-                    fontSize: '1.5rem',
-                    lineHeight: '1.9rem',
-                  },
-                }}
-              >
-                {i18n._('Confirm payment')}
-              </Typography>
-              <Typography sx={{ color: muted }}>
-                {selectedHours === 1
+            <ModalHeader
+              title={i18n._('Confirm payment')}
+              subtitle={
+                selectedHours === 1
                   ? i18n._('Buying 1 hour of talking time')
-                  : i18n._('Buying {hours} hours of talking time', { hours: selectedHours })}
-              </Typography>
-            </Stack>
+                  : i18n._('Buying {hours} hours of talking time', { hours: selectedHours })
+              }
+            />
             <ConfirmPaymentForm
               isRedirecting={buyingHours !== null}
               amountInUsd={selectedUsd}

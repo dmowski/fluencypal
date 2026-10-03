@@ -1,18 +1,28 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Button, Stack, Step, StepButton, Stepper, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { ArrowRight, Volume2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronUp, Pause, Play } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { ModalHeader } from '@/features/uiKit/Modal/ModalHeader';
 import { OpenAiLiveMode } from './types';
 import {
   OPEN_AI_LIVE_VOICES,
   OpenAiLiveVoiceId,
+  openAiLiveVoiceName,
   openAiLiveVoiceSampleSrc,
   readStoredOpenAiLiveVoice,
   storeOpenAiLiveVoice,
 } from './voices';
+
+const surface = '#141920';
+const text = '#eaf3f6';
+const muted = '#9aabbc';
+const meta = '#8b9bab';
+const accent = '#53bef5';
+const buttonBlue = '#36afed';
+const PREVIEW_VOICE_COUNT = 4;
 
 const voiceDetail = (voiceId: OpenAiLiveVoiceId, i18n: { _: (text: string) => string }) => {
   if (voiceId === 'marin') return i18n._('Clear and calm');
@@ -25,6 +35,90 @@ const voiceDetail = (voiceId: OpenAiLiveVoiceId, i18n: { _: (text: string) => st
   if (voiceId === 'bossa' || voiceId === 'tempo') return i18n._('Brazilian Portuguese');
   return i18n._('Filipino English');
 };
+
+const ChoiceRadio = ({ selected }: { selected: boolean }) => (
+  <Box
+    aria-hidden
+    sx={{
+      width: 16,
+      height: 16,
+      marginTop: '2px',
+      borderRadius: '50%',
+      boxSizing: 'border-box',
+      flexShrink: 0,
+      border: selected ? 'none' : '2px solid #8a8a8a',
+      backgroundColor: selected ? '#46b4ee' : 'transparent',
+    }}
+  />
+);
+
+const StickyChoiceBar = ({
+  label,
+  value,
+  action,
+  testId,
+  onAction,
+}: {
+  label: string;
+  value: string;
+  action: string;
+  testId?: string;
+  onAction: () => void;
+}) => (
+  <Stack
+    sx={{
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 5,
+      alignItems: 'center',
+      backgroundColor: surface,
+      borderTop: '1px solid #28323e',
+      padding: '16px 20px 20px',
+      '@media (max-width: 600px)': {
+        padding: '14px 16px 16px',
+      },
+    }}
+  >
+    <Stack
+      direction="row"
+      sx={{
+        width: '100%',
+        maxWidth: '700px',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '16px',
+      }}
+    >
+      <Stack sx={{ gap: '2px', minWidth: 0 }}>
+        <Typography sx={{ fontSize: '13px', color: meta }}>{label}</Typography>
+        <Typography sx={{ fontSize: '16px', fontWeight: 700, color: text }}>{value}</Typography>
+      </Stack>
+      <Button
+        data-testid={testId}
+        onClick={onAction}
+        sx={{
+          flexShrink: 0,
+          backgroundColor: buttonBlue,
+          color: '#0d1d27',
+          fontWeight: 700,
+          fontSize: '16px',
+          textTransform: 'none',
+          borderRadius: '8px',
+          minHeight: '48px',
+          padding: '10px 18px',
+          gap: '8px',
+          boxShadow: 'none',
+          '&:hover': { backgroundColor: '#2ea3e0', boxShadow: 'none' },
+        }}
+      >
+        {action}
+        <ArrowRight size={18} strokeWidth={2.25} />
+      </Button>
+    </Stack>
+  </Stack>
+);
 
 export const OpenAiLiveStartModal = ({
   mode,
@@ -44,12 +138,16 @@ export const OpenAiLiveStartModal = ({
   const { i18n } = useLingui();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [step, setStep] = useState(0);
+  const [showAllVoices, setShowAllVoices] = useState(false);
   const [playingVoice, setPlayingVoice] = useState<OpenAiLiveVoiceId | null>(null);
   const [hearError, setHearError] = useState<string | null>(null);
-  const steps = [i18n._('Teacher'), i18n._('Lesson')];
 
   useEffect(() => {
-    onVoice(readStoredOpenAiLiveVoice());
+    const stored = readStoredOpenAiLiveVoice();
+    onVoice(stored);
+    if (OPEN_AI_LIVE_VOICES.findIndex((option) => option.id === stored) >= PREVIEW_VOICE_COUNT) {
+      setShowAllVoices(true);
+    }
     return () => {
       audioRef.current?.pause();
     };
@@ -75,146 +173,206 @@ export const OpenAiLiveStartModal = ({
     void audio.play().catch(fail);
   };
 
+  const visibleVoices = showAllVoices
+    ? OPEN_AI_LIVE_VOICES
+    : OPEN_AI_LIVE_VOICES.slice(0, PREVIEW_VOICE_COUNT);
+  const lessonTitle = mode === 'grammar' ? i18n._('Fix my grammar') : i18n._('Just talk');
+
   return (
-    <CustomModal isOpen onClose={onClose} data-testid="open-ai-live-start-modal">
-      <Stack sx={{ width: '100%', maxWidth: '700px', gap: '40px' }}>
+    <CustomModal
+      isOpen
+      onClose={onClose}
+      backgroundColor={surface}
+      desktopPadding="28px 20px 120px"
+      mobilePadding="20px 16px 120px"
+      data-testid="open-ai-live-start-modal"
+    >
+      <Stack sx={{ width: '100%', maxWidth: '700px' }}>
         {step === 0 ? (
-          <Stack sx={{ gap: '24px', width: '100%' }}>
-            <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h3" component="h2" sx={{ fontWeight: 700 }}>
-                {i18n._('Choose a teacher')}
-              </Typography>
-              <Typography sx={{ opacity: 0.7 }}>
-                {i18n._('Pick a voice. You can hear a short sample first.')}
-              </Typography>
-            </Stack>
-            <Stack
+          <Stack sx={{ width: '100%' }}>
+            <ModalHeader
+              title={i18n._('Choose a teacher')}
+              subtitle={i18n._('Pick a voice. You can hear a short sample first.')}
+            />
+
+            <Typography sx={{ marginTop: '28px', color: meta }}>
+              {i18n._("Teacher's voice")}
+            </Typography>
+
+            <Box
               sx={{
+                marginTop: '12px',
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: '12px',
                 '@media (max-width: 600px)': { gridTemplateColumns: '1fr' },
               }}
             >
-              {OPEN_AI_LIVE_VOICES.map((option) => {
+              {visibleVoices.map((option) => {
                 const selected = voice === option.id;
+                const playing = playingVoice === option.id;
                 return (
-                  <Stack
+                  <Box
                     key={option.id}
                     sx={{
-                      gap: '8px',
-                      padding: '14px',
-                      borderRadius: '7px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      color: '#fff',
-                      backgroundColor: 'rgba(32, 137, 241, 0.1)',
-                      boxShadow: selected
-                        ? '0px 0px 0px 2px rgba(0, 185, 252, 1)'
-                        : '0px 0px 0px 1px rgba(255,255,255,0.08)',
-                    }}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => chooseVoice(option.id)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        chooseVoice(option.id);
-                      }
+                      boxSizing: 'border-box',
+                      borderRadius: '10px',
+                      borderStyle: 'solid',
+                      borderWidth: selected ? '2px' : '1px',
+                      borderColor: selected ? accent : '#303c49',
+                      backgroundColor: selected ? '#172a3b' : '#18202a',
+                      padding: selected ? '12px 12px 12px 14px' : '13px 13px 13px 15px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      color: text,
                     }}
                   >
-                    <Typography sx={{ fontWeight: 700 }}>{option.name}</Typography>
-                    <Typography sx={{ opacity: 0.7, fontSize: '14px' }}>
-                      {voiceDetail(option.id, i18n)}
-                    </Typography>
-                    <Button
+                    <Box
+                      component="button"
+                      type="button"
+                      aria-pressed={selected}
+                      onClick={() => chooseVoice(option.id)}
+                      sx={{
+                        appearance: 'none',
+                        font: 'inherit',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        flex: 1,
+                        minWidth: 0,
+                        border: 'none',
+                        background: 'none',
+                        color: 'inherit',
+                        padding: 0,
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '10px',
+                      }}
+                    >
+                      <ChoiceRadio selected={selected} />
+                      <Stack sx={{ gap: '2px', minWidth: 0 }}>
+                        <Typography
+                          component="span"
+                          sx={{ fontSize: '16px', fontWeight: 700, lineHeight: 1.2, color: text }}
+                        >
+                          {option.name}
+                        </Typography>
+                        <Typography
+                          component="span"
+                          sx={{ fontSize: '13px', lineHeight: 1.3, color: muted }}
+                        >
+                          {voiceDetail(option.id, i18n)}
+                        </Typography>
+                      </Stack>
+                    </Box>
+                    <Box
+                      component="button"
+                      type="button"
                       data-testid={`open-ai-live-hear-${option.id}`}
-                      size="small"
-                      startIcon={<Volume2 size={16} />}
-                      onClick={(event) => {
-                        event.stopPropagation();
+                      aria-label={
+                        playing
+                          ? i18n._('Playing {name}', { name: option.name })
+                          : i18n._('Hear {name}', { name: option.name })
+                      }
+                      onClick={() => {
+                        if (playing) {
+                          audioRef.current?.pause();
+                          setPlayingVoice(null);
+                          return;
+                        }
                         hear(option.id);
                       }}
-                      sx={{ alignSelf: 'flex-start', textTransform: 'none', color: '#fff' }}
+                      sx={{
+                        width: 36,
+                        height: 36,
+                        flexShrink: 0,
+                        borderRadius: '50%',
+                        border: '1px solid',
+                        borderColor: playing ? accent : '#3a4d60',
+                        backgroundColor: 'transparent',
+                        color: playing ? accent : text,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        padding: 0,
+                      }}
                     >
-                      {playingVoice === option.id ? i18n._('Playing') : i18n._('Hear')}
-                    </Button>
-                  </Stack>
+                      {playing ? (
+                        <Pause size={14} fill="currentColor" />
+                      ) : (
+                        <Play size={14} fill="currentColor" style={{ marginLeft: 2 }} />
+                      )}
+                    </Box>
+                  </Box>
                 );
               })}
-            </Stack>
-            {hearError ? <Typography sx={{ color: '#ffb4b4' }}>{hearError}</Typography> : null}
-            <Stack sx={{ height: '88px' }} />
-            <Stack
+            </Box>
+
+            <Button
+              onClick={() => setShowAllVoices((open) => !open)}
               sx={{
-                position: 'fixed',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                zIndex: 5,
-                alignItems: 'center',
-                pointerEvents: 'none',
-                padding: '28px 40px 24px',
-                background: 'linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, #181818 36%)',
-                '@media (max-width: 600px)': {
-                  padding: '28px 10px 16px',
-                },
+                alignSelf: 'center',
+                marginTop: '18px',
+                textTransform: 'none',
+                color: muted,
+                fontWeight: 500,
+                gap: '6px',
               }}
             >
-              <Stack sx={{ width: '100%', maxWidth: '700px', pointerEvents: 'auto' }}>
-                <Button
-                  color="info"
-                  variant="contained"
-                  size="large"
-                  endIcon={<ArrowRight />}
-                  onClick={() => setStep(1)}
-                  sx={{ alignSelf: 'flex-start', padding: '12px 40px', fontWeight: 600 }}
-                >
-                  {i18n._('Continue')}
-                </Button>
-              </Stack>
-            </Stack>
+              {showAllVoices
+                ? i18n._('Show fewer voices')
+                : i18n._('Show all {count} voices', { count: OPEN_AI_LIVE_VOICES.length })}
+              {showAllVoices ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </Button>
+            {hearError ? (
+              <Typography sx={{ color: '#ffb4b4', textAlign: 'center' }}>{hearError}</Typography>
+            ) : null}
           </Stack>
         ) : (
-          <Stack sx={{ gap: '24px', width: '100%' }}>
-            <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h3" component="h2" sx={{ fontWeight: 700 }}>
-                {i18n._('Choose a lesson')}
-              </Typography>
-              <Typography sx={{ opacity: 0.7 }}>
-                {i18n._('How should the teacher help while you talk?')}
-              </Typography>
+          <Stack sx={{ width: '100%', gap: '28px' }}>
+            <ModalHeader
+              title={i18n._('Choose a lesson')}
+              subtitle={i18n._('How should the teacher help while you talk?')}
+            />
+            <Stack sx={{ gap: '12px' }}>
+              <ModeChoice
+                selected={mode === 'talk'}
+                title={i18n._('Just talk')}
+                description={i18n._('A normal chat. I will not stop you to teach.')}
+                testId="open-ai-live-mode-talk"
+                onClick={() => onMode('talk')}
+              />
+              <ModeChoice
+                selected={mode === 'grammar'}
+                title={i18n._('Fix my grammar')}
+                description={i18n._(
+                  'When you make a mistake, I explain the rule and you try the sentence again.',
+                )}
+                testId="open-ai-live-mode-grammar"
+                onClick={() => onMode('grammar')}
+              />
             </Stack>
-            <ModeChoice
-              selected={mode === 'talk'}
-              title={i18n._('Just talk')}
-              description={i18n._('A normal chat. I will not stop you to teach.')}
-              testId="open-ai-live-mode-talk"
-              onClick={() => onMode('talk')}
-            />
-            <ModeChoice
-              selected={mode === 'grammar'}
-              title={i18n._('Fix my grammar')}
-              description={i18n._(
-                'When you make a mistake, I explain the rule and you try the sentence again.',
-              )}
-              testId="open-ai-live-mode-grammar"
-              onClick={() => onMode('grammar')}
-            />
-            <Button
-              data-testid="open-ai-live-confirm-start"
-              color="info"
-              variant="contained"
-              size="large"
-              endIcon={<ArrowRight />}
-              onClick={onStart}
-              sx={{ alignSelf: 'flex-start', padding: '12px 40px', fontWeight: 600 }}
-            >
-              {i18n._('Start conversation')}
-            </Button>
           </Stack>
         )}
       </Stack>
+
+      {step === 0 ? (
+        <StickyChoiceBar
+          label={i18n._('Your teacher')}
+          value={openAiLiveVoiceName(voice)}
+          action={i18n._('Continue')}
+          onAction={() => setStep(1)}
+        />
+      ) : (
+        <StickyChoiceBar
+          label={i18n._('Your lesson')}
+          value={lessonTitle}
+          action={i18n._('Start conversation')}
+          testId="open-ai-live-confirm-start"
+          onAction={onStart}
+        />
+      )}
     </CustomModal>
   );
 };
@@ -232,28 +390,37 @@ const ModeChoice = ({
   testId: string;
   onClick: () => void;
 }) => (
-  <Stack
+  <Box
     data-testid={testId}
     aria-pressed={selected}
     component="button"
     type="button"
     onClick={onClick}
     sx={{
-      alignItems: 'flex-start',
+      appearance: 'none',
+      font: 'inherit',
       textAlign: 'left',
-      color: '#fff',
-      borderRadius: '7px',
-      padding: '18px 16px',
-      gap: '4px',
-      border: 'none',
       cursor: 'pointer',
-      backgroundColor: 'rgba(32, 137, 241, 0.1)',
-      boxShadow: selected
-        ? '0px 0px 0px 2px rgba(0, 185, 252, 1)'
-        : '0px 0px 0px 1px rgba(255,255,255,0.08)',
+      width: '100%',
+      boxSizing: 'border-box',
+      borderRadius: '10px',
+      borderStyle: 'solid',
+      borderWidth: selected ? '2px' : '1px',
+      borderColor: selected ? accent : '#303c49',
+      backgroundColor: selected ? '#172a3b' : '#18202a',
+      padding: selected ? '16px' : '17px',
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: '12px',
+      color: text,
     }}
   >
-    <Typography sx={{ fontWeight: 700 }}>{title}</Typography>
-    <Typography sx={{ opacity: 0.75 }}>{description}</Typography>
-  </Stack>
+    <ChoiceRadio selected={selected} />
+    <Stack sx={{ gap: '4px', minWidth: 0 }}>
+      <Typography sx={{ fontSize: '16px', fontWeight: 700, color: text }}>{title}</Typography>
+      <Typography sx={{ fontSize: '14px', lineHeight: 1.45, color: muted }}>
+        {description}
+      </Typography>
+    </Stack>
+  </Box>
 );
