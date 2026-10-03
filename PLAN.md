@@ -6,10 +6,6 @@ General strategy:
 
 # Plan
 
-## Advanced AI talk
-
-- Redesign Start call modals
-
 ## Update payments plan
 
 Update payments plan. Rename it from "Full Access" to "Paid access"
