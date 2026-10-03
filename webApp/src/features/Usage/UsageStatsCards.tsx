@@ -91,6 +91,7 @@ export const UsageStatsCards = () => {
     'goal-talk': i18n._('Goal Talk'),
     'grammar-improvement': i18n._('Grammar Improvement'),
     'news-discussion': i18n._('News Discussion'),
+    'open-ai-live': i18n._('Talk with AI'),
   };
 
   return (

@@ -1,9 +1,21 @@
+import { ConversationMessage } from '@/features/Conversation/conversation';
+
 export type LiveTranscriptLine = {
   id: string;
   role: 'user' | 'assistant';
   text: string;
   closed: boolean;
 };
+
+export const liveTranscriptToMessages = (lines: LiveTranscriptLine[]): ConversationMessage[] =>
+  lines
+    .filter((line) => line.text.trim().length > 0)
+    .map((line) => ({
+      id: line.id,
+      isBot: line.role === 'assistant',
+      text: line.text,
+      isInProgress: !line.closed,
+    }));
 
 const textField = (event: Record<string, unknown>, key: string) =>
   typeof event[key] === 'string' ? event[key] : '';

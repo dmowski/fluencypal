@@ -9,7 +9,8 @@ export type ConversationType =
   | 'goal-role-play'
   | 'goal-talk'
   | 'grammar-improvement'
-  | 'news-discussion';
+  | 'news-discussion'
+  | 'open-ai-live';
 
 export interface ConversationMessage {
   id: string;

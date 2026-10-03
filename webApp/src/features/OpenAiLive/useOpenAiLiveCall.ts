@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useChatHistory } from '@/features/ConversationHistory/useChatHistory';
+import { useSettings } from '@/features/Settings/useSettings';
 import {
   OpenAiLiveApiError,
   requestOpenAiLiveClose,
@@ -10,7 +12,7 @@ import {
 } from './api';
 import { connectOpenAiLiveCall, LiveSocket } from './connectLiveCall';
 import { unlockTeacherAudio } from './teacherPlayback';
-import { appendLiveTranscript, LiveTranscriptLine } from './transcripts';
+import { appendLiveTranscript, liveTranscriptToMessages, LiveTranscriptLine } from './transcripts';
 import { OpenAiLiveMode } from './types';
 
 type EndReason = 'user' | 'balance' | 'remote' | 'unmount';
@@ -23,11 +25,14 @@ export const useOpenAiLiveCall = ({
   onPaywall: () => void;
 }) => {
   const auth = useAuth();
+  const history = useChatHistory();
+  const settings = useSettings();
   const [phase, setPhase] = useState<'idle' | 'connecting' | 'live'>('idle');
   const [muted, setMuted] = useState(false);
   const mutedRef = useRef(false);
   mutedRef.current = muted;
   const [lines, setLines] = useState<LiveTranscriptLine[]>([]);
+  const linesRef = useRef<LiveTranscriptLine[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [needsUnlock, setNeedsUnlock] = useState(false);
   const [startedAt, setStartedAt] = useState<number | null>(null);
@@ -41,6 +46,54 @@ export const useOpenAiLiveCall = ({
   onBalanceRef.current = onBalance;
   const onPaywallRef = useRef(onPaywall);
   onPaywallRef.current = onPaywall;
+  const historyRef = useRef(history);
+  historyRef.current = history;
+  const languageCodeRef = useRef(settings.languageCode);
+  languageCodeRef.current = settings.languageCode;
+  const conversationIdRef = useRef('');
+  const historyReadyRef = useRef<Promise<void>>(Promise.resolve());
+  const saveTimerRef = useRef<number | null>(null);
+
+  const flushHistory = async () => {
+    if (saveTimerRef.current) {
+      window.clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
+    const conversationId = conversationIdRef.current;
+    const messages = liveTranscriptToMessages(linesRef.current);
+    const ready = historyReadyRef.current;
+    if (!conversationId || messages.length === 0) return;
+    try {
+      await ready;
+      await historyRef.current.saveConversation(conversationId, messages, {});
+    } catch (saveError) {
+      console.error('Could not save the live conversation', saveError);
+    }
+  };
+
+  const scheduleHistorySave = () => {
+    if (!conversationIdRef.current) return;
+    if (saveTimerRef.current) window.clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = window.setTimeout(() => {
+      saveTimerRef.current = null;
+      void flushHistory();
+    }, 2000);
+  };
+
+  const beginHistory = (sessionId: string) => {
+    if (conversationIdRef.current === sessionId) return;
+    conversationIdRef.current = sessionId;
+    historyReadyRef.current = historyRef.current
+      .createConversation({
+        conversationId: sessionId,
+        languageCode: languageCodeRef.current || 'en',
+        mode: 'open-ai-live',
+        rolePlayId: null,
+      })
+      .catch((createError) => {
+        console.error('Could not create the live conversation history', createError);
+      });
+  };
 
   const billAndClose = async (sessionId: string) => {
     const result = await requestOpenAiLiveClose(await getTokenRef.current(), sessionId);
@@ -65,6 +118,8 @@ export const useOpenAiLiveCall = ({
     if (sessionId) {
       sessionIdRef.current = '';
       try {
+        await flushHistory();
+        conversationIdRef.current = '';
         const result = await billAndClose(sessionId);
         if (result.shouldStop || reason === 'balance') onPaywallRef.current();
       } catch (closeError) {
@@ -113,6 +168,12 @@ export const useOpenAiLiveCall = ({
     unlockTeacherAudio();
     endingRef.current = false;
     setError(null);
+    linesRef.current = [];
+    conversationIdRef.current = '';
+    if (saveTimerRef.current) {
+      window.clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
     setLines([]);
     setMuted(false);
     setNeedsUnlock(false);
@@ -144,7 +205,15 @@ export const useOpenAiLiveCall = ({
           if (mutedRef.current) socket.setMuted(true);
         },
         onEvent: (event) => {
-          setLines((current) => appendLiveTranscript(current, event));
+          setLines((current) => {
+            const next = appendLiveTranscript(current, event);
+            linesRef.current = next;
+            return next;
+          });
+          const sessionId = sessionIdRef.current;
+          if (!sessionId || liveTranscriptToMessages(linesRef.current).length === 0) return;
+          beginHistory(sessionId);
+          scheduleHistorySave();
         },
         onStarted: () => {
           setStartedAt(Date.now());
@@ -166,6 +235,8 @@ export const useOpenAiLiveCall = ({
       sessionIdRef.current = '';
       if (sessionId) {
         try {
+          await flushHistory();
+          conversationIdRef.current = '';
           const result = await billAndClose(sessionId);
           onBalanceRef.current(result.balanceUsdMicros);
         } catch {
