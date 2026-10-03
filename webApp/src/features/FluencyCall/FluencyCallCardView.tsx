@@ -290,9 +290,6 @@ export const FluencyCallCardView = ({
             </Typography>
           </Stack>
           {children}
-          <Typography variant="body2" sx={{ opacity: 0.5, paddingTop: '8px' }}>
-            {i18n._('You can join more than one call.')}
-          </Typography>
         </Stack>
       ) : (
         <Stack sx={{ gap: '12px' }}>
