@@ -12,7 +12,7 @@ import {
 } from '@/features/Usage/dayPassEmailReturn';
 import { isWaitingForFirestoreToken, publishedAuthUid } from './firestoreAuthReady';
 import { ensureAnonymousAuth } from './anonymousAuth';
-import { isIdentifiedAuthUser } from './identifiedAuth';
+import { isSessionAnonymous, isSessionIdentified } from './identifiedAuth';
 import { isFounderUserId } from './founder';
 import {
   Context,
@@ -115,9 +115,22 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
 function useProvideAuth(): AuthContext {
   const [userInfo, authLoading, errorAuth] = useAuthState(auth);
   const [tokenReadyUid, setTokenReadyUid] = useState<string | null>(null);
-  // linkWithCredential keeps the same uid, so useAuthState does not re-render.
-  const [passwordLinkedUid, setPasswordLinkedUid] = useState('');
+  // linkWithPopup and linkWithCredential keep the same uid, so useAuthState does not re-render.
+  const [linkedAuthUid, setLinkedAuthUid] = useState('');
   const googleSignInInProgress = useRef(false);
+
+  const publishLinkedAuthUser = async () => {
+    const currentUser = auth.currentUser;
+    if (!currentUser || currentUser.isAnonymous) return;
+    try {
+      await currentUser.getIdToken(true);
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+    if (auth.currentUser && !auth.currentUser.isAnonymous) {
+      setLinkedAuthUid(auth.currentUser.uid);
+    }
+  };
 
   useEffect(() => {
     const uid = userInfo?.uid;
@@ -159,6 +172,7 @@ function useProvideAuth(): AuthContext {
         googleSignInInProgress.current = false;
       }
       if (result.isDone) {
+        await publishLinkedAuthUser();
         sendAuthAttempt({ provider: 'google', result: 'success' });
       } else if (result.isRedirecting) {
         // Keep "opened"; success lands after redirect.
@@ -238,7 +252,10 @@ function useProvideAuth(): AuthContext {
     void (async () => {
       try {
         const redirected = await completeGoogleRedirectSignIn(auth);
-        if (redirected) sendAuthAttempt({ provider: 'google', result: 'success' });
+        if (redirected) {
+          await publishLinkedAuthUser();
+          sendAuthAttempt({ provider: 'google', result: 'success' });
+        }
       } catch (error) {
         const isNetworkFailure =
           error instanceof FirebaseError && error.code === 'auth/network-request-failed';
@@ -288,7 +305,7 @@ function useProvideAuth(): AuthContext {
     );
     if (result.status === 'linked' || result.status === 'signed-in') {
       if (auth.currentUser && !auth.currentUser.isAnonymous) {
-        setPasswordLinkedUid(auth.currentUser.uid);
+        setLinkedAuthUid(auth.currentUser.uid);
       }
       sendAuthAttempt({ provider: 'email', result: 'success' });
       if (result.status === 'linked') {
@@ -401,11 +418,13 @@ function useProvideAuth(): AuthContext {
   const userId = publishedAuthUid(userInfo?.uid, tokenReadyUid);
   const loading = authLoading || isWaitingForFirestoreToken(userInfo?.uid, tokenReadyUid);
   const isAuthorized = !!userId && !errorAuth;
-  const passwordLinkSettled = Boolean(userInfo?.uid) && passwordLinkedUid === userInfo?.uid;
-  const isAnonymous =
-    Boolean(userInfo?.isAnonymous) && userId === userInfo?.uid && !passwordLinkSettled;
-  const isIdentified =
-    (isIdentifiedAuthUser(userInfo) || passwordLinkSettled) && !errorAuth && Boolean(userId);
+  const isAnonymous = isSessionAnonymous({ user: userInfo, userId, linkedUid: linkedAuthUid });
+  const isIdentified = isSessionIdentified({
+    user: userInfo,
+    userId,
+    linkedUid: linkedAuthUid,
+    hasAuthError: Boolean(errorAuth),
+  });
 
   const isDev = userInfo?.email?.includes('dmowski') || false;
 
