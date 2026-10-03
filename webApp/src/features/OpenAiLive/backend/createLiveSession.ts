@@ -1,4 +1,9 @@
 import { createHash } from 'crypto';
+import {
+  buildOpenAiLiveDelegationInstructions,
+  OPEN_AI_LIVE_DELEGATION_MODEL,
+} from '../instructions';
+
 type CreatedLiveSession = {
   sessionId: string;
   sdp: string;
@@ -30,14 +35,21 @@ export const createOpenAiLiveSession = async ({
         model: 'gpt-live-1',
         instructions,
         audio: { output: { voice } },
-        delegation: { type: 'client' },
+        delegation: {
+          type: 'responses',
+          responses: {
+            model: OPEN_AI_LIVE_DELEGATION_MODEL,
+            instructions: buildOpenAiLiveDelegationInstructions(),
+          },
+        },
       },
       transport: { type: 'webrtc', sdp },
     }),
   });
 
   if (!response.ok) {
-    console.error('GPT-Live session creation failed', response.status);
+    const detail = await response.text();
+    console.error('GPT-Live session creation failed', response.status, detail.slice(0, 500));
     throw new Error('Could not start the live session');
   }
 

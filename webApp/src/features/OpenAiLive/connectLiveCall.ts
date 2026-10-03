@@ -30,6 +30,20 @@ const silentMicTrack = (context: AudioContext): MediaStreamTrack | null => {
   return destination.stream.getAudioTracks()[0] ?? null;
 };
 
+const logLiveEvent = (direction: 'in' | 'out', payload: Record<string, unknown>) => {
+  const type = typeof payload.type === 'string' ? payload.type : 'unknown';
+  const nested =
+    payload.event && typeof payload.event === 'object'
+      ? (payload.event as { type?: unknown }).type
+      : undefined;
+  const label = typeof nested === 'string' ? `${type} ${nested}` : type;
+  if (type.endsWith('.delta') || type.includes('audio')) {
+    console.log('[open-ai-live]', direction, label);
+    return;
+  }
+  console.log('[open-ai-live]', direction, label, payload);
+};
+
 const waitForIce = (connection: RTCPeerConnection) =>
   new Promise<void>((resolve, reject) => {
     if (connection.iceGatheringState === 'complete') {
@@ -99,6 +113,7 @@ export const connectOpenAiLiveCall = async ({
 
   const send = (event: Record<string, unknown>) => {
     if (!events || events.readyState !== 'open') return;
+    logLiveEvent('out', event);
     events.send(JSON.stringify(event));
   };
 
@@ -148,10 +163,11 @@ export const connectOpenAiLiveCall = async ({
         return;
       }
       onEvent(payload);
+      logLiveEvent('in', payload);
       if (payload.type === 'session.started' && !started) {
         started = true;
         send({
-          type: 'session.commentary.append',
+          type: 'session.instructions.append',
           event_id: 'greet',
           delegation_id: null,
           content: buildOpenAiLiveGreeting(mode),
