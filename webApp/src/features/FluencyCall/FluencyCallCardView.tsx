@@ -12,6 +12,8 @@ const cardSx = {
   position: 'relative',
   isolation: 'isolate',
   overflow: 'hidden',
+  containerType: 'inline-size',
+  containerName: 'fluency-call-card',
   gap: '16px',
   padding: '20px',
   borderRadius: '20px',
@@ -298,6 +300,7 @@ export const FluencyCallCardView = ({
           value={languageCode}
           onChange={onLanguageChange}
           testId="fluency-call-language-filter"
+          collapseLabel
         />
       </Stack>
 
