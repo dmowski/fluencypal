@@ -6,6 +6,7 @@ import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { buttonStyle, titleFontStyle } from '@/features/Landing/landingSettings';
 import { getFeatureById } from './featuresData';
+import { GroupConversationsFeaturePage } from './GroupConversationsFeaturePage';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { Button, Link, Stack, Typography } from '@mui/material';
 
@@ -20,6 +21,10 @@ export const FeatureOnePage = ({ id, lang }: FeatureOnePageProps) => {
 
   if (!feature) {
     return null;
+  }
+
+  if (feature.id === 'group-conversations') {
+    return <GroupConversationsFeaturePage lang={lang} feature={feature} />;
   }
 
   const urlStart = getUrlStart(lang);

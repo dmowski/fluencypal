@@ -6,14 +6,14 @@ General strategy:
 
 # Plan
 
-## Google Call, promo
+---
 
-Create feature page. Make it rich
-Add separate onboarding for Community call:
+Add new card about
+Community calls and
+webApp/src/features/InteractiveLesson/AGENTS.md
 
-Onboarding:
+under
+Four Ways FluencyPal Boosts Your Speaking Skills
+landing/src/features/Landing/LandingPage.tsx
 
-1. Language to practice
-2. What language do you speak:
-   Select your english level
-   webApp/src/features/Goal/Quiz/QuizPage2.tsx
+---

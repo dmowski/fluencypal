@@ -18,8 +18,8 @@
     ]
   },
   "scripts": {
-    "dev": "next dev --turbopack",
-    "dev:https": "next dev --turbopack --experimental-https",
+    "dev": "node scripts/dev.mjs",
+    "dev:https": "node scripts/dev.mjs --experimental-https",
     "build": "SENTRY_LOAD_DOTENV=0 next build",
     "start": "next start",
     "lint": "tsc --noEmit",
