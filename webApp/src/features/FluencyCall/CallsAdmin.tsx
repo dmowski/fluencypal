@@ -16,6 +16,7 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { useGame } from '@/features/Game/useGame';
 import { CallDatePicker, CallTimePicker } from './CallDateTimePickers';
 import {
+  FLUENCY_CALL_LIST_LOOKBACK_MS,
   formatCallStartLabel,
   fromDatetimeLocalValue,
   getCallCountdown,
@@ -56,6 +57,7 @@ export const CallsAdmin = () => {
   const [accepting, setAccepting] = useState<FluencyCallRequest | null>(null);
   const [meetLink, setMeetLink] = useState('');
   const [rejecting, setRejecting] = useState<FluencyCallRequest | null>(null);
+  const [showOldCalls, setShowOldCalls] = useState(false);
 
   const serverStartsAt = editingCall ? toDatetimeLocalValue(editingCall.startsAtIso) : '';
   const serverLink = editingCall?.link ?? '';
@@ -208,6 +210,64 @@ export const CallsAdmin = () => {
   };
 
   const sortedRequests = [...requests].sort((a, b) => b.createdAtIso.localeCompare(a.createdAtIso));
+  const oldCutoff = now.getTime() - FLUENCY_CALL_LIST_LOOKBACK_MS;
+  const isOldCall = (item: FluencyCall) => {
+    const start = new Date(item.startsAtIso).getTime();
+    return Number.isFinite(start) && start < oldCutoff;
+  };
+  const currentCalls = sortedCalls.filter((item) => !isOldCall(item));
+  const oldCalls = sortedCalls.filter(isOldCall);
+
+  const renderCall = (item: FluencyCall) => {
+    const itemCountdown = getCallCountdown(item.startsAtIso, now);
+    const isLive = Boolean(itemCountdown?.isLive) && item.status === 'scheduled';
+    const statusLabel =
+      item.status === 'stopped' ? 'Stopped' : isLive ? 'Happening now' : 'Scheduled';
+    return (
+      <Stack
+        key={item.id}
+        sx={{
+          ...cardSx,
+          backgroundColor:
+            editingCall?.id === item.id ? 'rgba(47, 128, 237, 0.16)' : cardSx.backgroundColor,
+        }}
+      >
+        <Typography sx={{ fontWeight: 700 }}>{formatCallStartLabel(item.startsAtIso)}</Typography>
+        <Typography sx={{ opacity: 0.8, color: isLive ? '#7DDEAA' : undefined }}>
+          {statusLabel}
+        </Typography>
+        <CallJoiners callId={item.id} />
+        {isHttpUrl(item.link) ? (
+          <Link href={item.link} target="_blank" rel="noreferrer">
+            Join
+          </Link>
+        ) : null}
+        <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
+          <Button variant="outlined" disabled={isSaving} onClick={() => startEdit(item)}>
+            Edit
+          </Button>
+          <Button variant="outlined" disabled={isSaving || isLive} onClick={() => void start(item)}>
+            Start
+          </Button>
+          <Button
+            variant="outlined"
+            disabled={isSaving || item.status === 'stopped'}
+            onClick={() => void stop(item)}
+          >
+            Stop
+          </Button>
+          <Button
+            variant="outlined"
+            color="error"
+            disabled={isSaving}
+            onClick={() => void remove(item)}
+          >
+            Remove
+          </Button>
+        </Stack>
+      </Stack>
+    );
+  };
 
   return (
     <Stack data-testid="fluency-calls-admin" sx={{ gap: '16px', padding: '10px 20px 40px' }}>
@@ -285,64 +345,18 @@ export const CallsAdmin = () => {
           {!loading && sortedCalls.length === 0 ? (
             <Typography sx={{ opacity: 0.8 }}>No calls yet.</Typography>
           ) : null}
-          {sortedCalls.map((item) => {
-            const itemCountdown = getCallCountdown(item.startsAtIso, now);
-            const isLive = Boolean(itemCountdown?.isLive) && item.status === 'scheduled';
-            const statusLabel =
-              item.status === 'stopped' ? 'Stopped' : isLive ? 'Happening now' : 'Scheduled';
-            return (
-              <Stack
-                key={item.id}
-                sx={{
-                  ...cardSx,
-                  backgroundColor:
-                    editingCall?.id === item.id
-                      ? 'rgba(47, 128, 237, 0.16)'
-                      : cardSx.backgroundColor,
-                }}
-              >
-                <Typography sx={{ fontWeight: 700 }}>
-                  {formatCallStartLabel(item.startsAtIso)}
-                </Typography>
-                <Typography sx={{ opacity: 0.8, color: isLive ? '#7DDEAA' : undefined }}>
-                  {statusLabel}
-                </Typography>
-                <CallJoiners callId={item.id} />
-                {isHttpUrl(item.link) ? (
-                  <Link href={item.link} target="_blank" rel="noreferrer">
-                    Join
-                  </Link>
-                ) : null}
-                <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
-                  <Button variant="outlined" disabled={isSaving} onClick={() => startEdit(item)}>
-                    Edit
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    disabled={isSaving || isLive}
-                    onClick={() => void start(item)}
-                  >
-                    Start
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    disabled={isSaving || item.status === 'stopped'}
-                    onClick={() => void stop(item)}
-                  >
-                    Stop
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    disabled={isSaving}
-                    onClick={() => void remove(item)}
-                  >
-                    Remove
-                  </Button>
-                </Stack>
-              </Stack>
-            );
-          })}
+          {currentCalls.map(renderCall)}
+          {oldCalls.length > 0 ? (
+            <Button
+              variant="text"
+              data-testid="fluency-calls-admin-old-toggle"
+              onClick={() => setShowOldCalls((open) => !open)}
+              sx={{ alignSelf: 'flex-start' }}
+            >
+              {showOldCalls ? 'Hide old calls' : `Show old calls (${oldCalls.length})`}
+            </Button>
+          ) : null}
+          {showOldCalls ? oldCalls.map(renderCall) : null}
         </Stack>
 
         <Stack sx={{ gap: '10px' }}>
