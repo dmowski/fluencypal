@@ -1,24 +1,16 @@
 'use client';
-import { Box, Button, ButtonGroup, Link, Stack, Typography } from '@mui/material';
+
+import { Stack } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
-import { useNotifications } from '@toolpad/core/useNotifications';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../Auth/useAuth';
-import { createStripeCheckout } from '../createStripeCheckout';
 import { useLingui } from '@lingui/react';
-import { useCurrency } from '../../User/useCurrency';
-import { sentPaymentTgMessage } from '../sentTgMessage';
 import { useSettings } from '../../Settings/useSettings';
-import { StripeCreateCheckoutRequest } from '../stripe.types';
-import { sleep } from '@/libs/sleep';
-import { useAnalytics } from '../../Analytics/useAnalytics';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
-import { FaqSubscription } from './FaqSubscription';
-import { ConfirmPayment } from './ConfirmPayment';
-import { HoursPackage, SubscriptionDuration } from './types';
+import { SubscriptionDuration } from './types';
 import {
   PAID_ACCESS_PLANS,
   PaidAccessPeriod,
@@ -28,37 +20,31 @@ import {
 import { formatPaidAccessHours } from './paidAccessCopy';
 import { BalanceStatus } from './BalanceStatus';
 import { usePrices } from './usePrices';
-import { ActivePlanSelector } from './ActivePlanSelector';
-import { HoursSelector } from '../HoursPaymentModal/HourseSelector';
-import { pricePerHourUsd } from '@/features/Ai/ai';
-import { ColorIconTextList } from '@/features/Survey/ColorIconTextList';
-import dayjs from 'dayjs';
-import { DynamicIcon } from 'lucide-react/dynamic';
-import { CONTACTS } from '@/features/Landing/Contact/data';
-import { FeatureItem } from './FeatureItem';
-import { useAccess } from '../useAccess';
 import { ContactList } from '@/features/Landing/Contact/ContactList';
 import { PaymentAuthGate } from './PaymentAuthGate';
 import { DayPassConfirm } from './DayPassConfirm';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { startDayPassCheckout } from '../dayPassCheckout';
+import { useAccess } from '../useAccess';
+import { PaidAccessChooser } from './PaidAccessChooser';
+import { PaidAccessReview } from './PaidAccessReview';
+import { ConfirmPayment } from './ConfirmPayment';
+import { usePaidAccessCheckout } from './usePaidAccessCheckout';
+import dayjs from 'dayjs';
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const access = useAccess();
   const { i18n } = useLingui();
-  const currency = useCurrency();
   const settings = useSettings();
-  const appMode = settings.appMode;
-  const notifications = useNotifications();
   const router = useRouter();
-  const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
+  const price = usePrices();
+  const checkout = usePaidAccessCheckout();
+  const [isReviewing, setIsReviewing] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<PaidAccessPlanId>('practice');
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const supportedLang = settings.pageLanguageCode || 'en';
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [amountHoursToAdd, setAmountHoursToAdd] = useState<0 | HoursPackage>(0);
-  const [selectedPlan, setSelectedPlan] = useState<PaidAccessPlanId>('practice');
 
   useEffect(() => {
     if (!auth.isIdentified) {
@@ -69,14 +55,6 @@ export const SubscriptionPaymentModal = () => {
 
   const scrollTop = () => {
     containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
-  };
-
-  const [isRedirecting, setIsRedirecting] = useState(false);
-  const [usageType, setUsageType] = useState<'subscription' | 'hours' | 'free'>('subscription');
-
-  const openMainSubscriptionPage = () => {
-    setIsShowConfirmPayments(false);
-    scrollTop();
   };
 
   const [subscriptionDuration, setSubscriptionDuration] = useUrlState<SubscriptionDuration>(
@@ -92,195 +70,45 @@ export const SubscriptionPaymentModal = () => {
     isDirectDayPass && planLessonTitle
       ? { title: planLessonTitle, details: planLessonDetails }
       : null;
-  const price = usePrices();
-
-  const analytics = useAnalytics();
-
-  const onSelectHourPackage = async (hours: HoursPackage) => {
-    setAmountHoursToAdd(hours);
-    await sleep(50);
-    setIsShowConfirmPayments(true);
-  };
-
-  type confirmSubscriptionParams =
-    | {
-        selectedSubscriptionDuration: SubscriptionDuration;
-        plan: PaidAccessPlanId;
-      }
-    | {
-        amountHoursToAdd: HoursPackage;
-      };
-
-  const confirmSubscription = async (props: confirmSubscriptionParams) => {
-    if (!auth.isIdentified) {
-      return;
-    }
-
-    const token = await auth.getToken();
-
-    try {
-      const dataToCheckout: StripeCreateCheckoutRequest =
-        'selectedSubscriptionDuration' in props
-          ? {
-              userId: auth.uid,
-              months:
-                props.selectedSubscriptionDuration === 'month'
-                  ? 1
-                  : props.selectedSubscriptionDuration === 'year'
-                    ? 12
-                    : 0,
-              days:
-                props.selectedSubscriptionDuration === 'week'
-                  ? 7
-                  : props.selectedSubscriptionDuration === 'day'
-                    ? 1
-                    : 0,
-              plan: props.plan,
-              languageCode: supportedLang,
-              currency: currency.currency,
-            }
-          : {
-              userId: auth.uid,
-              amountOfHours: props.amountHoursToAdd,
-              languageCode: settings.pageLanguageCode,
-              currency: currency.currency,
-            };
-
-      setIsRedirecting(true);
-      sendAnalyticsEvent({
-        name: 'checkout_start',
-        ctaId: 'selectedSubscriptionDuration' in props ? 'subscription' : 'hours',
-      });
-
-      const checkoutInfo = await createStripeCheckout(dataToCheckout, token);
-
-      const tgInfo =
-        'selectedSubscriptionDuration' in props
-          ? `${props.plan} ${props.selectedSubscriptionDuration}`
-          : `${props.amountHoursToAdd} hours`;
-
-      await sentPaymentTgMessage({
-        message: `Event: Redirect to stripe | ${tgInfo}, ${currency.currency}`,
-        email: auth?.userInfo?.email || 'unknownEmail',
-        token,
-      });
-      analytics.confirmGtag();
-
-      if (!checkoutInfo.sessionUrl) {
-        setIsRedirecting(false);
-        notifications.show(
-          i18n._('Error creating payment session. Notification sent to support. Try again later.'),
-          {
-            severity: 'error',
-          },
-        );
-
-        console.error('checkoutInfo', checkoutInfo);
-
-        await sentPaymentTgMessage({
-          message: 'Error during payment process',
-          email: auth?.userInfo?.email || 'unknownEmail',
-          token: await auth.getToken(),
-        });
-
-        await sleep(300);
-
-        await sentPaymentTgMessage({
-          message: 'Error during payment process' + checkoutInfo.error,
-          email: auth?.userInfo?.email || 'unknownEmail',
-          token: await auth.getToken(),
-        });
-        return;
-      } else {
-        window.location.href = checkoutInfo.sessionUrl;
-      }
-    } catch (error) {
-      console.error('Error during payment process:', error);
-      setIsRedirecting(false);
-      notifications.show(i18n._('Error during payment process'), {
-        severity: 'error',
-      });
-      await sentPaymentTgMessage({
-        message: 'Error during payment process',
-        email: auth?.userInfo?.email || 'unknownEmail',
-        token: await auth.getToken(),
-      });
-    }
-  };
-
-  const showConfirmPage = async () => {
-    setIsShowConfirmPayments(true);
-    scrollTop();
-    const isDevEmail = auth?.userInfo?.email?.includes('dmowski');
-    if (isDevEmail) {
-      return;
-    }
-  };
-
-  if (!usage.isShowPaymentModal) return null;
-
-  const closePaymentSuccessModal = async () => {
-    usage.togglePaymentModal(false);
-  };
-
-  const onSelectPlan = async (plan: PaidAccessPlanId) => {
-    setSelectedPlan(plan);
-    setAmountHoursToAdd(0);
-    await sleep(100);
-    showConfirmPage();
-  };
 
   const planDuration: PaidAccessPeriod =
     subscriptionDuration === 'week' || subscriptionDuration === 'year'
       ? subscriptionDuration
       : 'month';
   const pricedDuration: SubscriptionDuration = isDirectDayPass ? 'day' : planDuration;
-
-  const confirmAmountUsd = amountHoursToAdd
-    ? amountHoursToAdd * pricePerHourUsd
-    : pricedDuration === 'day'
+  const confirmAmountUsd =
+    pricedDuration === 'day'
       ? price.subscriptionPrices.day.usdPrice
       : paidAccessPriceUsd(selectedPlan, pricedDuration);
 
-  const hoursLabels: Record<HoursPackage, string> = {
-    1: i18n._('Buy 1 AI hour'),
-    3: i18n._('Buy 3 AI hours'),
-    5: i18n._('Buy 5 AI hours'),
-  };
-
   const expiring = price.subscriptionPrices[pricedDuration].expiringDateIso;
   const expiringFormatted = dayjs(expiring).locale(supportedLang).format('D MMMM');
-
   const durationLabels: Record<SubscriptionDuration, string> = {
     day: i18n._('1 day'),
     week: i18n._('1 week'),
     month: i18n._('1 month'),
     year: i18n._('1 year'),
   };
-  const label = pricedDuration ? durationLabels[pricedDuration] : '';
-
   const offerHours =
     pricedDuration === 'day' ? 0 : PAID_ACCESS_PLANS[selectedPlan].advancedHours[pricedDuration];
-  const includesCommunity =
-    pricedDuration !== 'day' && PAID_ACCESS_PLANS[selectedPlan].includesCommunity;
-  const offerExtras = [
-    offerHours > 0
-      ? i18n._('Advanced conversation ({hours})', {
+  const confirmationSubTitle =
+    i18n._(`Paid access until {tillDate}`, { tillDate: expiringFormatted }) +
+    '. (' +
+    durationLabels[pricedDuration] +
+    ')' +
+    (offerHours > 0
+      ? `. ${i18n._('Advanced conversation ({hours})', {
           hours: formatPaidAccessHours(offerHours, i18n),
-        })
-      : null,
-    includesCommunity ? i18n._('Group conversations') : null,
-  ].filter((part): part is string => !!part);
-  const confirmationSubTitle = amountHoursToAdd
-    ? hoursLabels[amountHoursToAdd]
-    : i18n._(`Paid access until {tillDate}`, { tillDate: expiringFormatted }) +
-      '. (' +
-      label +
-      ')' +
-      (offerExtras.length ? `. ${offerExtras.join('. ')}` : '');
+        })}`
+      : '');
+
+  const openChooser = () => {
+    setIsReviewing(false);
+    scrollTop();
+  };
 
   const closePaymentModal = () => {
-    setIsShowConfirmPayments(false);
+    setIsReviewing(false);
     if (!isDirectDayPass) {
       usage.togglePaymentModal(false);
       return;
@@ -297,60 +125,12 @@ export const SubscriptionPaymentModal = () => {
     router.push(`${window.location.pathname}${search ? `?${search}` : ''}`, { scroll: false });
   };
 
-  const confirmDayPass = async () => {
-    if (!auth.isIdentified || !auth.uid) return;
-
-    const token = await auth.getToken();
-
-    try {
-      setIsRedirecting(true);
-      const sessionUrl = await startDayPassCheckout({
-        userId: auth.uid,
-        token,
-        languageCode: supportedLang,
-        currency: currency.currency,
-        email: auth.userInfo?.email,
-      });
-      analytics.confirmGtag();
-
-      if (!sessionUrl) {
-        setIsRedirecting(false);
-        notifications.show(
-          i18n._('Error creating payment session. Notification sent to support. Try again later.'),
-          { severity: 'error' },
-        );
-        return;
-      }
-
-      window.location.href = sessionUrl;
-    } catch (error) {
-      console.error('Error during payment process:', error);
-      setIsRedirecting(false);
-      notifications.show(i18n._('Error during payment process'), {
-        severity: 'error',
-      });
-    }
-  };
-
-  const onConfirm = () => {
-    if (amountHoursToAdd) {
-      confirmSubscription({ amountHoursToAdd });
-      return;
-    }
-    if (subscriptionDuration === 'day' || isDirectDayPass) {
-      void confirmDayPass();
-      return;
-    }
-    confirmSubscription({
-      selectedSubscriptionDuration: pricedDuration,
-      plan: selectedPlan,
-    });
-  };
+  if (!usage.isShowPaymentModal) return null;
 
   if (usage.isSuccessPayment) {
     return (
-      <CustomModal isOpen={true} onClose={closePaymentSuccessModal} zIndex={1400}>
-        <PaymentSuccess onClose={closePaymentSuccessModal} />
+      <CustomModal isOpen={true} onClose={() => usage.togglePaymentModal(false)} zIndex={1400}>
+        <PaymentSuccess onClose={() => usage.togglePaymentModal(false)} />
       </CustomModal>
     );
   }
@@ -365,8 +145,8 @@ export const SubscriptionPaymentModal = () => {
           closePaymentModal();
           return;
         }
-        if (isShowConfirmPayments) {
-          openMainSubscriptionPage();
+        if (isReviewing) {
+          openChooser();
           return;
         }
         usage.togglePaymentModal(false);
@@ -379,314 +159,62 @@ export const SubscriptionPaymentModal = () => {
           amountInUsd={confirmAmountUsd}
           isIdentified={Boolean(auth.isIdentified)}
           isAuthLoading={Boolean(auth.loading)}
-          isRedirecting={isRedirecting}
-          onConfirm={onConfirm}
+          isRedirecting={checkout.isRedirecting}
+          onConfirm={() => {
+            void checkout.confirmDayPass();
+          }}
         />
       ) : (
         <PaymentAuthGate>
           <Stack
+            ref={containerRef}
             sx={{
               width: '100%',
-              maxWidth: '700px',
-              paddingTop: '30px',
-              alignItems: 'center',
+              maxWidth: '520px',
+              paddingTop: '12px',
+              alignItems: 'stretch',
             }}
-            ref={containerRef}
           >
-            {isShowConfirmPayments || isDirectDayPass ? (
+            {isDirectDayPass ? (
               <ConfirmPayment
                 amountInUsd={confirmAmountUsd}
                 subTitle={confirmationSubTitle}
-                clickOnConfirmRequest={onConfirm}
-                isRedirecting={isRedirecting}
+                clickOnConfirmRequest={() => {
+                  void checkout.confirmDayPass();
+                }}
+                isRedirecting={checkout.isRedirecting}
+              />
+            ) : access.isFullAppAccess ? (
+              <Stack sx={{ gap: '28px', width: '100%', paddingBottom: '24px' }}>
+                <BalanceStatus />
+                <ContactList />
+              </Stack>
+            ) : isReviewing ? (
+              <PaidAccessReview
+                planId={selectedPlan}
+                duration={planDuration}
+                amountInUsd={confirmAmountUsd}
+                isRedirecting={checkout.isRedirecting}
+                onBack={openChooser}
+                onConfirm={() => {
+                  void checkout.confirmPaidAccess(selectedPlan, planDuration);
+                }}
               />
             ) : (
-              <Stack
-                sx={{
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  gap: '40px',
-                  maxWidth: '380px',
-                  alignItems: 'center',
+              <PaidAccessChooser
+                selectedDuration={planDuration}
+                setSelectedDuration={setSubscriptionDuration}
+                selectedPlan={selectedPlan}
+                setSelectedPlan={setSelectedPlan}
+                onContinue={() => {
+                  setIsReviewing(true);
+                  scrollTop();
                 }}
-              >
-                <Stack
-                  sx={{
-                    gap: '20px',
-                    width: '100%',
-                  }}
-                >
-                  <BalanceStatus />
-
-                  {access.isFullAppAccess ? (
-                    <></>
-                  ) : (
-                    <>
-                      <Stack
-                        sx={{
-                          gap: '20px',
-                          width: '100%',
-                        }}
-                      >
-                        <Stack
-                          sx={{
-                            width: '100%',
-                            display: 'none',
-                          }}
-                        >
-                          <ButtonGroup>
-                            <Button
-                              onClick={() => setUsageType('subscription')}
-                              variant={usageType === 'subscription' ? 'contained' : 'outlined'}
-                            >
-                              {i18n._('Non-renewing subscription')}
-                            </Button>
-                            <Button
-                              onClick={() => setUsageType('hours')}
-                              variant={usageType === 'hours' ? 'contained' : 'outlined'}
-                            >
-                              {i18n._('AI tokens')}
-                            </Button>
-                          </ButtonGroup>
-                        </Stack>
-                        {usageType === 'subscription' ? (
-                          <Stack sx={{}}>
-                            <ActivePlanSelector
-                              selectedDuration={planDuration}
-                              setSelectedDuration={setSubscriptionDuration}
-                              onSelectPlan={onSelectPlan}
-                            />
-                          </Stack>
-                        ) : usageType === 'hours' ? (
-                          <Stack
-                            sx={{
-                              gap: '25px',
-                            }}
-                          >
-                            <Stack>
-                              <ColorIconTextList
-                                gap="12px"
-                                iconSize="18px"
-                                listItems={[
-                                  {
-                                    title: i18n._(`Buy AI tokens and use them whenever you want.`),
-                                    iconName: 'star',
-                                  },
-                                  {
-                                    title: i18n._(
-                                      `1 AI hour ≈ 1 hour of active conversation with the AI.`,
-                                    ),
-                                    iconName: 'hourglass',
-                                  },
-                                  {
-                                    title: i18n._(
-                                      `You get full access, just like a subscription — but with complete flexibility.`,
-                                    ),
-                                    iconName: 'biceps-flexed',
-                                  },
-                                  {
-                                    title: i18n._(
-                                      `Use it on weekends, for a short project, or whenever it fits you.`,
-                                    ),
-                                    iconName: 'sprout',
-                                  },
-                                  {
-                                    title: i18n._(
-                                      `Tokens don’t expire, so you can save them for later.`,
-                                    ),
-                                    iconName: 'landmark',
-                                  },
-                                ]}
-                              />
-                            </Stack>
-                            <HoursSelector onSelectHourPackage={onSelectHourPackage} />
-                          </Stack>
-                        ) : (
-                          <Stack
-                            sx={{
-                              width: '100%',
-                            }}
-                          >
-                            <Typography>
-                              {i18n._(
-                                'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community get Paid access until they are in the top 5',
-                              )}
-                            </Typography>
-                          </Stack>
-                        )}
-                      </Stack>
-                    </>
-                  )}
-                </Stack>
-
-                <Stack
-                  sx={{
-                    width: '100%',
-                    paddingBottom: '30px',
-                  }}
-                >
-                  <Typography sx={{ marginBottom: '10px', fontWeight: 400 }}>
-                    {i18n._('Contacts:')}
-                  </Typography>
-                  <ContactList />
-                </Stack>
-              </Stack>
+              />
             )}
           </Stack>
         </PaymentAuthGate>
       )}
     </CustomModal>
-  );
-};
-
-export const ResultsSection = () => {
-  const { i18n } = useLingui();
-
-  return (
-    <Stack sx={{ width: '100%', gap: '12px' }}>
-      <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
-        {i18n._('Results')}
-      </Typography>
-
-      <Stack
-        sx={{
-          position: 'relative',
-          borderRadius: '16px',
-          maxWidth: '700px',
-          border: '1px solid rgba(255,255,255,0.12)',
-          background:
-            'linear-gradient(180deg, rgba(15, 76, 147, 0.03) 0%, rgba(14, 55, 78, 0.17) 100%)',
-        }}
-      >
-        <Stack sx={{ gap: '30px', padding: '25px 25px' }}>
-          <FeatureItem
-            iconName="calendar-days"
-            title={i18n._('Practice daily')}
-            subTitle={i18n._('Give it a few weeks. That’s when real confidence builds.')}
-            startColor="#3B82F6"
-            endColor="#06B6D4"
-          />
-
-          <FeatureItem
-            iconName="shield-check"
-            title={i18n._('Not feeling real progress?')}
-            subTitle={i18n._('I’ll return your money — no questions.')}
-            startColor="#22C55E"
-            endColor="#84CC16"
-          />
-        </Stack>
-
-        <Stack
-          direction="row"
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-            flexWrap: 'wrap',
-            padding: '20px 25px',
-            backgroundColor: 'rgba(255,255,255,0.05)',
-            borderTop: '1px solid rgba(255,255,255,0.09)',
-          }}
-        >
-          <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
-            <Typography sx={{ opacity: 0.85 }}>
-              Alex Dmowski
-              <Box component="span" sx={{ opacity: 0.7 }}>
-                {' '}
-                · {i18n._('Founder')}
-              </Box>
-            </Typography>
-          </Stack>
-
-          <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
-            <DynamicIcon name="mail" size={16} color="rgba(255,255,255,0.75)" />
-            <Link
-              href={`mailto:${CONTACTS.email}`}
-              underline="hover"
-              sx={{ color: 'rgba(255,255,255,0.85)' }}
-            >
-              {CONTACTS.email}
-            </Link>
-          </Stack>
-        </Stack>
-      </Stack>
-    </Stack>
-  );
-};
-
-export const FeatureSection = () => {
-  const { i18n } = useLingui();
-
-  return (
-    <Stack
-      sx={{
-        width: '100%',
-        gap: '20px',
-      }}
-    >
-      <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 800 }}>
-        {i18n._("What's included?")}
-      </Typography>
-
-      <Stack sx={{ gap: '40px' }}>
-        <FeatureItem
-          iconName="star"
-          title={i18n._('Unlimited AI speaking practice')}
-          subTitle={i18n._(
-            'Talk as much as you want — role-plays, assistants, and real conversations.',
-          )}
-          startColor="#8B5CF6"
-          endColor="#EC4899"
-        />
-
-        <FeatureItem
-          iconName="target"
-          title={i18n._('Personal learning plan')}
-          subTitle={i18n._('Get a clear path based on your level, goals, and progress.')}
-          startColor="#22C55E"
-          endColor="#84CC16"
-        />
-
-        <FeatureItem
-          iconName="message-circle"
-          title={i18n._('Feedback that helps')}
-          subTitle={i18n._('Instant corrections and better phrasing so you improve faster.')}
-          startColor="#06B6D4"
-          endColor="#3B82F6"
-        />
-
-        <FeatureItem
-          iconName="users"
-          title={i18n._('Community access')}
-          subTitle={i18n._('Ask questions, share progress, and find speaking partners.')}
-          startColor="#F97316"
-          endColor="#FACC15"
-        />
-
-        <FeatureItem
-          iconName="shield"
-          title={i18n._('No auto-renew. You stay in control')}
-          subTitle={i18n._('Pay once for a day, week, or month — extend only if you want.')}
-          startColor="#64748B"
-          endColor="#94A3B8"
-        />
-
-        <FeatureItem
-          iconName="users"
-          title={i18n._('Community access')}
-          subTitle={i18n._('Ask questions, share progress, and find speaking partners.')}
-          startColor="#44b9ef"
-          endColor="#71a4fb"
-        />
-
-        <FeatureItem
-          iconName="life-buoy"
-          title={i18n._('Priority support')}
-          subTitle={i18n._('Get help faster if something breaks or you have questions.')}
-          startColor="#EF4444"
-          endColor="#FB7185"
-        />
-      </Stack>
-    </Stack>
   );
 };

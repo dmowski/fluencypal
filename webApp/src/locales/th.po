@@ -99,17 +99,13 @@ msgstr "/ เดือน"
 msgid "1 AI hour"
 msgstr "1 ชั่วโมง AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:476
-#. js-lingui-explicit-id
-msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
-msgstr "1 ชั่วโมง AI ≈ 1 ชั่วโมงของการสนทนาเชิงรุกกับ AI."
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:255
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:87
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 วัน"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:22
+#: src/features/Landing/Price/PricePage.tsx:56
 #: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:107
 #: src/features/Usage/Subscription/paidAccessCopy.ts:5
 #. js-lingui-explicit-id
@@ -121,8 +117,9 @@ msgstr "1 ชั่วโมง"
 msgid "1 hour of conversation"
 msgstr "1 ชั่วโมงของการสนทนา"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:28
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:257
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:42
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:37
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:89
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1 เดือน"
@@ -132,14 +129,16 @@ msgstr "1 เดือน"
 msgid "1 round"
 msgstr "1 รอบ"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:27
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:256
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:41
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:36
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:88
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 สัปดาห์"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:29
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:258
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:43
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:38
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:90
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1 ปี"
@@ -392,6 +391,13 @@ msgstr ""
 msgid "Access Blocked"
 msgstr "การเข้าถูกบล็อก"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:73
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:77
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:47
+#. js-lingui-explicit-id
+msgid "Access period"
+msgstr "ระยะเวลาการเข้าถึง"
+
 #: src/features/FluencyCall/FluencyCallDashboardCard.tsx:81
 #. js-lingui-explicit-id
 msgid "Access until {date}"
@@ -591,13 +597,14 @@ msgid "Advanced AI talking"
 msgstr "การพูดคุยของ AI ขั้นสูง"
 
 #: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:50
 #. js-lingui-explicit-id
 msgid "Advanced conversation"
 msgstr "การสนทนาขั้นสูง"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:104
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:81
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:268
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:129
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:100
 #. js-lingui-explicit-id
 msgid "Advanced conversation ({hours})"
 msgstr "การสนทนาขั้นสูง ({hours})"
@@ -752,11 +759,6 @@ msgstr "พาร์ทเนอร์พูดคุย AI"
 msgid "AI Speaking Practice"
 msgstr "การฝึกพูดด้วย AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
-#. js-lingui-explicit-id
-msgid "AI tokens"
-msgstr "โทเค็น AI"
-
 #: src/features/Settings/MyProfile.tsx:94
 #. js-lingui-explicit-id
 msgid "AI Voice"
@@ -849,6 +851,11 @@ msgstr "เกมเดาอักษรแฝง"
 #. js-lingui-explicit-id
 msgid "All"
 msgstr "ทั้งหมด"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:132
+#. js-lingui-explicit-id
+msgid "All core practice modes"
+msgstr "โหมดการฝึกแกนกลางทั้งหมด"
 
 #: src/features/Case/data/data.tsx:387
 #. js-lingui-explicit-id
@@ -1135,12 +1142,6 @@ msgstr "ถามคนอื่นว่าเขาฝึกพูดหรื
 #. js-lingui-explicit-id
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "ถามคำถาม ขอคำอธิบาย และแก้ไขปัญหาประจำวัน"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:661
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:677
-#. js-lingui-explicit-id
-msgid "Ask questions, share progress, and find speaking partners."
-msgstr "ถามคำถาม แบ่งปันความก้าวหน้า และหาคู่สนทนา"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1576,31 +1577,11 @@ msgstr "สร้างขึ้นเพื่อการไวยากรณ
 msgid "Bundling & Code Splitting"
 msgstr "การรวมกลุ่ม & การแยกโค้ด"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:246
-#. js-lingui-explicit-id
-msgid "Buy 1 AI hour"
-msgstr "ซื้อชั่วโมง AI 1 ชั่วโมง"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:247
-#. js-lingui-explicit-id
-msgid "Buy 3 AI hours"
-msgstr "ซื้อเวลา AI 3 ชั่วโมง"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:248
-#. js-lingui-explicit-id
-msgid "Buy 5 AI hours"
-msgstr "ซื้อเวลา AI จำนวน 5 ชั่วโมง"
-
 #: src/features/Community/CommunityPaywall.tsx:54
 #: src/features/Conversation/CallMode/DayPassLimitOffer.tsx:98
 #. js-lingui-explicit-id
 msgid "Buy access"
 msgstr "ซื้อการเข้าถึง"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:472
-#. js-lingui-explicit-id
-msgid "Buy AI tokens and use them whenever you want."
-msgstr "ซื้อโทเค็น AI และใช้งานได้ตามที่คุณต้องการ"
 
 #: src/features/Advanced/AdvancedPage.tsx:266
 #. js-lingui-explicit-id
@@ -1814,6 +1795,11 @@ msgstr "ความก้าวหน้าในอาชีพ"
 msgid "Challenging"
 msgstr "ท้าทาย"
 
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
+#. js-lingui-explicit-id
+msgid "Change plan"
+msgstr "เปลี่ยนแผน"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:376
 #. js-lingui-explicit-id
 msgid "Change time"
@@ -1884,6 +1870,11 @@ msgstr "ตรวจสอบจุดไวยากรณ์อื่น ๆ �
 #. js-lingui-explicit-id
 msgid "Check proposed words"
 msgstr "ตรวจสอบคำที่เสนอ"
+
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:84
+#. js-lingui-explicit-id
+msgid "Check your access and included conversation time."
+msgstr "ตรวจสอบการเข้าถึงและเวลาการสนทนาที่รวมอยู่"
 
 #: src/features/Auth/AuthWallBasic.tsx:201
 #: src/features/Reader/components/ReaderSignInModal.tsx:116
@@ -2480,6 +2471,11 @@ msgstr "เลือกภาษาของคุณ"
 msgid "Choose your name"
 msgstr "เลือกชื่อของคุณ"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:64
+#. js-lingui-explicit-id
+msgid "Choose your plan"
+msgstr "เลือกแผนของคุณ"
+
 #: src/features/Case/data/backendCSharp/techData.ts:53
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
@@ -2607,12 +2603,6 @@ msgstr "การสื่อสารและภาวะผู้นำ"
 #. js-lingui-explicit-id
 msgid "Community"
 msgstr "ชุมชน"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:660
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:676
-#. js-lingui-explicit-id
-msgid "Community access"
-msgstr "การเข้าถึงชุมชน"
 
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
@@ -2869,6 +2859,11 @@ msgstr ""
 msgid "Constructor"
 msgstr "คอนสตรัคเตอร์"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:294
+#. js-lingui-explicit-id
+msgid "Contact Alex"
+msgstr "ติดต่ออเล็กซ์"
+
 #: src/features/Chat/ChatPage.tsx:242
 #. js-lingui-explicit-id
 msgid "Contact support"
@@ -2887,7 +2882,6 @@ msgid "Contacts"
 msgstr "ติดต่อเรา"
 
 #: src/features/Community/SupportPage.tsx:100
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:529
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "ติดต่อ:"
@@ -2930,7 +2924,7 @@ msgstr "บริบท (หัวข้อ, ผู้ชม, เป้าหม
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:364
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:125
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:280
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "ต่อไป"
@@ -3012,7 +3006,8 @@ msgstr "ทดสอบสัญญา"
 #: src/features/Landing/PlanLandingBlock.tsx:278
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:42
 #: src/features/ProgressStat/ProgressStatCard.tsx:59
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:34
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:48
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:42
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "การสนทนา"
@@ -3023,7 +3018,8 @@ msgid "conversation"
 msgstr "การสนทนา"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:43
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:35
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:49
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:43
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "การสนทนา 10"
@@ -3088,6 +3084,12 @@ msgstr "คัดลอกที่อยู่อีเมล"
 #. js-lingui-explicit-id
 msgid "Copy page link"
 msgstr "คัดลอกลิงก์หน้า"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:129
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:48
+#. js-lingui-explicit-id
+msgid "Core practice"
+msgstr "การฝึกปฏิบัติหลัก"
 
 #: src/features/Case/data/frontend-junior/techData.tsx:99
 #: src/features/Case/data/frontend-senior/techData.tsx:99
@@ -4794,9 +4796,9 @@ msgstr "ข้อผิดพลาดในการวิเคราะห์
 msgid "Error creating payment session"
 msgstr "ข้อผิดพลาดในการสร้างเซสชันการชำระเงิน"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:172
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:319
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
+#: src/features/Usage/Subscription/usePaidAccessCheckout.ts:31
+#: src/features/Usage/Subscription/usePaidAccessCheckout.ts:107
 #. js-lingui-explicit-id
 msgid ""
 "Error creating payment session. Notification sent to support. Try again "
@@ -4820,10 +4822,10 @@ msgstr "ข้อผิดพลาดในการสร้างแผน �
 msgid "Error during analyzing message"
 msgstr "ข้อผิดพลาดในระหว่างการวิเคราะห์ข้อความ"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:200
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:329
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:147
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:228
+#: src/features/Usage/Subscription/usePaidAccessCheckout.ts:79
+#: src/features/Usage/Subscription/usePaidAccessCheckout.ts:117
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "ข้อผิดพลาดระหว่างกระบวนการชำระเงิน"
@@ -4875,6 +4877,11 @@ msgstr "แม้แต่โปรแกรมเมอร์อาวุโส
 #. js-lingui-explicit-id
 msgid "Every accomplishment starts with the decision to try."
 msgstr "ทุกความสำเร็จเริ่มต้นด้วยการตัดสินใจที่จะลอง"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:219
+#. js-lingui-explicit-id
+msgid "Every plan includes"
+msgstr "ทุกแผนประกอบด้วย"
 
 #: src/features/Alias/components/ModeSelection.tsx:68
 #. js-lingui-explicit-id
@@ -5279,11 +5286,6 @@ msgid ""
 msgstr ""
 "ข้อเสนอแนะยังคงคลุมเครือ: \"**ประสบการณ์ไม่เพียงพอ**\" — "
 "แต่จะมีประสบการณ์ได้อย่างไรถ้าไม่มีงาน?"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:652
-#. js-lingui-explicit-id
-msgid "Feedback that helps"
-msgstr "คำแนะนำที่ช่วยพัฒนา"
 
 #: src/features/Tasks/useDailyPlans.ts:281
 #. js-lingui-explicit-id
@@ -5710,6 +5712,11 @@ msgstr ""
 msgid "For those committed to long-term learning and growth"
 msgstr "สำหรับผู้ที่มีความมุ่งมั่นในการเรียนรู้และเติบโตในระยะยาว"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:208
+#. js-lingui-explicit-id
+msgid "for {period}"
+msgstr "สำหรับ {period}"
+
 #: src/features/Survey/InfoStep.tsx:87
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
@@ -5737,11 +5744,6 @@ msgid "Forty active days — that’s dedication. Keep the habit alive."
 msgstr ""
 "สี่สิบวันที่เต็มไปด้วยความกระฉับกระเฉง — นั่นคือความทุ่มเท. "
 "รักษานิสัยนี้ไว้อย่าให้ขาด."
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:596
-#. js-lingui-explicit-id
-msgid "Founder"
-msgstr "ผู้ก่อตั้ง"
 
 #: src/features/Tasks/useDailyPlans.ts:316
 #. js-lingui-explicit-id
@@ -5944,11 +5946,6 @@ msgstr "ความก้าวหน้าอย่างค่อยเป็
 msgid "German Learning Plan"
 msgstr "แผนการเรียนภาษาเยอรมัน"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:645
-#. js-lingui-explicit-id
-msgid "Get a clear path based on your level, goals, and progress."
-msgstr "รับเส้นทางที่ชัดเจนตามระดับ เป้าหมาย และความก้าวหน้าของคุณ"
-
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
 msgid "Get a full access for free!"
@@ -6080,11 +6077,6 @@ msgstr ""
 "เราใช้บัตรเพื่อป้องกันการใช้งานในทางที่ผิดและมอบการเข้าถึงคุณสมบัติทั้งหมดให"
 "้คุณอย่างต่อเนื่อง"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:685
-#. js-lingui-explicit-id
-msgid "Get help faster if something breaks or you have questions."
-msgstr "รับความช่วยเหลือได้เร็วขึ้นหากมีบางอย่างเสียหรือคุณมีคำถาม"
-
 #: src/features/Landing/LandingPage.tsx:402
 #. js-lingui-explicit-id
 msgid ""
@@ -6140,11 +6132,6 @@ msgstr "ของขวัญ"
 #. js-lingui-explicit-id
 msgid "Give a small example (counter, input, button)"
 msgstr "ให้ตัวอย่างขนาดเล็ก (ตัวนับ, อินพุต, ปุ่ม)"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:565
-#. js-lingui-explicit-id
-msgid "Give it a few weeks. That’s when real confidence builds."
-msgstr "ให้เวลาสักไม่กี่อาทิตย์ นั้นคือเวลาที่ความมั่นใจที่แท้จริงเริ่มก่อตัวขึ้น"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:257
 #. js-lingui-explicit-id
@@ -6304,8 +6291,8 @@ msgstr "ร้านขายของชำ"
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "การสนทนากลุ่ม"
@@ -7288,6 +7275,11 @@ msgstr ""
 "คุณจะได้รับข้อเสนอแนะเพื่อช่วยให้คุณปรับปรุงคำตอบและพัฒนาทักษะการสัมภาษณ์ของ"
 "คุณ"
 
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
+#. js-lingui-explicit-id
+msgid "Included"
+msgstr "รวมอยู่ด้วย"
+
 #: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
@@ -7362,11 +7354,6 @@ msgstr "ติดตั้ง:"
 #. js-lingui-explicit-id
 msgid "Installing..."
 msgstr "กำลังติดตั้ง..."
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:653
-#. js-lingui-explicit-id
-msgid "Instant corrections and better phrasing so you improve faster."
-msgstr "การแก้ไขทันทีและการปรับวลีให้ดีขึ้นเพื่อให้คุณพัฒนาได้เร็วขึ้น"
 
 #: src/features/Landing/LandingPage.tsx:401
 #. js-lingui-explicit-id
@@ -7563,11 +7550,6 @@ msgstr "อาจใช้เวลาประมาณหนึ่งนาท
 #. js-lingui-explicit-id
 msgid "Italian Learning Plan"
 msgstr "แผนการเรียนภาษาอิตาลี"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:573
-#. js-lingui-explicit-id
-msgid "I’ll return your money — no questions."
-msgstr "ฉันจะคืนเงินให้คุณ — ไม่มีการถามคำถามใดๆ"
 
 #: src/features/Lang/getLabels.tsx:14
 #. js-lingui-explicit-id
@@ -8622,6 +8604,11 @@ msgstr "ภาษาแม่"
 msgid "Native language"
 msgstr "ภาษาแม่"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:288
+#. js-lingui-explicit-id
+msgid "Need help choosing?"
+msgstr "ต้องการความช่วยเหลือในการเลือกใช่ไหม?"
+
 #: src/features/Community/SupportPage.tsx:34
 #: src/features/Settings/MyProfile.tsx:121
 #. js-lingui-explicit-id
@@ -8793,11 +8780,6 @@ msgstr "ยังไม่มีการชำระเงินล่วงห
 #. js-lingui-explicit-id
 msgid "No analysis data yet."
 msgstr "ยังไม่มีข้อมูลการวิเคราะห์"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:668
-#. js-lingui-explicit-id
-msgid "No auto-renew. You stay in control"
-msgstr "ไม่มีการต่ออายุอัตโนมัติ คุณเป็นผู้ควบคุม"
 
 #: src/features/PayWall/CardValidatorQuiz.tsx:77
 #: src/features/PayWall/CardValidatorWall.tsx:155
@@ -9128,11 +9110,6 @@ msgstr "ไม่ คุณสามารถเริ่มแผนฟรี�
 msgid "Nobody is online right now."
 msgstr "ไม่มีใครออนไลน์อยู่ในขณะนี้"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:442
-#. js-lingui-explicit-id
-msgid "Non-renewing subscription"
-msgstr "การสมัครสมาชิกที่ไม่ต่ออายุโดยอัตโนมัติ"
-
 #: src/features/Settings/VoiceSpeedSelector.tsx:25
 #. js-lingui-explicit-id
 msgid "Normal"
@@ -9148,15 +9125,16 @@ msgstr "แผนการเรียนรู้ภาษานอร์เว
 msgid "NoSQL"
 msgstr "NoSQL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:572
-#. js-lingui-explicit-id
-msgid "Not feeling real progress?"
-msgstr "ไม่รู้สึกถึงความก้าวหน้าจริงหรือ?"
-
 #: src/features/NotFound/NotFoundPage.tsx:28
 #. js-lingui-explicit-id
 msgid "Not Found"
 msgstr "ไม่พบ"
+
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:51
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
+#. js-lingui-explicit-id
+msgid "Not included"
+msgstr "ไม่ได้รวม"
 
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
@@ -9308,6 +9286,7 @@ msgid "One pattern. Real speaking practice."
 msgstr "หนึ่งรูปแบบ การฝึกพูดจริง"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:139
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:283
 #. js-lingui-explicit-id
 msgid "One payment. No automatic renewal."
 msgstr "ชำระเงินครั้งเดียว ไม่มีการต่ออายุอัตโนมัติ"
@@ -9316,6 +9295,11 @@ msgstr "ชำระเงินครั้งเดียว ไม่มี�
 #. js-lingui-explicit-id
 msgid "One thing left to do"
 msgstr "อีกสิ่งเดียวที่ต้องทำ"
+
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:58
+#. js-lingui-explicit-id
+msgid "One-time payment"
+msgstr "การชำระเงินครั้งเดียว"
 
 #: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
 #. js-lingui-explicit-id
@@ -9551,7 +9535,7 @@ msgstr "การเข้าถึงแบบชำระเงินเป็
 msgid "Paid access for 1 year"
 msgstr "การเข้าถึงแบบชำระเงินเป็นระยะเวลา 1 ปี"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:276
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:95
 #. js-lingui-explicit-id
 msgid "Paid access until {tillDate}"
 msgstr "เข้าถึงแบบชำระเงินจนถึง {tillDate}"
@@ -9601,18 +9585,6 @@ msgstr "ถูกต้องบางส่วน"
 msgid "Participants"
 msgstr "ผู้เข้าร่วม"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:511
-#. js-lingui-explicit-id
-msgid ""
-"Participate in Community activities like sharing posts in the Community "
-"Chat, discuss daily questions and play in the game. Top-5 most active users "
-"in the Community get Paid access until they are in the top 5"
-msgstr ""
-"เข้าร่วมกิจกรรมของชุมชน เช่น การแชร์โพสต์ในแชทชุมชน "
-"พูดคุยเกี่ยวกับคำถามประจำวัน และเล่นเกม ผู้ใช้ 5 "
-"คนที่มีความเคลื่อนไหวมากที่สุดในชุมชนจะได้รับสิทธิ์เข้าถึงที่ต้องชำระเงินจนก"
-"ว่าจะหลุดจาก 5 อันดับแรก"
-
 #: src/features/Quiz/components/QuizResultsScreen.tsx:56
 #. js-lingui-explicit-id
 msgid "Passed"
@@ -9654,13 +9626,6 @@ msgstr "หยุดชั่วคราว"
 #. js-lingui-explicit-id
 msgid "Pause recording"
 msgstr "หยุดการบันทึก"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:669
-#. js-lingui-explicit-id
-msgid "Pay once for a day, week, or month — extend only if you want."
-msgstr ""
-"จ่ายครั้งเดียวสำหรับหนึ่งวัน หนึ่งสัปดาห์ หรือหนึ่งเดือน — "
-"ขยายระยะเวลาเพิ่มเติมถ้าคุณต้องการ"
 
 #: src/features/Usage/Subscription/TgWalletButton.tsx:124
 #. js-lingui-explicit-id
@@ -9775,11 +9740,6 @@ msgstr "ประสิทธิภาพ, ความยืดหยุ่น,
 msgid "Period"
 msgstr "ระยะเวลา"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:644
-#. js-lingui-explicit-id
-msgid "Personal learning plan"
-msgstr "แผนการเรียนรู้ส่วนบุคคล"
-
 #: src/features/Landing/LandingPage.tsx:348
 #: src/features/Landing/PlanLandingBlock.tsx:429
 #. js-lingui-explicit-id
@@ -9885,6 +9845,11 @@ msgstr "สถานที่ที่จะแบ่งปันความค
 #. js-lingui-explicit-id
 msgid "Plan for"
 msgstr "\\[\\text{วางแผนสำหรับ}\\]"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:61
+#. js-lingui-explicit-id
+msgid "Plans & access"
+msgstr "แผนและการเข้าถึง"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
@@ -10162,7 +10127,8 @@ msgstr "เคล็ดลับที่สามารถนำไปใช้
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:41
 #: src/features/SEO/metadata.ts:124
 #: src/features/SEO/metadata.ts:128
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:33
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:47
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:41
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "ฝึกฝน"
@@ -10233,11 +10199,6 @@ msgid ""
 msgstr ""
 "ฝึกฝนการสนทนาภาษาอังกฤษกับ FluencyPal, ติวเตอร์ AI ของคุณตลอด 24 ชั่วโมง "
 "ปรับปรุงความคล่องแคล่ว, การออกเสียง, และความมั่นใจของคุณ"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:564
-#. js-lingui-explicit-id
-msgid "Practice daily"
-msgstr "ฝึกฝนทุกวัน"
 
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:112
 #. js-lingui-explicit-id
@@ -10633,7 +10594,6 @@ msgid "Price per day"
 msgstr "ราคาต่อวัน"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "การสนับสนุนลำดับความสำคัญ"
@@ -11562,11 +11522,6 @@ msgstr "เริ่มใหม่"
 msgid "Restaurant"
 msgstr "ร้านอาหาร"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
-#. js-lingui-explicit-id
-msgid "Results"
-msgstr "ผลลัพธ์"
-
 #: src/features/Landing/PlanLandingBlock.tsx:615
 #. js-lingui-explicit-id
 msgid "Results are closer than you think"
@@ -11616,6 +11571,11 @@ msgstr "การคืนสินค้ากลับไปยังร้า
 #. js-lingui-explicit-id
 msgid "Review and edit what the AI remembers"
 msgstr "ตรวจสอบและแก้ไขสิ่งที่ AI จำได้"
+
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:81
+#. js-lingui-explicit-id
+msgid "Review your plan"
+msgstr "ทบทวนแผนของคุณ"
 
 #: src/features/User/AiKnowledgeModal.tsx:90
 #. js-lingui-explicit-id
@@ -13288,11 +13248,6 @@ msgstr "ทำแบบทดสอบความพร้อมในการ
 msgid "Talk about what you want to bring up in the conversation."
 msgstr "พูดคุยเกี่ยวกับสิ่งที่คุณต้องการหยิบยกขึ้นมาในการสนทนา"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
-#. js-lingui-explicit-id
-msgid "Talk as much as you want — role-plays, assistants, and real conversations."
-msgstr "พูดเท่าที่คุณต้องการ — บทบาทสมมติ, ผู้ช่วย, และการสนทนาจริง"
-
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
 msgid "Talk with AI"
@@ -14828,11 +14783,6 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "งานพูดในส่วนของ TOEFL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:494
-#. js-lingui-explicit-id
-msgid "Tokens don’t expire, so you can save them for later."
-msgstr "โทเค็นไม่มีวันหมดอายุ คุณสามารถเก็บไว้ใช้ในภายหลังได้"
-
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
 #: src/features/FluencyCall/FluencyCallDashboardCard.tsx:76
 #. js-lingui-explicit-id
@@ -15117,10 +15067,10 @@ msgstr "ข้อผิดพลาดที่ไม่ทราบสาเห
 msgid "Unknown owner"
 msgstr "เจ้าของที่ไม่รู้จัก"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:634
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:48
 #. js-lingui-explicit-id
-msgid "Unlimited AI speaking practice"
-msgstr "การฝึกพูดกับ AI ได้ไม่จำกัด"
+msgid "Unlimited"
+msgstr "ไม่จำกัด"
 
 #: src/features/Case/data/reusable/priceSection.ts:25
 #. js-lingui-explicit-id
@@ -15132,14 +15082,18 @@ msgstr "การตรวจสอบคำตอบไม่จำกัด"
 msgid "Unlimited conversations and all practice modes!"
 msgstr "การสนทนาไม่จำกัดและทุกโหมดการฝึก!"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:20
+#. js-lingui-explicit-id
+msgid "Unlimited exams, role-play, and daily lessons"
+msgstr "ไม่จำกัดการสอบ การเล่นบทบาทสมมติ และบทเรียนรายวัน"
+
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:96
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:77
 #. js-lingui-explicit-id
 msgid "Unlimited Exams, RolePlay, and Daily Lessons"
 msgstr "การทดสอบไม่จำกัด, การเล่นบทบาทสมมติ, และบทเรียนรายวัน"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:86
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:75
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:18
 #. js-lingui-explicit-id
 msgid "Unlimited Just Talk"
 msgstr ""
@@ -15147,7 +15101,7 @@ msgstr ""
 "ไม่จำกัดเพียงแค่คุย"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:91
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:76
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:19
 #. js-lingui-explicit-id
 msgid "Unlimited Personal Plan"
 msgstr "แผนบุคคลไม่จำกัด"
@@ -15156,6 +15110,11 @@ msgstr "แผนบุคคลไม่จำกัด"
 #. js-lingui-explicit-id
 msgid "Unlimited practice for the period you choose"
 msgstr "การฝึกฝนไม่จำกัดสำหรับช่วงเวลาที่คุณเลือก"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:67
+#. js-lingui-explicit-id
+msgid "Unlimited practice, with extra advanced conversation time if you want it."
+msgstr "ฝึกฝนได้ไม่จำกัด พร้อมเวลาสนทนาขั้นสูงเพิ่มเติมหากคุณต้องการ"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:40
 #. js-lingui-explicit-id
@@ -15252,13 +15211,6 @@ msgstr "กำลังอัปโหลด..."
 #. js-lingui-explicit-id
 msgid "Use at least 6 characters."
 msgstr "ใช้ตัวอักษรอย่างน้อย 6 ตัว"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:488
-#. js-lingui-explicit-id
-msgid "Use it on weekends, for a short project, or whenever it fits you."
-msgstr ""
-"ใช้ได้ในวันหยุดสุดสัปดาห์ สำหรับโครงการระยะสั้น "
-"หรือเมื่อใดก็ตามที่เหมาะกับคุณ"
 
 #: src/features/Case/data/backendCSharp/infoCardsSection.ts:31
 #. js-lingui-explicit-id
@@ -15880,11 +15832,6 @@ msgstr "สิ่งที่คุณจะบรรลุ"
 #. js-lingui-explicit-id
 msgid "What's included"
 msgstr "มีอะไรบ้าง"
-
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:628
-#. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
 
 #: src/features/Chat/ChatSectionHeader.tsx:59
 #. js-lingui-explicit-id
@@ -16544,15 +16491,6 @@ msgstr ""
 "คุณได้รับข้อเสนอแนะที่ว่า \"เก่งทางเทคนิค แต่ยังไม่ **อาวุโสพอ**\" — "
 "โดยไม่มีรายละเอียดเฉพาะเจาะจง"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
-#. js-lingui-explicit-id
-msgid ""
-"You get full access, just like a subscription — but with complete "
-"flexibility."
-msgstr ""
-"คุณจะได้รับสิทธิ์เข้าถึงทั้งหมด เช่นเดียวกับการสมัครสมาชิก — "
-"แต่มีความยืดหยุ่นอย่างเต็มที่"
-
 #: src/features/Case/data/backendCSharp/faqSection.ts:27
 #. js-lingui-explicit-id
 msgid ""
@@ -16886,6 +16824,11 @@ msgstr "การเข้าถึงแบบชำระเงินของ
 msgid "Your personal plan"
 msgstr "แผนส่วนตัวของคุณ"
 
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:120
+#. js-lingui-explicit-id
+msgid "Your plan"
+msgstr "แผนของคุณ"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:85
 #. js-lingui-explicit-id
 msgid "Your practice plan"
@@ -17040,6 +16983,7 @@ msgid "{count} hour"
 msgstr "{count} ชั่วโมง"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:23
+#: src/features/Landing/Price/PricePage.tsx:58
 #: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
 #: src/features/Usage/Subscription/paidAccessCopy.ts:6
 #. js-lingui-explicit-id
@@ -17111,6 +17055,11 @@ msgstr "{hours} ชั่วโมงของการสนทนา"
 #. js-lingui-explicit-id
 msgid "{numberOfRounds} rounds"
 msgstr "{numberOfRounds} รอบ"
+
+#: src/features/Usage/Subscription/PaidAccessChooser.tsx:261
+#. js-lingui-explicit-id
+msgid "{plan} · {period}"
+msgstr "{plan} · {period}"
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:204
 #. js-lingui-explicit-id
