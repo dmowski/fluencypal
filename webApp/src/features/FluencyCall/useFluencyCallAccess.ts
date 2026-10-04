@@ -14,7 +14,8 @@ export function useFluencyCallAccess(now: Date) {
   const accountRef = auth.uid ? db.documents.fluencyCallAccount(auth.uid) : null;
   const [account, loading] = useDocumentData(accountRef);
   const passActive = isFluencyCallPassActive(account?.activeUntilIso, now);
-  const included = access.canUseCommunity && game.isGameWinner;
+  const included =
+    access.canUseCommunity && (game.isGameWinner || Boolean(access.activeSubscriptionTill));
   const canJoin = included || (access.canUseCommunity && passActive);
 
   return {

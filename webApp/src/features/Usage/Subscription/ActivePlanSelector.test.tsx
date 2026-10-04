@@ -16,40 +16,44 @@ jest.mock('@/features/User/useCurrency', () => ({
 }));
 
 describe('ActivePlanSelector', () => {
-  it('shows the selected month plan', () => {
+  it('shows week, month, and year with the three month prices', () => {
     render(
       <I18nWrapper>
         <ActivePlanSelector
           selectedDuration="month"
           setSelectedDuration={() => undefined}
-          onSelectDuration={() => undefined}
+          onSelectPlan={() => undefined}
         />
       </I18nWrapper>,
     );
 
-    expect(screen.getByTestId('subscription-duration-day')).toHaveAttribute(
-      'aria-pressed',
-      'false',
-    );
+    expect(screen.queryByTestId('subscription-duration-day')).not.toBeInTheDocument();
     expect(screen.getByTestId('subscription-duration-month')).toHaveAttribute(
       'aria-pressed',
       'true',
     );
-    expect(screen.getByRole('button', { name: 'Unlock for 1 month' })).toBeInTheDocument();
+    expect(screen.getByTestId('paid-access-plan-practice')).toHaveTextContent('$6');
+    expect(screen.getByTestId('paid-access-plan-conversation')).toHaveTextContent('$14');
+    expect(screen.getByTestId('paid-access-plan-conversation-10')).toHaveTextContent('$64');
+    expect(screen.getAllByRole('button', { name: 'Continue' })).toHaveLength(3);
   });
 
-  it('shows 1 day when that plan is selected', () => {
+  it('shows the week prices when that period is selected', () => {
     render(
       <I18nWrapper>
         <ActivePlanSelector
-          selectedDuration="day"
+          selectedDuration="week"
           setSelectedDuration={() => undefined}
-          onSelectDuration={() => undefined}
+          onSelectPlan={() => undefined}
         />
       </I18nWrapper>,
     );
 
-    expect(screen.getByTestId('subscription-duration-day')).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByRole('button', { name: 'Unlock for 1 day' })).toBeInTheDocument();
+    expect(screen.getByTestId('subscription-duration-week')).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(screen.getByTestId('paid-access-plan-practice')).toHaveTextContent('$3');
+    expect(screen.getByTestId('paid-access-plan-conversation')).toHaveTextContent('30 minutes');
   });
 });

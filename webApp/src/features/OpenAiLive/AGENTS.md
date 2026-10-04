@@ -9,7 +9,7 @@ Applies to `webApp/src/features/OpenAiLive/**`.
 | Topic | Decision |
 | --- | --- |
 | Who sees the card | Full access (active subscription or hours on the practice balance) or a current top-5 game winner. Daily-task access does not count. |
-| Balance | Separate ledger in USD micros. Never credit it with `addPaymentLog`. |
+| Balance | Separate ledger in USD micros. Credit it with `recordOpenAiLivePayment`, never by adding practice hours in `addPaymentLog`. A payment-log row still records the purchase so history and refunds can debit the live balance. |
 | Price | $0.10 per minute, $6 per hour. Packs are 1, 3, and 10 hours. API cost and margin stay in `pricing.ts`. |
 | Welcome | $1 once, the first time an eligible user loads the card. |
 | Start | Blocked below $0.25. That covers OpenAI's connection charge. |
@@ -45,7 +45,7 @@ API routes under `webApp/src/app/api/openAiLive/*` stay thin. `requireOpenAiLive
 | `POST /welcome` | Grant the $1 welcome once |
 | `POST /checkout` | Stripe Checkout for hour packs. Product `open-ai-live` |
 
-The Stripe webhook credits `users/{uid}/openAiLive/account`. It does not touch the practice-hours balance.
+The Stripe webhook credits `users/{uid}/openAiLive/account` and writes a payment log (`open-ai-live`, or the paid-access row when hours come with Conversation). It does not touch the practice-hours balance. Withdrawing that payment debits the credited hours.
 
 ## Call
 

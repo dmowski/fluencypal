@@ -1,7 +1,7 @@
 import { getUserInfo } from '@/app/api/user/getUserInfo';
 import { sentSupportTelegramMessage } from '@/app/api/telegram/sendTelegramMessage';
 import { getDB } from '@/app/api/config/firebase';
-import { extendFluencyCallAccess } from '../pricing';
+import { extendFluencyCallAccessFor } from '../pricing';
 import { fluencyCallAccountRef, fluencyCallPaymentRef } from './paths';
 
 export const recordFluencyCallPayment = async ({
@@ -11,6 +11,9 @@ export const recordFluencyCallPayment = async ({
   currency,
   chargeId,
   receiptUrl,
+  months = 1,
+  days = 0,
+  notify = true,
 }: {
   userId: string;
   paymentId: string;
@@ -18,6 +21,9 @@ export const recordFluencyCallPayment = async ({
   currency: string;
   chargeId: string;
   receiptUrl: string;
+  months?: number;
+  days?: number;
+  notify?: boolean;
 }) => {
   const db = getDB();
   const paymentRef = fluencyCallPaymentRef(userId, paymentId);
@@ -28,7 +34,10 @@ export const recordFluencyCallPayment = async ({
     const [paymentSnap, accountSnap] = await Promise.all([tx.get(paymentRef), tx.get(accountRef)]);
     if (paymentSnap.exists) return true;
     const current = (accountSnap.data()?.activeUntilIso as string | null | undefined) ?? null;
-    const activeUntilIso = extendFluencyCallAccess(current, now);
+    const activeUntilIso = extendFluencyCallAccessFor(current, now, {
+      months: months || undefined,
+      days: days || undefined,
+    });
     const createdAt = now.toISOString();
     tx.set(paymentRef, {
       amountPaid,
@@ -49,7 +58,7 @@ export const recordFluencyCallPayment = async ({
     return false;
   });
 
-  if (alreadyRecorded) return;
+  if (alreadyRecorded || !notify) return;
 
   try {
     const userInfo = await getUserInfo(userId);

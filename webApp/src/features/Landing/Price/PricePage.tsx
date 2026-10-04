@@ -4,28 +4,14 @@ import { maxContentWidth, subTitleFontStyle } from '../landingSettings';
 import { CtaBlock } from '../ctaBlock';
 import { Footer } from '../Footer';
 import { FirstEnterButton } from '../FirstEnterButton';
-import { PriceCard } from './PriceCard';
 import Script from 'next/script';
-import {
-  BookType,
-  ChartNoAxesCombined,
-  GraduationCap,
-  Lightbulb,
-  Sparkles,
-  Speech,
-  UsersRound,
-} from 'lucide-react';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { getI18nInstance } from '@/appRouterI18n';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
-import { CurrencyToDisplay, PriceDisplay } from './PriceDisplay';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
-import {
-  ADVANCED_PRICE_PER_HOUR_USD,
-  PRICE_PER_MONTH_USD,
-  PRICE_PER_WEEK_USD,
-  PRICE_PER_YEAR_USD,
-} from '@/features/Price/price';
+import { ADVANCED_PRICE_PER_HOUR_USD, PRICE_PER_MONTH_USD } from '@/features/Price/price';
+import { paidAccessPriceUsd } from '@/features/Price/paidAccessPlans';
+import { PaidAccessPriceSection } from './PaidAccessPriceSection';
 import { GeneralFaqBlock } from '../FAQ/GeneralFaqBlock';
 
 interface PricePageProps {
@@ -44,7 +30,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited features and a monthly plan for full access. You can use the free plan indefinitely to practice speaking and explore basic features before deciding to upgrade.`,
+        `No. FluencyPal offers a free plan with limited features and paid access for a week, a month, or a year. You can use the free plan to practice speaking before you upgrade.`,
       ),
     },
 
@@ -56,14 +42,21 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Is the payment recurring?`),
       answer: i18n._(
-        `No. FluencyPal does not use automatic recurring payments. You decide each month whether you want to continue and pay again manually.`,
+        `No. FluencyPal does not use automatic recurring payments. You choose a week, a month, or a year, and you pay again only if you want to continue.`,
       ),
     },
 
     {
       question: i18n._(`What do I get with the paid plan?`),
       answer: i18n._(
-        `The paid plan gives you full access to all FluencyPal features, including unlimited speaking practice, all learning modes, personalized practice plans, and progress tracking.`,
+        `Practice ({practicePrice} a month) includes unlimited Just Talk, a personal plan, exams, role-play, daily lessons, and community calls. Conversation ({conversationPrice} a month) adds {conversationHours} of advanced conversation. Conversation 10 ({conversation10Price} a month) adds {conversation10Hours} of advanced conversation. Week and year options are on this page.`,
+        {
+          practicePrice: `$${PRICE_PER_MONTH_USD}`,
+          conversationPrice: `$${paidAccessPriceUsd('conversation', 'month')}`,
+          conversationHours: '1 hour',
+          conversation10Price: `$${paidAccessPriceUsd('conversation-10', 'month')}`,
+          conversation10Hours: '10 hours',
+        },
       ),
     },
 
@@ -77,7 +70,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal game. The game is free to play.`,
+        `Yes. You can earn free paid access by ranking in the top 5 of the FluencyPal game. The game is free to play.`,
       ),
     },
 
@@ -218,431 +211,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               boxSizing: 'border-box',
             }}
           >
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '30px',
-                height: '100%',
-                display: 'grid',
-                width: '100%',
-                boxSizing: 'border-box',
-                gridTemplateColumns: '1fr 1fr 1fr',
-                '@media (max-width: 1000px)': {
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '40px',
-                },
-              }}
-            >
-              {/*
-              <PriceCard
-                title={i18n._('Free')}
-                subTitle={i18n._('For learners getting started')}
-                price={
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: '3rem',
-                      }}
-                    >
-                      0
-                    </Typography>
-
-                    <Stack sx={{}}>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        <CurrencyToDisplay />
-                      </Typography>
-                      <Typography variant="caption">/ {i18n._('month')}</Typography>
-                    </Stack>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Get started with basic features')}
-                listTitle={i18n._('Everything in Free, plus:')}
-                isLightButton
-                listItems={[
-                  {
-                    title: i18n._('Game-based practice'),
-                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
-                    icon: Swords,
-                  },
-
-                  {
-                    title: i18n._('Vocabulary challenges'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Languages,
-                  },
-                  {
-                    title: i18n._('Reading practice'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: BookText,
-                  },
-                  {
-                    title: i18n._('Place in the top 5 in the game to gain full access'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Crown,
-                  },
-                ]}
-                buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-
-              
-              <PriceCard
-                title={i18n._('Full Access for a Day')}
-                subTitle={i18n._('To try full features for a short time')}
-                price={
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: '3rem',
-                      }}
-                    >
-                      <PriceDisplay amountInUsd={PRICE_PER_DAY_USD} />
-                    </Typography>
-
-                    <Stack sx={{}}>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        <CurrencyToDisplay />
-                      </Typography>
-                      <Typography variant="caption">/ {i18n._('day')}</Typography>
-                    </Stack>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Try full features and decide if it’s right for you')}
-                listTitle={i18n._('Everything in Free, plus:')}
-                isLightButton
-                listItems={[
-                  {
-                    title: i18n._('Full AI tutor access'),
-                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
-                    icon: Sparkles,
-                  },
-                  {
-                    title: i18n._('Role-play scenarios'),
-                    tooltip: i18n._(
-                      'Engage in real-life conversations like job interviews or ordering food',
-                    ),
-                    icon: UsersRound,
-                  },
-
-                  {
-                    title: i18n._('Conversation practice'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Speech,
-                  },
-                  {
-                    title: i18n._('Progress tracking'),
-                    tooltip: i18n._('See your improvements and track your learning journey'),
-                    icon: ChartNoAxesCombined,
-                  },
-                  {
-                    title: i18n._('New Words'),
-                    tooltip: i18n._('Get new words and phrases in context'),
-                    icon: BookType,
-                  },
-                  {
-                    title: i18n._('New Grammar Rules'),
-                    tooltip: i18n._('By practicing, you will get personal grammar rules from AI'),
-                    icon: GraduationCap,
-                  },
-                  {
-                    title: i18n._('Advanced Personalization'),
-                    tooltip: i18n._(
-                      'With time, AI will adapt to your learning style and it will be more personalized',
-                    ),
-                    icon: Lightbulb,
-                  },
-                  {
-                    title: i18n._('Community access'),
-                    tooltip: i18n._('Engage with the community and participate in discussions'),
-                    icon: UsersRound,
-                  },
-                ]}
-                buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-              */}
-
-              <PriceCard
-                title={i18n._('Full Access for a Week')}
-                subTitle={i18n._('For learners committed to improving their fluency')}
-                price={
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: '3rem',
-                      }}
-                    >
-                      <PriceDisplay amountInUsd={PRICE_PER_WEEK_USD} />
-                    </Typography>
-
-                    <Stack sx={{}}>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        <CurrencyToDisplay />
-                      </Typography>
-                      <Typography variant="caption">/ {i18n._('week')}</Typography>
-                    </Stack>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Try full features and see significant improvement')}
-                listTitle={i18n._('Everything in Free, plus:')}
-                isLightButton
-                listItems={[
-                  {
-                    title: i18n._('Full AI tutor access'),
-                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
-                    icon: Sparkles,
-                  },
-                  {
-                    title: i18n._('Role-play scenarios'),
-                    tooltip: i18n._(
-                      'Engage in real-life conversations like job interviews or ordering food',
-                    ),
-                    icon: UsersRound,
-                  },
-                  {
-                    title: i18n._('Conversation practice'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Speech,
-                  },
-                  {
-                    title: i18n._('Progress tracking'),
-                    tooltip: i18n._('See your improvements and track your learning journey'),
-                    icon: ChartNoAxesCombined,
-                  },
-                  {
-                    title: i18n._('New Words'),
-                    tooltip: i18n._('Get new words and phrases in context'),
-                    icon: BookType,
-                  },
-                  {
-                    title: i18n._('New Grammar Rules'),
-                    tooltip: i18n._('By practicing, you will get personal grammar rules from AI'),
-                    icon: GraduationCap,
-                  },
-                  {
-                    title: i18n._('Advanced Personalization'),
-                    tooltip: i18n._(
-                      'With time, AI will adapt to your learning style and it will be more personalized',
-                    ),
-                    icon: Lightbulb,
-                  },
-                ]}
-                buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-
-              <PriceCard
-                title={i18n._('Full Access for a Month')}
-                subTitle={i18n._('For learners who want flexibility')}
-                price={
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: '3rem',
-                      }}
-                    >
-                      <PriceDisplay amountInUsd={PRICE_PER_MONTH_USD} />
-                    </Typography>
-
-                    <Stack sx={{}}>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        <CurrencyToDisplay />
-                      </Typography>
-                      <Typography variant="caption">/ {i18n._('Month')}</Typography>
-                    </Stack>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Learn at full speed with full access')}
-                listTitle={i18n._('Everything in Free, plus:')}
-                isLightButton
-                listItems={[
-                  {
-                    title: i18n._('Full AI tutor access'),
-                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
-                    icon: Sparkles,
-                  },
-                  {
-                    title: i18n._('Role-play scenarios'),
-                    tooltip: i18n._(
-                      'Engage in real-life conversations like job interviews or ordering food',
-                    ),
-                    icon: UsersRound,
-                  },
-                  {
-                    title: i18n._('Conversation practice'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Speech,
-                  },
-                  {
-                    title: i18n._('Progress tracking'),
-                    tooltip: i18n._('See your improvements and track your learning journey'),
-                    icon: ChartNoAxesCombined,
-                  },
-                  {
-                    title: i18n._('New Words'),
-                    tooltip: i18n._('Get new words and phrases in context'),
-                    icon: BookType,
-                  },
-                  {
-                    title: i18n._('New Grammar Rules'),
-                    tooltip: i18n._('By practicing, you will get personal grammar rules from AI'),
-                    icon: GraduationCap,
-                  },
-                  {
-                    title: i18n._('Advanced Personalization'),
-                    tooltip: i18n._(
-                      'With time, AI will adapt to your learning style and it will be more personalized',
-                    ),
-                    icon: Lightbulb,
-                  },
-                ]}
-                buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-
-              <PriceCard
-                title={i18n._('Full Access for a Year')}
-                subTitle={i18n._('For learners committed to fluency')}
-                price={
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      component={'span'}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: '3rem',
-                      }}
-                    >
-                      <PriceDisplay amountInUsd={PRICE_PER_YEAR_USD} />
-                    </Typography>
-
-                    <Stack sx={{}}>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        <CurrencyToDisplay />
-                      </Typography>
-                      <Typography variant="caption">/ {i18n._('year')}</Typography>
-                    </Stack>
-                  </Stack>
-                }
-                priceSubDescription={i18n._('Promote consistent learning and long-term progress')}
-                listTitle={i18n._('Everything in Free, plus:')}
-                isLightButton
-                listItems={[
-                  {
-                    title: i18n._('Full AI tutor access'),
-                    tooltip: i18n._('Get unlimited access to AI-powered language practice'),
-                    icon: Sparkles,
-                  },
-                  {
-                    title: i18n._('Role-play scenarios'),
-                    tooltip: i18n._(
-                      'Engage in real-life conversations like job interviews or ordering food',
-                    ),
-                    icon: UsersRound,
-                  },
-                  {
-                    title: i18n._('Conversation practice'),
-                    tooltip: i18n._('Improve fluency with interactive chat sessions'),
-                    icon: Speech,
-                  },
-                  {
-                    title: i18n._('Progress tracking'),
-                    tooltip: i18n._('See your improvements and track your learning journey'),
-                    icon: ChartNoAxesCombined,
-                  },
-                  {
-                    title: i18n._('New Words'),
-                    tooltip: i18n._('Get new words and phrases in context'),
-                    icon: BookType,
-                  },
-                  {
-                    title: i18n._('New Grammar Rules'),
-                    tooltip: i18n._('By practicing, you will get personal grammar rules from AI'),
-                    icon: GraduationCap,
-                  },
-                  {
-                    title: i18n._('Advanced Personalization'),
-                    tooltip: i18n._(
-                      'With time, AI will adapt to your learning style and it will be more personalized',
-                    ),
-                    icon: Lightbulb,
-                  },
-                ]}
-                buttonTitle={i18n._('Start')}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-            </Stack>
+            <PaidAccessPriceSection quizLink={`${getUrlStart(lang)}quiz`} />
           </Stack>
 
           <Stack

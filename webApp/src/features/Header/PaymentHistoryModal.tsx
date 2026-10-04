@@ -24,9 +24,11 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     welcome: i18n._(`Trial balance`),
     user: i18n._(`Payment`),
     gift: i18n._(`Gift`),
-    'subscription-full-v1': i18n._(`Subscription (1 month)`),
+    'subscription-full-v1': i18n._(`Paid access`),
     'trial-days': i18n._(`Trial days`),
     'advanced-hours': i18n._(`Advanced AI hours`),
+    'open-ai-live': i18n._(`Advanced conversation`),
+    'fluency-call': i18n._(`Community calls`),
   };
 
   const paidLogs = useMemo(() => {
@@ -81,6 +83,21 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           {!!log.amountOfDays && <Typography variant="body2">{log.amountOfDays} days</Typography>}
           {!!log.amountOfMonth && (
             <Typography variant="body2">{log.amountOfMonth} months</Typography>
+          )}
+          {!!log.openAiLiveHours && (
+            <Typography variant="body2">
+              {i18n._('{hours} h advanced conversation', { hours: log.openAiLiveHours })}
+            </Typography>
+          )}
+          {!!log.fluencyCallMonths && (
+            <Typography variant="body2">
+              {i18n._('Community calls, {count} months', { count: log.fluencyCallMonths })}
+            </Typography>
+          )}
+          {!!log.fluencyCallDays && (
+            <Typography variant="body2">
+              {i18n._('Community calls, {count} days', { count: log.fluencyCallDays })}
+            </Typography>
           )}
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
             {paymentTypeLabelMap[log.type]}

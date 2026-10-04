@@ -70,7 +70,9 @@ export type PaymentLogType =
   | 'gift'
   | 'subscription-full-v1'
   | 'trial-days'
-  | 'advanced-hours';
+  | 'advanced-hours'
+  | 'open-ai-live'
+  | 'fluency-call';
 
 export const WELCOME_BONUS = 6;
 export interface PaymentLog {
@@ -86,4 +88,10 @@ export interface PaymentLog {
   receiptUrl: string;
   chargeId?: string;
   withdrawnAtIso?: string;
+  /** Advanced conversation hours credited to the separate live balance. */
+  openAiLiveHours?: number;
+  /** Community-call time granted with this payment. */
+  fluencyCallMonths?: number;
+  fluencyCallDays?: number;
+  paidAccessPlan?: string;
 }

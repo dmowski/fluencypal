@@ -19,6 +19,13 @@ import { PaymentSuccess } from '../HoursPaymentModal/PaymentSuccess';
 import { FaqSubscription } from './FaqSubscription';
 import { ConfirmPayment } from './ConfirmPayment';
 import { HoursPackage, SubscriptionDuration } from './types';
+import {
+  PAID_ACCESS_PLANS,
+  PaidAccessPeriod,
+  PaidAccessPlanId,
+  paidAccessPriceUsd,
+} from '@/features/Price/paidAccessPlans';
+import { formatPaidAccessHours } from './paidAccessCopy';
 import { BalanceStatus } from './BalanceStatus';
 import { usePrices } from './usePrices';
 import { ActivePlanSelector } from './ActivePlanSelector';
@@ -51,6 +58,7 @@ export const SubscriptionPaymentModal = () => {
   const supportedLang = settings.pageLanguageCode || 'en';
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [amountHoursToAdd, setAmountHoursToAdd] = useState<0 | HoursPackage>(0);
+  const [selectedPlan, setSelectedPlan] = useState<PaidAccessPlanId>('practice');
 
   useEffect(() => {
     if (!auth.isIdentified) {
@@ -97,6 +105,7 @@ export const SubscriptionPaymentModal = () => {
   type confirmSubscriptionParams =
     | {
         selectedSubscriptionDuration: SubscriptionDuration;
+        plan: PaidAccessPlanId;
       }
     | {
         amountHoursToAdd: HoursPackage;
@@ -126,6 +135,7 @@ export const SubscriptionPaymentModal = () => {
                   : props.selectedSubscriptionDuration === 'day'
                     ? 1
                     : 0,
+              plan: props.plan,
               languageCode: supportedLang,
               currency: currency.currency,
             }
@@ -146,7 +156,7 @@ export const SubscriptionPaymentModal = () => {
 
       const tgInfo =
         'selectedSubscriptionDuration' in props
-          ? props.selectedSubscriptionDuration
+          ? `${props.plan} ${props.selectedSubscriptionDuration}`
           : `${props.amountHoursToAdd} hours`;
 
       await sentPaymentTgMessage({
@@ -213,17 +223,24 @@ export const SubscriptionPaymentModal = () => {
     usage.togglePaymentModal(false);
   };
 
-  const onSelectDuration = async () => {
+  const onSelectPlan = async (plan: PaidAccessPlanId) => {
+    setSelectedPlan(plan);
     setAmountHoursToAdd(0);
     await sleep(100);
     showConfirmPage();
   };
 
-  const pricedDuration: SubscriptionDuration = isDirectDayPass ? 'day' : subscriptionDuration;
+  const planDuration: PaidAccessPeriod =
+    subscriptionDuration === 'week' || subscriptionDuration === 'year'
+      ? subscriptionDuration
+      : 'month';
+  const pricedDuration: SubscriptionDuration = isDirectDayPass ? 'day' : planDuration;
 
   const confirmAmountUsd = amountHoursToAdd
     ? amountHoursToAdd * pricePerHourUsd
-    : price.subscriptionPrices[pricedDuration].usdPrice;
+    : pricedDuration === 'day'
+      ? price.subscriptionPrices.day.usdPrice
+      : paidAccessPriceUsd(selectedPlan, pricedDuration);
 
   const hoursLabels: Record<HoursPackage, string> = {
     1: i18n._('Buy 1 AI hour'),
@@ -242,9 +259,25 @@ export const SubscriptionPaymentModal = () => {
   };
   const label = pricedDuration ? durationLabels[pricedDuration] : '';
 
+  const offerHours =
+    pricedDuration === 'day' ? 0 : PAID_ACCESS_PLANS[selectedPlan].advancedHours[pricedDuration];
+  const includesCommunity =
+    pricedDuration !== 'day' && PAID_ACCESS_PLANS[selectedPlan].includesCommunity;
+  const offerExtras = [
+    offerHours > 0
+      ? i18n._('Advanced conversation ({hours})', {
+          hours: formatPaidAccessHours(offerHours, i18n),
+        })
+      : null,
+    includesCommunity ? i18n._('Community calls') : null,
+  ].filter((part): part is string => !!part);
   const confirmationSubTitle = amountHoursToAdd
     ? hoursLabels[amountHoursToAdd]
-    : i18n._(`Full access until {tillDate}`, { tillDate: expiringFormatted }) + '. (' + label + ')';
+    : i18n._(`Paid access until {tillDate}`, { tillDate: expiringFormatted }) +
+      '. (' +
+      label +
+      ')' +
+      (offerExtras.length ? `. ${offerExtras.join('. ')}` : '');
 
   const closePaymentModal = () => {
     setIsShowConfirmPayments(false);
@@ -308,7 +341,10 @@ export const SubscriptionPaymentModal = () => {
       void confirmDayPass();
       return;
     }
-    confirmSubscription({ selectedSubscriptionDuration: subscriptionDuration });
+    confirmSubscription({
+      selectedSubscriptionDuration: pricedDuration,
+      plan: selectedPlan,
+    });
   };
 
   if (usage.isSuccessPayment) {
@@ -416,9 +452,9 @@ export const SubscriptionPaymentModal = () => {
                         {usageType === 'subscription' ? (
                           <Stack sx={{}}>
                             <ActivePlanSelector
-                              selectedDuration={subscriptionDuration}
+                              selectedDuration={planDuration}
                               setSelectedDuration={setSubscriptionDuration}
-                              onSelectDuration={onSelectDuration}
+                              onSelectPlan={onSelectPlan}
                             />
                           </Stack>
                         ) : usageType === 'hours' ? (
@@ -473,7 +509,7 @@ export const SubscriptionPaymentModal = () => {
                           >
                             <Typography>
                               {i18n._(
-                                'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community gets a Full Access until they in top-5',
+                                'Participate in Community activities like sharing posts in the Community Chat, discuss daily questions and play in the game. Top-5 most active users in the Community get Paid access until they are in the top 5',
                               )}
                             </Typography>
                           </Stack>

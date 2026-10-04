@@ -331,7 +331,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                     opacity: 0.7,
                   }}
                 >
-                  {i18n._(`Full Access for 1 month`)}
+                  {i18n._(`Paid access for 1 month`)}
                 </Typography>
 
                 <Typography variant="caption">
@@ -416,12 +416,12 @@ export const TelegramSubscriptionPaymentModal = () => {
                 }}
               >
                 {duration === 'month'
-                  ? i18n._(`Full Access for 1 month`)
+                  ? i18n._(`Paid access for 1 month`)
                   : duration === 'week'
-                    ? i18n._(`Full Access for 1 week`)
+                    ? i18n._(`Paid access for 1 week`)
                     : duration === 'year'
-                      ? i18n._(`Full Access for 1 year`)
-                      : i18n._(`Full Access for 1 day`)}
+                      ? i18n._(`Paid access for 1 year`)
+                      : i18n._(`Paid access for 1 day`)}
               </Typography>
             </Stack>
 
@@ -448,7 +448,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                 }}
               >
                 <Typography align="center" variant="h5" component="h2">
-                  {i18n._(`Full Access`)}
+                  {i18n._(`Paid access`)}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -457,11 +457,11 @@ export const TelegramSubscriptionPaymentModal = () => {
                   }}
                   align="center"
                 >
-                  {!isActiveSubscription && <>{i18n._(`You do not have full access.`)}</>}
+                  {!isActiveSubscription && <>{i18n._(`You do not have paid access.`)}</>}
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>
-                      {i18n._(`Your full access is active until`)} <b>{activeTill || '-'}</b>
+                      {i18n._(`Your paid access is active until`)} <b>{activeTill || '-'}</b>
                     </>
                   )}
 
@@ -496,7 +496,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <Typography variant="h6">{i18n._(`Full Access`)}</Typography>
+                    <Typography variant="h6">{i18n._(`Paid access`)}</Typography>
                     {activeTill && (
                       <Stack
                         sx={{
@@ -680,7 +680,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                         size="large"
                         onClick={showConfirmPage}
                       >
-                        {i18n._(`Get Full Access`)}
+                        {i18n._(`Get Paid access`)}
                       </Button>
                     )}
 
@@ -699,7 +699,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                     {activeTill && (
                       <>
                         <Typography variant="body2" align="left">
-                          {i18n._(`Your full access is active until {activeTill}`, {
+                          {i18n._(`Your paid access is active until {activeTill}`, {
                             activeTill: activeTill,
                           })}
                         </Typography>
@@ -711,7 +711,7 @@ export const TelegramSubscriptionPaymentModal = () => {
                           }}
                         >
                           {i18n._(
-                            `You can renew your full access any time before it expires to avoid
+                            `You can renew your paid access any time before it expires to avoid
                           interruption of service.`,
                           )}
                         </Typography>

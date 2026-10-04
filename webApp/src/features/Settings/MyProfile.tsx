@@ -78,8 +78,8 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const menuItems: MenuItem[] = [
     {
-      title: i18n._(`Full Access`),
-      subTitle: i18n._(`Manage your full access settings`),
+      title: i18n._(`Paid access`),
+      subTitle: i18n._(`Manage your paid access`),
       icon: Wallet,
       onClick: () => usage.togglePaymentModal(true),
     },

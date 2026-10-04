@@ -1,4 +1,5 @@
 import { SupportedLanguage } from '../../features/Lang/lang';
+import { PaidAccessPlanId } from '@/features/Price/paidAccessPlans';
 
 export interface StripeCreateCheckoutRequestBase {
   languageCode: SupportedLanguage;
@@ -16,6 +17,7 @@ export interface StripeCreateCheckoutRequestHours extends StripeCreateCheckoutRe
 export interface StripeCreateCheckoutSubscription extends StripeCreateCheckoutRequestBase {
   months: number;
   days: number;
+  plan?: PaidAccessPlanId;
 }
 
 export type StripeCreateCheckoutRequest =

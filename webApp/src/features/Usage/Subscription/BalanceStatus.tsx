@@ -34,7 +34,7 @@ export const BalanceStatus = () => {
       }}
     >
       <Typography variant="h4" component="h3" sx={{ marginBottom: '10px', fontWeight: 700 }}>
-        {i18n._('Full Access')}
+        {i18n._('Paid access')}
       </Typography>
 
       <Stack

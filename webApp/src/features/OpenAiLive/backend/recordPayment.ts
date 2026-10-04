@@ -12,6 +12,7 @@ export const recordOpenAiLivePayment = async ({
   currency,
   chargeId,
   receiptUrl,
+  notify = true,
 }: {
   userId: string;
   paymentId: string;
@@ -20,6 +21,7 @@ export const recordOpenAiLivePayment = async ({
   currency: string;
   chargeId: string;
   receiptUrl: string;
+  notify?: boolean;
 }) => {
   const db = getDB();
   const paymentRef = openAiLivePaymentRef(userId, paymentId);
@@ -53,7 +55,7 @@ export const recordOpenAiLivePayment = async ({
     return false;
   });
 
-  if (alreadyRecorded) return;
+  if (alreadyRecorded || !notify) return;
 
   try {
     const userInfo = await getUserInfo(userId);

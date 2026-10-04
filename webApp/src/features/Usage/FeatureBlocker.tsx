@@ -48,7 +48,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
               fontSize: '1.7rem',
             }}
           >
-            {i18n._(`Full Access`)}
+            {i18n._(`Paid access`)}
           </Typography>
 
           <Typography
@@ -96,7 +96,7 @@ export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick: () => void 
             startIcon={<Telescope />}
             endIcon={<ChevronRight />}
           >
-            {i18n._(`Get Full Access`)}
+            {i18n._(`Get Paid access`)}
           </Button>
         </Stack>
       </Stack>

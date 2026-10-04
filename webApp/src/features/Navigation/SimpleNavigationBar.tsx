@@ -153,7 +153,7 @@ export const SimpleNavigationBar: React.FC = () => {
                   startIcon={<Lock size={20} color="#F8BCFF" />}
                   onClick={() => access.showPaymentModal()}
                 >
-                  {i18n._('Full Access')}
+                  {i18n._('Paid access')}
                 </Button>
               )}
               <AppNotificationsButton />
