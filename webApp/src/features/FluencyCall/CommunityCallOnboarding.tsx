@@ -190,7 +190,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     >
       <QuizProgressBar
         navigateToMainPage={() => {
-          window.location.assign(getLandingUrlStart(lang));
+          window.location.assign(`${getLandingUrlStart(lang)}features/group-conversations`);
         }}
         isCanGoToMainPage={!isTelegramApp}
         isFirstStep={stepIndex === 0}
