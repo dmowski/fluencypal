@@ -1,10 +1,13 @@
 const KEPT_QUERY_KEYS = [
   'currentStep',
+  'step',
   'rolePlayId',
   'interactiveLesson',
   'dailyQuestions',
   'page',
   'section',
+  'communityCall',
+  'fluencyCall',
 ] as const;
 
 export const normalizeAnalyticsPath = (path: string): string => {
@@ -55,6 +58,7 @@ export type AnalyticsEntryKind =
   | 'practice'
   | 'pricing'
   | 'features'
+  | 'communityCall'
   | 'other';
 
 export const entryKindFromAnalyticsPath = (path: string): AnalyticsEntryKind => {
@@ -70,6 +74,8 @@ export const entryKindFromAnalyticsPath = (path: string): AnalyticsEntryKind => 
   if (/\/quiz(\/|$)/.test(withoutLang)) return 'quiz';
   if (/\/practice(\/|$)/.test(withoutLang)) return 'practice';
   if (/\/pricing(\/|$)/.test(withoutLang) || /\/price(\/|$)/.test(withoutLang)) return 'pricing';
+  if (/\/community-call(\/|$)/.test(withoutLang)) return 'communityCall';
+  if (/\/features\/group-conversations(\/|$)/.test(withoutLang)) return 'communityCall';
   if (/\/features(\/|$)/.test(withoutLang)) return 'features';
   if (withoutLang === '/') return 'home';
   return 'other';

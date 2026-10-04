@@ -18,6 +18,7 @@ import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useUrlState } from '@/features/Url/useUrlState';
+import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { QuizPasswordAccountForm } from '@/features/Goal/Quiz/QuizPasswordAccount';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { QuizProgressBar } from '@/features/Goal/Quiz/components/QuizProgressBar';
@@ -153,9 +154,15 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     router.push(replaceUrlToLang(pageLanguage, `${window.location.pathname}?${params.toString()}`));
   };
 
+  useEffect(() => {
+    if (step !== 'membership') return;
+    sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'fluency-call' });
+  }, [step]);
+
   const buy = async () => {
     setBuying(true);
     setPayError(null);
+    sendAnalyticsEvent({ name: 'checkout_start', ctaId: 'fluency-call' });
     try {
       await persistLearn();
       const result = await requestFluencyCallCheckout(await auth.getToken(), {
@@ -307,6 +314,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
             <ConfirmPaymentForm
               isRedirecting={buying}
               amountInUsd={FLUENCY_CALL_PRICE_USD}
+              analyticsId="community-call-checkout"
               onConfirmRequest={() => {
                 void buy();
               }}
@@ -333,7 +341,9 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
             <Typography sx={{ opacity: 0.8 }}>
               {access.canJoin
                 ? i18n._('You will see the calls next. Talk with AI until one starts.')
-                : i18n._('You will need the $2 month before you join a call. Until then, talk with AI.')}
+                : i18n._(
+                    'You will need the $2 month before you join a call. Until then, talk with AI.',
+                  )}
             </Typography>
             <Button
               variant="contained"

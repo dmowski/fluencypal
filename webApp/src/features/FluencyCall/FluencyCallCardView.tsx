@@ -195,6 +195,7 @@ export const FluencyCallRowView = ({
           <Button
             variant="outlined"
             data-testid={`fluency-call-show-chat-${callId}`}
+            data-analytics="community-call-chat"
             onClick={onShowChat}
             aria-label={i18n._('Show chat')}
             sx={{
@@ -212,6 +213,7 @@ export const FluencyCallRowView = ({
           <Button
             variant="outlined"
             data-testid={`fluency-call-open-${callId}`}
+            data-analytics="community-call-meet"
             onClick={onOpenCall}
             sx={{ ...outlineButtonSx, [narrowCall]: narrowButtonSx }}
           >
@@ -221,6 +223,7 @@ export const FluencyCallRowView = ({
           <Button
             variant="outlined"
             data-testid={`fluency-call-join-${callId}`}
+            data-analytics="community-call-rsvp"
             aria-pressed={isJoining}
             disabled={isJoinPending}
             onClick={onToggleJoin}
@@ -401,6 +404,7 @@ export const FluencyCallCardView = ({
             <Button
               variant="outlined"
               data-testid="fluency-call-initiate"
+              data-analytics="community-call-propose"
               onClick={onInitiateCall}
               startIcon={<Plus size={16} />}
               sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
@@ -413,6 +417,7 @@ export const FluencyCallCardView = ({
             <Button
               variant="outlined"
               data-testid="fluency-call-change-time"
+              data-analytics="community-call-change-time"
               onClick={onInitiateCall}
               sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
             >
@@ -424,7 +429,7 @@ export const FluencyCallCardView = ({
             <Button
               variant="outlined"
               data-testid="fluency-call-get-access"
-              data-analytics="buy-access"
+              data-analytics="community-call-buy"
               onClick={onGetAccess}
               sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
             >

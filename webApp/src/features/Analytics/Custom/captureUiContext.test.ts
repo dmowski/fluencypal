@@ -16,6 +16,10 @@ describe('screenIdFromPath', () => {
     expect(screenIdFromPath('/practice?rolePlayId=alias-game', '')).toBe('practice.rolePlay');
     expect(screenIdFromPath('/es/scenarios/job-interview', 'Sign in')).toBe('scenario.dialog');
     expect(screenIdFromPath('/', '')).toBe('home');
+    expect(screenIdFromPath('/community-call?step=membership', '')).toBe(
+      'communityCall.membership',
+    );
+    expect(screenIdFromPath('/ru/features/group-conversations', '')).toBe('groupConversations');
   });
 });
 

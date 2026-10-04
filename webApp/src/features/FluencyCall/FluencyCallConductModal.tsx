@@ -69,6 +69,7 @@ export const FluencyCallConductModal = ({
           <Button
             variant="text"
             data-testid="fluency-call-conduct-close"
+            data-analytics="community-call-conduct-close"
             onClick={onClose}
             disabled={isSaving}
           >
@@ -78,6 +79,7 @@ export const FluencyCallConductModal = ({
             variant="contained"
             color="info"
             data-testid="fluency-call-conduct-agree"
+            data-analytics="community-call-conduct-agree"
             onClick={onAgree}
             disabled={isSaving}
           >

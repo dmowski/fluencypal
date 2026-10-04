@@ -190,6 +190,24 @@ describe('classifyCta', () => {
     ).toBe('other');
     expect(classifyCta({ href: 'https://app.fluencypal.com/th/quiz' }).ctaIntent).toBe('quiz');
     expect(
+      classifyCta({
+        href: 'https://app.fluencypal.com/community-call',
+        buttonId: 'community-call-cta',
+      }).ctaIntent,
+    ).toBe('communityCall');
+    expect(
+      classifyCta({
+        href: 'https://www.fluencypal.com/features/group-conversations',
+        buttonId: 'community-call-feature',
+      }).ctaId,
+    ).toBe('community-call-feature');
+    expect(
+      classifyCta({
+        href: 'https://app.fluencypal.com/practice?communityCall=ready',
+        buttonId: 'community-call-practice',
+      }).ctaIntent,
+    ).toBe('communityCall');
+    expect(
       classifyCta({ href: 'https://www.fluencypal.com/vi/features/ai-speaking-practice' })
         .ctaIntent,
     ).toBe('other');
@@ -449,6 +467,12 @@ describe('normalizeAnalyticsPath', () => {
     expect(normalizeAnalyticsPath('/practice?justTalk=open&autoStart=1')).toBe('/practice');
     expect(normalizeAnalyticsPath('/practice?inbox=true&inboxType=chat')).toBe('/practice');
     expect(normalizeAnalyticsPath('/?fpv=fpv_11111111-1111-4111-8111-111111111111')).toBe('/');
+    expect(normalizeAnalyticsPath('/community-call?step=calls&learn=en&native=pl&fpv=fpv_1')).toBe(
+      '/community-call?step=calls',
+    );
+    expect(normalizeAnalyticsPath('/practice?communityCall=ready&fluencyCall=paid')).toBe(
+      '/practice?communityCall=ready&fluencyCall=paid',
+    );
   });
 
   it('reads the quiz onboarding step from the stored path', () => {
@@ -472,6 +496,8 @@ describe('normalizeAnalyticsPath', () => {
       'practice',
     );
     expect(entryKindFromAnalyticsPath('/es/features/role-play')).toBe('features');
+    expect(entryKindFromAnalyticsPath('/community-call?step=language')).toBe('communityCall');
+    expect(entryKindFromAnalyticsPath('/ru/features/group-conversations')).toBe('communityCall');
   });
 
   it('flags localhost and testUi as internal', () => {

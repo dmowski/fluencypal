@@ -12,11 +12,13 @@ export const ConfirmPaymentForm = ({
   amountInUsd,
   isRedirecting,
   forceUsd = false,
+  analyticsId,
 }: {
   onConfirmRequest: () => void;
   amountInUsd: number;
   isRedirecting: boolean;
   forceUsd?: boolean;
+  analyticsId?: string;
 }) => {
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const { i18n } = useLingui();
@@ -108,6 +110,7 @@ export const ConfirmPaymentForm = ({
           type="submit"
           endIcon={<ChevronRight />}
           name="submit"
+          data-analytics={analyticsId}
           sx={{
             padding: '12px 60px',
             fontSize: '18px',

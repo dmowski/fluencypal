@@ -2,7 +2,9 @@
 
 import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { useEffect } from 'react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { ConfirmPaymentForm } from '@/features/Usage/HoursPaymentModal/ConfirmPaymentForm';
 import { FLUENCY_CALL_PRICE_USD } from './pricing';
 
@@ -18,6 +20,10 @@ export const FluencyCallPaywallModal = ({
   onClose: () => void;
 }) => {
   const { i18n } = useLingui();
+
+  useEffect(() => {
+    sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'fluency-call' });
+  }, []);
 
   return (
     <CustomModal isOpen onClose={onClose} data-testid="fluency-call-paywall">
@@ -36,6 +42,7 @@ export const FluencyCallPaywallModal = ({
         <ConfirmPaymentForm
           isRedirecting={isRedirecting}
           amountInUsd={FLUENCY_CALL_PRICE_USD}
+          analyticsId="community-call-checkout"
           onConfirmRequest={onBuy}
         />
         {error ? <Typography sx={{ color: '#ffb4b4' }}>{error}</Typography> : null}

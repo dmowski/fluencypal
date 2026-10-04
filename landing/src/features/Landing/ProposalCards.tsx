@@ -11,11 +11,12 @@ export interface ProposalInfo {
   imgAlt: string;
   actionButtonTitle: string;
   href: string;
+  analyticsId?: string;
 }
 const InfoProposalCard: React.FC<{
   info: ProposalInfo;
 }> = ({ info }) => {
-  const { category, title, description, img, imgAlt, actionButtonTitle, href } = info;
+  const { category, title, description, img, imgAlt, actionButtonTitle, href, analyticsId } = info;
 
   return (
     <Card
@@ -44,6 +45,7 @@ const InfoProposalCard: React.FC<{
       }}
       component={'a'}
       href={href}
+      data-analytics={analyticsId}
     >
       <CardContent
         sx={{

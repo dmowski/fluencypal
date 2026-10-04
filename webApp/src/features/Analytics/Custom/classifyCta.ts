@@ -1,4 +1,11 @@
-export const CTA_INTENTS = ['quiz', 'signin', 'practice', 'pricing', 'other'] as const;
+export const CTA_INTENTS = [
+  'quiz',
+  'signin',
+  'practice',
+  'pricing',
+  'communityCall',
+  'other',
+] as const;
 export type CtaIntent = (typeof CTA_INTENTS)[number];
 
 export type CtaClassification = {
@@ -31,6 +38,13 @@ export const classifyCta = (input: { href?: string; buttonId?: string }): CtaCla
   }
   if (id.includes('returning') || id === 'returning-practice') {
     return { ctaId: buttonId || 'returning-practice', ctaIntent: 'signin' };
+  }
+  if (
+    id.startsWith('community-call') ||
+    pathHasSegment(path, 'community-call') ||
+    /\/features\/group-conversations(\/|$)/.test(path)
+  ) {
+    return { ctaId: buttonId || 'community-call', ctaIntent: 'communityCall' };
   }
   if (id.includes('quiz') || pathHasSegment(path, 'quiz')) {
     return { ctaId: buttonId || 'quiz', ctaIntent: 'quiz' };

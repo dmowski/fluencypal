@@ -26,11 +26,14 @@ const MAX_EVENTS_PER_VISITOR = 300;
 const OUTPUT = path.join(webAppRoot, '.analytics-export.json');
 const KEEP_QUERY = new Set([
   'currentStep',
+  'step',
   'rolePlayId',
   'interactiveLesson',
   'dailyQuestions',
   'page',
   'section',
+  'communityCall',
+  'fluencyCall',
 ]);
 
 const argValue = (flag) => {
@@ -97,6 +100,8 @@ const entryKindFromPath = (eventPath) => {
   if (/\/quiz(\/|$)/.test(withoutLang)) return 'quiz';
   if (/\/practice(\/|$)/.test(withoutLang)) return 'practice';
   if (/\/pricing(\/|$)/.test(withoutLang) || /\/price(\/|$)/.test(withoutLang)) return 'pricing';
+  if (/\/community-call(\/|$)/.test(withoutLang)) return 'communityCall';
+  if (/\/features\/group-conversations(\/|$)/.test(withoutLang)) return 'communityCall';
   if (/\/features(\/|$)/.test(withoutLang)) return 'features';
   if (withoutLang === '/') return 'home';
   return 'other';
@@ -257,7 +262,7 @@ const countBy = (values) => {
 
 const funnel = emptyFunnel();
 const funnelNew = emptyFunnel();
-const ctaClicks = { quiz: 0, signin: 0, practice: 0, pricing: 0, other: 0 };
+const ctaClicks = { quiz: 0, signin: 0, practice: 0, pricing: 0, communityCall: 0, other: 0 };
 const scrollBuckets = { 25: 0, 50: 0, 75: 0, 100: 0 };
 let landingDurationSum = 0;
 let landingDurationCount = 0;
@@ -270,6 +275,7 @@ const firstPaths = [];
 const lastPaths = [];
 const quizCtaIds = [];
 const signInCtaIds = [];
+const communityCallCtaIds = [];
 const quizSteps = [];
 const identifyPaths = [];
 const appCtaIds = [];
@@ -403,6 +409,9 @@ for (const events of Object.values(eventsByVisitorId)) {
       if (ctaClicks[event.ctaIntent] !== undefined) ctaClicks[event.ctaIntent] += 1;
       if (event.ctaIntent === 'quiz') quizCtaIds.push(event.ctaId || 'quiz');
       if (event.ctaIntent === 'signin') signInCtaIds.push(event.ctaId || 'signin');
+      if (event.ctaIntent === 'communityCall') {
+        communityCallCtaIds.push(event.ctaId || 'community-call');
+      }
     }
     if (
       event.name === 'click' &&
@@ -527,6 +536,7 @@ const payload = {
     ctaClicks,
     quizCtaIds: countBy(quizCtaIds),
     signInCtaIds: countBy(signInCtaIds),
+    communityCallCtaIds: countBy(communityCallCtaIds),
     countries: countBy(countries),
     languages: countBy(languages),
     referrers: countBy(referrers),

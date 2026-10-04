@@ -140,7 +140,7 @@ export const GroupConversationsFeaturePage = ({
                 href={appHref}
                 variant="contained"
                 size="large"
-                data-analytics="feature-cta"
+                data-analytics="community-call-cta"
                 data-testid="group-conversations-cta"
                 sx={{ ...ctaButtonSx, marginTop: '8px' }}
               >
@@ -305,7 +305,7 @@ export const GroupConversationsFeaturePage = ({
         title={i18n._('See the next English call')}
         actionButtonTitle={i18n._('See upcoming calls')}
         actionButtonLink={appHref}
-        actionButtonId="group-conversations-cta-footer"
+        actionButtonId="community-call-cta-footer"
         buttonBackgroundColor="#7DDEAA"
         buttonColor="#041018"
       />

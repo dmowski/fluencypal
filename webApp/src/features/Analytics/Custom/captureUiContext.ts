@@ -16,7 +16,11 @@ const isVisible = (el: Element): boolean => {
 };
 
 const clipName = (value: string): string => {
-  return value.replace(/\s+/g, ' ').replace(/\S+@\S+/g, '').trim().slice(0, NAME_MAX);
+  return value
+    .replace(/\s+/g, ' ')
+    .replace(/\S+@\S+/g, '')
+    .trim()
+    .slice(0, NAME_MAX);
 };
 
 const elementInView = (el: HTMLElement): boolean => {
@@ -56,6 +60,10 @@ export const screenIdFromPath = (path: string, dialog: string): string => {
   } else if (pathname.includes('/scenarios')) id = 'scenario';
   else if (pathname.includes('/blog')) id = 'blog';
   else if (pathname.includes('/pricing') || pathname.includes('/price')) id = 'pricing';
+  else if (pathname.includes('/community-call')) {
+    const callStep = params.get('step');
+    id = callStep ? `communityCall.${callStep}` : 'communityCall';
+  } else if (pathname.includes('/features/group-conversations')) id = 'groupConversations';
   else if (pathname.includes('/features')) id = 'features';
   else if (pathname === '/') id = 'home';
   if (dialog) id = `${id}.dialog`;
@@ -135,10 +143,14 @@ export const captureUiContext = (path?: string): AnalyticsUiContext | undefined 
   }
   const actions = [...namedActions, ...rest].slice(0, UI_CONTEXT_MAX_ACTIONS);
 
-  const named = actions.find((action) => action.name && action.name !== '(unnamed)' && !action.disabled);
+  const named = actions.find(
+    (action) => action.name && action.name !== '(unnamed)' && !action.disabled,
+  );
   const primary = named?.name || '';
   const marked = markedScreenId();
-  const screenId = marked || screenIdFromPath(path || `${window.location.pathname}${window.location.search}`, dialog);
+  const screenId =
+    marked ||
+    screenIdFromPath(path || `${window.location.pathname}${window.location.search}`, dialog);
 
   const ctx: AnalyticsUiContext = {
     screenId,

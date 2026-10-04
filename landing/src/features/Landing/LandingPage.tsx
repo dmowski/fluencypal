@@ -457,6 +457,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 img: '/landing/community-calls.jpg',
                 imgAlt: i18n._('A list of upcoming group conversation calls'),
                 href: `${getUrlStart(lang)}features/group-conversations`,
+                analyticsId: 'community-call-feature',
                 actionButtonTitle: i18n._(`See upcoming calls`),
               },
               {

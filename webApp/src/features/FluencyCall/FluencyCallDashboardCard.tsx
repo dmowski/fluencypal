@@ -9,6 +9,7 @@ import { db } from '@/features/Firebase/firebaseDb';
 import { fullLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
+import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { FluencyCallApiError, requestFluencyCallCheckout } from './api';
 import { fluencyCallLanguageCode } from './callLanguage';
 import {
@@ -138,6 +139,7 @@ export const FluencyCallDashboardCard = () => {
   const buy = async () => {
     setBuying(true);
     setActionError(null);
+    sendAnalyticsEvent({ name: 'checkout_start', ctaId: 'fluency-call' });
     try {
       const result = await requestFluencyCallCheckout(await auth.getToken(), {
         currency: currency.currency,

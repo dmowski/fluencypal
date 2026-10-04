@@ -21,7 +21,7 @@ export type LandingAnalyticsEvent = {
   buttonHref?: string;
   tagName?: string;
   ctaId?: string;
-  ctaIntent?: 'quiz' | 'signin' | 'practice' | 'pricing' | 'other';
+  ctaIntent?: 'quiz' | 'signin' | 'practice' | 'pricing' | 'communityCall' | 'other';
   scrollPct?: number;
   durationMs?: number;
   maxScrollPct?: number;
@@ -149,6 +149,13 @@ export const classifyCta = (input: { href?: string; buttonId?: string }) => {
   if (id.includes('returning') || id === 'returning-practice') {
     return { ctaId: buttonId || 'returning-practice', ctaIntent: 'signin' as const };
   }
+  if (
+    id.startsWith('community-call') ||
+    hasSegment('community-call') ||
+    /\/features\/group-conversations(\/|$)/.test(path)
+  ) {
+    return { ctaId: buttonId || 'community-call', ctaIntent: 'communityCall' as const };
+  }
   if (id.includes('quiz') || hasSegment('quiz')) {
     return { ctaId: buttonId || 'quiz', ctaIntent: 'quiz' as const };
   }
@@ -209,6 +216,7 @@ const landingScreenId = (path: string, dialog: string): string => {
   if (pathname.includes('/scenarios')) id = 'scenario';
   else if (pathname.includes('/blog')) id = 'blog';
   else if (pathname.includes('/pricing') || pathname.includes('/price')) id = 'pricing';
+  else if (pathname.includes('/features/group-conversations')) id = 'groupConversations';
   else if (pathname.includes('/features')) id = 'features';
   else if (pathname.includes('/quiz')) id = 'quiz';
   else if (pathname === '/') id = 'home';
