@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useGame } from '../Game/useGame';
 import { useUsage } from './useUsage';
 import { useSettings } from '../Settings/useSettings';
 import { useDailyTasks } from '../Tasks/useDailyTasks';
 import { useAuth } from '../Auth/useAuth';
+import { db } from '../Firebase/firebaseDb';
+import { canReadCommunityMessages } from './communityAccess';
 
 export const useAccess = () => {
   const game = useGame();
@@ -11,6 +14,8 @@ export const useAccess = () => {
   const settings = useSettings();
   const dailyTasks = useDailyTasks();
   const auth = useAuth();
+  const fluencyCallAccountRef = auth.uid ? db.documents.fluencyCallAccount(auth.uid) : null;
+  const [fluencyCallAccount, fluencyCallAccountLoading] = useDocumentData(fluencyCallAccountRef);
   const isAllDailyTasksCompleted = dailyTasks.isAllTasksCompleted;
 
   const isParentalConsentNeeded = settings.userSettings?.isParentalConsentNeeded || false;
@@ -20,8 +25,16 @@ export const useAccess = () => {
 
   const canUseCommunity = isParentalConsentNeeded ? false : true;
   const communityAccessLoading =
-    auth.loading || (auth.isIdentified && (usage.loading || game.isLoading));
-  const canReadCommunity = canUseCommunity && (usage.isFullAccess || game.isGameWinner);
+    auth.loading ||
+    (auth.isIdentified &&
+      (usage.loading || game.isLoading || (Boolean(auth.uid) && fluencyCallAccountLoading)));
+  const canReadCommunity = canReadCommunityMessages({
+    canUseCommunity,
+    isFullAccess: usage.isFullAccess,
+    isGameWinner: game.isGameWinner,
+    groupConversationsUntilIso: fluencyCallAccount?.activeUntilIso,
+    now: new Date(),
+  });
 
   const isExpiringSoon = game.isGameWinner
     ? false
@@ -39,6 +52,7 @@ export const useAccess = () => {
     canUseCommunity,
     canReadCommunity,
     communityAccessLoading,
+    fluencyCallActiveUntilIso: fluencyCallAccount?.activeUntilIso ?? null,
     canAccessSpaces: true,
     isAge18PlusConfirmed:
       isConsentGiven || isCreditCardValidated || !!settings.userSettings?.age18PlusConfirmedAtIso,
