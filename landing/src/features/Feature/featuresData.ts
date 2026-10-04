@@ -667,9 +667,9 @@ Group conversations are live calls on Google Meet. You pick the language you wan
 
 ## How much it costs
 
-$2 covers one month of calls, then it stops. If you already pay for practice, the calls are included.
+$2 pays for one month of group calls. After that month, you can pay again if you want more calls. If you already pay for practice, the calls are included.
 
-You will need that month before you join a call. You can pay during signup, or later.
+You can pay when you sign up, or later.
 
 ## How do I join?
 

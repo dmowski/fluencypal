@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { isTMA } from '@telegram-apps/sdk-react';
 import { useRouter } from 'next/navigation';
 import {
   SupportedLanguage,
@@ -11,7 +12,7 @@ import {
   supportedLanguagesToLearn,
 } from '@/features/Lang/lang';
 import { LangSelector, LanguageButton } from '@/features/Lang/LangSelector';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
+import { getLandingUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { replaceUrlToLang } from '@/features/Lang/replaceLangInUrl';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -77,6 +78,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
   const step = resolveCommunityCallStep(stepParam, path);
   const stepIndex = Math.max(path.indexOf(step), 0);
   const progress = (stepIndex + 1) / path.length;
+  const isTelegramApp = useMemo(() => isTMA(), []);
 
   useEffect(() => {
     if (auth.loading) return;
@@ -180,8 +182,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       sx={{ width: '100%', alignItems: 'center', padding: '10px 0 40px' }}
     >
       <QuizProgressBar
-        navigateToMainPage={() => undefined}
-        isCanGoToMainPage={false}
+        navigateToMainPage={() => {
+          window.location.assign(getLandingUrlStart(lang));
+        }}
+        isCanGoToMainPage={!isTelegramApp}
         isFirstStep={stepIndex === 0}
         prevStep={() => {
           const previous = previousCommunityCallStep(step, path);

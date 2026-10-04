@@ -397,9 +397,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
           </Stack>
 
           <ProposalCards
-            title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}
+            title={i18n._(`Six Ways FluencyPal Boosts Your Speaking Skills`)}
             subTitle={i18n._(
-              `Stop studying in silence. Practice speaking, fix grammar in conversation, grow vocabulary you can actually use, and see your fluency improve.`,
+              `Stop studying in silence. Practice speaking, fix grammar in conversation, grow vocabulary you can actually use, take a daily lesson, join a live call, and see your fluency improve.`,
             )}
             infoCards={[
               {
@@ -447,6 +447,28 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ),
                 href: mainRedirectUrl,
                 actionButtonTitle: i18n._(`Check Your Progress`),
+              },
+              {
+                category: i18n._(`Live calls`),
+                title: i18n._(`Talk with other learners`),
+                description: i18n._(
+                  `Join a live call on Google Meet. See the next times for where you live, and talk with AI until it starts.`,
+                ),
+                img: '/landing/community-calls.jpg',
+                imgAlt: i18n._('A list of upcoming group conversation calls'),
+                href: `${getUrlStart(lang)}features/group-conversations`,
+                actionButtonTitle: i18n._(`See upcoming calls`),
+              },
+              {
+                category: i18n._(`Daily lesson`),
+                title: i18n._(`Practice one pattern a day`),
+                description: i18n._(
+                  `Read how it works, say it out loud, and hear feedback. Then talk for a couple of minutes. The next lesson follows what you said.`,
+                ),
+                img: '/landing/daily-lesson.jpg',
+                imgAlt: i18n._('A daily speaking lesson with a sentence to read aloud'),
+                href: `${getUrlStart(lang)}features/interactive-lesson`,
+                actionButtonTitle: i18n._(`Start a daily lesson`),
               },
             ]}
           />

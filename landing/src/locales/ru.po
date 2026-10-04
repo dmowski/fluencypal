@@ -1027,11 +1027,11 @@ msgid ""
 "\n"
 "## How much it costs\n"
 "\n"
-"$2 covers one month of calls, then it stops. If you already pay for "
-"practice, the calls are included.\n"
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more calls. If you already pay for practice, the calls are "
+"included.\n"
 "\n"
-"You will need that month before you join a call. You can pay during signup, "
-"or later.\n"
+"You can pay when you sign up, or later.\n"
 "\n"
 "## How do I join?\n"
 "\n"
@@ -1039,32 +1039,32 @@ msgid ""
 "time you join, we show a short note about the call. Until then, talk with "
 "AI."
 msgstr ""
-"## Говорите по-английски с другими учениками в живом звонке\n"
+"## Практикуйте английский с другими учениками в живом звонке\n"
 "\n"
-"Групповые разговоры — это живые звонки на Google Meet. Вы выбираете язык, "
-"который хотите практиковать, видите ближайшие доступные время для вашего "
-"региона и присоединяетесь, когда звонок начнется.\n"
+"Групповые разговоры — это живые звонки в Google Meet. Вы выбираете язык, "
+"который хотите практиковать, видите ближайшее время для того места, где вы "
+"живёте, и присоединяетесь, когда звонок начинается.\n"
 "\n"
 "## Что включает групповой звонок\n"
 "\n"
-"- Живой звонок на Google Meet.\n"
-"- Краткий разговор с участниками звонка.\n"
-"- Новички и продвинутые учащиеся в одной комнате.\n"
-"- Время для общения с AI до начала звонка.\n"
+"- Живой звонок в Google Meet.\n"
+"- Короткий чат с участниками этого звонка.\n"
+"- Начинающие и продвинутые ученики в одной комнате.\n"
+"- Время для разговора с AI до начала звонка.\n"
 "\n"
 "## Сколько это стоит\n"
 "\n"
-"$2 покрывают месяц звонков, затем их получение прекратится. Если вы уже "
-"платите за практику, звонки включены.\n"
+"2 доллара — это оплата одного месяца групповых звонков. После этого месяца "
+"вы можете заплатить снова, если хотите ещё звонков. Если вы уже платите за "
+"практику, звонки включены.\n"
 "\n"
-"Вам потребуется этот месяц перед присоединением к звонку. Вы можете "
-"оплатить при регистрации или позже.\n"
+"Вы можете оплатить при регистрации или позже.\n"
 "\n"
 "## Как мне присоединиться?\n"
 "\n"
-"Выберите язык, просмотрите предстоящие звонки и создайте аккаунт. В первый "
-"раз, когда вы присоединяетесь, мы показываем краткое примечание о звонке. "
-"До этого общайтесь с AI."
+"Выберите язык, посмотрите ближайшие звонки и создайте аккаунт. В первый "
+"раз, когда вы присоединяетесь, мы показываем короткую заметку о звонке. До "
+"этого времени разговаривайте с AI."
 
 #: src/features/Feature/featuresData.ts:494
 #. js-lingui-explicit-id
@@ -1259,19 +1259,20 @@ msgstr ""
 "Просмотрите свой персонализированный список грамматических тем, чтобы "
 "выбрать правило для следующего занятия."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
-#. js-lingui-explicit-id
-msgid ""
-"$2 covers a month of calls, then it stops. If you already pay for practice, "
-"the calls are included."
-msgstr ""
-"2 доллара покрывают месяц звонков, затем они прекращаются. Если вы уже "
-"платите за практику, звонки включены."
-
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:188
 #. js-lingui-explicit-id
 msgid "$2 for a month"
 msgstr "2 доллара в месяц"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
+#. js-lingui-explicit-id
+msgid ""
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more. If you already pay for practice, the calls are included."
+msgstr ""
+"2 доллара оплачивают один месяц участия в групповых звонках. После этого "
+"месяца вы можете заплатить снова, если хотите продолжить. Если вы уже "
+"оплачиваете практику, звонки включены."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:91
 #. js-lingui-explicit-id
@@ -1625,6 +1626,11 @@ msgstr ""
 "Понятное руководство по I have done vs I did — с повседневными примерами, "
 "которые вы можете произнести вслух."
 
+#: src/features/Landing/LandingPage.tsx:469
+#. js-lingui-explicit-id
+msgid "A daily speaking lesson with a sentence to read aloud"
+msgstr "Ежедневный урок разговорной речи с предложением для чтения вслух"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:88
 #. js-lingui-explicit-id
 msgid "a finished action with a finished time:"
@@ -1643,6 +1649,11 @@ msgid ""
 msgstr ""
 "Веселая игра на угадывание слов для 2-20 игроков. Объясняйте слова своим "
 "товарищам по команде, не произнося самого слова!"
+
+#: src/features/Landing/LandingPage.tsx:458
+#. js-lingui-explicit-id
+msgid "A list of upcoming group conversation calls"
+msgstr "Список предстоящих групповых разговорных звонков"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
@@ -6536,7 +6547,7 @@ msgstr "Поговорите с другим владельцем собаки"
 msgid "ChatGPT"
 msgstr "ChatGPT"
 
-#: src/features/Landing/LandingPage.tsx:473
+#: src/features/Landing/LandingPage.tsx:495
 #. js-lingui-explicit-id
 msgid "Check other reviews"
 msgstr "Проверить другие отзывы"
@@ -7499,7 +7510,7 @@ msgstr "Создайте свой собственный сценарий рол
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Создайте свой собственный сценарий ролевой игры"
 
-#: src/features/Landing/LandingPage.tsx:460
+#: src/features/Landing/LandingPage.tsx:482
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Создайте свой собственный сценарий"
@@ -7591,6 +7602,11 @@ msgstr "Ежедневные Вопросы на Английском | FluencyP
 #. js-lingui-explicit-id
 msgid "Daily Language Practice"
 msgstr "Ежедневная практика языка"
+
+#: src/features/Landing/LandingPage.tsx:463
+#. js-lingui-explicit-id
+msgid "Daily lesson"
+msgstr "Ежедневный урок"
 
 #: src/features/Landing/LandingPage.tsx:119
 #. js-lingui-explicit-id
@@ -9021,7 +9037,7 @@ msgstr "Английский · 4 присоединились"
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:28
 #. js-lingui-explicit-id
 msgid "English · 6 joined"
-msgstr "Английский · 6 участниковjoined"
+msgstr "Английский · 6 человек"
 
 #: src/features/Landing/LandingPage.tsx:425
 #. js-lingui-explicit-id
@@ -9452,7 +9468,7 @@ msgstr ""
 "помощью ИИ, персонализированной грамматики, ежедневных интерактивных "
 "уроков, уроков словарного запаса, ролевых игр и историй."
 
-#: src/features/Landing/LandingPage.tsx:458
+#: src/features/Landing/LandingPage.tsx:480
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Исследуйте сценарии ролевых игр"
@@ -9471,7 +9487,7 @@ msgstr "Проверка справедливости"
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
-#: src/features/Landing/LandingPage.tsx:478
+#: src/features/Landing/LandingPage.tsx:500
 #: src/features/Landing/Price/PricePage.tsx:228
 #. js-lingui-explicit-id
 msgid "FAQ"
@@ -9881,11 +9897,6 @@ msgstr "Формальный"
 #. js-lingui-explicit-id
 msgid "formal bad news"
 msgstr "официальное плохие новости"
-
-#: src/features/Landing/LandingPage.tsx:400
-#. js-lingui-explicit-id
-msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
-msgstr "Четыре способа, которыми FluencyPal укрепляет ваши разговорные навыки"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:17
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:17
@@ -11874,6 +11885,15 @@ msgstr "советы для собеседования на работу"
 msgid "Join"
 msgstr "Присоединиться"
 
+#: src/features/Landing/LandingPage.tsx:454
+#. js-lingui-explicit-id
+msgid ""
+"Join a live call on Google Meet. See the next times for where you live, and "
+"talk with AI until it starts."
+msgstr ""
+"Присоединяйтесь к живому звонку в Google Meet. Узнайте следующее время для "
+"вашего региона и общайтесь с ИИ до его начала."
+
 #: src/features/Feature/featuresData.ts:646
 #. js-lingui-explicit-id
 msgid "Join a live call with other learners. Talk with AI until it starts."
@@ -12110,6 +12130,11 @@ msgstr "жизненный опыт без указания времени:"
 msgid "Literature & Fiction"
 msgstr "Литература и Художественная проза"
 
+#: src/features/Landing/LandingPage.tsx:452
+#. js-lingui-explicit-id
+msgid "Live calls"
+msgstr "Живые звонки"
+
 #: src/features/Alias/components/GamePlay.tsx:140
 #. js-lingui-explicit-id
 msgid "Loading a word..."
@@ -12130,7 +12155,7 @@ msgstr "Логирование/Трассировка"
 msgid "Longer words and richer expressions"
 msgstr "Длинные слова и более насыщенные выражения"
 
-#: src/features/Landing/LandingPage.tsx:459
+#: src/features/Landing/LandingPage.tsx:481
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Ищете что-то конкретное?"
@@ -12170,7 +12195,7 @@ msgstr ""
 msgid "Master API and service design"
 msgstr "Освойте API и проектирование сервисов"
 
-#: src/features/Landing/LandingPage.tsx:461
+#: src/features/Landing/LandingPage.tsx:483
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Освойте беглость английского языка"
@@ -13379,6 +13404,11 @@ msgstr ""
 "Практикуйте собеседования с самыми нелепыми вопросами, какие только можно "
 "представить"
 
+#: src/features/Landing/LandingPage.tsx:464
+#. js-lingui-explicit-id
+msgid "Practice one pattern a day"
+msgstr "Практикуйте один шаблон в день"
+
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:21
 #. js-lingui-explicit-id
 msgid ""
@@ -13517,7 +13547,7 @@ msgstr ""
 "голосовые сообщения. Следуйте транскрипциям, регулируйте скорость речи и "
 "учитесь на своих ошибках."
 
-#: src/features/Landing/LandingPage.tsx:455
+#: src/features/Landing/LandingPage.tsx:477
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking for work, travel, and everyday life — job interviews, "
@@ -13905,6 +13935,16 @@ msgstr ""
 "Читайте английские книги, переводите незнакомые слова и слушайте вслух, не "
 "теряя место."
 
+#: src/features/Landing/LandingPage.tsx:465
+#. js-lingui-explicit-id
+msgid ""
+"Read how it works, say it out loud, and hear feedback. Then talk for a "
+"couple of minutes. The next lesson follows what you said."
+msgstr ""
+"Прочитайте, как это работает, произнесите вслух и получите обратную связь. "
+"Затем поговорите пару минут. Следующий урок основывается на том, что вы "
+"сказали."
+
 #: src/features/Blog/BlogCard.tsx:181
 #: src/features/Case/ListPage/components/InterviewCard.tsx:88
 #. js-lingui-explicit-id
@@ -14031,7 +14071,7 @@ msgstr "Настоящие люди. Настоящие предложения �
 msgid "Real results. Real offers."
 msgstr "Реальные результаты. Реальные предложения."
 
-#: src/features/Landing/LandingPage.tsx:467
+#: src/features/Landing/LandingPage.tsx:489
 #. js-lingui-explicit-id
 msgid ""
 "Real reviews from people using FluencyPal to practice speaking and build "
@@ -14422,6 +14462,7 @@ msgstr "Узнайте, какой тип обратной связи вы по�
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:102
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:246
+#: src/features/Landing/LandingPage.tsx:460
 #. js-lingui-explicit-id
 msgid "See upcoming calls"
 msgstr "Посмотреть предстоящие звонки"
@@ -15335,6 +15376,11 @@ msgstr ""
 msgid "Situation"
 msgstr "Ситуация"
 
+#: src/features/Landing/LandingPage.tsx:400
+#. js-lingui-explicit-id
+msgid "Six Ways FluencyPal Boosts Your Speaking Skills"
+msgstr "Шесть способов, как FluencyPal улучшает ваши навыки общения"
+
 #: src/features/Case/data/backendCSharp/exampleQuestionsSection.ts:46
 #. js-lingui-explicit-id
 msgid ""
@@ -15455,6 +15501,11 @@ msgstr "Выделяйтесь на поведенческих собеседо�
 msgid "Start"
 msgstr "Начать"
 
+#: src/features/Landing/LandingPage.tsx:471
+#. js-lingui-explicit-id
+msgid "Start a daily lesson"
+msgstr "Начать ежедневный урок"
+
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
 #. js-lingui-explicit-id
@@ -15485,8 +15536,8 @@ msgstr "Начать практику"
 #: src/features/Landing/LandingPage.tsx:225
 #: src/features/Landing/LandingPage.tsx:290
 #: src/features/Landing/LandingPage.tsx:392
-#: src/features/Landing/LandingPage.tsx:471
-#: src/features/Landing/LandingPage.tsx:490
+#: src/features/Landing/LandingPage.tsx:493
+#: src/features/Landing/LandingPage.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Speaking"
 msgstr "Начать говорить"
@@ -15576,14 +15627,15 @@ msgstr "Stop doing vs stop to do (перестать делать / остано
 #. js-lingui-explicit-id
 msgid ""
 "Stop studying in silence. Practice speaking, fix grammar in conversation, "
-"grow vocabulary you can actually use, and see your fluency improve."
+"grow vocabulary you can actually use, take a daily lesson, join a live "
+"call, and see your fluency improve."
 msgstr ""
-"Перестаньте учить в тишине. Практикуйтесь в разговоре, исправляйте "
-"грамматику в ходе беседы, расширяйте свой словарный запас, который вы "
-"действительно можете использовать, и наблюдайте, как улучшается ваша "
-"беглость речи."
+"Перестаньте учиться в тишине. Практикуйте разговорную речь, исправляйте "
+"грамматику в беседе, расширяйте словарный запас, который вы действительно "
+"можете использовать, проходите ежедневные уроки, присоединяйтесь к живым "
+"звонкам и наблюдайте, как улучшается ваша беглость."
 
-#: src/features/Landing/LandingPage.tsx:489
+#: src/features/Landing/LandingPage.tsx:511
 #. js-lingui-explicit-id
 msgid "Stop Studying. Start Speaking."
 msgstr "Перестаньте учиться. Начните говорить."
@@ -15770,6 +15822,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Talk with AI while you wait, then join the call."
 msgstr "Общайся с ИИ, пока ждёшь, затем присоединяйся к звонку."
+
+#: src/features/Landing/LandingPage.tsx:453
+#. js-lingui-explicit-id
+msgid "Talk with other learners"
+msgstr "Общайтесь с другими учащимися"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:87
 #. js-lingui-explicit-id
@@ -18301,7 +18358,7 @@ msgstr "Вторник · 18:00"
 msgid "Turkish Learning Plan"
 msgstr "План обучения турецкому"
 
-#: src/features/Landing/LandingPage.tsx:454
+#: src/features/Landing/LandingPage.tsx:476
 #. js-lingui-explicit-id
 msgid "Turn English Into Conversation"
 msgstr "Превратите английский в разговорный язык"
@@ -18927,7 +18984,7 @@ msgstr "Какова главная цель FluencyPal?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "На какие виды интервью по backend-разработке я могу попрактиковаться?"
 
-#: src/features/Landing/LandingPage.tsx:466
+#: src/features/Landing/LandingPage.tsx:488
 #. js-lingui-explicit-id
 msgid "What learners are saying"
 msgstr "Что говорят ученики"
@@ -19437,8 +19494,8 @@ msgstr ""
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:177
 #. js-lingui-explicit-id
-msgid "You talk together on Google Meet. The chat stays in FluencyPal."
-msgstr "Вы общаетесь в Google Meet. Чат остаётся в FluencyPal."
+msgid "You talk together on Google Meet."
+msgstr "Вы общаетесь на Google Meet."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:346
 #. js-lingui-explicit-id

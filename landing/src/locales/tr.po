@@ -1028,11 +1028,11 @@ msgid ""
 "\n"
 "## How much it costs\n"
 "\n"
-"$2 covers one month of calls, then it stops. If you already pay for "
-"practice, the calls are included.\n"
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more calls. If you already pay for practice, the calls are "
+"included.\n"
 "\n"
-"You will need that month before you join a call. You can pay during signup, "
-"or later.\n"
+"You can pay when you sign up, or later.\n"
 "\n"
 "## How do I join?\n"
 "\n"
@@ -1040,32 +1040,32 @@ msgid ""
 "time you join, we show a short note about the call. Until then, talk with "
 "AI."
 msgstr ""
-"## Diğer öğrenicilerle canlı konuşmada İngilizce pratiği yapın\n"
+"## Diğer öğrenicilerle canlı görüşmelerde İngilizce konuşun\n"
 "\n"
-"Grup konuşmaları, Google Meet üzerinden canlı aramalar şeklinde "
-"gerçekleşir. Pratik yapmak istediğiniz dili seçin, yaşadığınız yer için "
-"sonraki zamanları görün ve arama başladığında katılın.\n"
+"Grup konuşmaları, Google Meet üzerinden yapılan canlı görüşmelerdir. "
+"Çalışmak istediğiniz dili seçin, yaşadığınız yer için sonraki zamanları "
+"görün ve görüşme başladığında katılın.\n"
 "\n"
-"## Grup araması neleri içerir\n"
+"## Bir grup görüşmesinde neler var?\n"
 "\n"
-"- Google Meet üzerinde canlı arama.\n"
-"- Görüşmedeki kişilerle kısa bir sohbet.\n"
-"- Aynı odada başlangıç ve ileri düzey öğreniciler.\n"
-"- Arama başlayana kadar AI ile konuşma süresi.\n"
+"- Google Meet'te canlı görüşme.\n"
+"- Görüşmeye katılan kişilerle kısa bir sohbet.\n"
+"- Aynı odada hem başlangıç seviyesinde hem de ileri düzeyde öğreniciler.\n"
+"- Görüşmenin başlamasına kadar AI ile konuşma zamanı.\n"
 "\n"
-"## Ücreti ne kadar\n"
+"## Maliyeti ne kadar?\n"
 "\n"
-"$2, bir aylık aramaları kapsar, ardından durur. Eğer zaten pratik için "
-"ödeme yapıyorsanız, aramalar dahildir.\n"
+"2 $ bir aylık grup görüşmelerini kapsar. Bu aydan sonra, daha fazla görüşme "
+"istiyorsanız yeniden ödeme yapabilirsiniz. Eğer zaten pratik yapmak için "
+"ödeme yapıyorsanız, görüşmeler dahil edilir.\n"
 "\n"
-"Aramaya katılmadan önce bu aya ihtiyacınız olacak. Kayıt sırasında veya "
-"daha sonra ödeme yapabilirsiniz.\n"
+"Kayıt olurken veya sonrasında ödeme yapabilirsiniz.\n"
 "\n"
-"## Nasıl katılabilirim?\n"
+"## Nasıl katılırım?\n"
 "\n"
-"Bir dil seçin, yaklaşan aramaları görün ve bir hesap oluşturun. İlk kez "
-"katıldığınızda, arama hakkında kısa bir not gösteriyoruz. O zamana kadar AI "
-"ile konuşun."
+"Bir dil seçin, yaklaşan görüşmeleri görün ve bir hesap oluşturun. İlk "
+"katıldığınızda, görüşme hakkında kısa bir not gösteriyoruz. O zamana kadar "
+"AI ile konuşun."
 
 #: src/features/Feature/featuresData.ts:494
 #. js-lingui-explicit-id
@@ -1258,19 +1258,20 @@ msgstr ""
 "Bir sonraki pratik oturumunuz için bir kural seçmek amacıyla "
 "kişiselleştirilmiş dilbilgisi listenizi gözden geçirin."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
-#. js-lingui-explicit-id
-msgid ""
-"$2 covers a month of calls, then it stops. If you already pay for practice, "
-"the calls are included."
-msgstr ""
-"$2, bir aylık konuşmaları kapsar, sonra durur. Zaten pratik için ödeme "
-"yapıyorsanız, konuşmalar dahildir."
-
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:188
 #. js-lingui-explicit-id
 msgid "$2 for a month"
 msgstr "Aylık 2$"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
+#. js-lingui-explicit-id
+msgid ""
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more. If you already pay for practice, the calls are included."
+msgstr ""
+"2 dolar, bir aylık grup aramaları için ödeme yapar. O aydan sonra, daha "
+"fazlasını isterseniz tekrar ödeme yapabilirsiniz. Zaten pratik için ödeme "
+"yapıyorsanız, aramalar dahildir."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:91
 #. js-lingui-explicit-id
@@ -1619,6 +1620,11 @@ msgstr ""
 "\"I have done\" ve \"I did\" arasındaki farklara dair anlaşılır konuşma "
 "kılavuzu — günlük hayatta yüksek sesle söyleyebileceğiniz örneklerle."
 
+#: src/features/Landing/LandingPage.tsx:469
+#. js-lingui-explicit-id
+msgid "A daily speaking lesson with a sentence to read aloud"
+msgstr "Günlük konuşma dersi, yüksek sesle okunacak bir cümle ile birlikte"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:88
 #. js-lingui-explicit-id
 msgid "a finished action with a finished time:"
@@ -1637,6 +1643,11 @@ msgid ""
 msgstr ""
 "2-20 oyuncu için eğlenceli bir kelime tahmin oyunu. Kelimenin kendisini "
 "söylemeden takım arkadaşlarınıza kelimeleri açıklayın!"
+
+#: src/features/Landing/LandingPage.tsx:458
+#. js-lingui-explicit-id
+msgid "A list of upcoming group conversation calls"
+msgstr "Yaklaşan grup konuşma görüşmelerinin listesi"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
@@ -6506,7 +6517,7 @@ msgstr "Diğer Bir Köpek Sahibiyle Sohbet Et"
 msgid "ChatGPT"
 msgstr "ChatGPT"
 
-#: src/features/Landing/LandingPage.tsx:473
+#: src/features/Landing/LandingPage.tsx:495
 #. js-lingui-explicit-id
 msgid "Check other reviews"
 msgstr "Diğer incelemeleri kontrol et"
@@ -7466,7 +7477,7 @@ msgstr "Kendi İngilizce Rol Yapma Senaryonuzu Oluşturun"
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Kendi Rol Oynama Senaryonuzu Oluşturun"
 
-#: src/features/Landing/LandingPage.tsx:460
+#: src/features/Landing/LandingPage.tsx:482
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Kendi Senaryonuzu Oluşturun"
@@ -7558,6 +7569,11 @@ msgstr "Günlük İngilizce Konuşma Soruları | FluencyPal"
 #. js-lingui-explicit-id
 msgid "Daily Language Practice"
 msgstr "Günlük Dil Pratiği"
+
+#: src/features/Landing/LandingPage.tsx:463
+#. js-lingui-explicit-id
+msgid "Daily lesson"
+msgstr "Günlük ders"
 
 #: src/features/Landing/LandingPage.tsx:119
 #. js-lingui-explicit-id
@@ -9766,7 +9782,7 @@ msgstr ""
 "zeka, kişiselleştirilmiş dil bilgisi, günlük etkileşimli dersler, kelime "
 "bilgisi dersleri, rol yapmaları, hikayeler."
 
-#: src/features/Landing/LandingPage.tsx:458
+#: src/features/Landing/LandingPage.tsx:480
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Rol Oynama Senaryolarını Keşfedin"
@@ -9785,7 +9801,7 @@ msgstr "Adalet Kontrolü"
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
-#: src/features/Landing/LandingPage.tsx:478
+#: src/features/Landing/LandingPage.tsx:500
 #: src/features/Landing/Price/PricePage.tsx:228
 #. js-lingui-explicit-id
 msgid "FAQ"
@@ -10193,11 +10209,6 @@ msgstr "Resmi"
 #. js-lingui-explicit-id
 msgid "formal bad news"
 msgstr "resmi kötü haberler"
-
-#: src/features/Landing/LandingPage.tsx:400
-#. js-lingui-explicit-id
-msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
-msgstr "FluencyPal'ın Konuşma Becerilerinizi Artırmanın Dört Yolu"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:17
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:17
@@ -12172,6 +12183,15 @@ msgstr "iş görüşmesi ipuçları"
 msgid "Join"
 msgstr "Katıl"
 
+#: src/features/Landing/LandingPage.tsx:454
+#. js-lingui-explicit-id
+msgid ""
+"Join a live call on Google Meet. See the next times for where you live, and "
+"talk with AI until it starts."
+msgstr ""
+"Google Meet'te canlı bir görüşmeye katılın. Yaşadığınız yere göre bir "
+"sonraki saatleri görün ve başlayana kadar AI ile konuşun."
+
 #: src/features/Feature/featuresData.ts:646
 #. js-lingui-explicit-id
 msgid "Join a live call with other learners. Talk with AI until it starts."
@@ -12395,6 +12415,11 @@ msgstr "zaman damgası olmayan yaşam deneyimi:"
 msgid "Literature & Fiction"
 msgstr "Edebiyat ve Kurgu"
 
+#: src/features/Landing/LandingPage.tsx:452
+#. js-lingui-explicit-id
+msgid "Live calls"
+msgstr "Canlı görüşmeler"
+
 #: src/features/Alias/components/GamePlay.tsx:140
 #. js-lingui-explicit-id
 msgid "Loading a word..."
@@ -12415,7 +12440,7 @@ msgstr "Günlükleme/İzleme"
 msgid "Longer words and richer expressions"
 msgstr "Daha uzun kelimeler ve daha zengin ifadeler"
 
-#: src/features/Landing/LandingPage.tsx:459
+#: src/features/Landing/LandingPage.tsx:481
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Özel bir şey mi arıyorsunuz?"
@@ -12454,7 +12479,7 @@ msgstr ""
 msgid "Master API and service design"
 msgstr "API ve servis tasarımında ustalaşın"
 
-#: src/features/Landing/LandingPage.tsx:461
+#: src/features/Landing/LandingPage.tsx:483
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Usta İngilizce Akıcılığı"
@@ -13653,6 +13678,11 @@ msgstr "FluencyPal'da Pratik Mülakatlar: Kendine Güven Yolunuz"
 msgid "Practice interviews with the most ridiculous questions imaginable"
 msgstr "Hayal edilebilecek en saçma sorularla pratik mülakatlar yapın"
 
+#: src/features/Landing/LandingPage.tsx:464
+#. js-lingui-explicit-id
+msgid "Practice one pattern a day"
+msgstr "Günde bir deseni uygula"
+
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:21
 #. js-lingui-explicit-id
 msgid ""
@@ -13790,7 +13820,7 @@ msgstr ""
 "konuşma pratiği yapın. Transkriptleri takip edin, konuşma hızınızı "
 "ayarlayın ve hatalarınızdan öğrenin."
 
-#: src/features/Landing/LandingPage.tsx:455
+#: src/features/Landing/LandingPage.tsx:477
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking for work, travel, and everyday life — job interviews, "
@@ -14175,6 +14205,15 @@ msgstr ""
 "İngilizce kitaplar okuyun, tanımadığınız kelimeleri çevirin ve yerinizi "
 "korurken sesli dinleyin."
 
+#: src/features/Landing/LandingPage.tsx:465
+#. js-lingui-explicit-id
+msgid ""
+"Read how it works, say it out loud, and hear feedback. Then talk for a "
+"couple of minutes. The next lesson follows what you said."
+msgstr ""
+"Nasıl çalıştığını okuyun, yüksek sesle söyleyin ve geri bildirimi dinleyin. "
+"Ardından birkaç dakika konuşun. Sonraki ders, söylediklerinizi takip eder."
+
 #: src/features/Blog/BlogCard.tsx:181
 #: src/features/Case/ListPage/components/InterviewCard.tsx:88
 #. js-lingui-explicit-id
@@ -14300,7 +14339,7 @@ msgstr "Gerçek insanlar. Gerçek iş teklifleri."
 msgid "Real results. Real offers."
 msgstr "Gerçek sonuçlar. Gerçek teklifler."
 
-#: src/features/Landing/LandingPage.tsx:467
+#: src/features/Landing/LandingPage.tsx:489
 #. js-lingui-explicit-id
 msgid ""
 "Real reviews from people using FluencyPal to practice speaking and build "
@@ -14692,6 +14731,7 @@ msgstr "Alacağınız geri bildirim türünü görün"
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:102
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:246
+#: src/features/Landing/LandingPage.tsx:460
 #. js-lingui-explicit-id
 msgid "See upcoming calls"
 msgstr "Yaklaşan görüşmeleri gör"
@@ -15605,6 +15645,11 @@ msgstr ""
 msgid "Situation"
 msgstr "Durum"
 
+#: src/features/Landing/LandingPage.tsx:400
+#. js-lingui-explicit-id
+msgid "Six Ways FluencyPal Boosts Your Speaking Skills"
+msgstr "FluencyPal Konuşma Becerilerinizi Geliştiren Altı Yol"
+
 #: src/features/Case/data/backendCSharp/exampleQuestionsSection.ts:46
 #. js-lingui-explicit-id
 msgid ""
@@ -15727,6 +15772,11 @@ msgstr "Davranışsal mülakat turlarında öne çıkın"
 msgid "Start"
 msgstr "Başla"
 
+#: src/features/Landing/LandingPage.tsx:471
+#. js-lingui-explicit-id
+msgid "Start a daily lesson"
+msgstr "Günlük ders başlat"
+
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
 #. js-lingui-explicit-id
@@ -15759,8 +15809,8 @@ msgstr ""
 #: src/features/Landing/LandingPage.tsx:225
 #: src/features/Landing/LandingPage.tsx:290
 #: src/features/Landing/LandingPage.tsx:392
-#: src/features/Landing/LandingPage.tsx:471
-#: src/features/Landing/LandingPage.tsx:490
+#: src/features/Landing/LandingPage.tsx:493
+#: src/features/Landing/LandingPage.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Speaking"
 msgstr "Konuşmaya Başla"
@@ -15850,13 +15900,15 @@ msgstr "Stop doing vs stop to do (yapmayı bırakmak / yapmak için durmak)"
 #. js-lingui-explicit-id
 msgid ""
 "Stop studying in silence. Practice speaking, fix grammar in conversation, "
-"grow vocabulary you can actually use, and see your fluency improve."
+"grow vocabulary you can actually use, take a daily lesson, join a live "
+"call, and see your fluency improve."
 msgstr ""
-"Sessiz çalışmayı bırakın. Konuşarak pratik yapın, konuşmalarda dilbilgisini "
-"düzeltin, gerçekten kullanabileceğiniz kelime dağarcığınızı geliştirin ve "
-"akıcılığınızın arttığını görün."
+"Sessizlik içinde çalışmayı bırakın. Konuşma pratiği yapın, konuşmada "
+"dilbilgisini düzeltin, gerçekten kullanabileceğiniz kelime dağarcığını "
+"geliştirin, günlük ders alın, canlı bir görüşmeye katılın ve akıcılığınızın "
+"geliştiğini görün."
 
-#: src/features/Landing/LandingPage.tsx:489
+#: src/features/Landing/LandingPage.tsx:511
 #. js-lingui-explicit-id
 msgid "Stop Studying. Start Speaking."
 msgstr "Çalışmayı Bırak. Konuşmaya Başla."
@@ -16041,6 +16093,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Talk with AI while you wait, then join the call."
 msgstr "Beklerken yapay zeka ile konuşun, sonra aramaya katılın."
+
+#: src/features/Landing/LandingPage.tsx:453
+#. js-lingui-explicit-id
+msgid "Talk with other learners"
+msgstr "Diğer öğrencilerle konuşun"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:87
 #. js-lingui-explicit-id
@@ -18558,7 +18615,7 @@ msgstr "Salı · 18:00"
 msgid "Turkish Learning Plan"
 msgstr "Türkçe Öğrenme Planı"
 
-#: src/features/Landing/LandingPage.tsx:454
+#: src/features/Landing/LandingPage.tsx:476
 #. js-lingui-explicit-id
 msgid "Turn English Into Conversation"
 msgstr "İngilizceyi Konuşmaya Dönüştür"
@@ -19173,7 +19230,7 @@ msgstr "FluencyPal'in ana odak noktası nedir?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Ne tür backend görüşmeleri için alıştırma yapabilirim?"
 
-#: src/features/Landing/LandingPage.tsx:466
+#: src/features/Landing/LandingPage.tsx:488
 #. js-lingui-explicit-id
 msgid "What learners are saying"
 msgstr "Öğrenciler ne diyor"
@@ -19680,8 +19737,8 @@ msgstr ""
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:177
 #. js-lingui-explicit-id
-msgid "You talk together on Google Meet. The chat stays in FluencyPal."
-msgstr "Google Meet'te birlikte konuşursunuz. Sohbet FluencyPal'de kalır."
+msgid "You talk together on Google Meet."
+msgstr "Google Meet üzerinden birlikte konuşursunuz."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:346
 #. js-lingui-explicit-id

@@ -6,14 +6,12 @@ General strategy:
 
 # Plan
 
----
+- Setup ADs
+- Plan for reels
 
-Add new card about
-Community calls and
-webApp/src/features/InteractiveLesson/AGENTS.md
+Reals:
 
-under
-Four Ways FluencyPal Boosts Your Speaking Skills
-landing/src/features/Landing/LandingPage.tsx
-
----
+1. Делаю FluencyPal
+2. Новая Фича - созвоны. В чем фишка
+3. Как попробовать
+4. Цена

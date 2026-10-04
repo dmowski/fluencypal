@@ -928,11 +928,11 @@ msgid ""
 "\n"
 "## How much it costs\n"
 "\n"
-"$2 covers one month of calls, then it stops. If you already pay for "
-"practice, the calls are included.\n"
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more calls. If you already pay for practice, the calls are "
+"included.\n"
 "\n"
-"You will need that month before you join a call. You can pay during signup, "
-"or later.\n"
+"You can pay when you sign up, or later.\n"
 "\n"
 "## How do I join?\n"
 "\n"
@@ -940,28 +940,29 @@ msgid ""
 "time you join, we show a short note about the call. Until then, talk with "
 "AI."
 msgstr ""
-"## 다른 학습자들과 라이브 통화로 영어로 말하기\n"
+"## 다른 학습자들과 실시간 통화로 영어를 말해보세요\n"
 "\n"
-"그룹 대화는 Google Meet에서 진행되는 라이브 통화입니다. 연습하고 싶은 언어를 선택하고, 사는 곳의 다음 시간을 확인한 후 "
-"통화가 시작될 때 참여하세요.\n"
+"그룹 대화는 Google Meet에서 진행되는 실시간 통화입니다. 연습하고 싶은 언어를 선택하고, 거주지의 다음 시간을 확인한 후, "
+"통화 시작 시 참여하세요.\n"
 "\n"
-"## 그룹 통화에 포함되는 것\n"
+"## 그룹 통화에 포함된 내용\n"
 "\n"
-"- Google Meet에서의 라이브 통화.\n"
-"- 그 통화에 참여한 사람들과의 짧은 대화.\n"
-"- 초보자와 고급 학습자가 같은 방에 있음.\n"
-"- 통화 시작 전까지 AI와 대화할 시간.\n"
+"- Google Meet에서의 실시간 통화\n"
+"- 통화에 참여한 사람들과의 짧은 대화\n"
+"- 초급자와 고급 학습자가 함께 있는 공간\n"
+"- 통화 시작 전까지 AI와 대화할 시간\n"
 "\n"
-"## 비용은 얼마인가요?\n"
+"## 비용\n"
 "\n"
-"$2로 한 달 동안의 통화를 커버하며, 이후 자동적으로 중단됩니다. 이미 연습비를 지불하면 통화도 포함됩니다.\n"
+"한 달간의 그룹 통화 비용은 $2입니다. 한 달 후 더 많은 통화를 원한다면 추가 결제가 가능합니다. 이미 연습을 위해 비용을 지불한 "
+"경우, 통화는 포함됩니다.\n"
 "\n"
-"통화에 참여하기 전에 그 한 달이 필요합니다. 가입 시 또는 이후에 결제할 수 있습니다.\n"
+"가입 시 또는 나중에 결제가 가능합니다.\n"
 "\n"
-"## 참여 방법은?\n"
+"## 어떻게 참여하나요?\n"
 "\n"
-"언어를 선택하고, 예정된 통화를 확인한 후 계정을 만드세요. 처음 참여할 때는 통화에 대한 짧은 설명을 보여드립니다. 그때까지 AI와 "
-"대화하세요."
+"언어를 선택하고, 다가오는 통화 시간을 확인하고, 계정을 만드세요. 처음 참여하실 때, 통화에 대한 짧은 설명을 보여드립니다. "
+"그때까지는 AI와 대화하세요."
 
 #: src/features/Feature/featuresData.ts:494
 #. js-lingui-explicit-id
@@ -1141,17 +1142,19 @@ msgstr ""
 "\n"
 "맞춤형 문법 리스트를 검토하여 다음 연습 세션을 위한 규칙을 선택하세요."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
-#. js-lingui-explicit-id
-msgid ""
-"$2 covers a month of calls, then it stops. If you already pay for practice, "
-"the calls are included."
-msgstr "한 달간의 통화는 $2로 제공되며, 이후에는 중단됩니다. 이미 연습 비용을 지불하신 경우, 통화가 포함됩니다."
-
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:188
 #. js-lingui-explicit-id
 msgid "$2 for a month"
 msgstr "한 달에 $2"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
+#. js-lingui-explicit-id
+msgid ""
+"$2 pays for one month of group calls. After that month, you can pay again "
+"if you want more. If you already pay for practice, the calls are included."
+msgstr ""
+"$2로 한 달간 그룹 콜을 이용할 수 있습니다. 그 후 더 많은 이용을 원하시면 다시 결제하실 수 있습니다. 이미 연습을 위해 "
+"결제하셨다면, 콜은 포함됩니다."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:91
 #. js-lingui-explicit-id
@@ -1469,6 +1472,11 @@ msgstr ""
 "\"I have done\"과 \"I did\"의 차이를 명확하게 설명하는 가이드 — 일상에서 소리 내어 말할 수 있는 예제와 함께 "
 "제공합니다."
 
+#: src/features/Landing/LandingPage.tsx:469
+#. js-lingui-explicit-id
+msgid "A daily speaking lesson with a sentence to read aloud"
+msgstr "소리 내어 읽을 한 문장이 포함된 일일 회화 수업"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:88
 #. js-lingui-explicit-id
 msgid "a finished action with a finished time:"
@@ -1485,6 +1493,11 @@ msgid ""
 "A fun word guessing game for 2-20 players. Explain words to your teammates "
 "without saying the word itself!"
 msgstr "2-20명의 플레이어를 위한 재미있는 단어 추측 게임. 단어 자체를 말하지 않고 팀원들에게 단어를 설명하세요!"
+
+#: src/features/Landing/LandingPage.tsx:458
+#. js-lingui-explicit-id
+msgid "A list of upcoming group conversation calls"
+msgstr "다가오는 그룹 대화 통화 목록"
 
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
@@ -6165,7 +6178,7 @@ msgstr "갓 사람과 채팅하기"
 msgid "ChatGPT"
 msgstr "챗GPT"
 
-#: src/features/Landing/LandingPage.tsx:473
+#: src/features/Landing/LandingPage.tsx:495
 #. js-lingui-explicit-id
 msgid "Check other reviews"
 msgstr "다른 리뷰 확인하기"
@@ -7070,7 +7083,7 @@ msgstr "자신만의 영어 롤플레이 시나리오 만들기"
 msgid "Create Your Own Role-Play Scenario"
 msgstr "당신만의 역할극 시나리오 만들기"
 
-#: src/features/Landing/LandingPage.tsx:460
+#: src/features/Landing/LandingPage.tsx:482
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "자신만의 시나리오 만들기"
@@ -7162,6 +7175,11 @@ msgstr "매일 영어 말하기 질문 | FluencyPal"
 #. js-lingui-explicit-id
 msgid "Daily Language Practice"
 msgstr "매일 언어 연습"
+
+#: src/features/Landing/LandingPage.tsx:463
+#. js-lingui-explicit-id
+msgid "Daily lesson"
+msgstr "일일 수업"
 
 #: src/features/Landing/LandingPage.tsx:119
 #. js-lingui-explicit-id
@@ -9242,7 +9260,7 @@ msgstr ""
 "AI 기반 영어 연습을 위한 FluencyPal 기능을 살펴보세요. 개인 맞춤형 문법, 매일 상호작용하는 수업, 어휘 수업, 역할 "
 "연기, 이야기 등을 제공합니다."
 
-#: src/features/Landing/LandingPage.tsx:458
+#: src/features/Landing/LandingPage.tsx:480
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "역할 놀이 시나리오 탐색하기"
@@ -9261,7 +9279,7 @@ msgstr "공정성 검사"
 #: src/features/Case/data/frontend-junior/faqSection.ts:10
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
-#: src/features/Landing/LandingPage.tsx:478
+#: src/features/Landing/LandingPage.tsx:500
 #: src/features/Landing/Price/PricePage.tsx:228
 #. js-lingui-explicit-id
 msgid "FAQ"
@@ -9614,11 +9632,6 @@ msgstr "형식적인"
 #. js-lingui-explicit-id
 msgid "formal bad news"
 msgstr "공식적인 나쁜 소식 전달하기"
-
-#: src/features/Landing/LandingPage.tsx:400
-#. js-lingui-explicit-id
-msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
-msgstr "플루언시팔이 당신의 말하기 능력을 향상시키는 네 가지 방법"
 
 #: src/features/Case/data/frontend-junior/scorePreviewSection.ts:17
 #: src/features/Case/data/frontend-senior/scorePreviewSection.ts:17
@@ -11413,6 +11426,13 @@ msgstr "면접 팁"
 msgid "Join"
 msgstr "가입하기"
 
+#: src/features/Landing/LandingPage.tsx:454
+#. js-lingui-explicit-id
+msgid ""
+"Join a live call on Google Meet. See the next times for where you live, and "
+"talk with AI until it starts."
+msgstr "Google Meet에서 라이브 통화에 참여하세요. 거주 지역의 다음 시간을 확인하고 시작할 때까지 AI와 대화하세요."
+
 #: src/features/Feature/featuresData.ts:646
 #. js-lingui-explicit-id
 msgid "Join a live call with other learners. Talk with AI until it starts."
@@ -11621,6 +11641,11 @@ msgstr "시간에 구애받지 않는 삶의 경험:"
 msgid "Literature & Fiction"
 msgstr "문학 & 소설"
 
+#: src/features/Landing/LandingPage.tsx:452
+#. js-lingui-explicit-id
+msgid "Live calls"
+msgstr "라이브 통화"
+
 #: src/features/Alias/components/GamePlay.tsx:140
 #. js-lingui-explicit-id
 msgid "Loading a word..."
@@ -11641,7 +11666,7 @@ msgstr "로그/추적"
 msgid "Longer words and richer expressions"
 msgstr "긴 단어와 풍부한 표현"
 
-#: src/features/Landing/LandingPage.tsx:459
+#: src/features/Landing/LandingPage.tsx:481
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "특정한 것을 찾고 계신가요?"
@@ -11678,7 +11703,7 @@ msgstr ""
 msgid "Master API and service design"
 msgstr "API 및 서비스 디자인 마스터하기"
 
-#: src/features/Landing/LandingPage.tsx:461
+#: src/features/Landing/LandingPage.tsx:483
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "영어 유창성 마스터하기"
@@ -12776,6 +12801,11 @@ msgstr "FluencyPal에서의 연습 면접: 당신의 자신감을 향한 길"
 msgid "Practice interviews with the most ridiculous questions imaginable"
 msgstr "가장 황당한 질문들로 연습 인터뷰하기"
 
+#: src/features/Landing/LandingPage.tsx:464
+#. js-lingui-explicit-id
+msgid "Practice one pattern a day"
+msgstr "하루에 하나의 패턴 연습하기"
+
 #: src/features/RolePlay/scenarios/in-the-restaurant.ts:21
 #. js-lingui-explicit-id
 msgid ""
@@ -12889,7 +12919,7 @@ msgid ""
 "mistakes."
 msgstr "실시간 통화와 음성 메시지로 AI 튜터와 함께 영어 말하기 연습을 하세요. 대본을 따라가고, 말하기 속도를 조절하며, 실수에서 배우세요."
 
-#: src/features/Landing/LandingPage.tsx:455
+#: src/features/Landing/LandingPage.tsx:477
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking for work, travel, and everyday life — job interviews, "
@@ -13245,6 +13275,15 @@ msgid ""
 "keeping your place."
 msgstr "영어 책을 읽고, 낯선 단어를 번역하며, 자신의 위치를 유지하면서 크게 읽어보세요."
 
+#: src/features/Landing/LandingPage.tsx:465
+#. js-lingui-explicit-id
+msgid ""
+"Read how it works, say it out loud, and hear feedback. Then talk for a "
+"couple of minutes. The next lesson follows what you said."
+msgstr ""
+"작동 방식을 읽고 소리 내어 말하고 피드백을 들으세요. 그런 다음 몇 분 동안 대화하세요. 다음 강의는 당신이 말한 내용을 바탕으로 "
+"진행됩니다."
+
 #: src/features/Blog/BlogCard.tsx:181
 #: src/features/Case/ListPage/components/InterviewCard.tsx:88
 #. js-lingui-explicit-id
@@ -13361,7 +13400,7 @@ msgstr "진짜 사람들. 진짜 일자리 제안."
 msgid "Real results. Real offers."
 msgstr "진짜 결과. 진짜 제안."
 
-#: src/features/Landing/LandingPage.tsx:467
+#: src/features/Landing/LandingPage.tsx:489
 #. js-lingui-explicit-id
 msgid ""
 "Real reviews from people using FluencyPal to practice speaking and build "
@@ -13727,6 +13766,7 @@ msgstr "어떤 유형의 피드백을 받을 수 있는지 확인하세요"
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:102
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:246
+#: src/features/Landing/LandingPage.tsx:460
 #. js-lingui-explicit-id
 msgid "See upcoming calls"
 msgstr "다가오는 통화보기"
@@ -14609,6 +14649,11 @@ msgstr "실제 시니어 프론트엔드 면접을 시뮬레이션하고 압박 
 msgid "Situation"
 msgstr "상황"
 
+#: src/features/Landing/LandingPage.tsx:400
+#. js-lingui-explicit-id
+msgid "Six Ways FluencyPal Boosts Your Speaking Skills"
+msgstr "FluencyPal이 당신의 말하기 실력을 향상시키는 6가지 방법"
+
 #: src/features/Case/data/backendCSharp/exampleQuestionsSection.ts:46
 #. js-lingui-explicit-id
 msgid ""
@@ -14724,6 +14769,11 @@ msgstr "행동 라운드에서 돋보이세요"
 msgid "Start"
 msgstr "시작"
 
+#: src/features/Landing/LandingPage.tsx:471
+#. js-lingui-explicit-id
+msgid "Start a daily lesson"
+msgstr "일일 수업 시작하기"
+
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:45
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:45
 #. js-lingui-explicit-id
@@ -14754,8 +14804,8 @@ msgstr "연습 시작하기"
 #: src/features/Landing/LandingPage.tsx:225
 #: src/features/Landing/LandingPage.tsx:290
 #: src/features/Landing/LandingPage.tsx:392
-#: src/features/Landing/LandingPage.tsx:471
-#: src/features/Landing/LandingPage.tsx:490
+#: src/features/Landing/LandingPage.tsx:493
+#: src/features/Landing/LandingPage.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Speaking"
 msgstr "말하기 시작"
@@ -14845,12 +14895,13 @@ msgstr "Stop doing vs stop to do (멈추다+-ing / 멈추다+to)"
 #. js-lingui-explicit-id
 msgid ""
 "Stop studying in silence. Practice speaking, fix grammar in conversation, "
-"grow vocabulary you can actually use, and see your fluency improve."
+"grow vocabulary you can actually use, take a daily lesson, join a live "
+"call, and see your fluency improve."
 msgstr ""
-"조용히 공부하는 것을 멈추세요. 말하기 연습을 하고, 대화 중에 문법을 고치고, 실제로 사용할 수 있는 어휘를 늘리면서 유창함을 "
-"향상시키세요."
+"조용히 공부하는 것을 멈추세요. 말하기 연습을 하고, 대화 중에 문법을 수정하고, 실제로 사용할 수 있는 어휘를 늘리고, 매일 수업을 "
+"듣고, 라이브 콜에 참여하고, 유창성이 향상되는 것을 확인하세요."
 
-#: src/features/Landing/LandingPage.tsx:489
+#: src/features/Landing/LandingPage.tsx:511
 #. js-lingui-explicit-id
 msgid "Stop Studying. Start Speaking."
 msgstr "공부는 그만. 말하기를 시작하세요."
@@ -15019,6 +15070,11 @@ msgstr "AI 영어 교사와 대화하고, 음성 메시지를 보내거나 필�
 #. js-lingui-explicit-id
 msgid "Talk with AI while you wait, then join the call."
 msgstr "기다리는 동안 AI와 대화하고, 그런 다음 통화에 참여하세요."
+
+#: src/features/Landing/LandingPage.tsx:453
+#. js-lingui-explicit-id
+msgid "Talk with other learners"
+msgstr "다른 학습자들과 대화하기"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:87
 #. js-lingui-explicit-id
@@ -17442,7 +17498,7 @@ msgstr "화요일 · 18:00"
 msgid "Turkish Learning Plan"
 msgstr "터키어 학습 계획"
 
-#: src/features/Landing/LandingPage.tsx:454
+#: src/features/Landing/LandingPage.tsx:476
 #. js-lingui-explicit-id
 msgid "Turn English Into Conversation"
 msgstr "영어를 대화로 바꾸기"
@@ -18019,7 +18075,7 @@ msgstr "FluencyPal의 주요 초점은 무엇인가요?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "어떤 종류의 백엔드 인터뷰를 연습할 수 있나요?"
 
-#: src/features/Landing/LandingPage.tsx:466
+#: src/features/Landing/LandingPage.tsx:488
 #. js-lingui-explicit-id
 msgid "What learners are saying"
 msgstr "학습자들이 말하는 것"
@@ -18473,8 +18529,8 @@ msgstr "당신은 FluencyPal에서 배우고 있는 언어로 말하기 연습�
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:177
 #. js-lingui-explicit-id
-msgid "You talk together on Google Meet. The chat stays in FluencyPal."
-msgstr "Google Meet에서 함께 대화합니다. 채팅은 FluencyPal에 남아 있습니다."
+msgid "You talk together on Google Meet."
+msgstr "Google Meet에서 함께 이야기합니다."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:346
 #. js-lingui-explicit-id

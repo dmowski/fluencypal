@@ -174,7 +174,7 @@ export const GroupConversationsFeaturePage = ({
               {
                 icon: <Video size={22} />,
                 title: i18n._('Google Meet'),
-                body: i18n._('You talk together on Google Meet. The chat stays in FluencyPal.'),
+                body: i18n._('You talk together on Google Meet.'),
               },
               {
                 icon: <Languages size={22} />,
@@ -187,7 +187,7 @@ export const GroupConversationsFeaturePage = ({
                 icon: <Calendar size={22} />,
                 title: i18n._('$2 for a month'),
                 body: i18n._(
-                  '$2 covers a month of calls, then it stops. If you already pay for practice, the calls are included.',
+                  '$2 pays for one month of group calls. After that month, you can pay again if you want more. If you already pay for practice, the calls are included.',
                 ),
               },
             ].map((item) => (
