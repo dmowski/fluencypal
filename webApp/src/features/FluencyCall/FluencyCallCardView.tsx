@@ -335,7 +335,9 @@ export const FluencyCallCardView = ({
           </Stack>
           {children}
         </Stack>
-      ) : (
+      ) : null}
+
+      {!hasCalls || canJoin ? (
         <Stack sx={{ gap: '12px' }}>
           {canJoin && hasRequest ? (
             <Stack data-testid="fluency-call-request-sent" sx={{ gap: '6px' }}>
@@ -345,14 +347,18 @@ export const FluencyCallCardView = ({
               <Typography sx={{ fontWeight: 700 }}>{requestedAtLabel}</Typography>
               <Typography sx={{ opacity: 0.8 }}>{i18n._("We'll reply soon.")}</Typography>
             </Stack>
-          ) : (
+          ) : null}
+
+          {!hasCalls && !(canJoin && hasRequest) ? (
             <Stack sx={{ gap: '6px' }}>
-              <Typography sx={{ fontWeight: 700 }}>{i18n._('No conversation scheduled yet.')}</Typography>
+              <Typography sx={{ fontWeight: 700 }}>
+                {i18n._('No conversation scheduled yet.')}
+              </Typography>
               {canJoin ? (
                 <Typography>{i18n._("Pick a time and we'll set one up.")}</Typography>
               ) : null}
             </Stack>
-          )}
+          ) : null}
 
           {canJoin && !hasRequest ? (
             <Button
@@ -377,7 +383,7 @@ export const FluencyCallCardView = ({
             </Button>
           ) : null}
 
-          {!canJoin ? (
+          {!canJoin && !hasCalls ? (
             <Button
               variant="outlined"
               data-testid="fluency-call-get-access"
@@ -389,7 +395,7 @@ export const FluencyCallCardView = ({
             </Button>
           ) : null}
         </Stack>
-      )}
+      ) : null}
     </Stack>
   );
 };

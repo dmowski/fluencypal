@@ -194,6 +194,23 @@ test('without access the empty card offers the month pass', async () => {
     .toMatchScreenshot('no-call-non-member');
 });
 
+test('listed calls still offer a proposal', async () => {
+  const onInitiateCall = vi.fn();
+  await renderCard({ onInitiateCall });
+
+  await userEvent.click(page.getByTestId('fluency-call-initiate'));
+  expect(onInitiateCall).toHaveBeenCalledTimes(1);
+});
+
+test('a listed call keeps a sent request editable', async () => {
+  const onInitiateCall = vi.fn();
+  await renderCard({ onInitiateCall, requestedAtLabel: 'Tomorrow · 18:00' });
+
+  await expect.element(page.getByTestId('fluency-call-request-sent')).toBeVisible();
+  await userEvent.click(page.getByTestId('fluency-call-change-time'));
+  expect(onInitiateCall).toHaveBeenCalledTimes(1);
+});
+
 test('propose and change time notify the card', async () => {
   const onInitiateCall = vi.fn();
   await renderCard({ hasCalls: false, onInitiateCall });
