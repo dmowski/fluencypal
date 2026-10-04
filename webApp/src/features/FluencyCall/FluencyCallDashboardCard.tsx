@@ -101,7 +101,7 @@ export const FluencyCallDashboardCard = () => {
       : null;
   const accessUntilLabel =
     access.passActive && !access.included && access.activeUntilIso
-      ? i18n._('Access until {date}', {
+      ? i18n._('Calls included until {date}', {
           date: new Intl.DateTimeFormat(i18n.locale || 'en', {
             timeZone,
             day: 'numeric',
@@ -213,9 +213,9 @@ export const FluencyCallDashboardCard = () => {
         practiceNote={
           practiceUntilCall
             ? access.canJoin
-              ? i18n._('Practice with AI until the call.')
+              ? i18n._('Talk with AI until the call starts.')
               : i18n._(
-                  'Practice with AI until the call. You can confirm membership anytime. It is required to enter the call.',
+                  'Talk with AI until the call. You can pay anytime. You will need the $2 month to join.',
                 )
             : null
         }

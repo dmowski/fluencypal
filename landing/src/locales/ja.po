@@ -902,63 +902,56 @@ msgstr ""
 "\n"
 "進捗チャートを開いて最近の練習をレビューし、次に焦点を当てる内容を選びましょう。"
 
-#: src/features/Feature/featuresData.ts:658
+#: src/features/Feature/featuresData.ts:656
 #. js-lingui-explicit-id
 msgid ""
 "## Speak English with other learners on a live call\n"
 "\n"
-"FluencyPal group conversations are scheduled calls on Google Meet. You pick "
-"the language you want to practice, see the upcoming times in your timezone, "
-"and join from your dashboard when the call starts.\n"
+"Group conversations are live calls on Google Meet. You pick the language "
+"you want to practice, see the next times for where you live, and join when "
+"the call starts.\n"
 "\n"
 "## What a group call includes\n"
 "\n"
-"- A real time on Google Meet, scheduled by FluencyPal.\n"
-"- A short chat for the people who joined that call.\n"
-"- Mixed levels. Beginners and advanced learners share the room.\n"
-"- AI speaking practice you can use until the call begins.\n"
+"- A live call on Google Meet.\n"
+"- A short chat with the people on that call.\n"
+"- Beginners and advanced learners in the same room.\n"
+"- Time to talk with AI until the call begins.\n"
 "\n"
 "## How much it costs\n"
 "\n"
-"A community pass is $2 for one month. It does not renew, and it does not "
-"change your practice-hours balance. If you already have practice access, "
-"group calls are included.\n"
+"$2 covers one month of calls, then it stops. If you already pay for "
+"practice, the calls are included.\n"
 "\n"
-"Membership is required to enter the call. You can confirm it during signup, "
-"or later from your dashboard.\n"
+"You will need that month before you join a call. You can pay during signup, "
+"or later.\n"
 "\n"
 "## How do I join?\n"
 "\n"
-"Open upcoming calls, create an account, and choose a time that fits. The "
-"first time you press I'll join, you confirm a short note about the call. "
-"Until then, practice speaking with AI.\n"
-"\n"
-"See the upcoming calls and pick the language you want to practice."
+"Pick a language, see the upcoming calls, and create an account. The first "
+"time you join, we show a short note about the call. Until then, talk with "
+"AI."
 msgstr ""
-"## 他の学習者とライブ通話で英語を話す\n"
+"## ライブ通話で他の学習者と英語を話す\n"
 "\n"
-"FluencyPalのグループ会話は、Google "
-"Meetで予定された通話です。練習したい言語を選び、自分のタイムゾーンでの開催時間を確認し、通話が始まるときにダッシュボードから参加します。\n"
+"グループ会話はGoogle Meetでのライブ通話です。練習したい言語を選び、自分の住んでいる場所の次の時間を確認し、通話の開始時に参加します。\n"
 "\n"
 "## グループ通話に含まれるもの\n"
 "\n"
-"- FluencyPalがスケジュールしたGoogle Meetでのリアルタイム通話\n"
-"- その通話に参加した人たちのための短いチャット\n"
-"- レベルの混在。初心者と上級者が同じ部屋を共有\n"
-"- 通話開始まで利用できるAIスピーキング練習\n"
+"- Google Meetでのライブ通話。\n"
+"- 通話に参加する人たちとの短いチャット。\n"
+"- 初心者と上級者が同じ部屋に集まります。\n"
+"- 通話が始まるまでAIと話す時間。\n"
 "\n"
 "## 料金\n"
 "\n"
-"コミュニティパスは1ヶ月で2ドルです。自動更新されず、練習時間の残高には影響しません。すでに練習アクセスがある場合、グループ通話は含まれています。\n"
+"$2で1か月の通話が可能です。その後は自動的に停止します。既に練習のために支払いをしている場合は、通話が含まれています。\n"
 "\n"
-"参加にはメンバーシップが必要です。サインアップ時、または後からダッシュボードで確認できます。\n"
+"通話に参加する前にその月が必要です。登録時に支払うか、後で支払えます。\n"
 "\n"
 "## 参加方法\n"
 "\n"
-"今後の通話を開き、アカウントを作成し、自分に合った時間を選びます。最初に「I'll "
-"join」を押すと、通話についての短い注意事項を確認します。それまでは、AIと英語のスピーキング練習を行ってください。\n"
-"\n"
-"今後の通話を確認し、練習したい言語を選びましょう。"
+"言語を選び、次回の通話を確認し、アカウントを作成します。初回参加時には、通話に関する短い説明を見ることができます。それまではAIと話してください。"
 
 #: src/features/Feature/featuresData.ts:494
 #. js-lingui-explicit-id
@@ -1008,7 +1001,7 @@ msgstr ""
 "- 論証\n"
 "- 話し言葉の英語における自信"
 
-#: src/features/Feature/featuresData.ts:698
+#: src/features/Feature/featuresData.ts:694
 #. js-lingui-explicit-id
 msgid ""
 "## Turn regular English practice into leaderboard points\n"
@@ -1138,7 +1131,14 @@ msgstr ""
 "\n"
 "個別の文法リストをレビューし、次の練習セッションのためのルールを選びましょう。"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:190
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:189
+#. js-lingui-explicit-id
+msgid ""
+"$2 covers a month of calls, then it stops. If you already pay for practice, "
+"the calls are included."
+msgstr "2ドルで1か月分の通話がカバーされ、それで終了します。すでに練習料金を支払っている場合、通話も含まれます。"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:188
 #. js-lingui-explicit-id
 msgid "$2 for a month"
 msgstr "1か月$2"
@@ -1458,13 +1458,6 @@ msgid ""
 "can say out loud."
 msgstr "**「I have done」と「I did」のスピーキングガイド**—日常的な例を声に出して練習してみましょう。"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:191
-#. js-lingui-explicit-id
-msgid ""
-"A community pass is $2 and does not renew. Practice access already includes "
-"these calls."
-msgstr "コミュニティパスは2ドルで、自動更新されません。練習アクセスにはこれらの通話はすでに含まれています。"
-
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:88
 #. js-lingui-explicit-id
 msgid "a finished action with a finished time:"
@@ -1507,6 +1500,11 @@ msgstr "丁寧でプロフェッショナルな挨拶。"
 #. js-lingui-explicit-id
 msgid "A proven method that delivers measurable results"
 msgstr "測定可能な結果をもたらす実績のある方法"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:126
+#. js-lingui-explicit-id
+msgid "A sample week. Next, you will see real times for where you live."
+msgstr "サンプルの1週間。次に、あなたが住んでいる場所での実際の時間が表示されます。"
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:89
 #. js-lingui-explicit-id
@@ -3029,7 +3027,7 @@ msgstr "開始する前に"
 msgid "Beginner to fluent · Uses your microphone · Works in your browser"
 msgstr "初心者から流暢へ · マイクを使用 · ブラウザで動作"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:184
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Beginners and advanced learners share the call. Everyone is practicing."
 msgstr "初心者と上級者がコールに参加しています。皆が練習中です。"
@@ -6645,7 +6643,7 @@ msgstr "分離レベルを選択し、集計モデルを作成し、効率的な
 msgid "Choose Language Level"
 msgstr "言語レベルを選択"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:218
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:216
 #. js-lingui-explicit-id
 msgid "Choose the language you want to practice."
 msgstr "練習したい言語を選んでください。"
@@ -6790,11 +6788,6 @@ msgstr "条件文はプレッシャーに弱いです。*if*から文を始め�
 #. js-lingui-explicit-id
 msgid "Confidence score tracking"
 msgstr "信頼度スコアの追跡"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:221
-#. js-lingui-explicit-id
-msgid "Confirm the $2 month, or continue and confirm membership later."
-msgstr "$2の月額を確認するか、続行して後でメンバーシップを確認してください。"
 
 #: src/features/Feature/featuresData.ts:612
 #. js-lingui-explicit-id
@@ -7492,7 +7485,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "新しいツールへの早期アクセス"
 
-#: src/features/Feature/featuresData.ts:690
+#: src/features/Feature/featuresData.ts:686
 #. js-lingui-explicit-id
 msgid ""
 "Earn points for English conversations, story quizzes, daily questions, and "
@@ -7502,7 +7495,7 @@ msgstr ""
 "英会話、ストーリークイズ、毎日の日替わり質問、ゲームでポイントを獲得しましょう。FluencyPalのリーダーボードで自分の順位を確認し、報酬を目指して"
 "頑張りましょう。"
 
-#: src/features/Feature/featuresData.ts:686
+#: src/features/Feature/featuresData.ts:682
 #. js-lingui-explicit-id
 msgid ""
 "Earn points from your learning activities and work toward leaderboard "
@@ -8605,12 +8598,12 @@ msgstr "語彙と文のための英語学習ゲーム"
 msgid "English Learning Games Online | FluencyPal"
 msgstr "英語学習ゲームオンライン | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:689
+#: src/features/Feature/featuresData.ts:685
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard and Rewards | FluencyPal"
 msgstr "英語学習ランキングと報酬 | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:685
+#: src/features/Feature/featuresData.ts:681
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard: Earn Practice Points"
 msgstr "英語学習リーダーボード: 練習ポイントを獲得"
@@ -8987,11 +8980,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "際立ち、仕事を得るために必要なすべてのこと"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:126
-#. js-lingui-explicit-id
-msgid "Example schedule. The next step shows real calls in your timezone."
-msgstr "例のスケジュール。次のステップでは、あなたのタイムゾーンでの実際の通話を示します。"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:97
 #. js-lingui-explicit-id
@@ -9787,7 +9775,7 @@ msgstr "グループ会話"
 msgid "Group English Conversation Calls on Google Meet"
 msgstr "Google Meetでのグループ英会話コール"
 
-#: src/features/Feature/featuresData.ts:649
+#: src/features/Feature/featuresData.ts:647
 #. js-lingui-explicit-id
 msgid "Group English Conversation Calls | FluencyPal"
 msgstr "グループ英会話通話 | FluencyPal"
@@ -10059,7 +10047,7 @@ msgid ""
 "nested components and async data?"
 msgstr "複雑なアプリケーションにおける状態管理の構築方法は？特にネストされたコンポーネントと非同期データが含まれる場合。"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:215
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:213
 #. js-lingui-explicit-id
 msgid "How you join"
 msgstr "参加方法"
@@ -11283,8 +11271,8 @@ msgstr "参加する"
 
 #: src/features/Feature/featuresData.ts:646
 #. js-lingui-explicit-id
-msgid "Join a scheduled call with other learners. Practice with AI until it starts."
-msgstr "他の学習者と予定された通話に参加します。始まるまでAIと練習しましょう。"
+msgid "Join a live call with other learners. Talk with AI until it starts."
+msgstr "他の学習者とライブコールに参加しましょう。始まるまでAIと話しましょう。"
 
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
@@ -11674,7 +11662,7 @@ msgstr "混合条件文 (Mixed Conditionals)"
 msgid "Mixed conditionals (what you hear at work)"
 msgstr "職場でよく耳にするミックス条件文"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:183
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:181
 #. js-lingui-explicit-id
 msgid "Mixed levels"
 msgstr "混合レベル"
@@ -12202,6 +12190,11 @@ msgstr "あなたの履歴書を貼り付けるか、経験、スキル、業績
 msgid "Pause in order to do X"
 msgstr "Xをするために一時停止する"
 
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:219
+#. js-lingui-explicit-id
+msgid "Pay $2 for the month, or skip it and pay later."
+msgstr "月額2ドルを支払うか、後で支払うこともできます。"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:441
 #. js-lingui-explicit-id
 msgid "People often mix times on purpose."
@@ -12539,7 +12532,7 @@ msgid ""
 "with clear explanations, examples, short quizzes, and AI conversations."
 msgstr "スピーキングやライティングの間違いに基づいて英語文法を練習しましょう。明確な説明、例、短いクイズ、AIとの会話で学びます。"
 
-#: src/features/Feature/featuresData.ts:650
+#: src/features/Feature/featuresData.ts:648
 #. js-lingui-explicit-id
 msgid ""
 "Practice English on a live group call. See upcoming Google Meet "
@@ -12816,11 +12809,6 @@ msgstr "FluencyPalでこのスキルを練習する"
 #. js-lingui-explicit-id
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "語彙を練習するために、創造的に言葉を説明し、推測する"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:222
-#. js-lingui-explicit-id
-msgid "Practice with AI until the call. You join it from your dashboard."
-msgstr "コールまでAIで練習しましょう。ダッシュボードから参加できます。"
 
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
@@ -13563,7 +13551,12 @@ msgstr "AIの推測を確認"
 msgid "See the AI’s Guess"
 msgstr "AIの推測を見る"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:247
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:217
+#. js-lingui-explicit-id
+msgid "See the next calls in your own time."
+msgstr "お好きな時間に次の通話をご覧ください。"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:245
 #. js-lingui-explicit-id
 msgid "See the next group call"
 msgstr "次回のグループ通話をご確認ください"
@@ -13580,15 +13573,10 @@ msgid "See the type of feedback you'll get"
 msgstr "受け取るフィードバックの種類をご覧ください"
 
 #: src/features/Feature/GroupConversationsFeaturePage.tsx:102
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:248
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:246
 #. js-lingui-explicit-id
 msgid "See upcoming calls"
 msgstr "次回の通話を確認する"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:219
-#. js-lingui-explicit-id
-msgid "See upcoming calls in your timezone."
-msgstr "あなたのタイムゾーンでの今後のコールを確認してください。"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -14868,6 +14856,11 @@ msgid ""
 "Talk to an AI English tutor, send voice messages, or switch to text when "
 "you need to."
 msgstr "AI英語教師と話したり、音声メッセージを送ったり、必要な時はテキストに切り替えたりできます。"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:220
+#. js-lingui-explicit-id
+msgid "Talk with AI while you wait, then join the call."
+msgstr "AIと話しながら待機して、通話に参加しましょう。"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:87
 #. js-lingui-explicit-id
@@ -16583,7 +16576,7 @@ msgid ""
 "want to improve as a Junior Frontend Developer."
 msgstr "これまでの経歴、これまでに学んだこと、そしてジュニアフロントエンド開発者として改善したいことについて教えてください。"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:220
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:218
 #. js-lingui-explicit-id
 msgid "Tell us your language, then create an account."
 msgstr "言語を教えてください。それからアカウントを作成してください。"
@@ -16684,11 +16677,6 @@ msgid ""
 "The API versioning and resiliency practice helped me answer confidently. I "
 "got an offer in two weeks."
 msgstr "API のバージョン管理とレジリエンシーの実践が、自信を持って回答するのに役立ちました。2週間でオファーを受け取りました。"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:177
-#. js-lingui-explicit-id
-msgid "The conversation happens on a scheduled Meet link. Chat stays in FluencyPal."
-msgstr "会話はスケジュールされたMeetリンクで行われます。チャットはFluencyPal内で続けられます。"
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:69
 #. js-lingui-explicit-id
@@ -18305,6 +18293,11 @@ msgid ""
 "You practise speaking in the language you are learning in FluencyPal. "
 "Supported learning languages include "
 msgstr "あなたはFluencyPalで学んでいる言語で話す練習をします。サポートされている学習言語には以下が含まれます"
+
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:177
+#. js-lingui-explicit-id
+msgid "You talk together on Google Meet. The chat stays in FluencyPal."
+msgstr "Google Meetで一緒に話します。チャットはFluencyPalに残ります。"
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:346
 #. js-lingui-explicit-id

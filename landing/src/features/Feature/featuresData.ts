@@ -643,9 +643,7 @@ Join a conversation about your learning goals or your latest practice session.`,
     {
       id: 'group-conversations',
       title: i18n._('Group English Conversation Calls on Google Meet'),
-      subTitle: i18n._(
-        'Join a scheduled call with other learners. Practice with AI until it starts.',
-      ),
+      subTitle: i18n._('Join a live call with other learners. Talk with AI until it starts.'),
       metaTitle: i18n._('Group English Conversation Calls | FluencyPal'),
       metaDescription: i18n._(
         'Practice English on a live group call. See upcoming Google Meet conversations, join for $2 a month, and talk with AI while you wait.',
@@ -658,26 +656,24 @@ Join a conversation about your learning goals or your latest practice session.`,
       content: i18n._(
         `## Speak English with other learners on a live call
 
-FluencyPal group conversations are scheduled calls on Google Meet. You pick the language you want to practice, see the upcoming times in your timezone, and join from your dashboard when the call starts.
+Group conversations are live calls on Google Meet. You pick the language you want to practice, see the next times for where you live, and join when the call starts.
 
 ## What a group call includes
 
-- A real time on Google Meet, scheduled by FluencyPal.
-- A short chat for the people who joined that call.
-- Mixed levels. Beginners and advanced learners share the room.
-- AI speaking practice you can use until the call begins.
+- A live call on Google Meet.
+- A short chat with the people on that call.
+- Beginners and advanced learners in the same room.
+- Time to talk with AI until the call begins.
 
 ## How much it costs
 
-A community pass is $2 for one month. It does not renew, and it does not change your practice-hours balance. If you already have practice access, group calls are included.
+$2 covers one month of calls, then it stops. If you already pay for practice, the calls are included.
 
-Membership is required to enter the call. You can confirm it during signup, or later from your dashboard.
+You will need that month before you join a call. You can pay during signup, or later.
 
 ## How do I join?
 
-Open upcoming calls, create an account, and choose a time that fits. The first time you press I'll join, you confirm a short note about the call. Until then, practice speaking with AI.
-
-See the upcoming calls and pick the language you want to practice.`,
+Pick a language, see the upcoming calls, and create an account. The first time you join, we show a short note about the call. Until then, talk with AI.`,
       ),
     },
     {

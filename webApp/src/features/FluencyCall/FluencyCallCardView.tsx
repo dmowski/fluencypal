@@ -328,10 +328,10 @@ export const FluencyCallCardView = ({
           <Typography data-testid="fluency-call-paid" sx={{ color: '#7DDEAA', fontWeight: 700 }}>
             {canJoin
               ? i18n._('Payment received. You can join the group conversations.')
-              : i18n._('Payment received. Access shows up in a moment.')}
+              : i18n._('Payment received. You can join in a moment.')}
           </Typography>
           <Typography sx={{ color: '#7DDEAA' }}>
-            {i18n._('Practice with AI until the call.')}
+            {i18n._('Talk with AI until the call starts.')}
           </Typography>
         </Stack>
       ) : null}

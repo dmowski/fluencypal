@@ -242,10 +242,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         {step === 'pageLanguage' ? (
           <Stack data-testid="community-call-page-language" sx={{ gap: '16px' }}>
             <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {i18n._('Choose Site Language')}
+              {i18n._('Which language should we use?')}
             </Typography>
             <Typography sx={{ opacity: 0.75 }}>
-              {i18n._('This is text you see on buttons and menus')}
+              {i18n._('We will show FluencyPal in this language.')}
             </Typography>
             <Stack sx={{ gap: '10px', maxHeight: '46vh', overflow: 'auto' }}>
               {supportedLanguages.map((code) => (
@@ -296,7 +296,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
               </Typography>
               <Typography sx={{ opacity: 0.75 }}>
                 {i18n._(
-                  'One month of group conversations on Google Meet. It does not renew. You can confirm this anytime, and it is required to enter a call.',
+                  'A month of live calls with other learners on Google Meet. Pay now, or later. You will need it before you join a call.',
                 )}
               </Typography>
             </Stack>
@@ -324,18 +324,12 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         {step === 'waiting' ? (
           <Stack data-testid="community-call-waiting" sx={{ gap: '16px' }}>
             <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {access.canJoin
-                ? i18n._('Practice with AI until the call')
-                : i18n._('You can confirm membership anytime')}
+              {access.canJoin ? i18n._('Talk with AI until the call') : i18n._('You can pay later')}
             </Typography>
             <Typography sx={{ opacity: 0.8 }}>
               {access.canJoin
-                ? i18n._(
-                    'Upcoming calls are on your dashboard. Practice speaking until one starts.',
-                  )
-                : i18n._(
-                    'Membership is required to enter the call. While you wait, practice talking with AI.',
-                  )}
+                ? i18n._('You will see the calls next. Talk with AI until one starts.')
+                : i18n._('You will need the $2 month before you join a call. Until then, talk with AI.')}
             </Typography>
             <Button
               variant="contained"
@@ -347,7 +341,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
               }}
               sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
             >
-              {i18n._('Practice with AI')}
+              {i18n._('Talk with AI')}
             </Button>
           </Stack>
         ) : null}

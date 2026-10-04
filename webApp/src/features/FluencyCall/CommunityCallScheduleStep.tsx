@@ -59,7 +59,7 @@ const CallRow = ({ call, now }: { call: FluencyCall; now: Date }) => {
         <Typography sx={{ fontWeight: 700 }}>{title}</Typography>
         <Typography variant="body2" sx={{ opacity: 0.7 }}>
           {language}
-          {joinCount > 0 ? ` · ${i18n._('{count} joined', { count: joinCount })}` : ''}
+          {joinCount > 0 ? ` · ${i18n._('{count} people', { count: joinCount })}` : ''}
         </Typography>
       </Stack>
     </Stack>
@@ -90,14 +90,14 @@ export const CommunityCallScheduleStep = ({
         {i18n._('Upcoming calls')}
       </Typography>
       <Typography sx={{ opacity: 0.75 }}>
-        {i18n._('Times are shown in {zone}. You join from your dashboard.', {
+        {i18n._('Times are shown for {zone}. Join when a call starts.', {
           zone: timeZoneLabel,
         })}
       </Typography>
       {visible.length === 0 ? (
         <Typography data-testid="community-call-no-calls">
           {i18n._(
-            'No upcoming {language} call right now. You can still continue. New calls show up on your dashboard.',
+            'No {language} calls yet. You can keep going. New times will show up here.',
             { language: fullLanguageName[language] },
           )}
         </Typography>

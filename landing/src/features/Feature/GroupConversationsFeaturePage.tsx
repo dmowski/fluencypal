@@ -123,7 +123,7 @@ export const GroupConversationsFeaturePage = ({
                 {i18n._('Upcoming calls')}
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.65, paddingBottom: '8px' }}>
-                {i18n._('Example schedule. The next step shows real calls in your timezone.')}
+                {i18n._('A sample week. Next, you will see real times for where you live.')}
               </Typography>
               {exampleCalls.map((call) => (
                 <Stack
@@ -174,9 +174,7 @@ export const GroupConversationsFeaturePage = ({
               {
                 icon: <Video size={22} />,
                 title: i18n._('Google Meet'),
-                body: i18n._(
-                  'The conversation happens on a scheduled Meet link. Chat stays in FluencyPal.',
-                ),
+                body: i18n._('You talk together on Google Meet. The chat stays in FluencyPal.'),
               },
               {
                 icon: <Languages size={22} />,
@@ -189,7 +187,7 @@ export const GroupConversationsFeaturePage = ({
                 icon: <Calendar size={22} />,
                 title: i18n._('$2 for a month'),
                 body: i18n._(
-                  'A community pass is $2 and does not renew. Practice access already includes these calls.',
+                  '$2 covers a month of calls, then it stops. If you already pay for practice, the calls are included.',
                 ),
               },
             ].map((item) => (
@@ -216,10 +214,10 @@ export const GroupConversationsFeaturePage = ({
             </Typography>
             {[
               i18n._('Choose the language you want to practice.'),
-              i18n._('See upcoming calls in your timezone.'),
+              i18n._('See the next calls in your own time.'),
               i18n._('Tell us your language, then create an account.'),
-              i18n._('Confirm the $2 month, or continue and confirm membership later.'),
-              i18n._('Practice with AI until the call. You join it from your dashboard.'),
+              i18n._('Pay $2 for the month, or skip it and pay later.'),
+              i18n._('Talk with AI while you wait, then join the call.'),
             ].map((line, index) => (
               <Stack key={line} direction="row" sx={{ gap: '12px', alignItems: 'flex-start' }}>
                 <Typography sx={{ fontWeight: 800, color: '#7DDEAA', minWidth: '24px' }}>
