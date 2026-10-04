@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Stack, Typography } from '@mui/material';
+import { Button, Skeleton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SafeGroupCall, toSafeGroupCalls } from './safeGroupCalls';
 
@@ -26,7 +26,31 @@ const localCallParts = (iso: string, locale: string, timeZone: string) => {
   };
 };
 
-export const GroupConversationSchedule = () => {
+const PLACEHOLDER_COUNT = 4;
+
+const rowSx = {
+  alignItems: 'center',
+  gap: '12px',
+  padding: '12px 0',
+  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+};
+
+const CallSkeleton = () => (
+  <Stack direction="row" data-testid="group-conversations-schedule-skeleton" sx={rowSx}>
+    <Skeleton
+      variant="rounded"
+      width={52}
+      height={52}
+      sx={{ bgcolor: 'rgba(255, 255, 255, 0.08)', flexShrink: 0 }}
+    />
+    <Stack sx={{ gap: '8px' }}>
+      <Skeleton width={72} height={18} sx={{ bgcolor: 'rgba(255, 255, 255, 0.12)' }} />
+      <Skeleton width={140} height={14} sx={{ bgcolor: 'rgba(255, 255, 255, 0.08)' }} />
+    </Stack>
+  </Stack>
+);
+
+export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) => {
   const { i18n } = useLingui();
   const [calls, setCalls] = useState<SafeGroupCall[] | null>(null);
   const [failed, setFailed] = useState(false);
@@ -52,7 +76,8 @@ export const GroupConversationSchedule = () => {
   }, []);
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const englishCalls = calls ?? [];
+  const loading = calls === null && !failed;
+  const englishCalls = (calls ?? []).slice(0, PLACEHOLDER_COUNT);
 
   return (
     <Stack
@@ -86,6 +111,9 @@ export const GroupConversationSchedule = () => {
           {i18n._('No English calls yet. New times will show up here.')}
         </Typography>
       ) : null}
+      {loading
+        ? Array.from({ length: PLACEHOLDER_COUNT }, (_, index) => <CallSkeleton key={index} />)
+        : null}
       {englishCalls.map((call) => {
         const label = localCallParts(call.startsAtIso, i18n.locale || 'en', timeZone);
         return (
@@ -93,12 +121,7 @@ export const GroupConversationSchedule = () => {
             key={call.id}
             direction="row"
             data-testid="group-conversations-schedule-row"
-            sx={{
-              alignItems: 'center',
-              gap: '12px',
-              padding: '12px 0',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            }}
+            sx={rowSx}
           >
             <Stack
               sx={{
@@ -131,6 +154,27 @@ export const GroupConversationSchedule = () => {
           </Stack>
         );
       })}
+      <Button
+        variant="outlined"
+        disabled={loading}
+        href={loading ? undefined : moreHref}
+        data-analytics={loading ? undefined : 'community-call-schedule-more'}
+        data-testid="group-conversations-show-more"
+        sx={{
+          marginTop: '8px',
+          alignSelf: 'stretch',
+          color: '#f4f7fb',
+          borderColor: 'rgba(255, 255, 255, 0.16)',
+          textTransform: 'none',
+          fontWeight: 700,
+          '&.Mui-disabled': {
+            color: 'rgba(244, 247, 251, 0.35)',
+            borderColor: 'rgba(255, 255, 255, 0.08)',
+          },
+        }}
+      >
+        {i18n._('Show more')}
+      </Button>
     </Stack>
   );
 };

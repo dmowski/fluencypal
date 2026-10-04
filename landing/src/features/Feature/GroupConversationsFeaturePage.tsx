@@ -147,7 +147,7 @@ export const GroupConversationsFeaturePage = ({
               </Link>
             </Stack>
 
-            <GroupConversationSchedule />
+            <GroupConversationSchedule moreHref={appHref} />
           </Stack>
 
           <Stack sx={{ gap: '18px' }}>
