@@ -1,11 +1,15 @@
-export async function sendFluencyCallRequest(startsAtIso: string, token: string): Promise<void> {
+export async function sendFluencyCallRequest(
+  startsAtIso: string,
+  languageCode: string,
+  token: string,
+): Promise<void> {
   const response = await fetch('/api/fluency-call/request', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ startsAtIso }),
+    body: JSON.stringify({ startsAtIso, languageCode }),
   });
 
   if (!response.ok) {

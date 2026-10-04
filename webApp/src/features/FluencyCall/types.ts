@@ -8,6 +8,8 @@ export interface FluencyCall {
   createdAtIso: string;
   updatedAtIso: string;
   stoppedAtIso: string | null;
+  /** Practice language. Missing on older calls, which are English. */
+  languageCode?: string;
 }
 
 export interface FluencyCallRsvp {
@@ -24,6 +26,8 @@ export interface FluencyCallRequest {
   startsAtIso: string;
   createdAtIso: string;
   status: FluencyCallRequestStatus;
+  /** Practice language. Missing on older requests, which are English. */
+  languageCode?: string;
 }
 
 export interface CallCountdown {

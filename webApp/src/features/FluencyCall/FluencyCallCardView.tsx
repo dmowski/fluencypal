@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 import { Check, MessageSquare, Plus, Users } from 'lucide-react';
 import { Badge, Box, Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { FluencyCallLanguageSelect } from './FluencyCallLanguageSelect';
 import { GoogleMeetIcon } from './GoogleMeetIcon';
 
 const cardSx = {
@@ -235,10 +237,12 @@ export const FluencyCallRowView = ({
 export type FluencyCallCardViewProps = {
   hasCalls: boolean;
   canJoin: boolean;
+  languageCode: SupportedLanguage;
   requestedAtLabel: string | null;
   paidNotice: boolean;
   accessUntilLabel: string | null;
   timeZoneLabel: string;
+  onLanguageChange: (language: SupportedLanguage) => void;
   onInitiateCall: () => void;
   onGetAccess: () => void;
   children?: ReactNode;
@@ -247,10 +251,12 @@ export type FluencyCallCardViewProps = {
 export const FluencyCallCardView = ({
   hasCalls,
   canJoin,
+  languageCode,
   requestedAtLabel,
   paidNotice,
   accessUntilLabel,
   timeZoneLabel,
+  onLanguageChange,
   onInitiateCall,
   onGetAccess,
   children,
@@ -260,29 +266,39 @@ export const FluencyCallCardView = ({
 
   return (
     <Stack data-testid="fluency-call-card" sx={cardSx}>
-      <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '12px' }}>
-        <Stack
-          sx={{
-            width: '52px',
-            height: '52px',
-            flexShrink: 0,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            backgroundColor: '#252631',
-          }}
-        >
-          <GoogleMeetIcon size={28} />
+      <Stack
+        direction="row"
+        sx={{ alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px' }}
+      >
+        <Stack direction="row" sx={{ alignItems: 'flex-start', gap: '12px', minWidth: 0 }}>
+          <Stack
+            sx={{
+              width: '52px',
+              height: '52px',
+              flexShrink: 0,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: '#252631',
+            }}
+          >
+            <GoogleMeetIcon size={28} />
+          </Stack>
+          <Stack sx={{ gap: '2px', minWidth: 0 }}>
+            <Typography variant="h5" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+              {i18n._('Group conversations')}
+            </Typography>
+            <Typography variant="body2" sx={{ opacity: 0.7 }}>
+              Google Meet
+            </Typography>
+          </Stack>
         </Stack>
-        <Stack sx={{ gap: '2px' }}>
-          <Typography variant="h5" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
-            {i18n._('Group conversations')}
-          </Typography>
-          <Typography variant="body2" sx={{ opacity: 0.7 }}>
-            Google Meet
-          </Typography>
-        </Stack>
+        <FluencyCallLanguageSelect
+          value={languageCode}
+          onChange={onLanguageChange}
+          testId="fluency-call-language-filter"
+        />
       </Stack>
 
       <Typography sx={{ opacity: 0.75, padding: '14px 0' }}>

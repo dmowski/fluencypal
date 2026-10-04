@@ -1,16 +1,19 @@
 import { deleteDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/features/Firebase/firebaseDb';
 import { ensureFluencyCallChat } from './fluencyCallChat';
+import { fluencyCallLanguageCode } from './callLanguage';
 import { FluencyCall, FluencyCallRequestStatus } from './types';
 
 export async function createFluencyCall({
   userId,
   startsAtIso,
   link,
+  languageCode,
 }: {
   userId: string;
   startsAtIso: string;
   link: string;
+  languageCode?: string | null;
 }) {
   const ref = doc(db.collections.fluencyCalls());
   const nowIso = new Date().toISOString();
@@ -18,6 +21,7 @@ export async function createFluencyCall({
     id: ref.id,
     startsAtIso,
     link,
+    languageCode: fluencyCallLanguageCode(languageCode),
     status: 'scheduled',
     createdAtIso: nowIso,
     updatedAtIso: nowIso,
@@ -30,7 +34,11 @@ export async function createFluencyCall({
 
 export async function updateFluencyCallSchedule(
   call: FluencyCall,
-  { startsAtIso, link }: { startsAtIso: string; link: string },
+  {
+    startsAtIso,
+    link,
+    languageCode,
+  }: { startsAtIso: string; link: string; languageCode?: string | null },
 ) {
   const ref = db.documents.fluencyCall(call.id);
   if (!ref) return;
@@ -38,6 +46,7 @@ export async function updateFluencyCallSchedule(
     ...call,
     startsAtIso,
     link,
+    languageCode: fluencyCallLanguageCode(languageCode),
     updatedAtIso: new Date().toISOString(),
   });
 }

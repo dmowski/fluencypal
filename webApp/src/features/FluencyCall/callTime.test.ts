@@ -1,4 +1,5 @@
 import { FluencyCall } from './types';
+import { fluencyCallLanguageCode } from './callLanguage';
 import {
   buildCallRequestTelegramMessage,
   fluencyCallRowTitle,
@@ -225,8 +226,32 @@ describe('Warsaw time for the Telegram notice', () => {
     const iso = '2026-10-03T16:00:00.000Z';
     const message = buildCallRequestTelegramMessage(iso);
     expect(message).toContain('FluencyPal call request');
+    expect(message).toContain('Language: English');
     expect(message).toContain(formatWarsawDateTime(iso));
     expect(message).toContain(`UTC: ${iso}`);
+  });
+
+  it('names the practice language', () => {
+    expect(buildCallRequestTelegramMessage('2026-10-03T16:00:00.000Z', 'es')).toContain(
+      'Language: Spanish',
+    );
+  });
+});
+
+describe('call language', () => {
+  it('treats a missing or unknown code as English', () => {
+    expect(fluencyCallLanguageCode(undefined)).toBe('en');
+    expect(fluencyCallLanguageCode('')).toBe('en');
+    expect(fluencyCallLanguageCode('zz')).toBe('en');
+  });
+
+  it('keeps a language people can learn', () => {
+    expect(fluencyCallLanguageCode('es')).toBe('es');
+  });
+
+  it('does not offer a language outside the practice list', () => {
+    expect(fluencyCallLanguageCode('ru')).toBe('en');
+    expect(fluencyCallLanguageCode('uk')).toBe('en');
   });
 });
 

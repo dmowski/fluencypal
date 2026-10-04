@@ -406,6 +406,7 @@ service cloud.firestore {
             'createdAtIso',
             'updatedAtIso',
             'stoppedAtIso',
+            'languageCode',
           ])
           && d.id == callId
           && isText(d.startsAtIso, 20, 40)
@@ -413,7 +414,8 @@ service cloud.firestore {
           && (d.status == 'scheduled' || d.status == 'stopped')
           && isText(d.createdAtIso, 20, 40)
           && isText(d.updatedAtIso, 20, 40)
-          && (d.stoppedAtIso == null || isText(d.stoppedAtIso, 20, 40));
+          && (d.stoppedAtIso == null || isText(d.stoppedAtIso, 20, 40))
+          && (!d.keys().hasAny(['languageCode']) || isText(d.languageCode, 2, 8));
       }
 
       allow read: if isSignedIn();

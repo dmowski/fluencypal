@@ -3,11 +3,14 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Check } from 'lucide-react';
+import { SupportedLanguage, fullLanguageName } from '@/features/Lang/lang';
 import { CallDatePicker, CallTimePicker } from './CallDateTimePickers';
+import { FluencyCallLanguageSelect } from './FluencyCallLanguageSelect';
 
 export type FluencyCallRequestFormProps = {
   date: string;
   time: string;
+  languageCode: SupportedLanguage;
   previewLabel: string;
   error: string;
   isSending: boolean;
@@ -16,6 +19,7 @@ export type FluencyCallRequestFormProps = {
   now: Date;
   onDateChange: (value: string) => void;
   onTimeChange: (value: string) => void;
+  onLanguageChange: (language: SupportedLanguage) => void;
   onSubmit: () => void;
   onDone: () => void;
 };
@@ -23,6 +27,7 @@ export type FluencyCallRequestFormProps = {
 export const FluencyCallRequestForm = ({
   date,
   time,
+  languageCode,
   previewLabel,
   error,
   isSending,
@@ -31,6 +36,7 @@ export const FluencyCallRequestForm = ({
   now,
   onDateChange,
   onTimeChange,
+  onLanguageChange,
   onSubmit,
   onDone,
 }: FluencyCallRequestFormProps) => {
@@ -69,6 +75,7 @@ export const FluencyCallRequestForm = ({
             {sentLabel}
           </Typography>
         ) : null}
+        <Typography sx={{ fontWeight: 700 }}>{fullLanguageName[languageCode]}</Typography>
         <Button
           variant="contained"
           onClick={onDone}
@@ -103,6 +110,17 @@ export const FluencyCallRequestForm = ({
         <Typography sx={{ opacity: 0.8 }}>
           {i18n._("Set a time and send a request. We'll get back to you with a confirmation.")}
         </Typography>
+      </Stack>
+
+      <Stack sx={{ gap: '6px', alignItems: 'flex-start' }}>
+        <Typography variant="body2" sx={{ fontWeight: 600 }}>
+          {i18n._('Language')}
+        </Typography>
+        <FluencyCallLanguageSelect
+          value={languageCode}
+          onChange={onLanguageChange}
+          testId="fluency-call-request-language"
+        />
       </Stack>
 
       <CallDatePicker value={date} now={now} onChange={onDateChange} />

@@ -8,12 +8,15 @@ import {
   DialogContent,
   DialogTitle,
   Link,
+  MenuItem,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useGame } from '@/features/Game/useGame';
+import { fullEnglishLanguageName, SupportedLanguage } from '@/features/Lang/lang';
+import { fluencyCallLanguageCode, fluencyCallLanguageOptions } from './callLanguage';
 import { CallDatePicker, CallTimePicker } from './CallDateTimePickers';
 import {
   FLUENCY_CALL_LIST_LOOKBACK_MS,
@@ -52,6 +55,7 @@ export const CallsAdmin = () => {
   const [draftKey, setDraftKey] = useState<string | null>(null);
   const [startsAtLocal, setStartsAtLocal] = useState('');
   const [link, setLink] = useState('');
+  const [languageCode, setLanguageCode] = useState<SupportedLanguage>('en');
   const [error, setError] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [accepting, setAccepting] = useState<FluencyCallRequest | null>(null);
@@ -61,19 +65,26 @@ export const CallsAdmin = () => {
 
   const serverStartsAt = editingCall ? toDatetimeLocalValue(editingCall.startsAtIso) : '';
   const serverLink = editingCall?.link ?? '';
+  const serverLanguage = fluencyCallLanguageCode(editingCall?.languageCode);
   const isDraft = draftKey === formKey;
   const formStartsAt = isDraft ? startsAtLocal : serverStartsAt;
   const formLink = isDraft ? link : serverLink;
+  const formLanguage = isDraft ? languageCode : serverLanguage;
   const suggested = suggestedCallSlot(now);
   const activeStartsAt = formStartsAt || `${suggested.date}T${suggested.time}`;
   const [date = suggested.date, time = suggested.time] = activeStartsAt.split('T');
   const previewIso = fromDatetimeLocalValue(activeStartsAt);
   const previewLabel = previewIso ? formatCallStartLabel(previewIso) : '';
 
-  const edit = (next: { startsAtLocal?: string; link?: string }) => {
+  const edit = (next: {
+    startsAtLocal?: string;
+    link?: string;
+    languageCode?: SupportedLanguage;
+  }) => {
     setDraftKey(formKey);
     setStartsAtLocal(next.startsAtLocal ?? formStartsAt);
     setLink(next.link ?? formLink);
+    setLanguageCode(next.languageCode ?? formLanguage);
     setError('');
   };
 
@@ -106,9 +117,18 @@ export const CallsAdmin = () => {
     setError('');
     try {
       if (editingCall) {
-        await updateFluencyCallSchedule(editingCall, { startsAtIso, link: nextLink });
+        await updateFluencyCallSchedule(editingCall, {
+          startsAtIso,
+          link: nextLink,
+          languageCode: formLanguage,
+        });
       } else {
-        await createFluencyCall({ userId: auth.uid, startsAtIso, link: nextLink });
+        await createFluencyCall({
+          userId: auth.uid,
+          startsAtIso,
+          link: nextLink,
+          languageCode: formLanguage,
+        });
       }
       setDraftKey(null);
       setEditingId(null);
@@ -135,6 +155,7 @@ export const CallsAdmin = () => {
         userId: auth.uid,
         startsAtIso: accepting.startsAtIso,
         link: nextLink,
+        languageCode: accepting.languageCode,
       });
       await setFluencyCallRequestStatus(accepting.userId, 'accepted');
       setAccepting(null);
@@ -233,6 +254,9 @@ export const CallsAdmin = () => {
         }}
       >
         <Typography sx={{ fontWeight: 700 }}>{formatCallStartLabel(item.startsAtIso)}</Typography>
+        <Typography sx={{ opacity: 0.8 }}>
+          {fullEnglishLanguageName[fluencyCallLanguageCode(item.languageCode)]}
+        </Typography>
         <Typography sx={{ opacity: 0.8, color: isLive ? '#7DDEAA' : undefined }}>
           {statusLabel}
         </Typography>
@@ -305,6 +329,8 @@ export const CallsAdmin = () => {
                   Created {formatCallStartLabel(request.createdAtIso)}
                 </Typography>
                 <Typography sx={{ fontWeight: 700 }}>
+                  {fullEnglishLanguageName[fluencyCallLanguageCode(request.languageCode)]}
+                  {' · '}
                   {formatCallStartLabel(request.startsAtIso)}
                 </Typography>
                 <Stack direction="row" sx={{ gap: '8px' }}>
@@ -376,6 +402,21 @@ export const CallsAdmin = () => {
             onChange={(nextTime) => edit({ startsAtLocal: `${date}T${nextTime}` })}
           />
           {previewLabel ? <Typography sx={{ fontWeight: 700 }}>{previewLabel}</Typography> : null}
+          <TextField
+            select
+            label="Language"
+            value={formLanguage}
+            onChange={(event) =>
+              edit({ languageCode: fluencyCallLanguageCode(event.target.value) })
+            }
+            fullWidth
+          >
+            {fluencyCallLanguageOptions().map((code) => (
+              <MenuItem key={code} value={code}>
+                {fullEnglishLanguageName[code]}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             label="Call link"
             value={formLink}

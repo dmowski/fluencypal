@@ -5,6 +5,8 @@ import { Dialog, DialogContent, IconButton } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { X } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { SupportedLanguage } from '@/features/Lang/lang';
+import { fluencyCallLanguageCode } from './callLanguage';
 import {
   formatCallStartLabel,
   isUpcomingCallInstant,
@@ -17,10 +19,12 @@ import { sendFluencyCallRequest } from './sendFluencyCallRequest';
 export const FluencyCallRequestModal = ({
   initialDate,
   initialTime,
+  initialLanguage,
   onClose,
 }: {
   initialDate?: string;
   initialTime?: string;
+  initialLanguage: SupportedLanguage;
   onClose: () => void;
 }) => {
   const { i18n } = useLingui();
@@ -28,6 +32,7 @@ export const FluencyCallRequestModal = ({
   const suggested = suggestedCallSlot(new Date());
   const [date, setDate] = useState(initialDate || suggested.date);
   const [time, setTime] = useState(initialTime || suggested.time);
+  const [language, setLanguage] = useState(fluencyCallLanguageCode(initialLanguage));
   const [error, setError] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
@@ -49,7 +54,7 @@ export const FluencyCallRequestModal = ({
     setIsSending(true);
     setError('');
     try {
-      await sendFluencyCallRequest(startsAtIso, await auth.getToken());
+      await sendFluencyCallRequest(startsAtIso, language, await auth.getToken());
       setSentLabel(formatCallStartLabel(startsAtIso));
       setIsSent(true);
     } catch (requestError) {
@@ -89,6 +94,7 @@ export const FluencyCallRequestModal = ({
         <FluencyCallRequestForm
           date={date}
           time={time}
+          languageCode={language}
           previewLabel={previewLabel}
           error={error}
           isSending={isSending}
@@ -101,6 +107,10 @@ export const FluencyCallRequestModal = ({
           }}
           onTimeChange={(value) => {
             setTime(value);
+            setError('');
+          }}
+          onLanguageChange={(value) => {
+            setLanguage(value);
             setError('');
           }}
           onSubmit={() => {

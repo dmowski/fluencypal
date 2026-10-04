@@ -7,8 +7,3 @@ General strategy:
 # Plan
 
 ## Google Call:
-
-When I propose a call, show selector of language I want to practice.
-By default it should be target langue (from user settings), but user can change it to something els
-
-On UI dashboard card, show small dropdown (on top right corner). It will filter list of calls

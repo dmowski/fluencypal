@@ -40,10 +40,12 @@ const upcomingRows = [
 const cardProps: FluencyCallCardViewProps = {
   hasCalls: true,
   canJoin: true,
+  languageCode: 'en',
   requestedAtLabel: null,
   paidNotice: false,
   accessUntilLabel: null,
   timeZoneLabel: 'Warsaw',
+  onLanguageChange: () => {},
   onInitiateCall: () => {},
   onGetAccess: () => {},
 };
@@ -192,6 +194,16 @@ test('without access the empty card offers the month pass', async () => {
   await expect
     .element(page.getByTestId('fluency-call-shot'))
     .toMatchScreenshot('no-call-non-member');
+});
+
+test('the language dropdown filters by the chosen language', async () => {
+  const onLanguageChange = vi.fn();
+  await renderCard({ onLanguageChange });
+
+  await userEvent.click(page.getByTestId('fluency-call-language-filter'));
+  await userEvent.click(page.getByRole('option', { name: /Español/ }));
+
+  expect(onLanguageChange).toHaveBeenCalledWith('es');
 });
 
 test('listed calls still offer a proposal', async () => {

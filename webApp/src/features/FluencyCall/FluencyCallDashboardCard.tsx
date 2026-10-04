@@ -6,9 +6,11 @@ import { useLingui } from '@lingui/react';
 import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/features/Auth/useAuth';
 import { db } from '@/features/Firebase/firebaseDb';
+import { fullLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
 import { useCurrency } from '@/features/User/useCurrency';
 import { FluencyCallApiError, requestFluencyCallCheckout } from './api';
+import { fluencyCallLanguageCode } from './callLanguage';
 import {
   fluencyCallRowTitle,
   formatCallLabel,
@@ -53,6 +55,7 @@ export const FluencyCallDashboardCard = () => {
   const [pendingJoinId, setPendingJoinId] = useState<string | null>(null);
   const [conductSaving, setConductSaving] = useState(false);
   const [agreedLocal, setAgreedLocal] = useState(false);
+  const [pickedLanguage, setPickedLanguage] = useState<SupportedLanguage | null>(null);
 
   if (!auth.uid || loading || !access.ready || (calls.length === 0 && requestLoading)) {
     return null;
@@ -62,9 +65,17 @@ export const FluencyCallDashboardCard = () => {
     agreedLocal || Boolean(settings.userSettings?.fluencyCallConductAgreedAtIso);
   const paywallOpen = paywallAsked && !paywallDismissed && !access.canJoin;
   const timeZone = viewerTimeZone();
+  const targetLanguage = fluencyCallLanguageCode(settings.languageCode);
+  const language = pickedLanguage ?? targetLanguage;
+  const visibleCalls = calls.filter(
+    (call) => fluencyCallLanguageCode(call.languageCode) === language,
+  );
   const pendingRequest = isPendingCallRequest(request) ? request : null;
   const requestedSlot = pendingRequest ? splitLocalDateTime(pendingRequest.startsAtIso) : null;
-  const requestedLabel = pendingRequest
+  const requestedLanguage = pendingRequest
+    ? fluencyCallLanguageCode(pendingRequest.languageCode)
+    : null;
+  const requestedClock = pendingRequest
     ? formatCallLabel(pendingRequest.startsAtIso, now, i18n.locale || 'en', timeZone)
     : null;
   const chatCall = calls.find((call) => fluencyCallChatSpaceId(call.id) === callChatId) ?? null;
@@ -76,6 +87,10 @@ export const FluencyCallDashboardCard = () => {
     tomorrow: i18n._('Tomorrow'),
     now: i18n._('Now'),
   };
+  const requestedLabel =
+    requestedClock && requestedLanguage
+      ? `${fullLanguageName[requestedLanguage]} · ${fluencyCallRowTitle(requestedClock, false, words)}`
+      : null;
   const accessUntilLabel =
     access.passActive && !access.included && access.activeUntilIso
       ? i18n._('Access until {date}', {
@@ -147,6 +162,7 @@ export const FluencyCallDashboardCard = () => {
         <FluencyCallRequestModal
           initialDate={requestedSlot?.date}
           initialTime={requestedSlot?.time}
+          initialLanguage={requestedLanguage ?? language}
           onClose={() => setIsRequestOpen(false)}
         />
       ) : null}
@@ -181,16 +197,18 @@ export const FluencyCallDashboardCard = () => {
         />
       ) : null}
       <FluencyCallCardView
-        hasCalls={calls.length > 0}
+        hasCalls={visibleCalls.length > 0}
         canJoin={access.canJoin}
-        requestedAtLabel={requestedLabel ? fluencyCallRowTitle(requestedLabel, false, words) : null}
+        languageCode={language}
+        requestedAtLabel={requestedLabel}
         paidNotice={paymentState === 'paid'}
         accessUntilLabel={accessUntilLabel}
         timeZoneLabel={timeZoneCity(timeZone)}
+        onLanguageChange={setPickedLanguage}
         onInitiateCall={() => setIsRequestOpen(true)}
         onGetAccess={askForAccess}
       >
-        {calls.map((call) => (
+        {visibleCalls.map((call) => (
           <FluencyCallConnectedRow
             key={call.id}
             call={call}

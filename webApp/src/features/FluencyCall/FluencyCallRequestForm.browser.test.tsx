@@ -8,6 +8,7 @@ import { FluencyCallRequestForm, FluencyCallRequestFormProps } from './FluencyCa
 const baseProps: FluencyCallRequestFormProps = {
   date: '2026-10-03',
   time: '18:00',
+  languageCode: 'en',
   previewLabel: 'Saturday, 3 Oct, 18:00',
   error: '',
   isSending: false,
@@ -16,6 +17,7 @@ const baseProps: FluencyCallRequestFormProps = {
   now: new Date(2026, 9, 1, 12, 0, 0, 0),
   onDateChange: () => {},
   onTimeChange: () => {},
+  onLanguageChange: () => {},
   onSubmit: () => {},
   onDone: () => {},
 };
@@ -45,6 +47,16 @@ test('after sending, the form says the request is on its way', async () => {
   await expect
     .element(page.getByTestId('fluency-call-shot'))
     .toMatchScreenshot('request-form-sent');
+});
+
+test('the language selector reports a different practice language', async () => {
+  const onLanguageChange = vi.fn();
+  await renderForm({ onLanguageChange });
+
+  await userEvent.click(page.getByTestId('fluency-call-request-language'));
+  await userEvent.click(page.getByRole('option', { name: /Español/ }));
+
+  expect(onLanguageChange).toHaveBeenCalledWith('es');
 });
 
 test('submit uses the chosen date and time', async () => {

@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { fullEnglishLanguageName } from '@/features/Lang/lang';
+import { fluencyCallLanguageCode } from './callLanguage';
 import { CallClockLabel, CallCountdown, FluencyCall } from './types';
 
 const SECOND_MS = 1000;
@@ -251,9 +253,14 @@ export function formatWarsawDateTime(iso: string): string {
   return `${formatted} (Warsaw)`;
 }
 
-export function buildCallRequestTelegramMessage(startsAtIso: string): string {
+export function buildCallRequestTelegramMessage(
+  startsAtIso: string,
+  languageCode?: string | null,
+): string {
+  const language = fullEnglishLanguageName[fluencyCallLanguageCode(languageCode)];
   return [
     '📞 FluencyPal call request',
+    `Language: ${language}`,
     `Wants to meet: ${formatWarsawDateTime(startsAtIso)}`,
     `UTC: ${startsAtIso}`,
   ].join('\n');
