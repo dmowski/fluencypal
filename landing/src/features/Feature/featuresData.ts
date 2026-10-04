@@ -642,11 +642,13 @@ Join a conversation about your learning goals or your latest practice session.`,
     },
     {
       id: 'group-conversations',
-      title: i18n._('Group English Conversation Calls on Google Meet'),
-      subTitle: i18n._('Join a live call with other learners. Talk with AI until it starts.'),
+      title: i18n._('Practice English with Other Learners'),
+      subTitle: i18n._(
+        'Join live group conversations on Google Meet and build confidence speaking English.',
+      ),
       metaTitle: i18n._('Group English Conversation Calls | FluencyPal'),
       metaDescription: i18n._(
-        'Practice English on a live group call. See upcoming Google Meet conversations, join for $2 a month, and talk with AI while you wait.',
+        'Practice English on a live group call with other learners. See upcoming Google Meet times in your time zone and join for $2 a month. No automatic renewal.',
       ),
       keywords: [
         'group English conversation',
@@ -654,26 +656,21 @@ Join a conversation about your learning goals or your latest practice session.`,
         'practice English on Google Meet',
       ],
       content: i18n._(
-        `## Speak English with other learners on a live call
+        `## Practice English with other learners
 
-Group conversations are live calls on Google Meet. You pick the language you want to practice, see the next times for where you live, and join when the call starts.
+Group conversations are live English calls on Google Meet. You talk with other learners. There is no teacher and no set topic.
 
-## What a group call includes
+Beginners can speak slowly. Advanced learners practice too. A correction comes only if someone asks. Join when the call starts, and leave when you need to. You can see how many people plan to come. Each call also has a text chat in FluencyPal for the people on it.
 
-- A live call on Google Meet.
-- A short chat with the people on that call.
-- Beginners and advanced learners in the same room.
-- Time to talk with AI until the call begins.
+## How you join
 
-## How much it costs
+1. Find a call. You can look at the schedule before you pay. Times are in your local time zone.
+2. Create an account and get access. $2 pays for one month of group calls. No automatic renewal. An active Practice, Conversation, or Conversation 10 plan already includes the calls.
+3. Open the Google Meet when the call starts.
 
-$2 pays for one month of group calls. After that month, you can pay again if you want more calls. If you already pay for practice, the calls are included.
+Want to warm up before your call? Practice with AI first. That practice is separate from the $2.
 
-You can pay when you sign up, or later.
-
-## How do I join?
-
-Pick a language, see the upcoming calls, and create an account. The first time you join, we show a short note about the call. Until then, talk with AI.`,
+Calls appear when they are on the schedule.`,
       ),
     },
     {

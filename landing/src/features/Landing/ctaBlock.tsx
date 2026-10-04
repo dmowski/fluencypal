@@ -7,12 +7,16 @@ interface CtaBlockProps {
   actionButtonTitle: string;
   actionButtonLink: string;
   actionButtonId?: string;
+  buttonBackgroundColor?: string;
+  buttonColor?: string;
 }
 export const CtaBlock: React.FC<CtaBlockProps> = ({
   title,
   actionButtonLink,
   actionButtonTitle,
   actionButtonId,
+  buttonBackgroundColor = '#05acff',
+  buttonColor = '#000',
 }) => {
   return (
     <Stack
@@ -66,8 +70,8 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
           sx={{
             ...buttonStyle,
             padding: '15px 80px',
-            color: '#000',
-            backgroundColor: '#05acff',
+            color: buttonColor,
+            backgroundColor: buttonBackgroundColor,
           }}
         >
           {actionButtonTitle}
