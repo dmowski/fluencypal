@@ -1135,7 +1135,7 @@ msgstr ""
 "\n"
 "맞춤형 문법 리스트를 검토하여 다음 연습 세션을 위한 규칙을 선택하세요."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:282
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:224
 #. js-lingui-explicit-id
 msgid "$2 for one month of group calls"
 msgstr "한 달 동안 그룹 통화에 $2"
@@ -3026,7 +3026,7 @@ msgstr "시작하기 전에"
 msgid "Beginner to fluent · Uses your microphone · Works in your browser"
 msgstr "초급부터 유창까지 · 마이크 사용 · 브라우저에서 작동"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:44
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:40
 #. js-lingui-explicit-id
 msgid ""
 "Beginners can speak slowly. Advanced learners practice too. A correction "
@@ -6078,7 +6078,7 @@ msgstr ""
 "\n"
 "명확하고 구체적으로 말하는 데 집중하세요. 성공적인 지원 대화를 위해 고급 기술 지식이나 완벽한 문법이 필요하지 않습니다."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:80
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:76
 #. js-lingui-explicit-id
 msgid "Can a beginner keep up?"
 msgstr "초급자도 따라갈 수 있나요?"
@@ -6099,7 +6099,7 @@ msgstr "연습 세션을 맞춤 설정할 수 있나요?"
 msgid "Can I do a refund after purchase?"
 msgstr "구매 후 환불이 가능한가요?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:74
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:70
 #. js-lingui-explicit-id
 msgid "Can I look before I pay?"
 msgstr "제가 지불하기 전에 볼 수 있나요?"
@@ -6641,7 +6641,7 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "중국어 학습 계획"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:59
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:55
 #. js-lingui-explicit-id
 msgid "Choose a time that works for you. You can look before you pay."
 msgstr "당신에게 맞는 시간을 선택하세요. 결제하기 전에 확인할 수 있습니다."
@@ -7064,7 +7064,7 @@ msgstr ""
 "당신이 상황을 설명하고, 역할을 선택하고, 목표를 설정하며 추가 세부 정보를 선택적으로 추가하세요. AI는 당신의 설정에 따라 대화를 "
 "생성하고 선택한 어조와 난이도에 따라 행동할 것입니다."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:63
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:59
 #. js-lingui-explicit-id
 msgid ""
 "Create an account. Pay $2 for one month, or use a Practice, Conversation, "
@@ -7511,7 +7511,7 @@ msgstr ""
 "측면에 집중하며 AI와 함께 말하기 연습을 합니다. 이를 통해 가장 어려움을 겪는 문법이나 표현 패턴을 체계적으로 개선할 수 있으며, "
 "실수를 목표로 한 말하기 연습으로 전환합니다."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:240
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Each call also has a text chat in FluencyPal for the people on it."
 msgstr "각 통화에는 참여자들을 위한 FluencyPal의 텍스트 채팅도 포함되어 있습니다."
@@ -8656,6 +8656,11 @@ msgid ""
 "behavioral stories"
 msgstr "중급 역할에서 시니어 역할로 전환하려는 엔지니어와 더 강력한 행동 스토리가 필요한 경우"
 
+#: src/features/Feature/GroupConversationSchedule.tsx:128
+#. js-lingui-explicit-id
+msgid "English"
+msgstr "영어"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:172
 #. js-lingui-explicit-id
 msgid ""
@@ -8872,20 +8877,15 @@ msgstr "영어 어휘 연습: 말하기용"
 msgid "English Vocabulary Practice with AI | FluencyPal"
 msgstr "AI와 함께하는 영어 어휘 연습 | FluencyPal"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:33
+#: src/features/Feature/GroupConversationSchedule.tsx:125
 #. js-lingui-explicit-id
-msgid "English · 3 joined"
-msgstr "영어 · 3명 참여 중"
+msgid "English · 1 person"
+msgstr "영어 · 1인용"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:32
+#: src/features/Feature/GroupConversationSchedule.tsx:127
 #. js-lingui-explicit-id
-msgid "English · 4 joined"
-msgstr "영어 · 4명 참여 중"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:31
-#. js-lingui-explicit-id
-msgid "English · 6 joined"
-msgstr "영어 · 6명이 참가했습니다."
+msgid "English · {count} people"
+msgstr "영어 · {count}명"
 
 #: src/features/Landing/LandingPage.tsx:425
 #. js-lingui-explicit-id
@@ -9149,11 +9149,6 @@ msgstr ""
 msgid "Everything you need to stand out and get the job"
 msgstr "눈에 띄고 직장을 얻기 위해 필요한 모든 것"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:166
-#. js-lingui-explicit-id
-msgid "Example schedule"
-msgstr "예시 일정"
-
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:97
 #. js-lingui-explicit-id
 msgid "Exams, role-play, and the daily lesson are included"
@@ -9324,7 +9319,7 @@ msgstr "최종 점수: {winnerScore}"
 msgid "Final Standings"
 msgstr "최종 순위"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:58
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:54
 #. js-lingui-explicit-id
 msgid "Find a call"
 msgstr "Call 찾기"
@@ -9794,7 +9789,7 @@ msgstr "동명사 (gerund) 대 부정사 (infinitive)"
 msgid "Gerund vs Infinitive: Stop Doing or Stop to Do?"
 msgstr "동명사(Gerund) vs 부정사(Infinitive): Stop Doing or Stop to Do?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:62
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:58
 #. js-lingui-explicit-id
 msgid "Get access"
 msgstr "접근 권한 얻기"
@@ -9939,7 +9934,7 @@ msgstr "문법 수정 미리보기"
 msgid "Grocery Store"
 msgstr "식료품점"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:126
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:122
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:104
 #. js-lingui-explicit-id
 msgid "Group conversations"
@@ -10161,7 +10156,7 @@ msgstr "작동 원리"
 msgid "How it Works:"
 msgstr "작동 방식:"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:86
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:82
 #. js-lingui-explicit-id
 msgid "How often are calls?"
 msgstr "통화는 얼마나 자주 있나요?"
@@ -10222,7 +10217,7 @@ msgid ""
 "nested components and async data?"
 msgstr "복잡한 애플리케이션의 상태 관리를 중첩된 컴포넌트와 비동기 데이터를 사용하여 어떻게 구성하시겠습니까?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:246
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:188
 #. js-lingui-explicit-id
 msgid "How you join"
 msgstr "가입 방법"
@@ -11466,7 +11461,7 @@ msgid ""
 "English."
 msgstr "Google Meet에서 라이브 그룹 대화에 참여하고 영어 말하기 자신감을 키워보세요."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:68
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:64
 #. js-lingui-explicit-id
 msgid "Join on Google Meet"
 msgstr "Google Meet에 참여하세요."
@@ -11476,7 +11471,7 @@ msgstr "Google Meet에 참여하세요."
 msgid "Join scheduled group conversations for this paid period"
 msgstr "이번 유료 기간에는 예정된 그룹 대화에 참여하세요"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:51
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:47
 #. js-lingui-explicit-id
 msgid ""
 "Join when the call starts. Leave when you need to. You can see how many "
@@ -11866,7 +11861,7 @@ msgstr "혼합 조건문 (mixed conditionals)"
 msgid "Mixed conditionals (what you hear at work)"
 msgstr "혼합 조건문 (직장에서 듣게 되는 것)"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:43
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:39
 #. js-lingui-explicit-id
 msgid "Mixed levels"
 msgstr "혼합 수준"
@@ -12090,7 +12085,7 @@ msgstr "다음"
 msgid "Next Turn"
 msgstr "다음 턴"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:285
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:227
 #. js-lingui-explicit-id
 msgid ""
 "No automatic renewal. You can look at the schedule before you pay. You need "
@@ -12109,6 +12104,11 @@ msgstr "블로그를 찾을 수 없습니다"
 #. js-lingui-explicit-id
 msgid "No correct words yet."
 msgstr "아직 맞는 단어가 없습니다."
+
+#: src/features/Feature/GroupConversationSchedule.tsx:86
+#. js-lingui-explicit-id
+msgid "No English calls yet. New times will show up here."
+msgstr "아직 예약된 영어 통화가 없습니다. 새로운 시간이 여기 표시됩니다."
 
 #: src/features/Case/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
@@ -12224,6 +12224,11 @@ msgstr "지금"
 msgid "Now start speaking it."
 msgstr "이제 말하기를 시작하세요."
 
+#: src/features/Feature/GroupConversationSchedule.tsx:121
+#. js-lingui-explicit-id
+msgid "Now · {time}"
+msgstr "지금 · {time}"
+
 #: src/features/Alias/components/RoundSettings.tsx:197
 #. js-lingui-explicit-id
 msgid "Number of rounds"
@@ -12301,15 +12306,10 @@ msgstr "열기"
 msgid "Open Dashboard"
 msgstr "대시보드 열기"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:69
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:65
 #. js-lingui-explicit-id
 msgid "Open the call when it starts."
 msgstr "전화가 시작되면 열어주세요."
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:169
-#. js-lingui-explicit-id
-msgid "Open the schedule to see available calls in your local time zone."
-msgstr "일정을 열어 현지 시간대에 가능한 통화를 확인하세요."
 
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
@@ -12330,7 +12330,7 @@ msgstr "음식을 주문하고, 약속을 일정에 맞추고, 취업 인터뷰�
 msgid "Other common questions include:"
 msgstr "다른 일반적인 질문들은 다음과 같습니다:"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:38
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:34
 #. js-lingui-explicit-id
 msgid "Other learners"
 msgstr "다른 학습자들"
@@ -12798,7 +12798,7 @@ msgstr "어휘, 문장 구성, 읽기 및 말하기를 위한 게임으로 영�
 msgid "Practice English with Other Learners"
 msgstr "다른 학습자들과 영어 연습하기"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:132
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:128
 #. js-lingui-explicit-id
 msgid "Practice English with other learners"
 msgstr "다른 학습자들과 함께 영어 연습하기"
@@ -13249,7 +13249,7 @@ msgstr "게시일"
 msgid "Question"
 msgstr "질문"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:293
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:235
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "질문"
@@ -13808,7 +13808,7 @@ msgstr "AI의 추측 보기"
 msgid "See the AI’s Guess"
 msgstr "AI의 추측 보기"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:305
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:247
 #. js-lingui-explicit-id
 msgid "See the next English call"
 msgstr "다음 영어 호출을 확인하세요"
@@ -13824,8 +13824,8 @@ msgstr "받게 될 백엔드 피드백 유형 보기"
 msgid "See the type of feedback you'll get"
 msgstr "어떤 유형의 피드백을 받을 수 있는지 확인하세요"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:147
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:306
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:143
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:248
 #: src/features/Landing/LandingPage.tsx:461
 #. js-lingui-explicit-id
 msgid "See upcoming calls"
@@ -14780,7 +14780,7 @@ msgstr "ASP.NET Core 및 EF Core에 대한 확고한 지식. 복원력 패턴과
 msgid "Spanish Learning Plan"
 msgstr "스페인어 학습 계획"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:81
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:77
 #. js-lingui-explicit-id
 msgid ""
 "Speak even when the words come slowly. Mistakes are welcome. Nobody "
@@ -17026,6 +17026,11 @@ msgid ""
 "technical explanations. Game changer."
 msgstr "맞춤형 피드백은 제가 기술적 설명에서 무엇을 잘못하고 있는지를 정확히 보여주었습니다. 게임 체인저입니다."
 
+#: src/features/Feature/GroupConversationSchedule.tsx:77
+#. js-lingui-explicit-id
+msgid "The schedule is not available right now."
+msgstr "일정이 현재 이용할 수 없습니다."
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:75
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:178
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:287
@@ -17471,6 +17476,11 @@ msgstr "남은 시간"
 msgid "Timed"
 msgstr "타이머 설정됨"
 
+#: src/features/Feature/GroupConversationSchedule.tsx:73
+#. js-lingui-explicit-id
+msgid "Times are shown in your local time zone."
+msgstr "시간은 귀하의 현지 시간대로 표시됩니다."
+
 #: src/features/Landing/LandingPage.tsx:154
 #. js-lingui-explicit-id
 msgid ""
@@ -17656,6 +17666,11 @@ msgid ""
 "forms you hear at work."
 msgstr "비현실적 현재 vs 비현실적 과거 — 명확한 규칙, 구어체 예문, 그리고 직장에서 듣게 되는 혼합된 형태."
 
+#: src/features/Feature/GroupConversationSchedule.tsx:70
+#. js-lingui-explicit-id
+msgid "Upcoming calls"
+msgstr "예정된 통화"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:188
 #. js-lingui-explicit-id
 msgid "Use **an** before a vowel *sound*, not just a vowel letter."
@@ -17776,7 +17791,7 @@ msgid "View all"
 msgstr "모두 보기"
 
 #: src/features/Feature/FeatureOnePage.tsx:60
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:150
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:146
 #. js-lingui-explicit-id
 msgid "View all features"
 msgstr "모든 기능 보기"
@@ -17934,7 +17949,7 @@ msgstr ""
 "실시간 피드백을 제공하여, 당신의 응답을 완벽하게 만들고 성공을 위해 필요한 자신감을 갖게 하는 데 도움을 줍니다. 오늘 연습을 시작해 "
 "보시는 건 어떨까요?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:274
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:216
 #. js-lingui-explicit-id
 msgid ""
 "Want to warm up before your call? Practice with AI first. That practice is "
@@ -18139,7 +18154,7 @@ msgstr "제가 가져야 할 말하기 수준은 어느 정도인가요?"
 msgid "What situation do you want to practice?"
 msgstr "어떤 상황을 연습하고 싶으신가요?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:213
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:155
 #. js-lingui-explicit-id
 msgid "What to expect"
 msgstr "기대할 점"
@@ -18182,7 +18197,7 @@ msgstr "AsNoTracking을 언제 사용하고 어떤 장단점이 있는가?"
 msgid "When not to use the"
 msgstr "사용하지 말아야 할 경우"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:87
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:83
 #. js-lingui-explicit-id
 msgid ""
 "When one is on the schedule. Open it to see the next English calls in your "
@@ -18416,7 +18431,7 @@ msgstr ""
 "네. Alias 게임은 단어를 소리 내어 설명할 수 있도록 마이크를 사용합니다. 첫 번째 라운드를 시작할 때, 즉 이 페이지를 열 때가 "
 "아니라, 브라우저가 권한을 요청합니다."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:75
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:71
 #. js-lingui-explicit-id
 msgid ""
 "Yes. The schedule is open. You need the $2 month, or an active Practice, "
@@ -18592,7 +18607,7 @@ msgid ""
 "Supported learning languages include "
 msgstr "당신은 FluencyPal에서 배우고 있는 언어로 말하기 연습을 합니다. 지원되는 학습 언어는"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:39
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:35
 #. js-lingui-explicit-id
 msgid "You talk together on Google Meet. There is no teacher and no set topic."
 msgstr "Google Meet에서 함께 대화합니다. 교사도 정해진 주제도 없습니다."
@@ -18650,7 +18665,7 @@ msgstr "당신의 경험"
 msgid "Your Language Level"
 msgstr "당신의 언어 수준"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:50
+#: src/features/Feature/GroupConversationsFeaturePage.tsx:46
 #. js-lingui-explicit-id
 msgid "Your pace"
 msgstr "당신의 속도"

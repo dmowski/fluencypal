@@ -7,6 +7,7 @@ import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { buttonStyle, maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { FeatureData } from './types';
 
 const ctaButtonSx = {
@@ -27,11 +28,6 @@ export const GroupConversationsFeaturePage = ({
   const i18n = getI18nInstance(lang);
   const appHref = `${getAppUrlStart(lang)}community-call`;
   const urlStart = getUrlStart(lang);
-  const exampleCalls = [
-    { weekday: 'TUE', day: '14', time: '18:00', detail: i18n._('English · 6 joined') },
-    { weekday: 'THU', day: '16', time: '19:00', detail: i18n._('English · 4 joined') },
-    { weekday: 'SAT', day: '18', time: '11:00', detail: i18n._('English · 3 joined') },
-  ];
   const expectations = [
     {
       icon: <Video size={22} />,
@@ -151,61 +147,7 @@ export const GroupConversationsFeaturePage = ({
               </Link>
             </Stack>
 
-            <Stack
-              data-testid="group-conversations-schedule"
-              sx={{
-                gap: '4px',
-                padding: '22px',
-                borderRadius: '20px',
-                border: '1px solid rgba(148, 145, 255, 0.22)',
-                backgroundColor: '#16181e',
-                boxShadow: '0 12px 45px #00000040',
-              }}
-            >
-              <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
-                {i18n._('Example schedule')}
-              </Typography>
-              <Typography variant="body2" sx={{ opacity: 0.65, paddingBottom: '8px' }}>
-                {i18n._('Open the schedule to see available calls in your local time zone.')}
-              </Typography>
-              {exampleCalls.map((call) => (
-                <Stack
-                  key={call.time}
-                  direction="row"
-                  sx={{
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: '12px 0',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: '12px',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Typography sx={{ fontSize: '11px', fontWeight: 700 }}>
-                      {call.weekday}
-                    </Typography>
-                    <Typography sx={{ fontSize: '18px', fontWeight: 800, lineHeight: 1 }}>
-                      {call.day}
-                    </Typography>
-                  </Stack>
-                  <Stack sx={{ minWidth: 0 }}>
-                    <Typography sx={{ fontWeight: 700 }}>{call.time}</Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                      {call.detail}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              ))}
-            </Stack>
+            <GroupConversationSchedule />
           </Stack>
 
           <Stack sx={{ gap: '18px' }}>
