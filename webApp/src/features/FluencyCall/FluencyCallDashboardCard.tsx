@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { setDoc } from 'firebase/firestore';
 import { useLingui } from '@lingui/react';
 import { useSearchParams } from 'next/navigation';
@@ -46,6 +46,14 @@ export const FluencyCallDashboardCard = () => {
   const access = useFluencyCallAccess(now);
   const searchParams = useSearchParams();
   const paymentState = searchParams.get('fluencyCall');
+  const practiceUntilCall = searchParams.get('communityCall') === 'ready';
+  const cardReady =
+    Boolean(auth.uid) && !loading && access.ready && !(calls.length === 0 && requestLoading);
+
+  useEffect(() => {
+    if (!practiceUntilCall || !cardReady) return;
+    document.getElementById('fluency-call')?.scrollIntoView({ block: 'start' });
+  }, [cardReady, practiceUntilCall]);
   const [callChatId, setCallChatId] = useUrlState('callChatId', '', false);
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [paywallAsked, setPaywallAsked] = useState(paymentState === 'buy');
@@ -202,6 +210,15 @@ export const FluencyCallDashboardCard = () => {
         languageCode={language}
         requestedAtLabel={requestedLabel}
         paidNotice={paymentState === 'paid'}
+        practiceNote={
+          practiceUntilCall
+            ? access.canJoin
+              ? i18n._('Practice with AI until the call.')
+              : i18n._(
+                  'Practice with AI until the call. You can confirm membership anytime. It is required to enter the call.',
+                )
+            : null
+        }
         accessUntilLabel={accessUntilLabel}
         timeZoneLabel={timeZoneCity(timeZone)}
         onLanguageChange={setPickedLanguage}

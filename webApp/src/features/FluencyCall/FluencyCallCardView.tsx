@@ -125,7 +125,7 @@ export const FluencyCallRowView = ({
           gap: '1px',
         }}
       >
-          <Typography
+        <Typography
           sx={{
             fontSize: '10px',
             fontWeight: 700,
@@ -245,6 +245,7 @@ export type FluencyCallCardViewProps = {
   languageCode: SupportedLanguage;
   requestedAtLabel: string | null;
   paidNotice: boolean;
+  practiceNote?: string | null;
   accessUntilLabel: string | null;
   timeZoneLabel: string;
   onLanguageChange: (language: SupportedLanguage) => void;
@@ -259,6 +260,7 @@ export const FluencyCallCardView = ({
   languageCode,
   requestedAtLabel,
   paidNotice,
+  practiceNote,
   accessUntilLabel,
   timeZoneLabel,
   onLanguageChange,
@@ -270,7 +272,15 @@ export const FluencyCallCardView = ({
   const hasRequest = Boolean(requestedAtLabel);
 
   return (
-    <Stack data-testid="fluency-call-card" sx={cardSx}>
+    <Stack id="fluency-call" data-testid="fluency-call-card" sx={cardSx}>
+      {practiceNote ? (
+        <Typography
+          data-testid="fluency-call-practice-until"
+          sx={{ color: '#7DDEAA', fontWeight: 700 }}
+        >
+          {practiceNote}
+        </Typography>
+      ) : null}
       <Stack
         direction="row"
         sx={{ alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px' }}
@@ -314,11 +324,16 @@ export const FluencyCallCardView = ({
       </Typography>
 
       {paidNotice ? (
-        <Typography data-testid="fluency-call-paid" sx={{ color: '#7DDEAA', fontWeight: 700 }}>
-          {canJoin
-            ? i18n._('Payment received. You can join the group conversations.')
-            : i18n._('Payment received. Access shows up in a moment.')}
-        </Typography>
+        <Stack sx={{ gap: '4px' }}>
+          <Typography data-testid="fluency-call-paid" sx={{ color: '#7DDEAA', fontWeight: 700 }}>
+            {canJoin
+              ? i18n._('Payment received. You can join the group conversations.')
+              : i18n._('Payment received. Access shows up in a moment.')}
+          </Typography>
+          <Typography sx={{ color: '#7DDEAA' }}>
+            {i18n._('Practice with AI until the call.')}
+          </Typography>
+        </Stack>
       ) : null}
 
       {accessUntilLabel ? (
