@@ -30,7 +30,8 @@ msgstr ""
 "aiuta. Se non ti piace il nostro servizio o qualcos'altro, fammelo sapere e "
 "ti restituirò i soldi senza fare domande.\""
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:416
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:295
+#: src/features/FluencyCall/FluencyCallCardView.tsx:431
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
 #. js-lingui-explicit-id
 msgid "$2 per month"
@@ -400,7 +401,7 @@ msgstr "Accesso Bloccato"
 msgid "Access period"
 msgstr "Periodo di accesso"
 
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:104
 #. js-lingui-explicit-id
 msgid "Access until {date}"
 msgstr "Accesso fino al {date}"
@@ -886,7 +887,7 @@ msgstr ""
 msgid "All time"
 msgstr "Tutto il tempo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:355
+#: src/features/FluencyCall/FluencyCallCardView.tsx:370
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Tutti gli orari sono in {zone}"
@@ -1807,7 +1808,7 @@ msgstr "Sfida"
 msgid "Change plan"
 msgstr "Cambia piano"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:404
+#: src/features/FluencyCall/FluencyCallCardView.tsx:419
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Cambia orario"
@@ -2440,6 +2441,7 @@ msgstr ""
 msgid "Choose Language Level"
 msgstr "Scegli Livello Linguistico"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:245
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
 #: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
@@ -2496,6 +2498,11 @@ msgstr "Scegli il tuo piano"
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "Interruttore Automàtico"
+
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:59
+#. js-lingui-explicit-id
+msgid "Clear"
+msgstr "Chiaro"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:29
 #. js-lingui-explicit-id
@@ -2930,6 +2937,9 @@ msgstr "Contesto (argomento, pubblico, obiettivo...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:275
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
@@ -6331,7 +6341,8 @@ msgstr "Ottimo!"
 msgid "Grocery Store"
 msgstr "Negozio di alimentari"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:295
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:293
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
@@ -6935,6 +6946,7 @@ msgstr ""
 "un medico e ho bisogno di spiegare la mia esperienza e rispondere a domande "
 "sul mio lavoro."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:197
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -7663,6 +7675,12 @@ msgstr ""
 "Partecipa a una chiamata con il nostro tutor AI per esercitarti su questa "
 "regola."
 
+#: src/app/[lang]/community-call/page.tsx:20
+#: src/app/community-call/page.tsx:9
+#. js-lingui-explicit-id
+msgid "Join a group conversation | FluencyPal"
+msgstr "Unisciti a una conversazione di gruppo | FluencyPal"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -7681,7 +7699,7 @@ msgstr ""
 "Unisciti a conversazioni di gruppo programmate per questo periodo a "
 "pagamento"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:313
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Unisciti alle conversazioni che si adattano alla tua settimana."
@@ -8359,6 +8377,15 @@ msgstr "Simulazione di Conversazione Medica"
 msgid "Medium"
 msgstr "Medio"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:336
+#. js-lingui-explicit-id
+msgid ""
+"Membership is required to enter the call. While you wait, practice talking "
+"with AI."
+msgstr ""
+"È necessaria l'iscrizione per entrare nella chiamata. Mentre aspetti, "
+"esercitati a parlare con l'IA."
+
 #: src/features/Landing/PlanLandingBlock.tsx:260
 #. js-lingui-explicit-id
 msgid "Mental Health Talk"
@@ -8650,6 +8677,7 @@ msgstr "Disattiva audio"
 msgid "My Books"
 msgstr "I Miei Libri"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:48
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:92
 #. js-lingui-explicit-id
 msgid "My Language is..."
@@ -8763,6 +8791,7 @@ msgstr "Discussione sulle notizie"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:216
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8881,7 +8910,7 @@ msgstr "Nessun capitolo disponibile"
 msgid "No charge will be made"
 msgstr "Nessun addebito verrà effettuato"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:377
+#: src/features/FluencyCall/FluencyCallCardView.tsx:392
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "Nessuna conversazione programmata ancora."
@@ -9043,6 +9072,7 @@ msgstr "Nessuna ragione fornita."
 msgid "No reminders"
 msgstr "Nessun promemoria"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:69
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:131
 #. js-lingui-explicit-id
 msgid "No results found"
@@ -9078,6 +9108,15 @@ msgstr "Nessuna traduzione disponibile"
 #. js-lingui-explicit-id
 msgid "No turn data available."
 msgstr "Nessun dato di svolta disponibile."
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:99
+#. js-lingui-explicit-id
+msgid ""
+"No upcoming {language} call right now. You can still continue. New calls "
+"show up on your dashboard."
+msgstr ""
+"Nessuna chiamata {language} in programma al momento. Puoi comunque "
+"continuare. Nuove chiamate appariranno sul tuo cruscotto."
 
 #: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
@@ -9225,6 +9264,7 @@ msgstr "Non Trovato"
 msgid "Not included"
 msgstr "Non incluso"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:319
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -9264,8 +9304,9 @@ msgid "Notifications"
 msgstr "Notifiche"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:88
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Adesso"
@@ -9360,6 +9401,16 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "One month of group conversations on Google Meet."
 msgstr "Un mese di conversazioni di gruppo su Google Meet."
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"One month of group conversations on Google Meet. It does not renew. You can "
+"confirm this anytime, and it is required to enter a call."
+msgstr ""
+"Un mese di conversazioni di gruppo su Google Meet. Non si rinnova. Puoi "
+"confermarlo in qualsiasi momento ed è necessario per entrare in una "
+"chiamata."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9540,6 +9591,7 @@ msgid "Order with obligation to pay {amount}"
 msgstr "Ordine con obbligo di pagamento {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:24
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
@@ -9760,12 +9812,12 @@ msgstr "Cronologia pagamenti"
 msgid "Payment option"
 msgstr "Opzione di pagamento"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:320
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. Access shows up in a moment."
 msgstr "Pagamento ricevuto. L'accesso sarà disponibile tra un momento."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:319
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Pagamento ricevuto. Puoi unirti alle conversazioni di gruppo."
@@ -9897,7 +9949,7 @@ msgstr "Seleziona un livello di difficoltà che corrisponde al tuo gruppo."
 msgid "Pick a level to start playing!"
 msgstr "Scegli un livello per iniziare a giocare!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:380
+#: src/features/FluencyCall/FluencyCallCardView.tsx:395
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Scegli un orario e ne organizzeremo uno."
@@ -10539,9 +10591,30 @@ msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Pratica il vocabolario descrivendo e indovinando parole in modo creativo"
 
 #: src/features/Essay/EssayText.tsx:427
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:350
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Esercitati con l'AI"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:328
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call"
+msgstr "Pratica con l'IA fino alla chiamata"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:216
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call."
+msgstr "Pratica con l'AI fino alla chiamata."
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:217
+#. js-lingui-explicit-id
+msgid ""
+"Practice with AI until the call. You can confirm membership anytime. It is "
+"required to enter the call."
+msgstr ""
+"Pratica con l'IA fino alla chiamata. Puoi confermare l'abbonamento in "
+"qualsiasi momento. È necessario per entrare nella chiamata."
 
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
@@ -10562,7 +10635,7 @@ msgstr "PRATICA, MIGLIORA, RIPETI"
 msgid "Practice, plus a block of advanced conversation and group conversations"
 msgstr "Pratica, più un blocco di conversazione avanzata e conversazioni di gruppo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:311
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Pratica il parlare con altri studenti."
@@ -10857,7 +10930,7 @@ msgstr "Pronuncia origine"
 msgid "Pronounce translations"
 msgstr "Pronuncia traduzioni"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:393
+#: src/features/FluencyCall/FluencyCallCardView.tsx:408
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11487,7 +11560,7 @@ msgstr "Segnala utente"
 msgid "Request failed. Please try again."
 msgstr "Richiesta fallita. Per favore riprova."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:367
+#: src/features/FluencyCall/FluencyCallCardView.tsx:382
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11844,6 +11917,16 @@ msgstr "Vedi il tipo di feedback backend che riceverai"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Vedi il tipo di feedback che riceverai"
+
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"See upcoming group calls, create an account, and practice with AI until the "
+"call."
+msgstr ""
+"Visualizza le prossime chiamate di gruppo, crea un account e pratica con "
+"l'IA fino alla chiamata."
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12432,6 +12515,7 @@ msgstr "Avvio Intelligente"
 msgid "Smoothed"
 msgstr "Affinato"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:42
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
 #: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
@@ -13201,6 +13285,7 @@ msgstr ""
 "prodotti"
 
 #: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:25
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
 #: src/features/Goal/Quiz/useQuiz.tsx:364
@@ -14509,6 +14594,7 @@ msgstr ""
 "Questo è un passo importante. La tua risposta è ciò che usiamo per creare "
 "il tuo piano personale."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:248
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
 #: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
@@ -14723,6 +14809,11 @@ msgstr "Tempo rimasto"
 msgid "Timed"
 msgstr "Temporizzato"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:93
+#. js-lingui-explicit-id
+msgid "Times are shown in {zone}. You join from your dashboard."
+msgstr "Le ore sono visualizzate in {zone}. Ti connetti dalla tua dashboard."
+
 #: src/features/Router/BlockedAccess.tsx:338
 #. js-lingui-explicit-id
 msgid ""
@@ -14782,8 +14873,9 @@ msgstr ""
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:86
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:94
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14814,8 +14906,9 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Compiti di Speaking per il TOEFL"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:87
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "Domani"
@@ -15193,7 +15286,19 @@ msgstr "Sblocca conversazioni AI illimitate e tutte le modalità di pratica"
 msgid "Unmute"
 msgstr "Riattiva audio"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:346
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:90
+#. js-lingui-explicit-id
+msgid "Upcoming calls"
+msgstr "Prossime chiamate"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
+#. js-lingui-explicit-id
+msgid "Upcoming calls are on your dashboard. Practice speaking until one starts."
+msgstr ""
+"Le prossime chiamate sono sul tuo cruscotto. Esercitati a parlare finché "
+"non ne inizia una."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:361
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Prossime conversazioni"
@@ -15639,7 +15744,7 @@ msgstr "Parleremo liberamente"
 msgid "We'll get back to you with a confirmation."
 msgstr "Ti risponderemo con una conferma."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:370
+#: src/features/FluencyCall/FluencyCallCardView.tsx:385
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Risponderemo presto."
@@ -15775,6 +15880,7 @@ msgstr "Qual è l'obiettivo principale di FluencyPal?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Che tipi di interviste per il backend posso praticare?"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:40
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
 #: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
@@ -16430,6 +16536,11 @@ msgstr ""
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Puoi acquistare l'accesso completo se desideri rimuovere quel limite"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:329
+#. js-lingui-explicit-id
+msgid "You can confirm membership anytime"
+msgstr "Puoi confermare l'iscrizione in qualsiasi momento"
+
 #: src/features/Auth/AuthWallBasic.tsx:298
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -17058,6 +17169,11 @@ msgstr "{count} ora"
 #. js-lingui-explicit-id
 msgid "{count} hours"
 msgstr "{count} ore"
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:62
+#. js-lingui-explicit-id
+msgid "{count} joined"
+msgstr "{count} iscritto"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:167
 #. js-lingui-explicit-id

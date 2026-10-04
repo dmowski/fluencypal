@@ -30,7 +30,8 @@ msgstr ""
 "Hvis du ikke liker tjenesten vår eller noe annet, gi meg bare beskjed, så "
 "vil jeg tilbakebetale pengene dine uten noen spørsmål.\""
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:416
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:295
+#: src/features/FluencyCall/FluencyCallCardView.tsx:431
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
 #. js-lingui-explicit-id
 msgid "$2 per month"
@@ -397,7 +398,7 @@ msgstr "Tilgang blokkert"
 msgid "Access period"
 msgstr "Tilgangsperiode"
 
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:104
 #. js-lingui-explicit-id
 msgid "Access until {date}"
 msgstr "Tilgang til {date}"
@@ -880,7 +881,7 @@ msgstr ""
 msgid "All time"
 msgstr "All tid"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:355
+#: src/features/FluencyCall/FluencyCallCardView.tsx:370
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Alle tider i {zone}"
@@ -1795,7 +1796,7 @@ msgstr "Utfordrende"
 msgid "Change plan"
 msgstr "Endre plan"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:404
+#: src/features/FluencyCall/FluencyCallCardView.tsx:419
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Endre tid"
@@ -2424,6 +2425,7 @@ msgstr "Velg isolasjonsnivåer, modellaggregater, og skriv effektive spørringer
 msgid "Choose Language Level"
 msgstr "Velg språknivå"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:245
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
 #: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
@@ -2480,6 +2482,11 @@ msgstr "Velg din plan"
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "Strømbryter"
+
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:59
+#. js-lingui-explicit-id
+msgid "Clear"
+msgstr "Klar"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:29
 #. js-lingui-explicit-id
@@ -2909,6 +2916,9 @@ msgstr "Kontekst (emne, publikum, mål...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:275
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
@@ -6260,7 +6270,8 @@ msgstr "Flott!"
 msgid "Grocery Store"
 msgstr "Matbutikk"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:295
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:293
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
@@ -6861,6 +6872,7 @@ msgstr ""
 "Jeg vil lære engelsk slik at jeg kan bestå et jobbintervju. Jeg er lege, og "
 "jeg må forklare min erfaring og svare på spørsmål om arbeidet mitt."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:197
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -7582,6 +7594,12 @@ msgstr "Bli med i en samtale"
 msgid "Join a call with our AI tutor to practice this rule."
 msgstr "Bli med i en samtale med vår AI-veileder for å øve på denne regelen."
 
+#: src/app/[lang]/community-call/page.tsx:20
+#: src/app/community-call/page.tsx:9
+#. js-lingui-explicit-id
+msgid "Join a group conversation | FluencyPal"
+msgstr "Bli med i en gruppekonversasjon | FluencyPal"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -7598,7 +7616,7 @@ msgstr "Bli med i rom for å diskutere spesifikke emner med andre medlemmer"
 msgid "Join scheduled group conversations for this paid period"
 msgstr "Bli med i planlagte gruppesamtaler for denne betalte perioden"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:313
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Bli med i samtalene som passer for uken din."
@@ -8266,6 +8284,15 @@ msgstr "Medisinsk samtale simulering"
 msgid "Medium"
 msgstr "Middels"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:336
+#. js-lingui-explicit-id
+msgid ""
+"Membership is required to enter the call. While you wait, practice talking "
+"with AI."
+msgstr ""
+"Medlemskap kreves for å delta i samtalen. Mens du venter, øv deg på å "
+"snakke med AI."
+
 #: src/features/Landing/PlanLandingBlock.tsx:260
 #. js-lingui-explicit-id
 msgid "Mental Health Talk"
@@ -8549,6 +8576,7 @@ msgstr "Demp"
 msgid "My Books"
 msgstr "Mine Bøker"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:48
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:92
 #. js-lingui-explicit-id
 msgid "My Language is..."
@@ -8662,6 +8690,7 @@ msgstr "Nyhetsdiskusjon"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:216
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8778,7 +8807,7 @@ msgstr "Ingen kapitler tilgjengelig"
 msgid "No charge will be made"
 msgstr "Ingen kostnad vil bli pålagt"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:377
+#: src/features/FluencyCall/FluencyCallCardView.tsx:392
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "Ingen samtale planlagt ennå."
@@ -8938,6 +8967,7 @@ msgstr "Ingen grunn oppgitt."
 msgid "No reminders"
 msgstr "Ingen påminnelser"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:69
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:131
 #. js-lingui-explicit-id
 msgid "No results found"
@@ -8973,6 +9003,15 @@ msgstr "Ingen oversettelse tilgjengelig"
 #. js-lingui-explicit-id
 msgid "No turn data available."
 msgstr "Ingen turdata tilgjengelig."
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:99
+#. js-lingui-explicit-id
+msgid ""
+"No upcoming {language} call right now. You can still continue. New calls "
+"show up on your dashboard."
+msgstr ""
+"Ingen kommende {language} samtale akkurat nå. Du kan fortsatt fortsette. "
+"Nye samtaler vises på dashbordet ditt."
 
 #: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
@@ -9118,6 +9157,7 @@ msgstr "Ikke funnet"
 msgid "Not included"
 msgstr "Ikke inkludert"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:319
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -9157,8 +9197,9 @@ msgid "Notifications"
 msgstr "Varsler"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:88
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Nå"
@@ -9251,6 +9292,15 @@ msgstr "Ett hundre og femti dager med læring. Vær stolt av hvor langt du har k
 #. js-lingui-explicit-id
 msgid "One month of group conversations on Google Meet."
 msgstr "En måned med gruppesamtaler på Google Meet."
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"One month of group conversations on Google Meet. It does not renew. You can "
+"confirm this anytime, and it is required to enter a call."
+msgstr ""
+"Én måned med gruppekonversasjoner på Google Meet. Det fornyes ikke. Du kan "
+"bekrefte dette når som helst, og det er nødvendig for å delta i en samtale."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9431,6 +9481,7 @@ msgid "Order with obligation to pay {amount}"
 msgstr "Bestilling med betalingsforpliktelse {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:24
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
@@ -9649,12 +9700,12 @@ msgstr "Betalingshistorikk"
 msgid "Payment option"
 msgstr "Betalingsalternativ"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:320
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. Access shows up in a moment."
 msgstr "Betaling mottatt. Tilgang vises om et øyeblikk."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:319
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Betaling mottatt. Du kan bli med i gruppekonversasjonene."
@@ -9784,7 +9835,7 @@ msgstr "Velg en vanskelighetsgrad som passer for din gruppe."
 msgid "Pick a level to start playing!"
 msgstr "Velg et nivå for å starte spillingen!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:380
+#: src/features/FluencyCall/FluencyCallCardView.tsx:395
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Velg et tidspunkt, så setter vi opp en."
@@ -10407,9 +10458,30 @@ msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Øv på ordforråd ved å kreativt beskrive og gjette ord"
 
 #: src/features/Essay/EssayText.tsx:427
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:350
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Øv deg med AI"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:328
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call"
+msgstr "Øv med AI til samtalen"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:216
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call."
+msgstr "Øv med AI til samtalen."
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:217
+#. js-lingui-explicit-id
+msgid ""
+"Practice with AI until the call. You can confirm membership anytime. It is "
+"required to enter the call."
+msgstr ""
+"Øv med AI til samtalen. Du kan bekrefte medlemskap når som helst. Det er "
+"nødvendig for å delta i samtalen."
 
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
@@ -10430,7 +10502,7 @@ msgstr "ØV, FORBEDRE, GJENTA"
 msgid "Practice, plus a block of advanced conversation and group conversations"
 msgstr "Øvelse, pluss en blokk med avansert samtale og gruppesamtaler"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:311
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Øv på å snakke med andre elever."
@@ -10725,7 +10797,7 @@ msgstr "Uttal kilde"
 msgid "Pronounce translations"
 msgstr "Uttale oversettelser"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:393
+#: src/features/FluencyCall/FluencyCallCardView.tsx:408
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11346,7 +11418,7 @@ msgstr "Rapporter bruker"
 msgid "Request failed. Please try again."
 msgstr "Forespørsel mislyktes. Vennligst prøv igjen."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:367
+#: src/features/FluencyCall/FluencyCallCardView.tsx:382
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11700,6 +11772,16 @@ msgstr "Se typen tilbakemelding fra backend du vil motta"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Se typen tilbakemelding du vil få"
+
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"See upcoming group calls, create an account, and practice with AI until the "
+"call."
+msgstr ""
+"Se kommende gruppesamtaler, opprett en konto, og øv med AI frem til "
+"samtalen."
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12294,6 +12376,7 @@ msgstr "Smart Start"
 msgid "Smoothed"
 msgstr "Glattet"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:42
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
 #: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
@@ -13063,6 +13146,7 @@ msgid "System design scenarios used by top product companies"
 msgstr "Systemdesign scenarier brukt av topp produkt selskaper"
 
 #: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:25
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
 #: src/features/Goal/Quiz/useQuiz.tsx:364
@@ -14358,6 +14442,7 @@ msgstr ""
 "Dette er et viktig skritt. Svaret ditt er det vi bruker for å lage din "
 "personlige plan."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:248
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
 #: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
@@ -14572,6 +14657,11 @@ msgstr "Tid igjen"
 msgid "Timed"
 msgstr "Tidfestet"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:93
+#. js-lingui-explicit-id
+msgid "Times are shown in {zone}. You join from your dashboard."
+msgstr "Tider vises i {zone}. Du deltar fra dashbordet ditt."
+
 #: src/features/Router/BlockedAccess.tsx:338
 #. js-lingui-explicit-id
 msgid ""
@@ -14629,8 +14719,9 @@ msgstr ""
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:86
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:94
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14661,8 +14752,9 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL Taleoppgaver"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:87
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "I morgen"
@@ -15033,7 +15125,17 @@ msgstr "Lås opp ubegrensede AI-samtaler og alle praksismodusene"
 msgid "Unmute"
 msgstr "Slå på lyden"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:346
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:90
+#. js-lingui-explicit-id
+msgid "Upcoming calls"
+msgstr "Kommende samtaler"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
+#. js-lingui-explicit-id
+msgid "Upcoming calls are on your dashboard. Practice speaking until one starts."
+msgstr "Kommende samtaler er på dashbordet ditt. Øv på å snakke til en starter."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:361
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Kommende samtaler"
@@ -15470,7 +15572,7 @@ msgstr "Vi vil tale fritt"
 msgid "We'll get back to you with a confirmation."
 msgstr "Vi vil komme tilbake til deg med en bekreftelse."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:370
+#: src/features/FluencyCall/FluencyCallCardView.tsx:385
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Vi svarer snart."
@@ -15606,6 +15708,7 @@ msgstr "Hva er hovedfokuset til FluencyPal?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Hvilke typer backend-intervjuer kan jeg øve på?"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:40
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
 #: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
@@ -16249,6 +16352,11 @@ msgstr "Du kan bygge prosjekter, men **vet ikke hva intervjuere egentlig vil se*
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Du kan kjøpe full tilgang hvis du vil fjerne den begrensningen"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:329
+#. js-lingui-explicit-id
+msgid "You can confirm membership anytime"
+msgstr "Du kan bekrefte medlemskap når som helst"
+
 #: src/features/Auth/AuthWallBasic.tsx:298
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -16873,6 +16981,11 @@ msgstr "{count} time"
 #. js-lingui-explicit-id
 msgid "{count} hours"
 msgstr "{count} timer"
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:62
+#. js-lingui-explicit-id
+msgid "{count} joined"
+msgstr "{count} ble med"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:167
 #. js-lingui-explicit-id

@@ -30,7 +30,8 @@ msgstr ""
 "không thích dịch vụ của chúng tôi hoặc điều gì đó khác, chỉ cần cho tôi "
 "biết và tôi sẽ hoàn lại tiền cho bạn mà không bất kỳ thắc mắc nào.\""
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:416
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:295
+#: src/features/FluencyCall/FluencyCallCardView.tsx:431
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:30
 #. js-lingui-explicit-id
 msgid "$2 per month"
@@ -405,7 +406,7 @@ msgstr "Quyền Truy Cập Bị Chặn"
 msgid "Access period"
 msgstr "Khoảng thời gian truy cập"
 
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:104
 #. js-lingui-explicit-id
 msgid "Access until {date}"
 msgstr "Quyền truy cập đến {date}"
@@ -890,7 +891,7 @@ msgstr ""
 msgid "All time"
 msgstr "Mọi lúc"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:355
+#: src/features/FluencyCall/FluencyCallCardView.tsx:370
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Tất cả thời gian trong {zone}"
@@ -1803,7 +1804,7 @@ msgstr "Thách thức"
 msgid "Change plan"
 msgstr "Thay đổi gói"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:404
+#: src/features/FluencyCall/FluencyCallCardView.tsx:419
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Thay đổi thời gian"
@@ -2433,6 +2434,7 @@ msgstr "Chọn mức độ cô lập, mô hình hóa các tổng hợp, và vi�
 msgid "Choose Language Level"
 msgstr "Chọn Trình Độ Ngôn Ngữ"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:245
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:111
 #: src/features/Goal/Quiz/QuizPage2.tsx:198
 #. js-lingui-explicit-id
@@ -2489,6 +2491,11 @@ msgstr "Chọn gói của bạn"
 #. js-lingui-explicit-id
 msgid "Circuit Breaker"
 msgstr "Bộ Ngắt Mạch"
+
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:59
+#. js-lingui-explicit-id
+msgid "Clear"
+msgstr "Rõ ràng"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:29
 #. js-lingui-explicit-id
@@ -2919,6 +2926,9 @@ msgstr "Ngữ cảnh (chủ đề, đối tượng, mục tiêu...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:315
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:275
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:37
@@ -6317,7 +6327,8 @@ msgstr "Tuyệt vời!"
 msgid "Grocery Store"
 msgstr "Cửa hàng tạp hóa"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:295
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:293
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
@@ -6916,6 +6927,7 @@ msgstr ""
 "là một bác sĩ, và tôi cần giải thích về kinh nghiệm của mình và trả lời các "
 "câu hỏi về công việc của mình."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:197
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -7630,6 +7642,12 @@ msgstr "Tham gia cuộc gọi"
 msgid "Join a call with our AI tutor to practice this rule."
 msgstr "Tham gia cuộc gọi với gia sư AI của chúng tôi để thực hành quy tắc này."
 
+#: src/app/[lang]/community-call/page.tsx:20
+#: src/app/community-call/page.tsx:9
+#. js-lingui-explicit-id
+msgid "Join a group conversation | FluencyPal"
+msgstr "Tham gia cuộc trò chuyện nhóm | FluencyPal"
+
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -7646,7 +7664,7 @@ msgstr "Tham gia các phòng để thảo luận về các chủ đề cụ th�
 msgid "Join scheduled group conversations for this paid period"
 msgstr "Tham gia các buổi trò chuyện nhóm đã lên lịch cho kỳ thanh toán này"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:313
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Tham gia vào các cuộc trò chuyện phù hợp với tuần của bạn."
@@ -8318,6 +8336,15 @@ msgstr "Mô phỏng Cuộc trò chuyện y khoa"
 msgid "Medium"
 msgstr "Trung bình"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:336
+#. js-lingui-explicit-id
+msgid ""
+"Membership is required to enter the call. While you wait, practice talking "
+"with AI."
+msgstr ""
+"Việc trở thành thành viên là bắt buộc để tham gia cuộc gọi. Trong khi bạn "
+"chờ đợi, hãy thực hành nói với AI."
+
 #: src/features/Landing/PlanLandingBlock.tsx:260
 #. js-lingui-explicit-id
 msgid "Mental Health Talk"
@@ -8606,6 +8633,7 @@ msgstr "Tắt tiếng"
 msgid "My Books"
 msgstr "My Books -> Sách Của Tôi"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:48
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:92
 #. js-lingui-explicit-id
 msgid "My Language is..."
@@ -8719,6 +8747,7 @@ msgstr "Thảo luận Tin tức"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:216
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8837,7 +8866,7 @@ msgstr "Không có chương nào có sẵn"
 msgid "No charge will be made"
 msgstr "Không có phí nào sẽ được tính"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:377
+#: src/features/FluencyCall/FluencyCallCardView.tsx:392
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "Chưa có cuộc trò chuyện nào được lên lịch."
@@ -8999,6 +9028,7 @@ msgstr "Không có lý do được cung cấp."
 msgid "No reminders"
 msgstr "Không có lời nhắc"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:69
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:131
 #. js-lingui-explicit-id
 msgid "No results found"
@@ -9034,6 +9064,15 @@ msgstr "Không có bản dịch nào có sẵn"
 #. js-lingui-explicit-id
 msgid "No turn data available."
 msgstr "Không có dữ liệu lượt đi nào có sẵn."
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:99
+#. js-lingui-explicit-id
+msgid ""
+"No upcoming {language} call right now. You can still continue. New calls "
+"show up on your dashboard."
+msgstr ""
+"Hiện tại không có cuộc gọi {language} sắp tới. Bạn vẫn có thể tiếp tục. Các "
+"cuộc gọi mới sẽ xuất hiện trên bảng điều khiển của bạn."
 
 #: src/features/Chat/MessageViewsIcon.tsx:33
 #. js-lingui-explicit-id
@@ -9181,6 +9220,7 @@ msgstr "Không tìm thấy"
 msgid "Not included"
 msgstr "Không bao gồm"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:319
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -9220,8 +9260,9 @@ msgid "Notifications"
 msgstr "Thông báo"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:88
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Bây giờ"
@@ -9316,6 +9357,16 @@ msgstr "Một trăm năm mươi ngày học tập. Hãy tự hào về chặng �
 #. js-lingui-explicit-id
 msgid "One month of group conversations on Google Meet."
 msgstr "Một tháng của các cuộc trò chuyện nhóm trên Google Meet."
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:298
+#. js-lingui-explicit-id
+msgid ""
+"One month of group conversations on Google Meet. It does not renew. You can "
+"confirm this anytime, and it is required to enter a call."
+msgstr ""
+"Một tháng hội thoại nhóm trên Google Meet. Nó sẽ không tự động gia hạn. Bạn "
+"có thể xác nhận điều này bất cứ lúc nào và điều đó là cần thiết để tham gia "
+"cuộc gọi."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9494,6 +9545,7 @@ msgid "Order with obligation to pay {amount}"
 msgstr "Đơn hàng có nghĩa vụ thanh toán {amount}"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:24
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:23
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:163
@@ -9713,12 +9765,12 @@ msgstr "Lịch sử thanh toán"
 msgid "Payment option"
 msgstr "Tùy chọn thanh toán"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:320
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. Access shows up in a moment."
 msgstr "Thanh toán đã được nhận. Quyền truy cập sẽ xuất hiện trong giây lát."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:319
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Thanh toán đã được nhận. Bạn có thể tham gia vào các cuộc trò chuyện nhóm."
@@ -9850,7 +9902,7 @@ msgstr "Chọn một mức độ khó phù hợp với nhóm của bạn."
 msgid "Pick a level to start playing!"
 msgstr "Chọn một cấp độ để bắt đầu chơi!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:380
+#: src/features/FluencyCall/FluencyCallCardView.tsx:395
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Chọn một thời gian và chúng tôi sẽ sắp xếp."
@@ -10491,9 +10543,30 @@ msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Luyện tập từ vựng bằng cách mô tả sáng tạo và đoán từ"
 
 #: src/features/Essay/EssayText.tsx:427
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:350
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Thực hành với AI"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:328
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call"
+msgstr "Luyện tập với AI cho đến khi cuộc gọi bắt đầu"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:216
+#. js-lingui-explicit-id
+msgid "Practice with AI until the call."
+msgstr "Thực hành với AI cho đến khi gọi."
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:217
+#. js-lingui-explicit-id
+msgid ""
+"Practice with AI until the call. You can confirm membership anytime. It is "
+"required to enter the call."
+msgstr ""
+"Luyện tập với AI cho đến khi cuộc gọi diễn ra. Bạn có thể xác nhận tư cách "
+"thành viên bất kỳ lúc nào. Điều này là cần thiết để tham gia cuộc gọi."
 
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:82
 #. js-lingui-explicit-id
@@ -10514,7 +10587,7 @@ msgstr "THỰC HÀNH, CẢI THIỆN, LẶP LẠI"
 msgid "Practice, plus a block of advanced conversation and group conversations"
 msgstr "Thực hành, cùng với một khối trò chuyện nâng cao và các cuộc trò chuyện nhóm"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:311
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Luyện nói cùng với những người học khác."
@@ -10813,7 +10886,7 @@ msgstr "Nguồn phát âm"
 msgid "Pronounce translations"
 msgstr "Phát âm bản dịch"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:393
+#: src/features/FluencyCall/FluencyCallCardView.tsx:408
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11440,7 +11513,7 @@ msgstr "Báo cáo người dùng"
 msgid "Request failed. Please try again."
 msgstr "Yêu cầu không thành công. Vui lòng thử lại."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:367
+#: src/features/FluencyCall/FluencyCallCardView.tsx:382
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11800,6 +11873,16 @@ msgstr "Xem loại phản hồi backend mà bạn sẽ nhận được"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Xem loại phản hồi bạn sẽ nhận được"
+
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"See upcoming group calls, create an account, and practice with AI until the "
+"call."
+msgstr ""
+"Xem các cuộc gọi nhóm sắp tới, tạo một tài khoản và thực hành với AI cho "
+"đến khi cuộc gọi diễn ra."
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12390,6 +12473,7 @@ msgstr "Khởi Đầu Thông Minh"
 msgid "Smoothed"
 msgstr "Đã làm mượt"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:42
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:100
 #: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
@@ -13159,6 +13243,7 @@ msgstr ""
 "đầu"
 
 #: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:25
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
 #: src/features/Goal/Quiz/useQuiz.tsx:364
@@ -14463,6 +14548,7 @@ msgstr ""
 "Đây là một bước quan trọng. Câu trả lời của bạn là cái mà chúng tôi sử dụng "
 "để tạo kế hoạch cá nhân của bạn."
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:248
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:112
 #: src/features/Goal/Quiz/QuizPage2.tsx:199
 #. js-lingui-explicit-id
@@ -14678,6 +14764,13 @@ msgstr "Thời gian còn lại"
 msgid "Timed"
 msgstr "Được hẹn giờ"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:93
+#. js-lingui-explicit-id
+msgid "Times are shown in {zone}. You join from your dashboard."
+msgstr ""
+"Thời gian được hiển thị theo {zone}. Bạn tham gia từ bảng điều khiển của "
+"mình."
+
 #: src/features/Router/BlockedAccess.tsx:338
 #. js-lingui-explicit-id
 msgid ""
@@ -14735,8 +14828,9 @@ msgstr ""
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:86
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:94
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14767,8 +14861,9 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Nhiệm vụ Nói trong TOEFL"
 
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
 #: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:87
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "Ngày mai"
@@ -15143,7 +15238,19 @@ msgstr "Mở khóa trò chuyện AI không giới hạn và tất cả các ch�
 msgid "Unmute"
 msgstr "Bật âm thanh"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:346
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:90
+#. js-lingui-explicit-id
+msgid "Upcoming calls"
+msgstr "Cuộc gọi sắp tới"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
+#. js-lingui-explicit-id
+msgid "Upcoming calls are on your dashboard. Practice speaking until one starts."
+msgstr ""
+"Các cuộc gọi sắp tới nằm trên bảng điều khiển của bạn. Luyện nói cho đến "
+"khi một cuộc bắt đầu."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:361
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Các cuộc trò chuyện sắp tới"
@@ -15598,7 +15705,7 @@ msgstr "Chúng ta sẽ nói chuyện một cách tự do"
 msgid "We'll get back to you with a confirmation."
 msgstr "Chúng tôi sẽ liên hệ lại với bạn để xác nhận."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:370
+#: src/features/FluencyCall/FluencyCallCardView.tsx:385
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Chúng tôi sẽ trả lời sớm."
@@ -15734,6 +15841,7 @@ msgstr "Trọng tâm chính của FluencyPal là gì?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Tôi có thể thực hành cho những loại phỏng vấn backend nào?"
 
+#: src/features/FluencyCall/CommunityCallNativeStep.tsx:40
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:99
 #: src/features/Goal/Quiz/QuizPage2.tsx:177
 #. js-lingui-explicit-id
@@ -16382,6 +16490,11 @@ msgstr ""
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Bạn có thể mua quyền truy cập đầy đủ nếu bạn muốn loại bỏ giới hạn đó"
 
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:329
+#. js-lingui-explicit-id
+msgid "You can confirm membership anytime"
+msgstr "Bạn có thể xác nhận thành viên bất cứ lúc nào"
+
 #: src/features/Auth/AuthWallBasic.tsx:298
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -17013,6 +17126,11 @@ msgstr "{count} giờ"
 #. js-lingui-explicit-id
 msgid "{count} hours"
 msgstr "{count} giờ"
+
+#: src/features/FluencyCall/CommunityCallScheduleStep.tsx:62
+#. js-lingui-explicit-id
+msgid "{count} joined"
+msgstr "{count} đã tham gia"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:167
 #. js-lingui-explicit-id
