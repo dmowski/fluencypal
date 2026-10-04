@@ -9,8 +9,8 @@ Applies to `webApp/src/features/FluencyCall/**`.
 | Topic                       | Decision                                                                                                                                                                                                    |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Who sees the dashboard card | Signed-in users. The card hides while calls, access, or the user's request are loading.                                                                                                                     |
-| Who can join                | Full access (active subscription or hours on the balance), a current top-5 game winner, or an active group-call month pass. Daily-task access does not count. Parental-consent blocks still hide community. |
-| Price                       | $2 for one month. A separate Stripe product, `fluency-call`. It does not renew, and it does not touch the practice-hours balance. Paying again extends from the later of now and the current end.           |
+| Who can join                | A current top-5 game winner, or an active community-call pass. Practice-only paid access does not include calls. Daily-task access does not count. Parental-consent blocks still hide community. |
+| Price                       | $2 for one month on its own (`fluency-call`), or included in the Conversation and Conversation 10 paid-access plans for the week, month, or year purchased. It does not renew, and it does not touch the practice-hours balance. Paying again extends from the later of now and the current end. |
 | Onboarding                  | The first "I'll join" opens "Before you join". Agree saves the time on the user document and joins. Close does not join. Later joins skip the modal.                                                         |
 | Request                     | One request per user, for people who can join. The API writes it and sends Telegram. Admins accept or reject.                                                                                               |
 | Schedule                    | Admins create each call, the Meet link, and the start time. Members do not write the call document.                                                                                                         |
@@ -45,7 +45,7 @@ API routes stay thin:
 | `POST /api/fluency-call/joiners`  | `DEV_EMAILS`                                    | Resolve joiner emails for the admin list              |
 | `POST /api/fluency-call/checkout` | Signed-in user, not blocked by parental consent | Stripe Checkout for one month. Product `fluency-call` |
 
-The Stripe webhook credits `users/{uid}/fluencyCall/account`. It does not call `addPaymentLog`.
+The Stripe webhook credits `users/{uid}/fluencyCall/account` and writes `users/{uid}/payments/{paymentId}` so Payment History and contract withdrawal can reverse the pass. It does not add practice hours.
 
 ## Firestore
 

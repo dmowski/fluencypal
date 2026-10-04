@@ -17,6 +17,11 @@ import {
 import { recordOpenAiLivePayment } from '@/features/OpenAiLive/backend/recordPayment';
 import { FLUENCY_CALL_STRIPE_PRODUCT } from '@/features/FluencyCall/pricing';
 import { recordFluencyCallPayment } from '@/features/FluencyCall/backend/recordPayment';
+import {
+  isPaidAccessPlanId,
+  paidAccessGrantForCheckout,
+  PaidAccessPlanId,
+} from '@/features/Price/paidAccessPlans';
 
 const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
 
@@ -159,6 +164,22 @@ export async function POST(request: Request) {
           currency: currency || 'usd',
           chargeId,
           receiptUrl,
+          notify: false,
+        });
+        await addPaymentLog({
+          amount: amountPaid,
+          userId,
+          paymentId,
+          currency: currency || 'usd',
+          amountOfHours: 0,
+          type: 'open-ai-live',
+          receiptUrl,
+          chargeId,
+          openAiLiveHours: hours,
+        });
+        sentSupportTelegramMessage({
+          message: `🤑 User ${userEmail} added ${hours} hour(s) of live conversation.`,
+          userId,
         });
       } else if (product === FLUENCY_CALL_STRIPE_PRODUCT) {
         await recordFluencyCallPayment({
@@ -168,6 +189,22 @@ export async function POST(request: Request) {
           currency: currency || 'usd',
           chargeId,
           receiptUrl,
+          notify: false,
+        });
+        await addPaymentLog({
+          amount: amountPaid,
+          userId,
+          paymentId,
+          currency: currency || 'usd',
+          amountOfHours: 0,
+          type: 'fluency-call',
+          receiptUrl,
+          chargeId,
+          fluencyCallMonths: 1,
+        });
+        sentSupportTelegramMessage({
+          message: `🤑 User ${userEmail} paid for a month of group conversations.`,
+          userId,
         });
       } else if (product === 'advanced-hours') {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0');
@@ -186,36 +223,32 @@ export async function POST(request: Request) {
       } else if (days && days !== '0') {
         const daysCount = parseInt(days, 10);
         if (daysCount <= 0) throw new Error('Amount of days is not set');
-
-        const tgMessage = `🤑 User ${userEmail} subscribed for ${daysCount} days.`;
-        sentSupportTelegramMessage({ message: tgMessage, userId });
-        await addPaymentLog({
-          amount: amountPaid,
-          userId: userId,
+        await grantPaidAccessCheckout({
+          userId,
+          userEmail,
           paymentId,
+          amountPaid,
           currency: currency || 'pln',
-          amountOfHours: 0,
-          type: 'subscription-full-v1',
-          receiptUrl,
           chargeId,
-          daysCount: daysCount,
+          receiptUrl,
+          monthsCount: 0,
+          daysCount,
+          plan: paidAccessPlanFromMetadata(session.metadata?.paidAccessPlan),
         });
       } else if (months && months !== '0') {
         const monthsCount = parseInt(months, 10);
         if (monthsCount <= 0) throw new Error('Amount of months is not set');
-
-        const tgMessage = `🤑🤑 User ${userEmail} subscribed for ${monthsCount} months.`;
-        sentSupportTelegramMessage({ message: tgMessage, userId });
-        await addPaymentLog({
-          amount: amountPaid,
-          userId: userId,
+        await grantPaidAccessCheckout({
+          userId,
+          userEmail,
           paymentId,
+          amountPaid,
           currency: currency || 'pln',
-          amountOfHours: 0,
-          type: 'subscription-full-v1',
-          receiptUrl,
           chargeId,
-          monthsCount: monthsCount,
+          receiptUrl,
+          monthsCount,
+          daysCount: 0,
+          plan: paidAccessPlanFromMetadata(session.metadata?.paidAccessPlan),
         });
       } else {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? '0') || 1;
@@ -262,3 +295,93 @@ export async function POST(request: Request) {
 
   return Response.json({ received: true, ...responseData });
 }
+
+const paidAccessPlanFromMetadata = (value: string | undefined): PaidAccessPlanId =>
+  isPaidAccessPlanId(value) ? value : 'practice';
+
+const grantPaidAccessCheckout = async ({
+  userId,
+  userEmail,
+  paymentId,
+  amountPaid,
+  currency,
+  chargeId,
+  receiptUrl,
+  monthsCount,
+  daysCount,
+  plan,
+}: {
+  userId: string;
+  userEmail: string | null | undefined;
+  paymentId: string;
+  amountPaid: number;
+  currency: string;
+  chargeId: string;
+  receiptUrl: string;
+  monthsCount: number;
+  daysCount: number;
+  plan: PaidAccessPlanId;
+}) => {
+  const grant = paidAccessGrantForCheckout({ plan, months: monthsCount, days: daysCount });
+  const lengthLabel = monthsCount
+    ? `${monthsCount} month${monthsCount > 1 ? 's' : ''}`
+    : `${daysCount} day${daysCount > 1 ? 's' : ''}`;
+
+  await addPaymentLog({
+    amount: amountPaid,
+    userId,
+    paymentId,
+    currency,
+    amountOfHours: 0,
+    type: 'subscription-full-v1',
+    receiptUrl,
+    chargeId,
+    monthsCount: monthsCount || undefined,
+    daysCount: daysCount || undefined,
+    openAiLiveHours: grant.advancedHours,
+    fluencyCallMonths: grant.communityMonths,
+    fluencyCallDays: grant.communityDays,
+    paidAccessPlan: plan,
+  });
+
+  if (grant.advancedHours > 0) {
+    await recordOpenAiLivePayment({
+      userId,
+      paymentId,
+      hours: grant.advancedHours,
+      amountPaid,
+      currency,
+      chargeId,
+      receiptUrl,
+      notify: false,
+    });
+  }
+
+  if (grant.communityMonths > 0 || grant.communityDays > 0) {
+    await recordFluencyCallPayment({
+      userId,
+      paymentId,
+      amountPaid,
+      currency,
+      chargeId,
+      receiptUrl,
+      months: grant.communityMonths,
+      days: grant.communityDays,
+      notify: false,
+    });
+  }
+
+  const extras = [
+    grant.advancedHours ? `${grant.advancedHours}h advanced conversation` : null,
+    grant.communityMonths || grant.communityDays ? 'community calls' : null,
+  ]
+    .filter(Boolean)
+    .join(', ');
+
+  sentSupportTelegramMessage({
+    message: `🤑 User ${userEmail} bought paid access (${plan}) for ${lengthLabel}${
+      extras ? ` + ${extras}` : ''
+    }.`,
+    userId,
+  });
+};

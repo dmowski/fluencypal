@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        title: `FluencyPal Full Access`,
+        title: `FluencyPal Paid access`,
         description: `${monthCount} month${monthCount > 1 ? 's' : ''} of premium features`,
         payload, // echoed back in successful_payment
         provider_token: '', // Stars => empty

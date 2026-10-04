@@ -21,6 +21,8 @@ const WITHDRAWABLE_TYPES = new Set<PaymentLog['type']>([
   'user',
   'subscription-full-v1',
   'advanced-hours',
+  'open-ai-live',
+  'fluency-call',
 ]);
 
 export async function POST(request: NextRequest) {

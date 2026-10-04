@@ -1,9 +1,11 @@
 import {
   extendFluencyCallAccess,
+  extendFluencyCallAccessFor,
   FLUENCY_CALL_PRICE_USD,
   FLUENCY_CALL_STRIPE_PRODUCT,
   isFluencyCallCheckout,
   isFluencyCallPassActive,
+  shortenFluencyCallAccess,
 } from './pricing';
 
 describe('fluency call month pass', () => {
@@ -32,6 +34,14 @@ describe('fluency call month pass', () => {
   it('extends a pass that is still running', () => {
     expect(extendFluencyCallAccess('2026-11-01T00:00:00.000Z', now)).toBe(
       '2026-12-01T00:00:00.000Z',
+    );
+  });
+
+  it('extends a week or a year and can take that time back', () => {
+    expect(extendFluencyCallAccessFor(null, now, { days: 7 })).toBe('2026-10-10T12:00:00.000Z');
+    expect(extendFluencyCallAccessFor(null, now, { months: 12 })).toBe('2027-10-03T12:00:00.000Z');
+    expect(shortenFluencyCallAccess('2026-10-10T12:00:00.000Z', { days: 7 })).toBe(
+      '2026-10-03T12:00:00.000Z',
     );
   });
 });

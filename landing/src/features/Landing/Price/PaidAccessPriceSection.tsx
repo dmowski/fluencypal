@@ -99,18 +99,18 @@ export const PaidAccessPriceSection = ({ quizLink }: { quizLink: string }) => {
             },
           ];
           const listItems = [...practiceItems];
-          if (hours > 0) {
-            listItems.push({
-              title: i18n._('Advanced conversation ({hours})', { hours: hourLabel(hours, i18n) }),
-              tooltip: i18n._('Hours added to your advanced conversation balance'),
-              icon: Sparkles,
-            });
-          }
           if (plan.includesCommunity) {
             listItems.push({
               title: i18n._('Community calls'),
               tooltip: i18n._('Join scheduled community calls for this paid period'),
               icon: Phone,
+            });
+          }
+          if (hours > 0) {
+            listItems.push({
+              title: i18n._('Advanced conversation ({hours})', { hours: hourLabel(hours, i18n) }),
+              tooltip: i18n._('Hours added to your advanced conversation balance'),
+              icon: Sparkles,
             });
           }
 

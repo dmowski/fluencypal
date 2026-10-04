@@ -17,7 +17,7 @@ export const PAID_ACCESS_PLANS: Record<PaidAccessPlanId, PaidAccessPlan> = {
     id: 'practice',
     pricesUsd: { week: 3, month: 6, year: 60 },
     advancedHours: { week: 0, month: 0, year: 0 },
-    includesCommunity: false,
+    includesCommunity: true,
   },
   conversation: {
     id: 'conversation',

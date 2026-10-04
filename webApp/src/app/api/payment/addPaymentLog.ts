@@ -16,6 +16,10 @@ interface AddPaymentLogParams {
   daysCount?: number;
   hoursCount?: number;
   minutesCount?: number;
+  openAiLiveHours?: number;
+  fluencyCallMonths?: number;
+  fluencyCallDays?: number;
+  paidAccessPlan?: string;
 }
 export const addPaymentLog = async ({
   amount,
@@ -30,6 +34,10 @@ export const addPaymentLog = async ({
   daysCount,
   hoursCount,
   minutesCount,
+  openAiLiveHours,
+  fluencyCallMonths,
+  fluencyCallDays,
+  paidAccessPlan,
 }: AddPaymentLogParams) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
@@ -42,6 +50,10 @@ export const addPaymentLog = async ({
     amountOfDays: daysCount || 0,
     amountOfMonth: monthsCount || 0,
     chargeId: chargeId || '',
+    ...(openAiLiveHours ? { openAiLiveHours } : {}),
+    ...(fluencyCallMonths ? { fluencyCallMonths } : {}),
+    ...(fluencyCallDays ? { fluencyCallDays } : {}),
+    ...(paidAccessPlan ? { paidAccessPlan } : {}),
   };
 
   const db = getDB();
@@ -65,15 +77,18 @@ export const addPaymentLog = async ({
     .doc(paymentLog.id)
     .set(paymentLog);
 
-  await addToTotalBalance({
-    userId,
-    amountToAddHours: paymentLog.amountOfHours,
-    monthsCount,
-    daysCount,
-    hoursCount,
-    minutesCount,
-    isAdvanced: type === 'advanced-hours',
-  });
+  const tracksSeparateLedger = type === 'open-ai-live' || type === 'fluency-call';
+  if (!tracksSeparateLedger) {
+    await addToTotalBalance({
+      userId,
+      amountToAddHours: paymentLog.amountOfHours,
+      monthsCount,
+      daysCount,
+      hoursCount,
+      minutesCount,
+      isAdvanced: type === 'advanced-hours',
+    });
+  }
 
   try {
     await validatePaidForUser(userId);
