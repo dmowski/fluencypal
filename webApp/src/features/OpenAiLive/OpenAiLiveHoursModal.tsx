@@ -7,6 +7,7 @@ import { ArrowRight, Info } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { ModalHeader } from '@/features/uiKit/Modal/ModalHeader';
 import { ConfirmPaymentForm } from '@/features/Usage/HoursPaymentModal/ConfirmPaymentForm';
+import { ChoiceRadio } from './ChoiceRadio';
 import {
   OPEN_AI_LIVE_HOUR_PACKS,
   OpenAiLiveHourPack,
@@ -22,21 +23,6 @@ const muted = '#9aabbc';
 const meta = '#8b9bab';
 const accent = '#53bef5';
 const buttonBlue = '#36afed';
-
-const PackRadio = ({ selected }: { selected: boolean }) => (
-  <Box
-    aria-hidden
-    sx={{
-      width: 16,
-      height: 16,
-      borderRadius: '50%',
-      boxSizing: 'border-box',
-      flexShrink: 0,
-      border: selected ? 'none' : '2px solid #8a8a8a',
-      backgroundColor: selected ? '#46b4ee' : 'transparent',
-    }}
-  />
-);
 
 export const OpenAiLiveHoursModal = ({
   currency,
@@ -147,7 +133,7 @@ export const OpenAiLiveHoursModal = ({
                       >
                         {label}
                       </Typography>
-                      <PackRadio selected={selected} />
+                      <ChoiceRadio selected={selected} />
                     </Box>
                     <Typography
                       component="span"

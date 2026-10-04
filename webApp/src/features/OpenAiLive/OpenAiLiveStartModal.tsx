@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react';
 import { ArrowRight, ChevronDown, ChevronUp, Pause, Play } from 'lucide-react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { ModalHeader } from '@/features/uiKit/Modal/ModalHeader';
+import { ChoiceRadio } from './ChoiceRadio';
 import { OpenAiLiveMode } from './types';
 import {
   OPEN_AI_LIVE_VOICES,
@@ -35,22 +36,6 @@ const voiceDetail = (voiceId: OpenAiLiveVoiceId, i18n: { _: (text: string) => st
   if (voiceId === 'bossa' || voiceId === 'tempo') return i18n._('Brazilian Portuguese');
   return i18n._('Filipino English');
 };
-
-const ChoiceRadio = ({ selected }: { selected: boolean }) => (
-  <Box
-    aria-hidden
-    sx={{
-      width: 16,
-      height: 16,
-      marginTop: '2px',
-      borderRadius: '50%',
-      boxSizing: 'border-box',
-      flexShrink: 0,
-      border: selected ? 'none' : '2px solid #8a8a8a',
-      backgroundColor: selected ? '#46b4ee' : 'transparent',
-    }}
-  />
-);
 
 const StickyChoiceBar = ({
   label,
