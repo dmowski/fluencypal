@@ -170,6 +170,19 @@ function zonedPart(
   return parts.find((part) => part.type === type)?.value ?? '';
 }
 
+/** Short month for the 52px date badge. Vietnamese "Tháng 10" wraps there, so use "T10". */
+function badgeMonth(date: Date, locale: string, timeZone: string): string {
+  if (locale.toLowerCase().startsWith('vi')) {
+    const month = Number(zonedPart(date, 'month', 'en-US', timeZone));
+    return `T${month}`;
+  }
+
+  return new Intl.DateTimeFormat(locale, { timeZone, month: 'short' })
+    .format(date)
+    .replace(/\.$/u, '')
+    .toUpperCase();
+}
+
 function zonedDateKey(date: Date, timeZone: string): string {
   const year = zonedPart(date, 'year', 'en-US', timeZone);
   const month = zonedPart(date, 'month', 'en-US', timeZone);
@@ -195,13 +208,7 @@ export function formatCallLabel(
   if (Number.isNaN(date.getTime())) return null;
 
   const safeLocale = locale || 'en';
-  const monthShort = new Intl.DateTimeFormat(safeLocale, {
-    timeZone,
-    month: 'short',
-  })
-    .format(date)
-    .replace(/\.$/u, '')
-    .toUpperCase();
+  const monthShort = badgeMonth(date, safeLocale, timeZone);
   const dayNumeric = String(Number(zonedPart(date, 'day', 'en-US', timeZone)));
   const time = `${zonedPart(date, 'hour', 'en-GB', timeZone)}:${zonedPart(date, 'minute', 'en-GB', timeZone)}`;
   const callKey = zonedDateKey(date, timeZone);

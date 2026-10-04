@@ -134,6 +134,13 @@ describe('call labels in a timezone', () => {
     expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'fr', warsaw)?.month).toBe('OCT');
   });
 
+  it('uses a one-line month token for Vietnamese', () => {
+    const now = new Date('2026-10-03T16:00:00.000Z');
+    expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'vi', warsaw)?.month).toBe('T10');
+    expect(formatCallLabel('2026-10-04T17:00:00.000Z', now, 'vi-VN', warsaw)?.month).toBe('T10');
+    expect(formatCallLabel('2026-01-15T12:00:00.000Z', now, 'vi', warsaw)?.month).toBe('T1');
+  });
+
   it('labels a started call as now', () => {
     const now = new Date('2026-10-04T17:30:00.000Z');
     const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);

@@ -113,6 +113,7 @@ export const FluencyCallRowView = ({
       }}
     >
       <Stack
+        data-testid={`fluency-call-date-${callId}`}
         sx={{
           width: 52,
           height: 52,
@@ -124,13 +125,15 @@ export const FluencyCallRowView = ({
           gap: '1px',
         }}
       >
-        <Typography
+          <Typography
           sx={{
             fontSize: '10px',
             fontWeight: 700,
             letterSpacing: '0.08em',
             opacity: 0.6,
             lineHeight: 1,
+            whiteSpace: 'nowrap',
+            maxWidth: '100%',
           }}
         >
           {month}

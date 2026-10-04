@@ -11,6 +11,7 @@ import {
   FluencyCallRowView,
   FluencyCallRowViewProps,
 } from './FluencyCallCardView';
+import { formatCallLabel } from './callTime';
 import { FluencyCallConductModal } from './FluencyCallConductModal';
 
 const row = (
@@ -92,6 +93,34 @@ test('upcoming calls list the week in Warsaw', async () => {
   await renderCard();
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-calls');
+});
+
+test('a Vietnamese month stays on one line inside the date badge', async () => {
+  const label = formatCallLabel(
+    '2026-10-06T16:00:00.000Z',
+    new Date('2026-10-03T16:00:00.000Z'),
+    'vi',
+    'Europe/Warsaw',
+  );
+  await renderCard({}, [
+    row({
+      callId: 'vi',
+      month: label?.month ?? '',
+      day: label?.day ?? '',
+      title: 'Thứ Ba · 18:00',
+      joinCount: 1,
+    }),
+  ]);
+
+  const badge = await box('fluency-call-date-vi');
+  const month = (await page.getByText('T10').element()).getBoundingClientRect();
+  const day = (await page.getByText('6', { exact: true }).element()).getBoundingClientRect();
+
+  expect(month.width).toBeLessThanOrEqual(badge.width);
+  expect(month.height).toBeLessThan(16);
+  expect(month.top).toBeGreaterThanOrEqual(badge.top);
+  expect(month.bottom).toBeLessThanOrEqual(day.top);
+  expect(day.bottom).toBeLessThanOrEqual(badge.bottom + 1);
 });
 
 test('a narrow card stacks the join actions under the call', async () => {
