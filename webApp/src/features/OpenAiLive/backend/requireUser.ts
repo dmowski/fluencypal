@@ -1,7 +1,6 @@
 import { isIdentifiedAuthUser } from '@/features/Auth/identifiedAuth';
 import { jsonIfAuthTokenError } from '@/app/api/config/authTokenError';
 import { validateAuthToken } from '@/app/api/config/firebase';
-import { getUserBalance } from '@/app/api/payment/getUserBalance';
 
 export class OpenAiLiveForbiddenError extends Error {
   constructor() {
@@ -20,10 +19,6 @@ export class OpenAiLiveNoBalanceError extends Error {
 export const requireOpenAiLiveUser = async (request: Request) => {
   const user = await validateAuthToken(request);
   if (!user.uid || !isIdentifiedAuthUser(user)) {
-    throw new OpenAiLiveForbiddenError();
-  }
-  const balance = await getUserBalance(user.uid);
-  if (!balance.isFullAccess) {
     throw new OpenAiLiveForbiddenError();
   }
   return user;

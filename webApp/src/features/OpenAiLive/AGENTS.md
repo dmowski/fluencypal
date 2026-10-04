@@ -8,15 +8,15 @@ Applies to `webApp/src/features/OpenAiLive/**`.
 
 | Topic | Decision |
 | --- | --- |
-| Who sees the card | Full access (active subscription or hours on the practice balance) or a current top-5 game winner. Daily-task access does not count. |
+| Who sees the card | Everyone on the dashboard. |
 | Balance | Separate ledger in USD micros. Credit it with `recordOpenAiLivePayment`, never by adding practice hours in `addPaymentLog`. A payment-log row still records the purchase so history and refunds can debit the live balance. |
 | Price | $0.10 per minute, $6 per hour. Packs are 1, 3, and 10 hours. API cost and margin stay in `pricing.ts`. |
-| Welcome | $1 once, the first time an eligible user loads the card. |
+| Welcome | $1 once, the first time a signed-in user loads the card. Anonymous sessions do not get it. |
 | Start | Blocked below $0.25. That covers OpenAI's connection charge. |
 | Empty balance | Info modal first (`OpenAiLiveBalanceEndedModal`). Buy more hours opens `OpenAiLiveHoursModal`. Stripe runs only after the payment form is confirmed. |
 | Accent | The teacher says it cannot analyze an accent. It can only check whether the speech is correct. Do not send accent requests to the backend. |
 | Transcripts | Saved with `useChatHistory` as mode `open-ai-live`. The admin panel reads those conversation docs. |
-| Preview | `/live-preview` uses the same access check and must not open a real GPT-Live session. |
+| Preview | `/live-preview` is open to everyone and must not open a real GPT-Live session. |
 | Copy | New strings use `i18n._('English')`. Do not run a full locale extract for this feature. |
 
 ## Architecture
@@ -35,7 +35,7 @@ OpenAiLive/
 └── backend/                       # session, billing, checkout
 ```
 
-API routes under `webApp/src/app/api/openAiLive/*` stay thin. `requireOpenAiLiveUser` checks the same full-access rule as the card.
+API routes under `webApp/src/app/api/openAiLive/*` stay thin. `requireOpenAiLiveUser` requires a signed-in account. Anonymous sessions are rejected.
 
 | Route | What |
 | --- | --- |
@@ -78,7 +78,7 @@ Official GPT-Live voices only, in `voices.ts`. Samples are `webApp/public/audio/
 
 ## UI entry
 
-- Dashboard: `OpenAiLiveDashboardCard` when `useCanUseOpenAiLive` is true.
+- Dashboard: `OpenAiLiveDashboardCard` for every user.
 - Preview: `webApp/src/app/live-preview/page.tsx`.
 
 ## Testing

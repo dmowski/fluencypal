@@ -25,7 +25,7 @@ export const useOpenAiLiveAccount = () => {
   }, [liveAccount?.balanceUsdMicros]);
 
   useEffect(() => {
-    if (!auth.uid || loadingDoc || liveAccount?.welcomeGrantedAt) return;
+    if (!auth.uid || auth.isAnonymous || loadingDoc || liveAccount?.welcomeGrantedAt) return;
     if (welcomeStarted.current) return;
     welcomeStarted.current = true;
     void (async () => {
@@ -40,7 +40,7 @@ export const useOpenAiLiveAccount = () => {
         );
       }
     })();
-  }, [auth.uid, liveAccount?.welcomeGrantedAt, loadingDoc]);
+  }, [auth.uid, auth.isAnonymous, liveAccount?.welcomeGrantedAt, loadingDoc]);
 
   return {
     balanceUsdMicros,
