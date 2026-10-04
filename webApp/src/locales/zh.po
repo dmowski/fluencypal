@@ -1628,11 +1628,6 @@ msgstr "C# 后端面试准备测试"
 msgid "Caching Strategies"
 msgstr "缓存策略"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "呼叫聊天"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2539,24 +2534,6 @@ msgstr "社区"
 msgid "Community access"
 msgstr "社区访问"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "社区电话"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "社区通话，{count}天"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "社区电话，{count} 个月"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -2956,6 +2933,11 @@ msgstr "对话"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "会话 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "对话聊天"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6013,6 +5995,10 @@ msgstr "杂货店"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "小组对话"
@@ -6932,11 +6918,6 @@ msgstr "印度尼西亚语学习计划"
 msgid "Info"
 msgstr "信息"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "发起通话"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7236,8 +7217,8 @@ msgstr "加入房间，与其他成员讨论特定话题"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "加入本付费期间的预定社区通话"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "加入本付费期间的预定小组对话"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8382,11 +8363,6 @@ msgstr ""
 msgid "No automatic payment"
 msgstr "没有自动付款"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "尚未安排通话。"
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8396,6 +8372,11 @@ msgstr "没有章节可用"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "不会收取任何费用"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "尚未安排会话。"
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -8828,9 +8809,9 @@ msgstr "一百五十天的学习。为你所取得的成就感到自豪。"
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
-msgstr "一个月的 Google Meet 小组通话。完全访问和一个顶级 5 的游戏胜利已包含在内。"
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
+msgstr "在 Google Meet 上进行一个月的团体对话。已包含付费访问和前五游戏获胜。"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9231,8 +9212,8 @@ msgstr "付款已收到。访问权限将于稍后显示。"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "已收到付款。您可以加入通话。"
+msgid "Payment received. You can join the group conversations."
+msgstr "已收到付款。您可以加入小组会话。"
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -9690,15 +9671,15 @@ msgstr "练习与进步"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"练习（每月 {practicePrice}）包括无限制的 Just Talk、个人计划、考试、角色扮演、每日课程和社区通话。会话（每月 "
-"{conversationPrice}）增加了 {conversationHours} 的高级会话。会话 10（每月 "
-"{conversation10Price}）增加了 {conversation10Hours} 的高级会话。该页面提供周和年选项。"
+"练习（每月 {practicePrice}）包括不限量的自由对话、个性化计划、考试、角色扮演、每日课程和小组对话。对话（每月 "
+"{conversationPrice}）增加了 {conversationHours} 小时的高级对话。对话10（每月 "
+"{conversation10Price}）增加了 {conversation10Hours} 小时的高级对话。周和年的选项在此页面上可见。"
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -9966,8 +9947,8 @@ msgstr "练习、改进、重复"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "练习，加上高级对话和社区通话模块"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "练习，加上一组高级对话和小组对话"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10258,9 +10239,10 @@ msgid "Pronounce translations"
 msgstr "发音翻译"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "建议通话"
+msgid "Propose a conversation"
+msgstr "提出一个对话"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -12552,8 +12534,8 @@ msgstr "参加面试准备测试"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "谈谈您想在电话中提出的内容。"
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "在对话中谈论您想要提出的内容。"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -13364,8 +13346,8 @@ msgstr "关键：小的帖子是有效的。一句话就足够了。"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "更大的高级对话模块，包括社区通话"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "更大的高级对话模块，包含小组对话"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14357,8 +14339,8 @@ msgstr "解除静音"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "即将进行的通话"
+msgid "Upcoming conversations"
+msgstr "即将到来的对话"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -14747,8 +14729,8 @@ msgstr "我们说英语，即使这些词来得很慢。"
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
-msgstr "我们保持善良。侮辱、调情和销售行为不允许在通话中出现。"
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
+msgstr "我们保持友善。侮辱、调情和交易不参与对话。"
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -16045,6 +16027,11 @@ msgstr "您已经超过四十天。继续保持冷静、稳定的练习。"
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "您仍在攀登。通过今天的任务迈出下一步。"
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} 天的小组对话"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -16076,6 +16063,11 @@ msgstr "{count} 分钟"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} 分钟"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} 个月的小组对话"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

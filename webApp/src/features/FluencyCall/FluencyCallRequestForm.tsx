@@ -98,7 +98,7 @@ export const FluencyCallRequestForm = ({
     >
       <Stack sx={{ gap: '4px', paddingRight: '28px' }}>
         <Typography variant="h4" sx={{ fontWeight: 800 }}>
-          {i18n._('Initiate a call')}
+          {i18n._('Propose a conversation')}
         </Typography>
         <Typography sx={{ opacity: 0.8 }}>
           {i18n._("Set a time and send a request. We'll get back to you with a confirmation.")}

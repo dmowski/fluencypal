@@ -28,7 +28,7 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
     'trial-days': i18n._(`Trial days`),
     'advanced-hours': i18n._(`Advanced AI hours`),
     'open-ai-live': i18n._(`Advanced conversation`),
-    'fluency-call': i18n._(`Community calls`),
+    'fluency-call': i18n._(`Group conversations`),
   };
 
   const paidLogs = useMemo(() => {
@@ -91,12 +91,12 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           )}
           {!!log.fluencyCallMonths && (
             <Typography variant="body2">
-              {i18n._('Community calls, {count} months', { count: log.fluencyCallMonths })}
+              {i18n._('{count} months of group conversations', { count: log.fluencyCallMonths })}
             </Typography>
           )}
           {!!log.fluencyCallDays && (
             <Typography variant="body2">
-              {i18n._('Community calls, {count} days', { count: log.fluencyCallDays })}
+              {i18n._('{count} days of group conversations', { count: log.fluencyCallDays })}
             </Typography>
           )}
           <Typography variant="caption" sx={{ opacity: 0.7 }}>

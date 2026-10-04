@@ -1692,11 +1692,6 @@ msgstr "Bài Kiểm Tra Sẵn Sàng Phỏng Vấn Backend C#"
 msgid "Caching Strategies"
 msgstr "Chiến Lược Lưu Bộ Nhớ Đệm"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "Gọi trò chuyện"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2627,24 +2622,6 @@ msgstr "Cộng đồng"
 msgid "Community access"
 msgstr "Quyền truy cập cộng đồng"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "Cuộc gọi cộng đồng"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "Cuộc gọi cộng đồng, {count} ngày"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "Cuộc gọi cộng đồng, {count} tháng"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -3055,6 +3032,11 @@ msgstr "hội thoại"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "Cuộc hội thoại 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "Cuộc trò chuyện"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6350,6 +6332,10 @@ msgstr "Cửa hàng tạp hóa"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Các cuộc trò chuyện nhóm"
@@ -7370,11 +7356,6 @@ msgstr "Kế Hoạch Học Tiếng Indonesia"
 msgid "Info"
 msgstr "Thông tin"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "Khởi động cuộc gọi"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7680,8 +7661,8 @@ msgstr "Tham gia các phòng để thảo luận về các chủ đề cụ th�
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "Tham gia các cuộc gọi cộng đồng theo lịch trình cho giai đoạn trả phí này"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "Tham gia các buổi trò chuyện nhóm đã lên lịch cho kỳ thanh toán này"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8862,11 +8843,6 @@ msgstr "Không tự động gia hạn. Bạn giữ quyền kiểm soát"
 msgid "No automatic payment"
 msgstr "Không thanh toán tự động"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "Không có cuộc gọi nào được lên lịch."
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8876,6 +8852,11 @@ msgstr "Không có chương nào có sẵn"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Không có phí nào sẽ được tính"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "Chưa có cuộc trò chuyện nào được lên lịch."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -9356,11 +9337,11 @@ msgstr "Một trăm năm mươi ngày học tập. Hãy tự hào về chặng �
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
 msgstr ""
-"Một tháng gọi nhóm trên Google Meet. Đã bao gồm quyền truy cập đầy đủ và "
-"chiến thắng top-5 trong trò chơi."
+"Một tháng trò chuyện nhóm trên Google Meet. Quyền truy cập trả phí và một "
+"chiến thắng trong top-5 của trò chơi đã bao gồm."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9776,8 +9757,8 @@ msgstr "Thanh toán đã được nhận. Quyền truy cập sẽ xuất hiện 
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "Đã nhận thanh toán. Bạn có thể tham gia các cuộc gọi."
+msgid "Payment received. You can join the group conversations."
+msgstr "Thanh toán đã được nhận. Bạn có thể tham gia vào các cuộc trò chuyện nhóm."
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -10251,18 +10232,18 @@ msgstr "Thực hành & Tiến độ"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Practice ({practicePrice} một tháng) bao gồm Just Talk không giới hạn, kế "
-"hoạch cá nhân, bài kiểm tra, diễn vai, bài học hằng ngày và các cuộc gọi "
-"cộng đồng. Conversation ({conversationPrice} một tháng) bổ sung "
-"{conversationHours} cuộc đàm thoại nâng cao. Conversation 10 "
-"({conversation10Price} một tháng) bổ sung {conversation10Hours} cuộc đàm "
-"thoại nâng cao. Các tùy chọn tuần và năm có trên trang này."
+"Thực hành ({practicePrice} một tháng) bao gồm Không giới hạn Chỉ Nói, kế "
+"hoạch cá nhân, bài kiểm tra, đóng vai, bài học hàng ngày, và các cuộc trò "
+"chuyện nhóm. Trò chuyện ({conversationPrice} một tháng) thêm "
+"{conversationHours} giờ trò chuyện nâng cao. Trò chuyện 10 "
+"({conversation10Price} một tháng) thêm {conversation10Hours} giờ trò chuyện "
+"nâng cao. Tùy chọn tuần và năm có trên trang này."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10571,8 +10552,8 @@ msgstr "THỰC HÀNH, CẢI THIỆN, LẶP LẠI"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "Thực hành, cùng với một phần hội thoại nâng cao và các cuộc gọi cộng đồng"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "Thực hành, cùng với một khối trò chuyện nâng cao và các cuộc trò chuyện nhóm"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10875,9 +10856,10 @@ msgid "Pronounce translations"
 msgstr "Phát âm bản dịch"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "Đề xuất một cuộc gọi"
+msgid "Propose a conversation"
+msgstr "Đề xuất một cuộc trò chuyện"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -13271,8 +13253,8 @@ msgstr "Làm Bài Kiểm Tra Sự Sẵn Sàng Cho Phỏng Vấn"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "Nói về những gì bạn muốn đề cập trong cuộc gọi."
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "Nói về những gì bạn muốn đề cập trong cuộc trò chuyện."
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -14144,8 +14126,8 @@ msgstr "Chìa khóa: bài đăng nhỏ là hợp lệ. Một câu là đủ."
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "Khối hội thoại nâng cao lớn hơn, với các cuộc gọi cộng đồng"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "Khối hội thoại nâng cao lớn hơn, với các cuộc trò chuyện nhóm"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -15209,8 +15191,8 @@ msgstr "Bật âm thanh"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "Cuộc gọi sắp tới"
+msgid "Upcoming conversations"
+msgstr "Các cuộc trò chuyện sắp tới"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15633,8 +15615,10 @@ msgstr "Chúng tôi nói tiếng Anh, ngay cả khi lời nói đến chậm ch�
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
-msgstr "Chúng tôi giữ sự tử tế. Lăng mạ, tán tỉnh và bán hàng giữ ra khỏi cuộc gọi."
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
+msgstr ""
+"Chúng tôi giữ sự tử tế. Những lời xúc phạm, tán tỉnh và quảng cáo đều không "
+"có trong cuộc trò chuyện."
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -17069,6 +17053,11 @@ msgstr "Bạn đã qua bốn mươi ngày. Tiếp tục thực hành một cách
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "Bạn vẫn đang leo trèo. Hãy tiến thêm bước nữa với những nhiệm vụ hôm nay."
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} ngày trò chuyện nhóm"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -17100,6 +17089,11 @@ msgstr "{count} phút"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{khoảng} phút"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} tháng trò chuyện nhóm"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

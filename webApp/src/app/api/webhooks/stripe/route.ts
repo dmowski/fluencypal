@@ -373,7 +373,7 @@ const grantPaidAccessCheckout = async ({
 
   const extras = [
     grant.advancedHours ? `${grant.advancedHours}h advanced conversation` : null,
-    grant.communityMonths || grant.communityDays ? 'community calls' : null,
+    grant.communityMonths || grant.communityDays ? 'group conversations' : null,
   ]
     .filter(Boolean)
     .join(', ');

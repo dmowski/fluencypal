@@ -1636,11 +1636,6 @@ msgstr "C# 백엔드 면접 준비 테스트"
 msgid "Caching Strategies"
 msgstr "캐싱 전략"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "채팅 호출"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2553,24 +2548,6 @@ msgstr "커뮤니티"
 msgid "Community access"
 msgstr "커뮤니티 액세스"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "커뮤니티 콜"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "커뮤니티 통화, {count}일"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "커뮤니티 콜, {count} 개월"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -2971,6 +2948,11 @@ msgstr "대화"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "대화 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "대화 채팅"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6082,6 +6064,10 @@ msgstr "식료품점"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "그룹 대화"
@@ -7020,11 +7006,6 @@ msgstr "인도네시아어 학습 계획"
 msgid "Info"
 msgstr "정보"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "통화를 시작합니다"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7326,8 +7307,8 @@ msgstr "특정 주제에 대해 다른 회원들과 토론하기 위해 방에 �
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "이 유료 기간의 예정된 커뮤니티 콜에 참여하세요"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "이번 유료 기간 동안 예정된 그룹 대화에 참여하세요"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8472,11 +8453,6 @@ msgstr "자동 갱신 없음. 당신이 통제권을 유지합니다."
 msgid "No automatic payment"
 msgstr "자동 결제 없음"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "아직 예정된 통화가 없습니다."
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8486,6 +8462,11 @@ msgstr "이용 가능한 챕터가 없습니다"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "아직 예약된 대화가 없습니다."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -8933,9 +8914,9 @@ msgstr "백오십 일 동안의 학습. 지금까지 이룬 성과에 자부심�
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
-msgstr "한 달 동안 Google Meet에서 그룹 통화. 전체 액세스와 상위 5개 게임 승리가 이미 포함되어 있습니다."
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
+msgstr "Google Meet에서 한 달간 진행되는 그룹 대화. 유료 액세스 및 상위 5위 게임 승리는 이미 포함되어 있습니다."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9338,8 +9319,8 @@ msgstr "결제가 완료되었습니다. 액세스가 잠시 후에 표시됩니
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "결제가 완료되었습니다. 전화에 참여할 수 있습니다."
+msgid "Payment received. You can join the group conversations."
+msgstr "결제가 완료되었습니다. 그룹 대화에 참여할 수 있습니다."
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -9797,16 +9778,16 @@ msgstr "연습 및 진도"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Practice ({practicePrice} 한 달)에는 무제한 Just Talk, 개인 플랜, 시험, 역할 놀이, 일일 수업, "
-"커뮤니티 콜이 포함됩니다. Conversation ({conversationPrice} 한 달)에는 "
-"{conversationHours}의 고급 대화가 추가됩니다. Conversation 10 ({conversation10Price} 한 "
-"달)에는 {conversation10Hours}의 고급 대화가 추가됩니다. 주간 및 연간 옵션은 이 페이지에 있습니다."
+"연습 ({practicePrice} 월)에는 무제한 Just Talk, 개인 계획, 시험, 역할 연기, 일일 수업 및 그룹 대화가 "
+"포함됩니다. 대화 ({conversationPrice} 월)는 {conversationHours}의 고급 대화를 추가합니다. 대화 10 "
+"({conversation10Price} 월)는 {conversation10Hours}의 고급 대화를 추가합니다. 주간 및 연간 옵션은 "
+"이 페이지에 있습니다."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10077,8 +10058,8 @@ msgstr "연습, 개선, 반복"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "연습, 고급 회화 및 커뮤니티 호출 블록 포함"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "연습, 고급 회화와 그룹 대화를 포함한 블록"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10369,9 +10350,10 @@ msgid "Pronounce translations"
 msgstr "번역 발음"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "제안하기 위한 통화"
+msgid "Propose a conversation"
+msgstr "대화를 제안하세요"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -12673,8 +12655,8 @@ msgstr "면접 준비 테스트를 받으세요"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "콜에서 언급하고 싶은 내용을 이야기하세요."
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "대화에서 꺼내고 싶은 주제에 대해 이야기하세요."
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -13496,8 +13478,8 @@ msgstr "키 포인트: 짧은 게시물도 유효합니다. 한 문장으로 충
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "더 큰 고급 대화 블록, 커뮤니티 콜 포함"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "더 큰 고급 대화 블록, 그룹 대화 포함"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14497,8 +14479,8 @@ msgstr "음소거 해제"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "다가오는 통화"
+msgid "Upcoming conversations"
+msgstr "다가오는 대화"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -14887,8 +14869,8 @@ msgstr "우리는 천천히 단어가 나올 때도 영어를 사용합니다."
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
-msgstr "우리는 친절함을 유지합니다. 모욕, 플러팅, 판매는 통화에서 제외됩니다."
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
+msgstr "우리는 친절함을 유지합니다. 모욕, 유혹, 판매는 대화에서 제외됩니다."
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -16209,6 +16191,11 @@ msgstr "당신은 40일을 넘었습니다. 차분하고 꾸준한 연습을 계
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "당신은 여전히 ​​오르고 있습니다. 오늘의 작업으로 다음 단계로 나아가세요."
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count}일 동안의 그룹 대화"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -16240,6 +16227,11 @@ msgstr "{count} 분"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} 분"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count}개월 동안의 그룹 대화"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

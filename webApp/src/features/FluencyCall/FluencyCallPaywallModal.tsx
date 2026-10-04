@@ -31,7 +31,7 @@ export const FluencyCallPaywallModal = ({
           </Typography>
           <Typography sx={{ opacity: 0.75 }}>
             {i18n._(
-              'One month of group calls on Google Meet. Full access and a top-5 game win already include this.',
+              'One month of group conversations on Google Meet. Paid access and a top-5 game win already include this.',
             )}
           </Typography>
         </Stack>

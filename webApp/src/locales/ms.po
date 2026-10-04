@@ -1713,11 +1713,6 @@ msgstr "Ujian Kesiapsiagaan Temuduga Backend C#"
 msgid "Caching Strategies"
 msgstr "Strategi Cache"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "Panggil sembang"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2653,24 +2648,6 @@ msgstr "Komuniti"
 msgid "Community access"
 msgstr "Akses komuniti"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "Panggilan komuniti"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "Panggilan komuniti, {count} hari"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "Panggilan komuniti, {count} bulan"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -3085,6 +3062,11 @@ msgstr "perbualan"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "Perbualan 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "Perbualan sembang"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6400,6 +6382,10 @@ msgstr "Kedai Runcit"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Perbualan kumpulan"
@@ -7463,11 +7449,6 @@ msgstr "Rancangan Pembelajaran Bahasa Indonesia"
 msgid "Info"
 msgstr "Info"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "Mulakan panggilan"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7778,8 +7759,8 @@ msgstr "Sertai bilik untuk membincangkan topik tertentu dengan ahli lain"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "Sertai panggilan komuniti berjadual untuk tempoh berbayar ini"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "Sertai perbualan kumpulan yang dijadualkan untuk tempoh berbayar ini"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8972,11 +8953,6 @@ msgstr "Tiada pembaharuan automatik. Anda berkuasa mengawal."
 msgid "No automatic payment"
 msgstr "Tiada pembayaran automatik"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "Tiada panggilan yang dijadualkan lagi."
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8986,6 +8962,11 @@ msgstr "Tiada bab tersedia"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Tiada caj akan dikenakan"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "Belum ada perbualan yang dijadualkan."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -9469,11 +9450,11 @@ msgstr ""
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
 msgstr ""
-"Satu bulan panggilan berkumpulan di Google Meet. Akses penuh dan kemenangan "
-"permainan lima teratas sudah termasuk ini."
+"Satu bulan perbualan berkumpulan di Google Meet. Akses berbayar dan "
+"kemenangan permainan top-5 sudah termasuk ini."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9901,8 +9882,8 @@ msgstr "Pembayaran diterima. Akses akan muncul seketika."
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "Pembayaran diterima. Anda boleh menyertai panggilan."
+msgid "Payment received. You can join the group conversations."
+msgstr "Pembayaran diterima. Anda boleh menyertai perbualan kumpulan."
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -10379,18 +10360,18 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Latihan ({practicePrice} sebulan) termasuk Bicara Semata-mata tanpa had, "
-"pelan peribadi, peperiksaan, main peranan, pelajaran harian, dan panggilan "
-"komuniti. Perbualan ({conversationPrice} sebulan) menambah "
-"{conversationHours} perbualan tahap lanjutan. Perbualan 10 "
-"({conversation10Price} sebulan) menambah {conversation10Hours} perbualan "
-"tahap lanjutan. Pilihan minggu dan tahun ada di halaman ini."
+"Latihan ({practicePrice} sebulan) termasuk Just Talk tanpa had, rancangan "
+"peribadi, ujian, permainan peranan, pelajaran harian, dan perbualan "
+"berkumpulan. Perbualan ({conversationPrice} sebulan) menambah "
+"{conversationHours} perbualan lanjutan. Perbualan 10 ({conversation10Price} "
+"sebulan) menambah {conversation10Hours} perbualan lanjutan. Pilihan minggu "
+"dan tahun ada di halaman ini."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10697,8 +10678,8 @@ msgstr "LATIH, PERBAIKI, ULANGI"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "Latihan, ditambah dengan satu blok perbualan lanjutan dan panggilan komuniti"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "Amalan, ditambah dengan blok perbualan lanjutan dan perbualan kumpulan"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -11003,9 +10984,10 @@ msgid "Pronounce translations"
 msgstr "Sebutan terjemahan"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "Cadangkan panggilan"
+msgid "Propose a conversation"
+msgstr "Cadangkan perbualan"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -13403,8 +13385,8 @@ msgstr "Ambil Ujian Kesiapan Temu Duga"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "Bercakap tentang apa yang anda mahu bawa ke panggilan tersebut."
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "Bercakap mengenai apa yang anda mahu bangkitkan dalam perbualan."
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -14290,8 +14272,8 @@ msgstr "Kunci: siaran kecil adalah sah. Satu ayat sudah mencukupi."
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "Blok perbualan lanjutan yang lebih besar, dengan panggilan komuniti"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "Blok perbualan lanjutan yang lebih besar, dengan perbualan berkumpulan"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -15360,8 +15342,8 @@ msgstr "Nyahsenyap"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "Panggilan akan datang"
+msgid "Upcoming conversations"
+msgstr "Perbualan yang akan datang"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15786,10 +15768,10 @@ msgstr ""
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
 msgstr ""
-"Kami kekal beradab. Penghinaan, menggoda, dan menjual tidak dibenarkan "
-"semasa panggilan."
+"Kami tetap bersopan. Hinaan, menggoda, dan menjual tidak termasuk dalam "
+"perbualan."
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -17242,6 +17224,11 @@ msgstr ""
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "Anda masih mendaki. Ambil langkah seterusnya dengan tugas hari ini."
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} hari perbualan berkumpulan"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -17273,6 +17260,11 @@ msgstr "{count} minit"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} minit"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} bulan perbualan berkumpulan"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

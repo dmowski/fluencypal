@@ -55,7 +55,7 @@ export const FluencyCallChatModal = ({
       >
         <Stack sx={{ gap: '6px' }}>
           <Typography variant="h3" sx={{ fontWeight: 800 }}>
-            {i18n._('Call chat')}
+            {i18n._('Conversation chat')}
           </Typography>
           {startsAtLabel ? (
             <Typography variant="h5" data-testid="fluency-call-chat-time" sx={{ fontWeight: 700 }}>
@@ -63,7 +63,7 @@ export const FluencyCallChatModal = ({
             </Typography>
           ) : null}
           <Typography sx={{ color: 'text.secondary' }}>
-            {i18n._('Talk about what you want to bring up on the call.')}
+            {i18n._('Talk about what you want to bring up in the conversation.')}
           </Typography>
         </Stack>
 

@@ -1690,11 +1690,6 @@ msgstr "Prueba de Preparación para la Entrevista de Backend en C#"
 msgid "Caching Strategies"
 msgstr "Estrategias de Caché"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "Llamar al chat"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2634,24 +2629,6 @@ msgstr "Comunidad"
 msgid "Community access"
 msgstr "Acceso a la comunidad"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "Llamadas comunitarias"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "Llamadas de la comunidad, {count} días"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "Llamadas comunitarias, {count} meses"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -3065,6 +3042,11 @@ msgstr "conversación"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "Conversación 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "Chat de conversación"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6373,6 +6355,10 @@ msgstr "Tienda de comestibles"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Conversaciones de grupo"
@@ -7403,11 +7389,6 @@ msgstr ""
 "plaintext\n"
 "Info\n"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "Iniciar una llamada"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7713,8 +7694,8 @@ msgstr "Únete a salas para discutir temas específicos con otros miembros"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "Únete a las llamadas comunitarias programadas para este período de pago"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "Únete a conversaciones grupales programadas para este período de pago"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8906,11 +8887,6 @@ msgstr "Sin renovación automática. Tú mantienes el control"
 msgid "No automatic payment"
 msgstr "No pago automático"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "Todavía no hay una llamada programada."
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8920,6 +8896,11 @@ msgstr "No hay capítulos disponibles"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "No se realizará ningún cargo"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "No hay ninguna conversación programada todavía."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -9398,11 +9379,11 @@ msgstr ""
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
 msgstr ""
-"Un mes de llamadas grupales en Google Meet. Acceso completo y una victoria "
-"en el juego top-5 ya incluyen esto."
+"Una mes de conversaciones grupales en Google Meet. El acceso de pago y una "
+"victoria en un juego del top-5 ya están incluidas."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9827,8 +9808,8 @@ msgstr "Pago recibido. El acceso se mostrará en un momento."
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "Pago recibido. Puedes unirte a las llamadas."
+msgid "Payment received. You can join the group conversations."
+msgstr "Pago recibido. Puedes unirte a las conversaciones grupales."
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -10306,18 +10287,18 @@ msgstr "Práctica y Progreso"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Practice ({practicePrice} al mes) incluye Just Talk ilimitado, un plan "
-"personal, exámenes, juegos de rol, lecciones diarias y llamadas "
-"comunitarias. Conversación ({conversationPrice} al mes) añade "
+"Practice ({practicePrice} al mes) incluye conversaciones ilimitadas Just "
+"Talk, un plan personal, exámenes, juegos de rol, lecciones diarias y "
+"conversaciones en grupo. Conversación ({conversationPrice} al mes) añade "
 "{conversationHours} de conversación avanzada. Conversación 10 "
 "({conversation10Price} al mes) añade {conversation10Hours} de conversación "
-"avanzada. Las opciones de semana y año están en esta página."
+"avanzada. Las opciones de semana y año se encuentran en esta página."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10622,8 +10603,10 @@ msgstr "PRÁCTICA, MEJORA, REPITE"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "Práctica, más un bloque de conversación avanzada y llamadas comunitarias"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr ""
+"Práctica, además de un bloque de conversación avanzada y conversaciones "
+"grupales"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10924,9 +10907,10 @@ msgid "Pronounce translations"
 msgstr "Pronunciar traducciones"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "Propón una llamada"
+msgid "Propose a conversation"
+msgstr "Propón una conversación"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -13325,8 +13309,8 @@ msgstr "Realiza el Test de Preparación para Entrevistas"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "Habla sobre lo que quieres mencionar en la llamada."
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "Habla sobre lo que quieres mencionar en la conversación."
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -14201,8 +14185,8 @@ msgstr "La clave: las publicaciones pequeñas son válidas. Una oración es sufi
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "El bloque más grande de conversación avanzada, con llamadas comunitarias"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "El bloque de conversación avanzada más grande, con conversaciones grupales"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -15267,8 +15251,8 @@ msgstr "Desactivar silencio"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "Próximas llamadas"
+msgid "Upcoming conversations"
+msgstr "Conversaciones próximas"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15678,10 +15662,10 @@ msgstr "Hablamos inglés, incluso cuando las palabras vienen lentamente."
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
 msgstr ""
-"Nos mantenemos amables. Los insultos, el coqueteo y la venta permanecen "
-"fuera de la llamada."
+"Nos mantenemos amables. Los insultos, el coqueteo y la venta quedan fuera "
+"de la conversación."
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -17121,6 +17105,11 @@ msgstr ""
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "Sigues escalando. Da el siguiente paso con las tareas de hoy."
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} días de conversaciones grupales"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -17152,6 +17141,11 @@ msgstr "{count} minuto"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} minutos"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} meses de conversaciones grupales"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

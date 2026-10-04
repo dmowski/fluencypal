@@ -1631,11 +1631,6 @@ msgstr "C# バックエンド面接準備テスト"
 msgid "Caching Strategies"
 msgstr "キャッシング戦略"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "チャットを呼び出す"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2545,24 +2540,6 @@ msgstr "コミュニティ"
 msgid "Community access"
 msgstr "コミュニティアクセス"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "コミュニティコール"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "コミュニティ コール、{count}日"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "コミュニティコール、{count}ヶ月"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -2963,6 +2940,11 @@ msgstr "会話"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "会話 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "会話チャット"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6050,6 +6032,10 @@ msgstr "食料品店"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "グループ会話"
@@ -6983,11 +6969,6 @@ msgstr "インドネシア語学習プラン"
 msgid "Info"
 msgstr "インフォ"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "通話を開始する"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7285,8 +7266,8 @@ msgstr "特定のトピックについて他のメンバーと話し合うため
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "この有料期間中に予定されたコミュニティコールに参加する"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "この有料期間のスケジュールされたグループ会話に参加する"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8434,11 +8415,6 @@ msgstr "自動更新なし。あなたが管理します"
 msgid "No automatic payment"
 msgstr "自動支払いなし"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "まだ通話は予定されていません。"
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8448,6 +8424,11 @@ msgstr "利用可能な章はありません"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "料金は発生しません"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "まだ会話が予定されていません。"
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -8889,9 +8870,9 @@ msgstr "百五十日間の学び。これまで来た道を誇りに思いまし
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
-msgstr "Google Meetでのグループ通話の1ヶ月。フルアクセスとトップ5のゲーム勝利がすでに含まれています。"
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
+msgstr "1か月間のGoogle Meetでのグループ会話。既に支払い済みのアクセスとトップ5のゲーム勝利が含まれています。"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9295,8 +9276,8 @@ msgstr "お支払いが確認されました。すぐにアクセスが可能に
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "支払いが確認されました。通話に参加できます。"
+msgid "Payment received. You can join the group conversations."
+msgstr "支払いが確認されました。グループ会話に参加できます。"
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -9754,16 +9735,17 @@ msgstr "練習と進捗"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"練習（月額{practicePrice}）には、無制限のJust "
-"Talk、個人プラン、試験、ロールプレイ、毎日のレッスン、およびコミュニティコールが含まれます。会話（月額{conversationPrice}"
-"）では、{conversationHours}の上級会話が追加されます。会話10（月額{conversation10Price}）には、{"
-"conversation10Hours}の上級会話が追加されます。週と年のオプションはこのページにあります。"
+"Practice（毎月 {practicePrice}）には、無制限のJust "
+"Talk、個人プラン、試験、ロールプレイ、毎日のレッスン、グループ会話が含まれます。Conversation（毎月 "
+"{conversationPrice}）には、{conversationHours} の高度な会話が追加されます。Conversation 10（毎月 "
+"{conversation10Price}）には、{conversation10Hours} "
+"の高度な会話が追加されます。週と年のオプションはこのページにあります。"
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10033,8 +10015,8 @@ msgstr "練習、向上、繰り返す"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "練習、高度な会話とコミュニティコールのブロック"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "練習、さらに高度な会話とグループ会話のブロック"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10325,9 +10307,10 @@ msgid "Pronounce translations"
 msgstr "翻訳を発音する"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "通話を提案する"
+msgid "Propose a conversation"
+msgstr "会話を提案します"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -12626,8 +12609,8 @@ msgstr "インタビュー準備テストを受ける"
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "通話で取り上げたいことについて話してください。"
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "会話で持ち出したいことについて話す。"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -13441,8 +13424,8 @@ msgstr "鍵：短い投稿が有効です。一文で十分です。"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "コミュニティコールを含む、大規模な高度会話ブロック"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "グループ会話を含む、大規模な上級会話ブロック"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14438,8 +14421,8 @@ msgstr "ミュート解除"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "今後の通話"
+msgid "Upcoming conversations"
+msgstr "今後の会話"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -14828,8 +14811,8 @@ msgstr "言葉がゆっくり出てくるときでも、私たちは英語を話
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
-msgstr "私たちは親切に接します。侮辱、ナンパ、物品の販売は通話で行いません。"
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
+msgstr "私たちは親切にします。侮辱、ナンパ、販売は会話に含めません。"
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -16147,6 +16130,11 @@ msgstr "四十日間が過ぎました。落ち着いて、安定した練習を
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "あなたはまだ登っている途中です。今日のタスクで次のステップを踏みましょう。"
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} 日間のグループ会話"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -16178,6 +16166,11 @@ msgstr "{count} 分"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} 分"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} ヶ月のグループ会話"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

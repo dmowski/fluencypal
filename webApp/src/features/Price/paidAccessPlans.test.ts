@@ -53,10 +53,10 @@ describe('paid access plans', () => {
 
   it('names the Stripe product after the grant', () => {
     expect(paidAccessStripeName('practice', 1, 0)).toBe(
-      'Paid access for a month, with community calls',
+      'Paid access for a month, with group conversations',
     );
     expect(paidAccessStripeName('conversation', 1, 0)).toBe(
-      'Paid access for a month, with 1 hour of advanced conversation and community calls',
+      'Paid access for a month, with 1 hour of advanced conversation and group conversations',
     );
     expect(formatHourCount(0.5)).toBe('30 minutes');
   });

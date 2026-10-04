@@ -269,7 +269,7 @@ export const SubscriptionPaymentModal = () => {
           hours: formatPaidAccessHours(offerHours, i18n),
         })
       : null,
-    includesCommunity ? i18n._('Community calls') : null,
+    includesCommunity ? i18n._('Group conversations') : null,
   ].filter((part): part is string => !!part);
   const confirmationSubTitle = amountHoursToAdd
     ? hoursLabels[amountHoursToAdd]

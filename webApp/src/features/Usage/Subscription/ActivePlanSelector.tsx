@@ -84,7 +84,7 @@ export const ActivePlanSelector = ({
             );
           }
           if (plan.includesCommunity) {
-            features.push(i18n._('Community calls'));
+            features.push(i18n._('Group conversations'));
           }
 
           return (

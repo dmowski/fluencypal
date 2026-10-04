@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
-import { GraduationCap, Mic, Phone, Sparkles, Speech } from 'lucide-react';
+import { GraduationCap, Mic, Sparkles, Speech, Users } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import {
   PAID_ACCESS_PLANS,
@@ -44,8 +44,8 @@ export const PaidAccessPriceSection = ({ quizLink }: { quizLink: string }) => {
   };
   const subtitles: Record<PaidAccessPlanId, string> = {
     practice: i18n._('Unlimited practice for the period you choose'),
-    conversation: i18n._('Practice, plus a block of advanced conversation and community calls'),
-    'conversation-10': i18n._('The larger advanced-conversation block, with community calls'),
+    conversation: i18n._('Practice, plus a block of advanced conversation and group conversations'),
+    'conversation-10': i18n._('The larger advanced-conversation block, with group conversations'),
   };
 
   return (
@@ -108,9 +108,9 @@ export const PaidAccessPriceSection = ({ quizLink }: { quizLink: string }) => {
           }
           if (plan.includesCommunity) {
             listItems.push({
-              title: i18n._('Community calls'),
-              tooltip: i18n._('Join scheduled community calls for this paid period'),
-              icon: Phone,
+              title: i18n._('Group conversations'),
+              tooltip: i18n._('Join scheduled group conversations for this paid period'),
+              icon: Users,
             });
           }
 

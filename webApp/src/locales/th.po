@@ -1689,11 +1689,6 @@ msgstr "การทดสอบความพร้อมสัมภาษณ
 msgid "Caching Strategies"
 msgstr "นโยบายการแคช"
 
-#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
-#. js-lingui-explicit-id
-msgid "Call chat"
-msgstr "โทรแชท"
-
 #: src/features/Usage/Subscription/FaqSubscription.tsx:40
 #. js-lingui-explicit-id
 msgid "Call duration limits?"
@@ -2619,24 +2614,6 @@ msgstr "ชุมชน"
 msgid "Community access"
 msgstr "การเข้าถึงชุมชน"
 
-#: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
-#. js-lingui-explicit-id
-msgid "Community calls"
-msgstr "การโทรของชุมชน"
-
-#: src/features/Header/PaymentHistoryModal.tsx:99
-#. js-lingui-explicit-id
-msgid "Community calls, {count} days"
-msgstr "การโทรของชุมชน, {count} วัน"
-
-#: src/features/Header/PaymentHistoryModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Community calls, {count} months"
-msgstr "การโทรชุมชน, {count} เดือน"
-
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
 #: src/features/Dashboard/StreaksDaysBadge.tsx:136
@@ -3050,6 +3027,11 @@ msgstr "การสนทนา"
 #. js-lingui-explicit-id
 msgid "Conversation 10"
 msgstr "การสนทนา 10"
+
+#: src/features/FluencyCall/FluencyCallChatModal.tsx:58
+#. js-lingui-explicit-id
+msgid "Conversation chat"
+msgstr "แชทการสนทนา"
 
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
@@ -6320,6 +6302,10 @@ msgstr "ร้านขายของชำ"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:280
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:27
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "การสนทนากลุ่ม"
@@ -7337,11 +7323,6 @@ msgstr "แผนการเรียนรู้ภาษาอินโดน
 msgid "Info"
 msgstr "ข้อมูล"
 
-#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
-#. js-lingui-explicit-id
-msgid "Initiate a call"
-msgstr "เริ่มการโทร"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7643,8 +7624,8 @@ msgstr "เข้าร่วมห้องเพื่อพูดคุยเ
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
 #. js-lingui-explicit-id
-msgid "Join scheduled community calls for this paid period"
-msgstr "เข้าร่วมการโทรชุมชนตามกำหนดสำหรับช่วงเวลาที่ชำระเงินนี้"
+msgid "Join scheduled group conversations for this paid period"
+msgstr "เข้าร่วมการสนทนากลุ่มตามกำหนดการสำหรับช่วงเวลาที่ชำระเงินนี้"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8824,11 +8805,6 @@ msgstr "ไม่มีการต่ออายุอัตโนมัติ
 msgid "No automatic payment"
 msgstr "ไม่มีการชำระเงินอัตโนมัติ"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
-#. js-lingui-explicit-id
-msgid "No call scheduled yet."
-msgstr "ยังไม่มีการนัดสายสนทนา"
-
 #: src/features/Reader/components/ReaderChaptersPopover.tsx:88
 #. js-lingui-explicit-id
 msgid "No chapters available"
@@ -8838,6 +8814,11 @@ msgstr "ไม่มีบทใด ๆ ให้เลือก"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "ไม่ได้คิดค่าใช้จ่าย"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#. js-lingui-explicit-id
+msgid "No conversation scheduled yet."
+msgstr "ยังไม่มีการสนทนาที่ถูกกำหนดไว้"
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -9309,11 +9290,11 @@ msgstr "หนึ่งร้อยห้าสิบวันแห่งกา
 #: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
 #. js-lingui-explicit-id
 msgid ""
-"One month of group calls on Google Meet. Full access and a top-5 game win "
-"already include this."
+"One month of group conversations on Google Meet. Paid access and a top-5 "
+"game win already include this."
 msgstr ""
-"หนึ่งเดือนของการสนทนากลุ่มบน Google Meet การเข้าถึงแบบเต็มและการชนะเกมท็อป "
-"5 รวมอยู่แล้วในนี้"
+"หนึ่งเดือนของการสนทนากลุ่มบน Google Meet "
+"การเข้าถึงแบบชำระเงินและชัยชนะในเกมติดอันดับ 5 อันดับแรกถูกรวมไว้แล้ว"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
@@ -9730,8 +9711,8 @@ msgstr "การชำระเงินได้รับแล้ว กา�
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:297
 #. js-lingui-explicit-id
-msgid "Payment received. You can join the calls."
-msgstr "รับชำระเงินแล้ว คุณสามารถเข้าร่วมการโทรได้"
+msgid "Payment received. You can join the group conversations."
+msgstr "รับชำระเงินแล้ว คุณสามารถเข้าร่วมการสนทนากลุ่มได้"
 
 #: src/features/OpenAiLive/OpenAiLiveDashboardCardView.tsx:132
 #. js-lingui-explicit-id
@@ -10195,17 +10176,17 @@ msgstr "ฝึกฝนและพัฒนา"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and community calls. Conversation "
-"({conversationPrice} a month) adds {conversationHours} of advanced "
-"conversation. Conversation 10 ({conversation10Price} a month) adds "
+"plan, exams, role-play, daily lessons, and group conversations. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"การฝึกฝน ({practicePrice} ต่อเดือน) รวมถึง Just Talk ไม่จำกัด, แผนส่วนตัว, "
-"การสอบ, การเล่นบทบาทสมมติ, บทเรียนรายวัน, และการโทรคุยกับชุมชน การสนทนา "
-"({conversationPrice} ต่อเดือน) เพิ่มการสนทนาขั้นสูง {conversationHours} "
-"ชั่วโมง การสนทนา 10 ({conversation10Price} ต่อเดือน) เพิ่มการสนทนาขั้นสูง "
-"{conversation10Hours} ชั่วโมง ตัวเลือกสัปดาห์และปีอยู่ในหน้านี้"
+"การฝึกฝน ({practicePrice} ต่อเดือน) รวมถึงการพูดคุยแบบไม่มีขีดจำกัด, "
+"แผนส่วนตัว, การสอบ, บทบาทสมมติ, บทเรียนประจำวัน และการสนทนากลุ่ม การสนทนา "
+"({conversationPrice} ต่อเดือน) เพิ่ม {conversationHours} ของการสนทนาขั้นสูง "
+"การสนทนา 10 ({conversation10Price} ต่อเดือน) เพิ่ม {conversation10Hours} "
+"ของการสนทนาขั้นสูง ตัวเลือกสัปดาห์และปีอยู่ในหน้านี้"
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10501,8 +10482,8 @@ msgstr "ฝึกฝน, พัฒนา, ทำซ้ำ"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and community calls"
-msgstr "ฝึกฝน บวกกับช่วงการสนทนาขั้นสูงและการโทรผ่านชุมชน"
+msgid "Practice, plus a block of advanced conversation and group conversations"
+msgstr "ฝึกฝน พร้อมด้วยช่วงสนทนาขั้นสูงและการสนทนาเป็นกลุ่ม"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
@@ -10801,9 +10782,10 @@ msgid "Pronounce translations"
 msgstr "ออกเสียงการแปล"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallRequestForm.tsx:101
 #. js-lingui-explicit-id
-msgid "Propose a call"
-msgstr "เสนอการโทร"
+msgid "Propose a conversation"
+msgstr "เสนอการสนทนา"
 
 #: src/features/RolePlay/scenarios/meeting-with-psychologist.ts:8
 #. js-lingui-explicit-id
@@ -13303,8 +13285,8 @@ msgstr "ทำแบบทดสอบความพร้อมในการ
 
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
-msgid "Talk about what you want to bring up on the call."
-msgstr "พูดคุยเกี่ยวกับสิ่งที่คุณต้องการนำเสนอในการโทร."
+msgid "Talk about what you want to bring up in the conversation."
+msgstr "พูดคุยเกี่ยวกับสิ่งที่คุณต้องการหยิบยกขึ้นมาในการสนทนา"
 
 #: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
@@ -14164,8 +14146,8 @@ msgstr "กุญแจ: โพสต์เล็กๆ ก็ใช้ได้
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with community calls"
-msgstr "บล็อกบทสนทนาขั้นสูงขนาดใหญ่ขึ้น พร้อมการสนทนาชุมชน"
+msgid "The larger advanced-conversation block, with group conversations"
+msgstr "บล็อกสนทนาขั้นสูงขนาดใหญ่ขึ้น พร้อมกับการสนทนากลุ่ม"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -15217,8 +15199,8 @@ msgstr "เปิดเสียง"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:324
 #. js-lingui-explicit-id
-msgid "Upcoming calls"
-msgstr "การโทรที่กำลังจะมาถึง"
+msgid "Upcoming conversations"
+msgstr "การสนทนาที่กำลังจะมาถึง"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15629,10 +15611,8 @@ msgstr "เราพูดภาษาอังกฤษ แม้ว่าค�
 
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:60
 #. js-lingui-explicit-id
-msgid "We stay kind. Insults, flirting, and selling stay off the call."
-msgstr ""
-"เรารักษาความสุภาพ การดูถูก การเกี้ยวพาราสี "
-"และการขายของต้องหลีกเลี่ยงในขณะที่อยู่ในการสนทนา"
+msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
+msgstr "เราคงความใจดี การดูถูก เหยียดหยาม การเจ้าชู้ และการขายไม่ควรนำมาพูดคุย"
 
 #: src/features/Auth/AuthWallBasic.tsx:306
 #. js-lingui-explicit-id
@@ -17044,6 +17024,11 @@ msgstr "คุณผ่านมาแล้วสี่สิบวัน ด�
 msgid "You’re still climbing. Take the next step with today’s tasks."
 msgstr "คุณยังคงปีนขึ้นไปอยู่ เตรียมก้าวต่อไปด้วยงานวันนี้"
 
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "{count} days of group conversations"
+msgstr "{count} วันของการสนทนาเป็นกลุ่ม"
+
 #: src/features/Reader/components/Cards.tsx:526
 #. js-lingui-explicit-id
 msgid "{count} downloads"
@@ -17075,6 +17060,11 @@ msgstr "{count} นาที"
 #. js-lingui-explicit-id
 msgid "{count} minutes"
 msgstr "{count} นาที"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "{count} months of group conversations"
+msgstr "{count} เดือนของการสนทนากลุ่ม"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73

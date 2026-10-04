@@ -57,7 +57,7 @@ export const FluencyCallConductModal = ({
             i18n._('We speak English, even when the words come slowly.'),
             i18n._('We give each other time to finish.'),
             i18n._('Mistakes are welcome. We offer a correction only if someone asks.'),
-            i18n._('We stay kind. Insults, flirting, and selling stay off the call.'),
+            i18n._('We stay kind. Insults, flirting, and selling stay out of the conversation.'),
             i18n._('We join the Meet on time, and leave whenever we need to.'),
           ].map((rule) => (
             <Typography key={rule} component="li">

@@ -2,10 +2,10 @@ import { PaymentLog } from '@/features/Usage/usage';
 
 const communityLength = (payment: PaymentLog): string | null => {
   if (payment.fluencyCallMonths) {
-    return `${payment.fluencyCallMonths} month(s) of community calls`;
+    return `${payment.fluencyCallMonths} month(s) of group conversations`;
   }
   if (payment.fluencyCallDays) {
-    return `${payment.fluencyCallDays} day(s) of community calls`;
+    return `${payment.fluencyCallDays} day(s) of group conversations`;
   }
   return null;
 };
@@ -15,7 +15,7 @@ export const getPaymentContractSubject = (payment: PaymentLog): string => {
     return `${payment.openAiLiveHours || 0} hour(s) of advanced conversation on FluencyPal`;
   }
   if (payment.type === 'fluency-call') {
-    return communityLength(payment) || 'FluencyPal community calls';
+    return communityLength(payment) || 'FluencyPal group conversations';
   }
   if (payment.type === 'advanced-hours') {
     return `${payment.amountOfHours} hour(s) of Advanced AI talking on FluencyPal`;

@@ -34,7 +34,7 @@ describe('getPaymentContractSubject', () => {
         }),
       ),
     ).toBe(
-      'FluencyPal paid access (1 month(s)), including 1 hour(s) of advanced conversation and 1 month(s) of community calls',
+      'FluencyPal paid access (1 month(s)), including 1 hour(s) of advanced conversation and 1 month(s) of group conversations',
     );
   });
 

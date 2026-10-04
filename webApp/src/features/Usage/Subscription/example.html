@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b111a">
+  <title>FluencyPal — Plans &amp; access</title>
+  <style>html,body{margin:0;min-height:100%;background:#0b111a}body{padding:16px 0}svg{display:inline-block;vertical-align:middle}</style>
+</head>
+<body>
+<div id="fp-access">
+<style>
+#fp-access{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b111a;color:#edf3f7;color-scheme:dark;padding:34px 24px;--ap-muted:#9eacba}
+#fp-access *{box-sizing:border-box;color:inherit}
+#fp-access [hidden]{display:none!important}
+#fp-access button,#fp-access input{font:inherit}
+#fp-access button,#fp-access label{cursor:pointer}
+#fp-access button:focus-visible,#fp-access input:focus-visible,#fp-access a:focus-visible{outline:2px solid #9bdfff;outline-offset:4px}
+#fp-access .ap-inner{max-width:550px;margin:auto}
+#fp-access .ap-eyebrow{font-size:12px;color:#8ea4b7;margin:0 0 12px}
+#fp-access h1{font-size:29px;letter-spacing:-.85px;line-height:1.2;font-weight:650;color:#edf3f7;margin:0 0 11px}
+#fp-access .ap-intro{color:#a9b7c4;font-size:14px;line-height:1.6;margin:0 0 28px}
+#fp-access .ap-label{color:#b5c3cf;font-size:12px;font-weight:500;line-height:1.5;margin:0 0 10px}
+#fp-access .ap-duration{display:flex;padding:4px;gap:4px;border:1px solid #2d3a48;border-radius:10px;background:#121c27;margin-bottom:26px}
+#fp-access .ap-duration button{flex:1;border:0;border-radius:7px;background:transparent;color:#9baebf;font-size:13px;min-height:39px;padding:9px 12px;font-weight:500}
+#fp-access .ap-duration button[aria-pressed=true]{background:#2b3d4e;color:#f0f7fb;box-shadow:0 1px 4px #0003}
+#fp-access .ap-duration button:hover{color:#f0f7fb}
+#fp-access fieldset{border:0;margin:0;padding:0;min-width:0}
+#fp-access legend{padding:0;margin-bottom:10px;color:#b5c3cf;font-size:12px;font-weight:500}
+#fp-access .ap-options{display:grid;gap:10px}
+#fp-access .ap-plan{display:grid;grid-template-columns:16px minmax(0,1fr) auto;align-items:center;gap:14px;padding:20px;border:1px solid #33414e;border-radius:12px;background:#151e28}
+#fp-access .ap-plan:hover{border-color:#587183;background:#192532}
+#fp-access .ap-plan:has(input:checked){border-color:#33bdf1;background:#143044;box-shadow:inset 0 0 0 1px #33bdf1}
+#fp-access .ap-plan input{width:16px;height:16px;margin:0;accent-color:#34c1f5}
+#fp-access .ap-name{display:block;font-size:15px;line-height:1.5;font-weight:600;color:#edf3f7}
+#fp-access .ap-detail{display:block;font-size:12px;color:#9fafbf;line-height:1.6;margin-top:4px}
+#fp-access .ap-detail strong{color:#aedcf1;font-weight:550}
+#fp-access .ap-money{font-size:23px;font-weight:600;letter-spacing:-.7px;line-height:1.25;white-space:nowrap;text-align:right;color:#f0f6f9}
+#fp-access .ap-money small{font-size:11px;font-weight:400;letter-spacing:0;color:#a8b8c6;margin-left:4px}
+#fp-access .ap-period{font-size:11px;font-weight:400;letter-spacing:0;display:block;margin-top:5px;color:#9cadbd}
+#fp-access .ap-features{margin:26px 0;padding:0}
+#fp-access .ap-features h2{font-size:12px;font-weight:550;color:#bdcbd6;margin:0 0 14px;line-height:1.5}
+#fp-access .ap-feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;list-style:none;padding:0;margin:0}
+#fp-access .ap-feature-list li{font-size:12px;color:#a3b3c1;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+#fp-access .ap-feature-list svg{width:14px;height:14px;margin-top:3px;flex-shrink:0;color:#83bbcf}
+#fp-access .ap-footer{border-top:1px solid #2b3947;padding-top:23px}
+#fp-access .ap-summary{display:flex;justify-content:space-between;gap:15px;align-items:baseline;font-size:13px;line-height:1.6;margin-bottom:16px}
+#fp-access .ap-summary span{color:#a7b7c5}
+#fp-access .ap-summary strong{font-weight:550;color:#e7f2f8;font-size:16px}
+#fp-access .ap-primary{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;border:0;border-radius:10px;background:#28b8ee;color:#062432;min-height:48px;font-size:14px;font-weight:600;padding:14px}
+#fp-access .ap-primary:hover{background:#63d1f8}
+#fp-access .ap-primary svg{width:17px;height:17px}
+#fp-access .ap-terms{font-size:11px;color:#92a3b4;line-height:1.6;text-align:center;margin:12px 0 0}
+#fp-access .ap-support{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px;color:#8297a8;margin-top:26px}
+#fp-access .ap-support a{color:#afcbdc;text-underline-offset:3px}
+#fp-access .ap-note{text-align:center;font-size:10px;line-height:1.6;color:#8195a6;margin:18px 0 0}
+#fp-access .ap-back{border:0;background:transparent;color:#9fd8ef;display:flex;gap:7px;align-items:center;padding:8px 0;margin-bottom:19px;font-size:12px}
+#fp-access .ap-back svg{width:14px;height:14px}
+#fp-access .ap-review{background:#151e28;border:1px solid #33414e;border-radius:12px;padding:22px;margin:25px 0}
+#fp-access .ap-review h2{font-size:20px;line-height:1.4;margin:0 0 17px;font-weight:600;letter-spacing:-.4px}
+#fp-access .ap-review dl{margin:0}
+#fp-access .ap-review dl div{display:flex;justify-content:space-between;gap:14px;font-size:13px;line-height:1.6;padding:12px 0;border-top:1px solid #2a3947}
+#fp-access .ap-review dt{color:#a3b3c1}
+#fp-access .ap-review dd{margin:0;text-align:right;color:#e7f2f8}
+#fp-access .ap-result{font-size:13px;line-height:1.6;color:#b4e2d5;margin:16px 0 0}
+
+@media(max-width:480px){#fp-access{padding:26px 18px}
+#fp-access h1{font-size:27px}
+#fp-access .ap-plan{padding:17px 14px;gap:10px}
+#fp-access .ap-name{font-size:14px}
+#fp-access .ap-detail{font-size:11px}
+#fp-access .ap-money{font-size:21px}
+#fp-access .ap-feature-list{grid-template-columns:1fr;gap:10px}
+#fp-access .ap-intro{font-size:13px}
+#fp-access .ap-summary{font-size:12px}
+}
+
+</style>
+<div class="ap-inner">
+<section data-screen="choose"><p class="ap-eyebrow">Plans &amp; access</p><h1>Choose your plan</h1><p class="ap-intro">Unlimited practice, with extra Advanced AI time if you want it.</p>
+<p class="ap-label">Access period</p><div class="ap-duration" role="group" aria-label="Access period"><button type="button" data-duration="month" aria-pressed="true">1 month</button><button type="button" data-duration="year" aria-pressed="false">1 year</button></div>
+<fieldset><legend>Your plan</legend><div class="ap-options">
+<label class="ap-plan"><input type="radio" name="access-plan" value="practice"><span><span class="ap-name">Practice</span><span class="ap-detail">All core practice modes</span></span><span class="ap-money"><span data-price="practice">23</span><small>PLN</small><span class="ap-period">for 1 month</span></span></label>
+<label class="ap-plan"><input type="radio" name="access-plan" value="conversation" checked><span><span class="ap-name">Conversation</span><span class="ap-detail">Core practice + <strong data-hours="conversation">1 advanced AI hour</strong></span></span><span class="ap-money"><span data-price="conversation">54</span><small>PLN</small><span class="ap-period">for 1 month</span></span></label>
+<label class="ap-plan"><input type="radio" name="access-plan" value="ten"><span><span class="ap-name">Conversation 10</span><span class="ap-detail">Core practice + <strong data-hours="ten">10 advanced AI hours</strong></span></span><span class="ap-money"><span data-price="ten">249</span><small>PLN</small><span class="ap-period">for 1 month</span></span></label>
+</div></fieldset>
+<section class="ap-features"><h2>Every plan includes</h2><ul class="ap-feature-list"><li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Unlimited Just Talk</li><li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Unlimited Personal Plan</li><li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Unlimited exams, role-play &amp; daily lessons</li><li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Community calls</li></ul></section>
+<div class="ap-footer"><div class="ap-summary" aria-live="polite"><span data-summary>Conversation · 1 month</span><strong data-total>54 PLN</strong></div><button type="button" class="ap-primary" data-continue>Continue<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button><p class="ap-terms">One payment. No automatic renewal.</p></div></section>
+<section data-screen="review" hidden><button type="button" class="ap-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Change plan</button><h1>Review your plan</h1><p class="ap-intro">Check your access and included conversation time.</p><div class="ap-review"><h2 data-review-name>Conversation</h2><dl><div><dt>Access period</dt><dd data-review-period>1 month</dd></div><div><dt>Core practice</dt><dd>Unlimited</dd></div><div><dt>Advanced AI time</dt><dd data-review-hours>1 hour</dd></div><div><dt>One-time payment</dt><dd data-review-total>54 PLN</dd></div></dl></div><button type="button" class="ap-primary" data-confirm>Confirm demo selection<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button><p class="ap-terms">Demo only. No payment will be taken.</p><p class="ap-result" role="status" hidden></p></section>
+<div class="ap-support">Need help choosing? <a href="mailto:dmowski.alex@gmail.com">Contact Alex</a></div><p class="ap-note">Interactive demo · No payments are processed</p>
+</div>
+<script>
+(()=>{const r=document.getElementById('fp-access'),prices={month:{practice:23,conversation:54,ten:249},year:{practice:233,conversation:544,ten:2486}},hours={month:{practice:0,conversation:1,ten:10},year:{practice:0,conversation:10,ten:100}},names={practice:'Practice',conversation:'Conversation',ten:'Conversation 10'};let duration='month',plan='conversation';const period=()=>duration==='month'?'1 month':'1 year';const money=n=>new Intl.NumberFormat('en-US').format(n)+' PLN';function update(){for(const key of Object.keys(names))r.querySelector('[data-price="'+key+'"]').textContent=new Intl.NumberFormat('en-US').format(prices[duration][key]);r.querySelectorAll('.ap-period').forEach(el=>el.textContent='for '+period());for(const key of ['conversation','ten']){const n=hours[duration][key];r.querySelector('[data-hours="'+key+'"]').textContent=n+' advanced AI hour'+(n===1?'':'s')}r.querySelector('[data-summary]').textContent=names[plan]+' · '+period();r.querySelector('[data-total]').textContent=money(prices[duration][plan]);}r.querySelectorAll('[data-duration]').forEach(b=>b.addEventListener('click',()=>{duration=b.dataset.duration;r.querySelectorAll('[data-duration]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));update()}));r.addEventListener('change',e=>{if(e.target.name==='access-plan'){plan=e.target.value;update()}});r.querySelector('[data-continue]').addEventListener('click',()=>{r.querySelector('[data-review-name]').textContent=names[plan];r.querySelector('[data-review-period]').textContent=period();const n=hours[duration][plan];r.querySelector('[data-review-hours]').textContent=n?n+' hour'+(n===1?'':'s'):'Not included';r.querySelector('[data-review-total]').textContent=money(prices[duration][plan]);r.querySelector('[data-screen="choose"]').hidden=true;r.querySelector('[data-screen="review"]').hidden=false;r.querySelector('.ap-result').hidden=true;r.querySelector('[data-confirm]').hidden=false;r.querySelector('.ap-back').focus({preventScroll:true})});r.querySelector('.ap-back').addEventListener('click',()=>{r.querySelector('[data-screen="review"]').hidden=true;r.querySelector('[data-screen="choose"]').hidden=false;r.querySelector('[name="access-plan"]:checked').focus({preventScroll:true})});r.querySelector('[data-confirm]').addEventListener('click',()=>{const result=r.querySelector('.ap-result');result.textContent=names[plan]+' selected for '+period()+'. No payment was made.';result.hidden=false;r.querySelector('[data-confirm]').hidden=true;r.querySelector('.ap-back').focus({preventScroll:true})});})();
+</script>
+</div>
+
+</body>
+</html>

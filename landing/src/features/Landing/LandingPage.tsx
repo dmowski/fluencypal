@@ -55,7 +55,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What’s the price?`),
       answer: i18n._(
-        `Paid access is one payment for a week, a month, or a year. There is no auto-renew. Practice is {practicePrice} a month: unlimited Just Talk, a personal plan, exams, role-play, daily lessons, and community calls. Conversation is {conversationPrice} a month and adds 1 hour of advanced conversation. Conversation 10 is {conversation10Price} a month and adds 10 hours of advanced conversation. A week costs half of the month. A year costs ten months.`,
+        `Paid access is one payment for a week, a month, or a year. There is no auto-renew. Practice is {practicePrice} a month: unlimited Just Talk, a personal plan, exams, role-play, daily lessons, and group conversations. Conversation is {conversationPrice} a month and adds 1 hour of advanced conversation. Conversation 10 is {conversation10Price} a month and adds 10 hours of advanced conversation. A week costs half of the month. A year costs ten months.`,
         {
           practicePrice: `$${PRICE_PER_MONTH_USD}`,
           conversationPrice: `$${paidAccessPriceUsd('conversation', 'month')}`,

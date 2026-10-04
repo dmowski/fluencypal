@@ -294,7 +294,7 @@ export const FluencyCallCardView = ({
       {paidNotice ? (
         <Typography data-testid="fluency-call-paid" sx={{ color: '#7DDEAA', fontWeight: 700 }}>
           {canJoin
-            ? i18n._('Payment received. You can join the calls.')
+            ? i18n._('Payment received. You can join the group conversations.')
             : i18n._('Payment received. Access shows up in a moment.')}
         </Typography>
       ) : null}
@@ -321,7 +321,7 @@ export const FluencyCallCardView = ({
             }}
           >
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {i18n._('Upcoming calls')}
+              {i18n._('Upcoming conversations')}
             </Typography>
             <Typography
               variant="caption"
@@ -347,7 +347,7 @@ export const FluencyCallCardView = ({
             </Stack>
           ) : (
             <Stack sx={{ gap: '6px' }}>
-              <Typography sx={{ fontWeight: 700 }}>{i18n._('No call scheduled yet.')}</Typography>
+              <Typography sx={{ fontWeight: 700 }}>{i18n._('No conversation scheduled yet.')}</Typography>
               {canJoin ? (
                 <Typography>{i18n._("Pick a time and we'll set one up.")}</Typography>
               ) : null}
@@ -362,7 +362,7 @@ export const FluencyCallCardView = ({
               startIcon={<Plus size={16} />}
               sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
             >
-              {i18n._('Propose a call')}
+              {i18n._('Propose a conversation')}
             </Button>
           ) : null}
 

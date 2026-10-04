@@ -132,7 +132,7 @@ export const paidAccessStripeName = (
     extras.push(`${formatHourCount(grant.advancedHours)} of advanced conversation`);
   }
   if (grant.communityMonths > 0 || grant.communityDays > 0) {
-    extras.push('community calls');
+    extras.push('group conversations');
   }
   if (extras.length === 0) return `Paid access for ${length}`;
   return `Paid access for ${length}, with ${extras.join(' and ')}`;
