@@ -100,19 +100,19 @@ msgstr "/bulan"
 msgid "1 AI hour"
 msgstr "1 jam AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:440
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:476
 #. js-lingui-explicit-id
 msgid "1 AI hour ≈ 1 hour of active conversation with the AI."
 msgstr "1 jam AI ≈ 1 jam perbualan aktif dengan AI."
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:58
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:102
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:238
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:255
 #. js-lingui-explicit-id
 msgid "1 day"
 msgstr "1 hari"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:22
 #: src/features/OpenAiLive/OpenAiLiveHoursModal.tsx:107
+#: src/features/Usage/Subscription/paidAccessCopy.ts:5
 #. js-lingui-explicit-id
 msgid "1 hour"
 msgstr "1 jam"
@@ -122,9 +122,8 @@ msgstr "1 jam"
 msgid "1 hour of conversation"
 msgstr "1 jam perbualan"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:78
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:122
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:240
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:28
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:257
 #. js-lingui-explicit-id
 msgid "1 month"
 msgstr "1 bulan"
@@ -134,16 +133,14 @@ msgstr "1 bulan"
 msgid "1 round"
 msgstr "1 pusingan"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:68
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:112
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:239
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:27
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:256
 #. js-lingui-explicit-id
 msgid "1 week"
 msgstr "1 minggu"
 
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:89
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:132
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:241
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:29
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:258
 #. js-lingui-explicit-id
 msgid "1 year"
 msgstr "1 tahun"
@@ -181,6 +178,12 @@ msgstr "3 Jam AI"
 #. js-lingui-explicit-id
 msgid "3. Don't pay anything"
 msgstr "3. Jangan bayar apa-apa"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:21
+#: src/features/Usage/Subscription/paidAccessCopy.ts:4
+#. js-lingui-explicit-id
+msgid "30 minutes"
+msgstr "30 minit"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:37
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:37
@@ -308,6 +311,11 @@ msgid ""
 msgstr ""
 "Seorang ibu bapa atau penjaga yang sah mesti mengesahkan bahawa mereka "
 "bersetuju menggunakan FluencyPal dan memahami bagaimana data diproses."
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:92
+#. js-lingui-explicit-id
+msgid "A plan that follows your level and goals"
+msgstr "Pelan yang mengikuti tahap dan matlamat anda"
 
 #: src/features/Case/data/frontend-junior/stepInfoSection.ts:11
 #: src/features/Case/data/frontend-senior/stepInfoSection.ts:11
@@ -588,6 +596,18 @@ msgstr "Jam AI Canggih"
 msgid "Advanced AI talking"
 msgstr "Perbualan AI Peringkat Lanjutan"
 
+#: src/features/Header/PaymentHistoryModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Advanced conversation"
+msgstr "Perbualan lanjutan"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:104
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:81
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:268
+#. js-lingui-explicit-id
+msgid "Advanced conversation ({hours})"
+msgstr "Perbualan lanjutan ({hours})"
+
 #: src/features/SEO/metadata.ts:213
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
@@ -595,9 +615,6 @@ msgstr "perbualan Inggeris lanjutan"
 
 #: src/features/Landing/Price/FeatureList.tsx:56
 #: src/features/Landing/Price/FeatureList.tsx:80
-#: src/features/Landing/Price/PricePage.tsx:469
-#: src/features/Landing/Price/PricePage.tsx:552
-#: src/features/Landing/Price/PricePage.tsx:635
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Personalisasi Lanjutan"
@@ -740,7 +757,7 @@ msgstr "Rakan bicara AI"
 msgid "AI Speaking Practice"
 msgstr "Amalan Bercakap AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:412
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:448
 #. js-lingui-explicit-id
 msgid "AI tokens"
 msgstr "Token AI"
@@ -1063,7 +1080,7 @@ msgstr "Seni Bina & Reka Bentuk"
 msgid "Architecture & Resiliency"
 msgstr "Arkitektur & Ketahanan"
 
-#: src/features/Landing/Price/PricePage.tsx:85
+#: src/features/Landing/Price/PricePage.tsx:78
 #. js-lingui-explicit-id
 msgid "Are there any hidden fees?"
 msgstr "Adakah terdapat sebarang yuran tersembunyi?"
@@ -1137,8 +1154,8 @@ msgstr "Tanya bagaimana orang lain berlatih bercakap atau sebutan"
 msgid "Ask questions, get explanations, and solve everyday problems"
 msgstr "Tanya soalan, dapatkan penjelasan, dan selesaikan masalah harian"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:625
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:641
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:661
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:677
 #. js-lingui-explicit-id
 msgid "Ask questions, share progress, and find speaking partners."
 msgstr "Ajukan soalan, kongsi kemajuan, dan cari rakan berbual."
@@ -1581,17 +1598,17 @@ msgstr "Dibina untuk tatabahasa dan jawapan peperiksaan"
 msgid "Bundling & Code Splitting"
 msgstr "Penggabungan & Pemisahan Kod"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:229
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:246
 #. js-lingui-explicit-id
 msgid "Buy 1 AI hour"
 msgstr "Beli 1 jam AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:230
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:247
 #. js-lingui-explicit-id
 msgid "Buy 3 AI hours"
 msgstr "Beli 3 jam AI"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:231
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:248
 #. js-lingui-explicit-id
 msgid "Buy 5 AI hours"
 msgstr "Beli 5 jam AI"
@@ -1602,7 +1619,7 @@ msgstr "Beli 5 jam AI"
 msgid "Buy access"
 msgstr "Beli akses"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:436
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:472
 #. js-lingui-explicit-id
 msgid "Buy AI tokens and use them whenever you want."
 msgstr "Beli token AI dan gunakannya bila-bila masa anda mahu."
@@ -1656,13 +1673,6 @@ msgstr "Membeli {hours} jam masa bercakap"
 #. js-lingui-explicit-id
 msgid "By continuing, you agree to our"
 msgstr "Dengan meneruskan, anda bersetuju dengan"
-
-#: src/features/Landing/Price/PricePage.tsx:465
-#: src/features/Landing/Price/PricePage.tsx:548
-#: src/features/Landing/Price/PricePage.tsx:631
-#. js-lingui-explicit-id
-msgid "By practicing, you will get personal grammar rules from AI"
-msgstr "Dengan berlatih, anda akan mendapatkan peraturan tatabahasa peribadi dari AI"
 
 #: src/features/Case/data/backendCSharp/techData.ts:23
 #. js-lingui-explicit-id
@@ -1734,7 +1744,7 @@ msgstr "Bolehkah FluencyPal membuat rancangan latihan peribadi untuk saya?"
 msgid "Can I customize my practice sessions?"
 msgstr "Bolehkah saya menyesuaikan sesi latihan saya?"
 
-#: src/features/Landing/Price/PricePage.tsx:91
+#: src/features/Landing/Price/PricePage.tsx:84
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:44
 #: src/features/Usage/Subscription/FaqSubscription.tsx:116
 #. js-lingui-explicit-id
@@ -1746,13 +1756,13 @@ msgstr "Bolehkah saya membuat bayaran balik selepas pembelian?"
 msgid "Can I practice languages other than English?"
 msgstr "Bolehkah saya berlatih bahasa selain Bahasa Inggeris?"
 
-#: src/features/Landing/Price/PricePage.tsx:71
+#: src/features/Landing/Price/PricePage.tsx:64
 #. js-lingui-explicit-id
 msgid "Can I stop using FluencyPal anytime?"
 msgstr "Bolehkah saya berhenti menggunakan FluencyPal bila-bila masa?"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/Price/PricePage.tsx:78
+#: src/features/Landing/Price/PricePage.tsx:71
 #. js-lingui-explicit-id
 msgid "Can I use FluencyPal for free?"
 msgstr "Bolehkah saya menggunakan FluencyPal secara percuma?"
@@ -2637,11 +2647,29 @@ msgstr "Komunikasi & Kepimpinan"
 msgid "Community"
 msgstr "Komuniti"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:624
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:640
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:660
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:676
 #. js-lingui-explicit-id
 msgid "Community access"
 msgstr "Akses komuniti"
+
+#: src/features/Header/PaymentHistoryModal.tsx:31
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:87
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:272
+#. js-lingui-explicit-id
+msgid "Community calls"
+msgstr "Panggilan komuniti"
+
+#: src/features/Header/PaymentHistoryModal.tsx:99
+#. js-lingui-explicit-id
+msgid "Community calls, {count} days"
+msgstr "Panggilan komuniti, {count} hari"
+
+#: src/features/Header/PaymentHistoryModal.tsx:94
+#. js-lingui-explicit-id
+msgid "Community calls, {count} months"
+msgstr "Panggilan komuniti, {count} bulan"
 
 #: src/features/Chat/PublicChatModal.tsx:29
 #: src/features/Community/CommunityPage.tsx:26
@@ -2919,7 +2947,7 @@ msgid "Contacts"
 msgstr "Kontak"
 
 #: src/features/Community/SupportPage.tsx:100
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:493
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:529
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Contacts:"
@@ -2962,6 +2990,7 @@ msgstr "Konteks (topik, audiens, tujuan...)"
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:364
 #: src/features/PayWall/CardValidator.tsx:141
 #: src/features/Plan/PlanCard.tsx:210
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:125
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Teruskan"
@@ -3039,7 +3068,9 @@ msgstr "Ujian Kontrak"
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
 #: src/features/Landing/PlanLandingBlock.tsx:278
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:42
 #: src/features/ProgressStat/ProgressStatCard.tsx:59
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:34
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Perbualan"
@@ -3049,15 +3080,18 @@ msgstr "Perbualan"
 msgid "conversation"
 msgstr "perbualan"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:43
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:35
+#. js-lingui-explicit-id
+msgid "Conversation 10"
+msgstr "Perbualan 10"
+
 #: src/features/Conversation/ConversationCanvas.tsx:660
 #. js-lingui-explicit-id
 msgid "Conversation options"
 msgstr "Pilihan perbualan"
 
 #: src/features/Landing/Price/FeatureList.tsx:40
-#: src/features/Landing/Price/PricePage.tsx:449
-#: src/features/Landing/Price/PricePage.tsx:532
-#: src/features/Landing/Price/PricePage.tsx:615
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Amalan perbualan"
@@ -4375,7 +4409,7 @@ msgstr "Abaikan"
 msgid "Do a quiz"
 msgstr "Lakukan kuiz"
 
-#: src/features/Landing/Price/PricePage.tsx:52
+#: src/features/Landing/Price/PricePage.tsx:38
 #. js-lingui-explicit-id
 msgid "Do I need to enter a credit card to start?"
 msgstr "Adakah saya perlu memasukkan kad kredit untuk memulakannya?"
@@ -4396,7 +4430,7 @@ msgstr "Jangan lihat pada jam; lakukan seperti jam. Teruskan berjalan."
 msgid "Do you cover databases and transactions?"
 msgstr "Adakah anda merangkumi pangkalan data dan transaksi?"
 
-#: src/features/Landing/Price/PricePage.tsx:97
+#: src/features/Landing/Price/PricePage.tsx:90
 #. js-lingui-explicit-id
 msgid "Do you offer custom pricing?"
 msgstr "Adakah anda menawarkan harga khusus?"
@@ -4506,7 +4540,6 @@ msgid "Drop EPUB, PDF or DOCX to import book"
 msgstr "Letakkan EPUB, PDF atau DOCX untuk mengimport buku"
 
 #: src/features/Alias/components/RoundSettings.tsx:146
-#: src/features/Usage/Subscription/ActivePlanSelector.tsx:39
 #. js-lingui-explicit-id
 msgid "Duration"
 msgstr "Tempoh"
@@ -4712,15 +4745,6 @@ msgstr ""
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "Bercakap tentang haiwan peliharaan dan rutin harian secara santai dan mesra"
 
-#: src/features/Landing/Price/PricePage.tsx:443
-#: src/features/Landing/Price/PricePage.tsx:526
-#: src/features/Landing/Price/PricePage.tsx:609
-#. js-lingui-explicit-id
-msgid "Engage in real-life conversations like job interviews or ordering food"
-msgstr ""
-"Libatkan dalam perbualan kehidupan sebenar seperti temu duga kerja atau "
-"memesan makanan"
-
 #: src/features/Tasks/useDailyPlans.ts:106
 #. js-lingui-explicit-id
 msgid "Engagement turns practice into fluency. Try today’s tasks."
@@ -4837,8 +4861,8 @@ msgstr "Ralat menganalisa perbualan"
 msgid "Error creating payment session"
 msgstr "Ralat mencipta sesi pembayaran"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:162
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:286
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:172
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:319
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:199
 #. js-lingui-explicit-id
 msgid ""
@@ -4863,8 +4887,8 @@ msgstr "Ralat membuat pelan. Sila cuba lagi."
 msgid "Error during analyzing message"
 msgstr "Ralat semasa menganalisis mesej"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:190
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:296
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:200
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:329
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:147
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:228
 #. js-lingui-explicit-id
@@ -4997,13 +5021,6 @@ msgstr ""
 "Dia akan membantu.  \n"
 "Dia hanya akan mengulas tentang kemanusiaan sambil melakukannya."
 
-#: src/features/Landing/Price/PricePage.tsx:433
-#: src/features/Landing/Price/PricePage.tsx:516
-#: src/features/Landing/Price/PricePage.tsx:599
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "Semua dalam Percuma, ditambah:"
-
 #: src/features/Case/data/reusable/priceSection.ts:12
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
@@ -5023,6 +5040,11 @@ msgstr "Contoh: Saya sedang bersiap untuk perjalanan perniagaan ke Berlin"
 #. js-lingui-explicit-id
 msgid "Examples"
 msgstr "Contoh-contoh"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:97
+#. js-lingui-explicit-id
+msgid "Exams, role-play, and the daily lesson are included"
+msgstr "Peperiksaan, main peranan, dan pelajaran harian disertakan"
 
 #: src/features/Conversation/CallEndMenu.tsx:71
 #. js-lingui-explicit-id
@@ -5305,7 +5327,7 @@ msgstr "Jatuh tujuh kali, bangkit lapan kali."
 #: src/features/Case/data/frontend-senior/faqSection.ts:10
 #: src/features/Case/Landing/components/InterviewHeader.tsx:34
 #: src/features/Landing/LandingPage.tsx:448
-#: src/features/Landing/Price/PricePage.tsx:657
+#: src/features/Landing/Price/PricePage.tsx:226
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "Soalan Lazim"
@@ -5336,7 +5358,7 @@ msgstr ""
 "Maklum balas tidak jelas: \"**tidak cukup pengalaman**\" — tetapi bagaimana "
 "untuk mendapatkan pengalaman tanpa pekerjaan?"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:616
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:652
 #. js-lingui-explicit-id
 msgid "Feedback that helps"
 msgstr "Maklum balas yang membantu"
@@ -5660,7 +5682,7 @@ msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – Amalan Berbicara Bahasa Inggeris AI untuk Kefasihan & Keyakinan"
 
 #: src/features/Landing/LandingPage.tsx:174
-#: src/features/Landing/Price/PricePage.tsx:119
+#: src/features/Landing/Price/PricePage.tsx:112
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Rakan Berbicara Bahasa Inggeris AI Anda"
@@ -5758,21 +5780,6 @@ msgstr ""
 "Sebagai contoh: mengembalikan komputer riba yang rosak, meminta bayaran "
 "balik, menjelaskan kelewatan dalam mesyuarat kerja"
 
-#: src/features/Landing/Price/PricePage.tsx:565
-#. js-lingui-explicit-id
-msgid "For learners committed to fluency"
-msgstr "Untuk pelajar yang komited kepada kefasihan"
-
-#: src/features/Landing/Price/PricePage.tsx:399
-#. js-lingui-explicit-id
-msgid "For learners committed to improving their fluency"
-msgstr "Bagi pelajar yang komited untuk meningkatkan kefasihan mereka"
-
-#: src/features/Landing/Price/PricePage.tsx:482
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "Untuk pelajar yang mahu fleksibiliti"
-
 #: src/features/Case/data/reusable/priceSection.ts:35
 #. js-lingui-explicit-id
 msgid "For long job searches & career growth"
@@ -5821,7 +5828,7 @@ msgstr "Latihan Penulisan Formal"
 msgid "Forty active days — that’s dedication. Keep the habit alive."
 msgstr "Empat puluh hari aktif — itu adalah dedikasi. Kekalkan tabiat ini."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:560
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:596
 #. js-lingui-explicit-id
 msgid "Founder"
 msgstr "Pengasas"
@@ -5898,7 +5905,7 @@ msgstr "Mesra"
 msgid "From a learner"
 msgstr "Daripada seorang pelajar"
 
-#: src/features/Landing/Price/PricePage.tsx:200
+#: src/features/Landing/Price/PricePage.tsx:193
 #. js-lingui-explicit-id
 msgid "From mistakes and hesitation to confident conversations"
 msgstr "Dari kesilapan dan keraguan kepada perbualan yang yakin"
@@ -5931,54 +5938,6 @@ msgstr "Reka Bentuk Sistem Frontend"
 msgid "frontend system design interview"
 msgstr "temu duga reka bentuk sistem frontend"
 
-#: src/features/Navigation/SimpleNavigationBar.tsx:156
-#: src/features/Settings/MyProfile.tsx:81
-#: src/features/Usage/FeatureBlocker.tsx:51
-#: src/features/Usage/Subscription/BalanceStatus.tsx:37
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:499
-#. js-lingui-explicit-id
-msgid "Full Access"
-msgstr "Akses Penuh"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:424
-#. js-lingui-explicit-id
-msgid "Full Access for 1 day"
-msgstr "Akses Penuh selama 1 hari"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:334
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
-#. js-lingui-explicit-id
-msgid "Full Access for 1 month"
-msgstr "Akses Penuh untuk 1 bulan"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
-#. js-lingui-explicit-id
-msgid "Full Access for 1 week"
-msgstr "Akses Penuh selama 1 minggu"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:423
-#. js-lingui-explicit-id
-msgid "Full Access for 1 year"
-msgstr "Akses Penuh selama 1 tahun"
-
-#: src/features/Landing/Price/PricePage.tsx:481
-#. js-lingui-explicit-id
-msgid "Full Access for a Month"
-msgstr "Akses Penuh untuk Sebulan"
-
-#: src/features/Landing/Price/PricePage.tsx:398
-#. js-lingui-explicit-id
-msgid "Full Access for a Week"
-msgstr "Akses Penuh untuk Seminggu"
-
-#: src/features/Landing/Price/PricePage.tsx:564
-#. js-lingui-explicit-id
-msgid "Full Access for a Year"
-msgstr ""
-"Full Access for a Year\n"
-"Akses Penuh untuk Setahun"
-
 #: src/features/Case/data/reusable/priceSection.ts:24
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
@@ -5986,20 +5945,12 @@ msgstr ""
 "\n"
 "Akses penuh kepada semua simulasi\n"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:247
-#. js-lingui-explicit-id
-msgid "Full access until {tillDate}"
-msgstr "Akses penuh sehingga {tillDate}"
-
 #: src/features/Landing/Price/FeatureList.tsx:63
 #. js-lingui-explicit-id
 msgid "Full AI interview coach access"
 msgstr "Akses penuh jurulatih temu duga AI"
 
 #: src/features/Landing/Price/FeatureList.tsx:32
-#: src/features/Landing/Price/PricePage.tsx:437
-#: src/features/Landing/Price/PricePage.tsx:520
-#: src/features/Landing/Price/PricePage.tsx:603
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Akses penuh tutor AI"
@@ -6087,7 +6038,7 @@ msgstr "Kemajuan yang lembut tetap membawa anda ke hadapan. Cuba tugasan hari in
 msgid "German Learning Plan"
 msgstr "Rancangan Pembelajaran Jerman"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:609
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:645
 #. js-lingui-explicit-id
 msgid "Get a clear path based on your level, goals, and progress."
 msgstr "Dapatkan laluan yang jelas berdasarkan tahap, matlamat, dan kemajuan anda."
@@ -6214,12 +6165,6 @@ msgstr "Dapatkan kreativiti"
 msgid "Get detailed feedback"
 msgstr "Dapatkan maklum balas terperinci"
 
-#: src/features/Usage/FeatureBlocker.tsx:99
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:683
-#. js-lingui-explicit-id
-msgid "Get Full Access"
-msgstr "Dapatkan Akses Penuh"
-
 #: src/features/PayWall/CardValidatorQuiz.tsx:69
 #. js-lingui-explicit-id
 msgid ""
@@ -6232,7 +6177,7 @@ msgstr ""
 "kad untuk mencegah penyalahgunaan dan memberikan anda akses tanpa gangguan "
 "kepada semua ciri."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:649
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:685
 #. js-lingui-explicit-id
 msgid "Get help faster if something breaks or you have questions."
 msgstr ""
@@ -6264,20 +6209,19 @@ msgstr ""
 msgid "Get My Plan"
 msgstr "Dapatkan Pelan Saya"
 
-#: src/features/Landing/Price/PricePage.tsx:460
-#: src/features/Landing/Price/PricePage.tsx:543
-#: src/features/Landing/Price/PricePage.tsx:626
+#: src/features/Usage/FeatureBlocker.tsx:99
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:683
 #. js-lingui-explicit-id
-msgid "Get new words and phrases in context"
-msgstr "Dapatkan perkataan dan frasa baru dalam konteks"
+msgid "Get Paid access"
+msgstr "Dapatkan akses berbayar"
 
 #: src/features/Alias/components/TurnStart.tsx:61
 #. js-lingui-explicit-id
 msgid "Get Ready"
 msgstr "Bersedia"
 
-#: src/features/Landing/Price/PricePage.tsx:205
-#: src/features/Landing/Price/PricePage.tsx:672
+#: src/features/Landing/Price/PricePage.tsx:198
+#: src/features/Landing/Price/PricePage.tsx:241
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Mula"
@@ -6286,13 +6230,6 @@ msgstr "Mula"
 #. js-lingui-explicit-id
 msgid "Get Started Free"
 msgstr "Dapatkan Mula secara Percuma"
-
-#: src/features/Landing/Price/PricePage.tsx:438
-#: src/features/Landing/Price/PricePage.tsx:521
-#: src/features/Landing/Price/PricePage.tsx:604
-#. js-lingui-explicit-id
-msgid "Get unlimited access to AI-powered language practice"
-msgstr "Dapatkan akses tanpa had kepada latihan bahasa yang dipacu AI"
 
 #: src/features/Header/PaymentHistoryModal.tsx:26
 #. js-lingui-explicit-id
@@ -6304,7 +6241,7 @@ msgstr "Hadiah"
 msgid "Give a small example (counter, input, button)"
 msgstr "Beri contoh kecil (kaunter, input, butang)"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:529
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:565
 #. js-lingui-explicit-id
 msgid "Give it a few weeks. That’s when real confidence builds."
 msgstr "Berikan beberapa minggu. Itulah ketika keyakinan sebenar terbangun."
@@ -6746,6 +6683,11 @@ msgstr "Perbualan Daftar Masuk Hotel"
 #. js-lingui-explicit-id
 msgid "Hours"
 msgstr "Jam"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:105
+#. js-lingui-explicit-id
+msgid "Hours added to your advanced conversation balance"
+msgstr "Jam ditambah kepada baki perbualan lanjutan anda"
 
 #: src/features/Landing/LandingPage.tsx:133
 #. js-lingui-explicit-id
@@ -7311,13 +7253,6 @@ msgstr "Tingkatkan jawapan seni bina, data, dan ketahanan."
 msgid "improve English fluency"
 msgstr "meningkatkan kelancaran bahasa Inggeris"
 
-#: src/features/Landing/Price/PricePage.tsx:450
-#: src/features/Landing/Price/PricePage.tsx:533
-#: src/features/Landing/Price/PricePage.tsx:616
-#. js-lingui-explicit-id
-msgid "Improve fluency with interactive chat sessions"
-msgstr "Tingkatkan kelancaran dengan sesi sembang interaktif"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:92
 #. js-lingui-explicit-id
 msgid "Improve listening skills as you interpret descriptions."
@@ -7573,7 +7508,7 @@ msgstr "Pasang:"
 msgid "Installing..."
 msgstr "Memasang..."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:617
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:653
 #. js-lingui-explicit-id
 msgid "Instant corrections and better phrasing so you improve faster."
 msgstr ""
@@ -7694,13 +7629,13 @@ msgstr "Adakah mungkin untuk membeli akses tanpa tarikh luput?"
 msgid "Is my data used to train AI models?"
 msgstr "Adakah data saya digunakan untuk melatih model AI?"
 
-#: src/features/Landing/Price/PricePage.tsx:57
+#: src/features/Landing/Price/PricePage.tsx:43
 #. js-lingui-explicit-id
 msgid "Is the payment recurring?"
 msgstr "Adakah pembayaran berulang?"
 
 #: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/Price/PricePage.tsx:45
+#: src/features/Landing/Price/PricePage.tsx:31
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Adakah terdapat percubaan percuma?"
@@ -7781,7 +7716,7 @@ msgstr ""
 msgid "Italian Learning Plan"
 msgstr "Pelan Pembelajaran Bahasa Itali"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:537
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:573
 #. js-lingui-explicit-id
 msgid "I’ll return your money — no questions."
 msgstr "Saya akan memulangkan wang anda — tiada soalan."
@@ -7840,6 +7775,11 @@ msgstr "Sertai calon-calon yang telah mengubah prestasi temuduga mereka"
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Sertai bilik untuk membincangkan topik tertentu dengan ahli lain"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
+#. js-lingui-explicit-id
+msgid "Join scheduled community calls for this paid period"
+msgstr "Sertai panggilan komuniti berjadual untuk tempoh berbayar ini"
 
 #: src/features/FluencyCall/FluencyCallCardView.tsx:291
 #. js-lingui-explicit-id
@@ -8078,11 +8018,6 @@ msgstr "Belajar"
 #. js-lingui-explicit-id
 msgid "Learn anywhere, anytime"
 msgstr "Belajar di mana sahaja, pada bila-bila masa"
-
-#: src/features/Landing/Price/PricePage.tsx:515
-#. js-lingui-explicit-id
-msgid "Learn at full speed with full access"
-msgstr "Belajar dengan laju penuh dengan akses sepenuhnya"
 
 #: src/features/SEO/metadata.ts:137
 #. js-lingui-explicit-id
@@ -8344,7 +8279,7 @@ msgstr "Memuatkan.."
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
-#: src/features/Header/PaymentHistoryModal.tsx:129
+#: src/features/Header/PaymentHistoryModal.tsx:146
 #: src/features/News/NewsTranslationPopover.tsx:58
 #: src/features/Plan/LessonStartModal.tsx:459
 #: src/features/Quiz/components/QuizResultsScreen.tsx:97
@@ -8442,16 +8377,16 @@ msgstr "Pastikan kamera web anda berfungsi dengan baik."
 msgid "Malay Learning Plan"
 msgstr "Rancangan Pembelajaran Bahasa Melayu"
 
-#: src/features/Settings/MyProfile.tsx:82
-#. js-lingui-explicit-id
-msgid "Manage your full access settings"
-msgstr "Urus tetapan akses penuh anda"
-
 #: src/features/Header/NotificationsModal.tsx:35
 #: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
 msgstr "Urus tetapan pemberitahuan anda"
+
+#: src/features/Settings/MyProfile.tsx:82
+#. js-lingui-explicit-id
+msgid "Manage your paid access"
+msgstr "Urus akses berbayar anda"
 
 #: src/features/Settings/MyProfile.tsx:178
 #. js-lingui-explicit-id
@@ -8735,7 +8670,12 @@ msgstr "Soalan Temuduga Palsu"
 msgid "Mock Interviews"
 msgstr "Temubual Olok-olok"
 
-#: src/features/Landing/Price/PricePage.tsx:511
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:37
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "bulan"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:32
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:561
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:607
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:656
@@ -8889,9 +8829,6 @@ msgid "New Game"
 msgstr "Permainan Baru"
 
 #: src/features/Landing/Price/FeatureList.tsx:52
-#: src/features/Landing/Price/PricePage.tsx:464
-#: src/features/Landing/Price/PricePage.tsx:547
-#: src/features/Landing/Price/PricePage.tsx:630
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Peraturan Tatabahasa Baharu"
@@ -8902,9 +8839,6 @@ msgid "New Space"
 msgstr "Ruang Baru"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
-#: src/features/Landing/Price/PricePage.tsx:459
-#: src/features/Landing/Price/PricePage.tsx:542
-#: src/features/Landing/Price/PricePage.tsx:625
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Perkataan Baru"
@@ -9027,7 +8961,7 @@ msgstr "Tiada bayaran pendahuluan lagi."
 msgid "No analysis data yet."
 msgstr "Tiada data analisis lagi."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:632
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:668
 #. js-lingui-explicit-id
 msgid "No auto-renew. You stay in control"
 msgstr "Tiada pembaharuan automatik. Anda berkuasa mengawal."
@@ -9177,7 +9111,7 @@ msgstr ""
 "Tiada pembayaran akan diambil. Kad anda tidak akan disimpan atau digunakan "
 "untuk caj sebagai sebahagian daripada langkah ini."
 
-#: src/features/Header/PaymentHistoryModal.tsx:135
+#: src/features/Header/PaymentHistoryModal.tsx:152
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Tiada pembayaran..."
@@ -9316,18 +9250,17 @@ msgstr ""
 "masa dengan temuduga tiruan berkuasa AI, memahami maklum balas dengan "
 "serta-merta, dan mengulangi soalan sebanyak yang anda mahu."
 
-#: src/features/Landing/Price/PricePage.tsx:58
+#: src/features/Landing/Price/PricePage.tsx:44
 #. js-lingui-explicit-id
 msgid ""
-"No. FluencyPal does not use automatic recurring payments. You decide each "
-"month whether you want to continue and pay again manually."
+"No. FluencyPal does not use automatic recurring payments. You choose a "
+"week, a month, or a year, and you pay again only if you want to continue."
 msgstr ""
 "Tidak. FluencyPal tidak menggunakan pembayaran berulang automatik. Anda "
-"membuat keputusan setiap bulan sama ada anda ingin meneruskan dan membayar "
-"semula secara manual."
+"memilih seminggu, sebulan, atau setahun, dan anda membayar semula hanya "
+"jika anda ingin meneruskan."
 
 #: src/features/Landing/LandingPage.tsx:63
-#: src/features/Landing/Price/PricePage.tsx:46
 #. js-lingui-explicit-id
 msgid ""
 "No. FluencyPal offers a free plan with limited features and a monthly plan "
@@ -9339,7 +9272,18 @@ msgstr ""
 "latihan bertutur dan meneroka ciri-ciri asas tanpa had sebelum membuat "
 "keputusan untuk menaik taraf."
 
-#: src/features/Landing/Price/PricePage.tsx:86
+#: src/features/Landing/Price/PricePage.tsx:32
+#. js-lingui-explicit-id
+msgid ""
+"No. FluencyPal offers a free plan with limited features and paid access for "
+"a week, a month, or a year. You can use the free plan to practice speaking "
+"before you upgrade."
+msgstr ""
+"Tidak. FluencyPal menawarkan pelan percuma dengan ciri-ciri terhad dan "
+"akses berbayar untuk seminggu, sebulan, atau setahun. Anda boleh "
+"menggunakan pelan percuma untuk berlatih bercakap sebelum anda menaik taraf."
+
+#: src/features/Landing/Price/PricePage.tsx:79
 #. js-lingui-explicit-id
 msgid ""
 "No. The price shown is the full price. There are no hidden fees or surprise "
@@ -9348,7 +9292,7 @@ msgstr ""
 "Tidak. Harga yang ditunjukkan adalah harga penuh. Tiada bayaran tersembunyi "
 "atau caj mengejutkan."
 
-#: src/features/Landing/Price/PricePage.tsx:53
+#: src/features/Landing/Price/PricePage.tsx:39
 #. js-lingui-explicit-id
 msgid "No. You can start the free plan without entering any payment details."
 msgstr ""
@@ -9360,7 +9304,7 @@ msgstr ""
 msgid "Nobody is online right now."
 msgstr "Tiada sesiapa dalam talian sekarang."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:406
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:442
 #. js-lingui-explicit-id
 msgid "Non-renewing subscription"
 msgstr "Langganan tidak diperbaharui"
@@ -9380,7 +9324,7 @@ msgstr "Rancangan Pembelajaran Bahasa Norway"
 msgid "NoSQL"
 msgstr "NoSQL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:536
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:572
 #. js-lingui-explicit-id
 msgid "Not feeling real progress?"
 msgstr "Tidak merasakan perkembangan sebenar?"
@@ -9542,6 +9486,11 @@ msgstr "Satu lagi perkara."
 msgid "One pattern. Real speaking practice."
 msgstr "Satu corak. Amalan bercakap sebenar."
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:139
+#. js-lingui-explicit-id
+msgid "One payment. No automatic renewal."
+msgstr "Satu pembayaran. Tiada pembaharuan automatik."
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -9585,7 +9534,7 @@ msgstr "Oops! Ada yang tidak kena"
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
-#: src/features/Landing/Price/PricePage.tsx:207
+#: src/features/Landing/Price/PricePage.tsx:200
 #: src/features/Sentence/Stories.tsx:256
 #. js-lingui-explicit-id
 msgid "Open"
@@ -9754,6 +9703,45 @@ msgstr "Halaman"
 msgid "Page Language"
 msgstr "Bahasa Laman"
 
+#: src/features/Header/PaymentHistoryModal.tsx:27
+#: src/features/Navigation/SimpleNavigationBar.tsx:156
+#: src/features/Settings/MyProfile.tsx:81
+#: src/features/Usage/FeatureBlocker.tsx:51
+#: src/features/Usage/Subscription/BalanceStatus.tsx:37
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:451
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:499
+#. js-lingui-explicit-id
+msgid "Paid access"
+msgstr "Akses berbayar"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:424
+#. js-lingui-explicit-id
+msgid "Paid access for 1 day"
+msgstr ""
+"\n"
+"Akses berbayar untuk 1 hari\n"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:334
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:419
+#. js-lingui-explicit-id
+msgid "Paid access for 1 month"
+msgstr "Akses berbayar selama 1 bulan"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:421
+#. js-lingui-explicit-id
+msgid "Paid access for 1 week"
+msgstr "Akses berbayar selama 1 minggu"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:423
+#. js-lingui-explicit-id
+msgid "Paid access for 1 year"
+msgstr "Akses berbayar selama 1 tahun"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:276
+#. js-lingui-explicit-id
+msgid "Paid access until {tillDate}"
+msgstr "Akses berbayar sehingga {tillDate}"
+
 #: src/features/Community/CommunityPaywall.tsx:36
 #. js-lingui-explicit-id
 msgid "Paid members can read messages and reply."
@@ -9801,17 +9789,17 @@ msgstr "Sebahagiannya betul"
 msgid "Participants"
 msgstr "Peserta"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:475
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:511
 #. js-lingui-explicit-id
 msgid ""
 "Participate in Community activities like sharing posts in the Community "
 "Chat, discuss daily questions and play in the game. Top-5 most active users "
-"in the Community gets a Full Access until they in top-5"
+"in the Community get Paid access until they are in the top 5"
 msgstr ""
-"Sertai aktiviti Komuniti seperti berkongsi kiriman dalam Sembang Komuniti, "
-"bincangkan soalan harian dan bermain dalam permainan. 5 pengguna paling "
-"aktif teratas dalam Komuniti akan mendapat Akses Penuh selagi mereka berada "
-"dalam 5 teratas."
+"Berpartisipasi dalam aktiviti Komuniti seperti berkongsi siaran dalam "
+"Sembang Komuniti, membincangkan soalan harian dan bermain dalam permainan. "
+"5 pengguna paling aktif dalam Komuniti akan mendapat akses Berbayar selagi "
+"mereka berada dalam 5 teratas"
 
 #: src/features/Quiz/components/QuizResultsScreen.tsx:56
 #. js-lingui-explicit-id
@@ -9857,7 +9845,7 @@ msgstr "Jeda"
 msgid "Pause recording"
 msgstr "Jeda rakaman"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:633
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:669
 #. js-lingui-explicit-id
 msgid "Pay once for a day, week, or month — extend only if you want."
 msgstr ""
@@ -9890,7 +9878,7 @@ msgstr "Pembayaran"
 msgid "Payment failed! Please try again."
 msgstr "Pembayaran gagal! Sila cuba lagi."
 
-#: src/features/Header/PaymentHistoryModal.tsx:121
+#: src/features/Header/PaymentHistoryModal.tsx:138
 #: src/features/Settings/MyProfile.tsx:132
 #. js-lingui-explicit-id
 msgid "Payment History"
@@ -9979,7 +9967,7 @@ msgstr "Prestasi, ketahanan, dan corak seni bina"
 msgid "Period"
 msgstr "Tempoh"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:608
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:644
 #. js-lingui-explicit-id
 msgid "Personal learning plan"
 msgstr "Pelan pembelajaran peribadi"
@@ -10372,8 +10360,10 @@ msgstr "Tip praktikal yang boleh anda gunakan segera"
 #: src/features/Header/HeaderStatic.tsx:16
 #: src/features/Landing/LandingPage.tsx:364
 #: src/features/Landing/PlanLandingBlock.tsx:584
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:41
 #: src/features/SEO/metadata.ts:124
 #: src/features/SEO/metadata.ts:128
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:33
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Amalan"
@@ -10384,6 +10374,23 @@ msgid "Practice & Progress"
 msgstr ""
 "\n"
 "Amalan & Kemajuan\n"
+
+#: src/features/Landing/Price/PricePage.tsx:51
+#. js-lingui-explicit-id
+msgid ""
+"Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
+"plan, exams, role-play, and daily lessons. Conversation "
+"({conversationPrice} a month) adds {conversationHours} of advanced "
+"conversation and community calls. Conversation 10 ({conversation10Price} a "
+"month) adds {conversation10Hours} of advanced conversation and community "
+"calls. Week and year options are on this page."
+msgstr ""
+"Latihan ({practicePrice} sebulan) termasuk Just Talk tanpa had, pelan "
+"peribadi, peperiksaan, lakonan berperanan, dan pelajaran harian. Percakapan "
+"({conversationPrice} sebulan) menambah {conversationHours} perbualan "
+"lanjutan dan panggilan komuniti. Percakapan 10 ({conversation10Price} "
+"sebulan) menambah {conversation10Hours} perbualan lanjutan dan panggilan "
+"komuniti. Pilihan mingguan dan tahunan terdapat di halaman ini."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10434,7 +10441,7 @@ msgstr ""
 "Berlatih bahasa Inggeris perbualan dengan FluencyPal, tutor AI anda 24/7. "
 "Tingkatkan kefasihan, sebutan, dan keyakinan."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:528
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:564
 #. js-lingui-explicit-id
 msgid "Practice daily"
 msgstr "Berlatih setiap hari"
@@ -10688,6 +10695,11 @@ msgstr ""
 msgid "PRACTICE, IMPROVE, REPEAT"
 msgstr "LATIH, PERBAIKI, ULANGI"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
+#. js-lingui-explicit-id
+msgid "Practice, plus a block of advanced conversation and community calls"
+msgstr "Latihan, ditambah dengan satu blok perbualan lanjutan dan panggilan komuniti"
+
 #: src/features/FluencyCall/FluencyCallCardView.tsx:289
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
@@ -10826,7 +10838,7 @@ msgstr "Sebelum ini dipilih:"
 #: src/features/Case/Landing/components/InterviewHeader.tsx:28
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:190
+#: src/features/Landing/Price/PricePage.tsx:183
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:74
 #. js-lingui-explicit-id
 msgid "Price"
@@ -10838,7 +10850,7 @@ msgid "Price per day"
 msgstr "Harga per hari"
 
 #: src/features/Case/data/reusable/priceSection.ts:44
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:648
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:684
 #. js-lingui-explicit-id
 msgid "Priority support"
 msgstr "Sokongan keutamaan"
@@ -10964,9 +10976,6 @@ msgstr "Statistik kemajuan"
 #: src/features/Landing/LandingPage.tsx:422
 #: src/features/Landing/Price/FeatureList.tsx:44
 #: src/features/Landing/Price/FeatureList.tsx:75
-#: src/features/Landing/Price/PricePage.tsx:454
-#: src/features/Landing/Price/PricePage.tsx:537
-#: src/features/Landing/Price/PricePage.tsx:620
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Pemantauan kemajuan"
@@ -10982,11 +10991,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Project Gutenberg"
 msgstr "Projek Gutenberg"
-
-#: src/features/Landing/Price/PricePage.tsx:598
-#. js-lingui-explicit-id
-msgid "Promote consistent learning and long-term progress"
-msgstr "Menggalakkan pembelajaran berterusan dan kemajuan jangka panjang"
 
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:96
 #. js-lingui-explicit-id
@@ -11343,7 +11347,7 @@ msgid "Real-world scenarios, not just theory"
 msgstr "Senario sebenar, bukan sekadar teori"
 
 #: src/features/Advanced/AdvancedPage.tsx:497
-#: src/features/Header/PaymentHistoryModal.tsx:107
+#: src/features/Header/PaymentHistoryModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Receipt"
 msgstr "Resit"
@@ -11662,7 +11666,7 @@ msgstr "Mulakan semula"
 msgid "Restaurant"
 msgstr "Restoran"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:512
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:548
 #. js-lingui-explicit-id
 msgid "Results"
 msgstr "Keputusan"
@@ -11763,9 +11767,6 @@ msgid "Role-Play"
 msgstr "Peranan-Permainan"
 
 #: src/features/Landing/Price/FeatureList.tsx:36
-#: src/features/Landing/Price/PricePage.tsx:442
-#: src/features/Landing/Price/PricePage.tsx:525
-#: src/features/Landing/Price/PricePage.tsx:608
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Senario berperanan"
@@ -11983,13 +11984,6 @@ msgstr "Lihat jenis maklum balas backend yang anda akan terima"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Lihat jenis maklum balas yang akan anda terima"
-
-#: src/features/Landing/Price/PricePage.tsx:455
-#: src/features/Landing/Price/PricePage.tsx:538
-#: src/features/Landing/Price/PricePage.tsx:621
-#. js-lingui-explicit-id
-msgid "See your improvements and track your learning journey"
-msgstr "Lihat peningkatan anda dan lacak perjalanan pembelajaran anda"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12768,9 +12762,7 @@ msgstr "Bintang-bintang"
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PricePage.tsx:476
-#: src/features/Landing/Price/PricePage.tsx:559
-#: src/features/Landing/Price/PricePage.tsx:642
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:142
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:319
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -12926,7 +12918,7 @@ msgstr "Mulakan Ujian Temuduga Belakang Anda"
 msgid "Start Your Interview Test"
 msgstr "Mulakan Ujian Temuduga Anda"
 
-#: src/features/Landing/Price/PricePage.tsx:671
+#: src/features/Landing/Price/PricePage.tsx:240
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:40
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -13261,11 +13253,6 @@ msgstr "Serahkan Laporan"
 msgid "Submitting..."
 msgstr "Menghantar..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:27
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Langganan (1 bulan)"
-
 #: src/features/Reader/components/AddBookModal.tsx:311
 #. js-lingui-explicit-id
 msgid "Subtitle"
@@ -13419,7 +13406,7 @@ msgstr "Ambil Ujian Kesiapan Temu Duga"
 msgid "Talk about what you want to bring up on the call."
 msgstr "Bercakap tentang apa yang anda mahu bawa ke panggilan tersebut."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:599
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:635
 #. js-lingui-explicit-id
 msgid "Talk as much as you want — role-plays, assistants, and real conversations."
 msgstr ""
@@ -13440,6 +13427,11 @@ msgstr "Berbual dengan guru AI"
 #. js-lingui-explicit-id
 msgid "Talk with the AI teacher, on your personal plan"
 msgstr "Bercakap dengan guru AI, mengikut pelan peribadi anda"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:87
+#. js-lingui-explicit-id
+msgid "Talk with the teacher as much as you want during paid access"
+msgstr "Berbual dengan guru sebanyak yang anda mahu semasa akses berbayar"
 
 #: src/features/RolePlay/scenarios/talking-to-a-doctor.ts:7
 #. js-lingui-explicit-id
@@ -14296,6 +14288,11 @@ msgstr ""
 msgid "The key: small posts are valid. One sentence is enough."
 msgstr "Kunci: siaran kecil adalah sah. Satu ayat sudah mencukupi."
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
+#. js-lingui-explicit-id
+msgid "The larger advanced-conversation block, with community calls"
+msgstr "Blok perbualan lanjutan yang lebih besar, dengan panggilan komuniti"
+
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
 msgid ""
@@ -14328,17 +14325,6 @@ msgid "The only way to do great work is to love what you do."
 msgstr ""
 "Satu-satunya cara untuk melakukan kerja yang hebat adalah dengan mencintai "
 "apa yang anda lakukan."
-
-#: src/features/Landing/Price/PricePage.tsx:65
-#. js-lingui-explicit-id
-msgid ""
-"The paid plan gives you full access to all FluencyPal features, including "
-"unlimited speaking practice, all learning modes, personalized practice "
-"plans, and progress tracking."
-msgstr ""
-"Pelan berbayar memberi anda akses penuh kepada semua ciri FluencyPal, "
-"termasuk latihan bercakap tanpa had, semua mod pembelajaran, pelan latihan "
-"peribadi, dan penjejakan kemajuan."
 
 #: src/features/Case/data/frontend-junior/reviewSection.ts:41
 #: src/features/Case/data/frontend-senior/reviewSection.ts:41
@@ -15000,7 +14986,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Tugas-tugas Bertutur TOEFL"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:458
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:494
 #. js-lingui-explicit-id
 msgid "Tokens don’t expire, so you can save them for later."
 msgstr "Token tidak tamat tempoh, jadi anda boleh menyimpannya untuk kemudian."
@@ -15162,11 +15148,6 @@ msgstr "Cuba"
 msgid "Try again"
 msgstr "Cuba lagi"
 
-#: src/features/Landing/Price/PricePage.tsx:432
-#. js-lingui-explicit-id
-msgid "Try full features and see significant improvement"
-msgstr "Cuba ciri penuh dan lihat peningkatan ketara"
-
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:87
 #. js-lingui-explicit-id
 msgid "Try these role-plays"
@@ -15296,7 +15277,7 @@ msgstr "Ralat tidak diketahui semasa log masuk"
 msgid "Unknown owner"
 msgstr "Pemilik tidak diketahui"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:598
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:634
 #. js-lingui-explicit-id
 msgid "Unlimited AI speaking practice"
 msgstr "Latihan bercakap AI tanpa had"
@@ -15310,6 +15291,32 @@ msgstr "Ulasan jawapan tanpa had"
 #. js-lingui-explicit-id
 msgid "Unlimited conversations and all practice modes!"
 msgstr "Perbualan tanpa had dan semua mod latihan!"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:96
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:77
+#. js-lingui-explicit-id
+msgid "Unlimited Exams, RolePlay, and Daily Lessons"
+msgstr ""
+"Unlimited Exams, RolePlay, and Daily Lessons\n"
+"\n"
+"Ujian Tanpa Had, Permainan Peranan, dan Pelajaran Harian"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:86
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:75
+#. js-lingui-explicit-id
+msgid "Unlimited Just Talk"
+msgstr "Bercakap Tanpa Had"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:91
+#: src/features/Usage/Subscription/ActivePlanSelector.tsx:76
+#. js-lingui-explicit-id
+msgid "Unlimited Personal Plan"
+msgstr "Pelan Peribadi Tanpa Had"
+
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:46
+#. js-lingui-explicit-id
+msgid "Unlimited practice for the period you choose"
+msgstr "Latihan tanpa had untuk tempoh yang anda pilih"
 
 #: src/features/Usage/Subscription/SubscriptionCard.tsx:40
 #. js-lingui-explicit-id
@@ -15409,7 +15416,7 @@ msgstr "Memuat naik..."
 msgid "Use at least 6 characters."
 msgstr "Gunakan sekurang-kurangnya 6 aksara."
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:452
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:488
 #. js-lingui-explicit-id
 msgid "Use it on weekends, for a short project, or whenever it fits you."
 msgstr ""
@@ -15534,7 +15541,7 @@ msgstr "Lihat bayaran dan keluarkan dari kontrak"
 msgid "View Scoreboard"
 msgstr "Lihat Papan Skor"
 
-#: src/features/Header/PaymentHistoryModal.tsx:123
+#: src/features/Header/PaymentHistoryModal.tsx:140
 #. js-lingui-explicit-id
 msgid "View your payment history"
 msgstr "Lihat sejarah pembayaran anda"
@@ -15852,13 +15859,14 @@ msgstr "Pratonton Maklum Balas Kamera Web"
 msgid "Webcam Setup"
 msgstr "Persediaan Webcam"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:31
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:600
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:658
 #. js-lingui-explicit-id
 msgid "Week"
 msgstr "Minggu"
 
-#: src/features/Landing/Price/PricePage.tsx:428
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:36
 #. js-lingui-explicit-id
 msgid "week"
 msgstr "minggu"
@@ -15893,7 +15901,7 @@ msgstr "Apakah elemen semantik HTML dan mengapa ia penting?"
 msgid "What can I post?"
 msgstr "Apa yang boleh saya pos?"
 
-#: src/features/Landing/Price/PricePage.tsx:64
+#: src/features/Landing/Price/PricePage.tsx:50
 #. js-lingui-explicit-id
 msgid "What do I get with the paid plan?"
 msgstr "Apakah yang saya dapatkan dengan pelan berbayar?"
@@ -16051,7 +16059,12 @@ msgstr "Apa yang anda ingin berlatih dengan AI?"
 msgid "What you will achieve"
 msgstr "Perkara yang akan anda capai"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:592
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:140
+#. js-lingui-explicit-id
+msgid "What's included"
+msgstr "Apa yang disertakan"
+
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:628
 #. js-lingui-explicit-id
 msgid "What's included?"
 msgstr "Apa yang termasuk?"
@@ -16182,23 +16195,12 @@ msgstr ""
 "dengan maklum balas yang dipersonalisasikan, pembetulan masa sebenar, dan "
 "komuniti yang sokong menyokong."
 
-#: src/features/Landing/Price/PricePage.tsx:470
-#: src/features/Landing/Price/PricePage.tsx:553
-#: src/features/Landing/Price/PricePage.tsx:636
-#. js-lingui-explicit-id
-msgid ""
-"With time, AI will adapt to your learning style and it will be more "
-"personalized"
-msgstr ""
-"Dengan masa, AI akan menyesuaikan diri dengan gaya pembelajaran anda dan ia "
-"akan menjadi lebih peribadi"
-
 #: src/features/Header/WithdrawFromContractModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Withdraw from contract"
 msgstr "Menarik diri dari kontrak"
 
-#: src/features/Header/PaymentHistoryModal.tsx:150
+#: src/features/Header/PaymentHistoryModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Withdraw from contract here"
 msgstr "Tarik diri dari kontrak di sini"
@@ -16208,7 +16210,7 @@ msgstr "Tarik diri dari kontrak di sini"
 msgid "Withdrawal confirmed"
 msgstr "Pengeluaran disahkan"
 
-#: src/features/Header/PaymentHistoryModal.tsx:90
+#: src/features/Header/PaymentHistoryModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Withdrawn"
 msgstr "Ditarik Balik"
@@ -16356,13 +16358,14 @@ msgstr "Kata laluan atau emel salah."
 msgid "Wrong Link"
 msgstr "Pautan Yang Salah"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:33
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:614
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:660
 #. js-lingui-explicit-id
 msgid "Year"
 msgstr "Tahun"
 
-#: src/features/Landing/Price/PricePage.tsx:594
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:38
 #. js-lingui-explicit-id
 msgid "year"
 msgstr "tahun"
@@ -16404,7 +16407,7 @@ msgstr ""
 "boleh diakses sepenuhnya daripada peranti mudah alih. Hanya buka laman web "
 "dalam pelayar mudah alih anda dan log masuk ke akaun anda."
 
-#: src/features/Landing/Price/PricePage.tsx:98
+#: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Custom advanced AI talking is available at {price} per hour for "
@@ -16483,7 +16486,7 @@ msgstr ""
 "meminta bayaran balik di halaman Profil/Sejarah Pembayaran, dan kami akan "
 "memprosesnya."
 
-#: src/features/Landing/Price/PricePage.tsx:92
+#: src/features/Landing/Price/PricePage.tsx:85
 #. js-lingui-explicit-id
 msgid ""
 "Yes. If you’re not satisfied with the service, on \"Profile/Payment "
@@ -16494,7 +16497,7 @@ msgstr ""
 "\"Profil/Sejarah pembayaran\" anda boleh meminta pemulangan wang dan kami "
 "akan berbincang mengenai butiran dan memulangkan jumlah yang dibayar."
 
-#: src/features/Landing/Price/PricePage.tsx:72
+#: src/features/Landing/Price/PricePage.tsx:65
 #. js-lingui-explicit-id
 msgid ""
 "Yes. Since there is no automatic renewal, you can simply stop using the app "
@@ -16503,15 +16506,15 @@ msgstr ""
 "Ya. Oleh kerana tiada pembaharuan automatik, anda boleh berhenti "
 "menggunakan aplikasi ini pada bila-bila masa tanpa dikenakan caj semula."
 
-#: src/features/Landing/Price/PricePage.tsx:79
+#: src/features/Landing/Price/PricePage.tsx:72
 #. js-lingui-explicit-id
 msgid ""
-"Yes. You can earn free full access by ranking in the top 5 of the "
+"Yes. You can earn free paid access by ranking in the top 5 of the "
 "FluencyPal game. The game is free to play."
 msgstr ""
-"Ya. Anda boleh mendapatkan akses penuh percuma dengan berada di kedudukan 5 "
-"teratas dalam permainan FluencyPal. Permainan ini boleh dimainkan secara "
-"percuma."
+"Ya. Anda boleh mendapatkan akses berbayar secara percuma dengan menduduki "
+"kedudukan dalam 5 teratas permainan FluencyPal. Permainan ini boleh "
+"dimainkan secara percuma."
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:27
 #. js-lingui-explicit-id
@@ -16690,11 +16693,12 @@ msgstr "Anda boleh memadam mesej anda sendiri pada bila-bila masa."
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:713
 #. js-lingui-explicit-id
 msgid ""
-"You can renew your full access any time before it expires to avoid\n"
+"You can renew your paid access any time before it expires to avoid\n"
 "                          interruption of service."
 msgstr ""
-"Anda boleh memperbaharui akses penuh anda pada bila-bila masa sebelum ia "
-"tamat tempoh untuk mengelakkan gangguan perkhidmatan."
+"Anda boleh memperbaharui akses berbayar anda pada bila-bila masa sebelum ia "
+"tamat untuk mengelakkan gangguan\n"
+"                          perkhidmatan."
 
 #: src/features/Game/UserProfileModal.tsx:183
 #. js-lingui-explicit-id
@@ -16719,8 +16723,8 @@ msgstr "Anda tentukan seberapa kerap anda berlatih"
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:460
 #. js-lingui-explicit-id
-msgid "You do not have full access."
-msgstr "Anda tidak mempunyai akses penuh."
+msgid "You do not have paid access."
+msgstr "Anda tidak mempunyai akses berbayar."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:25
 #. js-lingui-explicit-id
@@ -16738,7 +16742,7 @@ msgstr ""
 "Anda menerima maklum balas seperti \"kuat dari segi teknikal, tetapi tidak "
 "**cukup senior**\" — tanpa butiran khusus"
 
-#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:446
+#: src/features/Usage/Subscription/SubscriptionPaymentModal.tsx:482
 #. js-lingui-explicit-id
 msgid ""
 "You get full access, just like a subscription — but with complete "
@@ -16839,7 +16843,7 @@ msgstr ""
 "Anda tahu tentang teknologi, tetapi **bergelut untuk menjelaskan keputusan "
 "dengan jelas di bawah tekanan**"
 
-#: src/features/Header/PaymentHistoryModal.tsx:156
+#: src/features/Header/PaymentHistoryModal.tsx:173
 #: src/features/Header/WithdrawFromContractModal.tsx:204
 #. js-lingui-explicit-id
 msgid ""
@@ -17007,16 +17011,6 @@ msgstr "Rakan Sinis Anda"
 msgid "Your experience"
 msgstr "Pengalaman anda"
 
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
-#. js-lingui-explicit-id
-msgid "Your full access is active until"
-msgstr "Akses penuh anda aktif sehingga"
-
-#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:702
-#. js-lingui-explicit-id
-msgid "Your full access is active until {activeTill}"
-msgstr "Akses penuh anda aktif sehingga {activeTill}"
-
 #: src/features/Usage/Subscription/BalanceStatus.tsx:95
 #. js-lingui-explicit-id
 msgid "Your full access is active until {date}"
@@ -17084,6 +17078,16 @@ msgstr "Mesej anda..."
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Bahasa Ibu Anda:"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:464
+#. js-lingui-explicit-id
+msgid "Your paid access is active until"
+msgstr "Akses berbayar anda aktif sehingga"
+
+#: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:702
+#. js-lingui-explicit-id
+msgid "Your paid access is active until {activeTill}"
+msgstr "Akses berbayar anda aktif sehingga {activeTill}"
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:264
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:283
@@ -17248,7 +17252,9 @@ msgstr "{count} muat turun"
 msgid "{count} hour"
 msgstr "{count} jam"
 
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:23
 #: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:26
+#: src/features/Usage/Subscription/paidAccessCopy.ts:6
 #. js-lingui-explicit-id
 msgid "{count} hours"
 msgstr "{count} jam"
@@ -17288,6 +17294,11 @@ msgstr "{durationInSecond}s setiap pusingan"
 #. js-lingui-explicit-id
 msgid "{duration}s"
 msgstr "{duration}s"
+
+#: src/features/Header/PaymentHistoryModal.tsx:89
+#. js-lingui-explicit-id
+msgid "{hours} h advanced conversation"
+msgstr "{hours} h perbualan lanjutan"
 
 #: src/features/Advanced/AdvancedPage.tsx:401
 #. js-lingui-explicit-id
