@@ -23,6 +23,8 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 import { WelcomeScreen2 } from './WelcomeScreen2';
 import { ReviewsSection } from './Reviews/ReviewsSection';
 import { landingReviews } from './Reviews/reviewsData';
+import { paidAccessPriceUsd } from '@/features/Price/paidAccessPlans';
+import { PRICE_PER_MONTH_USD } from '@/features/Price/price';
 
 interface FAQItem {
   question: string;
@@ -53,7 +55,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`What’s the price?`),
       answer: i18n._(
-        `FluencyPal offers weekly, monthly, or yearly access, giving you full access to all features. No auto-renew. You pay each month by hand, or you don't. We never charge you while you're not using it.`,
+        `Paid access is one payment for a week, a month, or a year. There is no auto-renew. Practice is {practicePrice} a month: unlimited Just Talk, a personal plan, exams, role-play, and daily lessons. Conversation is {conversationPrice} a month and adds 1 hour of advanced conversation plus community calls. Conversation 10 is {conversation10Price} a month and adds 10 hours of advanced conversation plus community calls. A week costs half of the month. A year costs ten months.`,
+        {
+          practicePrice: `$${PRICE_PER_MONTH_USD}`,
+          conversationPrice: `$${paidAccessPriceUsd('conversation', 'month')}`,
+          conversation10Price: `$${paidAccessPriceUsd('conversation-10', 'month')}`,
+        },
       ),
     },
 
@@ -67,14 +74,14 @@ export default function LandingPage({ lang }: LandingPageProps) {
     {
       question: i18n._(`Is there a free trial?`),
       answer: i18n._(
-        `No. FluencyPal offers a free plan with limited speaking messages and a paid plan for full access. You can try speaking before deciding to upgrade.`,
+        `No. FluencyPal offers a free plan with limited speaking messages and paid access for a week, a month, or a year. You can try speaking before you upgrade.`,
       ),
     },
 
     {
       question: i18n._(`Can I use FluencyPal for free?`),
       answer: i18n._(
-        `Yes, with limits. You can start speaking on the free plan. Unlimited practice and full features require a paid subscription.`,
+        `Yes, with limits. You can start speaking on the free plan. Unlimited practice requires paid access.`,
       ),
     },
 

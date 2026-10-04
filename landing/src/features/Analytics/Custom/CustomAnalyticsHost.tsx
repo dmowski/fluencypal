@@ -12,6 +12,7 @@ import {
   getTrackerUrl,
   isAllowedAnalyticsOrigin,
   isBotBrowser,
+  isLocalAnalyticsHost,
   isReadyMessage,
   LandingAnalyticsEvent,
   nextScrollBucket,
@@ -82,7 +83,7 @@ export function CustomAnalyticsHost() {
   const leaveSentAtRef = useRef(0);
   const visitorIdRef = useRef('');
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
-  const skip = isBotBrowser();
+  const skip = isBotBrowser() || isLocalAnalyticsHost();
 
   const ensureVisitorId = (): string => {
     if (!visitorIdRef.current) {

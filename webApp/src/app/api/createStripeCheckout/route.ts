@@ -10,12 +10,13 @@ import { validateAuthToken } from '../config/firebase';
 import { stripeConfig } from '../payment/config';
 import { pricePerHourUsd } from '@/features/Ai/ai';
 import {
-  ADVANCED_PRICE_PER_HOUR_USD,
-  PRICE_PER_DAY_USD,
-  PRICE_PER_MONTH_USD,
-  PRICE_PER_WEEK_USD,
-  PRICE_PER_YEAR_USD,
-} from '@/features/Price/price';
+  isPaidAccessPlanId,
+  paidAccessCheckoutUsd,
+  paidAccessGrantForCheckout,
+  paidAccessStripeName,
+  PaidAccessPlanId,
+} from '@/features/Price/paidAccessPlans';
+import { ADVANCED_PRICE_PER_HOUR_USD, PRICE_PER_DAY_USD } from '@/features/Price/price';
 import { sentSupportTelegramMessage } from '../telegram/sendTelegramMessage';
 import { toStripeUnit } from 'zero-decimal-currencies';
 import { getConversionRate } from '../currency/getConversionRate';
@@ -120,6 +121,15 @@ export async function POST(request: Request) {
     } else {
       const months = requestData.months;
       const days = requestData.days;
+      const requestedPlan = requestData.plan;
+      if (requestedPlan && !isPaidAccessPlanId(requestedPlan)) {
+        const response: StripeCreateCheckoutResponse = {
+          sessionUrl: null,
+          error: 'Unknown paid access plan',
+        };
+        return Response.json(response);
+      }
+      const plan: PaidAccessPlanId = requestedPlan || 'practice';
 
       if (months > 34 || days > 120) {
         const response: StripeCreateCheckoutResponse = {
@@ -137,18 +147,20 @@ export async function POST(request: Request) {
         return Response.json(response);
       }
 
-      const isWeek = days === 7;
-      const isYear = months === 12;
+      const isDayPass = months === 0 && days > 0 && days !== 7;
+      const planUsd = isDayPass ? null : paidAccessCheckoutUsd({ plan, months, days });
+      if (!isDayPass && planUsd == null) {
+        const response: StripeCreateCheckoutResponse = {
+          sessionUrl: null,
+          error: 'Choose a week, month, or year',
+        };
+        return Response.json(response);
+      }
 
-      // Calculate total price
-      const totalMonth = PRICE_PER_MONTH_USD * rate * months;
-      const totalWeek = PRICE_PER_WEEK_USD * rate;
-      const totalYear = PRICE_PER_YEAR_USD * rate;
-      const totalDay = PRICE_PER_DAY_USD * rate * days;
-
-      const totalPrice = Math.round(
-        isYear ? totalYear : isWeek ? totalWeek : days ? totalDay : totalMonth,
-      );
+      const totalPrice = Math.round(isDayPass ? PRICE_PER_DAY_USD * rate * days : planUsd! * rate);
+      const grant = isDayPass
+        ? { advancedHours: 0, communityMonths: 0, communityDays: 0 }
+        : paidAccessGrantForCheckout({ plan, months, days });
 
       const stripeMoney = Number(toStripeUnit(totalPrice, stripeCurrency.toUpperCase()));
 
@@ -158,8 +170,12 @@ export async function POST(request: Request) {
             price_data: stripeInclusivePriceData({
               currency: stripeCurrency,
               unitAmount: stripeMoney,
-              name: getSubscriptionProductName(months, days),
-              description: getSubscriptionProductDescription(months, days),
+              name: isDayPass
+                ? `Paid access for ${days} day${days > 1 ? 's' : ''}`
+                : paidAccessStripeName(plan, months, days),
+              description: isDayPass
+                ? `Add ${days} day${days > 1 ? 's' : ''} of paid access`
+                : paidAccessStripeName(plan, months, days),
             }),
             quantity: 1,
           },
@@ -175,6 +191,10 @@ export async function POST(request: Request) {
           amountOfHours: 0,
           amountOfMonths: months,
           amountOfDays: days,
+          paidAccessPlan: isDayPass ? 'practice' : plan,
+          openAiLiveHours: String(grant.advancedHours),
+          fluencyCallMonths: String(grant.communityMonths),
+          fluencyCallDays: String(grant.communityDays),
         },
       });
 
@@ -231,17 +251,4 @@ const getHoursCheckoutConfig = ({
       : `${siteUrl}${practicePath}?paymentModal=true`,
     product: isAdvancedHours ? 'advanced-hours' : 'hours',
   };
-};
-
-const getSubscriptionProductName = (months: number, days: number) => {
-  if (months === 12) return 'Full Access for a Year';
-  if (days === 7) return 'Full Access for a Week';
-  if (days) return `Full Access for ${days} day${days > 1 ? 's' : ''}`;
-  return `Full Access for ${months} month${months > 1 ? 's' : ''}`;
-};
-
-const getSubscriptionProductDescription = (months: number, days: number) => {
-  if (days === 7) return 'Add 1 week to your account balance';
-  if (days) return `Add ${days} day${days > 1 ? 's' : ''} to your account balance`;
-  return `Add ${months} month${months > 1 ? 's' : ''} to your account balance`;
 };

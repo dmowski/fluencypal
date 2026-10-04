@@ -116,6 +116,12 @@ export const isAllowedAnalyticsOrigin = (origin: string): boolean => {
 const BOT_PATTERN =
   /bot|crawler|spider|crawling|preview|headless|slurp|bingpreview|facebookexternalhit|whatsapp|telegram|discord|slackbot|twitterbot|linkedinbot|semrush|ahrefs|gptbot|claudebot|bytespider|lighthouse|playwright|puppeteer|cypress|wget|curl|python-requests/i;
 
+export const isLocalAnalyticsHost = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  const hostname = window.location.hostname;
+  return hostname === 'localhost' || hostname === '127.0.0.1';
+};
+
 export const isBotBrowser = (): boolean => {
   if (typeof navigator === 'undefined') return false;
   if (navigator.webdriver) return true;
