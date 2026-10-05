@@ -2,6 +2,8 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { loadEnv, type Connect } from "vite";
 import pricingFile from "../pricing.json" with { type: "json" };
 import type { PricingRegion, RegionPricing } from "../src/shared/pricing";
+import { VOICE_IDS } from "../src/shared/voices";
+import { loadVoicePreview } from "./voicePreview";
 
 export const DEFAULT_MODEL = "qwen-audio-3.0-realtime-flash";
 
@@ -29,14 +31,6 @@ export type PublicConfig = {
   signalingHost: string;
   pricingNotes: string;
 };
-
-export const VOICES = [
-  "longanqian",
-  "longanlingxin",
-  "longanlingxi",
-  "longanxiaoxin",
-  "longanlufeng",
-] as const;
 
 function regionFrom(value: string | undefined): PricingRegion {
   return value === "beijing" ? "beijing" : "singapore";
@@ -70,8 +64,8 @@ export function publicConfig(env: ServerEnv): PublicConfig {
     region: env.region,
     regionLabel: pricingFile.regions[env.region].label,
     pricing: pricingFile.regions[env.region],
-    voices: [...VOICES],
-    defaultVoice: VOICES[0],
+    voices: [...VOICE_IDS],
+    defaultVoice: VOICE_IDS[0] ?? "longanqian",
     signalingHost,
     pricingNotes: pricingFile.notes,
   };
@@ -135,6 +129,19 @@ export function attachSignaling(middlewares: Connect.Server, env: ServerEnv) {
       const path = request.url?.split("?")[0];
       if (path === "/api/config" && request.method === "GET") {
         sendJson(response, 200, publicConfig(env));
+        return;
+      }
+      if (path === "/api/voice-preview" && request.method === "GET") {
+        const voice = new URL(request.url ?? "", "http://localhost").searchParams.get("voice") ?? "";
+        const preview = await loadVoicePreview(voice, env);
+        if (!preview.ok) {
+          sendJson(response, preview.status, { error: preview.error });
+          return;
+        }
+        response.statusCode = 200;
+        response.setHeader("content-type", "audio/wav");
+        response.setHeader("cache-control", "private, max-age=86400");
+        response.end(preview.wav);
         return;
       }
       if (path === "/api/sdp" && request.method === "POST") {
