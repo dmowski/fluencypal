@@ -55,6 +55,7 @@ Conversation/
 - **Results copy:** `useConversationsAnalysis` prompts must address the learner in second person (“You…”), never “the user”.
 - **Quiz finish:** After the signed-in auth wall, the quiz opens the first lesson of the saved plan at `/practice?plan-id=<lesson id>`. It does not auto-start a Just Talk call. Dashboard Just Talk stays a normal `talk` call started from the card.
 - **Daily-task completion** for conversation-driven tasks lives in `useAiConversation/useConversationStat.ts` (see `src/features/Tasks/AGENTS.md`).
+- **Free message cap:** every conversation stops at 10 user messages and shows Buy access, unless the person has full access (subscription or hours) or a game win. Completing today’s tasks does not skip it.
 - **Alias word list:** `AliasGamePanel` is rendered inside `Messages` (not the record footer), so it shows in record, chat, and call. AI Alias (`rolePlayId=alias-game`) starts in **call** mode.
 
 ## `data-testid` hooks

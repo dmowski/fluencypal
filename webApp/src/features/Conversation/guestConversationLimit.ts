@@ -16,15 +16,16 @@ export const isGuestConversationLimited = (_args: {
   conversation: Pick<ConversationMessage, 'isBot' | 'text'>[];
 }): boolean => false;
 
+/** Full access (subscription or hours) or a game win skips the cap. Every other conversation stops at 10. */
 export const isFreeTierUserMessageLimited = ({
-  hasAccess,
+  hasFullAccess,
+  isGameWinner,
   conversation,
 }: {
-  hasAccess: boolean;
+  hasFullAccess: boolean;
+  isGameWinner: boolean;
   conversation: Pick<ConversationMessage, 'isBot' | 'text'>[];
 }): boolean => {
-  if (hasAccess) {
-    return false;
-  }
+  if (hasFullAccess || isGameWinner) return false;
   return countUserMessages(conversation) >= FREE_TIER_USER_MESSAGE_LIMIT;
 };

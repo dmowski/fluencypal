@@ -123,7 +123,7 @@ After day 200 the index clamps to the last plan (`Math.min(..., length - 1)`). A
 
 ## Access
 
-`useAccess.isFullAppAccess` is true when the user is a game winner, has a paid/full subscription, **or** `useDailyTasks.isAllTasksCompleted` (every task in today’s `dayPlan.tasks` has a timestamp). Completing the daily plan is a same-day unlock, not a subscription write.
+`useAccess.isFullAppAccess` is true when the user is a game winner, has a paid/full subscription, **or** `useDailyTasks.isAllTasksCompleted` (every task in today’s `dayPlan.tasks` has a timestamp). Completing the daily plan is a same-day unlock, not a subscription write. It does not skip the conversation 10-message limit. That limit is skipped only for full access (subscription or hours) or a game win.
 
 ## Dashboard UI
 

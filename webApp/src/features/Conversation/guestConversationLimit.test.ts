@@ -32,26 +32,36 @@ describe('guestConversationLimit', () => {
     ).toBe(2);
   });
 
-  it(`limits free-tier users after ${FREE_TIER_USER_MESSAGE_LIMIT} user messages`, () => {
+  it(`shows the ${FREE_TIER_USER_MESSAGE_LIMIT}-message limit unless they have full access or a game win`, () => {
     const messages = Array.from({ length: FREE_TIER_USER_MESSAGE_LIMIT }, (_, i) => ({
       isBot: false as const,
       text: `Reply ${i + 1}`,
     }));
     expect(
       isFreeTierUserMessageLimited({
-        hasAccess: false,
+        hasFullAccess: false,
+        isGameWinner: false,
         conversation: messages,
       }),
     ).toBe(true);
     expect(
       isFreeTierUserMessageLimited({
-        hasAccess: false,
+        hasFullAccess: false,
+        isGameWinner: false,
         conversation: messages.slice(0, FREE_TIER_USER_MESSAGE_LIMIT - 1),
       }),
     ).toBe(false);
     expect(
       isFreeTierUserMessageLimited({
-        hasAccess: true,
+        hasFullAccess: true,
+        isGameWinner: false,
+        conversation: messages,
+      }),
+    ).toBe(false);
+    expect(
+      isFreeTierUserMessageLimited({
+        hasFullAccess: false,
+        isGameWinner: true,
         conversation: messages,
       }),
     ).toBe(false);

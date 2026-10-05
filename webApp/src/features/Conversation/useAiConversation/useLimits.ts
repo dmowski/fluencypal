@@ -1,10 +1,10 @@
 import { ConversationMessage } from '@/features/Conversation/conversation';
 import { RefObject, useEffect } from 'react';
 import { ConversationInstance } from '../ConversationInstance/types';
-import { useAccess } from '@/features/Usage/useAccess';
 import { useUsage } from '@/features/Usage/useUsage';
 import { hasAdvancedTalkAccess } from '@/features/Usage/advancedUsage';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useGame } from '@/features/Game/useGame';
 import {
   isFreeTierUserMessageLimited,
   isGuestConversationLimited as shouldLimitGuestConversation,
@@ -17,12 +17,12 @@ export const useLimits = (
   toggleVolume: (enable: boolean) => void,
   isAdvancedConversation = false,
 ) => {
-  const access = useAccess();
   const usage = useUsage();
   const auth = useAuth();
-  const hasAccess = isAdvancedConversation
+  const game = useGame();
+  const hasFullAccess = isAdvancedConversation
     ? hasAdvancedTalkAccess(usage.advancedBalanceHours || 0)
-    : access.isFullAppAccess;
+    : usage.isFullAccess;
 
   const isGuestConversationLimited = shouldLimitGuestConversation({
     isIdentified: auth.isIdentified,
@@ -30,7 +30,8 @@ export const useLimits = (
   });
 
   const isFreeTierLimited = isFreeTierUserMessageLimited({
-    hasAccess,
+    hasFullAccess,
+    isGameWinner: game.isGameWinner,
     conversation,
   });
 
