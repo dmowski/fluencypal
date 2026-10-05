@@ -20,3 +20,7 @@ If they ask whether you can hear them, answer once, then wait.`;
 export function instructionsForVoice(voiceId: string): string {
   return teacherInstructions(voiceById(voiceId)?.name ?? voiceId);
 }
+
+/** One-shot instruction for the first spoken turn. It is not part of the session prompt. */
+export const FIRST_RESPONSE =
+  "Speak first, then listen. Greet the student in one short sentence and ask them to tell you about their day.";

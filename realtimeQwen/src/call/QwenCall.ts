@@ -1,8 +1,18 @@
 import { setAudioOutput } from "../audio/devices";
 import { normalizeSdp } from "../shared/format";
+import { FIRST_RESPONSE } from "../shared/instructions";
 import { readLevel } from "../shared/levels";
 import { CallMetrics, type Checkpoint, type MetricsSummary } from "../shared/metrics";
 import { parseUsage, type RegionPricing } from "../shared/pricing";
+import {
+  appendTranscriptDelta,
+  emptyTranscript,
+  finishTranscript,
+  type TranscriptLine,
+  type TranscriptState,
+} from "./transcript";
+
+export type { TranscriptLine };
 
 export type TurnMode = "smart_turn" | "server_vad";
 
@@ -16,12 +26,6 @@ export type CallOptions = {
 };
 
 export type CallPhase = "idle" | "connecting" | "live" | "ended" | "error";
-
-export type TranscriptLine = {
-  id: number;
-  role: "you" | "qwen";
-  text: string;
-};
 
 export type SavedReport = {
   savedAt: string;
@@ -163,8 +167,13 @@ export class QwenCall {
   private outputLevel = 0;
   private errors: string[] = [];
   private events: string[] = [];
-  private transcript: TranscriptLine[] = [];
-  private transcriptId = 0;
+  private transcriptState: TranscriptState = emptyTranscript();
+  private assistantItemKey = "qwen-0";
+  private userItemKey = "you-0";
+  private turnSerial = 0;
+  private sawAudioTranscript = false;
+  private greetingSent = false;
+  private hiddenItemIds = new Set<string>();
   private lastUsage: unknown = null;
   private lastPublish = 0;
   private dirty = false;
@@ -267,6 +276,7 @@ export class QwenCall {
         this.pushError("No session.updated event. Microphone was enabled anyway.");
         this.enableMic();
         this.markLive();
+        this.sendGreeting();
         this.publish(true);
       }, 8000);
       this.publish(true);
@@ -334,7 +344,13 @@ export class QwenCall {
     this.interruptHoldStart = null;
     this.errors = [];
     this.events = [];
-    this.transcript = [];
+    this.transcriptState = emptyTranscript();
+    this.assistantItemKey = "qwen-0";
+    this.userItemKey = "you-0";
+    this.turnSerial = 0;
+    this.sawAudioTranscript = false;
+    this.greetingSent = false;
+    this.hiddenItemIds = new Set();
     this.lastUsage = null;
     this.inputLevel = 0;
     this.outputLevel = 0;
@@ -503,6 +519,7 @@ export class QwenCall {
       this.sessionReady = true;
       this.enableMic();
       this.markLive();
+      this.sendGreeting();
       return;
     }
     if (type === "error") {
@@ -511,6 +528,8 @@ export class QwenCall {
       return;
     }
     if (type === "input_audio_buffer.speech_started") {
+      this.turnSerial += 1;
+      this.userItemKey = `you-${this.turnSerial}`;
       this.metrics.speechStarted(now);
       if (this.assistantActive) this.suppressPlayback(now);
       return;
@@ -519,18 +538,60 @@ export class QwenCall {
       this.metrics.speechEnded(now, "server");
       return;
     }
+    if (type === "conversation.item.created") {
+      this.noteHiddenGreeting(event);
+      return;
+    }
+    if (type === "conversation.item.input_audio_transcription.delta") {
+      const key = eventKey(event, this.userItemKey);
+      if (this.hiddenItemIds.has(key)) return;
+      this.transcriptState = appendTranscriptDelta(this.transcriptState, "you", key, rawString(event, ["delta"]));
+      return;
+    }
     if (type === "conversation.item.input_audio_transcription.completed") {
-      this.pushTranscript("you", stringField(event, ["transcript", "text"]));
+      const key = eventKey(event, this.userItemKey);
+      if (this.hiddenItemIds.has(key)) return;
+      this.transcriptState = finishTranscript(
+        this.transcriptState,
+        "you",
+        key,
+        stringField(event, ["transcript", "text"]),
+      );
       return;
     }
     if (type === "response.created") {
+      this.turnSerial += 1;
+      this.assistantItemKey = `qwen-${this.turnSerial}`;
+      this.sawAudioTranscript = false;
       this.assistantActive = true;
       this.metrics.responseCreated(now);
       this.releasePlayback();
       return;
     }
-    if (type === "response.audio_transcript.done" || type === "response.text.done") {
-      this.pushTranscript("qwen", stringField(event, ["transcript", "text"]));
+    if (type === "response.audio_transcript.delta" || type === "response.output_audio_transcript.delta") {
+      this.sawAudioTranscript = true;
+      this.transcriptState = appendTranscriptDelta(
+        this.transcriptState,
+        "qwen",
+        this.assistantItemKey,
+        rawString(event, ["delta"]),
+      );
+      return;
+    }
+    if (type === "response.text.delta") return;
+    if (
+      type === "response.audio_transcript.done" ||
+      type === "response.output_audio_transcript.done" ||
+      type === "response.text.done"
+    ) {
+      if (type === "response.text.done" && this.sawAudioTranscript) return;
+      if (type !== "response.text.done") this.sawAudioTranscript = true;
+      this.transcriptState = finishTranscript(
+        this.transcriptState,
+        "qwen",
+        this.assistantItemKey,
+        stringField(event, ["transcript", "text"]),
+      );
       return;
     }
     if (type === "response.done") {
@@ -564,10 +625,46 @@ export class QwenCall {
     }
   }
 
-  private pushTranscript(role: TranscriptLine["role"], text: string) {
-    if (!text) return;
-    this.transcriptId += 1;
-    this.transcript = [...this.transcript, { id: this.transcriptId, role, text }].slice(-80);
+  private sendGreeting() {
+    if (this.greetingSent || !this.sendChannel || this.sendChannel.readyState !== "open") return;
+    this.greetingSent = true;
+    this.sendChannel.send(
+      JSON.stringify({
+        event_id: `evt_${crypto.randomUUID()}`,
+        type: "conversation.item.create",
+        item: {
+          type: "message",
+          role: "user",
+          content: [{ type: "input_text", text: "Hello." }],
+        },
+      }),
+    );
+  }
+
+  private noteHiddenGreeting(event: JsonRecord) {
+    const item = asRecord(event.item);
+    if (!item || item.role !== "user" || !Array.isArray(item.content)) return;
+    const text = item.content
+      .map((part) => {
+        const record = asRecord(part);
+        return record && typeof record.text === "string" ? record.text : "";
+      })
+      .join("")
+      .trim();
+    if (text !== "Hello." || typeof item.id !== "string" || this.hiddenItemIds.has(item.id)) return;
+    this.hiddenItemIds.add(item.id);
+    this.transcriptState = {
+      ...this.transcriptState,
+      lines: this.transcriptState.lines.filter((line) => line.role !== "you" || line.text.trim() !== "Hello."),
+    };
+    if (!this.sendChannel || this.sendChannel.readyState !== "open") return;
+    this.sendChannel.send(
+      JSON.stringify({
+        event_id: `evt_${crypto.randomUUID()}`,
+        type: "response.create",
+        response: { instructions: FIRST_RESPONSE },
+      }),
+    );
   }
 
   private pushEvent(type: string) {
@@ -689,7 +786,7 @@ export class QwenCall {
       checkpoints: this.metrics.checkpoints.map((checkpoint) => ({ ...checkpoint })),
       errors: this.errors,
       events: this.events,
-      transcript: this.transcript,
+      transcript: this.transcriptState.lines,
       lastUsage: this.lastUsage,
     };
   }
@@ -704,12 +801,20 @@ const fallbackPricing: RegionPricing = {
   outputTextIncludedInAudio: true,
 };
 
-function stringField(event: JsonRecord, keys: string[]): string {
+function eventKey(event: JsonRecord, fallback: string): string {
+  return typeof event.item_id === "string" && event.item_id ? event.item_id : fallback;
+}
+
+function rawString(event: JsonRecord, keys: string[]): string {
   for (const key of keys) {
     const value = event[key];
-    if (typeof value === "string" && value.trim()) return value.trim();
+    if (typeof value === "string" && value.length > 0) return value;
   }
   return "";
+}
+
+function stringField(event: JsonRecord, keys: string[]): string {
+  return rawString(event, keys).trim();
 }
 
 function errorFromResponse(body: string): string {
