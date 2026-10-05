@@ -8,7 +8,7 @@ import { useGame } from '@/features/Game/useGame';
 import { defaultAvatar } from '@/features/Game/avatars';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { ChatProvider } from '@/features/Chat/useChat';
-import { ChatSection } from '@/features/Chat/ChatSection';
+import { FlatChat } from '@/features/Chat/FlatChat';
 import { FluencyCallChatTabs } from './FluencyCallChatTabs';
 import { FluencyCallParticipants } from './FluencyCallParticipants';
 import { ensureFluencyCallChat, fluencyCallChatSpaceId } from './fluencyCallChat';
@@ -77,11 +77,7 @@ export const FluencyCallChatModal = ({
                 type: 'fluencyCall',
               }}
             >
-              <ChatSection
-                contextForAiAnalysis=""
-                placeholder={i18n._('What should we talk about?')}
-                noMessagesPlaceholder={i18n._('No messages yet. Start the conversation.')}
-              />
+              <FlatChat />
             </ChatProvider>
           }
           participants={

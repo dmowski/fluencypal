@@ -16,7 +16,7 @@ Applies to `webApp/src/features/FluencyCall/**`.
 | Schedule                    | Admins create each call, the Meet link, and the start time. Members do not write the call document.                                                                                                         |
 | Visible calls               | Every `scheduled` call that is upcoming, or that started within the last 12 hours. `stopped` calls stay hidden. The card's top-right language menu filters that list. On a narrow card the closed control shows only the flag; the open menu still names each language. A call with no language code is English. A person can join more than one. |
 | Live                        | A listed call is live when `startsAtIso` is in the past. The row opens the Meet link. Stopping the call is a separate admin action.                                                                         |
-| Chat                        | One community chat per call, space id `fluencyCall_{callId}`. Reuse `ChatSection`. Do not build a second messenger.                                                                                         |
+| Chat                        | One community chat per call, space id `fluencyCall_{callId}`. Reuse `FlatChat`. Do not build a second messenger.                                                                                            |
 | Times                       | Stored as UTC ISO. The card shows the viewer's timezone. Telegram uses Warsaw.                                                                                                                              |
 
 ## Architecture
