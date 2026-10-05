@@ -1,0 +1,25 @@
+{
+  "model": "qwen-audio-3.0-realtime-flash",
+  "source": "https://www.alibabacloud.com/help/en/model-studio/qwen-audio-3-0-realtime-flash",
+  "sourceUpdated": "2026-09-28",
+  "unit": "USD per 1,000,000 tokens",
+  "notes": "On audio turns, output text tokens are not billed. Only output audio tokens use the Text&Audio price.",
+  "regions": {
+    "singapore": {
+      "label": "Singapore (international)",
+      "inputText": 0.23,
+      "inputAudio": 0.93,
+      "outputText": 0.7,
+      "outputAudio": 1.87,
+      "outputTextIncludedInAudio": true
+    },
+    "beijing": {
+      "label": "China (Beijing)",
+      "inputText": 0.212,
+      "inputAudio": 0.848,
+      "outputText": 0.636,
+      "outputAudio": 1.696,
+      "outputTextIncludedInAudio": true
+    }
+  }
+}
