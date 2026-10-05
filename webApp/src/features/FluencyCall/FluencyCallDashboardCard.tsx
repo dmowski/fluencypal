@@ -101,16 +101,6 @@ export const FluencyCallDashboardCard = () => {
     requestedClock && requestedLanguage
       ? `${fullLanguageName[requestedLanguage]} · ${fluencyCallRowTitle(requestedClock, false, words)}`
       : null;
-  const accessUntilLabel =
-    access.passActive && !access.included && access.activeUntilIso
-      ? i18n._('Calls included until {date}', {
-          date: new Intl.DateTimeFormat(i18n.locale || 'en', {
-            timeZone,
-            day: 'numeric',
-            month: 'short',
-          }).format(new Date(access.activeUntilIso)),
-        })
-      : null;
 
   const askForAccess = () => {
     setActionError(null);
@@ -230,7 +220,6 @@ export const FluencyCallDashboardCard = () => {
                 )
             : null
         }
-        accessUntilLabel={accessUntilLabel}
         timeZoneLabel={timeZoneCity(timeZone)}
         onLanguageChange={setPickedLanguage}
         onInitiateCall={() => setIsRequestOpen(true)}

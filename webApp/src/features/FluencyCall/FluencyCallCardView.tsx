@@ -249,7 +249,6 @@ export type FluencyCallCardViewProps = {
   requestedAtLabel: string | null;
   paidNotice: boolean;
   practiceNote?: string | null;
-  accessUntilLabel: string | null;
   timeZoneLabel: string;
   onLanguageChange: (language: SupportedLanguage) => void;
   onInitiateCall: () => void;
@@ -264,7 +263,7 @@ export const FluencyCallCardView = ({
   requestedAtLabel,
   paidNotice,
   practiceNote,
-  accessUntilLabel,
+
   timeZoneLabel,
   onLanguageChange,
   onInitiateCall,
@@ -337,12 +336,6 @@ export const FluencyCallCardView = ({
             {i18n._('Talk with AI until the call starts.')}
           </Typography>
         </Stack>
-      ) : null}
-
-      {accessUntilLabel ? (
-        <Typography data-testid="fluency-call-access-until" variant="body2" sx={{ opacity: 0.7 }}>
-          {accessUntilLabel}
-        </Typography>
       ) : null}
 
       {hasCalls ? (
