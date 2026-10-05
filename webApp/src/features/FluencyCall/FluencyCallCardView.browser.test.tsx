@@ -4,6 +4,7 @@ import { I18nProvider } from '@lingui/react';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
+import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import {
   FluencyCallCardView,
@@ -266,25 +267,64 @@ test('change time notifies the card', async () => {
   expect(onInitiateCall).toHaveBeenCalledTimes(1);
 });
 
+const renderConductModal = (props: {
+  onAgree: () => void;
+  onClose: () => void;
+  isSaving?: boolean;
+}) =>
+  render(
+    <BrowserAppShell>
+      <WindowSizesProvider>
+        <FluencyCallConductModal isSaving={false} {...props} />
+      </WindowSizesProvider>
+    </BrowserAppShell>,
+  );
+
+const isInsideViewport = (rect: DOMRect) =>
+  rect.height > 20 && rect.top >= 0 && rect.bottom <= window.innerHeight + 1;
+
 test('the conduct modal agrees or closes', async () => {
   const onAgree = vi.fn();
   const onClose = vi.fn();
-  const agreed = await render(
-    <BrowserAppShell>
-      <FluencyCallConductModal onAgree={onAgree} onClose={onClose} isSaving={false} />
-    </BrowserAppShell>,
-  );
+  const agreed = await renderConductModal({ onAgree, onClose });
 
   await expect.element(page.getByTestId('fluency-call-conduct')).toMatchScreenshot('how-to-behave');
   await userEvent.click(page.getByTestId('fluency-call-conduct-agree'));
   expect(onAgree).toHaveBeenCalledTimes(1);
 
   agreed.unmount();
-  await render(
-    <BrowserAppShell>
-      <FluencyCallConductModal onAgree={onAgree} onClose={onClose} isSaving={false} />
-    </BrowserAppShell>,
-  );
+  const closed = await renderConductModal({ onAgree, onClose });
   await userEvent.click(page.getByTestId('fluency-call-conduct-close'));
   expect(onClose).toHaveBeenCalledTimes(1);
+  closed.unmount();
+});
+
+test('conduct actions stay on a short phone screen', async () => {
+  await page.viewport(320, 480);
+  const container = document.createElement('div');
+  document.body.appendChild(container);
+  try {
+    await render(
+      <BrowserAppShell>
+        <WindowSizesProvider>
+          <FluencyCallConductModal onAgree={() => {}} onClose={() => {}} isSaving={false} />
+        </WindowSizesProvider>
+      </BrowserAppShell>,
+      { container },
+    );
+    await expect.element(page.getByTestId('fluency-call-conduct-agree')).toBeVisible();
+    const dismissButton = page
+      .getByTestId('fluency-call-conduct')
+      .element()
+      .querySelector('button[aria-label="close"]');
+    expect(dismissButton).toBeTruthy();
+    expect(isInsideViewport(dismissButton!.getBoundingClientRect())).toBe(true);
+
+    const agree = page.getByTestId('fluency-call-conduct-agree');
+    agree.element().scrollIntoView({ block: 'center' });
+    expect(isInsideViewport(agree.element().getBoundingClientRect())).toBe(true);
+  } finally {
+    container.remove();
+    await page.viewport(1280, 900);
+  }
 });

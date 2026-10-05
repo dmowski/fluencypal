@@ -2,6 +2,7 @@
 
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 
 export const FluencyCallConductModal = ({
   onAgree,
@@ -15,36 +16,19 @@ export const FluencyCallConductModal = ({
   const { i18n } = useLingui();
 
   return (
-    <Stack
-      role="presentation"
-      onClick={isSaving ? undefined : onClose}
-      sx={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 1400,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.72)',
-      }}
+    <CustomModal
+      isOpen
+      onClose={isSaving ? undefined : onClose}
+      zIndex={1400}
+      backgroundColor="#1c1e24"
+      data-testid="fluency-call-conduct"
     >
-      <Stack
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="fluency-call-conduct-title"
-        data-testid="fluency-call-conduct"
-        onClick={(event) => event.stopPropagation()}
-        sx={{
-          width: '100%',
-          maxWidth: '600px',
-          gap: '16px',
-          padding: '34px',
-          borderRadius: '16px',
-          backgroundColor: '#1c1e24',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-        }}
-      >
-        <Typography id="fluency-call-conduct-title" variant="h3" sx={{ fontWeight: 700 }}>
+      <Stack sx={{ width: '100%', maxWidth: '600px', gap: '16px' }}>
+        <Typography
+          id="fluency-call-conduct-title"
+          variant="h3"
+          sx={{ fontWeight: 700, paddingRight: '48px' }}
+        >
           {i18n._('Before you join')}
         </Typography>
         <Typography sx={{ opacity: 0.75 }}>
@@ -65,16 +49,17 @@ export const FluencyCallConductModal = ({
             </Typography>
           ))}
         </Stack>
-        <Stack direction="row" sx={{ gap: '10px', justifyContent: 'flex-end' }}>
-          <Button
-            variant="text"
-            data-testid="fluency-call-conduct-close"
-            data-analytics="community-call-conduct-close"
-            onClick={onClose}
-            disabled={isSaving}
-          >
-            {i18n._('Close')}
-          </Button>
+        <Stack
+          direction="row"
+          sx={{
+            gap: '10px',
+            position: 'sticky',
+            bottom: 0,
+            backgroundColor: 'rgba(28, 30, 35, 0.5)',
+            backdropFilter: 'blur(10px)',
+            padding: '16px',
+          }}
+        >
           <Button
             variant="contained"
             color="info"
@@ -85,8 +70,17 @@ export const FluencyCallConductModal = ({
           >
             {i18n._('Agree')}
           </Button>
+          <Button
+            variant="text"
+            data-testid="fluency-call-conduct-close"
+            data-analytics="community-call-conduct-close"
+            onClick={onClose}
+            disabled={isSaving}
+          >
+            {i18n._('Close')}
+          </Button>
         </Stack>
       </Stack>
-    </Stack>
+    </CustomModal>
   );
 };
