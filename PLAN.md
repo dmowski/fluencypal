@@ -8,4 +8,4 @@ General strategy:
 
 - Fluency: Access to app before start quiz, separate experimental quiz page
 
-- Optimized for cost AI conversation "model"
+How to do that?

@@ -45,7 +45,6 @@ const cardProps: FluencyCallCardViewProps = {
   languageCode: 'en',
   requestedAtLabel: null,
   paidNotice: false,
-  accessUntilLabel: null,
   timeZoneLabel: 'Warsaw',
   onLanguageChange: () => {},
   onInitiateCall: () => {},
