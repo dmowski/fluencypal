@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Dialog, DialogContent, IconButton } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { X } from 'lucide-react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { fluencyCallLanguageCode } from './callLanguage';
 import {
   formatCallStartLabel,
@@ -66,31 +66,14 @@ export const FluencyCallRequestModal = ({
   };
 
   return (
-    <Dialog
-      open
-      onClose={onClose}
-      maxWidth={false}
+    <CustomModal
+      isOpen
+      onClose={isSending ? undefined : onClose}
+      zIndex={1400}
+      backgroundColor="#1c1e24"
       data-testid="fluency-call-request"
-      slotProps={{
-        paper: {
-          sx: {
-            width: '100%',
-            maxWidth: '500px',
-            margin: '16px',
-            backgroundColor: '#1c1e24',
-            backgroundImage: 'none',
-          },
-        },
-      }}
     >
-      <IconButton
-        aria-label={i18n._('Close')}
-        onClick={onClose}
-        sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}
-      >
-        <X size={18} />
-      </IconButton>
-      <DialogContent sx={{ padding: '28px 24px 24px' }}>
+      <Stack sx={{ width: '100%', maxWidth: '500px', gap: '16px' }}>
         <FluencyCallRequestForm
           date={date}
           time={time}
@@ -118,7 +101,7 @@ export const FluencyCallRequestModal = ({
           }}
           onDone={onClose}
         />
-      </DialogContent>
-    </Dialog>
+      </Stack>
+    </CustomModal>
   );
 };
