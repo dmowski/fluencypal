@@ -3,6 +3,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
+import { ModalHeader } from '../uiKit/Modal/ModalHeader';
 
 export const FluencyCallConductModal = ({
   onAgree,
@@ -24,18 +25,12 @@ export const FluencyCallConductModal = ({
       data-testid="fluency-call-conduct"
     >
       <Stack sx={{ width: '100%', maxWidth: '600px', gap: '16px' }}>
-        <Typography
-          id="fluency-call-conduct-title"
-          variant="h3"
-          sx={{ fontWeight: 700, paddingRight: '48px' }}
-        >
-          {i18n._('Before you join')}
-        </Typography>
-        <Typography sx={{ opacity: 0.75 }}>
-          {i18n._(
+        <ModalHeader
+          title={i18n._('Before you join')}
+          subtitle={i18n._(
             'These calls are a chance to practice with other learners. A few habits make them easier for everyone.',
           )}
-        </Typography>
+        />
         <Stack component="ul" sx={{ gap: '8px', margin: 0, paddingLeft: '18px' }}>
           {[
             i18n._('We speak English, even when the words come slowly.'),
