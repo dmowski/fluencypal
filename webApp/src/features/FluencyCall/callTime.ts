@@ -273,6 +273,19 @@ export function buildCallRequestTelegramMessage(
   ].join('\n');
 }
 
+export function buildCallJoinTelegramMessage(
+  startsAtIso: string,
+  languageCode?: string | null,
+): string {
+  const language = fullEnglishLanguageName[fluencyCallLanguageCode(languageCode)];
+  return [
+    "🙋 FluencyPal call: I'll join",
+    `Language: ${language}`,
+    `Call: ${formatWarsawDateTime(startsAtIso)}`,
+    `UTC: ${startsAtIso}`,
+  ].join('\n');
+}
+
 export function suggestedCallSlot(now: Date): { date: string; time: string } {
   const next = new Date(now);
   next.setDate(next.getDate() + 1);

@@ -1,6 +1,7 @@
 import { FluencyCall } from './types';
 import { fluencyCallLanguageCode } from './callLanguage';
 import {
+  buildCallJoinTelegramMessage,
   buildCallRequestTelegramMessage,
   fluencyCallRowTitle,
   formatCallStartLabel,
@@ -242,6 +243,15 @@ describe('Warsaw time for the Telegram notice', () => {
     expect(buildCallRequestTelegramMessage('2026-10-03T16:00:00.000Z', 'es')).toContain(
       'Language: Spanish',
     );
+  });
+
+  it('includes Warsaw time when someone joins a call', () => {
+    const iso = '2026-10-03T16:00:00.000Z';
+    const message = buildCallJoinTelegramMessage(iso, 'es');
+    expect(message).toContain("I'll join");
+    expect(message).toContain('Language: Spanish');
+    expect(message).toContain(formatWarsawDateTime(iso));
+    expect(message).toContain(`UTC: ${iso}`);
   });
 });
 

@@ -11,6 +11,7 @@ import {
   viewerTimeZone,
 } from './callTime';
 import { setFluencyCallRsvp } from './fluencyCallStore';
+import { notifyFluencyCallJoin } from './notifyFluencyCallJoin';
 import { FluencyCallRowView } from './FluencyCallCardView';
 import { FluencyCall } from './types';
 import { useFluencyCallRsvps, useFluencyCallUnreadCount } from './useFluencyCalls';
@@ -57,6 +58,13 @@ export const FluencyCallConnectedRow = ({
     setIsJoinPending(true);
     try {
       await setFluencyCallRsvp(call.id, auth.uid, joining);
+      if (joining) {
+        try {
+          await notifyFluencyCallJoin(call, await auth.getToken());
+        } catch (error) {
+          console.error('Fluency call join notice failed', error);
+        }
+      }
     } finally {
       setIsJoinPending(false);
     }

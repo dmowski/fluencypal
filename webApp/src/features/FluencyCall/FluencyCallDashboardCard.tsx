@@ -21,6 +21,7 @@ import {
 } from './callTime';
 import { ensureFluencyCallChat, fluencyCallChatSpaceId } from './fluencyCallChat';
 import { setFluencyCallRsvp } from './fluencyCallStore';
+import { notifyFluencyCallJoin } from './notifyFluencyCallJoin';
 import { FluencyCallCardView } from './FluencyCallCardView';
 import { FluencyCallChatModal } from './FluencyCallChatModal';
 import { FluencyCallConductModal } from './FluencyCallConductModal';
@@ -129,6 +130,14 @@ export const FluencyCallDashboardCard = () => {
         { merge: true },
       );
       await setFluencyCallRsvp(pendingJoinId, auth.uid, true);
+      const joinedCall = calls.find((item) => item.id === pendingJoinId);
+      if (joinedCall) {
+        try {
+          await notifyFluencyCallJoin(joinedCall, await auth.getToken());
+        } catch (error) {
+          console.error('Fluency call join notice failed', error);
+        }
+      }
       setAgreedLocal(true);
       setPendingJoinId(null);
     } finally {
