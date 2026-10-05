@@ -6,3 +6,6 @@ General strategy:
 Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
+
+- Validate if demo working
+- Create ads for native languages
