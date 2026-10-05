@@ -24,6 +24,20 @@ export const superviseDemo = async (session: DemoSession) => {
   let closed = false;
   let failed = false;
   let lines: LiveTranscriptLine[] = [];
+  let greeted = false;
+  const greet = () => {
+    if (greeted || closed || socket.readyState !== WebSocket.OPEN) return;
+    socket.send(
+      JSON.stringify({
+        type: 'session.instructions.append',
+        event_id: 'demo-greeting',
+        delegation_id: null,
+        content:
+          'Speak now, without waiting for the student. Greet them briefly in the selected learning language and ask what they enjoy doing in their free time. Then wait for their answer.',
+      }),
+    );
+    greeted = true;
+  };
   socket.on('error', () => {
     failed = true;
   });
@@ -34,6 +48,7 @@ export const superviseDemo = async (session: DemoSession) => {
     try {
       const event = JSON.parse(raw.toString()) as Record<string, unknown>;
       if (event.type === 'session.closed') closed = true;
+      if (event.type === 'session.started') greet();
       lines = appendLiveTranscript(lines, event).slice(-100);
     } catch {
       /* Non-JSON frames do not contain transcripts. */
@@ -117,21 +132,12 @@ export const superviseDemo = async (session: DemoSession) => {
       Math.max(0, session.createdAt + DEMO_CONNECT_MS + DEMO_DURATION_MS - Date.now()),
     );
     let warned = false;
-    let greeted = false;
     try {
       while (!closed && !failed) {
         const current = await readDemo(session.uid);
         if (!current || current.closedAt) break;
-        if (current.startedAt && !greeted) {
-          greeted = true;
-          send({
-            type: 'session.instructions.append',
-            event_id: 'demo-greeting',
-            delegation_id: null,
-            content:
-              'Speak first. Greet the student briefly in the selected learning language and ask what they enjoy doing in their free time.',
-          });
-        }
+        // Fallback if the attach missed session.started; never greet twice.
+        if (current.startedAt) greet();
         const remaining = demoDeadline(current) - Date.now();
         if (remaining <= 0) break;
         if (current.startedAt && remaining <= DEMO_WARNING_MS && !warned) {

@@ -1,6 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-const installDemo = async (page: import('@playwright/test').Page, denied = false) => {
+const installDemo = async (
+  page: import('@playwright/test').Page,
+  denied = false,
+  teacherFirst = false,
+) => {
   await page.route('**/api/openAiLive/demo', async (route) => {
     const body = route.request().postDataJSON();
     await route.fulfill({
@@ -13,7 +17,7 @@ const installDemo = async (page: import('@playwright/test').Page, denied = false
     });
   });
   await page.addInitScript(
-    ({ denied }) => {
+    ({ denied, teacherFirst }) => {
       class Channel extends EventTarget {
         readyState = 'open';
         send() {}
@@ -36,6 +40,19 @@ const installDemo = async (page: import('@playwright/test').Page, denied = false
           this.channel.dispatchEvent(
             new MessageEvent('message', { data: JSON.stringify({ type: 'session.started' }) }),
           );
+          if (teacherFirst) {
+            setTimeout(() => {
+              this.channel.dispatchEvent(
+                new MessageEvent('message', {
+                  data: JSON.stringify({
+                    type: 'session.output_transcript.done',
+                    text: 'Hello! What do you enjoy doing in your free time?',
+                  }),
+                }),
+              );
+            }, 5000);
+            return;
+          }
           this.channel.dispatchEvent(
             new MessageEvent('message', {
               data: JSON.stringify({
@@ -59,7 +76,7 @@ const installDemo = async (page: import('@playwright/test').Page, denied = false
         },
       });
     },
-    { denied },
+    { denied, teacherFirst },
   );
 };
 
@@ -76,7 +93,7 @@ test('demo requires consent, starts only on click, counts down and offers signup
   await expect(page.locator('#demo-consent-warning')).toBeVisible();
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
   await page.getByRole('checkbox').check();
-  await expect(page.locator('#demo-consent-warning')).toHaveCount(0);
+  await expect(page.locator('#demo-consent-warning')).toBeHidden();
   await expect(page.getByTestId('demo-start')).toBeEnabled();
   await page.clock.install();
   await page.getByTestId('demo-start').click();
@@ -243,5 +260,21 @@ test('mobile start scrolls to unchecked consent without starting a call', async 
   expect(consent!.y + consent!.height).toBeLessThan(bar!.y);
   await page.screenshot({ path: testInfo.outputPath('consent-warning.png') });
   await checkbox.check();
-  await expect(page.locator('#demo-consent-warning')).toHaveCount(0);
+  await expect(page.locator('#demo-consent-warning')).toBeHidden();
+});
+
+test('waits for the teacher to speak first without prompting the student', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await installDemo(page, false, true);
+  await page.goto('/demo');
+  await page.getByRole('checkbox').check();
+  await page.clock.install();
+  await page.getByTestId('demo-start').click();
+  await expect(page.getByText('Your teacher is getting ready to speak…')).toBeVisible();
+  await expect(page.getByText('Say something. The words will show up here.')).toHaveCount(0);
+  await page.clock.fastForward(5000);
+  await expect(page.getByText('Hello! What do you enjoy doing in your free time?')).toBeVisible();
+  await expect(page.getByText('Your teacher is getting ready to speak…')).toHaveCount(0);
+  expect(errors).toEqual([]);
 });

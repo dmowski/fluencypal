@@ -133,7 +133,7 @@ export const OpenAiLiveCall = ({
             <Typography sx={{ opacity: 0.7, fontSize: '20px', lineHeight: 1.25 }}>
               {phase === 'connecting'
                 ? i18n._('Connecting…')
-                : i18n._('Say something. The words will show up here.')}
+                : i18n._('Your teacher is getting ready to speak…')}
             </Typography>
           ) : (
             lines.map((line) => (

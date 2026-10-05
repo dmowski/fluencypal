@@ -59,6 +59,7 @@ test('server warns and closes after three minutes without browser ticks', async 
     JSON.stringify({ type: 'session.input_transcript.done', text: 'I like books.' }),
   );
   await jest.advanceTimersByTimeAsync(150_000);
+  expect(sockets[0].sent.filter((event) => event.event_id === 'demo-greeting')).toHaveLength(1);
   expect(sockets[0].sent.some((event) => event.event_id === 'demo-wrap-up')).toBe(true);
   await jest.advanceTimersByTimeAsync(30_000);
   await completion;
@@ -95,4 +96,19 @@ test('absolute watchdog closes even if the database stops responding', async () 
   void run();
   await jest.advanceTimersByTimeAsync(210_000);
   expect(sockets[0].sent.some((event) => event.type === 'session.close')).toBe(true);
+});
+
+test('greets immediately on session.started, before readiness polling, and only once', async () => {
+  read.mockResolvedValue({ ...session, startedAt: null });
+  const run = await superviseDemo({ ...session, startedAt: null });
+  const completion = run();
+  const started = JSON.stringify({ type: 'session.started' });
+  sockets[0].emit('message', started);
+  expect(sockets[0].sent.filter((event) => event.event_id === 'demo-greeting')).toHaveLength(1);
+  sockets[0].emit('message', started);
+  read.mockResolvedValue(session);
+  await jest.advanceTimersByTimeAsync(2000);
+  expect(sockets[0].sent.filter((event) => event.event_id === 'demo-greeting')).toHaveLength(1);
+  await jest.advanceTimersByTimeAsync(178_000);
+  await completion;
 });

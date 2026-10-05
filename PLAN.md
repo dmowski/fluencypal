@@ -8,4 +8,4 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 # Plan
 
 - Validate if demo working
-- Create ads for native languages
+- Create ads for native languages. How?
