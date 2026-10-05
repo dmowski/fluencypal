@@ -14,17 +14,20 @@ export const createOpenAiLiveSession = async ({
   sdp,
   instructions,
   voice,
+  demo = false,
 }: {
   userId: string;
   sdp: string;
   instructions: string;
   voice: string;
+  demo?: boolean;
 }): Promise<CreatedLiveSession> => {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('OpenAI API key is not set');
 
   const response = await fetch('https://api.openai.com/v1/live/sessions', {
     method: 'POST',
+    signal: AbortSignal.timeout(20_000),
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
@@ -33,12 +36,27 @@ export const createOpenAiLiveSession = async ({
     body: JSON.stringify({
       session: {
         model: 'gpt-live-1',
+        ...(demo
+          ? {
+              client: {
+                data_channel: {
+                  allowed_client_events: [
+                    'session.input_audio.mute',
+                    'session.input_audio.unmute',
+                    'session.close',
+                  ],
+                  allowed_server_events: 'all',
+                },
+              },
+            }
+          : {}),
         instructions,
         audio: { output: { voice } },
         delegation: {
           type: 'responses',
           responses: {
             model: OPEN_AI_LIVE_DELEGATION_MODEL,
+            ...(demo ? { max_output_tokens: 256 } : {}),
             instructions: buildOpenAiLiveDelegationInstructions(),
           },
         },

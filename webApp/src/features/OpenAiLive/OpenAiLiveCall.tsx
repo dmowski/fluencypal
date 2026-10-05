@@ -26,8 +26,10 @@ export const OpenAiLiveCall = ({
   onToggleMute,
   onClose,
   onUnlockAudio,
+  showStatus = false,
 }: {
   title: string;
+  showStatus?: boolean;
   variant?: 'overlay' | 'fill';
   muted: boolean;
   lines: LiveTranscriptLine[];
@@ -107,6 +109,14 @@ export const OpenAiLiveCall = ({
           gap: '16px',
         }}
       >
+        {showStatus ? (
+          <Stack direction="row" sx={{ justifyContent: 'space-between', gap: 2 }}>
+            <Typography>{title}</Typography>
+            <Typography data-testid="demo-countdown" sx={{ whiteSpace: 'nowrap' }}>
+              {elapsedLabel}
+            </Typography>
+          </Stack>
+        ) : null}
         <Stack
           ref={listRef}
           data-testid="open-ai-live-transcripts"

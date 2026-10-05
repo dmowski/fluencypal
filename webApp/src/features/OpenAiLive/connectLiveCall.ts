@@ -71,8 +71,12 @@ export const connectOpenAiLiveCall = async ({
   onStarted,
   onRemoteClosed,
   onNeedsUnlock,
+  signal,
+  greet = true,
 }: {
   mode: OpenAiLiveMode;
+  signal?: AbortSignal;
+  greet?: boolean;
   offer: (sdp: string) => Promise<{ sessionId: string; sdp: string }>;
   onEvent: (event: Record<string, unknown>) => void;
   onBind: (socket: LiveSocket) => void;
@@ -103,6 +107,7 @@ export const connectOpenAiLiveCall = async ({
   const destroy = () => {
     if (destroyed) return;
     destroyed = true;
+    signal?.removeEventListener('abort', destroy);
     microphone?.getTracks().forEach((track) => track.stop());
     silence?.stop();
     stopTeacherAudio();
@@ -144,13 +149,20 @@ export const connectOpenAiLiveCall = async ({
     },
   };
 
+  signal?.addEventListener('abort', destroy, { once: true });
+
   try {
+    if (signal?.aborted) throw new DOMException('Cancelled', 'AbortError');
     connection.addEventListener('track', (event) => {
       remoteStream = new MediaStream([event.track]);
       void playTeacherStream(remoteStream).catch(() => onNeedsUnlock());
     });
 
     microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
+    if (signal?.aborted) {
+      microphone.getTracks().forEach((track) => track.stop());
+      throw new DOMException('Cancelled', 'AbortError');
+    }
     micTrack = microphone.getAudioTracks()[0] ?? null;
     if (micTrack) connection.addTrack(micTrack, microphone);
 
@@ -166,12 +178,13 @@ export const connectOpenAiLiveCall = async ({
       logLiveEvent('in', payload);
       if (payload.type === 'session.started' && !started) {
         started = true;
-        send({
-          type: 'session.instructions.append',
-          event_id: 'greet',
-          delegation_id: null,
-          content: buildOpenAiLiveGreeting(mode),
-        });
+        if (greet)
+          send({
+            type: 'session.instructions.append',
+            event_id: 'greet',
+            delegation_id: null,
+            content: buildOpenAiLiveGreeting(mode),
+          });
         onStarted();
       }
       if (payload.type === 'session.closed') onRemoteClosed();
@@ -187,6 +200,7 @@ export const connectOpenAiLiveCall = async ({
     if (!sdp) throw new Error('Missing local SDP offer');
 
     const created = await offer(sdp);
+    if (signal?.aborted) throw new DOMException('Cancelled', 'AbortError');
     socket.sessionId = created.sessionId;
     onBind(socket);
     await connection.setRemoteDescription({ type: 'answer', sdp: created.sdp });
