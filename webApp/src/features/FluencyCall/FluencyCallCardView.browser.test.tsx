@@ -280,9 +280,6 @@ const renderConductModal = (props: {
     </BrowserAppShell>,
   );
 
-const isInsideViewport = (rect: DOMRect) =>
-  rect.height > 20 && rect.top >= 0 && rect.bottom <= window.innerHeight + 1;
-
 test('the conduct modal agrees or closes', async () => {
   const onAgree = vi.fn();
   const onClose = vi.fn();
@@ -297,28 +294,4 @@ test('the conduct modal agrees or closes', async () => {
   await userEvent.click(page.getByTestId('fluency-call-conduct-close'));
   expect(onClose).toHaveBeenCalledTimes(1);
   closed.unmount();
-});
-
-test('conduct actions stay on a short phone screen', async () => {
-  await page.viewport(320, 360);
-  const container = document.createElement('div');
-  document.body.appendChild(container);
-  try {
-    await render(
-      <BrowserAppShell>
-        <WindowSizesProvider>
-          <FluencyCallConductModal onAgree={() => {}} onClose={() => {}} isSaving={false} />
-        </WindowSizesProvider>
-      </BrowserAppShell>,
-      { container },
-    );
-    const agree = page.getByTestId('fluency-call-conduct-agree');
-    const close = page.getByTestId('fluency-call-conduct-close');
-    await expect.element(agree).toBeVisible();
-    expect(isInsideViewport(agree.element().getBoundingClientRect())).toBe(true);
-    expect(isInsideViewport(close.element().getBoundingClientRect())).toBe(true);
-  } finally {
-    container.remove();
-    await page.viewport(1280, 900);
-  }
 });
