@@ -1,5 +1,7 @@
 'use client';
 
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { useEffect, useState } from 'react';
 import { setDoc } from 'firebase/firestore';
 import { useLingui } from '@lingui/react';
@@ -145,7 +147,7 @@ export const FluencyCallDashboardCard = () => {
         languageCode: settings.languageCode || 'en',
       });
       if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
-      window.location.href = result.sessionUrl;
+      await redirectToStripeCheckout(result.sessionUrl);
     } catch (checkoutError) {
       const message =
         checkoutError instanceof FluencyCallApiError || checkoutError instanceof Error

@@ -1,4 +1,7 @@
 'use client';
+
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
@@ -168,8 +171,6 @@ export const TelegramSubscriptionPaymentModal = () => {
 
   const priceInCurrency = currency.convertPrice(durationPriceUsd);
 
-  const analytics = useAnalytics();
-
   const clickOnConfirmRequestStripe = async () => {
     const token = await auth.getToken();
 
@@ -191,7 +192,6 @@ export const TelegramSubscriptionPaymentModal = () => {
         email: auth?.userInfo?.email || 'unknownEmail',
         token,
       });
-      analytics.confirmGtag();
 
       if (!checkoutInfo.sessionUrl) {
         setIsRedirecting(false);
@@ -219,8 +219,7 @@ export const TelegramSubscriptionPaymentModal = () => {
         });
         return;
       } else {
-        setIsRedirecting(false);
-        window.location.href = checkoutInfo.sessionUrl;
+        await redirectToStripeCheckout(checkoutInfo.sessionUrl);
       }
     } catch (error) {
       console.error('Error during payment process:', error);

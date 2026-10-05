@@ -5,7 +5,6 @@ import { isDev } from './isDev';
 import { useAuth } from '../Auth/useAuth';
 import { initHotjar } from './initHotjar';
 import { initSentry } from './initSentry';
-import { initGTag } from './initGTag';
 import { confirmGtag } from './confirmGtag';
 import { sendAnalyticsEvent, setAnalyticsAuthUserId } from './Custom/sendAnalyticsEvent';
 
@@ -33,7 +32,6 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    initGTag();
     initSentry();
     initHotjar();
     setIsInitialized(true);

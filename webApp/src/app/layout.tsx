@@ -1,3 +1,4 @@
+import { BasicAnalytics } from '@/features/Analytics/BasicAnalytics';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '../features/uiKit/theme';
@@ -35,6 +36,7 @@ export default async function RootLayout({
               >
                 <UrlStateProvider>
                   {children}
+                  <BasicAnalytics />
                   <CustomAnalyticsHost sourceApp="webapp" />
                 </UrlStateProvider>
               </LinguiClientProvider>

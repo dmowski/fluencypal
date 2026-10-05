@@ -7,7 +7,6 @@ import { StripeElementLocale, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useAuth } from '../Auth/useAuth';
 import { stripeLocaleMap, SupportedLanguage } from '../Lang/lang';
-import { useAnalytics } from '../Analytics/useAnalytics';
 import { InterviewQuizButton } from '../Goal/Quiz/InterviewQuizButton';
 import { sendFeedbackMessageRequest } from '@/app/api/telegram/sendFeedbackMessageRequest';
 import { getStripePromise } from './getStripePromise';
@@ -28,7 +27,6 @@ function SetupForm({
   const [submitting, setSubmitting] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const analytics = useAnalytics();
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +51,6 @@ function SetupForm({
         setIsSuccess(true);
         // If no error -> success path; rely on webhook to flip the flag.
         // Optionally start a short polling loop here to refresh settings.
-        analytics.confirmGtag();
 
         await sendFeedbackMessageRequest(
           {

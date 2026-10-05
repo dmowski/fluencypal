@@ -1,3 +1,4 @@
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
 import { useEffect, useRef } from 'react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -25,7 +26,7 @@ export const useResumeDayPassCheckout = (): void => {
         email: auth.userInfo?.email,
       });
       if (sessionUrl) {
-        window.location.assign(sessionUrl);
+        await redirectToStripeCheckout(sessionUrl);
       }
     })();
   }, [

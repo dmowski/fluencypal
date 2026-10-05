@@ -1,3 +1,4 @@
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
 import { Stack, Typography } from '@mui/material';
 import { CustomModal } from '../../uiKit/Modal/CustomModal';
 import { useUsage } from '../useUsage';
@@ -47,7 +48,7 @@ export const HoursPaymentModal = () => {
       setIsRedirecting(false);
       return;
     } else {
-      window.location.href = checkoutInfo.sessionUrl;
+      await redirectToStripeCheckout(checkoutInfo.sessionUrl);
     }
   };
 

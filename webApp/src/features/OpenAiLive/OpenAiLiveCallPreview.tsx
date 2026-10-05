@@ -1,5 +1,7 @@
 'use client';
 
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -59,7 +61,7 @@ export const OpenAiLiveCallPreview = () => {
         languageCode: settings.languageCode || 'en',
       });
       if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
-      window.location.href = result.sessionUrl;
+      await redirectToStripeCheckout(result.sessionUrl);
     } catch (error) {
       const message =
         error instanceof OpenAiLiveApiError || error instanceof Error

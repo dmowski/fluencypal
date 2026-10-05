@@ -1,5 +1,7 @@
 'use client';
 
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -170,7 +172,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         languageCode: learn,
       });
       if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
-      window.location.href = result.sessionUrl;
+      await redirectToStripeCheckout(result.sessionUrl);
     } catch (checkoutError) {
       const message =
         checkoutError instanceof FluencyCallApiError || checkoutError instanceof Error

@@ -1,5 +1,7 @@
 'use client';
 
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { useState } from 'react';
 import { useLingui } from '@lingui/react';
 import { useSearchParams } from 'next/navigation';
@@ -85,7 +87,7 @@ export const OpenAiLiveDashboardCard = () => {
         languageCode: settings.languageCode || 'en',
       });
       if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
-      window.location.href = result.sessionUrl;
+      await redirectToStripeCheckout(result.sessionUrl);
     } catch (checkoutError) {
       const message =
         checkoutError instanceof OpenAiLiveApiError || checkoutError instanceof Error

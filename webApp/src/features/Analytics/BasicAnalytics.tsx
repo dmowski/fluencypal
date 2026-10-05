@@ -1,17 +1,14 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { isDev } from './isDev';
 import { initGTag } from './initGTag';
 
 export const BasicAnalytics = () => {
-  const isInitialized = useRef(false);
   useEffect(() => {
-    const isWindow = typeof window !== 'undefined';
-    if (isDev() || isInitialized.current || !isWindow) {
-      return;
-    }
+    // The first-party tracker iframe must not create a second Google tag/page view.
+    if (isDev() || window.self !== window.top) return;
     initGTag();
   }, []);
-  return <></>;
+  return null;
 };

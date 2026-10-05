@@ -1,10 +1,11 @@
 'use client';
 
+import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
+
 import { useState } from 'react';
 import { useNotifications } from '@toolpad/core/useNotifications';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
-import { useAnalytics } from '@/features/Analytics/useAnalytics';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { useCurrency } from '@/features/User/useCurrency';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -21,7 +22,6 @@ export const usePaidAccessCheckout = () => {
   const currency = useCurrency();
   const settings = useSettings();
   const notifications = useNotifications();
-  const analytics = useAnalytics();
   const [isRedirecting, setIsRedirecting] = useState(false);
   const supportedLang = settings.pageLanguageCode || 'en';
 
@@ -64,7 +64,6 @@ export const usePaidAccessCheckout = () => {
         email: auth?.userInfo?.email || 'unknownEmail',
         token,
       });
-      analytics.confirmGtag();
 
       if (!checkoutInfo.sessionUrl) {
         console.error('checkoutInfo', checkoutInfo);
@@ -72,7 +71,7 @@ export const usePaidAccessCheckout = () => {
         return;
       }
 
-      window.location.href = checkoutInfo.sessionUrl;
+      await redirectToStripeCheckout(checkoutInfo.sessionUrl);
     } catch (error) {
       console.error('Error during payment process:', error);
       setIsRedirecting(false);
@@ -99,7 +98,6 @@ export const usePaidAccessCheckout = () => {
         currency: currency.currency,
         email: auth.userInfo?.email,
       });
-      analytics.confirmGtag();
 
       if (!sessionUrl) {
         setIsRedirecting(false);
@@ -110,7 +108,7 @@ export const usePaidAccessCheckout = () => {
         return;
       }
 
-      window.location.href = sessionUrl;
+      await redirectToStripeCheckout(sessionUrl);
     } catch (error) {
       console.error('Error during payment process:', error);
       setIsRedirecting(false);
