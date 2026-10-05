@@ -1,3 +1,5 @@
+import { READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
+
 export type LessonPartType = 'read' | 'speech';
 
 export interface LessonPart {
@@ -79,6 +81,19 @@ export const isOpenTalkPart = (parts: LessonPartState[], partIndex: number): boo
 };
 
 export const isReadAloudPart = (parts: LessonPartState[], partIndex: number): boolean => {
-  if (isOpenTalkPart(parts, partIndex)) return false;
-  return partIndex === 1 && parts[1]?.type === 'speech';
+  if (parts[partIndex]?.type !== 'speech' || isOpenTalkPart(parts, partIndex)) return false;
+
+  // New lessons: short pattern drill (index 1) then long passage (index 2).
+  // Older lessons: only the second part is the long read-aloud.
+  if (partIndex === 1) return true;
+  if (partIndex !== 2) return false;
+
+  const secondLen = parts[1]?.contentMD.trim().length ?? 0;
+  const thirdLen = parts[2]?.contentMD.trim().length ?? 0;
+  // Long passage after a short drill — not a form-check after a legacy long read-aloud.
+  return (
+    secondLen > 0 &&
+    secondLen < READ_ALOUD_MIN_CONTENT_CHARS &&
+    thirdLen >= READ_ALOUD_MIN_CONTENT_CHARS
+  );
 };

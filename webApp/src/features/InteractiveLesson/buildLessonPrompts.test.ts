@@ -33,17 +33,20 @@ describe('buildLessonPrompts', () => {
     expect(prompt).toContain('This week: present continuous');
   });
 
-  it('asks for a longer how-to explanation and a read-aloud speech part', () => {
+  it('asks for a how-to, short pattern drill, then a long read-aloud', () => {
     const prompt = buildLessonSystemPrompt({
       targetLanguageName: 'English',
       nativeLanguageName: 'Polish',
     });
 
     expect(prompt).toContain('4-5 short paragraphs');
+    expect(prompt).toContain('SHORT pattern drill');
+    expect(prompt).toContain('6-10 short examples');
     expect(prompt).toContain('READ ALOUD');
     expect(prompt).toContain('200-320 words');
     expect(prompt).toContain('native-language');
     expect(prompt).toContain('SECOND part');
+    expect(prompt).toContain('THIRD part');
     expect(prompt).toContain('5 connected sentences');
     expect(prompt).toContain('not one short sentence');
   });

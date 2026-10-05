@@ -72,7 +72,7 @@ Progress stores only the last speech part of each lesson (the 2–3 minute open 
 
 1. Open card. If native language equals target language (or either is missing) → language setup + **Continue**.
 2. If no current lesson → generate (loader: _We are preparing a lesson for you, based on your previous practice._).
-3. Render parts. First `read` = a 4-5 paragraph how-to (simple words, examples, optional native-language gloss). Second `speech` = **read this text aloud** (play control still available). Later `speech` = record → stop → auto-check. Last `speech` = 2-3 minute open talk. Feedback is spoken automatically. **Answer again** / **Read again** replaces the previous take.
+3. Render parts. First `read` = a 4-5 paragraph how-to (simple words, examples, optional native-language gloss). Next `speech` = short pattern drill to read aloud (6–10 examples). Next `speech` = **read this longer text aloud** (play control still available). Later `speech` = record → stop → auto-check. Last `speech` = 2-3 minute open talk. Feedback is spoken automatically. **Answer again** / **Read again** replaces the previous take.
 4. **Finish lesson** marks today’s `interactive-lesson` daily task done, then starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
    4b. **Skip this lesson** immediately drops the current lesson (not marked done, daily task stays open) and generates a completely different language form. No confirmation.
 5. When results are ready, show them under the button, scroll there, and speak them automatically (same play control as speech feedback). **Next lesson** / **Finish**. Reopening a finished lesson does not auto-play.
@@ -89,7 +89,9 @@ Each lesson trains **one checkable language form** (article, tense, chunk, contr
 
 The **first part** is a longer how-to (4-5 short paragraphs): when to use the form, when not to, bolded examples, optional native-language gloss.
 
-The **second part is always speech**: a longer passage (4-5 short paragraphs, about 200-320 words) that uses the form, which the learner reads aloud (they can play it first). Feedback checks they read the passage, not a free answer.
+The **second part is always speech**: a short pattern drill (about 6–10 short examples or contrast pairs) that the learner reads aloud so they rehearse today’s exact form before the long passage. Instruction line only — no free speaking, no self-created examples, no extra grammar.
+
+The **third part is always speech**: a longer passage (4-5 short paragraphs, about 200-320 words) that uses the form, which the learner reads aloud (they can play it first). Feedback checks they read the passage, not a free answer.
 
 The **last part is always a 2–3 minute open talk** on a concrete topic. One middle speech task is a translation from the native language into the target language: about 5 connected sentences, not one short sentence. Other quiz-like speech items stay short. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
 
@@ -107,13 +109,13 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 - Recording UI follows `SubmitForm` (mic / stop / visualizer / submit).
 - Speech check keeps the record button in place and shows the cycling _Thinking / Understanding... / Analyzing_ bar beside it.
 - Every part has a small play control at the end of the text (`AudioPlayIcon` → `/api/ttsStream` without cache so the MP3 can start streaming). Lesson playback uses the OpenAI 4096-character cap, not the default 600-character TTS trim.
-- The second part shows **Read aloud** (not **Record answer**). The play control stays so they can listen first.
+- The pattern-drill and long read-aloud parts show **Read aloud** (not **Record answer**). The play control stays so they can listen first.
 - Lesson results use the same play control as speech feedback and auto-play after **Finish lesson**.
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
 
 ## Types
 
-See `types.ts`. `LessonPart.type` is `"read" | "speech"`. A speech part becomes `LessonPartWithUserAnswer` after submit (`userVoiceTranscript`, `aiResultToUser`). `isReadAloudPart` is the second part when it is `speech` and not the last open talk. `isOpenTalkPart` is the last `speech` part.
+See `types.ts`. `LessonPart.type` is `"read" | "speech"`. A speech part becomes `LessonPartWithUserAnswer` after submit (`userVoiceTranscript`, `aiResultToUser`). `isReadAloudPart` is the short pattern drill (second part) and the long passage after it when present; on older lessons only the second part. `isOpenTalkPart` is the last `speech` part.
 
 ## Testing
 

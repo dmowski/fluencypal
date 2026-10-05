@@ -1,5 +1,14 @@
 import { generatedLessonSchema } from './schemas';
 
+const shortPatternDrill = `Read these examples aloud.
+
+I work from home. — I'm working from home today.
+She usually drives. — She's driving today.
+We eat at home. — We're eating out tonight.
+He wears glasses. — He's wearing sunglasses today.
+They usually meet on Friday. — They're meeting on Thursday this week.
+I need more time. — I needed more time yesterday.`;
+
 const longReadAloud = `Read this text aloud.
 
 I watched the demo on Monday. The video was short, but the product looked clear.
@@ -18,18 +27,19 @@ On Friday I watched the demo one more time. The story was simple, and the
 landing page finally matched it. That one thing stayed clear all week.`;
 
 describe('generatedLessonSchema', () => {
-  it('requires a read explanation, then a read-aloud, then a last open talk', () => {
+  it('requires a read explanation, pattern drill, long read-aloud, then a last open talk', () => {
     const parsed = generatedLessonSchema.parse({
       title: 'Articles',
       subTitle: 'Use the with one thing',
       parts: [
         { type: 'read', contentMD: 'How to use the.' },
+        { type: 'speech', contentMD: shortPatternDrill },
         { type: 'speech', contentMD: longReadAloud },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],
     });
 
-    expect(parsed.parts).toHaveLength(3);
+    expect(parsed.parts).toHaveLength(4);
   });
 
   it('rejects a second part that is still a read section', () => {
@@ -39,6 +49,7 @@ describe('generatedLessonSchema', () => {
       parts: [
         { type: 'read', contentMD: 'How to use the.' },
         { type: 'read', contentMD: 'A short text to read.' },
+        { type: 'speech', contentMD: longReadAloud },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],
     });
@@ -46,12 +57,13 @@ describe('generatedLessonSchema', () => {
     expect(result.success).toBe(false);
   });
 
-  it('rejects a read-aloud that is only a short snippet', () => {
+  it('rejects a long read-aloud that is only a short snippet', () => {
     const result = generatedLessonSchema.safeParse({
       title: 'Articles',
       subTitle: 'Use the with one thing',
       parts: [
         { type: 'read', contentMD: 'How to use the.' },
+        { type: 'speech', contentMD: shortPatternDrill },
         { type: 'speech', contentMD: 'Read this text aloud.\n\nI watched the demo.' },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],

@@ -11,16 +11,19 @@ export const generatedLessonSchema = z.object({
         type: z.enum(['read', 'speech']),
       }),
     )
-    .min(3)
+    .min(4)
     .max(12)
     .refine((parts) => parts[0]?.type === 'read', {
       message: 'The first part must be a read explanation',
     })
     .refine((parts) => parts[1]?.type === 'speech', {
-      message: 'The second part must be a read-aloud speech task',
+      message: 'The second part must be a short pattern-drill speech task',
     })
-    .refine((parts) => (parts[1]?.contentMD.trim().length ?? 0) >= READ_ALOUD_MIN_CONTENT_CHARS, {
-      message: 'The read-aloud text must be a longer passage',
+    .refine((parts) => parts[2]?.type === 'speech', {
+      message: 'The third part must be a long read-aloud speech task',
+    })
+    .refine((parts) => (parts[2]?.contentMD.trim().length ?? 0) >= READ_ALOUD_MIN_CONTENT_CHARS, {
+      message: 'The long read-aloud text must be a longer passage',
     })
     .refine((parts) => parts[parts.length - 1]?.type === 'speech', {
       message: 'The last part must be an open speech task',
