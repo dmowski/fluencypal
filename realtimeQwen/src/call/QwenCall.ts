@@ -6,6 +6,7 @@ import { CallMetrics, type Checkpoint, type MetricsSummary } from "../shared/met
 import { parseUsage, type RegionPricing } from "../shared/pricing";
 import {
   appendTranscriptDelta,
+  beginUserTurn,
   emptyTranscript,
   finishTranscript,
   type TranscriptLine,
@@ -530,6 +531,7 @@ export class QwenCall {
     if (type === "input_audio_buffer.speech_started") {
       this.turnSerial += 1;
       this.userItemKey = `you-${this.turnSerial}`;
+      this.transcriptState = beginUserTurn(this.transcriptState);
       this.metrics.speechStarted(now);
       if (this.assistantActive) this.suppressPlayback(now);
       return;

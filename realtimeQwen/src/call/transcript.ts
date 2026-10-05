@@ -10,10 +10,19 @@ export type TranscriptState = {
   partialKey: string;
   partialId: number | null;
   finalized: string[];
+  /** Indexes reserved when the user starts speaking, before their transcript arrives. */
+  userInserts: number[];
 };
 
 export function emptyTranscript(): TranscriptState {
-  return { lines: [], nextId: 1, partialKey: "", partialId: null, finalized: [] };
+  return { lines: [], nextId: 1, partialKey: "", partialId: null, finalized: [], userInserts: [] };
+}
+
+/** Hold a slot so a late user transcript stays ahead of the reply it caused. */
+export function beginUserTurn(state: TranscriptState): TranscriptState {
+  const at = state.lines.length;
+  if (state.userInserts.at(-1) === at) return state;
+  return { ...state, userInserts: [...state.userInserts, at] };
 }
 
 export function appendTranscriptDelta(
@@ -57,12 +66,22 @@ function writeTranscript(
     };
   }
   if (!text) return state;
-  const id = state.nextId;
+  if (role === "qwen" && state.lines.some((line) => line.role === "qwen" && line.text === text)) return state;
+
+  const lines = [...state.lines];
+  let userInserts = state.userInserts;
+  let insertAt = lines.length;
+  if (role === "you" && userInserts.length > 0) {
+    insertAt = Math.min(userInserts[0] ?? lines.length, lines.length);
+    userInserts = userInserts.slice(1).map((index) => (index >= insertAt ? index + 1 : index));
+  }
+  lines.splice(insertAt, 0, { id: state.nextId, role, text });
   return {
     ...state,
-    nextId: id + 1,
+    nextId: state.nextId + 1,
     partialKey: key,
-    partialId: id,
-    lines: [...state.lines, { id, role, text }].slice(-80),
+    partialId: state.nextId,
+    userInserts,
+    lines: lines.slice(-80),
   };
 }
