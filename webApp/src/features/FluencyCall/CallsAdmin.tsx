@@ -371,7 +371,7 @@ export const CallsAdmin = () => {
           {!loading && sortedCalls.length === 0 ? (
             <Typography sx={{ opacity: 0.8 }}>No calls yet.</Typography>
           ) : null}
-          {currentCalls.map(renderCall)}
+          {currentCalls.sort((a, b) => a.startsAtIso.localeCompare(b.startsAtIso)).map(renderCall)}
           {oldCalls.length > 0 ? (
             <Button
               variant="text"
