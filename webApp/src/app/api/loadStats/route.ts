@@ -19,6 +19,10 @@ import { countNewsReadsLast24h } from '@/features/News/countNewsReadsLast24h';
 import { getAllQuizStats } from '@/features/Quiz/backend/getAllQuizStats';
 import { countQuizCompletionsLast24h } from '@/features/Quiz/countQuizCompletionsLast24h';
 
+const RECENT_USERS_LIMIT = 30;
+
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const reqBody = (await request.json()) as AdminStatsRequest;
@@ -32,7 +36,7 @@ export async function POST(request: Request) {
   }
 
   const allUsers = await getAllUsersWithIds({
-    limits: isFullExport ? 1_000_000 : 100,
+    limits: isFullExport ? 1_000_000 : RECENT_USERS_LIMIT,
   });
 
   const [userStats, newsStats, quizStats] = await Promise.all([

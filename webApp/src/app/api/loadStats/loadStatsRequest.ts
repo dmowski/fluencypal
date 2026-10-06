@@ -9,6 +9,9 @@ export const loadStatsRequest = async (request: AdminStatsRequest, auth: string)
     },
     body: JSON.stringify(request),
   });
+  if (!response.ok) {
+    throw new Error(`Failed to load users (${response.status})`);
+  }
   const data = (await response.json()) as AdminStatsResponse;
   return data;
 };

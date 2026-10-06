@@ -2,7 +2,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { useAuth } from '../../Auth/useAuth';
 import { DEV_EMAILS } from '@/features/DevTools/dev';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { loadStatsRequest } from '@/app/api/loadStats/loadStatsRequest';
 import { AdminStatsResponse } from '@/app/api/loadStats/types';
 import dayjs from 'dayjs';
@@ -21,43 +21,53 @@ import { CallsAdmin } from '@/features/FluencyCall/CallsAdmin';
 type UserMode = 'all' | 'lastDay' | 'todayDay' | 'secondDay' | 'old';
 type AdminPage = 'stats' | 'story' | 'emails' | 'blog' | 'calls';
 
+const RECENT_USERS_LIMIT = 30;
+
+const navButtonSx = {
+  width: 'max-content',
+  padding: '10px 50px',
+  margin: '20px 0',
+  borderRadius: '210px',
+};
+
+const adminPageHref = (page: Exclude<AdminPage, 'stats'>) => `/staats?adminPage=${page}`;
+
 export function AdminStats() {
   const auth = useAuth();
   const isAdmin = DEV_EMAILS.includes(auth?.userInfo?.email || '');
   const [isLoading, setIsLoading] = useState(false);
+  const [loadError, setLoadError] = useState('');
   const isLoadingRef = useRef(false);
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
+  const [loadedFullList, setLoadedFullList] = useState(false);
 
   const [usersToShowMode, setUsersToShowMode] = useState<UserMode>('all');
 
-  const data = useMemo(() => {
-    if (!sourceData) return null;
-    const cleanUsers = sourceData?.users.filter((user) => {
-      const isHasConversations = (user.conversationMeta.conversationCount || 0) > 0;
-      const hasRecentLessons = (user.lessonsLast24h || 0) > 0;
-      return isHasConversations || hasRecentLessons;
-    });
-    return { ...sourceData, users: cleanUsers || [] };
-  }, [sourceData]);
+  const data = sourceData;
 
-  const loadFullData = async () => {
-    isLoadingRef.current = true;
-    setIsLoading(true);
-    const result = await loadStatsRequest({ isFullExport: true }, await auth.getToken());
-    isLoadingRef.current = false;
-    setIsLoading(false);
-    setData(result);
-  };
-
-  const loadStatsData = async () => {
+  const loadStats = async (isFullExport: boolean) => {
     if (isLoadingRef.current) return;
     isLoadingRef.current = true;
     setIsLoading(true);
-    const result = await loadStatsRequest({ isFullExport: false }, await auth.getToken());
-    isLoadingRef.current = false;
-    setIsLoading(false);
-    setData(result);
+    setLoadError('');
+    try {
+      const result = await loadStatsRequest({ isFullExport }, await auth.getToken());
+      if (!Array.isArray(result?.users)) {
+        throw new Error('Failed to load users');
+      }
+      setLoadedFullList(isFullExport);
+      setData(result);
+    } catch (error) {
+      console.error(error);
+      setLoadError(error instanceof Error ? error.message : 'Failed to load users');
+    } finally {
+      isLoadingRef.current = false;
+      setIsLoading(false);
+    }
   };
+
+  const loadFullData = () => loadStats(true);
+  const loadStatsData = () => loadStats(false);
 
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
@@ -107,19 +117,19 @@ export function AdminStats() {
   };
 
   useEffect(() => {
-    if (!isAdmin || isLoading || isLoadingRef.current || data) return;
-    loadStatsData();
-  }, [isLoading, isAdmin]);
+    if (auth.loading || !isAdmin || sourceData || isLoadingRef.current) return;
+    void loadStatsData();
+  }, [auth.loading, isAdmin]);
 
-  const users =
-    data?.users.sort((a, b) => {
-      const aLostLogins = a.userData.lastLoginAtDateTime || '';
-      const bLostLogins = b.userData.lastLoginAtDateTime || '';
-      if (!aLostLogins && !bLostLogins) return 0;
-      if (!aLostLogins) return 1;
-      if (!bLostLogins) return -1;
-      return dayjs(bLostLogins).diff(dayjs(aLostLogins));
-    }) || [];
+  const sortedUsers = [...(data?.users || [])].sort((a, b) => {
+    const aLostLogins = a.userData.lastLoginAtDateTime || '';
+    const bLostLogins = b.userData.lastLoginAtDateTime || '';
+    if (!aLostLogins && !bLostLogins) return 0;
+    if (!aLostLogins) return 1;
+    if (!bLostLogins) return -1;
+    return dayjs(bLostLogins).diff(dayjs(aLostLogins));
+  });
+  const users = loadedFullList ? sortedUsers : sortedUsers.slice(0, RECENT_USERS_LIMIT);
 
   const lastDayUsers = users.filter((user) => {
     const lastLogin = user.userData.lastLoginAtDateTime;
@@ -181,10 +191,7 @@ export function AdminStats() {
 
   const usersToShow = usersToShowMap[usersToShowMode];
 
-  const [adminPage, setAdminPage] = useUrlState<AdminPage>('adminPage', 'stats', false);
-  const toggleAdminPage = (page: Exclude<AdminPage, 'stats'>) => {
-    setAdminPage(adminPage === page ? 'stats' : page);
-  };
+  const [adminPage] = useUrlState<AdminPage>('adminPage', 'stats', false);
   const settings = useSettings();
   const pageLanguage = settings.pageLanguageCode || 'en';
 
@@ -195,17 +202,13 @@ export function AdminStats() {
         sx={{
           flexDirection: 'row',
           alignItems: 'center',
+          flexWrap: 'wrap',
           gap: '20px',
         }}
       >
         <Button
           href={`${getUrlStart(pageLanguage)}practice`}
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
+          sx={navButtonSx}
           variant="contained"
           startIcon={<House />}
         >
@@ -213,67 +216,46 @@ export function AdminStats() {
         </Button>
 
         <Button
-          onClick={() => toggleAdminPage('story')}
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
+          href="/staats"
+          sx={navButtonSx}
+          variant={adminPage === 'stats' ? 'contained' : 'outlined'}
+        >
+          Admin
+        </Button>
+
+        <Button
+          href={adminPageHref('story')}
+          sx={navButtonSx}
           variant={adminPage === 'story' ? 'contained' : 'outlined'}
         >
           Open Story Creator
         </Button>
 
         <Button
-          onClick={() => toggleAdminPage('emails')}
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
+          href={adminPageHref('emails')}
+          sx={navButtonSx}
           variant={adminPage === 'emails' ? 'contained' : 'outlined'}
         >
           Emails
         </Button>
 
         <Button
-          onClick={() => toggleAdminPage('blog')}
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
+          href={adminPageHref('blog')}
+          sx={navButtonSx}
           variant={adminPage === 'blog' ? 'contained' : 'outlined'}
         >
           Blog
         </Button>
 
         <Button
-          onClick={() => toggleAdminPage('calls')}
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
+          href={adminPageHref('calls')}
+          sx={navButtonSx}
           variant={adminPage === 'calls' ? 'contained' : 'outlined'}
         >
           Calls
         </Button>
 
-        <Button
-          href="/staats/journey"
-          sx={{
-            width: 'max-content',
-            padding: '10px 50px',
-            margin: '20px 0',
-            borderRadius: '210px',
-          }}
-          variant="outlined"
-        >
+        <Button href="/staats/journey" sx={navButtonSx} variant="outlined">
           Journey
         </Button>
       </Stack>
@@ -289,6 +271,14 @@ export function AdminStats() {
       ) : (
         <>
           {isLoading && <Typography>Loading...</Typography>}
+          {loadError && (
+            <Stack sx={{ alignItems: 'flex-start', gap: '8px' }}>
+              <Typography color="error">{loadError}</Typography>
+              <Button variant="outlined" onClick={() => void loadStatsData()}>
+                Load users
+              </Button>
+            </Stack>
+          )}
           {data && (
             <>
               <Stack
