@@ -287,8 +287,7 @@ export const generateMetadataInfo = async ({
       needIndex = false;
     }
 
-    title =
-      `${blog?.title || 'Blog'} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
+    title = `${blog?.title || 'Blog'} | ${APP_NAME}`;
     description = blog?.subTitle || '';
     keywords = blog?.keywords || [];
     openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;

@@ -1,10 +1,48 @@
 import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage } from '@/features/Lang/lang';
+import { I18n } from '@lingui/core';
 import { Box, List, ListItem, ListItemText, Stack, Typography } from '@mui/material';
 import { JSX } from 'react';
 
+const interviewFaqAnswer = (instruction: string, english: string) => `${instruction} “${english}”`;
+
+export const getInterviewInEnglishFaq = (i18n: I18n) =>
+  [
+    {
+      question: i18n._('How do I answer “Tell me about yourself” in an English interview?'),
+      instruction: i18n._('Say this, and keep it under one minute:'),
+      english:
+        'I am a [job] with [X] years of experience in [field]. In my last role I [result]. I want this job because [reason].',
+    },
+    {
+      question: i18n._('How do I answer “Why do you want this job?” in English?'),
+      instruction: i18n._('Name the job, not a generic compliment:'),
+      english: 'This role matches my experience in [field], and I want to [specific contribution].',
+    },
+    {
+      question: i18n._('How do I answer “What are your strengths?” in an English interview?'),
+      instruction: i18n._('Pick skills the job description asks for:'),
+      english: 'My strengths are [skill] and [skill]. For example, I [short result].',
+    },
+    {
+      question: i18n._('How do I answer “What is your weakness?” in an English interview?'),
+      instruction: i18n._('Name a real habit and the step you already took:'),
+      english: 'I used to [weakness]. I am improving by [what you do now].',
+    },
+    {
+      question: i18n._('How do I answer “Why should we hire you?” in English?'),
+      instruction: i18n._('Give one skill and one proof:'),
+      english:
+        'I can [skill this job needs], and I have already [proof]. I am ready to contribute to [team or goal].',
+    },
+  ].map((item) => ({
+    question: item.question,
+    answer: interviewFaqAnswer(item.instruction, item.english),
+  }));
+
 export const PhrasesArticles = ({ lang }: { lang: SupportedLanguage }): JSX.Element => {
   const i18n = getI18nInstance(lang);
+  const interviewFaq = getInterviewInEnglishFaq(i18n);
 
   return (
     <Stack
@@ -12,6 +50,25 @@ export const PhrasesArticles = ({ lang }: { lang: SupportedLanguage }): JSX.Elem
         '--mui-palette-text-secondary': '#222',
       }}
     >
+      <Stack sx={{ py: 2 }}>
+        <Typography variant="h2">
+          {i18n._('English interview questions and sample answers')}
+        </Typography>
+        <Typography>
+          {i18n._(
+            'These are the questions people ask in an English job interview, with a short answer you can adapt.',
+          )}
+        </Typography>
+        {interviewFaq.map((item) => (
+          <Box key={item.question} sx={{ pt: 2 }}>
+            <Typography component="h3" sx={{ fontSize: '1.05rem', fontWeight: 600 }}>
+              {item.question}
+            </Typography>
+            <Typography>{item.answer}</Typography>
+          </Box>
+        ))}
+      </Stack>
+
       <Typography>
         {i18n._(`At the end, we’ll share a valuable tool for realistic interview practice.`)}
       </Typography>

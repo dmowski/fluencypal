@@ -115,15 +115,37 @@ describe('SEO Metadata', () => {
       expect(meta.openGraph.images[0].url).toBe(`${siteUrl}openGraph.webp`);
     });
 
+    test('interview post title leads with the query', async () => {
+      const meta = await generateMetadataInfo({
+        lang: 'en',
+        currentPath: 'blog',
+        blogId: 'phrases-for-an-interview-in-english',
+      });
+      expect(meta.title).toBe('Interview in English: Questions and Answers | FluencyPal');
+      expect(meta.description).toBe(
+        'Job interview questions in English, with sample answers and phrases you can say.',
+      );
+    });
+
+    test('business interview post title leads with the query', async () => {
+      const meta = await generateMetadataInfo({
+        lang: 'en',
+        currentPath: 'blog',
+        blogId: '15-business-english-phrases-interview',
+      });
+      expect(meta.title).toBe('Business English Interview: Questions and Phrases | FluencyPal');
+      expect(meta.description).toBe(
+        'Questions, sample answers, and phrases for a business English job interview.',
+      );
+    });
+
     test('generates metadata for blog with blogId', async () => {
       const meta = await generateMetadataInfo({
         lang: 'en',
         currentPath: 'blog',
         blogId: 'no-projections-available',
       });
-      expect(meta.title).toBe(
-        'No Projections Available - Practice English Conversation with AI | FluencyPal',
-      );
+      expect(meta.title).toBe('No Projections Available | FluencyPal');
       expect(meta.description).toBe('A silence at the end of the algorithm');
       expect(meta.openGraph.images[0].url).toBe('/blog/dog/dog-park.webp');
     });

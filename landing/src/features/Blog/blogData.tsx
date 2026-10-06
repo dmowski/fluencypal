@@ -246,15 +246,15 @@ And for the first time in weeks, I didn’t want to be anywhere else.
     },
     {
       id: 'phrases-for-an-interview-in-english',
-      title: i18n._(`Phrases for an interview in English`),
+      title: i18n._('Interview in English: Questions and Answers'),
       subTitle: i18n._(
-        'Master essential phrases for interviews in English and boost your confidence with FluencyPal.',
+        'Job interview questions in English, with sample answers and phrases you can say.',
       ),
       keywords: [
-        i18n._('Interview English'),
+        i18n._('Interview in English'),
+        i18n._('Job interview questions in English'),
         i18n._('Business English'),
         i18n._('Job Interview Tips'),
-        i18n._('Phrases for an interview in English'),
       ],
       content: '',
       contendElement: <PhrasesArticles lang={lang} />,
@@ -269,9 +269,9 @@ And for the first time in weeks, I didn’t want to be anywhere else.
     },
     {
       id: '15-business-english-phrases-interview',
-      title: i18n._('15 Must-Know Business English Phrases to Ace Your Next Job Interview'),
+      title: i18n._('Business English Interview: Questions and Phrases'),
       subTitle: i18n._(
-        'Master these essential phrases and boost your confidence in any professional interview setting.',
+        'Questions, sample answers, and phrases for a business English job interview.',
       ),
       keywords: [
         i18n._('Business English'),

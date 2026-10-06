@@ -19,6 +19,7 @@ import { RolePlayCard } from '../Landing/RolePlay/RolePlayCard';
 import { HeaderStatic } from '../Header/HeaderStatic';
 import Image from 'next/image';
 import dayjs from 'dayjs';
+import { getInterviewInEnglishFaq } from './Articles/phrases-for-an-interview';
 
 const INTERVIEW_PHRASE_POST_IDS = new Set([
   'phrases-for-an-interview-in-english',
@@ -47,8 +48,31 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
     item.relatedRolePlays.includes(scenario.id),
   );
 
+  const interviewFaq =
+    item.id === 'phrases-for-an-interview-in-english' ? getInterviewInEnglishFaq(i18n) : null;
+
   return (
     <>
+      {interviewFaq ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              inLanguage: lang,
+              mainEntity: interviewFaq.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            }),
+          }}
+        />
+      ) : null}
       <HeaderStatic lang={lang} />
       <div
         style={{
