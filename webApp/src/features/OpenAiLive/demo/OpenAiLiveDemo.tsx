@@ -20,38 +20,28 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
   const call = useDemoCall();
   const [language, setLanguage] = useState<SupportedLanguage>('en');
   const [consent, setConsent] = useState(false);
-  const [consentWarning, setConsentWarning] = useState(false);
-  const consentRef = useRef<HTMLInputElement>(null);
-  const consentAreaRef = useRef<HTMLDivElement>(null);
+  const startedRef = useRef(false);
   const startConversation = () => {
-    if (!consent) {
-      setConsentWarning(true);
-      consentAreaRef.current?.scrollIntoView({ block: 'center', behavior: 'auto' });
-      consentRef.current?.focus({ preventScroll: true });
-      return;
-    }
+    startedRef.current = true;
+    setConsent(true);
     void call.start(language);
   };
   const [savedLines, setSavedLines] = useState<LiveTranscriptLine[]>([]);
   const [used, setUsed] = useState(false);
-  const [checking, setChecking] = useState(true);
   const [statusError, setStatusError] = useState('');
   const [join, setJoin] = useState(false);
   useEffect(() => {
     let cancelled = false;
     void demoRequest<{ used: boolean; language: SupportedLanguage; lines: LiveTranscriptLine[] }>()
       .then((status) => {
-        if (cancelled) return;
+        if (cancelled || startedRef.current) return;
         setUsed(status.used);
         setSavedLines(status.lines ?? []);
         if (supportedLanguages.includes(status.language)) setLanguage(status.language);
-        setChecking(false);
       })
       .catch(() => {
-        if (!cancelled) {
-          setChecking(false);
+        if (!cancelled && !startedRef.current)
           setStatusError('Could not connect. Please reload to try again.');
-        }
       });
     return () => {
       cancelled = true;
@@ -101,44 +91,10 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
                 'Your teacher will start with an easy question. The timer begins when you connect, and we will let you know when 30 seconds remain.',
               )}
             </Typography>
-            <Stack
-              ref={consentAreaRef}
-              sx={{
-                gap: 1,
-                scrollMarginBlock: '140px',
-                borderRadius: 2,
-                outline: consentWarning ? '1px solid #b8794b' : '1px solid transparent',
-                background: consentWarning ? 'rgba(255,189,138,.06)' : 'transparent',
-                p: '10px',
-              }}
-            >
+            <Stack sx={{ gap: 1 }}>
               <FormControlLabel
                 control={
-                  <Checkbox
-                    checked={consent}
-                    onChange={(_, checked) => {
-                      setConsent(checked);
-                      if (checked) setConsentWarning(false);
-                    }}
-                    slotProps={{
-                      input: {
-                        ref: consentRef,
-                        'aria-invalid': consentWarning,
-                        'aria-describedby': consentWarning ? 'demo-consent-warning' : undefined,
-                      },
-                    }}
-                    sx={
-                      consentWarning
-                        ? {
-                            color: '#ffbd8a',
-                            '&.Mui-focusVisible': {
-                              outline: '2px solid #ffbd8a',
-                              outlineOffset: 2,
-                            },
-                          }
-                        : undefined
-                    }
-                  />
+                  <Checkbox checked={consent} onChange={(_, checked) => setConsent(checked)} />
                 }
                 label={
                   <span>
@@ -165,18 +121,6 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
                   </span>
                 }
               />
-
-              <Typography
-                id="demo-consent-warning"
-                role="alert"
-                sx={{
-                  color: consentWarning ? '#ffbd8a' : 'transparent',
-                  fontSize: 14,
-                  visibility: consentWarning ? 'visible' : 'hidden',
-                }}
-              >
-                {i18n._('Required to start the conversation')}
-              </Typography>
             </Stack>
             <Typography variant="body2" sx={{ opacity: 0.65 }}>
               {i18n._(
@@ -255,7 +199,6 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
             <Button
               variant="contained"
               size="large"
-              disabled={checking || !!statusError}
               onClick={startConversation}
               data-testid="demo-start"
               startIcon={<Mic size={19} />}
@@ -276,9 +219,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
               {i18n._('Start my free conversation')}
             </Button>
             <Typography sx={{ textAlign: 'center', fontSize: 12, color: '#b8abc7' }}>
-              {!consent
-                ? i18n._('Accept the terms above to get started')
-                : i18n._('3 minutes free · No account or card needed')}
+              {i18n._('3 minutes free · No account or card needed')}
             </Typography>
           </Stack>
         </Stack>

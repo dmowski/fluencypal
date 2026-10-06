@@ -4,9 +4,11 @@ const installDemo = async (
   page: import('@playwright/test').Page,
   denied = false,
   teacherFirst = false,
+  holdStatus?: Promise<void>,
 ) => {
   await page.route('**/api/openAiLive/demo', async (route) => {
     const body = route.request().postDataJSON();
+    if (!body?.action && holdStatus) await holdStatus;
     await route.fulfill({
       json:
         body?.action === 'start'
@@ -80,23 +82,16 @@ const installDemo = async (
   );
 };
 
-test('demo requires consent, starts only on click, counts down and offers signup', async ({
-  page,
-}) => {
+test('demo starts on the first tap, counts down and offers signup', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await installDemo(page);
   await page.goto('/demo');
   await expect(page.getByTestId('demo-start')).toBeEnabled();
-  await page.getByTestId('demo-start').click();
-  await expect(page.getByRole('checkbox')).toBeFocused();
-  await expect(page.locator('#demo-consent-warning')).toBeVisible();
-  await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
-  await page.getByRole('checkbox').check();
-  await expect(page.locator('#demo-consent-warning')).toBeHidden();
-  await expect(page.getByTestId('demo-start')).toBeEnabled();
+  await expect(page.getByRole('checkbox')).not.toBeChecked();
   await page.clock.install();
   await page.getByTestId('demo-start').click();
+  await expect(page.getByRole('checkbox')).toBeChecked();
   await expect(page.getByTestId('demo-countdown')).toHaveText('3:00 left');
   await expect(page.getByText('I enjoy reading books.')).toBeVisible();
   await page.clock.fastForward(151_000);
@@ -242,25 +237,20 @@ test('localized demo uses its locale layout and keeps navigation in that locale'
   expect(errors).toEqual([]);
 });
 
-test('mobile start scrolls to unchecked consent without starting a call', async ({
+test('start stays enabled while status loads, and the first tap agrees and starts', async ({
   page,
-}, testInfo) => {
-  await page.setViewportSize({ width: 390, height: 667 });
-  await installDemo(page);
+}) => {
+  let releaseStatus = () => {};
+  const held = new Promise<void>((resolve) => {
+    releaseStatus = resolve;
+  });
+  await installDemo(page, false, false, held);
   await page.goto('/demo');
+  await expect(page.getByTestId('demo-start')).toBeEnabled();
   await page.getByTestId('demo-start').click();
-  const checkbox = page.getByRole('checkbox');
-  await expect(checkbox).toBeFocused();
-  await expect(checkbox).toHaveAttribute('aria-invalid', 'true');
-  await expect(page.locator('#demo-consent-warning')).toBeVisible();
-  await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
-  const consent = await checkbox.boundingBox();
-  const bar = await page.getByTestId('demo-start-bar').boundingBox();
-  expect(consent!.y).toBeGreaterThanOrEqual(0);
-  expect(consent!.y + consent!.height).toBeLessThan(bar!.y);
-  await page.screenshot({ path: testInfo.outputPath('consent-warning.png') });
-  await checkbox.check();
-  await expect(page.locator('#demo-consent-warning')).toBeHidden();
+  await expect(page.getByRole('checkbox')).toBeChecked();
+  await expect(page.getByTestId('demo-countdown')).toBeVisible();
+  releaseStatus();
 });
 
 test('waits for the teacher to speak first without prompting the student', async ({ page }) => {

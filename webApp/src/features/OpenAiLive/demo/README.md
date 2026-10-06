@@ -37,6 +37,6 @@ Official control protocol: https://developers.openai.com/api/reference/resources
 
 ### Entry-screen polish
 
-The first screen presents EN, ES, FR and DE cards, with English selected by default. More opens the full language list. The start action is fixed at the bottom with safe-area spacing and reserved page space. Clicking Start without consent scrolls to and focuses the checkbox, announces an inline warning, and does not start microphone access. Accepting consent clears the warning. Locale routes share the same component and preserve their locale in quiz/practice navigation.
+The first screen presents EN, ES, FR and DE cards, with English selected by default. More opens the full language list. The start action is fixed at the bottom with safe-area spacing and reserved page space. It is enabled on first paint, while the status request finishes in the background. The first tap checks the age and terms agreement and starts microphone access. Locale routes share the same component and preserve their locale in quiz/practice navigation.
 
 Latest checks: typecheck, the dialog keyboard-focus browser test, and all nine demo e2e tests passed. The full e2e run passed 102/103; the unrelated reader PDF sign-in modal check timed out.
