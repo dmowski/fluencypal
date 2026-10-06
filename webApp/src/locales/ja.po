@@ -29,13 +29,6 @@ msgstr ""
 "\"何か問題が発生した場合には、常に助けてくれる人がいることを忘れないでください。もし私たちのサービスや他の何かを気に入らない場合は、お知らせください。"
 "質問せずに返金いたします。\""
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:308
-#: src/features/FluencyCall/FluencyCallCardView.tsx:429
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:36
-#. js-lingui-explicit-id
-msgid "$2 per month"
-msgstr "$2毎月"
-
 #: src/features/Auth/WebViewWall.tsx:80
 #. js-lingui-explicit-id
 msgid "'Open in Chrome' to continue."
@@ -291,13 +284,6 @@ msgstr "失敗は練習の一部であり、判断の理由ではありません
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "学習の一ヶ月は手の届くところにあります。今日も頑張って続けましょう。"
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:311
-#. js-lingui-explicit-id
-msgid ""
-"A month of live calls with other learners on Google Meet. Pay now, or "
-"later. You will need it before you join a call."
-msgstr "Google Meetで他の学習者との1ヶ月のライブ通話。今すぐ支払う、または後で支払う。通話に参加する前に必要です。"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:327
 #. js-lingui-explicit-id
@@ -870,7 +856,7 @@ msgstr "すべてのソースコードはオープンで公開されています
 msgid "All time"
 msgstr "すべての時間"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:366
+#: src/features/FluencyCall/FluencyCallCardView.tsx:364
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "{zone} のすべての時間"
@@ -1754,12 +1740,12 @@ msgstr "キャリアの向上"
 msgid "Challenging"
 msgstr "チャレンジング"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:73
 #. js-lingui-explicit-id
 msgid "Change plan"
 msgstr "プランを変更"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:417
+#: src/features/FluencyCall/FluencyCallCardView.tsx:415
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "時間を変更"
@@ -1830,7 +1816,7 @@ msgstr "他の文法ポイントと例をチェックしましょう。"
 msgid "Check proposed words"
 msgstr "提案された単語を確認してください"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:84
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:80
 #. js-lingui-explicit-id
 msgid "Check your access and included conversation time."
 msgstr "アクセスを確認し、含まれている会話時間を確認してください。"
@@ -2857,7 +2843,7 @@ msgstr "コンテキスト (トピック、対象者、目標...)"
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:288
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:241
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
@@ -6069,13 +6055,17 @@ msgstr "素晴らしい！"
 msgid "Grocery Store"
 msgstr "食料品店"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:306
-#: src/features/FluencyCall/FluencyCallCardView.tsx:307
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"Group calls are free. See upcoming times, create an account, and practice "
+"with AI until the call."
+msgstr "グループ通話は無料です。今後の時間を確認し、アカウントを作成して通話までAIと練習しましょう。"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "グループ会話"
@@ -6628,7 +6618,7 @@ msgid ""
 "need to explain my experience and answer questions about my work."
 msgstr "私は仕事の面接に合格するために英語を学びたいです。私は医者で、自分の経験を説明し、私の仕事についての質問に答える必要があります。"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:210
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:163
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -6985,11 +6975,6 @@ msgstr ""
 "このセッションでは、シニアフロントエンドの役割のために設計された質問に答えていただきます。回答の後、フィードバックを受け取り、回答を洗練し、面接スキルを"
 "向上させるのに役立てていただきます。"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
-#. js-lingui-explicit-id
-msgid "Included"
-msgstr "含まれる"
-
 #: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
@@ -7321,12 +7306,7 @@ msgstr "流暢パルに参加して、話す習慣を身につけ、進捗を維
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "特定のトピックについて他のメンバーと話し合うためにルームに参加してください"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
-#. js-lingui-explicit-id
-msgid "Join scheduled group conversations for this paid period"
-msgstr "この有料期間のスケジュールされたグループ会話に参加する"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:325
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "あなたの週に合った会話に参加しましょう。"
@@ -8404,7 +8384,7 @@ msgstr "ニュースディスカッション"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:229
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8519,7 +8499,7 @@ msgstr "利用可能な章はありません"
 msgid "No charge will be made"
 msgstr "料金は発生しません"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:388
+#: src/features/FluencyCall/FluencyCallCardView.tsx:386
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "まだ会話が予定されていません。"
@@ -8833,12 +8813,10 @@ msgid "Not Found"
 msgstr "見つかりません"
 
 #: src/features/Usage/Subscription/PaidAccessReview.tsx:51
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
 #. js-lingui-explicit-id
 msgid "Not included"
 msgstr "含まれていません"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -8879,8 +8857,8 @@ msgstr "通知"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:53
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:100
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "今"
@@ -8960,11 +8938,6 @@ msgstr "100 日間の連続ログイン。素晴らしいマイルストーン �
 msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
 msgstr "百五十日間の学び。これまで来た道を誇りに思いましょう。"
 
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:39
-#. js-lingui-explicit-id
-msgid "One month of group conversations on Google Meet."
-msgstr "グループ会話を1ヶ月間、Google Meetで開催。"
-
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
 msgid "One more thing."
@@ -8976,7 +8949,7 @@ msgstr "もう一つ。"
 msgid "One pattern. Real speaking practice."
 msgstr "1 つのパターン。リアルなスピーキング練習。"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:139
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:132
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:283
 #. js-lingui-explicit-id
 msgid "One payment. No automatic renewal."
@@ -8987,7 +8960,7 @@ msgstr "一回限りのお支払い。自動更新なし。"
 msgid "One thing left to do"
 msgstr "後に残された一つのこと"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:58
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "One-time payment"
 msgstr "一度限りの支払い"
@@ -9357,12 +9330,12 @@ msgstr "支払い履歴"
 msgid "Payment option"
 msgstr "支払いオプション"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:333
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "支払いが完了しました。すぐに参加できます。"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:332
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "支払いが確認されました。グループ会話に参加できます。"
@@ -9488,7 +9461,7 @@ msgstr "グループに合った難易度を選んでください。"
 msgid "Pick a level to start playing!"
 msgstr "プレイ開始のレベルを選んでください！"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:391
+#: src/features/FluencyCall/FluencyCallCardView.tsx:389
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "時間を選んでいただければ、設定いたします。"
@@ -9824,17 +9797,23 @@ msgstr "練習と進捗"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and group conversations. "
+"plan, exams, role-play, and daily lessons. Group conversations are free. "
 "Conversation ({conversationPrice} a month) adds {conversationHours} of "
 "advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Practice（毎月 {practicePrice}）には、無制限のJust "
-"Talk、個人プラン、試験、ロールプレイ、毎日のレッスン、グループ会話が含まれます。Conversation（毎月 "
-"{conversationPrice}）には、{conversationHours} の高度な会話が追加されます。Conversation 10（毎月 "
-"{conversation10Price}）には、{conversation10Hours} "
-"の高度な会話が追加されます。週と年のオプションはこのページにあります。"
+"Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
+"plan, exams, role-play, and daily lessons. Group conversations are free. "
+"Conversation ({conversationPrice} a month) adds {conversationHours} of "
+"advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
+"{conversation10Hours} of advanced conversation. Week and year options are "
+"on this page.\n"
+"\n"
+"プラクティス（{practicePrice}／月）には、無制限のJust "
+"Talk、個人プラン、試験、ロールプレイ、日々のレッスンが含まれています。グループでの会話は無料です。会話（{conversationPrice}"
+"／月）は上級会話を{conversationHours}追加します。会話10（{conversation10Price}／月）は上級会話を{"
+"conversation10Hours}追加します。週単位および年単位のオプションはこのページにあります。"
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10099,10 +10078,10 @@ msgstr "練習、向上、繰り返す"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and group conversations"
-msgstr "練習、さらに高度な会話とグループ会話のブロック"
+msgid "Practice, plus a block of advanced conversation"
+msgstr "練習、さらに上級会話のブロック"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:323
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "他の学習者と一緒にスピーキングの練習をする。"
@@ -10390,7 +10369,7 @@ msgstr "発音ソース"
 msgid "Pronounce translations"
 msgstr "翻訳を発音する"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:405
+#: src/features/FluencyCall/FluencyCallCardView.tsx:403
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -10999,7 +10978,7 @@ msgstr "ユーザーを報告する"
 msgid "Request failed. Please try again."
 msgstr "リクエストに失敗しました。再試行してください。"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:378
+#: src/features/FluencyCall/FluencyCallCardView.tsx:376
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11091,7 +11070,7 @@ msgid ""
 "conversation below."
 msgstr "練習した内容を復習しましょう。あなたの先生の提案は以下の会話に表示されます。"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:81
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
 #. js-lingui-explicit-id
 msgid "Review your plan"
 msgstr "プランを確認する"
@@ -11350,14 +11329,6 @@ msgstr "バックエンドフィードバックの種類をご覧ください"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "受け取るフィードバックの種類をご覧ください"
-
-#: src/app/[lang]/community-call/page.tsx:21
-#: src/app/community-call/page.tsx:10
-#. js-lingui-explicit-id
-msgid ""
-"See upcoming group calls, create an account, and practice with AI until the "
-"call."
-msgstr "今後のグループ通話を確認し、アカウントを作成して、通話までAIで練習しましょう。"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12104,7 +12075,7 @@ msgstr "スターズ"
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:142
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:135
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:319
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -12721,29 +12692,22 @@ msgid ""
 "Just you and a conversation."
 msgstr "友好的なAI教師と3分間話しましょう。アカウント不要。カード不要。ただあなたと会話するだけ。"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:360
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:274
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
 msgid "Talk with AI"
 msgstr "AIと話す"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:259
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call"
 msgstr "コールまでAIと話す"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:336
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:219
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:173
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call starts."
 msgstr "通話が始まるまでAIと話しましょう。"
-
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:220
-#. js-lingui-explicit-id
-msgid ""
-"Talk with AI until the call. You can pay anytime. You will need the $2 "
-"month to join."
-msgstr "AIと通話まで話しましょう。いつでも支払いが可能です。参加するには月額2ドルが必要です。"
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:220
 #. js-lingui-explicit-id
@@ -13548,8 +13512,8 @@ msgstr "鍵：短い投稿が有効です。一文で十分です。"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with group conversations"
-msgstr "グループ会話を含む、大規模な上級会話ブロック"
+msgid "The larger advanced-conversation block"
+msgstr "より大きな上級会話ブロック"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14155,8 +14119,8 @@ msgstr ""
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:49
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14188,8 +14152,8 @@ msgid "TOEFL Speaking Tasks"
 msgstr "TOEFLスピーキングタスク"
 
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:99
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "明日"
@@ -14554,7 +14518,7 @@ msgstr "ミュート解除"
 msgid "Upcoming calls"
 msgstr "今後の通話"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:357
+#: src/features/FluencyCall/FluencyCallCardView.tsx:355
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "今後の会話"
@@ -14964,7 +14928,7 @@ msgstr ""
 "あなたのデータは削除されますが、残高に関する情報は一\n"
 "              年間保管されます。"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:261
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:214
 #. js-lingui-explicit-id
 msgid "We will show FluencyPal in this language."
 msgstr "この言語でFluencyPalを表示します。"
@@ -14979,7 +14943,7 @@ msgstr "自由に話しましょう"
 msgid "We'll get back to you with a confirmation."
 msgstr "ご確認のご連絡をいたします。"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:381
+#: src/features/FluencyCall/FluencyCallCardView.tsx:379
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "すぐに返答いたします。"
@@ -15204,7 +15168,7 @@ msgstr "AIで練習したいことは何ですか？"
 msgid "What you will achieve"
 msgstr "達成すること"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:140
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:133
 #. js-lingui-explicit-id
 msgid "What's included"
 msgstr "含まれるもの"
@@ -15265,7 +15229,7 @@ msgstr "下のボタンをタップすると、ブラウザが許可を求めて
 msgid "Where can I use FluencyPal?"
 msgstr "FluencyPalをどこで使用できますか？"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:258
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:211
 #. js-lingui-explicit-id
 msgid "Which language should we use?"
 msgstr "どの言語を使用するべきですか？"
@@ -15737,11 +15701,6 @@ msgid ""
 "while doing household chores."
 msgstr "画面を見ずにAIと会話することができます。私は家事をしながらそれをやっています。"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
-#. js-lingui-explicit-id
-msgid "You can pay later"
-msgstr "あとで支払うことができます"
-
 #: src/features/Case/data/frontend-junior/faqSection.ts:15
 #. js-lingui-explicit-id
 msgid ""
@@ -15927,12 +15886,7 @@ msgid ""
 "and system design."
 msgstr ".NET、API、データベース、並行処理、システム設計に関する短い質問に答えます。"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:346
-#. js-lingui-explicit-id
-msgid "You will need the $2 month before you join a call. Until then, talk with AI."
-msgstr "$2 月が経つ前に通話に参加する必要があります。それまでは、AIと話しましょう。"
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:345
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:262
 #. js-lingui-explicit-id
 msgid "You will see the calls next. Talk with AI until one starts."
 msgstr "次に通話を見ることができます。開始するまでAIと話しましょう。"

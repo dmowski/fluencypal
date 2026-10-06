@@ -15,16 +15,14 @@ export type CommunityCallStep = (typeof communityCallStepIds)[number];
 export function communityCallPath({
   includePageLanguage,
   includeAccount,
-  includeMembership,
 }: {
   includePageLanguage: boolean;
   includeAccount: boolean;
-  includeMembership: boolean;
 }): CommunityCallStep[] {
   return communityCallStepIds.filter((step) => {
     if (step === 'pageLanguage') return includePageLanguage;
     if (step === 'account') return includeAccount;
-    if (step === 'membership') return includeMembership;
+    if (step === 'membership') return false;
     return true;
   });
 }

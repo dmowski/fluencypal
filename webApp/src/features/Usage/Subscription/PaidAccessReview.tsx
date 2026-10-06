@@ -51,10 +51,6 @@ export const PaidAccessReview = ({
       value: hours > 0 ? formatPaidAccessHours(hours, i18n) : i18n._('Not included'),
     },
     {
-      label: i18n._('Group conversations'),
-      value: plan.includesCommunity ? i18n._('Included') : i18n._('Not included'),
-    },
-    {
       label: i18n._('One-time payment'),
       value: `${currency.convertPrice(amountInUsd)} ${currency.currency}`,
     },

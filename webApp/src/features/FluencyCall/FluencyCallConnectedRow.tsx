@@ -22,7 +22,6 @@ export const FluencyCallConnectedRow = ({
   canJoin,
   conductAgreed,
   conductReady,
-  onNeedAccess,
   onNeedConduct,
   onShowChat,
 }: {
@@ -31,7 +30,6 @@ export const FluencyCallConnectedRow = ({
   canJoin: boolean;
   conductAgreed: boolean;
   conductReady: boolean;
-  onNeedAccess: () => void;
   onNeedConduct: (callId: string) => void;
   onShowChat: (callId: string) => void;
 }) => {
@@ -71,10 +69,7 @@ export const FluencyCallConnectedRow = ({
   };
 
   const onToggleJoin = () => {
-    if (!canJoin) {
-      onNeedAccess();
-      return;
-    }
+    if (!canJoin) return;
     if (!conductReady) return;
     if (!rsvps.isJoining && !conductAgreed) {
       onNeedConduct(call.id);
@@ -84,10 +79,7 @@ export const FluencyCallConnectedRow = ({
   };
 
   const onOpenCall = () => {
-    if (!canJoin) {
-      onNeedAccess();
-      return;
-    }
+    if (!canJoin) return;
     if (!conductReady) return;
     if (!rsvps.isJoining && !conductAgreed) {
       onNeedConduct(call.id);
@@ -115,10 +107,7 @@ export const FluencyCallConnectedRow = ({
       isJoinPending={isJoinPending}
       onToggleJoin={onToggleJoin}
       onShowChat={() => {
-        if (!canJoin) {
-          onNeedAccess();
-          return;
-        }
+        if (!canJoin) return;
         onShowChat(call.id);
       }}
       onOpenCall={onOpenCall}

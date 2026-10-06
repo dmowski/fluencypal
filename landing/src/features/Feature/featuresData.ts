@@ -648,7 +648,7 @@ Join a conversation about your learning goals or your latest practice session.`,
       ),
       metaTitle: i18n._('Group English Conversation Calls | FluencyPal'),
       metaDescription: i18n._(
-        'Practice English on a live group call with other learners. See upcoming Google Meet times in your time zone and join for $2 a month. No automatic renewal.',
+        'Practice English on a free live group call with other learners. See upcoming Google Meet times in your time zone and join.',
       ),
       keywords: [
         'group English conversation',
@@ -658,17 +658,17 @@ Join a conversation about your learning goals or your latest practice session.`,
       content: i18n._(
         `## Practice English with other learners
 
-Group conversations are live English calls on Google Meet. You talk with other learners. There is no teacher and no set topic.
+Group conversations are free live English calls on Google Meet. You talk with other learners. There is no teacher and no set topic.
 
 Beginners can speak slowly. Advanced learners practice too. A correction comes only if someone asks. Join when the call starts, and leave when you need to. You can see how many people plan to come. Each call also has a text chat in FluencyPal for the people on it.
 
 ## How you join
 
-1. Find a call. You can look at the schedule before you pay. Times are in your local time zone.
-2. Create an account and get access. $2 pays for one month of group calls. No automatic renewal. An active Practice, Conversation, or Conversation 10 plan already includes the calls.
+1. Find a call. Times are in your local time zone.
+2. Create an account. There is no payment.
 3. Open the Google Meet when the call starts.
 
-Want to warm up before your call? Practice with AI first. That practice is separate from the $2.
+Want to warm up before your call? Practice with AI first.
 
 Calls appear when they are on the schedule.`,
       ),

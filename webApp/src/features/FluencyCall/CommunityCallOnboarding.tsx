@@ -1,7 +1,5 @@
 'use client';
 
-import { redirectToStripeCheckout } from '@/features/Analytics/redirectToStripeCheckout';
-
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -18,15 +16,11 @@ import { getLandingUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { replaceUrlToLang } from '@/features/Lang/replaceLangInUrl';
 import { useAuth } from '@/features/Auth/useAuth';
 import { useSettings } from '@/features/Settings/useSettings';
-import { useCurrency } from '@/features/User/useCurrency';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
 import { QuizPasswordAccountForm } from '@/features/Goal/Quiz/QuizPasswordAccount';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { QuizProgressBar } from '@/features/Goal/Quiz/components/QuizProgressBar';
-import { ConfirmPaymentForm } from '@/features/Usage/HoursPaymentModal/ConfirmPaymentForm';
 import { NativeLangCode } from '@/libs/language/type';
-import { FluencyCallApiError, requestFluencyCallCheckout } from './api';
 import { fluencyCallLanguageCode } from './callLanguage';
 import { CommunityCallNativeStep } from './CommunityCallNativeStep';
 import { CommunityCallScheduleStep } from './CommunityCallScheduleStep';
@@ -38,16 +32,12 @@ import {
   previousCommunityCallStep,
   resolveCommunityCallStep,
 } from './communityCallSteps';
-import { FLUENCY_CALL_PRICE_USD } from './pricing';
-import { useFluencyCallAccess } from './useFluencyCallAccess';
-import { useNow } from './useNow';
 
 const stepAfter = (
   current: CommunityCallStep,
   options: {
     includePageLanguage: boolean;
     includeAccount: boolean;
-    includeMembership: boolean;
   },
 ): CommunityCallStep => {
   const path = communityCallPath(options);
@@ -59,24 +49,18 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
   const router = useRouter();
   const auth = useAuth();
   const settings = useSettings();
-  const currency = useCurrency();
-  const now = useNow(15_000);
-  const access = useFluencyCallAccess(now);
   const fallbackLearn = fluencyCallLanguageCode(lang);
   const [learnParam, setLearnParam] = useUrlState('learn', fallbackLearn, false);
   const [nativeParam, setNativeParam] = useUrlState('native', '', false);
   const [stepParam, setStepParam] = useUrlState('step', 'language', true);
   const [pageLanguage, setPageLanguage] = useState<SupportedLanguage>(lang);
-  const [buying, setBuying] = useState(false);
-  const [payError, setPayError] = useState<string | null>(null);
 
   const learn = fluencyCallLanguageCode(learnParam);
   const includePageLanguage = needsCommunityCallPageLanguage(nativeParam);
   const includeAccount = auth.loading || !auth.isIdentified;
-  const includeMembership = !access.ready || !access.canJoin;
   const path = useMemo(
-    () => communityCallPath({ includePageLanguage, includeAccount, includeMembership }),
-    [includeAccount, includeMembership, includePageLanguage],
+    () => communityCallPath({ includePageLanguage, includeAccount }),
+    [includeAccount, includePageLanguage],
   );
   const step = resolveCommunityCallStep(stepParam, path);
   const stepIndex = Math.max(path.indexOf(step), 0);
@@ -85,11 +69,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
 
   useEffect(() => {
     if (auth.loading) return;
-    if (stepParam === 'membership' && !access.ready) return;
     if (step !== stepParam) {
       void setStepParam(step);
     }
-  }, [access.ready, auth.loading, setStepParam, step, stepParam]);
+  }, [auth.loading, setStepParam, step, stepParam]);
 
   const persistLearn = async () => {
     if (settings.languageCode !== learn) {
@@ -119,7 +102,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       const next = stepAfter('native', {
         includePageLanguage: false,
         includeAccount,
-        includeMembership,
       });
       const params = new URLSearchParams(window.location.search);
       params.set('step', next);
@@ -133,7 +115,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     const next = stepAfter('native', {
       includePageLanguage: !siteLanguage,
       includeAccount,
-      includeMembership,
     });
     await setStepParam(next);
   };
@@ -143,7 +124,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     const next = stepAfter('pageLanguage', {
       includePageLanguage: true,
       includeAccount,
-      includeMembership,
     });
     if (pageLanguage === lang) {
       await setStepParam(next);
@@ -154,33 +134,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     params.set('native', nativeParam);
     params.set('learn', learn);
     router.push(replaceUrlToLang(pageLanguage, `${window.location.pathname}?${params.toString()}`));
-  };
-
-  useEffect(() => {
-    if (step !== 'membership') return;
-    sendAnalyticsEvent({ name: 'paywall_view', ctaId: 'fluency-call' });
-  }, [step]);
-
-  const buy = async () => {
-    setBuying(true);
-    setPayError(null);
-    sendAnalyticsEvent({ name: 'checkout_start', ctaId: 'fluency-call' });
-    try {
-      await persistLearn();
-      const result = await requestFluencyCallCheckout(await auth.getToken(), {
-        currency: currency.currency,
-        languageCode: learn,
-      });
-      if (!result.sessionUrl) throw new Error(result.error || 'Checkout did not start');
-      await redirectToStripeCheckout(result.sessionUrl);
-    } catch (checkoutError) {
-      const message =
-        checkoutError instanceof FluencyCallApiError || checkoutError instanceof Error
-          ? checkoutError.message
-          : 'Could not start checkout';
-      setPayError(message);
-      setBuying(false);
-    }
   };
 
   return (
@@ -300,52 +253,13 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
           )
         ) : null}
 
-        {step === 'membership' ? (
-          <Stack data-testid="community-call-membership" sx={{ gap: '18px' }}>
-            <Stack sx={{ gap: '6px' }}>
-              <Typography variant="h5">{i18n._('Group conversations')}</Typography>
-              <Typography variant="h4" sx={{ fontWeight: 800 }}>
-                {i18n._('$2 per month')}
-              </Typography>
-              <Typography sx={{ opacity: 0.75 }}>
-                {i18n._(
-                  'A month of live calls with other learners on Google Meet. Pay now, or later. You will need it before you join a call.',
-                )}
-              </Typography>
-            </Stack>
-            <ConfirmPaymentForm
-              isRedirecting={buying}
-              amountInUsd={FLUENCY_CALL_PRICE_USD}
-              analyticsId="community-call-checkout"
-              onConfirmRequest={() => {
-                void buy();
-              }}
-            />
-            {payError ? <Typography sx={{ color: '#ffb4b4' }}>{payError}</Typography> : null}
-            <Button
-              data-testid="community-call-not-now"
-              data-analytics="community-call-not-now"
-              onClick={() => {
-                void setStepParam('waiting');
-              }}
-              sx={{ alignSelf: 'flex-start', textTransform: 'none', fontWeight: 700 }}
-            >
-              {i18n._('Not now')}
-            </Button>
-          </Stack>
-        ) : null}
-
         {step === 'waiting' ? (
           <Stack data-testid="community-call-waiting" sx={{ gap: '16px' }}>
             <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {access.canJoin ? i18n._('Talk with AI until the call') : i18n._('You can pay later')}
+              {i18n._('Talk with AI until the call')}
             </Typography>
             <Typography sx={{ opacity: 0.8 }}>
-              {access.canJoin
-                ? i18n._('You will see the calls next. Talk with AI until one starts.')
-                : i18n._(
-                    'You will need the $2 month before you join a call. Until then, talk with AI.',
-                  )}
+              {i18n._('You will see the calls next. Talk with AI until one starts.')}
             </Typography>
             <Button
               variant="contained"

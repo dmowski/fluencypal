@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: i18n._('Join a group conversation | FluencyPal'),
     description: i18n._(
-      'See upcoming group calls, create an account, and practice with AI until the call.',
+      'Group calls are free. See upcoming times, create an account, and practice with AI until the call.',
     ),
   };
 }

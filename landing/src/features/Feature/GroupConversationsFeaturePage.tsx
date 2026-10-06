@@ -52,13 +52,11 @@ export const GroupConversationsFeaturePage = ({
   const steps = [
     {
       title: i18n._('Find a call'),
-      body: i18n._('Choose a time that works for you. You can look before you pay.'),
+      body: i18n._('Choose a time that works for you. The calls are free.'),
     },
     {
-      title: i18n._('Get access'),
-      body: i18n._(
-        'Create an account. Pay $2 for one month, or use a Practice, Conversation, or Conversation 10 plan that already includes the calls.',
-      ),
+      title: i18n._('Create an account'),
+      body: i18n._('Sign up to save your place. There is no payment.'),
     },
     {
       title: i18n._('Join on Google Meet'),
@@ -67,9 +65,9 @@ export const GroupConversationsFeaturePage = ({
   ];
   const questions = [
     {
-      question: i18n._('Can I look before I pay?'),
+      question: i18n._('Do the calls cost money?'),
       answer: i18n._(
-        'Yes. The schedule is open. You need the $2 month, or an active Practice, Conversation, or Conversation 10 plan, before you enter the call.',
+        'No. Group conversations are free. Create an account, then join when the call starts.',
       ),
     },
     {
@@ -213,20 +211,7 @@ export const GroupConversationsFeaturePage = ({
               ))}
             </Stack>
             <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
-              {i18n._(
-                'Want to warm up before your call? Practice with AI first. That practice is separate from the $2.',
-              )}
-            </Typography>
-          </Stack>
-
-          <Stack sx={{ gap: '12px', maxWidth: '720px' }}>
-            <Typography component="h2" variant="h4" sx={{ fontWeight: 800 }}>
-              {i18n._('$2 for one month of group calls')}
-            </Typography>
-            <Typography sx={{ color: 'rgba(244, 247, 251, 0.78)', fontSize: '1.05rem' }}>
-              {i18n._(
-                'No automatic renewal. You can look at the schedule before you pay. You need this month, or an active Practice, Conversation, or Conversation 10 plan, before you enter the call.',
-              )}
+              {i18n._('Want to warm up before your call? Practice with AI first.')}
             </Typography>
           </Stack>
 

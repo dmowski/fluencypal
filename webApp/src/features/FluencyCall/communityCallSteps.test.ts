@@ -9,18 +9,16 @@ import {
 const full = {
   includePageLanguage: true,
   includeAccount: true,
-  includeMembership: true,
 };
 
 describe('communityCallPath', () => {
-  it('keeps page language, account, and membership when each one is needed', () => {
+  it('keeps page language and account, and skips the old membership step', () => {
     expect(communityCallPath(full)).toEqual([
       'language',
       'calls',
       'native',
       'pageLanguage',
       'account',
-      'membership',
       'waiting',
     ]);
   });
@@ -33,17 +31,15 @@ describe('communityCallPath', () => {
       communityCallPath({
         includePageLanguage: false,
         includeAccount: true,
-        includeMembership: true,
       }),
-    ).toEqual(['language', 'calls', 'native', 'account', 'membership', 'waiting']);
+    ).toEqual(['language', 'calls', 'native', 'account', 'waiting']);
   });
 
-  it('skips account and membership for someone who already has both', () => {
+  it('skips account for someone who is already signed in', () => {
     expect(
       communityCallPath({
         includePageLanguage: false,
         includeAccount: false,
-        includeMembership: false,
       }),
     ).toEqual(['language', 'calls', 'native', 'waiting']);
   });
@@ -53,7 +49,6 @@ describe('resolveCommunityCallStep', () => {
   const path = communityCallPath({
     includePageLanguage: false,
     includeAccount: false,
-    includeMembership: true,
   });
 
   it('keeps a step that is still on the path', () => {
@@ -61,8 +56,9 @@ describe('resolveCommunityCallStep', () => {
   });
 
   it('moves forward when the requested step was skipped', () => {
-    expect(resolveCommunityCallStep('pageLanguage', path)).toBe('membership');
-    expect(resolveCommunityCallStep('account', path)).toBe('membership');
+    expect(resolveCommunityCallStep('pageLanguage', path)).toBe('waiting');
+    expect(resolveCommunityCallStep('account', path)).toBe('waiting');
+    expect(resolveCommunityCallStep('membership', path)).toBe('waiting');
   });
 
   it('falls back to the first step for an unknown value', () => {

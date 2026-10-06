@@ -15,7 +15,7 @@ Goals:
 2. More returned users
 3. More subscriptions in general, ideally after 2–3 days of usage
 
-Global chat (`page=community&section=chat`) is not a goal. Do not add a free path into it from the conversation limit screen. The $2 group-call month is part of goal 1. It is not the practice subscription in goal 3.
+Global chat (`page=community&section=chat`) is not a goal. Do not add a free path into it from the conversation limit screen. Group conversations are free for every signed-in person (parental-consent blocks still hide the card). That is goal 1. It is not the practice subscription in goal 3. The old $2 month is no longer offered.
 
 Onboarding is how they get into the product, not the goal. It does not auto-start a call. Quiz speech is the material for the plan. The live conversation starts only when they start lesson 1 (or Just Talk from the dashboard). Do not read a missing `conversation_start` right after `goalReview` as a broken handoff, and do not propose bringing back quiz-talk, the Enable-mic handoff, or `autoStart`. Those are closed (`INTERVENTIONS.md`). `justTalk` is dropped from stored paths. Do not pull the paywall forward to create a same-day subscription.
 
@@ -69,7 +69,7 @@ Today (YYYY-MM-DD)  [UTC]
 - Landing: avg time, scroll 25/50/75/100 vs insights.landingVisitorCount, first paths
 - Time on pages: insights.durationByPath
 - CTAs: landing quiz vs sign-in (quizCtaIds / signInCtaIds); community-call intent (`insights.communityCallCtaIds`: `community-call-feature`, `community-call-cta`, `community-call-cta-footer`, `community-call-schedule-more`); in-app named clicks (appCtaIds: quiz-voice-consent, mic-permission-grant, hear-question, record-about-guest, quiz-guest-continue, quiz-talk-with-people-yes/no, quiz-community-rules-agree, quiz-player-identity, quiz-start-free, quiz-activity-continue, quiz-start-speaking, quiz-daily-question-continue, quiz-pre-auth-continue, auth-google, call-enable-mic, call-end, call-what-to-say, day-pass-checkout, chat-with-people, buy-access, limit-close, community-call-language-continue, community-call-calls-continue, community-call-native-continue, community-call-page-language-continue, community-call-checkout, community-call-not-now, community-call-practice, community-call-buy, community-call-rsvp, community-call-conduct-agree, community-call-meet)
-- Community call (goal 1): `/features/group-conversations` then `/community-call?step=` in the order below. `paywall_view` / `checkout_start` with `ctaId` `fluency-call` is the $2 month. `community-call-conduct-agree` is the saved join. `community-call-meet` is opening the call. Do not count `conversation_start` as this goal.
+- Community call (goal 1): `/features/group-conversations` then `/community-call?step=` in the order below. There is no payment step. `community-call-conduct-agree` is the saved join. `community-call-meet` is opening the call. Do not count `conversation_start` as this goal. Old `paywall_view` / `checkout_start` with `ctaId` `fluency-call` are the removed $2 month.
 - Struggle: insights.permissions / callStates / authAttempts / uiErrors / uiScreens / deadClicks / rageClickVisitors
 - Teacher Continue: insights.teacherContinue (visitors on `quiz.teacherSelection`; best sighting of `quiz-next` as enabled/disabled × inView/offscreen/unknown; clicked). Events from before in-view was stored land in enabledUnknown or disabledUnknown.
 - Sentry: unresolved in-window (top by freq/users); new vs continuing; map to funnel drop if any (or “none that explain drop”)
@@ -83,7 +83,7 @@ Today (YYYY-MM-DD)  [UTC]
 
 Why they leave: …
 What to do next (one change): …  [must be new vs INTERVENTIONS.md, and must serve goal 1, 2, or 3]
-Which goal does this move, and how will the next report see it? …  [Required. Community call = more `/community-call?step=` completes, more `community-call-conduct-agree`, or more `community-call-meet`. Return = more visitorCountReturning, or more of an earlier day’s new visitors with a later page_view. Subscriptions = more checkout_start with `ctaId` `subscription` (or paid sessions) among people who already used the app for about 2–3 days. `ctaId` `fluency-call` is goal 1, not goal 3. If this answer is that none of the three goals moves, pick a different change.]
+Which goal does this move, and how will the next report see it? …  [Required. Community call = more `/community-call?step=` completes, more `community-call-conduct-agree`, or more `community-call-meet`. Return = more visitorCountReturning, or more of an earlier day’s new visitors with a later page_view. Subscriptions = more checkout_start with `ctaId` `subscription` (or paid sessions) among people who already used the app for about 2–3 days. Old `ctaId` `fluency-call` is the removed $2 month, not goal 3. If this answer is that none of the three goals moves, pick a different change.]
 ```
 
 The one change serves one of those three goals. Name the goal and the count that should move. A clearer quiz question is not the next change when the gap is people who finished once and did not come back. Do not spend the change on restoring an automatic first call, and do not move the practice paywall earlier to force a day-1 subscription.
@@ -108,8 +108,8 @@ If the export is empty, say so; do not invent traffic.
 | `call_state`         | WebRTC / realtime session                            | `connecting` \| `connected` \| `failed` \| `ended` + `callReason` + `userMessageCount` on end                                                                               |
 | `auth_attempt`       | Google/email sign-in                                 | `authProvider` + `authResult` `opened` \| `cancelled` \| `error` \| `success`                                                                                               |
 | `ui_error`           | Visible failure banner / blocked mic / init error    | Short `errorCode` (`mic_denied`, `call_init_failed`, `auth_google_error`, …)                                                                                                |
-| `paywall_view`       | Offer opens                                          | Saw a paywall. Practice plans have no `ctaId` or a subscription id. `ctaId` `fluency-call` is the $2 group-call month. `ctaId` `community` is Global chat. `ctaId` `day-pass` is the old day price. |
-| `checkout_start`     | Stripe checkout created                              | Tried to pay. `ctaId` `subscription` is practice plans. `ctaId` `fluency-call` is the $2 group-call month (goal 1, not goal 3).                                              |
+| `paywall_view`       | Offer opens                                          | Saw a paywall. Practice plans have no `ctaId` or a subscription id. `ctaId` `fluency-call` is the old $2 group-call month (no longer offered). `ctaId` `community` is Global chat. `ctaId` `day-pass` is the old day price. |
+| `checkout_start`     | Stripe checkout created                              | Tried to pay. `ctaId` `subscription` is practice plans. `ctaId` `fluency-call` is the old $2 group-call month (goal 1, not goal 3).                                              |
 
 Visitor summary also stores first-touch UTM/referrer/country, max scroll, landing duration, funnel flags including `clickedQuizCta` / `clickedSignInCta` / `reachedConversation` / `reachedSpeech`. CTA flags are set only from **landing** clicks.
 
@@ -121,7 +121,7 @@ CTA ids on landing: `hero-cta`, `returning-practice`, `header-sign-in`, `how-it-
 
 Visitor identity is first-party: landing sets `fp_vid` on `.fluencypal.com` and appends `?fpv=` on app links so landing → app is one visitor (iframe storage is partitioned). The tracker prefers the parent visitor id.
 
-Stored paths keep `currentStep`, `step`, `rolePlayId`, `interactiveLesson`, `dailyQuestions`, `page`, `section`, `communityCall`, and `fluencyCall`. They drop UTM, inbox ids, `fpv`, `autoStart`, `justTalk`, `plan-id`, `learn`, `native`, and `activities`. `step` is the group-call onboarding step (`/community-call?step=language`). `communityCall=ready` is the practice page after that onboarding. `fluencyCall=paid` or `fluencyCall=buy` is the Stripe return for the $2 month. `page=community` is the community page; `section=chat` is Global chat. After auth, lesson 1 is `/practice?plan-id=<id>` in the product and `/practice` in the export.
+Stored paths keep `currentStep`, `step`, `rolePlayId`, `interactiveLesson`, `dailyQuestions`, `page`, `section`, `communityCall`, and `fluencyCall`. They drop UTM, inbox ids, `fpv`, `autoStart`, `justTalk`, `plan-id`, `learn`, `native`, and `activities`. `step` is the group-call onboarding step (`/community-call?step=language`). `communityCall=ready` is the practice page after that onboarding. `fluencyCall=paid` or `fluencyCall=buy` is an old Stripe return for the removed $2 month. `page=community` is the community page; `section=chat` is Global chat. After auth, lesson 1 is `/practice?plan-id=<id>` in the product and `/practice` in the export.
 
 Export also rolls unique-visitor `insights.quizSteps`, first-path `insights.entry` (home/scenario/blog/quiz/practice/communityCall/… with reachedApp/speech/conversation), `identifyPaths`, landing `communityCallCtaIds`, and in-app `appCtaIds` (named `data-analytics` ids only; landing CTA counts stay landing-only).
 
@@ -169,17 +169,16 @@ Admin UI: `/staats/journey`
 10. `before_goalReview` (Generate plan) → `goalReview`. `quiz-start-speaking` here is **Continue**. It saves the plan. It does not start a call.
 11. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call. A leftover `dailyQuestion` URL resolves to `preAuth`.
 
-**Community call order** (goal 1). Screens are `communityCall.${step}` and the stored path is `/community-call?step=`. Account is skipped when they are already signed in. The $2 step is skipped when they can already join (active Practice, Conversation, Conversation 10, the $2 month, or a top-5 game win).
+**Community call order** (goal 1). Screens are `communityCall.${step}` and the stored path is `/community-call?step=`. Account is skipped when they are already signed in. The calls are free, so `membership` is not on the path. An old `?step=membership` link resolves to `waiting`.
 
 1. `language` — language to practice. Continue is `community-call-language-continue`.
 2. `calls` — upcoming calls in the viewer’s time zone. Continue is `community-call-calls-continue`. An empty list still continues.
 3. `native` — language they speak. Continue is `community-call-native-continue`.
 4. `pageLanguage` — only when native is not a site language. Continue is `community-call-page-language-continue`. Absence is normal.
 5. `account` — same email/password form as the quiz (`auth-email`, `auth-email-send`).
-6. `membership` — $2 month. `paywall_view` with `ctaId` `fluency-call`, then `community-call-checkout` and `checkout_start` with `ctaId` `fluency-call`. `community-call-not-now` skips payment.
-7. `waiting` — `community-call-practice` opens `/practice?communityCall=ready`.
+6. `waiting` — `community-call-practice` opens `/practice?communityCall=ready`.
 
-On the practice calls card: `community-call-buy` opens the same $2 offer. `community-call-rsvp` is “I’ll join” and opens the conduct note the first time. `community-call-conduct-agree` saves the join. `community-call-meet` opens Google Meet when the call can be entered. `community-call-chat` is the text chat for that call. `community-call-propose` asks for a time. Stripe return is `/practice?fluencyCall=paid` or `fluencyCall=buy`.
+On the practice calls card: `community-call-rsvp` is “I’ll join” and opens the conduct note the first time. `community-call-conduct-agree` saves the join. `community-call-meet` opens Google Meet when the call can be entered. `community-call-chat` is the text chat for that call. `community-call-propose` asks for a time. Old events `community-call-buy`, `community-call-checkout`, `community-call-not-now`, and `fluencyCall=paid` / `fluencyCall=buy` are the removed $2 month.
 
 `before_recordAbout` without `quizSpeech` is they reached the clip and never pressed Reply. Leftover `recordAbout` in old paths is the previous signed-in follow-up, not this step.
 
@@ -197,11 +196,11 @@ On the practice calls card: `community-call-buy` opens the same $2 offer. `commu
 
 **Rage / confusion:** `rageClickVisitors` and `insights.deadClicks`. Same named CTA 3+ times in 10s with no speech/call/auth success is a stuck control, not extra engagement.
 
-**Community call conversation (goal 1):** count `/features/group-conversations` and `/community-call?step=` views, then `community-call-conduct-agree` and `community-call-meet`. Landing clicks are `community-call-feature`, `community-call-cta`, `community-call-cta-footer`, and `community-call-schedule-more` (`ctaIntent` `communityCall`). A drop on `membership` with `paywall_view` `fluency-call` and no `checkout_start` `fluency-call` means they saw the $2 month and did not pay; `community-call-not-now` is the explicit skip. `conversation_start` does not count. Global chat does not count.
+**Community call conversation (goal 1):** count `/features/group-conversations` and `/community-call?step=` views, then `community-call-conduct-agree` and `community-call-meet`. Landing clicks are `community-call-feature`, `community-call-cta`, `community-call-cta-footer`, and `community-call-schedule-more` (`ctaIntent` `communityCall`). The calls are free. Do not read a missing `paywall_view` `fluency-call` as a drop, and do not propose charging for the call again. `conversation_start` does not count. Global chat does not count.
 
 **Returned users (goal 2):** `visitorCountReturning` is people created before this window who were active in it. A one-day export cannot show whether yesterday’s new visitors came back; for that, compare an earlier day’s `visitorCountNew` with later `page_view`s from the same visitors. People who finished onboarding or spoke once and have no later `page_view` are a return problem, not an acquisition problem. Do not “fix” the landing hero for that.
 
-**Subscriptions (goal 3):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. Split `ctaId`: `fluency-call` is goal 1; practice plans are this goal. The free-answer screen offers `buy-access` (plans modal) and `limit-close` (leave the call). `chat-with-people` is an old event from when that screen also opened today’s question. Older `day-pass-checkout` taps are the previous day-price button on that same screen. `checkout_start` without payment in Stripe = checkout drop. Same-day practice checkout is not the target to push. No practice paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment. Global chat stays paid-only, so this screen does not link to it.
+**Subscriptions (goal 3):** more payments in general, ideally after 2–3 days of use. `paywall_view` without `checkout_start` = they saw the offer and did not start payment. Split `ctaId`: old `fluency-call` is the removed $2 month; practice plans are this goal. The free-answer screen offers `buy-access` (plans modal) and `limit-close` (leave the call). `chat-with-people` is an old event from when that screen also opened today’s question. Older `day-pass-checkout` taps are the previous day-price button on that same screen. `checkout_start` without payment in Stripe = checkout drop. Same-day practice checkout is not the target to push. No practice paywall after a few days of speaking = they never hit the limiter; do not show it earlier to manufacture a day-1 payment. Global chat stays paid-only, so this screen does not link to it.
 
 ## SEO / GEO
 

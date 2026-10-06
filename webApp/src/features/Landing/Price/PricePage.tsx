@@ -49,7 +49,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
     {
       question: i18n._(`What do I get with the paid plan?`),
       answer: i18n._(
-        `Practice ({practicePrice} a month) includes unlimited Just Talk, a personal plan, exams, role-play, daily lessons, and group conversations. Conversation ({conversationPrice} a month) adds {conversationHours} of advanced conversation. Conversation 10 ({conversation10Price} a month) adds {conversation10Hours} of advanced conversation. Week and year options are on this page.`,
+        `Practice ({practicePrice} a month) includes unlimited Just Talk, a personal plan, exams, role-play, and daily lessons. Group conversations are free. Conversation ({conversationPrice} a month) adds {conversationHours} of advanced conversation. Conversation 10 ({conversation10Price} a month) adds {conversation10Hours} of advanced conversation. Week and year options are on this page.`,
         {
           practicePrice: `$${PRICE_PER_MONTH_USD}`,
           conversationPrice: `$${paidAccessPriceUsd('conversation', 'month')}`,

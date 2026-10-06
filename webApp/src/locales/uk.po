@@ -30,13 +30,6 @@ msgstr ""
 "допоможе. Якщо вам не подобається наш сервіс або щось інше, просто "
 "повідомте мене, і я поверну вам гроші без зайвих запитань.\""
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:308
-#: src/features/FluencyCall/FluencyCallCardView.tsx:429
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:36
-#. js-lingui-explicit-id
-msgid "$2 per month"
-msgstr "$2 на місяць"
-
 #: src/features/Auth/WebViewWall.tsx:80
 #. js-lingui-explicit-id
 msgid "'Open in Chrome' to continue."
@@ -300,15 +293,6 @@ msgstr "Помилка є частиною практики, а не приво�
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Місяць навчання в межах досяжності. Продовжуйте сьогодні."
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:311
-#. js-lingui-explicit-id
-msgid ""
-"A month of live calls with other learners on Google Meet. Pay now, or "
-"later. You will need it before you join a call."
-msgstr ""
-"Місяць живих дзвінків з іншими учнями на Google Meet. Оплатіть зараз або "
-"пізніше. Вам знадобиться це перед тим, як приєднаєтеся до дзвінка."
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:327
 #. js-lingui-explicit-id
@@ -906,7 +890,7 @@ msgstr ""
 msgid "All time"
 msgstr "Увесь час"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:366
+#: src/features/FluencyCall/FluencyCallCardView.tsx:364
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Усі часи в {zone}"
@@ -1814,12 +1798,12 @@ msgstr "Просування по кар'єрі"
 msgid "Challenging"
 msgstr "Виклик"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:73
 #. js-lingui-explicit-id
 msgid "Change plan"
 msgstr "Змінити план"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:417
+#: src/features/FluencyCall/FluencyCallCardView.tsx:415
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Змінити час"
@@ -1890,7 +1874,7 @@ msgstr "Перевірте інші граматичні точки та при�
 msgid "Check proposed words"
 msgstr "Перевірте запропоновані слова"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:84
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:80
 #. js-lingui-explicit-id
 msgid "Check your access and included conversation time."
 msgstr "Перевірте свій доступ і включений час розмови."
@@ -2946,7 +2930,7 @@ msgstr "Контекст (тема, аудиторія, мета...)"
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:288
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:241
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
@@ -6373,13 +6357,19 @@ msgstr "Чудово!"
 msgid "Grocery Store"
 msgstr "Продуктовий магазин"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:306
-#: src/features/FluencyCall/FluencyCallCardView.tsx:307
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"Group calls are free. See upcoming times, create an account, and practice "
+"with AI until the call."
+msgstr ""
+"Групові дзвінки безкоштовні. Перегляньте часи, що наближаються, створіть "
+"обліковий запис та практикуйтесь з AI до дзвінка."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Групові розмови"
@@ -6980,7 +6970,7 @@ msgstr ""
 "Я лікар, і мені потрібно пояснити свій досвід та відповідати на запитання "
 "про мою роботу."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:210
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:163
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -7382,11 +7372,6 @@ msgstr ""
 "який допоможе вам вдосконалити свої відповіді та покращити навички "
 "проходження інтерв'ю."
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
-#. js-lingui-explicit-id
-msgid "Included"
-msgstr "Включено"
-
 #: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
@@ -7728,12 +7713,7 @@ msgstr ""
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Приєднуйтесь до кімнат, щоб обговорювати конкретні теми з іншими учасниками"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
-#. js-lingui-explicit-id
-msgid "Join scheduled group conversations for this paid period"
-msgstr "Приєднуйтесь до запланованих групових розмов на цей оплачуваний період"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:325
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Приєднуйтеся до розмов, які підходять для вашого тижня."
@@ -8846,7 +8826,7 @@ msgstr "Обговорення новин"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:229
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8965,7 +8945,7 @@ msgstr "Немає доступних розділів"
 msgid "No charge will be made"
 msgstr "Жодної плати не стягуватиметься"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:388
+#: src/features/FluencyCall/FluencyCallCardView.tsx:386
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "Жодної розмови ще не заплановано."
@@ -9310,12 +9290,10 @@ msgid "Not Found"
 msgstr "Не знайдено"
 
 #: src/features/Usage/Subscription/PaidAccessReview.tsx:51
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
 #. js-lingui-explicit-id
 msgid "Not included"
 msgstr "Не включено"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -9358,8 +9336,8 @@ msgstr "Сповіщення"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:53
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:100
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Зараз"
@@ -9448,11 +9426,6 @@ msgstr "Сто активних днів. Неймовірна віха — пр
 msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
 msgstr "Сто п'ятдесят днів навчання. Пишайтеся тим, як далеко ви зайшли."
 
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:39
-#. js-lingui-explicit-id
-msgid "One month of group conversations on Google Meet."
-msgstr "Один місяць групових розмов на Google Meet."
-
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
 msgid "One more thing."
@@ -9464,7 +9437,7 @@ msgstr "Ще одна річ."
 msgid "One pattern. Real speaking practice."
 msgstr "Один шаблон. Реальна практика розмови."
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:139
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:132
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:283
 #. js-lingui-explicit-id
 msgid "One payment. No automatic renewal."
@@ -9475,7 +9448,7 @@ msgstr "Одноразова оплата. Без автоматичного п�
 msgid "One thing left to do"
 msgstr "Залишилось зробити одну річ"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:58
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "One-time payment"
 msgstr "Одноразовий платіж"
@@ -9856,12 +9829,12 @@ msgstr "Історія платежів"
 msgid "Payment option"
 msgstr "Варіант оплати"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:333
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Платіж отримано. Ви можете приєднатися через мить."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:332
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Платіж отримано. Ви можете приєднатися до групових розмов."
@@ -9993,7 +9966,7 @@ msgstr "Оберіть рівень складності, який відпов�
 msgid "Pick a level to start playing!"
 msgstr "Виберіть рівень, щоб почати грати!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:391
+#: src/features/FluencyCall/FluencyCallCardView.tsx:389
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Обери час, і ми його встановимо."
@@ -10343,18 +10316,18 @@ msgstr "Практика та Прогрес"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and group conversations. "
+"plan, exams, role-play, and daily lessons. Group conversations are free. "
 "Conversation ({conversationPrice} a month) adds {conversationHours} of "
 "advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Практика ({practicePrice} на місяць) включає необмежену кількість Just "
-"Talk, особистий план, екзамени, рольові ігри, щоденні уроки та групові "
-"розмови. Розмова ({conversationPrice} на місяць) додає {conversationHours} "
-"годин просунутої розмови. Розмова 10 ({conversation10Price} на місяць) "
-"додає {conversation10Hours} годин просунутої розмови. Опції на тиждень та "
-"рік знаходяться на цій сторінці."
+"Практика ({practicePrice} на місяць) включає безлімітне Прості Розмови, "
+"персональний план, іспити, рольові ігри та щоденні уроки. Групові розмови – "
+"безкоштовні. Розмова ({conversationPrice} на місяць) додає "
+"{conversationHours} години просунутої розмови. Розмова 10 "
+"({conversation10Price} на місяць) додає {conversation10Hours} години "
+"просунутої розмови. Варіанти на тиждень і рік на цій сторінці."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10653,10 +10626,10 @@ msgstr "ПРАКТИКА, ПОКРАЩЕННЯ, ПОВТОРЕННЯ"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and group conversations"
-msgstr "Практика, плюс блок просунутої розмови та групові розмови"
+msgid "Practice, plus a block of advanced conversation"
+msgstr "Практика, плюс блок просунутої розмови"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:323
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Практикуйте розмову з іншими учнями."
@@ -10953,7 +10926,7 @@ msgstr "Вимовити джерело"
 msgid "Pronounce translations"
 msgstr "Вимовляти переклади"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:405
+#: src/features/FluencyCall/FluencyCallCardView.tsx:403
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11580,7 +11553,7 @@ msgstr "Повідомити про користувача"
 msgid "Request failed. Please try again."
 msgstr "Запит не вдався. Спробуйте ще раз."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:378
+#: src/features/FluencyCall/FluencyCallCardView.tsx:376
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11677,7 +11650,7 @@ msgstr ""
 "Перегляньте те, що ви практикували. Пропозиції вашого вчителя "
 "відображаються у наведеній нижче розмові."
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:81
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
 #. js-lingui-explicit-id
 msgid "Review your plan"
 msgstr "Перегляньте свій план"
@@ -11943,16 +11916,6 @@ msgstr "Дізнайтеся, який зворотний зв'язок від �
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Дізнайтеся, який тип зворотного зв'язку ви отримаєте"
-
-#: src/app/[lang]/community-call/page.tsx:21
-#: src/app/community-call/page.tsx:10
-#. js-lingui-explicit-id
-msgid ""
-"See upcoming group calls, create an account, and practice with AI until the "
-"call."
-msgstr ""
-"Дивіться майбутні групові дзвінки, створюйте обліковий запис і "
-"практикуйтеся з AI до дзвінка."
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12727,7 +12690,7 @@ msgstr "Зірки"
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:142
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:135
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:319
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -13383,33 +13346,24 @@ msgstr ""
 "Поспілкуйтесь з доброзичливим вчителем AI протягом трьох хвилин. Без "
 "облікового запису. Без картки. Лише ви та розмова."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:360
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:274
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
 msgid "Talk with AI"
 msgstr "Говоріть з AI"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:259
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call"
 msgstr ""
 " \n"
 "Говоріть з AI до дзвінка \n"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:336
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:219
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:173
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call starts."
 msgstr "Говоріть з AI, доки дзвінок не почнеться."
-
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:220
-#. js-lingui-explicit-id
-msgid ""
-"Talk with AI until the call. You can pay anytime. You will need the $2 "
-"month to join."
-msgstr ""
-"Спілкуйтеся з AI до дзвінка. Ви можете платити в будь-який час. Вам "
-"потрібно буде $2 на місяць, щоб приєднатися."
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:220
 #. js-lingui-explicit-id
@@ -14273,8 +14227,8 @@ msgstr "Ключ: маленькі пости прийнятні. Одного �
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with group conversations"
-msgstr "Більший блок розширеної розмови, з груповими бесідами"
+msgid "The larger advanced-conversation block"
+msgstr "Більший блок розмови для просунутих"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14925,8 +14879,8 @@ msgstr ""
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:49
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14958,8 +14912,8 @@ msgid "TOEFL Speaking Tasks"
 msgstr "Завдання зі спілкування TOEFL"
 
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:99
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "Завтра"
@@ -15336,7 +15290,7 @@ msgstr "Увімкнути звук"
 msgid "Upcoming calls"
 msgstr "Майбутні дзвінки"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:357
+#: src/features/FluencyCall/FluencyCallCardView.tsx:355
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Майбутні розмови"
@@ -15768,7 +15722,7 @@ msgstr ""
 "протягом одного \n"
 "              року."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:261
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:214
 #. js-lingui-explicit-id
 msgid "We will show FluencyPal in this language."
 msgstr "Ми покажемо FluencyPal цією мовою."
@@ -15783,7 +15737,7 @@ msgstr "Ми будемо говорити вільно"
 msgid "We'll get back to you with a confirmation."
 msgstr "Ми зв'яжемося з вами, щоб підтвердити."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:381
+#: src/features/FluencyCall/FluencyCallCardView.tsx:379
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Ми відповімо найближчим часом."
@@ -16014,7 +15968,7 @@ msgstr "Що ви хочете практикувати з AI?"
 msgid "What you will achieve"
 msgstr "Що ви досягнете"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:140
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:133
 #. js-lingui-explicit-id
 msgid "What's included"
 msgstr "Що включено"
@@ -16083,7 +16037,7 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Де я можу використовувати FluencyPal?"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:258
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:211
 #. js-lingui-explicit-id
 msgid "Which language should we use?"
 msgstr "Якою мовою ми повинні користуватися?"
@@ -16609,11 +16563,6 @@ msgstr ""
 "Ви можете вести розмови з штучним інтелектом, не дивлячись на екран. Я "
 "роблю це, виконуючи домашні справи."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
-#. js-lingui-explicit-id
-msgid "You can pay later"
-msgstr "Ви можете оплатити пізніше"
-
 #: src/features/Case/data/frontend-junior/faqSection.ts:15
 #. js-lingui-explicit-id
 msgid ""
@@ -16823,14 +16772,7 @@ msgstr ""
 "Ви будете відповідати на короткі запитання про .NET, API, бази даних, "
 "багатозадачність і проектування систем."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:346
-#. js-lingui-explicit-id
-msgid "You will need the $2 month before you join a call. Until then, talk with AI."
-msgstr ""
-"Вам знадобиться $2 місяць до того, як ви приєднаєтесь до дзвінка. До цього "
-"часу розмовляйте з AI."
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:345
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:262
 #. js-lingui-explicit-id
 msgid "You will see the calls next. Talk with AI until one starts."
 msgstr "Ви побачите виклики далі. Спілкуйтеся з AI, поки один не розпочнеться."

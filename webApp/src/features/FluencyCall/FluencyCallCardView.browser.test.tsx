@@ -48,7 +48,6 @@ const cardProps: FluencyCallCardViewProps = {
   timeZoneLabel: 'Warsaw',
   onLanguageChange: () => {},
   onInitiateCall: () => {},
-  onGetAccess: () => {},
 };
 
 function renderCard(
@@ -215,14 +214,6 @@ test('a sent request shows the time and a reply note', async () => {
   await renderCard({ hasCalls: false, requestedAtLabel: 'Tomorrow · 18:00' });
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('request-sent');
-});
-
-test('without access the empty card offers the month pass', async () => {
-  await renderCard({ hasCalls: false, canJoin: false });
-
-  await expect
-    .element(page.getByTestId('fluency-call-shot'))
-    .toMatchScreenshot('no-call-non-member');
 });
 
 test('the language dropdown filters by the chosen language', async () => {

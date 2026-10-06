@@ -252,7 +252,6 @@ export type FluencyCallCardViewProps = {
   timeZoneLabel: string;
   onLanguageChange: (language: SupportedLanguage) => void;
   onInitiateCall: () => void;
-  onGetAccess: () => void;
   children?: ReactNode;
 };
 
@@ -267,7 +266,6 @@ export const FluencyCallCardView = ({
   timeZoneLabel,
   onLanguageChange,
   onInitiateCall,
-  onGetAccess,
   children,
 }: FluencyCallCardViewProps) => {
   const { i18n } = useLingui();
@@ -415,18 +413,6 @@ export const FluencyCallCardView = ({
               sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
             >
               {i18n._('Change time')}
-            </Button>
-          ) : null}
-
-          {!canJoin && !hasCalls ? (
-            <Button
-              variant="outlined"
-              data-testid="fluency-call-get-access"
-              data-analytics="community-call-buy"
-              onClick={onGetAccess}
-              sx={{ ...outlineButtonSx, alignSelf: 'flex-start' }}
-            >
-              {i18n._('$2 per month')}
             </Button>
           ) : null}
         </Stack>

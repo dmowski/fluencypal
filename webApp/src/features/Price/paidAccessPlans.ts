@@ -18,19 +18,19 @@ export const PAID_ACCESS_PLANS: Record<PaidAccessPlanId, PaidAccessPlan> = {
     id: 'practice',
     pricesUsd: { week: 3, month: 6, year: 60 },
     advancedHours: { week: 0, month: 0, year: 0 },
-    includesCommunity: true,
+    includesCommunity: false,
   },
   conversation: {
     id: 'conversation',
     pricesUsd: { week: 7, month: 14, year: 140 },
     advancedHours: { week: 0.5, month: 1, year: 10 },
-    includesCommunity: true,
+    includesCommunity: false,
   },
   'conversation-10': {
     id: 'conversation-10',
     pricesUsd: { week: 32, month: 64, year: 640 },
     advancedHours: { week: 5, month: 10, year: 100 },
-    includesCommunity: true,
+    includesCommunity: false,
   },
 };
 

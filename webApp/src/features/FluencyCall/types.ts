@@ -38,7 +38,7 @@ export interface CallCountdown {
   isLive: boolean;
 }
 
-/** One month of group calls, bought separately from practice hours. */
+/** Old one-month pass. New callers do not need it. */
 export interface FluencyCallAccount {
   activeUntilIso: string | null;
   updatedAt?: string;

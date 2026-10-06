@@ -19,25 +19,25 @@ describe('paid access plans', () => {
     expect(paidAccessCheckoutUsd({ plan: 'conversation-10', months: 12, days: 0 })).toBe(640);
   });
 
-  it('includes community calls on every paid-access plan, and advanced hours on the higher plans', () => {
+  it('credits advanced hours on the higher plans and does not sell group conversations', () => {
     expect(paidAccessGrantForCheckout({ plan: 'practice', months: 1, days: 0 })).toEqual({
       advancedHours: 0,
-      communityMonths: 1,
+      communityMonths: 0,
       communityDays: 0,
     });
     expect(paidAccessGrantForCheckout({ plan: 'conversation', months: 1, days: 0 })).toEqual({
       advancedHours: 1,
-      communityMonths: 1,
+      communityMonths: 0,
       communityDays: 0,
     });
     expect(paidAccessGrantForCheckout({ plan: 'conversation-10', months: 0, days: 7 })).toEqual({
       advancedHours: 5,
       communityMonths: 0,
-      communityDays: 7,
+      communityDays: 0,
     });
     expect(paidAccessGrantForCheckout({ plan: 'conversation', months: 12, days: 0 })).toEqual({
       advancedHours: 10,
-      communityMonths: 12,
+      communityMonths: 0,
       communityDays: 0,
     });
   });
@@ -52,11 +52,9 @@ describe('paid access plans', () => {
   });
 
   it('names the Stripe product after the grant', () => {
-    expect(paidAccessStripeName('practice', 1, 0)).toBe(
-      'Paid access for a month, with group conversations',
-    );
+    expect(paidAccessStripeName('practice', 1, 0)).toBe('Paid access for a month');
     expect(paidAccessStripeName('conversation', 1, 0)).toBe(
-      'Paid access for a month, with 1 hour of advanced conversation and group conversations',
+      'Paid access for a month, with 1 hour of advanced conversation',
     );
     expect(formatHourCount(0.5)).toBe('30 minutes');
   });

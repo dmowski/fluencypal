@@ -9,3 +9,17 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 - Validate if demo working
 - Create ads for native languages. How?
+
+# FluencyCall
+
+Make Join button more visually easy to join
+
+Feedback about AI:
+"Mh.." - interrupt conversation.
+
+---
+
+Ask to call personally?
+
+Сформулировать зачем общаться в FluencyPal с людьми?
+Сформулировать зачем общаться в FluencyPal с ИИ?

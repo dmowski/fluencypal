@@ -30,13 +30,6 @@ msgstr ""
 "Hvis du ikke liker tjenesten vår eller noe annet, gi meg bare beskjed, så "
 "vil jeg tilbakebetale pengene dine uten noen spørsmål.\""
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:308
-#: src/features/FluencyCall/FluencyCallCardView.tsx:429
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:36
-#. js-lingui-explicit-id
-msgid "$2 per month"
-msgstr "$2 per måned"
-
 #: src/features/Auth/WebViewWall.tsx:80
 #. js-lingui-explicit-id
 msgid "'Open in Chrome' to continue."
@@ -298,15 +291,6 @@ msgstr "En feil er en del av øvingen, ikke en grunn til å dømme"
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "En måned med læring er innen rekkevidde. Fortsett i dag."
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:311
-#. js-lingui-explicit-id
-msgid ""
-"A month of live calls with other learners on Google Meet. Pay now, or "
-"later. You will need it before you join a call."
-msgstr ""
-"En måned med direktesamtaler med andre elever på Google Meet. Betal nå, "
-"eller senere. Du vil trenge det før du blir med i en samtale."
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:327
 #. js-lingui-explicit-id
@@ -900,7 +884,7 @@ msgstr ""
 msgid "All time"
 msgstr "All tid"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:366
+#: src/features/FluencyCall/FluencyCallCardView.tsx:364
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Alle tider i {zone}"
@@ -1811,12 +1795,12 @@ msgstr "Karrierefremgang"
 msgid "Challenging"
 msgstr "Utfordrende"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:73
 #. js-lingui-explicit-id
 msgid "Change plan"
 msgstr "Endre plan"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:417
+#: src/features/FluencyCall/FluencyCallCardView.tsx:415
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Endre tid"
@@ -1887,7 +1871,7 @@ msgstr "Sjekk andre grammatikkpunkter og eksempler."
 msgid "Check proposed words"
 msgstr "Sjekk foreslåtte ord"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:84
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:80
 #. js-lingui-explicit-id
 msgid "Check your access and included conversation time."
 msgstr "Sjekk din tilgang og inkluderte samtaletid."
@@ -2941,7 +2925,7 @@ msgstr "Kontekst (emne, publikum, mål...)"
 #: src/features/Dashboard/PlanDashboardCards.tsx:246
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:288
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:241
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:113
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:48
@@ -6316,13 +6300,19 @@ msgstr "Flott!"
 msgid "Grocery Store"
 msgstr "Matbutikk"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:306
-#: src/features/FluencyCall/FluencyCallCardView.tsx:307
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:33
+#: src/app/[lang]/community-call/page.tsx:21
+#: src/app/community-call/page.tsx:10
+#. js-lingui-explicit-id
+msgid ""
+"Group calls are free. See upcoming times, create an account, and practice "
+"with AI until the call."
+msgstr ""
+"Gruppesamtaler er gratis. Se kommende tider, opprett en konto, og øv med AI "
+"frem til samtalen."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:305
 #: src/features/Header/PaymentHistoryModal.tsx:31
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:111
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Gruppekonversasjoner"
@@ -6923,7 +6913,7 @@ msgstr ""
 "Jeg vil lære engelsk slik at jeg kan bestå et jobbintervju. Jeg er lege, og "
 "jeg må forklare min erfaring og svare på spørsmål om arbeidet mitt."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:210
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:163
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
 #: src/features/Goal/Quiz/QuizPage2.tsx:166
@@ -7322,11 +7312,6 @@ msgstr ""
 "Etter å ha svart, vil du motta tilbakemelding som hjelper deg med å "
 "forbedre svarene dine og forbedre intervjuevnene dine."
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
-#. js-lingui-explicit-id
-msgid "Included"
-msgstr "Inkludert"
-
 #: src/features/Quiz/components/QuestionFeedback.tsx:97
 #. js-lingui-explicit-id
 msgid "Incorrect"
@@ -7672,12 +7657,7 @@ msgstr "Bli med i FluencyPal for å utvikle en snakkevane og bevare fremgangen d
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "Bli med i rom for å diskutere spesifikke emner med andre medlemmer"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:112
-#. js-lingui-explicit-id
-msgid "Join scheduled group conversations for this paid period"
-msgstr "Bli med i planlagte gruppesamtaler for denne betalte perioden"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:325
+#: src/features/FluencyCall/FluencyCallCardView.tsx:323
 #. js-lingui-explicit-id
 msgid "Join the conversations that fit your week."
 msgstr "Bli med i samtalene som passer for uken din."
@@ -8776,7 +8756,7 @@ msgstr "Nyhetsdiskusjon"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:229
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/Game/Battle/BattleActionModal.tsx:399
 #: src/features/Game/GameOnboarding.tsx:80
 #: src/features/Game/GameOnboarding.tsx:138
@@ -8893,7 +8873,7 @@ msgstr "Ingen kapitler tilgjengelig"
 msgid "No charge will be made"
 msgstr "Ingen kostnad vil bli pålagt"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:388
+#: src/features/FluencyCall/FluencyCallCardView.tsx:386
 #. js-lingui-explicit-id
 msgid "No conversation scheduled yet."
 msgstr "Ingen samtale planlagt ennå."
@@ -9229,12 +9209,10 @@ msgid "Not Found"
 msgstr "Ikke funnet"
 
 #: src/features/Usage/Subscription/PaidAccessReview.tsx:51
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:55
 #. js-lingui-explicit-id
 msgid "Not included"
 msgstr "Ikke inkludert"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:333
 #: src/features/OpenAiLive/OpenAiLiveBalanceEndedModal.tsx:46
 #: src/features/webCam/MicrophonePermissionModal.tsx:155
 #. js-lingui-explicit-id
@@ -9275,8 +9253,8 @@ msgstr "Varsler"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:24
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:53
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:100
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "Nå"
@@ -9365,11 +9343,6 @@ msgstr "Hundre aktive dager. En utrolig milepæl — fortsett."
 msgid "One hundred fifty days of learning. Be proud of how far you’ve come."
 msgstr "Ett hundre og femti dager med læring. Vær stolt av hvor langt du har kommet."
 
-#: src/features/FluencyCall/FluencyCallPaywallModal.tsx:39
-#. js-lingui-explicit-id
-msgid "One month of group conversations on Google Meet."
-msgstr "En måned med gruppesamtaler på Google Meet."
-
 #: src/features/Landing/Contact/ContactsPage.tsx:142
 #. js-lingui-explicit-id
 msgid "One more thing."
@@ -9381,7 +9354,7 @@ msgstr "En ting til."
 msgid "One pattern. Real speaking practice."
 msgstr "Én mønster. Ekte taletrening."
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:139
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:132
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:283
 #. js-lingui-explicit-id
 msgid "One payment. No automatic renewal."
@@ -9392,7 +9365,7 @@ msgstr "Én betaling. Ingen automatisk fornyelse."
 msgid "One thing left to do"
 msgstr "Én ting igjen å gjøre"
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:58
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:54
 #. js-lingui-explicit-id
 msgid "One-time payment"
 msgstr "Engangsbetaling"
@@ -9773,12 +9746,12 @@ msgstr "Betalingshistorikk"
 msgid "Payment option"
 msgstr "Betalingsalternativ"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:333
+#: src/features/FluencyCall/FluencyCallCardView.tsx:331
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Betaling mottatt. Du kan bli med om et øyeblikk."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:332
+#: src/features/FluencyCall/FluencyCallCardView.tsx:330
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Betaling mottatt. Du kan bli med i gruppekonversasjonene."
@@ -9908,7 +9881,7 @@ msgstr "Velg en vanskelighetsgrad som passer for din gruppe."
 msgid "Pick a level to start playing!"
 msgstr "Velg et nivå for å starte spillingen!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:391
+#: src/features/FluencyCall/FluencyCallCardView.tsx:389
 #. js-lingui-explicit-id
 msgid "Pick a time and we'll set one up."
 msgstr "Velg et tidspunkt, så setter vi opp en."
@@ -10250,18 +10223,18 @@ msgstr "Øvelse & Fremgang"
 #. js-lingui-explicit-id
 msgid ""
 "Practice ({practicePrice} a month) includes unlimited Just Talk, a personal "
-"plan, exams, role-play, daily lessons, and group conversations. "
+"plan, exams, role-play, and daily lessons. Group conversations are free. "
 "Conversation ({conversationPrice} a month) adds {conversationHours} of "
 "advanced conversation. Conversation 10 ({conversation10Price} a month) adds "
 "{conversation10Hours} of advanced conversation. Week and year options are "
 "on this page."
 msgstr ""
-"Practice ({practicePrice} i måneden) inkluderer ubegrenset Just Talk, en "
-"personlig plan, eksamener, rollespill, daglige leksjoner og "
-"gruppekonversasjoner. Samtale ({conversationPrice} i måneden) inkluderer "
-"{conversationHours} med avansert samtale. Samtale 10 ({conversation10Price} "
-"i måneden) inkluderer {conversation10Hours} med avansert samtale. Ukes- og "
-"årsopsjoner finnes på denne siden."
+"Øvelse ({practicePrice} i måneden) inkluderer ubegrenset Just Talk, en "
+"personlig plan, eksamener, rollespill og daglige leksjoner. "
+"Gruppekonversasjoner er gratis. Samtale ({conversationPrice} i måneden) "
+"legger til {conversationHours} med avansert samtale. Samtale 10 "
+"({conversation10Price} i måneden) legger til {conversation10Hours} med "
+"avansert samtale. Uke- og årsopsjoner er på denne siden."
 
 #: src/features/Dashboard/BrainCard.tsx:440
 #. js-lingui-explicit-id
@@ -10551,10 +10524,10 @@ msgstr "ØV, FORBEDRE, GJENTA"
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:47
 #. js-lingui-explicit-id
-msgid "Practice, plus a block of advanced conversation and group conversations"
-msgstr "Øvelse, pluss en blokk med avansert samtale og gruppesamtaler"
+msgid "Practice, plus a block of advanced conversation"
+msgstr "Øvelse, pluss en blokk med avansert samtale"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:323
+#: src/features/FluencyCall/FluencyCallCardView.tsx:321
 #. js-lingui-explicit-id
 msgid "Practise speaking with other learners."
 msgstr "Øv på å snakke med andre elever."
@@ -10850,7 +10823,7 @@ msgstr "Uttal kilde"
 msgid "Pronounce translations"
 msgstr "Uttale oversettelser"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:405
+#: src/features/FluencyCall/FluencyCallCardView.tsx:403
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11471,7 +11444,7 @@ msgstr "Rapporter bruker"
 msgid "Request failed. Please try again."
 msgstr "Forespørsel mislyktes. Vennligst prøv igjen."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:378
+#: src/features/FluencyCall/FluencyCallCardView.tsx:376
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11566,7 +11539,7 @@ msgid ""
 "conversation below."
 msgstr "Gjennomgå det du har øvd på. Lærerens forslag vises i samtalen nedenfor."
 
-#: src/features/Usage/Subscription/PaidAccessReview.tsx:81
+#: src/features/Usage/Subscription/PaidAccessReview.tsx:77
 #. js-lingui-explicit-id
 msgid "Review your plan"
 msgstr "Gjennomgå planen din"
@@ -11827,16 +11800,6 @@ msgstr "Se typen tilbakemelding fra backend du vil motta"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Se typen tilbakemelding du vil få"
-
-#: src/app/[lang]/community-call/page.tsx:21
-#: src/app/community-call/page.tsx:10
-#. js-lingui-explicit-id
-msgid ""
-"See upcoming group calls, create an account, and practice with AI until the "
-"call."
-msgstr ""
-"Se kommende gruppesamtaler, opprett en konto, og øv med AI frem til "
-"samtalen."
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -12613,7 +12576,7 @@ msgstr "Stjerner"
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
 #: src/features/Goal/Quiz/GoalReview.tsx:217
 #: src/features/Landing/PlanLandingBlock.tsx:527
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:142
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:135
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:319
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:283
@@ -13272,31 +13235,22 @@ msgstr ""
 "Snakk med en vennlig AI-lærer i tre minutter. Ingen konto. Ingen kort. Bare "
 "du og en samtale."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:360
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:274
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
 msgid "Talk with AI"
 msgstr "Snakk med AI"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:259
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call"
 msgstr "Snakk med AI til samtalen"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:336
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:219
+#: src/features/FluencyCall/FluencyCallCardView.tsx:334
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:173
 #. js-lingui-explicit-id
 msgid "Talk with AI until the call starts."
 msgstr "Snakk med AI til samtalen starter."
-
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:220
-#. js-lingui-explicit-id
-msgid ""
-"Talk with AI until the call. You can pay anytime. You will need the $2 "
-"month to join."
-msgstr ""
-"Snakk med AI til samtalen. Du kan betale når som helst. Du vil trenge $2 "
-"per måned for å bli med."
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:220
 #. js-lingui-explicit-id
@@ -14154,8 +14108,8 @@ msgstr "Nøkkelen: små innlegg er gyldige. Én setning er nok."
 
 #: src/features/Landing/Price/PaidAccessPriceSection.tsx:48
 #. js-lingui-explicit-id
-msgid "The larger advanced-conversation block, with group conversations"
-msgstr "Den større avanserte samtaleblokken, med gruppesamtaler"
+msgid "The larger advanced-conversation block"
+msgstr "Den større avanserte-samtale-blokken"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:145
 #. js-lingui-explicit-id
@@ -14811,8 +14765,8 @@ msgstr ""
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:47
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:22
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:98
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:49
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:96
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14844,8 +14798,8 @@ msgid "TOEFL Speaking Tasks"
 msgstr "TOEFL Taleoppgaver"
 
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:23
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:52
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:99
+#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:97
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "I morgen"
@@ -15221,7 +15175,7 @@ msgstr "Slå på lyden"
 msgid "Upcoming calls"
 msgstr "Kommende samtaler"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:357
+#: src/features/FluencyCall/FluencyCallCardView.tsx:355
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Kommende samtaler"
@@ -15648,7 +15602,7 @@ msgstr ""
 "ett\n"
 "              år."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:261
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:214
 #. js-lingui-explicit-id
 msgid "We will show FluencyPal in this language."
 msgstr "Vi vil vise FluencyPal på dette språket."
@@ -15663,7 +15617,7 @@ msgstr "Vi vil tale fritt"
 msgid "We'll get back to you with a confirmation."
 msgstr "Vi vil komme tilbake til deg med en bekreftelse."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:381
+#: src/features/FluencyCall/FluencyCallCardView.tsx:379
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Vi svarer snart."
@@ -15894,7 +15848,7 @@ msgstr "Hva vil du øve på med AI?"
 msgid "What you will achieve"
 msgstr "Hva du vil oppnå"
 
-#: src/features/Landing/Price/PaidAccessPriceSection.tsx:140
+#: src/features/Landing/Price/PaidAccessPriceSection.tsx:133
 #. js-lingui-explicit-id
 msgid "What's included"
 msgstr "Hva er inkludert"
@@ -15961,7 +15915,7 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Hvor kan jeg bruke FluencyPal?"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:258
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:211
 #. js-lingui-explicit-id
 msgid "Which language should we use?"
 msgstr "Hvilket språk skal vi bruke?"
@@ -16479,11 +16433,6 @@ msgstr ""
 "Du kan føre samtaler med AI uten å se på skjermen. Jeg gjør det mens jeg "
 "gjør husarbeid."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:341
-#. js-lingui-explicit-id
-msgid "You can pay later"
-msgstr "Du kan betale senere"
-
 #: src/features/Case/data/frontend-junior/faqSection.ts:15
 #. js-lingui-explicit-id
 msgid ""
@@ -16695,14 +16644,7 @@ msgstr ""
 "Du vil svare på korte spørsmål om .NET, API-er, databaser, samtidighet og "
 "systemdesign."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:346
-#. js-lingui-explicit-id
-msgid "You will need the $2 month before you join a call. Until then, talk with AI."
-msgstr ""
-"Du vil trenge $2 i måneden før du blir med i en samtale. Inntil da, snakk "
-"med AI."
-
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:345
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:262
 #. js-lingui-explicit-id
 msgid "You will see the calls next. Talk with AI until one starts."
 msgstr "Du vil se anropene neste. Snakk med AI til ett starter."

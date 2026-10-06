@@ -94,8 +94,11 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
       <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
         {i18n._('Upcoming calls')}
       </Typography>
-      <Typography variant="body2" sx={{ opacity: 0.65, paddingBottom: '8px' }}>
+      <Typography variant="body2" sx={{ opacity: 0.65 }}>
         {i18n._('Times are shown in your local time zone.')}
+      </Typography>
+      <Typography variant="body2" sx={{ fontWeight: 700, color: '#7DDEAA', paddingBottom: '8px' }}>
+        {i18n._('Free for everyone.')}
       </Typography>
       {failed ? (
         <Typography variant="body2" sx={{ opacity: 0.75 }}>
