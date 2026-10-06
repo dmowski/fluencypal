@@ -17,21 +17,29 @@ Make Join button more visually easy to join
 Feedback about AI:
 "Mh.." - interrupt conversation.
 
----
+## What fluencyPal is
 
-Ask to call personally?
+Articulate the reasons for interacting with people on FluencyPal?
+Articulate the reasons for interacting with AI on FluencyPal?
 
-Сформулировать зачем общаться в FluencyPal с людьми?
-Сформулировать зачем общаться в FluencyPal с ИИ?
+Potential unique use cases for FluencyPal:
 
-Что может быть уникальной пользой в FluencyPal:
+And why learn another language in the first place?
+To make friends, to find a job.
 
-- Я могу сделать фичу для тебя
-- Я могу быть твоим ментором
-- Со мной можно интересно пообщаться если ты прогер
+## Goal:
 
-А для чего вообще изучать другой язык:
-Найти друзей, найти работу
+Convert into money, into emotions.
 
-Зачем:
-Конвертировать в деньги, в эмоции
+What I am more into? Emotions
+
+## Money
+
+Work -> Money
+Relocation -> Work -> Money
+Study -> work -> Money
+
+## Emotions
+
+Friends -> Emotion
+New Interlocutors -> Emotion
