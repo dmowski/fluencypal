@@ -27,7 +27,7 @@ const INTERVIEW_PHRASE_POST_IDS = new Set([
 ]);
 
 const INTERVIEW_PRACTICE_HREF = 'practice?rolePlayId=job-interview';
-const INTERVIEW_BLOG_CTA_ID = 'blog-interview-cta';
+const INTERVIEW_BLOG_CTA_ID = 'blog-interview-cta-end';
 
 interface BlogOnePageProps {
   id?: string;
@@ -293,12 +293,10 @@ export const BlogOnePage = async ({ id, lang }: BlogOnePageProps) => {
                           fontSize: '1.15rem',
                         }}
                       >
-                        {i18n._('Practice these phrases out loud')}
+                        {i18n._('Say one answer out loud')}
                       </Typography>
                       <Typography sx={{ color: '#444' }}>
-                        {i18n._(
-                          'Try a mock interview with AI using the phrases from this article.',
-                        )}
+                        {i18n._('Start a mock interview and practice the answer you just read.')}
                       </Typography>
                       <Button
                         href={`${getAppUrlStart(lang)}${INTERVIEW_PRACTICE_HREF}`}
