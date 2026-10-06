@@ -19,7 +19,6 @@ describe('communityCallPath', () => {
       'native',
       'pageLanguage',
       'account',
-      'waiting',
     ]);
   });
 
@@ -32,7 +31,7 @@ describe('communityCallPath', () => {
         includePageLanguage: false,
         includeAccount: true,
       }),
-    ).toEqual(['language', 'calls', 'native', 'account', 'waiting']);
+    ).toEqual(['language', 'calls', 'native', 'account']);
   });
 
   it('skips account for someone who is already signed in', () => {
@@ -41,7 +40,7 @@ describe('communityCallPath', () => {
         includePageLanguage: false,
         includeAccount: false,
       }),
-    ).toEqual(['language', 'calls', 'native', 'waiting']);
+    ).toEqual(['language', 'calls', 'native']);
   });
 });
 
@@ -55,10 +54,11 @@ describe('resolveCommunityCallStep', () => {
     expect(resolveCommunityCallStep('calls', path)).toBe('calls');
   });
 
-  it('moves forward when the requested step was skipped', () => {
-    expect(resolveCommunityCallStep('pageLanguage', path)).toBe('waiting');
-    expect(resolveCommunityCallStep('account', path)).toBe('waiting');
-    expect(resolveCommunityCallStep('membership', path)).toBe('waiting');
+  it('opens practice when the requested step is past the last one they still need', () => {
+    expect(resolveCommunityCallStep('pageLanguage', path)).toBe('practice');
+    expect(resolveCommunityCallStep('account', path)).toBe('practice');
+    expect(resolveCommunityCallStep('membership', path)).toBe('practice');
+    expect(resolveCommunityCallStep('waiting', path)).toBe('practice');
   });
 
   it('falls back to the first step for an unknown value', () => {
@@ -72,7 +72,7 @@ describe('community call neighbours', () => {
   it('walks forward and back', () => {
     expect(nextCommunityCallStep('language', path)).toBe('calls');
     expect(previousCommunityCallStep('calls', path)).toBe('language');
-    expect(nextCommunityCallStep('waiting', path)).toBeNull();
+    expect(nextCommunityCallStep('account', path)).toBeNull();
     expect(previousCommunityCallStep('language', path)).toBeNull();
   });
 });

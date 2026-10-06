@@ -248,7 +248,6 @@ export type FluencyCallCardViewProps = {
   languageCode: SupportedLanguage;
   requestedAtLabel: string | null;
   paidNotice: boolean;
-  practiceNote?: string | null;
   timeZoneLabel: string;
   onLanguageChange: (language: SupportedLanguage) => void;
   onInitiateCall: () => void;
@@ -261,8 +260,6 @@ export const FluencyCallCardView = ({
   languageCode,
   requestedAtLabel,
   paidNotice,
-  practiceNote,
-
   timeZoneLabel,
   onLanguageChange,
   onInitiateCall,
@@ -273,14 +270,6 @@ export const FluencyCallCardView = ({
 
   return (
     <Stack id="fluency-call" data-testid="fluency-call-card" sx={cardSx}>
-      {practiceNote ? (
-        <Typography
-          data-testid="fluency-call-practice-until"
-          sx={{ color: '#7DDEAA', fontWeight: 700 }}
-        >
-          {practiceNote}
-        </Typography>
-      ) : null}
       <Stack
         direction="row"
         sx={{ alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px' }}
@@ -329,9 +318,6 @@ export const FluencyCallCardView = ({
             {canJoin
               ? i18n._('Payment received. You can join the group conversations.')
               : i18n._('Payment received. You can join in a moment.')}
-          </Typography>
-          <Typography sx={{ color: '#7DDEAA' }}>
-            {i18n._('Talk with AI until the call starts.')}
           </Typography>
         </Stack>
       ) : null}

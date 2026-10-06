@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { isTMA } from '@telegram-apps/sdk-react';
@@ -39,10 +39,7 @@ const stepAfter = (
     includePageLanguage: boolean;
     includeAccount: boolean;
   },
-): CommunityCallStep => {
-  const path = communityCallPath(options);
-  return nextCommunityCallStep(current, path) ?? 'waiting';
-};
+): CommunityCallStep | null => nextCommunityCallStep(current, communityCallPath(options));
 
 export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -62,17 +59,12 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     () => communityCallPath({ includePageLanguage, includeAccount }),
     [includeAccount, includePageLanguage],
   );
-  const step = resolveCommunityCallStep(stepParam, path);
+  const destination = resolveCommunityCallStep(stepParam, path);
+  const step: CommunityCallStep = destination === 'practice' ? 'language' : destination;
   const stepIndex = Math.max(path.indexOf(step), 0);
   const progress = (stepIndex + 1) / path.length;
   const isTelegramApp = useMemo(() => isTMA(), []);
-
-  useEffect(() => {
-    if (auth.loading) return;
-    if (step !== stepParam) {
-      void setStepParam(step);
-    }
-  }, [auth.loading, setStepParam, step, stepParam]);
+  const redirectStarted = useRef(false);
 
   const persistLearn = async () => {
     if (settings.languageCode !== learn) {
@@ -80,13 +72,26 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     }
   };
 
-  const goToPractice = async () => {
+  const openPractice = async (pageLang: SupportedLanguage = lang) => {
     await persistLearn();
     if (nativeParam) {
       await settings.setNativeLanguage(nativeParam as NativeLangCode);
     }
-    router.push(`${getUrlStart(lang)}practice?communityCall=ready#fluency-call`);
+    router.push(`${getUrlStart(pageLang)}practice?communityCall=ready#fluency-call`);
   };
+
+  useEffect(() => {
+    if (auth.loading) return;
+    if (destination === 'practice') {
+      if (redirectStarted.current) return;
+      redirectStarted.current = true;
+      void openPractice();
+      return;
+    }
+    if (destination !== stepParam) {
+      void setStepParam(destination);
+    }
+  }, [auth.loading, destination, setStepParam, stepParam]);
 
   const continueFromLanguage = async () => {
     await persistLearn();
@@ -103,6 +108,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         includePageLanguage: false,
         includeAccount,
       });
+      if (!next) {
+        await openPractice(siteLanguage);
+        return;
+      }
       const params = new URLSearchParams(window.location.search);
       params.set('step', next);
       params.set('native', nativeParam);
@@ -116,6 +125,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       includePageLanguage: !siteLanguage,
       includeAccount,
     });
+    if (!next) {
+      await openPractice();
+      return;
+    }
     await setStepParam(next);
   };
 
@@ -125,6 +138,10 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       includePageLanguage: true,
       includeAccount,
     });
+    if (!next) {
+      await openPractice(pageLanguage);
+      return;
+    }
     if (pageLanguage === lang) {
       await setStepParam(next);
       return;
@@ -135,6 +152,19 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     params.set('learn', learn);
     router.push(replaceUrlToLang(pageLanguage, `${window.location.pathname}?${params.toString()}`));
   };
+
+  if (destination === 'practice') {
+    return (
+      <Stack
+        component="main"
+        data-testid="community-call-onboarding"
+        data-analytics-screen="communityCall.practice"
+        sx={{ width: '100%', alignItems: 'center', padding: '40px 0' }}
+      >
+        <QuizPageLoader />
+      </Stack>
+    );
+  }
 
   return (
     <Stack
@@ -251,29 +281,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
               <QuizPasswordAccountForm />
             </Stack>
           )
-        ) : null}
-
-        {step === 'waiting' ? (
-          <Stack data-testid="community-call-waiting" sx={{ gap: '16px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {i18n._('Talk with AI until the call')}
-            </Typography>
-            <Typography sx={{ opacity: 0.8 }}>
-              {i18n._('You will see the calls next. Talk with AI until one starts.')}
-            </Typography>
-            <Button
-              variant="contained"
-              size="large"
-              data-testid="community-call-practice"
-              data-analytics="community-call-practice"
-              onClick={() => {
-                void goToPractice();
-              }}
-              sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
-            >
-              {i18n._('Talk with AI')}
-            </Button>
-          </Stack>
         ) : null}
       </Stack>
     </Stack>

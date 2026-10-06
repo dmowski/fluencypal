@@ -43,18 +43,7 @@ export const FluencyCallDashboardCard = () => {
   const access = useFluencyCallAccess();
   const searchParams = useSearchParams();
   const paymentState = searchParams.get('fluencyCall');
-  const practiceUntilCall = searchParams.get('communityCall') === 'ready';
-  const cardReady =
-    Boolean(auth.uid) &&
-    !loading &&
-    access.ready &&
-    access.canJoin &&
-    !(calls.length === 0 && requestLoading);
 
-  useEffect(() => {
-    if (!practiceUntilCall || !cardReady) return;
-    document.getElementById('fluency-call')?.scrollIntoView({ block: 'start' });
-  }, [cardReady, practiceUntilCall]);
   const [callChatId, setCallChatId] = useUrlState('callChatId', '', false);
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [pendingJoinId, setPendingJoinId] = useState<string | null>(null);
@@ -170,7 +159,6 @@ export const FluencyCallDashboardCard = () => {
         languageCode={language}
         requestedAtLabel={requestedLabel}
         paidNotice={paymentState === 'paid'}
-        practiceNote={practiceUntilCall ? i18n._('Talk with AI until the call starts.') : null}
         timeZoneLabel={timeZoneCity(timeZone)}
         onLanguageChange={setPickedLanguage}
         onInitiateCall={() => setIsRequestOpen(true)}

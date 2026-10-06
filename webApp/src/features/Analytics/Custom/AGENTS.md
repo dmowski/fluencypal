@@ -169,14 +169,13 @@ Admin UI: `/staats/journey`
 10. `before_goalReview` (Generate plan) → `goalReview`. `quiz-start-speaking` here is **Continue**. It saves the plan. It does not start a call.
 11. `preAuth` (`quiz-pre-auth-continue`) → `authWall` (Google or email). Anonymous users stay on the wall. After the account links, the app opens `/practice?plan-id=<first lesson id>` and does not start a call. A leftover `dailyQuestion` URL resolves to `preAuth`.
 
-**Community call order** (goal 1). Screens are `communityCall.${step}` and the stored path is `/community-call?step=`. Account is skipped when they are already signed in. The calls are free, so `membership` is not on the path. An old `?step=membership` link resolves to `waiting`.
+**Community call order** (goal 1). Screens are `communityCall.${step}` and the stored path is `/community-call?step=`. Account is skipped when they are already signed in. The calls are free, so `membership` is not on the path. There is no `waiting` screen. The last step they still need sends them to `/practice?communityCall=ready`. An old `?step=membership` or `?step=waiting` link does the same.
 
 1. `language` — language to practice. Continue is `community-call-language-continue`.
 2. `calls` — upcoming calls in the viewer’s time zone. Continue is `community-call-calls-continue`. An empty list still continues.
 3. `native` — language they speak. Continue is `community-call-native-continue`.
 4. `pageLanguage` — only when native is not a site language. Continue is `community-call-page-language-continue`. Absence is normal.
-5. `account` — same email/password form as the quiz (`auth-email`, `auth-email-send`).
-6. `waiting` — `community-call-practice` opens `/practice?communityCall=ready`.
+5. `account` — same email/password form as the quiz (`auth-email`, `auth-email-send`). After the account links, the app opens `/practice?communityCall=ready`. A signed-in visitor skips this step and that same redirect happens after native language, or after page language when that step is shown. `community-call-practice` is the removed waiting-screen button.
 
 On the practice calls card: `community-call-rsvp` is “I’ll join” and opens the conduct note the first time. `community-call-conduct-agree` saves the join. `community-call-meet` opens Google Meet when the call can be entered. `community-call-chat` is the text chat for that call. `community-call-propose` asks for a time. Old events `community-call-buy`, `community-call-checkout`, `community-call-not-now`, and `fluencyCall=paid` / `fluencyCall=buy` are the removed $2 month.
 

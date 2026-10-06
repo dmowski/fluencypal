@@ -22,7 +22,7 @@ export function communityCallPath({
   return communityCallStepIds.filter((step) => {
     if (step === 'pageLanguage') return includePageLanguage;
     if (step === 'account') return includeAccount;
-    if (step === 'membership') return false;
+    if (step === 'membership' || step === 'waiting') return false;
     return true;
   });
 }
@@ -33,15 +33,16 @@ export function needsCommunityCallPageLanguage(nativeLanguage: string): boolean 
   return !(supportedLanguages as readonly string[]).includes(nativeLanguage);
 }
 
+/** `practice` means onboarding is finished and the visitor should leave for the practice dashboard. */
 export function resolveCommunityCallStep(
   step: string,
   path: readonly CommunityCallStep[],
-): CommunityCallStep {
+): CommunityCallStep | 'practice' {
   if (path.includes(step as CommunityCallStep)) return step as CommunityCallStep;
   const requestedIndex = communityCallStepIds.indexOf(step as CommunityCallStep);
   if (requestedIndex === -1) return path[0] ?? 'language';
   const next = communityCallStepIds.slice(requestedIndex + 1).find((item) => path.includes(item));
-  return next ?? path[path.length - 1] ?? 'language';
+  return next ?? 'practice';
 }
 
 export function nextCommunityCallStep(
