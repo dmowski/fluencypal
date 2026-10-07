@@ -6,7 +6,7 @@ import { Search, X } from 'lucide-react';
 import { LanguageButton } from '@/features/Lang/LangSelector';
 import { useQuiz } from './useQuiz';
 import { useLanguageGroup } from '../useLanguageGroup';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { scrollToLangButton } from '@/libs/scroll';
 import { NextStepButton } from './NextStepButton';
 
@@ -23,6 +23,16 @@ export const NativeLanguageSelector = () => {
     defaultGroupTitle: i18n._(`Other languages`),
     systemLanguagesTitle: i18n._(`System languages`),
   });
+  const initialNativeLanguage = useRef(nativeLanguage);
+
+  useEffect(() => {
+    const lang = initialNativeLanguage.current;
+    if (!lang || languageGroups.length === 0) return;
+    const frame = requestAnimationFrame(() => {
+      scrollToLangButton(lang);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [languageGroups]);
 
   const filterByInput = ({
     englishName,
