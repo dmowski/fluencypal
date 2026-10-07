@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
+  outputFileTracingIncludes: {
+    '/og/learn/[ui]/[target]': ['./src/features/LearnLanding/fonts/**/*'],
+  },
   images: {
     remotePatterns: [
       {

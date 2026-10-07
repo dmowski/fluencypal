@@ -1,4 +1,5 @@
 import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+import { learnTargetLanguages } from '@/features/LearnLanding/targets';
 import { getBlogs } from '@/features/Blog/blogData';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
@@ -106,6 +107,11 @@ export async function generateSitemap(): Promise<string> {
     priority: '0.7000',
   }));
 
+  const learnLanguageUrls: UrlDefinition[] = learnTargetLanguages.map((target) => ({
+    path: `learn/${target}`,
+    priority: '0.8000',
+  }));
+
   const urls: UrlDefinition[] = [
     {
       path: '',
@@ -169,6 +175,7 @@ export async function generateSitemap(): Promise<string> {
     ...blogsUrls,
     ...blogsCategoriesUrls,
     ...featureUrls,
+    ...learnLanguageUrls,
   ];
 
   const textResponse = `<?xml version="1.0" encoding="UTF-8"?>
