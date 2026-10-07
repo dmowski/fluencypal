@@ -2,12 +2,14 @@
  * @jest-environment jsdom
  */
 
+import { COOKIE_CONSENT_STORAGE_KEY, writeCookieConsent } from './cookieConsent';
 import {
-  acceptAnalytics,
+  acceptCookies,
   ADS_ID,
   DENIED_CONSENT,
   GA4_ID,
   GOOGLE_TAG_SRC,
+  GRANTED_CONSENT,
   initGTag,
 } from './initGTag';
 
@@ -24,6 +26,7 @@ describe('initGTag', () => {
     delete window.dataLayer;
     document.head.innerHTML = '';
     document.body.innerHTML = '';
+    window.localStorage.clear();
   });
 
   it('queues denied consent before GA4 and Google Ads config, then loads one tag', () => {
@@ -62,20 +65,31 @@ describe('initGTag', () => {
     ]);
   });
 
-  it('grants analytics storage and keeps ads denied', () => {
-    acceptAnalytics();
+  it('keeps ad click ids out of in-app urls', () => {
+    initGTag();
 
+    expect(dataLayerCalls()).toEqual(expect.arrayContaining([['set', 'url_passthrough', false]]));
+  });
+
+  it('grants analytics and ads cookies after Google or email sign-in', () => {
+    acceptCookies();
+
+    expect(window.localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY)).toBe('accepted');
     expect(dataLayerCalls()).toEqual(
-      expect.arrayContaining([
-        [
-          'consent',
-          'update',
-          {
-            ...DENIED_CONSENT,
-            analytics_storage: 'granted',
-          },
-        ],
-      ]),
+      expect.arrayContaining([['consent', 'update', GRANTED_CONSENT]]),
     );
+  });
+
+  it('applies a stored acceptance before the tag config', () => {
+    writeCookieConsent('accepted');
+    initGTag();
+
+    const calls = dataLayerCalls();
+    const updateIndex = calls.findIndex((call) => call[0] === 'consent' && call[1] === 'update');
+    const gaIndex = calls.findIndex((call) => call[0] === 'config' && call[1] === GA4_ID);
+
+    expect(calls[updateIndex]?.[2]).toEqual(GRANTED_CONSENT);
+    expect(updateIndex).toBeGreaterThan(-1);
+    expect(updateIndex).toBeLessThan(gaIndex);
   });
 });

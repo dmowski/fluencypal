@@ -1,5 +1,6 @@
 'use client';
 
+import { readCookieConsent, writeCookieConsent } from './cookieConsent';
 import { isDev } from './isDev';
 
 declare global {
@@ -23,6 +24,13 @@ export const DENIED_CONSENT = {
   ad_personalization: 'denied',
 } as const;
 
+export const GRANTED_CONSENT = {
+  analytics_storage: 'granted',
+  ad_storage: 'granted',
+  ad_user_data: 'granted',
+  ad_personalization: 'granted',
+} as const;
+
 const installGtagStub = () => {
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
@@ -32,7 +40,11 @@ const installGtagStub = () => {
   // Queue consent before config and before the remote script can execute.
   window.gtag('consent', 'default', { ...DENIED_CONSENT, wait_for_update: 500 });
   window.gtag('set', 'ads_data_redaction', true);
-  window.gtag('set', 'url_passthrough', true);
+  // Landing keeps passthrough for ad clicks before consent. In-app links stay clean.
+  window.gtag('set', 'url_passthrough', false);
+  if (readCookieConsent() === 'accepted') {
+    window.gtag('consent', 'update', GRANTED_CONSENT);
+  }
   window.gtag('js', new Date());
   window.gtag('config', GA4_ID);
   window.gtag('config', ADS_ID);
@@ -49,17 +61,17 @@ const ensureGoogleTagScript = () => {
 export const initGTag = () => {
   if (typeof window === 'undefined') return;
   if (!window.gtag) installGtagStub();
+  else if (readCookieConsent() === 'accepted') {
+    window.gtag('consent', 'update', GRANTED_CONSENT);
+  }
   ensureGoogleTagScript();
 };
 
-export const acceptAnalytics = () => {
+/** Google or email sign-in. The cookie notice is on the landing page, before login. */
+export const acceptCookies = () => {
   if (typeof window === 'undefined' || isDev()) return;
+  writeCookieConsent('accepted');
   initGTag();
   if (!window.gtag) return;
-
-  // Analytics consent only. Ads stay denied until there is an explicit marketing choice.
-  window.gtag('consent', 'update', {
-    ...DENIED_CONSENT,
-    analytics_storage: 'granted',
-  });
+  window.gtag('consent', 'update', GRANTED_CONSENT);
 };

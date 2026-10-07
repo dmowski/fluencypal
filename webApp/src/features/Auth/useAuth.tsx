@@ -35,7 +35,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../Firebase/init';
 import * as Sentry from '@sentry/nextjs';
 import { FirebaseError } from 'firebase/app';
-import { acceptAnalytics } from '../Analytics/initGTag';
+import { acceptCookies } from '../Analytics/initGTag';
 import { sendTelegramRequest } from '../Telegram/sendTextAiRequest';
 import {
   completeGoogleRedirectSignIn,
@@ -473,10 +473,10 @@ function useProvideAuth(): AuthContext {
       email: userInfo?.email || '',
     });
 
-    if (!isDev) {
-      acceptAnalytics();
+    if (!isDev && isIdentified) {
+      acceptCookies();
     }
-  }, [userInfo]);
+  }, [isDev, isIdentified, userInfo]);
 
   const logout = async (): Promise<void> => {
     await auth.signOut();
