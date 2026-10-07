@@ -30,6 +30,7 @@ export const getLangLearnPlanLabels = (
     no: i18n.t('Norwegian Learning Plan'),
     sv: i18n.t('Swedish Learning Plan'),
     be: i18n.t('Belarusian Learning Plan'),
+    sr: i18n.t('Serbian Learning Plan'),
   };
 
   return labelMap;

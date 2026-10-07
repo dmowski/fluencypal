@@ -22,6 +22,7 @@ import dayjsUk from 'dayjs/locale/uk';
 import dayjsVi from 'dayjs/locale/vi';
 import dayjsZh from 'dayjs/locale/zh';
 import dayjsBe from 'dayjs/locale/be';
+import dayjsSr from 'dayjs/locale/sr';
 import updateLocale from 'dayjs/plugin/updateLocale';
 
 import { SupportedLanguage } from './lang';
@@ -376,6 +377,21 @@ export const dayJsRelativeShortTimeMap: Record<SupportedLanguage, DayJsRelativeT
     y: '1гад',
     yy: '%дгад',
   },
+  sr: {
+    future: 'za %s',
+    past: 'pre %s',
+    s: '<1min',
+    m: '1min',
+    mm: '%dmin',
+    h: '1č',
+    hh: '%dč',
+    d: '1d',
+    dd: '%dd',
+    M: '1mes',
+    MM: '%dmes',
+    y: '1god',
+    yy: '%dgod',
+  },
 };
 
 const dayJsLocalesMap: Record<SupportedLanguage, ILocale> = {
@@ -401,6 +417,7 @@ const dayJsLocalesMap: Record<SupportedLanguage, ILocale> = {
   sv: dayjsSv,
   no: dayjsNb,
   be: dayjsBe,
+  sr: dayjsSr,
 };
 
 export const initDayJsLocale = (locale: SupportedLanguage) => {

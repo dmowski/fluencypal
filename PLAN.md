@@ -43,3 +43,10 @@ Study -> work -> Money
 
 Friends -> Emotion
 New Interlocutors -> Emotion
+
+But, usually these practices lead to money path. because learning a new language solely for emotions are too difficult.
+
+So the next question: How my app help people to earn more money?
+
+- Practice Interview
+- Practice Exam

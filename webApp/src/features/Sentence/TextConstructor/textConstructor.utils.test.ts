@@ -87,6 +87,7 @@ describe('splitWords', () => {
       { lang: 'no', text: 'Jeg går på skolen hver dag.', minWords: 6 },
       { lang: 'sv', text: 'Jag går till skolan varje dag.', minWords: 6 },
       { lang: 'be', text: 'Я хаджу ў школу кожны дзень.', minWords: 6 },
+      { lang: 'sr', text: 'Идем у школу сваки дан.', minWords: 5 },
     ];
 
     for (const sample of samples) {

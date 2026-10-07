@@ -20,7 +20,8 @@ export type SupportedLanguage =
   | 'da' // Danish
   | 'no' // Norwegian
   | 'sv' // Swedish
-  | 'be'; // Belarusian
+  | 'be' // Belarusian
+  | 'sr'; // Serbian
 
 export const getLabelFromCode = (lang: SupportedLanguage) => {
   const englishName = fullEnglishLanguageName[lang];
@@ -56,6 +57,7 @@ export const supportedLanguages: SupportedLanguage[] = [
   'no', // Norwegian
   'sv', // Swedish
   'be',
+  'sr',
 ];
 
 export const supportedLanguagesToLearn: SupportedLanguage[] = [
@@ -79,6 +81,7 @@ export const supportedLanguagesToLearn: SupportedLanguage[] = [
   'th',
   'tr',
   'vi',
+  'sr',
   //"da", // Danish
   //"no", // Norwegian
   //"sv", // Swedish
@@ -127,6 +130,7 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
   no: '🇳🇴', // Norwegian
   sv: '🇸🇪', // Swedish
   be: '🇧🇾', // Belarusian
+  sr: '🇷🇸', // Serbian
 };
 
 export const langFlags: Record<string, string> = {
@@ -152,6 +156,7 @@ export const langFlags: Record<string, string> = {
   no: 'https://flagcdn.com/w80/no.png', // Norwegian
   sv: 'https://flagcdn.com/w80/se.png', // Swedish
   be: 'https://flagcdn.com/w80/by.png', // Belarusian
+  sr: 'https://flagcdn.com/w80/rs.png', // Serbian
 };
 
 export const fullLanguageName: Record<SupportedLanguage, string> = {
@@ -177,6 +182,7 @@ export const fullLanguageName: Record<SupportedLanguage, string> = {
   no: 'Norsk', // Norwegian
   sv: 'Svenska', // Swedish
   be: 'Беларуская', // Belarusian
+  sr: 'Српски', // Serbian
 };
 
 export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
@@ -202,6 +208,7 @@ export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
   no: 'Norwegian',
   sv: 'Swedish',
   be: 'Belarusian',
+  sr: 'Serbian',
 };
 
 export const languageInstructionForVoice: Record<SupportedLanguage, string> = {
@@ -227,6 +234,7 @@ export const languageInstructionForVoice: Record<SupportedLanguage, string> = {
   no: 'Bruk norsk', // Norwegian
   sv: 'Använd svenska', // Swedish
   be: 'Выкарыстоўвайце беларускую мову', // Belarusian
+  sr: 'Користи српски језик', // Serbian
 };
 
 export const speechRecognitionLanguages: Record<SupportedLanguage, string> = {
@@ -252,6 +260,7 @@ export const speechRecognitionLanguages: Record<SupportedLanguage, string> = {
   no: 'nb-NO', // Norwegian
   sv: 'sv-SE', // Swedish
   be: 'uk-UA', // Belarusian
+  sr: 'sr-RS', // Serbian
 };
 
 export const availableOnLabelMap: Record<SupportedLanguage, string> = {
@@ -277,6 +286,7 @@ export const availableOnLabelMap: Record<SupportedLanguage, string> = {
   no: 'Tilgjengelig på norsk',
   sv: 'Tillgänglig på svenska',
   be: 'Даступна на беларускай',
+  sr: 'Доступно на српском',
 };
 
 export const firstAiMessage: Record<SupportedLanguage, string> = {
@@ -302,4 +312,5 @@ export const firstAiMessage: Record<SupportedLanguage, string> = {
   no: 'Hei... Jeg er her!',
   sv: 'Hej... Jag är här!',
   be: 'Прывітанне... Я тут!',
+  sr: 'Здраво... Ја сам овде!',
 };
