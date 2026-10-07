@@ -6,7 +6,7 @@ import { useQuizTeacherVoice } from './useQuizTeacherVoice';
 const mockSetVoice = jest.fn(async () => undefined);
 const mockAuth = { uid: 'user-1' };
 const mockSettings = {
-  userSettings: { teacherVoice: null as string | null },
+  voice: null as string | null,
   setVoice: mockSetVoice,
 };
 
@@ -22,7 +22,7 @@ describe('useQuizTeacherVoice', () => {
   beforeEach(() => {
     mockSetVoice.mockClear();
     mockSetVoice.mockResolvedValue(undefined);
-    mockSettings.userSettings = { teacherVoice: null };
+    mockSettings.voice = null;
   });
 
   it('writes the chosen voice to settings immediately', async () => {
@@ -37,7 +37,7 @@ describe('useQuizTeacherVoice', () => {
   });
 
   it('prefers the saved settings voice over the optimistic pick', () => {
-    mockSettings.userSettings = { teacherVoice: 'marin' };
+    mockSettings.voice = 'marin';
 
     const { result } = renderHook(() => useQuizTeacherVoice());
 

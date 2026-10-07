@@ -3,6 +3,7 @@ packages:
 
 allowBuilds:
   '@firebase/util': true
+  '@parcel/watcher': true
   '@sentry/cli': true
   core-js-pure: true
   es5-ext: true
@@ -12,59 +13,22 @@ allowBuilds:
   unrs-resolver: true
 
 overrides:
-  '@lingui/loader>webpack': 5.104.1
-  rollup: ^4.59.0
-  webpack: ^5.104.1
-  serialize-javascript: ^7.0.3
-  fast-xml-parser: ^5.5.7
-  'glob@10>minimatch': ^9.0.7
-  'schema-utils@2>ajv': ^6.14.0
-  'schema-utils@4>ajv': ^8.18.0
-  'react-string-diff>diff': ^4.0.4
-  ua-parser-js: ^2.0.9
-  vite: ^7.3.3
-  handlebars: ^4.7.9
-  protobufjs: '>=7.6.5'
-  basic-ftp: ^5.3.1
+  # braces 3.0.4 is not published. Local build rejects deeply nested patterns.
+  braces: 'file:../third_party/braces'
+  # semver@6.3.1 has no provenance while older 6.x builds do, so pnpm blocks it
+  # as a trust downgrade. Babel still requests semver 6.
+  semver: ^7.7.3
   # jwks-rsa@4 pulls jose@6 (ESM-only). Vercel's runtime disables require(esm) unless
   # NODE_OPTIONS=--experimental-require-module is set, which breaks firebase-admin auth.
   jwks-rsa: 3.2.2
-  reselect: ^5.2.0
-  semver: ^7.7.3
-  # Security patches - scoped to only override vulnerable version ranges
-  '@tootallnate/once@<3.0.1': ^3.0.1
-  postcss@<=8.5.17: ^8.5.18
-  # Prereleases (e.g. 1.0.0-beta.14) do not match numeric ranges, so pin all valibot.
-  valibot: ^1.4.2
-  browserslist@<=4.28.6: ^4.28.8
-  yaml@>=2.0.0 <2.8.3: ^2.8.3
-  esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
-  ws@>=8.0.0 <8.21.0: '>=8.21.0'
   # uuid@12+ is ESM-only; google-gax/firebase use require('uuid') and break on Vercel.
   uuid: 11.1.1
-  js-yaml@<4.3.0: '>=5.4.3'
-  js-yaml@>=5.0.0 <=5.4.0: '>=5.4.3'
-  fast-uri: 4.1.5
-  braces: 'file:../third_party/braces'
-  fflate@>=0.6.0 <0.6.11: '>=0.6.11'
-  brace-expansion@<1.1.16: '>=1.1.16'
-  brace-expansion@>=2.0.0 <2.1.2: '>=2.1.2'
-  brace-expansion@>=3.0.0 <5.0.12: '>=5.0.12'
-  brace-expansion: ^5.0.12
-  sharp@<0.35.5: ^0.35.5
-  source-map-js@<1.2.2: '>=1.2.2'
-  '@opentelemetry/core@<2.8.0': '>=2.8.0'
-  '@opentelemetry/instrumentation-pg@<0.73.0': '>=0.73.0'
-  '@opentelemetry/instrumentation-mysql2@<0.67.0': '>=0.67.0'
-  '@opentelemetry/instrumentation-knex@<0.65.0': '>=0.65.0'
-  '@opentelemetry/instrumentation-mysql@<0.67.0': '>=0.67.0'
-  '@opentelemetry/instrumentation-mongoose@<0.67.0': '>=0.67.0'
-  '@opentelemetry/instrumentation-tedious@<0.40.0': '>=0.40.0'
+  # Prereleases (e.g. 1.0.0-beta.14) do not match numeric ranges, so pin all valibot.
+  valibot: ^1.4.2
+  # Parents still request vulnerable ranges. These are the minimum patched releases.
+  'yaml@>=2.0.0 <2.8.3': ^2.8.3
+  'js-yaml@<4.3.2': '>=4.3.2'
   '@grpc/grpc-js@<1.14.5': '>=1.14.5'
-  '@fastify/busboy@>=3.0.0 <3.2.2': '>=3.2.2'
-  form-data@<2.5.6: '>=2.5.6'
-  nanoid@<3.3.17: ^3.3.17
-  socket.io-parser@>=4.0.0 <4.2.7: ^4.2.7
 
 blockExoticSubdeps: true
 minimumReleaseAge: 1440
@@ -73,12 +37,3 @@ trustPolicyExclude:
   - ua-parser-js
   - jose
   - uuid
-patchedDependencies:
-  ua-parser-js@2.0.10: patches/ua-parser-js@2.0.10.patch
-minimumReleaseAgeExclude:
-  - openai@7.3.0
-  - socket.io-parser@4.2.7
-  - fast-uri@4.1.5
-  - fflate@0.6.11
-  - brace-expansion@5.0.12
-  - nanoid@3.3.17

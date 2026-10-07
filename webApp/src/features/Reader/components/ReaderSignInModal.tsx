@@ -84,7 +84,7 @@ export const ReaderSignInModal = ({ open, onClose, message, 'data-testid': testI
       );
     }
 
-    if (auth.isAuthorized) {
+    if (auth.isIdentified) {
       return (
         <Stack gap="26px" alignItems="center" padding="8px">
           <Stack alignItems="center">

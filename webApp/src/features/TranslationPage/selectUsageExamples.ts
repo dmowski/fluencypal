@@ -21,6 +21,40 @@ const stripDecorations = (value: string): string => {
   return text;
 };
 
+const SENTENCE_END = /[.!?]/;
+
+/** Split after `.` `!` or `?` plus whitespace, without a lookbehind (Safari 15–16). */
+const splitAfterSentencePunctuation = (text: string): string[] => {
+  const parts: string[] = [];
+  let start = 0;
+
+  for (let index = 0; index < text.length; index += 1) {
+    if (!SENTENCE_END.test(text[index] ?? '')) {
+      continue;
+    }
+
+    let end = index + 1;
+    while (end < text.length && SENTENCE_END.test(text[end] ?? '')) {
+      end += 1;
+    }
+    if (end >= text.length || !/\s/.test(text[end] ?? '')) {
+      continue;
+    }
+
+    parts.push(text.slice(start, end));
+    while (end < text.length && /\s/.test(text[end] ?? '')) {
+      end += 1;
+    }
+    start = end;
+    index = end - 1;
+  }
+
+  if (start < text.length) {
+    parts.push(text.slice(start));
+  }
+  return parts;
+};
+
 const containsPhrase = (sentence: string, phrase: string): boolean => {
   if (!phrase) {
     return false;
@@ -33,8 +67,7 @@ const containsPhrase = (sentence: string, phrase: string): boolean => {
 };
 
 const sentenceContainingPhrase = (text: string, phrase: string): string | null => {
-  const parts = text
-    .split(/(?<=[.!?])\s+/)
+  const parts = splitAfterSentencePunctuation(text)
     .map((part) => part.trim())
     .filter(Boolean);
   if (parts.length <= 1) {
@@ -44,8 +77,7 @@ const sentenceContainingPhrase = (text: string, phrase: string): string | null =
 };
 
 const firstSentence = (text: string): string => {
-  const [sentence] = text
-    .split(/(?<=[.!?])\s+/)
+  const [sentence] = splitAfterSentencePunctuation(text)
     .map((part) => part.trim())
     .filter(Boolean);
   return sentence || text;

@@ -209,8 +209,10 @@ describe('SEO Metadata', () => {
         featureId: 'learning-plan',
       });
 
-      expect(meta.title).toBe('Personalized Learning Plan for English Practice | FluencyPal');
-      expect(meta.description).toContain('Build a personalized English learning plan with AI.');
+      expect(meta.title).toBe('Personalized English Learning Plan | FluencyPal');
+      expect(meta.description).toContain(
+        'Create a personalized English study plan with AI. Focus your speaking practice on your goals, current level, and the skills you need to improve.',
+      );
       expect(meta.alternates.canonical).toBe(`https://www.fluencypal.com/features/learning-plan`);
     });
   });

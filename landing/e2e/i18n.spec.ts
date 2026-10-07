@@ -22,7 +22,7 @@ test.describe('Internationalization', () => {
     const content = await descriptionMeta.getAttribute('content');
     expect(content).toBeTruthy();
     expect(content!.length).toBeGreaterThan(0);
-    expect(content).toMatch(/FluencyPal/);
+    expect(content!.startsWith('Вы уже знаете английский.')).toBe(true);
   });
 
   test('should display French content with correct locale settings', async ({ page }) => {

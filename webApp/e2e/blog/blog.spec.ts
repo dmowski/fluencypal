@@ -10,7 +10,7 @@ test.describe('Blog admin', () => {
   test('Blog tab is visible and shows empty state for admin user', async ({ page }) => {
     await signInAsAdmin(page);
 
-    await page.getByRole('button', { name: 'Blog' }).click();
+    await page.getByRole('link', { name: 'Blog' }).click();
 
     await expect(page.getByRole('heading', { name: 'Blog Posts' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'New Blog Post' })).toBeVisible();

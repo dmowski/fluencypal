@@ -84,12 +84,12 @@ export const BooksList = () => {
   // Using useEffect here is appropriate: we're synchronising with the Firebase
   // Auth external system (waiting for auth state to propagate after sign-in).
   useEffect(() => {
-    if (!auth.isAuthorized || !pendingConvertFile || isConvertAuthModalOpen) return;
+    if (!auth.isIdentified || !pendingConvertFile || isConvertAuthModalOpen) return;
     const file = pendingConvertFile;
     setPendingConvertFile(null);
     void nonEpubImport.importNonEpubFile(file);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.isAuthorized, pendingConvertFile, isConvertAuthModalOpen]);
+  }, [auth.isIdentified, pendingConvertFile, isConvertAuthModalOpen]);
 
   const isBusy =
     isImportingDroppedFile ||
@@ -109,7 +109,7 @@ export const BooksList = () => {
         await importEpubFile(file); // will set importError via validateEpubFile inside
         return;
       }
-      if (!auth.isAuthorized) {
+      if (!auth.isIdentified) {
         setPendingConvertFile(file);
         setIsConvertAuthModalOpen(true);
         return;

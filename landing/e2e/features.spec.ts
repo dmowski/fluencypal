@@ -18,7 +18,7 @@ test.describe('Features pages', () => {
 
     await expect(
       page.getByRole('heading', {
-        name: 'Персонализированный учебный план для практики английского языка',
+        name: 'Персонализированный план изучения английского с AI',
       }),
     ).toBeVisible();
 
