@@ -1,4 +1,4 @@
-import { Button, Link, Stack, Typography } from '@mui/material';
+import { Link, Stack, Typography } from '@mui/material';
 import { Clock, Languages, Video } from 'lucide-react';
 import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage } from '@/features/Lang/lang';
@@ -6,17 +6,10 @@ import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
-import { buttonStyle, maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { FeatureData } from './types';
-
-const ctaButtonSx = {
-  ...buttonStyle,
-  padding: '12px 32px',
-  color: '#041018',
-  backgroundColor: '#7DDEAA',
-  fontWeight: 800,
-};
 
 export const GroupConversationsFeaturePage = ({
   lang,
@@ -130,16 +123,7 @@ export const GroupConversationsFeaturePage = ({
               >
                 {feature.subTitle}
               </Typography>
-              <Button
-                href={appHref}
-                variant="contained"
-                size="large"
-                data-analytics="community-call-cta"
-                data-testid="group-conversations-cta"
-                sx={{ ...ctaButtonSx, marginTop: '8px' }}
-              >
-                {i18n._('See upcoming calls')}
-              </Button>
+              <GroupConversationJoinButton href={appHref} />
               <Link href={`${urlStart}features`} sx={{ color: '#8ec8ef' }}>
                 {i18n._('View all features')}
               </Link>

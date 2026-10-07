@@ -1,30 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Button, Skeleton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { SafeGroupCall, toSafeGroupCalls } from './safeGroupCalls';
-
-const part = (parts: Intl.DateTimeFormatPart[], type: Intl.DateTimeFormatPartTypes) =>
-  parts.find((item) => item.type === type)?.value || '';
-
-const localCallParts = (iso: string, locale: string, timeZone: string) => {
-  const date = new Date(iso);
-  const parts = new Intl.DateTimeFormat(locale, {
-    timeZone,
-    weekday: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(date);
-  return {
-    weekday: part(parts, 'weekday').replace(/\.$/u, '').toUpperCase(),
-    day: part(parts, 'day'),
-    time: `${part(parts, 'hour')}:${part(parts, 'minute')}`,
-    live: date.getTime() <= Date.now(),
-  };
-};
+import { ChevronRight } from 'lucide-react';
+import { groupCallTimeLabel } from './groupCallTimeLabel';
+import { useEnglishGroupCalls } from './useEnglishGroupCalls';
 
 const PLACEHOLDER_COUNT = 4;
 
@@ -52,31 +32,8 @@ const CallSkeleton = () => (
 
 export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) => {
   const { i18n } = useLingui();
-  const [calls, setCalls] = useState<SafeGroupCall[] | null>(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    const load = async () => {
-      try {
-        const response = await fetch('/api/group-conversations/schedule');
-        if (!response.ok) throw new Error('schedule unavailable');
-        const next = toSafeGroupCalls(await response.json()).filter(
-          (call) => call.languageCode === 'en',
-        );
-        if (!cancelled) setCalls(next);
-      } catch {
-        if (!cancelled) setFailed(true);
-      }
-    };
-    void load();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
+  const { calls, failed, loading } = useEnglishGroupCalls();
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const loading = calls === null && !failed;
   const englishCalls = (calls ?? []).slice(0, PLACEHOLDER_COUNT);
 
   return (
@@ -118,13 +75,22 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
         ? Array.from({ length: PLACEHOLDER_COUNT }, (_, index) => <CallSkeleton key={index} />)
         : null}
       {englishCalls.map((call) => {
-        const label = localCallParts(call.startsAtIso, i18n.locale || 'en', timeZone);
+        const label = groupCallTimeLabel(call.startsAtIso, i18n.locale || 'en', timeZone);
         return (
           <Stack
             key={call.id}
+            component="a"
+            href={moreHref}
             direction="row"
+            data-analytics="community-call-schedule-row"
             data-testid="group-conversations-schedule-row"
-            sx={rowSx}
+            sx={{
+              ...rowSx,
+              color: 'inherit',
+              textDecoration: 'none',
+              borderRadius: '12px',
+              '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.04)' },
+            }}
           >
             <Stack
               sx={{
@@ -154,6 +120,7 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
                     : i18n._('English')}
               </Typography>
             </Stack>
+            <ChevronRight size={18} style={{ marginLeft: 'auto', opacity: 0.7 }} />
           </Stack>
         );
       })}
