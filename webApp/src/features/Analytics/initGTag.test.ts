@@ -65,10 +65,23 @@ describe('initGTag', () => {
     ]);
   });
 
-  it('keeps ad click ids out of in-app urls', () => {
+  it('keeps the ad click id in the url until consent', () => {
     initGTag();
 
-    expect(dataLayerCalls()).toEqual(expect.arrayContaining([['set', 'url_passthrough', false]]));
+    expect(dataLayerCalls()).toEqual(expect.arrayContaining([['set', 'url_passthrough', true]]));
+  });
+
+  it('restores the ad click id before granting consent', () => {
+    window.sessionStorage.setItem('fp_ad_click', JSON.stringify({ gclid: 'click-1' }));
+    window.history.replaceState({}, '', '/practice');
+
+    acceptCookies();
+
+    expect(window.location.search).toContain('gclid=click-1');
+    const calls = dataLayerCalls();
+    const updateIndex = calls.findIndex((call) => call[0] === 'consent' && call[1] === 'update');
+    expect(updateIndex).toBeGreaterThan(-1);
+    expect(window.location.search).toContain('gclid=click-1');
   });
 
   it('grants analytics and ads cookies after Google or email sign-in', () => {

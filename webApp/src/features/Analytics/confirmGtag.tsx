@@ -1,7 +1,7 @@
 'use client';
 
 import { isDev } from './isDev';
-import { CHECKOUT_CONVERSION, initGTag } from './initGTag';
+import { CHECKOUT_CONVERSION, initGTag, restoreAdClickOnPage } from './initGTag';
 
 export { CHECKOUT_CONVERSION };
 export const CONVERSION_WAIT_MS = 1500;
@@ -30,6 +30,7 @@ export const confirmGtag = async (): Promise<void> => {
     const timer = setTimeout(finish, CONVERSION_WAIT_MS);
     try {
       initGTag();
+      restoreAdClickOnPage();
       if (!window.gtag) {
         finish();
         return;

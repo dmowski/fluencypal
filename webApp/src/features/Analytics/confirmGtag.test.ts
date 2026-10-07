@@ -9,6 +9,7 @@ import {
   confirmGtag,
   resetCheckoutConversionForTests,
 } from './confirmGtag';
+import { CHECKOUT_CONVERSION_LABEL } from './initGTag';
 
 jest.mock('./isDev', () => ({
   isDev: jest.fn(() => false),
@@ -39,6 +40,7 @@ describe('confirmGtag', () => {
 
     await confirmGtag();
 
+    expect(CHECKOUT_CONVERSION_LABEL).toBe('a8vxCK7hpPUaENzTpao9');
     expect(gtag).toHaveBeenCalledWith(
       'event',
       'conversion',
