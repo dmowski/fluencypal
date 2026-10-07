@@ -23,6 +23,7 @@ module.exports = {
     'no',
     'sv',
     'be',
+    'sr',
   ],
   pseudoLocale: 'pseudo',
   sourceLocale: 'en',
