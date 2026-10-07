@@ -1,68 +1,36 @@
-import { SupportedLanguage, supportedLanguagesToLearn } from '@/features/Lang/lang';
+import {
+  SupportedLanguage,
+  langFlags,
+  supportedLanguages,
+  supportedLanguagesToLearn,
+} from '@/features/Lang/lang';
+
+/** Site languages the product does not teach. */
+const notTaught = ['uk', 'da', 'no', 'sv', 'be'] as const satisfies readonly SupportedLanguage[];
 
 /** Interface languages that have a translated site catalog. */
-export const learnPageLocales = [
-  'en',
-  'ru',
-  'es',
-  'de',
-  'pl',
-  'uk',
-  'fr',
-  'ar',
-  'id',
-  'it',
-  'ja',
-  'ko',
-  'ms',
-  'pt',
-  'th',
-  'tr',
-  'vi',
-  'zh',
-  'da',
-  'no',
-  'sv',
-  'be',
-] as const satisfies readonly SupportedLanguage[];
+export const learnPageLocales = supportedLanguages;
 
-export type LearnPageLocale = (typeof learnPageLocales)[number];
+export type LearnPageLocale = SupportedLanguage;
 
-/** Languages a visitor can study. Kept in lockstep with `supportedLanguagesToLearn`. */
-export const learnTargetLanguages = [
-  'en',
-  'es',
-  'zh',
-  'fr',
-  'de',
-  'ja',
-  'ko',
-  'ar',
-  'pt',
-  'it',
-  'pl',
-  'ru',
-  'id',
-  'ms',
-  'th',
-  'tr',
-  'vi',
-  'sr',
-] as const satisfies readonly SupportedLanguage[];
+export type LearnTarget = Exclude<SupportedLanguage, (typeof notTaught)[number]>;
 
-export type LearnTarget = (typeof learnTargetLanguages)[number];
+const notTaughtCodes = new Set<string>(notTaught);
+
+export const learnTargetLanguages = supportedLanguagesToLearn.filter(
+  (lang): lang is LearnTarget => {
+    if (notTaughtCodes.has(lang)) {
+      throw new Error(`${lang} is not a learn-page target`);
+    }
+    return true;
+  },
+);
 
 export const isLearnPageLocale = (value: string): value is LearnPageLocale =>
   (learnPageLocales as readonly string[]).includes(value);
 
 export const isLearnTarget = (value: string): value is LearnTarget =>
   (learnTargetLanguages as readonly string[]).includes(value);
-
-export const learnTargetsMatchCatalog = (): boolean => {
-  const catalog = [...supportedLanguagesToLearn].sort();
-  const pages = [...learnTargetLanguages].sort();
-  return catalog.length === pages.length && catalog.every((code, index) => code === pages[index]);
-};
 
 /** `/learn/pl` in English, `/ru/learn/sr` in every other interface language. */
 export const learnLandingPath = (ui: LearnPageLocale, target: LearnTarget): string => {
@@ -73,26 +41,17 @@ export const learnLandingPath = (ui: LearnPageLocale, target: LearnTarget): stri
 export const learnOgPath = (ui: LearnPageLocale, target: LearnTarget): string =>
   `/og/learn/${ui}/${target}`;
 
-export const learnTargetFlagIso: Record<LearnTarget, string> = {
-  en: 'us',
-  es: 'es',
-  zh: 'cn',
-  fr: 'fr',
-  de: 'de',
-  ja: 'jp',
-  ko: 'kr',
-  ar: 'sa',
-  pt: 'pt',
-  it: 'it',
-  pl: 'pl',
-  ru: 'ru',
-  id: 'id',
-  ms: 'my',
-  th: 'th',
-  tr: 'tr',
-  vi: 'vn',
-  sr: 'rs',
+const flagCountryCode = (flagUrl: string): string => {
+  const countryCode = flagUrl.match(/\/([a-z]{2})\.png$/)?.[1];
+  if (!countryCode) {
+    throw new Error(`Flag URL has no country code: ${flagUrl}`);
+  }
+  return countryCode;
 };
+
+export const learnTargetFlagIso = Object.fromEntries(
+  learnTargetLanguages.map((lang) => [lang, flagCountryCode(langFlags[lang])]),
+) as Record<LearnTarget, string>;
 
 /** Saturated accent for the share image, close to each flag. */
 export const learnTargetAccent: Record<LearnTarget, string> = {

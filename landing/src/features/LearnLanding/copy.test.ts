@@ -6,12 +6,10 @@ import {
   learnLandingPath,
   learnPageLocales,
   learnTargetLanguages,
-  learnTargetsMatchCatalog,
 } from './targets';
 
 describe('learn landing copy', () => {
   test('target list matches the languages the product can teach', () => {
-    expect(learnTargetsMatchCatalog()).toBe(true);
     expect([...learnTargetLanguages].sort()).toEqual([...supportedLanguagesToLearn].sort());
   });
 
@@ -20,6 +18,7 @@ describe('learn landing copy', () => {
     expect(getLearnLandingCopy('en', 'sr').shareTitle).toBe('Learn Serbian with FluencyPal');
     expect(getLearnLandingCopy('ru', 'sr').shareTitle).toBe('Изучай сербский с FluencyPal');
     expect(getLearnLandingCopy('ru', 'pl').shareTitle).toBe('Изучай польский с FluencyPal');
+    expect(getLearnLandingCopy('sr', 'en').shareTitle).toBe('Учи енглески са FluencyPal');
   });
 
   test('every interface language names every target, and the title contains that name', () => {
@@ -40,11 +39,12 @@ describe('learn landing copy', () => {
     expect(learnLandingPath('en', 'pl')).toBe('/learn/pl');
     expect(learnLandingPath('ru', 'sr')).toBe('/ru/learn/sr');
     expect(learnLandingPath('pl', 'en')).toBe('/pl/learn/en');
+    expect(learnLandingPath('sr', 'en')).toBe('/sr/learn/en');
   });
 
   test('guards reject unknown codes', () => {
     expect(isLearnPageLocale('ru')).toBe(true);
-    expect(isLearnPageLocale('sr')).toBe(false);
+    expect(isLearnPageLocale('sr')).toBe(true);
     expect(isLearnTarget('sr')).toBe(true);
     expect(isLearnTarget('uk')).toBe(false);
   });
