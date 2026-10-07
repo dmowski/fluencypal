@@ -34,6 +34,8 @@ module.exports = {
     {
       path: 'src/locales/{locale}',
       include: ['src/'],
+      // Vitest screenshot dirs are named `*.browser.test.tsx`, so the extractor tries to read them.
+      exclude: ['**/__screenshots__/**'],
     },
   ],
 };
