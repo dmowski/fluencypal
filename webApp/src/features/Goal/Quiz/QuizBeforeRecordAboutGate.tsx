@@ -39,6 +39,17 @@ export const QuizBeforeRecordAboutGate = ({
   const reactionText = i18n._("Thanks — I'll use that to make your plan. Let's keep going.");
   const recorded = alreadySaved || hasGuestRecorded;
   const ready = alreadySaved || readyToContinue;
+  const recordControl = (
+    <QuizGuestRecordAbout
+      languageCode={languageCode}
+      alreadySaved={alreadySaved}
+      savedTranscript={savedTranscript}
+      onSaveRecording={onSaveRecording}
+      onRecordingChange={setIsGuestRecording}
+      onHasRecorded={setHasGuestRecorded}
+      onReadyToContinue={setReadyToContinue}
+    />
+  );
 
   return (
     <InfoStep
@@ -65,17 +76,39 @@ export const QuizBeforeRecordAboutGate = ({
             <PracticeReasonExampleList heading={i18n._('For example')} examples={examples} />
           ) : null}
           {!recorded ? (
-            <QuizRecordAboutPrompt text={promptText} pausePlayback={isGuestRecording} autoPlay />
-          ) : null}
-          <QuizGuestRecordAbout
-            languageCode={languageCode}
-            alreadySaved={alreadySaved}
-            savedTranscript={savedTranscript}
-            onSaveRecording={onSaveRecording}
-            onRecordingChange={setIsGuestRecording}
-            onHasRecorded={setHasGuestRecorded}
-            onReadyToContinue={setReadyToContinue}
-          />
+            <Stack
+              data-testid="quiz-record-about-actions"
+              sx={{
+                position: 'sticky',
+                bottom: 0,
+                zIndex: 1,
+                gap: '8px',
+                marginTop: '4px',
+                marginLeft: '-10px',
+                marginRight: '-10px',
+                paddingTop: '8px',
+                paddingLeft: '10px',
+                paddingRight: '10px',
+                paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
+                backgroundColor: 'rgba(10, 18, 30, 1)',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '100%',
+                  height: '28px',
+                  background: 'linear-gradient(to top, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0))',
+                  pointerEvents: 'none',
+                },
+              }}
+            >
+              <QuizRecordAboutPrompt text={promptText} pausePlayback={isGuestRecording} autoPlay />
+              {recordControl}
+            </Stack>
+          ) : (
+            recordControl
+          )}
           {ready ? <QuizRecordAboutPrompt text={reactionText} autoPlay variant="reaction" /> : null}
         </Stack>
       }
