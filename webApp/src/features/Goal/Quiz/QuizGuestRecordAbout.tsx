@@ -85,6 +85,7 @@ export const QuizGuestRecordAbout = ({
   languageCode,
   alreadySaved = false,
   savedTranscript = '',
+  session = 0,
   onSaveRecording,
   onRecordingChange,
   onHasRecorded,
@@ -93,6 +94,7 @@ export const QuizGuestRecordAbout = ({
   languageCode: string;
   alreadySaved?: boolean;
   savedTranscript?: string;
+  session?: number;
   onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
   onRecordingChange?: (isRecording: boolean) => void;
   onHasRecorded?: (hasRecorded: boolean) => void;
@@ -108,12 +110,19 @@ export const QuizGuestRecordAbout = ({
   const [replyDurationSec, setReplyDurationSec] = useState(3);
 
   useEffect(() => {
+    if (session > 0) {
+      setHasRecorded(false);
+      setReadyToContinue(false);
+      setIsSaving(false);
+      setSaveError('');
+      return;
+    }
     if (!alreadySaved) {
       return;
     }
     setHasRecorded(true);
     setReadyToContinue(true);
-  }, [alreadySaved]);
+  }, [alreadySaved, session]);
 
   useEffect(() => {
     onRecordingChange?.(recorder.isRecording);

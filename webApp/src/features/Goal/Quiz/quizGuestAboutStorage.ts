@@ -41,6 +41,7 @@ export const transcribeAboutRecording = async (input: {
 
 export const writeAboutTranscriptionToSurvey = async (input: {
   transcript: string;
+  replace?: boolean;
   getSurvey: () => QuizSurvey2 | null;
   loadSurvey: () => Promise<QuizSurvey2 | null>;
   updateSurvey: (survey: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
@@ -59,11 +60,11 @@ export const writeAboutTranscriptionToSurvey = async (input: {
   }
 
   const existing = (survey.aboutUserTranscription || '').trim();
-  if (existing.includes(transcript)) {
+  if (!input.replace && existing.includes(transcript)) {
     return transcript;
   }
 
-  const combined = existing ? `${existing} ${transcript}` : transcript;
+  const combined = input.replace || !existing ? transcript : `${existing} ${transcript}`;
   await input.updateSurvey(
     {
       ...survey,

@@ -29,22 +29,37 @@ export const QuizBeforeRecordAboutGate = ({
   examples?: string[];
   contextMessage?: string;
   savedTranscript?: string;
-  onSaveRecording: (recording: QuizGuestAboutRecording) => Promise<void>;
+  onSaveRecording: (
+    recording: QuizGuestAboutRecording,
+    options?: { replace?: boolean },
+  ) => Promise<void>;
   onContinue: () => void | Promise<void>;
 }) => {
   const { i18n } = useLingui();
   const [isGuestRecording, setIsGuestRecording] = useState(false);
   const [hasGuestRecorded, setHasGuestRecorded] = useState(alreadySaved);
   const [readyToContinue, setReadyToContinue] = useState(alreadySaved);
+  const [rerecordSession, setRerecordSession] = useState(0);
+  const [isRerecording, setIsRerecording] = useState(false);
   const reactionText = i18n._("Thanks — I'll use that to make your plan. Let's keep going.");
-  const recorded = alreadySaved || hasGuestRecorded;
-  const ready = alreadySaved || readyToContinue;
+  const recorded = !isRerecording && (alreadySaved || hasGuestRecorded);
+  const ready = !isRerecording && (alreadySaved || readyToContinue);
+  const recordAgain = () => {
+    setIsRerecording(true);
+    setHasGuestRecorded(false);
+    setReadyToContinue(false);
+    setRerecordSession((session) => session + 1);
+  };
   const recordControl = (
     <QuizGuestRecordAbout
       languageCode={languageCode}
       alreadySaved={alreadySaved}
       savedTranscript={savedTranscript}
-      onSaveRecording={onSaveRecording}
+      session={rerecordSession}
+      onSaveRecording={async (recording) => {
+        await onSaveRecording(recording, { replace: rerecordSession > 0 });
+        setIsRerecording(false);
+      }}
       onRecordingChange={setIsGuestRecording}
       onHasRecorded={setHasGuestRecorded}
       onReadyToContinue={setReadyToContinue}
@@ -58,6 +73,9 @@ export const QuizBeforeRecordAboutGate = ({
       hideActions={!ready}
       actionButtonTitle={i18n._('Continue')}
       actionButtonAnalyticsId="quiz-guest-continue"
+      secondButtonTitle={ready ? i18n._('Record again') : undefined}
+      onSecondButtonClick={ready ? recordAgain : undefined}
+      secondButtonAnalyticsId="quiz-guest-rerecord"
       onClick={() => {
         void onContinue();
       }}

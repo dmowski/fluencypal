@@ -119,4 +119,24 @@ describe('QuizBeforeRecordAboutGate', () => {
     fireEvent.click(continueButton);
     expect(onContinue).toHaveBeenCalledTimes(1);
   });
+
+  it('returns to the microphone so the answer can be recorded again', () => {
+    render(
+      <I18nWrapper>
+        <QuizBeforeRecordAboutGate
+          {...gateProps}
+          alreadySaved
+          savedTranscript="I want to speak at work."
+          onSaveRecording={jest.fn()}
+          onContinue={jest.fn()}
+        />
+      </I18nWrapper>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Record again' }));
+
+    expect(screen.getByTestId('quiz-guest-about-button')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Continue' })).not.toBeInTheDocument();
+    expect(screen.queryByText('I want to speak at work.')).not.toBeInTheDocument();
+  });
 });

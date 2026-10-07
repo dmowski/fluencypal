@@ -227,8 +227,8 @@ const QuizQuestions = () => {
               examples={reasonExamples}
               alreadySaved={hasAboutTranscription(survey)}
               savedTranscript={survey?.aboutUserTranscription}
-              onSaveRecording={async (recording) => {
-                await saveAboutClip(recording);
+              onSaveRecording={async (recording, options) => {
+                await saveAboutClip(recording, options);
               }}
               onContinue={next}
             />

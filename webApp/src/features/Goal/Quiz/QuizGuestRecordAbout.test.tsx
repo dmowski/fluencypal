@@ -92,6 +92,38 @@ describe('QuizGuestRecordAbout', () => {
     expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();
   });
 
+  it('shows the microphone again when asked to record another answer', () => {
+    const { rerender } = render(
+      <I18nWrapper>
+        <QuizGuestRecordAbout
+          languageCode="en"
+          alreadySaved
+          savedTranscript="I want to speak at work."
+          session={0}
+          onSaveRecording={jest.fn()}
+        />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByText('I want to speak at work.')).toBeInTheDocument();
+    expect(screen.queryByTestId('quiz-guest-about-button')).not.toBeInTheDocument();
+
+    rerender(
+      <I18nWrapper>
+        <QuizGuestRecordAbout
+          languageCode="en"
+          alreadySaved
+          savedTranscript="I want to speak at work."
+          session={1}
+          onSaveRecording={jest.fn()}
+        />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByTestId('quiz-guest-about-button')).toBeInTheDocument();
+    expect(screen.queryByText('I want to speak at work.')).not.toBeInTheDocument();
+  });
+
   it('lets the guest retry when saving the answer fails', async () => {
     const onReadyToContinue = jest.fn();
     const onSaveRecording = jest.fn().mockRejectedValue(new Error('offline'));

@@ -80,7 +80,10 @@ interface QuizContextType {
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
-  saveAboutClip: (recording: QuizGuestAboutRecording) => Promise<string>;
+  saveAboutClip: (
+    recording: QuizGuestAboutRecording,
+    options?: { replace?: boolean },
+  ) => Promise<string>;
   saveFollowUpClip: (recording: QuizGuestAboutRecording) => Promise<string>;
   followUpQuestionError: boolean;
   retryFollowUpQuestion: () => void;
@@ -498,7 +501,10 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
     }
   };
 
-  const saveAboutClip = async (recording: QuizGuestAboutRecording) => {
+  const saveAboutClip = async (
+    recording: QuizGuestAboutRecording,
+    options?: { replace?: boolean },
+  ) => {
     await ensureSurveyDocExists();
     const transcript = await transcribeAboutRecording({
       recording,
@@ -510,6 +516,7 @@ function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
 
     const written = await writeAboutTranscriptionToSurvey({
       transcript,
+      replace: options?.replace,
       getSurvey: () => surveyRef.current,
       loadSurvey: async () => {
         if (!surveyDocRef) {

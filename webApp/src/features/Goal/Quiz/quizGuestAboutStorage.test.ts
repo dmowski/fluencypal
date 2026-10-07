@@ -141,6 +141,25 @@ describe('quizGuestAboutStorage', () => {
     );
   });
 
+  it('replaces the previous answer when recording again', async () => {
+    const saved = surveyFixture('I want to speak at work.');
+    const updateSurvey = jest.fn(async (next: QuizSurvey2) => next);
+
+    const written = await writeAboutTranscriptionToSurvey({
+      transcript: 'I need English for a trip.',
+      replace: true,
+      getSurvey: () => saved,
+      loadSurvey: async () => saved,
+      updateSurvey,
+    });
+
+    expect(written).toBe('I need English for a trip.');
+    expect(updateSurvey).toHaveBeenCalledWith(
+      expect.objectContaining({ aboutUserTranscription: 'I need English for a trip.' }),
+      'recordAbout',
+    );
+  });
+
   it('returns null when transcription fails so the guest can retry', async () => {
     sendTranscriptRequestMock.mockRejectedValue(new Error('transcript down'));
 
