@@ -6,13 +6,13 @@ import { ChevronRight } from 'lucide-react';
 import { groupCallTimeLabel } from './groupCallTimeLabel';
 import { useEnglishGroupCalls } from './useEnglishGroupCalls';
 
-const PLACEHOLDER_COUNT = 4;
+const PLACEHOLDER_COUNT = 2;
 
 const rowSx = {
   alignItems: 'center',
   gap: '12px',
-  padding: '12px 0',
-  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+  padding: '12px 20px',
+  //borderTop: '1px solid rgba(255, 255, 255, 0.08)',
 };
 
 const CallSkeleton = () => (
@@ -40,23 +40,26 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
     <Stack
       data-testid="group-conversations-schedule"
       sx={{
-        gap: '4px',
-        padding: '22px',
+        gap: '10px',
         borderRadius: '20px',
         border: '1px solid rgba(148, 145, 255, 0.22)',
         backgroundColor: '#16181e',
         boxShadow: '0 12px 45px #00000040',
       }}
     >
-      <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
-        {i18n._('Upcoming calls')}
-      </Typography>
-      <Typography variant="body2" sx={{ opacity: 0.65 }}>
-        {i18n._('Times are shown in your local time zone.')}
-      </Typography>
-      <Typography variant="body2" sx={{ fontWeight: 700, color: '#7DDEAA', paddingBottom: '8px' }}>
-        {i18n._('Free for everyone.')}
-      </Typography>
+      <Stack
+        sx={{
+          padding: '20px 20px 0 20px',
+          gap: '8px',
+        }}
+      >
+        <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
+          {i18n._('Upcoming calls')}
+        </Typography>
+        <Typography variant="body2" sx={{ opacity: 0.65 }}>
+          {i18n._('Times are shown in your local time zone.')}
+        </Typography>
+      </Stack>
       {failed ? (
         <Typography variant="body2" sx={{ opacity: 0.75 }}>
           {i18n._('The schedule is not available right now.')}
@@ -71,59 +74,61 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
           {i18n._('No English calls yet. New times will show up here.')}
         </Typography>
       ) : null}
-      {loading
-        ? Array.from({ length: PLACEHOLDER_COUNT }, (_, index) => <CallSkeleton key={index} />)
-        : null}
-      {englishCalls.map((call) => {
-        const label = groupCallTimeLabel(call.startsAtIso, i18n.locale || 'en', timeZone);
-        return (
-          <Stack
-            key={call.id}
-            component="a"
-            href={moreHref}
-            direction="row"
-            data-analytics="community-call-schedule-row"
-            data-testid="group-conversations-schedule-row"
-            sx={{
-              ...rowSx,
-              color: 'inherit',
-              textDecoration: 'none',
-              borderRadius: '12px',
-              '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.04)' },
-            }}
-          >
+      <Stack>
+        {loading
+          ? Array.from({ length: PLACEHOLDER_COUNT }, (_, index) => <CallSkeleton key={index} />)
+          : null}
+
+        {englishCalls.map((call) => {
+          const label = groupCallTimeLabel(call.startsAtIso, i18n.locale || 'en', timeZone);
+          return (
             <Stack
+              key={call.id}
+              component="a"
+              href={moreHref}
+              direction="row"
+              data-analytics="community-call-schedule-row"
+              data-testid="group-conversations-schedule-row"
               sx={{
-                width: 52,
-                height: 52,
-                borderRadius: '12px',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                flexShrink: 0,
+                ...rowSx,
+                color: 'inherit',
+                textDecoration: 'none',
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.04)' },
               }}
             >
-              <Typography sx={{ fontSize: '11px', fontWeight: 700 }}>{label.weekday}</Typography>
-              <Typography sx={{ fontSize: '18px', fontWeight: 800, lineHeight: 1 }}>
-                {label.day}
-              </Typography>
+              <Stack
+                sx={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: '12px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                  flexShrink: 0,
+                }}
+              >
+                <Typography sx={{ fontSize: '11px', fontWeight: 700 }}>{label.weekday}</Typography>
+                <Typography sx={{ fontSize: '18px', fontWeight: 800, lineHeight: 1 }}>
+                  {label.day}
+                </Typography>
+              </Stack>
+              <Stack sx={{ minWidth: 0 }}>
+                <Typography sx={{ fontWeight: 700 }}>
+                  {label.live ? i18n._('Now · {time}', { time: label.time }) : label.time}
+                </Typography>
+                <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                  {call.joinCount === 1
+                    ? i18n._('English · 1 person')
+                    : call.joinCount > 1
+                      ? i18n._('English · {count} people', { count: call.joinCount })
+                      : i18n._('English')}
+                </Typography>
+              </Stack>
+              <ChevronRight size={18} style={{ marginLeft: 'auto', opacity: 0.7 }} />
             </Stack>
-            <Stack sx={{ minWidth: 0 }}>
-              <Typography sx={{ fontWeight: 700 }}>
-                {label.live ? i18n._('Now · {time}', { time: label.time }) : label.time}
-              </Typography>
-              <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                {call.joinCount === 1
-                  ? i18n._('English · 1 person')
-                  : call.joinCount > 1
-                    ? i18n._('English · {count} people', { count: call.joinCount })
-                    : i18n._('English')}
-              </Typography>
-            </Stack>
-            <ChevronRight size={18} style={{ marginLeft: 'auto', opacity: 0.7 }} />
-          </Stack>
-        );
-      })}
+          );
+        })}
+      </Stack>
       <Button
         variant="outlined"
         disabled={loading}
@@ -131,7 +136,7 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
         data-analytics={loading ? undefined : 'community-call-schedule-more'}
         data-testid="group-conversations-show-more"
         sx={{
-          marginTop: '8px',
+          margin: '10px 20px 20px 20px',
           alignSelf: 'stretch',
           color: '#f4f7fb',
           borderColor: 'rgba(255, 255, 255, 0.16)',
