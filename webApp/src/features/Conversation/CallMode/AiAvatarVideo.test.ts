@@ -1,7 +1,7 @@
 import { shouldUseAvatarPhoto } from './AiAvatarVideo';
 
 describe('shouldUseAvatarPhoto', () => {
-  it('stays on photos until webm support is known, including iOS where it is unsupported', () => {
+  it('stays on photos until webm support is known', () => {
     expect(shouldUseAvatarPhoto({ canPlayWebm: null, hasPhotos: true })).toBe(true);
     expect(shouldUseAvatarPhoto({ canPlayWebm: false, hasPhotos: true })).toBe(true);
   });

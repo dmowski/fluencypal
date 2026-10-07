@@ -60,6 +60,21 @@ export type SpeakOptions = {
 export const TTS_DEFAULT_MAX_INPUT_CHARS = 600;
 export const OPENAI_TTS_MAX_INPUT_CHARS = 4096;
 
+export const buildTtsStreamUrl = (text: string, opts: SpeakOptions): string => {
+  const maxLength = opts.maxInputLength ?? TTS_DEFAULT_MAX_INPUT_CHARS;
+  const trimmed = text.trim();
+  const input = trimmed.length > maxLength ? trimmed.slice(0, maxLength) : trimmed;
+  const q = new URLSearchParams({
+    input,
+    voice: opts.voice,
+    instructions: opts.instructions ?? '',
+    cache: opts.cache ? 'true' : 'false',
+    regenerateCache: opts.regenerateCache ? 'true' : 'false',
+    version: ttsVersion,
+  });
+  return `/api/ttsStream?${q}`;
+};
+
 interface ConversationAudioContextType {
   /** Call from the user's "Start Conversation" button click. */
   initAudio: () => Promise<void>;
@@ -750,22 +765,7 @@ function useProvideConversationAudio(): ConversationAudioContextType {
     return playerRef.current!.isUnlocked();
   }, []);
 
-  const generateTtsStreamUrl = (text: string, opts: SpeakOptions) => {
-    const maxLength = opts.maxInputLength ?? TTS_DEFAULT_MAX_INPUT_CHARS;
-    text = text.trim();
-    const trimmedText = text.length > maxLength ? text.slice(0, maxLength) : text;
-
-    const q = new URLSearchParams({
-      input: trimmedText,
-      voice: opts.voice,
-      instructions: opts.instructions ?? '',
-      cache: opts.cache ? 'true' : 'false',
-      regenerateCache: opts.regenerateCache ? 'true' : 'false',
-      version: ttsVersion,
-    });
-
-    return `/api/ttsStream?${q}`;
-  };
+  const generateTtsStreamUrl = (text: string, opts: SpeakOptions) => buildTtsStreamUrl(text, opts);
 
   const speak = useCallback(async (text: string, opts: SpeakOptions) => {
     const play = async (playOpts: SpeakOptions) => {

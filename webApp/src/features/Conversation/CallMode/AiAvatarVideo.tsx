@@ -97,6 +97,7 @@ export const AiAvatarVideo = ({
             muted
             loop
             playsInline
+            disablePictureInPicture
           />
         );
       })}
@@ -123,6 +124,7 @@ export const AiAvatarVideo = ({
             muted
             loop
             playsInline
+            disablePictureInPicture
           />
         );
       })}

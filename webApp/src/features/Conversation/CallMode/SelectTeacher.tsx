@@ -5,9 +5,24 @@ import { AiAvatarVideo } from './AiAvatarVideo';
 import { AiAvatar } from './types';
 import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { AiVoiceSpeed } from '@/features/Settings/userSettings';
 import { getVoiceSpeedInstruction } from './voiceSpeed';
+import { shouldForceTeacherCardPhoto } from './teacherCardMedia';
+
+const subscribeTeacherCardMedia = () => () => {};
+
+const useForceTeacherCardPhoto = (): boolean =>
+  useSyncExternalStore(
+    subscribeTeacherCardMedia,
+    () =>
+      shouldForceTeacherCardPhoto({
+        userAgent: navigator.userAgent,
+        maxTouchPoints: navigator.maxTouchPoints ?? 0,
+        platform: navigator.platform,
+      }),
+    () => false,
+  );
 
 export const SelectTeacher = ({
   selectedVoice,
@@ -19,6 +34,7 @@ export const SelectTeacher = ({
   voiceSpeed: AiVoiceSpeed;
 }) => {
   const voices = Object.keys(voiceAvatarMap) as AiVoice[];
+  const forcePhoto = useForceTeacherCardPhoto();
 
   return (
     <Stack
@@ -44,6 +60,7 @@ export const SelectTeacher = ({
             onToggle={() => onSelectVoice(voice)}
             voice={voice}
             voiceSpeed={voiceSpeed}
+            forcePhoto={forcePhoto}
           />
         );
       })}
@@ -57,12 +74,14 @@ export const AvatarCard = ({
   onToggle,
   voice,
   voiceSpeed,
+  forcePhoto,
 }: {
   voice: AiVoice;
   aiAvatar: AiAvatar;
   isSelected: boolean;
   onToggle: () => void;
   voiceSpeed: AiVoiceSpeed;
+  forcePhoto: boolean;
 }) => {
   const audio = useConversationAudio();
   const [isPlayingThisVoice, setIsPlayingThisVoice] = useState(false);
@@ -89,11 +108,19 @@ export const AvatarCard = ({
           position: 'relative',
           border: 'none',
         }}
-        component={'button'}
-        type="button"
+        component="div"
+        role="button"
+        tabIndex={0}
+        aria-pressed={isSelected}
         aria-label={voice}
         data-analytics="teacher-select"
         onClick={onToggle}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onToggle();
+          }
+        }}
       >
         <Stack
           sx={{
@@ -101,9 +128,14 @@ export const AvatarCard = ({
             width: '100%',
             height: '100%',
             backgroundColor: '#222',
+            pointerEvents: 'none',
           }}
         >
-          <AiAvatarVideo aiVideo={aiAvatar} isSpeaking={audio.isPlaying && isPlayingThisVoice} />
+          <AiAvatarVideo
+            aiVideo={aiAvatar}
+            isSpeaking={audio.isPlaying && isPlayingThisVoice}
+            isUsePhoto={forcePhoto}
+          />
         </Stack>
       </Stack>
 
@@ -135,6 +167,7 @@ export const AvatarCard = ({
           cache
           analyticsId="teacher-preview-play"
           buttonLabel={voice}
+          useElementPlayback={forcePhoto}
           customInstructions={voiceInstructionWithSpeed}
           onChangeState={(isPlaying) => {
             setIsPlayingThisVoice(isPlaying);

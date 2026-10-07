@@ -2,7 +2,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, IconButton } from '@mui/material';
 import { Loader, Pause, Volume2 } from 'lucide-react';
-import { SpeakOptions, useConversationAudio } from './useConversationAudio';
+import { buildTtsStreamUrl, SpeakOptions, useConversationAudio } from './useConversationAudio';
+import {
+  isElementPreviewPlaying,
+  playElementPreview,
+  stopElementPreview,
+} from './elementPreviewPlayback';
 import { AiVoice } from '@/features/Ai/ai';
 import { useSettings } from '../Settings/useSettings';
 import { getVoiceOverSpeakOptions } from './getVoiceOverSpeakOptions';
@@ -24,6 +29,8 @@ export interface AudioPlayIconProps {
   autoPlay?: boolean;
   maxInputLength?: number;
   analyticsId?: string;
+  /** Skip AudioContext. Required for teacher preview in iOS in-app browsers. */
+  useElementPlayback?: boolean;
 }
 
 export const AudioPlayIcon = ({
@@ -40,6 +47,7 @@ export const AudioPlayIcon = ({
   autoPlay = false,
   maxInputLength,
   analyticsId,
+  useElementPlayback = false,
 }: AudioPlayIconProps) => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
@@ -57,15 +65,60 @@ export const AudioPlayIcon = ({
 
   const [isPlaying, setIsPlaying] = useState(false);
   const autoPlayedTextRef = useRef('');
+  const elementPlayGeneration = useRef(0);
 
   useEffect(() => {
+    if (useElementPlayback) return;
     if (!audio.isPlaying && isPlaying) {
       setIsPlaying(false);
       onChangeState?.(false);
     }
-  }, [audio.isPlaying]);
+  }, [audio.isPlaying, useElementPlayback]);
+
+  const toggleElementPlay = async () => {
+    if (!customVoice) return;
+
+    if (isElementPreviewPlaying() && isPlaying) {
+      stopElementPreview();
+      setIsPlaying(false);
+      onChangeState?.(false);
+      return;
+    }
+
+    const generation = elementPlayGeneration.current + 1;
+    elementPlayGeneration.current = generation;
+    setCountOfClick(countOfClick + 1);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+
+    setIsPlaying(true);
+    onChangeState?.(true);
+
+    try {
+      const url = buildTtsStreamUrl(text.trim(), {
+        voice: customVoice,
+        instructions: customInstructions ?? '',
+        cache: cache ?? false,
+        maxInputLength,
+      });
+      await playElementPreview(url);
+    } catch (error) {
+      console.error('[AudioPlayIcon] speak failed', error);
+    } finally {
+      if (elementPlayGeneration.current !== generation) return;
+      setIsPlaying(false);
+      onChangeState?.(false);
+    }
+  };
 
   const togglePlay = async () => {
+    if (useElementPlayback) {
+      await toggleElementPlay();
+      return;
+    }
+
     if (audio.isUnlocked() === false) {
       await audio.initAudio();
     }
