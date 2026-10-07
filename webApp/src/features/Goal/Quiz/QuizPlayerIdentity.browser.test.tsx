@@ -72,7 +72,8 @@ test('starts with an empty username and a horizontal avatar row', async () => {
   expect(pickerStyle.flexWrap).toBe('nowrap');
   expect(pickerStyle.flexDirection).toBe('row');
   expect(picker.scrollWidth).toBeGreaterThan(picker.clientWidth);
-  expect(picker.querySelector('[data-selected="true"]')).toBeNull();
+  const selected = picker.querySelector('[data-selected="true"]') as HTMLElement;
+  expect(selected.getAttribute('aria-label')).toBe('Avatar 1');
 });
 
 test('requires a free username and a highlighted avatar before continuing', async () => {
@@ -84,7 +85,6 @@ test('requires a free username and a highlighted avatar before continuing', asyn
   await expect.element(page.getByRole('button', { name: 'Next' })).toBeDisabled();
 
   await userEvent.fill(username, 'Alex');
-  await userEvent.click(page.getByRole('option', { name: 'Avatar 1', exact: true }));
 
   const selected = document.querySelector('[data-selected="true"]') as HTMLElement;
   expect(selected.getAttribute('aria-label')).toBe('Avatar 1');

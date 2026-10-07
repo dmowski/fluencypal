@@ -1,5 +1,5 @@
 'use client';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import { Check, RefreshCw } from 'lucide-react';
 
 import { useEffect, useRef, useState } from 'react';
@@ -31,6 +31,9 @@ import {
   shouldRegenerateGoalRolePlayPlan,
 } from './goalRolePlayCompletion';
 import { GoalRolePlayIntroView } from './components/GoalRolePlayIntroView';
+import { useShowAfterDelay } from './useShowAfterDelay';
+
+const SLOW_CONVERSATION_START_HINT_MS = 10_000;
 
 type Step = 'intro' | 'mic' | 'webcam' | 'words' | 'rules' | 'start' | 'plan';
 
@@ -207,31 +210,37 @@ export const LessonStartModal = ({
   };
 
   const [isStarting, setIsStarting] = useState<boolean>(false);
+  const isStartLoading = isStarting || loadingImageDescription;
+  const showSlowStartHint = useShowAfterDelay(isStartLoading, SLOW_CONVERSATION_START_HINT_MS);
   const audio = useConversationAudio();
   const onStart = async () => {
     setIsStarting(true);
-    await audio.initAudio();
+    try {
+      await audio.initAudio();
 
-    if (settings.conversationMode !== conversationMode) {
-      await settings.setConversationMode(conversationMode);
+      if (settings.conversationMode !== conversationMode) {
+        await settings.setConversationMode(conversationMode);
+      }
+
+      aiConversation.startConversation({
+        mode: conversationType,
+        goal: goalInfo,
+        webCamDescription: imageDescription,
+        conversationMode,
+        wordsToLearn,
+        ruleToLearn,
+        ideas: ideas || undefined,
+        lessonPlan: lessonPlan.activeLessonPlan || undefined,
+        voice: settings.voice,
+      });
+
+      setIsStarting(false);
+      onClose();
+      plan.startGoalElement(goalInfo.goalElement.id);
+    } catch (error) {
+      console.error('Failed to start lesson call', error);
+      setIsStarting(false);
     }
-
-    aiConversation.startConversation({
-      mode: conversationType,
-      goal: goalInfo,
-      webCamDescription: imageDescription,
-      conversationMode,
-      wordsToLearn,
-      ruleToLearn,
-      ideas: ideas || undefined,
-      lessonPlan: lessonPlan.activeLessonPlan || undefined,
-      voice: settings.voice,
-    });
-
-    setIsStarting(false);
-    onClose();
-
-    plan.startGoalElement(goalInfo.goalElement.id);
   };
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes('dmowski');
@@ -553,12 +562,38 @@ export const LessonStartModal = ({
 
         {step === 'start' && (
           <InfoStep
-            title={
-              isStarting || loadingImageDescription ? i18n._(`Loading`) : i18n._(`Start Lesson`)
-            }
+            title={isStartLoading ? i18n._(`Loading`) : i18n._(`Start Lesson`)}
             subTitle={loadingImageDescription ? '' : i18n._(`We're ready to begin!`)}
+            subComponent={
+              isStartLoading ? (
+                <Stack
+                  sx={{
+                    alignItems: 'flex-start',
+                    gap: '14px',
+                    paddingTop: '18px',
+                  }}
+                >
+                  <CircularProgress
+                    size={28}
+                    aria-label={i18n._(`Loading`)}
+                    sx={{ color: 'rgba(255,255,255,0.9)' }}
+                  />
+                  {showSlowStartHint && (
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        opacity: 0.8,
+                        maxWidth: '420px',
+                      }}
+                    >
+                      {i18n._(`It might take a few minutes to start the conversation.`)}
+                    </Typography>
+                  )}
+                </Stack>
+              ) : undefined
+            }
             actionButtonTitle={i18n._(`Start Call`)}
-            disabled={isStarting || loadingImageDescription}
+            disabled={isStartLoading}
             onClick={onStart}
           />
         )}
